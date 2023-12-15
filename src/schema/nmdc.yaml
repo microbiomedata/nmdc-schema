@@ -2629,8 +2629,9 @@ enums:
   ChemicalConversionCategoryEnum:
     permissible_values:
       addition:
-      synthesis:
-      redox:
+      substitution:
+      acid_base:
+      reduction_oxidation:
       combustion:
       decomposition:
 

@@ -3,7 +3,7 @@ has_input:
   - "nmdc:fasp-37"
 has_output:
   - "nmdc:ome-39"
-chemical_conversion_category: redox
+chemical_conversion_category: acid_base
 has_reagents:
   - chemical_formula: HCl
     inchi_key: VEXZGXHMUGYJMC-UHFFFAOYSA-N
