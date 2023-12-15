@@ -3494,5 +3494,3 @@ slots:
     domain: ChemicalConversionProcess
     range: Solution
     description: The catalyst used to increase the rate of a chemical reaction.
-    multivalued: true
-    inlined_as_list: true
