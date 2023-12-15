@@ -939,7 +939,6 @@ classes:
       - season_use
       - secondary_treatment
       - sediment_type
-      - seq_quality_check
       - sequencing field
       - sewage_type
       - shad_dev_water_mold
@@ -1806,7 +1805,6 @@ classes:
       - part_of
       - principal_investigator
       - processing_institution
-      - seq_quality_check
       - target_gene
       - target_subfragment
       - type

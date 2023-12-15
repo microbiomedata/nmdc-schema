@@ -893,8 +893,8 @@ secondary_treatment:
 sediment_type: biogenous
 #seq_meth:
  # has_raw_value: xxx
-seq_quality_check:
-  has_raw_value: xxx
+#seq_quality_check:
+ # has_raw_value: xxx
 sewage_type:
   has_raw_value: xxx
 shad_dev_water_mold: xxx
