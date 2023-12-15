@@ -317,10 +317,12 @@ slots:
     examples:
       - value: https://bioregistry.io/gold:Ga0526289
 
-  jgi_analysis_project_identifiers:
+  jgi_portal_analysis_project_identifiers:
     is_a: analysis_identifiers
     mixins:
       - jgi_portal_identifiers
+    id_prefixes:
+      - jgi.analysis
     pattern: '^jgi.analysis:[0-9]+$'
     description: identifiers for corresponding analysis project in JGI Portal
     examples:
