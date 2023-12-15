@@ -1745,10 +1745,22 @@ classes:
     is_a: FluidHandling
     slots:
       - has_calibration
-      - chromatrographic_category
+      - chromatographic_category
       - ordered_mobile_phases
       - stationary_phase
       - temperature
+    rules:
+      - title: has_calibration_required_if_gc
+        description: >-
+          If chromatographic_category is gas_chromatography, then has_calibration is required.
+        preconditions:
+          slot_conditions:
+            chromatographic_category:
+              equals_string: gas_chromatography
+        postconditions:
+          slot_conditions:
+            has_calibration:
+              required: true
     slot_usage:
       id:
         required: true
@@ -3541,7 +3553,7 @@ slots:
     domain: ChromatographicSeparationProcess
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
-  chromatrographic_category:
+  chromatographic_category:
     domain: ChromatographicSeparationProcess
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
