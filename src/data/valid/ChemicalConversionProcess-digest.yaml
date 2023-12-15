@@ -4,17 +4,18 @@ has_input:
 has_output:
   - "nmdc:procsm-39"
 has_reagents:
-  - has_solution_components:
-    - compound: deionized_water
-    - compound: ammonium_bicarbonate
-      concentration:
-        has_numeric_value: 50
-        has_unit: mM
-    volume:
-      has_numeric_value: 75
-      has_unit: μL   
+  solutions_used:
+    - has_solution_components:
+      - compound: deionized_water
+      - compound: ammonium_bicarbonate
+        concentration:
+          has_numeric_value: 50
+          has_unit: mM
+      volume:
+        has_numeric_value: 75
+        has_unit: μL     
 catalyzed_by:
-  has_solution_components:
+  - has_solution_components:
     - compound: trypsin
       concentration:
           has_numeric_value: 0.05

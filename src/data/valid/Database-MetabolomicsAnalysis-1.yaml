@@ -13,4 +13,3 @@ metabolomics_analysis_set:
       - nmdc:o1
       - nmdc:o2
     type: WorkflowExecution
-    has_calibration: calibration with 0.01% phosphoric acid

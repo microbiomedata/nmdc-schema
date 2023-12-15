@@ -5,4 +5,4 @@ instrument_set:
     model: novaseq
   - id: nmdc:inst-12-dtTMN3
     name: my favorite Orbitrap
-    model: orbitrap
+    model: exploris_480
