@@ -1769,15 +1769,18 @@ classes:
     comments:
       - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
     slot_usage:
-      has_reagents:
-        any_of:
-          - range: LaboratoryReagent
-          - range: Solution
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+    
+  ReagentsCollection:
+    description: >-
+      A group of Solutions and Laboratory Reagents that are used together.
+    slots:
+      - solutions_used
+      - lab_reagents_used
 
   DataGeneration:
     aliases:
@@ -3483,10 +3486,10 @@ slots:
 
   has_reagents:
     domain: ChemicalConversionProcess
-    range: LaboratoryReagent
+    range: ReagentsCollection
     description: The reagents used in a chemical reaction.
-    multivalued: true
-    inlined_as_list: true
+    #multivalued: true
+    #inlined_as_list: true
   sample_state_information:
     domain: ChemicalConversionProcess
     description: >-
@@ -3496,5 +3499,17 @@ slots:
     domain: ChemicalConversionProcess
     range: Solution
     description: The catalyst used to increase the rate of a chemical reaction.
+    multivalued: true
+    inlined_as_list: true
+  solutions_used:
+    domain: ReagentsCollection
+    range: Solution
+    description: The Solutions that are use together in some process
+    multivalued: true
+    inlined_as_list: true
+  lab_reagents_used:
+    domain: ReagentsCollection
+    range: LaboratoryReagent
+    description: The LaboratoryReagents that are used together in some process
     multivalued: true
     inlined_as_list: true
