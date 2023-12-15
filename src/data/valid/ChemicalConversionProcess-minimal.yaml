@@ -3,6 +3,7 @@ has_input:
   - "nmdc:fasp-37"
 has_output:
   - "nmdc:ome-39"
+chemical_conversion_category: acid_base
 has_reagents:
   lab_reagents_used:
     - chemical_formula: CH3OH
