@@ -25,4 +25,3 @@ ordered_mobile_phases:
     has_solution_components:
       - compound: water
 chromatographic_category: gas_chromatography
-has_calibration: nmdc:obj-asdfasd-asdfasdf

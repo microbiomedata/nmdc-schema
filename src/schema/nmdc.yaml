@@ -1752,11 +1752,11 @@ classes:
     rules:
       - title: has_calibration_required_if_gc
         description: >-
-          If chromatographic_category is GC, then has_calibration is required.
+          If chromatographic_category is gas_chromatography, then has_calibration is required.
         preconditions:
           slot_conditions:
             chromatographic_category:
-              equals_string: GC
+              equals_string: gas_chromatography
         postconditions:
           slot_conditions:
             has_calibration:
