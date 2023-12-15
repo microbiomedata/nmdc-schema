@@ -240,8 +240,8 @@ classes:
       - instrument_set
 
   Instrument:
-    description:
-    is_a: NamedThing
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    is_a: MaterialEntity
     slots:
       - vendor
       - model
@@ -431,6 +431,7 @@ classes:
       "An object that primarily consists of symbols that represent information.   Files,
       records, and omics data are examples of data objects."
     slots:
+      - data_category
       - file_size_bytes
       - md5_checksum
       - data_object_type
@@ -438,6 +439,7 @@ classes:
       - was_generated_by
       - url
       - type
+      - insdc_experiment_identifiers
     slot_usage:
       name:
         required: true
@@ -628,7 +630,7 @@ classes:
       - chem_oxygen_dem
       - chem_treat_method
       - chem_treatment
-      - chimera_check
+      #- chimera_check
       - chloride
       - chlorophyll
       - climate_environment
@@ -814,7 +816,7 @@ classes:
       - nitrite_nitrogen
       - nitro
       - non_min_nutr_regm
-      - nucl_acid_amp
+      #- nucl_acid_amp
       - nucl_acid_ext
       - nucleic acid sequence source field
       - number_pets
@@ -1741,10 +1743,23 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: FluidHandling
     slots:
-      - chromatrographic_category
+      - has_calibration
+      - chromatographic_category
       - ordered_mobile_phases
       - stationary_phase
       - temperature
+    rules:
+      - title: has_calibration_required_if_gc
+        description: >-
+          If chromatographic_category is gas_chromatography, then has_calibration is required.
+        preconditions:
+          slot_conditions:
+            chromatographic_category:
+              equals_string: gas_chromatography
+        postconditions:
+          slot_conditions:
+            has_calibration:
+              required: true
     slot_usage:
       id:
         required: true
@@ -1782,6 +1797,29 @@ classes:
       - solutions_used
       - lab_reagents_used
 
+  DissolvingProcess:
+    aliases:
+      - Solubilization
+    description: >
+      A mixing step where a soluble component is mixed with a liquid component.
+    exact_mappings:
+      - AFO:/process#AFP_0000112
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    slots:
+      - solvent
+      - solubilizing_agent
+      - duration
+      - temperature
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
   DataGeneration:
     aliases:
       - OmicsProcessing
@@ -1801,7 +1839,7 @@ classes:
     slots:
       - analyte_category
       - add_date
-      - chimera_check
+      #      - chimera_check # commenting this out because the current dynamic MIxS generation only interrogates Biosample and the retired OmicsProcessing
       - gold_sequencing_project_identifiers
       - has_input
       - has_output
@@ -1809,7 +1847,7 @@ classes:
       - insdc_experiment_identifiers
       - mod_date
       - ncbi_project_name
-      - nucl_acid_amp
+      #- nucl_acid_amp
       - nucl_acid_ext
       #      - omics_type
       - part_of
@@ -1990,9 +2028,63 @@ enums:
 
   InstrumentModelEnum:
     permissible_values:
-      orbitrap:
+      exploris_240:
         aliases:
-          - Orbitrap
+          - Orbitrap Exploris 240
+      
+      exploris_480:
+        aliases:
+          - Orbitrap Exploris 480
+
+      ltq_orbitrap_velos:
+        aliases:
+          - LTQ Orbitrap Velos
+          - LTQ Orbitrap Velos ETD
+          - Velos
+
+      orbitrap_fusion_lumos:
+        aliases:
+          - Orbitrap Fusion Lumos
+          - Fusion
+
+      orbitrap_eclipse_tribid:
+        aliases:
+          - Orbitrap Eclipse Tribid
+          - Eclipse
+
+      orbitrap_q_exactive:
+        aliases:
+          - Orbitrap Q-Exactive HF
+          - Orbitrap Q-Exactive HF-X
+      
+      solarix_7T:
+        aliases:
+          - 7T Solarix 
+          - 7T FT-ICR MS 
+          - 7T MRMS
+      
+      solarix_12T:
+        aliases:
+          - 12T Solarix 
+          - 12T FT-ICR MS 
+          - 12T MRMS
+
+      solarix_15T:
+        aliases:
+          - 15T Solarix 
+          - 15T FT-ICR MS 
+          - 15T MRMS
+          
+      agilent_8890A:
+        aliases:
+          - 8890A GC-MS  
+          - Agilent GC MS
+
+      agilent_7980A:
+        aliases:
+          - 7980A GC-MS  
+          - Agilent GC MS
+
       vortex_genie_2:
         aliases:
           - VortexGenie2
@@ -2002,6 +2094,20 @@ enums:
 
   InstrumentVendorEnum:
     permissible_values:
+      
+      waters:
+        aliases:
+        - Waters Corporation
+
+      agilent:
+        aliases:
+        - Agilent Technologies
+      
+      bruker:
+        aliases:
+        - Bruker Corporation
+        - Bruker Daltonics
+
       thermo_fisher:
         aliases:
           - ThermoFisher
@@ -2081,6 +2187,12 @@ enums:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
 
+  DataCategoryEnum:
+    permissible_values:
+      instrument_data:
+        description: Data generated by a data generation planned process 
+      processed_data:
+        description: Data generated by a workflow execution planned process 
   file type enum:
     permissible_values:
       Metagenome Raw Reads:
@@ -2558,6 +2670,7 @@ enums:
         aliases:
           - chloridic_acid
       water:
+      triton_X-100:
 
   EnzymeEnum:
     description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
@@ -2635,6 +2748,11 @@ enums:
           - SPE
 
 slots:
+
+  data_category: 
+    domain: DataObject
+    range: DataCategoryEnum
+    description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
 
   analyte_category:
     required: true
@@ -3430,7 +3548,6 @@ slots:
     range: boolean
     description: Whether or not pressure was applied to a thing or process.
   duration: # or could be a ISO8601 period string
-    domain: PlannedProcess
     range: QuantityValue
     description: The elapsed time of an activity.
     examples:
@@ -3479,7 +3596,7 @@ slots:
     domain: ChromatographicSeparationProcess
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
-  chromatrographic_category:
+  chromatographic_category:
     domain: ChromatographicSeparationProcess
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
@@ -3513,3 +3630,16 @@ slots:
     description: The LaboratoryReagents that are used together in some process
     multivalued: true
     inlined_as_list: true
+  solvent:
+    domain: DissolvingProcess
+    range: Solution
+    required: true
+    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
+    exact_mappings:
+      - CHEBI:46787
+  solubilizing_agent:
+    domain: DissolvingProcess
+    range: CompoundEnum
+    description: A substance within a formulation that enhances the solubility of another substance.
+    exact_mappings:
+      - NCIT:C176640
