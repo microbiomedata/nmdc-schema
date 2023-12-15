@@ -1766,6 +1766,7 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
+      - chemical_conversion_category
       - has_reagents
       - temperature
       - duration
@@ -1776,22 +1777,6 @@ classes:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-
-  Acidification:
-    description: >
-      Write new description
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: MaterialProcessing
-    slots:
-      - volume
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:acid-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   DataGeneration:
@@ -2640,6 +2625,14 @@ enums:
       solid_phase_extraction:
         aliases:
           - SPE
+
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+      synthesis:
+      redox:
+      combustion:
+      decomposition:
 
 slots:
 
@@ -3505,3 +3498,7 @@ slots:
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
+  chemical_conversion_category:
+    domain: ChemicalConversionProcess
+    range: ChemicalConversionCategoryEnum
+    description: The type of chemical conversion process.
