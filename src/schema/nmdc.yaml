@@ -3041,20 +3041,15 @@ slots:
     range: QuantityValue
 
   infiltrations:
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: first infiltration time;second infiltration time;notes
-    description: The amount of time it takes to accomplish the first and second infiltration activities, and any details, issues, or context needed to understand the infiltration activity.
+    description: The amount of time it takes to complete each infiltration activity
     examples:
-      - value: 40 minutes;50 minutes;2017-08-24
+      - value: 00:01:32;00:00:53
     aliases:
       - infiltration_1
       - infiltration_2
-      - infiltration_notes
     multivalued: true
     list_elements_ordered: true
-    range: TextValue
+    range: string
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
