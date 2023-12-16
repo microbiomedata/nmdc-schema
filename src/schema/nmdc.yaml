@@ -2107,7 +2107,7 @@ enums:
           Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
           mass spectrometry raw data acquired in broadband full scan mode
 
-      LC-DDA-MS/MS Raw Data:
+      LC-DDA-MSn Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
 
   credit enum:
