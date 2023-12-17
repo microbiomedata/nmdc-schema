@@ -24,6 +24,7 @@ subsets:
 
 classes:
   WorkflowChain:
+    class_uri: "nmdc:WorkflowChain"
     is_a: PlannedProcess
     description: >-
       A workflow chain is a collection of Workflow Execution(s) that 
@@ -31,7 +32,7 @@ classes:
     comments: >-
       The sequence of Workflow Execution(s) can be inferred from the has_input and has_output slots of the Workflow Execution(s)
     slots:
-      - type
+      #      - type
       - analyte_category
       - was_informed_by
     slot_usage:
@@ -40,8 +41,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      type:
-        required: true
+      #      type:
+      #        required: true
       analyte_category:
         required: true
         range: AnalyteCategoryEnum
@@ -58,6 +59,7 @@ classes:
   
 
   WorkflowExecution:
+    class_uri: "nmdc:WorkflowExecution"
     is_a: PlannedProcess
     aliases:
       - analysis
@@ -80,7 +82,7 @@ classes:
       - has_input
       - has_output
       - part_of
-      - type
+      # - type
       - version
 
     slot_usage:
@@ -96,6 +98,8 @@ classes:
         required: true
       execution_resource:
         required: true
+        #      type:
+        #        required: true
         range: ExecutionResourceEnum
       part_of:
         required: true
@@ -103,8 +107,8 @@ classes:
           The WorkflowChain that this WorkflowExecution is part of
         range: WorkflowChain
         multivalued: false
-      type:
-        required: true
+      #      type:
+      #        required: true
       id:
         required: true
         structured_pattern:
@@ -112,6 +116,7 @@ classes:
           interpolated: true
 
   MetagenomeAssembly:
+    class_uri: "nmdc:MetagenomeAssembly"
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
     comments:
       - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
@@ -119,7 +124,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
       - asm_score
       - scaffolds
       - scaf_logsum
@@ -156,6 +161,7 @@ classes:
           interpolated: true
 
   MetatranscriptomeAssembly:
+    class_uri: "nmdc:MetatranscriptomeAssembly"
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -196,10 +202,11 @@ classes:
           interpolated: true
 
   MetagenomeAnnotation:
+    class_uri: "nmdc:MetagenomeAnnotation"
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecution
     slots:
-      - type
+      # - type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -211,9 +218,10 @@ classes:
           interpolated: true
 
   MetatranscriptomeAnnotation:
+    class_uri: "nmdc:MetatranscriptomeAnnotation"
     is_a: WorkflowExecution
     slots:
-      - type
+      # - type
       - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
@@ -225,13 +233,14 @@ classes:
           interpolated: true
 
   MetatranscriptomeAnalysis:
+    class_uri: "nmdc:MetatranscriptomeAnalysis"
     is_a: WorkflowExecution
     description: >-
       A metatranscriptome activity that e.g. pools assembly and annotation activity.
     in_subset:
       - workflow subset
     slots:
-      - type
+    # - type
     slot_usage:
       id:
         required: true
@@ -241,13 +250,14 @@ classes:
 
 
   MagsAnalysis:
+    class_uri: "nmdc:MagsAnalysis"
     description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
       - input_contig_num
       - binned_contig_num
       - too_short_contig_num
@@ -263,6 +273,7 @@ classes:
 
 
   MetagenomeSequencing:
+    class_uri: "nmdc:MetagenomeSequencing"
     description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
     is_a: WorkflowExecution
@@ -277,13 +288,14 @@ classes:
 
 
   ReadQcAnalysis:
+    class_uri: "nmdc:ReadQcAnalysis"
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
     title: Read quality control analysis activity
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
-      - type
+      # - type
       - input_read_count
       - input_base_count
       - output_read_count
@@ -299,13 +311,14 @@ classes:
           interpolated: true
 
   ReadBasedTaxonomyAnalysis:
+    class_uri: "nmdc:ReadBasedTaxonomyAnalysis"
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
     title: Read based analysis activity
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
-      - type
+    # - type
     slot_usage:
       id:
         required: true
@@ -315,6 +328,7 @@ classes:
 
 
   MetabolomicsAnalysis:
+    class_uri: "nmdc:MetabolomicsAnalysis"
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -328,6 +342,7 @@ classes:
           interpolated: true
 
   MetaproteomicsAnalysis:
+    class_uri: "nmdc:MetaproteomicsAnalysis"
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -341,6 +356,7 @@ classes:
           interpolated: true
 
   NomAnalysis:
+    class_uri: "nmdc:NomAnalysis"
     is_a: WorkflowExecution
     in_subset:
       - workflow subset

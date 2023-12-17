@@ -1,7 +1,7 @@
 biosample_set:
   - name: Lithgow State Coal Mine Calcium nutrients (early)
     description: Bulk Aqueous phase filtered water
-    type: nmdc:Biosample
+    # type: nmdc:Biosample
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -34,7 +34,7 @@ biosample_set:
     sample_collection_site: Lithgow State Coal Mine
   - name: Lithgow State Coal Mine Calcium nutrients Extra
     description: Bulk Aqueous phase filtered water
-    type: nmdc:Biosample
+    # type: nmdc:Biosample
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -67,7 +67,7 @@ biosample_set:
     sample_collection_site: Lithgow State Coal Mine
   - name: Lithgow State Coal Mine Calcium nutrients
     description: Bulk Aqueous phase filtered water
-    type: nmdc:Biosample
+    # type: nmdc:Biosample
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:

@@ -4,7 +4,7 @@ mags_set:
     part_of: nmdc:wfch-11-ab
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
-    type: nmdc:MAGsAnalysisActivity
+    #    type: nmdc:MAGsAnalysisActivity
     execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
     has_input:
@@ -58,7 +58,7 @@ mags_set:
     part_of: nmdc:wfch-12-ab
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
-    type: nmdc:MAGsAnalysisActivity
+    #    type: nmdc:MAGsAnalysisActivity
     execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
     has_input:
@@ -106,4 +106,3 @@ mags_set:
         num_5s: 0
         num_23s: 0
         num_t_rna: 7
-

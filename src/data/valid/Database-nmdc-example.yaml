@@ -17,7 +17,7 @@ study_set:
       - doi_value: doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
         doi_category: dataset_doi
         doi_provider: osti
-    type: nmdc:Study
+    # type: nmdc:Study
     study_category: research_study
   - id: nmdc:sty-99-oJmAOs
     gold_study_identifiers:
@@ -38,7 +38,7 @@ study_set:
       - doi_value: doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
         doi_category: dataset_doi
         doi_provider: osti
-    type: nmdc:Study
+    # type: nmdc:Study
     study_category: consortium
   - id: nmdc:sty-99-3bQQ4j
     gold_study_identifiers:
@@ -59,7 +59,7 @@ study_set:
       - doi_value: doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
         doi_category: dataset_doi
         doi_provider: osti
-    type: nmdc:Study
+    # type: nmdc:Study
     study_category: research_study
 data_generation_set:
   - id: nmdc:datgen-99-9XUVVF
@@ -82,7 +82,7 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-31415
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
+    # type: nmdc:OmicsProcessing
   - id: nmdc:datgen-99-dk9vgI
     analyte_category: metagenome
     alternative_identifiers:
@@ -100,7 +100,7 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-8675309
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
+    # type: nmdc:OmicsProcessing
   - id: nmdc:datgen-99-MVW1FV
     analyte_category: metagenome
     alternative_identifiers:
@@ -120,14 +120,14 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-avacado
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
+    # type: nmdc:OmicsProcessing
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
     gold_biosample_identifiers:
       - gold:Gb0150408
     name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
     description: Permafrost microbial communities from Stordalen Mire, Sweden
-    type: nmdc:Biosample
+    # type: nmdc:Biosample
     part_of:
       - nmdc:sty-00-8675309
     #    collection_date:
@@ -171,7 +171,7 @@ biosample_set:
     description: Forest soil from Barre Woods Harvard Forest LTER site was incubated
       at 10C with heavy water. Sample is from a control plot at ambient soil temperature,
       organic horizon - top 4cm of soil
-    type: nmdc:Biosample
+    # type: nmdc:Biosample
     part_of:
       - nmdc:sty-00-8675309
     #    collection_date:
@@ -215,7 +215,7 @@ biosample_set:
       of Washington, Seatle, WA, United States - 4-1-23 metaG
     description: Rhizosphere microbial communities from Carex aquatilis grown in submerged
       peat from a thermokarst bog, University of Washington, Seatle, WA, United States
-    type: nmdc:Biosample
+    # type: nmdc:Biosample
     part_of:
       - nmdc:sty-00-8675309
     #    collection_date:
@@ -257,14 +257,14 @@ data_object_set:
     name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
     description: Raw sequencer read data
     file_size_bytes: 9208349052
-    type: nmdc:DataObject
+    # type: nmdc:DataObject
   - id: nmdc:dobj-99-7zrm55
     name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
     description: Raw sequencer read data
     file_size_bytes: 34243309819
-    type: nmdc:DataObject
+    # type: nmdc:DataObject
   - id: nmdc:dobj-99-sQQw0I
     name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
     description: Raw sequencer read data
     file_size_bytes: 7580035314
-    type: nmdc:DataObject
+    # type: nmdc:DataObject

@@ -144,6 +144,7 @@ subsets:
 
 classes:
   NucleotideSequencing:
+    class_uri: nmdc:NucleotideSequencing
     description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
     comments: For example data generated from an Illumina or Pacific Biosciences instrument.
@@ -159,17 +160,20 @@ classes:
           interpolated: true
 
   FluidHandling:
+    class_uri: nmdc:FluidHandling
     is_a: MaterialProcessing
     description: the process that defines how a processed sample is introduced into the mass spectrometer
     abstract: true
 
   DirectInfusionProcess:
+    class_uri: nmdc:DirectInfusionProcess
     description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
     is_a: FluidHandling
     slots:
       - direct_infusion_category
 
   MassSpectrometry:
+    class_uri: nmdc:MassSpectrometry
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
     exact_mappings:
@@ -191,12 +195,15 @@ classes:
           interpolated: true
 
   FunctionalAnnotationAggMember:
+    class_uri: "nmdc:FunctionalAnnotationAggMember"
     slots:
       - metagenome_annotation_id
       - gene_function_id
       - count
+      - type
 
   Database:
+    class_uri: nmdc:Database
     tree_root: true
     aliases:
       - NMDC metadata object
@@ -240,6 +247,7 @@ classes:
       - instrument_set
 
   Instrument:
+    class_uri: nmdc:Instrument
     description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
     is_a: MaterialEntity
     slots:
@@ -297,12 +305,15 @@ classes:
         description: The volume of the solvent/solute being used, not the input.
 
   SolutionComponent:
+    class_uri: nmdc:SolutionComponent
     description: One constituent of a solution
     slots:
       - compound
       - concentration
+      - type
 
   Solution:
+    class_uri: nmdc:Solution
     description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
     aliases:
       - mixture
@@ -316,8 +327,10 @@ classes:
     slots:
       - has_solution_components
       - volume
+      - type
 
   LaboratoryReagent:
+    class_uri: "nmdc:LaboratoryReagent"
     aliases:
       - chemical substance
       - chemical compound
@@ -333,18 +346,23 @@ classes:
       - mass
       - volume
       - concentration
+      - type
     see_also:
       - CHEBI:33893
 
   Protocol:
+    class_uri: nmdc:Protocol
     slots:
       - url
       - name
+      - type
 
   QualityControlReport:
+    class_uri: nmdc:QualityControlReport
     slots:
       - status
       - name
+      - type
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -374,6 +392,7 @@ classes:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
   FieldResearchSite:
+    class_uri: nmdc:FieldResearchSite
     aliases:
       - research plot
     description: A site, outside of a laboratory, from which biosamples may be collected.
@@ -404,6 +423,7 @@ classes:
           interpolated: true
 
   CollectingBiosamplesFromSite:
+    class_uri: nmdc:CollectingBiosamplesFromSite
     is_a: PlannedProcess
     title: Collecting Biosamples From Site
     comments:
@@ -424,6 +444,7 @@ classes:
           interpolated: true
 
   DataObject:
+    class_uri: nmdc:DataObject
     is_a: NamedThing
     in_subset:
       - data object subset
@@ -438,7 +459,7 @@ classes:
       - compression_type
       - was_generated_by
       - url
-      - type
+      # - type
       - insdc_experiment_identifiers
     slot_usage:
       name:
@@ -452,6 +473,7 @@ classes:
           interpolated: true
 
   Biosample:
+    class_uri: 'nmdc:Biosample'
     rules:
       - title: dna_well_requires_plate
         description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
@@ -531,11 +553,11 @@ classes:
       - host_taxid
       - embargoed
       - collected_from
-      - type
+      # - type
       - img_identifiers
       - samp_name
       - biosample_categories
-      - type
+      # - type
       - part_of
 
       ## Identifiers
@@ -1452,6 +1474,7 @@ classes:
       - http://purl.obolibrary.org/obo/FBcv_0003024
 
   Doi:
+    class_uri: "nmdc:Doi"
     aliases:
       - DOIs
       - digital object identifiers
@@ -1464,6 +1487,7 @@ classes:
       - doi_value
       - doi_provider
       - doi_category
+      - type
     rules:
       - title: dataset_award_dois_required
         description: >-
@@ -1480,6 +1504,7 @@ classes:
               required: true
   
   Study:
+    class_uri: 'nmdc:Study'
     is_a: NamedThing
     in_subset:
       - sample subset
@@ -1539,7 +1564,7 @@ classes:
       - specific_ecosystem
       - study_image
       - title
-      - type
+      # - type
       - websites
     slot_usage:
       id:
@@ -1606,6 +1631,7 @@ classes:
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
   ProtocolExecution:
+    class_uri: 'nmdc:ProtocolExecution'
     is_a: PlannedProcess
     description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
     slots:
@@ -1620,13 +1646,14 @@ classes:
 
 
   MaterialProcessing:
+    class_uri: 'nmdc:MaterialProcessing'
     is_a: PlannedProcess
     description:
       A process that takes one or more samples as inputs and generates
       one or more samples as outputs.
-    slots:
-      - has_input
-      - instrument_used
+    #    slots:
+    #      - has_input
+    #      - instrument_used
     notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
@@ -1645,6 +1672,7 @@ classes:
       - OBI:0000094
 
   SubSamplingProcess:
+    class_uri: 'nmdc:SubSamplingProcess'
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
     related_mappings:
@@ -1682,6 +1710,7 @@ classes:
         description: The subsample.
 
   MixingProcess:
+    class_uri: 'nmdc:MixingProcess'
     description: >
       The combining of components, particles or layers into a more homogeneous state.
     contributors:
@@ -1707,6 +1736,7 @@ classes:
         description: The mixed sample.
 
   FiltrationProcess:
+    class_uri: 'nmdc:FiltrationProcess'
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
     related_mappings:
@@ -1736,6 +1766,7 @@ classes:
         description: The volume of sample filtered.
 
   ChromatographicSeparationProcess:
+    class_uri: 'nmdc:ChromatographicSeparationProcess'
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     contributors:
@@ -1768,6 +1799,7 @@ classes:
           interpolated: true
 
   ChemicalConversionProcess:
+    class_uri: 'nmdc:ChemicalConversionProcess'
     description: >
       A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
     see_also:
@@ -1790,15 +1822,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-    
+
   ReagentsCollection:
+    class_uri: 'nmdc:ReagentsCollection'
     description: >-
       A group of Solutions and Laboratory Reagents that are used together.
     slots:
       - solutions_used
       - lab_reagents_used
+      - type
 
   DissolvingProcess:
+    class_uri: 'nmdc:DissolvingProcess'
     aliases:
       - Solubilization
     description: >
@@ -1822,6 +1857,7 @@ classes:
           interpolated: true
 
   DataGeneration:
+    class_uri: 'nmdc:DataGeneration'
     aliases:
       - OmicsProcessing
       - assay
@@ -1842,8 +1878,8 @@ classes:
       - add_date
       #      - chimera_check # commenting this out because the current dynamic MIxS generation only interrogates Biosample and the retired OmicsProcessing
       - gold_sequencing_project_identifiers
-      - has_input
-      - has_output
+      #      - has_input
+      #      - has_output
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
       - mod_date
@@ -1861,8 +1897,8 @@ classes:
       - seq_quality_check
       - target_gene
       - target_subfragment
-      - type
-      - instrument_used
+      # - type
+    #      - instrument_used
 
     slot_usage:
       id:
@@ -2060,30 +2096,30 @@ enums:
       
       solarix_7T:
         aliases:
-          - 7T Solarix 
-          - 7T FT-ICR MS 
+          - 7T Solarix
+          - 7T FT-ICR MS
           - 7T MRMS
       
       solarix_12T:
         aliases:
-          - 12T Solarix 
-          - 12T FT-ICR MS 
+          - 12T Solarix
+          - 12T FT-ICR MS
           - 12T MRMS
 
       solarix_15T:
         aliases:
-          - 15T Solarix 
-          - 15T FT-ICR MS 
+          - 15T Solarix
+          - 15T FT-ICR MS
           - 15T MRMS
-          
+
       agilent_8890A:
         aliases:
-          - 8890A GC-MS  
+          - 8890A GC-MS
           - Agilent GC MS
 
       agilent_7980A:
         aliases:
-          - 7980A GC-MS  
+          - 7980A GC-MS
           - Agilent GC MS
 
       vortex_genie_2:
@@ -2098,16 +2134,16 @@ enums:
       
       waters:
         aliases:
-        - Waters Corporation
+          - Waters Corporation
 
       agilent:
         aliases:
-        - Agilent Technologies
+          - Agilent Technologies
       
       bruker:
         aliases:
-        - Bruker Corporation
-        - Bruker Daltonics
+          - Bruker Corporation
+          - Bruker Daltonics
 
       thermo_fisher:
         aliases:
@@ -2191,9 +2227,9 @@ enums:
   DataCategoryEnum:
     permissible_values:
       instrument_data:
-        description: Data generated by a data generation planned process 
+        description: Data generated by a data generation planned process
       processed_data:
-        description: Data generated by a workflow execution planned process 
+        description: Data generated by a workflow execution planned process
   file type enum:
     permissible_values:
       Metagenome Raw Reads:
@@ -2679,7 +2715,7 @@ enums:
       - http://purl.obolibrary.org/obo/NCIT_C16554
     permissible_values:
       trypsin:
-      chymotrypsin: 
+      chymotrypsin:
       lys_c:
         aliases:
           - Lys-C
@@ -2771,7 +2807,7 @@ enums:
 
 slots:
 
-  data_category: 
+  data_category:
     domain: DataObject
     range: DataCategoryEnum
     description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
@@ -3118,8 +3154,6 @@ slots:
     description:
       This property links a database object to the set of planned processes
       within it.
-    comments:
-      - PlannedProcess instances aggregated by this slot will require the designated_class slot
   biosample_set:
     domain: Database # not inherited byt mixin users
     mixins: object_set
@@ -3664,7 +3698,7 @@ slots:
     range: CompoundEnum
     description: A substance within a formulation that enhances the solubility of another substance.
     exact_mappings:
-      - NCIT:C176640  
+      - NCIT:C176640
   chemical_conversion_category:
     domain: ChemicalConversionProcess
     range: ChemicalConversionCategoryEnum

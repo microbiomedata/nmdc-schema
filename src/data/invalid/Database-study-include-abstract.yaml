@@ -52,7 +52,6 @@ study_set:
     associated_dois:
       - doi_value: doi:10.25585/1488209
         doi_category: publication_doi
-    type: any string
     protocol_link:
       - name: any string 1
       - name: any string 2
@@ -74,7 +73,7 @@ study_set:
           - Supervision
           - Conceptualization
           - Funding acquisition
-        type: any string
+        # type: any string
       - applies_to_person:
           name: Tanja Davidsen
         applied_roles:

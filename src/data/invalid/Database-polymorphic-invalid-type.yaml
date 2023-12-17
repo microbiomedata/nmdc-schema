@@ -8,7 +8,7 @@ planned_process_set:
     has_output:
       - nmdc:procsm-00-0938548
   - id: nmdc:libprp-00-999999
-    type: nmdc:LibraryPreparation
+    type: nmdc:UndefinedClass
     has_input:
       - nmdc:procsm-00-0938548
     has_output:

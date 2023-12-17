@@ -145,8 +145,8 @@ chem_oxygen_dem:
 chem_treat_method: xxx
 chem_treatment:
   has_raw_value: xxx
-#chimera_check:
- # has_raw_value: xxx
+  #chimera_check:
+  # has_raw_value: xxx
 chloride:
   has_raw_value: 5000 milligram per liter
 chlorophyll:
@@ -272,51 +272,51 @@ pressure:
 profile_position: summit
 redox_potential:
   has_raw_value: 300 millivolt
-salinity:
-  has_raw_value: 25 practical salinity unit
-salinity_meth:
-  has_raw_value: PMID:22895776
-samp_mat_process:
-  has_raw_value: filtering of seawater
-samp_store_dur:
-  has_raw_value: P1Y6M
-samp_store_loc:
-  has_raw_value: Freezer no:5
-samp_taxon_id:
-  has_raw_value: soil metagenome [NCBItaxon:410658]
-  term:
-    id: NCBItaxon:410658
-    name: soil metagenome
-samp_store_temp:
-  has_raw_value: -80 degree Celsius
-samp_vol_we_dna_ext:
-  has_raw_value: 1500 milliliter
-season_temp:
-  has_raw_value: 18 degree Celsius
-season_precpt:
-  has_raw_value: 75 millimeters
-sieving:
-  has_raw_value: MIxS does not provide an example
-size_frac_low:
-  has_raw_value: 0.2 micrometer
-size_frac_up:
-  has_raw_value: 20 micrometer
-slope_gradient:
-  has_raw_value: MIxS does not provide an example
-slope_aspect:
-  has_raw_value: MIxS does not provide an example
-sodium:
-  has_raw_value: 10.5 milligram per liter
-soil_type:
-  has_raw_value: plinthosol [ENVO:00002250]
-soil_type_meth:
-  has_raw_value: Frederick series
-store_cond:
-  has_raw_value: -20 degree Celsius freezer;P2Y10D
-sulfate:
-  has_raw_value: 5 micromole per liter
-sulfide:
-  has_raw_value: 2 micromole per liter
+#salinity:
+#  has_raw_value: 25 practical salinity unit
+#salinity_meth:
+#  has_raw_value: PMID:22895776
+#samp_mat_process:
+#  has_raw_value: filtering of seawater
+#samp_store_dur:
+#  has_raw_value: P1Y6M
+#samp_store_loc:
+#  has_raw_value: Freezer no:5
+#samp_taxon_id:
+#  has_raw_value: soil metagenome [NCBItaxon:410658]
+#  term:
+#    id: NCBItaxon:410658
+#    name: soil metagenome
+#samp_store_temp:
+#  has_raw_value: -80 degree Celsius
+#samp_vol_we_dna_ext:
+#  has_raw_value: 1500 milliliter
+#season_temp:
+#  has_raw_value: 18 degree Celsius
+#season_precpt:
+#  has_raw_value: 75 millimeters
+#sieving:
+#  has_raw_value: MIxS does not provide an example
+#size_frac_low:
+#  has_raw_value: 0.2 micrometer
+#size_frac_up:
+#  has_raw_value: 20 micrometer
+#slope_gradient:
+#  has_raw_value: MIxS does not provide an example
+#slope_aspect:
+#  has_raw_value: MIxS does not provide an example
+#sodium:
+#  has_raw_value: 10.5 milligram per liter
+#soil_type:
+#  has_raw_value: plinthosol [ENVO:00002250]
+#soil_type_meth:
+#  has_raw_value: Frederick series
+#store_cond:
+#  has_raw_value: -20 degree Celsius freezer;P2Y10D
+#sulfate:
+#  has_raw_value: 5 micromole per liter
+#sulfide:
+#  has_raw_value: 2 micromole per liter
 temp:
   has_raw_value: 25 degree Celsius
 tillage:
@@ -334,8 +334,6 @@ tot_org_c_meth:
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
 tot_nitro_content:
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
-#tot_nitro_cont_meth:
-#  has_raw_value: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_phosp:
   has_raw_value: 0.03 milligram per liter
@@ -659,6 +657,29 @@ microbial_biomass_n: 0.05 ug N/g dry soil
 mineral_nutr_regm:
   - has_raw_value: xxx
 
+#name: Sample Exhaustive Biosample instance. Although all of these values should pass
+#  validation, that does not mean that any Biosample of any # type would necessarily
+#  have this particular combination of values.
+#
+#nitrite_nitrogen:
+#  has_raw_value: 1.2 mg/kg
+#nitro:
+#  has_raw_value: xxx
+#non_microb_biomass: insect 0.23 ug; plant 1g
+#non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
+#non_min_nutr_regm:
+#  - xxx
+#nucl_acid_amp:
+#  has_raw_value: xxx
+#nucl_acid_ext:
+#  has_raw_value: xxx
+#number_pets:
+#  has_raw_value: xxx
+#number_plants:
+#  has_raw_value: xxx
+#number_resident:
+#  has_raw_value: xxx
+
 name: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -671,8 +692,8 @@ non_microb_biomass: insect 0.23 ug; plant 1g
 non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
 non_min_nutr_regm:
   - xxx
-#nucl_acid_amp:
- # has_raw_value: xxx
+  #nucl_acid_amp:
+  # has_raw_value: xxx
 nucl_acid_ext:
   has_raw_value: xxx
 number_pets:
@@ -681,6 +702,7 @@ number_plants:
   has_raw_value: xxx
 number_resident:
   has_raw_value: xxx
+
 occup_density_samp:
   has_raw_value: xxx
 occup_document: estimate
@@ -838,130 +860,130 @@ root_med_solid:
 root_med_suppl:
   has_raw_value: xxx
 
-salt_regm:
-  - has_raw_value: xxx
-samp_capt_status: other
-samp_collec_device: xxx
-
-samp_collect_point: well
-samp_dis_stage: dissemination
-samp_floor: basement
-samp_loc_corr_rate:
-  has_raw_value: xxx
-
-samp_md:
-  has_raw_value: xxx
-samp_name: see also name
-samp_preserv:
-  has_raw_value: xxx
-samp_room_id:
-  has_raw_value: xxx
-
-samp_sort_meth:
-  - has_raw_value: xxx
-
-samp_subtype: biofilm
-
-samp_time_out:
-  has_raw_value: xxx
-samp_transport_cond:
-  has_raw_value: xxx
-samp_tvdss:
-  has_raw_value: xxx
-samp_type:
-  has_raw_value: xxx
-
-samp_weather: cloudy
-samp_well_name:
-  has_raw_value: xxx
-
-sample_link:
-  - IGSN:DSJ0284
-  - any:curie
-sample_shipped: 15 g
-sample_type: water_extract_soil
-saturates_pc:
-  has_raw_value: xxx
-season:
-  has_raw_value: xxx
-season_environment:
-  - has_raw_value: xxx
-
-season_use: Spring
-secondary_treatment:
-  has_raw_value: xxx
-sediment_type: biogenous
-seq_meth:
-  has_raw_value: xxx
-seq_quality_check:
-  has_raw_value: xxx
-sewage_type:
-  has_raw_value: xxx
-shad_dev_water_mold: xxx
-shading_device_cond: damaged
-shading_device_loc:
-  has_raw_value: xxx
-shading_device_mat:
-  has_raw_value: xxx
-shading_device_type: tree
-
-silicate:
-  has_raw_value: xxx
-size_frac:
-  has_raw_value: xxx
-
-sludge_retent_time:
-  has_raw_value: xxx
-
-soil_horizon: O horizon
-soil_text_measure:
-  has_raw_value: xxx
-soil_texture_meth: xxx
-
-solar_irradiance:
-  has_raw_value: xxx
-soluble_inorg_mat:
-  - has_raw_value: xxx
-
-soluble_org_mat:
-  - has_raw_value: xxx
-soluble_react_phosp:
-  has_raw_value: xxx
-
-space_typ_state:
-  has_raw_value: xxx
-specific: operation
-specific_humidity:
-  has_raw_value: xxx
-sr_dep_env: Lacustine
-sr_geol_age: Archean
-sr_kerog_type: other
-sr_lithology: Clastic
-standing_water_regm:
-  - has_raw_value: xxx
-start_date_inc: '2023-01-27'
-start_time_inc: 13:42+0000
-
-substructure_type:
-  - basement
-
-sulfate_fw:
-  has_raw_value: xxx
-
-surf_air_cont:
-  - dust
-surf_humidity:
-  has_raw_value: xxx
-surf_material: adobe
-surf_moisture:
-  has_raw_value: xxx
-surf_moisture_ph: 123
-surf_temp:
-  has_raw_value: xxx
-suspend_part_matter:
-  has_raw_value: xxx
-suspend_solids:
-  - has_raw_value: xxx
+#salt_regm:
+#  - has_raw_value: xxx
+#samp_capt_status: other
+#samp_collec_device: xxx
+#
+#samp_collect_point: well
+#samp_dis_stage: dissemination
+#samp_floor: basement
+#samp_loc_corr_rate:
+#  has_raw_value: xxx
+#
+#samp_md:
+#  has_raw_value: xxx
+#samp_name: see also name
+#samp_preserv:
+#  has_raw_value: xxx
+#samp_room_id:
+#  has_raw_value: xxx
+#
+#samp_sort_meth:
+#  - has_raw_value: xxx
+#
+#samp_subtype: biofilm
+#
+#samp_time_out:
+#  has_raw_value: xxx
+#samp_transport_cond:
+#  has_raw_value: xxx
+#samp_tvdss:
+#  has_raw_value: xxx
+#samp_type:
+#  has_raw_value: xxx
+#
+#samp_weather: cloudy
+#samp_well_name:
+#  has_raw_value: xxx
+#
+#sample_link:
+#  - IGSN:DSJ0284
+#  - any:curie
+#sample_shipped: 15 g
+#sample_type: water_extract_soil
+#saturates_pc:
+#  has_raw_value: xxx
+#season:
+#  has_raw_value: xxx
+#season_environment:
+#  - has_raw_value: xxx
+#
+#season_use: Spring
+#secondary_treatment:
+#  has_raw_value: xxx
+#sediment_type: biogenous
+#seq_meth:
+#  has_raw_value: xxx
+#seq_quality_check:
+#  has_raw_value: xxx
+#sewage_type:
+#  has_raw_value: xxx
+#shad_dev_water_mold: xxx
+#shading_device_cond: damaged
+#shading_device_loc:
+#  has_raw_value: xxx
+#shading_device_mat:
+#  has_raw_value: xxx
+#shading_device_type: tree
+#
+#silicate:
+#  has_raw_value: xxx
+#size_frac:
+#  has_raw_value: xxx
+#
+#sludge_retent_time:
+#  has_raw_value: xxx
+#
+#soil_horizon: O horizon
+#soil_text_measure:
+#  has_raw_value: xxx
+#soil_texture_meth: xxx
+#
+#solar_irradiance:
+#  has_raw_value: xxx
+#soluble_inorg_mat:
+#  - has_raw_value: xxx
+#
+#soluble_org_mat:
+#  - has_raw_value: xxx
+#soluble_react_phosp:
+#  has_raw_value: xxx
+#
+#space_typ_state:
+#  has_raw_value: xxx
+#specific: operation
+#specific_humidity:
+#  has_raw_value: xxx
+#sr_dep_env: Lacustine
+#sr_geol_age: Archean
+#sr_kerog_type: other
+#sr_lithology: Clastic
+#standing_water_regm:
+#  - has_raw_value: xxx
+#start_date_inc: '2023-01-27'
+#start_time_inc: 13:42+0000
+#
+#substructure_type:
+#  - basement
+#
+#sulfate_fw:
+#  has_raw_value: xxx
+#
+#surf_air_cont:
+#  - dust
+#surf_humidity:
+#  has_raw_value: xxx
+#surf_material: adobe
+#surf_moisture:
+#  has_raw_value: xxx
+#surf_moisture_ph: 123
+#surf_temp:
+#  has_raw_value: xxx
+#suspend_part_matter:
+#  has_raw_value: xxx
+#suspend_solids:
+#  - has_raw_value: xxx
 tan:
   has_raw_value: xxx
 target_gene:
@@ -1004,7 +1026,7 @@ tvdss_of_hcr_press:
 tvdss_of_hcr_temp:
   has_raw_value: xxx
 typ_occup_density: 123
-type: nmdc:Biosample. change this to require a class name or an enumeration
+# type: nmdc:Biosample. change this to require a class name or an enumeration
 ventilation_rate:
   has_raw_value: xxx
 ventilation_type:
