@@ -3,14 +3,11 @@ has_solution_components:
     concentration:
       has_unit: mM
       has_numeric_value: 10
-  - compound: chloridic acid
+  - compound: hydrochloric_acid
     concentration:
       has_unit: mM
       has_numeric_value: 15
-  - compound: trypsin
-    concentration:
-      has_unit: mM
-      has_numeric_value: 20
+  - compound: water
 volume:
   has_numeric_value: 500
   has_unit: mL

@@ -5,7 +5,7 @@ title: Workflow Execution Activities module for NMDC Schema
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 notes:
-  - "should type be required for WorkflowExecutionActivity ?  What would the range be ?"
+  - "should type be required for WorkflowExecution ?  What would the range be ?"
 
 imports:
   - core
@@ -23,12 +23,48 @@ subsets:
       Subset consisting of just the workflow execution activities
 
 classes:
-  WorkflowExecutionActivity:
+  WorkflowChain:
+    class_uri: "nmdc:WorkflowChain"
+    is_a: PlannedProcess
+    description: >-
+      A workflow chain is a collection of Workflow Execution(s) that 
+      analyse the output of DataGeneration.
+    comments: >-
+      The sequence of Workflow Execution(s) can be inferred from the has_input and has_output slots of the Workflow Execution(s)
+    slots:
+      #      - type
+      - analyte_category
+      - was_informed_by
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      #      type:
+      #        required: true
+      analyte_category:
+        required: true
+        range: AnalyteCategoryEnum
+      was_informed_by:
+        required: true
+        description: >-
+          A Workflow Chain instance was informed by the data and metadata of a of a 
+            Data Generation instance
+        range: DataGeneration
+        comments: >-
+          The value of this slot is a reference to a Data Generation 
+          instance that informed the Workflow Chain instance with its
+          output data and the metadata of the Data Generation.
+  
+
+  WorkflowExecution:
+    class_uri: "nmdc:WorkflowExecution"
+    is_a: PlannedProcess
     aliases:
       - analysis
     comments:
-      - Each instance of this (and all other) activities is  a distinct run with start and stop times, potentially with different inputs and outputs
-    is_a: Activity
+      - Each instance of this (and all other) subclasses of WorkflowExecution is a distinct run with start and stop times, potentially with different inputs and outputs
     in_subset:
       - workflow subset
     description: >-
@@ -37,6 +73,10 @@ classes:
       embl.ena: >-
         An analysis contains secondary analysis results derived from sequence reads (e.g. a genome assembly)
     slots:
+      - id
+      - name
+      - started_at_time
+      - ended_at_time
       - execution_resource
       - git_url
       - has_input
@@ -58,8 +98,17 @@ classes:
         required: true
       execution_resource:
         required: true
-#      type:
-#        required: true
+        #      type:
+        #        required: true
+        range: ExecutionResourceEnum
+      part_of:
+        required: true
+        description: >-
+          The WorkflowChain that this WorkflowExecution is part of
+        range: WorkflowChain
+        multivalued: false
+      #      type:
+      #        required: true
       id:
         required: true
         structured_pattern:
@@ -67,10 +116,11 @@ classes:
           interpolated: true
 
   MetagenomeAssembly:
+    class_uri: "nmdc:MetagenomeAssembly"
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
     comments:
       - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -111,7 +161,8 @@ classes:
           interpolated: true
 
   MetatranscriptomeAssembly:
-    is_a: WorkflowExecutionActivity
+    class_uri: "nmdc:MetatranscriptomeAssembly"
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -150,9 +201,10 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetagenomeAnnotationActivity:
+  MetagenomeAnnotation:
+    class_uri: "nmdc:MetagenomeAnnotation"
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     slots:
       # - type
       - gold_analysis_project_identifiers
@@ -165,8 +217,9 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetatranscriptomeAnnotationActivity:
-    is_a: WorkflowExecutionActivity
+  MetatranscriptomeAnnotation:
+    class_uri: "nmdc:MetatranscriptomeAnnotation"
+    is_a: WorkflowExecution
     slots:
       # - type
       - gold_analysis_project_identifiers
@@ -179,14 +232,15 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetatranscriptomeActivity:
-    is_a: WorkflowExecutionActivity
+  MetatranscriptomeAnalysis:
+    class_uri: "nmdc:MetatranscriptomeAnalysis"
+    is_a: WorkflowExecution
     description: >-
       A metatranscriptome activity that e.g. pools assembly and annotation activity.
     in_subset:
       - workflow subset
     slots:
-      # - type
+    # - type
     slot_usage:
       id:
         required: true
@@ -195,10 +249,11 @@ classes:
           interpolated: true
 
 
-  MagsAnalysisActivity:
+  MagsAnalysis:
+    class_uri: "nmdc:MagsAnalysis"
     description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -217,10 +272,11 @@ classes:
           interpolated: true
 
 
-  MetagenomeSequencingActivity:
+  MetagenomeSequencing:
+    class_uri: "nmdc:MetagenomeSequencing"
     description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slot_usage:
@@ -231,10 +287,11 @@ classes:
           interpolated: true
 
 
-  ReadQcAnalysisActivity:
+  ReadQcAnalysis:
+    class_uri: "nmdc:ReadQcAnalysis"
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
     title: Read quality control analysis activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
@@ -253,14 +310,15 @@ classes:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  ReadBasedTaxonomyAnalysisActivity:
+  ReadBasedTaxonomyAnalysis:
+    class_uri: "nmdc:ReadBasedTaxonomyAnalysis"
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
     title: Read based analysis activity
-    is_a: WorkflowExecutionActivity
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
-      # - type
+    # - type
     slot_usage:
       id:
         required: true
@@ -269,12 +327,12 @@ classes:
           interpolated: true
 
 
-  MetabolomicsAnalysisActivity:
-    is_a: WorkflowExecutionActivity
+  MetabolomicsAnalysis:
+    class_uri: "nmdc:MetabolomicsAnalysis"
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
-      - has_calibration
       - has_metabolite_quantifications
     slot_usage:
       id:
@@ -283,37 +341,31 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MetaproteomicsAnalysisActivity:
-    is_a: WorkflowExecutionActivity
+  MetaproteomicsAnalysis:
+    class_uri: "nmdc:MetaproteomicsAnalysis"
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
     slots:
       - has_peptide_quantifications
     slot_usage:
-      used:
-        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  NomAnalysisActivity:
-    is_a: WorkflowExecutionActivity
+  NomAnalysis:
+    class_uri: "nmdc:NomAnalysis"
+    is_a: WorkflowExecution
     in_subset:
       - workflow subset
-    slots:
-      - has_calibration
     slot_usage:
-      used:
-        range: string
-        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-
 
 slots:
 
@@ -321,7 +373,7 @@ slots:
     abstract: true
 
   has_peptide_quantifications:
-    domain: MetaproteomicsAnalysisActivity
+    domain: MetaproteomicsAnalysis
     range: PeptideQuantification
     multivalued: true
 
@@ -491,7 +543,7 @@ slots:
     abstract: true
 
   mags_list:
-    domain: MagsAnalysisActivity
+    domain: MagsAnalysis
     range: MagBin
     multivalued: true
 
@@ -543,17 +595,17 @@ slots:
     range: float
     description: >-
       TODO      
-
+  
   has_calibration:
-    range: string
-    description: >-
-      A reference to a file that holds calibration information.
+    domain: ChromatographicSeparationProcess
+    range: DataObject
+    description: An instrument data that is used to calibrate retention time or to calculate rentention index
 
   has_metabolite_quantifications:
-    domain: MetabolomicsAnalysisActivity
+    domain: MetabolomicsAnalysis
     range: MetaboliteQuantification
     multivalued: true
 
   version:
-    domain: Activity
+    domain: WorkflowExecution
     range: string

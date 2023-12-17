@@ -38,6 +38,7 @@ default_range: string
 
 classes:
   GenomeFeature:
+    class_uri: "nmdc:GenomeFeature"
     description: >-
       A feature localized to an interval along a genome
     comments:
@@ -52,19 +53,20 @@ classes:
       - seqid
       - start
       - strand
-      # - type
+      - type
     slot_usage:
       seqid:
         required: true
-#      type:
-#        range: OntologyClass
-#        description: A type from the sequence ontology
+      #      type:
+      #        range: OntologyClass
+      #        description: A type from the sequence ontology
       start:
         required: true
       end:
         required: true
 
   FunctionalAnnotationTerm:
+    class_uri: "nmdc:FunctionalAnnotationTerm"
     aliases:
       - function
       - FunctionalAnnotation
@@ -76,6 +78,7 @@ classes:
       - decide if this should be used for product naming
 
   Pathway:
+    class_uri: "nmdc:Pathway"
     aliases:
       - biological process
       - metabolic pathway
@@ -100,6 +103,7 @@ classes:
       - biolink:Pathway
 
   Reaction:
+    class_uri: "nmdc:Reaction"
     is_a: FunctionalAnnotationTerm
     description: >-
       An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
@@ -127,12 +131,15 @@ classes:
       - biolink:MolecularActivity
 
   ReactionParticipant:
+    class_uri: "nmdc:ReactionParticipant"
     description: Instances of this link a reaction to a chemical entity participant
     slots:
       - chemical
       - stoichiometry
+      - type
 
   OrthologyGroup:
+    class_uri: "nmdc:OrthologyGroup"
     is_a: FunctionalAnnotationTerm
     description: >-
       A set of genes or gene products in which all members are orthologous
@@ -150,6 +157,7 @@ classes:
       - KEGG.ORTHOLOGY prefix is used for KO numbers
 
   FunctionalAnnotation:
+    class_uri: "nmdc:FunctionalAnnotation"
     description: >-
       An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in.
       Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed
@@ -163,19 +171,20 @@ classes:
       - has_function
       - subject
       - was_generated_by
+      - type
     slot_usage:
       has_function:
         notes:
           - this slot had been called id
           - "Still missing patterns for COG and RetroRules."
           - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
-#      type:
-#        range: OntologyClass
-#        description: TODO
+      #      type:
+      #        range: OntologyClass
+      #        description: TODO
       was_generated_by:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
-        range: MetagenomeAnnotationActivity
+        range: MetagenomeAnnotation
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
 

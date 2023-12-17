@@ -18,7 +18,7 @@ class TestExtraction(unittest.TestCase):
         # validator = JsonSchemaDataValidator(SCHEMA_FILE)  # it takes a long time to construct this
 
         component1 = SolutionComponent(
-            compound="deionized water",
+            compound="deionized_water",
         )
         # validator.validate_object(component1, target_class=SolutionComponent)
 
@@ -26,7 +26,7 @@ class TestExtraction(unittest.TestCase):
         # validator.validate_object(qv2, target_class=QuantityValue)
 
         component2 = SolutionComponent(
-            compound="deionized water",
+            compound="deionized_water",
             concentration=qv2
         )
         # validator.validate_object(component2, target_class=SolutionComponent)
@@ -64,8 +64,8 @@ has_output:
 - nmdc:ILLEGAL_ID_VAL
 extractant:
   has_solution_components:
-  - compound: deionized water
-  - compound: deionized water
+  - compound: deionized_water
+  - compound: deionized_water
     concentration:
       has_numeric_value: 10.0
       has_unit: '%'
@@ -83,7 +83,7 @@ class TestChromatographySeparationProcess(unittest.TestCase):
         # validator = JsonSchemaDataValidator(SCHEMA_FILE)  # it takes a long time to construct this
 
         component1 = SolutionComponent(
-            compound="deionized water",
+            compound="deionized_water",
         )
         # validator.validate_object(component1, target_class=SolutionComponent)
 
