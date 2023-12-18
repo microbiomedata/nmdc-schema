@@ -1,5 +1,6 @@
-id: nmdc:cspro-99-oW43DzG0 
-has_input: 
+id: nmdc:cspro-99-oW43DzG0
+type: nmdc:ChromatographicSeparationProcess
+has_input:
   - nmdc:procsm-11-9gjxns61
 has_output:
   - nmdc:procsm-11-05g48p90
@@ -8,13 +9,19 @@ stationary_phase: "CN"
 ordered_mobile_phases:
   - has_solution_components:
       - compound: methanol
+        type: nmdc:SolutionComponent
         concentration:
+          type: nmdc:QuantityValue
           has_unit: mM
           has_numeric_value: 10
       - compound: hydrochloric_acid
+        type: nmdc:SolutionComponent
         concentration:
+          type: nmdc:QuantityValue
           has_unit: mM
           has_numeric_value: 15
+    type: nmdc:Solution
     volume:
+      type: nmdc:QuantityValue
       has_numeric_value: 500
       has_unit: mL

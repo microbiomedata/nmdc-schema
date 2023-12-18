@@ -77,6 +77,7 @@ enums:
 classes:
 
   NamedThing:
+    class_uri: "nmdc:NamedThing"
     description: "a databased entity or concept/class"
     abstract: true
     slots:
@@ -84,30 +85,10 @@ classes:
       - name
       - description
       - alternative_identifiers
-
-  #  DataGeneratingInstrument:
-  #    slots:
-  #      - model
-  #      - name # range: DeviceEnum ? # see also "used" and "instrument_name"
-  #      - vendor
-  #    aliases:
-  #      - device
-  #    description: An identified thing that is capable of generating scientific data
-  #    comments:
-  #      - Likely a capital investment. One would want to say "I used this serial number"
-  #    todos:
-  #      - add examples, like a Thermo Electron Orbitrap
-  #    is_a: NamedThing
-  #    slot_usage:
-  #      id:
-  #        required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
-  #    exact_mappings:
-  #      - OBI:0000485
+      - type
 
   MaterialEntity:
+    class_uri: "nmdc:MaterialEntity"
     abstract: true
     aliases:
       - Material
@@ -116,6 +97,7 @@ classes:
     title: Material Entity
 
   ProcessedSample:
+    class_uri: "nmdc:ProcessedSample"
     is_a: MaterialEntity
     title: Processed Sample
     slots:
@@ -132,6 +114,7 @@ classes:
           interpolated: true
 
   AnalyticalSample:
+    class_uri: "nmdc:AnalyticalSample"
     is_a: MaterialEntity
     title: Analytical Sample
     slot_usage:
@@ -142,6 +125,7 @@ classes:
           interpolated: true
 
   Site:
+    class_uri: "nmdc:Site"
     abstract: true
     is_a: MaterialEntity
     title: Site
@@ -160,19 +144,16 @@ classes:
     is_a: NamedThing
     title: Planned Process
     slots:
-      - designated_class
-      - end_date
       - has_input
       - has_output
+      - instrument_used
       - processing_institution
       - protocol_link
       - start_date
-    slot_usage:
-      designated_class:
-        comments:
-          - required on all instances in a polymorphic Database slot like planned_process_set
+      - end_date
 
   OntologyClass:
+    class_uri: "nmdc:OntologyClass"
     is_a: NamedThing
     notes:
       - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
@@ -182,26 +163,26 @@ classes:
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
+    class_uri: 'nmdc:EnvironmentalMaterialTerm'
 
   AttributeValue:
+    class_uri: 'nmdc:AttributeValue'
     description: >-
       The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
       value and the structured value
     slots:
       - has_raw_value
       - was_generated_by
-    slot_usage:
-      type:
-        description: An optional string that specified the type of object.
+      - type
 
   QuantityValue:
+    class_uri: "nmdc:QuantityValue"
     is_a: AttributeValue
     description: A simple quantity, e.g. 2cm
     slots:
       - has_maximum_numeric_value
       - has_minimum_numeric_value
       - has_numeric_value
-      - has_raw_value
       - has_unit
     slot_usage:
       has_raw_value:
@@ -215,6 +196,7 @@ classes:
       - schema:QuantityValue
 
   ImageValue:
+    class_uri: "nmdc:ImageValue"
     is_a: AttributeValue
     description: An attribute value representing an image.
     slots:
@@ -223,6 +205,7 @@ classes:
       - display_order
   
   PersonValue:
+    class_uri: "nmdc:PersonValue"
     is_a: AttributeValue
     description: An attribute value representing a person
     slots:
@@ -253,6 +236,7 @@ classes:
           display_hint: First name, middle initial, and last name of this person.
   
   MagBin:
+    class_uri: "nmdc:MagBin"
     slots:
       - bin_name
       - bin_quality
@@ -276,15 +260,19 @@ classes:
       - type
 
   MetaboliteQuantification:
+    class_uri: "nmdc:MetaboliteQuantification"
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
     slots:
       - alternative_identifiers
       - highest_similarity_score
       - metabolite_quantified
+      - type
 
   PeptideQuantification:
+    class_uri: "nmdc:PeptideQuantification"
     description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
     slots:
+      - type
       - all_proteins
       - best_protein
       - min_q_value
@@ -293,6 +281,7 @@ classes:
       - peptide_sum_masic_abundance
   
   ProteinQuantification:
+    class_uri: "nmdc:ProteinQuantification"
     description: This is used to link a metaproteomics analysis workflow to a specific protein
     slots:
       - all_proteins
@@ -300,6 +289,7 @@ classes:
       - peptide_sequence_count
       - protein_spectral_count
       - protein_sum_masic_abundance
+      - type
     slot_usage:
       best_protein:
         description: the specific protein identifier most correctly grouped to its associated peptide sequences
@@ -307,6 +297,7 @@ classes:
         description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
 
   ChemicalEntity:
+    class_uri: "nmdc:ChemicalEntity"
     aliases:
       - metabolite
       - chemical substance
@@ -339,6 +330,7 @@ classes:
       - biolink:ChemicalSubstance
 
   GeneProduct:
+    class_uri: "nmdc:GeneProduct"
     is_a: NamedThing
     description: A molecule encoded by a gene that has an evolved function
     notes:
@@ -351,34 +343,40 @@ classes:
       - biolink:GeneProduct
 
   TextValue:
+    class_uri: "nmdc:TextValue"
     is_a: AttributeValue
     description: A basic string value
     slots:
       - language
 
   UrlValue:
+    class_uri: "nmdc:UrlValue"
     is_a: AttributeValue
     description: A value that is a string that conforms to URL syntax
 
   TimestampValue:
+    class_uri: "nmdc:TimestampValue"
     is_a: AttributeValue
     description: A value that is a timestamp. The range should be ISO-8601
     notes:
       - "removed the following slots: year, month, day"
 
   IntegerValue:
+    class_uri: 'nmdc:IntegerValue'
     is_a: AttributeValue
     description: A value that is an integer
     slots:
       - has_numeric_value
 
   BooleanValue:
+    class_uri: 'nmdc:BooleanValue'
     is_a: AttributeValue
     description: A value that is a boolean
     slots:
       - has_boolean_value
 
   ControlledTermValue:
+    class_uri: 'nmdc:ControlledTermValue'
     is_a: AttributeValue
     description: A controlled term or class from an ontology
     slots:
@@ -387,6 +385,7 @@ classes:
       - add fields for ontology, branch
 
   ControlledIdentifiedTermValue:
+    class_uri: 'nmdc:ControlledIdentifiedTermValue'
     description: A controlled term or class from an ontology, requiring the presence of term with an id
     notes:
       - To be used for slots like env_broad_scale
@@ -396,6 +395,7 @@ classes:
         required: true
 
   GeolocationValue:
+    class_uri: "nmdc:GeolocationValue"
     is_a: AttributeValue
     description: A normalized value for a location on the earth's surface
     slots:
@@ -463,21 +463,8 @@ slots:
     range: language code
     description: Should use ISO 639-1 code e.g. "en", "fr"
 
-#  attribute:
-#    aliases:
-#      - field
-#      - property
-#      - template field
-#      - key
-#      - characteristic
-#    abstract: true
-#    description: >-
-#      A attribute of a biosample. Examples: depth, habitat, material.
-#      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
-
   has_raw_value:
     description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
-    multivalued: false
     domain: AttributeValue
     range: string
 
@@ -493,7 +480,6 @@ slots:
 
   has_numeric_value:
     description: Links a quantity value to a number
-    multivalued: false
     domain: QuantityValue
     range: float
     mappings:
@@ -513,7 +499,6 @@ slots:
   has_boolean_value:
     description: Links a quantity value to a boolean
     range: boolean
-    multivalued: false
   
   latitude:
     domain: GeolocationValue
@@ -593,36 +578,25 @@ slots:
   execution_resource:
     domain: WorkflowExecution
     range: string
-#    is_a: attribute
     examples:
       - value: NERSC-Cori
 
   url:
-#    is_a: attribute
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
   
   display_order:
-    #    is_a: attribute
     domain: ImageValue
     range: integer
     description: When rendering information, this attribute to specify the order in which the information should be rendered.
 
   git_url:
-#    is_a: attribute
     range: string
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
-
-  file_size_bytes:
-#    is_a: attribute
-    domain: DataObject
-    range: bytes
-    description: Size of the file in bytes
   
   md5_checksum:
-#    is_a: attribute
     range: string
     description: MD5 checksum of file (pre-compressed)
 
@@ -637,7 +611,6 @@ slots:
   
   objective:
     range: string
-    multivalued: false
     description: >-
       The scientific objectives associated with the entity.
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.

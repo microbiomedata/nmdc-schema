@@ -28,6 +28,18 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+  
+  file_size_bytes:
+    domain: DataObject
+    range: bytes
+    description: Size of the file in bytes
+
+  analyte_category:
+    required: true
+    description: >
+      The type of analyte(s) that were measured in the data generation process and analyzed
+        in the Workflow Chain
+    range: AnalyteCategoryEnum
 
   instrument_used:
     range: Instrument
@@ -41,11 +53,11 @@ slots:
     domain: MassSpectrometry
     range: FluidHandling
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
-  acquisition_category: 
+  acquisition_category:
     domain: MassSpectrometry
     range: AcquisitionCategoryEnum
-    description: whether only survey or tandem mass spectra are part of the experiment 
-  acquisition_strategy: 
+    description: whether only survey or tandem mass spectra are part of the experiment
+  acquisition_strategy:
     domain: MassSpectrometry
     range: AcquisitionStrategyEnum
     description: whether spectra are dependent on or independent of any other spectra during the experiment
@@ -60,7 +72,7 @@ slots:
   ionization_source:
     domain: MassSpectrometry
     range: IonizationSourceEnum
-    description: which kind of ionization source is used to introduce analytes into a mass spectrometer 
+    description: which kind of ionization source is used to introduce analytes into a mass spectrometer
   mass_spectrum_collection_mode:
     domain: MassSpectrometry
     range: MassSpectrumCollectionModeEnum
@@ -72,17 +84,25 @@ slots:
   processing_institution:
     domain: PlannedProcess
     range: ProcessingInstitutionEnum
-    description: the organization that processed the sample, generated the data, or processed the data
-  designated_class:
+    description: The organization that processed the sample.
+  type:
+    required: true
     range: uriorcurie
-    designates_type: true
+    slot_uri: rdf:type
+    description: the id of the class that is instantiated by some data
     notes:
-      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
-        of any NMDC-owned elements
-      - this would be required on all instances in a polymorphic Database slot, like planned_process_set
+      - replacing legacy nmdc:type slot
+      - will make examples files clearer
+      - required for polymorphic MongoDB collections
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/1048
       - https://github.com/microbiomedata/nmdc-schema/issues/1233
+      - https://github.com/microbiomedata/nmdc-schema/issues/248
+    examples:
+      - value: nmdc:Biosample
+      - value: nmdc:Study
+    designates_type: true
+
   external_database_identifiers:
     abstract: true
     description: Link to corresponding identifier in external database
@@ -179,21 +199,6 @@ slots:
     description: >-
       a human-readable description of a thing
     slot_uri: dcterms:description
-
-  type:
-    deprecated: >-
-      Due to confusion about what values are used for this slot, it is best not to use this slot.
-      See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
-    range: string
-    description: >-
-      An optional string that specifies the type object. 
-      This is used to allow for searches for different kinds of objects.
-    examples:
-      - value: nmdc:Biosample
-      - value: nmdc:Study
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/1233
 
   title:
     range: string
