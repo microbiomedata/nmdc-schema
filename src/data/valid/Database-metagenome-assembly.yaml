@@ -2,7 +2,8 @@ metagenome_assembly_set:
   - id: nmdc:wfmgas-99-B7Vogx
     type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51277
-    part_of: nmdc:wfch-11-ab
+    part_of:
+      - nmdc:wfch-11-ab
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
@@ -45,10 +46,10 @@ metagenome_assembly_set:
   - id: nmdc:wfmgas-99-CvgXTq
     type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51278
-    part_of: nmdc:wfch-11-ab
+    part_of:
+      - nmdc:wfch-11-ab
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
-    type: nmdc:MetagenomeAssembly
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     has_input:
@@ -89,7 +90,8 @@ metagenome_assembly_set:
   - id: nmdc:wfmgas-99-L9Z34K
     type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51279
-    part_of: nmdc:wfch-11-ab
+    part_of:
+      - nmdc:wfch-11-ab
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
