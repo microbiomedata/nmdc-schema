@@ -313,7 +313,7 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^gold:Ga[0-9]+$"
-    description: identifiers for corresponding analysis project in GOLD
+    description: identifiers for corresponding analysis projects in GOLD
     examples:
       - value: https://bioregistry.io/gold:Ga0526289
 
@@ -324,7 +324,7 @@ slots:
     id_prefixes:
       - jgi.analysis
     pattern: '^jgi.analysis:[0-9]+$'
-    description: identifiers for corresponding analysis project in JGI Portal
+    description: identifiers for corresponding analysis projects in JGI Portal
     examples:
       - value: jgi.analysis:1000000
 

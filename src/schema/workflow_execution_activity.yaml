@@ -57,16 +57,6 @@ classes:
           The value of this slot is a reference to a Data Generation 
           instance that informed the Workflow Chain instance with its
           output data and the metadata of the Data Generation.
-      gold_analysis_project_identifiers:
-        description: >-
-          The identifiers of the GOLD Analysis Project that this Workflow Chain corresponds to
-        range: string
-        multivalued: false
-      jgi_portal_analysis_project_identifiers:
-        description: >-
-          The identifiers of the JGI Portal Analysis Project that this Workflow Chain corresponds to
-        range: string
-        multivalued: false
 
   WorkflowExecution:
     is_a: PlannedProcess

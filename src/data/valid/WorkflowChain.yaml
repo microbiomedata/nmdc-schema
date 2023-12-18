@@ -3,3 +3,7 @@ type: nmdc:WorkflowChain
 name: Workflow Chain for Metagenomics analysis of NEON Biosample
 analyte_category: metagenome
 was_informed_by: nmdc:datgen-11-ab
+gold_analysis_project_identifiers:
+  - gold:Ga0083920
+jgi_portal_analysis_project_identifiers:
+  - jgi.analysis:1023687
