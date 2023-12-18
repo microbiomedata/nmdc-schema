@@ -14,26 +14,26 @@ biosample_set:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
-        type: nmdc:OntologyClass
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
-      type: nmdc:ControlledIdentifiedTermValue
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
-        type: nmdc:OntologyClass
     env_medium:
-      has_raw_value: ENVO:00005792
       type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00005792
       term:
-        id: ENVO:00005792
         type: nmdc:OntologyClass
+        id: ENVO:00005792
     host_taxid:
       has_raw_value: NCBITaxon:9606
       type: nmdc:ControlledIdentifiedTermValue
       term:
-        id: NCBITaxon:9606
         type: nmdc:OntologyClass
+        id: NCBITaxon:9606
     embargoed: true
     collected_from: nmdc:unconstrained_site_identifier_string
     img_identifiers:
@@ -610,9 +610,9 @@ biosample_set:
       type: nmdc:TimestampValue
     lat_lon:
       has_raw_value: 50.586825 6.408977
-      type: nmdc:GeolocationValue
       latitude: 50.586825
       longitude: 6.408977
+      type: nmdc:GeolocationValue
     lbc_thirty:
       has_raw_value: 543 mg/kg
       type: nmdc:QuantityValue
@@ -967,9 +967,12 @@ biosample_set:
       has_raw_value: soil metagenome [NCBItaxon:410658]
       type: nmdc:ControlledIdentifiedTermValue
       term:
+        type: nmdc:OntologyClass
         id: NCBItaxon:410658
         name: soil metagenome
-        type: nmdc:OntologyClass
+    season_temp:
+      has_raw_value: 18 degree Celsius
+      type: nmdc:QuantityValue
     samp_time_out:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -1000,9 +1003,6 @@ biosample_set:
         type: nmdc:TextValue
     season_precpt:
       has_raw_value: 75 millimeters
-      type: nmdc:QuantityValue
-    season_temp:
-      has_raw_value: 18 degree Celsius
       type: nmdc:QuantityValue
     season_use: Spring
     secondary_treatment:
@@ -1081,13 +1081,13 @@ biosample_set:
       has_raw_value: MPI012345
       type: nmdc:TextValue
     space_typ_state:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     specific: operation
     specific_ecosystem: unconstrained text
     specific_humidity:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     sr_dep_env: Lacustine
     sr_geol_age: Archean
     sr_kerog_type: other
@@ -1104,48 +1104,48 @@ biosample_set:
       has_raw_value: 5 micromole per liter
       type: nmdc:QuantityValue
     sulfate_fw:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     sulfide:
       has_raw_value: 2 micromole per liter
       type: nmdc:QuantityValue
     surf_air_cont:
       - dust
     surf_humidity:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     surf_material: adobe
     surf_moisture:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
-    surf_moisture_ph: 123.0
+      has_raw_value: xxx
+    surf_moisture_ph: 123
     surf_temp:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     suspend_part_matter:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     suspend_solids:
       - has_raw_value: xxx
         type: nmdc:TextValue
     tan:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     target_gene:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     target_subfragment:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     temp:
       has_raw_value: 25 degree Celsius
       type: nmdc:QuantityValue
     temp_out:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
-    tertiary_treatment:
       has_raw_value: xxx
+    tertiary_treatment:
       type: nmdc:TextValue
+      has_raw_value: xxx
     tidal_stage: high tide
     tillage:
       - chisel
@@ -1153,8 +1153,8 @@ biosample_set:
       has_raw_value: xxx
       type: nmdc:TextValue
     toluene:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tot_carb:
       has_raw_value: MIxS does not provide an example
       type: nmdc:QuantityValue
@@ -1165,14 +1165,14 @@ biosample_set:
       has_raw_value: 40 microgram per liter
       type: nmdc:QuantityValue
     tot_inorg_nitro:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tot_iron:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tot_nitro:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
     tot_nitro_content:
       has_raw_value: 35 milligrams Nitrogen per kilogram of soil
@@ -1184,69 +1184,69 @@ biosample_set:
       has_raw_value: 2%
       type: nmdc:QuantityValue
     tot_part_carb:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tot_phosp:
       has_raw_value: 0.03 milligram per liter
       type: nmdc:QuantityValue
     tot_phosphate:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tot_sulfur:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     train_line: red
     train_stat_loc: south station above ground
     train_stop_loc: end
     turbidity:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tvdss_of_hcr_press:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     tvdss_of_hcr_temp:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
-    typ_occup_density: 123.0
+      has_raw_value: xxx
+    typ_occup_density: 123
     ventilation_rate:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     ventilation_type:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     vfa:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     vfa_fw:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     vis_media: photos
     viscosity:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     volatile_org_comp:
       - has_raw_value: xxx
         type: nmdc:TextValue
     wall_area:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     wall_const_type: frame construction
     wall_finish_mat: plaster
     wall_height:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     wall_loc: north
     wall_surf_treatment: painted
     wall_texture: knockdown
     wall_thermal_mass:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     wall_water_mold:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     wastewater_type:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     water_cont_soil_meth: MIxS doesn't provide an example
     water_content:
       - MIxS doesn't provide an example 1
@@ -1262,8 +1262,8 @@ biosample_set:
       type: nmdc:QuantityValue
     water_feat_type: fountain
     water_prod_rate:
-      has_raw_value: xxx
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     water_temp_regm:
       - has_raw_value: xxx
         type: nmdc:TextValue
@@ -1272,39 +1272,39 @@ biosample_set:
         type: nmdc:TextValue
     weekday: Monday
     win:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     wind_direction:
-      has_raw_value: xxx
       type: nmdc:TextValue
-    wind_speed:
       has_raw_value: xxx
+    wind_speed:
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     window_cond: damaged
     window_cover: blinds
     window_horiz_pos: left
     window_loc: north
     window_mat: fiberglass
     window_open_freq:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     window_size:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     window_status:
-      has_raw_value: xxx
       type: nmdc:TextValue
+      has_raw_value: xxx
     window_type: single-hung sash window
     window_vert_pos: bottom
     window_water_mold:
-      has_raw_value: xxx
       type: nmdc:TextValue
-    xylene:
       has_raw_value: xxx
+    xylene:
       type: nmdc:QuantityValue
+      has_raw_value: xxx
     zinc:
-      has_raw_value: 2.5 mg/kg
       type: nmdc:QuantityValue
+      has_raw_value: 2.5 mg/kg
     add_date: '2021-03-31'
     community: no_example_from_mixs
     habitat: unconstrained text
@@ -1338,10 +1338,24 @@ biosample_set:
     dna_sample_name: JGI_pond_041618
     dna_seq_project: '1191234'
     dna_seq_project_pi: Jane Johnson
-    dna_seq_project_name: JGI Pond metagenomics
     dna_volume: 25.0
-    proposal_dna: '504000'
     dnase_rna: 'yes'
+    experimental_factor_other: unconstrained text, but presumably expects 'term label
+      [term id]'
+    filter_method: Basix PES, 13-100-106 FisherSci is an example value, but unconstrained
+      text is accepted at this point
+    isotope_exposure: 13C glucose
+    micro_biomass_c_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
+    micro_biomass_n_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
+    microbial_biomass_c: 0.05 ug C/g dry soil
+    microbial_biomass_n: 0.05 ug N/g dry soil
+    non_microb_biomass: insect 0.23 ug; plant 1g
+    non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
+    org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
+    other_treatment: unconstrained text
+    project_id: no example from MIxS
+    dna_seq_project_name: JGI Pond metagenomics
+    proposal_dna: '504000'
     proposal_rna: '504000'
     rna_absorb1: 2.02
     rna_absorb2: 2.02
@@ -1364,22 +1378,8 @@ biosample_set:
     collection_date_inc: '2023-01-29'
     collection_time: 05:42+0000
     collection_time_inc: 13:42+0000
-    experimental_factor_other: unconstrained text, but presumably expects 'term label
-      [term id]'
-    filter_method: Basix PES, 13-100-106 FisherSci is an example value, but unconstrained
-      text is accepted at this point
-    isotope_exposure: 13C glucose
-    micro_biomass_c_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
-    micro_biomass_n_meth: https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12
-    microbial_biomass_c: 0.05 ug C/g dry soil
-    microbial_biomass_n: 0.05 ug N/g dry soil
-    non_microb_biomass: insect 0.23 ug; plant 1g
-    non_microb_biomass_method: https://doi.org/10.1038/s41467-021-26181-3
-    org_nitro_method: https://doi.org/10.1016/0038-0717(85)90144-0
-    other_treatment: unconstrained text
     start_date_inc: '2023-01-27'
     start_time_inc: 13:42+0000
-    project_id: no example from MIxS
     replicate_number: '1'
     sample_shipped: 15 g
     sample_type: water_extract_soil
