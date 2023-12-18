@@ -15,7 +15,9 @@ ncbi_project_name: Thawing permafrost microbial communities from the Arctic, stu
 insdc_bioproject_identifiers:
   - bioproject:PRJNA1029144
 part_of:
-  - nmdc:sty-00-555xxx
+  - nmdc:datgen-99-777xxx
 processing_institution: JGI
 type: nmdc:DataGeneration
+associated_study:
+  - nmdc:sty-00-555xxx
 
