@@ -817,8 +817,6 @@ classes:
       - nitrite_nitrogen
       - nitro
       - non_min_nutr_regm
-      #- nucl_acid_amp
-      #- nucl_acid_ext
       - nucleic acid sequence source field
       - number_pets
       - number_plants
@@ -1799,9 +1797,6 @@ classes:
       - insdc_experiment_identifiers
       - mod_date
       - ncbi_project_name
-      #- nucl_acid_amp
-      #- nucl_acid_ext
-      #      - omics_type
       - part_of
       - principal_investigator
       - processing_institution
