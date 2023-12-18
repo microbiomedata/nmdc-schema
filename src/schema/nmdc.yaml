@@ -1860,6 +1860,7 @@ classes:
       #- nucl_acid_amp
       - add_date
       - analyte_category
+      - associated_study
       - gold_sequencing_project_identifiers
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
@@ -1888,8 +1889,8 @@ classes:
         comments:
           - pattern should allow typecode for Biosample and ProcessedSample
       part_of:
-        range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+        range: DataGeneration
+        pattern: "^nmdc:datgen-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
       has_output:
         range: DataObject
         pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
@@ -2782,6 +2783,12 @@ enums:
       decomposition:
 
 slots:
+
+  associated_study:
+    description: The study associated with a resource.
+    range: Study
+    multivalued: true
+    pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
 
   data_category:
     domain: DataObject
