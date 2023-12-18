@@ -200,7 +200,6 @@ classes:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecution
     slots:
-      - type
     in_subset:
       - workflow subset
     slot_usage:
@@ -213,7 +212,6 @@ classes:
   MetatranscriptomeAnnotation:
     is_a: WorkflowExecution
     slots:
-      - type
     in_subset:
       - workflow subset
     slot_usage:
