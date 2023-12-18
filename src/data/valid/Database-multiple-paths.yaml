@@ -63,5 +63,5 @@ data_generation_set:
       - nmdc:datgen-00-555xxx
     processing_institution: JGI
     type: nmdc:DataGeneration
-    associated_study: 
+    associated_studies: 
       - nmdc:sty-00-555xxx

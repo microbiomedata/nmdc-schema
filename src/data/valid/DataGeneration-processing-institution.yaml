@@ -16,5 +16,5 @@ part_of:
   - nmdc:datgen-21-999xxx
 processing_institution: UCD_Genome_Center
 type: nmdc:DataGeneration
-associated_study: 
+associated_studies: 
   - nmdc:sty-00-555xxx

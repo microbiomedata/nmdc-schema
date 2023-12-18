@@ -27,5 +27,5 @@ ordered_mobile_phases:
       has_unit: mL
 part_of: 
   - nmdc:datgen-99-777xxx
-associated_study:
+associated_studies:
   - nmdc:sty-88-777xxx

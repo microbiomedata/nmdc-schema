@@ -1860,7 +1860,7 @@ classes:
       #- nucl_acid_amp
       - add_date
       - analyte_category
-      - associated_study
+      - associated_studies
       - gold_sequencing_project_identifiers
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
@@ -2784,7 +2784,7 @@ enums:
 
 slots:
 
-  associated_study:
+  associated_studies:
     description: The study associated with a resource.
     range: Study
     multivalued: true

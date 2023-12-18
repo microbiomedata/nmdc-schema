@@ -18,5 +18,5 @@ data_generation_set:
     processing_institution: JGI
     type: nmdc:DataGeneration
     instrument_name: THIS SLOT IS NOT AVAILABLE FOR THIS CLAS ANYMORE
-    associated_study:
+    associated_studies:
       - nmdc:sty-00-555xxx

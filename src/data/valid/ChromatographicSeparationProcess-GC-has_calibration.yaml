@@ -39,5 +39,5 @@ chromatographic_category: gas_chromatography
 has_calibration: nmdc:obj-asdfasd-asdfasdf
 part_of:
   - nmdc:datgen-77-666xxx
-associated_study:
+associated_studies:
   - nmdc:sty-44-222xxx

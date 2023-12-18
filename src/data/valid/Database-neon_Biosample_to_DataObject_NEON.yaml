@@ -131,7 +131,7 @@ data_generation_set:
       - nmdc:datgen-11-34xj1150
     processing_institution: Battelle
     type: nmdc:DataGeneration
-    associated_study: 
+    associated_studies: 
       - nmdc:sty-11-34xj1150
 workflow_chain_set:
   - id: nmdc:wfch-11-ab

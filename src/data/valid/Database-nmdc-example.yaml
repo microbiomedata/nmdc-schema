@@ -89,7 +89,7 @@ data_generation_set:
       - nmdc:datgen-00-31415
     processing_institution: JGI
     type: nmdc:DataGeneration
-    associated_study:
+    associated_studies:
       - nmdc:sty-00-31415
   - id: nmdc:datgen-99-dk9vgI
     analyte_category: metagenome
@@ -109,7 +109,7 @@ data_generation_set:
       - nmdc:datgen-00-8675309
     processing_institution: JGI
     type: nmdc:DataGeneration
-    associated_study: 
+    associated_studies: 
       - nmdc:sty-00-8675309
   - id: nmdc:datgen-99-MVW1FV
     analyte_category: metagenome
@@ -131,7 +131,7 @@ data_generation_set:
       - nmdc:datgen-00-avacado
     processing_institution: JGI
     type: nmdc:DataGeneration
-    associated_study:
+    associated_studies:
       - nmdc:sty-00-avacado
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
