@@ -148,11 +148,6 @@ classes:
     description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
     comments: For example data generated from an Illumina or Pacific Biosciences instrument.
-    slots:
-      - gold_sequencing_project_identifiers
-      - seq_meth
-      - ncbi_project_name
-      - insdc_bioproject_identifiers
     slot_usage:
       id:
         structured_pattern:
@@ -452,15 +447,14 @@ classes:
       "An object that primarily consists of symbols that represent information.   Files,
       records, and omics data are examples of data objects."
     slots:
-      - data_category
-      - file_size_bytes
-      - md5_checksum
-      - data_object_type
       - compression_type
-      - was_generated_by
-      - url
-      # - type
+      - data_category
+      - data_object_type
+      - file_size_bytes
       - insdc_experiment_identifiers
+      - md5_checksum
+      - url
+      - was_generated_by
     slot_usage:
       name:
         required: true
@@ -548,21 +542,15 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-      - host_disease_stat
-      - neon_biosample_identifiers
-      - host_taxid
-      - embargoed
-      - collected_from
-      # - type
-      - img_identifiers
-      - samp_name
       - biosample_categories
-      # - type
+      - collected_from
+      - embargoed
+      - host_disease_stat
+      - host_taxid
+      - img_identifiers
+      - neon_biosample_identifiers
       - part_of
-
-      ## Identifiers
-      - id
-      - alternative_identifiers
+      - samp_name
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
@@ -1530,11 +1518,7 @@ classes:
       - neon_study_identifiers
       - jgi_portal_study_identifiers
 
-      ## Identifiers
-      - id
-
       ## Alternative IDs
-      - alternative_identifiers
       - gnps_task_identifiers
 
       ## Related IDs
@@ -1543,7 +1527,6 @@ classes:
       - alternative_descriptions
       - alternative_names
       - alternative_titles
-      - description
       - associated_dois
       - ecosystem
       - ecosystem_category
@@ -1552,19 +1535,18 @@ classes:
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
-      - study_category
       - insdc_bioproject_identifiers
       - mgnify_project_identifiers
       - notes
       - objective
       - part_of
       - principal_investigator
-      - related_identifiers
       - protocol_link
+      - related_identifiers
       - specific_ecosystem
+      - study_category
       - study_image
       - title
-      # - type
       - websites
     slot_usage:
       id:
@@ -1874,31 +1856,25 @@ classes:
         An experiment contains information about a sequencing experiment including
         library and instrument details.
     slots:
-      - analyte_category
+      #- chimera_check # commenting this out because the current dynamic MIxS generation only interrogates Biosample and the retired OmicsProcessing
+      #- nucl_acid_amp
       - add_date
-      #      - chimera_check # commenting this out because the current dynamic MIxS generation only interrogates Biosample and the retired OmicsProcessing
+      - analyte_category
       - gold_sequencing_project_identifiers
-      #      - has_input
-      #      - has_output
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
       - mod_date
       - ncbi_project_name
-      #- nucl_acid_amp
       - nucl_acid_ext
-      #      - omics_type
       - part_of
       - pcr_cond
       - pcr_primers
       - principal_investigator
-      - processing_institution
       - samp_vol_we_dna_ext
       - seq_meth
       - seq_quality_check
       - target_gene
       - target_subfragment
-      # - type
-    #      - instrument_used
 
     slot_usage:
       id:
