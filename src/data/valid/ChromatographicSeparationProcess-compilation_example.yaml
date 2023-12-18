@@ -25,7 +25,3 @@ ordered_mobile_phases:
       type: nmdc:QuantityValue
       has_numeric_value: 500
       has_unit: mL
-part_of: 
-  - nmdc:datgen-99-777xxx
-associated_studies:
-  - nmdc:sty-88-777xxx
