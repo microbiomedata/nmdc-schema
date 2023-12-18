@@ -2812,12 +2812,6 @@ slots:
     range: DataCategoryEnum
     description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
 
-  analyte_category:
-    required: true
-    description: >
-      The type of analyte(s) that were measured in the data generation process and analyzed
-        in the Workflow Chain
-    range: AnalyteCategoryEnum
   model:
     range: InstrumentModelEnum
   vendor:
@@ -2918,7 +2912,6 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-    #    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2935,7 +2928,6 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2952,7 +2944,6 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2971,7 +2962,6 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2988,7 +2978,6 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -3009,7 +2998,6 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-    #    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -3028,7 +3016,6 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   env_package:
@@ -3044,7 +3031,6 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-    #    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -3138,7 +3124,7 @@ slots:
     required: true
 
   object_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     inlined_as_list: true
     mixin: true
     multivalued: true
@@ -3147,7 +3133,7 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   planned_process_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins:
       - object_set
     range: PlannedProcess
@@ -3155,157 +3141,157 @@ slots:
       This property links a database object to the set of planned processes
       within it.
   biosample_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: CollectingBiosamplesFromSite
   data_object_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
   genome_feature_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
   functional_annotation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
   workflow_execution_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
   mags_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MagsAnalysis
     description:
       This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAnnotation
     description:
       This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAssembly
     description:
       This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeSequencing
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
   read_qc_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadQcAnalysis
     description:
       This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   data_generation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataGeneration
     description:
       This property links a database object to the set of omics processings
       within it.
   workflow_chain_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: WorkflowChain
     description:
       This property links a database object to the set of workflow chains
       within it.
   pooling_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Pooling
   processed_sample_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
   extraction_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Extraction
     description: This property links a database object to the set of extractions within it.
   library_preparation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     aliases:
       - library_construction_set
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
   instrument_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
@@ -3337,7 +3323,6 @@ slots:
 
   ## GOLD PATHS
   gold_path_field:
-    #    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -3407,7 +3392,6 @@ slots:
   principal_investigator:
     aliases:
       - PI
-    #    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 

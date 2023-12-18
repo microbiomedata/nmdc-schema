@@ -28,6 +28,18 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+  
+  file_size_bytes:
+    domain: DataObject
+    range: bytes
+    description: Size of the file in bytes
+
+  analyte_category:
+    required: true
+    description: >
+      The type of analyte(s) that were measured in the data generation process and analyzed
+        in the Workflow Chain
+    range: AnalyteCategoryEnum
 
   instrument_used:
     range: Instrument

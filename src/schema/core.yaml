@@ -174,11 +174,6 @@ classes:
       - protocol_link
       - start_date
       - end_date
-    slot_usage:
-      type:
-        comments:
-          - required on all instances in a polymorphic Database slot like planned_process_set
-  #        required: true
 
   OntologyClass:
     class_uri: "nmdc:OntologyClass"
@@ -202,9 +197,6 @@ classes:
       - has_raw_value
       - was_generated_by
       - type
-  #    slot_usage:
-  #      type:
-  #        description: An optional string that specified the type of object.
 
   QuantityValue:
     class_uri: "nmdc:QuantityValue"
@@ -622,36 +614,25 @@ slots:
   execution_resource:
     domain: WorkflowExecution
     range: string
-    #    is_a: attribute
     examples:
       - value: NERSC-Cori
 
   url:
-    #    is_a: attribute
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
   
   display_order:
-    #    is_a: attribute
     domain: ImageValue
     range: integer
     description: When rendering information, this attribute to specify the order in which the information should be rendered.
 
   git_url:
-    #    is_a: attribute
     range: string
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
-
-  file_size_bytes:
-    #    is_a: attribute
-    domain: DataObject
-    range: bytes
-    description: Size of the file in bytes
   
   md5_checksum:
-    #    is_a: attribute
     range: string
     description: MD5 checksum of file (pre-compressed)
 
