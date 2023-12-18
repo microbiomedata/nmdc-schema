@@ -1,3 +1,5 @@
 functional_annotation_set:
   - has_function: KEGG_PATHWAY:XOXOXOXO
+    type: nmdc:FunctionalAnnotation
   - has_function: KEGG_PATHWAY:iIiIiIiI
+    type: nmdc:FunctionalAnnotation

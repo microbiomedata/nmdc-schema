@@ -1,4 +1,5 @@
 id: nmdc:datgen-99-zUCd5N
+type: nmdc:DataGeneration
 analyte_category: metagenome
 alternative_identifiers:
   - gold:Gp0108335
@@ -15,4 +16,3 @@ ncbi_project_name: Thawing permafrost microbial communities from the Arctic, stu
 part_of:
   - nmdc:sty-00-555xxx
 processing_institution: JGI
-# type: nmdc:OmicsProcessing

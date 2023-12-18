@@ -1,5 +1,6 @@
 data_generation_set:
   - id: nmdc:datgen-99-zUCd5N
+    type: nmdc:DataGeneration
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
@@ -16,7 +17,6 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
-    # type: nmdc:OmicsProcessing
   - id: nmdc:datgen-99-gKlQlF
     analyte_category: metagenome
     alternative_identifiers:
@@ -34,8 +34,8 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
-    # type: nmdc:OmicsProcessing
   - id: nmdc:datgen-99-5kgIJR
+    type: nmdc:DataGeneration
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108341
@@ -52,5 +52,4 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
-    # type: nmdc:OmicsProcessing
     omics_type: THIS SLOT IS NOT AVAILABLE FOR THIS CLAS ANYMORE

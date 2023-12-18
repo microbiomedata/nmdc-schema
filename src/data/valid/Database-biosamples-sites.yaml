@@ -1,5 +1,6 @@
 biosample_set:
   - id: nmdc:bsm-99-J9FcnC
+    type: nmdc:Biosample
     name: Root microbial communities from poplar common garden site in Clatskanie, Oregon,
       USA - BESC-13-CL1_35_33 endosphere
     description: Root microbial communities from poplar common garden site in Clatskanie,
@@ -10,18 +11,25 @@ biosample_set:
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-BdlWdQ
+    type: nmdc:Biosample
     name: Rhizosphere soil microbial communities from poplar common garden site in Clatskanie,
       Oregon, USA - BESC-13-CL1_35_33
     description: Rhizosphere soil microbial communities from poplar common garden site
@@ -32,18 +40,25 @@ biosample_set:
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-vn74Wq
+    type: nmdc:Biosample
     name: Bulk soil microbial communities from poplar common garden site in Clatskanie,
       Oregon, USA - BESC-13-CL1_35_33
     description: Bulk soil microbial communities from poplar common garden site in Clatskanie,
@@ -54,18 +69,25 @@ biosample_set:
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-P8FdpS
+    type: nmdc:Biosample
     name: Root microbial communities from poplar common garden site in Clatskanie, Oregon,
       USA - BESC-13-CL2_39_29 endosphere
     description: Root microbial communities from poplar common garden site in Clatskanie,
@@ -76,18 +98,25 @@ biosample_set:
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-ugBwz3
+    type: nmdc:Biosample
     name: Rhizosphere soil microbial communities from poplar common garden site in Clatskanie,
       Oregon, USA - BESC-13-CL2_39_29
     description: Rhizosphere soil microbial communities from poplar common garden site
@@ -98,18 +127,25 @@ biosample_set:
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-tN5lxM
+    type: nmdc:Biosample
     name: Bulk soil microbial communities from poplar common garden site in Clatskanie,
       Oregon, USA - BESC-13-CL2_39_29
     description: Bulk soil microbial communities from poplar common garden site in Clatskanie,
@@ -120,26 +156,35 @@ biosample_set:
     part_of:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
 field_research_site_set:
   - id: nmdc:frsite-99-SPreao
     name: BESC-13-CL1_35_33
     description: Bioscales tree BESC-13-CL1_35_33
+    type: nmdc:FieldResearchSite
   - id: nmdc:frsite-99-h2mYFG
     name: BESC-13-CL2_39_29
     description: Bioscales tree BESC-13-CL2_39_29
+    type: nmdc:FieldResearchSite
 collecting_biosamples_from_site_set:
   - id: nmdc:clsite-99-Cq00d1
+    type: nmdc:CollectingBiosamplesFromSite
     name: Collection of biosamples from BESC-13-CL1_35_33
     has_input:
       - nmdc:frsite-99-SPreao
@@ -148,6 +193,7 @@ collecting_biosamples_from_site_set:
       - nmdc:bsm-99-BdlWdQ
       - nmdc:bsm-99-vn74Wq
   - id: nmdc:clsite-99-yzmLBN
+    type: nmdc:CollectingBiosamplesFromSite
     name: Collection of biosamples from BESC-13-CL2_39_29
     has_input:
       - nmdc:frsite-99-h2mYFG

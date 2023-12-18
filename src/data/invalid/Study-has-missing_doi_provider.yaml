@@ -1,4 +1,5 @@
 id: nmdc:sty-11-ab
+type: nmdc:Study
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 study_category: research_study
@@ -20,6 +21,7 @@ ecosystem_subtype: unconstrained text
 specific_ecosystem: unconstrained text
 principal_investigator:
   has_raw_value: Craig Venter
+  type: nmdc:PersonValue
   was_generated_by: nmdc:any_string_1
   orcid: ORCID:0000-0002-7086-765X
   profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
@@ -48,10 +50,11 @@ websites:
 associated_dois:
   - doi_value: doi:10.25585/1488209
     doi_category: dataset_doi
-### type: any string # not required yet but will require a class name value like nmdc:Study
-#type: any string
+    type: nmdc:Doi
 protocol_link:
   - name: any string 1
+    type: nmdc:Protocol
   - name: any string 2
+    type: nmdc:Protocol
 funding_sources:
   - We had discussed limiting the length of funding sources to 150 characters. This is an example of a funding source with a very long description. Its very very very very very very very very very long.

@@ -1,10 +1,12 @@
 id: nmdc:pex-99-18sD2
-has_input: 
+type: nmdc:ProtocolExecution
+has_input:
   - nmdc:bsm-6
 has_process_parts:
   - nmdc:extrp-71-r2pk
   - nmdc:filtpr-22-32G2BS
 protocol_execution_category: organic_matter_extraction
-protocol_link: 
+protocol_link:
+  type: nmdc:Protocol
   url: https://www.protocols.io/view/water-extractable-organic-matter-weom-ewov1o4oylr2/v1
   name: Water Extractable Organic Matter (WEOM)

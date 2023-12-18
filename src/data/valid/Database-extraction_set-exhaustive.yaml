@@ -3,6 +3,7 @@
 #extraction http://purl.obolibrary.org/obo/OBI_0302884
 extraction_set:
   - id: nmdc:extrp-99-abcdef
+    type: nmdc:Extraction
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
     #enforce analytical sample typecode?
@@ -23,10 +24,12 @@ extraction_set:
     end_date: "2019-11-08"
     #range for input_mass should be QuantityValue for more generic modeling. ie soil will be in gram, water in gram/ml
     input_mass: #http://purl.obolibrary.org/obo/MS_1000004
+      type: nmdc:QuantityValue
       has_numeric_value: 0.25
       has_unit: gram #http://purl.obolibrary.org/obo/UO_0000021
     #based on qaqc criteria for a given process does the output 'Pass' or 'Failed' https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fdata_3914&lang=en&viewMode=All&siblings=false
     quality_control_report:
+      type: nmdc:QualityControlReport
       #status range should be new status_enum with possible values of 'Pass' or Failed'
       status: pass
     #leaving as extraction_method to make the model generic, other option considered was 'Nucleic Acid Extraction Method' http://purl.obolibrary.org/obo/NCIT_C177560

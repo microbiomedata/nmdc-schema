@@ -1026,7 +1026,7 @@ tvdss_of_hcr_press:
 tvdss_of_hcr_temp:
   has_raw_value: xxx
 typ_occup_density: 123
-# type: nmdc:Biosample. change this to require a class name or an enumeration
+type: nmdc:Biosample
 ventilation_rate:
   has_raw_value: xxx
 ventilation_type:
