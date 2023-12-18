@@ -1,3 +1,4 @@
+type: nmdc:Biosample
 part_of:
   - nmdc:sty-00-abc123
 env_broad_scale:

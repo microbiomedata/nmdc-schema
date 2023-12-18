@@ -15,4 +15,4 @@ ncbi_project_name: Thawing permafrost microbial communities from the Arctic, stu
 part_of:
   - nmdc:sty-00-555xxx
 processing_institution: UCD_Genome_Center
-# type: nmdc:OmicsProcessing
+type: nmdc:DataGeneration

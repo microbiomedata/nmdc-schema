@@ -3,6 +3,7 @@
 #extraction http://purl.obolibrary.org/obo/OBI_0302884
 extraction_set:
   - id: nmdc:extrp-99-abcdef
+    type: nmdc:Extraction
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
 
@@ -32,6 +33,7 @@ extraction_set:
     end_date: '2019-11-08'
 
     input_mass: #http://purl.obolibrary.org/obo/MS_1000004
+      type: nmdc:QuantityValue
       has_numeric_value: 0.25
       has_unit: gram #http://purl.obolibrary.org/obo/UO_0000021
 

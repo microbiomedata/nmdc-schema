@@ -48,7 +48,7 @@ websites:
 associated_dois:
   - doi_value: doi:10.25585/1488209
     doi_category: dataset_doi
-### type: any string # not required yet but will require a class name value like nmdc:Study
+##type: any string # not required yet but will require a class name value like nmdc:Study
 #type: any string
 protocol_link:
   - name: any string 1

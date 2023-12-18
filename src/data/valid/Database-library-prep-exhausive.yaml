@@ -2,6 +2,7 @@
 
 library_preparation_set:
   - id: nmdc:libprp-99-xxx2
+    type: nmdc:LibraryPreparation
     name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
     description: DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2
     has_input:
@@ -27,6 +28,7 @@ library_preparation_set:
 
   #rna library not strictly required for NEON but rna_seq_type needed for MetatranscriptomeAnnotation
   - id: nmdc:libprp-99-xxx1
+    type: nmdc:LibraryPreparation
     name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
     description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX
     has_input:

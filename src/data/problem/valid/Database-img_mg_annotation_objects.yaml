@@ -29,7 +29,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-11-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-bzS2v1
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -45,7 +45,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-11-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-sXZVjh
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -61,7 +61,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-12-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-3fBeJp
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -77,7 +77,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-13-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-F6E55A
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -93,7 +93,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-13-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-Zrij2v
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -109,7 +109,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-14-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-swlzri
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -125,7 +125,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-14-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-k15Id6
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -141,7 +141,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-15-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-phL8rY
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -157,7 +157,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-16-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-rIKnPj
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -173,7 +173,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-17-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-NHVre9
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -189,7 +189,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-18-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-n84Tew
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -205,7 +205,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-19-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-6IBBqL
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -221,7 +221,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-20-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-sCL9p6
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -237,7 +237,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-21-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-xtaqhx
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -253,7 +253,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-22-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-cnpEPb
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -269,7 +269,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-23-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-bFWXyt
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -285,7 +285,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-24-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-H9y4oj
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -301,7 +301,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-25-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-exEkWs
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -317,7 +317,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-26-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-GzdjHY
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -333,7 +333,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-27-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-4V6suA
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -349,7 +349,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-28-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-JoTrst
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -365,7 +365,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-29-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-WMxKQm
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -381,7 +381,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-30-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-KNca8B
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -397,7 +397,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-31-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-dNish1
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -413,7 +413,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-32-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-U1umHi
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -429,7 +429,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-33-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-Teg8kK
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -445,7 +445,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-34-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-qB4hXN
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -461,7 +461,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-35-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-72JIpi
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -477,7 +477,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-36-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-mbF4y1
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -493,7 +493,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-37-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-ylyhlC
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -509,7 +509,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-38-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-56GrFn
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -525,7 +525,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-39-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-i3NwIC
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -541,7 +541,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-40-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-GjHwbW
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -557,7 +557,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-41-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-wx4FsZ
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -573,7 +573,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-42-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-av43Nc
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -589,7 +589,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-43-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-UbQ1cX
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -605,7 +605,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-44-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-43gCPe
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -621,7 +621,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-45-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-226YUT
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -637,7 +637,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-46-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-QxzAEB
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -653,7 +653,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-47-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-JeORrG
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -669,7 +669,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-48-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-UKUKLq
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -685,7 +685,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-49-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-QhDga7
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -701,7 +701,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-50-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-i0BJTw
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -717,7 +717,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-51-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-CDkOOW
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -733,7 +733,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-52-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-DNvmyp
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -749,7 +749,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-53-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-Oxm5LI
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -765,7 +765,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-54-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-RiJ5rZ
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -781,7 +781,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-55-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-3Xgfcz
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -797,7 +797,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-56-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-0gilcH
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -813,7 +813,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-57-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-3TAfCa
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -829,7 +829,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-59-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-Uv1aai
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -845,7 +845,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-60-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-XcNXLE
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -861,7 +861,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-61-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-RGaB6W
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -877,7 +877,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-62-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-z7uO9d
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -893,7 +893,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-63-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-jz3us6
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -909,7 +909,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-64-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-a9m4gL
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -925,7 +925,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-64-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-yo16Ew
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -941,7 +941,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-65-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-vhVDYB
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -957,7 +957,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-66-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-nlSyxA
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -973,7 +973,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-67-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-eo5wHj
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -989,7 +989,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-68-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-ecPEJ8
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1005,7 +1005,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-69-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-PTHtcy
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1021,7 +1021,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-70-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-jwN3cK
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1038,7 +1038,7 @@ workflow_execution_set:
 #    execution_resource: NERSC-Cori
 #
 #    part_of: nmdc:wfch-71-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-Cgtoyl
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1054,7 +1054,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-72-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-EfFMDW
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1070,7 +1070,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-72-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-0AwQGw
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1086,7 +1086,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-73-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-CroPRX
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1102,7 +1102,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-74-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-HHkLNr
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1118,7 +1118,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-75-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-VCC4zi
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1134,7 +1134,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-76-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-w74cHl
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1150,7 +1150,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-77-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-bSPq9H
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1166,7 +1166,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-78-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-0UgR6E
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1182,7 +1182,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-79-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-fLwkIr
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1198,7 +1198,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-80-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-aIy9XQ
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1214,7 +1214,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-80-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-oWCV5s
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1230,7 +1230,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-81-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-lEBJxj
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1246,7 +1246,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-82-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-qlz9HX
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1262,7 +1262,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-83-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-2Qr8Pe
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1278,7 +1278,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-84-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-vlNUXC
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1294,7 +1294,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-85-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-T4zSdA
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1310,7 +1310,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-86-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-fPJH8j
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1326,7 +1326,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-87-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-vvPofB
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1342,7 +1342,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-88-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-ulEnFz
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1358,7 +1358,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-89-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-ltxbNs
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1374,7 +1374,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-90-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-eWTU43
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1390,7 +1390,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-91-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-YDynsC
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1406,7 +1406,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-92-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-tMBif9
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1422,7 +1422,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-93-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-XjMQse
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1438,7 +1438,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-94-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-henu5l
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1454,7 +1454,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-95-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-uw8bXm
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1470,7 +1470,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-96-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-NPUIdn
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1486,7 +1486,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-97-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-2Kolge
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1502,7 +1502,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-98-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-KIP9Ra
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1518,7 +1518,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-99-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-v30BKk
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1534,7 +1534,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-100-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-ZIuifm
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1550,7 +1550,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-101-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-GGDI6V
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1566,7 +1566,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-102-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-bKBOWR
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1582,7 +1582,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-103-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-0oSxaI
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1598,7 +1598,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-104-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-zwlhtX
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1614,7 +1614,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-105-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-xSa1ZG
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1630,7 +1630,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-106-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-nnWqhU
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1646,7 +1646,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-107-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-nIFZZ2
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1662,7 +1662,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-108-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-yOE0jd
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1678,7 +1678,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-109-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-8LpUgc
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1694,7 +1694,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-110-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-vJ2Mxf
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1710,7 +1710,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-111-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-IIrhrj
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1726,7 +1726,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-112-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-eZmaaQ
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1742,7 +1742,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-112-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-ASXJEJ
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1758,7 +1758,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-113-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-J1EP4o
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1774,7 +1774,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-113-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-fkLvFW
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1790,7 +1790,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-114-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-N8UcIX
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1806,7 +1806,7 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-115-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-vqx3jd
 #    ended_at_time: '2021-01-12T00:00:00+00:00'
 #  - has_input:
@@ -1822,6 +1822,6 @@ workflow_execution_set:
 #    started_at_time: '2021-01-12T00:00:00+00:00'
 #    execution_resource: NERSC-Cori
 #    part_of: nmdc:wfch-116-ab
-#    type: nmdc:MetagenomeAnnotation
+type: nmdc:MetagenomeAnnotation
 #    id: nmdc:wf-99-HV79Ao
 #    ended_at_time: '2021-01-12T00:00:00+00:00'

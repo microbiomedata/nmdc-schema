@@ -8,13 +8,17 @@ library_preparation_set:
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     library_type: DNA
+    type: nmdc:LibraryPreparation
 processed_sample_set:
   - id: nmdc:procsm-99-xyz1
     name: first processed sample set
+    type: nmdc:ProcessedSample
   - id: nmdc:procsm-99-xyz2
     name: first DNA extract
+    type: nmdc:ProcessedSample
   - id: nmdc:procsm-99-xyz3
     name: first library
+    type: nmdc:ProcessedSample
 extraction_set:
   - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
@@ -25,51 +29,73 @@ extraction_set:
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     extraction_target: DNA
+    type: nmdc:Extraction
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
+    type: nmdc:Biosample
     part_of:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef2
+    type: nmdc:Biosample
     part_of:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef3
+    type: nmdc:Biosample
     part_of:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
 data_object_set:
   - id: nmdc:dobj-12-jdhk9537
@@ -77,19 +103,19 @@ data_object_set:
     description: Test R1 data
     data_object_type: Metagenome Raw Read 1
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
-    # type: nmdc:DataObject
+    type: nmdc:DataObject
   - id: nmdc:dobj-12-yx0tfp52
     name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
     description: Test R2 data
     data_object_type: Metagenome Raw Read 2
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
-    # type: nmdc:DataObject
+    type: nmdc:DataObject
   - id: nmdc:dobj-12-71q7wv80
     name: 1472_51293.filtered.fastq.gz
     description: Test filtered data for NEON
     data_object_type: Filtered Sequencing Reads
     url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
-    # type: nmdc:DataObject
+    type: nmdc:DataObject
 data_generation_set:
   - id: nmdc:datgen-11-s9xj2r24
     analyte_category: metagenome
@@ -104,6 +130,7 @@ data_generation_set:
     part_of:
       - nmdc:sty-11-34xj1150
     processing_institution: Battelle
+    type: nmdc:DataGeneration
 workflow_chain_set:
   - id: nmdc:wfch-11-ab
     analyte_category: metagenome
@@ -123,10 +150,11 @@ read_qc_analysis_set:
     has_output:
       - nmdc:dobj-12-71q7wv80
       - nmdc:dobj-12-y236qp68
-    #    type: nmdc:ReadQCAnalysisActivity
+    type: nmdc:ReadQcAnalysis
     version: b1.0.7
 pooling_set:
   - id: nmdc:poolp-99-abcdef
+    type: nmdc:Pooling
     name: first pooling process
     description: This is the first pooling process that has ever occurred on earth
     has_input:

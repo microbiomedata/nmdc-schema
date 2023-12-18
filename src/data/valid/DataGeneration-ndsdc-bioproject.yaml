@@ -17,4 +17,5 @@ insdc_bioproject_identifiers:
 part_of:
   - nmdc:sty-00-555xxx
 processing_institution: JGI
-# type: nmdc:OmicsProcessing
+type: nmdc:DataGeneration
+

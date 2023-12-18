@@ -509,7 +509,6 @@ slots:
 
   has_raw_value:
     description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
-    multivalued: false
     domain: AttributeValue
     range: string
 
@@ -525,7 +524,6 @@ slots:
 
   has_numeric_value:
     description: Links a quantity value to a number
-    multivalued: false
     domain: QuantityValue
     range: float
     mappings:
@@ -545,7 +543,6 @@ slots:
   has_boolean_value:
     description: Links a quantity value to a boolean
     range: boolean
-    multivalued: false
   
   latitude:
     domain: GeolocationValue
@@ -669,7 +666,6 @@ slots:
   
   objective:
     range: string
-    multivalued: false
     description: >-
       The scientific objectives associated with the entity.
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.
