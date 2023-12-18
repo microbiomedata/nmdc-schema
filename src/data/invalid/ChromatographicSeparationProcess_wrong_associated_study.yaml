@@ -21,11 +21,11 @@ ordered_mobile_phases:
       has_unit: mL
     has_solution_components:
       - compound: hydrochloric_acid
+        type: nmdc:SolutionComponent
         concentration:
           type: nmdc:QuantityValue
           has_numeric_value: 10
           has_unit: mM
-        type: nmdc:SolutionComponent
     type: nmdc:Solution
   - volume:
       type: nmdc:QuantityValue
@@ -38,6 +38,6 @@ ordered_mobile_phases:
 chromatographic_category: gas_chromatography
 has_calibration: nmdc:obj-asdfasd-asdfasdf
 part_of:
-  - nmdc:datgen-77-666xxx
+  - nmdc-datgen-88-555xxx
 associated_study:
-  - nmdc:sty-44-222xxx
+  - nmdc:datgen-666-333xxx
