@@ -227,7 +227,6 @@ classes:
       - extraction_target
       - input_mass
       - volume
-      - quality_control_report
     slot_usage:
       has_input:
         required: true
@@ -2413,10 +2412,6 @@ slots:
   extraction_method:
     domain: Extraction
     range: ExtractionTargetEnum
-
-  quality_control_report:
-    domain: PlannedProcess
-    range: QualityControlReport
 
   pcr_cycles:
     range: integer
