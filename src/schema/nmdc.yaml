@@ -145,8 +145,8 @@ subsets:
 classes:
   FailureCategorization:
     slots:
-      - failure_what
-      - failure_where
+      - qc_failure_what
+      - qc_failure_where
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
