@@ -60,17 +60,17 @@ classes:
           slot_conditions:
             has_output:
               required: true
-      - title: qc_status_pass_null_has_output_required
-        description: >-
-          If qc_status is not specified, then the has_output slot is required.
-        preconditions:
-          slot_conditions:
-            qc_status:
-              value_presence: ABSENT
-        postconditions:
-          slot_conditions:
-            has_output:
-              required: true
+  #    - title: qc_status_pass_null_has_output_required
+  #      description: >-
+   #       If qc_status is not specified, then the has_output slot is required.
+   #     preconditions:
+   #       slot_conditions:
+   #         qc_status:
+    #          value_presence: ABSENT
+    #    postconditions:
+     #     slot_conditions:
+     #       has_output:
+     #         required: true
       # - title: qc_status_pass_qc_where_what_slots_not_specified
       #   description: >-
       #     If qc_status has a value of pass, then the qc_failure_what and qc_failure_where slots should not be specified.
