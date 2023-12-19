@@ -48,8 +48,7 @@ classes:
       - version
       - qc_status
       - qc_comment
-      - qc_failure_what
-      - qc_failure_where
+      - has_failure_categorization
     rules:
       - title: qc_status_pass_has_output_required
         description: >-
