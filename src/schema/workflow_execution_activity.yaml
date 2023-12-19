@@ -93,7 +93,6 @@ classes:
         description: >-
           The WorkflowChain that this WorkflowExecution is part of
         range: WorkflowChain
-        multivalued: false
       id:
         required: true
         structured_pattern:
