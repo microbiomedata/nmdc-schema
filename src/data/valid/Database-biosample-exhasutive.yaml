@@ -1,6 +1,6 @@
 biosample_set:
-  - type: nmdc:Biosample
-    id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-dtTMNb
+    type: nmdc:Biosample
     name: Sample Exhaustive Biosample instance. Although all of these values should
       pass validation, that does not mean that any Biosample of any type would necessarily
       have this particular combination of values.

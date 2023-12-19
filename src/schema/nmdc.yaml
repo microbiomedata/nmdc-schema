@@ -209,7 +209,7 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      #      - dissolving_activity_set
+      ##      - dissolving_activity_set
       #      - material_sample_set
       #      - material_sampling_activity_set
       #      - reaction_activity_set
