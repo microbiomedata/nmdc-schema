@@ -60,7 +60,6 @@ classes:
           slot_conditions:
             has_output:
               required: true
-         rules:
       - title: qc_status_pass_null_has_output_required
         description: >-
           If qc_status is not specified, then the has_output slot is required.
