@@ -245,14 +245,6 @@ slots:
   #    add this and write migration # range: instrument_name_enum
 
 
-
-  has_part:
-    domain: NamedThing
-    range: NamedThing
-    multivalued: true
-    comments:
-      - originally limited to "A pathway can be broken down to a series of reaction step"
-
 enums:
   processing_institution_enum:
     notes:
