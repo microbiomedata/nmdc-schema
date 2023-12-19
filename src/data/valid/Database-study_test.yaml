@@ -26,8 +26,9 @@ study_set:
     ecosystem_subtype: Soil
     specific_ecosystem: Unclassified
     principal_investigator:
+      type: nmdc:PersonValue
       has_raw_value: Mary Firestone
-  #    type: nmdc:Study # type slot/type designation is still under development
+    type: nmdc:Study # type slot/type designation is still under development
   - id: nmdc:sty-99-hfaLvo
     study_category: research_study
     gold_study_identifiers:
@@ -88,8 +89,9 @@ study_set:
     ecosystem_subtype: Unclassified
     specific_ecosystem: Unclassified
     principal_investigator:
+      type: nmdc:PersonValue
       has_raw_value: Matthias Hess
-  #    type: nmdc:Study # type slot/type designation is still under development
+    type: nmdc:Study # # type slot/# type designation is still under development
   - id: nmdc:sty-99-dkDZYe
     study_category: research_study
     gold_study_identifiers:
@@ -110,5 +112,6 @@ study_set:
     ecosystem_subtype: Wetlands
     specific_ecosystem: Permafrost
     principal_investigator:
+      type: nmdc:PersonValue
       has_raw_value: Virginia Rich
-  #    type: nmdc:Study # type slot/type designation is still under development
+    type: nmdc:Study # # type slot/# type designation is still under development

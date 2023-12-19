@@ -3,8 +3,7 @@ has_input:
   - 'nmdc:unvalidated_placeholder'
 # legacy part_of id? validator won't catch pattern violations
 #   or referential integrity violations
-part_of:
-  - nmdc:mga0vx38
+part_of: nmdc:mga0vx38
 git_url: 'https://github.com/microbiomedata/RawSequencingData'
 execution_resource: JGI
 version: v1.0.0

@@ -1,14 +1,14 @@
 planned_process_set:
   - id: nmdc:poolp-00-123456
-    designated_class: nmdc:Pooling
+    type: nmdc:Pooling
   - id: nmdc:extrp-00-999999
-    designated_class: nmdc:Extraction
+    type: nmdc:Extraction
     has_input:
       - nmdc:bsm-00-435737
     has_output:
       - nmdc:procsm-00-0938548
   - id: nmdc:libprp-00-999999
-    designated_class: nmdc:LibraryPreparation
+    type: nmdc:LibraryPreparation
     has_input:
       - nmdc:procsm-00-0938548
     has_output:

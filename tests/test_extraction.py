@@ -19,15 +19,21 @@ class TestExtraction(unittest.TestCase):
 
         component1 = SolutionComponent(
             compound="deionized_water",
+            type="nmdc:SolutionComponent",
         )
         # validator.validate_object(component1, target_class=SolutionComponent)
 
-        qv2 = QuantityValue(has_numeric_value=10, has_unit="%")
+        qv2 = QuantityValue(
+            has_numeric_value=10,
+            has_unit="%",
+            type="nmdc:QuantityValue",
+        )
         # validator.validate_object(qv2, target_class=QuantityValue)
 
         component2 = SolutionComponent(
             compound="deionized_water",
-            concentration=qv2
+            concentration=qv2,
+            type="nmdc:SolutionComponent",
         )
         # validator.validate_object(component2, target_class=SolutionComponent)
 
@@ -35,16 +41,19 @@ class TestExtraction(unittest.TestCase):
             has_solution_components=[component1, component2],
             volume=QuantityValue(
                 has_numeric_value=100,
-                has_unit="mL"
-            )
+                has_unit="mL",
+                type="nmdc:QuantityValue",
+            ),
+            type="nmdc:Solution",
         )
         # validator.validate_object(sol1, target_class=Solution)
 
         ex1 = Extraction(
-            id="nmdc:ILLEGAL_ID_VAL",
+            extractant=sol1,
             has_input=["nmdc:ILLEGAL_ID_VAL"],
             has_output=["nmdc:ILLEGAL_ID_VAL"],
-            extractant=sol1,
+            id="nmdc:ILLEGAL_ID_VAL",
+            type="nmdc:Extraction",
         )
 
         # validator.validate_object(sol1, target_class=Solution)
@@ -54,9 +63,11 @@ class TestExtraction(unittest.TestCase):
 
         print(yaml_dumper.dumps(ex1))
 
+        # type: Extraction
+
         extr_yaml_string = """
 id: nmdc:ILLEGAL_ID_VAL
-designated_class: nmdc:Extraction
+type: nmdc:Extraction
 has_input:
 - nmdc:ILLEGAL_ID_VAL
 has_output:
@@ -64,11 +75,16 @@ has_output:
 extractant:
   has_solution_components:
   - compound: deionized_water
+    type: nmdc:SolutionComponent
   - compound: deionized_water
+    type: nmdc:SolutionComponent
     concentration:
+      type: nmdc:QuantityValue
       has_numeric_value: 10.0
       has_unit: '%'
+  type: nmdc:Solution
   volume:
+    type: nmdc:QuantityValue
     has_numeric_value: 100.0
     has_unit: mL
 """
@@ -83,15 +99,21 @@ class TestChromatographySeparationProcess(unittest.TestCase):
 
         component1 = SolutionComponent(
             compound="deionized_water",
+            type="nmdc:SolutionComponent",
         )
         # validator.validate_object(component1, target_class=SolutionComponent)
 
-        qv2 = QuantityValue(has_numeric_value=10, has_unit="%")
+        qv2 = QuantityValue(
+            has_numeric_value=10,
+            has_unit="%",
+            type="nmdc:QuantityValue",
+        )
         # validator.validate_object(qv2, target_class=QuantityValue)
 
         component2 = SolutionComponent(
             compound="methanol",
-            concentration=qv2
+            concentration=qv2,
+            type="nmdc:SolutionComponent",
         )
         # validator.validate_object(component2, target_class=SolutionComponent)
 
@@ -99,14 +121,17 @@ class TestChromatographySeparationProcess(unittest.TestCase):
             has_solution_components=[component1, component2],
             volume=QuantityValue(
                 has_numeric_value=100,
-                has_unit="mL"
+                has_unit="mL",
+                type="nmdc:QuantityValue",
             ),
+            type="nmdc:Solution",
         )
 
         ps1 = ChromatographicSeparationProcess(
             id="nmdc:ILLEGAL_ID_VAL",
             ordered_mobile_phases=sol1,
             stationary_phase="C8",
+            type="nmdc:ChromatographicSeparationProcess",
         )
 
         print("\n")

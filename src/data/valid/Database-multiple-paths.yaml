@@ -4,33 +4,47 @@ biosample_set:
     part_of:
       - nmdc:sty-00-abc123
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
+    type: nmdc:Biosample
   - id: nmdc:bsm-99-XYZ
     name: one DNA library, like an analytical sample
     part_of:
       - nmdc:sty-00-abc123
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
+    type: nmdc:Biosample
 data_generation_set:
   - id: nmdc:datgen-99-zUCd5N
     analyte_category: metagenome
@@ -48,4 +62,4 @@ data_generation_set:
     part_of:
       - nmdc:sty-00-555xxx
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
+    type: nmdc:DataGeneration

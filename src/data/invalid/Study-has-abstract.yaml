@@ -1,0 +1,62 @@
+id: nmdc:sty-11-ab
+type: nmdc:Study
+study_category: research_study
+name: see also description, title, objective, various alternatives
+description: see also name, title, objective, various alternatives
+related_identifiers: any string R1
+gold_study_identifiers:
+  - gold:Gs12345
+  - gold:Gs90909
+mgnify_project_identifiers:
+  - mgnify.proj:ABC123
+ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
+ecosystem_category: unconstrained text
+ecosystem_type: unconstrained text
+ecosystem_subtype: unconstrained text
+specific_ecosystem: unconstrained text
+principal_investigator:
+  has_raw_value: Craig Venter
+  type: nmdc:PersonValue
+  was_generated_by: nmdc:any_string_1
+  orcid: ORCID:0000-0002-7086-765X
+  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+  email: jcventer@jcvi.org
+  name: J. Craig Venter
+  websites:
+    - https://www.jcvi.org/
+    - https://www.jcvi.org/about/j-craig-venter
+title: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
+  have this particular combination of values.
+alternative_titles:
+  - any string 1
+  - any string 2
+alternative_descriptions:
+  - any string 1
+  - any string 2
+alternative_names:
+  - any string 1
+  - any string 2
+abstract: Nothing was studied.
+objective: This record, an instance of class Study from the nmdc-schema was had authored,
+  so that the NMDC team would have at least one instance, using all slots, with a
+  mixture of reasonable values and minimally compliant values.
+websites:
+  - https://w3id.org/nmdc
+  - https://w3id.org/linkml
+associated_dois:
+  - doi_value: doi:10.25585/1488209
+    doi_category: dataset_doi
+    doi_provider: osti
+    type: nmdc:Doi
+protocol_link:
+  - name: any string 1
+    type: nmdc:Protocol
+  - name: any string 2
+    type: nmdc:Protocol
+funding_sources:
+  - This is an example of a funding source with too long of a description. Funding sources should be no more than 150 characters. Any longer is unnecessary and excessive. Its very very very very very very very very very long.
+  - any string 2
+

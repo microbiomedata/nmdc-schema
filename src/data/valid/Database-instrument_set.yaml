@@ -3,6 +3,8 @@ instrument_set:
     name: Illumina NovaSeq
     vendor: illumina
     model: novaseq
+    type: nmdc:Instrument
   - id: nmdc:inst-12-dtTMN3
     name: my favorite Orbitrap
     model: exploris_480
+    type: nmdc:Instrument
