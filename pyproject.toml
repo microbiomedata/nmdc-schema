@@ -10,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "9.2.0" # nmdc.yaml and GH say v9.2.0
+version = "9.3.2" # nmdc.yaml and GH say v9.3.2
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -43,34 +43,34 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
+click-log = "^0.4.0"
 linkml = "^1.6.3"
 linkml-runtime = "^1.6.2"
 python = "^3.9"
-click-log = "^0.4.0"
-ruamel-yaml = "^0.18.5"
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies?
-pydantic = "^1.10.13"
+#cruft = "^2.12.0" # for doing cookiecutter update... should this be installed wiht pipx instead?
+#deepdiff = "^6.2.1"
+#gen-pop-linkml2sheets = "^0.1.8" # for generate_and_populate_template, deprecated by schemasheets linkml2schemasheets-template # not necessary excep[t for local/usage_template.tsv
+#schemasheets = "^0.1.18"
+#strsimpy = "0.2.1"
+#toml = "0.10.2" # not sure why this wasw needed
 black = "^23.1.0"
 click-log = "^0.4.0"
-cruft = "^2.12.0"
-deepdiff = "^6.2.1"
 exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
-gen-pop-linkml2sheets = "^0.1.8" # for generate_and_populate_template, deprecated by schemasheets linkml2schemasheets-template
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
-oaklib = "0.5.6"
+oaklib = "^0.5.24"
+pydantic = "^1.10.13"
 pymongo = "^4.3.3"
 python-dotenv = "^0.21.0"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
-schemasheets = "^0.1.18"
-sheets_and_friends = "^0.5.0"
+semsimian = "^0.2.11"
+sheets_and_friends = "^0.5.0" # for do_shuttle (and possible more) # causes Downgrading pandas (2.1.3 -> 1.5.3)
 sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
-strsimpy = "0.2.1"
-toml = "0.10.2"
 
 ## cheat sheet for other ways of loading a dev dependency. add github branch method.
 ## /Users/MAM/Documents/gitrepos/sheets_and_friends

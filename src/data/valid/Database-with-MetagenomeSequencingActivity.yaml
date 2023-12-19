@@ -7,7 +7,7 @@ metagenome_sequencing_activity_set:
     #   or referential integrity violations
     part_of:
       - nmdc:mga0vx38
-    git_url: ''
+    git_url: 'https://github.com/microbiomedata/RawSequencingData'
     execution_resource: JGI
     version: v1.0.0
     # legacy has_output id? validator won't catch pattern violations

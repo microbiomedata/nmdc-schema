@@ -17,10 +17,95 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
+types:
+  external_identifier:
+    typeof: uriorcurie
+    uri: xsd:anyURI # isn't that inherited from typeof: uriorcurie? WARNING:root:No datatype specified for : external identifier, using plain Literal
+    description: >-
+      A CURIE representing an external identifier
+    see_also:
+      - https://microbiomedata.github.io/nmdc-schema/identifiers/
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+
 slots:
+  processing_institution:
+    domain: PlannedProcess
+    range: processing_institution_enum
+    description: The organization that processed the sample.
+  designated_class:
+    range: uriorcurie
+    designates_type: true
+    notes:
+      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
+        of any NMDC-owned elements
+      - this would be required on all instances in a polymorphic Database slot, like planned_process_set
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/1048
+      - https://github.com/microbiomedata/nmdc-schema/issues/1233
+  external_database_identifiers:
+    abstract: true
+    description: Link to corresponding identifier in external database
+    is_a: alternative_identifiers
+    multivalued: true
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+    range: external_identifier
+    comments:
+      - The value of this field is always a registered CURIE
+    notes:
+      - "had tried ranges of external identifier and string"
+    close_mappings:
+      - skos:closeMatch
+  dna_absorb1:
+    is_a: biomaterial_purity
+    description: 260/280 measurement of DNA sample purity
+    title: DNA absorbance 260/280
+    comments:
+      - Recommended value is between 1 and 3.
+    examples:
+      - value: '2.02'
+    from_schema: https://example.com/nmdc_dh
+    rank: 7
+    range: float
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_absorb2:
+    is_a: biomaterial_purity
+    description: 260/230 measurement of DNA sample purity
+    title: DNA absorbance 260/230
+    comments:
+      - Recommended value is between 1 and 3.
+    examples:
+      - value: '2.02'
+    from_schema: https://example.com/nmdc_dh
+    rank: 8
+    range: float
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_concentration:
+    see_also:
+      nmdc:nucleic_acid_concentration
+    title: DNA concentration in ng/ul
+    comments:
+      - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
+        a fluorometric method. Acceptable values are 0-2000.
+    examples:
+      - value: '100'
+    from_schema: https://example.com/nmdc_dh
+    rank: 5
+    range: float
+    slot_group: JGI-Metagenomics
+    recommended: true
+    minimum_value: 0
+    maximum_value: 2000
+  extraction_target:
+    rank: 1000
+    domain_of:
+      - Extraction
+    range: ExtractionTargetEnum
   id:
     required: true
     identifier: true
+    #    domain: NamedThing
     range: uriorcurie
     description: >-
       A unique identifier for a thing.
@@ -122,12 +207,14 @@ slots:
       - add date string validation pattern
 
   protocol_link:
+    domain: PlannedProcess
     range: Protocol
 
   #  nucleic_acid_concentration:
   #    range: InstrumentValue
 
   biomaterial_purity:
+    domain: ProcessedSample
     range: QuantityValue
 
   qc_failure_what:
@@ -152,9 +239,11 @@ slots:
       it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
   instrument_name:
+    domain: PlannedProcess
     description: >-
       The name of the instrument that was used for processing the sample.
-#    add this and write migration # range: instrument_name_enum
+  #    add this and write migration # range: instrument_name_enum
+
 
 
   has_part:
@@ -164,7 +253,40 @@ slots:
     comments:
       - originally limited to "A pathway can be broken down to a series of reaction step"
 
-#enums:
+enums:
+  processing_institution_enum:
+    notes:
+      - use ROR meanings like https://ror.org/0168r3w48 for UCSD
+    from_schema: NMDC_enums_roundtrip
+    permissible_values:
+      UCSD:
+        title: University of California, San Diego
+        meaning: https://ror.org/0168r3w48
+
+      JGI:
+        title: Joint Genome Institute
+        meaning: https://ror.org/04xm1d337
+
+      EMSL:
+        title: Environmental Molecular Sciences Laboratory
+        meaning: https://ror.org/04rc0xn13
+        aliases:
+          - Environmental Molecular Science Laboratory
+          - Environmental Molecular Sciences Lab
+
+      Battelle:
+        title: Battelle Memorial Institute
+        meaning: https://ror.org/01h5tnr73
+
+      ANL:
+        title: Argonne National Laboratory
+        meaning: https://ror.org/05gvnxz63
+
+      UCD_Genome_Center:
+        title: University of California, Davis Genome Center
+        meaning: https://genomecenter.ucdavis.edu/
+
+
 #  instrument_name_enum:
 #    todos:
 #      - remove "21T Agilent"

@@ -162,6 +162,8 @@ gendoc: $(DOCDIR)
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) $(SOURCE_SCHEMA_PATH)
+	mkdir -p $(DOCDIR)/javascripts
+	$(RUN) cp $(SRC)/scripts/javascripts/* $(DOCDIR)/javascripts/
 
 testdoc: gendoc serve
 

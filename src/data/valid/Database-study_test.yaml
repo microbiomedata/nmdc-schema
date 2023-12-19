@@ -1,39 +1,39 @@
 study_set:
-- id: nmdc:sty-99-boww8R
-  gold_study_identifiers:
-  - nmdc:sty-00-abc123
-  name: Avena fatua rhizosphere microbial communities from Hopland, California, USA,
-    for root-enhanced decomposition of organic matter studies
-  description: Using analytical expertise at both the JGI and EMSL, we plan to follow
-    successional patterns of protein expression by root-associated microorganisms.
-    This work builds on foundational research we are conducting with the common California
-    grassland plant, Avena fatua, grown in Hopland, CA soil (FOA DE-PS02-09ER09-25).
-    Using our 16-chamber 13C labeling facility at UC Berkeley, we have shown that
-    elevated CO2 increased the amount of C allocated belowground, and increased the
-    yield of root biomass. The rhizosphere microbial community undergoes a succession
-    as the root grows, senesces, and dies. In elevated CO2 treatments, we also detect
-    a greater amount of root-derived 13C in the mineral-associated heavy fraction
-    of the soil, which is commonly assumed to reflect longer term stabilization. \n
-    \nIn our JGI-EMSL project, we will follow over time how roots impact the functional
-    capacity of the rhizosphere microbiome to enzymatically mediate decomposition
-    processes. We hypothesize that root-exudate stimulation of soil microbial populations
-    results in elevated expression of biomolecules (transcripts, enzymes, metabolites)
-    for the decomposition of macromolecular C compounds.
-  ecosystem: Host-associated
-  ecosystem_category: Plants
-  ecosystem_type: Rhizosphere
-  ecosystem_subtype: Soil
-  specific_ecosystem: Unclassified
-  principal_investigator:
-    has_raw_value: Mary Firestone
-  doi:
-    has_raw_value: 10.25585/1487760
-  type: nmdc:Study
-- id: nmdc:sty-99-hfaLvo
-  gold_study_identifiers:
-  - gold:Gs0110132
-  name: Cyanobacterial communities from the Joint Genome Institute, California, USA
-  description: 'We propose to utilize the unique resources at EMSL and the JGI to
+  - id: nmdc:sty-99-boww8R
+    study_category: research_study
+    gold_study_identifiers:
+      - gold:Gs999999
+    name: Avena fatua rhizosphere microbial communities from Hopland, California, USA,
+      for root-enhanced decomposition of organic matter studies
+    description: Using analytical expertise at both the JGI and EMSL, we plan to follow
+      successional patterns of protein expression by root-associated microorganisms.
+      This work builds on foundational research we are conducting with the common California
+      grassland plant, Avena fatua, grown in Hopland, CA soil (FOA DE-PS02-09ER09-25).
+      Using our 16-chamber 13C labeling facility at UC Berkeley, we have shown that
+      elevated CO2 increased the amount of C allocated belowground, and increased the
+      yield of root biomass. The rhizosphere microbial community undergoes a succession
+      as the root grows, senesces, and dies. In elevated CO2 treatments, we also detect
+      a greater amount of root-derived 13C in the mineral-associated heavy fraction
+      of the soil, which is commonly assumed to reflect longer term stabilization. \n
+      \nIn our JGI-EMSL project, we will follow over time how roots impact the functional
+      capacity of the rhizosphere microbiome to enzymatically mediate decomposition
+      processes. We hypothesize that root-exudate stimulation of soil microbial populations
+      results in elevated expression of biomolecules (transcripts, enzymes, metabolites)
+      for the decomposition of macromolecular C compounds.
+    ecosystem: Host-associated
+    ecosystem_category: Plants
+    ecosystem_type: Rhizosphere
+    ecosystem_subtype: Soil
+    specific_ecosystem: Unclassified
+    principal_investigator:
+      has_raw_value: Mary Firestone
+  #    type: nmdc:Study # type slot/type designation is still under development
+  - id: nmdc:sty-99-hfaLvo
+    study_category: research_study
+    gold_study_identifiers:
+      - gold:Gs999999
+    name: Cyanobacterial communities from the Joint Genome Institute, California, USA
+    description: 'We propose to utilize the unique resources at EMSL and the JGI to
     obtain a better understanding of the phylogenetic and functional diversity of
     cyanobacteria that have been collected from DOE mission relevant environments
     (e.g. alkaline and acidic hot springs, and hypersaline terrestrial and water habitats)
@@ -82,22 +82,21 @@ study_set:
     we will generate metaproteomic and metametabolomic data from 10 selected axenic
     and 10 mixed cultures. We will request access and support to and with mass spectrometry,
     NMR spectrometry, and computation time on Chinook from EMSL.'
-  ecosystem: Host-associated
-  ecosystem_category: Microbial
-  ecosystem_type: Bacteria
-  ecosystem_subtype: Unclassified
-  specific_ecosystem: Unclassified
-  principal_investigator:
-    has_raw_value: Matthias Hess
-  doi:
-    has_raw_value: 10.25585/1487758
-  type: nmdc:Study
-- id: nmdc:sty-99-dkDZYe
-  gold_study_identifiers:
-  - nmdc:sty-00-555xxx
-  name: Thawing permafrost microbial communities from the Arctic, studying carbon
-    transformations
-  description: 'A fundamental challenge of microbial environmental science is to understand
+    ecosystem: Host-associated
+    ecosystem_category: Microbial
+    ecosystem_type: Bacteria
+    ecosystem_subtype: Unclassified
+    specific_ecosystem: Unclassified
+    principal_investigator:
+      has_raw_value: Matthias Hess
+  #    type: nmdc:Study # type slot/type designation is still under development
+  - id: nmdc:sty-99-dkDZYe
+    study_category: research_study
+    gold_study_identifiers:
+      - gold:Gs999999
+    name: Thawing permafrost microbial communities from the Arctic, studying carbon
+      transformations
+    description: 'A fundamental challenge of microbial environmental science is to understand
     how earth systems will respond to climate change. A parallel challenge in biology
     is to unverstand how information encoded in organismal genes manifests as biogeochemical
     processes at ecosystem-to-global scales. These grand challenges intersect in the
@@ -105,13 +104,11 @@ study_set:
     processes and a key driver of climate through the greenhouse gases carbon dioxide
     (CO2) and methane (CH4). A key aspect of these challenges is the C cycle implications
     of the predicted dramatic shrinkage in northern permafrost in the coming century.  '
-  ecosystem: Environmental
-  ecosystem_category: Terrestrial
-  ecosystem_type: Soil
-  ecosystem_subtype: Wetlands
-  specific_ecosystem: Permafrost
-  principal_investigator:
-    has_raw_value: Virginia Rich
-  doi:
-    has_raw_value: 10.25585/1487764
-  type: nmdc:Study
+    ecosystem: Environmental
+    ecosystem_category: Terrestrial
+    ecosystem_type: Soil
+    ecosystem_subtype: Wetlands
+    specific_ecosystem: Permafrost
+    principal_investigator:
+      has_raw_value: Virginia Rich
+  #    type: nmdc:Study # type slot/type designation is still under development
