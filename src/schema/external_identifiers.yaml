@@ -326,7 +326,8 @@ slots:
     pattern: '^jgi.analysis:[0-9]+$'
     description: identifiers for corresponding analysis projects in JGI Portal
     examples:
-      - value: jgi.analysis:1000000
+      - value: https://data.jgi.doe.gov/search?q=1414320
+        description: Metagenome - Draft Assembly YELL_051-M-20210705-comp-DNA1
 
   insdc_analysis_identifiers:
     is_a: analysis_identifiers
