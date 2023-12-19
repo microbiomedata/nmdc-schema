@@ -146,7 +146,10 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-
+  FailureCategorization:
+    slots:
+      - failure_what
+      - failure_where
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -2343,6 +2346,9 @@ enums:
 
 
 slots:
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
   model:
     range: InstrumentModelEnum
   vendor:
