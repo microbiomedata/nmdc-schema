@@ -222,7 +222,8 @@ slots:
     range: FailureWhatEnum
     description: >-
       Provides a summary about what caused a lab or workflow process to fail
-      (ie Low read count from a sequencer, malformed fastq files, etc)
+    comments:
+      - For example Low read count from a sequencer, malformed fastq files, etc)
 
   qc_failure_where:
     domain: FailureCategorization
@@ -230,7 +231,8 @@ slots:
     description: >-
       Describes the nmdc schema class that corresonds to where the failure occurred.
       Most commonly this would be the same as Class that generated the results.
-      If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
+    comments:
+      - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
 
   qc_comment:
     range: string
