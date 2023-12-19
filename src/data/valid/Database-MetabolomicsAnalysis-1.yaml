@@ -12,4 +12,4 @@ metabolomics_analysis_set:
     has_output:
       - nmdc:o1
       - nmdc:o2
-    type: WorkflowExecution
+    type: nmdc:MetabolomicsAnalysis

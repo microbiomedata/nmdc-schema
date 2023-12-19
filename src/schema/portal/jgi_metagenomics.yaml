@@ -9,7 +9,6 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - linkml:types
-#  - basic_slots
 
 prefixes:
   linkml: https://w3id.org/linkml/

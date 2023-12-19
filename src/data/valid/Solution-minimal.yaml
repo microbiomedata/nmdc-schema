@@ -1,8 +1,12 @@
+type: nmdc:Solution
 has_solution_components:
   - compound: methanol
+    type: nmdc:SolutionComponent
     concentration:
+      type: nmdc:QuantityValue
       has_unit: mM
       has_numeric_value: 10
 volume:
+  type: nmdc:QuantityValue
   has_numeric_value: 120
   has_unit: mL

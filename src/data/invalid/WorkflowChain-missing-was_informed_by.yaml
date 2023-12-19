@@ -1,0 +1,4 @@
+id: nmdc:wfch-11-ab
+type: nmdc:WorkflowChain
+name: Workflow Chain for Metagenomics analysis of NEON Biosample
+analyte_category: metagenome

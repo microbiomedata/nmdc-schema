@@ -1,14 +1,13 @@
 id: nmdc:sty-11-ab
+type: nmdc:Study
 name: see also description, title, objective, various alternatives
-emsl_project_dois:
+study_category: research_study
+emsl_project_dois: # undefined/retired slot
   - "doi:10.25585/1487763"
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
   - generic:abc1
 related_identifiers: any string R1
-#emsl_proposal_identifier:
-#  - generic:abc1
-#emsl_proposal_doi: any string
 gold_study_identifiers:
   - gold:Gs12345
   - gold:Gs90909
@@ -23,6 +22,7 @@ ecosystem_subtype: unconstrained text
 specific_ecosystem: unconstrained text
 principal_investigator:
   has_raw_value: Craig Venter
+  type: nmdc:PersonValue
   was_generated_by: nmdc:any_string_1
   orcid: ORCID:0000-0002-7086-765X
   profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
@@ -32,8 +32,8 @@ principal_investigator:
     - https://www.jcvi.org/
     - https://www.jcvi.org/about/j-craig-venter
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
-  validation, that does not mean that any Biosample of any type would necessarily
-  have this particular combination of values.
+  validation, that does not mean that any Biosample of any
+  have this particular combination of values.  # type would necessarily
 alternative_titles:
   - any string 1
   - any string 2
@@ -53,16 +53,19 @@ associated_dois:
   - doi_value: doi:10.25585/1488209
     doi_category: dataset_doi
     doi_provider: osti
-type: any string
+    type: nmdc:Doi
 protocol_link:
   - name: any string 1
+    type: nmdc:Protocol
   - name: any string 2
+    type: nmdc:Protocol
 funding_sources:
   - any string 1
   - any string 2
 has_credit_associations:
   - applies_to_person:
       has_raw_value: Craig Venter
+      type: nmdc:PersonValue
       was_generated_by: nmdc:any_string_1
       orcid: ORCID:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
@@ -71,13 +74,15 @@ has_credit_associations:
       websites:
         - https://www.jcvi.org/
         - https://www.jcvi.org/about/j-craig-venter
+    type: prov:Association
     applied_roles:
       - Supervision
       - Conceptualization
       - Funding acquisition
-    type: any string
   - applies_to_person:
       name: Tanja Davidsen
+      type: nmdc:PersonValue
+    type: prov:Association
     applied_roles:
       - Investigation
       - Supervision

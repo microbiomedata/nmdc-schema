@@ -8,13 +8,17 @@ library_preparation_set:
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     library_type: DNA
+    type: nmdc:LibraryPreparation
 processed_sample_set:
   - id: nmdc:procsm-99-xyz1
     name: first processed sample set
+    type: nmdc:ProcessedSample
   - id: nmdc:procsm-99-xyz2
     name: first DNA extract
+    type: nmdc:ProcessedSample
   - id: nmdc:procsm-99-xyz3
     name: first library
+    type: nmdc:ProcessedSample
 extraction_set:
   - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
@@ -25,51 +29,73 @@ extraction_set:
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     extraction_target: DNA
+    type: nmdc:Extraction
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
+    type: nmdc:Biosample
     part_of:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef2
+    type: nmdc:Biosample
     part_of:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef3
+    type: nmdc:Biosample
     part_of:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
 data_object_set:
   - id: nmdc:dobj-12-jdhk9537
@@ -99,12 +125,12 @@ data_generation_set:
     has_output:
       - nmdc:dobj-12-jdhk9537
       - nmdc:dobj-12-yx0tfp52
-    instrument_used: 
+    instrument_used:
       - nmdc:inst-12-yx0tfp52
     part_of:
       - nmdc:sty-11-34xj1150
     processing_institution: Battelle
-    type: nmdc:OmicsProcessing
+    type: nmdc:DataGeneration
 workflow_chain_set:
   - id: nmdc:wfch-11-ab
     analyte_category: metagenome
@@ -124,10 +150,11 @@ read_qc_analysis_set:
     has_output:
       - nmdc:dobj-12-71q7wv80
       - nmdc:dobj-12-y236qp68
-    type: nmdc:ReadQCAnalysisActivity
+    type: nmdc:ReadQcAnalysis
     version: b1.0.7
 pooling_set:
   - id: nmdc:poolp-99-abcdef
+    type: nmdc:Pooling
     name: first pooling process
     description: This is the first pooling process that has ever occurred on earth
     has_input:
