@@ -14,4 +14,4 @@ biosample_set:
       has_raw_value: ENVO:00005792
       term:
         id: ENVO:00005792
-    rna_volume: 12
+    rna_volume: 12 # minimum value is now 0, so this is not a violation
