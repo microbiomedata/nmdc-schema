@@ -82,7 +82,7 @@ prefixes:
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: "https://bioregistry.io/img.taxon:"
   jgi.proposal: "https://bioregistry.io/jgi.proposal:"
-  jgi.analysis: http://example.org/jgi/analysis/
+  jgi.analysis: "https://data.jgi.doe.gov/search?q=
   jgi: http://example.org/jgi/
   kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
   linkml: https://w3id.org/linkml/
