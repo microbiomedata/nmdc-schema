@@ -1482,7 +1482,7 @@ classes:
           slot_conditions:
             doi_provider:
               required: true
-  
+
   Study:
     class_uri: 'nmdc:Study'
     is_a: NamedThing
@@ -1504,7 +1504,7 @@ classes:
         A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
-    
+
     slots:
       - emsl_project_identifiers
       - neon_study_identifiers
@@ -1857,7 +1857,6 @@ classes:
       - ncbi_project_name
       - part_of
       - principal_investigator
-      - processing_institution
       - target_gene
       - target_subfragment
 
@@ -1888,9 +1887,9 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding associated researchers to studies. 
+      This class supports binding associated researchers to studies.
       There will be at least a slot for a CRediT Contributor Role and for a person value.
-      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates 
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates
       at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
     slots:
       - applies_to_person
@@ -1901,14 +1900,14 @@ classes:
       - https://casrai.org/credit/
 
 enums:
-  
+
   DirectInfusionEnum:
     permissible_values:
       direct_infusion:
         aliases:
           - DI
       autosampler: { }
-  
+
   AcquisitionCategoryEnum:
     permissible_values:
       full_scan:
@@ -1925,12 +1924,12 @@ enums:
       data_dependent_acquisition:
         aliases:
           -DDA
-  
+
   ResolutionCategoryEnum:
     permissible_values:
       high: { }
       low: { }
-  
+
   MassAnalyzerEnum:
     permissible_values:
       time_of_flight:
@@ -1951,7 +1950,7 @@ enums:
           - LTQ
           - Ion Trap
           - Paul Trap
-  
+
   IonizationSourceEnum:
     permissible_values:
       electrospray_ionization:
@@ -1966,7 +1965,7 @@ enums:
       athmospheric_pressure_chemical_ionization:
         aliases:
           - APCI
-  
+
   MassSpectrumCollectionModeEnum:
     permissible_values:
       profile: { }
@@ -2029,7 +2028,7 @@ enums:
       exploris_240:
         aliases:
           - Orbitrap Exploris 240
-      
+
       exploris_480:
         aliases:
           - Orbitrap Exploris 480
@@ -2054,13 +2053,13 @@ enums:
         aliases:
           - Orbitrap Q-Exactive HF
           - Orbitrap Q-Exactive HF-X
-      
+
       solarix_7T:
         aliases:
           - 7T Solarix
           - 7T FT-ICR MS
           - 7T MRMS
-      
+
       solarix_12T:
         aliases:
           - 12T Solarix
@@ -2092,7 +2091,7 @@ enums:
 
   InstrumentVendorEnum:
     permissible_values:
-      
+
       waters:
         aliases:
           - Waters Corporation
@@ -2100,7 +2099,7 @@ enums:
       agilent:
         aliases:
           - Agilent Technologies
-      
+
       bruker:
         aliases:
           - Bruker Corporation
@@ -2544,7 +2543,7 @@ enums:
           - OBI:0000355
       consortium:
         description: >-
-          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
+          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the
           consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
         comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
         exact_mappings:
@@ -2638,7 +2637,7 @@ enums:
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       ptfe_96_well_filter_plate:
-  
+
   #  SolventEnum:
   #    description: The solvents that may be used in processing metabolomic samples.
   #    permissible_values:
@@ -2658,7 +2657,7 @@ enums:
   #      MSTFA:
   #      cloridic acid:
   #      Water:
-  
+
   CompoundEnum:
     permissible_values:
       ammonium_bicarbonate:
@@ -2695,7 +2694,7 @@ enums:
       alphalp:
         aliases:
           - alphaLP
-  
+
   StationaryPhaseEnum:
     description: The type of stationary phase used in a solid phase extraction process.
     contributors:
@@ -2836,7 +2835,7 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
-  
+
   mass:
     title: mass
     description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
@@ -3056,15 +3055,15 @@ slots:
     multivalued: true
     range: string
     description: >-
-      A list of organizations, along with the award numbers, that underwrite financial support for projects of 
-      a particular type. Typically, they process applications and award funds to the chosen qualified 
+      A list of organizations, along with the award numbers, that underwrite financial support for projects of
+      a particular type. Typically, they process applications and award funds to the chosen qualified
       applicants.
     comments:
       - Include only the name of the funding organization and the award or contract number.
     examples:
       - value: National Sciences Foundation Dimensions of Biodiversity (award no. 1342701)
       - value: >-
-          U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research 
+          U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research
           (BER) under contract DE-AC05-00OR2275
     close_mappings:
       - NCIT:C39409

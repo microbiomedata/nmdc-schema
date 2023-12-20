@@ -692,9 +692,9 @@ biosample_set:
       type: nmdc:QuantityValue
     non_min_nutr_regm:
       - xxx
-    nucl_acid_ext:
-      has_raw_value: xxx
-      type: nmdc:TextValue
+    #    nucl_acid_ext:
+    #      has_raw_value: xxx
+    #      type: nmdc:TextValue
     number_pets:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -743,12 +743,12 @@ biosample_set:
     particle_class:
       - has_raw_value: xxx
         type: nmdc:TextValue
-    pcr_cond:
-      has_raw_value: xxx
-      type: nmdc:TextValue
-    pcr_primers:
-      has_raw_value: xxx
-      type: nmdc:TextValue
+    #    pcr_cond:
+    #      has_raw_value: xxx
+    #      type: nmdc:TextValue
+    #    pcr_primers:
+    #      has_raw_value: xxx
+    #      type: nmdc:TextValue
     permeability:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -793,9 +793,9 @@ biosample_set:
     pollutants:
       - has_raw_value: xxx
         type: nmdc:TextValue
-    pool_dna_extracts:
-      has_raw_value: yes, 5
-      type: nmdc:TextValue
+    #    pool_dna_extracts:
+    #      has_raw_value: yes, 5
+    #      type: nmdc:TextValue
     porosity:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -985,9 +985,9 @@ biosample_set:
     samp_type:
       has_raw_value: xxx
       type: nmdc:TextValue
-    samp_vol_we_dna_ext:
-      has_raw_value: 1500 milliliter
-      type: nmdc:QuantityValue
+    #    samp_vol_we_dna_ext:
+    #      has_raw_value: 1500 milliliter
+    #      type: nmdc:QuantityValue
     samp_weather: cloudy
     samp_well_name:
       has_raw_value: xxx
@@ -1009,12 +1009,12 @@ biosample_set:
       has_raw_value: xxx
       type: nmdc:TextValue
     sediment_type: biogenous
-    seq_meth:
-      has_raw_value: xxx
-      type: nmdc:TextValue
-    seq_quality_check:
-      has_raw_value: xxx
-      type: nmdc:TextValue
+    #    seq_meth:
+    #      has_raw_value: xxx
+    #      type: nmdc:TextValue
+    #    seq_quality_check:
+    #      has_raw_value: xxx
+    #      type: nmdc:TextValue
     sewage_type:
       has_raw_value: xxx
       type: nmdc:TextValue
