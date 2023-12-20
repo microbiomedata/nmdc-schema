@@ -67,6 +67,10 @@ classes:
           slot_conditions:
             qc_status:
               ifabsent: pass
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
 
       # - title: qc_status_pass_qc_where_what_slots_not_specified
       #   description: >-
