@@ -19,7 +19,6 @@ class Migrator_from_9_3_to_9_4(MigratorBase):
             dict):
         """
         >>> mig = Migrator_from_9_3_to_9_4()  # creates a class instance on
-        which we can call this function (method)
         >>> mig.transform_best_protein({'metaproteomic_analysis_id': 'foo', 'gene_function_id': 'bar', 'count': 1, 'best_protein': True})
         {'metaproteomic_analysis_id': 'foo', 'gene_function_id': 'bar', 'count': 1, 'is_best_protein': True}
         """
