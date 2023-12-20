@@ -549,5 +549,6 @@ migration-doctests:
 	$(RUN) python -m doctest -v nmdc_schema/migrators/cli/*.py
 
 # Generates a migrator skeleton for the specified schema versions.
+# Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
 migrator:
-	$(RUN) python nmdc_schema/migrators/cli/create_migrator.py
+	$(RUN) create-migrator
