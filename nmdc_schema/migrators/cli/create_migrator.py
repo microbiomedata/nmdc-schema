@@ -1,5 +1,7 @@
 import re
 from pathlib import Path
+from functools import wraps
+
 import click
 
 # TODO: Determine directory path dynamically, instead of hard-coding it.
@@ -11,6 +13,11 @@ def click_option_validator(function_to_decorate):
     This decorator wraps a function in another function, which strips away the
     first two arguments and then passes the third argument to the wrapped function.
     """
+
+    # Note: The `@wraps(fn)` decorator makes the wrapper function "look like" the wrapped
+    #       function; in that the wrapper will adopt the latter's name and docstring.
+    #       Reference: https://docs.python.org/3/library/functools.html#functools.wraps
+    @wraps(function_to_decorate)
     def wrapper(click_context, param, param_value):
         return function_to_decorate(param_value)
 
@@ -24,18 +31,22 @@ def validate_version_identifier(version_identifier: str) -> str:
 
     Reference: https://click.palletsprojects.com/en/8.1.x/options/#callbacks-for-validation
 
-    >>> validate_version_identifier("1.2.3")
-    True
-    >>> validate_version_identifier("1.2.")  # doesn't end with a number
-    False
-    >>> validate_version_identifier("1.2")
-    True
-    >>> validate_version_identifier("123.456.789")
-    True
-    >>> validate_version_identifier("123.456.789.1")  # 4 parts
-    False
-    >>> validate_version_identifier("123")
-    True
+    >>> validate_version_identifier(None, None, "1.2.3")
+    '1.2.3'
+    >>> validate_version_identifier(None, None, "1.2.")  # doesn't end with a number
+    Traceback (most recent call last):
+    ...
+    click.exceptions.BadParameter: Invalid format.
+    >>> validate_version_identifier(None, None, "1.2")
+    '1.2'
+    >>> validate_version_identifier(None, None, "123.456.789")
+    '123.456.789'
+    >>> validate_version_identifier(None, None, "123.456.789.1")  # 4 parts
+    Traceback (most recent call last):
+    ...
+    click.exceptions.BadParameter: Invalid format.
+    >>> validate_version_identifier(None, None, "123")
+    '123'
     """
     if re.fullmatch(r"^(\d+)(\.\d+){0,2}$", version_identifier) is None:
         raise click.BadParameter("Invalid format.")

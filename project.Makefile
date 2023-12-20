@@ -543,9 +543,10 @@ assets/filtered-api-requests/filtered-request-result.yaml
 
 .PHONY: migration-doctests migrator
 
-# Runs all doctests defined within the migrator modules.
+# Runs all doctests defined within the migrator modules and CLI scripts.
 migration-doctests:
 	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
+	$(RUN) python -m doctest -v nmdc_schema/migrators/cli/*.py
 
 # Generates a migrator skeleton for the specified schema versions.
 migrator:
