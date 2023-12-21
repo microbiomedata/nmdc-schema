@@ -494,7 +494,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name Migrator_from_9_1_to_9_2 \
+		--migrator-name migrator_from_9_1_to_9_2 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
@@ -569,8 +569,14 @@ assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nm
 assets/filtered-api-requests/filtered-request-result.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-.PHONY: migration-doctests
+.PHONY: migration-doctests migrator
 
-# Runs all doctests defined within the migrator modules.
+# Runs all doctests defined within the migrator modules and CLI scripts.
 migration-doctests:
 	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
+	$(RUN) python -m doctest -v nmdc_schema/migrators/cli/*.py
+
+# Generates a migrator skeleton for the specified schema versions.
+# Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
+migrator:
+	$(RUN) create-migrator
