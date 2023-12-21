@@ -1,7 +1,7 @@
 # Use Python 3.9 because that's the Python version listed in `pyproject.toml`.
 FROM python:3.9
 
-WORKDIR /src
+WORKDIR /nmdc-schema
 
 # Download and install pandoc.
 RUN apt update && \
@@ -23,9 +23,13 @@ RUN unzip /downloads/tmp/apache-jena-4.9.0.zip -d /downloads/apache-jena
 ENV JENAROOT="/downloads/apache-jena/apache-jena-4.9.0"
 ENV PATH="$JENAROOT/bin:$PATH"
 
+# Install Poetry, a package manager for Python (an alternative to pip).
 RUN pip install poetry
 
-ADD . /src/
+# Install the project dependencies.
+ADD . /nmdc-schema/
 RUN poetry install
 
-CMD ["echo", "Hello and goodbye."]
+# Run the MkDocs dev-server and configure it to accepts HTTP requests from outside the container.
+# Reference: https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734
+CMD ["poetry", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000"]
