@@ -69,3 +69,57 @@ at https://api.microbiomedata.org/docs#/metadata/list_from_collection_nmdcschema
 Or use the API programmatically! Note that some collections are large, so the responses are paged.
 
 You can learn about the other available collections at https://microbiomedata.github.io/nmdc-schema/Database/
+
+## Development
+
+This repository contains a `Dockerfile` you can use to run a container in which all the dependencies of `nmdc-schema` are present.
+
+### Usage
+
+You can build the container by issuing the following command in the root folder of the repo:
+
+```shell
+# Build a Docker image based upon the Dockerfile in the current folder.
+docker build -t nmdc-schema .
+```
+
+Once the container has been built, you can run it with:
+
+```shell
+# Instantiate the Docker image as a container, mount the current folder within it,
+# attach your terminal to the container's STDIN, STDOUT, and STDERR streams,
+# run `bash` within the container, and delete the container as soon as `bash` stops running.
+docker run --name nmdc-schema --rm -it -v "$(pwd):/src" nmdc-schema /bin/bash
+```
+
+Then, inside the Docker container, you can run whatever shell commands you want:
+
+```shell
+poetry install
+make squeaky-clean
+poetry shell
+# etc.
+```
+
+Alternatively, once the container has been built, you can run a specific shell command in it:
+
+```shell
+docker run --name nmdc-schema --rm -it -v "$(pwd):/src" nmdc-schema /bin/bash -c "hostname; whoami"
+```
+
+#### mkdocs
+
+In case you want to test the `mkdocs`, you can run the container with its port `8000` mapped to a localhost port (e.g. `18000`):
+
+```shell
+docker run --name nmdc-schema --rm -it -v "$(pwd):/src" -p "18000:8000" nmdc-schema /bin/bash
+```
+
+Then, inside the Docker container:
+
+```shell
+# Start the mkdocs server, binding the server to host "0.0.0.0" (i.e. allowing requests to come from any host) instead of "localhost" (default).
+$ poetry run mkdocs serve --dev-addr 0.0.0.0:8000
+```
+
+Finally, on your computer, visit the documentation website at http://localhost:18000/nmdc-schema/
