@@ -72,54 +72,67 @@ You can learn about the other available collections at https://microbiomedata.gi
 
 ## Development
 
-This repository contains a `Dockerfile` you can use to run a container in which all the dependencies of `nmdc-schema` are present.
+This repository includes a Docker-based development environment. That environment consists of a single container running Linux. All the dependencies of this project (e.g. Apache Jena, yq) are present within that container.
 
 ### Usage
 
-You can build the container by issuing the following command in the root folder of the repo:
+Here's how you can instantiate the development environment on your computer.
 
-```shell
-# Build a Docker image based upon the Dockerfile in the current folder.
-docker build -t nmdc-schema .
-```
+#### Prerequisites
 
-Once the container has been built, you can run it with:
+- [Docker](https://www.docker.com/products/docker-desktop/) is installed on your computer.
+  - For example, version 24:
+    ```shell
+    $ docker --version
+    Docker version 24.0.6, build ed223bc
+    ```
 
-```shell
-# Instantiate the Docker image as a container, mount the current folder within it,
-# attach your terminal to the container's STDIN, STDOUT, and STDERR streams,
-# run `bash` within the container, and delete the container as soon as `bash` stops running.
-docker run --name nmdc-schema --rm -it -v "$(pwd):/src" nmdc-schema /bin/bash
-```
+#### Procedure
 
-Then, inside the Docker container, you can run whatever shell commands you want:
-
-```shell
-poetry install
-make squeaky-clean
-poetry shell
-# etc.
-```
-
-Alternatively, once the container has been built, you can run a specific shell command in it:
-
-```shell
-docker run --name nmdc-schema --rm -it -v "$(pwd):/src" nmdc-schema /bin/bash -c "hostname; whoami"
-```
-
-#### mkdocs
-
-In case you want to test the `mkdocs`, you can run the container with its port `8000` mapped to a localhost port (e.g. `18000`):
-
-```shell
-docker run --name nmdc-schema --rm -it -v "$(pwd):/src" -p "18000:8000" nmdc-schema /bin/bash
-```
-
-Then, inside the Docker container:
-
-```shell
-# Start the mkdocs server, binding the server to host "0.0.0.0" (i.e. allowing requests to come from any host) instead of "localhost" (default).
-$ poetry run mkdocs serve --dev-addr 0.0.0.0:8000
-```
-
-Finally, on your computer, visit the documentation website at http://localhost:18000/nmdc-schema/
+1. In the root folder of the repository, run the container (building it if it doesn't exist).
+   ```shell
+   docker compose up --detach
+   ```
+   > The first time you run that, it will take several **minutes** to finish. During that time, Docker will be _building_ a container image. When you run the command in the future, Docker will reuse that container image (unless you append `--build`).
+   >
+   > **Troubleshooting tip:** If Docker shows an error message saying "port is already allocated"; then append `--env DOCS_PORT=1234` to the command and re-run it (you can replace `1234` with any other port number available on your computer). Try different port numbers until that error message stops appearing.
+2. Connect to a bash shell running within the container.
+   ```shell
+   docker exec app bash
+   ```
+   > You can think of this as "`ssh`-ing" into a Linux system. In this case, the Linux system is a Docker container, and your computer is not using the SSH protocol, specifically.
+3. (Optional) Explore the container!
+   ```shell
+   $ whoami
+   $ hostname
+   $ uname -a
+   # ...
+   $ make --version
+   $ yq --version
+   $ python --version
+   $ poetry --version
+   $ ls /nmdc-schema
+   ```
+   > The root directory of the repository is mounted at `/nmdc-schema` within the container. Changes you make in that directory on your computer will show up within the container, and vice versa. 
+4. (Optional) Generate the MkDocs docs.
+   ```shell
+   $ make gendoc
+   ```
+5. (Optional) Visit the MkDocs server.
+   - In your web browser, visit http://localhost:8000
+     > Note: If you customized `DOCS_PORT` earlier, use that port number instead of `8000` here.
+6. Use the container as your `nmdc-schema` development environment.
+   ```shell
+   $ poetry install
+   $ make squeaky-clean
+   $ poetry shell
+   # etc.
+   ```
+7. (Optional) Done working on this project (e.g. for the day)? Stop the container.
+   ```shell
+   # (Optional) Disconnect from the container.
+   $ exit
+   
+   # Stop the container.
+   docker compose down
+   ```
