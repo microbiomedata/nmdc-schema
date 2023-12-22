@@ -13,6 +13,13 @@ RUN apt update && \
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
     chmod +x /usr/bin/yq
 
+# Download and install a Java Development Kit >= 11.
+# Note: This is a dependency of Apache Jena.
+RUN wget -P /downloads/tmp "https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-aarch64_bin.tar.gz"
+RUN mkdir /downloads/openjdk && \
+    tar -xvzf /downloads/tmp/openjdk-21.0.1_linux-aarch64_bin.tar.gz -C /downloads/openjdk
+ENV JAVA_HOME=/downloads/openjdk/jdk-21.0.1/
+
 # Download and install Apache Jena.
 # References:
 # - https://sparrowflights.blogspot.com/2012/12/how-to-install-jena-command-line-tools.html
