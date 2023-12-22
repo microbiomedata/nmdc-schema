@@ -14,9 +14,9 @@ services:
       # the port on which the MkDocs dev-server listens by default.
       #
       # The environment variable can be specified either via an `.env` file,
-      # or via the `--env/-e` CLI option; an example usage of the latter being:
+      # or by defining it when invoking `docker compose`, like this:
       # ```
-      # $ docker compose up -e DOCS_PORT=1234
+      # DOCS_PORT=1234 docker compose up
       # ```
       #
       - "${DOCS_PORT:-8000}:8000"
