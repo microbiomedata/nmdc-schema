@@ -98,7 +98,7 @@ Here's how you can instantiate the development environment on your computer.
    > **Troubleshooting tip:** If Docker shows an error message saying "port is already allocated"; then change the command to `DOCS_PORT=1234 docker compose up --detach` and re-run it (you can replace `1234` with any other port number between `1024`-`65535`, inclusive). You can try different port numbers until that error message stops appearing.
 2. Connect to a bash shell running within the container.
    ```shell
-   docker exec app bash
+   docker compose exec app bash
    ```
    > You can think of this as "`ssh`-ing" into a Linux system. In this case, the Linux system is a Docker container, and your computer is not using the SSH protocol, specifically.
 3. (Optional) Explore the container!
