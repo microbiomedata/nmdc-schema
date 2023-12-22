@@ -36,8 +36,9 @@ ENV PATH="$JENAROOT/bin:$PATH"
 # Install Poetry, a package manager for Python (an alternative to pip).
 RUN pip install poetry
 
-# Install the project dependencies.
-ADD . /nmdc-schema/
+# Install the project's Python dependencies.
+ADD ./poetry.lock    /nmdc-schema/poetry.lock
+ADD ./pyproject.toml /nmdc-schema/pyproject.toml
 RUN poetry install
 
 # Run the MkDocs dev-server and configure it to accepts HTTP requests from outside the container.
