@@ -113,7 +113,7 @@ Here's how you can instantiate the development environment on your computer.
 
 #### Procedure
 
-1. In the root folder of the repository, run the container (building the container image if it doesn't exist yet).
+1. In the root folder of the repository, run the container.
    ```shell
    docker compose up --detach
    ```
@@ -124,7 +124,7 @@ Here's how you can instantiate the development environment on your computer.
    ```shell
    docker compose exec app bash
    ```
-   > You can think of this as "`ssh`-ing" into a Linux system. In this case, the Linux system is a Docker container, and your computer is not using the SSH protocol, specifically.
+   > You can think of this as "`ssh`-ing" into a Linux system. In this case, the Linux system is a Docker container running on your computer, and you are using something other than `ssh` to communicate with it.
 3. (Optional) Explore the container!
    ```shell
    $ whoami
