@@ -100,7 +100,7 @@ Here's how you can instantiate the development environment on your computer.
 
 #### Procedure
 
-1. In the root folder of the repository, run the container (building it if it doesn't exist).
+1. In the root folder of the repository, run the container (building the container image if it doesn't exist yet).
    ```shell
    docker compose up --detach
    ```
@@ -130,7 +130,7 @@ Here's how you can instantiate the development environment on your computer.
    ```shell
    $ make gendoc
    ```
-5. (Optional) Visit the MkDocs server.
+5. (Optional) Visit the MkDocs dev-server.
    - In your web browser, visit http://localhost:8000
      > Note: If you customized `DOCS_PORT` earlier, use that port number instead of `8000` here.
 6. Use the container as your `nmdc-schema` development environment.
