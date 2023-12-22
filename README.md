@@ -72,7 +72,7 @@ You can learn about the other available collections at https://microbiomedata.gi
 
 ## Development
 
-This repository includes a Docker-based development environment. That environment consists of a single container running Linux. All the dependencies of this project (e.g. Apache Jena, yq) are present within that container.
+This repository includes a Docker-based development environment. That environment consists of a single container running Linux. All the dependencies of this project (e.g. [OpenJDK](https://openjdk.org/), [Apache Jena](https://jena.apache.org/), [GNU make](https://www.gnu.org/software/make/manual/make.html), [yq](https://mikefarah.gitbook.io/yq/)) are present within that container.
 
 ### Usage
 
@@ -95,7 +95,7 @@ Here's how you can instantiate the development environment on your computer.
    ```
    > The first time you run that, it will take several **minutes** to finish. During that time, Docker will be _building_ a container image. When you run the command in the future, Docker will reuse that container image (unless you append `--build`).
    >
-   > **Troubleshooting tip:** If Docker shows an error message saying "port is already allocated"; then append `--env DOCS_PORT=1234` to the command and re-run it (you can replace `1234` with any other port number available on your computer). Try different port numbers until that error message stops appearing.
+   > **Troubleshooting tip:** If Docker shows an error message saying "port is already allocated"; then change the command to `DOCS_PORT=1234 docker compose up --detach` and re-run it (you can replace `1234` with any other port number between `1024`-`65535`, inclusive). You can try different port numbers until that error message stops appearing.
 2. Connect to a bash shell running within the container.
    ```shell
    docker exec app bash
@@ -107,8 +107,9 @@ Here's how you can instantiate the development environment on your computer.
    $ hostname
    $ uname -a
    # ...
-   $ make --version
    $ yq --version
+   $ jena --version
+   $ make --version
    $ python --version
    $ poetry --version
    $ ls /nmdc-schema
