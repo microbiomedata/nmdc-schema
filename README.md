@@ -76,10 +76,10 @@ This repository includes a Docker-based development environment. That environmen
 
 ```mermaid
 graph BT
-    host["Host"]
+    host["Host terminal"]
     host -- "$ curl http://localhost:8000" --> mkdocs
     host -- "$ docker compose exec app bash" --> bash
-    bash -- "# cd /nmdc-schema" --> dir["Repository<br>file tree"]
+    bash -- "# cd /nmdc-schema" --> dir(("Repository<br>root<br>directory"))
     host -- "$ cd ." --> dir
     subgraph Container["Container"]
         mkdocs["MkDocs dev-server"]
