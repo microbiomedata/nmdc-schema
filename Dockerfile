@@ -18,7 +18,7 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 RUN wget -P /downloads/tmp "https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-aarch64_bin.tar.gz"
 RUN mkdir /downloads/openjdk && \
     tar -xvzf /downloads/tmp/openjdk-21.0.1_linux-aarch64_bin.tar.gz -C /downloads/openjdk
-ENV JAVA_HOME=/downloads/openjdk/jdk-21.0.1/
+ENV JAVA_HOME="/downloads/openjdk/jdk-21.0.1/"
 
 # Download and install Apache Jena.
 # References:
