@@ -41,7 +41,7 @@ ADD ./poetry.lock    /nmdc-schema/poetry.lock
 ADD ./pyproject.toml /nmdc-schema/pyproject.toml
 RUN poetry install
 
-# Display a welcome banner to people when they access the bash shell.
+# Define a "WELCOME!" banner that will be displayed when accessing the bash shell.
 # Reference: https://www.asciiart.eu/text-to-ascii-art (Pagga font)
 ENV BANNER_BASE64="4paR4paI4paR4paI4paR4paI4paA4paA4paR4paI4paR4paR4paR4paI4paA4paA4paR4paI4paA4paI4paR4paI4paE4paI4paR4paI4paA4paA4paR4paICuKWkeKWiOKWhOKWiOKWkeKWiOKWgOKWgOKWkeKWiOKWkeKWkeKWkeKWiOKWkeKWkeKWkeKWiOKWkeKWiOKWkeKWiOKWkeKWiOKWkeKWiOKWgOKWgOKWkeKWgArilpHiloDilpHiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDilpHiloDilpHiloDiloDiloDilpHiloAK"
 RUN echo "echo ${BANNER_BASE64} | base64 --decode" >> /root/.bashrc
