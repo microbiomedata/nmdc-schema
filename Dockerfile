@@ -22,16 +22,23 @@ RUN rm -rf /downloads/tmp/openjdk-21.0.1_linux-aarch64_bin.tar.gz
 ENV JAVA_HOME="/downloads/openjdk/jdk-21.0.1/"
 
 # Download and install Apache Jena.
+#
+# Note: The path, `~/apache-jena/bin`, is currently hard-coded in `project.Makefile`. So, here,
+#       we create a symbolic link (i.e. filesystem shortcut) from that hard-coded path to where
+#       we are storing Apache Jena, which is `/downloads/apache-jena/apache-jena-4.9.0/bin`.
+#
 # References:
-# - https://sparrowflights.blogspot.com/2012/12/how-to-install-jena-command-line-tools.html
-# - https://archive.apache.org/dist/jena/binaries/ (older binaries)
-# - https://dlcdn.apache.org/jena/binaries/ (newest binaries, but download URL changes when new version is released).
+# - https://archive.apache.org/dist/jena/binaries/ (older binaries, but download URLs remain constant)
+# - https://dlcdn.apache.org/jena/binaries/        (newer binaries, but download URLs change over time)
+#
 RUN wget -P /downloads/tmp "https://archive.apache.org/dist/jena/binaries/apache-jena-4.9.0.zip"
 RUN mkdir -p /downloads/apache-jena && \
     unzip /downloads/tmp/apache-jena-4.9.0.zip -d /downloads/apache-jena
 RUN rm -rf /downloads/tmp/apache-jena-4.9.0.zip
 ENV JENAROOT="/downloads/apache-jena/apache-jena-4.9.0"
 ENV PATH="$JENAROOT/bin:$PATH"
+RUN mkdir -p /root/apache-jena && \
+    ln --symbolic "${JENAROOT}/bin" /root/apache-jena/bin
 
 # Install Poetry, a package manager for Python (an alternative to pip).
 RUN pip install poetry
