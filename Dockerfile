@@ -46,6 +46,6 @@ RUN poetry install
 ENV BANNER_BASE64="4paR4paI4paR4paI4paR4paI4paA4paA4paR4paI4paR4paR4paR4paI4paA4paA4paR4paI4paA4paI4paR4paI4paE4paI4paR4paI4paA4paA4paR4paICuKWkeKWiOKWhOKWiOKWkeKWiOKWgOKWgOKWkeKWiOKWkeKWkeKWkeKWiOKWkeKWkeKWkeKWiOKWkeKWiOKWkeKWiOKWkeKWiOKWkeKWiOKWgOKWgOKWkeKWgArilpHiloDilpHiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDilpHiloDilpHiloDiloDiloDilpHiloAK"
 RUN echo "echo ${BANNER_BASE64} | base64 --decode" >> /root/.bashrc
 
-# Run the MkDocs dev-server and configure it to accepts HTTP requests from outside the container.
+# Run the MkDocs dev-server, configuring it to accept HTTP requests from outside the container.
 # Reference: https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734
 CMD ["poetry", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000"]
