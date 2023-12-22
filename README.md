@@ -74,6 +74,17 @@ You can learn about the other available collections at https://microbiomedata.gi
 
 This repository includes a Docker-based development environment. That environment consists of a single container running Linux. All the dependencies of this project (e.g. [OpenJDK](https://openjdk.org/), [Apache Jena](https://jena.apache.org/), [GNU make](https://www.gnu.org/software/make/manual/make.html), [yq](https://mikefarah.gitbook.io/yq/)) are present within that container.
 
+```mermaid
+graph BT
+    host["Host<br>(e.g. laptop)"]
+    host -- "$ curl http://localhost:8000" --> mkdocs
+    host -- "$ docker compose exec app bash" --> bash
+    subgraph Container["Container"]
+        mkdocs["MkDocs dev-server"]
+        bash["bash shell"]
+    end
+```
+
 ### Usage
 
 Here's how you can instantiate the development environment on your computer.
