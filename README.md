@@ -83,7 +83,7 @@ title: Development environment
 graph BT
     %% Nodes:
     dir["Repository<br>root directory"]
-    host["Terminal<br><small>(You are here)</small>"]
+    host["Terminal<br>(You are here)"]
     
     %% Nodes:
     host -- "$ curl http://localhost:8000" --> mkdocs
