@@ -16,8 +16,9 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 # Download and install a Java Development Kit >= 11.
 # Note: This is a dependency of Apache Jena.
 RUN wget -P /downloads/tmp "https://download.java.net/java/GA/jdk21.0.1/415e3f918a1f4062a0074a2794853d0d/12/GPL/openjdk-21.0.1_linux-aarch64_bin.tar.gz"
-RUN mkdir /downloads/openjdk && \
+RUN mkdir -p /downloads/openjdk && \
     tar -xvzf /downloads/tmp/openjdk-21.0.1_linux-aarch64_bin.tar.gz -C /downloads/openjdk
+RUN rm -rf /downloads/tmp/openjdk-21.0.1_linux-aarch64_bin.tar.gz
 ENV JAVA_HOME="/downloads/openjdk/jdk-21.0.1/"
 
 # Download and install Apache Jena.
@@ -26,7 +27,9 @@ ENV JAVA_HOME="/downloads/openjdk/jdk-21.0.1/"
 # - https://archive.apache.org/dist/jena/binaries/ (older binaries)
 # - https://dlcdn.apache.org/jena/binaries/ (newest binaries, but download URL changes when new version is released).
 RUN wget -P /downloads/tmp "https://archive.apache.org/dist/jena/binaries/apache-jena-4.9.0.zip"
-RUN unzip /downloads/tmp/apache-jena-4.9.0.zip -d /downloads/apache-jena
+RUN mkdir -p /downloads/apache-jena && \
+    unzip /downloads/tmp/apache-jena-4.9.0.zip -d /downloads/apache-jena
+RUN rm -rf /downloads/tmp/apache-jena-4.9.0.zip
 ENV JENAROOT="/downloads/apache-jena/apache-jena-4.9.0"
 ENV PATH="$JENAROOT/bin:$PATH"
 
