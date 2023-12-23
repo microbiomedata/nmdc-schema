@@ -85,7 +85,7 @@ graph BT
     dir["Repository<br>root directory"]
     host["Terminal<br>(You are here)"]
     
-    %% Nodes:
+    %% Links:
     host -- "$ curl http://localhost:8000" --> mkdocs
     host -- "$ docker compose exec app bash" --> bash
     bash -- "# cd /nmdc-schema" --> dir
