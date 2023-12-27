@@ -2,7 +2,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 import difflib
 
 class Migrator_from_X_to_PR23(MigratorBase):
-    """Migrates data from schema 9.1.0 to 9.2.0"""
+    """Migrates data from schema X to PR23"""
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
