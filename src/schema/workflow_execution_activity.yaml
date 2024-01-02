@@ -31,6 +31,8 @@ classes:
     slots:
       - analyte_category
       - was_informed_by
+      - gold_analysis_project_identifiers
+      - jgi_portal_analysis_project_identifiers
     slot_usage:
       id:
         required: true
@@ -50,7 +52,6 @@ classes:
           The value of this slot is a reference to a Data Generation 
           instance that informed the Workflow Chain instance with its
           output data and the metadata of the Data Generation.
-  
 
   WorkflowExecution:
     class_uri: "nmdc:WorkflowExecution"
@@ -189,7 +190,6 @@ classes:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecution
     slots:
-      - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
     slot_usage:
@@ -203,7 +203,6 @@ classes:
     class_uri: "nmdc:MetatranscriptomeAnnotation"
     is_a: WorkflowExecution
     slots:
-      - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
     slot_usage:
