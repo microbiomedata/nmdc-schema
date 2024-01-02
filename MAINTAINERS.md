@@ -8,6 +8,8 @@ To make new release of the schema, you must have the following installed on your
 - Some optional components use the Java-based [ROBOT](http://robot.obolibrary.org/), which might be replaced with Jena arq
 - [Jena riot]([url](https://www.bobdc.com/blog/jenagems/#rsparql)) is also a part of the MongoDB dumping, repairing and validation workflow, if the user wishes to generate and validate RDF/TTL.
 
+**Note**: The lead maintainer of this repository uses Apache Jena version `4.8.0`, specifically, which you can [download here](https://archive.apache.org/dist/jena/binaries/).
+
 ## Making changes to the NMDC Schema
 To track changes made to the NMDC Schema, it is best maintained by following these steps:
 1. Submit an [issue](https://github.com/microbiomedata/nmdc-schema/issues) detailing problem.
