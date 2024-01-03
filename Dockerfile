@@ -48,14 +48,13 @@ ADD ./poetry.lock    /nmdc-schema/poetry.lock
 ADD ./pyproject.toml /nmdc-schema/pyproject.toml
 RUN poetry install
 
-# Configure the container to display a "WELCOME!" message and the OS name whenever
+# Configure the container to display a welcome message and the OS name whenever
 # someone starts an interactive shell session (i.e. "connects to the shell").
-# Reference: https://www.asciiart.eu/text-to-ascii-art (Pagga font)
-ENV BANNER_BASE64="4paR4paI4paR4paI4paR4paI4paA4paA4paR4paI4paR4paR4paR4paI4paA4paA4paR4paI4paA4paI4paR4paI4paE4paI4paR4paI4paA4paA4paR4paICuKWkeKWiOKWhOKWiOKWkeKWiOKWgOKWgOKWkeKWiOKWkeKWkeKWkeKWiOKWkeKWkeKWkeKWiOKWkeKWiOKWkeKWiOKWkeKWiOKWkeKWiOKWgOKWgOKWkeKWgArilpHiloDilpHiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDiloDiloDilpHiloDilpHiloDilpHiloDiloDiloDilpHiloAK"
-RUN echo "echo ''"                                                        >> /etc/bash.bashrc
-RUN echo "echo ${BANNER_BASE64} | base64 --decode"                        >> /etc/bash.bashrc
-RUN echo "cat /etc/os-release | sed -n 's/PRETTY_NAME=\"\(.*\)\"/\\\1/p'" >> /etc/bash.bashrc
-RUN echo "echo ''"                                                        >> /etc/bash.bashrc
+RUN echo "OS_NAME=\$(cat /etc/os-release | sed -n 's/PRETTY_NAME=\"\(.*\)\"/\\\1/p')" >> /etc/bash.bashrc
+RUN echo "echo \"\""                                                                  >> /etc/bash.bashrc
+RUN echo "echo \"    Welcome to this nmdc-schema development container,\""            >> /etc/bash.bashrc
+RUN echo "echo \"    which is running \${OS_NAME}\"."                                 >> /etc/bash.bashrc
+RUN echo "echo \"\""                                                                  >> /etc/bash.bashrc
 
 # Run the MkDocs dev-server, configuring it to accept HTTP requests from outside the container.
 # Reference: https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734
