@@ -112,6 +112,7 @@ get-mixs-slots-matching-slot-list = "nmdc_schema.get_mixs_slots_matching_slot_li
 get-mixs-slots-used-in-schema = "nmdc_schema.get_mixs_slots_used_in_schema:main" # see nmdc_schema/generate_import_slots_regardless.py
 get-slots-from-class = "nmdc_schema.get_slots_from_class:main" # see tests/test_getters.py
 migration-recursion = 'nmdc_schema.migration_recursion:main'
+create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
