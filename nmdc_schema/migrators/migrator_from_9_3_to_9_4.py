@@ -12,7 +12,7 @@ class Migrator(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             metap_gene_function_aggregation_set=[self.rename_best_protein_field],
         )
 
