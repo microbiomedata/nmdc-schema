@@ -145,7 +145,9 @@ subsets:
 classes:
   MetaPFunctionAggMember:
     description:
-      A class for the metaproteomics aggregation table, used to enable NMDC's data portal KEGG search
+      Summarizes metaproteomics output results including which KEGG term are associated with identified peptides.  
+    comments:
+      - Used by the data portal for the KEGG search.
     slots:
       - metaproteomic_analysis_id
       - gene_function_id
