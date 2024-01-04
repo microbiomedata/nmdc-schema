@@ -2351,7 +2351,9 @@ slots:
   gene_function_id:
     range: uriorcurie
     required: true
-    description: The identifier for the gene function, ie KEGG.ORTHOLOGY:K00627
+    description: The identifier for the gene function.
+    examples: 
+      - value: KEGG.ORTHOLOGY:K00627
   count:
     range: integer
     required: true
