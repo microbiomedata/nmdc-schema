@@ -2347,7 +2347,7 @@ slots:
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecutionActivity
     required: true
-    description: The value for slot id for the analysis activity (WorkflowExecutionActivity) that generated functional annotation
+    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
   gene_function_id:
     range: uriorcurie
     required: true
