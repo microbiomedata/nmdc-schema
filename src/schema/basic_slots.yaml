@@ -219,7 +219,7 @@ slots:
     range: QuantityValue
   
   is_best_protein:
-    description: Slot to store a boolean value. If populated with a  value of true the gene function is the best protein hit, if false it is not the best protein hit.
+    description: The protein that is most likely to be associated with the peptide that was identified, using parsimony logic.
     range: boolean
     
   instrument_name:
