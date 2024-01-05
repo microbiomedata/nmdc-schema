@@ -11,11 +11,16 @@ class Migrator_from_X_to_PR23(MigratorBase):
 
         # Populate the "collection-to-transformers" map for this specific migration.
         self.agenda = dict(
-            metagenome_assembly_set=[self.execution_resource_update], metagenome_annotation_activity_set=[self.execution_resource_update],
-            metatranscriptome_activity_set=[self.execution_resource_update], mags_activity_set=[self.execution_resource_update],
-            metagenome_sequencing_activity_set=[self.execution_resource_update], read_qc_analysis_activity_set=[self.execution_resource_update],
-            read_based_taxonomy_analysis_activity_set=[self.execution_resource_update], metabolomics_analysis_activity_set=[self.execution_resource_update],
-            metaproteomics_analysis_activity_set=[self.execution_resource_update], nom_analysis_activity_set=[self.execution_resource_update]
+            metagenome_assembly_set=[self.execution_resource_update], 
+            metagenome_annotation_activity_set=[self.execution_resource_update],
+            metatranscriptome_activity_set=[self.execution_resource_update], 
+            mags_activity_set=[self.execution_resource_update],
+            metagenome_sequencing_activity_set=[self.execution_resource_update], 
+            read_qc_analysis_activity_set=[self.execution_resource_update],
+            read_based_taxonomy_analysis_activity_set=[self.execution_resource_update], 
+            metabolomics_analysis_activity_set=[self.execution_resource_update],
+            metaproteomics_analysis_activity_set=[self.execution_resource_update], 
+            nom_analysis_activity_set=[self.execution_resource_update]
         )
 
     def execution_resource_update(self, workflow_execution: dict):
