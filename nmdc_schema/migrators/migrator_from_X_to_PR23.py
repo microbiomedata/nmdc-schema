@@ -44,7 +44,9 @@ class Migrator_from_X_to_PR23(MigratorBase):
             
             workflow_resource_value = workflow_execution['execution_resource']
 
-            # Get closest match with the maximum closest values to return is 1, and a cutoff is 0.8
+            # Get the permissible value, if any, that is most similar to the original value
+            # and has a similarity score of at least 0.8 with respect to the original value.
+            # Reference: https://docs.python.org/3/library/difflib.html#difflib.get_close_matches
             matches = difflib.get_close_matches(workflow_resource_value, allowed_execution_resources, n=1, cutoff=0.8)
             
             if matches:
