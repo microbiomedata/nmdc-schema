@@ -29,9 +29,9 @@ class Migrator_from_X_to_PR23(MigratorBase):
         allowable permissible values of the ExecutionResourceEnum.
         
         >>> m = Migrator_from_X_to_PR23()
-        >>> m.execution_resource_update({'id': 123, 'execution_resource': 'LANL B-div'})
+        >>> m.standardize_execution_resource({'id': 123, 'execution_resource': 'LANL B-div'})
         {'id': 123, 'execution_resource': 'LANL-B-div'}
-        >>> m.execution_resource_update({'id': 234, 'execution_resource': 'NERSC - Cori'})
+        >>> m.standardize_execution_resource({'id': 234, 'execution_resource': 'NERSC - Cori'})
         {'id': 234, 'execution_resource': 'NERSC-Cori'}
         """
 
