@@ -18,21 +18,21 @@ import requests
 import time
 import yaml
 
-
 STEGEN_STUDY_ID = "nmdc:sty-11-aygzgv51"
-
 
 
 # TODO: Move API client to a common library that can be shared across projects.
 def expiry_dt_from_now(days=0, hours=0, minutes=0, seconds=0):
     return datetime.now(timezone.utc) + timedelta(days=days, hours=hours,
-                                          minutes=minutes,
-                              seconds=seconds)
+                                                  minutes=minutes,
+                                                  seconds=seconds)
+
 
 class NmdcRuntimeUserApi:
     """
     Basic Runtime API Client with user/password authentication.
     """
+
     def __init__(self, api_base="NAPA"):
         self.api_base = api_base
         if api_base == "NAPA":
@@ -49,6 +49,7 @@ class NmdcRuntimeUserApi:
         if (self.refresh_token_after is None or datetime.now(timezone.utc) >
                 self.refresh_token_after):
             self.get_token()
+
     def get_token(self):
         token_request_body = {
             "grant_type": "password",
@@ -64,7 +65,7 @@ class NmdcRuntimeUserApi:
         }
         rv = requests.post(
             self.base_url + "token", data=token_request_body
-            )
+        )
         self.token_response = rv.json()
         if "access_token" not in self.token_response:
             raise Exception(f"Getting token failed: {self.token_response}")
@@ -125,22 +126,23 @@ class NmdcRuntimeUserApi:
         if response.status_code != 200:
             raise Exception(
                 f"Error retrieving {workflow_activity_set} record informed by {informed_by_id}"
-                )
+            )
         workflow_activity_record = response.json()["cursor"]["firstBatch"]
         return workflow_activity_record
 
 
 @click.group()
 @click.option("--api_base", default="NAPA", help="API base to use.")
-
+@click.option("--env_file", default="local/.env", help="dotenv file for username, password, etc.")
 @click.pass_context
-def cli(ctx, api_base):
+def cli(ctx, api_base, env_file):
     """
     NMDC database command-line tools.
     """
     ctx.ensure_object(dict)
-    load_dotenv()
+    load_dotenv(env_file)  # todo parameterize
     ctx.obj["API_CLIENT"] = NmdcRuntimeUserApi(api_base=api_base)
+
 
 @cli.command()
 @click.option(
@@ -149,7 +151,7 @@ def cli(ctx, api_base):
     help=f"Optional updated study ID. Default: {STEGEN_STUDY_ID}",
 )
 @click.option("--yaml_out", is_flag=True, default=False, help=("Output in YAML "
-                                                         "format."))
+                                                               "format."))
 @click.pass_context
 def extract_study(ctx, study_id, yaml_out):
     """
@@ -173,7 +175,7 @@ def extract_study(ctx, study_id, yaml_out):
         format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
         datefmt='%H:%M:%S',
         level=logging.INFO
-        )
+    )
 
     logger = logging.getLogger()
     logger.addHandler(logging.StreamHandler())
@@ -250,7 +252,8 @@ def extract_study(ctx, study_id, yaml_out):
             for omics_processing_record in omics_processing_records:
                 omics_processing_id = omics_processing_record["id"]
                 # Get the Workflow Execution Activity record for the OmicsProcessing record
-                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name, omics_processing_id)
+                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
+                                                                                        omics_processing_id)
                 logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
                             f"{omics_processing_id}.")
                 wf_records.extend(workflow_activity_record)
@@ -278,6 +281,7 @@ def extract_study(ctx, study_id, yaml_out):
         logger.info(f"Writing results to {output_file_name}.")
         with open(output_file_name, "w") as f:
             f.write(json.dumps(json_data, indent=4))
+
 
 if __name__ == "__main__":
     cli(obj={})
