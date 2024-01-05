@@ -18,11 +18,16 @@ import requests
 import time
 import yaml
 
-
+# Studies with non-compliant IDs that have been re-IDed
 # Name:, study ID, legacy study ID
 STUDIES = {
     "Stegen": ("nmdc:sty-11-aygzgv51", "gold:Gs0114663"),
+    "SPRUCE": (None, "gold:Gs0110138"),
+    "EMP": (None, "gold:Gs0154244"),
+    "Luquillo": (None, "gold:Gs0128850"),
+    "CrestedButte": (None, "gold:Gs0135149"),
 }
+# Update study IDs after re-IDing
 DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
 
 
@@ -133,6 +138,19 @@ class NmdcRuntimeUserApi:
         workflow_activity_record = response.json()["cursor"]["firstBatch"]
         return workflow_activity_record
 
+
+def _write_db_to_file(db, output_dir, study_id, yaml_out):
+    # Write the results to a YAML or JSON file
+    if yaml_out:
+        output_file_name = f"{output_dir}{study_id.replace(':', '-')}.yaml"
+        yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
+        with open(output_file_name, "w") as f:
+            f.write(yaml.dump(yaml_data, indent=4))
+    else:
+        output_file_name = f"{output_dir}{study_id.replace(':', '-')}.json"
+        json_data = json.loads(json_dumper.dumps(db, inject_type=False))
+        with open(output_file_name, "w") as f:
+            f.write(json.dumps(json_data, indent=4))
 
 @click.group()
 @click.option("--api_base", default="NAPA", help="API base to use.")
@@ -273,18 +291,7 @@ def extract_study(ctx, study_id, yaml_out):
             db.__setattr__(wf_set_name, wf_records)
 
     # Write the results to a YAML or JSON file
-    if yaml_out:
-        output_file_name = f"{output_dir}{study_id.replace(':', '-')}.yaml"
-        yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
-        logger.info(f"Writing results to {output_file_name}.")
-        with open(output_file_name, "w") as f:
-            f.write(yaml.dump(yaml_data, indent=4))
-    else:
-        output_file_name = f"{output_dir}{study_id.replace(':', '-')}.json"
-        json_data = json.loads(json_dumper.dumps(db, inject_type=False))
-        logger.info(f"Writing results to {output_file_name}.")
-        with open(output_file_name, "w") as f:
-            f.write(json.dumps(json_data, indent=4))
+    _write_db_to_file(db, output_dir, study_id, yaml_out)
 
 if __name__ == "__main__":
     cli(obj={})
