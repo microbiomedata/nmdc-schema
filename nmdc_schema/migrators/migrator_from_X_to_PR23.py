@@ -23,7 +23,7 @@ class Migrator_from_X_to_PR23(MigratorBase):
             nom_analysis_activity_set=[self.execution_resource_update]
         )
 
-    def execution_resource_update(self, workflow_execution: dict):
+    def standardize_execution_resource(self, workflow_execution: dict):
         r"""
         Transforms the values of the execution_resource slot for any subclasses of WorkflowExecutionActivity into the
         allowable permissible values of the ExecutionResourceEnum.
