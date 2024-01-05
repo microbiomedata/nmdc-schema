@@ -47,7 +47,6 @@ click-log = "^0.4.0"
 linkml = "^1.6.3"
 linkml-runtime = "^1.6.2"
 python = "^3.9"
-click = "^8.1.7"
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies?
 #cruft = "^2.12.0" # for doing cookiecutter update... should this be installed wiht pipx instead?
