@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# nmdc_schema/src/scripts/db_tool.py
+# nmdc_schema/src/scripts/nmdc_database_tools.py
 """
-db_tool.py: Provide command-line tools for interacting with the NMDC database.
+nmdc_database_tools.py:
+Command-line tools for extracting data from the NMDC database via the API.
 """
 import click
 from datetime import datetime, timedelta, timezone
@@ -20,11 +21,6 @@ import yaml
 
 STEGEN_STUDY_ID = "nmdc:sty-11-aygzgv51"
 
-# logging.basicConfig(
-#     level=logging.INFO,
-#     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-#     handlers=[logging.StreamHandler()],
-# )
 logging.basicConfig(filename=STEGEN_STUDY_ID + '.log',
                     filemode='w',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
@@ -165,15 +161,15 @@ def cli(ctx, api_base):
 def extract_study(ctx, study_id, yaml_out):
     """
     Extract a study and its associated records from the NMDC database
-    via the API, and write the results to a YAML file.
+    via the API, and write the results to a JSON or YAML file.
 
     The study ID is optional, and defaults to the value of
     STEGEN_STUDY_ID. If you want to extract a different study, you
     can specify it here.
 
-    The output file is named after the study ID, with a .yaml
+    The output file is named after the study ID, with a .json/.yaml
     extension. For example, the default output file name is
-    nmdc:sty-11-aygzgv51.yaml.
+    nmdc:sty-11-aygzgv51.json.
 
     The output file is written to the current working directory.
 
