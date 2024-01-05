@@ -18,7 +18,11 @@ import requests
 import time
 import yaml
 
-STEGEN_STUDY_ID = "nmdc:sty-11-aygzgv51"
+# Name:, study ID, legacy study ID
+STUDIES = {
+    "Stegen": ("nmdc:sty-11-aygzgv51", "gold:Gs0114663"),
+}
+DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
 
 
 # TODO: Move API client to a common library that can be shared across projects.
@@ -134,21 +138,23 @@ class NmdcRuntimeUserApi:
 @click.group()
 @click.option("--api_base", default="NAPA", help="API base to use.")
 @click.option("--env_file", default="local/.env", help="dotenv file for username, password, etc.")
+@click.option("--output_dir", default="local/", help="Output directory.")
 @click.pass_context
-def cli(ctx, api_base, env_file):
+def cli(ctx, api_base, env_file, output_dir):
     """
     NMDC database command-line tools.
     """
     ctx.ensure_object(dict)
     load_dotenv(env_file)  # todo parameterize
     ctx.obj["API_CLIENT"] = NmdcRuntimeUserApi(api_base=api_base)
+    ctx.obj["OUTPUT_DIR"] = output_dir
 
 
 @cli.command()
 @click.option(
     "--study_id",
-    default=STEGEN_STUDY_ID,
-    help=f"Optional updated study ID. Default: {STEGEN_STUDY_ID}",
+    default=DEFAULT_STUDY_ID,
+    help=f"Optional updated study ID. Default: {DEFAULT_STUDY_ID}",
 )
 @click.option("--yaml_out", is_flag=True, default=False, help=("Output in YAML "
                                                                "format."))
@@ -158,8 +164,8 @@ def extract_study(ctx, study_id, yaml_out):
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a JSON or YAML file.
 
-    The study ID is optional, and defaults to the value of
-    STEGEN_STUDY_ID. If you want to extract a different study, you
+    The study ID is optional, and defaults to the new (re-IDed) Stegen
+    study ID. If you want to extract a different study, you
     can specify it here.
 
     The output file is named after the study ID, with a .json/.yaml
@@ -169,8 +175,9 @@ def extract_study(ctx, study_id, yaml_out):
     The output file is written to the current working directory.
 
     """
+    output_dir = ctx.obj["OUTPUT_DIR"]
     logging.basicConfig(
-        filename=study_id + '.log',
+        filename=output_dir + study_id.replace(':', '-') + ".log",
         filemode='w',
         format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
         datefmt='%H:%M:%S',
@@ -270,13 +277,13 @@ def extract_study(ctx, study_id, yaml_out):
 
     # Write the results to a YAML or JSON file
     if yaml_out:
-        output_file_name = f"{study_id.replace(':', '-')}.yaml"
+        output_file_name = f"{output_dir}{study_id.replace(':', '-')}.yaml"
         yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
         logger.info(f"Writing results to {output_file_name}.")
         with open(output_file_name, "w") as f:
             f.write(yaml.dump(yaml_data, indent=4))
     else:
-        output_file_name = f"{study_id.replace(':', '-')}.json"
+        output_file_name = f"{output_dir}{study_id.replace(':', '-')}.json"
         json_data = json.loads(json_dumper.dumps(db, inject_type=False))
         logger.info(f"Writing results to {output_file_name}.")
         with open(output_file_name, "w") as f:
