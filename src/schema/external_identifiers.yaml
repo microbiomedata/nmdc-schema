@@ -70,6 +70,8 @@ slots:
   jgi_portal_identifiers:
     mixin: true
     description: identifiers for entities according to JGI Portal
+    see_also:
+      - https://data.jgi.doe.gov/
 
   gnps_identifiers:
     mixin: true
@@ -308,9 +310,21 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^gold:Ga[0-9]+$"
-    description: identifiers for corresponding analysis project in GOLD
+    description: identifiers for corresponding analysis projects in GOLD
     examples:
       - value: https://bioregistry.io/gold:Ga0526289
+
+  jgi_portal_analysis_project_identifiers:
+    is_a: analysis_identifiers
+    mixins:
+      - jgi_portal_identifiers
+    id_prefixes:
+      - jgi.analysis
+    pattern: '^jgi.analysis:[0-9]+$'
+    description: identifiers for corresponding analysis projects in JGI Portal
+    examples:
+      - value: https://data.jgi.doe.gov/search?q=1414320
+        description: Metagenome - Draft Assembly YELL_051-M-20210705-comp-DNA1
 
   insdc_analysis_identifiers:
     is_a: analysis_identifiers
