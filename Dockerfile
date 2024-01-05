@@ -3,11 +3,6 @@ FROM python:3.9
 
 WORKDIR /nmdc-schema
 
-# Download and install pandoc.
-RUN apt update && \
-    apt install -y \
-      pandoc
-
 # Download and install yq.
 # Reference: https://github.com/mikefarah/yq#install
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && \
