@@ -21,14 +21,7 @@ import yaml
 
 STEGEN_STUDY_ID = "nmdc:sty-11-aygzgv51"
 
-logging.basicConfig(filename=STEGEN_STUDY_ID + '.log',
-                    filemode='w',
-                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
-                    datefmt='%H:%M:%S',
-                    level=logging.INFO)
 
-logger = logging.getLogger()
-logger.addHandler(logging.StreamHandler())
 
 # TODO: Move API client to a common library that can be shared across projects.
 def expiry_dt_from_now(days=0, hours=0, minutes=0, seconds=0):
@@ -174,74 +167,103 @@ def extract_study(ctx, study_id, yaml_out):
     The output file is written to the current working directory.
 
     """
+    logging.basicConfig(
+        filename=study_id + '.log',
+        filemode='w',
+        format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+        datefmt='%H:%M:%S',
+        level=logging.INFO
+        )
+
+    logger = logging.getLogger()
+    logger.addHandler(logging.StreamHandler())
     logger.info(f"Extracting study {study_id} from the NMDC database.")
     api_client = ctx.obj["API_CLIENT"]
     db = nmdc.Database()
 
-    # Get the study
-    study_response = api_client.request("GET", f"studies/{study_id}")
-    study_response.raise_for_status()
-    study = study_response.json()
-    logger.info(f"Got study {study['id']} from the NMDC database.")
+    # Get the study, if it exists
+    try:
+        study_response = api_client.request("GET", f"studies/{study_id}")
+        study = study_response.json()
+        logger.info(f"Got study {study['id']} from the NMDC database.")
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 404:
+            study = None
+            logger.info(f"Study {study_id} not found in the NMDC database.")
+        else:
+            raise e
     db.study_set.append(study)
 
     # Get the study's associated records
     # Biosamples part_of the study
-    biosamples = api_client.get_biosamples_part_of_study(study_id)
-    logger.info(f"Got {len(biosamples)} biosamples part_of {study_id}.")
-    db.biosample_set.extend(biosamples)
+    try:
+        biosamples = api_client.get_biosamples_part_of_study(study_id)
+        logger.info(f"Got {len(biosamples)} biosamples part_of {study_id}.")
+        db.biosample_set.extend(biosamples)
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 404:
+            logger.info(f"No biosamples found part_of {study_id}.")
+        else:
+            raise e
 
     # OmicsProcessing records part_of the study
-    omics_processing_records = api_client.get_omics_processing_records_part_of_study(study_id)
-    logger.info(f"Got {len(omics_processing_records)} OmicsProcessing records part_of {study_id}.")
-    db.omics_processing_set.extend(omics_processing_records)
+    try:
+        omics_processing_records = api_client.get_omics_processing_records_part_of_study(study_id)
+        logger.info(f"Got {len(omics_processing_records)} OmicsProcessing records part_of {study_id}.")
+        db.omics_processing_set.extend(omics_processing_records)
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 404:
+            logger.info(f"No OmicsProcessing records found part_of {study_id}.")
+            omics_processing_records = []
+        else:
+            raise e
 
-    # downstream workflow activity records
-    (
-        read_qc_records,
-        read_based_analysis,
-        read_based_taxonomy,
-        metagenome_assembly_records,
-        metagenome_annotation_records,
-        mags_records,
-        metatranscriptome,
-        metabolomics_analysis,
-        metaproteomics_analysis,
-        nom_analysis,
-    ) = ([], [], [], [], [], [], [], [], [], [])
-    downstream_workflow_activity_sets = {
-        "read_qc_analysis_activity_set": read_qc_records,
-        "read_based_analysis_activity_set": read_based_analysis,
-        "read_based_taxonomy_analysis_activity_set": read_based_taxonomy,
-        "metagenome_assembly_set": metagenome_assembly_records,
-        "metagenome_annotation_activity_set": metagenome_annotation_records,
-        "mags_activity_set": mags_records,
-        "metatranscriptome_activity_set": metatranscriptome,
-        "metabolomics_analysis_activity_set": metabolomics_analysis,
-        "metaproteomics_analysis_activity_set": metaproteomics_analysis,
-        "nom_analysis_activity_set": nom_analysis,
-    }
-
-    # Workflow Execution Activities and Data Objects for each OmicsProcessing record
-    for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
-        logger.info(f"Getting {wf_set_name} records informed_by OmicsProcessing records.")
-        for omics_processing_record in omics_processing_records:
-            omics_processing_id = omics_processing_record["id"]
-            # Get the Workflow Execution Activity record for the OmicsProcessing record
-            workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name, omics_processing_id)
-            logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
-                        f"{omics_processing_id}.")
-            wf_records.extend(workflow_activity_record)
-            # Get the output data object(s) for the Workflow Execution Activity record
-            for record in workflow_activity_record:
-                for data_object_id in record["has_output"]:
-                    data_object_response = api_client.request("GET", f"data_objects/{data_object_id}")
-                    data_object_response.raise_for_status()
-                    data_object = data_object_response.json()
-                    logger.info(f"Got data object {data_object['id']} for "
-                                f"{record['id']}.")
-                    db.data_object_set.append(data_object)
-        db.__setattr__(wf_set_name, wf_records)
+    if len(omics_processing_records) > 0:
+        # downstream workflow activity records
+        (
+            read_qc_records,
+            read_based_analysis,
+            read_based_taxonomy,
+            metagenome_assembly_records,
+            metagenome_annotation_records,
+            mags_records,
+            metatranscriptome,
+            metabolomics_analysis,
+            metaproteomics_analysis,
+            nom_analysis,
+        ) = ([], [], [], [], [], [], [], [], [], [])
+        downstream_workflow_activity_sets = {
+            "read_qc_analysis_activity_set": read_qc_records,
+            "read_based_analysis_activity_set": read_based_analysis,
+            "read_based_taxonomy_analysis_activity_set": read_based_taxonomy,
+            "metagenome_assembly_set": metagenome_assembly_records,
+            "metagenome_annotation_activity_set": metagenome_annotation_records,
+            "mags_activity_set": mags_records,
+            "metatranscriptome_activity_set": metatranscriptome,
+            "metabolomics_analysis_activity_set": metabolomics_analysis,
+            "metaproteomics_analysis_activity_set": metaproteomics_analysis,
+            "nom_analysis_activity_set": nom_analysis,
+        }
+        # Workflow Execution Activities and Data Objects for each OmicsProcessing record
+        for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
+            logger.info(f"Getting {wf_set_name} records informed_by OmicsProcessing records.")
+            for omics_processing_record in omics_processing_records:
+                omics_processing_id = omics_processing_record["id"]
+                # Get the Workflow Execution Activity record for the OmicsProcessing record
+                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name, omics_processing_id)
+                logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
+                            f"{omics_processing_id}.")
+                wf_records.extend(workflow_activity_record)
+                # Get the output data object(s) for the Workflow Execution Activity record
+                for record in workflow_activity_record:
+                    for data_object_id in record["has_output"]:
+                        data_object_response = api_client.request("GET", f"data_objects/{data_object_id}")
+                        data_object_response.raise_for_status()
+                        data_object = data_object_response.json()
+                        logger.info(f"Got data object {data_object['id']} for "
+                                    f"{record['id']}.")
+                        db.data_object_set.append(data_object)
+            db.__setattr__(wf_set_name, wf_records)
 
     # Write the results to a YAML or JSON file
     if yaml_out:
