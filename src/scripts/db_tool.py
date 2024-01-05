@@ -159,10 +159,10 @@ def cli(ctx, api_base):
     default=STEGEN_STUDY_ID,
     help=f"Optional updated study ID. Default: {STEGEN_STUDY_ID}",
 )
-@click.option("--yaml", is_flag=True, default=False, help=("Output in YAML "
+@click.option("--yaml_out", is_flag=True, default=False, help=("Output in YAML "
                                                          "format."))
 @click.pass_context
-def extract_study(ctx, study_id, yaml):
+def extract_study(ctx, study_id, yaml_out):
     """
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a YAML file.
@@ -248,7 +248,7 @@ def extract_study(ctx, study_id, yaml):
         db.__setattr__(wf_set_name, wf_records)
 
     # Write the results to a YAML or JSON file
-    if yaml:
+    if yaml_out:
         output_file_name = f"{study_id.replace(':', '-')}.yaml"
         yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
         logger.info(f"Writing results to {output_file_name}.")
