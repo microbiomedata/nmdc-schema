@@ -65,12 +65,8 @@ local/mixs_regen/slots_associated_with_biosample.tsv:
 local/mixs_regen/slots_associated_with_omics_processing.tsv:
 	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
 
-local/mixs_regen/slots_associated_with_library_preparation.tsv:
-	yq '.classes.LibraryPreparation.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
-
 local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
 local/mixs_regen/slots_associated_with_biosample.tsv \
-local/mixs_regen/slots_associated_with_library_preparation.tsv \
 local/mixs_regen/slots_associated_with_omics_processing.tsv
 	cat $^ > $@
 
@@ -360,35 +356,35 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MagsAnalysis") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MagsAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysis") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeAnnotation") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeAnnotation") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeSequencing") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeSequencing") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysis") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnalysis") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotation") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotation") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "NomAnalysis") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "NomAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.part_of.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_input.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_output.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysis") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadQcAnalysis") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadQcAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
+	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@
 	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
 
@@ -429,25 +425,25 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 # could also check --client-base-url https://api-napa.microbiomedata.org
 # but separate validate-filtered-request-all is available for that now
 
-# todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_set
+# todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_activity_set
 
-# 		--selected-collections data_object_set \
-# 		--selected-collections extraction_set \
-# 		--selected-collections field_research_site_set \
-# 		--selected-collections library_preparation_set \
-# 		--selected-collections mags_set \
-# 		--selected-collections metabolomics_analysis_set \
-# 		--selected-collections metagenome_annotation_set \
-# 		--selected-collections metagenome_assembly_set \
-# 		--selected-collections metagenome_sequencing_set  \
-# 		--selected-collections metaproteomics_analysis_set \
-# 		--selected-collections metatranscriptome_analysis_set \
-# 		--selected-collections nom_analysis_set \
-# 		--selected-collections omics_processing_set \
-# 		--selected-collections pooling_set \
-# 		--selected-collections processed_sample_set \
-# 		--selected-collections read_based_taxonomy_analysis_set \
-# 		--selected-collections read_qc_analysis_set \
+ #		--selected-collections data_object_set \
+ #		--selected-collections extraction_set \
+ #		--selected-collections field_research_site_set \
+ #		--selected-collections library_preparation_set \
+ #		--selected-collections mags_activity_set \
+ #		--selected-collections metabolomics_analysis_activity_set \
+ #		--selected-collections metagenome_annotation_activity_set \
+ #		--selected-collections metagenome_assembly_set \
+ #		--selected-collections metagenome_sequencing_activity_set  \
+ #		--selected-collections metaproteomics_analysis_activity_set \
+ #		--selected-collections metatranscriptome_activity_set \
+ #		--selected-collections nom_analysis_activity_set \
+ #		--selected-collections omics_processing_set \
+ #		--selected-collections pooling_set \
+ #		--selected-collections processed_sample_set \
+ #		--selected-collections read_based_taxonomy_analysis_activity_set \
+ #		--selected-collections read_qc_analysis_activity_set \
 
 ## can't handle empty selected-collections yet
 ## https://github.com/microbiomedata/nmdc-schema/issues/1485
@@ -456,49 +452,27 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
  #		--selected-collections material_sample_set \
  #		--selected-collections planned_process_set \
 
-#  		--selected-collections metap_gene_function_aggregation \
-
 local/mongo_as_unvalidated_nmdc_database.yaml:
-	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
+	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
 		--client-base-url https://api.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
 		--env-file local/.env \
-		--max-docs-per-coll 200000 \
+		--max-docs-per-coll 1000000000 \
 		--mongo-db-name nmdc \
 		--mongo-host localhost \
 		--mongo-port 27777 \
 		--output-yaml $@ \
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
-		--selected-collections biosample_set \
-		--selected-collections data_object_set \
-		--selected-collections functional_annotation_agg \
-		--selected-collections study_set \
- 		--selected-collections extraction_set \
- 		--selected-collections field_research_site_set \
- 		--selected-collections library_preparation_set \
- 		--selected-collections mags_set \
- 		--selected-collections metabolomics_analysis_set \
- 		--selected-collections metagenome_annotation_set \
- 		--selected-collections metagenome_assembly_set \
- 		--selected-collections metagenome_sequencing_set  \
- 		--selected-collections metaproteomics_analysis_set \
- 		--selected-collections metatranscriptome_analysis_set \
- 		--selected-collections nom_analysis_set \
- 		--selected-collections omics_processing_set \
- 		--selected-collections pooling_set \
- 		--selected-collections processed_sample_set \
- 		--selected-collections read_based_taxonomy_analysis_set \
- 		--selected-collections read_qc_analysis_set
-
-#		--skip-collection-check
+		--selected-collections omics_processing_set \
+		--skip-collection-check
 
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
-	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
+	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name Migrator_from_9_1_to_9_2 \
+		--migrator-name Migrator_from_X_to_PR4 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
@@ -508,11 +482,11 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_le
 
 local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
-	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_set
+	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
+	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
 	- $(JENA_PATH)/riot --validate $@ # < 1 minute
@@ -578,3 +552,4 @@ assets/filtered-api-requests/filtered-request-result.yaml
 # Runs all doctests defined within the migrator modules.
 migration-doctests:
 	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
+
