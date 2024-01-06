@@ -13,5 +13,5 @@ id: nmdc:bsm-99-dtTMNb
     has_raw_value: ENVO:00005792
     term:
       id: ENVO:00005792
-  infiltrations: 
+  infiltrations:
     - 2 minutes
