@@ -5,3 +5,4 @@ file_size_bytes: 1150434379
 url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw
 md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
 data_object_type: LC-DDA-MS/MS Raw Data
+type: nmdc:DataObject

@@ -82,6 +82,7 @@ prefixes:
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: "https://bioregistry.io/img.taxon:"
   jgi.proposal: "https://bioregistry.io/jgi.proposal:"
+  jgi.analysis: "https://data.jgi.doe.gov/search?q="
   jgi: http://example.org/jgi/
   kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
   linkml: https://w3id.org/linkml/
@@ -143,37 +144,35 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-
   NucleotideSequencing:
-    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated. 
+    class_uri: nmdc:NucleotideSequencing
+    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
-    comments: For example data generated from an Illumina or Pacific Biosciences instrument.  
-    slots: 
-      - gold_sequencing_project_identifiers
-      - seq_meth
-      - ncbi_project_name
-      - insdc_bioproject_identifiers
+    comments: For example data generated from an Illumina or Pacific Biosciences instrument.
     slot_usage:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  FluidHandling: 
+  FluidHandling:
+    class_uri: nmdc:FluidHandling
     is_a: MaterialProcessing
     description: the process that defines how a processed sample is introduced into the mass spectrometer
-    abstract: true 
+    abstract: true
 
   DirectInfusionProcess:
+    class_uri: nmdc:DirectInfusionProcess
     description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
     is_a: FluidHandling
     slots:
       - direct_infusion_category
 
   MassSpectrometry:
+    class_uri: nmdc:MassSpectrometry
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
-    exact_mappings: 
+    exact_mappings:
       - CHMO:0000470
     slots:
       - eluent_introduction
@@ -190,14 +189,17 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      
+
   FunctionalAnnotationAggMember:
+    class_uri: "nmdc:FunctionalAnnotationAggMember"
     slots:
       - metagenome_annotation_id
       - gene_function_id
       - count
+      - type
 
   Database:
+    class_uri: nmdc:Database
     tree_root: true
     aliases:
       - NMDC metadata object
@@ -208,7 +210,7 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      #      - dissolving_activity_set
+      ##      - dissolving_activity_set
       #      - material_sample_set
       #      - material_sampling_activity_set
       #      - reaction_activity_set
@@ -238,6 +240,24 @@ classes:
       - read_qc_analysis_set
       - study_set
       - workflow_execution_set
+      - instrument_set
+
+  Instrument:
+    class_uri: nmdc:Instrument
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    is_a: MaterialEntity
+    slots:
+      - vendor
+      - model
+    aliases:
+      - device
+    exact_mappings:
+      - OBI:0000968
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -281,12 +301,15 @@ classes:
         description: The volume of the solvent/solute being used, not the input.
 
   SolutionComponent:
+    class_uri: nmdc:SolutionComponent
     description: One constituent of a solution
     slots:
       - compound
       - concentration
+      - type
 
   Solution:
+    class_uri: nmdc:Solution
     description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
     aliases:
       - mixture
@@ -300,16 +323,42 @@ classes:
     slots:
       - has_solution_components
       - volume
+      - type
+
+  LaboratoryReagent:
+    class_uri: "nmdc:LaboratoryReagent"
+    aliases:
+      - chemical substance
+      - chemical compound
+      - chemical
+      - reagent
+      - reactant
+    description: >-
+      A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
+    slots:
+      - chemical_formula
+      - inchi_key
+      - sample_state_information
+      - mass
+      - volume
+      - concentration
+      - type
+    see_also:
+      - CHEBI:33893
 
   Protocol:
+    class_uri: nmdc:Protocol
     slots:
       - url
       - name
+      - type
 
   QualityControlReport:
+    class_uri: nmdc:QualityControlReport
     slots:
       - status
       - name
+      - type
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -339,6 +388,7 @@ classes:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
 
   FieldResearchSite:
+    class_uri: nmdc:FieldResearchSite
     aliases:
       - research plot
     description: A site, outside of a laboratory, from which biosamples may be collected.
@@ -369,6 +419,7 @@ classes:
           interpolated: true
 
   CollectingBiosamplesFromSite:
+    class_uri: nmdc:CollectingBiosamplesFromSite
     is_a: PlannedProcess
     title: Collecting Biosamples From Site
     comments:
@@ -389,6 +440,7 @@ classes:
           interpolated: true
 
   DataObject:
+    class_uri: nmdc:DataObject
     is_a: NamedThing
     in_subset:
       - data object subset
@@ -396,13 +448,14 @@ classes:
       "An object that primarily consists of symbols that represent information.   Files,
       records, and omics data are examples of data objects."
     slots:
-      - file_size_bytes
-      - md5_checksum
-      - data_object_type
       - compression_type
-      - was_generated_by
+      - data_category
+      - data_object_type
+      - file_size_bytes
+      - insdc_experiment_identifiers
+      - md5_checksum
       - url
-      - type
+      - was_generated_by
     slot_usage:
       name:
         required: true
@@ -415,6 +468,7 @@ classes:
           interpolated: true
 
   Biosample:
+    class_uri: 'nmdc:Biosample'
     rules:
       - title: dna_well_requires_plate
         description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
@@ -489,21 +543,15 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-      - host_disease_stat
-      - neon_biosample_identifiers
-      - host_taxid
-      - embargoed
-      - collected_from
-      - type
-      - img_identifiers
-      - samp_name
       - biosample_categories
-      - type
+      - collected_from
+      - embargoed
+      - host_disease_stat
+      - host_taxid
+      - img_identifiers
+      - neon_biosample_identifiers
       - part_of
-
-      ## Identifiers
-      - id
-      - alternative_identifiers
+      - samp_name
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
@@ -593,7 +641,7 @@ classes:
       - chem_oxygen_dem
       - chem_treat_method
       - chem_treatment
-      - chimera_check
+      #- chimera_check
       - chloride
       - chlorophyll
       - climate_environment
@@ -779,8 +827,6 @@ classes:
       - nitrite_nitrogen
       - nitro
       - non_min_nutr_regm
-      - nucl_acid_amp
-      - nucl_acid_ext
       - nucleic acid sequence source field
       - number_pets
       - number_plants
@@ -800,8 +846,6 @@ classes:
       - part_org_carb
       - part_org_nitro
       - particle_class
-      - pcr_cond
-      - pcr_primers
       - permeability
       - perturbation
       - pesticide_regm
@@ -818,7 +862,6 @@ classes:
       - plant_sex
       - plant_struc
       - pollutants
-      - pool_dna_extracts
       - porosity
       - potassium
       - pour_point
@@ -894,7 +937,6 @@ classes:
       - samp_transport_cond
       - samp_tvdss
       - samp_type
-      - samp_vol_we_dna_ext
       - samp_weather
       - samp_well_name
       - saturates_pc
@@ -905,8 +947,6 @@ classes:
       - season_use
       - secondary_treatment
       - sediment_type
-      - seq_meth
-      - seq_quality_check
       - sequencing field
       - sewage_type
       - shad_dev_water_mold
@@ -1415,6 +1455,7 @@ classes:
       - http://purl.obolibrary.org/obo/FBcv_0003024
 
   Doi:
+    class_uri: "nmdc:Doi"
     aliases:
       - DOIs
       - digital object identifiers
@@ -1427,6 +1468,7 @@ classes:
       - doi_value
       - doi_provider
       - doi_category
+      - type
     rules:
       - title: dataset_award_dois_required
         description: >-
@@ -1441,8 +1483,9 @@ classes:
           slot_conditions:
             doi_provider:
               required: true
-  
+
   Study:
+    class_uri: 'nmdc:Study'
     is_a: NamedThing
     in_subset:
       - sample subset
@@ -1462,17 +1505,13 @@ classes:
         A study (project) groups together data submitted to the archive and
         controls its release date. A study accession is typically used when citing
         data submitted to ENA
-    
+
     slots:
       - emsl_project_identifiers
       - neon_study_identifiers
       - jgi_portal_study_identifiers
 
-      ## Identifiers
-      - id
-
       ## Alternative IDs
-      - alternative_identifiers
       - gnps_task_identifiers
 
       ## Related IDs
@@ -1481,7 +1520,6 @@ classes:
       - alternative_descriptions
       - alternative_names
       - alternative_titles
-      - description
       - associated_dois
       - ecosystem
       - ecosystem_category
@@ -1490,21 +1528,19 @@ classes:
       - funding_sources
       - gold_study_identifiers
       - has_credit_associations
-      - study_category
       - insdc_bioproject_identifiers
       - mgnify_project_identifiers
       - notes
       - objective
       - part_of
       - principal_investigator
+      - protocol_link
       - related_identifiers
-      - relevant_protocols
       - specific_ecosystem
+      - study_category
       - study_image
       - title
-      - type
       - websites
-
     slot_usage:
       id:
         required: true
@@ -1549,6 +1585,8 @@ classes:
         comments:
           - Value is the id of the umbrella study or consortium.
         range: Study
+      protocol_link:
+        multivalued: true
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -1568,6 +1606,7 @@ classes:
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
   ProtocolExecution:
+    class_uri: 'nmdc:ProtocolExecution'
     is_a: PlannedProcess
     description: A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
     slots:
@@ -1579,16 +1618,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-        
+
 
   MaterialProcessing:
+    class_uri: 'nmdc:MaterialProcessing'
     is_a: PlannedProcess
     description:
       A process that takes one or more samples as inputs and generates
-      one or more samples as outputs. 
-    slots:
-      - has_input
-    notes: 
+      one or more samples as outputs.
+    #    slots:
+    #      - has_input
+    #      - instrument_used
+    notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
       id:
@@ -1606,6 +1647,7 @@ classes:
       - OBI:0000094
 
   SubSamplingProcess:
+    class_uri: 'nmdc:SubSamplingProcess'
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
     related_mappings:
@@ -1643,6 +1685,7 @@ classes:
         description: The subsample.
 
   MixingProcess:
+    class_uri: 'nmdc:MixingProcess'
     description: >
       The combining of components, particles or layers into a more homogeneous state.
     contributors:
@@ -1668,6 +1711,7 @@ classes:
         description: The mixed sample.
 
   FiltrationProcess:
+    class_uri: 'nmdc:FiltrationProcess'
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
     related_mappings:
@@ -1697,6 +1741,7 @@ classes:
         description: The volume of sample filtered.
 
   ChromatographicSeparationProcess:
+    class_uri: 'nmdc:ChromatographicSeparationProcess'
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     contributors:
@@ -1704,10 +1749,23 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: FluidHandling
     slots:
-      - chromatrographic_category
+      - has_calibration
+      - chromatographic_category
       - ordered_mobile_phases
       - stationary_phase
       - temperature
+    rules:
+      - title: has_calibration_required_if_gc
+        description: >-
+          If chromatographic_category is gas_chromatography, then has_calibration is required.
+        preconditions:
+          slot_conditions:
+            chromatographic_category:
+              equals_string: gas_chromatography
+        postconditions:
+          slot_conditions:
+            has_calibration:
+              required: true
     slot_usage:
       id:
         required: true
@@ -1715,7 +1773,66 @@ classes:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
+  ChemicalConversionProcess:
+    class_uri: 'nmdc:ChemicalConversionProcess'
+    description: >
+      A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
+    see_also:
+      - C01033
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    slots:
+      - chemical_conversion_category
+      - has_reagents
+      - catalyzed_by
+      - temperature
+      - duration
+    comments:
+      - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+  ReagentsCollection:
+    class_uri: 'nmdc:ReagentsCollection'
+    description: >-
+      A group of Solutions and Laboratory Reagents that are used together.
+    slots:
+      - solutions_used
+      - lab_reagents_used
+      - type
+
+  DissolvingProcess:
+    class_uri: 'nmdc:DissolvingProcess'
+    aliases:
+      - Solubilization
+    description: >
+      A mixing step where a soluble component is mixed with a liquid component.
+    exact_mappings:
+      - AFO:/process#AFP_0000112
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    slots:
+      - solvent
+      - solubilizing_agent
+      - duration
+      - temperature
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
   DataGeneration:
+    class_uri: 'nmdc:DataGeneration'
     aliases:
       - OmicsProcessing
       - assay
@@ -1732,37 +1849,23 @@ classes:
         An experiment contains information about a sequencing experiment including
         library and instrument details.
     slots:
-      - analyte_category
       - add_date
-      - chimera_check
+      - analyte_category
       - gold_sequencing_project_identifiers
-      - has_input
-      - has_output
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
-      - instrument_name
       - mod_date
       - ncbi_project_name
-      - nucl_acid_amp
-      - nucl_acid_ext
-      #      - omics_type
       - part_of
-      - pcr_cond
-      - pcr_primers
       - principal_investigator
-      - processing_institution
-      - samp_vol_we_dna_ext
-      - seq_meth
-      - seq_quality_check
       - target_gene
       - target_subfragment
-      - type
 
     slot_usage:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:datgen-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(datgen|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       has_input:
         required: true
@@ -1785,9 +1888,9 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding associated researchers to studies. 
+      This class supports binding associated researchers to studies.
       There will be at least a slot for a CRediT Contributor Role and for a person value.
-      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates 
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates
       at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
     slots:
       - applies_to_person
@@ -1798,19 +1901,19 @@ classes:
       - https://casrai.org/credit/
 
 enums:
-  
+
   DirectInfusionEnum:
     permissible_values:
       direct_infusion:
         aliases:
-         - DI
-      autosampler: {}
-  
+          - DI
+      autosampler: { }
+
   AcquisitionCategoryEnum:
     permissible_values:
       full_scan:
         aliases:
-         - MS
+          - MS
       tandem_mass_spectrum:
         aliases:
           -MSn
@@ -1818,16 +1921,16 @@ enums:
     permissible_values:
       data_independent_acquisition:
         aliases:
-         - DIA
+          - DIA
       data_dependent_acquisition:
         aliases:
           -DDA
-  
+
   ResolutionCategoryEnum:
     permissible_values:
       high: { }
       low: { }
-  
+
   MassAnalyzerEnum:
     permissible_values:
       time_of_flight:
@@ -1845,10 +1948,10 @@ enums:
           - ICR
       ion_trap:
         aliases:
-          - LTQ 
+          - LTQ
           - Ion Trap
           - Paul Trap
-  
+
   IonizationSourceEnum:
     permissible_values:
       electrospray_ionization:
@@ -1863,16 +1966,16 @@ enums:
       athmospheric_pressure_chemical_ionization:
         aliases:
           - APCI
-  
+
   MassSpectrumCollectionModeEnum:
     permissible_values:
-      profile: {}
-      centroid: {}
+      profile: { }
+      centroid: { }
 
   PolarityModeEnum:
     permissible_values:
-      positive: {}
-      negative: {}
+      positive: { }
+      negative: { }
 
   AnalyteCategoryEnum:
     permissible_values:
@@ -1923,17 +2026,99 @@ enums:
 
   InstrumentModelEnum:
     permissible_values:
-      Orbitrap:
-      VortexGenie2:
-      PIPETMAN F144059M:
+      exploris_240:
+        aliases:
+          - Orbitrap Exploris 240
+
+      exploris_480:
+        aliases:
+          - Orbitrap Exploris 480
+
+      ltq_orbitrap_velos:
+        aliases:
+          - LTQ Orbitrap Velos
+          - LTQ Orbitrap Velos ETD
+          - Velos
+
+      orbitrap_fusion_lumos:
+        aliases:
+          - Orbitrap Fusion Lumos
+          - Fusion
+
+      orbitrap_eclipse_tribid:
+        aliases:
+          - Orbitrap Eclipse Tribid
+          - Eclipse
+
+      orbitrap_q_exactive:
+        aliases:
+          - Orbitrap Q-Exactive HF
+          - Orbitrap Q-Exactive HF-X
+
+      solarix_7T:
+        aliases:
+          - 7T Solarix
+          - 7T FT-ICR MS
+          - 7T MRMS
+
+      solarix_12T:
+        aliases:
+          - 12T Solarix
+          - 12T FT-ICR MS
+          - 12T MRMS
+
+      solarix_15T:
+        aliases:
+          - 15T Solarix
+          - 15T FT-ICR MS
+          - 15T MRMS
+
+      agilent_8890A:
+        aliases:
+          - 8890A GC-MS
+          - Agilent GC MS
+
+      agilent_7980A:
+        aliases:
+          - 7980A GC-MS
+          - Agilent GC MS
+
+      vortex_genie_2:
+        aliases:
+          - VortexGenie2
+      novaseq:
+        aliases:
+          - NovaSeq
 
   InstrumentVendorEnum:
     permissible_values:
-      ThermoFisher:
-      VWR:
-      PerkinElmer:
-      Gilson:
-      ScientificIndustries:
+
+      waters:
+        aliases:
+          - Waters Corporation
+
+      agilent:
+        aliases:
+          - Agilent Technologies
+
+      bruker:
+        aliases:
+          - Bruker Corporation
+          - Bruker Daltonics
+
+      thermo_fisher:
+        aliases:
+          - ThermoFisher
+          - Thermo Fisher Scientific
+      vwr:
+      perkin_elmer:
+      gilson:
+      scientific_industries:
+      illumina:
+        aliases:
+          - Illumina
+        exact_mappings:
+          - BAO:0200000
 
   StatusEnum:
     permissible_values:
@@ -2000,6 +2185,12 @@ enums:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
 
+  DataCategoryEnum:
+    permissible_values:
+      instrument_data:
+        description: Data generated by a data generation planned process
+      processed_data:
+        description: Data generated by a workflow execution planned process
   file type enum:
     permissible_values:
       Metagenome Raw Reads:
@@ -2353,7 +2544,7 @@ enums:
           - OBI:0000355
       consortium:
         description: >-
-          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
+          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the
           consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
         comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
         exact_mappings:
@@ -2437,8 +2628,8 @@ enums:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
-      V-bottom conical tube:
-      falcon tube:
+      v-bottom_conical_tube:
+      falcon_tube:
 
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
@@ -2446,8 +2637,8 @@ enums:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
-      PTFE 96-well filter plate:
-  
+      ptfe_96_well_filter_plate:
+
   #  SolventEnum:
   #    description: The solvents that may be used in processing metabolomic samples.
   #    permissible_values:
@@ -2467,20 +2658,44 @@ enums:
   #      MSTFA:
   #      cloridic acid:
   #      Water:
-  #      trypsin in ammonium bicarbonate:
-  
+
   CompoundEnum:
     permissible_values:
-      ammonium bicarbonate:
-      deionized water:
+      ammonium_bicarbonate:
+      deionized_water:
       methanol:
-      trypsin:
-      chloridic acid:
+      hydrochloric_acid:
         aliases:
-          - hydrochloric acid
+          - chloridic_acid
       water:
+      triton_X-100:
 
-  
+  ProteolyticEnzymeEnum:
+    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
+    see_also:
+      - http://purl.obolibrary.org/obo/NCIT_C16554
+    permissible_values:
+      trypsin:
+      chymotrypsin:
+      lys_c:
+        aliases:
+          - Lys-C
+      lys_n:
+        aliases:
+          - Lys-N
+      glu_c:
+        aliases:
+          - Glu-C
+      arg_c:
+        aliases:
+          - Arg-C
+      asp_n:
+        aliases:
+          - Asp-N
+      alphalp:
+        aliases:
+          - alphaLP
+
   StationaryPhaseEnum:
     description: The type of stationary phase used in a solid phase extraction process.
     contributors:
@@ -2509,6 +2724,12 @@ enums:
       ZIC-pHILIC:
       ZIC-cHILIC:
 
+  SampleStateEnum:
+    permissible_values:
+      solid:
+      liquid:
+      gas:
+
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
     permissible_values:
@@ -2536,14 +2757,22 @@ enums:
         aliases:
           - SPE
 
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+      substitution:
+      acid_base:
+      reduction_oxidation:
+      combustion:
+      decomposition:
+
 slots:
 
-  analyte_category:
-    required: true
-    description: >
-      The type of analyte(s) that were measured in the data generation process and analyzed
-        in the Workflow Chain
-    range: AnalyteCategoryEnum
+  data_category:
+    domain: DataObject
+    range: DataCategoryEnum
+    description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
+
   model:
     range: InstrumentModelEnum
   vendor:
@@ -2589,7 +2818,7 @@ slots:
   library_preparation_kit:
     range: string
 
- ## WHY ARE THESE COMMENTED OUT?
+  ## WHY ARE THESE COMMENTED OUT?
   #    exact_mappings:
   #      - GENEPIO:0001450
   #  processed_date: # can we move this or infer this from the date of some other process?
@@ -2607,7 +2836,7 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
-  
+
   mass:
     title: mass
     description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
@@ -2623,6 +2852,8 @@ slots:
       - sample weight
     exact_mappings:
       - MS:1000004
+    narrow_mappings:
+      - MIXS:0000111
     domain: PlannedProcess
     range: QuantityValue
 
@@ -2644,7 +2875,6 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-    #    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2661,7 +2891,6 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2678,7 +2907,6 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2697,7 +2925,6 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2714,7 +2941,6 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -2735,7 +2961,6 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-    #    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -2754,7 +2979,6 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   env_package:
@@ -2770,7 +2994,6 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-    #    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -2829,22 +3052,19 @@ slots:
     multivalued: true
     inlined: true
     description: Links a study to one or more images.
-  relevant_protocols:
-    multivalued: true
-    range: string
   funding_sources:
     multivalued: true
     range: string
     description: >-
-      A list of organizations, along with the award numbers, that underwrite financial support for projects of 
-      a particular type. Typically, they process applications and award funds to the chosen qualified 
+      A list of organizations, along with the award numbers, that underwrite financial support for projects of
+      a particular type. Typically, they process applications and award funds to the chosen qualified
       applicants.
     comments:
       - Include only the name of the funding organization and the award or contract number.
     examples:
       - value: National Sciences Foundation Dimensions of Biodiversity (award no. 1342701)
       - value: >-
-          U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research 
+          U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research
           (BER) under contract DE-AC05-00OR2275
     close_mappings:
       - NCIT:C39409
@@ -2867,7 +3087,7 @@ slots:
     required: true
 
   object_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     inlined_as_list: true
     mixin: true
     multivalued: true
@@ -2876,165 +3096,169 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   planned_process_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins:
       - object_set
     range: PlannedProcess
     description:
       This property links a database object to the set of planned processes
       within it.
-    comments:
-      - PlannedProcess instances aggregated by this slot will require the designated_class slot
   biosample_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: CollectingBiosamplesFromSite
   data_object_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
   genome_feature_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
   functional_annotation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
   workflow_execution_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
   mags_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MagsAnalysis
     description:
       This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAnnotation
     description:
       This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAssembly
     description:
       This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeSequencing
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
   read_qc_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadQcAnalysis
     description:
       This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   data_generation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataGeneration
     description:
       This property links a database object to the set of omics processings
       within it.
   workflow_chain_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: WorkflowChain
     description:
       This property links a database object to the set of workflow chains
       within it.
   pooling_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Pooling
   processed_sample_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
   extraction_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Extraction
     description: This property links a database object to the set of extractions within it.
   library_preparation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     aliases:
       - library_construction_set
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
+  instrument_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: Instrument
+    description: This property links a database object to the set of instruments within it.
+
 
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
@@ -3062,7 +3286,6 @@ slots:
 
   ## GOLD PATHS
   gold_path_field:
-    #    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -3132,7 +3355,6 @@ slots:
   principal_investigator:
     aliases:
       - PI
-    #    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 
@@ -3329,7 +3551,6 @@ slots:
     range: boolean
     description: Whether or not pressure was applied to a thing or process.
   duration: # or could be a ISO8601 period string
-    domain: PlannedProcess
     range: QuantityValue
     description: The elapsed time of an activity.
     examples:
@@ -3362,7 +3583,9 @@ slots:
     #list example
   compound:
     domain: SolutionComponent
-    range: CompoundEnum
+    any_of:
+      - range: CompoundEnum
+      - range: ProteolyticEnzymeEnum
     description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
     required: true
   ordered_mobile_phases:
@@ -3376,9 +3599,54 @@ slots:
     domain: ChromatographicSeparationProcess
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
-  chromatrographic_category:
+  chromatographic_category:
     domain: ChromatographicSeparationProcess
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
-
+  has_reagents:
+    domain: ChemicalConversionProcess
+    range: ReagentsCollection
+    description: The reagents used in a chemical reaction.
+    #multivalued: true
+    #inlined_as_list: true
+  sample_state_information:
+    domain: ChemicalConversionProcess
+    description: >-
+      The chemical phase of a pure sample, or the state of a mixed sample
+    range: SampleStateEnum
+  catalyzed_by:
+    domain: ChemicalConversionProcess
+    range: Solution
+    description: The catalyst used to increase the rate of a chemical reaction.
+    multivalued: true
+    inlined_as_list: true
+  solutions_used:
+    domain: ReagentsCollection
+    range: Solution
+    description: The Solutions that are use together in some process
+    multivalued: true
+    inlined_as_list: true
+  lab_reagents_used:
+    domain: ReagentsCollection
+    range: LaboratoryReagent
+    description: The LaboratoryReagents that are used together in some process
+    multivalued: true
+    inlined_as_list: true
+  solvent:
+    domain: DissolvingProcess
+    range: Solution
+    required: true
+    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
+    exact_mappings:
+      - CHEBI:46787
+  solubilizing_agent:
+    domain: DissolvingProcess
+    range: CompoundEnum
+    description: A substance within a formulation that enhances the solubility of another substance.
+    exact_mappings:
+      - NCIT:C176640
+  chemical_conversion_category:
+    domain: ChemicalConversionProcess
+    range: ChemicalConversionCategoryEnum
+    description: The type of chemical conversion process.

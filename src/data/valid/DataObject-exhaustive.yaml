@@ -8,6 +8,9 @@ file_size_bytes: 1234
 id: "nmdc:dobj-11-dtTMNb"
 md5_checksum: "22afa3d49b73eaec2e9787a6b88fbdc3"
 name: Crispr Terms
-type: "nmdc:DataObject"
+type: nmdc:DataObject
 url: http://example.com
 was_generated_by: "nmdc:invalid_id"
+insdc_experiment_identifiers:
+  - insdc.sra:SRX0123456
+  - insdc.sra:ERX0123456

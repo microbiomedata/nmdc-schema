@@ -1,16 +1,20 @@
+type: nmdc:Solution
 has_solution_components:
   - compound: methanol
+    type: nmdc:SolutionComponent
     concentration:
+      type: nmdc:QuantityValue
       has_unit: mM
       has_numeric_value: 10
-  - compound: chloridic acid
+  - compound: hydrochloric_acid
+    type: nmdc:SolutionComponent
     concentration:
+      type: nmdc:QuantityValue
       has_unit: mM
       has_numeric_value: 15
-  - compound: trypsin
-    concentration:
-      has_unit: mM
-      has_numeric_value: 20
+  - compound: water
+    type: nmdc:SolutionComponent
 volume:
+  type: nmdc:QuantityValue
   has_numeric_value: 500
   has_unit: mL

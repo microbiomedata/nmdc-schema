@@ -2716,23 +2716,6 @@ slots:
     slot_uri: MIXS:0001012
     multivalued: false
     range: TextValue
-  chimera_check:
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: name and version of software, parameters used
-    description: Tool(s) used for chimera checking, including version number and parameters, to discover and remove chimeric sequences. A chimeric sequence is comprised of two or more phylogenetically distinct parent sequences.
-    title: chimera check software
-    examples:
-      - value: uchime;v4.1;default parameters
-    from_schema: http://w3id.org/mixs/terms
-    aliases:
-      - chimera check software
-    is_a: sequencing field
-    string_serialization: '{software};{version};{parameters}'
-    slot_uri: MIXS:0000052
-    multivalued: false
-    range: TextValue
   chloride:
     annotations:
       expected_value:

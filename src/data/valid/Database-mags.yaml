@@ -1,11 +1,11 @@
 mags_set:
   - id: nmdc:wfmag-99-5MiDJM
+    type: nmdc:MagsAnalysis
     name: MAGs activiity 1781_86101
-    was_informed_by: gold:Gp0115663
-    part_of: nmdc:wfch-11-ab
+    part_of:
+      - nmdc:wfch-11-ab
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
-    type: nmdc:MAGsAnalysisActivity
     execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
     has_input:
@@ -24,6 +24,7 @@ mags_set:
     binned_contig_num: 489
     mags_list:
       - bin_name: bins.1
+        type: nmdc:MagBin
         number_of_contig: 52
         completeness: 11.42
         contamination: 0.21
@@ -34,6 +35,7 @@ mags_set:
         num_23s: 0
         num_t_rna: 1
       - bin_name: bins.2
+        type: nmdc:MagBin
         number_of_contig: 426
         completeness: 51.25
         contamination: 10.34
@@ -44,6 +46,7 @@ mags_set:
         num_23s: 0
         num_t_rna: 26
       - bin_name: bins.3
+        type: nmdc:MagBin
         number_of_contig: 11
         completeness: 2
         contamination: 0
@@ -56,11 +59,11 @@ mags_set:
 
   - id: nmdc:wfmag-99-VOgM5i
     name: MAGs activiity 1781_86089
-    was_informed_by: gold:Gp0115664
-    part_of: nmdc:wfch-12-ab
+    part_of:
+      - nmdc:wfch-12-ab
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
-    type: nmdc:MAGsAnalysisActivity
+    type: nmdc:MagsAnalysis
     execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
     has_input:
@@ -79,6 +82,7 @@ mags_set:
     binned_contig_num: 206
     mags_list:
       - bin_name: bins.1
+        type: nmdc:MagBin
         number_of_contig: 74
         completeness: 25.86
         contamination: 0
@@ -89,6 +93,7 @@ mags_set:
         num_23s: 0
         num_t_rna: 4
       - bin_name: bins.2
+        type: nmdc:MagBin
         number_of_contig: 74
         completeness: 0
         contamination: 0
@@ -99,6 +104,7 @@ mags_set:
         num_23s: 0
         num_t_rna: 5
       - bin_name: bins.3
+        type: nmdc:MagBin
         number_of_contig: 58
         completeness: 17.61
         contamination: 0
@@ -108,4 +114,3 @@ mags_set:
         num_5s: 0
         num_23s: 0
         num_t_rna: 7
-

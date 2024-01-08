@@ -26,18 +26,16 @@ prefixes:
   MetaCyc: "https://bioregistry.io/metacyc.compound:"
   RHEA: "https://bioregistry.io/rhea:"
   SEED: "https://bioregistry.io/seed:"
-
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 
-
 default_prefix: nmdc
 default_range: string
 
-
 classes:
   GenomeFeature:
+    class_uri: "nmdc:GenomeFeature"
     description: >-
       A feature localized to an interval along a genome
     comments:
@@ -53,18 +51,17 @@ classes:
       - start
       - strand
       - type
+      - feature_category
     slot_usage:
       seqid:
         required: true
-      type:
-        range: OntologyClass
-        description: A type from the sequence ontology
       start:
         required: true
       end:
         required: true
 
   FunctionalAnnotationTerm:
+    class_uri: "nmdc:FunctionalAnnotationTerm"
     aliases:
       - function
       - FunctionalAnnotation
@@ -76,6 +73,7 @@ classes:
       - decide if this should be used for product naming
 
   Pathway:
+    class_uri: "nmdc:Pathway"
     aliases:
       - biological process
       - metabolic pathway
@@ -85,14 +83,12 @@ classes:
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     slots:
       - has_part
-
     slot_usage:
       has_part:
         range: Reaction
         required: true
         description: >-
           A pathway can be broken down to a series of reaction step
-
     id_prefixes:
       - KEGG_PATHWAY
       - COG
@@ -100,10 +96,12 @@ classes:
       - biolink:Pathway
 
   Reaction:
+    class_uri: "nmdc:Reaction"
     is_a: FunctionalAnnotationTerm
     description: >-
-      An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
-      Can also represent transporters
+      An individual biochemical transformation carried out by a functional unit of an organism, 
+      in which a collection of substrates are transformed into a collection of products.
+      Can also represent transporters.
     slots:
       - direction
       - is_balanced
@@ -127,12 +125,15 @@ classes:
       - biolink:MolecularActivity
 
   ReactionParticipant:
+    class_uri: "nmdc:ReactionParticipant"
     description: Instances of this link a reaction to a chemical entity participant
     slots:
       - chemical
       - stoichiometry
+      - type
 
   OrthologyGroup:
+    class_uri: "nmdc:OrthologyGroup"
     is_a: FunctionalAnnotationTerm
     description: >-
       A set of genes or gene products in which all members are orthologous
@@ -150,9 +151,12 @@ classes:
       - KEGG.ORTHOLOGY prefix is used for KO numbers
 
   FunctionalAnnotation:
+    class_uri: "nmdc:FunctionalAnnotation"
     description: >-
-      An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene product plays an active role in.
-      Functional annotations can be assigned manually by curators, or automatically in workflows. In the context of NMDC, all function annotation is performed
+      An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, 
+      or which the gene product plays an active role in.
+      Functional annotations can be assigned manually by curators, or automatically in workflows. 
+      In the context of NMDC, all function annotation is performed
       automatically, typically using HMM or Blast type methods
     notes:
       - "move id slot usage patterns to has_function slot usage?"
@@ -163,15 +167,16 @@ classes:
       - has_function
       - subject
       - was_generated_by
+      - type
+      - feature_category
     slot_usage:
       has_function:
         notes:
           - this slot had been called id
-          - "Still missing patterns for COG and RetroRules."
-          - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
-      type:
-        range: OntologyClass
-        description: TODO
+          - Still missing patterns for COG and RetroRules
+          - These patterns are not yet tied to the listed prefixes.
+            A discussion about that possibility had been started,
+            including the question of whether these lists are intended to be open examples or closed
       was_generated_by:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
@@ -180,6 +185,13 @@ classes:
       - biolink:GeneToGoTermAssociation
 
 slots:
+
+  feature_category:
+    range: ControlledIdentifiedTermValue
+    description: A Sequence Ontology term that describes the category of a feature
+    comments:
+      - FunctionalAnnotation and GenomeFeature had commented-out 'type' slot_usages that had been intended
+        to capture SO terms
 
   has_part:
     domain: Pathway
@@ -208,7 +220,6 @@ slots:
       - "and those are frequently fulltext, not CURIEs. MAM 2021-06-23"
     pattern: "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
 
-
   has_participants:
     abstract: true
     exact_mappings:
@@ -232,7 +243,8 @@ slots:
     todos:
       - "set the range to an enum?"
     description: >-
-      The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
+      The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or 
+      '-' (anti-sense strand or reverse strand).
     exact_mappings:
       - biolink:strand
 
@@ -299,4 +311,3 @@ slots:
     domain: GenomeFeature
     description: The start of the feature in positive 1-based integer coordinates
     close_mappings: biolink:start_interbase_coordinate
-

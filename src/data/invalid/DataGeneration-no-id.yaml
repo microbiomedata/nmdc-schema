@@ -3,7 +3,7 @@ add_date: 30-OCT-14 12.00.00.000000000 AM
 mod_date: 22-MAY-20 06.13.12.927000000 PM
 name: Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D
 processing_institution: JGI
-type: nmdc:OmicsProcessing
+type: nmdc:DataGeneration
 alternative_identifiers:
   - gold:Gp0108335
 has_input:

@@ -1,0 +1,15 @@
+metabolomics_analysis_set:
+  - id: nmdc:wfmb-99-ABCDEF
+    name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF
+    started_at_time: '2021-08-05T14:48:51+00:00'
+    ended_at_time: '2021-09-15T10:13:20+00:00'
+    execution_resource: NERSC-Cori
+    part_of: nmdc:wfch-11-ab
+    git_url: https://example.org/WorkflowExecutionActivity
+    has_input:
+      - nmdc:i1
+      - nmdc:i2
+    has_output:
+      - nmdc:o1
+      - nmdc:o2
+    type: nmdc:MetabolomicsAnalysis
