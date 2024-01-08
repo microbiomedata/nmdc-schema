@@ -580,3 +580,12 @@ migration-doctests:
 # Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
 migrator:
 	$(RUN) create-migrator
+
+.PHONY: extract-study
+extract-study:
+	$(RUN) get-study-related-records \
+		--api_base NAPA \
+		--env_file local/.env \
+		extract-study \
+		--study_id nmdc:sty-11-aygzgv51 \
+		--yaml_out
