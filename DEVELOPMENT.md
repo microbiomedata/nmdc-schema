@@ -28,6 +28,10 @@ graph BT
     end
 ```
 
+> Note: The container can access the **host environment** using the [special hostname](https://docs.docker.com/desktop/networking/#i-want-to-connect-from-a-container-to-a-service-on-the-host), 
+> `host.docker.internal`. In other words, anything you can access via `localhost` from within the host environment—for
+> example, a MongoDB server or an SSH tunnel—you can access via `host.docker.internal` from within the container.
+
 ### Usage
 
 Here's how you can instantiate the development environment on your computer.
