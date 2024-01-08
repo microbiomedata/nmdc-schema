@@ -595,6 +595,7 @@ slots:
     domain: WorkflowExecution
     range: string
 #    is_a: attribute
+    description: The computing resource or facility where the workflow was executed.
     examples:
       - value: NERSC-Cori
 
