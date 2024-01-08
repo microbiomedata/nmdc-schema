@@ -31,17 +31,18 @@ STUDIES = {
 DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
 
 
-
 # TODO: Move API client to a common library that can be shared across projects.
 def expiry_dt_from_now(days=0, hours=0, minutes=0, seconds=0):
     return datetime.now(timezone.utc) + timedelta(days=days, hours=hours,
-                                          minutes=minutes,
-                              seconds=seconds)
+                                                  minutes=minutes,
+                                                  seconds=seconds)
+
 
 class NmdcRuntimeUserApi:
     """
     Basic Runtime API Client with user/password authentication.
     """
+
     def __init__(self, api_base="NAPA"):
         self.api_base = api_base
         if api_base == "NAPA":
@@ -58,6 +59,7 @@ class NmdcRuntimeUserApi:
         if (self.refresh_token_after is None or datetime.now(timezone.utc) >
                 self.refresh_token_after):
             self.get_token()
+
     def get_token(self):
         token_request_body = {
             "grant_type": "password",
@@ -73,7 +75,7 @@ class NmdcRuntimeUserApi:
         }
         rv = requests.post(
             self.base_url + "token", data=token_request_body
-            )
+        )
         self.token_response = rv.json()
         if "access_token" not in self.token_response:
             raise Exception(f"Getting token failed: {self.token_response}")
@@ -134,7 +136,7 @@ class NmdcRuntimeUserApi:
         if response.status_code != 200:
             raise Exception(
                 f"Error retrieving {workflow_activity_set} record informed by {informed_by_id}"
-                )
+            )
         workflow_activity_record = response.json()["cursor"]["firstBatch"]
         return workflow_activity_record
 
@@ -154,17 +156,18 @@ def _write_db_to_file(db, output_dir, study_id, yaml_out):
 
 @click.group()
 @click.option("--api_base", default="NAPA", help="API base to use.")
-@click.option("--output_dir", default="../../local/", help="Output directory.")
-
+@click.option("--env_file", default="local/.env", help="dotenv file for username, password, etc.")
+@click.option("--output_dir", default="local/", help="Output directory.")
 @click.pass_context
-def cli(ctx, api_base, output_dir):
+def cli(ctx, api_base, env_file, output_dir):
     """
     NMDC database command-line tools.
     """
     ctx.ensure_object(dict)
-    load_dotenv()
+    load_dotenv(env_file)  # todo parameterize
     ctx.obj["API_CLIENT"] = NmdcRuntimeUserApi(api_base=api_base)
     ctx.obj["OUTPUT_DIR"] = output_dir
+
 
 @cli.command()
 @click.option(
@@ -173,7 +176,7 @@ def cli(ctx, api_base, output_dir):
     help=f"Optional updated study ID. Default: {DEFAULT_STUDY_ID}",
 )
 @click.option("--yaml_out", is_flag=True, default=False, help=("Output in YAML "
-                                                         "format."))
+                                                               "format."))
 @click.pass_context
 def extract_study(ctx, study_id, yaml_out):
     """
@@ -198,7 +201,7 @@ def extract_study(ctx, study_id, yaml_out):
         format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
         datefmt='%H:%M:%S',
         level=logging.INFO
-        )
+    )
 
     logger = logging.getLogger()
     logger.addHandler(logging.StreamHandler())
@@ -275,7 +278,8 @@ def extract_study(ctx, study_id, yaml_out):
             for omics_processing_record in omics_processing_records:
                 omics_processing_id = omics_processing_record["id"]
                 # Get the Workflow Execution Activity record for the OmicsProcessing record
-                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name, omics_processing_id)
+                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
+                                                                                        omics_processing_id)
                 logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
                             f"{omics_processing_id}.")
                 wf_records.extend(workflow_activity_record)
@@ -292,6 +296,7 @@ def extract_study(ctx, study_id, yaml_out):
 
     # Write the results to a YAML or JSON file
     _write_db_to_file(db, output_dir, study_id, yaml_out)
+
 
 if __name__ == "__main__":
     cli(obj={})
