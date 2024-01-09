@@ -12,7 +12,7 @@ class DictionaryAdapter(AdapterBase):
         r"""
         Initializes the reference to the database this instance will be used to manipulate.
         """
-        self.db = database
+        self._db = database
 
     def rename_collection(
         self, current_collection_name: str, new_collection_name: str
@@ -34,7 +34,7 @@ class DictionaryAdapter(AdapterBase):
         >>> "item_set" in database
         True
         """
-        self.db[new_collection_name] = self.db.pop(current_collection_name)
+        self._db[new_collection_name] = self._db.pop(current_collection_name)
 
     def get_document_by_nmdc_id(
         self, collection_name: str, nmdc_id: str
@@ -63,7 +63,7 @@ class DictionaryAdapter(AdapterBase):
         # Reference: https://docs.python.org/3/howto/functional.html#generator-expressions-and-list-comprehensions
         #
         document_generator = (
-            d for d in self.db[collection_name] if d.get("id") == nmdc_id
+            d for d in self._db[collection_name] if d.get("id") == nmdc_id
         )
 
         # Return the first document yielded by the generator (or `None` if the generator doesn't yield one).
@@ -86,4 +86,4 @@ class DictionaryAdapter(AdapterBase):
         >>> database["thing_set"][-1]  # gets last item in list
         {'id': '444', 'foo': 'dee'}
         """
-        self.db[collection_name].append(document)
+        self._db[collection_name].append(document)
