@@ -5,7 +5,7 @@ from adapter_base import AdapterBase
 class DictionaryAdapter(AdapterBase):
     r"""
     Class containing methods related to manipulating a "database" represented by
-    a Python data dictionary.
+    a Python dictionary.
     """
 
     def __init__(self, database: dict) -> None:
