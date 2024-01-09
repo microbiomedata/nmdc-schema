@@ -82,10 +82,10 @@ class Migrator(MigratorBase):
               --> As part of implementing a "transformation" function, you will
                   typically write a few doctests in the docstring of that function.
 
-        >>> mig = Migrator()  # creates a class instance on which we can call this function (method)
-        >>> mig.allow_multiple_names({'id': 123, 'name': 'My project'})  # test: transfers existing name to `names` list
+        >>> m = Migrator()  # creates a class instance on which we can call this function (method)
+        >>> m.allow_multiple_names({'id': 123, 'name': 'My project'})  # test: transfers existing name to `names` list
         {'id': 123, 'names': ['My project']}
-        >>> mig.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys
+        >>> m.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys
         {'id': 123, 'foo': 'bar', 'names': ['My project']}
         """
 
