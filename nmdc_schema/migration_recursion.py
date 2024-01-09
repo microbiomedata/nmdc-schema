@@ -8,6 +8,8 @@ import click_log
 import yaml
 from linkml_runtime import SchemaView
 
+from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
 
@@ -159,9 +161,13 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
         total_dict[tdk] = curie_migrator.fix_curies_recursively_by_key(
             tdv, set(curie_slots))
 
+    # Instantiate an adapter that the migrator can use to manipulate
+    # a "database" that is represented as a Python dictionary.
+    dictionary_adapter = DictionaryAdapter(database=total_dict)
+
     # iterate over migrators
     for current_migrator in migrators:
-        migrator = current_migrator(logger=logger)
+        migrator = current_migrator(adapter=dictionary_adapter, logger=logger)
 
         # iterate over collections, applying migration-specific transformations
         for collection_name, documents in total_dict.items():
