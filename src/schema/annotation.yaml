@@ -85,7 +85,7 @@ classes:
       - has_part
     slot_usage:
       has_part:
-        range: Reaction
+        range: BiochemicalReaction
         required: true
         description: >-
           A pathway can be broken down to a series of reaction step
@@ -95,8 +95,8 @@ classes:
     exact_mappings:
       - biolink:Pathway
 
-  Reaction:
-    class_uri: "nmdc:Reaction"
+  BiochemicalReaction:
+    class_uri: "nmdc:BiochemicalReaction"
     is_a: FunctionalAnnotationTerm
     description: >-
       An individual biochemical transformation carried out by a functional unit of an organism, 
@@ -195,7 +195,7 @@ slots:
 
   has_part:
     domain: Pathway
-    range: Reaction
+    range: BiochemicalReaction
     multivalued: true
 
   chemical:
@@ -249,7 +249,7 @@ slots:
       - biolink:strand
 
   direction:
-    domain: Reaction
+    domain: BiochemicalReaction
     range: string
     description: One of l->r, r->l, bidirectional, neutral # create an enum
   encodes:
@@ -288,7 +288,7 @@ slots:
   left_participants:
     is_a: has_participants
     multivalued: true
-    domain: Reaction
+    domain: BiochemicalReaction
     range: ReactionParticipant
   phase:
     domain: GenomeFeature
@@ -302,7 +302,7 @@ slots:
   right_participants:
     is_a: has_participants
     multivalued: true
-    domain: Reaction
+    domain: BiochemicalReaction
     range: ReactionParticipant
   smarts_string:
     range: string
