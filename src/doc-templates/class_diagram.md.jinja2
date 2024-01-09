@@ -1,0 +1,60 @@
+{% if schemaview.class_induced_slots(element.name)|sort(attribute='name')|length < 60 %}
+{% set parent_count = schemaview.class_parents(element.name)|length %}
+{% set child_count = schemaview.class_children(element.name)|length %}
+{% set slot_relationships = schemaview.class_induced_slots(element.name)|sort(attribute='name') %}
+{% set slot_relationships_count = slot_relationships|length %}
+
+{% if parent_count|int < 20 and (child_count|int + slot_relationships_count|int) < 20 %}
+{% if schemaview.class_parents(element.name) and schemaview.class_children(element.name) %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {% for s in schemaview.class_parents(element.name)|sort(attribute='name') -%}
+      {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}
+    {% endfor %}
+
+    {% for s in schemaview.class_children(element.name)|sort(attribute='name') -%}
+      {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
+    {% endfor %}
+    
+    {% for s in slot_relationships -%}
+      {{ gen.name(element) }} : {{gen.name(s)}}
+      {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
+    {% endfor %}
+```
+{% elif schemaview.class_parents(element.name) %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {% for s in schemaview.class_parents(element.name)|sort(attribute='name') -%}
+      {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}
+    {% endfor %}
+    {% for s in slot_relationships -%}
+      {{ gen.name(element) }} : {{gen.name(s)}}
+      {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
+    {% endfor %}
+```
+{% elif schemaview.class_children(element.name) %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {% for s in schemaview.class_children(element.name)|sort(attribute='name') -%}
+      {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
+    {% endfor %}
+    {% for s in slot_relationships -%}
+      {{ gen.name(element) }} : {{gen.name(s)}}
+      {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
+    {% endfor %}
+```
+{% else %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {% for s in slot_relationships -%}
+      {{ gen.name(element) }} : {{gen.name(s)}}
+      {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
+    {% endfor %}
+```
+{% endif %}
+{% endif %}
+{% endif %}
