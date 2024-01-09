@@ -1,5 +1,6 @@
 from typing import Dict, List
 from logging import getLogger
+from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
 
 class MigratorBase:
@@ -17,7 +18,10 @@ class MigratorBase:
     #
     _to_version: str = ""
 
-    def __init__(self, logger=None):
+    def __init__(self, adapter: AdapterBase, logger=None):
+        # Store a reference to the specified adapter instance.
+        self.adapter = adapter
+
         # If a logger was specified, use it; otherwise, initialize one and use that.
         self.logger = getLogger(__name__) if logger is None else logger
 
