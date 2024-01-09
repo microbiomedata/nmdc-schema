@@ -18,12 +18,17 @@ class MigratorBase:
     #
     _to_version: str = ""
 
-    def __init__(self, adapter: AdapterBase, logger=None):
-        # Store a reference to the specified adapter instance.
+    def __init__(self, adapter: AdapterBase = None, logger=None):
+        # Store a reference to the specified adapter instance. The adapter instance will be used to perform
+        # database operations beyond the original one-document-at-a-time, self-contained transformations;
+        # for example, renaming collections and creating documents based upon values in other documents.
         self.adapter = adapter
 
         # If a logger was specified, use it; otherwise, initialize one and use that.
         self.logger = getLogger(__name__) if logger is None else logger
+
+        if self.adapter is None:
+            self.logger.warning("No adapter was specified. Migration capability will be limited.")
 
         # Define the "agenda" of transformations that constitute this migration.
         #
