@@ -1,5 +1,5 @@
 from typing import Optional
-from adapter_base import AdapterBase
+from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
 
 class DictionaryAdapter(AdapterBase):
@@ -29,9 +29,9 @@ class DictionaryAdapter(AdapterBase):
         ... }
         >>> da = DictionaryAdapter(database)
         >>> da.rename_collection("thing_set", "item_set")
-        >>> "thing_set" in da.db
+        >>> "thing_set" in database
         False
-        >>> "item_set" in da.db
+        >>> "item_set" in database
         True
         """
         self.db[new_collection_name] = self.db.pop(current_collection_name)
@@ -83,7 +83,7 @@ class DictionaryAdapter(AdapterBase):
         ... }
         >>> da = DictionaryAdapter(database)
         >>> da.insert_document("thing_set", {"id": "444", "foo": "dee"})
-        >>> da.db["thing_set"][-1]  # gets last item in list
+        >>> database["thing_set"][-1]  # gets last item in list
         {'id': '444', 'foo': 'dee'}
         """
         self.db[collection_name].append(document)
