@@ -23,7 +23,8 @@ _{{ element_description_line }}_
 {% endif %}
 
 {% if element.abstract %}
-* __NOTE__: this is an abstract class and should not be instantiated directly
+!!! note
+    This is an abstract class and should not be instantiated directly.
 {% endif %}
 
 URI: {{ gen.uri_link(element) }}

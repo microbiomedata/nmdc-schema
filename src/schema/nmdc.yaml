@@ -1093,6 +1093,7 @@ classes:
 
       ## EMSL slots
       - bulk_elect_conductivity
+      - infiltrations
 
       ## bioscales slots
       - zinc
@@ -3048,6 +3049,19 @@ slots:
       description: The conductivity measurement was 0.017 millisiemens per centimeter.
     range: QuantityValue
 
+  infiltrations:
+    description: The amount of time it takes to complete each infiltration activity
+    examples:
+      - value: [ '00:01:32', '00:00:53']
+    aliases:
+      - infiltration_1
+      - infiltration_2
+    multivalued: true
+    list_elements_ordered: true
+    range: string
+    pattern: ^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$
+    see_also:
+      - https://www.protocols.io/view/field-sampling-protocol-kqdg3962pg25/v1
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
