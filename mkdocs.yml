@@ -13,6 +13,7 @@ plugins:
       redirect_maps:
         'home.md': 'index.md'  # redirects "/home" to "/"
 markdown_extensions:
+  - admonition
   - tables
   - pymdownx.magiclink
 extra_javascript:
