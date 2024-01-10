@@ -39,6 +39,16 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
+    def delete_document_by_nmdc_id(
+        self, collection_name: str, nmdc_id: str
+    ) -> int:
+        r"""
+        Deletes all documents having the specified `id` value, from the collection having the specified name,
+        and returns the number of documents deleted.
+        """
+        pass
+
+    @abstractmethod
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""
         Inserts the specified document into the collection having the specified name.

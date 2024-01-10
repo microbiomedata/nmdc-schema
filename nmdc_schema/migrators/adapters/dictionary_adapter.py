@@ -112,6 +112,45 @@ class DictionaryAdapter(AdapterBase):
         document = next(document_generator, None)
         return document
 
+    def delete_document_by_nmdc_id(self, collection_name: str, nmdc_id: str) -> int:
+        r"""
+        Deletes all documents having the specified `id` value, from the collection having the specified name,
+        and returns the number of documents deleted.
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "111", "foo": "bar"},
+        ...     {"id": "222", "foo": "baz"},
+        ...     {"id": "222", "foo": "blue"},  # same id, so that we can...
+        ...     {"id": "222", "foo": "blue"},  # ...test deleting multiple.
+        ...     {"id": "333", "foo": "qux"}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> len(database["thing_set"])
+        5
+        >>> da.delete_document_by_nmdc_id("thing_set", "no_such_id")
+        0
+        >>> len(database["thing_set"])
+        5
+        >>> da.delete_document_by_nmdc_id("thing_set", "222")  # deletes 3 documents
+        3
+        >>> len(database["thing_set"])  # 2 documents remain
+        2
+        """
+        # Filter out the matching documents.
+        # Reference: https://docs.python.org/3/library/functions.html#filter
+        documents_initial = self._db[collection_name]
+        document_generator = filter(lambda d: d.get("id") != nmdc_id, documents_initial)
+        documents_remaining = list(document_generator)
+
+        # Update the collection so that it consists of the filtered result.
+        self._db[collection_name] = documents_remaining
+
+        # Return the number of documents that were deleted.
+        num_documents_deleted = len(documents_initial) - len(documents_remaining)
+        return num_documents_deleted
+
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""
         Inserts the specified document into the collection having the specified name.
