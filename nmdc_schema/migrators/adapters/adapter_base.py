@@ -23,6 +23,13 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
+    def delete_collection(self, collection_name: str) -> None:
+        r"""
+        Deletes the collection having the specified name.
+        """
+        pass
+
+    @abstractmethod
     def get_document_by_nmdc_id(
         self, collection_name: str, nmdc_id: str
     ) -> Optional[dict]:

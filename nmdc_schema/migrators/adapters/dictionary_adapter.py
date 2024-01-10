@@ -40,9 +40,7 @@ class DictionaryAdapter(AdapterBase):
         if collection_name not in self._db:
             self._db[collection_name] = []
 
-    def rename_collection(
-        self, current_name: str, new_name: str
-    ) -> None:
+    def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
         Renames the specified collection so that it has the specified name.
 
@@ -61,6 +59,24 @@ class DictionaryAdapter(AdapterBase):
         True
         """
         self._db[new_name] = self._db.pop(current_name)
+
+    def delete_collection(self, collection_name: str) -> None:
+        r"""
+        Deletes the collection having the specified name.
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "111", "foo": "bar"},
+        ...     {"id": "222", "foo": "baz"},
+        ...     {"id": "333", "foo": "qux"}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.delete_collection("thing_set")
+        >>> "thing_set" in database
+        False
+        """
+        del self._db[collection_name]
 
     def get_document_by_nmdc_id(
         self, collection_name: str, nmdc_id: str
