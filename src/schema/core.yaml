@@ -578,6 +578,7 @@ slots:
   execution_resource:
     domain: WorkflowExecution
     range: string
+    description: The computing resource or facility where the workflow was executed.
     examples:
       - value: NERSC-Cori
 
