@@ -81,48 +81,13 @@ classes:
     is_a: FunctionalAnnotationTerm
     description: >-
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
-    slots:
-      - has_part
-    slot_usage:
-      has_part:
-        range: BiochemicalReaction
-        required: true
-        description: >-
-          A pathway can be broken down to a series of reaction step
     id_prefixes:
       - KEGG_PATHWAY
       - COG
     exact_mappings:
       - biolink:Pathway
-
-  BiochemicalReaction:
-    class_uri: "nmdc:BiochemicalReaction"
-    is_a: FunctionalAnnotationTerm
-    description: >-
-      An individual biochemical transformation carried out by a functional unit of an organism, 
-      in which a collection of substrates are transformed into a collection of products.
-      Can also represent transporters.
-    slots:
-      - direction
-      - is_balanced
-      - is_diastereoselective
-      - is_fully_characterized
-      - is_stereo
-      - is_transport
-      - left_participants
-      - right_participants
-      - smarts_string
-    id_prefixes:
-      - KEGG.REACTION
-      - RHEA
-      - MetaCyc
-      - EC
-      - GO
-      - MetaNetX
-      - SEED
-      - RetroRules
-    exact_mappings:
-      - biolink:MolecularActivity
+    comments:
+      - might have reactions as their parts
 
   ReactionParticipant:
     class_uri: "nmdc:ReactionParticipant"
@@ -193,10 +158,6 @@ slots:
       - FunctionalAnnotation and GenomeFeature had commented-out 'type' slot_usages that had been intended
         to capture SO terms
 
-  has_part:
-    domain: Pathway
-    range: BiochemicalReaction
-    multivalued: true
 
   chemical:
     description: from reaction participant class
@@ -249,7 +210,6 @@ slots:
       - biolink:strand
 
   direction:
-    domain: BiochemicalReaction
     range: string
     description: One of l->r, r->l, bidirectional, neutral # create an enum
   encodes:
@@ -259,6 +219,8 @@ slots:
       The gene product encoded by this feature.
       Typically this is used for a CDS feature or gene feature which will encode a protein.
       It can also be used by a nc transcript ot gene feature that encoded a ncRNA
+    comments:
+      - might have a reaction in its domain
   end:
     domain: GenomeFeature
     range: integer
@@ -288,8 +250,9 @@ slots:
   left_participants:
     is_a: has_participants
     multivalued: true
-    domain: BiochemicalReaction
     range: ReactionParticipant
+    comments:
+      - might have a reaction in its domain
   phase:
     domain: GenomeFeature
     range: integer
@@ -302,8 +265,9 @@ slots:
   right_participants:
     is_a: has_participants
     multivalued: true
-    domain: BiochemicalReaction
     range: ReactionParticipant
+    comments:
+      - might have a reaction in its domain
   smarts_string:
     range: string
   start:
