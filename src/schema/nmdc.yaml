@@ -2328,17 +2328,14 @@ slots:
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecutionActivity
-    required: true
     description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
   gene_function_id:
     range: uriorcurie
-    required: true
     description: The identifier for the gene function.
     examples: 
       - value: KEGG.ORTHOLOGY:K00627
   count:
     range: integer
-    required: true
   functional_annotation_agg:
     domain: Database
     range: FunctionalAnnotationAggMember
