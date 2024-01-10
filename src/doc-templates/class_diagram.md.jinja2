@@ -17,14 +17,16 @@
   {{ count.value }}
 {% endmacro %}
 
-{% if schemaview.class_induced_slots(element.name)|sort(attribute='name')|length < 60 %}
 {% set parent_count = schemaview.class_parents(element.name)|length %}
 {% set child_count = schemaview.class_children(element.name)|length %}
 {% set slot_relationships = schemaview.class_induced_slots(element.name)|sort(attribute='name') %}
 
 {% set slot_relationships_count = slot_relationships_count_fn(slot_relationships) %}
 
-{% if parent_count|int < 20 and (child_count|int + slot_relationships_count|int) < 20 %}
+{% if schemaview.class_induced_slots(element.name)|sort(attribute='name')|length < 60 and
+    parent_count|int < 20 and 
+    (child_count|int + slot_relationships_count|int) < 20
+%}
 {% if schemaview.class_parents(element.name) and schemaview.class_children(element.name) %}
 ```{{ gen.mermaid_directive() }}
 classDiagram
@@ -66,5 +68,7 @@ classDiagram
     {{ render_relationships(slot_relationships) }}
 ```
 {% endif %}
-{% endif %}
+{% else %}
+!!! note
+    Mermaid class diagram too large to render.
 {% endif %}
