@@ -14,8 +14,34 @@ class DictionaryAdapter(AdapterBase):
         """
         self._db = database
 
+    def create_collection(self, collection_name: str) -> None:
+        r"""
+        Creates an empty collection having the specified name, if no collection by that name exists.
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "111", "foo": "bar"},
+        ...     {"id": "222", "foo": "baz"},
+        ...     {"id": "333", "foo": "qux"}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.create_collection("thing_set")
+        >>> "thing_set" in database
+        True
+        >>> len(database["thing_set"])  # existing collection will retain existing contents
+        3
+        >>> da.create_collection("item_set")
+        >>> "item_set" in database
+        True
+        >>> len(database["item_set"])  # new collection will be empty
+        0
+        """
+        if collection_name not in self._db:
+            self._db[collection_name] = []
+
     def rename_collection(
-        self, current_collection_name: str, new_collection_name: str
+        self, current_name: str, new_name: str
     ) -> None:
         r"""
         Renames the specified collection so that it has the specified name.
@@ -34,7 +60,7 @@ class DictionaryAdapter(AdapterBase):
         >>> "item_set" in database
         True
         """
-        self._db[new_collection_name] = self._db.pop(current_collection_name)
+        self._db[new_name] = self._db.pop(current_name)
 
     def get_document_by_nmdc_id(
         self, collection_name: str, nmdc_id: str

@@ -9,9 +9,14 @@ class AdapterBase(ABC):
     """
 
     @abstractmethod
-    def rename_collection(
-        self, current_collection_name: str, new_collection_name: str
-    ) -> None:
+    def create_collection(self, collection_name: str) -> None:
+        r"""
+        Creates an empty collection having the specified name, if no collection by that name exists.
+        """
+        pass
+
+    @abstractmethod
+    def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
         Renames the specified collection so that it has the specified name.
         """
