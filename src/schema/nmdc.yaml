@@ -143,25 +143,6 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-  MetaPFunctionAggMember:
-    description:
-      Summarizes metaproteomics output results including which KEGG term are associated with identified peptides.  
-    comments:
-      - Used by the data portal for the KEGG search.
-    slots:
-      - metaproteomic_analysis_id
-      - gene_function_id
-      - count
-      - is_best_protein
-    slot_usage:
-      metaproteomic_analysis_id:
-        required: true
-      gene_function_id:
-        required: true
-      count:
-        required: true
-      is_best_protein:
-        required: true
         
   FunctionalAnnotationAggMember:
     slots:
@@ -188,7 +169,6 @@ classes:
     slots:
       - planned_process_set
       - functional_annotation_agg
-      - metap_gene_function_aggregation
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
@@ -2366,16 +2346,6 @@ slots:
     inlined: true
     inlined_as_list: true
   
-  # for metaPFunctional agg  
-  metap_gene_function_aggregation:
-    range: MetaPFunctionAggMember
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  metaproteomic_analysis_id:
-    range: MetaproteomicsAnalysisActivity
-    required: true
-    description: The value for identifier for the metaproteomics analysis activity. 
   ecosystem_path_id:
     range: string
     description: A unique id representing the GOLD classifiers associated with a sample.

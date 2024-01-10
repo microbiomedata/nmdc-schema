@@ -218,9 +218,6 @@ slots:
     domain: ProcessedSample
     range: QuantityValue
   
-  is_best_protein:
-    description: The protein that is most likely to be associated with the peptide that was identified, using parsimony logic.
-    range: boolean
     
   instrument_name:
     domain: PlannedProcess
