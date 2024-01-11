@@ -1,4 +1,5 @@
-from typing import Optional
+from copy import deepcopy
+from typing import Optional, Callable, List
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
 
@@ -168,3 +169,50 @@ class DictionaryAdapter(AdapterBase):
         {'id': '444', 'foo': 'dee'}
         """
         self._db[collection_name].append(document)
+
+    def process_each_document(
+        self, collection_name: str, pipeline: List[Callable[[dict], dict]]
+    ) -> None:
+        r"""
+        Passes each document in the specified collection through the specified processing pipeline—in which
+        the output of any given function is the input to the function after it—and stores the final output
+        back in the collection, replacing the original document.
+
+        Reference: https://docs.python.org/3/library/copy.html#copy.deepcopy
+
+        >>> def capitalize_foo_value(document: dict) -> dict:
+        ...     document["foo"] = document["foo"].upper()
+        ...     return document
+        >>>
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "111", "foo": "bar"},
+        ...     {"id": "222", "foo": "baz"},
+        ...     {"id": "333", "foo": "qux"}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.process_each_document("thing_set", [capitalize_foo_value])
+        >>> database["thing_set"][0]
+        {'id': '111', 'foo': 'BAR'}
+        >>> database["thing_set"][1]
+        {'id': '222', 'foo': 'BAZ'}
+        """
+
+        # Iterate over every document in the collection.
+        for index, original_document in enumerate(self._db[collection_name]):
+            # Make a copy of the original document.
+            #
+            # Note: This isn't technically necessary (we could modify the original document in place
+            #       while it resides in the Python array), but this keeps the algorithm analogous to
+            #       what I expect its "real database" (e.g. MongoDB) counterparts to be.
+            #
+            processed_document = deepcopy(original_document)
+
+            # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
+            # such that the output from one stage becomes the input to the next stage.
+            for function in pipeline:
+                processed_document = function(processed_document)
+
+            # Overwrite the original document with the processed one.
+            self._db[collection_name][index] = processed_document
