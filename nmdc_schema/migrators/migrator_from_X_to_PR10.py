@@ -63,6 +63,8 @@ class Migrator_from_X_to_PR10(MigratorBase):
                            "read_qc_analysis_activity_set": "nmdc:ReadQcAnalysis"
                            }
         
+        document["type"] = class_uri_dict[collection_name]
+        
         
         return document
 
