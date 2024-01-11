@@ -37,11 +37,11 @@ class Migrator_from_X_to_PR10(MigratorBase):
         Adds a type slot to each collection with the appropriate class uri as the value. E.g. type: nmdc:Biosample
         
         >>> m = Migrator_from_X_to_PR10()
-        >>> m.move_doi_from_websites({'id': 123, 'websites': ['a', 'https://doi.org/10.25982/109073.30/1895615'], 'associated_dois': 
+        >>> m.add_type_slot_with_class_uri({'id': 123}) 
         ...     [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}]})
         {'id': 123, 'websites': ['a'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}, {'doi_value': 'doi:10.25982/109073.30/1895615', 'doi_category': 'dataset_doi', 'doi_provider': 'kbase'}]}
         """
-        class_uri_dict: = {"biosample_set": "nmdc:Biosample",
+        class_uri_dict = {"biosample_set": "nmdc:Biosample",
                            "data_object_set": "nmdc:DataObject",
                            "functional_annotation_agg": "nmdc:FunctionalAnnotationAggMember",
                            "study_set": "nmdc:Study",
