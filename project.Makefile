@@ -589,3 +589,13 @@ extract-study:
 		extract-study \
 		--study_id nmdc:sty-11-aygzgv51 \
 		--yaml_out
+
+
+# FETCH GOLD PATH DATA
+# visit https://gold.jgi.doe.gov/ecosystem_classification
+# find this link at the bottom of the screen: GOLD's 5-Level Ecosystem Classification Paths Excel
+# which resolves to https://gold.jgi.doe.gov/download?mode=ecosystempaths
+# clicking the link downloaded this file: GOLDs5levelEcosystemClassificationPaths.xlsx
+
+assets/GOLDs5levelEcosystemClassificationPaths.xlsx:
+	curl -o $@ https://gold.jgi.doe.gov/download?mode=ecosystempaths
