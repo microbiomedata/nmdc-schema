@@ -581,11 +581,10 @@ migration-doctests:
 migrator:
 	$(RUN) create-migrator
 
-.PHONY: extract-study
-extract-study:
+local/nmdc-sty-11-aygzgv51.yaml:
 	$(RUN) get-study-related-records \
-		--api_base NAPA \
-		--env_file local/.env \
+		--api-base-url https://api-napa.microbiomedata.org \
 		extract-study \
-		--study_id nmdc:sty-11-aygzgv51 \
-		--yaml_out
+		--study-id nmdc:sty-11-aygzgv51 \
+		--quick-test \
+		--output-file $@
