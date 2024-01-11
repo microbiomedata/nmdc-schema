@@ -6,18 +6,18 @@ nmdc_database_tools.py:
 Command-line tools for extracting data from the NMDC database via the API.
 """
 import click
-import json
-from linkml_runtime.dumpers import yaml_dumper, json_dumper
 import logging
-import nmdc_schema.nmdc as nmdc
-
 from pathlib import Path
 import requests
+from datetime import datetime
 import yaml
 
+from linkml_runtime.dumpers import yaml_dumper
+import nmdc_schema.nmdc as nmdc
 
 SCRIPTS_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPTS_DIR.parent.parent
+LOCAL_DIR = PROJECT_ROOT / "local"
 
 # Studies with non-compliant IDs that have been re-IDed
 # Name:, study ID, legacy study ID
@@ -104,18 +104,6 @@ class NmdcApi:
             return workflow_activity_record
 
 
-def _write_db_to_file(db, output_file_name, yaml_out):
-    # Write the results to a YAML or JSON file
-    if yaml_out:
-        yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
-        with open(output_file_name, "w") as f:
-            f.write(yaml.dump(yaml_data, indent=4))
-    else:
-        json_data = json.loads(json_dumper.dumps(db, inject_type=False))
-        with open(output_file_name, "w") as f:
-            f.write(json.dumps(json_data, indent=4))
-
-
 @click.group()
 @click.option(
     "--api-base-url", help="API base URL to use.")
@@ -129,63 +117,38 @@ def cli(ctx, api_base_url):
 
 
 @cli.command()
-@click.option("--study-id",  help="Study ID to extract.")
-@click.option("--output-dir", help="Output directory, relative to project "
+@click.option("--study-id", required=True,  help="Study ID to extract.")
+@click.option("--output-file", help="Path to output file, relative to project "
                                    "root.")
-@click.option("--json-out", is_flag=True, default=False, help=("Output in JSON "
-                                                               "format."))
 @click.option("--quick-test", is_flag=True, default=False, help=("Quick test "
                                                                  "mode - "
                                                                  "biosamples "
                                                                  "and omics "
                                                                  "only "))
 @click.pass_context
-def extract_study(ctx, study_id, output_dir, json_out, quick_test):
+def extract_study(ctx, study_id, output_file, quick_test):
     """
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a YAML or JSON file.
 
-    The study-id option is optional.  If not provided, will try to infer the
-    study ID from the output-dir option, provided that the output directory
-    uses the modified study ID format (nmdc-sty-<number>-<string>). e.g.,
-    nmdc-sty-1-1.
+    The study-id option is required. e.g., nmdc:sty-1-abcde.
 
-    The output-dir option is optional. If not provided, will use
-    local/nmdc-sty-<number>-<string> as the output directory, provided that
-    the study ID follows NMDC format (nmdc:sty-<number>-<string>). e.g.,
-    nmdc:sty-1-1.
-
-    If both study-id and output-dir are provided, the output-dir option will
-    be relative to the project root.
-
-    if neither study-id nor output-dir are provided, will raise an error.
+    The output-file option is optional. If not provided, will use the study ID
+    to name the output file and write it to the local directory.
 
     The json option is optional. Default is to output in YAML format.
+
+    The quick-test option is optional. Default is to extract all records.
     """
-    # Check that we have a study ID OR an output directory
-    if study_id is None and output_dir is None:
-        raise click.UsageError("Must provide either a study ID or an output "
-                               "directory.")
-    # If no study ID provided, try to infer it from the output directory
-    if study_id is None:
-        study_id = output_dir.split("/")[-1].replace("-", ":", 1)
-        output_dir = PROJECT_ROOT / output_dir
-    # If no output directory provided, make one based on the study ID
-    elif output_dir is None:
-        output_dir = PROJECT_ROOT / "local" / study_id.replace(':', '-')
-    # both study ID and output directory provided, make output directory relative to project root
+    start_time = datetime.now()
+    # Set the output and log file names
+    if output_file:
+        output_file_name = f"{PROJECT_ROOT}/{output_file}"
+        logfile_name = f"{PROJECT_ROOT}/{output_file.replace('.yaml', '.log')}"
     else:
-        output_dir = PROJECT_ROOT / output_dir
-
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    if json_out:
-        output_file_name = f"{output_dir}/{study_id.replace(':', '-')}.json"
-    else:
-        output_file_name = f"{output_dir}/{study_id.replace(':', '-')}.yaml"
-
-    logfile_name = f"{output_dir}/{study_id.replace(':', '-')}.log"
-
+        normalized_study_id = study_id.replace(":", "-")
+        output_file_name = f"{LOCAL_DIR}/{normalized_study_id}.yaml"
+        logfile_name = f"{LOCAL_DIR}/{normalized_study_id}.log"
 
 
     logging.basicConfig(
@@ -287,9 +250,13 @@ def extract_study(ctx, study_id, output_dir, json_out, quick_test):
                         db.data_object_set.append(data_object)
             db.__setattr__(wf_set_name, wf_records)
 
-    # Write the results to a YAML or JSON file
+    elapsed_time = datetime.now() - start_time
+    logger.info(f"Extracted study {study_id} from the NMDC database in {elapsed_time}.")
+    # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_name}.")
-    _write_db_to_file(db, output_file_name, json_out)
+    yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
+    with open(output_file_name, "w") as f:
+        f.write(yaml.dump(yaml_data, indent=4))
 
 
 if __name__ == "__main__":
