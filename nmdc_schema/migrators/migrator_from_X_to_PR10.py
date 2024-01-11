@@ -34,12 +34,14 @@ class Migrator_from_X_to_PR10(MigratorBase):
 
     def add_type_slot_with_class_uri(self, document: dict, collection_name: str):
         r"""
-        Adds a type slot to each collection with the appropriate class uri as the value. E.g. type: nmdc:Biosample
+        Adds a type slot to each collection with the appropriate class uri as the value. E.g. type: nmdc:Biosample. If a type
+        slot exists, it will overwrite to the types listed below.
         
         >>> m = Migrator_from_X_to_PR10()
-        >>> m.add_type_slot_with_class_uri({'id': 123}) 
-        ...     [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}]})
-        {'id': 123, 'websites': ['a'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}, {'doi_value': 'doi:10.25982/109073.30/1895615', 'doi_category': 'dataset_doi', 'doi_provider': 'kbase'}]}
+        >>> m.add_type_slot_with_class_uri({'id': 123}, 'processed_sample_set') 
+        {'id': 123, 'type': 'nmdc:ProcessedSample'}
+        >>> m.add_type_slot_with_class_uri({'id': 567, 'type': 'nmdc:MagsAnalysisActivity'}, 'mags_activity_set')
+        {'id': 567, 'type': 'nmdc:MagsAnalysis'}
         """
         class_uri_dict = {"biosample_set": "nmdc:Biosample",
                            "data_object_set": "nmdc:DataObject",
