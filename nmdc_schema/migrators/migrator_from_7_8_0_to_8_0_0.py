@@ -2,8 +2,11 @@ from typing import List
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
-class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
-    """Migrates data from schema 7.8.0 to 8.0.0"""
+class Migrator(MigratorBase):
+    """Migrates data between two schema versions."""
+
+    _from_version = "7.8.0"
+    _to_version = "8.0.0"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -11,7 +14,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             biosample_set=[self.standardize_letter_casing_of_gold_biosample_identifiers],
             extraction_set=[self.rename_sample_mass_field],
             omics_processing_set=[self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
@@ -22,7 +25,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         r"""
         Renames the `sample_mass` field to `input_mass`.
 
-        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m = Migrator()
         >>> m.rename_sample_mass_field({'id': 123})  # no `sample_mass` field
         {'id': 123}
         >>> m.rename_sample_mass_field({'id': 123, 'sample_mass': 456})  # test: renames field and preserves value
@@ -38,7 +41,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         r"""
         Replaces the prefix `GOLD:` with `gold:` in the list of identifiers.
 
-        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m = Migrator()
         >>> m.standardize_letter_casing_of_gold_identifiers(['GOLD:prefix_was_uppercase'])
         ['gold:prefix_was_uppercase']
         >>> m.standardize_letter_casing_of_gold_identifiers(['gold:prefix_was_lowercase'])
@@ -76,7 +79,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         r"""
         Converts uppercase "GOLD:" prefixes into lowercase "gold:" prefixes, in `gold_biosample_identifiers` values.
 
-        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m = Migrator()
         >>> m.standardize_letter_casing_of_gold_biosample_identifiers({'id': 123})
         {'id': 123, 'gold_biosample_identifiers': []}
         >>> m.standardize_letter_casing_of_gold_biosample_identifiers(
@@ -96,7 +99,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         r"""
         Converts uppercase "GOLD:" prefixes in `gold_sequencing_project_identifiers` values into lowercase "gold:".
 
-        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m = Migrator()
         >>> m.standardize_letter_casing_of_gold_sequencing_project_identifiers({'id': 123})
         {'id': 123, 'gold_sequencing_project_identifiers': []}
         >>> m.standardize_letter_casing_of_gold_sequencing_project_identifiers(
@@ -116,7 +119,7 @@ class Migrator_from_7_8_0_to_8_0_0(MigratorBase):
         r"""
         Converts uppercase "GOLD:" prefixes in `gold_study_identifiers` values into lowercase "gold:".
 
-        >>> m = Migrator_from_7_8_0_to_8_0_0()
+        >>> m = Migrator()
         >>> m.standardize_letter_casing_of_gold_study_identifier({'id': 123})
         {'id': 123, 'gold_study_identifiers': []}
         >>> m.standardize_letter_casing_of_gold_study_identifier(
