@@ -581,6 +581,13 @@ migration-doctests:
 migrator:
 	$(RUN) create-migrator
 
+local/nmdc-schema-v7.8.0.yaml:
+	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
+	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
+	#     see_also:
+	#       - MIxS:experimental_factor|additional_info
+	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
+
 local/nmdc-sty-11-aygzgv51.yaml:
 	$(RUN) get-study-related-records \
 		--api-base-url https://api-napa.microbiomedata.org \
@@ -589,5 +596,6 @@ local/nmdc-sty-11-aygzgv51.yaml:
 		--quick-test \
 		--output-file $@
 
-local/nmdc-sty-11-aygzgv51-validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/nmdc-sty-11-aygzgv51.yaml
-	$(RUN) linkml-validate --schema $^ > $@
+local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v7.8.0.yaml local/nmdc-sty-11-aygzgv51.yaml
+	# - allows the makefiel to continue even if this step reports an error. that may or may not be the best choice in this case
+	- $(RUN) linkml-validate --schema $^ > $@
