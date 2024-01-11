@@ -586,4 +586,4 @@ extract-study: local/nmdc-sty-11-aygzgv51
 	$(RUN) get-study-related-records \
 		--api-base-url https://api-napa.microbiomedata.org \
 		extract-study \
-		--output-dir $<
+		--output-dir $^

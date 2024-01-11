@@ -115,6 +115,7 @@ def _write_db_to_file(db, output_file_name, yaml_out):
         with open(output_file_name, "w") as f:
             f.write(json.dumps(json_data, indent=4))
 
+
 @click.group()
 @click.option(
     "--api-base-url", help="API base URL to use.")
@@ -129,13 +130,17 @@ def cli(ctx, api_base_url):
 
 @cli.command()
 @click.option("--study-id",  help="Study ID to extract.")
-
 @click.option("--output-dir", help="Output directory, relative to project "
                                    "root.")
 @click.option("--json-out", is_flag=True, default=False, help=("Output in JSON "
                                                                "format."))
+@click.option("--quick-test", is_flag=True, default=False, help=("Quick test "
+                                                                 "mode - "
+                                                                 "biosamples "
+                                                                 "and omics "
+                                                                 "only "))
 @click.pass_context
-def extract_study(ctx, study_id, output_dir, json_out):
+def extract_study(ctx, study_id, output_dir, json_out, quick_test):
     """
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a YAML or JSON file.
@@ -235,7 +240,7 @@ def extract_study(ctx, study_id, output_dir, json_out):
         else:
             raise e
 
-    if len(omics_processing_records) > 0:
+    if len(omics_processing_records) > 0 and not quick_test:
         # downstream workflow activity records
         (
             read_qc_records,
