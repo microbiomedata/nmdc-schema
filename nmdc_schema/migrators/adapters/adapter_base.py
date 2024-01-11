@@ -30,11 +30,11 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
-    def get_document_by_nmdc_id(
-        self, collection_name: str, nmdc_id: str
-    ) -> Optional[dict]:
+    def get_document_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> Optional[dict]:
         r"""
-        Retrieves the document having the specified `id` value, from the collection having the specified name.
+        Retrieves the document from the specified collection, having the specified value in the specified field.
+
+        Note: This only support top-level fields (e.g. `_id`), not nested fields (e.g. `area.height`).
         """
         pass
 

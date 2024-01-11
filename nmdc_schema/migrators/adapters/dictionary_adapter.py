@@ -79,11 +79,13 @@ class DictionaryAdapter(AdapterBase):
         """
         del self._db[collection_name]
 
-    def get_document_by_nmdc_id(
-        self, collection_name: str, nmdc_id: str
+    def get_document_having_value_in_field(
+        self, collection_name: str, field_name: str, value: str
     ) -> Optional[dict]:
         r"""
-        Retrieves the document having the specified `id` value, from the collection having the specified name.
+        Retrieves the document from the specified collection, having the specified value in the specified field.
+
+        Note: This only support top-level fields (e.g. `_id`), not nested fields (e.g. `area.height`).
 
         >>> database = {
         ...   "thing_set": [
@@ -93,24 +95,32 @@ class DictionaryAdapter(AdapterBase):
         ...   ]
         ... }
         >>> da = DictionaryAdapter(database)
-        >>> da.get_document_by_nmdc_id("thing_set", "222")
+        >>> da.get_document_having_value_in_field("thing_set", "id", "222")
         {'id': '222', 'foo': 'baz'}
-        >>> da.get_document_by_nmdc_id("thing_set", "444") is None
+        >>> da.get_document_having_value_in_field("thing_set", "foo", "baz")
+        {'id': '222', 'foo': 'baz'}
+        >>> da.get_document_having_value_in_field("thing_set", "id", "444") is None
+        True
+        >>> da.get_document_having_value_in_field("thing_set", "missing", "111") is None
         True
         """
-        # Create a "generator expression" over which we can iterate via `next`.
-        #
-        # Note: You can think of a "generator expression" as a list comprehension that doesn't
-        #       create the entire list in memory.
-        #
-        # Reference: https://docs.python.org/3/howto/functional.html#generator-expressions-and-list-comprehensions
-        #
-        document_generator = (
-            d for d in self._db[collection_name] if d.get("id") == nmdc_id
-        )
+        try:
+            # Create a "generator expression" over which we can iterate via `next`.
+            #
+            # Note: You can think of a "generator expression" as a list comprehension that doesn't
+            #       create the entire list in memory.
+            #
+            # Reference: https://docs.python.org/3/howto/functional.html#generator-expressions-and-list-comprehensions
+            #
+            document_generator = (
+                d for d in self._db[collection_name] if d.get(field_name) == value
+            )
 
-        # Return the first document yielded by the generator (or `None` if the generator doesn't yield one).
-        document = next(document_generator, None)
+            # Return the first document yielded by the generator (or `None` if the generator doesn't yield one).
+            document = next(document_generator, None)
+        except KeyError:
+            document = None
+
         return document
 
     def delete_document_by_nmdc_id(self, collection_name: str, nmdc_id: str) -> int:
