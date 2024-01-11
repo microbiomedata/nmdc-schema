@@ -588,3 +588,6 @@ local/nmdc-sty-11-aygzgv51.yaml:
 		--study-id nmdc:sty-11-aygzgv51 \
 		--quick-test \
 		--output-file $@
+
+local/nmdc-sty-11-aygzgv51-validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/nmdc-sty-11-aygzgv51.yaml
+	$(RUN) linkml-validate --schema $^ > $@
