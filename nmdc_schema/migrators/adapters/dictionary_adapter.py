@@ -117,9 +117,9 @@ class DictionaryAdapter(AdapterBase):
         {'id': '222', 'foo': 'baz'}
         >>> da.get_document_having_value_in_field("thing_set", "foo", "baz")
         {'id': '222', 'foo': 'baz'}
-        >>> da.get_document_having_value_in_field("thing_set", "id", "444") is None
+        >>> da.get_document_having_value_in_field("thing_set", "id", "no_such_value") is None
         True
-        >>> da.get_document_having_value_in_field("thing_set", "missing", "111") is None
+        >>> da.get_document_having_value_in_field("thing_set", "no_such_field", "111") is None
         True
         """
         try:
@@ -141,10 +141,12 @@ class DictionaryAdapter(AdapterBase):
 
         return document
 
-    def delete_document_by_nmdc_id(self, collection_name: str, nmdc_id: str) -> int:
+    def delete_document_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
         r"""
-        Deletes all documents having the specified `id` value, from the collection having the specified name,
-        and returns the number of documents deleted.
+        Deletes all documents from the specified collection, having the specified value in the specified field;
+        and returns the number of documents that were deleted.
+
+        Note: This only support top-level fields (e.g. `_id`), not nested fields (e.g. `area.height`).
 
         >>> database = {
         ...   "thing_set": [
@@ -158,19 +160,25 @@ class DictionaryAdapter(AdapterBase):
         >>> da = DictionaryAdapter(database)
         >>> len(database["thing_set"])
         5
-        >>> da.delete_document_by_nmdc_id("thing_set", "no_such_id")
+        >>> da.delete_document_having_value_in_field("thing_set", "id", "no_such_value")
+        0
+        >>> da.delete_document_having_value_in_field("thing_set", "no_such_field", "111")
         0
         >>> len(database["thing_set"])
         5
-        >>> da.delete_document_by_nmdc_id("thing_set", "222")  # deletes 3 documents
+        >>> da.delete_document_having_value_in_field("thing_set", "id", "222")  # deletes 3 documents
         3
-        >>> len(database["thing_set"])  # 2 documents remain
+        >>> len(database["thing_set"])
         2
+        >>> da.delete_document_having_value_in_field("thing_set", "foo", "qux")
+        1
+        >>> len(database["thing_set"])
+        1
         """
-        # Filter out the matching documents.
+        # Filter out the documents having the specified value in the specified field.
         # Reference: https://docs.python.org/3/library/functions.html#filter
         documents_initial = self._db[collection_name]
-        document_generator = filter(lambda d: d.get("id") != nmdc_id, documents_initial)
+        document_generator = filter(lambda d: field_name not in d or d.get(field_name) != value, documents_initial)
         documents_remaining = list(document_generator)
 
         # Update the collection so that it consists of the filtered result.
