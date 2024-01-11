@@ -137,8 +137,6 @@ def extract_study(ctx, study_id, output_file, quick_test):
     and schema version to name the output file and write it to the local
     directory.
 
-    The json option is optional. Default is to output in YAML format.
-
     The quick-test option is optional. Default is to extract all records.
     """
     api_client = ctx.obj["API_CLIENT"]
@@ -147,19 +145,15 @@ def extract_study(ctx, study_id, output_file, quick_test):
     schema_version_url = f"{api_client.base_url}nmdcschema/version"
     schema_version_response = requests.get(schema_version_url)
     schema_version_response.raise_for_status()
-    schema_version = "v" + schema_version_response.text.replace('"', "")
+    schema_version =  schema_version_response.text.replace('"', "")
     # Set the output and log file names
     if output_file:
-        # add schema version to output file
-        output_file = output_file.replace(".yaml",
-                                              f"-{schema_version}.yaml")
         output_file_path = f"{PROJECT_ROOT}/{output_file}"
         logfile_path = f"{PROJECT_ROOT}/{output_file.replace('.yaml', '.log')}"
     else:
         normalized_study_id = study_id.replace(":", "-")
-        output_file_path = (f"{LOCAL_DIR}/{normalized_study_id}"
-                            f"-{schema_version}.yaml")
-        logfile_path = f"{LOCAL_DIR}/{normalized_study_id}-{schema_version}.log"
+        output_file_path = (f"{LOCAL_DIR}/{normalized_study_id}.yaml")
+        logfile_path = f"{LOCAL_DIR}/{normalized_study_id}.log"
 
 
     logging.basicConfig(
@@ -172,8 +166,8 @@ def extract_study(ctx, study_id, output_file, quick_test):
 
     logger = logging.getLogger()
     logger.addHandler(logging.StreamHandler())
-    logger.info(f"Extracting study {study_id} from the NMDC database.")
-    logger.info(f"Using schema version {schema_version}.")
+    logger.info(f"STUDY-ID: {study_id}")
+    logger.info(f"SCHEMA-VERSION: {schema_version}")
     db = nmdc.Database()
 
     # Get the study, if it exists
