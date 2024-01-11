@@ -1,0 +1,1667 @@
+DH pulldown column	DH pulldown option
+EcosystemEnum	Engineered
+EcosystemEnum	Environmental
+EcosystemEnum	Host-associated
+SpecificEcosystemEnum	Unclassified
+SpecificEcosystemEnum	Pond scum
+SpecificEcosystemEnum	Sediment
+SpecificEcosystemEnum	Sieved
+SpecificEcosystemEnum	Hydrocarbon
+SpecificEcosystemEnum	Biofilm
+SpecificEcosystemEnum	Granular sludge
+SpecificEcosystemEnum	Woodchip biofilm
+SpecificEcosystemEnum	Activated sludge
+SpecificEcosystemEnum	Sludge
+SpecificEcosystemEnum	Biomass
+SpecificEcosystemEnum	Digestate
+SpecificEcosystemEnum	Bioreactor
+SpecificEcosystemEnum	Bench surface
+SpecificEcosystemEnum	Concrete surface
+SpecificEcosystemEnum	Metal surface
+SpecificEcosystemEnum	Plastic surface
+SpecificEcosystemEnum	Stone surface
+SpecificEcosystemEnum	Wooden surface
+SpecificEcosystemEnum	Room surface
+SpecificEcosystemEnum	Floor
+SpecificEcosystemEnum	Sandstone
+SpecificEcosystemEnum	Wheat straw
+SpecificEcosystemEnum	Petroleum sludge
+SpecificEcosystemEnum	Wastewater
+SpecificEcosystemEnum	Cheese
+SpecificEcosystemEnum	Cooked blood
+SpecificEcosystemEnum	Beef chop
+SpecificEcosystemEnum	Meat trim
+SpecificEcosystemEnum	Heroin
+SpecificEcosystemEnum	Frozen shrimp
+SpecificEcosystemEnum	Contaminated
+SpecificEcosystemEnum	Co-culture
+SpecificEcosystemEnum	Sugarcane filter cake
+SpecificEcosystemEnum	Liquid manure
+SpecificEcosystemEnum	Mature compost
+SpecificEcosystemEnum	Commercial compost
+SpecificEcosystemEnum	Effluent
+SpecificEcosystemEnum	Municipal and sewage
+SpecificEcosystemEnum	Poultry processing wastewater
+SpecificEcosystemEnum	Acid mine drainage
+SpecificEcosystemEnum	Produced water
+SpecificEcosystemEnum	Oil sludge
+SpecificEcosystemEnum	Anammox
+SpecificEcosystemEnum	Poultry litter bioaerosol
+SpecificEcosystemEnum	Microbial mat
+SpecificEcosystemEnum	Acid-saline drainage
+SpecificEcosystemEnum	Acidic spring
+SpecificEcosystemEnum	Alkaline spring
+SpecificEcosystemEnum	Cave lake
+SpecificEcosystemEnum	Cave microbial mat
+SpecificEcosystemEnum	Cave pool
+SpecificEcosystemEnum	Cave pool sediment
+SpecificEcosystemEnum	Cave stream
+SpecificEcosystemEnum	Cave stream sediment
+SpecificEcosystemEnum	Coalbed methane well water
+SpecificEcosystemEnum	Drilled well/Borehole
+SpecificEcosystemEnum	Driven well
+SpecificEcosystemEnum	Dug well
+SpecificEcosystemEnum	Freshwater
+SpecificEcosystemEnum	Mine water
+SpecificEcosystemEnum	Porewater
+SpecificEcosystemEnum	Saline
+SpecificEcosystemEnum	Saline spring
+SpecificEcosystemEnum	Saline spring sediment
+SpecificEcosystemEnum	Spring
+SpecificEcosystemEnum	Spring sediment
+SpecificEcosystemEnum	Well
+SpecificEcosystemEnum	Well biofilm
+SpecificEcosystemEnum	Well sediment
+SpecificEcosystemEnum	Produced water/Flow back
+SpecificEcosystemEnum	Benthic
+SpecificEcosystemEnum	Chloraminated
+SpecificEcosystemEnum	Chlorinated
+SpecificEcosystemEnum	Delivery networks
+SpecificEcosystemEnum	Filtered water
+SpecificEcosystemEnum	Unchlorinated
+SpecificEcosystemEnum	Untreated
+SpecificEcosystemEnum	Cryoconite hole
+SpecificEcosystemEnum	Glacier stream
+SpecificEcosystemEnum	Ice
+SpecificEcosystemEnum	Meltwater
+SpecificEcosystemEnum	Acid Mine Drainage
+SpecificEcosystemEnum	Aquifer
+SpecificEcosystemEnum	Cave water
+SpecificEcosystemEnum	Coalbed water
+SpecificEcosystemEnum	Mine
+SpecificEcosystemEnum	Mine drainage
+SpecificEcosystemEnum	Cryoconite
+SpecificEcosystemEnum	Glacial lake
+SpecificEcosystemEnum	Glacier
+SpecificEcosystemEnum	Glacier meltwater
+SpecificEcosystemEnum	Ice accretions
+SpecificEcosystemEnum	Liftoff microbial mat
+SpecificEcosystemEnum	Snow
+SpecificEcosystemEnum	Algal bloom
+SpecificEcosystemEnum	Anoxic zone
+SpecificEcosystemEnum	Aphotic zone
+SpecificEcosystemEnum	Cyanobacterial aggregates
+SpecificEcosystemEnum	Cyanobacterial bloom
+SpecificEcosystemEnum	Epilimnion/Euphotic zone
+SpecificEcosystemEnum	Estuarine sediment
+SpecificEcosystemEnum	Estuary
+SpecificEcosystemEnum	Hypolimnion/Profundal zone
+SpecificEcosystemEnum	Lake biofilm
+SpecificEcosystemEnum	Littoral zone
+SpecificEcosystemEnum	Metalimnion/Thermocline
+SpecificEcosystemEnum	Microbial mats
+SpecificEcosystemEnum	Epilimnion
+SpecificEcosystemEnum	Hypolimnion
+SpecificEcosystemEnum	Limnetic zone
+SpecificEcosystemEnum	Stromatolites
+SpecificEcosystemEnum	Thrombolites
+SpecificEcosystemEnum	Periphyton
+SpecificEcosystemEnum	Plankton
+SpecificEcosystemEnum	River biofilm
+SpecificEcosystemEnum	Runoff
+SpecificEcosystemEnum	Drainage pipe biofilm
+SpecificEcosystemEnum	Urban floodwater
+SpecificEcosystemEnum	Bog
+SpecificEcosystemEnum	Fen
+SpecificEcosystemEnum	Marsh
+SpecificEcosystemEnum	Soil
+SpecificEcosystemEnum	Swamp
+SpecificEcosystemEnum	Formation fluid
+SpecificEcosystemEnum	Wood fall
+SpecificEcosystemEnum	Brine
+SpecificEcosystemEnum	Phytoplankton bloom
+SpecificEcosystemEnum	Rock
+SpecificEcosystemEnum	Whale fall
+SpecificEcosystemEnum	Black smokers
+SpecificEcosystemEnum	Diffuse flow
+SpecificEcosystemEnum	Hydrothermal plume
+SpecificEcosystemEnum	Tubeworm bush
+SpecificEcosystemEnum	Beach/Shore
+SpecificEcosystemEnum	Coral reef
+SpecificEcosystemEnum	Estuary: Microbial mat
+SpecificEcosystemEnum	Estuary: Sediment
+SpecificEcosystemEnum	Mangrove sediment
+SpecificEcosystemEnum	Mangrove soil
+SpecificEcosystemEnum	Mangrove swamp
+SpecificEcosystemEnum	Microbialites
+SpecificEcosystemEnum	Oil-contaminated
+SpecificEcosystemEnum	Oil-contaminated sediment
+SpecificEcosystemEnum	Salt marsh
+SpecificEcosystemEnum	Salt marsh sediment
+SpecificEcosystemEnum	Salt pond
+SpecificEcosystemEnum	Salt pond sediment
+SpecificEcosystemEnum	Seagrass bed
+SpecificEcosystemEnum	Seagrass bed sediment
+SpecificEcosystemEnum	Solar solterns
+SpecificEcosystemEnum	Solar solterns sediment
+SpecificEcosystemEnum	Subterranean estuary
+SpecificEcosystemEnum	Tidal flats
+SpecificEcosystemEnum	Intertidal zone
+SpecificEcosystemEnum	Neritic zone/Coastal water
+SpecificEcosystemEnum	Supratidal zone
+SpecificEcosystemEnum	Reef zone
+SpecificEcosystemEnum	Sea ice
+SpecificEcosystemEnum	Sea-ice brine
+SpecificEcosystemEnum	Subtidal zone
+SpecificEcosystemEnum	Subtidal zone sediment
+SpecificEcosystemEnum	Abyssal plane
+SpecificEcosystemEnum	Crustal Fluids
+SpecificEcosystemEnum	Oceanic crust
+SpecificEcosystemEnum	Photic zone
+SpecificEcosystemEnum	Abyssopelagic/Abyssal zone
+SpecificEcosystemEnum	Bathypelagic/Bathyal zone
+SpecificEcosystemEnum	Epipelagic/Euphotic zone
+SpecificEcosystemEnum	Hadopelagic zone/Ocean trenches
+SpecificEcosystemEnum	Mesopelagic/Twilight zone
+SpecificEcosystemEnum	Melt pond
+SpecificEcosystemEnum	Sabkha
+SpecificEcosystemEnum	Sabkha sediment
+SpecificEcosystemEnum	Carbonate
+SpecificEcosystemEnum	Mine pit pond
+SpecificEcosystemEnum	Salt crust
+SpecificEcosystemEnum	Sediment–water interface
+SpecificEcosystemEnum	Salt flat/Salt pan
+SpecificEcosystemEnum	Salt flat/Salt pan sediment
+SpecificEcosystemEnum	Alkaline
+SpecificEcosystemEnum	Ice core
+SpecificEcosystemEnum	Athalassic
+SpecificEcosystemEnum	Thalassic
+SpecificEcosystemEnum	Saline water
+SpecificEcosystemEnum	Acidic
+SpecificEcosystemEnum	Neutral
+SpecificEcosystemEnum	Adjacent soil
+SpecificEcosystemEnum	Rock core/Sediment
+SpecificEcosystemEnum	Floor sediment
+SpecificEcosystemEnum	Speleothems
+SpecificEcosystemEnum	Wall biofilm
+SpecificEcosystemEnum	Wall surface
+SpecificEcosystemEnum	Coal core
+SpecificEcosystemEnum	Coal slurry
+SpecificEcosystemEnum	Shale carbon reservoir
+SpecificEcosystemEnum	Flow back/Produced fluids
+SpecificEcosystemEnum	Sediment core
+SpecificEcosystemEnum	Asbestos
+SpecificEcosystemEnum	Pyrite containing
+SpecificEcosystemEnum	Spider web
+SpecificEcosystemEnum	Beehive: Brood combs
+SpecificEcosystemEnum	Beehive: Cerumen
+SpecificEcosystemEnum	Beehive: Honey
+SpecificEcosystemEnum	Beehive: Pollen
+SpecificEcosystemEnum	Beehive: Royal jelly
+SpecificEcosystemEnum	Fungus garden/Fungus gallery
+SpecificEcosystemEnum	Nest dump
+SpecificEcosystemEnum	Leaves
+SpecificEcosystemEnum	Rocks
+SpecificEcosystemEnum	Bulk soil
+SpecificEcosystemEnum	Agricultural land
+SpecificEcosystemEnum	A horizon/Topsoil
+SpecificEcosystemEnum	B horizon/Subsoil
+SpecificEcosystemEnum	C horizon/Substratum
+SpecificEcosystemEnum	E horizon/Subsurface
+SpecificEcosystemEnum	Humus
+SpecificEcosystemEnum	Mineral soil
+SpecificEcosystemEnum	O horizon/Organic
+SpecificEcosystemEnum	Grasslands
+SpecificEcosystemEnum	Acid sulfate soil
+SpecificEcosystemEnum	Pesticide
+SpecificEcosystemEnum	Uranium contaminated
+SpecificEcosystemEnum	Dry permafrost
+SpecificEcosystemEnum	Gibber plain
+SpecificEcosystemEnum	Fluvial sediment
+SpecificEcosystemEnum	Green roof
+SpecificEcosystemEnum	Glacial till/moraine
+SpecificEcosystemEnum	Glacier forefield
+SpecificEcosystemEnum	Glacier terminus
+SpecificEcosystemEnum	Pasture
+SpecificEcosystemEnum	Upland zone
+SpecificEcosystemEnum	Wetland zone
+SpecificEcosystemEnum	Cover soil
+SpecificEcosystemEnum	Eutric
+SpecificEcosystemEnum	Agricultural soil
+SpecificEcosystemEnum	Forest soil
+SpecificEcosystemEnum	Meadow
+SpecificEcosystemEnum	Truffle orchard
+SpecificEcosystemEnum	Mineral soil core
+SpecificEcosystemEnum	Peat permafrost
+SpecificEcosystemEnum	O horizen/Organic layer
+SpecificEcosystemEnum	Forest
+SpecificEcosystemEnum	Lignite
+SpecificEcosystemEnum	Mire
+SpecificEcosystemEnum	Palsa
+SpecificEcosystemEnum	Permafrost
+SpecificEcosystemEnum	Thermokarst pond
+SpecificEcosystemEnum	Forefield soil
+SpecificEcosystemEnum	Trees stand
+SpecificEcosystemEnum	Desert
+SpecificEcosystemEnum	Biological
+SpecificEcosystemEnum	Physical
+SpecificEcosystemEnum	Reclaimed
+SpecificEcosystemEnum	O horizon/Organic layer
+SpecificEcosystemEnum	Organic layer
+SpecificEcosystemEnum	Alpine
+SpecificEcosystemEnum	Boreal forest
+SpecificEcosystemEnum	Creek
+SpecificEcosystemEnum	Farm
+SpecificEcosystemEnum	Forest Soil
+SpecificEcosystemEnum	Orchard soil
+SpecificEcosystemEnum	Riparian soil
+SpecificEcosystemEnum	Shrubland
+SpecificEcosystemEnum	Tropical rainforest
+SpecificEcosystemEnum	Saprolite
+SpecificEcosystemEnum	Freshwater marsh
+SpecificEcosystemEnum	Peat
+SpecificEcosystemEnum	Liver
+SpecificEcosystemEnum	Fecal
+SpecificEcosystemEnum	Cast
+SpecificEcosystemEnum	Extracellular symbionts
+SpecificEcosystemEnum	Epibionts
+SpecificEcosystemEnum	Extracellular
+SpecificEcosystemEnum	Cardiac stomach
+SpecificEcosystemEnum	Esophagus
+SpecificEcosystemEnum	Pyloric stomach
+SpecificEcosystemEnum	Stomach
+SpecificEcosystemEnum	Intestine
+SpecificEcosystemEnum	Anterior chamber
+SpecificEcosystemEnum	Papillate region
+SpecificEcosystemEnum	Rectum
+SpecificEcosystemEnum	Caeca
+SpecificEcosystemEnum	Hepatopancreas
+SpecificEcosystemEnum	Setae
+SpecificEcosystemEnum	Gills
+SpecificEcosystemEnum	Gaster
+SpecificEcosystemEnum	Buccal cavity
+SpecificEcosystemEnum	Cibarium/Preoral cavity
+SpecificEcosystemEnum	Crop
+SpecificEcosystemEnum	Mouthparts
+SpecificEcosystemEnum	Oral fluids
+SpecificEcosystemEnum	Proventriculus/Gizzard
+SpecificEcosystemEnum	Regurgitated nectar
+SpecificEcosystemEnum	Saliva
+SpecificEcosystemEnum	Lower digestive tract
+SpecificEcosystemEnum	Anterior
+SpecificEcosystemEnum	Colon
+SpecificEcosystemEnum	Frass
+SpecificEcosystemEnum	Honeydew
+SpecificEcosystemEnum	Ileum
+SpecificEcosystemEnum	P1 segment
+SpecificEcosystemEnum	P4 segment
+SpecificEcosystemEnum	P5 segment
+SpecificEcosystemEnum	Paunch/P3 segment
+SpecificEcosystemEnum	Caeca: Bacteriome
+SpecificEcosystemEnum	Filter chamber
+SpecificEcosystemEnum	Gastric caeca
+SpecificEcosystemEnum	Hepatic caecum
+SpecificEcosystemEnum	Mixed segment
+SpecificEcosystemEnum	Royal jelly
+SpecificEcosystemEnum	Meconium
+SpecificEcosystemEnum	Air sacs
+SpecificEcosystemEnum	Propleura
+SpecificEcosystemEnum	P3 segment
+SpecificEcosystemEnum	Prothorax
+SpecificEcosystemEnum	Thoracic segments
+SpecificEcosystemEnum	Serum
+SpecificEcosystemEnum	Lumen
+SpecificEcosystemEnum	Crop content
+SpecificEcosystemEnum	Crop milk
+SpecificEcosystemEnum	Ceca
+SpecificEcosystemEnum	Cloaca
+SpecificEcosystemEnum	Colon mucosa
+SpecificEcosystemEnum	Tongue
+SpecificEcosystemEnum	Oropharynx
+SpecificEcosystemEnum	Duodenum
+SpecificEcosystemEnum	Jejunum
+SpecificEcosystemEnum	Mucosa
+SpecificEcosystemEnum	Gizzard
+SpecificEcosystemEnum	Proventriculus
+SpecificEcosystemEnum	Subcutaneous fat
+SpecificEcosystemEnum	Visceral fat
+SpecificEcosystemEnum	Feathers
+SpecificEcosystemEnum	Podotheca
+SpecificEcosystemEnum	Rhamphotheca
+SpecificEcosystemEnum	Scales
+SpecificEcosystemEnum	Cerebrospinal fluid
+SpecificEcosystemEnum	Epithelium
+SpecificEcosystemEnum	Syrinx
+SpecificEcosystemEnum	Bile
+SpecificEcosystemEnum	Gall bladder
+SpecificEcosystemEnum	Stomach: Cardiac
+SpecificEcosystemEnum	Stomach: Fundic
+SpecificEcosystemEnum	Stomach: Pyloric
+SpecificEcosystemEnum	Air-breathing organ
+SpecificEcosystemEnum	Teeth
+SpecificEcosystemEnum	Epidermal mucus
+SpecificEcosystemEnum	Fin
+SpecificEcosystemEnum	Lesion
+SpecificEcosystemEnum	Whole body
+SpecificEcosystemEnum	Pink
+SpecificEcosystemEnum	Red
+SpecificEcosystemEnum	White
+SpecificEcosystemEnum	Olfactory mucosa
+SpecificEcosystemEnum	Clasper
+SpecificEcosystemEnum	Gonopodium
+SpecificEcosystemEnum	Eggs
+SpecificEcosystemEnum	Sperm
+SpecificEcosystemEnum	Mucus
+SpecificEcosystemEnum	Surface
+SpecificEcosystemEnum	Tissue
+SpecificEcosystemEnum	Malignant ascites
+SpecificEcosystemEnum	Effusion
+SpecificEcosystemEnum	Eustachian tube
+SpecificEcosystemEnum	Ear canal
+SpecificEcosystemEnum	Ear discharge
+SpecificEcosystemEnum	Colorectal polyps
+SpecificEcosystemEnum	Nasal
+SpecificEcosystemEnum	Colonic
+SpecificEcosystemEnum	Aural
+SpecificEcosystemEnum	Bladder
+SpecificEcosystemEnum	Cervical
+SpecificEcosystemEnum	Endometrial/Uterine
+SpecificEcosystemEnum	Common warts
+SpecificEcosystemEnum	Filiform warts
+SpecificEcosystemEnum	Flat warts
+SpecificEcosystemEnum	Genital warts
+SpecificEcosystemEnum	Plantar warts
+SpecificEcosystemEnum	Arterial
+SpecificEcosystemEnum	Buffy coat
+SpecificEcosystemEnum	Erythrocytes
+SpecificEcosystemEnum	PBMC
+SpecificEcosystemEnum	Plasma
+SpecificEcosystemEnum	Venous
+SpecificEcosystemEnum	Whole blood
+SpecificEcosystemEnum	Atria
+SpecificEcosystemEnum	Cardiac skeleton
+SpecificEcosystemEnum	Heart valve
+SpecificEcosystemEnum	Heart wall
+SpecificEcosystemEnum	Myocardial abscess
+SpecificEcosystemEnum	Septum
+SpecificEcosystemEnum	Tricuspid valve
+SpecificEcosystemEnum	Ventricle
+SpecificEcosystemEnum	Bile ducts: Bile
+SpecificEcosystemEnum	Gallbladder
+SpecificEcosystemEnum	Gallbladder stones
+SpecificEcosystemEnum	Gallbladder: Bile
+SpecificEcosystemEnum	Hepatic cysts
+SpecificEcosystemEnum	Esophageal ulcer
+SpecificEcosystemEnum	Anal canal
+SpecificEcosystemEnum	Anal canal mucosa
+SpecificEcosystemEnum	Anorectal abscess
+SpecificEcosystemEnum	Appendix
+SpecificEcosystemEnum	Appendix abscess
+SpecificEcosystemEnum	Ascending colon
+SpecificEcosystemEnum	Cecum
+SpecificEcosystemEnum	Descending colon
+SpecificEcosystemEnum	Hepatic flexure
+SpecificEcosystemEnum	Rectal mucosa
+SpecificEcosystemEnum	Sigmoid colon
+SpecificEcosystemEnum	Splenic flexure
+SpecificEcosystemEnum	Transverse colon
+SpecificEcosystemEnum	Intestinal mucosa
+SpecificEcosystemEnum	Attached/Keratinized gingiva
+SpecificEcosystemEnum	Buccal mucosa
+SpecificEcosystemEnum	Dental abscess
+SpecificEcosystemEnum	Dental calculus
+SpecificEcosystemEnum	Dental plaque
+SpecificEcosystemEnum	Gingiva
+SpecificEcosystemEnum	Gingival crevice/sulcus
+SpecificEcosystemEnum	Gingival crevicular fluids
+SpecificEcosystemEnum	Hard palate
+SpecificEcosystemEnum	Mouth ulcer
+SpecificEcosystemEnum	Oral mucosa
+SpecificEcosystemEnum	Parotid abscess
+SpecificEcosystemEnum	Periodontal pockets
+SpecificEcosystemEnum	Salivary glands
+SpecificEcosystemEnum	Salivary glands: Parotid glands
+SpecificEcosystemEnum	Subgingival plaque
+SpecificEcosystemEnum	Supragingival plaque
+SpecificEcosystemEnum	Tongue dorsum
+SpecificEcosystemEnum	Tooth
+SpecificEcosystemEnum	Tooth: Cementum
+SpecificEcosystemEnum	Tooth: Dental pulp
+SpecificEcosystemEnum	Tooth: Dentin
+SpecificEcosystemEnum	Tooth: Enamel
+SpecificEcosystemEnum	Pancreatic duct
+SpecificEcosystemEnum	Peritonsillar abscess
+SpecificEcosystemEnum	Duodenal ulcer
+SpecificEcosystemEnum	Ileostomy effluent
+SpecificEcosystemEnum	Chyme
+SpecificEcosystemEnum	Gastric mucosa
+SpecificEcosystemEnum	Gastric ulcer
+SpecificEcosystemEnum	Adrenal glands
+SpecificEcosystemEnum	Hypophysis/Pituitary gland
+SpecificEcosystemEnum	Parathyroid
+SpecificEcosystemEnum	Pineal gland/Epiphysis cerebri
+SpecificEcosystemEnum	Thymus
+SpecificEcosystemEnum	Thyroid
+SpecificEcosystemEnum	Amniotic fluid
+SpecificEcosystemEnum	Chorionic villi
+SpecificEcosystemEnum	Placenta
+SpecificEcosystemEnum	Umbilical cord
+SpecificEcosystemEnum	Umbilical cord blood
+SpecificEcosystemEnum	Sweat
+SpecificEcosystemEnum	Cerumen/Earwax
+SpecificEcosystemEnum	Hair roots
+SpecificEcosystemEnum	Hair shaft
+SpecificEcosystemEnum	Lacrimal canaliculus
+SpecificEcosystemEnum	Lacrimal fluids
+SpecificEcosystemEnum	Lacrimal glands
+SpecificEcosystemEnum	Lacrimal sac
+SpecificEcosystemEnum	Nasolacrimal canal
+SpecificEcosystemEnum	Tears
+SpecificEcosystemEnum	Breast abscess
+SpecificEcosystemEnum	Breast cyst
+SpecificEcosystemEnum	Discharge
+SpecificEcosystemEnum	Milk
+SpecificEcosystemEnum	Meibum
+SpecificEcosystemEnum	Sebum
+SpecificEcosystemEnum	Stye
+SpecificEcosystemEnum	Abscess
+SpecificEcosystemEnum	Abscess: Furuncle/Boil
+SpecificEcosystemEnum	Abscess: Pilonidal sinus
+SpecificEcosystemEnum	Acne vulgaris
+SpecificEcosystemEnum	Athlete's foot
+SpecificEcosystemEnum	Auricle/Pinna
+SpecificEcosystemEnum	Axilla/Armpit
+SpecificEcosystemEnum	Cellulitis
+SpecificEcosystemEnum	Cutaneous leishmaniasis
+SpecificEcosystemEnum	Cuticle
+SpecificEcosystemEnum	Dermal papilla
+SpecificEcosystemEnum	Dermatitis
+SpecificEcosystemEnum	Dermis
+SpecificEcosystemEnum	Diabetic foot ulcer (DFU)
+SpecificEcosystemEnum	Eczema
+SpecificEcosystemEnum	Epidermis
+SpecificEcosystemEnum	Genital herpes
+SpecificEcosystemEnum	Genital region
+SpecificEcosystemEnum	Hair follicle
+SpecificEcosystemEnum	Herpes zoster/Shingles
+SpecificEcosystemEnum	Hypodermis/Subcutis
+SpecificEcosystemEnum	Nose follicle
+SpecificEcosystemEnum	Oral herpes
+SpecificEcosystemEnum	Perineum
+SpecificEcosystemEnum	Psoriasis lesion
+SpecificEcosystemEnum	Retroauricular crease
+SpecificEcosystemEnum	Rosacea
+SpecificEcosystemEnum	Scalp
+SpecificEcosystemEnum	Scalp: Dandruff
+SpecificEcosystemEnum	Scalp: Non-dandruff
+SpecificEcosystemEnum	Skin surface
+SpecificEcosystemEnum	Skin tissue
+SpecificEcosystemEnum	Ulcer
+SpecificEcosystemEnum	Umbilicus
+SpecificEcosystemEnum	Right
+SpecificEcosystemEnum	Thoracic
+SpecificEcosystemEnum	Abdomen nodes
+SpecificEcosystemEnum	Arm nodes
+SpecificEcosystemEnum	Armpit nodes
+SpecificEcosystemEnum	Cervical/Neck nodes
+SpecificEcosystemEnum	Groin nodes
+SpecificEcosystemEnum	Head nodes
+SpecificEcosystemEnum	Laryngopharyngeal
+SpecificEcosystemEnum	Leg nodes
+SpecificEcosystemEnum	Retropharyngeal
+SpecificEcosystemEnum	Thorax nodes
+SpecificEcosystemEnum	Lymphoid follicles
+SpecificEcosystemEnum	Splenic aspirate
+SpecificEcosystemEnum	Adenoid/Pharyngeal
+SpecificEcosystemEnum	Lingual
+SpecificEcosystemEnum	Palatine/Faucial
+SpecificEcosystemEnum	Tubal
+SpecificEcosystemEnum	Actinic keratosis
+SpecificEcosystemEnum	Basal cell carcinoma
+SpecificEcosystemEnum	Bowens disease/Squamous cell carcinoma in situ
+SpecificEcosystemEnum	Breast cancer
+SpecificEcosystemEnum	Breast cancer: Ductal
+SpecificEcosystemEnum	Breast cancer: Lobular
+SpecificEcosystemEnum	Cervical cancer
+SpecificEcosystemEnum	Colon cancer
+SpecificEcosystemEnum	Gastric carcinoma
+SpecificEcosystemEnum	Keratoacanthoma
+SpecificEcosystemEnum	Oral cavity cancer
+SpecificEcosystemEnum	Ovarian cancer
+SpecificEcosystemEnum	Squamous cell carcinoma
+SpecificEcosystemEnum	Testicular cancer
+SpecificEcosystemEnum	Urothelial carcinoma/Transitional cell carcinoma (TCC)
+SpecificEcosystemEnum	Ovarian
+SpecificEcosystemEnum	Testicular non-seminoma
+SpecificEcosystemEnum	Testicular seminoma
+SpecificEcosystemEnum	Diffuse large B-cell lymphoma
+SpecificEcosystemEnum	Lymphoblastic lymphoma
+SpecificEcosystemEnum	Mycosis fungoides/Cutaneous T-cell lymphoma
+SpecificEcosystemEnum	Carcinosarcoma
+SpecificEcosystemEnum	Multiple myeloma
+SpecificEcosystemEnum	Lesion site
+SpecificEcosystemEnum	Necrotizing lesion
+SpecificEcosystemEnum	Muscle abscess
+SpecificEcosystemEnum	Bone
+SpecificEcosystemEnum	Skin
+SpecificEcosystemEnum	Soft tissues
+SpecificEcosystemEnum	Soft tissues: Muscles
+SpecificEcosystemEnum	Dentin
+SpecificEcosystemEnum	Paleofeces
+SpecificEcosystemEnum	Large intestine
+SpecificEcosystemEnum	Large intestine content
+SpecificEcosystemEnum	Low gastrointestinal tract
+SpecificEcosystemEnum	Lungs
+SpecificEcosystemEnum	Muscle tissue
+SpecificEcosystemEnum	Small intestine
+SpecificEcosystemEnum	Small intestine content
+SpecificEcosystemEnum	Small intestine mucosa
+SpecificEcosystemEnum	Stomach content
+SpecificEcosystemEnum	Hair
+SpecificEcosystemEnum	Kidney stones
+SpecificEcosystemEnum	Genital ulcer
+SpecificEcosystemEnum	Penis
+SpecificEcosystemEnum	Penis: Glans
+SpecificEcosystemEnum	Penis: Urethra opening
+SpecificEcosystemEnum	Scrotum/Scrotal sac
+SpecificEcosystemEnum	Testicle/Testes
+SpecificEcosystemEnum	Testicle/Testes: Sperm
+SpecificEcosystemEnum	Ovarian cyst
+SpecificEcosystemEnum	Prostate fluid
+SpecificEcosystemEnum	Seminal glands fluid
+SpecificEcosystemEnum	Cervix
+SpecificEcosystemEnum	Endometrium
+SpecificEcosystemEnum	Anterior fornix
+SpecificEcosystemEnum	Bartholin abscess
+SpecificEcosystemEnum	Introitus
+SpecificEcosystemEnum	Lateral fornices
+SpecificEcosystemEnum	Midpoint
+SpecificEcosystemEnum	Posterior fornix
+SpecificEcosystemEnum	Bronchial epithelial cells
+SpecificEcosystemEnum	Primary
+SpecificEcosystemEnum	Secondary
+SpecificEcosystemEnum	Tertiary
+SpecificEcosystemEnum	Alveoli
+SpecificEcosystemEnum	Bronchioles
+SpecificEcosystemEnum	Inferior lobe
+SpecificEcosystemEnum	Middle lobe
+SpecificEcosystemEnum	Pulmonary fluid
+SpecificEcosystemEnum	Superior lobe
+SpecificEcosystemEnum	Anterior nares
+SpecificEcosystemEnum	Nasal discharge
+SpecificEcosystemEnum	Nasal mucosa
+SpecificEcosystemEnum	Paranasal sinuses
+SpecificEcosystemEnum	Paranasal sinuses: Catarrh
+SpecificEcosystemEnum	Paranasal sinuses: Ethmoiddal
+SpecificEcosystemEnum	Paranasal sinuses: Frontal
+SpecificEcosystemEnum	Paranasal sinuses: Maxillary
+SpecificEcosystemEnum	Paranasal sinuses: Sphenoidal
+SpecificEcosystemEnum	Posterior nares
+SpecificEcosystemEnum	Sinus cyst
+SpecificEcosystemEnum	Laryngopharynx
+SpecificEcosystemEnum	Nasopharynx
+SpecificEcosystemEnum	Empyema drain
+SpecificEcosystemEnum	Pleural effusion
+SpecificEcosystemEnum	Pleural fluid
+SpecificEcosystemEnum	Articular cartilage
+SpecificEcosystemEnum	Bone marrow
+SpecificEcosystemEnum	Compact bone
+SpecificEcosystemEnum	Long bone
+SpecificEcosystemEnum	Osseous tissue
+SpecificEcosystemEnum	Scull: Ethmoid
+SpecificEcosystemEnum	Short bone
+SpecificEcosystemEnum	Skull
+SpecificEcosystemEnum	Spongy bone
+SpecificEcosystemEnum	Vertebra
+SpecificEcosystemEnum	Elastic
+SpecificEcosystemEnum	Fibrocartilage
+SpecificEcosystemEnum	Hyaline
+SpecificEcosystemEnum	Beaker's/Popliteal cyst
+SpecificEcosystemEnum	Synovial fluid
+SpecificEcosystemEnum	Synovium/Synovial membrane
+SpecificEcosystemEnum	Sonicate fluid
+SpecificEcosystemEnum	Thorax drainage
+SpecificEcosystemEnum	Kidney abscess
+SpecificEcosystemEnum	Renal cyst
+SpecificEcosystemEnum	Bladder stones
+SpecificEcosystemEnum	Inner
+SpecificEcosystemEnum	Outer
+SpecificEcosystemEnum	Intraocular fluid/Aqueous humor
+SpecificEcosystemEnum	Vitreous humor
+SpecificEcosystemEnum	Cornea
+SpecificEcosystemEnum	Lens
+SpecificEcosystemEnum	Ocular surface
+SpecificEcosystemEnum	Peripheral blood mononuclear cells
+SpecificEcosystemEnum	Tissue-engineered
+SpecificEcosystemEnum	Bile ducts
+SpecificEcosystemEnum	Rumen
+SpecificEcosystemEnum	Cecotropes/Night fecs
+SpecificEcosystemEnum	Proximal colon
+SpecificEcosystemEnum	Ileum-cecum
+SpecificEcosystemEnum	Gingival sulcus
+SpecificEcosystemEnum	Abomasum
+SpecificEcosystemEnum	C1/Glandular saccules
+SpecificEcosystemEnum	C2
+SpecificEcosystemEnum	C3
+SpecificEcosystemEnum	Cud
+SpecificEcosystemEnum	Forestomach
+SpecificEcosystemEnum	Glandular stomach
+SpecificEcosystemEnum	Omasum
+SpecificEcosystemEnum	Reticulum
+SpecificEcosystemEnum	Rumen fluid
+SpecificEcosystemEnum	Rumen mucosa
+SpecificEcosystemEnum	Rumen: Caudodorsal blind sac
+SpecificEcosystemEnum	Rumen: Caudoventral blind sac
+SpecificEcosystemEnum	Rumen: Cranial sac
+SpecificEcosystemEnum	Rumen: Dorsal sac
+SpecificEcosystemEnum	Rumen: Ventral sac
+SpecificEcosystemEnum	Sacciform
+SpecificEcosystemEnum	Tubiform
+SpecificEcosystemEnum	Amniotic sac
+SpecificEcosystemEnum	Colostrum
+SpecificEcosystemEnum	Digital dermatitis
+SpecificEcosystemEnum	Paw pad
+SpecificEcosystemEnum	Rhinarium
+SpecificEcosystemEnum	Udder
+SpecificEcosystemEnum	Udder dermatitis
+SpecificEcosystemEnum	Abdomen
+SpecificEcosystemEnum	Forelegs
+SpecificEcosystemEnum	Groin
+SpecificEcosystemEnum	Head
+SpecificEcosystemEnum	Hind legs
+SpecificEcosystemEnum	Neck
+SpecificEcosystemEnum	Thorax
+SpecificEcosystemEnum	Pooled tissues
+SpecificEcosystemEnum	Viscera
+SpecificEcosystemEnum	Coprolite
+SpecificEcosystemEnum	Seminal fluid
+SpecificEcosystemEnum	Catarrh
+SpecificEcosystemEnum	Empyema
+SpecificEcosystemEnum	Synovium
+SpecificEcosystemEnum	Unspecified tissue
+SpecificEcosystemEnum	Cecum/Intestinal cecum
+SpecificEcosystemEnum	Intestine: Digesta
+SpecificEcosystemEnum	Hepatopancreas/Digestive gland/Hepatic cecum
+SpecificEcosystemEnum	Mantle fluid
+SpecificEcosystemEnum	Siphon
+SpecificEcosystemEnum	Intracellular
+SpecificEcosystemEnum	Rhizoids
+SpecificEcosystemEnum	Sporophytes
+SpecificEcosystemEnum	Thallus/Plant body
+SpecificEcosystemEnum	Shoots
+SpecificEcosystemEnum	Spores
+SpecificEcosystemEnum	Gametophytes
+SpecificEcosystemEnum	Seta
+SpecificEcosystemEnum	Sporangium
+SpecificEcosystemEnum	Nectar
+SpecificEcosystemEnum	Pollen
+SpecificEcosystemEnum	Endophytes
+SpecificEcosystemEnum	Epiphytes
+SpecificEcosystemEnum	Bark
+SpecificEcosystemEnum	Endosphere
+SpecificEcosystemEnum	Epicuticular wax
+SpecificEcosystemEnum	Leaf lesion
+SpecificEcosystemEnum	Leaf nodule
+SpecificEcosystemEnum	Leaf surface
+SpecificEcosystemEnum	Leaf surface biofilm
+SpecificEcosystemEnum	Pitcher
+SpecificEcosystemEnum	Pitcher fluid
+SpecificEcosystemEnum	Xylem vessels
+SpecificEcosystemEnum	Wood decay
+SpecificEcosystemEnum	Wood/Secondary xylem
+SpecificEcosystemEnum	Mucilage
+SpecificEcosystemEnum	Anaerobic
+EcosystemCategoryEnum	Animal feed production
+EcosystemCategoryEnum	Artificial ecosystem
+EcosystemCategoryEnum	Bioreactor
+EcosystemCategoryEnum	Bioremediation
+EcosystemCategoryEnum	Biotransformation
+EcosystemCategoryEnum	Built environment
+EcosystemCategoryEnum	Feedstock
+EcosystemCategoryEnum	Food production
+EcosystemCategoryEnum	Industrial production
+EcosystemCategoryEnum	Lab culture
+EcosystemCategoryEnum	Lab enrichment
+EcosystemCategoryEnum	Lab synthesis
+EcosystemCategoryEnum	Laboratory developed
+EcosystemCategoryEnum	Modeled
+EcosystemCategoryEnum	Paper
+EcosystemCategoryEnum	Sewage treatment plant
+EcosystemCategoryEnum	Solid waste
+EcosystemCategoryEnum	Unclassified
+EcosystemCategoryEnum	WWTP
+EcosystemCategoryEnum	Wastewater
+EcosystemCategoryEnum	Air
+EcosystemCategoryEnum	Aquatic
+EcosystemCategoryEnum	Terrestrial
+EcosystemCategoryEnum	Algae
+EcosystemCategoryEnum	Amoebozoa
+EcosystemCategoryEnum	Amphibia
+EcosystemCategoryEnum	Annelida
+EcosystemCategoryEnum	Arthropoda: Chelicerates
+EcosystemCategoryEnum	Arthropoda: Crustaceans
+EcosystemCategoryEnum	Arthropoda: Insects
+EcosystemCategoryEnum	Arthropoda: Myriapoda
+EcosystemCategoryEnum	Birds
+EcosystemCategoryEnum	Bryozoa
+EcosystemCategoryEnum	Cephalochordata
+EcosystemCategoryEnum	Cnidaria
+EcosystemCategoryEnum	Endosymbionts
+EcosystemCategoryEnum	Fish
+EcosystemCategoryEnum	Fungi
+EcosystemCategoryEnum	Invertebrates
+EcosystemCategoryEnum	Mammals: Human
+EcosystemCategoryEnum	Mammals
+EcosystemCategoryEnum	Microbial
+EcosystemCategoryEnum	Mollusca
+EcosystemCategoryEnum	Plants
+EcosystemCategoryEnum	Porifera
+EcosystemCategoryEnum	Protists
+EcosystemCategoryEnum	Protozoa
+EcosystemCategoryEnum	Reptilia
+EcosystemCategoryEnum	Tunicates
+EcosystemTypeEnum	Fermentation
+EcosystemTypeEnum	Aquaculture
+EcosystemTypeEnum	Mesocosm
+EcosystemTypeEnum	Microcosm
+EcosystemTypeEnum	Mud microcosm
+EcosystemTypeEnum	Nutrient-poor
+EcosystemTypeEnum	Nutrient-rich
+EcosystemTypeEnum	Plant growth chamber
+EcosystemTypeEnum	Sand microcosm
+EcosystemTypeEnum	Seawater microcosm
+EcosystemTypeEnum	Sediment microcosm
+EcosystemTypeEnum	Soil microcosm
+EcosystemTypeEnum	Unclassified
+EcosystemTypeEnum	Vivarium
+EcosystemTypeEnum	Water microcosm
+EcosystemTypeEnum	Aerobic
+EcosystemTypeEnum	Anaerobic
+EcosystemTypeEnum	Continuous culture
+EcosystemTypeEnum	DHS reactor
+EcosystemTypeEnum	Denitrification
+EcosystemTypeEnum	EBPR
+EcosystemTypeEnum	High-salinity/high-pH
+EcosystemTypeEnum	MBR (Membrane bioreactor)
+EcosystemTypeEnum	Microbial fuel cells/MFC
+EcosystemTypeEnum	Photobioreactor (PBR)
+EcosystemTypeEnum	SBR-EBPR
+EcosystemTypeEnum	SSF (Solid state fermentation)
+EcosystemTypeEnum	Semi-continuous
+EcosystemTypeEnum	Sulphur Autotrophic Denitrification
+EcosystemTypeEnum	Thiocyanate-remediating
+EcosystemTypeEnum	UASB (Upflow anaerobic sludge blanket)
+EcosystemTypeEnum	Wastewater
+EcosystemTypeEnum	Hydrocarbon
+EcosystemTypeEnum	Metal
+EcosystemTypeEnum	Persistent organic pollutants (POP)
+EcosystemTypeEnum	Terephthalate
+EcosystemTypeEnum	Tetrachloroethylene and derivatives
+EcosystemTypeEnum	Thiocyanate
+EcosystemTypeEnum	Coal
+EcosystemTypeEnum	Microbial enhanced oil recovery
+EcosystemTypeEnum	Microbial solubilization of coal
+EcosystemTypeEnum	Mixed alcohol bioreactor
+EcosystemTypeEnum	Animal cage
+EcosystemTypeEnum	Building
+EcosystemTypeEnum	Canal
+EcosystemTypeEnum	Cement wall
+EcosystemTypeEnum	City
+EcosystemTypeEnum	Dairy processing facility
+EcosystemTypeEnum	Drinking water treatment plant
+EcosystemTypeEnum	Fermentation pit
+EcosystemTypeEnum	Hospital
+EcosystemTypeEnum	House
+EcosystemTypeEnum	International Space Station
+EcosystemTypeEnum	Mine
+EcosystemTypeEnum	Monument
+EcosystemTypeEnum	Mushroom farm
+EcosystemTypeEnum	Nuclear test reactor
+EcosystemTypeEnum	Oil refinery
+EcosystemTypeEnum	Pipeline
+EcosystemTypeEnum	Solar panel
+EcosystemTypeEnum	Spacecraft Assembly Cleanrooms
+EcosystemTypeEnum	Swimming pool
+EcosystemTypeEnum	Swine confinement building
+EcosystemTypeEnum	Tailings pond
+EcosystemTypeEnum	Water treatment plant
+EcosystemTypeEnum	Composting
+EcosystemTypeEnum	Baby formula
+EcosystemTypeEnum	Beans
+EcosystemTypeEnum	Beverages
+EcosystemTypeEnum	Bread production
+EcosystemTypeEnum	Dairy products
+EcosystemTypeEnum	Egg products
+EcosystemTypeEnum	Fermentation cellar
+EcosystemTypeEnum	Fermentation starter
+EcosystemTypeEnum	Fermented beverages
+EcosystemTypeEnum	Fermented food
+EcosystemTypeEnum	Fermented seafood
+EcosystemTypeEnum	Fermented vegetables
+EcosystemTypeEnum	Fish products
+EcosystemTypeEnum	Food sample
+EcosystemTypeEnum	Grains/Grain products
+EcosystemTypeEnum	Meat products
+EcosystemTypeEnum	Nuts
+EcosystemTypeEnum	Pastry
+EcosystemTypeEnum	Plant products
+EcosystemTypeEnum	Salt
+EcosystemTypeEnum	Seafood product
+EcosystemTypeEnum	Seafood
+EcosystemTypeEnum	Silage fermentation
+EcosystemTypeEnum	Sourdough
+EcosystemTypeEnum	Spices
+EcosystemTypeEnum	Sweets
+EcosystemTypeEnum	Biochar
+EcosystemTypeEnum	Chemical products
+EcosystemTypeEnum	Engineered product
+EcosystemTypeEnum	Train car
+EcosystemTypeEnum	Culture media
+EcosystemTypeEnum	Defined media
+EcosystemTypeEnum	Percolator
+EcosystemTypeEnum	Undefined media
+EcosystemTypeEnum	Genetic cross
+EcosystemTypeEnum	Genetically modified
+EcosystemTypeEnum	Simulated communities (DNA mixture)
+EcosystemTypeEnum	Simulated communities (contig mixture)
+EcosystemTypeEnum	Simulated communities (microbial mixture)
+EcosystemTypeEnum	Simulated communities (sequence read mixture)
+EcosystemTypeEnum	Currency notes
+EcosystemTypeEnum	Activated sludge
+EcosystemTypeEnum	Sludge
+EcosystemTypeEnum	Agricultural waste
+EcosystemTypeEnum	Animal waste
+EcosystemTypeEnum	Bagasse
+EcosystemTypeEnum	Bio- and green waste (BGW)
+EcosystemTypeEnum	Brown waste
+EcosystemTypeEnum	Cellulose associated waste
+EcosystemTypeEnum	Feedstock
+EcosystemTypeEnum	Food waste
+EcosystemTypeEnum	Grass
+EcosystemTypeEnum	Green waste
+EcosystemTypeEnum	Household waste
+EcosystemTypeEnum	Human waste
+EcosystemTypeEnum	Industrial waste
+EcosystemTypeEnum	Landfill
+EcosystemTypeEnum	Latrine chamber
+EcosystemTypeEnum	Mixed feedstock
+EcosystemTypeEnum	Unknown material
+EcosystemTypeEnum	Urban waste
+EcosystemTypeEnum	Vegetable
+EcosystemTypeEnum	Vermicompost
+EcosystemTypeEnum	Wood
+EcosystemTypeEnum	Zoo waste
+EcosystemTypeEnum	A/O treatment system
+EcosystemTypeEnum	Aerobic digester
+EcosystemTypeEnum	Anaerobic digester
+EcosystemTypeEnum	Effluent
+EcosystemTypeEnum	Influent
+EcosystemTypeEnum	Mixed liquor
+EcosystemTypeEnum	Activated Sludge
+EcosystemTypeEnum	Anaerobic digestor
+EcosystemTypeEnum	Industrial wastewater
+EcosystemTypeEnum	Municipal landfill
+EcosystemTypeEnum	Nutrient removal
+EcosystemTypeEnum	Reclaimed/Recycled wastewater
+EcosystemTypeEnum	Sewage
+EcosystemTypeEnum	Urban wastewater
+EcosystemTypeEnum	Indoor Air
+EcosystemTypeEnum	Outdoor Air
+EcosystemTypeEnum	Acidic
+EcosystemTypeEnum	Artesian spring
+EcosystemTypeEnum	Deep subsurface
+EcosystemTypeEnum	Floodplain
+EcosystemTypeEnum	Freshwater
+EcosystemTypeEnum	Marine
+EcosystemTypeEnum	Non-marine Saline and Alkaline
+EcosystemTypeEnum	Pit lake
+EcosystemTypeEnum	Sediment
+EcosystemTypeEnum	Thermal springs
+EcosystemTypeEnum	Agricultural field
+EcosystemTypeEnum	Asphalt lakes
+EcosystemTypeEnum	Cave
+EcosystemTypeEnum	Desert
+EcosystemTypeEnum	Geologic
+EcosystemTypeEnum	Mud volcano
+EcosystemTypeEnum	Nest
+EcosystemTypeEnum	Oil reservoir
+EcosystemTypeEnum	Plant litter
+EcosystemTypeEnum	Rock-dwelling (endoliths)
+EcosystemTypeEnum	Rock-dwelling (subaerial biofilms)
+EcosystemTypeEnum	Saprolite–Bedrock interface
+EcosystemTypeEnum	Sargassum
+EcosystemTypeEnum	Soil-bedrock interface
+EcosystemTypeEnum	Soil
+EcosystemTypeEnum	Subsurface
+EcosystemTypeEnum	Volcanic
+EcosystemTypeEnum	Biocrust
+EcosystemTypeEnum	Brown Algae
+EcosystemTypeEnum	Diatoms
+EcosystemTypeEnum	Dinoflagellata
+EcosystemTypeEnum	Golden Algae
+EcosystemTypeEnum	Green algae
+EcosystemTypeEnum	Haptophytes
+EcosystemTypeEnum	Microalgae
+EcosystemTypeEnum	Mixed algae turf
+EcosystemTypeEnum	Red algae
+EcosystemTypeEnum	Yellow-green algae
+EcosystemTypeEnum	Pessonella
+EcosystemTypeEnum	Digestive system
+EcosystemTypeEnum	Respiratory system
+EcosystemTypeEnum	Urinary system
+EcosystemTypeEnum	Excretory system
+EcosystemTypeEnum	Gills
+EcosystemTypeEnum	Integument
+EcosystemTypeEnum	Intracellular endosymbionts
+EcosystemTypeEnum	Reproductive system
+EcosystemTypeEnum	Tissue
+EcosystemTypeEnum	Whole body
+EcosystemTypeEnum	Cell Line
+EcosystemTypeEnum	Circulatory system
+EcosystemTypeEnum	Integumentary system
+EcosystemTypeEnum	Larva: Nauplius
+EcosystemTypeEnum	Larva: Zoea
+EcosystemTypeEnum	Larva
+EcosystemTypeEnum	Post-larva
+EcosystemTypeEnum	Abdomen
+EcosystemTypeEnum	Fat body
+EcosystemTypeEnum	Head
+EcosystemTypeEnum	Legs and wings
+EcosystemTypeEnum	Multiple systems
+EcosystemTypeEnum	Muscular system
+EcosystemTypeEnum	Nervous system
+EcosystemTypeEnum	Nymph/Instar
+EcosystemTypeEnum	Ootheca/Egg mass
+EcosystemTypeEnum	Prepupa
+EcosystemTypeEnum	Pupa
+EcosystemTypeEnum	Thorax
+EcosystemTypeEnum	Endocrine system
+EcosystemTypeEnum	Lymphatic system
+EcosystemTypeEnum	Remains
+EcosystemTypeEnum	Skeletal system
+EcosystemTypeEnum	Bacteria
+EcosystemTypeEnum	Fungi
+EcosystemTypeEnum	Embryo
+EcosystemTypeEnum	Olfactory system
+EcosystemTypeEnum	Swim bladder
+EcosystemTypeEnum	Visual system
+EcosystemTypeEnum	Appressorium
+EcosystemTypeEnum	Fruiting body
+EcosystemTypeEnum	Germ tube
+EcosystemTypeEnum	Lichen
+EcosystemTypeEnum	Mycelium
+EcosystemTypeEnum	Mycorrhiza
+EcosystemTypeEnum	Sclerotium
+EcosystemTypeEnum	Spore
+EcosystemTypeEnum	Bryozoans
+EcosystemTypeEnum	Cnidaria
+EcosystemTypeEnum	Ctenophora
+EcosystemTypeEnum	Echinodermata
+EcosystemTypeEnum	Nematoda
+EcosystemTypeEnum	Platyhelminthes
+EcosystemTypeEnum	Abdominal/Peritoneal cavity
+EcosystemTypeEnum	Auditory/Hearing system
+EcosystemTypeEnum	Benign tumor
+EcosystemTypeEnum	Cell culture
+EcosystemTypeEnum	Connective tissue
+EcosystemTypeEnum	Fetus
+EcosystemTypeEnum	Malignant tumor
+EcosystemTypeEnum	Multisystem conditions
+EcosystemTypeEnum	Thoracic cavity
+EcosystemTypeEnum	Abdominal cavity
+EcosystemTypeEnum	Tumor
+EcosystemTypeEnum	Unspecified system
+EcosystemTypeEnum	Bacterivore
+EcosystemTypeEnum	Dinoflagellates
+EcosystemTypeEnum	Bivalves
+EcosystemTypeEnum	Larvae
+EcosystemTypeEnum	Oyster
+EcosystemTypeEnum	Sensory organs
+EcosystemTypeEnum	Shell
+EcosystemTypeEnum	Bryophytes
+EcosystemTypeEnum	Endosphere
+EcosystemTypeEnum	Mixed parts
+EcosystemTypeEnum	Nodule
+EcosystemTypeEnum	Peat moss
+EcosystemTypeEnum	Phyllosphere
+EcosystemTypeEnum	Pitcher
+EcosystemTypeEnum	Plant callus
+EcosystemTypeEnum	Rhizoid
+EcosystemTypeEnum	Rhizome
+EcosystemTypeEnum	Roots
+EcosystemTypeEnum	Seeds
+EcosystemTypeEnum	Whole plant body
+EcosystemTypeEnum	Sponge
+EcosystemTypeEnum	Amoebozoa
+EcosystemTypeEnum	Breviatea
+EcosystemTypeEnum	Excavata
+EcosystemTypeEnum	Nanoflagellates
+EcosystemTypeEnum	Oomycetes
+EcosystemTypeEnum	Oxymonads
+EcosystemTypeEnum	Sporozoa
+EcosystemTypeEnum	Ascidians
+EcosystemSubtypeEnum	Swine waste with corn
+EcosystemSubtypeEnum	Unclassified
+EcosystemSubtypeEnum	Algae raceway pond
+EcosystemSubtypeEnum	Crustaceans pond
+EcosystemSubtypeEnum	Crustaceans raceway
+EcosystemSubtypeEnum	Crustaceans tank
+EcosystemSubtypeEnum	Fish pond
+EcosystemSubtypeEnum	Fish tank
+EcosystemSubtypeEnum	Marine fish farm
+EcosystemSubtypeEnum	Molluscs farm
+EcosystemSubtypeEnum	Molluscs pond
+EcosystemSubtypeEnum	Molluscs tank
+EcosystemSubtypeEnum	Photobioreactor (PBR)
+EcosystemSubtypeEnum	Freshwater
+EcosystemSubtypeEnum	Lake water
+EcosystemSubtypeEnum	River water
+EcosystemSubtypeEnum	Seawater
+EcosystemSubtypeEnum	Soil
+EcosystemSubtypeEnum	Pine litter on sand
+EcosystemSubtypeEnum	R2A agar
+EcosystemSubtypeEnum	Hydroponic media
+EcosystemSubtypeEnum	Wetland sediment
+EcosystemSubtypeEnum	Contaminated soil
+EcosystemSubtypeEnum	Surface biofilm
+EcosystemSubtypeEnum	Freshwater aquarium
+EcosystemSubtypeEnum	Herpetarium
+EcosystemSubtypeEnum	Insectarium
+EcosystemSubtypeEnum	Oceanarium
+EcosystemSubtypeEnum	Seawater aquarium
+EcosystemSubtypeEnum	Terrarium
+EcosystemSubtypeEnum	AGS (Aerobic granular sludge)
+EcosystemSubtypeEnum	Activated sludge
+EcosystemSubtypeEnum	Biofilm
+EcosystemSubtypeEnum	Biogas
+EcosystemSubtypeEnum	Biomass
+EcosystemSubtypeEnum	Digestate
+EcosystemSubtypeEnum	Effluent
+EcosystemSubtypeEnum	Inoculum
+EcosystemSubtypeEnum	Leachate
+EcosystemSubtypeEnum	Manure
+EcosystemSubtypeEnum	Settled granule
+EcosystemSubtypeEnum	Sludge
+EcosystemSubtypeEnum	Thermophilic digester
+EcosystemSubtypeEnum	Wastewater
+EcosystemSubtypeEnum	Marine sediment inoculum
+EcosystemSubtypeEnum	Woodchip Bioreactor (WBR)
+EcosystemSubtypeEnum	Anaerobic-Aerobic
+EcosystemSubtypeEnum	Mixed liquor
+EcosystemSubtypeEnum	Produced water
+EcosystemSubtypeEnum	Anode
+EcosystemSubtypeEnum	Cathode
+EcosystemSubtypeEnum	Aerobic
+EcosystemSubtypeEnum	Anaerobic
+EcosystemSubtypeEnum	Interstitial water
+EcosystemSubtypeEnum	Cyanide/thiocyanate
+EcosystemSubtypeEnum	Benzene
+EcosystemSubtypeEnum	Methane
+EcosystemSubtypeEnum	Xylene
+EcosystemSubtypeEnum	Polycyclic aromatic hydrocarbons
+EcosystemSubtypeEnum	Chloroethene
+EcosystemSubtypeEnum	Tetrachloroethylene
+EcosystemSubtypeEnum	Reptile cage
+EcosystemSubtypeEnum	Irrigation canal
+EcosystemSubtypeEnum	Water
+EcosystemSubtypeEnum	Park
+EcosystemSubtypeEnum	Subway
+EcosystemSubtypeEnum	Drinking water filter
+EcosystemSubtypeEnum	Drinking water
+EcosystemSubtypeEnum	Mud
+EcosystemSubtypeEnum	Hospital bedroom
+EcosystemSubtypeEnum	ICU
+EcosystemSubtypeEnum	Doormat
+EcosystemSubtypeEnum	Dust
+EcosystemSubtypeEnum	Coal mine
+EcosystemSubtypeEnum	Oil sands
+EcosystemSubtypeEnum	Interior wall
+EcosystemSubtypeEnum	Stone
+EcosystemSubtypeEnum	Cultivation substrate
+EcosystemSubtypeEnum	Cooling water
+EcosystemSubtypeEnum	Crude oil sludge
+EcosystemSubtypeEnum	Oil-contaminated sediment
+EcosystemSubtypeEnum	Petroleum sludge
+EcosystemSubtypeEnum	Drinking water pipeline
+EcosystemSubtypeEnum	Oil/Gas pipeline
+EcosystemSubtypeEnum	Air
+EcosystemSubtypeEnum	Floor
+EcosystemSubtypeEnum	Gowning room
+EcosystemSubtypeEnum	Sand filter
+EcosystemSubtypeEnum	Petrochemical
+EcosystemSubtypeEnum	Juice
+EcosystemSubtypeEnum	Bread
+EcosystemSubtypeEnum	Fermented dairy products
+EcosystemSubtypeEnum	Ice cream
+EcosystemSubtypeEnum	Processed milk
+EcosystemSubtypeEnum	Raw milk
+EcosystemSubtypeEnum	Pit mud
+EcosystemSubtypeEnum	Vinegar
+EcosystemSubtypeEnum	Soy sauce
+EcosystemSubtypeEnum	Soybean paste
+EcosystemSubtypeEnum	Cold smoked fish
+EcosystemSubtypeEnum	Cooked fish
+EcosystemSubtypeEnum	Fermented fish
+EcosystemSubtypeEnum	Salted fish
+EcosystemSubtypeEnum	Beef
+EcosystemSubtypeEnum	Cooked meat
+EcosystemSubtypeEnum	Fermented meat products
+EcosystemSubtypeEnum	Raw meat
+EcosystemSubtypeEnum	Morphine
+EcosystemSubtypeEnum	Solar salt
+EcosystemSubtypeEnum	Frozen seafood
+EcosystemSubtypeEnum	Buffer
+EcosystemSubtypeEnum	Distilled water
+EcosystemSubtypeEnum	Input fracking water
+EcosystemSubtypeEnum	Lab-grade water
+EcosystemSubtypeEnum	PCR blank control
+EcosystemSubtypeEnum	Reagent blank
+EcosystemSubtypeEnum	Sheath fluid
+EcosystemSubtypeEnum	Aviation fuel
+EcosystemSubtypeEnum	Bioanode
+EcosystemSubtypeEnum	Biocathode
+EcosystemSubtypeEnum	Tobacco product
+EcosystemSubtypeEnum	Wetsalted hide
+EcosystemSubtypeEnum	Seat surface
+EcosystemSubtypeEnum	Algae
+EcosystemSubtypeEnum	Archaea
+EcosystemSubtypeEnum	Bacteria
+EcosystemSubtypeEnum	Contaminated
+EcosystemSubtypeEnum	Fungi
+EcosystemSubtypeEnum	Aerobic media
+EcosystemSubtypeEnum	Anaerobic media
+EcosystemSubtypeEnum	Marine media
+EcosystemSubtypeEnum	Plant nodule
+EcosystemSubtypeEnum	Sanger
+EcosystemSubtypeEnum	Composting
+EcosystemSubtypeEnum	Spent mushroom substrate
+EcosystemSubtypeEnum	Fresh manure
+EcosystemSubtypeEnum	Guano
+EcosystemSubtypeEnum	Manure slurry
+EcosystemSubtypeEnum	Poultry litter
+EcosystemSubtypeEnum	Hay
+EcosystemSubtypeEnum	Rice straw
+EcosystemSubtypeEnum	Wood chips
+EcosystemSubtypeEnum	Oil palm
+EcosystemSubtypeEnum	Fermentation
+EcosystemSubtypeEnum	A/O bioreactor
+EcosystemSubtypeEnum	Settling tank
+EcosystemSubtypeEnum	Algae cultivation tank
+EcosystemSubtypeEnum	Raw wastewater
+EcosystemSubtypeEnum	Wastewater effluent
+EcosystemSubtypeEnum	Acid mine drainage
+EcosystemSubtypeEnum	Agricultural wastewater
+EcosystemSubtypeEnum	Aquaculture farm
+EcosystemSubtypeEnum	Dairy farm
+EcosystemSubtypeEnum	Feedlot
+EcosystemSubtypeEnum	Hospital wastewater
+EcosystemSubtypeEnum	Landfill leachate
+EcosystemSubtypeEnum	Meat/Poultry processing plant
+EcosystemSubtypeEnum	Mine water
+EcosystemSubtypeEnum	Organic dairy farm
+EcosystemSubtypeEnum	Petroleum reservoir
+EcosystemSubtypeEnum	Pulp and paper wastewater
+EcosystemSubtypeEnum	Tailings pond
+EcosystemSubtypeEnum	Biological phosphorus removal
+EcosystemSubtypeEnum	Dissolved organics (aerobic)
+EcosystemSubtypeEnum	Dissolved organics (anaerobic)
+EcosystemSubtypeEnum	Nitrogen removal
+EcosystemSubtypeEnum	Slums/Informal settlements
+EcosystemSubtypeEnum	Air scrubber
+EcosystemSubtypeEnum	Cattle barn
+EcosystemSubtypeEnum	Composting facility
+EcosystemSubtypeEnum	Poultry farm
+EcosystemSubtypeEnum	Acidic hypersaline lake
+EcosystemSubtypeEnum	Acidic lake
+EcosystemSubtypeEnum	Shrimp pond
+EcosystemSubtypeEnum	Acidic
+EcosystemSubtypeEnum	Groundwater
+EcosystemSubtypeEnum	Shale gas reservoir
+EcosystemSubtypeEnum	Subglacial lake
+EcosystemSubtypeEnum	Subterranean lake
+EcosystemSubtypeEnum	Sediment
+EcosystemSubtypeEnum	Agricultural field
+EcosystemSubtypeEnum	Aquifer
+EcosystemSubtypeEnum	Bog lake
+EcosystemSubtypeEnum	Creek
+EcosystemSubtypeEnum	Desert springs
+EcosystemSubtypeEnum	Drainage ditch
+EcosystemSubtypeEnum	Floodplain lake
+EcosystemSubtypeEnum	Floodplain
+EcosystemSubtypeEnum	Glacier
+EcosystemSubtypeEnum	Harbor
+EcosystemSubtypeEnum	Ice
+EcosystemSubtypeEnum	Kettle hole
+EcosystemSubtypeEnum	Lake
+EcosystemSubtypeEnum	Lentic
+EcosystemSubtypeEnum	Lotic
+EcosystemSubtypeEnum	Microbialites
+EcosystemSubtypeEnum	Pond
+EcosystemSubtypeEnum	Puddle
+EcosystemSubtypeEnum	Rainwater
+EcosystemSubtypeEnum	Reservoir
+EcosystemSubtypeEnum	River
+EcosystemSubtypeEnum	Simulated rainfall
+EcosystemSubtypeEnum	Sinkhole
+EcosystemSubtypeEnum	Sterile water
+EcosystemSubtypeEnum	Storm water
+EcosystemSubtypeEnum	Tap water
+EcosystemSubtypeEnum	Water tank
+EcosystemSubtypeEnum	Wetlands
+EcosystemSubtypeEnum	Abyssopelagic
+EcosystemSubtypeEnum	Archipelago
+EcosystemSubtypeEnum	Atoll lagoon
+EcosystemSubtypeEnum	Bathypelagic
+EcosystemSubtypeEnum	Benthic zone
+EcosystemSubtypeEnum	Benthic
+EcosystemSubtypeEnum	Coastal lagoon
+EcosystemSubtypeEnum	Coastal
+EcosystemSubtypeEnum	Cold seeps
+EcosystemSubtypeEnum	Continental margin
+EcosystemSubtypeEnum	Deep subsurface
+EcosystemSubtypeEnum	Deepwater/Brine lake
+EcosystemSubtypeEnum	Demersal zone
+EcosystemSubtypeEnum	Epipelagic
+EcosystemSubtypeEnum	Fjord
+EcosystemSubtypeEnum	Fossil
+EcosystemSubtypeEnum	Gulf
+EcosystemSubtypeEnum	Hadalpelagic
+EcosystemSubtypeEnum	Hydrothermal vents
+EcosystemSubtypeEnum	Hypoxic zone
+EcosystemSubtypeEnum	Inlet
+EcosystemSubtypeEnum	Intertidal zone
+EcosystemSubtypeEnum	Littoral zone
+EcosystemSubtypeEnum	Marginal Sea
+EcosystemSubtypeEnum	Marine basin floor
+EcosystemSubtypeEnum	Marine lake
+EcosystemSubtypeEnum	Mesopelagic
+EcosystemSubtypeEnum	Mud volcano
+EcosystemSubtypeEnum	Neritic zone/Coastal water
+EcosystemSubtypeEnum	Ocean trench
+EcosystemSubtypeEnum	Oceanic
+EcosystemSubtypeEnum	Oil seeps
+EcosystemSubtypeEnum	Pelagic zone
+EcosystemSubtypeEnum	River plume
+EcosystemSubtypeEnum	Sea ice
+EcosystemSubtypeEnum	Seaweed
+EcosystemSubtypeEnum	Shipwreck
+EcosystemSubtypeEnum	Strait
+EcosystemSubtypeEnum	Subtidal zone
+EcosystemSubtypeEnum	Supratidal zone
+EcosystemSubtypeEnum	Volcanic
+EcosystemSubtypeEnum	Alkaline
+EcosystemSubtypeEnum	Fracking water
+EcosystemSubtypeEnum	Hypersaline lake
+EcosystemSubtypeEnum	Hypersaline soda lake
+EcosystemSubtypeEnum	Hypersaline
+EcosystemSubtypeEnum	Near-boiling (>90C)
+EcosystemSubtypeEnum	Saline lake
+EcosystemSubtypeEnum	Saline
+EcosystemSubtypeEnum	Salt crystallizer ponds
+EcosystemSubtypeEnum	Salt marsh
+EcosystemSubtypeEnum	Soda lake
+EcosystemSubtypeEnum	Solar solterns
+EcosystemSubtypeEnum	Sub-saline lake
+EcosystemSubtypeEnum	Mine pit lake
+EcosystemSubtypeEnum	Oil sands pit lake
+EcosystemSubtypeEnum	Acid lake
+EcosystemSubtypeEnum	Geothermal pool/Hot lake
+EcosystemSubtypeEnum	Hot (42-90C)
+EcosystemSubtypeEnum	Microbial mats
+EcosystemSubtypeEnum	Runoff channel
+EcosystemSubtypeEnum	Tepid (25-34C)
+EcosystemSubtypeEnum	Warm (34-42C)
+EcosystemSubtypeEnum	Tar
+EcosystemSubtypeEnum	Wall
+EcosystemSubtypeEnum	Cave
+EcosystemSubtypeEnum	Clay
+EcosystemSubtypeEnum	Coalbed methane well
+EcosystemSubtypeEnum	Mine
+EcosystemSubtypeEnum	Oil well
+EcosystemSubtypeEnum	Rock core/Sediment
+EcosystemSubtypeEnum	Rock
+EcosystemSubtypeEnum	Salt mine
+EcosystemSubtypeEnum	Sub-seafloor
+EcosystemSubtypeEnum	Water well
+EcosystemSubtypeEnum	Salt pan/flat
+EcosystemSubtypeEnum	Aquatic biofilm
+EcosystemSubtypeEnum	Mine pit pond
+EcosystemSubtypeEnum	Alligator nest
+EcosystemSubtypeEnum	Chelicerates nest
+EcosystemSubtypeEnum	Insects nest
+EcosystemSubtypeEnum	Rodent burrow
+EcosystemSubtypeEnum	Oil
+EcosystemSubtypeEnum	Decayed wood
+EcosystemSubtypeEnum	Litterfall
+EcosystemSubtypeEnum	Halite
+EcosystemSubtypeEnum	Saprolite
+EcosystemSubtypeEnum	Dried seaweeds
+EcosystemSubtypeEnum	Agricultural land
+EcosystemSubtypeEnum	Alpine
+EcosystemSubtypeEnum	Arable
+EcosystemSubtypeEnum	Biochar
+EcosystemSubtypeEnum	Biocrust
+EcosystemSubtypeEnum	Boreal forest/Taiga
+EcosystemSubtypeEnum	Botanical garden
+EcosystemSubtypeEnum	Chaparral
+EcosystemSubtypeEnum	City park
+EcosystemSubtypeEnum	Coastal area
+EcosystemSubtypeEnum	Desert
+EcosystemSubtypeEnum	Drainage basin
+EcosystemSubtypeEnum	Forest
+EcosystemSubtypeEnum	Garden
+EcosystemSubtypeEnum	Geothermal field
+EcosystemSubtypeEnum	Glacial till
+EcosystemSubtypeEnum	Grasslands
+EcosystemSubtypeEnum	Gravesite
+EcosystemSubtypeEnum	Greenhouse
+EcosystemSubtypeEnum	Lakeshore
+EcosystemSubtypeEnum	Landfill
+EcosystemSubtypeEnum	Laurel/Subtropical forest
+EcosystemSubtypeEnum	Leptosol
+EcosystemSubtypeEnum	Loam
+EcosystemSubtypeEnum	Mangrove soil
+EcosystemSubtypeEnum	Manure-fertilized
+EcosystemSubtypeEnum	Meadow
+EcosystemSubtypeEnum	Mineral horizon
+EcosystemSubtypeEnum	Nature reserve
+EcosystemSubtypeEnum	Oak savanna
+EcosystemSubtypeEnum	Orchard
+EcosystemSubtypeEnum	Organic layer
+EcosystemSubtypeEnum	Paddy field/soil
+EcosystemSubtypeEnum	Palsa
+EcosystemSubtypeEnum	Pasture
+EcosystemSubtypeEnum	Peat
+EcosystemSubtypeEnum	Permafrost
+EcosystemSubtypeEnum	Potting soil
+EcosystemSubtypeEnum	Proglacial area
+EcosystemSubtypeEnum	Ranch
+EcosystemSubtypeEnum	Riparian zone
+EcosystemSubtypeEnum	Riverside
+EcosystemSubtypeEnum	Salt flat/Salt pan
+EcosystemSubtypeEnum	Sand
+EcosystemSubtypeEnum	Shrubland
+EcosystemSubtypeEnum	Silt
+EcosystemSubtypeEnum	Soil crust
+EcosystemSubtypeEnum	Sub-biocrust
+EcosystemSubtypeEnum	Surface mine
+EcosystemSubtypeEnum	Tailings
+EcosystemSubtypeEnum	Temperate forest
+EcosystemSubtypeEnum	Tree plantation
+EcosystemSubtypeEnum	Tropical forest
+EcosystemSubtypeEnum	Tundra
+EcosystemSubtypeEnum	Vadose zone
+EcosystemSubtypeEnum	Watershed
+EcosystemSubtypeEnum	Wetland-upland transition
+EcosystemSubtypeEnum	Fumaroles
+EcosystemSubtypeEnum	Blade
+EcosystemSubtypeEnum	Embryo
+EcosystemSubtypeEnum	Whole body
+EcosystemSubtypeEnum	Phycosphere
+EcosystemSubtypeEnum	Ectosymbionts
+EcosystemSubtypeEnum	Sporeling
+EcosystemSubtypeEnum	Biliary tract
+EcosystemSubtypeEnum	Intestine
+EcosystemSubtypeEnum	Lung
+EcosystemSubtypeEnum	Kidney
+EcosystemSubtypeEnum	Crop
+EcosystemSubtypeEnum	Digestive tube
+EcosystemSubtypeEnum	Nephridia
+EcosystemSubtypeEnum	Cuticle
+EcosystemSubtypeEnum	Subcuticular space
+EcosystemSubtypeEnum	Trophosome
+EcosystemSubtypeEnum	Egg capsule
+EcosystemSubtypeEnum	ISE6
+EcosystemSubtypeEnum	Heart
+EcosystemSubtypeEnum	Hemolymph
+EcosystemSubtypeEnum	Foregut
+EcosystemSubtypeEnum	Gut
+EcosystemSubtypeEnum	Hindgut
+EcosystemSubtypeEnum	Midgut
+EcosystemSubtypeEnum	Mouth
+EcosystemSubtypeEnum	Antennal/Green glands
+EcosystemSubtypeEnum	Maxillary glands
+EcosystemSubtypeEnum	Gonopore
+EcosystemSubtypeEnum	Ovaries
+EcosystemSubtypeEnum	Gill/Bronchial chamber
+EcosystemSubtypeEnum	Abdomen/Pleon
+EcosystemSubtypeEnum	Cephalothorax
+EcosystemSubtypeEnum	Head/Cephalon
+EcosystemSubtypeEnum	Thorax/Pereon
+EcosystemSubtypeEnum	Metasoma
+EcosystemSubtypeEnum	Heart/Dorsal vessel
+EcosystemSubtypeEnum	Pharyngeal glands
+EcosystemSubtypeEnum	Malpighian tubules
+EcosystemSubtypeEnum	Abdomen
+EcosystemSubtypeEnum	Head
+EcosystemSubtypeEnum	Thorax
+EcosystemSubtypeEnum	Muscles
+EcosystemSubtypeEnum	Eggs
+EcosystemSubtypeEnum	Cocoon
+EcosystemSubtypeEnum	Milk glands
+EcosystemSubtypeEnum	Spermathecae
+EcosystemSubtypeEnum	Testes
+EcosystemSubtypeEnum	Spiracles
+EcosystemSubtypeEnum	Trachea
+EcosystemSubtypeEnum	Prothorax
+EcosystemSubtypeEnum	No head
+EcosystemSubtypeEnum	No thorax
+EcosystemSubtypeEnum	Gills
+EcosystemSubtypeEnum	Blood
+EcosystemSubtypeEnum	Ceca
+EcosystemSubtypeEnum	Esophagus
+EcosystemSubtypeEnum	Large intestine
+EcosystemSubtypeEnum	Oral/Buccal cavity
+EcosystemSubtypeEnum	Pancreas
+EcosystemSubtypeEnum	Pharynx/Throat
+EcosystemSubtypeEnum	Small intestine
+EcosystemSubtypeEnum	Stomach
+EcosystemSubtypeEnum	Adipose tissue
+EcosystemSubtypeEnum	Claws/Talon
+EcosystemSubtypeEnum	Skin
+EcosystemSubtypeEnum	Uropygial/Preen gland
+EcosystemSubtypeEnum	Bursa of Fabricius
+EcosystemSubtypeEnum	Spleen
+EcosystemSubtypeEnum	Skeletal muscle
+EcosystemSubtypeEnum	Smooth muscles
+EcosystemSubtypeEnum	Brain
+EcosystemSubtypeEnum	Subarachnoid space
+EcosystemSubtypeEnum	Decomposed body
+EcosystemSubtypeEnum	Fossilized remains
+EcosystemSubtypeEnum	Frozen remains
+EcosystemSubtypeEnum	Mummified remains
+EcosystemSubtypeEnum	Skeletonized remains
+EcosystemSubtypeEnum	Air sacs
+EcosystemSubtypeEnum	Bronchi
+EcosystemSubtypeEnum	Infraorbital sinus
+EcosystemSubtypeEnum	Nasal cavity
+EcosystemSubtypeEnum	Bones
+EcosystemSubtypeEnum	Ovicells
+EcosystemSubtypeEnum	Ascites
+EcosystemSubtypeEnum	Gill rakers
+EcosystemSubtypeEnum	Intestine: Anterior
+EcosystemSubtypeEnum	Intestine: Mid
+EcosystemSubtypeEnum	Pharynx
+EcosystemSubtypeEnum	Pyloric ceca
+EcosystemSubtypeEnum	Photophore
+EcosystemSubtypeEnum	Scale
+EcosystemSubtypeEnum	Multiple organs
+EcosystemSubtypeEnum	Cerebrospinal fluid
+EcosystemSubtypeEnum	Olfactory pit
+EcosystemSubtypeEnum	Intromittent organ
+EcosystemSubtypeEnum	Bone
+EcosystemSubtypeEnum	Cartilage
+EcosystemSubtypeEnum	Kidneys
+EcosystemSubtypeEnum	Eye
+EcosystemSubtypeEnum	Inner tissue
+EcosystemSubtypeEnum	Gymnolaemates
+EcosystemSubtypeEnum	Coral
+EcosystemSubtypeEnum	Sea Star
+EcosystemSubtypeEnum	Sea Urchin
+EcosystemSubtypeEnum	Sea cucumber
+EcosystemSubtypeEnum	Digestive system
+EcosystemSubtypeEnum	Abscess
+EcosystemSubtypeEnum	Peritoneal fluid
+EcosystemSubtypeEnum	Peritoneum
+EcosystemSubtypeEnum	Ear
+EcosystemSubtypeEnum	Inner ear
+EcosystemSubtypeEnum	Middle ear
+EcosystemSubtypeEnum	Outer ear
+EcosystemSubtypeEnum	Adenoma
+EcosystemSubtypeEnum	Cholesteatoma
+EcosystemSubtypeEnum	Dermoid
+EcosystemSubtypeEnum	Epidermoid
+EcosystemSubtypeEnum	Fibroma
+EcosystemSubtypeEnum	Ganglion
+EcosystemSubtypeEnum	Granuloma
+EcosystemSubtypeEnum	Hyperplastic/Inflammatory polyps
+EcosystemSubtypeEnum	Lipoma
+EcosystemSubtypeEnum	Myoma
+EcosystemSubtypeEnum	Nevi/Moles
+EcosystemSubtypeEnum	Osteoma
+EcosystemSubtypeEnum	Papillomas
+EcosystemSubtypeEnum	Pilomatrixoma
+EcosystemSubtypeEnum	Polyps
+EcosystemSubtypeEnum	Pyogenic granuloma
+EcosystemSubtypeEnum	Skin tag
+EcosystemSubtypeEnum	Verrucas
+EcosystemSubtypeEnum	Wart
+EcosystemSubtypeEnum	CaSki
+EcosystemSubtypeEnum	HEK293
+EcosystemSubtypeEnum	HeLa
+EcosystemSubtypeEnum	HuSC
+EcosystemSubtypeEnum	Fascia
+EcosystemSubtypeEnum	Ligament
+EcosystemSubtypeEnum	Tendons
+EcosystemSubtypeEnum	Lower gastrointestinal tract
+EcosystemSubtypeEnum	Oral cavity
+EcosystemSubtypeEnum	Endocrine gland
+EcosystemSubtypeEnum	Amniotic sac
+EcosystemSubtypeEnum	Fetal tissue
+EcosystemSubtypeEnum	Apocrine sweat glands
+EcosystemSubtypeEnum	Apoeccrine sweat glands
+EcosystemSubtypeEnum	Ceruminous glands
+EcosystemSubtypeEnum	Eccrine sweat glands
+EcosystemSubtypeEnum	Hair
+EcosystemSubtypeEnum	Lacrimal apparatus
+EcosystemSubtypeEnum	Mammary gland
+EcosystemSubtypeEnum	Meibomian glands
+EcosystemSubtypeEnum	Nails
+EcosystemSubtypeEnum	Sebaceous glands
+EcosystemSubtypeEnum	Lymph duct
+EcosystemSubtypeEnum	Lymph nodes
+EcosystemSubtypeEnum	Lymphoid tissue
+EcosystemSubtypeEnum	Peyer's patches
+EcosystemSubtypeEnum	Tertiary lymphoid organ
+EcosystemSubtypeEnum	Tonsils
+EcosystemSubtypeEnum	Carcinoid
+EcosystemSubtypeEnum	Carcinoma
+EcosystemSubtypeEnum	Germ cell tumor
+EcosystemSubtypeEnum	Lymphoma
+EcosystemSubtypeEnum	Melanoma
+EcosystemSubtypeEnum	Mixed type
+EcosystemSubtypeEnum	Myeloma
+EcosystemSubtypeEnum	Sarcoma
+EcosystemSubtypeEnum	Arterial ulcer
+EcosystemSubtypeEnum	Diabetic foot ulcer (DFU)
+EcosystemSubtypeEnum	Necrotizing soft tissue infections (NSTI)
+EcosystemSubtypeEnum	Soft tissues
+EcosystemSubtypeEnum	Venous ulcer
+EcosystemSubtypeEnum	Smooth muscle
+EcosystemSubtypeEnum	Spinal cord
+EcosystemSubtypeEnum	External genitalia/Vulva
+EcosystemSubtypeEnum	External organs
+EcosystemSubtypeEnum	Fallopian tubes
+EcosystemSubtypeEnum	Prostate
+EcosystemSubtypeEnum	Semen/Seminal fluid
+EcosystemSubtypeEnum	Seminal glands
+EcosystemSubtypeEnum	Uterus
+EcosystemSubtypeEnum	Vagina
+EcosystemSubtypeEnum	Vas deferens
+EcosystemSubtypeEnum	Diaphragm
+EcosystemSubtypeEnum	Epithelial lining fluid
+EcosystemSubtypeEnum	Pleural space/cavity
+EcosystemSubtypeEnum	Respiratory tract fluid
+EcosystemSubtypeEnum	Sputum/Phlegm
+EcosystemSubtypeEnum	Joint capsule
+EcosystemSubtypeEnum	Periprosthetic joint: Hip
+EcosystemSubtypeEnum	Periprosthetic joint: Knee
+EcosystemSubtypeEnum	Periprosthetic joint
+EcosystemSubtypeEnum	Intrathoracic space
+EcosystemSubtypeEnum	Ureter
+EcosystemSubtypeEnum	Urethra
+EcosystemSubtypeEnum	Urinary bladder
+EcosystemSubtypeEnum	Urine
+EcosystemSubtypeEnum	Canthus
+EcosystemSubtypeEnum	Conjunctiva
+EcosystemSubtypeEnum	Eye: Ciliary body
+EcosystemSubtypeEnum	Eye: Vitreous chamber
+EcosystemSubtypeEnum	BHK
+EcosystemSubtypeEnum	CHO
+EcosystemSubtypeEnum	Mouse myeloma
+EcosystemSubtypeEnum	Rat myeloma
+EcosystemSubtypeEnum	Antlers
+EcosystemSubtypeEnum	Ceros
+EcosystemSubtypeEnum	Claws
+EcosystemSubtypeEnum	Hair/Fur
+EcosystemSubtypeEnum	Hoof
+EcosystemSubtypeEnum	Horn
+EcosystemSubtypeEnum	Pronghorn
+EcosystemSubtypeEnum	Scales
+EcosystemSubtypeEnum	Haemal node
+EcosystemSubtypeEnum	Soft tissue
+EcosystemSubtypeEnum	External genitalia
+EcosystemSubtypeEnum	Paranasal sinuses
+EcosystemSubtypeEnum	Pleural cavity
+EcosystemSubtypeEnum	Benign tumor tissue
+EcosystemSubtypeEnum	Malignant tumor tissue
+EcosystemSubtypeEnum	Unspecified organ
+EcosystemSubtypeEnum	Endosymbionts
+EcosystemSubtypeEnum	Glands
+EcosystemSubtypeEnum	Mantle
+EcosystemSubtypeEnum	Shell
+EcosystemSubtypeEnum	Spat
+EcosystemSubtypeEnum	Accessory nidamental gland (ANG)
+EcosystemSubtypeEnum	Light organ
+EcosystemSubtypeEnum	Hornworts
+EcosystemSubtypeEnum	Liverworts
+EcosystemSubtypeEnum	Moss
+EcosystemSubtypeEnum	Anthosphere
+EcosystemSubtypeEnum	Carposphere
+EcosystemSubtypeEnum	Caulosphere
+EcosystemSubtypeEnum	Cob
+EcosystemSubtypeEnum	Petiole
+EcosystemSubtypeEnum	Phylloplane/Leaf surface
+EcosystemSubtypeEnum	Phylloplane/Leaf
+EcosystemSubtypeEnum	Stem
+EcosystemSubtypeEnum	Surface
+EcosystemSubtypeEnum	Phytotelma
+EcosystemSubtypeEnum	Bulb
+EcosystemSubtypeEnum	Stem tuber
+EcosystemSubtypeEnum	Aerial root
+EcosystemSubtypeEnum	Cortex
+EcosystemSubtypeEnum	Endosphere
+EcosystemSubtypeEnum	Galls
+EcosystemSubtypeEnum	Nodule
+EcosystemSubtypeEnum	Rhizoplane
+EcosystemSubtypeEnum	Rhizosphere
+EcosystemSubtypeEnum	Taproot
+EcosystemSubtypeEnum	Seed radicle
+EcosystemSubtypeEnum	Bark
+EcosystemSubtypeEnum	Tissue
+EcosystemSubtypeEnum	Dinoflagellates
+EcosystemSubtypeEnum	Jakobids
+EcosystemSubtypeEnum	Parabasalids
+EcosystemSubtypeEnum	Autotrophic (ANF)
+EcosystemSubtypeEnum	Heterotrophic (HNF)
+EcosystemSubtypeEnum	Mixotrophic (MNF)
