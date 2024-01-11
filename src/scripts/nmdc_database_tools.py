@@ -235,52 +235,52 @@ def extract_study(ctx, study_id, output_dir, json_out):
         else:
             raise e
 
-    # if len(omics_processing_records) > 0:
-    #     # downstream workflow activity records
-    #     (
-    #         read_qc_records,
-    #         read_based_analysis,
-    #         read_based_taxonomy,
-    #         metagenome_assembly_records,
-    #         metagenome_annotation_records,
-    #         mags_records,
-    #         metatranscriptome,
-    #         metabolomics_analysis,
-    #         metaproteomics_analysis,
-    #         nom_analysis,
-    #     ) = ([], [], [], [], [], [], [], [], [], [])
-    #     downstream_workflow_activity_sets = {
-    #         "read_qc_analysis_activity_set": read_qc_records,
-    #         "read_based_taxonomy_analysis_activity_set": read_based_taxonomy,
-    #         "metagenome_assembly_set": metagenome_assembly_records,
-    #         "metagenome_annotation_activity_set": metagenome_annotation_records,
-    #         "mags_activity_set": mags_records,
-    #         "metatranscriptome_activity_set": metatranscriptome,
-    #         "metabolomics_analysis_activity_set": metabolomics_analysis,
-    #         "metaproteomics_analysis_activity_set": metaproteomics_analysis,
-    #         "nom_analysis_activity_set": nom_analysis,
-    #     }
-    #     # Workflow Execution Activities and Data Objects for each OmicsProcessing record
-    #     for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
-    #         logger.info(f"Getting {wf_set_name} records informed_by OmicsProcessing records.")
-    #         for omics_processing_record in omics_processing_records:
-    #             omics_processing_id = omics_processing_record["id"]
-    #             # Get the Workflow Execution Activity record for the OmicsProcessing record
-    #             workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
-    #                                                                                     omics_processing_id)
-    #             logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
-    #                         f"{omics_processing_id}.")
-    #             wf_records.extend(workflow_activity_record)
-    #             # Get the output data object(s) for the Workflow Execution Activity record
-    #             for record in workflow_activity_record:
-    #                 for data_object_id in record["has_output"]:
-    #                     data_object_response = requests.get(f"{api_client.base_url}data_objects/{data_object_id}")
-    #                     data_object_response.raise_for_status()
-    #                     data_object = data_object_response.json()
-    #                     logger.info(f"Got data object {data_object['id']} for "
-    #                                 f"{record['id']}.")
-    #                     db.data_object_set.append(data_object)
-    #         db.__setattr__(wf_set_name, wf_records)
+    if len(omics_processing_records) > 0:
+        # downstream workflow activity records
+        (
+            read_qc_records,
+            read_based_analysis,
+            read_based_taxonomy,
+            metagenome_assembly_records,
+            metagenome_annotation_records,
+            mags_records,
+            metatranscriptome,
+            metabolomics_analysis,
+            metaproteomics_analysis,
+            nom_analysis,
+        ) = ([], [], [], [], [], [], [], [], [], [])
+        downstream_workflow_activity_sets = {
+            "read_qc_analysis_activity_set": read_qc_records,
+            "read_based_taxonomy_analysis_activity_set": read_based_taxonomy,
+            "metagenome_assembly_set": metagenome_assembly_records,
+            "metagenome_annotation_activity_set": metagenome_annotation_records,
+            "mags_activity_set": mags_records,
+            "metatranscriptome_activity_set": metatranscriptome,
+            "metabolomics_analysis_activity_set": metabolomics_analysis,
+            "metaproteomics_analysis_activity_set": metaproteomics_analysis,
+            "nom_analysis_activity_set": nom_analysis,
+        }
+        # Workflow Execution Activities and Data Objects for each OmicsProcessing record
+        for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
+            logger.info(f"Getting {wf_set_name} records informed_by OmicsProcessing records.")
+            for omics_processing_record in omics_processing_records:
+                omics_processing_id = omics_processing_record["id"]
+                # Get the Workflow Execution Activity record for the OmicsProcessing record
+                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
+                                                                                        omics_processing_id)
+                logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
+                            f"{omics_processing_id}.")
+                wf_records.extend(workflow_activity_record)
+                # Get the output data object(s) for the Workflow Execution Activity record
+                for record in workflow_activity_record:
+                    for data_object_id in record["has_output"]:
+                        data_object_response = requests.get(f"{api_client.base_url}data_objects/{data_object_id}")
+                        data_object_response.raise_for_status()
+                        data_object = data_object_response.json()
+                        logger.info(f"Got data object {data_object['id']} for "
+                                    f"{record['id']}.")
+                        db.data_object_set.append(data_object)
+            db.__setattr__(wf_set_name, wf_records)
 
     # Write the results to a YAML or JSON file
     logger.info(f"Writing results to {output_file_name}.")
