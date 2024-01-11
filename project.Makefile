@@ -605,6 +605,6 @@ local/nmdc-sty-11-aygzgv51.yaml:
 		--output-file $@
 
 local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
-	# - allows the makefiel to continue even if this step reports an error. that may or may not be the best choice in this case
+	# - allows the makefile to continue even if this step reports an error. that may or may not be the best choice in this case
 	- $(RUN) linkml-validate --schema $^ > $@
 

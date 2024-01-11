@@ -257,6 +257,11 @@ def extract_study(ctx, study_id, output_file, quick_test):
 
     elapsed_time = datetime.now() - start_time
     logger.info(f"Extracted study {study_id} from the NMDC database in {elapsed_time}.")
+    #Summarize the extracted data
+    logger.info(f"SUMMARY:")
+    for attr in dir(db):
+        if attr.endswith("_set"):
+            logger.info(f"{attr}: {len(getattr(db, attr))}")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")
     yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
