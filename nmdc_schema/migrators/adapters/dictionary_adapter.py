@@ -79,6 +79,24 @@ class DictionaryAdapter(AdapterBase):
         """
         del self._db[collection_name]
 
+    def insert_document(self, collection_name: str, document: dict) -> None:
+        r"""
+        Inserts the specified document into the collection having the specified name.
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "111", "foo": "bar"},
+        ...     {"id": "222", "foo": "baz"},
+        ...     {"id": "333", "foo": "qux"}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.insert_document("thing_set", {"id": "444", "foo": "dee"})
+        >>> database["thing_set"][-1]  # gets last item in list
+        {'id': '444', 'foo': 'dee'}
+        """
+        self._db[collection_name].append(document)
+
     def get_document_having_value_in_field(
         self, collection_name: str, field_name: str, value: str
     ) -> Optional[dict]:
@@ -161,24 +179,6 @@ class DictionaryAdapter(AdapterBase):
         # Return the number of documents that were deleted.
         num_documents_deleted = len(documents_initial) - len(documents_remaining)
         return num_documents_deleted
-
-    def insert_document(self, collection_name: str, document: dict) -> None:
-        r"""
-        Inserts the specified document into the collection having the specified name.
-
-        >>> database = {
-        ...   "thing_set": [
-        ...     {"id": "111", "foo": "bar"},
-        ...     {"id": "222", "foo": "baz"},
-        ...     {"id": "333", "foo": "qux"}
-        ...   ]
-        ... }
-        >>> da = DictionaryAdapter(database)
-        >>> da.insert_document("thing_set", {"id": "444", "foo": "dee"})
-        >>> database["thing_set"][-1]  # gets last item in list
-        {'id': '444', 'foo': 'dee'}
-        """
-        self._db[collection_name].append(document)
 
     def process_each_document(
         self, collection_name: str, pipeline: List[Callable[[dict], dict]]

@@ -30,6 +30,13 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
+    def insert_document(self, collection_name: str, document: dict) -> None:
+        r"""
+        Inserts the specified document into the collection having the specified name.
+        """
+        pass
+
+    @abstractmethod
     def get_document_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> Optional[dict]:
         r"""
         Retrieves the document from the specified collection, having the specified value in the specified field.
@@ -43,13 +50,6 @@ class AdapterBase(ABC):
         r"""
         Deletes all documents having the specified `id` value, from the collection having the specified name,
         and returns the number of documents deleted.
-        """
-        pass
-
-    @abstractmethod
-    def insert_document(self, collection_name: str, document: dict) -> None:
-        r"""
-        Inserts the specified document into the collection having the specified name.
         """
         pass
 
