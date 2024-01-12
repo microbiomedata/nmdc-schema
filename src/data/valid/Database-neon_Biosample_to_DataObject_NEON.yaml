@@ -128,9 +128,11 @@ data_generation_set:
     instrument_used:
       - nmdc:inst-12-yx0tfp52
     part_of:
-      - nmdc:sty-11-34xj1150
+      - nmdc:datgen-11-34xj1150
     processing_institution: Battelle
     type: nmdc:DataGeneration
+    associated_studies: 
+      - nmdc:sty-11-34xj1150
 workflow_chain_set:
   - id: nmdc:wfch-11-ab
     analyte_category: metagenome

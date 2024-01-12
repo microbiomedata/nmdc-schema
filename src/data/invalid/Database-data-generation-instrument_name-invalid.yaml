@@ -14,7 +14,9 @@ data_generation_set:
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
     part_of:
-      - nmdc:sty-00-555xxx
+      - nmdc:datgen-00-555xxx
     processing_institution: JGI
     type: nmdc:DataGeneration
     instrument_name: THIS SLOT IS NOT AVAILABLE FOR THIS CLAS ANYMORE
+    associated_studies:
+      - nmdc:sty-00-555xxx
