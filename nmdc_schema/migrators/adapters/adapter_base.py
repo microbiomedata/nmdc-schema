@@ -46,7 +46,7 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
-    def delete_document_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
+    def delete_documents_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
         r"""
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.

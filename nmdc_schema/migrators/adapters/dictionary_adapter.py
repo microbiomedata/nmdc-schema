@@ -141,7 +141,7 @@ class DictionaryAdapter(AdapterBase):
 
         return document
 
-    def delete_document_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
+    def delete_documents_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
         r"""
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.
@@ -160,17 +160,17 @@ class DictionaryAdapter(AdapterBase):
         >>> da = DictionaryAdapter(database)
         >>> len(database["thing_set"])
         5
-        >>> da.delete_document_having_value_in_field("thing_set", "id", "no_such_value")
+        >>> da.delete_documents_having_value_in_field("thing_set", "id", "no_such_value")
         0
-        >>> da.delete_document_having_value_in_field("thing_set", "no_such_field", "111")
+        >>> da.delete_documents_having_value_in_field("thing_set", "no_such_field", "111")
         0
         >>> len(database["thing_set"])
         5
-        >>> da.delete_document_having_value_in_field("thing_set", "id", "222")  # deletes 3 documents
+        >>> da.delete_documents_having_value_in_field("thing_set", "id", "222")  # deletes 3 documents
         3
         >>> len(database["thing_set"])
         2
-        >>> da.delete_document_having_value_in_field("thing_set", "foo", "qux")
+        >>> da.delete_documents_having_value_in_field("thing_set", "foo", "qux")
         1
         >>> len(database["thing_set"])
         1

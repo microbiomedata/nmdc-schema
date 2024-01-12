@@ -87,7 +87,7 @@ class MongoAdapter(AdapterBase):
         )
         return document
 
-    def delete_document_having_value_in_field(
+    def delete_documents_having_value_in_field(
         self, collection_name: str, field_name: str, value: str
     ) -> int:
         r"""
