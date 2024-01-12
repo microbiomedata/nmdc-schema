@@ -71,20 +71,6 @@ classes:
           slot_conditions:
             has_output:
               required: true
-
-      # - title: qc_status_pass_qc_where_what_slots_not_specified
-      #   description: >-
-      #     If qc_status has a value of pass, then the qc_failure_what and qc_failure_where slots should not be specified.
-      #   preconditions:
-      #     slot_conditions:
-      #       qc_status:
-      #         equals_string: pass
-      #   postconditions:
-      #     slot_conditions:
-      #       qc_failure_what:
-      #         value_presence: ABSENT
-      #       qc_failure_where:
-      #         value_presence: ABSENT
           
     slot_usage:
       started_at_time:
