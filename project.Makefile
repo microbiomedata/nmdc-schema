@@ -608,3 +608,7 @@ local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v8.0.0.yaml local/n
 	# - allows the makefiel to continue even if this step reports an error. that may or may not be the best choice in this case
 	- $(RUN) linkml-validate --schema $^ > $@
 
+.PHONY: filtered-status
+filtered-status:
+	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
+		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
