@@ -27,4 +27,5 @@ class Migrator(MigratorBase):
             if 'status' in extraction['quality_control_report']:
                 extraction['qc_status'] = extraction['quality_control_report']['status']
                 del extraction['quality_control_report']['status']
+                del extraction['quality_control_report']
         return extraction
