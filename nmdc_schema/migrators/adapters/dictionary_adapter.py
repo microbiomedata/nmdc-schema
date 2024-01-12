@@ -11,7 +11,7 @@ class DictionaryAdapter(AdapterBase):
 
     def __init__(self, database: dict) -> None:
         r"""
-        Initializes the reference to the database this instance will be used to manipulate.
+        Initializes the reference to the database this adapter instance will be used to manipulate.
         """
         self._db = database
 
