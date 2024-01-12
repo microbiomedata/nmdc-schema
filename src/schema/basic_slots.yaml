@@ -217,8 +217,7 @@ slots:
   biomaterial_purity:
     domain: ProcessedSample
     range: QuantityValue
-  
-    
+
   instrument_name:
     domain: PlannedProcess
     description: >-

@@ -143,7 +143,7 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-        
+
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -2342,7 +2342,7 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  
+
   ecosystem_path_id:
     range: string
     description: A unique id representing the GOLD classifiers associated with a sample.
