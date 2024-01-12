@@ -2263,6 +2263,8 @@ enums:
 
   FailureWhereEnum:
     description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    comments:
+      - At Chris' recommendation permissible values for this enumeration are the same as Class names.
     permissible_values:
       OmicsProcessing:
         description: A failure has occurred in omics processing, a lab process.
