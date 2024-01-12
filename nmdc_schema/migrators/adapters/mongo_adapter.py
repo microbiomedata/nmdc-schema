@@ -1,0 +1,145 @@
+###############################################################################
+#
+# Note: I created this file so that I could draft a MongoDB adapter
+#       while building the dictionary adapter, without thinking about
+#       two development environments. The final version of this module
+#       will reside in nmdc-runtime, not nmdc-schema.
+#
+###############################################################################
+
+from typing import Optional, Callable, List
+from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
+from pymongo.database import Database
+
+
+class MongoAdapter(AdapterBase):
+    r"""
+    Class containing methods related to manipulating a MongoDB database.
+    """
+
+    def __init__(self, database: Database) -> None:
+        r"""
+        Initializes the reference to the database this adapter instance will be used to manipulate.
+
+        References:
+        - https://pymongo.readthedocs.io/en/stable/examples/type_hints.html#typed-database
+        """
+        self._db = database
+
+    def create_collection(self, collection_name: str) -> None:
+        r"""
+        Creates an empty collection having the specified name, if no collection by that name exists.
+
+        References:
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.create_collection
+        """
+        self._db.create_collection(name=collection_name)
+
+    def rename_collection(self, current_name: str, new_name: str) -> None:
+        r"""
+        Renames the specified collection so that it has the specified name.
+
+        References:
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.get_collection
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.rename
+        """
+        self._db.get_collection(name=current_name).rename(new_name=new_name)
+
+    def delete_collection(self, collection_name: str) -> None:
+        r"""
+        Deletes the collection having the specified name.
+
+        References:
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.drop_collection
+        """
+        self._db.drop_collection(name_or_collection=collection_name)
+
+    def insert_document(self, collection_name: str, document: dict) -> None:
+        r"""
+        Inserts the specified document into the collection having the specified name.
+
+        References:
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.insert_one
+        """
+        self._db.get_collection(name=collection_name).insert_one(document)
+
+    def get_document_having_value_in_field(
+        self, collection_name: str, field_name: str, value: str
+    ) -> Optional[dict]:
+        r"""
+        Retrieves the document from the specified collection, having the specified value in the specified field.
+
+        Note: This only support top-level fields (e.g. `_id`), not nested fields (e.g. `area.height`).
+
+        References:
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.find_one
+        - https://www.mongodb.com/docs/manual/reference/operator/query/eq/#syntax
+        """
+
+        # Create the filter for the query.
+        # Note: I named this variable `filter_` because `filter` is a built-in Python function.
+        filter_ = dict()
+        filter_[field_name] = {"$eq": value}
+
+        # Find and return the first matching document, if any.
+        document = self._db.get_collection(name=collection_name).find_one(
+            filter=filter_
+        )
+        return document
+
+    def delete_document_having_value_in_field(
+        self, collection_name: str, field_name: str, value: str
+    ) -> int:
+        r"""
+        Deletes all documents from the specified collection, having the specified value in the specified field;
+        and returns the number of documents that were deleted.
+
+        Note: This only support top-level fields (e.g. `_id`), not nested fields (e.g. `area.height`).
+
+        References:
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.delete_many
+        """
+
+        # Create the filter for the query.
+        # Note: I named this variable `filter_` because `filter` is a built-in Python function.
+        filter_ = dict()
+        filter_[field_name] = {"$eq": value}
+
+        # Delete all matching documents.
+        result = self._db.get_collection(name=collection_name).delete_many(
+            filter=filter_
+        )
+
+        # Return the number of documents that were deleted.
+        num_deleted = result.deleted_count
+        return num_deleted
+
+    def process_each_document(
+        self, collection_name: str, pipeline: List[Callable[[dict], dict]]
+    ) -> None:
+        r"""
+        Passes each document in the specified collection through the specified processing pipeline—in which
+        the output of any given function is the input to the function after it—and stores the final output
+        back in the collection, replacing the original document.
+
+        References:
+        - https://docs.python.org/3/library/copy.html#copy.deepcopy
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.replace_one
+        """
+
+        collection = self._db.get_collection(name=collection_name)
+
+        # Iterate over every document in the collection.
+        for document in collection.find():
+            # Create a filter based upon this document's `_id` value, so that we can find the same document later.
+            # We do this up front in case a function in the pipeline "inadvertently" tampers with the `_id` field.
+            document_id = document["_id"]
+            filter_ = {"_id": {"$eq": document_id}}
+
+            # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
+            # such that the output from one stage becomes the input to the next stage.
+            for function in pipeline:
+                document = function(document)
+
+            # Overwrite the original document with the processed one.
+            collection.replace_one(filter=filter_, replacement=document)
