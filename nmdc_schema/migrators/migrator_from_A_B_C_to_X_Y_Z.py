@@ -20,31 +20,6 @@ class Migrator(MigratorBase):
     _from_version = "A.B.C"
     _to_version = "X.Y.Z"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """
-        TUTORIAL: This is the "constructor" function of the class.
-                  As is true about the "constructor" function of any class,
-                  it runs whenever that class is instantiated, and its job
-                  is to initialize the newly-created instance of that class.
-
-                  When this "constructor" function runs, it does two things:
-                  1. It invokes the base class's "constructor" function; and
-                  2. It populates a dictionary that keeps track of which
-                     transformation functions will be applied to objects
-                     from which collections. You can think of this as the
-                     "agenda", "itinerary", "plan", or "registry" of
-                     transformations that make up this migration. As
-                     security guards at marathons say, "If it ain't
-                     part of the plan, it ain't gonna be ran."
-
-             -->  As part of creating a new "migrator" class, you will
-                  populate its "agenda."
-        """
-
-        # Invoke the base class's "constructor" function, passing/forwarding to it
-        # all arguments that were passed to the current function.
-        super().__init__(*args, **kwargs)
-
     def upgrade(self):
         r"""Migrates the database from the original schema version to the new one."""
 
@@ -66,7 +41,6 @@ class Migrator(MigratorBase):
 
               --> As part of creating a new "migrator" class, you will
                   typically implement one or more "transformation" functions.
-                  You will also add them to the "agenda" of the class.
 
         TUTORIAL: The remaining part of this comment consists of several "doctests".
                   You can read more about doctests in the official Python documentation:

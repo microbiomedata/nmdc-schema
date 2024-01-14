@@ -8,11 +8,6 @@ class Migrator(MigratorBase):
     _from_version = "9.1"
     _to_version = "9.2"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
-
-        super().__init__(*args, **kwargs)
-
     def upgrade(self):
         r"""Migrates the database from the original schema version to the new one."""
 
