@@ -3,7 +3,7 @@ from nmdc_schema.migrators.helpers import load_yaml_asset
 
 
 class Migrator(MigratorBase):
-    """Migrates data between two schema versions."""
+    r"""Migrates a database between two schema versions."""
 
     _from_version = "9.1"
     _to_version = "9.2"

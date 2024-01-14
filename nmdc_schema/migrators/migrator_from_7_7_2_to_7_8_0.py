@@ -6,7 +6,7 @@ DOI_URL_PATTERN = r"^https?:\/\/[a-zA-Z\.]+\/10\."
 
 
 class Migrator(MigratorBase):
-    """Migrates data between two schema versions."""
+    r"""Migrates a database between two schema versions."""
 
     _from_version = "7.7.2"
     _to_version = "7.8.0"
