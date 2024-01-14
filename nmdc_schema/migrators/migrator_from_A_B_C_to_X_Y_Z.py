@@ -21,7 +21,20 @@ class Migrator(MigratorBase):
     _to_version = "X.Y.Z"
 
     def upgrade(self):
-        r"""Migrates the database from the original schema version to the new one."""
+        r"""
+        Migrates the database from the original schema version to the new one.
+
+        TUTORIAL: This is the `upgrade` function. You can think of it as the "main" function or
+                  "entry point" of the migrator. Its job is to transform the database from
+                  conforming to the original schema to conforming to the new schema.
+
+                  The `upgrade` function accesses the database via an "adapter", instead of
+                  accessing the database directly. That allows the same migrator to be used
+                  with different types of data stores (e.g. MongoDB database, Python dictionary).
+
+              --> As part of creating a new "migrator" class, you will implement an
+                  `upgrade` function (it's the only function that's required).
+        """
 
         self.adapter.process_each_document("study_set", [self.allow_multiple_names])
 
