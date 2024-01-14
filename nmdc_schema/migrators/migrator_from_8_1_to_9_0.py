@@ -13,11 +13,16 @@ class Migrator(MigratorBase):
 
         super().__init__(*args, **kwargs)
 
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            study_set=[self.fix_award_dois, self.fix_pub_dois,
-                       self.fix_massive, self.fix_ess_dive, self.remove_doi_slots],
-        )
+    def upgrade(self):
+        r"""Migrates the database from the original schema version to the new one."""
+
+        self.adapter.process_each_document("study_set", [
+            self.fix_award_dois,
+            self.fix_pub_dois,
+            self.fix_massive,
+            self.fix_ess_dive,
+            self.remove_doi_slots
+        ])
 
     def process_doi(self, study: dict, doi_list: list, doi_category: str):
         r"""

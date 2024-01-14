@@ -12,10 +12,10 @@ class Migrator(MigratorBase):
 
         super().__init__(*args, **kwargs)
 
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            study_set=[self.force_research_study_study_category],
-        )
+    def upgrade(self):
+        r"""Migrates the database from the original schema version to the new one."""
+
+        self.adapter.process_each_document("study_set", [self.force_research_study_study_category])
 
     def force_research_study_study_category(self, study: dict) -> dict:
         r"""

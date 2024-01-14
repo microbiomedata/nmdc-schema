@@ -1,5 +1,4 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
 
 
 class Migrator(MigratorBase):
@@ -46,10 +45,10 @@ class Migrator(MigratorBase):
         # all arguments that were passed to the current function.
         super().__init__(*args, **kwargs)
 
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            study_set=[self.allow_multiple_names],
-        )
+    def upgrade(self):
+        r"""Migrates the database from the original schema version to the new one."""
+
+        self.adapter.process_each_document("study_set", [self.allow_multiple_names])
 
     def allow_multiple_names(self, study: dict) -> dict:
         """
@@ -109,18 +108,3 @@ class Migrator(MigratorBase):
 
         # Return the transformed dictionary.
         return study
-
-    def rename_foo_set_collection_to_bar_set(self) -> None:
-        r"""
-        Renames the "foo_set" collection to "bar_set".
-
-        >>> database = {"foo_set": ["a", "b", "c"]}
-        >>> da = DictionaryAdapter(database)
-        >>> m = Migrator(adapter=da)
-        >>> m.rename_foo_set_collection_to_bar_set()
-        >>> "foo_set" in database
-        False
-        >>> "bar_set" in database
-        True
-        """
-        self.adapter.rename_collection("foo_set", "bar_set")

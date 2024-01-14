@@ -16,10 +16,10 @@ class Migrator(MigratorBase):
 
         super().__init__(*args, **kwargs)
 
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            study_set=[self.replace_doi_field_with_award_dois_list_field],
-        )
+    def upgrade(self):
+        r"""Migrates the database from the original schema version to the new one."""
+
+        self.adapter.process_each_document("study_set", [self.replace_doi_field_with_award_dois_list_field])
 
     def replace_doi_field_with_award_dois_list_field(self, study: dict) -> dict:
         r"""
