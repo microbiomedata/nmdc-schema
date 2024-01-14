@@ -44,6 +44,3 @@ class MigratorBase(ABC):
         """Returns the schema version this class migrates data to."""
         return cls._to_version
 
-    def get_transformers_for(self, collection_name: str) -> List[callable]:
-        """Returns the list of transformers defined for the specified collection."""
-        return self._agenda.get(collection_name, [])
