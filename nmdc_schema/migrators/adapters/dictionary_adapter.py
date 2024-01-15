@@ -123,10 +123,11 @@ class DictionaryAdapter(AdapterBase):
         True
         """
         try:
-            # Create a "generator expression" over which we can iterate via `next`.
+            # Create a generator over which we can iterate via `next`.
             #
-            # Note: You can think of a "generator expression" as a list comprehension that doesn't
-            #       create the entire list in memory.
+            # Note: A generator is a special type of iterator. We create it here via a so-called "generator expression".
+            #       You can think of a "generator expression" as a list comprehension that doesn't involve loading the
+            #       entire sequence into memory.
             #
             # Reference: https://docs.python.org/3/howto/functional.html#generator-expressions-and-list-comprehensions
             #
