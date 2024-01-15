@@ -32,11 +32,44 @@ class Migrator_from_X_to_PR10(MigratorBase):
             read_qc_analysis_activity_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadQcAnalysis")],
         )
 
-    def add_type_to_biosample_inlined_classes(self, document: dict):
+    def add_type_to_inlined_classes(self, document: dict, slot: str, uri: str):
         r"""
         Adds a type slot to each inlined instance of an NMDC class in the biosmpale_set collection. This includes nmdc:TextValue,
         nmdc:TimeStampValue, etc. 
         """
+
+        if document.get(slot):
+            if isinstance(document[slot], list):
+                # If slot is a list, iterate over each item in the list (e.g. chem_administration)
+                for item in document[slot]:
+                    item["type"] = uri
+                    if item.get("term"):
+                        item["term"]["type"] = "nmdc:OntologyClass"
+            else:
+                # If slot is a dictionary, update the type directly
+                document[slot]["type"] = uri
+                if document[slot].get("term"):
+                    document[slot]["term"]["type"] = "nmdc:OntologyClass"
+
+
+    def add_type_slot_with_class_uri(self, document: dict, class_uri: str):
+        r"""
+            Adds a type slot to each collection with the appropriate class uri as the value. E.g. type: nmdc:Biosample. If a type
+            slot exists, it will overwrite to the types listed below.
+        
+            >>> m = Migrator_from_X_to_PR10()
+            >>> m.add_type_slot_with_class_uri({'id': 123, 'collection_date': {'has_raw_value': '2017-05-09'}}, 'nmdc:Biosample') 
+            {'id': 123, 'collection_date': {'has_raw_value': '2017-05-09', 'type': 'nmdc:TimestampValue'}, 'type': 'nmdc:Biosample'}
+            >>> m.add_type_slot_with_class_uri({'id': 567, 'type': 'nmdc:OmicsProcessing'}, 'nmdc:DataGeneration')
+            {'id': 567, 'type': 'nmdc:DataGeneration'}
+            >>> m.add_type_slot_with_class_uri({'id': 567, 'env_broad_scale': {'term': {'id': 'ENVO:1234'}}}, 'nmdc:Biosample')
+            {'id': 567, 'env_broad_scale': {'term': {'id': 'ENVO:1234', 'type': 'nmdc:OntologyClass'}, 'type': 'nmdc:ControlledIdentifiedTermValue'}, 'type': 'nmdc:Biosample'}
+            >>> m.add_type_slot_with_class_uri({'id': 456}, 'nmdc:NomAnalysis')
+            {'id': 456, 'type': 'nmdc:NomAnalysis'}
+        """
+        
+        # Adds the type slot with the correct class_uri as a value to each collection instance
+        document["type"] = class_uri
 
         biosample_inlined_slots = {
             "collection_date": "nmdc:TimestampValue", 
@@ -102,48 +135,11 @@ class Migrator_from_X_to_PR10(MigratorBase):
             "wind_speed": "nmdc:QuantityValue"
             }
         
-        for slot, uri in biosample_inlined_slots.items():
-
-            if document.get(slot):
-                if isinstance(document[slot], list):
-                    # If slot is a list, iterate over each item in the list (e.g. chem_administration)
-                    for item in document[slot]:
-                        item["type"] = uri
-                        if item.get("term"):
-                            item["term"]["type"] = "nmdc:OntologyClass"
-                else:
-                    # If slot is a dictionary, update the type directly
-                    document[slot]["type"] = uri
-                    if document[slot].get("term"):
-                        document[slot]["term"]["type"] = "nmdc:OntologyClass"
-
-
-
-    def add_type_slot_with_class_uri(self, document: dict, class_uri: str):
-        r"""
-            Adds a type slot to each collection with the appropriate class uri as the value. E.g. type: nmdc:Biosample. If a type
-            slot exists, it will overwrite to the types listed below.
-        
-            >>> m = Migrator_from_X_to_PR10()
-            >>> m.add_type_slot_with_class_uri({'id': 123, 'collection_date': {'has_raw_value': '2017-05-09'}}, 'nmdc:Biosample') 
-            {'id': 123, 'collection_date': {'has_raw_value': '2017-05-09', 'type': 'nmdc:TimestampValue'}, 'type': 'nmdc:Biosample'}
-            >>> m.add_type_slot_with_class_uri({'id': 567, 'type': 'nmdc:OmicsProcessing'}, 'nmdc:DataGeneration')
-            {'id': 567, 'type': 'nmdc:DataGeneration'}
-            >>> m.add_type_slot_with_class_uri({'id': 567, 'env_broad_scale': {'term': {'id': 'ENVO:1234'}}}, 'nmdc:Biosample')
-            {'id': 567, 'env_broad_scale': {'term': {'id': 'ENVO:1234', 'type': 'nmdc:OntologyClass'}, 'type': 'nmdc:ControlledIdentifiedTermValue'}, 'type': 'nmdc:Biosample'}
-            >>> m.add_type_slot_with_class_uri({'id': 456}, 'nmdc:NomAnalysis')
-            {'id': 456, 'type': 'nmdc:NomAnalysis'}
-        """
-        
-        # Adds the type slot with the correct class_uri as a value to each collection instance
-        document["type"] = class_uri
-        
 
         # Add the type slot to any inlined classes in the biosample_set
-        if class_uri == "nmdc:Biosample":
-            self.add_type_to_biosample_inlined_classes(document)
-        
-
+        for slot, uri in biosample_inlined_slots.items():
+            if class_uri == "nmdc:Biosample":
+                self.add_type_to_inlined_classes(document, slot, uri)
         
         return document
 
