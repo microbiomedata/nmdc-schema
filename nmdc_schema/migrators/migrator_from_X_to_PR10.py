@@ -45,11 +45,15 @@ class Migrator_from_X_to_PR10(MigratorBase):
                     item["type"] = uri
                     if item.get("term"):
                         item["term"]["type"] = "nmdc:OntologyClass"
+                    if item.get("applies_to_person"):
+                        item["applies_to_person"]["type"] = "nmdc:PersonValue"
             else:
                 # If slot is a dictionary, update the type directly
                 document[slot]["type"] = uri
                 if document[slot].get("term"):
                     document[slot]["term"]["type"] = "nmdc:OntologyClass"
+                if document[slot].get("applies_to_person"):
+                    document[slot]["applies_to_person"]["type"] = "nmdc:PersonValue"
 
 
     def add_type_slot_with_class_uri(self, document: dict, class_uri: str):
@@ -132,13 +136,17 @@ class Migrator_from_X_to_PR10(MigratorBase):
             "solar_irradiance": "nmdc:QuantityValue",
             "tot_carb": "nmdc:QuantityValue",
             "wind_direction": "nmdc:TextValue",
-            "wind_speed": "nmdc:QuantityValue"
+            "wind_speed": "nmdc:QuantityValue",
+            "associated_dois": "nmdc:Doi",
+            "has_credit_associations": "prov:Association",
+            "principal_investigator": "nmdc:PersonValue",
+            "study_image": "nmdc:ImageValue"
             }
         
 
         # Add the type slot to any inlined classes in the biosample_set
         for slot, uri in inlined_slots.items():
-            if class_uri == "nmdc:Biosample":
+            if class_uri == "nmdc:Biosample" or class_uri == "nmdc:Study":
                 self.add_type_to_inlined_classes(document, slot, uri)
         
         return document
