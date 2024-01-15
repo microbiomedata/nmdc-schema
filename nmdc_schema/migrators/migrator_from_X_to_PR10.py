@@ -71,7 +71,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
         # Adds the type slot with the correct class_uri as a value to each collection instance
         document["type"] = class_uri
 
-        biosample_inlined_slots = {
+        inlined_slots = {
             "collection_date": "nmdc:TimestampValue", 
             "depth": "nmdc:QuantityValue",
             "env_broad_scale": "nmdc:ControlledIdentifiedTermValue",
@@ -137,7 +137,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
         
 
         # Add the type slot to any inlined classes in the biosample_set
-        for slot, uri in biosample_inlined_slots.items():
+        for slot, uri in inlined_slots.items():
             if class_uri == "nmdc:Biosample":
                 self.add_type_to_inlined_classes(document, slot, uri)
         
