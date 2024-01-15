@@ -140,13 +140,15 @@ class Migrator_from_X_to_PR10(MigratorBase):
             "associated_dois": "nmdc:Doi",
             "has_credit_associations": "prov:Association",
             "principal_investigator": "nmdc:PersonValue",
-            "study_image": "nmdc:ImageValue"
+            "study_image": "nmdc:ImageValue",
+            "input_mass": "nmdc:QuantityValue",
+            "quality_control_report": "nmdc:QualityControlReport"
             }
         
 
         # Add the type slot to any inlined classes in the biosample_set
         for slot, uri in inlined_slots.items():
-            if class_uri == "nmdc:Biosample" or class_uri == "nmdc:Study":
+            if class_uri == "nmdc:Biosample" or class_uri == "nmdc:Study" or class_uri == "nmdc:Extraction":
                 self.add_type_to_inlined_classes(document, slot, uri)
         
         return document
