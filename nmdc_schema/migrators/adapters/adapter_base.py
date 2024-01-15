@@ -41,7 +41,7 @@ class AdapterBase(ABC):
         r"""
         Retrieves the document from the specified collection, having the specified value in the specified field.
 
-        Note: This only support top-level fields (e.g. `_id`), not nested fields (e.g. `area.height`).
+        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
         """
         pass
 
@@ -51,7 +51,7 @@ class AdapterBase(ABC):
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.
 
-        Note: This only support top-level fields (e.g. `_id`), not nested fields (e.g. `area.height`).
+        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
         """
         pass
 
