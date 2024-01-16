@@ -698,6 +698,10 @@ This schema is organized into multiple modules, such as:</p>
 <td>A centrally registered identifier symbol used to uniquely identify objects gi...</td>
 </tr>
 <tr>
+<td><a href="FailureCategorization/">FailureCategorization</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="FunctionalAnnotation/">FunctionalAnnotation</a></td>
 <td>An assignment of a function term (e</td>
 </tr>
@@ -839,10 +843,6 @@ This schema is organized into multiple modules, such as:</p>
 </tr>
 <tr>
 <td><a href="Protocol/">Protocol</a></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="QualityControlReport/">QualityControlReport</a></td>
 <td></td>
 </tr>
 <tr>
@@ -2125,6 +2125,10 @@ This schema is organized into multiple modules, such as:</p>
 <td>This slot links a study to a credit association</td>
 </tr>
 <tr>
+<td><a href="has_failure_categorization/">has_failure_categorization</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="has_function/">has_function</a></td>
 <td></td>
 </tr>
@@ -3201,12 +3205,24 @@ This schema is organized into multiple modules, such as:</p>
 <td></td>
 </tr>
 <tr>
-<td><a href="quad_pos/">quad_pos</a></td>
-<td>The quadrant position of the sampling room within the building</td>
+<td><a href="qc_comment/">qc_comment</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
 </tr>
 <tr>
-<td><a href="quality_control_report/">quality_control_report</a></td>
-<td></td>
+<td><a href="qc_failure_what/">qc_failure_what</a></td>
+<td>Provides a summary about what caused a lab or workflow process to fail</td>
+</tr>
+<tr>
+<td><a href="qc_failure_where/">qc_failure_where</a></td>
+<td>Describes the nmdc schema class that corresonds to where the failure occurred</td>
+</tr>
+<tr>
+<td><a href="qc_status/">qc_status</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+</tr>
+<tr>
+<td><a href="quad_pos/">quad_pos</a></td>
+<td>The quadrant position of the sampling room within the building</td>
 </tr>
 <tr>
 <td><a href="radiation_regm/">radiation_regm</a></td>
@@ -3877,10 +3893,6 @@ This schema is organized into multiple modules, such as:</p>
 <td>The material the stationary phase is comprised of used in chromatography</td>
 </tr>
 <tr>
-<td><a href="status/">status</a></td>
-<td></td>
-</tr>
-<tr>
 <td><a href="stoichiometry/">stoichiometry</a></td>
 <td>from reaction participant class</td>
 </tr>
@@ -4478,6 +4490,14 @@ This schema is organized into multiple modules, such as:</p>
 <tr>
 <td><a href="ExtractionTargetEnum/">ExtractionTargetEnum</a></td>
 <td></td>
+</tr>
+<tr>
+<td><a href="FailureWhatEnum/">FailureWhatEnum</a></td>
+<td>The permitted values for describing where a failure occurred during processin...</td>
+</tr>
+<tr>
+<td><a href="FailureWhereEnum/">FailureWhereEnum</a></td>
+<td>The permitted values for describing where in the process, either a lab or ana...</td>
 </tr>
 <tr>
 <td><a href="FaoClassEnum/">FaoClassEnum</a></td>

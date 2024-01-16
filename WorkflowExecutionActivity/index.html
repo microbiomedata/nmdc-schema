@@ -315,6 +315,10 @@
 
   WorkflowExecutionActivity : git_url
 
+  WorkflowExecutionActivity : has_failure_categorization
+
+    WorkflowExecutionActivity --|&gt; FailureCategorization : has_failure_categorization
+
   WorkflowExecutionActivity : has_input
 
     WorkflowExecutionActivity --|&gt; NamedThing : has_input
@@ -330,6 +334,12 @@
   WorkflowExecutionActivity : part_of
 
     WorkflowExecutionActivity --|&gt; NamedThing : part_of
+
+  WorkflowExecutionActivity : qc_comment
+
+  WorkflowExecutionActivity : qc_status
+
+    WorkflowExecutionActivity --|&gt; StatusEnum : qc_status
 
   WorkflowExecutionActivity : started_at_time
 
@@ -398,7 +408,7 @@
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>0..* <br/> <a href="../NamedThing/">NamedThing</a></td>
 <td>An output biosample to a processing step</td>
 <td>direct</td>
 </tr>
@@ -417,6 +427,24 @@
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>0..* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -543,6 +571,9 @@ slots:
 - part_of
 - type
 - version
+- qc_status
+- qc_comment
+- has_failure_categorization
 slot_usage:
   started_at_time:
     name: started_at_time
@@ -563,13 +594,6 @@ slot_usage:
     name: has_input
     domain_of:
     - BiosampleProcessing
-    - OmicsProcessing
-    - WorkflowExecutionActivity
-    - PlannedProcess
-    required: true
-  has_output:
-    name: has_output
-    domain_of:
     - OmicsProcessing
     - WorkflowExecutionActivity
     - PlannedProcess
@@ -609,6 +633,31 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}'
       interpolated: true
+rules:
+- preconditions:
+    slot_conditions:
+      qc_status:
+        name: qc_status
+        equals_string: pass
+  postconditions:
+    slot_conditions:
+      has_output:
+        name: has_output
+        required: true
+  description: If qc_status has a value of pass, then the has_output slot is required.
+  title: qc_status_pass_has_output_required
+- preconditions:
+    slot_conditions:
+      qc_status:
+        name: qc_status
+        value_presence: ABSENT
+  postconditions:
+    slot_conditions:
+      has_output:
+        name: has_output
+        required: true
+  description: If qc_status is not specified, then the has_output slot is required.
+  title: qc_status_pass_null_has_output_required
 
 </code></pre>
 </details>
@@ -650,13 +699,6 @@ slot_usage:
     name: has_input
     domain_of:
     - BiosampleProcessing
-    - OmicsProcessing
-    - WorkflowExecutionActivity
-    - PlannedProcess
-    required: true
-  has_output:
-    name: has_output
-    domain_of:
     - OmicsProcessing
     - WorkflowExecutionActivity
     - PlannedProcess
@@ -738,6 +780,8 @@ attributes:
     name: has_output
     description: An output biosample to a processing step
     from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - output
     rank: 1000
     domain: NamedThing
     multivalued: true
@@ -748,7 +792,6 @@ attributes:
     - WorkflowExecutionActivity
     - PlannedProcess
     range: NamedThing
-    required: true
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
@@ -809,6 +852,43 @@ attributes:
     - WorkflowExecutionActivity
     - ReadQcAnalysisActivity
     range: string
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_status
+    owner: WorkflowExecutionActivity
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: StatusEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_comment
+    owner: WorkflowExecutionActivity
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: string
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: has_failure_categorization
+    owner: WorkflowExecutionActivity
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: FailureCategorization
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -838,7 +918,6 @@ attributes:
     owner: WorkflowExecutionActivity
     domain_of:
     - Protocol
-    - QualityControlReport
     - NamedThing
     - PersonValue
     - Activity
@@ -891,6 +970,31 @@ attributes:
     domain_of:
     - Activity
     range: string
+rules:
+- preconditions:
+    slot_conditions:
+      qc_status:
+        name: qc_status
+        equals_string: pass
+  postconditions:
+    slot_conditions:
+      has_output:
+        name: has_output
+        required: true
+  description: If qc_status has a value of pass, then the has_output slot is required.
+  title: qc_status_pass_has_output_required
+- preconditions:
+    slot_conditions:
+      qc_status:
+        name: qc_status
+        value_presence: ABSENT
+  postconditions:
+    slot_conditions:
+      has_output:
+        name: has_output
+        required: true
+  description: If qc_status is not specified, then the has_output slot is required.
+  title: qc_status_pass_null_has_output_required
 
 </code></pre>
 </details>

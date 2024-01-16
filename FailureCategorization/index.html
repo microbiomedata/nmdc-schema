@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/QualityControlReport/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/FailureCategorization/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-9.5.3" name="generator"/>
-<title>Class: QualityControlReport - NMDC Schema Documentation</title>
+<title>Class: FailureCategorization - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-qualitycontrolreport">
+<a class="md-skip" href="#class-failurecategorization">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: QualityControlReport
+              Class: FailureCategorization
             
           </span>
 </div>
@@ -265,16 +265,18 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-qualitycontrolreport">Class: QualityControlReport</h1>
-<p>URI: <a href="https://w3id.org/nmdc/QualityControlReport">nmdc:QualityControlReport</a></p>
+<h1 id="class-failurecategorization">Class: FailureCategorization</h1>
+<p>URI: <a href="https://w3id.org/nmdc/FailureCategorization">nmdc:FailureCategorization</a></p>
 <div class="mermaid">classDiagram
-  class QualityControlReport
+  class FailureCategorization
 
-  QualityControlReport : name
+  FailureCategorization : qc_failure_what
 
-  QualityControlReport : status
+    FailureCategorization --|&gt; FailureWhatEnum : qc_failure_what
 
-    QualityControlReport --|&gt; StatusEnum : status
+  FailureCategorization : qc_failure_where
+
+    FailureCategorization --|&gt; FailureWhereEnum : qc_failure_where
 
 
 
@@ -292,15 +294,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../status/">status</a></td>
-<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
-<td></td>
+<td><a href="../qc_failure_what/">qc_failure_what</a></td>
+<td>0..1 <br/> <a href="../FailureWhatEnum/">FailureWhatEnum</a></td>
+<td>Provides a summary about what caused a lab or workflow process to fail</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human readable label for an entity</td>
+<td><a href="../qc_failure_where/">qc_failure_where</a></td>
+<td>0..1 <br/> <a href="../FailureWhereEnum/">FailureWhereEnum</a></td>
+<td>Describes the nmdc schema class that corresonds to where the failure occurred</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -317,16 +319,160 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../quality_control_report/">quality_control_report</a></td>
-<td>range</td>
-<td><a href="./">QualityControlReport</a></td>
+<td><a href="./">FailureCategorization</a></td>
+<td><a href="../qc_failure_what/">qc_failure_what</a></td>
+<td>domain</td>
+<td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="./">QualityControlReport</a></td>
-<td><a href="../status/">status</a></td>
+<td><a href="./">FailureCategorization</a></td>
+<td><a href="../qc_failure_where/">qc_failure_where</a></td>
 <td>domain</td>
-<td><a href="./">QualityControlReport</a></td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../Pooling/">Pooling</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../Extraction/">Extraction</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MixingProcess/">MixingProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeActivity/">MetatranscriptomeActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
 </tr>
 </tbody>
 </table>
@@ -346,11 +492,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nmdc:QualityControlReport</td>
+<td>nmdc:FailureCategorization</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nmdc:QualityControlReport</td>
+<td>nmdc:FailureCategorization</td>
 </tr>
 </tbody>
 </table>
@@ -358,43 +504,48 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: QualityControlReport
+<pre><code class="language-yaml">name: FailureCategorization
 from_schema: https://w3id.org/nmdc/nmdc
 slots:
-- status
-- name
+- qc_failure_what
+- qc_failure_where
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: QualityControlReport
+<pre><code class="language-yaml">name: FailureCategorization
 from_schema: https://w3id.org/nmdc/nmdc
 attributes:
-  status:
-    name: status
+  qc_failure_what:
+    name: qc_failure_what
+    description: Provides a summary about what caused a lab or workflow process to
+      fail
+    comments:
+    - For example Low read count from a sequencer, malformed fastq files, etc)
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: QualityControlReport
-    alias: status
-    owner: QualityControlReport
+    domain: FailureCategorization
+    alias: qc_failure_what
+    owner: FailureCategorization
     domain_of:
-    - QualityControlReport
-    range: StatusEnum
-  name:
-    name: name
-    description: A human readable label for an entity
+    - FailureCategorization
+    range: FailureWhatEnum
+  qc_failure_where:
+    name: qc_failure_where
+    description: Describes the nmdc schema class that corresonds to where the failure
+      occurred. Most commonly this would be the same as Class that generated the results.
+    comments:
+    - If the assembly size was too small to proceed to annotation failure_where would
+      be MetagenomeAssembly.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: name
-    owner: QualityControlReport
+    domain: FailureCategorization
+    alias: qc_failure_where
+    owner: FailureCategorization
     domain_of:
-    - Protocol
-    - QualityControlReport
-    - NamedThing
-    - PersonValue
-    - Activity
-    range: string
+    - FailureCategorization
+    range: FailureWhereEnum
 
 </code></pre>
 </details>

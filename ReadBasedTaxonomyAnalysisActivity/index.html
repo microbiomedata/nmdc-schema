@@ -287,6 +287,10 @@
 
   ReadBasedTaxonomyAnalysisActivity : git_url
 
+  ReadBasedTaxonomyAnalysisActivity : has_failure_categorization
+
+    ReadBasedTaxonomyAnalysisActivity --|&gt; FailureCategorization : has_failure_categorization
+
   ReadBasedTaxonomyAnalysisActivity : has_input
 
     ReadBasedTaxonomyAnalysisActivity --|&gt; NamedThing : has_input
@@ -302,6 +306,12 @@
   ReadBasedTaxonomyAnalysisActivity : part_of
 
     ReadBasedTaxonomyAnalysisActivity --|&gt; NamedThing : part_of
+
+  ReadBasedTaxonomyAnalysisActivity : qc_comment
+
+  ReadBasedTaxonomyAnalysisActivity : qc_status
+
+    ReadBasedTaxonomyAnalysisActivity --|&gt; StatusEnum : qc_status
 
   ReadBasedTaxonomyAnalysisActivity : started_at_time
 
@@ -365,7 +375,7 @@
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>0..* <br/> <a href="../NamedThing/">NamedThing</a></td>
 <td>An output biosample to a processing step</td>
 <td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
 </tr>
@@ -378,6 +388,24 @@
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>0..* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
 <td></td>
 <td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
 </tr>
@@ -584,6 +612,8 @@ attributes:
     name: has_output
     description: An output biosample to a processing step
     from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - output
     rank: 1000
     domain: NamedThing
     multivalued: true
@@ -594,7 +624,6 @@ attributes:
     - WorkflowExecutionActivity
     - PlannedProcess
     range: NamedThing
-    required: true
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
@@ -626,6 +655,43 @@ attributes:
     - WorkflowExecutionActivity
     - ReadQcAnalysisActivity
     range: string
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_status
+    owner: ReadBasedTaxonomyAnalysisActivity
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: StatusEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_comment
+    owner: ReadBasedTaxonomyAnalysisActivity
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: string
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: has_failure_categorization
+    owner: ReadBasedTaxonomyAnalysisActivity
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: FailureCategorization
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -655,7 +721,6 @@ attributes:
     owner: ReadBasedTaxonomyAnalysisActivity
     domain_of:
     - Protocol
-    - QualityControlReport
     - NamedThing
     - PersonValue
     - Activity

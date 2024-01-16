@@ -289,6 +289,10 @@
 
   ChromatographicSeparationProcess : end_date
 
+  ChromatographicSeparationProcess : has_failure_categorization
+
+    ChromatographicSeparationProcess --|&gt; FailureCategorization : has_failure_categorization
+
   ChromatographicSeparationProcess : has_input
 
     ChromatographicSeparationProcess --|&gt; NamedThing : has_input
@@ -314,6 +318,12 @@
   ChromatographicSeparationProcess : protocol_link
 
     ChromatographicSeparationProcess --|&gt; Protocol : protocol_link
+
+  ChromatographicSeparationProcess : qc_comment
+
+  ChromatographicSeparationProcess : qc_status
+
+    ChromatographicSeparationProcess --|&gt; StatusEnum : qc_status
 
   ChromatographicSeparationProcess : start_date
 
@@ -413,6 +423,24 @@
 <td><a href="../instrument_name/">instrument_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The name of the instrument that was used for processing the sample</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>0..* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
+<td></td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -696,6 +724,43 @@ attributes:
     - OmicsProcessing
     - PlannedProcess
     range: string
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_status
+    owner: ChromatographicSeparationProcess
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: StatusEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_comment
+    owner: ChromatographicSeparationProcess
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: string
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: has_failure_categorization
+    owner: ChromatographicSeparationProcess
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: FailureCategorization
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -733,7 +798,6 @@ attributes:
     owner: ChromatographicSeparationProcess
     domain_of:
     - Protocol
-    - QualityControlReport
     - NamedThing
     - PersonValue
     - Activity

@@ -303,6 +303,10 @@
 
   FiltrationProcess : filtration_category
 
+  FiltrationProcess : has_failure_categorization
+
+    FiltrationProcess --|&gt; FailureCategorization : has_failure_categorization
+
   FiltrationProcess : has_input
 
     FiltrationProcess --|&gt; NamedThing : has_input
@@ -326,6 +330,12 @@
   FiltrationProcess : protocol_link
 
     FiltrationProcess --|&gt; Protocol : protocol_link
+
+  FiltrationProcess : qc_comment
+
+  FiltrationProcess : qc_status
+
+    FiltrationProcess --|&gt; StatusEnum : qc_status
 
   FiltrationProcess : separation_method
 
@@ -458,6 +468,24 @@
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>0..* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
+<td></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
@@ -567,6 +595,7 @@ slot_usage:
     name: volume
     description: The volume of sample filtered.
     domain_of:
+    - Extraction
     - Solution
     - SubSamplingProcess
     - FiltrationProcess
@@ -593,6 +622,7 @@ slot_usage:
     name: volume
     description: The volume of sample filtered.
     domain_of:
+    - Extraction
     - Solution
     - SubSamplingProcess
     - FiltrationProcess
@@ -699,6 +729,7 @@ attributes:
     alias: volume
     owner: FiltrationProcess
     domain_of:
+    - Extraction
     - Solution
     - SubSamplingProcess
     - FiltrationProcess
@@ -814,6 +845,43 @@ attributes:
     - OmicsProcessing
     - PlannedProcess
     range: string
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_status
+    owner: FiltrationProcess
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: StatusEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_comment
+    owner: FiltrationProcess
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: string
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: has_failure_categorization
+    owner: FiltrationProcess
+    domain_of:
+    - WorkflowExecutionActivity
+    - PlannedProcess
+    range: FailureCategorization
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -851,7 +919,6 @@ attributes:
     owner: FiltrationProcess
     domain_of:
     - Protocol
-    - QualityControlReport
     - NamedThing
     - PersonValue
     - Activity

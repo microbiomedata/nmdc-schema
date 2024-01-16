@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/quality_control_report/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/qc_failure_what/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: quality_control_report - NMDC Schema Documentation</title>
+        <title>Slot: qc_failure_what - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-quality_control_report" class="md-skip">
+        <a href="#slot-qc_failure_what" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: quality_control_report
+              Slot: qc_failure_what
             
           </span>
         </div>
@@ -431,6 +431,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -481,8 +490,9 @@
   
 
 
-<h1 id="slot-quality_control_report">Slot: quality_control_report</h1>
-<p>URI: <a href="https://w3id.org/nmdc/quality_control_report">nmdc:quality_control_report</a></p>
+<h1 id="slot-qc_failure_what">Slot: qc_failure_what</h1>
+<p><em>Provides a summary about what caused a lab or workflow process to fail</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/qc_failure_what">nmdc:qc_failure_what</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -496,15 +506,19 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td>A material separation in which a desired component of an input material is se...</td>
+<td><a href="../FailureCategorization/">FailureCategorization</a></td>
+<td></td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../QualityControlReport/">QualityControlReport</a></li>
+<li>Range: <a href="../FailureWhatEnum/">FailureWhatEnum</a></li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>For example Low read count from a sequencer, malformed fastq files, etc)</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -514,14 +528,17 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: quality_control_report
+<pre><code class="language-yaml">name: qc_failure_what
+description: Provides a summary about what caused a lab or workflow process to fail
+comments:
+- For example Low read count from a sequencer, malformed fastq files, etc)
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-domain: PlannedProcess
-alias: quality_control_report
+domain: FailureCategorization
+alias: qc_failure_what
 domain_of:
-- Extraction
-range: QualityControlReport
+- FailureCategorization
+range: FailureWhatEnum
 
 </code></pre>
 
