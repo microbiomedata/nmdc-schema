@@ -35,7 +35,18 @@ class Migrator(MigratorBase):
               --> As part of creating a new "migrator" class, you will implement an `upgrade` function.
         """
 
+        # Process each document in the specified collection.
+        #
+        # Note: This works in a similar way to the "agenda-based" migrations we used to use before
+        #       adapters were introduced. However, now, each collection's entry in the "agenda" is
+        #       expressed as an invocation of the `self.adapter.process_each_document` function.
+        #
         self.adapter.process_each_document("study_set", [self.allow_multiple_names])
+
+        # Invoke some other adapter functions (as an example).
+        self.adapter.create_collection("comment_set")
+        self.adapter.insert_document("comment_set", {"id": 1, "text": "Hello"})
+        self.adapter.insert_document("comment_set", {"id": 2, "text": "Goodbye"})
 
     def allow_multiple_names(self, study: dict) -> dict:
         """
@@ -68,7 +79,7 @@ class Migrator(MigratorBase):
               --> As part of implementing a "transformation" function, you will
                   typically write a few doctests in the docstring of that function.
 
-        >>> m = Migrator()  # creates a class instance on which we can call this function (method)
+        >>> m = Migrator()  # creates a class instance on which we can call this function (i.e. this method)
         >>> m.allow_multiple_names({'id': 123, 'name': 'My project'})  # test: transfers existing name to `names` list
         {'id': 123, 'names': ['My project']}
         >>> m.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys
