@@ -145,10 +145,10 @@ class Migrator_from_X_to_PR10(MigratorBase):
             "quality_control_report": "nmdc:QualityControlReport"
             }
         
-
+        types_with_inlined_classes = ["nmdc:Biosample", "nmdc:Study", "nmdc:Extraction"]
         # Add the type slot to any inlined classes in the biosample_set
         for slot, uri in inlined_slots.items():
-            if class_uri == "nmdc:Biosample" or class_uri == "nmdc:Study" or class_uri == "nmdc:Extraction":
+            if class_uri in types_with_inlined_classes:
                 self.add_type_to_inlined_classes(document, slot, uri)
         
         return document
