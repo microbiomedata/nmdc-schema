@@ -143,7 +143,10 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-
+  FailureCategorization:
+    slots:
+      - qc_failure_what
+      - qc_failure_where
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -223,7 +226,7 @@ classes:
       - extraction_method
       - extraction_target
       - input_mass
-      - quality_control_report
+      - volume
     slot_usage:
       has_input:
         required: true
@@ -266,10 +269,7 @@ classes:
       - url
       - name
 
-  QualityControlReport:
-    slots:
-      - status
-      - name
+
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -2247,6 +2247,46 @@ enums:
       V-bottom conical tube:
       falcon tube:
 
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
+    permissible_values:
+      low_read_count:
+        description: Number of output reads is not sufficient to continue to the next analysis step.
+      malformed_data:
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+
+  FailureWhereEnum:
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    comments:
+      - At Chris' recommendation permissible values for this enumeration are the same as Class names.
+    permissible_values:
+      OmicsProcessing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeActivity:
+        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      MagsAnalysisActivity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      ReadQcAnalysisActivity:
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysisActivity:
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotationActivity:
+        description: A failure has occurred in annotation, a workflow process.
+
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
     contributors:
@@ -2317,6 +2357,9 @@ enums:
       ZIC-cHILIC:
 
 slots:
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
   model:
     range: InstrumentModelEnum
   vendor:
@@ -2355,8 +2398,8 @@ slots:
     range: integer
   sample_collection_month:
 
-  status:
-    domain: QualityControlReport
+  qc_status:
+    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
     range: StatusEnum
 
   library_preparation_kit:
@@ -2372,10 +2415,6 @@ slots:
   extraction_method:
     domain: Extraction
     range: ExtractionTargetEnum
-
-  quality_control_report:
-    domain: PlannedProcess
-    range: QualityControlReport
 
   pcr_cycles:
     range: integer

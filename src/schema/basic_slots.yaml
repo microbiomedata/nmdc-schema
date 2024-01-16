@@ -210,7 +210,6 @@ slots:
     domain: PlannedProcess
     range: Protocol
 
-
   #  nucleic_acid_concentration:
   #    range: InstrumentValue
 
@@ -218,11 +217,35 @@ slots:
     domain: ProcessedSample
     range: QuantityValue
 
+  qc_failure_what:
+    domain: FailureCategorization
+    range: FailureWhatEnum
+    description: >-
+      Provides a summary about what caused a lab or workflow process to fail
+    comments:
+      - For example Low read count from a sequencer, malformed fastq files, etc)
+
+  qc_failure_where:
+    domain: FailureCategorization
+    range: FailureWhereEnum
+    description: >-
+      Describes the nmdc schema class that corresonds to where the failure occurred.
+      Most commonly this would be the same as Class that generated the results.
+    comments:
+      - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
+
+  qc_comment:
+    range: string
+    description: >-
+      Slot to store additional comments about laboratory or workflow output. For workflow output
+      it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
+
   instrument_name:
     domain: PlannedProcess
     description: >-
       The name of the instrument that was used for processing the sample.
   #    add this and write migration # range: instrument_name_enum
+
 
 enums:
   processing_institution_enum:
@@ -256,6 +279,7 @@ enums:
       UCD_Genome_Center:
         title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
+
 
 #  instrument_name_enum:
 #    todos:

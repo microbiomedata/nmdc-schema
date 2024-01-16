@@ -6,8 +6,7 @@ has_output:
 start_date: "2020-06-24T22:06Z"
 end_date: "2021-08-19"
 # processing_institution: "Battelle"
-quality_control_report:
-  status: "pass"
+qc_status: "pass"
 extraction_target: "DNA"
 input_mass:
   has_numeric_value: 0.25
