@@ -164,10 +164,8 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      #      - dissolving_activity_set
-      #      - material_sample_set
-      #      - material_sampling_activity_set
-      #      - reaction_activity_set
+      - planned_process_set
+      - functional_annotation_agg
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
@@ -2368,10 +2366,17 @@ slots:
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecutionActivity
+    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
+    required: true
   gene_function_id:
     range: uriorcurie
+    description: The identifier for the gene function.
+    examples: 
+      - value: KEGG.ORTHOLOGY:K00627
+    required: true
   count:
     range: integer
+    required: true
   functional_annotation_agg:
     domain: Database
     range: FunctionalAnnotationAggMember
