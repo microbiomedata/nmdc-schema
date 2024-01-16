@@ -40,7 +40,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
 
         if document.get(slot):
             if isinstance(document[slot], list):
-                # If slot is a list, iterate over each item in the list (e.g. chem_administration)
+                # If slot is a list, iterate over each item in the list (e.g. chem_administration and has_credit_associations)
                 for item in document[slot]:
                     item["type"] = uri
                     if item.get("term"):
@@ -52,9 +52,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
                 document[slot]["type"] = uri
                 if document[slot].get("term"):
                     document[slot]["term"]["type"] = "nmdc:OntologyClass"
-                if document[slot].get("applies_to_person"):
-                    document[slot]["applies_to_person"]["type"] = "nmdc:PersonValue"
-
+                    
 
     def add_type_slot_with_class_uri(self, document: dict, class_uri: str):
         r"""
@@ -137,6 +135,17 @@ class Migrator_from_X_to_PR10(MigratorBase):
             "tot_carb": "nmdc:QuantityValue",
             "wind_direction": "nmdc:TextValue",
             "wind_speed": "nmdc:QuantityValue",
+            "ammonium": "nmdc:QuantityValue",
+            "diss_oxygen": "nmdc:QuantityValue", 
+            "chlorophyll": "nmdc:QuantityValue",
+            "diss_inorg_nitro": "nmdc:QuantityValue",
+            "soluble_react_phosp": "nmdc:QuantityValue",
+            "sodium": "nmdc:QuantityValue",
+            "sulfate": "nmdc:QuantityValue",
+            "diss_inorg_carb": "nmdc:QuantityValue",
+            "diss_org_carb": "nmdc:QuantityValue",
+            "chloride": "nmdc:QuantityValue",
+            "diss_iron": "nmdc:QuantityValue",
             "associated_dois": "nmdc:Doi",
             "has_credit_associations": "prov:Association",
             "principal_investigator": "nmdc:PersonValue",
