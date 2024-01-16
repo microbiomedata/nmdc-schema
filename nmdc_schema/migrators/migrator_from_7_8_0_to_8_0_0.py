@@ -3,7 +3,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator(MigratorBase):
-    r"""Migrates a database between two schema versions."""
+    r"""Migrates a database between two schemas."""
 
     _from_version = "7.8.0"
     _to_version = "8.0.0"
