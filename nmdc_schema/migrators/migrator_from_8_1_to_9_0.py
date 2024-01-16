@@ -9,7 +9,7 @@ class Migrator(MigratorBase):
     _to_version = "9.0"
 
     def upgrade(self):
-        r"""Migrates the database from the original schema version to the new one."""
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
         self.adapter.process_each_document("study_set", [
             self.fix_award_dois,

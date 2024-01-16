@@ -3,7 +3,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 class Migrator(MigratorBase):
     """
-    Migrates data between two schema versions.
+    Migrates data between two schemas.
 
     TUTORIAL: This is an example of a "migrator" class.
               It was designed for use during developer training and
@@ -22,7 +22,7 @@ class Migrator(MigratorBase):
 
     def upgrade(self):
         r"""
-        Migrates the database from the original schema version to the new one.
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
 
         TUTORIAL: This is the `upgrade` function. You can think of it as the "main" function or
                   "entry point" of the migrator. Its job is to transform the database from
@@ -32,8 +32,7 @@ class Migrator(MigratorBase):
                   accessing the database directly. That allows the same migrator to be used
                   with different types of data stores (e.g. MongoDB database, Python dictionary).
 
-              --> As part of creating a new "migrator" class, you will implement an
-                  `upgrade` function (it's the only function that's required).
+              --> As part of creating a new "migrator" class, you will implement an `upgrade` function.
         """
 
         self.adapter.process_each_document("study_set", [self.allow_multiple_names])
@@ -42,8 +41,8 @@ class Migrator(MigratorBase):
         """
         TUTORIAL: This is an example "transformation" function within the class.
                   Its job is to transform a dictionary that conforms to the
-                  initial schema version (in this case, version "A.B.C"), into one
-                  that conforms to the target schema version (in this case,
+                  initial schema (in this case, version "A.B.C"), into one
+                  that conforms to the target schema (in this case,
                   version "X.Y.Z"). That might involve adding a field,
                   converting a string into a list of strings, etc.
 

@@ -96,7 +96,7 @@ class Migrator(MigratorBase):
     _to_version = "{to_version}"    
     
     def upgrade(self) -> None:
-        r"""Migrates the database from the original schema version to the new one."""
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
         pass
 
 '''
