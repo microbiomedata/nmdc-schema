@@ -295,19 +295,19 @@
 <tbody>
 <tr>
 <td><a href="../metagenome_annotation_id/">metagenome_annotation_id</a></td>
-<td>0..1 <br/> <a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td></td>
+<td>1..1 <br/> <a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+<td>The identifier for the analysis activity (WorkflowExecutionActivity) that gen...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../gene_function_id/">gene_function_id</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td></td>
+<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>The identifier for the gene function</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../count/">count</a></td>
-<td>0..1 <br/> <a href="../Integer/">Integer</a></td>
+<td>1..1 <br/> <a href="../Integer/">Integer</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -382,6 +382,8 @@ from_schema: https://w3id.org/nmdc/nmdc
 attributes:
   metagenome_annotation_id:
     name: metagenome_annotation_id
+    description: The identifier for the analysis activity (WorkflowExecutionActivity)
+      that generated the functional annotation results.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: FunctionalAnnotationAggMember
@@ -390,8 +392,12 @@ attributes:
     domain_of:
     - FunctionalAnnotationAggMember
     range: WorkflowExecutionActivity
+    required: true
   gene_function_id:
     name: gene_function_id
+    description: The identifier for the gene function.
+    examples:
+    - value: KEGG.ORTHOLOGY:K00627
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: gene_function_id
@@ -399,6 +405,7 @@ attributes:
     domain_of:
     - FunctionalAnnotationAggMember
     range: uriorcurie
+    required: true
   count:
     name: count
     from_schema: https://w3id.org/nmdc/nmdc
@@ -408,6 +415,7 @@ attributes:
     domain_of:
     - FunctionalAnnotationAggMember
     range: integer
+    required: true
 
 </code></pre>
 </details>

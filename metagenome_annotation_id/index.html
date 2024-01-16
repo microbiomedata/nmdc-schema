@@ -482,6 +482,7 @@
 
 
 <h1 id="slot-metagenome_annotation_id">Slot: metagenome_annotation_id</h1>
+<p><em>The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/metagenome_annotation_id">nmdc:metagenome_annotation_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -504,7 +505,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></li>
+<li>
+<p>Range: <a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -515,6 +521,8 @@
 <details>
 
 <pre><code class="language-yaml">name: metagenome_annotation_id
+description: The identifier for the analysis activity (WorkflowExecutionActivity)
+  that generated the functional annotation results.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 domain: FunctionalAnnotationAggMember
@@ -522,6 +530,7 @@ alias: metagenome_annotation_id
 domain_of:
 - FunctionalAnnotationAggMember
 range: WorkflowExecutionActivity
+required: true
 
 </code></pre>
 
