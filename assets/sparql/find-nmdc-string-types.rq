@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix datagraph: <https://api-napa.microbiomedata.org>
+# different data graphs from different extractions of different MongoDBs
+#   may have different named graphs and may need different prefixes/expansions
+# we are not loading anything into the default graph.
+#   some triplestores automatically include named graph content in queries over the default graph
+#   but others don't
+prefix nmdc: <https://w3id.org/nmdc/>
+SELECT * WHERE {
+  graph datagraph: {
+    ?sub nmdc:type ?obj .
+  }
+}
+# limit 1000

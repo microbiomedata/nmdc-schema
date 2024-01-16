@@ -35,6 +35,15 @@ ENV PATH="$JENAROOT/bin:$PATH"
 RUN mkdir -p /root/apache-jena && \
     ln --symbolic "${JENAROOT}/bin" /root/apache-jena/bin
 
+RUN wget -P /downloads/tmp "https://archive.apache.org/dist/jena/binaries/apache-jena-fuseki-4.9.0.zip"
+RUN mkdir -p /downloads/apache-jena-fuseki && \
+    unzip /downloads/tmp/apache-jena-fuseki-4.9.0.zip -d /downloads/apache-jena-fuseki
+RUN rm -rf /downloads/tmp/apache-jena-fuseki-4.9.0.zip
+ENV FUSEKIROOT="/downloads/apache-jena/apache-jena-4.9.0"
+ENV PATH="$FUSEKIROOT/:$PATH"
+RUN mkdir -p /root/apache-jena-fuseki && \
+    ln --symbolic "${JENAROOT}" /root/apache-jena-fuseki
+
 # Install Poetry, a package manager for Python (an alternative to pip).
 RUN pip install poetry
 

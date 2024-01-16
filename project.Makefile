@@ -1,6 +1,7 @@
 ## Add your own custom Makefile targets here
 
 JENA_PATH=~/apache-jena/bin/
+FUSEKI_PATH=~/apache-jena-fuseki/
 RUN=poetry run
 
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
@@ -590,17 +591,17 @@ migrator:
 
 local/nmdc-schema-v8.0.0.yaml:
 	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.0.0/nmdc_schema/nmdc_materialized_patterns.yaml
-	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
-	#     see_also:
-	#       - MIxS:experimental_factor|additional_info
 	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
 
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
 	$(RUN) gen-owl $< > $@
+	# could validate with robot or owlapi?
 
-# 		--quick-test
 local/nmdc-sty-11-aygzgv51.yaml:
-	$(RUN) get-study-related-records \
+	# 35 minutes for nmdc:sty-11-aygzgv51.yaml ?
+	# --quick-test
+	date
+	time $(RUN) get-study-related-records \
 		--api-base-url https://api-napa.microbiomedata.org \
 		extract-study \
 		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
@@ -610,17 +611,25 @@ local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v8.0.0.yaml local/n
 	# - allows the makefiel to continue even if this step reports an error. that may or may not be the best choice in this case
 	- $(RUN) linkml-validate --schema $^ > $@
 
-local/nmdc-sty-11-aygzgv51.ttl: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
+local/nmdc-sty-11-aygzgv51_temp.ttl: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
 	$(RUN) linkml-convert --output $@ --schema $^
 
-local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-11-aygzgv51.ttl
+local/nmdc-sty-11-aygzgv51.ttl: local/nmdc-sty-11-aygzgv51_temp.ttl
+	$(RUN) anyuri-strings-to-iris \
+		--input-ttl $< \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--emsl-uuid-replacement emsl_uuid_like \
+		--output-ttl $@
+	rm -rf $<
+
+local/nmdc-tdb2-datadir: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-11-aygzgv51.ttl
 	$(JENA_PATH)/tdb2.tdbloader \
 		--loc=$@ \
 		--graph=https://w3id.org/nmdc/nmdc \
 			$(word 1, $^)
 	$(JENA_PATH)/tdb2.tdbloader  \
 		--loc=$@ \
-		--graph=https://api-napa.microbiomedata.org/docs \
+		--graph=https://api-napa.microbiomedata.org \
 			$(word 2, $^)
 	$(JENA_PATH)/tdb2.tdbquery \
 		--loc=$@ \
@@ -629,7 +638,14 @@ local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-
 		--loc=$@ \
 		--query=assets/sparql/tdb-graph-list.rq
 
+.PHONY: start-fuseki
+start-fuseki: assets/fuseki-config.ttl local/nmdc-tdb2-datadir
+	# see http://localhost:3030/
+	$(FUSEKI_PATH)/fuseki-server --config=$<
+
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
 		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
+
+

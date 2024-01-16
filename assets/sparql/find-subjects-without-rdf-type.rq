@@ -1,0 +1,15 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix datagraph: <https://api-napa.microbiomedata.org>
+prefix nmdc: <https://w3id.org/nmdc/>
+SELECT
+distinct ?sub
+WHERE {
+  graph datagraph: {
+    ?sub ?pred ?obj .
+    minus {
+      ?sub rdf:type ?st .
+    }
+  }
+  filter(isuri(?sub))
+}
