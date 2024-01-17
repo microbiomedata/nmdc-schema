@@ -37,21 +37,37 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
-    def get_document_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> Optional[dict]:
+    def get_document_having_value_in_field(
+        self, collection_name: str, field_name: str, value: str
+    ) -> Optional[dict]:
         r"""
-        Retrieves the document from the specified collection, having the specified value in the specified field.
+        Retrieves the first document from the specified collection, having the specified value in the specified field.
 
-        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
         """
         pass
 
     @abstractmethod
-    def delete_documents_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
+    def get_document_having_one_of_values_in_field(
+        self, collection_name: str, field_name: str, values: List[str]
+    ) -> Optional[dict]:
+        r"""
+        Retrieves the first document from the specified collection, having any one of the specified values in the
+        specified field.
+
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+        """
+        pass
+
+    @abstractmethod
+    def delete_documents_having_value_in_field(
+        self, collection_name: str, field_name: str, value: str
+    ) -> int:
         r"""
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.
 
-        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
         """
         pass
 

@@ -101,9 +101,9 @@ class DictionaryAdapter(AdapterBase):
         self, collection_name: str, field_name: str, value: str
     ) -> Optional[dict]:
         r"""
-        Retrieves the document from the specified collection, having the specified value in the specified field.
+        Retrieves the first document from the specified collection, having the specified value in the specified field.
 
-        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
 
         >>> database = {
         ...   "thing_set": [
@@ -142,12 +142,51 @@ class DictionaryAdapter(AdapterBase):
 
         return document
 
+    def get_document_having_one_of_values_in_field(
+        self, collection_name: str, field_name: str, values: List[str]
+    ) -> Optional[dict]:
+        r"""
+        Retrieves the first document from the specified collection, having any one of the specified values in the
+        specified field.
+
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "111", "foo": "bar"},
+        ...     {"id": "222", "foo": "baz"},
+        ...     {"id": "333", "foo": "qux"}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.get_document_having_one_of_values_in_field("thing_set", "id", ["221", "222", "223"])
+        {'id': '222', 'foo': 'baz'}
+        >>> da.get_document_having_one_of_values_in_field("thing_set", "foo", ["baa", "baz", "bab"])
+        {'id': '222', 'foo': 'baz'}
+        >>> da.get_document_having_one_of_values_in_field("thing_set", "id", ["no_such_value"]) is None
+        True
+        >>> da.get_document_having_one_of_values_in_field("thing_set", "foo", []) is None  # no values to match with
+        True
+        """
+        try:
+            # Create a generator over which we can iterate via `next`.
+            document_generator = (
+                d for d in self._db[collection_name] if d.get(field_name) in values
+            )
+
+            # Return the first document yielded by the generator (or `None` if the generator doesn't yield one).
+            document = next(document_generator, None)
+        except KeyError:
+            document = None
+
+        return document
+
     def delete_documents_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
         r"""
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.
 
-        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
 
         >>> database = {
         ...   "thing_set": [

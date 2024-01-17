@@ -58,9 +58,9 @@ class MongoAdapter(AdapterBase):
         self, collection_name: str, field_name: str, value: str
     ) -> Optional[dict]:
         r"""
-        Retrieves the document from the specified collection, having the specified value in the specified field.
+        Retrieves the first document from the specified collection, having the specified value in the specified field.
 
-        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.find_one
@@ -78,6 +78,36 @@ class MongoAdapter(AdapterBase):
         )
         return document
 
+    def get_document_having_one_of_values_in_field(
+        self, collection_name: str, field_name: str, values: List[str]
+    ) -> Optional[dict]:
+        r"""
+        Retrieves the first document from the specified collection, having any one of the specified values in the
+        specified field.
+
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+
+        References:
+        - https://www.mongodb.com/docs/manual/reference/operator/query/in/
+        - https://www.mongodb.com/docs/manual/reference/operator/query/type/
+        """
+
+        # Create the filter for the query.
+        #
+        # Note: The `$in` operator has a special-case behavior where, if the field is an array, the operator
+        #       looks for any matching element _within_ the array. That is not what I want in this situation.
+        #       So, I am filtering out documents on which the field is an array, so that behavior never
+        #       comes into play.
+        #
+        filter_ = dict()
+        filter_[field_name] = {"$type": {"$ne": "array"}, "$in": values}
+
+        # Find and return the first matching document, if any.
+        document = self._db.get_collection(name=collection_name).find_one(
+            filter=filter_
+        )
+        return document
+
     def delete_documents_having_value_in_field(
         self, collection_name: str, field_name: str, value: str
     ) -> int:
@@ -85,7 +115,7 @@ class MongoAdapter(AdapterBase):
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.
 
-        Note: This only support top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
+        Note: This only supports top-level fields (e.g. `_id`, `depth`), not nested fields (e.g. `depth.has_unit`).
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.delete_many
