@@ -2091,99 +2091,84 @@ enums:
         aliases:
           - NovaSeq
           - NovaSeq 6000
-        exact_mappings:
-          - OBI:0002630
+        meaning: OBI:0002630
       hiseq_1000:
         aliases:
           - Illumina HiSeq 1000
-        exact_mappings:
-          - OBI:0002022
+        meaning: OBI:0002022
       hiseq_1500:
         aliases:
           - Illumina HiSeq 1500
-        exact_mappings:
-          - OBI:0003386
+        meaning: OBI:0003386
       hiseq_2000:
         aliases:
           - Illumina HiSeq 2000
-        exact_mappings:
-          - OBI:0002001
+        meaning: OBI:0002001
       hiseq_2500:
         aliases:
           - Illumina HiSeq 2500
-        exact_mappings:
-          - OBI:0002002
+        meaning: OBI:0002002
       hiseq_3000:
         aliases:
           - Illumina HiSeq 3000
-        exact_mappings:
-         - OBI:0002048
+        meaning: OBI:0002048
       hiseq_4000:
         aliases:
           - Illumina HiSeq 4000
-        exact_mappings:
-          - OBI:0002049
+        meaning: OBI:0002049
       hiseq_x_ten:
         aliases:
           - Illumina HiSeq X Ten
-        exact_mappings:
-           - OBI:0002129
+        meaning: OBI:0002129
       miniseq:
         aliases:
           - Illumina MiniSeq
-        exact_mappings:
-          - OBI:0003114
+        meaning: OBI:0003114
       nextseq_1000:
         aliases:
           - Illumina NextSeq 1000
-        exact_mappings:
-          - OBI:0003606
+        meaning: OBI:0003606
       miseq:
         aliases:
           - MiSeq
           - Illumina MiSeq
-        exact_mappings:
-          - OBI:0002003
+        meaning: OBI:0002003
       nextseq_500:
         aliases:
           - NextSeq 500
-        exact_mappings:
-          - OBI:0002021
+        meaning: OBI:0002021
       nextseq_550:
         aliases:
           - NextSeq 550
-        exact_mappings:
-          - OBI:0003387
+        meaning: OBI:0003387
       gridion:
          aliases:
            - Oxford Nanopore GridION Mk1
-         exact_mappings:
-           - OBI:0002751
+         meaning: OBI:0002751
       minion:
         aliases:
           - Oxford Nanopore MinION
-        exact_mappings:
-          - OBI:0002750
+        meaning: OBI:0002750
       promethion:
         aliases:
           - Oxford Nanopore PromethION
-        exact_mappings:
-          - OBI:0002752
+        meaning: OBI:0002752
       rs_II:
         aliases:
           - PacBio RS II
-        exact_mappings:
-          - OBI:0002012
+        meaning: OBI:0002012
       sequel:
         aliases:
           - PacBio Sequel
-        exact_mappings:
-          - OBI:0002632
+        meaning: OBI:0002632
       sequel_II:
          aliases:
            - PacBio Sequel II
-         exact_mappings:
-           - OBI:0002633
+         meaning: OBI:0002633
+      revio:
+        aliases: 
+           - PacBio Revio
+           - Revio
 
   InstrumentVendorEnum:
     permissible_values:
@@ -2212,20 +2197,16 @@ enums:
       illumina:
         aliases:
           - Illumina
-        exact_mappings:
-          - BAO:0200000
-          - OBI:0000759
+        meaning: BAO:0200000
       pacbio:
         aliases:
           - PacBio
           - Pacific Biosciences
-        exact_mappings:
-          - OBI:0001856
+        meaning: OBI:0001856
       oxford_nanopore:
         aliases:
           - Oxford Nanopore Technologies
-        exact_mappings:
-          - OBI:0002755
+        meaning: OBI:0002755
 
   StatusEnum:
     permissible_values:
