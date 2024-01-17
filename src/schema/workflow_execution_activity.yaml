@@ -199,11 +199,14 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        multivalued: false
 
   MetatranscriptomeAnnotation:
     class_uri: "nmdc:MetatranscriptomeAnnotation"
     is_a: WorkflowExecution
     slots:
+      - img_identifiers
     in_subset:
       - workflow subset
     slot_usage:
@@ -212,6 +215,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        multivalued: false
 
   MetatranscriptomeAnalysis:
     class_uri: "nmdc:MetatranscriptomeAnalysis"
@@ -250,6 +255,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        multivalued: false
 
 
   MetagenomeSequencing:
