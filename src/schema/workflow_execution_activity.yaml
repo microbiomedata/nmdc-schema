@@ -23,6 +23,7 @@ subsets:
       Subset consisting of just the workflow execution activities
 
 classes:
+
   WorkflowExecutionActivity:
     aliases:
       - analysis
@@ -44,7 +45,33 @@ classes:
       - part_of
       - type
       - version
-
+      - qc_status
+      - qc_comment
+      - has_failure_categorization
+    rules:
+      - title: qc_status_pass_has_output_required
+        description: >-
+          If qc_status has a value of pass, then the has_output slot is required.
+        preconditions:
+          slot_conditions:
+            qc_status:
+              equals_string: pass
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
+      - title: qc_status_pass_null_has_output_required
+        description: >-
+          If qc_status is not specified, then the has_output slot is required.
+        preconditions:
+          slot_conditions:
+            qc_status:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
+          
     slot_usage:
       started_at_time:
         required: true
@@ -54,8 +81,8 @@ classes:
         required: true
       has_input:
         required: true
-      has_output:
-        required: true
+      # has_output:
+      #   required: true
       execution_resource:
         required: true
       type:
@@ -65,6 +92,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.

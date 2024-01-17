@@ -168,10 +168,15 @@ classes:
       - protocol_link
       - start_date
       - instrument_name # or "used" ?
+      - qc_status
+      - qc_comment
+      - has_failure_categorization
+
     slot_usage:
       designated_class:
         comments:
           - required on all instances in a polymorphic Database slot like planned_process_set
+     
 
   OntologyClass:
     is_a: NamedThing
