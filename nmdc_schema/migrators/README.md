@@ -16,6 +16,8 @@ This directory contains the following things:
 - `adapters/adapter_base.py` - definition of the `AdapterBase` class
 - `adapters/dictionary_adapter.py` - definition of the `DictionaryAdapter` class
     - That class can be used by a `Migrator` instance to manipulate a database represented as a Python dictionary
+- `adapters/mongo_adapter.py` - definition of the `MongoAdapter` class
+    - That class can be used by a `Migrator` instance to manipulate a MongoDB database
 - `assets/` - data files (not Python code) used by the classes
 - `cli/` - CLI scripts/commands related to the classes
 - `helpers.py` - general-purpose functions used by the classes

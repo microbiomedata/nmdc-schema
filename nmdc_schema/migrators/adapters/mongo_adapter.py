@@ -1,12 +1,3 @@
-###############################################################################
-#
-# Note: I created this file so that I could draft a MongoDB adapter
-#       while building the dictionary adapter, without thinking about
-#       two development environments. The final version of this module
-#       will reside in nmdc-runtime, not nmdc-schema.
-#
-###############################################################################
-
 from typing import Optional, Callable, List
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 from pymongo.database import Database
