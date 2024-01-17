@@ -46,16 +46,19 @@ slots:
     recommended: true
 
   sample_link:
-    description: A unique identifier to assign parent-child, subsample, or sibling
-      samples. This is relevant when a sample or other material was used to generate
-      the new sample.
+    description: The name(s) of sample(s) to be linked to this sample. This should 
+    match a sample name provided to NMDC & should identify the sample relationship 
+    that is being provided. This is relevant when a sample or other material was used 
+    to generate the new sample.
     comments:
       - 'This field allows multiple entries separated by ; (Examples: Soil collected
       from the field will link with the soil used in an incubation. The soil a plant
       was grown in links to the plant sample. An original culture sample was transferred
       to a new vial and generated a new sample)'
     examples:
-      - value: IGSN:DSJ0284
+      - value: core: soil core 1
+      - value: parent: sample A
+      - value: pooling: sample 1, sample 2, sample 3
     from_schema: https://example.com/nmdc_dh
     multivalued: true
     range: string
