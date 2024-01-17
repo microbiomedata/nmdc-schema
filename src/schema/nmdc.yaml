@@ -45,7 +45,6 @@ prefixes:
   FBcv: "http://purl.obolibrary.org/obo/FBcv_"
   FMA: "http://purl.obolibrary.org/obo/FMA_"
   GO: "http://purl.obolibrary.org/obo/GO_"
-  BAO: "http://purl.obolibrary.org/obo/BAO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
   ISA: http://example.org/isa/
   KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
@@ -2198,7 +2197,7 @@ enums:
       illumina:
         aliases:
           - Illumina
-        meaning: BAO:0200000
+        meaning: OBI:0000759
       pacbio:
         aliases:
           - PacBio
