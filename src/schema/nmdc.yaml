@@ -2131,7 +2131,7 @@ enums:
       miniseq:
         aliases:
           - Illumina MiniSeq
-        exactly_mappings:
+        exact_mappings:
           - OBI:0003114
       nextseq_1000:
         aliases:
