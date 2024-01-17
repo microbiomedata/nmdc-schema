@@ -610,6 +610,21 @@ local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v8.0.0.yaml local/n
 	# - allows the makefiel to continue even if this step reports an error. that may or may not be the best choice in this case
 	- $(RUN) linkml-validate --schema $^ > $@
 
+###
+
+local/nmdc-sty-11-hdd4bf83.yaml:
+	date
+	time $(RUN) get-study-related-records \
+		--api-base-url https://api.microbiomedata.org \
+		extract-study \
+		--study-id nmdc:sty-11-hdd4bf83 \
+		--output-file $@
+
+local/nmdc-sty-11-hdd4bf83-validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-sty-11-hdd4bf83.yaml
+	- $(RUN) linkml-validate --schema $^ > $@
+
+###
+
 local/nmdc-sty-11-aygzgv51.ttl: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
 	$(RUN) linkml-convert --output $@ --schema $^
 
