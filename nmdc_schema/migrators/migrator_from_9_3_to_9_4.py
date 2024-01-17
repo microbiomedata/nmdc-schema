@@ -21,6 +21,12 @@ class Migrator(MigratorBase):
         >>> m = Migrator()
         >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'status': 'pass'}})
         {'id': 123, 'qc_status': 'pass'}
+        >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'status': 'fail'}})
+        {'id': 123, 'qc_status': 'fail'}
+        >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'name': 'qcr', 'status': 'pass'}})  # discards name
+        {'id': 123, 'qc_status': 'pass'}
+        >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {}})  # no change
+        {'id': 123, 'quality_control_report': {}}
         """
         self.logger.info(f"Starting migration of {extraction['id']}")
         if "quality_control_report" in extraction:
