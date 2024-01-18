@@ -381,8 +381,7 @@ analysis_type:
   - metabolomics
   - metagenomics
 sample_link:
-  - IGSN:DSJ0284
-  - any:curie
+  - 'parent: example_samp_45'
 zinc:
   has_raw_value: 2.5 mg/kg
 manganese:
