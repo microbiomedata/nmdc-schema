@@ -32,6 +32,7 @@ class Migrator(MigratorBase):
         if "quality_control_report" in extraction:
             if "status" in extraction["quality_control_report"]:
                 extraction["qc_status"] = extraction["quality_control_report"]["status"]
-                del extraction["quality_control_report"]["status"]
+
+            # Delete the field, even if it contains sub-fields other than "status".
             del extraction["quality_control_report"]
         return extraction
