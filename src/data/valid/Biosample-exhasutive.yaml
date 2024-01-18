@@ -876,8 +876,7 @@ samp_well_name:
   has_raw_value: xxx
 
 sample_link:
-  - IGSN:DSJ0284
-  - any:curie
+  - 'core: soil_core_O'
 sample_shipped: 15 g
 sample_type: water_extract_soil
 saturates_pc:
