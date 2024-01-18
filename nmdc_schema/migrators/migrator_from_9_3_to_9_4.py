@@ -15,7 +15,7 @@ class Migrator(MigratorBase):
 
     def move_extraction_qc_status(self, extraction: dict) -> dict:
         r"""
-        Updates the `ExtractionSet` so that the value originally in its `quality_control_report.status` field, if any,
+        Updates the `Extraction` so that the value originally in its `quality_control_report.status` field, if any,
         is stored in a new field named `qc_status`; and the `quality_control_report` field no longer exists.
 
         >>> m = Migrator()
