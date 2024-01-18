@@ -876,8 +876,7 @@ biosample_set:
       has_raw_value: xxx
 
     sample_link:
-      - IGSN:DSJ0284
-      - any:curie
+      - 'parent: example_samp_24'
     sample_shipped: 15 g
     sample_type: water_extract_soil
     saturates_pc:
