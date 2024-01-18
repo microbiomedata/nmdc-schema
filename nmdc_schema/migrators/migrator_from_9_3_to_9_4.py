@@ -28,7 +28,7 @@ class Migrator(MigratorBase):
         >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {}})
         {'id': 123}
         """
-        self.logger.info(f"Starting migration of {extraction['id']}")
+        self.logger.info(f"Migrating Extraction: {extraction['id']}")
         if "quality_control_report" in extraction:
             if "status" in extraction["quality_control_report"]:
                 extraction["qc_status"] = extraction["quality_control_report"]["status"]
