@@ -21,8 +21,12 @@ class Migrator(MigratorBase):
         >>> m = Migrator()
         >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'status': 'pass'}})
         {'id': 123, 'qc_status': 'pass'}
+        >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'status': 'fail'}})
+        {'id': 123, 'qc_status': 'fail'}
         >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'status': 'pass', 'name': 'n'}})
         {'id': 123, 'qc_status': 'pass'}
+        >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'status': 'fail', 'name': 'n'}})
+        {'id': 123, 'qc_status': 'fail'}
         >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'name': 'n'}})
         {'id': 123}
         >>> m.move_extraction_qc_status({'id': 123, 'quality_control_report': {}})
