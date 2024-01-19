@@ -1,0 +1,1715 @@
+(nmdc-schema-py3.10) mark@NUC:~/gitrepos/berkeley-schema-fy24$ make squeaky-clean all test
+rm -rf project
+rm -rf tmp
+rm -rf docs/*.md
+rm -rf docs/*.html
+rm -rf OmicsProcessing.tsv
+rm -rf OmicsProcessing-to-catted-Biosamples.tsv
+rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
+rm -rf examples/output
+date
+Fri Jan 19 12:20:15 PM EST 2024
+rm -rf local/mongo_as_nmdc_database*
+rm -rf local/mongo_as_unvalidated_nmdc_database.yaml
+rm -rf \
+        OmicsProcessing.rq \
+        local/mongo_as_nmdc_database.ttl \
+        local/mongo_as_nmdc_database_cuire_repaired.ttl \
+        local/mongo_as_nmdc_database_rdf_safe.yaml \
+        local/mongo_as_nmdc_database_validation.log \
+        local/mongo_as_unvalidated_nmdc_database.yaml
+rm -rf local/mixs_regen/import_slots_regardless_gen.tsv
+rm -rf local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
+rm -rf local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
+rm -rf local/mixs_regen/mixs_slots_used_in_schema.tsv
+rm -rf local/mixs_regen/mixs_subset.yaml
+#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
+rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
+rm -rf local/mixs_regen/mixs_subset_repaired.yaml
+rm -rf local/mixs_regen/mixs_subset_repaired.yaml.bak
+rm -rf local/mixs_regen/slots_associated_with_biosample.tsv
+rm -rf local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
+rm -rf local/mixs_regen/slots_associated_with_omics_processing.tsv
+mkdir -p local/mixs_regen
+touch local/mixs_regen/.gitkeep
+rm -rf nmdc_schema/*.json
+rm -rf nmdc_schema/*.tsv
+rm -rf nmdc_schema/*.yaml
+poetry run python -m doctest -v nmdc_schema/migrators/*.py
+2 items had no tests:
+    helpers
+    helpers.load_yaml_asset
+0 tests in 2 items.
+0 passed and 0 failed.
+Test passed.
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+6 items had no tests:
+    migrator_base
+    migrator_base.MigratorBase
+    migrator_base.MigratorBase.__init__
+    migrator_base.MigratorBase.get_destination_version
+    migrator_base.MigratorBase.get_origin_version
+    migrator_base.MigratorBase.get_transformers_for
+0 tests in 6 items.
+0 passed and 0 failed.
+Test passed.
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.replace_doi_field_with_award_dois_list_field({'id': 123})  # no `doi` field
+Expecting:
+    {'id': 123}
+ok
+Trying:
+    m.replace_doi_field_with_award_dois_list_field({'id': 123, 'doi': {'has_raw_value': 'not-a-url'}})
+Expecting:
+    {'id': 123}
+ok
+Trying:
+    m.replace_doi_field_with_award_dois_list_field(
+        {'id': 123, 'doi': {'has_raw_value': 'https://example.com/10.other_stuff'}}
+    )
+Expecting:
+    {'id': 123, 'award_dois': ['doi:10.other_stuff']}
+ok
+3 items had no tests:
+    migrator_from_7_7_2_to_7_8_0
+    migrator_from_7_7_2_to_7_8_0.Migrator
+    migrator_from_7_7_2_to_7_8_0.Migrator.__init__
+1 items passed all tests:
+   4 tests in migrator_from_7_7_2_to_7_8_0.Migrator.replace_doi_field_with_award_dois_list_field
+4 tests in 4 items.
+4 passed and 0 failed.
+Test passed.
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.rename_sample_mass_field({'id': 123})  # no `sample_mass` field
+Expecting:
+    {'id': 123}
+ok
+Trying:
+    m.rename_sample_mass_field({'id': 123, 'sample_mass': 456})  # test: renames field and preserves value
+Expecting:
+    {'id': 123, 'input_mass': 456}
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_biosample_identifiers({'id': 123})
+Expecting:
+    {'id': 123, 'gold_biosample_identifiers': []}
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_biosample_identifiers(
+        {'id': 123, 'gold_biosample_identifiers': ['GOLD:foo', 'gold:bar']}
+    )
+Expecting:
+    {'id': 123, 'gold_biosample_identifiers': ['gold:foo', 'gold:bar']}
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_identifiers(['GOLD:prefix_was_uppercase'])
+Expecting:
+    ['gold:prefix_was_uppercase']
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_identifiers(['gold:prefix_was_lowercase'])
+Expecting:
+    ['gold:prefix_was_lowercase']
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_identifiers(['Gold:prefix_remains_mixed_case'])
+Expecting:
+    ['Gold:prefix_remains_mixed_case']
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_identifiers(['GOLD:preserves_this:but_not_this'])
+Expecting:
+    ['gold:preserves_this']
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_sequencing_project_identifiers({'id': 123})
+Expecting:
+    {'id': 123, 'gold_sequencing_project_identifiers': []}
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_sequencing_project_identifiers(
+        {'id': 123, 'gold_sequencing_project_identifiers': ['GOLD:foo', 'gold:bar']}
+    )
+Expecting:
+    {'id': 123, 'gold_sequencing_project_identifiers': ['gold:foo', 'gold:bar']}
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_study_identifier({'id': 123})
+Expecting:
+    {'id': 123, 'gold_study_identifiers': []}
+ok
+Trying:
+    m.standardize_letter_casing_of_gold_study_identifier(
+        {'id': 123, 'gold_study_identifiers': ['GOLD:foo', 'gold:bar']}
+    )
+Expecting:
+    {'id': 123, 'gold_study_identifiers': ['gold:foo', 'gold:bar']}
+ok
+3 items had no tests:
+    migrator_from_7_8_0_to_8_0_0
+    migrator_from_7_8_0_to_8_0_0.Migrator
+    migrator_from_7_8_0_to_8_0_0.Migrator.__init__
+5 items passed all tests:
+   3 tests in migrator_from_7_8_0_to_8_0_0.Migrator.rename_sample_mass_field
+   3 tests in migrator_from_7_8_0_to_8_0_0.Migrator.standardize_letter_casing_of_gold_biosample_identifiers
+   5 tests in migrator_from_7_8_0_to_8_0_0.Migrator.standardize_letter_casing_of_gold_identifiers
+   3 tests in migrator_from_7_8_0_to_8_0_0.Migrator.standardize_letter_casing_of_gold_sequencing_project_identifiers
+   3 tests in migrator_from_7_8_0_to_8_0_0.Migrator.standardize_letter_casing_of_gold_study_identifier
+17 tests in 8 items.
+17 passed and 0 failed.
+Test passed.
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.force_research_study_study_category({'id': 123})  # field doesn't exist yet
+Expecting:
+    {'id': 123, 'study_category': 'research_study'}
+ok
+Trying:
+    m.force_research_study_study_category({'id': 123, 'study_category': 'preserve_me'})  # field already exists
+Expecting:
+    {'id': 123, 'study_category': 'preserve_me'}
+ok
+3 items had no tests:
+    migrator_from_8_0_to_8_1
+    migrator_from_8_0_to_8_1.Migrator
+    migrator_from_8_0_to_8_1.Migrator.__init__
+1 items passed all tests:
+   3 tests in migrator_from_8_0_to_8_1.Migrator.force_research_study_study_category
+3 tests in 4 items.
+3 passed and 0 failed.
+Test passed.
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.fix_ess_dive({'id': 1, 'ess_dive_datasets': ['a']})  # test: a single DOI
+Expecting:
+    {'id': 1, 'ess_dive_datasets': ['a'], 'associated_dois': [{'doi_value': 'a', 'doi_category': 'dataset_doi', 'doi_provider': 'ess_dive'}]}
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.fix_massive({'id': 123})
+Expecting:
+    {'id': 123, 'associated_dois': []}
+ok
+Trying:
+    m.fix_massive({'id': 123, 'massive_study_identifiers': ['not-the-one']})
+Expecting:
+    {'id': 123, 'massive_study_identifiers': ['not-the-one'], 'associated_dois': []}
+ok
+Trying:
+    m.fix_massive({'id': 123, 'massive_study_identifiers': ['MASSIVE:MSV000090886']})  # this is the one!
+Expecting:
+    {'id': 123, 'associated_dois': [{'doi_value': 'doi:10.25345/C58K7520G', 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}]}
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.fix_pub_dois({'id': 1, 'publication_dois': ['a']})  # test: a single DOI
+Expecting:
+    {'id': 1, 'publication_dois': ['a'], 'associated_dois': [{'doi_value': 'a', 'doi_category': 'publication_doi'}]}
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.process_doi({'id': 123}, [{'id': 123, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` matches
+Expecting:
+    {'id': 123, 'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
+ok
+Trying:
+    m.process_doi({'id': 123}, [{'id': 555, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` does not match
+Expecting:
+    {'id': 123}
+ok
+Trying:
+    m.process_doi(
+        {'id': 123, 'associated_dois': [{'doi_value': 'x', 'doi_category': 'y', 'doi_provider': 'z'}]},
+        [{'id': 123, 'doi': 'a', 'doi_prov': 'b'}], 'c'
+    )  # study already has an `associated_dois` field
+Expecting:
+    {'id': 123, 'associated_dois': [{'doi_value': 'x', 'doi_category': 'y', 'doi_provider': 'z'}, {'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
+ok
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.remove_doi_slots({'id': 123, 'associated_dois': []})  # empty `associated_dois` list gets removed
+Expecting:
+    {'id': 123}
+ok
+Trying:
+    m.remove_doi_slots({
+       'id': 123,
+       'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}],
+       'publication_dois': ['a'],
+    })  # lists in which all values match an `associated_dois[].doi_value` get removed
+Expecting:
+    {'id': 123, 'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
+ok
+4 items had no tests:
+    migrator_from_8_1_to_9_0
+    migrator_from_8_1_to_9_0.Migrator
+    migrator_from_8_1_to_9_0.Migrator.__init__
+    migrator_from_8_1_to_9_0.Migrator.fix_award_dois
+5 items passed all tests:
+   2 tests in migrator_from_8_1_to_9_0.Migrator.fix_ess_dive
+   4 tests in migrator_from_8_1_to_9_0.Migrator.fix_massive
+   2 tests in migrator_from_8_1_to_9_0.Migrator.fix_pub_dois
+   4 tests in migrator_from_8_1_to_9_0.Migrator.process_doi
+   3 tests in migrator_from_8_1_to_9_0.Migrator.remove_doi_slots
+15 tests in 9 items.
+15 passed and 0 failed.
+Test passed.
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.move_doi_from_websites({'id': 123, 'websites': ['a', 'https://doi.org/10.25982/109073.30/1895615'], 'associated_dois':
+        [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}]})
+Expecting:
+    {'id': 123, 'websites': ['a'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}, {'doi_value': 'doi:10.25982/109073.30/1895615', 'doi_category': 'dataset_doi', 'doi_provider': 'kbase'}]}
+ok
+3 items had no tests:
+    migrator_from_9_1_to_9_2
+    migrator_from_9_1_to_9_2.Migrator
+    migrator_from_9_1_to_9_2.Migrator.__init__
+1 items passed all tests:
+   2 tests in migrator_from_9_1_to_9_2.Migrator.move_doi_from_websites
+2 tests in 4 items.
+2 passed and 0 failed.
+Test passed.
+Trying:
+    m = Migrator()
+Expecting nothing
+ok
+Trying:
+    m.move_extraction_qc_status({'id': 123, 'quality_control_report': {'status': 'pass'}})
+Expecting:
+    {'id': 123, 'qc_status': 'pass'}
+ok
+3 items had no tests:
+    migrator_from_9_3_to_9_4
+    migrator_from_9_3_to_9_4.Migrator
+    migrator_from_9_3_to_9_4.Migrator.__init__
+1 items passed all tests:
+   2 tests in migrator_from_9_3_to_9_4.Migrator.move_extraction_qc_status
+2 tests in 4 items.
+2 passed and 0 failed.
+Test passed.
+Trying:
+    mig = Migrator()  # creates a class instance on which we can call this function (method)
+Expecting nothing
+ok
+Trying:
+    mig.allow_multiple_names({'id': 123, 'name': 'My project'})  # test: transfers existing name to `names` list
+Expecting:
+    {'id': 123, 'names': ['My project']}
+ok
+Trying:
+    mig.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys
+Expecting:
+    {'id': 123, 'foo': 'bar', 'names': ['My project']}
+ok
+3 items had no tests:
+    migrator_from_A_B_C_to_X_Y_Z
+    migrator_from_A_B_C_to_X_Y_Z.Migrator
+    migrator_from_A_B_C_to_X_Y_Z.Migrator.__init__
+1 items passed all tests:
+   3 tests in migrator_from_A_B_C_to_X_Y_Z.Migrator.allow_multiple_names
+3 tests in 4 items.
+3 passed and 0 failed.
+Test passed.
+poetry run python -m doctest -v nmdc_schema/migrators/cli/*.py
+Trying:
+    validate_version_identifier(None, None, "1.2.3")
+Expecting:
+    '1.2.3'
+ok
+Trying:
+    validate_version_identifier(None, None, "1.2.")  # doesn't end with a number
+Expecting:
+    Traceback (most recent call last):
+    ...
+    click.exceptions.BadParameter: Invalid format.
+ok
+Trying:
+    validate_version_identifier(None, None, "1.2")
+Expecting:
+    '1.2'
+ok
+Trying:
+    validate_version_identifier(None, None, "123.456.789")
+Expecting:
+    '123.456.789'
+ok
+Trying:
+    validate_version_identifier(None, None, "123.456.789.1")  # 4 parts
+Expecting:
+    Traceback (most recent call last):
+    ...
+    click.exceptions.BadParameter: Invalid format.
+ok
+Trying:
+    validate_version_identifier(None, None, "123")
+Expecting:
+    '123'
+ok
+2 items had no tests:
+    create_migrator
+    create_migrator.click_option_validator
+1 items passed all tests:
+   6 tests in create_migrator.validate_version_identifier
+6 tests in 3 items.
+6 passed and 0 failed.
+Test passed.
+1 items had no tests:
+    __init__
+0 tests in 1 items.
+0 passed and 0 failed.
+Test passed.
+# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
+poetry run gen-project \
+        --exclude excel \
+        --exclude graphql \
+        --exclude jsonld \
+        --exclude markdown \
+        --exclude proto \
+        --exclude shacl \
+        --exclude shex \
+        --exclude sqlddl \
+        --include jsonldcontext \
+        --include jsonschema \
+        --include owl \
+        --include python \
+        --include rdf \
+        -d project src/schema/nmdc.yaml && mv project/*.py nmdc_schema
+WARNING:root:Unrecognized prefix: AFO
+WARNING:root:ignoring equals_string=plate as unable to tell if literal
+WARNING:root:ignoring equals_string=plate as unable to tell if literal
+WARNING:root:ignoring equals_string=plate as unable to tell if literal
+WARNING:root:ignoring equals_string=plate as unable to tell if literal
+WARNING:root:Multiple owl types {rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Thing'), rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#Literal')}
+WARNING:root:ignoring equals_string=dataset_doi as unable to tell if literal
+WARNING:root:ignoring equals_string=award_doi as unable to tell if literal
+WARNING:root:Null expr in: [None, None] for http://www.w3.org/2002/07/owl#unionOf None
+WARNING:root:Null expr in: [None] for http://www.w3.org/2002/07/owl#intersectionOf None
+WARNING:root:ignoring equals_string=gas_chromatography as unable to tell if literal
+WARNING:root:Multiple owl types {rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Thing'), rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#Literal')}
+WARNING:root:Multiple owl types {rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Thing'), rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#Literal')}
+WARNING:root:Multiple owl types {rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Thing'), rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#Literal')}
+WARNING:root:ignoring equals_string=pass as unable to tell if literal
+WARNING:root:Multiple owl types {rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Thing'), rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#Literal')}
+WARNING:root:Unrecognized prefix: AFO
+cp project/jsonschema/nmdc.schema.json  nmdc_schema
+# added copying of images and renaming of TEMP.md
+cp src/docs/*md docs ; \
+cp -r src/docs/images docs ; \
+poetry run gen-doc -d docs --template-directory src/doc-templates src/schema/nmdc.yaml
+None
+mkdir -p docs/javascripts
+poetry run cp src/scripts/*.js docs/javascripts/
+poetry run gen-linkml \
+        --format yaml \
+        --materialize-patterns \
+        --no-materialize-attributes \
+        --output project/nmdc_materialized_patterns.yaml src/schema/nmdc.yaml
+project/nmdc_materialized_patterns.yaml
+poetry run gen-json-schema \
+        --closed \
+        --top-class Database project/nmdc_materialized_patterns.yaml > project/nmdc_materialized_patterns.schema.json
+cp project/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.schema.json
+cp project/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_materialized_patterns.yaml
+poetry run gen-linkml \
+        --format yaml \
+        --no-materialize-attributes \
+        --no-materialize-patterns \
+        --output project/nmdc_schema_merged.yaml src/schema/nmdc.yaml
+project/nmdc_schema_merged.yaml
+cp project/nmdc_schema_merged.yaml nmdc_schema/nmdc_schema_merged.yaml
+# just can't seem to tell pyproject.toml to bundle artifacts like these
+#   so reverting to copying into the module
+cp sssom/gold-to-mixs.sssom.tsv nmdc_schema/gold-to-mixs.sssom.tsv
+poetry run gen-linkml \
+        --format yaml \
+        --mergeimports \
+        --metadata \
+        --no-materialize-attributes \
+        --no-materialize-patterns \
+        --useuris \
+        --output nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml src/schema/nmdc.yaml
+nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+# probably should have made a list of classes and then looped over a parameterized version of this
+# could also assert that the range is string
+yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.part_of.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MagsAnalysis") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MagsAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetabolomicsAnalysis") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetabolomicsAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetagenomeAnnotation") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetagenomeAnnotation") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetagenomeSequencing") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetagenomeSequencing") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysis") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetatranscriptomeAnalysis") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetatranscriptomeAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotation") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotation") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "NomAnalysis") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "NomAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.part_of.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_input.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_output.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysis") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "ReadQcAnalysis") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "ReadQcAnalysis") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+poetry run gen-linkml \
+        --format yaml \
+        --mergeimports \
+        --metadata \
+        --no-materialize-attributes \
+        --materialize-patterns \
+        --useuris \
+        --output nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml.temp nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml.temp
+mv nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml.temp nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+poetry run gen-json-schema \
+        --closed nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml > nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json
+poetry run gen-python --log_level ERROR --validate nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml > nmdc_schema/nmdc_schema_accepting_legacy_ids.py # todo doesn't honor --log_level
+poetry run test-more-tolerant-schema
+id: xxx
+type: nmdc:Biosample
+part_of:
+- gold:Gs0114663
+env_broad_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  term:
+    id: ENVO:00010483
+    type: nmdc:OntologyClass
+    name: freshwater environment
+env_local_scale:
+  type: nmdc:ControlledIdentifiedTermValue
+  term:
+    id: ENVO:00010483
+    type: nmdc:OntologyClass
+    name: freshwater environment
+env_medium:
+  type: nmdc:ControlledIdentifiedTermValue
+  term:
+    id: ENVO:00010483
+    type: nmdc:OntologyClass
+    name: freshwater environment
+
+poetry run python -m unittest discover
+
+
+.
+
+INFO:root:Importing workflow_execution_activity as workflow_execution_activity from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing core as core from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing prov as prov from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing basic_slots as basic_slots from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing external_identifiers as external_identifiers from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/sample_id as portal/sample_id from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing linkml:types as /home/mark/gitrepos/berkeley-schema-fy24/.venv/lib/python3.10/site-packages/linkml_runtime/linkml_model/model/schema/types from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=None
+INFO:root:Importing portal/mixs_inspired as portal/mixs_inspired from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metatranscriptomics as portal/jgi_metatranscriptomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metagenomics as portal/jgi_metagenomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/emsl as portal/emsl from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing mixs as mixs from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing annotation as annotation from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+...INFO:root:Using SchemaView with im=None
+INFO:root:Importing workflow_execution_activity as workflow_execution_activity from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing core as core from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing prov as prov from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing basic_slots as basic_slots from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing external_identifiers as external_identifiers from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/sample_id as portal/sample_id from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing linkml:types as /home/mark/gitrepos/berkeley-schema-fy24/.venv/lib/python3.10/site-packages/linkml_runtime/linkml_model/model/schema/types from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=None
+INFO:root:Importing portal/mixs_inspired as portal/mixs_inspired from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metatranscriptomics as portal/jgi_metatranscriptomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metagenomics as portal/jgi_metagenomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/emsl as portal/emsl from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing mixs as mixs from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing annotation as annotation from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Using SchemaView with im=None
+INFO:root:Importing workflow_execution_activity as workflow_execution_activity from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing core as core from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing prov as prov from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing basic_slots as basic_slots from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing external_identifiers as external_identifiers from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/sample_id as portal/sample_id from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing linkml:types as /home/mark/gitrepos/berkeley-schema-fy24/.venv/lib/python3.10/site-packages/linkml_runtime/linkml_model/model/schema/types from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=None
+INFO:root:Importing portal/mixs_inspired as portal/mixs_inspired from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metatranscriptomics as portal/jgi_metatranscriptomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metagenomics as portal/jgi_metagenomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/emsl as portal/emsl from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing mixs as mixs from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing annotation as annotation from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+.s
+
+id: nmdc:ILLEGAL_ID_VAL
+type: nmdc:ChromatographicSeparationProcess
+ordered_mobile_phases:
+- has_solution_components:
+  - compound: deionized_water
+    type: nmdc:SolutionComponent
+  - compound: methanol
+    type: nmdc:SolutionComponent
+    concentration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 10.0
+      has_unit: '%'
+  type: nmdc:Solution
+  volume:
+    type: nmdc:QuantityValue
+    has_numeric_value: 100.0
+    has_unit: mL
+stationary_phase: C8
+
+.
+
+Extraction(id='nmdc:ILLEGAL_ID_VAL', type='nmdc:Extraction', name=None, description=None, alternative_identifiers=[], has_input=['nmdc:ILLEGAL_ID_VAL'], has_output=['nmdc:ILLEGAL_ID_VAL'], instrument_used=[], processing_institution=None, protocol_link=None, start_date=None, end_date=None, instrument_name=None, qc_status=None, qc_comment=None, has_failure_categorization=[], designated_class=None, extractant=Solution(has_solution_components=[SolutionComponent(compound='deionized_water', type='nmdc:SolutionComponent', concentration=None), SolutionComponent(compound='deionized_water', type='nmdc:SolutionComponent', concentration=QuantityValue(type='nmdc:QuantityValue', has_raw_value=None, was_generated_by=None, has_maximum_numeric_value=None, has_minimum_numeric_value=None, has_numeric_value=10.0, has_unit='%'))], type='nmdc:Solution', volume=QuantityValue(type='nmdc:QuantityValue', has_raw_value=None, was_generated_by=None, has_maximum_numeric_value=None, has_minimum_numeric_value=None, has_numeric_value=100.0, has_unit='mL')), extraction_target=None, input_mass=None, volume=None)
+id: nmdc:ILLEGAL_ID_VAL
+type: nmdc:Extraction
+has_input:
+- nmdc:ILLEGAL_ID_VAL
+has_output:
+- nmdc:ILLEGAL_ID_VAL
+extractant:
+  has_solution_components:
+  - compound: deionized_water
+    type: nmdc:SolutionComponent
+  - compound: deionized_water
+    type: nmdc:SolutionComponent
+    concentration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 10.0
+      has_unit: '%'
+  type: nmdc:Solution
+  volume:
+    type: nmdc:QuantityValue
+    has_numeric_value: 100.0
+    has_unit: mL
+
+......
+
+INFO:root:Importing workflow_execution_activity as workflow_execution_activity from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing core as core from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing prov as prov from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing basic_slots as basic_slots from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing external_identifiers as external_identifiers from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/sample_id as portal/sample_id from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing linkml:types as /home/mark/gitrepos/berkeley-schema-fy24/.venv/lib/python3.10/site-packages/linkml_runtime/linkml_model/model/schema/types from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=None
+INFO:root:Importing portal/mixs_inspired as portal/mixs_inspired from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metatranscriptomics as portal/jgi_metatranscriptomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/jgi_metagenomics as portal/jgi_metagenomics from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing portal/emsl as portal/emsl from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing mixs as mixs from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+INFO:root:Importing annotation as annotation from source /home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc.yaml; base_dir=/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema
+.ss.
+----------------------------------------------------------------------
+Ran 17 tests in 40.565s
+
+OK (skipped=3)
+# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
+poetry run gen-linkml \
+        --output project/nmdc_schema_generated.yaml \
+        --materialize-patterns \
+        --no-materialize-attributes \
+        --format yaml src/schema/nmdc.yaml
+project/nmdc_schema_generated.yaml
+mkdir -p examples/output
+poetry run linkml-run-examples \
+        --schema project/nmdc_schema_generated.yaml \
+        --input-directory src/data/valid \
+        --counter-example-input-directory src/data/invalid \
+        --output-directory examples/output > examples/output/README.md
+INFO:root:Using SchemaView with im=None
+INFO:root:class "PlannedProcess" slot "designated_class" does not reference an existing slot.  New slot was created.
+WARNING:root:Unrecognized prefix: AFO
+INFO:root:TRUE: OCCURS SAME: Database == PlannedProcess owning: Database
+INFO:root:FALSE: OCCURS BEFORE: FunctionalAnnotationAggMember == FunctionalAnnotationAggMember owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Biosample owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == CollectingBiosamplesFromSite owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == DataObject owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Extraction owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == FieldResearchSite owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == FunctionalAnnotation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == GenomeFeature owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == LibraryPreparation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MagsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetabolomicsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeAnnotation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeAssembly owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeSequencing owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetaproteomicsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetatranscriptomeAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == NomAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == DataGeneration owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == WorkflowChain owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Pooling owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ProcessedSample owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ReadBasedTaxonomyAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ReadQcAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Study owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == WorkflowExecution owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Instrument owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == PlannedProcess owning: Database
+INFO:root:FALSE: OCCURS BEFORE: FunctionalAnnotationAggMember == FunctionalAnnotationAggMember owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Biosample owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == CollectingBiosamplesFromSite owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == DataObject owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Extraction owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == FieldResearchSite owning: Database
+INFO:root:FALSE: OCCURS BEFORE: FunctionalAnnotationAggMember == FunctionalAnnotationAggMember owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == FunctionalAnnotation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == GenomeFeature owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == LibraryPreparation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MagsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetabolomicsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeAnnotation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeAssembly owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeSequencing owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetaproteomicsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetatranscriptomeAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == NomAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == DataGeneration owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == WorkflowChain owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == PlannedProcess owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Pooling owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ProcessedSample owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ReadBasedTaxonomyAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ReadQcAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Study owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == WorkflowExecution owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Instrument owning: Database
+INFO:root:TRUE: OCCURS SAME: SolutionComponent == QuantityValue owning: SolutionComponent
+INFO:root:TRUE: OCCURS SAME: SolutionComponent == QuantityValue owning: SolutionComponent
+INFO:root:FALSE: OCCURS BEFORE: SolutionComponent == SolutionComponent owning: Solution
+INFO:root:TRUE: OCCURS SAME: Solution == QuantityValue owning: Solution
+INFO:root:FALSE: OCCURS BEFORE: SolutionComponent == SolutionComponent owning: Solution
+INFO:root:TRUE: OCCURS SAME: Solution == QuantityValue owning: Solution
+INFO:root:TRUE: OCCURS SAME: LaboratoryReagent == QuantityValue owning: LaboratoryReagent
+INFO:root:TRUE: OCCURS SAME: LaboratoryReagent == QuantityValue owning: LaboratoryReagent
+INFO:root:TRUE: OCCURS SAME: LaboratoryReagent == QuantityValue owning: LaboratoryReagent
+INFO:root:TRUE: OCCURS SAME: LaboratoryReagent == QuantityValue owning: LaboratoryReagent
+INFO:root:TRUE: OCCURS SAME: LaboratoryReagent == QuantityValue owning: LaboratoryReagent
+INFO:root:TRUE: OCCURS SAME: LaboratoryReagent == QuantityValue owning: LaboratoryReagent
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ReagentsCollection
+INFO:root:FALSE: OCCURS BEFORE: LaboratoryReagent == LaboratoryReagent owning: ReagentsCollection
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ReagentsCollection
+INFO:root:FALSE: OCCURS BEFORE: LaboratoryReagent == LaboratoryReagent owning: ReagentsCollection
+INFO:root:TRUE: OCCURS SAME: CreditAssociation == PersonValue owning: CreditAssociation
+INFO:root:TRUE: OCCURS SAME: CreditAssociation == PersonValue owning: CreditAssociation
+INFO:root:FALSE: OCCURS BEFORE: Doi == Doi owning: Study
+INFO:root:TRUE: OCCURS SAME: Study == CreditAssociation owning: Study
+INFO:root:TRUE: OCCURS SAME: Study == PersonValue owning: Study
+INFO:root:FALSE: OCCURS BEFORE: Protocol == Protocol owning: Study
+INFO:root:TRUE: OCCURS SAME: Study == ImageValue owning: Study
+INFO:root:FALSE: OCCURS BEFORE: Doi == Doi owning: Study
+INFO:root:TRUE: OCCURS SAME: Study == CreditAssociation owning: Study
+INFO:root:TRUE: OCCURS SAME: Study == PersonValue owning: Study
+INFO:root:FALSE: OCCURS BEFORE: Protocol == Protocol owning: Study
+INFO:root:TRUE: OCCURS SAME: Study == ImageValue owning: Study
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == GeolocationValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == GeolocationValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TimestampValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: ProcessedSample == QuantityValue owning: ProcessedSample
+INFO:root:TRUE: OCCURS SAME: ProcessedSample == QuantityValue owning: ProcessedSample
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == QuantityValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == GeolocationValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == QuantityValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == GeolocationValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:TRUE: OCCURS SAME: FieldResearchSite == TextValue owning: FieldResearchSite
+INFO:root:FALSE: OCCURS BEFORE: Protocol == Protocol owning: PlannedProcess
+INFO:root:FALSE: OCCURS BEFORE: FailureCategorization == FailureCategorization owning: PlannedProcess
+INFO:root:FALSE: OCCURS BEFORE: Protocol == Protocol owning: PlannedProcess
+INFO:root:FALSE: OCCURS BEFORE: FailureCategorization == FailureCategorization owning: PlannedProcess
+INFO:root:TRUE: OCCURS SAME: Extraction == Solution owning: Extraction
+INFO:root:TRUE: OCCURS SAME: Extraction == QuantityValue owning: Extraction
+INFO:root:TRUE: OCCURS SAME: Extraction == QuantityValue owning: Extraction
+INFO:root:TRUE: OCCURS SAME: Extraction == Solution owning: Extraction
+INFO:root:TRUE: OCCURS SAME: Extraction == QuantityValue owning: Extraction
+INFO:root:TRUE: OCCURS SAME: Extraction == QuantityValue owning: Extraction
+INFO:root:TRUE: OCCURS SAME: LibraryPreparation == TextValue owning: LibraryPreparation
+INFO:root:TRUE: OCCURS SAME: LibraryPreparation == TextValue owning: LibraryPreparation
+INFO:root:TRUE: OCCURS SAME: LibraryPreparation == TextValue owning: LibraryPreparation
+INFO:root:TRUE: OCCURS SAME: LibraryPreparation == TextValue owning: LibraryPreparation
+INFO:root:TRUE: OCCURS SAME: LibraryPreparation == TextValue owning: LibraryPreparation
+INFO:root:TRUE: OCCURS SAME: LibraryPreparation == TextValue owning: LibraryPreparation
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: MixingProcess == QuantityValue owning: MixingProcess
+INFO:root:TRUE: OCCURS SAME: MixingProcess == QuantityValue owning: MixingProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ChromatographicSeparationProcess
+INFO:root:TRUE: OCCURS SAME: ChromatographicSeparationProcess == QuantityValue owning: ChromatographicSeparationProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ChromatographicSeparationProcess
+INFO:root:TRUE: OCCURS SAME: ChromatographicSeparationProcess == QuantityValue owning: ChromatographicSeparationProcess
+INFO:root:TRUE: OCCURS SAME: ChemicalConversionProcess == ReagentsCollection owning: ChemicalConversionProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ChemicalConversionProcess
+INFO:root:TRUE: OCCURS SAME: ChemicalConversionProcess == QuantityValue owning: ChemicalConversionProcess
+INFO:root:TRUE: OCCURS SAME: ChemicalConversionProcess == QuantityValue owning: ChemicalConversionProcess
+INFO:root:TRUE: OCCURS SAME: ChemicalConversionProcess == ReagentsCollection owning: ChemicalConversionProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ChemicalConversionProcess
+INFO:root:TRUE: OCCURS SAME: ChemicalConversionProcess == QuantityValue owning: ChemicalConversionProcess
+INFO:root:TRUE: OCCURS SAME: ChemicalConversionProcess == QuantityValue owning: ChemicalConversionProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: DissolvingProcess
+INFO:root:TRUE: OCCURS SAME: DissolvingProcess == QuantityValue owning: DissolvingProcess
+INFO:root:TRUE: OCCURS SAME: DissolvingProcess == QuantityValue owning: DissolvingProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: DissolvingProcess
+INFO:root:TRUE: OCCURS SAME: DissolvingProcess == QuantityValue owning: DissolvingProcess
+INFO:root:TRUE: OCCURS SAME: DissolvingProcess == QuantityValue owning: DissolvingProcess
+INFO:root:TRUE: OCCURS SAME: DataGeneration == PersonValue owning: DataGeneration
+INFO:root:TRUE: OCCURS SAME: DataGeneration == TextValue owning: DataGeneration
+INFO:root:TRUE: OCCURS SAME: DataGeneration == TextValue owning: DataGeneration
+INFO:root:TRUE: OCCURS SAME: DataGeneration == PersonValue owning: DataGeneration
+INFO:root:TRUE: OCCURS SAME: DataGeneration == TextValue owning: DataGeneration
+INFO:root:TRUE: OCCURS SAME: DataGeneration == TextValue owning: DataGeneration
+INFO:root:TRUE: OCCURS SAME: MagsAnalysis == MagBin owning: MagsAnalysis
+INFO:root:TRUE: OCCURS SAME: MagsAnalysis == MagBin owning: MagsAnalysis
+INFO:root:TRUE: OCCURS SAME: MetabolomicsAnalysis == MetaboliteQuantification owning: MetabolomicsAnalysis
+INFO:root:TRUE: OCCURS SAME: MetabolomicsAnalysis == MetaboliteQuantification owning: MetabolomicsAnalysis
+INFO:root:TRUE: OCCURS SAME: MetaproteomicsAnalysis == PeptideQuantification owning: MetaproteomicsAnalysis
+INFO:root:TRUE: OCCURS SAME: MetaproteomicsAnalysis == PeptideQuantification owning: MetaproteomicsAnalysis
+INFO:root:FALSE: OCCURS BEFORE: OntologyClass == OntologyClass owning: ControlledTermValue
+INFO:root:FALSE: OCCURS BEFORE: OntologyClass == OntologyClass owning: ControlledTermValue
+INFO:root:FALSE: OCCURS BEFORE: OntologyClass == OntologyClass owning: ControlledIdentifiedTermValue
+INFO:root:FALSE: OCCURS BEFORE: OntologyClass == OntologyClass owning: ControlledIdentifiedTermValue
+INFO:root:FALSE: OCCURS BEFORE: ControlledIdentifiedTermValue == ControlledIdentifiedTermValue owning: GenomeFeature
+INFO:root:FALSE: OCCURS BEFORE: ControlledIdentifiedTermValue == ControlledIdentifiedTermValue owning: GenomeFeature
+INFO:root:TRUE: OCCURS SAME: Reaction == ReactionParticipant owning: Reaction
+INFO:root:TRUE: OCCURS SAME: Reaction == ReactionParticipant owning: Reaction
+INFO:root:TRUE: OCCURS SAME: Reaction == ReactionParticipant owning: Reaction
+INFO:root:TRUE: OCCURS SAME: Reaction == ReactionParticipant owning: Reaction
+INFO:root:FALSE: OCCURS BEFORE: ControlledIdentifiedTermValue == ControlledIdentifiedTermValue owning: FunctionalAnnotation
+INFO:root:FALSE: OCCURS BEFORE: ControlledIdentifiedTermValue == ControlledIdentifiedTermValue owning: FunctionalAnnotation
+INFO:root:FALSE: OCCURS BEFORE: FunctionalAnnotationAggMember == FunctionalAnnotationAggMember owning: Database
+INFO:root:TRUE: OCCURS SAME: PlannedProcess == QuantityValue owning: PlannedProcess
+INFO:root:TRUE: OCCURS SAME: Study == CreditAssociation owning: Study
+INFO:root:TRUE: OCCURS SAME: Study == ImageValue owning: Study
+INFO:root:TRUE: OCCURS SAME: CreditAssociation == PersonValue owning: CreditAssociation
+INFO:root:TRUE: OCCURS SAME: Database == PlannedProcess owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Biosample owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Study owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == FieldResearchSite owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == CollectingBiosamplesFromSite owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == DataObject owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == GenomeFeature owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == FunctionalAnnotation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == WorkflowExecution owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MagsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetabolomicsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetaproteomicsAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeAnnotation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeAssembly owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetagenomeSequencing owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == MetatranscriptomeAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ReadQcAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ReadBasedTaxonomyAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == NomAnalysis owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == DataGeneration owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == WorkflowChain owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Pooling owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == ProcessedSample owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Extraction owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == LibraryPreparation owning: Database
+INFO:root:TRUE: OCCURS SAME: Database == Instrument owning: Database
+INFO:root:TRUE: OCCURS SAME: DataGeneration == ControlledTermValue owning: DataGeneration
+INFO:root:FALSE: OCCURS BEFORE: Doi == Doi owning: Study
+INFO:root:TRUE: OCCURS SAME: PlannedProcess == QuantityValue owning: PlannedProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:TRUE: OCCURS SAME: Extraction == Solution owning: Extraction
+INFO:root:TRUE: OCCURS SAME: SolutionComponent == QuantityValue owning: SolutionComponent
+INFO:root:TRUE: OCCURS SAME: PlannedProcess == QuantityValue owning: PlannedProcess
+INFO:root:FALSE: OCCURS BEFORE: SolutionComponent == SolutionComponent owning: Solution
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ChromatographicSeparationProcess
+INFO:root:TRUE: OCCURS SAME: ChemicalConversionProcess == ReagentsCollection owning: ChemicalConversionProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ChemicalConversionProcess
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: ReagentsCollection
+INFO:root:FALSE: OCCURS BEFORE: LaboratoryReagent == LaboratoryReagent owning: ReagentsCollection
+INFO:root:FALSE: OCCURS BEFORE: Solution == Solution owning: DissolvingProcess
+INFO:root:TRUE: OCCURS SAME: MetaproteomicsAnalysis == PeptideQuantification owning: MetaproteomicsAnalysis
+INFO:root:TRUE: OCCURS SAME: MagsAnalysis == MagBin owning: MagsAnalysis
+INFO:root:TRUE: OCCURS SAME: MetabolomicsAnalysis == MetaboliteQuantification owning: MetabolomicsAnalysis
+INFO:root:FALSE: OCCURS BEFORE: OntologyClass == OntologyClass owning: ControlledTermValue
+INFO:root:FALSE: OCCURS BEFORE: Protocol == Protocol owning: PlannedProcess
+INFO:root:TRUE: OCCURS SAME: ProcessedSample == QuantityValue owning: ProcessedSample
+INFO:root:TRUE: OCCURS SAME: Reaction == ReactionParticipant owning: Reaction
+INFO:root:TRUE: OCCURS SAME: Reaction == ReactionParticipant owning: Reaction
+INFO:root:TRUE: OCCURS SAME: Extraction == QuantityValue owning: Extraction
+INFO:root:TRUE: OCCURS SAME: LibraryPreparation == TextValue owning: LibraryPreparation
+INFO:root:TRUE: OCCURS SAME: Biosample == GeolocationValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == ControlledIdentifiedTermValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == QuantityValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:TRUE: OCCURS SAME: Biosample == TextValue owning: Biosample
+INFO:root:FALSE: OCCURS BEFORE: Protocol == Protocol owning: Study
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: SubSamplingProcess == QuantityValue owning: SubSamplingProcess
+INFO:root:TRUE: OCCURS SAME: FiltrationProcess == QuantityValue owning: FiltrationProcess
+INFO:root:FALSE: OCCURS BEFORE: OntologyClass == OntologyClass owning: ControlledIdentifiedTermValue
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+INFO:root:Using SchemaView with im=None
+(nmdc-schema-py3.10) mark@NUC:~/gitrepos/berkeley-schema-fy24$
+
