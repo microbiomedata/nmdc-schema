@@ -96,11 +96,11 @@ class MongoAdapter(AdapterBase):
         #
         # Note: The `$in` operator has a special-case behavior where, if the field is an array, the operator
         #       looks for any matching element _within_ the array. That is not what I want in this situation.
-        #       So, I am filtering out documents on which the field is an array, so that behavior never
-        #       comes into play.
+        #       I want to only compare the value of the field, itself. Since `values` is a list of strings,
+        #       I will only bother checking fields of type "string" (which excludes fields of type "array").
         #
         filter_ = dict()
-        filter_[field_name] = {"$type": {"$ne": "array"}, "$in": values}
+        filter_[field_name] = {"$type": "string", "$in": values}
 
         # Find and return the first matching document, if any.
         document = self._db.get_collection(name=collection_name).find_one(
