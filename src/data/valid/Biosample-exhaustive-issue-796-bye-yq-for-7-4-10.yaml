@@ -357,8 +357,7 @@ rna_volume: 25
 collection_date_inc: "2023-01-29"
 collection_time: 05:42+0000
 collection_time_inc: 13:42+0000
-experimental_factor_other: unconstrained text, but presumably expects 'term label
-  [term id]'
+experimental_factor_other: unconstrained text, but presumably expects 'term label [term id]'
 filter_method: Basix PES, 13-100-106 FisherSci is an example value, but unconstrained
   text is accepted at this point
 isotope_exposure: 13C glucose
@@ -380,6 +379,7 @@ technical_reps: "2"
 analysis_type:
   - metabolomics
   - metagenomics
+
 sample_link:
   - 'parent: example_samp_45'
 zinc:

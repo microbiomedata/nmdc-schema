@@ -455,8 +455,7 @@ exp_duct:
 exp_pipe:
   has_raw_value: xxx
 
-experimental_factor_other: unconstrained text, but presumably expects 'term label
-  [term id]'
+experimental_factor_other: unconstrained text, but presumably expects 'term label [term id]'
 ext_door:
   has_raw_value: xxx
 ext_wall_orient: north
