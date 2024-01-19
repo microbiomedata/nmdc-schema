@@ -209,7 +209,43 @@ class TestMongoAdapter(unittest.TestCase):
         assert self.db.get_collection(collection_name).count_documents({"x": "b"}) == 0
 
     def test_process_each_document(self):
-        raise NotImplementedError()
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(_id=1, id=1, x="a")
+        document_2 = dict(_id=2, id=2, x="b")
+        document_3 = dict(_id=3, id=3, x="c")
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3]
+        )
+
+        def capitalize_x(doc: dict) -> dict:
+            r"""Example pipeline stage that capitalizes the first letter of the `x` value."""
+            doc["x"] = doc["x"].capitalize()
+            return doc
+
+        def append_z_to_x_value(doc: dict) -> dict:
+            r"""Example pipeline stage that appends "z" to the `x` value."""
+            doc["x"] = doc["x"] + "z"
+            return doc
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        adapter.process_each_document(
+            collection_name, [capitalize_x, append_z_to_x_value]
+        )
+
+        # Validate result:
+        collection = self.db.get_collection(collection_name)
+        assert collection.count_documents({"id": 1, "x": "a"}) == 0  # pre-pipeline
+        assert collection.count_documents({"id": 1, "x": "b"}) == 0
+        assert collection.count_documents({"id": 1, "x": "c"}) == 0
+        assert collection.count_documents({"id": 1, "x": "A"}) == 0  # mid-pipeline
+        assert collection.count_documents({"id": 1, "x": "B"}) == 0
+        assert collection.count_documents({"id": 1, "x": "C"}) == 0
+        assert collection.count_documents({"id": 1, "x": "Az"}) == 1  # post-pipeline
+        assert collection.count_documents({"id": 2, "x": "Bz"}) == 1
+        assert collection.count_documents({"id": 3, "x": "Cz"}) == 1
 
 
 if __name__ == "__main__":
