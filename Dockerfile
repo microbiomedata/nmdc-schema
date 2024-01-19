@@ -53,4 +53,5 @@ RUN echo "echo \"\""                                                            
 
 # Run the MkDocs dev-server, configuring it to accept HTTP requests from outside the container.
 # Reference: https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734
-CMD ["poetry", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000"]
+#CMD ["poetry", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000"]
+CMD ["tail, "-f", "/dev/null"]

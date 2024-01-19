@@ -1,6 +1,5 @@
 ## Add your own custom Makefile targets here
 
-JENA_PATH=~/apache-jena/bin/
 RUN=poetry run
 
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
@@ -511,7 +510,7 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.y
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(JENA_PATH)/riot --validate $@ # < 1 minute
+	- riot --validate $@ # < 1 minute
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
@@ -522,7 +521,7 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(JENA_PATH)/riot --validate $@ # < 1 minute
+	- riot --validate $@ # < 1 minute
 	date
 
 # ----
@@ -598,7 +597,6 @@ local/nmdc-schema-v8.0.0.yaml:
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
 	$(RUN) gen-owl $< > $@
 
-# 		--quick-test
 local/nmdc-sty-11-aygzgv51.yaml:
 	$(RUN) get-study-related-records \
 		--api-base-url https://api-napa.microbiomedata.org \
@@ -614,20 +612,36 @@ local/nmdc-sty-11-aygzgv51.ttl: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-
 	$(RUN) linkml-convert --output $@ --schema $^
 
 local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-11-aygzgv51.ttl
-	$(JENA_PATH)/tdb2.tdbloader \
+	tdb2.tdbloader \
 		--loc=$@ \
 		--graph=https://w3id.org/nmdc/nmdc \
 			$(word 1, $^)
-	$(JENA_PATH)/tdb2.tdbloader  \
+	tdb2.tdbloader  \
 		--loc=$@ \
 		--graph=https://api-napa.microbiomedata.org/docs \
 			$(word 2, $^)
-	$(JENA_PATH)/tdb2.tdbquery \
+	tdb2.tdbquery \
 		--loc=$@ \
 		--query=assets/sparql/tdb-test.rq
-	$(JENA_PATH)/tdb2.tdbquery \
+	tdb2.tdbquery \
 		--loc=$@ \
 		--query=assets/sparql/tdb-graph-list.rq
+
+local/nmdc-data.yaml:
+	# $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
+	$(RUN) get-study-related-records \
+		--api-base-url https://api.microbiomedata.org \
+		extract-study \
+		--study-id gold:Gs0114663 \
+		--quick-test \
+		--output-file $@
+
+local/nmdc-data-validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
+	$(RUN) linkml-validate --schema $^ > $@
+
+local/nmdc-data.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation.log
+	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^)
+
 
 # Populates a Jena TDB database that will be accessible to Fuseki.
 #
@@ -636,11 +650,18 @@ local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-
 #
 # Note: We expect people to run this make target from within the `app` container.
 #
-nmdc-tdb2:
+nmdc-tdb2: local/nmdc-data.ttl
 	tdb2.tdbloader \
 		--loc=/nmdc-schema/local/fuseki-data/databases/$@ \
 		--graph=https://w3id.org/nmdc/nmdc \
 		/nmdc-schema/project/owl/nmdc.owl.ttl
+	# add another load step for some data, either from the maek-rdf meta-target or from get-study-related-records
+	#  just load into the default graph, since Fuseki doesn't automatically combine named graphs into the default graph
+	#  (remember the goal here is to improve query performance by scoping blocks of a SPARQL query to particular named graphs)
+	tdb2.tdbloader \
+		--loc=/nmdc-schema/local/fuseki-data/databases/$@ \
+		/nmdc-schema/local/nmdc-data.ttl
+	# run a few queries by default outside of fuseki (for saving reports on teh filesystem)
 
 .PHONY: filtered-status
 filtered-status:
