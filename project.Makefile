@@ -629,6 +629,19 @@ local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-
 		--loc=$@ \
 		--query=assets/sparql/tdb-graph-list.rq
 
+# Populates a Jena TDB database that will be accessible to Fuseki.
+#
+# Note: Manually stop the `fuseki` container before running this target,
+#       in order to release a lock on a file that this target writes to.
+#
+# Note: We expect people to run this make target from within the `app` container.
+#
+nmdc-tdb2:
+	tdb2.tdbloader \
+		--loc=/nmdc-schema/local/fuseki-data/databases/$@ \
+		--graph=https://w3id.org/nmdc/nmdc \
+		/nmdc-schema/project/owl/nmdc.owl.ttl
+
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
