@@ -152,7 +152,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   FluidHandling:
@@ -187,7 +187,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   FunctionalAnnotationAggMember:
@@ -1840,6 +1840,7 @@ classes:
       - sequencing project
       - experiment
     is_a: PlannedProcess
+    abstract: true
     in_subset:
       - sample subset
     description: >-
@@ -1863,11 +1864,6 @@ classes:
       - target_subfragment
 
     slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(datgen|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
       has_input:
         required: true
         pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
@@ -1875,7 +1871,7 @@ classes:
           - pattern should allow typecode for Biosample and ProcessedSample
       part_of:
         range: DataGeneration
-        pattern: "^nmdc:datgen-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+        pattern: "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
       has_output:
         range: DataObject
         pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
