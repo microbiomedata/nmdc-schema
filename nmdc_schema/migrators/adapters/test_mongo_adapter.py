@@ -184,7 +184,29 @@ class TestMongoAdapter(unittest.TestCase):
             assert v == document_actual[k]
 
     def test_delete_documents_having_value_in_field(self):
-        raise NotImplementedError()
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(id=1, x="a")
+        document_2 = dict(id=2, x="b")
+        document_3 = dict(id=3, x="c")
+        document_4 = dict(id=4, x="b")  # note: x="b" here also
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3, document_4]
+        )
+        assert self.db.get_collection(collection_name).count_documents({}) == 4
+        assert self.db.get_collection(collection_name).count_documents({"x": "b"}) == 2
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        num_documents_deleted = adapter.delete_documents_having_value_in_field(
+            collection_name, "x", "b"
+        )
+
+        # Validate result:
+        assert num_documents_deleted == 2
+        assert self.db.get_collection(collection_name).count_documents({}) == 2
+        assert self.db.get_collection(collection_name).count_documents({"x": "b"}) == 0
 
     def test_process_each_document(self):
         raise NotImplementedError()
