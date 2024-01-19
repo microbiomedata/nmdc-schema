@@ -83,9 +83,9 @@ class TestMongoAdapter(unittest.TestCase):
     def test_create_collection(self):
         # Set up:
         collection_name = "my_collection"
-        adapter = MongoAdapter(database=self.db)
 
         # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
         adapter.create_collection(collection_name)
 
         # Validate result:
@@ -97,11 +97,11 @@ class TestMongoAdapter(unittest.TestCase):
         # Set up:
         collection_name_original = "my_collection"
         collection_name_target = "your_collection"
-        adapter = MongoAdapter(database=self.db)
         self.db.create_collection(collection_name_original)
         assert len(self.db.list_collection_names()) == 1
 
         # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
         adapter.rename_collection(collection_name_original, collection_name_target)
 
         # Validate result:
@@ -112,11 +112,11 @@ class TestMongoAdapter(unittest.TestCase):
     def test_delete_collection(self):
         # Set up:
         collection_name = "my_collection"
-        adapter = MongoAdapter(database=self.db)
         self.db.create_collection(collection_name)
         assert len(self.db.list_collection_names()) == 1
 
         # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
         adapter.delete_collection(collection_name)
 
         # Validate result:
@@ -126,11 +126,11 @@ class TestMongoAdapter(unittest.TestCase):
         # Set up:
         collection_name = "my_collection"
         document = dict(id=123, foo="bar")
-        adapter = MongoAdapter(database=self.db)
-        adapter.create_collection(collection_name)
+        self.db.create_collection(collection_name)
         assert self.db.get_collection(collection_name).count_documents({}) == 0
 
         # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
         adapter.insert_document(collection_name, document)
 
         # Validate result:
@@ -138,6 +138,56 @@ class TestMongoAdapter(unittest.TestCase):
         document_actual = self.db.get_collection(collection_name).find_one({})
         for k, v in document.items():
             assert v == document_actual[k]
+
+    def test_get_document_having_value_in_field(self):
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(id=1, x="a")
+        document_2 = dict(id=2, x="b")
+        document_3 = dict(id=3, x="c")
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3]
+        )
+        assert self.db.get_collection(collection_name).count_documents({}) == 3
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        document_actual = adapter.get_document_having_value_in_field(
+            collection_name, "x", "b"
+        )
+
+        # Validate result:
+        for k, v in document_2.items():
+            assert v == document_actual[k]
+
+    def test_get_document_having_one_of_values_in_field(self):
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(id=1, x="a")
+        document_2 = dict(id=2, x="b")
+        document_3 = dict(id=3, x="c")
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3]
+        )
+        assert self.db.get_collection(collection_name).count_documents({}) == 3
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        document_actual = adapter.get_document_having_one_of_values_in_field(
+            collection_name, "x", ["n", "b", "m"]
+        )
+
+        # Validate result:
+        for k, v in document_2.items():
+            assert v == document_actual[k]
+
+    def test_delete_documents_having_value_in_field(self):
+        raise NotImplementedError()
+
+    def test_process_each_document(self):
+        raise NotImplementedError()
 
 
 if __name__ == "__main__":
