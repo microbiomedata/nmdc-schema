@@ -31,7 +31,7 @@ extraction_set:
     quality_control_report:
       type: nmdc:QualityControlReport
       #status range should be new status_enum with possible values of 'Pass' or Failed'
-      status: pass
+    qc_status: pass
     #leaving as extraction_method to make the model generic, other option considered was 'Nucleic Acid Extraction Method' http://purl.obolibrary.org/obo/NCIT_C177560
     # extraction_method: phenol/chloroform extraction # instantiate in ProtocolExtraction class
 

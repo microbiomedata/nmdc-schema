@@ -17,10 +17,16 @@ extraction_set:
     sample_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
+<<<<<<< HEAD
       has_unit: gram
     quality_control_report:
       type: nmdc:QualityControlReport
       status: pass
     # extraction_method: phenol/chloroform extraction # instantiate in ProtocolExtraction class
+=======
+      has_unit: gram 
+    qc_status: pass
+    extraction_method: phenol/chloroform extraction
+>>>>>>> upstream-main-replica
     extraction_target: DNA
     

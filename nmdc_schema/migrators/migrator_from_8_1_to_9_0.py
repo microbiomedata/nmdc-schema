@@ -2,8 +2,11 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import load_yaml_asset
 
 
-class Migrator_from_8_1_to_9_0(MigratorBase):
-    """previously: Migrates data from schema 8.1.0 to 9.0.0"""
+class Migrator(MigratorBase):
+    """Migrates data between two schema versions."""
+
+    _from_version = "8.1"
+    _to_version = "9.0"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -11,7 +14,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.fix_award_dois, self.fix_pub_dois,
                        self.fix_massive, self.fix_ess_dive, self.remove_doi_slots],
         )
@@ -21,7 +24,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         For each update descriptor in the `doi_list` list; if the specified study's `id` matches that descriptor's `id`,
         this function appends a DOI dictionary to the study's `associated_dois` list (creating the list if necessary).
 
-        >>> m = Migrator_from_8_1_to_9_0()
+        >>> m = Migrator()
         >>> m.process_doi({'id': 123}, [{'id': 123, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` matches
         {'id': 123, 'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
         >>> m.process_doi({'id': 123}, [{'id': 555, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` does not match
@@ -63,7 +66,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         r"""
         Copies `publication_dois` values into a new slot named `associated_dois`.
 
-        >>> m = Migrator_from_8_1_to_9_0()
+        >>> m = Migrator()
         >>> m.fix_pub_dois({'id': 1, 'publication_dois': ['a']})  # test: a single DOI
         {'id': 1, 'publication_dois': ['a'], 'associated_dois': [{'doi_value': 'a', 'doi_category': 'publication_doi'}]}
         """
@@ -79,7 +82,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         r"""
         Changes the one `massive_study_identifiers` value into a DOI and moves it to a new `associated_dois` slot.
 
-        >>> m = Migrator_from_8_1_to_9_0()
+        >>> m = Migrator()
         >>> m.fix_massive({'id': 123})
         {'id': 123, 'associated_dois': []}
         >>> m.fix_massive({'id': 123, 'massive_study_identifiers': ['not-the-one']})
@@ -105,7 +108,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         r"""
         Copies `ess_dive_datasets` values into a new slot named `associated_dois`.
 
-        >>> m = Migrator_from_8_1_to_9_0()
+        >>> m = Migrator()
         >>> m.fix_ess_dive({'id': 1, 'ess_dive_datasets': ['a']})  # test: a single DOI
         {'id': 1, 'ess_dive_datasets': ['a'], 'associated_dois': [{'doi_value': 'a', 'doi_category': 'dataset_doi', 'doi_provider': 'ess_dive'}]}
         """
@@ -121,7 +124,7 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         r"""
         Removes slots that are no longer needed because their values have been moved to the `associated_dois` slot.
 
-        >>> m = Migrator_from_8_1_to_9_0()
+        >>> m = Migrator()
         >>> m.remove_doi_slots({'id': 123, 'associated_dois': []})  # empty `associated_dois` list gets removed
         {'id': 123}
         >>> m.remove_doi_slots({

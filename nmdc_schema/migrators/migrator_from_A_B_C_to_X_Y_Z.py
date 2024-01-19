@@ -1,14 +1,24 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
-class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
+class Migrator(MigratorBase):
     """
-    Migrates data from schema A.B.C to X.Y.Z
+    Migrates data between two schema versions.
 
     TUTORIAL: This is an example of a "migrator" class.
               It was designed for use during developer training and
               to serve as a template for production "migrator" classes.
     """
+
+    """
+    TUTORIAL: These two strings tell people the versions of the schema this
+              "migrator" class was designed to migrate data between.
+              
+              -->  As part of creating a new "migrator" class, you will
+                   populate its `_from_version` and `_to_version` strings.
+    """
+    _from_version = "A.B.C"
+    _to_version = "X.Y.Z"
 
     def __init__(self, *args, **kwargs) -> None:
         """
@@ -27,7 +37,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                      security guards at marathons say, "If it ain't
                      part of the plan, it ain't gonna be ran."
 
-             -->  As part of creating a new "migration" class, you will
+             -->  As part of creating a new "migrator" class, you will
                   populate its "agenda."
         """
 
@@ -36,7 +46,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.allow_multiple_names],
         )
 
@@ -54,7 +64,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
                   2. It transforms that dictionary.
                   3. It returns the transformed dictionary.
 
-              --> As part of creating a new "migration" class, you will
+              --> As part of creating a new "migrator" class, you will
                   typically implement one or more "transformation" functions.
                   You will also add them to the "agenda" of the class.
 
@@ -72,7 +82,7 @@ class Migrator_from_A_B_C_to_X_Y_Z(MigratorBase):
               --> As part of implementing a "transformation" function, you will
                   typically write a few doctests in the docstring of that function.
 
-        >>> mig = Migrator_from_A_B_C_to_X_Y_Z()  # creates a class instance on which we can call this function (method)
+        >>> mig = Migrator()  # creates a class instance on which we can call this function (method)
         >>> mig.allow_multiple_names({'id': 123, 'name': 'My project'})  # test: transfers existing name to `names` list
         {'id': 123, 'names': ['My project']}
         >>> mig.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys

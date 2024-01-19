@@ -88,11 +88,10 @@ def load_yaml_file(filename):
 @click.option("--salvage-prefix", required=True, type=str,
               help="A prefix, defined in the schema, to force for each value that the schema indicates is a CURIE but that has no prefix")
 @click.option("--migrator-name", type=str, multiple=True,
-              help="The name of a migrator class that you want to use to migrate data. If you specify this option "
-                   "multiple times, the specified migrator classes will be used in the order specified.\n\n"
-                   "A migrator class is a class that inherits from `MigratorBase`. "
-                   "Migrator classes are defined in `nmdc_schema/migrators/` and their names begin with capital "
-                   "`Migrator_` (as opposed to lowercase `migrator_`, which refers to a module).")
+              help="The name of a migrator module that you want to use to migrate data. If you specify this option "
+                   "multiple times, the specified migrator modules will be used in the order specified.\n\n"
+                   "Migrator modules are Python modules residing in the `nmdc_schema/migrators/` directory. "
+                   "Their names begin with `migrator_from_`.")
 def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
     """
     Generates a data file that conforms to a different schema version than the input data file does.
@@ -104,14 +103,13 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
 
     for current_name in migrator_name:
         try:
-            # Import the module whose name matches the specified migrator name (but with a lowercase `migrator_`).
+            # Import the module whose name matches the specified migrator module name.
             # Reference: https://docs.python.org/3/library/importlib.html#importlib.import_module
-            migrator_module_name = current_name.replace("Migrator_", "migrator_", 1)
-            migrator_module = importlib.import_module(f".{migrator_module_name}", package="nmdc_schema.migrators")
+            migrator_module = importlib.import_module(f".{current_name}", package="nmdc_schema.migrators")
 
-            # Get the class (defined in that module) whose name matches the specified migrator name.
+            # Get the `Migrator` class defined in that module.
             # Reference: https://docs.python.org/3/library/inspect.html#inspect.isclass
-            migrator_class = getattr(migrator_module, current_name)
+            migrator_class = getattr(migrator_module, "Migrator")
             if not inspect.isclass(migrator_class):
                 raise TypeError
 
@@ -119,7 +117,7 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
             migrators.append(migrator_class)
             logger.info(f"Will use migrator: {current_name}")
         except (KeyError, ImportError, AttributeError, TypeError) as exception:
-            logger.error(f"ERROR: {current_name} is not a valid migrator class name. {exception}.")
+            logger.error(f"ERROR: {current_name} is not a valid migrator module name. {exception}.")
             continue
 
     if len(migrators) == 0:
@@ -166,16 +164,21 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
         migrator = current_migrator(logger=logger)
 
         # iterate over collections, applying migration-specific transformations
-        for tdk, tdv in total_dict.items():
+        for collection_name, documents in total_dict.items():
             # If the migration specifies any transformers for this collection,
             # apply them—in order—to each document within this collection.
-            transformers = migrator.get_transformers_for(collection_name=tdk)
+            transformers = migrator.get_transformers_for(collection_name=collection_name)
             if len(transformers) > 0:
                 migrator_class_name = current_migrator.__name__
-                logger.info(f"Starting {tdk}-specific transformations using {migrator_class_name}")
-                for document in tdv:
+                logger.info(f"Starting {collection_name}-specific transformations using {migrator_class_name}")
+                for i, document in enumerate(documents):
+
+                    # Apply the transformation(s).
                     for transformer in transformers:
-                        transformer(document)  # modifies the document in place
+                        document = transformer(document)
+
+                    # Update the collection so it contains the transformed document.
+                    documents[i] = document
 
     # all migrations complete. save data.
     logger.info(f"Saving migrated data to {output_path}")

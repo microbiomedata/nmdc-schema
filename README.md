@@ -36,13 +36,9 @@ primer provides some the context for this project.
 
 ## Maintaining the Schema
 
-**New system requirement: [Mike Farah's GO-based yq](https://github.com/mikefarah/yq)**
+See [DEVELOPMENT.md](DEVELOPMENT.md) for instructions on setting up a development environment.
 
-Some optional components use the Java-based [ROBOT](http://robot.obolibrary.org/) or Jena arq.
-Jena riot is also a part of the MongoDB dumping, repairing and validation workflow, if the user wishes
-to generate and validate RDF/TTL.
-
-See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
+See [MAINTAINERS.md](MAINTAINERS.md) for instructions on using that development environment to maintain the schema.
 
 ## Makefiles
 
