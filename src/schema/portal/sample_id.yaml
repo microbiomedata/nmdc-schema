@@ -46,10 +46,10 @@ slots:
     recommended: true
 
   sample_link:
-    description: The name(s) of sample(s) to be linked to this sample. This should 
-    match a sample name provided to NMDC & should identify the sample relationship 
+    description: 'The name(s) of sample(s) to be linked to this sample. This should 
+    match a sample name provided to NMDC and should identify the sample relationship 
     that is being provided. This is relevant when a sample or other material was used 
-    to generate the new sample.
+    to generate the new sample.'
     comments:
       - 'This field allows multiple entries separated by ; (Examples: Soil collected
       from the field will link with the soil used in an incubation. The soil a plant
