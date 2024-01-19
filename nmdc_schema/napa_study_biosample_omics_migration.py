@@ -1,4 +1,5 @@
 import json
+m
 import os
 from pprint import pprint
 import secrets
@@ -51,7 +52,7 @@ def update_studies_to_napa_standards():
             )
             print(sty_class_legacy_napa)
             sty_reid_log.write(napa_sty_update.txt)
-            napa_sty_counter = napa_sty_counter + 1
+            napa_sty_counte)r = napa_sty_counter + 1
         else:
             print("Did not update issue updating ", sty_doc["id"])
 
@@ -68,7 +69,7 @@ def update_bsm_by_study(napa_sty_id):
     bsm_alt_id_dict = {
         "gold_biosample_identifiers": "gold:",
         "igsn_biosample_identifiers": "igsn:",
-        "emsl_biosample_identifiers": "emsl:",
+        "emsl_biosample_identifiers": "emsl:"
     }
     legacy_sty = napa_sty_to_legacy(napa_sty_id)
     bsm_reid_log = open(legacy_sty + "_bsm_reid.txt", "w")
@@ -76,6 +77,8 @@ def update_bsm_by_study(napa_sty_id):
         bsm_napa_ids = json.loads(j.read())
     legacy_bsm = {"part_of": legacy_sty, "id": {"$ne": "^nmdc:bsm"}}
     for bsm_doc in bsm_coll.find(legacy_bsm):
+        bsm_target_update = ""
+        #print(bsm_doc["id"])
         # set value for part_of
         sty_napa_list = []
         sty_napa_list.append(napa_sty_id)
@@ -84,45 +87,53 @@ def update_bsm_by_study(napa_sty_id):
         alt_id = []
         alt_id_slot_name = ""
         for alt_id_slot in bsm_alt_id_dict:
+            #print(bsm_alt_id_dict[alt_id_slot])
             if bsm_doc["id"].startswith(bsm_alt_id_dict[alt_id_slot]):
+                print(bsm_doc["id"] + "starts with"+ bsm_alt_id_dict[alt_id_slot])
                 alt_id_slot_name = alt_id_slot
                 if alt_id_slot_name in bsm_doc.keys():
                     if len(bsm_doc[alt_id_slot_name]) == 0:
                         update_alt = True
                         alt_id.append(bsm_doc["id"])
                         print("will update alt id slot is empty" + alt_id_slot_name)
+                        bsm_target_update = {
+                         "$set": {
+                         "id": bsm_napa_ids[bsm_counter],
+                         "part_of": sty_napa_list,
+                         alt_id_slot_name: alt_id,
+                         }  
+                       }  
                     elif (
                         len(bsm_doc[alt_id_slot_name]) == 1
                         and bsm_doc[alt_id_slot_name][0] == bsm_doc["id"]
                     ):
                         print(alt_id_slot + " already set for " + bsm_doc["id"])
-                        update_alt = False
+                        bsm_target_update = {
+                         "$set": {"id": bsm_napa_ids[bsm_counter], "part_of": sty_napa_list}
+                        }
                     else:
                         print(
                             "length of array for "
                             + alt_id_slot
                             + "exists and is greater than 1"
                         )
-                        update_alt = False
+                        bsm_target_update = {
+                         "$set": {"id": bsm_napa_ids[bsm_counter], "part_of": sty_napa_list}
+                        } 
                 else:
-                    update_alt = True
-                    alt_id.append(bsm_doc["id"])
-                    print("will update alt id b/c could not fine alt id")
-            break
-        if update_alt:
-            bsm_target_update = {
-                "$set": {
+                  alt_id.append(bsm_doc["id"])
+                  print("will update alt id b/c could not find alt id")
+                  bsm_target_update = {
+                    "$set": {
                     "id": bsm_napa_ids[bsm_counter],
-                    "part_of": sty_napa_list,
-                    alt_id_slot_name: alt_id,
-                }
-            }
-        elif not update_alt:
-            bsm_target_update = {
-                "$set": {"id": bsm_napa_ids[bsm_counter], "part_of": sty_napa_list}
-            }
-        else:
-            print("not sure how to make the biosample update for" + bsm_doc["id"])
+                     "part_of": sty_napa_list,
+                     alt_id_slot_name: alt_id,
+                       }
+                     }
+            #else:
+            #  print(bsm_doc["id"] + "does not start with prefix"+ bsm_alt_id_dict[alt_id_slot])
+        #else:
+        #    print("not sure how to make the biosample update for" + bsm_doc["id"])
         bsm_class_legacy_napa = (
             "Biosample " + bsm_doc["id"] + " " + bsm_napa_ids[bsm_counter]
         )
@@ -139,8 +150,7 @@ def update_bsm_by_study(napa_sty_id):
 ################
 
 
-# function to get legacy study id from alt id slot
-def napa_sty_to_legacy(napa_sty_id):
+
     legacy_sty = ""
     get_sty_record = {"id": napa_sty_id}
     target_sty = sty_coll.find_one(get_sty_record)
@@ -163,7 +173,10 @@ def update_omics_by_study(napa_sty_id):
         "alternative_identifiers": "emsl:",
     }
     legacy_sty = napa_sty_to_legacy(napa_sty_id)
+    #commented out only until we get SPRUCE fixed
     legacy_omics = {"part_of": legacy_sty, "id": {"$ne": "^nmdc:omprc"}}
+    # test only serach for NOM data so Yuri can test
+    #legacy_omics = {"part_of": legacy_sty, "id": {"$ne": "^nmdc:omprc"}, "omics_type.has_raw_value":"Organic Matter Characterization"}
     f_omics_id_mapping = open(legacy_sty + "_omics_reid.txt", "w")
     with open(legacy_sty + "_omics_napa.json", "r") as j:
         omics_napa_ids = json.loads(j.read())
@@ -180,10 +193,12 @@ def update_omics_by_study(napa_sty_id):
                     "$or": [
                         {"emsl_biosample_identifiers": biosample},
                         {"gold_biosample_identifiers": biosample},
-                        {"insdc_biosample_identifiers": biosample},
+                        {"igsn_biosample_identifiers": biosample},
                     ]
                 }
                 get_biosample = bsm_coll.find_one(target_has_input)
+                print(omics_doc)
+                print(get_biosample["id"])
                 napa_biosample_inputs.append(get_biosample["id"])
         # set id and alternative ids
         target_omics = {"id": omics_doc["id"]}
