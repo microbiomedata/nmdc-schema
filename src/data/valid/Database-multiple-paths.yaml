@@ -46,7 +46,7 @@ biosample_set:
         id: ENVO:00005792
     type: nmdc:Biosample
 data_generation_set:
-  - id: nmdc:dgnt-99-zUCd5N
+  - id: nmdc:dgns-99-zUCd5N
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
