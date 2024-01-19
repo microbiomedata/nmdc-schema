@@ -68,7 +68,7 @@ study_set:
     type: nmdc:Study
     study_category: research_study
 data_generation_set:
-  - id: nmdc:datgen-99-9XUVVF
+  - id: nmdc:dgns-99-9XUVVF
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0225767
@@ -86,12 +86,12 @@ data_generation_set:
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
       LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
     part_of:
-      - nmdc:datgen-00-31415
+      - nmdc:dgms-00-31415
     processing_institution: JGI
-    type: nmdc:DataGeneration
+    type: nmdc:NucleotideSequencing
     associated_studies:
       - nmdc:sty-00-31415
-  - id: nmdc:datgen-99-dk9vgI
+  - id: nmdc:dgns-99-dk9vgI
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0208560
@@ -105,13 +105,11 @@ data_generation_set:
       - nmdc:dobj-00-pizza
     ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
       - 611E1M metaG
-    part_of:
-      - nmdc:datgen-00-8675309
     processing_institution: JGI
-    type: nmdc:DataGeneration
+    type: nmdc:NucleotideSequencing
     associated_studies: 
       - nmdc:sty-00-8675309
-  - id: nmdc:datgen-99-MVW1FV
+  - id: nmdc:dgns-99-MVW1FV
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0306221
@@ -127,10 +125,8 @@ data_generation_set:
       - nmdc:dobj-00-mobydick
     ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
       in University of Washington, Seatle, WA, United States - 4-1-23 metaG
-    part_of:
-      - nmdc:datgen-00-avacado
     processing_institution: JGI
-    type: nmdc:DataGeneration
+    type: nmdc:NucleotideSequencing
     associated_studies:
       - nmdc:sty-00-avacado
 biosample_set:

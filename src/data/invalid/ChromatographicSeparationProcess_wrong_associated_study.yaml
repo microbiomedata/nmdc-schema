@@ -38,6 +38,6 @@ ordered_mobile_phases:
 chromatographic_category: gas_chromatography
 has_calibration: nmdc:obj-asdfasd-asdfasdf
 part_of:
-  - nmdc-datgen-88-555xxx
+  - nmdc-dgms-88-555xxx
 associated_studies:
-  - nmdc:datgen-666-333xxx
+  - nmdc:dgms-666-333xxx

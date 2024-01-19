@@ -1,6 +1,6 @@
 #invalid id prefix
 id: nmdc:omicsprc-99-zUCd5N
-type: nmdc:DataGeneration
+type: nmdc:NucleotideSequencing
 analyte_category: metagenome
 alternative_identifiers:
   - gold:Gp0108335
