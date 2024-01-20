@@ -1,8 +1,7 @@
 ## Add your own custom Makefile targets here
 
+JENA_PATH=~/apache-jena/bin/
 RUN=poetry run
-
-FD_ROOT=local/fuseki-data/databases
 
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
@@ -512,7 +511,7 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.y
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- riot --validate $@ # < 1 minute
+	- $(JENA_PATH)/riot --validate $@ # < 1 minute
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
@@ -523,52 +522,52 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- riot --validate $@ # < 1 minute
+	- $(JENA_PATH)/riot --validate $@ # < 1 minute
 	date
 
 # ----
 
-#OmicsProcessing-to-catted-Biosamples.tsv: assets/sparql/OmicsProcessing-to-catted-Biosamples.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-#	$(RUN) class-sparql \
-#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-#		--query-file $<
-#
-#assets/sparql/undesc-ununsed-slots.tsv: assets/sparql/undesc-ununsed-slots.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-#	$(RUN) class-sparql \
-#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-#		--query-file $<
-#
-#OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv OmicsProcessing-to-catted-Biosamples.tsv
-#
-#OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-#	$(RUN) class-sparql  \
-#		--concatenation-suffix s \
-#		--do-group-concat \
-#		--graph-name "mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017" \
-#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-#		--schema-file  $< \
-#		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
-#		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
+OmicsProcessing-to-catted-Biosamples.tsv: assets/sparql/OmicsProcessing-to-catted-Biosamples.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) class-sparql \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--query-file $<
 
-#validate-filtered-request-all: validate-filtered-request-clean assets/filtered-api-requests/filtered-request-validation-log.txt
-#
-#.PHONY: validate-filtered-request-all validate-filtered-request-clean
-#
-#validate-filtered-request-clean:
-#	rm -rf assets/filtered-api-requests/*
-#
-## user is responsible for providing pre-tested, properly escaped, filtered https://api-napa.microbiomedata.org/docs#/metadata requests
-## todo: explicitly running this through the python interpreter emits less logging
-#assets/filtered-api-requests/filtered-request-result.yaml:
-#	$(RUN) build-datafile-from-api-requests \
-#		--output-file $@ \
-#		--api-url "https://api-napa.microbiomedata.org/nmdcschema/study_set?filter=%7B%22id%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
-#		--api-url "https://api-napa.microbiomedata.org/nmdcschema/biosample_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
-#		--api-url "https://api-napa.microbiomedata.org/nmdcschema/omics_processing_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999"
-#
-#assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nmdc_materialized_patterns.yaml \
-#assets/filtered-api-requests/filtered-request-result.yaml
-#	- $(RUN) linkml-validate --schema $^ > $@
+assets/sparql/undesc-ununsed-slots.tsv: assets/sparql/undesc-ununsed-slots.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) class-sparql \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--query-file $<
+
+OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv OmicsProcessing-to-catted-Biosamples.tsv
+
+OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+	$(RUN) class-sparql  \
+		--concatenation-suffix s \
+		--do-group-concat \
+		--graph-name "mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017" \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--schema-file  $< \
+		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
+		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
+
+validate-filtered-request-all: validate-filtered-request-clean assets/filtered-api-requests/filtered-request-validation-log.txt
+
+.PHONY: validate-filtered-request-all validate-filtered-request-clean
+
+validate-filtered-request-clean:
+	rm -rf assets/filtered-api-requests/*
+
+# user is responsible for providing pre-tested, properly escaped, filtered https://api-napa.microbiomedata.org/docs#/metadata requests
+# todo: explicitly running this through the python interpreter emits less logging
+assets/filtered-api-requests/filtered-request-result.yaml:
+	$(RUN) build-datafile-from-api-requests \
+		--output-file $@ \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/study_set?filter=%7B%22id%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/biosample_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
+		--api-url "https://api-napa.microbiomedata.org/nmdcschema/omics_processing_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999"
+
+assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nmdc_materialized_patterns.yaml \
+assets/filtered-api-requests/filtered-request-result.yaml
+	- $(RUN) linkml-validate --schema $^ > $@
 
 .PHONY: migration-doctests migrator
 
@@ -582,6 +581,13 @@ migration-doctests:
 migrator:
 	$(RUN) create-migrator
 
+#local/nmdc-schema-v7.8.0.yaml:
+#	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
+#	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
+#	#     see_also:
+#	#       - MIxS:experimental_factor|additional_info
+#	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
+
 local/nmdc-schema-v8.0.0.yaml:
 	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.0.0/nmdc_schema/nmdc_materialized_patterns.yaml
 	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
@@ -592,6 +598,7 @@ local/nmdc-schema-v8.0.0.yaml:
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
 	$(RUN) gen-owl $< > $@
 
+# 		--quick-test
 local/nmdc-sty-11-aygzgv51.yaml:
 	$(RUN) get-study-related-records \
 		--api-base-url https://api-napa.microbiomedata.org \
@@ -599,30 +606,28 @@ local/nmdc-sty-11-aygzgv51.yaml:
 		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
 		--output-file $@
 
-# Napa nmdc:sty-11-aygzgv51 = gold:Gs0114663
+local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
+	# - allows the makefiel to continue even if this step reports an error. that may or may not be the best choice in this case
+	- $(RUN) linkml-validate --schema $^ > $@
 
-local/nmdc-data.yaml:
-	$(RUN) get-study-related-records \
-		--api-base-url https://api.microbiomedata.org \
-		extract-study \
-		--study-id gold:Gs0114663 \
-		--quick-test \
-		--output-file $@
+local/nmdc-sty-11-aygzgv51.ttl: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
+	$(RUN) linkml-convert --output $@ --schema $^
 
-local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
-	$(RUN) linkml-validate --schema $^ > $@
-
-local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
-	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^)
-
-local/nmdc-data.ttl: local/nmdc-data-raw.ttl
-	$(RUN) anyuri-strings-to-iris \
-		--input-ttl $< \
-		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--emsl-uuid-replacement emsl_uuid_like \
-		--output-ttl $@
-	riot --validate $@
-
+local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-11-aygzgv51.ttl
+	$(JENA_PATH)/tdb2.tdbloader \
+		--loc=$@ \
+		--graph=https://w3id.org/nmdc/nmdc \
+			$(word 1, $^)
+	$(JENA_PATH)/tdb2.tdbloader  \
+		--loc=$@ \
+		--graph=https://api-napa.microbiomedata.org/docs \
+			$(word 2, $^)
+	$(JENA_PATH)/tdb2.tdbquery \
+		--loc=$@ \
+		--query=assets/sparql/tdb-test.rq
+	$(JENA_PATH)/tdb2.tdbquery \
+		--loc=$@ \
+		--query=assets/sparql/tdb-graph-list.rq
 
 # Populates a Jena TDB database that will be accessible to Fuseki.
 #
@@ -631,78 +636,13 @@ local/nmdc-data.ttl: local/nmdc-data-raw.ttl
 #
 # Note: We expect people to run this make target from within the `app` container.
 #
-.PHONY: nmdc-tdb2
-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
+nmdc-tdb2:
 	tdb2.tdbloader \
-		--loc=$(FD_ROOT)/$@ \
+		--loc=/nmdc-schema/local/fuseki-data/databases/$@ \
 		--graph=https://w3id.org/nmdc/nmdc \
-		$(word 1, $^)
-	tdb2.tdbloader \
-		--loc=$(FD_ROOT)/$@ \
-		$(word 2, $^)
-	tdb2.tdbquery \
-		--loc=$(FD_ROOT)/nmdc-tdb2 \
-		--query=assets/sparql/tdb-graph-list.rq
-
-.PHONY: thorough-docker-fuseki-cleanup-from-host
-thorough-docker-fuseki-cleanup-from-host:
-	- docker compose down
-	rm -rf local/fuseki-data
-	rm -rf local/nmdc-data*
-	rm -rf local/nmdc-tdb2*
-	docker system prune --force
-
-.PHONY: docker-startup-from-host
-docker-startup-from-host:
-	docker compose up --build --detach
-
-# manually:
-#   docker compose exec app bash
-
-# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
-# The support to run uninstalled scripts will be removed in a future release.
-# Run `poetry install` to resolve and get rid of this message.
-
-.PHONY: build-schema-in-container
-build-schema-in-container:
-	poetry install
-	make squeaky-clean all test
-
-#  visit http://localhost:3030/#/manage/new , possibly in a private browser window ?
-#     Dataset name: nmdc-tdb2
-#     Dataset type: persistent (TDB2)
-#     click "create dataset"
-#     authentication may be required at this time
-#       user = admin
-#       password = password
-
-.PHONY: fuseki-shutdown-from-host
-fuseki-shutdown-from-host:
-	docker container stop nmdc-schema-fuseki-1
-
-# manually in container
-#   make nmdc-tdb2
-
-# even CLI queries don't work while fuseki is running
-local/nmdc-tdb2-graph-list.tsv:
-	tdb2.tdbquery \
-		--loc=$(FD_ROOT)/nmdc-tdb2 \
-		--query=assets/sparql/tdb-graph-list.rq \
-		--results=TSV > $@
-
-.PHONY: fuseki-restart-from-host
-fuseki-restart-from-host:
-	docker container restart nmdc-schema-fuseki-1
-
-.PHONY: docker-compose-down-from-host
-docker-compose-down-from-host:
-	docker compose down
-
-###
+		/nmdc-schema/project/owl/nmdc.owl.ttl
 
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
 		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
-
-
