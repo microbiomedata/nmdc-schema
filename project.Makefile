@@ -397,7 +397,7 @@ thorough-docker-fuseki-cleanup-from-host:
 	rm -rf local/fuseki-data
 	rm -rf local/nmdc-data*
 	rm -rf local/nmdc-tdb2*
-	docker system prune --force
+	docker system prune --force # very aggressive. may delete containers etc that you want but are not currently running
 
 .PHONY: docker-startup-from-host
 docker-startup-from-host:
@@ -453,10 +453,11 @@ local/nmdc-data.yaml:
 		--quick-test \
 		--output-file $@ # this is a CLI that bundles several API calls to get data from MongoDB
 
-local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
+# change this back
+local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/neon_surface_water_metadata.json
 	$(RUN) linkml-validate --schema $^ > $@
 
-local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
+local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/neon_surface_water_metadata.json local/nmdc-data-validation-log.txt
 	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^) # remember, TTL is one serialization of RDF data
 
 local/nmdc-data.ttl: local/nmdc-data-raw.ttl
