@@ -384,8 +384,14 @@ local/nmdc-sty-11-aygzgv51.yaml:
 		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
 		--output-file $@
 
-### FUSEKI ETC
-.PHONY: thorough-docker-fuseki-cleanup-from-host
+### FUSEKI, DOCKER, ETC
+# we use Apache's Jena RDF/SPARQL framework
+# Jena provides command line tools for accessing RDF *files*
+# or you can use a TDB as the data backend
+# Fuseki is a web interface for submitting SPARQL queries
+# we are foing all of this in docker so you don't have to install any of this software
+
+.PHONY: thorough-docker-fuseki-cleanup-from-host # this level of cleanup may not be needed ona regular basis
 thorough-docker-fuseki-cleanup-from-host:
 	- docker compose down
 	rm -rf local/fuseki-data
@@ -395,21 +401,22 @@ thorough-docker-fuseki-cleanup-from-host:
 
 .PHONY: docker-startup-from-host
 docker-startup-from-host:
-	docker compose up --build --detach
+	docker compose up --build --detach # --build is only necessary if changes have been made to the Dockerfile
 
 # manually: `docker compose exec app bash`
+# then you can do any nmdc-schem makefile commands in the 'app' environment
 
 .PHONY: create-nmdc-tdb2-from-app
-create-nmdc-tdb2-from-app:
+create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
 	curl http://fuseki:3030/$$/ping # escape second $ with first $ in make
 	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password' # returns one-page-ish JSON
+		--user 'admin:password' # returns one-page-ish JSON # this should start out empty!
 	curl \
 		--user 'admin:password' \
 		--data 'dbType=tdb&dbName=nmdc-tdb2' \
 		'http://fuseki:3030/$$/datasets'
 	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password'
+		--user 'admin:password' # now it should have one empty dataset (like a databaser or schema in other systems like Postgres)
 
 .PHONY: stop-nmdc-tdb2-from-app
 stop-nmdc-tdb2-from-app:
@@ -420,7 +427,7 @@ stop-nmdc-tdb2-from-app:
 	curl -X POST \
 		--user 'admin:password' \
 		--data 'state=offline' \
-		'http://fuseki:3030/$$/datasets/nmdc-tdb2'
+		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # loading data (below) is safer when the dataset is offline
 	curl http://fuseki:3030/$$/datasets \
 		--user 'admin:password' # false means offline
 
@@ -434,29 +441,30 @@ build-schema-in-app:
 
 
 .PHONY: populate-nmdc-tdb2-in-app
-populate-nmdc-tdb2-in-app: local/nmdc-data.ttl nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
+populate-nmdc-tdb2-in-app: local/nmdc-data.ttl populate-nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
 
 # Napa nmdc:sty-11-aygzgv51 = gold:Gs0114663
 local/nmdc-data.yaml:
+	# this does not travers every possible path from a Study to all related records
 	$(RUN) get-study-related-records \
 		--api-base-url https://api.microbiomedata.org \
 		extract-study \
 		--study-id gold:Gs0114663 \
 		--quick-test \
-		--output-file $@
+		--output-file $@ # this is a CLI that bundles several API calls to get data from MongoDB
 
 local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
 	$(RUN) linkml-validate --schema $^ > $@
 
 local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
-	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^)
+	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^) # remember, TTL is one serialization of RDF data
 
 local/nmdc-data.ttl: local/nmdc-data-raw.ttl
 	$(RUN) anyuri-strings-to-iris \
 		--input-ttl $< \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-uuid-replacement emsl_uuid_like \
-		--output-ttl $@
+		--output-ttl $@ # this converts some string values from linkml-convert to object relationships
 	riot --validate $@
 
 # Populates a Jena TDB2 database that will be accessible to Fuseki.
@@ -466,8 +474,9 @@ local/nmdc-data.ttl: local/nmdc-data-raw.ttl
 #
 # Note: We expect people to run this make target from within the `app` container.
 #
-.PHONY: nmdc-tdb2
-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
+.PHONY: populate-nmdc-tdb2
+populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
+	# load the RDF/TTL data form above into the nmdc-tdb2 TDB2 dataset we created earlier
 	tdb2.tdbloader \
 		--loc=$(FD_ROOT)/$@ \
 		--graph=https://w3id.org/nmdc/nmdc \
@@ -477,7 +486,7 @@ nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
 		$(word 2, $^) # loading data into default graph. I have used various named graphs in the past
 	tdb2.tdbquery \
 		--loc=$(FD_ROOT)/nmdc-tdb2 \
-		--query=assets/sparql/tdb-graph-list.rq
+		--query=assets/sparql/tdb-graph-list.rq # this lists all of the named graphs within the nmdc-tdb2 dataset
 
 .PHONY: restart-nmdc-tdb2-from-app
 restart-nmdc-tdb2-from-app:
@@ -487,7 +496,7 @@ restart-nmdc-tdb2-from-app:
 	curl -X POST \
 		--user 'admin:password' \
 		--data 'state=active' \
-		'http://fuseki:3030/$$/datasets/nmdc-tdb2'
+		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # now you can visit http://localhost:3030 and execute SPARQL queries
 	curl http://fuseki:3030/$$/datasets \
 		--user 'admin:password'
 
