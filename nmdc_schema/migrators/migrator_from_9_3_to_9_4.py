@@ -2,15 +2,16 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator(MigratorBase):
-    r"""Migrates data between two schema versions."""
+    r"""Migrates a database between two schemas."""
 
     _from_version = "9.3"
     _to_version = "9.4"
 
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self._agenda = dict(
-            extraction_set=[self.move_extraction_qc_status],
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+
+        self.adapter.process_each_document(
+            "extraction_set", [self.move_extraction_qc_status]
         )
 
     def move_extraction_qc_status(self, extraction: dict) -> dict:

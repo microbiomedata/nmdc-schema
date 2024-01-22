@@ -90,14 +90,14 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator(MigratorBase):
-    r"""Migrates data between two schema versions."""
+    r"""Migrates a database between two schemas."""
 
     _from_version = "{from_version}"
     _to_version = "{to_version}"    
     
-    def __init__(self, *args, **kwargs) -> None:
-        super().__init__(*args, **kwargs)
-        self._agenda = dict()
+    def upgrade(self) -> None:
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+        pass
 
 '''
 

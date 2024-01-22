@@ -2,20 +2,15 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator(MigratorBase):
-    """Migrates data between two schema versions."""
+    r"""Migrates a database between two schemas."""
 
     _from_version = "8.0"
     _to_version = "8.1"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        super().__init__(*args, **kwargs)
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            study_set=[self.force_research_study_study_category],
-        )
+        self.adapter.process_each_document("study_set", [self.force_research_study_study_category])
 
     def force_research_study_study_category(self, study: dict) -> dict:
         r"""
