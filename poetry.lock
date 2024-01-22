@@ -121,6 +121,36 @@ html5lib = ["html5lib"]
 lxml = ["lxml"]
 
 [[package]]
+name = "bioregistry"
+version = "0.10.121"
+description = "Integrated registry of biological databases and nomenclatures"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "bioregistry-0.10.121-py3-none-any.whl", hash = "sha256:e4fec3778016b7ec7030d8a4a4845dfba9f8df48fc58a95bf63eee906ef1096b"},
+    {file = "bioregistry-0.10.121.tar.gz", hash = "sha256:a8f15c1e4cd1253261a201bfe25d5e60a4b4d8f6d0e651a9fe16ee191cde88d2"},
+]
+
+[package.dependencies]
+click = "*"
+curies = ">=0.7.0"
+more-click = ">=0.1.2"
+pydantic = "*"
+pystow = ">=0.1.13"
+requests = "*"
+tqdm = "*"
+
+[package.extras]
+align = ["beautifulsoup4", "class-resolver", "defusedxml", "fairsharing-client (>=0.1.0)", "pyyaml", "tabulate"]
+charts = ["jinja2", "matplotlib", "matplotlib-venn", "pandas", "seaborn"]
+docs = ["autodoc-pydantic", "sphinx", "sphinx-automodapi", "sphinx-click", "sphinx-rtd-theme"]
+export = ["ndex2", "pyyaml", "rdflib", "rdflib-jsonld"]
+gha = ["more-itertools"]
+health = ["click-default-group", "jinja2", "pandas", "pyyaml", "tabulate"]
+tests = ["coverage", "httpx", "more-itertools", "pytest"]
+web = ["bootstrap-flask (<=2.0.0)", "curies[fastapi]", "fastapi", "flask (<2.2.4)", "markdown", "pyyaml", "rdflib", "rdflib-endpoint", "rdflib-jsonld", "uvicorn", "werkzeug (<2.3.0)"]
+
+[[package]]
 name = "black"
 version = "23.12.1"
 description = "The uncompromising code formatter."
@@ -437,6 +467,16 @@ rdflib = ["rdflib"]
 tests = ["coverage", "pytest"]
 
 [[package]]
+name = "daff"
+version = "1.3.46"
+description = "Diff and patch tables"
+optional = false
+python-versions = "*"
+files = [
+    {file = "daff-1.3.46.tar.gz", hash = "sha256:22d0da9fd6a3275b54c926a9c97b180f9258aad65113ea18f3fec52cbadcd818"},
+]
+
+[[package]]
 name = "deprecated"
 version = "1.2.14"
 description = "Python @deprecated decorator to deprecate old python classes, functions or methods."
@@ -721,6 +761,20 @@ toml = ["tomli"]
 yaml = ["PyYAML"]
 
 [[package]]
+name = "google"
+version = "3.0.0"
+description = "Python bindings to the Google search engine."
+optional = false
+python-versions = "*"
+files = [
+    {file = "google-3.0.0-py2.py3-none-any.whl", hash = "sha256:889cf695f84e4ae2c55fbc0cfdaf4c1e729417fa52ab1db0485202ba173e4935"},
+    {file = "google-3.0.0.tar.gz", hash = "sha256:143530122ee5130509ad5e989f0512f7cb218b2d4eddbafbad40fd10e8d8ccbe"},
+]
+
+[package.dependencies]
+beautifulsoup4 = "*"
+
+[[package]]
 name = "google-api-core"
 version = "2.15.0"
 description = "Google API client core library"
@@ -919,6 +973,35 @@ files = [
 [package.extras]
 docs = ["Sphinx", "furo"]
 test = ["objgraph", "psutil"]
+
+[[package]]
+name = "gspread"
+version = "5.12.4"
+description = "Google Spreadsheets Python API"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "gspread-5.12.4-py3-none-any.whl", hash = "sha256:1e453d87e0fde23bc5546e33eb684cf8b8c26540615f2f1ae004a9084a29051d"},
+    {file = "gspread-5.12.4.tar.gz", hash = "sha256:3fcef90183f15d3c9233b4caa021a83682f2b2ee678340c42d7ca7d8be98c6d1"},
+]
+
+[package.dependencies]
+google-auth = ">=1.12.0"
+google-auth-oauthlib = ">=0.4.1"
+
+[[package]]
+name = "gspread-formatting"
+version = "1.1.2"
+description = "Complete Google Sheets formatting support for gspread worksheets"
+optional = false
+python-versions = "*"
+files = [
+    {file = "gspread-formatting-1.1.2.tar.gz", hash = "sha256:4d954d8c283880c4189f5684652b114c3889ffa4b442f339b80e2371782cb4c0"},
+    {file = "gspread_formatting-1.1.2-py2.py3-none-any.whl", hash = "sha256:e5d14477f18ec2f08db0a00d22470d1c621d53b0633412c4873d86712c9a7bca"},
+]
+
+[package.dependencies]
+gspread = ">=3.0.0"
 
 [[package]]
 name = "hbreader"
@@ -1906,6 +1989,27 @@ requests = "*"
 [package.extras]
 docs = ["sphinx", "sphinx-autodoc-typehints", "sphinx-automodapi", "sphinx-click", "sphinx-rtd-theme"]
 tests = ["coverage", "pytest"]
+
+[[package]]
+name = "ontodev-cogs"
+version = "0.3.3"
+description = "COGS Operates Google Sheets"
+optional = false
+python-versions = ">=3.6, <4"
+files = [
+    {file = "ontodev-cogs-0.3.3.tar.gz", hash = "sha256:04cf448eda59e0645c6626453f7617a6b2be3129c8586c4d4a515ad031f61a18"},
+    {file = "ontodev_cogs-0.3.3-py3-none-any.whl", hash = "sha256:b3299b7884891d00e016f9cb0329a1a0dc8af4bfba45dce3815f654360b1f333"},
+]
+
+[package.dependencies]
+daff = "*"
+google = "*"
+google-api-python-client = "*"
+gspread = "*"
+gspread-formatting = "*"
+requests = "*"
+tabulate = "*"
+termcolor = "*"
 
 [[package]]
 name = "ontoportal-client"
@@ -3209,6 +3313,24 @@ files = [
 ]
 
 [[package]]
+name = "schemasheets"
+version = "0.1.24"
+description = "Package to author schemas using spreadsheets"
+optional = false
+python-versions = ">=3.9,<4.0"
+files = [
+    {file = "schemasheets-0.1.24-py3-none-any.whl", hash = "sha256:b7ebceb28e6cd61bbe743945d54e5d45540e794cfc0432b52cb228af8015c4cc"},
+    {file = "schemasheets-0.1.24.tar.gz", hash = "sha256:af18b1012994989cd6c811b770ed547ac52067a640e04b5a4a63cf32306dab3a"},
+]
+
+[package.dependencies]
+bioregistry = ">0.5.0"
+Jinja2 = ">=3.0.3"
+linkml = ">=1.5.0"
+linkml-runtime = ">=1.5.0"
+ontodev-cogs = ">=0.3.3,<0.4.0"
+
+[[package]]
 name = "scipy"
 version = "1.12.0"
 description = "Fundamental algorithms for scientific computing in Python"
@@ -3612,6 +3734,34 @@ linkml-runtime = "*"
 mkdocs-mermaid2-plugin = ">=0.6.0,<0.7.0"
 
 [[package]]
+name = "tabulate"
+version = "0.9.0"
+description = "Pretty-print tabular data"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "tabulate-0.9.0-py3-none-any.whl", hash = "sha256:024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"},
+    {file = "tabulate-0.9.0.tar.gz", hash = "sha256:0095b12bf5966de529c0feb1fa08671671b3368eec77d7ef7ab114be2c068b3c"},
+]
+
+[package.extras]
+widechars = ["wcwidth"]
+
+[[package]]
+name = "termcolor"
+version = "2.4.0"
+description = "ANSI color formatting for output in terminal"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "termcolor-2.4.0-py3-none-any.whl", hash = "sha256:9297c0df9c99445c2412e832e882a7884038a25617c60cea2ad69488d4040d63"},
+    {file = "termcolor-2.4.0.tar.gz", hash = "sha256:aab9e56047c8ac41ed798fa36d892a37aca6b3e9159f3e0c24bc64a9b3ac7b7a"},
+]
+
+[package.extras]
+tests = ["pytest", "pytest-cov"]
+
+[[package]]
 name = "tomli"
 version = "2.0.1"
 description = "A lil' TOML parser"
@@ -3953,4 +4103,4 @@ docs = []
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "471fd111988a9cb1652cee9d2c00a6511ae6e88cdd99e2e362283728ea2170d5"
+content-hash = "d8ab32de4976ac072fb442f87cb239dfd2d818d056d187015a3db4707ee04b7b"

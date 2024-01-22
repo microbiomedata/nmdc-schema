@@ -125,28 +125,18 @@ examples/output: project/nmdc_schema_generated.yaml
 		--counter-example-input-directory src/data/invalid \
 		--output-directory $@ > $@/README.md
 
-#local/usage_template.tsv: src/schema/nmdc.yaml # rewrite to use schemasheets linkml2schemasheets-template
-#	mkdir -p $(@D)
-#	$(RUN) generate_and_populate_template \
-#		 --base-class slot_definition \
-#		 --columns-to-insert class \
-#		 --destination-template $@ \
-#		 --meta-model-excel-file local/meta.xlsx \
-#		 --meta-path https://raw.githubusercontent.com/linkml/linkml-model/main/linkml_model/model/schema/meta.yaml \
-# 		 --columns-to-insert slot \
-#		 --source-schema-path $<
+local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces local/usage_template.tsv target
+	mkdir -p $(@D) # create parent directory
+	$(RUN) linkml2schemasheets-template \
+		--source-path $< \
+		--output-path $@ \
+		--debug-report-path $@.debug.txt \
+		--log-file $@.log.txt \
+		--report-style exhaustive
 
-examples/output/Biosample-exhasutive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
 	poetry run exhaustion-check \
 		--class-name Biosample \
-		--instance-yaml-file $< \
-		--output-yaml-file $@ \
-		--schema-path src/schema/nmdc.yaml
-
-
-examples/output/Pooling-minimal-report.yaml: src/data/valid/Pooling-minimal.yaml
-	poetry run exhaustion-check \
-		--class-name Pooling \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
