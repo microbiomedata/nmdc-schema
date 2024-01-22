@@ -738,4 +738,9 @@ filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
 		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
 
+local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
+	$(RUN) slot-range-type-reporter \
+		--schema $< \
+		--output $@ \
+		--schema-class Biosample
 
