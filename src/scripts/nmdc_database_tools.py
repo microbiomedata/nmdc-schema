@@ -31,7 +31,8 @@ STUDIES = {
 # Update study IDs after re-IDing
 DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
 
-
+# TODO: Move NmdcApi class to the nacent nmdc-common/client package
+# TODO: Add unit tests for NmdcApi class
 class NmdcApi:
     """
     Basic API Client for GET requests.
@@ -44,7 +45,7 @@ class NmdcApi:
         self.headers = {'accept': 'application/json', 'Content-Type': 'application/json'}
 
 
-    def get_biosamples_part_of_study(self, study_id):
+    def get_biosamples_part_of_study(self, study_id: str) -> list[dict]:
         """
         Get the biosamples that are part of a study.
         """
@@ -67,7 +68,7 @@ class NmdcApi:
 
         return biosample_records
 
-    def get_omics_processing_records_part_of_study(self, study_id):
+    def get_omics_processing_records_part_of_study(self, study_id: str) -> list[dict]:
         """
         Get the OmicsProcessing records that are part of a study.
         """
@@ -88,11 +89,11 @@ class NmdcApi:
             omics_processing_records.extend(response.json()["resources"])
         return omics_processing_records
 
-    def get_workflow_activity_informed_by(self, workflow_activity_set: str,
-                                            informed_by_id: str):
+    def get_workflow_activities_informed_by(self, workflow_activity_set: str,
+                                            informed_by_id: str) -> list[dict]:
             """
-            Retrieve a workflow activity record for the given workflow activity set
-            and informed by a given OmicsProcessing ID.
+            Retrieve workflow activity record(s) for the given workflow
+            activity set and informed by a given OmicsProcessing ID.
             """
             params = {
                 'filter': '{"was_informed_by": "'+informed_by_id+'"}',
@@ -102,6 +103,29 @@ class NmdcApi:
             response.raise_for_status()
             workflow_activity_record = response.json()["resources"]
             return workflow_activity_record
+
+    def get_data_object(self, data_object_id: str) -> dict:
+        """
+        Retrieve a data object record by ID.
+        """
+        url = self.base_url + "nmdcschema/data_object_set/" + data_object_id
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        data_object_record = response.json()
+        return data_object_record
+
+    def get_data_objects_by_description(self, description: str):
+        """
+        Retrieve data object records by description.
+        """
+        params = {
+            'filter': '{"description.search": "'+description+'"}',
+        }
+        url = self.base_url + "data_objects"
+        response = requests.get(url, params=params, headers=self.headers)
+        response.raise_for_status()
+        data_object_records = response.json()["results"]
+        return data_object_records
 
 
 @click.group()
@@ -125,8 +149,10 @@ def cli(ctx, api_base_url):
                                                                  "biosamples "
                                                                  "and omics "
                                                                  "only "))
+@click.option("--search-orphaned-data-objects", is_flag=True, default=False,
+              help=("Search for orphaned data objects by description."))
 @click.pass_context
-def extract_study(ctx, study_id, output_file, quick_test):
+def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_objects):
     """
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a YAML or JSON file.
@@ -239,13 +265,14 @@ def extract_study(ctx, study_id, output_file, quick_test):
             for omics_processing_record in omics_processing_records:
                 omics_processing_id = omics_processing_record["id"]
                 # Get the Workflow Execution Activity record for the OmicsProcessing record
-                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
-                                                                                        omics_processing_id)
-                logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
+                workflow_activity_records = api_client.get_workflow_activities_informed_by(wf_set_name,
+                                                                                          omics_processing_id)
+                logger.info(f"Got {len(workflow_activity_records)} {wf_set_name} record informed_by "
                             f"{omics_processing_id}.")
-                wf_records.extend(workflow_activity_record)
+                wf_records.extend(workflow_activity_records)
                 # Get the output data object(s) for the Workflow Execution Activity record
-                for record in workflow_activity_record:
+                for record in workflow_activity_records:
+                    logger.info(f"Getting data objects for {record['id']}.")
                     for data_object_id in record["has_output"]:
                         data_object_response = requests.get(f"{api_client.base_url}data_objects/{data_object_id}")
                         data_object_response.raise_for_status()
@@ -253,6 +280,21 @@ def extract_study(ctx, study_id, output_file, quick_test):
                         logger.info(f"Got data object {data_object['id']} for "
                                     f"{record['id']}.")
                         db.data_object_set.append(data_object)
+                    # Check for orphaned data objects - data objects that are not
+                    # referenced in has_output, but contain a workflow activity ID
+                    # in their description
+                    if search_orphaned_data_objects:
+                        logger.info(f"Searching for orphaned data objects for {record['id']} by description.")
+                        data_object_records = (
+                            api_client.get_data_objects_by_description(
+                                record["id"]))
+                        logger.info(f"Got {len(data_object_records)} data object records.")
+                        for data_object_record in data_object_records:
+                            logger.info(f"Got data object {data_object_record['id']} for "
+                                        f"{workflow_activity_records['id']}.")
+                            if data_object_record["id"] not in record["has_output"]:
+                                db.data_object_set.append(data_object_record)
+
             db.__setattr__(wf_set_name, wf_records)
 
     elapsed_time = datetime.now() - start_time
