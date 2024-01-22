@@ -87,168 +87,16 @@ local/mixs_regen/mixs_subset.yaml: local/mixs_regen/import_slots_regardless_gen.
 		--config_tsv $< \
 		--yaml_output $@
 
-local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml
+local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml assets/yq-for-mixs_subset_modified.txt
 	# switching to TextValue may not add any value. the other range changes do improve the structure of the data.
 	# ironically changing back to strings for the submission-schema, data harmonizer, submission portal etc.
 	# may switch source of truth to the MIxS 6.2.2 release candidate
-	sed 's/quantity value/QuantityValue/' $< > $@
+	sed 's/quantity value/QuantityValue/' $(word 1, $^) > $@
 	sed -i.bak 's/range: string/range: TextValue/' $@
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
-	yq -i '.slots.agrochem_addition.range |= "TextValue"' $@
-	yq -i '.slots.air_temp_regm.range |= "TextValue"' $@
-	yq -i '.slots.antibiotic_regm.range |= "TextValue"' $@
-	yq -i '.slots.aromatics_pc.range |= "TextValue"' $@
-	yq -i '.slots.asphaltenes_pc.range |= "TextValue"' $@
-	yq -i '.slots.atmospheric_data.range |= "TextValue"' $@
-	yq -i '.slots.avg_occup.range |= "TextValue"' $@
-	yq -i '.slots.bathroom_count.range |= "TextValue"' $@
-	yq -i '.slots.bedroom_count.range |= "TextValue"' $@
-	yq -i '.slots.biocide_admin_method.range |= "TextValue"' $@
-	yq -i '.slots.biomass.range |= "TextValue"' $@
-	yq -i '.slots.chem_administration.range |= "ControlledTermValue"' $@
-	yq -i '.slots.chem_mutagen.range |= "TextValue"' $@
-	yq -i '.slots.chem_treat_method.range |= "string"' $@
-	yq -i '.slots.collection_date.range |= "TimestampValue"' $@
-	yq -i '.slots.cool_syst_id.range |= "TextValue"' $@
-	yq -i '.slots.date_last_rain.range |= "TimestampValue"' $@
-	yq -i '.slots.diether_lipids.range |= "TextValue"' $@
-	yq -i '.slots.elevator.range |= "TextValue"' $@
-	yq -i '.slots.emulsions.range |= "TextValue"' $@
-	yq -i '.slots.env_broad_scale.range |= "ControlledIdentifiedTermValue"' $@
-	yq -i '.slots.env_local_scale.range |= "ControlledIdentifiedTermValue"' $@
-	yq -i '.slots.env_medium.range |= "ControlledIdentifiedTermValue"'  $@
-	yq -i '.slots.escalator.range |= "TextValue"' $@
-	yq -i '.slots.exp_pipe.range |= "QuantityValue"' $@
-	yq -i '.slots.experimental_factor.range |= "ControlledTermValue"' $@
-	yq -i '.slots.ext_door.range |= "TextValue"' $@
-	yq -i '.slots.extreme_event.range |= "TimestampValue"' $@
-	yq -i '.slots.fertilizer_regm.range |= "TextValue"' $@
-	yq -i '.slots.fire.range |= "TimestampValue"' $@
-	yq -i '.slots.flooding.range |= "TimestampValue"' $@
-	yq -i '.slots.floor_count.range |= "TextValue"' $@
-	yq -i '.slots.freq_clean.range |= "QuantityValue"' $@
-	yq -i '.slots.freq_cook.range |= "QuantityValue"' $@
-	yq -i '.slots.fungicide_regm.range |= "TextValue"' $@
-	yq -i '.slots.gaseous_environment.range |= "TextValue"' $@
-	yq -i '.slots.gaseous_substances.range |= "TextValue"' $@
-	yq -i '.slots.gravity.range |= "TextValue"' $@
-	yq -i '.slots.growth_facil.range |= "ControlledTermValue"' $@
-	yq -i '.slots.growth_hormone_regm.range |= "TextValue"' $@
-	yq -i '.slots.hall_count.range |= "TextValue"' $@
-	yq -i '.slots.hall_count.range |= "TextValue"' $@
-	yq -i '.slots.hcr_pressure.range |= "TextValue"' $@
-	yq -i '.slots.hcr_temp.range |= "TextValue"' $@
-	yq -i '.slots.heat_sys_deliv_meth.range |= "string"' $@
-	yq -i '.slots.heat_system_id.range |= "TextValue"' $@
-	yq -i '.slots.heavy_metals.range |= "TextValue"' $@
-	yq -i '.slots.herbicide_regm.range |= "TextValue"' $@
-	yq -i '.slots.host_body_product.range |= "ControlledTermValue"' $@
-	yq -i '.slots.host_body_site.range |= "ControlledTermValue"' $@
-	yq -i '.slots.host_family_relation.range |= "string"' $@
-	yq -i '.slots.host_phenotype.range |= "ControlledTermValue"' $@
-	yq -i '.slots.host_subspecf_genlin.range |= "string"' $@
-	yq -i '.slots.host_symbiont.range |= "string"' $@
-	yq -i '.slots.humidity_regm.range |= "TextValue"' $@
-	yq -i '.slots.inorg_particles.range |= "TextValue"' $@
-	yq -i '.slots.iw_bt_date_well.range |= "TimestampValue"' $@
-	yq -i '.slots.last_clean.range |= "TimestampValue"' $@
-	yq -i '.slots.lat_lon.range |= "GeolocationValue"' $@
-	yq -i '.slots.light_regm.range |= "TextValue"' $@
-	yq -i '.slots.max_occup.range |= "QuantityValue"' $@
-	yq -i '.slots.micro_biomass_meth.range |= "string"' $@
-	yq -i '.slots.mineral_nutr_regm.range |= "TextValue"' $@
-	yq -i '.slots.misc_param.range |= "TextValue"' $@
-	yq -i '.slots.n_alkanes.range |= "TextValue"' $@
-	yq -i '.slots.non_min_nutr_regm.range |= "string"' $@
-	yq -i '.slots.number_pets.range |= "QuantityValue"' $@
-	yq -i '.slots.number_plants.range |= "QuantityValue"' $@
-	yq -i '.slots.number_resident.range |= "QuantityValue"' $@
-	yq -i '.slots.occup_density_samp.range |= "QuantityValue"' $@
-	yq -i '.slots.occup_samp.range |= "QuantityValue"' $@
-	yq -i '.slots.org_count_qpcr_info.range |= "string"' $@
-	yq -i '.slots.org_particles.range |= "TextValue"' $@
-	yq -i '.slots.organism_count.range |= "QuantityValue"' $@
-	yq -i '.slots.particle_class.range |= "TextValue"' $@
-	yq -i '.slots.permeability.range |= "TextValue"' $@
-	yq -i '.slots.pesticide_regm.range |= "TextValue"' $@
-	yq -i '.slots.phaeopigments.range |= "TextValue"' $@
-	yq -i '.slots.phosplipid_fatt_acid.range |= "TextValue"' $@
-	yq -i '.slots.plant_growth_med.range |= "ControlledTermValue"' $@
-	yq -i '.slots.plant_struc.range |= "ControlledTermValue"' $@
-	yq -i '.slots.pollutants.range |= "TextValue"' $@
-	yq -i '.slots.porosity.range |= "TextValue"' $@
-	yq -i '.slots.pres_animal_insect.range |= "string"' $@
-	yq -i '.slots.prev_land_use_meth.range |= "string"' $@
-	yq -i '.slots.prod_start_date.range |= "TimestampValue"' $@
-	yq -i '.slots.radiation_regm.range |= "TextValue"' $@
-	yq -i '.slots.rainfall_regm.range |= "TextValue"' $@
-	yq -i '.slots.resins_pc.range |= "TextValue"' $@
-	yq -i '.slots.room_architec_elem.range |= "string"' $@
-	yq -i '.slots.room_count.range |= "TextValue"' $@
-	yq -i '.slots.room_dim.range |= "TextValue"' $@
-	yq -i '.slots.room_door_dist.range |= "TextValue"' $@
-	yq -i '.slots.room_net_area.range |= "TextValue"' $@
-	yq -i '.slots.room_occup.range |= "QuantityValue"' $@
-	yq -i '.slots.room_vol.range |= "TextValue"' $@
-	yq -i '.slots.root_med_carbon.range |= "TextValue"' $@
-	yq -i '.slots.root_med_macronutr.range |= "TextValue"' $@
-	yq -i '.slots.root_med_micronutr.range |= "TextValue"' $@
-	yq -i '.slots.root_med_ph.range |= "QuantityValue"' $@
-	yq -i '.slots.root_med_regl.range |= "TextValue"' $@
-	yq -i '.slots.root_med_suppl.range |= "TextValue"' $@
-	yq -i '.slots.salt_regm.range |= "TextValue"' $@
-	yq -i '.slots.samp_collec_device.range |= "string"' $@
-	yq -i '.slots.samp_collec_method.range |= "string"' $@
-	yq -i '.slots.samp_loc_corr_rate.range |= "TextValue"' $@
-	yq -i '.slots.samp_mat_process.range |= "ControlledTermValue"' $@
-	yq -i '.slots.samp_md.range |= "QuantityValue"' $@
-	yq -i '.slots.samp_name.range |= "string"' $@
-	yq -i '.slots.samp_preserv.range |= "TextValue"' $@
-	yq -i '.slots.samp_room_id.range |= "TextValue"' $@
-	yq -i '.slots.samp_time_out.range |= "TextValue"' $@
-	yq -i '.slots.samp_transport_cond.range |= "TextValue"' $@
-	yq -i '.slots.samp_tvdss.range |= "TextValue"' $@
-	yq -i '.slots.saturates_pc.range |= "TextValue"' $@
-	yq -i '.slots.shad_dev_water_mold.range |= "string"' $@
-	yq -i '.slots.sieving.range |= "TextValue"' $@
-	yq -i '.slots.size_frac.range |= "TextValue"' $@
-	yq -i '.slots.soil_texture_meth.range |= "string"' $@
-	yq -i '.slots.soluble_inorg_mat.range |= "TextValue"' $@
-	yq -i '.slots.soluble_org_mat.range |= "TextValue"' $@
-	yq -i '.slots.suspend_solids.range |= "TextValue"' $@
-	yq -i '.slots.tot_nitro_cont_meth.range |= "string"' $@
-	yq -i '.slots.viscosity.range |= "TextValue"' $@
-	yq -i '.slots.volatile_org_comp.range |= "TextValue"' $@
-	yq -i '.slots.water_cont_soil_meth.range |= "string"' $@
-	yq -i '.slots.water_temp_regm.range |= "TextValue"' $@
-	yq -i '.slots.watering_regm.range |= "TextValue"' $@
-	yq -i '.slots.window_open_freq.range |= "TextValue"' $@
-	yq -i '.slots.window_size.range |= "TextValue"' $@
-
-	yq -i 'del(.classes)' $@
-	yq -i 'del(.enums.[].name)'  $@
-	yq -i 'del(.enums.[].permissible_values.[].text)'  $@
-	yq -i 'del(.slots.[].name)'  $@
-	yq -i 'del(.slots.add_recov_method.pattern)'  $@
-	yq -i 'del(.subsets.[].name)'  $@
-
-	yq -i '.id |= "https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml"' $@
-
-#	# update host_taxid and samp_taxon_id. may want to flatten to a string or URIORCURIE eventually
-	yq -i 'del(.slots.host_taxid.examples)'  $@
-	yq -i 'del(.slots.host_taxid.string_serialization)'  $@
-	yq -i 'del(.slots.samp_taxon_id.examples)'  $@
-	yq -i 'del(.slots.samp_taxon_id.string_serialization)'  $@
-
-	yq -i '.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"]'  $@
-	yq -i '.slots.host_taxid.range = "ControlledIdentifiedTermValue"'  $@
-	yq -i '.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"]'  $@
-	yq -i '.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"'  $@
-
-
-	# add "M horizon" to soil_horizon_enum
-	yq -i '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'  $@
+	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
+	# eval yq -i $$line $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 
@@ -259,10 +107,7 @@ local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_
 		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
 		$^ | cat > $@
 
-#mixs-deepdiff: src/schema/mixs.yaml
-#	mv src/schema/mixs.yaml.bak src/schema/mixs.bak.yaml
-#	$(RUN) deep diff src/schema/mixs.bak.yaml $^
-#	mv src/schema/mixs.bak.yaml src/schema/mixs.yaml.bak
+# will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
 
 project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
 	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
@@ -311,12 +156,10 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 		-i $< \
 		-o $@
 
-# # # #
+### Illustrations of getting Neon data from third parties
 
-local/envo.db:
-	$(RUN) semsql download envo -o $@
-
-# # # #
+#local/envo.db:
+#	$(RUN) semsql download envo -o $@
 
 #local/nlcd_2019_land_cover_l48_20210604.xml:
 #	curl -o $@ https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/nlcd_2019_land_cover_l48_20210604.xml
@@ -335,13 +178,12 @@ local/envo.db:
 #local/neon-soil-order-envo-mapping.tsv:
 #	$(RUN) python nmdc_schema/neon-soil-order-envo-mapping.py
 
-# # # #
+###
 
 accepting-legacy-ids-all: accepting-legacy-ids-clean \
 nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json nmdc_schema/nmdc_schema_accepting_legacy_ids.py
 
-# --useuris / --metauris
-nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
+nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml assets/yq-for-nmdc_schema_accepting_legacy_ids.txt
 	$(RUN) gen-linkml \
 		--format yaml \
 		--mergeimports \
@@ -349,46 +191,9 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml
 		--no-materialize-attributes \
 		--no-materialize-patterns \
 		--useuris \
-		--output $@ $<
-	# probably should have made a list of classes and then looped over a parameterized version of this
-	# could also assert that the range is string
-	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.part_of.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "Biosample") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "DataObject") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MagsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetabolomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetagenomeSequencingActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetaproteomicsAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAnnotationActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "MetatranscriptomeAssembly") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "NomAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.part_of.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_input.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.has_output.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "OmicsProcessing") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadBasedTaxonomyAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"' $@
-	yq -i '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"' $@
+		--output $@ $(word 1, $^)
 
+	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
 
 	$(RUN) gen-linkml \
 		--format yaml \
@@ -422,38 +227,17 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
-
-# could also check --client-base-url https://api-napa.microbiomedata.org
-# but separate validate-filtered-request-all is available for that now
-
-# todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_activity_set
-
-# 		--selected-collections data_object_set \
-# 		--selected-collections extraction_set \
-# 		--selected-collections field_research_site_set \
-# 		--selected-collections library_preparation_set \
-# 		--selected-collections mags_activity_set \
-# 		--selected-collections metabolomics_analysis_activity_set \
-# 		--selected-collections metagenome_annotation_activity_set \
-# 		--selected-collections metagenome_assembly_set \
-# 		--selected-collections metagenome_sequencing_activity_set  \
-# 		--selected-collections metaproteomics_analysis_activity_set \
-# 		--selected-collections metatranscriptome_activity_set \
-# 		--selected-collections nom_analysis_activity_set \
-# 		--selected-collections omics_processing_set \
-# 		--selected-collections pooling_set \
-# 		--selected-collections processed_sample_set \
-# 		--selected-collections read_based_taxonomy_analysis_activity_set \
-# 		--selected-collections read_qc_analysis_activity_set \
+# todo also notes about huge functional_annotation_agg and large metaproteomics_analysis_activity_set
 
 ## can't handle empty selected-collections yet
 ## https://github.com/microbiomedata/nmdc-schema/issues/1485
  #		--selected-collections activity_set \
  #		--selected-collections collecting_biosamples_from_site_set \
  #		--selected-collections material_sample_set \
- #		--selected-collections planned_process_set \
+ #		--selected-collections metap_gene_function_aggregation \
+ #		--selected-collections planned_process_set
 
-#  		--selected-collections metap_gene_function_aggregation \
+## to ensure API only access: --skip-collection-check
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -472,6 +256,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections data_object_set \
 		--selected-collections functional_annotation_agg \
 		--selected-collections study_set \
+ 		--selected-collections data_object_set \
  		--selected-collections extraction_set \
  		--selected-collections field_research_site_set \
  		--selected-collections library_preparation_set \
@@ -480,7 +265,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
  		--selected-collections metagenome_annotation_activity_set \
  		--selected-collections metagenome_assembly_set \
  		--selected-collections metagenome_sequencing_activity_set  \
- 		--selected-collections metaproteomics_analysis_activity_set \
  		--selected-collections metatranscriptome_activity_set \
  		--selected-collections nom_analysis_activity_set \
  		--selected-collections omics_processing_set \
@@ -488,8 +272,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
  		--selected-collections processed_sample_set \
  		--selected-collections read_based_taxonomy_analysis_activity_set \
  		--selected-collections read_qc_analysis_activity_set
-
-#		--skip-collection-check
 
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -583,6 +365,18 @@ migration-doctests:
 migrator:
 	$(RUN) create-migrator
 
+.PHONY: filtered-status
+filtered-status:
+	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
+		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
+
+local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
+	$(RUN) slot-range-type-reporter \
+		--schema $< \
+		--output $@ \
+		--schema-class Biosample
+
+### example of preparing to validate napa squad data
 local/nmdc-schema-v8.0.0.yaml:
 	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.0.0/nmdc_schema/nmdc_materialized_patterns.yaml
 	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
@@ -601,7 +395,6 @@ local/nmdc-sty-11-aygzgv51.yaml:
 		--output-file $@
 
 ### FUSEKI ETC
-
 .PHONY: thorough-docker-fuseki-cleanup-from-host
 thorough-docker-fuseki-cleanup-from-host:
 	- docker compose down
@@ -614,8 +407,7 @@ thorough-docker-fuseki-cleanup-from-host:
 docker-startup-from-host:
 	docker compose up --build --detach
 
-# manually:
-#   docker compose exec app bash
+# manually: `docker compose exec app bash`
 
 .PHONY: create-nmdc-tdb2-from-app
 create-nmdc-tdb2-from-app:
@@ -642,12 +434,11 @@ stop-nmdc-tdb2-from-app:
 	curl http://fuseki:3030/$$/datasets \
 		--user 'admin:password' # false means offline
 
-# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
-# The support to run uninstalled scripts will be removed in a future release.
-# Run `poetry install` to resolve and get rid of this message.
-
 .PHONY: build-schema-in-app
 build-schema-in-app:
+	# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
+	# The support to run uninstalled scripts will be removed in a future release.
+	# Run `poetry install` to resolve and get rid of this message.
 	poetry install
 	make squeaky-clean all test
 
@@ -710,15 +501,14 @@ restart-nmdc-tdb2-from-app:
 	curl http://fuseki:3030/$$/datasets \
 		--user 'admin:password'
 
-
-# does with work in both the datasets offline and active states?
+# does this with work in both the datasets offline and active states?
 local/nmdc-tdb2-graph-list.tsv:
 	tdb2.tdbquery \
 		--loc=$(FD_ROOT)/nmdc-tdb2 \
 		--query=assets/sparql/tdb-graph-list.rq \
 		--results=TSV > $@
 
-###
+### these docker container commands shouldn't be necessary any more due to stop-nmdc-tdb2-from-app and restart-nmdc-tdb2-from-app
 
 #.PHONY: fuseki-shutdown-from-host
 #fuseki-shutdown-from-host:
@@ -731,17 +521,4 @@ local/nmdc-tdb2-graph-list.tsv:
 .PHONY: docker-compose-down-from-host
 docker-compose-down-from-host:
 	docker compose down
-
-###
-
-.PHONY: filtered-status
-filtered-status:
-	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
-		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
-
-local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
-	$(RUN) slot-range-type-reporter \
-		--schema $< \
-		--output $@ \
-		--schema-class Biosample
 
