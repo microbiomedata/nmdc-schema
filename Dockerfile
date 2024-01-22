@@ -54,7 +54,7 @@ RUN pip install poetry
 # Install the project's Python dependencies.
 ADD ./poetry.lock    /nmdc-schema/poetry.lock
 ADD ./pyproject.toml /nmdc-schema/pyproject.toml
-RUN poetry install
+# RUN poetry install
 
 # Configure the container to display a welcome message and the OS name whenever
 # someone starts an interactive shell session (i.e. "connects to the shell").
@@ -66,4 +66,5 @@ RUN echo "echo \"\""                                                            
 
 # Run the MkDocs dev-server, configuring it to accept HTTP requests from outside the container.
 # Reference: https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734
-CMD ["poetry", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000"]
+#CMD ["poetry", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000"]
+CMD ["tail", "-f", "/dev/null"]
