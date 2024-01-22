@@ -44,7 +44,7 @@ packages = [
 
 [tool.poetry.dependencies]
 click-log = "^0.4.0"
-linkml = "^1.6.3"
+linkml = "^1.6.8"
 linkml-runtime = "^1.6.2"
 python = "^3.9"
 
