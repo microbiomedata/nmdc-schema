@@ -146,30 +146,6 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 		-i $< \
 		-o $@
 
-### Illustrations of getting Neon data from third parties
-
-#local/envo.db:
-#	$(RUN) semsql download envo -o $@
-
-#local/nlcd_2019_land_cover_l48_20210604.xml:
-#	curl -o $@ https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/metadata/nlcd_2019_land_cover_l48_20210604.xml
-#
-#
-#local/nlcd_2019_land_cover_l48_20210604.yaml: local/nlcd_2019_land_cover_l48_20210604.xml
-#	yq -p=xml -oy '.' $< > $@
-#
-#
-#local/neon-nlcd-envo-mappings.tsv: local/nlcd_2019_land_cover_l48_20210604.yaml local/envo.db
-#	$(RUN)  get_neon-nlcd-envo-mapping \
-#		--nlcd-yaml $(word 1, $^) \
-#		--envo-sqlite $(word 2, $^) \
-#		--neon-nlcd-envo-mappings-tsv $@
-#
-#local/neon-soil-order-envo-mapping.tsv:
-#	$(RUN) python nmdc_schema/neon-soil-order-envo-mapping.py
-
-###
-
 accepting-legacy-ids-all: accepting-legacy-ids-clean \
 nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json nmdc_schema/nmdc_schema_accepting_legacy_ids.py
 
