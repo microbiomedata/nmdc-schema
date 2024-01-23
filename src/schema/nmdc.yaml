@@ -15,7 +15,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v9.3.2 # GH uses same version string # pyproject.toml says "9.3.2"
+version: v10.0.0 # GH uses same version string # pyproject.toml says "9.3.2"
 
 imports:
   - annotation
@@ -28,8 +28,6 @@ imports:
   - portal/mixs_inspired
   - portal/sample_id
   - workflow_execution_activity
-#  - external_identifiers
-#  - sample_prep
 
 
 prefixes:
@@ -2371,7 +2369,7 @@ slots:
   gene_function_id:
     range: uriorcurie
     description: The identifier for the gene function.
-    examples: 
+    examples:
       - value: KEGG.ORTHOLOGY:K00627
     required: true
   count:
@@ -3096,7 +3094,7 @@ slots:
   infiltrations:
     description: The amount of time it takes to complete each infiltration activity
     examples:
-      - value: [ '00:01:32', '00:00:53']
+      - value: [ '00:01:32', '00:00:53' ]
     aliases:
       - infiltration_1
       - infiltration_2
