@@ -491,55 +491,6 @@ local/nmdc-tdb2-graph-list.tsv:
 #   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
 
 
-### these docker container commands shouldn't be necessary any more due to stop-nmdc-tdb2-from-app and restart-nmdc-tdb2-from-app
-#  which shouldn't be necessary either due to loading the data into the running dataset!
-
-#.PHONY: fuseki-shutdown-from-host
-#fuseki-shutdown-from-host:
-#	docker container stop nmdc-schema-fuseki-1
-
-#.PHONY: fuseki-restart-from-host
-#fuseki-restart-from-host:
-#	docker container restart nmdc-schema-fuseki-1
-
-#.PHONY: stop-nmdc-tdb2-from-app
-#stop-nmdc-tdb2-from-app:
-#	echo "Putting dataset into 'offline' state."
-#	curl http://fuseki:3030/$$/ping
-#	curl http://fuseki:3030/$$/datasets \
-#		--user 'admin:password' # true means active
-#	curl -X POST \
-#		--user 'admin:password' \
-#		--data 'state=offline' \
-#		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # loading data (below) is safer when the dataset is offline
-#	curl http://fuseki:3030/$$/datasets \
-#		--user 'admin:password' # false means offline
-
-#populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
-#	# load the RDF/TTL data form above into the nmdc-tdb2 TDB2 dataset we created earlier
-#	tdb2.tdbloader \
-#		--loc=$(FD_ROOT)/nmdc-tdb2 \
-#		--graph=https://w3id.org/nmdc/nmdc \
-#		$(word 1, $^) # loading with dataset offline. there are probably HTTP ways to load data with the dataset active.
-#	tdb2.tdbloader \
-#		--loc=$(FD_ROOT)/nmdc-tdb2 \
-#		$(word 2, $^) # loading data into default graph. I have used various named graphs in the past
-#	tdb2.tdbquery \
-#		--loc=$(FD_ROOT)/nmdc-tdb2 \
-#		--query=assets/sparql/tdb-graph-list.rq # this lists all of the named graphs within the nmdc-tdb2 dataset
-
-#.PHONY: restart-nmdc-tdb2-from-app
-#restart-nmdc-tdb2-from-app:
-#	curl http://fuseki:3030/$$/ping
-#	curl http://fuseki:3030/$$/datasets \
-#		--user 'admin:password'
-#	curl -X POST \
-#		--user 'admin:password' \
-#		--data 'state=active' \
-#		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # now you can visit http://localhost:3030 and execute SPARQL queries
-#	curl http://fuseki:3030/$$/datasets \
-#		--user 'admin:password'
-
 .PHONY: docker-compose-down-from-host
 docker-compose-down-from-host:
 	docker compose down
