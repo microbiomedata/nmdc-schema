@@ -297,50 +297,6 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 	- riot --validate $@ # < 1 minute
 	date
 
-# ----
-
-#OmicsProcessing-to-catted-Biosamples.tsv: assets/sparql/OmicsProcessing-to-catted-Biosamples.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-#	$(RUN) class-sparql \
-#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-#		--query-file $<
-#
-#assets/sparql/undesc-ununsed-slots.tsv: assets/sparql/undesc-ununsed-slots.rq nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-#	$(RUN) class-sparql \
-#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-#		--query-file $<
-#
-#OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv OmicsProcessing-to-catted-Biosamples.tsv
-#
-#OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-#	$(RUN) class-sparql  \
-#		--concatenation-suffix s \
-#		--do-group-concat \
-#		--graph-name "mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017" \
-#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-#		--schema-file  $< \
-#		--target-class-name $(firstword $(subst ., ,$(lastword $(subst /, ,$@)))) \
-#		--target-p-o-constraint "dcterms:isPartOf nmdc:sty-11-34xj1150"
-
-#validate-filtered-request-all: validate-filtered-request-clean assets/filtered-api-requests/filtered-request-validation-log.txt
-#
-#.PHONY: validate-filtered-request-all validate-filtered-request-clean
-#
-#validate-filtered-request-clean:
-#	rm -rf assets/filtered-api-requests/*
-#
-## user is responsible for providing pre-tested, properly escaped, filtered https://api-napa.microbiomedata.org/docs#/metadata requests
-## todo: explicitly running this through the python interpreter emits less logging
-#assets/filtered-api-requests/filtered-request-result.yaml:
-#	$(RUN) build-datafile-from-api-requests \
-#		--output-file $@ \
-#		--api-url "https://api-napa.microbiomedata.org/nmdcschema/study_set?filter=%7B%22id%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
-#		--api-url "https://api-napa.microbiomedata.org/nmdcschema/biosample_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999" \
-#		--api-url "https://api-napa.microbiomedata.org/nmdcschema/omics_processing_set?filter=%7B%22part_of%22%3A%22nmdc%3Asty-11-aygzgv51%22%7D&max_page_size=999999"
-#
-#assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nmdc_materialized_patterns.yaml \
-#assets/filtered-api-requests/filtered-request-result.yaml
-#	- $(RUN) linkml-validate --schema $^ > $@
-
 .PHONY: migration-doctests migrator
 
 # Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
@@ -418,15 +374,10 @@ comprehensive-fuseki-in-app: create-nmdc-tdb2-from-app populate-nmdc-tdb2-in-app
 
 .PHONY: create-nmdc-tdb2-from-app
 create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
-#	curl http://fuseki:3030/$$/ping # escape second $ with first $ in make
-#	curl http://fuseki:3030/$$/datasets \
-#		--user 'admin:password' # returns one-page-ish JSON # this should start out empty!
 	curl \
 		--user 'admin:password' \
 		--data 'dbType=tdb&dbName=nmdc-tdb2' \
 		'http://fuseki:3030/$$/datasets'
-#	curl http://fuseki:3030/$$/datasets \
-#		--user 'admin:password' # now it should have one empty dataset (like a databaser or schema in other systems like Postgres)
 
 .PHONY: populate-nmdc-tdb2-in-app
 populate-nmdc-tdb2-in-app: local/nmdc-data.ttl populate-nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
