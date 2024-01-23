@@ -2087,9 +2087,88 @@ enums:
       vortex_genie_2:
         aliases:
           - VortexGenie2
-      novaseq:
+      novaseq_6000:
         aliases:
           - NovaSeq
+          - NovaSeq 6000
+        meaning: OBI:0002630
+      hiseq_1000:
+        aliases:
+          - Illumina HiSeq 1000
+        meaning: OBI:0002022
+      hiseq_1500:
+        aliases:
+          - Illumina HiSeq 1500
+        meaning: OBI:0003386
+      hiseq_2000:
+        aliases:
+          - Illumina HiSeq 2000
+        meaning: OBI:0002001
+      hiseq_2500:
+        aliases:
+          - Illumina HiSeq 2500
+        meaning: OBI:0002002
+      hiseq_3000:
+        aliases:
+          - Illumina HiSeq 3000
+        meaning: OBI:0002048
+      hiseq_4000:
+        aliases:
+          - Illumina HiSeq 4000
+        meaning: OBI:0002049
+      hiseq_x_ten:
+        aliases:
+          - Illumina HiSeq X Ten
+        meaning: OBI:0002129
+      miniseq:
+        aliases:
+          - Illumina MiniSeq
+        meaning: OBI:0003114
+      nextseq_1000:
+        aliases:
+          - Illumina NextSeq 1000
+        meaning: OBI:0003606
+      miseq:
+        aliases:
+          - MiSeq
+          - Illumina MiSeq
+        meaning: OBI:0002003
+      nextseq_500:
+        aliases:
+          - NextSeq 500
+        meaning: OBI:0002021
+      nextseq_550:
+        aliases:
+          - NextSeq 550
+        meaning: OBI:0003387
+      gridion:
+         aliases:
+           - Oxford Nanopore GridION Mk1
+         meaning: OBI:0002751
+      minion:
+        aliases:
+          - Oxford Nanopore MinION
+        meaning: OBI:0002750
+      promethion:
+        aliases:
+          - Oxford Nanopore PromethION
+        meaning: OBI:0002752
+      rs_II:
+        aliases:
+          - PacBio RS II
+        meaning: OBI:0002012
+      sequel:
+        aliases:
+          - PacBio Sequel
+        meaning: OBI:0002632
+      sequel_II:
+         aliases:
+           - PacBio Sequel II
+         meaning: OBI:0002633
+      revio:
+        aliases: 
+           - PacBio Revio
+           - Revio
 
   InstrumentVendorEnum:
     permissible_values:
@@ -2118,8 +2197,16 @@ enums:
       illumina:
         aliases:
           - Illumina
-        exact_mappings:
-          - BAO:0200000
+        meaning: OBI:0000759
+      pacbio:
+        aliases:
+          - PacBio
+          - Pacific Biosciences
+        meaning: OBI:0001856
+      oxford_nanopore:
+        aliases:
+          - Oxford Nanopore Technologies
+        meaning: OBI:0002755
 
   StatusEnum:
     permissible_values:
