@@ -1,6 +1,5 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from linkml_runtime import SchemaView
-import nmdc_schema.nmdc_data as nd
 
 class Migrator_from_X_to_PR10(MigratorBase):
     """Migrates data from schema X to PR10"""
@@ -11,8 +10,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Get a dictionary of slots and the class uris of their range if they have inlined classes as their range.
-        schema_string = nd.get_nmdc_yaml_string()
-        view = SchemaView(schema_string)
+        view = SchemaView("src/schema/nmdc.yaml")
 
         slots_with_inlined_classes = {}
         classes_with_inlined_classes = ["Biosample", "Study", "Extraction"]
