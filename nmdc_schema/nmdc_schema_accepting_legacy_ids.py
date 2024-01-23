@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2023-12-15T16:22:48
+# Generation date: 2024-01-23T15:51:35
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -30,7 +30,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
-version = "v9.3.2"
+version = "v10.0.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -483,6 +483,28 @@ class OrthologyGroupId(FunctionalAnnotationTermId):
 
 
 @dataclass
+class FailureCategorization(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["FailureCategorization"]
+    class_class_curie: ClassVar[str] = "nmdc:FailureCategorization"
+    class_name: ClassVar[str] = "FailureCategorization"
+    class_model_uri: ClassVar[URIRef] = NMDC.FailureCategorization
+
+    qc_failure_what: Optional[Union[str, "FailureWhatEnum"]] = None
+    qc_failure_where: Optional[Union[str, "FailureWhereEnum"]] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.qc_failure_what is not None and not isinstance(self.qc_failure_what, FailureWhatEnum):
+            self.qc_failure_what = FailureWhatEnum(self.qc_failure_what)
+
+        if self.qc_failure_where is not None and not isinstance(self.qc_failure_where, FailureWhereEnum):
+            self.qc_failure_where = FailureWhereEnum(self.qc_failure_where)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
 class FunctionalAnnotationAggMember(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -491,18 +513,24 @@ class FunctionalAnnotationAggMember(YAMLRoot):
     class_name: ClassVar[str] = "FunctionalAnnotationAggMember"
     class_model_uri: ClassVar[URIRef] = NMDC.FunctionalAnnotationAggMember
 
-    metagenome_annotation_id: Optional[Union[str, WorkflowExecutionActivityId]] = None
-    gene_function_id: Optional[Union[str, URIorCURIE]] = None
-    count: Optional[int] = None
+    metagenome_annotation_id: Union[str, WorkflowExecutionActivityId] = None
+    gene_function_id: Union[str, URIorCURIE] = None
+    count: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.metagenome_annotation_id is not None and not isinstance(self.metagenome_annotation_id, WorkflowExecutionActivityId):
+        if self._is_empty(self.metagenome_annotation_id):
+            self.MissingRequiredField("metagenome_annotation_id")
+        if not isinstance(self.metagenome_annotation_id, WorkflowExecutionActivityId):
             self.metagenome_annotation_id = WorkflowExecutionActivityId(self.metagenome_annotation_id)
 
-        if self.gene_function_id is not None and not isinstance(self.gene_function_id, URIorCURIE):
+        if self._is_empty(self.gene_function_id):
+            self.MissingRequiredField("gene_function_id")
+        if not isinstance(self.gene_function_id, URIorCURIE):
             self.gene_function_id = URIorCURIE(self.gene_function_id)
 
-        if self.count is not None and not isinstance(self.count, int):
+        if self._is_empty(self.count):
+            self.MissingRequiredField("count")
+        if not isinstance(self.count, int):
             self.count = int(self.count)
 
         super().__post_init__(**kwargs)
@@ -523,13 +551,14 @@ class Database(YAMLRoot):
     class_name: ClassVar[str] = "Database"
     class_model_uri: ClassVar[URIRef] = NMDC.Database
 
+    planned_process_set: Optional[Union[Dict[Union[str, PlannedProcessId], Union[dict, "PlannedProcess"]], List[Union[dict, "PlannedProcess"]]]] = empty_dict()
+    functional_annotation_agg: Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]] = empty_list()
     activity_set: Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecutionActivity"]], List[Union[dict, "WorkflowExecutionActivity"]]]] = empty_dict()
     biosample_set: Optional[Union[Dict[Union[str, BiosampleId], Union[dict, "Biosample"]], List[Union[dict, "Biosample"]]]] = empty_dict()
     collecting_biosamples_from_site_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
     data_object_set: Optional[Union[Dict[Union[str, DataObjectId], Union[dict, "DataObject"]], List[Union[dict, "DataObject"]]]] = empty_dict()
     extraction_set: Optional[Union[Dict[Union[str, ExtractionId], Union[dict, "Extraction"]], List[Union[dict, "Extraction"]]]] = empty_dict()
     field_research_site_set: Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, "FieldResearchSite"]], List[Union[dict, "FieldResearchSite"]]]] = empty_dict()
-    functional_annotation_agg: Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]] = empty_list()
     functional_annotation_set: Optional[Union[Union[dict, "FunctionalAnnotation"], List[Union[dict, "FunctionalAnnotation"]]]] = empty_list()
     genome_feature_set: Optional[Union[Union[dict, "GenomeFeature"], List[Union[dict, "GenomeFeature"]]]] = empty_list()
     library_preparation_set: Optional[Union[Dict[Union[str, LibraryPreparationId], Union[dict, "LibraryPreparation"]], List[Union[dict, "LibraryPreparation"]]]] = empty_dict()
@@ -542,7 +571,6 @@ class Database(YAMLRoot):
     metatranscriptome_activity_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]] = empty_dict()
     nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]] = empty_dict()
     omics_processing_set: Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]] = empty_dict()
-    planned_process_set: Optional[Union[Dict[Union[str, PlannedProcessId], Union[dict, "PlannedProcess"]], List[Union[dict, "PlannedProcess"]]]] = empty_dict()
     pooling_set: Optional[Union[Dict[Union[str, PoolingId], Union[dict, "Pooling"]], List[Union[dict, "Pooling"]]]] = empty_dict()
     processed_sample_set: Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], List[Union[dict, "ProcessedSample"]]]] = empty_dict()
     read_based_taxonomy_analysis_activity_set: Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisActivityId], Union[dict, "ReadBasedTaxonomyAnalysisActivity"]], List[Union[dict, "ReadBasedTaxonomyAnalysisActivity"]]]] = empty_dict()
@@ -550,6 +578,12 @@ class Database(YAMLRoot):
     study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        self._normalize_inlined_as_list(slot_name="planned_process_set", slot_type=PlannedProcess, key_name="id", keyed=True)
+
+        if not isinstance(self.functional_annotation_agg, list):
+            self.functional_annotation_agg = [self.functional_annotation_agg] if self.functional_annotation_agg is not None else []
+        self.functional_annotation_agg = [v if isinstance(v, FunctionalAnnotationAggMember) else FunctionalAnnotationAggMember(**as_dict(v)) for v in self.functional_annotation_agg]
+
         self._normalize_inlined_as_list(slot_name="activity_set", slot_type=WorkflowExecutionActivity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
@@ -680,28 +714,6 @@ class Protocol(YAMLRoot):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.url is not None and not isinstance(self.url, str):
             self.url = str(self.url)
-
-        if self.name is not None and not isinstance(self.name, str):
-            self.name = str(self.name)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass
-class QualityControlReport(YAMLRoot):
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["QualityControlReport"]
-    class_class_curie: ClassVar[str] = "nmdc:QualityControlReport"
-    class_name: ClassVar[str] = "QualityControlReport"
-    class_model_uri: ClassVar[URIRef] = NMDC.QualityControlReport
-
-    status: Optional[Union[str, "StatusEnum"]] = None
-    name: Optional[str] = None
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self.status is not None and not isinstance(self.status, StatusEnum):
-            self.status = StatusEnum(self.status)
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
@@ -1672,6 +1684,7 @@ class Biosample(MaterialEntity):
     analysis_type: Optional[Union[Union[str, "AnalysisTypeEnum"], List[Union[str, "AnalysisTypeEnum"]]]] = empty_list()
     sample_link: Optional[Union[str, List[str]]] = empty_list()
     bulk_elect_conductivity: Optional[Union[dict, "QuantityValue"]] = None
+    infiltrations: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -3621,6 +3634,10 @@ class Biosample(MaterialEntity):
         if self.bulk_elect_conductivity is not None and not isinstance(self.bulk_elect_conductivity, QuantityValue):
             self.bulk_elect_conductivity = QuantityValue(**as_dict(self.bulk_elect_conductivity))
 
+        if not isinstance(self.infiltrations, list):
+            self.infiltrations = [self.infiltrations] if self.infiltrations is not None else []
+        self.infiltrations = [v if isinstance(v, str) else str(v) for v in self.infiltrations]
+
         if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
             self.zinc = QuantityValue(**as_dict(self.zinc))
 
@@ -3796,6 +3813,9 @@ class PlannedProcess(NamedThing):
     protocol_link: Optional[Union[dict, Protocol]] = None
     start_date: Optional[str] = None
     instrument_name: Optional[str] = None
+    qc_status: Optional[Union[str, "StatusEnum"]] = None
+    qc_comment: Optional[str] = None
+    has_failure_categorization: Optional[Union[Union[dict, FailureCategorization], List[Union[dict, FailureCategorization]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self.designated_class = str(self.class_class_curie)
@@ -3822,6 +3842,16 @@ class PlannedProcess(NamedThing):
 
         if self.instrument_name is not None and not isinstance(self.instrument_name, str):
             self.instrument_name = str(self.instrument_name)
+
+        if self.qc_status is not None and not isinstance(self.qc_status, StatusEnum):
+            self.qc_status = StatusEnum(self.qc_status)
+
+        if self.qc_comment is not None and not isinstance(self.qc_comment, str):
+            self.qc_comment = str(self.qc_comment)
+
+        if not isinstance(self.has_failure_categorization, list):
+            self.has_failure_categorization = [self.has_failure_categorization] if self.has_failure_categorization is not None else []
+        self.has_failure_categorization = [v if isinstance(v, FailureCategorization) else FailureCategorization(**as_dict(v)) for v in self.has_failure_categorization]
 
         super().__post_init__(**kwargs)
         self.designated_class = str(self.class_class_curie)
@@ -3871,7 +3901,6 @@ class Extraction(PlannedProcess):
     extraction_method: Optional[Union[str, "ExtractionTargetEnum"]] = None
     extraction_target: Optional[Union[str, "ExtractionTargetEnum"]] = None
     input_mass: Optional[Union[dict, "QuantityValue"]] = None
-    quality_control_report: Optional[Union[dict, "QualityControlReport"]] = None
     volume: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -3903,9 +3932,6 @@ class Extraction(PlannedProcess):
 
         if self.input_mass is not None and not isinstance(self.input_mass, QuantityValue):
             self.input_mass = QuantityValue(**as_dict(self.input_mass))
-
-        if self.quality_control_report is not None and not isinstance(self.quality_control_report, QualityControlReport):
-            self.quality_control_report = QualityControlReport(**as_dict(self.quality_control_report))
 
         if self.volume is not None and not isinstance(self.volume, QuantityValue):
             self.volume = QuantityValue(**as_dict(self.volume))
@@ -5050,12 +5076,15 @@ class WorkflowExecutionActivity(Activity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     part_of: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
     version: Optional[str] = None
+    qc_status: Optional[Union[str, "StatusEnum"]] = None
+    qc_comment: Optional[str] = None
+    has_failure_categorization: Optional[Union[Union[dict, FailureCategorization], List[Union[dict, FailureCategorization]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -5079,12 +5108,6 @@ class WorkflowExecutionActivity(Activity):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
-        if self._is_empty(self.has_output):
-            self.MissingRequiredField("has_output")
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
-
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         if not isinstance(self.type, str):
@@ -5100,12 +5123,26 @@ class WorkflowExecutionActivity(Activity):
         if not isinstance(self.ended_at_time, str):
             self.ended_at_time = str(self.ended_at_time)
 
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
+
         if not isinstance(self.part_of, list):
             self.part_of = [self.part_of] if self.part_of is not None else []
         self.part_of = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.part_of]
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
+
+        if self.qc_status is not None and not isinstance(self.qc_status, StatusEnum):
+            self.qc_status = StatusEnum(self.qc_status)
+
+        if self.qc_comment is not None and not isinstance(self.qc_comment, str):
+            self.qc_comment = str(self.qc_comment)
+
+        if not isinstance(self.has_failure_categorization, list):
+            self.has_failure_categorization = [self.has_failure_categorization] if self.has_failure_categorization is not None else []
+        self.has_failure_categorization = [v if isinstance(v, FailureCategorization) else FailureCategorization(**as_dict(v)) for v in self.has_failure_categorization]
 
         super().__post_init__(**kwargs)
 
@@ -5126,7 +5163,6 @@ class MetagenomeAssembly(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     started_at_time: str = None
     ended_at_time: str = None
     type: Optional[str] = None
@@ -5268,7 +5304,6 @@ class MetatranscriptomeAssembly(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
     started_at_time: str = None
     ended_at_time: str = None
@@ -5410,7 +5445,6 @@ class MetagenomeAnnotationActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     started_at_time: str = None
     ended_at_time: str = None
     type: Optional[str] = None
@@ -5445,7 +5479,6 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     started_at_time: str = None
     ended_at_time: str = None
     type: Optional[str] = None
@@ -5483,7 +5516,6 @@ class MetatranscriptomeActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     started_at_time: str = None
     ended_at_time: str = None
     type: Optional[str] = None
@@ -5516,7 +5548,6 @@ class MagsAnalysisActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     started_at_time: str = None
     ended_at_time: str = None
     type: Optional[str] = None
@@ -5575,7 +5606,6 @@ class MetagenomeSequencingActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
     started_at_time: str = None
     ended_at_time: str = None
@@ -5607,7 +5637,6 @@ class ReadQcAnalysisActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     started_at_time: str = None
     ended_at_time: str = None
     type: Optional[str] = None
@@ -5668,7 +5697,6 @@ class ReadBasedTaxonomyAnalysisActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     started_at_time: str = None
     ended_at_time: str = None
     type: Optional[str] = None
@@ -5698,7 +5726,6 @@ class MetabolomicsAnalysisActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
     started_at_time: str = None
     ended_at_time: str = None
@@ -5734,7 +5761,6 @@ class MetaproteomicsAnalysisActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
     started_at_time: str = None
     ended_at_time: str = None
@@ -5770,7 +5796,6 @@ class NomAnalysisActivity(WorkflowExecutionActivity):
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
     started_at_time: str = None
     ended_at_time: str = None
@@ -6575,6 +6600,73 @@ class ContainerCategoryEnum(EnumDefinitionImpl):
             PermissibleValue(text="V-bottom conical tube"))
         setattr(cls, "falcon tube",
             PermissibleValue(text="falcon tube"))
+
+class FailureWhatEnum(EnumDefinitionImpl):
+    """
+    The permitted values for describing where a failure occurred during processing in the lab during analysis
+    workflows.
+    """
+    low_read_count = PermissibleValue(
+        text="low_read_count",
+        description="Number of output reads is not sufficient to continue to the next analysis step.")
+    malformed_data = PermissibleValue(
+        text="malformed_data",
+        description="Workflow failure reading input or writing the output file(s).")
+    assembly_size_too_small = PermissibleValue(
+        text="assembly_size_too_small",
+        description="""The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.""")
+    no_valid_data_generated = PermissibleValue(
+        text="no_valid_data_generated",
+        description="""A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.""")
+    other = PermissibleValue(
+        text="other",
+        description="""A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.""")
+
+    _defn = EnumDefinition(
+        name="FailureWhatEnum",
+        description="""The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.""",
+    )
+
+class FailureWhereEnum(EnumDefinitionImpl):
+    """
+    The permitted values for describing where in the process, either a lab or analysis workflow step, the failure
+    occurred.
+    """
+    OmicsProcessing = PermissibleValue(
+        text="OmicsProcessing",
+        description="A failure has occurred in omics processing, a lab process.")
+    Pooling = PermissibleValue(
+        text="Pooling",
+        description="A failure has occurred in pooling, a lab process.")
+    Extraction = PermissibleValue(
+        text="Extraction",
+        description="A failure has occurred in extraction, a lab process.")
+    LibraryPreparation = PermissibleValue(
+        text="LibraryPreparation",
+        description="A failure has occurred in library preparation, a lab process.")
+    MetagenomeAssembly = PermissibleValue(
+        text="MetagenomeAssembly",
+        description="A failure has occurred in metagenome assembly, a workflow process.")
+    MetatranscriptomeActivity = PermissibleValue(
+        text="MetatranscriptomeActivity",
+        description="A failure has occurred in metatranscriptome analysis, a workflow process.")
+    MagsAnalysisActivity = PermissibleValue(
+        text="MagsAnalysisActivity",
+        description="""A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).""")
+    ReadQcAnalysisActivity = PermissibleValue(
+        text="ReadQcAnalysisActivity",
+        description="A failure has occurred in read qc, a workflow process.")
+    ReadBasedTaxonomyAnalysisActivity = PermissibleValue(
+        text="ReadBasedTaxonomyAnalysisActivity",
+        description="A failure has occurred in reads based taxonomy, a workflow process.")
+    MetagenomeAnnotationActivity = PermissibleValue(
+        text="MetagenomeAnnotationActivity",
+        description="A failure has occurred in annotation, a workflow process.")
+
+    _defn = EnumDefinition(
+        name="FailureWhereEnum",
+        description="""The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.""",
+    )
 
 class SeparationMethodEnum(EnumDefinitionImpl):
     """
@@ -8710,6 +8802,9 @@ class WindowVertPosEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.has_failure_categorization = Slot(uri=NMDC.has_failure_categorization, name="has_failure_categorization", curie=NMDC.curie('has_failure_categorization'),
+                   model_uri=NMDC.has_failure_categorization, domain=None, range=Optional[Union[Union[dict, FailureCategorization], List[Union[dict, FailureCategorization]]]])
+
 slots.model = Slot(uri=NMDC.model, name="model", curie=NMDC.curie('model'),
                    model_uri=NMDC.model, domain=None, range=Optional[Union[str, "InstrumentModelEnum"]])
 
@@ -8717,13 +8812,13 @@ slots.vendor = Slot(uri=NMDC.vendor, name="vendor", curie=NMDC.curie('vendor'),
                    model_uri=NMDC.vendor, domain=None, range=Optional[Union[str, "InstrumentVendorEnum"]])
 
 slots.metagenome_annotation_id = Slot(uri=NMDC.metagenome_annotation_id, name="metagenome_annotation_id", curie=NMDC.curie('metagenome_annotation_id'),
-                   model_uri=NMDC.metagenome_annotation_id, domain=FunctionalAnnotationAggMember, range=Optional[Union[str, WorkflowExecutionActivityId]])
+                   model_uri=NMDC.metagenome_annotation_id, domain=FunctionalAnnotationAggMember, range=Union[str, WorkflowExecutionActivityId])
 
 slots.gene_function_id = Slot(uri=NMDC.gene_function_id, name="gene_function_id", curie=NMDC.curie('gene_function_id'),
-                   model_uri=NMDC.gene_function_id, domain=None, range=Optional[Union[str, URIorCURIE]])
+                   model_uri=NMDC.gene_function_id, domain=None, range=Union[str, URIorCURIE])
 
 slots.count = Slot(uri=NMDC.count, name="count", curie=NMDC.curie('count'),
-                   model_uri=NMDC.count, domain=None, range=Optional[int])
+                   model_uri=NMDC.count, domain=None, range=int)
 
 slots.functional_annotation_agg = Slot(uri=NMDC.functional_annotation_agg, name="functional_annotation_agg", curie=NMDC.curie('functional_annotation_agg'),
                    model_uri=NMDC.functional_annotation_agg, domain=Database, range=Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]])
@@ -8755,17 +8850,14 @@ slots.sample_collection_year = Slot(uri=NMDC.sample_collection_year, name="sampl
 slots.sample_collection_month = Slot(uri=NMDC.sample_collection_month, name="sample_collection_month", curie=NMDC.curie('sample_collection_month'),
                    model_uri=NMDC.sample_collection_month, domain=None, range=Optional[str])
 
-slots.status = Slot(uri=NMDC.status, name="status", curie=NMDC.curie('status'),
-                   model_uri=NMDC.status, domain=QualityControlReport, range=Optional[Union[str, "StatusEnum"]])
+slots.qc_status = Slot(uri=NMDC.qc_status, name="qc_status", curie=NMDC.curie('qc_status'),
+                   model_uri=NMDC.qc_status, domain=None, range=Optional[Union[str, "StatusEnum"]])
 
 slots.library_preparation_kit = Slot(uri=NMDC.library_preparation_kit, name="library_preparation_kit", curie=NMDC.curie('library_preparation_kit'),
                    model_uri=NMDC.library_preparation_kit, domain=None, range=Optional[str])
 
 slots.extraction_method = Slot(uri=NMDC.extraction_method, name="extraction_method", curie=NMDC.curie('extraction_method'),
                    model_uri=NMDC.extraction_method, domain=Extraction, range=Optional[Union[str, "ExtractionTargetEnum"]])
-
-slots.quality_control_report = Slot(uri=NMDC.quality_control_report, name="quality_control_report", curie=NMDC.curie('quality_control_report'),
-                   model_uri=NMDC.quality_control_report, domain=PlannedProcess, range=Optional[Union[dict, QualityControlReport]])
 
 slots.pcr_cycles = Slot(uri=NMDC.pcr_cycles, name="pcr_cycles", curie=NMDC.curie('pcr_cycles'),
                    model_uri=NMDC.pcr_cycles, domain=None, range=Optional[int])
@@ -9016,6 +9108,10 @@ slots.temperature = Slot(uri=NMDC.temperature, name="temperature", curie=NMDC.cu
 
 slots.bulk_elect_conductivity = Slot(uri=NMDC.bulk_elect_conductivity, name="bulk_elect_conductivity", curie=NMDC.curie('bulk_elect_conductivity'),
                    model_uri=NMDC.bulk_elect_conductivity, domain=None, range=Optional[Union[dict, QuantityValue]])
+
+slots.infiltrations = Slot(uri=NMDC.infiltrations, name="infiltrations", curie=NMDC.curie('infiltrations'),
+                   model_uri=NMDC.infiltrations, domain=None, range=Optional[Union[str, List[str]]],
+                   pattern=re.compile(r'^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$'))
 
 slots.filter_material = Slot(uri=NMDC.filter_material, name="filter_material", curie=NMDC.curie('filter_material'),
                    model_uri=NMDC.filter_material, domain=None, range=Optional[str])
@@ -9466,6 +9562,15 @@ slots.protocol_link = Slot(uri=NMDC.protocol_link, name="protocol_link", curie=N
 
 slots.biomaterial_purity = Slot(uri=NMDC.biomaterial_purity, name="biomaterial_purity", curie=NMDC.curie('biomaterial_purity'),
                    model_uri=NMDC.biomaterial_purity, domain=ProcessedSample, range=Optional[Union[dict, "QuantityValue"]])
+
+slots.qc_failure_what = Slot(uri=NMDC.qc_failure_what, name="qc_failure_what", curie=NMDC.curie('qc_failure_what'),
+                   model_uri=NMDC.qc_failure_what, domain=FailureCategorization, range=Optional[Union[str, "FailureWhatEnum"]])
+
+slots.qc_failure_where = Slot(uri=NMDC.qc_failure_where, name="qc_failure_where", curie=NMDC.curie('qc_failure_where'),
+                   model_uri=NMDC.qc_failure_where, domain=FailureCategorization, range=Optional[Union[str, "FailureWhereEnum"]])
+
+slots.qc_comment = Slot(uri=NMDC.qc_comment, name="qc_comment", curie=NMDC.curie('qc_comment'),
+                   model_uri=NMDC.qc_comment, domain=None, range=Optional[str])
 
 slots.instrument_name = Slot(uri=NMDC.instrument_name, name="instrument_name", curie=NMDC.curie('instrument_name'),
                    model_uri=NMDC.instrument_name, domain=PlannedProcess, range=Optional[str])
@@ -11605,9 +11710,6 @@ slots.WorkflowExecutionActivity_git_url = Slot(uri=NMDC.git_url, name="WorkflowE
 
 slots.WorkflowExecutionActivity_has_input = Slot(uri=NMDC.has_input, name="WorkflowExecutionActivity_has_input", curie=NMDC.curie('has_input'),
                    model_uri=NMDC.WorkflowExecutionActivity_has_input, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
-
-slots.WorkflowExecutionActivity_has_output = Slot(uri=NMDC.has_output, name="WorkflowExecutionActivity_has_output", curie=NMDC.curie('has_output'),
-                   model_uri=NMDC.WorkflowExecutionActivity_has_output, domain=WorkflowExecutionActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.WorkflowExecutionActivity_execution_resource = Slot(uri=NMDC.execution_resource, name="WorkflowExecutionActivity_execution_resource", curie=NMDC.curie('execution_resource'),
                    model_uri=NMDC.WorkflowExecutionActivity_execution_resource, domain=WorkflowExecutionActivity, range=str)

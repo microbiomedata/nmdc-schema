@@ -8,7 +8,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: v9.3.2
+version: v10.0.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   CATH:
@@ -1276,6 +1276,73 @@ enums:
         text: V-bottom conical tube
       falcon tube:
         text: falcon tube
+  FailureWhatEnum:
+    name: FailureWhatEnum
+    description: The permitted values for describing where a failure occurred during
+      processing in the lab during analysis workflows.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      low_read_count:
+        text: low_read_count
+        description: Number of output reads is not sufficient to continue to the next
+          analysis step.
+      malformed_data:
+        text: malformed_data
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        text: assembly_size_too_small
+        description: The size of the metagenome or metatranscriptome assembly is too
+          small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        text: no_valid_data_generated
+        description: A process ran but did not produce any output. Ie binning ran
+          but did not produce any medium or high quality bins.
+      other:
+        text: other
+        description: A lab process or analysis workflow has failed in a way that has
+          not been captured by the available values yet. Please use slot 'qc_comment'
+          to specify details.
+  FailureWhereEnum:
+    name: FailureWhereEnum
+    description: The permitted values for describing where in the process, either
+      a lab or analysis workflow step, the failure occurred.
+    comments:
+    - At Chris' recommendation permissible values for this enumeration are the same
+      as Class names.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      OmicsProcessing:
+        text: OmicsProcessing
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        text: Pooling
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        text: Extraction
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        text: LibraryPreparation
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        text: MetagenomeAssembly
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeActivity:
+        text: MetatranscriptomeActivity
+        description: A failure has occurred in metatranscriptome analysis, a workflow
+          process.
+      MagsAnalysisActivity:
+        text: MagsAnalysisActivity
+        description: A failure has occurred in binning, a workflow process to generate
+          metagenome-assembled genomes (MAGS).
+      ReadQcAnalysisActivity:
+        text: ReadQcAnalysisActivity
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysisActivity:
+        text: ReadBasedTaxonomyAnalysisActivity
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotationActivity:
+        text: MetagenomeAnnotationActivity
+        description: A failure has occurred in annotation, a workflow process.
   SeparationMethodEnum:
     name: SeparationMethodEnum
     description: The tool/substance used to separate or filter a solution or mixture.
@@ -3534,6 +3601,11 @@ enums:
       high:
         text: high
 slots:
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    multivalued: true
+    range: FailureCategorization
   model:
     name: model
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3544,17 +3616,25 @@ slots:
     range: InstrumentVendorEnum
   metagenome_annotation_id:
     name: metagenome_annotation_id
+    description: The identifier for the analysis activity (WorkflowExecutionActivity)
+      that generated the functional annotation results.
     from_schema: https://w3id.org/nmdc/nmdc
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecutionActivity
+    required: true
   gene_function_id:
     name: gene_function_id
+    description: The identifier for the gene function.
+    examples:
+    - value: KEGG.ORTHOLOGY:K00627
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
+    required: true
   count:
     name: count
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    required: true
   functional_annotation_agg:
     name: functional_annotation_agg
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3599,10 +3679,12 @@ slots:
   sample_collection_month:
     name: sample_collection_month
     from_schema: https://w3id.org/nmdc/nmdc
-  status:
-    name: status
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: QualityControlReport
     range: StatusEnum
   library_preparation_kit:
     name: library_preparation_kit
@@ -3613,11 +3695,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     domain: Extraction
     range: ExtractionTargetEnum
-  quality_control_report:
-    name: quality_control_report
-    from_schema: https://w3id.org/nmdc/nmdc
-    domain: PlannedProcess
-    range: QualityControlReport
   pcr_cycles:
     name: pcr_cycles
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4460,6 +4537,21 @@ slots:
       description: The conductivity measurement was 0.017 millisiemens per centimeter.
     from_schema: https://w3id.org/nmdc/nmdc
     range: QuantityValue
+  infiltrations:
+    name: infiltrations
+    description: The amount of time it takes to complete each infiltration activity
+    examples:
+    - value: '[''00:01:32'', ''00:00:53'']'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://www.protocols.io/view/field-sampling-protocol-kqdg3962pg25/v1
+    aliases:
+    - infiltration_1
+    - infiltration_2
+    multivalued: true
+    list_elements_ordered: true
+    range: string
+    pattern: ^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$
   filter_material:
     name: filter_material
     description: A porous material on which solid particles present in air or other
@@ -5482,6 +5574,32 @@ slots:
     from_schema: https://w3id.org/nmdc/basic_slots
     domain: ProcessedSample
     range: QuantityValue
+  qc_failure_what:
+    name: qc_failure_what
+    description: Provides a summary about what caused a lab or workflow process to
+      fail
+    comments:
+    - For example Low read count from a sequencer, malformed fastq files, etc)
+    from_schema: https://w3id.org/nmdc/basic_slots
+    domain: FailureCategorization
+    range: FailureWhatEnum
+  qc_failure_where:
+    name: qc_failure_where
+    description: Describes the nmdc schema class that corresonds to where the failure
+      occurred. Most commonly this would be the same as Class that generated the results.
+    comments:
+    - If the assembly size was too small to proceed to annotation failure_where would
+      be MetagenomeAssembly.
+    from_schema: https://w3id.org/nmdc/basic_slots
+    domain: FailureCategorization
+    range: FailureWhereEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/basic_slots
+    range: string
   instrument_name:
     name: instrument_name
     description: The name of the instrument that was used for processing the sample.
@@ -17898,6 +18016,12 @@ slots:
     is_a: gff_coordinate
     domain: GenomeFeature
 classes:
+  FailureCategorization:
+    name: FailureCategorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    slots:
+    - qc_failure_what
+    - qc_failure_where
   FunctionalAnnotationAggMember:
     name: FunctionalAnnotationAggMember
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17916,6 +18040,8 @@ classes:
     aliases:
     - NMDC metadata object
     slots:
+    - planned_process_set
+    - functional_annotation_agg
     - activity_set
     - biosample_set
     - collecting_biosamples_from_site_set
@@ -17977,7 +18103,7 @@ classes:
     - extraction_method
     - extraction_target
     - input_mass
-    - quality_control_report
+    - volume
     slot_usage:
       has_input:
         name: has_input
@@ -18031,12 +18157,6 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     slots:
     - url
-    - name
-  QualityControlReport:
-    name: QualityControlReport
-    from_schema: https://w3id.org/nmdc/nmdc
-    slots:
-    - status
     - name
   LibraryPreparation:
     name: LibraryPreparation
@@ -18796,6 +18916,7 @@ classes:
     - analysis_type
     - sample_link
     - bulk_elect_conductivity
+    - infiltrations
     - zinc
     - manganese
     - ammonium_nitrogen
@@ -19626,6 +19747,9 @@ classes:
     - part_of
     - type
     - version
+    - qc_status
+    - qc_comment
+    - has_failure_categorization
     slot_usage:
       started_at_time:
         name: started_at_time
@@ -19639,9 +19763,6 @@ classes:
       has_input:
         name: has_input
         required: true
-      has_output:
-        name: has_output
-        required: true
       execution_resource:
         name: execution_resource
         required: true
@@ -19654,6 +19775,31 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}'
           interpolated: true
+    rules:
+    - preconditions:
+        slot_conditions:
+          qc_status:
+            name: qc_status
+            equals_string: pass
+      postconditions:
+        slot_conditions:
+          has_output:
+            name: has_output
+            required: true
+      description: If qc_status has a value of pass, then the has_output slot is required.
+      title: qc_status_pass_has_output_required
+    - preconditions:
+        slot_conditions:
+          qc_status:
+            name: qc_status
+            value_presence: ABSENT
+      postconditions:
+        slot_conditions:
+          has_output:
+            name: has_output
+            required: true
+      description: If qc_status is not specified, then the has_output slot is required.
+      title: qc_status_pass_null_has_output_required
   MetagenomeAssembly:
     name: MetagenomeAssembly
     description: A workflow execution activity that converts sequencing reads into
@@ -20011,6 +20157,9 @@ classes:
     - protocol_link
     - start_date
     - instrument_name
+    - qc_status
+    - qc_comment
+    - has_failure_categorization
     slot_usage:
       designated_class:
         name: designated_class

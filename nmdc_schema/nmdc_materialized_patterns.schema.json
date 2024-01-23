@@ -1363,6 +1363,14 @@
                     "$ref": "#/$defs/QuantityValue",
                     "description": "Percentage of industrial effluents received by wastewater treatment plant"
                 },
+                "infiltrations": {
+                    "description": "The amount of time it takes to complete each infiltration activity",
+                    "items": {
+                        "pattern": "^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "inorg_particles": {
                     "description": "Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles",
                     "items": {
@@ -2859,6 +2867,12 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -2892,6 +2906,14 @@
                 },
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -3123,6 +3145,12 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -3172,6 +3200,14 @@
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
                     "type": "string"
@@ -3217,6 +3253,12 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -3250,6 +3292,14 @@
                 },
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -4058,6 +4108,12 @@
                 "extraction_target": {
                     "$ref": "#/$defs/ExtractionTargetEnum"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -4104,12 +4160,21 @@
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
                 },
-                "quality_control_report": {
-                    "$ref": "#/$defs/QualityControlReport"
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
                     "type": "string"
+                },
+                "volume": {
+                    "$ref": "#/$defs/QuantityValue",
+                    "description": "The volume of the solvent/solute being used, not the input."
                 }
             },
             "required": [
@@ -4130,6 +4195,51 @@
                 "phenol/chloroform extraction"
             ],
             "title": "ExtractionTargetEnum",
+            "type": "string"
+        },
+        "FailureCategorization": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "qc_failure_what": {
+                    "$ref": "#/$defs/FailureWhatEnum",
+                    "description": "Provides a summary about what caused a lab or workflow process to fail"
+                },
+                "qc_failure_where": {
+                    "$ref": "#/$defs/FailureWhereEnum",
+                    "description": "Describes the nmdc schema class that corresonds to where the failure occurred. Most commonly this would be the same as Class that generated the results."
+                }
+            },
+            "title": "FailureCategorization",
+            "type": "object"
+        },
+        "FailureWhatEnum": {
+            "description": "The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.",
+            "enum": [
+                "low_read_count",
+                "malformed_data",
+                "assembly_size_too_small",
+                "no_valid_data_generated",
+                "other"
+            ],
+            "title": "FailureWhatEnum",
+            "type": "string"
+        },
+        "FailureWhereEnum": {
+            "description": "The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.",
+            "enum": [
+                "OmicsProcessing",
+                "Pooling",
+                "Extraction",
+                "LibraryPreparation",
+                "MetagenomeAssembly",
+                "MetatranscriptomeActivity",
+                "MagsAnalysisActivity",
+                "ReadQcAnalysisActivity",
+                "ReadBasedTaxonomyAnalysisActivity",
+                "MetagenomeAnnotationActivity"
+            ],
+            "title": "FailureWhereEnum",
             "type": "string"
         },
         "FaoClassEnum": {
@@ -4369,6 +4479,12 @@
                     "description": "The type of conditioning applied to a filter, device, etc.",
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -4406,6 +4522,14 @@
                 },
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "separation_method": {
                     "$ref": "#/$defs/SeparationMethodEnum",
@@ -4533,12 +4657,19 @@
                     "type": "integer"
                 },
                 "gene_function_id": {
+                    "description": "The identifier for the gene function.",
                     "type": "string"
                 },
                 "metagenome_annotation_id": {
+                    "description": "The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.",
                     "type": "string"
                 }
             },
+            "required": [
+                "metagenome_annotation_id",
+                "gene_function_id",
+                "count"
+            ],
             "title": "FunctionalAnnotationAggMember",
             "type": "object"
         },
@@ -4926,6 +5057,12 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -4968,6 +5105,14 @@
                 },
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -5094,6 +5239,48 @@
         },
         "MagsAnalysisActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "A workflow execution activity that uses computational binning tools to group assembled contigs into genomes",
             "properties": {
                 "binned_contig_num": {
@@ -5108,6 +5295,12 @@
                 },
                 "git_url": {
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -5151,6 +5344,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5180,7 +5381,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "id",
                 "started_at_time",
                 "ended_at_time"
@@ -5229,6 +5429,48 @@
         },
         "MetabolomicsAnalysisActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "",
             "properties": {
                 "ended_at_time": {
@@ -5244,6 +5486,12 @@
                 "has_calibration": {
                     "description": "A reference to a file that holds calibration information.",
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -5281,6 +5529,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5303,7 +5559,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "type",
                 "id",
                 "started_at_time",
@@ -5314,6 +5569,48 @@
         },
         "MetagenomeAnnotationActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs",
             "properties": {
                 "ended_at_time": {
@@ -5331,6 +5628,12 @@
                     "items": {
                         "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
                     },
                     "type": "array"
                 },
@@ -5364,6 +5667,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5387,7 +5698,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "id",
                 "started_at_time",
                 "ended_at_time"
@@ -5397,6 +5707,48 @@
         },
         "MetagenomeAssembly": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "A workflow execution activity that converts sequencing reads into an assembled metagenome.",
             "properties": {
                 "asm_score": {
@@ -5461,6 +5813,12 @@
                 "git_url": {
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -5502,6 +5860,14 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "scaf_bp": {
                     "description": "Total size in bp of all scaffolds.",
@@ -5574,7 +5940,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "id",
                 "started_at_time",
                 "ended_at_time"
@@ -5584,6 +5949,48 @@
         },
         "MetagenomeSequencingActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.",
             "properties": {
                 "ended_at_time": {
@@ -5595,6 +6002,12 @@
                 },
                 "git_url": {
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -5626,6 +6039,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5648,7 +6069,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "type",
                 "id",
                 "started_at_time",
@@ -5659,6 +6079,48 @@
         },
         "MetaproteomicsAnalysisActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "",
             "properties": {
                 "ended_at_time": {
@@ -5670,6 +6132,12 @@
                 },
                 "git_url": {
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -5707,6 +6175,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5730,7 +6206,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "type",
                 "id",
                 "started_at_time",
@@ -5741,6 +6216,48 @@
         },
         "MetatranscriptomeActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "A metatranscriptome activity that e.g. pools assembly and annotation activity.",
             "properties": {
                 "ended_at_time": {
@@ -5752,6 +6269,12 @@
                 },
                 "git_url": {
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -5783,6 +6306,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5806,7 +6337,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "id",
                 "started_at_time",
                 "ended_at_time"
@@ -5816,6 +6346,48 @@
         },
         "MetatranscriptomeAnnotationActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "",
             "properties": {
                 "ended_at_time": {
@@ -5833,6 +6405,12 @@
                     "items": {
                         "pattern": "^gold:Ga[0-9]+$",
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
                     },
                     "type": "array"
                 },
@@ -5866,6 +6444,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5889,7 +6475,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "id",
                 "started_at_time",
                 "ended_at_time"
@@ -5899,6 +6484,48 @@
         },
         "MetatranscriptomeAssembly": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "",
             "properties": {
                 "asm_score": {
@@ -5963,6 +6590,12 @@
                 "git_url": {
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -6004,6 +6637,14 @@
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "scaf_bp": {
                     "description": "Total size in bp of all scaffolds.",
@@ -6075,7 +6716,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "type",
                 "id",
                 "started_at_time",
@@ -6113,6 +6753,12 @@
                 "end_date": {
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -6156,6 +6802,14 @@
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
                     "type": "string"
@@ -6169,6 +6823,48 @@
         },
         "NomAnalysisActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "",
             "properties": {
                 "ended_at_time": {
@@ -6184,6 +6880,12 @@
                 "has_calibration": {
                     "description": "A reference to a file that holds calibration information.",
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -6215,6 +6917,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -6238,7 +6948,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "type",
                 "id",
                 "started_at_time",
@@ -6297,6 +7006,12 @@
                     "items": {
                         "pattern": "^gold:Gp[0-9]+$",
                         "type": "string"
+                    },
+                    "type": "array"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
                     },
                     "type": "array"
                 },
@@ -6389,6 +7104,14 @@
                 },
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "samp_vol_we_dna_ext": {
                     "$ref": "#/$defs/QuantityValue",
@@ -6701,6 +7424,12 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -6737,6 +7466,14 @@
                 },
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -6883,21 +7620,6 @@
             "title": "QuadPosEnum",
             "type": "string"
         },
-        "QualityControlReport": {
-            "additionalProperties": false,
-            "description": "",
-            "properties": {
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                },
-                "status": {
-                    "$ref": "#/$defs/StatusEnum"
-                }
-            },
-            "title": "QualityControlReport",
-            "type": "object"
-        },
         "QuantityValue": {
             "additionalProperties": false,
             "description": "A simple quantity, e.g. 2cm",
@@ -7014,6 +7736,48 @@
         },
         "ReadBasedTaxonomyAnalysisActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "A workflow execution activity that performs taxonomy classification using sequencing reads",
             "properties": {
                 "ended_at_time": {
@@ -7025,6 +7789,12 @@
                 },
                 "git_url": {
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -7056,6 +7826,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -7079,7 +7857,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "id",
                 "started_at_time",
                 "ended_at_time"
@@ -7089,6 +7866,48 @@
         },
         "ReadQcAnalysisActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal",
             "properties": {
                 "ended_at_time": {
@@ -7100,6 +7919,12 @@
                 },
                 "git_url": {
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -7155,6 +7980,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -7178,7 +8011,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "id",
                 "started_at_time",
                 "ended_at_time"
@@ -7882,6 +8714,12 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
+                },
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
@@ -7927,6 +8765,14 @@
                 },
                 "protocol_link": {
                     "$ref": "#/$defs/Protocol"
+                },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",
@@ -8297,6 +9143,48 @@
         },
         "WorkflowExecutionActivity": {
             "additionalProperties": false,
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "qc_status": {
+                                "const": "pass"
+                            }
+                        },
+                        "required": [
+                            "qc_status"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "not": {
+                            "required": [
+                                "qc_status"
+                            ]
+                        },
+                        "properties": {
+                            "qc_status": {}
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "has_output": {}
+                        },
+                        "required": [
+                            "has_output"
+                        ]
+                    }
+                }
+            ],
             "description": "Represents an instance of an execution of a particular workflow",
             "properties": {
                 "ended_at_time": {
@@ -8308,6 +9196,12 @@
                 },
                 "git_url": {
                     "type": "string"
+                },
+                "has_failure_categorization": {
+                    "items": {
+                        "$ref": "#/$defs/FailureCategorization"
+                    },
+                    "type": "array"
                 },
                 "has_input": {
                     "description": "An input to a process.",
@@ -8339,6 +9233,14 @@
                     },
                     "type": "array"
                 },
+                "qc_comment": {
+                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
+                    "type": "string"
+                },
+                "qc_status": {
+                    "$ref": "#/$defs/StatusEnum",
+                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
                 "started_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -8361,7 +9263,6 @@
                 "execution_resource",
                 "git_url",
                 "has_input",
-                "has_output",
                 "type",
                 "id",
                 "started_at_time",
@@ -8381,7 +9282,7 @@
         }
     },
     "$id": "https://w3id.org/nmdc/nmdc",
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
     "additionalProperties": false,
     "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
     "metamodel_version": "1.7.0",
@@ -8591,5 +9492,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v9.3.2"
+    "version": "v10.0.0"
 }

@@ -8,7 +8,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: v9.3.2
+version: v10.0.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   CATH:
