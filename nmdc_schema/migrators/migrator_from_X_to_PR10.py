@@ -26,8 +26,13 @@ class Migrator_from_X_to_PR10(MigratorBase):
                 if metatype == 'class_definition':
                     class_identifying_slot = view.get_identifier_slot(slot_range)
                     if not class_identifying_slot:
-                        class_uri = f"{view.schema.default_prefix}:{element.name}"
-                        slots_with_inlined_classes[slot_name] = class_uri
+                        # need to hardcode because schema prefix is not NMDC
+                        if slot_name == "has_credit_associations":
+                            class_uri = "prov:Association"
+                            slots_with_inlined_classes[slot_name] = class_uri
+                        else:
+                            class_uri = f"{view.schema.default_prefix}:{element.name}"
+                            slots_with_inlined_classes[slot_name] = class_uri
 
         # Populate the "collection-to-transformers" map for this specific migration.
         self.agenda = dict(
