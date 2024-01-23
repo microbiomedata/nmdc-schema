@@ -7,13 +7,9 @@ FD_ROOT=local/fuseki-data/databases
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
-.PHONY: OmicsProcessing-clean accepting-legacy-ids-all accepting-legacy-ids-clean \
+.PHONY: accepting-legacy-ids-all accepting-legacy-ids-clean \
 dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
-mongodb-clean rdf-clean shuttle-clean squeaky-clean
-
-OmicsProcessing-clean:
-	rm -rf OmicsProcessing.tsv
-	rm -rf OmicsProcessing-to-catted-Biosamples.tsv
+rdf-clean shuttle-clean
 
 accepting-legacy-ids-clean:
 	rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
@@ -25,11 +21,6 @@ mixs-yaml-clean:
 	rm -rf src/schema/mixs.yaml
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml
 
-mongodb-clean:
-	date
-	rm -rf local/mongo_as_nmdc_database*
-	rm -rf local/mongo_as_unvalidated_nmdc_database.yaml
-
 rdf-clean:
 	rm -rf \
 		OmicsProcessing.rq \
@@ -40,18 +31,9 @@ rdf-clean:
 		local/mongo_as_unvalidated_nmdc_database.yaml
 
 shuttle-clean:
-	rm -rf local/mixs_regen/import_slots_regardless_gen.tsv
-	rm -rf local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
-	rm -rf local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing_augmented.tsv
-	rm -rf local/mixs_regen/mixs_slots_used_in_schema.tsv
-	rm -rf local/mixs_regen/mixs_subset.yaml
 	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
+	rm -rf local/mixs_regen/mixs_subset.yaml
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
-	rm -rf local/mixs_regen/mixs_subset_repaired.yaml
-	rm -rf local/mixs_regen/mixs_subset_repaired.yaml.bak
-	rm -rf local/mixs_regen/slots_associated_with_biosample.tsv
-	rm -rf local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
-	rm -rf local/mixs_regen/slots_associated_with_omics_processing.tsv
 	mkdir -p local/mixs_regen
 	touch local/mixs_regen/.gitkeep
 
@@ -60,28 +42,7 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_la
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
-local/mixs_regen/slots_associated_with_biosample.tsv:
-	yq '.classes.Biosample.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
-
-local/mixs_regen/slots_associated_with_omics_processing.tsv:
-	yq '.classes.OmicsProcessing.slots.[]' src/schema/nmdc.yaml | sort | cat > $@
-
-local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv: \
-local/mixs_regen/slots_associated_with_biosample.tsv \
-local/mixs_regen/slots_associated_with_omics_processing.tsv
-	cat $^ > $@
-
-local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv: \
-local/mixs_regen/slots_associated_with_biosample_omics_processing.tsv
-	$(RUN) get-mixs-slots-matching-slot-list \
-		--slot_list_file $< \
-		--output_file $@
-
-local/mixs_regen/import_slots_regardless_gen.tsv: \
-local/mixs_regen/mixs_slots_associated_with_biosample_omics_processing.tsv
-	$(RUN) generate-import-slots-regardless --input_file $< --output_file $@
-
-local/mixs_regen/mixs_subset.yaml: local/mixs_regen/import_slots_regardless_gen.tsv
+local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv
 	$(RUN) do_shuttle \
 		--recipient_model assets/other_mixs_yaml_files/mixs_template.yaml \
 		--config_tsv $< \
