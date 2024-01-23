@@ -67,4 +67,5 @@ RUN echo "echo \"\""                                                            
 # Run the MkDocs dev-server, configuring it to accept HTTP requests from outside the container.
 # Reference: https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734
 #CMD ["poetry", "run", "mkdocs", "serve", "--dev-addr", "0.0.0.0:8000"]
+# launching mkdocs server had been ok on MacOS but not Ubuntu. Now this step is giving "mkdocs not installed" even in MacOS
 CMD ["tail", "-f", "/dev/null"]
