@@ -216,16 +216,10 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo compress large files
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
-make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
-# todo also notes about huge functional_annotation_agg and large metaproteomics_analysis_activity_set
+pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
+make-rdf: rdf-clean local/mongo_as_nmdc_database_cuire_repaired.ttl
 
-## can't handle empty selected-collections yet
-## https://github.com/microbiomedata/nmdc-schema/issues/1485
- #		--selected-collections activity_set \
- #		--selected-collections collecting_biosamples_from_site_set \
- #		--selected-collections material_sample_set \
- #		--selected-collections metap_gene_function_aggregation \
- #		--selected-collections planned_process_set
+# functional_annotation_agg is enormous. metaproteomics_analysis_activity_set is large. metap_gene_function_aggregation?
 
 ## to ensure API only access: --skip-collection-check
 
@@ -242,32 +236,38 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
+		--selected-collections activity_set \
 		--selected-collections biosample_set \
+		--selected-collections collecting_biosamples_from_site_set \
 		--selected-collections data_object_set \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
 		--selected-collections functional_annotation_agg \
+		--selected-collections genome_feature_set \
+		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections material_sample_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metap_gene_function_aggregation \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections planned_process_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
- 		--selected-collections data_object_set \
- 		--selected-collections extraction_set \
- 		--selected-collections field_research_site_set \
- 		--selected-collections library_preparation_set \
- 		--selected-collections mags_activity_set \
- 		--selected-collections metabolomics_analysis_activity_set \
- 		--selected-collections metagenome_annotation_activity_set \
- 		--selected-collections metagenome_assembly_set \
- 		--selected-collections metagenome_sequencing_activity_set  \
- 		--selected-collections metatranscriptome_activity_set \
- 		--selected-collections nom_analysis_activity_set \
- 		--selected-collections omics_processing_set \
- 		--selected-collections pooling_set \
- 		--selected-collections processed_sample_set \
- 		--selected-collections read_based_taxonomy_analysis_activity_set \
- 		--selected-collections read_qc_analysis_activity_set
+		--skip-collection-check
 
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_9_1_to_9_2 \
+		--migrator-name migrator_from_9_3_to_9_4 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
@@ -401,35 +401,10 @@ thorough-docker-fuseki-cleanup-from-host:
 
 .PHONY: docker-startup-from-host
 docker-startup-from-host:
-	docker compose up --build --detach # --build is only necessary if changes have been made to the Dockerfile
+	docker compose up --build  --detach # --build is only necessary if changes have been made to the Dockerfile
 
 # manually: `docker compose exec app bash`
 # then you can do any nmdc-schem makefile commands in the 'app' environment
-
-.PHONY: create-nmdc-tdb2-from-app
-create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
-	curl http://fuseki:3030/$$/ping # escape second $ with first $ in make
-	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password' # returns one-page-ish JSON # this should start out empty!
-	curl \
-		--user 'admin:password' \
-		--data 'dbType=tdb&dbName=nmdc-tdb2' \
-		'http://fuseki:3030/$$/datasets'
-	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password' # now it should have one empty dataset (like a databaser or schema in other systems like Postgres)
-
-.PHONY: stop-nmdc-tdb2-from-app
-stop-nmdc-tdb2-from-app:
-	echo "Putting dataset into 'offline' state."
-	curl http://fuseki:3030/$$/ping
-	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password' # true means active
-	curl -X POST \
-		--user 'admin:password' \
-		--data 'state=offline' \
-		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # loading data (below) is safer when the dataset is offline
-	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password' # false means offline
 
 .PHONY: build-schema-in-app
 build-schema-in-app:
@@ -439,25 +414,40 @@ build-schema-in-app:
 	poetry install
 	make squeaky-clean all test
 
+.PHONY: comprehensive-fuseki-in-app
+comprehensive-fuseki-in-app: create-nmdc-tdb2-from-app populate-nmdc-tdb2-in-app # run simultaneously with tests above in new `docker compose exec app bash`
+
+.PHONY: create-nmdc-tdb2-from-app
+create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
+#	curl http://fuseki:3030/$$/ping # escape second $ with first $ in make
+#	curl http://fuseki:3030/$$/datasets \
+#		--user 'admin:password' # returns one-page-ish JSON # this should start out empty!
+	curl \
+		--user 'admin:password' \
+		--data 'dbType=tdb&dbName=nmdc-tdb2' \
+		'http://fuseki:3030/$$/datasets'
+#	curl http://fuseki:3030/$$/datasets \
+#		--user 'admin:password' # now it should have one empty dataset (like a databaser or schema in other systems like Postgres)
 
 .PHONY: populate-nmdc-tdb2-in-app
 populate-nmdc-tdb2-in-app: local/nmdc-data.ttl populate-nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
 
 # Napa nmdc:sty-11-aygzgv51 = gold:Gs0114663
 local/nmdc-data.yaml:
-	# this does not travers every possible path from a Study to all related records
-	$(RUN) get-study-related-records \
+	# this does not traverse every possible path from a Study to all related records
+	# --quick-test \
+	# 40 minutes?
+	date
+	time $(RUN) get-study-related-records \
 		--api-base-url https://api.microbiomedata.org \
 		extract-study \
 		--study-id gold:Gs0114663 \
-		--quick-test \
 		--output-file $@ # this is a CLI that bundles several API calls to get data from MongoDB
 
-# change this back
-local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/neon_surface_water_metadata.json
+local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
 	$(RUN) linkml-validate --schema $^ > $@
 
-local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/neon_surface_water_metadata.json local/nmdc-data-validation-log.txt
+local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
 	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^) # remember, TTL is one serialization of RDF data
 
 local/nmdc-data.ttl: local/nmdc-data-raw.ttl
@@ -477,29 +467,14 @@ local/nmdc-data.ttl: local/nmdc-data-raw.ttl
 #
 .PHONY: populate-nmdc-tdb2
 populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
-	# load the RDF/TTL data form above into the nmdc-tdb2 TDB2 dataset we created earlier
-	tdb2.tdbloader \
-		--loc=$(FD_ROOT)/$@ \
-		--graph=https://w3id.org/nmdc/nmdc \
-		$(word 1, $^) # loading with dataset offline. there are probably HTTP ways to load data with the dataset active.
-	tdb2.tdbloader \
-		--loc=$(FD_ROOT)/$@ \
-		$(word 2, $^) # loading data into default graph. I have used various named graphs in the past
-	tdb2.tdbquery \
-		--loc=$(FD_ROOT)/nmdc-tdb2 \
-		--query=assets/sparql/tdb-graph-list.rq # this lists all of the named graphs within the nmdc-tdb2 dataset
-
-.PHONY: restart-nmdc-tdb2-from-app
-restart-nmdc-tdb2-from-app:
-	curl http://fuseki:3030/$$/ping
-	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password'
-	curl -X POST \
+	curl -X \
+		POST -H "Content-Type: text/turtle" \
 		--user 'admin:password' \
-		--data 'state=active' \
-		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # now you can visit http://localhost:3030 and execute SPARQL queries
-	curl http://fuseki:3030/$$/datasets \
-		--user 'admin:password'
+		--data-binary @$(word 1, $^) http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+	curl -X \
+		POST -H "Content-Type: text/turtle" \
+		--user 'admin:password' \
+		--data-binary @$(word 2, $^) http://fuseki:3030/nmdc-tdb2/data
 
 # does this with work in both the datasets offline and active states?
 local/nmdc-tdb2-graph-list.tsv:
@@ -508,7 +483,17 @@ local/nmdc-tdb2-graph-list.tsv:
 		--query=assets/sparql/tdb-graph-list.rq \
 		--results=TSV > $@
 
+# curl -X DELETE \
+#   --user 'admin:password' \
+#   http://fuseki:3030/nmdc-tdb2/data?default
+
+# curl -X DELETE \
+#   --user 'admin:password' \
+#   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+
+
 ### these docker container commands shouldn't be necessary any more due to stop-nmdc-tdb2-from-app and restart-nmdc-tdb2-from-app
+#  which shouldn't be necessary either due to loading the data into the running dataset!
 
 #.PHONY: fuseki-shutdown-from-host
 #fuseki-shutdown-from-host:
@@ -517,6 +502,44 @@ local/nmdc-tdb2-graph-list.tsv:
 #.PHONY: fuseki-restart-from-host
 #fuseki-restart-from-host:
 #	docker container restart nmdc-schema-fuseki-1
+
+#.PHONY: stop-nmdc-tdb2-from-app
+#stop-nmdc-tdb2-from-app:
+#	echo "Putting dataset into 'offline' state."
+#	curl http://fuseki:3030/$$/ping
+#	curl http://fuseki:3030/$$/datasets \
+#		--user 'admin:password' # true means active
+#	curl -X POST \
+#		--user 'admin:password' \
+#		--data 'state=offline' \
+#		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # loading data (below) is safer when the dataset is offline
+#	curl http://fuseki:3030/$$/datasets \
+#		--user 'admin:password' # false means offline
+
+#populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
+#	# load the RDF/TTL data form above into the nmdc-tdb2 TDB2 dataset we created earlier
+#	tdb2.tdbloader \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--graph=https://w3id.org/nmdc/nmdc \
+#		$(word 1, $^) # loading with dataset offline. there are probably HTTP ways to load data with the dataset active.
+#	tdb2.tdbloader \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		$(word 2, $^) # loading data into default graph. I have used various named graphs in the past
+#	tdb2.tdbquery \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--query=assets/sparql/tdb-graph-list.rq # this lists all of the named graphs within the nmdc-tdb2 dataset
+
+#.PHONY: restart-nmdc-tdb2-from-app
+#restart-nmdc-tdb2-from-app:
+#	curl http://fuseki:3030/$$/ping
+#	curl http://fuseki:3030/$$/datasets \
+#		--user 'admin:password'
+#	curl -X POST \
+#		--user 'admin:password' \
+#		--data 'state=active' \
+#		'http://fuseki:3030/$$/datasets/nmdc-tdb2' # now you can visit http://localhost:3030 and execute SPARQL queries
+#	curl http://fuseki:3030/$$/datasets \
+#		--user 'admin:password'
 
 .PHONY: docker-compose-down-from-host
 docker-compose-down-from-host:
