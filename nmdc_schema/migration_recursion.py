@@ -165,26 +165,12 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
     # a "database" that is represented as a Python dictionary.
     dictionary_adapter = DictionaryAdapter(database=total_dict)
 
-    # iterate over migrators
+    # Iterate over the specified Migrator classes:
     for current_migrator in migrators:
+        # Instantiate this migrator, binding it to the adapter we instantiated earlier.
         migrator = current_migrator(adapter=dictionary_adapter, logger=logger)
-
-        # iterate over collections, applying migration-specific transformations
-        for collection_name, documents in total_dict.items():
-            # If the migration specifies any transformers for this collection,
-            # apply them—in order—to each document within this collection.
-            transformers = migrator.get_transformers_for(collection_name=collection_name)
-            if len(transformers) > 0:
-                migrator_class_name = current_migrator.__name__
-                logger.info(f"Starting {collection_name}-specific transformations using {migrator_class_name}")
-                for i, document in enumerate(documents):
-
-                    # Apply the transformation(s).
-                    for transformer in transformers:
-                        document = transformer(document)
-
-                    # Update the collection so it contains the transformed document.
-                    documents[i] = document
+        # Invoke this migrator's `upgrade` method; effectively "doing" the migration.
+        migrator.upgrade()
 
     # all migrations complete. save data.
     logger.info(f"Saving migrated data to {output_path}")
