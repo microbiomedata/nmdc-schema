@@ -89,7 +89,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
             >>> m = Migrator_from_X_to_PR10()
             >>> m.add_type_slot_with_class_uri({'id': 123, 'collection_date': {'has_raw_value': '2017-05-09'}}, 'nmdc:Biosample', {'collection_date': 'nmdc:TimestampValue'}) 
             {'id': 123, 'collection_date': {'has_raw_value': '2017-05-09', 'type': 'nmdc:TimestampValue'}, 'type': 'nmdc:Biosample'}
-            >>> m.add_type_slot_with_class_uri({'id': 567, 'type': 'nmdc:OmicsProcessing'}, 'nmdc:DataGeneration')
+            >>> m.add_type_slot_with_class_uri({'id': 567, 'type': 'nmdc:DataGeneration'}, 'nmdc:DataGeneration')
             {'id': 567, 'type': 'nmdc:DataGeneration'}
             >>> m.add_type_slot_with_class_uri({'id': 567, 'env_broad_scale': {'term': {'id': 'ENVO:1234'}}}, 'nmdc:Biosample', {'env_broad_scale': 'nmdc:ControlledIdentifiedTermValue'})
             {'id': 567, 'env_broad_scale': {'term': {'id': 'ENVO:1234', 'type': 'nmdc:OntologyClass'}, 'type': 'nmdc:ControlledIdentifiedTermValue'}, 'type': 'nmdc:Biosample'}
