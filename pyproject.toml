@@ -10,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "9.3.2" # nmdc.yaml and GH say v9.3.2
+version = "10.0.0" # nmdc.yaml and GH say v10.0.0
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -43,17 +43,16 @@ packages = [
     { include = "adapters", from = "nmdc_schema/migrators" },
 ]
 
-[tool.poetry.dependencies]
-click-log = "^0.4.0"
+[tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
+python = "^3.9"
 linkml = "^1.6.8"
 linkml-runtime = "^1.6.2"
-pymongo = "^4.3.3"
-python = "^3.9"
-schemasheets = "^0.1.24"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
+pymongo = "^4.3.3"
+
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
 black = "^23.1.0"
@@ -64,7 +63,7 @@ oaklib = "^0.5.24"
 pydantic = "^1.10.13"
 python-dotenv = "^0.21.0"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
-schemasheets = "^0.1.24"
+schemasheets = "^0.1.24" # was in main dependencies but brings in so much like pandas
 semsimian = "^0.2.11"
 sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"

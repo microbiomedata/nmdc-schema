@@ -263,11 +263,10 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections study_set \
 		--skip-collection-check
 
-
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_9_3_to_9_4 \
+		--migrator-name migrator_from_9_3_to_10_0 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
