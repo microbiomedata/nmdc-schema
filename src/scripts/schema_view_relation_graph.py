@@ -3,7 +3,7 @@ from urllib.parse import quote
 
 import click
 from linkml_runtime import SchemaView
-from rdflib import Graph, Namespace
+from rdflib import Graph, Namespace, RDF, RDFS, OWL
 
 from linkml_runtime.utils.formatutils import camelcase, underscore
 
@@ -58,13 +58,20 @@ from linkml_runtime.utils.formatutils import camelcase, underscore
 # Create an RDF graph
 g = Graph()
 
+# Define custom namespaces
+mat = Namespace("https://w3id.org/nmdc/materialized/")
+mat_obj_prop = mat.ObjectProperty
+mat_range = mat.range
+mat_domain = mat.domain
+
 
 @click.command()
 @click.option('-s', '--schema', default='src/schema/nmdc.yaml', help='Path to schema file')
-@click.option('-o', '--output', default='output.ttl', help='Output TTL file path')
+@click.option('-o', '--output', default='nmdc.materialized.ttl', help='Output TTL file path')
 @click.option('-e', '--inc-enums', is_flag=True)
 @click.option('-t', '--inc-types', is_flag=True)
-def cli(schema, output, inc_enums, inc_types):
+@click.option('-a', '--inc-attr-vals', is_flag=True)
+def cli(schema, output, inc_enums, inc_types, inc_attr_vals):
     schema_view = SchemaView(schema)
 
     schema_default_range_name = schema_view.schema.default_range
@@ -74,16 +81,15 @@ def cli(schema, output, inc_enums, inc_types):
     all_class_names = sorted(c.name for c in all_classes.values())
 
     for ns_prefix, ns_uri in {
-        'ex': 'http://example.org/',
         'MIXS': 'https://w3id.org/mixs/',
+        'OBI': 'http://purl.obolibrary.org/obo/OBI_',
         'dcterms': 'http://purl.org/dc/terms/',
+        'linkml': 'https://w3id.org/linkml/',
         'nmdc': 'https://w3id.org/nmdc/',
         'prov': 'http://www.w3.org/ns/prov#',
         'schema': 'http://schema.org/',
         'wgs84': 'http://www.w3.org/2003/01/geo/wgs84_pos#',
         'xsd': 'http://www.w3.org/2001/XMLSchema#',
-        'OBI': 'http://purl.obolibrary.org/obo/OBI_',
-        'slot': 'http://example.com/slot/',
     }.items():
         g.bind(ns_prefix, ns_uri)  # not Namespace()
 
@@ -98,20 +104,22 @@ def cli(schema, output, inc_enums, inc_types):
 
         for current_slot_name in class_slot_names:
             current_slot = schema_view.get_slot(current_slot_name)
-            # current_slot_slot_uri = current_slot.slot_uri or f"{schema_default_prefix}:{current_slot_name}"
+            current_slot_slot_uri = current_slot.slot_uri or f"{schema_default_prefix}:{current_slot_name}"
             # current_slot_slot_uri = f"{schema_default_prefix}:{underscore(current_slot_name)}"
-            current_slot_slot_uri = f"slot:{underscore(current_slot_name)}"
+            # current_slot_slot_uri = f"mat:{underscore(current_slot_name)}"
             current_slot_range = current_slot.range or schema_default_range_name
             current_slot_range_obj = schema_view.get_element(current_slot_range)
             current_slot_range_type = type(current_slot_range_obj).class_name
 
             uri_for_range = None
             if current_slot_range_type == 'class_definition':
-                uri_for_range = (
-                    # current_slot_range_obj.class_uri or
-                    # f"{schema_default_prefix}:{quote(camelcase(current_slot_range))}"
-                    f"{schema_default_prefix}:{quote(camelcase(current_slot_range))}"
-                )
+                current_range_ancestors = schema_view.class_ancestors(current_slot_range)
+                if "AttributeValue" not in current_range_ancestors or inc_attr_vals:
+                    uri_for_range = (
+                        # current_slot_range_obj.class_uri or
+                        # f"{schema_default_prefix}:{quote(camelcase(current_slot_range))}"
+                        f"{schema_default_prefix}:{quote(camelcase(current_slot_range))}"
+                    )
             elif current_slot_range_type == 'enum_definition' and inc_enums:
                 uri_for_range = (
                         current_slot_range_obj.enum_uri or
@@ -139,6 +147,10 @@ def cli(schema, output, inc_enums, inc_types):
         predicate = g.namespace_manager.expand_curie(str(triple['predicate']))
         obj = g.namespace_manager.expand_curie(str(triple['object']))
         g.add((subject, predicate, obj))
+        g.add((predicate, RDF.type, OWL.ObjectProperty))
+        g.add((predicate, RDF.type, g.namespace_manager.expand_curie("linkml:SlotDefinition")))
+        g.add((predicate, RDFS.domain, subject))
+        g.add((predicate, RDFS.range, obj))
 
     # Serialize the RDF graph to a Turtle file
     g.serialize(destination=output, format='turtle')
