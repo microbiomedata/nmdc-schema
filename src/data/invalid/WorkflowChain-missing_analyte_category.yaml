@@ -1,4 +1,4 @@
 id: nmdc:wfch-11-ab
 type: nmdc:WorkflowChain
 name: Workflow Chain for Metagenomics analysis of NEON Biosample
-was_informed_by: nmdc:datgen-11-ab
+was_informed_by: nmdc:dgns-11-ab
