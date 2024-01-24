@@ -1,3 +1,4 @@
+#this data is invalid b/c it uses the wrong Class for the value of slot associated_studies. It should be populated with nmdc Study identifers
 id: nmdc:cspro-99-oW43DzG0
 type: nmdc:ChromatographicSeparationProcess
 has_input:
