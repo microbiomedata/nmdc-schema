@@ -1,4 +1,4 @@
-#invalid b/c img_identifiers is a list
+#invalid b/c img_identifiers execeeds max cardinality
 mags_set:
   - id: nmdc:wfmag-99-5MiDJM
     type: nmdc:MagsAnalysis

@@ -200,7 +200,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       img_identifiers:
-        multivalued: false
+        maximum_cardinality: 1
 
   MetatranscriptomeAnnotation:
     class_uri: "nmdc:MetatranscriptomeAnnotation"
@@ -216,7 +216,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       img_identifiers:
-        multivalued: false
+        maximum_cardinality: 1
 
   MetatranscriptomeAnalysis:
     class_uri: "nmdc:MetatranscriptomeAnalysis"
@@ -226,12 +226,15 @@ classes:
     in_subset:
       - workflow subset
     slots:
+      - img_identifiers
     slot_usage:
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        maximum_cardinality: 1
 
 
   MagsAnalysis:
@@ -256,7 +259,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
       img_identifiers:
-        multivalued: false
+        maximum_cardinality: 1
 
 
   MetagenomeSequencing:
