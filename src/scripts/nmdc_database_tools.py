@@ -163,7 +163,13 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
     and schema version to name the output file and write it to the local
     directory.
 
-    The quick-test option is optional. Default is to extract all records.
+    The quick-test option is optional. This will stop the search at
+    OmicsProcessing records. Default is to extract all records.
+
+    The search-orphaned-data-objects option is optional. This will search for
+    data objects that are not referenced in has_output, but contain a workflow
+    activity ID in their description. Default is to not search for orphaned
+    data objects.
     """
     api_client = ctx.obj["API_CLIENT"]
     start_time = datetime.now()
