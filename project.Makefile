@@ -604,6 +604,7 @@ local/nmdc-sty-11-aygzgv51.yaml:
 		--api-base-url https://api-napa.microbiomedata.org \
 		extract-study \
 		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
+		--search-orphaned-data-objects \
 		--output-file $@
 
 local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
