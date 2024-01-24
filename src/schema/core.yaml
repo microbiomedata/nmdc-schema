@@ -151,7 +151,6 @@ classes:
       - protocol_link
       - start_date
       - end_date
-      - instrument_name # or "used" ?
       - qc_status
       - qc_comment
       - has_failure_categorization

@@ -14,11 +14,7 @@ extraction_set:
       url: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
     start_date: "2019-11-08"
     end_date: "2019-11-08"
-    sample_mass:
-      type: nmdc:QuantityValue
-      has_numeric_value: 0.25
-      has_unit: gram 
     qc_status: pass
-    extraction_method: phenol/chloroform extraction
+    extraction_method: phenol/chloroform extraction # not allowed anymore
     extraction_target: DNA
     
