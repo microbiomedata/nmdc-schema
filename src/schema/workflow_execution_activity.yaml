@@ -214,6 +214,7 @@ classes:
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecution
     slots:
+      - img_identifiers
     in_subset:
       - workflow subset
     slot_usage:
@@ -222,11 +223,14 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        maximum_cardinality: 1
 
   MetatranscriptomeAnnotation:
     class_uri: "nmdc:MetatranscriptomeAnnotation"
     is_a: WorkflowExecution
     slots:
+      - img_identifiers
     in_subset:
       - workflow subset
     slot_usage:
@@ -235,6 +239,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        maximum_cardinality: 1
 
   MetatranscriptomeAnalysis:
     class_uri: "nmdc:MetatranscriptomeAnalysis"
@@ -244,12 +250,15 @@ classes:
     in_subset:
       - workflow subset
     slots:
+      - img_identifiers
     slot_usage:
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        maximum_cardinality: 1
 
 
   MagsAnalysis:
@@ -266,12 +275,15 @@ classes:
       - mags_list
       - too_short_contig_num
       - unbinned_contig_num
+      - img_identifiers
     slot_usage:
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      img_identifiers:
+        maximum_cardinality: 1
 
 
   MetagenomeSequencing:
