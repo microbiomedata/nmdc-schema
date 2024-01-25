@@ -152,7 +152,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   FluidHandling:
@@ -187,7 +187,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   FunctionalAnnotationAggMember:
@@ -1840,6 +1840,7 @@ classes:
       - sequencing project
       - experiment
     is_a: PlannedProcess
+    abstract: true
     in_subset:
       - sample subset
     description: >-
@@ -1851,6 +1852,7 @@ classes:
     slots:
       - add_date
       - analyte_category
+      - associated_studies
       - gold_sequencing_project_identifiers
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
@@ -1862,19 +1864,14 @@ classes:
       - target_subfragment
 
     slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(datgen|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
       has_input:
         required: true
         pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
         comments:
           - pattern should allow typecode for Biosample and ProcessedSample
       part_of:
-        range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+        range: DataGeneration
+        pattern: "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
       has_output:
         range: DataObject
         pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
@@ -2086,9 +2083,88 @@ enums:
       vortex_genie_2:
         aliases:
           - VortexGenie2
-      novaseq:
+      novaseq_6000:
         aliases:
           - NovaSeq
+          - NovaSeq 6000
+        meaning: OBI:0002630
+      hiseq_1000:
+        aliases:
+          - Illumina HiSeq 1000
+        meaning: OBI:0002022
+      hiseq_1500:
+        aliases:
+          - Illumina HiSeq 1500
+        meaning: OBI:0003386
+      hiseq_2000:
+        aliases:
+          - Illumina HiSeq 2000
+        meaning: OBI:0002001
+      hiseq_2500:
+        aliases:
+          - Illumina HiSeq 2500
+        meaning: OBI:0002002
+      hiseq_3000:
+        aliases:
+          - Illumina HiSeq 3000
+        meaning: OBI:0002048
+      hiseq_4000:
+        aliases:
+          - Illumina HiSeq 4000
+        meaning: OBI:0002049
+      hiseq_x_ten:
+        aliases:
+          - Illumina HiSeq X Ten
+        meaning: OBI:0002129
+      miniseq:
+        aliases:
+          - Illumina MiniSeq
+        meaning: OBI:0003114
+      nextseq_1000:
+        aliases:
+          - Illumina NextSeq 1000
+        meaning: OBI:0003606
+      miseq:
+        aliases:
+          - MiSeq
+          - Illumina MiSeq
+        meaning: OBI:0002003
+      nextseq_500:
+        aliases:
+          - NextSeq 500
+        meaning: OBI:0002021
+      nextseq_550:
+        aliases:
+          - NextSeq 550
+        meaning: OBI:0003387
+      gridion:
+         aliases:
+           - Oxford Nanopore GridION Mk1
+         meaning: OBI:0002751
+      minion:
+        aliases:
+          - Oxford Nanopore MinION
+        meaning: OBI:0002750
+      promethion:
+        aliases:
+          - Oxford Nanopore PromethION
+        meaning: OBI:0002752
+      rs_II:
+        aliases:
+          - PacBio RS II
+        meaning: OBI:0002012
+      sequel:
+        aliases:
+          - PacBio Sequel
+        meaning: OBI:0002632
+      sequel_II:
+         aliases:
+           - PacBio Sequel II
+         meaning: OBI:0002633
+      revio:
+        aliases: 
+           - PacBio Revio
+           - Revio
 
   InstrumentVendorEnum:
     permissible_values:
@@ -2117,8 +2193,16 @@ enums:
       illumina:
         aliases:
           - Illumina
-        exact_mappings:
-          - BAO:0200000
+        meaning: OBI:0000759
+      pacbio:
+        aliases:
+          - PacBio
+          - Pacific Biosciences
+        meaning: OBI:0001856
+      oxford_nanopore:
+        aliases:
+          - Oxford Nanopore Technologies
+        meaning: OBI:0002755
 
   StatusEnum:
     permissible_values:
@@ -2767,6 +2851,12 @@ enums:
       decomposition:
 
 slots:
+
+  associated_studies:
+    description: The study associated with a resource.
+    range: Study
+    multivalued: true
+    pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
 
   data_category:
     domain: DataObject

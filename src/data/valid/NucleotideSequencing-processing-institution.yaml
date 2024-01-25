@@ -1,6 +1,4 @@
-#invalid id prefix
-id: nmdc:omicsprc-99-zUCd5N
-type: nmdc:DataGeneration
+id: nmdc:dgns-99-zUCd5N
 analyte_category: metagenome
 alternative_identifiers:
   - gold:Gp0108335
@@ -15,5 +13,8 @@ has_output:
 ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
   carbon transformations - Permafrost 712P3D
 part_of:
+  - nmdc:dgns-21-999xxx
+processing_institution: UCD_Genome_Center
+type: nmdc:NucleotideSequencing
+associated_studies: 
   - nmdc:sty-00-555xxx
-processing_institution: JGI
