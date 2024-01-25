@@ -471,26 +471,26 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
-		--selected-collections biosample_set \
-		--selected-collections data_object_set \
-		--selected-collections functional_annotation_agg \
 		--selected-collections study_set \
- 		--selected-collections extraction_set \
- 		--selected-collections field_research_site_set \
- 		--selected-collections library_preparation_set \
- 		--selected-collections mags_set \
- 		--selected-collections metabolomics_analysis_set \
- 		--selected-collections metagenome_annotation_set \
- 		--selected-collections metagenome_assembly_set \
- 		--selected-collections metagenome_sequencing_set  \
- 		--selected-collections metaproteomics_analysis_set \
- 		--selected-collections metatranscriptome_analysis_set \
- 		--selected-collections nom_analysis_set \
- 		--selected-collections omics_processing_set \
- 		--selected-collections pooling_set \
- 		--selected-collections processed_sample_set \
- 		--selected-collections read_based_taxonomy_analysis_set \
- 		--selected-collections read_qc_analysis_set
+#		--selected-collections data_object_set \
+#		--selected-collections functional_annotation_agg \
+#		--selected-collections study_set \
+# 		--selected-collections extraction_set \
+# 		--selected-collections field_research_site_set \
+# 		--selected-collections library_preparation_set \
+# 		--selected-collections mags_set \
+# 		--selected-collections metabolomics_analysis_set \
+# 		--selected-collections metagenome_annotation_set \
+# 		--selected-collections metagenome_assembly_set \
+# 		--selected-collections metagenome_sequencing_set  \
+# 		--selected-collections metaproteomics_analysis_set \
+# 		--selected-collections metatranscriptome_analysis_set \
+# 		--selected-collections nom_analysis_set \
+# 		--selected-collections omics_processing_set \
+# 		--selected-collections pooling_set \
+# 		--selected-collections processed_sample_set \
+# 		--selected-collections read_based_taxonomy_analysis_set \
+# 		--selected-collections read_qc_analysis_set
 
 #		--skip-collection-check
 
@@ -498,7 +498,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
 	time $(RUN) migration-recursion \
-		--migrator-name Migrator_from_9_1_to_9_2 \
+		--migrator-name Migrator_from_X_to_PR21 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
