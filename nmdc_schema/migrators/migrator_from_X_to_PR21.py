@@ -27,6 +27,7 @@ class Migrator_from_X_to_PR21(MigratorBase):
         """
 
         if "relevant_protocols" in study:
+            id = study["id"]
             study["protocol_link"] = []
             for protocol in study["relevant_protocols"]:
                 new_protocol_struct = {
@@ -34,8 +35,10 @@ class Migrator_from_X_to_PR21(MigratorBase):
                     "type": "nmdc:Protocol"
                 }
                 study["protocol_link"].append(new_protocol_struct)
+            self.logger.info(f"Moving {protocol} for study{id} from relevant_protocols slot to protocol_link")
         
             study.pop("relevant_protocols")  
+
         
         return study
 
