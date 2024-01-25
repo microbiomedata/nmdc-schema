@@ -31,7 +31,8 @@ STUDIES = {
 # Update study IDs after re-IDing
 DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
 
-
+# TODO: Move NmdcApi class to the nacent nmdc-common/client package
+# TODO: Add unit tests for NmdcApi class
 class NmdcApi:
     """
     Basic API Client for GET requests.
@@ -44,7 +45,7 @@ class NmdcApi:
         self.headers = {'accept': 'application/json', 'Content-Type': 'application/json'}
 
 
-    def get_biosamples_part_of_study(self, study_id):
+    def get_biosamples_part_of_study(self, study_id: str) -> list[dict]:
         """
         Get the biosamples that are part of a study.
         """
@@ -67,7 +68,7 @@ class NmdcApi:
 
         return biosample_records
 
-    def get_omics_processing_records_part_of_study(self, study_id):
+    def get_omics_processing_records_part_of_study(self, study_id: str) -> list[dict]:
         """
         Get the OmicsProcessing records that are part of a study.
         """
@@ -88,11 +89,11 @@ class NmdcApi:
             omics_processing_records.extend(response.json()["resources"])
         return omics_processing_records
 
-    def get_workflow_activity_informed_by(self, workflow_activity_set: str,
-                                            informed_by_id: str):
+    def get_workflow_activities_informed_by(self, workflow_activity_set: str,
+                                            informed_by_id: str) -> list[dict]:
             """
-            Retrieve a workflow activity record for the given workflow activity set
-            and informed by a given OmicsProcessing ID.
+            Retrieve workflow activity record(s) for the given workflow
+            activity set and informed by a given OmicsProcessing ID.
             """
             params = {
                 'filter': '{"was_informed_by": "'+informed_by_id+'"}',
@@ -102,6 +103,29 @@ class NmdcApi:
             response.raise_for_status()
             workflow_activity_record = response.json()["resources"]
             return workflow_activity_record
+
+    def get_data_object(self, data_object_id: str) -> dict:
+        """
+        Retrieve a data object record by ID.
+        """
+        url = self.base_url + "nmdcschema/data_object_set/" + data_object_id
+        response = requests.get(url, headers=self.headers)
+        response.raise_for_status()
+        data_object_record = response.json()
+        return data_object_record
+
+    def get_data_objects_by_description(self, description: str):
+        """
+        Retrieve data object records by description.
+        """
+        params = {
+            'filter': '{"description.search": "'+description+'"}',
+        }
+        url = self.base_url + "data_objects"
+        response = requests.get(url, params=params, headers=self.headers)
+        response.raise_for_status()
+        data_object_records = response.json()["results"]
+        return data_object_records
 
 
 @click.group()
@@ -141,7 +165,13 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
     and schema version to name the output file and write it to the local
     directory.
 
-    The quick-test option is optional. Default is to extract all records.
+    The quick-test option is optional. This will stop the search at
+    OmicsProcessing records. Default is to extract all records.
+
+    The search-orphaned-data-objects option is optional. This will search for
+    data objects that are not referenced in has_output, but contain a workflow
+    activity ID in their description. Default is to not search for orphaned
+    data objects.
     """
     api_client = ctx.obj["API_CLIENT"]
     start_time = datetime.now()
@@ -194,6 +224,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
         # add legacy study IDs to search
         search_ids.extend(study.get("gold_study_identifiers", []))
 
+
     for study_id in search_ids:
         try:
             biosamples = api_client.get_biosamples_part_of_study(study_id)
@@ -215,9 +246,8 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             else:
                 raise e
 
-
-
-    if len(db.omics_processing_set) > 0 and not quick_test:
+    orphaned_data_object_count = 0
+    if len(omics_processing_records) > 0 and not quick_test:
         # downstream workflow activity records
         (
             read_qc_records,
@@ -243,6 +273,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             "nom_analysis_activity_set": nom_analysis,
         }
         # Workflow Execution Activities and Data Objects for each OmicsProcessing record
+
         for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
             logger.info(f"Workflow: {wf_set_name}")
             for omics_processing_record in db.omics_processing_set:
@@ -276,10 +307,28 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                             if data_object:
                                 db.data_object_set.append(data_object)
 
+                        # Check for orphaned data objects - data objects that are not
+                        # referenced in has_output / has_input, but contain a workflow activity ID
+                        # in their description
+                        if search_orphaned_data_objects:
+                            logger.info(f"Searching for orphaned data objects for {record['id']} by description.")
+                            orphan_data_objects = (
+                                api_client.get_data_objects_by_description(
+                                    record["id"]))
+                            logger.info(f"Got {len(orphan_data_objects)} orphaned data object records.")
+                            for orphan_data_object in orphan_data_objects:
+                                if orphan_data_object not in db.data_object_set:
+                                    orphaned_data_object_count += 1
+                                    logger.info(f"Found orphaned data object {orphan_data_object['id']} : "
+                                                f"{orphan_data_object['description']}.")
+                                    db.data_object_set.append(orphan_data_object)
+
+
             db.__setattr__(wf_set_name, wf_records)
 
     elapsed_time = datetime.now() - start_time
     logger.info(f"Extracted study {study_id} from the NMDC database in {elapsed_time}.")
+    logger.info(f"Found {orphaned_data_object_count} orphaned data objects.")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")
     yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
