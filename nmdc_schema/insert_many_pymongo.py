@@ -16,10 +16,10 @@ click_log.basic_config(logger)
 @click_log.simple_verbosity_option(logger)
 @click.option(
     "--input-file",
-    "--in",
     type=click.File(),
     required=True,
-    help=r"Path to JSON file containing input data",
+    help=r"Path to a JSON file containing the data you want to insert. "
+         r"The JSON file must conform to the NMDC Schema.",
     prompt=r"Path to JSON file",
 )
 @click.option(
@@ -27,7 +27,9 @@ click_log.basic_config(logger)
     type=str,
     required=True,
     envvar="TEMP_MONGO_URI",
-    help=r"MongoDB connection string (can be specified via an environment variable named `TEMP_MONGO_URI`)",
+    help=r"MongoDB connection string. Note: Some connection strings include a password. "
+         r"To avoid putting your password on the command line, you can specify the connection string "
+         r"via an environment variable named `TEMP_MONGO_URI`.",
     prompt=r"MongoDB connection string",
 )
 @click.option(
@@ -35,24 +37,25 @@ click_log.basic_config(logger)
     type=bool,
     required=False,
     default=True,
-    help=f"Whether to use the `directConnection` parameter for the MongoDB connection",
-    prompt=f"Whether to use the `directConnection` parameter for the MongoDB connection",
+    show_default=True,
+    help=f"Whether you want the script to set the `directConnection` flag when connecting to the MongoDB server. "
+         f"That is required by some MongoDB servers that belong to a replica set. ",
 )
 @click.option(
     "--database-name",
     type=str,
     required=False,
     default="nmdc",
+    show_default=True,
     help=f"MongoDB database name",
-    prompt=f"MongoDB database name",
 )
 @click.option(
     "--validator-uri",
     type=str,
     required=False,
     default="https://api.microbiomedata.org/metadata/json:validate",
+    show_default=True,
     help=f"URI of NMDC Schema-based validator",
-    prompt=f"URI of NMDC Schema-based validator",
 )
 def insert_many_pymongo(
     input_file,
