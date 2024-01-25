@@ -645,9 +645,6 @@ classes:
       - growth_hormone_regm
       - hall_count
       - handidness
-      - has numeric value
-      - has raw value
-      - has unit
       - hc_produced
       - hcr
       - hcr_fw_salinity
