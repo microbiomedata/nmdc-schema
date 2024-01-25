@@ -16,8 +16,8 @@ class Migrator_from_X_to_PR21(MigratorBase):
 
     def move_relevant_protocols_to_protocol_link(self, study: dict):
         r"""
-        Transforms `websites` values that are dois into curies and moves them into the `associated_dois slot
-        Removes the doi website values from the `websites slot.
+        Moves any urls that exist in the relevant_protocols slot to a dictionary format (e.g. Protocol class is the range) 
+        in the protocol_link slot. It then removes the relevant_protocols slot from the study.
         
         >>> m = Migrator_from_X_to_PR21()
         >>> m.move_relevant_protocols_to_protocol_link({'id': 123, 'relevant_protocols': ['www.ex1.org', 'www.ex2.gov']})
