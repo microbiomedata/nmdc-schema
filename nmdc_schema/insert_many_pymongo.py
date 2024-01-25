@@ -102,7 +102,7 @@ def insert_many_pymongo(
     logger.info(f'Processing the {len(json_data.keys())} collection(s) provided.')
     for collection_name, documents in json_data.items():
         if len(documents) > 0:
-            logger.debug(f'Inserting {len(documents)} documents into the "{collection_name}" collection.')
+            logger.info(f'Inserting {len(documents)} documents into the "{collection_name}" collection.')
             result = db[collection_name].insert_many(documents)
             num_documents_inserted = len(result.inserted_ids)
             num_documents_provided = len(documents)
