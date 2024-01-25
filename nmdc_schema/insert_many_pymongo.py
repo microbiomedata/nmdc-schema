@@ -62,9 +62,7 @@ def insert_many_pymongo(
     validator_uri: str,
 ) -> None:
     r"""
-    Reads data from a JSON file and inserts that data into a MongoDB database.
-
-    The contents of the JSON file conform to the NMDC Schema.
+    Reads data from an NMDC Schema-conformant JSON file and inserts that data into a MongoDB database.
     """
     r"""
     References:
