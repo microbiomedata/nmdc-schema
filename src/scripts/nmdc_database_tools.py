@@ -125,8 +125,12 @@ def cli(ctx, api_base_url):
                                                                  "biosamples "
                                                                  "and omics "
                                                                  "only "))
+@click.option("--search-orphaned-data-objects", is_flag=True, default=False,
+              help=("Search for orphaned data objects by description."))
+@click.option("--search-legacy-identifiers", is_flag=True, default=False,
+              help=("Search for legacy IDs for Study and OmicsProcessing."))
 @click.pass_context
-def extract_study(ctx, study_id, output_file, quick_test):
+def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_objects, search_legacy_identifiers):
     """
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a YAML or JSON file.
@@ -170,7 +174,6 @@ def extract_study(ctx, study_id, output_file, quick_test):
     logger.info(f"SCHEMA-VERSION: {schema_version}")
     db = nmdc.Database()
 
-    # Get the study, if it exists
     try:
         study_url = f"{api_client.base_url}studies/{study_id}"
         study_response = requests.get(study_url)
@@ -186,29 +189,35 @@ def extract_study(ctx, study_id, output_file, quick_test):
 
     # Get the study's associated records
     # Biosamples part_of the study
-    try:
-        biosamples = api_client.get_biosamples_part_of_study(study_id)
-        logger.info(f"Got {len(biosamples)} biosamples part_of {study_id}.")
-        db.biosample_set.extend(biosamples)
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 404:
-            logger.info(f"No biosamples found part_of {study_id}.")
-        else:
-            raise e
+    search_ids = [study_id]
+    if search_legacy_identifiers:
+        # add legacy study IDs to search
+        search_ids.extend(study.get("gold_study_identifiers", []))
 
-    # OmicsProcessing records part_of the study
-    try:
-        omics_processing_records = api_client.get_omics_processing_records_part_of_study(study_id)
-        logger.info(f"Got {len(omics_processing_records)} OmicsProcessing records part_of {study_id}.")
-        db.omics_processing_set.extend(omics_processing_records)
-    except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 404:
-            logger.info(f"No OmicsProcessing records found part_of {study_id}.")
-            omics_processing_records = []
-        else:
-            raise e
+    for study_id in search_ids:
+        try:
+            biosamples = api_client.get_biosamples_part_of_study(study_id)
+            logger.info(f"Got {len(biosamples)} biosamples part_of {study_id}.")
+            db.biosample_set.extend(biosamples)
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                logger.info(f"No biosamples found part_of {study_id}.")
+            else:
+                raise e
+        # OmicsProcessing records part_of the study
+        try:
+            omics_processing_records = api_client.get_omics_processing_records_part_of_study(study_id)
+            logger.info(f"Got {len(omics_processing_records)} OmicsProcessing records part_of {study_id}.")
+            db.omics_processing_set.extend(omics_processing_records)
+        except requests.exceptions.HTTPError as e:
+            if e.response.status_code == 404:
+                logger.info(f"No OmicsProcessing records found part_of {study_id}.")
+            else:
+                raise e
 
-    if len(omics_processing_records) > 0 and not quick_test:
+
+
+    if len(db.omics_processing_set) > 0 and not quick_test:
         # downstream workflow activity records
         (
             read_qc_records,
@@ -235,24 +244,38 @@ def extract_study(ctx, study_id, output_file, quick_test):
         }
         # Workflow Execution Activities and Data Objects for each OmicsProcessing record
         for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
-            logger.info(f"Getting {wf_set_name} records informed_by OmicsProcessing records.")
-            for omics_processing_record in omics_processing_records:
-                omics_processing_id = omics_processing_record["id"]
-                # Get the Workflow Execution Activity record for the OmicsProcessing record
-                workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
-                                                                                        omics_processing_id)
-                logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
-                            f"{omics_processing_id}.")
-                wf_records.extend(workflow_activity_record)
-                # Get the output data object(s) for the Workflow Execution Activity record
-                for record in workflow_activity_record:
-                    for data_object_id in record["has_output"]:
-                        data_object_response = requests.get(f"{api_client.base_url}data_objects/{data_object_id}")
-                        data_object_response.raise_for_status()
-                        data_object = data_object_response.json()
-                        logger.info(f"Got data object {data_object['id']} for "
-                                    f"{record['id']}.")
-                        db.data_object_set.append(data_object)
+            logger.info(f"Workflow: {wf_set_name}")
+            for omics_processing_record in db.omics_processing_set:
+                search_ids = [omics_processing_record["id"]]
+                if search_legacy_identifiers:
+                    # add legacy OmicsProcessing IDs to search
+                    search_ids.extend(omics_processing_record.get("gold_sequencing_project_identifiers", []))
+
+                # Get the Workflow Execution Activity record(s) for the OmicsProcessing record
+                for search_id in search_ids:
+                    logger.info(f"Searching for {wf_set_name} record informed_by {search_id}.")
+                    workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
+                                                                                            search_id)
+                    logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
+                                f"{search_id}.")
+                    wf_records.extend(workflow_activity_record)
+                    # Get the output data object(s) for the Workflow Execution Activity record
+                    for record in workflow_activity_record:
+                        for data_object_id in record["has_output"]:
+                            try:
+                                data_object_url = f"{api_client.base_url}data_objects/{data_object_id}"
+                                data_object_response = requests.get(data_object_url)
+                                data_object = data_object_response.json()
+                                logger.info(f"Got data object {data_object_id} from the NMDC database.")
+                            except requests.exceptions.HTTPError as e:
+                                if e.response.status_code == 404:
+                                    data_object = None
+                                    logger.info(f"Data object {data_object_id} not found in the NMDC database.")
+                                else:
+                                    raise e
+                            if data_object:
+                                db.data_object_set.append(data_object)
+
             db.__setattr__(wf_set_name, wf_records)
 
     elapsed_time = datetime.now() - start_time
