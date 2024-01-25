@@ -20,4 +20,3 @@ extraction_set:
       has_unit: gram
     qc_status: pass
     extraction_target: DNA
-    
