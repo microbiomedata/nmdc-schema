@@ -64,9 +64,7 @@ def insert_many_pymongo(
     r"""
     Reads data from a JSON file and inserts that data into a MongoDB database.
 
-    The JSON file consists of a top-level object whose property names corresponding to MongoDB collection names.
-    The value of each of those properties is an array of objects. Each object corresponding to a document you want
-    to insert into that collection.
+    The contents of the JSON file conform to the NMDC Schema.
     """
     r"""
     References:
