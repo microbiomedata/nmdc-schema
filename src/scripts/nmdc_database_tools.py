@@ -239,7 +239,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             omics_processing_records = []
         else:
             raise e
-
+    orphaned_data_object_count = 0
     if len(omics_processing_records) > 0 and not quick_test:
         # downstream workflow activity records
         (
@@ -266,8 +266,9 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             "nom_analysis_activity_set": nom_analysis,
         }
         # Workflow Execution Activities and Data Objects for each OmicsProcessing record
+
         for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
-            logger.info(f"Getting {wf_set_name} records informed_by OmicsProcessing records.")
+            logger.info(f"Getting {wf_set_name} records.")
             for omics_processing_record in omics_processing_records:
                 omics_processing_id = omics_processing_record["id"]
                 # Get the Workflow Execution Activity record for the OmicsProcessing record
@@ -279,32 +280,36 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                 # Get the output data object(s) for the Workflow Execution Activity record
                 for record in workflow_activity_records:
                     logger.info(f"Getting data objects for {record['id']}.")
-                    for data_object_id in record["has_output"]:
+                    search_data_object_ids = record["has_output"] + record["has_input"]
+                    for data_object_id in search_data_object_ids:
                         data_object_response = requests.get(f"{api_client.base_url}data_objects/{data_object_id}")
                         data_object_response.raise_for_status()
                         data_object = data_object_response.json()
-                        logger.info(f"Got data object {data_object['id']} for "
-                                    f"{record['id']}.")
-                        db.data_object_set.append(data_object)
+                        # Add the data object to the database if it's not already there
+                        if data_object not in db.data_object_set:
+                            db.data_object_set.append(data_object)
+
                     # Check for orphaned data objects - data objects that are not
-                    # referenced in has_output, but contain a workflow activity ID
+                    # referenced in has_output / has_input, but contain a workflow activity ID
                     # in their description
                     if search_orphaned_data_objects:
                         logger.info(f"Searching for orphaned data objects for {record['id']} by description.")
-                        data_object_records = (
+                        orphan_data_objects = (
                             api_client.get_data_objects_by_description(
                                 record["id"]))
-                        logger.info(f"Got {len(data_object_records)} data object records.")
-                        for data_object_record in data_object_records:
-                            logger.info(f"Got data object {data_object_record['id']} for "
-                                        f"{workflow_activity_records['id']}.")
-                            if data_object_record["id"] not in record["has_output"]:
-                                db.data_object_set.append(data_object_record)
+                        logger.info(f"Got {len(orphan_data_objects)} orphaned data object records.")
+                        for orphan_data_object in orphan_data_objects:
+                            if orphan_data_object not in db.data_object_set:
+                                orphaned_data_object_count += 1
+                                logger.info(f"Found orphaned data object {orphan_data_object['id']} : "
+                                            f"{orphan_data_object['description']}.")
+                                db.data_object_set.append(orphan_data_object)
 
             db.__setattr__(wf_set_name, wf_records)
 
     elapsed_time = datetime.now() - start_time
     logger.info(f"Extracted study {study_id} from the NMDC database in {elapsed_time}.")
+    logger.info(f"Found {orphaned_data_object_count} orphaned data objects.")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")
     yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)
