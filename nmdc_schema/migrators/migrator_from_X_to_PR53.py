@@ -28,11 +28,7 @@ class Migrator_from_X_to_PR53(MigratorBase):
         doc["associated_studies"] = []
         for study in studies:
             doc["associated_studies"].append(study)
-
-        # compare the values in the part_of slot with the newly moved values in the associated_studies slot and remove
-        # from the part_of slot if it exist in the associated_studies slot. If part_of it empty, delete slot entirely.
-        doc["part_of"] = [item for item in doc["part_of"] if item not in doc["associated_studies"]]
-        if not doc["part_of"]:
-            doc.pop("part_of")
+        
+        doc.pop("part_of")
         
         return doc
