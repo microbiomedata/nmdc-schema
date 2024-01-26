@@ -13,7 +13,7 @@ class TestBiosampleInstantiation(unittest.TestCase):
 
         bs = Biosample(
             id="bs:1",
-            part_of=[
+            associated_studies=[
                 "study:1",
                 "study:2",
             ],
@@ -48,7 +48,7 @@ class TestBiosampleInstantiation(unittest.TestCase):
                 env_local_scale=ControlledTermValue(),
                 env_medium=ControlledTermValue(),
                 id="x",
-                part_of="x",
+                associated_studies="x",
                 type="nmdc:Biosample",
             )
 
