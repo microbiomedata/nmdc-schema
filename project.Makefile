@@ -472,25 +472,25 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
-		--selected-collections omics_processing_set \
-#		--selected-collections study_set \
-#		--selected-collections data_object_set \
-#		--selected-collections functional_annotation_agg \
-# 		--selected-collections extraction_set \
-# 		--selected-collections field_research_site_set \
-# 		--selected-collections library_preparation_set \
-# 		--selected-collections mags_set \
-# 		--selected-collections metabolomics_analysis_set \
-# 		--selected-collections metagenome_annotation_set \
-# 		--selected-collections metagenome_assembly_set \
-# 		--selected-collections metagenome_sequencing_set  \
-# 		--selected-collections metaproteomics_analysis_set \
-# 		--selected-collections metatranscriptome_analysis_set \
-# 		--selected-collections nom_analysis_set \
-# 		--selected-collections pooling_set \
-# 		--selected-collections processed_sample_set \
-# 		--selected-collections read_based_taxonomy_analysis_set \
-# 		--selected-collections read_qc_analysis_set
+		--selected-collections data_object_set \
+		--selected-collections functional_annotation_agg \
+		--selected-collections study_set \
+ 		--selected-collections extraction_set \
+ 		--selected-collections field_research_site_set \
+ 		--selected-collections library_preparation_set \
+ 		--selected-collections mags_set \
+ 		--selected-collections metabolomics_analysis_set \
+ 		--selected-collections metagenome_annotation_set \
+ 		--selected-collections metagenome_assembly_set \
+ 		--selected-collections metagenome_sequencing_set  \
+ 		--selected-collections metaproteomics_analysis_set \
+ 		--selected-collections metatranscriptome_analysis_set \
+ 		--selected-collections nom_analysis_set \
+ 		--selected-collections omics_processing_set \
+ 		--selected-collections pooling_set \
+ 		--selected-collections processed_sample_set \
+ 		--selected-collections read_based_taxonomy_analysis_set \
+ 		--selected-collections read_qc_analysis_set
 
 #		--skip-collection-check
 
