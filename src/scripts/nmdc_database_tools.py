@@ -23,10 +23,10 @@ LOCAL_DIR = PROJECT_ROOT / "local"
 # Name:, study ID, legacy study ID
 STUDIES = {
     "Stegen": ("nmdc:sty-11-aygzgv51", "gold:Gs0114663"),
-    "SPRUCE": (None, "gold:Gs0110138"),
+    "SPRUCE": ("nmdc:sty-11-33fbta56", "gold:Gs0110138"),
     "EMP": (None, "gold:Gs0154244"),
     "Luquillo": (None, "gold:Gs0128850"),
-    "CrestedButte": (None, "gold:Gs0135149"),
+    "CrestedButte": ("nmdc:sty-11-dcqce727", "gold:Gs0135149"),
 }
 # Update study IDs after re-IDing
 DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
@@ -172,6 +172,13 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
     data objects that are not referenced in has_output, but contain a workflow
     activity ID in their description. Default is to not search for orphaned
     data objects.
+
+    The search-legacy-identifiers option is optional. This will search for:
+     - Biosamples and OmicsProcessing records that are part_of the Study's legacy
+        gold_study_identifier
+     - Workflow Activities and Data Objects that was_informed_by the OmicsProcessing's legacy
+        gold_sequencing_project_identifier(s)
+    Default is to not search for legacy identifiers.
     """
     api_client = ctx.obj["API_CLIENT"]
     start_time = datetime.now()
@@ -219,13 +226,13 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
 
     # Get the study's associated records
     # Biosamples part_of the study
-    search_ids = [study_id]
+    search_study_ids = [study_id]
     if search_legacy_identifiers:
         # add legacy study IDs to search
-        search_ids.extend(study.get("gold_study_identifiers", []))
+        search_study_ids.extend(study.get("gold_study_identifiers", []))
 
 
-    for study_id in search_ids:
+    for study_id in search_study_ids:
         try:
             biosamples = api_client.get_biosamples_part_of_study(study_id)
             logger.info(f"Got {len(biosamples)} biosamples part_of {study_id}.")
@@ -247,7 +254,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                 raise e
 
     orphaned_data_object_count = 0
-    if len(omics_processing_records) > 0 and not quick_test:
+    if len(db.omics_processing_set) > 0 and not quick_test:
         # downstream workflow activity records
         (
             read_qc_records,
@@ -277,44 +284,47 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
         for wf_set_name, wf_records in downstream_workflow_activity_sets.items():
             logger.info(f"Workflow: {wf_set_name}")
             for omics_processing_record in db.omics_processing_set:
-                search_ids = [omics_processing_record["id"]]
+                search_omics_ids = [omics_processing_record["id"]]
                 if search_legacy_identifiers:
                     # add legacy OmicsProcessing IDs to search
-                    search_ids.extend(omics_processing_record.get("gold_sequencing_project_identifiers", []))
+                    search_omics_ids.extend(omics_processing_record.get("gold_sequencing_project_identifiers", []))
+                    search_omics_ids.extend(omics_processing_record.get("alternative_identifiers", []))
 
                 # Get the Workflow Execution Activity record(s) for the OmicsProcessing record
-                for search_id in search_ids:
-                    logger.info(f"Searching for {wf_set_name} record informed_by {search_id}.")
-                    workflow_activity_record = api_client.get_workflow_activity_informed_by(wf_set_name,
-                                                                                            search_id)
-                    logger.info(f"Got {len(workflow_activity_record)} {wf_set_name} record informed_by "
-                                f"{search_id}.")
-                    wf_records.extend(workflow_activity_record)
+                for omics_id in search_omics_ids:
+                    logger.info(f"Searching for {wf_set_name} record informed_by {omics_id}.")
+                    workflow_activity_records = api_client.get_workflow_activities_informed_by(wf_set_name,
+                                                                                            omics_id)
+                    logger.info(f"Got {len(workflow_activity_records)} {wf_set_name} record informed_by "
+                                f"{omics_id}.")
+                    wf_records.extend(workflow_activity_records)
                     # Get the output data object(s) for the Workflow Execution Activity record
-                    for record in workflow_activity_record:
-                        for data_object_id in record["has_output"]:
+                    for workflow_record in workflow_activity_records:
+                        logger.info(f"Searching for data objects for {workflow_record['id']} "
+                                    f"{workflow_record['type']}.")
+                        search_data_object_ids = workflow_record["has_output"] + workflow_record["has_input"]
+                        for data_object_id in search_data_object_ids:
                             try:
                                 data_object_url = f"{api_client.base_url}data_objects/{data_object_id}"
                                 data_object_response = requests.get(data_object_url)
                                 data_object = data_object_response.json()
-                                logger.info(f"Got data object {data_object_id} from the NMDC database.")
                             except requests.exceptions.HTTPError as e:
                                 if e.response.status_code == 404:
                                     data_object = None
                                     logger.info(f"Data object {data_object_id} not found in the NMDC database.")
                                 else:
                                     raise e
-                            if data_object:
+                            if data_object and data_object not in db.data_object_set:
+                                logger.info(f"Adding data object {data_object_id}: {data_object.get('name')}")
                                 db.data_object_set.append(data_object)
 
                         # Check for orphaned data objects - data objects that are not
                         # referenced in has_output / has_input, but contain a workflow activity ID
                         # in their description
                         if search_orphaned_data_objects:
-                            logger.info(f"Searching for orphaned data objects for {record['id']} by description.")
+                            logger.info(f"Searching for orphaned data objects for {omics_id} by description.")
                             orphan_data_objects = (
-                                api_client.get_data_objects_by_description(
-                                    record["id"]))
+                                api_client.get_data_objects_by_description(omics_id))
                             logger.info(f"Got {len(orphan_data_objects)} orphaned data object records.")
                             for orphan_data_object in orphan_data_objects:
                                 if orphan_data_object not in db.data_object_set:
