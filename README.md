@@ -5,7 +5,7 @@
 # National Microbiome Data Collaborative Schema
 
 [![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/main/LICENSE)
-[![PyPI version](https://badge.fury.io/py/nmdc-schema.svg)](https://badge.fury.io/py/nmdc-schema)
+[![PyPI version](https://badge.fury.io/py/nmdc-schema.svg?any-param=to-cause-a-cache-miss)](https://badge.fury.io/py/nmdc-schema)
 
 The NMDC is a multi-organizational effort to integrate microbiome data across diverse areas in medicine, agriculture,
 bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to
