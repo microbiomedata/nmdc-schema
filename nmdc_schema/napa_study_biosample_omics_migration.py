@@ -1,5 +1,4 @@
 import json
-m
 import os
 from pprint import pprint
 import secrets
@@ -149,8 +148,8 @@ def update_bsm_by_study(napa_sty_id):
 
 ################
 
-
-
+# function to get legacy study id from alt id slot
+def napa_sty_to_legacy(napa_sty_id):
     legacy_sty = ""
     get_sty_record = {"id": napa_sty_id}
     target_sty = sty_coll.find_one(get_sty_record)
@@ -216,7 +215,7 @@ def update_omics_by_study(napa_sty_id):
                         len(omics_doc[alt_omics_id_slot]) == 1
                         and omics_doc[alt_omics_id_slot][0] == omics_doc["id"]
                     ):
-                        print(alt_omcs_id_slot + " already set for " + omics_doc["id"])
+                        print(alt_omics_id_slot + " already set for " + omics_doc["id"])
                         update_alt_omics = False
                     else:
                         print(
