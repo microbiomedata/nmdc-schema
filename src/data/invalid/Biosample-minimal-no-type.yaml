@@ -1,5 +1,5 @@
 id: nmdc:bsm-99-dtTMNb
-part_of:
+associated_studies:
   - nmdc:sty-00-abc123
 env_broad_scale:
   type: nmdc:ControlledIdentifiedTermValue

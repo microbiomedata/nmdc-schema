@@ -8,7 +8,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-SPreao
     gold_biosample_identifiers:
       - gold:Gb0305833
-    part_of:
+    associated_studies:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
