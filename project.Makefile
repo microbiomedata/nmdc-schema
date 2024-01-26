@@ -269,12 +269,12 @@ local/nmdc-schema-v8.0.0.yaml:
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
 	$(RUN) gen-owl $< > $@
 
-local/nmdc-sty-11-aygzgv51.yaml:
-	$(RUN) get-study-related-records \
-		--api-base-url https://api-napa.microbiomedata.org \
-		extract-study \
-		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
-		--output-file $@
+#local/nmdc-sty-11-aygzgv51.yaml:
+#	$(RUN) get-study-related-records \
+#		--api-base-url https://api-napa.microbiomedata.org \
+#		extract-study \
+#		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
+#		--output-file $@
 
 ### FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
@@ -303,11 +303,11 @@ build-schema-in-app:
 	# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
 	# The support to run uninstalled scripts will be removed in a future release.
 	# Run `poetry install` to resolve and get rid of this message.
-	poetry install
+	poetry install # it's best if there isn't already a ./.venv, especially if it's not for Linux
 	make squeaky-clean all test
 
-.PHONY: comprehensive-fuseki-in-app
-comprehensive-fuseki-in-app: create-nmdc-tdb2-from-app populate-nmdc-tdb2-in-app # run simultaneously with tests above in new `docker compose exec app bash`
+#.PHONY: comprehensive-fuseki-in-app
+#comprehensive-fuseki-in-app: create-nmdc-tdb2-from-app populate-nmdc-tdb2-in-app # run simultaneously with tests above in new `docker compose exec app bash`
 
 .PHONY: create-nmdc-tdb2-from-app
 create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
@@ -316,59 +316,60 @@ create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. 
 		--data 'dbType=tdb&dbName=nmdc-tdb2' \
 		'http://fuseki:3030/$$/datasets'
 
-.PHONY: populate-nmdc-tdb2-in-app
-populate-nmdc-tdb2-in-app: local/nmdc-data.ttl populate-nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
-
-# Napa nmdc:sty-11-aygzgv51 = gold:Gs0114663
-local/nmdc-data.yaml:
-	# this does not traverse every possible path from a Study to all related records
-	# --quick-test \
-	# 40 minutes?
-	date
-	time $(RUN) get-study-related-records \
-		--api-base-url https://api.microbiomedata.org \
-		extract-study \
-		--study-id gold:Gs0114663 \
-		--output-file $@ # this is a CLI that bundles several API calls to get data from MongoDB
-
-local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
-	$(RUN) linkml-validate --schema $^ > $@
-
-local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
-	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^) # remember, TTL is one serialization of RDF data
-
-local/nmdc-data.ttl: local/nmdc-data-raw.ttl
-	$(RUN) anyuri-strings-to-iris \
-		--input-ttl $< \
-		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-		--emsl-uuid-replacement emsl_uuid_like \
-		--output-ttl $@ # this converts some string values from linkml-convert to object relationships
-	riot --validate $@
-
-# Populates a Jena TDB2 database that will be accessible to Fuseki.
+#.PHONY: populate-nmdc-tdb2-in-app
+#populate-nmdc-tdb2-in-app: local/nmdc-data.ttl populate-nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
 #
-# Note: Manually stop the `fuseki` container before running this target,
-#       in order to release a lock on a file that this target writes to.
+## Napa nmdc:sty-11-aygzgv51 = "production" gold:Gs0114663
 #
-# Note: We expect people to run this make target from within the `app` container.
+#local/nmdc-data.yaml:
+#	# this does not traverse every possible path from a Study to all related records
+#	# --quick-test \
+#	# 40 minutes?
+#	date
+#	time $(RUN) get-study-related-records \
+#		--api-base-url https://api-napa.microbiomedata.org \
+#		extract-study \
+#		--study-id nmdc:sty-11-dcqce727 \
+#		--output-file $@ # this is a CLI that bundles several API calls to get data from MongoDB
 #
-.PHONY: populate-nmdc-tdb2
-populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
-	curl -X \
-		POST -H "Content-Type: text/turtle" \
-		--user 'admin:password' \
-		--data-binary @$(word 1, $^) http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
-	curl -X \
-		POST -H "Content-Type: text/turtle" \
-		--user 'admin:password' \
-		--data-binary @$(word 2, $^) http://fuseki:3030/nmdc-tdb2/data
+#local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
+#	$(RUN) linkml-validate --schema $^ > $@
+#
+#local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
+#	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^) # remember, TTL is one serialization of RDF data
+#
+#local/nmdc-data.ttl: local/nmdc-data-raw.ttl
+#	$(RUN) anyuri-strings-to-iris \
+#		--input-ttl $< \
+#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+#		--emsl-uuid-replacement emsl_uuid_like \
+#		--output-ttl $@ # this converts some string values from linkml-convert to object relationships
+#	riot --validate $@
+#
+## Populates a Jena TDB2 database that will be accessible to Fuseki.
+##
+## Note: Manually stop the `fuseki` container before running this target,
+##       in order to release a lock on a file that this target writes to.
+##
+## Note: We expect people to run this make target from within the `app` container.
+##
+#.PHONY: populate-nmdc-tdb2
+#populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
+#	curl -X \
+#		POST -H "Content-Type: text/turtle" \
+#		--user 'admin:password' \
+#		--data-binary @$(word 1, $^) http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+#	curl -X \
+#		POST -H "Content-Type: text/turtle" \
+#		--user 'admin:password' \
+#		--data-binary @$(word 2, $^) http://fuseki:3030/nmdc-tdb2/data
 
-# does this with work in both the datasets offline and active states?
-local/nmdc-tdb2-graph-list.tsv:
-	tdb2.tdbquery \
-		--loc=$(FD_ROOT)/nmdc-tdb2 \
-		--query=assets/sparql/tdb-graph-list.rq \
-		--results=TSV > $@
+## does this with work in both the datasets offline and active states?
+#local/nmdc-tdb2-graph-list.tsv:
+#	tdb2.tdbquery \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--query=assets/sparql/tdb-graph-list.rq \
+#		--results=TSV > $@
 
 # curl -X DELETE \
 #   --user 'admin:password' \
@@ -383,3 +384,102 @@ local/nmdc-tdb2-graph-list.tsv:
 docker-compose-down-from-host:
 	docker compose down
 
+# ----
+
+.PHONY: print-prefixed-study-ids print-file-list
+
+STUDY_IDS := nmdc:sty-11-34xj1150 nmdc:sty-11-5bgrvr62 nmdc:sty-11-5tgfr349 nmdc:sty-11-r2h77870 \
+nmdc:sty-11-db67n062 nmdc:sty-11-8xdqsn54 nmdc:sty-11-28tm5d36 nmdc:sty-11-33fbta56 nmdc:sty-11-076c9980 \
+nmdc:sty-11-t91cwb40 nmdc:sty-11-aygzgv51 nmdc:sty-11-547rwq94 nmdc:sty-11-zs2syx06 nmdc:sty-11-dcqce727 \
+nmdc:sty-11-1t150432 nmdc:sty-11-8fb6t785
+
+#print-prefixed-study-ids:
+#	@echo $(STUDY_IDS)
+
+# Replace colons with hyphens in study IDs
+STUDY_FILES := $(addsuffix .yaml,$(addprefix local/study-files/,$(subst :,-,$(STUDY_IDS))))
+
+#print-file-list:
+#	@echo $(STUDY_FILES)
+
+# Napa nmdc:sty-11-aygzgv51 = "production" gold:Gs0114663
+
+  # [('nmdc:sty-11-34xj1150', 4443),
+  # ('nmdc:sty-11-5bgrvr62', 471),
+  # ('nmdc:sty-11-5tgfr349', 430),
+  # ('nmdc:sty-11-r2h77870', 416),
+  # ('nmdc:sty-11-db67n062', 241),
+  # ('nmdc:sty-11-8xdqsn54', 207),
+  # ('nmdc:sty-11-28tm5d36', 134),
+  # ('nmdc:sty-11-33fbta56', 124),
+  # ('nmdc:sty-11-076c9980', 105),
+  # ('nmdc:sty-11-t91cwb40', 95),
+  # ('nmdc:sty-11-aygzgv51', 85),
+  # ('nmdc:sty-11-547rwq94', 80),
+  # ('nmdc:sty-11-zs2syx06', 60), # Extracted study nmdc:sty-11-zs2syx06 from the NMDC database in 0:00:01.475736.
+  # ('nmdc:sty-11-dcqce727', 53), # Extracted study nmdc:sty-11-dcqce727 from the NMDC database in 0:36:39.633116.
+  # ('nmdc:sty-11-1t150432', 30), # Extracted study nmdc:sty-11-8fb6t785 from the NMDC database in 0:01:04.012420, 0:01:17.337886.
+  # ('nmdc:sty-11-8fb6t785', 23)] # Extracted study nmdc:sty-11-8fb6t785 from the NMDC database in 0:01:01.963206.
+
+# local/study-files/nmdc-sty-11-34xj1150.yaml
+local/study-files/%.yaml: local/nmdc-schema-v8.0.0.yaml
+	mkdir -p $(@D)
+	rm -rf study-file-name.txt study-id.txt
+	echo $@ > study-file-name.txt
+	echo $(shell poetry run get-study-id-from-filename $$(<study-file-name.txt)) > study-id.txt
+	# cumbersome! using python script because can't replace just first hyphen with colon with make text function
+	# then, can't use $@ inside of a make shell call
+	# we just want to transform $@, like local/study-files/nmdc-sty-11-8fb6t785.yaml to nmdc:sty-11-8fb6t785
+	date
+	time $(RUN) get-study-related-records \
+		--api-base-url https://api-napa.microbiomedata.org \
+		extract-study \
+		--study-id $$(<study-id.txt) \
+		--output-file $@
+	$(RUN) linkml-validate --schema $< $@ > $@.validation.log.txt
+
+create-study-yaml-files: local/study-files/nmdc-sty-11-8fb6t785.yaml \
+local/study-files/nmdc-sty-11-1t150432.yaml \
+local/study-files/nmdc-sty-11-zs2syx06.yaml
+
+# includes load into fuseki
+# not doing any migration here yet
+local/study-files/%.ttl: local/nmdc-schema-v8.0.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files
+	$(RUN) linkml-convert --output $@ --schema $< $(subst .ttl,.yaml,$@)
+	curl -X \
+		POST -H "Content-Type: text/turtle" \
+		--user 'admin:password' \
+		--data-binary @$@ http://fuseki:3030/nmdc-tdb2/data?graph=https://api-napa.microbiomedata.org
+
+create-load-study-ttl-files: local/study-files/nmdc-sty-11-8fb6t785.ttl \
+local/study-files/nmdc-sty-11-1t150432.ttl \
+local/study-files/nmdc-sty-11-zs2syx06.ttl
+
+.PHONY: load-custom-schema
+# from linkml/linkml branch issue-1842
+# poetry run gen-owl --no-use-native-uris ../nmdc-schema/src/schema/nmdc.yaml > ../nmdc-schema/local/nmdc_with_non_native_uris.owl.ttl
+load-custom-schema: local/nmdc_with_non_native_uris.owl.ttl
+	curl -X \
+		POST -H "Content-Type: text/turtle" \
+		--user 'admin:password' \
+		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+
+# seems to work in both the datasets offline and active states
+# could also show how to submit to fuseki via curl
+# or could run interactively in Fuseki web UI, localhost:3030
+# but that may only load in a private browser window
+local/subjects-lacking-rdf-types.tsv:
+	tdb2.tdbquery \
+		--loc=$(FD_ROOT)/nmdc-tdb2 \
+		--query=assets/sparql/subjects-lacking-rdf-types.rq \
+		--results=TSV > $@ # this doesn't take into consideration that some entities have nmdc:type string values, which should be migrated
+
+#local/objects-that-are-never-subjects.tsv:
+#	tdb2.tdbquery \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--query=assets/sparql/objects-that-are-never-subjects.rq \
+#		--results=TSV > $@
+
+local/objects-that-are-never-subjects.tsv:
+	curl -X POST -H "Content-Type: application/sparql-query"
+		--data @assets/sparql/objects-that-are-never-subjects.rq $FUSEKI_ENDPOINT --output results.tsv
