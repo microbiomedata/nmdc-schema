@@ -437,6 +437,7 @@ local/study-files/%.yaml: local/nmdc-schema-v8.0.0.yaml
 		--study-id $$(<study-id.txt) \
 		--output-file $@
 	$(RUN) linkml-validate --schema $< $@ > $@.validation.log.txt
+	rm -rf study-file-name.txt study-id.txt
 
 create-study-yaml-files: local/study-files/nmdc-sty-11-8fb6t785.yaml \
 local/study-files/nmdc-sty-11-1t150432.yaml \
@@ -455,14 +456,6 @@ create-load-study-ttl-files: local/study-files/nmdc-sty-11-8fb6t785.ttl \
 local/study-files/nmdc-sty-11-1t150432.ttl \
 local/study-files/nmdc-sty-11-zs2syx06.ttl
 
-.PHONY: load-custom-schema
-# from linkml/linkml branch issue-1842
-# poetry run gen-owl --no-use-native-uris ../nmdc-schema/src/schema/nmdc.yaml > ../nmdc-schema/local/nmdc_with_non_native_uris.owl.ttl
-load-custom-schema: local/nmdc_with_non_native_uris.owl.ttl
-	curl -X \
-		POST -H "Content-Type: text/turtle" \
-		--user 'admin:password' \
-		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
 
 # seems to work in both the datasets offline and active states
 # could also show how to submit to fuseki via curl
@@ -474,12 +467,72 @@ local/subjects-lacking-rdf-types.tsv:
 		--query=assets/sparql/subjects-lacking-rdf-types.rq \
 		--results=TSV > $@ # this doesn't take into consideration that some entities have nmdc:type string values, which should be migrated
 
-#local/objects-that-are-never-subjects.tsv:
-#	tdb2.tdbquery \
-#		--loc=$(FD_ROOT)/nmdc-tdb2 \
-#		--query=assets/sparql/objects-that-are-never-subjects.rq \
-#		--results=TSV > $@
 
-local/objects-that-are-never-subjects.tsv:
-	curl -X POST -H "Content-Type: application/sparql-query"
-		--data @assets/sparql/objects-that-are-never-subjects.rq $FUSEKI_ENDPOINT --output results.tsv
+# retreive, validate, convert, repair, load and query selected colelctiosn form the Napa squad's MongoDB
+
+local/some_napa_collections.yaml:
+	date
+	time $(RUN) pure-export \
+		--client-base-url https://api-napa.microbiomedata.org \
+		--endpoint-prefix nmdcschema \
+		--env-file local/.env \
+		--max-docs-per-coll 200000 \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--output-yaml $@.temp \
+		--page-size 200000 \
+		--schema-file src/schema/nmdc.yaml \
+		--selected-collections biosample_set \
+		--selected-collections omics_processing_set \
+		--selected-collections study_set \
+		--skip-collection-check
+	grep -v designated_class $@.temp > $@
+	# designated_class was preemptively asserted in the napa MongoDB,
+	# but it's not available in most version of the schema
+	# rdf:type will take its place in the berkeley-schema-fy24
+	rm -rf $@.temp
+
+local/some_napa_collections.validataion.log: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml
+	- $(RUN) linkml-validate --schema $^ > $@ # we are expecting some errors and might want to grep them out
+
+local/some_napa_collections.ttl: local/nmdc-schema-v8.0.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validataion.log
+	$(RUN) linkml-convert --output $@.raw.ttl --schema $(word 1, $^) $(word 2, $^)
+	time $(RUN) anyuri-strings-to-iris \
+		--input-ttl $@.raw.ttl \
+		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
+		--emsl-uuid-replacement emsl_uuid_like \
+		--output-ttl $@
+	rm -rf $@.raw.ttl
+
+load-from-some-napa-collections: local/some_napa_collections.ttl
+	curl -X \
+		POST -H "Content-Type: text/turtle" \
+		--user 'admin:password' \
+		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://api-napa.microbiomedata.org
+
+.PHONY: load-non-native-uri-schema
+# from linkml/linkml branch issue-1842
+# poetry run gen-owl --no-use-native-uris ../nmdc-schema/src/schema/nmdc.yaml > ../nmdc-schema/local/nmdc_with_non_native_uris.owl.ttl
+load-non-native-uri-schema: local/nmdc_with_non_native_uris.owl.ttl create-nmdc-tdb2-from-app
+	curl -X \
+		POST -H "Content-Type: text/turtle" \
+		--user 'admin:password' \
+		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+
+some-napa-collections-cleanup:
+	rm -rf local/some_napa_collections*
+	rm -rf local/nmdc-schema-v8.0.0.yaml
+
+
+#curl -H "Accept: text/tab-separated-values" --data-urlencode "query@q.rq" 'http://fuseki:3030/nmdc-tdb2/query'
+
+local/sparql-results/objects-that-are-never-subjects.tsv:
+	mkdir -p $(@D)
+	echo $@
+	echo $(notdir $(basename $@))
+	curl \
+		-H "Accept: text/tab-separated-values" \
+		  --data-urlencode "query@assets/sparql/$(notdir $(basename $@)).rq" \
+		  --output $@ 'http://fuseki:3030/nmdc-tdb2/query'
+
