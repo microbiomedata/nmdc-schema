@@ -269,13 +269,6 @@ local/nmdc-schema-v8.0.0.yaml:
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
 	$(RUN) gen-owl $< > $@
 
-#local/nmdc-sty-11-aygzgv51.yaml:
-#	$(RUN) get-study-related-records \
-#		--api-base-url https://api-napa.microbiomedata.org \
-#		extract-study \
-#		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
-#		--output-file $@
-
 ### FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
 # Jena provides command line tools for accessing RDF *files*
@@ -306,63 +299,12 @@ build-schema-in-app:
 	poetry install # it's best if there isn't already a ./.venv, especially if it's not for Linux
 	make squeaky-clean all test
 
-#.PHONY: comprehensive-fuseki-in-app
-#comprehensive-fuseki-in-app: create-nmdc-tdb2-from-app populate-nmdc-tdb2-in-app # run simultaneously with tests above in new `docker compose exec app bash`
-
 .PHONY: create-nmdc-tdb2-from-app
 create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
 	curl \
 		--user 'admin:password' \
 		--data 'dbType=tdb&dbName=nmdc-tdb2' \
 		'http://fuseki:3030/$$/datasets'
-
-#.PHONY: populate-nmdc-tdb2-in-app
-#populate-nmdc-tdb2-in-app: local/nmdc-data.ttl populate-nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
-#
-## Napa nmdc:sty-11-aygzgv51 = "production" gold:Gs0114663
-#
-#local/nmdc-data.yaml:
-#	# this does not traverse every possible path from a Study to all related records
-#	# --quick-test \
-#	# 40 minutes?
-#	date
-#	time $(RUN) get-study-related-records \
-#		--api-base-url https://api-napa.microbiomedata.org \
-#		extract-study \
-#		--study-id nmdc:sty-11-dcqce727 \
-#		--output-file $@ # this is a CLI that bundles several API calls to get data from MongoDB
-#
-#local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
-#	$(RUN) linkml-validate --schema $^ > $@
-#
-#local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
-#	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^) # remember, TTL is one serialization of RDF data
-#
-#local/nmdc-data.ttl: local/nmdc-data-raw.ttl
-#	$(RUN) anyuri-strings-to-iris \
-#		--input-ttl $< \
-#		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
-#		--emsl-uuid-replacement emsl_uuid_like \
-#		--output-ttl $@ # this converts some string values from linkml-convert to object relationships
-#	riot --validate $@
-#
-## Populates a Jena TDB2 database that will be accessible to Fuseki.
-##
-## Note: Manually stop the `fuseki` container before running this target,
-##       in order to release a lock on a file that this target writes to.
-##
-## Note: We expect people to run this make target from within the `app` container.
-##
-#.PHONY: populate-nmdc-tdb2
-#populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
-#	curl -X \
-#		POST -H "Content-Type: text/turtle" \
-#		--user 'admin:password' \
-#		--data-binary @$(word 1, $^) http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
-#	curl -X \
-#		POST -H "Content-Type: text/turtle" \
-#		--user 'admin:password' \
-#		--data-binary @$(word 2, $^) http://fuseki:3030/nmdc-tdb2/data
 
 ## does this with work in both the datasets offline and active states?
 #local/nmdc-tdb2-graph-list.tsv:
@@ -484,7 +426,9 @@ local/some_napa_collections.yaml:
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
+		--selected-collections field_research_site_set \
 		--selected-collections omics_processing_set \
+		--selected-collections processed_sample_set \
 		--selected-collections study_set \
 		--skip-collection-check
 	grep -v designated_class $@.temp > $@
@@ -520,13 +464,6 @@ load-non-native-uri-schema: local/nmdc_with_non_native_uris.owl.ttl create-nmdc-
 		--user 'admin:password' \
 		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
 
-some-napa-collections-cleanup:
-	rm -rf local/some_napa_collections*
-	rm -rf local/nmdc-schema-v8.0.0.yaml
-
-
-#curl -H "Accept: text/tab-separated-values" --data-urlencode "query@q.rq" 'http://fuseki:3030/nmdc-tdb2/query'
-
 local/sparql-results/objects-that-are-never-subjects.tsv:
 	mkdir -p $(@D)
 	echo $@
@@ -536,3 +473,15 @@ local/sparql-results/objects-that-are-never-subjects.tsv:
 		  --data-urlencode "query@assets/sparql/$(notdir $(basename $@)).rq" \
 		  --output $@ 'http://fuseki:3030/nmdc-tdb2/query'
 
+some-napa-collections-cleanup:
+	rm -rf local/some_napa_collections*
+	rm -rf local/nmdc-schema-v8.0.0.yaml
+	# rm -rf local/sparql-results/*
+
+.PHONY: clear-data-graph some-napa-collections-cleanup
+clear-data-graph:
+	curl -X \
+		POST -H "Content-Type: application/sparql-update" \
+		--user 'admin:password' \
+		--data "CLEAR GRAPH <https://api-napa.microbiomedata.org>" \
+		http://fuseki:3030/nmdc-tdb2/update
