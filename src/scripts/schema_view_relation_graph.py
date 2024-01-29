@@ -7,6 +7,8 @@ from rdflib import Graph, Namespace, RDF, RDFS, OWL
 
 from linkml_runtime.utils.formatutils import camelcase, underscore
 
+from linkml_runtime.dumpers import yaml_dumper
+
 # todo contains a lot of hard-coding that could probably be replaced with some external source of prefix mappings
 
 # todo do we want to materialize slot definitions?
@@ -103,7 +105,8 @@ def cli(schema, output, inc_enums, inc_types, inc_attr_vals):
         class_slot_names = sorted(s.name for s in class_slots.values())
 
         for current_slot_name in class_slot_names:
-            current_slot = schema_view.get_slot(current_slot_name)
+            # current_slot = schema_view.get_slot(current_slot_name)
+            current_slot = schema_view.induced_slot(current_slot_name, current_class_name)
             current_slot_slot_uri = current_slot.slot_uri or f"{schema_default_prefix}:{current_slot_name}"
             # current_slot_slot_uri = f"{schema_default_prefix}:{underscore(current_slot_name)}"
             # current_slot_slot_uri = f"mat:{underscore(current_slot_name)}"
@@ -130,11 +133,25 @@ def cli(schema, output, inc_enums, inc_types, inc_attr_vals):
                         current_slot_range_obj.uri or
                         f"{schema_default_prefix}:{quote(current_slot_range)}"
                 )
+            else:
+                pass
 
             if uri_for_range:
                 graph_as_curie_dict.append(
                     {'subject': current_class_class_uri, 'predicate': current_slot_slot_uri, 'object': uri_for_range}
                 )
+
+            if 'any_of' in current_slot and current_slot['any_of']:
+                for any_of_object in current_slot['any_of']:
+                    any_of_type = type(any_of_object).class_name
+                    if any_of_type == "anonymous_slot_expression":
+                        if 'range' in any_of_object and any_of_object['range']:
+                            # should go through same logic as above
+                            lazy_object = f"{schema_default_prefix}:{quote(any_of_object['range'])}"
+                            graph_as_curie_dict.append(
+                                {'subject': current_class_class_uri, 'predicate': current_slot_slot_uri,
+                                 'object': lazy_object}
+                            )
 
     # Print triples with whitespace in any part
     for triple in graph_as_curie_dict:
