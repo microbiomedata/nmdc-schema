@@ -160,6 +160,8 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_cuire_repaired.ttl
 
 ## to ensure API only access: --skip-collection-check
 
+# 		--selected-collections extraction_set \
+
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
@@ -177,7 +179,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
 		--selected-collections data_object_set \
-		--selected-collections extraction_set \
 		--selected-collections field_research_site_set \
 		--selected-collections functional_annotation_agg \
 		--selected-collections genome_feature_set \
@@ -266,7 +267,20 @@ local/nmdc-schema-v8.0.0.yaml:
 	#       - MIxS:experimental_factor|additional_info
 	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
 
+local/nmdc-schema-v7.8.0.yaml:
+	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
+	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
+	#     see_also:
+	#       - MIxS:experimental_factor|additional_info
+	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
+	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
+	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
+	rm -rf $@.bak
+
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
+	$(RUN) gen-owl $< > $@
+
+local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
 	$(RUN) gen-owl $< > $@
 
 ### FUSEKI, DOCKER, ETC
@@ -412,7 +426,7 @@ local/subjects-lacking-rdf-types.tsv:
 
 # retreive, validate, convert, repair, load and query selected colelctiosn form the Napa squad's MongoDB
 
-local/some_napa_collections.yaml:
+local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 	date
 	time $(RUN) pure-export \
 		--client-base-url https://api-napa.microbiomedata.org \
@@ -422,32 +436,40 @@ local/some_napa_collections.yaml:
 		--mongo-db-name nmdc \
 		--mongo-host localhost \
 		--mongo-port 27777 \
-		--output-yaml $@.temp \
+		--output-yaml $@.tmp \
 		--page-size 200000 \
-		--schema-file src/schema/nmdc.yaml \
+		--schema-file $< \
 		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections extraction_set \
 		--selected-collections field_research_site_set \
+		--selected-collections library_preparation_set \
 		--selected-collections omics_processing_set \
+		--selected-collections pooling_set \
 		--selected-collections processed_sample_set \
 		--selected-collections study_set \
 		--skip-collection-check
-	grep -v designated_class $@.temp > $@
-	# designated_class was preemptively asserted in the napa MongoDB,
-	# but it's not available in most version of the schema
-	# rdf:type will take its place in the berkeley-schema-fy24
-	rm -rf $@.temp
+	sed -i.bak 's/gold:/GOLD:/' $@.tmp # kludge modify data to match (old!) schema
+	rm -rf $@.tmp.bak
+	time $(RUN) migration-recursion \
+		--schema-path $< \
+		--input-path $@.tmp \
+		--salvage-prefix generic \
+		--output-path $@ # kludge masks ids that contain whitespace
+	rm -rf $@.tmp
 
-local/some_napa_collections.validataion.log: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml
-	- $(RUN) linkml-validate --schema $^ > $@ # we are expecting some errors and might want to grep them out
+.PRECIOUS: local/some_napa_collections.validation.log
+local/some_napa_collections.validation.log: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml
+	- $(RUN) linkml-validate --schema $^ > $@
 
-local/some_napa_collections.ttl: local/nmdc-schema-v8.0.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validataion.log
-	$(RUN) linkml-convert --output $@.raw.ttl --schema $(word 1, $^) $(word 2, $^)
+local/some_napa_collections.ttl: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
+	$(RUN) linkml-convert --output $@.tmp.ttl --schema $(word 1, $^) $(word 2, $^)
 	time $(RUN) anyuri-strings-to-iris \
-		--input-ttl $@.raw.ttl \
+		--input-ttl $@.tmp.ttl \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
-	rm -rf $@.raw.ttl
+	rm -rf $@.tmp.ttl
 
 load-from-some-napa-collections: local/some_napa_collections.ttl
 	curl -X \
@@ -475,7 +497,7 @@ local/sparql-results/objects-that-are-never-subjects.tsv:
 
 some-napa-collections-cleanup:
 	rm -rf local/some_napa_collections*
-	rm -rf local/nmdc-schema-v8.0.0.yaml
+	rm -rf local/nmdc-schema*
 	# rm -rf local/sparql-results/*
 
 .PHONY: clear-data-graph some-napa-collections-cleanup
