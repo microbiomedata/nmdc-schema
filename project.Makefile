@@ -57,7 +57,6 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
 	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-	# eval yq -i $$line $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 
