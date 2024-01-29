@@ -1701,24 +1701,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../has_numeric_value/">has_numeric_value</a></td>
-<td>0..1 <br/> <a href="../Double/">Double</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_raw_value/">has_raw_value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_unit/">has_unit</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Example "m"</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../hc_produced/">hc_produced</a></td>
 <td>0..1 <br/> <a href="../HcProducedEnum/">HcProducedEnum</a></td>
 <td>Main hydrocarbon type produced from resource (i</td>
@@ -4646,9 +4628,6 @@ slots:
 - growth_hormone_regm
 - hall_count
 - handidness
-- has numeric value
-- has raw value
-- has unit
 - hc_produced
 - hcr
 - hcr_fw_salinity
@@ -10950,35 +10929,6 @@ attributes:
     domain_of:
     - Biosample
     range: handidness_enum
-  has numeric value:
-    name: has numeric value
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: has_numeric_value
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: double
-  has raw value:
-    name: has raw value
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    string_serialization: '{has numeric value} {has unit}'
-    alias: has_raw_value
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
-  has unit:
-    name: has unit
-    description: Example &quot;m&quot;
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: has_unit
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
   hc_produced:
     name: hc_produced
     annotations:
