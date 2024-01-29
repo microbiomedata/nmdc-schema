@@ -97,6 +97,8 @@ def cli(schema, output, inc_enums, inc_types, inc_attr_vals):
         class_slot_names = sorted(s.name for s in class_slots.values())
 
         for current_slot_name in class_slot_names:
+            if current_slot_name == 'type':
+                continue
             current_slot = schema_view.induced_slot(current_slot_name, current_class_name)
             current_slot_slot_uri = get_uri_for_element(current_slot_name, schema_view, schema_default_prefix)
             current_slot_range = current_slot.range or schema_default_range_name
@@ -136,10 +138,13 @@ def cli(schema, output, inc_enums, inc_types, inc_attr_vals):
         predicate = g.namespace_manager.expand_curie(str(triple['predicate']))
         obj = g.namespace_manager.expand_curie(str(triple['object']))
         g.add((subject, predicate, obj))
+        g.add((subject, RDF.type, OWL.Class))
         g.add((predicate, RDF.type, OWL.ObjectProperty))
-        g.add((predicate, RDF.type, g.namespace_manager.expand_curie("linkml:SlotDefinition")))
+        # g.add((predicate, RDF.type, g.namespace_manager.expand_curie("linkml:SlotDefinition")))
         g.add((predicate, RDFS.domain, subject))
         g.add((predicate, RDFS.range, obj))
+
+        # why dies this type the subjects as xsd:AnyURI?
 
     # Serialize the RDF graph to a Turtle file
     g.serialize(destination=output, format='turtle')
