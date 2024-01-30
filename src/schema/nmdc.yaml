@@ -2648,7 +2648,7 @@ slots:
   funding_sources:
     multivalued: true
     range: string
-    pattern: ^.{1,450}$
+    pattern: ^.{1,250}$
     description: >-
       A list of organizations, along with the award numbers, that underwrite financial support for projects of 
       a particular type. Typically, they process applications and award funds to the chosen qualified 
