@@ -95,14 +95,14 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--report-style exhaustive
 
 examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
-	poetry run exhaustion-check \
+	$(RUN) exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
 examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
-	poetry run pretty-sort-yaml \
+	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
 
@@ -259,12 +259,6 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 		--schema-class Biosample
 
 ### example of preparing to validate napa squad data
-local/nmdc-schema-v8.0.0.yaml:
-	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.0.0/nmdc_schema/nmdc_materialized_patterns.yaml
-	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
-	#     see_also:
-	#       - MIxS:experimental_factor|additional_info
-	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
 
 local/nmdc-schema-v7.8.0.yaml:
 	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
@@ -276,35 +270,21 @@ local/nmdc-schema-v7.8.0.yaml:
 	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
 	rm -rf $@.bak
 
-local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
-	$(RUN) gen-owl --no-use-native-uris $< > $@
-
-
 local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
 	$(RUN) gen-owl --no-use-native-uris $< > $@
 
-local/nmdc-sty-11-aygzgv51.yaml:
-	$(RUN) get-study-related-records \
-		--api-base-url https://api-napa.microbiomedata.org \
-		extract-study \
-		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
-		--search-orphaned-data-objects \
-		--output-file $@
 
-
-### FUSEKI, DOCKER, ETC
+## FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
 # Jena provides command line tools for accessing RDF *files*
-# or you can use a TDB as the data backend
-# Fuseki is a web interface for submitting SPARQL queries
-# we are foing all of this in docker so you don't have to install any of this software
+# we use a Jena TDB2 database as the backend (as opposed to operating over files)
+# Fuseki is Jena's web interface for submitting SPARQL queries
+# we are doing all of this in docker so you don't have to install any of this system software
 
-.PHONY: thorough-docker-fuseki-cleanup-from-host # this level of cleanup may not be needed ona regular basis
+.PHONY: thorough-docker-fuseki-cleanup-from-host # this level of cleanup may not be needed on a regular basis
 thorough-docker-fuseki-cleanup-from-host: some-napa-collections-cleanup
 	- docker compose down
 	rm -rf local/fuseki-data
-	rm -rf local/nmdc-data*
-	rm -rf local/nmdc-tdb2*
 	rm -rf local/sparql-results/*
 	rm -rf .venv
 	docker system prune --force # very aggressive. may delete containers etc that you want but are not currently running
@@ -312,19 +292,21 @@ thorough-docker-fuseki-cleanup-from-host: some-napa-collections-cleanup
 .PHONY: docker-startup-from-host
 docker-startup-from-host:
 	docker compose up --build  --detach # --build is only necessary if changes have been made to the Dockerfile
-	docker-compose run app poetry install
-	docker-compose run app create-nmdc-tdb2-from-app
 
-# manually: `docker compose exec app bash`
-# then you can do any nmdc-schem makefile commands in the 'app' environment
+# from host: checkout the desired branch, fetch and pull
+# from host: `docker compose exec app bash`
+#   it's best if there isn't already a ./.venv, especially if the environment wasn't built for Linux
+# in container: `poetry install`
+# in container: `make build-schema-in-app`
+
+# then you can do any nmdc-schema makefile commands in the 'app' environment
 
 .PHONY: build-schema-in-app
-build-schema-in-app:
-#	# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
-#	# The support to run uninstalled scripts will be removed in a future release.
-#	# Run `poetry install` to resolve and get rid of this message.
-#	poetry install # it's best if there isn't already a ./.venv, especially if it's not for Linux
+build-schema-in-app: pre-build
 	make squeaky-clean all test
+
+.PHONY: pre-build
+pre-build: local/gold-study-ids.yaml create-nmdc-tdb2-from-app
 
 .PHONY: create-nmdc-tdb2-from-app
 create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
@@ -333,112 +315,94 @@ create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. 
 		--data 'dbType=tdb&dbName=nmdc-tdb2' \
 		'http://fuseki:3030/$$/datasets'
 
-## does this with work in both the datasets offline and active states?
-#local/nmdc-tdb2-graph-list.tsv:
-#	tdb2.tdbquery \
-#		--loc=$(FD_ROOT)/nmdc-tdb2 \
-#		--query=assets/sparql/tdb-graph-list.rq \
-#		--results=TSV > $@
 
-# curl -X DELETE \
-#   --user 'admin:password' \
-#   http://fuseki:3030/nmdc-tdb2/data?default
-
-# curl -X DELETE \
-#   --user 'admin:password' \
-#   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
+#
+# advantage: can retreive records that have known, chacterized paths to a Study (useful scoping)
+# disadvantages:
+#   some paths to records form some collections aren't implemented yet
+#   runs slow on Mark's computers in Philadelphia. Running pure-export can reteive more data more quickly, but without any scoping
+# the core targets include wildcards in their names,
+#   but an individual YAML file can be built like this: make local/study-files/nmdc-sty-11-8fb6t785.yaml
+#   or an explicit subset of YAML files can be built with: make create-study-yaml-files-subset
+#   or YAML files can be built from a list of study ids (STUDY_IDS) like this: make create-study-yaml-files-from-study-ids-list
 
 
-.PHONY: docker-compose-down-from-host
-docker-compose-down-from-host:
-	docker compose down
+# can't ever be used without generating local/gold-study-ids.yaml first
+STUDY_IDS := $(shell yq '.resources.[].id' local/gold-study-ids.yaml  | awk '{printf "%s ", $$0} END {print ""}')
 
-# ----
+.PHONY: print-discovered-study-ids print-intended-yaml-files
 
-.PHONY: print-prefixed-study-ids print-file-list
-
-STUDY_IDS := nmdc:sty-11-34xj1150 nmdc:sty-11-5bgrvr62 nmdc:sty-11-5tgfr349 nmdc:sty-11-r2h77870 \
-nmdc:sty-11-db67n062 nmdc:sty-11-8xdqsn54 nmdc:sty-11-28tm5d36 nmdc:sty-11-33fbta56 nmdc:sty-11-076c9980 \
-nmdc:sty-11-t91cwb40 nmdc:sty-11-aygzgv51 nmdc:sty-11-547rwq94 nmdc:sty-11-zs2syx06 nmdc:sty-11-dcqce727 \
-nmdc:sty-11-1t150432 nmdc:sty-11-8fb6t785
-
-#print-prefixed-study-ids:
-#	@echo $(STUDY_IDS)
+# can't ever be used without generating local/gold-study-ids.yaml first
+print-discovered-study-ids:
+	@echo $(STUDY_IDS)
 
 # Replace colons with hyphens in study IDs
-STUDY_FILES := $(addsuffix .yaml,$(addprefix local/study-files/,$(subst :,-,$(STUDY_IDS))))
+# can't ever be used without generating local/gold-study-ids.yaml first
+STUDY_YAML_FILES := $(addsuffix .yaml,$(addprefix local/study-files/,$(subst :,-,$(STUDY_IDS))))
 
-#print-file-list:
-#	@echo $(STUDY_FILES)
+.PHONY: all-study-yaml-files
 
-# Napa nmdc:sty-11-aygzgv51 = "production" gold:Gs0114663
+# can't ever be used without generating local/gold-study-ids.yaml first
+create-study-yaml-files-from-study-ids-list: $(STUDY_YAML_FILES)
 
-  # [('nmdc:sty-11-34xj1150', 4443),
-  # ('nmdc:sty-11-5bgrvr62', 471),
-  # ('nmdc:sty-11-5tgfr349', 430),
-  # ('nmdc:sty-11-r2h77870', 416),
-  # ('nmdc:sty-11-db67n062', 241),
-  # ('nmdc:sty-11-8xdqsn54', 207),
-  # ('nmdc:sty-11-28tm5d36', 134),
-  # ('nmdc:sty-11-33fbta56', 124),
-  # ('nmdc:sty-11-076c9980', 105),
-  # ('nmdc:sty-11-t91cwb40', 95),
-  # ('nmdc:sty-11-aygzgv51', 85),
-  # ('nmdc:sty-11-547rwq94', 80),
-  # ('nmdc:sty-11-zs2syx06', 60), # Extracted study nmdc:sty-11-zs2syx06 from the NMDC database in 0:00:01.475736.
-  # ('nmdc:sty-11-dcqce727', 53), # Extracted study nmdc:sty-11-dcqce727 from the NMDC database in 0:36:39.633116.
-  # ('nmdc:sty-11-1t150432', 30), # Extracted study nmdc:sty-11-8fb6t785 from the NMDC database in 0:01:04.012420, 0:01:17.337886.
-  # ('nmdc:sty-11-8fb6t785', 23)] # Extracted study nmdc:sty-11-8fb6t785 from the NMDC database in 0:01:01.963206.
+# can't ever be used without generating local/gold-study-ids.yaml first
+print-intended-yaml-files: local/gold-study-ids.yaml
+	@echo $(STUDY_YAML_FILES)
 
-# local/study-files/nmdc-sty-11-34xj1150.yaml
-local/study-files/%.yaml: local/nmdc-schema-v8.0.0.yaml
+## we can get a report of biosamples per study with the following
+## may help predict how long it will take to run study-id-from-filename on a particular study
+## will become unnecessary once aggregation queries are available in the napa nmdc-runtime API
+local/biosamples-per-study.txt:
+	$(RUN) python src/scripts/report_biosamples_per_study.py > $@
+
+## getting a report of GOLD study identifiers, which might have been used a Study ids in legacy (pre-Napa) data
+local/gold-study-ids.json:
+	curl -X 'GET' \
+		--output $@ \
+		'https://api-napa.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
+		-H 'accept: application/json'
+
+local/gold-study-ids.yaml: local/gold-study-ids.json
+	yq -p json -o yaml $< > $@
+
+local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
 	mkdir -p $(@D)
-	rm -rf study-file-name.txt study-id.txt
-	echo $@ > study-file-name.txt
-	echo $(shell poetry run get-study-id-from-filename $$(<study-file-name.txt)) > study-id.txt
-	# cumbersome! using python script because can't replace just first hyphen with colon with make text function
-	# then, can't use $@ inside of a make shell call
-	# we just want to transform $@, like local/study-files/nmdc-sty-11-8fb6t785.yaml to nmdc:sty-11-8fb6t785
-	date
-	time $(RUN) get-study-related-records \
-		--api-base-url https://api-napa.microbiomedata.org \
-		extract-study \
-		--study-id $$(<study-id.txt) \
-		--output-file $@
-	$(RUN) linkml-validate --schema $< $@ > $@.validation.log.txt
-	rm -rf study-file-name.txt study-id.txt
+	study_file_name=`echo $@` ; \
+		echo $$study_file_name ; \
+		study_id=`poetry run get-study-id-from-filename $$study_file_name` ; \
+		echo $$study_id ; \
+		date ; \
+		time $(RUN) get-study-related-records \
+			--api-base-url https://api-napa.microbiomedata.org \
+			extract-study \
+			--study-id $$study_id \
+			--output-file $@.tmp.yaml
+	sed -i.bak 's/gold:/GOLD:/' $@.tmp.yaml # kludge modify data to match (old!) schema
+	rm -rf $@.tmp.bak
+	- $(RUN) linkml-validate --schema $< $@.tmp.yaml > $@.validation.log.txt
+	time $(RUN) migration-recursion \
+		--schema-path $< \
+		--input-path $@.tmp.yaml \
+		--salvage-prefix generic \
+		--output-path $@ # kludge masks ids that contain whitespace
+	rm -rf $@.tmp.yaml $@.tmp.yaml.bak
 
-create-study-yaml-files: local/study-files/nmdc-sty-11-8fb6t785.yaml \
+.PHONY: create-study-yaml-files-subset create-study-ttl-files-subset load-from-some-napa-collections
+
+create-study-yaml-files-subset: local/study-files/nmdc-sty-11-8fb6t785.yaml \
 local/study-files/nmdc-sty-11-1t150432.yaml \
-local/study-files/nmdc-sty-11-zs2syx06.yaml
+local/study-files/nmdc-sty-11-dcqce727.yaml
 
-# includes load into fuseki
-# not doing any migration here yet
-local/study-files/%.ttl: local/nmdc-schema-v8.0.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files
+local/study-files/%.ttl: local/nmdc-schema-v7.8.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
 	$(RUN) linkml-convert --output $@ --schema $< $(subst .ttl,.yaml,$@)
-	curl -X \
-		POST -H "Content-Type: text/turtle" \
-		--user 'admin:password' \
-		--data-binary @$@ http://fuseki:3030/nmdc-tdb2/data?graph=https://api-napa.microbiomedata.org
 
-create-load-study-ttl-files: local/study-files/nmdc-sty-11-8fb6t785.ttl \
+create-study-ttl-files-subset: local/study-files/nmdc-sty-11-8fb6t785.ttl \
 local/study-files/nmdc-sty-11-1t150432.ttl \
-local/study-files/nmdc-sty-11-zs2syx06.ttl
+local/study-files/nmdc-sty-11-dcqce727.ttl
 
-
-# seems to work in both the datasets offline and active states
-# could also show how to submit to fuseki via curl
-# or could run interactively in Fuseki web UI, localhost:3030
-# but that may only load in a private browser window
-local/subjects-lacking-rdf-types.tsv:
-	tdb2.tdbquery \
-		--loc=$(FD_ROOT)/nmdc-tdb2 \
-		--query=assets/sparql/subjects-lacking-rdf-types.rq \
-		--results=TSV > $@ # this doesn't take into consideration that some entities have nmdc:type string values, which should be migrated
-
-
-# retreive, validate, convert, repair, load and query selected colelctiosn form the Napa squad's MongoDB
-
+## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
+# retrieve selected collections from the Napa squad's MongoDB and fix ids containing whitespace
 local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 	date
 	time $(RUN) pure-export \
@@ -491,8 +455,6 @@ load-from-some-napa-collections: local/some_napa_collections.ttl
 		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://api-napa.microbiomedata.org
 
 .PHONY: load-non-native-uri-schema
-# from linkml/linkml branch issue-1842
-# poetry run gen-owl --no-use-native-uris ../nmdc-schema/src/schema/nmdc.yaml > ../nmdc-schema/local/nmdc_with_non_native_uris.owl.ttl
 load-non-native-uri-schema: local/nmdc-schema-v7.8.0.owl.ttl create-nmdc-tdb2-from-app
 	curl -X \
 		POST -H "Content-Type: text/turtle" \
@@ -512,7 +474,6 @@ some-napa-collections-cleanup:
 	rm -rf local/some_napa_collections*
 	rm -rf local/nmdc-schema*
 
-
 .PHONY: clear-data-graph some-napa-collections-cleanup
 clear-data-graph:
 	curl -X \
@@ -520,3 +481,33 @@ clear-data-graph:
 		--user 'admin:password' \
 		--data "CLEAR GRAPH <https://api-napa.microbiomedata.org>" \
 		http://fuseki:3030/nmdc-tdb2/update
+
+.PHONY: docker-compose-down-from-host
+docker-compose-down-from-host:
+	docker compose down
+
+## Querying with Fuseki's SAPRQL API is preferred. Here's an example of querying TDB2 database directly.
+##   We haven't whetehr the direct query is appropriate or preferable in any cases
+# or could run interactively in Fuseki web UI, localhost:3030
+# but that may only load in a private browser window
+
+#local/nmdc-tdb2-graph-list.tsv:
+#	tdb2.tdbquery \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--query=assets/sparql/tdb-graph-list.rq \
+#		--results=TSV > $@
+
+#local/subjects-lacking-rdf-types.tsv:
+#	tdb2.tdbquery \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--query=assets/sparql/subjects-lacking-rdf-types.rq \
+#		--results=TSV > $@ # this doesn't take into consideration that some entities have nmdc:type string values, which should be migrated
+
+## when would we want to delete instead of clearing?
+# curl -X DELETE \
+#   --user 'admin:password' \
+#   http://fuseki:3030/nmdc-tdb2/data?default
+
+# curl -X DELETE \
+#   --user 'admin:password' \
+#   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
