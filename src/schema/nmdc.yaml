@@ -2857,7 +2857,6 @@ slots:
     range: Study
     multivalued: true
     pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
-    required: true
 
   data_category:
     domain: DataObject
