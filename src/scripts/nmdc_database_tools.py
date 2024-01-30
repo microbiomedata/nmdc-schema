@@ -219,7 +219,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             study = None
-            logger.info(f"Study {study_id} not found in the NMDC database.")
+            logger.warning(f"Study {study_id} not found in the NMDC database.")
         else:
             raise e
     db.study_set.append(study)
@@ -229,7 +229,9 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
     search_study_ids = [study_id]
     if search_legacy_identifiers:
         # add legacy study IDs to search
+        logger.info("Searching using current and legacy identifiers")
         search_study_ids.extend(study.get("gold_study_identifiers", []))
+        logger.info(f"Using study IDs: {search_study_ids}")
 
 
     for study_id in search_study_ids:
@@ -239,7 +241,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             db.biosample_set.extend(biosamples)
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
-                logger.info(f"No biosamples found part_of {study_id}.")
+                logger.warning(f"No biosamples found part_of {study_id}.")
             else:
                 raise e
         # OmicsProcessing records part_of the study
@@ -249,7 +251,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             db.omics_processing_set.extend(omics_processing_records)
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
-                logger.info(f"No OmicsProcessing records found part_of {study_id}.")
+                logger.warning(f"No OmicsProcessing records found part_of {study_id}.")
             else:
                 raise e
 
@@ -289,6 +291,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                     # add legacy OmicsProcessing IDs to search
                     search_omics_ids.extend(omics_processing_record.get("gold_sequencing_project_identifiers", []))
                     search_omics_ids.extend(omics_processing_record.get("alternative_identifiers", []))
+                    logger.info(f"Using OmicsProcessing IDs: {search_omics_ids}")
 
                 # Get the Workflow Execution Activity record(s) for the OmicsProcessing record
                 for omics_id in search_omics_ids:
@@ -311,7 +314,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                             except requests.exceptions.HTTPError as e:
                                 if e.response.status_code == 404:
                                     data_object = None
-                                    logger.info(f"Data object {data_object_id} not found in the NMDC database.")
+                                    logger.warning(f"Data object {data_object_id} not found in the NMDC database.")
                                 else:
                                     raise e
                             if data_object and data_object not in db.data_object_set:
@@ -337,7 +340,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             db.__setattr__(wf_set_name, wf_records)
 
     elapsed_time = datetime.now() - start_time
-    logger.info(f"Extracted study {study_id} from the NMDC database in {elapsed_time}.")
+    logger.info(f"Extracted studies: {search_study_ids} from the NMDC database in {elapsed_time}.")
     logger.info(f"Found {orphaned_data_object_count} orphaned data objects.")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")
