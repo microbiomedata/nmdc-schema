@@ -1,7 +1,7 @@
 # THIS IS ALL IRRELEVANT FOR NOW SINCE THE AGGREGATION QUERY IS NOT YET AVAILABLE ON THE NAPA API
 
 # visit https://api-dev.microbiomedata.org/docs
-#   todo: when will  aggregation query running be avaialble on the production or napa APIs?
+#   todo: when will  aggregation query running be available on the production or napa APIs?
 # click authorize
 # for now, enter username and password in the OAuth2PasswordOrClientCredentialsBearer (OAuth2, password) form
 #  some additional authentication methods are already available and still more are to be added
@@ -67,13 +67,5 @@ print("\n")
 
 print(f"{len(sorted_study_count)} studies with at least one Biosample part")
 
-# Extract suffix portion from each key and join them into a string
-suffix_list = ' '.join(key.split(':')[1] for key in study_count.keys())
-
-print("Desired output:", suffix_list)
-
-print("HELLO")
-
-# for current_key in study_count.keys():
-#     print(current_key)
-#     print(current_key.split(':')[1])
+# # Extract suffix portion from each key and join them into a string
+# suffix_list = ' '.join(key.split(':')[1] for key in study_count.keys())
