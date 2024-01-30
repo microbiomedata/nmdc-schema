@@ -156,3 +156,8 @@
 
 # add "M horizon" to soil_horizon_enum
 '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'
+
+# as of 2024-01-30:
+# ValueError: Conflicting URIs (https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml, https://w3id.org/linkml/types) for item: date
+make: *** [Makefile:102: gen-project] Error 1
+'del(.types)'
