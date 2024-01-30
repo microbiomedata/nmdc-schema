@@ -1875,6 +1875,8 @@ classes:
       has_output:
         range: DataObject
         pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
+      associated_studies:
+        required: true
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
