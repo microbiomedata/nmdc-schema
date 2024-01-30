@@ -45,7 +45,7 @@ packages = [
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
-linkml = "^1.6.8"
+linkml = "^1.6.10"
 linkml-runtime = "^1.6.2"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"

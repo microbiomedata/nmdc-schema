@@ -278,10 +278,10 @@ local/nmdc-schema-v7.8.0.yaml:
 	rm -rf $@.bak
 
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
-	$(RUN) gen-owl $< > $@
+	$(RUN) gen-owl --no-use-native-uris $< > $@
 
 local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
-	$(RUN) gen-owl $< > $@
+	$(RUN) gen-owl --no-use-native-uris $< > $@
 
 ### FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
@@ -291,26 +291,30 @@ local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
 # we are foing all of this in docker so you don't have to install any of this software
 
 .PHONY: thorough-docker-fuseki-cleanup-from-host # this level of cleanup may not be needed ona regular basis
-thorough-docker-fuseki-cleanup-from-host:
+thorough-docker-fuseki-cleanup-from-host: some-napa-collections-cleanup
 	- docker compose down
 	rm -rf local/fuseki-data
 	rm -rf local/nmdc-data*
 	rm -rf local/nmdc-tdb2*
+	rm -rf local/sparql-results/*
+	rm -rf .venv
 	docker system prune --force # very aggressive. may delete containers etc that you want but are not currently running
 
 .PHONY: docker-startup-from-host
 docker-startup-from-host:
 	docker compose up --build  --detach # --build is only necessary if changes have been made to the Dockerfile
+	docker-compose run app poetry install
+	docker-compose run app create-nmdc-tdb2-from-app
 
 # manually: `docker compose exec app bash`
 # then you can do any nmdc-schem makefile commands in the 'app' environment
 
 .PHONY: build-schema-in-app
 build-schema-in-app:
-	# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
-	# The support to run uninstalled scripts will be removed in a future release.
-	# Run `poetry install` to resolve and get rid of this message.
-	poetry install # it's best if there isn't already a ./.venv, especially if it's not for Linux
+#	# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
+#	# The support to run uninstalled scripts will be removed in a future release.
+#	# Run `poetry install` to resolve and get rid of this message.
+#	poetry install # it's best if there isn't already a ./.venv, especially if it's not for Linux
 	make squeaky-clean all test
 
 .PHONY: create-nmdc-tdb2-from-app
@@ -480,7 +484,7 @@ load-from-some-napa-collections: local/some_napa_collections.ttl
 .PHONY: load-non-native-uri-schema
 # from linkml/linkml branch issue-1842
 # poetry run gen-owl --no-use-native-uris ../nmdc-schema/src/schema/nmdc.yaml > ../nmdc-schema/local/nmdc_with_non_native_uris.owl.ttl
-load-non-native-uri-schema: local/nmdc_with_non_native_uris.owl.ttl create-nmdc-tdb2-from-app
+load-non-native-uri-schema: local/nmdc-schema-v7.8.0.owl.ttl create-nmdc-tdb2-from-app
 	curl -X \
 		POST -H "Content-Type: text/turtle" \
 		--user 'admin:password' \
@@ -498,7 +502,7 @@ local/sparql-results/objects-that-are-never-subjects.tsv:
 some-napa-collections-cleanup:
 	rm -rf local/some_napa_collections*
 	rm -rf local/nmdc-schema*
-	# rm -rf local/sparql-results/*
+
 
 .PHONY: clear-data-graph some-napa-collections-cleanup
 clear-data-graph:
