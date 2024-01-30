@@ -45,7 +45,7 @@ packages = [
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
-linkml = "^1.6.8"
+linkml = "^1.6.10"
 linkml-runtime = "^1.6.2"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
@@ -111,3 +111,4 @@ nmdc-version = "nmdc_schema.nmdc_version:cli"
 pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
 test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
+get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main"

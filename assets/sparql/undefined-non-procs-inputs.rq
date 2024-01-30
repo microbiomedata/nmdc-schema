@@ -1,0 +1,23 @@
+# Alicia and I wrote this together. It might ahve some good bits, but string filtering is usually a bad practice
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT
+distinct ?s ?st ?o
+WHERE {
+  graph <https://api-napa.microbiomedata.org> {
+    ?s <https://w3id.org/nmdc/has_input> ?o .
+    filter(!(strstarts(str(?o),"https://w3id.org/nmdc/procsm")))
+    optional {
+      ?s a ?st
+    }
+    filter(isuri(?o))
+    minus {
+      ?o ?op ?oo .
+    }
+  }
+  minus {
+    graph <https://w3id.org/nmdc/nmdc> {
+      ?o ?op ?oo .
+    }
+  }
+}
