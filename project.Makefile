@@ -57,7 +57,6 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
 	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-	# eval yq -i $$line $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 
@@ -280,8 +279,18 @@ local/nmdc-schema-v7.8.0.yaml:
 local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
 	$(RUN) gen-owl $< > $@
 
+
 local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
 	$(RUN) gen-owl $< > $@
+
+local/nmdc-sty-11-aygzgv51.yaml:
+	$(RUN) get-study-related-records \
+		--api-base-url https://api-napa.microbiomedata.org \
+		extract-study \
+		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
+		--search-orphaned-data-objects \
+		--output-file $@
+
 
 ### FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
