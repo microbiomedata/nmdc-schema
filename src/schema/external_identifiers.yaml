@@ -86,7 +86,7 @@ slots:
 
   jgi_portal_study_identifiers:
     is_a: study_identifiers
-    domain: Study
+    #    domain: Study
     mixins:
       - jgi_portal_identifiers
     id_prefixes:
@@ -101,32 +101,32 @@ slots:
       - bioregistry.io/jgi.proposal:507130 ==https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
     title: JGI Portal Study identifiers
     description: >-
-      Identifiers that link a NMDC study to a website hosting raw and analyzed data for a JGI proposal. 
+      Identifiers that link a NMDC study to a website hosting raw and analyzed data for a JGI proposal.
       The suffix of the curie can used to query the GOLD API and is interoperable with an award DOI from OSTI and a GOLD study identifier.
 
   neon_study_identifiers:
     is_a: study_identifiers
-    domain: Study
+    #    domain: Study
     mixins:
       - neon_identifiers
 
-  insdc_sra_ena_study_identifiers:
-    is_a: study_identifiers
-    mixins:
-      - insdc_identifiers
-    aliases:
-      - EBI ENA study identifiers
-      - NCBI SRA identifiers
-      - DDBJ SRA identifiers
-    pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
-    description: identifiers for corresponding project in INSDC SRA / ENA
-    examples:
-      - value: https://bioregistry.io/insdc.sra:SRP121659
-        description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
-    see_also:
-      - https://github.com/bioregistry/bioregistry/issues/109
-      - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
-      - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
+    #  insdc_sra_ena_study_identifiers:
+    #    is_a: study_identifiers
+    #    mixins:
+    #      - insdc_identifiers
+    #    aliases:
+    #      - EBI ENA study identifiers
+    #      - NCBI SRA identifiers
+    #      - DDBJ SRA identifiers
+    #    pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
+    #    description: identifiers for corresponding project in INSDC SRA / ENA
+    #    examples:
+    #      - value: https://bioregistry.io/insdc.sra:SRP121659
+    #        description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
+    #    see_also:
+    #      - https://github.com/bioregistry/bioregistry/issues/109
+    #      - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
+    #      - https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=studies
 
   insdc_bioproject_identifiers:
     is_a: study_identifiers
@@ -148,7 +148,7 @@ slots:
 
   gold_study_identifiers:
     is_a: study_identifiers
-    domain: Study
+    #      domain: Study
     mixins:
       - gold_identifiers
     pattern: "^gold:Gs[0-9]+$"
@@ -163,7 +163,7 @@ slots:
 
   mgnify_project_identifiers:
     is_a: study_identifiers
-    domain: Study
+    #    domain: Study
     mixins:
       - mgnify_identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
@@ -173,7 +173,7 @@ slots:
 
   gnps_task_identifiers:
     is_a: study_identifiers
-    domain: Study
+    #    domain: Study
     mixins:
       - gnps_identifiers
     title: GNPS task identifiers
@@ -191,7 +191,7 @@ slots:
   emsl_project_identifiers:
     title: EMSL Project Identifiers
     is_a: study_identifiers
-    domain: Study
+    #    domain: Study
     mixins:
       - emsl_identifiers
     description: an identifier that links to an EMSL user facility project
@@ -245,18 +245,18 @@ slots:
       - https://www.ncbi.nlm.nih.gov/biosample
       - https://www.ddbj.nig.ac.jp/biosample/index-e.html
 
-  insdc_secondary_sample_identifiers:
-    is_a: biosample_identifiers
-    mixins:
-      - insdc_identifiers
-    pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"
-    description: secondary identifiers for corresponding sample in INSDC
-    comments:
-      - "ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331"
-      - MGnify uses these as their primary sample IDs
-    examples:
-      - value: https://bioregistry.io/insdc.sra:DRS166340
-        description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
+  #  insdc_secondary_sample_identifiers:
+  #    is_a: biosample_identifiers
+  #    mixins:
+  #      - insdc_identifiers
+  #    pattern: "^biosample:(E|D|S)RS[0-9]{6,}$"
+  #    description: secondary identifiers for corresponding sample in INSDC
+  #    comments:
+  #      - "ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331"
+  #      - MGnify uses these as their primary sample IDs
+  #    examples:
+  #      - value: https://bioregistry.io/insdc.sra:DRS166340
+  #        description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
 
   emsl_biosample_identifiers:
     title: EMSL Biosample Identifiers
@@ -285,7 +285,7 @@ slots:
     is_a: external_database_identifiers
 
   gold_sequencing_project_identifiers:
-    domain: OmicsProcessing
+    #    domain: OmicsProcessing
     is_a: omics_processing_identifiers
     mixins:
       - gold_identifiers
@@ -296,7 +296,7 @@ slots:
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
-    domain: OmicsProcessing
+    #    domain: OmicsProcessing
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
@@ -316,27 +316,27 @@ slots:
     examples:
       - value: https://bioregistry.io/gold:Ga0526289
 
-  insdc_analysis_identifiers:
-    is_a: analysis_identifiers
-    comments:
-      - in INSDC this is a run but it corresponds to a GOLD analysis
-    pattern: "^insdc.sra:(E|D|S)RR[0-9]{6,}$"
-    mixins:
-      - insdc_identifiers
-    examples:
-      - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
-        description: Illumina MiSeq paired end sequencing of SAMD00212331
-      - value: https://www.ebi.ac.uk/ena/browser/view/ERR436051
-
-  mgnify_analysis_identifiers:
-    is_a: analysis_identifiers
-    notes:
-      - 'removed pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109'
-    mixins:
-      - mgnify_identifiers
-    examples:
-      - value: https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
-        description: combined analyses (taxonomic, functional) of sample ERS438107
+  #  insdc_analysis_identifiers:
+  #    is_a: analysis_identifiers
+  #    comments:
+  #      - in INSDC this is a run but it corresponds to a GOLD analysis
+  #    pattern: "^insdc.sra:(E|D|S)RR[0-9]{6,}$"
+  #    mixins:
+  #      - insdc_identifiers
+  #    examples:
+  #      - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
+  #        description: Illumina MiSeq paired end sequencing of SAMD00212331
+  #      - value: https://www.ebi.ac.uk/ena/browser/view/ERR436051
+  #
+  #  mgnify_analysis_identifiers:
+  #    is_a: analysis_identifiers
+  #    notes:
+  #      - 'removed pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109'
+  #    mixins:
+  #      - mgnify_identifiers
+  #    examples:
+  #      - value: https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
+  #        description: combined analyses (taxonomic, functional) of sample ERS438107
 
   ## assemblies
 
@@ -348,5 +348,3 @@ slots:
     pattern: "^insdc.sra:[A-Z]+[0-9]+(\\.[0-9]+)?$"
     mixins:
       - insdc_identifiers
-
-

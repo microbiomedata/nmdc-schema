@@ -6,6 +6,7 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Core Type
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
+  - attribute_values
   - basic_slots
   - external_identifiers
   - prov
@@ -27,7 +28,6 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-
 subsets:
   environment: { }
   investigation: { }
@@ -35,7 +35,6 @@ subsets:
   sequencing: { }
 
 types:
-
   bytes:
     description: An integer value that corresponds to a size in bytes
     base: int
@@ -64,18 +63,9 @@ types:
       - qud:Unit
       - UO:0000000
 
-enums:
-  DeviceEnum:
-    permissible_values:
-      Orbital Shaker:
-      Thermomixer:
-      Vortex:
-      Agitation plunger:
-      Drying oven:
-      CEREX System 96 processor:
+enums: { }
 
 classes:
-
   NamedThing:
     description: "a databased entity or concept/class"
     abstract: true
@@ -85,32 +75,37 @@ classes:
       - description
       - alternative_identifiers
 
+  Protocol:
+    slots:
+      - url
+      - name
+
   FailureCategorization:
     slots:
       - qc_failure_what
       - qc_failure_where
 
-  #  DataGeneratingInstrument:
-  #    slots:
-  #      - model
-  #      - name # range: DeviceEnum ? # see also "used" and "instrument_name"
-  #      - vendor
-  #    aliases:
-  #      - device
-  #    description: An identified thing that is capable of generating scientific data
-  #    comments:
-  #      - Likely a capital investment. One would want to say "I used this serial number"
-  #    todos:
-  #      - add examples, like a Thermo Electron Orbitrap
-  #    is_a: NamedThing
-  #    slot_usage:
-  #      id:
-  #        required: true
-  #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-  #          interpolated: true
-  #    exact_mappings:
-  #      - OBI:0000485
+    #  DataGeneratingInstrument:
+    #    slots:
+    #      - model
+    #      - name # range: DeviceEnum ? # see also "used" and "instrument_name"
+    #      - vendor
+    #    aliases:
+    #      - device
+    #    description: An identified thing that is capable of generating scientific data
+    #    comments:
+    #      - Likely a capital investment. One would want to say "I used this serial number"
+    #    todos:
+    #      - add examples, like a Thermo Electron Orbitrap
+    #    is_a: NamedThing
+    #    slot_usage:
+    #      id:
+    #        required: true
+    #        structured_pattern:
+    #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+    #          interpolated: true
+    #    exact_mappings:
+    #      - OBI:0000485
 
   MaterialEntity:
     abstract: true
@@ -192,17 +187,6 @@ classes:
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
-
-  AttributeValue:
-    description: >-
-      The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
-      value and the structured value
-    slots:
-      - has_raw_value
-      - was_generated_by
-    slot_usage:
-      type:
-        description: An optional string that specified the type of object.
 
   QuantityValue:
     is_a: AttributeValue
@@ -333,7 +317,6 @@ classes:
       - inchi
       - inchi_key
       - smiles
-
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
     id_prefixes:
@@ -424,6 +407,63 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+  processing_institution:
+    domain: PlannedProcess
+    range: processing_institution_enum
+    description: The organization that processed the sample.
+
+  protocol_link:
+    domain: PlannedProcess
+    range: Protocol
+
+  #  nucleic_acid_concentration:
+  #    range: InstrumentValue
+
+  biomaterial_purity:
+    domain: ProcessedSample
+    range: QuantityValue
+
+  dna_absorb1:
+    is_a: biomaterial_purity
+    description: 260/280 measurement of DNA sample purity
+    title: DNA absorbance 260/280
+    comments:
+      - Recommended value is between 1 and 3.
+    examples:
+      - value: '2.02'
+    from_schema: https://example.com/nmdc_dh
+    rank: 7
+    range: float
+    slot_group: JGI-Metagenomics
+    recommended: true
+
+  qc_failure_what:
+    domain: FailureCategorization
+    range: FailureWhatEnum
+    description: >-
+      Provides a summary about what caused a lab or workflow process to fail
+    comments:
+      - For example Low read count from a sequencer, malformed fastq files, etc)
+
+  qc_failure_where:
+    domain: FailureCategorization
+    range: FailureWhereEnum
+    description: >-
+      Describes the nmdc schema class that corresonds to where the failure occurred.
+      Most commonly this would be the same as Class that generated the results.
+    comments:
+      - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
+
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
+
+  instrument_name:
+    domain: PlannedProcess
+    description: >-
+      The name of the instrument that was used for processing the sample.
+  #    add this and write migration # range: instrument_name_enum
+
 
   volume: # see also input_volume
     domain: PlannedProcess
@@ -482,23 +522,17 @@ slots:
     range: language code
     description: Should use ISO 639-1 code e.g. "en", "fr"
 
-  #  #  attribute:
-  #  #    aliases:
-  #  #      - field
-  #  #      - property
-  #  #      - template field
-  #  #      - key
-  #  #      - characteristic
-  #  #    abstract: true
-  #  #    description: >-
-  #  #      A attribute of a biosample. Examples: depth, habitat, material.
-  #  #      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
-
-  has_raw_value:
-    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
-    multivalued: false
-    domain: AttributeValue
-    range: string
+  #  attribute:
+  #    aliases:
+  #      - field
+  #      - property
+  #      - template field
+  #      - key
+  #      - characteristic
+  #    abstract: true
+  #    description: >-
+  #      A attribute of a biosample. Examples: depth, habitat, material.
+  #      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
 
   has_unit:
     description: Links a QuantityValue to a unit
@@ -634,25 +668,19 @@ slots:
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
 
-  file_size_bytes:
-    #    is_a: attribute
-    domain: DataObject
-    range: bytes
-    description: Size of the file in bytes
-
   md5_checksum:
     #    is_a: attribute
     range: string
     description: MD5 checksum of file (pre-compressed)
 
-  #  keywords:
-  #    range: string
-  #    multivalued: true
-  #    description: >-
-  #      A list of keywords that used to associate the entity.
-  #      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
-  #    mappings:
-  #      - dcterms:subject
+  ##  #  keywords:
+  ##  #    range: string
+  ##  #    multivalued: true
+  ##  #    description: >-
+  ##  #      A list of keywords that used to associate the entity.
+  ##  #      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
+  ##  #    mappings:
+  ##  #      - dcterms:subject
 
   objective:
     range: string

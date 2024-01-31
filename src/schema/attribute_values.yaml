@@ -1,0 +1,51 @@
+id: https://w3id.org/nmdc/attribute_values
+name: NMDC-Attribute-Values
+title: AttributeValues classes from the NMDC Schema
+description: AttributeValues classes from the NMDC Schema
+
+comments:
+  - broken out from core
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+imports:
+  #  - basic_slots
+  #  - external_identifiers
+  - prov
+
+prefixes:
+  KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
+  SIO: http://semanticscience.org/resource/SIO_
+  UniProtKB: "https://bioregistry.io/uniprot:"
+  biolink: https://w3id.org/biolink/vocab/
+  dcterms: http://purl.org/dc/terms/
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+  qud: http://qudt.org/1.1/schema/qudt#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  schema: http://schema.org/
+  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  OBI: http://purl.obolibrary.org/obo/OBI_
+
+default_prefix: nmdc
+default_range: string
+
+classes:
+  AttributeValue:
+    description: >-
+      The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
+      value and the structured value
+    slots:
+      - has_raw_value
+      - was_generated_by
+      - type
+    slot_usage:
+      type:
+        description: An optional string that specified the type of object.
+
+slots:
+  has_raw_value:
+    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+    multivalued: false
+    domain: AttributeValue
+    range: string

@@ -15,6 +15,7 @@ notes:
 
 imports:
   - core
+  - workflow_execution_activity
 
 prefixes:
   COG: "https://bioregistry.io/cog:"

@@ -305,6 +305,46 @@ docker-startup-from-host:
 build-schema-in-app: pre-build
 	make squeaky-clean all test
 
+.PHONY: per-module-tests
+per-module-tests:
+	$(RUN) gen-owl src/schema/basic_slots.yaml > local/basic_slots.owl
+	robot convert --input local/basic_slots.owl --output local/basic_slots.owl.converted.ttl
+	$(RUN) gen-owl src/schema/external_identifiers.yaml > local/external_identifiers.owl
+	robot convert --input local/external_identifiers.owl --output local/external_identifiers.owl.converted.ttl
+	$(RUN) gen-owl src/schema/prov.yaml > local/prov.owl
+	robot convert --input local/prov.owl --output local/prov.owl.converted.ttl
+	$(RUN) linkml-validate \
+		--schema src/schema/prov.yaml  \
+		--target-class Activity src/data/valid/Activity-for-prov.yaml
+	#$(RUN) gen-linkml --format yaml src/schema/core.yaml
+	$(RUN) gen-owl src/schema/core.yaml > local/core.owl
+	robot convert --input local/core.owl --output local/core.owl.converted.ttl
+	$(RUN) linkml-validate \
+		--schema src/schema/core.yaml \
+		--target-class ControlledIdentifiedTermValue src/data/valid/ControlledIdentifiedTermValue-for-core.yaml
+	$(RUN) gen-owl src/schema/annotation.yaml > local/annotation.owl
+	robot convert --input local/annotation.owl --output local/annotation.owl.converted.ttl
+	$(RUN) linkml-validate \
+		--schema src/schema/annotation.yaml \
+		--target-class GenomeFeature src/data/valid/GenomeFeature-for-annotation.yaml
+	$(RUN) gen-owl src/schema/workflow_execution_activity.yaml > local/workflow_execution_activity.owl
+	robot convert --input local/workflow_execution_activity.owl --output local/workflow_execution_activity.owl.converted.ttl
+	$(RUN)  linkml-validate \
+		--schema src/schema/workflow_execution_activity.yaml  \
+		--target-class MetagenomeAssembly src/data/valid/MetagenomeAssembly-for-wea.yaml
+
+	$(RUN) gen-linkml --format yaml src/schema/attribute_values.yaml > local/attribute_values.yaml
+	$(RUN) gen-owl src/schema/attribute_values.yaml > local/attribute_values.owl
+	robot convert --input local/attribute_values.owl --output local/attribute_values.owl.converted.ttl
+
+	$(RUN) gen-owl src/schema/mixs.yaml > local/mixs.owl
+	robot convert --input local/mixs.owl --output local/mixs.owl.converted.ttl
+
+#	# todo mixs.yaml and reactions_with_solutions.yaml
+#	# owl gen and conversion of nmdc.yaml and portal/ modules
+#	# skip deprecated.yaml
+#	# no classes to instantiate in basic_slots.yaml, external_identifiers.yaml, or any of the portal/ modules
+
 .PHONY: pre-build
 pre-build: local/gold-study-ids.yaml create-nmdc-tdb2-from-app
 
