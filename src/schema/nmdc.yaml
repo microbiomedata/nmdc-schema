@@ -28,6 +28,7 @@ imports:
   - portal/mixs_inspired
   - portal/sample_id
   - workflow_execution_activity
+  - deprecation
 
 
 prefixes:
