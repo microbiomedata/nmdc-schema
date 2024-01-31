@@ -131,21 +131,6 @@ slots:
       a human-readable description of a thing
     slot_uri: dcterms:description
 
-  type:
-    deprecated: >-
-      Due to confusion about what values are used for this slot, it is best not to use this slot.
-      See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
-    range: string
-    description: >-
-      An optional string that specifies the type object. 
-      This is used to allow for searches for different kinds of objects.
-    examples:
-      - value: nmdc:Biosample
-      - value: nmdc:Study
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/1233
-
   title:
     range: string
     description: >-
