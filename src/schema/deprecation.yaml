@@ -34,7 +34,6 @@ default_range: string
 
 classes:
 
-
 slots:
   type:
     deprecated: >-

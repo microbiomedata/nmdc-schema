@@ -52,13 +52,9 @@ classes:
       - seqid
       - start
       - strand
-      - type
     slot_usage:
       seqid:
         required: true
-      type:
-        range: OntologyClass
-        description: A type from the sequence ontology
       start:
         required: true
       end:
@@ -169,9 +165,6 @@ classes:
           - this slot had been called id
           - "Still missing patterns for COG and RetroRules."
           - "These patterns aren't tied to the listed prefixes. A discussion about that possibility had been started, including the question of whether these lists are intended to be open examples or closed"
-      type:
-        range: OntologyClass
-        description: TODO
       was_generated_by:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
