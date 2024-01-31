@@ -122,13 +122,13 @@ lxml = ["lxml"]
 
 [[package]]
 name = "bioregistry"
-version = "0.10.130"
+version = "0.10.131"
 description = "Integrated registry of biological databases and nomenclatures"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "bioregistry-0.10.130-py3-none-any.whl", hash = "sha256:00ccec6c23a6fc9138af39475d8ebe53ced9e33ee61350aec95339671d7fde63"},
-    {file = "bioregistry-0.10.130.tar.gz", hash = "sha256:061fd7c3606e07f495d8c4ae917b9fe102d7f17894c34761afad523309dae836"},
+    {file = "bioregistry-0.10.131-py3-none-any.whl", hash = "sha256:ecb3fb076eaab5a6d05db3c047b78ac51c94a8cc0cabfd2db0bb4c705e8dc465"},
+    {file = "bioregistry-0.10.131.tar.gz", hash = "sha256:43f09ee4bb4885c3c771867ff50a1f142ba0a3e2529443c920f15189b93e1f9b"},
 ]
 
 [package.dependencies]
@@ -776,13 +776,13 @@ beautifulsoup4 = "*"
 
 [[package]]
 name = "google-api-core"
-version = "2.16.0"
+version = "2.16.1"
 description = "Google API client core library"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "google-api-core-2.16.0.tar.gz", hash = "sha256:d1fc42e52aa4042ad812827b7aad858394e2bf73da8329af95ad8efa30bc886b"},
-    {file = "google_api_core-2.16.0-py3-none-any.whl", hash = "sha256:c424f9f271c7f55366254708e0d0383963a72376286018af0a04f322be843400"},
+    {file = "google-api-core-2.16.1.tar.gz", hash = "sha256:7f668ffa3d5b9f3c6930407e5f5d691c05a376050a5a5fd772b9dc32e70a0c30"},
+    {file = "google_api_core-2.16.1-py3-none-any.whl", hash = "sha256:257e9e152cd18da0c6701113c122ade04dca04731e179fc5c7dca48e1396ec4c"},
 ]
 
 [package.dependencies]
@@ -798,13 +798,13 @@ grpcio-gcp = ["grpcio-gcp (>=0.2.2,<1.0.dev0)"]
 
 [[package]]
 name = "google-api-python-client"
-version = "2.115.0"
+version = "2.116.0"
 description = "Google API Client Library for Python"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "google-api-python-client-2.115.0.tar.gz", hash = "sha256:96af11376535236ba600ebbe23588cfe003ec9b74e66dd6ddb53aa3ec87e1b52"},
-    {file = "google_api_python_client-2.115.0-py2.py3-none-any.whl", hash = "sha256:26178e33684763099142e2cad201057bd27d4efefd859a495aac21ab3e6129c2"},
+    {file = "google-api-python-client-2.116.0.tar.gz", hash = "sha256:f9f32361e16114d62929638fe07f77be30216b079ad316dc2ced859d9f72e5ad"},
+    {file = "google_api_python_client-2.116.0-py2.py3-none-any.whl", hash = "sha256:846e44417c6b7385fa5f5a46cb6b9d23327754c560830245ee53a577c5e44cec"},
 ]
 
 [package.dependencies]
@@ -2193,18 +2193,18 @@ files = [
 
 [[package]]
 name = "platformdirs"
-version = "4.1.0"
+version = "4.2.0"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "platformdirs-4.1.0-py3-none-any.whl", hash = "sha256:11c8f37bcca40db96d8144522d925583bdb7a31f7b0e37e3ed4318400a8e2380"},
-    {file = "platformdirs-4.1.0.tar.gz", hash = "sha256:906d548203468492d432bcb294d4bc2fff751bf84971fbb2c10918cc206ee420"},
+    {file = "platformdirs-4.2.0-py3-none-any.whl", hash = "sha256:0614df2a2f37e1a662acbd8e2b25b92ccf8632929bc6d43467e17fe89c75e068"},
+    {file = "platformdirs-4.2.0.tar.gz", hash = "sha256:ef0cc731df711022c174543cb70a9b5bd22e5a9337c8624ef2c2ceb8ddad8768"},
 ]
 
 [package.extras]
-docs = ["furo (>=2023.7.26)", "proselint (>=0.13)", "sphinx (>=7.1.1)", "sphinx-autodoc-typehints (>=1.24)"]
-test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4)", "pytest-cov (>=4.1)", "pytest-mock (>=3.11.1)"]
+docs = ["furo (>=2023.9.10)", "proselint (>=0.13)", "sphinx (>=7.2.6)", "sphinx-autodoc-typehints (>=1.25.2)"]
+test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4.3)", "pytest-cov (>=4.1)", "pytest-mock (>=3.12)"]
 
 [[package]]
 name = "pluggy"
@@ -3910,17 +3910,18 @@ six = "*"
 
 [[package]]
 name = "urllib3"
-version = "2.1.0"
+version = "2.2.0"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "urllib3-2.1.0-py3-none-any.whl", hash = "sha256:55901e917a5896a349ff771be919f8bd99aff50b79fe58fec595eb37bbc56bb3"},
-    {file = "urllib3-2.1.0.tar.gz", hash = "sha256:df7aa8afb0148fa78488e7899b2c59b5f4ffcfa82e6c54ccb9dd37c1d7b52d54"},
+    {file = "urllib3-2.2.0-py3-none-any.whl", hash = "sha256:ce3711610ddce217e6d113a2732fafad960a03fd0318c91faa79481e35c11224"},
+    {file = "urllib3-2.2.0.tar.gz", hash = "sha256:051d961ad0c62a94e50ecf1af379c3aba230c66c710493493560c0c223c49f20"},
 ]
 
 [package.extras]
 brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
+h2 = ["h2 (>=4,<5)"]
 socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 

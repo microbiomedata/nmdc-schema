@@ -11,6 +11,7 @@ todos:
 
 imports:
   - basic_slots
+  - linkml:types
 
 prefixes:
   gold: "https://bioregistry.io/gold:"

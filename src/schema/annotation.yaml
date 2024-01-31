@@ -75,63 +75,6 @@ classes:
     todos:
       - decide if this should be used for product naming
 
-  Pathway:
-    aliases:
-      - biological process
-      - metabolic pathway
-      - signaling pathway
-    is_a: FunctionalAnnotationTerm
-    description: >-
-      A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
-    slots:
-      - has_part
-
-    slot_usage:
-      has_part:
-        range: Reaction
-        required: true
-        description: >-
-          A pathway can be broken down to a series of reaction step
-
-    id_prefixes:
-      - KEGG_PATHWAY
-      - COG
-    exact_mappings:
-      - biolink:Pathway
-
-  Reaction:
-    is_a: FunctionalAnnotationTerm
-    description: >-
-      An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
-      Can also represent transporters
-    slots:
-      - direction
-      - is_balanced
-      - is_diastereoselective
-      - is_fully_characterized
-      - is_stereo
-      - is_transport
-      - left_participants
-      - right_participants
-      - smarts_string
-    id_prefixes:
-      - KEGG.REACTION
-      - RHEA
-      - MetaCyc
-      - EC
-      - GO
-      - MetaNetX
-      - SEED
-      - RetroRules
-    exact_mappings:
-      - biolink:MolecularActivity
-
-  ReactionParticipant:
-    description: Instances of this link a reaction to a chemical entity participant
-    slots:
-      - chemical
-      - stoichiometry
-
   OrthologyGroup:
     is_a: FunctionalAnnotationTerm
     description: >-
@@ -181,19 +124,13 @@ classes:
 
 slots:
 
-  has_part:
-    domain: Pathway
-    range: Reaction
-    multivalued: true
-
-  chemical:
-    description: from reaction participant class
-    domain: ReactionParticipant
-    range: ChemicalEntity
-
-  stoichiometry:
-    description: from reaction participant class
-    range: integer
+  encodes:
+    domain: GenomeFeature
+    range: GeneProduct
+    description: >-
+      The gene product encoded by this feature.
+      Typically this is used for a CDS feature or gene feature which will encode a protein.
+      It can also be used by a nc transcript ot gene feature that encoded a ncRNA
 
   subject:
     domain: FunctionalAnnotation
@@ -207,12 +144,6 @@ slots:
       - "but is actually taking string arguments in MongoDB,"
       - "and those are frequently fulltext, not CURIEs. MAM 2021-06-23"
     pattern: "^(KEGG_PATHWAY:\\w{2,4}\\d{5}|KEGG.REACTION:R\\d+|RHEA:\\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\\d{1,2}(\\.\\d{0,3}){0,3}|GO:\\d{7}|MetaNetX:(MNXR\\d+|EMPTY)|SEED:\\w+|KEGG\\.ORTHOLOGY:K\\d+|EGGNOG:\\w+|PFAM:PF\\d{5}|TIGRFAM:TIGR\\d+|SUPFAM:\\w+|CATH:[1-6]\\.[0-9]+\\.[0-9]+\\.[0-9]+|PANTHER.FAMILY:PTHR\\d{5}(\\:SF\\d{1,3})?)$"
-
-
-  has_participants:
-    abstract: true
-    exact_mappings:
-      - RO:0000057
 
   gff_coordinate:
     range: integer
@@ -236,17 +167,6 @@ slots:
     exact_mappings:
       - biolink:strand
 
-  direction:
-    domain: Reaction
-    range: string
-    description: One of l->r, r->l, bidirectional, neutral # create an enum
-  encodes:
-    domain: GenomeFeature
-    range: GeneProduct
-    description: >-
-      The gene product encoded by this feature.
-      Typically this is used for a CDS feature or gene feature which will encode a protein.
-      It can also be used by a nc transcript ot gene feature that encoded a ncRNA
   end:
     domain: GenomeFeature
     range: integer
@@ -262,22 +182,6 @@ slots:
     range: string
     description: "TODO: Yuri to write"
 
-  is_balanced:
-    range: boolean
-  is_diastereoselective:
-    range: boolean
-  is_fully_characterized:
-    range: boolean
-    description: False if includes R-groups
-  is_stereo:
-    range: boolean
-  is_transport:
-    range: boolean
-  left_participants:
-    is_a: has_participants
-    multivalued: true
-    domain: Reaction
-    range: ReactionParticipant
   phase:
     domain: GenomeFeature
     range: integer
@@ -287,13 +191,6 @@ slots:
       The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
     exact_mappings:
       - biolink:phase
-  right_participants:
-    is_a: has_participants
-    multivalued: true
-    domain: Reaction
-    range: ReactionParticipant
-  smarts_string:
-    range: string
   start:
     is_a: gff_coordinate
     domain: GenomeFeature

@@ -42,7 +42,7 @@ types:
     uri: xsd:long
     see_also:
       - UO:0000233
-  
+
   decimal degree:
     description: A decimal degree expresses latitude or longitude as decimal fractions.
     uri: xsd:decimal
@@ -85,6 +85,11 @@ classes:
       - description
       - alternative_identifiers
 
+  FailureCategorization:
+    slots:
+      - qc_failure_what
+      - qc_failure_where
+
   #  DataGeneratingInstrument:
   #    slots:
   #      - model
@@ -123,7 +128,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
-    #      - nucleic_acid_concentration
+      #      - nucleic_acid_concentration
     slot_usage:
       id:
         required: true
@@ -176,7 +181,6 @@ classes:
       designated_class:
         comments:
           - required on all instances in a polymorphic Database slot like planned_process_set
-     
 
   OntologyClass:
     is_a: NamedThing
@@ -227,7 +231,7 @@ classes:
       - url
       - description
       - display_order
-  
+
   PersonValue:
     is_a: AttributeValue
     description: An attribute value representing a person
@@ -257,7 +261,7 @@ classes:
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
           display_hint: First name, middle initial, and last name of this person.
-  
+
   MagBin:
     slots:
       - bin_name
@@ -297,7 +301,7 @@ classes:
       - peptide_sequence
       - peptide_spectral_count
       - peptide_sum_masic_abundance
-  
+
   ProteinQuantification:
     description: This is used to link a metaproteomics analysis workflow to a specific protein
     slots:
@@ -420,6 +424,15 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+
+  volume: # see also input_volume
+    domain: PlannedProcess
+    range: QuantityValue
+    description: The volume of a substance.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+
   total_bases:
     domain: MagBin
     range: integer # MAM 2023-12-08
@@ -469,17 +482,17 @@ slots:
     range: language code
     description: Should use ISO 639-1 code e.g. "en", "fr"
 
-#  attribute:
-#    aliases:
-#      - field
-#      - property
-#      - template field
-#      - key
-#      - characteristic
-#    abstract: true
-#    description: >-
-#      A attribute of a biosample. Examples: depth, habitat, material.
-#      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
+  #  #  attribute:
+  #  #    aliases:
+  #  #      - field
+  #  #      - property
+  #  #      - template field
+  #  #      - key
+  #  #      - characteristic
+  #  #    abstract: true
+  #  #    description: >-
+  #  #      A attribute of a biosample. Examples: depth, habitat, material.
+  #  #      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
 
   has_raw_value:
     description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
@@ -505,7 +518,7 @@ slots:
     mappings:
       - qud:quantityValue
       - schema:value
-  
+
   has_minimum_numeric_value:
     is_a: has_numeric_value
     domain: QuantityValue
@@ -515,12 +528,12 @@ slots:
     is_a: has_numeric_value
     domain: QuantityValue
     description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
-  
+
   has_boolean_value:
     description: Links a quantity value to a boolean
     range: boolean
     multivalued: false
-  
+
   latitude:
     domain: GeolocationValue
     range: decimal degree
@@ -561,15 +574,15 @@ slots:
     range: string
     slot_uri: schema:email
 
-  alternate_emails:
-    description: One or more other email addresses for an entity.
-    range: string
+  #  alternate_emails:
+  #    description: One or more other email addresses for an entity.
+  #    range: string
 
   profile_image_url:
     description: A url that points to an image of a person.
     domain: PersonValue
     range: string
-  
+
   has_input:
     aliases:
       - input
@@ -595,20 +608,20 @@ slots:
     multivalued: true
     slot_uri: dcterms:isPartOf
     description: Links a resource to another resource that either logically or physically includes it.
-  
+
   execution_resource:
     domain: Activity
     range: string
-#    is_a: attribute
+    #    is_a: attribute
     examples:
       - value: NERSC-Cori
 
   url:
-#    is_a: attribute
+    #    is_a: attribute
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
-  
+
   display_order:
     #    is_a: attribute
     domain: ImageValue
@@ -616,31 +629,31 @@ slots:
     description: When rendering information, this attribute to specify the order in which the information should be rendered.
 
   git_url:
-#    is_a: attribute
+    #    is_a: attribute
     range: string
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
 
   file_size_bytes:
-#    is_a: attribute
+    #    is_a: attribute
     domain: DataObject
     range: bytes
     description: Size of the file in bytes
-  
+
   md5_checksum:
-#    is_a: attribute
+    #    is_a: attribute
     range: string
     description: MD5 checksum of file (pre-compressed)
 
-  keywords:
-    range: string
-    multivalued: true
-    description: >-
-      A list of keywords that used to associate the entity.
-      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
-    mappings:
-      - dcterms:subject
-  
+  #  keywords:
+  #    range: string
+  #    multivalued: true
+  #    description: >-
+  #      A list of keywords that used to associate the entity.
+  #      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
+  #    mappings:
+  #      - dcterms:subject
+
   objective:
     range: string
     multivalued: false

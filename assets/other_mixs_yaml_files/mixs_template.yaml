@@ -21,8 +21,12 @@ prefixes:
 
 imports:
   - linkml:types
+  - core
 
 default_prefix: MIXS
 
 classes:
   placeholder_class: { }
+  MixsTestClass:
+    slots:
+      - depth

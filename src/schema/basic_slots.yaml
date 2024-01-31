@@ -14,6 +14,9 @@ prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 
+imports:
+  - linkml:types
+
 default_prefix: nmdc
 default_range: string
 
@@ -240,6 +243,14 @@ slots:
       Slot to store additional comments about laboratory or workflow output. For workflow output
       it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
+  qc_status:
+    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
+    range: StatusEnum
+
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
+
   instrument_name:
     domain: PlannedProcess
     description: >-
@@ -279,6 +290,20 @@ enums:
       UCD_Genome_Center:
         title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
+
+  StatusEnum:
+    permissible_values:
+      pass: { }
+      fail: { }
+
+  #      accepted: { }
+  #      archived: { }
+  #      deleted: { }
+  #      draft: { }
+  #      rejected: { }
+  #      submitted: { }
+  #      superseded: { }
+  #      withdrawn: { }
 
 
 #  instrument_name_enum:

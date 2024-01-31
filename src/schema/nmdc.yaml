@@ -28,7 +28,9 @@ imports:
   - portal/mixs_inspired
   - portal/sample_id
   - workflow_execution_activity
+  - reactions_with_solutions
 
+comments: src/schema/deprecated.yaml contains deprecated terms but is not imported for routine use
 
 prefixes:
   CATH: "https://bioregistry.io/cath:"
@@ -141,10 +143,6 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-  FailureCategorization:
-    slots:
-      - qc_failure_what
-      - qc_failure_where
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
@@ -1737,19 +1735,6 @@ enums:
       Gilson:
       ScientificIndustries:
 
-  StatusEnum:
-    permissible_values:
-      pass: { }
-      fail: { }
-  #      accepted: { }
-  #      archived: { }
-  #      deleted: { }
-  #      draft: { }
-  #      rejected: { }
-  #      submitted: { }
-  #      superseded: { }
-  #      withdrawn: { }
-
   ExtractionTargetEnum:
     permissible_values:
       DNA: { }
@@ -2350,9 +2335,6 @@ enums:
       ZIC-cHILIC:
 
 slots:
-  has_failure_categorization:
-    range: FailureCategorization
-    multivalued: true
   model:
     range: InstrumentModelEnum
   vendor:
@@ -2397,10 +2379,6 @@ slots:
   sample_collection_year:
     range: integer
   sample_collection_month:
-
-  qc_status:
-    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
-    range: StatusEnum
 
   library_preparation_kit:
     range: string
@@ -3052,14 +3030,6 @@ slots:
   container_size:
     range: QuantityValue
     description: The volume of the container an analyte is stored in or an activity takes place in
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-
-  volume: # see also input_volume
-    domain: PlannedProcess
-    range: QuantityValue
-    description: The volume of a substance.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith

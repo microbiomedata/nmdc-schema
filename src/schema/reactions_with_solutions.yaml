@@ -1,0 +1,57 @@
+id: https://w3id.org/nmdc/reaction-solutions
+name: NMDC-Reactions-with-Solutions
+title: Experimental (status-wise) module for minimal, OBO like modeling of reactions and solutions
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+imports:
+  - core
+  - mixs
+#  - nmdc
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+
+default_prefix: nmdc
+default_range: string
+
+classes:
+  # may want to use nmdc:ChemicalEntity (CHEBI:24431?)
+  ChemicalReaction:
+    mixin: true
+    comments:
+      - do not use AFO:/process#AFP_0003711
+    class_uri: MSIO:0000001
+
+  MaterialProcessingReaction:
+    is_a: NamedThing
+    #    is_a: MaterialProcessing # only defined in berkeley-schema-fy24 at this time
+    mixins:
+      - ChemicalReaction
+    slots:
+      - catalysis_solution
+
+  BiologicalReaction:
+    is_a: NamedThing
+    mixins:
+      - ChemicalReaction
+    comments:
+      - not a PLANNED process
+
+  SolutionMixture:
+    comments:
+      - would take the place of the current nmdc:Solution
+    class_uri: OBI:0302729
+    slots:
+      - volume
+
+slots:
+  catalysis_solution:
+    description: >-
+      The solution that contains a catalyst esp. an enzyme that catalyzes the reaction
+    domain: ChemicalReaction
+    range: SolutionMixture
+
+#  volume:
+#    range: QuantityValue
