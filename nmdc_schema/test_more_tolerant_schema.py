@@ -6,7 +6,7 @@ from nmdc_schema.nmdc_schema_accepting_legacy_ids import Biosample, ControlledId
 def do_test():
     bs = Biosample(id='xxx',
                    type='nmdc:Biosample',
-                   part_of='gold:Gs0114663',
+                   associated_studies='gold:Gs0114663',
                    env_medium=ControlledIdentifiedTermValue(
                        type='nmdc:ControlledIdentifiedTermValue',
                        term=OntologyClass(

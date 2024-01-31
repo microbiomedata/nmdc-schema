@@ -543,6 +543,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - associated_studies
       - biosample_categories
       - collected_from
       - embargoed
@@ -550,7 +551,6 @@ classes:
       - host_taxid
       - img_identifiers
       - neon_biosample_identifiers
-      - part_of
       - samp_name
 
       ## external IDs, alternate IDs
@@ -1226,10 +1226,6 @@ classes:
         required: true
       env_medium:
         required: true
-      part_of:
-        required: true
-        range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
 
       fire:
         comments:
@@ -2857,6 +2853,7 @@ slots:
     range: Study
     multivalued: true
     pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+    required: true
 
   data_category:
     domain: DataObject
