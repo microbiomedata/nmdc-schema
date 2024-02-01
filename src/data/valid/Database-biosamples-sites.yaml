@@ -8,7 +8,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-SPreao
     gold_biosample_identifiers:
       - gold:Gb0305833
-    part_of:
+    associated_studies:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -37,7 +37,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-SPreao
     gold_biosample_identifiers:
       - gold:Gb0291692
-    part_of:
+    associated_studies:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -66,7 +66,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-SPreao
     gold_biosample_identifiers:
       - gold:Gb0291582
-    part_of:
+    associated_studies:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -95,7 +95,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-h2mYFG
     gold_biosample_identifiers:
       - gold:Gb0305834
-    part_of:
+    associated_studies:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -124,7 +124,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-h2mYFG
     gold_biosample_identifiers:
       - gold:Gb0291693
-    part_of:
+    associated_studies:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -153,7 +153,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-h2mYFG
     gold_biosample_identifiers:
       - gold:Gb0291583
-    part_of:
+    associated_studies:
       - nmdc:sty-99-U21mUX
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue

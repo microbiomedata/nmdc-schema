@@ -58,7 +58,7 @@ library_preparation_set:
 
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -80,7 +80,7 @@ biosample_set:
         id: ENVO:00005792
     type: nmdc:Biosample
   - id: nmdc:bsm-99-abcdef2
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -102,7 +102,7 @@ biosample_set:
         id: ENVO:00005792
     type: nmdc:Biosample
   - id: nmdc:bsm-99-abcdef3
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
