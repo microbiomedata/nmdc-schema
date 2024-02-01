@@ -15,18 +15,15 @@ notes:
   - multiple LinkML representations of MIxS are currently available and one will be blessed soon
 
 prefixes:
-  nmdc: https://w3id.org/nmdc/
   MIXS: https://w3id.org/mixs/
   linkml: https://w3id.org/linkml/
 
 imports:
   - linkml:types
-  - core
+  - attribute_values
 
 default_prefix: MIXS
 
 classes:
   placeholder_class: { }
-  MixsTestClass:
-    slots:
-      - depth
+

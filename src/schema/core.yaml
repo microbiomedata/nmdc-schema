@@ -42,38 +42,9 @@ types:
     see_also:
       - UO:0000233
 
-  decimal degree:
-    description: A decimal degree expresses latitude or longitude as decimal fractions.
-    uri: xsd:decimal
-    base: float
-    see_also:
-      - https://en.wikipedia.org/wiki/Decimal_degrees
-
-  language code:
-    description: A language code conforming to ISO_639-1
-    see_also:
-      - https://en.wikipedia.org/wiki/ISO_639-1
-    base: str
-    uri: xsd:language
-
-  unit:
-    base: str
-    uri: xsd:string
-    mappings:
-      - qud:Unit
-      - UO:0000000
-
 enums: { }
 
 classes:
-  NamedThing:
-    description: "a databased entity or concept/class"
-    abstract: true
-    slots:
-      - id
-      - name
-      - description
-      - alternative_identifiers
 
   Protocol:
     slots:
@@ -98,12 +69,12 @@ classes:
     #    todos:
     #      - add examples, like a Thermo Electron Orbitrap
     #    is_a: NamedThing
-    #    slot_usage:
-    #      id:
-    #        required: true
-    #        structured_pattern:
-    #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-    #          interpolated: true
+#    slot_usage:
+#      id:
+#        required: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
     #    exact_mappings:
     #      - OBI:0000485
 
@@ -119,27 +90,27 @@ classes:
     is_a: MaterialEntity
     title: Processed Sample
     slots:
-      - biomaterial_purity
-      - dna_absorb1
+#      - biomaterial_purity
+#      - dna_absorb1
       - dna_concentration
       - external_database_identifiers
       #      - nucleic_acid_concentration
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#    slot_usage:
+#      id:
+#        required: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   AnalyticalSample:
     is_a: MaterialEntity
     title: Analytical Sample
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#    slot_usage:
+#      id:
+#        required: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   Site:
     abstract: true
@@ -147,12 +118,12 @@ classes:
     title: Site
     comments:
       - BCO sample collection site ?
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#    slot_usage:
+#      id:
+#        required: true
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   PlannedProcess:
     abstract: true
@@ -172,41 +143,13 @@ classes:
       - qc_comment
       - has_failure_categorization
 
-    slot_usage:
-      designated_class:
-        comments:
-          - required on all instances in a polymorphic Database slot like planned_process_set
-
-  OntologyClass:
-    is_a: NamedThing
-    notes:
-      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
-    slot_usage:
-      id:
-        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+#    slot_usage:
+#      designated_class:
+#        comments:
+#          - required on all instances in a polymorphic Database slot like planned_process_set
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
-
-  QuantityValue:
-    is_a: AttributeValue
-    description: A simple quantity, e.g. 2cm
-    slots:
-      - has_maximum_numeric_value
-      - has_minimum_numeric_value
-      - has_numeric_value
-      - has_raw_value
-      - has_unit
-    slot_usage:
-      has_raw_value:
-        description: Unnormalized atomic string representation, should in syntax {number} {unit}
-      has_unit:
-        description: The unit of the quantity
-      has_numeric_value:
-        description: The number part of the quantity
-        range: double
-    mappings:
-      - schema:QuantityValue
 
   ImageValue:
     is_a: AttributeValue
@@ -228,23 +171,23 @@ classes:
     todos:
       - add additional fields e.g for institution
       - deprecate "has_raw_value" in favor of "name"
-    slot_usage:
-      orcid:
-        annotations:
-          display_hint: Open Researcher and Contributor ID for this person. See https://orcid.org
-      email:
-        annotations:
-          display_hint: Email address for this person.
-      has_raw_value:
-        description: The full name of the Investigator in format FIRST LAST.
-        notes:
-          - May eventually be deprecated in favor of "name".
-      name:
-        description: >-
-          The full name of the Investigator.
-          It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
-        annotations:
-          display_hint: First name, middle initial, and last name of this person.
+#    slot_usage:
+#      orcid:
+#        annotations:
+#          display_hint: Open Researcher and Contributor ID for this person. See https://orcid.org
+#      email:
+#        annotations:
+#          display_hint: Email address for this person.
+#      has_raw_value:
+#        description: The full name of the Investigator in format FIRST LAST.
+#        notes:
+#          - May eventually be deprecated in favor of "name".
+#      name:
+#        description: >-
+#          The full name of the Investigator.
+#          It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
+#        annotations:
+#          display_hint: First name, middle initial, and last name of this person.
 
   MagBin:
     slots:
@@ -294,11 +237,11 @@ classes:
       - peptide_sequence_count
       - protein_spectral_count
       - protein_sum_masic_abundance
-    slot_usage:
-      best_protein:
-        description: the specific protein identifier most correctly grouped to its associated peptide sequences
-      all_proteins:
-        description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
+#    slot_usage:
+#      best_protein:
+#        description: the specific protein identifier most correctly grouped to its associated peptide sequences
+#      all_proteins:
+#        description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
 
   ChemicalEntity:
     aliases:
@@ -343,21 +286,9 @@ classes:
     exact_mappings:
       - biolink:GeneProduct
 
-  TextValue:
-    is_a: AttributeValue
-    description: A basic string value
-    slots:
-      - language
-
   UrlValue:
     is_a: AttributeValue
     description: A value that is a string that conforms to URL syntax
-
-  TimestampValue:
-    is_a: AttributeValue
-    description: A value that is a timestamp. The range should be ISO-8601
-    notes:
-      - "removed the following slots: year, month, day"
 
   IntegerValue:
     is_a: AttributeValue
@@ -370,41 +301,6 @@ classes:
     description: A value that is a boolean
     slots:
       - has_boolean_value
-
-  ControlledTermValue:
-    is_a: AttributeValue
-    description: A controlled term or class from an ontology
-    slots:
-      - term
-    todos:
-      - add fields for ontology, branch
-
-  ControlledIdentifiedTermValue:
-    description: A controlled term or class from an ontology, requiring the presence of term with an id
-    notes:
-      - To be used for slots like env_broad_scale
-    is_a: ControlledTermValue
-    slot_usage:
-      term:
-        required: true
-
-  GeolocationValue:
-    is_a: AttributeValue
-    description: A normalized value for a location on the earth's surface
-    slots:
-      - latitude
-      - longitude
-    notes:
-      - "what did 'to_str: {latitude} {longitude}' mean?"
-    slot_usage:
-      has_raw_value:
-        description: The raw value for a geolocation should follow {latitude} {longitude}
-      latitude:
-        required: true
-      longitude:
-        required: true
-    mappings:
-      - schema:GeoCoordinates
 
 slots:
   processing_institution:
@@ -419,23 +315,23 @@ slots:
   #  nucleic_acid_concentration:
   #    range: InstrumentValue
 
-  biomaterial_purity:
-    domain: ProcessedSample
-    range: QuantityValue
+#  biomaterial_purity:
+#    domain: ProcessedSample
+#    range: QuantityValue
 
-  dna_absorb1:
-    is_a: biomaterial_purity
-    description: 260/280 measurement of DNA sample purity
-    title: DNA absorbance 260/280
-    comments:
-      - Recommended value is between 1 and 3.
-    examples:
-      - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
-    rank: 7
-    range: float
-    slot_group: JGI-Metagenomics
-    recommended: true
+#  dna_absorb1:
+#    is_a: biomaterial_purity
+#    description: 260/280 measurement of DNA sample purity
+#    title: DNA absorbance 260/280
+#    comments:
+#      - Recommended value is between 1 and 3.
+#    examples:
+#      - value: '2.02'
+#    from_schema: https://example.com/nmdc_dh
+#    rank: 7
+#    range: float
+#    slot_group: JGI-Metagenomics
+#    recommended: true
 
   qc_failure_what:
     domain: FailureCategorization
@@ -518,10 +414,6 @@ slots:
   gtdbtk_species:
     range: string
 
-  language:
-    range: language code
-    description: Should use ISO 639-1 code e.g. "en", "fr"
-
   #  attribute:
   #    aliases:
   #      - field
@@ -534,67 +426,10 @@ slots:
   #      A attribute of a biosample. Examples: depth, habitat, material.
   #      For NMDC, attributes SHOULD be mapped to terms within a MIxS template
 
-  has_unit:
-    description: Links a QuantityValue to a unit
-    aliases:
-      - scale
-    domain: QuantityValue
-    range: unit
-    mappings:
-      - qud:unit
-      - schema:unitCode
-
-  has_numeric_value:
-    description: Links a quantity value to a number
-    multivalued: false
-    domain: QuantityValue
-    range: float
-    mappings:
-      - qud:quantityValue
-      - schema:value
-
-  has_minimum_numeric_value:
-    is_a: has_numeric_value
-    domain: QuantityValue
-    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
-
-  has_maximum_numeric_value:
-    is_a: has_numeric_value
-    domain: QuantityValue
-    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
-
   has_boolean_value:
     description: Links a quantity value to a boolean
     range: boolean
     multivalued: false
-
-  latitude:
-    domain: GeolocationValue
-    range: decimal degree
-    description: latitude
-    slot_uri: wgs84:lat
-    examples:
-      - value: -33.460524
-    mappings:
-      - schema:latitude
-
-  longitude:
-    domain: GeolocationValue
-    range: decimal degree
-    description: longitude
-    slot_uri: wgs84:long
-    examples:
-      - value: 150.168149
-    mappings:
-      - schema:longitude
-
-  term:
-    domain: ControlledTermValue
-    range: OntologyClass
-    description: pointer to an ontology class
-    inlined: true
-    notes:
-      - "removed 'slot_uri: rdf:type'"
 
   orcid:
     description: The ORCID of a person.

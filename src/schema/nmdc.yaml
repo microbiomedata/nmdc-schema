@@ -1011,8 +1011,8 @@ classes:
 
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       ## JGI fields
-      - dna_absorb1
-      - dna_absorb2
+      #      - dna_absorb1
+      #      - dna_absorb2
       - dna_collect_site
       - dna_concentration
       - dna_cont_type
@@ -1032,8 +1032,8 @@ classes:
       - proposal_dna
       - dnase_rna
       - proposal_rna
-      - rna_absorb1
-      - rna_absorb2
+      #      - rna_absorb1
+      #      - rna_absorb2
       - rna_collect_site
       - rna_concentration
       - rna_cont_type
@@ -1735,20 +1735,6 @@ enums:
       DNA: { }
       RNA: { }
 
-  JgiContTypeEnum:
-    permissible_values:
-      plate: { }
-      tube: { }
-
-  YesNoEnum:
-    name: YesNoEnum
-    description: replaces DnaDnaseEnum and DnaseRnaEnum
-    from_schema: https://example.com/nmdc_submission_schema
-    permissible_values:
-      "no":
-        text: "no"
-      "yes":
-        text: "yes"
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:
@@ -2287,19 +2273,19 @@ slots:
     range: bytes
     description: Size of the file in bytes
 
-  dna_absorb2:
-    is_a: biomaterial_purity
-    description: 260/230 measurement of DNA sample purity
-    title: DNA absorbance 260/230
-    comments:
-      - Recommended value is between 1 and 3.
-    examples:
-      - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
-    rank: 8
-    range: float
-    slot_group: JGI-Metagenomics
-    recommended: true
+  #  dna_absorb2:
+  #    is_a: biomaterial_purity
+  #    description: 260/230 measurement of DNA sample purity
+  #    title: DNA absorbance 260/230
+  #    comments:
+  #      - Recommended value is between 1 and 3.
+  #    examples:
+  #      - value: '2.02'
+  #    from_schema: https://example.com/nmdc_dh
+  #    rank: 8
+  #    range: float
+  #    slot_group: JGI-Metagenomics
+  #    recommended: true
 
   extraction_target:
     rank: 1000

@@ -9,10 +9,9 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   dcterms: http://purl.org/dc/terms/
-
-  skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
+  skos: http://www.w3.org/2004/02/skos/core#
 
 imports:
   - linkml:types
@@ -23,7 +22,9 @@ default_range: string
 types:
   external_identifier:
     typeof: uriorcurie
-    uri: xsd:anyURI # isn't that inherited from typeof: uriorcurie? WARNING:root:No datatype specified for : external identifier, using plain Literal
+    uri: xsd:anyURI
+    notes:
+      - "isn't the xsd:anyURI inherited from typeof: uriorcurie?"
     description: >-
       A CURIE representing an external identifier
     see_also:
@@ -36,8 +37,9 @@ slots:
     range: uriorcurie
     designates_type: true
     notes:
-      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
-        of any NMDC-owned elements
+      - in berkeley-schem-fy24, this will be implemented with the type slot, which will have rdf:type as its slot_uri
+      - no matter what slot bears the designates_type attribute,
+        its values must allways be the class_uri of the class that has been instantiated
       - this would be required on all instances in a polymorphic Database slot, like planned_process_set
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/1048
@@ -51,8 +53,6 @@ slots:
     range: external_identifier
     comments:
       - The value of this field is always a registered CURIE
-    notes:
-      - "had tried ranges of external identifier and string"
     close_mappings:
       - skos:closeMatch
 
@@ -76,7 +76,6 @@ slots:
   id:
     required: true
     identifier: true
-    #    domain: NamedThing # can't assert the domain because no classes are defined in this module and none are imported
     range: uriorcurie
     description: >-
       A unique identifier for a thing.
@@ -105,12 +104,11 @@ slots:
   type:
     deprecated: >-
       Due to confusion about what values are used for this slot, it is best not to use this slot.
-      See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
+      See additional discussion about rdf:type in the berkeley-schema-fy24
+      See https://github.com/microbiomedata/nmdc-schema/issues/248
     range: string
     description: >-
       An optional string that specifies the type object.
-      This is used to allow for searches for different kinds of objects.
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
@@ -163,7 +161,7 @@ slots:
     range: string
     description: The date on which any process or activity was started
     comments:
-      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates objects
       - The date should be formatted as YYYY-MM-DD
     todos:
       - add date string validation pattern
@@ -172,7 +170,7 @@ slots:
     range: string
     description: The date on which any process or activity was ended
     comments:
-      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates objects
       - The date should be formatted as YYYY-MM-DD
     todos:
       - add date string validation pattern
@@ -184,7 +182,9 @@ slots:
       it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
   qc_status:
-    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
+    description: >-
+      Stores information about the result of a process 
+      (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
     range: StatusEnum
 
 enums:
@@ -244,7 +244,8 @@ enums:
       no_valid_data_generated:
         description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
       other:
-        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet.
+          Please use slot 'qc_comment' to specify details.
 
   processing_institution_enum:
     notes:

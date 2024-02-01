@@ -1,0 +1,27 @@
+id: https://w3id.org/nmdc/merged
+name: NMDC-modules-merge
+title: A merger of all modules to be imported into the NMDC schema
+description: >-
+  A merger of all modules to be imported into the NMDC schema
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+imports:
+  - portal/emsl
+  - portal/jgi_metagenomics
+  - portal/jgi_metatranscriptomics
+  - portal/mixs_inspired
+  - portal/sample_id
+  - annotation
+  - attribute_values
+  - basic_slots
+  - core
+  - external_identifiers
+  - mixs
+  - prov
+  - reactions_with_solutions
+  - workflow_execution_activity
+
+notes:
+  - skip deprecated, merged (this file), nmdc (the final target/root)
+  - reintroduce slot_usages

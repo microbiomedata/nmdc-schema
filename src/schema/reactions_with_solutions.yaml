@@ -6,10 +6,9 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - core
-  - mixs
-#  - nmdc
 
 prefixes:
+  MSIO: https://purl.obolibrary.org/obo/MSIO_
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 
@@ -53,5 +52,3 @@ slots:
     domain: ChemicalReaction
     range: SolutionMixture
 
-#  volume:
-#    range: QuantityValue

@@ -305,45 +305,99 @@ docker-startup-from-host:
 build-schema-in-app: pre-build
 	make squeaky-clean all test
 
+.PHONY: per-module-all per-module-cleanup per-module-tests
+
+per-module-all: per-module-cleanup per-module-tests
+
+per-module-cleanup:
+	rm -rf local/*owl*
+	rm -rf local/*yaml*
+
 .PHONY: per-module-tests
 per-module-tests:
+	$(RUN) gen-owl src/schema/portal/emsl.yaml > local/emsl.owl
+	robot convert --input local/emsl.owl --output local/emsl.owl.converted.ttl
+	cat local/emsl.owl.converted.ttl > /dev/null
+
+	$(RUN) gen-owl src/schema/portal/jgi_metagenomics.yaml > local/jgi_metagenomics.owl
+	robot convert --input local/jgi_metagenomics.owl --output local/jgi_metagenomics.owl.converted.ttl
+	cat local/jgi_metagenomics.owl.converted.ttl > /dev/null
+
+	$(RUN) gen-owl src/schema/portal/jgi_metatranscriptomics.yaml > local/jgi_metatranscriptomics.owl
+	robot convert --input local/jgi_metatranscriptomics.owl --output local/jgi_metatranscriptomics.owl.converted.ttl
+	cat local/jgi_metatranscriptomics.owl.converted.ttl > /dev/null
+
+	$(RUN) gen-owl src/schema/portal/mixs_inspired.yaml > local/mixs_inspired.owl
+	robot convert --input local/mixs_inspired.owl --output local/mixs_inspired.owl.converted.ttl
+	cat local/mixs_inspired.owl.converted.ttl > /dev/null
+
+	$(RUN) gen-owl src/schema/portal/sample_id.yaml > local/sample_id.owl
+	robot convert --input local/sample_id.owl --output local/sample_id.owl.converted.ttl
+	cat local/sample_id.owl.converted.ttl > /dev/null
+
 	$(RUN) gen-owl src/schema/basic_slots.yaml > local/basic_slots.owl
 	robot convert --input local/basic_slots.owl --output local/basic_slots.owl.converted.ttl
+	cat local/basic_slots.owl.converted.ttl > /dev/null
 	$(RUN) gen-owl src/schema/external_identifiers.yaml > local/external_identifiers.owl
 	robot convert --input local/external_identifiers.owl --output local/external_identifiers.owl.converted.ttl
+	cat local/external_identifiers.owl.converted.ttl > /dev/null
 	$(RUN) gen-owl src/schema/prov.yaml > local/prov.owl
 	robot convert --input local/prov.owl --output local/prov.owl.converted.ttl
+	cat local/prov.owl.converted.ttl > /dev/null
 	$(RUN) linkml-validate \
 		--schema src/schema/prov.yaml  \
 		--target-class Activity src/data/valid/Activity-for-prov.yaml
-	#$(RUN) gen-linkml --format yaml src/schema/core.yaml
+
 	$(RUN) gen-owl src/schema/core.yaml > local/core.owl
 	robot convert --input local/core.owl --output local/core.owl.converted.ttl
+	cat local/core.owl.converted.ttl > /dev/null
 	$(RUN) linkml-validate \
 		--schema src/schema/core.yaml \
 		--target-class ControlledIdentifiedTermValue src/data/valid/ControlledIdentifiedTermValue-for-core.yaml
 	$(RUN) gen-owl src/schema/annotation.yaml > local/annotation.owl
 	robot convert --input local/annotation.owl --output local/annotation.owl.converted.ttl
+	cat local/annotation.owl.converted.ttl > /dev/null
 	$(RUN) linkml-validate \
 		--schema src/schema/annotation.yaml \
 		--target-class GenomeFeature src/data/valid/GenomeFeature-for-annotation.yaml
 	$(RUN) gen-owl src/schema/workflow_execution_activity.yaml > local/workflow_execution_activity.owl
 	robot convert --input local/workflow_execution_activity.owl --output local/workflow_execution_activity.owl.converted.ttl
+	cat local/workflow_execution_activity.owl.converted.ttl > /dev/null
 	$(RUN)  linkml-validate \
 		--schema src/schema/workflow_execution_activity.yaml  \
 		--target-class MetagenomeAssembly src/data/valid/MetagenomeAssembly-for-wea.yaml
 
-	$(RUN) gen-linkml --format yaml src/schema/attribute_values.yaml > local/attribute_values.yaml
+	#$(RUN) gen-linkml --format yaml src/schema/attribute_values.yaml > local/attribute_values.yaml
 	$(RUN) gen-owl src/schema/attribute_values.yaml > local/attribute_values.owl
 	robot convert --input local/attribute_values.owl --output local/attribute_values.owl.converted.ttl
+	cat local/attribute_values.owl.converted.ttl > /dev/null
+
+	$(RUN) gen-owl src/schema/reactions_with_solutions.yaml > local/reactions_with_solutions.owl
+	robot convert --input local/reactions_with_solutions.owl --output local/reactions_with_solutions.owl.converted.ttl
+	cat local/reactions_with_solutions.owl.converted.ttl > /dev/null
 
 	$(RUN) gen-owl src/schema/mixs.yaml > local/mixs.owl
 	robot convert --input local/mixs.owl --output local/mixs.owl.converted.ttl
+	cat local/mixs.owl.converted.ttl > /dev/null
 
-#	# todo mixs.yaml and reactions_with_solutions.yaml
-#	# owl gen and conversion of nmdc.yaml and portal/ modules
-#	# skip deprecated.yaml
-#	# no classes to instantiate in basic_slots.yaml, external_identifiers.yaml, or any of the portal/ modules
+	$(RUN) gen-owl src/schema/merged.yaml > local/merged.owl
+	robot convert --input local/merged.owl --output local/merged.owl.converted.ttl
+	cat local/merged.owl.converted.ttl > /dev/null
+
+	$(RUN) linkml-validate \
+		--schema src/schema/merged.yaml  \
+		--target-class Activity src/data/valid/Activity-for-prov.yaml
+	$(RUN) linkml-validate \
+		--schema src/schema/merged.yaml \
+		--target-class ControlledIdentifiedTermValue src/data/valid/ControlledIdentifiedTermValue-for-core.yaml
+	$(RUN)  linkml-validate \
+		--schema src/schema/merged.yaml  \
+		--target-class MetagenomeAssembly src/data/valid/MetagenomeAssembly-for-wea.yaml
+
+#	 todo: owl gen and robot conversion of nmdc.yaml
+#      reintroduce slot_usages
+#	 skip deprecated.yaml
+#	 no classes to instantiate in basic_slots.yaml, external_identifiers.yaml, or any of the portal/ modules
 
 .PHONY: pre-build
 pre-build: local/gold-study-ids.yaml create-nmdc-tdb2-from-app
