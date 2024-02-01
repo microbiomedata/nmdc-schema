@@ -9,10 +9,12 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
   dcterms: http://purl.org/dc/terms/
-
-  skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
+  skos: http://www.w3.org/2004/02/skos/core#
+
+imports:
+  - linkml:types
 
 default_prefix: nmdc
 default_range: string
@@ -20,7 +22,9 @@ default_range: string
 types:
   external_identifier:
     typeof: uriorcurie
-    uri: xsd:anyURI # isn't that inherited from typeof: uriorcurie? WARNING:root:No datatype specified for : external identifier, using plain Literal
+    uri: xsd:anyURI
+    notes:
+      - "isn't the xsd:anyURI inherited from typeof: uriorcurie?"
     description: >-
       A CURIE representing an external identifier
     see_also:
@@ -28,16 +32,14 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
-  processing_institution:
-    domain: PlannedProcess
-    range: processing_institution_enum
-    description: The organization that processed the sample.
+
   designated_class:
     range: uriorcurie
     designates_type: true
     notes:
-      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
-        of any NMDC-owned elements
+      - in berkeley-schem-fy24, this will be implemented with the type slot, which will have rdf:type as its slot_uri
+      - no matter what slot bears the designates_type attribute,
+        its values must allways be the class_uri of the class that has been instantiated
       - this would be required on all instances in a polymorphic Database slot, like planned_process_set
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/1048
@@ -51,36 +53,9 @@ slots:
     range: external_identifier
     comments:
       - The value of this field is always a registered CURIE
-    notes:
-      - "had tried ranges of external identifier and string"
     close_mappings:
       - skos:closeMatch
-  dna_absorb1:
-    is_a: biomaterial_purity
-    description: 260/280 measurement of DNA sample purity
-    title: DNA absorbance 260/280
-    comments:
-      - Recommended value is between 1 and 3.
-    examples:
-      - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
-    rank: 7
-    range: float
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_absorb2:
-    is_a: biomaterial_purity
-    description: 260/230 measurement of DNA sample purity
-    title: DNA absorbance 260/230
-    comments:
-      - Recommended value is between 1 and 3.
-    examples:
-      - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
-    rank: 8
-    range: float
-    slot_group: JGI-Metagenomics
-    recommended: true
+
   dna_concentration:
     see_also:
       nmdc:nucleic_acid_concentration
@@ -97,15 +72,10 @@ slots:
     recommended: true
     minimum_value: 0
     maximum_value: 2000
-  extraction_target:
-    rank: 1000
-    domain_of:
-      - Extraction
-    range: ExtractionTargetEnum
+
   id:
     required: true
     identifier: true
-    #    domain: NamedThing
     range: uriorcurie
     description: >-
       A unique identifier for a thing.
@@ -134,12 +104,11 @@ slots:
   type:
     deprecated: >-
       Due to confusion about what values are used for this slot, it is best not to use this slot.
-      See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
+      See additional discussion about rdf:type in the berkeley-schema-fy24
+      See https://github.com/microbiomedata/nmdc-schema/issues/248
     range: string
     description: >-
-      An optional string that specifies the type object. 
-      This is used to allow for searches for different kinds of objects.
+      An optional string that specifies the type object.
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
@@ -192,7 +161,7 @@ slots:
     range: string
     description: The date on which any process or activity was started
     comments:
-      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates objects
       - The date should be formatted as YYYY-MM-DD
     todos:
       - add date string validation pattern
@@ -201,38 +170,10 @@ slots:
     range: string
     description: The date on which any process or activity was ended
     comments:
-      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates
+      - We are using string representations of dates until all components of our ecosystem can handle ISO 8610 dates objects
       - The date should be formatted as YYYY-MM-DD
     todos:
       - add date string validation pattern
-
-  protocol_link:
-    domain: PlannedProcess
-    range: Protocol
-
-  #  nucleic_acid_concentration:
-  #    range: InstrumentValue
-
-  biomaterial_purity:
-    domain: ProcessedSample
-    range: QuantityValue
-
-  qc_failure_what:
-    domain: FailureCategorization
-    range: FailureWhatEnum
-    description: >-
-      Provides a summary about what caused a lab or workflow process to fail
-    comments:
-      - For example Low read count from a sequencer, malformed fastq files, etc)
-
-  qc_failure_where:
-    domain: FailureCategorization
-    range: FailureWhereEnum
-    description: >-
-      Describes the nmdc schema class that corresonds to where the failure occurred.
-      Most commonly this would be the same as Class that generated the results.
-    comments:
-      - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
 
   qc_comment:
     range: string
@@ -240,14 +181,72 @@ slots:
       Slot to store additional comments about laboratory or workflow output. For workflow output
       it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
-  instrument_name:
-    domain: PlannedProcess
+  qc_status:
     description: >-
-      The name of the instrument that was used for processing the sample.
-  #    add this and write migration # range: instrument_name_enum
-
+      Stores information about the result of a process 
+      (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
+    range: StatusEnum
 
 enums:
+
+  DeviceEnum:
+    permissible_values:
+      Orbital Shaker:
+      Thermomixer:
+      Vortex:
+      Agitation plunger:
+      Drying oven:
+      CEREX System 96 processor:
+
+  ExtractionTargetEnum:
+    permissible_values:
+      DNA: { }
+      RNA: { }
+      metabolite: { }
+      protein: { }
+      phenol/chloroform extraction: { }
+
+  FailureWhereEnum:
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    comments:
+      - At Chris' recommendation permissible values for this enumeration are the same as Class names.
+    permissible_values:
+      OmicsProcessing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeActivity:
+        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      MagsAnalysisActivity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      ReadQcAnalysisActivity:
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysisActivity:
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotationActivity:
+        description: A failure has occurred in annotation, a workflow process.
+
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
+    permissible_values:
+      low_read_count:
+        description: Number of output reads is not sufficient to continue to the next analysis step.
+      malformed_data:
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet.
+          Please use slot 'qc_comment' to specify details.
+
   processing_institution_enum:
     notes:
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
@@ -279,6 +278,20 @@ enums:
       UCD_Genome_Center:
         title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
+
+  StatusEnum:
+    permissible_values:
+      pass: { }
+      fail: { }
+
+  #      accepted: { }
+  #      archived: { }
+  #      deleted: { }
+  #      draft: { }
+  #      rejected: { }
+  #      submitted: { }
+  #      superseded: { }
+  #      withdrawn: { }
 
 
 #  instrument_name_enum:

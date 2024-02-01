@@ -1,0 +1,110 @@
+id: https://w3id.org/nmdc/deprecated
+name: NMDC-deprecated
+title: Terms that have been deprecated from the nmdc-schema
+description: >-
+  This module contains terms that have been deprecated, especially since late January 2024.
+  We haven't decided whether to locate past deprecations.
+  It is not intended to be imported into the nmdc-schem under routine usage
+  but we may import it exclusively during documentation generation
+  so that we better follow FAIR principles
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+classes:
+  Pathway:
+    aliases:
+      - biological process
+      - metabolic pathway
+      - signaling pathway
+    is_a: FunctionalAnnotationTerm
+    description: >-
+      A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
+    slots:
+      - has_part
+    slot_usage:
+      has_part:
+        range: Reaction
+        required: true
+        description: >-
+          A pathway can be broken down to a series of reaction step
+    id_prefixes:
+      - KEGG_PATHWAY
+      - COG
+    exact_mappings:
+      - biolink:Pathway
+  Reaction:
+    is_a: FunctionalAnnotationTerm
+    description: >-
+      An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products.
+      Can also represent transporters
+    slots:
+      - direction
+      - is_balanced
+      - is_diastereoselective
+      - is_fully_characterized
+      - is_stereo
+      - is_transport
+      - left_participants
+      - right_participants
+      - smarts_string
+    id_prefixes:
+      - KEGG.REACTION
+      - RHEA
+      - MetaCyc
+      - EC
+      - GO
+      - MetaNetX
+      - SEED
+      - RetroRules
+    exact_mappings:
+      - biolink:MolecularActivity
+  ReactionParticipant:
+    description: Instances of this link a reaction to a chemical entity participant
+    slots:
+      - chemical
+      - stoichiometry
+
+slots:
+  has_part:
+    domain: Pathway
+    range: Reaction
+    multivalued: true
+  direction:
+    domain: Reaction
+    range: string
+    description: One of l->r, r->l, bidirectional, neutral # create an enum
+
+  has_participants:
+    abstract: true
+    exact_mappings:
+      - RO:0000057
+  left_participants:
+    is_a: has_participants
+    multivalued: true
+    domain: Reaction
+    range: ReactionParticipant
+  right_participants:
+    is_a: has_participants
+    multivalued: true
+    domain: Reaction
+    range: ReactionParticipant
+  stoichiometry:
+    description: from reaction participant class
+    range: integer
+  chemical:
+    description: from reaction participant class
+    domain: ReactionParticipant
+    range: ChemicalEntity
+  smarts_string:
+    range: string
+  is_balanced:
+    range: boolean
+  is_diastereoselective:
+    range: boolean
+  is_fully_characterized:
+    range: boolean
+    description: False if includes R-groups
+  is_stereo:
+    range: boolean
+  is_transport:
+    range: boolean

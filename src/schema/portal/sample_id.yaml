@@ -9,7 +9,7 @@ imports:
   - linkml:types
 
 todos:
-  - the two remaining slots in this module, analysis_type and sample_link aren't really sample identifiers
+  - two slots in this module, analysis_type and sample_link aren't really sample identifiers
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -22,7 +22,7 @@ default_range: string
 
 enums:
   analysis_type_enum:
-    from_schema: https://example.com/nmdc_dh
+
     permissible_values:
       metabolomics: { }
       metagenomics: { }
@@ -36,7 +36,7 @@ slots:
     title: analysis/data type
     examples:
       - value: metagenomics; metabolomics; proteomics
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIxS:investigation_type
     rank: 3
@@ -56,7 +56,7 @@ slots:
       to a new vial and generated a new sample)'
     examples:
       - value: IGSN:DSJ0284
-    from_schema: https://example.com/nmdc_dh
+
     multivalued: true
     range: string
     rank: 5

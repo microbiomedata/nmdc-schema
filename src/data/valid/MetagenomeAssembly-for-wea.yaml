@@ -1,0 +1,11 @@
+scaf_n50: 123
+type: generic:XXX
+execution_resource: generic:XXX
+git_url: generic:XXX
+has_input:
+  - generic:XXX
+id: nmdc:wfmgas-99-abc123
+started_at_time: '2024-01-15'
+ended_at_time: '2024-01-15'
+has_output:
+  - generic:XXX

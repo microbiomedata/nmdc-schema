@@ -30,7 +30,7 @@ slots:
         are all acceptable.
     examples:
       - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000011
     rank: 2
@@ -47,7 +47,7 @@ slots:
       - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
       - value: 13:33 or 13:33:55
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000011
     rank: 1
@@ -65,7 +65,7 @@ slots:
       - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
       - value: 13:33 or 13:33:55
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000011
     rank: 3
@@ -76,7 +76,7 @@ slots:
     description: Other details about your sample that you feel can't be accurately
       represented in the available columns.
     title: experimental factor- other
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000008
       - MIXS:0000300
@@ -93,7 +93,7 @@ slots:
   filter_method:
     description: Type of filter used or how the sample was filtered
     title: filter method
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000765
     rank: 6
@@ -115,7 +115,7 @@ slots:
     todos:
       - Can we make the H218O correctly super and subscripted?
     title: isotope exposure/addition
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000751
     rank: 16
@@ -130,7 +130,7 @@ slots:
     title: microbial biomass carbon method
     comments:
       - required if "microbial_biomass_c" is provided
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000339
     rank: 11
@@ -138,7 +138,7 @@ slots:
     slot_group: MIxS Inspired
     recommended: true
     todos:
-      - How should we separate values? | or ;? lets be consistent
+      - How should we separate values? | or ;? let's be consistent
   micro_biomass_n_meth:
     description: Reference or method used in determining microbial biomass nitrogen
     examples:
@@ -147,7 +147,7 @@ slots:
     title: microbial biomass nitrogen method
     comments:
       - required if "microbial_biomass_n" is provided
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000339
     rank: 13
@@ -159,7 +159,7 @@ slots:
     comments:
       - If you provide this, correction factors used for conversion to the final units and method are required
     title: microbial biomass carbon
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000650
     rank: 10
@@ -175,7 +175,7 @@ slots:
     examples:
       - value: 0.05 ug N/g dry soil
     title: microbial biomass nitrogen
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000650
     rank: 12
@@ -186,7 +186,7 @@ slots:
       measured, e.g.insect, plant, total. Can include multiple measurements separated
       by ;
     title: non-microbial biomass
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000174
       - MIXS:0000650
@@ -200,7 +200,7 @@ slots:
     title: non-microbial biomass method
     comments:
       - required if "non-microbial biomass" is provided
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000650
     rank: 9
@@ -215,7 +215,7 @@ slots:
       - required if "org_nitro" is provided
     examples:
       - value: https://doi.org/10.1016/0038-0717(85)90144-0
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000338
       - MIXS:0000205
@@ -226,7 +226,7 @@ slots:
     description: Other treatments applied to your samples that are not applicable
       to the provided fields
     title: other treatments
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000300
     rank: 15
@@ -247,7 +247,7 @@ slots:
         are all acceptable.
     examples:
       - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000011
     rank: 4
@@ -264,7 +264,7 @@ slots:
       - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
       - value: 13:33 or 13:33:55
-    from_schema: https://example.com/nmdc_dh
+
     see_also:
       - MIXS:0000011
     rank: 5
