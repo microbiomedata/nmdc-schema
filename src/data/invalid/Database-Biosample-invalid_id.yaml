@@ -1,7 +1,7 @@
 biosample_set:
   - id: nmdc:local
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
