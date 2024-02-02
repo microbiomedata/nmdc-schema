@@ -68,7 +68,7 @@ study_set:
     type: nmdc:Study
     study_category: research_study
 data_generation_set:
-  - id: nmdc:datgen-99-9XUVVF
+  - id: nmdc:dgns-99-9XUVVF
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0225767
@@ -86,10 +86,12 @@ data_generation_set:
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
       LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
     part_of:
-      - nmdc:sty-00-31415
+      - nmdc:dgms-00-31415
     processing_institution: JGI
-    type: nmdc:DataGeneration
-  - id: nmdc:datgen-99-dk9vgI
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-00-31415
+  - id: nmdc:dgns-99-dk9vgI
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0208560
@@ -103,11 +105,11 @@ data_generation_set:
       - nmdc:dobj-00-pizza
     ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
       - 611E1M metaG
-    part_of:
-      - nmdc:sty-00-8675309
     processing_institution: JGI
-    type: nmdc:DataGeneration
-  - id: nmdc:datgen-99-MVW1FV
+    type: nmdc:NucleotideSequencing
+    associated_studies: 
+      - nmdc:sty-00-8675309
+  - id: nmdc:dgns-99-MVW1FV
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0306221
@@ -123,10 +125,10 @@ data_generation_set:
       - nmdc:dobj-00-mobydick
     ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
       in University of Washington, Seatle, WA, United States - 4-1-23 metaG
-    part_of:
-      - nmdc:sty-00-avacado
     processing_institution: JGI
-    type: nmdc:DataGeneration
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-00-avacado
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
     gold_biosample_identifiers:
@@ -134,7 +136,7 @@ biosample_set:
     name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
     description: Permafrost microbial communities from Stordalen Mire, Sweden
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2011-06-15'
@@ -186,7 +188,7 @@ biosample_set:
       at 10C with heavy water. Sample is from a control plot at ambient soil temperature,
       organic horizon - top 4cm of soil
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2017-05-24'
@@ -238,7 +240,7 @@ biosample_set:
     description: Rhizosphere microbial communities from Carex aquatilis grown in submerged
       peat from a thermokarst bog, University of Washington, Seatle, WA, United States
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2018-01-29'

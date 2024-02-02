@@ -151,6 +151,13 @@ classes:
       - protocol_link
       - start_date
       - end_date
+      - qc_status
+      - qc_comment
+      - has_failure_categorization
+    slot_usage:
+      designated_class:
+        comments:
+          - required on all instances in a polymorphic Database slot like planned_process_set
 
   OntologyClass:
     class_uri: "nmdc:OntologyClass"
@@ -416,7 +423,7 @@ classes:
 slots:
   total_bases:
     domain: MagBin
-    range: integer # MAM 2023-12-08
+    range: integer
     todos:
       - this slot needs some basic textual annotations and constraints
   members_id:
@@ -578,6 +585,7 @@ slots:
   execution_resource:
     domain: WorkflowExecution
     range: string
+    description: The computing resource or facility where the workflow was executed.
     examples:
       - value: NERSC-Cori
 

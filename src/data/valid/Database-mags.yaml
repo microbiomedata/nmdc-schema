@@ -2,6 +2,8 @@ mags_set:
   - id: nmdc:wfmag-99-5MiDJM
     type: nmdc:MagsAnalysis
     name: MAGs activiity 1781_86101
+    img_identifiers: 
+      - img.taxon:3300062116
     part_of:
       - nmdc:wfch-11-ab
     started_at_time: '2021-01-10T00:00:00+00:00'

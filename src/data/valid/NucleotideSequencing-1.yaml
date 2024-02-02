@@ -1,6 +1,5 @@
-#test to check readding prefix 'omprc' as a valid id pattern
-id: nmdc:omprc-99-zUCd5N
-type: nmdc:DataGeneration
+id: nmdc:dgns-99-zUCd5N
+type: nmdc:NucleotideSequencing
 analyte_category: metagenome
 alternative_identifiers:
   - gold:Gp0108335
@@ -15,5 +14,7 @@ has_output:
 ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
   carbon transformations - Permafrost 712P3D
 part_of:
-  - nmdc:sty-00-555xxx
+  - nmdc:dgns-22-444xxx
 processing_institution: JGI
+associated_studies:
+  - nmdc:sty-00-555xxx

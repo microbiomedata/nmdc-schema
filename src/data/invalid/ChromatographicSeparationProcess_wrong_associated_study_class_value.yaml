@@ -1,0 +1,44 @@
+#this data is invalid b/c it uses the wrong Class for the value of slot associated_studies. It should be populated with nmdc Study identifers
+id: nmdc:cspro-99-oW43DzG0
+type: nmdc:ChromatographicSeparationProcess
+has_input:
+  - nmdc:procsm-11-9gjxns61
+has_output:
+  - nmdc:procsm-11-05g48p90
+  - nmdc:procsm-11-05g48p91
+stationary_phase: "CN"
+ordered_mobile_phases:
+  - volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 700
+      has_unit: mL
+    has_solution_components:
+      - compound: methanol
+        type: nmdc:SolutionComponent
+    type: nmdc:Solution
+  - volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 700
+      has_unit: mL
+    has_solution_components:
+      - compound: hydrochloric_acid
+        type: nmdc:SolutionComponent
+        concentration:
+          type: nmdc:QuantityValue
+          has_numeric_value: 10
+          has_unit: mM
+    type: nmdc:Solution
+  - volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 1000
+      has_unit: mL
+    has_solution_components:
+      - compound: water
+        type: nmdc:SolutionComponent
+    type: nmdc:Solution
+chromatographic_category: gas_chromatography
+has_calibration: nmdc:obj-asdfasd-asdfasdf
+part_of:
+  - nmdc-dgms-88-555xxx
+associated_studies:
+  - nmdc:dgms-666-333xxx

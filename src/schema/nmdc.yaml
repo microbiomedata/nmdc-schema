@@ -15,7 +15,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v9.2.0 # GH uses same version string # pyproject.toml says "9.2.0"
+version: v9.3.2 # GH uses same version string # pyproject.toml says "9.3.2"
 
 imports:
   - annotation
@@ -29,7 +29,6 @@ imports:
   - portal/sample_id
   - workflow_execution_activity
 #  - external_identifiers
-#  - sample_prep
 
 
 prefixes:
@@ -152,7 +151,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dgns-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
   FluidHandling:
@@ -187,8 +186,14 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dgms-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
+  FailureCategorization:
+    class_uri: nmdc:FailureCategorization
+    slots:
+      - qc_failure_what
+      - qc_failure_where
 
   FunctionalAnnotationAggMember:
     class_uri: "nmdc:FunctionalAnnotationAggMember"
@@ -210,10 +215,8 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      ##      - dissolving_activity_set
-      #      - material_sample_set
-      #      - material_sampling_activity_set
-      #      - reaction_activity_set
+      - planned_process_set
+      - functional_annotation_agg
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
@@ -288,7 +291,7 @@ classes:
       - extractant
       - extraction_target
       - input_mass
-      - quality_control_report
+      - volume
     slot_usage:
       has_output:
         required: true
@@ -353,12 +356,12 @@ classes:
       - name
       - type
 
-  QualityControlReport:
-    class_uri: nmdc:QualityControlReport
-    slots:
-      - status
-      - name
-      - type
+  #  QualityControlReport:
+  #    class_uri: nmdc:QualityControlReport
+  #    slots:
+  #      - status
+  #      - name
+  #      - type
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -543,6 +546,7 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - associated_studies
       - biosample_categories
       - collected_from
       - embargoed
@@ -550,7 +554,6 @@ classes:
       - host_taxid
       - img_identifiers
       - neon_biosample_identifiers
-      - part_of
       - samp_name
 
       ## external IDs, alternate IDs
@@ -561,7 +564,6 @@ classes:
 
       ## MIXS slots
       #      - horizon
-      #      - microbial_biomass
       #      - microbial_biomass_meth
       #      - previous_land_use_meth
       #      - samp_collect_device
@@ -1176,6 +1178,7 @@ classes:
 
       ## EMSL slots
       - bulk_elect_conductivity
+      - infiltrations
 
       ## bioscales slots
       - zinc
@@ -1226,10 +1229,6 @@ classes:
         required: true
       env_medium:
         required: true
-      part_of:
-        required: true
-        range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
 
       fire:
         comments:
@@ -1626,9 +1625,7 @@ classes:
     description:
       A process that takes one or more samples as inputs and generates
       one or more samples as outputs.
-    #    slots:
-    #      - has_input
-    #      - instrument_used
+
     notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
@@ -1840,6 +1837,7 @@ classes:
       - sequencing project
       - experiment
     is_a: PlannedProcess
+    abstract: true
     in_subset:
       - sample subset
     description: >-
@@ -1851,6 +1849,7 @@ classes:
     slots:
       - add_date
       - analyte_category
+      - associated_studies
       - gold_sequencing_project_identifiers
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
@@ -1862,19 +1861,14 @@ classes:
       - target_subfragment
 
     slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(datgen|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
       has_input:
         required: true
         pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
         comments:
           - pattern should allow typecode for Biosample and ProcessedSample
       part_of:
-        range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+        range: DataGeneration
+        pattern: "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
       has_output:
         range: DataObject
         pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
@@ -2086,9 +2080,88 @@ enums:
       vortex_genie_2:
         aliases:
           - VortexGenie2
-      novaseq:
+      novaseq_6000:
         aliases:
           - NovaSeq
+          - NovaSeq 6000
+        meaning: OBI:0002630
+      hiseq_1000:
+        aliases:
+          - Illumina HiSeq 1000
+        meaning: OBI:0002022
+      hiseq_1500:
+        aliases:
+          - Illumina HiSeq 1500
+        meaning: OBI:0003386
+      hiseq_2000:
+        aliases:
+          - Illumina HiSeq 2000
+        meaning: OBI:0002001
+      hiseq_2500:
+        aliases:
+          - Illumina HiSeq 2500
+        meaning: OBI:0002002
+      hiseq_3000:
+        aliases:
+          - Illumina HiSeq 3000
+        meaning: OBI:0002048
+      hiseq_4000:
+        aliases:
+          - Illumina HiSeq 4000
+        meaning: OBI:0002049
+      hiseq_x_ten:
+        aliases:
+          - Illumina HiSeq X Ten
+        meaning: OBI:0002129
+      miniseq:
+        aliases:
+          - Illumina MiniSeq
+        meaning: OBI:0003114
+      nextseq_1000:
+        aliases:
+          - Illumina NextSeq 1000
+        meaning: OBI:0003606
+      miseq:
+        aliases:
+          - MiSeq
+          - Illumina MiSeq
+        meaning: OBI:0002003
+      nextseq_500:
+        aliases:
+          - NextSeq 500
+        meaning: OBI:0002021
+      nextseq_550:
+        aliases:
+          - NextSeq 550
+        meaning: OBI:0003387
+      gridion:
+        aliases:
+          - Oxford Nanopore GridION Mk1
+        meaning: OBI:0002751
+      minion:
+        aliases:
+          - Oxford Nanopore MinION
+        meaning: OBI:0002750
+      promethion:
+        aliases:
+          - Oxford Nanopore PromethION
+        meaning: OBI:0002752
+      rs_II:
+        aliases:
+          - PacBio RS II
+        meaning: OBI:0002012
+      sequel:
+        aliases:
+          - PacBio Sequel
+        meaning: OBI:0002632
+      sequel_II:
+        aliases:
+          - PacBio Sequel II
+        meaning: OBI:0002633
+      revio:
+        aliases:
+          - PacBio Revio
+          - Revio
 
   InstrumentVendorEnum:
     permissible_values:
@@ -2117,8 +2190,16 @@ enums:
       illumina:
         aliases:
           - Illumina
-        exact_mappings:
-          - BAO:0200000
+        meaning: OBI:0000759
+      pacbio:
+        aliases:
+          - PacBio
+          - Pacific Biosciences
+        meaning: OBI:0001856
+      oxford_nanopore:
+        aliases:
+          - Oxford Nanopore Technologies
+        meaning: OBI:0002755
 
   StatusEnum:
     permissible_values:
@@ -2631,6 +2712,46 @@ enums:
       v-bottom_conical_tube:
       falcon_tube:
 
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
+    permissible_values:
+      low_read_count:
+        description: Number of output reads is not sufficient to continue to the next analysis step.
+      malformed_data:
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+
+  FailureWhereEnum:
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    comments:
+      - At Chris' recommendation permissible values for this enumeration are the same as Class names.
+    permissible_values:
+      OmicsProcessing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeActivity:
+        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      MagsAnalysisActivity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      ReadQcAnalysisActivity:
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysisActivity:
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotationActivity:
+        description: A failure has occurred in annotation, a workflow process.
+
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
     contributors:
@@ -2767,11 +2888,21 @@ enums:
       decomposition:
 
 slots:
+  associated_studies:
+    description: The study associated with a resource.
+    range: Study
+    multivalued: true
+    pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+    required: true
 
   data_category:
     domain: DataObject
     range: DataCategoryEnum
     description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
+
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
 
   model:
     range: InstrumentModelEnum
@@ -2781,10 +2912,19 @@ slots:
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecution
+  #    range: WorkflowExecutionActivity
+  #    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
+  #    required: true
+
   gene_function_id:
     range: uriorcurie
+    description: The identifier for the gene function.
+    examples:
+      - value: KEGG.ORTHOLOGY:K00627
+    required: true
   count:
     range: integer
+    required: true
   functional_annotation_agg:
     domain: Database
     range: FunctionalAnnotationAggMember
@@ -2811,8 +2951,8 @@ slots:
     range: integer
   sample_collection_month:
 
-  status:
-    domain: QualityControlReport
+  qc_status:
+    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
     range: StatusEnum
 
   library_preparation_kit:
@@ -2827,10 +2967,6 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-
-  quality_control_report:
-    domain: PlannedProcess
-    range: QualityControlReport
 
   pcr_cycles:
     range: integer
@@ -3517,6 +3653,20 @@ slots:
     required: true
     multivalued: true
     list_elements_ordered: true
+
+  infiltrations:
+    description: The amount of time it takes to complete each infiltration activity
+    examples:
+      - value: [ '00:01:32', '00:00:53' ]
+    aliases:
+      - infiltration_1
+      - infiltration_2
+    multivalued: true
+    list_elements_ordered: true
+    range: string
+    pattern: ^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$
+    see_also:
+      - https://www.protocols.io/view/field-sampling-protocol-kqdg3962pg25/v1
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."

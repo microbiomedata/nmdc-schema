@@ -1,7 +1,7 @@
 biosample_set:
   - id: nmdc:bsm-99-dtTMNb
     name: real biosample from the field
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -24,7 +24,7 @@ biosample_set:
     type: nmdc:Biosample
   - id: nmdc:bsm-99-XYZ
     name: one DNA library, like an analytical sample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -46,7 +46,7 @@ biosample_set:
         id: ENVO:00005792
     type: nmdc:Biosample
 data_generation_set:
-  - id: nmdc:datgen-99-zUCd5N
+  - id: nmdc:dgns-99-zUCd5N
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
@@ -59,7 +59,7 @@ data_generation_set:
       - nmdc:dobj-00-9n9n9n
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
-    part_of:
-      - nmdc:sty-00-555xxx
     processing_institution: JGI
-    type: nmdc:DataGeneration
+    type: nmdc:NucleotideSequencing
+    associated_studies: 
+      - nmdc:sty-00-555xxx

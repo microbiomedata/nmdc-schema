@@ -1,5 +1,5 @@
 data_generation_set:
-  - id: nmdc:datgen-99-zUCd5N
+  - id: nmdc:dgns-99-zUCd5N
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
@@ -14,10 +14,12 @@ data_generation_set:
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
     part_of:
-      - nmdc:sty-00-555xxx
+      - nmdc:dgns-00-555xxx
     processing_institution: JGI
-    type: nmdc:DataGeneration
-  - id: nmdc:datgen-99-gKlQlF
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-00-555xxx
+  - id: nmdc:dgns-99-gKlQlF
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108340
@@ -31,11 +33,11 @@ data_generation_set:
       - nmdc:dobj-00-zzzbrxzzz
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 612S3M
-    part_of:
-      - nmdc:sty-00-555xxx
     processing_institution: JGI
-    type: nmdc:DataGeneration
-  - id: nmdc:datgen-99-5kgIJR
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-00-555xxx
+  - id: nmdc:dgns-99-5kgIJR
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108341
@@ -49,7 +51,7 @@ data_generation_set:
       - nmdc:dobj-00-thx1198
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712S3S
-    part_of:
-      - nmdc:sty-00-555xxx
     processing_institution: JGI
-    type: nmdc:DataGeneration
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-00-555xxx
