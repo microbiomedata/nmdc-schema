@@ -1,7 +1,7 @@
 biosample_set:
   - id: nmdc:bsm-99-dtTMNb
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -21,12 +21,12 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    infiltrations: 
+    infiltrations:
       - 00:01:32
       - 00:00:53
   - id: nmdc:bsm-99-abcdef
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -46,14 +46,14 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    infiltrations: 
+    infiltrations:
       - 00:02:54
   - id: nmdc:bsm-99-qwerty
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue  
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
         type: nmdc:OntologyClass
@@ -70,7 +70,7 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    infiltrations: 
+    infiltrations:
       - 01:24:03
       - 00:02:33
       - 00:02:02
