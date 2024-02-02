@@ -1,0 +1,67 @@
+read_qc_analysis_set:
+  #valid failed data, no output files
+  - id: nmdc:wfrqc-11-hemh0a87.1
+    name: Read QC Activity for nmdc:wfrqc-11-hemh0a87.1
+    qc_status: fail
+        #cv for what the failure was
+      #since there can be multivalued and what/where should be paired we need this structure
+    has_failure_categorization:
+      - qc_failure_what: malformed_data
+        qc_failure_where: ReadQcAnalysisActivity
+    qc_comment: Failure during call-stage to interleave fastq files
+    type: nmdc:ReadQcAnalysis
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time: "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    part_of:
+     - nmdc:wfch-11-ab
+    git_url: https://github.com/microbiomedata/ReadsQC
+    version: v1.0.8
+    has_input:
+      - nmdc:dobj-11-1k62bt83
+      - nmdc:dobj-11-e8hs8y25
+
+  #valid passing data
+  - id: nmdc:wfrqc-11-hemh0a88.1
+    name: Read QC Activity for nmdc:wfrqc-11-hemh0a88.1
+    qc_status: pass
+    qc_comment: Number of output reads from readqc is above threshold (6000000 > 1000000)
+    type: nmdc:ReadQcAnalysis
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time: "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    part_of:
+     - nmdc:wfch-11-ab
+    git_url: https://github.com/microbiomedata/ReadsQC
+    version: v1.0.8
+    has_input:
+      - nmdc:dobj-11-1k62bt83
+      - nmdc:dobj-11-e8hs8y25
+    has_output:
+      - nmdc:dobj-11-e8hs8y26
+      - nmdc:dobj-11-e8hs8y27
+      - nmdc:dobj-11-e8hs8y28
+
+  #valid failed data with outputs
+  - id: nmdc:wfrqc-11-hemh0a90.1
+    name: Read QC Activity for nmdc:wfrqc-11-hemh0a87.1
+    qc_status: fail
+    has_failure_categorization:
+      - qc_failure_what: low_read_count
+        qc_failure_where: ReadQcAnalysisActivity
+    qc_comment: Most data removed for artifacts
+    type: nmdc:ReadQcAnalysis
+    part_of:
+     - nmdc:wfch-11-ab
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time: "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/ReadsQC
+    version: v1.0.8
+    has_input:
+      - nmdc:dobj-11-1k62bt83
+      - nmdc:dobj-11-e8hs8y25
+    has_output:
+      - nmdc:dobj-11-e8hs8y26
+      - nmdc:dobj-11-e8hs8y27
+      - nmdc:dobj-11-e8hs8y28

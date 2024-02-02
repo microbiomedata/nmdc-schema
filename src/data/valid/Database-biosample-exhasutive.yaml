@@ -7,7 +7,7 @@ biosample_set:
     description: unconstrained text
     alternative_identifiers:
       - generic:abc123
-    part_of:
+    associated_studies:
       - nmdc:sty-00-987654
       - nmdc:sty-00-qwerty
     env_broad_scale:
