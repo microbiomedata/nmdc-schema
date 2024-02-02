@@ -17,6 +17,6 @@ data_generation_set:
       - nmdc:dgns-00-555xxx
     processing_institution: JGI
     type: nmdc:NucleotideSequencing
-    instrument_name: THIS SLOT IS NOT AVAILABLE FOR THIS CLAS ANYMORE
+    instrument_name: THIS SLOT SHOULD NOT BE ALLOWED FOR THIS CLASS ANYMORE
     associated_studies:
       - nmdc:sty-00-555xxx
