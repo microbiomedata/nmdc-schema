@@ -1,8 +1,12 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import load_yaml_asset
 
-class Migrator_from_9_1_to_9_2(MigratorBase):
-    """Migrates data from schema 9.1.0 to 9.2.0"""
+
+class Migrator(MigratorBase):
+    """Migrates data between two schema versions."""
+
+    _from_version = "9.1"
+    _to_version = "9.2"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -10,7 +14,7 @@ class Migrator_from_9_1_to_9_2(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.move_doi_from_websites],
         )
 
@@ -19,7 +23,7 @@ class Migrator_from_9_1_to_9_2(MigratorBase):
         Transforms `websites` values that are dois into curies and moves them into the `associated_dois slot
         Removes the doi website values from the `websites slot.
         
-        >>> m = Migrator_from_9_1_to_9_2()
+        >>> m = Migrator()
         >>> m.move_doi_from_websites({'id': 123, 'websites': ['a', 'https://doi.org/10.25982/109073.30/1895615'], 'associated_dois': 
         ...     [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}]})
         {'id': 123, 'websites': ['a'], 'associated_dois': [{'doi_value': 'j', 'doi_provider': 'k', 'doi_category': 'i'}, {'doi_value': 'doi:10.25982/109073.30/1895615', 'doi_category': 'dataset_doi', 'doi_provider': 'kbase'}]}
