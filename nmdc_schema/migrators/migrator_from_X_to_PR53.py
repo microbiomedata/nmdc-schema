@@ -1,16 +1,19 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import re
 
-class Migrator_from_X_to_PR53(MigratorBase):
+class Migrator(MigratorBase):
     """Migrates data from schema X to PR53"""
 
+    _from_version = "X"
+    _to_version = "PR53"
+    
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
 
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             omics_processing_set=[self.move_part_of_to_associated_studies],
             biosample_set=[self.move_part_of_to_associated_studies],
         )
