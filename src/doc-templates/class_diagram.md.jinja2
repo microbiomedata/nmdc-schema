@@ -1,0 +1,74 @@
+{% macro render_relationships(relationships) %}
+  {% for s in relationships -%}
+    {{ gen.name(element) }} : {{ gen.name(s) }}
+    {% if s.range not in gen.all_type_object_names() %}
+    {{ gen.name(element) }} --|> {{ s.range }} : {{ gen.name(s) }}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro slot_relationships_count_fn(relationships) %}
+  {% set count = namespace(value=0) %}
+  {% for s in relationships -%}
+    {% if s.range not in gen.all_type_object_names() %}
+      {% set count.value = count.value + 1 %}
+    {% endif %}
+  {% endfor %}
+  {{ count.value }}
+{% endmacro %}
+
+{% set parent_count = schemaview.class_parents(element.name)|length %}
+{% set child_count = schemaview.class_children(element.name)|length %}
+{% set slot_relationships = schemaview.class_induced_slots(element.name)|sort(attribute='name') %}
+
+{% set slot_relationships_count = slot_relationships_count_fn(slot_relationships) %}
+
+{% if schemaview.class_induced_slots(element.name)|sort(attribute='name')|length < 60 and
+    parent_count|int < 20 and 
+    (child_count|int + slot_relationships_count|int) < 20
+%}
+{% if schemaview.class_parents(element.name) and schemaview.class_children(element.name) %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {% for s in schemaview.class_parents(element.name)|sort(attribute='name') -%}
+      {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}
+    {% endfor %}
+
+    {% for s in schemaview.class_children(element.name)|sort(attribute='name') -%}
+      {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
+    {% endfor %}
+    
+    {{ render_relationships(slot_relationships) }}
+```
+{% elif schemaview.class_parents(element.name) %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {% for s in schemaview.class_parents(element.name)|sort(attribute='name') -%}
+      {{ gen.name(schemaview.get_element(s)) }} <|-- {{ gen.name(element) }}
+    {% endfor %}
+    
+    {{ render_relationships(slot_relationships) }}
+```
+{% elif schemaview.class_children(element.name) %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {% for s in schemaview.class_children(element.name)|sort(attribute='name') -%}
+      {{ gen.name(element) }} <|-- {{ gen.name(schemaview.get_element(s)) }}
+    {% endfor %}
+    
+    {{ render_relationships(slot_relationships) }}
+```
+{% else %}
+```{{ gen.mermaid_directive() }}
+classDiagram
+  class {{ gen.name(element) }}
+    {{ render_relationships(slot_relationships) }}
+```
+{% endif %}
+{% else %}
+!!! note
+    Mermaid class diagram too large to render.
+{% endif %}

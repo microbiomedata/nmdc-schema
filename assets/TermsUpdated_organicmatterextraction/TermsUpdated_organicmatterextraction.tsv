@@ -1,4 +1,4 @@
-class	is_a	Slot	range	required	Replaced 	Origin	additional mapped slots	aliases	comments	class_uri	slot_uri	Link	description	Notes / commends
+class	is_a	Slot	range	required	"Replaced "	Origin	additional mapped slots	aliases	comments	class_uri	slot_uri	Link	description	Notes / commends
 > class	is_a	slot	range	required	ignore	ignore	ignore	aliases	comments	class_uri	slot_uri	ignore	ignore	ignore
 AcidificationActivity		acid				IUPAC Gold Book						https://goldbook.iupac.org/terms/view/A00071	A molecular entity or chemical species capable of donating a hydron (proton) (see Br�nsted acid) or capable of forming a covalent bond with an electron pair (see Lewis acid).	
 AcidificationActivity		analyte_id			id	National Cancer Institure Proteomic Data Commons						https://proteomic.datacommons.cancer.gov/pdc/data-dictionary/Analyte#:~:text=Unique%20Keys-,analyte_id,-analyte_submitter_id	Unique identifier for the analytical sample resulting from the extraction activity	
@@ -19,7 +19,7 @@ AnalyticalSample		analyte_volume			volume	National Cancer Institure Proteomic Da
 AnalyticalSample		container_type			contanier								The vessel the sample was stored and extracted in	general unit term for values that don't have something more specific
 AnalyticalSample		volume				National Cancer Institute Thesaurus						https://bioportal.bioontology.org/ontologies/NCIT/?p=classes&conceptid=http%3A%2F%2Fncicb.nci.nih.gov%2Fxml%2Fowl%2FEVS%2FThesaurus.owl%23C25335&jump_to_nav=true	The amount of three dimensional space occupied by an object or the capacity of a space or container.	
 AnalyticalSample		volume_unit			unit	Mass Spectrometry Ontology						https://bioportal.bioontology.org/ontologies/MS/?p=classes&conceptid=http%3A%2F%2Fpurl.obolibrary.org%2Fobo%2FUO_0000000&jump_to_nav=true	A unit which is a standard measure of the amount of space occupied by any substance, whether solid, liquid, or gas.	
-AnalyticalSample	MaterialEntity					National Cancer Institure Proteomic Data Commons						https://proteomic.datacommons.cancer.gov/pdc/data-dictionary/Analyte	A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.	
+AnalyticalSample	MaterialEntity					National Cancer Institure Proteomic Data Commons						https://proteomic.datacommons.cancer.gov/pdc/data-dictionary/Analyte	A liquid bulk product produced according to specified lab protocols, from a sample or analyte, intended for further analysis.
 Container		volume	QuantityValue	TRUE										
 Container										http://purl.obolibrary.org/obo/OBI_0000967				
 Extraction		analyte_id			id	National Cancer Institure Proteomic Data Commons						https://proteomic.datacommons.cancer.gov/pdc/data-dictionary/Analyte#:~:text=Unique%20Keys-,analyte_id,-analyte_submitter_id	Unique identifier for the analytical sample resulting from the extraction activity	

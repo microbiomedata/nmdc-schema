@@ -1,4 +1,4 @@
-id: nmdc:datgen-11-pf500b03
+id: nmdc:dgns-11-pf500b03
 analyte_category: metagenome
 gold_sequencing_project_identifiers:
   - gold:Gp0704888
@@ -15,9 +15,9 @@ ncbi_project_name: Thawing permafrost microbial communities from the Arctic, stu
 insdc_bioproject_identifiers:
   - bioproject:PRJNA1029144
 part_of:
-  - nmdc:datgen-99-777xxx
+  - nmdc:dgns-99-777xxx
 processing_institution: JGI
-type: nmdc:DataGeneration
+type: nmdc:NucleotideSequencing
 associated_studies:
   - nmdc:sty-00-555xxx
 

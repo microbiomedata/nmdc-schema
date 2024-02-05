@@ -498,7 +498,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
 	time $(RUN) migration-recursion \
-		--migrator-name Migrator_from_9_1_to_9_2 \
+		--migrator-name Migrator_from_X_to_PR53 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
@@ -573,8 +573,68 @@ assets/filtered-api-requests/filtered-request-validation-log.txt: nmdc_schema/nm
 assets/filtered-api-requests/filtered-request-result.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-.PHONY: migration-doctests
+.PHONY: migration-doctests migrator
 
-# Runs all doctests defined within the migrator modules.
+# Runs all doctests defined within the migrator modules and CLI scripts.
 migration-doctests:
 	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
+	$(RUN) python -m doctest -v nmdc_schema/migrators/cli/*.py
+
+# Generates a migrator skeleton for the specified schema versions.
+# Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
+migrator:
+	$(RUN) create-migrator
+
+#local/nmdc-schema-v7.8.0.yaml:
+#	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
+#	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
+#	#     see_also:
+#	#       - MIxS:experimental_factor|additional_info
+#	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
+
+local/nmdc-schema-v8.0.0.yaml:
+	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.0.0/nmdc_schema/nmdc_materialized_patterns.yaml
+	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
+	#     see_also:
+	#       - MIxS:experimental_factor|additional_info
+	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
+
+local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
+	$(RUN) gen-owl $< > $@
+
+# 		--quick-test
+local/nmdc-sty-11-aygzgv51.yaml:
+	$(RUN) get-study-related-records \
+		--api-base-url https://api-napa.microbiomedata.org \
+		extract-study \
+		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
+		--output-file $@
+
+local/nmdc-sty-11-aygzgv51-validation.log: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
+	# - allows the makefiel to continue even if this step reports an error. that may or may not be the best choice in this case
+	- $(RUN) linkml-validate --schema $^ > $@
+
+local/nmdc-sty-11-aygzgv51.ttl: local/nmdc-schema-v8.0.0.yaml local/nmdc-sty-11-aygzgv51.yaml
+	$(RUN) linkml-convert --output $@ --schema $^
+
+local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-11-aygzgv51.ttl
+	$(JENA_PATH)/tdb2.tdbloader \
+		--loc=$@ \
+		--graph=https://w3id.org/nmdc/nmdc \
+			$(word 1, $^)
+	$(JENA_PATH)/tdb2.tdbloader  \
+		--loc=$@ \
+		--graph=https://api-napa.microbiomedata.org/docs \
+			$(word 2, $^)
+	$(JENA_PATH)/tdb2.tdbquery \
+		--loc=$@ \
+		--query=assets/sparql/tdb-test.rq
+	$(JENA_PATH)/tdb2.tdbquery \
+		--loc=$@ \
+		--query=assets/sparql/tdb-graph-list.rq
+
+.PHONY: filtered-status
+filtered-status:
+	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
+		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
+

@@ -9,24 +9,27 @@ theme:
 plugins:
   - search
   - mermaid2
-  - redirects:  # reference: https://github.com/mkdocs/mkdocs-redirects
+  - redirects: # reference: https://github.com/mkdocs/mkdocs-redirects
       redirect_maps:
         'home.md': 'index.md'  # redirects "/home" to "/"
 markdown_extensions:
+  - admonition
   - tables
   - pymdownx.magiclink
 extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
 nav:
+  - NMDC Schema: index.md
   - About: about.md
+  - How to run a collaborative data modeling project: https://linkml.io/linkml/howtos/collaborative-development.html
   - Identifiers in NMDC: identifiers.md
   - Identifiers, CURIes, Prefixes, etc.: prefixes_curies_ids_mappings_etc.md
   - NMDC Metadata Standards Documentation: Metadata_Documentation_Overview.md
+  - NMDC Schema Contributors How-to from Schema Hackathon 2023-12-10: https://docs.google.com/presentation/d/1ZH41QAoESUwAkdHyUxlrmSKS5M-bT0TOulBgX4rBx2A/edit#slide=id.g26390794265_0_693
   - NMDC Schema Validation: schema-validation.md
-  - NMDC Schema: index.md
-  - NMDC Style and Collaboration Guide: nmdc-schema-style-and-collaboration-guide.md
   - Schema element deprecation guide: schema_element_deprecation_guide.md
+
 
 site_url: https://microbiomedata.github.io/nmdc-schema
 repo_url: https://github.com/microbiomedata/nmdc-schema
