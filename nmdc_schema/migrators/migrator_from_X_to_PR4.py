@@ -1,7 +1,10 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
-class Migrator_from_X_to_PR4(MigratorBase):
+class Migrator(MigratorBase):
     """Migrates data from schema X to PR4"""
+
+    _from_version = "X"
+    _to_version = "PR4"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -9,7 +12,7 @@ class Migrator_from_X_to_PR4(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             omics_processing_set=[self.update_analyte_category_from_omics_type],
         )
 
@@ -18,7 +21,7 @@ class Migrator_from_X_to_PR4(MigratorBase):
         Transforms values in the 'omics_type.has_raw_value' slot to match the accepted AnalyteCategoryEnum and adds
         a new slot called analyte_category with the accepted value. Removes the omics_type slot.
         
-        >>> m = Migrator_from_X_to_PR4()
+        >>> m = Migrator()
         >>> m.update_analyte_category_from_omics_type({'id': 123, 'omics_type': {'has_raw_value': 'Organic Matter Characterization'}})
         {'id': 123, 'analyte_category': 'nom'}
         """
