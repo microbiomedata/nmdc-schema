@@ -1,8 +1,11 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from linkml_runtime import SchemaView
 
-class Migrator_from_X_to_PR10(MigratorBase):
+class Migrator(MigratorBase):
     """Migrates data from schema X to PR10"""
+
+    _from_version = "X"
+    _to_version = "PR10"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -33,7 +36,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
                             slots_with_inlined_classes[slot_name] = class_uri
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             biosample_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Biosample", slots_with_inlined_classes)],
             data_object_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataObject")],
             functional_annotation_agg=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:FunctionalAnnotationAggMember")],
@@ -84,7 +87,7 @@ class Migrator_from_X_to_PR10(MigratorBase):
             slot exists, it will overwrite to the types listed below. If the optional dictionary argument inlined_slots is given, then
             this function will add the type lost to any slots that have inlined classes as their range.
         
-            >>> m = Migrator_from_X_to_PR10()
+            >>> m = Migrator()
             >>> m.add_type_slot_with_class_uri({'id': 123, 'collection_date': {'has_raw_value': '2017-05-09'}}, 'nmdc:Biosample', {'collection_date': 'nmdc:TimestampValue'}) 
             {'id': 123, 'collection_date': {'has_raw_value': '2017-05-09', 'type': 'nmdc:TimestampValue'}, 'type': 'nmdc:Biosample'}
             >>> m.add_type_slot_with_class_uri({'id': 567, 'type': 'nmdc:DataGeneration'}, 'nmdc:DataGeneration')
