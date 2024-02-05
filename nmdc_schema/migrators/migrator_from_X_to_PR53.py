@@ -22,7 +22,7 @@ class Migrator(MigratorBase):
         r"""
         Moves `part_of` values that are studies and moves them into a new slot called `associated_studies`
         
-        >>> m = Migrator_from_X_to_PR53()
+        >>> m = Migrator()
         >>> m.move_part_of_to_associated_studies({'id': 123, 'part_of': ['gold:Gs0114663', 'nmdc:sty-55-xxx']})
         {'id': 123, 'associated_studies': ['gold:Gs0114663', 'nmdc:sty-55-xxx']}
         """
