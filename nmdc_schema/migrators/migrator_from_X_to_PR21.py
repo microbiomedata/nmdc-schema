@@ -1,8 +1,11 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import load_yaml_asset
 
-class Migrator_from_X_to_PR21(MigratorBase):
+class Migrator(MigratorBase):
     """Migrates data from schema X to PR21"""
+
+    _from_version = "X"
+    _to_version = "PR21"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -10,7 +13,7 @@ class Migrator_from_X_to_PR21(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             study_set=[self.move_relevant_protocols_to_protocol_link],
         )
 
@@ -19,7 +22,7 @@ class Migrator_from_X_to_PR21(MigratorBase):
         Moves any urls that exist in the relevant_protocols slot to a dictionary format (e.g. Protocol class is the range) 
         in the protocol_link slot. It then removes the relevant_protocols slot from the study.
         
-        >>> m = Migrator_from_X_to_PR21()
+        >>> m = Migrator()
         >>> m.move_relevant_protocols_to_protocol_link({'id': 123, 'relevant_protocols': ['www.ex1.org', 'www.ex2.gov']})
         {'id': 123, 'protocol_link': [{'url': 'www.ex1.org', 'type': 'nmdc:Protocol'}, {'url': 'www.ex2.gov', 'type': 'nmdc:Protocol'}]}
         >>> m.move_relevant_protocols_to_protocol_link({'id': 123, 'relevant_protocols': ['www.ex3.org']})
