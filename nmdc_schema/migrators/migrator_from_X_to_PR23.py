@@ -1,8 +1,11 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import difflib
 
-class Migrator_from_X_to_PR23(MigratorBase):
+class Migrator(MigratorBase):
     """Migrates data from schema X to PR23"""
+
+    _from_version = "X"
+    _to_version = "PR23"
 
     def __init__(self, *args, **kwargs) -> None:
         """Invokes parent constructor and populates collection-to-transformations map."""
@@ -10,7 +13,7 @@ class Migrator_from_X_to_PR23(MigratorBase):
         super().__init__(*args, **kwargs)
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
+        self._agenda = dict(
             metagenome_assembly_set=[self.standardize_execution_resource], 
             metagenome_annotation_activity_set=[self.standardize_execution_resource],
             metatranscriptome_activity_set=[self.standardize_execution_resource], 
@@ -28,7 +31,7 @@ class Migrator_from_X_to_PR23(MigratorBase):
         Transforms the values of the execution_resource slot for any subclasses of WorkflowExecutionActivity into the
         allowable permissible values of the ExecutionResourceEnum.
         
-        >>> m = Migrator_from_X_to_PR23()
+        >>> m = Migrator()
         >>> m.standardize_execution_resource({'id': 123, 'execution_resource': 'LANL B-div'})
         {'id': 123, 'execution_resource': 'LANL-B-div'}
         >>> m.standardize_execution_resource({'id': 234, 'execution_resource': 'NERSC - Cori'})
