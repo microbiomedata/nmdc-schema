@@ -113,17 +113,6 @@ classes:
           syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  AnalyticalSample:
-    class_uri: "nmdc:AnalyticalSample"
-    is_a: MaterialEntity
-    title: Analytical Sample
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-
   Site:
     class_uri: "nmdc:Site"
     abstract: true
@@ -151,6 +140,13 @@ classes:
       - protocol_link
       - start_date
       - end_date
+      - qc_status
+      - qc_comment
+      - has_failure_categorization
+    slot_usage:
+      designated_class:
+        comments:
+          - required on all instances in a polymorphic Database slot like planned_process_set
 
   OntologyClass:
     class_uri: "nmdc:OntologyClass"
@@ -416,7 +412,7 @@ classes:
 slots:
   total_bases:
     domain: MagBin
-    range: integer # MAM 2023-12-08
+    range: integer
     todos:
       - this slot needs some basic textual annotations and constraints
   members_id:

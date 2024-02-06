@@ -1,17 +1,16 @@
-id: "nmdc:extrp-11-00r2pk65"
+id: nmdc:extrp-11-00r2pk65
 type: nmdc:Extraction
 has_input:
-  - "nmdc:procsm-11-9gjxns61"
+  - nmdc:procsm-11-9gjxns61
 has_output:
-  - "nmdc:procsm-11-0wxpzf07"
+  - nmdc:procsm-11-0wxpzf07
+name: extraction of sample 123
 start_date: "2020-06-24T22:06Z"
 end_date: "2021-08-19"
-# processing_institution: "Battelle"
-quality_control_report:
-  type: nmdc:QualityControlReport
-  status: "pass"
-extraction_target: "DNA"
+processing_institution: Battelle
+qc_status: pass
+extraction_target: DNA
 input_mass:
   type: nmdc:QuantityValue
   has_numeric_value: 0.25
-  has_unit: "g"
+  has_unit: g

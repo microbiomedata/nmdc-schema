@@ -33,7 +33,7 @@ extraction_set:
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -55,7 +55,7 @@ biosample_set:
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef2
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
@@ -77,7 +77,7 @@ biosample_set:
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef3
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-11-34xj1150
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
