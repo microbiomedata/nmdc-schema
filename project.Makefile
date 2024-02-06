@@ -429,34 +429,50 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_n
 # could also check --client-base-url https://api-napa.microbiomedata.org
 # but separate validate-filtered-request-all is available for that now
 
-# todo also notes about large collections: functional_annotation_agg and metaproteomics_analysis_set
-
-# 		--selected-collections data_object_set \
-# 		--selected-collections extraction_set \
-# 		--selected-collections field_research_site_set \
-# 		--selected-collections library_preparation_set \
-# 		--selected-collections mags_set \
-# 		--selected-collections metabolomics_analysis_set \
-# 		--selected-collections metagenome_annotation_set \
-# 		--selected-collections metagenome_assembly_set \
-# 		--selected-collections metagenome_sequencing_set  \
-# 		--selected-collections metaproteomics_analysis_set \
-# 		--selected-collections metatranscriptome_analysis_set \
-# 		--selected-collections nom_analysis_set \
-# 		--selected-collections omics_processing_set \
-# 		--selected-collections pooling_set \
-# 		--selected-collections processed_sample_set \
-# 		--selected-collections read_based_taxonomy_analysis_set \
-# 		--selected-collections read_qc_analysis_set \
-
-## can't handle empty selected-collections yet
+## warnings reported for empty selected-collections
 ## https://github.com/microbiomedata/nmdc-schema/issues/1485
- #		--selected-collections activity_set \
- #		--selected-collections collecting_biosamples_from_site_set \
- #		--selected-collections material_sample_set \
- #		--selected-collections planned_process_set \
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/activity_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/data_generation_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/genome_feature_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/instrument_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/mags_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/material_sample_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/metabolomics_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/metagenome_sequencing_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/metatranscriptome_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/nom_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/read_based_taxonomy_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/read_qc_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/workflow_chain_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/workflow_execution_set?max_page_size=200000
 
-#  		--selected-collections metap_gene_function_aggregation \
+# Retrieved 0 entries out of 0 from nmdcschema/collecting_biosamples_from_site_set
+# Retrieved 0 entries out of 0 from nmdcschema/planned_process_set
+# Retrieved 110 entries out of 0 from nmdcschema/field_research_site_set
+# Retrieved 1491 entries out of 0 from nmdcschema/pooling_set
+# Retrieved 154567 entries out of 0 from nmdcschema/data_object_set
+# Retrieved 1985 entries out of 0 from nmdcschema/nom_analysis_activity_set
+# Retrieved 209 entries out of 0 from nmdcschema/metabolomics_analysis_activity_set
+# Retrieved 2319 entries out of 0 from nmdcschema/extraction_set
+# Retrieved 2324 entries out of 0 from nmdcschema/library_preparation_set
+# Retrieved 28 entries out of 0 from nmdcschema/study_set
+# Retrieved 2979 entries out of 0 from nmdcschema/mags_activity_set
+# Retrieved 3297 entries out of 0 from nmdcschema/metagenome_assembly_set
+# Retrieved 3414 entries out of 0 from nmdcschema/read_based_taxonomy_analysis_activity_set
+# Retrieved 3487 entries out of 0 from nmdcschema/read_qc_analysis_activity_set
+# Retrieved 55 entries out of 0 from nmdcschema/metatranscriptome_activity_set
+# Retrieved 6134 entries out of 0 from nmdcschema/processed_sample_set
+# Retrieved 631 entries out of 0 from nmdcschema/metagenome_sequencing_activity_set
+# Retrieved 6361 entries out of 0 from nmdcschema/omics_processing_set
+# Retrieved 7978 entries out of 0 from nmdcschema/biosample_set
+
+## see
+# https://api.microbiomedata.org/nmdcschema/collection_stats
+# Production MongoDB, 2023-02-06
+# functional_annotation_agg has 25 the number of documents than the next smaller collection, data_object_set
+# functional_annotation_agg (1,787,382,320 bytes) and metaproteomics_analysis_activity_set (133,268,047) 
+#   are much larger than the next smaller data_object_set (72,852,923), even though  metaproteomics_analysis_activity_set only has 52 documents
+
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
@@ -471,28 +487,45 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
+		--selected-collections activity_set \
 		--selected-collections biosample_set \
+		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections data_generation_set \
 		--selected-collections data_object_set \
-		--selected-collections functional_annotation_agg \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections functional_annotation_set \
+		--selected-collections genome_feature_set \
+		--selected-collections instrument_set \
+		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections mags_set \
+		--selected-collections material_sample_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metabolomics_analysis_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_annotation_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metagenome_sequencing_set \
+		--selected-collections metap_gene_function_aggregation \
+		--selected-collections metaproteomics_analysis_set \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections metatranscriptome_analysis_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections nom_analysis_set \
+		--selected-collections omics_processing_set \
+		--selected-collections planned_process_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_based_taxonomy_analysis_set \
+		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections read_qc_analysis_set \
 		--selected-collections study_set \
- 		--selected-collections extraction_set \
- 		--selected-collections field_research_site_set \
- 		--selected-collections library_preparation_set \
- 		--selected-collections mags_set \
- 		--selected-collections metabolomics_analysis_set \
- 		--selected-collections metagenome_annotation_set \
- 		--selected-collections metagenome_assembly_set \
- 		--selected-collections metagenome_sequencing_set  \
- 		--selected-collections metaproteomics_analysis_set \
- 		--selected-collections metatranscriptome_analysis_set \
- 		--selected-collections nom_analysis_set \
- 		--selected-collections omics_processing_set \
- 		--selected-collections pooling_set \
- 		--selected-collections processed_sample_set \
- 		--selected-collections read_based_taxonomy_analysis_set \
- 		--selected-collections read_qc_analysis_set
-
-#		--skip-collection-check
+		--selected-collections workflow_chain_set \
+		--selected-collections workflow_execution_set \
+		--skip-collection-check
 
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -544,7 +577,7 @@ assets/sparql/undesc-ununsed-slots.tsv: assets/sparql/undesc-ununsed-slots.rq nm
 OmicsProcessing-all: OmicsProcessing-clean OmicsProcessing.tsv OmicsProcessing-to-catted-Biosamples.tsv
 
 OmicsProcessing.tsv: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-	$(RUN) class-sparql  \
+	$(RUN) class-sparql \
 		--concatenation-suffix s \
 		--do-group-concat \
 		--graph-name "mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017" \
@@ -622,7 +655,7 @@ local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-
 		--loc=$@ \
 		--graph=https://w3id.org/nmdc/nmdc \
 			$(word 1, $^)
-	$(JENA_PATH)/tdb2.tdbloader  \
+	$(JENA_PATH)/tdb2.tdbloader \
 		--loc=$@ \
 		--graph=https://api-napa.microbiomedata.org/docs \
 			$(word 2, $^)
