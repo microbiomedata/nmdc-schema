@@ -531,7 +531,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
 	time $(RUN) migration-recursion \
-		--migrator-name Migrator_from_X_to_PR53 \
+		--migrator-name migrator_from_X_to_PR53 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
