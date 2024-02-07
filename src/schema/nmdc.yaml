@@ -1804,7 +1804,7 @@ classes:
     description: >
       A mixing step where a soluble component is mixed with a liquid component.
     exact_mappings:
-      - AFO:/process#AFP_0000112
+      - CHMO:0002773
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
