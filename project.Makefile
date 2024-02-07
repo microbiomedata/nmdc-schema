@@ -670,4 +670,3 @@ local/nmdc-sty-11-aygzgv51-tdb: local/nmdc-schema-v8.0.0.owl.ttl local/nmdc-sty-
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
 		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
-
