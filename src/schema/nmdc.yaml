@@ -41,7 +41,7 @@ prefixes:
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
   FBcv: "http://purl.obolibrary.org/obo/FBcv_"
-  FMA: "http://purl.obolibrary.org/obo/FMA_"
+  FMA: "http://purl.org/sig/ont/fma/fma"
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
   ISA: http://example.org/isa/

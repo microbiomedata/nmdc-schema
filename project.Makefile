@@ -7,6 +7,8 @@ FD_ROOT=local/fuseki-data/databases
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
+RIOT_CMD=~/apache-jena-4.8.0/bin/riot # todo remove relative path
+
 .PHONY: accepting-legacy-ids-all accepting-legacy-ids-clean \
 dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
 rdf-clean shuttle-clean
@@ -153,16 +155,58 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
-make-rdf: rdf-clean local/mongo_as_nmdc_database_cuire_repaired.ttl
+make-rdf: rdf-clean local/mongo_as_nmdc_database_validation.log local/mongo_as_nmdc_database_cuire_repaired.ttl
 
-# functional_annotation_agg is enormous. metaproteomics_analysis_activity_set is large. metap_gene_function_aggregation?
+# could also check --client-base-url https://api-napa.microbiomedata.org
+# but separate validate-filtered-request-all is available for that now
 
-## to ensure API only access: --skip-collection-check
+## warnings reported for empty selected-collections
+## https://github.com/microbiomedata/nmdc-schema/issues/1485
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/activity_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/data_generation_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/genome_feature_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/instrument_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/mags_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/material_sample_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/metabolomics_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/metagenome_sequencing_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/metatranscriptome_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/nom_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/read_based_taxonomy_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/read_qc_analysis_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/workflow_chain_set?max_page_size=200000
+# warning: 400 Client Error: Bad Request for url: https://api.microbiomedata.org/nmdcschema/workflow_execution_set?max_page_size=200000
 
-# 		--selected-collections extraction_set \
+# Retrieved 0 entries out of 0 from nmdcschema/collecting_biosamples_from_site_set
+# Retrieved 0 entries out of 0 from nmdcschema/planned_process_set
+# Retrieved 110 entries out of 0 from nmdcschema/field_research_site_set
+# Retrieved 1491 entries out of 0 from nmdcschema/pooling_set
+# Retrieved 154567 entries out of 0 from nmdcschema/data_object_set
+# Retrieved 1985 entries out of 0 from nmdcschema/nom_analysis_activity_set
+# Retrieved 209 entries out of 0 from nmdcschema/metabolomics_analysis_activity_set
+# Retrieved 2319 entries out of 0 from nmdcschema/extraction_set
+# Retrieved 2324 entries out of 0 from nmdcschema/library_preparation_set
+# Retrieved 28 entries out of 0 from nmdcschema/study_set
+# Retrieved 2979 entries out of 0 from nmdcschema/mags_activity_set
+# Retrieved 3297 entries out of 0 from nmdcschema/metagenome_assembly_set
+# Retrieved 3414 entries out of 0 from nmdcschema/read_based_taxonomy_analysis_activity_set
+# Retrieved 3487 entries out of 0 from nmdcschema/read_qc_analysis_activity_set
+# Retrieved 55 entries out of 0 from nmdcschema/metatranscriptome_activity_set
+# Retrieved 6134 entries out of 0 from nmdcschema/processed_sample_set
+# Retrieved 631 entries out of 0 from nmdcschema/metagenome_sequencing_activity_set
+# Retrieved 6361 entries out of 0 from nmdcschema/omics_processing_set
+# Retrieved 7978 entries out of 0 from nmdcschema/biosample_set
+
+## see
+# https://api.microbiomedata.org/nmdcschema/collection_stats
+# Production MongoDB, 2023-02-06
+# functional_annotation_agg has 25 the number of documents than the next smaller collection, data_object_set
+# functional_annotation_agg (1,787,382,320 bytes) and metaproteomics_analysis_activity_set (133,268,047) 
+#   are much larger than the next smaller data_object_set (72,852,923), even though  metaproteomics_analysis_activity_set only has 52 documents
+
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
-	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_set
 	time $(RUN) pure-export \
 		--client-base-url https://api.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
@@ -177,33 +221,47 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections data_generation_set \
 		--selected-collections data_object_set \
+		--selected-collections extraction_set \
 		--selected-collections field_research_site_set \
-		--selected-collections functional_annotation_agg \
+		--selected-collections functional_annotation_set \
 		--selected-collections genome_feature_set \
+		--selected-collections instrument_set \
 		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
+		--selected-collections mags_set \
 		--selected-collections material_sample_set \
 		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metabolomics_analysis_set \
 		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_annotation_set \
 		--selected-collections metagenome_assembly_set \
 		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metagenome_sequencing_set \
 		--selected-collections metap_gene_function_aggregation \
+		--selected-collections metaproteomics_analysis_set \
 		--selected-collections metatranscriptome_activity_set \
+		--selected-collections metatranscriptome_analysis_set \
 		--selected-collections nom_analysis_activity_set \
+		--selected-collections nom_analysis_set \
 		--selected-collections omics_processing_set \
 		--selected-collections planned_process_set \
 		--selected-collections pooling_set \
 		--selected-collections processed_sample_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_based_taxonomy_analysis_set \
 		--selected-collections read_qc_analysis_activity_set \
+		--selected-collections read_qc_analysis_set \
 		--selected-collections study_set \
+		--selected-collections workflow_chain_set \
+		--selected-collections workflow_execution_set \
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	# 		--migrator-name migrator_from_9_3_to_10_0 \
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_9_3_to_10_0 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
@@ -220,7 +278,7 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.y
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- riot --validate $@ # < 1 minute
+	- $(RIOT_CMD) --validate $@ # < 1 minute
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
@@ -231,8 +289,14 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- riot --validate $@ # < 1 minute
+	- $(RIOT_CMD) --validate $@ # < 1 minute
 	date
+
+local/mongo_as_nmdc_database_cuire_repaired_timestamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
+	$(RUN) add-timestamp-triple \
+		--output temp.ttl
+	$(RIOT_CMD) --syntax=TTL $< temp.ttl > $@ # todo remove relative path
+
 
 .PHONY: migration-doctests migrator
 
