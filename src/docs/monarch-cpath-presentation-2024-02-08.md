@@ -88,4 +88,4 @@
 
 ![Biosample Class and Datatype Relations](monarch-cpath-presentation-2024-02-08-1.png)
 
-*Busy interactive diagram generated with edited gen-plantuml*
+*Diagram generated with (edited) gen-plantuml*
