@@ -1,5 +1,7 @@
 # Samples in the `nmdc-schema`
 
+*The NMDC Schema developers reuse elements and patterns from common data models (CMDR? LinkML core?) and also hope to influence them*
+
 ## NMDC Background
 - The [National Microbiome Data Collaborative](https://microbiomedata.org/) is (in this author's words) a environmentally-focused, schema-driven multi-omics project. 
 - We are primarily funded by the United States Department of Energy 
