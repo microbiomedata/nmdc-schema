@@ -1,0 +1,593 @@
+slot_name	slot_source_file	slot_range	slot_range_obj_type	slot_uri
+host_disease_stat	mixs.yaml	TextValue	class_definition	nucleic acid sequence source field
+neon_biosample_identifiers	external_identifiers	external_identifier	type_definition	nmdc:neon_biosample_identifiers
+host_taxid	mixs.yaml	ControlledIdentifiedTermValue	class_definition	core field
+embargoed	nmdc	boolean	type_definition	nmdc:embargoed
+collected_from	nmdc	FieldResearchSite	class_definition	nmdc:collected_from
+type	basic_slots	string	type_definition	nmdc:type
+img_identifiers	external_identifiers	external_identifier	type_definition	nmdc:img_identifiers
+samp_name	mixs.yaml	string	type_definition	investigation field
+biosample_categories	nmdc	BiosampleCategoryEnum	enum_definition	nmdc:biosample_categories
+part_of	core	Study	class_definition	None
+id	basic_slots	uriorcurie	type_definition	nmdc:id
+alternative_identifiers	basic_slots	uriorcurie	type_definition	nmdc:alternative_identifiers
+gold_biosample_identifiers	external_identifiers	uriorcurie	type_definition	nmdc:gold_biosample_identifiers
+insdc_biosample_identifiers	external_identifiers	external_identifier	type_definition	nmdc:insdc_biosample_identifiers
+emsl_biosample_identifiers	external_identifiers	external_identifier	type_definition	nmdc:emsl_biosample_identifiers
+igsn_biosample_identifiers	external_identifiers	external_identifier	type_definition	nmdc:igsn_biosample_identifiers
+abs_air_humidity	mixs.yaml	QuantityValue	class_definition	core field
+add_recov_method	mixs.yaml	TextValue	class_definition	core field
+additional_info	mixs.yaml	TextValue	class_definition	core field
+address	mixs.yaml	TextValue	class_definition	core field
+adj_room	mixs.yaml	TextValue	class_definition	core field
+aero_struc	mixs.yaml	TextValue	class_definition	core field
+agrochem_addition	mixs.yaml	TextValue	class_definition	core field
+air_PM_concen	mixs.yaml	TextValue	class_definition	core field
+air_temp	mixs.yaml	QuantityValue	class_definition	core field
+air_temp_regm	mixs.yaml	TextValue	class_definition	core field
+al_sat	mixs.yaml	QuantityValue	class_definition	core field
+al_sat_meth	mixs.yaml	TextValue	class_definition	core field
+alkalinity	mixs.yaml	QuantityValue	class_definition	core field
+alkalinity_method	mixs.yaml	TextValue	class_definition	core field
+alkyl_diethers	mixs.yaml	QuantityValue	class_definition	core field
+alt	mixs.yaml	QuantityValue	class_definition	environment field
+aminopept_act	mixs.yaml	QuantityValue	class_definition	core field
+ammonium	mixs.yaml	QuantityValue	class_definition	core field
+ammonium_nitrogen	nmdc	QuantityValue	class_definition	nmdc:ammonium_nitrogen
+amount_light	mixs.yaml	QuantityValue	class_definition	core field
+ances_data	mixs.yaml	TextValue	class_definition	core field
+annual_precpt	mixs.yaml	QuantityValue	class_definition	core field
+annual_temp	mixs.yaml	QuantityValue	class_definition	core field
+antibiotic_regm	mixs.yaml	TextValue	class_definition	core field
+api	mixs.yaml	QuantityValue	class_definition	core field
+arch_struc	mixs.yaml	arch_struc_enum	enum_definition	core field
+aromatics_pc	mixs.yaml	TextValue	class_definition	core field
+asphaltenes_pc	mixs.yaml	TextValue	class_definition	core field
+atmospheric_data	mixs.yaml	TextValue	class_definition	core field
+avg_dew_point	mixs.yaml	QuantityValue	class_definition	core field
+avg_occup	mixs.yaml	TextValue	class_definition	core field
+avg_temp	mixs.yaml	QuantityValue	class_definition	core field
+bac_prod	mixs.yaml	QuantityValue	class_definition	core field
+bac_resp	mixs.yaml	QuantityValue	class_definition	core field
+bacteria_carb_prod	mixs.yaml	QuantityValue	class_definition	core field
+barometric_press	mixs.yaml	QuantityValue	class_definition	core field
+basin	mixs.yaml	TextValue	class_definition	core field
+bathroom_count	mixs.yaml	TextValue	class_definition	core field
+bedroom_count	mixs.yaml	TextValue	class_definition	core field
+benzene	mixs.yaml	QuantityValue	class_definition	core field
+biochem_oxygen_dem	mixs.yaml	QuantityValue	class_definition	core field
+biocide	mixs.yaml	TextValue	class_definition	core field
+biocide_admin_method	mixs.yaml	TextValue	class_definition	core field
+biol_stat	mixs.yaml	biol_stat_enum	enum_definition	core field
+biomass	mixs.yaml	TextValue	class_definition	core field
+biotic_regm	mixs.yaml	TextValue	class_definition	core field
+biotic_relationship	mixs.yaml	biotic_relationship_enum	enum_definition	nucleic acid sequence source field
+bishomohopanol	mixs.yaml	QuantityValue	class_definition	core field
+blood_press_diast	mixs.yaml	QuantityValue	class_definition	core field
+blood_press_syst	mixs.yaml	QuantityValue	class_definition	core field
+bromide	mixs.yaml	QuantityValue	class_definition	core field
+build_docs	mixs.yaml	build_docs_enum	enum_definition	core field
+build_occup_type	mixs.yaml	build_occup_type_enum	enum_definition	core field
+building_setting	mixs.yaml	building_setting_enum	enum_definition	core field
+built_struc_age	mixs.yaml	QuantityValue	class_definition	core field
+built_struc_set	mixs.yaml	TextValue	class_definition	core field
+built_struc_type	mixs.yaml	TextValue	class_definition	core field
+calcium	mixs.yaml	QuantityValue	class_definition	core field
+carb_dioxide	mixs.yaml	QuantityValue	class_definition	core field
+carb_monoxide	mixs.yaml	QuantityValue	class_definition	core field
+carb_nitro_ratio	mixs.yaml	QuantityValue	class_definition	core field
+ceil_area	mixs.yaml	QuantityValue	class_definition	core field
+ceil_cond	mixs.yaml	ceil_cond_enum	enum_definition	core field
+ceil_finish_mat	mixs.yaml	ceil_finish_mat_enum	enum_definition	core field
+ceil_struc	mixs.yaml	TextValue	class_definition	core field
+ceil_texture	mixs.yaml	ceil_texture_enum	enum_definition	core field
+ceil_thermal_mass	mixs.yaml	QuantityValue	class_definition	core field
+ceil_type	mixs.yaml	ceil_type_enum	enum_definition	core field
+ceil_water_mold	mixs.yaml	TextValue	class_definition	core field
+chem_administration	mixs.yaml	ControlledTermValue	class_definition	core field
+chem_mutagen	mixs.yaml	TextValue	class_definition	core field
+chem_oxygen_dem	mixs.yaml	QuantityValue	class_definition	core field
+chem_treat_method	mixs.yaml	string	type_definition	core field
+chem_treatment	mixs.yaml	TextValue	class_definition	core field
+chimera_check	mixs.yaml	TextValue	class_definition	sequencing field
+chloride	mixs.yaml	QuantityValue	class_definition	core field
+chlorophyll	mixs.yaml	QuantityValue	class_definition	core field
+climate_environment	mixs.yaml	TextValue	class_definition	core field
+collection_date	mixs.yaml	TimestampValue	class_definition	environment field
+conduc	mixs.yaml	QuantityValue	class_definition	core field
+cool_syst_id	mixs.yaml	TextValue	class_definition	core field
+crop_rotation	mixs.yaml	TextValue	class_definition	core field
+cult_root_med	mixs.yaml	TextValue	class_definition	core field
+cur_land_use	mixs.yaml	cur_land_use_enum	enum_definition	core field
+cur_vegetation	mixs.yaml	TextValue	class_definition	core field
+cur_vegetation_meth	mixs.yaml	TextValue	class_definition	core field
+date_last_rain	mixs.yaml	TimestampValue	class_definition	core field
+density	mixs.yaml	QuantityValue	class_definition	core field
+depos_env	mixs.yaml	depos_env_enum	enum_definition	core field
+depth	mixs.yaml	QuantityValue	class_definition	environment field
+dew_point	mixs.yaml	QuantityValue	class_definition	core field
+diether_lipids	mixs.yaml	TextValue	class_definition	core field
+diss_carb_dioxide	mixs.yaml	QuantityValue	class_definition	core field
+diss_hydrogen	mixs.yaml	QuantityValue	class_definition	core field
+diss_inorg_carb	mixs.yaml	QuantityValue	class_definition	core field
+diss_inorg_nitro	mixs.yaml	QuantityValue	class_definition	core field
+diss_inorg_phosp	mixs.yaml	QuantityValue	class_definition	core field
+diss_iron	mixs.yaml	QuantityValue	class_definition	core field
+diss_org_carb	mixs.yaml	QuantityValue	class_definition	core field
+diss_org_nitro	mixs.yaml	QuantityValue	class_definition	core field
+diss_oxygen	mixs.yaml	QuantityValue	class_definition	core field
+diss_oxygen_fluid	mixs.yaml	QuantityValue	class_definition	core field
+dna_cont_well	jgi_metagenomics	string	type_definition	nmdc:dna_cont_well
+door_comp_type	mixs.yaml	door_comp_type_enum	enum_definition	core field
+door_cond	mixs.yaml	door_cond_enum	enum_definition	core field
+door_direct	mixs.yaml	door_direct_enum	enum_definition	core field
+door_loc	mixs.yaml	door_loc_enum	enum_definition	core field
+door_mat	mixs.yaml	door_mat_enum	enum_definition	core field
+door_move	mixs.yaml	door_move_enum	enum_definition	core field
+door_size	mixs.yaml	QuantityValue	class_definition	core field
+door_type	mixs.yaml	door_type_enum	enum_definition	core field
+door_type_metal	mixs.yaml	door_type_metal_enum	enum_definition	core field
+door_type_wood	mixs.yaml	door_type_wood_enum	enum_definition	core field
+door_water_mold	mixs.yaml	TextValue	class_definition	core field
+down_par	mixs.yaml	QuantityValue	class_definition	core field
+drainage_class	mixs.yaml	drainage_class_enum	enum_definition	core field
+drawings	mixs.yaml	drawings_enum	enum_definition	core field
+ecosystem	nmdc	string	type_definition	nmdc:ecosystem
+ecosystem_category	nmdc	string	type_definition	nmdc:ecosystem_category
+ecosystem_subtype	nmdc	string	type_definition	nmdc:ecosystem_subtype
+ecosystem_type	nmdc	string	type_definition	nmdc:ecosystem_type
+efficiency_percent	mixs.yaml	QuantityValue	class_definition	core field
+elev	mixs.yaml	float	type_definition	environment field
+elevator	mixs.yaml	TextValue	class_definition	core field
+emulsions	mixs.yaml	TextValue	class_definition	core field
+env_broad_scale	mixs.yaml	ControlledIdentifiedTermValue	class_definition	environment field
+env_local_scale	mixs.yaml	ControlledIdentifiedTermValue	class_definition	environment field
+env_medium	mixs.yaml	ControlledIdentifiedTermValue	class_definition	environment field
+env_package	nmdc	TextValue	class_definition	nmdc:env_package
+escalator	mixs.yaml	TextValue	class_definition	core field
+ethylbenzene	mixs.yaml	QuantityValue	class_definition	core field
+exp_duct	mixs.yaml	QuantityValue	class_definition	core field
+exp_pipe	mixs.yaml	QuantityValue	class_definition	core field
+experimental_factor	mixs.yaml	ControlledTermValue	class_definition	investigation field
+ext_door	mixs.yaml	TextValue	class_definition	core field
+ext_wall_orient	mixs.yaml	ext_wall_orient_enum	enum_definition	core field
+ext_window_orient	mixs.yaml	ext_window_orient_enum	enum_definition	core field
+extreme_event	mixs.yaml	string	type_definition	core field
+fao_class	mixs.yaml	fao_class_enum	enum_definition	core field
+fertilizer_regm	mixs.yaml	TextValue	class_definition	core field
+field	mixs.yaml	TextValue	class_definition	core field
+filter_type	mixs.yaml	filter_type_enum	enum_definition	core field
+fire	mixs.yaml	string	type_definition	core field
+fireplace_type	mixs.yaml	TextValue	class_definition	core field
+flooding	mixs.yaml	string	type_definition	core field
+floor_age	mixs.yaml	QuantityValue	class_definition	core field
+floor_area	mixs.yaml	QuantityValue	class_definition	core field
+floor_cond	mixs.yaml	floor_cond_enum	enum_definition	core field
+floor_count	mixs.yaml	TextValue	class_definition	core field
+floor_finish_mat	mixs.yaml	floor_finish_mat_enum	enum_definition	core field
+floor_struc	mixs.yaml	floor_struc_enum	enum_definition	core field
+floor_thermal_mass	mixs.yaml	QuantityValue	class_definition	core field
+floor_water_mold	mixs.yaml	floor_water_mold_enum	enum_definition	core field
+fluor	mixs.yaml	QuantityValue	class_definition	core field
+freq_clean	mixs.yaml	QuantityValue	class_definition	core field
+freq_cook	mixs.yaml	QuantityValue	class_definition	core field
+fungicide_regm	mixs.yaml	TextValue	class_definition	core field
+furniture	mixs.yaml	furniture_enum	enum_definition	core field
+gaseous_environment	mixs.yaml	TextValue	class_definition	core field
+gaseous_substances	mixs.yaml	TextValue	class_definition	core field
+gender_restroom	mixs.yaml	gender_restroom_enum	enum_definition	core field
+genetic_mod	mixs.yaml	TextValue	class_definition	core field
+geo_loc_name	mixs.yaml	TextValue	class_definition	environment field
+glucosidase_act	mixs.yaml	QuantityValue	class_definition	core field
+gravidity	mixs.yaml	TextValue	class_definition	core field
+gravity	mixs.yaml	TextValue	class_definition	core field
+growth_facil	mixs.yaml	ControlledTermValue	class_definition	core field
+growth_habit	mixs.yaml	growth_habit_enum	enum_definition	core field
+growth_hormone_regm	mixs.yaml	TextValue	class_definition	core field
+hall_count	mixs.yaml	TextValue	class_definition	core field
+handidness	mixs.yaml	handidness_enum	enum_definition	core field
+hc_produced	mixs.yaml	hc_produced_enum	enum_definition	core field
+hcr	mixs.yaml	hcr_enum	enum_definition	core field
+hcr_fw_salinity	mixs.yaml	QuantityValue	class_definition	core field
+hcr_geol_age	mixs.yaml	hcr_geol_age_enum	enum_definition	core field
+hcr_pressure	mixs.yaml	TextValue	class_definition	core field
+hcr_temp	mixs.yaml	TextValue	class_definition	core field
+heat_cool_type	mixs.yaml	heat_cool_type_enum	enum_definition	core field
+heat_deliv_loc	mixs.yaml	heat_deliv_loc_enum	enum_definition	core field
+heat_sys_deliv_meth	mixs.yaml	string	type_definition	core field
+heat_system_id	mixs.yaml	TextValue	class_definition	core field
+heavy_metals	mixs.yaml	TextValue	class_definition	core field
+heavy_metals_meth	mixs.yaml	TextValue	class_definition	core field
+height_carper_fiber	mixs.yaml	QuantityValue	class_definition	core field
+herbicide_regm	mixs.yaml	TextValue	class_definition	core field
+horizon_meth	mixs.yaml	TextValue	class_definition	core field
+host_age	mixs.yaml	QuantityValue	class_definition	core field
+host_body_habitat	mixs.yaml	TextValue	class_definition	core field
+host_body_product	mixs.yaml	ControlledTermValue	class_definition	core field
+host_body_site	mixs.yaml	ControlledTermValue	class_definition	core field
+host_body_temp	mixs.yaml	QuantityValue	class_definition	core field
+host_color	mixs.yaml	TextValue	class_definition	core field
+host_common_name	mixs.yaml	TextValue	class_definition	core field
+host_diet	mixs.yaml	TextValue	class_definition	core field
+host_dry_mass	mixs.yaml	QuantityValue	class_definition	core field
+host_family_relation	mixs.yaml	string	type_definition	core field
+host_genotype	mixs.yaml	TextValue	class_definition	core field
+host_growth_cond	mixs.yaml	TextValue	class_definition	core field
+host_height	mixs.yaml	QuantityValue	class_definition	core field
+host_last_meal	mixs.yaml	TextValue	class_definition	core field
+host_length	mixs.yaml	QuantityValue	class_definition	core field
+host_life_stage	mixs.yaml	TextValue	class_definition	core field
+host_phenotype	mixs.yaml	ControlledTermValue	class_definition	core field
+host_sex	mixs.yaml	host_sex_enum	enum_definition	core field
+host_shape	mixs.yaml	TextValue	class_definition	core field
+host_subject_id	mixs.yaml	TextValue	class_definition	core field
+host_subspecf_genlin	mixs.yaml	string	type_definition	core field
+host_substrate	mixs.yaml	TextValue	class_definition	core field
+host_symbiont	mixs.yaml	string	type_definition	core field
+host_tot_mass	mixs.yaml	QuantityValue	class_definition	core field
+host_wet_mass	mixs.yaml	QuantityValue	class_definition	core field
+humidity	mixs.yaml	QuantityValue	class_definition	core field
+humidity_regm	mixs.yaml	TextValue	class_definition	core field
+indoor_space	mixs.yaml	indoor_space_enum	enum_definition	core field
+indoor_surf	mixs.yaml	indoor_surf_enum	enum_definition	core field
+indust_eff_percent	mixs.yaml	QuantityValue	class_definition	core field
+inorg_particles	mixs.yaml	TextValue	class_definition	core field
+inside_lux	mixs.yaml	QuantityValue	class_definition	core field
+int_wall_cond	mixs.yaml	int_wall_cond_enum	enum_definition	core field
+iw_bt_date_well	mixs.yaml	TimestampValue	class_definition	core field
+iwf	mixs.yaml	QuantityValue	class_definition	core field
+last_clean	mixs.yaml	TimestampValue	class_definition	core field
+lat_lon	mixs.yaml	GeolocationValue	class_definition	environment field
+lbc_thirty	nmdc	QuantityValue	class_definition	nmdc:lbc_thirty
+lbceq	nmdc	QuantityValue	class_definition	nmdc:lbceq
+light_intensity	mixs.yaml	QuantityValue	class_definition	core field
+light_regm	mixs.yaml	TextValue	class_definition	core field
+light_type	mixs.yaml	light_type_enum	enum_definition	core field
+link_addit_analys	mixs.yaml	TextValue	class_definition	core field
+link_class_info	mixs.yaml	TextValue	class_definition	core field
+link_climate_info	mixs.yaml	TextValue	class_definition	core field
+lithology	mixs.yaml	lithology_enum	enum_definition	core field
+local_class	mixs.yaml	TextValue	class_definition	core field
+local_class_meth	mixs.yaml	TextValue	class_definition	core field
+magnesium	mixs.yaml	QuantityValue	class_definition	core field
+manganese	nmdc	QuantityValue	class_definition	nmdc:manganese
+max_occup	mixs.yaml	QuantityValue	class_definition	core field
+mean_frict_vel	mixs.yaml	QuantityValue	class_definition	core field
+mean_peak_frict_vel	mixs.yaml	QuantityValue	class_definition	core field
+mech_struc	mixs.yaml	mech_struc_enum	enum_definition	core field
+mechanical_damage	mixs.yaml	TextValue	class_definition	core field
+methane	mixs.yaml	QuantityValue	class_definition	core field
+micro_biomass_meth	mixs.yaml	string	type_definition	core field
+microbial_biomass	mixs.yaml	QuantityValue	class_definition	core field
+mineral_nutr_regm	mixs.yaml	TextValue	class_definition	core field
+misc_param	mixs.yaml	TextValue	class_definition	core field
+n_alkanes	mixs.yaml	TextValue	class_definition	core field
+nitrate	mixs.yaml	QuantityValue	class_definition	core field
+nitrate_nitrogen	nmdc	QuantityValue	class_definition	nmdc:nitrate_nitrogen
+nitrite	mixs.yaml	QuantityValue	class_definition	core field
+nitrite_nitrogen	nmdc	QuantityValue	class_definition	nmdc:nitrite_nitrogen
+nitro	mixs.yaml	QuantityValue	class_definition	core field
+non_min_nutr_regm	mixs.yaml	string	type_definition	core field
+nucl_acid_amp	mixs.yaml	TextValue	class_definition	sequencing field
+nucl_acid_ext	mixs.yaml	TextValue	class_definition	sequencing field
+number_pets	mixs.yaml	QuantityValue	class_definition	core field
+number_plants	mixs.yaml	QuantityValue	class_definition	core field
+number_resident	mixs.yaml	QuantityValue	class_definition	core field
+occup_density_samp	mixs.yaml	QuantityValue	class_definition	core field
+occup_document	mixs.yaml	occup_document_enum	enum_definition	core field
+occup_samp	mixs.yaml	QuantityValue	class_definition	core field
+org_carb	mixs.yaml	QuantityValue	class_definition	core field
+org_count_qpcr_info	mixs.yaml	string	type_definition	core field
+org_matter	mixs.yaml	QuantityValue	class_definition	core field
+org_nitro	mixs.yaml	QuantityValue	class_definition	core field
+org_particles	mixs.yaml	TextValue	class_definition	core field
+organism_count	mixs.yaml	QuantityValue	class_definition	core field
+owc_tvdss	mixs.yaml	QuantityValue	class_definition	core field
+oxy_stat_samp	mixs.yaml	oxy_stat_samp_enum	enum_definition	core field
+oxygen	mixs.yaml	QuantityValue	class_definition	core field
+part_org_carb	mixs.yaml	QuantityValue	class_definition	core field
+part_org_nitro	mixs.yaml	QuantityValue	class_definition	core field
+particle_class	mixs.yaml	TextValue	class_definition	core field
+pcr_cond	mixs.yaml	TextValue	class_definition	sequencing field
+pcr_primers	mixs.yaml	TextValue	class_definition	sequencing field
+permeability	mixs.yaml	TextValue	class_definition	core field
+perturbation	mixs.yaml	TextValue	class_definition	core field
+pesticide_regm	mixs.yaml	TextValue	class_definition	core field
+petroleum_hydrocarb	mixs.yaml	QuantityValue	class_definition	core field
+ph	mixs.yaml	double	type_definition	core field
+ph_meth	mixs.yaml	TextValue	class_definition	core field
+ph_regm	mixs.yaml	TextValue	class_definition	core field
+phaeopigments	mixs.yaml	TextValue	class_definition	core field
+phosphate	mixs.yaml	QuantityValue	class_definition	core field
+phosplipid_fatt_acid	mixs.yaml	TextValue	class_definition	core field
+photon_flux	mixs.yaml	QuantityValue	class_definition	core field
+plant_growth_med	mixs.yaml	ControlledTermValue	class_definition	core field
+plant_product	mixs.yaml	TextValue	class_definition	core field
+plant_sex	mixs.yaml	plant_sex_enum	enum_definition	core field
+plant_struc	mixs.yaml	ControlledTermValue	class_definition	core field
+pollutants	mixs.yaml	TextValue	class_definition	core field
+pool_dna_extracts	mixs.yaml	TextValue	class_definition	core field
+porosity	mixs.yaml	TextValue	class_definition	core field
+potassium	mixs.yaml	QuantityValue	class_definition	core field
+pour_point	mixs.yaml	QuantityValue	class_definition	core field
+pre_treatment	mixs.yaml	TextValue	class_definition	core field
+pres_animal_insect	mixs.yaml	string	type_definition	core field
+pressure	mixs.yaml	QuantityValue	class_definition	core field
+prev_land_use_meth	mixs.yaml	string	type_definition	core field
+previous_land_use	mixs.yaml	TextValue	class_definition	core field
+primary_prod	mixs.yaml	QuantityValue	class_definition	core field
+primary_treatment	mixs.yaml	TextValue	class_definition	core field
+prod_rate	mixs.yaml	QuantityValue	class_definition	core field
+prod_start_date	mixs.yaml	TimestampValue	class_definition	core field
+profile_position	mixs.yaml	profile_position_enum	enum_definition	core field
+quad_pos	mixs.yaml	quad_pos_enum	enum_definition	core field
+radiation_regm	mixs.yaml	TextValue	class_definition	core field
+rainfall_regm	mixs.yaml	TextValue	class_definition	core field
+reactor_type	mixs.yaml	TextValue	class_definition	core field
+redox_potential	mixs.yaml	QuantityValue	class_definition	core field
+rel_air_humidity	mixs.yaml	QuantityValue	class_definition	core field
+rel_humidity_out	mixs.yaml	QuantityValue	class_definition	core field
+rel_samp_loc	mixs.yaml	rel_samp_loc_enum	enum_definition	core field
+reservoir	mixs.yaml	TextValue	class_definition	core field
+resins_pc	mixs.yaml	TextValue	class_definition	core field
+room_air_exch_rate	mixs.yaml	QuantityValue	class_definition	core field
+room_architec_elem	mixs.yaml	string	type_definition	core field
+room_condt	mixs.yaml	room_condt_enum	enum_definition	core field
+room_connected	mixs.yaml	room_connected_enum	enum_definition	core field
+room_count	mixs.yaml	TextValue	class_definition	core field
+room_dim	mixs.yaml	TextValue	class_definition	core field
+room_door_dist	mixs.yaml	TextValue	class_definition	core field
+room_door_share	mixs.yaml	TextValue	class_definition	core field
+room_hallway	mixs.yaml	TextValue	class_definition	core field
+room_loc	mixs.yaml	room_loc_enum	enum_definition	core field
+room_moist_dam_hist	mixs.yaml	integer	type_definition	core field
+room_net_area	mixs.yaml	TextValue	class_definition	core field
+room_occup	mixs.yaml	QuantityValue	class_definition	core field
+room_samp_pos	mixs.yaml	room_samp_pos_enum	enum_definition	core field
+room_type	mixs.yaml	room_type_enum	enum_definition	core field
+room_vol	mixs.yaml	TextValue	class_definition	core field
+room_wall_share	mixs.yaml	TextValue	class_definition	core field
+room_window_count	mixs.yaml	integer	type_definition	core field
+root_cond	mixs.yaml	TextValue	class_definition	core field
+root_med_carbon	mixs.yaml	TextValue	class_definition	core field
+root_med_macronutr	mixs.yaml	TextValue	class_definition	core field
+root_med_micronutr	mixs.yaml	TextValue	class_definition	core field
+root_med_ph	mixs.yaml	QuantityValue	class_definition	core field
+root_med_regl	mixs.yaml	TextValue	class_definition	core field
+root_med_solid	mixs.yaml	TextValue	class_definition	core field
+root_med_suppl	mixs.yaml	TextValue	class_definition	core field
+salinity	mixs.yaml	QuantityValue	class_definition	core field
+salinity_meth	mixs.yaml	TextValue	class_definition	core field
+salt_regm	mixs.yaml	TextValue	class_definition	core field
+samp_capt_status	mixs.yaml	samp_capt_status_enum	enum_definition	core field
+samp_collec_device	mixs.yaml	string	type_definition	nucleic acid sequence source field
+samp_collec_method	mixs.yaml	string	type_definition	nucleic acid sequence source field
+samp_collect_point	mixs.yaml	samp_collect_point_enum	enum_definition	core field
+samp_dis_stage	mixs.yaml	samp_dis_stage_enum	enum_definition	core field
+samp_floor	mixs.yaml	samp_floor_enum	enum_definition	core field
+samp_loc_corr_rate	mixs.yaml	TextValue	class_definition	core field
+samp_mat_process	mixs.yaml	ControlledTermValue	class_definition	nucleic acid sequence source field
+samp_md	mixs.yaml	QuantityValue	class_definition	core field
+samp_preserv	mixs.yaml	TextValue	class_definition	core field
+samp_room_id	mixs.yaml	TextValue	class_definition	core field
+samp_size	mixs.yaml	QuantityValue	class_definition	nucleic acid sequence source field
+samp_sort_meth	mixs.yaml	TextValue	class_definition	core field
+samp_store_dur	mixs.yaml	TextValue	class_definition	core field
+samp_store_loc	mixs.yaml	TextValue	class_definition	core field
+samp_store_temp	mixs.yaml	QuantityValue	class_definition	core field
+samp_subtype	mixs.yaml	samp_subtype_enum	enum_definition	core field
+samp_taxon_id	mixs.yaml	ControlledIdentifiedTermValue	class_definition	investigation field
+samp_time_out	mixs.yaml	TextValue	class_definition	core field
+samp_transport_cond	mixs.yaml	TextValue	class_definition	core field
+samp_tvdss	mixs.yaml	TextValue	class_definition	core field
+samp_type	mixs.yaml	TextValue	class_definition	core field
+samp_vol_we_dna_ext	mixs.yaml	QuantityValue	class_definition	nucleic acid sequence source field
+samp_weather	mixs.yaml	samp_weather_enum	enum_definition	core field
+samp_well_name	mixs.yaml	TextValue	class_definition	core field
+saturates_pc	mixs.yaml	TextValue	class_definition	core field
+season	mixs.yaml	TextValue	class_definition	core field
+season_environment	mixs.yaml	TextValue	class_definition	core field
+season_precpt	mixs.yaml	QuantityValue	class_definition	core field
+season_temp	mixs.yaml	QuantityValue	class_definition	core field
+season_use	mixs.yaml	season_use_enum	enum_definition	core field
+secondary_treatment	mixs.yaml	TextValue	class_definition	core field
+sediment_type	mixs.yaml	sediment_type_enum	enum_definition	core field
+seq_meth	mixs.yaml	TextValue	class_definition	sequencing field
+seq_quality_check	mixs.yaml	TextValue	class_definition	sequencing field
+sewage_type	mixs.yaml	TextValue	class_definition	core field
+shad_dev_water_mold	mixs.yaml	string	type_definition	core field
+shading_device_cond	mixs.yaml	shading_device_cond_enum	enum_definition	core field
+shading_device_loc	mixs.yaml	TextValue	class_definition	core field
+shading_device_mat	mixs.yaml	TextValue	class_definition	core field
+shading_device_type	mixs.yaml	shading_device_type_enum	enum_definition	core field
+sieving	mixs.yaml	TextValue	class_definition	core field
+silicate	mixs.yaml	QuantityValue	class_definition	core field
+size_frac	mixs.yaml	TextValue	class_definition	nucleic acid sequence source field
+size_frac_low	mixs.yaml	QuantityValue	class_definition	core field
+size_frac_up	mixs.yaml	QuantityValue	class_definition	core field
+slope_aspect	mixs.yaml	QuantityValue	class_definition	core field
+slope_gradient	mixs.yaml	QuantityValue	class_definition	core field
+sludge_retent_time	mixs.yaml	QuantityValue	class_definition	core field
+sodium	mixs.yaml	QuantityValue	class_definition	core field
+soil_horizon	mixs.yaml	soil_horizon_enum	enum_definition	core field
+soil_text_measure	mixs.yaml	QuantityValue	class_definition	core field
+soil_texture_meth	mixs.yaml	string	type_definition	core field
+soil_type	mixs.yaml	TextValue	class_definition	core field
+soil_type_meth	mixs.yaml	TextValue	class_definition	core field
+solar_irradiance	mixs.yaml	QuantityValue	class_definition	core field
+soluble_inorg_mat	mixs.yaml	TextValue	class_definition	core field
+soluble_org_mat	mixs.yaml	TextValue	class_definition	core field
+soluble_react_phosp	mixs.yaml	QuantityValue	class_definition	core field
+source_mat_id	mixs.yaml	TextValue	class_definition	nucleic acid sequence source field
+space_typ_state	mixs.yaml	TextValue	class_definition	core field
+specific	mixs.yaml	specific_enum	enum_definition	core field
+specific_ecosystem	nmdc	string	type_definition	nmdc:specific_ecosystem
+specific_humidity	mixs.yaml	QuantityValue	class_definition	core field
+sr_dep_env	mixs.yaml	sr_dep_env_enum	enum_definition	core field
+sr_geol_age	mixs.yaml	sr_geol_age_enum	enum_definition	core field
+sr_kerog_type	mixs.yaml	sr_kerog_type_enum	enum_definition	core field
+sr_lithology	mixs.yaml	sr_lithology_enum	enum_definition	core field
+standing_water_regm	mixs.yaml	TextValue	class_definition	core field
+store_cond	mixs.yaml	TextValue	class_definition	core field
+substructure_type	mixs.yaml	substructure_type_enum	enum_definition	core field
+sulfate	mixs.yaml	QuantityValue	class_definition	core field
+sulfate_fw	mixs.yaml	QuantityValue	class_definition	core field
+sulfide	mixs.yaml	QuantityValue	class_definition	core field
+surf_air_cont	mixs.yaml	surf_air_cont_enum	enum_definition	core field
+surf_humidity	mixs.yaml	QuantityValue	class_definition	core field
+surf_material	mixs.yaml	surf_material_enum	enum_definition	core field
+surf_moisture	mixs.yaml	QuantityValue	class_definition	core field
+surf_moisture_ph	mixs.yaml	double	type_definition	core field
+surf_temp	mixs.yaml	QuantityValue	class_definition	core field
+suspend_part_matter	mixs.yaml	QuantityValue	class_definition	core field
+suspend_solids	mixs.yaml	TextValue	class_definition	core field
+tan	mixs.yaml	QuantityValue	class_definition	core field
+target_gene	mixs.yaml	TextValue	class_definition	sequencing field
+target_subfragment	mixs.yaml	TextValue	class_definition	sequencing field
+temp	mixs.yaml	QuantityValue	class_definition	environment field
+temp_out	mixs.yaml	QuantityValue	class_definition	core field
+tertiary_treatment	mixs.yaml	TextValue	class_definition	core field
+tidal_stage	mixs.yaml	tidal_stage_enum	enum_definition	core field
+tillage	mixs.yaml	tillage_enum	enum_definition	core field
+tiss_cult_growth_med	mixs.yaml	TextValue	class_definition	core field
+toluene	mixs.yaml	QuantityValue	class_definition	core field
+tot_carb	mixs.yaml	QuantityValue	class_definition	core field
+tot_depth_water_col	mixs.yaml	QuantityValue	class_definition	core field
+tot_diss_nitro	mixs.yaml	QuantityValue	class_definition	core field
+tot_inorg_nitro	mixs.yaml	QuantityValue	class_definition	core field
+tot_iron	mixs.yaml	QuantityValue	class_definition	core field
+tot_nitro	mixs.yaml	QuantityValue	class_definition	core field
+tot_nitro_cont_meth	mixs.yaml	string	type_definition	core field
+tot_nitro_content	mixs.yaml	QuantityValue	class_definition	core field
+tot_org_c_meth	mixs.yaml	TextValue	class_definition	core field
+tot_org_carb	mixs.yaml	QuantityValue	class_definition	core field
+tot_part_carb	mixs.yaml	QuantityValue	class_definition	core field
+tot_phosp	mixs.yaml	QuantityValue	class_definition	core field
+tot_phosphate	mixs.yaml	QuantityValue	class_definition	core field
+tot_sulfur	mixs.yaml	QuantityValue	class_definition	core field
+train_line	mixs.yaml	train_line_enum	enum_definition	core field
+train_stat_loc	mixs.yaml	train_stat_loc_enum	enum_definition	core field
+train_stop_loc	mixs.yaml	train_stop_loc_enum	enum_definition	core field
+turbidity	mixs.yaml	QuantityValue	class_definition	core field
+tvdss_of_hcr_press	mixs.yaml	QuantityValue	class_definition	core field
+tvdss_of_hcr_temp	mixs.yaml	QuantityValue	class_definition	core field
+typ_occup_density	mixs.yaml	double	type_definition	core field
+ventilation_rate	mixs.yaml	QuantityValue	class_definition	core field
+ventilation_type	mixs.yaml	TextValue	class_definition	core field
+vfa	mixs.yaml	QuantityValue	class_definition	core field
+vfa_fw	mixs.yaml	QuantityValue	class_definition	core field
+vis_media	mixs.yaml	vis_media_enum	enum_definition	core field
+viscosity	mixs.yaml	TextValue	class_definition	core field
+volatile_org_comp	mixs.yaml	TextValue	class_definition	core field
+wall_area	mixs.yaml	QuantityValue	class_definition	core field
+wall_const_type	mixs.yaml	wall_const_type_enum	enum_definition	core field
+wall_finish_mat	mixs.yaml	wall_finish_mat_enum	enum_definition	core field
+wall_height	mixs.yaml	QuantityValue	class_definition	core field
+wall_loc	mixs.yaml	wall_loc_enum	enum_definition	core field
+wall_surf_treatment	mixs.yaml	wall_surf_treatment_enum	enum_definition	core field
+wall_texture	mixs.yaml	wall_texture_enum	enum_definition	core field
+wall_thermal_mass	mixs.yaml	QuantityValue	class_definition	core field
+wall_water_mold	mixs.yaml	TextValue	class_definition	core field
+wastewater_type	mixs.yaml	TextValue	class_definition	core field
+water_cont_soil_meth	mixs.yaml	string	type_definition	core field
+water_content	mixs.yaml	string	type_definition	core field
+water_current	mixs.yaml	QuantityValue	class_definition	core field
+water_cut	mixs.yaml	QuantityValue	class_definition	core field
+water_feat_size	mixs.yaml	QuantityValue	class_definition	core field
+water_feat_type	mixs.yaml	water_feat_type_enum	enum_definition	core field
+water_prod_rate	mixs.yaml	QuantityValue	class_definition	core field
+water_temp_regm	mixs.yaml	TextValue	class_definition	core field
+watering_regm	mixs.yaml	TextValue	class_definition	core field
+weekday	mixs.yaml	weekday_enum	enum_definition	core field
+win	mixs.yaml	TextValue	class_definition	core field
+wind_direction	mixs.yaml	TextValue	class_definition	core field
+wind_speed	mixs.yaml	QuantityValue	class_definition	core field
+window_cond	mixs.yaml	window_cond_enum	enum_definition	core field
+window_cover	mixs.yaml	window_cover_enum	enum_definition	core field
+window_horiz_pos	mixs.yaml	window_horiz_pos_enum	enum_definition	core field
+window_loc	mixs.yaml	window_loc_enum	enum_definition	core field
+window_mat	mixs.yaml	window_mat_enum	enum_definition	core field
+window_open_freq	mixs.yaml	TextValue	class_definition	core field
+window_size	mixs.yaml	TextValue	class_definition	core field
+window_status	mixs.yaml	TextValue	class_definition	core field
+window_type	mixs.yaml	window_type_enum	enum_definition	core field
+window_vert_pos	mixs.yaml	window_vert_pos_enum	enum_definition	core field
+window_water_mold	mixs.yaml	TextValue	class_definition	core field
+xylene	mixs.yaml	QuantityValue	class_definition	core field
+zinc	nmdc	QuantityValue	class_definition	nmdc:zinc
+add_date	nmdc	string	type_definition	nmdc:add_date
+community	nmdc	string	type_definition	nmdc:community
+habitat	nmdc	string	type_definition	nmdc:habitat
+host_name	nmdc	string	type_definition	nmdc:host_name
+location	nmdc	string	type_definition	nmdc:location
+mod_date	nmdc	string	type_definition	nmdc:mod_date
+ncbi_taxonomy_name	nmdc	string	type_definition	nmdc:ncbi_taxonomy_name
+proport_woa_temperature	nmdc	string	type_definition	nmdc:proport_woa_temperature
+salinity_category	nmdc	string	type_definition	nmdc:salinity_category
+sample_collection_site	nmdc	string	type_definition	nmdc:sample_collection_site
+soluble_iron_micromol	nmdc	string	type_definition	nmdc:soluble_iron_micromol
+subsurface_depth	nmdc	QuantityValue	class_definition	nmdc:subsurface_depth
+dna_absorb1	basic_slots	float	type_definition	nmdc:dna_absorb1
+dna_absorb2	basic_slots	float	type_definition	nmdc:dna_absorb2
+dna_collect_site	jgi_metagenomics	string	type_definition	nmdc:dna_collect_site
+dna_concentration	basic_slots	float	type_definition	nmdc:dna_concentration
+dna_cont_type	jgi_metagenomics	JgiContTypeEnum	enum_definition	nmdc:dna_cont_type
+dna_container_id	jgi_metagenomics	string	type_definition	nmdc:dna_container_id
+dna_dnase	jgi_metagenomics	YesNoEnum	enum_definition	nmdc:dna_dnase
+dna_isolate_meth	jgi_metagenomics	string	type_definition	nmdc:dna_isolate_meth
+dna_organisms	jgi_metagenomics	string	type_definition	nmdc:dna_organisms
+dna_project_contact	jgi_metagenomics	string	type_definition	nmdc:dna_project_contact
+dna_samp_id	jgi_metagenomics	string	type_definition	nmdc:dna_samp_id
+dna_sample_format	jgi_metagenomics	dna_sample_format_enum	enum_definition	nmdc:dna_sample_format
+dna_sample_name	jgi_metagenomics	string	type_definition	nmdc:dna_sample_name
+dna_seq_project	jgi_metagenomics	string	type_definition	nmdc:dna_seq_project
+dna_seq_project_pi	jgi_metagenomics	string	type_definition	nmdc:dna_seq_project_pi
+dna_seq_project_name	jgi_metagenomics	string	type_definition	nmdc:dna_seq_project_name
+dna_volume	jgi_metagenomics	float	type_definition	nmdc:dna_volume
+proposal_dna	jgi_metagenomics	string	type_definition	nmdc:proposal_dna
+dnase_rna	jgi_metatranscriptomics	YesNoEnum	enum_definition	nmdc:dnase_rna
+proposal_rna	jgi_metatranscriptomics	string	type_definition	nmdc:proposal_rna
+rna_absorb1	jgi_metatranscriptomics	float	type_definition	nmdc:rna_absorb1
+rna_absorb2	jgi_metatranscriptomics	float	type_definition	nmdc:rna_absorb2
+rna_collect_site	jgi_metatranscriptomics	string	type_definition	nmdc:rna_collect_site
+rna_concentration	jgi_metatranscriptomics	float	type_definition	nmdc:rna_concentration
+rna_cont_type	jgi_metatranscriptomics	JgiContTypeEnum	enum_definition	nmdc:rna_cont_type
+rna_cont_well	jgi_metatranscriptomics	string	type_definition	nmdc:rna_cont_well
+rna_container_id	jgi_metatranscriptomics	string	type_definition	nmdc:rna_container_id
+rna_isolate_meth	jgi_metatranscriptomics	string	type_definition	nmdc:rna_isolate_meth
+rna_organisms	jgi_metatranscriptomics	string	type_definition	nmdc:rna_organisms
+rna_project_contact	jgi_metatranscriptomics	string	type_definition	nmdc:rna_project_contact
+rna_samp_id	jgi_metatranscriptomics	string	type_definition	nmdc:rna_samp_id
+rna_sample_format	jgi_metatranscriptomics	rna_sample_format_enum	enum_definition	nmdc:rna_sample_format
+rna_sample_name	jgi_metatranscriptomics	string	type_definition	nmdc:rna_sample_name
+rna_seq_project	jgi_metatranscriptomics	string	type_definition	nmdc:rna_seq_project
+rna_seq_project_pi	jgi_metatranscriptomics	string	type_definition	nmdc:rna_seq_project_pi
+rna_seq_project_name	jgi_metatranscriptomics	string	type_definition	nmdc:rna_seq_project_name
+rna_volume	jgi_metatranscriptomics	float	type_definition	nmdc:rna_volume
+collection_date_inc	mixs_inspired	string	type_definition	nmdc:collection_date_inc
+collection_time	mixs_inspired	string	type_definition	nmdc:collection_time
+collection_time_inc	mixs_inspired	string	type_definition	nmdc:collection_time_inc
+experimental_factor_other	mixs_inspired	string	type_definition	nmdc:experimental_factor_other
+filter_method	mixs_inspired	string	type_definition	nmdc:filter_method
+isotope_exposure	mixs_inspired	string	type_definition	nmdc:isotope_exposure
+micro_biomass_c_meth	mixs_inspired	string	type_definition	nmdc:micro_biomass_c_meth
+micro_biomass_n_meth	mixs_inspired	string	type_definition	nmdc:micro_biomass_n_meth
+microbial_biomass_c	mixs_inspired	string	type_definition	nmdc:microbial_biomass_c
+microbial_biomass_n	mixs_inspired	string	type_definition	nmdc:microbial_biomass_n
+non_microb_biomass	mixs_inspired	string	type_definition	nmdc:non_microb_biomass
+non_microb_biomass_method	mixs_inspired	string	type_definition	nmdc:non_microb_biomass_method
+org_nitro_method	mixs_inspired	string	type_definition	nmdc:org_nitro_method
+other_treatment	mixs_inspired	string	type_definition	nmdc:other_treatment
+start_date_inc	mixs_inspired	string	type_definition	nmdc:start_date_inc
+start_time_inc	mixs_inspired	string	type_definition	nmdc:start_time_inc
+project_id	emsl	string	type_definition	nmdc:project_id
+replicate_number	emsl	string	type_definition	nmdc:replicate_number
+sample_shipped	emsl	string	type_definition	nmdc:sample_shipped
+sample_type	emsl	sample_type_enum	enum_definition	nmdc:sample_type
+technical_reps	emsl	string	type_definition	nmdc:technical_reps
+analysis_type	sample_id	analysis_type_enum	enum_definition	nmdc:analysis_type
+sample_link	sample_id	string	type_definition	nmdc:sample_link
+bulk_elect_conductivity	nmdc	QuantityValue	class_definition	nmdc:bulk_elect_conductivity
+infiltrations	nmdc	string	type_definition	nmdc:infiltrations
+name	basic_slots	string	type_definition	nmdc:name
+description	basic_slots	string	type_definition	None

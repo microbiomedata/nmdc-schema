@@ -42,11 +42,47 @@
 - We extensively use the MIxS standard to annotate Biosamples. MIxS also provides three terms for describing a the context of a samples source. For example, [env_broad_scale](https://genomicsstandardsconsortium.github.io/mixs/0000012/)
 
 
-## [MIxS](https://genomicsstandardsconsortium.github.io/mixs/) Annotations of NMDC Biosamples
+## [MIxS](https://genomicsstandardsconsortium.github.io/mixs/) Annotations of NMDC `Biosample`s
 
-## NMDC Biosamples are Overloaded
+## NMDC `Biosample`s are Huge
+
+- In the current `nmdc-schema` `main` branch, `Biosample` uses 592 non-abstract/non-grouping slots
+- 2 are from Dublin Core
+- 101 are minted in nmdc-schema
+    - some of those could be added to MIxS
+    - roughly 40 are intended to capture data that we pass on to partners (like EMSL and JGI) and don't store in the NMDC database
+- 489 come from MIxS
+
+| Metatype | range                    | MIxS | NMDC | NMDC for partners | *Total* |
+|---------------------|-------------------------------|-----:|-----:|------------------:|-------------:|
+| class_definition    | ControlledIdentifiedTermValue | 5    |      |                   | 5            |
+|                     | ControlledTermValue           | 9    |      |                   | 9            |
+|                     | FieldResearchSite             |      | 1    |                   | 1            |
+|                     | GeolocationValue              | 1    |      |                   | 1            |
+|                     | QuantityValue                 | 167  | 9    |                   | 176          |
+|                     | Study                         |      | 1    |                   | 1            |
+|                     | TextValue                     | 177  | 1    |                   | 178          |
+|                     | TimestampValue                | 5    |      |                   | 5            |
+| enum_definition     | | 97   | 2    | 7                 | 106          |
+| type_definition     | boolean                       |      | 1    |                   | 1            |
+|                     | double                        | 3    |      |                   | 3            |
+|                     | external_identifier           |      | 5    |                   | 5            |
+|                     | float                         | 1    | 3    | 5                 | 9            |
+|                     | integer                       | 2    |      |                   | 2            |
+|                     | string                        | 22   | 37   | 28                | 87           |
+|                     | uriorcurie                    |      | 3    |                   | 3            |
+| **Total**        |                               | 489  | 63   | 40                | 592          |
+
+## NMDC `Biosample`s are Overloaded
+
+## Selected `Biosample` Class Relations
 
 
+![Biosample Class and Datatype Relations](monarch-cpath-presentation-2024-02-08-1.png)
 
+*Diagram generated with*
 
+- `gen-owl --no-use-native-uris`
+- [custom generation of additional OWL statements](https://github.com/microbiomedata/nmdc-schema/blob/main/src/scripts/schema_view_relation_graph.py) with edges materialized
+- loading into [NMDC's GraphDB](http://3.236.215.220/graphs-visualizations?uri=https:%2F%2Fw3id.org%2Fnmdc%2FBiosample&role=subject)
 
