@@ -42,7 +42,7 @@
 - We extensively use the MIxS standard to annotate Biosamples. MIxS also provides three terms for describing a the context of a samples source. For example, [env_broad_scale](https://genomicsstandardsconsortium.github.io/mixs/0000012/)
 
 
-## NMDC `Biosample`s are Huge
+## NMDC `Biosample` is Huge
 
 - In the current `nmdc-schema` `main` branch, `Biosample` uses 592 non-abstract/non-grouping slots
 - 2 are from Dublin Core
@@ -75,7 +75,7 @@
 |                     | uriorcurie                    |      | 3    |                   | 3            |
 | **Total**        |                               | 489  | 63   | 40                | 592          |
 
-## NMDC `Biosample`s are Overloaded
+## NMDC `Biosample` is Overloaded
 - We have been including several slots about **sequences** from MIxS subsets like [NucleicAcidSequenceSource](https://genomicsstandardsconsortium.github.io/mixs/NucleicAcidSequenceSource/)
 - Biosample currently uses several slots that seem to be more about 
     - [the site from which they came](https://microbiomedata.github.io/nmdc-schema/FieldResearchSite/), like [climate_environment](https://microbiomedata.github.io/nmdc-schema/climate_environment/)
