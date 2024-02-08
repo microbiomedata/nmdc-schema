@@ -36,17 +36,24 @@
 
 > Biological source material which can be characterized by an experiment
 
+- NMDC classes, including `Biosample`, have slots for associating entities in other systems
+    - Hopefully NMDC Biosamples are well-aligned with [NCBI Biosamples](https://www.ncbi.nlm.nih.gov/biosample/). 
+    - NMDC Biosamples are mapped to [GOLD biosamples](https://gold.jgi.doe.gov/biosamples), but those are generally scoped to solutions of nucleic acid molecules.
+        - NMDC *could* align this better by instantiating the [Extraction](https://microbiomedata.github.io/nmdc-schema/Extraction/) process and some `ProcessedSample`s
+- Like NCBI, we extensively use the MIxS standard to annotate Biosamples. 
+    - [env_broad_scale](https://genomicsstandardsconsortium.github.io/mixs/0000012/) is one of three MIxS slots that characterize the environment that samples come from. For example, 
 - Biosample data instances can be retrieved from an API endpoint
     - for example: [https://api.microbiomedata.org/nmdcschema/biosample_set?max_page_size=20](https://api.microbiomedata.org/nmdcschema/biosample_set?max_page_size=20)
     - [additional retrieval options](https://api.microbiomedata.org/docs#/metadata/list_from_collection_nmdcschema__collection_name__get) can be viewed at the API's Swagger page
     - a [list of other instance collections with statistics](https://api.microbiomedata.org/nmdcschema/collection_stats) is available from another endpoint
-- Currently these are **mostly** from natural or built environments, as opposed to host-associated environments like a mouse's cecum.
-- Here's an API request for [and un-aggregated report of Biosample environmental contexts](https://api.microbiomedata.org/nmdcschema/biosample_set?max_page_size=20&projection=ecosystem%2Cecosystem_category%2Cecosystem_type%2Cecosystem_subtype%2Cspecific_ecosystem), according to the GOLD Ecosystem Classification 
-- We extensively use the MIxS standard to annotate Biosamples. MIxS also provides three terms for describing a the context of a samples source. For example, [env_broad_scale](https://genomicsstandardsconsortium.github.io/mixs/0000012/)
+- Currently, NMDC Biosamples were **mostly** obtained from natural or built environments, as opposed to host-associated environments like a mouse's cecum.
+- Here's an API request for [and un-aggregated report of Biosample environmental contexts](https://api.microbiomedata.org/nmdcschema/biosample_set?max_page_size=20&projection=ecosystem%2Cecosystem_category%2Cecosystem_type%2Cecosystem_subtype%2Cspecific_ecosystem), according to the GOLD Ecosystem Classification (which is an alternative to the MIxS context).
+
 
 
 ## NMDC `Biosample` is Huge
 
+- Biosample provides lots of slots that drive a faceted search on the NMDC Data Portal
 - In the current `nmdc-schema` `main` branch, `Biosample` uses 592 non-abstract/non-grouping slots
 - 2 are from Dublin Core
 - 101 are minted in nmdc-schema
