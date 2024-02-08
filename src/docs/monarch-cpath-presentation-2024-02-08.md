@@ -10,22 +10,23 @@
     - running standardized workflows for metagenomics, metatranscriptomics, metaproteomics, meta-metabolimics,etc.  
     - visually exploring the metadata in the NMDC Data Portal and downloading the outputs form the computational workflows
     - accessing the metadata through [APIs like this](https://api.microbiomedata.org/docs)
-- NMDC actually has a few different schemas right now
-    - The reference/production [nmdc-schema](https://github.com/microbiomedata/nmdc-schema)
-        - documenation site
-    - A flattened [submission-schema](https://github.com/microbiomedata/submission-schema) for DataHarmonizer, automatically derived from the `nmdc-schema`
-        - we aspire to provide support for DataHarmonizer directly in the `nmdc-schema` eventually
-    - A bleeding-edge [berkeley-schema-fy24](https://github.com/microbiomedata/berkeley-schema-fy24) fork that came out of a hackathon
-        - To be merged into the production schema ASAP
-    - A derriviative of the `nmdc-schema`, in the nmdc-schema repo, with weakened regular expression patterns that are tolerant of legacy identifiers.
-        - Will be retried when we fininish converting the identifiers to follow the current standard.
-        - *Elaborate?*
+
+## Gory details about the multiple current NMDC schemas
+
+- **The reference/production** [nmdc-schema](https://github.com/microbiomedata/nmdc-schema)
+    - [documenation site](https://microbiomedata.github.io/nmdc-schema/)
+- A flattened [submission-schema](https://github.com/microbiomedata/submission-schema) for DataHarmonizer, automatically derived from the `nmdc-schema`
+    - we aspire to provide support for DataHarmonizer directly in the `nmdc-schema` eventually
+- A bleeding-edge [berkeley-schema-fy24](https://github.com/microbiomedata/berkeley-schema-fy24) fork that came out of a hackathon
+    - To be merged into the production schema ASAP
+- An automatically generated [derriviative](https://github.com/microbiomedata/nmdc-schema/blob/main/nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml) of the `nmdc-schema`, with weakened regular expression patterns that are tolerant of legacy identifiers.
+    - Will be retried when we fininish converting the identifiers to follow the current standard.
 
 ## Noteworthy Class Hierarchies in `nmdc-schema`
 - Not all of the [classes](https://microbiomedata.github.io/nmdc-schema/#classes) are rooted
-- Structured [AttributeValue]s(https://microbiomedata.github.io/berkeley-schema-fy24/AttributeValue/)s, like a quantity with a unit
-- [PlannedProcess](https://microbiomedata.github.io/berkeley-schema-fy24/PlannedProcess/)es
+- Structured [AttributeValue](https://microbiomedata.github.io/berkeley-schema-fy24/AttributeValue/)s, like a quantities paired with units (and even the string from which those were parsed)
 - [OntologyClass](https://microbiomedata.github.io/berkeley-schema-fy24/OntologyClass/)es, for binding together a user-proved annotation and the corresponding ontology class identifier and label
+- [PlannedProcess](https://microbiomedata.github.io/berkeley-schema-fy24/PlannedProcess/)es
 - [**Biosample**](https://microbiomedata.github.io/berkeley-schema-fy24/Biosample/)s!
     - a subclass of [MaterialEntity](https://microbiomedata.github.io/berkeley-schema-fy24/MaterialEntity/)
     - [ProcessedSample](https://microbiomedata.github.io/berkeley-schema-fy24/ProcessedSample/) is a sibling of Biosample, and isn't differentiated very well yet, although we specify that most [sample-modifying processes](https://microbiomedata.github.io/berkeley-schema-fy24/MaterialProcessing/) only have `ProcessedSample`s as their output
