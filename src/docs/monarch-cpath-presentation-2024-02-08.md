@@ -5,8 +5,9 @@
 - We are primarily funded by the United States Department of Energy 
 - We provide tools for 
     - entering metadata about samples, following the constraints of a LinkML schema
-    - interactively with [DataHarmonizer](https://github.com/cidgoh/DataHarmonizer)
-    - in bulk through APIs
+        - interactively with [DataHarmonizer](https://github.com/cidgoh/DataHarmonizer)
+        - in bulk through ETL scripts and APIs
+        - in a future NMDC Field Notes mobile app
     - running standardized workflows for metagenomics, metatranscriptomics, metaproteomics, meta-metabolimics,etc.  
     - visually exploring the metadata in the NMDC Data Portal and downloading the outputs form the computational workflows
     - accessing the metadata through [APIs like this](https://api.microbiomedata.org/docs)
