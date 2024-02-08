@@ -87,8 +87,13 @@
 |                     | uriorcurie                    |      | 3    |                   | 3            |
 | **Total**        |                               | 489  | 63   | 40                | 592          |
 
+
+[Raw slot attribute data here](https://github.com/microbiomedata/nmdc-schema/blob/1763-create-markdown-file-about-nmdc-schema-esp-samples-for-2024-02-08-monarchc-path-cmdr-meeting/src/scripts/biosample_slot_sources.tsv)
+
 ## NMDC `Biosample` is Overloaded
-- We have been including several slots about **sequences** from MIxS subsets like [NucleicAcidSequenceSource](https://genomicsstandardsconsortium.github.io/mixs/NucleicAcidSequenceSource/)
+- We have been including several slots about **sequences** from subsets of MIxS like "[sequencing field](https://genomicsstandardsconsortium.github.io/mixs/SequencingField/)"
+    - [pcr_primers](https://microbiomedata.github.io/nmdc-schema/pcr_primers/)
+    - [seq_meth](https://microbiomedata.github.io/nmdc-schema/seq_meth/)
 - Biosample currently uses several slots that seem to be more about 
     - [the site from which they came](https://microbiomedata.github.io/nmdc-schema/FieldResearchSite/), like [climate_environment](https://microbiomedata.github.io/nmdc-schema/climate_environment/)
     - [the process in which they were collected](https://microbiomedata.github.io/nmdc-schema/CollectingBiosamplesFromSite/), like [samp_collec_method](https://microbiomedata.github.io/nmdc-schema/samp_collec_method/)
