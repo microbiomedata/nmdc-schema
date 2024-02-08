@@ -54,17 +54,18 @@ for slotk, slotv in class_induced_slots.items():
     slot_uri = None
     if slotv.slot_uri is not None:
         # print(str(slotv.slot_uri))
-        slot_uri = str(slotv.is_a)
+        slot_uri = str(slotv.slot_uri)
     else:
         # print(f"{str(schema_view.schema.default_prefix)}:{str(slotv.name)}")
         slot_uri = f"{str(schema_view.schema.default_prefix)}:{str(slotv.name)}"
-    print(slotv.in_subset)
+    slot_parent = slotv.is_a
     slot_attribs_lod.append({
         'slot_name': slotv.name,
         'slot_source_file': slot_source_file,
         'slot_range': str(slot_range),
         'slot_range_obj_type': slot_range_obj_type,
-        'slot_uri': slot_uri
+        'slot_uri': slot_uri,
+        'slot_parent': slot_parent
     })
 
 # pprint.pprint(slot_attribs_lod)
