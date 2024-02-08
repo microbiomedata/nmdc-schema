@@ -22,7 +22,8 @@
         - *Elaborate?*
 
 ## Noteworthy Class Hierarchies in `nmdc-schema`
-- Structure [AttributeValue](https://microbiomedata.github.io/berkeley-schema-fy24/AttributeValue/)s, like a quantity with a unit
+- Not all of the [classes](https://microbiomedata.github.io/nmdc-schema/#classes) are rooted
+- Structured [AttributeValue]s(https://microbiomedata.github.io/berkeley-schema-fy24/AttributeValue/)s, like a quantity with a unit
 - [PlannedProcess](https://microbiomedata.github.io/berkeley-schema-fy24/PlannedProcess/)es
 - [OntologyClass](https://microbiomedata.github.io/berkeley-schema-fy24/OntologyClass/)es, for binding together a user-proved annotation and the corresponding ontology class identifier and label
 - [**Biosample**](https://microbiomedata.github.io/berkeley-schema-fy24/Biosample/)s!
