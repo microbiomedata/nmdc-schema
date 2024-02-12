@@ -46,6 +46,8 @@ slots:
     slot_group: JGI-Metatranscriptomics
     range: YesNoEnum
     recommended: true
+    exact_mappings:
+      - Was Sample DNAse treated?
   proposal_rna:
     title: RNA proposal ID
     comments:
