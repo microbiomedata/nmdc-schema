@@ -233,6 +233,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    exact_mapping:
+      - Seq Project ID
   rna_seq_project_pi:
     title: RNA seq project PI
     comments:
