@@ -137,7 +137,7 @@ slots:
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   rna_container_id:
     title: RNA container label
     comments:
