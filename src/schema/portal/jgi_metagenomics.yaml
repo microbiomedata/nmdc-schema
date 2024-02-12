@@ -133,7 +133,7 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
-    exact_mappings:
+    aliases:
       - Sample Isolation Method
   dna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
@@ -208,7 +208,7 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
-    exact_mappings:
+    aliases:
       - Seq Project ID
   dna_seq_project_pi:
     title: DNA seq project PI
