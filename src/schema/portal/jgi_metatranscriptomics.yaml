@@ -46,7 +46,7 @@ slots:
     slot_group: JGI-Metatranscriptomics
     range: YesNoEnum
     recommended: true
-    exact_mappings:
+    aliases:
       - Was Sample DNAse treated?
   proposal_rna:
     title: RNA proposal ID
@@ -162,7 +162,7 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    exact_mappings:
+    aliases:
       - Sample Isolation Method
   rna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
@@ -235,7 +235,7 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    exact_mappings:
+    aliases:
       - Seq Project ID
   rna_seq_project_pi:
     title: RNA seq project PI
