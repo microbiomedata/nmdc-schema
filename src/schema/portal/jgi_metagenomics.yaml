@@ -208,6 +208,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
+    exact_mapping:
+      - Seq Project ID
   dna_seq_project_pi:
     title: DNA seq project PI
     comments:
