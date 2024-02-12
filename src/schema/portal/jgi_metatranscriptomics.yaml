@@ -160,6 +160,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    exact_mapping:
+      - Sample Isolation Method
   rna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
       as estimated % of the organism in that culture.
