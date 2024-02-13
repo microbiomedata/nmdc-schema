@@ -29,7 +29,9 @@ class Migrator(MigratorBase):
         doc["associated_studies"] = []
         for study in studies:
             doc["associated_studies"].append(study)
-        
-        doc.pop("part_of")
-        
+
+        # If the document has a key named "part_of", remove that key.
+        if "part_of" in doc:
+            del doc["part_of"]
+
         return doc
