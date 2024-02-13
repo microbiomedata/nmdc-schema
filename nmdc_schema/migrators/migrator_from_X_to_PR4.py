@@ -1,20 +1,17 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 
+
 class Migrator(MigratorBase):
     """Migrates data from schema X to PR4"""
 
     _from_version = "X"
     _to_version = "PR4"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        super().__init__(*args, **kwargs)
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            omics_processing_set=[self.update_analyte_category_from_omics_type],
-        )
+        self.adapter.process_each_document(collection_name="omics_processing_set",
+                                           pipeline=[self.update_analyte_category_from_omics_type])
 
     def update_analyte_category_from_omics_type(self, omics_proc: dict):
         r"""

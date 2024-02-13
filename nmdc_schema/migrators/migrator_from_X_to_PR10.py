@@ -1,16 +1,15 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from linkml_runtime import SchemaView
 
+
 class Migrator(MigratorBase):
     """Migrates data from schema X to PR10"""
 
     _from_version = "X"
     _to_version = "PR10"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
-
-        super().__init__(*args, **kwargs)
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
         # Get a dictionary of slots and the class uris of their range if they have inlined classes as their range.
         view = SchemaView("src/schema/nmdc.yaml")
@@ -36,7 +35,7 @@ class Migrator(MigratorBase):
                             slots_with_inlined_classes[slot_name] = class_uri
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
+        agenda = dict(
             biosample_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Biosample", slots_with_inlined_classes)],
             data_object_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataObject")],
             functional_annotation_agg=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:FunctionalAnnotationAggMember")],
@@ -58,6 +57,9 @@ class Migrator(MigratorBase):
             read_based_taxonomy_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadBasedTaxonomyAnalysis")],
             read_qc_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadQcAnalysis")],
         )
+
+        for collection_name, pipeline in agenda.items():
+            self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
 
     def add_type_to_inlined_classes(self, document: dict, slot: str, uri: str):
         r"""
