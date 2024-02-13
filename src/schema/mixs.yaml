@@ -5,6 +5,8 @@ notes:
   - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms from https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
   - multiple LinkML representations of MIxS are currently available and one will be blessed soon
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
+imports:
+  - linkml:types
 prefixes:
   nmdc:
     prefix_prefix: nmdc
@@ -11220,18 +11222,6 @@ slots:
     description: field describing environmental aspect of a sample
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  has numeric value:
-    from_schema: http://w3id.org/mixs/ranges
-    owner: QuantityValue
-    range: double
-  has raw value:
-    from_schema: http://w3id.org/mixs/ranges
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
-  has unit:
-    description: Example "m"
-    from_schema: http://w3id.org/mixs/ranges
-    owner: QuantityValue
   investigation field:
     description: field describing aspect of the investigation/study to which the sample belongs
     from_schema: http://w3id.org/mixs/terms

@@ -4,8 +4,8 @@
 
 This directory (i.e. Python [package](https://docs.python.org/3/tutorial/modules.html#packages)) contains
 files (i.e. Python [modules](https://docs.python.org/3/tutorial/modules.html#modules)) which, themselves, contain
-the definitions of Python [classes](https://docs.python.org/3/tutorial/classes.html) related to the migration of data
-between schema versions.
+the definitions of Python [classes](https://docs.python.org/3/tutorial/classes.html) related to the migration of
+databases between schemas.
 
 In this document, I'll refer to those Python classes as "migrators."
 
@@ -13,13 +13,19 @@ In this document, I'll refer to those Python classes as "migrators."
 
 This directory contains the following things:
 
+- `adapters/adapter_base.py` - definition of the `AdapterBase` class
+- `adapters/dictionary_adapter.py` - definition of the `DictionaryAdapter` class
+    - That class can be used by a `Migrator` instance to manipulate a database represented as a Python dictionary
+- `adapters/mongo_adapter.py` - definition of the `MongoAdapter` class
+    - That class can be used by a `Migrator` instance to manipulate a MongoDB database
 - `assets/` - data files (not Python code) used by the classes
 - `cli/` - CLI scripts/commands related to the classes
 - `helpers.py` - general-purpose functions used by the classes
 - `migrator_base.py` - definition of the `MigratorBase` class
     - That class is agnostic to schema versions
 - `migrator_from_A_B_C_to_X_Y_Z.py` - definition of an example `Migrator` class
-    - That class is specific to a pair of schema versions (i.e. it migrates data from schema version `A.B.C` to schema version `X.Y.Z`)
+    - That class is specific to a pair of schema versions
+      (i.e. it migrates databases from schema version `A.B.C` to schema version `X.Y.Z`)
 - Other `migrator_*.py` modules (they are analogous to `migrator_from_A_B_C_to_X_Y_Z.py`)
 
 ## Creating a migrator
@@ -32,45 +38,27 @@ Here's how you can create a new migrator:
     ```
     > Alternatively, you can run `$ poetry run python nmdc_schema/migrators/cli/create_migrator.py`.
    
-    When prompted, enter the [schema version numbers](../../CHANGELOG.md) the migrator will migrate data _from_ and _to_. For example:
+    When prompted, enter the [version numbers of the schemas](../../CHANGELOG.md) the migrator will migrate
+    data _from_ and _to_. For example, if the original schema version is `1.1.3` and the new schema version is `1.2.7`:
     > ```yaml
     > From schema version: 1.1
     > To schema version: 1.2
     > ```
 
-    By default, the generated migrator is a "no-op," meaning that it performs **no** **op**erations (i.e. doesn't do
+    By default, **the generated migrator is a "no-op,"** meaning that it performs **no** **op**erations (i.e. doesn't do
     anything).
 
-    > If the corresponding schema changes don't require that any data be migrated, you can skip the steps
-    below. The existence of a "no-op" migrator indicates that no migration is necessary.
+    > **The existence of a "no-op" migrator indicates that no migration is necessary.**
+
+    **Checkpoint:** If _all_ databases that conform to the original schema also conform to the new schema,
+    then no migration is necessary. In that situation, you can leave the migrator as is (i.e. skip the steps below).
 2. Customize the newly-generated migrator.
-    - Define the "transformation" function(s) that are part of this migration. Ensure each "transformation" function:
-        - **Accepts** a Python `dict`; for example:
-            ```diff
-            + def add_name(self, person: dict) -> dict:
-            ```
-        - Has a **docstring** that summarizes what the function does (optional); for example:
-            ```diff
-                  """
-            +     Adds a `name` key and sets its value to "Anonymous".
-            ```
-        - Has at least one **[doctest](https://docs.python.org/3/library/doctest.html)** that demonstrates what the function does (optional); for example:
-            ```diff
-            +     >>> migrator = Migrator()
-            +     >>> migrator.add_name({'id': 123})
-            +     {'id': 123, 'name': 'Anonymous'}
-                  """
-            ```
-        - **Returns** a Python `dict`; for example:
-            ```diff
-            +     return person
-            ```
-    - Add the "transformation" function(s) to the agenda:
-        - For example:
-          ```diff
-            self._agenda = dict(
-          +     person_set=[self.add_name],
-            )
-          ```
-    You can refer to the example migrator (i.e. `migrator_from_A_B_C_to_X_Y_Z.py`) as a guide.
+    - Populate the `upgrade` function.
+        - The job of this function is to transform the database from conforming to the original schema to conforming to
+          the new schema. You can think of this as the migrator's "main" function.
+    - Whenever you want the migrator to interact with a database, use `self.adapter` to do so.
+        - `self.adapter` is a database adapter (i.e. it is an instance of a class that inherits from `AdapterBase`).
+          It allows the same migrator to be used with different kinds of databases.
+
+   > You can refer to the example migrator (i.e. `migrator_from_A_B_C_to_X_Y_Z.py`) and other migrators for reference.
 3. Done.

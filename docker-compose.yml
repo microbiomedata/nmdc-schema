@@ -27,3 +27,24 @@ services:
       #       while building the container (i.e. while processing the `Dockerfile`).
       #
       - "./:/nmdc-schema"
+
+  fuseki:
+    # Use the container image at: https://hub.docker.com/r/stain/jena-fuseki
+    image: stain/jena-fuseki
+    restart: unless-stopped
+    ports:
+      # Map a host port (by default, 3030, but it can be overridden via an
+      # environment variable) to port 3030 of the container; the latter being
+      # the port on which the Fuseki web server listens by default.
+      - "${FUSEKI_PORT:-3030}:3030"
+    volumes:
+      # Mount the `./local/fuseki-data` directory on the host, at `/fuseki` within the container.
+      #
+      # Note: Since `./local/fuseki-data` is within the repository file tree, and the entire
+      #       repository file tree is mounted within the `app` container, the `app` container
+      #       can share data with the `fuseki` container by putting files into this directory.
+      #
+      - "./local/fuseki-data:/fuseki"
+    environment:
+      # Administrator credentials: admin/password
+      - ADMIN_PASSWORD=password

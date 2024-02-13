@@ -3,23 +3,18 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator(MigratorBase):
-    """Migrates data between two schema versions."""
+    r"""Migrates a database between two schemas."""
 
     _from_version = "7.8.0"
     _to_version = "8.0.0"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        super().__init__(*args, **kwargs)
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            biosample_set=[self.standardize_letter_casing_of_gold_biosample_identifiers],
-            extraction_set=[self.rename_sample_mass_field],
-            omics_processing_set=[self.standardize_letter_casing_of_gold_sequencing_project_identifiers],
-            study_set=[self.standardize_letter_casing_of_gold_study_identifier],
-        )
+        self.adapter.process_each_document("biosample_set", [self.standardize_letter_casing_of_gold_biosample_identifiers])
+        self.adapter.process_each_document("extraction_set", [self.rename_sample_mass_field])
+        self.adapter.process_each_document("omics_processing_set", [self.standardize_letter_casing_of_gold_sequencing_project_identifiers])
+        self.adapter.process_each_document("study_set", [self.standardize_letter_casing_of_gold_study_identifier])
 
     def rename_sample_mass_field(self, extraction: dict) -> dict:
         r"""

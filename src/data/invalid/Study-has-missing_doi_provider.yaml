@@ -57,4 +57,6 @@ protocol_link:
   - name: any string 2
     type: nmdc:Protocol
 funding_sources:
-  - We had discussed limiting the length of funding sources to 150 characters. This is an example of a funding source with a very long description. Its very very very very very very very very very long.
+  - any string 1
+  - any string 2
+

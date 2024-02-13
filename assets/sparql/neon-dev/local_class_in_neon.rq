@@ -1,9 +1,0 @@
-PREFIX nmdc: <https://w3id.org/nmdc/>
-PREFIX MIXS: <https://w3id.org/mixs/>
-
-select ?local_class (COUNT(?local_class) AS ?count)
-where {
-  ?s MIXS:0000330 ?o .
-  ?o nmdc:has_raw_value ?local_class .
-}
-GROUP BY ?local_class

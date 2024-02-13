@@ -1,7 +1,0 @@
-PREFIX nmdc: <https://w3id.org/nmdc/>
-
-select ?neon_eco_type (COUNT(?neon_eco_type) AS ?count)
-where {
-  ?s nmdc:neon_eco_type ?neon_eco_type .
-}
-GROUP BY ?neon_eco_type

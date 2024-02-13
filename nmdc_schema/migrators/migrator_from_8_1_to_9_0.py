@@ -3,21 +3,21 @@ from nmdc_schema.migrators.helpers import load_yaml_asset
 
 
 class Migrator(MigratorBase):
-    """Migrates data between two schema versions."""
+    r"""Migrates a database between two schemas."""
 
     _from_version = "8.1"
     _to_version = "9.0"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        super().__init__(*args, **kwargs)
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            study_set=[self.fix_award_dois, self.fix_pub_dois,
-                       self.fix_massive, self.fix_ess_dive, self.remove_doi_slots],
-        )
+        self.adapter.process_each_document("study_set", [
+            self.fix_award_dois,
+            self.fix_pub_dois,
+            self.fix_massive,
+            self.fix_ess_dive,
+            self.remove_doi_slots
+        ])
 
     def process_doi(self, study: dict, doi_list: list, doi_category: str):
         r"""
