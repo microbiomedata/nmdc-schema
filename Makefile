@@ -83,9 +83,10 @@ update-linkml:
 create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
+# Note: `all` is an alias for `site`.
 all: site
-# removed due to errors: migration-doctests
-site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
+# TODO: Document this make target.
+site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
