@@ -5,6 +5,8 @@
 nmdc_database_tools.py:
 Command-line tools for extracting data from the NMDC database via the API.
 """
+import sys
+
 import click
 import logging
 from pathlib import Path
@@ -141,7 +143,7 @@ def cli(ctx, api_base_url):
 
 
 @cli.command()
-@click.option("--study-id", required=True,  help="Study ID to extract.")
+@click.argument("study_id", required=True,)
 @click.option("--output-file", help="Path to output file, relative to project "
                                    "root.")
 @click.option("--quick-test", is_flag=True, default=False, help=("Quick test "
@@ -192,9 +194,8 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
         output_file_path = f"{PROJECT_ROOT}/{output_file}"
         logfile_path = f"{PROJECT_ROOT}/{output_file.replace('.yaml', '.log')}"
     else:
-        normalized_study_id = study_id.replace(":", "-")
-        output_file_path = (f"{LOCAL_DIR}/{normalized_study_id}.yaml")
-        logfile_path = f"{LOCAL_DIR}/{normalized_study_id}.log"
+        output_file_path = (f"{LOCAL_DIR}/{study_id}.yaml")
+        logfile_path = f"{LOCAL_DIR}/{study_id}.log"
 
 
     logging.basicConfig(
@@ -219,7 +220,8 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             study = None
-            logger.warning(f"Study {study_id} not found in the NMDC database.")
+            logger.error(f"Study {study_id} not found in the NMDC database.")
+            sys.exit(1)
         else:
             raise e
     db.study_set.append(study)
@@ -242,6 +244,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
                 logger.warning(f"No biosamples found part_of {study_id}.")
+                continue
             else:
                 raise e
         # OmicsProcessing records part_of the study
@@ -252,6 +255,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
                 logger.warning(f"No OmicsProcessing records found part_of {study_id}.")
+                continue
             else:
                 raise e
 
@@ -314,7 +318,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                             except requests.exceptions.HTTPError as e:
                                 if e.response.status_code == 404:
                                     data_object = None
-                                    logger.warning(f"Data object {data_object_id} not found in the NMDC database.")
+                                    logger.error(f"OrphanDataObject {data_object_id} not found in the NMDC database.")
                                 else:
                                     raise e
                             if data_object and data_object not in db.data_object_set:
