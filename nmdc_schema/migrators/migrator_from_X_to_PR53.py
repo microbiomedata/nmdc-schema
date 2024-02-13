@@ -23,15 +23,19 @@ class Migrator(MigratorBase):
         >>> m = Migrator()
         >>> m.move_part_of_to_associated_studies({'id': 123, 'part_of': ['gold:Gs0114663', 'nmdc:sty-55-xxx']})
         {'id': 123, 'associated_studies': ['gold:Gs0114663', 'nmdc:sty-55-xxx']}
+        >>> m.move_part_of_to_associated_studies({'id': 123})  # lacks `part_of` key
+        {'id': 123, 'associated_studies': []}
         """
 
-        studies = doc["part_of"]
+        # Create and initialize the "associated_studies" field on the document.
         doc["associated_studies"] = []
-        for study in studies:
-            doc["associated_studies"].append(study)
 
-        # If the document has a key named "part_of", remove that key.
+        # If the document has a "part_of" field, move its studies to the "associated_studies" field,
+        # then delete the "part_of" field.
         if "part_of" in doc:
+            studies = doc["part_of"]
+            for study in studies:
+                doc["associated_studies"].append(study)
             del doc["part_of"]
 
         return doc
