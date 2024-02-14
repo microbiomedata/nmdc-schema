@@ -1,19 +1,18 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import difflib
 
+
 class Migrator(MigratorBase):
     """Migrates data from schema X to PR23"""
 
     _from_version = "X"
     _to_version = "PR23"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
-
-        super().__init__(*args, **kwargs)
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
         # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
+        agenda = dict(
             metagenome_assembly_set=[self.standardize_execution_resource], 
             metagenome_annotation_activity_set=[self.standardize_execution_resource],
             metatranscriptome_activity_set=[self.standardize_execution_resource], 
@@ -25,6 +24,9 @@ class Migrator(MigratorBase):
             metaproteomics_analysis_activity_set=[self.standardize_execution_resource], 
             nom_analysis_activity_set=[self.standardize_execution_resource]
         )
+
+        for collection_name, pipeline in agenda.items():
+            self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
 
     def standardize_execution_resource(self, workflow_execution: dict):
         r"""

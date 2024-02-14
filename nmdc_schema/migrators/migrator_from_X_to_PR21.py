@@ -1,21 +1,18 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import load_yaml_asset
 
+
 class Migrator(MigratorBase):
     """Migrates data from schema X to PR21"""
 
     _from_version = "X"
     _to_version = "PR21"
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        super().__init__(*args, **kwargs)
-
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self._agenda = dict(
-            study_set=[self.move_relevant_protocols_to_protocol_link],
-        )
+        self.adapter.process_each_document(collection_name="study_set",
+                                           pipeline=[self.move_relevant_protocols_to_protocol_link])
 
     def move_relevant_protocols_to_protocol_link(self, study: dict):
         r"""

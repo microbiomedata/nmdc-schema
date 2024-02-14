@@ -15,7 +15,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v9.3.2 # GH uses same version string # pyproject.toml says "9.3.2"
+version: v10.0.0 # GH uses same version string # pyproject.toml says "9.3.2"
 
 imports:
   - annotation
@@ -28,8 +28,6 @@ imports:
   - portal/mixs_inspired
   - portal/sample_id
   - workflow_execution_activity
-#  - external_identifiers
-
 
 prefixes:
   CATH: "https://bioregistry.io/cath:"
@@ -742,9 +740,6 @@ classes:
       - growth_hormone_regm
       - hall_count
       - handidness
-      - has numeric value
-      - has raw value
-      - has unit
       - hc_produced
       - hcr
       - hcr_fw_salinity
@@ -3191,6 +3186,7 @@ slots:
   funding_sources:
     multivalued: true
     range: string
+    pattern: ^.{1,250}$
     description: >-
       A list of organizations, along with the award numbers, that underwrite financial support for projects of
       a particular type. Typically, they process applications and award funds to the chosen qualified

@@ -83,7 +83,9 @@ update-linkml:
 create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
+# Note: `all` is an alias for `site`.
 all: site
+# TODO: Document this make target.
 site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
@@ -229,7 +231,7 @@ site-clean: clean
 	rm -rf nmdc_schema/*.tsv
 	rm -rf nmdc_schema/*.yaml
 
-squeaky-clean: clean OmicsProcessing-clean accepting-legacy-ids-clean examples-clean mongodb-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+squeaky-clean: clean accepting-legacy-ids-clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
