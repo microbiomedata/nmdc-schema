@@ -512,5 +512,3 @@ docker-compose-down-from-host:
 #   --user 'admin:password' \
 #   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
 
-linkml-validate-massS-spec: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN) linkml-validate --schema $< src/data/valid/Database-mass-spectrometry.yaml
