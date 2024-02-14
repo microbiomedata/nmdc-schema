@@ -1,6 +1,13 @@
 data_generation_set:
   - id: nmdc:dgms-99-zUCd5N
     analyte_category: metabolome
+    mass_spectrum_collection_mode: full_profile
+    acquisition_category: tandem_mass_spectrum
+    acquisition_strategy: data_independent_acquisition
+    resolution_category: high
+    mass_analyzer: Orbitrap
+    ionization_source: electrospray_ionization
+    polarity_mode: negative
     alternative_identifiers:
       - emsl:123423
     has_input:
@@ -12,39 +19,4 @@ data_generation_set:
     type: nmdc:MassSpectrometry
     associated_studies:
       - nmdc:sty-00-555xxx
-  # - id: nmdc:dgns-99-gKlQlF
-  #   analyte_category: metagenome
-  #   alternative_identifiers:
-  #     - gold:Gp0108340
-  #   name: Thawing permafrost microbial communities from the Arctic, studying carbon
-  #     transformations - Permafrost 612S3M
-  #   has_input:
-  #     - nmdc:bsm-00-orange0
-  #   add_date: 30-OCT-14 12.00.00.000000000 AM
-  #   mod_date: 22-MAY-20 06.10.59.590000000 PM
-  #   has_output:
-  #     - nmdc:dobj-00-zzzbrxzzz
-  #   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-  #     carbon transformations - Permafrost 612S3M
-  #   processing_institution: JGI
-  #   type: nmdc:NucleotideSequencing
-  #   associated_studies:
-  #     - nmdc:sty-00-555xxx
-  # - id: nmdc:dgns-99-5kgIJR
-  #   analyte_category: metagenome
-  #   alternative_identifiers:
-  #     - gold:Gp0108341
-  #   name: Thawing permafrost microbial communities from the Arctic, studying carbon
-  #     transformations - Permafrost 712S3S
-  #   has_input:
-  #     - nmdc:bsm-00-orange1
-  #   add_date: 30-OCT-14 12.00.00.000000000 AM
-  #   mod_date: 22-MAY-20 06.09.46.171000000 PM
-  #   has_output:
-  #     - nmdc:dobj-00-thx1198
-  #   ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-  #     carbon transformations - Permafrost 712S3S
-  #   processing_institution: JGI
-  #   type: nmdc:NucleotideSequencing
-  #   associated_studies:
-  #     - nmdc:sty-00-555xxx
+  
