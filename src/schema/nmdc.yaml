@@ -1958,7 +1958,8 @@ enums:
 
   MassSpectrumCollectionModeEnum:
     permissible_values:
-      profile: { }
+      full_profile: { }
+      reduced_profile: { }
       centroid: { }
 
   PolarityModeEnum:
