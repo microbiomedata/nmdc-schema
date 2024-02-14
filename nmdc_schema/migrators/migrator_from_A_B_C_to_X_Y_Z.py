@@ -48,11 +48,9 @@ class Migrator(MigratorBase):
         self.adapter.insert_document("comment_set", {"id": 1, "text": "Hello"})
         self.adapter.insert_document("comment_set", {"id": 2, "text": "Goodbye"})
 
-        # Use a document in one collection to derive a document destined for another collection.
-        study_abc = self.adapter.get_document_having_value_in_field("study_set", "id", "abc")
-        if study_abc is not None and "name" in study_abc:
-            comment_3 = {"id": 3, "text": f"The {study_abc['name']} study exists."}
-            self.adapter.insert_document("comment_set", comment_3)
+        # Advanced: Generate a document in one collection based upon each document in another collection.
+        self.adapter.create_collection("report_set")
+        self.adapter.process_each_document("comment_set", [self.create_report_based_upon_comment])
 
     def allow_multiple_names(self, study: dict) -> dict:
         """
@@ -111,3 +109,15 @@ class Migrator(MigratorBase):
 
         # Return the transformed dictionary.
         return study
+
+    def create_report_based_upon_comment(self, comment: dict) -> dict:
+        """
+        Creates a report based upon the comment passed in.
+
+        Note: Although this function will be passed a comment, it actually modifies a different collection and then
+              returns the original comment unchanged. I consider this to be a "shoehorned" usage of the framework,
+              but the framework doesn't provide a different way to do the same thing (yet).
+        """
+        report = {"body": f"Someone wrote {comment['text']}"}
+        self.adapter.insert_document(collection_name="report_set", document=report)
+        return comment  # returns the original comment
