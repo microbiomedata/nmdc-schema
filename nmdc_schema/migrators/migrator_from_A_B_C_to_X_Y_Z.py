@@ -48,6 +48,12 @@ class Migrator(MigratorBase):
         self.adapter.insert_document("comment_set", {"id": 1, "text": "Hello"})
         self.adapter.insert_document("comment_set", {"id": 2, "text": "Goodbye"})
 
+        # Use a document in one collection to derive a document destined for another collection.
+        study_abc = self.adapter.get_document_having_value_in_field("study_set", "id", "abc")
+        if study_abc is not None and "name" in study_abc:
+            comment_3 = {"id": 3, "text": f"The {study_abc['name']} study exists."}
+            self.adapter.insert_document("comment_set", comment_3)
+
     def allow_multiple_names(self, study: dict) -> dict:
         """
         TUTORIAL: This is an example "transformation" function within the class.
