@@ -1,5 +1,5 @@
 data_generation_set:
-  - id: nmdc:dgns-99-zUCd5N
+  - id: nmdc:dgms-99-zUCd5N
     analyte_category: metabolome
     alternative_identifiers:
       - emsl:123423
@@ -9,7 +9,7 @@ data_generation_set:
     mod_date: 22-MAY-20 06.13.12.927000000 PM
     has_output:
       - nmdc:dobj-00-9n9n9n
-    type: nmdc:NucleotideSequencing
+    type: nmdc:MassSpectrometry
     associated_studies:
       - nmdc:sty-00-555xxx
   # - id: nmdc:dgns-99-gKlQlF
