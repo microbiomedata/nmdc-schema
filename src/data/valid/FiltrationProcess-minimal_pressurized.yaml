@@ -1,4 +1,5 @@
-id: nmdc:fp-2
+id: nmdc:filtpr-22-32G2BS
+type: nmdc:FiltrationProcess
 has_input:
   - nmdc:processed-sample-3
 has_output:
@@ -7,5 +8,6 @@ conditionings:
   - Methanol
   - Sterile water #Milli-Q
 filtration_category: pressure
-instrument_name: CEREX System 96 processor
+instrument_used:
+  - nmdc:inst-12-125
 is_pressurized: true

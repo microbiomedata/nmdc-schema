@@ -1,0 +1,19 @@
+# id: nmdc:107ade35423143e39dc30b12832ac759
+id: nmdc:wfmsa-99-qwertyuiop
+has_input:
+  - 'nmdc:unvalidated_placeholder'
+# legacy part_of id? validator won't catch pattern violations
+#   or referential integrity violations
+part_of:
+    - nmdc:wfch-11-ab
+git_url: 'https://github.com/microbiomedata/RawSequencingData'
+execution_resource: JGI
+version: v1.0.0
+# legacy has_output id? validator won't catch pattern violations
+#   or referential integrity violations
+has_output:
+  - nmdc:22afa3d49b73eaec2e9787a6b88fbdc3
+name: Sequencing Activity for nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+ended_at_time: '2021-09-15T10:13:20+00:00'
+type: nmdc:MetagenomeSequencing

@@ -7,3 +7,4 @@ extraction_set:
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
       - generic:yyy
+    type: nmdc:Extraction

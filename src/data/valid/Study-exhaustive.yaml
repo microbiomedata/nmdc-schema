@@ -1,4 +1,5 @@
 id: nmdc:sty-11-ab
+type: nmdc:Study
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
@@ -20,6 +21,7 @@ ecosystem_type: unconstrained text
 ecosystem_subtype: unconstrained text
 specific_ecosystem: unconstrained text
 principal_investigator:
+  type: nmdc:PersonValue
   has_raw_value: Craig Venter
   was_generated_by: nmdc:any_string_1
   orcid: ORCID:0000-0002-7086-765X
@@ -32,15 +34,19 @@ principal_investigator:
 associated_dois:
   - doi_value: doi:10.1126/science.1058040
     doi_category: publication_doi
+    type: nmdc:Doi
   - doi_value: doi:10.1126/science.1456956
     doi_provider: kbase
     doi_category: dataset_doi
+    type: nmdc:Doi
   - doi_value: doi:10.1126/science.1234545
     doi_provider: jgi
     doi_category: award_doi
+    type: nmdc:Doi
   - doi_value: doi:10.48321/D1Z60Q
     doi_category: data_management_plan_doi
     doi_provider: gsc
+    type: nmdc:Doi
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -59,15 +65,18 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-type: any string
-relevant_protocols:
-  - any string 1
-  - any string 2
+#type: any string
+protocol_link:
+  - name: any string 1
+    type: nmdc:Protocol
+  - name: any string 2
+    type: nmdc:Protocol
 funding_sources:
   - any string 1
   - any string 2
 has_credit_associations:
   - applies_to_person:
+      type: nmdc:PersonValue
       has_raw_value: Craig Venter
       was_generated_by: nmdc:any_string_1
       orcid: ORCID:0000-0002-7086-765X
@@ -81,23 +90,27 @@ has_credit_associations:
       - Supervision
       - Conceptualization
       - Funding acquisition
-    type: any string
+    type: prov:Association
   - applies_to_person:
+      type: nmdc:PersonValue
       name: Tanja Davidsen
     applied_roles:
       - Investigation
       - Supervision
+    type: prov:Association
 study_image:
   - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     was_generated_by: nmdc:any_string_1
     url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     description: Photo of Craig Venter Institute, Rockville, Maryland
     display_order: 1 # MAM 2023-12-08 switched from string to integer
+    type: nmdc:ImageValue
   - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     was_generated_by: nmdc:any_string_1
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
     display_order: 2 # MAM 2023-12-08 switched from string to integer
+    type: nmdc:ImageValue
 study_category: research_study
 part_of:
   - nmdc:sty-11-34xj1157

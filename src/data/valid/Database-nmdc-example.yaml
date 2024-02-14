@@ -1,5 +1,6 @@
 study_set:
   - id: nmdc:sty-99-FkQIsc
+    type: nmdc:Study
     gold_study_identifiers:
       - gold:Gs123456789
     name: Permafrost microbial communities from Stordalen Mire, Sweden
@@ -12,12 +13,13 @@ study_set:
     ecosystem_subtype: Wetlands
     specific_ecosystem: Permafrost
     principal_investigator:
+      type: nmdc:PersonValue
       has_raw_value: Virginia Rich
     associated_dois:
       - doi_value: doi:10.25585/1488217 # https://doi.org/10.25585/1488217 / https://www.osti.gov/dataexplorer/biblio/dataset/1488217 -> https://genome.jgi.doe.gov/portal/Somoldmmetaomics/Somoldmmetaomics.info.html
         doi_category: dataset_doi
         doi_provider: osti
-    type: nmdc:Study
+        type: nmdc:Doi
     study_category: research_study
   - id: nmdc:sty-99-oJmAOs
     gold_study_identifiers:
@@ -33,11 +35,13 @@ study_set:
     ecosystem_subtype: Unclassified
     specific_ecosystem: Forest Soil
     principal_investigator:
+      type: nmdc:PersonValue
       has_raw_value: Jeffrey Blanchard
     associated_dois:
       - doi_value: doi:10.25585/1488215 # https://www.osti.gov/dataexplorer/biblio/dataset/1488215 -> https://genome.jgi.doe.gov/portal/Molmecexpwarming/Molmecexpwarming.info.html
         doi_category: dataset_doi
         doi_provider: osti
+        type: nmdc:Doi
     type: nmdc:Study
     study_category: consortium
   - id: nmdc:sty-99-3bQQ4j
@@ -54,15 +58,18 @@ study_set:
     ecosystem_subtype: Rhizosphere
     specific_ecosystem: Soil
     principal_investigator:
+      type: nmdc:PersonValue
       has_raw_value: Rebecca Neumann
     associated_dois:
       - doi_value: doi:10.25585/1488209 # https://www.osti.gov/dataexplorer/biblio/dataset/1488209 -> https://genome.jgi.doe.gov/portal/ARhifrWetlands/ARhifrWetlands.info.html
         doi_category: dataset_doi
         doi_provider: osti
+        type: nmdc:Doi
     type: nmdc:Study
     study_category: research_study
-omics_processing_set:
-  - id: nmdc:omprc-99-9XUVVF
+data_generation_set:
+  - id: nmdc:dgns-99-9XUVVF
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0225767
     name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -78,13 +85,14 @@ omics_processing_set:
       - nmdc:dobj-00-90125
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
       LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
-    omics_type:
-      has_raw_value: Metagenome
     part_of:
-      - nmdc:sty-00-31415
+      - nmdc:dgms-00-31415
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-dk9vgI
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-00-31415
+  - id: nmdc:dgns-99-dk9vgI
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0208560
     name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
@@ -97,13 +105,12 @@ omics_processing_set:
       - nmdc:dobj-00-pizza
     ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
       - 611E1M metaG
-    omics_type:
-      has_raw_value: Metagenome
-    part_of:
-      - nmdc:sty-00-8675309
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
-  - id: nmdc:omprc-99-MVW1FV
+    type: nmdc:NucleotideSequencing
+    associated_studies: 
+      - nmdc:sty-00-8675309
+  - id: nmdc:dgns-99-MVW1FV
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0306221
     name: Rhizosphere microbial communities from Carex aquatilis grown in University
@@ -118,12 +125,10 @@ omics_processing_set:
       - nmdc:dobj-00-mobydick
     ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
       in University of Washington, Seatle, WA, United States - 4-1-23 metaG
-    omics_type:
-      has_raw_value: Metagenome
-    part_of:
-      - nmdc:sty-00-avacado
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-00-avacado
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
     gold_biosample_identifiers:
@@ -131,25 +136,33 @@ biosample_set:
     name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
     description: Permafrost microbial communities from Stordalen Mire, Sweden
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2011-06-15'
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
     geo_loc_name:
+      type: nmdc:TextValue
       has_raw_value: 'Sweden: Stordalen'
     lat_lon:
+      type: nmdc:GeolocationValue
       has_raw_value: 68.35 19.05
       latitude: 68.35
       longitude: 19.05
@@ -175,25 +188,33 @@ biosample_set:
       at 10C with heavy water. Sample is from a control plot at ambient soil temperature,
       organic horizon - top 4cm of soil
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2017-05-24'
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
     geo_loc_name:
+      type: nmdc:TextValue
       has_raw_value: 'USA: Massachusetts'
     lat_lon:
+      type: nmdc:GeolocationValue
       has_raw_value: 42.481016 -72.178343
       latitude: 42.481016
       longitude: -72.178343
@@ -219,25 +240,33 @@ biosample_set:
     description: Rhizosphere microbial communities from Carex aquatilis grown in submerged
       peat from a thermokarst bog, University of Washington, Seatle, WA, United States
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     #    collection_date:
     #      has_raw_value: '2018-01-29'
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
     geo_loc_name:
+      type: nmdc:TextValue
       has_raw_value: 'USA: Seattle, Washington'
     lat_lon:
+      type: nmdc:GeolocationValue
       has_raw_value: 47.6516 -122.3045
       latitude: 47.6516
       longitude: -122.3045

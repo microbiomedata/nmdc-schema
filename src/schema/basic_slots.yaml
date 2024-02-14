@@ -28,20 +28,81 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+  
+  file_size_bytes:
+    domain: DataObject
+    range: bytes
+    description: Size of the file in bytes
+
+  analyte_category:
+    required: true
+    description: >
+      The type of analyte(s) that were measured in the data generation process and analyzed
+        in the Workflow Chain
+    range: AnalyteCategoryEnum
+
+  instrument_used:
+    range: Instrument
+    multivalued: true
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+  direct_infusion_category:
+    domain: DirectInfusionProcess
+    range: DirectInfusionEnum
+    description: used when a processed sample is introduced into a mass spectrometer without chromatographic separation
+  eluent_introduction:
+    domain: MassSpectrometry
+    range: FluidHandling
+    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
+  acquisition_category:
+    domain: MassSpectrometry
+    range: AcquisitionCategoryEnum
+    description: whether only survey or tandem mass spectra are part of the experiment
+  acquisition_strategy:
+    domain: MassSpectrometry
+    range: AcquisitionStrategyEnum
+    description: whether spectra are dependent on or independent of any other spectra during the experiment
+  resolution_category:
+    domain: MassSpectrometry
+    range: ResolutionCategoryEnum
+    description: whether mass spectra are collected at higher than unity resolution
+  mass_analyzer:
+    domain: MassSpectrometry
+    range: MassAnalyzerEnum
+    description: which kind of mass analyzer is used during the spectra colleciton
+  ionization_source:
+    domain: MassSpectrometry
+    range: IonizationSourceEnum
+    description: which kind of ionization source is used to introduce analytes into a mass spectrometer
+  mass_spectrum_collection_mode:
+    domain: MassSpectrometry
+    range: MassSpectrumCollectionModeEnum
+    description: whether mass spectra are centroided during collection
+  polarity_mode:
+    domain: MassSpectrometry
+    range: PolarityModeEnum
+    description: the polarity of which ions are generated and detected
   processing_institution:
     domain: PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
     description: The organization that processed the sample.
-  designated_class:
+  type:
+    required: true
     range: uriorcurie
-    designates_type: true
+    slot_uri: rdf:type
+    description: the id of the class that is instantiated by some data
     notes:
-      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
-        of any NMDC-owned elements
-      - this would be required on all instances in a polymorphic Database slot, like planned_process_set
+      - replacing legacy nmdc:type slot
+      - will make examples files clearer
+      - required for polymorphic MongoDB collections
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/1048
       - https://github.com/microbiomedata/nmdc-schema/issues/1233
+      - https://github.com/microbiomedata/nmdc-schema/issues/248
+    examples:
+      - value: nmdc:Biosample
+      - value: nmdc:Study
+    designates_type: true
+
   external_database_identifiers:
     abstract: true
     description: Link to corresponding identifier in external database
@@ -97,11 +158,19 @@ slots:
     recommended: true
     minimum_value: 0
     maximum_value: 2000
+
   extraction_target:
+    description: Provides the target biomolecule that has been separated from a sample during an extraction process.
     rank: 1000
     domain_of:
       - Extraction
     range: ExtractionTargetEnum
+    notes:
+      - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
+    narrow_mappings:
+      - NCIT:C177560
+      - MIXS:0000037
+
   id:
     required: true
     identifier: true
@@ -130,21 +199,6 @@ slots:
     description: >-
       a human-readable description of a thing
     slot_uri: dcterms:description
-
-  type:
-    deprecated: >-
-      Due to confusion about what values are used for this slot, it is best not to use this slot.
-      See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
-    range: string
-    description: >-
-      An optional string that specifies the type object. 
-      This is used to allow for searches for different kinds of objects.
-    examples:
-      - value: nmdc:Biosample
-      - value: nmdc:Study
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/1233
 
   title:
     range: string
@@ -240,15 +294,8 @@ slots:
       Slot to store additional comments about laboratory or workflow output. For workflow output
       it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
-  instrument_name:
-    domain: PlannedProcess
-    description: >-
-      The name of the instrument that was used for processing the sample.
-  #    add this and write migration # range: instrument_name_enum
-
-
 enums:
-  processing_institution_enum:
+  ProcessingInstitutionEnum:
     notes:
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: NMDC_enums_roundtrip
@@ -279,25 +326,3 @@ enums:
       UCD_Genome_Center:
         title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
-
-
-#  instrument_name_enum:
-#    todos:
-#      - remove "21T Agilent"
-#    permissible_values:
-#      - 12T_FTICR_B
-#      - 15T_FTICR
-#      - 21T Agilent
-#      - 21T_Agilent
-#      - Agilent_GC_MS_01
-#      - Illumina HiSeq
-#      - Illumina HiSeq 2500
-#      - Illumina HiSeq 2500-1TB
-#      - Illumina NextSeq 550
-#      - Illumina NovaSeq
-#      - Illumina NovaSeq S4
-#      - QExactHF03
-#      - QExactP02
-#      - VOrbiETD04
-
-

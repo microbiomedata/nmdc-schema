@@ -1,0 +1,9 @@
+WARNING:root:ignoring equals_string=award_doi as unable to tell if literal
+WARNING:root:ignoring equals_string=dataset_doi as unable to tell if literal
+WARNING:root:ignoring equals_string=gas_chromatography as unable to tell if literal
+WARNING:root:ignoring equals_string=pass as unable to tell if literal
+WARNING:root:ignoring equals_string=plate as unable to tell if literal
+WARNING:root:Multiple owl types {rdflib.term.URIRef('http://www.w3.org/2002/07/owl#Thing'), rdflib.term.URIRef('http://www.w3.org/2000/01/rdf-schema#Literal')}
+WARNING:root:Null expr in: [None, None] for http://www.w3.org/2002/07/owl#unionOf None
+WARNING:root:Null expr in: [None] for http://www.w3.org/2002/07/owl#intersectionOf None
+WARNING:root:Unrecognized prefix: AFO

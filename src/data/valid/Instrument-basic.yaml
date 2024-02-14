@@ -1,0 +1,5 @@
+id: nmdc:inst-12-dtTMNb
+type: nmdc:Instrument
+name: Illumina NovaSeq
+vendor: illumina
+model: novaseq_6000

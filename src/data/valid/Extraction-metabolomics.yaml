@@ -1,12 +1,17 @@
 id: "nmdc:extrp-71-r2pk"
+type: nmdc:Extraction
 has_input:
-  - "nmdc:ome-6"
+  - "nmdc:bsm-6"
 has_output:
-  - "nmdc:ome-8"
+  - "nmdc:psm-8"
 extractant: # range: Solution... multivalued? (no) -> has_solution_component
+  type: nmdc:Solution
   has_solution_components:
-    - compound: deionized water
+    - compound: deionized_water
+      type: nmdc:SolutionComponent
     - compound: methanol
+      type: nmdc:SolutionComponent
       concentration:
+        type: nmdc:QuantityValue
         has_numeric_value: 5
         has_unit: "%"

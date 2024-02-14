@@ -1,0 +1,15 @@
+nom_analysis_set:
+  - id: nmdc:wfnom-99-abcdefg
+    type: nmdc:NomAnalysis
+    execution_resource: EMSL-RZR
+    git_url: xxx
+    has_input:
+      - nmdc:1
+      - nmdc:2
+    has_output:
+      - nmdc:3
+      - nmdc:4
+    started_at_time: "2018-11-13T20:20:39+00:00"
+    ended_at_time: "2018-11-13T20:20:39+00:00"
+    part_of:
+      - nmdc:wfch-99-abcdefg

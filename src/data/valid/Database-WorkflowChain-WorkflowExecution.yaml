@@ -1,0 +1,27 @@
+workflow_chain_set:
+  - id: nmdc:wfch-11-ab
+    analyte_category: metagenome
+    was_informed_by: nmdc:dgns-11-s9xj2r24
+    type: nmdc:WorkflowChain
+  - id: nmdc:wfch-12-cd
+    analyte_category: metagenome
+    was_informed_by: nmdc:dgns-11-s9xj2r24
+    type: nmdc:WorkflowChain
+read_qc_analysis_set:
+  - id: nmdc:wfrqc-12-63da5n74
+    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
+    started_at_time: '2023-03-23T17:17:05.111689+00:00'
+    ended_at_time: '2023-03-23T17:17:05.111725+00:00'
+    part_of:
+      - nmdc:wfch-11-ab
+      - nmdc:wfch-12-cd
+    execution_resource: NERSC-Cori
+    git_url: https://github.com/microbiomedata/ReadsQC
+    has_input:
+      - nmdc:dobj-12-jdhk9537
+      - nmdc:dobj-12-yx0tfp52
+    has_output:
+      - nmdc:dobj-12-71q7wv80
+      - nmdc:dobj-12-y236qp68
+    type: nmdc:ReadQcAnalysis
+    version: b1.0.7

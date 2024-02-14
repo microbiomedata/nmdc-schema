@@ -1,0 +1,15 @@
+nom_analysis_set:
+  - id: nmdc:wfnom-99-abcdefg
+    execution_resource: NERSC-Cori
+    git_url: xxx
+    has_input:
+      - nmdc:1
+      - nmdc:2
+    has_output:
+      - nmdc:3
+      - nmdc:4
+    type: nmdc:NomAnalysis
+    started_at_time: "2018-11-13T20:20:39+00:00"
+    ended_at_time: "2018-11-13T20:20:39+00:00"
+    used: 12T_FTICR_B #invalid b/c slot used has been removed from this class
+    part_of: nmdc:sty-00-abc123

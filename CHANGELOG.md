@@ -27,7 +27,7 @@ Versioning for this project is based on [Semantic Versioning](https://semver.org
 ### Fixed
 
 - Remove incorrect description of `lat_lon` slot
-- Remove non-monotonic range override on `used` slot of `MetaproteomicsAnalysisActivity` class.
+- Remove non-monotonic range override on `used` slot of `MetaproteomicsAnalysis` class.
 - make `study_category` slot required.
 
 ### Removed
@@ -85,7 +85,7 @@ An exampl would be when the global definition of a slot uses an enumeration `ran
 - New `make-rdf` meta target dumps MongoDB in the shape of an NMDC Database instance, makes migrations (including `doi`
   migration and CURIe coercion), linkml-validation, conversion to RDF/TTL and casting anyURI-typed strings to real
   CURIes
-    - skips functional_annotation_agg and metaproteomics_analysis_activity_set by default
+    - skips functional_annotation_agg and metaproteomics_analysis_set by default
     - `dois` migrations can be performed in one `Study`
       with `nmdc_schema.migration_recursion:migrate_studies_7_7_2_to_7_8_0`
 - New `accepting-legacy-ids-all` meta target for validating MongoDB data that includes legacy `id`s
@@ -110,7 +110,7 @@ An exampl would be when the global definition of a slot uses an enumeration `ran
 - Structural schema changes:
     - addition of class `FunctionalAnnotationAggMember`, `Database` slot `functional_annotation_agg`
       and `FunctionalAnnotationAggMember`
-      slots `metagenome_annotation_id`, `WorkflowExecutionActivity`, `gene_function_id` and `count`.
+      slots `metagenome_annotation_id`, `WorkflowExecution`, `gene_function_id` and `count`.
         - `count` sure is a vague slot name
         - example data:
             - `src/data/valid/FunctionalAnnotationAggMember-minimal.yaml`

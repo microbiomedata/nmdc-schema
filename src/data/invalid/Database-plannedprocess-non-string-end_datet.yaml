@@ -1,0 +1,20 @@
+extraction_set:
+  - id: nmdc:extrp-99-abcdefg
+    type: nmdc:Extraction
+    name: first dna extraction set
+    has_input:
+      - bare:pool_out_1
+    has_output:
+      - bare:dna_extract_1
+    extraction_target: DNA
+    end_date: 2021-01-15
+
+library_preparation_set:
+  - id: nmdc:libprp-99-abcdefg
+    type: nmdc:LibraryPreparation
+    name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
+    library_type: DNA
+    has_input:
+      - bare:dna_extract_1
+    has_output:
+      - bare:library_1

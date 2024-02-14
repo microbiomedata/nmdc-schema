@@ -1,0 +1,40 @@
+id: nmdc:chcpr-19-7890
+type: nmdc:ChemicalConversionProcess
+has_input:
+  - "nmdc:procsm-37"
+has_output:
+  - "nmdc:procsm-39"
+has_reagents:
+  type: nmdc:ReagentsCollection
+  solutions_used:
+    - has_solution_components:
+        - compound: deionized_water
+          type: nmdc:SolutionComponent
+        - compound: ammonium_bicarbonate
+          type: nmdc:SolutionComponent
+          concentration:
+            type: nmdc:QuantityValue
+            has_numeric_value: 50
+            has_unit: mM
+      volume:
+        type: nmdc:QuantityValue
+        has_numeric_value: 75
+        has_unit: μL
+      type: nmdc:Solution
+catalyzed_by:
+  - has_solution_components:
+      - compound: trypsin
+        type: nmdc:SolutionComponent
+        concentration:
+          type: nmdc:QuantityValue
+          has_numeric_value: 0.05
+          has_unit: μg/μL
+    type: nmdc:Solution
+temperature:
+  type: nmdc:QuantityValue
+  has_numeric_value: 37
+  has_unit: Cel
+duration:
+  type: nmdc:QuantityValue
+  has_numeric_value: 3
+  has_unit: h

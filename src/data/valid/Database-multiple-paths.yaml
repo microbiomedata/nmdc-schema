@@ -1,38 +1,53 @@
 biosample_set:
   - id: nmdc:bsm-99-dtTMNb
     name: real biosample from the field
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
+    type: nmdc:Biosample
   - id: nmdc:bsm-99-XYZ
     name: one DNA library, like an analytical sample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
-omics_processing_set:
-  - id: nmdc:omprc-99-zUCd5N
+    type: nmdc:Biosample
+data_generation_set:
+  - id: nmdc:dgns-99-zUCd5N
+    analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335
     name: a process in which a biosample was sequenced?
@@ -44,9 +59,7 @@ omics_processing_set:
       - nmdc:dobj-00-9n9n9n
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
-    omics_type:
-      has_raw_value: Metagenome
-    part_of:
-      - nmdc:sty-00-555xxx
     processing_institution: JGI
-    type: nmdc:OmicsProcessing
+    type: nmdc:NucleotideSequencing
+    associated_studies: 
+      - nmdc:sty-00-555xxx

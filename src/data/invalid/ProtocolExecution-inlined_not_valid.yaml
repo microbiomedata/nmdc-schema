@@ -1,0 +1,22 @@
+id: nmdc:pex-99-18sD2
+type: nmdc:ProtocolExecution
+has_input:
+  - nmdc:bsm-6
+has_process_parts:
+  - id: "nmdc:extrp-71-r2pk"
+    has_input:
+      - "nmdc:ome-6"
+    has_output:
+      - "nmdc:ome-8"
+    extractant:
+      has_solution_components:
+        - compound: deionized_water
+        - compound: methanol
+          concentration:
+            has_numeric_value: 5
+            has_unit: "%"
+protocol_execution_category: organic_matter_extraction
+protocol_link:
+  url: https://www.protocols.io/view/water-extractable-organic-matter-weom-ewov1o4oylr2/v1
+  name: Water Extractable Organic Matter (WEOM)
+  type: nmdc:Protocol

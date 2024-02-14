@@ -15,13 +15,31 @@ class TestCA(unittest.TestCase):
     def test_sum(self):
         validator = JsonSchemaDataValidator(SCHEMA_FILE)
 
-        pv1 = PersonValue(has_raw_value="GW Carver")
-        pv2 = PersonValue(has_raw_value="L Pasteur")
+        pv1 = PersonValue(
+            has_raw_value="GW Carver",
+            type="nmdc:PersonValue",
+        )
+        pv2 = PersonValue(
+            has_raw_value="L Pasteur",
+            type="nmdc:PersonValue",
+        )
 
-        ca1 = CreditAssociation(applies_to_person=pv1, applied_roles=["Supervision", "Validation"])
-        ca2 = CreditAssociation(applies_to_person=pv2, applied_roles=["Investigation"])
+        ca1 = CreditAssociation(
+            applied_roles=["Supervision", "Validation"],
+            applies_to_person=pv1,
+            type="nmdc:CreditAssociation",
+        )
+        ca2 = CreditAssociation(
+            applied_roles=["Investigation"],
+            applies_to_person=pv2,
+            type="nmdc:CreditAssociation",
+        )
 
-        s = Study(id="nmdc:sty-e3e05c16-8c9a-421e-ade5-cde4e5a435fa", study_category="research_study")
+        s = Study(
+            id="nmdc:sty-e3e05c16-8c9a-421e-ade5-cde4e5a435fa",
+            study_category="research_study",
+            type="nmdc:Study",
+        )
 
         # # why is schema loaded each time?
         validator.validate_object(ca1, target_class=CreditAssociation)

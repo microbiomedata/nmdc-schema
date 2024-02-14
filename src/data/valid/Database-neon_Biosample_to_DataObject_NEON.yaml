@@ -1,137 +1,170 @@
 library_preparation_set:
-- id: nmdc:libprp-99-abcdef
-  name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
-  has_input:
-  - nmdc:procsm-99-xyz2
-  has_output:
-  - nmdc:procsm-99-xyz3
-  start_date: '2021-01-15'
-  end_date: '2021-01-15'
-  library_type: DNA
+  - id: nmdc:libprp-99-abcdef
+    name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
+    has_input:
+      - nmdc:procsm-99-xyz2
+    has_output:
+      - nmdc:procsm-99-xyz3
+    start_date: '2021-01-15'
+    end_date: '2021-01-15'
+    library_type: DNA
+    type: nmdc:LibraryPreparation
 processed_sample_set:
-- id: nmdc:procsm-99-xyz1
-  name: first processed sample set
-- id: nmdc:procsm-99-xyz2
-  name: first DNA extract
-- id: nmdc:procsm-99-xyz3
-  name: first library
+  - id: nmdc:procsm-99-xyz1
+    name: first processed sample set
+    type: nmdc:ProcessedSample
+  - id: nmdc:procsm-99-xyz2
+    name: first DNA extract
+    type: nmdc:ProcessedSample
+  - id: nmdc:procsm-99-xyz3
+    name: first library
+    type: nmdc:ProcessedSample
 extraction_set:
-- id: nmdc:extrp-99-abcdef
-  name: first dna extraction set
-  has_input:
-  - nmdc:procsm-99-xyz1
-  has_output:
-  - nmdc:procsm-99-xyz2
-  start_date: '2021-01-15'
-  end_date: '2021-01-15'
-  extraction_target: DNA
+  - id: nmdc:extrp-99-abcdef
+    name: first dna extraction set
+    has_input:
+      - nmdc:procsm-99-xyz1
+    has_output:
+      - nmdc:procsm-99-xyz2
+    start_date: '2021-01-15'
+    end_date: '2021-01-15'
+    extraction_target: DNA
+    type: nmdc:Extraction
 biosample_set:
-- id: nmdc:bsm-99-abcdef1
-  part_of:
-  - nmdc:sty-11-34xj1150
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-- id: nmdc:bsm-99-abcdef2
-  part_of:
-  - nmdc:sty-11-34xj1150
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
-- id: nmdc:bsm-99-abcdef3
-  part_of:
-  - nmdc:sty-11-34xj1150
-  env_broad_scale:
-    has_raw_value: ENVO:00002030
-    term:
-      id: ENVO:00002030
-  env_local_scale:
-    has_raw_value: ENVO:00002169
-    term:
-      id: ENVO:00002169
-  env_medium:
-    has_raw_value: ENVO:00005792
-    term:
-      id: ENVO:00005792
+  - id: nmdc:bsm-99-abcdef1
+    type: nmdc:Biosample
+    associated_studies:
+      - nmdc:sty-11-34xj1150
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002030
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002030
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002169
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002169
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00005792
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00005792
+  - id: nmdc:bsm-99-abcdef2
+    type: nmdc:Biosample
+    associated_studies:
+      - nmdc:sty-11-34xj1150
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002030
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002030
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002169
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002169
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00005792
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00005792
+  - id: nmdc:bsm-99-abcdef3
+    type: nmdc:Biosample
+    associated_studies:
+      - nmdc:sty-11-34xj1150
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002030
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002030
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002169
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002169
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00005792
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00005792
 data_object_set:
-- id: nmdc:dobj-12-jdhk9537
-  name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
-  description: Test R1 data
-  data_object_type: Metagenome Raw Read 1
-  url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
-  type: nmdc:DataObject
-- id: nmdc:dobj-12-yx0tfp52
-  name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
-  description: Test R2 data
-  data_object_type: Metagenome Raw Read 2
-  url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
-  type: nmdc:DataObject
-- id: nmdc:dobj-12-71q7wv80
-  name: 1472_51293.filtered.fastq.gz
-  description: Test filtered data for NEON
-  data_object_type: Filtered Sequencing Reads
-  url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
-  type: nmdc:DataObject
-omics_processing_set:
-- id: nmdc:omprc-11-s9xj2r24
-  name: Test NEON data
-  has_input:
-  - nmdc:procsm-99-xyz3
-  has_output:
-  - nmdc:dobj-12-jdhk9537
-  - nmdc:dobj-12-yx0tfp52
-  instrument_name: Illumina NovaSeq S4
-  omics_type:
-    has_raw_value: Metagenome
-  part_of:
-  - nmdc:sty-11-34xj1150
-  processing_institution: Battelle
-  type: nmdc:OmicsProcessing
-read_qc_analysis_activity_set:
-- id: nmdc:wfrqc-12-63da5n74
-  name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
-  started_at_time: '2023-03-23T17:17:05.111689+00:00'
-  ended_at_time: '2023-03-23T17:17:05.111725+00:00'
-  was_informed_by: nmdc:omprc-11-s9xj2r24
-  execution_resource: NERSC-Cori
-  git_url: https://github.com/microbiomedata/ReadsQC
-  has_input:
-  - nmdc:dobj-12-jdhk9537
-  - nmdc:dobj-12-yx0tfp52
-  has_output:
-  - nmdc:dobj-12-71q7wv80
-  - nmdc:dobj-12-y236qp68
-  type: nmdc:ReadQCAnalysisActivity
-  part_of:
-  - nmdc:wfrqc-11-hcr2by04.1
-  version: b1.0.7
+  - id: nmdc:dobj-12-jdhk9537
+    name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
+    description: Test R1 data
+    data_object_type: Metagenome Raw Read 1
+    url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
+    type: nmdc:DataObject
+  - id: nmdc:dobj-12-yx0tfp52
+    name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
+    description: Test R2 data
+    data_object_type: Metagenome Raw Read 2
+    url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
+    type: nmdc:DataObject
+  - id: nmdc:dobj-12-71q7wv80
+    name: 1472_51293.filtered.fastq.gz
+    description: Test filtered data for NEON
+    data_object_type: Filtered Sequencing Reads
+    url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
+    type: nmdc:DataObject
+data_generation_set:
+  - id: nmdc:dgns-11-s9xj2r24
+    analyte_category: metagenome
+    name: Test NEON data
+    has_input:
+      - nmdc:procsm-99-xyz3
+    has_output:
+      - nmdc:dobj-12-jdhk9537
+      - nmdc:dobj-12-yx0tfp52
+    instrument_used:
+      - nmdc:inst-12-yx0tfp52
+    part_of:
+      - nmdc:dgns-11-34xj1150
+    processing_institution: Battelle
+    type: nmdc:NucleotideSequencing
+    associated_studies: 
+      - nmdc:sty-11-34xj1150
+workflow_chain_set:
+  - id: nmdc:wfch-11-ab
+    analyte_category: metagenome
+    was_informed_by: nmdc:dgns-11-s9xj2r24
+    type: nmdc:WorkflowChain
+read_qc_analysis_set:
+  - id: nmdc:wfrqc-12-63da5n74
+    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
+    started_at_time: '2023-03-23T17:17:05.111689+00:00'
+    ended_at_time: '2023-03-23T17:17:05.111725+00:00'
+    part_of:
+      - nmdc:wfch-11-ab
+    execution_resource: NERSC-Cori
+    git_url: https://github.com/microbiomedata/ReadsQC
+    has_input:
+      - nmdc:dobj-12-jdhk9537
+      - nmdc:dobj-12-yx0tfp52
+    has_output:
+      - nmdc:dobj-12-71q7wv80
+      - nmdc:dobj-12-y236qp68
+    type: nmdc:ReadQcAnalysis
+    version: b1.0.7
 pooling_set:
-- id: nmdc:poolp-99-abcdef
-  name: first pooling process
-  description: This is the first pooling process that has ever occurred on earth
-  has_input:
-  - nmdc:bsm-99-abcdef1
-  - nmdc:bsm-99-abcdef2
-  - nmdc:bsm-99-abcdef3
-  has_output:
-  - nmdc:procsm-99-xyz1
-  start_date: '2021-01-14'
-  end_date: '2021-01-14'
+  - id: nmdc:poolp-99-abcdef
+    type: nmdc:Pooling
+    name: first pooling process
+    description: This is the first pooling process that has ever occurred on earth
+    has_input:
+      - nmdc:bsm-99-abcdef1
+      - nmdc:bsm-99-abcdef2
+      - nmdc:bsm-99-abcdef3
+    has_output:
+      - nmdc:procsm-99-xyz1
+    start_date: '2021-01-14'
+    end_date: '2021-01-14'

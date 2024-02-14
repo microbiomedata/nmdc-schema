@@ -18,33 +18,10 @@ default_range: string
 
 classes:
 
-  Activity:
-    description: Something that occurs over a period of time and acts upon or with entities; 
-      it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
-    slots:
-      - id
-      - name
-      - started_at_time
-      - ended_at_time
-      - was_informed_by
-      - used
-    comments:
-      - to be replaced with PlannedProcess in the monterey-schema
-    notes:
-      - removed was_associated_with because we are trying to avoid instantiating id-less Agents
-    mappings:
-      - prov:Activity
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-
 slots:
 
   started_at_time:
-    domain: Activity
+    domain: WorkflowExecution
     range: string
     #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
@@ -55,7 +32,7 @@ slots:
       - prov:startedAtTime
 
   ended_at_time:
-    domain: Activity
+    domain: WorkflowExecution
     #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
     notes: >-
@@ -65,17 +42,13 @@ slots:
       - prov:endedAtTime
 
   was_informed_by:
-    domain: Activity
-    range: Activity
+    domain: WorkflowExecution
+    range: WorkflowExecution
     mappings:
       - prov:wasInformedBy
 
   was_generated_by:
-    range: Activity
+    range: WorkflowExecution
     mappings:
       - prov:wasGeneratedBy
 
-  used:
-    domain: Activity
-    mappings:
-      - prov:used

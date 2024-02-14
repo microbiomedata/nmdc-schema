@@ -1,0 +1,12 @@
+study_set:
+  - id: nmdc:sty-00-555xxx
+    name: Thawing permafrost microbial communities from the Arctic, studying carbon
+      transformations
+    description: A fundamental challenge of microbial environmental science is to understand
+      how earth systems will respond to climate change
+    ecosystem: Environmental
+    ecosystem_category: Terrestrial
+    ecosystem_type: Soil
+    ecosystem_subtype: Wetlands
+    specific_ecosystem: Permafrost
+    type: nmdc:Study

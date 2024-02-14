@@ -10,27 +10,46 @@ from nmdc_schema.nmdc import (
 
 class TestBiosampleInstantiation(unittest.TestCase):
     def test_with_part_of(self):
-        self.assertTrue(True)
 
         bs = Biosample(
             id="bs:1",
-            part_of=[
+            associated_studies=[
                 "study:1",
                 "study:2",
             ],
-            env_broad_scale=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
-            env_local_scale=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
-            env_medium=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
+            env_broad_scale=ControlledIdentifiedTermValue(
+                term=OntologyClass(
+                    id="ENVO:00000000",
+                    type="nmdc:OntologyClass",
+                ),
+                type="nmdc:ControlledIdentifiedTermValue",
+            ),
+            env_local_scale=ControlledIdentifiedTermValue(
+                term=OntologyClass(
+                    id="ENVO:00000000",
+                    type="nmdc:OntologyClass",
+                ),
+                type="nmdc:ControlledIdentifiedTermValue",
+            ),
+            env_medium=ControlledIdentifiedTermValue(
+                term=OntologyClass(
+                    id="ENVO:00000000",
+                    type="nmdc:OntologyClass",
+                ),
+                type="nmdc:ControlledIdentifiedTermValue",
+            ),
+            type="nmdc:Biosample",
         )
 
-    def test_invalid_biosample(self):
+    def test_invalid_biosample_empty_env_triad_terms(self):
         with self.assertRaises(Exception):
             bs = Biosample(
-                id="x",
-                part_of="x",
                 env_broad_scale=ControlledTermValue(),
                 env_local_scale=ControlledTermValue(),
                 env_medium=ControlledTermValue(),
+                id="x",
+                associated_studies="x",
+                type="nmdc:Biosample",
             )
 
 

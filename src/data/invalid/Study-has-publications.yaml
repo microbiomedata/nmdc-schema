@@ -1,10 +1,8 @@
 id: nmdc:sty-11-ab
+type: nmdc:Study
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 related_identifiers: any string R1
-#emsl_proposal_identifier:
-#  - generic:abc1
-#emsl_proposal_doi: any string
 gold_study_identifiers:
   - gold:Gs12345
   - gold:Gs90909
@@ -19,6 +17,7 @@ ecosystem_subtype: unconstrained text
 specific_ecosystem: unconstrained text
 principal_investigator:
   has_raw_value: Craig Venter
+  type: nmdc:PersonValue
   was_generated_by: nmdc:any_string_1
   orcid: ORCID:0000-0002-7086-765X
   profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
@@ -48,10 +47,11 @@ websites:
 publications:
   - any string 1
   - any string 2
-type: any string
-relevant_protocols:
-  - any string 1
-  - any string 2
+protocol_link:
+  - name: any string 1
+    type: nmdc:Protocol
+  - name: any string 2
+    type: nmdc:Protocol
 funding_sources:
   - any string 1
   - any string 2

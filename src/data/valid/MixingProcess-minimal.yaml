@@ -1,11 +1,13 @@
-id: nmdc:mp-1
+id: nmdc:mixpro-11-A74
+type: nmdc:MixingProcess
 has_input:
   - nmdc:biosample-1 #This is an example biosample ID and does not represent a real biosample
   - nmdc:processed-sample-2
 has_output:
   - nmdc:4
 duration:
+  type: nmdc:QuantityValue
   has_numeric_value: 2
   has_unit: hours
-instrument_name:
-  Orbital Shaker
+instrument_used:
+  - nmdc:inst-12-124

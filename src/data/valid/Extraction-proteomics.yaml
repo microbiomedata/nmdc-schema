@@ -1,13 +1,19 @@
 id: "nmdc:extrp-38-r2pk"
+type: nmdc:Extraction
 has_input:
-  - "nmdc:fasp-37"
+  - "nmdc:procsm-37"
 has_output:
-  - "nmdc:ome-39"
+  - "nmdc:procsm-39"
 extractant: # range: Solution... multivalued? (no) -> has_solution_component
+  type: nmdc:Solution
   has_solution_components:
-    - compound: deionized water
-    - compound: ammonium bicarbonate
+    - compound: deionized_water
+      type: nmdc:SolutionComponent
+    - compound: ammonium_bicarbonate
+      type: nmdc:SolutionComponent
     - compound: trypsin
+      type: nmdc:SolutionComponent
       concentration:
+        type: nmdc:QuantityValue
         has_numeric_value: 0.05
         has_unit: "μg/μL"
