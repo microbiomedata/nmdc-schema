@@ -76,7 +76,7 @@ slots:
   mass_spectrum_collection_mode:
     domain: MassSpectrometry
     range: MassSpectrumCollectionModeEnum
-    description: whether mass spectra are centroided during collection
+    description: Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.
   polarity_mode:
     domain: MassSpectrometry
     range: PolarityModeEnum
