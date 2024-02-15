@@ -6,7 +6,7 @@ data_generation_set:
     acquisition_strategy: data_independent_acquisition
     resolution_category: high
     mass_analyzer: Orbitrap
-    ionization_source: electrospray_ionization
+    ionization_source: electron_ionization
     polarity_mode: negative
     alternative_identifiers:
       - emsl:123423

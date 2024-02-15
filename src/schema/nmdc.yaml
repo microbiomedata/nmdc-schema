@@ -1955,6 +1955,10 @@ enums:
       athmospheric_pressure_chemical_ionization:
         aliases:
           - APCI
+      electron_ionization: 
+        aliases: 
+          - EI
+
 
   MassSpectrumCollectionModeEnum:
     permissible_values:
