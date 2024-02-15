@@ -19,7 +19,7 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  dna_sample_format_enum:
+  DNASampleFormatEnum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       10 mM Tris-HCl: { }
@@ -183,7 +183,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 12
     slot_group: JGI-Metagenomics
-    range: dna_sample_format_enum
+    range: DNASampleFormatEnum
     recommended: true
   dna_sample_name:
     description: Give the DNA sample a name that is meaningful to you. Sample names

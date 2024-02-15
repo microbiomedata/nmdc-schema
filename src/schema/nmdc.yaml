@@ -1771,14 +1771,11 @@ enums:
       tube: { }
 
   YesNoEnum:
-    name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
-    from_schema: https://example.com/nmdc_submission_schema
     permissible_values:
-      "no":
-        text: "no"
-      "yes":
-        text: "yes"
+      'no': { }
+      'yes': { }
+
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:
@@ -1803,7 +1800,7 @@ enums:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
 
-  file type enum:
+  FileTypeEnum:
     permissible_values:
       Metagenome Raw Reads:
         description: Interleaved paired-end raw sequencing data
@@ -2104,7 +2101,7 @@ enums:
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
 
-  credit enum:
+  CreditEnum:
     permissible_values:
       Conceptualization:
         description: Conceptualization
@@ -2141,8 +2138,7 @@ enums:
         description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
-      - credit enums come from https://casrai.org/credit/
-
+      - CreditEnums come from https://casrai.org/credit/
 
   StudyCategoryEnum:
     permissible_values:
@@ -2648,7 +2644,6 @@ slots:
   funding_sources:
     multivalued: true
     range: string
-    pattern: ^.{1,250}$
     description: >-
       A list of organizations, along with the award numbers, that underwrite financial support for projects of 
       a particular type. Typically, they process applications and award funds to the chosen qualified 
@@ -2664,7 +2659,7 @@ slots:
       - NCIT:C39409
   applied_roles:
     domain: CreditAssociation
-    range: credit enum
+    range: CreditEnum
     multivalued: true
     required: true
     annotations:
@@ -2852,8 +2847,7 @@ slots:
       - value: metagenome
 
   data_object_type:
-    domain: DataObject
-    range: file type enum
+    range: FileTypeEnum
     description: The type of file represented by the data object.
     examples:
       - value: FT ICR-MS Analysis Results
@@ -3023,7 +3017,7 @@ slots:
   salinity_category:
     description:
       "Categorical description of the sample's salinity. Examples: halophile,
-      halotolerant, hypersaline, huryhaline"
+        halotolerant, hypersaline, huryhaline"
     range: string
     see_also:
       - https://github.com/microbiomedata/nmdc-metadata/pull/297
