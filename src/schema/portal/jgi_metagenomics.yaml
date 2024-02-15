@@ -133,6 +133,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
+    aliases:
+      - Sample Isolation Method
   dna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
       as estimated % of the organism in that culture.
@@ -206,6 +208,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
+    aliases:
+      - Seq Project ID
   dna_seq_project_pi:
     title: DNA seq project PI
     comments:
