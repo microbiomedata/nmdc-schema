@@ -1,0 +1,41 @@
+PREFIX nmdc: <https://w3id.org/nmdc/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+select 
+distinct 
+?OmicsProcessing (group_concat(?Biosample; SEPARATOR="|") as ?Biosamples)
+where {
+    graph <mongodb://mongo-loadbalancer.nmdc.production.svc.spin.nersc.gov:27017> {
+        ?OmicsProcessing a nmdc:OmicsProcessing  ;
+            dcterms:isPartOf nmdc:sty-11-34xj1150.
+        ?Biosample a nmdc:Biosample .
+    }
+    {
+        {
+            ?OmicsProcessing nmdc:has_input ?op_input .
+            ?LibraryPreparation a nmdc:LibraryPreparation ;
+                     nmdc:has_output ?op_input  ;
+                     nmdc:has_input ?libprep_input .
+            ?Extraction a nmdc:Extraction ;
+                        nmdc:has_output ?libprep_input ;
+                        nmdc:has_input ?extr_inp .
+            ?Pooling a nmdc:Pooling ;
+                     nmdc:has_output ?extr_inp ;
+                     nmdc:has_input ?Biosample .
+        }
+        union
+        {
+            ?OmicsProcessing nmdc:has_input ?op_input .
+            ?LibraryPreparation a nmdc:LibraryPreparation ;
+                     nmdc:has_output ?op_input  ;
+                     nmdc:has_input ?libprep_input .
+            ?Extraction a nmdc:Extraction ;
+                        nmdc:has_output ?libprep_input ;
+                        nmdc:has_input ?Biosample .
+        }
+        union
+        {
+            ?OmicsProcessing nmdc:has_input ?Biosample .
+        }
+    }
+}
+group by ?OmicsProcessing

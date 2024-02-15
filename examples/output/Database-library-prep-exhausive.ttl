@@ -1,10 +1,10 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix generic: <https://example.com/generic/> .
+@prefix generic: <https://example.org/generic/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-nmdc:libprp-99-xxx1 a nmdc:LibraryPreparation ;
-    dcterms:description "RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX" ;
+nmdc:libprp-99-xxx1 dcterms:description "RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX" ;
+    nmdc:designated_class "nmdc:LibraryPreparation"^^xsd:anyURI ;
     nmdc:end_date "2018-09-26" ;
     nmdc:has_input generic:xxy ;
     nmdc:has_output generic:xxz ;
@@ -15,8 +15,8 @@ nmdc:libprp-99-xxx1 a nmdc:LibraryPreparation ;
     nmdc:processing_institution "Battelle" ;
     nmdc:start_date "2018-09-26" .
 
-nmdc:libprp-99-xxx2 a nmdc:LibraryPreparation ;
-    dcterms:description "DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2" ;
+nmdc:libprp-99-xxx2 dcterms:description "DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2" ;
+    nmdc:designated_class "nmdc:LibraryPreparation"^^xsd:anyURI ;
     nmdc:end_date "2018-09-26" ;
     nmdc:has_input generic:xxx ;
     nmdc:has_output generic:xxx ;

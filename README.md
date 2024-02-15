@@ -1,11 +1,11 @@
 <p align="center">
-    <img src="images/nmdc_logo_long.jpeg" width="100" height="40"/>
+    <img src="https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/images/nmdc_logo_long.jpeg" width="119" height="40"/>
 </p>
 
 # National Microbiome Data Collaborative Schema
 
 [![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/main/LICENSE)
-[![PyPI version](https://badge.fury.io/py/nmdc-schema.svg)](https://badge.fury.io/py/nmdc-schema)
+[![PyPI version](https://badge.fury.io/py/nmdc-schema.svg?any-param=to-cause-a-cache-miss)](https://badge.fury.io/py/nmdc-schema)
 
 The NMDC is a multi-organizational effort to integrate microbiome data across diverse areas in medicine, agriculture,
 bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to
@@ -36,12 +36,25 @@ primer provides some the context for this project.
 
 ## Maintaining the Schema
 
-**New system requirement: [Mike Farah's GO-based yq](https://github.com/mikefarah/yq)**
+See [DEVELOPMENT.md](DEVELOPMENT.md) for instructions on setting up a development environment.
 
-Some optional components use the Java-based [ROBOT](http://robot.obolibrary.org/), which might be replaced with Jena arq
-in the future.
+See [MAINTAINERS.md](MAINTAINERS.md) for instructions on using that development environment to maintain the schema.
 
-See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
+## Makefiles
+
+Makefiles are text files people can use to tell [`make`](https://www.gnu.org/software/make/manual/make.html#Introduction) (a computer program) how it can _make_ things (or—in general—_do_ things). In the world of Makefiles, those _things_ are called _targets_.
+
+This repo contains 2 Makefiles:
+- `Makefile`, based on the generic Makefile from the [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter)
+- `project.Makefile`, which contains _targets_ that are specific to this project
+
+Here's an example of using `make` in this repo:
+
+```shell
+# Deletes all files in `examples/output`.
+make examples-clean
+```
+> The `examples-clean` _target_ is defined in the `project.Makefile`. In this repo, the `Makefile` `include`s the `project.Makefile`. As a result, `make` has access to the _targets_ defined in both files.
 
 ## Data downloads
 

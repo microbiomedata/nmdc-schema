@@ -1,12 +1,12 @@
 biosample_set:
   - id: nmdc:bsm-99-dtTMNb
     gold_biosample_identifiers:
-      - GOLD:Gb0101224
+      - gold:Gb0101224
     name: Lithgow State Coal Mine Calcium nutrients (early)
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0110115
+      - nmdc:sty-00-abc123
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -44,7 +44,7 @@ biosample_set:
     sample_collection_site: Lithgow State Coal Mine
   - id: nmdc:bsm-99-AtTUOs
     gold_biosample_identifiers:
-      - GOLD:Gb0101224
+      - gold:Gb0101224
     name: Lithgow State Coal Mine Calcium nutrients (early)
     biosample_categories:
       - LTER
@@ -52,7 +52,7 @@ biosample_set:
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0110115
+      - nmdc:sty-00-abc123
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -90,12 +90,12 @@ biosample_set:
     sample_collection_site: Lithgow State Coal Mine
   - id: nmdc:bsm-99-eBVHjN
     gold_biosample_identifiers:
-      - GOLD:Gb0101225
+      - gold:Gb0101225
     name: Lithgow State Coal Mine Calcium nutrients Extra
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0110115
+      - nmdc:sty-00-abc123
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -133,12 +133,12 @@ biosample_set:
     sample_collection_site: Lithgow State Coal Mine
   - id: nmdc:bsm-99-TDPHTh
     gold_biosample_identifiers:
-      - GOLD:Gb0101226
+      - gold:Gb0101226
     name: Lithgow State Coal Mine Calcium nutrients
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
     part_of:
-      - gold:Gs0110115
+      - nmdc:sty-00-abc123
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:

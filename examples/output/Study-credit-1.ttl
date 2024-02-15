@@ -9,5 +9,6 @@ nmdc:sty-99-WoeqAi a nmdc:Study ;
         [ a prov:Association ;
             nmdc:applied_roles "Data curation" ;
             nmdc:applies_to_person [ a nmdc:PersonValue ;
-                    nmdc:orcid "orcid:0000-0002-1825-00" ] ] .
+                    nmdc:orcid "orcid:0000-0002-1825-00" ] ] ;
+    nmdc:study_category "research_study" .
 

@@ -9,12 +9,18 @@ subsets:
 
 notes:
   - removed several MIxS terms/slots that were sharing slot uris; commented out Biosample assignments
-  - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms from https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
+  - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms
+    from https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/main/model/schema/mixs.yaml
+    and then potentially modifies them. Ideally this file would contain MIxS terms, essentially ready-to-use
   - multiple LinkML representations of MIxS are currently available and one will be blessed soon
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
   MIXS: https://w3id.org/mixs/
+  linkml: https://w3id.org/linkml/
+
+imports:
+  - linkml:types
 
 default_prefix: MIXS
 

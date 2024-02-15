@@ -11,11 +11,11 @@
         "nmdc:1",
         "nmdc:2"
       ],
+      "type": "xxx",
       "has_output": [
         "nmdc:3",
         "nmdc:4"
-      ],
-      "type": "xxx"
+      ]
     }
   ],
   "@type": "Database"

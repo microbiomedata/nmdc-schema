@@ -5,7 +5,7 @@
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
       "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "part_of": [
-        "GOLD:Gs0128849"
+        "nmdc:sty-00-8675309"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -28,7 +28,7 @@
       "type": "nmdc:Biosample",
       "samp_name": "11E1M metaG",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0150408"
+        "gold:Gb0150408"
       ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Terrestrial",
@@ -56,7 +56,7 @@
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
       "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
       "part_of": [
-        "GOLD:Gs0128849"
+        "nmdc:sty-00-8675309"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -79,7 +79,7 @@
       "type": "nmdc:Biosample",
       "samp_name": "Inc-BW-C-14-O",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0157174"
+        "gold:Gb0157174"
       ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Terrestrial",
@@ -107,7 +107,7 @@
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
       "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
       "part_of": [
-        "GOLD:Gs0128849"
+        "nmdc:sty-00-8675309"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -130,7 +130,7 @@
       "type": "nmdc:Biosample",
       "samp_name": "4-1-23 metaG",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0188037"
+        "gold:Gb0188037"
       ],
       "ecosystem": "Host-associated",
       "ecosystem_category": "Plants",
@@ -184,24 +184,25 @@
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
       "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
       "alternative_identifiers": [
-        "GOLD:Gp0225767"
+        "gold:Gp0225767"
       ],
+      "designated_class": "nmdc:OmicsProcessing",
       "has_input": [
-        "GOLD:Gb0157174"
+        "nmdc:bsm-00-yellow"
       ],
-      "add_date": "17-AUG-17 05.08.38.451000000 PM",
       "has_output": [
-        "jgi:599c3a117ded5e41edd7da77"
+        "nmdc:dobj-00-90125"
       ],
+      "processing_institution": "JGI",
+      "add_date": "17-AUG-17 05.08.38.451000000 PM",
       "mod_date": "16-OCT-20 02.04.01.374000000 AM",
       "ncbi_project_name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
       "omics_type": {
         "has_raw_value": "Metagenome"
       },
       "part_of": [
-        "GOLD:Gs0130354"
+        "nmdc:sty-00-31415"
       ],
-      "processing_institution": "JGI",
       "type": "nmdc:OmicsProcessing"
     },
     {
@@ -209,24 +210,25 @@
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
       "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "alternative_identifiers": [
-        "GOLD:Gp0208560"
+        "gold:Gp0208560"
       ],
+      "designated_class": "nmdc:OmicsProcessing",
       "has_input": [
-        "GOLD:Gb0150408"
+        "nmdc:bsm-00-green"
       ],
-      "add_date": "17-MAR-17 04.55.44.822000000 PM",
       "has_output": [
-        "jgi:58b653757ded5e7a2af951c4"
+        "nmdc:dobj-00-pizza"
       ],
+      "processing_institution": "JGI",
+      "add_date": "17-MAR-17 04.55.44.822000000 PM",
       "mod_date": "22-MAY-20 06.38.19.576000000 PM",
       "ncbi_project_name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
       "omics_type": {
         "has_raw_value": "Metagenome"
       },
       "part_of": [
-        "GOLD:Gs0128849"
+        "nmdc:sty-00-8675309"
       ],
-      "processing_institution": "JGI",
       "type": "nmdc:OmicsProcessing"
     },
     {
@@ -234,24 +236,25 @@
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
       "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
       "alternative_identifiers": [
-        "GOLD:Gp0306221"
+        "gold:Gp0306221"
       ],
+      "designated_class": "nmdc:OmicsProcessing",
       "has_input": [
-        "GOLD:Gb0188037"
+        "nmdc:bsm-00-blue"
       ],
-      "add_date": "29-MAR-18 01.27.30.036000000 PM",
       "has_output": [
-        "jgi:5baa816646d1e63f764deb37"
+        "nmdc:dobj-00-mobydick"
       ],
+      "processing_institution": "JGI",
+      "add_date": "29-MAR-18 01.27.30.036000000 PM",
       "mod_date": "04-APR-20 08.26.35.067000000 AM",
       "ncbi_project_name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
       "omics_type": {
         "has_raw_value": "Metagenome"
       },
       "part_of": [
-        "GOLD:Gs0134277"
+        "nmdc:sty-00-avacado"
       ],
-      "processing_institution": "JGI",
       "type": "nmdc:OmicsProcessing"
     }
   ],
@@ -260,15 +263,20 @@
       "id": "nmdc:sty-99-FkQIsc",
       "name": "Permafrost microbial communities from Stordalen Mire, Sweden",
       "description": "Thawing permafrost is one of the largest soil carbon pools on the planet. The goal of this project is to study microbial communities that participate in the soil carbon cycle.",
-      "doi": {
-        "has_raw_value": "10.25585/1488217"
-      },
+      "study_category": "research_study",
+      "associated_dois": [
+        {
+          "doi_value": "doi:10.25585/1488217",
+          "doi_category": "dataset_doi",
+          "doi_provider": "osti"
+        }
+      ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Terrestrial",
       "ecosystem_subtype": "Wetlands",
       "ecosystem_type": "Soil",
       "gold_study_identifiers": [
-        "GOLD:Gs0128849"
+        "gold:Gs123456789"
       ],
       "principal_investigator": {
         "has_raw_value": "Virginia Rich"
@@ -280,15 +288,20 @@
       "id": "nmdc:sty-99-oJmAOs",
       "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States",
       "description": "The goal of this study is to learn the molecular mechanisms underlying changes in the temperature sensitive respiration response of forest soils to long-term experimental warming",
-      "doi": {
-        "has_raw_value": "10.25585/1488215"
-      },
+      "study_category": "consortium",
+      "associated_dois": [
+        {
+          "doi_value": "doi:10.25585/1488215",
+          "doi_category": "dataset_doi",
+          "doi_provider": "osti"
+        }
+      ],
       "ecosystem": "Environmental",
       "ecosystem_category": "Terrestrial",
       "ecosystem_subtype": "Unclassified",
       "ecosystem_type": "Soil",
       "gold_study_identifiers": [
-        "GOLD:Gs0130354"
+        "gold:Gs121212"
       ],
       "principal_investigator": {
         "has_raw_value": "Jeffrey Blanchard"
@@ -300,15 +313,20 @@
       "id": "nmdc:sty-99-3bQQ4j",
       "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States",
       "description": "The goal of this study is to advance understanding of the response of methane production and methane oxidation to changes in plant productivity so that modeled representations of these processes and interactions can be improved.",
-      "doi": {
-        "has_raw_value": "10.25585/1488209"
-      },
+      "study_category": "research_study",
+      "associated_dois": [
+        {
+          "doi_value": "doi:10.25585/1488209",
+          "doi_category": "dataset_doi",
+          "doi_provider": "osti"
+        }
+      ],
       "ecosystem": "Host-associated",
       "ecosystem_category": "Plants",
       "ecosystem_subtype": "Rhizosphere",
       "ecosystem_type": "Roots",
       "gold_study_identifiers": [
-        "GOLD:Gs0134277"
+        "gold:Gs0134277"
       ],
       "principal_investigator": {
         "has_raw_value": "Rebecca Neumann"

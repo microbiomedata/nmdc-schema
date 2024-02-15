@@ -7,10 +7,10 @@ execution_resource: execution_resource1
 git_url: git_url1
 has_input:
 - jgi:534819030d87850d7aea2a16
+type: type1
 has_output:
 - nmdc:ae40d7ae535c92b6d347915d8b1ac125
 - nmdc:bd723452a107e973fcc6734ff7894bb9
-type: type1
 input_read_count: 10.0
 input_base_count: 300.0
 output_read_count: 3.0

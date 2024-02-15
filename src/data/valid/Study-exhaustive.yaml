@@ -8,8 +8,8 @@ related_identifiers: any string R1
 #  - generic:abc1
 #emsl_proposal_doi: any string
 gold_study_identifiers:
-  - GOLD:Gs12345
-  - GOLD:Gs90909
+  - gold:Gs12345
+  - gold:Gs90909
 mgnify_project_identifiers:
   - mgnify.proj:ABC123
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
@@ -29,8 +29,18 @@ principal_investigator:
   websites:
     - https://www.jcvi.org/
     - https://www.jcvi.org/about/j-craig-venter
-doi:
-  has_raw_value: https://doi.org/10.1126/science.1058040
+associated_dois:
+  - doi_value: doi:10.1126/science.1058040
+    doi_category: publication_doi
+  - doi_value: doi:10.1126/science.1456956
+    doi_provider: kbase
+    doi_category: dataset_doi
+  - doi_value: doi:10.1126/science.1234545
+    doi_provider: jgi
+    doi_category: award_doi
+  - doi_value: doi:10.48321/D1Z60Q
+    doi_category: data_management_plan_doi
+    doi_provider: gsc
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -43,19 +53,12 @@ alternative_descriptions:
 alternative_names:
   - any string 1
   - any string 2
-abstract: Nothing was studied.
 objective: This record, an instance of class Study from the nmdc-schema was had authored,
   so that the NMDC team would have at least one instance, using all slots, with a
   mixture of reasonable values and minimally compliant values.
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-publications:
-  - any string 1
-  - any string 2
-ess_dive_datasets:
-  - any string 1
-  - any string 2
 type: any string
 relevant_protocols:
   - any string 1
@@ -77,7 +80,7 @@ has_credit_associations:
     applied_roles:
       - Supervision
       - Conceptualization
-    applied_role: Funding acquisition
+      - Funding acquisition
     type: any string
   - applies_to_person:
       name: Tanja Davidsen
@@ -89,9 +92,12 @@ study_image:
     was_generated_by: nmdc:any_string_1
     url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     description: Photo of Craig Venter Institute, Rockville, Maryland
-    display_order: '1'
+    display_order: 1 # MAM 2023-12-08 switched from string to integer
   - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     was_generated_by: nmdc:any_string_1
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
-    display_order: '2'
+    display_order: 2 # MAM 2023-12-08 switched from string to integer
+study_category: research_study
+part_of:
+  - nmdc:sty-11-34xj1157

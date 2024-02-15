@@ -13,59 +13,27 @@ imports:
   - basic_slots
 
 prefixes:
-  # none of these are registered in prefix commons
-  GOLD: http://identifiers.org/gold/
+  gold: "https://bioregistry.io/gold:"
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-
   skos: http://www.w3.org/2004/02/skos/core#
 
 default_prefix: nmdc
 default_range: string
 
-#default_curi_maps:
-#  - obo_context
-#  - idot_context
-
-types:
-
-  external identifier:
-    typeof: uriorcurie
-    description: >-
-      A CURIE representing an external identifier
-    see_also:
-      - https://microbiomedata.github.io/nmdc-schema/identifiers.html
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
-
 slots:
-
-  external_database_identifiers:
-    abstract: true
-    description: Link to corresponding identifier in external database
-    is_a: alternative_identifiers
-    multivalued: true
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$'
-    range: external identifier
-    comments:
-      - The value of this field is always a registered CURIE
-    notes:
-      - "had tried ranges of external identifier and string"
-    close_mappings:
-      - skos:closeMatch
 
   img_identifiers:
     title: IMG Identifiers
     is_a: external_database_identifiers
     description: >-
       A list of identifiers that relate the biosample to records in the IMG database.
-    #    multivalued: true
     todos:
       - add is_a or mixin modeling, like other external_database_identifiers
       - what class would IMG records belong to?! Are they Studies, Biosamples, or something else?
     pattern: '^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$' # DOI-like pattern. Could be more conservative if we leave this out of the external_database_identifiers hierarchy
-  #    range: external identifier # or uriorcurie directly, as opposed to by-type-inheritance
 
-  # mixins
+  ## mixins
 
   igsn_identifiers:
     mixin: true
@@ -98,10 +66,6 @@ slots:
       - https://www.insdc.org/
       - https://ena-docs.readthedocs.io/en/latest/submit/general-guide/accessions.html
 
-  massive_identifiers:
-    mixin: true
-    description: identifiers for entities according to MASSIVE
-
   neon_identifiers:
     mixin: true
     description: identifiers for entities according to NEON
@@ -119,8 +83,29 @@ slots:
     abstract: true
     is_a: external_database_identifiers
 
+  jgi_portal_study_identifiers:
+    is_a: study_identifiers
+    domain: Study
+    mixins:
+      - jgi_portal_identifiers
+    id_prefixes:
+      - jgi.proposal
+    pattern: '^jgi.proposal:\d+$'
+    examples:
+      - value: jgi.proposal:507130
+    comments:
+      - Could this could be considered a related identifier?
+      - Curie suffix is the Site Award Number from an OSTI award page
+      - Site Award Number 507130 == award doi doi:10.46936/10.25585/60000017 -- GOLD study identifier gold:Gs0154044
+      - bioregistry.io/jgi.proposal:507130 ==https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
+    title: JGI Portal Study identifiers
+    description: >-
+      Identifiers that link a NMDC study to a website hosting raw and analyzed data for a JGI proposal. 
+      The suffix of the curie can used to query the GOLD API and is interoperable with an award DOI from OSTI and a GOLD study identifier.
+
   neon_study_identifiers:
     is_a: study_identifiers
+    domain: Study
     mixins:
       - neon_identifiers
 
@@ -135,7 +120,7 @@ slots:
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
-      - value: https://identifiers.org/insdc.sra:SRP121659
+      - value: https://bioregistry.io/insdc.sra:SRP121659
         description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
     see_also:
       - https://github.com/bioregistry/bioregistry/issues/109
@@ -154,7 +139,7 @@ slots:
     comments:
       - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one
     examples:
-      - value: https://identifiers.org/bioproject:PRJNA366857
+      - value: https://bioregistry.io/bioproject:PRJNA366857
         description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
     see_also:
       - https://www.ncbi.nlm.nih.gov/bioproject/
@@ -162,29 +147,32 @@ slots:
 
   gold_study_identifiers:
     is_a: study_identifiers
+    domain: Study
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Gs[0-9]+$"
+    pattern: "^gold:Gs[0-9]+$"
     description: identifiers for corresponding project(s) in GOLD
     comments:
       - uses the prefix GS (but possibly in a different case)
     examples:
-      - value: https://identifiers.org/gold:Gs0110115
+      - value: https://bioregistry.io/gold:Gs0110115
     see_also:
       - https://gold.jgi.doe.gov/studies
     title: GOLD Study Identifiers
 
   mgnify_project_identifiers:
     is_a: study_identifiers
+    domain: Study
     mixins:
       - mgnify_identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
     description: identifiers for corresponding project in MGnify
     examples:
-      - value: https://identifiers.org/mgnify.proj:MGYS00005757
+      - value: https://bioregistry.io/mgnify.proj:MGYS00005757
 
   gnps_task_identifiers:
     is_a: study_identifiers
+    domain: Study
     mixins:
       - gnps_identifiers
     title: GNPS task identifiers
@@ -198,35 +186,23 @@ slots:
       - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     pattern: "^gnps\\.task:[a-f0-9]+$"
 
-  massive_study_identifiers:
+
+  emsl_project_identifiers:
+    title: EMSL Project Identifiers
     is_a: study_identifiers
-    mixins:
-      - massive_identifiers
-    pattern: "^MASSIVE:"
-    todos:
-      - prefix not defined yet
-    description: identifiers for corresponding study in MASSIVE
-    examples:
-      - value: MASSIVE:MSV000090886
-        description: MASSIVE id for MASSIVE's metabolomics analysis of Gb0305843, resolvable with prefix http://identifiers.org/massive/
-    see_also:
-      - https://massive.ucsd.edu/ProteoSAFe/dataset.jsp?task=83574f41458a4b259621d5c32a4d82f9
-
-  #  emsl_proposal_identifier:
-  #    is_a: study_identifiers
-  #    mixins:
-  #      - emsl_identifiers
-  #    title: EMSL Proposal Identifier
-  #    description: The proposal number assigned to the EMSL awarded study that relates to that which is represented in NMDC.
-
-
-  emsl_project_dois:
-    is_a: study_identifiers
+    domain: Study
     mixins:
       - emsl_identifiers
-    title: EMSL Project DOI
-    description: A DOI that resolves to a EMSL Research Campaign page.
-
+    description: an identifier that links to an EMSL user facility project
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/927#issuecomment-1802136437
+    pattern: "^emsl\\.project:[0-9]{5}$"
+    examples:
+      - value: emsl.project:60141
+    notes:
+      - these identifiers are all currently 5 digits long but that could change in the future
+    todos:
+      - elaborate on description
 
   ## samples
 
@@ -243,10 +219,10 @@ slots:
     is_a: biosample_identifiers
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Gb[0-9]+$"
+    pattern: "^gold:Gb[0-9]+$"
     description: identifiers for corresponding sample in GOLD
     examples:
-      - value: https://identifiers.org/gold:Gb0312930
+      - value: https://bioregistry.io/gold:Gb0312930
 
   insdc_biosample_identifiers:
     is_a: biosample_identifiers
@@ -259,8 +235,8 @@ slots:
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
     description: identifiers for corresponding sample in INSDC
     examples:
-      - value: https://identifiers.org/biosample:SAMEA5989477
-      - value: https://identifiers.org/biosample:SAMD00212331
+      - value: https://bioregistry.io/biosample:SAMEA5989477
+      - value: https://bioregistry.io/biosample:SAMD00212331
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
     see_also:
       - https://github.com/bioregistry/bioregistry/issues/108
@@ -278,7 +254,7 @@ slots:
       - "ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331"
       - MGnify uses these as their primary sample IDs
     examples:
-      - value: https://identifiers.org/insdc.sra:DRS166340
+      - value: https://bioregistry.io/insdc.sra:DRS166340
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
 
   emsl_biosample_identifiers:
@@ -291,7 +267,6 @@ slots:
       - emsl_identifiers
     todos:
       - removed "planned" once NEXUS is online
-      - make an emsl identifiers mixin
       - determine real expansion for emsl prefix
 
   igsn_biosample_identifiers:
@@ -309,16 +284,18 @@ slots:
     is_a: external_database_identifiers
 
   gold_sequencing_project_identifiers:
+    domain: OmicsProcessing
     is_a: omics_processing_identifiers
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Gp[0-9]+$"
+    pattern: "^gold:Gp[0-9]+$"
     description: identifiers for corresponding sequencing project in GOLD
     examples:
-      - value: https://identifiers.org/gold:Gp0108335
+      - value: https://bioregistry.io/gold:Gp0108335
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
+    domain: OmicsProcessing
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
@@ -333,10 +310,10 @@ slots:
     is_a: analysis_identifiers
     mixins:
       - gold_identifiers
-    pattern: "^GOLD:Ga[0-9]+$"
+    pattern: "^gold:Ga[0-9]+$"
     description: identifiers for corresponding analysis project in GOLD
     examples:
-      - value: https://identifiers.org/gold:Ga0526289
+      - value: https://bioregistry.io/gold:Ga0526289
 
   insdc_analysis_identifiers:
     is_a: analysis_identifiers
@@ -371,10 +348,4 @@ slots:
     mixins:
       - insdc_identifiers
 
-#  # EMSL
-#
-#  emsl_project_identifier:
-#    see_also:
-#      - emsl_proposal_identifier
-#    comments:
-#      - this is also associated with class Study!
+

@@ -2,8 +2,15 @@
 ## Dependencies
 To make new release of the schema, you must have the following installed on your system:
 - [poetry](https://python-poetry.org/docs/#installation/)
-  - this repo previously used pipenv and some documentation may make references to it.
 - [pandoc](https://pandoc.org/installing.html)
+- [yq](https://github.com/mikefarah/yq)
+  - Specifically, [Mike Farah's Go-based yq](https://github.com/mikefarah/yq)
+- (Optional) [ROBOT](http://robot.obolibrary.org/)
+  - Editor's note: We may eventually switch to using [Apache Jena<sup>1</sup>  ARQ](https://jena.apache.org/documentation/query/) instead
+- (Optional) [Apache Jena<sup>1</sup> RIOT](https://jena.apache.org/documentation/io/)
+  - This is only necessary for dumping, repairing, and validating MongoDB data; which occurs when generating and validating RDF/TTL
+
+<sup>1</sup> The lead maintainer of this repository uses Apache Jena version `4.8.0`, which you can [download here](https://archive.apache.org/dist/jena/binaries/).
 
 ## Making changes to the NMDC Schema
 To track changes made to the NMDC Schema, it is best maintained by following these steps:
@@ -16,6 +23,8 @@ To track changes made to the NMDC Schema, it is best maintained by following the
 This project previously used a manually curated [**Change log**](https://github.com/microbiomedata/nmdc-schema/blob/main/CHANGELOG.md). More recently, we have decided that GitHub's auto-generated release notes are sufficient. Commit and pull messages should be written with this in mind: they will become part of the repo's documentation. 
 
 When the pull request is merged into the `main` branch, new documentation will be generated for the changed schema.
+
+The changes can be cecked locally with `make all test`
 
 ## Making a PyPI release of the NMDC Schema
 

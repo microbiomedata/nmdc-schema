@@ -8,8 +8,8 @@
         "generic:abc123"
       ],
       "part_of": [
-        "nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity",
-        "nmdc:unconstrained_study_identifier_string2"
+        "nmdc:sty-00-987654",
+        "nmdc:sty-00-qwerty"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -47,8 +47,8 @@
         "FICUS"
       ],
       "gold_biosample_identifiers": [
-        "GOLD:Gb123456789",
-        "GOLD:Gb90909090"
+        "gold:Gb123456789",
+        "gold:Gb90909090"
       ],
       "insdc_biosample_identifiers": [
         "biosample:SAMN123456789",
@@ -324,10 +324,10 @@
       "depos_env": "other",
       "depth": {
         "has_raw_value": "1.5 to 2.5 meters (that may not be the pattern the submission schema expects). Extractions below require external migration logic.",
-        "has_unit": "meter",
-        "has_numeric_value": 2.0,
+        "has_maximum_numeric_value": 2.5,
         "has_minimum_numeric_value": 1.5,
-        "has_maximum_numeric_value": 2.5
+        "has_numeric_value": 2.0,
+        "has_unit": "meter"
       },
       "dew_point": {
         "has_raw_value": "xxx"

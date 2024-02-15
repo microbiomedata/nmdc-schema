@@ -27,7 +27,7 @@
       },
       "collected_from": "nmdc:frsite-99-SPreao",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0305833"
+        "gold:Gb0305833"
       ]
     },
     {
@@ -57,7 +57,7 @@
       },
       "collected_from": "nmdc:frsite-99-SPreao",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0291692"
+        "gold:Gb0291692"
       ]
     },
     {
@@ -87,7 +87,7 @@
       },
       "collected_from": "nmdc:frsite-99-SPreao",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0291582"
+        "gold:Gb0291582"
       ]
     },
     {
@@ -117,7 +117,7 @@
       },
       "collected_from": "nmdc:frsite-99-h2mYFG",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0305834"
+        "gold:Gb0305834"
       ]
     },
     {
@@ -147,7 +147,7 @@
       },
       "collected_from": "nmdc:frsite-99-h2mYFG",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0291693"
+        "gold:Gb0291693"
       ]
     },
     {
@@ -177,7 +177,35 @@
       },
       "collected_from": "nmdc:frsite-99-h2mYFG",
       "gold_biosample_identifiers": [
-        "GOLD:Gb0291583"
+        "gold:Gb0291583"
+      ]
+    }
+  ],
+  "collecting_biosamples_from_site_set": [
+    {
+      "id": "nmdc:clsite-99-Cq00d1",
+      "name": "Collection of biosamples from BESC-13-CL1_35_33",
+      "designated_class": "nmdc:CollectingBiosamplesFromSite",
+      "has_input": [
+        "nmdc:frsite-99-SPreao"
+      ],
+      "has_output": [
+        "nmdc:bsm-99-J9FcnC",
+        "nmdc:bsm-99-BdlWdQ",
+        "nmdc:bsm-99-vn74Wq"
+      ]
+    },
+    {
+      "id": "nmdc:clsite-99-yzmLBN",
+      "name": "Collection of biosamples from BESC-13-CL2_39_29",
+      "designated_class": "nmdc:CollectingBiosamplesFromSite",
+      "has_input": [
+        "nmdc:frsite-99-h2mYFG"
+      ],
+      "has_output": [
+        "nmdc:bsm-99-P8FdpS",
+        "nmdc:bsm-99-ugBwz3",
+        "nmdc:bsm-99-tN5lxM"
       ]
     }
   ],
@@ -191,32 +219,6 @@
       "id": "nmdc:frsite-99-h2mYFG",
       "name": "BESC-13-CL2_39_29",
       "description": "Bioscales tree BESC-13-CL2_39_29"
-    }
-  ],
-  "collecting_biosamples_from_site_set": [
-    {
-      "id": "nmdc:clsite-99-Cq00d1",
-      "name": "Collection of biosamples from BESC-13-CL1_35_33",
-      "has_input": [
-        "nmdc:frsite-99-SPreao"
-      ],
-      "has_output": [
-        "nmdc:bsm-99-J9FcnC",
-        "nmdc:bsm-99-BdlWdQ",
-        "nmdc:bsm-99-vn74Wq"
-      ]
-    },
-    {
-      "id": "nmdc:clsite-99-yzmLBN",
-      "name": "Collection of biosamples from BESC-13-CL2_39_29",
-      "has_input": [
-        "nmdc:frsite-99-h2mYFG"
-      ],
-      "has_output": [
-        "nmdc:bsm-99-P8FdpS",
-        "nmdc:bsm-99-ugBwz3",
-        "nmdc:bsm-99-tN5lxM"
-      ]
     }
   ],
   "@type": "Database"

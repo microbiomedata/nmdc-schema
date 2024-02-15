@@ -1,8 +1,7 @@
 id: https://w3id.org/nmdc/prov
 name: NMDC-PROV
 title: NMDC Rendering of prov schema
-description: >-
-  See https://www.w3.org/TR/prov-o/
+description: See https://www.w3.org/TR/prov-o/
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -10,8 +9,7 @@ imports:
   - basic_slots
 
 prefixes:
-  prov: http://www.w3.org/ns/prov# # in https://github.com/prefixcommons/biocontext/blob/master/registry/semweb_context.jsonld
-
+  prov: http://www.w3.org/ns/prov#
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 
@@ -21,38 +19,34 @@ default_range: string
 classes:
 
   Activity:
-    description: "a provence-generating activity"
+    description: Something that occurs over a period of time and acts upon or with entities; 
+      it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
     slots:
       - id
       - name
       - started_at_time
       - ended_at_time
       - was_informed_by
-      #      - was_associated_with
       - used
+    comments:
+      - to be replaced with PlannedProcess in the monterey-schema
+    notes:
+      - removed was_associated_with because we are trying to avoid instantiating id-less Agents
     mappings:
       - prov:Activity
     slot_usage:
       id:
         required: true
         structured_pattern:
-          todos:
-            - remove the static pattern once the minter can generate ids that satisfy this structured_pattern and gen-linkml can expand the structured_pattern
           syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-
-#  Agent:
-#    description: "a provence-generating agent"
-#    slots:
-#      - acted_on_behalf_of
-#      - was_informed_by
-#    mappings:
-#      - prov:Agent
 
 slots:
 
   started_at_time:
-    range: datetime
+    domain: Activity
+    range: string
+    #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
     notes: >-
       The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
@@ -61,7 +55,8 @@ slots:
       - prov:startedAtTime
 
   ended_at_time:
-    range: datetime
+    domain: Activity
+    #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
     notes: >-
       The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
@@ -70,19 +65,10 @@ slots:
       - prov:endedAtTime
 
   was_informed_by:
+    domain: Activity
     range: Activity
     mappings:
       - prov:wasInformedBy
-
-  #  was_associated_with:
-  #    range: Agent
-  #    mappings:
-  #      - prov:wasAssociatedWith
-
-  #  acted_on_behalf_of:
-  #    range: Agent
-  #    mappings:
-  #      - prov:actedOnBehalfOf
 
   was_generated_by:
     range: Activity
