@@ -21,17 +21,6 @@ SCRIPTS_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPTS_DIR.parent.parent
 LOCAL_DIR = PROJECT_ROOT / "local"
 
-# Studies with non-compliant IDs that have been re-IDed
-# Name:, study ID, legacy study ID
-STUDIES = {
-    "Stegen": ("nmdc:sty-11-aygzgv51", "gold:Gs0114663"),
-    "SPRUCE": ("nmdc:sty-11-33fbta56", "gold:Gs0110138"),
-    "EMP": (None, "gold:Gs0154244"),
-    "Luquillo": (None, "gold:Gs0128850"),
-    "CrestedButte": ("nmdc:sty-11-dcqce727", "gold:Gs0135149"),
-}
-# Update study IDs after re-IDing
-DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
 
 # TODO: Move NmdcApi class to the nacent nmdc-common/client package
 # TODO: Add unit tests for NmdcApi class
