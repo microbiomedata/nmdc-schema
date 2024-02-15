@@ -132,18 +132,25 @@ def cli(ctx, api_base_url):
 
 
 @cli.command()
-@click.argument("study_id", required=True,)
-@click.option("--output-file", help="Path to output file, relative to project "
-                                   "root.")
-@click.option("--quick-test", is_flag=True, default=False, help=("Quick test "
-                                                                 "mode - "
-                                                                 "biosamples "
-                                                                 "and omics "
-                                                                 "only "))
-@click.option("--search-orphaned-data-objects", is_flag=True, default=False,
-              help=("Search for orphaned data objects by description."))
-@click.option("--search-legacy-identifiers", is_flag=True, default=False,
-              help=("Search for legacy IDs for Study and OmicsProcessing."))
+@click.option("--study-id", required=True, )
+@click.option(
+    "--output-file",
+    help="Path to output file, relative to project root."
+)
+@click.option(
+    "--quick-test",
+    is_flag=True,
+    default=False,
+    help=("Quick test mode, Biosamples and OmicsProcessing records only")
+)
+@click.option(
+    "--search-orphaned-data-objects", is_flag=True, default=False,
+    help=("Search for orphaned data objects by description.")
+)
+@click.option(
+    "--search-legacy-identifiers", is_flag=True, default=False,
+    help=("Search for legacy IDs for Study and OmicsProcessing.")
+    )
 @click.pass_context
 def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_objects, search_legacy_identifiers):
     """
