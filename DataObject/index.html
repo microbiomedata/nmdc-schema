@@ -287,7 +287,7 @@
 
   DataObject : data_object_type
 
-    DataObject --|&gt; file type enum : data_object_type
+    DataObject --|&gt; FileTypeEnum : data_object_type
 
   DataObject : description
 
@@ -416,12 +416,6 @@
 <tr>
 <td><a href="./">DataObject</a></td>
 <td><a href="../file_size_bytes/">file_size_bytes</a></td>
-<td>domain</td>
-<td><a href="./">DataObject</a></td>
-</tr>
-<tr>
-<td><a href="./">DataObject</a></td>
-<td><a href="../data_object_type/">data_object_type</a></td>
 <td>domain</td>
 <td><a href="./">DataObject</a></td>
 </tr>
@@ -572,12 +566,11 @@ attributes:
     - value: GC-MS Metabolomics Results
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: DataObject
     alias: data_object_type
     owner: DataObject
     domain_of:
     - DataObject
-    range: file type enum
+    range: FileTypeEnum
   compression_type:
     name: compression_type
     description: If provided, specifies the compression type

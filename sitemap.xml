@@ -171,6 +171,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/DNASampleFormatEnum/</loc>
+         <lastmod>2024-02-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/DataObject/</loc>
          <lastmod>2024-02-15</lastmod>
          <changefreq>daily</changefreq>
@@ -222,11 +227,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/DeviceEnum/</loc>
-         <lastmod>2024-02-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/DnaSampleFormatEnum/</loc>
          <lastmod>2024-02-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -801,6 +801,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/RNASampleFormatEnum/</loc>
+         <lastmod>2024-02-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Reaction/</loc>
          <lastmod>2024-02-15</lastmod>
          <changefreq>daily</changefreq>
@@ -822,11 +827,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/RelSampLocEnum/</loc>
-         <lastmod>2024-02-15</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/RnaSampleFormatEnum/</loc>
          <lastmod>2024-02-15</lastmod>
          <changefreq>daily</changefreq>
     </url>
