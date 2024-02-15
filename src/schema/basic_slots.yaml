@@ -68,7 +68,7 @@ slots:
   mass_analyzer:
     domain: MassSpectrometry
     range: MassAnalyzerEnum
-    description: which kind of mass analyzer is used during the spectra colleciton
+    description: which kind of mass analyzer is primarily used during the spectra collection.
   ionization_source:
     domain: MassSpectrometry
     range: IonizationSourceEnum
