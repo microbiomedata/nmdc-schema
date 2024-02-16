@@ -3,7 +3,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 class Migrator(MigratorBase):
     """
-    Migrates data between from X to PR2 and PR24
+    Migrates data between from X to PR2 and PR24, namely renames all renamed collections.
     """
     _from_version = "X"
     _to_version = "PR2_and_PR24"
@@ -13,7 +13,7 @@ class Migrator(MigratorBase):
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         """
 
-        agenda = {
+        old_to_new_names = {
             "omics_processing_set": "data_generation_set",
             "mags_activity_set": "mags_set",
             "metabolomics_analysis_activity_set": "metabolomics_analysis_set",
@@ -26,5 +26,5 @@ class Migrator(MigratorBase):
             "read_qc_analysis_activity_set": "read_qc_analysis_set"
             }
 
-        for current_collection_name, new_collection_name in agenda.items():
+        for current_collection_name, new_collection_name in old_to_new_names.items():
             self.adapter.rename_collection(current_name=current_collection_name, new_name=new_collection_name)
