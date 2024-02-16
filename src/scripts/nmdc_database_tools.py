@@ -13,6 +13,8 @@ from pathlib import Path
 import requests
 from datetime import datetime
 import yaml
+from typing import Union
+import os
 
 from linkml_runtime.dumpers import yaml_dumper
 import nmdc_schema.nmdc as nmdc
@@ -152,7 +154,8 @@ def cli(ctx, api_base_url):
     help=("Search for legacy IDs for Study and OmicsProcessing.")
     )
 @click.pass_context
-def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_objects, search_legacy_identifiers):
+def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike], quick_test: bool, 
+                  search_orphaned_data_objects: bool, search_legacy_identifiers: bool) -> None:
     """
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a YAML or JSON file.
@@ -224,15 +227,17 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
 
     # Get the study's associated records
     # Biosamples part_of the study
-    search_study_ids = [study_id]
+    search_identifiers = []
     if search_legacy_identifiers:
         # add legacy study IDs to search
         logger.info("Searching using current and legacy identifiers")
-        search_study_ids.extend(study.get("gold_study_identifiers", []))
-        logger.info(f"Using study IDs: {search_study_ids}")
+        legacy_identifiers = (study.get("gold_study_identifiers", []))
+        if legacy_identifiers:
+            logger.info(f"SearchLegacyIdentifiers: also using IDs: {legacy_identifiers}")
+            search_identifiers.extend(legacy_identifiers)
 
-
-    for study_id in search_study_ids:
+    search_identifiers.append(study_id)
+    for study_id in search_identifiers:
         try:
             biosamples = api_client.get_biosamples_part_of_study(study_id)
             logger.info(f"Got {len(biosamples)} biosamples part_of {study_id}.")
@@ -340,7 +345,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             db.__setattr__(wf_set_name, wf_records)
 
     elapsed_time = datetime.now() - start_time
-    logger.info(f"Extracted studies: {search_study_ids} from the NMDC database in {elapsed_time}.")
+    logger.info(f"Extracted studies: {search_identifiers} from the NMDC database in {elapsed_time}.")
     logger.info(f"Found {orphaned_data_object_count} orphaned data objects.")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")
