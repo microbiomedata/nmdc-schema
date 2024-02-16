@@ -3,7 +3,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 class Migrator(MigratorBase):
     """
-    Migrates data between from X to PR2 and PR24, namely renames all renamed collections.
+    Migrates data from X to PR2 and PR24, namely renames all renamed collections.
     """
     _from_version = "X"
     _to_version = "PR2_and_PR24"
