@@ -255,9 +255,7 @@ class DictionaryAdapter(AdapterBase):
         {'id': '111', 'foo': 'BAR'}
         >>> database["thing_set"][1]
         {'id': '222', 'foo': 'BAZ'}
-        >>> da.process_each_document("missing_set", [capitalize_foo_value])  # collection does not exist
-        >>> database["thing_set"][2]  # nothing will be processed
-        {'id': '333', 'foo': 'qux'}
+        >>> da.process_each_document("missing_set", [capitalize_foo_value])  # non-existent collection does not trigger an exception
         """
 
         # Iterate over every document in the collection, if the collection exists.
