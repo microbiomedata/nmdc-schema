@@ -255,22 +255,24 @@ class DictionaryAdapter(AdapterBase):
         {'id': '111', 'foo': 'BAR'}
         >>> database["thing_set"][1]
         {'id': '222', 'foo': 'BAZ'}
+        >>> da.process_each_document("missing_set", [capitalize_foo_value])  # non-existent collection does not trigger an exception
         """
 
-        # Iterate over every document in the collection.
-        for index, original_document in enumerate(self._db[collection_name]):
-            # Make a copy of the original document.
-            #
-            # Note: This isn't technically necessary (we could modify the original document in place
-            #       while it resides in the Python array), but this keeps the algorithm analogous to
-            #       what I expect its "real database" (e.g. MongoDB) counterparts to be.
-            #
-            processed_document = deepcopy(original_document)
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db:
+            for index, original_document in enumerate(self._db[collection_name]):
+                # Make a copy of the original document.
+                #
+                # Note: This isn't technically necessary (we could modify the original document in place
+                #       while it resides in the Python array), but this keeps the algorithm analogous to
+                #       what I expect its "real database" (e.g. MongoDB) counterparts to be.
+                #
+                processed_document = deepcopy(original_document)
 
-            # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
-            # such that the output from one stage becomes the input to the next stage.
-            for function in pipeline:
-                processed_document = function(processed_document)
+                # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
+                # such that the output from one stage becomes the input to the next stage.
+                for function in pipeline:
+                    processed_document = function(processed_document)
 
-            # Overwrite the original document with the processed one.
-            self._db[collection_name][index] = processed_document
+                # Overwrite the original document with the processed one.
+                self._db[collection_name][index] = processed_document
