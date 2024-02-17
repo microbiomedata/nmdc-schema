@@ -159,8 +159,6 @@ make-rdf: rdf-clean local/mongo_as_nmdc_database_cuire_repaired.ttl
 
 ## to ensure API only access: --skip-collection-check
 
-# 		--selected-collections extraction_set \
-
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
@@ -177,9 +175,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
-		--selected-collections functional_annotation_agg \
+		--selected-collections extraction_set \
 		--selected-collections genome_feature_set \
 		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
@@ -198,6 +194,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
+ 		--selected-collections data_object_set \
+ 		--selected-collections field_research_site_set \
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
