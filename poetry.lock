@@ -122,13 +122,13 @@ lxml = ["lxml"]
 
 [[package]]
 name = "bioregistry"
-version = "0.10.145"
+version = "0.10.150"
 description = "Integrated registry of biological databases and nomenclatures"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "bioregistry-0.10.145-py3-none-any.whl", hash = "sha256:109d31e53051436323914bd5d4c6a589b3f10c4f85c1a5dd4a4e20a8cf8e0acb"},
-    {file = "bioregistry-0.10.145.tar.gz", hash = "sha256:4b15f784484192378e00f3471826d75e5fd2fb1e437bdeb3d7b550eb2fa0528a"},
+    {file = "bioregistry-0.10.150-py3-none-any.whl", hash = "sha256:062c187119aa48c0e42aae6d1f37903ac104b907a8543b9cb595b94507e25d75"},
+    {file = "bioregistry-0.10.150.tar.gz", hash = "sha256:9b04758b37bcfdae4ce33933314855b830d1bd5aadf9e5ae6c3db1cb0bef8137"},
 ]
 
 [package.dependencies]
@@ -379,13 +379,13 @@ files = [
 
 [[package]]
 name = "class-resolver"
-version = "0.4.2"
+version = "0.4.3"
 description = "Lookup and instantiate classes with style."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "class_resolver-0.4.2-py3-none-any.whl", hash = "sha256:da81d1f76ff0dba252794a0cff2c3f68a1ed4375da687eacae9ec78e4bb733cb"},
-    {file = "class_resolver-0.4.2.tar.gz", hash = "sha256:23dbe3cfd55b5bfa51813c9c7a1cdbab5f11fa9f85cd86b80721fcf8beb89c98"},
+    {file = "class_resolver-0.4.3-py3-none-any.whl", hash = "sha256:9a0e3420edc262f1eb357580ff607ddc5806b9c0d19354a6f3dede15a69fbea0"},
+    {file = "class_resolver-0.4.3.tar.gz", hash = "sha256:18bb9983cb377f669e5900979de4aa65449d95ead61838fa12862958998c71a2"},
 ]
 
 [package.dependencies]
@@ -509,13 +509,13 @@ packaging = "*"
 
 [[package]]
 name = "dnspython"
-version = "2.6.0"
+version = "2.6.1"
 description = "DNS toolkit"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "dnspython-2.6.0-py3-none-any.whl", hash = "sha256:44c40af3bffed66e3307cea9ab667fd583e138ecc0777b18f262a9dae034e5fa"},
-    {file = "dnspython-2.6.0.tar.gz", hash = "sha256:233f871ff384d84c33b2eaf4358ffe7f8927eae3b257ad8467f9bdba7e7ac6bc"},
+    {file = "dnspython-2.6.1-py3-none-any.whl", hash = "sha256:5ef3b9680161f6fa89daf8ad451b5f1a33b18ae8a1c6778cdf4b43f08c0a6e50"},
+    {file = "dnspython-2.6.1.tar.gz", hash = "sha256:e8f0f9c23a7b7cb99ded64e6c3a6f3e701d78f50c55e002b839dea7225cff7cc"},
 ]
 
 [package.extras]
@@ -1710,13 +1710,13 @@ min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-imp
 
 [[package]]
 name = "mkdocs-material"
-version = "9.5.9"
+version = "9.5.10"
 description = "Documentation that simply works"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "mkdocs_material-9.5.9-py3-none-any.whl", hash = "sha256:a5d62b73b3b74349e45472bfadc129c871dd2d4add68d84819580597b2f50d5d"},
-    {file = "mkdocs_material-9.5.9.tar.gz", hash = "sha256:635df543c01c25c412d6c22991872267723737d5a2f062490f33b2da1c013c6d"},
+    {file = "mkdocs_material-9.5.10-py3-none-any.whl", hash = "sha256:3c6c46b57d2ee3c8890e6e0406e68b6863cf65768f0f436990a742702d198442"},
+    {file = "mkdocs_material-9.5.10.tar.gz", hash = "sha256:6ad626dbb31070ebbaedff813323a16a406629620e04b96458f16e6e9c7008fe"},
 ]
 
 [package.dependencies]
@@ -2256,13 +2256,13 @@ pyyaml = ">=5.3.1"
 
 [[package]]
 name = "pronto"
-version = "2.5.5"
+version = "2.5.6"
 description = "Python frontend to ontologies."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "pronto-2.5.5-py2.py3-none-any.whl", hash = "sha256:92d1206365c81abe733a44be3a70b0b54081dfd21a1f4a826d7a2c1e6d18d256"},
-    {file = "pronto-2.5.5.tar.gz", hash = "sha256:8f9a0917156248b2cce05d238c5d76a7b49ee07619f2bce3c73796bff82d5b4f"},
+    {file = "pronto-2.5.6-py2.py3-none-any.whl", hash = "sha256:b9043569418c473224c0be3b7955c56a76a99580670ee5647ca7df4d71afaf0c"},
+    {file = "pronto-2.5.6.tar.gz", hash = "sha256:eacdaa9b629042d1a07c59470241576c111751229ac052a05bfce8180df33bf8"},
 ]
 
 [package.dependencies]
@@ -2993,13 +2993,13 @@ use-chardet-on-py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "requests-cache"
-version = "1.1.1"
+version = "1.2.0"
 description = "A persistent cache for python requests"
 optional = false
-python-versions = ">=3.7,<4.0"
+python-versions = ">=3.8"
 files = [
-    {file = "requests_cache-1.1.1-py3-none-any.whl", hash = "sha256:c8420cf096f3aafde13c374979c21844752e2694ffd8710e6764685bb577ac90"},
-    {file = "requests_cache-1.1.1.tar.gz", hash = "sha256:764f93d3fa860be72125a568c2cc8eafb151cf29b4dc2515433a56ee657e1c60"},
+    {file = "requests_cache-1.2.0-py3-none-any.whl", hash = "sha256:490324301bf0cb924ff4e6324bd2613453e7e1f847353928b08adb0fdfb7f722"},
+    {file = "requests_cache-1.2.0.tar.gz", hash = "sha256:db1c709ca343cc1cd5b6c8b1a5387298eceed02306a6040760db538c885e3838"},
 ]
 
 [package.dependencies]
@@ -3011,15 +3011,15 @@ url-normalize = ">=1.4"
 urllib3 = ">=1.25.5"
 
 [package.extras]
-all = ["boto3 (>=1.15)", "botocore (>=1.18)", "itsdangerous (>=2.0)", "pymongo (>=3)", "pyyaml (>=5.4)", "redis (>=3)", "ujson (>=5.4)"]
+all = ["boto3 (>=1.15)", "botocore (>=1.18)", "itsdangerous (>=2.0)", "pymongo (>=3)", "pyyaml (>=6.0.1)", "redis (>=3)", "ujson (>=5.4)"]
 bson = ["bson (>=0.5)"]
-docs = ["furo (>=2023.3,<2024.0)", "linkify-it-py (>=2.0,<3.0)", "myst-parser (>=1.0,<2.0)", "sphinx (>=5.0.2,<6.0.0)", "sphinx-autodoc-typehints (>=1.19)", "sphinx-automodapi (>=0.14)", "sphinx-copybutton (>=0.5)", "sphinx-design (>=0.2)", "sphinx-notfound-page (>=0.8)", "sphinxcontrib-apidoc (>=0.3)", "sphinxext-opengraph (>=0.6)"]
+docs = ["furo (>=2023.3,<2024.0)", "linkify-it-py (>=2.0,<3.0)", "myst-parser (>=1.0,<2.0)", "sphinx (>=5.0.2,<6.0.0)", "sphinx-autodoc-typehints (>=1.19)", "sphinx-automodapi (>=0.14)", "sphinx-copybutton (>=0.5)", "sphinx-design (>=0.2)", "sphinx-notfound-page (>=0.8)", "sphinxcontrib-apidoc (>=0.3)", "sphinxext-opengraph (>=0.9)"]
 dynamodb = ["boto3 (>=1.15)", "botocore (>=1.18)"]
 json = ["ujson (>=5.4)"]
 mongodb = ["pymongo (>=3)"]
 redis = ["redis (>=3)"]
 security = ["itsdangerous (>=2.0)"]
-yaml = ["pyyaml (>=5.4)"]
+yaml = ["pyyaml (>=6.0.1)"]
 
 [[package]]
 name = "requests-oauthlib"
@@ -3848,13 +3848,13 @@ six = "*"
 
 [[package]]
 name = "urllib3"
-version = "2.2.0"
+version = "2.2.1"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "urllib3-2.2.0-py3-none-any.whl", hash = "sha256:ce3711610ddce217e6d113a2732fafad960a03fd0318c91faa79481e35c11224"},
-    {file = "urllib3-2.2.0.tar.gz", hash = "sha256:051d961ad0c62a94e50ecf1af379c3aba230c66c710493493560c0c223c49f20"},
+    {file = "urllib3-2.2.1-py3-none-any.whl", hash = "sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d"},
+    {file = "urllib3-2.2.1.tar.gz", hash = "sha256:d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"},
 ]
 
 [package.extras]
