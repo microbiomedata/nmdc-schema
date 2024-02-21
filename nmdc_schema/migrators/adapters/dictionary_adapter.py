@@ -98,7 +98,7 @@ class DictionaryAdapter(AdapterBase):
         self._db[collection_name].append(document)
 
     def get_document_having_value_in_field(
-        self, collection_name: str, field_name: str, value: str
+            self, collection_name: str, field_name: str, value: str
     ) -> Optional[dict]:
         r"""
         Retrieves the first document from the specified collection, having the specified value in the specified field.
@@ -143,7 +143,7 @@ class DictionaryAdapter(AdapterBase):
         return document
 
     def get_document_having_one_of_values_in_field(
-        self, collection_name: str, field_name: str, values: List[str]
+            self, collection_name: str, field_name: str, values: List[str]
     ) -> Optional[dict]:
         r"""
         Retrieves the first document from the specified collection, having any one of the specified values in the
@@ -229,7 +229,7 @@ class DictionaryAdapter(AdapterBase):
         return num_documents_deleted
 
     def process_each_document(
-        self, collection_name: str, pipeline: List[Callable[[dict], dict]]
+            self, collection_name: str, pipeline: List[Callable[[dict], dict]]
     ) -> None:
         r"""
         Passes each document in the specified collection through the specified processing pipeline—in which
