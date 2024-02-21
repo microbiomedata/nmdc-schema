@@ -153,7 +153,10 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
-make-rdf: rdf-clean local/mongo_as_nmdc_database_cuire_repaired.ttl
+make-rdf: rdf-clean \
+	local/mongo_as_nmdc_database_validation.log \
+	local/mongo_as_nmdc_database_cuire_repaired.ttl \
+	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
 # functional_annotation_agg is enormous. metaproteomics_analysis_activity_set is large. metap_gene_function_aggregation?
 
