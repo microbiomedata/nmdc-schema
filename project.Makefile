@@ -194,8 +194,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
- 		--selected-collections data_object_set \
- 		--selected-collections field_research_site_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -248,7 +248,7 @@ migrator:
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
-		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
+		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py' | grep -v 'examples/output/'
 
 local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 	$(RUN) slot-range-type-reporter \
@@ -362,7 +362,7 @@ local/gold-study-ids.json:
 		-H 'accept: application/json'
 
 local/gold-study-ids.yaml: local/gold-study-ids.json
-	yq -p json -o yaml $< > $@
+	yq -p json -o yaml $< | cat > $@
 
 local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
 	mkdir -p $(@D)
@@ -509,3 +509,17 @@ docker-compose-down-from-host:
 # curl -X DELETE \
 #   --user 'admin:password' \
 #   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+
+local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
+	$(RUN) gen-owl --no-use-native-uris $< > $@
+
+
+local/nmdc_materialized.ttl: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/schema_view_relation_graph.py \
+		--schema $< \
+		--output $@
+
+local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
+	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
+	cat $^ local/date_created_blank_node.ttl > $@
+	rm local/date_created_blank_node.ttl
