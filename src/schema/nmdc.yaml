@@ -1955,10 +1955,15 @@ enums:
       athmospheric_pressure_chemical_ionization:
         aliases:
           - APCI
+      electron_ionization: 
+        aliases: 
+          - EI
+
 
   MassSpectrumCollectionModeEnum:
     permissible_values:
-      profile: { }
+      full_profile: { }
+      reduced_profile: { }
       centroid: { }
 
   PolarityModeEnum:

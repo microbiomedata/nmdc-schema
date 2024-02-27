@@ -257,7 +257,7 @@ migrator:
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
-		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
+		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py' | grep -v 'examples/output/'
 
 local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 	$(RUN) slot-range-type-reporter \
@@ -518,3 +518,4 @@ docker-compose-down-from-host:
 # curl -X DELETE \
 #   --user 'admin:password' \
 #   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+
