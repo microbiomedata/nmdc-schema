@@ -879,7 +879,7 @@ sample_link:
   - IGSN:DSJ0284
   - any:curie
 sample_shipped: 15 g
-sample_type: water_extract_soil
+sample_type: soil- water extract
 saturates_pc:
   has_raw_value: xxx
 season:
