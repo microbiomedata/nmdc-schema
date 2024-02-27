@@ -175,7 +175,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
 		--selected-collections activity_set \
-		--selected-collections metaproteomics_analysis_activity_set \
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
 		--selected-collections data_object_set \
@@ -199,18 +198,12 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
-		--selected-collections extraction_set \
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_X_to_PR23 \
-		--migrator-name migrator_from_X_to_PR4 \
-		--migrator-name migrator_from_X_to_PR53 \
-		--migrator-name migrator_from_X_to_PR21 \
-		--migrator-name migrator_from_X_to_PR2_and_PR24 \
-		--migrator-name migrator_from_X_to_PR10 \
+		--migrator-name migrator_from_9_3_to_10_0 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
