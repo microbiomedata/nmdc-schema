@@ -616,6 +616,8 @@ attributes:
     - Study
     - OmicsProcessing
     - CreditAssociation
+    - MagBin
+    - GenomeFeature
     - WorkflowExecutionActivity
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
@@ -624,8 +626,6 @@ attributes:
     - MagsAnalysisActivity
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
-    - MagBin
-    - GenomeFeature
     range: string
     required: true
   input_read_count:
@@ -736,8 +736,8 @@ attributes:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
     required: true
   has_output:
@@ -753,8 +753,8 @@ attributes:
     owner: ReadQcAnalysisActivity
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
   part_of:
     name: part_of
@@ -786,8 +786,8 @@ attributes:
     alias: qc_status
     owner: ReadQcAnalysisActivity
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -799,8 +799,8 @@ attributes:
     alias: qc_comment
     owner: ReadQcAnalysisActivity
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -810,8 +810,8 @@ attributes:
     alias: has_failure_categorization
     owner: ReadQcAnalysisActivity
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
   id:
     name: id

@@ -393,7 +393,7 @@
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../Biosample/">Biosample</a></td>
 <td>An input to a process</td>
-<td><a href="../PlannedProcess/">PlannedProcess</a>, <a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
+<td><a href="../BiosampleProcessing/">BiosampleProcessing</a>, <a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../designated_class/">designated_class</a></td>
@@ -565,15 +565,15 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     required: true
   has_output:
     name: has_output
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     required: true
   id:
     name: id
@@ -607,15 +607,15 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     required: true
   has_output:
     name: has_output
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     required: true
   id:
     name: id
@@ -674,8 +674,8 @@ attributes:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Biosample
     required: true
   designated_class:
@@ -717,8 +717,8 @@ attributes:
     owner: LibraryPreparation
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
     required: true
   processing_institution:
@@ -781,8 +781,8 @@ attributes:
     alias: qc_status
     owner: LibraryPreparation
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -794,8 +794,8 @@ attributes:
     alias: qc_comment
     owner: LibraryPreparation
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -805,8 +805,8 @@ attributes:
     alias: has_failure_categorization
     owner: LibraryPreparation
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
   id:
     name: id

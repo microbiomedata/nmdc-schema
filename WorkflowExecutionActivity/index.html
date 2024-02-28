@@ -595,8 +595,8 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     required: true
   execution_resource:
     name: execution_resource
@@ -611,6 +611,8 @@ slot_usage:
     - Study
     - OmicsProcessing
     - CreditAssociation
+    - MagBin
+    - GenomeFeature
     - WorkflowExecutionActivity
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
@@ -619,8 +621,6 @@ slot_usage:
     - MagsAnalysisActivity
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
-    - MagBin
-    - GenomeFeature
     required: true
   id:
     name: id
@@ -700,8 +700,8 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     required: true
   execution_resource:
     name: execution_resource
@@ -716,6 +716,8 @@ slot_usage:
     - Study
     - OmicsProcessing
     - CreditAssociation
+    - MagBin
+    - GenomeFeature
     - WorkflowExecutionActivity
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
@@ -724,8 +726,6 @@ slot_usage:
     - MagsAnalysisActivity
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
-    - MagBin
-    - GenomeFeature
     required: true
   id:
     name: id
@@ -772,8 +772,8 @@ attributes:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
     required: true
   has_output:
@@ -789,8 +789,8 @@ attributes:
     owner: WorkflowExecutionActivity
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
   part_of:
     name: part_of
@@ -829,6 +829,8 @@ attributes:
     - Study
     - OmicsProcessing
     - CreditAssociation
+    - MagBin
+    - GenomeFeature
     - WorkflowExecutionActivity
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
@@ -837,8 +839,6 @@ attributes:
     - MagsAnalysisActivity
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
-    - MagBin
-    - GenomeFeature
     range: string
     required: true
   version:
@@ -862,8 +862,8 @@ attributes:
     alias: qc_status
     owner: WorkflowExecutionActivity
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -875,8 +875,8 @@ attributes:
     alias: qc_comment
     owner: WorkflowExecutionActivity
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -886,8 +886,8 @@ attributes:
     alias: has_failure_categorization
     owner: WorkflowExecutionActivity
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
   id:
     name: id
