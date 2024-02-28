@@ -559,9 +559,14 @@
 <td>Metagenome bin contigs fasta</td>
 </tr>
 <tr>
-<td>Metagenome Bins Compression File</td>
+<td>Metagenome HQMQ Bins Compression File</td>
 <td>None</td>
-<td>Compressed file containing all metagenome bins and associated files</td>
+<td>Compressed file containing high qulaity and medium quality metagenome bins an...</td>
+</tr>
+<tr>
+<td>Metagenome LQ Bins Compression File</td>
+<td>None</td>
+<td>Compressed file containing low quality metagenome bins and associated files</td>
 </tr>
 <tr>
 <td>Metagenome Bins Info File</td>
@@ -572,6 +577,21 @@
 <td>CheckM Statistics</td>
 <td>None</td>
 <td>CheckM statistics report</td>
+</tr>
+<tr>
+<td>Metagenome Bins Heatmap</td>
+<td>None</td>
+<td>The Heatmap presents the pdf file containing the KO analysis results for meta...</td>
+</tr>
+<tr>
+<td>Metagenome Bins Barplot</td>
+<td>None</td>
+<td>The Bar chart presents the pdf file containing the KO analysis results for me...</td>
+</tr>
+<tr>
+<td>Metagenome Bins Krona Plot</td>
+<td>None</td>
+<td>The Krona plot presents the HTML file containing the KO analysis results for ...</td>
 </tr>
 <tr>
 <td>Read Based Analysis Info File</td>
@@ -922,13 +942,22 @@ permissible_values:
   Metagenome Bins:
     text: Metagenome Bins
     description: Metagenome bin contigs fasta
-  Metagenome Bins Compression File:
-    text: Metagenome Bins Compression File
-    description: Compressed file containing all metagenome bins and associated files
+  Metagenome HQMQ Bins Compression File:
+    text: Metagenome HQMQ Bins Compression File
+    description: Compressed file containing high qulaity and medium quality metagenome
+      bins and associated files
     annotations:
       file_name_pattern:
         tag: file_name_pattern
         value: '[mag_wf_activity_id]_hqmq_bin.zip'
+  Metagenome LQ Bins Compression File:
+    text: Metagenome LQ Bins Compression File
+    description: Compressed file containing low quality metagenome bins and associated
+      files
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: '[mag_wf_activity_id]_lq_bin.zip'
   Metagenome Bins Info File:
     text: Metagenome Bins Info File
     description: File containing version information on the binning workflow
@@ -939,6 +968,30 @@ permissible_values:
   CheckM Statistics:
     text: CheckM Statistics
     description: CheckM statistics report
+  Metagenome Bins Heatmap:
+    text: Metagenome Bins Heatmap
+    description: The Heatmap presents the pdf file containing the KO analysis results
+      for metagenome bins
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: '[mag_wf_activity_id]_heatmap.pdf'
+  Metagenome Bins Barplot:
+    text: Metagenome Bins Barplot
+    description: The Bar chart presents the pdf file containing the KO analysis results
+      for metagenome bins
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: '[mag_wf_activity_id]_barplot.pdf'
+  Metagenome Bins Krona Plot:
+    text: Metagenome Bins Krona Plot
+    description: The Krona plot presents the HTML file containing the KO analysis
+      results for metagenome bins
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: '[mag_wf_activity_id]_kronaplot.html'
   Read Based Analysis Info File:
     text: Read Based Analysis Info File
     description: File containing reads based analysis information
