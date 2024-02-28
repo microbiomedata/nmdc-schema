@@ -24,8 +24,8 @@ env:
   # Files to check. (Put patterns on separate lines, no leading dash.)
   # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#files
   files: |
-    docs/*.md
-    docs/**/*.md
+    /docs/*.md
+    /docs/**/*.md
 
   # Label(s) assigned to issues created by this workflow. (Use commas to separate labels.)
   # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#labels
@@ -59,6 +59,8 @@ jobs:
       issues: write
     steps:
       - name: Check out commit
+        # TODO: There's a newer version (v4) of this `checkout` action available.
+        #       Reference: https://github.com/actions/checkout
         uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v3
@@ -70,6 +72,18 @@ jobs:
         run: poetry install --extras docs
       - name: Build docs
         run: make gendoc
+      - name: Move docs to outside of repository file tree
+        # Note: Since the baler action, itself, checks out the source repository,
+        #       and it does so in a way that reverts any changes that have
+        #       been made within the repository's file tree locally; here, we
+        #       move the "docs" folder to somewhere outside of the repository's
+        #       file tree, so it does not get deleted during that reversion.
+        #
+        #       References: 
+        #       - https://github.com/caltechlibrary/baler/blob/35eb509ebbc1b54c6b6a85788e41db7ffa8162c4/action.yml#L102-L106
+        #       - https://github.com/actions/checkout/issues/430
+        #
+        run: mv docs /docs
       - name: Check links
         uses: caltechlibrary/baler@v2
         with:
