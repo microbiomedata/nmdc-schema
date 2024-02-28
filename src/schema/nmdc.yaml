@@ -392,7 +392,7 @@ classes:
         postconditions:
           slot_conditions:
             dna_cont_well:
-              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
 
       - title: rna_well_requires_plate
         description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
@@ -417,7 +417,7 @@ classes:
         postconditions:
           slot_conditions:
             rna_cont_well:
-              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
 
     unique_keys:
       samp_name_unique_key:
