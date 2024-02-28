@@ -5506,7 +5506,7 @@ rules:
     slot_conditions:
       dna_cont_well:
         name: dna_cont_well
-        pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+        pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   description: DNA samples in plates must have a plate position that matches the regex.
     Note the requirement for an empty string in the tube case. Waiting for value_present
     validation to be added to runtime
@@ -5533,7 +5533,7 @@ rules:
     slot_conditions:
       rna_cont_well:
         name: rna_cont_well
-        pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+        pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   description: RNA samples in plates must have a plate position that matches the regex.
     Note the requirement for an empty string in the tube case. Waiting for value_present
     validation to be added to runtime
@@ -9151,7 +9151,7 @@ attributes:
     slot_group: JGI-Metagenomics
     range: string
     recommended: true
-    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   door_comp_type:
     name: door_comp_type
     annotations:
@@ -20503,7 +20503,7 @@ attributes:
     slot_group: JGI-Metatranscriptomics
     range: string
     recommended: true
-    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   rna_container_id:
     name: rna_container_id
     title: RNA container label
@@ -21282,7 +21282,7 @@ rules:
     slot_conditions:
       dna_cont_well:
         name: dna_cont_well
-        pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+        pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   description: DNA samples in plates must have a plate position that matches the regex.
     Note the requirement for an empty string in the tube case. Waiting for value_present
     validation to be added to runtime
@@ -21309,7 +21309,7 @@ rules:
     slot_conditions:
       rna_cont_well:
         name: rna_cont_well
-        pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+        pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   description: RNA samples in plates must have a plate position that matches the regex.
     Note the requirement for an empty string in the tube case. Waiting for value_present
     validation to be added to runtime
