@@ -1,0 +1,1106 @@
+enumeration name	permissible value name	PV meaning
+> enum	permissible_value	meaning
+DeviceEnum		
+DeviceEnum	Orbital Shaker	
+DeviceEnum	Thermomixer	
+DeviceEnum	Vortex	
+DeviceEnum	Agitation plunger	
+DeviceEnum	Drying oven	
+DeviceEnum	CEREX System 96 processor	
+arch_struc_enum		
+arch_struc_enum	building	
+arch_struc_enum	shed	
+arch_struc_enum	home	
+biol_stat_enum		
+biol_stat_enum	wild	
+biol_stat_enum	natural	
+biol_stat_enum	semi-natural	
+biol_stat_enum	inbred line	
+biol_stat_enum	breeder's line	
+biol_stat_enum	hybrid	
+biol_stat_enum	clonal selection	
+biol_stat_enum	mutant	
+biotic_relationship_enum		
+biotic_relationship_enum	free living	
+biotic_relationship_enum	parasite	
+biotic_relationship_enum	commensal	
+biotic_relationship_enum	symbiont	
+build_docs_enum		
+build_docs_enum	building information model	
+build_docs_enum	commissioning report	
+build_docs_enum	complaint logs	
+build_docs_enum	contract administration	
+build_docs_enum	cost estimate	
+build_docs_enum	janitorial schedules or logs	
+build_docs_enum	maintenance plans	
+build_docs_enum	schedule	
+build_docs_enum	sections	
+build_docs_enum	shop drawings	
+build_docs_enum	submittals	
+build_docs_enum	ventilation system	
+build_docs_enum	windows	
+build_occup_type_enum		
+build_occup_type_enum	office	
+build_occup_type_enum	market	
+build_occup_type_enum	restaurant	
+build_occup_type_enum	residence	
+build_occup_type_enum	school	
+build_occup_type_enum	residential	
+build_occup_type_enum	commercial	
+build_occup_type_enum	low rise	
+build_occup_type_enum	high rise	
+build_occup_type_enum	wood framed	
+build_occup_type_enum	health care	
+build_occup_type_enum	airport	
+build_occup_type_enum	sports complex	
+building_setting_enum		
+building_setting_enum	urban	
+building_setting_enum	suburban	
+building_setting_enum	exurban	
+building_setting_enum	rural	
+ceil_cond_enum		
+ceil_cond_enum	new	
+ceil_cond_enum	visible wear	
+ceil_cond_enum	needs repair	
+ceil_cond_enum	damaged	
+ceil_cond_enum	rupture	
+ceil_finish_mat_enum		
+ceil_finish_mat_enum	drywall	
+ceil_finish_mat_enum	mineral fibre	
+ceil_finish_mat_enum	tiles	
+ceil_finish_mat_enum	PVC	
+ceil_finish_mat_enum	plasterboard	
+ceil_finish_mat_enum	metal	
+ceil_finish_mat_enum	fiberglass	
+ceil_finish_mat_enum	stucco	
+ceil_finish_mat_enum	mineral wool/calcium silicate	
+ceil_finish_mat_enum	wood	
+ceil_texture_enum		
+ceil_texture_enum	crows feet	
+ceil_texture_enum	crows-foot stomp	
+ceil_texture_enum	double skip	
+ceil_texture_enum	hawk and trowel	
+ceil_texture_enum	knockdown	
+ceil_texture_enum	popcorn	
+ceil_texture_enum	orange peel	
+ceil_texture_enum	rosebud stomp	
+ceil_texture_enum	Santa-Fe texture	
+ceil_texture_enum	skip trowel	
+ceil_texture_enum	smooth	
+ceil_texture_enum	stomp knockdown	
+ceil_texture_enum	swirl	
+ceil_type_enum		
+ceil_type_enum	cathedral	
+ceil_type_enum	dropped	
+ceil_type_enum	concave	
+ceil_type_enum	barrel-shaped	
+ceil_type_enum	coffered	
+ceil_type_enum	cove	
+ceil_type_enum	stretched	
+cur_land_use_enum		
+cur_land_use_enum	badlands	
+cur_land_use_enum	cities	
+cur_land_use_enum	conifers	
+cur_land_use_enum	crop trees	
+cur_land_use_enum	farmstead	
+cur_land_use_enum	gravel	
+cur_land_use_enum	hardwoods	
+cur_land_use_enum	hayland	
+cur_land_use_enum	horticultural plants	
+cur_land_use_enum	industrial areas	
+cur_land_use_enum	intermixed hardwood and conifers	
+cur_land_use_enum	marshlands	
+cur_land_use_enum	meadows	
+cur_land_use_enum	mines/quarries	
+cur_land_use_enum	mudflats	
+cur_land_use_enum	oil waste areas	
+cur_land_use_enum	pastureland	
+cur_land_use_enum	permanent snow or ice	
+cur_land_use_enum	rainforest	
+cur_land_use_enum	rangeland	
+cur_land_use_enum	roads/railroads	
+cur_land_use_enum	rock	
+cur_land_use_enum	row crops	
+cur_land_use_enum	saline seeps	
+cur_land_use_enum	salt flats	
+cur_land_use_enum	sand	
+cur_land_use_enum	shrub crops	
+cur_land_use_enum	shrub land	
+cur_land_use_enum	small grains	
+cur_land_use_enum	successional shrub land	
+cur_land_use_enum	swamp	
+cur_land_use_enum	tropical	
+cur_land_use_enum	tundra	
+cur_land_use_enum	vegetable crops	
+cur_land_use_enum	vine crops	
+depos_env_enum		
+depos_env_enum	Continental - Alluvial	
+depos_env_enum	Continental - Aeolian	
+depos_env_enum	Continental - Fluvial	
+depos_env_enum	Continental - Lacustrine	
+depos_env_enum	Transitional - Deltaic	
+depos_env_enum	Transitional - Tidal	
+depos_env_enum	Transitional - Lagoonal	
+depos_env_enum	Transitional - Beach	
+depos_env_enum	Transitional - Lake	
+depos_env_enum	Marine - Shallow	
+depos_env_enum	Marine - Deep	
+depos_env_enum	Marine - Reef	
+depos_env_enum	Other - Evaporite	
+depos_env_enum	Other - Glacial	
+depos_env_enum	Other - Volcanic	
+depos_env_enum	other	
+door_comp_type_enum		
+door_comp_type_enum	metal covered	
+door_comp_type_enum	revolving	
+door_comp_type_enum	sliding	
+door_comp_type_enum	telescopic	
+door_cond_enum		
+door_cond_enum	damaged	
+door_cond_enum	needs repair	
+door_cond_enum	new	
+door_cond_enum	rupture	
+door_cond_enum	visible wear	
+door_direct_enum		
+door_direct_enum	inward	
+door_direct_enum	outward	
+door_direct_enum	sideways	
+door_loc_enum		
+door_loc_enum	north	
+door_loc_enum	south	
+door_loc_enum	east	
+door_loc_enum	west	
+door_mat_enum		
+door_mat_enum	aluminum	
+door_mat_enum	cellular PVC	
+door_mat_enum	engineered plastic	
+door_mat_enum	fiberboard	
+door_mat_enum	fiberglass	
+door_mat_enum	metal	
+door_mat_enum	thermoplastic alloy	
+door_mat_enum	vinyl	
+door_mat_enum	wood	
+door_mat_enum	wood/plastic composite	
+door_move_enum		
+door_move_enum	collapsible	
+door_move_enum	folding	
+door_move_enum	revolving	
+door_move_enum	rolling shutter	
+door_move_enum	sliding	
+door_move_enum	swinging	
+door_type_enum		
+door_type_enum	composite	
+door_type_enum	metal	
+door_type_enum	wooden	
+door_type_metal_enum		
+door_type_metal_enum	collapsible	
+door_type_metal_enum	corrugated steel	
+door_type_metal_enum	hollow	
+door_type_metal_enum	rolling shutters	
+door_type_metal_enum	steel plate	
+door_type_wood_enum		
+door_type_wood_enum	bettened and ledged	
+door_type_wood_enum	battened	
+door_type_wood_enum	ledged and braced	
+door_type_wood_enum	ledged and framed	
+door_type_wood_enum	ledged, braced and frame	
+door_type_wood_enum	framed and paneled	
+door_type_wood_enum	glashed or sash	
+door_type_wood_enum	flush	
+door_type_wood_enum	louvered	
+door_type_wood_enum	wire gauged	
+drainage_class_enum		
+drainage_class_enum	very poorly	
+drainage_class_enum	poorly	
+drainage_class_enum	somewhat poorly	
+drainage_class_enum	moderately well	
+drainage_class_enum	well	
+drainage_class_enum	excessively drained	
+drawings_enum		
+drawings_enum	operation	
+drawings_enum	as built	
+drawings_enum	construction	
+drawings_enum	bid	
+drawings_enum	design	
+drawings_enum	building navigation map	
+drawings_enum	diagram	
+drawings_enum	sketch	
+ext_wall_orient_enum		
+ext_wall_orient_enum	north	
+ext_wall_orient_enum	south	
+ext_wall_orient_enum	east	
+ext_wall_orient_enum	west	
+ext_wall_orient_enum	northeast	
+ext_wall_orient_enum	southeast	
+ext_wall_orient_enum	southwest	
+ext_wall_orient_enum	northwest	
+ext_window_orient_enum		
+ext_window_orient_enum	north	
+ext_window_orient_enum	south	
+ext_window_orient_enum	east	
+ext_window_orient_enum	west	
+ext_window_orient_enum	northeast	
+ext_window_orient_enum	southeast	
+ext_window_orient_enum	southwest	
+ext_window_orient_enum	northwest	
+fao_class_enum		
+fao_class_enum	Acrisols	
+fao_class_enum	Andosols	
+fao_class_enum	Arenosols	
+fao_class_enum	Cambisols	
+fao_class_enum	Chernozems	
+fao_class_enum	Ferralsols	
+fao_class_enum	Fluvisols	
+fao_class_enum	Gleysols	
+fao_class_enum	Greyzems	
+fao_class_enum	Gypsisols	
+fao_class_enum	Histosols	
+fao_class_enum	Kastanozems	
+fao_class_enum	Lithosols	
+fao_class_enum	Luvisols	
+fao_class_enum	Nitosols	
+fao_class_enum	Phaeozems	
+fao_class_enum	Planosols	
+fao_class_enum	Podzols	
+fao_class_enum	Podzoluvisols	
+fao_class_enum	Rankers	
+fao_class_enum	Regosols	
+fao_class_enum	Rendzinas	
+fao_class_enum	Solonchaks	
+fao_class_enum	Solonetz	
+fao_class_enum	Vertisols	
+fao_class_enum	Yermosols	
+filter_type_enum		
+filter_type_enum	particulate air filter	
+filter_type_enum	chemical air filter	
+filter_type_enum	low-MERV pleated media	
+filter_type_enum	HEPA	
+filter_type_enum	electrostatic	
+filter_type_enum	gas-phase or ultraviolet air treatments	
+floor_cond_enum		
+floor_cond_enum	new	
+floor_cond_enum	visible wear	
+floor_cond_enum	needs repair	
+floor_cond_enum	damaged	
+floor_cond_enum	rupture	
+floor_finish_mat_enum		
+floor_finish_mat_enum	tile	
+floor_finish_mat_enum	wood strip or parquet	
+floor_finish_mat_enum	carpet	
+floor_finish_mat_enum	rug	
+floor_finish_mat_enum	laminate wood	
+floor_finish_mat_enum	lineoleum	
+floor_finish_mat_enum	vinyl composition tile	
+floor_finish_mat_enum	sheet vinyl	
+floor_finish_mat_enum	stone	
+floor_finish_mat_enum	bamboo	
+floor_finish_mat_enum	cork	
+floor_finish_mat_enum	terrazo	
+floor_finish_mat_enum	concrete	
+floor_finish_mat_enum	none	
+floor_finish_mat_enum	sealed	
+floor_finish_mat_enum	clear finish	
+floor_finish_mat_enum	paint	
+floor_finish_mat_enum	none or unfinished	
+floor_struc_enum		
+floor_struc_enum	balcony	
+floor_struc_enum	floating floor	
+floor_struc_enum	glass floor	
+floor_struc_enum	raised floor	
+floor_struc_enum	sprung floor	
+floor_struc_enum	wood-framed	
+floor_struc_enum	concrete	
+floor_water_mold_enum		
+floor_water_mold_enum	mold odor	
+floor_water_mold_enum	wet floor	
+floor_water_mold_enum	water stains	
+floor_water_mold_enum	wall discoloration	
+floor_water_mold_enum	floor discoloration	
+floor_water_mold_enum	ceiling discoloration	
+floor_water_mold_enum	peeling paint or wallpaper	
+floor_water_mold_enum	bulging walls	
+floor_water_mold_enum	condensation	
+freq_clean_enum		
+freq_clean_enum	Daily	
+freq_clean_enum	Weekly	
+freq_clean_enum	Monthly	
+freq_clean_enum	Quarterly	
+freq_clean_enum	Annually	
+freq_clean_enum	other	
+furniture_enum		
+furniture_enum	cabinet	
+furniture_enum	chair	
+furniture_enum	desks	
+gender_restroom_enum		
+gender_restroom_enum	all gender	
+gender_restroom_enum	female	
+gender_restroom_enum	gender neurtral	
+gender_restroom_enum	male	
+gender_restroom_enum	male and female	
+gender_restroom_enum	unisex	
+growth_habit_enum		
+growth_habit_enum	erect	
+growth_habit_enum	semi-erect	
+growth_habit_enum	spreading	
+growth_habit_enum	prostrate	
+handidness_enum		
+handidness_enum	ambidexterity	
+handidness_enum	left handedness	
+handidness_enum	mixed-handedness	
+handidness_enum	right handedness	
+hc_produced_enum		
+hc_produced_enum	Oil	
+hc_produced_enum	Gas-Condensate	
+hc_produced_enum	Gas	
+hc_produced_enum	Bitumen	
+hc_produced_enum	Coalbed Methane	
+hc_produced_enum	other	
+hcr_enum		
+hcr_enum	Oil Reservoir	
+hcr_enum	Gas Reservoir	
+hcr_enum	Oil Sand	
+hcr_enum	Coalbed	
+hcr_enum	Shale	
+hcr_enum	Tight Oil Reservoir	
+hcr_enum	Tight Gas Reservoir	
+hcr_enum	other	
+hcr_geol_age_enum		
+hcr_geol_age_enum	Archean	
+hcr_geol_age_enum	Cambrian	
+hcr_geol_age_enum	Carboniferous	
+hcr_geol_age_enum	Cenozoic	
+hcr_geol_age_enum	Cretaceous	
+hcr_geol_age_enum	Devonian	
+hcr_geol_age_enum	Jurassic	
+hcr_geol_age_enum	Mesozoic	
+hcr_geol_age_enum	Neogene	
+hcr_geol_age_enum	Ordovician	
+hcr_geol_age_enum	Paleogene	
+hcr_geol_age_enum	Paleozoic	
+hcr_geol_age_enum	Permian	
+hcr_geol_age_enum	Precambrian	
+hcr_geol_age_enum	Proterozoic	
+hcr_geol_age_enum	Silurian	
+hcr_geol_age_enum	Triassic	
+hcr_geol_age_enum	other	
+heat_cool_type_enum		
+heat_cool_type_enum	radiant system	
+heat_cool_type_enum	heat pump	
+heat_cool_type_enum	forced air system	
+heat_cool_type_enum	steam forced heat	
+heat_cool_type_enum	wood stove	
+heat_deliv_loc_enum		
+heat_deliv_loc_enum	north	
+heat_deliv_loc_enum	south	
+heat_deliv_loc_enum	east	
+heat_deliv_loc_enum	west	
+host_sex_enum		
+host_sex_enum	female	
+host_sex_enum	hermaphrodite	
+host_sex_enum	male	
+host_sex_enum	neuter	
+indoor_space_enum		
+indoor_space_enum	bedroom	
+indoor_space_enum	office	
+indoor_space_enum	bathroom	
+indoor_space_enum	foyer	
+indoor_space_enum	kitchen	
+indoor_space_enum	locker room	
+indoor_space_enum	hallway	
+indoor_space_enum	elevator	
+indoor_surf_enum		
+indoor_surf_enum	cabinet	
+indoor_surf_enum	ceiling	
+indoor_surf_enum	counter top	
+indoor_surf_enum	door	
+indoor_surf_enum	shelving	
+indoor_surf_enum	vent cover	
+indoor_surf_enum	window	
+indoor_surf_enum	wall	
+int_wall_cond_enum		
+int_wall_cond_enum	new	
+int_wall_cond_enum	visible wear	
+int_wall_cond_enum	needs repair	
+int_wall_cond_enum	damaged	
+int_wall_cond_enum	rupture	
+light_type_enum		
+light_type_enum	natural light	
+light_type_enum	electric light	
+light_type_enum	desk lamp	
+light_type_enum	flourescent lights	
+light_type_enum	none	
+lithology_enum		
+lithology_enum	Basement	
+lithology_enum	Chalk	
+lithology_enum	Chert	
+lithology_enum	Coal	
+lithology_enum	Conglomerate	
+lithology_enum	Diatomite	
+lithology_enum	Dolomite	
+lithology_enum	Limestone	
+lithology_enum	Sandstone	
+lithology_enum	Shale	
+lithology_enum	Siltstone	
+lithology_enum	Volcanic	
+lithology_enum	other	
+mech_struc_enum		
+mech_struc_enum	subway	
+mech_struc_enum	coach	
+mech_struc_enum	carriage	
+mech_struc_enum	elevator	
+mech_struc_enum	escalator	
+mech_struc_enum	boat	
+mech_struc_enum	train	
+mech_struc_enum	car	
+mech_struc_enum	bus	
+occup_document_enum		
+occup_document_enum	automated count	
+occup_document_enum	estimate	
+occup_document_enum	manual count	
+occup_document_enum	videos	
+organism_count_enum		
+organism_count_enum	ATP	
+organism_count_enum	MPN	
+organism_count_enum	other	
+oxy_stat_samp_enum		
+oxy_stat_samp_enum	aerobic	
+oxy_stat_samp_enum	anaerobic	
+oxy_stat_samp_enum	other	
+plant_growth_med_enum		
+plant_growth_med_enum	other artificial liquid medium	
+plant_growth_med_enum	other artificial solid medium	
+plant_growth_med_enum	peat moss	
+plant_growth_med_enum	perlite	
+plant_growth_med_enum	pumice	
+plant_growth_med_enum	sand	
+plant_growth_med_enum	soil	
+plant_growth_med_enum	vermiculite	
+plant_growth_med_enum	water	
+plant_sex_enum		
+plant_sex_enum	Androdioecious	
+plant_sex_enum	Androecious	
+plant_sex_enum	Androgynous	
+plant_sex_enum	Androgynomonoecious	
+plant_sex_enum	Andromonoecious	
+plant_sex_enum	Bisexual	
+plant_sex_enum	Dichogamous	
+plant_sex_enum	Diclinous	
+plant_sex_enum	Dioecious	
+plant_sex_enum	Gynodioecious	
+plant_sex_enum	Gynoecious	
+plant_sex_enum	Gynomonoecious	
+plant_sex_enum	Hermaphroditic	
+plant_sex_enum	Imperfect	
+plant_sex_enum	Monoclinous	
+plant_sex_enum	Monoecious	
+plant_sex_enum	Perfect	
+plant_sex_enum	Polygamodioecious	
+plant_sex_enum	Polygamomonoecious	
+plant_sex_enum	Polygamous	
+plant_sex_enum	Protandrous	
+plant_sex_enum	Protogynous	
+plant_sex_enum	Subandroecious	
+plant_sex_enum	Subdioecious	
+plant_sex_enum	Subgynoecious	
+plant_sex_enum	Synoecious	
+plant_sex_enum	Trimonoecious	
+plant_sex_enum	Trioecious	
+plant_sex_enum	Unisexual	
+profile_position_enum		
+profile_position_enum	summit	
+profile_position_enum	shoulder	
+profile_position_enum	backslope	
+profile_position_enum	footslope	
+profile_position_enum	toeslope	
+quad_pos_enum		
+quad_pos_enum	North side	
+quad_pos_enum	West side	
+quad_pos_enum	South side	
+quad_pos_enum	East side	
+rel_samp_loc_enum		
+rel_samp_loc_enum	edge of car	
+rel_samp_loc_enum	center of car	
+rel_samp_loc_enum	under a seat	
+room_condt_enum		
+room_condt_enum	new	
+room_condt_enum	visible wear	
+room_condt_enum	needs repair	
+room_condt_enum	damaged	
+room_condt_enum	rupture	
+room_condt_enum	visible signs of mold/mildew	
+room_connected_enum		
+room_connected_enum	attic	
+room_connected_enum	bathroom	
+room_connected_enum	closet	
+room_connected_enum	conference room	
+room_connected_enum	elevator	
+room_connected_enum	examining room	
+room_connected_enum	hallway	
+room_connected_enum	kitchen	
+room_connected_enum	mail room	
+room_connected_enum	office	
+room_connected_enum	stairwell	
+room_loc_enum		
+room_loc_enum	corner room	
+room_loc_enum	interior room	
+room_loc_enum	exterior wall	
+room_samp_pos_enum		
+room_samp_pos_enum	north corner	
+room_samp_pos_enum	south corner	
+room_samp_pos_enum	west corner	
+room_samp_pos_enum	east corner	
+room_samp_pos_enum	northeast corner	
+room_samp_pos_enum	northwest corner	
+room_samp_pos_enum	southeast corner	
+room_samp_pos_enum	southwest corner	
+room_samp_pos_enum	center	
+room_type_enum		
+room_type_enum	attic	
+room_type_enum	bathroom	
+room_type_enum	closet	
+room_type_enum	conference room	
+room_type_enum	elevator	
+room_type_enum	examining room	
+room_type_enum	hallway	
+room_type_enum	kitchen	
+room_type_enum	mail room	
+room_type_enum	private office	
+room_type_enum	open office	
+room_type_enum	stairwell	
+room_type_enum	,restroom	
+room_type_enum	lobby	
+room_type_enum	vestibule	
+room_type_enum	mechanical or electrical room	
+room_type_enum	data center	
+room_type_enum	laboratory_wet	
+room_type_enum	laboratory_dry	
+room_type_enum	gymnasium	
+room_type_enum	natatorium	
+room_type_enum	auditorium	
+room_type_enum	lockers	
+room_type_enum	cafe	
+room_type_enum	warehouse	
+samp_capt_status_enum		
+samp_capt_status_enum	active surveillance in response to an outbreak	
+samp_capt_status_enum	active surveillance not initiated by an outbreak	
+samp_capt_status_enum	farm sample	
+samp_capt_status_enum	market sample	
+samp_capt_status_enum	other	
+samp_collect_point_enum		
+samp_collect_point_enum	well	
+samp_collect_point_enum	test well	
+samp_collect_point_enum	drilling rig	
+samp_collect_point_enum	wellhead	
+samp_collect_point_enum	separator	
+samp_collect_point_enum	storage tank	
+samp_collect_point_enum	other	
+samp_dis_stage_enum		
+samp_dis_stage_enum	dissemination	
+samp_dis_stage_enum	growth and reproduction	
+samp_dis_stage_enum	infection	
+samp_dis_stage_enum	inoculation	
+samp_dis_stage_enum	penetration	
+samp_dis_stage_enum	other	
+samp_floor_enum		
+samp_floor_enum	1st floor	
+samp_floor_enum	2nd floor	
+samp_floor_enum	basement	
+samp_floor_enum	lobby	
+samp_md_enum		
+samp_md_enum	DF	
+samp_md_enum	RT	
+samp_md_enum	KB	
+samp_md_enum	MSL	
+samp_md_enum	other	
+samp_subtype_enum		
+samp_subtype_enum	oil phase	
+samp_subtype_enum	water phase	
+samp_subtype_enum	biofilm	
+samp_subtype_enum	not applicable	
+samp_subtype_enum	other	
+samp_weather_enum		
+samp_weather_enum	clear sky	
+samp_weather_enum	cloudy	
+samp_weather_enum	foggy	
+samp_weather_enum	hail	
+samp_weather_enum	rain	
+samp_weather_enum	snow	
+samp_weather_enum	sleet	
+samp_weather_enum	sunny	
+samp_weather_enum	windy	
+season_use_enum		
+season_use_enum	Spring	
+season_use_enum	Summer	
+season_use_enum	Fall	
+season_use_enum	Winter	
+sediment_type_enum		
+sediment_type_enum	biogenous	
+sediment_type_enum	cosmogenous	
+sediment_type_enum	hydrogenous	
+sediment_type_enum	lithogenous	
+shading_device_cond_enum		
+shading_device_cond_enum	damaged	
+shading_device_cond_enum	needs repair	
+shading_device_cond_enum	new	
+shading_device_cond_enum	rupture	
+shading_device_cond_enum	visible wear	
+shading_device_type_enum		
+shading_device_type_enum	bahama shutters	
+shading_device_type_enum	exterior roll blind	
+shading_device_type_enum	gambrel awning	
+shading_device_type_enum	hood awning	
+shading_device_type_enum	porchroller awning	
+shading_device_type_enum	sarasota shutters	
+shading_device_type_enum	slatted aluminum	
+shading_device_type_enum	solid aluminum awning	
+shading_device_type_enum	sun screen	
+shading_device_type_enum	tree	
+shading_device_type_enum	trellis	
+shading_device_type_enum	venetian awning	
+soil_horizon_enum		
+soil_horizon_enum	O horizon	
+soil_horizon_enum	A horizon	
+soil_horizon_enum	E horizon	
+soil_horizon_enum	B horizon	
+soil_horizon_enum	C horizon	
+soil_horizon_enum	R layer	
+soil_horizon_enum	Permafrost	
+soil_horizon_enum	M horizon	
+specific_enum		
+specific_enum	operation	
+specific_enum	as built	
+specific_enum	construction	
+specific_enum	bid	
+specific_enum	design	
+specific_enum	photos	
+sr_dep_env_enum		
+sr_dep_env_enum	Lacustine	
+sr_dep_env_enum	Fluvioldeltaic	
+sr_dep_env_enum	Fluviomarine	
+sr_dep_env_enum	Marine	
+sr_dep_env_enum	other	
+sr_geol_age_enum		
+sr_geol_age_enum	Archean	
+sr_geol_age_enum	Cambrian	
+sr_geol_age_enum	Carboniferous	
+sr_geol_age_enum	Cenozoic	
+sr_geol_age_enum	Cretaceous	
+sr_geol_age_enum	Devonian	
+sr_geol_age_enum	Jurassic	
+sr_geol_age_enum	Mesozoic	
+sr_geol_age_enum	Neogene	
+sr_geol_age_enum	Ordovician	
+sr_geol_age_enum	Paleogene	
+sr_geol_age_enum	Paleozoic	
+sr_geol_age_enum	Permian	
+sr_geol_age_enum	Precambrian	
+sr_geol_age_enum	Proterozoic	
+sr_geol_age_enum	Silurian	
+sr_geol_age_enum	Triassic	
+sr_geol_age_enum	other	
+sr_kerog_type_enum		
+sr_kerog_type_enum	Type I	
+sr_kerog_type_enum	Type II	
+sr_kerog_type_enum	Type III	
+sr_kerog_type_enum	Type IV	
+sr_kerog_type_enum	other	
+sr_lithology_enum		
+sr_lithology_enum	Clastic	
+sr_lithology_enum	Carbonate	
+sr_lithology_enum	Coal	
+sr_lithology_enum	Biosilicieous	
+sr_lithology_enum	other	
+substructure_type_enum		
+substructure_type_enum	crawlspace	
+substructure_type_enum	slab on grade	
+substructure_type_enum	basement	
+surf_air_cont_enum		
+surf_air_cont_enum	dust	
+surf_air_cont_enum	organic matter	
+surf_air_cont_enum	particulate matter	
+surf_air_cont_enum	volatile organic compounds	
+surf_air_cont_enum	biological contaminants	
+surf_air_cont_enum	radon	
+surf_air_cont_enum	nutrients	
+surf_air_cont_enum	biocides	
+surf_material_enum		
+surf_material_enum	adobe	
+surf_material_enum	carpet	
+surf_material_enum	cinder blocks	
+surf_material_enum	concrete	
+surf_material_enum	hay bales	
+surf_material_enum	glass	
+surf_material_enum	metal	
+surf_material_enum	paint	
+surf_material_enum	plastic	
+surf_material_enum	stainless steel	
+surf_material_enum	stone	
+surf_material_enum	stucco	
+surf_material_enum	tile	
+surf_material_enum	vinyl	
+surf_material_enum	wood	
+tidal_stage_enum		
+tidal_stage_enum	low tide	
+tidal_stage_enum	ebb tide	
+tidal_stage_enum	flood tide	
+tidal_stage_enum	high tide	
+tillage_enum		
+tillage_enum	drill	
+tillage_enum	cutting disc	
+tillage_enum	ridge till	
+tillage_enum	strip tillage	
+tillage_enum	zonal tillage	
+tillage_enum	chisel	
+tillage_enum	tined	
+tillage_enum	mouldboard	
+tillage_enum	disc plough	
+train_line_enum		
+train_line_enum	red	
+train_line_enum	green	
+train_line_enum	orange	
+train_stat_loc_enum		
+train_stat_loc_enum	south station above ground	
+train_stat_loc_enum	south station underground	
+train_stat_loc_enum	south station amtrak	
+train_stat_loc_enum	forest hills	
+train_stat_loc_enum	riverside	
+train_stop_loc_enum		
+train_stop_loc_enum	end	
+train_stop_loc_enum	mid	
+train_stop_loc_enum	downtown	
+vis_media_enum		
+vis_media_enum	photos	
+vis_media_enum	videos	
+vis_media_enum	commonly of the building	
+vis_media_enum	site context (adjacent buildings, vegetation, terrain, streets)	
+vis_media_enum	interiors	
+vis_media_enum	equipment	
+vis_media_enum	3D scans	
+wall_const_type_enum		
+wall_const_type_enum	frame construction	
+wall_const_type_enum	joisted masonry	
+wall_const_type_enum	light noncombustible	
+wall_const_type_enum	masonry noncombustible	
+wall_const_type_enum	modified fire resistive	
+wall_const_type_enum	fire resistive	
+wall_finish_mat_enum		
+wall_finish_mat_enum	plaster	
+wall_finish_mat_enum	gypsum plaster	
+wall_finish_mat_enum	veneer plaster	
+wall_finish_mat_enum	gypsum board	
+wall_finish_mat_enum	tile	
+wall_finish_mat_enum	terrazzo	
+wall_finish_mat_enum	stone facing	
+wall_finish_mat_enum	acoustical treatment	
+wall_finish_mat_enum	wood	
+wall_finish_mat_enum	metal	
+wall_finish_mat_enum	masonry	
+wall_loc_enum		
+wall_loc_enum	north	
+wall_loc_enum	south	
+wall_loc_enum	east	
+wall_loc_enum	west	
+wall_surf_treatment_enum		
+wall_surf_treatment_enum	painted	
+wall_surf_treatment_enum	wall paper	
+wall_surf_treatment_enum	no treatment	
+wall_surf_treatment_enum	paneling	
+wall_surf_treatment_enum	stucco	
+wall_surf_treatment_enum	fabric	
+wall_texture_enum		
+wall_texture_enum	crows feet	
+wall_texture_enum	crows-foot stomp	
+wall_texture_enum		
+wall_texture_enum	double skip	
+wall_texture_enum	hawk and trowel	
+wall_texture_enum	knockdown	
+wall_texture_enum	popcorn	
+wall_texture_enum	orange peel	
+wall_texture_enum	rosebud stomp	
+wall_texture_enum	Santa-Fe texture	
+wall_texture_enum	skip trowel	
+wall_texture_enum	smooth	
+wall_texture_enum	stomp knockdown	
+wall_texture_enum	swirl	
+water_feat_type_enum		
+water_feat_type_enum	fountain	
+water_feat_type_enum	pool	
+water_feat_type_enum	standing feature	
+water_feat_type_enum	stream	
+water_feat_type_enum	waterfall	
+weekday_enum		
+weekday_enum	Monday	
+weekday_enum	Tuesday	
+weekday_enum	Wednesday	
+weekday_enum	Thursday	
+weekday_enum	Friday	
+weekday_enum	Saturday	
+weekday_enum	Sunday	
+window_cond_enum		
+window_cond_enum	damaged	
+window_cond_enum	needs repair	
+window_cond_enum	new	
+window_cond_enum	rupture	
+window_cond_enum	visible wear	
+window_cover_enum		
+window_cover_enum	blinds	
+window_cover_enum	curtains	
+window_cover_enum	none	
+window_horiz_pos_enum		
+window_horiz_pos_enum	left	
+window_horiz_pos_enum	middle	
+window_horiz_pos_enum	right	
+window_loc_enum		
+window_loc_enum	north	
+window_loc_enum	south	
+window_loc_enum	east	
+window_loc_enum	west	
+window_mat_enum		
+window_mat_enum	clad	
+window_mat_enum	fiberglass	
+window_mat_enum	metal	
+window_mat_enum	vinyl	
+window_mat_enum	wood	
+window_type_enum		
+window_type_enum	single-hung sash window	
+window_type_enum	horizontal sash window	
+window_type_enum	fixed window	
+window_vert_pos_enum		
+window_vert_pos_enum	bottom	
+window_vert_pos_enum	middle	
+window_vert_pos_enum	top	
+window_vert_pos_enum	low	
+window_vert_pos_enum	high	
+sample_type_enum		
+sample_type_enum	soil	
+sample_type_enum	water_extract_soil	
+dna_sample_format_enum		
+dna_sample_format_enum	10 mM Tris-HCl	
+dna_sample_format_enum	DNAStable	
+dna_sample_format_enum	Ethanol	
+dna_sample_format_enum	Low EDTA TE	
+dna_sample_format_enum	MDA reaction buffer	
+dna_sample_format_enum	PBS	
+dna_sample_format_enum	Pellet	
+dna_sample_format_enum	RNAStable	
+dna_sample_format_enum	TE	
+dna_sample_format_enum	Water	
+dna_sample_format_enum	Gentegra-DNA	
+dna_sample_format_enum	Gentegra-RNA	
+rna_sample_format_enum		
+rna_sample_format_enum	10 mM Tris-HCl	
+rna_sample_format_enum	DNAStable	
+rna_sample_format_enum	Ethanol	
+rna_sample_format_enum	Low EDTA TE	
+rna_sample_format_enum	MDA reaction buffer	
+rna_sample_format_enum	PBS	
+rna_sample_format_enum	Pellet	
+rna_sample_format_enum	RNAStable	
+rna_sample_format_enum	TE	
+rna_sample_format_enum	Water	
+rna_sample_format_enum	Gentegra-DNA	
+rna_sample_format_enum	Gentegra-RNA	
+analysis_type_enum		
+analysis_type_enum	metabolomics	
+analysis_type_enum	metagenomics	
+analysis_type_enum	metaproteomics	
+analysis_type_enum	metatranscriptomics	
+analysis_type_enum	natural organic matter	
+processing_institution_enum		
+processing_institution_enum	UCSD	https://ror.org/0168r3w48
+processing_institution_enum	JGI	https://ror.org/04xm1d337
+processing_institution_enum	EMSL	https://ror.org/04rc0xn13
+processing_institution_enum	Battelle	https://ror.org/01h5tnr73
+processing_institution_enum	ANL	https://ror.org/05gvnxz63
+processing_institution_enum	UCD_Genome_Center	https://genomecenter.ucdavis.edu/
+InstrumentModelEnum		
+InstrumentModelEnum	Orbitrap	
+InstrumentModelEnum	VortexGenie2	
+InstrumentModelEnum	PIPETMAN F144059M	
+InstrumentVendorEnum		
+InstrumentVendorEnum	ThermoFisher	
+InstrumentVendorEnum	VWR	
+InstrumentVendorEnum	PerkinElmer	
+InstrumentVendorEnum	Gilson	
+InstrumentVendorEnum	ScientificIndustries	
+StatusEnum		
+StatusEnum	pass	
+StatusEnum	fail	
+ExtractionTargetEnum		
+ExtractionTargetEnum	DNA	
+ExtractionTargetEnum	RNA	
+ExtractionTargetEnum	metabolite	
+ExtractionTargetEnum	protein	
+ExtractionTargetEnum	phenol/chloroform extraction	
+LibraryTypeEnum		
+LibraryTypeEnum	DNA	
+LibraryTypeEnum	RNA	
+JgiContTypeEnum		
+JgiContTypeEnum	plate	
+JgiContTypeEnum	tube	
+YesNoEnum		
+YesNoEnum	no	
+YesNoEnum	yes	
+BiosampleCategoryEnum		
+BiosampleCategoryEnum	LTER	https://lternet.edu/
+BiosampleCategoryEnum	SIP	
+BiosampleCategoryEnum	SFA	https://science.osti.gov/ber/funding-opportunities/laboratory-scientific-focus-area-guidance
+BiosampleCategoryEnum	FICUS	https://jgi.doe.gov/user-programs/program-info/ficus-overview
+BiosampleCategoryEnum	NEON	https://www.neonscience.org
+file type enum		
+file type enum	Metagenome Raw Reads	
+file type enum	Metagenome Raw Read 1	
+file type enum	Metagenome Raw Read 2	
+file type enum	FT ICR-MS Analysis Results	
+file type enum	GC-MS Metabolomics Results	
+file type enum	Metaproteomics Workflow Statistics	
+file type enum	Protein Report	
+file type enum	Peptide Report	
+file type enum	Unfiltered Metaproteomics Results	
+file type enum	Read Count and RPKM	
+file type enum	QC non-rRNA R2	
+file type enum	QC non-rRNA R1	
+file type enum	Metagenome Bins	
+file type enum	Metagenome Bins Compression File	
+file type enum	Metagenome Bins Info File	
+file type enum	CheckM Statistics	
+file type enum	Read Based Analysis Info File	
+file type enum	GTDBTK Bacterial Summary	
+file type enum	GTDBTK Archaeal Summary	
+file type enum	GOTTCHA2 Krona Plot	
+file type enum	GOTTCHA2 Classification Report	
+file type enum	GOTTCHA2 Report Full	
+file type enum	Kraken2 Krona Plot	
+file type enum	Centrifuge Krona Plot	
+file type enum	Centrifuge output report file	
+file type enum	Kraken2 Classification Report	
+file type enum	Kraken2 Taxonomic Classification	
+file type enum	Centrifuge Classification Report	
+file type enum	Centrifuge Taxonomic Classification	
+file type enum	Structural Annotation GFF	
+file type enum	Structural Annotation Stats Json	
+file type enum	Functional Annotation GFF	
+file type enum	Annotation Info File	
+file type enum	Annotation Amino Acid FASTA	
+file type enum	Annotation Enzyme Commission	
+file type enum	Annotation KEGG Orthology	
+file type enum	Assembly Info File	
+file type enum	Assembly Coverage BAM	
+file type enum	Assembly AGP	
+file type enum	Assembly Scaffolds	
+file type enum	Assembly Contigs	
+file type enum	Assembly Coverage Stats	
+file type enum	Contig Mapping File	
+file type enum	Error Corrected Reads	
+file type enum	Filtered Sequencing Reads	
+file type enum	Read Filtering Info File	
+file type enum	QC Statistics Extended	
+file type enum	QC Statistics	
+file type enum	TIGRFam Annotation GFF	
+file type enum	CRT Annotation GFF	
+file type enum	Genemark Annotation GFF	
+file type enum	Prodigal Annotation GFF	
+file type enum	TRNA Annotation GFF	
+file type enum	Misc Annotation GFF	
+file type enum	RFAM Annotation GFF	
+file type enum	TMRNA Annotation GFF	
+file type enum	Crispr Terms	
+file type enum	Product Names	
+file type enum	Gene Phylogeny tsv	
+file type enum	Scaffold Lineage tsv	
+file type enum	Clusters of Orthologous Groups (COG) Annotation GFF	
+file type enum	KO_EC Annotation GFF	
+file type enum	CATH FunFams (Functional Families) Annotation GFF	
+file type enum	SUPERFam Annotation GFF	
+file type enum	SMART Annotation GFF	
+file type enum	Pfam Annotation GFF	
+file type enum	Annotation Statistics	
+file type enum	Direct Infusion FT ICR-MS Raw Data	
+file type enum	LC-DDA-MS/MS Raw Data	
+credit enum		
+credit enum	Conceptualization	
+credit enum	Data curation	
+credit enum	Formal Analysis	
+credit enum	Funding acquisition	
+credit enum	Investigation	
+credit enum	Methodology	
+credit enum	Project administration	
+credit enum	Resources	
+credit enum	Software	
+credit enum	Supervision	
+credit enum	Validation	
+credit enum	Visualization	
+credit enum	Writing original draft	
+credit enum	Writing review and editing	
+credit enum	Principal Investigator	OBI:0000103
+credit enum	Submitter	EFO:0001741
+StudyCategoryEnum		
+StudyCategoryEnum	research_study	
+StudyCategoryEnum	consortium	
+DoiProviderEnum		
+DoiProviderEnum	emsl	https://ror.org/04rc0xn13
+DoiProviderEnum	jgi	https://ror.org/04xm1d337
+DoiProviderEnum	kbase	https://ror.org/01znn6x10
+DoiProviderEnum	osti	https://ror.org/031478740
+DoiProviderEnum	ess_dive	https://ror.org/01t14bp54
+DoiProviderEnum	massive	
+DoiProviderEnum	gsc	
+DoiProviderEnum	zenodo	
+DoiProviderEnum	edi	https://ror.org/0330j0z60
+DoiCategoryEnum		
+DoiCategoryEnum	award_doi	
+DoiCategoryEnum	dataset_doi	
+DoiCategoryEnum	publication_doi	
+DoiCategoryEnum	data_management_plan_doi	
+ContainerCategoryEnum		
+ContainerCategoryEnum	V-bottom conical tube	
+ContainerCategoryEnum	falcon tube	
+FailureWhatEnum		
+FailureWhatEnum	low_read_count	
+FailureWhatEnum	malformed_data	
+FailureWhatEnum	assembly_size_too_small	
+FailureWhatEnum	no_valid_data_generated	
+FailureWhatEnum	other	
+FailureWhereEnum		
+FailureWhereEnum	OmicsProcessing	
+FailureWhereEnum	Pooling	
+FailureWhereEnum	Extraction	
+FailureWhereEnum	LibraryPreparation	
+FailureWhereEnum	MetagenomeAssembly	
+FailureWhereEnum	MetatranscriptomeActivity	
+FailureWhereEnum	MagsAnalysisActivity	
+FailureWhereEnum	ReadQcAnalysisActivity	
+FailureWhereEnum	ReadBasedTaxonomyAnalysisActivity	
+FailureWhereEnum	MetagenomeAnnotationActivity	
+SeparationMethodEnum		
+SeparationMethodEnum	PTFE 96-well filter plate	
+CompoundEnum		
+CompoundEnum	ammonium bicarbonate	
+CompoundEnum	deionized water	
+CompoundEnum	methanol	
+CompoundEnum	trypsin	
+CompoundEnum	chloridic acid	
+CompoundEnum	water	
+StationaryPhaseEnum		
+StationaryPhaseEnum	C18	
+StationaryPhaseEnum	C8	
+StationaryPhaseEnum	C4	
+StationaryPhaseEnum	C2	
+StationaryPhaseEnum	C1	
+StationaryPhaseEnum	C30	
+StationaryPhaseEnum	C60	
+StationaryPhaseEnum	CNT	
+StationaryPhaseEnum	CN	
+StationaryPhaseEnum	Diol	
+StationaryPhaseEnum	HILIC	
+StationaryPhaseEnum	NH2	
+StationaryPhaseEnum	Phenyl	
+StationaryPhaseEnum	PS-DVB	
+StationaryPhaseEnum	SAX	
+StationaryPhaseEnum	SCX	
+StationaryPhaseEnum	Silica	
+StationaryPhaseEnum	WCX	
+StationaryPhaseEnum	WAX	
+StationaryPhaseEnum	ZIC-HILIC	
+StationaryPhaseEnum	ZIC-pHILIC	
+StationaryPhaseEnum	ZIC-cHILIC	
