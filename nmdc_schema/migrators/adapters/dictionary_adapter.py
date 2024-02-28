@@ -9,15 +9,18 @@ class DictionaryAdapter(AdapterBase):
     a Python dictionary.
     """
 
-    def __init__(self, database: dict) -> None:
+    def __init__(self, database: dict, **kwargs) -> None:
         r"""
-        Initializes the reference to the database this adapter instance will be used to manipulate.
+        Invokes the initialization method of the parent class, passing to it any specified keyword arguments.
+        Also initializes the reference to the database this adapter instance will be used to manipulate.
         """
+        super().__init__(**kwargs)
         self._db = database
 
     def create_collection(self, collection_name: str) -> None:
         r"""
         Creates an empty collection having the specified name, if no collection by that name exists.
+        Also invokes `self.on_collection_created`, if defined, passing to it the name of the collection.
 
         >>> database = {
         ...   "thing_set": [
@@ -40,10 +43,12 @@ class DictionaryAdapter(AdapterBase):
         """
         if collection_name not in self._db:
             self._db[collection_name] = []
+            self.on_collection_created(collection_name)
 
     def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
-        Renames the specified collection so that it has the specified name.
+        Renames the specified collection, if it exists, so that it has the specified new name.
+        Also invokes `self.on_collection_renamed`, if defined, passing to it the old and new names of the collection.
 
         >>> database = {
         ...   "thing_set": [
@@ -59,11 +64,14 @@ class DictionaryAdapter(AdapterBase):
         >>> "item_set" in database
         True
         """
-        self._db[new_name] = self._db.pop(current_name)
+        if current_name in self._db:
+            self._db[new_name] = self._db.pop(current_name)
+            self.on_collection_renamed(current_name, new_name)
 
     def delete_collection(self, collection_name: str) -> None:
         r"""
-        Deletes the collection having the specified name.
+        Deletes the collection having the specified name, if such a collection exists.
+        Also invokes `self.on_collection_deleted`, if defined, passing to it the name of the collection.
 
         >>> database = {
         ...   "thing_set": [
@@ -77,7 +85,9 @@ class DictionaryAdapter(AdapterBase):
         >>> "thing_set" in database
         False
         """
-        del self._db[collection_name]
+        if collection_name in self._db:
+            del self._db[collection_name]
+            self.on_collection_deleted(collection_name)
 
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""
@@ -98,7 +108,7 @@ class DictionaryAdapter(AdapterBase):
         self._db[collection_name].append(document)
 
     def get_document_having_value_in_field(
-            self, collection_name: str, field_name: str, value: str
+        self, collection_name: str, field_name: str, value: str
     ) -> Optional[dict]:
         r"""
         Retrieves the first document from the specified collection, having the specified value in the specified field.
@@ -143,7 +153,7 @@ class DictionaryAdapter(AdapterBase):
         return document
 
     def get_document_having_one_of_values_in_field(
-            self, collection_name: str, field_name: str, values: List[str]
+        self, collection_name: str, field_name: str, values: List[str]
     ) -> Optional[dict]:
         r"""
         Retrieves the first document from the specified collection, having any one of the specified values in the
@@ -181,7 +191,9 @@ class DictionaryAdapter(AdapterBase):
 
         return document
 
-    def delete_documents_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
+    def delete_documents_having_value_in_field(
+        self, collection_name: str, field_name: str, value: str
+    ) -> int:
         r"""
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.
@@ -218,7 +230,10 @@ class DictionaryAdapter(AdapterBase):
         # Filter out the documents having the specified value in the specified field.
         # Reference: https://docs.python.org/3/library/functions.html#filter
         documents_initial = self._db[collection_name]
-        document_generator = filter(lambda d: field_name not in d or d.get(field_name) != value, documents_initial)
+        document_generator = filter(
+            lambda d: field_name not in d or d.get(field_name) != value,
+            documents_initial,
+        )
         documents_remaining = list(document_generator)
 
         # Update the collection so that it consists of the filtered result.
@@ -229,7 +244,7 @@ class DictionaryAdapter(AdapterBase):
         return num_documents_deleted
 
     def process_each_document(
-            self, collection_name: str, pipeline: List[Callable[[dict], dict]]
+        self, collection_name: str, pipeline: List[Callable[[dict], dict]]
     ) -> None:
         r"""
         Passes each document in the specified collection through the specified processing pipeline—in which
