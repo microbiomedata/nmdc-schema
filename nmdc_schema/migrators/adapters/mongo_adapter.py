@@ -26,10 +26,14 @@ class MongoAdapter(AdapterBase):
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.create_collection
+        - https://docs.python.org/3/library/functions.html#callable
         """
         if collection_name not in self._db.list_collection_names():
             self._db.create_collection(name=collection_name)
-            self.on_collection_created(collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_created):
+                self.on_collection_created(collection_name)
 
     def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
@@ -42,7 +46,10 @@ class MongoAdapter(AdapterBase):
         """
         if current_name in self._db.list_collection_names():
             self._db.get_collection(name=current_name).rename(new_name=new_name)
-            self.on_collection_renamed(current_name, new_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_renamed):
+                self.on_collection_renamed(current_name, new_name)
 
     def delete_collection(self, collection_name: str) -> None:
         r"""
@@ -54,7 +61,10 @@ class MongoAdapter(AdapterBase):
         """
         if collection_name in self._db.list_collection_names():
             self._db.drop_collection(name_or_collection=collection_name)
-            self.on_collection_deleted(collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_deleted):
+                self.on_collection_deleted(collection_name)
 
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""

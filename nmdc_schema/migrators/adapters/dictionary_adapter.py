@@ -22,6 +22,9 @@ class DictionaryAdapter(AdapterBase):
         Creates an empty collection having the specified name, if no collection by that name exists.
         Also invokes `self.on_collection_created`, if defined, passing to it the name of the collection.
 
+        References:
+        - https://docs.python.org/3/library/functions.html#callable
+
         >>> database = {
         ...   "thing_set": [
         ...     {"id": "111", "foo": "bar"},
@@ -43,7 +46,10 @@ class DictionaryAdapter(AdapterBase):
         """
         if collection_name not in self._db:
             self._db[collection_name] = []
-            self.on_collection_created(collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_created):
+                self.on_collection_created(collection_name)
 
     def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
@@ -66,7 +72,10 @@ class DictionaryAdapter(AdapterBase):
         """
         if current_name in self._db:
             self._db[new_name] = self._db.pop(current_name)
-            self.on_collection_renamed(current_name, new_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_renamed):
+                self.on_collection_renamed(current_name, new_name)
 
     def delete_collection(self, collection_name: str) -> None:
         r"""
@@ -87,7 +96,10 @@ class DictionaryAdapter(AdapterBase):
         """
         if collection_name in self._db:
             del self._db[collection_name]
-            self.on_collection_deleted(collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_deleted):
+                self.on_collection_deleted(collection_name)
 
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""
