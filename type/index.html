@@ -540,16 +540,6 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MagBin/">MagBin</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../GenomeFeature/">GenomeFeature</a></td>
-<td>A feature localized to an interval along a genome</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
 <td>Represents an instance of an execution of a particular workflow</td>
 <td>yes</td>
@@ -588,6 +578,16 @@
 <td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
 <td>A workflow execution activity that performs taxonomy classification using seq...</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../MagBin/">MagBin</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../GenomeFeature/">GenomeFeature</a></td>
+<td>A feature localized to an interval along a genome</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
@@ -668,8 +668,6 @@ domain_of:
 - Study
 - OmicsProcessing
 - CreditAssociation
-- MagBin
-- GenomeFeature
 - WorkflowExecutionActivity
 - MetagenomeAssembly
 - MetagenomeAnnotationActivity
@@ -678,6 +676,8 @@ domain_of:
 - MagsAnalysisActivity
 - ReadQcAnalysisActivity
 - ReadBasedTaxonomyAnalysisActivity
+- MagBin
+- GenomeFeature
 range: string
 
 </code></pre>

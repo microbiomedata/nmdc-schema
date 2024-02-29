@@ -770,8 +770,8 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     required: true
     pattern: ^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
   part_of:
@@ -788,8 +788,8 @@ slot_usage:
     name: has_output
     domain_of:
     - OmicsProcessing
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     range: DataObject
     pattern: ^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
 
@@ -835,8 +835,8 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     required: true
     pattern: ^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
   part_of:
@@ -853,8 +853,8 @@ slot_usage:
     name: has_output
     domain_of:
     - OmicsProcessing
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     range: DataObject
     pattern: ^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
 attributes:
@@ -927,8 +927,8 @@ attributes:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     range: NamedThing
     required: true
     pattern: ^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
@@ -943,8 +943,8 @@ attributes:
     owner: OmicsProcessing
     domain_of:
     - OmicsProcessing
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     range: DataObject
     pattern: ^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
   insdc_bioproject_identifiers:
@@ -1338,8 +1338,6 @@ attributes:
     - Study
     - OmicsProcessing
     - CreditAssociation
-    - MagBin
-    - GenomeFeature
     - WorkflowExecutionActivity
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
@@ -1348,6 +1346,8 @@ attributes:
     - MagsAnalysisActivity
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
+    - MagBin
+    - GenomeFeature
     range: string
   designated_class:
     name: designated_class
@@ -1413,8 +1413,8 @@ attributes:
     alias: qc_status
     owner: OmicsProcessing
     domain_of:
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -1426,8 +1426,8 @@ attributes:
     alias: qc_comment
     owner: OmicsProcessing
     domain_of:
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -1437,8 +1437,8 @@ attributes:
     alias: has_failure_categorization
     owner: OmicsProcessing
     domain_of:
-    - PlannedProcess
     - WorkflowExecutionActivity
+    - PlannedProcess
     range: FailureCategorization
   id:
     name: id
