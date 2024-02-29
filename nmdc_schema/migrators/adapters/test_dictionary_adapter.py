@@ -151,9 +151,13 @@ class TestMongoAdapter(unittest.TestCase):
         )
 
         # Validate result:
-        # TODO: Confirm the correct documents were deleted, not just the correct quantity of documents.
+        collection = self.db[collection_name]
         assert num_documents_deleted == 2
         assert len(self.db[collection_name]) == 2
+        assert len([doc for doc in collection if doc["id"] == 1 and doc["x"] == "a"]) == 1
+        assert len([doc for doc in collection if doc["id"] == 2 and doc["x"] == "b"]) == 0
+        assert len([doc for doc in collection if doc["id"] == 3 and doc["x"] == "c"]) == 1
+        assert len([doc for doc in collection if doc["id"] == 4 and doc["x"] == "b"]) == 0
 
     def test_process_each_document(self):
         # Set up:
