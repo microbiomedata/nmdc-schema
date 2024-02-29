@@ -27,4 +27,8 @@ class Migrator(MigratorBase):
             }
 
         for current_collection_name, new_collection_name in old_to_new_names.items():
-            self.adapter.rename_collection(current_name=current_collection_name, new_name=new_collection_name)
+            try:
+                self.adapter.rename_collection(current_name=current_collection_name, new_name=new_collection_name)
+            except KeyError:
+                print(f"Error: Collection '{current_collection_name}' not found in the adapter.")
+
