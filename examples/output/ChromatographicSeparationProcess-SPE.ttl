@@ -16,15 +16,15 @@ nmdc:psp-99-oW43DzG0 nmdc:designated_class "nmdc:ChromatographicSeparationProces
                     nmdc:has_unit "mL" ] ],
         [ a nmdc:Solution ;
             nmdc:has_solution_components [ a nmdc:SolutionComponent ;
-                    nmdc:compound "methanol" ] ;
-            nmdc:volume [ a nmdc:QuantityValue ;
-                    nmdc:has_numeric_value 7e+02 ;
-                    nmdc:has_unit "mL" ] ],
-        [ a nmdc:Solution ;
-            nmdc:has_solution_components [ a nmdc:SolutionComponent ;
                     nmdc:compound "water" ] ;
             nmdc:volume [ a nmdc:QuantityValue ;
                     nmdc:has_numeric_value 1e+03 ;
+                    nmdc:has_unit "mL" ] ],
+        [ a nmdc:Solution ;
+            nmdc:has_solution_components [ a nmdc:SolutionComponent ;
+                    nmdc:compound "methanol" ] ;
+            nmdc:volume [ a nmdc:QuantityValue ;
+                    nmdc:has_numeric_value 7e+02 ;
                     nmdc:has_unit "mL" ] ] ;
     nmdc:stationary_phase "CN" .
 
