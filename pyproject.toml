@@ -10,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "10.0.0" # nmdc.yaml and GH say v10.0.0
+version = "10.1.0" # nmdc.yaml and GH say v10.0.0
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
