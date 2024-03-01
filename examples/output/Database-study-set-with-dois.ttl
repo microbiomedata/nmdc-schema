@@ -12,17 +12,17 @@ nmdc:sty-99-FkQIsc a nmdc:Study ;
             nmdc:doi_category "publication_doi" ;
             nmdc:doi_value "doi:10.1016/j.foodchem.2008.11.065"^^xsd:anyURI ],
         [ a nmdc:Doi ;
-            nmdc:doi_category "dataset_doi" ;
-            nmdc:doi_provider "massive" ;
-            nmdc:doi_value "doi:10.1093/acprof:oso/9780195159561.001.1"^^xsd:anyURI ],
+            nmdc:doi_category "award_doi" ;
+            nmdc:doi_provider "emsl" ;
+            nmdc:doi_value "doi:10.25585/1487765"^^xsd:anyURI ],
         [ a nmdc:Doi ;
             nmdc:doi_category "award_doi" ;
             nmdc:doi_provider "jgi" ;
             nmdc:doi_value "doi:10.25585/1487763"^^xsd:anyURI ],
         [ a nmdc:Doi ;
-            nmdc:doi_category "award_doi" ;
-            nmdc:doi_provider "emsl" ;
-            nmdc:doi_value "doi:10.25585/1487765"^^xsd:anyURI ] ;
+            nmdc:doi_category "dataset_doi" ;
+            nmdc:doi_provider "massive" ;
+            nmdc:doi_value "doi:10.1093/acprof:oso/9780195159561.001.1"^^xsd:anyURI ] ;
     nmdc:ecosystem "Environmental" ;
     nmdc:ecosystem_category "Terrestrial" ;
     nmdc:ecosystem_subtype "Wetlands" ;
