@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Pooling/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.10" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.11" name="generator"/>
 <title>Class: Pooling - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -354,7 +354,7 @@
 <td><a href="../has_input/">has_input</a></td>
 <td>0..* <br/> <a href="../Biosample/">Biosample</a></td>
 <td>An input to a process</td>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a>, <a href="../PlannedProcess/">PlannedProcess</a></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a>, <a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
 </tr>
 <tr>
 <td><a href="../designated_class/">designated_class</a></td>
@@ -505,15 +505,15 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     minimum_cardinality: 2
   has_output:
     name: has_output
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     minimum_cardinality: 1
     maximum_cardinality: 1
   id:
@@ -545,15 +545,15 @@ slot_usage:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     minimum_cardinality: 2
   has_output:
     name: has_output
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     minimum_cardinality: 1
     maximum_cardinality: 1
   id:
@@ -580,8 +580,8 @@ attributes:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Biosample
     minimum_cardinality: 2
   designated_class:
@@ -623,8 +623,8 @@ attributes:
     owner: Pooling
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
     minimum_cardinality: 1
     maximum_cardinality: 1
@@ -688,8 +688,8 @@ attributes:
     alias: qc_status
     owner: Pooling
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -701,8 +701,8 @@ attributes:
     alias: qc_comment
     owner: Pooling
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -712,8 +712,8 @@ attributes:
     alias: has_failure_categorization
     owner: Pooling
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
   id:
     name: id

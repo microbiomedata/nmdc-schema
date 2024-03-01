@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MetagenomeAssembly/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.10" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.11" name="generator"/>
 <title>Class: MetagenomeAssembly - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -826,6 +826,8 @@ attributes:
     - Study
     - OmicsProcessing
     - CreditAssociation
+    - MagBin
+    - GenomeFeature
     - WorkflowExecutionActivity
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
@@ -834,8 +836,6 @@ attributes:
     - MagsAnalysisActivity
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
-    - MagBin
-    - GenomeFeature
     range: string
     required: true
   asm_score:
@@ -1227,8 +1227,8 @@ attributes:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
     required: true
   has_output:
@@ -1244,8 +1244,8 @@ attributes:
     owner: MetagenomeAssembly
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
   part_of:
     name: part_of
@@ -1288,8 +1288,8 @@ attributes:
     alias: qc_status
     owner: MetagenomeAssembly
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -1301,8 +1301,8 @@ attributes:
     alias: qc_comment
     owner: MetagenomeAssembly
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -1312,8 +1312,8 @@ attributes:
     alias: has_failure_categorization
     owner: MetagenomeAssembly
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
   id:
     name: id

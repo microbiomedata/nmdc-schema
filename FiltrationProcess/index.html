@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/FiltrationProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.10" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.11" name="generator"/>
 <title>Class: FiltrationProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.7e359304.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -776,8 +776,8 @@ attributes:
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
   has_output:
     name: has_output
@@ -792,8 +792,8 @@ attributes:
     owner: FiltrationProcess
     domain_of:
     - OmicsProcessing
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
   processing_institution:
     name: processing_institution
@@ -855,8 +855,8 @@ attributes:
     alias: qc_status
     owner: FiltrationProcess
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -868,8 +868,8 @@ attributes:
     alias: qc_comment
     owner: FiltrationProcess
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -879,8 +879,8 @@ attributes:
     alias: has_failure_categorization
     owner: FiltrationProcess
     domain_of:
-    - WorkflowExecutionActivity
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
   id:
     name: id
