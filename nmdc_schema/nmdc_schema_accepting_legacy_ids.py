@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-02-28T16:30:06
+# Generation date: 2024-03-01T14:37:36
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -30,7 +30,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
-version = "v10.0.0"
+version = "v10.1.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
