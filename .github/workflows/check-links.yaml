@@ -24,8 +24,8 @@ env:
   # Files to check. (Put patterns on separate lines, no leading dash.)
   # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#files
   files: |
-    /docs/*.md
-    /docs/**/*.md
+    /tmp/docs/*.md
+    /tmp/docs/**/*.md
 
   # Label(s) assigned to issues created by this workflow. (Use commas to separate labels.)
   # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#labels
@@ -83,7 +83,7 @@ jobs:
         #       - https://github.com/caltechlibrary/baler/blob/35eb509ebbc1b54c6b6a85788e41db7ffa8162c4/action.yml#L102-L106
         #       - https://github.com/actions/checkout/issues/430
         #
-        run: mv docs /docs
+        run: mkdir -p /tmp/docs && mv docs /tmp/docs
       - name: Check links
         uses: caltechlibrary/baler@v2
         with:
