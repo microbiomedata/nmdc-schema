@@ -8225,7 +8225,10 @@
             "description": "",
             "enum": [
                 "soil",
-                "water_extract_soil"
+                "soil - water extract",
+                "plant associated",
+                "sediment",
+                "water"
             ],
             "title": "SampleTypeEnum",
             "type": "string"
@@ -9487,5 +9490,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v10.1.0"
+    "version": "0.0.0"
 }

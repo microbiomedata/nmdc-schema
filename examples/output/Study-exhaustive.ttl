@@ -8,11 +8,6 @@ nmdc:sty-11-ab a nmdc:Study ;
     dcterms:description "see also name, title, objective, various alternatives" ;
     dcterms:isPartOf nmdc:sty-11-34xj1157 ;
     prov:qualifiedAssociation [ a prov:Association ;
-            nmdc:applied_roles "Investigation",
-                "Supervision" ;
-            nmdc:applies_to_person [ a nmdc:PersonValue ;
-                    nmdc:name "Tanja Davidsen" ] ],
-        [ a prov:Association ;
             nmdc:applied_roles "Conceptualization",
                 "Funding acquisition",
                 "Supervision" ;
@@ -25,7 +20,12 @@ nmdc:sty-11-ab a nmdc:Study ;
                     nmdc:was_generated_by nmdc:any_string_1 ;
                     nmdc:websites "https://www.jcvi.org/",
                         "https://www.jcvi.org/about/j-craig-venter" ] ;
-            nmdc:type "any string" ] ;
+            nmdc:type "any string" ],
+        [ a prov:Association ;
+            nmdc:applied_roles "Investigation",
+                "Supervision" ;
+            nmdc:applies_to_person [ a nmdc:PersonValue ;
+                    nmdc:name "Tanja Davidsen" ] ] ;
     nmdc:alternative_descriptions "any string 1",
         "any string 2" ;
     nmdc:alternative_identifiers "generic:abc1"^^xsd:anyURI ;
@@ -34,20 +34,20 @@ nmdc:sty-11-ab a nmdc:Study ;
     nmdc:alternative_titles "any string 1",
         "any string 2" ;
     nmdc:associated_dois [ a nmdc:Doi ;
-            nmdc:doi_category "publication_doi" ;
-            nmdc:doi_value "doi:10.1126/science.1058040"^^xsd:anyURI ],
-        [ a nmdc:Doi ;
-            nmdc:doi_category "award_doi" ;
-            nmdc:doi_provider "jgi" ;
-            nmdc:doi_value "doi:10.1126/science.1234545"^^xsd:anyURI ],
-        [ a nmdc:Doi ;
             nmdc:doi_category "data_management_plan_doi" ;
             nmdc:doi_provider "gsc" ;
             nmdc:doi_value "doi:10.48321/D1Z60Q"^^xsd:anyURI ],
         [ a nmdc:Doi ;
             nmdc:doi_category "dataset_doi" ;
             nmdc:doi_provider "kbase" ;
-            nmdc:doi_value "doi:10.1126/science.1456956"^^xsd:anyURI ] ;
+            nmdc:doi_value "doi:10.1126/science.1456956"^^xsd:anyURI ],
+        [ a nmdc:Doi ;
+            nmdc:doi_category "publication_doi" ;
+            nmdc:doi_value "doi:10.1126/science.1058040"^^xsd:anyURI ],
+        [ a nmdc:Doi ;
+            nmdc:doi_category "award_doi" ;
+            nmdc:doi_provider "jgi" ;
+            nmdc:doi_value "doi:10.1126/science.1234545"^^xsd:anyURI ] ;
     nmdc:ecosystem "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads" ;
     nmdc:ecosystem_category "unconstrained text" ;
     nmdc:ecosystem_subtype "unconstrained text" ;
