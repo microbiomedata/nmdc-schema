@@ -375,7 +375,7 @@ start_time_inc: "13:42+0000"
 project_id: no example from MIxS
 replicate_number: "1"
 sample_shipped: 15 g
-sample_type: soil- water extract
+sample_type: soil - water extract
 technical_reps: "2"
 analysis_type:
   - metabolomics

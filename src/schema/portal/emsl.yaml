@@ -22,7 +22,7 @@ enums:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       soil: { }
-      soil- water extract: { }
+      soil - water extract: { }
       plant associated: { }
       sediment: { }
       water: { }
