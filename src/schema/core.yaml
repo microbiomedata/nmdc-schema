@@ -661,11 +661,8 @@ slots:
 
   homepage_website:
     is_a: websites
-    range: string
-    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     description: The website address (URL) of an entity's homepage.
-    comments: 
-      - DOIs should not be included as websites. Instead, use the associated_dois slot.
+    maximum_cardinality: 1
 
   highest_similarity_score:
     todos:
