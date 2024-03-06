@@ -655,16 +655,17 @@ slots:
     multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     description: A list of websites that are associated with the entity.
-    comments: >-
-      DOIs should not be included as websites. Instead, use the associated_dois slot. 
-      A consortium's homepage website should be included in the homepage_website slot, not in websites.
+    comments: 
+      - DOIs should not be included as websites. Instead, use the associated_dois slot. 
+      - A consortium's homepage website should be included in the homepage_website slot, not in websites.
 
   homepage_website:
     is_a: websites
     range: string
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     description: The website address (URL) of an entity's homepage.
-    comments: DOIs should not be included as websites. Instead, use the associated_dois slot.
+    comments: 
+      - DOIs should not be included as websites. Instead, use the associated_dois slot.
 
   highest_similarity_score:
     todos:
