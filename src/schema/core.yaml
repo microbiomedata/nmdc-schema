@@ -662,7 +662,6 @@ slots:
   homepage_website:
     is_a: websites
     description: The website address (URL) of an entity's homepage.
-    maximum_cardinality: 1
 
   highest_similarity_score:
     todos:
