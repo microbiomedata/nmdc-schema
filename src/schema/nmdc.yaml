@@ -1476,7 +1476,7 @@ classes:
       homepage_website:
         annotations:
           display_hint:
-            Link to the consortium's homepage if the entity is a consortium.
+            Link to the consortium's homepage if the study_category is a consortium.
       description:
         description: A brief, link-free summary of a Study
         annotations:
