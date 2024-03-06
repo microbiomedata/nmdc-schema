@@ -1,3 +1,5 @@
 id: nmdc:sty-11-ab
 study_category: consortium
-homepage_website: doi:10.25585/1488209
+homepage_website: 
+  - https://data.neonscience.org/
+  - https://consortium.org/
