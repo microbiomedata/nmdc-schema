@@ -1474,6 +1474,7 @@ classes:
             or the study webpage associated with this collection of samples.
             Multiple links can be provided.
       homepage_website:
+        maximum_cardinality: 1
         annotations:
           display_hint:
             Link to the consortium's homepage if the study_category is a consortium.
