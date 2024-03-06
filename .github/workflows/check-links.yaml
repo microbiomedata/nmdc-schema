@@ -36,6 +36,8 @@ jobs:
       - name: Build docs
         run: make gendoc
       - name: Use Lychee to check for broken links
+        # This step will populate `env.lychee_exit_code` with the exit code returned by lychee.
+        # Possible exit codes: https://github.com/lycheeverse/lychee?tab=readme-ov-file#exit-codes
         # Reference: https://github.com/lycheeverse/lychee-action
         id: lychee
         uses: lycheeverse/lychee-action@v1.9.0
@@ -46,7 +48,9 @@ jobs:
           output: ./lychee/out.md
           fail: false
       - name: Create GitHub Issue listing broken links
-        if: env.lychee_exit_code != 0
+        # This step will only run if lychee returned a non-zero exit code.
+        # Reference: https://docs.github.com/en/actions/learn-github-actions/variables#using-the-env-context-to-access-environment-variable-values
+        if: ${{ env.lychee_exit_code != 0 }}
         uses: peter-evans/create-issue-from-file@v4
         with:
           title: Markdown docs contain broken links
