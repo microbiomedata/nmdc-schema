@@ -663,7 +663,9 @@ slots:
     is_a: websites
     maximum_cardinality: 1
     description: The website address (URL) of an entity's homepage.
-
+    examples:
+      - value: https://www.neonscience.org/
+        
   highest_similarity_score:
     todos:
       - Yuri to fill in description
