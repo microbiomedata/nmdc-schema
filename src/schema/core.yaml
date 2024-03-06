@@ -661,6 +661,7 @@ slots:
 
   homepage_website:
     is_a: websites
+    maximum_cardinality: 1
     description: The website address (URL) of an entity's homepage.
 
   highest_similarity_score:
