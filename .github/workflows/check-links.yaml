@@ -1,67 +1,30 @@
 ###############################################################################
-# Introduction, specific to nmdc-schema:
-# --------------------------------------
-# This workflow file is based upon the Baler 2.0.4 sample workflow file:
-# https://github.com/caltechlibrary/baler/blob/main/sample-workflow.yml
-# You can compare them in a text editor to see how they differ.
-#
-# In short, this workflow builds the schema documentation, then checks it for
-# broken links. If it finds any, it creates a GitHub Issue listing them.
+# Introduction:
+# -------------
+# This workflow builds the schema documentation, then checks whether any of the
+# links in the documentation are broken. If any are broken, this workflow
+# creates a GitHub Issue containing a list of them.
 #
 # Once the maintainers of `nmdc-schema` feel comfortable with the way this link
 # checker works, they may consolidate it with the `deploy-docs.yaml` workflow.
 ###############################################################################
 
-# GitHub Actions workflow for Baler (BAd Link reportER) version 2.0.4.
-# This is available as the file "sample-workflow.yml" from the source
-# code repository for Baler: https://github.com/caltechlibrary/baler
-
 name: Check links
-
-# Configure this section ─────────────────────────────────────────────
-
-env:
-  # Files to check. (Put patterns on separate lines, no leading dash.)
-  # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#files
-  files: |
-    /tmp/docs/*.md
-    /tmp/docs/**/*.md
-
-  # Label(s) assigned to issues created by this workflow. (Use commas to separate labels.)
-  # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#labels
-  labels: documentation,broken-link
-
-  # Number of previous issues to check for duplicate reports. (Max is 100.)
-  # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#lookback
-  lookback: 100
-
-  # Time (sec) to wait on an unresponsive URL before trying once more.
-  # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#timeout
-  timeout: 5
-
-  # Optional file containing a list of URLs to ignore, one per line.
-  # Reference: https://github.com/marketplace/actions/baler-bad-link-reporter#ignore
-  ignore: .github/workflows/check-links-ignore.txt
 
 on:
   # Allow people to trigger the workflow manually.
   # Reference: https://docs.github.com/en/actions/using-workflows/manually-running-a-workflow
   workflow_dispatch: {}
 
-# The rest of this file should be left as-is ─────────────────────────
-
-run-name: Check links in Markdown files
+run-name: Check links in docs
 jobs:
-  Baler:
-    name: Link checker and reporter
+  build-docs-and-check-links:
+    name: Build docs and check links
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
     steps:
       - name: Check out commit
-        # TODO: There's a newer version (v4) of this `checkout` action available.
-        #       Reference: https://github.com/actions/checkout
-        uses: actions/checkout@v2
+        # Reference: https://github.com/actions/checkout
+        uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v3
         with: { python-version: 3.9 }
@@ -72,23 +35,24 @@ jobs:
         run: poetry install --extras docs
       - name: Build docs
         run: make gendoc
-      - name: Move docs to outside of repository file tree
-        # Note: Since the baler action, itself, checks out the source repository,
-        #       and it does so in a way that reverts any changes that have
-        #       been made within the repository's file tree locally; here, we
-        #       move the "docs" folder to somewhere outside of the repository's
-        #       file tree, so it does not get deleted during that reversion.
-        #
-        #       References: 
-        #       - https://github.com/caltechlibrary/baler/blob/35eb509ebbc1b54c6b6a85788e41db7ffa8162c4/action.yml#L102-L106
-        #       - https://github.com/actions/checkout/issues/430
-        #
-        run: mkdir -p /tmp/docs && mv docs /tmp/docs
-      - name: Check links
-        uses: caltechlibrary/baler@v2
+      - name: Use Lychee to check for broken links
+        # This step will populate `env.lychee_exit_code` with the exit code returned by lychee.
+        # Possible exit codes: https://github.com/lycheeverse/lychee?tab=readme-ov-file#exit-codes
+        # Reference: https://github.com/lycheeverse/lychee-action
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.9.0
         with:
-          files:    ${{github.event.inputs.files    || env.files}}
-          labels:   ${{github.event.inputs.labels   || env.labels}}
-          ignore:   ${{github.event.inputs.ignore   || env.ignore}}
-          timeout:  ${{github.event.inputs.timeout  || env.timeout}}
-          lookback: ${{github.event.inputs.lookback || env.lookback}}
+          # Reference: https://github.com/lycheeverse/lychee#commandline-parameters
+          args: --base docs --verbose --no-progress --format markdown --timeout 5 'docs/*.md' 'docs/**/*.md'
+          debug: true
+          output: ./lychee/out.md
+          fail: false
+      - name: Create GitHub Issue listing broken links
+        # This step will only run if lychee returned a non-zero exit code.
+        # Reference: https://docs.github.com/en/actions/learn-github-actions/variables#using-the-env-context-to-access-environment-variable-values
+        if: ${{ env.lychee_exit_code != 0 }}
+        uses: peter-evans/create-issue-from-file@v4
+        with:
+          title: Markdown docs contain broken links
+          content-filepath: ./lychee/out.md
+          labels: documentation, broken-link
