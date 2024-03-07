@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/websites/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/homepage_website/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: websites - NMDC Schema Documentation</title>
+        <title>Slot: homepage_website - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-websites" class="md-skip">
+        <a href="#slot-homepage_website" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: websites
+              Slot: homepage_website
             
           </span>
         </div>
@@ -440,9 +440,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
-      Comments
+      Examples
     </span>
   </a>
   
@@ -499,13 +499,13 @@
   
 
 
-<h1 id="slot-websites">Slot: websites</h1>
-<p><em>A list of websites that are associated with the entity.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/websites">nmdc:websites</a></p>
+<h1 id="slot-homepage_website">Slot: homepage_website</h1>
+<p><em>The website address (URL) of an entity's homepage.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/homepage_website">nmdc:homepage_website</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>websites</strong><ul>
-<li><a href="../homepage_website/">homepage_website</a></li>
+<li><a href="../websites/">websites</a><ul>
+<li><strong>homepage_website</strong></li>
 </ul>
 </li>
 </ul>
@@ -524,11 +524,6 @@
 <td>A study summarizes the overall goal of a research initiative and outlines the...</td>
 <td>yes</td>
 </tr>
-<tr>
-<td><a href="../PersonValue/">PersonValue</a></td>
-<td>An attribute value representing a person</td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -543,11 +538,19 @@
 <p>Regex pattern: <code>^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$</code></p>
 </li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>DOIs should not be included as websites. Instead, use the associated_dois slot.</li>
-<li>A consortium's homepage website should be included in the homepage_website slot, not in websites.</li>
-</ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.neonscience.org/">https://www.neonscience.org/</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -556,21 +559,20 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: websites
-description: A list of websites that are associated with the entity.
-comments:
-- DOIs should not be included as websites. Instead, use the associated_dois slot.
-- A consortium's homepage website should be included in the homepage_website slot,
-  not in websites.
+<pre><code class="language-yaml">name: homepage_website
+description: The website address (URL) of an entity's homepage.
+examples:
+- value: https://www.neonscience.org/
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
+is_a: websites
 multivalued: true
-alias: websites
+alias: homepage_website
 domain_of:
 - Study
-- PersonValue
 range: string
 pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+maximum_cardinality: 1
 
 </code></pre>
 

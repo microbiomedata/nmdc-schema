@@ -336,6 +336,8 @@
 
     Study --|&gt; CreditAssociation : has_credit_associations
 
+  Study : homepage_website
+
   Study : id
 
   Study : insdc_bioproject_identifiers
@@ -594,6 +596,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../homepage_website/">homepage_website</a></td>
+<td>0..* <br/> <a href="../String/">String</a></td>
+<td>The website address (URL) of an entity's homepage</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A human readable label for an entity</td>
@@ -831,6 +839,7 @@ slots:
 - title
 - type
 - websites
+- homepage_website
 slot_usage:
   id:
     name: id
@@ -865,6 +874,14 @@ slot_usage:
     domain_of:
     - Study
     - PersonValue
+  homepage_website:
+    name: homepage_website
+    annotations:
+      display_hint:
+        tag: display_hint
+        value: Link to the consortium's homepage if the study_category is a consortium.
+    domain_of:
+    - Study
   description:
     name: description
     annotations:
@@ -1012,6 +1029,14 @@ slot_usage:
     domain_of:
     - Study
     - PersonValue
+  homepage_website:
+    name: homepage_website
+    annotations:
+      display_hint:
+        tag: display_hint
+        value: Link to the consortium's homepage if the study_category is a consortium.
+    domain_of:
+    - Study
   description:
     name: description
     annotations:
@@ -1689,6 +1714,24 @@ attributes:
     - PersonValue
     range: string
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+  homepage_website:
+    name: homepage_website
+    annotations:
+      display_hint:
+        tag: display_hint
+        value: Link to the consortium's homepage if the study_category is a consortium.
+    description: The website address (URL) of an entity's homepage.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: websites
+    multivalued: true
+    alias: homepage_website
+    owner: Study
+    domain_of:
+    - Study
+    range: string
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+    maximum_cardinality: 1
   name:
     name: name
     annotations:
