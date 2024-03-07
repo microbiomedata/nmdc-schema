@@ -1455,6 +1455,7 @@ classes:
       - title
       - type
       - websites
+      - homepage_website
 
     slot_usage:
       id:
@@ -1472,6 +1473,10 @@ classes:
             Link to the Principal Investigator's research lab webpage
             or the study webpage associated with this collection of samples.
             Multiple links can be provided.
+      homepage_website:
+        annotations:
+          display_hint:
+            Link to the consortium's homepage if the study_category is a consortium.
       description:
         description: A brief, link-free summary of a Study
         annotations:
