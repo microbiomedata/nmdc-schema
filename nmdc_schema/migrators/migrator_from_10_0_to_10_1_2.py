@@ -4,8 +4,8 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "X"  # TODO: Replace with initial version (and update file name, replacing '.' with '_' there)
-    _to_version = "PR1791"  # TODO: Replace with final version (and update file name, replacing '.' with '_' there)
+    _from_version = "10.0"  
+    _to_version = "10.1.2"  
 
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
@@ -17,8 +17,6 @@ class Migrator(MigratorBase):
         #       transforms all occurrences of the former value into the latter value, so that data that was valid with
         #       respect to the old schema is valid with respect to the new schema. According to the schema docs,
         #       the `FileTypeEnum` enum is used only by the `data_object_type` slot of the `DataObject` class.
-        #
-        # TODO: Confirm that this is the only collection that requires transformation.
         #
         self.adapter.process_each_document(
             "data_object_set", [self.update_data_object_type]
