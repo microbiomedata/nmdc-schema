@@ -44,7 +44,7 @@ class Migrator(MigratorBase):
         invalid_value = "Metagenome Bins Compression File"
         valid_value = "Metagenome HQMQ Bins Compression File"
 
-        # If this data object's `data_object_type` contains the invalid value, replace it with the valid value.
+        # If this data object's `data_object_type` consists of the invalid value, replace it with the valid value.
         if "data_object_type" in data_object:
             if data_object["data_object_type"] == invalid_value:
                 data_object["data_object_type"] = valid_value
