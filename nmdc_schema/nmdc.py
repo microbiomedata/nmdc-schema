@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-03-05T14:56:22
+# Generation date: 2024-03-11T08:57:59
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -886,7 +886,7 @@ class Study(NamedThing):
     ecosystem_type: Optional[str] = None
     funding_sources: Optional[Union[str, List[str]]] = empty_list()
     gold_study_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    has_credit_associations: Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]] = empty_list()
+    has_credit_associations: Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]] = empty_list()
     insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     mgnify_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     notes: Optional[str] = None
@@ -900,6 +900,7 @@ class Study(NamedThing):
     title: Optional[str] = None
     type: Optional[str] = None
     websites: Optional[Union[str, List[str]]] = empty_list()
+    homepage_website: Optional[Union[str, List[str]]] = empty_list()
     name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1020,6 +1021,10 @@ class Study(NamedThing):
         if not isinstance(self.websites, list):
             self.websites = [self.websites] if self.websites is not None else []
         self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
+
+        if not isinstance(self.homepage_website, list):
+            self.homepage_website = [self.homepage_website] if self.homepage_website is not None else []
+        self.homepage_website = [v if isinstance(v, str) else str(v) for v in self.homepage_website]
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
@@ -3848,7 +3853,7 @@ class Extraction(PlannedProcess):
     id: Union[str, ExtractionId] = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    extractant: Optional[Union[dict, "Solution"]] = None
+    extractant: Optional[Union[dict, Solution]] = None
     extraction_method: Optional[Union[str, "ExtractionTargetEnum"]] = None
     extraction_target: Optional[Union[str, "ExtractionTargetEnum"]] = None
     input_mass: Optional[Union[dict, "QuantityValue"]] = None
@@ -4442,8 +4447,8 @@ class Reaction(FunctionalAnnotationTerm):
     is_fully_characterized: Optional[Union[bool, Bool]] = None
     is_stereo: Optional[Union[bool, Bool]] = None
     is_transport: Optional[Union[bool, Bool]] = None
-    left_participants: Optional[Union[Union[dict, "ReactionParticipant"], List[Union[dict, "ReactionParticipant"]]]] = empty_list()
-    right_participants: Optional[Union[Union[dict, "ReactionParticipant"], List[Union[dict, "ReactionParticipant"]]]] = empty_list()
+    left_participants: Optional[Union[Union[dict, ReactionParticipant], List[Union[dict, ReactionParticipant]]]] = empty_list()
+    right_participants: Optional[Union[Union[dict, ReactionParticipant], List[Union[dict, ReactionParticipant]]]] = empty_list()
     smarts_string: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -8781,7 +8786,7 @@ slots.notes = Slot(uri=NMDC.notes, name="notes", curie=NMDC.curie('notes'),
                    model_uri=NMDC.notes, domain=None, range=Optional[str])
 
 slots.has_credit_associations = Slot(uri=PROV.qualifiedAssociation, name="has_credit_associations", curie=PROV.curie('qualifiedAssociation'),
-                   model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, "CreditAssociation"], List[Union[dict, "CreditAssociation"]]]])
+                   model_uri=NMDC.has_credit_associations, domain=Study, range=Optional[Union[Union[dict, CreditAssociation], List[Union[dict, CreditAssociation]]]])
 
 slots.study_image = Slot(uri=NMDC.study_image, name="study_image", curie=NMDC.curie('study_image'),
                    model_uri=NMDC.study_image, domain=Study, range=Optional[Union[Union[dict, "ImageValue"], List[Union[dict, "ImageValue"]]]])
@@ -9011,7 +9016,7 @@ slots.contained_in = Slot(uri=NMDC.contained_in, name="contained_in", curie=NMDC
                    model_uri=NMDC.contained_in, domain=None, range=Optional[Union[str, "ContainerCategoryEnum"]])
 
 slots.extractant = Slot(uri=NMDC.extractant, name="extractant", curie=NMDC.curie('extractant'),
-                   model_uri=NMDC.extractant, domain=Extraction, range=Optional[Union[dict, "Solution"]])
+                   model_uri=NMDC.extractant, domain=Extraction, range=Optional[Union[dict, Solution]])
 
 slots.concentration = Slot(uri=NMDC.concentration, name="concentration", curie=NMDC.curie('concentration'),
                    model_uri=NMDC.concentration, domain=SolutionComponent, range=Optional[Union[dict, "QuantityValue"]])
@@ -9087,13 +9092,13 @@ slots.is_transport = Slot(uri=NMDC.is_transport, name="is_transport", curie=NMDC
                    model_uri=NMDC.is_transport, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.left_participants = Slot(uri=NMDC.left_participants, name="left_participants", curie=NMDC.curie('left_participants'),
-                   model_uri=NMDC.left_participants, domain=Reaction, range=Optional[Union[Union[dict, "ReactionParticipant"], List[Union[dict, "ReactionParticipant"]]]])
+                   model_uri=NMDC.left_participants, domain=Reaction, range=Optional[Union[Union[dict, ReactionParticipant], List[Union[dict, ReactionParticipant]]]])
 
 slots.phase = Slot(uri=NMDC.phase, name="phase", curie=NMDC.curie('phase'),
                    model_uri=NMDC.phase, domain=GenomeFeature, range=Optional[int])
 
 slots.right_participants = Slot(uri=NMDC.right_participants, name="right_participants", curie=NMDC.curie('right_participants'),
-                   model_uri=NMDC.right_participants, domain=Reaction, range=Optional[Union[Union[dict, "ReactionParticipant"], List[Union[dict, "ReactionParticipant"]]]])
+                   model_uri=NMDC.right_participants, domain=Reaction, range=Optional[Union[Union[dict, ReactionParticipant], List[Union[dict, ReactionParticipant]]]])
 
 slots.smarts_string = Slot(uri=NMDC.smarts_string, name="smarts_string", curie=NMDC.curie('smarts_string'),
                    model_uri=NMDC.smarts_string, domain=None, range=Optional[str])
@@ -9235,6 +9240,10 @@ slots.objective = Slot(uri=NMDC.objective, name="objective", curie=NMDC.curie('o
 
 slots.websites = Slot(uri=NMDC.websites, name="websites", curie=NMDC.curie('websites'),
                    model_uri=NMDC.websites, domain=None, range=Optional[Union[str, List[str]]],
+                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
+
+slots.homepage_website = Slot(uri=NMDC.homepage_website, name="homepage_website", curie=NMDC.curie('homepage_website'),
+                   model_uri=NMDC.homepage_website, domain=None, range=Optional[Union[str, List[str]]],
                    pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
 
 slots.highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="highest_similarity_score", curie=NMDC.curie('highest_similarity_score'),
@@ -11480,6 +11489,10 @@ slots.Study_name = Slot(uri=NMDC.name, name="Study_name", curie=NMDC.curie('name
 
 slots.Study_websites = Slot(uri=NMDC.websites, name="Study_websites", curie=NMDC.curie('websites'),
                    model_uri=NMDC.Study_websites, domain=Study, range=Optional[Union[str, List[str]]],
+                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
+
+slots.Study_homepage_website = Slot(uri=NMDC.homepage_website, name="Study_homepage_website", curie=NMDC.curie('homepage_website'),
+                   model_uri=NMDC.Study_homepage_website, domain=Study, range=Optional[Union[str, List[str]]],
                    pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
 
 slots.Study_description = Slot(uri=DCTERMS.description, name="Study_description", curie=DCTERMS.curie('description'),

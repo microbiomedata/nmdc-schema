@@ -8561,6 +8561,15 @@
                     },
                     "type": "array"
                 },
+                "homepage_website": {
+                    "description": "The website address (URL) of an entity's homepage.",
+                    "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
+                        "type": "string"
+                    },
+                    "maxItems": 1,
+                    "type": "array"
+                },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
