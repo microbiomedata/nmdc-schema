@@ -98,7 +98,6 @@ enums:
           - chloridic_acid
       water: {}
       triton_X-100: {}
-      trypsin: {}
       chymotrypsin: {}
       lys_c:
         aliases:
