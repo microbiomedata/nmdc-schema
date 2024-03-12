@@ -93,6 +93,33 @@ enums:
           chemical_formula: CH3OH
           inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
       deionized_water: { }
+          permissible_values:
+      hydrochloric_acid:
+        aliases:
+          - chloridic_acid
+      water: {}
+      triton_X-100: {}
+      trypsin:
+      chymotrypsin:
+      lys_c:
+        aliases:
+          - Lys-C
+      lys_n:
+        aliases:
+          - Lys-N
+      glu_c:
+        aliases:
+          - Glu-C
+      arg_c:
+        aliases:
+          - Arg-C
+      asp_n:
+        aliases:
+          - Asp-N
+      alphalp:
+        aliases:
+          - alphaLP
+
 
   CompoundEnum:
     permissible_values:
