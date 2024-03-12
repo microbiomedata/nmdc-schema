@@ -47,7 +47,6 @@ classes:
         description: >-
           A Workflow Chain instance was informed by the data and metadata of a of a 
             Data Generation instance
-        range: DataGeneration
         comments: >-
           The value of this slot is a reference to a Data Generation 
           instance that informed the Workflow Chain instance with its
