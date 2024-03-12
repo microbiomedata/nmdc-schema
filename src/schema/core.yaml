@@ -93,14 +93,13 @@ enums:
           chemical_formula: CH3OH
           inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
       deionized_water: { }
-          permissible_values:
       hydrochloric_acid:
         aliases:
           - chloridic_acid
       water: {}
       triton_X-100: {}
-      trypsin:
-      chymotrypsin:
+      trypsin: {}
+      chymotrypsin: {}
       lys_c:
         aliases:
           - Lys-C
