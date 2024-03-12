@@ -2690,12 +2690,6 @@ enums:
       ZIC-pHILIC:
       ZIC-cHILIC:
 
-  SampleStateEnum:
-    permissible_values:
-      solid:
-      liquid:
-      gas:
-
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
     permissible_values:

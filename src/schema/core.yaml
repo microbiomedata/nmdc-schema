@@ -12,7 +12,10 @@ imports:
   - prov
 
 prefixes:
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  PR: http://purl.obolibrary.org/obo/PR_
   SIO: http://semanticscience.org/resource/SIO_
   UniProtKB: "https://bioregistry.io/uniprot:"
   biolink: https://w3id.org/biolink/vocab/
@@ -23,7 +26,6 @@ prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   schema: http://schema.org/
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
-  OBI: http://purl.obolibrary.org/obo/OBI_
 
 default_prefix: nmdc
 default_range: string
@@ -34,6 +36,7 @@ subsets:
   investigation: { }
   nucleic acid sequence source: { }
   sequencing: { }
+  proteases: { }
 
 types:
 
@@ -66,6 +69,31 @@ types:
       - UO:0000000
 
 enums:
+  SubstanceRoleEnum:
+    permissible_values:
+      buffer: { }
+      protease: { }
+      solvent: { }
+  SampleStateEnum:
+    permissible_values:
+      solid:
+      liquid:
+      gas:
+  SubstanceCategoryEnum:
+    permissible_values:
+      ammonium_bicarbonate:
+        meaning: CHEBI:184335
+      trypsin:
+        meaning: PR:000027795
+        in_subset:
+          - proteases
+      methanol:
+        meaning: CHEBI:17790
+        annotations:
+          chemical_formula: CH3OH
+          inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
+      deionized_water: { }
+
   CompoundEnum:
     permissible_values:
       ammonium_bicarbonate:
@@ -187,6 +215,25 @@ classes:
       - Physical entity
     is_a: NamedThing
     title: Material Entity
+
+  Substance:
+    class_uri: "nmdc:Substance"
+    title: Material Substance
+    exact_mappings:
+      - schema:Substance
+    description: Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
+    slots:
+      - final_concentration
+      - sample_state_information
+      - source_concentration
+      - substance_category
+      - substance_role
+      - volume
+
+      - chemical_formula
+      - inchi
+      - inchi_key
+      - smiles
 
   ProcessedSample:
     class_uri: "nmdc:ProcessedSample"
@@ -503,10 +550,20 @@ classes:
 
 slots:
 
+  substance_role:
+    range: SubstanceRoleEnum
+    description: The role of a substance in a process
+
   concentration:
     domain: SolutionComponent
     range: QuantityValue
     description: The concentration of a substance used in a process
+  source_concentration:
+    is_a: concentration
+    description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A
+  final_concentration:
+    is_a: concentration
+    description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination
   duration: # or could be a ISO8601 period string
     range: QuantityValue
     description: The elapsed time of an activity.
@@ -653,9 +710,9 @@ slots:
     range: string
     slot_uri: schema:email
 
-#  alternate_emails:
-#    description: One or more other email addresses for an entity.
-#    range: string
+  #  alternate_emails:
+  #    description: One or more other email addresses for an entity.
+  #    range: string
 
   profile_image_url:
     description: A url that points to an image of a person.
@@ -714,14 +771,14 @@ slots:
     range: string
     description: MD5 checksum of file (pre-compressed)
 
-#  keywords:
-#    range: string
-#    multivalued: true
-#    description: >-
-#      A list of keywords that used to associate the entity.
-#      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
-#    mappings:
-#      - dcterms:subject
+  #  keywords:
+  #    range: string
+  #    multivalued: true
+  #    description: >-
+  #      A list of keywords that used to associate the entity.
+  #      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
+  #    mappings:
+  #      - dcterms:subject
 
   objective:
     range: string
@@ -819,3 +876,9 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+  substance_category:
+    range: SubstanceCategoryEnum
+  sample_state_information:
+    description: >-
+      The chemical phase of a pure sample, or the state of a mixed sample
+    range: SampleStateEnum

@@ -4,6 +4,26 @@ has_input:
   - "nmdc:procsm-37"
 has_output:
   - "nmdc:procsm-39"
+substances:
+  - substance_category: deionized_water
+    sample_state_information: liquid
+    substance_role: solvent
+  - substance_category: ammonium_bicarbonate
+    substance_role: buffer
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_unit: mM
+      has_numeric_value: 50
+  - substance_category: trypsin
+    substance_role: protease
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_unit: μg/μL
+      has_numeric_value: 0.05
+substances_volume:
+  type: nmdc:QuantityValue
+  has_numeric_value: 75
+  has_unit: μL
 #has_reagents:
 #  type: nmdc:ReagentsCollection
 #  solutions_used:

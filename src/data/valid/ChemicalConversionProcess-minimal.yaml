@@ -5,6 +5,17 @@ has_input:
 has_output:
   - "nmdc:ome-39"
 chemical_conversion_category: acid_base
+substances:
+  - substance_category: methanol
+    sample_state_information: liquid
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 120
+      has_unit: mL
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_unit: mM
+      has_numeric_value: 10
 #has_reagents:
 #  type: nmdc:ReagentsCollection
 #  lab_reagents_used:
