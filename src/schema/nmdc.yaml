@@ -28,6 +28,7 @@ imports:
   - portal/mixs_inspired
   - portal/sample_id
   - workflow_execution_activity
+  - chemical_converion_process
 
 prefixes:
   CATH: "https://bioregistry.io/cath:"
@@ -95,7 +96,6 @@ prefixes:
   CHMO: "http://purl.obolibrary.org/obo/CHMO_"
   wikidata: "http://www.wikidata.org/entity/"
   my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
-
 
 default_prefix: nmdc
 default_range: string
@@ -300,52 +300,6 @@ classes:
           interpolated: true
       volume:
         description: The volume of the solvent/solute being used, not the input.
-
-  SolutionComponent:
-    class_uri: nmdc:SolutionComponent
-    description: One constituent of a solution
-    slots:
-      - compound
-      - concentration
-      - type
-
-  Solution:
-    class_uri: nmdc:Solution
-    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
-    aliases:
-      - mixture
-      - solvent
-    comments:
-      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
-      - The solution class may be used to instantiate a single component in the has_solution_components slot
-    notes:
-      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
-      - TODO consider making a "Fluid" class
-    slots:
-      - has_solution_components
-      - volume
-      - type
-
-  LaboratoryReagent:
-    class_uri: "nmdc:LaboratoryReagent"
-    aliases:
-      - chemical substance
-      - chemical compound
-      - chemical
-      - reagent
-      - reactant
-    description: >-
-      A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
-    slots:
-      - chemical_formula
-      - inchi_key
-      - sample_state_information
-      - mass
-      - volume
-      - concentration
-      - type
-    see_also:
-      - CHEBI:33893
 
   Protocol:
     class_uri: nmdc:Protocol
@@ -1613,31 +1567,6 @@ classes:
           syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-
-  MaterialProcessing:
-    class_uri: 'nmdc:MaterialProcessing'
-    is_a: PlannedProcess
-    description:
-      A process that takes one or more samples as inputs and generates
-      one or more samples as outputs.
-
-    notes:
-      - This class is a replacement for BiosampleProcessing.
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-      has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
-      has_output:
-        range: ProcessedSample
-    broad_mappings:
-      - OBI:0000094
-
   SubSamplingProcess:
     class_uri: 'nmdc:SubSamplingProcess'
     description: >
@@ -1764,40 +1693,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-
-  ChemicalConversionProcess:
-    class_uri: 'nmdc:ChemicalConversionProcess'
-    description: >
-      A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
-    see_also:
-      - C01033
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-1368-8217 #Yuri Corilo
-    is_a: MaterialProcessing
-    slots:
-      - chemical_conversion_category
-      - has_reagents
-      - catalyzed_by
-      - temperature
-      - duration
-    comments:
-      - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-
-  ReagentsCollection:
-    class_uri: 'nmdc:ReagentsCollection'
-    description: >-
-      A group of Solutions and Laboratory Reagents that are used together.
-    slots:
-      - solutions_used
-      - lab_reagents_used
-      - type
 
   DissolvingProcess:
     class_uri: 'nmdc:DissolvingProcess'
@@ -1958,7 +1853,6 @@ enums:
       electron_ionization: 
         aliases: 
           - EI
-
 
   MassSpectrumCollectionModeEnum:
     permissible_values:
@@ -2201,18 +2095,7 @@ enums:
           - Oxford Nanopore Technologies
         meaning: OBI:0002755
 
-  StatusEnum:
-    permissible_values:
-      pass: { }
-      fail: { }
-  #      accepted: { }
-  #      archived: { }
-  #      deleted: { }
-  #      draft: { }
-  #      rejected: { }
-  #      submitted: { }
-  #      superseded: { }
-  #      withdrawn: { }
+
 
   ExtractionTargetEnum:
     permissible_values:
@@ -2612,7 +2495,6 @@ enums:
     comments:
       - credit enums come from https://casrai.org/credit/
 
-
   StudyCategoryEnum:
     permissible_values:
       research_study:
@@ -2780,43 +2662,6 @@ enums:
   #      cloridic acid:
   #      Water:
 
-  CompoundEnum:
-    permissible_values:
-      ammonium_bicarbonate:
-      deionized_water:
-      methanol:
-      hydrochloric_acid:
-        aliases:
-          - chloridic_acid
-      water:
-      triton_X-100:
-
-  ProteolyticEnzymeEnum:
-    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
-    see_also:
-      - http://purl.obolibrary.org/obo/NCIT_C16554
-    permissible_values:
-      trypsin:
-      chymotrypsin:
-      lys_c:
-        aliases:
-          - Lys-C
-      lys_n:
-        aliases:
-          - Lys-N
-      glu_c:
-        aliases:
-          - Glu-C
-      arg_c:
-        aliases:
-          - Arg-C
-      asp_n:
-        aliases:
-          - Asp-N
-      alphalp:
-        aliases:
-          - alphaLP
-
   StationaryPhaseEnum:
     description: The type of stationary phase used in a solid phase extraction process.
     contributors:
@@ -2878,15 +2723,6 @@ enums:
         aliases:
           - SPE
 
-  ChemicalConversionCategoryEnum:
-    permissible_values:
-      addition:
-      substitution:
-      acid_base:
-      reduction_oxidation:
-      combustion:
-      decomposition:
-
 slots:
   associated_studies:
     description: The study associated with a resource.
@@ -2899,10 +2735,6 @@ slots:
     domain: DataObject
     range: DataCategoryEnum
     description: The category of the file, such as instrument data from data generation or processed data from a workflow wxecution.
-
-  has_failure_categorization:
-    range: FailureCategorization
-    multivalued: true
 
   model:
     range: InstrumentModelEnum
@@ -2951,9 +2783,7 @@ slots:
     range: integer
   sample_collection_month:
 
-  qc_status:
-    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
-    range: StatusEnum
+
 
   library_preparation_kit:
     range: string
@@ -3396,7 +3226,6 @@ slots:
     range: Instrument
     description: This property links a database object to the set of instruments within it.
 
-
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
     domain: DataGeneration
@@ -3610,22 +3439,7 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  volume: # see also input_volume
-    domain: PlannedProcess
-    range: QuantityValue
-    description: The volume of a substance.
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  temperature:
-    range: QuantityValue
-    notes:
-      - "Not to be confused with the MIXS:0000113"
-    description: The value of a temperature measurement or temperature used in a process.
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
 
   bulk_elect_conductivity:
     comments:
@@ -3701,13 +3515,7 @@ slots:
   is_pressurized:
     range: boolean
     description: Whether or not pressure was applied to a thing or process.
-  duration: # or could be a ISO8601 period string
-    range: QuantityValue
-    description: The elapsed time of an activity.
-    examples:
-      - value:
-          has_numeric_value: 2
-          has_unit: hours
+
   contained_in:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
@@ -3715,30 +3523,12 @@ slots:
     domain: Extraction
     range: Solution
     description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
-  concentration:
-    domain: SolutionComponent
-    range: QuantityValue
-    description: The concentration of a substance used in a process
+
   input_volume: # see also `volume`
     domain: PlannedProcess
     range: QuantityValue
     description: The volume of the input sample.
-  has_solution_components:
-    description: Relationship from a Solution to one or more constituent solution components
-    range: SolutionComponent
-    domain: Solution
-    multivalued: true
-    inlined_as_list: true
-    required: true
-    minimum_cardinality: 1
-    #list example
-  compound:
-    domain: SolutionComponent
-    any_of:
-      - range: CompoundEnum
-      - range: ProteolyticEnzymeEnum
-    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
-    required: true
+
   ordered_mobile_phases:
     domain: ChromatographicSeparationProcess
     range: Solution
@@ -3755,35 +3545,6 @@ slots:
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
-  has_reagents:
-    domain: ChemicalConversionProcess
-    range: ReagentsCollection
-    description: The reagents used in a chemical reaction.
-    #multivalued: true
-    #inlined_as_list: true
-  sample_state_information:
-    domain: ChemicalConversionProcess
-    description: >-
-      The chemical phase of a pure sample, or the state of a mixed sample
-    range: SampleStateEnum
-  catalyzed_by:
-    domain: ChemicalConversionProcess
-    range: Solution
-    description: The catalyst used to increase the rate of a chemical reaction.
-    multivalued: true
-    inlined_as_list: true
-  solutions_used:
-    domain: ReagentsCollection
-    range: Solution
-    description: The Solutions that are use together in some process
-    multivalued: true
-    inlined_as_list: true
-  lab_reagents_used:
-    domain: ReagentsCollection
-    range: LaboratoryReagent
-    description: The LaboratoryReagents that are used together in some process
-    multivalued: true
-    inlined_as_list: true
   solvent:
     domain: DissolvingProcess
     range: Solution
@@ -3797,7 +3558,4 @@ slots:
     description: A substance within a formulation that enhances the solubility of another substance.
     exact_mappings:
       - NCIT:C176640
-  chemical_conversion_category:
-    domain: ChemicalConversionProcess
-    range: ChemicalConversionCategoryEnum
-    description: The type of chemical conversion process.
+
