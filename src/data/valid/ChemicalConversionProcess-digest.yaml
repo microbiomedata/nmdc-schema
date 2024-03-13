@@ -4,7 +4,7 @@ has_input:
   - "nmdc:procsm-37"
 has_output:
   - "nmdc:procsm-39"
-substances:
+substances_used:
   - substance_category: deionized_water
     sample_state_information: liquid
     substance_role: solvent

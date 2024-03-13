@@ -39,7 +39,7 @@ classes:
       - chemical_conversion_category
       - duration
       - temperature
-      - substances
+      - substances_used
       - substances_volume
     #      - catalyzed_by
     #      - has_reagents
@@ -109,7 +109,7 @@ slots:
   #    description: The LaboratoryReagents that are used together in some process
   #    multivalued: true
   #    inlined_as_list: true
-  substances:
+  substances_used:
     range: Substance
     description: The substances that are combined to enable a ChemicalConversionProcess.
     multivalued: true

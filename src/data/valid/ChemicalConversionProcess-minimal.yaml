@@ -5,7 +5,7 @@ has_input:
 has_output:
   - "nmdc:ome-39"
 chemical_conversion_category: acid_base
-substances:
+substances_used:
   - substance_category: methanol
     sample_state_information: liquid
     volume:
