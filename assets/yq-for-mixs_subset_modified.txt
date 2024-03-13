@@ -147,8 +147,17 @@
 '.slots.host_taxid.comments |= ["Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value"]' 
 '.slots.host_taxid.range = "ControlledIdentifiedTermValue"' 
 '.slots.samp_taxon_id.comments |= ["coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value"]' 
-'.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"' 
+'.slots.samp_taxon_id.range = "ControlledIdentifiedTermValue"'
 
+# these slots, by their old names, are not used anywhere in mixs.yaml and seem to confuse the mkdocs search when looking for has_unit etc.
+'del(.slots.["has numeric value"])'
+'del(.slots.["has raw value"])'
+'del(.slots.["has unit"])'
 
 # add "M horizon" to soil_horizon_enum
 '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'
+
+# as of 2024-01-30:
+# ValueError: Conflicting URIs (https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml, https://w3id.org/linkml/types) for item: date
+make: *** [Makefile:102: gen-project] Error 1
+'del(.types)'

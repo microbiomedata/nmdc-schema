@@ -5,9 +5,9 @@
 nmdc:sty-99-FkQIsc a nmdc:Study ;
     dcterms:description "Thawing permafrost is one of the largest soil carbon pools on the planet. The goal of this project is to study microbial communities that participate in the soil carbon cycle." ;
     nmdc:associated_dois [ a nmdc:Doi ;
-            nmdc:doi_category "dataset_doi" ;
-            nmdc:doi_provider "ess_dive" ;
-            nmdc:doi_value "doi:10.1333/s00897980202a"^^xsd:anyURI ],
+            nmdc:doi_category "award_doi" ;
+            nmdc:doi_provider "jgi" ;
+            nmdc:doi_value "doi:10.25585/1487763"^^xsd:anyURI ],
         [ a nmdc:Doi ;
             nmdc:doi_category "publication_doi" ;
             nmdc:doi_value "doi:10.1016/j.foodchem.2008.11.065"^^xsd:anyURI ],
@@ -17,12 +17,12 @@ nmdc:sty-99-FkQIsc a nmdc:Study ;
             nmdc:doi_value "doi:10.1093/acprof:oso/9780195159561.001.1"^^xsd:anyURI ],
         [ a nmdc:Doi ;
             nmdc:doi_category "award_doi" ;
-            nmdc:doi_provider "jgi" ;
-            nmdc:doi_value "doi:10.25585/1487763"^^xsd:anyURI ],
-        [ a nmdc:Doi ;
-            nmdc:doi_category "award_doi" ;
             nmdc:doi_provider "emsl" ;
-            nmdc:doi_value "doi:10.25585/1487765"^^xsd:anyURI ] ;
+            nmdc:doi_value "doi:10.25585/1487765"^^xsd:anyURI ],
+        [ a nmdc:Doi ;
+            nmdc:doi_category "dataset_doi" ;
+            nmdc:doi_provider "ess_dive" ;
+            nmdc:doi_value "doi:10.1333/s00897980202a"^^xsd:anyURI ] ;
     nmdc:ecosystem "Environmental" ;
     nmdc:ecosystem_category "Terrestrial" ;
     nmdc:ecosystem_subtype "Wetlands" ;

@@ -57,7 +57,6 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
 	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-	# eval yq -i $$line $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 
@@ -96,14 +95,14 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--report-style exhaustive
 
 examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
-	poetry run exhaustion-check \
+	$(RUN) exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
 examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
-	poetry run pretty-sort-yaml \
+	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
 
@@ -154,7 +153,10 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
-make-rdf: rdf-clean local/mongo_as_nmdc_database_cuire_repaired.ttl
+make-rdf: rdf-clean \
+	local/mongo_as_nmdc_database_validation.log \
+	local/mongo_as_nmdc_database_cuire_repaired.ttl \
+	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
 # functional_annotation_agg is enormous. metaproteomics_analysis_activity_set is large. metap_gene_function_aggregation?
 
@@ -176,10 +178,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
-		--selected-collections data_object_set \
 		--selected-collections extraction_set \
-		--selected-collections field_research_site_set \
-		--selected-collections functional_annotation_agg \
 		--selected-collections genome_feature_set \
 		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
@@ -198,6 +197,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -250,7 +251,7 @@ migrator:
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
-		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py'
+		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py' | grep -v 'examples/output/'
 
 local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 	$(RUN) slot-range-type-reporter \
@@ -259,55 +260,54 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 		--schema-class Biosample
 
 ### example of preparing to validate napa squad data
-local/nmdc-schema-v8.0.0.yaml:
-	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v8.0.0/nmdc_schema/nmdc_materialized_patterns.yaml
+
+local/nmdc-schema-v7.8.0.yaml:
+	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
 	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
 	#     see_also:
 	#       - MIxS:experimental_factor|additional_info
 	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
+	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
+	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
+	rm -rf $@.bak
 
-local/nmdc-schema-v8.0.0.owl.ttl: local/nmdc-schema-v8.0.0.yaml
-	$(RUN) gen-owl $< > $@
+local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
+	$(RUN) gen-owl --no-use-native-uris $< > $@
 
-local/nmdc-sty-11-aygzgv51.yaml:
-	$(RUN) get-study-related-records \
-		--api-base-url https://api-napa.microbiomedata.org \
-		extract-study \
-		--study-id $(subst nmdc-,nmdc:,$(basename $(notdir $@))) \
-		--output-file $@
 
-### FUSEKI, DOCKER, ETC
+## FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
 # Jena provides command line tools for accessing RDF *files*
-# or you can use a TDB as the data backend
-# Fuseki is a web interface for submitting SPARQL queries
-# we are foing all of this in docker so you don't have to install any of this software
+# we use a Jena TDB2 database as the backend (as opposed to operating over files)
+# Fuseki is Jena's web interface for submitting SPARQL queries
+# we are doing all of this in docker so you don't have to install any of this system software
 
-.PHONY: thorough-docker-fuseki-cleanup-from-host # this level of cleanup may not be needed ona regular basis
-thorough-docker-fuseki-cleanup-from-host:
+.PHONY: thorough-docker-fuseki-cleanup-from-host # this level of cleanup may not be needed on a regular basis
+thorough-docker-fuseki-cleanup-from-host: some-napa-collections-cleanup
 	- docker compose down
 	rm -rf local/fuseki-data
-	rm -rf local/nmdc-data*
-	rm -rf local/nmdc-tdb2*
+	rm -rf local/sparql-results/*
+	rm -rf .venv
 	docker system prune --force # very aggressive. may delete containers etc that you want but are not currently running
 
 .PHONY: docker-startup-from-host
 docker-startup-from-host:
 	docker compose up --build  --detach # --build is only necessary if changes have been made to the Dockerfile
 
-# manually: `docker compose exec app bash`
-# then you can do any nmdc-schem makefile commands in the 'app' environment
+# from host: checkout the desired branch, fetch and pull
+# from host: `docker compose exec app bash`
+#   it's best if there isn't already a ./.venv, especially if the environment wasn't built for Linux
+# in container: `poetry install`
+# in container: `make build-schema-in-app`
+
+# then you can do any nmdc-schema makefile commands in the 'app' environment
 
 .PHONY: build-schema-in-app
-build-schema-in-app:
-	# Warning: 'get-study-related-records' is an entry point defined in pyproject.toml, but it's not installed as a script. You may get improper `sys.argv[0]`.
-	# The support to run uninstalled scripts will be removed in a future release.
-	# Run `poetry install` to resolve and get rid of this message.
-	poetry install
+build-schema-in-app: pre-build
 	make squeaky-clean all test
 
-.PHONY: comprehensive-fuseki-in-app
-comprehensive-fuseki-in-app: create-nmdc-tdb2-from-app populate-nmdc-tdb2-in-app # run simultaneously with tests above in new `docker compose exec app bash`
+.PHONY: pre-build
+pre-build: local/gold-study-ids.yaml create-nmdc-tdb2-from-app
 
 .PHONY: create-nmdc-tdb2-from-app
 create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. It starts out empty.
@@ -316,60 +316,195 @@ create-nmdc-tdb2-from-app: # Fuseki will get it's data from this TDB2 database. 
 		--data 'dbType=tdb&dbName=nmdc-tdb2' \
 		'http://fuseki:3030/$$/datasets'
 
-.PHONY: populate-nmdc-tdb2-in-app
-populate-nmdc-tdb2-in-app: local/nmdc-data.ttl populate-nmdc-tdb2 # can be run concurrently with tests, in its own "docker compose exec app bash"
 
-# Napa nmdc:sty-11-aygzgv51 = gold:Gs0114663
-local/nmdc-data.yaml:
-	# this does not traverse every possible path from a Study to all related records
-	# --quick-test \
-	# 40 minutes?
+## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
+#
+# advantage: can retreive records that have known, chacterized paths to a Study (useful scoping)
+# disadvantages:
+#   some paths to records form some collections aren't implemented yet
+#   runs slow on Mark's computers in Philadelphia. Running pure-export can reteive more data more quickly, but without any scoping
+# the core targets include wildcards in their names,
+#   but an individual YAML file can be built like this: make local/study-files/nmdc-sty-11-8fb6t785.yaml
+#   or an explicit subset of YAML files can be built with: make create-study-yaml-files-subset
+#   or YAML files can be built from a list of study ids (STUDY_IDS) like this: make create-study-yaml-files-from-study-ids-list
+
+
+# can't ever be used without generating local/gold-study-ids.yaml first
+STUDY_IDS := $(shell yq '.resources.[].id' local/gold-study-ids.yaml  | awk '{printf "%s ", $$0} END {print ""}')
+
+.PHONY: print-discovered-study-ids print-intended-yaml-files
+
+# can't ever be used without generating local/gold-study-ids.yaml first
+print-discovered-study-ids:
+	@echo $(STUDY_IDS)
+
+# Replace colons with hyphens in study IDs
+# can't ever be used without generating local/gold-study-ids.yaml first
+STUDY_YAML_FILES := $(addsuffix .yaml,$(addprefix local/study-files/,$(subst :,-,$(STUDY_IDS))))
+
+.PHONY: all-study-yaml-files
+
+# can't ever be used without generating local/gold-study-ids.yaml first
+create-study-yaml-files-from-study-ids-list: $(STUDY_YAML_FILES)
+
+# can't ever be used without generating local/gold-study-ids.yaml first
+print-intended-yaml-files: local/gold-study-ids.yaml
+	@echo $(STUDY_YAML_FILES)
+
+## we can get a report of biosamples per study with the following
+## may help predict how long it will take to run study-id-from-filename on a particular study
+## will become unnecessary once aggregation queries are available in the napa nmdc-runtime API
+local/biosamples-per-study.txt:
+	$(RUN) python src/scripts/report_biosamples_per_study.py > $@
+
+## getting a report of GOLD study identifiers, which might have been used a Study ids in legacy (pre-Napa) data
+local/gold-study-ids.json:
+	curl -X 'GET' \
+		--output $@ \
+		'https://api-napa.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
+		-H 'accept: application/json'
+
+local/gold-study-ids.yaml: local/gold-study-ids.json
+	yq -p json -o yaml $< | cat > $@
+
+local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
+	mkdir -p $(@D)
+	study_file_name=`echo $@` ; \
+		echo $$study_file_name ; \
+		study_id=`poetry run get-study-id-from-filename $$study_file_name` ; \
+		echo $$study_id ; \
+		date ; \
+		time $(RUN) get-study-related-records \
+			--api-base-url https://api-napa.microbiomedata.org \
+			extract-study \
+			--study-id $$study_id \
+			--output-file $@.tmp.yaml
+	sed -i.bak 's/gold:/GOLD:/' $@.tmp.yaml # kludge modify data to match (old!) schema
+	rm -rf $@.tmp.bak
+	- $(RUN) linkml-validate --schema $< $@.tmp.yaml > $@.validation.log.txt
+	time $(RUN) migration-recursion \
+		--schema-path $< \
+		--input-path $@.tmp.yaml \
+		--salvage-prefix generic \
+		--output-path $@ # kludge masks ids that contain whitespace
+	rm -rf $@.tmp.yaml $@.tmp.yaml.bak
+
+.PHONY: create-study-yaml-files-subset create-study-ttl-files-subset load-from-some-napa-collections
+
+create-study-yaml-files-subset: local/study-files/nmdc-sty-11-8fb6t785.yaml \
+local/study-files/nmdc-sty-11-1t150432.yaml \
+local/study-files/nmdc-sty-11-dcqce727.yaml
+
+local/study-files/%.ttl: local/nmdc-schema-v7.8.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
+	$(RUN) linkml-convert --output $@ --schema $< $(subst .ttl,.yaml,$@)
+
+create-study-ttl-files-subset: local/study-files/nmdc-sty-11-8fb6t785.ttl \
+local/study-files/nmdc-sty-11-1t150432.ttl \
+local/study-files/nmdc-sty-11-dcqce727.ttl
+
+## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
+# retrieve selected collections from the Napa squad's MongoDB and fix ids containing whitespace
+local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 	date
-	time $(RUN) get-study-related-records \
-		--api-base-url https://api.microbiomedata.org \
-		extract-study \
-		--study-id gold:Gs0114663 \
-		--output-file $@ # this is a CLI that bundles several API calls to get data from MongoDB
+	time $(RUN) pure-export \
+		--client-base-url https://api-napa.microbiomedata.org \
+		--endpoint-prefix nmdcschema \
+		--env-file local/.env \
+		--max-docs-per-coll 200000 \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--output-yaml $@.tmp \
+		--page-size 200000 \
+		--schema-file $< \
+		--selected-collections biosample_set \
+		--selected-collections data_object_set \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections library_preparation_set \
+		--selected-collections omics_processing_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
+		--selected-collections study_set \
+		--skip-collection-check
+	sed -i.bak 's/gold:/GOLD:/' $@.tmp # kludge modify data to match (old!) schema
+	rm -rf $@.tmp.bak
+	time $(RUN) migration-recursion \
+		--schema-path $< \
+		--input-path $@.tmp \
+		--salvage-prefix generic \
+		--output-path $@ # kludge masks ids that contain whitespace
+	rm -rf $@.tmp
 
-local/nmdc-data-validation-log.txt: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml
-	$(RUN) linkml-validate --schema $^ > $@
+.PRECIOUS: local/some_napa_collections.validation.log
+local/some_napa_collections.validation.log: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml
+	- $(RUN) linkml-validate --schema $^ > $@
 
-local/nmdc-data-raw.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/nmdc-data.yaml local/nmdc-data-validation-log.txt
-	$(RUN) linkml-convert --output $@ --schema $(word 1, $^) $(word 2, $^) # remember, TTL is one serialization of RDF data
-
-local/nmdc-data.ttl: local/nmdc-data-raw.ttl
-	$(RUN) anyuri-strings-to-iris \
-		--input-ttl $< \
+local/some_napa_collections.ttl: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
+	$(RUN) linkml-convert --output $@.tmp.ttl --schema $(word 1, $^) $(word 2, $^)
+	time $(RUN) anyuri-strings-to-iris \
+		--input-ttl $@.tmp.ttl \
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-uuid-replacement emsl_uuid_like \
-		--output-ttl $@ # this converts some string values from linkml-convert to object relationships
-	riot --validate $@
+		--output-ttl $@
+	rm -rf $@.tmp.ttl
 
-# Populates a Jena TDB2 database that will be accessible to Fuseki.
-#
-# Note: Manually stop the `fuseki` container before running this target,
-#       in order to release a lock on a file that this target writes to.
-#
-# Note: We expect people to run this make target from within the `app` container.
-#
-.PHONY: populate-nmdc-tdb2
-populate-nmdc-tdb2: project/owl/nmdc.owl.ttl local/nmdc-data.ttl
+load-from-some-napa-collections: local/some_napa_collections.ttl
 	curl -X \
 		POST -H "Content-Type: text/turtle" \
 		--user 'admin:password' \
-		--data-binary @$(word 1, $^) http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
+		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://api-napa.microbiomedata.org
+
+.PHONY: load-non-native-uri-schema
+load-non-native-uri-schema: local/nmdc-schema-v7.8.0.owl.ttl create-nmdc-tdb2-from-app
 	curl -X \
 		POST -H "Content-Type: text/turtle" \
 		--user 'admin:password' \
-		--data-binary @$(word 2, $^) http://fuseki:3030/nmdc-tdb2/data
+		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
 
-# does this with work in both the datasets offline and active states?
-local/nmdc-tdb2-graph-list.tsv:
-	tdb2.tdbquery \
-		--loc=$(FD_ROOT)/nmdc-tdb2 \
-		--query=assets/sparql/tdb-graph-list.rq \
-		--results=TSV > $@
+local/sparql-results/objects-that-are-never-subjects.tsv:
+	mkdir -p $(@D)
+	echo $@
+	echo $(notdir $(basename $@))
+	curl \
+		-H "Accept: text/tab-separated-values" \
+		  --data-urlencode "query@assets/sparql/$(notdir $(basename $@)).rq" \
+		  --output $@ 'http://fuseki:3030/nmdc-tdb2/query'
 
+some-napa-collections-cleanup:
+	rm -rf local/some_napa_collections*
+	rm -rf local/nmdc-schema*
+
+.PHONY: clear-data-graph some-napa-collections-cleanup
+clear-data-graph:
+	curl -X \
+		POST -H "Content-Type: application/sparql-update" \
+		--user 'admin:password' \
+		--data "CLEAR GRAPH <https://api-napa.microbiomedata.org>" \
+		http://fuseki:3030/nmdc-tdb2/update
+
+.PHONY: docker-compose-down-from-host
+docker-compose-down-from-host:
+	docker compose down
+
+## Querying with Fuseki's SAPRQL API is preferred. Here's an example of querying TDB2 database directly.
+##   We haven't whetehr the direct query is appropriate or preferable in any cases
+# or could run interactively in Fuseki web UI, localhost:3030
+# but that may only load in a private browser window
+
+#local/nmdc-tdb2-graph-list.tsv:
+#	tdb2.tdbquery \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--query=assets/sparql/tdb-graph-list.rq \
+#		--results=TSV > $@
+
+#local/subjects-lacking-rdf-types.tsv:
+#	tdb2.tdbquery \
+#		--loc=$(FD_ROOT)/nmdc-tdb2 \
+#		--query=assets/sparql/subjects-lacking-rdf-types.rq \
+#		--results=TSV > $@ # this doesn't take into consideration that some entities have nmdc:type string values, which should be migrated
+
+## when would we want to delete instead of clearing?
 # curl -X DELETE \
 #   --user 'admin:password' \
 #   http://fuseki:3030/nmdc-tdb2/data?default
@@ -378,8 +513,16 @@ local/nmdc-tdb2-graph-list.tsv:
 #   --user 'admin:password' \
 #   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
 
+local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
+	$(RUN) gen-owl --no-use-native-uris $< > $@
 
-.PHONY: docker-compose-down-from-host
-docker-compose-down-from-host:
-	docker compose down
 
+local/nmdc_materialized.ttl: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/schema_view_relation_graph.py \
+		--schema $< \
+		--output $@
+
+local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
+	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
+	cat $^ local/date_created_blank_node.ttl > $@
+	rm local/date_created_blank_node.ttl

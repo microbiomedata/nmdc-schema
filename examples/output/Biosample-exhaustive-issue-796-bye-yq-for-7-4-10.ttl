@@ -355,7 +355,7 @@ nmdc:bsm-99-dtTMNb a nmdc:Biosample ;
     nmdc:sample_link "IGSN:DSJ0284",
         "any:curie" ;
     nmdc:sample_shipped "15 g" ;
-    nmdc:sample_type "water_extract_soil" ;
+    nmdc:sample_type "soil - water extract" ;
     nmdc:soluble_iron_micromol "MIxS doesn't provide an example" ;
     nmdc:specific_ecosystem "unconstrained text" ;
     nmdc:start_date_inc "2023-01-27" ;

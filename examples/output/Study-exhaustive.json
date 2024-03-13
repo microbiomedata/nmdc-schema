@@ -129,5 +129,8 @@
     "https://w3id.org/nmdc",
     "https://w3id.org/linkml"
   ],
+  "homepage_website": [
+    "https://www.neonscience.org/"
+  ],
   "@type": "Study"
 }

@@ -4,12 +4,12 @@
 nmdc:extrp-71-r2pk nmdc:designated_class "nmdc:Extraction"^^xsd:anyURI ;
     nmdc:extractant [ a nmdc:Solution ;
             nmdc:has_solution_components [ a nmdc:SolutionComponent ;
-                    nmdc:compound "deionized water" ],
-                [ a nmdc:SolutionComponent ;
                     nmdc:compound "methanol" ;
                     nmdc:concentration [ a nmdc:QuantityValue ;
                             nmdc:has_numeric_value 5e+00 ;
-                            nmdc:has_unit "%" ] ] ] ;
+                            nmdc:has_unit "%" ] ],
+                [ a nmdc:SolutionComponent ;
+                    nmdc:compound "deionized water" ] ] ;
     nmdc:has_input nmdc:ome-6 ;
     nmdc:has_output nmdc:ome-8 .
 

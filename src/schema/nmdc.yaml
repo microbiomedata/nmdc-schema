@@ -15,7 +15,7 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v10.0.0 # GH uses same version string # pyproject.toml says "9.3.2"
+version: 0.0.0
 
 imports:
   - annotation
@@ -392,7 +392,7 @@ classes:
         postconditions:
           slot_conditions:
             dna_cont_well:
-              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
 
       - title: rna_well_requires_plate
         description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
@@ -417,7 +417,7 @@ classes:
         postconditions:
           slot_conditions:
             rna_cont_well:
-              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
 
     unique_keys:
       samp_name_unique_key:
@@ -645,9 +645,6 @@ classes:
       - growth_hormone_regm
       - hall_count
       - handidness
-      - has numeric value
-      - has raw value
-      - has unit
       - hc_produced
       - hcr
       - hcr_fw_salinity
@@ -1458,6 +1455,7 @@ classes:
       - title
       - type
       - websites
+      - homepage_website
 
     slot_usage:
       id:
@@ -1475,6 +1473,10 @@ classes:
             Link to the Principal Investigator's research lab webpage
             or the study webpage associated with this collection of samples.
             Multiple links can be provided.
+      homepage_website:
+        annotations:
+          display_hint:
+            Link to the consortium's homepage if the study_category is a consortium.
       description:
         description: A brief, link-free summary of a Study
         annotations:
@@ -1774,14 +1776,11 @@ enums:
       tube: { }
 
   YesNoEnum:
-    name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
-    from_schema: https://example.com/nmdc_submission_schema
     permissible_values:
-      "no":
-        text: "no"
-      "yes":
-        text: "yes"
+      'no': { }
+      'yes': { }
+
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:
@@ -1806,7 +1805,7 @@ enums:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
 
-  file type enum:
+  FileTypeEnum:
     permissible_values:
       Metagenome Raw Reads:
         description: Interleaved paired-end raw sequencing data
@@ -1857,12 +1856,19 @@ enums:
       Metagenome Bins:
         description: Metagenome bin contigs fasta
 
-      Metagenome Bins Compression File:
-        description: Compressed file containing all metagenome bins and associated files
+      Metagenome HQMQ Bins Compression File:
+        description: Compressed file containing high qulaity and medium quality metagenome bins and associated files
         annotations:
           file_name_pattern:
             tag: file_name_pattern
             value: "[mag_wf_activity_id]_hqmq_bin.zip"
+
+      Metagenome LQ Bins Compression File:
+        description: Compressed file containing low quality metagenome bins and associated files
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: "[mag_wf_activity_id]_lq_bin.zip"
 
       Metagenome Bins Info File:
         description: File containing version information on the binning workflow
@@ -1871,6 +1877,24 @@ enums:
 
       CheckM Statistics:
         description: CheckM statistics report
+
+      Metagenome Bins Heatmap:
+        description: The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_heatmap.pdf"
+
+      Metagenome Bins Barplot:
+        description: The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_barplot.pdf"
+
+      Metagenome Bins Krona Plot:
+        description: The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_kronaplot.html"
 
       Read Based Analysis Info File:
         description: File containing reads based analysis information
@@ -2107,7 +2131,7 @@ enums:
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
 
-  credit enum:
+  CreditEnum:
     permissible_values:
       Conceptualization:
         description: Conceptualization
@@ -2144,8 +2168,7 @@ enums:
         description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
-      - credit enums come from https://casrai.org/credit/
-
+      - CreditEnums come from https://casrai.org/credit/
 
   StudyCategoryEnum:
     permissible_values:
@@ -2666,7 +2689,7 @@ slots:
       - NCIT:C39409
   applied_roles:
     domain: CreditAssociation
-    range: credit enum
+    range: CreditEnum
     multivalued: true
     required: true
     annotations:
@@ -2854,8 +2877,7 @@ slots:
       - value: metagenome
 
   data_object_type:
-    domain: DataObject
-    range: file type enum
+    range: FileTypeEnum
     description: The type of file represented by the data object.
     examples:
       - value: FT ICR-MS Analysis Results
@@ -3025,7 +3047,7 @@ slots:
   salinity_category:
     description:
       "Categorical description of the sample's salinity. Examples: halophile,
-      halotolerant, hypersaline, huryhaline"
+        halotolerant, hypersaline, huryhaline"
     range: string
     see_also:
       - https://github.com/microbiomedata/nmdc-metadata/pull/297

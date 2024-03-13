@@ -10,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "10.0.0" # nmdc.yaml and GH say v10.0.0
+version = "0.0.0"
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -45,7 +45,7 @@ packages = [
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
-linkml = "^1.6.8"
+linkml = "^1.6.10"
 linkml-runtime = "^1.6.2"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
@@ -70,22 +70,22 @@ sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
 
 [tool.poetry-dynamic-versioning]
+# We need poetry-dynamic-versioning to update the version in the src schema file,
+# then generate project artifacts from that schema with the real version populated,
+# and then perform any build or publish actions. Since this requires running
+# `poetry dynamic-versioning` manually before `poetry build`, we set enable = false.
 enable = false
 vcs = "git"
 style = "pep440"
 
-#[tool.poetry-dynamic-versioning.substitution]
-#files = [
-#    "*.py",
-#    "src/**/__init__.py",
-#    "src/**/__version__.py",
-#    "src/**/_version.py",
-#    "src/schema/nmdc.yaml"
-#]
-#patterns = [
-#    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
-#    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
-#]
+[tool.poetry-dynamic-versioning.substitution]
+files = [
+    "src/schema/nmdc.yaml"
+]
+patterns = [
+    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
+    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
@@ -111,3 +111,4 @@ nmdc-version = "nmdc_schema.nmdc_version:cli"
 pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
 test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
+get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main"

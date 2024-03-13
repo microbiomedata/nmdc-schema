@@ -84,7 +84,7 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv
+site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv accepting-legacy-ids-all
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
