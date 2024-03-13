@@ -254,6 +254,7 @@ classes:
       - substance_category
       - substance_role
       - volume
+      - mass
 
       - chemical_formula
       - inchi
