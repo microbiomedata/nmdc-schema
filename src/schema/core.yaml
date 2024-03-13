@@ -83,7 +83,7 @@ enums:
         description: Prevents degradation or loss of analytes during sample storage or preparation.
       derivatizing_agent:
         description: Chemically modifies analytes to improve detection or separation.
-      labeling_regent:
+      labeling_reagent:
         description:  Introduces a detectable label for tracing or quantification.
       precipitating_agent:
         description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
