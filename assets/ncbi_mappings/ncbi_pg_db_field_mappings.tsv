@@ -1,4 +1,4 @@
-NMDC schema class	NMDC schema slot	NCBI BioSample attribute name	static_value
+NMDC schema class	NMDC schema slot	NCBI postgres field name	static_value
 Biosample	abs_air_humidity		
 Biosample	add_date		
 Biosample	add_recov_method		
