@@ -27,8 +27,6 @@ classes:
       - MISO:0000001 # MaterialProcessing which uses or consumes chemical/molecular entities to generate other molecular entities
     description: >
       A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
-    #    see_also:
-    #      - C01033
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
@@ -41,8 +39,6 @@ classes:
       - temperature
       - substances_used
       - substances_volume
-    #      - catalyzed_by
-    #      - has_reagents
     slot_usage:
       id:
         required: true
@@ -50,65 +46,11 @@ classes:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  #  LaboratoryReagent:
-  #    class_uri: "nmdc:LaboratoryReagent"
-  #    aliases:
-  #      - chemical substance
-  #      - chemical compound
-  #      - chemical
-  #      - reagent
-  #      - reactant
-  #    description: >-
-  #      A substance used in a chemical reaction to detect, measure, examine, or produce other substances.
-  #    slots:
-  #      - chemical_formula
-  #      - inchi_key
-  #      - sample_state_information
-  #      - mass
-  #      - volume
-  #      - concentration
-  #      - type
-  #    see_also:
-  #      - CHEBI:33893
-
-#  ReagentsCollection:
-#    class_uri: 'nmdc:ReagentsCollection'
-#    description: >-
-#      A group of Solutions and Laboratory Reagents that are used together.
-#    slots:
-#      - solutions_used
-#      - lab_reagents_used
-#      - type
-
 slots:
-  #  has_reagents:
-  #    domain: ChemicalConversionProcess
-  #    range: ReagentsCollection
-  #    description: The reagents used in a chemical reaction.
-  #    #multivalued: true
-  #    #inlined_as_list: true
-  #  catalyzed_by:
-  #    domain: ChemicalConversionProcess
-  #    range: Solution
-  #    description: The catalyst used to increase the rate of a chemical reaction.
-  #    multivalued: true
-  #    inlined_as_list: true
   chemical_conversion_category:
     domain: ChemicalConversionProcess
     range: ChemicalConversionCategoryEnum
     description: The type of chemical conversion process.
-  #  solutions_used:
-  #    domain: ReagentsCollection
-  #    range: Solution
-  #    description: The Solutions that are use together in some process
-  #    multivalued: true
-  #    inlined_as_list: true
-  #  lab_reagents_used:
-  #    domain: ReagentsCollection
-  #    range: LaboratoryReagent
-  #    description: The LaboratoryReagents that are used together in some process
-  #    multivalued: true
-  #    inlined_as_list: true
   substances_used:
     range: Substance
     description: The substances that are combined to enable a ChemicalConversionProcess.

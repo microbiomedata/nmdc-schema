@@ -75,6 +75,8 @@ enums:
         description: Maintains the pH of the solution within a specific range to stabilize analytes or reactions.
       protease:
         description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
+      proteolytic_enzyme:
+        description: Enzyme that catalyzes the hydrolysis of proteins.
       solvent: 
         description: Dissolves the sample or reagents to facilitate reactions or extraction.
       surfactant:
