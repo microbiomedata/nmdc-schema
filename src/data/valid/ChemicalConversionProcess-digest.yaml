@@ -15,7 +15,7 @@ substances_used:
       has_unit: mM
       has_numeric_value: 50
   - substance_category: trypsin
-    substance_role: proteolytic_enzyme
+    substance_role: ms_proteolytic_enzyme
     final_concentration:
       type: nmdc:QuantityValue
       has_unit: μg/μL

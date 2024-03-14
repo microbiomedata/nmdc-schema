@@ -77,6 +77,8 @@ enums:
         description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
       proteolytic_enzyme:
         description: Enzyme that catalyzes the hydrolysis of proteins.
+      ms_proteolytic_enzyme:
+        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry.
       solvent: 
         description: Dissolves the sample or reagents to facilitate reactions or extraction.
       surfactant:
