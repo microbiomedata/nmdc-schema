@@ -39,7 +39,7 @@ slots:
 
   was_informed_by:
     domain: WorkflowExecution
-    range: WorkflowExecution
+    range: DataGeneration
     mappings:
       - prov:wasInformedBy
 

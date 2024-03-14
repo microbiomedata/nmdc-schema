@@ -18,11 +18,14 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  sample_type_enum:
+  SampleTypeEnum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       soil: { }
-      water_extract_soil: { }
+      soil - water extract: { }
+      plant associated: { }
+      sediment: { }
+      water: { }
 
 slots:
   emsl_store_temp:
@@ -82,7 +85,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 2
     slot_group: EMSL
-    range: sample_type_enum
+    range: SampleTypeEnum
     recommended: true
   technical_reps:
     description: If sending technical replicates of the same sample, indicate the replicate count.
