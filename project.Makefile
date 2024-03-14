@@ -153,13 +153,14 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
-make-rdf: rdf-clean local/mongo_as_nmdc_database_cuire_repaired.ttl
+make-rdf: rdf-clean \
+	local/mongo_as_nmdc_database_validation.log \
+	local/mongo_as_nmdc_database_cuire_repaired.ttl \
+	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
 # functional_annotation_agg is enormous. metaproteomics_analysis_activity_set is large. metap_gene_function_aggregation?
 
 ## to ensure API only access: --skip-collection-check
-
-# 		--selected-collections extraction_set \
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
@@ -177,9 +178,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
-		--selected-collections functional_annotation_agg \
+		--selected-collections extraction_set \
 		--selected-collections genome_feature_set \
 		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
@@ -198,6 +197,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -364,7 +365,7 @@ local/gold-study-ids.json:
 		-H 'accept: application/json'
 
 local/gold-study-ids.yaml: local/gold-study-ids.json
-	yq -p json -o yaml $< > $@
+	yq -p json -o yaml $< | cat > $@
 
 local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
 	mkdir -p $(@D)
@@ -512,3 +513,16 @@ docker-compose-down-from-host:
 #   --user 'admin:password' \
 #   http://fuseki:3030/nmdc-tdb2/data?graph=https://w3id.org/nmdc/nmdc
 
+local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
+	$(RUN) gen-owl --no-use-native-uris $< > $@
+
+
+local/nmdc_materialized.ttl: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/schema_view_relation_graph.py \
+		--schema $< \
+		--output $@
+
+local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
+	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
+	cat $^ local/date_created_blank_node.ttl > $@
+	rm local/date_created_blank_node.ttl

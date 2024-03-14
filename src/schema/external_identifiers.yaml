@@ -192,7 +192,7 @@ slots:
     domain: Study
     mixins:
       - emsl_identifiers
-    description: an identifier that links to an EMSL user facility project
+    description: Identifiers that link a NMDC study to the EMSL user facility website hosting the project description of an EMSL user project
     see_also:
       - https://github.com/microbiomedata/nmdc-schema/issues/927#issuecomment-1802136437
     pattern: "^emsl\\.project:[0-9]{5}$"

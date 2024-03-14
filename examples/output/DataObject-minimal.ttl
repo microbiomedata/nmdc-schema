@@ -1,7 +1,0 @@
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix nmdc: <https://w3id.org/nmdc/> .
-
-nmdc:dobj-11-dtTMNb a nmdc:DataObject ;
-    dcterms:description "Crispr Terms for nmdc:ann0vx38" ;
-    nmdc:name "Crispr Terms" .
-

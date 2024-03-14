@@ -17,7 +17,7 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 enums:
-  rna_sample_format_enum:
+  RNASampleFormatEnum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       10 mM Tris-HCl: { }
@@ -45,6 +45,8 @@ slots:
     slot_group: JGI-Metatranscriptomics
     range: YesNoEnum
     recommended: true
+    aliases:
+      - Was Sample DNAse treated?
   proposal_rna:
     title: RNA proposal ID
     comments:
@@ -136,7 +138,7 @@ slots:
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   rna_container_id:
     title: RNA container label
     comments:
@@ -159,6 +161,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    aliases:
+      - Sample Isolation Method
   rna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
       as estimated % of the organism in that culture.
@@ -203,7 +207,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 12
     slot_group: JGI-Metatranscriptomics
-    range: rna_sample_format_enum
+    range: RNASampleFormatEnum
     recommended: true
   rna_sample_name:
     description: Give the RNA sample a name that is meaningful to you. Sample names
@@ -230,6 +234,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    aliases:
+      - Seq Project ID
   rna_seq_project_pi:
     title: RNA seq project PI
     comments:

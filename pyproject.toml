@@ -10,7 +10,7 @@ license = "MIT"
 name = "nmdc_schema"
 readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
-version = "10.0.0" # nmdc.yaml and GH say v10.0.0
+version = "0.0.0"
 authors = [
     "Bill Duncan <wdduncan@gmail.com>",
     "Chris Mungall <cjmungall@lbl.gov>",
@@ -70,22 +70,22 @@ sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
 
 [tool.poetry-dynamic-versioning]
+# We need poetry-dynamic-versioning to update the version in the src schema file,
+# then generate project artifacts from that schema with the real version populated,
+# and then perform any build or publish actions. Since this requires running
+# `poetry dynamic-versioning` manually before `poetry build`, we set enable = false.
 enable = false
 vcs = "git"
 style = "pep440"
 
-#[tool.poetry-dynamic-versioning.substitution]
-#files = [
-#    "*.py",
-#    "src/**/__init__.py",
-#    "src/**/__version__.py",
-#    "src/**/_version.py",
-#    "src/schema/nmdc.yaml"
-#]
-#patterns = [
-#    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
-#    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
-#]
+[tool.poetry-dynamic-versioning.substitution]
+files = [
+    "src/schema/nmdc.yaml"
+]
+patterns = [
+    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
+    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]

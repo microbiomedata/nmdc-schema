@@ -297,8 +297,8 @@ slots:
 enums:
   ProcessingInstitutionEnum:
     notes:
+      - This will become the range of processing_institution.omics processing
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
-    from_schema: NMDC_enums_roundtrip
     permissible_values:
       UCSD:
         title: University of California, San Diego

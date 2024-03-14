@@ -148,19 +148,19 @@ class MongoAdapter(AdapterBase):
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.replace_one
         """
 
-        collection = self._db.get_collection(name=collection_name)
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            for document in collection.find():
+                # Create a filter based upon this document's `_id` value, so that we can find the same document later.
+                # We do this up front in case a function in the pipeline "inadvertently" tampers with the `_id` field.
+                document_id = document["_id"]
+                filter_ = {"_id": {"$eq": document_id}}
 
-        # Iterate over every document in the collection.
-        for document in collection.find():
-            # Create a filter based upon this document's `_id` value, so that we can find the same document later.
-            # We do this up front in case a function in the pipeline "inadvertently" tampers with the `_id` field.
-            document_id = document["_id"]
-            filter_ = {"_id": {"$eq": document_id}}
+                # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
+                # such that the output from one stage becomes the input to the next stage.
+                for function in pipeline:
+                    document = function(document)
 
-            # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
-            # such that the output from one stage becomes the input to the next stage.
-            for function in pipeline:
-                document = function(document)
-
-            # Overwrite the original document with the processed one.
-            collection.replace_one(filter=filter_, replacement=document)
+                # Overwrite the original document with the processed one.
+                collection.replace_one(filter=filter_, replacement=document)

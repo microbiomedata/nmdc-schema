@@ -21,11 +21,16 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  analysis_type_enum:
+  AnalysisTypeEnum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       metabolomics: { }
-      metagenomics: { }
+      metagenomics:
+        title: Metagenomics
+        description: Standard short-read metagenomic sequencing
+      metagenomics_long_read:
+        title: Metagenomics (long read)
+        description: Long-read metagenomic sequencing
       metaproteomics: { }
       metatranscriptomics: { }
       natural organic matter: { }
@@ -42,7 +47,7 @@ slots:
     rank: 3
     multivalued: true
     slot_group: Sample ID
-    range: analysis_type_enum
+    range: AnalysisTypeEnum
     recommended: true
 
   sample_link:
