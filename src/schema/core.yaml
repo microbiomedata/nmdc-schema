@@ -73,24 +73,30 @@ enums:
     permissible_values:
       buffer: 
         description: Maintains the pH of the solution within a specific range to stabilize analytes or reactions.
-      protease:
-        description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
-      proteolytic_enzyme:
-        description: Enzyme that catalyzes the hydrolysis of proteins.
+        meaning: CHEBI:35225
+      # protease:
+      #   description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
+      # proteolytic_enzyme:
+      #   description: Enzyme that catalyzes the hydrolysis of proteins.
       ms_proteolytic_enzyme:
-        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry.
+        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
+        meaning: MS:1002986
       solvent: 
         description: Dissolves the sample or reagents to facilitate reactions or extraction.
+        meaning: CHEBI:46787
       surfactant:
         description: Reduces surface tension and aids in the solubilization of substances.
-      stabilizer:
-        description: Prevents degradation or loss of analytes during sample storage or preparation.
+        meaning: CHEBI:35195
+      # stabilizer:
+      #   description: Prevents degradation or loss of analytes during sample storage or preparation.
+      #   meaning: CFo000000033
       derivatizing_agent:
         description: Chemically modifies analytes to improve detection or separation.
-      labeling_reagent:
-        description:  Introduces a detectable label for tracing or quantification.
-      precipitating_agent:
-        description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
+        meaning: MSIO:0000003
+      # labeling_reagent:
+      #   description:  Introduces a detectable label for tracing or quantification.
+      # precipitating_agent:
+      #   description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
   SampleStateEnum:
     permissible_values:
       solid:
