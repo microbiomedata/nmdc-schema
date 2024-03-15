@@ -15,7 +15,7 @@ class Migrator(MigratorBase):
         view = SchemaView("src/schema/nmdc.yaml")
 
         slots_with_inlined_classes = {}
-        classes_with_inlined_classes = ["Biosample", "Study", "Extraction"]
+        classes_with_inlined_classes = ["Biosample", "Study", "Extraction", "MetabolomicsAnalysis" , "MetaproteomicsAnalysis", "MagsAnalysis"]
         for nmdc_class in classes_with_inlined_classes:
             induced_slots = view.class_induced_slots(nmdc_class)
             for slot_def in induced_slots:
@@ -43,12 +43,12 @@ class Migrator(MigratorBase):
             extraction_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Extraction", slots_with_inlined_classes)],
             field_research_site_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:FieldResearchSite")],
             library_preparation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:LibraryPreparation")],
-            mags_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MagsAnalysis")],
-            metabolomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetabolomicsAnalysis")],
+            mags_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MagsAnalysis", slots_with_inlined_classes)],
+            metabolomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetabolomicsAnalysis", slots_with_inlined_classes)],
             metagenome_annotation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeAnnotation")],
             metagenome_assembly_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeAssembly")],
             metagenome_sequencing_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeSequencing")],
-            metaproteomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetaproteomicsAnalysis")],
+            metaproteomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetaproteomicsAnalysis", slots_with_inlined_classes)],
             metatranscriptome_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAnalysis")],
             nom_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:NomAnalysis")],
             data_generation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataGeneration")],
@@ -63,7 +63,8 @@ class Migrator(MigratorBase):
 
     def add_type_to_inlined_classes(self, document: dict, slot: str, uri: str):
         r"""
-        Adds a type slot to each inlined instance of an NMDC class in the biosmpale_set, study_set, and extraction_set collections. 
+        Adds a type slot to each inlined instance of an NMDC class in the biosmpale_set, study_set, extraction_set collections, 
+        mags_set, metabolomics_analysis_set, and metaproteomics_analysis_set. 
         """
         if document.get(slot):
             # If slot is a list, iterate over each item in the list (e.g. chem_administration and has_credit_associations)
@@ -103,12 +104,10 @@ class Migrator(MigratorBase):
         # Adds the type slot with the correct class_uri as a value to each collection instance
         document["type"] = class_uri
                 
-        types_with_inlined_classes = ["nmdc:Biosample", "nmdc:Study", "nmdc:Extraction"]
         # Add the type slot to any inlined classes in the Biosample, Study, or Extraction collections
-        if class_uri in types_with_inlined_classes:
-            if inlined_slots:
-                for slot, uri in  inlined_slots.items():
-                    self.add_type_to_inlined_classes(document, slot, uri)
+        if inlined_slots:
+            for slot, uri in inlined_slots.items():
+                self.add_type_to_inlined_classes(document, slot, uri)
                 
         return document
 
