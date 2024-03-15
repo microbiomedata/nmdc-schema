@@ -18,7 +18,7 @@ class Migrator(MigratorBase):
         self.adapter.process_each_document(collection_name="data_generation_set", pipeline=[self.specify_data_gen_type])
 
     def specify_data_gen_type(self, data_gen_doc: dict) -> dict:
-        """
+        r"""
         Changes the `type` slot to be either nmdc:NucleotideSequencing or nmdc:MassSpectrometry based 
         on the value of the analyte_category slot of the DataGeneration document
 
