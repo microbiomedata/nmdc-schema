@@ -1,0 +1,74 @@
+id: https://w3id.org/nmdc/chemical_converion_process
+name: chemical_converion_process
+title: chemical_converion_process
+description: >-
+  chemical_converion_process
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  MISO: http://purl.obolibrary.org/obo/MISO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+
+default_prefix: nmdc
+default_range: string
+
+imports:
+  - core
+
+classes:
+  ChemicalConversionProcess:
+    class_uri: 'nmdc:ChemicalConversionProcess'
+    aliases:
+      - chemical reaction
+    exact_mappings:
+      - MISO:0000001 # MaterialProcessing which uses or consumes chemical/molecular entities to generate other molecular entities
+    description: >
+      A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    comments:
+      - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
+    slots:
+      - chemical_conversion_category
+      - duration
+      - temperature
+      - substances_used
+      - substances_volume
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+slots:
+  chemical_conversion_category:
+    domain: ChemicalConversionProcess
+    range: ChemicalConversionCategoryEnum
+    description: The type of chemical conversion process.
+  substances_used:
+    range: Substance
+    description: The substances that are combined to enable a ChemicalConversionProcess.
+    multivalued: true
+    inlined_as_list: true
+  substances_volume:
+    range: QuantityValue
+    description: The volume of the combined substances that was included in a ChemicalConversionProcess.
+
+enums:
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+      substitution:
+      acid_base:
+      reduction_oxidation:
+      combustion:
+      decomposition:
+      protease_cleavage:
+        description: an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).
+        meaning: OBI:0600056

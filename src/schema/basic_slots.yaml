@@ -28,6 +28,10 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+
+  qc_status:
+    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
+    range: StatusEnum
   
   file_size_bytes:
     domain: DataObject
@@ -144,7 +148,7 @@ slots:
     recommended: true
   dna_concentration:
     see_also:
-      nmdc:nucleic_acid_concentration
+      - nmdc:nucleic_acid_concentration
     title: DNA concentration in ng/ul
     comments:
       - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
@@ -295,6 +299,20 @@ slots:
       it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
 enums:
+
+  StatusEnum:
+    permissible_values:
+      pass: { }
+      fail: { }
+  #      accepted: { }
+  #      archived: { }
+  #      deleted: { }
+  #      draft: { }
+  #      rejected: { }
+  #      submitted: { }
+  #      superseded: { }
+  #      withdrawn: { }
+
   ProcessingInstitutionEnum:
     notes:
       - This will become the range of processing_institution.omics processing
