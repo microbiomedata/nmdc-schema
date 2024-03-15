@@ -107,7 +107,8 @@ enums:
       ammonium_bicarbonate:
         meaning: CHEBI:184335
       trypsin:
-        meaning: PR:000027795
+        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
+        meaning: MS:1001251
         in_subset:
           - proteases
       methanol:
@@ -121,23 +122,36 @@ enums:
           - chloridic_acid
       water: {}
       triton_X-100: {}
-      chymotrypsin: {}
+      chymotrypsin: 
+        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, and phenylalanine.
+        meaning: MS:1001306 
       lys_c:
+        description: A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
+        meaning: MS:1001309
         aliases:
           - Lys-C
       lys_n:
+        description: A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+        meaning: MS:1003093
         aliases:
           - Lys-N
       glu_c:
+        description: A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid
+        meaning: MS:1001917
         aliases:
           - Glu-C
       arg_c:
+        description: A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with lower efficiency, lysine.
+        meaning: MS:1001303
         aliases:
           - Arg-C
       asp_n:
+        description: A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
+        meaning: MS:1001304
         aliases:
           - Asp-N
       alphalp:
+        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
         aliases:
           - alphaLP
 
