@@ -5,21 +5,17 @@ has_input:
 has_output:
   - "nmdc:ome-39"
 chemical_conversion_category: acid_base
-has_reagents:
-  type: nmdc:ReagentsCollection
-  lab_reagents_used:
-    - chemical_formula: CH3OH
-      inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
-      sample_state_information: liquid
-      volume:
-        type: nmdc:QuantityValue
-        has_numeric_value: 120
-        has_unit: mL
-      concentration:
-        type: nmdc:QuantityValue
-        has_unit: mM
-        has_numeric_value: 10
-      type: nmdc:LaboratoryReagent
+substances_used:
+  - substance_category: methanol
+    sample_state_information: liquid
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 120
+      has_unit: mL
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_unit: mM
+      has_numeric_value: 10
 temperature:
   type: nmdc:QuantityValue
   has_numeric_value: 25

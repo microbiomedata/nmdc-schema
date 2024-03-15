@@ -1,0 +1,20 @@
+id: nmdc:dgms-99-zUCd5N
+analyte_category: metabolome
+mass_spectrum_collection_mode: profile
+acquisition_category: tandem_mass_spectrum
+acquisition_strategy: data_independent_acquisition
+resolution_category: high
+mass_analyzer: Orbitrap
+ionization_source: electrospray_ionization
+polarity_mode: negative
+alternative_identifiers:
+  - emsl:123423
+has_input:
+  - nmdc:bsm-00-red
+add_date: 30-OCT-14 12.00.00.000000000 AM
+mod_date: 22-MAY-20 06.13.12.927000000 PM
+has_output:
+  - nmdc:dobj-00-9n9n9n
+type: nmdc:MassSpectrometry
+associated_studies:
+  - nmdc:sty-00-555xxx

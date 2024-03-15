@@ -5,12 +5,16 @@
 nmdc_database_tools.py:
 Command-line tools for extracting data from the NMDC database via the API.
 """
+import sys
+
 import click
 import logging
 from pathlib import Path
 import requests
 from datetime import datetime
 import yaml
+from typing import Union
+import os
 
 from linkml_runtime.dumpers import yaml_dumper
 import nmdc_schema.nmdc as nmdc
@@ -19,17 +23,6 @@ SCRIPTS_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPTS_DIR.parent.parent
 LOCAL_DIR = PROJECT_ROOT / "local"
 
-# Studies with non-compliant IDs that have been re-IDed
-# Name:, study ID, legacy study ID
-STUDIES = {
-    "Stegen": ("nmdc:sty-11-aygzgv51", "gold:Gs0114663"),
-    "SPRUCE": ("nmdc:sty-11-33fbta56", "gold:Gs0110138"),
-    "EMP": (None, "gold:Gs0154244"),
-    "Luquillo": (None, "gold:Gs0128850"),
-    "CrestedButte": ("nmdc:sty-11-dcqce727", "gold:Gs0135149"),
-}
-# Update study IDs after re-IDing
-DEFAULT_STUDY_ID = STUDIES["Stegen"][0]
 
 # TODO: Move NmdcApi class to the nacent nmdc-common/client package
 # TODO: Add unit tests for NmdcApi class
@@ -141,20 +134,28 @@ def cli(ctx, api_base_url):
 
 
 @cli.command()
-@click.option("--study-id", required=True,  help="Study ID to extract.")
-@click.option("--output-file", help="Path to output file, relative to project "
-                                   "root.")
-@click.option("--quick-test", is_flag=True, default=False, help=("Quick test "
-                                                                 "mode - "
-                                                                 "biosamples "
-                                                                 "and omics "
-                                                                 "only "))
-@click.option("--search-orphaned-data-objects", is_flag=True, default=False,
-              help=("Search for orphaned data objects by description."))
-@click.option("--search-legacy-identifiers", is_flag=True, default=False,
-              help=("Search for legacy IDs for Study and OmicsProcessing."))
+@click.option("--study-id", required=True, )
+@click.option(
+    "--output-file",
+    help="Path to output file, relative to project root."
+)
+@click.option(
+    "--quick-test",
+    is_flag=True,
+    default=False,
+    help=("Quick test mode, Biosamples and OmicsProcessing records only")
+)
+@click.option(
+    "--search-orphaned-data-objects", is_flag=True, default=False,
+    help=("Search for orphaned data objects by description.")
+)
+@click.option(
+    "--search-legacy-identifiers", is_flag=True, default=False,
+    help=("Search for legacy IDs for Study and OmicsProcessing.")
+    )
 @click.pass_context
-def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_objects, search_legacy_identifiers):
+def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike], quick_test: bool, 
+                  search_orphaned_data_objects: bool, search_legacy_identifiers: bool) -> None:
     """
     Extract a study and its associated records from the NMDC database
     via the API, and write the results to a YAML or JSON file.
@@ -192,9 +193,8 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
         output_file_path = f"{PROJECT_ROOT}/{output_file}"
         logfile_path = f"{PROJECT_ROOT}/{output_file.replace('.yaml', '.log')}"
     else:
-        normalized_study_id = study_id.replace(":", "-")
-        output_file_path = (f"{LOCAL_DIR}/{normalized_study_id}.yaml")
-        logfile_path = f"{LOCAL_DIR}/{normalized_study_id}.log"
+        output_file_path = (f"{LOCAL_DIR}/{study_id}.yaml")
+        logfile_path = f"{LOCAL_DIR}/{study_id}.log"
 
 
     logging.basicConfig(
@@ -219,27 +219,33 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             study = None
-            logger.info(f"Study {study_id} not found in the NMDC database.")
+            logger.error(f"Study {study_id} not found in the NMDC database.")
+            sys.exit(1)
         else:
             raise e
     db.study_set.append(study)
 
     # Get the study's associated records
     # Biosamples part_of the study
-    search_study_ids = [study_id]
+    search_identifiers = []
     if search_legacy_identifiers:
         # add legacy study IDs to search
-        search_study_ids.extend(study.get("gold_study_identifiers", []))
+        logger.info("Searching using current and legacy identifiers")
+        legacy_identifiers = (study.get("gold_study_identifiers", []))
+        if legacy_identifiers:
+            logger.info(f"SearchLegacyIdentifiers: also using IDs: {legacy_identifiers}")
+            search_identifiers.extend(legacy_identifiers)
 
-
-    for study_id in search_study_ids:
+    search_identifiers.append(study_id)
+    for study_id in search_identifiers:
         try:
             biosamples = api_client.get_biosamples_part_of_study(study_id)
             logger.info(f"Got {len(biosamples)} biosamples part_of {study_id}.")
             db.biosample_set.extend(biosamples)
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
-                logger.info(f"No biosamples found part_of {study_id}.")
+                logger.warning(f"No biosamples found part_of {study_id}.")
+                continue
             else:
                 raise e
         # OmicsProcessing records part_of the study
@@ -249,7 +255,8 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             db.omics_processing_set.extend(omics_processing_records)
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 404:
-                logger.info(f"No OmicsProcessing records found part_of {study_id}.")
+                logger.warning(f"No OmicsProcessing records found part_of {study_id}.")
+                continue
             else:
                 raise e
 
@@ -289,6 +296,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                     # add legacy OmicsProcessing IDs to search
                     search_omics_ids.extend(omics_processing_record.get("gold_sequencing_project_identifiers", []))
                     search_omics_ids.extend(omics_processing_record.get("alternative_identifiers", []))
+                    logger.info(f"Using OmicsProcessing IDs: {search_omics_ids}")
 
                 # Get the Workflow Execution Activity record(s) for the OmicsProcessing record
                 for omics_id in search_omics_ids:
@@ -311,7 +319,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
                             except requests.exceptions.HTTPError as e:
                                 if e.response.status_code == 404:
                                     data_object = None
-                                    logger.info(f"Data object {data_object_id} not found in the NMDC database.")
+                                    logger.error(f"OrphanDataObject {data_object_id} not found in the NMDC database.")
                                 else:
                                     raise e
                             if data_object and data_object not in db.data_object_set:
@@ -337,7 +345,7 @@ def extract_study(ctx, study_id, output_file, quick_test, search_orphaned_data_o
             db.__setattr__(wf_set_name, wf_records)
 
     elapsed_time = datetime.now() - start_time
-    logger.info(f"Extracted study {study_id} from the NMDC database in {elapsed_time}.")
+    logger.info(f"Extracted studies: {search_identifiers} from the NMDC database in {elapsed_time}.")
     logger.info(f"Found {orphaned_data_object_count} orphaned data objects.")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")

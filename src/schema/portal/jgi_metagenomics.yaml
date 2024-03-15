@@ -18,7 +18,7 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-  dna_sample_format_enum:
+  DNASampleFormatEnum:
     from_schema: https://example.com/nmdc_dh
     permissible_values:
       10 mM Tris-HCl: { }
@@ -98,7 +98,7 @@ slots:
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metagenomics
     recommended: true
-    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   dna_container_id:
     title: DNA container label
     comments:
@@ -132,6 +132,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
+    aliases:
+      - Sample Isolation Method
   dna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
       as estimated % of the organism in that culture.
@@ -180,7 +182,7 @@ slots:
     from_schema: https://example.com/nmdc_dh
     rank: 12
     slot_group: JGI-Metagenomics
-    range: dna_sample_format_enum
+    range: DNASampleFormatEnum
     recommended: true
   dna_sample_name:
     description: Give the DNA sample a name that is meaningful to you. Sample names
@@ -205,6 +207,8 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
+    aliases:
+      - Seq Project ID
   dna_seq_project_pi:
     title: DNA seq project PI
     comments:

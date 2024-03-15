@@ -1,0 +1,67 @@
+erDiagram
+ChemicalConversionProcess {
+    ChemicalConversionCategoryEnum chemical_conversion_category  
+    ProcessingInstitutionEnum processing_institution  
+    string start_date  
+    string end_date  
+    StatusEnum qc_status  
+    string qc_comment  
+    uriorcurie id  
+    string name  
+    string description  
+    uriorcurieList alternative_identifiers  
+    uriorcurie type  
+}
+FailureCategorization {
+    FailureWhatEnum qc_failure_what  
+    FailureWhereEnum qc_failure_where  
+}
+Protocol {
+    string url  
+    string name  
+    uriorcurie type  
+}
+QuantityValue {
+    float has_maximum_numeric_value  
+    float has_minimum_numeric_value  
+    double has_numeric_value  
+    unit has_unit  
+    string has_raw_value  
+    uriorcurie type  
+}
+Solution {
+    uriorcurie type  
+}
+SolutionComponent {
+    string compound  
+    uriorcurie type  
+}
+ReagentsCollection {
+    uriorcurie type  
+}
+LaboratoryReagent {
+    string chemical_formula  
+    string inchi_key  
+    SampleStateEnum sample_state_information  
+    uriorcurie type  
+}
+
+ChemicalConversionProcess ||--|o ReagentsCollection : "has_reagents"
+ChemicalConversionProcess ||--}o Solution : "catalyzed_by"
+ChemicalConversionProcess ||--|o QuantityValue : "temperature"
+ChemicalConversionProcess ||--|o QuantityValue : "duration"
+ChemicalConversionProcess ||--}o NamedThing : "has_input"
+ChemicalConversionProcess ||--}o ProcessedSample : "has_output"
+ChemicalConversionProcess ||--}o Instrument : "instrument_used"
+ChemicalConversionProcess ||--|o Protocol : "protocol_link"
+ChemicalConversionProcess ||--}o FailureCategorization : "has_failure_categorization"
+QuantityValue ||--|o WorkflowExecution : "was_generated_by"
+Solution ||--}| SolutionComponent : "has_solution_components"
+Solution ||--|o QuantityValue : "volume"
+SolutionComponent ||--|o QuantityValue : "concentration"
+ReagentsCollection ||--}o Solution : "solutions_used"
+ReagentsCollection ||--}o LaboratoryReagent : "lab_reagents_used"
+LaboratoryReagent ||--|o QuantityValue : "mass"
+LaboratoryReagent ||--|o QuantityValue : "volume"
+LaboratoryReagent ||--|o QuantityValue : "concentration"
+

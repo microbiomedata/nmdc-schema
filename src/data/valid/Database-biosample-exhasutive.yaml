@@ -992,6 +992,11 @@ biosample_set:
     samp_well_name:
       has_raw_value: xxx
       type: nmdc:TextValue
+    sample_link:
+      - IGSN:DSJ0284
+      - any:curie
+    sample_shipped: 15 g
+    sample_type: soil - water extract
     saturates_pc:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -1381,12 +1386,8 @@ biosample_set:
     start_date_inc: '2023-01-27'
     start_time_inc: 13:42+0000
     replicate_number: '1'
-    sample_shipped: 15 g
-    sample_type: water_extract_soil
     technical_reps: '2'
     analysis_type:
       - metabolomics
       - metagenomics
-    sample_link:
-      - IGSN:DSJ0284
-      - any:curie
+

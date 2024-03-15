@@ -1,9 +1,0 @@
-@prefix nmdc: <https://w3id.org/nmdc/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-[] a nmdc:SolutionComponent ;
-    nmdc:compound "methanol" ;
-    nmdc:concentration [ a nmdc:QuantityValue ;
-            nmdc:has_numeric_value 1e+01 ;
-            nmdc:has_unit "mM" ] .
-

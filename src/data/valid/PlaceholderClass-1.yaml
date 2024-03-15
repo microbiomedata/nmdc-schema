@@ -1,0 +1,4 @@
+id: 'nmdc:123'
+name: Placeholder 1
+description: A minimal instance for the core module
+type: nmdc:PlaceholderClass

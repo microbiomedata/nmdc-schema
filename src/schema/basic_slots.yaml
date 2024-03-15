@@ -28,6 +28,10 @@ types:
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
 slots:
+
+  qc_status:
+    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
+    range: StatusEnum
   
   file_size_bytes:
     domain: DataObject
@@ -68,7 +72,7 @@ slots:
   mass_analyzer:
     domain: MassSpectrometry
     range: MassAnalyzerEnum
-    description: which kind of mass analyzer is used during the spectra colleciton
+    description: which kind of mass analyzer is primarily used during the spectra collection.
   ionization_source:
     domain: MassSpectrometry
     range: IonizationSourceEnum
@@ -76,7 +80,7 @@ slots:
   mass_spectrum_collection_mode:
     domain: MassSpectrometry
     range: MassSpectrumCollectionModeEnum
-    description: whether mass spectra are centroided during collection
+    description: Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.
   polarity_mode:
     domain: MassSpectrometry
     range: PolarityModeEnum
@@ -144,7 +148,7 @@ slots:
     recommended: true
   dna_concentration:
     see_also:
-      nmdc:nucleic_acid_concentration
+      - nmdc:nucleic_acid_concentration
     title: DNA concentration in ng/ul
     comments:
       - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
@@ -295,10 +299,24 @@ slots:
       it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
 
 enums:
+
+  StatusEnum:
+    permissible_values:
+      pass: { }
+      fail: { }
+  #      accepted: { }
+  #      archived: { }
+  #      deleted: { }
+  #      draft: { }
+  #      rejected: { }
+  #      submitted: { }
+  #      superseded: { }
+  #      withdrawn: { }
+
   ProcessingInstitutionEnum:
     notes:
+      - This will become the range of processing_institution.omics processing
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
-    from_schema: NMDC_enums_roundtrip
     permissible_values:
       UCSD:
         title: University of California, San Diego

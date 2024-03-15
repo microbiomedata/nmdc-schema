@@ -8,10 +8,14 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 imports:
   - basic_slots
   - external_identifiers
+  - linkml:types
   - prov
 
 prefixes:
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  PR: http://purl.obolibrary.org/obo/PR_
   SIO: http://semanticscience.org/resource/SIO_
   UniProtKB: "https://bioregistry.io/uniprot:"
   biolink: https://w3id.org/biolink/vocab/
@@ -22,7 +26,6 @@ prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   schema: http://schema.org/
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
-  OBI: http://purl.obolibrary.org/obo/OBI_
 
 default_prefix: nmdc
 default_range: string
@@ -33,6 +36,7 @@ subsets:
   investigation: { }
   nucleic acid sequence source: { }
   sequencing: { }
+  proteases: { }
 
 types:
 
@@ -65,16 +69,180 @@ types:
       - UO:0000000
 
 enums:
-  DeviceEnum:
+  SubstanceRoleEnum:
     permissible_values:
-      Orbital Shaker:
-      Thermomixer:
-      Vortex:
-      Agitation plunger:
-      Drying oven:
-      CEREX System 96 processor:
+      buffer: 
+        description: Maintains the pH of the solution within a specific range to stabilize analytes or reactions.
+        meaning: CHEBI:35225
+      # protease:
+      #   description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
+      # proteolytic_enzyme:
+      #   description: Enzyme that catalyzes the hydrolysis of proteins.
+      ms_proteolytic_enzyme:
+        description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
+        meaning: MS:1002986
+      solvent: 
+        description: Dissolves the sample or reagents to facilitate reactions or extraction.
+        meaning: CHEBI:46787
+      surfactant:
+        description: Reduces surface tension and aids in the solubilization of substances.
+        meaning: CHEBI:35195
+      # stabilizer:
+      #   description: Prevents degradation or loss of analytes during sample storage or preparation.
+      #   meaning: CFo000000033
+      derivatizing_agent:
+        description: Chemically modifies analytes to improve detection or separation.
+        # meaning: MSIO:0000003
+      # labeling_reagent:
+      #   description:  Introduces a detectable label for tracing or quantification.
+      # precipitating_agent:
+      #   description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
+  SampleStateEnum:
+    permissible_values:
+      solid:
+      liquid:
+      gas:
+  SubstanceCategoryEnum:
+    permissible_values:
+      ammonium_bicarbonate:
+        meaning: CHEBI:184335
+      trypsin:
+        meaning: PR:000027795
+        in_subset:
+          - proteases
+      methanol:
+        meaning: CHEBI:17790
+        annotations:
+          chemical_formula: CH3OH
+          inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
+      deionized_water: { }
+      hydrochloric_acid:
+        aliases:
+          - chloridic_acid
+      water: {}
+      triton_X-100: {}
+      chymotrypsin: {}
+      lys_c:
+        aliases:
+          - Lys-C
+      lys_n:
+        aliases:
+          - Lys-N
+      glu_c:
+        aliases:
+          - Glu-C
+      arg_c:
+        aliases:
+          - Arg-C
+      asp_n:
+        aliases:
+          - Asp-N
+      alphalp:
+        aliases:
+          - alphaLP
+
+
+  CompoundEnum:
+    permissible_values:
+      ammonium_bicarbonate:
+      deionized_water:
+      methanol:
+      hydrochloric_acid:
+        aliases:
+          - chloridic_acid
+      water:
+      triton_X-100:
+  ProteolyticEnzymeEnum:
+    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
+    see_also:
+      - http://purl.obolibrary.org/obo/NCIT_C16554
+    permissible_values:
+      trypsin:
+      chymotrypsin:
+      lys_c:
+        aliases:
+          - Lys-C
+      lys_n:
+        aliases:
+          - Lys-N
+      glu_c:
+        aliases:
+          - Glu-C
+      arg_c:
+        aliases:
+          - Arg-C
+      asp_n:
+        aliases:
+          - Asp-N
+      alphalp:
+        aliases:
+          - alphaLP
+
+#  DeviceEnum:
+#    permissible_values:
+#      Orbital Shaker:
+#      Thermomixer:
+#      Vortex:
+#      Agitation plunger:
+#      Drying oven:
+#      CEREX System 96 processor:
 
 classes:
+
+  SolutionComponent:
+    class_uri: nmdc:SolutionComponent
+    description: One constituent of a solution
+    slots:
+      - compound
+      - concentration
+      - type
+
+  Solution:
+    class_uri: nmdc:Solution
+    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
+    aliases:
+      - mixture
+      - solvent
+    comments:
+      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
+      - The solution class may be used to instantiate a single component in the has_solution_components slot
+    notes:
+      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
+      - TODO consider making a "Fluid" class
+    slots:
+      - has_solution_components
+      - volume
+      - type
+
+  MaterialProcessing:
+    class_uri: 'nmdc:MaterialProcessing'
+    is_a: PlannedProcess
+    description:
+      A process that takes one or more samples as inputs and generates
+      one or more samples as outputs.
+
+    notes:
+      - This class is a replacement for BiosampleProcessing.
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+      has_output:
+        range: ProcessedSample
+    broad_mappings:
+      - OBI:0000094
+
+  PlaceholderClass:
+    class_uri: "nmdc:PlaceholderClass"
+    is_a: NamedThing
+    slots:
+      - has_input
 
   NamedThing:
     class_uri: "nmdc:NamedThing"
@@ -95,6 +263,26 @@ classes:
       - Physical entity
     is_a: NamedThing
     title: Material Entity
+
+  Substance:
+    class_uri: "nmdc:Substance"
+    title: Material Substance
+    exact_mappings:
+      - schema:Substance
+    description: Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
+    slots:
+      - final_concentration
+      - sample_state_information
+      - source_concentration
+      - substance_category
+      - substance_role
+      - volume
+      - mass
+
+      - chemical_formula
+      - inchi
+      - inchi_key
+      - smiles
 
   ProcessedSample:
     class_uri: "nmdc:ProcessedSample"
@@ -143,10 +331,10 @@ classes:
       - qc_status
       - qc_comment
       - has_failure_categorization
-    slot_usage:
-      designated_class:
-        comments:
-          - required on all instances in a polymorphic Database slot like planned_process_set
+  #    slot_usage:
+  #      designated_class:
+  #        comments:
+  #          - required on all instances in a polymorphic Database slot like planned_process_set
 
   OntologyClass:
     class_uri: "nmdc:OntologyClass"
@@ -199,7 +387,7 @@ classes:
       - url
       - description
       - display_order
-  
+
   PersonValue:
     class_uri: "nmdc:PersonValue"
     is_a: AttributeValue
@@ -230,7 +418,7 @@ classes:
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
           display_hint: First name, middle initial, and last name of this person.
-  
+
   MagBin:
     class_uri: "nmdc:MagBin"
     slots:
@@ -275,7 +463,7 @@ classes:
       - peptide_sequence
       - peptide_spectral_count
       - peptide_sum_masic_abundance
-  
+
   ProteinQuantification:
     class_uri: "nmdc:ProteinQuantification"
     description: This is used to link a metaproteomics analysis workflow to a specific protein
@@ -410,6 +598,41 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+
+  substance_role:
+    range: SubstanceRoleEnum
+    description: The role of a substance in a process
+
+  concentration:
+    domain: SolutionComponent
+    range: QuantityValue
+    description: The concentration of a substance used in a process
+  source_concentration:
+    is_a: concentration
+    description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A
+  final_concentration:
+    is_a: concentration
+    description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination
+  duration: # or could be a ISO8601 period string
+    range: QuantityValue
+    description: The elapsed time of an activity.
+    examples:
+      - value:
+          has_numeric_value: 2
+          has_unit: hours
+  temperature:
+    range: QuantityValue
+    notes:
+      - "Not to be confused with the MIXS:0000113"
+    description: The value of a temperature measurement or temperature used in a process.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
+
   total_bases:
     domain: MagBin
     range: integer
@@ -481,7 +704,7 @@ slots:
     mappings:
       - qud:quantityValue
       - schema:value
-  
+
   has_minimum_numeric_value:
     is_a: has_numeric_value
     domain: QuantityValue
@@ -491,18 +714,18 @@ slots:
     is_a: has_numeric_value
     domain: QuantityValue
     description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
-  
+
   has_boolean_value:
     description: Links a quantity value to a boolean
     range: boolean
-  
+
   latitude:
     domain: GeolocationValue
     range: decimal degree
     description: latitude
     slot_uri: wgs84:lat
     examples:
-      - value: -33.460524
+      - value: "-33.460524"
     mappings:
       - schema:latitude
 
@@ -512,7 +735,7 @@ slots:
     description: longitude
     slot_uri: wgs84:long
     examples:
-      - value: 150.168149
+      - value: "150.168149"
     mappings:
       - schema:longitude
 
@@ -536,15 +759,15 @@ slots:
     range: string
     slot_uri: schema:email
 
-  alternate_emails:
-    description: One or more other email addresses for an entity.
-    range: string
+  #  alternate_emails:
+  #    description: One or more other email addresses for an entity.
+  #    range: string
 
   profile_image_url:
     description: A url that points to an image of a person.
     domain: PersonValue
     range: string
-  
+
   has_input:
     aliases:
       - input
@@ -570,7 +793,7 @@ slots:
     multivalued: true
     slot_uri: dcterms:isPartOf
     description: Links a resource to another resource that either logically or physically includes it.
-  
+
   execution_resource:
     domain: WorkflowExecution
     range: string
@@ -582,7 +805,7 @@ slots:
     range: string
     notes:
       - See issue 207 - this clashes with the mixs field
-  
+
   display_order:
     domain: ImageValue
     range: integer
@@ -592,20 +815,20 @@ slots:
     range: string
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
-  
+
   md5_checksum:
     range: string
     description: MD5 checksum of file (pre-compressed)
 
-  keywords:
-    range: string
-    multivalued: true
-    description: >-
-      A list of keywords that used to associate the entity.
-      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
-    mappings:
-      - dcterms:subject
-  
+  #  keywords:
+  #    range: string
+  #    multivalued: true
+  #    description: >-
+  #      A list of keywords that used to associate the entity.
+  #      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
+  #    mappings:
+  #      - dcterms:subject
+
   objective:
     range: string
     description: >-
@@ -619,8 +842,17 @@ slots:
     multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     description: A list of websites that are associated with the entity.
-    comments: DOIs should not be included as websites. Instead, use the associated_dois slot.
+    comments: 
+      - DOIs should not be included as websites. Instead, use the associated_dois slot. 
+      - A consortium's homepage website should be included in the homepage_website slot, not in websites.
 
+  homepage_website:
+    is_a: websites
+    maximum_cardinality: 1
+    description: The website address (URL) of an entity's homepage.
+    examples:
+      - value: https://www.neonscience.org/
+        
   highest_similarity_score:
     todos:
       - Yuri to fill in description
@@ -678,3 +910,32 @@ slots:
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
     multivalued: true
     range: string
+  has_solution_components:
+    description: Relationship from a Solution to one or more constituent solution components
+    range: SolutionComponent
+    domain: Solution
+    multivalued: true
+    inlined_as_list: true
+    required: true
+    minimum_cardinality: 1
+    #list example
+  compound:
+    domain: SolutionComponent
+    any_of:
+      - range: CompoundEnum
+      - range: ProteolyticEnzymeEnum
+    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
+    required: true
+  volume: # see also input_volume
+    domain: PlannedProcess
+    range: QuantityValue
+    description: The volume of a substance.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+  substance_category:
+    range: SubstanceCategoryEnum
+  sample_state_information:
+    description: >-
+      The chemical phase of a pure sample, or the state of a mixed sample
+    range: SampleStateEnum

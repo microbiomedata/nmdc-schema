@@ -16,8 +16,6 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-classes:
-
 slots:
 
   started_at_time:
@@ -25,9 +23,8 @@ slots:
     range: string
     #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
-    notes: >-
-      The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
-      It may not be complete, but it is good enough for now.
+    notes:
+      - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ It may not be complete, but it is good enough for now.'
     mappings:
       - prov:startedAtTime
 
@@ -35,15 +32,14 @@ slots:
     domain: WorkflowExecution
     #    range: datetime
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
-    notes: >-
-      The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
-      It may not be complete, but it is good enough for now.
+    notes:
+      - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ It may not be complete, but it is good enough for now.'
     mappings:
       - prov:endedAtTime
 
   was_informed_by:
     domain: WorkflowExecution
-    range: WorkflowExecution
+    range: DataGeneration
     mappings:
       - prov:wasInformedBy
 
