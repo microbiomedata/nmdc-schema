@@ -92,7 +92,7 @@ enums:
       #   meaning: CFo000000033
       derivatizing_agent:
         description: Chemically modifies analytes to improve detection or separation.
-        meaning: MSIO:0000003
+        # meaning: MSIO:0000003
       # labeling_reagent:
       #   description:  Introduces a detectable label for tracing or quantification.
       # precipitating_agent:
