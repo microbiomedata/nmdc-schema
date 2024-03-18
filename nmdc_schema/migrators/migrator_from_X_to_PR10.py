@@ -1,4 +1,5 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
+from typing import Optional
 from linkml_runtime import SchemaView
 
 
@@ -84,7 +85,7 @@ class Migrator(MigratorBase):
                     document[slot]["term"]["type"] = "nmdc:OntologyClass"
                     
 
-    def add_type_slot_with_class_uri(self, document: dict, class_uri: str, inlined_slots=None):
+    def add_type_slot_with_class_uri(self, document: dict, class_uri: str, inlined_slots: Optional[dict] = None):
         r"""
             Adds a type slot to each collection with the appropriate class uri as the value. E.g. type: nmdc:Biosample. If a type
             slot exists, it will overwrite to the types listed below. If the optional dictionary argument inlined_slots is given, then
