@@ -63,7 +63,7 @@ class Migrator(MigratorBase):
 
     def add_type_to_inlined_classes(self, document: dict, slot: str, uri: str):
         r"""
-        Adds a type slot to each inlined instance of an NMDC class in the biosmpale_set, study_set, extraction_set collections, 
+        Adds a type slot to each inlined instance of an NMDC class in the biosmpale_set, study_set, extraction_set, 
         mags_set, metabolomics_analysis_set, and metaproteomics_analysis_set. 
         """
         if document.get(slot):
