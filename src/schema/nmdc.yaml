@@ -146,6 +146,13 @@ classes:
     description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
     comments: For example data generated from an Illumina or Pacific Biosciences instrument.
+    slots:
+      - gold_sequencing_project_identifiers
+      - insdc_bioproject_identifiers
+      - insdc_experiment_identifiers
+      - ncbi_project_name
+      - target_gene
+      - target_subfragment
     slot_usage:
       id:
         structured_pattern:
@@ -1746,16 +1753,9 @@ classes:
       - add_date
       - analyte_category
       - associated_studies
-      - gold_sequencing_project_identifiers
-      - insdc_bioproject_identifiers
-      - insdc_experiment_identifiers
       - mod_date
-      - ncbi_project_name
       - part_of
       - principal_investigator
-      - target_gene
-      - target_subfragment
-
     slot_usage:
       has_input:
         required: true
