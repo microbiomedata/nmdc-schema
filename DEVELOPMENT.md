@@ -108,7 +108,7 @@ Here's how you can instantiate the development environment on your computer.
    > [from your Docker host](https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734)
    > (i.e. from outside the container). By default, the MkDocs dev-server only listens for requests coming from the 
    > [same computer](https://github.com/mkdocs/mkdocs/issues/2108) that is running the MkDocs dev-server
-   > (i.e. coming from inside the container).
+   > (i.e. from inside the container).
 6. (Optional) Visit the MkDocs dev-server.
    - In your web browser, visit http://localhost:8000
      > Note: If you customized `DOCS_PORT` earlier, use that port number instead of `8000` here.
