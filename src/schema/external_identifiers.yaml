@@ -283,7 +283,7 @@ slots:
     is_a: external_database_identifiers
 
   gold_sequencing_project_identifiers:
-    domain: DataGeneration
+    domain: NucleotideSequencing
     is_a: omics_processing_identifiers
     mixins:
       - gold_identifiers
@@ -294,7 +294,7 @@ slots:
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
-    domain: DataGeneration
+    domain: NucleotideSequencing
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
