@@ -16,7 +16,7 @@ graph BT
     host_terminal["Terminal<br>(You are here)"]
     
     subgraph app_container["Container running `app` service"]
-        mkdocs_server["MkDocs dev-server"]
+        mkdocs_server["MkDocs dev-server<br>(if running)"]
         app_bash["bash shell"]
     end
     
@@ -78,7 +78,8 @@ Here's how you can instantiate the development environment on your computer.
    ```shell
    docker compose exec app bash
    ```
-   > You can think of this as "`ssh`-ing" into a Linux system. In this case, the Linux system is a Docker container running on your computer, and you are using something other than `ssh` to communicate with it.
+   > You can think of this as "`ssh`-ing" into a Linux system. In this case, the Linux system is a Docker container 
+   > running on your computer, and you are using something other than `ssh` to communicate with it.
 3. (Optional) Explore that container!
    ```shell
    $ whoami
@@ -99,20 +100,29 @@ Here's how you can instantiate the development environment on your computer.
    ```shell
    $ make gendoc
    ```
-5. (Optional) Visit the MkDocs dev-server.
+5. (Optional) Start the MkDocs dev-server.
+   ```shell
+   $ poetry run mkdocs serve --dev-addr 0.0.0.0:8000
+   ```
+   > The `0.0.0.0` part is necessary in order to be able to access the MkDocs dev-server
+   > [from your Docker host](https://github.com/mkdocs/mkdocs/issues/1239#issuecomment-354491734)
+   > (i.e. from outside the container). By default, the MkDocs dev-server only listens for requests coming from the 
+   > [same computer](https://github.com/mkdocs/mkdocs/issues/2108) that is running the MkDocs dev-server
+   > (i.e. coming from inside the container).
+6. (Optional) Visit the MkDocs dev-server.
    - In your web browser, visit http://localhost:8000
      > Note: If you customized `DOCS_PORT` earlier, use that port number instead of `8000` here.
-6. Use the container running the `app` service, as your `nmdc-schema` development environment.
+7. Use the container running the `app` service, as your `nmdc-schema` development environment.
    ```shell
    $ poetry install
    $ make squeaky-clean
    $ poetry shell
    # etc.
    ```
-7. (Optional) Visit the Fuseki web server.
+8. (Optional) Visit the Fuseki web server.
    - In your web browser, visit http://localhost:3030
      > Note: If you customized `FUSEKI_PORT` earlier, use that port number instead of `3030` here.
-8. (Optional) Done working on this project (e.g. for the day)? Stop the containers.
+9. (Optional) Done working on this project (e.g. for the day)? Stop the containers.
    ```shell
    docker compose down
    ```
