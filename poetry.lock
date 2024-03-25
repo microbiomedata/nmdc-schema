@@ -2703,7 +2703,6 @@ description = "A pure Python implementation of the trie data structure."
 optional = false
 python-versions = "*"
 files = [
-    {file = "PyTrie-0.4.0-py3-none-any.whl", hash = "sha256:f687c224ee8c66cda8e8628a903011b692635ffbb08d4b39c5f92b18eb78c950"},
     {file = "PyTrie-0.4.0.tar.gz", hash = "sha256:8f4488f402d3465993fb6b6efa09866849ed8cda7903b50647b7d0342b805379"},
 ]
 
@@ -4023,6 +4022,17 @@ files = [
 ]
 
 [[package]]
+name = "xmltodict"
+version = "0.13.0"
+description = "Makes working with XML feel like you are working with JSON"
+optional = false
+python-versions = ">=3.4"
+files = [
+    {file = "xmltodict-0.13.0-py2.py3-none-any.whl", hash = "sha256:aa89e8fd76320154a40d19a0df04a4695fb9dc5ba977cbb68ab3e4eb225e7852"},
+    {file = "xmltodict-0.13.0.tar.gz", hash = "sha256:341595a488e3e01a85a9d8911d8912fd922ede5fecc4dce437eb4b6c8d037e56"},
+]
+
+[[package]]
 name = "zipp"
 version = "3.17.0"
 description = "Backport of pathlib-compatible object wrapper for zip files"
@@ -4043,4 +4053,4 @@ docs = ["mkdocs-material"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "8a1048cdd5d90e1d0c8f56912fb74be17b57f6f863dc76c585652ffba9513fbc"
+content-hash = "a5a3e77f198b679629eccaf70b4635b05707962d3a6d1f818903c42279d3f048"

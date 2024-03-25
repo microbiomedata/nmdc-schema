@@ -52,6 +52,7 @@ mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
 pymongo = "^4.3.3"
+xmltodict = "^0.13.0"
 
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
