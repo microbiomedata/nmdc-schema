@@ -534,9 +534,11 @@ chemistry-clean:
 	rm -rf assets/chemistry.pdf
 	rm -rf assets/chemistry.png
 	rm -rf assets/chemistry.svg
+	rm -rf assets/solution.mmd
+	rm -rf assets/solution.svg
 
 
-chemistry-all: chemistry-clean assets/chemistry.pdf assets/chemistry.png
+chemistry-all: chemistry-clean assets/chemistry.pdf assets/chemistry.png assets/solution.svg
 
 #		--classes MaterialProcessing \
 #		--classes PlannedProcess
@@ -546,7 +548,7 @@ assets/chemistry.puml: src/schema/nmdc.yaml
 		--classes FluidHandling \
 		--classes ChromatographicSeparationProcess \
 		--classes Solution \
-		--classes SolutionComponent \
+		--classes PortionOfSubstance \
 		$< > $@
 
 assets/chemistry.svg: assets/chemistry.puml # https://plantuml.com/download
@@ -562,4 +564,21 @@ assets/chemistry.png: assets/chemistry.puml # https://plantuml.com/download
 
 assets/chemistry.pdf: assets/chemistry.svg
 	inkscape --export-filename=assets/chemistry.pdf $<
+
+#		--classes FluidHandling \
+# 		--classes Extraction
+
+assets/solution.mmd: src/schema/nmdc.yaml
+	$(RUN) gen-erdiagram \
+		--format mermaid \
+		--classes ChemicalConversionProcess \
+		--classes ChemicalEntity \
+		--classes ChromatographicSeparationProcess \
+		--classes MetaboliteQuantification \
+		--classes Solution \
+		--classes PortionOfSubstance \
+		$< > $@
+
+assets/solution.svg: assets/solution.mmd
+	mmdc -i $< -o $@
 

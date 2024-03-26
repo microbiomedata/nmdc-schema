@@ -2,17 +2,15 @@
 skinparam nodesep 10
 class "TextValue"
 class "Study"
-class "SolutionComponent" {
-    {field} "compound": "string" [req]
-    {field} "type": "uriorcurie" [req]
-}
-class "QuantityValue"
 class "Solution" {
     {field} "type": "uriorcurie" [req]
 }
-"SolutionComponent" *--> "0..1" "QuantityValue" : "concentration"
-"Solution" *--> "1..*" "SolutionComponent" : "has_solution_components"
-class "Extraction"
+class "QuantityValue"
+class "PortionOfSubstance" {
+    {field} "sample_state_information": "SampleStateEnum" [opt]
+    {field} "substance_role": "SubstanceRoleEnum" [opt]
+    {field} "type": "uriorcurie" [req]
+}
 class "ChromatographicSeparationProcess" {
     {field} "chromatographic_category": "ChromatographicCategoryEnum" [opt]
     {field} "stationary_phase": "StationaryPhaseEnum" [opt]
@@ -29,11 +27,22 @@ class "ChromatographicSeparationProcess" {
 }
 class "DissolvingProcess"
 "Solution" *--> "0..1" "QuantityValue" : "volume"
-"Extraction" *--> "0..1" "Solution" : "extractant"
+"Solution" *--> "0..*" "PortionOfSubstance" : "substances_used"
 "ChromatographicSeparationProcess" *--> "0..*" "Solution" : "ordered_mobile_phases"
 "DissolvingProcess" *--> "1" "Solution" : "solvent"
 class "Protocol"
 class "ProcessedSample"
+class "ChemicalEntity"
+class "Extraction"
+class "ChemicalConversionProcess"
+"PortionOfSubstance" *--> "0..1" "QuantityValue" : "volume"
+"PortionOfSubstance" *--> "0..1" "QuantityValue" : "source_concentration"
+"PortionOfSubstance" *--> "0..1" "QuantityValue" : "mass"
+"PortionOfSubstance" --> "0..1" "ChemicalEntity" : "known_as"
+"PortionOfSubstance" *--> "0..1" "QuantityValue" : "final_concentration"
+"DissolvingProcess" *--> "0..1" "PortionOfSubstance" : "solubilizing_agent"
+"Extraction" *--> "0..*" "PortionOfSubstance" : "substances_used"
+"ChemicalConversionProcess" *--> "0..*" "PortionOfSubstance" : "substances_used"
 class "PersonValue"
 abstract "NamedThing"
 class "MaterialProcessing"

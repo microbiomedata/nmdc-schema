@@ -287,7 +287,8 @@ classes:
     exact_mappings:
       - OBI:0302884
     slots:
-      - extractant
+#      - extractant
+      - substances_used
       - extraction_target
       - input_mass
       - volume
@@ -3549,10 +3550,10 @@ slots:
   contained_in:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
-  extractant:
-    domain: Extraction
-    range: Solution
-    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+#  extractant:
+#    domain: Extraction
+#    range: Solution
+#    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
 
   input_volume: # see also `volume`
     domain: PlannedProcess
@@ -3584,7 +3585,8 @@ slots:
       - CHEBI:46787
   solubilizing_agent:
     domain: DissolvingProcess
-    range: CompoundEnum
+    #    range: CompoundEnum
+    range: PortionOfSubstance # or chemical entity?
     description: A substance within a formulation that enhances the solubility of another substance.
     exact_mappings:
       - NCIT:C176640

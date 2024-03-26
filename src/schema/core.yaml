@@ -102,95 +102,95 @@ enums:
       solid:
       liquid:
       gas:
-  SubstanceCategoryEnum:
-    permissible_values:
-      ammonium_bicarbonate:
-        meaning: CHEBI:184335
-      trypsin:
-        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
-        meaning: MS:1001251
-        in_subset:
-          - proteases
-      methanol:
-        meaning: CHEBI:17790
-        annotations:
-          chemical_formula: CH3OH
-          inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
-      deionized_water: { }
-      hydrochloric_acid:
-        aliases:
-          - chloridic_acid
-      water: { }
-      triton_X-100: { }
-      chymotrypsin:
-        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, and phenylalanine.
-        meaning: MS:1001306
-      lys_c:
-        description: A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
-        meaning: MS:1001309
-        aliases:
-          - Lys-C
-      lys_n:
-        description: A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
-        meaning: MS:1003093
-        aliases:
-          - Lys-N
-      glu_c:
-        description: A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid
-        meaning: MS:1001917
-        aliases:
-          - Glu-C
-      arg_c:
-        description: A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with lower efficiency, lysine.
-        meaning: MS:1001303
-        aliases:
-          - Arg-C
-      asp_n:
-        description: A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
-        meaning: MS:1001304
-        aliases:
-          - Asp-N
-      alphalp:
-        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
-        aliases:
-          - alphaLP
+#  SubstanceCategoryEnum:
+#    permissible_values:
+#      ammonium_bicarbonate:
+#        meaning: CHEBI:184335
+#      trypsin:
+#        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
+#        meaning: MS:1001251
+#        in_subset:
+#          - proteases
+#      methanol:
+#        meaning: CHEBI:17790
+#        annotations:
+#          chemical_formula: CH3OH
+#          inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
+#      deionized_water: { }
+#      hydrochloric_acid:
+#        aliases:
+#          - chloridic_acid
+#      water: { }
+#      triton_X-100: { }
+#      chymotrypsin:
+#        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, and phenylalanine.
+#        meaning: MS:1001306
+#      lys_c:
+#        description: A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
+#        meaning: MS:1001309
+#        aliases:
+#          - Lys-C
+#      lys_n:
+#        description: A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+#        meaning: MS:1003093
+#        aliases:
+#          - Lys-N
+#      glu_c:
+#        description: A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid
+#        meaning: MS:1001917
+#        aliases:
+#          - Glu-C
+#      arg_c:
+#        description: A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with lower efficiency, lysine.
+#        meaning: MS:1001303
+#        aliases:
+#          - Arg-C
+#      asp_n:
+#        description: A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
+#        meaning: MS:1001304
+#        aliases:
+#          - Asp-N
+#      alphalp:
+#        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
+#        aliases:
+#          - alphaLP
 
 
-  CompoundEnum:
-    permissible_values:
-      ammonium_bicarbonate:
-      deionized_water:
-      methanol:
-      hydrochloric_acid:
-        aliases:
-          - chloridic_acid
-      water:
-      triton_X-100:
-  ProteolyticEnzymeEnum:
-    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
-    see_also:
-      - http://purl.obolibrary.org/obo/NCIT_C16554
-    permissible_values:
-      trypsin:
-      chymotrypsin:
-      lys_c:
-        aliases:
-          - Lys-C
-      lys_n:
-        aliases:
-          - Lys-N
-      glu_c:
-        aliases:
-          - Glu-C
-      arg_c:
-        aliases:
-          - Arg-C
-      asp_n:
-        aliases:
-          - Asp-N
-      alphalp:
-        aliases:
-          - alphaLP
+#  CompoundEnum:
+#    permissible_values:
+#      ammonium_bicarbonate:
+#      deionized_water:
+#      methanol:
+#      hydrochloric_acid:
+#        aliases:
+#          - chloridic_acid
+#      water:
+#      triton_X-100:
+#  ProteolyticEnzymeEnum:
+#    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
+#    see_also:
+#      - http://purl.obolibrary.org/obo/NCIT_C16554
+#    permissible_values:
+#      trypsin:
+#      chymotrypsin:
+#      lys_c:
+#        aliases:
+#          - Lys-C
+#      lys_n:
+#        aliases:
+#          - Lys-N
+#      glu_c:
+#        aliases:
+#          - Glu-C
+#      arg_c:
+#        aliases:
+#          - Arg-C
+#      asp_n:
+#        aliases:
+#          - Asp-N
+#      alphalp:
+#        aliases:
+#          - alphaLP
 
 #  DeviceEnum:
 #    permissible_values:
@@ -203,13 +203,13 @@ enums:
 
 classes:
 
-  SolutionComponent:
-    class_uri: nmdc:SolutionComponent
-    description: One constituent of a solution
-    slots:
-      - compound
-      - concentration
-      - type
+  #  SolutionComponent:
+  #    class_uri: nmdc:SolutionComponent
+  #    description: One constituent of a solution
+  #    slots:
+  #      - compound
+  #      - concentration
+  #      - type
 
   Solution:
     class_uri: nmdc:Solution
@@ -224,7 +224,8 @@ classes:
       - TODO review the description, possibly more descriptive modeling to allow solvent to be used
       - TODO consider making a "Fluid" class
     slots:
-      - has_solution_components
+      #      - has_solution_components
+      - substances_used
       - volume
       - type
 
@@ -278,20 +279,22 @@ classes:
     is_a: NamedThing
     title: Material Entity
 
-  Substance:
-    class_uri: "nmdc:Substance"
-    title: Material Substance
-    exact_mappings:
+  PortionOfSubstance:
+    class_uri: "nmdc:PortionOfSubstance"
+    title: Portion of a Substance
+    mappings:
       - schema:Substance
-    description: Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
+    description: A portion of any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
     slots:
+      # - substance_category
       - final_concentration
+      - known_as
+      - mass
       - sample_state_information
       - source_concentration
-      - substance_category
       - substance_role
+      - type
       - volume
-      - mass
 
   ## MAM 2024-03-26: I meant to delete these ina  previous PR
   #      - chemical_formula
@@ -614,12 +617,15 @@ classes:
 
 slots:
 
+  known_as:
+    range: ChemicalEntity
+
   substance_role:
     range: SubstanceRoleEnum
     description: The role of a substance in a process
 
   concentration:
-    domain: SolutionComponent
+    #    domain: SolutionComponent
     range: QuantityValue
     description: The concentration of a substance used in a process
   source_concentration:
@@ -925,22 +931,23 @@ slots:
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
     multivalued: true
     range: string
-  has_solution_components:
-    description: Relationship from a Solution to one or more constituent solution components
-    range: SolutionComponent
-    domain: Solution
-    multivalued: true
-    inlined_as_list: true
-    required: true
-    minimum_cardinality: 1
-    #list example
-  compound:
-    domain: SolutionComponent
-    any_of:
-      - range: CompoundEnum
-      - range: ProteolyticEnzymeEnum
-    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
-    required: true
+  #  has_solution_components:
+  #    description: Relationship from a Solution to one or more constituent solution components
+  #    range: SolutionComponent
+  #    domain: Solution
+  #    multivalued: true
+  #    inlined_as_list: true
+  #    required: true
+  #    minimum_cardinality: 1
+  #    #list example
+  #  compound:
+  #    domain: SolutionComponent
+  #    range: PortionOfSubstance # or ChemicalEntity
+  #    #    any_of:
+  #    #      - range: CompoundEnum
+  #    #      - range: ProteolyticEnzymeEnum
+  #    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
+  #    required: true
   volume: # see also input_volume
     domain: PlannedProcess
     range: QuantityValue
@@ -948,8 +955,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-  substance_category:
-    range: SubstanceCategoryEnum
+  #  substance_category:
+  #    range: SubstanceCategoryEnum
   sample_state_information:
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
