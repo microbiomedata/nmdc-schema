@@ -71,7 +71,7 @@ types:
 enums:
   SubstanceRoleEnum:
     permissible_values:
-      buffer: 
+      buffer:
         description: Maintains the pH of the solution within a specific range to stabilize analytes or reactions.
         meaning: CHEBI:35225
       # protease:
@@ -81,7 +81,7 @@ enums:
       ms_proteolytic_enzyme:
         description: Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
         meaning: MS:1002986
-      solvent: 
+      solvent:
         description: Dissolves the sample or reagents to facilitate reactions or extraction.
         meaning: CHEBI:46787
       surfactant:
@@ -120,11 +120,11 @@ enums:
       hydrochloric_acid:
         aliases:
           - chloridic_acid
-      water: {}
-      triton_X-100: {}
-      chymotrypsin: 
+      water: { }
+      triton_X-100: { }
+      chymotrypsin:
         description: A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, and phenylalanine.
-        meaning: MS:1001306 
+        meaning: MS:1001306
       lys_c:
         description: A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
         meaning: MS:1001309
@@ -293,10 +293,11 @@ classes:
       - volume
       - mass
 
-      - chemical_formula
-      - inchi
-      - inchi_key
-      - smiles
+  ## MAM 2024-03-26: I meant to delete these ina  previous PR
+  #      - chemical_formula
+  #      - inchi
+  #      - inchi_key
+  #      - smiles
 
   ProcessedSample:
     class_uri: "nmdc:ProcessedSample"
@@ -856,8 +857,8 @@ slots:
     multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     description: A list of websites that are associated with the entity.
-    comments: 
-      - DOIs should not be included as websites. Instead, use the associated_dois slot. 
+    comments:
+      - DOIs should not be included as websites. Instead, use the associated_dois slot.
       - A consortium's homepage website should be included in the homepage_website slot, not in websites.
 
   homepage_website:
@@ -866,7 +867,7 @@ slots:
     description: The website address (URL) of an entity's homepage.
     examples:
       - value: https://www.neonscience.org/
-        
+
   highest_similarity_score:
     todos:
       - Yuri to fill in description
