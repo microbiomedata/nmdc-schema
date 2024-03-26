@@ -342,6 +342,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
+      - has_calibration
       - has_metabolite_quantifications
     slot_usage:
       id:
@@ -369,6 +370,8 @@ classes:
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
+    slots:
+      - has_calibration
     slot_usage:
       id:
         required: true
@@ -606,9 +609,17 @@ slots:
       TODO      
   
   has_calibration:
-    domain: ChromatographicSeparationProcess
-    range: DataObject
-    description: An instrument data that is used to calibrate retention time or to calculate rentention index
+    # domain: ChromatographicSeparationProcess
+    # range: DataObject
+    # description: An instrument data that is used to calibrate retention time or to calculate rentention index
+    range: string
+    description: >-
+      A reference to a file that holds calibration information.
+    notes: >-
+      has_calibration will be removed from all WorkflowExecution classes and stay only on the
+      ChromatographicSeparationProcess class after an ingest of the chromatographic_separation_process_set has 
+      ocurred. The commented out portion of the slot definition above will be implemented. See PR #29 in Berkeley
+      schema.
 
   has_metabolite_quantifications:
     domain: MetabolomicsAnalysis
