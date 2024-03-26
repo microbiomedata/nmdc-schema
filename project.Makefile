@@ -526,3 +526,36 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
+
+###
+
+chemistry-clean:
+	rm -rf assets/chemistry.puml
+	rm -rf assets/chemistry.svg
+	rm -rf assets/chemistry.pdf
+
+
+chemistry-all: chemistry-clean assets/chemistry.pdf
+
+assets/chemistry.puml: src/schema/nmdc.yaml
+	$(RUN) gen-plantuml \
+		--classes MassSpectrometry \
+		--classes FluidHandling \
+		--classes ChromatographicSeparationProcess \
+		--classes Solution \
+		--classes SolutionComponent \
+		--classes MaterialProcessing \
+		--classes PlannedProcess \
+		$< > $@
+
+assets/chemistry.svg: assets/chemistry.puml # https://plantuml.com/download
+#	docker run \
+#		-v plantuml_diagrams:/plantuml/in \
+#		-v plantuml_images:/plantuml/out \
+#		plantuml/plantuml render /plantuml/in/chemistry.puml -f png -o /plantuml/out/chemistry.png
+#	java -jar plantuml-lgpl-1.2024.3.jar $< -f png -o $@
+	java -jar plantuml-lgpl-1.2024.3.jar $< -tsvg
+
+assets/chemistry.pdf: assets/chemistry.svg
+	inkscape --export-filename=assets/chemistry.pdf $<
+
