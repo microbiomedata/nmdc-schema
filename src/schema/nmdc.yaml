@@ -213,6 +213,7 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
+      - chemical_entity_set
       - planned_process_set
       - functional_annotation_agg
       - biosample_set
@@ -1856,8 +1857,8 @@ enums:
       athmospheric_pressure_chemical_ionization:
         aliases:
           - APCI
-      electron_ionization: 
-        aliases: 
+      electron_ionization:
+        aliases:
           - EI
 
   MassSpectrumCollectionModeEnum:
@@ -3084,6 +3085,14 @@ slots:
       Applies to a property that links a database object to a set of objects.
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
+  chemical_entity_set:
+    domain: Database # not inherited by mixin users
+    mixins:
+      - object_set
+    range: ChemicalEntity
+    description:
+      This property links a database object to the set of chemical entities
+      within it.
   planned_process_set:
     domain: Database # not inherited by mixin users
     mixins:
