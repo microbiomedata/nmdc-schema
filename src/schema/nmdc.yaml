@@ -1981,11 +1981,16 @@ enums:
       vortex_genie_2:
         aliases:
           - VortexGenie2
-      novaseq_6000:
+      novaseq:
         aliases:
           - NovaSeq
+      novaseq_6000:
+        aliases:
           - NovaSeq 6000
         meaning: OBI:0002630
+      hiseq:
+        aliases:
+          - Illumina HiSeq
       hiseq_1000:
         aliases:
           - Illumina HiSeq 1000
