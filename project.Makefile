@@ -531,11 +531,15 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 
 chemistry-clean:
 	rm -rf assets/chemistry.puml
-	rm -rf assets/chemistry.svg
 	rm -rf assets/chemistry.pdf
+	rm -rf assets/chemistry.png
+	rm -rf assets/chemistry.svg
 
 
-chemistry-all: chemistry-clean assets/chemistry.pdf
+chemistry-all: chemistry-clean assets/chemistry.pdf assets/chemistry.png
+
+#		--classes MaterialProcessing \
+#		--classes PlannedProcess \
 
 assets/chemistry.puml: src/schema/nmdc.yaml
 	$(RUN) gen-plantuml \
@@ -544,8 +548,6 @@ assets/chemistry.puml: src/schema/nmdc.yaml
 		--classes ChromatographicSeparationProcess \
 		--classes Solution \
 		--classes SolutionComponent \
-		--classes MaterialProcessing \
-		--classes PlannedProcess \
 		$< > $@
 
 assets/chemistry.svg: assets/chemistry.puml # https://plantuml.com/download
@@ -555,6 +557,9 @@ assets/chemistry.svg: assets/chemistry.puml # https://plantuml.com/download
 #		plantuml/plantuml render /plantuml/in/chemistry.puml -f png -o /plantuml/out/chemistry.png
 #	java -jar plantuml-lgpl-1.2024.3.jar $< -f png -o $@
 	java -jar plantuml-lgpl-1.2024.3.jar $< -tsvg
+
+assets/chemistry.png: assets/chemistry.puml # https://plantuml.com/download
+	java -jar plantuml-lgpl-1.2024.3.jar $< -tpng
 
 assets/chemistry.pdf: assets/chemistry.svg
 	inkscape --export-filename=assets/chemistry.pdf $<

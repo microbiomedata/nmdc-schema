@@ -1,9 +1,6 @@
 @startuml
 skinparam nodesep 10
-class "WorkflowExecution"
-class "WorkflowChain"
 class "TextValue"
-class "SubSamplingProcess"
 class "Study"
 class "SolutionComponent" {
     {field} "compound": "string" [req]
@@ -35,82 +32,11 @@ class "DissolvingProcess"
 "Extraction" *--> "0..1" "Solution" : "extractant"
 "ChromatographicSeparationProcess" *--> "0..*" "Solution" : "ordered_mobile_phases"
 "DissolvingProcess" *--> "1" "Solution" : "solvent"
-class "ProtocolExecution"
 class "Protocol"
 class "ProcessedSample"
-class "Pooling"
-abstract "PlannedProcess" {
-    {field} "processing_institution": "ProcessingInstitutionEnum" [opt]
-    {field} "start_date": "string" [opt]
-    {field} "end_date": "string" [opt]
-    {field} "qc_status": "StatusEnum" [opt]
-    {field} "qc_comment": "string" [opt]
-    {field} "id"(i): "uriorcurie" [req]
-    {field} "name"(i): "string" [opt]
-    {field} "description"(i): "string" [opt]
-    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
-    {field} "type"(i): "uriorcurie" [req]
-}
-class "FailureCategorization"
-class "Instrument"
-abstract "NamedThing"
-class "Database"
-class "MaterialProcessing" {
-    {field} "id": "uriorcurie" [req]
-    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
-    {field} "start_date"(i): "string" [opt]
-    {field} "end_date"(i): "string" [opt]
-    {field} "qc_status"(i): "StatusEnum" [opt]
-    {field} "qc_comment"(i): "string" [opt]
-    {field} "name"(i): "string" [opt]
-    {field} "description"(i): "string" [opt]
-    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
-    {field} "type"(i): "uriorcurie" [req]
-}
-abstract "DataGeneration"
-class "CollectingBiosamplesFromSite"
-"PlannedProcess" *--> "0..*" "FailureCategorization" : "has_failure_categorization"
-"PlannedProcess" *--> "0..1" "Protocol" : "protocol_link"
-"PlannedProcess" --> "0..*" "Instrument" : "instrument_used"
-"PlannedProcess" --> "0..*" "NamedThing" : "has_output"
-"PlannedProcess" --> "0..*" "NamedThing" : "has_input"
-"ProtocolExecution" --> "1..*" "PlannedProcess" : "has_process_parts"
-"Database" *--> "0..*" "PlannedProcess" : "planned_process_set"
-"PlannedProcess" ^-- "WorkflowExecution"
-"PlannedProcess" ^-- "WorkflowChain"
-"PlannedProcess" ^-- "ProtocolExecution"
-"PlannedProcess" ^-- "MaterialProcessing"
-"PlannedProcess" ^-- "DataGeneration"
-"PlannedProcess" ^-- "CollectingBiosamplesFromSite"
-"NamedThing" ^-- "PlannedProcess"
 class "PersonValue"
-class "MixingProcess"
-class "LibraryPreparation"
-abstract "FluidHandling" {
-    {field} "id"(i): "uriorcurie" [req]
-    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
-    {field} "start_date"(i): "string" [opt]
-    {field} "end_date"(i): "string" [opt]
-    {field} "qc_status"(i): "StatusEnum" [opt]
-    {field} "qc_comment"(i): "string" [opt]
-    {field} "name"(i): "string" [opt]
-    {field} "description"(i): "string" [opt]
-    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
-    {field} "type"(i): "uriorcurie" [req]
-}
-class "FiltrationProcess"
-class "ChemicalConversionProcess"
-"MaterialProcessing" --> "0..*" "ProcessedSample" : "has_output"
-"MaterialProcessing" --> "0..*" "NamedThing" : "has_input"
-"MaterialProcessing" ^-- "SubSamplingProcess"
-"MaterialProcessing" ^-- "Pooling"
-"MaterialProcessing" ^-- "MixingProcess"
-"MaterialProcessing" ^-- "LibraryPreparation"
-"MaterialProcessing" ^-- "FluidHandling"
-"MaterialProcessing" ^-- "FiltrationProcess"
-"MaterialProcessing" ^-- "Extraction"
-"MaterialProcessing" ^-- "DissolvingProcess"
-"MaterialProcessing" ^-- "ChemicalConversionProcess"
+abstract "NamedThing"
+class "MaterialProcessing"
 class "MassSpectrometry" {
     {field} "acquisition_category": "AcquisitionCategoryEnum" [opt]
     {field} "acquisition_strategy": "AcquisitionStrategyEnum" [opt]
@@ -137,11 +63,27 @@ class "MassSpectrometry" {
     {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
     {field} "type"(i): "uriorcurie" [req]
 }
+abstract "FluidHandling" {
+    {field} "id"(i): "uriorcurie" [req]
+    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
+    {field} "start_date"(i): "string" [opt]
+    {field} "end_date"(i): "string" [opt]
+    {field} "qc_status"(i): "StatusEnum" [opt]
+    {field} "qc_comment"(i): "string" [opt]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+abstract "DataGeneration"
 "MassSpectrometry" --> "0..1" "FluidHandling" : "eluent_introduction"
 "DataGeneration" ^-- "MassSpectrometry"
+class "Instrument"
 class "DirectInfusionProcess"
 "FluidHandling" ^-- "DirectInfusionProcess"
 "FluidHandling" ^-- "ChromatographicSeparationProcess"
+"MaterialProcessing" ^-- "FluidHandling"
+class "FailureCategorization"
 class "DataObject"
 "ChromatographicSeparationProcess" *--> "0..1" "QuantityValue" : "temperature"
 "ChromatographicSeparationProcess" --> "0..1" "DataObject" : "has_calibration"
