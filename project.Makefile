@@ -539,8 +539,7 @@ chemistry-clean:
 chemistry-all: chemistry-clean assets/chemistry.pdf assets/chemistry.png
 
 #		--classes MaterialProcessing \
-#		--classes PlannedProcess \
-
+#		--classes PlannedProcess
 assets/chemistry.puml: src/schema/nmdc.yaml
 	$(RUN) gen-plantuml \
 		--classes MassSpectrometry \
