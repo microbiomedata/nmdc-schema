@@ -36,7 +36,7 @@ chemical_entity_set:
     chemical_formula: H2O
     type: nmdc:ChemicalEntity
   - id: nmdc:chem-99-000005
-    name: "deinonized water" # todo new envo term
+    name: "deionized water" # todo new envo term
     type: nmdc:ChemicalEntity
   - id: nmdc:chem-99-000015 # todo alias chloridic_acid
     name: "hydrochloric acid"

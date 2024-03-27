@@ -211,11 +211,21 @@ classes:
   #      - concentration
   #      - type
 
+
+  Mixture:
+    class_uri: nmdc:Mixture
+    slots:
+      #      - has_solution_components
+      - substances_used
+      - volume
+      - type
+
   Solution:
+    is_a: Mixture
     class_uri: nmdc:Solution
     description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
     aliases:
-      - mixture
+#      - mixture
       - solvent
     comments:
       - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
@@ -223,11 +233,6 @@ classes:
     notes:
       - TODO review the description, possibly more descriptive modeling to allow solvent to be used
       - TODO consider making a "Fluid" class
-    slots:
-      #      - has_solution_components
-      - substances_used
-      - volume
-      - type
 
   MaterialProcessing:
     class_uri: 'nmdc:MaterialProcessing'
@@ -498,6 +503,12 @@ classes:
       all_proteins:
         description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
 
+  SubstanceEntity:
+    is_a: OntologyClass
+    class_uri: "nmdc:SubstanceEntity"
+    slots:
+      - alternative_names
+
   ChemicalEntity:
     class_uri: "nmdc:ChemicalEntity"
     aliases:
@@ -505,7 +516,7 @@ classes:
       - chemical substance
       - chemical compound
       - chemical
-    is_a: OntologyClass
+    is_a: SubstanceEntity
     description: >-
       An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
       There may be different terms for distinct acid-base forms, protonation states
@@ -618,7 +629,7 @@ classes:
 slots:
 
   known_as:
-    range: ChemicalEntity
+    range: SubstanceEntity
 
   substance_role:
     range: SubstanceRoleEnum

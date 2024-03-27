@@ -529,29 +529,30 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 
 ###
 
-chemistry-clean:
-	rm -rf assets/chemistry.puml
-	rm -rf assets/chemistry.pdf
-	rm -rf assets/chemistry.png
-	rm -rf assets/chemistry.svg
-	rm -rf assets/solution.mmd
-	rm -rf assets/solution.svg
+diagrams-clean:
+	rm -rf assets/mermaid-erd* \
+		assets/palntuml*
 
-
-chemistry-all: chemistry-clean assets/chemistry.pdf assets/chemistry.png assets/solution.svg
+diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/mermaid-erd.svg
 
 #		--classes MaterialProcessing \
 #		--classes PlannedProcess
-assets/chemistry.puml: src/schema/nmdc.yaml
+assets/plantuml.puml: src/schema/nmdc.yaml
 	$(RUN) gen-plantuml \
-		--classes MassSpectrometry \
-		--classes FluidHandling \
+		--classes ChemicalConversionProcess \
+		--classes ChemicalEntity \
 		--classes ChromatographicSeparationProcess \
-		--classes Solution \
+		--classes DissolvingProcess \
+		--classes Extraction \
+		--classes FluidHandling \
+		--classes MassSpectrometry \
+		--classes MetaboliteQuantification \
 		--classes PortionOfSubstance \
+		--classes Solution \
+		--classes SubstanceEntity \
 		$< > $@
 
-assets/chemistry.svg: assets/chemistry.puml # https://plantuml.com/download
+assets/plantuml.svg: assets/plantuml.puml # https://plantuml.com/download
 #	docker run \
 #		-v plantuml_diagrams:/plantuml/in \
 #		-v plantuml_images:/plantuml/out \
@@ -559,26 +560,41 @@ assets/chemistry.svg: assets/chemistry.puml # https://plantuml.com/download
 #	java -jar plantuml-lgpl-1.2024.3.jar $< -f png -o $@
 	java -jar plantuml-lgpl-1.2024.3.jar $< -tsvg
 
-assets/chemistry.png: assets/chemistry.puml # https://plantuml.com/download
+assets/plantuml.png: assets/plantuml.puml # https://plantuml.com/download
 	java -jar plantuml-lgpl-1.2024.3.jar $< -tpng
 
-assets/chemistry.pdf: assets/chemistry.svg
-	inkscape --export-filename=assets/chemistry.pdf $<
+assets/plantuml.pdf: assets/plantuml.svg
+	inkscape --export-filename=$@ $<
 
 #		--classes FluidHandling \
 # 		--classes Extraction
 
-assets/solution.mmd: src/schema/nmdc.yaml
+assets/mermaid-erd.mmd: src/schema/nmdc.yaml
 	$(RUN) gen-erdiagram \
 		--format mermaid \
 		--classes ChemicalConversionProcess \
 		--classes ChemicalEntity \
 		--classes ChromatographicSeparationProcess \
+		--classes DissolvingProcess \
+		--classes Extraction \
+		--classes FluidHandling \
+		--classes MassSpectrometry \
 		--classes MetaboliteQuantification \
-		--classes Solution \
 		--classes PortionOfSubstance \
-		$< > $@
+		--classes Solution \
+		--classes SubstanceEntity \
+		$< > $@.tmp
+	sed 's/language code/language_code/g' $@.tmp > $@
+	rm -rf $@.tmp
 
-assets/solution.svg: assets/solution.mmd
+assets/mermaid-erd.svg: assets/mermaid-erd.mmd
 	mmdc -i $< -o $@
 
+assets/mermaid-erd.pdf: assets/mermaid-erd.mmd
+	mmdc -i $< -o $@
+
+assets/mermaid-erd.png: assets/mermaid-erd.mmd
+	mmdc -i $< -o $@
+
+#assets/mermaid-erd.pdf: assets/mermaid-erd.svg # illegible
+#	inkscape --export-filename=$@ $<
