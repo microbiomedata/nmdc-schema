@@ -1,9 +1,9 @@
-db.sample_set.aggregate([
+db.biosample_set.aggregate([
   {
     $lookup: {
       from: "study_set",
-      localField: "part_of_study",
-      foreignField: "study_id",
+      localField: "part_of",
+      foreignField: "id",
       as: "studies"
     }
   },

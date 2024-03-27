@@ -1,4 +1,4 @@
-var workflowActivitySets = ["metagenome_assembly_set", "metagenome_annotation_set", "metabolomics_analysis_activity_set",
+var workflowActivitySets = ["mags_activity_set","metagenome_assembly_set", "metagenome_annotation_set", "metabolomics_analysis_activity_set",
 "metaproteomics_analysis_activity_set", "metatranscriptome_activity_set", "nom_analysis_activity_set"];
 
 var dataObjectIds = db.data_object_set.distinct("id");
