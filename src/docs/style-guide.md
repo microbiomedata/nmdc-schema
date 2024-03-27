@@ -15,6 +15,7 @@
     - add `xyz_set` collection slots as needed, but check whether there is a collection slot for a parent class first
     - minimize initial textual annotation of mappings to external resources like ontologies. add just enough for your
       own understanding and be prepared for descriptions, mappings etc. to be revised
+    - any textual annotations provided must agree 100% with the structural/logical modelling
     - if mappings are provided, be aware that lexical matching (similar words) is not as important as semantic
       matching (similar meanings). the resulting hierarchy in the schema should align with the source hierarchical
       context
