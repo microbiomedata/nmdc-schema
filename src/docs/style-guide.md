@@ -6,9 +6,11 @@
 - use tight ranges. minimize number of string slots.
 - submit tiny PRs
     - use a bottom up approach, submitting leaf entities as early as possible
+    - include example data files in each PR
+    - run `linkml-validate` on individual example data files as they are developed. don't wait for
+      the `linkml-run-examples` phase at the end of `make test`
     - in addition to passing the tests, all YAML modules in each PR must compile independent with something
       like `gen-linkml` or `gen-owl`. This is not automated yet.
-    - include example data files in each PR
     - emphasize example data files that instantiate a `nmdc:Database` and tell a cumulative story
     - add `xyz_set` collection slots as needed, but check whether there is a collection slot for a parent class first
     - minimize initial textual annotation of mappings to external resources like ontologies. add just enough for your
