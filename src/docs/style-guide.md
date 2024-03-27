@@ -1,4 +1,6 @@
 - add a minimal number of new elements.
+    - all new elements should be use-case justified (informing workflows, searching via the data portal, etc.)
+    - development of process classes should emphasize clarity in the inputs and outputs
 - follow established patterns (chains or networks of classes, slots types and enums) or create new reusable patterns
 - use tight ranges. minimize number of string slots.
 - submit tiny PRs
@@ -16,5 +18,5 @@
 - use multiple tools for browsing schema including source YAML files, SchemaView() code, documentation pages and
   diagrams. generated artifacts might have errors or limitations
     - diagramming tools should be added to Docker container
-- be familar with [ChemROF](https://chemkg.github.io/chemrof/) for anythign chemistry related
+- be familiar with [ChemROF](https://chemkg.github.io/chemrof/) for anything chemistry related
 - ask large-context LLMs like claude for advice by uploading a merged schema and an example data file
