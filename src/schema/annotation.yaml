@@ -109,7 +109,7 @@ classes:
     notes:
       - KEGG.ORTHOLOGY prefix is used for KO numbers
     todos:
-      - is Pathway instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
+      - is OrthologyGroup instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
 
   FunctionalAnnotation:
     class_uri: "nmdc:FunctionalAnnotation"
@@ -197,8 +197,8 @@ slots:
       The gene product encoded by this feature.
       Typically this is used for a CDS feature or gene feature which will encode a protein.
       It can also be used by a nc transcript ot gene feature that encoded a ncRNA
-    comments:
-      - might have a reaction in its domain
+    todos:
+      - If we revert Reaction back into the schema, that would be a reasonable domain for this slot
   end:
     domain: GenomeFeature
     range: integer
@@ -223,7 +223,6 @@ slots:
       The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
     exact_mappings:
       - biolink:phase
-
   start:
     is_a: gff_coordinate
     domain: GenomeFeature
