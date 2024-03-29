@@ -7,6 +7,8 @@ FD_ROOT=local/fuseki-data/databases
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
+PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
+
 .PHONY: accepting-legacy-ids-all accepting-legacy-ids-clean \
 dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
 rdf-clean shuttle-clean
@@ -549,12 +551,19 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 
 diagrams-clean:
 	rm -rf assets/mermaid-erd* \
-		assets/palntuml*
+		assets/plantuml*
 
+# requires java and the plantuml jar https://plantuml.com/download
+#   https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-lgpl-1.2024.3.jar
+# requires npm and https://www.npmjs.com/package/@mermaid-js/mermaid-cli
+# requires inkscape
 diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/mermaid-erd.svg
 
-#		--classes MaterialProcessing \
+#		--classes MaterialProcessing
 #		--classes PlannedProcess
+#		--classes PortionOfSubstance
+#		--classes SubstanceEntity
+
 assets/plantuml.puml: src/schema/nmdc.yaml
 	$(RUN) gen-plantuml \
 		--classes ChemicalConversionProcess \
@@ -571,21 +580,17 @@ assets/plantuml.puml: src/schema/nmdc.yaml
 		$< > $@
 
 assets/plantuml.svg: assets/plantuml.puml # https://plantuml.com/download
+	java -jar $(PLANTUML_JAR) $< -tsvg
+
+assets/plantuml.png: assets/plantuml.puml # https://plantuml.com/download
 #	docker run \
 #		-v plantuml_diagrams:/plantuml/in \
 #		-v plantuml_images:/plantuml/out \
 #		plantuml/plantuml render /plantuml/in/chemistry.puml -f png -o /plantuml/out/chemistry.png
-#	java -jar plantuml-lgpl-1.2024.3.jar $< -f png -o $@
-	java -jar plantuml-lgpl-1.2024.3.jar $< -tsvg
-
-assets/plantuml.png: assets/plantuml.puml # https://plantuml.com/download
-	java -jar plantuml-lgpl-1.2024.3.jar $< -tpng
+	java -jar $(PLANTUML_JAR) $< -tpng
 
 assets/plantuml.pdf: assets/plantuml.svg
 	inkscape --export-filename=$@ $<
-
-#		--classes FluidHandling \
-# 		--classes Extraction
 
 assets/mermaid-erd.mmd: src/schema/nmdc.yaml
 	$(RUN) gen-erdiagram \
