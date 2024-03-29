@@ -30,7 +30,11 @@ def build_imports_graph(schema_dir):
                     # Extract filename without extension and remove schema_dir prefix
                     node_name = os.path.splitext(os.path.basename(filename))[0].replace(f"{schema_dir}/", "")
                     imported_node_name = os.path.splitext(imported_schema)[0]
-                    if "/" not in imported_node_name and imported_node_name != "mixs" and node_name != "mixs":
+                    if "/" not in imported_node_name and \
+                            imported_node_name != "mixs" and \
+                            node_name != "mixs" and \
+                            imported_node_name != "linkml:types" and \
+                            node_name != "linkml:types":
                         graph.add_edge(node_name, imported_node_name)
 
     return graph
@@ -46,8 +50,14 @@ pos = nx.planar_layout(graph)  # Adjust parameters as needed
 
 # Visualization using networkx.draw with node positions
 plt.figure(figsize=(8, 6))
-nx.draw(graph, pos=pos, with_labels=True, font_weight='bold')
-plt.show()
+# nx.draw(graph, pos=pos, with_labels=True, font_weight='bold')
+nx.draw(graph, pos=pos, with_labels=True, font_weight='bold', node_color='none')
+# plt.show()
+
+# plt.subplots_adjust(left=2, bottom=2, right=2, top=2)
+
+plt.savefig("../../assets/partial-imports-graph.pdf", format="pdf", bbox_inches="tight")
+plt.close()  # Optional: Close the plot window after saving
 
 # circular_layout: Nodes arranged in a circle.
 # shell_layout: Nodes arranged in concentric circles (useful for hierarchical structures).
