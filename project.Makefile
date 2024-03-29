@@ -417,19 +417,37 @@ local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 		--output-yaml $@.tmp \
 		--page-size 200000 \
 		--schema-file $< \
+		--selected-collections activity_set \
 		--selected-collections biosample_set \
-		--selected-collections data_object_set \
+		--selected-collections collecting_biosamples_from_site_set \
 		--selected-collections extraction_set \
-		--selected-collections field_research_site_set \
+		--selected-collections genome_feature_set \
 		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections material_sample_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metap_gene_function_aggregation \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections nom_analysis_activity_set \
 		--selected-collections omics_processing_set \
+		--selected-collections planned_process_set \
 		--selected-collections pooling_set \
 		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
 		--skip-collection-check
 	sed -i.bak 's/gold:/GOLD:/' $@.tmp # kludge modify data to match (old!) schema
 	rm -rf $@.tmp.bak
 	time $(RUN) migration-recursion \
+		--migrator-name migrator_from_X_to_PR4 \
+		--migrator-name migrator_from_X_to_PR2_and_PR24 \
+		--migrator-name migrator_from_X_to_PR3 \
 		--schema-path $< \
 		--input-path $@.tmp \
 		--salvage-prefix generic \
@@ -598,3 +616,10 @@ assets/mermaid-erd.png: assets/mermaid-erd.mmd
 
 #assets/mermaid-erd.pdf: assets/mermaid-erd.svg # illegible
 #	inkscape --export-filename=$@ $<
+
+assets/check_examples_class_coverage.txt:
+	$(RUN) python src/scripts/check_examples_class_coverage.py > $@
+
+assets/schema_pattern_linting.txt:
+	$(RUN) python src/scripts/schema_pattern_linting.py > $@
+
