@@ -6,7 +6,8 @@ has_output:
   - "nmdc:ome-39"
 chemical_conversion_category: acid_base
 substances_used:
-  - substance_category: methanol
+  - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+    type: nmdc:PortionOfSubstance
     sample_state_information: liquid
     volume:
       type: nmdc:QuantityValue

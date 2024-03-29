@@ -4,16 +4,14 @@ has_input:
   - "nmdc:procsm-37"
 has_output:
   - "nmdc:procsm-39"
-extractant: # range: Solution... multivalued? (no) -> has_solution_component
-  type: nmdc:Solution
-  has_solution_components:
-    - compound: deionized_water
-      type: nmdc:SolutionComponent
-    - compound: ammonium_bicarbonate
-      type: nmdc:SolutionComponent
-    - compound: trypsin
-      type: nmdc:SolutionComponent
-      concentration:
-        type: nmdc:QuantityValue
-        has_numeric_value: 0.05
-        has_unit: "μg/μL"
+substances_used:
+  - known_as: nmdc:chem-99-000005  # see src/data/valid/Database-chemical_entity_set-1.yaml
+    type: nmdc:PortionOfSubstance
+  - known_as: nmdc:chem-99-000002
+    type: nmdc:PortionOfSubstance
+  - known_as: nmdc:chem-99-000014
+    type: nmdc:PortionOfSubstance
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 0.05
+      has_unit: "μg/μL"

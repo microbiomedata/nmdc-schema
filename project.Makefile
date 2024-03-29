@@ -553,7 +553,7 @@ diagrams-clean:
 	rm -rf assets/mermaid-erd* \
 		assets/plantuml*
 
-# require java and the plantuml jar https://plantuml.com/download
+# requires java and the plantuml jar https://plantuml.com/download
 #   https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-lgpl-1.2024.3.jar
 # requires npm and https://www.npmjs.com/package/@mermaid-js/mermaid-cli
 # requires inkscape
@@ -563,6 +563,7 @@ diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/merm
 #		--classes PlannedProcess
 #		--classes PortionOfSubstance
 #		--classes SubstanceEntity
+
 assets/plantuml.puml: src/schema/nmdc.yaml
 	$(RUN) gen-plantuml \
 		--classes ChemicalConversionProcess \
@@ -573,7 +574,9 @@ assets/plantuml.puml: src/schema/nmdc.yaml
 		--classes FluidHandling \
 		--classes MassSpectrometry \
 		--classes MetaboliteQuantification \
+		--classes PortionOfSubstance \
 		--classes Solution \
+		--classes SubstanceEntity \
 		$< > $@
 
 assets/plantuml.svg: assets/plantuml.puml # https://plantuml.com/download
@@ -600,7 +603,9 @@ assets/mermaid-erd.mmd: src/schema/nmdc.yaml
 		--classes FluidHandling \
 		--classes MassSpectrometry \
 		--classes MetaboliteQuantification \
+		--classes PortionOfSubstance \
 		--classes Solution \
+		--classes SubstanceEntity \
 		$< > $@.tmp
 	sed 's/language code/language_code/g' $@.tmp > $@
 	rm -rf $@.tmp
@@ -622,3 +627,4 @@ assets/check_examples_class_coverage.txt:
 
 assets/schema_pattern_linting.txt:
 	$(RUN) python src/scripts/schema_pattern_linting.py > $@
+

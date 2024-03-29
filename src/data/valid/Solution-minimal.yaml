@@ -1,12 +1,12 @@
 type: nmdc:Solution
-has_solution_components:
-  - compound: methanol
-    type: nmdc:SolutionComponent
-    concentration:
+substances_used:
+  - known_as: nmdc:chem-99-000003  # see src/data/valid/Database-chemical_entity_set-1.yaml
+    type: nmdc:PortionOfSubstance
+    final_concentration:
       type: nmdc:QuantityValue
       has_unit: mM
       has_numeric_value: 10
-volume:
-  type: nmdc:QuantityValue
-  has_numeric_value: 120
-  has_unit: mL
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 120
+      has_unit: mL

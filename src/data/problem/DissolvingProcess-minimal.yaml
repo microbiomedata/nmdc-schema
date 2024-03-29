@@ -6,10 +6,10 @@ has_output:
   - nmdc:procsm-13-S67F
 solvent:
   type: nmdc:Solution
-  has_solution_components:
-    - compound: hydrochloric_acid
-      type: nmdc:SolutionComponent
-      concentration:
+  substances_used:
+    - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      type: nmdc:PortionOfSubstance
+      final_concentration:
         type: nmdc:QuantityValue
         has_unit: mM
         has_numeric_value: 15
@@ -17,7 +17,9 @@ solvent:
     type: nmdc:QuantityValue
     has_numeric_value: 500
     has_unit: mL
-solubilizing_agent: triton_X-100
+solubilizing_agent:
+  known_as: nmdc:chem-99-000006 # see src/data/valid/Database-chemical_entity_set-1.yaml
+  type: nmdc:PortionOfSubstance
 duration:
   type: nmdc:QuantityValue
   has_numeric_value: 2

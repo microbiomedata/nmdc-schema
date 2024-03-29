@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-03-29T10:45:41
+# Generation date: 2024-03-29T11:02:47
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -296,7 +296,11 @@ class EnvironmentalMaterialTermId(OntologyClassId):
     pass
 
 
-class ChemicalEntityId(OntologyClassId):
+class SubstanceEntityId(OntologyClassId):
+    pass
+
+
+class ChemicalEntityId(SubstanceEntityId):
     pass
 
 
@@ -773,39 +777,60 @@ class FunctionalAnnotation(YAMLRoot):
 
 
 @dataclass
-class SolutionComponent(YAMLRoot):
-    """
-    One constituent of a solution
-    """
+class Mixture(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["SolutionComponent"]
-    class_class_curie: ClassVar[str] = "nmdc:SolutionComponent"
-    class_name: ClassVar[str] = "SolutionComponent"
-    class_model_uri: ClassVar[URIRef] = NMDC.SolutionComponent
+    class_class_uri: ClassVar[URIRef] = NMDC["Mixture"]
+    class_class_curie: ClassVar[str] = "nmdc:Mixture"
+    class_name: ClassVar[str] = "Mixture"
+    class_model_uri: ClassVar[URIRef] = NMDC.Mixture
 
-    compound: str = None
     type: Union[str, URIorCURIE] = None
-    concentration: Optional[Union[dict, "QuantityValue"]] = None
+    substances_used: Optional[Union[Union[dict, "PortionOfSubstance"], List[Union[dict, "PortionOfSubstance"]]]] = empty_list()
+    volume: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.compound):
-            self.MissingRequiredField("compound")
-        if not isinstance(self.compound, str):
-            self.compound = str(self.compound)
-
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
 
-        if self.concentration is not None and not isinstance(self.concentration, QuantityValue):
-            self.concentration = QuantityValue(**as_dict(self.concentration))
+        if not isinstance(self.substances_used, list):
+            self.substances_used = [self.substances_used] if self.substances_used is not None else []
+        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
+
+        if self.volume is not None and not isinstance(self.volume, QuantityValue):
+            self.volume = QuantityValue(**as_dict(self.volume))
 
         super().__post_init__(**kwargs)
 
 
+    def __new__(cls, *args, **kwargs):
+
+        type_designator = "type"
+        if not type_designator in kwargs:
+            return super().__new__(cls,*args,**kwargs)
+        else:
+            type_designator_value = kwargs[type_designator]
+            target_cls = cls._class_for("class_class_curie", type_designator_value)
+
+
+            if target_cls is None:
+                target_cls = cls._class_for("class_class_uri", type_designator_value)
+
+
+            if target_cls is None:
+                target_cls = cls._class_for("class_model_uri", type_designator_value)
+
+
+            if target_cls is None:
+                raise ValueError(f"Wrong type designator value: class {cls.__name__} "
+                                 f"has no subclass with ['class_class_curie', 'class_class_uri', 'class_model_uri']='{kwargs[type_designator]}'")
+            return super().__new__(target_cls,*args,**kwargs)
+
+
+
 @dataclass
-class Solution(YAMLRoot):
+class Solution(Mixture):
     """
     A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of
     solute and the other playing the role of solvent.
@@ -817,25 +842,14 @@ class Solution(YAMLRoot):
     class_name: ClassVar[str] = "Solution"
     class_model_uri: ClassVar[URIRef] = NMDC.Solution
 
-    has_solution_components: Union[Union[dict, SolutionComponent], List[Union[dict, SolutionComponent]]] = None
     type: Union[str, URIorCURIE] = None
-    volume: Optional[Union[dict, "QuantityValue"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.has_solution_components):
-            self.MissingRequiredField("has_solution_components")
-        if not isinstance(self.has_solution_components, list):
-            self.has_solution_components = [self.has_solution_components] if self.has_solution_components is not None else []
-        self.has_solution_components = [v if isinstance(v, SolutionComponent) else SolutionComponent(**as_dict(v)) for v in self.has_solution_components]
 
+        super().__post_init__(**kwargs)
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
-
-        if self.volume is not None and not isinstance(self.volume, QuantityValue):
-            self.volume = QuantityValue(**as_dict(self.volume))
-
-        super().__post_init__(**kwargs)
 
 
 @dataclass
@@ -3663,32 +3677,40 @@ class Biosample(MaterialEntity):
 
 
 @dataclass
-class Substance(YAMLRoot):
+class PortionOfSubstance(YAMLRoot):
     """
-    Any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
+    A portion of any matter of defined composition that has discrete existence, whose origin may be biological,
+    mineral or chemical.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["Substance"]
-    class_class_curie: ClassVar[str] = "nmdc:Substance"
-    class_name: ClassVar[str] = "Substance"
-    class_model_uri: ClassVar[URIRef] = NMDC.Substance
+    class_class_uri: ClassVar[URIRef] = NMDC["PortionOfSubstance"]
+    class_class_curie: ClassVar[str] = "nmdc:PortionOfSubstance"
+    class_name: ClassVar[str] = "PortionOfSubstance"
+    class_model_uri: ClassVar[URIRef] = NMDC.PortionOfSubstance
 
+    type: Union[str, URIorCURIE] = None
     final_concentration: Optional[Union[dict, "QuantityValue"]] = None
+    known_as: Optional[Union[str, SubstanceEntityId]] = None
+    mass: Optional[Union[dict, "QuantityValue"]] = None
     sample_state_information: Optional[Union[str, "SampleStateEnum"]] = None
     source_concentration: Optional[Union[dict, "QuantityValue"]] = None
-    substance_category: Optional[Union[str, "SubstanceCategoryEnum"]] = None
     substance_role: Optional[Union[str, "SubstanceRoleEnum"]] = None
     volume: Optional[Union[dict, "QuantityValue"]] = None
-    mass: Optional[Union[dict, "QuantityValue"]] = None
-    chemical_formula: Optional[str] = None
-    inchi: Optional[str] = None
-    inchi_key: Optional[str] = None
-    smiles: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
         if self.final_concentration is not None and not isinstance(self.final_concentration, QuantityValue):
             self.final_concentration = QuantityValue(**as_dict(self.final_concentration))
+
+        if self.known_as is not None and not isinstance(self.known_as, SubstanceEntityId):
+            self.known_as = SubstanceEntityId(self.known_as)
+
+        if self.mass is not None and not isinstance(self.mass, QuantityValue):
+            self.mass = QuantityValue(**as_dict(self.mass))
 
         if self.sample_state_information is not None and not isinstance(self.sample_state_information, SampleStateEnum):
             self.sample_state_information = SampleStateEnum(self.sample_state_information)
@@ -3696,30 +3718,11 @@ class Substance(YAMLRoot):
         if self.source_concentration is not None and not isinstance(self.source_concentration, QuantityValue):
             self.source_concentration = QuantityValue(**as_dict(self.source_concentration))
 
-        if self.substance_category is not None and not isinstance(self.substance_category, SubstanceCategoryEnum):
-            self.substance_category = SubstanceCategoryEnum(self.substance_category)
-
         if self.substance_role is not None and not isinstance(self.substance_role, SubstanceRoleEnum):
             self.substance_role = SubstanceRoleEnum(self.substance_role)
 
         if self.volume is not None and not isinstance(self.volume, QuantityValue):
             self.volume = QuantityValue(**as_dict(self.volume))
-
-        if self.mass is not None and not isinstance(self.mass, QuantityValue):
-            self.mass = QuantityValue(**as_dict(self.mass))
-
-        if self.chemical_formula is not None and not isinstance(self.chemical_formula, str):
-            self.chemical_formula = str(self.chemical_formula)
-
-        if self.inchi is not None and not isinstance(self.inchi, str):
-            self.inchi = str(self.inchi)
-
-        if self.inchi_key is not None and not isinstance(self.inchi_key, str):
-            self.inchi_key = str(self.inchi_key)
-
-        if not isinstance(self.smiles, list):
-            self.smiles = [self.smiles] if self.smiles is not None else []
-        self.smiles = [v if isinstance(v, str) else str(v) for v in self.smiles]
 
         super().__post_init__(**kwargs)
 
@@ -4318,7 +4321,7 @@ class Extraction(MaterialProcessing):
     id: Union[str, ExtractionId] = None
     type: Union[str, URIorCURIE] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
-    extractant: Optional[Union[dict, Solution]] = None
+    substances_used: Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]] = empty_list()
     extraction_target: Optional[Union[str, "ExtractionTargetEnum"]] = None
     input_mass: Optional[Union[dict, "QuantityValue"]] = None
     volume: Optional[Union[dict, "QuantityValue"]] = None
@@ -4335,8 +4338,9 @@ class Extraction(MaterialProcessing):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
-        if self.extractant is not None and not isinstance(self.extractant, Solution):
-            self.extractant = Solution(**as_dict(self.extractant))
+        if not isinstance(self.substances_used, list):
+            self.substances_used = [self.substances_used] if self.substances_used is not None else []
+        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
 
         if self.extraction_target is not None and not isinstance(self.extraction_target, ExtractionTargetEnum):
             self.extraction_target = ExtractionTargetEnum(self.extraction_target)
@@ -4573,7 +4577,7 @@ class ChromatographicSeparationProcess(FluidHandling):
     type: Union[str, URIorCURIE] = None
     has_calibration: Optional[str] = None
     chromatographic_category: Optional[Union[str, "ChromatographicCategoryEnum"]] = None
-    ordered_mobile_phases: Optional[Union[Union[dict, Solution], List[Union[dict, Solution]]]] = empty_list()
+    ordered_mobile_phases: Optional[Union[str, List[str]]] = empty_list()
     stationary_phase: Optional[Union[str, "StationaryPhaseEnum"]] = None
     temperature: Optional[Union[dict, "QuantityValue"]] = None
 
@@ -4591,7 +4595,7 @@ class ChromatographicSeparationProcess(FluidHandling):
 
         if not isinstance(self.ordered_mobile_phases, list):
             self.ordered_mobile_phases = [self.ordered_mobile_phases] if self.ordered_mobile_phases is not None else []
-        self.ordered_mobile_phases = [v if isinstance(v, Solution) else Solution(**as_dict(v)) for v in self.ordered_mobile_phases]
+        self.ordered_mobile_phases = [v if isinstance(v, str) else str(v) for v in self.ordered_mobile_phases]
 
         if self.stationary_phase is not None and not isinstance(self.stationary_phase, StationaryPhaseEnum):
             self.stationary_phase = StationaryPhaseEnum(self.stationary_phase)
@@ -4619,8 +4623,8 @@ class DissolvingProcess(MaterialProcessing):
 
     id: Union[str, DissolvingProcessId] = None
     type: Union[str, URIorCURIE] = None
-    solvent: Union[dict, Solution] = None
-    solubilizing_agent: Optional[Union[str, "CompoundEnum"]] = None
+    solvent: str = None
+    solubilizing_agent: Optional[Union[dict, PortionOfSubstance]] = None
     duration: Optional[Union[dict, "QuantityValue"]] = None
     temperature: Optional[Union[dict, "QuantityValue"]] = None
 
@@ -4632,11 +4636,11 @@ class DissolvingProcess(MaterialProcessing):
 
         if self._is_empty(self.solvent):
             self.MissingRequiredField("solvent")
-        if not isinstance(self.solvent, Solution):
-            self.solvent = Solution(**as_dict(self.solvent))
+        if not isinstance(self.solvent, str):
+            self.solvent = str(self.solvent)
 
-        if self.solubilizing_agent is not None and not isinstance(self.solubilizing_agent, CompoundEnum):
-            self.solubilizing_agent = CompoundEnum(self.solubilizing_agent)
+        if self.solubilizing_agent is not None and not isinstance(self.solubilizing_agent, PortionOfSubstance):
+            self.solubilizing_agent = PortionOfSubstance(**as_dict(self.solubilizing_agent))
 
         if self.duration is not None and not isinstance(self.duration, QuantityValue):
             self.duration = QuantityValue(**as_dict(self.duration))
@@ -5242,7 +5246,36 @@ class ProteinQuantification(YAMLRoot):
 
 
 @dataclass
-class ChemicalEntity(OntologyClass):
+class SubstanceEntity(OntologyClass):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["SubstanceEntity"]
+    class_class_curie: ClassVar[str] = "nmdc:SubstanceEntity"
+    class_name: ClassVar[str] = "SubstanceEntity"
+    class_model_uri: ClassVar[URIRef] = NMDC.SubstanceEntity
+
+    id: Union[str, SubstanceEntityId] = None
+    type: Union[str, URIorCURIE] = None
+    alternative_names: Optional[Union[str, List[str]]] = empty_list()
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SubstanceEntityId):
+            self.id = SubstanceEntityId(self.id)
+
+        if not isinstance(self.alternative_names, list):
+            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
+        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
+        super().__post_init__(**kwargs)
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+
+@dataclass
+class ChemicalEntity(SubstanceEntity):
     """
     An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products,
     drugs. There may be different terms for distinct acid-base forms, protonation states
@@ -6346,7 +6379,7 @@ class ChemicalConversionProcess(MaterialProcessing):
     chemical_conversion_category: Optional[Union[str, "ChemicalConversionCategoryEnum"]] = None
     duration: Optional[Union[dict, QuantityValue]] = None
     temperature: Optional[Union[dict, QuantityValue]] = None
-    substances_used: Optional[Union[Union[dict, Substance], List[Union[dict, Substance]]]] = empty_list()
+    substances_used: Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]] = empty_list()
     substances_volume: Optional[Union[dict, QuantityValue]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -6366,7 +6399,7 @@ class ChemicalConversionProcess(MaterialProcessing):
 
         if not isinstance(self.substances_used, list):
             self.substances_used = [self.substances_used] if self.substances_used is not None else []
-        self.substances_used = [v if isinstance(v, Substance) else Substance(**as_dict(v)) for v in self.substances_used]
+        self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
 
         if self.substances_volume is not None and not isinstance(self.substances_volume, QuantityValue):
             self.substances_volume = QuantityValue(**as_dict(self.substances_volume))
@@ -7309,94 +7342,6 @@ class SampleStateEnum(EnumDefinitionImpl):
 
     _defn = EnumDefinition(
         name="SampleStateEnum",
-    )
-
-class SubstanceCategoryEnum(EnumDefinitionImpl):
-
-    ammonium_bicarbonate = PermissibleValue(
-        text="ammonium_bicarbonate",
-        meaning=CHEBI["184335"])
-    trypsin = PermissibleValue(
-        text="trypsin",
-        description="A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.",
-        meaning=MS["1001251"])
-    methanol = PermissibleValue(
-        text="methanol",
-        meaning=CHEBI["17790"])
-    deionized_water = PermissibleValue(text="deionized_water")
-    hydrochloric_acid = PermissibleValue(text="hydrochloric_acid")
-    water = PermissibleValue(text="water")
-    chymotrypsin = PermissibleValue(
-        text="chymotrypsin",
-        description="""A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, and phenylalanine.""",
-        meaning=MS["1001306"])
-    lys_c = PermissibleValue(
-        text="lys_c",
-        description="A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.",
-        meaning=MS["1001309"])
-    lys_n = PermissibleValue(
-        text="lys_n",
-        description="A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.",
-        meaning=MS["1003093"])
-    glu_c = PermissibleValue(
-        text="glu_c",
-        description="""A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid""",
-        meaning=MS["1001917"])
-    arg_c = PermissibleValue(
-        text="arg_c",
-        description="""A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with lower efficiency, lysine.""",
-        meaning=MS["1001303"])
-    asp_n = PermissibleValue(
-        text="asp_n",
-        description="A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.",
-        meaning=MS["1001304"])
-    alphalp = PermissibleValue(
-        text="alphalp",
-        description="""A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.""")
-
-    _defn = EnumDefinition(
-        name="SubstanceCategoryEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "triton_X-100",
-            PermissibleValue(text="triton_X-100"))
-
-class CompoundEnum(EnumDefinitionImpl):
-
-    ammonium_bicarbonate = PermissibleValue(text="ammonium_bicarbonate")
-    deionized_water = PermissibleValue(text="deionized_water")
-    methanol = PermissibleValue(text="methanol")
-    hydrochloric_acid = PermissibleValue(text="hydrochloric_acid")
-    water = PermissibleValue(text="water")
-
-    _defn = EnumDefinition(
-        name="CompoundEnum",
-    )
-
-    @classmethod
-    def _addvals(cls):
-        setattr(cls, "triton_X-100",
-            PermissibleValue(text="triton_X-100"))
-
-class ProteolyticEnzymeEnum(EnumDefinitionImpl):
-    """
-    Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules
-    have been identified.
-    """
-    trypsin = PermissibleValue(text="trypsin")
-    chymotrypsin = PermissibleValue(text="chymotrypsin")
-    lys_c = PermissibleValue(text="lys_c")
-    lys_n = PermissibleValue(text="lys_n")
-    glu_c = PermissibleValue(text="glu_c")
-    arg_c = PermissibleValue(text="arg_c")
-    asp_n = PermissibleValue(text="asp_n")
-    alphalp = PermissibleValue(text="alphalp")
-
-    _defn = EnumDefinition(
-        name="ProteolyticEnzymeEnum",
-        description="""Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.""",
     )
 
 class ArchStrucEnum(EnumDefinitionImpl):
@@ -9829,14 +9774,11 @@ slots.is_pressurized = Slot(uri=NMDC.is_pressurized, name="is_pressurized", curi
 slots.contained_in = Slot(uri=NMDC.contained_in, name="contained_in", curie=NMDC.curie('contained_in'),
                    model_uri=NMDC.contained_in, domain=None, range=Optional[Union[str, "ContainerCategoryEnum"]])
 
-slots.extractant = Slot(uri=NMDC.extractant, name="extractant", curie=NMDC.curie('extractant'),
-                   model_uri=NMDC.extractant, domain=Extraction, range=Optional[Union[dict, Solution]])
-
 slots.input_volume = Slot(uri=NMDC.input_volume, name="input_volume", curie=NMDC.curie('input_volume'),
                    model_uri=NMDC.input_volume, domain=PlannedProcess, range=Optional[Union[dict, "QuantityValue"]])
 
 slots.ordered_mobile_phases = Slot(uri=NMDC.ordered_mobile_phases, name="ordered_mobile_phases", curie=NMDC.curie('ordered_mobile_phases'),
-                   model_uri=NMDC.ordered_mobile_phases, domain=ChromatographicSeparationProcess, range=Optional[Union[Union[dict, Solution], List[Union[dict, Solution]]]])
+                   model_uri=NMDC.ordered_mobile_phases, domain=ChromatographicSeparationProcess, range=Optional[Union[str, List[str]]])
 
 slots.stationary_phase = Slot(uri=NMDC.stationary_phase, name="stationary_phase", curie=NMDC.curie('stationary_phase'),
                    model_uri=NMDC.stationary_phase, domain=ChromatographicSeparationProcess, range=Optional[Union[str, "StationaryPhaseEnum"]])
@@ -9845,10 +9787,10 @@ slots.chromatographic_category = Slot(uri=NMDC.chromatographic_category, name="c
                    model_uri=NMDC.chromatographic_category, domain=ChromatographicSeparationProcess, range=Optional[Union[str, "ChromatographicCategoryEnum"]])
 
 slots.solvent = Slot(uri=NMDC.solvent, name="solvent", curie=NMDC.curie('solvent'),
-                   model_uri=NMDC.solvent, domain=DissolvingProcess, range=Union[dict, Solution])
+                   model_uri=NMDC.solvent, domain=DissolvingProcess, range=str)
 
 slots.solubilizing_agent = Slot(uri=NMDC.solubilizing_agent, name="solubilizing_agent", curie=NMDC.curie('solubilizing_agent'),
-                   model_uri=NMDC.solubilizing_agent, domain=DissolvingProcess, range=Optional[Union[str, "CompoundEnum"]])
+                   model_uri=NMDC.solubilizing_agent, domain=DissolvingProcess, range=Optional[Union[dict, PortionOfSubstance]])
 
 slots.feature_category = Slot(uri=NMDC.feature_category, name="feature_category", curie=NMDC.curie('feature_category'),
                    model_uri=NMDC.feature_category, domain=None, range=Optional[Union[dict, ControlledIdentifiedTermValue]])
@@ -9923,17 +9865,20 @@ slots.smarts_string = Slot(uri=NMDC.smarts_string, name="smarts_string", curie=N
 slots.start = Slot(uri=NMDC.start, name="start", curie=NMDC.curie('start'),
                    model_uri=NMDC.start, domain=GenomeFeature, range=Optional[int])
 
+slots.known_as = Slot(uri=NMDC.known_as, name="known_as", curie=NMDC.curie('known_as'),
+                   model_uri=NMDC.known_as, domain=None, range=Optional[Union[str, SubstanceEntityId]])
+
 slots.substance_role = Slot(uri=NMDC.substance_role, name="substance_role", curie=NMDC.curie('substance_role'),
                    model_uri=NMDC.substance_role, domain=None, range=Optional[Union[str, "SubstanceRoleEnum"]])
 
 slots.concentration = Slot(uri=NMDC.concentration, name="concentration", curie=NMDC.curie('concentration'),
-                   model_uri=NMDC.concentration, domain=SolutionComponent, range=Optional[Union[dict, "QuantityValue"]])
+                   model_uri=NMDC.concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.source_concentration = Slot(uri=NMDC.source_concentration, name="source_concentration", curie=NMDC.curie('source_concentration'),
-                   model_uri=NMDC.source_concentration, domain=SolutionComponent, range=Optional[Union[dict, "QuantityValue"]])
+                   model_uri=NMDC.source_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.final_concentration = Slot(uri=NMDC.final_concentration, name="final_concentration", curie=NMDC.curie('final_concentration'),
-                   model_uri=NMDC.final_concentration, domain=SolutionComponent, range=Optional[Union[dict, "QuantityValue"]])
+                   model_uri=NMDC.final_concentration, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.duration = Slot(uri=NMDC.duration, name="duration", curie=NMDC.curie('duration'),
                    model_uri=NMDC.duration, domain=None, range=Optional[Union[dict, QuantityValue]])
@@ -10120,17 +10065,8 @@ slots.protein_sum_masic_abundance = Slot(uri=NMDC.protein_sum_masic_abundance, n
 slots.smiles = Slot(uri=NMDC.smiles, name="smiles", curie=NMDC.curie('smiles'),
                    model_uri=NMDC.smiles, domain=None, range=Optional[Union[str, List[str]]])
 
-slots.has_solution_components = Slot(uri=NMDC.has_solution_components, name="has_solution_components", curie=NMDC.curie('has_solution_components'),
-                   model_uri=NMDC.has_solution_components, domain=Solution, range=Union[Union[dict, SolutionComponent], List[Union[dict, SolutionComponent]]])
-
-slots.compound = Slot(uri=NMDC.compound, name="compound", curie=NMDC.curie('compound'),
-                   model_uri=NMDC.compound, domain=SolutionComponent, range=str)
-
 slots.volume = Slot(uri=NMDC.volume, name="volume", curie=NMDC.curie('volume'),
                    model_uri=NMDC.volume, domain=PlannedProcess, range=Optional[Union[dict, "QuantityValue"]])
-
-slots.substance_category = Slot(uri=NMDC.substance_category, name="substance_category", curie=NMDC.curie('substance_category'),
-                   model_uri=NMDC.substance_category, domain=None, range=Optional[Union[str, "SubstanceCategoryEnum"]])
 
 slots.sample_state_information = Slot(uri=NMDC.sample_state_information, name="sample_state_information", curie=NMDC.curie('sample_state_information'),
                    model_uri=NMDC.sample_state_information, domain=None, range=Optional[Union[str, "SampleStateEnum"]])
@@ -11933,7 +11869,7 @@ slots.chemical_conversion_category = Slot(uri=NMDC.chemical_conversion_category,
                    model_uri=NMDC.chemical_conversion_category, domain=ChemicalConversionProcess, range=Optional[Union[str, "ChemicalConversionCategoryEnum"]])
 
 slots.substances_used = Slot(uri=NMDC.substances_used, name="substances_used", curie=NMDC.curie('substances_used'),
-                   model_uri=NMDC.substances_used, domain=None, range=Optional[Union[Union[dict, Substance], List[Union[dict, Substance]]]])
+                   model_uri=NMDC.substances_used, domain=None, range=Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]])
 
 slots.substances_volume = Slot(uri=NMDC.substances_volume, name="substances_volume", curie=NMDC.curie('substances_volume'),
                    model_uri=NMDC.substances_volume, domain=None, range=Optional[Union[dict, QuantityValue]])

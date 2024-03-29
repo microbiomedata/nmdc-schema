@@ -5,16 +5,19 @@ has_input:
 has_output:
   - "nmdc:procsm-39"
 substances_used:
-  - substance_category: deionized_water
+  - known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+    type: nmdc:PortionOfSubstance
     sample_state_information: liquid
     substance_role: solvent
-  - substance_category: ammonium_bicarbonate
+  - known_as: nmdc:chem-99-000002
+    type: nmdc:PortionOfSubstance
     substance_role: buffer
     source_concentration:
       type: nmdc:QuantityValue
       has_unit: mM
       has_numeric_value: 50
-  - substance_category: trypsin
+  - known_as: nmdc:chem-99-000014
+    type: nmdc:PortionOfSubstance
     substance_role: ms_proteolytic_enzyme
     final_concentration:
       type: nmdc:QuantityValue

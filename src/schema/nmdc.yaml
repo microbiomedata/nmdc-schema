@@ -287,7 +287,8 @@ classes:
     exact_mappings:
       - OBI:0302884
     slots:
-      - extractant
+      #      - extractant
+      - substances_used
       - extraction_target
       - input_mass
       - volume
@@ -3554,10 +3555,10 @@ slots:
   contained_in:
     range: ContainerCategoryEnum
     description: A type of container. i.e. test tube, falcon tube, etc.
-  extractant:
-    domain: Extraction
-    range: Solution
-    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+  #  extractant:
+  #    domain: Extraction
+  #    range: Solution
+  #    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
 
   input_volume: # see also `volume`
     domain: PlannedProcess
@@ -3566,7 +3567,10 @@ slots:
 
   ordered_mobile_phases:
     domain: ChromatographicSeparationProcess
-    range: Solution
+    any_of:
+      - range: Solution
+      - range: PortionOfSubstance
+#    range: Solution
     description: The solution(s) that moves through a chromatography column.
     multivalued: true
     list_elements_ordered: true
@@ -3582,14 +3586,18 @@ slots:
 
   solvent:
     domain: DissolvingProcess
-    range: Solution
+#    range: Solution
+    any_of:
+      - range: Solution
+      - range: PortionOfSubstance
     required: true
     description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
     exact_mappings:
       - CHEBI:46787
   solubilizing_agent:
     domain: DissolvingProcess
-    range: CompoundEnum
+    #    range: CompoundEnum
+    range: PortionOfSubstance # or chemical entity?
     description: A substance within a formulation that enhances the solubility of another substance.
     exact_mappings:
       - NCIT:C176640
