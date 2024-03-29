@@ -544,3 +544,9 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
+
+assets/check_examples_class_coverage.txt:
+	$(RUN) python src/scripts/check_examples_class_coverage.py > $@
+
+assets/schema_pattern_linting.txt:
+	$(RUN) python src/scripts/schema_pattern_linting.py > $@

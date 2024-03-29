@@ -1,0 +1,150 @@
+Report of slots that aren't associated with any classes:
+
+No classes for parent slot analysis_identifiers
+No classes for parent slot assembly_identifiers
+No classes for slot biogas_retention_time
+No classes for slot biogas_temperature
+No classes for parent slot biosample_identifiers
+No classes for slot completion_date
+No classes for slot date_created
+No classes for slot ecosystem_path_id
+No classes for parent slot emsl_identifiers
+No classes for slot emsl_store_temp
+No classes for slot etl_software_version
+No classes for parent slot gff_coordinate
+No classes for parent slot gnps_identifiers
+No classes for parent slot gold_identifiers
+No classes for parent slot gold_path_field
+No classes for parent slot has_participants
+No classes for parent slot igsn_identifiers
+No classes for slot input_volume
+No classes for slot insdc_analysis_identifiers
+No classes for parent slot insdc_identifiers
+No classes for slot insdc_secondary_sample_identifiers
+No classes for slot insdc_sra_ena_study_identifiers
+No classes for parent slot jgi_portal_identifiers
+No classes for slot material_component_separation
+No classes for parent slot metagenome_assembly_parameter
+No classes for slot mgnify_analysis_identifiers
+No classes for parent slot mgnify_identifiers
+No classes for slot modifier_substance
+No classes for parent slot neon_identifiers
+No classes for slot nucl_acid_ext, MIXS:0000037
+No classes for parent slot object_set
+No classes for parent slot omics_processing_identifiers
+No classes for slot omics_type
+No classes for slot pool_dna_extracts, MIXS:0000325
+No classes for parent slot read_qc_analysis_statistic
+No classes for slot samp_vol_we_dna_ext, MIXS:0000111
+No classes for slot sample_collection_day
+No classes for slot sample_collection_hour
+No classes for slot sample_collection_minute
+No classes for slot sample_collection_month
+No classes for slot sample_collection_year
+No classes for slot seq_meth, MIXS:0000050
+No classes for slot seq_quality_check, MIXS:0000051
+No classes for slot soil_annual_season_temp
+No classes for parent slot study_identifiers
+No classes for slot value
+
+
+Report of enums that aren't associated with any slots:
+
+No slots for ProteolyticEnzymeEnum
+No slots for freq_clean_enum
+No slots for organism_count_enum
+No slots for plant_growth_med_enum
+No slots for samp_md_enum
+
+
+Report of all types. Manual review recommended:
+
+['bytes',
+ 'decimal degree',
+ 'language code',
+ 'unit',
+ 'string',
+ 'integer',
+ 'boolean',
+ 'float',
+ 'double',
+ 'decimal',
+ 'time',
+ 'date',
+ 'datetime',
+ 'date_or_datetime',
+ 'uriorcurie',
+ 'curie',
+ 'uri',
+ 'ncname',
+ 'objectidentifier',
+ 'nodeidentifier',
+ 'jsonpointer',
+ 'jsonpath',
+ 'sparqlpath',
+ 'external_identifier']
+
+
+Report of all elements whose names contain whitespace:
+
+name: decimal degree
+description: A decimal degree expresses latitude or longitude as decimal fractions.
+from_schema: https://w3id.org/nmdc/core
+see_also:
+- https://en.wikipedia.org/wiki/Decimal_degrees
+base: float
+uri: xsd:decimal
+
+name: language code
+description: A language code conforming to ISO_639-1
+from_schema: https://w3id.org/nmdc/core
+see_also:
+- https://en.wikipedia.org/wiki/ISO_639-1
+base: str
+uri: xsd:language
+
+name: nucleic acid sequence source
+from_schema: https://w3id.org/nmdc/core
+
+name: workflow subset
+description: Subset consisting of just the workflow execution activities
+from_schema: https://w3id.org/nmdc/workflow_execution_activity
+
+name: sample subset
+description: Subset consisting of entities linked to the processing of samples.  Currently,
+  this subset consists of study, omics process, and biosample.
+from_schema: https://w3id.org/nmdc/nmdc
+
+name: data object subset
+description: Subset consisting of the data objects that either inputs or outputs of
+  processes or workflows.
+from_schema: https://w3id.org/nmdc/nmdc
+
+
+
+Report of subsets usage:
+
+{'data object subset': ['DataObject'],
+ 'data_portal_subset': ['associated_dois',
+                        'doi_value',
+                        'doi_provider',
+                        'doi_category'],
+ 'environment': [],
+ 'investigation': [],
+ 'nucleic acid sequence source': [],
+ 'proteases': [],
+ 'sample subset': ['Biosample', 'Study', 'DataGeneration'],
+ 'sequencing': [],
+ 'workflow subset': ['WorkflowExecution',
+                     'MetagenomeAssembly',
+                     'MetatranscriptomeAssembly',
+                     'MetagenomeAnnotation',
+                     'MetatranscriptomeAnnotation',
+                     'MetatranscriptomeAnalysis',
+                     'MagsAnalysis',
+                     'MetagenomeSequencing',
+                     'ReadQcAnalysis',
+                     'ReadBasedTaxonomyAnalysis',
+                     'MetabolomicsAnalysis',
+                     'MetaproteomicsAnalysis',
+                     'NomAnalysis']}
