@@ -1,0 +1,162 @@
+@startuml
+skinparam nodesep 10
+class "TextValue"
+class "Substance"
+class "Study"
+class "SolutionComponent"
+class "Solution" {
+    {field} "type": "uriorcurie" [req]
+}
+class "QuantityValue"
+class "Extraction" {
+    {field} "extraction_target": "ExtractionTargetEnum" [opt]
+    {field} "id": "uriorcurie" [req]
+    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
+    {field} "start_date"(i): "string" [opt]
+    {field} "end_date"(i): "string" [opt]
+    {field} "qc_status"(i): "StatusEnum" [opt]
+    {field} "qc_comment"(i): "string" [opt]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+class "ChromatographicSeparationProcess" {
+    {field} "has_calibration": "string" [opt]
+    {field} "chromatographic_category": "ChromatographicCategoryEnum" [opt]
+    {field} "stationary_phase": "StationaryPhaseEnum" [opt]
+    {field} "id": "uriorcurie" [req]
+    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
+    {field} "start_date"(i): "string" [opt]
+    {field} "end_date"(i): "string" [opt]
+    {field} "qc_status"(i): "StatusEnum" [opt]
+    {field} "qc_comment"(i): "string" [opt]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+class "DissolvingProcess" {
+    {field} "solubilizing_agent": "CompoundEnum" [opt]
+    {field} "id": "uriorcurie" [req]
+    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
+    {field} "start_date"(i): "string" [opt]
+    {field} "end_date"(i): "string" [opt]
+    {field} "qc_status"(i): "StatusEnum" [opt]
+    {field} "qc_comment"(i): "string" [opt]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+"Solution" *--> "0..1" "QuantityValue" : "volume"
+"Solution" *--> "1..*" "SolutionComponent" : "has_solution_components"
+"Extraction" *--> "0..1" "Solution" : "extractant"
+"ChromatographicSeparationProcess" *--> "0..*" "Solution" : "ordered_mobile_phases"
+"DissolvingProcess" *--> "1" "Solution" : "solvent"
+class "ReactionParticipant"
+class "Protocol"
+class "ProcessedSample"
+class "PersonValue"
+class "OntologyClass"
+abstract "NamedThing"
+class "MetabolomicsAnalysis"
+class "MetaboliteQuantification" {
+    {field} "alternative_identifiers": "uriorcurie" [0..*]
+    {field} "highest_similarity_score": "float" [opt]
+    {field} "type": "uriorcurie" [req]
+}
+class "ChemicalEntity" {
+    {field} "chemical_formula": "string" [opt]
+    {field} "inchi": "string" [opt]
+    {field} "inchi_key": "string" [opt]
+    {field} "smiles": "string" [0..*]
+    {field} "id"(i): "uriorcurie" [req]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+"MetaboliteQuantification" --> "0..1" "ChemicalEntity" : "metabolite_quantified"
+"MetabolomicsAnalysis" *--> "0..*" "MetaboliteQuantification" : "has_metabolite_quantifications"
+class "MaterialProcessing"
+class "MassSpectrometry" {
+    {field} "acquisition_category": "AcquisitionCategoryEnum" [opt]
+    {field} "acquisition_strategy": "AcquisitionStrategyEnum" [opt]
+    {field} "resolution_category": "ResolutionCategoryEnum" [opt]
+    {field} "mass_analyzer": "MassAnalyzerEnum" [opt]
+    {field} "ionization_source": "IonizationSourceEnum" [opt]
+    {field} "mass_spectrum_collection_mode": "MassSpectrumCollectionModeEnum" [opt]
+    {field} "polarity_mode": "PolarityModeEnum" [opt]
+    {field} "id": "uriorcurie" [req]
+    {field} "add_date"(i): "string" [opt]
+    {field} "analyte_category"(i): "AnalyteCategoryEnum" [req]
+    {field} "gold_sequencing_project_identifiers"(i): "external_identifier" [0..*]
+    {field} "insdc_bioproject_identifiers"(i): "external_identifier" [0..*]
+    {field} "insdc_experiment_identifiers"(i): "external_identifier" [0..*]
+    {field} "mod_date"(i): "string" [opt]
+    {field} "ncbi_project_name"(i): "string" [opt]
+    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
+    {field} "start_date"(i): "string" [opt]
+    {field} "end_date"(i): "string" [opt]
+    {field} "qc_status"(i): "StatusEnum" [opt]
+    {field} "qc_comment"(i): "string" [opt]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+abstract "FluidHandling" {
+    {field} "id"(i): "uriorcurie" [req]
+    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
+    {field} "start_date"(i): "string" [opt]
+    {field} "end_date"(i): "string" [opt]
+    {field} "qc_status"(i): "StatusEnum" [opt]
+    {field} "qc_comment"(i): "string" [opt]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+abstract "DataGeneration"
+"MassSpectrometry" --> "0..1" "FluidHandling" : "eluent_introduction"
+"DataGeneration" ^-- "MassSpectrometry"
+class "Instrument"
+class "DirectInfusionProcess"
+"FluidHandling" ^-- "DirectInfusionProcess"
+"FluidHandling" ^-- "ChromatographicSeparationProcess"
+"MaterialProcessing" ^-- "FluidHandling"
+class "FailureCategorization"
+class "Database"
+"Extraction" --> "1..*" "NamedThing" : "has_output"
+"Extraction" *--> "0..1" "QuantityValue" : "volume"
+"Extraction" *--> "0..1" "QuantityValue" : "input_mass"
+"Database" *--> "0..*" "Extraction" : "extraction_set"
+"MaterialProcessing" ^-- "Extraction"
+"DissolvingProcess" *--> "0..1" "QuantityValue" : "temperature"
+"DissolvingProcess" *--> "0..1" "QuantityValue" : "duration"
+"MaterialProcessing" ^-- "DissolvingProcess"
+class "DataObject"
+"ChromatographicSeparationProcess" *--> "0..1" "QuantityValue" : "temperature"
+"ReactionParticipant" --> "0..1" "ChemicalEntity" : "chemical"
+"Database" *--> "0..*" "ChemicalEntity" : "chemical_entity_set"
+"OntologyClass" ^-- "ChemicalEntity"
+class "ChemicalConversionProcess" {
+    {field} "chemical_conversion_category": "ChemicalConversionCategoryEnum" [opt]
+    {field} "id": "uriorcurie" [req]
+    {field} "processing_institution"(i): "ProcessingInstitutionEnum" [opt]
+    {field} "start_date"(i): "string" [opt]
+    {field} "end_date"(i): "string" [opt]
+    {field} "qc_status"(i): "StatusEnum" [opt]
+    {field} "qc_comment"(i): "string" [opt]
+    {field} "name"(i): "string" [opt]
+    {field} "description"(i): "string" [opt]
+    {field} "alternative_identifiers"(i): "uriorcurie" [0..*]
+    {field} "type"(i): "uriorcurie" [req]
+}
+"ChemicalConversionProcess" *--> "0..1" "QuantityValue" : "substances_volume"
+"ChemicalConversionProcess" *--> "0..*" "Substance" : "substances_used"
+"ChemicalConversionProcess" *--> "0..1" "QuantityValue" : "temperature"
+"ChemicalConversionProcess" *--> "0..1" "QuantityValue" : "duration"
+"MaterialProcessing" ^-- "ChemicalConversionProcess"
+@enduml
