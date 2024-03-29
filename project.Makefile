@@ -7,6 +7,8 @@ FD_ROOT=local/fuseki-data/databases
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
+PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
+
 .PHONY: accepting-legacy-ids-all accepting-legacy-ids-clean \
 dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
 rdf-clean shuttle-clean
@@ -544,6 +546,76 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
+
+###
+
+diagrams-clean:
+	rm -rf assets/mermaid-erd* \
+		assets/plantuml*
+
+# require java and the plantuml jar https://plantuml.com/download
+#   https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-lgpl-1.2024.3.jar
+# requires npm and https://www.npmjs.com/package/@mermaid-js/mermaid-cli
+# requires inkscape
+diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/mermaid-erd.svg
+
+#		--classes MaterialProcessing
+#		--classes PlannedProcess
+#		--classes PortionOfSubstance
+#		--classes SubstanceEntity
+assets/plantuml.puml: src/schema/nmdc.yaml
+	$(RUN) gen-plantuml \
+		--classes ChemicalConversionProcess \
+		--classes ChemicalEntity \
+		--classes ChromatographicSeparationProcess \
+		--classes DissolvingProcess \
+		--classes Extraction \
+		--classes FluidHandling \
+		--classes MassSpectrometry \
+		--classes MetaboliteQuantification \
+		--classes Solution \
+		$< > $@
+
+assets/plantuml.svg: assets/plantuml.puml # https://plantuml.com/download
+	java -jar $(PLANTUML_JAR) $< -tsvg
+
+assets/plantuml.png: assets/plantuml.puml # https://plantuml.com/download
+#	docker run \
+#		-v plantuml_diagrams:/plantuml/in \
+#		-v plantuml_images:/plantuml/out \
+#		plantuml/plantuml render /plantuml/in/chemistry.puml -f png -o /plantuml/out/chemistry.png
+	java -jar $(PLANTUML_JAR) $< -tpng
+
+assets/plantuml.pdf: assets/plantuml.svg
+	inkscape --export-filename=$@ $<
+
+assets/mermaid-erd.mmd: src/schema/nmdc.yaml
+	$(RUN) gen-erdiagram \
+		--format mermaid \
+		--classes ChemicalConversionProcess \
+		--classes ChemicalEntity \
+		--classes ChromatographicSeparationProcess \
+		--classes DissolvingProcess \
+		--classes Extraction \
+		--classes FluidHandling \
+		--classes MassSpectrometry \
+		--classes MetaboliteQuantification \
+		--classes Solution \
+		$< > $@.tmp
+	sed 's/language code/language_code/g' $@.tmp > $@
+	rm -rf $@.tmp
+
+assets/mermaid-erd.svg: assets/mermaid-erd.mmd
+	mmdc -i $< -o $@
+
+assets/mermaid-erd.pdf: assets/mermaid-erd.mmd
+	mmdc -i $< -o $@
+
+assets/mermaid-erd.png: assets/mermaid-erd.mmd
+	mmdc -i $< -o $@
+
+#assets/mermaid-erd.pdf: assets/mermaid-erd.svg # illegible
+#	inkscape --export-filename=$@ $<
 
 assets/check_examples_class_coverage.txt:
 	$(RUN) python src/scripts/check_examples_class_coverage.py > $@
