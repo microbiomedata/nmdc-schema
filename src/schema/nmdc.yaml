@@ -1715,10 +1715,11 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
-      - solvent
-      - solubilizing_agent
+      #      - solvent
+      #      - solubilizing_agent
       - duration
       - temperature
+      - substances_used # whether a substance was used as a solvent or a solubilizing_agent will be captured in substance_role
     slot_usage:
       id:
         required: true
@@ -3570,7 +3571,7 @@ slots:
     any_of:
       - range: Solution
       - range: PortionOfSubstance
-#    range: Solution
+    #    range: Solution
     description: The solution(s) that moves through a chromatography column.
     multivalued: true
     list_elements_ordered: true
@@ -3584,21 +3585,22 @@ slots:
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
-  solvent:
-    domain: DissolvingProcess
-#    range: Solution
-    any_of:
-      - range: Solution
-      - range: PortionOfSubstance
-    required: true
-    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
-    exact_mappings:
-      - CHEBI:46787
-  solubilizing_agent:
-    domain: DissolvingProcess
-    #    range: CompoundEnum
-    range: PortionOfSubstance # or chemical entity?
-    description: A substance within a formulation that enhances the solubility of another substance.
-    exact_mappings:
-      - NCIT:C176640
+#  solvent: # see SubstanceRoleEnum
+#    domain: DissolvingProcess
+#    #    range: Solution
+#    any_of:
+#      - range: Solution
+#      - range: PortionOfSubstance
+#    required: true
+#    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
+#    exact_mappings:
+#      - CHEBI:46787
+#
+#  solubilizing_agent: # see SubstanceRoleEnum
+#    domain: DissolvingProcess
+#    #    range: CompoundEnum
+#    range: PortionOfSubstance # or chemical entity?
+#    description: A substance within a formulation that enhances the solubility of another substance.
+#    exact_mappings:
+#      - NCIT:C176640
 
