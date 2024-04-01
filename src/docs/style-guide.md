@@ -22,5 +22,5 @@
 - use multiple tools for browsing schema including source YAML files, SchemaView() code, documentation pages and
   diagrams. generated artifacts might have errors or limitations
     - diagramming tools should be added to Docker container
-- be familiar with [ChemROF](https://chemkg.github.io/chemrof/) for anything chemistry related
 - ask large-context LLMs like claude for advice by uploading a merged schema and an example data file
+- be familiar with [ChemROF](https://chemkg.github.io/chemrof/) for anything chemistry related
