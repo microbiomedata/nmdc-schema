@@ -10,7 +10,7 @@ applicableClasses.forEach(function(applicableClass) {
         {
             $lookup: {
                 from: "activity_set",
-                localField: "was_informed_by",
+                localField: "was_generated_by",
                 foreignField: "id",
                 as: "was_generated_by_docs"
             }
