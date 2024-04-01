@@ -5,7 +5,7 @@ from linkml.validators.jsonschemavalidator import JsonSchemaDataValidator
 from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.loaders import yaml_loader
 
-from nmdc_schema.nmdc import QuantityValue, Solution, Extraction, ChromatographicSeparationProcess
+# from nmdc_schema.nmdc import QuantityValue, Solution, Extraction, ChromatographicSeparationProcess
 
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 SCHEMA_DIR = os.path.join(ROOT, "src", "schema")

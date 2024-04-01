@@ -97,6 +97,7 @@ enums:
       #   description:  Introduces a detectable label for tracing or quantification.
       # precipitating_agent:
       #   description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
+      solubilizing_agent: { }
   SampleStateEnum:
     permissible_values:
       solid:
@@ -212,27 +213,35 @@ classes:
   #      - type
 
 
-  Mixture:
-    class_uri: nmdc:Mixture
-    slots:
-      #      - has_solution_components
-      - substances_used
-      - volume
-      - type
+  #  Mixture:
+  #    class_uri: nmdc:Mixture
+  #    slots:
+  #      #      - has_solution_components
+  #      - substances_used
+  #      - volume
+  #      - type
 
-  Solution:
-    is_a: Mixture
-    class_uri: nmdc:Solution
-    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
-    aliases:
-#      - mixture
-      - solvent
-    comments:
-      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
-      - The solution class may be used to instantiate a single component in the has_solution_components slot
-    notes:
-      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
-      - TODO consider making a "Fluid" class
+  MobilePhaseSegment:
+    class_uri: nmdc:MobilePhaseSegment
+    slots:
+      - duration
+      - substances_used
+      - type
+      - volume
+
+  #  Solution:
+  #    is_a: Mixture
+  #    class_uri: nmdc:Solution
+  #    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
+  #    aliases:
+  ##      - mixture
+  #      - solvent
+  #    comments:
+  #      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
+  #      - The solution class may be used to instantiate a single component in the has_solution_components slot
+  #    notes:
+  #      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
+  #      - TODO consider making a "Fluid" class
 
   MaterialProcessing:
     class_uri: 'nmdc:MaterialProcessing'
@@ -258,11 +267,11 @@ classes:
     broad_mappings:
       - OBI:0000094
 
-  PlaceholderClass:
-    class_uri: "nmdc:PlaceholderClass"
-    is_a: NamedThing
-    slots:
-      - has_input
+  #  PlaceholderClass:
+  #    class_uri: "nmdc:PlaceholderClass"
+  #    is_a: NamedThing
+  #    slots:
+  #      - has_input
 
   NamedThing:
     class_uri: "nmdc:NamedThing"
@@ -503,11 +512,11 @@ classes:
       all_proteins:
         description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
 
-  SubstanceEntity:
-    is_a: OntologyClass
-    class_uri: "nmdc:SubstanceEntity"
-    slots:
-      - alternative_names
+  #  SubstanceEntity:
+  #    is_a: OntologyClass
+  #    class_uri: "nmdc:SubstanceEntity"
+  #    slots:
+  #      - alternative_names
 
   ChemicalEntity:
     class_uri: "nmdc:ChemicalEntity"
@@ -516,13 +525,14 @@ classes:
       - chemical substance
       - chemical compound
       - chemical
-    is_a: SubstanceEntity
+    is_a: OntologyClass
     description: >-
       An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
       There may be different terms for distinct acid-base forms, protonation states
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slots:
+      - alternative_names
       - chemical_formula
       - inchi
       - inchi_key
@@ -629,7 +639,7 @@ classes:
 slots:
 
   known_as:
-    range: SubstanceEntity
+    range: ChemicalEntity
 
   substance_role:
     range: SubstanceRoleEnum

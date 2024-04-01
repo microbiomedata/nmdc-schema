@@ -6,29 +6,28 @@ has_output:
   - nmdc:procsm-11-05g48p90
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
-ordered_mobile_phases:
-  - type: nmdc:Solution
-    volume:
-      type: nmdc:QuantityValue
-      has_numeric_value: 700
-      has_unit: mL
+mobile_phase_segments:
+  - type: nmdc:MobilePhaseSegment
     substances_used:
       - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
         type: nmdc:PortionOfSubstance
-  - type: nmdc:Solution
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: '%'
+          has_numeric_value: 10
     volume:
       type: nmdc:QuantityValue
       has_numeric_value: 700
       has_unit: mL
+  - type: nmdc:MobilePhaseSegment
     substances_used:
       - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
         type: nmdc:PortionOfSubstance
-#        concentration:
-#          type: nmdc:QuantityValue
-#          has_numeric_value: 10
-#          has_unit: mM
-#  - volume:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 1000
-#      has_unit: mL
-
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 15
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 700
+      has_unit: mL

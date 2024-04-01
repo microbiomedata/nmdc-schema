@@ -557,11 +557,20 @@ diagrams-clean:
 #   https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-lgpl-1.2024.3.jar
 # requires npm and https://www.npmjs.com/package/@mermaid-js/mermaid-cli
 # requires inkscape
-diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/mermaid-erd.svg
+diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/mermaid-erd.pdf assets/mermaid-erd.png
 
-#		--classes MaterialProcessing
-#		--classes PlannedProcess
-#		--classes PortionOfSubstance
+#		--classes ChemicalConversionProcess \
+#		--classes ChemicalEntity \
+#		--classes ChromatographicSeparationProcess \
+#		--classes DissolvingProcess \
+#		--classes Extraction \
+#		--classes FluidHandling \
+#		--classes MassSpectrometry \
+#		--classes MaterialProcessing \
+#		--classes MetaboliteQuantification \
+#		--classes PlannedProcess \
+#		--classes PortionOfSubstance \
+#		--classes Solution \
 #		--classes SubstanceEntity
 
 assets/plantuml.puml: src/schema/nmdc.yaml
@@ -571,12 +580,8 @@ assets/plantuml.puml: src/schema/nmdc.yaml
 		--classes ChromatographicSeparationProcess \
 		--classes DissolvingProcess \
 		--classes Extraction \
-		--classes FluidHandling \
-		--classes MassSpectrometry \
-		--classes MetaboliteQuantification \
+		--classes MobilePhaseSegment \
 		--classes PortionOfSubstance \
-		--classes Solution \
-		--classes SubstanceEntity \
 		$< > $@
 
 assets/plantuml.svg: assets/plantuml.puml # https://plantuml.com/download
@@ -600,12 +605,8 @@ assets/mermaid-erd.mmd: src/schema/nmdc.yaml
 		--classes ChromatographicSeparationProcess \
 		--classes DissolvingProcess \
 		--classes Extraction \
-		--classes FluidHandling \
-		--classes MassSpectrometry \
-		--classes MetaboliteQuantification \
+		--classes MobilePhaseSegment \
 		--classes PortionOfSubstance \
-		--classes Solution \
-		--classes SubstanceEntity \
 		$< > $@.tmp
 	sed 's/language code/language_code/g' $@.tmp > $@
 	rm -rf $@.tmp

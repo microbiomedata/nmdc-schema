@@ -1,13 +1,7 @@
 erDiagram
-SubstanceEntity {
-    stringList alternative_names  
-    uriorcurie id  
-    string name  
-    string description  
-    uriorcurieList alternative_identifiers  
-    uriorcurie type  
-}
-Solution {
+PortionOfSubstance {
+    SampleStateEnum sample_state_information  
+    SubstanceRoleEnum substance_role  
     uriorcurie type  
 }
 QuantityValue {
@@ -18,31 +12,11 @@ QuantityValue {
     string has_raw_value  
     uriorcurie type  
 }
-PortionOfSubstance {
-    SampleStateEnum sample_state_information  
-    SubstanceRoleEnum substance_role  
+MobilePhaseSegment {
     uriorcurie type  
 }
-MetaboliteQuantification {
-    uriorcurieList alternative_identifiers  
-    float highest_similarity_score  
-    uriorcurie type  
-}
-MassSpectrometry {
-    AcquisitionCategoryEnum acquisition_category  
-    AcquisitionStrategyEnum acquisition_strategy  
-    ResolutionCategoryEnum resolution_category  
-    MassAnalyzerEnum mass_analyzer  
-    IonizationSourceEnum ionization_source  
-    MassSpectrumCollectionModeEnum mass_spectrum_collection_mode  
-    PolarityModeEnum polarity_mode  
-    string add_date  
-    AnalyteCategoryEnum analyte_category  
-    external_identifierList gold_sequencing_project_identifiers  
-    external_identifierList insdc_bioproject_identifiers  
-    external_identifierList insdc_experiment_identifiers  
-    string mod_date  
-    string ncbi_project_name  
+Extraction {
+    ExtractionTargetEnum extraction_target  
     ProcessingInstitutionEnum processing_institution  
     string start_date  
     string end_date  
@@ -63,47 +37,7 @@ Protocol {
     string name  
     uriorcurie type  
 }
-TextValue {
-    language_code language  
-    string has_raw_value  
-    uriorcurie type  
-}
-PersonValue {
-    string email  
-    string name  
-    string orcid  
-    string profile_image_url  
-    stringList websites  
-    string has_raw_value  
-    uriorcurie type  
-}
-FluidHandling {
-    ProcessingInstitutionEnum processing_institution  
-    string start_date  
-    string end_date  
-    StatusEnum qc_status  
-    string qc_comment  
-    uriorcurie id  
-    string name  
-    string description  
-    uriorcurieList alternative_identifiers  
-    uriorcurie type  
-}
-Extraction {
-    ExtractionTargetEnum extraction_target  
-    ProcessingInstitutionEnum processing_institution  
-    string start_date  
-    string end_date  
-    StatusEnum qc_status  
-    string qc_comment  
-    uriorcurie id  
-    string name  
-    string description  
-    uriorcurieList alternative_identifiers  
-    uriorcurie type  
-}
 DissolvingProcess {
-    string solvent  
     ProcessingInstitutionEnum processing_institution  
     string start_date  
     string end_date  
@@ -118,7 +52,6 @@ DissolvingProcess {
 ChromatographicSeparationProcess {
     string has_calibration  
     ChromatographicCategoryEnum chromatographic_category  
-    stringList ordered_mobile_phases  
     StationaryPhaseEnum stationary_phase  
     ProcessingInstitutionEnum processing_institution  
     string start_date  
@@ -132,11 +65,11 @@ ChromatographicSeparationProcess {
     uriorcurie type  
 }
 ChemicalEntity {
+    stringList alternative_names  
     string chemical_formula  
     string inchi  
     string inchi_key  
     stringList smiles  
-    stringList alternative_names  
     uriorcurie id  
     string name  
     string description  
@@ -157,33 +90,15 @@ ChemicalConversionProcess {
     uriorcurie type  
 }
 
-Solution ||--}o PortionOfSubstance : "substances_used"
-Solution ||--|o QuantityValue : "volume"
-QuantityValue ||--|o WorkflowExecution : "was_generated_by"
 PortionOfSubstance ||--|o QuantityValue : "final_concentration"
-PortionOfSubstance ||--|o SubstanceEntity : "known_as"
+PortionOfSubstance ||--|o ChemicalEntity : "known_as"
 PortionOfSubstance ||--|o QuantityValue : "mass"
 PortionOfSubstance ||--|o QuantityValue : "source_concentration"
 PortionOfSubstance ||--|o QuantityValue : "volume"
-MetaboliteQuantification ||--|o ChemicalEntity : "metabolite_quantified"
-MassSpectrometry ||--|o FluidHandling : "eluent_introduction"
-MassSpectrometry ||--}| Study : "associated_studies"
-MassSpectrometry ||--}o DataGeneration : "part_of"
-MassSpectrometry ||--|o PersonValue : "principal_investigator"
-MassSpectrometry ||--|o TextValue : "target_gene"
-MassSpectrometry ||--|o TextValue : "target_subfragment"
-MassSpectrometry ||--}| NamedThing : "has_input"
-MassSpectrometry ||--}o DataObject : "has_output"
-MassSpectrometry ||--}o Instrument : "instrument_used"
-MassSpectrometry ||--|o Protocol : "protocol_link"
-MassSpectrometry ||--}o FailureCategorization : "has_failure_categorization"
-TextValue ||--|o WorkflowExecution : "was_generated_by"
-PersonValue ||--|o WorkflowExecution : "was_generated_by"
-FluidHandling ||--}o NamedThing : "has_input"
-FluidHandling ||--}o ProcessedSample : "has_output"
-FluidHandling ||--}o Instrument : "instrument_used"
-FluidHandling ||--|o Protocol : "protocol_link"
-FluidHandling ||--}o FailureCategorization : "has_failure_categorization"
+QuantityValue ||--|o WorkflowExecution : "was_generated_by"
+MobilePhaseSegment ||--|o QuantityValue : "duration"
+MobilePhaseSegment ||--}o PortionOfSubstance : "substances_used"
+MobilePhaseSegment ||--|o QuantityValue : "volume"
 Extraction ||--}o PortionOfSubstance : "substances_used"
 Extraction ||--|o QuantityValue : "input_mass"
 Extraction ||--|o QuantityValue : "volume"
@@ -192,14 +107,15 @@ Extraction ||--}| ProcessedSample : "has_output"
 Extraction ||--}o Instrument : "instrument_used"
 Extraction ||--|o Protocol : "protocol_link"
 Extraction ||--}o FailureCategorization : "has_failure_categorization"
-DissolvingProcess ||--|o PortionOfSubstance : "solubilizing_agent"
 DissolvingProcess ||--|o QuantityValue : "duration"
 DissolvingProcess ||--|o QuantityValue : "temperature"
+DissolvingProcess ||--}o PortionOfSubstance : "substances_used"
 DissolvingProcess ||--}o NamedThing : "has_input"
 DissolvingProcess ||--}o ProcessedSample : "has_output"
 DissolvingProcess ||--}o Instrument : "instrument_used"
 DissolvingProcess ||--|o Protocol : "protocol_link"
 DissolvingProcess ||--}o FailureCategorization : "has_failure_categorization"
+ChromatographicSeparationProcess ||--}o MobilePhaseSegment : "mobile_phase_segments"
 ChromatographicSeparationProcess ||--|o QuantityValue : "temperature"
 ChromatographicSeparationProcess ||--}o NamedThing : "has_input"
 ChromatographicSeparationProcess ||--}o ProcessedSample : "has_output"
