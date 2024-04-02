@@ -107,6 +107,12 @@ enums:
 classes:
 
   MobilePhaseSegment:
+    description: A fluid mixture of substances that flow though a chromatographic stationary phase.
+    comments:
+      - Can be assembled into a list to account for a gradient.
+      - Works best for separations that can be accounted for by a series of essentially linear changes in the mobile phase composition.
+      - For gradients, each segment should declare it's duration.
+      - For step-wise separations that might be implemented with a syringe and a cartridge, it will probably be more important to assert volumes.
     class_uri: nmdc:MobilePhaseSegment
     slots:
       - duration
