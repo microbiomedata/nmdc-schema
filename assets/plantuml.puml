@@ -89,7 +89,7 @@ class "ChromatographicSeparationProcess" {
 }
 "MobilePhaseSegment" *--> "0..1" "QuantityValue" : "volume"
 "MobilePhaseSegment" *--> "0..1" "QuantityValue" : "duration"
-"ChromatographicSeparationProcess" *--> "0..*" "MobilePhaseSegment" : "mobile_phase_segments"
+"ChromatographicSeparationProcess" *--> "0..*" "MobilePhaseSegment" : "ordered_mobile_phases"
 class "MetaboliteQuantification"
 class "MaterialProcessing"
 class "Instrument"
