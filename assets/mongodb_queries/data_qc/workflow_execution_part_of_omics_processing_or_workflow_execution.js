@@ -10,6 +10,12 @@ var results = [];
 
 workflowActivitySets.forEach(function(activitySet) {
     var pipeline = [
+        // Match workflowActivity documents where 'part_of' is not empty/null
+        {
+            $match: {
+                part_of: { $exists: true, $ne: null }
+            }
+        },
         // Match workflowActivity documents where 'part_of' is 'OmicsProcessing.ID'
         {
             $lookup: {
@@ -38,12 +44,12 @@ workflowActivitySets.forEach(function(activitySet) {
             }
         },
         // Project only necessary fields for the result
-        {
-            $project: {
-                _id: 1,
-                part_of: 1
-            }
-        }
+//        {
+//            $project: {
+//                id: 1,
+//                part_of: 1
+//            }
+//        }
     ];
 
     var activityResults = db[activitySet].aggregate(pipeline).toArray();
