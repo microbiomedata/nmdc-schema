@@ -1681,7 +1681,6 @@ classes:
       - has_calibration
       - chromatographic_category
       - ordered_mobile_phases
-      # - mobile_phase_segments
       - stationary_phase
       - temperature
     rules:
