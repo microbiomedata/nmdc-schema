@@ -1136,12 +1136,12 @@ biosample_set:
     tan:
       type: nmdc:QuantityValue
       has_raw_value: xxx
-    target_gene:
-      type: nmdc:TextValue
-      has_raw_value: xxx
-    target_subfragment:
-      type: nmdc:TextValue
-      has_raw_value: xxx
+    #    target_gene:
+    #      type: nmdc:TextValue
+    #      has_raw_value: xxx
+    #    target_subfragment:
+    #      type: nmdc:TextValue
+    #      has_raw_value: xxx
     temp:
       has_raw_value: 25 degree Celsius
       type: nmdc:QuantityValue

@@ -51,11 +51,6 @@ slots:
     domain: ChemicalConversionProcess
     range: ChemicalConversionCategoryEnum
     description: The type of chemical conversion process.
-  substances_used:
-    range: PortionOfSubstance
-    description: The substances that are combined to enable a ChemicalConversionProcess.
-    multivalued: true
-    inlined_as_list: true
   substances_volume:
     range: QuantityValue
     description: The volume of the combined substances that was included in a ChemicalConversionProcess.

@@ -8,6 +8,7 @@ read_qc_analysis_set:
     has_failure_categorization:
       - qc_failure_what: malformed_data
         qc_failure_where: ReadQcAnalysisActivity
+        type: nmdc:FailureCategorization
     qc_comment: Failure during call-stage to interleave fastq files
     type: nmdc:ReadQcAnalysis
     started_at_time: "2023-08-29T19:41:47.365957+00:00"
@@ -49,6 +50,7 @@ read_qc_analysis_set:
     has_failure_categorization:
       - qc_failure_what: low_read_count
         qc_failure_where: ReadQcAnalysisActivity
+        type: nmdc:FailureCategorization
     qc_comment: Most data removed for artifacts
     type: nmdc:ReadQcAnalysis
     part_of:

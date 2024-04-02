@@ -14,27 +14,228 @@ prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
 
+imports:
+  - nmdc_types
+
 default_prefix: nmdc
 default_range: string
 
-types:
-  external_identifier:
-    typeof: uriorcurie
-    uri: xsd:anyURI # isn't that inherited from typeof: uriorcurie? WARNING:root:No datatype specified for : external identifier, using plain Literal
-    description: >-
-      A CURIE representing an external identifier
-    see_also:
-      - https://microbiomedata.github.io/nmdc-schema/identifiers/
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
-
 slots:
+
+  infiltrations:
+    description: The amount of time it takes to complete each infiltration activity
+    examples:
+      - value: [ '00:01:32', '00:00:53' ]
+    aliases:
+      - infiltration_1
+      - infiltration_2
+    multivalued: true
+    list_elements_ordered: true
+    range: string
+    pattern: ^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$
+    see_also:
+      - https://www.protocols.io/view/field-sampling-protocol-kqdg3962pg25/v1
+
+  soluble_iron_micromol:
+    range: string
+
+  sample_collection_site:
+    range: string
+
+  salinity_category:
+    description:
+      "Categorical description of the sample's salinity. Examples: halophile,
+        halotolerant, hypersaline, huryhaline"
+    range: string
+    see_also:
+      - https://github.com/microbiomedata/nmdc-metadata/pull/297
+    notes:
+      - "maps to gold:salinity"
+
+  proport_woa_temperature:
+    range: string
+
+  location:
+    range: string
+
+  host_name:
+    range: string
+
+  community:
+    range: string
+
+  embargoed:
+    description: >-
+      If true, the data are embargoed and not available for public access.
+    range: boolean
+    recommended: true
+    todos:
+      - make this required?
+      - first apply to Biosample
+      - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
+      - applying to a Study may not be granular enough
+
+  habitat:
+    range: string
+
+  version:
+    range: string
+
+  doi_value:
+    description: >-
+      A digital object identifier, which is intended to persistantly identify some resource on the web.
+    required: true
+    aliases:
+      - DOI
+      - digital object identifier
+    in_subset: data_portal_subset
+    range: uriorcurie
+    pattern: '^doi:10.\d{2,9}/.*$'
+    examples:
+      - value: doi:10.46936/10.25585/60000880
+        description: The DOI links to an electronic document.
+    exact_mappings:
+      - OBI:0002110
+    narrow_mappings:
+      - edam.data:1188
+
+  doi_provider:
+    description: >-
+      The authority, or organization, the DOI is associated with.
+    range: DoiProviderEnum
+    close_mappings:
+      - NCIT:C74932
+    in_subset: data_portal_subset
+    examples:
+      - value: ess_dive
+        description: The corresponding DOI is associated with ESS-DIVE.
+
+  doi_category:
+    description: >-
+      The resource type the corresponding doi resolves to.
+    range: DoiCategoryEnum
+    required: true
+    in_subset: data_portal_subset
+    examples:
+      - value: dataset_doi
+        description: The corresponding DOI is a dataset resource type.
+
+  related_identifiers:
+    title: Related Identifiers
+    description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
+
+  notes:
+    description: from study class
+
+  funding_sources:
+    multivalued: true
+    range: string
+    description: >-
+      A list of organizations, along with the award numbers, that underwrite financial support for projects of
+      a particular type. Typically, they process applications and award funds to the chosen qualified
+      applicants.
+    comments:
+      - Include only the name of the funding organization and the award or contract number.
+    examples:
+      - value: National Sciences Foundation Dimensions of Biodiversity (award no. 1342701)
+      - value: >-
+          U.S. Department of Energy, Office of Science, Office of Biological and Environmental Research
+          (BER) under contract DE-AC05-00OR2275
+    close_mappings:
+      - NCIT:C39409
+
+  ## GOLD PATHS
+  gold_path_field:
+    range: string
+    abstract: true
+    description: >-
+      This is a grouping for any of the gold path fields
+  ecosystem:
+    is_a: gold_path_field
+    description:
+      An ecosystem is a combination of a physical environment (abiotic
+      factors) and all the organisms (biotic factors) that interact with this environment.
+      Ecosystem is in position 1/5 in a GOLD path.
+    comments:
+      - The abiotic factors play a profound role on the type and composition
+        of organisms in a given environment. The GOLD Ecosystem at the top of the five-level
+        classification system is aimed at capturing the broader environment from which
+        an organism or environmental sample is collected. The three broad groups under
+        Ecosystem are Environmental, Host-associated, and Engineered. They represent
+        samples collected from a natural environment or from another organism or from
+        engineered environments like bioreactors respectively.
+    see_also: https://gold.jgi.doe.gov/help
+  ecosystem_category:
+    is_a: gold_path_field
+    description:
+      Ecosystem categories represent divisions within the ecosystem based
+      on specific characteristics of the environment from where an organism or sample
+      is isolated. Ecosystem category is in position 2/5 in a GOLD path.
+    comments:
+      - The Environmental ecosystem (for example) is divided into Air, Aquatic
+        and Terrestrial. Ecosystem categories for Host-associated samples can be individual
+        hosts or phyla and for engineered samples it may be manipulated environments
+        like bioreactors, solid waste etc.
+    see_also: https://gold.jgi.doe.gov/help
+  ecosystem_type:
+    is_a: gold_path_field
+    description:
+      Ecosystem types represent things having common characteristics within
+      the Ecosystem Category. These common characteristics based grouping is still
+      broad but specific to the characteristics of a given environment. Ecosystem
+      type is in position 3/5 in a GOLD path.
+    comments:
+      - The Aquatic ecosystem category (for example) may have ecosystem types
+        like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air
+        or Outdoor air as different Ecosystem Types. In the case of Host-associated
+        samples, ecosystem type can represent Respiratory system, Digestive system,
+        Roots etc.
+    see_also: https://gold.jgi.doe.gov/help
+  ecosystem_subtype:
+    is_a: gold_path_field
+    description:
+      Ecosystem subtypes represent further subdivision of Ecosystem types
+      into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
+      path.
+    comments:
+      - Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
+        divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone
+        etc. in the Ecosystem subtype category.
+    see_also: https://gold.jgi.doe.gov/help
+  specific_ecosystem:
+    is_a: gold_path_field
+    description:
+      Specific ecosystems represent specific features of the environment
+      like aphotic zone in an ocean or gastric mucosa within a host digestive system.
+      Specific ecosystem is in position 5/5 in a GOLD path.
+    comments:
+      - Specific ecosystems help to define samples based on very specific characteristics
+        of an environment under the five-level classification system.
+    see_also: https://gold.jgi.doe.gov/help
+
+
+  add_date:
+    range: string
+    description: The date on which the information was added to the database.
+
+  mod_date:
+    range: string
+    description: The last date on which the database information was modified.
+
+  ncbi_taxonomy_name:
+    range: string
+  ncbi_project_name:
+    range: string
+
+  processing_institution:
+    range: ProcessingInstitutionEnum
+    description: The organization that processed the sample.
 
   qc_status:
     description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
     range: StatusEnum
-  
+
   file_size_bytes:
-    domain: DataObject
     range: bytes
     description: Size of the file in bytes
 
@@ -45,50 +246,10 @@ slots:
         in the Workflow Chain
     range: AnalyteCategoryEnum
 
-  instrument_used:
-    range: Instrument
-    multivalued: true
-    description: What instrument was used during DataGeneration or MaterialProcessing.
   direct_infusion_category:
-    domain: DirectInfusionProcess
     range: DirectInfusionEnum
     description: used when a processed sample is introduced into a mass spectrometer without chromatographic separation
-  eluent_introduction:
-    domain: MassSpectrometry
-    range: FluidHandling
-    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
-  acquisition_category:
-    domain: MassSpectrometry
-    range: AcquisitionCategoryEnum
-    description: whether only survey or tandem mass spectra are part of the experiment
-  acquisition_strategy:
-    domain: MassSpectrometry
-    range: AcquisitionStrategyEnum
-    description: whether spectra are dependent on or independent of any other spectra during the experiment
-  resolution_category:
-    domain: MassSpectrometry
-    range: ResolutionCategoryEnum
-    description: whether mass spectra are collected at higher than unity resolution
-  mass_analyzer:
-    domain: MassSpectrometry
-    range: MassAnalyzerEnum
-    description: which kind of mass analyzer is primarily used during the spectra collection.
-  ionization_source:
-    domain: MassSpectrometry
-    range: IonizationSourceEnum
-    description: which kind of ionization source is used to introduce analytes into a mass spectrometer
-  mass_spectrum_collection_mode:
-    domain: MassSpectrometry
-    range: MassSpectrumCollectionModeEnum
-    description: Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.
-  polarity_mode:
-    domain: MassSpectrometry
-    range: PolarityModeEnum
-    description: the polarity of which ions are generated and detected
-  processing_institution:
-    domain: PlannedProcess
-    range: ProcessingInstitutionEnum
-    description: The organization that processed the sample.
+
   type:
     required: true
     range: uriorcurie
@@ -120,32 +281,7 @@ slots:
       - "had tried ranges of external identifier and string"
     close_mappings:
       - skos:closeMatch
-  dna_absorb1:
-    is_a: biomaterial_purity
-    description: 260/280 measurement of DNA sample purity
-    title: DNA absorbance 260/280
-    comments:
-      - Recommended value is between 1 and 3.
-    examples:
-      - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
-    rank: 7
-    range: float
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_absorb2:
-    is_a: biomaterial_purity
-    description: 260/230 measurement of DNA sample purity
-    title: DNA absorbance 260/230
-    comments:
-      - Recommended value is between 1 and 3.
-    examples:
-      - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
-    rank: 8
-    range: float
-    slot_group: JGI-Metagenomics
-    recommended: true
+
   dna_concentration:
     see_also:
       - nmdc:nucleic_acid_concentration
@@ -166,8 +302,6 @@ slots:
   extraction_target:
     description: Provides the target biomolecule that has been separated from a sample during an extraction process.
     rank: 1000
-    domain_of:
-      - Extraction
     range: ExtractionTargetEnum
     notes:
       - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
@@ -178,7 +312,6 @@ slots:
   id:
     required: true
     identifier: true
-    #    domain: NamedThing
     range: uriorcurie
     description: >-
       A unique identifier for a thing.
@@ -264,41 +397,82 @@ slots:
     todos:
       - add date string validation pattern
 
-  protocol_link:
-    domain: PlannedProcess
-    range: Protocol
-
-  #  nucleic_acid_concentration:
-  #    range: InstrumentValue
-
-  biomaterial_purity:
-    domain: ProcessedSample
-    range: QuantityValue
-
-  qc_failure_what:
-    domain: FailureCategorization
-    range: FailureWhatEnum
-    description: >-
-      Provides a summary about what caused a lab or workflow process to fail
-    comments:
-      - For example Low read count from a sequencer, malformed fastq files, etc)
-
-  qc_failure_where:
-    domain: FailureCategorization
-    range: FailureWhereEnum
-    description: >-
-      Describes the nmdc schema class that corresonds to where the failure occurred.
-      Most commonly this would be the same as Class that generated the results.
-    comments:
-      - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
-
-  qc_comment:
-    range: string
-    description: >-
-      Slot to store additional comments about laboratory or workflow output. For workflow output
-      it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).
+#  #  nucleic_acid_concentration:
+#  #    range: InstrumentValue
 
 enums:
+
+  DoiProviderEnum:
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
+    permissible_values:
+      emsl:
+        aliases:
+          - Environmental Molecular Sciences Laboratory
+          - EMSL
+        title: EMSL
+        meaning: https://ror.org/04rc0xn13
+      jgi:
+        aliases:
+          - Joint Genome Institute
+          - JGI
+        title: JGI
+        meaning: https://ror.org/04xm1d337
+      kbase:
+        aliases:
+          - KBase
+        title: KBase
+        meaning: https://ror.org/01znn6x10
+      osti:
+        aliases:
+          - Office of Scientific and Technical Information
+          - OSTI
+        title: OSTI
+        meaning: https://ror.org/031478740
+      ess_dive:
+        aliases:
+          - ESS-DIVE
+          - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+        title: ESS-DIVE
+        meaning: https://ror.org/01t14bp54
+      massive:
+        aliases:
+          - MassIVE
+          - Mass Spectrometry Virtual Environment
+        title: MassIVE
+      gsc:
+        aliases:
+          - GSC
+          - Genomic Standards Consortium
+        title: GSC
+      zenodo:
+        aliases:
+          - Zenodo
+        title: Zenodo
+      edi:
+        aliases:
+          - EDI
+          - Environmental Data Initiative
+        title: EDI
+        meaning: https://ror.org/0330j0z60
+
+  DoiCategoryEnum:
+    permissible_values:
+      award_doi:
+        description: A type of DOI that resolves to a funding authority.
+      dataset_doi:
+        description: A type of DOI that resolves to generated data.
+      publication_doi:
+        description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        description: A type of DOI that resolves to a data management plan.
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
 
   StatusEnum:
     permissible_values:
@@ -313,9 +487,41 @@ enums:
   #      superseded: { }
   #      withdrawn: { }
 
+  AnalyteCategoryEnum:
+    permissible_values:
+      metagenome:
+        aliases:
+          - metaG
+      metatranscriptome:
+        aliases:
+          - metaT
+      metaproteome:
+        aliases:
+          - metaP
+      metabolome:
+        aliases:
+          - metaB
+      lipidome: { }
+      nom:
+        aliases:
+          - natural organic matter
+
+  DirectInfusionEnum:
+    permissible_values:
+      direct_infusion:
+        aliases:
+          - DI
+      autosampler: { }
+
+  ExtractionTargetEnum:
+    permissible_values:
+      DNA: { }
+      RNA: { }
+      metabolite: { }
+      protein: { }
+
   ProcessingInstitutionEnum:
     notes:
-      - This will become the range of processing_institution.omics processing
       - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     permissible_values:
       UCSD:

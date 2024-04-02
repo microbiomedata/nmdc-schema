@@ -1,0 +1,56 @@
+id: https://w3id.org/nmdc/nmdc_types
+name: NMDC-types
+title: Types for NMDC Schema
+description: Types for NMDC Schema
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  dcterms: http://purl.org/dc/terms/
+  skos: http://www.w3.org/2004/02/skos/core#
+  linkml: https://w3id.org/linkml/
+  nmdc: https://w3id.org/nmdc/
+
+imports:
+  - linkml:types
+
+default_prefix: nmdc
+default_range: string
+
+types:
+  external_identifier:
+    typeof: uriorcurie
+    uri: xsd:anyURI # isn't that inherited from typeof: uriorcurie? WARNING:root:No datatype specified for : external identifier, using plain Literal
+    description: >-
+      A CURIE representing an external identifier
+    see_also:
+      - https://microbiomedata.github.io/nmdc-schema/identifiers/
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+
+  bytes:
+    description: An integer value that corresponds to a size in bytes
+    base: int
+    uri: xsd:long
+    see_also:
+      - UO:0000233
+
+  decimal degree:
+    description: A decimal degree expresses latitude or longitude as decimal fractions.
+    uri: xsd:decimal
+    base: float
+    see_also:
+      - https://en.wikipedia.org/wiki/Decimal_degrees
+
+  language code:
+    description: A language code conforming to ISO_639-1
+    see_also:
+      - https://en.wikipedia.org/wiki/ISO_639-1
+    base: str
+    uri: xsd:language
+
+  unit:
+    base: str
+    uri: xsd:string
+    mappings:
+      - qud:Unit
+      - UO:0000000
