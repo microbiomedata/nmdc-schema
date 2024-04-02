@@ -68,6 +68,7 @@ semsimian = "^0.2.11"
 sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
+matplotlib = "^3.8.3"
 
 [tool.poetry-dynamic-versioning]
 # We need poetry-dynamic-versioning to update the version in the src schema file,

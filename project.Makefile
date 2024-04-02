@@ -634,3 +634,5 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 		--output $@ \
 		--schema $< $(word 2,$^)
 
+assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/partial_imports_graph.py
