@@ -16,8 +16,19 @@ applicableClasses.forEach(function(applicableClass) {
             }
         },
         {
+            $lookup: {
+                from: "omics_processing_set",
+                localField: "was_generated_by",
+                foreignField: "id",
+                as: "generated_by_omics_processing_docs"
+            }
+        },
+        {
             $match: {
-                was_generated_by_docs: {$eq: []}
+                $and: [
+                    {was_generated_by_docs: { $eq: [] }},
+                    {generated_by_omics_processing_docs: { $eq: [] }}
+                ]
             }
         },
         {
