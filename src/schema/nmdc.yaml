@@ -192,6 +192,7 @@ classes:
     slots:
       - qc_failure_what
       - qc_failure_where
+      - type
 
   FunctionalAnnotationAggMember:
     class_uri: "nmdc:FunctionalAnnotationAggMember"
@@ -3573,12 +3574,12 @@ slots:
   #   range: MobilePhaseSegment
 
   ordered_mobile_phases:
-   domain: ChromatographicSeparationProcess
-   range: MobilePhaseSegment
-   description: The solution(s) that moves through a chromatography column.
-   multivalued: true
-   list_elements_ordered: true
-   inlined_as_list: true
+    domain: ChromatographicSeparationProcess
+    range: MobilePhaseSegment
+    description: The solution(s) that moves through a chromatography column.
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
 
   stationary_phase:
     domain: ChromatographicSeparationProcess
