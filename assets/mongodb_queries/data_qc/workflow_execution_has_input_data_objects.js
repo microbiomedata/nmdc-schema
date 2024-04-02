@@ -1,6 +1,9 @@
-var workflowActivitySets = ["metagenome_assembly_set", "metagenome_annotation_set", "metabolomics_analysis_activity_set",
-"metaproteomics_analysis_activity_set", "metatranscriptome_activity_set", "nom_analysis_activity_set", "mags_activity_set"];
-
+var workflowActivitySets = ["mags_activity_set","metagenome_assembly_set",
+    "metagenome_annotation_activity_set", "metabolomics_analysis_activity_set",
+    "metaproteomics_analysis_activity_set", "metatranscriptome_activity_set",
+    "nom_analysis_activity_set", "read_based_taxonomy_analysis_activity_set",
+    "read_qc_analysis_activity_set", "metagenome_sequencing_activity_set"
+    ];
 var results = [];
 
 workflowActivitySets.forEach(function(activitySet) {
