@@ -628,3 +628,5 @@ assets/check_examples_class_coverage.txt:
 assets/schema_pattern_linting.txt:
 	$(RUN) python src/scripts/schema_pattern_linting.py > $@
 
+assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/partial_imports_graph.py
