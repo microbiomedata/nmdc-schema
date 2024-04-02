@@ -40,20 +40,20 @@ class TestModulesForOwl(unittest.TestCase):
     def test_modules_are_independent(self):
         """Test that modules are independent."""
 
-        schema_modules = [
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/basic_slots.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/chemical_converion_process.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/core.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/external_identifiers.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/mixs.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc_types.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_emsl.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_jgi_metagenomics.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_jgi_metatranscriptomics.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_mixs_inspired.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_sample_id.yaml',
-            '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/workflow_execution_activity.yaml'  # warnings
-        ]
+        # schema_modules = [
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/basic_slots.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/chemical_converion_process.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/core.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/external_identifiers.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/mixs.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc_types.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_emsl.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_jgi_metagenomics.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_jgi_metatranscriptomics.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_mixs_inspired.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_sample_id.yaml',
+        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/workflow_execution_activity.yaml'  # warnings
+        # ]
 
         for schema_module in schema_modules:
             print(schema_module)

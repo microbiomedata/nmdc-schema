@@ -9,7 +9,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - linkml:types
-  - basic_slots
+  - attribute_values
   - external_identifiers
   - mixs # circular
   - portal_emsl # circular
@@ -763,6 +763,23 @@ enums:
           - NCIT:C61538
 
 classes:
+
+  MetagenomeAnnotation:
+    class_uri: "nmdc:MetagenomeAnnotation"
+    description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
+    is_a: WorkflowExecution
+    slots:
+      - img_identifiers
+    in_subset:
+      - workflow subset
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      img_identifiers:
+        maximum_cardinality: 1
 
   FieldResearchSite:
     class_uri: nmdc:FieldResearchSite
@@ -2188,17 +2205,6 @@ classes:
     broad_mappings:
       - OBI:0000094
 
-  NamedThing:
-    class_uri: "nmdc:NamedThing"
-    description: "a databased entity or concept/class"
-    abstract: true
-    slots:
-      - id
-      - name
-      - description
-      - alternative_identifiers
-      - type
-
   MaterialEntity:
     class_uri: "nmdc:MaterialEntity"
     abstract: true
@@ -2276,88 +2282,9 @@ classes:
   #        comments:
   #          - required on all instances in a polymorphic Database slot like planned_process_set
 
-  OntologyClass:
-    class_uri: "nmdc:OntologyClass"
-    is_a: NamedThing
-    notes:
-      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
-    slot_usage:
-      id:
-        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
-
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
     class_uri: 'nmdc:EnvironmentalMaterialTerm'
-
-  AttributeValue:
-    class_uri: 'nmdc:AttributeValue'
-    description: >-
-      The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
-      value and the structured value
-    slots:
-      - has_raw_value
-      - was_generated_by
-      - type
-
-  QuantityValue:
-    class_uri: "nmdc:QuantityValue"
-    is_a: AttributeValue
-    description: A simple quantity, e.g. 2cm
-    slots:
-      - has_maximum_numeric_value
-      - has_minimum_numeric_value
-      - has_numeric_value
-      - has_unit
-    slot_usage:
-      has_raw_value:
-        description: Unnormalized atomic string representation, should in syntax {number} {unit}
-      has_unit:
-        description: The unit of the quantity
-      has_numeric_value:
-        description: The number part of the quantity
-        range: double
-    mappings:
-      - schema:QuantityValue
-
-  ImageValue:
-    class_uri: "nmdc:ImageValue"
-    is_a: AttributeValue
-    description: An attribute value representing an image.
-    slots:
-      - url
-      - description
-      - display_order
-
-  PersonValue:
-    class_uri: "nmdc:PersonValue"
-    is_a: AttributeValue
-    description: An attribute value representing a person
-    slots:
-      - email
-      - name
-      - orcid
-      - profile_image_url
-      - websites
-    todos:
-      - add additional fields e.g for institution
-      - deprecate "has_raw_value" in favor of "name"
-    slot_usage:
-      orcid:
-        annotations:
-          display_hint: Open Researcher and Contributor ID for this person. See https://orcid.org
-      email:
-        annotations:
-          display_hint: Email address for this person.
-      has_raw_value:
-        description: The full name of the Investigator in format FIRST LAST.
-        notes:
-          - May eventually be deprecated in favor of "name".
-      name:
-        description: >-
-          The full name of the Investigator.
-          It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
-        annotations:
-          display_hint: First name, middle initial, and last name of this person.
 
   MagBin:
     class_uri: "nmdc:MagBin"
@@ -2466,77 +2393,6 @@ classes:
       - gtpo
     exact_mappings:
       - biolink:GeneProduct
-
-  TextValue:
-    class_uri: "nmdc:TextValue"
-    is_a: AttributeValue
-    description: A basic string value
-    slots:
-      - language
-
-  UrlValue:
-    class_uri: "nmdc:UrlValue"
-    is_a: AttributeValue
-    description: A value that is a string that conforms to URL syntax
-
-  TimestampValue:
-    class_uri: "nmdc:TimestampValue"
-    is_a: AttributeValue
-    description: A value that is a timestamp. The range should be ISO-8601
-    notes:
-      - "removed the following slots: year, month, day"
-
-  IntegerValue:
-    class_uri: 'nmdc:IntegerValue'
-    is_a: AttributeValue
-    description: A value that is an integer
-    slots:
-      - has_numeric_value
-
-  BooleanValue:
-    class_uri: 'nmdc:BooleanValue'
-    is_a: AttributeValue
-    description: A value that is a boolean
-    slots:
-      - has_boolean_value
-
-  ControlledTermValue:
-    class_uri: 'nmdc:ControlledTermValue'
-    is_a: AttributeValue
-    description: A controlled term or class from an ontology
-    slots:
-      - term
-    todos:
-      - add fields for ontology, branch
-
-  ControlledIdentifiedTermValue:
-    class_uri: 'nmdc:ControlledIdentifiedTermValue'
-    description: A controlled term or class from an ontology, requiring the presence of term with an id
-    notes:
-      - To be used for slots like env_broad_scale
-    is_a: ControlledTermValue
-    slot_usage:
-      term:
-        required: true
-
-  GeolocationValue:
-    class_uri: "nmdc:GeolocationValue"
-    is_a: AttributeValue
-    description: A normalized value for a location on the earth's surface
-    slots:
-      - latitude
-      - longitude
-    notes:
-      - "what did 'to_str: {latitude} {longitude}' mean?"
-    slot_usage:
-      has_raw_value:
-        description: The raw value for a geolocation should follow {latitude} {longitude}
-      latitude:
-        required: true
-      longitude:
-        required: true
-    mappings:
-      - schema:GeoCoordinates
 
 slots:
 
@@ -2979,85 +2835,9 @@ slots:
   gtdbtk_species:
     range: string
 
-  language:
-    range: language code
-    description: Should use ISO 639-1 code e.g. "en", "fr"
-
-  has_raw_value:
-    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
-    range: string
-
-  has_unit:
-    description: Links a QuantityValue to a unit
-    aliases:
-      - scale
-    range: unit
-    mappings:
-      - qud:unit
-      - schema:unitCode
-
-  has_numeric_value:
-    description: Links a quantity value to a number
-    range: float
-    mappings:
-      - qud:quantityValue
-      - schema:value
-
-  has_minimum_numeric_value:
-    is_a: has_numeric_value
-    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
-
-  has_maximum_numeric_value:
-    is_a: has_numeric_value
-    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
-
-  has_boolean_value:
-    description: Links a quantity value to a boolean
-    range: boolean
-
-  latitude:
-    range: decimal degree
-    description: latitude
-    slot_uri: wgs84:lat
-    examples:
-      - value: "-33.460524"
-    mappings:
-      - schema:latitude
-
-  longitude:
-    range: decimal degree
-    description: longitude
-    slot_uri: wgs84:long
-    examples:
-      - value: "150.168149"
-    mappings:
-      - schema:longitude
-
-  term:
-    range: OntologyClass
-    description: pointer to an ontology class
-    inlined: true
-    notes:
-      - "removed 'slot_uri: rdf:type'"
-
-  orcid:
-    description: The ORCID of a person.
-    range: string
-
-  email:
-    description: >-
-      An email address for an entity such as a person.
-      This should be the primary email address used.
-    range: string
-    slot_uri: schema:email
-
   #  alternate_emails:
   #    description: One or more other email addresses for an entity.
   #    range: string
-
-  profile_image_url:
-    description: A url that points to an image of a person.
-    range: string
 
   has_input:
     aliases:
@@ -3088,15 +2868,6 @@ slots:
     examples:
       - value: NERSC-Cori
 
-  url:
-    range: string
-    notes:
-      - See issue 207 - this clashes with the mixs field
-
-  display_order:
-    range: integer
-    description: When rendering information, this attribute to specify the order in which the information should be rendered.
-
   git_url:
     range: string
     examples:
@@ -3122,22 +2893,6 @@ slots:
       It SHOULD correspond to scientific norms for objectives field in a structured abstract.
     mappings:
       - SIO:000337
-
-  websites:
-    range: string
-    multivalued: true
-    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
-    description: A list of websites that are associated with the entity.
-    comments:
-      - DOIs should not be included as websites. Instead, use the associated_dois slot.
-      - A consortium's homepage website should be included in the homepage_website slot, not in websites.
-
-  homepage_website:
-    is_a: websites
-    maximum_cardinality: 1
-    description: The website address (URL) of an entity's homepage.
-    examples:
-      - value: https://www.neonscience.org/
 
   highest_similarity_score:
     todos:

@@ -22,6 +22,100 @@ default_range: string
 
 slots:
 
+  websites:
+    range: string
+    multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+    description: A list of websites that are associated with the entity.
+    comments:
+      - DOIs should not be included as websites. Instead, use the associated_dois slot.
+      - A consortium's homepage website should be included in the homepage_website slot, not in websites.
+
+  homepage_website:
+    is_a: websites
+    maximum_cardinality: 1
+    description: The website address (URL) of an entity's homepage.
+    examples:
+      - value: https://www.neonscience.org/
+
+  profile_image_url:
+    description: A url that points to an image of a person.
+    range: string
+
+  orcid:
+    description: The ORCID of a person.
+    range: string
+
+  email:
+    description: >-
+      An email address for an entity such as a person.
+      This should be the primary email address used.
+    range: string
+    slot_uri: schema:email
+
+  display_order:
+    range: integer
+    description: When rendering information, this attribute to specify the order in which the information should be rendered.
+
+  url:
+    range: string
+    notes:
+      - See issue 207 - this clashes with the mixs field
+
+  language:
+    range: language code
+    description: Should use ISO 639-1 code e.g. "en", "fr"
+
+  has_raw_value:
+    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+    range: string
+
+  has_unit:
+    description: Links a QuantityValue to a unit
+    aliases:
+      - scale
+    range: unit
+    mappings:
+      - qud:unit
+      - schema:unitCode
+
+  has_numeric_value:
+    description: Links a quantity value to a number
+    range: float
+    mappings:
+      - qud:quantityValue
+      - schema:value
+
+  has_minimum_numeric_value:
+    is_a: has_numeric_value
+    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
+
+  has_maximum_numeric_value:
+    is_a: has_numeric_value
+    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
+
+  has_boolean_value:
+    description: Links a quantity value to a boolean
+    range: boolean
+
+  latitude:
+    range: decimal degree
+    description: latitude
+    slot_uri: wgs84:lat
+    examples:
+      - value: "-33.460524"
+    mappings:
+      - schema:latitude
+
+  longitude:
+    range: decimal degree
+    description: longitude
+    slot_uri: wgs84:long
+    examples:
+      - value: "150.168149"
+    mappings:
+      - schema:longitude
+
   infiltrations:
     description: The amount of time it takes to complete each infiltration activity
     examples:

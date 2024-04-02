@@ -1,0 +1,30 @@
+id: https://w3id.org/nmdc/basic_classes
+name: NMDC-Basic-classes
+title: NMDC Attribute Basic Types
+description: Schema for National Microbiome Data Collaborative (NMDC), Basic Types
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+imports:
+  - linkml:types
+  - basic_slots
+
+classes:
+  NamedThing:
+    class_uri: "nmdc:NamedThing"
+    description: "a databased entity or concept/class"
+    abstract: true
+    slots:
+      - id
+      - name
+      - description
+      - alternative_identifiers
+      - type
+  OntologyClass:
+    class_uri: "nmdc:OntologyClass"
+    is_a: NamedThing
+    notes:
+      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
+    slot_usage:
+      id:
+        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'

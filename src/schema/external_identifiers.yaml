@@ -7,7 +7,7 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - basic_slots
+  - attribute_values
 
 prefixes:
   gold: "https://bioregistry.io/gold:"
