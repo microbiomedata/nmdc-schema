@@ -629,3 +629,8 @@ assets/check_examples_class_coverage.txt:
 assets/schema_pattern_linting.txt:
 	$(RUN) python src/scripts/schema_pattern_linting.py > $@
 
+assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
+	$(RUN) linkml2sheets \
+		--output $@ \
+		--schema $< $(word 2,$^)
+

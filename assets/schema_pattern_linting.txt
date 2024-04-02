@@ -6,6 +6,7 @@ No classes for slot biogas_retention_time
 No classes for slot biogas_temperature
 No classes for parent slot biosample_identifiers
 No classes for slot completion_date
+No classes for parent slot concentration
 No classes for slot date_created
 No classes for slot ecosystem_path_id
 No classes for parent slot emsl_identifiers
@@ -15,7 +16,6 @@ No classes for parent slot gff_coordinate
 No classes for parent slot gnps_identifiers
 No classes for parent slot gold_identifiers
 No classes for parent slot gold_path_field
-No classes for parent slot has_participants
 No classes for parent slot igsn_identifiers
 No classes for slot input_volume
 No classes for slot insdc_analysis_identifiers
@@ -50,7 +50,6 @@ No classes for slot value
 
 Report of enums that aren't associated with any slots:
 
-No slots for ProteolyticEnzymeEnum
 No slots for freq_clean_enum
 No slots for organism_count_enum
 No slots for plant_growth_med_enum
