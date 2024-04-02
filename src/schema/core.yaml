@@ -6,10 +6,10 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Core Type
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - basic_slots
   - external_identifiers
   - linkml:types
   - prov
+#  - basic_slots
 
 prefixes:
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_

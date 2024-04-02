@@ -19,8 +19,7 @@ version: 0.0.0
 
 imports:
   - annotation
-  - core
-  - linkml:types
+  - chemical_converion_process
   - mixs
   - portal/emsl
   - portal/jgi_metagenomics
@@ -28,7 +27,8 @@ imports:
   - portal/mixs_inspired
   - portal/sample_id
   - workflow_execution_activity
-  - chemical_converion_process
+#  - core
+#  - linkml:types
 
 prefixes:
   CATH: "https://bioregistry.io/cath:"
