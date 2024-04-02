@@ -618,7 +618,7 @@ slots:
     notes: >-
       has_calibration will be removed from all WorkflowExecution classes and stay only on the
       ChromatographicSeparationProcess class after an ingest of the chromatographic_separation_process_set has 
-      ocurred. The commented out portion of the slot definition above will be implemented. See PR #29 in Berkeley
+      occurred. The commented out portion of the slot definition above will be implemented. See PR #29 in Berkeley
       schema.
 
   has_metabolite_quantifications:

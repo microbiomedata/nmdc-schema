@@ -97,142 +97,28 @@ enums:
       #   description:  Introduces a detectable label for tracing or quantification.
       # precipitating_agent:
       #   description: Causes precipitation of unwanted substances or aids in the concentration of analytes.
+      solubilizing_agent: { }
   SampleStateEnum:
     permissible_values:
       solid:
       liquid:
       gas:
-#  SubstanceCategoryEnum:
-#    permissible_values:
-#      ammonium_bicarbonate:
-#        meaning: CHEBI:184335
-#      trypsin:
-#        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
-#        meaning: MS:1001251
-#        in_subset:
-#          - proteases
-#      methanol:
-#        meaning: CHEBI:17790
-#        annotations:
-#          chemical_formula: CH3OH
-#          inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
-#      deionized_water: { }
-#      hydrochloric_acid:
-#        aliases:
-#          - chloridic_acid
-#      water: { }
-#      triton_X-100: { }
-#      chymotrypsin:
-#        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, and phenylalanine.
-#        meaning: MS:1001306
-#      lys_c:
-#        description: A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
-#        meaning: MS:1001309
-#        aliases:
-#          - Lys-C
-#      lys_n:
-#        description: A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
-#        meaning: MS:1003093
-#        aliases:
-#          - Lys-N
-#      glu_c:
-#        description: A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid
-#        meaning: MS:1001917
-#        aliases:
-#          - Glu-C
-#      arg_c:
-#        description: A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with lower efficiency, lysine.
-#        meaning: MS:1001303
-#        aliases:
-#          - Arg-C
-#      asp_n:
-#        description: A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
-#        meaning: MS:1001304
-#        aliases:
-#          - Asp-N
-#      alphalp:
-#        description: A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
-#        aliases:
-#          - alphaLP
-
-
-#  CompoundEnum:
-#    permissible_values:
-#      ammonium_bicarbonate:
-#      deionized_water:
-#      methanol:
-#      hydrochloric_acid:
-#        aliases:
-#          - chloridic_acid
-#      water:
-#      triton_X-100:
-#  ProteolyticEnzymeEnum:
-#    description: Molecules that catalyze a chemical reaction. They are usually proteins, although catalytic RNA and DNA molecules have been identified.
-#    see_also:
-#      - http://purl.obolibrary.org/obo/NCIT_C16554
-#    permissible_values:
-#      trypsin:
-#      chymotrypsin:
-#      lys_c:
-#        aliases:
-#          - Lys-C
-#      lys_n:
-#        aliases:
-#          - Lys-N
-#      glu_c:
-#        aliases:
-#          - Glu-C
-#      arg_c:
-#        aliases:
-#          - Arg-C
-#      asp_n:
-#        aliases:
-#          - Asp-N
-#      alphalp:
-#        aliases:
-#          - alphaLP
-
-#  DeviceEnum:
-#    permissible_values:
-#      Orbital Shaker:
-#      Thermomixer:
-#      Vortex:
-#      Agitation plunger:
-#      Drying oven:
-#      CEREX System 96 processor:
 
 classes:
 
-  #  SolutionComponent:
-  #    class_uri: nmdc:SolutionComponent
-  #    description: One constituent of a solution
-  #    slots:
-  #      - compound
-  #      - concentration
-  #      - type
-
-
-  Mixture:
-    class_uri: nmdc:Mixture
-    slots:
-      #      - has_solution_components
-      - substances_used
-      - volume
-      - type
-
-  Solution:
-    is_a: Mixture
-    class_uri: nmdc:Solution
-    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
-    aliases:
-#      - mixture
-      - solvent
+  MobilePhaseSegment:
+    description: A fluid mixture of substances that flow though a chromatographic stationary phase.
     comments:
-      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
-      - The solution class may be used to instantiate a single component in the has_solution_components slot
-    notes:
-      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
-      - TODO consider making a "Fluid" class
+      - Can be assembled into a list to account for a gradient.
+      - Works best for separations that can be accounted for by a series of essentially linear changes in the mobile phase composition.
+      - For gradients, each segment should declare it's duration.
+      - For step-wise separations that might be implemented with a syringe and a cartridge, it will probably be more important to assert volumes.
+    class_uri: nmdc:MobilePhaseSegment
+    slots:
+      - duration
+      - substances_used
+      - type
+      - volume
 
   MaterialProcessing:
     class_uri: 'nmdc:MaterialProcessing'
@@ -257,12 +143,6 @@ classes:
         range: ProcessedSample
     broad_mappings:
       - OBI:0000094
-
-  PlaceholderClass:
-    class_uri: "nmdc:PlaceholderClass"
-    is_a: NamedThing
-    slots:
-      - has_input
 
   NamedThing:
     class_uri: "nmdc:NamedThing"
@@ -291,7 +171,6 @@ classes:
       - schema:Substance
     description: A portion of any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
     slots:
-      # - substance_category
       - final_concentration
       - known_as
       - mass
@@ -300,12 +179,6 @@ classes:
       - substance_role
       - type
       - volume
-
-  ## MAM 2024-03-26: I meant to delete these ina  previous PR
-  #      - chemical_formula
-  #      - inchi
-  #      - inchi_key
-  #      - smiles
 
   ProcessedSample:
     class_uri: "nmdc:ProcessedSample"
@@ -503,12 +376,6 @@ classes:
       all_proteins:
         description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
 
-  SubstanceEntity:
-    is_a: OntologyClass
-    class_uri: "nmdc:SubstanceEntity"
-    slots:
-      - alternative_names
-
   ChemicalEntity:
     class_uri: "nmdc:ChemicalEntity"
     aliases:
@@ -516,13 +383,14 @@ classes:
       - chemical substance
       - chemical compound
       - chemical
-    is_a: SubstanceEntity
+    is_a: OntologyClass
     description: >-
       An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
       There may be different terms for distinct acid-base forms, protonation states
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slots:
+      - alternative_names
       - chemical_formula
       - inchi
       - inchi_key
@@ -629,14 +497,13 @@ classes:
 slots:
 
   known_as:
-    range: SubstanceEntity
+    range: ChemicalEntity
 
   substance_role:
     range: SubstanceRoleEnum
     description: The role of a substance in a process
 
   concentration:
-    #    domain: SolutionComponent
     range: QuantityValue
     description: The concentration of a substance used in a process
   source_concentration:
@@ -942,23 +809,7 @@ slots:
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
     multivalued: true
     range: string
-  #  has_solution_components:
-  #    description: Relationship from a Solution to one or more constituent solution components
-  #    range: SolutionComponent
-  #    domain: Solution
-  #    multivalued: true
-  #    inlined_as_list: true
-  #    required: true
-  #    minimum_cardinality: 1
-  #    #list example
-  #  compound:
-  #    domain: SolutionComponent
-  #    range: PortionOfSubstance # or ChemicalEntity
-  #    #    any_of:
-  #    #      - range: CompoundEnum
-  #    #      - range: ProteolyticEnzymeEnum
-  #    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
-  #    required: true
+
   volume: # see also input_volume
     domain: PlannedProcess
     range: QuantityValue
@@ -966,8 +817,7 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-  #  substance_category:
-  #    range: SubstanceCategoryEnum
+
   sample_state_information:
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
