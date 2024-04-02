@@ -291,15 +291,15 @@
 
   ChromatographicSeparationProcess : has_failure_categorization
 
-    ChromatographicSeparationProcess --|&gt; FailureCategorization : has_failure_categorization
+    ChromatographicSeparationProcess --&gt; FailureCategorization : has_failure_categorization
 
   ChromatographicSeparationProcess : has_input
 
-    ChromatographicSeparationProcess --|&gt; NamedThing : has_input
+    ChromatographicSeparationProcess --&gt; NamedThing : has_input
 
   ChromatographicSeparationProcess : has_output
 
-    ChromatographicSeparationProcess --|&gt; NamedThing : has_output
+    ChromatographicSeparationProcess --&gt; NamedThing : has_output
 
   ChromatographicSeparationProcess : id
 
@@ -309,31 +309,31 @@
 
   ChromatographicSeparationProcess : ordered_mobile_phases
 
-    ChromatographicSeparationProcess --|&gt; Solution : ordered_mobile_phases
+    ChromatographicSeparationProcess --&gt; Solution : ordered_mobile_phases
 
   ChromatographicSeparationProcess : processing_institution
 
-    ChromatographicSeparationProcess --|&gt; processing_institution_enum : processing_institution
+    ChromatographicSeparationProcess --&gt; processing_institution_enum : processing_institution
 
   ChromatographicSeparationProcess : protocol_link
 
-    ChromatographicSeparationProcess --|&gt; Protocol : protocol_link
+    ChromatographicSeparationProcess --&gt; Protocol : protocol_link
 
   ChromatographicSeparationProcess : qc_comment
 
   ChromatographicSeparationProcess : qc_status
 
-    ChromatographicSeparationProcess --|&gt; StatusEnum : qc_status
+    ChromatographicSeparationProcess --&gt; StatusEnum : qc_status
 
   ChromatographicSeparationProcess : start_date
 
   ChromatographicSeparationProcess : stationary_phase
 
-    ChromatographicSeparationProcess --|&gt; StationaryPhaseEnum : stationary_phase
+    ChromatographicSeparationProcess --&gt; StationaryPhaseEnum : stationary_phase
 
   ChromatographicSeparationProcess : temperature
 
-    ChromatographicSeparationProcess --|&gt; QuantityValue : temperature
+    ChromatographicSeparationProcess --&gt; QuantityValue : temperature
 
 
 
@@ -861,5 +861,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

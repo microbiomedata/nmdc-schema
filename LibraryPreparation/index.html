@@ -304,15 +304,15 @@
 
   LibraryPreparation : has_failure_categorization
 
-    LibraryPreparation --|&gt; FailureCategorization : has_failure_categorization
+    LibraryPreparation --&gt; FailureCategorization : has_failure_categorization
 
   LibraryPreparation : has_input
 
-    LibraryPreparation --|&gt; Biosample : has_input
+    LibraryPreparation --&gt; Biosample : has_input
 
   LibraryPreparation : has_output
 
-    LibraryPreparation --|&gt; NamedThing : has_output
+    LibraryPreparation --&gt; NamedThing : has_output
 
   LibraryPreparation : id
 
@@ -322,7 +322,7 @@
 
   LibraryPreparation : library_type
 
-    LibraryPreparation --|&gt; LibraryTypeEnum : library_type
+    LibraryPreparation --&gt; LibraryTypeEnum : library_type
 
   LibraryPreparation : name
 
@@ -330,17 +330,17 @@
 
   LibraryPreparation : processing_institution
 
-    LibraryPreparation --|&gt; processing_institution_enum : processing_institution
+    LibraryPreparation --&gt; processing_institution_enum : processing_institution
 
   LibraryPreparation : protocol_link
 
-    LibraryPreparation --|&gt; Protocol : protocol_link
+    LibraryPreparation --&gt; Protocol : protocol_link
 
   LibraryPreparation : qc_comment
 
   LibraryPreparation : qc_status
 
-    LibraryPreparation --|&gt; StatusEnum : qc_status
+    LibraryPreparation --&gt; StatusEnum : qc_status
 
   LibraryPreparation : start_date
 
@@ -393,7 +393,7 @@
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../Biosample/">Biosample</a></td>
 <td>An input to a process</td>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a>, <a href="../PlannedProcess/">PlannedProcess</a></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a>, <a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
 </tr>
 <tr>
 <td><a href="../designated_class/">designated_class</a></td>
@@ -901,5 +901,5 @@ class_uri: nmdc:LibraryPreparation
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

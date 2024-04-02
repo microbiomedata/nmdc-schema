@@ -291,15 +291,15 @@
 
   MetagenomeAnnotationActivity : has_failure_categorization
 
-    MetagenomeAnnotationActivity --|&gt; FailureCategorization : has_failure_categorization
+    MetagenomeAnnotationActivity --&gt; FailureCategorization : has_failure_categorization
 
   MetagenomeAnnotationActivity : has_input
 
-    MetagenomeAnnotationActivity --|&gt; NamedThing : has_input
+    MetagenomeAnnotationActivity --&gt; NamedThing : has_input
 
   MetagenomeAnnotationActivity : has_output
 
-    MetagenomeAnnotationActivity --|&gt; NamedThing : has_output
+    MetagenomeAnnotationActivity --&gt; NamedThing : has_output
 
   MetagenomeAnnotationActivity : id
 
@@ -307,13 +307,13 @@
 
   MetagenomeAnnotationActivity : part_of
 
-    MetagenomeAnnotationActivity --|&gt; NamedThing : part_of
+    MetagenomeAnnotationActivity --&gt; NamedThing : part_of
 
   MetagenomeAnnotationActivity : qc_comment
 
   MetagenomeAnnotationActivity : qc_status
 
-    MetagenomeAnnotationActivity --|&gt; StatusEnum : qc_status
+    MetagenomeAnnotationActivity --&gt; StatusEnum : qc_status
 
   MetagenomeAnnotationActivity : started_at_time
 
@@ -325,7 +325,7 @@
 
   MetagenomeAnnotationActivity : was_informed_by
 
-    MetagenomeAnnotationActivity --|&gt; Activity : was_informed_by
+    MetagenomeAnnotationActivity --&gt; Activity : was_informed_by
 
 
 
@@ -835,5 +835,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

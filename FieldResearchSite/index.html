@@ -299,17 +299,17 @@
 
   FieldResearchSite : cur_vegetation
 
-    FieldResearchSite --|&gt; TextValue : cur_vegetation
+    FieldResearchSite --&gt; TextValue : cur_vegetation
 
   FieldResearchSite : description
 
   FieldResearchSite : elev
 
-    FieldResearchSite --|&gt; QuantityValue : elev
+    FieldResearchSite --&gt; QuantityValue : elev
 
   FieldResearchSite : geo_loc_name
 
-    FieldResearchSite --|&gt; TextValue : geo_loc_name
+    FieldResearchSite --&gt; TextValue : geo_loc_name
 
   FieldResearchSite : habitat
 
@@ -317,21 +317,21 @@
 
   FieldResearchSite : lat_lon
 
-    FieldResearchSite --|&gt; GeolocationValue : lat_lon
+    FieldResearchSite --&gt; GeolocationValue : lat_lon
 
   FieldResearchSite : local_class
 
-    FieldResearchSite --|&gt; TextValue : local_class
+    FieldResearchSite --&gt; TextValue : local_class
 
   FieldResearchSite : name
 
   FieldResearchSite : part_of
 
-    FieldResearchSite --|&gt; NamedThing : part_of
+    FieldResearchSite --&gt; NamedThing : part_of
 
   FieldResearchSite : soil_type
 
-    FieldResearchSite --|&gt; TextValue : soil_type
+    FieldResearchSite --&gt; TextValue : soil_type
 
 
 
@@ -852,5 +852,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

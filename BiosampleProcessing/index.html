@@ -295,15 +295,15 @@
 
   BiosampleProcessing : has_failure_categorization
 
-    BiosampleProcessing --|&gt; FailureCategorization : has_failure_categorization
+    BiosampleProcessing --&gt; FailureCategorization : has_failure_categorization
 
   BiosampleProcessing : has_input
 
-    BiosampleProcessing --|&gt; Biosample : has_input
+    BiosampleProcessing --&gt; Biosample : has_input
 
   BiosampleProcessing : has_output
 
-    BiosampleProcessing --|&gt; NamedThing : has_output
+    BiosampleProcessing --&gt; NamedThing : has_output
 
   BiosampleProcessing : id
 
@@ -313,17 +313,17 @@
 
   BiosampleProcessing : processing_institution
 
-    BiosampleProcessing --|&gt; processing_institution_enum : processing_institution
+    BiosampleProcessing --&gt; processing_institution_enum : processing_institution
 
   BiosampleProcessing : protocol_link
 
-    BiosampleProcessing --|&gt; Protocol : protocol_link
+    BiosampleProcessing --&gt; Protocol : protocol_link
 
   BiosampleProcessing : qc_comment
 
   BiosampleProcessing : qc_status
 
-    BiosampleProcessing --|&gt; StatusEnum : qc_status
+    BiosampleProcessing --&gt; StatusEnum : qc_status
 
   BiosampleProcessing : start_date
 
@@ -789,5 +789,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

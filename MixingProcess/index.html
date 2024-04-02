@@ -290,21 +290,21 @@
 
   MixingProcess : duration
 
-    MixingProcess --|&gt; QuantityValue : duration
+    MixingProcess --&gt; QuantityValue : duration
 
   MixingProcess : end_date
 
   MixingProcess : has_failure_categorization
 
-    MixingProcess --|&gt; FailureCategorization : has_failure_categorization
+    MixingProcess --&gt; FailureCategorization : has_failure_categorization
 
   MixingProcess : has_input
 
-    MixingProcess --|&gt; NamedThing : has_input
+    MixingProcess --&gt; NamedThing : has_input
 
   MixingProcess : has_output
 
-    MixingProcess --|&gt; ProcessedSample : has_output
+    MixingProcess --&gt; ProcessedSample : has_output
 
   MixingProcess : id
 
@@ -314,17 +314,17 @@
 
   MixingProcess : processing_institution
 
-    MixingProcess --|&gt; processing_institution_enum : processing_institution
+    MixingProcess --&gt; processing_institution_enum : processing_institution
 
   MixingProcess : protocol_link
 
-    MixingProcess --|&gt; Protocol : protocol_link
+    MixingProcess --&gt; Protocol : protocol_link
 
   MixingProcess : qc_comment
 
   MixingProcess : qc_status
 
-    MixingProcess --|&gt; StatusEnum : qc_status
+    MixingProcess --&gt; StatusEnum : qc_status
 
   MixingProcess : start_date
 
@@ -824,5 +824,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

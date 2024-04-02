@@ -307,15 +307,15 @@
 
   MetatranscriptomeAssembly : has_failure_categorization
 
-    MetatranscriptomeAssembly --|&gt; FailureCategorization : has_failure_categorization
+    MetatranscriptomeAssembly --&gt; FailureCategorization : has_failure_categorization
 
   MetatranscriptomeAssembly : has_input
 
-    MetatranscriptomeAssembly --|&gt; NamedThing : has_input
+    MetatranscriptomeAssembly --&gt; NamedThing : has_input
 
   MetatranscriptomeAssembly : has_output
 
-    MetatranscriptomeAssembly --|&gt; NamedThing : has_output
+    MetatranscriptomeAssembly --&gt; NamedThing : has_output
 
   MetatranscriptomeAssembly : id
 
@@ -329,13 +329,13 @@
 
   MetatranscriptomeAssembly : part_of
 
-    MetatranscriptomeAssembly --|&gt; NamedThing : part_of
+    MetatranscriptomeAssembly --&gt; NamedThing : part_of
 
   MetatranscriptomeAssembly : qc_comment
 
   MetatranscriptomeAssembly : qc_status
 
-    MetatranscriptomeAssembly --|&gt; StatusEnum : qc_status
+    MetatranscriptomeAssembly --&gt; StatusEnum : qc_status
 
   MetatranscriptomeAssembly : scaf_bp
 
@@ -371,7 +371,7 @@
 
   MetatranscriptomeAssembly : was_informed_by
 
-    MetatranscriptomeAssembly --|&gt; Activity : was_informed_by
+    MetatranscriptomeAssembly --&gt; Activity : was_informed_by
 
 
 
@@ -1378,5 +1378,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

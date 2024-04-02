@@ -291,33 +291,33 @@
 
   Extraction : extractant
 
-    Extraction --|&gt; Solution : extractant
+    Extraction --&gt; Solution : extractant
 
   Extraction : extraction_method
 
-    Extraction --|&gt; ExtractionTargetEnum : extraction_method
+    Extraction --&gt; ExtractionTargetEnum : extraction_method
 
   Extraction : extraction_target
 
-    Extraction --|&gt; ExtractionTargetEnum : extraction_target
+    Extraction --&gt; ExtractionTargetEnum : extraction_target
 
   Extraction : has_failure_categorization
 
-    Extraction --|&gt; FailureCategorization : has_failure_categorization
+    Extraction --&gt; FailureCategorization : has_failure_categorization
 
   Extraction : has_input
 
-    Extraction --|&gt; NamedThing : has_input
+    Extraction --&gt; NamedThing : has_input
 
   Extraction : has_output
 
-    Extraction --|&gt; NamedThing : has_output
+    Extraction --&gt; NamedThing : has_output
 
   Extraction : id
 
   Extraction : input_mass
 
-    Extraction --|&gt; QuantityValue : input_mass
+    Extraction --&gt; QuantityValue : input_mass
 
   Extraction : instrument_name
 
@@ -325,23 +325,23 @@
 
   Extraction : processing_institution
 
-    Extraction --|&gt; processing_institution_enum : processing_institution
+    Extraction --&gt; processing_institution_enum : processing_institution
 
   Extraction : protocol_link
 
-    Extraction --|&gt; Protocol : protocol_link
+    Extraction --&gt; Protocol : protocol_link
 
   Extraction : qc_comment
 
   Extraction : qc_status
 
-    Extraction --|&gt; StatusEnum : qc_status
+    Extraction --&gt; StatusEnum : qc_status
 
   Extraction : start_date
 
   Extraction : volume
 
-    Extraction --|&gt; QuantityValue : volume
+    Extraction --&gt; QuantityValue : volume
 
 
 
@@ -959,5 +959,5 @@ class_uri: nmdc:Extraction
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

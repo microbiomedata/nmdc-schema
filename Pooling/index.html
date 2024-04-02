@@ -291,15 +291,15 @@
 
   Pooling : has_failure_categorization
 
-    Pooling --|&gt; FailureCategorization : has_failure_categorization
+    Pooling --&gt; FailureCategorization : has_failure_categorization
 
   Pooling : has_input
 
-    Pooling --|&gt; Biosample : has_input
+    Pooling --&gt; Biosample : has_input
 
   Pooling : has_output
 
-    Pooling --|&gt; NamedThing : has_output
+    Pooling --&gt; NamedThing : has_output
 
   Pooling : id
 
@@ -309,17 +309,17 @@
 
   Pooling : processing_institution
 
-    Pooling --|&gt; processing_institution_enum : processing_institution
+    Pooling --&gt; processing_institution_enum : processing_institution
 
   Pooling : protocol_link
 
-    Pooling --|&gt; Protocol : protocol_link
+    Pooling --&gt; Protocol : protocol_link
 
   Pooling : qc_comment
 
   Pooling : qc_status
 
-    Pooling --|&gt; StatusEnum : qc_status
+    Pooling --&gt; StatusEnum : qc_status
 
   Pooling : start_date
 
@@ -354,7 +354,7 @@
 <td><a href="../has_input/">has_input</a></td>
 <td>0..* <br/> <a href="../Biosample/">Biosample</a></td>
 <td>An input to a process</td>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a>, <a href="../PlannedProcess/">PlannedProcess</a></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a>, <a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
 </tr>
 <tr>
 <td><a href="../designated_class/">designated_class</a></td>
@@ -808,5 +808,5 @@ class_uri: nmdc:Pooling
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

@@ -297,15 +297,15 @@
 
   CollectingBiosamplesFromSite : has_failure_categorization
 
-    CollectingBiosamplesFromSite --|&gt; FailureCategorization : has_failure_categorization
+    CollectingBiosamplesFromSite --&gt; FailureCategorization : has_failure_categorization
 
   CollectingBiosamplesFromSite : has_input
 
-    CollectingBiosamplesFromSite --|&gt; Site : has_input
+    CollectingBiosamplesFromSite --&gt; Site : has_input
 
   CollectingBiosamplesFromSite : has_output
 
-    CollectingBiosamplesFromSite --|&gt; Biosample : has_output
+    CollectingBiosamplesFromSite --&gt; Biosample : has_output
 
   CollectingBiosamplesFromSite : id
 
@@ -315,17 +315,17 @@
 
   CollectingBiosamplesFromSite : processing_institution
 
-    CollectingBiosamplesFromSite --|&gt; processing_institution_enum : processing_institution
+    CollectingBiosamplesFromSite --&gt; processing_institution_enum : processing_institution
 
   CollectingBiosamplesFromSite : protocol_link
 
-    CollectingBiosamplesFromSite --|&gt; Protocol : protocol_link
+    CollectingBiosamplesFromSite --&gt; Protocol : protocol_link
 
   CollectingBiosamplesFromSite : qc_comment
 
   CollectingBiosamplesFromSite : qc_status
 
-    CollectingBiosamplesFromSite --|&gt; StatusEnum : qc_status
+    CollectingBiosamplesFromSite --&gt; StatusEnum : qc_status
 
   CollectingBiosamplesFromSite : start_date
 
@@ -818,5 +818,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

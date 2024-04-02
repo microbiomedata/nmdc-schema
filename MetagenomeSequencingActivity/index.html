@@ -289,15 +289,15 @@
 
   MetagenomeSequencingActivity : has_failure_categorization
 
-    MetagenomeSequencingActivity --|&gt; FailureCategorization : has_failure_categorization
+    MetagenomeSequencingActivity --&gt; FailureCategorization : has_failure_categorization
 
   MetagenomeSequencingActivity : has_input
 
-    MetagenomeSequencingActivity --|&gt; NamedThing : has_input
+    MetagenomeSequencingActivity --&gt; NamedThing : has_input
 
   MetagenomeSequencingActivity : has_output
 
-    MetagenomeSequencingActivity --|&gt; NamedThing : has_output
+    MetagenomeSequencingActivity --&gt; NamedThing : has_output
 
   MetagenomeSequencingActivity : id
 
@@ -305,13 +305,13 @@
 
   MetagenomeSequencingActivity : part_of
 
-    MetagenomeSequencingActivity --|&gt; NamedThing : part_of
+    MetagenomeSequencingActivity --&gt; NamedThing : part_of
 
   MetagenomeSequencingActivity : qc_comment
 
   MetagenomeSequencingActivity : qc_status
 
-    MetagenomeSequencingActivity --|&gt; StatusEnum : qc_status
+    MetagenomeSequencingActivity --&gt; StatusEnum : qc_status
 
   MetagenomeSequencingActivity : started_at_time
 
@@ -323,7 +323,7 @@
 
   MetagenomeSequencingActivity : was_informed_by
 
-    MetagenomeSequencingActivity --|&gt; Activity : was_informed_by
+    MetagenomeSequencingActivity --&gt; Activity : was_informed_by
 
 
 
@@ -802,5 +802,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

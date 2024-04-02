@@ -287,7 +287,7 @@
 
   FiltrationProcess : container_size
 
-    FiltrationProcess --|&gt; QuantityValue : container_size
+    FiltrationProcess --&gt; QuantityValue : container_size
 
   FiltrationProcess : description
 
@@ -299,21 +299,21 @@
 
   FiltrationProcess : filter_pore_size
 
-    FiltrationProcess --|&gt; QuantityValue : filter_pore_size
+    FiltrationProcess --&gt; QuantityValue : filter_pore_size
 
   FiltrationProcess : filtration_category
 
   FiltrationProcess : has_failure_categorization
 
-    FiltrationProcess --|&gt; FailureCategorization : has_failure_categorization
+    FiltrationProcess --&gt; FailureCategorization : has_failure_categorization
 
   FiltrationProcess : has_input
 
-    FiltrationProcess --|&gt; NamedThing : has_input
+    FiltrationProcess --&gt; NamedThing : has_input
 
   FiltrationProcess : has_output
 
-    FiltrationProcess --|&gt; NamedThing : has_output
+    FiltrationProcess --&gt; NamedThing : has_output
 
   FiltrationProcess : id
 
@@ -325,27 +325,27 @@
 
   FiltrationProcess : processing_institution
 
-    FiltrationProcess --|&gt; processing_institution_enum : processing_institution
+    FiltrationProcess --&gt; processing_institution_enum : processing_institution
 
   FiltrationProcess : protocol_link
 
-    FiltrationProcess --|&gt; Protocol : protocol_link
+    FiltrationProcess --&gt; Protocol : protocol_link
 
   FiltrationProcess : qc_comment
 
   FiltrationProcess : qc_status
 
-    FiltrationProcess --|&gt; StatusEnum : qc_status
+    FiltrationProcess --&gt; StatusEnum : qc_status
 
   FiltrationProcess : separation_method
 
-    FiltrationProcess --|&gt; SeparationMethodEnum : separation_method
+    FiltrationProcess --&gt; SeparationMethodEnum : separation_method
 
   FiltrationProcess : start_date
 
   FiltrationProcess : volume
 
-    FiltrationProcess --|&gt; QuantityValue : volume
+    FiltrationProcess --&gt; QuantityValue : volume
 
 
 
@@ -982,5 +982,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

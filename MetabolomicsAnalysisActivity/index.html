@@ -290,19 +290,19 @@
 
   MetabolomicsAnalysisActivity : has_failure_categorization
 
-    MetabolomicsAnalysisActivity --|&gt; FailureCategorization : has_failure_categorization
+    MetabolomicsAnalysisActivity --&gt; FailureCategorization : has_failure_categorization
 
   MetabolomicsAnalysisActivity : has_input
 
-    MetabolomicsAnalysisActivity --|&gt; NamedThing : has_input
+    MetabolomicsAnalysisActivity --&gt; NamedThing : has_input
 
   MetabolomicsAnalysisActivity : has_metabolite_quantifications
 
-    MetabolomicsAnalysisActivity --|&gt; MetaboliteQuantification : has_metabolite_quantifications
+    MetabolomicsAnalysisActivity --&gt; MetaboliteQuantification : has_metabolite_quantifications
 
   MetabolomicsAnalysisActivity : has_output
 
-    MetabolomicsAnalysisActivity --|&gt; NamedThing : has_output
+    MetabolomicsAnalysisActivity --&gt; NamedThing : has_output
 
   MetabolomicsAnalysisActivity : id
 
@@ -310,13 +310,13 @@
 
   MetabolomicsAnalysisActivity : part_of
 
-    MetabolomicsAnalysisActivity --|&gt; NamedThing : part_of
+    MetabolomicsAnalysisActivity --&gt; NamedThing : part_of
 
   MetabolomicsAnalysisActivity : qc_comment
 
   MetabolomicsAnalysisActivity : qc_status
 
-    MetabolomicsAnalysisActivity --|&gt; StatusEnum : qc_status
+    MetabolomicsAnalysisActivity --&gt; StatusEnum : qc_status
 
   MetabolomicsAnalysisActivity : started_at_time
 
@@ -328,7 +328,7 @@
 
   MetabolomicsAnalysisActivity : was_informed_by
 
-    MetabolomicsAnalysisActivity --|&gt; Activity : was_informed_by
+    MetabolomicsAnalysisActivity --&gt; Activity : was_informed_by
 
 
 
@@ -844,5 +844,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

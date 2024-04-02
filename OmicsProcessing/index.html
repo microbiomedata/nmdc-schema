@@ -294,7 +294,7 @@
 
   OmicsProcessing : chimera_check
 
-    OmicsProcessing --|&gt; TextValue : chimera_check
+    OmicsProcessing --&gt; TextValue : chimera_check
 
   OmicsProcessing : description
 
@@ -306,15 +306,15 @@
 
   OmicsProcessing : has_failure_categorization
 
-    OmicsProcessing --|&gt; FailureCategorization : has_failure_categorization
+    OmicsProcessing --&gt; FailureCategorization : has_failure_categorization
 
   OmicsProcessing : has_input
 
-    OmicsProcessing --|&gt; NamedThing : has_input
+    OmicsProcessing --&gt; NamedThing : has_input
 
   OmicsProcessing : has_output
 
-    OmicsProcessing --|&gt; DataObject : has_output
+    OmicsProcessing --&gt; DataObject : has_output
 
   OmicsProcessing : id
 
@@ -332,67 +332,67 @@
 
   OmicsProcessing : nucl_acid_amp
 
-    OmicsProcessing --|&gt; TextValue : nucl_acid_amp
+    OmicsProcessing --&gt; TextValue : nucl_acid_amp
 
   OmicsProcessing : nucl_acid_ext
 
-    OmicsProcessing --|&gt; TextValue : nucl_acid_ext
+    OmicsProcessing --&gt; TextValue : nucl_acid_ext
 
   OmicsProcessing : omics_type
 
-    OmicsProcessing --|&gt; ControlledTermValue : omics_type
+    OmicsProcessing --&gt; ControlledTermValue : omics_type
 
   OmicsProcessing : part_of
 
-    OmicsProcessing --|&gt; Study : part_of
+    OmicsProcessing --&gt; Study : part_of
 
   OmicsProcessing : pcr_cond
 
-    OmicsProcessing --|&gt; TextValue : pcr_cond
+    OmicsProcessing --&gt; TextValue : pcr_cond
 
   OmicsProcessing : pcr_primers
 
-    OmicsProcessing --|&gt; TextValue : pcr_primers
+    OmicsProcessing --&gt; TextValue : pcr_primers
 
   OmicsProcessing : principal_investigator
 
-    OmicsProcessing --|&gt; PersonValue : principal_investigator
+    OmicsProcessing --&gt; PersonValue : principal_investigator
 
   OmicsProcessing : processing_institution
 
-    OmicsProcessing --|&gt; processing_institution_enum : processing_institution
+    OmicsProcessing --&gt; processing_institution_enum : processing_institution
 
   OmicsProcessing : protocol_link
 
-    OmicsProcessing --|&gt; Protocol : protocol_link
+    OmicsProcessing --&gt; Protocol : protocol_link
 
   OmicsProcessing : qc_comment
 
   OmicsProcessing : qc_status
 
-    OmicsProcessing --|&gt; StatusEnum : qc_status
+    OmicsProcessing --&gt; StatusEnum : qc_status
 
   OmicsProcessing : samp_vol_we_dna_ext
 
-    OmicsProcessing --|&gt; QuantityValue : samp_vol_we_dna_ext
+    OmicsProcessing --&gt; QuantityValue : samp_vol_we_dna_ext
 
   OmicsProcessing : seq_meth
 
-    OmicsProcessing --|&gt; TextValue : seq_meth
+    OmicsProcessing --&gt; TextValue : seq_meth
 
   OmicsProcessing : seq_quality_check
 
-    OmicsProcessing --|&gt; TextValue : seq_quality_check
+    OmicsProcessing --&gt; TextValue : seq_quality_check
 
   OmicsProcessing : start_date
 
   OmicsProcessing : target_gene
 
-    OmicsProcessing --|&gt; TextValue : target_gene
+    OmicsProcessing --&gt; TextValue : target_gene
 
   OmicsProcessing : target_subfragment
 
-    OmicsProcessing --|&gt; TextValue : target_subfragment
+    OmicsProcessing --&gt; TextValue : target_subfragment
 
   OmicsProcessing : type
 
@@ -1532,5 +1532,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

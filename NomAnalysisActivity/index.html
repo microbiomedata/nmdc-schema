@@ -290,15 +290,15 @@
 
   NomAnalysisActivity : has_failure_categorization
 
-    NomAnalysisActivity --|&gt; FailureCategorization : has_failure_categorization
+    NomAnalysisActivity --&gt; FailureCategorization : has_failure_categorization
 
   NomAnalysisActivity : has_input
 
-    NomAnalysisActivity --|&gt; NamedThing : has_input
+    NomAnalysisActivity --&gt; NamedThing : has_input
 
   NomAnalysisActivity : has_output
 
-    NomAnalysisActivity --|&gt; NamedThing : has_output
+    NomAnalysisActivity --&gt; NamedThing : has_output
 
   NomAnalysisActivity : id
 
@@ -306,13 +306,13 @@
 
   NomAnalysisActivity : part_of
 
-    NomAnalysisActivity --|&gt; NamedThing : part_of
+    NomAnalysisActivity --&gt; NamedThing : part_of
 
   NomAnalysisActivity : qc_comment
 
   NomAnalysisActivity : qc_status
 
-    NomAnalysisActivity --|&gt; StatusEnum : qc_status
+    NomAnalysisActivity --&gt; StatusEnum : qc_status
 
   NomAnalysisActivity : started_at_time
 
@@ -324,7 +324,7 @@
 
   NomAnalysisActivity : was_informed_by
 
-    NomAnalysisActivity --|&gt; Activity : was_informed_by
+    NomAnalysisActivity --&gt; Activity : was_informed_by
 
 
 
@@ -827,5 +827,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>

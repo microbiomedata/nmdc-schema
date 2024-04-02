@@ -286,11 +286,11 @@
 
   SubSamplingProcess : contained_in
 
-    SubSamplingProcess --|&gt; ContainerCategoryEnum : contained_in
+    SubSamplingProcess --&gt; ContainerCategoryEnum : contained_in
 
   SubSamplingProcess : container_size
 
-    SubSamplingProcess --|&gt; QuantityValue : container_size
+    SubSamplingProcess --&gt; QuantityValue : container_size
 
   SubSamplingProcess : description
 
@@ -300,15 +300,15 @@
 
   SubSamplingProcess : has_failure_categorization
 
-    SubSamplingProcess --|&gt; FailureCategorization : has_failure_categorization
+    SubSamplingProcess --&gt; FailureCategorization : has_failure_categorization
 
   SubSamplingProcess : has_input
 
-    SubSamplingProcess --|&gt; NamedThing : has_input
+    SubSamplingProcess --&gt; NamedThing : has_input
 
   SubSamplingProcess : has_output
 
-    SubSamplingProcess --|&gt; ProcessedSample : has_output
+    SubSamplingProcess --&gt; ProcessedSample : has_output
 
   SubSamplingProcess : id
 
@@ -316,33 +316,33 @@
 
   SubSamplingProcess : mass
 
-    SubSamplingProcess --|&gt; QuantityValue : mass
+    SubSamplingProcess --&gt; QuantityValue : mass
 
   SubSamplingProcess : name
 
   SubSamplingProcess : processing_institution
 
-    SubSamplingProcess --|&gt; processing_institution_enum : processing_institution
+    SubSamplingProcess --&gt; processing_institution_enum : processing_institution
 
   SubSamplingProcess : protocol_link
 
-    SubSamplingProcess --|&gt; Protocol : protocol_link
+    SubSamplingProcess --&gt; Protocol : protocol_link
 
   SubSamplingProcess : qc_comment
 
   SubSamplingProcess : qc_status
 
-    SubSamplingProcess --|&gt; StatusEnum : qc_status
+    SubSamplingProcess --&gt; StatusEnum : qc_status
 
   SubSamplingProcess : start_date
 
   SubSamplingProcess : temperature
 
-    SubSamplingProcess --|&gt; QuantityValue : temperature
+    SubSamplingProcess --&gt; QuantityValue : temperature
 
   SubSamplingProcess : volume
 
-    SubSamplingProcess --|&gt; QuantityValue : volume
+    SubSamplingProcess --&gt; QuantityValue : volume
 
 
 
@@ -965,5 +965,5 @@ attributes:
 <script src="../assets/javascripts/bundle.8fd75fb4.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
-<script src="https://unpkg.com/mermaid@8.8.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
 </html>
