@@ -24,10 +24,9 @@ class TestModulesAreIndependent(unittest.TestCase):
         schema_modules.sort()
 
         for schema_module in schema_modules:
-            print(schema_module)
+            # print(schema_module)
             view = SchemaView(schema_module)
-            print(view.schema.name)
-            # save the json representation of view.schema into a string
+            # print(view.schema.name)
             generated = jsg.JsonSchemaGenerator(schema=view.schema)
             generated_text = generated.serialize()
 
@@ -41,24 +40,12 @@ class TestModulesForOwl(unittest.TestCase):
         """Test that modules are independent."""
 
         # schema_modules = [
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/basic_slots.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/chemical_converion_process.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/core.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/external_identifiers.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/mixs.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/nmdc_types.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_emsl.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_jgi_metagenomics.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_jgi_metatranscriptomics.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_mixs_inspired.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/portal_sample_id.yaml',
-        #     '/home/mark/gitrepos/berkeley-schema-fy24/tests/../src/schema/workflow_execution_activity.yaml'  # warnings
-        # ]
+        # ] # could test a defined subset
 
         for schema_module in schema_modules:
-            print(schema_module)
+            # print(schema_module)
             view = SchemaView(schema_module)
-            print(view.schema.name)
+            # print(view.schema.name)
             generated = og.OwlSchemaGenerator(schema=view.schema)
             generated_text = generated.serialize()
 

@@ -6,7 +6,8 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Attribute
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - basic_classes
+  - basic_classes # in cycle with external_identifier and mixs
+  - basic_slots
 
 classes:
   AttributeValue:

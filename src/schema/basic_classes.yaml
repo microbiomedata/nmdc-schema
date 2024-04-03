@@ -5,13 +5,34 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Basic Typ
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
+prefixes:
+  linkml: https://w3id.org/linkml/
+  EFO: http://www.ebi.ac.uk/efo/
+
 imports:
-  - basic_slots
-  - external_identifiers
-  - attribute_values
-  - mixs
+  - external_identifiers # in cycle with attribute_values
+  - mixs # in cycle with attribute_values
 
 classes:
+
+  NamedThing:
+    class_uri: "nmdc:NamedThing"
+    description: "a databased entity or concept/class"
+    abstract: true
+    slots:
+      - id
+      - name
+      - description
+      - alternative_identifiers
+      - type
+  OntologyClass:
+    class_uri: "nmdc:OntologyClass"
+    is_a: NamedThing
+    notes:
+      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
+    slot_usage:
+      id:
+        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
 
   FailureCategorization:
     class_uri: nmdc:FailureCategorization
@@ -219,6 +240,7 @@ classes:
         range: Study
       protocol_link:
         multivalued: true
+        inlined_as_list: true
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -340,24 +362,6 @@ classes:
           instance that informed the Workflow Chain instance with its
           output data and the metadata of the Data Generation.
 
-  NamedThing:
-    class_uri: "nmdc:NamedThing"
-    description: "a databased entity or concept/class"
-    abstract: true
-    slots:
-      - id
-      - name
-      - description
-      - alternative_identifiers
-      - type
-  OntologyClass:
-    class_uri: "nmdc:OntologyClass"
-    is_a: NamedThing
-    notes:
-      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
-    slot_usage:
-      id:
-        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
   WorkflowExecution:
     class_uri: "nmdc:WorkflowExecution"
     is_a: PlannedProcess
@@ -493,7 +497,7 @@ slots:
   study_image:
     range: ImageValue
     multivalued: true
-    inlined: true
+    inlined_as_list: true
     description: Links a study to one or more images.
   applies_to_person:
     range: PersonValue

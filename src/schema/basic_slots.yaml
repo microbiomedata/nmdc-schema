@@ -15,6 +15,8 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
 
 imports:
+  #  - nmdc_prefixes
+  - nmdc_subsets
   - nmdc_types
 
 default_prefix: nmdc

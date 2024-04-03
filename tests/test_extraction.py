@@ -51,10 +51,10 @@ class TestExtraction(unittest.TestCase):
 
         validator.validate_object(ex1, target_class=Extraction)
 
-        print("\n")
-        print(ex1)
-
-        print(yaml_dumper.dumps(ex1))
+        # print("\n")
+        # print(ex1)
+        #
+        # print(yaml_dumper.dumps(ex1))
 
         extr_yaml_string = """
 id: nmdc:NOT_CHECKED_IN_TEST
@@ -146,10 +146,10 @@ class TestChromatographySeparationProcess(unittest.TestCase):
 
         validator.validate_object(csp, target_class=ChromatographicSeparationProcess)
 
-        print("\n")
-        print(csp)
-
-        print(yaml_dumper.dumps(csp))
+        # print("\n")
+        # print(csp)
+        #
+        # print(yaml_dumper.dumps(csp))
 
         extr_yaml_string = """
 id: nmdc:NOT_CHECKED_IN_TEST

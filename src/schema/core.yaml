@@ -9,14 +9,11 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - attribute_values
-  - external_identifiers
-  - mixs # circular
-  - portal_emsl # circular
-  - portal_jgi_metagenomics # circular
-  - portal_jgi_metatranscriptomics # circular
-  - portal_mixs_inspired # circular
-  - portal_sample_id # circular
-
+  - portal_emsl
+  - portal_jgi_metagenomics
+  - portal_jgi_metatranscriptomics
+  - portal_mixs_inspired
+  - portal_sample_id
 
 prefixes:
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
@@ -34,19 +31,24 @@ prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   schema: http://schema.org/
   wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
+  MISO: http://purl.obolibrary.org/obo/MISO_
 
 default_prefix: nmdc
 default_range: string
 
-
-subsets:
-  environment: { }
-  investigation: { }
-  nucleic acid sequence source: { }
-  sequencing: { }
-  proteases: { }
-
 enums:
+
+  ChemicalConversionCategoryEnum:
+    permissible_values:
+      addition:
+      substitution:
+      acid_base:
+      reduction_oxidation:
+      combustion:
+      decomposition:
+      protease_cleavage:
+        description: an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).
+        meaning: OBI:0600056
 
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
@@ -109,6 +111,33 @@ enums:
       gas:
 
 classes:
+
+  ChemicalConversionProcess:
+    class_uri: 'nmdc:ChemicalConversionProcess'
+    aliases:
+      - chemical reaction
+    exact_mappings:
+      - MISO:0000001 # MaterialProcessing which uses or consumes chemical/molecular entities to generate other molecular entities
+    description: >
+      A process that results in the interconversion of chemical species by a reaction to transform the reagents into products.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: MaterialProcessing
+    comments:
+      - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
+    slots:
+      - chemical_conversion_category
+      - duration
+      - temperature
+      - substances_used
+      - substances_volume
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   MetagenomeAnnotation:
     class_uri: "nmdc:MetagenomeAnnotation"
@@ -1330,6 +1359,14 @@ classes:
       - biolink:GeneProduct
 
 slots:
+
+  chemical_conversion_category:
+    domain: ChemicalConversionProcess
+    range: ChemicalConversionCategoryEnum
+    description: The type of chemical conversion process.
+  substances_volume:
+    range: QuantityValue
+    description: The volume of the combined substances that was included in a ChemicalConversionProcess.
 
   biosample_categories:
     title: Categories the biosample belongs to

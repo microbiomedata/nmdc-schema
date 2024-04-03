@@ -18,9 +18,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.0
 
 imports:
-  - annotation
-  - chemical_conversion_process
-  - core # also brings portal_*
+  - annotation # also brings core and portal_*
   - workflow_execution_activity
 
 prefixes:
@@ -115,23 +113,6 @@ settings:
   id_blade: "([A-Za-z0-9]{1,})"
   id_version: "(\\.[A-Za-z0-9]{1,})*"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
-
-subsets:
-  sample subset:
-    description:
-      Subset consisting of entities linked to the processing of samples.  Currently,
-      this subset consists of study, omics process, and biosample.
-  data object subset:
-    description:
-      Subset consisting of the data objects that either inputs or outputs
-      of processes or workflows.
-  data_portal_subset:
-    description:
-      Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
-    comments:
-      - Schema authors are responsible for alerting and supporting Kitware and nmdc-server authors about
-        changes they will have to make if entities labeled with data_portal_subset are modified.
-      - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
   NucleotideSequencing:

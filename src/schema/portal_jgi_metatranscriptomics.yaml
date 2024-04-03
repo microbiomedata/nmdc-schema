@@ -10,7 +10,7 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
 imports:
   - portal_enums
-  - attribute_values
+  #  - attribute_values # for inferring that rna_absorb1 and rna_absorb2 have the QuantityValue range, which isn't useful for the submission portal but might be required for Biosample>
   - nmdc_types
 default_prefix: nmdc
 default_range: string
@@ -46,7 +46,7 @@ slots:
     examples:
       - value: '2.02'
     rank: 7
-    is_a: biomaterial_purity
+    #    is_a: biomaterial_purity # this makes the import chain more complex and isn't really true for the portal. which will expect a scalar (str? float?)
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
     range: float
@@ -59,7 +59,7 @@ slots:
     examples:
       - value: '2.02'
     rank: 8
-    is_a: biomaterial_purity
+    #    is_a: biomaterial_purity # this makes the import chain more complex and isn't really true for the portal. which will expect a scalar (str? float?)
     string_serialization: '{float}'
     slot_group: JGI-Metatranscriptomics
     range: float

@@ -5,7 +5,7 @@ title: Workflow Execution Activities module for NMDC Schema
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - core # circular
+  - core
 
 prefixes:
   nmdc: https://w3id.org/nmdc/
@@ -14,13 +14,7 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
-subsets:
-  workflow subset:
-    description: >-
-      Subset consisting of just the workflow execution activities
-
 classes:
-
   MetagenomeAssembly:
     class_uri: "nmdc:MetagenomeAssembly"
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -489,7 +483,7 @@ slots:
     range: float
     description: >-
       TODO      
-  
+
   has_calibration:
     # domain: ChromatographicSeparationProcess
     # range: DataObject
