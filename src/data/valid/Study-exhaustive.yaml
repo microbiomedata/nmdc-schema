@@ -5,9 +5,6 @@ description: see also name, title, objective, various alternatives
 alternative_identifiers:
   - generic:abc1
 related_identifiers: any string R1
-#emsl_proposal_identifier:
-#  - generic:abc1
-#emsl_proposal_doi: any string
 gold_study_identifiers:
   - gold:Gs12345
   - gold:Gs90909
@@ -65,12 +62,11 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-#type: any string
-protocol_link:
-  - name: any string 1
-    type: nmdc:Protocol
-  - name: any string 2
-    type: nmdc:Protocol
+#protocol_link:
+#  - name: any string 1
+#    type: nmdc:Protocol
+#  - name: any string 2
+#    type: nmdc:Protocol
 funding_sources:
   - any string 1
   - any string 2
@@ -98,19 +94,19 @@ has_credit_associations:
       - Investigation
       - Supervision
     type: prov:Association
-study_image:
-  - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-    was_generated_by: nmdc:any_string_1
-    url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-    description: Photo of Craig Venter Institute, Rockville, Maryland
-    display_order: 1 # MAM 2023-12-08 switched from string to integer
-    type: nmdc:ImageValue
-  - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-    was_generated_by: nmdc:any_string_1
-    url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-    description: Photo of Craig Venter Institute, La Jolla, California
-    display_order: 2 # MAM 2023-12-08 switched from string to integer
-    type: nmdc:ImageValue
+#study_image:
+#  - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+#    was_generated_by: nmdc:any_string_1
+#    url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+#    description: Photo of Craig Venter Institute, Rockville, Maryland
+#    display_order: 1
+#    type: nmdc:ImageValue
+#  - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+#    was_generated_by: nmdc:any_string_1
+#    url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+#    description: Photo of Craig Venter Institute, La Jolla, California
+#    display_order: 2
+#    type: nmdc:ImageValue
 study_category: research_study
 part_of:
   - nmdc:sty-11-34xj1157

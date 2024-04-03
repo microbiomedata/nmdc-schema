@@ -1,67 +1,143 @@
 import glob
 import os
-
 from ruamel.yaml import YAML
 import networkx as nx
-import matplotlib.pyplot as plt
-from ruamel.yaml import YAML
-import networkx as nx
+import plotly.graph_objects as go
 
 
 def build_imports_graph(schema_dir):
-    """
-    Builds an imports graph from all YAML files under schema_dir.
-
-    Args:
-        schema_dir: Path to the directory containing YAML files.
-
-    Returns:
-        A networkx DiGraph representing the imports graph.
-    """
     graph = nx.DiGraph()
-
     yaml = YAML(typ='safe')
     for filename in glob.iglob(f"{schema_dir}/*.yaml", recursive=False):
-        # for filename in glob.iglob(f"{schema_dir}/**/*.yaml", recursive=True):
         with open(filename, 'r') as f:
             schema = yaml.load(f)
             if 'imports' in schema:
                 for imported_schema in schema['imports']:
-                    # Extract filename without extension and remove schema_dir prefix
                     node_name = os.path.splitext(os.path.basename(filename))[0].replace(f"{schema_dir}/", "")
                     imported_node_name = os.path.splitext(imported_schema)[0]
-                    if "/" not in imported_node_name and \
-                            imported_node_name != "mixs" and \
-                            node_name != "mixs" and \
-                            imported_node_name != "linkml:types" and \
-                            node_name != "linkml:types":
-                        graph.add_edge(node_name, imported_node_name)
+                    graph.add_edge(node_name, imported_node_name)
+    # Find all simple cycles in the graph
+    cycles = list(nx.simple_cycles(graph))
+    if cycles:
+        print("Cycles detected:")
+        for cycle in cycles:
+            print(cycle)
+    else:
+        print("No cycles found.")
 
     return graph
 
 
-# Example Usage
+def find_redundant_paths(graph):
+    redundant_paths = []
+    for node in graph.nodes():
+        for successor in graph.nodes():
+            if node != successor:
+                # Check if there is a direct edge from `node` to `successor`
+                if graph.has_edge(node, successor):
+                    # Now, check if there's also an indirect path
+                    try:
+                        paths = list(nx.all_simple_paths(graph, source=node, target=successor))
+                        if len(paths) > 1:
+                            # More than one path indicates a redundant path
+                            redundant_paths.append((node, successor, paths))
+                    except nx.NetworkXNoPath:
+                        pass
+    return redundant_paths
+
+
+def visualize_imports_graph(graph):
+    pos = nx.arf_layout(graph)
+    # pos = nx.spring_layout(graph, seed=42)
+
+    edge_x = []
+    edge_y = []
+    for edge in graph.edges():
+        x0, y0 = pos[edge[0]]
+        x1, y1 = pos[edge[1]]
+        edge_x.extend([x0, x1, None])
+        edge_y.extend([y0, y1, None])
+
+    node_x = []
+    node_y = []
+    node_labels = []
+    for node in graph.nodes():
+        x, y = pos[node]
+        node_x.append(x)
+        node_y.append(y)
+        node_labels.append(node)
+
+    node_trace = go.Scatter(
+        x=node_x, y=node_y,
+        mode='markers+text',
+        hoverinfo='text',
+        marker=dict(
+            showscale=True,
+            colorscale='Viridis',
+            reversescale=True,
+            color=[],
+            size=10,
+            colorbar=dict(
+                thickness=15,
+                title='Node Connections',
+                xanchor='left',
+                titleside='right'
+            ),
+            line_width=2
+        ),
+        text=node_labels,
+        textposition='top center'
+    )
+
+    node_adjacencies = []
+    node_text = []
+    for node, adjacencies in enumerate(graph.adjacency()):
+        node_adjacencies.append(len(adjacencies[1]))
+        node_text.append(f'{node_labels[node]}')
+
+    node_trace.marker.color = node_adjacencies
+    node_trace.text = node_text
+
+    fig = go.Figure(data=[node_trace],
+                    layout=go.Layout(
+                        title='Schema Imports Graph',
+                        titlefont_size=16,
+                        showlegend=False,
+                        hovermode='closest',
+                        margin=dict(b=20, l=5, r=5, t=40),
+                        xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                        yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
+                    )
+
+    # Add edges as arrows
+    for edge in graph.edges():
+        x0, y0 = pos[edge[0]]
+        x1, y1 = pos[edge[1]]
+        fig.add_annotation(
+            x=x1, y=y1,
+            ax=x0, ay=y0,
+            xref='x', yref='y',
+            axref='x', ayref='y',
+            showarrow=True,
+            arrowhead=1,  # Arrowhead style
+            arrowsize=2.5,  # Arrowhead size
+            arrowwidth=1,  # Arrow stem width
+            arrowcolor='#888'  # Arrow color
+        )
+
+    fig.show()
+
+
+# Example usage
 schema_dir = "../schema"
 graph = build_imports_graph(schema_dir)
 
-# Simple visualization using networkx.draw
-# Apply spring layout algorithm for uniform node placement
-pos = nx.planar_layout(graph)  # Adjust parameters as needed
+redundant_paths = find_redundant_paths(graph)
+if redundant_paths:
+    print("Redundant paths found:")
+    for path in redundant_paths:
+        print(f"{path[0]} directly and indirectly imports {path[1]}")
+else:
+    print("No redundant paths found.")
 
-# Visualization using networkx.draw with node positions
-plt.figure(figsize=(8, 6))
-# nx.draw(graph, pos=pos, with_labels=True, font_weight='bold')
-nx.draw(graph, pos=pos, with_labels=True, font_weight='bold', node_color='none')
-# plt.show()
-
-# plt.subplots_adjust(left=2, bottom=2, right=2, top=2)
-
-plt.savefig("../../assets/partial-imports-graph.pdf", format="pdf", bbox_inches="tight")
-plt.close()  # Optional: Close the plot window after saving
-
-# circular_layout: Nodes arranged in a circle.
-# shell_layout: Nodes arranged in concentric circles (useful for hierarchical structures).
-# random_layout: Random node placement (may not be ideal for uniform distribution).
-# spectral_layout: Uses spectral graph theory for node placement.
-# kamada_kawai_layout: Force-directed layout for minimizing edge crossings.
-# planar_layout: Tries to find a planar layout for planar graphs (no edge crossings).
+visualize_imports_graph(graph)
