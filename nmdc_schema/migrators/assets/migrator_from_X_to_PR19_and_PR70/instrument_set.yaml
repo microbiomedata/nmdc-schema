@@ -1,11 +1,11 @@
 - model: Solarix_12T
   id: nmdc:1
   name: 12T FT-ICR MS
-  vendor: Bruker
-- model: Solarix_15T
+  vendor: bruker
+- model: solarix_15T
   id: nmdc:2
   name: 15T FT-ICR MS
-  vendor: Bruker
+  vendor: bruker
 - model: Exploris 21T
   id: nmdc:3
   name: 21T FT-ICR MS
@@ -13,7 +13,7 @@
 - model: SciMax_7T
   id: nmdc:4
   name: 7T FT-ICR MS
-  vendor: Bruker
+  vendor: bruker
 - model: HP Agilent 7890A
   id: nmdc:5
   name: GC-MS
