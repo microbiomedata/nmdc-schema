@@ -8,7 +8,7 @@
   name: 15T FT-ICR MS
   vendor: bruker
   type: nmdc:Instrument
-- model: Exploris 21T
+- model: exploris_21T
   id: nmdc:3
   name: 21T FT-ICR MS
   vendor: PNNL
