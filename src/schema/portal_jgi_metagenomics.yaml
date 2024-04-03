@@ -8,8 +8,8 @@ id: https://w3id.org/nmdc/portal/jgi_metagenomics
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
+  - portal_enums
   - linkml:types
-  - core # circular
 
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -17,23 +17,6 @@ prefixes:
 
 default_prefix: nmdc
 default_range: string
-
-enums:
-  DNASampleFormatEnum:
-    from_schema: https://example.com/nmdc_dh
-    permissible_values:
-      10 mM Tris-HCl: { }
-      DNAStable: { }
-      Ethanol: { }
-      Low EDTA TE: { }
-      MDA reaction buffer: { }
-      PBS: { }
-      Pellet: { }
-      RNAStable: { }
-      TE: { }
-      Water: { }
-      Gentegra-DNA: { }
-      Gentegra-RNA: { }
 
 slots:
   #  dna_absorb1:

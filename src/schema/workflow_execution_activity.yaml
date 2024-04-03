@@ -5,7 +5,6 @@ title: Workflow Execution Activities module for NMDC Schema
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - linkml:types
   - core # circular
 
 prefixes:

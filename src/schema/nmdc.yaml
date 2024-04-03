@@ -18,9 +18,8 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.0
 
 imports:
-  - linkml:types
   - annotation
-  - chemical_converion_process
+  - chemical_conversion_process
   - core # also brings portal_*
   - mixs
   - workflow_execution_activity

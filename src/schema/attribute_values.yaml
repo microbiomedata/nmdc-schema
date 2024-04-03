@@ -6,7 +6,6 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Attribute
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - linkml:types
   - basic_classes
 
 classes:
@@ -17,7 +16,7 @@ classes:
       value and the structured value
     slots:
       - has_raw_value
-      #      - was_generated_by
+      - was_generated_by
       - type
 
   QuantityValue:
@@ -150,6 +149,8 @@ classes:
     mappings:
       - schema:GeoCoordinates
 slots:
+  biomaterial_purity:
+    range: QuantityValue
   term:
     range: OntologyClass
     description: pointer to an ontology class

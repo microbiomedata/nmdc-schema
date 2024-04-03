@@ -6,10 +6,7 @@ description: Types for NMDC Schema
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  dcterms: http://purl.org/dc/terms/
-  skos: http://www.w3.org/2004/02/skos/core#
   linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
 
 imports:
   - linkml:types

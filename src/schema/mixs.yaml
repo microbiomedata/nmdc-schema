@@ -6,8 +6,7 @@ notes:
   - multiple LinkML representations of MIxS are currently available and one will be blessed soon
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
 imports:
-  - linkml:types
-  - core
+  - attribute_values
 prefixes:
   nmdc:
     prefix_prefix: nmdc

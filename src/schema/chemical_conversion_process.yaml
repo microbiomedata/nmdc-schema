@@ -1,8 +1,8 @@
-id: https://w3id.org/nmdc/chemical_converion_process
-name: chemical_converion_process
-title: chemical_converion_process
+id: https://w3id.org/nmdc/chemical_conversion_process
+name: chemical_conversion_process
+title: chemical_conversion_process
 description: >-
-  chemical_converion_process
+  chemical_conversion_process
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 

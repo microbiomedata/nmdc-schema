@@ -4,36 +4,16 @@ description: This file defines terms that appear in the 'JGI-Metatranscriptomics
   DataHarmonizer as of Spring 2022
 title: 'NMDC Schema supplement for Submission Portal: JGI-Metatranscriptomics'
 id: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
-
 license: https://creativecommons.org/publicdomain/zero/1.0/
-
-imports:
-  - linkml:types
-  - core # circular
-
 prefixes:
   linkml: https://w3id.org/linkml/
   nmdc: https://w3id.org/nmdc/
-
+imports:
+  - portal_enums
+  - attribute_values
+  - linkml:types
 default_prefix: nmdc
 default_range: string
-enums:
-  RNASampleFormatEnum:
-    from_schema: https://example.com/nmdc_dh
-    permissible_values:
-      10 mM Tris-HCl: { }
-      DNAStable: { }
-      Ethanol: { }
-      Low EDTA TE: { }
-      MDA reaction buffer: { }
-      PBS: { }
-      Pellet: { }
-      RNAStable: { }
-      TE: { }
-      Water: { }
-      Gentegra-DNA: { }
-      Gentegra-RNA: { }
-
 slots:
   dnase_rna:
     title: DNase treated
@@ -41,13 +21,12 @@ slots:
       - Note DNase treatment is required for all RNA samples.
     examples:
       - value: 'no'
-    from_schema: https://example.com/nmdc_dh
+    aliases:
+      - Was Sample DNAse treated?
     rank: 13
     slot_group: JGI-Metatranscriptomics
     range: YesNoEnum
     recommended: true
-    aliases:
-      - Was Sample DNAse treated?
   proposal_rna:
     title: RNA proposal ID
     comments:
@@ -55,63 +34,58 @@ slots:
         values have been pre-filled.
     examples:
       - value: '504000'
-    from_schema: https://example.com/nmdc_dh
     rank: 19
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_absorb1:
-    is_a: biomaterial_purity
     description: 260/280 measurement of RNA sample purity
     title: RNA absorbance 260/280
     comments:
       - Recommended value is between 1 and 3.
     examples:
       - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
     rank: 7
+    is_a: biomaterial_purity
     string_serialization: '{float}'
-    range: float
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
   rna_absorb2:
-    is_a: biomaterial_purity
     description: 260/230 measurement of RNA sample purity
     title: RNA absorbance 260/230
     comments:
       - Recommended value is between 1 and 3.
     examples:
       - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
     rank: 8
+    is_a: biomaterial_purity
     string_serialization: '{float}'
-    range: float
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
   rna_collect_site:
     description: Provide information on the site your RNA sample was collected from
     title: RNA collection site
     examples:
       - value: untreated pond water
-    from_schema: https://example.com/nmdc_dh
     rank: 15
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_concentration:
-    see_also:
-      nmdc:nucleic_acid_concentration
     title: RNA concentration in ng/ul
     comments:
       - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
         a fluorometric method. Acceptable values are 0-2000.
     examples:
       - value: '100'
-    from_schema: https://example.com/nmdc_dh
+    see_also:
+      - nmdc:nucleic_acid_concentration
     rank: 5
     string_serialization: '{float}'
-    range: float
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
     minimum_value: 0
     maximum_value: 1000
@@ -120,7 +94,6 @@ slots:
     title: RNA container type
     examples:
       - value: plate
-    from_schema: https://example.com/nmdc_dh
     rank: 10
     slot_group: JGI-Metatranscriptomics
     range: JgiContTypeEnum
@@ -130,11 +103,11 @@ slots:
     comments:
       - Required when 'plate' is selected for container type.
       - Leave blank if the sample will be shipped in a tube.
-      - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not pass validation.
+      - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not
+        pass validation.
       - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
     examples:
       - value: B2
-    from_schema: https://example.com/nmdc_dh
     rank: 11
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metatranscriptomics
@@ -147,7 +120,6 @@ slots:
         in a plate should have the same plate label.
     examples:
       - value: Pond_MT_041618
-    from_schema: https://example.com/nmdc_dh
     rank: 9
     string_serialization: '{text < 20 characters}'
     slot_group: JGI-Metatranscriptomics
@@ -157,13 +129,12 @@ slots:
     title: RNA isolation method
     examples:
       - value: phenol/chloroform extraction
-    from_schema: https://example.com/nmdc_dh
+    aliases:
+      - Sample Isolation Method
     rank: 16
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    aliases:
-      - Sample Isolation Method
   rna_organisms:
     description: List any organisms known or suspected to grow in co-culture, as well
       as estimated % of the organism in that culture.
@@ -171,7 +142,6 @@ slots:
     examples:
       - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
           (1%)
-    from_schema: https://example.com/nmdc_dh
     rank: 14
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -183,7 +153,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: John Jones
-    from_schema: https://example.com/nmdc_dh
     rank: 18
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -195,7 +164,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: '187654'
-    from_schema: https://example.com/nmdc_dh
     rank: 3
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -205,7 +173,6 @@ slots:
     title: RNA sample format
     examples:
       - value: Water
-    from_schema: https://example.com/nmdc_dh
     rank: 12
     slot_group: JGI-Metatranscriptomics
     range: RNASampleFormatEnum
@@ -216,7 +183,6 @@ slots:
     title: RNA sample name
     examples:
       - value: JGI_pond_041618
-    from_schema: https://example.com/nmdc_dh
     rank: 4
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -230,13 +196,12 @@ slots:
         values have been pre-filled.
     examples:
       - value: '1191234'
-    from_schema: https://example.com/nmdc_dh
+    aliases:
+      - Seq Project ID
     rank: 1
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    aliases:
-      - Seq Project ID
   rna_seq_project_pi:
     title: RNA seq project PI
     comments:
@@ -244,7 +209,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: Jane Johnson
-    from_schema: https://example.com/nmdc_dh
     rank: 17
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -256,7 +220,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: JGI Pond metatranscriptomics
-    from_schema: https://example.com/nmdc_dh
     rank: 2
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -264,15 +227,16 @@ slots:
   rna_volume:
     title: RNA volume in ul
     comments:
-      - Units must be in uL. Enter the numerical part only. Value must be 0-1000.
-        This form accepts values < 25, but JGI may refuse to process them unless permission has been granted by a project manager
+      - Units must be in uL. Enter the numerical part only. Value must be 0-1000. This
+        form accepts values < 25, but JGI may refuse to process them unless permission
+        has been granted by a project manager
     examples:
       - value: '25'
-    from_schema: https://example.com/nmdc_dh
     rank: 6
     string_serialization: '{float}'
-    range: float
     slot_group: JGI-Metatranscriptomics
+    range: float
     recommended: true
     minimum_value: 0
     maximum_value: 1000
+

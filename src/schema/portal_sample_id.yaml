@@ -7,7 +7,7 @@ id: https://w3id.org/nmdc/portal/sample_id
 
 imports:
   - linkml:types
-  - core # circular
+  - portal_enums
 
 todos:
   - the two remaining slots in this module, analysis_type and sample_link aren't really sample identifiers
@@ -20,21 +20,6 @@ prefixes:
 
 default_prefix: nmdc
 default_range: string
-
-enums:
-  AnalysisTypeEnum:
-    from_schema: https://example.com/nmdc_dh
-    permissible_values:
-      metabolomics: { }
-      metagenomics:
-        title: Metagenomics
-        description: Standard short-read metagenomic sequencing
-      metagenomics_long_read:
-        title: Metagenomics (long read)
-        description: Long-read metagenomic sequencing
-      metaproteomics: { }
-      metatranscriptomics: { }
-      natural organic matter: { }
 
 slots:
   analysis_type:
@@ -64,7 +49,6 @@ slots:
       - value: IGSN:DSJ0284
     from_schema: https://example.com/nmdc_dh
     multivalued: true
-    range: string
     rank: 5
     recommended: true
     slot_group: Sample ID
