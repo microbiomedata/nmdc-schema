@@ -18,7 +18,7 @@
   name: 7T FT-ICR MS
   vendor: bruker
   type: nmdc:Instrument
-- model: HP Agilent 7890A
+- model: agilent_7980A
   id: nmdc:5
   name: GC-MS
   vendor: Agilent
