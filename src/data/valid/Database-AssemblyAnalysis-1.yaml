@@ -5,8 +5,10 @@ metagenome_assembly_set:
     has_failure_categorization:
       - qc_failure_what: assembly_size_too_small
         qc_failure_where: MetagenomeAssembly
+        type: nmdc:FailureCategorization
       - qc_failure_what: other
         qc_failure_where: MetagenomeAssembly
+        type: nmdc:FailureCategorization
     qc_comment: 15% human contamination and assembly size is below 5 MB
     name: Metagenome assembly 1472_51277
     started_at_time: '2020-03-24T00:00:00+00:00'
