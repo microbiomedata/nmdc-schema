@@ -2109,6 +2109,9 @@ enums:
         aliases:
           - Oxford Nanopore Technologies
         meaning: OBI:0002755
+      pnnl:
+        aliases:
+          - PNNL
 
 
 
