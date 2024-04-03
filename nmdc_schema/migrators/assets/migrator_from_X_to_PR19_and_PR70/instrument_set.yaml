@@ -1,4 +1,4 @@
-- model: Solarix_12T
+- model: solarix_12T
   id: nmdc:1
   name: 12T FT-ICR MS
   vendor: bruker
