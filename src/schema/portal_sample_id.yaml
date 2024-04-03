@@ -6,7 +6,7 @@ title: 'NMDC Schema supplement for Submission Portal: Sample ID'
 id: https://w3id.org/nmdc/portal/sample_id
 
 imports:
-  - linkml:types
+  - nmdc_types
   - portal_enums
 
 todos:

@@ -21,13 +21,13 @@ imports:
   - annotation
   - chemical_conversion_process
   - core # also brings portal_*
-  - mixs
   - workflow_execution_activity
 
 prefixes:
   CATH: "https://bioregistry.io/cath:"
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
   CHEMBL.COMPOUND: "https://bioregistry.io/chembl.compound:" # https://bioregistry.io/chembl.compound:CHEMBL465070
+  CHMO: "http://purl.obolibrary.org/obo/CHMO_"
   Contaminant: http://example.org/contaminant/ # present in MongoDB
   DRUGBANK: "https://bioregistry.io/drugbank:" # https://bioregistry.io/drugbank:DB14938
   EC: "https://bioregistry.io/eccode:" # https://bioregistry.io/eccode:1.1.1.1
@@ -73,12 +73,13 @@ prefixes:
   gtpo: http://example.org/gtpo/
   igsn: https://app.geosamples.org/sample/igsn/
   img.taxon: "https://bioregistry.io/img.taxon:"
-  jgi.proposal: "https://bioregistry.io/jgi.proposal:"
   jgi.analysis: "https://data.jgi.doe.gov/search?q="
+  jgi.proposal: "https://bioregistry.io/jgi.proposal:"
   jgi: http://example.org/jgi/
   kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
   linkml: https://w3id.org/linkml/
   mgnify.proj: "https://bioregistry.io/mgnify.proj:"
+  my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
   neon.identifier: http://example.org/neon/identifier/
   neon.schema: http://example.org/neon/schema/
   nmdc: https://w3id.org/nmdc/
@@ -86,10 +87,8 @@ prefixes:
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
-  xsd: http://www.w3.org/2001/XMLSchema#
-  CHMO: "http://purl.obolibrary.org/obo/CHMO_"
   wikidata: "http://www.wikidata.org/entity/"
-  my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
+  xsd: http://www.w3.org/2001/XMLSchema#
 
 default_prefix: nmdc
 default_range: string

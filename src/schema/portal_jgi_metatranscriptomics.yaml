@@ -11,7 +11,7 @@ prefixes:
 imports:
   - portal_enums
   - attribute_values
-  - linkml:types
+  - nmdc_types
 default_prefix: nmdc
 default_range: string
 slots:

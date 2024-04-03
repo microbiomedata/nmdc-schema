@@ -9,7 +9,7 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - portal_enums
-  - linkml:types
+  - nmdc_types
 
 prefixes:
   linkml: https://w3id.org/linkml/
