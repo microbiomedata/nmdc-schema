@@ -119,8 +119,6 @@ classes:
       Functional annotations can be assigned manually by curators, or automatically in workflows. 
       In the context of NMDC, all function annotation is performed
       automatically, typically using HMM or Blast type methods
-    notes:
-      - "move id slot usage patterns to has_function slot usage?"
     see_also:
       - https://img.jgi.doe.gov/docs/functional-annotation.pdf
       - https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl
@@ -133,7 +131,6 @@ classes:
     slot_usage:
       has_function:
         notes:
-          - this slot had been called id
           - Still missing patterns for COG and RetroRules
           - These patterns are not yet tied to the listed prefixes.
             A discussion about that possibility had been started,
@@ -150,9 +147,6 @@ slots:
   feature_category:
     range: ControlledIdentifiedTermValue
     description: A Sequence Ontology term that describes the category of a feature
-    comments:
-      - FunctionalAnnotation and GenomeFeature had commented-out 'type' slot_usages that had been intended
-        to capture SO terms
 
   subject:
     domain: FunctionalAnnotation

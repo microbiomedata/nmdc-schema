@@ -1,0 +1,867 @@
+id: https://w3id.org/nmdc/basic_classes
+name: NMDC-Basic-classes
+title: NMDC Attribute Basic Types
+description: Schema for National Microbiome Data Collaborative (NMDC), Basic Types
+
+license: https://creativecommons.org/publicdomain/zero/1.0/
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  EFO: http://www.ebi.ac.uk/efo/
+
+imports:
+  - external_identifiers # in cycle with attribute_values
+  - mixs # in cycle with attribute_values
+
+classes:
+
+  NamedThing:
+    class_uri: "nmdc:NamedThing"
+    description: "a databased entity or concept/class"
+    abstract: true
+    slots:
+      - id
+      - name
+      - description
+      - alternative_identifiers
+      - type
+  OntologyClass:
+    class_uri: "nmdc:OntologyClass"
+    is_a: NamedThing
+    notes:
+      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
+    slot_usage:
+      id:
+        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+
+  FailureCategorization:
+    class_uri: nmdc:FailureCategorization
+    slots:
+      - qc_failure_what
+      - qc_failure_where
+      - type
+
+  MaterialEntity:
+    class_uri: "nmdc:MaterialEntity"
+    abstract: true
+    aliases:
+      - Material
+      - Physical entity
+    is_a: NamedThing
+    title: Material Entity
+  Instrument:
+    class_uri: nmdc:Instrument
+    description: A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
+    is_a: MaterialEntity
+    slots:
+      - vendor
+      - model
+    aliases:
+      - device
+    exact_mappings:
+      - OBI:0000968
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+  PlannedProcess:
+    abstract: true
+    class_uri: OBI:0000011
+    is_a: NamedThing
+    title: Planned Process
+    slots:
+      - has_input
+      - has_output
+      - instrument_used
+      - processing_institution
+      - protocol_link
+      - start_date
+      - end_date
+      - qc_status
+      - qc_comment
+      - has_failure_categorization
+  Protocol:
+    class_uri: nmdc:Protocol
+    slots:
+      - url
+      - name
+      - type
+  CreditAssociation:
+    aliases:
+      - study role
+      - credit table
+      - associated researchers
+    description: >-
+      This class supports binding associated researchers to studies.
+      There will be at least a slot for a CRediT Contributor Role and for a person value.
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates
+      at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+    slots:
+      - applies_to_person
+      - applied_roles
+      - type
+    class_uri: prov:Association
+    see_also:
+      - https://casrai.org/credit/
+  Doi:
+    class_uri: "nmdc:Doi"
+    aliases:
+      - DOIs
+      - digital object identifiers
+    description: >-
+      A centrally registered identifier symbol used to uniquely identify objects given by the International DOI Foundation.
+      The DOI system is particularly used for electronic documents.
+    exact_mappings:
+      - OBI:0002110
+    slots:
+      - doi_value
+      - doi_provider
+      - doi_category
+      - type
+    rules:
+      - title: dataset_award_dois_required
+        description: >-
+          If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+        preconditions:
+          slot_conditions:
+            doi_category:
+              any_of:
+                - equals_string: dataset_doi
+                - equals_string: award_doi
+        postconditions:
+          slot_conditions:
+            doi_provider:
+              required: true
+  Study:
+    class_uri: 'nmdc:Study'
+    is_a: NamedThing
+    in_subset:
+      - sample subset
+    aliases:
+      - proposal
+      - research proposal
+      - research study
+      - investigation
+      - project
+      - umbrella project
+      - research initiative
+    description: >-
+      A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
+    comments: The Study class can include both consortia and research studies.
+    alt_descriptions:
+      embl.ena:
+        A study (project) groups together data submitted to the archive and
+        controls its release date. A study accession is typically used when citing
+        data submitted to ENA
+    slots:
+      ## Alternative IDs
+      - emsl_project_identifiers
+      - gnps_task_identifiers
+      - gold_study_identifiers
+      - insdc_bioproject_identifiers
+      - jgi_portal_study_identifiers
+      - mgnify_project_identifiers
+      - neon_study_identifiers
+
+      ## Related IDs
+      #- insdc_sra_ena_study_identifiers
+      - related_identifiers
+
+      - alternative_descriptions
+      - alternative_names
+      - alternative_titles
+
+      - ecosystem
+      - ecosystem_category
+      - ecosystem_subtype
+      - ecosystem_type
+      - specific_ecosystem
+
+      - associated_dois
+      - funding_sources
+      - has_credit_associations
+      - homepage_website
+      - notes
+      - objective
+      - part_of
+      - principal_investigator
+      - protocol_link
+      - study_category
+      - study_image
+      - title
+      - websites
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      name:
+        annotations:
+          display_hint: Provide a name for the study your samples will belong with.
+      websites:
+        annotations:
+          display_hint:
+            Link to the Principal Investigator's research lab webpage
+            or the study webpage associated with this collection of samples.
+            Multiple links can be provided.
+      homepage_website:
+        annotations:
+          display_hint:
+            Link to the consortium's homepage if the study_category is a consortium.
+      description:
+        description: A brief, link-free summary of a Study
+        annotations:
+          display_hint: Provide a brief description of your study.
+        comments: Include links in other Study slots, such as websites or dois.
+      notes:
+        annotations:
+          display_hint: Add any additional notes or comments about this study.
+      alternative_identifiers:
+        description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
+      alternative_names:
+        annotations:
+          display_hint:
+            Project, study, or sample set names the are also associated with this submission
+            or other names / identifiers for this study.
+      related_identifiers:
+        description: Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC
+      insdc_bioproject_identifiers:
+        description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
+        annotations:
+          display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
+      # emsl_project_identifier:
+      #  description: The EMSL project ID that relates to the NMDC submitted study
+      part_of:
+        description: Links a study or consortium to a parent (or umbrella) study or consortium.
+        comments:
+          - Value is the id of the umbrella study or consortium.
+        range: Study
+      protocol_link:
+        multivalued: true
+        inlined_as_list: true
+    exact_mappings:
+      - OBI:0000066
+      - SIO:000747
+      - NCIT:C41198
+      - ISA:Investigation
+    broad_mappings:
+      - prov:Activity
+    todos:
+      - determine how to get data values for submitted_to_insdc, investigation_type,
+        experimental_factor
+      - project_name is redundant with name, so excluding it
+    notes:
+      - "sample GOLD link https://bioregistry.io/gold:Gs0110115"
+      - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
+      - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
+      - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
+  DataObject:
+    class_uri: nmdc:DataObject
+    is_a: NamedThing
+    in_subset:
+      - data object subset
+    description:
+      "An object that primarily consists of symbols that represent information.   Files,
+      records, and omics data are examples of data objects."
+    slots:
+      - compression_type
+      - data_category
+      - data_object_type
+      - file_size_bytes
+      - insdc_experiment_identifiers
+      - md5_checksum
+      - url
+      - was_generated_by
+    slot_usage:
+      name:
+        required: true
+      description:
+        required: true
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+  DataGeneration:
+    class_uri: 'nmdc:DataGeneration'
+    aliases:
+      - OmicsProcessing
+      - assay
+      - omics assay
+      - sequencing project
+      - experiment
+    is_a: PlannedProcess
+    abstract: true
+    in_subset:
+      - sample subset
+    description: >-
+      The methods and processes used to generate omics data from a biosample or organism.
+    alt_descriptions:
+      embl.ena:
+        An experiment contains information about a sequencing experiment including
+        library and instrument details.
+    slots:
+      - add_date
+      - analyte_category
+      - associated_studies
+      - gold_sequencing_project_identifiers
+      - insdc_bioproject_identifiers
+      - insdc_experiment_identifiers
+      - mod_date
+      - ncbi_project_name
+      - part_of
+      - principal_investigator
+      - target_gene
+      - target_subfragment
+    slot_usage:
+      has_input:
+        required: true
+        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+        comments:
+          - pattern should allow typecode for Biosample and ProcessedSample
+      part_of:
+        range: DataGeneration
+        pattern: "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+      has_output:
+        range: DataObject
+        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
+    broad_mappings:
+      - OBI:0000070
+      - ISA:Assay
+  WorkflowChain:
+    class_uri: "nmdc:WorkflowChain"
+    is_a: PlannedProcess
+    description: >-
+      A workflow chain is a collection of Workflow Execution(s) that
+      analyse the output of DataGeneration.
+    comments: >-
+      The sequence of Workflow Execution(s) can be inferred from the has_input and has_output slots of the Workflow Execution(s)
+    slots:
+      - analyte_category
+      - was_informed_by
+      - gold_analysis_project_identifiers
+      - jgi_portal_analysis_project_identifiers
+    slot_usage:
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+      analyte_category:
+        required: true
+        range: AnalyteCategoryEnum
+      was_informed_by:
+        required: true
+        description: >-
+          A Workflow Chain instance was informed by the data and metadata of a of a
+            Data Generation instance
+        comments: >-
+          The value of this slot is a reference to a Data Generation
+          instance that informed the Workflow Chain instance with its
+          output data and the metadata of the Data Generation.
+
+  WorkflowExecution:
+    class_uri: "nmdc:WorkflowExecution"
+    is_a: PlannedProcess
+    aliases:
+      - analysis
+    comments:
+      - Each instance of this (and all other) subclasses of WorkflowExecution is a distinct run with start and stop times, potentially with different inputs and outputs
+    in_subset:
+      - workflow subset
+    description: >-
+      Represents an instance of an execution of a particular workflow
+    alt_descriptions:
+      embl.ena: >-
+        An analysis contains secondary analysis results derived from sequence reads (e.g. a genome assembly)
+    slots:
+      - ended_at_time
+      - execution_resource
+      - git_url
+      - part_of
+      - started_at_time
+      - version
+    rules:
+      - title: qc_status_pass_has_output_required
+        description: >-
+          If qc_status has a value of pass, then the has_output slot is required.
+        preconditions:
+          slot_conditions:
+            qc_status:
+              equals_string: pass
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
+      - title: qc_status_pass_null_has_output_required
+        description: >-
+          If qc_status is not specified, then the has_output slot is required.
+        preconditions:
+          slot_conditions:
+            qc_status:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
+    slot_usage:
+      started_at_time:
+        required: true
+      ended_at_time:
+        required: true
+      git_url:
+        required: true
+      has_input:
+        required: true
+      # has_output:
+      #   required: true
+      execution_resource:
+        required: true
+        range: ExecutionResourceEnum
+      part_of:
+        required: true
+        description: >-
+          The WorkflowChain that this WorkflowExecution is part of
+        range: WorkflowChain
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+slots:
+  associated_studies:
+    description: The study associated with a resource.
+    range: Study
+    multivalued: true
+    pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+    required: true
+  part_of:
+    aliases:
+      - is part of
+    range: NamedThing
+    multivalued: true
+    slot_uri: dcterms:isPartOf
+    description: Links a resource to another resource that either logically or physically includes it.
+  was_informed_by:
+    range: DataGeneration
+    mappings:
+      - prov:wasInformedBy
+  principal_investigator:
+    aliases:
+      - PI
+    range: PersonValue
+    description: Principal Investigator who led the study and/or generated the dataset.
+  was_generated_by:
+    range: WorkflowExecution
+    mappings:
+      - prov:wasGeneratedBy
+  associated_dois:
+    description: A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.
+    aliases:
+      - Associated DOIs
+      - Associated digital object identifiers
+    range: Doi
+    multivalued: true
+    inlined_as_list: true
+    in_subset: data_portal_subset
+    examples:
+      value:
+        - doi: doi:10.46936/intm.proj.2021.60141/60000423
+          doi_provider: emsl
+          doi_category: award_doi
+        - doi: doi:10.1101/2022.12.12.520098
+          doi_category: publication_doi
+        - doi: doi:10.48321/D1Z60Q
+          doi_category: data_management_plan_doi
+          doi_provider: gsc
+      description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
+  has_credit_associations:
+    range: CreditAssociation
+    multivalued: true
+    inlined_as_list: true
+    description:
+      "This slot links a study to a credit association.  The credit association
+      will be linked to a person value and to a CRediT Contributor Roles term. Overall
+      semantics: person should get credit X for their participation in the study"
+    slot_uri: prov:qualifiedAssociation
+    annotations:
+      display_hint: Other researchers associated with this study.
+  protocol_link:
+    range: Protocol
+  study_category:
+    description: The type of research initiative
+    range: StudyCategoryEnum
+    required: true
+  study_image:
+    range: ImageValue
+    multivalued: true
+    inlined_as_list: true
+    description: Links a study to one or more images.
+  applies_to_person:
+    range: PersonValue
+    required: true
+  applied_roles:
+    range: CreditEnum
+    multivalued: true
+    required: true
+    annotations:
+      display_hint: >-
+        Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
+  has_input:
+    aliases:
+      - input
+    range: NamedThing
+    multivalued: true
+    description: >-
+      An input to a process.
+
+  has_output:
+    aliases:
+      - output
+    range: NamedThing
+    multivalued: true
+    description: An output from a process.
+
+  instrument_used:
+    range: Instrument
+    multivalued: true
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+
+  model:
+    range: InstrumentModelEnum
+  vendor:
+    range: InstrumentVendorEnum
+
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
+
+  qc_failure_where:
+    range: FailureWhereEnum
+    description: >-
+      Describes the nmdc schema class that corresonds to where the failure occurred.
+      Most commonly this would be the same as Class that generated the results.
+    comments:
+      - If the assembly size was too small to proceed to annotation failure_where would be MetagenomeAssembly.
+
+  qc_failure_what:
+    range: FailureWhatEnum
+    description: >-
+      Provides a summary about what caused a lab or workflow process to fail
+    comments:
+      - For example Low read count from a sequencer, malformed fastq files, etc)
+
+enums:
+  ExecutionResourceEnum:
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
+    permissible_values:
+      NERSC-Cori:
+        description: NERSC Cori supercomputer
+        aliases:
+          - Cori
+      NERSC-Perlmutter:
+        description: NERSC Perlmutter supercomputer
+        aliases:
+          - Perlmutter
+          - Saul
+      EMSL:
+        description: Environmental Molecular Sciences Laboratory
+      EMSL-RZR:
+        description: Environmental Molecular Sciences Laboratory RZR cluster
+        aliases:
+          - RZR
+      JGI:
+        description: Joint Genome Institute
+      LANL-B-div:
+        description: LANL Bioscience Division
+        aliases:
+          - B-div
+  CreditEnum:
+    permissible_values:
+      Conceptualization:
+        description: Conceptualization
+      Data curation:
+        description: Data curation
+      Formal Analysis:
+        description: Formal Analysis
+      Funding acquisition:
+        description: Funding acquisition
+      Investigation:
+        description: Investigation
+      Methodology:
+        description: Methodology
+      Project administration:
+        description: Project administration
+      Resources:
+        description: Resources
+      Software:
+        description: Software
+      Supervision:
+        description: Supervision
+      Validation:
+        description: Validation
+      Visualization:
+        description: Visualization
+      Writing original draft:
+        description: "Writing \u2013 original draft"
+      Writing review and editing:
+        description: "Writing \u2013 review & editing"
+      Principal Investigator:
+        description: principal investigator role
+        meaning: OBI:0000103
+      Submitter:
+        description: the person(s) who enter study and biosample metadata into the NMDC submission portal
+        meaning: EFO:0001741
+    comments:
+      - CreditEnums come from https://casrai.org/credit/
+  StudyCategoryEnum:
+    permissible_values:
+      research_study:
+        description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
+        exact_mappings:
+          - SIO:001066
+          - NCIT:C63536
+          - ISA:Study
+        close_mappings:
+          - OBI:0000355
+      consortium:
+        description: >-
+          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the
+          consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
+        comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
+        exact_mappings:
+          - NCIT:C61538
+  InstrumentModelEnum:
+    permissible_values:
+      exploris_21T:
+        aliases:
+          - Orbitrap Exploris 21T
+
+      exploris_240:
+        aliases:
+          - Orbitrap Exploris 240
+
+      exploris_480:
+        aliases:
+          - Orbitrap Exploris 480
+
+      ltq_orbitrap_velos:
+        aliases:
+          - LTQ Orbitrap Velos
+          - LTQ Orbitrap Velos ETD
+          - Velos
+
+      orbitrap_fusion_lumos:
+        aliases:
+          - Orbitrap Fusion Lumos
+          - Fusion
+
+      orbitrap_eclipse_tribid:
+        aliases:
+          - Orbitrap Eclipse Tribid
+          - Eclipse
+
+      orbitrap_q_exactive:
+        aliases:
+          - Orbitrap Q-Exactive HF
+          - Orbitrap Q-Exactive HF-X
+
+      solarix_7T:
+        aliases:
+          - 7T Solarix
+          - 7T FT-ICR MS
+          - 7T MRMS
+
+      solarix_12T:
+        aliases:
+          - 12T Solarix
+          - 12T FT-ICR MS
+          - 12T MRMS
+
+      solarix_15T:
+        aliases:
+          - 15T Solarix
+          - 15T FT-ICR MS
+          - 15T MRMS
+
+      agilent_8890A:
+        aliases:
+          - 8890A GC-MS
+          - Agilent GC MS
+
+      agilent_7980A:
+        aliases:
+          - 7980A GC-MS
+          - Agilent GC MS
+
+      vortex_genie_2:
+        aliases:
+          - VortexGenie2
+      novaseq:
+        aliases:
+          - NovaSeq
+      novaseq_6000:
+        aliases:
+          - NovaSeq 6000
+        meaning: OBI:0002630
+      hiseq:
+        aliases:
+          - Illumina HiSeq
+      hiseq_1000:
+        aliases:
+          - Illumina HiSeq 1000
+        meaning: OBI:0002022
+      hiseq_1500:
+        aliases:
+          - Illumina HiSeq 1500
+        meaning: OBI:0003386
+      hiseq_2000:
+        aliases:
+          - Illumina HiSeq 2000
+        meaning: OBI:0002001
+      hiseq_2500:
+        aliases:
+          - Illumina HiSeq 2500
+        meaning: OBI:0002002
+      hiseq_3000:
+        aliases:
+          - Illumina HiSeq 3000
+        meaning: OBI:0002048
+      hiseq_4000:
+        aliases:
+          - Illumina HiSeq 4000
+        meaning: OBI:0002049
+      hiseq_x_ten:
+        aliases:
+          - Illumina HiSeq X Ten
+        meaning: OBI:0002129
+      miniseq:
+        aliases:
+          - Illumina MiniSeq
+        meaning: OBI:0003114
+      nextseq_1000:
+        aliases:
+          - Illumina NextSeq 1000
+        meaning: OBI:0003606
+      miseq:
+        aliases:
+          - MiSeq
+          - Illumina MiSeq
+        meaning: OBI:0002003
+      nextseq_500:
+        aliases:
+          - NextSeq 500
+        meaning: OBI:0002021
+      nextseq_550:
+        aliases:
+          - NextSeq 550
+        meaning: OBI:0003387
+      gridion:
+        aliases:
+          - Oxford Nanopore GridION Mk1
+        meaning: OBI:0002751
+      minion:
+        aliases:
+          - Oxford Nanopore MinION
+        meaning: OBI:0002750
+      promethion:
+        aliases:
+          - Oxford Nanopore PromethION
+        meaning: OBI:0002752
+      rs_II:
+        aliases:
+          - PacBio RS II
+        meaning: OBI:0002012
+      sequel:
+        aliases:
+          - PacBio Sequel
+        meaning: OBI:0002632
+      sequel_II:
+        aliases:
+          - PacBio Sequel II
+        meaning: OBI:0002633
+      revio:
+        aliases:
+          - PacBio Revio
+          - Revio
+
+  InstrumentVendorEnum:
+    permissible_values:
+      waters:
+        aliases:
+          - Waters Corporation
+      agilent:
+        aliases:
+          - Agilent Technologies
+      bruker:
+        aliases:
+          - Bruker Corporation
+          - Bruker Daltonics
+      thermo_fisher:
+        aliases:
+          - ThermoFisher
+          - Thermo Fisher Scientific
+      vwr:
+      perkin_elmer:
+      gilson:
+      scientific_industries:
+      illumina:
+        aliases:
+          - Illumina
+        meaning: OBI:0000759
+      pacbio:
+        aliases:
+          - PacBio
+          - Pacific Biosciences
+        meaning: OBI:0001856
+      oxford_nanopore:
+        aliases:
+          - Oxford Nanopore Technologies
+        meaning: OBI:0002755
+      pnnl:
+        aliases:
+          - PNNL
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
+    permissible_values:
+      low_read_count:
+        description: Number of output reads is not sufficient to continue to the next analysis step.
+      malformed_data:
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+
+  FailureWhereEnum:
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    comments:
+      - At Chris' recommendation permissible values for this enumeration are the same as Class names.
+    permissible_values:
+      OmicsProcessing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeActivity:
+        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      MagsAnalysisActivity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      ReadQcAnalysisActivity:
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysisActivity:
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotationActivity:
+        description: A failure has occurred in annotation, a workflow process.

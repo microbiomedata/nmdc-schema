@@ -7,7 +7,7 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - basic_slots
+  - attribute_values # in cycle with basic_classes
 
 prefixes:
   gold: "https://bioregistry.io/gold:"
@@ -84,7 +84,6 @@ slots:
 
   jgi_portal_study_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - jgi_portal_identifiers
     id_prefixes:
@@ -104,7 +103,6 @@ slots:
 
   neon_study_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - neon_identifiers
 
@@ -146,7 +144,6 @@ slots:
 
   gold_study_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - gold_identifiers
     pattern: "^gold:Gs[0-9]+$"
@@ -161,7 +158,6 @@ slots:
 
   mgnify_project_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - mgnify_identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
@@ -171,7 +167,6 @@ slots:
 
   gnps_task_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - gnps_identifiers
     title: GNPS task identifiers
@@ -189,7 +184,6 @@ slots:
   emsl_project_identifiers:
     title: EMSL Project Identifiers
     is_a: study_identifiers
-    domain: Study
     mixins:
       - emsl_identifiers
     description: Identifiers that link a NMDC study to the EMSL user facility website hosting the project description of an EMSL user project
@@ -283,7 +277,6 @@ slots:
     is_a: external_database_identifiers
 
   gold_sequencing_project_identifiers:
-    domain: DataGeneration
     is_a: omics_processing_identifiers
     mixins:
       - gold_identifiers
@@ -294,7 +287,6 @@ slots:
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
-    domain: DataGeneration
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
