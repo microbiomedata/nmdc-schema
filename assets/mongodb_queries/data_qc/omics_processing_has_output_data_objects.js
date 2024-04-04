@@ -12,7 +12,10 @@ db.omics_processing_set.aggregate([
   },
   {
     $match: {
-      output_docs: { $eq: [] }
+      $or: [
+        { output_docs: { $exists: false } },  // Check if output_docs doesn't exist
+        { output_docs: { $size: 0 } }         // Check if output_docs is an empty array
+      ]
     }
   }
 ])
