@@ -161,9 +161,14 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
         total_dict[tdk] = curie_migrator.fix_curies_recursively_by_key(
             tdv, set(curie_slots))
 
-    # Instantiate an adapter that the migrator can use to manipulate
-    # a "database" that is represented as a Python dictionary.
-    dictionary_adapter = DictionaryAdapter(database=total_dict)
+    # Instantiate an adapter that the migrator can use to manipulate a "database" represented as a Python dictionary.
+    # Also, specify some callback functions, so we can react when certain events occur.
+    dictionary_adapter = DictionaryAdapter(
+        database=total_dict,
+        on_collection_created=lambda name: logger.info(f'Created collection "{name}"'),
+        on_collection_renamed=lambda old_name, name: logger.info(f'Renamed collection "{old_name}" to "{name}"'),
+        on_collection_deleted=lambda name: logger.info(f'Deleted collection "{name}"'),
+    )
 
     # Iterate over the specified Migrator classes:
     for current_migrator in migrators:

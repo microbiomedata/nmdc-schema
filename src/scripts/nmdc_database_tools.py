@@ -260,7 +260,8 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
             else:
                 raise e
 
-    orphaned_data_object_count = 0
+    orphaned_data_object_ids = set() # orphans are data objects that are not referenced in has_output / has_input
+    missing_data_object_ids = set() # missing DOs are referenced in has_output / has_input but not found in the database
     if len(db.omics_processing_set) > 0 and not quick_test:
         # downstream workflow activity records
         (
@@ -315,11 +316,15 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
                             try:
                                 data_object_url = f"{api_client.base_url}data_objects/{data_object_id}"
                                 data_object_response = requests.get(data_object_url)
+                                data_object_response.raise_for_status()
                                 data_object = data_object_response.json()
                             except requests.exceptions.HTTPError as e:
                                 if e.response.status_code == 404:
                                     data_object = None
-                                    logger.error(f"OrphanDataObject {data_object_id} not found in the NMDC database.")
+                                    logger.error(
+                                        f"MissingDataObject: {data_object_id} for {workflow_record['id']} not in DB"
+                                    )
+                                    missing_data_object_ids.add(data_object_id)
                                 else:
                                     raise e
                             if data_object and data_object not in db.data_object_set:
@@ -336,7 +341,7 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
                             logger.info(f"Got {len(orphan_data_objects)} orphaned data object records.")
                             for orphan_data_object in orphan_data_objects:
                                 if orphan_data_object not in db.data_object_set:
-                                    orphaned_data_object_count += 1
+                                    orphaned_data_object_ids.add(orphan_data_object["id"])
                                     logger.info(f"Found orphaned data object {orphan_data_object['id']} : "
                                                 f"{orphan_data_object['description']}.")
                                     db.data_object_set.append(orphan_data_object)
@@ -346,7 +351,18 @@ def extract_study(ctx, study_id: str, output_file: Union[str, bytes, os.PathLike
 
     elapsed_time = datetime.now() - start_time
     logger.info(f"Extracted studies: {search_identifiers} from the NMDC database in {elapsed_time}.")
-    logger.info(f"Found {orphaned_data_object_count} orphaned data objects.")
+    if len(orphaned_data_object_ids) > 0:
+        logger.warning(f"Found {len(orphaned_data_object_ids)} orphaned data objects.")
+        for orphaned_data_object_id in orphaned_data_object_ids:
+            logger.warning(f"Orphaned data object: {orphaned_data_object_id}")
+    else:
+        logger.info("No orphaned data objects found.")
+    if len(missing_data_object_ids) > 0:
+        logger.warning(f"Found {len(missing_data_object_ids)} missing data objects.")
+        for missing_data_object_id in missing_data_object_ids:
+            logger.warning(f"Missing data object: {missing_data_object_id}")
+    else:
+        logger.info("No missing data objects found.")
     # Write the results to a YAML file
     logger.info(f"Writing results to {output_file_path}.")
     yaml_data = yaml.load(yaml_dumper.dumps(db), Loader=yaml.FullLoader)

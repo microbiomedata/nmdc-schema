@@ -23,7 +23,17 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
-      - name: Build documentation.
+      - name: Build and deploy documentation.
+        # Build the docs and deploy them to GitHub Pages.
+        #
+        # Note: The `make mkd-gh-deploy` command below uses the `mkd-%` target
+        #       defined in `Makefile`. That target's action (i.e. recipe)
+        #       strips off the `mkd-` prefix and passes the rest of the command
+        #       to `$ poetry run mkdocs`, effectively translating the command
+        #       below into `$ poetry run mkdocs gh-deploy`.
+        #
+        # Reference: https://www.mkdocs.org/user-guide/deploying-your-docs/
+        #
         run: |
           mkdir -p docs
           touch docs/.nojekyll
