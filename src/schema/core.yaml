@@ -908,9 +908,6 @@ classes:
         examples:
           value: 100
 
-      oxy_stat_samp:
-        range: oxy_stat_samp_enum
-
       id:
         required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
