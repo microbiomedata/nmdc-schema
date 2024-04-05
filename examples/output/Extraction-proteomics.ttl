@@ -1,0 +1,16 @@
+@prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+nmdc:extrp-38-r2pk a "nmdc:Extraction"^^xsd:anyURI ;
+    nmdc:has_input nmdc:procsm-37 ;
+    nmdc:has_output nmdc:procsm-39 ;
+    nmdc:substances_used [ a "nmdc:PortionOfSubstance"^^xsd:anyURI ;
+            nmdc:final_concentration [ a "nmdc:QuantityValue"^^xsd:anyURI ;
+                    nmdc:has_numeric_value 5e-02 ;
+                    nmdc:has_unit "μg/μL" ] ;
+            nmdc:known_as nmdc:chem-99-000014 ],
+        [ a "nmdc:PortionOfSubstance"^^xsd:anyURI ;
+            nmdc:known_as nmdc:chem-99-000005 ],
+        [ a "nmdc:PortionOfSubstance"^^xsd:anyURI ;
+            nmdc:known_as nmdc:chem-99-000002 ] .
+

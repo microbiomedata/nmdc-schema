@@ -8,42 +8,63 @@ class MongoAdapter(AdapterBase):
     Class containing methods related to manipulating a MongoDB database.
     """
 
-    def __init__(self, database: Database) -> None:
+    def __init__(self, database: Database, **kwargs) -> None:
         r"""
-        Initializes the reference to the database this adapter instance will be used to manipulate.
+        Invokes the initialization method of the parent class, passing to it any specified keyword arguments.
+        Also initializes the reference to the database this adapter instance will be used to manipulate.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/examples/type_hints.html#typed-database
         """
+        super().__init__(**kwargs)
         self._db = database
 
     def create_collection(self, collection_name: str) -> None:
         r"""
         Creates an empty collection having the specified name, if no collection by that name exists.
+        Also invokes `self.on_collection_created`, if defined, passing to it the name of the collection.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.create_collection
+        - https://docs.python.org/3/library/functions.html#callable
         """
-        self._db.create_collection(name=collection_name)
+        if collection_name not in self._db.list_collection_names():
+            self._db.create_collection(name=collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_created):
+                self.on_collection_created(collection_name)
 
     def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
-        Renames the specified collection so that it has the specified name.
+        Renames the specified collection, if it exists, so that it has the specified new name.
+        Also invokes `self.on_collection_renamed`, if defined, passing to it the old and new names of the collection.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.get_collection
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.rename
         """
-        self._db.get_collection(name=current_name).rename(new_name=new_name)
+        if current_name in self._db.list_collection_names():
+            self._db.get_collection(name=current_name).rename(new_name=new_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_renamed):
+                self.on_collection_renamed(current_name, new_name)
 
     def delete_collection(self, collection_name: str) -> None:
         r"""
-        Deletes the collection having the specified name.
+        Deletes the collection having the specified name, if such a collection exists.
+        Also invokes `self.on_collection_deleted`, if defined, passing to it the name of the collection.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.drop_collection
         """
-        self._db.drop_collection(name_or_collection=collection_name)
+        if collection_name in self._db.list_collection_names():
+            self._db.drop_collection(name_or_collection=collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_deleted):
+                self.on_collection_deleted(collection_name)
 
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""
