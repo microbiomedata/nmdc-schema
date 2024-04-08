@@ -49,6 +49,7 @@
   vendor: illumina
   type: nmdc:Instrument
 - model: novaseq
+  id: nmdc:34
   name: Illumina NovaSeq S4
   vendor: illumina
   type: nmdc:Instrument
