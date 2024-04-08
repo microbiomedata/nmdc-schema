@@ -11,7 +11,7 @@
 - model: exploris_21T
   id: nmdc:3
   name: 21T FT-ICR MS
-  vendor: PNNL
+  vendor: pnnl
   type: nmdc:Instrument
 - model: solarix_7T
   id: nmdc:4
@@ -21,7 +21,7 @@
 - model: agilent_7980A
   id: nmdc:5
   name: GC-MS
-  vendor: Agilent
+  vendor: agilent
   type: nmdc:Instrument
 - model: hiseq
   id: nmdc:6 
