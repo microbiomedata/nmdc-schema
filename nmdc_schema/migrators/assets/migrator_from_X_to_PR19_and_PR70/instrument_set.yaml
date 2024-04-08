@@ -13,7 +13,7 @@
   name: 21T FT-ICR MS
   vendor: PNNL
   type: nmdc:Instrument
-- model: SciMax_7T
+- model: solarix_7T
   id: nmdc:4
   name: 7T FT-ICR MS
   vendor: bruker

@@ -640,7 +640,7 @@ enums:
     permissible_values:
       exploris_21T:
         aliases:
-          - Orbitrap Exploris 21T
+          - Exploris 21T
 
       exploris_240:
         aliases:
