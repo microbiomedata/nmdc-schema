@@ -307,7 +307,6 @@ classes:
       - analyte_category
       - associated_studies
       - mod_date
-      - ncbi_project_name
       - part_of
       - principal_investigator
     slot_usage:
