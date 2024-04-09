@@ -482,65 +482,6 @@ classes:
           syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  DataGeneration:
-    class_uri: 'nmdc:DataGeneration'
-    aliases:
-      - OmicsProcessing
-      - assay
-      - omics assay
-      - sequencing project
-      - experiment
-    is_a: PlannedProcess
-    abstract: true
-    in_subset:
-      - sample subset
-    description: >-
-      The methods and processes used to generate omics data from a biosample or organism.
-    alt_descriptions:
-      embl.ena:
-        An experiment contains information about a sequencing experiment including
-        library and instrument details.
-    slots:
-      - add_date
-      - analyte_category
-      - associated_studies
-      - mod_date
-      - part_of
-      - principal_investigator
-    slot_usage:
-      has_input:
-        required: true
-        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
-        comments:
-          - pattern should allow typecode for Biosample and ProcessedSample
-      part_of:
-        range: DataGeneration
-        pattern: "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
-      has_output:
-        range: DataObject
-        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
-    broad_mappings:
-      - OBI:0000070
-      - ISA:Assay
-
-  CreditAssociation:
-    aliases:
-      - study role
-      - credit table
-      - associated researchers
-    description: >-
-      This class supports binding associated researchers to studies.
-      There will be at least a slot for a CRediT Contributor Role and for a person value.
-      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates
-      at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
-    slots:
-      - applies_to_person
-      - applied_roles
-      - type
-    class_uri: prov:Association
-    see_also:
-      - https://casrai.org/credit/
-
 enums:
 
   AcquisitionCategoryEnum:
