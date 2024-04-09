@@ -417,6 +417,20 @@ classes:
       volume:
         description: The volume of sample filtered.
 
+  StorageProcess:
+    class_uri: 'nmdc:StorageProcess'
+    description: >-
+      A planned process with the objective to preserve and protect material entities by placing them in an identified 
+      location which may have a controlled environment.
+    is_a: MaterialProcessing
+    related_mappings: 
+      - OBI:0302893
+    slots:
+      - substances_used
+      - contained_in
+      - duration
+      - temperature
+
   ChromatographicSeparationProcess:
     class_uri: 'nmdc:ChromatographicSeparationProcess'
     description:
