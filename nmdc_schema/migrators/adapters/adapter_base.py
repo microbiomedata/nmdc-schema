@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Optional, Callable, List
+from typing import Optional, Callable, List, Any
 
 
 class AdapterBase(ABC):
@@ -8,24 +8,49 @@ class AdapterBase(ABC):
     a Python data dictionary or a MongoDB database.
     """
 
+    def __init__(
+        self,
+        on_collection_created: Optional[Callable[[str], Any]] = None,
+        on_collection_renamed: Optional[Callable[[str, str], Any]] = None,
+        on_collection_deleted: Optional[Callable[[str], Any]] = None,
+    ):
+        r"""
+        Binds callback functions to the class instance.
+
+        Note: This is a "concrete" method within an "abstract" class.
+
+        :param on_collection_created: Callback function that will be invoked after a collection is created.
+                                      It will be passed the name of the collection.
+        :param on_collection_renamed: Callback function that will be invoked after a collection is renamed.
+                                      It will be passed the original name and new name of the collection.
+        :param on_collection_deleted: Callback function that will be invoked after a collection is deleted.
+                                      It will be passed the name of the collection.
+        """
+        self.on_collection_created = on_collection_created
+        self.on_collection_renamed = on_collection_renamed
+        self.on_collection_deleted = on_collection_deleted
+
     @abstractmethod
     def create_collection(self, collection_name: str) -> None:
         r"""
         Creates an empty collection having the specified name, if no collection by that name exists.
+        Also invokes `self.on_collection_created`, if defined, passing to it the name of the collection.
         """
         pass
 
     @abstractmethod
     def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
-        Renames the specified collection so that it has the specified name.
+        Renames the specified collection, if it exists, so that it has the specified new name.
+        Also invokes `self.on_collection_renamed`, if defined, passing to it the old and new names of the collection.
         """
         pass
 
     @abstractmethod
     def delete_collection(self, collection_name: str) -> None:
         r"""
-        Deletes the collection having the specified name.
+        Deletes the collection having the specified name, if such a collection exists.
+        Also invokes `self.on_collection_deleted`, if defined, passing to it the name of the collection.
         """
         pass
 

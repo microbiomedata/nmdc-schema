@@ -1,0 +1,96 @@
+id: nmdc:sty-11-ab
+type: nmdc:Study
+name: see also description, title, objective, various alternatives
+description: see also name, title, objective, various alternatives
+alternative_identifiers:
+- generic:abc1
+study_category: research_study
+gold_study_identifiers:
+- gold:Gs12345
+- gold:Gs90909
+mgnify_project_identifiers:
+- mgnify.proj:ABC123
+related_identifiers: any string R1
+alternative_descriptions:
+- any string 1
+- any string 2
+alternative_names:
+- any string 1
+- any string 2
+alternative_titles:
+- any string 1
+- any string 2
+ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
+ecosystem_category: unconstrained text
+ecosystem_subtype: unconstrained text
+ecosystem_type: unconstrained text
+specific_ecosystem: unconstrained text
+associated_dois:
+- doi_value: doi:10.1126/science.1058040
+  doi_category: publication_doi
+  type: nmdc:Doi
+- doi_value: doi:10.1126/science.1456956
+  doi_category: dataset_doi
+  type: nmdc:Doi
+  doi_provider: kbase
+- doi_value: doi:10.1126/science.1234545
+  doi_category: award_doi
+  type: nmdc:Doi
+  doi_provider: jgi
+- doi_value: doi:10.48321/D1Z60Q
+  doi_category: data_management_plan_doi
+  type: nmdc:Doi
+  doi_provider: gsc
+funding_sources:
+- any string 1
+- any string 2
+has_credit_associations:
+- applies_to_person:
+    type: nmdc:PersonValue
+    has_raw_value: Craig Venter
+    was_generated_by: nmdc:any_string_1
+    email: jcventer@jcvi.org
+    name: J. Craig Venter
+    orcid: ORCID:0000-0002-7086-765X
+    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+    websites:
+    - https://www.jcvi.org/
+    - https://www.jcvi.org/about/j-craig-venter
+  applied_roles:
+  - Supervision
+  - Conceptualization
+  - Funding acquisition
+  type: prov:Association
+- applies_to_person:
+    type: nmdc:PersonValue
+    name: Tanja Davidsen
+  applied_roles:
+  - Investigation
+  - Supervision
+  type: prov:Association
+homepage_website:
+- https://www.neonscience.org/
+objective: This record, an instance of class Study from the nmdc-schema was had authored,
+  so that the NMDC team would have at least one instance, using all slots, with a
+  mixture of reasonable values and minimally compliant values.
+part_of:
+- nmdc:sty-11-34xj1157
+principal_investigator:
+  type: nmdc:PersonValue
+  has_raw_value: Craig Venter
+  was_generated_by: nmdc:any_string_1
+  email: jcventer@jcvi.org
+  name: J. Craig Venter
+  orcid: ORCID:0000-0002-7086-765X
+  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+  websites:
+  - https://www.jcvi.org/
+  - https://www.jcvi.org/about/j-craig-venter
+title: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
+  have this particular combination of values.
+websites:
+- https://w3id.org/nmdc
+- https://w3id.org/linkml

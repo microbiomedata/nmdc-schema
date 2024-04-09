@@ -6,22 +6,30 @@ has_output:
   - nmdc:procsm-11-05g48p90
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
+chromatographic_category: liquid_chromatography
+temperature:
+  type: nmdc:QuantityValue
+  has_numeric_value: 25
+  has_unit: Cel
 ordered_mobile_phases:
-  - has_solution_components:
-      - compound: methanol
-        type: nmdc:SolutionComponent
-        concentration:
+  - type: nmdc:MobilePhaseSegment
+    duration:
+      type: nmdc:QuantityValue
+      has_unit: min
+      has_numeric_value: 60
+    substances_used:
+      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
           type: nmdc:QuantityValue
-          has_unit: mM
+          has_unit: '%'
           has_numeric_value: 10
-      - compound: hydrochloric_acid
-        type: nmdc:SolutionComponent
-        concentration:
+  - type: nmdc:MobilePhaseSegment
+    substances_used:
+      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
           type: nmdc:QuantityValue
           has_unit: mM
           has_numeric_value: 15
-    type: nmdc:Solution
-    volume:
-      type: nmdc:QuantityValue
-      has_numeric_value: 500
-      has_unit: mL
+
