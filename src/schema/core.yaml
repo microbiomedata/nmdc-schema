@@ -109,6 +109,15 @@ enums:
       solid:
       liquid:
       gas:
+  
+  ContainerCategoryEnum:
+    description: The permitted types of containers used in processing metabolomic samples.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    permissible_values:
+      v-bottom_conical_tube:
+      falcon_tube:
 
 classes:
 
@@ -1587,6 +1596,9 @@ slots:
   final_concentration:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination
+  contained_in:
+    range: ContainerCategoryEnum
+    description: A type of container. i.e. test tube, falcon tube, etc.
   duration: # or could be a ISO8601 period string
     range: QuantityValue
     description: The elapsed time of an activity.
