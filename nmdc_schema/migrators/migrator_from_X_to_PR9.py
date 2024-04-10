@@ -31,8 +31,8 @@ class Migrator(MigratorBase):
         self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.get_was_informed_by])
 
         agenda = dict(
-            read_qc_analysis_activity_set=[lambda document: self.get_was_informed_by(document)],
-            metagenome_assembly_set=[lambda document: self.get_was_informed_by(document)],
+            read_qc_analysis_activity_set=[lambda document: self.update_part_of_slot(document, workflow_omics_dict)],
+            metagenome_assembly_set=[lambda document: self.update_part_of_slot(document, workflow_omics_dict)],
         )
 
         for collection_name, pipeline in agenda.items():
