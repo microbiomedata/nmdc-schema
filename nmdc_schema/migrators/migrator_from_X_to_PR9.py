@@ -18,7 +18,10 @@ class Migrator(MigratorBase):
     _to_version = "PR9"
 
 
-    def __init__(self):
+    def __init__(self, adapter=None, logger=None):
+        super().__init__()
+        self.adapter = adapter
+        self.logger = logger
         self.workflow_omics_dict = {}
     
     def upgrade(self):
@@ -57,11 +60,13 @@ class Migrator(MigratorBase):
 
         self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
+        return read_qc_doc
+
     
     def update_part_of_slot(self, doc: dict):
 
         informed_by_omics_id = doc["was_informed_by"]
-        workflow_chain_id = self.workflow_omics_dict[informed_by_omics_id]
+        workflow_chain_id = self.workflow_omics_dict.get(informed_by_omics_id)
         
         doc["part_of"] = [workflow_chain_id]
 
