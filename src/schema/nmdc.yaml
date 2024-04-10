@@ -599,6 +599,7 @@ enums:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
     permissible_values:
+      BEH-HILIC:
       C18:
       C8:
       C4:
@@ -612,6 +613,7 @@ enums:
       HILIC:
       NH2:
       Phenyl:
+      Polysiloxane:
       PS-DVB:
       SAX:
       SCX:
