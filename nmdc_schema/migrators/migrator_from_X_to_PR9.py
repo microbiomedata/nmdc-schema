@@ -28,7 +28,7 @@ class Migrator(MigratorBase):
 
         self.adapter.create_collection("workflow_chain_set")
 
-        self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.get_was_informed_by])
+        self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.was_informed_by_chain_mapping])
 
         agenda = dict(
             read_qc_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
@@ -45,7 +45,7 @@ class Migrator(MigratorBase):
 
 
     # update to make read_qc_doc variable generalizable so it works for metaproteomic, metabolomics, metatranscriptomics starting point
-    def get_was_informed_by(self, read_qc_doc: dict):
+    def was_informed_by_chain_mapping(self, read_qc_doc: dict):
         r"""
         Get the was_informed_by value (an omics processing id) from the read_qc_analysis document and creates a dictionary of the
         omics processing id with its corresponding worfklow chain id"""
