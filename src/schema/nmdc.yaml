@@ -417,7 +417,6 @@ classes:
       volume:
         description: The volume of sample filtered.
 
-
   ChromatographicSeparationProcess:
     class_uri: 'nmdc:ChromatographicSeparationProcess'
     description:
