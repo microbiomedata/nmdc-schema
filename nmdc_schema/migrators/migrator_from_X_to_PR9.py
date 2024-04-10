@@ -17,10 +17,10 @@ class Migrator(MigratorBase):
     _from_version = "X"
     _to_version = "PR9"
 
-    def __init__(self):
-        # Initialize an empty dictionary to store omics processing ids with their newly minted .
-        self.workflow_omics_dict = {}
 
+    def __init__(self):
+        self.workflow_omics_dict = {}
+    
     def upgrade(self):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
@@ -31,8 +31,8 @@ class Migrator(MigratorBase):
         self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.get_was_informed_by])
 
         agenda = dict(
-            read_qc_analysis_activity_set=[lambda document: self.update_part_of_slot(document, workflow_omics_dict)],
-            metagenome_assembly_set=[lambda document: self.update_part_of_slot(document, workflow_omics_dict)],
+            read_qc_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
+            metagenome_assembly_set=[lambda document: self.update_part_of_slot(document)],
         )
 
         for collection_name, pipeline in agenda.items():
@@ -58,10 +58,10 @@ class Migrator(MigratorBase):
         self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
     
-    def update_part_of_slot(self, doc: dict, workflow_omics_dict: dict):
+    def update_part_of_slot(self, doc: dict):
 
         informed_by_omics_id = doc["was_informed_by"]
-        workflow_chain_id = workflow_omics_dict.get(informed_by_omics_id)
+        workflow_chain_id = self.workflow_omics_dict[informed_by_omics_id]
         
         doc["part_of"] = [workflow_chain_id]
 
