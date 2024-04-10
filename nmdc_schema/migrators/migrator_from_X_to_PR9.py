@@ -19,6 +19,10 @@ class Migrator(MigratorBase):
 
 
     def __init__(self, adapter=None, logger=None):
+        r"""Initialize an empty dictionary that maps was_informed_by values (omics processing id) to their
+        respective workflow chain ids
+        """
+
         super().__init__()
         self.adapter = adapter
         self.logger = logger
