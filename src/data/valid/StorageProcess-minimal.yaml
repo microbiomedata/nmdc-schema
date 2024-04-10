@@ -10,14 +10,14 @@ substances_used:
 contained_in: falcon_tube
 duration: 
   type: nmdc:QuantityValue
-  has_unit: 'hours'
+  has_unit: hours
   has_maximum_numeric_value: 12
 temperature:
   type: nmdc:QuantityValue
-  has_unit: 'degrees Celsius'
+  has_unit: degrees Celsius
   has_numeric_value: 80
 has_input: 
-  - procsm-99-dtTMNb
+  - nmdc:procsm-99-dtTMNb
 has_output: 
-  - procsm-78-BZAPKH
+  - nmdc:procsm-78-BZAPKH
 type: nmdc:StorageProcess
