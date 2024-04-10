@@ -17,19 +17,26 @@ class Migrator(MigratorBase):
     _from_version = "X"
     _to_version = "PR9"
 
+    def __init__(self):
+        # Initialize an empty dictionary to store omics processing ids with their newly minted .
+        self.workflow_omics_dict = {}
+
     def upgrade(self):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         """
 
         self.adapter.create_collection("workflow_chain_set")
-        
-        workflow_match_dict = self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.get_was_informed_by])
+
+        self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.get_was_informed_by])
 
         agenda = dict(
-            read_qc_analysis_activity_set=[lambda document: self.add_type_slot_with_class_uri(document, workflow_match_dict)],
-            metagenome_assembly_set=[lambda document: self.add_type_slot_with_class_uri(document, workflow_match_dict)],
+            read_qc_analysis_activity_set=[lambda document: self.get_was_informed_by(document)],
+            metagenome_assembly_set=[lambda document: self.get_was_informed_by(document)],
         )
+
+        for collection_name, pipeline in agenda.items():
+            self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
 
     
     def mint_ids(self):
@@ -43,17 +50,13 @@ class Migrator(MigratorBase):
         Get the was_informed_by value (an omics processing id) from the read_qc_analysis document and creates a dictionary of the
         omics processing id with its corresponding worfklow chain id"""
 
-        # Initialize an empty dictionary to store omics processing ids with their newly minted .
-        workflow_omics_dict = {}
         workflow_chain_id = self.mint_ids()
 
         # Get the omics_processing_id from the was_informed_by slot of the read_qc_doc
         omics_processing_id = read_qc_doc["was_informed_by"]
 
-        workflow_omics_dict[omics_processing_id] = workflow_chain_id
+        self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
-        return workflow_omics_dict
-    
     
     def update_part_of_slot(self, doc: dict, workflow_omics_dict: dict):
 
