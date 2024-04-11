@@ -40,6 +40,7 @@ class Migrator(MigratorBase):
         # corresponding omics processing ids in a dictionary
         worklow_chain_id_mapping = dict(
             read_qc_analysis_activity_set=[lambda document: self.was_informed_by_chain_mapping(document)],
+            metagenome_sequencing_activity_set=[lambda document: self.was_informed_by_chain_mapping(document)],
             metabolomics_analysis_activity_set=[lambda document: self.was_informed_by_chain_mapping(document)],
             nom_analysis_activity_set=[lambda document: self.was_informed_by_chain_mapping(document)],
         )
@@ -56,7 +57,8 @@ class Migrator(MigratorBase):
             metagenome_annotation_activity_set=[lambda document: self.update_part_of_slot(document)],
             mags_activity_set=[lambda document: self.update_part_of_slot(document)],
             metabolomics_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
-            nom_analysis_activity_set=[lambda document: self.update_part_of_slot(document)]
+            nom_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
+            metagenome_sequencing_activity_set=[lambda document: self.update_part_of_slot(document)],
         )
 
         for collection_name, pipeline in replace_part_of_slot.items():
@@ -78,7 +80,9 @@ class Migrator(MigratorBase):
         # Get the omics_processing_id from the was_informed_by slot of the read_qc_doc
         omics_processing_id = workflow_first_step_doc["was_informed_by"]
 
-        self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
+        if omics_processing_id not in self.workflow_omics_dict:
+
+            self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
         return workflow_first_step_doc
 
