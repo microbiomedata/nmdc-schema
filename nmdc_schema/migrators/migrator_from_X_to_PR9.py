@@ -4,7 +4,7 @@ import uuid
 # TODO: Create documents in WorkflowChain
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
 # TODO: figure out workflow chain for metatranscriptomics_analysis_set (does it come after metagenome_annotation_activity_set? From Alicia, but we're not sure)
-# TODO: Implement for metaproteomics and metabolomics
+# TODO: Implement for metaproteomics and metatranscriptomics
 # TODO: Figure out where migrator will go. Write now written before collection name change. Need to change collection names if going after that migration
 
 class Migrator(MigratorBase):
@@ -35,17 +35,30 @@ class Migrator(MigratorBase):
 
         self.adapter.create_collection("workflow_chain_set")
 
-        self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.was_informed_by_chain_mapping])
+        # Uses the first steps in the various workflows to mint WorkflowChain ids and maps them to their
+        # corresponding omics processing ids in a dictionary
+        worklow_chain_id_mapping = dict(
+            read_qc_analysis_activity_set=[lambda document: self.was_informed_by_chain_mapping(document)],
+            metabolomics_analysis_activity_set=[lambda document: self.was_informed_by_chain_mapping(document)],
+            nom_analysis_activity_set=[lambda document: self.was_informed_by_chain_mapping(document)],
+        )
 
-        metagenome_flow = dict(
+        for collection_name, pipeline in worklow_chain_id_mapping.items():
+            self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
+
+        # Uses the mapping dictionary created to replace the part_of slot in each WorkflowExecution instance with
+        # its appropriate workflow chain id
+        replace_part_of_slot = dict(
             read_qc_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
             metagenome_assembly_set=[lambda document: self.update_part_of_slot(document)],
             read_based_taxonomy_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
             metagenome_annotation_activity_set=[lambda document: self.update_part_of_slot(document)],
             mags_activity_set=[lambda document: self.update_part_of_slot(document)],
+            metabolomics_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
+            nom_analysis_activity_set=[lambda document: self.update_part_of_slot(document)]
         )
 
-        for collection_name, pipeline in metagenome_flow.items():
+        for collection_name, pipeline in replace_part_of_slot.items():
             self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
 
     
@@ -54,20 +67,19 @@ class Migrator(MigratorBase):
         return str(uuid.uuid4())
 
 
-    # update to make read_qc_doc variable generalizable so it works for metaproteomic, metabolomics, metatranscriptomics starting point
-    def was_informed_by_chain_mapping(self, read_qc_doc: dict):
+    def was_informed_by_chain_mapping(self, workflow_first_step_doc: dict):
         r"""
-        Get the was_informed_by value (an omics processing id) from the read_qc_analysis document and creates a dictionary of the
+        Get the was_informed_by value (an omics processing id) from the first WorkflowExecution steps document and create a dictionary of the
         omics processing id with its corresponding worfklow chain id"""
 
         workflow_chain_id = self.mint_ids()
 
         # Get the omics_processing_id from the was_informed_by slot of the read_qc_doc
-        omics_processing_id = read_qc_doc["was_informed_by"]
+        omics_processing_id = workflow_first_step_doc["was_informed_by"]
 
         self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
-        return read_qc_doc
+        return workflow_first_step_doc
 
     
     def update_part_of_slot(self, doc: dict):
