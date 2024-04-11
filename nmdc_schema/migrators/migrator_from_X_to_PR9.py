@@ -1,6 +1,7 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import uuid
 
+# TODO: Fix removing was_informed_by (I don't think I can access the workflow_chain_set yet.)
 # TODO: Add JGI and Gold identifiers? Add name?
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
 # TODO: Figure out where migrator will go. Write now written before collection name change. Need to change collection names if going after that migration. 
@@ -139,7 +140,8 @@ class Migrator(MigratorBase):
         workflow_chain_id = workflow_doc["part_of"]
 
         workflow_chain_doc = self.adapter.get_document_having_value_in_field(collection_name="workflow_chain_set", field_name="id", value=workflow_chain_id)
-        
+        self.logger.info(f"{workflow_chain_doc['id']}")
+
         if workflow_chain_doc["was_informed_by"] == omics_id:
             del workflow_doc["was_informed_by"]
         else:
