@@ -5,6 +5,7 @@ import uuid
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
 # TODO: figure out workflow chain for metatranscriptomics_analysis_set (does it come after metagenome_annotation_activity_set? From Alicia, but we're not sure)
 # TODO: Implement for metaproteomics and metatranscriptomics
+# TODO: Remove was_informed_by from workflow execution
 # TODO: Figure out where migrator will go. Write now written before collection name change. Need to change collection names if going after that migration
 
 class Migrator(MigratorBase):
