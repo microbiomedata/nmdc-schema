@@ -147,19 +147,23 @@ classes:
       - CHMO:0000470
     slots:
       - eluent_introduction
-      - acquisition_category
-      - acquisition_strategy
-      - resolution_category
-      - mass_analyzer
-      - ionization_source
-      - mass_spectrum_collection_mode
-      - polarity_mode
-
+      - has_configuration
     slot_usage:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+
+  MassSpectrometryConfiguration:
+    class_uri: nmdc:MassSpectrometryConfiguration
+    description: Configuration of a mass spectrometry process.
+    slots:
+      - acquisition_category
+      - resolution_category
+      - mass_analyzer
+      - ionization_source
+      - mass_spectrum_collection_mode
+      - polarity_mode
 
   FunctionalAnnotationAggMember:
     class_uri: "nmdc:FunctionalAnnotationAggMember"

@@ -1,0 +1,8 @@
+id: nmdc:cspro-99-oW43DzG0
+type: nmdc:MassSpectrometryConfiguration
+acquisition_category: full_scan
+resolution_category: high
+mass_analyzer: ion_cyclotron_resonance
+ionization_source: electrospray_ionization
+mass_spectrum_collection_mode: full_profile
+polarity_mode: negative
