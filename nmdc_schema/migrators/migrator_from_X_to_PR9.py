@@ -2,10 +2,10 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 import uuid
 
 # TODO: Create documents in WorkflowChain
-# TODO: figure out why metatranscriptome_activity_set and metaproteomics_analysis_activity_set are not being retrieved in project.makefile unvalidated command
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
 # TODO: figure out workflow chain for metatranscriptomics_analysis_set (does it come after metagenome_annotation_activity_set? From Alicia, but we're not sure)
 # TODO: Implement for metaproteomics and metabolomics
+# TODO: Figure out where migrator will go. Write now written before collection name change. Need to change collection names if going after that migration
 
 class Migrator(MigratorBase):
     """
@@ -37,12 +37,15 @@ class Migrator(MigratorBase):
 
         self.adapter.process_each_document(collection_name="read_qc_analysis_activity_set", pipeline=[self.was_informed_by_chain_mapping])
 
-        agenda = dict(
+        metagenome_flow = dict(
             read_qc_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
             metagenome_assembly_set=[lambda document: self.update_part_of_slot(document)],
+            read_based_taxonomy_analysis_activity_set=[lambda document: self.update_part_of_slot(document)],
+            metagenome_annotation_activity_set=[lambda document: self.update_part_of_slot(document)],
+            mags_activity_set=[lambda document: self.update_part_of_slot(document)],
         )
 
-        for collection_name, pipeline in agenda.items():
+        for collection_name, pipeline in metagenome_flow.items():
             self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
 
     
