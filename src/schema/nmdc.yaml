@@ -595,9 +595,10 @@ enums:
   #      Water:
 
   StationaryPhaseEnum:
-    description: The type of stationary phase used in a solid phase extraction process.
+    description: The type of stationary phase used in a chromatography process.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-4504-1039 #Katherine Heal
     permissible_values:
       BEH-HILIC:
       C18:
