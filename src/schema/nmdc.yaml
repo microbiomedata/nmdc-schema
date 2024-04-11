@@ -687,6 +687,10 @@ slots:
     range: FluidHandling
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
+  has_configuration:
+    range: MassSpectrometryConfiguration
+    description: the configuration of the mass spectrometry process
+
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecution
