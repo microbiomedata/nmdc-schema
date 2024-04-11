@@ -5,6 +5,6 @@ has_input:
 has_output:
   - nmdc:procsm-11-05g48p90
   - nmdc:procsm-11-05g48p91
-stationary_phase: Silica
+stationary_phase: Polysiloxane
 chromatographic_category: gas_chromatography
 has_calibration: any text
