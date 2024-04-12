@@ -23,8 +23,8 @@ class Migrator(MigratorBase):
         and metabolite_quantified to metabolite_identified.
 
         >>> m = Migrator()  
-        >>> m.change_metab_slot_names({'id': 123, 'has_metabolite_quantifications': {'metabolite_quantified': 'chebi:16997'}})  
-        {'id': 123, 'has_metabolite_identifications': {'metabolite_identified': 'chebi:16997'}}
+        >>> m.change_metab_slot_names({'id': 123, 'has_metabolite_quantifications': [{'metabolite_quantified': 'chebi:16997'}]})  
+        {'id': 123, 'has_metabolite_identifications': [{'metabolite_identified': 'chebi:16997'}]}
         """
 
         if "has_metabolite_quantifications" in metab_doc:

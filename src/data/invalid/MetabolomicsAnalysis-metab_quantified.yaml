@@ -18,3 +18,4 @@ has_metabolite_quantifications:
     - cas:57-55-6
     highest_similarity_score: 0.9534156546099186
     metabolite_quantified: chebi:16997
+    type: nmdc:MetaboliteQuantification
