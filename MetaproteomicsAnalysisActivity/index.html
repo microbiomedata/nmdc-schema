@@ -276,7 +276,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/MetaproteomicsAnalysisActivity">nmdc:MetaproteomicsAnalysisActivity</a></p>
 <div class="mermaid">classDiagram
   class MetaproteomicsAnalysisActivity
+  click MetaproteomicsAnalysisActivity href "../MetaproteomicsAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- MetaproteomicsAnalysisActivity
+      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
@@ -289,18 +291,22 @@
   MetaproteomicsAnalysisActivity : has_failure_categorization
 
     MetaproteomicsAnalysisActivity --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   MetaproteomicsAnalysisActivity : has_input
 
     MetaproteomicsAnalysisActivity --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   MetaproteomicsAnalysisActivity : has_output
 
     MetaproteomicsAnalysisActivity --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   MetaproteomicsAnalysisActivity : has_peptide_quantifications
 
     MetaproteomicsAnalysisActivity --&gt; PeptideQuantification : has_peptide_quantifications
+    click PeptideQuantification href "../PeptideQuantification"
 
   MetaproteomicsAnalysisActivity : id
 
@@ -309,12 +315,14 @@
   MetaproteomicsAnalysisActivity : part_of
 
     MetaproteomicsAnalysisActivity --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   MetaproteomicsAnalysisActivity : qc_comment
 
   MetaproteomicsAnalysisActivity : qc_status
 
     MetaproteomicsAnalysisActivity --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   MetaproteomicsAnalysisActivity : started_at_time
 
@@ -327,6 +335,7 @@
   MetaproteomicsAnalysisActivity : was_informed_by
 
     MetaproteomicsAnalysisActivity --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

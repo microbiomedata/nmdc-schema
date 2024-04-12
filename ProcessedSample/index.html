@@ -276,7 +276,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/ProcessedSample">nmdc:ProcessedSample</a></p>
 <div class="mermaid">classDiagram
   class ProcessedSample
+  click ProcessedSample href "../ProcessedSample"
     MaterialEntity &lt;|-- ProcessedSample
+      click MaterialEntity href "../MaterialEntity"
 
 
 
@@ -285,6 +287,7 @@
   ProcessedSample : biomaterial_purity
 
     ProcessedSample --&gt; QuantityValue : biomaterial_purity
+    click QuantityValue href "../QuantityValue"
 
   ProcessedSample : description
 

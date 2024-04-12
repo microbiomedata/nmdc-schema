@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/FiltrationProcess">nmdc:FiltrationProcess</a></p>
 <div class="mermaid">classDiagram
   class FiltrationProcess
+  click FiltrationProcess href "../FiltrationProcess"
     PlannedProcess &lt;|-- FiltrationProcess
+      click PlannedProcess href "../PlannedProcess"
 
 
 
@@ -288,6 +290,7 @@
   FiltrationProcess : container_size
 
     FiltrationProcess --&gt; QuantityValue : container_size
+    click QuantityValue href "../QuantityValue"
 
   FiltrationProcess : description
 
@@ -300,20 +303,24 @@
   FiltrationProcess : filter_pore_size
 
     FiltrationProcess --&gt; QuantityValue : filter_pore_size
+    click QuantityValue href "../QuantityValue"
 
   FiltrationProcess : filtration_category
 
   FiltrationProcess : has_failure_categorization
 
     FiltrationProcess --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   FiltrationProcess : has_input
 
     FiltrationProcess --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   FiltrationProcess : has_output
 
     FiltrationProcess --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   FiltrationProcess : id
 
@@ -326,26 +333,31 @@
   FiltrationProcess : processing_institution
 
     FiltrationProcess --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   FiltrationProcess : protocol_link
 
     FiltrationProcess --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   FiltrationProcess : qc_comment
 
   FiltrationProcess : qc_status
 
     FiltrationProcess --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   FiltrationProcess : separation_method
 
     FiltrationProcess --&gt; SeparationMethodEnum : separation_method
+    click SeparationMethodEnum href "../SeparationMethodEnum"
 
   FiltrationProcess : start_date
 
   FiltrationProcess : volume
 
     FiltrationProcess --&gt; QuantityValue : volume
+    click QuantityValue href "../QuantityValue"
 
 
 

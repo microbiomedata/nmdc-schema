@@ -270,14 +270,17 @@
 <p>URI: <a href="https://w3id.org/nmdc/PeptideQuantification">nmdc:PeptideQuantification</a></p>
 <div class="mermaid">classDiagram
   class PeptideQuantification
+  click PeptideQuantification href "../PeptideQuantification"
 
   PeptideQuantification : all_proteins
 
     PeptideQuantification --&gt; GeneProduct : all_proteins
+    click GeneProduct href "../GeneProduct"
 
   PeptideQuantification : best_protein
 
     PeptideQuantification --&gt; GeneProduct : best_protein
+    click GeneProduct href "../GeneProduct"
 
   PeptideQuantification : min_q_value
 

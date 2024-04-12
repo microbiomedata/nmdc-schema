@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/MetagenomeAnnotationActivity">nmdc:MetagenomeAnnotationActivity</a></p>
 <div class="mermaid">classDiagram
   class MetagenomeAnnotationActivity
+  click MetagenomeAnnotationActivity href "../MetagenomeAnnotationActivity"
     WorkflowExecutionActivity &lt;|-- MetagenomeAnnotationActivity
+      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
@@ -292,14 +294,17 @@
   MetagenomeAnnotationActivity : has_failure_categorization
 
     MetagenomeAnnotationActivity --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   MetagenomeAnnotationActivity : has_input
 
     MetagenomeAnnotationActivity --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   MetagenomeAnnotationActivity : has_output
 
     MetagenomeAnnotationActivity --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   MetagenomeAnnotationActivity : id
 
@@ -308,12 +313,14 @@
   MetagenomeAnnotationActivity : part_of
 
     MetagenomeAnnotationActivity --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   MetagenomeAnnotationActivity : qc_comment
 
   MetagenomeAnnotationActivity : qc_status
 
     MetagenomeAnnotationActivity --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   MetagenomeAnnotationActivity : started_at_time
 
@@ -326,6 +333,7 @@
   MetagenomeAnnotationActivity : was_informed_by
 
     MetagenomeAnnotationActivity --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

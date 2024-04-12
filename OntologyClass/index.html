@@ -276,12 +276,17 @@
 <p>URI: <a href="https://w3id.org/nmdc/OntologyClass">nmdc:OntologyClass</a></p>
 <div class="mermaid">classDiagram
   class OntologyClass
+  click OntologyClass href "../OntologyClass"
     NamedThing &lt;|-- OntologyClass
+      click NamedThing href "../NamedThing"
 
 
     OntologyClass &lt;|-- EnvironmentalMaterialTerm
+      click EnvironmentalMaterialTerm href "../EnvironmentalMaterialTerm"
     OntologyClass &lt;|-- ChemicalEntity
+      click ChemicalEntity href "../ChemicalEntity"
     OntologyClass &lt;|-- FunctionalAnnotationTerm
+      click FunctionalAnnotationTerm href "../FunctionalAnnotationTerm"
 
 
 

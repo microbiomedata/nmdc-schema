@@ -291,7 +291,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/Pathway">nmdc:Pathway</a></p>
 <div class="mermaid">classDiagram
   class Pathway
+  click Pathway href "../Pathway"
     FunctionalAnnotationTerm &lt;|-- Pathway
+      click FunctionalAnnotationTerm href "../FunctionalAnnotationTerm"
 
 
 
@@ -302,6 +304,7 @@
   Pathway : has_part
 
     Pathway --&gt; Reaction : has_part
+    click Reaction href "../Reaction"
 
   Pathway : id
 

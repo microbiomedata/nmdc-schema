@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/GeolocationValue">nmdc:GeolocationValue</a></p>
 <div class="mermaid">classDiagram
   class GeolocationValue
+  click GeolocationValue href "../GeolocationValue"
     AttributeValue &lt;|-- GeolocationValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -290,6 +292,7 @@
   GeolocationValue : was_generated_by
 
     GeolocationValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

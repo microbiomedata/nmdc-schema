@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/ReadQcAnalysisActivity">nmdc:ReadQcAnalysisActivity</a></p>
 <div class="mermaid">classDiagram
   class ReadQcAnalysisActivity
+  click ReadQcAnalysisActivity href "../ReadQcAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- ReadQcAnalysisActivity
+      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
@@ -290,14 +292,17 @@
   ReadQcAnalysisActivity : has_failure_categorization
 
     ReadQcAnalysisActivity --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   ReadQcAnalysisActivity : has_input
 
     ReadQcAnalysisActivity --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   ReadQcAnalysisActivity : has_output
 
     ReadQcAnalysisActivity --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   ReadQcAnalysisActivity : id
 
@@ -318,12 +323,14 @@
   ReadQcAnalysisActivity : part_of
 
     ReadQcAnalysisActivity --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   ReadQcAnalysisActivity : qc_comment
 
   ReadQcAnalysisActivity : qc_status
 
     ReadQcAnalysisActivity --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   ReadQcAnalysisActivity : started_at_time
 
@@ -336,6 +343,7 @@
   ReadQcAnalysisActivity : was_informed_by
 
     ReadQcAnalysisActivity --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/DataObject">nmdc:DataObject</a></p>
 <div class="mermaid">classDiagram
   class DataObject
+  click DataObject href "../DataObject"
     NamedThing &lt;|-- DataObject
+      click NamedThing href "../NamedThing"
 
 
 
@@ -288,6 +290,7 @@
   DataObject : data_object_type
 
     DataObject --&gt; FileTypeEnum : data_object_type
+    click FileTypeEnum href "../FileTypeEnum"
 
   DataObject : description
 
@@ -306,6 +309,7 @@
   DataObject : was_generated_by
 
     DataObject --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

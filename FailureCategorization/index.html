@@ -269,14 +269,17 @@
 <p>URI: <a href="https://w3id.org/nmdc/FailureCategorization">nmdc:FailureCategorization</a></p>
 <div class="mermaid">classDiagram
   class FailureCategorization
+  click FailureCategorization href "../FailureCategorization"
 
   FailureCategorization : qc_failure_what
 
     FailureCategorization --&gt; FailureWhatEnum : qc_failure_what
+    click FailureWhatEnum href "../FailureWhatEnum"
 
   FailureCategorization : qc_failure_where
 
     FailureCategorization --&gt; FailureWhereEnum : qc_failure_where
+    click FailureWhereEnum href "../FailureWhereEnum"
 
 
 

@@ -284,14 +284,17 @@
 <p>URI: <a href="https://w3id.org/nmdc/Solution">nmdc:Solution</a></p>
 <div class="mermaid">classDiagram
   class Solution
+  click Solution href "../Solution"
 
   Solution : has_solution_components
 
     Solution --&gt; SolutionComponent : has_solution_components
+    click SolutionComponent href "../SolutionComponent"
 
   Solution : volume
 
     Solution --&gt; QuantityValue : volume
+    click QuantityValue href "../QuantityValue"
 
 
 

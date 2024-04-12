@@ -284,7 +284,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/Activity">nmdc:Activity</a></p>
 <div class="mermaid">classDiagram
   class Activity
+  click Activity href "../Activity"
     Activity &lt;|-- WorkflowExecutionActivity
+      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
@@ -301,6 +303,7 @@
   Activity : was_informed_by
 
     Activity --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/Extraction">nmdc:Extraction</a></p>
 <div class="mermaid">classDiagram
   class Extraction
+  click Extraction href "../Extraction"
     PlannedProcess &lt;|-- Extraction
+      click PlannedProcess href "../PlannedProcess"
 
 
 
@@ -292,32 +294,39 @@
   Extraction : extractant
 
     Extraction --&gt; Solution : extractant
+    click Solution href "../Solution"
 
   Extraction : extraction_method
 
     Extraction --&gt; ExtractionTargetEnum : extraction_method
+    click ExtractionTargetEnum href "../ExtractionTargetEnum"
 
   Extraction : extraction_target
 
     Extraction --&gt; ExtractionTargetEnum : extraction_target
+    click ExtractionTargetEnum href "../ExtractionTargetEnum"
 
   Extraction : has_failure_categorization
 
     Extraction --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   Extraction : has_input
 
     Extraction --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   Extraction : has_output
 
     Extraction --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   Extraction : id
 
   Extraction : input_mass
 
     Extraction --&gt; QuantityValue : input_mass
+    click QuantityValue href "../QuantityValue"
 
   Extraction : instrument_name
 
@@ -326,22 +335,26 @@
   Extraction : processing_institution
 
     Extraction --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   Extraction : protocol_link
 
     Extraction --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   Extraction : qc_comment
 
   Extraction : qc_status
 
     Extraction --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   Extraction : start_date
 
   Extraction : volume
 
     Extraction --&gt; QuantityValue : volume
+    click QuantityValue href "../QuantityValue"
 
 
 

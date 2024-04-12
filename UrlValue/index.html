@@ -270,7 +270,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/UrlValue">nmdc:UrlValue</a></p>
 <div class="mermaid">classDiagram
   class UrlValue
+  click UrlValue href "../UrlValue"
     AttributeValue &lt;|-- UrlValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -279,6 +281,7 @@
   UrlValue : was_generated_by
 
     UrlValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

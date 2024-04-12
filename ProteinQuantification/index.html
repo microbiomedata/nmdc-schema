@@ -263,14 +263,17 @@
 <p>URI: <a href="https://w3id.org/nmdc/ProteinQuantification">nmdc:ProteinQuantification</a></p>
 <div class="mermaid">classDiagram
   class ProteinQuantification
+  click ProteinQuantification href "../ProteinQuantification"
 
   ProteinQuantification : all_proteins
 
     ProteinQuantification --&gt; GeneProduct : all_proteins
+    click GeneProduct href "../GeneProduct"
 
   ProteinQuantification : best_protein
 
     ProteinQuantification --&gt; GeneProduct : best_protein
+    click GeneProduct href "../GeneProduct"
 
   ProteinQuantification : peptide_sequence_count
 

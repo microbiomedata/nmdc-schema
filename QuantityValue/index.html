@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/QuantityValue">nmdc:QuantityValue</a></p>
 <div class="mermaid">classDiagram
   class QuantityValue
+  click QuantityValue href "../QuantityValue"
     AttributeValue &lt;|-- QuantityValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -294,6 +296,7 @@
   QuantityValue : was_generated_by
 
     QuantityValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

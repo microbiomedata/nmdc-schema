@@ -284,7 +284,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/OmicsProcessing">nmdc:OmicsProcessing</a></p>
 <div class="mermaid">classDiagram
   class OmicsProcessing
+  click OmicsProcessing href "../OmicsProcessing"
     PlannedProcess &lt;|-- OmicsProcessing
+      click PlannedProcess href "../PlannedProcess"
 
 
 
@@ -295,6 +297,7 @@
   OmicsProcessing : chimera_check
 
     OmicsProcessing --&gt; TextValue : chimera_check
+    click TextValue href "../TextValue"
 
   OmicsProcessing : description
 
@@ -307,14 +310,17 @@
   OmicsProcessing : has_failure_categorization
 
     OmicsProcessing --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   OmicsProcessing : has_input
 
     OmicsProcessing --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   OmicsProcessing : has_output
 
     OmicsProcessing --&gt; DataObject : has_output
+    click DataObject href "../DataObject"
 
   OmicsProcessing : id
 
@@ -333,66 +339,81 @@
   OmicsProcessing : nucl_acid_amp
 
     OmicsProcessing --&gt; TextValue : nucl_acid_amp
+    click TextValue href "../TextValue"
 
   OmicsProcessing : nucl_acid_ext
 
     OmicsProcessing --&gt; TextValue : nucl_acid_ext
+    click TextValue href "../TextValue"
 
   OmicsProcessing : omics_type
 
     OmicsProcessing --&gt; ControlledTermValue : omics_type
+    click ControlledTermValue href "../ControlledTermValue"
 
   OmicsProcessing : part_of
 
     OmicsProcessing --&gt; Study : part_of
+    click Study href "../Study"
 
   OmicsProcessing : pcr_cond
 
     OmicsProcessing --&gt; TextValue : pcr_cond
+    click TextValue href "../TextValue"
 
   OmicsProcessing : pcr_primers
 
     OmicsProcessing --&gt; TextValue : pcr_primers
+    click TextValue href "../TextValue"
 
   OmicsProcessing : principal_investigator
 
     OmicsProcessing --&gt; PersonValue : principal_investigator
+    click PersonValue href "../PersonValue"
 
   OmicsProcessing : processing_institution
 
     OmicsProcessing --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   OmicsProcessing : protocol_link
 
     OmicsProcessing --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   OmicsProcessing : qc_comment
 
   OmicsProcessing : qc_status
 
     OmicsProcessing --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   OmicsProcessing : samp_vol_we_dna_ext
 
     OmicsProcessing --&gt; QuantityValue : samp_vol_we_dna_ext
+    click QuantityValue href "../QuantityValue"
 
   OmicsProcessing : seq_meth
 
     OmicsProcessing --&gt; TextValue : seq_meth
+    click TextValue href "../TextValue"
 
   OmicsProcessing : seq_quality_check
 
     OmicsProcessing --&gt; TextValue : seq_quality_check
+    click TextValue href "../TextValue"
 
   OmicsProcessing : start_date
 
   OmicsProcessing : target_gene
 
     OmicsProcessing --&gt; TextValue : target_gene
+    click TextValue href "../TextValue"
 
   OmicsProcessing : target_subfragment
 
     OmicsProcessing --&gt; TextValue : target_subfragment
+    click TextValue href "../TextValue"
 
   OmicsProcessing : type
 

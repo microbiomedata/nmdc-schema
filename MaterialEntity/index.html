@@ -280,13 +280,19 @@
 <p>URI: <a href="https://w3id.org/nmdc/MaterialEntity">nmdc:MaterialEntity</a></p>
 <div class="mermaid">classDiagram
   class MaterialEntity
+  click MaterialEntity href "../MaterialEntity"
     NamedThing &lt;|-- MaterialEntity
+      click NamedThing href "../NamedThing"
 
 
     MaterialEntity &lt;|-- Biosample
+      click Biosample href "../Biosample"
     MaterialEntity &lt;|-- ProcessedSample
+      click ProcessedSample href "../ProcessedSample"
     MaterialEntity &lt;|-- AnalyticalSample
+      click AnalyticalSample href "../AnalyticalSample"
     MaterialEntity &lt;|-- Site
+      click Site href "../Site"
 
 
 

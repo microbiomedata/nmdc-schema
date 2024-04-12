@@ -284,7 +284,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/Reaction">nmdc:Reaction</a></p>
 <div class="mermaid">classDiagram
   class Reaction
+  click Reaction href "../Reaction"
     FunctionalAnnotationTerm &lt;|-- Reaction
+      click FunctionalAnnotationTerm href "../FunctionalAnnotationTerm"
 
 
 
@@ -309,12 +311,14 @@
   Reaction : left_participants
 
     Reaction --&gt; ReactionParticipant : left_participants
+    click ReactionParticipant href "../ReactionParticipant"
 
   Reaction : name
 
   Reaction : right_participants
 
     Reaction --&gt; ReactionParticipant : right_participants
+    click ReactionParticipant href "../ReactionParticipant"
 
   Reaction : smarts_string
 

@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/ChromatographicSeparationProcess">nmdc:ChromatographicSeparationProcess</a></p>
 <div class="mermaid">classDiagram
   class ChromatographicSeparationProcess
+  click ChromatographicSeparationProcess href "../ChromatographicSeparationProcess"
     PlannedProcess &lt;|-- ChromatographicSeparationProcess
+      click PlannedProcess href "../PlannedProcess"
 
 
 
@@ -292,14 +294,17 @@
   ChromatographicSeparationProcess : has_failure_categorization
 
     ChromatographicSeparationProcess --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   ChromatographicSeparationProcess : has_input
 
     ChromatographicSeparationProcess --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   ChromatographicSeparationProcess : has_output
 
     ChromatographicSeparationProcess --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   ChromatographicSeparationProcess : id
 
@@ -310,30 +315,36 @@
   ChromatographicSeparationProcess : ordered_mobile_phases
 
     ChromatographicSeparationProcess --&gt; Solution : ordered_mobile_phases
+    click Solution href "../Solution"
 
   ChromatographicSeparationProcess : processing_institution
 
     ChromatographicSeparationProcess --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   ChromatographicSeparationProcess : protocol_link
 
     ChromatographicSeparationProcess --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   ChromatographicSeparationProcess : qc_comment
 
   ChromatographicSeparationProcess : qc_status
 
     ChromatographicSeparationProcess --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   ChromatographicSeparationProcess : start_date
 
   ChromatographicSeparationProcess : stationary_phase
 
     ChromatographicSeparationProcess --&gt; StationaryPhaseEnum : stationary_phase
+    click StationaryPhaseEnum href "../StationaryPhaseEnum"
 
   ChromatographicSeparationProcess : temperature
 
     ChromatographicSeparationProcess --&gt; QuantityValue : temperature
+    click QuantityValue href "../QuantityValue"
 
 
 

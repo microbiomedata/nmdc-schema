@@ -281,12 +281,19 @@
 <p>URI: <a href="https://w3id.org/nmdc/NamedThing">nmdc:NamedThing</a></p>
 <div class="mermaid">classDiagram
   class NamedThing
+  click NamedThing href "../NamedThing"
     NamedThing &lt;|-- DataObject
+      click DataObject href "../DataObject"
     NamedThing &lt;|-- Study
+      click Study href "../Study"
     NamedThing &lt;|-- MaterialEntity
+      click MaterialEntity href "../MaterialEntity"
     NamedThing &lt;|-- PlannedProcess
+      click PlannedProcess href "../PlannedProcess"
     NamedThing &lt;|-- OntologyClass
+      click OntologyClass href "../OntologyClass"
     NamedThing &lt;|-- GeneProduct
+      click GeneProduct href "../GeneProduct"
 
 
 

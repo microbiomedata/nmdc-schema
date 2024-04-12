@@ -277,11 +277,15 @@
 <p>URI: <a href="https://w3id.org/nmdc/BiosampleProcessing">nmdc:BiosampleProcessing</a></p>
 <div class="mermaid">classDiagram
   class BiosampleProcessing
+  click BiosampleProcessing href "../BiosampleProcessing"
     PlannedProcess &lt;|-- BiosampleProcessing
+      click PlannedProcess href "../PlannedProcess"
 
 
     BiosampleProcessing &lt;|-- Pooling
+      click Pooling href "../Pooling"
     BiosampleProcessing &lt;|-- LibraryPreparation
+      click LibraryPreparation href "../LibraryPreparation"
 
 
 
@@ -296,14 +300,17 @@
   BiosampleProcessing : has_failure_categorization
 
     BiosampleProcessing --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   BiosampleProcessing : has_input
 
     BiosampleProcessing --&gt; Biosample : has_input
+    click Biosample href "../Biosample"
 
   BiosampleProcessing : has_output
 
     BiosampleProcessing --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   BiosampleProcessing : id
 
@@ -314,16 +321,19 @@
   BiosampleProcessing : processing_institution
 
     BiosampleProcessing --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   BiosampleProcessing : protocol_link
 
     BiosampleProcessing --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   BiosampleProcessing : qc_comment
 
   BiosampleProcessing : qc_status
 
     BiosampleProcessing --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   BiosampleProcessing : start_date
 

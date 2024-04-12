@@ -270,10 +270,12 @@
 <p>URI: <a href="https://w3id.org/nmdc/ReactionParticipant">nmdc:ReactionParticipant</a></p>
 <div class="mermaid">classDiagram
   class ReactionParticipant
+  click ReactionParticipant href "../ReactionParticipant"
 
   ReactionParticipant : chemical
 
     ReactionParticipant --&gt; ChemicalEntity : chemical
+    click ChemicalEntity href "../ChemicalEntity"
 
   ReactionParticipant : stoichiometry
 

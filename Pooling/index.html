@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/Pooling">nmdc:Pooling</a></p>
 <div class="mermaid">classDiagram
   class Pooling
+  click Pooling href "../Pooling"
     BiosampleProcessing &lt;|-- Pooling
+      click BiosampleProcessing href "../BiosampleProcessing"
 
 
 
@@ -292,14 +294,17 @@
   Pooling : has_failure_categorization
 
     Pooling --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   Pooling : has_input
 
     Pooling --&gt; Biosample : has_input
+    click Biosample href "../Biosample"
 
   Pooling : has_output
 
     Pooling --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   Pooling : id
 
@@ -310,16 +315,19 @@
   Pooling : processing_institution
 
     Pooling --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   Pooling : protocol_link
 
     Pooling --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   Pooling : qc_comment
 
   Pooling : qc_status
 
     Pooling --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   Pooling : start_date
 

@@ -270,14 +270,17 @@
 <p>URI: <a href="https://w3id.org/nmdc/SolutionComponent">nmdc:SolutionComponent</a></p>
 <div class="mermaid">classDiagram
   class SolutionComponent
+  click SolutionComponent href "../SolutionComponent"
 
   SolutionComponent : compound
 
     SolutionComponent --&gt; CompoundEnum : compound
+    click CompoundEnum href "../CompoundEnum"
 
   SolutionComponent : concentration
 
     SolutionComponent --&gt; QuantityValue : concentration
+    click QuantityValue href "../QuantityValue"
 
 
 

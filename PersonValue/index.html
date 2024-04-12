@@ -284,7 +284,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/PersonValue">nmdc:PersonValue</a></p>
 <div class="mermaid">classDiagram
   class PersonValue
+  click PersonValue href "../PersonValue"
     AttributeValue &lt;|-- PersonValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -301,6 +303,7 @@
   PersonValue : was_generated_by
 
     PersonValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
   PersonValue : websites
 

@@ -269,7 +269,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/MetatranscriptomeAssembly">nmdc:MetatranscriptomeAssembly</a></p>
 <div class="mermaid">classDiagram
   class MetatranscriptomeAssembly
+  click MetatranscriptomeAssembly href "../MetatranscriptomeAssembly"
     WorkflowExecutionActivity &lt;|-- MetatranscriptomeAssembly
+      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
@@ -308,14 +310,17 @@
   MetatranscriptomeAssembly : has_failure_categorization
 
     MetatranscriptomeAssembly --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   MetatranscriptomeAssembly : has_input
 
     MetatranscriptomeAssembly --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   MetatranscriptomeAssembly : has_output
 
     MetatranscriptomeAssembly --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   MetatranscriptomeAssembly : id
 
@@ -330,12 +335,14 @@
   MetatranscriptomeAssembly : part_of
 
     MetatranscriptomeAssembly --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   MetatranscriptomeAssembly : qc_comment
 
   MetatranscriptomeAssembly : qc_status
 
     MetatranscriptomeAssembly --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   MetatranscriptomeAssembly : scaf_bp
 
@@ -372,6 +379,7 @@
   MetatranscriptomeAssembly : was_informed_by
 
     MetatranscriptomeAssembly --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

@@ -270,6 +270,7 @@
 <p>URI: <a href="https://w3id.org/nmdc/MetaboliteQuantification">nmdc:MetaboliteQuantification</a></p>
 <div class="mermaid">classDiagram
   class MetaboliteQuantification
+  click MetaboliteQuantification href "../MetaboliteQuantification"
 
   MetaboliteQuantification : alternative_identifiers
 
@@ -278,6 +279,7 @@
   MetaboliteQuantification : metabolite_quantified
 
     MetaboliteQuantification --&gt; ChemicalEntity : metabolite_quantified
+    click ChemicalEntity href "../ChemicalEntity"
 
 
 

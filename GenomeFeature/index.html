@@ -284,10 +284,12 @@
 <p>URI: <a href="https://w3id.org/nmdc/GenomeFeature">nmdc:GenomeFeature</a></p>
 <div class="mermaid">classDiagram
   class GenomeFeature
+  click GenomeFeature href "../GenomeFeature"
 
   GenomeFeature : encodes
 
     GenomeFeature --&gt; GeneProduct : encodes
+    click GeneProduct href "../GeneProduct"
 
   GenomeFeature : end
 
@@ -304,6 +306,7 @@
   GenomeFeature : type
 
     GenomeFeature --&gt; OntologyClass : type
+    click OntologyClass href "../OntologyClass"
 
 
 

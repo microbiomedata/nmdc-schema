@@ -290,7 +290,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/LibraryPreparation">nmdc:LibraryPreparation</a></p>
 <div class="mermaid">classDiagram
   class LibraryPreparation
+  click LibraryPreparation href "../LibraryPreparation"
     BiosampleProcessing &lt;|-- LibraryPreparation
+      click BiosampleProcessing href "../BiosampleProcessing"
 
 
 
@@ -305,14 +307,17 @@
   LibraryPreparation : has_failure_categorization
 
     LibraryPreparation --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   LibraryPreparation : has_input
 
     LibraryPreparation --&gt; Biosample : has_input
+    click Biosample href "../Biosample"
 
   LibraryPreparation : has_output
 
     LibraryPreparation --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   LibraryPreparation : id
 
@@ -323,6 +328,7 @@
   LibraryPreparation : library_type
 
     LibraryPreparation --&gt; LibraryTypeEnum : library_type
+    click LibraryTypeEnum href "../LibraryTypeEnum"
 
   LibraryPreparation : name
 
@@ -331,16 +337,19 @@
   LibraryPreparation : processing_institution
 
     LibraryPreparation --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   LibraryPreparation : protocol_link
 
     LibraryPreparation --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   LibraryPreparation : qc_comment
 
   LibraryPreparation : qc_status
 
     LibraryPreparation --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   LibraryPreparation : start_date
 

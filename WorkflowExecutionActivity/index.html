@@ -291,21 +291,35 @@
 <p>URI: <a href="https://w3id.org/nmdc/WorkflowExecutionActivity">nmdc:WorkflowExecutionActivity</a></p>
 <div class="mermaid">classDiagram
   class WorkflowExecutionActivity
+  click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
     Activity &lt;|-- WorkflowExecutionActivity
+      click Activity href "../Activity"
 
 
     WorkflowExecutionActivity &lt;|-- MetagenomeAssembly
+      click MetagenomeAssembly href "../MetagenomeAssembly"
     WorkflowExecutionActivity &lt;|-- MetatranscriptomeAssembly
+      click MetatranscriptomeAssembly href "../MetatranscriptomeAssembly"
     WorkflowExecutionActivity &lt;|-- MetagenomeAnnotationActivity
+      click MetagenomeAnnotationActivity href "../MetagenomeAnnotationActivity"
     WorkflowExecutionActivity &lt;|-- MetatranscriptomeAnnotationActivity
+      click MetatranscriptomeAnnotationActivity href "../MetatranscriptomeAnnotationActivity"
     WorkflowExecutionActivity &lt;|-- MetatranscriptomeActivity
+      click MetatranscriptomeActivity href "../MetatranscriptomeActivity"
     WorkflowExecutionActivity &lt;|-- MagsAnalysisActivity
+      click MagsAnalysisActivity href "../MagsAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- MetagenomeSequencingActivity
+      click MetagenomeSequencingActivity href "../MetagenomeSequencingActivity"
     WorkflowExecutionActivity &lt;|-- ReadQcAnalysisActivity
+      click ReadQcAnalysisActivity href "../ReadQcAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- ReadBasedTaxonomyAnalysisActivity
+      click ReadBasedTaxonomyAnalysisActivity href "../ReadBasedTaxonomyAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- MetabolomicsAnalysisActivity
+      click MetabolomicsAnalysisActivity href "../MetabolomicsAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- MetaproteomicsAnalysisActivity
+      click MetaproteomicsAnalysisActivity href "../MetaproteomicsAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- NomAnalysisActivity
+      click NomAnalysisActivity href "../NomAnalysisActivity"
 
 
 
@@ -318,14 +332,17 @@
   WorkflowExecutionActivity : has_failure_categorization
 
     WorkflowExecutionActivity --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   WorkflowExecutionActivity : has_input
 
     WorkflowExecutionActivity --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   WorkflowExecutionActivity : has_output
 
     WorkflowExecutionActivity --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   WorkflowExecutionActivity : id
 
@@ -334,12 +351,14 @@
   WorkflowExecutionActivity : part_of
 
     WorkflowExecutionActivity --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   WorkflowExecutionActivity : qc_comment
 
   WorkflowExecutionActivity : qc_status
 
     WorkflowExecutionActivity --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   WorkflowExecutionActivity : started_at_time
 
@@ -352,6 +371,7 @@
   WorkflowExecutionActivity : was_informed_by
 
     WorkflowExecutionActivity --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

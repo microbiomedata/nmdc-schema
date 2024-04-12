@@ -280,17 +280,27 @@
 <p>URI: <a href="http://purl.obolibrary.org/obo/OBI_0000011">OBI:0000011</a></p>
 <div class="mermaid">classDiagram
   class PlannedProcess
+  click PlannedProcess href "../PlannedProcess"
     NamedThing &lt;|-- PlannedProcess
+      click NamedThing href "../NamedThing"
 
 
     PlannedProcess &lt;|-- Extraction
+      click Extraction href "../Extraction"
     PlannedProcess &lt;|-- CollectingBiosamplesFromSite
+      click CollectingBiosamplesFromSite href "../CollectingBiosamplesFromSite"
     PlannedProcess &lt;|-- BiosampleProcessing
+      click BiosampleProcessing href "../BiosampleProcessing"
     PlannedProcess &lt;|-- SubSamplingProcess
+      click SubSamplingProcess href "../SubSamplingProcess"
     PlannedProcess &lt;|-- MixingProcess
+      click MixingProcess href "../MixingProcess"
     PlannedProcess &lt;|-- FiltrationProcess
+      click FiltrationProcess href "../FiltrationProcess"
     PlannedProcess &lt;|-- ChromatographicSeparationProcess
+      click ChromatographicSeparationProcess href "../ChromatographicSeparationProcess"
     PlannedProcess &lt;|-- OmicsProcessing
+      click OmicsProcessing href "../OmicsProcessing"
 
 
 
@@ -305,14 +315,17 @@
   PlannedProcess : has_failure_categorization
 
     PlannedProcess --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   PlannedProcess : has_input
 
     PlannedProcess --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   PlannedProcess : has_output
 
     PlannedProcess --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   PlannedProcess : id
 
@@ -323,16 +336,19 @@
   PlannedProcess : processing_institution
 
     PlannedProcess --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   PlannedProcess : protocol_link
 
     PlannedProcess --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   PlannedProcess : qc_comment
 
   PlannedProcess : qc_status
 
     PlannedProcess --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   PlannedProcess : start_date
 

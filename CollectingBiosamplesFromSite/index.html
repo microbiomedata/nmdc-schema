@@ -283,7 +283,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/CollectingBiosamplesFromSite">nmdc:CollectingBiosamplesFromSite</a></p>
 <div class="mermaid">classDiagram
   class CollectingBiosamplesFromSite
+  click CollectingBiosamplesFromSite href "../CollectingBiosamplesFromSite"
     PlannedProcess &lt;|-- CollectingBiosamplesFromSite
+      click PlannedProcess href "../PlannedProcess"
 
 
 
@@ -298,14 +300,17 @@
   CollectingBiosamplesFromSite : has_failure_categorization
 
     CollectingBiosamplesFromSite --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   CollectingBiosamplesFromSite : has_input
 
     CollectingBiosamplesFromSite --&gt; Site : has_input
+    click Site href "../Site"
 
   CollectingBiosamplesFromSite : has_output
 
     CollectingBiosamplesFromSite --&gt; Biosample : has_output
+    click Biosample href "../Biosample"
 
   CollectingBiosamplesFromSite : id
 
@@ -316,16 +321,19 @@
   CollectingBiosamplesFromSite : processing_institution
 
     CollectingBiosamplesFromSite --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   CollectingBiosamplesFromSite : protocol_link
 
     CollectingBiosamplesFromSite --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   CollectingBiosamplesFromSite : qc_comment
 
   CollectingBiosamplesFromSite : qc_status
 
     CollectingBiosamplesFromSite --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   CollectingBiosamplesFromSite : start_date
 

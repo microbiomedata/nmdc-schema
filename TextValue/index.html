@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/TextValue">nmdc:TextValue</a></p>
 <div class="mermaid">classDiagram
   class TextValue
+  click TextValue href "../TextValue"
     AttributeValue &lt;|-- TextValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -288,6 +290,7 @@
   TextValue : was_generated_by
 
     TextValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

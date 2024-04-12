@@ -284,10 +284,13 @@
 <p>URI: <a href="https://w3id.org/nmdc/ControlledTermValue">nmdc:ControlledTermValue</a></p>
 <div class="mermaid">classDiagram
   class ControlledTermValue
+  click ControlledTermValue href "../ControlledTermValue"
     AttributeValue &lt;|-- ControlledTermValue
+      click AttributeValue href "../AttributeValue"
 
 
     ControlledTermValue &lt;|-- ControlledIdentifiedTermValue
+      click ControlledIdentifiedTermValue href "../ControlledIdentifiedTermValue"
 
 
 
@@ -296,10 +299,12 @@
   ControlledTermValue : term
 
     ControlledTermValue --&gt; OntologyClass : term
+    click OntologyClass href "../OntologyClass"
 
   ControlledTermValue : was_generated_by
 
     ControlledTermValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

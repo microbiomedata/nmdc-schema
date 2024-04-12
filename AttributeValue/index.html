@@ -277,16 +277,27 @@
 <p>URI: <a href="https://w3id.org/nmdc/AttributeValue">nmdc:AttributeValue</a></p>
 <div class="mermaid">classDiagram
   class AttributeValue
+  click AttributeValue href "../AttributeValue"
     AttributeValue &lt;|-- QuantityValue
+      click QuantityValue href "../QuantityValue"
     AttributeValue &lt;|-- ImageValue
+      click ImageValue href "../ImageValue"
     AttributeValue &lt;|-- PersonValue
+      click PersonValue href "../PersonValue"
     AttributeValue &lt;|-- TextValue
+      click TextValue href "../TextValue"
     AttributeValue &lt;|-- UrlValue
+      click UrlValue href "../UrlValue"
     AttributeValue &lt;|-- TimestampValue
+      click TimestampValue href "../TimestampValue"
     AttributeValue &lt;|-- IntegerValue
+      click IntegerValue href "../IntegerValue"
     AttributeValue &lt;|-- BooleanValue
+      click BooleanValue href "../BooleanValue"
     AttributeValue &lt;|-- ControlledTermValue
+      click ControlledTermValue href "../ControlledTermValue"
     AttributeValue &lt;|-- GeolocationValue
+      click GeolocationValue href "../GeolocationValue"
 
 
 
@@ -295,6 +306,7 @@
   AttributeValue : was_generated_by
 
     AttributeValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

@@ -270,7 +270,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/IntegerValue">nmdc:IntegerValue</a></p>
 <div class="mermaid">classDiagram
   class IntegerValue
+  click IntegerValue href "../IntegerValue"
     AttributeValue &lt;|-- IntegerValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -281,6 +283,7 @@
   IntegerValue : was_generated_by
 
     IntegerValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

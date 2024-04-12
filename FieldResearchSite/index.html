@@ -291,7 +291,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/FieldResearchSite">nmdc:FieldResearchSite</a></p>
 <div class="mermaid">classDiagram
   class FieldResearchSite
+  click FieldResearchSite href "../FieldResearchSite"
     Site &lt;|-- FieldResearchSite
+      click Site href "../Site"
 
 
 
@@ -300,16 +302,19 @@
   FieldResearchSite : cur_vegetation
 
     FieldResearchSite --&gt; TextValue : cur_vegetation
+    click TextValue href "../TextValue"
 
   FieldResearchSite : description
 
   FieldResearchSite : elev
 
     FieldResearchSite --&gt; QuantityValue : elev
+    click QuantityValue href "../QuantityValue"
 
   FieldResearchSite : geo_loc_name
 
     FieldResearchSite --&gt; TextValue : geo_loc_name
+    click TextValue href "../TextValue"
 
   FieldResearchSite : habitat
 
@@ -318,20 +323,24 @@
   FieldResearchSite : lat_lon
 
     FieldResearchSite --&gt; GeolocationValue : lat_lon
+    click GeolocationValue href "../GeolocationValue"
 
   FieldResearchSite : local_class
 
     FieldResearchSite --&gt; TextValue : local_class
+    click TextValue href "../TextValue"
 
   FieldResearchSite : name
 
   FieldResearchSite : part_of
 
     FieldResearchSite --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   FieldResearchSite : soil_type
 
     FieldResearchSite --&gt; TextValue : soil_type
+    click TextValue href "../TextValue"
 
 
 

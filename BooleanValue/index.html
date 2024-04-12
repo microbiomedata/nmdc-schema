@@ -270,7 +270,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/BooleanValue">nmdc:BooleanValue</a></p>
 <div class="mermaid">classDiagram
   class BooleanValue
+  click BooleanValue href "../BooleanValue"
     AttributeValue &lt;|-- BooleanValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -281,6 +283,7 @@
   BooleanValue : was_generated_by
 
     BooleanValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

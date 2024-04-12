@@ -278,7 +278,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/SubSamplingProcess">nmdc:SubSamplingProcess</a></p>
 <div class="mermaid">classDiagram
   class SubSamplingProcess
+  click SubSamplingProcess href "../SubSamplingProcess"
     PlannedProcess &lt;|-- SubSamplingProcess
+      click PlannedProcess href "../PlannedProcess"
 
 
 
@@ -287,10 +289,12 @@
   SubSamplingProcess : contained_in
 
     SubSamplingProcess --&gt; ContainerCategoryEnum : contained_in
+    click ContainerCategoryEnum href "../ContainerCategoryEnum"
 
   SubSamplingProcess : container_size
 
     SubSamplingProcess --&gt; QuantityValue : container_size
+    click QuantityValue href "../QuantityValue"
 
   SubSamplingProcess : description
 
@@ -301,14 +305,17 @@
   SubSamplingProcess : has_failure_categorization
 
     SubSamplingProcess --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   SubSamplingProcess : has_input
 
     SubSamplingProcess --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   SubSamplingProcess : has_output
 
     SubSamplingProcess --&gt; ProcessedSample : has_output
+    click ProcessedSample href "../ProcessedSample"
 
   SubSamplingProcess : id
 
@@ -317,32 +324,38 @@
   SubSamplingProcess : mass
 
     SubSamplingProcess --&gt; QuantityValue : mass
+    click QuantityValue href "../QuantityValue"
 
   SubSamplingProcess : name
 
   SubSamplingProcess : processing_institution
 
     SubSamplingProcess --&gt; processing_institution_enum : processing_institution
+    click processing_institution_enum href "../processing_institution_enum"
 
   SubSamplingProcess : protocol_link
 
     SubSamplingProcess --&gt; Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   SubSamplingProcess : qc_comment
 
   SubSamplingProcess : qc_status
 
     SubSamplingProcess --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   SubSamplingProcess : start_date
 
   SubSamplingProcess : temperature
 
     SubSamplingProcess --&gt; QuantityValue : temperature
+    click QuantityValue href "../QuantityValue"
 
   SubSamplingProcess : volume
 
     SubSamplingProcess --&gt; QuantityValue : volume
+    click QuantityValue href "../QuantityValue"
 
 
 

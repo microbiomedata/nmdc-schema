@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/TimestampValue">nmdc:TimestampValue</a></p>
 <div class="mermaid">classDiagram
   class TimestampValue
+  click TimestampValue href "../TimestampValue"
     AttributeValue &lt;|-- TimestampValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -286,6 +288,7 @@
   TimestampValue : was_generated_by
 
     TimestampValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 

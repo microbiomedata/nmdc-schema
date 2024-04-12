@@ -276,7 +276,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/MetabolomicsAnalysisActivity">nmdc:MetabolomicsAnalysisActivity</a></p>
 <div class="mermaid">classDiagram
   class MetabolomicsAnalysisActivity
+  click MetabolomicsAnalysisActivity href "../MetabolomicsAnalysisActivity"
     WorkflowExecutionActivity &lt;|-- MetabolomicsAnalysisActivity
+      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
@@ -291,18 +293,22 @@
   MetabolomicsAnalysisActivity : has_failure_categorization
 
     MetabolomicsAnalysisActivity --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   MetabolomicsAnalysisActivity : has_input
 
     MetabolomicsAnalysisActivity --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   MetabolomicsAnalysisActivity : has_metabolite_quantifications
 
     MetabolomicsAnalysisActivity --&gt; MetaboliteQuantification : has_metabolite_quantifications
+    click MetaboliteQuantification href "../MetaboliteQuantification"
 
   MetabolomicsAnalysisActivity : has_output
 
     MetabolomicsAnalysisActivity --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   MetabolomicsAnalysisActivity : id
 
@@ -311,12 +317,14 @@
   MetabolomicsAnalysisActivity : part_of
 
     MetabolomicsAnalysisActivity --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   MetabolomicsAnalysisActivity : qc_comment
 
   MetabolomicsAnalysisActivity : qc_status
 
     MetabolomicsAnalysisActivity --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   MetabolomicsAnalysisActivity : started_at_time
 
@@ -329,6 +337,7 @@
   MetabolomicsAnalysisActivity : was_informed_by
 
     MetabolomicsAnalysisActivity --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

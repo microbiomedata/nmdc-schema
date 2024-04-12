@@ -284,7 +284,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/MetagenomeAssembly">nmdc:MetagenomeAssembly</a></p>
 <div class="mermaid">classDiagram
   class MetagenomeAssembly
+  click MetagenomeAssembly href "../MetagenomeAssembly"
     WorkflowExecutionActivity &lt;|-- MetagenomeAssembly
+      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
@@ -323,14 +325,17 @@
   MetagenomeAssembly : has_failure_categorization
 
     MetagenomeAssembly --&gt; FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
   MetagenomeAssembly : has_input
 
     MetagenomeAssembly --&gt; NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   MetagenomeAssembly : has_output
 
     MetagenomeAssembly --&gt; NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
   MetagenomeAssembly : id
 
@@ -345,12 +350,14 @@
   MetagenomeAssembly : part_of
 
     MetagenomeAssembly --&gt; NamedThing : part_of
+    click NamedThing href "../NamedThing"
 
   MetagenomeAssembly : qc_comment
 
   MetagenomeAssembly : qc_status
 
     MetagenomeAssembly --&gt; StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
 
   MetagenomeAssembly : scaf_bp
 
@@ -387,6 +394,7 @@
   MetagenomeAssembly : was_informed_by
 
     MetagenomeAssembly --&gt; Activity : was_informed_by
+    click Activity href "../Activity"
 
 
 

@@ -277,7 +277,9 @@
 <p>URI: <a href="https://w3id.org/nmdc/ImageValue">nmdc:ImageValue</a></p>
 <div class="mermaid">classDiagram
   class ImageValue
+  click ImageValue href "../ImageValue"
     AttributeValue &lt;|-- ImageValue
+      click AttributeValue href "../AttributeValue"
 
 
 
@@ -292,6 +294,7 @@
   ImageValue : was_generated_by
 
     ImageValue --&gt; Activity : was_generated_by
+    click Activity href "../Activity"
 
 
 
