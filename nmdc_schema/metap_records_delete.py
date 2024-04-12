@@ -1,23 +1,34 @@
 import json
 import pymongo
 import argparse
+import logging
+import time
 from pathlib import Path
 from typing import List, Any, Dict, Tuple
 from collections import defaultdict, Counter
 from itertools import chain
 
 
+logger = logging.getLogger(Path(__file__).name)
+logging.basicConfig(
+    level=logging.INFO,
+    handlers=[
+        logging.FileHandler(f'{Path(__file__).stem}_{time.strftime("%Y%m%d-%H%M%S")}.log'),
+        logging.StreamHandler()
+    ]
+)
+
 def args() -> Tuple[str]:
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        "--output_dir",
+        "--output-dir",
         type=str,
-        help="The output directory to save results",
+        help="Optionally write relevant records and stats in the specifiec directory. Occurs before deletion.",
         required=False,
     )
     parser.add_argument(
-        "-d", help="Delete all MetaP proteomics records", action="store_true"
+        "--dry-run", help="Print, but not delete, all metaP proteomics records deletion records", action="store_true"
     )
     parser.add_argument("--username", type=str, help="MongoDB username", required=True)
     parser.add_argument("--password", type=str, help="MongoDB password", required=True)
@@ -28,14 +39,15 @@ class NMDCAccessor:
     def __init__(self, db):
         self.db = db
 
-    def get_metaproteomics_analysis_activity_set_documents(self) -> Any:
-        collection = self.db["metaproteomics_analysis_activity_set"]
-        documents = collection.find({})
+    def get_documents_from_collection(self, collection_name: str) -> Any:
+        collection = self.db[collection_name]
+        documents = list(collection.find({}))
 
-        return list(documents)
+        logger.info(f"Found {len(documents)} documents in {collection_name}")
+        return documents
 
     def get_has_outputs_map(self) -> Dict[str, List[str]]:
-        documents = self.get_metaproteomics_analysis_activity_set_documents()
+        documents = self.get_records_from_collection("metaproteomics_analysis_activity_set")
         has_outputs_map = defaultdict(list)
 
         for document in documents:
@@ -68,12 +80,6 @@ class NMDCAccessor:
 
         return [record["id"] for record in records]
 
-    def get_metap_gene_function_aggregation_documents(self) -> Any:
-        collection = self.db["metap_gene_function_aggregation"]
-        documents = collection.find({})
-
-        return list(documents)
-
     def get_metaproteomics_collection_ids_to_delete_map(self) -> Dict[str, List[str]]:
         metap_analy_documents = (
             self.get_metaproteomics_analysis_activity_set_documents()
@@ -100,45 +106,72 @@ class NMDCAccessor:
         filter = {"id": {"$in": ids}}
 
         result = collection.delete_many(filter)
-        print(f"Deleted {result.deleted_count} documents")
+        logger.info(f"Deleted {result.deleted_count} documents")
 
-    def delete_matching_record_from_id(self, collection_name: str, id: str) -> None:
+    def delete_matching_record_from_id(self, collection_name: str, id: str, delete=False, should_log_id=True) -> None:
+        """
+        Delete a record from a collection by ID.
+
+        :param collection_name: The name of the collection to delete the record from.
+        :param id: The ID of the record to delete.
+        :param delete: If True, delete the record. If False, just log the record that would be deleted.
+        :param should_log_id: If True, log the ID of the record that would be deleted. If False, do not log the ID since not all records have IDs.
+        """
         collection = self.db[collection_name]
         filter = {"id": id}
 
-        result = collection.delete_one(filter)
-        print(f"Deleted {result.deleted_count} documents")
+        if should_log_id:
+            self.__log_record_deletion_information(collection_name, id)
 
-    def delete_all_records_from_collection(self, collection_name: str) -> Any:
-        """
-        A terrifying function for deleting ALL documents in a collection
-        """
+        if delete:
+            result = collection.delete_one(filter)
+            logger.info(f"Deleted {result.deleted_count} record(s) from {collection_name}")
 
+    def delete_all_records_from_collection(self, collection_name: str, delete=False, should_log_id=True) -> Any:
+        """
+        A terrifying function for deleting ALL records in a collection.
+
+        :param collection_name: The name of the collection to delete all records from.
+        :param delete: If True, delete the records. If False, just log the records that would be deleted.
+        :param ided_records: If True, log the IDs of the records that would be deleted. If False, do not log the IDs since not all records have IDs.
+        """
+        logger.info(f"Deleting all records from {collection_name}")
+
+        to_delete = self.get_documents_from_collection(collection_name)
         collection = self.db[collection_name]
 
-        result = collection.delete_many({})
+        if should_log_id:
+            ids = [doc["id"] for doc in to_delete]
+            self.__log_record_deletion_information_many(collection_name, ids)
 
-        print(f"Deleted {result.deleted_count} documents")
+        if delete:
+            result = collection.delete_many({})
+            logger.info(f"Deleted {result.deleted_count} record(s) from {collection_name}")
 
-    def delete_all_metaproteomics_records(self) -> None:
+    def delete_all_metaproteomics_records(self, delete = False) -> None:
+        """
+        Delete all metaproteomics records.
+
+        :param delete: If True, delete the records. If False, just log the records that would be deleted.
+        """
         metap_collection_name = "metap_gene_function_aggregation"
         metaproteomics_analy_collection_name = "metaproteomics_analysis_activity_set"
         data_objects_set_name = "data_object_set"
 
-        # Drop all all from metap gene function collection.
-        self.delete_all_records_from_collection(metap_collection_name)
+        # Drop all from metap gene function collection.
+        self.delete_all_records_from_collection(metap_collection_name, delete=delete, should_log_id=False)
 
         # Drop all from metaproteomics analysis activity set collection.
-        self.delete_all_records_from_collection(metaproteomics_analy_collection_name)
+        self.delete_all_records_from_collection(metaproteomics_analy_collection_name, delete=delete, should_log_id=True)
 
         # Get all IDs associated with protemics job outputs.
         # This search is broader than tracing down the outputs of the metaproteomics analysis activity set records' data objects
         # since there appear to be dangling data objects that are not associated with any metaproteomics analysis activity records,
         # but "MSGF" is in their description and absolutely associated with the proteomics pipeline
         ids = self.get_matching_msgf_data_object_ids()
-
+        logger.info(f'Found {len(ids)} matching records in {data_objects_set_name}')
         for id in ids:
-            self.delete_matching_record_from_id(data_objects_set_name, id)
+            self.delete_matching_record_from_id(data_objects_set_name, id, delete=delete, should_log_id=True)
 
     def save_metaproteomics_analysis_activity_set(self, output_dir: Path) -> None:
         output_file = output_dir.joinpath(
@@ -181,7 +214,7 @@ class NMDCAccessor:
 
     def save_metap_gene_function_aggregation(self, output_dir: Path) -> None:
         output_file = output_dir.joinpath(Path("metap_gene_function_aggregation.json"))
-        documents = self.get_metap_gene_function_aggregation_documents()
+        documents = self.get_documents_from_collection("metap_gene_function_aggregation")
 
         with open(str(output_file), "w+") as fp:
             json.dump(documents, fp, default=str, indent=2)
@@ -197,9 +230,9 @@ class NMDCAccessor:
         output_file = output_dir.joinpath(
             Path("metap_gene_function_aggregation_stats.json")
         )
-        documents_function_agg = self.get_metap_gene_function_aggregation_documents()
+        documents_function_agg = self.get_documents_from_collection("metap_gene_function_aggregation")
         documents_metaproteomics_analy = (
-            self.get_metaproteomics_analysis_activity_set_documents()
+            self.get_documents_from_collection("metaproteomics_analysis_activity_set")
         )
 
         ids_function_agg: List[str] = [
@@ -222,6 +255,14 @@ class NMDCAccessor:
 
         with open(str(output_file), "w+") as fp:
             json.dump(stats_json, fp, default=str, indent=2)
+
+    def __log_record_deletion_information_many(self, collection_name: str, ids: List[str]) -> None:
+        for id in ids:
+            self.__log_record_deletion_information(collection_name, id)
+
+    def __log_record_deletion_information(self, collection_name: str, id: str) -> None:
+        logger.info(f"Deleting record with ID: {id} from {collection_name}")
+
 
     @staticmethod
     def get_nmdc_db(username: str, password: str) -> "NMDCAccessor":
@@ -247,7 +288,7 @@ def main():
 
     if args_map.output_dir:
         output = Path(args_map.output_dir)
-        print(f"Saving to {output}")
+        logger.info(f"Saving to {output}")
         accessor.save_data_object_set(output)
         accessor.save_metaproteomics_analysis_activity_set(output)
         accessor.save_has_outputs_map(output)
@@ -255,11 +296,16 @@ def main():
         accessor.save_matching_msgf_data_objects(output)
         accessor.save_metap_gene_function_aggregation_stats(output)
         accessor.save_all_to_delete_by_ids_map(output)
-    if (
-        args_map.d
-    ):
-        print("Deleting all records")
-        accessor.delete_all_metaproteomics_records()
+
+    if args_map.dry_run:
+        logger.info("Dry run: no records will be deleted")
+    else:
+        logger.info("Deleting all records")
+
+    # Being very explicit about the deletion of records
+    delete = not args_map.dry_run
+
+    accessor.delete_all_metaproteomics_records(delete=delete)
 
 
 if __name__ == "__main__":
