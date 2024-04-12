@@ -158,12 +158,19 @@ classes:
     class_uri: nmdc:MassSpectrometryConfiguration
     description: Configuration of a mass spectrometry process.
     slots:
+      - id
+      - type
       - acquisition_category
       - resolution_category
       - mass_analyzer
       - ionization_source
       - mass_spectrum_collection_mode
       - polarity_mode
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   FunctionalAnnotationAggMember:
     class_uri: "nmdc:FunctionalAnnotationAggMember"
@@ -692,6 +699,7 @@ slots:
 
   has_configuration:
     range: MassSpectrometryConfiguration
+    domain: MassSpectrometry
     description: the configuration of the mass spectrometry process
 
   metagenome_annotation_id:
