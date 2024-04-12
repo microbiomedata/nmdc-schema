@@ -154,12 +154,19 @@ classes:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  MassSpectrometryConfiguration:
-    class_uri: nmdc:MassSpectrometryConfiguration
-    description: Configuration of a mass spectrometry process.
+  Configuration:
+    abstract: true
+    class_uri: nmdc:Configuration
+    description: Configuration of a process. #Make better
     slots:
       - id
       - type
+
+  MassSpectrometryConfiguration:
+    is_a: Configuration
+    class_uri: nmdc:MassSpectrometryConfiguration
+    description: Configuration of a mass spectrometry process.
+    slots:
       - acquisition_category
       - resolution_category
       - mass_analyzer
@@ -698,8 +705,9 @@ slots:
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
   has_configuration:
-    range: MassSpectrometryConfiguration
-    domain: MassSpectrometry
+    any_of:
+      - range: Configuration
+      - range: DataObject
     description: the configuration of the mass spectrometry process
 
   metagenome_annotation_id:
