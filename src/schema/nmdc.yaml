@@ -705,9 +705,7 @@ slots:
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
   has_configuration:
-    any_of:
-      - range: Configuration
-      - range: DataObject
+    range: Configuration
     description: a platform that enables the user to configure the appearance, actions, and other usage preferences on a process
 
   metagenome_annotation_id:
