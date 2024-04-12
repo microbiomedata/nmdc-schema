@@ -12,10 +12,9 @@ has_input:
 has_output:
   - nmdc:o1
   - nmdc:o2
-has_metabolite_identifications:
+has_metabolite_quantifications:
   - alternative_identifiers:
     - kegg:C00583
     - cas:57-55-6
     highest_similarity_score: 0.9534156546099186
-    metabolite_identified: chebi:16997
-
+    metabolite_quantified: chebi:16997
