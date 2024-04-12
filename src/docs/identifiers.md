@@ -148,19 +148,47 @@ The per-part regular expression described above can be composed into one complet
 ^(?<prefix>nmdc):(?<typecode>[a-z]{1,6})-(?<shoulder>[0-9][a-z]{0,6}[0-9])-(?<blade>[A-Za-z0-9]+)(?<version>(\.[A-Za-z0-9]+)*)(?<locus>_[A-Za-z0-9_\.-]+)?$
 ```
 
+## Annotation identifiers
+
+Both metaG and metaT analyses produce GFF3 files.
+See [issue 184](https://github.com/microbiomedata/nmdc-metadata/issues/184) for more on how the GFF is modeled.
+
+The main entity we care about in these is
+the [gene product] https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct) ID (usually a protein), this is what
+functional annotation hangs off.
+
+This is typically a protein encoded by a CDS, e.g.
+
+```
+Ga0185794_41    GeneMark.hmm-2 v1.05    CDS     48      1037    56.13   +       0       ID=Ga0185794_41_48_1037;translation_table=11;start_type=ATG;product=5-methylthioadenosine/S-adenosylhomocysteine deaminase;product_source=KO:K12960;cath_funfam=3.20.20.140;cog=COG0402;ko=KO:K12960;ec_number=EC:3.5.4.28,EC:3.5.4.31;pfam=PF01979;superfamily=51338,51556
+```
+
+When converting col9 we ensure that each ID is correctly prefixed. So for example, we use `KEGG.OTHOLOGY:K12960`
+not `KO:K12960` as the former is the official prefix according to KEGG and identifiers.org
+
+We will also later need a policy for IDs for the sequences in col1 (ie genome or transcript), please return later for
+more details...
+
 ## Reuse vs minting new IDs
 
-We try to reuse IDs as far as possible. For example, for any sample already in GOLD, we use the GOLD sample identifier,
-e.g. GOLD:Gb.....
+In 2023 NMDC transitioned from reusing identifiers from other organizations to using NMDC minted identifiers as the primary identifier. In April 2024 NMDC will update legacy records to use NMDC minted identifers as the primary identifier.  The  table below provides information is how legacy identifiers can be found in updated records. 
 
-## IDs generated during workflows
+## Identifier mapping
 
-This section is in progress. See https://github.com/microbiomedata/nmdc-metadata/issues/195
+| Identifier    | Example | NMDC Schema Class | NMDC Schema Slot |
+| :-------- | :------- | :------- | :------- |
+| gold:Gs*  | gold:Gs0114675 | Study | gold_study_identifiers |
+| gold:Gb* | gold:Gb0110739 | Biosample | gold_biosample_identifiers |
+| emsl:* | emsl:63ca2f94-6647-11eb-ae93-0242ac130002| Biosample | emsl_biosample_identifiers|
+| igsn:*   | igsn:IEWFS001H | Biosample | igsn_biosample_identifiers | 
+| gold:Gp* | gold:Gp0452734 | OmicsProcessing | gold_sequencing_project_identifiers |
+| emsl:* | emsl:598506 | OmicsProcessing | alternative_identifiers |
 
-All instances of [OmicsProcessing](https://microbiomedata.github.io/nmdc-metadata/docs/OmicsProcessing) have IDs. The
-policy for ID depends on the provider.
+Some legacy data object identifiers were based on file md5sums, either with or without a prefix (nmdc, jgi, emsl). In some cases the legacy value can be found by removing the prefix and searching DataObject records on slot md5_checksum.  If you are having trouble finding information based on legacy identifiers please contact support@microbiomedata.org.
 
-Currently metagenomics omics objects look like this:
+## Additional details on legacy identifiers
+
+Legacy metagenomics omics objects look like this:
 
 ```yaml
       id: "gold:Gp0108335"
@@ -180,8 +208,6 @@ Currently metagenomics omics objects look like this:
       principal_investigator_name: "Virginia Rich"
 ```
 
-note that we use re-using the GOLD ID rather than minting a new one
-
 the linked data object uses a jgi prefix and an md5 hash
 
 ```yaml
@@ -192,9 +218,7 @@ the linked data object uses a jgi prefix and an md5 hash
       type: "nmdc:DataObject"
 ```
 
-note that currently jgi is not registered and thus the ID is not resolvable
-
-Currently metaproteomics omics objects look like this:
+Legacy metaproteomics omics objects look like this:
 
 ```yaml
       id: "emsl:404590"
@@ -209,9 +233,6 @@ Currently metaproteomics omics objects look like this:
       instrument_name: "VOrbiETD03"
       processing_institution: "Environmental Molecular Sciences Lab"
 ```
-
-this is suboptimal; `emsl` is not yet registered, and it's not clear that the integer is unique within emsl, let alone
-the nmdc subset
 
 the output data objects are formed from these:
 
@@ -233,29 +254,6 @@ the data objects use hashes (md5) prefixed with nmdc:
       id: "nmdc:e0c70280a7a23c7c5cc1e589f72e896e"
 ```
 
-note nmdc is not yet registered
-
-Both metaG and metaT analyses produce GFF3 files.
-See [issue 184](https://github.com/microbiomedata/nmdc-metadata/issues/184) for more on how the GFF is modeled.
-
-The main entity we care about in these is
-the [gene product] https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct) ID (usually a protein), this is what
-functional annotation hangs off.
-
-This is typically a protein encoded by a CDS, e.g.
-
-```
-Ga0185794_41    GeneMark.hmm-2 v1.05    CDS     48      1037    56.13   +       0       ID=Ga0185794_41_48_1037;translation_table=11;start_type=ATG;product=5-methylthioadenosine/S-adenosylhomocysteine deaminase;product_source=KO:K12960;cath_funfam=3.20.20.140;cog=COG0402;ko=KO:K12960;ec_number=EC:3.5.4.28,EC:3.5.4.31;pfam=PF01979;superfamily=51338,51556
-```
-
-Currently we are prefixing the ID field in GFF with `nmdc`, e.g. `nmdc:Ga0185794_41_48_1037` as the protein ID
-
-When converting col9 we ensure that each ID is correctly prefixed. So for example, we use `KEGG.OTHOLOGY:K12960`
-not `KO:K12960` as the former is the official prefix according to KEGG and identifiers.org
-
-We will also later need a policy for IDs for the sequences in col1 (ie genome or transcript), please return later for
-more details...
-
 ## MIxS term identifiers
 
 We are working with the GSC to provide permanent IDs for MIxS terms. Note these terms are schema-level rather than
@@ -267,9 +265,7 @@ For now we place these in the nmdc namespaces, e.g
 
 `nmdc:alt`
 
-## Identifier mapping
 
-Please check this section later
 
 ## Identifiers and semantic web URIs
 
