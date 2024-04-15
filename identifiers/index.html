@@ -407,6 +407,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#annotation-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotation identifiers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reuse-vs-minting-new-ids" class="md-nav__link">
     <span class="md-ellipsis">
       Reuse vs minting new IDs
@@ -416,9 +425,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ids-generated-during-workflows" class="md-nav__link">
+  <a href="#identifier-mapping" class="md-nav__link">
     <span class="md-ellipsis">
-      IDs generated during workflows
+      Identifier mapping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-details-on-legacy-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional details on legacy identifiers
     </span>
   </a>
   
@@ -428,15 +446,6 @@
   <a href="#mixs-term-identifiers" class="md-nav__link">
     <span class="md-ellipsis">
       MIxS term identifiers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identifier mapping
     </span>
   </a>
   
@@ -670,6 +679,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#annotation-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotation identifiers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#reuse-vs-minting-new-ids" class="md-nav__link">
     <span class="md-ellipsis">
       Reuse vs minting new IDs
@@ -679,9 +697,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ids-generated-during-workflows" class="md-nav__link">
+  <a href="#identifier-mapping" class="md-nav__link">
     <span class="md-ellipsis">
-      IDs generated during workflows
+      Identifier mapping
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-details-on-legacy-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional details on legacy identifiers
     </span>
   </a>
   
@@ -691,15 +718,6 @@
   <a href="#mixs-term-identifiers" class="md-nav__link">
     <span class="md-ellipsis">
       MIxS term identifiers
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#identifier-mapping" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identifier mapping
     </span>
   </a>
   
@@ -853,14 +871,73 @@ is <a href="https://registry.identifiers.org/registry/kegg.orthology">KEGG.ORTHO
 <p>The per-part regular expression described above can be composed into one complete regular expression. Named capture groups have been used to tie in the part names.</p>
 <pre><code>^(?&lt;prefix&gt;nmdc):(?&lt;typecode&gt;[a-z]{1,6})-(?&lt;shoulder&gt;[0-9][a-z]{0,6}[0-9])-(?&lt;blade&gt;[A-Za-z0-9]+)(?&lt;version&gt;(\.[A-Za-z0-9]+)*)(?&lt;locus&gt;_[A-Za-z0-9_\.-]+)?$
 </code></pre>
+<h2 id="annotation-identifiers">Annotation identifiers</h2>
+<p>Both metaG and metaT analyses produce GFF3 files.
+See <a href="https://github.com/microbiomedata/nmdc-metadata/issues/184">issue 184</a> for more on how the GFF is modeled.</p>
+<p>The main entity we care about in these is
+the [gene product] <a href="https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct">https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct</a>) ID (usually a protein), this is what
+functional annotation hangs off.</p>
+<p>This is typically a protein encoded by a CDS, e.g.</p>
+<pre><code>Ga0185794_41    GeneMark.hmm-2 v1.05    CDS     48      1037    56.13   +       0       ID=Ga0185794_41_48_1037;translation_table=11;start_type=ATG;product=5-methylthioadenosine/S-adenosylhomocysteine deaminase;product_source=KO:K12960;cath_funfam=3.20.20.140;cog=COG0402;ko=KO:K12960;ec_number=EC:3.5.4.28,EC:3.5.4.31;pfam=PF01979;superfamily=51338,51556
+</code></pre>
+<p>When converting col9 we ensure that each ID is correctly prefixed. So for example, we use <code>KEGG.OTHOLOGY:K12960</code>
+not <code>KO:K12960</code> as the former is the official prefix according to KEGG and identifiers.org</p>
+<p>We will also later need a policy for IDs for the sequences in col1 (ie genome or transcript), please return later for
+more details...</p>
 <h2 id="reuse-vs-minting-new-ids">Reuse vs minting new IDs</h2>
-<p>We try to reuse IDs as far as possible. For example, for any sample already in GOLD, we use the GOLD sample identifier,
-e.g. GOLD:Gb.....</p>
-<h2 id="ids-generated-during-workflows">IDs generated during workflows</h2>
-<p>This section is in progress. See <a href="https://github.com/microbiomedata/nmdc-metadata/issues/195">https://github.com/microbiomedata/nmdc-metadata/issues/195</a></p>
-<p>All instances of <a href="https://microbiomedata.github.io/nmdc-metadata/docs/OmicsProcessing">OmicsProcessing</a> have IDs. The
-policy for ID depends on the provider.</p>
-<p>Currently metagenomics omics objects look like this:</p>
+<p>In 2023 NMDC transitioned from reusing identifiers from other organizations to using NMDC minted identifiers as the primary identifier. In April 2024 NMDC will update legacy records to use NMDC minted identifers as the primary identifier.  The  table below provides information is how legacy identifiers can be found in updated records. </p>
+<h2 id="identifier-mapping">Identifier mapping</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Identifier</th>
+<th style="text-align: left;">Example</th>
+<th style="text-align: left;">NMDC Schema Class</th>
+<th style="text-align: left;">NMDC Schema Slot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">gold:Gs*</td>
+<td style="text-align: left;">gold:Gs0114675</td>
+<td style="text-align: left;">Study</td>
+<td style="text-align: left;">gold_study_identifiers</td>
+</tr>
+<tr>
+<td style="text-align: left;">gold:Gb*</td>
+<td style="text-align: left;">gold:Gb0110739</td>
+<td style="text-align: left;">Biosample</td>
+<td style="text-align: left;">gold_biosample_identifiers</td>
+</tr>
+<tr>
+<td style="text-align: left;">emsl:*</td>
+<td style="text-align: left;">emsl:63ca2f94-6647-11eb-ae93-0242ac130002</td>
+<td style="text-align: left;">Biosample</td>
+<td style="text-align: left;">emsl_biosample_identifiers</td>
+</tr>
+<tr>
+<td style="text-align: left;">igsn:*</td>
+<td style="text-align: left;">igsn:IEWFS001H</td>
+<td style="text-align: left;">Biosample</td>
+<td style="text-align: left;">igsn_biosample_identifiers</td>
+</tr>
+<tr>
+<td style="text-align: left;">gold:Gp*</td>
+<td style="text-align: left;">gold:Gp0452734</td>
+<td style="text-align: left;">OmicsProcessing</td>
+<td style="text-align: left;">gold_sequencing_project_identifiers</td>
+</tr>
+<tr>
+<td style="text-align: left;">emsl:*</td>
+<td style="text-align: left;">emsl:598506</td>
+<td style="text-align: left;">OmicsProcessing</td>
+<td style="text-align: left;">alternative_identifiers</td>
+</tr>
+</tbody>
+</table>
+<p>Some legacy data object identifiers were based on file md5sums, either with or without a prefix (nmdc, jgi, emsl). In some cases the legacy value can be found by removing the prefix and searching DataObject records on slot md5_checksum.  If you are having trouble finding information based on legacy identifiers please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#105;&#99;&#114;&#111;&#98;&#105;&#111;&#109;&#101;&#100;&#97;&#116;&#97;&#46;&#111;&#114;&#103;">&#115;&#117;&#112;&#112;&#111;&#114;&#116;&#64;&#109;&#105;&#99;&#114;&#111;&#98;&#105;&#111;&#109;&#101;&#100;&#97;&#116;&#97;&#46;&#111;&#114;&#103;</a>.</p>
+<h2 id="additional-details-on-legacy-identifiers">Additional details on legacy identifiers</h2>
+<p>Legacy metagenomics omics objects look like this:</p>
 <pre><code class="language-yaml">      id: &quot;gold:Gp0108335&quot;
       name: &quot;Thawing permafrost microbial communities from the Arctic, studying carbon transformations - Permafrost 712P3D&quot;
       has_input:
@@ -877,7 +954,6 @@ policy for ID depends on the provider.</p>
       processing_institution: &quot;Joint Genome Institute&quot;
       principal_investigator_name: &quot;Virginia Rich&quot;
 </code></pre>
-<p>note that we use re-using the GOLD ID rather than minting a new one</p>
 <p>the linked data object uses a jgi prefix and an md5 hash</p>
 <pre><code class="language-yaml">      id: &quot;jgi:551a20d30d878525404e90d5&quot;
       name: &quot;8871.1.114459.GCCAAT.fastq.gz&quot;
@@ -885,8 +961,7 @@ policy for ID depends on the provider.</p>
       file_size_bytes: 17586370657
       type: &quot;nmdc:DataObject&quot;
 </code></pre>
-<p>note that currently jgi is not registered and thus the ID is not resolvable</p>
-<p>Currently metaproteomics omics objects look like this:</p>
+<p>Legacy metaproteomics omics objects look like this:</p>
 <pre><code class="language-yaml">      id: &quot;emsl:404590&quot;
       name: &quot;FECB_21_5093B_01_23Dec14_Tiger_14-11-12&quot;
       description: &quot;High res MS with low res CID MSn&quot;
@@ -899,8 +974,6 @@ policy for ID depends on the provider.</p>
       instrument_name: &quot;VOrbiETD03&quot;
       processing_institution: &quot;Environmental Molecular Sciences Lab&quot;
 </code></pre>
-<p>this is suboptimal; <code>emsl</code> is not yet registered, and it's not clear that the integer is unique within emsl, let alone
-the nmdc subset</p>
 <p>the output data objects are formed from these:</p>
 <pre><code class="language-yaml">      id: &quot;emsl:output_404590&quot;
       name: &quot;output: FECB_21_5093B_01_23Dec14_Tiger_14-11-12&quot;
@@ -915,28 +988,12 @@ the nmdc subset</p>
       type: &quot;nmdc:DataObject&quot;
       id: &quot;nmdc:e0c70280a7a23c7c5cc1e589f72e896e&quot;
 </code></pre>
-<p>note nmdc is not yet registered</p>
-<p>Both metaG and metaT analyses produce GFF3 files.
-See <a href="https://github.com/microbiomedata/nmdc-metadata/issues/184">issue 184</a> for more on how the GFF is modeled.</p>
-<p>The main entity we care about in these is
-the [gene product] <a href="https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct">https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct</a>) ID (usually a protein), this is what
-functional annotation hangs off.</p>
-<p>This is typically a protein encoded by a CDS, e.g.</p>
-<pre><code>Ga0185794_41    GeneMark.hmm-2 v1.05    CDS     48      1037    56.13   +       0       ID=Ga0185794_41_48_1037;translation_table=11;start_type=ATG;product=5-methylthioadenosine/S-adenosylhomocysteine deaminase;product_source=KO:K12960;cath_funfam=3.20.20.140;cog=COG0402;ko=KO:K12960;ec_number=EC:3.5.4.28,EC:3.5.4.31;pfam=PF01979;superfamily=51338,51556
-</code></pre>
-<p>Currently we are prefixing the ID field in GFF with <code>nmdc</code>, e.g. <code>nmdc:Ga0185794_41_48_1037</code> as the protein ID</p>
-<p>When converting col9 we ensure that each ID is correctly prefixed. So for example, we use <code>KEGG.OTHOLOGY:K12960</code>
-not <code>KO:K12960</code> as the former is the official prefix according to KEGG and identifiers.org</p>
-<p>We will also later need a policy for IDs for the sequences in col1 (ie genome or transcript), please return later for
-more details...</p>
 <h2 id="mixs-term-identifiers">MIxS term identifiers</h2>
 <p>We are working with the GSC to provide permanent IDs for MIxS terms. Note these terms are schema-level rather than
 data-level.</p>
 <p>Please check this section later</p>
 <p>For now we place these in the nmdc namespaces, e.g</p>
 <p><code>nmdc:alt</code></p>
-<h2 id="identifier-mapping">Identifier mapping</h2>
-<p>Please check this section later</p>
 <h2 id="identifiers-and-semantic-web-uris">Identifiers and semantic web URIs</h2>
 <p>We produce a JSON-LD context with the schema:</p>
 <ul>
