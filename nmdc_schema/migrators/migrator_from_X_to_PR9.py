@@ -23,9 +23,9 @@ class Migrator(MigratorBase):
         respective workflow chain ids
         """
 
-        super().__init__()
-        self.adapter = adapter
-        self.logger = logger
+        super().__init__(adapter=adapter, logger=logger)
+        # self.adapter = adapter
+        # self.logger = logger
 
         self.workflow_omics_dict = {}
         self.omics_analyte_category_dict = {}
@@ -82,6 +82,7 @@ class Migrator(MigratorBase):
         r"""
         Get the was_informed_by value (an omics processing id) from the WorkflowExecution documents and 
         create a dictionary of the omics processing id with its corresponding worfklow chain id
+        
         >>> m = Migrator()
         >>> m.was_informed_by_chain_mapping({'id': 123, 'was_informed_by': 'nmdc:omcp-123'})
         {'id': 123, 'was_informed_by': 'nmdc:omcp-123'}
@@ -131,6 +132,7 @@ class Migrator(MigratorBase):
     def update_part_of_slot(self, workflow_doc: dict):
         r"""
         Replaces the value, if there is one, in the part_of slot in the workflow doc with the corresponding workflow chain id.
+        
         >>> m = Migrator()
         >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
         >>> result1 = m.update_part_of_slot({'id': 456, 'was_informed_by': 'nmdc:omcp-123'})
@@ -152,6 +154,7 @@ class Migrator(MigratorBase):
         r"""
         Get the analyte_category slot value from the omics processing doc and create a dictionary that 
         maps omics id to analyte_category value
+        
         >>> m = Migrator()
         >>> omics_doc = {'id': 'nmdc:omcp-123', 'analyte_category': 'metagenome'}
         >>> result = m.omics_id_analyte_category_mapping(omics_doc)
@@ -169,6 +172,18 @@ class Migrator(MigratorBase):
         return omics_doc
     
     def populate_workflow_chain(self):
+        r"""
+        Create and populate the workflow_chain_set collection based on the data in the workflow_omics_dict,
+        study_name_dict, and omics_analyte_category_dict.
+
+        >>> m = Migrator()
+        >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
+        >>> m.study_name_dict = {'nmdc:omcp-123': ['Study 1']}
+        >>> m.omics_analyte_category_dict = {'nmdc:omcp-123': 'metagenome'}
+        >>> m.populate_workflow_chain()
+        # After execution, the workflow_chain_set collection should contain a document with the following data:
+        {'id': 'nmdc:wfc-456', 'was_informed_by': 'nmdc:omcp-123', 'analyte_category': 'metagenome', 'type': 'nmdc:WorkflowChain', 'name': 'Workflow Chain for metagenome analysis related to Study 1'}
+        """
         
         for omics_id, workflow_chain_id in self.workflow_omics_dict.items():
             workflow_chain_doc = {}
