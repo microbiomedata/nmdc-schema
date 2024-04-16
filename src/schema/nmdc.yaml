@@ -347,6 +347,7 @@ classes:
       - temperature
       - volume
       - mass
+      - sample_portion
     slot_usage:
       id:
         required: true
@@ -1069,4 +1070,7 @@ slots:
 #    description: A substance within a formulation that enhances the solubility of another substance.
 #    exact_mappings:
 #      - NCIT:C176640
-
+  sample_portion:
+    domain: SubSamplingProcess
+    range: SamplePortionEnum
+    description: The portion of the sample that is taken for downstream activity.
