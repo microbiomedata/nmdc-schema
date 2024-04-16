@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import csv
 import json
 import os
 from pprint import pprint
@@ -457,6 +458,8 @@ seq_based_collection_list = [
 data_object_coll = mydb["data_object_set"]
 
 target_gp_for_del = open("omics_records_to_delete.txt", "r")
+# Track deleted record identifiers as (collection, id) tuples
+deleted_record_identifiers = []
 for gp in target_gp_for_del:
     gold_project_id = gp.strip()
     gold_proj_curie = "gold:" + gold_project_id
@@ -469,6 +472,7 @@ for gp in target_gp_for_del:
             doc = wea_coll.find_one({"was_informed_by": gold_proj_curie})
             if doc:
                 print("found " + doc["id"] + " in collection " + collection)
+                deleted_record_identifiers.append((collection, doc["id"]))
                 # wea_to_delete.append(doc)
                 wea_coll.delete_one({"was_informed_by": gold_proj_curie})
             # this method should not be used as there are data objects that need to be removed that are not listed in has_output for the WEA records
@@ -485,6 +489,19 @@ for gp in target_gp_for_del:
                     + " in collection "
                     + collection
                 )
-        data_object_coll.delete_many({"description": {"$regex": gold_project_id}})
+        # Fetch documents matching the regex pattern
+        matching_docs = data_object_coll.find({"description": {"$regex": gold_project_id}})
+        # Delete each matching document
+        for doc in matching_docs:
+            deleted_record_identifiers.append(("data_object_set", doc["id"]))
+            data_object_coll.delete_one({"_id": doc["_id"]})
+
+# Print the list of deleted record identifiers to a tsv file
+with open("deleted_record_identifiers.tsv", "w") as f:
+    writer = csv.writer(f, delimiter="\t")
+    writer.writerow(["collection", "id"])
+    for record in deleted_record_identifiers:
+        writer.writerow(record)
+
 ###
 # end cleanup of omics records that don't exist
