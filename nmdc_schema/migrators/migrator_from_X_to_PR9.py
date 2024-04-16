@@ -1,12 +1,9 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import uuid
 
-# TODO: Fix removing was_informed_by (I don't think I can access the workflow_chain_set yet.)
-# TODO: Add JGI and Gold identifiers? Add name?
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
 # TODO: Figure out where migrator will go. Write now written before collection name change. Need to change collection names if going after that migration. 
 # Needs to come after the analyte_category migration
-# TODO: Do we need to include a "name" slot for these? If so, what should the names be?
 # TODO: Add doc tests
 
 
@@ -59,7 +56,8 @@ class Migrator(MigratorBase):
                                                pipeline=[self.was_informed_by_chain_mapping,
                                                          self.update_part_of_slot])
         
-        # Create dictionary that maps omics processing ids to their analyte categories
+        # Creates two dictionaries that maps 1) omics processing ids to their analyte categories, and 
+        # 2) maps associated_studies to the omics processing ids.
         self.adapter.process_each_document(collection_name="omics_processing_set",
                                            pipeline=[self.omics_id_analyte_category_mapping, self.create_study_name_mapping])
         
@@ -82,8 +80,13 @@ class Migrator(MigratorBase):
 
     def was_informed_by_chain_mapping(self, workflow_doc: dict):
         r"""
-        Get the was_informed_by value (an omics processing id) from the first WorkflowExecution steps document and create a dictionary of the
-        omics processing id with its corresponding worfklow chain id
+        Get the was_informed_by value (an omics processing id) from the WorkflowExecution documents and 
+        create a dictionary of the omics processing id with its corresponding worfklow chain id
+        >>> m = Migrator()
+        >>> m.was_informed_by_chain_mapping({'id': 123, 'was_informed_by': 'nmdc:omcp-123'})
+        {'id': 123, 'was_informed_by': 'nmdc:omcp-123'}
+        >>> 'nmdc:omcp-123' in m.workflow_omics_dict
+        True
         """
 
         # TODO: Replace me with real minting
@@ -99,12 +102,16 @@ class Migrator(MigratorBase):
         return workflow_doc
 
     def create_study_name_mapping(self, omics_doc: dict):
-        r"""
-        Populates the dictionary that maps an omics processing id to a study name(s)
-        >>> m = Migrator()
-        >>> m.create_study_name_mapping({'id': 123, 'associated_studies': ['nmdc:sty-123']})
-        {'id': 123, 'associated_studies': ['nmdc:sty-123']}
-        """
+        # r"""
+        # Populates the dictionary that maps an omics processing id to a study name(s). This function takes an omics document 
+        # as input, extracts the associated study IDs, retrieves the corresponding study documents, and maps the omics processing 
+        # id to a list of study names.
+        # >>> m = Migrator(adapter.get_document_having_value_in_field)
+        # >>> omics_doc = {'id': 123, 'associated_studies': ['nmdc:sty-123']}
+        # >>> m.create_study_name_mapping(omics_doc)
+        # {'id': 123, 'associated_studies': ['nmdc:sty-123']}
+        # # After execution, m.study_name_dict would contain: {123: ['Study 1']}
+        # """
 
         study_ids = omics_doc["associated_studies"]
         omics_id = omics_doc["id"]
@@ -121,22 +128,37 @@ class Migrator(MigratorBase):
 
         return omics_doc
 
-    def update_part_of_slot(self, doc: dict):
+    def update_part_of_slot(self, workflow_doc: dict):
         r"""
-        Replace the value, if there is one, in the part_of slot with the corresponding workflow chain id.
+        Replaces the value, if there is one, in the part_of slot in the workflow doc with the corresponding workflow chain id.
+        >>> m = Migrator()
+        >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
+        >>> result1 = m.update_part_of_slot({'id': 456, 'was_informed_by': 'nmdc:omcp-123'})
+        >>> result1
+        {'id': 456, 'was_informed_by': 'nmdc:omcp-123', 'part_of': ['nmdc:wfc-456']}
+        >>> result2 = m.update_part_of_slot({'id': 456, 'was_informed_by': 'nmdc:omcp-123', 'part_of': ['nmdc:789']})
+        >>> result2
+        {'id': 456, 'was_informed_by': 'nmdc:omcp-123', 'part_of': ['nmdc:wfc-456']}
         """
 
-        informed_by_omics_id = doc["was_informed_by"]
+        informed_by_omics_id = workflow_doc["was_informed_by"]
         workflow_chain_id = self.workflow_omics_dict.get(informed_by_omics_id)
         
-        doc["part_of"] = [workflow_chain_id]
+        workflow_doc["part_of"] = [workflow_chain_id]
 
-        return doc
+        return workflow_doc
     
     def omics_id_analyte_category_mapping(self, omics_doc: dict):
         r"""
-        Get the analyte_category slot value from the omics processing docs (value from WorfklowExecution was_informed_by
-        slot) and create a dictionary that maps omics id to analyte_category value)
+        Get the analyte_category slot value from the omics processing doc and create a dictionary that 
+        maps omics id to analyte_category value
+        >>> m = Migrator()
+        >>> omics_doc = {'id': 'nmdc:omcp-123', 'analyte_category': 'metagenome'}
+        >>> result = m.omics_id_analyte_category_mapping(omics_doc)
+        >>> result
+        {'id': 'nmdc:omcp-123', 'analyte_category': 'metagenome'}
+        >>> m.omics_analyte_category_dict
+        {'nmdc:omcp-123': 'metagenome'}
         """
     
         omics_doc_id = omics_doc["id"]
