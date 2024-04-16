@@ -663,7 +663,7 @@ enums:
           - bottom_layer
       organic_layer:
       aqueous_layer:
-      
+
       
 slots:
 
@@ -1085,4 +1085,5 @@ slots:
   sample_portion:
     domain: SubSamplingProcess
     range: SamplePortionEnum
+    multivalued: true
     description: The portion of the sample that is taken for downstream activity.
