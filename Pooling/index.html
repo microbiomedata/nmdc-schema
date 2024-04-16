@@ -293,17 +293,20 @@
 
   Pooling : has_failure_categorization
 
-    Pooling --&gt; FailureCategorization : has_failure_categorization
+    Pooling --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   Pooling : has_input
 
-    Pooling --&gt; Biosample : has_input
+    Pooling --&gt; "*" Biosample : has_input
+
     click Biosample href "../Biosample"
 
   Pooling : has_output
 
-    Pooling --&gt; NamedThing : has_output
+    Pooling --&gt; "*" NamedThing : has_output
+
     click NamedThing href "../NamedThing"
 
   Pooling : id
@@ -314,19 +317,22 @@
 
   Pooling : processing_institution
 
-    Pooling --&gt; ProcessingInstitutionEnum : processing_institution
+    Pooling --&gt; "1" ProcessingInstitutionEnum : processing_institution
+
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   Pooling : protocol_link
 
-    Pooling --&gt; Protocol : protocol_link
+    Pooling --&gt; "1" Protocol : protocol_link
+
     click Protocol href "../Protocol"
 
   Pooling : qc_comment
 
   Pooling : qc_status
 
-    Pooling --&gt; StatusEnum : qc_status
+    Pooling --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   Pooling : start_date

@@ -281,12 +281,14 @@
 
   Doi : doi_category
 
-    Doi --&gt; DoiCategoryEnum : doi_category
+    Doi --&gt; "1" DoiCategoryEnum : doi_category
+
     click DoiCategoryEnum href "../DoiCategoryEnum"
 
   Doi : doi_provider
 
-    Doi --&gt; DoiProviderEnum : doi_provider
+    Doi --&gt; "1" DoiProviderEnum : doi_provider
+
     click DoiProviderEnum href "../DoiProviderEnum"
 
   Doi : doi_value

@@ -299,17 +299,20 @@
 
   CollectingBiosamplesFromSite : has_failure_categorization
 
-    CollectingBiosamplesFromSite --&gt; FailureCategorization : has_failure_categorization
+    CollectingBiosamplesFromSite --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   CollectingBiosamplesFromSite : has_input
 
-    CollectingBiosamplesFromSite --&gt; Site : has_input
+    CollectingBiosamplesFromSite --&gt; "*" Site : has_input
+
     click Site href "../Site"
 
   CollectingBiosamplesFromSite : has_output
 
-    CollectingBiosamplesFromSite --&gt; Biosample : has_output
+    CollectingBiosamplesFromSite --&gt; "*" Biosample : has_output
+
     click Biosample href "../Biosample"
 
   CollectingBiosamplesFromSite : id
@@ -320,19 +323,22 @@
 
   CollectingBiosamplesFromSite : processing_institution
 
-    CollectingBiosamplesFromSite --&gt; ProcessingInstitutionEnum : processing_institution
+    CollectingBiosamplesFromSite --&gt; "1" ProcessingInstitutionEnum : processing_institution
+
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   CollectingBiosamplesFromSite : protocol_link
 
-    CollectingBiosamplesFromSite --&gt; Protocol : protocol_link
+    CollectingBiosamplesFromSite --&gt; "1" Protocol : protocol_link
+
     click Protocol href "../Protocol"
 
   CollectingBiosamplesFromSite : qc_comment
 
   CollectingBiosamplesFromSite : qc_status
 
-    CollectingBiosamplesFromSite --&gt; StatusEnum : qc_status
+    CollectingBiosamplesFromSite --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   CollectingBiosamplesFromSite : start_date

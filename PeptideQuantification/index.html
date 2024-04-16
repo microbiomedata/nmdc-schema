@@ -274,12 +274,14 @@
 
   PeptideQuantification : all_proteins
 
-    PeptideQuantification --&gt; GeneProduct : all_proteins
+    PeptideQuantification --&gt; "*" GeneProduct : all_proteins
+
     click GeneProduct href "../GeneProduct"
 
   PeptideQuantification : best_protein
 
-    PeptideQuantification --&gt; GeneProduct : best_protein
+    PeptideQuantification --&gt; "1" GeneProduct : best_protein
+
     click GeneProduct href "../GeneProduct"
 
   PeptideQuantification : min_q_value

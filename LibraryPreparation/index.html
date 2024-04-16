@@ -306,17 +306,20 @@
 
   LibraryPreparation : has_failure_categorization
 
-    LibraryPreparation --&gt; FailureCategorization : has_failure_categorization
+    LibraryPreparation --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   LibraryPreparation : has_input
 
-    LibraryPreparation --&gt; Biosample : has_input
+    LibraryPreparation --&gt; "*" Biosample : has_input
+
     click Biosample href "../Biosample"
 
   LibraryPreparation : has_output
 
-    LibraryPreparation --&gt; NamedThing : has_output
+    LibraryPreparation --&gt; "*" NamedThing : has_output
+
     click NamedThing href "../NamedThing"
 
   LibraryPreparation : id
@@ -327,7 +330,8 @@
 
   LibraryPreparation : library_type
 
-    LibraryPreparation --&gt; LibraryTypeEnum : library_type
+    LibraryPreparation --&gt; "1" LibraryTypeEnum : library_type
+
     click LibraryTypeEnum href "../LibraryTypeEnum"
 
   LibraryPreparation : name
@@ -336,19 +340,22 @@
 
   LibraryPreparation : processing_institution
 
-    LibraryPreparation --&gt; ProcessingInstitutionEnum : processing_institution
+    LibraryPreparation --&gt; "1" ProcessingInstitutionEnum : processing_institution
+
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   LibraryPreparation : protocol_link
 
-    LibraryPreparation --&gt; Protocol : protocol_link
+    LibraryPreparation --&gt; "1" Protocol : protocol_link
+
     click Protocol href "../Protocol"
 
   LibraryPreparation : qc_comment
 
   LibraryPreparation : qc_status
 
-    LibraryPreparation --&gt; StatusEnum : qc_status
+    LibraryPreparation --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   LibraryPreparation : start_date

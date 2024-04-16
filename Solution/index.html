@@ -288,12 +288,14 @@
 
   Solution : has_solution_components
 
-    Solution --&gt; SolutionComponent : has_solution_components
+    Solution --&gt; "*" SolutionComponent : has_solution_components
+
     click SolutionComponent href "../SolutionComponent"
 
   Solution : volume
 
-    Solution --&gt; QuantityValue : volume
+    Solution --&gt; "1" QuantityValue : volume
+
     click QuantityValue href "../QuantityValue"
 
 

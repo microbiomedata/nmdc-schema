@@ -314,7 +314,8 @@
 
   Study : associated_dois
 
-    Study --&gt; Doi : associated_dois
+    Study --&gt; "*" Doi : associated_dois
+
     click Doi href "../Doi"
 
   Study : description
@@ -337,7 +338,8 @@
 
   Study : has_credit_associations
 
-    Study --&gt; CreditAssociation : has_credit_associations
+    Study --&gt; "*" CreditAssociation : has_credit_associations
+
     click CreditAssociation href "../CreditAssociation"
 
   Study : homepage_website
@@ -360,12 +362,14 @@
 
   Study : part_of
 
-    Study --&gt; Study : part_of
+    Study --&gt; "*" Study : part_of
+
     click Study href "../Study"
 
   Study : principal_investigator
 
-    Study --&gt; PersonValue : principal_investigator
+    Study --&gt; "1" PersonValue : principal_investigator
+
     click PersonValue href "../PersonValue"
 
   Study : related_identifiers
@@ -376,12 +380,14 @@
 
   Study : study_category
 
-    Study --&gt; StudyCategoryEnum : study_category
+    Study --&gt; "1" StudyCategoryEnum : study_category
+
     click StudyCategoryEnum href "../StudyCategoryEnum"
 
   Study : study_image
 
-    Study --&gt; ImageValue : study_image
+    Study --&gt; "*" ImageValue : study_image
+
     click ImageValue href "../ImageValue"
 
   Study : title

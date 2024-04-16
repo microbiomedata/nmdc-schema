@@ -293,17 +293,20 @@
 
   MagsAnalysisActivity : has_failure_categorization
 
-    MagsAnalysisActivity --&gt; FailureCategorization : has_failure_categorization
+    MagsAnalysisActivity --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   MagsAnalysisActivity : has_input
 
-    MagsAnalysisActivity --&gt; NamedThing : has_input
+    MagsAnalysisActivity --&gt; "*" NamedThing : has_input
+
     click NamedThing href "../NamedThing"
 
   MagsAnalysisActivity : has_output
 
-    MagsAnalysisActivity --&gt; NamedThing : has_output
+    MagsAnalysisActivity --&gt; "*" NamedThing : has_output
+
     click NamedThing href "../NamedThing"
 
   MagsAnalysisActivity : id
@@ -314,21 +317,24 @@
 
   MagsAnalysisActivity : mags_list
 
-    MagsAnalysisActivity --&gt; MagBin : mags_list
+    MagsAnalysisActivity --&gt; "*" MagBin : mags_list
+
     click MagBin href "../MagBin"
 
   MagsAnalysisActivity : name
 
   MagsAnalysisActivity : part_of
 
-    MagsAnalysisActivity --&gt; NamedThing : part_of
+    MagsAnalysisActivity --&gt; "*" NamedThing : part_of
+
     click NamedThing href "../NamedThing"
 
   MagsAnalysisActivity : qc_comment
 
   MagsAnalysisActivity : qc_status
 
-    MagsAnalysisActivity --&gt; StatusEnum : qc_status
+    MagsAnalysisActivity --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   MagsAnalysisActivity : started_at_time
@@ -345,7 +351,8 @@
 
   MagsAnalysisActivity : was_informed_by
 
-    MagsAnalysisActivity --&gt; Activity : was_informed_by
+    MagsAnalysisActivity --&gt; "1" Activity : was_informed_by
+
     click Activity href "../Activity"
 
 

@@ -291,17 +291,20 @@
 
   MetagenomeSequencingActivity : has_failure_categorization
 
-    MetagenomeSequencingActivity --&gt; FailureCategorization : has_failure_categorization
+    MetagenomeSequencingActivity --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   MetagenomeSequencingActivity : has_input
 
-    MetagenomeSequencingActivity --&gt; NamedThing : has_input
+    MetagenomeSequencingActivity --&gt; "*" NamedThing : has_input
+
     click NamedThing href "../NamedThing"
 
   MetagenomeSequencingActivity : has_output
 
-    MetagenomeSequencingActivity --&gt; NamedThing : has_output
+    MetagenomeSequencingActivity --&gt; "*" NamedThing : has_output
+
     click NamedThing href "../NamedThing"
 
   MetagenomeSequencingActivity : id
@@ -310,14 +313,16 @@
 
   MetagenomeSequencingActivity : part_of
 
-    MetagenomeSequencingActivity --&gt; NamedThing : part_of
+    MetagenomeSequencingActivity --&gt; "*" NamedThing : part_of
+
     click NamedThing href "../NamedThing"
 
   MetagenomeSequencingActivity : qc_comment
 
   MetagenomeSequencingActivity : qc_status
 
-    MetagenomeSequencingActivity --&gt; StatusEnum : qc_status
+    MetagenomeSequencingActivity --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   MetagenomeSequencingActivity : started_at_time
@@ -330,7 +335,8 @@
 
   MetagenomeSequencingActivity : was_informed_by
 
-    MetagenomeSequencingActivity --&gt; Activity : was_informed_by
+    MetagenomeSequencingActivity --&gt; "1" Activity : was_informed_by
+
     click Activity href "../Activity"
 
 

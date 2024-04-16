@@ -292,22 +292,26 @@
 
   MetabolomicsAnalysisActivity : has_failure_categorization
 
-    MetabolomicsAnalysisActivity --&gt; FailureCategorization : has_failure_categorization
+    MetabolomicsAnalysisActivity --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   MetabolomicsAnalysisActivity : has_input
 
-    MetabolomicsAnalysisActivity --&gt; NamedThing : has_input
+    MetabolomicsAnalysisActivity --&gt; "*" NamedThing : has_input
+
     click NamedThing href "../NamedThing"
 
   MetabolomicsAnalysisActivity : has_metabolite_quantifications
 
-    MetabolomicsAnalysisActivity --&gt; MetaboliteQuantification : has_metabolite_quantifications
+    MetabolomicsAnalysisActivity --&gt; "*" MetaboliteQuantification : has_metabolite_quantifications
+
     click MetaboliteQuantification href "../MetaboliteQuantification"
 
   MetabolomicsAnalysisActivity : has_output
 
-    MetabolomicsAnalysisActivity --&gt; NamedThing : has_output
+    MetabolomicsAnalysisActivity --&gt; "*" NamedThing : has_output
+
     click NamedThing href "../NamedThing"
 
   MetabolomicsAnalysisActivity : id
@@ -316,14 +320,16 @@
 
   MetabolomicsAnalysisActivity : part_of
 
-    MetabolomicsAnalysisActivity --&gt; NamedThing : part_of
+    MetabolomicsAnalysisActivity --&gt; "*" NamedThing : part_of
+
     click NamedThing href "../NamedThing"
 
   MetabolomicsAnalysisActivity : qc_comment
 
   MetabolomicsAnalysisActivity : qc_status
 
-    MetabolomicsAnalysisActivity --&gt; StatusEnum : qc_status
+    MetabolomicsAnalysisActivity --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   MetabolomicsAnalysisActivity : started_at_time
@@ -336,7 +342,8 @@
 
   MetabolomicsAnalysisActivity : was_informed_by
 
-    MetabolomicsAnalysisActivity --&gt; Activity : was_informed_by
+    MetabolomicsAnalysisActivity --&gt; "1" Activity : was_informed_by
+
     click Activity href "../Activity"
 
 

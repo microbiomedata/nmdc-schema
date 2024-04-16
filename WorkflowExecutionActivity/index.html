@@ -331,17 +331,20 @@
 
   WorkflowExecutionActivity : has_failure_categorization
 
-    WorkflowExecutionActivity --&gt; FailureCategorization : has_failure_categorization
+    WorkflowExecutionActivity --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   WorkflowExecutionActivity : has_input
 
-    WorkflowExecutionActivity --&gt; NamedThing : has_input
+    WorkflowExecutionActivity --&gt; "*" NamedThing : has_input
+
     click NamedThing href "../NamedThing"
 
   WorkflowExecutionActivity : has_output
 
-    WorkflowExecutionActivity --&gt; NamedThing : has_output
+    WorkflowExecutionActivity --&gt; "*" NamedThing : has_output
+
     click NamedThing href "../NamedThing"
 
   WorkflowExecutionActivity : id
@@ -350,14 +353,16 @@
 
   WorkflowExecutionActivity : part_of
 
-    WorkflowExecutionActivity --&gt; NamedThing : part_of
+    WorkflowExecutionActivity --&gt; "*" NamedThing : part_of
+
     click NamedThing href "../NamedThing"
 
   WorkflowExecutionActivity : qc_comment
 
   WorkflowExecutionActivity : qc_status
 
-    WorkflowExecutionActivity --&gt; StatusEnum : qc_status
+    WorkflowExecutionActivity --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   WorkflowExecutionActivity : started_at_time
@@ -370,7 +375,8 @@
 
   WorkflowExecutionActivity : was_informed_by
 
-    WorkflowExecutionActivity --&gt; Activity : was_informed_by
+    WorkflowExecutionActivity --&gt; "1" Activity : was_informed_by
+
     click Activity href "../Activity"
 
 

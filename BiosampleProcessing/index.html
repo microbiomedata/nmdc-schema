@@ -299,17 +299,20 @@
 
   BiosampleProcessing : has_failure_categorization
 
-    BiosampleProcessing --&gt; FailureCategorization : has_failure_categorization
+    BiosampleProcessing --&gt; "*" FailureCategorization : has_failure_categorization
+
     click FailureCategorization href "../FailureCategorization"
 
   BiosampleProcessing : has_input
 
-    BiosampleProcessing --&gt; Biosample : has_input
+    BiosampleProcessing --&gt; "*" Biosample : has_input
+
     click Biosample href "../Biosample"
 
   BiosampleProcessing : has_output
 
-    BiosampleProcessing --&gt; NamedThing : has_output
+    BiosampleProcessing --&gt; "*" NamedThing : has_output
+
     click NamedThing href "../NamedThing"
 
   BiosampleProcessing : id
@@ -320,19 +323,22 @@
 
   BiosampleProcessing : processing_institution
 
-    BiosampleProcessing --&gt; ProcessingInstitutionEnum : processing_institution
+    BiosampleProcessing --&gt; "1" ProcessingInstitutionEnum : processing_institution
+
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   BiosampleProcessing : protocol_link
 
-    BiosampleProcessing --&gt; Protocol : protocol_link
+    BiosampleProcessing --&gt; "1" Protocol : protocol_link
+
     click Protocol href "../Protocol"
 
   BiosampleProcessing : qc_comment
 
   BiosampleProcessing : qc_status
 
-    BiosampleProcessing --&gt; StatusEnum : qc_status
+    BiosampleProcessing --&gt; "1" StatusEnum : qc_status
+
     click StatusEnum href "../StatusEnum"
 
   BiosampleProcessing : start_date
