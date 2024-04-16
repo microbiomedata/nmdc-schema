@@ -652,15 +652,6 @@ enums:
       solid_phase_extraction:
         aliases:
           - SPE
-  
-  SamplePortionEnum:
-    permissible_values:
-      supernatant:
-        aliases:
-          - top_layer
-      organic_layer:
-      aqueous_layer:
-      non_polar_layer:
 
 slots:
 
