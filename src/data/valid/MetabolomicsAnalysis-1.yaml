@@ -12,5 +12,11 @@ has_input:
 has_output:
   - nmdc:o1
   - nmdc:o2
-#type: WorkflowExecution
+has_metabolite_identifications:
+  - alternative_identifiers:
+    - kegg:C00583
+    - cas:57-55-6
+    highest_similarity_score: 0.9534156546099186
+    metabolite_identified: chebi:16997
+    type: nmdc:MetaboliteIdentification
 

@@ -219,7 +219,7 @@ classes:
       - workflow subset
     slots:
       - has_calibration
-      - has_metabolite_quantifications
+      - has_metabolite_identifications
     slot_usage:
       id:
         required: true
@@ -497,7 +497,7 @@ slots:
       occurred. The commented out portion of the slot definition above will be implemented. See PR #29 in Berkeley
       schema.
 
-  has_metabolite_quantifications:
+  has_metabolite_identifications:
     domain: MetabolomicsAnalysis
-    range: MetaboliteQuantification
+    range: MetaboliteIdentification
     multivalued: true

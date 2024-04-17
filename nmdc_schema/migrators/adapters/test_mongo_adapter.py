@@ -247,6 +247,34 @@ class TestMongoAdapter(unittest.TestCase):
         assert collection.count_documents({"id": 2, "x": "Bz"}) == 1
         assert collection.count_documents({"id": 3, "x": "Cz"}) == 1
 
+    def test_callbacks(self):
+        # Set up:
+        collection_name = "my_collection"
+        new_collection_name = "my_new_collection"
+        event_log: list[str] = []
+        adapter = MongoAdapter(
+            database=self.db,
+            on_collection_created=lambda name: event_log.append(f"Created {name}"),
+            on_collection_renamed=lambda old_name, name: event_log.append(f"Renamed {old_name} to {name}"),
+            on_collection_deleted=lambda name: event_log.append(f"Deleted {name}"),
+        )
+        assert len(event_log) == 0
+
+        # Trigger callback and validate latest message in event log:
+        adapter.create_collection(collection_name)
+        assert len(event_log) == 1
+        assert event_log[0] == f"Created {collection_name}"
+
+        # Trigger callback and validate latest message in event log:
+        adapter.rename_collection(collection_name, new_collection_name)
+        assert len(event_log) == 2
+        assert event_log[1] == f"Renamed {collection_name} to {new_collection_name}"
+
+        # Trigger callback and validate latest message in event log:
+        adapter.delete_collection(new_collection_name)
+        assert len(event_log) == 3
+        assert event_log[2] == f"Deleted {new_collection_name}"
+
 
 if __name__ == "__main__":
     unittest.main()

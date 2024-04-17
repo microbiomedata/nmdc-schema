@@ -908,9 +908,6 @@ classes:
         examples:
           value: 100
 
-      oxy_stat_samp:
-        range: oxy_stat_samp_enum
-
       id:
         required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
@@ -923,7 +920,6 @@ classes:
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
-        range: uriorcurie
 
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
@@ -1274,13 +1270,13 @@ classes:
       - total_bases
       - type
 
-  MetaboliteQuantification:
-    class_uri: "nmdc:MetaboliteQuantification"
+  MetaboliteIdentification:
+    class_uri: "nmdc:MetaboliteIdentification"
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
     slots:
       - alternative_identifiers
       - highest_similarity_score
-      - metabolite_quantified
+      - metabolite_identified
       - type
 
   PeptideQuantification:
@@ -1667,7 +1663,7 @@ slots:
       - Yuri to fill in description
     range: float
 
-  metabolite_quantified:
+  metabolite_identified:
     description: the specific metabolite identifier
     range: ChemicalEntity
 

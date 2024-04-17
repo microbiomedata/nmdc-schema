@@ -150,7 +150,7 @@ slots:
 
   has_numeric_value:
     description: Links a quantity value to a number
-    range: float
+    range: decimal
     mappings:
       - qud:quantityValue
       - schema:value

@@ -8,7 +8,8 @@ theme:
     - content.tabs.link
 plugins:
   - search
-  - mermaid2
+  - mermaid2:
+      version: 10.9.0
   - redirects: # reference: https://github.com/mkdocs/mkdocs-redirects
       redirect_maps:
         'home.md': 'index.md'  # redirects "/home" to "/"

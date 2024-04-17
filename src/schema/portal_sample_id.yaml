@@ -21,6 +21,8 @@ prefixes:
 default_prefix: nmdc
 default_range: string
 
+enums:
+
 slots:
   analysis_type:
     description: Select all the data types associated or available for this biosample

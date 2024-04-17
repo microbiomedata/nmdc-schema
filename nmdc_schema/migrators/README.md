@@ -23,10 +23,10 @@ This directory contains the following things:
 - `helpers.py` - general-purpose functions used by the classes
 - `migrator_base.py` - definition of the `MigratorBase` class
     - That class is agnostic to schema versions
-- `migrator_from_A_B_C_to_X_Y_Z.py` - definition of an example `Migrator` class
+- `migrator_from_1_0_0_to_EXAMPLE.py` - definition of an example `Migrator` class
     - That class is specific to a pair of schema versions
-      (i.e. it migrates databases from schema version `A.B.C` to schema version `X.Y.Z`)
-- Other `migrator_*.py` modules (they are analogous to `migrator_from_A_B_C_to_X_Y_Z.py`)
+      (i.e. it migrates databases from schema version `1.0.0` to schema version `EXAMPLE`)
+- Other `migrator_*.py` modules (they are analogous to `migrator_from_1_0_0_to_EXAMPLE.py`)
 
 ## Creating a migrator
 
@@ -60,5 +60,5 @@ Here's how you can create a new migrator:
         - `self.adapter` is a database adapter (i.e. it is an instance of a class that inherits from `AdapterBase`).
           It allows the same migrator to be used with different kinds of databases.
 
-   > You can refer to the example migrator (i.e. `migrator_from_A_B_C_to_X_Y_Z.py`) and other migrators for reference.
+   > You can refer to the example migrator (i.e. `migrator_from_1_0_0_to_EXAMPLE.py`) and other migrators for reference.
 3. Done.
