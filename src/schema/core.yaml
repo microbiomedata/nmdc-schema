@@ -1270,13 +1270,13 @@ classes:
       - total_bases
       - type
 
-  MetaboliteQuantification:
-    class_uri: "nmdc:MetaboliteQuantification"
+  MetaboliteIdentification:
+    class_uri: "nmdc:MetaboliteIdentification"
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
     slots:
       - alternative_identifiers
       - highest_similarity_score
-      - metabolite_quantified
+      - metabolite_identified
       - type
 
   PeptideQuantification:
@@ -1663,7 +1663,7 @@ slots:
       - Yuri to fill in description
     range: float
 
-  metabolite_quantified:
+  metabolite_identified:
     description: the specific metabolite identifier
     range: ChemicalEntity
 
