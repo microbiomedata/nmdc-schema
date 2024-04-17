@@ -160,6 +160,21 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+  
+  Calibration:
+    class_uri: nmdc:Calibration
+    description: #TODO A process that defines how a mass spectrometer is calibrated.
+    exact_mappings:
+      #TODO- OBI:0002475
+    slots:
+      - calibration_file
+      - internal_calibration
+      - calibration_target
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
   FunctionalAnnotationAggMember:
     class_uri: "nmdc:FunctionalAnnotationAggMember"
