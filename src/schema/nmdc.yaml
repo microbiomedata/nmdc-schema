@@ -554,6 +554,16 @@ enums:
         aliases:
           - EI
 
+  CalibrationTargetEnum:
+    permissible_values:
+      mass:
+        aliases:
+          - Mass
+          - m/z
+      retention_time:
+        aliases:
+          - RT
+
   MassSpectrumCollectionModeEnum:
     permissible_values:
       full_profile: { }
@@ -704,6 +714,18 @@ slots:
   has_calibration:
     range: Calibration
     description: a calibration instance associated with a process
+
+  calibration_file:
+    range: DataObject
+    description: the file containing calibration data object
+
+  calibration_internal:
+    range: boolean
+    description: whether internal calibration was used, if false, external calibration was used
+
+  calibration_target:
+    range: CalibrationTargetEnum
+    description: the target measurment of the calibration
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
