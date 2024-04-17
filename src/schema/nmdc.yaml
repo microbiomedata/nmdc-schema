@@ -154,7 +154,7 @@ classes:
       - ionization_source
       - mass_spectrum_collection_mode
       - polarity_mode
-
+      - has_calibration
     slot_usage:
       id:
         structured_pattern:
