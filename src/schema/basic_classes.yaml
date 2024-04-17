@@ -306,15 +306,9 @@ classes:
       - add_date
       - analyte_category
       - associated_studies
-      - gold_sequencing_project_identifiers
-      - insdc_bioproject_identifiers
-      - insdc_experiment_identifiers
       - mod_date
-      - ncbi_project_name
       - part_of
       - principal_investigator
-      - target_gene
-      - target_subfragment
     slot_usage:
       has_input:
         required: true
