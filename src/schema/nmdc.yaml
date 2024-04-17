@@ -686,6 +686,10 @@ slots:
     range: FluidHandling
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
+  has_calibration:
+    range: Calibration
+    description: a calibration instance associated with a process
+
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecution
