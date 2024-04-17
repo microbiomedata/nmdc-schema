@@ -42,7 +42,8 @@
                 "metagenomics_long_read",
                 "metaproteomics",
                 "metatranscriptomics",
-                "natural organic matter"
+                "natural organic matter",
+                "bulk chemistry"
             ],
             "title": "AnalysisTypeEnum",
             "type": "string"
