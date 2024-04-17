@@ -719,7 +719,7 @@ slots:
     range: DataObject
     description: the file containing calibration data object
 
-  calibration_internal:
+  internal_calibration:
     range: boolean
     description: whether internal calibration was used, if false, external calibration was used
 
