@@ -23,9 +23,9 @@ class Migrator(MigratorBase):
         respective workflow chain ids
         """
 
-        super().__init__(adapter=adapter, logger=logger)
-        # self.adapter = adapter
-        # self.logger = logger
+        super().__init__()
+        self.adapter = adapter
+        self.logger = logger
 
         self.workflow_omics_dict = {}
         self.omics_analyte_category_dict = {}
@@ -59,7 +59,7 @@ class Migrator(MigratorBase):
         # Creates two dictionaries that maps 1) omics processing ids to their analyte categories, and 
         # 2) maps associated_studies to the omics processing ids.
         self.adapter.process_each_document(collection_name="omics_processing_set",
-                                           pipeline=[self.omics_id_analyte_category_mapping, self.create_study_name_mapping])
+                                           pipeline=[self.omics_id_analyte_category_mapping])
         
         # Create and populate workflow_chain_set
         self.adapter.create_collection("workflow_chain_set")
@@ -101,33 +101,6 @@ class Migrator(MigratorBase):
             self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
         return workflow_doc
-
-    def create_study_name_mapping(self, omics_doc: dict):
-        # r"""
-        # Populates the dictionary that maps an omics processing id to a study name(s). This function takes an omics document 
-        # as input, extracts the associated study IDs, retrieves the corresponding study documents, and maps the omics processing 
-        # id to a list of study names.
-        # >>> m = Migrator(adapter.get_document_having_value_in_field)
-        # >>> omics_doc = {'id': 123, 'associated_studies': ['nmdc:sty-123']}
-        # >>> m.create_study_name_mapping(omics_doc)
-        # {'id': 123, 'associated_studies': ['nmdc:sty-123']}
-        # # After execution, m.study_name_dict would contain: {123: ['Study 1']}
-        # """
-
-        study_ids = omics_doc["associated_studies"]
-        omics_id = omics_doc["id"]
-        self.study_name_dict[omics_id] = []
-
-        for study_id in study_ids:
-
-            study_doc = self.adapter.get_document_having_value_in_field(collection_name="study_set", field_name="id", value=study_id)
-            if study_doc is None:
-                self.logger.error(f"study_set doc having id {study_id} was not found")
-            study_name = study_doc["title"]
-
-            self.study_name_dict[omics_id].append(study_name)
-
-        return omics_doc
 
     def update_part_of_slot(self, workflow_doc: dict):
         r"""
@@ -188,11 +161,6 @@ class Migrator(MigratorBase):
         for omics_id, workflow_chain_id in self.workflow_omics_dict.items():
             workflow_chain_doc = {}
 
-            # find the omics id in the study_name_dict and get the associated study name
-            if omics_id in self.study_name_dict:
-                study_names = self.study_name_dict.get(omics_id)
-                study_names_str = ", ".join(study_names)
-
             if omics_id in self.omics_analyte_category_dict:
                 analyte_category = self.omics_analyte_category_dict.get(omics_id)
 
@@ -203,7 +171,7 @@ class Migrator(MigratorBase):
 
             workflow_chain_doc["type"] = "nmdc:WorkflowChain"
 
-            workflow_chain_doc["name"] = f"Workflow Chain for {analyte_category} analysis related to {study_names_str}"
+            workflow_chain_doc["name"] = f"Workflow Chain for {analyte_category} analysis of {omics_id}"
 
             self.adapter.insert_document("workflow_chain_set", workflow_chain_doc)
 
