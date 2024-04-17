@@ -663,6 +663,7 @@ enums:
           - bottom_layer
       organic_layer:
       aqueous_layer:
+      non_polar_layer:
 
       
 slots:
