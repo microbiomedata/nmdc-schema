@@ -161,21 +161,6 @@ classes:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
   
-  Calibration:
-    class_uri: nmdc:Calibration
-    description: #TODO A process that defines how a mass spectrometer is calibrated.
-    exact_mappings:
-      #TODO- OBI:0002475
-    slots:
-      - calibration_file
-      - internal_calibration
-      - calibration_target
-    slot_usage:
-      id:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-
   FunctionalAnnotationAggMember:
     class_uri: "nmdc:FunctionalAnnotationAggMember"
     slots:
@@ -554,16 +539,6 @@ enums:
         aliases:
           - EI
 
-  CalibrationTargetEnum:
-    permissible_values:
-      mass:
-        aliases:
-          - Mass
-          - m/z
-      retention_time:
-        aliases:
-          - RT
-
   MassSpectrumCollectionModeEnum:
     permissible_values:
       full_profile: { }
@@ -710,22 +685,6 @@ slots:
   eluent_introduction:
     range: FluidHandling
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
-
-  has_calibration:
-    range: Calibration
-    description: a calibration instance associated with a process
-
-  calibration_file:
-    range: DataObject
-    description: the file containing calibration data object
-
-  internal_calibration:
-    range: boolean
-    description: whether internal calibration was used, if false, external calibration was used
-
-  calibration_target:
-    range: CalibrationTargetEnum
-    description: the target measurment of the calibration
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
