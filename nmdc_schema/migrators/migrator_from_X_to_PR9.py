@@ -2,8 +2,6 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 import uuid
 
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
-# TODO: Figure out where migrator will go. Write now written before collection name change. Need to change collection names if going after that migration. 
-# Needs to come after the analyte_category migration
 # TODO: Add doc tests
 
 
