@@ -159,9 +159,6 @@ classes:
     is_a: NamedThing
     class_uri: nmdc:Configuration
     description: A programmable set of parameters that define the actions of a process and is shared among multiple instances of the process.
-    slots:
-      - id
-      - type
 
   MassSpectrometryConfiguration:
     is_a: Configuration
