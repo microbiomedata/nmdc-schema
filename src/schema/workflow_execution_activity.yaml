@@ -264,7 +264,23 @@ classes:
       - internal_calibration
       - calibration_target
       - calibration_standard
+    rules:
+      - title: calibration_standard_if_rt
+        description: >-
+          If the calibration target is retention_index, the calibration standard must be set.
+        preconditions:
+          slot_conditions:
+            calibration_target:
+              equals_string: retention_index
+        postconditions:
+          slot_conditions:
+            calibration_standard:
+              required: true
     slot_usage:
+      internal_calibration:
+        required: true
+      calibration_target:
+        required: true
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -506,9 +522,9 @@ slots:
     description: a calibration instance associated with a process
     notes: >-
       has_calibration slot will be removed from all WorkflowExecution classes but remain on the
-      ChromatographicSeparationProcess and MassSpectreomtry classes after an ingest of the 
+      ChromatographicSeparationProcess and MassSpectrometry classes after an ingest of the 
       chromatographic_separation_process_set has occurred. 
-      Once this has occured, this slot's range can be updated to Calibration and slot def can move to nmdc.yaml.  
+      Once this has occured, this slot's range can be updated to Calibration and class/slot definitions can move to nmdc.yaml.  
       See PR #29 in Berkeley schema.
   
   calibration_file:

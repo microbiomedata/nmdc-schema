@@ -2,4 +2,5 @@ id: nmdc:calib-99-zUCd5N
 type: nmdc:Calibration
 calibration_file: nmdc:dobj-12-krhrtjw9
 internal_calibration: false
-calibration_target: retention_time
+calibration_target: retention_index
+calibration_standard: FAMES
