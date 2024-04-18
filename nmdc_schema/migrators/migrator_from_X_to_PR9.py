@@ -1,5 +1,7 @@
-from nmdc_schema.migrators.migrator_base import MigratorBase
 import uuid
+
+from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
 
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
@@ -16,15 +18,23 @@ class Migrator(MigratorBase):
     _from_version = "X"
     _to_version = "PR9"
 
-    def __init__(self, adapter=None, logger=None):
+    def __init__(self, adapter: AdapterBase = None, logger=None):
         r"""
         Initialize an empty dictionary that maps was_informed_by values (omics processing id) to their
         respective workflow chain ids
         """
 
-        super().__init__()
-        self.adapter = adapter
-        self.logger = logger
+        # Invoke the `__init__` method of the "parent" class.
+        #
+        # Note: In Python, when a "child" (i.e. inheriting) class doesn't have its own `__init__` method,
+        #       it inherits the "parent" class's `__init__` method. As a result, that inherited `__init__`
+        #       method is the one that Python automatically invokes when the "child" class is instantiated.
+        #
+        #       In contrast, _this_ "child" class _does_ have its own `__init__` method (this comment is in it),
+        #       effectively opting the "child" class out of the aforementioned inheritance and automatic invocation
+        #       of the "parent" class's `__init__` method. So, here, we invoke that method "manually."
+        #
+        super().__init__(adapter=adapter, logger=logger)
 
         self.workflow_omics_dict = {}
         self.omics_analyte_category_dict = {}
