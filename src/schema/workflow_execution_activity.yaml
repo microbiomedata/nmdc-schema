@@ -267,7 +267,7 @@ classes:
     rules:
       - title: calibration_standard_if_rt
         description: >-
-          If the calibration target is retention_index, the calibration standard must be set.
+          If the calibration_target is retention_index, a calibration_standard is required.
         preconditions:
           slot_conditions:
             calibration_target:
