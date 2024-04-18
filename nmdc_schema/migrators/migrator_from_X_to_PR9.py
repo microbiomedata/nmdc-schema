@@ -96,7 +96,9 @@ class Migrator(MigratorBase):
         Get the was_informed_by value (an omics processing id) from the WorkflowExecution documents and
         create a dictionary of the omics processing id with its corresponding worfklow chain id
 
-        >>> m = Migrator()
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>>
+        >>> m = Migrator(adapter=DictionaryAdapter(database={}))
         >>> m.was_informed_by_chain_mapping({'id': 123, 'was_informed_by': 'nmdc:omcp-123'})
         {'id': 123, 'was_informed_by': 'nmdc:omcp-123'}
         >>> 'nmdc:omcp-123' in m.workflow_omics_dict
@@ -119,7 +121,9 @@ class Migrator(MigratorBase):
         Replaces the value, if there is one, in the part_of slot in the workflow doc
         with the corresponding workflow chain id.
 
-        >>> m = Migrator()
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>>
+        >>> m = Migrator(adapter=DictionaryAdapter(database={}))
         >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
         >>> result1 = m.update_part_of_slot({'id': 456, 'was_informed_by': 'nmdc:omcp-123'})
         >>> result1
@@ -141,7 +145,9 @@ class Migrator(MigratorBase):
         Get the analyte_category slot value from the omics processing doc and create a dictionary that
         maps omics id to analyte_category value
 
-        >>> m = Migrator()
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>>
+        >>> m = Migrator(adapter=DictionaryAdapter(database={}))
         >>> omics_doc = {'id': 'nmdc:omcp-123', 'analyte_category': 'metagenome'}
         >>> result = m.omics_id_analyte_category_mapping(omics_doc)
         >>> result
