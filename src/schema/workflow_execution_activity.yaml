@@ -263,6 +263,7 @@ classes:
       - calibration_file
       - internal_calibration
       - calibration_target
+      - calibration_standard
     slot_usage:
       id:
         structured_pattern:
@@ -520,7 +521,11 @@ slots:
 
   calibration_target:
     range: CalibrationTargetEnum
-    description: the target measurment of the calibration
+    description: the target measurement of the calibration
+
+  calibration_standard:
+    range: CalibrationStandardEnum
+    description: the reference standard(s) used for calibration
 
   has_metabolite_identifications:
     domain: MetabolomicsAnalysis
@@ -537,3 +542,12 @@ enums:
       retention_time:
         aliases:
           - RT
+
+  CalibrationStandardEnum:
+    permissible_values:
+      fames:
+        aliases:
+          - FAMES
+      alkanes:
+        aliases:
+          - Alkanes
