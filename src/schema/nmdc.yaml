@@ -156,8 +156,9 @@ classes:
 
   Configuration:
     abstract: true
+    is_a: NamedThing
     class_uri: nmdc:Configuration
-    description: A platform that enables the user to configure the appearance, actions, and other usage preferences on a process.
+    description: A programmable set of parameters that define the actions of a process and is shared among multiple instances of the process.
     slots:
       - id
       - type
@@ -165,7 +166,7 @@ classes:
   MassSpectrometryConfiguration:
     is_a: Configuration
     class_uri: nmdc:MassSpectrometryConfiguration
-    description: A platform that enables the user to configure the actions of a mass spectrometry process.
+    description: A programmable set of parameters that define the actions of a mass spectrometry process. Note that there may be additional parameters that are not captured here.
     slots:
       - acquisition_category
       - resolution_category
@@ -174,6 +175,10 @@ classes:
       - mass_spectrum_collection_mode
       - polarity_mode
     slot_usage:
+      name:
+        required: true
+      description:
+        required: true
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
@@ -706,7 +711,7 @@ slots:
 
   has_configuration:
     range: Configuration
-    description: a platform that enables the user to configure the appearance, actions, and other usage preferences on a process
+    description: a programmable set of parameters that define the actions of a process and is shared among multiple instances of the process.
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
