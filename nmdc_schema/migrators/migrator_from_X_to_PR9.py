@@ -1,6 +1,7 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 import uuid
 
+
 # TODO: remove import uuid and fix minter function to how we will actually mint ids.
 # TODO: Add doc tests
 
@@ -15,9 +16,9 @@ class Migrator(MigratorBase):
     _from_version = "X"
     _to_version = "PR9"
 
-
     def __init__(self, adapter=None, logger=None):
-        r"""Initialize an empty dictionary that maps was_informed_by values (omics processing id) to their
+        r"""
+        Initialize an empty dictionary that maps was_informed_by values (omics processing id) to their
         respective workflow chain ids
         """
 
@@ -28,14 +29,14 @@ class Migrator(MigratorBase):
         self.workflow_omics_dict = {}
         self.omics_analyte_category_dict = {}
         self.study_name_dict = {}
-    
+
     def upgrade(self):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         """
 
         workflow_executions = [
-            "metagenome_sequencing_activity_set", 
+            "metagenome_sequencing_activity_set",
             "read_qc_analysis_activity_set",
             "metagenome_assembly_set",
             "read_based_taxonomy_analysis_activity_set",
@@ -44,29 +45,34 @@ class Migrator(MigratorBase):
             "metabolomics_analysis_activity_set",
             "nom_analysis_activity_set",
             "metatranscriptome_activity_set",
-            "metaproteomics_analysis_activity_set"
+            "metaproteomics_analysis_activity_set",
         ]
 
         # Map was_informed_by slot values to newly minted workflow chain ids and populate workflow execution records part_of
         # with newly minted workflow chain id.
         for workflow_execution in workflow_executions:
-            self.adapter.process_each_document(collection_name=workflow_execution, 
-                                               pipeline=[self.was_informed_by_chain_mapping,
-                                                         self.update_part_of_slot])
-        
-        # Creates two dictionaries that maps 1) omics processing ids to their analyte categories, and 
+            self.adapter.process_each_document(
+                collection_name=workflow_execution,
+                pipeline=[self.was_informed_by_chain_mapping, self.update_part_of_slot],
+            )
+
+        # Creates two dictionaries that maps 1) omics processing ids to their analyte categories, and
         # 2) maps associated_studies to the omics processing ids.
-        self.adapter.process_each_document(collection_name="omics_processing_set",
-                                           pipeline=[self.omics_id_analyte_category_mapping])
-        
+        self.adapter.process_each_document(
+            collection_name="omics_processing_set",
+            pipeline=[self.omics_id_analyte_category_mapping],
+        )
+
         # Create and populate workflow_chain_set
         self.adapter.create_collection("workflow_chain_set")
         self.populate_workflow_chain()
 
         # Remove the was_informed_by slot on the WorkflowExecution records if they match in their corresponding WorkflowChain records
         for workflow_execution in workflow_executions:
-            self.adapter.process_each_document(collection_name=workflow_execution,
-                                               pipeline=[self.remove_was_informed_by])
+            self.adapter.process_each_document(
+                collection_name=workflow_execution,
+                pipeline=[self.remove_was_informed_by],
+            )
 
     def mint_id(self):
         r"""
@@ -75,12 +81,11 @@ class Migrator(MigratorBase):
 
         return "potato:" + str(uuid.uuid4())
 
-
     def was_informed_by_chain_mapping(self, workflow_doc: dict):
         r"""
-        Get the was_informed_by value (an omics processing id) from the WorkflowExecution documents and 
+        Get the was_informed_by value (an omics processing id) from the WorkflowExecution documents and
         create a dictionary of the omics processing id with its corresponding worfklow chain id
-        
+
         >>> m = Migrator()
         >>> m.was_informed_by_chain_mapping({'id': 123, 'was_informed_by': 'nmdc:omcp-123'})
         {'id': 123, 'was_informed_by': 'nmdc:omcp-123'}
@@ -95,15 +100,15 @@ class Migrator(MigratorBase):
         omics_processing_id = workflow_doc["was_informed_by"]
 
         if omics_processing_id not in self.workflow_omics_dict:
-
             self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
         return workflow_doc
 
     def update_part_of_slot(self, workflow_doc: dict):
         r"""
-        Replaces the value, if there is one, in the part_of slot in the workflow doc with the corresponding workflow chain id.
-        
+        Replaces the value, if there is one, in the part_of slot in the workflow doc
+        with the corresponding workflow chain id.
+
         >>> m = Migrator()
         >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
         >>> result1 = m.update_part_of_slot({'id': 456, 'was_informed_by': 'nmdc:omcp-123'})
@@ -116,16 +121,16 @@ class Migrator(MigratorBase):
 
         informed_by_omics_id = workflow_doc["was_informed_by"]
         workflow_chain_id = self.workflow_omics_dict.get(informed_by_omics_id)
-        
+
         workflow_doc["part_of"] = [workflow_chain_id]
 
         return workflow_doc
-    
+
     def omics_id_analyte_category_mapping(self, omics_doc: dict):
         r"""
-        Get the analyte_category slot value from the omics processing doc and create a dictionary that 
+        Get the analyte_category slot value from the omics processing doc and create a dictionary that
         maps omics id to analyte_category value
-        
+
         >>> m = Migrator()
         >>> omics_doc = {'id': 'nmdc:omcp-123', 'analyte_category': 'metagenome'}
         >>> result = m.omics_id_analyte_category_mapping(omics_doc)
@@ -134,14 +139,14 @@ class Migrator(MigratorBase):
         >>> m.omics_analyte_category_dict
         {'nmdc:omcp-123': 'metagenome'}
         """
-    
+
         omics_doc_id = omics_doc["id"]
         analyte_category = omics_doc["analyte_category"]
 
         self.omics_analyte_category_dict[omics_doc_id] = analyte_category
 
         return omics_doc
-    
+
     def populate_workflow_chain(self):
         r"""
         Create and populate the workflow_chain_set collection based on the data in the workflow_omics_dict,
@@ -155,7 +160,7 @@ class Migrator(MigratorBase):
         # After execution, the workflow_chain_set collection should contain a document with the following data:
         {'id': 'nmdc:wfc-456', 'was_informed_by': 'nmdc:omcp-123', 'analyte_category': 'metagenome', 'type': 'nmdc:WorkflowChain', 'name': 'Workflow Chain for metagenome analysis related to Study 1'}
         """
-        
+
         for omics_id, workflow_chain_id in self.workflow_omics_dict.items():
             workflow_chain_doc = {}
 
@@ -169,25 +174,29 @@ class Migrator(MigratorBase):
 
             workflow_chain_doc["type"] = "nmdc:WorkflowChain"
 
-            workflow_chain_doc["name"] = f"Workflow Chain for {analyte_category} analysis of {omics_id}"
+            workflow_chain_doc["name"] = (
+                f"Workflow Chain for {analyte_category} analysis of {omics_id}"
+            )
 
             self.adapter.insert_document("workflow_chain_set", workflow_chain_doc)
 
-            
     def remove_was_informed_by(self, workflow_doc: dict):
 
         omics_id = workflow_doc["was_informed_by"]
         workflow_chain_ids = workflow_doc["part_of"]
         for wfc_id in workflow_chain_ids:
 
-            workflow_chain_doc = self.adapter.get_document_having_value_in_field(collection_name="workflow_chain_set", field_name="id", value=wfc_id)
+            workflow_chain_doc = self.adapter.get_document_having_value_in_field(
+                collection_name="workflow_chain_set", field_name="id", value=wfc_id
+            )
             self.logger.info(f"{workflow_chain_doc['id']=}")
 
             if workflow_chain_doc["was_informed_by"] == omics_id:
                 del workflow_doc["was_informed_by"]
             else:
-                self.logger.error(f"WorkflowExecution doc with id {workflow_doc['id']} was_informed_by slot does not match its workflow chain doc with id: {workflow_chain_doc['id']} was_informed_by_slot")
+                self.logger.error(
+                    f"WorkflowExecution doc with id {workflow_doc['id']} was_informed_by slot does not match"
+                    f"its workflow chain doc with id: {workflow_chain_doc['id']} was_informed_by_slot"
+                )
 
         return workflow_doc
-
-    
