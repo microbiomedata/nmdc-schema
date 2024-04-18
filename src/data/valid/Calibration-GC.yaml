@@ -3,4 +3,4 @@ type: nmdc:Calibration
 calibration_file: nmdc:dobj-12-krhrtjw9
 internal_calibration: false
 calibration_target: retention_index
-calibration_standard: FAMES
+calibration_standard: fames

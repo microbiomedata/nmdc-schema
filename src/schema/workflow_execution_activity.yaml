@@ -558,6 +558,9 @@ enums:
       retention_time:
         aliases:
           - RT
+      retention_index:
+        aliases:
+          - RI
 
   CalibrationStandardEnum:
     permissible_values:
