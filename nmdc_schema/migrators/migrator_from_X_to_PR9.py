@@ -38,7 +38,6 @@ class Migrator(MigratorBase):
 
         self.workflow_omics_dict = {}
         self.omics_analyte_category_dict = {}
-        self.study_name_dict = {}
 
     def upgrade(self):
         r"""
@@ -165,8 +164,8 @@ class Migrator(MigratorBase):
 
     def populate_workflow_chain(self):
         r"""
-        Create and populate the workflow_chain_set collection based on the data in the workflow_omics_dict,
-        study_name_dict, and omics_analyte_category_dict.
+        Create and populate the workflow_chain_set collection based on the data in the workflow_omics_dict and 
+        omics_analyte_category_dict.
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>>
@@ -174,7 +173,6 @@ class Migrator(MigratorBase):
         >>> adapter = DictionaryAdapter(database=database)
         >>> m = Migrator(adapter=adapter)
         >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
-        >>> m.study_name_dict = {'nmdc:omcp-123': ['Study 1']}
         >>> m.omics_analyte_category_dict = {'nmdc:omcp-123': 'metagenome'}
         >>> adapter.create_collection("workflow_chain_set")
         >>> m.populate_workflow_chain()
@@ -202,9 +200,27 @@ class Migrator(MigratorBase):
             self.adapter.insert_document("workflow_chain_set", workflow_chain_doc)
 
     def remove_was_informed_by(self, workflow_doc: dict):
+        r"""
+        Removes the was_informed_by slot from the workflow sets if its value matches its corresponding 
+        workflow_chain_set doc's was_informed_by value.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>>
+        >>> database = {}  # in this example, our data store is a Python dictionary
+        >>> adapter = DictionaryAdapter(database=database)
+        >>> m = Migrator(adapter=adapter)
+        >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
+        >>> m.omics_analyte_category_dict = {'nmdc:omcp-123': 'metagenome'}
+        >>> adapter.create_collection("workflow_chain_set")
+        >>> m.populate_workflow_chain()
+        >>> adapter.get_document_having_value_in_field('workflow_chain_set', 'id', value='nmdc:wfc-456')
+        >>> m.remove_was_informed_by({'id': 'nmdc:metab-123', 'part_of': ['nmdc:wfc-456'], 'was_informed_by': 'nmdc:omcp-123'})
+        {'id': 'nmdc:metab-123', 'part_of': ['nmdc:wfc-456']}
+        """
 
         omics_id = workflow_doc["was_informed_by"]
         workflow_chain_ids = workflow_doc["part_of"]
+        
         for wfc_id in workflow_chain_ids:
 
             workflow_chain_doc = self.adapter.get_document_having_value_in_field(
