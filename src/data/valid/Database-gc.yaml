@@ -1,0 +1,17 @@
+calibration_set:
+  - id: nmdc:calib-99-zUCd5Q
+    type: nmdc:Calibration
+    calibration_file: nmdc:dobj-12-krhrtjw9
+    internal_calibration: false
+    calibration_target: retention_index
+    calibration_standard: fames
+planned_process_set:
+  - id: nmdc:cspro-99-oW43DzG1
+    type: nmdc:ChromatographicSeparationProcess
+    has_input:
+      - nmdc:procsm-11-9gjxns62
+    has_output:
+      - nmdc:procsm-11-05g48p91
+    stationary_phase: Polysiloxane
+    chromatographic_category: gas_chromatography
+    has_calibration: nmdc:calib-99-zUCd5Q
