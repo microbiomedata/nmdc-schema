@@ -26,21 +26,26 @@ class Migrator(MigratorBase):
         return "potato:" + str(uuid.uuid4())
 
     def fill_instrument_set(self):
-        # r""""
-        # Fills the instrument_set collection from a YAML file of curated instrument instances
+        r""""
+        Fills the instrument_set collection from a YAML file of curated instrument instances
         
-        # >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        # >>>
-        # >>> database = {"instrument_set": []}  # seeds the database
-        # >>> adapter = DictionaryAdapter(database=database)
-        # >>> m = Migrator(adapter=adapter)
-        # >>> m.instruments = [{'name': 'hiseq', 'model': 'hiseq 2500', 'vendor': 'bruker', 'type': 'nmdc:Instrument'}]
-        # >>> m.instrument_id = 'potato:123'
-        # >>> m.fill_instrument_set()
-        # >>> adapter.get_document_having_value_in_field('instrument_set', 'name', value='hiseq')
-        # {'id': 'potato:123', 'name': 'hiseq', 'model': 'hiseq 2500', 'vendor': 'bruker', 'type': 'nmdc:Instrument'}
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>>
+        >>> database = {"instrument_set": []}  # seeds the database
+        >>> adapter = DictionaryAdapter(database=database)
+        >>> m = Migrator(adapter=adapter)
+        >>> m.fill_instrument_set()
+        >>> result = adapter.get_document_having_value_in_field('instrument_set', 'name', value='12T FT-ICR MS')
+        >>> result['name']
+        '12T FT-ICR MS'
+        >>> result['vendor']
+        'bruker'
+        >>> result['model']
+        'solarix_12T'
+        >>> result['type']
+        'nmdc:Instrument'
 
-        # """
+        """
 
         instruments = load_yaml_asset("migrator_from_X_to_PR19_and_PR70/instrument_set.yaml")
         for instrument in instruments:
