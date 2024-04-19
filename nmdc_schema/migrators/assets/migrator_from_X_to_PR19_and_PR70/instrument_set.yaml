@@ -1,75 +1,60 @@
 - model: solarix_12T
-  id: nmdc:1
   name: 12T FT-ICR MS
   vendor: bruker
   type: nmdc:Instrument
 - model: solarix_15T
-  id: nmdc:2
   name: 15T FT-ICR MS
   vendor: bruker
   type: nmdc:Instrument
 - model: exploris_21T
-  id: nmdc:3
   name: 21T FT-ICR MS
   vendor: pnnl
   type: nmdc:Instrument
 - model: solarix_7T
-  id: nmdc:4
   name: 7T FT-ICR MS
   vendor: bruker
   type: nmdc:Instrument
 - model: agilent_7980A
-  id: nmdc:5
   name: GC-MS
   vendor: agilent
   type: nmdc:Instrument
 - model: hiseq
-  id: nmdc:6 
   name: Illumina HiSeq
   vendor: illumina
   type: nmdc:Instrument
 - model: hiseq_2500
-  id: nmdc:7
   name: Illumina HiSeq 2500
   vendor: illumina
   type: nmdc:Instrument
 - model: hiseq_2500
-  id: nmdc:8
   name: Illumina HiSeq 2500-1TB
   vendor: illumina
   type: nmdc:Instrument
 - model: nextseq_550
-  id: nmdc:9
   name: Illumina NextSeq550
   vendor: illumina
   type: nmdc:Instrument
 - model: novaseq
-  id: nmdc:10
   name: Illumina NovaSeq
   vendor: illumina
   type: nmdc:Instrument
 - model: novaseq
-  id: nmdc:34
   name: Illumina NovaSeq S4
   vendor: illumina
   type: nmdc:Instrument
 - model: novaseq
-  id: nmdc:11
   name: NovaSeq SP
   vendor: illumina
   type: nmdc:Instrument
 - model: orbitrap_q_exactive
-  id: nmdc:12
   name: QExactHF03
   vendor: thermo_fisher
   type: nmdc:Instrument
 - model: orbitrap_q_exactive
-  id: nmdc:13
   name: QExactP02
   vendor: thermo_fisher
   type: nmdc:Instrument
 - model: ltq_orbitrap_velos
-  id: nmdc:14
   name: VOrbiETD04
   vendor: thermo_fisher
   type: nmdc:Instrument
