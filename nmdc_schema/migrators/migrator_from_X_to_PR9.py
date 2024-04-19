@@ -162,19 +162,18 @@ class Migrator(MigratorBase):
 
         return omics_doc
 
-    def populate_workflow_chain(self):
+    def populate_workflow_chain(self) -> None:
         r"""
-        Create and populate the workflow_chain_set collection based on the data in the workflow_omics_dict and 
-        omics_analyte_category_dict.
+        Populates the `workflow_chain_set` collection based upon the data in the `self.workflow_omics_dict` dictionary
+        and the `self.omics_analyte_category_dict` dictionary.
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>>
-        >>> database = {}  # in this example, our data store is a Python dictionary
+        >>> database = {"workflow_chain_set": []}  # seeds the database
         >>> adapter = DictionaryAdapter(database=database)
         >>> m = Migrator(adapter=adapter)
         >>> m.workflow_omics_dict = {'nmdc:omcp-123': 'nmdc:wfc-456'}
         >>> m.omics_analyte_category_dict = {'nmdc:omcp-123': 'metagenome'}
-        >>> adapter.create_collection("workflow_chain_set")
         >>> m.populate_workflow_chain()
         >>> adapter.get_document_having_value_in_field('workflow_chain_set', 'id', value='nmdc:wfc-456')
         {'id': 'nmdc:wfc-456', 'was_informed_by': 'nmdc:omcp-123', 'analyte_category': 'metagenome', 'type': 'nmdc:WorkflowChain', 'name': 'Workflow Chain for metagenome analysis of nmdc:omcp-123'}
