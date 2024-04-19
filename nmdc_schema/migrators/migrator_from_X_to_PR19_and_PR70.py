@@ -18,7 +18,7 @@ class Migrator(MigratorBase):
         # change to datageneration set depending on when migrator will happen
         self.adapter.process_each_document(collection_name="omics_processing_set", pipeline=[self.transform_instrument_slot]) 
 
-    def mint_ids(self):
+    def mint_id(self):
         r"""
         TODO: Replace me with real minting
         """
@@ -51,7 +51,7 @@ class Migrator(MigratorBase):
         for instrument in instruments:
             
             # Mint instrument id and insert into dict
-            instrument_id = self.mint_ids()
+            instrument_id = self.mint_id()
             instrument["id"] = instrument_id
 
             self.adapter.insert_document("instrument_set", instrument)
