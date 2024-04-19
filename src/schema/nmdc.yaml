@@ -721,7 +721,7 @@ slots:
 
   has_configuration:
     range: Configuration
-    description: a programmable set of parameters that define the actions of a process and is shared among multiple instances of the process.
+    description: a set of parameters that define the actions of the process
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
