@@ -166,14 +166,14 @@ classes:
     is_a: NamedThing
     class_uri: nmdc:Configuration
     description: A set of parameters that define the actions of a process and is shared among multiple instances of the process.
-    comments:
+    notes:
       - This class is intended to represent the parameters within a method file (or similar) that control a process.
 
   MassSpectrometryConfiguration:
     is_a: Configuration
     class_uri: nmdc:MassSpectrometryConfiguration
     description: A set of parameters that define and control the actions of a mass spectrometry process. 
-    comments:
+    notes:
       - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
     slots:
       - acquisition_category
