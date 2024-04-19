@@ -15,7 +15,7 @@ class Migrator(MigratorBase):
 
         self.adapter.create_collection(collection_name="instrument_set")
         self.fill_instrument_set()
-        # change to datageneration set depending on when migrator will happen
+      
         self.adapter.process_each_document(collection_name="omics_processing_set", pipeline=[self.transform_instrument_slot]) 
 
     def mint_id(self):
