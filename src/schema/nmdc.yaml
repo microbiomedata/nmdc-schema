@@ -158,12 +158,16 @@ classes:
     abstract: true
     is_a: NamedThing
     class_uri: nmdc:Configuration
-    description: A programmable set of parameters that define the actions of a process and is shared among multiple instances of the process.
+    description: A set of parameters that define and control the actions of a process and is shared among multiple instances of the process.
+    notes:
+      - This class is intended to represent the parameters within a method file (or similar) that controls a process.
 
   MassSpectrometryConfiguration:
     is_a: Configuration
     class_uri: nmdc:MassSpectrometryConfiguration
-    description: A programmable set of parameters that define the actions of a mass spectrometry process. Note that there may be additional parameters that are not captured here.
+    description: A set of parameters that define and control the actions of a mass spectrometry process. 
+    notes:
+      - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
     slots:
       - acquisition_category
       - resolution_category
@@ -231,6 +235,7 @@ classes:
       - study_set
       - workflow_execution_set
       - instrument_set
+      - configuration_set
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -964,6 +969,10 @@ slots:
     mixins: object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
+  configuration_set:
+    mixins: object_set
+    range: Configuration
+    description: This property links a database object to the set of configurations within it.
 
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
