@@ -1,7 +1,7 @@
 data_generation_set:
   - id: nmdc:dgms-99-zUCd5N
     type: nmdc:MassSpectrometry
-    has_configuration: nmdc:mscon-99-oW43DzG0
+    has_configuration: nmdc:mscon-99-oW43DzG1
     analyte_category: metabolome
     alternative_identifiers:
       - emsl:123423
@@ -14,9 +14,9 @@ data_generation_set:
     associated_studies:
       - nmdc:sty-00-555xxx
 configuration_set:
-  - id: nmdc:mscon-99-oW43DzG0
+  - id: nmdc:mscon-99-oW43DzG1
     name: EMSL_metab_method1
-    description: Mass Spectrometry method used by EMSL for metabolomics analysis
+    description: Mass spectrometry method used by EMSL for metabolomics analysis
     type: nmdc:MassSpectrometryConfiguration
     acquisition_category: tandem_mass_spectrum
     acquisition_strategy: data_dependent_acquisition
