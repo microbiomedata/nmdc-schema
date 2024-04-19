@@ -160,7 +160,7 @@ classes:
     class_uri: nmdc:Configuration
     description: A set of parameters that define the actions of a process and is shared among multiple instances of the process.
     comments:
-      - This class is intended to represent the parameters within a method file (or similar) that controls a process.
+      - This class is intended to represent the parameters within a method file (or similar) that control a process.
 
   MassSpectrometryConfiguration:
     is_a: Configuration
