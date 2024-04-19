@@ -26,7 +26,21 @@ class Migrator(MigratorBase):
         return "potato:" + str(uuid.uuid4())
 
     def fill_instrument_set(self):
-        r""""Fills the instrument_set collection from a YAML file of curated instrument instances"""
+        # r""""
+        # Fills the instrument_set collection from a YAML file of curated instrument instances
+        
+        # >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        # >>>
+        # >>> database = {"instrument_set": []}  # seeds the database
+        # >>> adapter = DictionaryAdapter(database=database)
+        # >>> m = Migrator(adapter=adapter)
+        # >>> m.instruments = [{'name': 'hiseq', 'model': 'hiseq 2500', 'vendor': 'bruker', 'type': 'nmdc:Instrument'}]
+        # >>> m.instrument_id = 'potato:123'
+        # >>> m.fill_instrument_set()
+        # >>> adapter.get_document_having_value_in_field('instrument_set', 'name', value='hiseq')
+        # {'id': 'potato:123', 'name': 'hiseq', 'model': 'hiseq 2500', 'vendor': 'bruker', 'type': 'nmdc:Instrument'}
+
+        # """
 
         instruments = load_yaml_asset("migrator_from_X_to_PR19_and_PR70/instrument_set.yaml")
         for instrument in instruments:
@@ -38,6 +52,18 @@ class Migrator(MigratorBase):
             self.adapter.insert_document("instrument_set", instrument)
 
     def transform_instrument_slot(self, omics_doc: dict):
+        r"""
+        Changes the instrument_name slot to be instrument_used, and replaces the name string value with an identifier for 
+        the instrument
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>>
+        >>> database = {'instrument_set': [{'id': 'nmdc:inst-456', 'name': '12T FT-ICR MS', 'model':'solarix_12T', 'vendor':'bruker', 'type':'nmdc:Instrument'}]} 
+        >>> adapter = DictionaryAdapter(database=database)
+        >>> m = Migrator(adapter=adapter)
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-123', 'instrument_name': '12T_FTICR_B'})
+        {'id': 'nmdc:omcp-123', 'instrument_used': 'nmdc:inst-456'}
+        """
 
         if "instrument_name" in omics_doc:
             existing_instrument_name = omics_doc["instrument_name"]
