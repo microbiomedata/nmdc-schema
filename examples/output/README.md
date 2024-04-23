@@ -1133,7 +1133,7 @@ sample_link:
 - IGSN:DSJ0284
 - any:curie
 sample_shipped: 15 g
-sample_type: water_extract_soil
+sample_type: soil - water extract
 season_precpt:
   has_raw_value: 75 millimeters
 season_temp:
@@ -2206,7 +2206,7 @@ sample_link:
 - IGSN:DSJ0284
 - any:curie
 sample_shipped: 15 g
-sample_type: water_extract_soil
+sample_type: soil - water extract
 saturates_pc:
   has_raw_value: xxx
 season:
@@ -2470,6 +2470,108 @@ biosample_set:
   id: nmdc:bsm-99-dtTMNb
   part_of:
   - nmdc:sty-00-abc123
+- dna_cont_type: plate
+  dna_cont_well: A10
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000001
+  part_of:
+  - nmdc:sty-00-abc123
+- dna_cont_type: plate
+  dna_cont_well: A11
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000002
+  part_of:
+  - nmdc:sty-00-abc123
+- dna_cont_type: plate
+  dna_cont_well: H10
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000003
+  part_of:
+  - nmdc:sty-00-abc123
+- dna_cont_type: plate
+  dna_cont_well: H11
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000004
+  part_of:
+  - nmdc:sty-00-abc123
+- dna_cont_type: plate
+  dna_cont_well: C1
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000005
+  part_of:
+  - nmdc:sty-00-abc123
+- dna_cont_type: plate
+  dna_cont_well: C12
+  env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000006
+  part_of:
+  - nmdc:sty-00-abc123
 
 ```
 ## Study-exhaustive
@@ -2532,6 +2634,8 @@ has_credit_associations:
   - Supervision
   applies_to_person:
     name: Tanja Davidsen
+homepage_website:
+- https://www.neonscience.org/
 id: nmdc:sty-11-ab
 mgnify_project_identifiers:
 - mgnify.proj:ABC123
@@ -2664,6 +2768,108 @@ biosample_set:
   - nmdc:sty-00-abc123
   rna_cont_type: plate
   rna_cont_well: B2
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000001
+  part_of:
+  - nmdc:sty-00-abc123
+  rna_cont_type: plate
+  rna_cont_well: A10
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000002
+  part_of:
+  - nmdc:sty-00-abc123
+  rna_cont_type: plate
+  rna_cont_well: A11
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000003
+  part_of:
+  - nmdc:sty-00-abc123
+  rna_cont_type: plate
+  rna_cont_well: H10
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000004
+  part_of:
+  - nmdc:sty-00-abc123
+  rna_cont_type: plate
+  rna_cont_well: H11
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000005
+  part_of:
+  - nmdc:sty-00-abc123
+  rna_cont_type: plate
+  rna_cont_well: C1
+- env_broad_scale:
+    has_raw_value: ENVO:00002030
+    term:
+      id: ENVO:00002030
+  env_local_scale:
+    has_raw_value: ENVO:00002169
+    term:
+      id: ENVO:00002169
+  env_medium:
+    has_raw_value: ENVO:00005792
+    term:
+      id: ENVO:00005792
+  id: nmdc:bsm-99-000006
+  part_of:
+  - nmdc:sty-00-abc123
+  rna_cont_type: plate
+  rna_cont_well: C12
 
 ```
 ## Database-biosamples-sites
@@ -3699,7 +3905,7 @@ biosample_set:
   - IGSN:DSJ0284
   - any:curie
   sample_shipped: 15 g
-  sample_type: water_extract_soil
+  sample_type: soil - water extract
   saturates_pc:
     has_raw_value: xxx
   season:
@@ -7400,9 +7606,12 @@ ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
 funding_sources:
-- This is an example of a funding source with too long of a description. Funding sources
-  should be no more than 150 characters. Any longer is unnecessary and excessive.
-  Its very very very very very very very very very long.
+- 'This is an example of a funding source with too long of a description. Funding
+  sources should be no more than 250 characters.  Any longer is unnecessary and excessive.
+  It''s very very very very very very very very very very very very very very very
+  very  very very very very very very very long"
+
+  '
 - any string 2
 gold_study_identifiers:
 - gold:Gs12345
@@ -7859,9 +8068,7 @@ ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
 funding_sources:
-- This is an example of a funding source with too long of a description. Funding sources
-  should be no more than 150 characters. Any longer is unnecessary and excessive.
-  I't's very very very very very very very very very long.
+- any string 1
 - any string 2
 gold_study_identifiers:
 - gold:Gs12345
@@ -8223,6 +8430,16 @@ study_set:
   - https://w3id.org/linkml
 
 ```
+## Study-invalid-homepage-website
+### Input
+```yaml
+homepage_website:
+- https://www.neonscience.org/
+- https://consortium.org/
+id: nmdc:sty-11-ab
+study_category: consortium
+
+```
 ## Study-using-undefined-genome_portal_identifiers-slot
 ### Input
 ```yaml
@@ -8251,9 +8468,7 @@ ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
 funding_sources:
-- This is an example of a funding source with too long of a description. Funding sources
-  should be no more than 150 characters. Any longer is unnecessary and excessive.
-  Its very very very very very very very very very long.
+- any string 1
 - any string 2
 gold_study_identifiers:
 - gold:Gs12345

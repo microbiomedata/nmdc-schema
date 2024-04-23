@@ -9,15 +9,21 @@ class DictionaryAdapter(AdapterBase):
     a Python dictionary.
     """
 
-    def __init__(self, database: dict) -> None:
+    def __init__(self, database: dict, **kwargs) -> None:
         r"""
-        Initializes the reference to the database this adapter instance will be used to manipulate.
+        Invokes the initialization method of the parent class, passing to it any specified keyword arguments.
+        Also initializes the reference to the database this adapter instance will be used to manipulate.
         """
+        super().__init__(**kwargs)
         self._db = database
 
     def create_collection(self, collection_name: str) -> None:
         r"""
         Creates an empty collection having the specified name, if no collection by that name exists.
+        Also invokes `self.on_collection_created`, if defined, passing to it the name of the collection.
+
+        References:
+        - https://docs.python.org/3/library/functions.html#callable
 
         >>> database = {
         ...   "thing_set": [
@@ -41,9 +47,14 @@ class DictionaryAdapter(AdapterBase):
         if collection_name not in self._db:
             self._db[collection_name] = []
 
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_created):
+                self.on_collection_created(collection_name)
+
     def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
-        Renames the specified collection so that it has the specified name.
+        Renames the specified collection, if it exists, so that it has the specified new name.
+        Also invokes `self.on_collection_renamed`, if defined, passing to it the old and new names of the collection.
 
         >>> database = {
         ...   "thing_set": [
@@ -59,11 +70,17 @@ class DictionaryAdapter(AdapterBase):
         >>> "item_set" in database
         True
         """
-        self._db[new_name] = self._db.pop(current_name)
+        if current_name in self._db:
+            self._db[new_name] = self._db.pop(current_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_renamed):
+                self.on_collection_renamed(current_name, new_name)
 
     def delete_collection(self, collection_name: str) -> None:
         r"""
-        Deletes the collection having the specified name.
+        Deletes the collection having the specified name, if such a collection exists.
+        Also invokes `self.on_collection_deleted`, if defined, passing to it the name of the collection.
 
         >>> database = {
         ...   "thing_set": [
@@ -77,7 +94,12 @@ class DictionaryAdapter(AdapterBase):
         >>> "thing_set" in database
         False
         """
-        del self._db[collection_name]
+        if collection_name in self._db:
+            del self._db[collection_name]
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_deleted):
+                self.on_collection_deleted(collection_name)
 
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""
@@ -181,7 +203,9 @@ class DictionaryAdapter(AdapterBase):
 
         return document
 
-    def delete_documents_having_value_in_field(self, collection_name: str, field_name: str, value: str) -> int:
+    def delete_documents_having_value_in_field(
+        self, collection_name: str, field_name: str, value: str
+    ) -> int:
         r"""
         Deletes all documents from the specified collection, having the specified value in the specified field;
         and returns the number of documents that were deleted.
@@ -218,7 +242,10 @@ class DictionaryAdapter(AdapterBase):
         # Filter out the documents having the specified value in the specified field.
         # Reference: https://docs.python.org/3/library/functions.html#filter
         documents_initial = self._db[collection_name]
-        document_generator = filter(lambda d: field_name not in d or d.get(field_name) != value, documents_initial)
+        document_generator = filter(
+            lambda d: field_name not in d or d.get(field_name) != value,
+            documents_initial,
+        )
         documents_remaining = list(document_generator)
 
         # Update the collection so that it consists of the filtered result.
@@ -255,22 +282,24 @@ class DictionaryAdapter(AdapterBase):
         {'id': '111', 'foo': 'BAR'}
         >>> database["thing_set"][1]
         {'id': '222', 'foo': 'BAZ'}
+        >>> da.process_each_document("missing_set", [capitalize_foo_value])  # non-existent collection does not trigger an exception
         """
 
-        # Iterate over every document in the collection.
-        for index, original_document in enumerate(self._db[collection_name]):
-            # Make a copy of the original document.
-            #
-            # Note: This isn't technically necessary (we could modify the original document in place
-            #       while it resides in the Python array), but this keeps the algorithm analogous to
-            #       what I expect its "real database" (e.g. MongoDB) counterparts to be.
-            #
-            processed_document = deepcopy(original_document)
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db:
+            for index, original_document in enumerate(self._db[collection_name]):
+                # Make a copy of the original document.
+                #
+                # Note: This isn't technically necessary (we could modify the original document in place
+                #       while it resides in the Python array), but this keeps the algorithm analogous to
+                #       what I expect its "real database" (e.g. MongoDB) counterparts to be.
+                #
+                processed_document = deepcopy(original_document)
 
-            # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
-            # such that the output from one stage becomes the input to the next stage.
-            for function in pipeline:
-                processed_document = function(processed_document)
+                # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
+                # such that the output from one stage becomes the input to the next stage.
+                for function in pipeline:
+                    processed_document = function(processed_document)
 
-            # Overwrite the original document with the processed one.
-            self._db[collection_name][index] = processed_document
+                # Overwrite the original document with the processed one.
+                self._db[collection_name][index] = processed_document

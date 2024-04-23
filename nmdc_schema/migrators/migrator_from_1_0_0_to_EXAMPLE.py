@@ -17,8 +17,8 @@ class Migrator(MigratorBase):
               -->  As part of creating a new "migrator" class, you will
                    populate its `_from_version` and `_to_version` strings.
     """
-    _from_version = "A.B.C"
-    _to_version = "X.Y.Z"
+    _from_version = "1.0.0"  # https://github.com/microbiomedata/nmdc-schema/blob/1.0.0/
+    _to_version = "EXAMPLE"  # in practice, this would be a real schema version; e.g., "7.8.0"
 
     def upgrade(self):
         r"""
@@ -37,24 +37,27 @@ class Migrator(MigratorBase):
 
         # Process each document in the specified collection.
         #
-        # Note: This works in a similar way to the "agenda-based" migrations we used to use before
-        #       adapters were introduced. However, now, each collection's entry in the "agenda" is
-        #       expressed as an invocation of the `self.adapter.process_each_document` function.
+        # Note: In this example, we will pass each document in the `study_set` collection through
+        #       a processing pipeline that consists of a single function: `self.allow_multiple_names`.
         #
         self.adapter.process_each_document("study_set", [self.allow_multiple_names])
 
-        # Invoke some other adapter functions (as an example).
+        # Create and populate a collection that doesn't exist in the `_from_version` schema.
         self.adapter.create_collection("comment_set")
         self.adapter.insert_document("comment_set", {"id": 1, "text": "Hello"})
         self.adapter.insert_document("comment_set", {"id": 2, "text": "Goodbye"})
+
+        # Advanced: Create and populate another new collection; based upon the documents in a _different_ collection.
+        self.adapter.create_collection("report_set")
+        self.adapter.process_each_document("comment_set", [self.create_report_based_upon_comment])
 
     def allow_multiple_names(self, study: dict) -> dict:
         """
         TUTORIAL: This is an example "transformation" function within the class.
                   Its job is to transform a dictionary that conforms to the
-                  initial schema (in this case, version "A.B.C"), into one
+                  initial schema (in this case, version "1.0.0"), into one
                   that conforms to the target schema (in this case,
-                  version "X.Y.Z"). That might involve adding a field,
+                  version "EXAMPLE"). That might involve adding a field,
                   converting a string into a list of strings, etc.
 
                   When this "transformation" function runs, it does three things:
@@ -80,6 +83,8 @@ class Migrator(MigratorBase):
                   typically write a few doctests in the docstring of that function.
 
         >>> m = Migrator()  # creates a class instance on which we can call this function (i.e. this method)
+        >>> m.allow_multiple_names({'id': 123})  # test: creates an empty `names` list
+        {'id': 123, 'names': []}
         >>> m.allow_multiple_names({'id': 123, 'name': 'My project'})  # test: transfers existing name to `names` list
         {'id': 123, 'names': ['My project']}
         >>> m.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys
@@ -91,17 +96,28 @@ class Migrator(MigratorBase):
 
         # Transform the dictionary.
         #
-        # TUTORIAL: In this example scenario, I am pretending that:
-        #           1. In schema version "A.B.C", the `Study` class has a `name` slot,
-        #              which contain a single string.
-        #           2. In schema version "X.Y.Z", the `Study` class no longer has that
-        #              `name` slot. Instead, it has a `names` slot, which contains
-        #              a list of strings.
+        # TUTORIAL: In this example, I am creating a new field named `names`, whose value is an empty list;
+        #           then, if the original study has a `name` value, I'm storing that in the list and then
+        #           deleting the `name` field.
         #
-        original_name = study["name"]  # preserve the original value
-        study["names"] = []  # create a new key, whose value is an empty list of names
-        study["names"].append(original_name)  # add the original value to that list
-        del study["name"]  # delete the obsolete key
+        study["names"] = []
+        if "name" in study:
+            original_name = study["name"]
+            study["names"].append(original_name)
+            del study["name"]
 
         # Return the transformed dictionary.
         return study
+
+    def create_report_based_upon_comment(self, comment: dict) -> dict:
+        """
+        Creates a report based upon the comment passed in.
+
+        Note: Although this function will be passed a document from the `comment_set` collection, it actually modifies
+              a _different_ (i.e. arbitrary) collection instead, and then returns the original `comment_set` document
+              unchanged. I consider this to be a "shoehorned" usage of the migration framework, but a necessary
+              usage since the migration framework doesn't provide a different way to do the same thing (yet).
+        """
+        report = {"body": f"Someone wrote {comment['text']}"}
+        self.adapter.insert_document(collection_name="report_set", document=report)
+        return comment  # returns the original `comment_set` document, unmodified

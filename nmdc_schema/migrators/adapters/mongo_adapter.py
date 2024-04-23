@@ -8,42 +8,63 @@ class MongoAdapter(AdapterBase):
     Class containing methods related to manipulating a MongoDB database.
     """
 
-    def __init__(self, database: Database) -> None:
+    def __init__(self, database: Database, **kwargs) -> None:
         r"""
-        Initializes the reference to the database this adapter instance will be used to manipulate.
+        Invokes the initialization method of the parent class, passing to it any specified keyword arguments.
+        Also initializes the reference to the database this adapter instance will be used to manipulate.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/examples/type_hints.html#typed-database
         """
+        super().__init__(**kwargs)
         self._db = database
 
     def create_collection(self, collection_name: str) -> None:
         r"""
         Creates an empty collection having the specified name, if no collection by that name exists.
+        Also invokes `self.on_collection_created`, if defined, passing to it the name of the collection.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.create_collection
+        - https://docs.python.org/3/library/functions.html#callable
         """
-        self._db.create_collection(name=collection_name)
+        if collection_name not in self._db.list_collection_names():
+            self._db.create_collection(name=collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_created):
+                self.on_collection_created(collection_name)
 
     def rename_collection(self, current_name: str, new_name: str) -> None:
         r"""
-        Renames the specified collection so that it has the specified name.
+        Renames the specified collection, if it exists, so that it has the specified new name.
+        Also invokes `self.on_collection_renamed`, if defined, passing to it the old and new names of the collection.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.get_collection
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.rename
         """
-        self._db.get_collection(name=current_name).rename(new_name=new_name)
+        if current_name in self._db.list_collection_names():
+            self._db.get_collection(name=current_name).rename(new_name=new_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_renamed):
+                self.on_collection_renamed(current_name, new_name)
 
     def delete_collection(self, collection_name: str) -> None:
         r"""
-        Deletes the collection having the specified name.
+        Deletes the collection having the specified name, if such a collection exists.
+        Also invokes `self.on_collection_deleted`, if defined, passing to it the name of the collection.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.drop_collection
         """
-        self._db.drop_collection(name_or_collection=collection_name)
+        if collection_name in self._db.list_collection_names():
+            self._db.drop_collection(name_or_collection=collection_name)
+
+            # If the relevant callback function exists, invoke it.
+            if callable(self.on_collection_deleted):
+                self.on_collection_deleted(collection_name)
 
     def insert_document(self, collection_name: str, document: dict) -> None:
         r"""
@@ -148,19 +169,19 @@ class MongoAdapter(AdapterBase):
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.replace_one
         """
 
-        collection = self._db.get_collection(name=collection_name)
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            for document in collection.find():
+                # Create a filter based upon this document's `_id` value, so that we can find the same document later.
+                # We do this up front in case a function in the pipeline "inadvertently" tampers with the `_id` field.
+                document_id = document["_id"]
+                filter_ = {"_id": {"$eq": document_id}}
 
-        # Iterate over every document in the collection.
-        for document in collection.find():
-            # Create a filter based upon this document's `_id` value, so that we can find the same document later.
-            # We do this up front in case a function in the pipeline "inadvertently" tampers with the `_id` field.
-            document_id = document["_id"]
-            filter_ = {"_id": {"$eq": document_id}}
+                # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
+                # such that the output from one stage becomes the input to the next stage.
+                for function in pipeline:
+                    document = function(document)
 
-            # "Pass" the document through the functions (i.e. "stages") that make up the pipeline,
-            # such that the output from one stage becomes the input to the next stage.
-            for function in pipeline:
-                document = function(document)
-
-            # Overwrite the original document with the processed one.
-            collection.replace_one(filter=filter_, replacement=document)
+                # Overwrite the original document with the processed one.
+                collection.replace_one(filter=filter_, replacement=document)

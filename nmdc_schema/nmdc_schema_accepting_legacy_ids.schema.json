@@ -39,9 +39,11 @@
             "enum": [
                 "metabolomics",
                 "metagenomics",
+                "metagenomics_long_read",
                 "metaproteomics",
                 "metatranscriptomics",
-                "natural organic matter"
+                "natural organic matter",
+                "bulk chemistry"
             ],
             "title": "AnalysisTypeEnum",
             "type": "string"
@@ -157,7 +159,7 @@
                     "then": {
                         "properties": {
                             "dna_cont_well": {
-                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
                             }
                         },
                         "required": [
@@ -201,7 +203,7 @@
                     "then": {
                         "properties": {
                             "rna_cont_well": {
-                                "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$"
+                                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
                             }
                         },
                         "required": [
@@ -731,7 +733,7 @@
                     "description": "Tube or plate (96-well)"
                 },
                 "dna_cont_well": {
-                    "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$",
+                    "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$",
                     "type": "string"
                 },
                 "dna_container_id": {
@@ -755,7 +757,7 @@
                     "type": "string"
                 },
                 "dna_sample_format": {
-                    "$ref": "#/$defs/DnaSampleFormatEnum",
+                    "$ref": "#/$defs/DNASampleFormatEnum",
                     "description": "Solution in which the DNA sample has been suspended"
                 },
                 "dna_sample_name": {
@@ -1110,16 +1112,6 @@
                 "handidness": {
                     "$ref": "#/$defs/HandidnessEnum",
                     "description": "The handidness of the individual sampled"
-                },
-                "has_numeric_value": {
-                    "type": "number"
-                },
-                "has_raw_value": {
-                    "type": "string"
-                },
-                "has_unit": {
-                    "description": "Example \"m\"",
-                    "type": "string"
                 },
                 "hc_produced": {
                     "$ref": "#/$defs/HcProducedEnum",
@@ -1941,7 +1933,7 @@
                     "description": "Tube or plate (96-well)"
                 },
                 "rna_cont_well": {
-                    "pattern": "^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$",
+                    "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$",
                     "type": "string"
                 },
                 "rna_container_id": {
@@ -1962,7 +1954,7 @@
                     "type": "string"
                 },
                 "rna_sample_format": {
-                    "$ref": "#/$defs/RnaSampleFormatEnum",
+                    "$ref": "#/$defs/RNASampleFormatEnum",
                     "description": "Solution in which the RNA sample has been suspended"
                 },
                 "rna_sample_name": {
@@ -3467,6 +3459,25 @@
             "title": "CurLandUseEnum",
             "type": "string"
         },
+        "DNASampleFormatEnum": {
+            "description": "",
+            "enum": [
+                "10 mM Tris-HCl",
+                "DNAStable",
+                "Ethanol",
+                "Low EDTA TE",
+                "MDA reaction buffer",
+                "PBS",
+                "Pellet",
+                "RNAStable",
+                "TE",
+                "Water",
+                "Gentegra-DNA",
+                "Gentegra-RNA"
+            ],
+            "title": "DNASampleFormatEnum",
+            "type": "string"
+        },
         "DataObject": {
             "additionalProperties": false,
             "description": "An object that primarily consists of symbols that represent information.   Files, records, and omics data are examples of data objects.",
@@ -3771,25 +3782,6 @@
                 "CEREX System 96 processor"
             ],
             "title": "DeviceEnum",
-            "type": "string"
-        },
-        "DnaSampleFormatEnum": {
-            "description": "",
-            "enum": [
-                "10 mM Tris-HCl",
-                "DNAStable",
-                "Ethanol",
-                "Low EDTA TE",
-                "MDA reaction buffer",
-                "PBS",
-                "Pellet",
-                "RNAStable",
-                "TE",
-                "Water",
-                "Gentegra-DNA",
-                "Gentegra-RNA"
-            ],
-            "title": "DnaSampleFormatEnum",
             "type": "string"
         },
         "Doi": {
@@ -4357,9 +4349,13 @@
                 "QC non-rRNA R2",
                 "QC non-rRNA R1",
                 "Metagenome Bins",
-                "Metagenome Bins Compression File",
+                "Metagenome HQMQ Bins Compression File",
+                "Metagenome LQ Bins Compression File",
                 "Metagenome Bins Info File",
                 "CheckM Statistics",
+                "Metagenome Bins Heatmap",
+                "Metagenome Bins Barplot",
+                "Metagenome Bins Krona Plot",
                 "Read Based Analysis Info File",
                 "GTDBTK Bacterial Summary",
                 "GTDBTK Archaeal Summary",
@@ -7651,6 +7647,25 @@
             "title": "QuantityValue",
             "type": "object"
         },
+        "RNASampleFormatEnum": {
+            "description": "",
+            "enum": [
+                "10 mM Tris-HCl",
+                "DNAStable",
+                "Ethanol",
+                "Low EDTA TE",
+                "MDA reaction buffer",
+                "PBS",
+                "Pellet",
+                "RNAStable",
+                "TE",
+                "Water",
+                "Gentegra-DNA",
+                "Gentegra-RNA"
+            ],
+            "title": "RNASampleFormatEnum",
+            "type": "string"
+        },
         "Reaction": {
             "additionalProperties": false,
             "description": "An individual biochemical transformation carried out by a functional unit of an organism, in which a collection of substrates are transformed into a collection of products. Can also represent transporters",
@@ -8028,25 +8043,6 @@
             "title": "RelSampLocEnum",
             "type": "string"
         },
-        "RnaSampleFormatEnum": {
-            "description": "",
-            "enum": [
-                "10 mM Tris-HCl",
-                "DNAStable",
-                "Ethanol",
-                "Low EDTA TE",
-                "MDA reaction buffer",
-                "PBS",
-                "Pellet",
-                "RNAStable",
-                "TE",
-                "Water",
-                "Gentegra-DNA",
-                "Gentegra-RNA"
-            ],
-            "title": "RnaSampleFormatEnum",
-            "type": "string"
-        },
         "RoomCondtEnum": {
             "description": "",
             "enum": [
@@ -8230,7 +8226,10 @@
             "description": "",
             "enum": [
                 "soil",
-                "water_extract_soil"
+                "soil - water extract",
+                "plant associated",
+                "sediment",
+                "water"
             ],
             "title": "SampleTypeEnum",
             "type": "string"
@@ -8526,7 +8525,7 @@
                     "type": "string"
                 },
                 "emsl_project_identifiers": {
-                    "description": "an identifier that links to an EMSL user facility project",
+                    "description": "Identifiers that link a NMDC study to the EMSL user facility website hosting the project description of an EMSL user project",
                     "items": {
                         "pattern": "^emsl\\.project:[0-9]{5}$",
                         "type": "string"
@@ -8561,6 +8560,15 @@
                     "items": {
                         "$ref": "#/$defs/CreditAssociation"
                     },
+                    "type": "array"
+                },
+                "homepage_website": {
+                    "description": "The website address (URL) of an entity's homepage.",
+                    "items": {
+                        "pattern": "^[Hh][Tt][Tt][Pp][Ss]?:\\/\\/(?!.*[Dd][Oo][Ii]\\.[Oo][Rr][Gg]).*$",
+                        "type": "string"
+                    },
+                    "maxItems": 1,
                     "type": "array"
                 },
                 "id": {
@@ -9492,5 +9500,5 @@
     },
     "title": "NMDC",
     "type": "object",
-    "version": "v10.0.0"
+    "version": "0.0.0"
 }

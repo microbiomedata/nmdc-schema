@@ -1489,7 +1489,7 @@
   "project_id": "no example from MIxS",
   "replicate_number": "1",
   "sample_shipped": "15 g",
-  "sample_type": "water_extract_soil",
+  "sample_type": "soil - water extract",
   "technical_reps": "2",
   "analysis_type": [
     "metabolomics",

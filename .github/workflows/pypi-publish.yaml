@@ -8,32 +8,35 @@ jobs:
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI
     runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      # this permission is mandatory for trusted publishing
+      id-token: write
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v2.2.2
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: "3.10"
 
     - name: Install Poetry
       run: |
-        pip install poetry
-        poetry self add "poetry-dynamic-versioning[plugin]"
-      # uses: snok/install-poetry@v1.1.6
-      # with:
-      #   virtualenvs-create: true
-      #   virtualenvs-in-project: true
+        pipx install poetry
+        pipx inject poetry "poetry-dynamic-versioning[plugin]"
 
-    # - name: Install dependencies
-    #   run: poetry install --no-interaction
+    - name: Install project dependencies
+      run: poetry install --no-interaction
+
+    - name: Generate project files
+      run: |
+        poetry dynamic-versioning
+        make squeaky-clean all
 
     - name: Build source and wheel archives
       run: poetry build
 
     - name: Publish distribution 📦 to PyPI
+      # No username or password because we're using trusted publishing
       uses: pypa/gh-action-pypi-publish@v1.2.2
-      with:
-        user: __token__
-        password: ${{ secrets.PYPI_PASSWORD }}

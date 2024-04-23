@@ -34,20 +34,20 @@ nmdc:sty-11-ab a nmdc:Study ;
     nmdc:alternative_titles "any string 1",
         "any string 2" ;
     nmdc:associated_dois [ a nmdc:Doi ;
+            nmdc:doi_category "publication_doi" ;
+            nmdc:doi_value "doi:10.1126/science.1058040"^^xsd:anyURI ],
+        [ a nmdc:Doi ;
+            nmdc:doi_category "data_management_plan_doi" ;
+            nmdc:doi_provider "gsc" ;
+            nmdc:doi_value "doi:10.48321/D1Z60Q"^^xsd:anyURI ],
+        [ a nmdc:Doi ;
             nmdc:doi_category "award_doi" ;
             nmdc:doi_provider "jgi" ;
             nmdc:doi_value "doi:10.1126/science.1234545"^^xsd:anyURI ],
         [ a nmdc:Doi ;
             nmdc:doi_category "dataset_doi" ;
             nmdc:doi_provider "kbase" ;
-            nmdc:doi_value "doi:10.1126/science.1456956"^^xsd:anyURI ],
-        [ a nmdc:Doi ;
-            nmdc:doi_category "publication_doi" ;
-            nmdc:doi_value "doi:10.1126/science.1058040"^^xsd:anyURI ],
-        [ a nmdc:Doi ;
-            nmdc:doi_category "data_management_plan_doi" ;
-            nmdc:doi_provider "gsc" ;
-            nmdc:doi_value "doi:10.48321/D1Z60Q"^^xsd:anyURI ] ;
+            nmdc:doi_value "doi:10.1126/science.1456956"^^xsd:anyURI ] ;
     nmdc:ecosystem "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads" ;
     nmdc:ecosystem_category "unconstrained text" ;
     nmdc:ecosystem_subtype "unconstrained text" ;
@@ -56,6 +56,7 @@ nmdc:sty-11-ab a nmdc:Study ;
         "any string 2" ;
     nmdc:gold_study_identifiers "gold:Gs12345"^^xsd:anyURI,
         "gold:Gs90909"^^xsd:anyURI ;
+    nmdc:homepage_website "https://www.neonscience.org/" ;
     nmdc:mgnify_project_identifiers "mgnify.proj:ABC123"^^xsd:anyURI ;
     nmdc:name "see also description, title, objective, various alternatives" ;
     nmdc:objective "This record, an instance of class Study from the nmdc-schema was had authored, so that the NMDC team would have at least one instance, using all slots, with a mixture of reasonable values and minimally compliant values." ;

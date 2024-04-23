@@ -8,7 +8,7 @@ notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
   id isn't 1:1
 id: https://w3id.org/nmdc/nmdc
-version: v10.0.0
+version: 0.0.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   CATH:
@@ -709,8 +709,8 @@ enums:
         text: NEON
         meaning: https://www.neonscience.org
         title: National Science Foundation's National Ecological Observatory Network
-  file type enum:
-    name: file type enum
+  FileTypeEnum:
+    name: FileTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       Metagenome Raw Reads:
@@ -768,14 +768,22 @@ enums:
       Metagenome Bins:
         text: Metagenome Bins
         description: Metagenome bin contigs fasta
-      Metagenome Bins Compression File:
-        text: Metagenome Bins Compression File
-        description: Compressed file containing all metagenome bins and associated
-          files
+      Metagenome HQMQ Bins Compression File:
+        text: Metagenome HQMQ Bins Compression File
+        description: Compressed file containing high qulaity and medium quality metagenome
+          bins and associated files
         annotations:
           file_name_pattern:
             tag: file_name_pattern
             value: '[mag_wf_activity_id]_hqmq_bin.zip'
+      Metagenome LQ Bins Compression File:
+        text: Metagenome LQ Bins Compression File
+        description: Compressed file containing low quality metagenome bins and associated
+          files
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_lq_bin.zip'
       Metagenome Bins Info File:
         text: Metagenome Bins Info File
         description: File containing version information on the binning workflow
@@ -786,6 +794,30 @@ enums:
       CheckM Statistics:
         text: CheckM Statistics
         description: CheckM statistics report
+      Metagenome Bins Heatmap:
+        text: Metagenome Bins Heatmap
+        description: The Heatmap presents the pdf file containing the KO analysis
+          results for metagenome bins
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_heatmap.pdf'
+      Metagenome Bins Barplot:
+        text: Metagenome Bins Barplot
+        description: The Bar chart presents the pdf file containing the KO analysis
+          results for metagenome bins
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_barplot.pdf'
+      Metagenome Bins Krona Plot:
+        text: Metagenome Bins Krona Plot
+        description: The Krona plot presents the HTML file containing the KO analysis
+          results for metagenome bins
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '[mag_wf_activity_id]_kronaplot.html'
       Read Based Analysis Info File:
         text: Read Based Analysis Info File
         description: File containing reads based analysis information
@@ -1095,10 +1127,10 @@ enums:
         text: LC-DDA-MS/MS Raw Data
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2
           binary instrument file
-  credit enum:
-    name: credit enum
+  CreditEnum:
+    name: CreditEnum
     comments:
-    - credit enums come from https://casrai.org/credit/
+    - CreditEnums come from https://casrai.org/credit/
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       Conceptualization:
@@ -1441,6 +1473,7 @@ enums:
   processing_institution_enum:
     name: processing_institution_enum
     notes:
+    - This will become the range of processing_institution.omics processing
     - use ROR meanings like https://ror.org/0168r3w48 for UCSD
     from_schema: https://w3id.org/nmdc/basic_slots
     permissible_values:
@@ -1471,22 +1504,30 @@ enums:
         text: UCD_Genome_Center
         meaning: https://genomecenter.ucdavis.edu/
         title: University of California, Davis Genome Center
-  analysis_type_enum:
-    name: analysis_type_enum
+  AnalysisTypeEnum:
+    name: AnalysisTypeEnum
     from_schema: https://w3id.org/nmdc/portal/sample_id
     permissible_values:
       metabolomics:
         text: metabolomics
       metagenomics:
         text: metagenomics
+        description: Standard short-read metagenomic sequencing
+        title: Metagenomics
+      metagenomics_long_read:
+        text: metagenomics_long_read
+        description: Long-read metagenomic sequencing
+        title: Metagenomics (long read)
       metaproteomics:
         text: metaproteomics
       metatranscriptomics:
         text: metatranscriptomics
       natural organic matter:
         text: natural organic matter
-  rna_sample_format_enum:
-    name: rna_sample_format_enum
+      bulk chemistry:
+        text: bulk chemistry
+  RNASampleFormatEnum:
+    name: RNASampleFormatEnum
     from_schema: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
     permissible_values:
       10 mM Tris-HCl:
@@ -1513,8 +1554,8 @@ enums:
         text: Gentegra-DNA
       Gentegra-RNA:
         text: Gentegra-RNA
-  dna_sample_format_enum:
-    name: dna_sample_format_enum
+  DNASampleFormatEnum:
+    name: DNASampleFormatEnum
     from_schema: https://w3id.org/nmdc/portal/jgi_metagenomics
     permissible_values:
       10 mM Tris-HCl:
@@ -1541,14 +1582,20 @@ enums:
         text: Gentegra-DNA
       Gentegra-RNA:
         text: Gentegra-RNA
-  sample_type_enum:
-    name: sample_type_enum
+  SampleTypeEnum:
+    name: SampleTypeEnum
     from_schema: https://w3id.org/nmdc/portal/emsl
     permissible_values:
       soil:
         text: soil
-      water_extract_soil:
-        text: water_extract_soil
+      soil - water extract:
+        text: soil - water extract
+      plant associated:
+        text: plant associated
+      sediment:
+        text: sediment
+      water:
+        text: water
   arch_struc_enum:
     name: arch_struc_enum
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
@@ -4017,7 +4064,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     domain: CreditAssociation
     multivalued: true
-    range: credit enum
+    range: CreditEnum
     required: true
   applies_to_person:
     name: applies_to_person
@@ -4271,8 +4318,7 @@ slots:
     - value: FT ICR-MS Analysis Results
     - value: GC-MS Metabolomics Results
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: DataObject
-    range: file type enum
+    range: FileTypeEnum
   compression_type:
     name: compression_type
     description: If provided, specifies the compression type
@@ -5231,10 +5277,20 @@ slots:
     description: A list of websites that are associated with the entity.
     comments:
     - DOIs should not be included as websites. Instead, use the associated_dois slot.
+    - A consortium's homepage website should be included in the homepage_website slot,
+      not in websites.
     from_schema: https://w3id.org/nmdc/core
     multivalued: true
     range: string
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+  homepage_website:
+    name: homepage_website
+    description: The website address (URL) of an entity's homepage.
+    examples:
+    - value: https://www.neonscience.org/
+    from_schema: https://w3id.org/nmdc/core
+    is_a: websites
+    maximum_cardinality: 1
   highest_similarity_score:
     name: highest_similarity_score
     todos:
@@ -5792,7 +5848,8 @@ slots:
     pattern: ^gnps\.task:[a-f0-9]+$
   emsl_project_identifiers:
     name: emsl_project_identifiers
-    description: an identifier that links to an EMSL user facility project
+    description: Identifiers that link a NMDC study to the EMSL user facility website
+      hosting the project description of an EMSL user project
     title: EMSL Project Identifiers
     todos:
     - elaborate on description
@@ -5975,7 +6032,7 @@ slots:
     rank: 3
     multivalued: true
     slot_group: Sample ID
-    range: analysis_type_enum
+    range: AnalysisTypeEnum
     recommended: true
   sample_link:
     name: sample_link
@@ -6280,6 +6337,8 @@ slots:
     examples:
     - value: 'no'
     from_schema: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
+    aliases:
+    - Was Sample DNAse treated?
     rank: 13
     slot_group: JGI-Metatranscriptomics
     range: YesNoEnum
@@ -6383,7 +6442,7 @@ slots:
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   rna_container_id:
     name: rna_container_id
     title: RNA container label
@@ -6404,6 +6463,8 @@ slots:
     examples:
     - value: phenol/chloroform extraction
     from_schema: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
+    aliases:
+    - Sample Isolation Method
     rank: 16
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -6456,7 +6517,7 @@ slots:
     from_schema: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
     rank: 12
     slot_group: JGI-Metatranscriptomics
-    range: rna_sample_format_enum
+    range: RNASampleFormatEnum
     recommended: true
   rna_sample_name:
     name: rna_sample_name
@@ -6481,6 +6542,8 @@ slots:
     examples:
     - value: '1191234'
     from_schema: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
+    aliases:
+    - Seq Project ID
     rank: 1
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
@@ -6566,7 +6629,7 @@ slots:
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metagenomics
     recommended: true
-    pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
   dna_container_id:
     name: dna_container_id
     title: DNA container label
@@ -6599,6 +6662,8 @@ slots:
     examples:
     - value: phenol/chloroform extraction
     from_schema: https://w3id.org/nmdc/portal/jgi_metagenomics
+    aliases:
+    - Sample Isolation Method
     rank: 16
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -6655,7 +6720,7 @@ slots:
     from_schema: https://w3id.org/nmdc/portal/jgi_metagenomics
     rank: 12
     slot_group: JGI-Metagenomics
-    range: dna_sample_format_enum
+    range: DNASampleFormatEnum
     recommended: true
   dna_sample_name:
     name: dna_sample_name
@@ -6678,6 +6743,8 @@ slots:
     examples:
     - value: '1191234'
     from_schema: https://w3id.org/nmdc/portal/jgi_metagenomics
+    aliases:
+    - Seq Project ID
     rank: 1
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -6802,7 +6869,7 @@ slots:
     from_schema: https://w3id.org/nmdc/portal/emsl
     rank: 2
     slot_group: EMSL
-    range: sample_type_enum
+    range: SampleTypeEnum
     recommended: true
   technical_reps:
     name: technical_reps
@@ -17829,21 +17896,6 @@ slots:
     description: field describing environmental aspect of a sample
     from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
     abstract: true
-  has numeric value:
-    name: has numeric value
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
-    owner: QuantityValue
-    range: double
-  has raw value:
-    name: has raw value
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
-    string_serialization: '{has numeric value} {has unit}'
-    owner: QuantityValue
-  has unit:
-    name: has unit
-    description: Example "m"
-    from_schema: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
-    owner: QuantityValue
   investigation field:
     name: investigation field
     description: field describing aspect of the investigation/study to which the sample
@@ -18486,9 +18538,6 @@ classes:
     - growth_hormone_regm
     - hall_count
     - handidness
-    - has numeric value
-    - has raw value
-    - has unit
     - hc_produced
     - hcr
     - hcr_fw_salinity
@@ -19287,7 +19336,7 @@ classes:
         slot_conditions:
           dna_cont_well:
             name: dna_cont_well
-            pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+            pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
       description: DNA samples in plates must have a plate position that matches the
         regex. Note the requirement for an empty string in the tube case. Waiting
         for value_present validation to be added to runtime
@@ -19314,7 +19363,7 @@ classes:
         slot_conditions:
           rna_cont_well:
             name: rna_cont_well
-            pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+            pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
       description: RNA samples in plates must have a plate position that matches the
         regex. Note the requirement for an empty string in the tube case. Waiting
         for value_present validation to be added to runtime
@@ -19424,6 +19473,7 @@ classes:
     - title
     - type
     - websites
+    - homepage_website
     slot_usage:
       id:
         name: id
@@ -19445,6 +19495,12 @@ classes:
             value: Link to the Principal Investigator's research lab webpage or the
               study webpage associated with this collection of samples. Multiple links
               can be provided.
+      homepage_website:
+        name: homepage_website
+        annotations:
+          display_hint:
+            tag: display_hint
+            value: Link to the consortium's homepage if the study_category is a consortium.
       description:
         name: description
         annotations:

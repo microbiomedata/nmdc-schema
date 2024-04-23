@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-01-23T15:51:35
+# Generation date: 2024-04-17T14:54:47
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -30,7 +30,7 @@ from linkml_runtime.utils.curienamespace import CurieNamespace
 from linkml_runtime.utils.metamodelcore import Bool, Curie, Decimal, ElementIdentifier, NCName, NodeIdentifier, URI, URIorCURIE, XSDDate, XSDDateTime, XSDTime
 
 metamodel_version = "1.7.0"
-version = "v10.0.0"
+version = "0.0.0"
 
 # Overwrite dataclasses _init_fn to add **kwargs in __init__
 dataclasses._init_fn = dataclasses_init_fn_with_kwargs
@@ -937,6 +937,7 @@ class Study(NamedThing):
     title: Optional[str] = None
     type: Optional[str] = None
     websites: Optional[Union[str, List[str]]] = empty_list()
+    homepage_website: Optional[Union[str, List[str]]] = empty_list()
     name: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -1057,6 +1058,10 @@ class Study(NamedThing):
         if not isinstance(self.websites, list):
             self.websites = [self.websites] if self.websites is not None else []
         self.websites = [v if isinstance(v, str) else str(v) for v in self.websites]
+
+        if not isinstance(self.homepage_website, list):
+            self.homepage_website = [self.homepage_website] if self.homepage_website is not None else []
+        self.homepage_website = [v if isinstance(v, str) else str(v) for v in self.homepage_website]
 
         if self.name is not None and not isinstance(self.name, str):
             self.name = str(self.name)
@@ -1276,9 +1281,6 @@ class Biosample(MaterialEntity):
     growth_hormone_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     hall_count: Optional[Union[dict, "TextValue"]] = None
     handidness: Optional[Union[str, "HandidnessEnum"]] = None
-    has_numeric_value: Optional[float] = None
-    has_raw_value: Optional[str] = None
-    has_unit: Optional[str] = None
     hc_produced: Optional[Union[str, "HcProducedEnum"]] = None
     hcr: Optional[Union[str, "HcrEnum"]] = None
     hcr_fw_salinity: Optional[Union[dict, "QuantityValue"]] = None
@@ -1634,7 +1636,7 @@ class Biosample(MaterialEntity):
     dna_organisms: Optional[str] = None
     dna_project_contact: Optional[str] = None
     dna_samp_id: Optional[str] = None
-    dna_sample_format: Optional[Union[str, "DnaSampleFormatEnum"]] = None
+    dna_sample_format: Optional[Union[str, "DNASampleFormatEnum"]] = None
     dna_sample_name: Optional[str] = None
     dna_seq_project: Optional[str] = None
     dna_seq_project_pi: Optional[str] = None
@@ -1654,7 +1656,7 @@ class Biosample(MaterialEntity):
     rna_organisms: Optional[str] = None
     rna_project_contact: Optional[str] = None
     rna_samp_id: Optional[str] = None
-    rna_sample_format: Optional[Union[str, "RnaSampleFormatEnum"]] = None
+    rna_sample_format: Optional[Union[str, "RNASampleFormatEnum"]] = None
     rna_sample_name: Optional[str] = None
     rna_seq_project: Optional[str] = None
     rna_seq_project_pi: Optional[str] = None
@@ -2294,15 +2296,6 @@ class Biosample(MaterialEntity):
 
         if self.handidness is not None and not isinstance(self.handidness, HandidnessEnum):
             self.handidness = HandidnessEnum(self.handidness)
-
-        if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, float):
-            self.has_numeric_value = float(self.has_numeric_value)
-
-        if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
-            self.has_raw_value = str(self.has_raw_value)
-
-        if self.has_unit is not None and not isinstance(self.has_unit, str):
-            self.has_unit = str(self.has_unit)
 
         if self.hc_produced is not None and not isinstance(self.hc_produced, HcProducedEnum):
             self.hc_produced = HcProducedEnum(self.hc_produced)
@@ -3482,8 +3475,8 @@ class Biosample(MaterialEntity):
         if self.dna_samp_id is not None and not isinstance(self.dna_samp_id, str):
             self.dna_samp_id = str(self.dna_samp_id)
 
-        if self.dna_sample_format is not None and not isinstance(self.dna_sample_format, DnaSampleFormatEnum):
-            self.dna_sample_format = DnaSampleFormatEnum(self.dna_sample_format)
+        if self.dna_sample_format is not None and not isinstance(self.dna_sample_format, DNASampleFormatEnum):
+            self.dna_sample_format = DNASampleFormatEnum(self.dna_sample_format)
 
         if self.dna_sample_name is not None and not isinstance(self.dna_sample_name, str):
             self.dna_sample_name = str(self.dna_sample_name)
@@ -3542,8 +3535,8 @@ class Biosample(MaterialEntity):
         if self.rna_samp_id is not None and not isinstance(self.rna_samp_id, str):
             self.rna_samp_id = str(self.rna_samp_id)
 
-        if self.rna_sample_format is not None and not isinstance(self.rna_sample_format, RnaSampleFormatEnum):
-            self.rna_sample_format = RnaSampleFormatEnum(self.rna_sample_format)
+        if self.rna_sample_format is not None and not isinstance(self.rna_sample_format, RNASampleFormatEnum):
+            self.rna_sample_format = RNASampleFormatEnum(self.rna_sample_format)
 
         if self.rna_sample_name is not None and not isinstance(self.rna_sample_name, str):
             self.rna_sample_name = str(self.rna_sample_name)
@@ -6233,10 +6226,14 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Metagenome Bins",
                 description="Metagenome bin contigs fasta"))
-        setattr(cls, "Metagenome Bins Compression File",
+        setattr(cls, "Metagenome HQMQ Bins Compression File",
             PermissibleValue(
-                text="Metagenome Bins Compression File",
-                description="Compressed file containing all metagenome bins and associated files"))
+                text="Metagenome HQMQ Bins Compression File",
+                description="""Compressed file containing high qulaity and medium quality metagenome bins and associated files"""))
+        setattr(cls, "Metagenome LQ Bins Compression File",
+            PermissibleValue(
+                text="Metagenome LQ Bins Compression File",
+                description="Compressed file containing low quality metagenome bins and associated files"))
         setattr(cls, "Metagenome Bins Info File",
             PermissibleValue(
                 text="Metagenome Bins Info File",
@@ -6245,6 +6242,18 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="CheckM Statistics",
                 description="CheckM statistics report"))
+        setattr(cls, "Metagenome Bins Heatmap",
+            PermissibleValue(
+                text="Metagenome Bins Heatmap",
+                description="""The Heatmap presents the pdf file containing the KO analysis results for metagenome bins"""))
+        setattr(cls, "Metagenome Bins Barplot",
+            PermissibleValue(
+                text="Metagenome Bins Barplot",
+                description="""The Bar chart presents the pdf file containing the KO analysis results for metagenome bins"""))
+        setattr(cls, "Metagenome Bins Krona Plot",
+            PermissibleValue(
+                text="Metagenome Bins Krona Plot",
+                description="""The Krona plot presents the HTML file containing the KO analysis results for metagenome bins"""))
         setattr(cls, "Read Based Analysis Info File",
             PermissibleValue(
                 text="Read Based Analysis Info File",
@@ -6788,7 +6797,12 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
 class AnalysisTypeEnum(EnumDefinitionImpl):
 
     metabolomics = PermissibleValue(text="metabolomics")
-    metagenomics = PermissibleValue(text="metagenomics")
+    metagenomics = PermissibleValue(
+        text="metagenomics",
+        description="Standard short-read metagenomic sequencing")
+    metagenomics_long_read = PermissibleValue(
+        text="metagenomics_long_read",
+        description="Long-read metagenomic sequencing")
     metaproteomics = PermissibleValue(text="metaproteomics")
     metatranscriptomics = PermissibleValue(text="metatranscriptomics")
 
@@ -6800,8 +6814,10 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "natural organic matter",
             PermissibleValue(text="natural organic matter"))
+        setattr(cls, "bulk chemistry",
+            PermissibleValue(text="bulk chemistry"))
 
-class RnaSampleFormatEnum(EnumDefinitionImpl):
+class RNASampleFormatEnum(EnumDefinitionImpl):
 
     DNAStable = PermissibleValue(text="DNAStable")
     Ethanol = PermissibleValue(text="Ethanol")
@@ -6812,7 +6828,7 @@ class RnaSampleFormatEnum(EnumDefinitionImpl):
     Water = PermissibleValue(text="Water")
 
     _defn = EnumDefinition(
-        name="RnaSampleFormatEnum",
+        name="RNASampleFormatEnum",
     )
 
     @classmethod
@@ -6828,7 +6844,7 @@ class RnaSampleFormatEnum(EnumDefinitionImpl):
         setattr(cls, "Gentegra-RNA",
             PermissibleValue(text="Gentegra-RNA"))
 
-class DnaSampleFormatEnum(EnumDefinitionImpl):
+class DNASampleFormatEnum(EnumDefinitionImpl):
 
     DNAStable = PermissibleValue(text="DNAStable")
     Ethanol = PermissibleValue(text="Ethanol")
@@ -6839,7 +6855,7 @@ class DnaSampleFormatEnum(EnumDefinitionImpl):
     Water = PermissibleValue(text="Water")
 
     _defn = EnumDefinition(
-        name="DnaSampleFormatEnum",
+        name="DNASampleFormatEnum",
     )
 
     @classmethod
@@ -6858,11 +6874,19 @@ class DnaSampleFormatEnum(EnumDefinitionImpl):
 class SampleTypeEnum(EnumDefinitionImpl):
 
     soil = PermissibleValue(text="soil")
-    water_extract_soil = PermissibleValue(text="water_extract_soil")
+    sediment = PermissibleValue(text="sediment")
+    water = PermissibleValue(text="water")
 
     _defn = EnumDefinition(
         name="SampleTypeEnum",
     )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "soil - water extract",
+            PermissibleValue(text="soil - water extract"))
+        setattr(cls, "plant associated",
+            PermissibleValue(text="plant associated"))
 
 class ArchStrucEnum(EnumDefinitionImpl):
 
@@ -9016,7 +9040,7 @@ slots.omics_type = Slot(uri=NMDC.omics_type, name="omics_type", curie=NMDC.curie
                    model_uri=NMDC.omics_type, domain=OmicsProcessing, range=Optional[Union[dict, "ControlledTermValue"]])
 
 slots.data_object_type = Slot(uri=NMDC.data_object_type, name="data_object_type", curie=NMDC.curie('data_object_type'),
-                   model_uri=NMDC.data_object_type, domain=DataObject, range=Optional[Union[str, "FileTypeEnum"]])
+                   model_uri=NMDC.data_object_type, domain=None, range=Optional[Union[str, "FileTypeEnum"]])
 
 slots.compression_type = Slot(uri=NMDC.compression_type, name="compression_type", curie=NMDC.curie('compression_type'),
                    model_uri=NMDC.compression_type, domain=None, range=Optional[str])
@@ -9438,6 +9462,10 @@ slots.websites = Slot(uri=NMDC.websites, name="websites", curie=NMDC.curie('webs
                    model_uri=NMDC.websites, domain=None, range=Optional[Union[str, List[str]]],
                    pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
 
+slots.homepage_website = Slot(uri=NMDC.homepage_website, name="homepage_website", curie=NMDC.curie('homepage_website'),
+                   model_uri=NMDC.homepage_website, domain=None, range=Optional[Union[str, List[str]]],
+                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
+
 slots.highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="highest_similarity_score", curie=NMDC.curie('highest_similarity_score'),
                    model_uri=NMDC.highest_similarity_score, domain=None, range=Optional[float])
 
@@ -9779,7 +9807,7 @@ slots.rna_cont_type = Slot(uri=NMDC.rna_cont_type, name="rna_cont_type", curie=N
 
 slots.rna_cont_well = Slot(uri=NMDC.rna_cont_well, name="rna_cont_well", curie=NMDC.curie('rna_cont_well'),
                    model_uri=NMDC.rna_cont_well, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$'))
+                   pattern=re.compile(r'^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'))
 
 slots.rna_container_id = Slot(uri=NMDC.rna_container_id, name="rna_container_id", curie=NMDC.curie('rna_container_id'),
                    model_uri=NMDC.rna_container_id, domain=None, range=Optional[str])
@@ -9797,7 +9825,7 @@ slots.rna_samp_id = Slot(uri=NMDC.rna_samp_id, name="rna_samp_id", curie=NMDC.cu
                    model_uri=NMDC.rna_samp_id, domain=None, range=Optional[str])
 
 slots.rna_sample_format = Slot(uri=NMDC.rna_sample_format, name="rna_sample_format", curie=NMDC.curie('rna_sample_format'),
-                   model_uri=NMDC.rna_sample_format, domain=None, range=Optional[Union[str, "RnaSampleFormatEnum"]])
+                   model_uri=NMDC.rna_sample_format, domain=None, range=Optional[Union[str, "RNASampleFormatEnum"]])
 
 slots.rna_sample_name = Slot(uri=NMDC.rna_sample_name, name="rna_sample_name", curie=NMDC.curie('rna_sample_name'),
                    model_uri=NMDC.rna_sample_name, domain=None, range=Optional[str])
@@ -9822,7 +9850,7 @@ slots.dna_cont_type = Slot(uri=NMDC.dna_cont_type, name="dna_cont_type", curie=N
 
 slots.dna_cont_well = Slot(uri=NMDC.dna_cont_well, name="dna_cont_well", curie=NMDC.curie('dna_cont_well'),
                    model_uri=NMDC.dna_cont_well, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$'))
+                   pattern=re.compile(r'^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'))
 
 slots.dna_container_id = Slot(uri=NMDC.dna_container_id, name="dna_container_id", curie=NMDC.curie('dna_container_id'),
                    model_uri=NMDC.dna_container_id, domain=None, range=Optional[str])
@@ -9843,7 +9871,7 @@ slots.dna_samp_id = Slot(uri=NMDC.dna_samp_id, name="dna_samp_id", curie=NMDC.cu
                    model_uri=NMDC.dna_samp_id, domain=None, range=Optional[str])
 
 slots.dna_sample_format = Slot(uri=NMDC.dna_sample_format, name="dna_sample_format", curie=NMDC.curie('dna_sample_format'),
-                   model_uri=NMDC.dna_sample_format, domain=None, range=Optional[Union[str, "DnaSampleFormatEnum"]])
+                   model_uri=NMDC.dna_sample_format, domain=None, range=Optional[Union[str, "DNASampleFormatEnum"]])
 
 slots.dna_sample_name = Slot(uri=NMDC.dna_sample_name, name="dna_sample_name", curie=NMDC.curie('dna_sample_name'),
                    model_uri=NMDC.dna_sample_name, domain=None, range=Optional[str])
@@ -11355,15 +11383,6 @@ slots.core_field = Slot(uri=NMDC.core_field, name="core field", curie=NMDC.curie
 slots.environment_field = Slot(uri=NMDC.environment_field, name="environment field", curie=NMDC.curie('environment_field'),
                    model_uri=NMDC.environment_field, domain=None, range=Optional[str])
 
-slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has numeric value", curie=NMDC.curie('has_numeric_value'),
-                   model_uri=NMDC.has_numeric_value, domain=None, range=Optional[float])
-
-slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has raw value", curie=NMDC.curie('has_raw_value'),
-                   model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
-
-slots.has_unit = Slot(uri=NMDC.has_unit, name="has unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str])
-
 slots.investigation_field = Slot(uri=NMDC.investigation_field, name="investigation field", curie=NMDC.curie('investigation_field'),
                    model_uri=NMDC.investigation_field, domain=None, range=Optional[str])
 
@@ -11625,6 +11644,10 @@ slots.Study_name = Slot(uri=NMDC.name, name="Study_name", curie=NMDC.curie('name
 
 slots.Study_websites = Slot(uri=NMDC.websites, name="Study_websites", curie=NMDC.curie('websites'),
                    model_uri=NMDC.Study_websites, domain=Study, range=Optional[Union[str, List[str]]],
+                   pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
+
+slots.Study_homepage_website = Slot(uri=NMDC.homepage_website, name="Study_homepage_website", curie=NMDC.curie('homepage_website'),
+                   model_uri=NMDC.Study_homepage_website, domain=Study, range=Optional[Union[str, List[str]]],
                    pattern=re.compile(r'^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$'))
 
 slots.Study_description = Slot(uri=DCTERMS.description, name="Study_description", curie=DCTERMS.curie('description'),
