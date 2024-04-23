@@ -354,6 +354,7 @@ classes:
       - temperature
       - volume
       - mass
+      - sampled_portion
     slot_usage:
       id:
         required: true
@@ -658,7 +659,20 @@ enums:
       solid_phase_extraction:
         aliases:
           - SPE
+  
+  SamplePortionEnum:
+    permissible_values:
+      supernatant:
+        aliases:
+          - top_layer
+      pellet:
+        aliases:
+          - bottom_layer
+      organic_layer:
+      aqueous_layer:
+      non_polar_layer:
 
+      
 slots:
 
   polarity_mode:
@@ -1076,4 +1090,8 @@ slots:
 #    description: A substance within a formulation that enhances the solubility of another substance.
 #    exact_mappings:
 #      - NCIT:C176640
-
+  sampled_portion:
+    domain: SubSamplingProcess
+    range: SamplePortionEnum
+    multivalued: true
+    description: The portion of the sample that is taken for downstream activity.
