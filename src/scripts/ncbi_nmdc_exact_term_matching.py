@@ -12,7 +12,7 @@ def get_column_names_from_view(view_name):
     conn = psycopg2.connect(
         dbname="ncbi_biosamples_feb26",
         user="biosample_guest",
-        password="Arose-Urology0-Quaintly",  # email spatil@lbl.gov / MAM@lbl.gov for the password
+        password="",  # email spatil@lbl.gov / MAM@lbl.gov for the password
         host="localhost",
         port="15432",
     )
