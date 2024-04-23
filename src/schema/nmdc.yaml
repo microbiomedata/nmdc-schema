@@ -347,7 +347,7 @@ classes:
       - temperature
       - volume
       - mass
-      - sample_portion
+      - sampled_portion
     slot_usage:
       id:
         required: true
@@ -1083,7 +1083,7 @@ slots:
 #    description: A substance within a formulation that enhances the solubility of another substance.
 #    exact_mappings:
 #      - NCIT:C176640
-  sample_portion:
+  sampled_portion:
     domain: SubSamplingProcess
     range: SamplePortionEnum
     multivalued: true
