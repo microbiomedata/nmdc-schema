@@ -73,7 +73,6 @@ classes:
     slots:
       - has_input
       - has_output
-      - instrument_used
       - processing_institution
       - protocol_link
       - start_date
@@ -292,6 +291,7 @@ classes:
       - omics assay
       - sequencing project
       - experiment
+      - instrument_used
     is_a: PlannedProcess
     abstract: true
     in_subset:
