@@ -128,6 +128,8 @@ classes:
       - The values of both has_reagents slot and has_input slot are considered the reagents of a chemical process.
     slots:
       - chemical_conversion_category
+      - duration
+      - temperature
       - substances_used
       - substances_volume
     slot_usage:

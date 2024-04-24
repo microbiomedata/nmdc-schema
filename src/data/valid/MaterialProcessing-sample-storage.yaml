@@ -1,5 +1,4 @@
 id: nmdc:matprc-99-zUCd5N
-type: nmdc:MaterialProcessing
 contained_in: falcon_tube
 duration: 
   type: nmdc:QuantityValue
@@ -13,3 +12,4 @@ has_input:
   - nmdc:procsm-99-dtTMNb
 has_output: 
   - nmdc:procsm-78-BZAPKH
+type: nmdc:MaterialProcessing

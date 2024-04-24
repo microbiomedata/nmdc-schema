@@ -343,6 +343,8 @@ classes:
     is_a: MaterialProcessing
     slots:
       - container_size
+      - contained_in
+      - temperature
       - volume
       - mass
     slot_usage:
@@ -373,6 +375,8 @@ classes:
       - The process must not permit segregation of particles of different size or properties.
       - Homogeneity may be considered to have been achieved in a practical sense when the sampling error
         of the processed portion is negligible compared to the total error of the measurement system.
+    slots:
+      - duration
     slot_usage:
       id:
         required: true
@@ -426,6 +430,7 @@ classes:
       - chromatographic_category
       - ordered_mobile_phases
       - stationary_phase
+      - temperature
     rules:
       - title: has_calibration_required_if_gc
         description: >-
@@ -458,6 +463,10 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
+      #      - solvent
+      #      - solubilizing_agent
+      - duration
+      - temperature
       - substances_used # whether a substance was used as a solvent or a solubilizing_agent will be captured in substance_role
     slot_usage:
       id:
