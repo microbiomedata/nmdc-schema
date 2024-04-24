@@ -443,6 +443,10 @@ for doc in omics_coll.find(omics_with_gold_projects):
 ###############
 # track down records WorkflowExecutionActivity (WEA) records that need to be deleted and their associated data objects
 
+# Flag you can use to control whether you want this script to also delete the documents it finds, or to only
+# generate the `/queries:run` HTTP request bodies that can be used to delete them later via the Runtime API.
+DELETE_DOCUMENTS_NOW: bool = False
+
 seq_based_collection_list = [
     "read_qc_analysis_activity_set",
     "read_based_taxonomy_analysis_activity_set",
@@ -474,7 +478,8 @@ for gp in target_gp_for_del:
                 print("found " + doc["id"] + " in collection " + collection)
                 deleted_record_identifiers.append((collection, doc["id"]))
                 # wea_to_delete.append(doc)
-                wea_coll.delete_one({"was_informed_by": gold_proj_curie})
+                if DELETE_DOCUMENTS_NOW:
+                    wea_coll.delete_one({"was_informed_by": gold_proj_curie})
             # this method should not be used as there are data objects that need to be removed that are not listed in has_output for the WEA records
             # if "has_input" in doc.keys():
             #  for input in doc["has_input"]:
@@ -494,7 +499,8 @@ for gp in target_gp_for_del:
         # Delete each matching document
         for doc in matching_docs:
             deleted_record_identifiers.append(("data_object_set", doc["id"]))
-            data_object_coll.delete_one({"_id": doc["_id"]})
+            if DELETE_DOCUMENTS_NOW:
+                data_object_coll.delete_one({"_id": doc["_id"]})
 
 # Print the list of deleted record identifiers to a tsv file
 with open("deleted_record_identifiers.tsv", "w") as f:
