@@ -513,7 +513,7 @@ def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
     be used within the body of a request to the `/queries:run` endpoint of the
     Runtime API. The deletion descriptors are grouped by collection, since the
     `/queries:run` endpoint only processes documents in a single collection
-    per each HTTP request.
+    per HTTP request.
     """
 
     deletion_descriptors = dict()
@@ -526,7 +526,7 @@ def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
         if collection_name not in deletion_descriptors:
             deletion_descriptors[collection_name] = []
 
-        # Create and append a deletion descriptor for this item.
+        # Create and append a deletion descriptor for this document.
         deletion_descriptor = dict(q=dict(id=document_id), limit=1)
         deletion_descriptors[collection_name].append(deletion_descriptor)
 
@@ -536,7 +536,7 @@ def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
 def dump_request_body(collection_name: str, its_deletion_descriptors: list) -> str:
     r"""
     Creates a request body into which the specified deletion descriptors are
-    incorporated, and writes them to a JSON file. That request body can be
+    incorporated, and writes them to a JSON file. That request body can then be
     submitted to the `/queries:run` endpoint of the Runtime API.
     """
 
