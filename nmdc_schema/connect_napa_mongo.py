@@ -514,6 +514,18 @@ def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
     Runtime API. The deletion descriptors are grouped by collection, since the
     `/queries:run` endpoint only processes documents in a single collection
     per HTTP request.
+
+    Note: The remainder of this docstring consists of doctests.
+          Reference: https://docs.python.org/3/library/doctest.html
+
+    >>> make_deletion_descriptors([])
+    {}
+    >>> make_deletion_descriptors([("my_collection", "my_id")])
+    {'my_collection': [{'q': {'id': 'my_id'}, 'limit': 1}]}
+    >>> make_deletion_descriptors([("my_collection", "my_id"), ("my_collection", "other_id")])
+    {'my_collection': [{'q': {'id': 'my_id'}, 'limit': 1}, {'q': {'id': 'other_id'}, 'limit': 1}]}
+    >>> make_deletion_descriptors([("my_collection", "my_id"), ("other_collection", "other_id")])
+    {'my_collection': [{'q': {'id': 'my_id'}, 'limit': 1}], 'other_collection': [{'q': {'id': 'other_id'}, 'limit': 1}]}
     """
 
     deletion_descriptors = dict()
