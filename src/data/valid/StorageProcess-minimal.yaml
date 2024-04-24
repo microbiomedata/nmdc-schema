@@ -1,4 +1,12 @@
+
 id: nmdc:matprc-99-zUCd5N
+substances_used:
+  - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+    type: nmdc:PortionOfSubstance
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_unit: '%'
+      has_numeric_value: 1
 contained_in: falcon_tube
 duration: 
   type: nmdc:QuantityValue
@@ -12,4 +20,4 @@ has_input:
   - nmdc:procsm-99-dtTMNb
 has_output: 
   - nmdc:procsm-78-BZAPKH
-type: nmdc:MaterialProcessing
+type: nmdc:StorageProcess
