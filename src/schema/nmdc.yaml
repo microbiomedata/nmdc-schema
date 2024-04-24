@@ -548,6 +548,15 @@ enums:
       DNA: { }
       RNA: { }
 
+  ContainerCategoryEnum:
+    description: The permitted types of containers used in processing metabolomic samples.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    permissible_values:
+      v-bottom_conical_tube:
+      falcon_tube:
+
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
     contributors:
@@ -1000,6 +1009,9 @@ slots:
     range: boolean
     description: Whether or not pressure was applied to a thing or process.
 
+  contained_in:
+    range: ContainerCategoryEnum
+    description: A type of container. i.e. test tube, falcon tube, etc.
   #  extractant:
   #    domain: Extraction
   #    range: Solution
