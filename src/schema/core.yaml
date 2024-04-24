@@ -1177,10 +1177,7 @@ classes:
     description:
       A process that takes one or more samples as inputs and generates
       one or more samples as outputs.
-    slots:
-      - contained_in
-      - duration
-      - temperature
+
     notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
