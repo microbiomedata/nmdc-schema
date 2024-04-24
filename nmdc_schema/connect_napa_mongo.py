@@ -530,7 +530,6 @@ def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
 
     deletion_descriptors = dict()
     for collection_name_and_document_id in collection_names_and_document_ids:
-
         # Extract the elements of the tuple.
         (collection_name, document_id) = collection_name_and_document_id
 
@@ -569,9 +568,9 @@ def make_request_body(collection_name: str, its_deletion_descriptors: list) -> d
 deletion_descriptors = make_deletion_descriptors(deleted_record_identifiers)
 for collection_name in deletion_descriptors.keys():
     its_deletion_descriptors = deletion_descriptors[collection_name]
+    request_body = make_request_body(collection_name, its_deletion_descriptors)
     file_path = f"./{collection_name}.deletion_api_request_body.json"
     with open(file_path, "w") as json_file:
-        request_body = make_request_body(collection_name, its_deletion_descriptors)
         json.dump(request_body, json_file)
         print(f"Created file: {file_path}")
 
