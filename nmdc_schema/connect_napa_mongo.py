@@ -539,32 +539,41 @@ def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
             deletion_descriptors[collection_name] = []
 
         # Create and append a deletion descriptor for this document.
-        deletion_descriptor = dict(q=dict(id=document_id), limit=1)
+        deletion_descriptor = {"q": {"id": document_id}, "limit": 1}
         deletion_descriptors[collection_name].append(deletion_descriptor)
 
     return deletion_descriptors
 
 
-def dump_request_body(collection_name: str, its_deletion_descriptors: list) -> str:
+def make_request_body(collection_name: str, its_deletion_descriptors: list) -> dict:
     r"""
     Creates a request body into which the specified deletion descriptors are
-    incorporated, and writes them to a JSON file. That request body can then be
-    submitted to the `/queries:run` endpoint of the Runtime API.
+    incorporated. That request body can then be submitted to the `/queries:run`
+    endpoint of the Runtime API.
+
+    Note: The remainder of this docstring consists of doctests.
+
+    >>> make_request_body("my_collection", [])
+    {'delete': 'my_collection', 'deletes': []}
+    >>> make_request_body("my_collection", [{'q': {'id': 'my_id'}, 'limit': 1}])
+    {'delete': 'my_collection', 'deletes': [{'q': {'id': 'my_id'}, 'limit': 1}]}
+    >>> make_request_body("my_collection", [{'q': {'id': 'my_id'}, 'limit': 1}, {'q': {'id': 'other_id'}, 'limit': 1}])
+    {'delete': 'my_collection', 'deletes': [{'q': {'id': 'my_id'}, 'limit': 1}, {'q': {'id': 'other_id'}, 'limit': 1}]}
     """
 
-    file_path = f"./{collection_name}.deletion_api_request_body.json"
-    with open(file_path, "w") as json_file:
-        api_request_body = dict(delete=collection_name, deletes=its_deletion_descriptors)
-        json.dump(api_request_body, json_file)
-
-    return file_path
+    return {"delete": collection_name, "deletes": its_deletion_descriptors}
 
 
-# Create JSON files, each of which contains a request body for the `/queries:json` endpoint.
+# For each collection that has any deletion descriptors, create a JSON file
+# containing an HTTP request body compatible with the `/queries:json` endpoint.
 deletion_descriptors = make_deletion_descriptors(deleted_record_identifiers)
 for collection_name in deletion_descriptors.keys():
-    dump_request_body(collection_name, deletion_descriptors[collection_name])
-
+    its_deletion_descriptors = deletion_descriptors[collection_name]
+    file_path = f"./{collection_name}.deletion_api_request_body.json"
+    with open(file_path, "w") as json_file:
+        request_body = make_request_body(collection_name, its_deletion_descriptors)
+        json.dump(request_body, json_file)
+        print(f"Created file: {file_path}")
 
 ###
 # end cleanup of omics records that don't exist
