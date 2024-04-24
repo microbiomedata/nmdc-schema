@@ -1,4 +1,4 @@
-id: https://w3id.org/nmdc/core
+id: https://w3id.org/nmdc/deprecation
 name: NMDC-Deprecated-Elements
 title: NMDC Schema Deprecated Elements
 description: Elements that have been deprecated over time, in the schema for National Microbiome Data Collaborative (NMDC).
