@@ -443,6 +443,10 @@ for doc in omics_coll.find(omics_with_gold_projects):
 ###############
 # track down records WorkflowExecutionActivity (WEA) records that need to be deleted and their associated data objects
 
+# Flag you can use to control whether you want this script to also delete the documents it finds, or to only
+# generate the `/queries:run` HTTP request bodies that can be used to delete them later via the Runtime API.
+DELETE_DOCUMENTS_NOW: bool = False
+
 seq_based_collection_list = [
     "read_qc_analysis_activity_set",
     "read_based_taxonomy_analysis_activity_set",
@@ -474,7 +478,8 @@ for gp in target_gp_for_del:
                 print("found " + doc["id"] + " in collection " + collection)
                 deleted_record_identifiers.append((collection, doc["id"]))
                 # wea_to_delete.append(doc)
-                wea_coll.delete_one({"was_informed_by": gold_proj_curie})
+                if DELETE_DOCUMENTS_NOW:
+                    wea_coll.delete_one({"was_informed_by": gold_proj_curie})
             # this method should not be used as there are data objects that need to be removed that are not listed in has_output for the WEA records
             # if "has_input" in doc.keys():
             #  for input in doc["has_input"]:
@@ -494,7 +499,8 @@ for gp in target_gp_for_del:
         # Delete each matching document
         for doc in matching_docs:
             deleted_record_identifiers.append(("data_object_set", doc["id"]))
-            data_object_coll.delete_one({"_id": doc["_id"]})
+            if DELETE_DOCUMENTS_NOW:
+                data_object_coll.delete_one({"_id": doc["_id"]})
 
 # Print the list of deleted record identifiers to a tsv file
 with open("deleted_record_identifiers.tsv", "w") as f:
@@ -502,6 +508,77 @@ with open("deleted_record_identifiers.tsv", "w") as f:
     writer.writerow(["collection", "id"])
     for record in deleted_record_identifiers:
         writer.writerow(record)
+
+
+def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
+    r"""
+    Creates a deletion descriptor for each collection name-document ID pair in
+    the specified list.
+
+    A deletion descriptor is a dictionary that, when converted into JSON, can
+    be used within the body of a request to the `/queries:run` endpoint of the
+    Runtime API. The deletion descriptors are grouped by collection, since the
+    `/queries:run` endpoint only processes documents in a single collection
+    per HTTP request.
+
+    Note: The remainder of this docstring consists of doctests.
+          Reference: https://docs.python.org/3/library/doctest.html
+
+    >>> make_deletion_descriptors([])
+    {}
+    >>> make_deletion_descriptors([("my_collection", "my_id")])
+    {'my_collection': [{'q': {'id': 'my_id'}, 'limit': 1}]}
+    >>> make_deletion_descriptors([("my_collection", "my_id"), ("my_collection", "other_id")])
+    {'my_collection': [{'q': {'id': 'my_id'}, 'limit': 1}, {'q': {'id': 'other_id'}, 'limit': 1}]}
+    >>> make_deletion_descriptors([("my_collection", "my_id"), ("other_collection", "other_id")])
+    {'my_collection': [{'q': {'id': 'my_id'}, 'limit': 1}], 'other_collection': [{'q': {'id': 'other_id'}, 'limit': 1}]}
+    """
+
+    deletion_descriptors = dict()
+    for collection_name_and_document_id in collection_names_and_document_ids:
+        # Extract the elements of the tuple.
+        (collection_name, document_id) = collection_name_and_document_id
+
+        # Initialize this collection's list of deletion descriptors.
+        if collection_name not in deletion_descriptors:
+            deletion_descriptors[collection_name] = []
+
+        # Create and append a deletion descriptor for this document.
+        deletion_descriptor = {"q": {"id": document_id}, "limit": 1}
+        deletion_descriptors[collection_name].append(deletion_descriptor)
+
+    return deletion_descriptors
+
+
+def make_request_body(collection_name: str, its_deletion_descriptors: list) -> dict:
+    r"""
+    Creates a request body into which the specified deletion descriptors are
+    incorporated. That request body can then be submitted to the `/queries:run`
+    endpoint of the Runtime API.
+
+    Note: The remainder of this docstring consists of doctests.
+
+    >>> make_request_body("my_collection", [])
+    {'delete': 'my_collection', 'deletes': []}
+    >>> make_request_body("my_collection", [{'q': {'id': 'my_id'}, 'limit': 1}])
+    {'delete': 'my_collection', 'deletes': [{'q': {'id': 'my_id'}, 'limit': 1}]}
+    >>> make_request_body("my_collection", [{'q': {'id': 'my_id'}, 'limit': 1}, {'q': {'id': 'other_id'}, 'limit': 1}])
+    {'delete': 'my_collection', 'deletes': [{'q': {'id': 'my_id'}, 'limit': 1}, {'q': {'id': 'other_id'}, 'limit': 1}]}
+    """
+
+    return {"delete": collection_name, "deletes": its_deletion_descriptors}
+
+
+# For each collection that has any deletion descriptors, create a JSON file
+# containing an HTTP request body compatible with the `/queries:json` endpoint.
+deletion_descriptors = make_deletion_descriptors(deleted_record_identifiers)
+for collection_name in deletion_descriptors.keys():
+    its_deletion_descriptors = deletion_descriptors[collection_name]
+    request_body = make_request_body(collection_name, its_deletion_descriptors)
+    file_path = f"./{collection_name}.deletion_api_request_body.json"
+    with open(file_path, "w") as json_file:
+        json.dump(request_body, json_file)
+        print(f"Created file: {file_path}")
 
 ###
 # end cleanup of omics records that don't exist
