@@ -8,10 +8,7 @@ substances_used:
       has_unit: '%'
       has_numeric_value: 1
 contained_in: falcon_tube
-duration: 
-  type: nmdc:QuantityValue
-  has_unit: hours
-  has_maximum_numeric_value: 12
+start_date: "2021-01-14"
 temperature:
   type: nmdc:QuantityValue
   has_unit: degrees Celsius
