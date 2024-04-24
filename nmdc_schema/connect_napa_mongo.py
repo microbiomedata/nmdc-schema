@@ -503,5 +503,56 @@ with open("deleted_record_identifiers.tsv", "w") as f:
     for record in deleted_record_identifiers:
         writer.writerow(record)
 
+
+def make_deletion_descriptors(collection_names_and_document_ids: list) -> dict:
+    r"""
+    Creates a deletion descriptor for each collection name-document ID pair in
+    the specified list.
+
+    A deletion descriptor is a dictionary that, when converted into JSON, can
+    be used within the body of a request to the `/queries:run` endpoint of the
+    Runtime API. The deletion descriptors are grouped by collection, since the
+    `/queries:run` endpoint only processes documents in a single collection
+    per each HTTP request.
+    """
+
+    deletion_descriptors = dict()
+    for collection_name_and_document_id in collection_names_and_document_ids:
+
+        # Extract the elements of the tuple.
+        (collection_name, document_id) = collection_name_and_document_id
+
+        # Initialize this collection's list of deletion descriptors.
+        if collection_name not in deletion_descriptors:
+            deletion_descriptors[collection_name] = []
+
+        # Create and append a deletion descriptor for this item.
+        deletion_descriptor = dict(q=dict(id=document_id), limit=1)
+        deletion_descriptors[collection_name].append(deletion_descriptor)
+
+    return deletion_descriptors
+
+
+def dump_request_body(collection_name: str, its_deletion_descriptors: list) -> str:
+    r"""
+    Creates a request body into which the specified deletion descriptors are
+    incorporated, and writes them to a JSON file. That request body can be
+    submitted to the `/queries:run` endpoint of the Runtime API.
+    """
+
+    file_path = f"./{collection_name}.deletion_api_request_body.json"
+    with open(file_path, "w") as json_file:
+        api_request_body = dict(delete=collection_name, deletes=its_deletion_descriptors)
+        json.dump(api_request_body, json_file)
+
+    return file_path
+
+
+# Create JSON files, each of which contains a request body for the `/queries:json` endpoint.
+deletion_descriptors = make_deletion_descriptors(deleted_record_identifiers)
+for collection_name in deletion_descriptors.keys():
+    dump_request_body(collection_name, deletion_descriptors[collection_name])
+
+
 ###
 # end cleanup of omics records that don't exist
