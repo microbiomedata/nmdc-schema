@@ -890,6 +890,13 @@ enums:
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
 
+      Configuration toml:
+        description: >-
+          A configuration toml file used by various programs to store settings that are specific to their
+          respective software.
+        broad_mappings: 
+          - edam.format:4005
+
   DoiProviderEnum:
     see_also:
       - nmdc:DoiProviderEnum
