@@ -23,7 +23,8 @@ class Migrator(MigratorBase):
             "metatranscriptome_activity_set": "metatranscriptome_analysis_set",
             "nom_analysis_activity_set": "nom_analysis_set",
             "read_based_taxonomy_analysis_activity_set": "read_based_taxonomy_analysis_set",
-            "read_qc_analysis_activity_set": "read_qc_analysis_set"
+            "read_qc_analysis_activity_set": "read_qc_analysis_set",
+            "activity_set": "workflow_execution_set"
             }
 
         for current_collection_name, new_collection_name in old_to_new_names.items():

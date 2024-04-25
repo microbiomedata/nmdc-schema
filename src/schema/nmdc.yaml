@@ -354,6 +354,7 @@ classes:
       - temperature
       - volume
       - mass
+      - sampled_portion
     slot_usage:
       id:
         required: true
@@ -423,6 +424,22 @@ classes:
           interpolated: true
       volume:
         description: The volume of sample filtered.
+
+  StorageProcess:
+    class_uri: 'nmdc:StorageProcess'
+    description: >-
+      A planned process with the objective to preserve and protect material entities by placing them in an identified 
+      location which may have a controlled environment.
+    is_a: PlannedProcess
+    related_mappings: 
+      - OBI:0302893
+    slots:
+      - substances_used
+      - contained_in
+      - temperature
+    slot_usage:
+      substances_used:
+        description: The substance(s) that a processed sample is stored in. 
 
   ChromatographicSeparationProcess:
     class_uri: 'nmdc:ChromatographicSeparationProcess'
@@ -658,7 +675,20 @@ enums:
       solid_phase_extraction:
         aliases:
           - SPE
+  
+  SamplePortionEnum:
+    permissible_values:
+      supernatant:
+        aliases:
+          - top_layer
+      pellet:
+        aliases:
+          - bottom_layer
+      organic_layer:
+      aqueous_layer:
+      non_polar_layer:
 
+      
 slots:
 
   polarity_mode:
@@ -1076,4 +1106,8 @@ slots:
 #    description: A substance within a formulation that enhances the solubility of another substance.
 #    exact_mappings:
 #      - NCIT:C176640
-
+  sampled_portion:
+    domain: SubSamplingProcess
+    range: SamplePortionEnum
+    multivalued: true
+    description: The portion of the sample that is taken for downstream activity.

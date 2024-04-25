@@ -21,3 +21,5 @@ mass:
   has_unit: g
 has_output:
   - nmdc:procsm-11-05g48p90
+sampled_portion: 
+  - supernatant
