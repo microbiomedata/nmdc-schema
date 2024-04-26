@@ -287,14 +287,12 @@
 
   ControlledIdentifiedTermValue : term
 
-    ControlledIdentifiedTermValue --&gt; "1" OntologyClass : term
-
+      ControlledIdentifiedTermValue --&gt; "1..1" OntologyClass : term
     click OntologyClass href "../OntologyClass"
 
   ControlledIdentifiedTermValue : was_generated_by
 
-    ControlledIdentifiedTermValue --&gt; "1" Activity : was_generated_by
-
+      ControlledIdentifiedTermValue --&gt; "0..1" Activity : was_generated_by
     click Activity href "../Activity"
 
 

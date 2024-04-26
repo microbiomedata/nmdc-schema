@@ -291,20 +291,17 @@
 
   ReadBasedTaxonomyAnalysisActivity : has_failure_categorization
 
-    ReadBasedTaxonomyAnalysisActivity --&gt; "*" FailureCategorization : has_failure_categorization
-
+      ReadBasedTaxonomyAnalysisActivity --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   ReadBasedTaxonomyAnalysisActivity : has_input
 
-    ReadBasedTaxonomyAnalysisActivity --&gt; "*" NamedThing : has_input
-
+      ReadBasedTaxonomyAnalysisActivity --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   ReadBasedTaxonomyAnalysisActivity : has_output
 
-    ReadBasedTaxonomyAnalysisActivity --&gt; "*" NamedThing : has_output
-
+      ReadBasedTaxonomyAnalysisActivity --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   ReadBasedTaxonomyAnalysisActivity : id
@@ -313,16 +310,14 @@
 
   ReadBasedTaxonomyAnalysisActivity : part_of
 
-    ReadBasedTaxonomyAnalysisActivity --&gt; "*" NamedThing : part_of
-
+      ReadBasedTaxonomyAnalysisActivity --&gt; "0..*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
   ReadBasedTaxonomyAnalysisActivity : qc_comment
 
   ReadBasedTaxonomyAnalysisActivity : qc_status
 
-    ReadBasedTaxonomyAnalysisActivity --&gt; "1" StatusEnum : qc_status
-
+      ReadBasedTaxonomyAnalysisActivity --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   ReadBasedTaxonomyAnalysisActivity : started_at_time
@@ -335,8 +330,7 @@
 
   ReadBasedTaxonomyAnalysisActivity : was_informed_by
 
-    ReadBasedTaxonomyAnalysisActivity --&gt; "1" Activity : was_informed_by
-
+      ReadBasedTaxonomyAnalysisActivity --&gt; "0..1" Activity : was_informed_by
     click Activity href "../Activity"
 
 

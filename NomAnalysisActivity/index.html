@@ -292,20 +292,17 @@
 
   NomAnalysisActivity : has_failure_categorization
 
-    NomAnalysisActivity --&gt; "*" FailureCategorization : has_failure_categorization
-
+      NomAnalysisActivity --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   NomAnalysisActivity : has_input
 
-    NomAnalysisActivity --&gt; "*" NamedThing : has_input
-
+      NomAnalysisActivity --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   NomAnalysisActivity : has_output
 
-    NomAnalysisActivity --&gt; "*" NamedThing : has_output
-
+      NomAnalysisActivity --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   NomAnalysisActivity : id
@@ -314,16 +311,14 @@
 
   NomAnalysisActivity : part_of
 
-    NomAnalysisActivity --&gt; "*" NamedThing : part_of
-
+      NomAnalysisActivity --&gt; "0..*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
   NomAnalysisActivity : qc_comment
 
   NomAnalysisActivity : qc_status
 
-    NomAnalysisActivity --&gt; "1" StatusEnum : qc_status
-
+      NomAnalysisActivity --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   NomAnalysisActivity : started_at_time
@@ -336,8 +331,7 @@
 
   NomAnalysisActivity : was_informed_by
 
-    NomAnalysisActivity --&gt; "1" Activity : was_informed_by
-
+      NomAnalysisActivity --&gt; "0..1" Activity : was_informed_by
     click Activity href "../Activity"
 
 

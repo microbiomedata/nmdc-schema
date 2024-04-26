@@ -267,14 +267,12 @@
 
   ProteinQuantification : all_proteins
 
-    ProteinQuantification --&gt; "*" GeneProduct : all_proteins
-
+      ProteinQuantification --&gt; "0..*" GeneProduct : all_proteins
     click GeneProduct href "../GeneProduct"
 
   ProteinQuantification : best_protein
 
-    ProteinQuantification --&gt; "1" GeneProduct : best_protein
-
+      ProteinQuantification --&gt; "0..1" GeneProduct : best_protein
     click GeneProduct href "../GeneProduct"
 
   ProteinQuantification : peptide_sequence_count

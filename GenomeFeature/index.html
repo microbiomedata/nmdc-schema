@@ -288,8 +288,7 @@
 
   GenomeFeature : encodes
 
-    GenomeFeature --&gt; "1" GeneProduct : encodes
-
+      GenomeFeature --&gt; "0..1" GeneProduct : encodes
     click GeneProduct href "../GeneProduct"
 
   GenomeFeature : end
@@ -306,8 +305,7 @@
 
   GenomeFeature : type
 
-    GenomeFeature --&gt; "1" OntologyClass : type
-
+      GenomeFeature --&gt; "0..1" OntologyClass : type
     click OntologyClass href "../OntologyClass"
 
 

@@ -292,28 +292,24 @@
 
   MixingProcess : duration
 
-    MixingProcess --&gt; "1" QuantityValue : duration
-
+      MixingProcess --&gt; "0..1" QuantityValue : duration
     click QuantityValue href "../QuantityValue"
 
   MixingProcess : end_date
 
   MixingProcess : has_failure_categorization
 
-    MixingProcess --&gt; "*" FailureCategorization : has_failure_categorization
-
+      MixingProcess --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   MixingProcess : has_input
 
-    MixingProcess --&gt; "*" NamedThing : has_input
-
+      MixingProcess --&gt; "0..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   MixingProcess : has_output
 
-    MixingProcess --&gt; "*" ProcessedSample : has_output
-
+      MixingProcess --&gt; "0..*" ProcessedSample : has_output
     click ProcessedSample href "../ProcessedSample"
 
   MixingProcess : id
@@ -324,22 +320,19 @@
 
   MixingProcess : processing_institution
 
-    MixingProcess --&gt; "1" ProcessingInstitutionEnum : processing_institution
-
+      MixingProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   MixingProcess : protocol_link
 
-    MixingProcess --&gt; "1" Protocol : protocol_link
-
+      MixingProcess --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
   MixingProcess : qc_comment
 
   MixingProcess : qc_status
 
-    MixingProcess --&gt; "1" StatusEnum : qc_status
-
+      MixingProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   MixingProcess : start_date

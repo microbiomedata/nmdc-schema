@@ -301,22 +301,19 @@
 
   FieldResearchSite : cur_vegetation
 
-    FieldResearchSite --&gt; "1" TextValue : cur_vegetation
-
+      FieldResearchSite --&gt; "0..1" TextValue : cur_vegetation
     click TextValue href "../TextValue"
 
   FieldResearchSite : description
 
   FieldResearchSite : elev
 
-    FieldResearchSite --&gt; "1" QuantityValue : elev
-
+      FieldResearchSite --&gt; "0..1" QuantityValue : elev
     click QuantityValue href "../QuantityValue"
 
   FieldResearchSite : geo_loc_name
 
-    FieldResearchSite --&gt; "1" TextValue : geo_loc_name
-
+      FieldResearchSite --&gt; "0..1" TextValue : geo_loc_name
     click TextValue href "../TextValue"
 
   FieldResearchSite : habitat
@@ -325,28 +322,24 @@
 
   FieldResearchSite : lat_lon
 
-    FieldResearchSite --&gt; "1" GeolocationValue : lat_lon
-
+      FieldResearchSite --&gt; "0..1" GeolocationValue : lat_lon
     click GeolocationValue href "../GeolocationValue"
 
   FieldResearchSite : local_class
 
-    FieldResearchSite --&gt; "1" TextValue : local_class
-
+      FieldResearchSite --&gt; "0..1" TextValue : local_class
     click TextValue href "../TextValue"
 
   FieldResearchSite : name
 
   FieldResearchSite : part_of
 
-    FieldResearchSite --&gt; "*" NamedThing : part_of
-
+      FieldResearchSite --&gt; "0..*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
   FieldResearchSite : soil_type
 
-    FieldResearchSite --&gt; "1" TextValue : soil_type
-
+      FieldResearchSite --&gt; "0..1" TextValue : soil_type
     click TextValue href "../TextValue"
 
 

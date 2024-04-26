@@ -291,20 +291,17 @@
 
   ReadQcAnalysisActivity : has_failure_categorization
 
-    ReadQcAnalysisActivity --&gt; "*" FailureCategorization : has_failure_categorization
-
+      ReadQcAnalysisActivity --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   ReadQcAnalysisActivity : has_input
 
-    ReadQcAnalysisActivity --&gt; "*" NamedThing : has_input
-
+      ReadQcAnalysisActivity --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   ReadQcAnalysisActivity : has_output
 
-    ReadQcAnalysisActivity --&gt; "*" NamedThing : has_output
-
+      ReadQcAnalysisActivity --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   ReadQcAnalysisActivity : id
@@ -325,16 +322,14 @@
 
   ReadQcAnalysisActivity : part_of
 
-    ReadQcAnalysisActivity --&gt; "*" NamedThing : part_of
-
+      ReadQcAnalysisActivity --&gt; "0..*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
   ReadQcAnalysisActivity : qc_comment
 
   ReadQcAnalysisActivity : qc_status
 
-    ReadQcAnalysisActivity --&gt; "1" StatusEnum : qc_status
-
+      ReadQcAnalysisActivity --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   ReadQcAnalysisActivity : started_at_time
@@ -347,8 +342,7 @@
 
   ReadQcAnalysisActivity : was_informed_by
 
-    ReadQcAnalysisActivity --&gt; "1" Activity : was_informed_by
-
+      ReadQcAnalysisActivity --&gt; "0..1" Activity : was_informed_by
     click Activity href "../Activity"
 
 

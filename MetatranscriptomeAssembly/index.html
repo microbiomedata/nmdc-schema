@@ -309,20 +309,17 @@
 
   MetatranscriptomeAssembly : has_failure_categorization
 
-    MetatranscriptomeAssembly --&gt; "*" FailureCategorization : has_failure_categorization
-
+      MetatranscriptomeAssembly --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   MetatranscriptomeAssembly : has_input
 
-    MetatranscriptomeAssembly --&gt; "*" NamedThing : has_input
-
+      MetatranscriptomeAssembly --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   MetatranscriptomeAssembly : has_output
 
-    MetatranscriptomeAssembly --&gt; "*" NamedThing : has_output
-
+      MetatranscriptomeAssembly --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   MetatranscriptomeAssembly : id
@@ -337,16 +334,14 @@
 
   MetatranscriptomeAssembly : part_of
 
-    MetatranscriptomeAssembly --&gt; "*" NamedThing : part_of
-
+      MetatranscriptomeAssembly --&gt; "0..*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
   MetatranscriptomeAssembly : qc_comment
 
   MetatranscriptomeAssembly : qc_status
 
-    MetatranscriptomeAssembly --&gt; "1" StatusEnum : qc_status
-
+      MetatranscriptomeAssembly --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   MetatranscriptomeAssembly : scaf_bp
@@ -383,8 +378,7 @@
 
   MetatranscriptomeAssembly : was_informed_by
 
-    MetatranscriptomeAssembly --&gt; "1" Activity : was_informed_by
-
+      MetatranscriptomeAssembly --&gt; "0..1" Activity : was_informed_by
     click Activity href "../Activity"
 
 

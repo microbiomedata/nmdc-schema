@@ -289,8 +289,7 @@
 
   DataObject : data_object_type
 
-    DataObject --&gt; "1" FileTypeEnum : data_object_type
-
+      DataObject --&gt; "0..1" FileTypeEnum : data_object_type
     click FileTypeEnum href "../FileTypeEnum"
 
   DataObject : description
@@ -309,8 +308,7 @@
 
   DataObject : was_generated_by
 
-    DataObject --&gt; "1" Activity : was_generated_by
-
+      DataObject --&gt; "0..1" Activity : was_generated_by
     click Activity href "../Activity"
 
 

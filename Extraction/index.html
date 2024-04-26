@@ -293,46 +293,39 @@
 
   Extraction : extractant
 
-    Extraction --&gt; "1" Solution : extractant
-
+      Extraction --&gt; "0..1" Solution : extractant
     click Solution href "../Solution"
 
   Extraction : extraction_method
 
-    Extraction --&gt; "1" ExtractionTargetEnum : extraction_method
-
+      Extraction --&gt; "0..1" ExtractionTargetEnum : extraction_method
     click ExtractionTargetEnum href "../ExtractionTargetEnum"
 
   Extraction : extraction_target
 
-    Extraction --&gt; "1" ExtractionTargetEnum : extraction_target
-
+      Extraction --&gt; "0..1" ExtractionTargetEnum : extraction_target
     click ExtractionTargetEnum href "../ExtractionTargetEnum"
 
   Extraction : has_failure_categorization
 
-    Extraction --&gt; "*" FailureCategorization : has_failure_categorization
-
+      Extraction --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   Extraction : has_input
 
-    Extraction --&gt; "*" NamedThing : has_input
-
+      Extraction --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   Extraction : has_output
 
-    Extraction --&gt; "*" NamedThing : has_output
-
+      Extraction --&gt; "1..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   Extraction : id
 
   Extraction : input_mass
 
-    Extraction --&gt; "1" QuantityValue : input_mass
-
+      Extraction --&gt; "0..1" QuantityValue : input_mass
     click QuantityValue href "../QuantityValue"
 
   Extraction : instrument_name
@@ -341,30 +334,26 @@
 
   Extraction : processing_institution
 
-    Extraction --&gt; "1" ProcessingInstitutionEnum : processing_institution
-
+      Extraction --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   Extraction : protocol_link
 
-    Extraction --&gt; "1" Protocol : protocol_link
-
+      Extraction --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
   Extraction : qc_comment
 
   Extraction : qc_status
 
-    Extraction --&gt; "1" StatusEnum : qc_status
-
+      Extraction --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   Extraction : start_date
 
   Extraction : volume
 
-    Extraction --&gt; "1" QuantityValue : volume
-
+      Extraction --&gt; "0..1" QuantityValue : volume
     click QuantityValue href "../QuantityValue"
 
 

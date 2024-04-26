@@ -283,14 +283,12 @@
 
   FunctionalAnnotation : subject
 
-    FunctionalAnnotation --&gt; "1" GeneProduct : subject
-
+      FunctionalAnnotation --&gt; "0..1" GeneProduct : subject
     click GeneProduct href "../GeneProduct"
 
   FunctionalAnnotation : was_generated_by
 
-    FunctionalAnnotation --&gt; "1" MetagenomeAnnotationActivity : was_generated_by
-
+      FunctionalAnnotation --&gt; "0..1" MetagenomeAnnotationActivity : was_generated_by
     click MetagenomeAnnotationActivity href "../MetagenomeAnnotationActivity"
 
 

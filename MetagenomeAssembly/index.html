@@ -324,20 +324,17 @@
 
   MetagenomeAssembly : has_failure_categorization
 
-    MetagenomeAssembly --&gt; "*" FailureCategorization : has_failure_categorization
-
+      MetagenomeAssembly --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   MetagenomeAssembly : has_input
 
-    MetagenomeAssembly --&gt; "*" NamedThing : has_input
-
+      MetagenomeAssembly --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   MetagenomeAssembly : has_output
 
-    MetagenomeAssembly --&gt; "*" NamedThing : has_output
-
+      MetagenomeAssembly --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   MetagenomeAssembly : id
@@ -352,16 +349,14 @@
 
   MetagenomeAssembly : part_of
 
-    MetagenomeAssembly --&gt; "*" NamedThing : part_of
-
+      MetagenomeAssembly --&gt; "0..*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
   MetagenomeAssembly : qc_comment
 
   MetagenomeAssembly : qc_status
 
-    MetagenomeAssembly --&gt; "1" StatusEnum : qc_status
-
+      MetagenomeAssembly --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   MetagenomeAssembly : scaf_bp
@@ -398,8 +393,7 @@
 
   MetagenomeAssembly : was_informed_by
 
-    MetagenomeAssembly --&gt; "1" Activity : was_informed_by
-
+      MetagenomeAssembly --&gt; "0..1" Activity : was_informed_by
     click Activity href "../Activity"
 
 

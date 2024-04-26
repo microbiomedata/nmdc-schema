@@ -278,8 +278,7 @@
 
   MetaboliteQuantification : metabolite_quantified
 
-    MetaboliteQuantification --&gt; "1" ChemicalEntity : metabolite_quantified
-
+      MetaboliteQuantification --&gt; "0..1" ChemicalEntity : metabolite_quantified
     click ChemicalEntity href "../ChemicalEntity"
 
 

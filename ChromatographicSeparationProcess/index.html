@@ -293,20 +293,17 @@
 
   ChromatographicSeparationProcess : has_failure_categorization
 
-    ChromatographicSeparationProcess --&gt; "*" FailureCategorization : has_failure_categorization
-
+      ChromatographicSeparationProcess --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   ChromatographicSeparationProcess : has_input
 
-    ChromatographicSeparationProcess --&gt; "*" NamedThing : has_input
-
+      ChromatographicSeparationProcess --&gt; "0..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   ChromatographicSeparationProcess : has_output
 
-    ChromatographicSeparationProcess --&gt; "*" NamedThing : has_output
-
+      ChromatographicSeparationProcess --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   ChromatographicSeparationProcess : id
@@ -317,42 +314,36 @@
 
   ChromatographicSeparationProcess : ordered_mobile_phases
 
-    ChromatographicSeparationProcess --&gt; "*" Solution : ordered_mobile_phases
-
+      ChromatographicSeparationProcess --&gt; "0..*" Solution : ordered_mobile_phases
     click Solution href "../Solution"
 
   ChromatographicSeparationProcess : processing_institution
 
-    ChromatographicSeparationProcess --&gt; "1" ProcessingInstitutionEnum : processing_institution
-
+      ChromatographicSeparationProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   ChromatographicSeparationProcess : protocol_link
 
-    ChromatographicSeparationProcess --&gt; "1" Protocol : protocol_link
-
+      ChromatographicSeparationProcess --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
   ChromatographicSeparationProcess : qc_comment
 
   ChromatographicSeparationProcess : qc_status
 
-    ChromatographicSeparationProcess --&gt; "1" StatusEnum : qc_status
-
+      ChromatographicSeparationProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   ChromatographicSeparationProcess : start_date
 
   ChromatographicSeparationProcess : stationary_phase
 
-    ChromatographicSeparationProcess --&gt; "1" StationaryPhaseEnum : stationary_phase
-
+      ChromatographicSeparationProcess --&gt; "0..1" StationaryPhaseEnum : stationary_phase
     click StationaryPhaseEnum href "../StationaryPhaseEnum"
 
   ChromatographicSeparationProcess : temperature
 
-    ChromatographicSeparationProcess --&gt; "1" QuantityValue : temperature
-
+      ChromatographicSeparationProcess --&gt; "0..1" QuantityValue : temperature
     click QuantityValue href "../QuantityValue"
 
 

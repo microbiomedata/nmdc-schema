@@ -288,14 +288,12 @@
 
   SubSamplingProcess : contained_in
 
-    SubSamplingProcess --&gt; "1" ContainerCategoryEnum : contained_in
-
+      SubSamplingProcess --&gt; "0..1" ContainerCategoryEnum : contained_in
     click ContainerCategoryEnum href "../ContainerCategoryEnum"
 
   SubSamplingProcess : container_size
 
-    SubSamplingProcess --&gt; "1" QuantityValue : container_size
-
+      SubSamplingProcess --&gt; "0..1" QuantityValue : container_size
     click QuantityValue href "../QuantityValue"
 
   SubSamplingProcess : description
@@ -306,20 +304,17 @@
 
   SubSamplingProcess : has_failure_categorization
 
-    SubSamplingProcess --&gt; "*" FailureCategorization : has_failure_categorization
-
+      SubSamplingProcess --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   SubSamplingProcess : has_input
 
-    SubSamplingProcess --&gt; "*" NamedThing : has_input
-
+      SubSamplingProcess --&gt; "0..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   SubSamplingProcess : has_output
 
-    SubSamplingProcess --&gt; "*" ProcessedSample : has_output
-
+      SubSamplingProcess --&gt; "0..*" ProcessedSample : has_output
     click ProcessedSample href "../ProcessedSample"
 
   SubSamplingProcess : id
@@ -328,44 +323,38 @@
 
   SubSamplingProcess : mass
 
-    SubSamplingProcess --&gt; "1" QuantityValue : mass
-
+      SubSamplingProcess --&gt; "0..1" QuantityValue : mass
     click QuantityValue href "../QuantityValue"
 
   SubSamplingProcess : name
 
   SubSamplingProcess : processing_institution
 
-    SubSamplingProcess --&gt; "1" ProcessingInstitutionEnum : processing_institution
-
+      SubSamplingProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   SubSamplingProcess : protocol_link
 
-    SubSamplingProcess --&gt; "1" Protocol : protocol_link
-
+      SubSamplingProcess --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
   SubSamplingProcess : qc_comment
 
   SubSamplingProcess : qc_status
 
-    SubSamplingProcess --&gt; "1" StatusEnum : qc_status
-
+      SubSamplingProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   SubSamplingProcess : start_date
 
   SubSamplingProcess : temperature
 
-    SubSamplingProcess --&gt; "1" QuantityValue : temperature
-
+      SubSamplingProcess --&gt; "0..1" QuantityValue : temperature
     click QuantityValue href "../QuantityValue"
 
   SubSamplingProcess : volume
 
-    SubSamplingProcess --&gt; "1" QuantityValue : volume
-
+      SubSamplingProcess --&gt; "0..1" QuantityValue : volume
     click QuantityValue href "../QuantityValue"
 
 

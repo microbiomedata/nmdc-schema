@@ -274,14 +274,12 @@
 
   SolutionComponent : compound
 
-    SolutionComponent --&gt; "1" CompoundEnum : compound
-
+      SolutionComponent --&gt; "1..1" CompoundEnum : compound
     click CompoundEnum href "../CompoundEnum"
 
   SolutionComponent : concentration
 
-    SolutionComponent --&gt; "1" QuantityValue : concentration
-
+      SolutionComponent --&gt; "0..1" QuantityValue : concentration
     click QuantityValue href "../QuantityValue"
 
 

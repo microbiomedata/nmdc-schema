@@ -274,8 +274,7 @@
 
   ReactionParticipant : chemical
 
-    ReactionParticipant --&gt; "1" ChemicalEntity : chemical
-
+      ReactionParticipant --&gt; "0..1" ChemicalEntity : chemical
     click ChemicalEntity href "../ChemicalEntity"
 
   ReactionParticipant : stoichiometry

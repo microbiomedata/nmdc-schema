@@ -288,14 +288,12 @@
 
   CreditAssociation : applied_roles
 
-    CreditAssociation --&gt; "*" CreditEnum : applied_roles
-
+      CreditAssociation --&gt; "1..*" CreditEnum : applied_roles
     click CreditEnum href "../CreditEnum"
 
   CreditAssociation : applies_to_person
 
-    CreditAssociation --&gt; "1" PersonValue : applies_to_person
-
+      CreditAssociation --&gt; "1..1" PersonValue : applies_to_person
     click PersonValue href "../PersonValue"
 
   CreditAssociation : type

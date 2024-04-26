@@ -314,20 +314,17 @@
 
   PlannedProcess : has_failure_categorization
 
-    PlannedProcess --&gt; "*" FailureCategorization : has_failure_categorization
-
+      PlannedProcess --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   PlannedProcess : has_input
 
-    PlannedProcess --&gt; "*" NamedThing : has_input
-
+      PlannedProcess --&gt; "0..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   PlannedProcess : has_output
 
-    PlannedProcess --&gt; "*" NamedThing : has_output
-
+      PlannedProcess --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   PlannedProcess : id
@@ -338,22 +335,19 @@
 
   PlannedProcess : processing_institution
 
-    PlannedProcess --&gt; "1" ProcessingInstitutionEnum : processing_institution
-
+      PlannedProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   PlannedProcess : protocol_link
 
-    PlannedProcess --&gt; "1" Protocol : protocol_link
-
+      PlannedProcess --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
   PlannedProcess : qc_comment
 
   PlannedProcess : qc_status
 
-    PlannedProcess --&gt; "1" StatusEnum : qc_status
-
+      PlannedProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   PlannedProcess : start_date

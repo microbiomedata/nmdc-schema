@@ -285,20 +285,17 @@
 
   MetatranscriptomeAnnotationActivity : has_failure_categorization
 
-    MetatranscriptomeAnnotationActivity --&gt; "*" FailureCategorization : has_failure_categorization
-
+      MetatranscriptomeAnnotationActivity --&gt; "0..*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
   MetatranscriptomeAnnotationActivity : has_input
 
-    MetatranscriptomeAnnotationActivity --&gt; "*" NamedThing : has_input
-
+      MetatranscriptomeAnnotationActivity --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
   MetatranscriptomeAnnotationActivity : has_output
 
-    MetatranscriptomeAnnotationActivity --&gt; "*" NamedThing : has_output
-
+      MetatranscriptomeAnnotationActivity --&gt; "0..*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
   MetatranscriptomeAnnotationActivity : id
@@ -307,16 +304,14 @@
 
   MetatranscriptomeAnnotationActivity : part_of
 
-    MetatranscriptomeAnnotationActivity --&gt; "*" NamedThing : part_of
-
+      MetatranscriptomeAnnotationActivity --&gt; "0..*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
   MetatranscriptomeAnnotationActivity : qc_comment
 
   MetatranscriptomeAnnotationActivity : qc_status
 
-    MetatranscriptomeAnnotationActivity --&gt; "1" StatusEnum : qc_status
-
+      MetatranscriptomeAnnotationActivity --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
   MetatranscriptomeAnnotationActivity : started_at_time
@@ -329,8 +324,7 @@
 
   MetatranscriptomeAnnotationActivity : was_informed_by
 
-    MetatranscriptomeAnnotationActivity --&gt; "1" Activity : was_informed_by
-
+      MetatranscriptomeAnnotationActivity --&gt; "0..1" Activity : was_informed_by
     click Activity href "../Activity"
 
 
