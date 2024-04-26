@@ -2,11 +2,7 @@
   {% for s in relationships -%}
     {{ gen.name(element) }} : {{ gen.name(s) }}
     {% if s.range not in gen.all_type_object_names() %}
-    {% if s.multivalued -%}
-      {{ gen.name(element) }} --> "*" {{ gen.name(schemaview.get_element(s.range)) }} : {{ gen.name(s) }}
-    {% else -%}
-      {{ gen.name(element) }} --> "1" {{ gen.name(schemaview.get_element(s.range)) }} : {{ gen.name(s) }}
-    {% endif %}
+      {{ gen.name(element) }} --> "{{ gen.cardinality(s) }}" {{ gen.name(schemaview.get_element(s.range)) }} : {{ gen.name(s) }}
     click {{ gen.name(schemaview.get_element(s.range)) }} href "../{{gen.name(schemaview.get_element(s.range))}}"
     {% endif %}
   {% endfor %}
