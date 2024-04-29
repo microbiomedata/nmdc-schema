@@ -51,7 +51,7 @@ class Migrator(MigratorBase):
     def check_instrument_name(self, workflow_execution: dict) -> dict:
         r"""
         Checks that the value in the used slot on the WorkflowExecution classes matches the value
-        on the `DataGeneration` (previously `OmicsProcessing`) instances in the `instrument_name` slot. 
+        in the `instrument_name` field of a related `OmicsProcessing` (soon to be renamed to `DataGeneration`) instance. 
         If it matches, then remove used from the WorkflowExecution instance.
 
         >>> m = Migrator()
