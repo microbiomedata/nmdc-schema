@@ -23,7 +23,12 @@ class Migrator(MigratorBase):
             "mags_set",
             "metatranscriptome_analysis_set",
             "metagenome_annotation_set",
-            "metagenome_assembly_set"
+            "metagenome_assembly_set",
+            "mags_activity_set",
+            "metabolomics_analysis_activity_set",
+            "metagenome_annotation_activity_set",
+            "metagenome_sequencing_activity_set",
+            "metaproteomics_analysis_activity_set"
         ]
 
         self.adapter.process_each_document("omics_processing_set", [self.check_instrument_name])
