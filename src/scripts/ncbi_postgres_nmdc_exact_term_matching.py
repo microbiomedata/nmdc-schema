@@ -15,8 +15,8 @@ load_dotenv(dotenv_path=env_path)
 #         Get the names of all fields/columns from the NCBI Postgres view              #
 # ==================================================================================== #
 def get_column_names_from_view(view_name):
-    ncbi_postgres_user = os.getenv("NCBI_POSTGRES_USER")
-    ncbi_postgres_password = os.getenv("NCBI_POSTGRES_PASS")
+    ncbi_postgres_user = os.getenv("BIOSAMPLES_RDB_USER")
+    ncbi_postgres_password = os.getenv("BIOSAMPLES_RDB_PWD")
 
     conn = psycopg2.connect(
         dbname="ncbi_biosamples_feb26",
