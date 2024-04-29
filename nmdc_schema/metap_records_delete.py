@@ -30,8 +30,9 @@ def args() -> Tuple[str]:
     parser.add_argument(
         "--dry-run", help="Print, but not delete, all metaP proteomics records deletion records", action="store_true"
     )
-    parser.add_argument("--username", type=str, help="MongoDB username", required=True)
-    parser.add_argument("--password", type=str, help="MongoDB password", required=True)
+    # parser.add_argument("--username", type=str, help="MongoDB username", required=True)
+    # parser.add_argument("--password", type=str, help="MongoDB password", required=True)
+    parser.add_argument("--mongo-uri", type=str, help="MongoDB URI", required=False, default="mongodb://localhost:27017",)
     return parser.parse_args()
 
 
@@ -47,7 +48,7 @@ class NMDCAccessor:
         return documents
 
     def get_has_outputs_map(self) -> Dict[str, List[str]]:
-        documents = self.get_records_from_collection("metaproteomics_analysis_activity_set")
+        documents = self.get_documents_from_collection("metaproteomics_analysis_activity_set")
         has_outputs_map = defaultdict(list)
 
         for document in documents:
@@ -265,17 +266,12 @@ class NMDCAccessor:
 
 
     @staticmethod
-    def get_nmdc_db(username: str, password: str) -> "NMDCAccessor":
+    def get_nmdc_db(mongo_uri: str) -> "NMDCAccessor":
         db = "nmdc"
 
         client = pymongo.MongoClient(
-            "localhost",
-            port=37020,
-            username=username,
-            password=password,
-            authSource="admin",
+            mongo_uri,
             directConnection=True,
-            authMechanism="DEFAULT",
         )
 
         return NMDCAccessor(client[db])
@@ -284,7 +280,7 @@ class NMDCAccessor:
 def main():
     args_map = args()
 
-    accessor = NMDCAccessor.get_nmdc_db(args_map.username, args_map.password)
+    accessor = NMDCAccessor.get_nmdc_db(mongo_uri=args_map.mongo_uri)
 
     if args_map.output_dir:
         output = Path(args_map.output_dir)
