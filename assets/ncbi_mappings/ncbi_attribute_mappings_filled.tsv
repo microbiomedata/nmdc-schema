@@ -1,0 +1,682 @@
+NMDC schema class	NMDC schema slot	NMDC schema slot range	NCBI BioSample Attribute name	static_value
+Biosample	abs_air_humidity	QuantityValue	abs_air_humidity	
+Biosample	add_date	string		
+Biosample	add_recov_method	TextValue	add_recov_method	
+Biosample	additional_info	TextValue	additional_info	
+Biosample	address	TextValue	address	
+Biosample	adj_room	TextValue	adj_room	
+Biosample	aero_struc	TextValue	aero_struc	
+Biosample	agrochem_addition	TextValue	agrochem_addition	
+Biosample	air_PM_concen	TextValue	air_pm_concen	
+Biosample	air_temp	QuantityValue	air_temp	
+Biosample	air_temp_regm	TextValue	air_temp_regm	
+Biosample	al_sat	QuantityValue	al_sat	
+Biosample	al_sat_meth	TextValue	al_sat_meth	
+Biosample	alkalinity	QuantityValue	alkalinity	
+Biosample	alkalinity_method	TextValue	alkalinity_method	
+Biosample	alkyl_diethers	QuantityValue	alkyl_diethers	
+Biosample	alt	QuantityValue	altitude	
+Biosample	alternative_identifiers	uriorcurie		
+Biosample	aminopept_act	QuantityValue	aminopept_act	
+Biosample	ammonium	QuantityValue	ammonium	
+Biosample	ammonium_nitrogen	QuantityValue		
+Biosample	amount_light	QuantityValue	amount_light	
+Biosample	analysis_type	AnalysisTypeEnum		
+Biosample	ances_data	TextValue	ances_data	
+Biosample	annual_precpt	QuantityValue	annual_precpt	
+Biosample	annual_temp	QuantityValue	annual_temp	
+Biosample	antibiotic_regm	TextValue	antibiotic_regm	
+Biosample	api	QuantityValue	api	
+Biosample	arch_struc	arch_struc_enum	arch_struc	
+Biosample	aromatics_pc	TextValue	aromatics_pc	
+Biosample	asphaltenes_pc	TextValue	asphaltenes_pc	
+Biosample	atmospheric_data	TextValue	atmospheric_data	
+Biosample	avg_dew_point	QuantityValue	avg_dew_point	
+Biosample	avg_occup	TextValue	avg_occup	
+Biosample	avg_temp	QuantityValue	avg_temp	
+Biosample	bac_prod	QuantityValue	bac_prod	
+Biosample	bac_resp	QuantityValue	bac_resp	
+Biosample	bacteria_carb_prod	QuantityValue	bacteria_carb_prod	
+Biosample	barometric_press	QuantityValue	barometric_press	
+Biosample	basin	TextValue		
+Biosample	bathroom_count	TextValue	bathroom_count	
+Biosample	bedroom_count	TextValue	bedroom_count	
+Biosample	benzene	QuantityValue	benzene	
+Biosample	biochem_oxygen_dem	QuantityValue	biochem_oxygen_dem	
+Biosample	biocide	TextValue	biocide_used	
+Biosample	biocide_admin_method	TextValue	biocide_admin_method	
+Biosample	biol_stat	biol_stat_enum	biol_stat	
+Biosample	biomass	TextValue	biomass	
+Biosample	biosample_categories	BiosampleCategoryEnum		
+Biosample	biotic_regm	TextValue	biotic_regm	
+Biosample	biotic_relationship	biotic_relationship_enum	biotic_relationship	
+Biosample	bishomohopanol	QuantityValue	bishomohopanol	
+Biosample	blood_press_diast	QuantityValue	blood_press_diast	
+Biosample	blood_press_syst	QuantityValue	blood_press_syst	
+Biosample	bromide	QuantityValue	bromide	
+Biosample	build_docs	build_docs_enum	build_docs	
+Biosample	build_occup_type	build_occup_type_enum	build_occup_type	
+Biosample	building_setting	building_setting_enum	building_setting	
+Biosample	built_struc_age	QuantityValue	built_struc_age	
+Biosample	built_struc_set	TextValue	built_struc_set	
+Biosample	built_struc_type	TextValue	built_struc_type	
+Biosample	bulk_elect_conductivity	QuantityValue		
+Biosample	calcium	QuantityValue	calcium	
+Biosample	carb_dioxide	QuantityValue	carb_dioxide	
+Biosample	carb_monoxide	QuantityValue	carb_monoxide	
+Biosample	carb_nitro_ratio	QuantityValue	carb_nitro_ratio	
+Biosample	ceil_area	QuantityValue	ceil_area	
+Biosample	ceil_cond	ceil_cond_enum	ceil_cond	
+Biosample	ceil_finish_mat	ceil_finish_mat_enum	ceil_finish_mat	
+Biosample	ceil_struc	TextValue	ceil_struc	
+Biosample	ceil_texture	ceil_texture_enum	ceil_texture	
+Biosample	ceil_thermal_mass	QuantityValue	ceil_thermal_mass	
+Biosample	ceil_type	ceil_type_enum	ceil_type	
+Biosample	ceil_water_mold	TextValue	ceil_water_mold	
+Biosample	chem_administration	ControlledTermValue	chem_administration	
+Biosample	chem_mutagen	TextValue	chem_mutagen	
+Biosample	chem_oxygen_dem	QuantityValue	chem_oxygen_dem	
+Biosample	chem_treat_method	string	chem_treat_method	
+Biosample	chem_treatment	TextValue	chem_treatment	
+Biosample	chimera_check	TextValue		
+Biosample	chloride	QuantityValue	chloride	
+Biosample	chlorophyll	QuantityValue	chlorophyll	
+Biosample	climate_environment	TextValue	climate_environment	
+Biosample	collected_from	FieldResearchSite		
+Biosample	collection_date	TimestampValue	collection_date	
+Biosample	collection_date_inc	string		
+Biosample	collection_time	string		
+Biosample	collection_time_inc	string		
+Biosample	community	string		
+Biosample	conduc	QuantityValue	conduc	
+Biosample	cool_syst_id	TextValue	cool_syst_id	
+Biosample	core field	string		
+Biosample	crop_rotation	TextValue	crop_rotation	
+Biosample	cult_root_med	TextValue	cult_root_med	
+Biosample	cur_land_use	cur_land_use_enum	cur_land_use	
+Biosample	cur_vegetation	TextValue	cur_vegetation	
+Biosample	cur_vegetation_meth	TextValue	cur_vegetation_meth	
+Biosample	date_last_rain	TimestampValue	date_last_rain	
+Biosample	density	QuantityValue	density	
+Biosample	depos_env	depos_env_enum	depos_env	
+Biosample	depth	QuantityValue	depth	
+Biosample	description	string	description	
+Biosample	dew_point	QuantityValue	dew_point	
+Biosample	diether_lipids	TextValue	diether_lipids	
+Biosample	diss_carb_dioxide	QuantityValue	diss_carb_dioxide	
+Biosample	diss_hydrogen	QuantityValue	diss_hydrogen	
+Biosample	diss_inorg_carb	QuantityValue	diss_inorg_carb	
+Biosample	diss_inorg_nitro	QuantityValue	diss_inorg_nitro	
+Biosample	diss_inorg_phosp	QuantityValue	diss_inorg_phosp	
+Biosample	diss_iron	QuantityValue	diss_iron	
+Biosample	diss_org_carb	QuantityValue	diss_org_carb	
+Biosample	diss_org_nitro	QuantityValue	diss_org_nitro	
+Biosample	diss_oxygen	QuantityValue	diss_oxygen	
+Biosample	diss_oxygen_fluid	QuantityValue	diss_oxygen_fluid	
+Biosample	dna_absorb1	float		
+Biosample	dna_absorb2	float		
+Biosample	dna_collect_site	string		
+Biosample	dna_concentration	float		
+Biosample	dna_cont_type	JgiContTypeEnum		
+Biosample	dna_cont_well	string		
+Biosample	dna_container_id	string		
+Biosample	dna_dnase	YesNoEnum		
+Biosample	dna_isolate_meth	string		
+Biosample	dna_organisms	string		
+Biosample	dna_project_contact	string		
+Biosample	dna_samp_id	string		
+Biosample	dna_sample_format	DNASampleFormatEnum		
+Biosample	dna_sample_name	string		
+Biosample	dna_seq_project	string		
+Biosample	dna_seq_project_name	string		
+Biosample	dna_seq_project_pi	string		
+Biosample	dna_volume	float		
+Biosample	dnase_rna	YesNoEnum		
+Biosample	door_comp_type	door_comp_type_enum	door_comp_type	
+Biosample	door_cond	door_cond_enum	door_cond	
+Biosample	door_direct	door_direct_enum	door_direct	
+Biosample	door_loc	door_loc_enum	door_loc	
+Biosample	door_mat	door_mat_enum	door_mat	
+Biosample	door_move	door_move_enum	door_move	
+Biosample	door_size	QuantityValue	door_size	
+Biosample	door_type	door_type_enum	door_type	
+Biosample	door_type_metal	door_type_metal_enum	door_type_metal	
+Biosample	door_type_wood	door_type_wood_enum	door_type_wood	
+Biosample	door_water_mold	TextValue	door_water_mold	
+Biosample	down_par	QuantityValue	down_par	
+Biosample	drainage_class	drainage_class_enum	drainage_class	
+Biosample	drawings	drawings_enum	drawings	
+Biosample	ecosystem	string		
+Biosample	ecosystem_category	string		
+Biosample	ecosystem_subtype	string		
+Biosample	ecosystem_type	string		
+Biosample	efficiency_percent	QuantityValue	efficiency_percent	
+Biosample	elev	float	elev	
+Biosample	elevator	TextValue	elevator	
+Biosample	embargoed	boolean		
+Biosample	emsl_biosample_identifiers	external_identifier		
+Biosample	emulsions	TextValue	emulsions	
+Biosample	env_broad_scale	ControlledIdentifiedTermValue	env_broad_scale	
+Biosample	env_local_scale	ControlledIdentifiedTermValue	env_local_scale	
+Biosample	env_medium	ControlledIdentifiedTermValue	env_medium	
+Biosample	env_package	TextValue	env_package	
+Biosample	environment field	string		
+Biosample	escalator	TextValue	escalator	
+Biosample	ethylbenzene	QuantityValue	ethylbenzene	
+Biosample	exp_duct	QuantityValue	exp_duct	
+Biosample	exp_pipe	QuantityValue	exp_pipe	
+Biosample	experimental_factor	ControlledTermValue	experimental_factor	
+Biosample	experimental_factor_other	string		
+Biosample	ext_door	TextValue	ext_door	
+Biosample	ext_wall_orient	ext_wall_orient_enum	ext_wall_orient	
+Biosample	ext_window_orient	ext_window_orient_enum	ext_window_orient	
+Biosample	extreme_event	string	extreme_event	
+Biosample	fao_class	fao_class_enum	fao_class	
+Biosample	fertilizer_regm	TextValue	fertilizer_regm	
+Biosample	field	TextValue	field	
+Biosample	filter_method	string		
+Biosample	filter_type	filter_type_enum	filter_type	
+Biosample	fire	string	fire	
+Biosample	fireplace_type	TextValue	fireplace_type	
+Biosample	flooding	string	flooding	
+Biosample	floor_age	QuantityValue	floor_age	
+Biosample	floor_area	QuantityValue	floor_area	
+Biosample	floor_cond	floor_cond_enum	floor_cond	
+Biosample	floor_count	TextValue	floor_count	
+Biosample	floor_finish_mat	floor_finish_mat_enum	floor_finish_mat	
+Biosample	floor_struc	floor_struc_enum	floor_struc	
+Biosample	floor_thermal_mass	QuantityValue	floor_thermal_mass	
+Biosample	floor_water_mold	floor_water_mold_enum	floor_water_mold	
+Biosample	fluor	QuantityValue	fluor	
+Biosample	freq_clean	QuantityValue	freq_clean	
+Biosample	freq_cook	QuantityValue	freq_cook	
+Biosample	fungicide_regm	TextValue	fungicide_regm	
+Biosample	furniture	furniture_enum	furniture	
+Biosample	gaseous_environment	TextValue	gaseous_environment	
+Biosample	gaseous_substances	TextValue	gaseous_substances	
+Biosample	gender_restroom	gender_restroom_enum	gender_restroom	
+Biosample	genetic_mod	TextValue	genetic_mod	
+Biosample	geo_loc_name	TextValue	geo_loc_name	
+Biosample	glucosidase_act	QuantityValue	glucosidase_act	
+Biosample	gold_biosample_identifiers	uriorcurie		
+Biosample	gravidity	TextValue	gravidity	
+Biosample	gravity	TextValue	gravity	
+Biosample	growth_facil	ControlledTermValue	growth_facil	
+Biosample	growth_habit	growth_habit_enum	growth_habit	
+Biosample	growth_hormone_regm	TextValue	growth_hormone_regm	
+Biosample	habitat	string		
+Biosample	hall_count	TextValue	hall_count	
+Biosample	handidness	handidness_enum	handidness	
+Biosample	hc_produced	hc_produced_enum	hc_produced	
+Biosample	hcr	hcr_enum	hcr	
+Biosample	hcr_fw_salinity	QuantityValue	hcr_fw_salinity	
+Biosample	hcr_geol_age	hcr_geol_age_enum	hcr_geol_age	
+Biosample	hcr_pressure	TextValue	hcr_pressure	
+Biosample	hcr_temp	TextValue	hcr_temp	
+Biosample	heat_cool_type	heat_cool_type_enum	heat_cool_type	
+Biosample	heat_deliv_loc	heat_deliv_loc_enum	heat_deliv_loc	
+Biosample	heat_sys_deliv_meth	string	heat_sys_deliv_meth	
+Biosample	heat_system_id	TextValue	heat_system_id	
+Biosample	heavy_metals	TextValue	heavy_metals	
+Biosample	heavy_metals_meth	TextValue	heavy_metals_meth	
+Biosample	height_carper_fiber	QuantityValue	height_carper_fiber	
+Biosample	herbicide_regm	TextValue	herbicide_regm	
+Biosample	horizon_meth	TextValue	horizon_meth	
+Biosample	host_age	QuantityValue	host_age	
+Biosample	host_body_habitat	TextValue	host_body_habitat	
+Biosample	host_body_product	ControlledTermValue	host_body_product	
+Biosample	host_body_site	ControlledTermValue		
+Biosample	host_body_temp	QuantityValue	host_body_temp	
+Biosample	host_color	TextValue	host_color	
+Biosample	host_common_name	TextValue	host_common_name	
+Biosample	host_diet	TextValue	host_diet	
+Biosample	host_disease_stat	TextValue		
+Biosample	host_dry_mass	QuantityValue	host_dry_mass	
+Biosample	host_family_relation	string		
+Biosample	host_genotype	TextValue	host_genotype	
+Biosample	host_growth_cond	TextValue	host_growth_cond	
+Biosample	host_height	QuantityValue	host_height	
+Biosample	host_last_meal	TextValue	host_last_meal	
+Biosample	host_length	QuantityValue	host_length	
+Biosample	host_life_stage	TextValue	host_life_stage	
+Biosample	host_name	string		
+Biosample	host_phenotype	ControlledTermValue	host_phenotype	
+Biosample	host_sex	host_sex_enum	host_sex	
+Biosample	host_shape	TextValue	host_shape	
+Biosample	host_subject_id	TextValue	host_subject_id	
+Biosample	host_subspecf_genlin	string	host_subspecf_genlin	
+Biosample	host_substrate	TextValue	host_substrate	
+Biosample	host_symbiont	string	host_symbiont	
+Biosample	host_taxid	ControlledIdentifiedTermValue	host_taxid	
+Biosample	host_tot_mass	QuantityValue	host_tot_mass	
+Biosample	host_wet_mass	QuantityValue	host_wet_mass	
+Biosample	humidity	QuantityValue	humidity	
+Biosample	humidity_regm	TextValue	humidity_regm	
+Biosample	id	uriorcurie		
+Biosample	igsn_biosample_identifiers	external_identifier		
+Biosample	img_identifiers	external_identifier		
+Biosample	indoor_space	indoor_space_enum	indoor_space	
+Biosample	indoor_surf	indoor_surf_enum	indoor_surf	
+Biosample	indust_eff_percent	QuantityValue	indust_eff_percent	
+Biosample	infiltrations	string		
+Biosample	inorg_particles	TextValue	inorg_particles	
+Biosample	insdc_biosample_identifiers	external_identifier		
+Biosample	inside_lux	QuantityValue	inside_lux	
+Biosample	int_wall_cond	int_wall_cond_enum	int_wall_cond	
+Biosample	investigation field	string		
+Biosample	isotope_exposure	string		
+Biosample	iw_bt_date_well	TimestampValue	iw_bt_date_well	
+Biosample	iwf	QuantityValue	iwf	
+Biosample	last_clean	TimestampValue	last_clean	
+Biosample	lat_lon	GeolocationValue	lat_lon	
+Biosample	lbc_thirty	QuantityValue		
+Biosample	lbceq	QuantityValue		
+Biosample	light_intensity	QuantityValue	light_intensity	
+Biosample	light_regm	TextValue	light_regm	
+Biosample	light_type	light_type_enum	light_type	
+Biosample	link_addit_analys	TextValue	link_addit_analys	
+Biosample	link_class_info	TextValue	link_class_info	
+Biosample	link_climate_info	TextValue	link_climate_info	
+Biosample	lithology	lithology_enum	lithology	
+Biosample	local_class	TextValue	local_class	
+Biosample	local_class_meth	TextValue	local_class_meth	
+Biosample	location	string		
+Biosample	magnesium	QuantityValue	magnesium	
+Biosample	manganese	QuantityValue		
+Biosample	max_occup	QuantityValue	max_occup	
+Biosample	mean_frict_vel	QuantityValue	mean_frict_vel	
+Biosample	mean_peak_frict_vel	QuantityValue	mean_peak_frict_vel	
+Biosample	mech_struc	mech_struc_enum	mech_struc	
+Biosample	mechanical_damage	TextValue	mechanical_damage	
+Biosample	methane	QuantityValue	methane	
+Biosample	micro_biomass_c_meth	string		
+Biosample	micro_biomass_meth	string		
+Biosample	micro_biomass_n_meth	string		
+Biosample	microbial_biomass	QuantityValue	microbial_biomass	
+Biosample	microbial_biomass_c	string		
+Biosample	microbial_biomass_n	string		
+Biosample	mineral_nutr_regm	TextValue	mineral_nutr_regm	
+Biosample	misc_param	TextValue	misc_param	
+Biosample	mod_date	string		
+Biosample	n_alkanes	TextValue	n_alkanes	
+Biosample	name	string		
+Biosample	ncbi_taxonomy_name	string		
+Biosample	neon_biosample_identifiers	external_identifier		
+Biosample	nitrate	QuantityValue	nitrate	
+Biosample	nitrate_nitrogen	QuantityValue		
+Biosample	nitrite	QuantityValue	nitrite	
+Biosample	nitrite_nitrogen	QuantityValue		
+Biosample	nitro	QuantityValue	nitro	
+Biosample	non_microb_biomass	string		
+Biosample	non_microb_biomass_method	string		
+Biosample	non_min_nutr_regm	string		
+Biosample	nucl_acid_amp	TextValue		
+Biosample	nucl_acid_ext	TextValue		
+Biosample	nucleic acid sequence source field	string		
+Biosample	number_pets	QuantityValue	number_pets	
+Biosample	number_plants	QuantityValue	number_plants	
+Biosample	number_resident	QuantityValue	number_resident	
+Biosample	occup_density_samp	QuantityValue		
+Biosample	occup_document	occup_document_enum	occup_document	
+Biosample	occup_samp	QuantityValue	occup_samp	
+Biosample	org_carb	QuantityValue	org_carb	
+Biosample	org_count_qpcr_info	string	org_count_qpcr_info	
+Biosample	org_matter	QuantityValue	org_matter	
+Biosample	org_nitro	QuantityValue	org_nitro	
+Biosample	org_nitro_method	string		
+Biosample	org_particles	TextValue	org_particles	
+Biosample	organism_count	QuantityValue	organism_count	
+Biosample	other_treatment	string		
+Biosample	owc_tvdss	QuantityValue	owc_tvdss	
+Biosample	oxy_stat_samp	oxy_stat_samp_enum	oxy_stat_samp	
+Biosample	oxygen	QuantityValue	oxygen	
+Biosample	part_of	Study		
+Biosample	part_org_carb	QuantityValue	part_org_carb	
+Biosample	part_org_nitro	QuantityValue	part_org_nitro	
+Biosample	particle_class	TextValue	particle_class	
+Biosample	pcr_cond	TextValue		
+Biosample	pcr_primers	TextValue		
+Biosample	permeability	TextValue	permeability	
+Biosample	perturbation	TextValue	perturbation	
+Biosample	pesticide_regm	TextValue	pesticide_regm	
+Biosample	petroleum_hydrocarb	QuantityValue	petroleum_hydrocarb	
+Biosample	ph	double	ph	
+Biosample	ph_meth	TextValue	ph_meth	
+Biosample	ph_regm	TextValue	ph_regm	
+Biosample	phaeopigments	TextValue	phaeopigments	
+Biosample	phosphate	QuantityValue	phosphate	
+Biosample	phosplipid_fatt_acid	TextValue	phosplipid_fatt_acid	
+Biosample	photon_flux	QuantityValue	photon_flux	
+Biosample	plant_growth_med	ControlledTermValue	plant_growth_med	
+Biosample	plant_product	TextValue	plant_product	
+Biosample	plant_sex	plant_sex_enum	plant_sex	
+Biosample	plant_struc	ControlledTermValue	plant_struc	
+Biosample	pollutants	TextValue	pollutants	
+Biosample	pool_dna_extracts	TextValue	pool_dna_extracts	
+Biosample	porosity	TextValue	porosity	
+Biosample	potassium	QuantityValue	potassium	
+Biosample	pour_point	QuantityValue	pour_point	
+Biosample	pre_treatment	TextValue	pre_treatment	
+Biosample	pres_animal_insect	string	pres_animal_insect	
+Biosample	pressure	QuantityValue	pressure	
+Biosample	prev_land_use_meth	string		
+Biosample	previous_land_use	TextValue	previous_land_use	
+Biosample	primary_prod	QuantityValue	primary_prod	
+Biosample	primary_treatment	TextValue	primary_treatment	
+Biosample	prod_rate	QuantityValue	prod_rate	
+Biosample	prod_start_date	TimestampValue	prod_start_date	
+Biosample	profile_position	profile_position_enum	profile_position	
+Biosample	project_id	string		
+Biosample	proport_woa_temperature	string		
+Biosample	proposal_dna	string		
+Biosample	proposal_rna	string		
+Biosample	quad_pos	quad_pos_enum	quad_pos	
+Biosample	radiation_regm	TextValue	radiation_regm	
+Biosample	rainfall_regm	TextValue	rainfall_regm	
+Biosample	reactor_type	TextValue	reactor_type	
+Biosample	redox_potential	QuantityValue	redox_potential	
+Biosample	rel_air_humidity	QuantityValue	rel_air_humidity	
+Biosample	rel_humidity_out	QuantityValue	rel_humidity_out	
+Biosample	rel_samp_loc	rel_samp_loc_enum	rel_samp_loc	
+Biosample	replicate_number	string		
+Biosample	reservoir	TextValue		
+Biosample	resins_pc	TextValue	resins_pc	
+Biosample	rna_absorb1	float		
+Biosample	rna_absorb2	float		
+Biosample	rna_collect_site	string		
+Biosample	rna_concentration	float		
+Biosample	rna_cont_type	JgiContTypeEnum		
+Biosample	rna_cont_well	string		
+Biosample	rna_container_id	string		
+Biosample	rna_isolate_meth	string		
+Biosample	rna_organisms	string		
+Biosample	rna_project_contact	string		
+Biosample	rna_samp_id	string		
+Biosample	rna_sample_format	RNASampleFormatEnum		
+Biosample	rna_sample_name	string		
+Biosample	rna_seq_project	string		
+Biosample	rna_seq_project_name	string		
+Biosample	rna_seq_project_pi	string		
+Biosample	rna_volume	float		
+Biosample	room_air_exch_rate	QuantityValue	room_air_exch_rate	
+Biosample	room_architec_elem	string	room_architec_elem	
+Biosample	room_condt	room_condt_enum	room_condt	
+Biosample	room_connected	room_connected_enum	room_connected	
+Biosample	room_count	TextValue	room_count	
+Biosample	room_dim	TextValue	room_dim	
+Biosample	room_door_dist	TextValue	room_door_dist	
+Biosample	room_door_share	TextValue	room_door_share	
+Biosample	room_hallway	TextValue	room_hallway	
+Biosample	room_loc	room_loc_enum	room_loc	
+Biosample	room_moist_dam_hist	integer	room_moist_dam_hist	
+Biosample	room_net_area	TextValue	room_net_area	
+Biosample	room_occup	QuantityValue	room_occup	
+Biosample	room_samp_pos	room_samp_pos_enum	room_samp_pos	
+Biosample	room_type	room_type_enum	room_type	
+Biosample	room_vol	TextValue	room_vol	
+Biosample	room_wall_share	TextValue	room_wall_share	
+Biosample	room_window_count	integer	room_window_count	
+Biosample	root_cond	TextValue	root_cond	
+Biosample	root_med_carbon	TextValue	root_med_carbon	
+Biosample	root_med_macronutr	TextValue	root_med_macronutr	
+Biosample	root_med_micronutr	TextValue	root_med_micronutr	
+Biosample	root_med_ph	QuantityValue	root_med_ph	
+Biosample	root_med_regl	TextValue	root_med_regl	
+Biosample	root_med_solid	TextValue	root_med_solid	
+Biosample	root_med_suppl	TextValue	root_med_suppl	
+Biosample	salinity	QuantityValue	salinity	
+Biosample	salinity_category	string		
+Biosample	salinity_meth	TextValue	salinity_meth	
+Biosample	salt_regm	TextValue	salt_regm	
+Biosample	samp_capt_status	samp_capt_status_enum	samp_capt_status	
+Biosample	samp_collec_device	string		
+Biosample	samp_collec_method	string		
+Biosample	samp_collect_point	samp_collect_point_enum	samp_collect_point	
+Biosample	samp_dis_stage	samp_dis_stage_enum	samp_dis_stage	
+Biosample	samp_floor	samp_floor_enum	samp_floor	
+Biosample	samp_loc_corr_rate	TextValue	samp_loc_corr_rate	
+Biosample	samp_mat_process	ControlledTermValue	samp_mat_process	
+Biosample	samp_md	QuantityValue	samp_md	
+Biosample	samp_name	string		
+Biosample	samp_preserv	TextValue	samp_preserv	
+Biosample	samp_room_id	TextValue	samp_room_id	
+Biosample	samp_size	QuantityValue	samp_size	
+Biosample	samp_sort_meth	TextValue	samp_sort_meth	
+Biosample	samp_store_dur	TextValue	samp_store_dur	
+Biosample	samp_store_loc	TextValue	samp_store_loc	
+Biosample	samp_store_temp	QuantityValue	samp_store_temp	
+Biosample	samp_subtype	samp_subtype_enum	samp_subtype	
+Biosample	samp_taxon_id	ControlledIdentifiedTermValue		
+Biosample	samp_time_out	TextValue	samp_time_out	
+Biosample	samp_transport_cond	TextValue	samp_transport_cond	
+Biosample	samp_tvdss	TextValue	samp_tvdss	
+Biosample	samp_type	TextValue		
+Biosample	samp_vol_we_dna_ext	QuantityValue	samp_vol_we_dna_ext	
+Biosample	samp_weather	samp_weather_enum	samp_weather	
+Biosample	samp_well_name	TextValue	samp_well_name	
+Biosample	sample_collection_site	string		
+Biosample	sample_link	string		
+Biosample	sample_shipped	string		
+Biosample	sample_type	SampleTypeEnum	sample_type	
+Biosample	saturates_pc	TextValue	saturates_pc	
+Biosample	season	TextValue	season	
+Biosample	season_environment	TextValue	season_environment	
+Biosample	season_precpt	QuantityValue	season_precpt	
+Biosample	season_temp	QuantityValue	season_temp	
+Biosample	season_use	season_use_enum	season_use	
+Biosample	secondary_treatment	TextValue	secondary_treatment	
+Biosample	sediment_type	sediment_type_enum	sediment_type	
+Biosample	seq_meth	TextValue		
+Biosample	seq_quality_check	TextValue		
+Biosample	sequencing field	string		
+Biosample	sewage_type	TextValue	sewage_type	
+Biosample	shad_dev_water_mold	string	shad_dev_water_mold	
+Biosample	shading_device_cond	shading_device_cond_enum	shading_device_cond	
+Biosample	shading_device_loc	TextValue	shading_device_loc	
+Biosample	shading_device_mat	TextValue	shading_device_mat	
+Biosample	shading_device_type	shading_device_type_enum	shading_device_type	
+Biosample	sieving	TextValue	sieving	
+Biosample	silicate	QuantityValue	silicate	
+Biosample	size_frac	TextValue	size_frac	
+Biosample	size_frac_low	QuantityValue	size_frac_low	
+Biosample	size_frac_up	QuantityValue	size_frac_up	
+Biosample	slope_aspect	QuantityValue	slope_aspect	
+Biosample	slope_gradient	QuantityValue	slope_gradient	
+Biosample	sludge_retent_time	QuantityValue	sludge_retent_time	
+Biosample	sodium	QuantityValue	sodium	
+Biosample	soil_horizon	soil_horizon_enum	soil_horizon	
+Biosample	soil_text_measure	QuantityValue	soil_text_measure	
+Biosample	soil_texture_meth	string	soil_texture_meth	
+Biosample	soil_type	TextValue	soil_type	
+Biosample	soil_type_meth	TextValue	soil_type_meth	
+Biosample	solar_irradiance	QuantityValue	solar_irradiance	
+Biosample	soluble_inorg_mat	TextValue	soluble_inorg_mat	
+Biosample	soluble_iron_micromol	string		
+Biosample	soluble_org_mat	TextValue	soluble_org_mat	
+Biosample	soluble_react_phosp	QuantityValue	soluble_react_phosp	
+Biosample	source_mat_id	TextValue		
+Biosample	space_typ_state	TextValue	space_typ_state	
+Biosample	specific	specific_enum	specific	
+Biosample	specific_ecosystem	string		
+Biosample	specific_humidity	QuantityValue	specific_humidity	
+Biosample	sr_dep_env	sr_dep_env_enum	sr_dep_env	
+Biosample	sr_geol_age	sr_geol_age_enum	sr_geol_age	
+Biosample	sr_kerog_type	sr_kerog_type_enum	sr_kerog_type	
+Biosample	sr_lithology	sr_lithology_enum	sr_lithology	
+Biosample	standing_water_regm	TextValue	standing_water_regm	
+Biosample	start_date_inc	string		
+Biosample	start_time_inc	string		
+Biosample	store_cond	TextValue	store_cond	
+Biosample	substructure_type	substructure_type_enum	substructure_type	
+Biosample	subsurface_depth	QuantityValue		
+Biosample	sulfate	QuantityValue	sulfate	
+Biosample	sulfate_fw	QuantityValue	sulfate_fw	
+Biosample	sulfide	QuantityValue	sulfide	
+Biosample	surf_air_cont	surf_air_cont_enum	surf_air_cont	
+Biosample	surf_humidity	QuantityValue	surf_humidity	
+Biosample	surf_material	surf_material_enum	surf_material	
+Biosample	surf_moisture	QuantityValue	surf_moisture	
+Biosample	surf_moisture_ph	double	surf_moisture_ph	
+Biosample	surf_temp	QuantityValue	surf_temp	
+Biosample	suspend_part_matter	QuantityValue	suspend_part_matter	
+Biosample	suspend_solids	TextValue	suspend_solids	
+Biosample	tan	QuantityValue	tan	
+Biosample	target_gene	TextValue		
+Biosample	target_subfragment	TextValue		
+Biosample	technical_reps	string		
+Biosample	temp	QuantityValue	temp	
+Biosample	temp_out	QuantityValue	temp_out	
+Biosample	tertiary_treatment	TextValue	tertiary_treatment	
+Biosample	tidal_stage	tidal_stage_enum	tidal_stage	
+Biosample	tillage	tillage_enum	tillage	
+Biosample	tiss_cult_growth_med	TextValue	tiss_cult_growth_med	
+Biosample	toluene	QuantityValue	toluene	
+Biosample	tot_carb	QuantityValue	tot_carb	
+Biosample	tot_depth_water_col	QuantityValue	tot_depth_water_col	
+Biosample	tot_diss_nitro	QuantityValue	tot_diss_nitro	
+Biosample	tot_inorg_nitro	QuantityValue	tot_inorg_nitro	
+Biosample	tot_iron	QuantityValue	tot_iron	
+Biosample	tot_nitro	QuantityValue	tot_nitro	
+Biosample	tot_nitro_cont_meth	string	tot_nitro_cont_meth	
+Biosample	tot_nitro_content	QuantityValue		
+Biosample	tot_org_c_meth	TextValue	tot_org_c_meth	
+Biosample	tot_org_carb	QuantityValue	tot_org_carb	
+Biosample	tot_part_carb	QuantityValue	tot_part_carb	
+Biosample	tot_phosp	QuantityValue	tot_phosp	
+Biosample	tot_phosphate	QuantityValue	tot_phosphate	
+Biosample	tot_sulfur	QuantityValue	tot_sulfur	
+Biosample	train_line	train_line_enum	train_line	
+Biosample	train_stat_loc	train_stat_loc_enum	train_stat_loc	
+Biosample	train_stop_loc	train_stop_loc_enum	train_stop_loc	
+Biosample	turbidity	QuantityValue	turbidity	
+Biosample	tvdss_of_hcr_press	QuantityValue	tvdss_of_hcr_press	
+Biosample	tvdss_of_hcr_temp	QuantityValue	tvdss_of_hcr_temp	
+Biosample	typ_occup_density	double		
+Biosample	type	string		
+Biosample	ventilation_rate	QuantityValue	ventilation_rate	
+Biosample	ventilation_type	TextValue	ventilation_type	
+Biosample	vfa	QuantityValue	vfa	
+Biosample	vfa_fw	QuantityValue	vfa_fw	
+Biosample	vis_media	vis_media_enum	vis_media	
+Biosample	viscosity	TextValue	viscosity	
+Biosample	volatile_org_comp	TextValue	volatile_org_comp	
+Biosample	wall_area	QuantityValue	wall_area	
+Biosample	wall_const_type	wall_const_type_enum	wall_const_type	
+Biosample	wall_finish_mat	wall_finish_mat_enum	wall_finish_mat	
+Biosample	wall_height	QuantityValue	wall_height	
+Biosample	wall_loc	wall_loc_enum	wall_loc	
+Biosample	wall_surf_treatment	wall_surf_treatment_enum	wall_surf_treatment	
+Biosample	wall_texture	wall_texture_enum	wall_texture	
+Biosample	wall_thermal_mass	QuantityValue	wall_thermal_mass	
+Biosample	wall_water_mold	TextValue	wall_water_mold	
+Biosample	wastewater_type	TextValue	wastewater_type	
+Biosample	water_cont_soil_meth	string		
+Biosample	water_content	string	water_content	
+Biosample	water_current	QuantityValue	water_current	
+Biosample	water_cut	QuantityValue	water_cut	
+Biosample	water_feat_size	QuantityValue	water_feat_size	
+Biosample	water_feat_type	water_feat_type_enum	water_feat_type	
+Biosample	water_prod_rate	QuantityValue	water_prod_rate	
+Biosample	water_temp_regm	TextValue	water_temp_regm	
+Biosample	watering_regm	TextValue	watering_regm	
+Biosample	weekday	weekday_enum	weekday	
+Biosample	win	TextValue	win	
+Biosample	wind_direction	TextValue	wind_direction	
+Biosample	wind_speed	QuantityValue	wind_speed	
+Biosample	window_cond	window_cond_enum	window_cond	
+Biosample	window_cover	window_cover_enum	window_cover	
+Biosample	window_horiz_pos	window_horiz_pos_enum	window_horiz_pos	
+Biosample	window_loc	window_loc_enum	window_loc	
+Biosample	window_mat	window_mat_enum	window_mat	
+Biosample	window_open_freq	TextValue	window_open_freq	
+Biosample	window_size	TextValue	window_size	
+Biosample	window_status	TextValue	window_status	
+Biosample	window_type	window_type_enum	window_type	
+Biosample	window_vert_pos	window_vert_pos_enum	window_vert_pos	
+Biosample	window_water_mold	TextValue	window_water_mold	
+Biosample	xylene	QuantityValue	xylene	
+Biosample	zinc	QuantityValue		
+Extraction	alternative_identifiers	uriorcurie		
+Extraction	description	string	description	
+Extraction	designated_class	uriorcurie		
+Extraction	end_date	string		
+Extraction	extractant	Solution		
+Extraction	extraction_method	ExtractionTargetEnum		
+Extraction	extraction_target	ExtractionTargetEnum		
+Extraction	has_failure_categorization	FailureCategorization		
+Extraction	has_input	NamedThing		
+Extraction	has_output	NamedThing		
+Extraction	id	uriorcurie		
+Extraction	input_mass	QuantityValue		
+Extraction	instrument_name	string		
+Extraction	name	string		
+Extraction	processing_institution	processing_institution_enum		
+Extraction	protocol_link	Protocol		
+Extraction	qc_comment	string		
+Extraction	qc_status	StatusEnum		
+Extraction	start_date	string		
+Extraction	volume	QuantityValue		
+LibraryPreparation	alternative_identifiers	uriorcurie		
+LibraryPreparation	description	string	description	
+LibraryPreparation	designated_class	uriorcurie		
+LibraryPreparation	end_date	string		
+LibraryPreparation	has_failure_categorization	FailureCategorization		
+LibraryPreparation	has_input	Biosample		
+LibraryPreparation	has_output	NamedThing		
+LibraryPreparation	id	uriorcurie		
+LibraryPreparation	instrument_name	string		
+LibraryPreparation	library_preparation_kit	string		
+LibraryPreparation	library_type	LibraryTypeEnum		
+LibraryPreparation	name	string		
+LibraryPreparation	pcr_cycles	integer		
+LibraryPreparation	processing_institution	processing_institution_enum		
+LibraryPreparation	protocol_link	Protocol		
+LibraryPreparation	qc_comment	string		
+LibraryPreparation	qc_status	StatusEnum		
+LibraryPreparation	start_date	string		
+OmicsProcessing	add_date	string		
+OmicsProcessing	alternative_identifiers	uriorcurie		
+OmicsProcessing	chimera_check	TextValue		
+OmicsProcessing	description	string	description	
+OmicsProcessing	designated_class	uriorcurie		
+OmicsProcessing	end_date	string		
+OmicsProcessing	gold_sequencing_project_identifiers	external_identifier		
+OmicsProcessing	has_failure_categorization	FailureCategorization		
+OmicsProcessing	has_input	NamedThing		
+OmicsProcessing	has_output	DataObject		
+OmicsProcessing	id	uriorcurie		
+OmicsProcessing	insdc_bioproject_identifiers	external_identifier		
+OmicsProcessing	insdc_experiment_identifiers	external_identifier		
+OmicsProcessing	instrument_name	string		
+OmicsProcessing	mod_date	string		
+OmicsProcessing	name	string		
+OmicsProcessing	ncbi_project_name	string		
+OmicsProcessing	nucl_acid_amp	TextValue		
+OmicsProcessing	nucl_acid_ext	TextValue		
+OmicsProcessing	omics_type	ControlledTermValue		
+OmicsProcessing	part_of	Study		
+OmicsProcessing	pcr_cond	TextValue		
+OmicsProcessing	pcr_primers	TextValue		
+OmicsProcessing	principal_investigator	PersonValue		
+OmicsProcessing	processing_institution	processing_institution_enum		
+OmicsProcessing	protocol_link	Protocol		
+OmicsProcessing	qc_comment	string		
+OmicsProcessing	qc_status	StatusEnum		
+OmicsProcessing	samp_vol_we_dna_ext	QuantityValue	samp_vol_we_dna_ext	
+OmicsProcessing	seq_meth	TextValue		
+OmicsProcessing	seq_quality_check	TextValue		
+OmicsProcessing	start_date	string		
+OmicsProcessing	target_gene	TextValue		
+OmicsProcessing	target_subfragment	TextValue		
+OmicsProcessing	type	string		
+DataObject	alternative_identifiers	uriorcurie		
+DataObject	compression_type	string		
+DataObject	data_object_type	FileTypeEnum		
+DataObject	description	string	description	
+DataObject	file_size_bytes	bytes		
+DataObject	id	uriorcurie		
+DataObject	md5_checksum	string		
+DataObject	name	string		
+DataObject	type	string		
+DataObject	url	string		
+DataObject	was_generated_by	Activity		
