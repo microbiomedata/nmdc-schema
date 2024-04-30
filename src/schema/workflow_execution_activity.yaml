@@ -259,12 +259,11 @@ classes:
   #TODO KRH: calibration_object
   #TODO KRH: add rule that if external calibration, calibration_file is required
   #TODO KRH: add DataObject nmdc:dobj-12-krhrtjw9 in the Database-gc yaml 
-  #TODO KRH: CalibrationInformation
     class_uri: nmdc:CalibrationInformation
     is_a: InformationObject
     description: A calibration object that is associated with a process.
     slots:
-      - calibration_file
+      - calibration_object
       - internal_calibration
       - calibration_target
       - calibration_standard
@@ -531,7 +530,7 @@ slots:
       Once this has occured, this slot's range can be updated to CalibrationInformation and class/slot definitions can move to nmdc.yaml.  
       See PR #29 in Berkeley schema.
   
-  calibration_file:
+  calibration_object:
     range: DataObject
     description: the file containing calibration data object
 
