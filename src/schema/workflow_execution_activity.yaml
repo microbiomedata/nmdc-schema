@@ -256,8 +256,6 @@ classes:
           interpolated: true
   
   CalibrationInformation:
-  #TODO KRH: calibration_object
-  #TODO KRH: add rule that if external calibration, calibration_file is required
   #TODO KRH: add DataObject nmdc:dobj-12-krhrtjw9 in the Database-gc yaml 
     class_uri: nmdc:CalibrationInformation
     is_a: InformationObject
@@ -278,6 +276,16 @@ classes:
         postconditions:
           slot_conditions:
             calibration_standard:
+              required: true
+      - title: calibration_object_if_not_internal_calibration
+        description: >-
+          If internal_calibration is false, a calibration_object is required.
+        preconditions:
+          slot_conditions:
+            internal_calibration: false
+        postconditions:
+          slot_conditions:
+            calibration_object:
               required: true
     slot_usage:
       internal_calibration:
