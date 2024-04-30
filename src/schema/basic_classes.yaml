@@ -258,13 +258,21 @@ classes:
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
-  Information:
+  InformationObject:
     is_a: NamedThing
-    class_uri: nmdc:Information
+    class_uri: nmdc:InformationObject
+    description: >-
+      Any data or knowledge that reduces uncertainty or enhances understanding about a system, process, or entity.
+    comments:
+      - May include embedded data or links to external resources via the url slot
+      - May appear as output from a process, inputs into a process, or both
+      - All slots relating one class to a InformationObject should be is_a sub-properties of has_input or has_output,
+        if they are multivalued
+      - Historically information about many classes has been inlined into the class. This is an alternative pattern.
 
   DataObject:
     class_uri: nmdc:DataObject
-    is_a: NamedThing
+    is_a: InformationObject
     in_subset:
       - data object subset
     description:
