@@ -79,6 +79,12 @@ enums:
       buffer:
         description: Maintains the pH of the solution within a specific range to stabilize analytes or reactions.
         meaning: CHEBI:35225
+      acid:
+        description: Donates a proton or accepts an electron pair in a chemical reaction.
+        meaning: CHEBI:37527 
+      base: 
+        description: Accepts a proton or donates an electron pair in a chemical reaction.
+        meaning: CHEBI:22695
       # protease:
       #   description: Enzyme that catalyzes cleavage of peptide bonds in proteins.
       # proteolytic_enzyme:

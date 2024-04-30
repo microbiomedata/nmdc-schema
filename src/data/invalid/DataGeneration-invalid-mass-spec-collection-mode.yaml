@@ -1,10 +1,13 @@
 id: nmdc:dgms-99-zUCd5N
 analyte_category: metabolome
-mass_spectrum_collection_mode: profile
+mass_spectrum_collection_modes: 
+  - profile
 acquisition_category: tandem_mass_spectrum
 acquisition_strategy: data_independent_acquisition
-resolution_category: high
-mass_analyzer: Orbitrap
+resolution_categories: 
+  - high
+mass_analyzers: 
+  - Orbitrap
 ionization_source: electrospray_ionization
 polarity_mode: negative
 alternative_identifiers:
