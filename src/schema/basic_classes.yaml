@@ -257,6 +257,11 @@ classes:
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
+
+  Information:
+    is_a: NamedThing
+    class_uri: nmdc:Information
+
   DataObject:
     class_uri: nmdc:DataObject
     is_a: NamedThing
