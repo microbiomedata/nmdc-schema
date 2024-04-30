@@ -156,10 +156,10 @@ classes:
       - eluent_introduction
       - acquisition_category
       - acquisition_strategy
-      - resolution_category
-      - mass_analyzer
+      - resolution_categories
+      - mass_analyzers
       - ionization_source
-      - mass_spectrum_collection_mode
+      - mass_spectrum_collection_modes
       - polarity_mode
 
     slot_usage:
@@ -695,21 +695,24 @@ slots:
     range: PolarityModeEnum
     description: the polarity of which ions are generated and detected
 
-  mass_spectrum_collection_mode:
+  mass_spectrum_collection_modes:
     range: MassSpectrumCollectionModeEnum
     description: Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.
+    multivalued: true
 
   ionization_source:
     range: IonizationSourceEnum
     description: which kind of ionization source is used to introduce analytes into a mass spectrometer
 
-  mass_analyzer:
+  mass_analyzers:
     range: MassAnalyzerEnum
-    description: which kind of mass analyzer is primarily used during the spectra collection.
+    description: which kind of mass analyzer(s) used during the spectra collection.
+    multivalued: true
 
-  resolution_category:
+  resolution_categories:
     range: ResolutionCategoryEnum
-    description: whether mass spectra are collected at higher than unity resolution
+    description: whether mass spectra are collected at higher than unit resolution
+    multivalued: true
 
   acquisition_strategy:
     range: AcquisitionStrategyEnum
