@@ -1,6 +1,6 @@
 calibration_set:
   - id: nmdc:calib-99-zUCd5Q
-    type: nmdc:Calibration
+    type: nmdc:CalibrationInformation
     calibration_file: nmdc:dobj-12-krhrtjw9
     internal_calibration: false
     calibration_target: retention_index
