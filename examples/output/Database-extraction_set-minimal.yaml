@@ -1,8 +1,0 @@
-extraction_set:
-- id: nmdc:extrp-99-abcdef
-  name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
-  designated_class: nmdc:Extraction
-  has_input:
-  - generic:xxx
-  has_output:
-  - generic:yyy

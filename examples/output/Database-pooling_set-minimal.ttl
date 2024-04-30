@@ -1,9 +1,0 @@
-@prefix nmdc: <https://w3id.org/nmdc/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
-nmdc:poolp-9x9-1x nmdc:designated_class "nmdc:Pooling"^^xsd:anyURI ;
-    nmdc:name "first pooling process" .
-
-[] a nmdc:Database ;
-    nmdc:pooling_set nmdc:poolp-9x9-1x .
-

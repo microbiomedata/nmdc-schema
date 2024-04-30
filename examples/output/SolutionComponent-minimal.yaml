@@ -1,4 +1,0 @@
-compound: methanol
-concentration:
-  has_numeric_value: 10.0
-  has_unit: mM

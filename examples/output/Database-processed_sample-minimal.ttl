@@ -1,7 +1,0 @@
-@prefix nmdc: <https://w3id.org/nmdc/> .
-
-nmdc:procsm-99-dtTMNb a nmdc:ProcessedSample .
-
-[] a nmdc:Database ;
-    nmdc:processed_sample_set nmdc:procsm-99-dtTMNb .
-

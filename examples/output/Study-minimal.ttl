@@ -1,5 +1,0 @@
-@prefix nmdc: <https://w3id.org/nmdc/> .
-
-nmdc:sty-11-ab a nmdc:Study ;
-    nmdc:study_category "research_study" .
-

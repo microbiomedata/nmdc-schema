@@ -165,7 +165,7 @@ make-rdf: rdf-clean \
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) pure-export \
-		--client-base-url https://api.microbiomedata.org \
+		--client-base-url https://api-napa.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
 		--env-file local/.env \
 		--max-docs-per-coll 200000 \
@@ -178,7 +178,9 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections data_object_set \
 		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
 		--selected-collections genome_feature_set \
 		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
@@ -197,14 +199,11 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
 		--skip-collection-check
 
-local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+local/mongo_as_nmdc_database_rdf_safe.yaml: local/nmdc-schema-v7.8.0.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_9_3_to_10_0 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
@@ -212,16 +211,16 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_le
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database_validation.log: local/nmdc-schema-v7.8.0.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: local/nmdc-schema-v7.8.0.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- riot --validate $@ # < 1 minute
+	- ~/apache-jena-5.0.0/bin/riot --validate $@ # < 1 minute
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
@@ -526,3 +525,21 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
+
+#  		$(RUN) multiline-scrub --pattern '^\s*name:.*$$\n'
+
+local/nmdc_schema_generated_minimized.yaml: src/schema/nmdc.yaml
+	$(RUN) gen-linkml \
+		--output $@.tmp \
+		--materialize-patterns \
+		--no-materialize-attributes \
+		--format yaml $<
+	cat $@.tmp | \
+ 		$(RUN) multiline-scrub --pattern ':\s*\n\s*prefix_prefix:\s*[^\n]*\n\s*prefix_reference'  | \
+ 		$(RUN) multiline-scrub --pattern '^\s*from_schema:.*$$\n'  | \
+ 		$(RUN) multiline-scrub --pattern '^\s*text:.*$$\n'  | \
+ 		$(RUN) multiline-scrub --pattern '^\s*[^\n]*:\s*false\s*\n'  | \
+ 		$(RUN) multiline-scrub --pattern ':\s*\n\s*tag:\s*[^\n]*\n\s*value'  | \
+ 		$(RUN) multiline-scrub --pattern ':\s*\n\s*setting_key:\s*[^\n]*\n\s*setting_value' > $@
+
+	rm -rf $@.tmp
