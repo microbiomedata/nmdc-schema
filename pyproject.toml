@@ -55,6 +55,7 @@ pymongo = "^4.3.3"
 plotly = "^5.20.0"
 ruamel-yaml = "^0.18.6"
 networkx = "^3.2.1"
+llm = "^0.13.1"
 
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
@@ -63,7 +64,7 @@ click = "^8.1.3"
 click-log = "^0.4.0"
 exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
 oaklib = "^0.5.24"
-pydantic = "^1.10.13"
+#pydantic = "^1.10.13"
 python-dotenv = "^0.21.0"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 schemasheets = "^0.1.24" # was in main dependencies but brings in so much like pandas

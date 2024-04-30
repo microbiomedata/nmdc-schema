@@ -99,6 +99,10 @@ slots:
     comments:
       - DOIs should not be included as websites. Instead, use the associated_dois slot.
       - A consortium's homepage website should be included in the homepage_website slot, not in websites.
+      - consortium is a convenience term for a Study whose study_category value is consortium
+      - the website slot and its subproperties are virtually identical to the url slot, except that they are multivalued and url is single-valued.
+    see_also:
+      - nmdc:url
 
   homepage_website:
     is_a: websites

@@ -257,9 +257,25 @@ classes:
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
       - "sample mgnify link https://www.ebi.ac.uk/metagenomics/studies/MGYS00005757"
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
+
+  InformationObject:
+    is_a: NamedThing
+    class_uri: nmdc:InformationObject
+    description: >-
+      Any data or knowledge that reduces uncertainty or enhances understanding about a system, process, or entity.
+    comments:
+      - The direct subclasses of NamedThing should aggregate the relevant classes and make them uniform. PlannedProcess and MaterialEntity are clearly disjoint. Let's do the same thing for our modelling of things that don't consist of matter and aren't processes.
+      - InformationObjects may include embedded data or links to external resources via the url slot
+      - May appear as output from a process, inputs into a process, or both
+      - All slots relating one class to a InformationObject should be is_a sub-properties of has_input or has_output,
+        if they are multivalued or otherwise organized
+      - Historically information about many classes has been inlined into the class. This is an alternative pattern.
+    see_also:
+      - nmdc:AttributeValue
+
   DataObject:
     class_uri: nmdc:DataObject
-    is_a: NamedThing
+    is_a: InformationObject
     in_subset:
       - data object subset
     description:
