@@ -256,6 +256,11 @@ classes:
           interpolated: true
   
   Calibration:
+  #TODO KRH: calibration_object
+  #TODO KRH: add rule that if external calibration, calibration_file is required
+  #TODO KRH: add DataObject nmdc:dobj-12-krhrtjw9 in the Database-gc yaml 
+  #TODO KRH: CalibrationInformation
+  #TODO KRH: Make CalibrationInformation subclass of InformationObject
     class_uri: nmdc:Calibration
     is_a: NamedThing
     description: A calibration object that is associated with a process.
