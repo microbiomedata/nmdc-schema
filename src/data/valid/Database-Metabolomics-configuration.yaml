@@ -15,7 +15,7 @@ metabolomics_analysis_set:
     type: nmdc:MetabolomicsAnalysis
 data_object_set:
   - id: nmdc:i1
-    data_category: workflow_parameter_set
+    data_category: workflow_parameter_data
     data_object_type: Configuration toml
     name: CoreMS.toml
     description: Confiuration toml file for CoreMS
