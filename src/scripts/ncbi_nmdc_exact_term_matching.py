@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
 
+from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
@@ -62,40 +63,91 @@ df.to_csv(
 )
 
 # ==================================================================================== #
-#                               Post mapping reporting                                 #
-# Reporting on the number of slots that were successfully mapped and those that were   #
-# not mapped.                                                                          #
+#                               Ignore irrelevant slots                                #
+# Ignore slots coming from certain imports that are not relevant to NCBI               #
 # ==================================================================================== #
 
 df = pd.read_csv(
     "assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv", delimiter="\t"
 )
 
+
 def unmapped_slots(df, schema_class, attribute_name):
     filtered_df = df[df["NMDC schema class"] == schema_class]
     unmapped_slots = filtered_df[filtered_df[attribute_name].isna()]
     return unmapped_slots["NMDC schema slot"].tolist()
 
-unmapped_biosample_slots = unmapped_slots(df, "Biosample", "NCBI BioSample Attribute name")
+
+unmapped_biosample_slots = unmapped_slots(
+    df, "Biosample", "NCBI BioSample Attribute name"
+)
 
 sv = SchemaView("src/schema/nmdc.yaml")
 
-classes_to_be_reported = ["Biosample", "Extraction", "LibraryPreparation", "OmicsProcessing", "DataObject"]
-imports_to_be_ignored = ["https://w3id.org/nmdc/portal/emsl", 
-                         "https://w3id.org/nmdc/portal/jgi_metagenomics",
-                         "https://w3id.org/nmdc/portal/jgi_metatranscriptomics",
-                         "https://w3id.org/nmdc/portal/mixs_inspired",
-                         "https://w3id.org/nmdc/portal/sample_id",
-                        ]
+classes_to_be_reported = [
+    "Biosample",
+    "Extraction",
+    "LibraryPreparation",
+    "OmicsProcessing",
+    "DataObject",
+]
+imports_to_be_ignored = [
+    "https://w3id.org/nmdc/portal/emsl",
+    "https://w3id.org/nmdc/portal/jgi_metagenomics",
+    "https://w3id.org/nmdc/portal/jgi_metatranscriptomics",
+    "https://w3id.org/nmdc/portal/mixs_inspired",
+    "https://w3id.org/nmdc/portal/sample_id",
+]
 
 for class_name in classes_to_be_reported:
     class_slots = sv.class_induced_slots(class_name)
-    unmapped_slot_names = unmapped_slots(df, class_name, "NCBI BioSample Attribute name")
+    unmapped_slot_names = unmapped_slots(
+        df, class_name, "NCBI BioSample Attribute name"
+    )
 
     for slot in class_slots:
-        if slot.from_schema in imports_to_be_ignored and slot.name in unmapped_slot_names:
-            df.loc[df["NMDC schema slot"] == slot.name, "NCBI BioSample Attribute name"] = "IGNORE"
+        if (
+            slot.from_schema in imports_to_be_ignored
+            and slot.name in unmapped_slot_names
+        ):
+            df.loc[
+                df["NMDC schema slot"] == slot.name, "NCBI BioSample Attribute name"
+            ] = "IGNORE"
 
 df.to_csv(
     "assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv", sep="\t", index=False
+)
+
+# ==================================================================================== #
+#                                 Manual mapping                                       #
+# Use individual columns from NCBI packages to drive manual mapping/ignoring           #
+# ==================================================================================== #
+
+
+def fetch_and_compare(xml_url, tsv_filepath):
+    response = requests.get(xml_url)
+    xml_content = response.text
+
+    soup = BeautifulSoup(xml_content, "xml")
+    harmonized_names = [tag.text for tag in soup.find_all("HarmonizedName")]
+    tsv_df = pd.read_csv(tsv_filepath, sep="\t")
+
+    exists_in_tsv = {
+        name: name in tsv_df["NCBI BioSample Attribute name"].values
+        for name in harmonized_names
+    }
+
+    return exists_in_tsv
+
+
+xml_url = (
+    "https://www.ncbi.nlm.nih.gov/biosample/docs/packages/MIMS.me.water.6.0/?format=xml"
+)
+tsv_filepath = "assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv"
+
+mapping_coverage = fetch_and_compare(xml_url, tsv_filepath)
+manual_curation = [name for name, exists in mapping_coverage.items() if not exists]
+
+print(
+    f"Manual curation may be required for the following slots/column mappings: {manual_curation}"
 )
