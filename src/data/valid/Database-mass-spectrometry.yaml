@@ -13,7 +13,32 @@ data_generation_set:
       - nmdc:dobj-00-9n9n9n
     associated_studies:
       - nmdc:sty-00-555xxx
-configuration_set:
+  - id: nmdc:dgms-99-zUCd5x
+    analyte_category: lipidome
+    mass_spectrum_collection_modes: 
+      - full_profile
+      - centroid
+    acquisition_category: tandem_mass_spectrum
+    acquisition_strategy: data_dependent_acquisition
+    resolution_categories: 
+      - high
+      - low
+    mass_analyzers: 
+      - Orbitrap
+      - ion_trap
+    ionization_source: electrospray_ionization
+    polarity_mode: negative
+    alternative_identifiers:
+      - emsl:123423
+    has_input:
+      - nmdc:bsm-00-red2
+    add_date: 30-OCT-14 12.00.00.000000000 AM
+    mod_date: 22-MAY-20 06.13.12.927000000 PM
+    has_output:
+      - nmdc:dobj-00-9n9n9x
+    type: nmdc:MassSpectrometry
+    associated_studies:
+      - nmdc:sty-00-555xxxconfiguration_set:
   - id: nmdc:mscon-99-oW43DzG1
     name: EMSL_metab_method1
     description: Mass spectrometry method used by EMSL for metabolomics analysis
