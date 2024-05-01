@@ -892,8 +892,8 @@ enums:
 
       Configuration toml:
         description: >-
-          A configuration toml file used by various programs to store settings that are specific to their
-          respective software.
+          Configuration toml file used by CoreMS in the NomAnlaysis and MetabolomicsAnalysis workflows to 
+          store the workflow settings.
         broad_mappings: 
           - edam.format:4005
 
