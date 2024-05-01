@@ -31,6 +31,10 @@ Exact term matching
   * harmonized name: text between <HarmonizedName></HarmonizedName> within each <Attribute></Attribute>
   * display name/attribute name: text between <Name></Name> within each <Attribute></Attribute>
   * synonym: text between <Synonym></Synonym> within each <Attribute></Attribute>
+* Ignore mapping for certain slots coming from irrelevant imported schemas 
+by marking them as `IGNORE`
+* Programatically identify the slots that need manual curation in a package-specific manner, 
+and either find the appropriate NCBI Attribute it can be marked to, or simply mark it as `IGNORE`
 
 To execute the above strategy, run the following command:
 
