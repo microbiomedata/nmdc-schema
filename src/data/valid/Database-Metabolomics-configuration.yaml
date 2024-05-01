@@ -8,27 +8,27 @@ metabolomics_analysis_set:
       - nmdc:wfch-11-ab
     git_url: https://example.org/WorkflowExecutionActivity
     has_input:
-      - nmdc:dobj-i1
-      - nmdc:dobjc-i2
+      - nmdc:dobj-70-izwYW6
+      - nmdc:dobj-80-izwYW6
     has_output:
-      - nmdc:dobjc-o1
+      - nmdc:dobj-90-izwYW61
     type: nmdc:MetabolomicsAnalysis
 data_object_set:
-  - id: nmdc:dobj-i1
+  - id: nmdc:dobj-70-izwYW6
     data_category: workflow_parameter_data
     data_object_type: Configuration toml
     name: CoreMS.toml
     description: Confiuration toml file for CoreMS
     file_size_bytes: 4262400
     type: nmdc:DataObject
-  - id: nmdc:dobjc-i2
+  - id: nmdc:dobj-80-izwYW6
     data_category: instrument_data
     data_object_type: Direct Infusion FT ICR-MS Raw Data
     name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.raw
     description: raw direct infusion FT ICR-MS for Froze_Core_2015_S1_20_30_19
     file_size_bytes: 3262400
     type: nmdc:DataObject
-  - id: nmdc:dobjc-o1
+  - id: nmdc:dobj-90-izwYW61
     data_category: processed_data
     data_object_type: FT ICR-MS Analysis Results
     name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.processed
