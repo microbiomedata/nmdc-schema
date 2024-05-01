@@ -3,8 +3,11 @@ name: EMSL_NOM_method1
 description: Mass Spectrometry method used by EMSL for NOM analysis
 type: nmdc:MassSpectrometryConfiguration
 acquisition_category: full_scan
-resolution_category: high
-mass_analyzer: ion_cyclotron_resonance
+resolution_categories: 
+  - high
+mass_analyzers: 
+  - ion_cyclotron_resonance
 ionization_source: electrospray_ionization
-mass_spectrum_collection_mode: full_profile
+mass_spectrum_collection_modes: 
+  - full_profile
 polarity_mode: negative
