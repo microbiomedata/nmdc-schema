@@ -155,6 +155,7 @@ classes:
     slots:
       - eluent_introduction
       - has_configuration
+      - has_calibration
     slot_usage:
       id:
         structured_pattern:
@@ -163,7 +164,7 @@ classes:
 
   Configuration:
     abstract: true
-    is_a: NamedThing
+    is_a: InformationObject
     class_uri: nmdc:Configuration
     description: A set of parameters that define the actions of a process and is shared among multiple instances of the process.
     notes:
@@ -183,7 +184,6 @@ classes:
       - ionization_source
       - mass_spectrum_collection_modes
       - polarity_mode
-      - has_calibration
     slot_usage:
       name:
         required: true
