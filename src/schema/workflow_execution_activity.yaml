@@ -254,6 +254,47 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+  
+  CalibrationInformation:
+    class_uri: nmdc:CalibrationInformation
+    is_a: InformationObject
+    description: A calibration object that is associated with a process.
+    slots:
+      - calibration_object
+      - internal_calibration
+      - calibration_target
+      - calibration_standard
+    rules:
+      - title: calibration_standard_if_rt
+        description: >-
+          If the calibration_target is retention_index, a calibration_standard is required.
+        preconditions:
+          slot_conditions:
+            calibration_target:
+              equals_string: retention_index
+        postconditions:
+          slot_conditions:
+            calibration_standard:
+              required: true
+      - title: calibration_object_if_not_internal_calibration
+        description: >-
+          If internal_calibration is false, a calibration_object is required.
+        preconditions:
+          slot_conditions:
+            internal_calibration: false
+        postconditions:
+          slot_conditions:
+            calibration_object:
+              required: true
+    slot_usage:
+      internal_calibration:
+        required: true
+      calibration_target:
+        required: true
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
 
 slots:
 
@@ -485,19 +526,57 @@ slots:
       TODO      
 
   has_calibration:
-    # domain: ChromatographicSeparationProcess
-    # range: DataObject
-    # description: An instrument data that is used to calibrate retention time or to calculate rentention index
-    range: string
-    description: >-
-      A reference to a file that holds calibration information.
+    any_of:
+      - range: CalibrationInformation
+      - range: string
+    description: a calibration instance associated with a process
     notes: >-
-      has_calibration will be removed from all WorkflowExecution classes and stay only on the
-      ChromatographicSeparationProcess class after an ingest of the chromatographic_separation_process_set has 
-      occurred. The commented out portion of the slot definition above will be implemented. See PR #29 in Berkeley
-      schema.
+      has_calibration slot will be removed from all WorkflowExecution classes but remain on the
+      ChromatographicSeparationProcess and MassSpectrometry classes after an ingest of the 
+      chromatographic_separation_process_set has occurred. 
+      Once this has occured, this slot's range can be updated to CalibrationInformation and class/slot definitions can move to nmdc.yaml.  
+      See PR #29 in Berkeley schema.
+  
+  calibration_object:
+    range: DataObject
+    description: the file containing calibration data object
+
+  internal_calibration:
+    range: boolean
+    description: whether internal calibration was used, if false, external calibration was used
+
+  calibration_target:
+    range: CalibrationTargetEnum
+    description: the target measurement of the calibration
+
+  calibration_standard:
+    range: CalibrationStandardEnum
+    description: the reference standard(s) used for calibration
 
   has_metabolite_identifications:
     domain: MetabolomicsAnalysis
     range: MetaboliteIdentification
     multivalued: true
+
+enums:
+  CalibrationTargetEnum:
+    permissible_values:
+      mass:
+        aliases:
+          - Mass
+          - m/z
+      retention_time:
+        aliases:
+          - RT
+      retention_index:
+        aliases:
+          - RI
+
+  CalibrationStandardEnum:
+    permissible_values:
+      fames:
+        aliases:
+          - FAMES
+      alkanes:
+        aliases:
+          - Alkanes

@@ -37,7 +37,7 @@ ordered_mobile_phases:
         type: nmdc:SolutionComponent
     type: nmdc:Solution
 chromatographic_category: gas_chromatography
-has_calibration: nmdc:obj-asdfasd-asdfasdf
+has_calibration: nmdc:calib-asdfasd-asdfasdf
 part_of:
   - nmdc-dgms-88-555xxx
 associated_studies:

@@ -161,13 +161,13 @@ classes:
       - ionization_source
       - mass_spectrum_collection_modes
       - polarity_mode
-
+      - has_calibration
     slot_usage:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-
+  
   FunctionalAnnotationAggMember:
     class_uri: "nmdc:FunctionalAnnotationAggMember"
     slots:
@@ -218,6 +218,7 @@ classes:
       - study_set
       - workflow_execution_set
       - instrument_set
+      - calibration_set
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -980,6 +981,10 @@ slots:
     mixins: object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
+  calibration_set:
+    mixins: object_set
+    range: CalibrationInformation
+    description: This property links a database object to the set of calibrations within it.
 
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
