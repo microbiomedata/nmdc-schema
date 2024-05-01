@@ -21,7 +21,7 @@ Biosample	aminopept_act	QuantityValue	aminopept_act
 Biosample	ammonium	QuantityValue	ammonium	
 Biosample	ammonium_nitrogen	QuantityValue		
 Biosample	amount_light	QuantityValue	amount_light	
-Biosample	analysis_type	AnalysisTypeEnum		
+Biosample	analysis_type	AnalysisTypeEnum	IGNORE	
 Biosample	ances_data	TextValue	ances_data	
 Biosample	annual_precpt	QuantityValue	annual_precpt	
 Biosample	annual_temp	QuantityValue	annual_temp	
@@ -84,9 +84,9 @@ Biosample	chlorophyll	QuantityValue	chlorophyll
 Biosample	climate_environment	TextValue	climate_environment	
 Biosample	collected_from	FieldResearchSite		
 Biosample	collection_date	TimestampValue	collection_date	
-Biosample	collection_date_inc	string		
-Biosample	collection_time	string		
-Biosample	collection_time_inc	string		
+Biosample	collection_date_inc	string	IGNORE	
+Biosample	collection_time	string	IGNORE	
+Biosample	collection_time_inc	string	IGNORE	
 Biosample	community	string		
 Biosample	conduc	QuantityValue	conduc	
 Biosample	cool_syst_id	TextValue	cool_syst_id	
@@ -115,23 +115,23 @@ Biosample	diss_oxygen	QuantityValue	diss_oxygen
 Biosample	diss_oxygen_fluid	QuantityValue	diss_oxygen_fluid	
 Biosample	dna_absorb1	float		
 Biosample	dna_absorb2	float		
-Biosample	dna_collect_site	string		
+Biosample	dna_collect_site	string	IGNORE	
 Biosample	dna_concentration	float		
-Biosample	dna_cont_type	JgiContTypeEnum		
-Biosample	dna_cont_well	string		
-Biosample	dna_container_id	string		
-Biosample	dna_dnase	YesNoEnum		
-Biosample	dna_isolate_meth	string		
-Biosample	dna_organisms	string		
-Biosample	dna_project_contact	string		
-Biosample	dna_samp_id	string		
-Biosample	dna_sample_format	DNASampleFormatEnum		
-Biosample	dna_sample_name	string		
-Biosample	dna_seq_project	string		
-Biosample	dna_seq_project_name	string		
-Biosample	dna_seq_project_pi	string		
-Biosample	dna_volume	float		
-Biosample	dnase_rna	YesNoEnum		
+Biosample	dna_cont_type	JgiContTypeEnum	IGNORE	
+Biosample	dna_cont_well	string	IGNORE	
+Biosample	dna_container_id	string	IGNORE	
+Biosample	dna_dnase	YesNoEnum	IGNORE	
+Biosample	dna_isolate_meth	string	IGNORE	
+Biosample	dna_organisms	string	IGNORE	
+Biosample	dna_project_contact	string	IGNORE	
+Biosample	dna_samp_id	string	IGNORE	
+Biosample	dna_sample_format	DNASampleFormatEnum	IGNORE	
+Biosample	dna_sample_name	string	IGNORE	
+Biosample	dna_seq_project	string	IGNORE	
+Biosample	dna_seq_project_name	string	IGNORE	
+Biosample	dna_seq_project_pi	string	IGNORE	
+Biosample	dna_volume	float	IGNORE	
+Biosample	dnase_rna	YesNoEnum	IGNORE	
 Biosample	door_comp_type	door_comp_type_enum	door_comp_type	
 Biosample	door_cond	door_cond_enum	door_cond	
 Biosample	door_direct	door_direct_enum	door_direct	
@@ -166,7 +166,7 @@ Biosample	ethylbenzene	QuantityValue	ethylbenzene
 Biosample	exp_duct	QuantityValue	exp_duct	
 Biosample	exp_pipe	QuantityValue	exp_pipe	
 Biosample	experimental_factor	ControlledTermValue	experimental_factor	
-Biosample	experimental_factor_other	string		
+Biosample	experimental_factor_other	string	IGNORE	
 Biosample	ext_door	TextValue	ext_door	
 Biosample	ext_wall_orient	ext_wall_orient_enum	ext_wall_orient	
 Biosample	ext_window_orient	ext_window_orient_enum	ext_window_orient	
@@ -174,7 +174,7 @@ Biosample	extreme_event	string	extreme_event
 Biosample	fao_class	fao_class_enum	fao_class	
 Biosample	fertilizer_regm	TextValue	fertilizer_regm	
 Biosample	field	TextValue	field	
-Biosample	filter_method	string		
+Biosample	filter_method	string	IGNORE	
 Biosample	filter_type	filter_type_enum	filter_type	
 Biosample	fire	string	fire	
 Biosample	fireplace_type	TextValue	fireplace_type	
@@ -264,7 +264,7 @@ Biosample	insdc_biosample_identifiers	external_identifier
 Biosample	inside_lux	QuantityValue	inside_lux	
 Biosample	int_wall_cond	int_wall_cond_enum	int_wall_cond	
 Biosample	investigation field	string		
-Biosample	isotope_exposure	string		
+Biosample	isotope_exposure	string	IGNORE	
 Biosample	iw_bt_date_well	TimestampValue	iw_bt_date_well	
 Biosample	iwf	QuantityValue	iwf	
 Biosample	last_clean	TimestampValue	last_clean	
@@ -289,12 +289,12 @@ Biosample	mean_peak_frict_vel	QuantityValue	mean_peak_frict_vel
 Biosample	mech_struc	mech_struc_enum	mech_struc	
 Biosample	mechanical_damage	TextValue	mechanical_damage	
 Biosample	methane	QuantityValue	methane	
-Biosample	micro_biomass_c_meth	string		
+Biosample	micro_biomass_c_meth	string	IGNORE	
 Biosample	micro_biomass_meth	string		
-Biosample	micro_biomass_n_meth	string		
+Biosample	micro_biomass_n_meth	string	IGNORE	
 Biosample	microbial_biomass	QuantityValue	microbial_biomass	
-Biosample	microbial_biomass_c	string		
-Biosample	microbial_biomass_n	string		
+Biosample	microbial_biomass_c	string	IGNORE	
+Biosample	microbial_biomass_n	string	IGNORE	
 Biosample	mineral_nutr_regm	TextValue	mineral_nutr_regm	
 Biosample	misc_param	TextValue	misc_param	
 Biosample	mod_date	string		
@@ -307,8 +307,8 @@ Biosample	nitrate_nitrogen	QuantityValue
 Biosample	nitrite	QuantityValue	nitrite	
 Biosample	nitrite_nitrogen	QuantityValue		
 Biosample	nitro	QuantityValue	nitro	
-Biosample	non_microb_biomass	string		
-Biosample	non_microb_biomass_method	string		
+Biosample	non_microb_biomass	string	IGNORE	
+Biosample	non_microb_biomass_method	string	IGNORE	
 Biosample	non_min_nutr_regm	string		
 Biosample	nucl_acid_amp	TextValue		
 Biosample	nucl_acid_ext	TextValue		
@@ -323,10 +323,10 @@ Biosample	org_carb	QuantityValue	org_carb
 Biosample	org_count_qpcr_info	string	org_count_qpcr_info	
 Biosample	org_matter	QuantityValue	org_matter	
 Biosample	org_nitro	QuantityValue	org_nitro	
-Biosample	org_nitro_method	string		
+Biosample	org_nitro_method	string	IGNORE	
 Biosample	org_particles	TextValue	org_particles	
 Biosample	organism_count	QuantityValue	organism_count	
-Biosample	other_treatment	string		
+Biosample	other_treatment	string	IGNORE	
 Biosample	owc_tvdss	QuantityValue	owc_tvdss	
 Biosample	oxy_stat_samp	oxy_stat_samp_enum	oxy_stat_samp	
 Biosample	oxygen	QuantityValue	oxygen	
@@ -366,10 +366,10 @@ Biosample	primary_treatment	TextValue	primary_treatment
 Biosample	prod_rate	QuantityValue	prod_rate	
 Biosample	prod_start_date	TimestampValue	prod_start_date	
 Biosample	profile_position	profile_position_enum	profile_position	
-Biosample	project_id	string		
+Biosample	project_id	string	IGNORE	
 Biosample	proport_woa_temperature	string		
-Biosample	proposal_dna	string		
-Biosample	proposal_rna	string		
+Biosample	proposal_dna	string	IGNORE	
+Biosample	proposal_rna	string	IGNORE	
 Biosample	quad_pos	quad_pos_enum	quad_pos	
 Biosample	radiation_regm	TextValue	radiation_regm	
 Biosample	rainfall_regm	TextValue	rainfall_regm	
@@ -378,26 +378,26 @@ Biosample	redox_potential	QuantityValue	redox_potential
 Biosample	rel_air_humidity	QuantityValue	rel_air_humidity	
 Biosample	rel_humidity_out	QuantityValue	rel_humidity_out	
 Biosample	rel_samp_loc	rel_samp_loc_enum	rel_samp_loc	
-Biosample	replicate_number	string		
+Biosample	replicate_number	string	IGNORE	
 Biosample	reservoir	TextValue		
 Biosample	resins_pc	TextValue	resins_pc	
-Biosample	rna_absorb1	float		
-Biosample	rna_absorb2	float		
-Biosample	rna_collect_site	string		
-Biosample	rna_concentration	float		
-Biosample	rna_cont_type	JgiContTypeEnum		
-Biosample	rna_cont_well	string		
-Biosample	rna_container_id	string		
-Biosample	rna_isolate_meth	string		
-Biosample	rna_organisms	string		
-Biosample	rna_project_contact	string		
-Biosample	rna_samp_id	string		
-Biosample	rna_sample_format	RNASampleFormatEnum		
-Biosample	rna_sample_name	string		
-Biosample	rna_seq_project	string		
-Biosample	rna_seq_project_name	string		
-Biosample	rna_seq_project_pi	string		
-Biosample	rna_volume	float		
+Biosample	rna_absorb1	float	IGNORE	
+Biosample	rna_absorb2	float	IGNORE	
+Biosample	rna_collect_site	string	IGNORE	
+Biosample	rna_concentration	float	IGNORE	
+Biosample	rna_cont_type	JgiContTypeEnum	IGNORE	
+Biosample	rna_cont_well	string	IGNORE	
+Biosample	rna_container_id	string	IGNORE	
+Biosample	rna_isolate_meth	string	IGNORE	
+Biosample	rna_organisms	string	IGNORE	
+Biosample	rna_project_contact	string	IGNORE	
+Biosample	rna_samp_id	string	IGNORE	
+Biosample	rna_sample_format	RNASampleFormatEnum	IGNORE	
+Biosample	rna_sample_name	string	IGNORE	
+Biosample	rna_seq_project	string	IGNORE	
+Biosample	rna_seq_project_name	string	IGNORE	
+Biosample	rna_seq_project_pi	string	IGNORE	
+Biosample	rna_volume	float	IGNORE	
 Biosample	room_air_exch_rate	QuantityValue	room_air_exch_rate	
 Biosample	room_architec_elem	string	room_architec_elem	
 Biosample	room_condt	room_condt_enum	room_condt	
@@ -455,8 +455,8 @@ Biosample	samp_vol_we_dna_ext	QuantityValue	samp_vol_we_dna_ext
 Biosample	samp_weather	samp_weather_enum	samp_weather	
 Biosample	samp_well_name	TextValue	samp_well_name	
 Biosample	sample_collection_site	string		
-Biosample	sample_link	string		
-Biosample	sample_shipped	string		
+Biosample	sample_link	string	IGNORE	
+Biosample	sample_shipped	string	IGNORE	
 Biosample	sample_type	SampleTypeEnum	sample_type	
 Biosample	saturates_pc	TextValue	saturates_pc	
 Biosample	season	TextValue	season	
@@ -504,8 +504,8 @@ Biosample	sr_geol_age	sr_geol_age_enum	sr_geol_age
 Biosample	sr_kerog_type	sr_kerog_type_enum	sr_kerog_type	
 Biosample	sr_lithology	sr_lithology_enum	sr_lithology	
 Biosample	standing_water_regm	TextValue	standing_water_regm	
-Biosample	start_date_inc	string		
-Biosample	start_time_inc	string		
+Biosample	start_date_inc	string	IGNORE	
+Biosample	start_time_inc	string	IGNORE	
 Biosample	store_cond	TextValue	store_cond	
 Biosample	substructure_type	substructure_type_enum	substructure_type	
 Biosample	subsurface_depth	QuantityValue		
@@ -523,7 +523,7 @@ Biosample	suspend_solids	TextValue	suspend_solids
 Biosample	tan	QuantityValue	tan	
 Biosample	target_gene	TextValue		
 Biosample	target_subfragment	TextValue		
-Biosample	technical_reps	string		
+Biosample	technical_reps	string	IGNORE	
 Biosample	temp	QuantityValue	temp	
 Biosample	temp_out	QuantityValue	temp_out	
 Biosample	tertiary_treatment	TextValue	tertiary_treatment	

@@ -3,6 +3,8 @@ import xml.etree.ElementTree as ET
 import requests
 import pandas as pd
 
+from linkml_runtime.utils.schemaview import SchemaView
+
 
 # ==================================================================================== #
 #                                 Automated mapping                                    #
@@ -55,6 +57,45 @@ df["NCBI BioSample Attribute name"] = df.apply(
 )
 
 # Save the filtered DataFrame to a new TSV file
+df.to_csv(
+    "assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv", sep="\t", index=False
+)
+
+# ==================================================================================== #
+#                               Post mapping reporting                                 #
+# Reporting on the number of slots that were successfully mapped and those that were   #
+# not mapped.                                                                          #
+# ==================================================================================== #
+
+df = pd.read_csv(
+    "assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv", delimiter="\t"
+)
+
+def unmapped_slots(df, schema_class, attribute_name):
+    filtered_df = df[df["NMDC schema class"] == schema_class]
+    unmapped_slots = filtered_df[filtered_df[attribute_name].isna()]
+    return unmapped_slots["NMDC schema slot"].tolist()
+
+unmapped_biosample_slots = unmapped_slots(df, "Biosample", "NCBI BioSample Attribute name")
+
+sv = SchemaView("src/schema/nmdc.yaml")
+
+classes_to_be_reported = ["Biosample", "Extraction", "LibraryPreparation", "OmicsProcessing", "DataObject"]
+imports_to_be_ignored = ["https://w3id.org/nmdc/portal/emsl", 
+                         "https://w3id.org/nmdc/portal/jgi_metagenomics",
+                         "https://w3id.org/nmdc/portal/jgi_metatranscriptomics",
+                         "https://w3id.org/nmdc/portal/mixs_inspired",
+                         "https://w3id.org/nmdc/portal/sample_id",
+                        ]
+
+for class_name in classes_to_be_reported:
+    class_slots = sv.class_induced_slots(class_name)
+    unmapped_slot_names = unmapped_slots(df, class_name, "NCBI BioSample Attribute name")
+
+    for slot in class_slots:
+        if slot.from_schema in imports_to_be_ignored and slot.name in unmapped_slot_names:
+            df.loc[df["NMDC schema slot"] == slot.name, "NCBI BioSample Attribute name"] = "IGNORE"
+
 df.to_csv(
     "assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv", sep="\t", index=False
 )
