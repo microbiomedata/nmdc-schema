@@ -256,7 +256,6 @@ classes:
           interpolated: true
   
   CalibrationInformation:
-  #TODO KRH: add DataObject nmdc:dobj-12-krhrtjw9 in the Database-gc yaml 
     class_uri: nmdc:CalibrationInformation
     is_a: InformationObject
     description: A calibration object that is associated with a process.

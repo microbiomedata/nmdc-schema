@@ -15,3 +15,11 @@ planned_process_set:
     stationary_phase: Polysiloxane
     chromatographic_category: gas_chromatography
     has_calibration: nmdc:calib-99-zUCd5Q
+data_object_set:
+  - id: nmdc:dobj-12-krhrtjw9
+    type: nmdc:DataObject
+    data_category: instrument_data
+    url: https://emsl_site/emsl_calibration_run.raw
+    name: emsl_calibration_run.raw
+    description: GCMS data file
+    file_size_bytes: 9208349052
