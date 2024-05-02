@@ -171,6 +171,9 @@ def ignore_import_schema_slots(tsv_filepath):
         "https://w3id.org/nmdc/portal/sample_id",
     ]
 
+    if "ignore" not in df.columns or df["ignore"].dtype != "object":
+        df["ignore"] = df["ignore"].astype("object")
+
     for class_name in classes_to_be_reported:
         class_slots = sv.class_induced_slots(class_name)
         for slot in class_slots:
