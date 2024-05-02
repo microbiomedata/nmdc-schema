@@ -1,4 +1,4 @@
-NMDC schema class	NMDC schema slot	NMDC schema slot range	NCBI BioSample Attribute name	static_value
+nmdc_schema_class	nmdc_schema_slot	nmdc_schema_slot_range	ncbi_biosample_attribute_name	static_value	ignore
 Biosample	abs_air_humidity	QuantityValue		
 Biosample	add_date	string		
 Biosample	add_recov_method	TextValue		
