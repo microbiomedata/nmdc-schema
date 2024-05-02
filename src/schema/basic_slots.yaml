@@ -903,7 +903,7 @@ enums:
 
       LC-MS Lipidomics Results:
         description: >- 
-          LC-MS-based lipid assignment results table.
+          LC-MS-based lipid assignment results table
 
   DoiProviderEnum:
     see_also:
