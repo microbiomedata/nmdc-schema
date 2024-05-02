@@ -59,6 +59,7 @@ prefixes:
   dcterms: http://purl.org/dc/terms/
   doi: "https://bioregistry.io/doi:"
   edam.data: "http://edamontology.org/data_"
+  edam.format: "http://edamontology.org/format_"
   emsl.project: "https://bioregistry.io/emsl.project:"
   emsl: "http://example.org/emsl_in_mongodb/"
   emsl_uuid_like: "http://example.org/emsl_uuid_like/"

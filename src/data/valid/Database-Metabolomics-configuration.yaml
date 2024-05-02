@@ -1,0 +1,38 @@
+metabolomics_analysis_set:
+  - id: nmdc:wfmb-99-ABCDEF
+    name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF
+    started_at_time: '2021-08-05T14:48:51+00:00'
+    ended_at_time: '2021-09-15T10:13:20+00:00'
+    execution_resource: NERSC-Cori
+    part_of:
+      - nmdc:wfch-11-ab
+    git_url: https://example.org/WorkflowExecutionActivity
+    has_input:
+      - nmdc:dobj-70-izwYW6
+      - nmdc:dobj-80-izwYW6
+    has_output:
+      - nmdc:dobj-90-izwYW61
+    type: nmdc:MetabolomicsAnalysis
+data_object_set:
+  - id: nmdc:dobj-70-izwYW6
+    data_category: workflow_parameter_data
+    data_object_type: Configuration toml
+    name: CoreMS.toml
+    description: Confiuration toml file for CoreMS
+    file_size_bytes: 4262400
+    type: nmdc:DataObject
+  - id: nmdc:dobj-80-izwYW6
+    data_category: instrument_data
+    data_object_type: Direct Infusion FT ICR-MS Raw Data
+    name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.raw
+    description: raw direct infusion FT ICR-MS for Froze_Core_2015_S1_20_30_19
+    file_size_bytes: 3262400
+    type: nmdc:DataObject
+  - id: nmdc:dobj-90-izwYW61
+    data_category: processed_data
+    data_object_type: FT ICR-MS Analysis Results
+    name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.processed
+    description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
+    file_size_bytes: 5262400
+    type: nmdc:DataObject
+    
