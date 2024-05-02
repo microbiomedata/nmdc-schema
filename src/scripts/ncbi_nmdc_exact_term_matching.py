@@ -40,11 +40,12 @@ def create_unmapped_ncbi_mapping_file(tsv_output_filepath):
 
         tsv_writer.writerow(
             [
-                "NMDC schema class",
-                "NMDC schema slot",
-                "NMDC schema slot range",
-                "NCBI BioSample Attribute name",
+                "nmdc_schema_class",
+                "nmdc_schema_slot",
+                "nmdc_schema_slot_range",
+                "ncbi_biosample_attribute_name",
                 "static_value",
+                "ignore",
             ]
         )
 
@@ -126,22 +127,22 @@ def exact_term_matching(tsv_input_filepath, tsv_output_filepath, xml_url, xml_fi
         attribute_dict[harmonized_name] = synonyms
 
     df = pd.read_csv(tsv_input_filepath, delimiter="\t")
-    df["NCBI BioSample Attribute name"] = df.apply(
+    df["ncbi_biosample_attribute_name"] = df.apply(
         map_attributes, axis=1, args=(attribute_dict,)
     )
     df.to_csv(tsv_output_filepath, sep="\t", index=False)
-    click.echo(f"Updated TSV saved to {tsv_output_filepath}")
+    click.echo(f"Exact term matched TSV file saved to '{tsv_output_filepath}'")
 
 
 def map_attributes(row, attribute_dict):
     for harmonized_name, aliases in attribute_dict.items():
         if (
-            row["NMDC schema slot"].lower()
+            row["nmdc_schema_slot"].lower()
             in [harmonized_name.lower() for harmonized_name in aliases]
-            or row["NMDC schema slot"].lower() == harmonized_name.lower()
+            or row["nmdc_schema_slot"].lower() == harmonized_name.lower()
         ):
             return harmonized_name
-    return row["NCBI BioSample Attribute name"]
+    return row["ncbi_biosample_attribute_name"]
 
 
 # ==================================================================================== #
@@ -174,11 +175,11 @@ def ignore_import_schema_slots(tsv_filepath):
         class_slots = sv.class_induced_slots(class_name)
         for slot in class_slots:
             if slot.from_schema in imports_to_be_ignored:
-                df.loc[
-                    df["NMDC schema slot"] == slot.name, "NCBI BioSample Attribute name"
-                ] = "IGNORE"
+                df.loc[df["nmdc_schema_slot"] == slot.name, "ignore"] = "PROG_IGNORE"
     df.to_csv(tsv_filepath, sep="\t", index=False)
-    click.echo(f"Ignored entries updated in {tsv_filepath}")
+    click.echo(
+        f"'{tsv_filepath}' has been updated with slot/attribute names to be ignored."
+    )
 
 
 # ==================================================================================== #
@@ -205,7 +206,7 @@ def package_specific_curation(xml_url, tsv_filepath):
     tsv_df = pd.read_csv(tsv_filepath, sep="\t")
 
     exists_in_tsv = {
-        name: name in tsv_df["NCBI BioSample Attribute name"].values
+        name: name in tsv_df["ncbi_biosample_attribute_name"].values
         for name in harmonized_names
     }
 
