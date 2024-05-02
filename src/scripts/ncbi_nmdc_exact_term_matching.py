@@ -1,3 +1,4 @@
+import csv
 from bs4 import BeautifulSoup
 from linkml_runtime.utils.schemaview import SchemaView
 
@@ -10,6 +11,52 @@ import pandas as pd
 @click.group()
 def cli():
     pass
+
+
+# ==================================================================================== #
+#              Creation of initial/unmapped NMDC NCBI mapping file                     #
+# ==================================================================================== #
+@click.command()
+@click.option(
+    "--tsv-output",
+    "tsv_output_filepath",
+    default="local/ncbi_attribute_mappings.tsv",
+    show_default=True,
+    help="Path to save initial TSV file which will need to be filled with mappings.",
+)
+def create_unmapped_ncbi_mapping_file(tsv_output_filepath):
+    """Creates a TSV file with NMDC schema slot names that need to be mapped to NCBI Attribute names."""
+    sv = SchemaView("src/schema/nmdc.yaml")
+    classes_to_process = [
+        "Biosample",
+        "Extraction",
+        "LibraryPreparation",
+        "OmicsProcessing",
+        "DataObject",
+    ]
+
+    with open(tsv_output_filepath, "w", newline="") as file:
+        tsv_writer = csv.writer(file, delimiter="\t")
+
+        tsv_writer.writerow(
+            [
+                "NMDC schema class",
+                "NMDC schema slot",
+                "NMDC schema slot range",
+                "NCBI BioSample Attribute name",
+                "static_value",
+            ]
+        )
+
+        for class_name in classes_to_process:
+            induced_slots = sv.class_induced_slots(class_name)
+            sorted_slots = sorted(induced_slots, key=lambda slot: slot.name)
+            for slot in sorted_slots:
+                tsv_writer.writerow([class_name, slot.name, slot.range, "", ""])
+
+    click.echo(
+        f"Unmapped NMDC-NCBI mapping TSV file '{tsv_output_filepath}' has been created."
+    )
 
 
 # ==================================================================================== #
@@ -102,9 +149,7 @@ def map_attributes(row, attribute_dict):
 # Ignore slots coming from certain imports that are not relevant to NCBI               #
 # ==================================================================================== #
 @click.command()
-@click.argument(
-    "tsv_filepath", type=click.Path(exists=True)
-)
+@click.argument("tsv_filepath", type=click.Path(exists=True))
 def ignore_import_schema_slots(tsv_filepath):
     """Marks entries in the TSV file as 'PROG_IGNORE' if they are not relevant to the
     NCBI Attribute name mapping process."""
@@ -148,9 +193,7 @@ def ignore_import_schema_slots(tsv_filepath):
     show_default=True,
     help="URL NCBI package-specific XML. It default to MIMS.me.water.6.0 package XML.",
 )
-@click.argument(
-    "tsv_filepath", type=click.Path(exists=True)
-)
+@click.argument("tsv_filepath", type=click.Path(exists=True))
 def package_specific_curation(xml_url, tsv_filepath):
     """Semi-automated mappig/curation of package-specific NCBI Attributes to aid in the
     maximal mapping of NMDC schema slots to NCBI BioSample Attributes."""
@@ -180,6 +223,7 @@ def package_specific_curation(xml_url, tsv_filepath):
     return ncbi_attributes_manual_curation
 
 
+cli.add_command(create_unmapped_ncbi_mapping_file)
 cli.add_command(exact_term_matching)
 cli.add_command(ignore_import_schema_slots)
 cli.add_command(package_specific_curation)
