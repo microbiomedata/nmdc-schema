@@ -39,7 +39,7 @@ and either find the appropriate NCBI Attribute it can be marked to, or simply ma
 To execute the above strategy, run the following command:
 
 ```bash
-poetry run python src/scripts/ncbi_nmdc_exact_term_matching.py
+make assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv
 ```
 
 See the output at: *ncbi_attribute_mappings_filled.tsv*
