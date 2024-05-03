@@ -205,26 +205,42 @@ def package_specific_curation(xml_url, tsv_filepath):
     xml_content = response.text
 
     soup = BeautifulSoup(xml_content, "xml")
-    harmonized_names = [tag.text for tag in soup.find_all("HarmonizedName")]
+    attributes = soup.find_all("Attribute")
+
     tsv_df = pd.read_csv(tsv_filepath, sep="\t")
+    tsv_harmonized_names = tsv_df["ncbi_biosample_attribute_name"].values
 
-    exists_in_tsv = {
-        name: name in tsv_df["ncbi_biosample_attribute_name"].values
-        for name in harmonized_names
-    }
+    mandatory_attributes = []
+    optional_attributes = []
 
-    ncbi_attributes_manual_curation = [
-        name for name, exists in exists_in_tsv.items() if not exists
-    ]
+    for attribute in attributes:
+        harmonized_name = (
+            attribute.find("HarmonizedName").text
+            if attribute.find("HarmonizedName")
+            else None
+        )
+        use = attribute.get("use", "optional")
+
+        if harmonized_name and harmonized_name not in tsv_harmonized_names:
+            if use == "mandatory":
+                mandatory_attributes.append(harmonized_name)
+            else:
+                optional_attributes.append(harmonized_name)
 
     # if we can't figure out an appropriate NMDC slot to map it to, we can ignore it
     # by setting the value of the "ignore"  column to "MAN_IGNORE" to indicate that
     # it has been ignored after manual curation
-    click.echo(
-        f"The following NCBI Attribute names need manual curation/ignoring: {ncbi_attributes_manual_curation}"
-    )
+    if mandatory_attributes:
+        click.echo(
+            f"Mandatory NCBI Attribute names that do not have NMDC slot mappings: {mandatory_attributes}"
+        )
 
-    return ncbi_attributes_manual_curation
+    if optional_attributes:
+        click.echo(
+            f"Optional NCBI Attribute names that do not have NMDC slot mappings: {optional_attributes}"
+        )
+
+    return mandatory_attributes, optional_attributes
 
 
 cli.add_command(create_unmapped_ncbi_mapping_file)
