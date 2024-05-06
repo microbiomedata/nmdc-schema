@@ -78,7 +78,7 @@ class FastAPIClient:
                 else:
                     break
             else:
-                # logger.warning(f"FastAPI request to {endpoint} failed. Might work as a pymongo query.")
+                logger.warning(f"FastAPI request to {endpoint} failed. Might work as a pymongo query.")
                 break
 
         return data
@@ -98,15 +98,25 @@ class PyMongoClient:
         self.selected_collections = []
 
         logger.debug("Attempting to create a MongoDB database object")
+        # logger.info(f"{self.env_file = }")
+        # logger.info(f"{self.mongo_host = }")
+        # logger.info(f"{self.mongo_port = }")
+        # logger.info(f"{self.admin_db = }")
+        # logger.info(f"{self.auth_mechanism = }")
+        # logger.info(f"{self.direct_connection = }")
+        # logger.info(f"{self.mongo_db_name = }")
+
         self.db = self.create_database_obj()
-        logger.debug(pprint.pformat(self.__dict__))
+
         logger.info("MongoDB database object created. Now attempting to get collection names.")
         self.collections = self.get_collection_names_from_pymongo()
         logger.info(f"Found {len(self.collections)} collections in MongoDB database {self.mongo_db_name}")
 
     def create_database_obj(self):
+        # logger.info("Inside create_database_obj")
+        # logger.info(f"{self.env_file = }")
         # Load MongoDB credentials from .env file
-        load_dotenv(self.env_file)
+        load_dotenv(self.env_file, verbose=True)
         logger.info(f"loaded {self.env_file}")
         mongo_pw = os.getenv('SOURCE_MONGO_PASS')
         mongo_user = os.getenv('SOURCE_MONGO_USER')
@@ -117,9 +127,11 @@ class PyMongoClient:
                              username=mongo_user,
                              password=mongo_pw,
                              authSource=self.admin_db,
-                             authMechanism=self.auth_mechanism,
-                             directConnection=self.direct_connection
+                             # authMechanism=self.auth_mechanism,
+                             # directConnection=self.direct_connection
                              )
+
+        logger.info(f"{client = }")
 
         db = client[self.mongo_db_name]
 
@@ -208,8 +220,12 @@ class ViewHelper:
 @click.command()
 @click_log.simple_verbosity_option(logger)
 @click.option('--admin-db', default="admin", show_default=True, help='MongoDB authentication source')
-@click.option('--env-file', type=click.Path(exists=True), default='local/.env',
-              show_default=True, help='Path to .env file')
+@click.option('--env-file',
+              default='local/.env',
+              help='Path to .env file.',
+              show_default=True,
+              type=click.Path(exists=True),
+              )
 @click.option('--max-docs-per-coll', default=100,
               show_default=True, help='Maximum number of documents to retrieve per collection')  # was 100_000
 @click.option('--mongo-db-name', default="nmdc", show_default=True, help='MongoDB database name')
@@ -237,6 +253,8 @@ class ViewHelper:
 @click.option('--endpoint-prefix', default="nmdcschema",
               show_default=True, help='FastAPI path component between the URL and the endpoint name')
 @click.option('--collection-check/--skip-collection-check', default=True)
+@click.option('--auth-mechanism', default='SCRAM-SHA-256')
+@click.option('--direct-connection/--no-direct-connection', default=True)
 def cli(
         admin_db,
         env_file,
@@ -252,29 +270,37 @@ def cli(
         page_size,
         output_yaml,
         collection_check,
+        auth_mechanism,
+        direct_connection
 
 ):
+    # logger.info(env_file)
+
     # selected_collections = []
     est_doc_count = 0
+
+    logger.info(f"{collection_check = }")
+
     if collection_check:
+        logger.info(f"Connecting with PyMongo")
         nmdc_pymongo_client = PyMongoClient(
             admin_db=admin_db,
-            auth_mechanism='SCRAM-SHA-256',
-            direct_connection=True,
+            auth_mechanism=auth_mechanism,
+            direct_connection=direct_connection,
             env_file=env_file,
             mongo_db_name=mongo_db_name,
             mongo_host=mongo_host,
             mongo_port=mongo_port,
         )
-        # logger.info(f"{nmdc_pymongo_client.collections = }")
+        logger.info(f"{nmdc_pymongo_client.collections = }")
 
         nmdc_helper = ViewHelper(schema_file)
 
-        # logger.info(f"{nmdc_helper.view.schema.name = }")
+        logger.info(f"{nmdc_helper.view.schema.name = }")
 
         root_class_slots = nmdc_helper.get_class_slots(root_class)
 
-        # logger.info(f"{root_class_slots = }")
+        logger.info(f"{root_class_slots = }")
 
         schema_vs_mongo_collections = set_arithmetic(set(root_class_slots), set(nmdc_pymongo_client.collections),
                                                      set1_name='schema',
@@ -305,7 +331,7 @@ def cli(
         selected_collections = selected_collections
         logger.info(f"{selected_collections = }")
 
-    # collection_stats = nmdc_pymongo_client.get_collection_stats()
+    collection_stats = nmdc_pymongo_client.get_collection_stats()
 
     nmdc_fastapi_client = FastAPIClient(client_base_url)
 
