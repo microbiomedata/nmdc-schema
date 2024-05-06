@@ -9,9 +9,7 @@ from pymongo.errors import OperationFailure
 from linkml_runtime.dumpers import yaml_dumper
 import os
 
-from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.utils.schemaview import SchemaView
-import requests
 
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
@@ -24,12 +22,6 @@ class SchemaHandler:
 
     def load_schema(self, schema_source):
         """Load schema from a URL or file."""
-        # if schema_source.startswith('http://') or schema_source.startswith('https://'):
-        #     response = requests.get(schema_source)
-        #     response.raise_for_status()
-        #     schema_data = yaml_loader.loads(response.text)
-        # else:
-        #     schema_data = yaml_loader.load(schema_source)
         return SchemaView(schema_source)
 
     def get_class_slots(self, class_name, include_scalars=False):
@@ -107,70 +99,14 @@ def get_collection_stats(selected_collections, db):
     return selected_stats
 
 
-# Define the main command group and include the global --schema-source option
-@click.group()
-@click_log.simple_verbosity_option(logger)
-@click.option('--schema-source', required=True, help="The source of the schema. Can be a file path or URL.")
-@click.pass_context
-def cli(ctx, schema_source):
-    """Main command group that handles sub-commands for different access methods."""
-    ctx.ensure_object(dict)
-
-    # ctx.obj['SCHEMA_VIEW'] = SchemaView(schema_source)
-    ctx.obj['SCHEMA_SOURCE'] = schema_source
-    ctx.obj['SCHEMA_HANDLER'] = SchemaHandler(schema_source)
-
-
-# Sub-command for API access
-@cli.command()
-@click.option('--client-base-url', default="https://api.microbiomedata.org", show_default=True,
-              help='HTTP(S) path to the FastAPI server.')
-@click.option('--endpoint-prefix', default="nmdcschema", show_default=True,
-              help='FastAPI path component between the URL and the endpoint name')
-@click.option('--max-docs-per-coll', default=100, show_default=True,
-              help='Maximum number of documents to retrieve per collection')
-@click.option('--output-yaml', type=click.Path(), required=True,
-              show_default=True, help="Output file for storing fetched data.")
-def api_access(client_base_url, endpoint_prefix, max_docs_per_coll, output_yaml):
-    """Sub-command to exclusively use API for data fetching."""
-    click.echo("Warning: This API access method is under development and not fully operational.")
-    logger.warning("This API access method is under development and not fully operational.")
-    # Implementation of data fetching from API
-    # Example: nmdc_fastapi_client = FastAPIClient(client_base_url)
-    # Process and fetch data here
-    # Output results to a YAML file or similar
-
-
-@cli.command()
-@click.pass_context
-@click_log.simple_verbosity_option(logger)
-@click.option('--env-file', default='local/.env', show_default=True,
-              help='Path to .env file containing MongoDB credentials.', type=click.Path(exists=True))
-@click.option('--mongo-db-name', default="nmdc", show_default=True, help='MongoDB database name')
-@click.option('--mongo-host', default="localhost", show_default=True,
-              help='MongoDB host name/address.')
-@click.option('--mongo-port', default=27777, type=int, show_default=True, help='MongoDB port')
-@click.option('--output-yaml', type=click.Path(), required=True,
-              show_default=True, help="Output file for storing fetched data.")
-@click.option('--admin-db', default=None, help='MongoDB authentication source. Leave blank to not specify.')
-@click.option('--auth-mechanism', default=None, show_default=True,
-              help='Authentication mechanism for MongoDB connection. Leave blank to not specify.')
-@click.option('--direct-connection/--no-direct-connection', default=True,
-              help='Whether to use a direct connection to MongoDB. Defaults to direct connection.')
-@click.option('--max-docs-per-coll', default=100, show_default=True,
-              help='Maximum number of documents to retrieve per collection')
-@click.option('--selected-collections', multiple=True, type=str,
-              help='List of specific collections to fetch data from. If omitted, all collections will be processed.')
-def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port, output_yaml,
-                   admin_db, auth_mechanism, direct_connection, max_docs_per_coll, selected_collections):
-    # schema_source = ctx.obj['SCHEMA_SOURCE']
-    # logger.info(f"Using schema source: {schema_source}")
-
+def fetch_and_log_schema_info(ctx):
     schema_handler = ctx.obj['SCHEMA_HANDLER']
     database_slots = schema_handler.get_class_slots("Database", include_scalars=True)
     sorted_slots = sorted(database_slots)
     formatted_slots = pprint.pformat(sorted_slots)
     logger.info(f"Database slots:\n{formatted_slots}")
+
+    selected_collections = ctx.obj['SELECTED_COLLECTIONS']
 
     # Determine the relationship between selected_collections and database_slots
     selected_vs_schema = set_arithmetic(set1=selected_collections, set1_name="selected_collections only",
@@ -182,6 +118,79 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port, output_
     logger.info("Relationship between selected collections and schema slots:")
     for key, value in selected_vs_schema.items():
         logger.info(f"{key}: {pprint.pformat(value)}")
+
+    return (database_slots, selected_vs_schema)
+
+
+# Define the main command group and include the global --schema-source option
+@click.group()
+@click_log.simple_verbosity_option(logger)
+@click.option('--schema-source', required=True, help="The source of the schema. Can be a file path or URL.")
+@click.option('--selected-collections', multiple=True, type=str,
+              help='List of specific collections to fetch data from. If omitted, all collections will be processed.')
+@click.option('--output-yaml', type=click.Path(), required=True,
+              show_default=True, help="Output file for storing fetched data.")
+@click.option('--max-docs-per-coll', default=100, show_default=True,
+              help='Maximum number of documents to retrieve per collection')
+@click.pass_context
+def cli(ctx, schema_source, selected_collections, output_yaml, max_docs_per_coll):
+    """Main command group that handles sub-commands for different access methods."""
+    ctx.ensure_object(dict)
+
+    ctx.obj['SCHEMA_HANDLER'] = SchemaHandler(schema_source)
+    ctx.obj['SELECTED_COLLECTIONS'] = selected_collections
+    ctx.obj['OUTPUT_YAML'] = output_yaml
+    ctx.obj['MAX_DOCS_PER_COLL'] = max_docs_per_coll
+
+
+# Sub-command for API access
+@cli.command()
+@click.option('--client-base-url', default="https://api.microbiomedata.org", show_default=True,
+              help='HTTP(S) path to the FastAPI server.')
+@click.option('--endpoint-prefix', default="nmdcschema", show_default=True,
+              help='FastAPI path component between the URL and the endpoint name')
+@click.pass_context
+def api_access(ctx, client_base_url, endpoint_prefix):
+    """Sub-command to exclusively use API for data fetching."""
+    click.echo("Warning: This API access method is under development and not fully operational.")
+    logger.warning("This API access method is under development and not fully operational.")
+
+    (database_slots, selected_vs_schema) = fetch_and_log_schema_info(ctx)  # just printing for now
+
+    # # Implement API data fetching logic here
+    # # Example: response = requests.get(f"{client_base_url}/{endpoint_prefix}/data")
+    # # Process and fetch data here
+    # # Output results to a YAML file or similar
+    #
+    # # Example code to write data to YAML file
+    # # data = response.json()
+    # # with open(output_yaml, 'w') as file:
+    # #     yaml.dump(data, file)
+
+
+@cli.command()
+@click.pass_context
+@click_log.simple_verbosity_option(logger)
+@click.option('--env-file', default='local/.env', show_default=True,
+              help='Path to .env file containing MongoDB credentials.', type=click.Path(exists=True))
+@click.option('--mongo-db-name', default="nmdc", show_default=True, help='MongoDB database name')
+@click.option('--mongo-host', default="localhost", show_default=True,
+              help='MongoDB host name/address.')
+@click.option('--mongo-port', default=27777, type=int, show_default=True, help='MongoDB port')
+# @click.option('--output-yaml', type=click.Path(), required=True,
+#               show_default=True, help="Output file for storing fetched data.")
+@click.option('--admin-db', default=None, help='MongoDB authentication source. Leave blank to not specify.')
+@click.option('--auth-mechanism', default=None, show_default=True,
+              help='Authentication mechanism for MongoDB connection. Leave blank to not specify.')
+@click.option('--direct-connection/--no-direct-connection', default=True,
+              help='Whether to use a direct connection to MongoDB. Defaults to direct connection.')
+# @click.option('--max-docs-per-coll', default=100, show_default=True,
+#               help='Maximum number of documents to retrieve per collection')
+# @click.option('--selected-collections', multiple=True, type=str,
+#               help='List of specific collections to fetch data from. If omitted, all collections will be processed.')
+def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
+                   admin_db, auth_mechanism, direct_connection):
+    (database_slots, selected_vs_schema) = fetch_and_log_schema_info(ctx)  # just printing for now
 
     """Sub-command to exclusively use PyMongo for data fetching."""
     logger.info("Starting data fetch using PyMongo...")
@@ -213,10 +222,14 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port, output_
 
     data = {}
 
+    max_docs_per_coll = ctx.obj['MAX_DOCS_PER_COLL']
+    selected_collections = ctx.obj['SELECTED_COLLECTIONS']
+
     # Get collection statistics
     collection_stats = get_collection_stats(database_slots, db)
     logger.info("Statistics for applicable collections:")
     for collection_name, stats in collection_stats.items():
+
         logger.info(f"{collection_name}: {stats}")
         collection = db[collection_name]
         try:
@@ -224,10 +237,15 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port, output_
             # Remove '_id' field from documents to avoid issues with ObjectId
             for document in documents:
                 document.pop('_id', None)  # Remove '_id' if it exists in the document
-            data[collection_name] = documents
+            if collection_name in selected_collections:
+                data[collection_name] = documents
+            else:
+                logger.warning(f"Collection '{collection_name}' was not requested.")
             logger.info(f"Retrieved {len(documents)} documents from collection '{collection_name}'")
         except OperationFailure as e:
             logger.error(f"Failed to fetch from collection {collection_name}: {e}")
+
+    output_yaml = ctx.obj['OUTPUT_YAML']
 
     yaml_dumper.dump(data, output_yaml)
     logger.info(f"Data successfully written to {output_yaml}")
