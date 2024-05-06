@@ -3,6 +3,8 @@ import pprint
 import click
 import click_log
 import logging
+
+import requests
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from pymongo.errors import OperationFailure
@@ -15,14 +17,15 @@ logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
 
 
+def load_schema(schema_source):
+    """Load schema from a URL or file."""
+    return SchemaView(schema_source)
+
+
 class SchemaHandler:
     def __init__(self, schema_source):
         self.schema_source = schema_source
-        self.view = self.load_schema(schema_source)
-
-    def load_schema(self, schema_source):
-        """Load schema from a URL or file."""
-        return SchemaView(schema_source)
+        self.view = load_schema(schema_source)
 
     def get_class_slots(self, class_name, include_scalars=False):
         """Retrieve all slots for a given class with an option to include scalar slots."""
@@ -43,7 +46,8 @@ class SchemaHandler:
 
 def set_arithmetic(set1, set2, set1_name='set 1 only', set2_name='set 2 only', intersection_name='intersection'):
     """
-    Perform arithmetic between two sets (or lists) and return a dictionary detailing elements unique to each set and their intersection.
+    Perform arithmetic between two sets (or lists) and return a dictionary detailing elements unique to each set
+    and their intersection.
 
     Parameters:
     set1 (set or list): First set (or list) for comparison.
@@ -119,7 +123,49 @@ def fetch_and_log_schema_info(ctx):
     for key, value in selected_vs_schema.items():
         logger.info(f"{key}: {pprint.pformat(value)}")
 
-    return (database_slots, selected_vs_schema)
+    return database_slots, selected_vs_schema
+
+
+def get_collection_documents(client_base_url, endpoint_prefix, collection_name, max_docs_per_coll, page_size):
+    """
+    Fetches all documents in a collection using pagination.
+
+    Parameters:
+    client_base_url (str): Base URL of the API.
+    endpoint_prefix (str): Path component between the URL and the endpoint name.
+    collection_name (str): Name of the collection to fetch documents from.
+    max_docs_per_coll (int): Maximum number of documents to retrieve per collection.
+    page_size (int): Size of each page in pagination.
+
+    Returns:
+    list: List of documents fetched from the collection.
+    """
+    documents = []
+    next_page_token = None
+
+    while len(documents) <= max_docs_per_coll:
+        url = f"{client_base_url}/{collection_name}/{endpoint_prefix}?max_page_size={page_size}"
+
+        if next_page_token:
+            url += f"&page_token={next_page_token}"
+        print(url)
+
+        response = requests.get(url)
+        if response.status_code == 200:
+            data = response.json()
+            resources = data.get("resources", [])
+            documents.extend(resources)
+
+            if "next_page_token" in data:
+                next_page_token = data["next_page_token"]
+            else:
+                break
+        else:
+            logger.error(
+                f"Failed to fetch documents from {collection_name}: {response.status_code} - {response.reason}")
+            break
+
+    return documents
 
 
 # Define the main command group and include the global --schema-source option
@@ -149,23 +195,54 @@ def cli(ctx, schema_source, selected_collections, output_yaml, max_docs_per_coll
               help='HTTP(S) path to the FastAPI server.')
 @click.option('--endpoint-prefix', default="nmdcschema", show_default=True,
               help='FastAPI path component between the URL and the endpoint name')
+@click.option('--page-size', default=200_000, show_default=True,
+              help='Size of each page in pagination.')
 @click.pass_context
-def api_access(ctx, client_base_url, endpoint_prefix):
-    """Sub-command to exclusively use API for data fetching."""
-    click.echo("Warning: This API access method is under development and not fully operational.")
-    logger.warning("This API access method is under development and not fully operational.")
+def api_access(ctx, client_base_url, endpoint_prefix, page_size):
+    """Sub-command that dumps selected records from the nmdc-runtime API."""
+    # click.echo("Warning: This API access method is under development and not fully operational.")
+    # logger.warning("This API access method is under development and not fully operational.")
+
+    max_docs_per_coll = ctx.obj['MAX_DOCS_PER_COLL']
+    selected_collections = ctx.obj['SELECTED_COLLECTIONS']
 
     (database_slots, selected_vs_schema) = fetch_and_log_schema_info(ctx)  # just printing for now
 
-    # # Implement API data fetching logic here
-    # # Example: response = requests.get(f"{client_base_url}/{endpoint_prefix}/data")
-    # # Process and fetch data here
-    # # Output results to a YAML file or similar
-    #
-    # # Example code to write data to YAML file
-    # # data = response.json()
-    # # with open(output_yaml, 'w') as file:
-    # #     yaml.dump(data, file)
+    # Make requests call to fetch collection stats
+    collection_stats_url = f"{client_base_url}/{endpoint_prefix}/collection_stats"
+    response = requests.get(collection_stats_url)
+
+    documents = []
+
+    if response.status_code == 200:
+        collection_stats = response.json()
+        logger.info("Collection statistics:")
+        for stats in collection_stats:
+            ns = stats.get("ns")
+            storage_stats = stats.get("storageStats")
+            logger.info(f"Namespace: {ns}")
+            logger.info(f"Storage Stats:")
+            logger.info(pprint.pformat(storage_stats))
+            logger.info("------------------------------------")
+            as_collection_name = ns.split(".")[-1]
+            if as_collection_name in selected_collections:
+                documents = get_collection_documents(
+                    client_base_url,
+                    as_collection_name,
+                    endpoint_prefix,
+                    max_docs_per_coll,
+                    page_size,
+                )
+                print(f"{len(documents) = }")
+            else:
+                logger.warning(f"Collection '{ns}' is not selected.")
+    else:
+        logger.error(f"Failed to fetch collection stats: {response.status_code} - {response.reason}")
+
+    output_yaml = ctx.obj['OUTPUT_YAML']
+
+    yaml_dumper.dump(documents, output_yaml)
+    logger.info(f"Data from PyMongo successfully written to {output_yaml}")
 
 
 @cli.command()
@@ -177,19 +254,14 @@ def api_access(ctx, client_base_url, endpoint_prefix):
 @click.option('--mongo-host', default="localhost", show_default=True,
               help='MongoDB host name/address.')
 @click.option('--mongo-port', default=27777, type=int, show_default=True, help='MongoDB port')
-# @click.option('--output-yaml', type=click.Path(), required=True,
-#               show_default=True, help="Output file for storing fetched data.")
 @click.option('--admin-db', default=None, help='MongoDB authentication source. Leave blank to not specify.')
 @click.option('--auth-mechanism', default=None, show_default=True,
               help='Authentication mechanism for MongoDB connection. Leave blank to not specify.')
 @click.option('--direct-connection/--no-direct-connection', default=True,
               help='Whether to use a direct connection to MongoDB. Defaults to direct connection.')
-# @click.option('--max-docs-per-coll', default=100, show_default=True,
-#               help='Maximum number of documents to retrieve per collection')
-# @click.option('--selected-collections', multiple=True, type=str,
-#               help='List of specific collections to fetch data from. If omitted, all collections will be processed.')
 def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
                    admin_db, auth_mechanism, direct_connection):
+    """Sub-command that dumps selected records from NMDC's PyMongo."""
     (database_slots, selected_vs_schema) = fetch_and_log_schema_info(ctx)  # just printing for now
 
     """Sub-command to exclusively use PyMongo for data fetching."""
@@ -225,6 +297,9 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
     max_docs_per_coll = ctx.obj['MAX_DOCS_PER_COLL']
     selected_collections = ctx.obj['SELECTED_COLLECTIONS']
 
+    # the actionable collections are the intersection of
+    #   selected_collections and the collection_names in collection_stats
+
     # Get collection statistics
     collection_stats = get_collection_stats(database_slots, db)
     logger.info("Statistics for applicable collections:")
@@ -248,7 +323,7 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
     output_yaml = ctx.obj['OUTPUT_YAML']
 
     yaml_dumper.dump(data, output_yaml)
-    logger.info(f"Data successfully written to {output_yaml}")
+    logger.info(f"Data from PyMongo successfully written to {output_yaml}")
 
 
 if __name__ == '__main__':
