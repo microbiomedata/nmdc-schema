@@ -41,6 +41,21 @@ def set_arithmetic(set1, set2, set1_name='set 1 only', set2_name='set 2 only'):
     }
     return temp
 
+def get_collection_stats(selected_collections, db):
+    selected_stats = {}
+    for collection_name in selected_collections:
+        for_selected_stats = {}
+
+        collection_stats = db.command("collstats", collection_name)
+
+        for_selected_stats["document_count"] = collection_stats["count"]
+        for_selected_stats["size_in_bytes"] = collection_stats["size"]
+        for_selected_stats["storageSize"] = collection_stats["storageSize"]
+        for_selected_stats["avg_bytes_per_doc"] = collection_stats["size"] / collection_stats["count"]
+
+        selected_stats[collection_name] = for_selected_stats
+
+    return selected_stats
 
 class FastAPIClient:
     def __init__(self, base_url):
