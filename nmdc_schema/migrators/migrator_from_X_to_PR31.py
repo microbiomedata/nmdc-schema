@@ -14,24 +14,18 @@ class Migrator(MigratorBase):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
         
         workflow_execution_collection_names = [
-            "metaproteomics_analysis_set",
-            "nom_analysis_set",
-            "metabolomics_analysis_set",
-            "read_based_taxonomy_analysis_set",
-            "read_qc_analysis_set",
-            "metagenome_sequencing_set",
-            "mags_set",
-            "metatranscriptome_analysis_set",
-            "metagenome_annotation_set",
-            "metagenome_assembly_set",
             "mags_activity_set",
             "metabolomics_analysis_activity_set",
             "metagenome_annotation_activity_set",
+            "metagenome_assembly_set",
             "metagenome_sequencing_activity_set",
-            "metaproteomics_analysis_activity_set"
+            "metatranscriptome_activity_set",
+            "nom_analysis_activity_set",
+            "omics_processing_set",
+            "read_based_taxonomy_analysis_activity_set",
+            "read_qc_analysis_activity_set"
+            "metaproteomics_analysis_activity_set"   
         ]
-
-        self.adapter.process_each_document("omics_processing_set", [self.check_instrument_name])
 
         for collection_name in workflow_execution_collection_names:
             self.adapter.process_each_document(
@@ -43,39 +37,28 @@ class Migrator(MigratorBase):
         r"""
         Removes the used slot from WorkflowExecution subclasses.
 
+        If the value of the `used` slot does not match the value of the `instrument_name` slot of a related `OmicsProcessing`,
+        log the error.
+
         >>> m = Migrator()  
         >>> m.remove_used_slot({'id': 123, 'used': 'abc'})  
         {'id': 123}
         """
-
+        data_generation_doc = None
         if "used" in doc:
+            try:
+                data_generation_doc = self.adapter.get_document_having_value_in_field(
+                    collection_name="omics_processing_set", field_name="id", value=doc["was_informed_by"]
+                    )
+                data_generation_doc = data_generation_doc
+
+                if doc["used"] == data_generation_doc["instrument_name"]:
+                    doc.pop("used")
+
+            except:
+                self.logger.error(f"WorkflowExecution {doc['id']} used: {doc['used']} does not match OmicsProcessing {data_generation_doc['id']} instrument_name {data_generation_doc['instrument_name']}.")
+
             doc.pop("used")
         
         return doc
-    
-    def check_instrument_name(self, workflow_execution: dict) -> dict:
-        r"""
-        Checks that the value in the used slot on the WorkflowExecution classes matches the value
-        in the `instrument_name` field of a related `OmicsProcessing` (soon to be renamed to `DataGeneration`) instance. 
-        If it matches, then remove used from the WorkflowExecution instance.
-
-        >>> m = Migrator()
-        >>> m.check_instrument_name({'id': 123, 'used': 'abc'})
-        {'id': 123, 'used': 'abc'}
-        """
-        
-        if "used" in workflow_execution:
-            
-            try: 
-                data_generation_doc = self.adapter.get_document_having_value_in_field(
-                    collection_name="omics_processing_set", field_name="instrument_name", value=workflow_execution["used"]
-                    )
-
-                if workflow_execution["used"] == data_generation_doc["instrument_name"]:
-                    workflow_execution.pop("used")
-
-            except:
-                self.logger.error(f"WorkflowExecution {workflow_execution['id']} used: {workflow_execution['used']} does not match OmicsProcessing instrument_name.")
-        
-        return workflow_execution
     
