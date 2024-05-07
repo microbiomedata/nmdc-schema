@@ -40,11 +40,14 @@ class Migrator(MigratorBase):
         If the value of the `used` slot does not match the value of the `instrument_name` slot of a related `OmicsProcessing`,
         log the error.
 
-        >>> m = Migrator()  
-        >>> m.remove_used_slot({'id': 123, 'used': 'abc'})  
-        {'id': 123}
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>>
+        >>> database = {'nom_analysis_activity_set': [{'id': 'nmdc:wfc-456', 'was_informed_by': 'nmdc:omcp-123'}]}  # in this example, our data store is a Python dictionary
+        >>> adapter = DictionaryAdapter(database=database)
+        >>> m = Migrator(adapter=adapter)
+        >>> m.remove_used_slot({'id': 'nmdc:metab-123', 'used': 'nmdc:wfc-456', 'was_informed_by': 'nmdc:omcp-123'})
+        {'id': 'nmdc:metab-123', 'was_informed_by': 'nmdc:omcp-123'}
         """
-        
         if "used" in doc:
             try:
                 data_generation_doc = self.adapter.get_document_having_value_in_field(
