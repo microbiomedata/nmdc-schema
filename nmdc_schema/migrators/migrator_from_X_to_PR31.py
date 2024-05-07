@@ -44,15 +44,14 @@ class Migrator(MigratorBase):
         >>> m.remove_used_slot({'id': 123, 'used': 'abc'})  
         {'id': 123}
         """
-        data_generation_doc = None
+        
         if "used" in doc:
             try:
                 data_generation_doc = self.adapter.get_document_having_value_in_field(
                     collection_name="omics_processing_set", field_name="id", value=doc["was_informed_by"]
                     )
-                data_generation_doc = data_generation_doc
 
-                if doc["used"] == data_generation_doc["instrument_name"]:
+                if ((data_generation_doc != None) and (doc["used"] == data_generation_doc["instrument_name"])):
                     doc.pop("used")
 
             except:
