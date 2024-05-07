@@ -901,6 +901,10 @@ enums:
         broad_mappings: 
           - edam.format:4005
 
+      LC-MS Lipidomics Results:
+        description: >- 
+          LC-MS-based lipid assignment results table.
+
   DoiProviderEnum:
     see_also:
       - nmdc:DoiProviderEnum
