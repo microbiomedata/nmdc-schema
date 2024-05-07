@@ -13,8 +13,8 @@ class Migrator(MigratorBase):
 
     def __init__(self, adapter: AdapterBase = None, logger=None):
         r"""
-        Initialize an empty dictionary that maps was_informed_by values (omics processing id) to their
-        respective workflow chain ids
+        Initialize an empty dictionary that maps instrument_name values to their
+        respective omics_processing_set ids
         """
 
         # Invoke the `__init__` method of the "parent" class.
