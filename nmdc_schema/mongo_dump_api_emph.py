@@ -148,7 +148,7 @@ def get_collection_documents(client_base_url, endpoint_prefix, collection_name, 
 
         if next_page_token:
             url += f"&page_token={next_page_token}"
-        print(url)
+        logger.info(url)
 
         response = requests.get(url)
         if response.status_code == 200:
@@ -161,7 +161,7 @@ def get_collection_documents(client_base_url, endpoint_prefix, collection_name, 
             else:
                 break
         else:
-            logger.error(
+            logger.warning(
                 f"Failed to fetch documents from {collection_name}: {response.status_code} - {response.reason}")
             break
 
@@ -212,35 +212,36 @@ def api_access(ctx, client_base_url, endpoint_prefix, page_size):
     collection_stats_url = f"{client_base_url}/{endpoint_prefix}/collection_stats"
     response = requests.get(collection_stats_url)
 
-    documents = []
+    documents = {}
 
     if response.status_code == 200:
         collection_stats = response.json()
         logger.info("Collection statistics:")
         for stats in collection_stats:
+            logger.info("------------------------------------")
             ns = stats.get("ns")
             storage_stats = stats.get("storageStats")
             logger.info(f"Namespace: {ns}")
             logger.info(f"Storage Stats:")
             logger.info(pprint.pformat(storage_stats))
-            logger.info("------------------------------------")
             as_collection_name = ns.split(".")[-1]
             if as_collection_name in selected_collections:
-                documents = get_collection_documents(
+                documents[as_collection_name] = get_collection_documents(
                     client_base_url,
                     as_collection_name,
                     endpoint_prefix,
                     max_docs_per_coll,
                     page_size,
                 )
-                print(f"{len(documents) = }")
+                logger.info(f"{len(documents[as_collection_name]) = }")
             else:
                 logger.warning(f"Collection '{ns}' is not selected.")
     else:
-        logger.error(f"Failed to fetch collection stats: {response.status_code} - {response.reason}")
+        logger.warning(f"Failed to fetch collection stats: {response.status_code} - {response.reason}")
 
     output_yaml = ctx.obj['OUTPUT_YAML']
 
+    logger.info(f"Writing to {output_yaml}")
     yaml_dumper.dump(documents, output_yaml)
     logger.info(f"Data from PyMongo successfully written to {output_yaml}")
 
@@ -318,10 +319,11 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
                 logger.warning(f"Collection '{collection_name}' was not requested.")
             logger.info(f"Retrieved {len(documents)} documents from collection '{collection_name}'")
         except OperationFailure as e:
-            logger.error(f"Failed to fetch from collection {collection_name}: {e}")
+            logger.warning(f"Failed to fetch from collection {collection_name}: {e}")
 
     output_yaml = ctx.obj['OUTPUT_YAML']
 
+    logger.info(f"Writing to {output_yaml}")
     yaml_dumper.dump(data, output_yaml)
     logger.info(f"Data from PyMongo successfully written to {output_yaml}")
 
