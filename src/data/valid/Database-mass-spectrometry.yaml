@@ -4,25 +4,50 @@ data_generation_set:
     has_configuration: nmdc:mscon-99-oW43DzG1
     analyte_category: metabolome
     has_input:
-      - nmdc:psm-8 # See src/data/valid/Extraction-metabolomics.yaml
-    start_date: 07-MAY-24 01.00.00.000000000 AM
-    end_date: 07-MAY-24 01.30.00.000000000 AM
+      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+    start_date: 30-OCT-14 01.00.00.000000000 AM
+    end_date: 30-OCT-14 01.30.00.000000000 AM
+    add_date: 07-MAY-24 12.00.00.000000000 AM
+    mod_date: 07-MAY-24 12.00.00.000000000 AM
     has_output:
-      - nmdc:dobj-00-9n9n9n
+      - nmdc:dobj-00-msdem1
     associated_studies:
       - nmdc:sty-00-555xxx
   - id: nmdc:dgms-99-zUCd5x
     analyte_category: lipidome
     has_configuration: nmdc:mscon-99-oW43DzG2
     has_input:
-      - nmdc:psm-81
-    start_date: 07-MAY-24 01.31.00.000000000 AM
-    end_date: 07-MAY-24 02.01.00.000000000 AM
+      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+    start_date: 31-OCT-14 01.00.00.000000000 AM
+    end_date: 31-OCT-14 01.30.00.000000000 AM
+    add_date: 07-MAY-24 12.00.00.000000000 AM
+    mod_date: 07-MAY-24 12.00.00.000000000 AM
     has_output:
-      - nmdc:dobj-00-9n9n9x
+      - nmdc:dobj-00-msdem2
     type: nmdc:MassSpectrometry
     associated_studies:
       - nmdc:sty-00-555xxx
+
+# example data objects for the mass spectrometry data generation set
+data_object_set:
+  - id: nmdc:dobj-00-msdem1
+    name: SpruceW_P19_15_22Jun17_Pippin_17-04-06
+    description: raw instrument file for nmdc:dgms-99-zUCd5N
+    file_size_bytes: 1150434379
+    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw
+    md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
+    data_object_type: LC-DDA-MS/MS Raw Data
+    type: nmdc:DataObject
+  - id: nmdc:dobj-00-msdem2
+    name: SpruceW_P20_15_22Jun17_Pippin_17-04-06
+    description: raw instrument file for nmdc:dgms-99-zUCd5x
+    file_size_bytes: 1150434379
+    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw
+    md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
+    data_object_type: LC-DDA-MS/MS Raw Data
+    type: nmdc:DataObject
+
+# example mass spectrometry configuration set
 configuration_set:
   - id: nmdc:mscon-99-oW43DzG1
     name: EMSL metabolomics mass spectrometry method, positive polarity
