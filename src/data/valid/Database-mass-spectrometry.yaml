@@ -3,8 +3,6 @@ data_generation_set:
     type: nmdc:MassSpectrometry
     has_configuration: nmdc:mscon-99-oW43DzG1
     analyte_category: metabolome
-    alternative_identifiers:
-      - emsl:123423
     has_input:
       - nmdc:bsm-00-red
     add_date: 30-OCT-14 12.00.00.000000000 AM
@@ -16,8 +14,6 @@ data_generation_set:
   - id: nmdc:dgms-99-zUCd5x
     analyte_category: lipidome
     has_configuration: nmdc:mscon-99-oW43DzG2
-    alternative_identifiers:
-      - emsl:123423
     has_input:
       - nmdc:bsm-00-red2
     add_date: 30-OCT-14 12.00.00.000000000 AM
