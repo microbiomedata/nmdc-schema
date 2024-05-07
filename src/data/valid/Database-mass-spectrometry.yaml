@@ -4,9 +4,9 @@ data_generation_set:
     has_configuration: nmdc:mscon-99-oW43DzG1
     analyte_category: metabolome
     has_input:
-      - nmdc:bsm-00-red
-    add_date: 30-OCT-14 12.00.00.000000000 AM
-    mod_date: 22-MAY-20 06.13.12.927000000 PM
+      - nmdc:psm-8 # See src/data/valid/Extraction-metabolomics.yaml
+    start_date: 07-MAY-24 01.00.00.000000000 AM
+    end_date: 07-MAY-24 01.30.00.000000000 AM
     has_output:
       - nmdc:dobj-00-9n9n9n
     associated_studies:
@@ -15,9 +15,9 @@ data_generation_set:
     analyte_category: lipidome
     has_configuration: nmdc:mscon-99-oW43DzG2
     has_input:
-      - nmdc:bsm-00-red2
-    add_date: 30-OCT-14 12.00.00.000000000 AM
-    mod_date: 22-MAY-20 06.13.12.927000000 PM
+      - nmdc:psm-81
+    start_date: 07-MAY-24 01.31.00.000000000 AM
+    end_date: 07-MAY-24 02.01.00.000000000 AM
     has_output:
       - nmdc:dobj-00-9n9n9x
     type: nmdc:MassSpectrometry
