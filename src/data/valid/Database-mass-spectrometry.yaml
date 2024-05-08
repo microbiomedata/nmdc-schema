@@ -31,21 +31,25 @@ data_generation_set:
 # example data objects for the mass spectrometry data generation set
 data_object_set:
   - id: nmdc:dobj-00-msdem1
-    name: SpruceW_P19_15_22Jun17_Pippin_17-04-06
+    name: EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820
     description: raw instrument file for nmdc:dgms-99-zUCd5N
     file_size_bytes: 1150434379
-    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw
+    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lcms metabolite data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
     type: nmdc:DataObject
+    alternative_identifiers:
+      - my_emsl:1826381
   - id: nmdc:dobj-00-msdem2
-    name: SpruceW_P20_15_22Jun17_Pippin_17-04-06
+    name: EMSL_49991_Brodie_123_Lipids_Neg_12Aug19_Lola-WCSH417820
     description: raw instrument file for nmdc:dgms-99-zUCd5x
     file_size_bytes: 1150434379
-    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw
+    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lipid data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
     type: nmdc:DataObject
+    alternative_identifiers:
+      - my_emsl:1826333
 
 # example mass spectrometry configuration set
 configuration_set:
