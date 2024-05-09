@@ -1811,7 +1811,7 @@ enums:
         description: Interleaved paired-end raw sequencing data
         annotations:
           file_name_pattern: '^\.fastq(\.gz)?$'
-
+      
       Metagenome Raw Read 1:
         description: Read 1 raw sequencing data, aka forward reads
         examples:
@@ -2130,6 +2130,15 @@ enums:
 
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
+      
+      Contaminants Amino Acid FASTA:
+        description: FASTA amino acid file for  contaminant proteins commonly observed in proteomics data.
+
+      Analysis Tool Parameter File:
+        description: A configuration file used by a single computational software tool that stores settings that are specific to that tool.
+
+      Workflow Operation Summary:
+        description: A human readable record of analysis steps applied during an instance of a workflow operation.
 
   CreditEnum:
     permissible_values:
