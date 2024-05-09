@@ -111,8 +111,12 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:omcp-123', 'instrument_name': 'nmdc:wfc-456'}
         """
         omics_processing_id = doc['id']
-        doc["instrument_name"] = self.omics_processing_instrument_dict[omics_processing_id]
+        doc["instrument_name"] = self.omics_processing_instrument_dict.get(omics_processing_id)
 
         return doc
+    
+
+    #include a check to match the names usinf difflib
+    # and include the loggers that brynn included in chat
 
     
