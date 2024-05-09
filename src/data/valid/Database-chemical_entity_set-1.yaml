@@ -87,3 +87,9 @@ chemical_entity_set:
     name: "alphaLP"
     description: "A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine."
     type: nmdc:ChemicalEntity
+  - id: nmdc:chem-99-000016
+    name: "phosphoric acid"
+    alternative_identifiers:
+      - CHEBI:26078
+    chemical_formula: H3O4P
+    type: nmdc:ChemicalEntity
