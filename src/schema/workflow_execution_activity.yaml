@@ -235,7 +235,6 @@ classes:
           and LCMS metabolomics in the MetaMS repo. An example of inexact git_url is: https://github.com/microbiomedata/metaMS. 
           An example of an exact git_url is https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py.
 
-
   MetaproteomicsAnalysis:
     class_uri: "nmdc:MetaproteomicsAnalysis"
     is_a: WorkflowExecution
