@@ -230,8 +230,9 @@ classes:
         description: >-
           The url that points to the github location of the metabolomics workflow.
         comments: >-
-          The git_url must point to an exact workflow to differentiate lipids from 
-          GC-MS metabolomics.
+          The git_url must point to an exact workflow if multiple workflows share the
+          same github repo. For instance, to differentiate lipids from GC-MS metabolomics
+          in the MetaMS repo.
 
 
   MetaproteomicsAnalysis:
