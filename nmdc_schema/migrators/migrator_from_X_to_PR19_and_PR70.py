@@ -18,13 +18,6 @@ class Migrator(MigratorBase):
       
         self.adapter.process_each_document(collection_name="omics_processing_set", pipeline=[self.transform_instrument_slot]) 
 
-    def mint_id(self):
-        r"""
-        TODO: Replace me with real minting
-        """
-
-        return "potato:" + str(uuid.uuid4())
-
     def fill_instrument_set(self):
         r""""
         Fills the instrument_set collection from a YAML file of curated instrument instances
@@ -49,11 +42,6 @@ class Migrator(MigratorBase):
 
         instruments = load_yaml_asset("migrator_from_X_to_PR19_and_PR70/instrument_set.yaml")
         for instrument in instruments:
-            
-            # Mint instrument id and insert into dict
-            instrument_id = self.mint_id()
-            instrument["id"] = instrument_id
-
             self.adapter.insert_document("instrument_set", instrument)
 
     def transform_instrument_slot(self, omics_doc: dict):
