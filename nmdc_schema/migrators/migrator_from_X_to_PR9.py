@@ -65,6 +65,8 @@ class Migrator(MigratorBase):
                 pipeline=[self.was_informed_by_chain_mapping, self.update_part_of_slot],
             )
 
+        self.logger.info(f"There are {len(self.workflow_omics_dict)} workflow chains ids to mint")
+
         # Creates two dictionaries that maps 1) omics processing ids to their analyte categories, and
         # 2) maps associated_studies to the omics processing ids.
         self.adapter.process_each_document(

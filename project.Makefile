@@ -187,7 +187,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections omics_processing_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set \
+		--selected-collections metaproteomics_analysis_activity_set \
+		--skip-collection-check
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
@@ -418,7 +419,7 @@ local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 		--selected-collections omics_processing_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set \
+		--selected-collections metaproteomics_analysis_activity_set \
 		--skip-collection-check
 	sed -i.bak 's/gold:/GOLD:/' $@.tmp # kludge modify data to match (old!) schema
 	rm -rf $@.tmp.bak
