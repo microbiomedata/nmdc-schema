@@ -232,7 +232,7 @@ classes:
         comments: >-
           The git_url must point to an exact workflow if multiple workflows share the
           same github repo. For instance, to differentiate lipids from GC-MS metabolomics 
-          and LCMS metabolomics in the MetaMS repo.
+          and LC-MS metabolomics in the MetaMS repo.
 
 
   MetaproteomicsAnalysis:
