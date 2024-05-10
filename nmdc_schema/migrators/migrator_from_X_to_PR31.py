@@ -36,12 +36,6 @@ class Migrator(MigratorBase):
             )
     
     def preprocess_string(self, s):
-        r"""
-        Removes white spaces, underscores, and hyphens from a string so that SequenceMatcher can
-        find the longest common sequence without disruption by these characters
-        >>> "7T FT-ICR GC-MS"
-        "7TFTICRGCMS"
-        """
 
         return s.replace(" ", "").replace("_","").replace("-","")
 
