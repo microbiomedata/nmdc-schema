@@ -226,14 +226,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
-      git_url:
-        description: >-
-          The url that points to the github location of the metabolomics workflow.
-        comments: >-
-          The git_url must point to an exact workflow if multiple workflows share the
-          same github repo. For instance, to differentiate lipids from GC-MS metabolomics 
-          and LCMS metabolomics in the MetaMS repo. An example of inexact git_url is: https://github.com/microbiomedata/metaMS. 
-          An example of an exact git_url is https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py.
 
   MetaproteomicsAnalysis:
     class_uri: "nmdc:MetaproteomicsAnalysis"
