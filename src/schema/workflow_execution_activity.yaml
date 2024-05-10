@@ -226,6 +226,13 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+      git_url:
+        description: >-
+          The url that points to the github location of the metabolomics workflow.
+        comments: >-
+          The git_url must point to an exact workflow to differentiate lipids from 
+          GC-MS metabolomics.
+
 
   MetaproteomicsAnalysis:
     class_uri: "nmdc:MetaproteomicsAnalysis"
