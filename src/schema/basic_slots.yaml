@@ -81,7 +81,7 @@ slots:
       - prov:endedAtTime
 
   git_url:
-    description: The url the points to the exact github location of a workflow.
+    description: The url that points to the exact github location of a workflow.
     range: string
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
