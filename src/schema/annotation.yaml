@@ -35,7 +35,7 @@ default_range: string
 
 classes:
   GenomeFeature:
-    class_uri: "nmdc:GenomeFeature"
+    class_uri: nmdc:GenomeFeature
     description: >-
       A feature localized to an interval along a genome
     comments:
@@ -61,7 +61,7 @@ classes:
         required: true
 
   FunctionalAnnotationTerm:
-    class_uri: "nmdc:FunctionalAnnotationTerm"
+    class_uri: nmdc:FunctionalAnnotationTerm
     aliases:
       - function
       - FunctionalAnnotation
@@ -74,7 +74,7 @@ classes:
       - Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup subclasses.
 
   Pathway:
-    class_uri: "nmdc:Pathway"
+    class_uri: nmdc:Pathway
     aliases:
       - biological process
       - metabolic pathway
@@ -92,7 +92,7 @@ classes:
       - is Pathway instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
 
   OrthologyGroup:
-    class_uri: "nmdc:OrthologyGroup"
+    class_uri: nmdc:OrthologyGroup
     is_a: FunctionalAnnotationTerm
     description: >-
       A set of genes or gene products in which all members are orthologous
@@ -112,7 +112,7 @@ classes:
       - is OrthologyGroup instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
 
   FunctionalAnnotation:
-    class_uri: "nmdc:FunctionalAnnotation"
+    class_uri: nmdc:FunctionalAnnotation
     description: >-
       An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, 
       or which the gene product plays an active role in.

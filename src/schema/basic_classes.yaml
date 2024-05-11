@@ -16,7 +16,7 @@ imports:
 classes:
 
   NamedThing:
-    class_uri: "nmdc:NamedThing"
+    class_uri: nmdc:NamedThing
     description: "a databased entity or concept/class"
     abstract: true
     slots:
@@ -26,7 +26,7 @@ classes:
       - alternative_identifiers
       - type
   OntologyClass:
-    class_uri: "nmdc:OntologyClass"
+    class_uri: nmdc:OntologyClass
     is_a: NamedThing
     notes:
       - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
@@ -42,7 +42,7 @@ classes:
       - type
 
   MaterialEntity:
-    class_uri: "nmdc:MaterialEntity"
+    class_uri: nmdc:MaterialEntity
     abstract: true
     aliases:
       - Material
@@ -105,7 +105,7 @@ classes:
     see_also:
       - https://casrai.org/credit/
   Doi:
-    class_uri: "nmdc:Doi"
+    class_uri: nmdc:Doi
     aliases:
       - DOIs
       - digital object identifiers
@@ -341,7 +341,7 @@ classes:
       - OBI:0000070
       - ISA:Assay
   WorkflowChain:
-    class_uri: "nmdc:WorkflowChain"
+    class_uri: nmdc:WorkflowChain
     is_a: PlannedProcess
     description: >-
       A workflow chain is a collection of Workflow Execution(s) that
@@ -372,7 +372,7 @@ classes:
           output data and the metadata of the Data Generation.
 
   WorkflowExecution:
-    class_uri: "nmdc:WorkflowExecution"
+    class_uri: nmdc:WorkflowExecution
     is_a: PlannedProcess
     aliases:
       - analysis

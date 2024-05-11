@@ -21,7 +21,7 @@ classes:
       - type
 
   QuantityValue:
-    class_uri: "nmdc:QuantityValue"
+    class_uri: nmdc:QuantityValue
     is_a: AttributeValue
     description: A simple quantity, e.g. 2cm
     slots:
@@ -41,7 +41,7 @@ classes:
       - schema:QuantityValue
 
   ImageValue:
-    class_uri: "nmdc:ImageValue"
+    class_uri: nmdc:ImageValue
     is_a: AttributeValue
     description: An attribute value representing an image.
     slots:
@@ -50,7 +50,7 @@ classes:
       - display_order
 
   PersonValue:
-    class_uri: "nmdc:PersonValue"
+    class_uri: nmdc:PersonValue
     is_a: AttributeValue
     description: An attribute value representing a person
     slots:
@@ -80,19 +80,19 @@ classes:
         annotations:
           display_hint: First name, middle initial, and last name of this person.
   TextValue:
-    class_uri: "nmdc:TextValue"
+    class_uri: nmdc:TextValue
     is_a: AttributeValue
     description: A basic string value
     slots:
       - language
 
   #  UrlValue:
-  #    class_uri: "nmdc:UrlValue"
+  #    class_uri: nmdc:UrlValue
   #    is_a: AttributeValue
   #    description: A value that is a string that conforms to URL syntax
 
   TimestampValue:
-    class_uri: "nmdc:TimestampValue"
+    class_uri: nmdc:TimestampValue
     is_a: AttributeValue
     description: A value that is a timestamp. The range should be ISO-8601
     notes:
@@ -132,7 +132,7 @@ classes:
         required: true
 
   GeolocationValue:
-    class_uri: "nmdc:GeolocationValue"
+    class_uri: nmdc:GeolocationValue
     is_a: AttributeValue
     description: A normalized value for a location on the earth's surface
     slots:
