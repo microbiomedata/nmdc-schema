@@ -169,7 +169,7 @@ classes:
           interpolated: true
   
   FunctionalAnnotationAggMember:
-    class_uri: "nmdc:FunctionalAnnotationAggMember"
+    class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
       - metagenome_annotation_id
       - gene_function_id

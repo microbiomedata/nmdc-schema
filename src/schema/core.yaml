@@ -146,7 +146,7 @@ classes:
           interpolated: true
 
   MetagenomeAnnotation:
-    class_uri: "nmdc:MetagenomeAnnotation"
+    class_uri: nmdc:MetagenomeAnnotation
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
     is_a: WorkflowExecution
     slots:
@@ -1202,7 +1202,7 @@ classes:
       - OBI:0000094
 
   PortionOfSubstance:
-    class_uri: "nmdc:PortionOfSubstance"
+    class_uri: nmdc:PortionOfSubstance
     title: Portion of a Substance
     mappings:
       - schema:Substance
@@ -1218,7 +1218,7 @@ classes:
       - volume
 
   ProcessedSample:
-    class_uri: "nmdc:ProcessedSample"
+    class_uri: nmdc:ProcessedSample
     is_a: MaterialEntity
     title: Processed Sample
     slots:
@@ -1235,7 +1235,7 @@ classes:
           interpolated: true
 
   Site:
-    class_uri: "nmdc:Site"
+    class_uri: nmdc:Site
     abstract: true
     is_a: MaterialEntity
     title: Site
@@ -1253,7 +1253,7 @@ classes:
     class_uri: 'nmdc:EnvironmentalMaterialTerm'
 
   MagBin:
-    class_uri: "nmdc:MagBin"
+    class_uri: nmdc:MagBin
     slots:
       - bin_name
       - bin_quality
@@ -1277,7 +1277,7 @@ classes:
       - type
 
   MetaboliteIdentification:
-    class_uri: "nmdc:MetaboliteIdentification"
+    class_uri: nmdc:MetaboliteIdentification
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
     slots:
       - alternative_identifiers
@@ -1286,7 +1286,7 @@ classes:
       - type
 
   PeptideQuantification:
-    class_uri: "nmdc:PeptideQuantification"
+    class_uri: nmdc:PeptideQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
     slots:
       - type
@@ -1298,7 +1298,7 @@ classes:
       - peptide_sum_masic_abundance
 
   ProteinQuantification:
-    class_uri: "nmdc:ProteinQuantification"
+    class_uri: nmdc:ProteinQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific protein
     slots:
       - all_proteins
@@ -1314,7 +1314,7 @@ classes:
         description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
 
   ChemicalEntity:
-    class_uri: "nmdc:ChemicalEntity"
+    class_uri: nmdc:ChemicalEntity
     aliases:
       - metabolite
       - chemical substance
@@ -1348,7 +1348,7 @@ classes:
       - biolink:ChemicalSubstance
 
   GeneProduct:
-    class_uri: "nmdc:GeneProduct"
+    class_uri: nmdc:GeneProduct
     is_a: NamedThing
     description: A molecule encoded by a gene that has an evolved function
     notes:

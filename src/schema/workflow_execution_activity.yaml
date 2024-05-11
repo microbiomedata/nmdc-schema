@@ -16,7 +16,7 @@ default_range: string
 
 classes:
   MetagenomeAssembly:
-    class_uri: "nmdc:MetagenomeAssembly"
+    class_uri: nmdc:MetagenomeAssembly
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
     comments:
       - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
@@ -60,7 +60,7 @@ classes:
           interpolated: true
 
   MetatranscriptomeAssembly:
-    class_uri: "nmdc:MetatranscriptomeAssembly"
+    class_uri: nmdc:MetatranscriptomeAssembly
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -102,7 +102,7 @@ classes:
 
 
   MetatranscriptomeAnnotation:
-    class_uri: "nmdc:MetatranscriptomeAnnotation"
+    class_uri: nmdc:MetatranscriptomeAnnotation
     is_a: WorkflowExecution
     slots:
       - img_identifiers
@@ -118,7 +118,7 @@ classes:
         maximum_cardinality: 1
 
   MetatranscriptomeAnalysis:
-    class_uri: "nmdc:MetatranscriptomeAnalysis"
+    class_uri: nmdc:MetatranscriptomeAnalysis
     is_a: WorkflowExecution
     description: >-
       A metatranscriptome activity that e.g. pools assembly and annotation activity.
@@ -137,7 +137,7 @@ classes:
 
 
   MagsAnalysis:
-    class_uri: "nmdc:MagsAnalysis"
+    class_uri: nmdc:MagsAnalysis
     description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
     is_a: WorkflowExecution
@@ -162,7 +162,7 @@ classes:
 
 
   MetagenomeSequencing:
-    class_uri: "nmdc:MetagenomeSequencing"
+    class_uri: nmdc:MetagenomeSequencing
     description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
     is_a: WorkflowExecution
@@ -177,7 +177,7 @@ classes:
 
 
   ReadQcAnalysis:
-    class_uri: "nmdc:ReadQcAnalysis"
+    class_uri: nmdc:ReadQcAnalysis
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
     title: Read quality control analysis activity
     is_a: WorkflowExecution
@@ -198,7 +198,7 @@ classes:
           interpolated: true
 
   ReadBasedTaxonomyAnalysis:
-    class_uri: "nmdc:ReadBasedTaxonomyAnalysis"
+    class_uri: nmdc:ReadBasedTaxonomyAnalysis
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
     title: Read based analysis activity
     is_a: WorkflowExecution
@@ -213,7 +213,7 @@ classes:
 
 
   MetabolomicsAnalysis:
-    class_uri: "nmdc:MetabolomicsAnalysis"
+    class_uri: nmdc:MetabolomicsAnalysis
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -228,7 +228,7 @@ classes:
           interpolated: true
 
   MetaproteomicsAnalysis:
-    class_uri: "nmdc:MetaproteomicsAnalysis"
+    class_uri: nmdc:MetaproteomicsAnalysis
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
@@ -242,7 +242,7 @@ classes:
           interpolated: true
 
   NomAnalysis:
-    class_uri: "nmdc:NomAnalysis"
+    class_uri: nmdc:NomAnalysis
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
