@@ -906,7 +906,7 @@ enums:
           LC-MS-based lipid assignment results table.
 
       Contaminants Amino Acid FASTA:
-        description: FASTA amino acid file for  contaminant proteins commonly observed in proteomics data.
+        description: FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
 
       Analysis Tool Parameter File:
         description: A configuration file used by a single computational software tool that stores settings that are specific to that tool.
