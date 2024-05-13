@@ -1761,7 +1761,7 @@ enums:
       RNA: { }
       metabolite: { }
       protein: { }
-      phenol/chloroform extraction: { }
+
 
   LibraryTypeEnum:
     # start using the right case for enum names
