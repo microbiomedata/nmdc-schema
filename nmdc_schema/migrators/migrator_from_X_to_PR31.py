@@ -69,7 +69,7 @@ class Migrator(MigratorBase):
                 if similarity_ratio < 1.0:
                     self.logger.info(f"Workflow with id {doc['id']} has instrument: {doc['used']} matches OmicsProcessing doc instrument: {omics_processing_doc['instrument_name']} well enough")
                     doc.pop("used")
-                elif similarity_ratio == 1.0:
+                else:
                     doc.pop("used")
             else:
                 self.logger.error(f"Workflow doc {doc['id']} with instrument: {doc['used']} does not match {omics_processing_doc['instrument_name']}")
