@@ -57,7 +57,7 @@ class Migrator(MigratorBase):
         if "used" in doc:
             omics_processing_doc = self.adapter.get_document_having_value_in_field(
                 collection_name="omics_processing_set", field_name="id", value=doc["was_informed_by"]
-                )
+            )
             
             # Preprocess instrument strings to ignore hyphens, underscores, and blank spaces
             processed_doc = self.preprocess_string(doc["used"])
