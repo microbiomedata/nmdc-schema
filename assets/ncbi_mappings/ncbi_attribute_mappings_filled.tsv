@@ -299,7 +299,7 @@ Biosample	mineral_nutr_regm	TextValue	mineral_nutr_regm
 Biosample	misc_param	TextValue	misc_param		
 Biosample	mod_date	string			
 Biosample	n_alkanes	TextValue	n_alkanes		
-Biosample	name	string			
+Biosample	name	string	sample_name		
 Biosample	ncbi_taxonomy_name	string			
 Biosample	neon_biosample_identifiers	external_identifier			
 Biosample	nitrate	QuantityValue	nitrate		
@@ -429,8 +429,8 @@ Biosample	salinity_category	string
 Biosample	salinity_meth	TextValue	salinity_meth		
 Biosample	salt_regm	TextValue	salt_regm		
 Biosample	samp_capt_status	samp_capt_status_enum	samp_capt_status		
-Biosample	samp_collec_device	string			
-Biosample	samp_collec_method	string			
+Biosample	samp_collec_device	string	samp_collect_device		
+Biosample	samp_collec_method	string	sam_collect_method		
 Biosample	samp_collect_point	samp_collect_point_enum	samp_collect_point		
 Biosample	samp_dis_stage	samp_dis_stage_enum	samp_dis_stage		
 Biosample	samp_floor	samp_floor_enum	samp_floor		
