@@ -526,3 +526,16 @@ local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_dat
 	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
+
+# ----	NMDC NCBI mapping process ---- #
+assets/ncbi_mappings/ncbi_attribute_mappings.tsv:
+	poetry run nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
+		--tsv-output $@
+
+assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/ncbi_attribute_mappings.tsv
+	poetry run nmdc-ncbi-mapping exact-term-matching \
+		--tsv-input $< \
+		--tsv-output $@
+
+	poetry run nmdc-ncbi-mapping ignore-import-schema-slots $@
+	
