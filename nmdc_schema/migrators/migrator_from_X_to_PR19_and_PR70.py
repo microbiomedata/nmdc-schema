@@ -68,7 +68,7 @@ class Migrator(MigratorBase):
 
             if matches:
 
-                    # Match instrument_name with with instrument set and get corresponding instrument id
+                    # Match instrument_name with instrument set and get corresponding instrument id
                     match = matches[0]
                     self.logger.info(f"instrument_name in {omics_doc['id']} is {omics_doc['instrument_name']} and will be matched to instrument with name {match}")
                     
