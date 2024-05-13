@@ -65,7 +65,7 @@ class Migrator(MigratorBase):
             
             similarity_ratio = SequenceMatcher(None, processed_workflow_instrument_string, processed_omics_doc_instrument_string).ratio()
             threshold = 0.8
-            if similarity_ratio >= threshold :
+            if similarity_ratio >= threshold:
                 if similarity_ratio < 1.0:
                     self.logger.info(f"Workflow with id {doc['id']} has instrument: {doc['used']} matches OmicsProcessing doc instrument: {omics_processing_doc['instrument_name']} well enough")
                     doc.pop("used")
