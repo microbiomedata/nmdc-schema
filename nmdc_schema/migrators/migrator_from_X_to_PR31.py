@@ -36,6 +36,14 @@ class Migrator(MigratorBase):
             )
     
     def preprocess_string(self, s):
+        r"""
+        Normalizes strings prior to using SequenceMatcher. Removes white spaces, hyphens, and 
+        underscores from a string so difflib's SequenceMatcher can find the longest contiguous 
+        matching subsequence between two sequences and these characters will not interfere.
+        >>> m = Migrator()
+        >>> m.preprocess_string('a  b_-_c -de:f g'
+        abcde:fg
+        """
 
         return s.replace(" ", "").replace("_","").replace("-","")
 
