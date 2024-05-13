@@ -60,10 +60,10 @@ class Migrator(MigratorBase):
             )
             
             # Preprocess instrument strings to ignore hyphens, underscores, and blank spaces
-            processed_doc = self.preprocess_string(doc["used"])
-            processed_omics_doc = self.preprocess_string(omics_processing_doc["instrument_name"])
+            processed_workflow_instrument_string = self.preprocess_string(doc["used"])
+            processed_omics_doc_instrument_string = self.preprocess_string(omics_processing_doc["instrument_name"])
             
-            similarity_ratio = SequenceMatcher(None, processed_doc, processed_omics_doc).ratio()
+            similarity_ratio = SequenceMatcher(None, processed_workflow_instrument_string, processed_omics_doc_instrument_string).ratio()
             threshold = 0.8
             if similarity_ratio >= threshold :
                 if similarity_ratio < 1.0:
