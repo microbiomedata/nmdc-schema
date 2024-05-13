@@ -154,6 +154,29 @@ classes:
       - CHMO:0000470
     slots:
       - eluent_introduction
+      - has_configuration
+      - has_calibration
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
+  Configuration:
+    abstract: true
+    is_a: InformationObject
+    class_uri: nmdc:Configuration
+    description: A set of parameters that define the actions of a process and is shared among multiple instances of the process.
+    notes:
+      - This class is intended to represent the parameters within a method file (or similar) that control a process.
+
+  MassSpectrometryConfiguration:
+    is_a: Configuration
+    class_uri: nmdc:MassSpectrometryConfiguration
+    description: A set of parameters that define and control the actions of a mass spectrometry process. 
+    notes:
+      - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
+    slots:
       - acquisition_category
       - acquisition_strategy
       - resolution_categories
@@ -161,11 +184,14 @@ classes:
       - ionization_source
       - mass_spectrum_collection_modes
       - polarity_mode
-      - has_calibration
     slot_usage:
+      name:
+        required: true
+      description:
+        required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
   
   FunctionalAnnotationAggMember:
@@ -218,6 +244,7 @@ classes:
       - study_set
       - workflow_execution_set
       - instrument_set
+      - configuration_set
       - calibration_set
 
   Pooling:
@@ -727,6 +754,10 @@ slots:
     range: FluidHandling
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
+  has_configuration:
+    range: Configuration
+    description: a set of parameters that define the actions of the process
+
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
     range: WorkflowExecution
@@ -985,6 +1016,10 @@ slots:
     mixins: object_set
     range: CalibrationInformation
     description: This property links a database object to the set of calibrations within it.
+  configuration_set:
+    mixins: object_set
+    range: Configuration
+    description: This property links a database object to the set of configurations within it.
 
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
