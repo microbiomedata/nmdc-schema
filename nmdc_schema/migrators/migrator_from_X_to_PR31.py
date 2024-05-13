@@ -41,8 +41,8 @@ class Migrator(MigratorBase):
 
     def remove_used_slot(self, doc: dict) -> dict:
         r"""
-        Removes the used slot from WorkflowExecution subclasses if the value matches the 
-        instrument_name slot from the corresponding OmicsProcessing document by the longest
+        Removes the `used` slot from `WorkflowExecution` subclasses if the value matches the 
+        instrument_name slot from the corresponding `OmicsProcessing` document by the longest
         common sequence.
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
