@@ -430,7 +430,7 @@ Biosample	salinity_meth	TextValue	salinity_meth
 Biosample	salt_regm	TextValue	salt_regm		
 Biosample	samp_capt_status	samp_capt_status_enum	samp_capt_status		
 Biosample	samp_collec_device	string	samp_collect_device		
-Biosample	samp_collec_method	string	sam_collect_method		
+Biosample	samp_collec_method	string	samp_collect_method		
 Biosample	samp_collect_point	samp_collect_point_enum	samp_collect_point		
 Biosample	samp_dis_stage	samp_dis_stage_enum	samp_dis_stage		
 Biosample	samp_floor	samp_floor_enum	samp_floor		
