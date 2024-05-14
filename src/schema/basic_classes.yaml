@@ -647,6 +647,10 @@ enums:
           - NCIT:C61538
   InstrumentModelEnum:
     permissible_values:
+      exploris_21T:
+        aliases:
+          - Exploris 21T
+
       exploris_240:
         aliases:
           - Orbitrap Exploris 240
@@ -828,6 +832,9 @@ enums:
         aliases:
           - Oxford Nanopore Technologies
         meaning: OBI:0002755
+      pnnl:
+        aliases:
+          - PNNL
   FailureWhatEnum:
     description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
     permissible_values:
