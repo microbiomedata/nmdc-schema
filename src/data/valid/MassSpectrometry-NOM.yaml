@@ -1,0 +1,11 @@
+id: nmdc:dgms-99-oW43DzG1
+type: nmdc:MassSpectrometry
+has_input:
+  - nmdc:procsm-11-9gjxns61
+has_output:
+  - nmdc:dobj-00-9n9n9n
+has_configuration: nmdc:mscon-99-oW43DzG0
+eluent_introduction: nmdc:cspro-99-hello00
+analyte_category: nom
+associated_studies:
+  - nmdc:sty-00-555xxx
