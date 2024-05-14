@@ -5,6 +5,7 @@ calibration_set:
     internal_calibration: false
     calibration_target: retention_index
     calibration_standard: fames
+#TODO KRH: Remodel as chromatconfig
 planned_process_set:
   - id: nmdc:cspro-99-oW43DzG1
     type: nmdc:ChromatographicSeparationProcess
@@ -14,7 +15,6 @@ planned_process_set:
       - nmdc:procsm-11-05g48p91
     stationary_phase: Polysiloxane
     chromatographic_category: gas_chromatography
-    has_calibration: nmdc:calib-99-zUCd5Q
 data_object_set:
   - id: nmdc:dobj-12-krhrtjw9
     type: nmdc:DataObject
