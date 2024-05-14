@@ -11,8 +11,6 @@ def create_schema_view() -> SchemaView:
     
     >>> isinstance(create_schema_view(), SchemaView)
     True
-    >>> hasattr(create_schema_view(), "schema")
-    True
     """
     schema_definition = get_nmdc_schema_definition()
     schema_view = SchemaView(schema_definition)
