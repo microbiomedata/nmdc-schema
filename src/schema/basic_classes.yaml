@@ -521,6 +521,7 @@ slots:
     range: Instrument
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
+    pattern: "^nmdc:inst-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
 
   model:
     range: InstrumentModelEnum
