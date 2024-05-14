@@ -1,5 +1,15 @@
 [
     {
+        "id": "nmdc:chem-99-000016",
+        "type": "nmdc:ChemicalEntity",
+        "name": "formic acid",
+        "alternative_identifiers": [
+            "CHEBI:30751"
+        ],
+        "chemical_formula": "CH2O2",
+        "inchi_key": "BDAGIHXWWSANSR-UHFFFAOYSA-N"
+    },
+    {
         "id": "nmdc:chem-99-000001",
         "type": "nmdc:ChemicalEntity",
         "name": "glucose",

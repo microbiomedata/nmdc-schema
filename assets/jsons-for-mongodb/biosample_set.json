@@ -210,38 +210,6 @@
         "dna_cont_type": "tube"
     },
     {
-        "id": "nmdc:bsm-99-dtTMNb",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "rna_cont_type": "tube"
-    },
-    {
         "id": "nmdc:bsm-99-J9FcnC",
         "type": "nmdc:Biosample",
         "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33 endosphere",
@@ -464,7 +432,7 @@
         ]
     },
     {
-        "id": "nmdc:bsm-ae4-n3ybxz",
+        "id": "nmdc:bsm-99-n3ybxz",
         "type": "nmdc:Biosample",
         "name": "soil sample 1",
         "description": "soil sample collected from a grassland ecosystem",
@@ -495,10 +463,10 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-ae4-78f4bc"
+        "collected_from": "nmdc:frsite-99-78f4bc"
     },
     {
-        "id": "nmdc:bsm-ae4-b316vq",
+        "id": "nmdc:bsm-99-b316vq",
         "type": "nmdc:Biosample",
         "name": "soil sample 2",
         "description": "soil sample collected from a grassland ecosystem",
@@ -529,10 +497,10 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-ae4-78f4bc"
+        "collected_from": "nmdc:frsite-99-78f4bc"
     },
     {
-        "id": "nmdc:bsm-ae4-q9t93w",
+        "id": "nmdc:bsm-99-q9t93w",
         "type": "nmdc:Biosample",
         "name": "soil sample 3",
         "description": "soil sample collected from a grassland ecosystem",
@@ -563,10 +531,10 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-ae4-78f4bc"
+        "collected_from": "nmdc:frsite-99-78f4bc"
     },
     {
-        "id": "nmdc:bsm-ae4-t2r77l",
+        "id": "nmdc:bsm-99-t2r77l",
         "type": "nmdc:Biosample",
         "name": "water sample 1",
         "description": "water sample from a freshwater lake",
@@ -597,10 +565,10 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-ae4-k4m6j9"
+        "collected_from": "nmdc:frsite-99-k4m6j9"
     },
     {
-        "id": "nmdc:bsm-ae4-x971d3",
+        "id": "nmdc:bsm-99-x971d3",
         "type": "nmdc:Biosample",
         "name": "water sample 2",
         "description": "water sample from a freshwater lake",
@@ -631,10 +599,10 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-ae4-k4m6j9"
+        "collected_from": "nmdc:frsite-99-k4m6j9"
     },
     {
-        "id": "nmdc:bsm-ae4-c6dlm7",
+        "id": "nmdc:bsm-99-c6dlm7",
         "type": "nmdc:Biosample",
         "name": "water sample 3",
         "description": "water sample from a freshwater lake",
@@ -665,10 +633,10 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-ae4-k4m6j9"
+        "collected_from": "nmdc:frsite-99-k4m6j9"
     },
     {
-        "id": "nmdc:bsm-ae4-p7k6v9",
+        "id": "nmdc:bsm-99-p7k6v9",
         "type": "nmdc:Biosample",
         "name": "human gut sample 1",
         "description": "fecal sample from a human subject",
@@ -709,7 +677,7 @@
         }
     },
     {
-        "id": "nmdc:bsm-ae4-v9w6y6",
+        "id": "nmdc:bsm-99-bbbbbb",
         "type": "nmdc:Biosample",
         "name": "human gut sample 2",
         "description": "fecal sample from a human subject",
@@ -750,7 +718,7 @@
         }
     },
     {
-        "id": "nmdc:bsm-ae4-d9j6n9",
+        "id": "nmdc:bsm-99-d9j6n9",
         "type": "nmdc:Biosample",
         "name": "human gut sample 3",
         "description": "fecal sample from a human subject",
@@ -791,7 +759,7 @@
         }
     },
     {
-        "id": "nmdc:bsm-99-dtTMNb",
+        "id": "nmdc:bsm-99-999999",
         "type": "nmdc:Biosample",
         "name": "Lithgow State Coal Mine Calcium nutrients (early)",
         "description": "Bulk Aqueous phase filtered water",
@@ -1063,7 +1031,7 @@
         "sample_collection_site": "Lithgow State Coal Mine"
     },
     {
-        "id": "nmdc:bsm-99-dtTMNb",
+        "id": "nmdc:bsm-99-111111",
         "type": "nmdc:Biosample",
         "associated_studies": [
             "nmdc:sty-00-abc123"
@@ -1167,7 +1135,7 @@
         ]
     },
     {
-        "id": "nmdc:bsm-j8p-74d83z",
+        "id": "nmdc:bsm-99-74d83z",
         "type": "nmdc:Biosample",
         "name": "soil sample from tropical rainforest",
         "description": "Soil sample collected from the forest floor of a tropical rainforest.",
@@ -1198,7 +1166,7 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-j8p-29dl6v",
+        "collected_from": "nmdc:frsite-99-29dl6v",
         "gold_biosample_identifiers": [
             "gold:Gb01234567"
         ],
@@ -1234,7 +1202,7 @@
         }
     },
     {
-        "id": "nmdc:bsm-m2l-49z38t",
+        "id": "nmdc:bsm-99-49z38t",
         "type": "nmdc:Biosample",
         "name": "mouse gut sample",
         "description": "Fecal sample collected from a laboratory mouse.",
@@ -1265,7 +1233,7 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-m2l-96d7l4",
+        "collected_from": "nmdc:frsite-99-96d7l4",
         "host_taxid": {
             "type": "nmdc:ControlledIdentifiedTermValue",
             "has_raw_value": "NCBITaxon:10090",
@@ -1288,7 +1256,7 @@
         ]
     },
     {
-        "id": "nmdc:bsm-k48-v9w6y6",
+        "id": "nmdc:bsm-99-aaaaaa",
         "type": "nmdc:Biosample",
         "name": "human gut sample",
         "description": "Fecal sample collected from a human subject.",
@@ -1319,7 +1287,7 @@
                 "type": "nmdc:OntologyClass"
             }
         },
-        "collected_from": "nmdc:frsite-k48-9j6n9t",
+        "collected_from": "nmdc:frsite-99-9j6n9t",
         "host_taxid": {
             "type": "nmdc:ControlledIdentifiedTermValue",
             "has_raw_value": "NCBITaxon:9606",
@@ -1342,7 +1310,7 @@
         ]
     },
     {
-        "id": "nmdc:bsm-99-dtTMNb",
+        "id": "nmdc:bsm-99-222222",
         "type": "nmdc:Biosample",
         "associated_studies": [
             "nmdc:sty-00-abc123"
@@ -1374,7 +1342,7 @@
         "rna_volume": 12.0
     },
     {
-        "id": "nmdc:bsm-99-dtTMNb",
+        "id": "nmdc:bsm-99-333333",
         "type": "nmdc:Biosample",
         "associated_studies": [
             "nmdc:sty-00-abc123"
@@ -1404,39 +1372,6 @@
             }
         },
         "dna_cont_well": "B2",
-        "dna_cont_type": "plate"
-    },
-    {
-        "id": "nmdc:bsm-99-000001",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "dna_cont_well": "A10",
         "dna_cont_type": "plate"
     },
     {
@@ -1572,40 +1507,7 @@
         "dna_cont_type": "plate"
     },
     {
-        "id": "nmdc:bsm-99-000006",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "dna_cont_well": "C12",
-        "dna_cont_type": "plate"
-    },
-    {
-        "id": "nmdc:bsm-99-dtTMNb",
+        "id": "nmdc:bsm-99-4444444",
         "type": "nmdc:Biosample",
         "name": "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values.",
         "description": "unconstrained text",
@@ -1700,7 +1602,7 @@
         "agrochem_addition": [
             {
                 "type": "nmdc:TextValue",
-                "has_raw_value": "lime;1 kg/acre;2022-11-16T16:05:42+0000"
+                "has_raw_value": "lime;1 kg/acre;2022-99-16T16:05:42+0000"
             }
         ],
         "air_PM_concen": [
@@ -3440,7 +3342,7 @@
         ]
     },
     {
-        "id": "nmdc:bsm-99-dtTMNb",
+        "id": "nmdc:bsm-99-555555",
         "type": "nmdc:Biosample",
         "associated_studies": [
             "nmdc:sty-00-abc123"
@@ -3506,138 +3408,6 @@
         "rna_cont_well": "A10"
     },
     {
-        "id": "nmdc:bsm-99-000002",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "rna_cont_type": "plate",
-        "rna_cont_well": "A11"
-    },
-    {
-        "id": "nmdc:bsm-99-000003",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "rna_cont_type": "plate",
-        "rna_cont_well": "H10"
-    },
-    {
-        "id": "nmdc:bsm-99-000004",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "rna_cont_type": "plate",
-        "rna_cont_well": "H11"
-    },
-    {
-        "id": "nmdc:bsm-99-000005",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "rna_cont_type": "plate",
-        "rna_cont_well": "C1"
-    },
-    {
         "id": "nmdc:bsm-99-000006",
         "type": "nmdc:Biosample",
         "associated_studies": [
@@ -3671,7 +3441,7 @@
         "rna_cont_well": "C12"
     },
     {
-        "id": "nmdc:bsm-99-dtTMNb",
+        "id": "nmdc:bsm-99-666666",
         "type": "nmdc:Biosample",
         "name": "real biosample from the field",
         "associated_studies": [
@@ -3798,130 +3568,6 @@
     },
     {
         "id": "nmdc:bsm-99-abcdef3",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-00-abc123"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        }
-    },
-    {
-        "id": "nmdc:bsm-99-abcdef1",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-11-34xj1150"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        }
-    },
-    {
-        "id": "nmdc:bsm-99-abcdef2",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-11-34xj1150"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        }
-    },
-    {
-        "id": "nmdc:bsm-99-abcdef3",
-        "type": "nmdc:Biosample",
-        "associated_studies": [
-            "nmdc:sty-11-34xj1150"
-        ],
-        "env_broad_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002030",
-            "term": {
-                "id": "ENVO:00002030",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_local_scale": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00002169",
-            "term": {
-                "id": "ENVO:00002169",
-                "type": "nmdc:OntologyClass"
-            }
-        },
-        "env_medium": {
-            "type": "nmdc:ControlledIdentifiedTermValue",
-            "has_raw_value": "ENVO:00005792",
-            "term": {
-                "id": "ENVO:00005792",
-                "type": "nmdc:OntologyClass"
-            }
-        }
-    },
-    {
-        "id": "nmdc:bsm-99-dtTMNb",
         "type": "nmdc:Biosample",
         "associated_studies": [
             "nmdc:sty-00-abc123"

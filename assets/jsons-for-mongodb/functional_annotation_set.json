@@ -1,9 +1,37 @@
 [
     {
         "type": "nmdc:FunctionalAnnotation",
+        "has_function": "KEGG.ORTHOLOGY:K00001",
+        "subject": "nmdc:geneproduct-99-ASDSDGASDGAS",
+        "was_generated_by": "nmdc:wfmgan-99-4d83z",
+        "feature_category": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "SO:0000316",
+            "term": {
+                "id": "SO:0000316",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "KEGG.ORTHOLOGY:K00002",
+        "subject": "nmdc:geneproduct-99-SDGASDGASDG",
+        "was_generated_by": "nmdc:wfmgan-99-4d83z",
+        "feature_category": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "SO:0000316",
+            "term": {
+                "id": "SO:0000316",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
         "has_function": "KEGG.ORTHOLOGY:K01198",
         "subject": "nmdc:geneproduct-k2d-7v9t3",
-        "was_generated_by": "nmdc:wfmgan-v9w-4d83z",
+        "was_generated_by": "nmdc:wfmgan-99-4d83z",
         "feature_category": {
             "type": "nmdc:ControlledIdentifiedTermValue",
             "has_raw_value": "SO:0000316",

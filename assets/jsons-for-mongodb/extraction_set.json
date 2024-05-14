@@ -10,8 +10,8 @@
         "has_output": [
             "generic:xxx"
         ],
-        "start_date": "2019-11-08",
-        "end_date": "2019-11-08",
+        "start_date": "2019-99-08",
+        "end_date": "2019-99-08",
         "qc_status": "pass",
         "extraction_target": "DNA",
         "input_mass": {
@@ -21,46 +21,14 @@
         }
     },
     {
-        "id": "nmdc:extrp-99-abcdef",
-        "type": "nmdc:Extraction",
-        "name": "DNA extraction of NEON sample WREF_072-O-20190618-COMP",
-        "description": "DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7",
-        "has_input": [
-            "generic:xxx"
-        ],
-        "has_output": [
-            "generic:xxx"
-        ],
-        "start_date": "2019-11-08",
-        "end_date": "2019-11-08",
-        "qc_status": "pass",
-        "extraction_target": "DNA",
-        "input_mass": {
-            "type": "nmdc:QuantityValue",
-            "has_numeric_value": 0.25,
-            "has_unit": "gram"
-        }
-    },
-    {
-        "id": "nmdc:extrp-99-abcdef",
-        "type": "nmdc:Extraction",
-        "name": "DNA extraction of NEON sample WREF_072-O-20190618-COMP",
-        "has_input": [
-            "generic:xxx"
-        ],
-        "has_output": [
-            "generic:yyy"
-        ]
-    },
-    {
-        "id": "nmdc:extrp-83z-74d83z",
+        "id": "nmdc:extrp-99-74d83z",
         "type": "nmdc:Extraction",
         "name": "soil DNA extraction",
         "has_input": [
-            "nmdc:bsm-j8p-74d83z"
+            "nmdc:bsm-99-74d83z"
         ],
         "has_output": [
-            "nmdc:procsm-83z-k4m6j"
+            "nmdc:procsm-99-k4m6j"
         ],
         "extraction_target": "DNA",
         "input_mass": {
@@ -70,14 +38,14 @@
         }
     },
     {
-        "id": "nmdc:extrp-49z-96d7l",
+        "id": "nmdc:extrp-99-96d7l",
         "type": "nmdc:Extraction",
         "name": "mouse gut DNA extraction",
         "has_input": [
-            "nmdc:bsm-m2l-49z38t"
+            "nmdc:bsm-99-49z38t"
         ],
         "has_output": [
-            "nmdc:procsm-49z-29dl"
+            "nmdc:procsm-99-29dl"
         ],
         "extraction_target": "DNA",
         "volume": {
@@ -87,43 +55,15 @@
         }
     },
     {
-        "id": "nmdc:extrp-j6n-v9w6y",
+        "id": "nmdc:extrp-99-v9w6y",
         "type": "nmdc:Extraction",
         "name": "human gut DNA extraction",
         "has_input": [
-            "nmdc:bsm-k48-v9w6y6"
+            "nmdc:bsm-99-bbbbbb"
         ],
         "has_output": [
-            "nmdc:procsm-j6n-3z8t"
+            "nmdc:procsm-99-3z8t"
         ],
-        "extraction_target": "DNA"
-    },
-    {
-        "id": "nmdc:extrp-99-abcdef",
-        "type": "nmdc:Extraction",
-        "name": "first dna extraction set",
-        "has_input": [
-            "nmdc:procsm-99-pooled"
-        ],
-        "has_output": [
-            "nmdc:procsm-99-extract"
-        ],
-        "start_date": "2021-01-15",
-        "end_date": "2021-01-15",
-        "extraction_target": "DNA"
-    },
-    {
-        "id": "nmdc:extrp-99-abcdef",
-        "type": "nmdc:Extraction",
-        "name": "first dna extraction set",
-        "has_input": [
-            "nmdc:procsm-99-xyz1"
-        ],
-        "has_output": [
-            "nmdc:procsm-99-xyz2"
-        ],
-        "start_date": "2021-01-15",
-        "end_date": "2021-01-15",
         "extraction_target": "DNA"
     }
 ]

@@ -18,7 +18,7 @@
         "execution_resource": "NERSC-Cori",
         "git_url": "https://img.jgi.doe.gov",
         "part_of": [
-            "nmdc:wfch-11-ab"
+            "nmdc:wfch-99-ab"
         ],
         "started_at_time": "2021-01-10T00:00:00+00:00",
         "binned_contig_num": 489,
@@ -93,7 +93,7 @@
         "type": "nmdc:MagsAnalysis",
         "name": "human gut MAGs analysis",
         "has_input": [
-            "nmdc:dobj-j6n-9t74d"
+            "nmdc:dobj-99-9t74d"
         ],
         "has_output": [
             "nmdc:dobj-6y6-j6n9t"
@@ -102,7 +102,7 @@
         "execution_resource": "NERSC-Cori",
         "git_url": "https://github.com/microbiomedata/mags_analysis/releases/tag/v1.0.0",
         "part_of": [
-            "nmdc:wfch-k48-98f7b"
+            "nmdc:wfch-99-98f7b"
         ],
         "started_at_time": "2023-08-01T12:00:00Z",
         "binned_contig_num": 8000,

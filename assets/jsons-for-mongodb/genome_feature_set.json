@@ -15,5 +15,39 @@
                 "type": "nmdc:OntologyClass"
             }
         }
+    },
+    {
+        "type": "nmdc:GenomeFeature",
+        "start": 3000,
+        "end": 6000,
+        "seqid": "NC_000913.3",
+        "encodes": "nmdc:geneproduct-99-ASDSDGASDGAS",
+        "feature_type": "CDS",
+        "strand": "+",
+        "feature_category": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "SO:0000316",
+            "term": {
+                "id": "SO:0000316",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "type": "nmdc:GenomeFeature",
+        "start": 10000,
+        "end": 15000,
+        "seqid": "NC_000913.3",
+        "encodes": "nmdc:geneproduct-99-SDGASDGASDG",
+        "feature_type": "CDS",
+        "strand": "+",
+        "feature_category": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "SO:0000316",
+            "term": {
+                "id": "SO:0000316",
+                "type": "nmdc:OntologyClass"
+            }
+        }
     }
 ]

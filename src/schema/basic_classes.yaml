@@ -259,6 +259,7 @@ classes:
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
   InformationObject:
+    abstract: true
     is_a: NamedThing
     class_uri: nmdc:InformationObject
     description: >-
@@ -372,6 +373,7 @@ classes:
           output data and the metadata of the Data Generation.
 
   WorkflowExecution:
+    abstract: true
     class_uri: nmdc:WorkflowExecution
     is_a: PlannedProcess
     aliases:

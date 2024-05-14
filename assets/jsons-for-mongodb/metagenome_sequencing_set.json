@@ -1,38 +1,38 @@
 [
     {
-        "id": "nmdc:wfmsa-83z-49z38t",
+        "id": "nmdc:wfmsa-99-49z38t",
         "type": "nmdc:MetagenomeSequencing",
         "name": "soil metagenome sequencing",
         "has_input": [
-            "nmdc:procsm-83z-96d7"
+            "nmdc:procsm-99-96d7"
         ],
         "has_output": [
-            "nmdc:dobj-83z-74d83z"
+            "nmdc:dobj-99-74d83z"
         ],
         "ended_at_time": "2023-08-05T17:00:00Z",
         "execution_resource": "EMSL-RZR",
         "git_url": "https://github.com/microbiomedata/metagenome_sequencing/releases/tag/v0.9.1",
         "part_of": [
-            "nmdc:wfch-j8p-93z8"
+            "nmdc:wfch-99-93z8"
         ],
         "started_at_time": "2023-08-05T11:00:00Z"
     },
     {
-        "id": "nmdc:dgns-49z-96d7l",
+        "id": "nmdc:wfmsa-99-96d7l",
         "type": "nmdc:MetagenomeSequencing",
         "name": "mouse gut metagenome sequencing",
         "has_input": [
-            "nmdc:procsm-49z-38t7"
+            "nmdc:procsm-99-38t7"
         ],
         "has_output": [
-            "nmdc:dobj-49z-38t74d",
-            "nmdc:dobj-96d-7l49z3"
+            "nmdc:dobj-99-38t74d",
+            "nmdc:dobj-99-7l49z3"
         ],
         "ended_at_time": "2023-08-06T16:00:00Z",
         "execution_resource": "JGI",
         "git_url": "https://github.com/microbiomedata/metagenome_sequencing/releases/tag/v0.9.1",
         "part_of": [
-            "nmdc:wfch-m2l-dl96"
+            "nmdc:wfch-99-dl96"
         ],
         "started_at_time": "2023-08-06T10:00:00Z"
     },
@@ -50,7 +50,7 @@
         "execution_resource": "JGI",
         "git_url": "https://github.com/microbiomedata/RawSequencingData",
         "part_of": [
-            "nmdc:wfch-11-ab"
+            "nmdc:wfch-99-ab"
         ],
         "started_at_time": "2021-08-05T14:48:51+00:00",
         "version": "v1.0.0"

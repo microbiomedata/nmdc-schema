@@ -1,4 +1,63 @@
+workflow_execution_set:
+  - id: nmdc:wfmtas-99-v9w6y
+    type: nmdc:MetatranscriptomeAssembly
+    name: human gut metatranscriptome assembly
+    has_input:
+      - nmdc:dobj-99-7l49z
+    has_output:
+      - nmdc:dobj-99-9t74d
+    ended_at_time: '2023-08-04T14:00:00Z'
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/metatranscriptome_assembly/releases/tag/v1.2.3
+    part_of:
+      - nmdc:wfch-99-98f7b
+    started_at_time: '2023-08-04T08:00:00Z'
+    asm_score: 0.85
+    scaffolds: 1234.0
+    scaf_bp: 567890123.0
+    ctg_n50: 10000.0
+
+metaproteomics_analysis_set:
+  - id: nmdc:wfmp-99-74d83
+    type: nmdc:MetaproteomicsAnalysis
+    name: soil metaproteomics analysis
+    has_input:
+      - nmdc:dobj-99-74d83z
+    has_output:
+      - nmdc:dobj-99-74d83
+    ended_at_time: '2023-08-11T17:00:00Z'
+    execution_resource: EMSL
+    git_url: https://github.com/microbiomedata/metaproteomics_analysis/releases/tag/v0.6.3
+    part_of:
+      - nmdc:wfch-99-93z8
+    started_at_time: '2023-08-11T11:00:00Z'
+    has_peptide_quantifications:
+      - type: nmdc:PeptideQuantification
+        peptide_sequence: ASDSDGASDGAS
+        best_protein: nmdc:geneproduct-99-ASDSDGASDGAS
+        all_proteins:
+          - nmdc:geneproduct-99-ASDSDGASDGAS
+          - nmdc:geneproduct-99-SDGASDGASDG
+        min_q_value: 0.01
+        peptide_spectral_count: 123
+        peptide_sum_masic_abundance: 456
+      - type: nmdc:PeptideQuantification
+        peptide_sequence: SDGASDGASDG
+        best_protein: nmdc:geneproduct-99-SDGASDGASDG
+        all_proteins:
+          - nmdc:geneproduct-99-SDGASDGASDG
+        min_q_value: 0.02
+        peptide_spectral_count: 456
+        peptide_sum_masic_abundance: 789
+
 chemical_entity_set:
+  - id: nmdc:chem-99-000016
+    type: nmdc:ChemicalEntity
+    name: formic acid
+    alternative_identifiers:
+      - CHEBI:30751
+    chemical_formula: CH2O2
+    inchi_key: BDAGIHXWWSANSR-UHFFFAOYSA-N
   - id: nmdc:chem-99-000001
     type: nmdc:ChemicalEntity
     name: glucose
@@ -96,12 +155,256 @@ chemical_entity_set:
     description: A serine protease that hydrolyzes peptide bonds at the C-terminus of
       threonine, alanine, serine, and valine.
 planned_process_set:
+  - id: nmdc:matprc-99-123456
+    type: nmdc:DirectInfusionProcess
+    has_input:
+      - nmdc:procsm-99-000001
+    direct_infusion_category: direct_infusion
+  - id: nmdc:subspr-99-oW43DzG0
+    type: nmdc:SubSamplingProcess
+    has_input:
+      - nmdc:bsm-99-oW43DzG1 #This is an example biosample ID and does not represent a real biosample
+    container_size:
+      type: nmdc:QuantityValue
+      has_numeric_value: 50
+      has_unit: mL
+    contained_in: v-bottom_conical_tube
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 20
+      has_unit: mL
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 25
+      has_unit: C
+    mass:
+      type: nmdc:QuantityValue
+      has_numeric_value: 30
+      has_unit: g
+    has_output:
+      - nmdc:procsm-11-05g48p90
+    sampled_portion:
+      - supernatant
+  - id: nmdc:matprc-99-zUCd5N
+    substances_used:
+      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: '%'
+          has_numeric_value: 1
+    contained_in: falcon_tube
+    start_date: "2021-01-14"
+    temperature:
+      type: nmdc:QuantityValue
+      has_unit: degrees Celsius
+      has_numeric_value: 80
+    has_input:
+      - nmdc:procsm-99-dtTMNb
+    has_output:
+      - nmdc:procsm-78-BZAPKH
+    type: nmdc:StorageProcess
+  - id: nmdc:pex-99-18sD2
+    type: nmdc:ProtocolExecution
+    has_input:
+      - nmdc:bsm-6
+    has_process_parts:
+      - nmdc:extrp-71-r2pk
+      - nmdc:filtpr-22-32G2BS
+    protocol_execution_category: organic_matter_extraction
+    protocol_link:
+      type: nmdc:Protocol
+      url: https://www.protocols.io/view/water-extractable-organic-matter-weom-ewov1o4oylr2/v1
+      name: Water Extractable Organic Matter (WEOM)
+  - id: nmdc:cspro-99-xyzxyz
+    type: nmdc:ChromatographicSeparationProcess
+    has_input:
+      - nmdc:procsm-11-9gjxns61
+    has_output:
+      - nmdc:procsm-11-05g48p90
+      - nmdc:procsm-11-05g48p91
+    stationary_phase: BEH-HILIC
+    chromatographic_category: liquid_chromatography
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 25
+      has_unit: Cel
+    ordered_mobile_phases:
+      - type: nmdc:MobilePhaseSegment
+        duration:
+          type: nmdc:QuantityValue
+          has_unit: min
+          has_numeric_value: 60
+        substances_used:
+          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: '%'
+              has_numeric_value: 10
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: mM
+              has_numeric_value: 15
+  - id: nmdc:cspro-99-oW43DzG0
+    type: nmdc:ChromatographicSeparationProcess
+    has_input:
+      - nmdc:procsm-11-9gjxns61
+    has_output:
+      - nmdc:procsm-11-05g48p90
+      - nmdc:procsm-11-05g48p91
+    stationary_phase: "CN"
+    ordered_mobile_phases:
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: '%'
+              has_numeric_value: 10
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 700
+          has_unit: mL
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: mM
+              has_numeric_value: 15
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 700
+          has_unit: mL
+  - id: nmdc:mixpro-11-A74
+    type: nmdc:MixingProcess
+    has_input:
+      - nmdc:biosample-1 #This is an example biosample ID and does not represent a real biosample
+      - nmdc:processed-sample-2
+    has_output:
+      - nmdc:4
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 2
+      has_unit: hours
+    instrument_used:
+      - nmdc:inst-12-124
+  - id: nmdc:filtpr-22-32G2BS
+    type: nmdc:FiltrationProcess
+    has_input:
+      - nmdc:processed-sample-3
+    has_output:
+      - nmdc:7
+    conditionings:
+      - Methanol
+      - Sterile water #Milli-Q
+    filtration_category: pressure
+    instrument_used:
+      - nmdc:inst-12-125
+    is_pressurized: true
+  - id: nmdc:dispro-11-A74
+    type: nmdc:DissolvingProcess
+    has_input:
+      - nmdc:bsm-12-A67
+    has_output:
+      - nmdc:procsm-13-S67F
+    substances_used:
+      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 15
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 500
+          has_unit: mL
+      - known_as: nmdc:chem-99-000006
+        type: nmdc:PortionOfSubstance
+        substance_role: solubilizing_agent
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 2
+      has_unit: hours
+    instrument_used:
+      - nmdc:inst-12-124
+  - id: nmdc:chcpr-19-789
+    type: nmdc:ChemicalConversionProcess
+    has_input:
+      - "nmdc:fasp-37"
+    has_output:
+      - "nmdc:ome-39"
+    chemical_conversion_category: acid_base
+    substances_used:
+      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        sample_state_information: liquid
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 120
+          has_unit: mL
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 10
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 25
+      has_unit: Cel
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 1
+      has_unit: h
+  - id: nmdc:chcpr-19-7890
+    type: nmdc:ChemicalConversionProcess
+    has_input:
+      - "nmdc:procsm-37"
+    has_output:
+      - "nmdc:procsm-39"
+    substances_used:
+      - known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        sample_state_information: liquid
+        substance_role: solvent
+      - known_as: nmdc:chem-99-000002
+        type: nmdc:PortionOfSubstance
+        substance_role: buffer
+        source_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 50
+      - known_as: nmdc:chem-99-000014
+        type: nmdc:PortionOfSubstance
+        substance_role: ms_proteolytic_enzyme
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: μg/μL
+          has_numeric_value: 0.05
+    substances_volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 75
+      has_unit: μL
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 37
+      has_unit: Cel
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 3
+      has_unit: h
   - id: nmdc:cspro-99-oW43DzG1
     type: nmdc:ChromatographicSeparationProcess
     has_input:
-      - nmdc:procsm-11-9gjxns62
+      - nmdc:procsm-99-9gjxns62
     has_output:
-      - nmdc:procsm-11-05g48p91
+      - nmdc:procsm-99-05g48p91
     has_calibration: nmdc:calib-99-zUCd5Q
     chromatographic_category: gas_chromatography
     stationary_phase: Polysiloxane
@@ -296,29 +599,6 @@ biosample_set:
         id: ENVO:00005792
         type: nmdc:OntologyClass
     dna_cont_type: tube
-  - id: nmdc:bsm-99-dtTMNb
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-    rna_cont_type: tube
   - id: nmdc:bsm-99-J9FcnC
     type: nmdc:Biosample
     name: Root microbial communities from poplar common garden site in Clatskanie, Oregon,
@@ -493,7 +773,7 @@ biosample_set:
     collected_from: nmdc:frsite-99-h2mYFG
     gold_biosample_identifiers:
       - gold:Gb0291583
-  - id: nmdc:bsm-ae4-n3ybxz
+  - id: nmdc:bsm-99-n3ybxz
     type: nmdc:Biosample
     name: soil sample 1
     description: soil sample collected from a grassland ecosystem
@@ -517,8 +797,8 @@ biosample_set:
       term:
         id: ENVO:00001998
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-ae4-78f4bc
-  - id: nmdc:bsm-ae4-b316vq
+    collected_from: nmdc:frsite-99-78f4bc
+  - id: nmdc:bsm-99-b316vq
     type: nmdc:Biosample
     name: soil sample 2
     description: soil sample collected from a grassland ecosystem
@@ -542,8 +822,8 @@ biosample_set:
       term:
         id: ENVO:00001998
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-ae4-78f4bc
-  - id: nmdc:bsm-ae4-q9t93w
+    collected_from: nmdc:frsite-99-78f4bc
+  - id: nmdc:bsm-99-q9t93w
     type: nmdc:Biosample
     name: soil sample 3
     description: soil sample collected from a grassland ecosystem
@@ -567,8 +847,8 @@ biosample_set:
       term:
         id: ENVO:00001998
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-ae4-78f4bc
-  - id: nmdc:bsm-ae4-t2r77l
+    collected_from: nmdc:frsite-99-78f4bc
+  - id: nmdc:bsm-99-t2r77l
     type: nmdc:Biosample
     name: water sample 1
     description: water sample from a freshwater lake
@@ -592,8 +872,8 @@ biosample_set:
       term:
         id: ENVO:00002004
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-ae4-k4m6j9
-  - id: nmdc:bsm-ae4-x971d3
+    collected_from: nmdc:frsite-99-k4m6j9
+  - id: nmdc:bsm-99-x971d3
     type: nmdc:Biosample
     name: water sample 2
     description: water sample from a freshwater lake
@@ -617,8 +897,8 @@ biosample_set:
       term:
         id: ENVO:00002004
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-ae4-k4m6j9
-  - id: nmdc:bsm-ae4-c6dlm7
+    collected_from: nmdc:frsite-99-k4m6j9
+  - id: nmdc:bsm-99-c6dlm7
     type: nmdc:Biosample
     name: water sample 3
     description: water sample from a freshwater lake
@@ -642,8 +922,8 @@ biosample_set:
       term:
         id: ENVO:00002004
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-ae4-k4m6j9
-  - id: nmdc:bsm-ae4-p7k6v9
+    collected_from: nmdc:frsite-99-k4m6j9
+  - id: nmdc:bsm-99-p7k6v9
     type: nmdc:Biosample
     name: human gut sample 1
     description: fecal sample from a human subject
@@ -673,7 +953,7 @@ biosample_set:
       term:
         id: NCBITaxon:9606
         type: nmdc:OntologyClass
-  - id: nmdc:bsm-ae4-v9w6y6
+  - id: nmdc:bsm-99-bbbbbb
     type: nmdc:Biosample
     name: human gut sample 2
     description: fecal sample from a human subject
@@ -703,7 +983,7 @@ biosample_set:
       term:
         id: NCBITaxon:9606
         type: nmdc:OntologyClass
-  - id: nmdc:bsm-ae4-d9j6n9
+  - id: nmdc:bsm-99-d9j6n9
     type: nmdc:Biosample
     name: human gut sample 3
     description: fecal sample from a human subject
@@ -733,7 +1013,7 @@ biosample_set:
       term:
         id: NCBITaxon:9606
         type: nmdc:OntologyClass
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-999999
     type: nmdc:Biosample
     name: Lithgow State Coal Mine Calcium nutrients (early)
     description: Bulk Aqueous phase filtered water
@@ -948,7 +1228,7 @@ biosample_set:
     mod_date: 26-AUG-16 01.50.27.000000000 PM
     ncbi_taxonomy_name: coal metagenome
     sample_collection_site: Lithgow State Coal Mine
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-111111
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-abc123
@@ -1022,7 +1302,7 @@ biosample_set:
       - 01:24:03
       - 00:02:33
       - 00:02:02
-  - id: nmdc:bsm-j8p-74d83z
+  - id: nmdc:bsm-99-74d83z
     type: nmdc:Biosample
     name: soil sample from tropical rainforest
     description: Soil sample collected from the forest floor of a tropical rainforest.
@@ -1046,7 +1326,7 @@ biosample_set:
       term:
         id: ENVO:00001998
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-j8p-29dl6v
+    collected_from: nmdc:frsite-99-29dl6v
     gold_biosample_identifiers:
       - gold:Gb01234567
     insdc_biosample_identifiers:
@@ -1072,7 +1352,7 @@ biosample_set:
       type: nmdc:QuantityValue
       has_numeric_value: 25
       has_unit: Celsius
-  - id: nmdc:bsm-m2l-49z38t
+  - id: nmdc:bsm-99-49z38t
     type: nmdc:Biosample
     name: mouse gut sample
     description: Fecal sample collected from a laboratory mouse.
@@ -1096,7 +1376,7 @@ biosample_set:
       term:
         id: ENVO:00002005
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-m2l-96d7l4
+    collected_from: nmdc:frsite-99-96d7l4
     host_taxid:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: NCBITaxon:10090
@@ -1111,7 +1391,7 @@ biosample_set:
       - emsl:emsl_67890
     igsn_biosample_identifiers:
       - igsn:IEPA65432
-  - id: nmdc:bsm-k48-v9w6y6
+  - id: nmdc:bsm-99-aaaaaa
     type: nmdc:Biosample
     name: human gut sample
     description: Fecal sample collected from a human subject.
@@ -1135,7 +1415,7 @@ biosample_set:
       term:
         id: ENVO:00002005
         type: nmdc:OntologyClass
-    collected_from: nmdc:frsite-k48-9j6n9t
+    collected_from: nmdc:frsite-99-9j6n9t
     host_taxid:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: NCBITaxon:9606
@@ -1150,7 +1430,7 @@ biosample_set:
       - emsl:emsl_78901
     igsn_biosample_identifiers:
       - igsn:IEPA76543
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-222222
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-abc123
@@ -1173,7 +1453,7 @@ biosample_set:
         id: ENVO:00005792
         type: nmdc:OntologyClass
     rna_volume: 12.0
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-333333
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-abc123
@@ -1196,30 +1476,6 @@ biosample_set:
         id: ENVO:00005792
         type: nmdc:OntologyClass
     dna_cont_well: B2
-    dna_cont_type: plate
-  - id: nmdc:bsm-99-000001
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-    dna_cont_well: A10
     dna_cont_type: plate
   - id: nmdc:bsm-99-000002
     type: nmdc:Biosample
@@ -1317,31 +1573,7 @@ biosample_set:
         type: nmdc:OntologyClass
     dna_cont_well: C1
     dna_cont_type: plate
-  - id: nmdc:bsm-99-000006
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-    dna_cont_well: C12
-    dna_cont_type: plate
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-4444444
     type: nmdc:Biosample
     name: Sample Exhaustive Biosample instance. Although all of these values should
       pass validation, that does not mean that any Biosample of any type would necessarily
@@ -1415,7 +1647,7 @@ biosample_set:
       has_raw_value: xxx
     agrochem_addition:
       - type: nmdc:TextValue
-        has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
+        has_raw_value: lime;1 kg/acre;2022-99-16T16:05:42+0000
     air_PM_concen:
       - type: nmdc:TextValue
         has_raw_value: xxx
@@ -2703,7 +2935,7 @@ biosample_set:
     sample_link:
       - IGSN:DSJ0284
       - any:curie
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-555555
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-abc123
@@ -2751,102 +2983,6 @@ biosample_set:
         type: nmdc:OntologyClass
     rna_cont_type: plate
     rna_cont_well: A10
-  - id: nmdc:bsm-99-000002
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-    rna_cont_type: plate
-    rna_cont_well: A11
-  - id: nmdc:bsm-99-000003
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-    rna_cont_type: plate
-    rna_cont_well: H10
-  - id: nmdc:bsm-99-000004
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-    rna_cont_type: plate
-    rna_cont_well: H11
-  - id: nmdc:bsm-99-000005
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-    rna_cont_type: plate
-    rna_cont_well: C1
   - id: nmdc:bsm-99-000006
     type: nmdc:Biosample
     associated_studies:
@@ -2871,7 +3007,7 @@ biosample_set:
         type: nmdc:OntologyClass
     rna_cont_type: plate
     rna_cont_well: C12
-  - id: nmdc:bsm-99-dtTMNb
+  - id: nmdc:bsm-99-666666
     type: nmdc:Biosample
     name: real biosample from the field
     associated_studies:
@@ -2983,94 +3119,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-  - id: nmdc:bsm-99-abcdef1
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-11-34xj1150
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-  - id: nmdc:bsm-99-abcdef2
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-11-34xj1150
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-  - id: nmdc:bsm-99-abcdef3
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-11-34xj1150
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
-  - id: nmdc:bsm-99-dtTMNb
-    type: nmdc:Biosample
-    associated_studies:
-      - nmdc:sty-00-abc123
-    env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002030
-      term:
-        id: ENVO:00002030
-        type: nmdc:OntologyClass
-    env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00002169
-      term:
-        id: ENVO:00002169
-        type: nmdc:OntologyClass
-    env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
-      has_raw_value: ENVO:00005792
-      term:
-        id: ENVO:00005792
-        type: nmdc:OntologyClass
 collecting_biosamples_from_site_set:
   - id: nmdc:clsite-99-Cq00d1
     type: nmdc:CollectingBiosamplesFromSite
@@ -3090,54 +3138,54 @@ collecting_biosamples_from_site_set:
       - nmdc:bsm-99-P8FdpS
       - nmdc:bsm-99-ugBwz3
       - nmdc:bsm-99-tN5lxM
-  - id: nmdc:clsite-ae4-r9j8vl
+  - id: nmdc:clsite-99-r9j8vl
     type: nmdc:CollectingBiosamplesFromSite
     name: soil sample collection
     has_input:
-      - nmdc:frsite-ae4-78f4bc
+      - nmdc:frsite-99-78f4bc
     has_output:
-      - nmdc:bsm-ae4-n3ybxz
-      - nmdc:bsm-ae4-b316vq
-      - nmdc:bsm-ae4-q9t93w
-  - id: nmdc:clsite-ae4-dlm16g
+      - nmdc:bsm-99-n3ybxz
+      - nmdc:bsm-99-b316vq
+      - nmdc:bsm-99-q9t93w
+  - id: nmdc:clsite-99-dlm16g
     type: nmdc:CollectingBiosamplesFromSite
     name: lake water sample collection
     has_input:
-      - nmdc:frsite-ae4-k4m6j9
+      - nmdc:frsite-99-k4m6j9
     has_output:
-      - nmdc:bsm-ae4-t2r77l
-      - nmdc:bsm-ae4-x971d3
-      - nmdc:bsm-ae4-c6dlm7
-  - id: nmdc:clsite-ae4-f5k2l6
+      - nmdc:bsm-99-t2r77l
+      - nmdc:bsm-99-x971d3
+      - nmdc:bsm-99-c6dlm7
+  - id: nmdc:clsite-99-f5k2l6
     type: nmdc:CollectingBiosamplesFromSite
     name: human gut sample collection
     has_input:
-      - nmdc:frsite-ae4-k48dl3
+      - nmdc:frsite-99-k48dl3
     has_output:
-      - nmdc:bsm-ae4-p7k6v9
-      - nmdc:bsm-ae4-v9w6y6
-      - nmdc:bsm-ae4-d9j6n9
-  - id: nmdc:clsite-j8p-93z8t7
+      - nmdc:bsm-99-p7k6v9
+      - nmdc:bsm-99-bbbbbb
+      - nmdc:bsm-99-d9j6n9
+  - id: nmdc:clsite-99-93z8t7
     type: nmdc:CollectingBiosamplesFromSite
     name: soil sample collection from tropical rainforest
     has_input:
-      - nmdc:frsite-j8p-29dl6v
+      - nmdc:frsite-99-29dl6v
     has_output:
-      - nmdc:bsm-j8p-74d83z
-  - id: nmdc:clsite-m2l-d9j6n9
+      - nmdc:bsm-99-74d83z
+  - id: nmdc:clsite-99-d9j6n9
     type: nmdc:CollectingBiosamplesFromSite
     name: mouse gut sample collection
     has_input:
-      - nmdc:frsite-m2l-96d7l4
+      - nmdc:frsite-99-96d7l4
     has_output:
-      - nmdc:bsm-m2l-49z38t
-  - id: nmdc:clsite-k48-98f7b2
+      - nmdc:bsm-99-49z38t
+  - id: nmdc:clsite-99-98f7b2
     type: nmdc:CollectingBiosamplesFromSite
     name: human gut sample collection
     has_input:
-      - nmdc:frsite-k48-9j6n9t
+      - nmdc:frsite-99-9j6n9t
     has_output:
-      - nmdc:bsm-k48-v9w6y6
+      - nmdc:bsm-99-bbbbbb
 data_object_set:
   - id: nmdc:dobj-99-dkJ8xX
     type: nmdc:DataObject
@@ -3182,7 +3230,7 @@ data_object_set:
     data_category: instrument_data
     file_size_bytes: 9208349052
     url: https://emsl_site/emsl_calibration_run.raw
-  - id: nmdc:dobj-83z-74d83z
+  - id: nmdc:dobj-99-74d83z
     type: nmdc:DataObject
     name: soil metagenome raw reads
     description: Raw sequencing reads from soil metagenome sample.
@@ -3190,8 +3238,8 @@ data_object_set:
     file_size_bytes: 1234567890
     md5_checksum: e5b511d7874186800c4ac88d593c4209
     url: https://example.com/soil_metagenome.fastq.gz
-    was_generated_by: nmdc:dgns-83z-49z38t
-  - id: nmdc:dobj-49z-38t74d
+    was_generated_by: nmdc:dgns-99-49z38t
+  - id: nmdc:dobj-99-38t74d
     type: nmdc:DataObject
     name: mouse gut metagenome raw reads
     description: Raw sequencing reads from mouse gut metagenome sample.
@@ -3199,8 +3247,8 @@ data_object_set:
     file_size_bytes: 9876543210
     md5_checksum: 9c4984a6377192532692281a81f760a3
     url: https://example.com/mouse_gut_metagenome_R1.fastq.gz
-    was_generated_by: nmdc:dgns-49z-96d7l
-  - id: nmdc:dobj-96d-7l49z3
+    was_generated_by: nmdc:wfmsa-99-96d7l
+  - id: nmdc:dobj-99-7l49z3
     type: nmdc:DataObject
     name: mouse gut metagenome raw reads
     description: Raw sequencing reads from mouse gut metagenome sample.
@@ -3208,8 +3256,8 @@ data_object_set:
     file_size_bytes: 9876543210
     md5_checksum: 8b387395266081701080729a98765f4a
     url: https://example.com/mouse_gut_metagenome_R2.fastq.gz
-    was_generated_by: nmdc:dgns-49z-96d7l
-  - id: nmdc:dobj-j6n-9t74d8
+    was_generated_by: nmdc:wfmsa-99-96d7l
+  - id: nmdc:dobj-99-9t74d8
     type: nmdc:DataObject
     name: human gut metagenome assembled contigs
     description: Assembled contigs from human gut metagenome sample.
@@ -3217,8 +3265,8 @@ data_object_set:
     file_size_bytes: 5678901234
     md5_checksum: 7a2938b51609f4c38d75e64a9012b3c8
     url: https://example.com/human_gut_metagenome_contigs.fasta
-    was_generated_by: nmdc:wfmgas-j6n-v9w6y
-  - id: nmdc:dobj-v9w-6y6j6n
+    was_generated_by: nmdc:wfmgas-99-v9w6y
+  - id: nmdc:dobj-99-6y6j6n
     type: nmdc:DataObject
     name: human gut metagenome functional annotation
     description: Functional annotations for human gut metagenome contigs.
@@ -3226,7 +3274,7 @@ data_object_set:
     file_size_bytes: 4321098765
     md5_checksum: 6b1827a40598e3c27d64f53a8901c2b7
     url: https://example.com/human_gut_metagenome_annotation.gff
-    was_generated_by: nmdc:wfmgan-v9w-4d83z
+    was_generated_by: nmdc:wfmgan-99-4d83z
   - id: nmdc:dobj-12-jdhk9537
     type: nmdc:DataObject
     name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
@@ -3254,88 +3302,45 @@ extraction_set:
       - generic:xxx
     has_output:
       - generic:xxx
-    start_date: '2019-11-08'
-    end_date: '2019-11-08'
+    start_date: '2019-99-08'
+    end_date: '2019-99-08'
     qc_status: pass
     extraction_target: DNA
     input_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
       has_unit: gram
-  - id: nmdc:extrp-99-abcdef
-    type: nmdc:Extraction
-    name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
-    description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
-    has_input:
-      - generic:xxx
-    has_output:
-      - generic:xxx
-    start_date: '2019-11-08'
-    end_date: '2019-11-08'
-    qc_status: pass
-    extraction_target: DNA
-    input_mass:
-      type: nmdc:QuantityValue
-      has_numeric_value: 0.25
-      has_unit: gram
-  - id: nmdc:extrp-99-abcdef
-    type: nmdc:Extraction
-    name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
-    has_input:
-      - generic:xxx
-    has_output:
-      - generic:yyy
-  - id: nmdc:extrp-83z-74d83z
+  - id: nmdc:extrp-99-74d83z
     type: nmdc:Extraction
     name: soil DNA extraction
     has_input:
-      - nmdc:bsm-j8p-74d83z
+      - nmdc:bsm-99-74d83z
     has_output:
-      - nmdc:procsm-83z-k4m6j
+      - nmdc:procsm-99-k4m6j
     extraction_target: DNA
     input_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
       has_unit: g
-  - id: nmdc:extrp-49z-96d7l
+  - id: nmdc:extrp-99-96d7l
     type: nmdc:Extraction
     name: mouse gut DNA extraction
     has_input:
-      - nmdc:bsm-m2l-49z38t
+      - nmdc:bsm-99-49z38t
     has_output:
-      - nmdc:procsm-49z-29dl
+      - nmdc:procsm-99-29dl
     extraction_target: DNA
     volume:
       type: nmdc:QuantityValue
       has_numeric_value: 100
       has_unit: µL
-  - id: nmdc:extrp-j6n-v9w6y
+  - id: nmdc:extrp-99-v9w6y
     type: nmdc:Extraction
     name: human gut DNA extraction
     has_input:
-      - nmdc:bsm-k48-v9w6y6
+      - nmdc:bsm-99-bbbbbb
     has_output:
-      - nmdc:procsm-j6n-3z8t
-    extraction_target: DNA
-  - id: nmdc:extrp-99-abcdef
-    type: nmdc:Extraction
-    name: first dna extraction set
-    has_input:
-      - nmdc:procsm-99-pooled
-    has_output:
-      - nmdc:procsm-99-extract
-    start_date: '2021-01-15'
-    end_date: '2021-01-15'
-    extraction_target: DNA
-  - id: nmdc:extrp-99-abcdef
-    type: nmdc:Extraction
-    name: first dna extraction set
-    has_input:
-      - nmdc:procsm-99-xyz1
-    has_output:
-      - nmdc:procsm-99-xyz2
-    start_date: '2021-01-15'
-    end_date: '2021-01-15'
+      - nmdc:procsm-99-3z8t
     extraction_target: DNA
 field_research_site_set:
   - id: nmdc:frsite-99-SPreao
@@ -3346,19 +3351,19 @@ field_research_site_set:
     type: nmdc:FieldResearchSite
     name: BESC-13-CL2_39_29
     description: Bioscales tree BESC-13-CL2_39_29
-  - id: nmdc:frsite-ae4-78f4bc
+  - id: nmdc:frsite-99-78f4bc
     type: nmdc:FieldResearchSite
     name: Grassland Site A
     description: a grassland research site
-  - id: nmdc:frsite-ae4-k4m6j9
+  - id: nmdc:frsite-99-k4m6j9
     type: nmdc:FieldResearchSite
     name: Lake B
     description: a freshwater lake
-  - id: nmdc:frsite-ae4-k48dl3
+  - id: nmdc:frsite-99-k48dl3
     type: nmdc:FieldResearchSite
     name: Human Subject X
     description: a human subject enrolled in a microbiome study
-  - id: nmdc:frsite-j8p-29dl6v
+  - id: nmdc:frsite-99-29dl6v
     type: nmdc:FieldResearchSite
     name: Amazon Rainforest Site 1
     description: A research site located in the Amazon rainforest.
@@ -3366,19 +3371,39 @@ field_research_site_set:
       type: nmdc:GeolocationValue
       latitude: -3.45678901
       longitude: -65.43210987
-  - id: nmdc:frsite-m2l-96d7l4
+  - id: nmdc:frsite-99-96d7l4
     type: nmdc:FieldResearchSite
     name: Mouse Cage 1
     description: A standard laboratory mouse cage.
-  - id: nmdc:frsite-k48-9j6n9t
+  - id: nmdc:frsite-99-9j6n9t
     type: nmdc:FieldResearchSite
     name: Human Subject Residence
     description: The residence of a human subject participating in a microbiome study.
 functional_annotation_set:
   - type: nmdc:FunctionalAnnotation
+    has_function: KEGG.ORTHOLOGY:K00001
+    subject: nmdc:geneproduct-99-ASDSDGASDGAS
+    was_generated_by: nmdc:wfmgan-99-4d83z
+    feature_category:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: SO:0000316
+      term:
+        id: SO:0000316
+        type: nmdc:OntologyClass
+  - type: nmdc:FunctionalAnnotation
+    has_function: KEGG.ORTHOLOGY:K00002
+    subject: nmdc:geneproduct-99-SDGASDGASDG
+    was_generated_by: nmdc:wfmgan-99-4d83z
+    feature_category:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: SO:0000316
+      term:
+        id: SO:0000316
+        type: nmdc:OntologyClass
+  - type: nmdc:FunctionalAnnotation
     has_function: KEGG.ORTHOLOGY:K01198
     subject: nmdc:geneproduct-k2d-7v9t3
-    was_generated_by: nmdc:wfmgan-v9w-4d83z
+    was_generated_by: nmdc:wfmgan-99-4d83z
     feature_category:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: SO:0000316
@@ -3429,6 +3454,32 @@ genome_feature_set:
       term:
         id: SO:0000316
         type: nmdc:OntologyClass
+  - type: nmdc:GenomeFeature
+    start: 3000
+    end: 6000
+    seqid: NC_000913.3
+    encodes: nmdc:geneproduct-99-ASDSDGASDGAS
+    feature_type: CDS
+    strand: +
+    feature_category:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: SO:0000316
+      term:
+        id: SO:0000316
+        type: nmdc:OntologyClass
+  - type: nmdc:GenomeFeature
+    start: 10000
+    end: 15000
+    seqid: NC_000913.3
+    encodes: nmdc:geneproduct-99-SDGASDGASDG
+    feature_type: CDS
+    strand: +
+    feature_category:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: SO:0000316
+      term:
+        id: SO:0000316
+        type: nmdc:OntologyClass
 library_preparation_set:
   - id: nmdc:libprp-99-xxx2
     type: nmdc:LibraryPreparation
@@ -3460,32 +3511,32 @@ library_preparation_set:
     library_preparation_kit: TruSeq RNA Library Prep Kit v2
     library_type: RNA
     pcr_cycles: 12
-  - id: nmdc:libprp-83z-k4m6j
+  - id: nmdc:libprp-99-k4m6j
     type: nmdc:LibraryPreparation
     name: soil DNA library preparation
     has_input:
-      - nmdc:procsm-83z-k4m6j
+      - nmdc:procsm-99-k4m6j
     has_output:
-      - nmdc:procsm-83z-96d7
+      - nmdc:procsm-99-96d7
     library_preparation_kit: Illumina DNA Prep
     library_type: DNA
     pcr_cycles: 12
-  - id: nmdc:libprp-49z-29dl
+  - id: nmdc:libprp-99-29dl
     type: nmdc:LibraryPreparation
     name: mouse gut DNA library preparation
     has_input:
-      - nmdc:procsm-49z-29dl
+      - nmdc:procsm-99-29dl
     has_output:
-      - nmdc:procsm-49z-38t7
+      - nmdc:procsm-99-38t7
     library_type: DNA
     pcr_cycles: 10
-  - id: nmdc:libprp-j6n-3z8t
+  - id: nmdc:libprp-99-3z8t
     type: nmdc:LibraryPreparation
     name: human gut DNA library preparation
     has_input:
-      - nmdc:procsm-j6n-3z8t
+      - nmdc:procsm-99-3z8t
     has_output:
-      - nmdc:procsm-j6n-9t7
+      - nmdc:procsm-99-9t7
     library_type: DNA
     pcr_cycles: 15
   - id: nmdc:libprp-99-abcdef
@@ -3495,16 +3546,6 @@ library_preparation_set:
       - nmdc:procsm-99-extract
     has_output:
       - nmdc:procsm-99-library
-    start_date: '2021-01-15'
-    end_date: '2021-01-15'
-    library_type: DNA
-  - id: nmdc:libprp-99-abcdef
-    type: nmdc:LibraryPreparation
-    name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
-    has_input:
-      - nmdc:procsm-99-xyz2
-    has_output:
-      - nmdc:procsm-99-xyz3
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     library_type: DNA
@@ -3525,7 +3566,7 @@ mags_set:
     execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2021-01-10T00:00:00+00:00'
     binned_contig_num: 489
     input_contig_num: 169782
@@ -3585,14 +3626,14 @@ mags_set:
     type: nmdc:MagsAnalysis
     name: human gut MAGs analysis
     has_input:
-      - nmdc:dobj-j6n-9t74d
+      - nmdc:dobj-99-9t74d
     has_output:
       - nmdc:dobj-6y6-j6n9t
     ended_at_time: '2023-08-01T18:00:00Z'
     execution_resource: NERSC-Cori
     git_url: https://github.com/microbiomedata/mags_analysis/releases/tag/v1.0.0
     part_of:
-      - nmdc:wfch-k48-98f7b
+      - nmdc:wfch-99-98f7b
     started_at_time: '2023-08-01T12:00:00Z'
     binned_contig_num: 8000
     input_contig_num: 10000
@@ -3619,34 +3660,20 @@ metabolomics_analysis_set:
     execution_resource: NERSC-Cori
     git_url: https://example.org/WorkflowExecutionActivity
     part_of:
-      - nmdc:wfch-11-ab
-    started_at_time: '2021-08-05T14:48:51+00:00'
-  - id: nmdc:wfmb-99-ABCDEF
-    type: nmdc:MetabolomicsAnalysis
-    name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF
-    has_input:
-      - nmdc:dobj-70-izwYW6
-      - nmdc:dobj-80-izwYW6
-    has_output:
-      - nmdc:dobj-90-izwYW61
-    ended_at_time: '2021-09-15T10:13:20+00:00'
-    execution_resource: NERSC-Cori
-    git_url: https://example.org/WorkflowExecutionActivity
-    part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2021-08-05T14:48:51+00:00'
   - id: nmdc:wfmb-4d8-3z74d
     type: nmdc:MetabolomicsAnalysis
     name: soil metabolomics analysis
     has_input:
-      - nmdc:dobj-83z-74d83z
+      - nmdc:dobj-99-74d83z
     has_output:
       - nmdc:dobj-4d8-3z74d
     ended_at_time: '2023-08-02T15:00:00Z'
     execution_resource: EMSL
     git_url: https://github.com/microbiomedata/metabolomics_analysis/releases/tag/v0.5.0
     part_of:
-      - nmdc:wfch-j8p-93z8
+      - nmdc:wfch-99-93z8
     started_at_time: '2023-08-02T09:00:00Z'
     has_calibration: nmdc:calib-l2k-9d6j3
     has_metabolite_identifications:
@@ -3654,18 +3681,18 @@ metabolomics_analysis_set:
         highest_similarity_score: 0.88
         metabolite_identified: CHEBI:16236
 metagenome_annotation_set:
-  - id: nmdc:wfmgan-v9w-4d83z
+  - id: nmdc:wfmgan-99-4d83z
     type: nmdc:MetagenomeAnnotation
     name: human gut metagenome annotation
     has_input:
-      - nmdc:dobj-j6n-9t74d
+      - nmdc:dobj-99-9t74d
     has_output:
-      - nmdc:dobj-v9w-6y6j
+      - nmdc:dobj-99-6y6j
     ended_at_time: '2023-08-03T16:00:00Z'
     execution_resource: JGI
     git_url: https://github.com/microbiomedata/metagenome_annotation/releases/tag/v2.5.0
     part_of:
-      - nmdc:wfch-k48-98f7b
+      - nmdc:wfch-99-98f7b
     started_at_time: '2023-08-03T10:00:00Z'
     img_identifiers:
       - img.taxon:2763570002
@@ -3685,7 +3712,7 @@ metagenome_assembly_set:
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2020-03-24T00:00:00+00:00'
     asm_score: 3.29
     scaffolds: 429340.0
@@ -3729,7 +3756,7 @@ metagenome_assembly_set:
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2020-03-25T00:00:00+00:00'
     asm_score: 3.196
     scaffolds: 747801.0
@@ -3773,7 +3800,7 @@ metagenome_assembly_set:
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2020-03-25T00:00:00+00:00'
     asm_score: 3.527
     scaffolds: 607951.0
@@ -3802,7 +3829,7 @@ metagenome_assembly_set:
     gc_avg: 0.55832
     num_input_reads: 116129794.0
     num_aligned_reads: 79146088.0
-  - id: nmdc:wfmgas-99-B7Vogx
+  - id: nmdc:wfmgas-99-111111
     type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51277
     has_input:
@@ -3819,52 +3846,52 @@ metagenome_assembly_set:
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2020-03-24T00:00:00+00:00'
-  - id: nmdc:wfmgas-j6n-v9w6y
+  - id: nmdc:wfmgas-99-v9w6y
     type: nmdc:MetagenomeAssembly
     name: human gut metagenome assembly
     has_input:
-      - nmdc:dobj-96d-7l49z
+      - nmdc:dobj-99-7l49z
     has_output:
-      - nmdc:dobj-j6n-9t74d
+      - nmdc:dobj-99-9t74d
     ended_at_time: '2023-08-04T14:00:00Z'
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/metagenome_assembly/releases/tag/v1.2.3
     part_of:
-      - nmdc:wfch-k48-98f7b
+      - nmdc:wfch-99-98f7b
     started_at_time: '2023-08-04T08:00:00Z'
     asm_score: 0.85
     scaffolds: 1234.0
     scaf_bp: 567890123.0
     ctg_n50: 10000.0
 metagenome_sequencing_set:
-  - id: nmdc:wfmsa-83z-49z38t
+  - id: nmdc:wfmsa-99-49z38t
     type: nmdc:MetagenomeSequencing
     name: soil metagenome sequencing
     has_input:
-      - nmdc:procsm-83z-96d7
+      - nmdc:procsm-99-96d7
     has_output:
-      - nmdc:dobj-83z-74d83z
+      - nmdc:dobj-99-74d83z
     ended_at_time: '2023-08-05T17:00:00Z'
     execution_resource: EMSL-RZR
     git_url: https://github.com/microbiomedata/metagenome_sequencing/releases/tag/v0.9.1
     part_of:
-      - nmdc:wfch-j8p-93z8
+      - nmdc:wfch-99-93z8
     started_at_time: '2023-08-05T11:00:00Z'
-  - id: nmdc:dgns-49z-96d7l
+  - id: nmdc:wfmsa-99-96d7l
     type: nmdc:MetagenomeSequencing
     name: mouse gut metagenome sequencing
     has_input:
-      - nmdc:procsm-49z-38t7
+      - nmdc:procsm-99-38t7
     has_output:
-      - nmdc:dobj-49z-38t74d
-      - nmdc:dobj-96d-7l49z3
+      - nmdc:dobj-99-38t74d
+      - nmdc:dobj-99-7l49z3
     ended_at_time: '2023-08-06T16:00:00Z'
     execution_resource: JGI
     git_url: https://github.com/microbiomedata/metagenome_sequencing/releases/tag/v0.9.1
     part_of:
-      - nmdc:wfch-m2l-dl96
+      - nmdc:wfch-99-dl96
     started_at_time: '2023-08-06T10:00:00Z'
   - id: nmdc:wfmsa-99-qwertyuiop
     type: nmdc:MetagenomeSequencing
@@ -3877,22 +3904,37 @@ metagenome_sequencing_set:
     execution_resource: JGI
     git_url: https://github.com/microbiomedata/RawSequencingData
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2021-08-05T14:48:51+00:00'
     version: v1.0.0
 metatranscriptome_analysis_set:
-  - id: nmdc:wfmt-74d-83zk4
+  - id: nmdc:wfmt-99-4d83z
+    type: nmdc:MetatranscriptomeAnalysis
+    name: human gut metatranscriptome annotation
+    has_input:
+      - nmdc:dobj-99-9t74d
+    has_output:
+      - nmdc:dobj-99-6y6j
+    ended_at_time: '2023-08-03T16:00:00Z'
+    execution_resource: JGI
+    git_url: https://github.com/microbiomedata/metatranscriptome_annotation/releases/tag/v2.5.0
+    part_of:
+      - nmdc:wfch-99-98f7b
+    started_at_time: '2023-08-03T10:00:00Z'
+    img_identifiers:
+      - img.taxon:2763570002
+  - id: nmdc:wfmt-99-74dk4
     type: nmdc:MetatranscriptomeAnalysis
     name: soil metatranscriptome analysis
     has_input:
-      - nmdc:dobj-83z-74d83z
+      - nmdc:dobj-99-74d83z
     has_output:
-      - nmdc:dobj-74d-83zk4
+      - nmdc:dobj-74d-99-k4
     ended_at_time: '2023-08-07T14:30:00Z'
     execution_resource: EMSL-RZR
     git_url: https://github.com/microbiomedata/metatranscriptome_analysis/releases/tag/v0.7.8
     part_of:
-      - nmdc:wfch-j8p-93z8
+      - nmdc:wfch-99-93z8
     started_at_time: '2023-08-07T08:30:00Z'
     img_identifiers:
       - img.taxon:2763570003
@@ -3915,16 +3957,16 @@ nom_analysis_set:
     type: nmdc:NomAnalysis
     name: soil NOM analysis
     has_input:
-      - nmdc:dobj-83z-74d83z
+      - nmdc:dobj-99-74d83z
     has_output:
       - nmdc:dobj-3z7-4d83z
     ended_at_time: '2023-08-08T15:30:00Z'
     execution_resource: EMSL
     git_url: https://github.com/microbiomedata/nom_analysis/releases/tag/v0.3.2
     part_of:
-      - nmdc:wfch-j8p-93z8
+      - nmdc:wfch-99-93z8
     started_at_time: '2023-08-08T09:30:00Z'
-    has_calibration: nmdc:calib-j6n-v9w6
+    has_calibration: nmdc:calib-99-v9w6
 data_generation_set:
   - id: nmdc:dgns-99-9XUVVF
     type: nmdc:NucleotideSequencing
@@ -4092,24 +4134,7 @@ data_generation_set:
     mod_date: 22-MAY-20 06.09.46.171000000 PM
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712S3S
-  - id: nmdc:dgns-99-zUCd5N
-    type: nmdc:NucleotideSequencing
-    name: a process in which a biosample was sequenced?
-    alternative_identifiers:
-      - gold:Gp0108335
-    has_input:
-      - nmdc:bsm-00-red
-    has_output:
-      - nmdc:dobj-00-9n9n9n
-    processing_institution: JGI
-    analyte_category: metagenome
-    associated_studies:
-      - nmdc:sty-00-555xxx
-    add_date: 30-OCT-14 12.00.00.000000000 AM
-    mod_date: 22-MAY-20 06.13.12.927000000 PM
-    ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
-      carbon transformations - Permafrost 712P3D
-  - id: nmdc:dgns-11-s9xj2r24
+  - id: nmdc:dgns-99-s9xj2r24
     type: nmdc:NucleotideSequencing
     name: Test NEON data
     has_input:
@@ -4122,43 +4147,39 @@ data_generation_set:
     processing_institution: Battelle
     analyte_category: metagenome
     associated_studies:
-      - nmdc:sty-11-34xj1150
+      - nmdc:sty-99-34xj1150
     part_of:
-      - nmdc:dgns-11-34xj1150
+      - nmdc:dgns-99-34xj1150
 workflow_chain_set:
-  - id: nmdc:wfch-11-ab
+  - id: nmdc:wfch-99-ab
     type: nmdc:WorkflowChain
     analyte_category: metagenome
-    was_informed_by: nmdc:dgns-11-s9xj2r24
+    was_informed_by: nmdc:dgns-99-s9xj2r24
   - id: nmdc:wfch-12-cd
     type: nmdc:WorkflowChain
     analyte_category: metagenome
-    was_informed_by: nmdc:dgns-11-s9xj2r24
-  - id: nmdc:wfch-j8p-93z8
+    was_informed_by: nmdc:dgns-99-s9xj2r24
+  - id: nmdc:wfch-99-93z8
     type: nmdc:WorkflowChain
     name: soil metagenome workflow chain
     analyte_category: metagenome
-    was_informed_by: nmdc:dgns-83z-49z38t
+    was_informed_by: nmdc:dgns-99-49z38t
     gold_analysis_project_identifiers:
       - gold:Ga01234567
-  - id: nmdc:wfch-m2l-dl96
+  - id: nmdc:wfch-99-dl96
     type: nmdc:WorkflowChain
     name: mouse gut metagenome workflow chain
     analyte_category: metagenome
-    was_informed_by: nmdc:dgns-49z-96d7l
+    was_informed_by: nmdc:wfmsa-99-96d7l
     gold_analysis_project_identifiers:
       - gold:Ga76543210
-  - id: nmdc:wfch-k48-98f7b
+  - id: nmdc:wfch-99-98f7b
     type: nmdc:WorkflowChain
     name: human gut metagenome workflow chain
     analyte_category: metagenome
-    was_informed_by: nmdc:dgns-j6n-v9w6
+    was_informed_by: nmdc:dgns-99-v9w6
     gold_analysis_project_identifiers:
       - gold:Ga90123456
-  - id: nmdc:wfch-11-ab
-    type: nmdc:WorkflowChain
-    analyte_category: metagenome
-    was_informed_by: nmdc:dgns-11-s9xj2r24
 pooling_set:
   - id: nmdc:poolp-9x9-1x
     type: nmdc:Pooling
@@ -4171,33 +4192,33 @@ pooling_set:
       - generic:yyy
     has_output:
       - generic:xxx
-  - id: nmdc:poolp-ae4-r9j8v
+  - id: nmdc:poolp-99-r9j8v
     type: nmdc:Pooling
     name: soil sample pooling
     has_input:
-      - nmdc:bsm-ae4-n3ybxz
-      - nmdc:bsm-ae4-b316vq
-      - nmdc:bsm-ae4-q9t93w
+      - nmdc:bsm-99-n3ybxz
+      - nmdc:bsm-99-b316vq
+      - nmdc:bsm-99-q9t93w
     has_output:
-      - nmdc:procsm-ae4-t2r77
-  - id: nmdc:poolp-ae4-l6f5k
+      - nmdc:procsm-99-t2r77
+  - id: nmdc:poolp-99-l6f5k
     type: nmdc:Pooling
     name: water sample pooling
     has_input:
-      - nmdc:bsm-ae4-t2r77l
-      - nmdc:bsm-ae4-x971d3
-      - nmdc:bsm-ae4-c6dlm7
+      - nmdc:bsm-99-t2r77l
+      - nmdc:bsm-99-x971d3
+      - nmdc:bsm-99-c6dlm7
     has_output:
-      - nmdc:procsm-ae4-x971
-  - id: nmdc:poolp-ae4-y6v9w
+      - nmdc:procsm-99-x971
+  - id: nmdc:poolp-99-y6v9w
     type: nmdc:Pooling
     name: human gut sample pooling
     has_input:
-      - nmdc:bsm-ae4-p7k6v9
-      - nmdc:bsm-ae4-v9w6y6
-      - nmdc:bsm-ae4-d9j6n9
+      - nmdc:bsm-99-p7k6v9
+      - nmdc:bsm-99-bbbbbb
+      - nmdc:bsm-99-d9j6n9
     has_output:
-      - nmdc:procsm-ae4-d9j6
+      - nmdc:procsm-99-d9j6
   - id: nmdc:poolp-99-abcdef
     type: nmdc:Pooling
     name: first pooling process
@@ -4212,29 +4233,8 @@ pooling_set:
       - nmdc:procsm-99-pooled
     start_date: '2021-01-14'
     end_date: '2021-01-14'
-  - id: nmdc:poolp-99-abcdef
-    type: nmdc:Pooling
-    name: first pooling process
-    description: This is the first pooling process that has ever occurred on earth
-    has_input:
-      - nmdc:bsm-99-abcdef1
-      - nmdc:bsm-99-abcdef2
-      - nmdc:bsm-99-abcdef3
-    has_output:
-      - nmdc:procsm-99-xyz1
-    start_date: '2021-01-14'
-    end_date: '2021-01-14'
-  - id: nmdc:poolp-9x9-1x
-    type: nmdc:Pooling
-    name: first pooling process
 processed_sample_set:
-  - id: nmdc:procsm-99-dtTMNb
-    type: nmdc:ProcessedSample
-    name: WOOD_024-M-20190715-COMP-DNA1
-    description: Extracted DNA from WOOD_024-M-20190715-COMP
-  - id: nmdc:procsm-99-dtTMNb
-    type: nmdc:ProcessedSample
-  - id: nmdc:procsm-83z-k4m6j
+  - id: nmdc:procsm-99-k4m6j
     type: nmdc:ProcessedSample
     name: soil DNA extract
     biomaterial_purity:
@@ -4242,28 +4242,28 @@ processed_sample_set:
       has_numeric_value: 1.8
       has_unit: 260/280
     dna_concentration: 123.0
-  - id: nmdc:procsm-49z-29dl
+  - id: nmdc:procsm-99-29dl
     type: nmdc:ProcessedSample
     name: mouse gut DNA extract
-  - id: nmdc:procsm-j6n-3z8t
+  - id: nmdc:procsm-99-3z8t
     type: nmdc:ProcessedSample
     name: human gut DNA extract
-  - id: nmdc:procsm-83z-96d7
+  - id: nmdc:procsm-99-96d7
     type: nmdc:ProcessedSample
     name: soil DNA library
-  - id: nmdc:procsm-49z-38t7
+  - id: nmdc:procsm-99-38t7
     type: nmdc:ProcessedSample
     name: mouse gut DNA library
-  - id: nmdc:procsm-j6n-9t7
+  - id: nmdc:procsm-99-9t7
     type: nmdc:ProcessedSample
     name: human gut DNA library
-  - id: nmdc:procsm-ae4-t2r77
+  - id: nmdc:procsm-99-t2r77
     type: nmdc:ProcessedSample
     name: pooled soil sample
-  - id: nmdc:procsm-ae4-x971
+  - id: nmdc:procsm-99-x971
     type: nmdc:ProcessedSample
     name: pooled water sample
-  - id: nmdc:procsm-ae4-d9j6
+  - id: nmdc:procsm-99-d9j6
     type: nmdc:ProcessedSample
     name: pooled human gut sample
   - id: nmdc:procsm-99-dtTMNb
@@ -4284,28 +4284,19 @@ processed_sample_set:
   - id: nmdc:procsm-99-xyz3
     type: nmdc:ProcessedSample
     name: first library
-  - id: nmdc:procsm-99-xyz1
-    type: nmdc:ProcessedSample
-    name: first processed sample set
-  - id: nmdc:procsm-99-xyz2
-    type: nmdc:ProcessedSample
-    name: first DNA extract
-  - id: nmdc:procsm-99-xyz3
-    type: nmdc:ProcessedSample
-    name: first library
 read_based_taxonomy_analysis_set:
-  - id: nmdc:wfrbt-38t-74d83
+  - id: nmdc:wfrbt-99-74d83
     type: nmdc:ReadBasedTaxonomyAnalysis
     name: soil read-based taxonomy analysis
     has_input:
-      - nmdc:dobj-83z-74d83z
+      - nmdc:dobj-99-74d83z
     has_output:
-      - nmdc:dobj-38t-74d83
+      - nmdc:dobj-99-74d83
     ended_at_time: '2023-08-09T16:30:00Z'
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/read_based_taxonomy_analysis/releases/tag/v0.4.5
     part_of:
-      - nmdc:wfch-j8p-93z8
+      - nmdc:wfch-99-93z8
     started_at_time: '2023-08-09T10:30:00Z'
 read_qc_analysis_set:
   - id: nmdc:wfrqc-12-63da5n74
@@ -4321,16 +4312,16 @@ read_qc_analysis_set:
     execution_resource: NERSC-Cori
     git_url: https://github.com/microbiomedata/ReadsQC
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
       - nmdc:wfch-12-cd
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     version: b1.0.7
-  - id: nmdc:wfrqc-11-hemh0a87.1
+  - id: nmdc:wfrqc-99-hemh0a87.1
     type: nmdc:ReadQcAnalysis
-    name: Read QC Activity for nmdc:wfrqc-11-hemh0a87.1
+    name: Read QC Activity for nmdc:wfrqc-99-hemh0a87.1
     has_input:
-      - nmdc:dobj-11-1k62bt83
-      - nmdc:dobj-11-e8hs8y25
+      - nmdc:dobj-99-1k62bt83
+      - nmdc:dobj-99-e8hs8y25
     qc_status: fail
     qc_comment: Failure during call-stage to interleave fastq files
     has_failure_categorization:
@@ -4341,38 +4332,38 @@ read_qc_analysis_set:
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2023-08-29T19:41:47.365957+00:00'
     version: v1.0.8
-  - id: nmdc:wfrqc-11-hemh0a88.1
+  - id: nmdc:wfrqc-99-hemh0a88.1
     type: nmdc:ReadQcAnalysis
-    name: Read QC Activity for nmdc:wfrqc-11-hemh0a88.1
+    name: Read QC Activity for nmdc:wfrqc-99-hemh0a88.1
     has_input:
-      - nmdc:dobj-11-1k62bt83
-      - nmdc:dobj-11-e8hs8y25
+      - nmdc:dobj-99-1k62bt83
+      - nmdc:dobj-99-e8hs8y25
     has_output:
-      - nmdc:dobj-11-e8hs8y26
-      - nmdc:dobj-11-e8hs8y27
-      - nmdc:dobj-11-e8hs8y28
+      - nmdc:dobj-99-e8hs8y26
+      - nmdc:dobj-99-e8hs8y27
+      - nmdc:dobj-99-e8hs8y28
     qc_status: pass
     qc_comment: Number of output reads from readqc is above threshold (6000000 > 1000000)
     ended_at_time: '2023-08-30T13:26:02.892410+00:00'
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2023-08-29T19:41:47.365957+00:00'
     version: v1.0.8
-  - id: nmdc:wfrqc-11-hemh0a90.1
+  - id: nmdc:wfrqc-99-hemh0a90.1
     type: nmdc:ReadQcAnalysis
-    name: Read QC Activity for nmdc:wfrqc-11-hemh0a87.1
+    name: Read QC Activity for nmdc:wfrqc-99-hemh0a87.1
     has_input:
-      - nmdc:dobj-11-1k62bt83
-      - nmdc:dobj-11-e8hs8y25
+      - nmdc:dobj-99-1k62bt83
+      - nmdc:dobj-99-e8hs8y25
     has_output:
-      - nmdc:dobj-11-e8hs8y26
-      - nmdc:dobj-11-e8hs8y27
-      - nmdc:dobj-11-e8hs8y28
+      - nmdc:dobj-99-e8hs8y26
+      - nmdc:dobj-99-e8hs8y27
+      - nmdc:dobj-99-e8hs8y28
     qc_status: fail
     qc_comment: Most data removed for artifacts
     has_failure_categorization:
@@ -4383,64 +4374,26 @@ read_qc_analysis_set:
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
     part_of:
-      - nmdc:wfch-11-ab
+      - nmdc:wfch-99-ab
     started_at_time: '2023-08-29T19:41:47.365957+00:00'
     version: v1.0.8
-  - id: nmdc:wfrqc-96d-7l49z
+  - id: nmdc:wfrqc-99-7l49z
     type: nmdc:ReadQcAnalysis
     name: mouse gut read QC analysis
     has_input:
-      - nmdc:dobj-49z-38t74d
-      - nmdc:dobj-96d-7l49z3
+      - nmdc:dobj-99-38t74d
+      - nmdc:dobj-99-7l49z3
     has_output:
-      - nmdc:dobj-96d-7l49z
+      - nmdc:dobj-99-7l49z
     ended_at_time: '2023-08-10T15:00:00Z'
     execution_resource: JGI
     git_url: https://github.com/microbiomedata/read_qc_analysis/releases/tag/v0.2.1
     part_of:
-      - nmdc:wfch-m2l-dl96
+      - nmdc:wfch-99-dl96
     started_at_time: '2023-08-10T09:00:00Z'
     input_read_count: 10000000.0
     output_read_count: 9000000.0
-  - id: nmdc:wfrqc-12-63da5n74
-    type: nmdc:ReadQcAnalysis
-    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
-    has_input:
-      - nmdc:dobj-12-jdhk9537
-      - nmdc:dobj-12-yx0tfp52
-    has_output:
-      - nmdc:dobj-12-71q7wv80
-      - nmdc:dobj-12-y236qp68
-    ended_at_time: '2023-03-23T17:17:05.111725+00:00'
-    execution_resource: NERSC-Cori
-    git_url: https://github.com/microbiomedata/ReadsQC
-    part_of:
-      - nmdc:wfch-11-ab
-    started_at_time: '2023-03-23T17:17:05.111689+00:00'
-    version: b1.0.7
 study_set:
-  - id: nmdc:sty-99-FkQIsc
-    type: nmdc:Study
-    name: Permafrost microbial communities from Stordalen Mire, Sweden
-    description: Thawing permafrost is one of the largest soil carbon pools on the planet.
-      The goal of this project is to study microbial communities that participate in
-      the soil carbon cycle.
-    study_category: research_study
-    gold_study_identifiers:
-      - gold:Gs123456789
-    ecosystem: Environmental
-    ecosystem_category: Terrestrial
-    ecosystem_subtype: Wetlands
-    ecosystem_type: Soil
-    specific_ecosystem: Permafrost
-    associated_dois:
-      - doi_value: doi:10.25585/1488217
-        doi_category: dataset_doi
-        type: nmdc:Doi
-        doi_provider: osti
-    principal_investigator:
-      type: nmdc:PersonValue
-      has_raw_value: Virginia Rich
   - id: nmdc:sty-99-oJmAOs
     type: nmdc:Study
     name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -4603,36 +4556,12 @@ study_set:
     principal_investigator:
       type: nmdc:PersonValue
       has_raw_value: Virginia Rich
-  - id: nmdc:sty-99-FkQIsc
-    type: nmdc:Study
-    name: Permafrost microbial communities from Stordalen Mire, Sweden
-    description: Thawing permafrost is one of the largest soil carbon pools on the planet.
-      The goal of this project is to study microbial communities that participate in
-      the soil carbon cycle.
-    study_category: research_study
-    gnps_task_identifiers:
-      - gnps.task:4b848c342a4f4abc871bdf8a09a60807
-    gold_study_identifiers:
-      - gold:Gs123456789
-    ecosystem: Environmental
-    ecosystem_category: Terrestrial
-    ecosystem_subtype: Wetlands
-    ecosystem_type: Soil
-    specific_ecosystem: Permafrost
-    associated_dois:
-      - doi_value: doi:10.25585/1488217
-        doi_category: award_doi
-        type: nmdc:Doi
-        doi_provider: emsl
-    principal_investigator:
-      type: nmdc:PersonValue
-      has_raw_value: Virginia Rich
-  - id: nmdc:sty-11-34xj1152
+  - id: nmdc:sty-99-34xj1152
     type: nmdc:Study
     name: NEON Parent Consortium
     description: The parent consortium of all the NEON consortia
     study_category: consortium
-  - id: nmdc:sty-11-34xj1150
+  - id: nmdc:sty-99-34xj1150
     type: nmdc:Study
     name: 'National Ecological Observatory Network: soil metagenomes (DP1.10107.001)'
     description: The National Science Foundation's National Ecological Observatory Network
@@ -4646,7 +4575,7 @@ study_set:
     funding_sources:
       - 'NSF#1724433 National Ecological Observatory Network: Operations Activities'
     part_of:
-      - nmdc:sty-11-34xj1152
+      - nmdc:sty-99-34xj1152
     principal_investigator:
       type: nmdc:PersonValue
       has_raw_value: Kate Thibault
@@ -4656,14 +4585,14 @@ study_set:
       profile_image_url: https://portal.nersc.gov/project/m3408/profile_images/thibault_katy.jpg
     study_image:
       - type: nmdc:ImageValue
-        url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
+        url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-99-34xj1150.jpg
     title: 'National Ecological Observatory Network: soil metagenomes (DP1.10107.001)'
     websites:
       - https://www.neonscience.org/
       - https://data.neonscience.org/data-products/DP1.10107.001
       - https://data.neonscience.org/api/v0/documents/NEON.DOC.014048vO
       - https://data.neonscience.org/api/v0/documents/NEON_metagenomes_userGuide_vE.pdf
-  - id: nmdc:sty-11-hht5sb92
+  - id: nmdc:sty-99-hht5sb92
     type: nmdc:Study
     name: 'National Ecological Observatory Network: surface water metagenomes (DP1.20281.001)'
     description: The National Science Foundation's National Ecological Observatory Network
@@ -4674,7 +4603,7 @@ study_set:
     funding_sources:
       - 'NSF#1724433 National Ecological Observatory Network: Operations Activities'
     part_of:
-      - nmdc:sty-11-34xj1152
+      - nmdc:sty-99-34xj1152
     principal_investigator:
       type: nmdc:PersonValue
       has_raw_value: Kate Thibault
@@ -4683,13 +4612,13 @@ study_set:
       orcid: orcid:0000-0003-3477-6424
     study_image:
       - type: nmdc:ImageValue
-        url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
+        url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-99-34xj1150.jpg
     title: 'National Ecological Observatory Network: surface water metagenomes (DP1.20281.001)'
     websites:
       - https://www.neonscience.org/
       - https://data.neonscience.org/data-products/DP1.20281.001
       - https://data.neonscience.org/api/v0/documents/NEON_metagenomes_userGuide_vE.pdf
-  - id: nmdc:sty-11-pzmd0x14
+  - id: nmdc:sty-99-pzmd0x14
     type: nmdc:Study
     name: 'National Ecological Observatory Network: benthic metagenomes (DP1.20279.001)'
     description: The National Science Foundation's National Ecological Observatory Network
@@ -4700,7 +4629,7 @@ study_set:
     funding_sources:
       - 'NSF#1724433 National Ecological Observatory Network: Operations Activities'
     part_of:
-      - nmdc:sty-11-34xj1152
+      - nmdc:sty-99-34xj1152
     principal_investigator:
       type: nmdc:PersonValue
       email: kthibault@battelleecology.org
@@ -4708,7 +4637,7 @@ study_set:
       orcid: orcid:0000-0003-3477-6424
     study_image:
       - type: nmdc:ImageValue
-        url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
+        url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-99-34xj1150.jpg
     title: 'National Ecological Observatory Network: benthic metagenomes (DP1.20279.001)'
     websites:
       - https://www.neonscience.org/
@@ -4757,7 +4686,7 @@ study_set:
       email: alice.lee@example.org
       name: Alice Lee
       orcid: 0000-0004-7890-1234
-  - id: nmdc:sty-11-r2h77870
+  - id: nmdc:sty-99-r2h77870
     type: nmdc:Study
     study_category: research_study
     gnps_task_identifiers:

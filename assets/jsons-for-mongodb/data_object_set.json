@@ -57,7 +57,7 @@
         "url": "https://emsl_site/emsl_calibration_run.raw"
     },
     {
-        "id": "nmdc:dobj-83z-74d83z",
+        "id": "nmdc:dobj-99-74d83z",
         "type": "nmdc:DataObject",
         "name": "soil metagenome raw reads",
         "description": "Raw sequencing reads from soil metagenome sample.",
@@ -65,10 +65,10 @@
         "file_size_bytes": 1234567890,
         "md5_checksum": "e5b511d7874186800c4ac88d593c4209",
         "url": "https://example.com/soil_metagenome.fastq.gz",
-        "was_generated_by": "nmdc:dgns-83z-49z38t"
+        "was_generated_by": "nmdc:dgns-99-49z38t"
     },
     {
-        "id": "nmdc:dobj-49z-38t74d",
+        "id": "nmdc:dobj-99-38t74d",
         "type": "nmdc:DataObject",
         "name": "mouse gut metagenome raw reads",
         "description": "Raw sequencing reads from mouse gut metagenome sample.",
@@ -76,10 +76,10 @@
         "file_size_bytes": 9876543210,
         "md5_checksum": "9c4984a6377192532692281a81f760a3",
         "url": "https://example.com/mouse_gut_metagenome_R1.fastq.gz",
-        "was_generated_by": "nmdc:dgns-49z-96d7l"
+        "was_generated_by": "nmdc:wfmsa-99-96d7l"
     },
     {
-        "id": "nmdc:dobj-96d-7l49z3",
+        "id": "nmdc:dobj-99-7l49z3",
         "type": "nmdc:DataObject",
         "name": "mouse gut metagenome raw reads",
         "description": "Raw sequencing reads from mouse gut metagenome sample.",
@@ -87,10 +87,10 @@
         "file_size_bytes": 9876543210,
         "md5_checksum": "8b387395266081701080729a98765f4a",
         "url": "https://example.com/mouse_gut_metagenome_R2.fastq.gz",
-        "was_generated_by": "nmdc:dgns-49z-96d7l"
+        "was_generated_by": "nmdc:wfmsa-99-96d7l"
     },
     {
-        "id": "nmdc:dobj-j6n-9t74d8",
+        "id": "nmdc:dobj-99-9t74d8",
         "type": "nmdc:DataObject",
         "name": "human gut metagenome assembled contigs",
         "description": "Assembled contigs from human gut metagenome sample.",
@@ -98,10 +98,10 @@
         "file_size_bytes": 5678901234,
         "md5_checksum": "7a2938b51609f4c38d75e64a9012b3c8",
         "url": "https://example.com/human_gut_metagenome_contigs.fasta",
-        "was_generated_by": "nmdc:wfmgas-j6n-v9w6y"
+        "was_generated_by": "nmdc:wfmgas-99-v9w6y"
     },
     {
-        "id": "nmdc:dobj-v9w-6y6j6n",
+        "id": "nmdc:dobj-99-6y6j6n",
         "type": "nmdc:DataObject",
         "name": "human gut metagenome functional annotation",
         "description": "Functional annotations for human gut metagenome contigs.",
@@ -109,7 +109,7 @@
         "file_size_bytes": 4321098765,
         "md5_checksum": "6b1827a40598e3c27d64f53a8901c2b7",
         "url": "https://example.com/human_gut_metagenome_annotation.gff",
-        "was_generated_by": "nmdc:wfmgan-v9w-4d83z"
+        "was_generated_by": "nmdc:wfmgan-99-4d83z"
     },
     {
         "id": "nmdc:dobj-12-jdhk9537",

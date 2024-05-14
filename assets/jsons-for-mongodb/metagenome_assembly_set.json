@@ -17,7 +17,7 @@
         "execution_resource": "LANL-B-div",
         "git_url": "https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0",
         "part_of": [
-            "nmdc:wfch-11-ab"
+            "nmdc:wfch-99-ab"
         ],
         "started_at_time": "2020-03-24T00:00:00+00:00",
         "asm_score": 3.29,
@@ -66,7 +66,7 @@
         "execution_resource": "LANL-B-div",
         "git_url": "https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0",
         "part_of": [
-            "nmdc:wfch-11-ab"
+            "nmdc:wfch-99-ab"
         ],
         "started_at_time": "2020-03-25T00:00:00+00:00",
         "asm_score": 3.196,
@@ -115,7 +115,7 @@
         "execution_resource": "LANL-B-div",
         "git_url": "https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0",
         "part_of": [
-            "nmdc:wfch-11-ab"
+            "nmdc:wfch-99-ab"
         ],
         "started_at_time": "2020-03-25T00:00:00+00:00",
         "asm_score": 3.527,
@@ -147,7 +147,7 @@
         "num_aligned_reads": 79146088.0
     },
     {
-        "id": "nmdc:wfmgas-99-B7Vogx",
+        "id": "nmdc:wfmgas-99-111111",
         "type": "nmdc:MetagenomeAssembly",
         "name": "Metagenome assembly 1472_51277",
         "has_input": [
@@ -169,25 +169,25 @@
         "execution_resource": "LANL-B-div",
         "git_url": "https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0",
         "part_of": [
-            "nmdc:wfch-11-ab"
+            "nmdc:wfch-99-ab"
         ],
         "started_at_time": "2020-03-24T00:00:00+00:00"
     },
     {
-        "id": "nmdc:wfmgas-j6n-v9w6y",
+        "id": "nmdc:wfmgas-99-v9w6y",
         "type": "nmdc:MetagenomeAssembly",
         "name": "human gut metagenome assembly",
         "has_input": [
-            "nmdc:dobj-96d-7l49z"
+            "nmdc:dobj-99-7l49z"
         ],
         "has_output": [
-            "nmdc:dobj-j6n-9t74d"
+            "nmdc:dobj-99-9t74d"
         ],
         "ended_at_time": "2023-08-04T14:00:00Z",
         "execution_resource": "NERSC-Perlmutter",
         "git_url": "https://github.com/microbiomedata/metagenome_assembly/releases/tag/v1.2.3",
         "part_of": [
-            "nmdc:wfch-k48-98f7b"
+            "nmdc:wfch-99-98f7b"
         ],
         "started_at_time": "2023-08-04T08:00:00Z",
         "asm_score": 0.85,
