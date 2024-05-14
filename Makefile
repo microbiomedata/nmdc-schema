@@ -21,6 +21,7 @@ TEMPLATEDIR = doc-templates
 
 .PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
 
+
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
 
@@ -234,6 +235,7 @@ site-clean: clean
 	rm -rf nmdc_schema/*.yaml
 
 squeaky-clean: clean accepting-legacy-ids-clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+	mkdir project
 
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \

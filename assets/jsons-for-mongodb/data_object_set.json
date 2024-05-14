@@ -1,5 +1,31 @@
 [
     {
+        "id": "nmdc:dobj-00-msdem1",
+        "name": "EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820",
+        "description": "raw instrument file for nmdc:dgms-99-zUCd5N",
+        "file_size_bytes": 1150434379,
+        "url": "https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw",
+        "md5_checksum": "3EFB4966125DFA9329ADE5B18EADDA8E",
+        "data_object_type": "LC-DDA-MS/MS Raw Data",
+        "type": "nmdc:DataObject",
+        "alternative_identifiers": [
+            "my_emsl:1826381"
+        ]
+    },
+    {
+        "id": "nmdc:dobj-00-msdem2",
+        "name": "EMSL_49991_Brodie_123_Lipids_Neg_12Aug19_Lola-WCSH417820",
+        "description": "raw instrument file for nmdc:dgms-99-zUCd5x",
+        "file_size_bytes": 1150434379,
+        "url": "https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw",
+        "md5_checksum": "3EFB4966125DFA9329ADE5B18EADDA8E",
+        "data_object_type": "LC-DDA-MS/MS Raw Data",
+        "type": "nmdc:DataObject",
+        "alternative_identifiers": [
+            "my_emsl:1826333"
+        ]
+    },
+    {
         "id": "nmdc:dobj-99-dkJ8xX",
         "type": "nmdc:DataObject",
         "name": "11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz",

@@ -1,0 +1,94 @@
+[
+    {
+        "id": "nmdc:mscon-99-oW43DzG1",
+        "name": "EMSL lipidomics mass spectrometry method, positive polarity",
+        "description": "Mass spectrometry method used by EMSL for lipidomics analysis, positive polarity",
+        "type": "nmdc:MassSpectrometryConfiguration",
+        "acquisition_category": "tandem_mass_spectrum",
+        "acquisition_strategy": "data_dependent_acquisition",
+        "mass_spectrum_collection_modes": [
+            "full_profile",
+            "centroid"
+        ],
+        "resolution_categories": [
+            "high",
+            "low"
+        ],
+        "mass_analyzers": [
+            "Orbitrap",
+            "ion_trap"
+        ],
+        "ionization_source": "electrospray_ionization",
+        "polarity_mode": "positive"
+    },
+    {
+        "id": "nmdc:mscon-99-oW43DzG2",
+        "name": "EMSL lipidomics mass spectrometry method, negative polarity",
+        "description": "Mass spectrometry method used by EMSL for lipidomics analysis, negative polarity",
+        "type": "nmdc:MassSpectrometryConfiguration",
+        "acquisition_category": "tandem_mass_spectrum",
+        "acquisition_strategy": "data_dependent_acquisition",
+        "mass_spectrum_collection_modes": [
+            "full_profile",
+            "centroid"
+        ],
+        "resolution_categories": [
+            "high",
+            "low"
+        ],
+        "mass_analyzers": [
+            "Orbitrap",
+            "ion_trap"
+        ],
+        "ionization_source": "electrospray_ionization",
+        "polarity_mode": "negative"
+    },
+    {
+        "id": "nmdc:chrocon-11-oW43DzG0",
+        "name": "EMSL LC method for non-polar metabolites",
+        "description": "LC method for non-polar metabolites used by EMSL",
+        "type": "nmdc:ChromatographyConfiguration",
+        "chromatographic_category": "liquid_chromatography",
+        "stationary_phase": "C18",
+        "temperature": {
+            "type": "nmdc:QuantityValue",
+            "has_numeric_value": 30,
+            "has_unit": "Cel"
+        },
+        "ordered_mobile_phases": [
+            {
+                "type": "nmdc:MobilePhaseSegment",
+                "duration": {
+                    "type": "nmdc:QuantityValue",
+                    "has_unit": "min",
+                    "has_numeric_value": 60
+                },
+                "substances_used": [
+                    {
+                        "known_as": "nmdc:chem-99-000003",
+                        "type": "nmdc:PortionOfSubstance",
+                        "final_concentration": {
+                            "type": "nmdc:QuantityValue",
+                            "has_unit": "%",
+                            "has_numeric_value": 10
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "nmdc:MobilePhaseSegment",
+                "substances_used": [
+                    {
+                        "known_as": "nmdc:chem-99-000015",
+                        "type": "nmdc:PortionOfSubstance",
+                        "final_concentration": {
+                            "type": "nmdc:QuantityValue",
+                            "has_unit": "mM",
+                            "has_numeric_value": 15
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

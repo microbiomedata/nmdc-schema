@@ -187,11 +187,40 @@ chemical_entity_set:
     description: A serine protease that hydrolyzes peptide bonds at the C-terminus of
       threonine, alanine, serine, and valine.
 planned_process_set:
-  - id: nmdc:matprc-99-123456
-    type: nmdc:DirectInfusionProcess
+  - id: nmdc:cspro-99-oW43DzG0
+    type: nmdc:ChromatographicSeparationProcess
     has_input:
-      - nmdc:procsm-99-000001
-    direct_infusion_category: direct_infusion
+      - nmdc:procsm-11-9gjxns61
+    has_output:
+      - nmdc:procsm-11-05g48p90
+      - nmdc:procsm-11-05g48p91
+    stationary_phase: "CN"
+    chromatographic_category: solid_phase_extraction
+    ordered_mobile_phases:
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: '%'
+              has_numeric_value: 10
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 700
+          has_unit: mL
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: mM
+              has_numeric_value: 15
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 700
+          has_unit: mL
   - id: nmdc:subspr-99-oW43DzG0
     type: nmdc:SubSamplingProcess
     has_input:
@@ -282,39 +311,6 @@ planned_process_set:
               type: nmdc:QuantityValue
               has_unit: mM
               has_numeric_value: 15
-  - id: nmdc:cspro-99-oW43DzG0
-    type: nmdc:ChromatographicSeparationProcess
-    has_input:
-      - nmdc:procsm-11-9gjxns61
-    has_output:
-      - nmdc:procsm-11-05g48p90
-      - nmdc:procsm-11-05g48p91
-    stationary_phase: "CN"
-    ordered_mobile_phases:
-      - type: nmdc:MobilePhaseSegment
-        substances_used:
-          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
-            type: nmdc:PortionOfSubstance
-            final_concentration:
-              type: nmdc:QuantityValue
-              has_unit: '%'
-              has_numeric_value: 10
-        volume:
-          type: nmdc:QuantityValue
-          has_numeric_value: 700
-          has_unit: mL
-      - type: nmdc:MobilePhaseSegment
-        substances_used:
-          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
-            type: nmdc:PortionOfSubstance
-            final_concentration:
-              type: nmdc:QuantityValue
-              has_unit: mM
-              has_numeric_value: 15
-        volume:
-          type: nmdc:QuantityValue
-          has_numeric_value: 700
-          has_unit: mL
   - id: nmdc:mixpro-11-A74
     type: nmdc:MixingProcess
     has_input:
@@ -431,15 +427,6 @@ planned_process_set:
       type: nmdc:QuantityValue
       has_numeric_value: 3
       has_unit: h
-  - id: nmdc:cspro-99-oW43DzG1
-    type: nmdc:ChromatographicSeparationProcess
-    has_input:
-      - nmdc:procsm-99-9gjxns62
-    has_output:
-      - nmdc:procsm-99-05g48p91
-    has_calibration: nmdc:calib-99-zUCd5Q
-    chromatographic_category: gas_chromatography
-    stationary_phase: Polysiloxane
   - id: nmdc:poolp-00-123456
     type: nmdc:Pooling
   - id: nmdc:extrp-00-999999
@@ -4020,6 +4007,38 @@ nom_analysis_set:
     started_at_time: '2023-08-08T09:30:00Z'
     has_calibration: nmdc:calib-99-v9w6
 data_generation_set:
+  - id: nmdc:dgms-99-zUCd5N
+    type: nmdc:MassSpectrometry
+    eluent_introduction_category: liquid_chromatography
+    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
+    has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0
+    analyte_category: lipidome
+    has_input:
+      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+    start_date: 30-OCT-14 01.00.00.000000000 AM
+    end_date: 30-OCT-14 01.30.00.000000000 AM
+    add_date: 07-MAY-24 12.00.00.000000000 AM
+    mod_date: 07-MAY-24 12.00.00.000000000 AM
+    has_output:
+      - nmdc:dobj-00-msdem1
+    associated_studies:
+      - nmdc:sty-00-555xxx
+  - id: nmdc:dgms-99-zUCd5x
+    type: nmdc:MassSpectrometry
+    eluent_introduction_category: liquid_chromatography
+    analyte_category: lipidome
+    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
+    has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0
+    has_input:
+      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+    start_date: 31-OCT-14 01.00.00.000000000 AM
+    end_date: 31-OCT-14 01.30.00.000000000 AM
+    add_date: 07-MAY-24 12.00.00.000000000 AM
+    mod_date: 07-MAY-24 12.00.00.000000000 AM
+    has_output:
+      - nmdc:dobj-00-msdem2
+    associated_studies:
+      - nmdc:sty-00-555xxx
   - id: nmdc:dgns-99-9XUVVF
     type: nmdc:NucleotideSequencing
     name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
@@ -4081,34 +4100,6 @@ data_generation_set:
     mod_date: 04-APR-20 08.26.35.067000000 AM
     ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
       in University of Washington, Seatle, WA, United States - 4-1-23 metaG
-  - id: nmdc:dgms-99-zUCd5N
-    type: nmdc:MassSpectrometry
-    has_configuration: nmdc:mscon-99-oW43DzG1
-    analyte_category: metabolome
-    has_input:
-      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
-    start_date: 30-OCT-14 01.00.00.000000000 AM
-    end_date: 30-OCT-14 01.30.00.000000000 AM
-    add_date: 07-MAY-24 12.00.00.000000000 AM
-    mod_date: 07-MAY-24 12.00.00.000000000 AM
-    has_output:
-      - nmdc:dobj-00-msdem1
-    associated_studies:
-      - nmdc:sty-00-555xxx
-  - id: nmdc:dgms-99-zUCd5x
-    analyte_category: lipidome
-    has_configuration: nmdc:mscon-99-oW43DzG2
-    has_input:
-      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
-    start_date: 31-OCT-14 01.00.00.000000000 AM
-    end_date: 31-OCT-14 01.30.00.000000000 AM
-    add_date: 07-MAY-24 12.00.00.000000000 AM
-    mod_date: 07-MAY-24 12.00.00.000000000 AM
-    has_output:
-      - nmdc:dobj-00-msdem2
-    type: nmdc:MassSpectrometry
-    associated_studies:
-      - nmdc:sty-00-555xxx
   - id: nmdc:dgns-99-zUCd5N
     type: nmdc:NucleotideSequencing
     name: Thawing permafrost microbial communities from the Arctic, studying carbon
@@ -4899,18 +4890,21 @@ calibration_set:
 
 configuration_set:
   - id: nmdc:mscon-99-oW43DzG1
-    name: EMSL metabolomics mass spectrometry method, positive polarity
-    description: Mass spectrometry method used by EMSL for metabolomics analysis, positive polarity
+    name: EMSL lipidomics mass spectrometry method, positive polarity
+    description: Mass spectrometry method used by EMSL for lipidomics analysis, positive polarity
     type: nmdc:MassSpectrometryConfiguration
     acquisition_category: tandem_mass_spectrum
     acquisition_strategy: data_dependent_acquisition
-    resolution_categories:
-      - high
-    mass_analyzers:
-      - Orbitrap
-    ionization_source: electrospray_ionization
     mass_spectrum_collection_modes:
       - full_profile
+      - centroid
+    resolution_categories:
+      - high
+      - low
+    mass_analyzers:
+      - Orbitrap
+      - ion_trap
+    ionization_source: electrospray_ionization
     polarity_mode: positive
   - id: nmdc:mscon-99-oW43DzG2
     name: EMSL lipidomics mass spectrometry method, negative polarity
@@ -4929,3 +4923,34 @@ configuration_set:
       - ion_trap
     ionization_source: electrospray_ionization
     polarity_mode: negative
+  - id: nmdc:chrocon-11-oW43DzG0
+    name: EMSL LC method for non-polar metabolites
+    description: LC method for non-polar metabolites used by EMSL
+    type: nmdc:ChromatographyConfiguration
+    chromatographic_category: liquid_chromatography
+    stationary_phase: C18
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 30
+      has_unit: Cel
+    ordered_mobile_phases:
+      - type: nmdc:MobilePhaseSegment
+        duration:
+          type: nmdc:QuantityValue
+          has_unit: min
+          has_numeric_value: 60
+        substances_used:
+          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: '%'
+              has_numeric_value: 10
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: mM
+              has_numeric_value: 15

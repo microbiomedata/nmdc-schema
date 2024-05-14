@@ -1,11 +1,56 @@
 [
     {
-        "id": "nmdc:matprc-99-123456",
-        "type": "nmdc:DirectInfusionProcess",
+        "id": "nmdc:cspro-99-oW43DzG0",
+        "type": "nmdc:ChromatographicSeparationProcess",
         "has_input": [
-            "nmdc:procsm-99-000001"
+            "nmdc:procsm-11-9gjxns61"
         ],
-        "direct_infusion_category": "direct_infusion"
+        "has_output": [
+            "nmdc:procsm-11-05g48p90",
+            "nmdc:procsm-11-05g48p91"
+        ],
+        "stationary_phase": "CN",
+        "chromatographic_category": "solid_phase_extraction",
+        "ordered_mobile_phases": [
+            {
+                "type": "nmdc:MobilePhaseSegment",
+                "substances_used": [
+                    {
+                        "known_as": "nmdc:chem-99-000003",
+                        "type": "nmdc:PortionOfSubstance",
+                        "final_concentration": {
+                            "type": "nmdc:QuantityValue",
+                            "has_unit": "%",
+                            "has_numeric_value": 10
+                        }
+                    }
+                ],
+                "volume": {
+                    "type": "nmdc:QuantityValue",
+                    "has_numeric_value": 700,
+                    "has_unit": "mL"
+                }
+            },
+            {
+                "type": "nmdc:MobilePhaseSegment",
+                "substances_used": [
+                    {
+                        "known_as": "nmdc:chem-99-000015",
+                        "type": "nmdc:PortionOfSubstance",
+                        "final_concentration": {
+                            "type": "nmdc:QuantityValue",
+                            "has_unit": "mM",
+                            "has_numeric_value": 15
+                        }
+                    }
+                ],
+                "volume": {
+                    "type": "nmdc:QuantityValue",
+                    "has_numeric_value": 700,
+                    "has_unit": "mL"
+                }
+            }
+        ]
     },
     {
         "id": "nmdc:subspr-99-oW43DzG0",
@@ -136,58 +181,6 @@
                         }
                     }
                 ]
-            }
-        ]
-    },
-    {
-        "id": "nmdc:cspro-99-oW43DzG0",
-        "type": "nmdc:ChromatographicSeparationProcess",
-        "has_input": [
-            "nmdc:procsm-11-9gjxns61"
-        ],
-        "has_output": [
-            "nmdc:procsm-11-05g48p90",
-            "nmdc:procsm-11-05g48p91"
-        ],
-        "stationary_phase": "CN",
-        "ordered_mobile_phases": [
-            {
-                "type": "nmdc:MobilePhaseSegment",
-                "substances_used": [
-                    {
-                        "known_as": "nmdc:chem-99-000003",
-                        "type": "nmdc:PortionOfSubstance",
-                        "final_concentration": {
-                            "type": "nmdc:QuantityValue",
-                            "has_unit": "%",
-                            "has_numeric_value": 10
-                        }
-                    }
-                ],
-                "volume": {
-                    "type": "nmdc:QuantityValue",
-                    "has_numeric_value": 700,
-                    "has_unit": "mL"
-                }
-            },
-            {
-                "type": "nmdc:MobilePhaseSegment",
-                "substances_used": [
-                    {
-                        "known_as": "nmdc:chem-99-000015",
-                        "type": "nmdc:PortionOfSubstance",
-                        "final_concentration": {
-                            "type": "nmdc:QuantityValue",
-                            "has_unit": "mM",
-                            "has_numeric_value": 15
-                        }
-                    }
-                ],
-                "volume": {
-                    "type": "nmdc:QuantityValue",
-                    "has_numeric_value": 700,
-                    "has_unit": "mL"
-                }
             }
         ]
     },
@@ -358,19 +351,6 @@
             "has_numeric_value": 3,
             "has_unit": "h"
         }
-    },
-    {
-        "id": "nmdc:cspro-99-oW43DzG1",
-        "type": "nmdc:ChromatographicSeparationProcess",
-        "has_input": [
-            "nmdc:procsm-99-9gjxns62"
-        ],
-        "has_output": [
-            "nmdc:procsm-99-05g48p91"
-        ],
-        "has_calibration": "nmdc:calib-99-zUCd5Q",
-        "chromatographic_category": "gas_chromatography",
-        "stationary_phase": "Polysiloxane"
     },
     {
         "id": "nmdc:poolp-00-123456",

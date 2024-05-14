@@ -654,5 +654,5 @@ generate-json-collections: src/data/valid/Database-interleaved.yaml
 		--output-dir assets/jsons-for-mongodb
 
 .PHONY: populate-mongodb-form-json-collections
-populate-mongodb-form-json-collections:
+populate-mongodb-form-json-collections: generate-json-collections
 	src/scripts/json-dir-to-mongodb.sh # requires that the script's permissions have been set like: chmod +x src/scripts/json-dir-to-mongodb.sh
