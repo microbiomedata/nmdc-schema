@@ -291,7 +291,6 @@ classes:
       - omics assay
       - sequencing project
       - experiment
-      - instrument_used
     is_a: PlannedProcess
     abstract: true
     in_subset:
@@ -309,6 +308,7 @@ classes:
       - mod_date
       - part_of
       - principal_investigator
+      - instrument_used
     slot_usage:
       has_input:
         required: true
