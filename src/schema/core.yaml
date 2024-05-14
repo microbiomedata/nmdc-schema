@@ -1178,6 +1178,7 @@ classes:
       - volume
 
   MaterialProcessing:
+    abstract: true
     class_uri: 'nmdc:MaterialProcessing'
     is_a: PlannedProcess
     description:

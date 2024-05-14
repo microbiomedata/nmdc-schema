@@ -11,6 +11,7 @@ imports:
 
 classes:
   AttributeValue:
+    abstract: true
     class_uri: 'nmdc:AttributeValue'
     description: >-
       The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic

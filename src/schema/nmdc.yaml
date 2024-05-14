@@ -54,6 +54,7 @@ prefixes:
   PUBCHEM.COMPOUND: "https://bioregistry.io/pubchem.compound:"
   RO: "http://purl.obolibrary.org/obo/RO_"
   RetroRules: http://example.org/retrorules/
+  SO: "http://purl.obolibrary.org/obo/SO_"
   SUPFAM: "https://bioregistry.io/supfam:" # 	https://bioregistry.io/supfam:SSF57615
   TIGRFAM: "https://bioregistry.io/tigrfam:" # https://bioregistry.io/tigrfam:TIGR00010
   UBERON: "http://purl.obolibrary.org/obo/UBERON_"

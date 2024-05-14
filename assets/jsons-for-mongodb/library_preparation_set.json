@@ -1,0 +1,92 @@
+[
+    {
+        "id": "nmdc:libprp-99-xxx2",
+        "type": "nmdc:LibraryPreparation",
+        "name": "DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1",
+        "description": "DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2",
+        "has_input": [
+            "generic:xxx"
+        ],
+        "has_output": [
+            "generic:xxx"
+        ],
+        "processing_institution": "Battelle",
+        "start_date": "2018-09-26",
+        "end_date": "2018-09-26",
+        "library_preparation_kit": "KAPA HyperPrep Kit",
+        "library_type": "DNA",
+        "pcr_cycles": 0
+    },
+    {
+        "id": "nmdc:libprp-99-xxx1",
+        "type": "nmdc:LibraryPreparation",
+        "name": "RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1",
+        "description": "RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX",
+        "has_input": [
+            "generic:xxy"
+        ],
+        "has_output": [
+            "generic:xxz"
+        ],
+        "processing_institution": "Battelle",
+        "start_date": "2018-09-26",
+        "end_date": "2018-09-26",
+        "library_preparation_kit": "TruSeq RNA Library Prep Kit v2",
+        "library_type": "RNA",
+        "pcr_cycles": 12
+    },
+    {
+        "id": "nmdc:libprp-99-k4m6j",
+        "type": "nmdc:LibraryPreparation",
+        "name": "soil DNA library preparation",
+        "has_input": [
+            "nmdc:procsm-99-k4m6j"
+        ],
+        "has_output": [
+            "nmdc:procsm-99-96d7"
+        ],
+        "library_preparation_kit": "Illumina DNA Prep",
+        "library_type": "DNA",
+        "pcr_cycles": 12
+    },
+    {
+        "id": "nmdc:libprp-99-29dl",
+        "type": "nmdc:LibraryPreparation",
+        "name": "mouse gut DNA library preparation",
+        "has_input": [
+            "nmdc:procsm-99-29dl"
+        ],
+        "has_output": [
+            "nmdc:procsm-99-38t7"
+        ],
+        "library_type": "DNA",
+        "pcr_cycles": 10
+    },
+    {
+        "id": "nmdc:libprp-99-3z8t",
+        "type": "nmdc:LibraryPreparation",
+        "name": "human gut DNA library preparation",
+        "has_input": [
+            "nmdc:procsm-99-3z8t"
+        ],
+        "has_output": [
+            "nmdc:procsm-99-9t7"
+        ],
+        "library_type": "DNA",
+        "pcr_cycles": 15
+    },
+    {
+        "id": "nmdc:libprp-99-abcdef",
+        "type": "nmdc:LibraryPreparation",
+        "name": "DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1",
+        "has_input": [
+            "nmdc:procsm-99-extract"
+        ],
+        "has_output": [
+            "nmdc:procsm-99-library"
+        ],
+        "start_date": "2021-01-15",
+        "end_date": "2021-01-15",
+        "library_type": "DNA"
+    }
+]

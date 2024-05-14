@@ -1,0 +1,10 @@
+study_set:
+  - id: nmdc:sty-00-VDYg7R
+    type: nmdc:Study
+    study_category: research_study
+  - id: nmdc:sty-00-w8v82N
+    type: nmdc:Study
+    study_category: research_study
+  - id: nmdc:sty-00-Zv8LJB
+    type: nmdc:Study
+    study_category: research_study

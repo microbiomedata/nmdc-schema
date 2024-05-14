@@ -1,0 +1,65 @@
+study_set:
+  - id: nmdc:sty-99-jX2z3c
+    type: nmdc:Study
+    name: Poplar Common Garden Microbial Communities
+    description: This study investigates the microbial communities associated with
+      poplar trees in a common garden experiment.
+    study_category: research_study
+    principal_investigator:
+      has_raw_value: 'FirstName LastName'
+      name: 'FirstName LastName'
+      email: first.last@example.org
+      orcid: 0000-0000-0000-0000
+      type: nmdc:PersonValue
+    associated_dois:
+      - doi_value: doi:10.1000/fake.doi
+        doi_category: publication_doi
+        type: nmdc:Doi
+    funding_sources:
+      - 'National Science Foundation (award no. 9999999)'
+    alternative_names:
+      - Poplar Microbiome Project
+      - Clatskanie Poplar Experiment
+    related_identifiers: gold:Gs0000001
+  - id: nmdc:sty-99-8n4V9N
+    type: nmdc:Study
+    name: Coastal Redwood Rhizosphere Microbiome
+    description: This study explores the diversity and function of the microbial
+      community in the rhizosphere of coastal redwood trees.
+    study_category: research_study
+    principal_investigator:
+      has_raw_value: Jane Doe
+      name: Jane Doe
+      orcid: 0000-0000-0000-0001
+      type: nmdc:PersonValue
+    associated_dois:
+      - doi_value: doi:10.2000/fake.doi
+        doi_category: dataset_doi
+        doi_provider: edi
+        type: nmdc:Doi
+    funding_sources:
+      - 'Save the Redwoods League (grant no. 12345)'
+    alternative_titles:
+      - Microbial Ecology of Redwood Forests
+      - Redwood Root Microbiome
+  - id: nmdc:sty-99-4m7Q2b
+    type: nmdc:Study
+    name: Microbiome of the Built Environment
+    description: This research study aims to characterize the microbial communities
+      found in various built environments, including homes, offices, and hospitals.
+    study_category: research_study
+    principal_investigator:
+      has_raw_value: Bob Smith
+      name: Bob Smith
+      email: bob.smith@example.org
+      orcid: 0000-0000-0000-0002
+      type: nmdc:PersonValue
+    associated_dois:
+      - doi_value: doi:10.3000/fake.doi
+        doi_category: publication_doi
+        type: nmdc:Doi
+    funding_sources:
+      - 'Alfred P. Sloan Foundation (grant no. 67890)'
+    alternative_names:
+      - Indoor Microbiome Project
+      - Built Environment Microorganisms
