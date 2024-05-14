@@ -1,5 +1,5 @@
 import uuid
-
+from nmdc_schema.migrators.helpers import load_yaml_asset
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
@@ -85,12 +85,12 @@ class Migrator(MigratorBase):
                 pipeline=[self.remove_was_informed_by],
             )
 
-    def mint_id(self):
-        r"""
-        TODO: Replace me with real minting.
-        """
+    # def mint_id(self):
+    #     r"""
+    #     TODO: Replace me with real minting.
+    #     """
 
-        return "potato:" + str(uuid.uuid4())
+    #     return "potato:" + str(uuid.uuid4())
 
     def was_informed_by_chain_mapping(self, workflow_doc: dict):
         r"""
@@ -106,14 +106,16 @@ class Migrator(MigratorBase):
         True
         """
 
-        # TODO: Replace me with real minting
-        workflow_chain_id = self.mint_id()
+        # # TODO: Replace me with real minting
+        # workflow_chain_id = self.mint_id()
+        workflow_chain_ids = load_yaml_asset("migrator_from_X_to_PR9/workflow_chain_ids.yaml")
 
-        # Get the omics_processing_id from the was_informed_by slot of the read_qc_doc
-        omics_processing_id = workflow_doc["was_informed_by"]
+        for workflow_chain_id in workflow_chain_ids:
+            # Get the `omics_processing_id`` from the `was_informed_by` slot of the `WorkflowExecution` doc
+            omics_processing_id = workflow_doc["was_informed_by"]
 
-        if omics_processing_id not in self.workflow_omics_dict:
-            self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
+            if omics_processing_id not in self.workflow_omics_dict:
+                self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
 
         return workflow_doc
 
