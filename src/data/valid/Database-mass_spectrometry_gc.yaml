@@ -23,15 +23,13 @@ configuration_set:
   - id: nmdc:chrocon-99-oW43DzG1
     type: nmdc:ChromatographyConfiguration
     name: "EMSL GC method for small molecules"
-    description: "GC method for small molecules"
-    #TODO KRH: Add more details to the description
+    description: "EMSL's Gas Chromatography method for small molecules"
     stationary_phase: Polysiloxane
     chromatographic_category: gas_chromatography
   - id: nmdc:mscon-99-oW43DzG0
     type: nmdc:MassSpectrometryConfiguration
-    name: "EMSL GC mass spectrometry method for small molecules"
-    description: "GC mass spectrometry method for small molecules"
-    #TODO KRH: Add more details to the description
+    name: "EMSL EI mass spectrometry method for small molecules"
+    description: "Electron impact mass spectrometry method for small molecules"
     ionization_source: electron_ionization
     mass_analyzers: 
       - quadrupole

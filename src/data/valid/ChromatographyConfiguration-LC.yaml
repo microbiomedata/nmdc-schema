@@ -1,8 +1,7 @@
 id: nmdc:chrocon-99-oW43DzG0
 type: nmdc:ChromatographyConfiguration
 name: "EMSL HILIC method for small molecules"
-description: "HILIC method for small molecules"
-#TODO KRH: Add more details to the description
+description: "EMSL's hydrophilic interaction liquid chromatography method for small molecules"
 stationary_phase: BEH-HILIC
 chromatographic_category: liquid_chromatography
 temperature:
