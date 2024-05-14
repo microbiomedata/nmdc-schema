@@ -87,6 +87,10 @@ classes:
         required: true
       type:
         required: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}"
+          interpolated: true      
       id:
         required: true
         structured_pattern:
