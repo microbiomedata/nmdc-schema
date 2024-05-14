@@ -1,7 +1,7 @@
 data_generation_set:
   - id: nmdc:dgms-99-zUCd5N
     type: nmdc:MassSpectrometry
-    has_configuration: nmdc:mscon-99-oW43DzG1
+    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
     analyte_category: metabolome
     has_input:
       - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
@@ -15,7 +15,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
   - id: nmdc:dgms-99-zUCd5x
     analyte_category: lipidome
-    has_configuration: nmdc:mscon-99-oW43DzG2
+    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
     has_input:
       - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
     start_date: 31-OCT-14 01.00.00.000000000 AM
