@@ -521,7 +521,6 @@ slots:
     range: Instrument
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
-    inlined: false
 
   model:
     range: InstrumentModelEnum
