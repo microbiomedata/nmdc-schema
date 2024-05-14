@@ -11,12 +11,12 @@ output_read_bases: 100.0
 output_read_count: 3.0
 started_at_time: '2021-08-05T14:48:51+00:00'
 type: type1
-was_informed_by: "gold:Gp0061273"
+was_informed_by: "nmdc:omprc-11-1247"
 has_input:
-  - "jgi:534819030d87850d7aea2a16"
+  - "nmdc:dobj-11-12345"
 has_output:
-  - "nmdc:ae40d7ae535c92b6d347915d8b1ac125"
-  - "nmdc:bd723452a107e973fcc6734ff7894bb9"
+  - "nmdc:dobj-11-12346"
+  - "nmdc:dobj-11-12347"
 #part_of:
 #used: used1
 #version: version1
