@@ -133,19 +133,6 @@ classes:
           syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
 
-  FluidHandling:
-    class_uri: nmdc:FluidHandling
-    is_a: MaterialProcessing
-    description: the process that defines how a processed sample is introduced into the mass spectrometer
-    abstract: true
-
-  DirectInfusionProcess:
-    class_uri: nmdc:DirectInfusionProcess
-    description: the process that defines how a processed sample is introduced into the mass spectrometer witout previous chromatographic separation
-    is_a: FluidHandling
-    slots:
-      - direct_infusion_category
-
   MassSpectrometry:
     class_uri: nmdc:MassSpectrometry
     description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
@@ -153,9 +140,22 @@ classes:
     exact_mappings:
       - CHMO:0000470
     slots:
-      - eluent_introduction
-      - has_configuration
+      - eluent_introduction_category
+      - has_mass_spectrometry_configuration
+      - has_chromatography_configuration
       - has_calibration
+    rules:
+    - title: has_calibration_required_if_gc
+      description: >-
+        If eluent_introduction_category is gas_chromatography, then has_calibration is required.
+      preconditions:
+        slot_conditions:
+          eluent_introduction_category:
+            equals_string: gas_chromatography
+      postconditions:
+        slot_conditions:
+          has_calibration:
+            required: true
     slot_usage:
       id:
         structured_pattern:
@@ -194,6 +194,27 @@ classes:
           syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
   
+  ChromatographyConfiguration:
+    is_a: Configuration
+    class_uri: nmdc:ChromatographyConfiguration
+    description: A set of parameters that define and control the actions of a chromatography process.
+    notes:
+      - This class is intended to represent a chromatography method file associated with a mass spectrometry process.
+    slots:
+      - chromatographic_category
+      - ordered_mobile_phases
+      - stationary_phase
+      - temperature
+    slot_usage:
+      name:
+        required: true
+      description:
+        required: true
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(chrocon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          interpolated: true
+
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
@@ -590,6 +611,21 @@ enums:
       positive: { }
       negative: { }
 
+  EluentIntroductionCategoryEnum:
+    permissible_values:
+      liquid_chromatography:
+        aliases:
+          - LC
+        description: The processed sample is introduced into the mass spectrometer through a liquid chromatography process.
+      gas_chromatography:
+        aliases:
+          - GC
+        description: The processed sample is introduced into the mass spectrometer through a gas chromatography process.
+      direct_infusion_syringe:
+        description: The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.
+      direct_infusion_autosampler:
+        description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
+
   LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
@@ -738,13 +774,17 @@ slots:
     range: AcquisitionCategoryEnum
     description: whether only survey or tandem mass spectra are part of the experiment
 
-  eluent_introduction:
-    range: FluidHandling
+  eluent_introduction_category:
+    range: EluentIntroductionCategoryEnum
     description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
-  has_configuration:
-    range: Configuration
-    description: a set of parameters that define the actions of the process
+  has_mass_spectrometry_configuration:
+    range: MassSpectrometryConfiguration
+    description: a description of how the mass spectrometry was configured
+
+  has_chromatography_configuration:
+    range: ChromatographyConfiguration
+    description: a description of how the chromatographic introduction was configured for the introduction of the sample into the mass spectrometer
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
