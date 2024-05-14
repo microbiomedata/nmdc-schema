@@ -1,3 +1,4 @@
+#TODO KRH: Add chroma configs to this example
 data_generation_set:
   - id: nmdc:dgms-99-zUCd5N
     type: nmdc:MassSpectrometry
