@@ -1,0 +1,3954 @@
+[
+    {
+        "id": "nmdc:bsm-99-isqhuW",
+        "type": "nmdc:Biosample",
+        "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
+        "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
+        "associated_studies": [
+            "nmdc:sty-00-8675309"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "samp_name": "11E1M metaG",
+        "gold_biosample_identifiers": [
+            "gold:Gb0150408"
+        ],
+        "ecosystem": "Environmental",
+        "ecosystem_category": "Terrestrial",
+        "ecosystem_subtype": "Wetlands",
+        "ecosystem_type": "Soil",
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "Sweden: Stordalen"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "68.35 19.05",
+            "latitude": 68.35,
+            "longitude": 19.05
+        },
+        "specific_ecosystem": "Permafrost",
+        "add_date": "17-MAR-17 04.55.54.717000000 PM",
+        "community": "microbial communities",
+        "habitat": "Fen",
+        "location": "Stordalen Mire, Sweden",
+        "mod_date": "08-JAN-20 02.49.23.000000000 PM",
+        "ncbi_taxonomy_name": "permafrost metagenome",
+        "sample_collection_site": "Mire fen"
+    },
+    {
+        "id": "nmdc:bsm-99-dge3H9",
+        "type": "nmdc:Biosample",
+        "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
+        "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
+        "associated_studies": [
+            "nmdc:sty-00-8675309"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "samp_name": "Inc-BW-C-14-O",
+        "gold_biosample_identifiers": [
+            "gold:Gb0157174"
+        ],
+        "ecosystem": "Environmental",
+        "ecosystem_category": "Terrestrial",
+        "ecosystem_subtype": "Unclassified",
+        "ecosystem_type": "Soil",
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "USA: Massachusetts"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "42.481016 -72.178343",
+            "latitude": 42.481016,
+            "longitude": -72.178343
+        },
+        "specific_ecosystem": "Forest Soil",
+        "add_date": "17-AUG-17 05.38.34.719000000 PM",
+        "community": "microbial communities",
+        "habitat": "soil",
+        "location": "Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States",
+        "mod_date": "08-JAN-20 02.49.23.000000000 PM",
+        "ncbi_taxonomy_name": "soil metagenome",
+        "sample_collection_site": "forest soil"
+    },
+    {
+        "id": "nmdc:bsm-99-dc6tg6",
+        "type": "nmdc:Biosample",
+        "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
+        "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
+        "associated_studies": [
+            "nmdc:sty-00-8675309"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "samp_name": "4-1-23 metaG",
+        "gold_biosample_identifiers": [
+            "gold:Gb0188037"
+        ],
+        "ecosystem": "Host-associated",
+        "ecosystem_category": "Plants",
+        "ecosystem_subtype": "Soil",
+        "ecosystem_type": "Rhizosphere",
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "USA: Seattle, Washington"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "47.6516 -122.3045",
+            "latitude": 47.6516,
+            "longitude": -122.3045
+        },
+        "specific_ecosystem": "Unclassified",
+        "add_date": "29-MAR-18 01.27.40.709000000 PM",
+        "community": "microbial communities",
+        "habitat": "rhizosphere",
+        "host_name": "Carex aquatilis",
+        "location": "University of Washington, Seatle, WA, United States",
+        "mod_date": "08-JAN-20 02.49.25.000000000 PM",
+        "ncbi_taxonomy_name": "rhizosphere metagenome",
+        "sample_collection_site": "Peat Soil"
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_type": "tube"
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "tube"
+    },
+    {
+        "id": "nmdc:bsm-99-J9FcnC",
+        "type": "nmdc:Biosample",
+        "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33 endosphere",
+        "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+        "associated_studies": [
+            "nmdc:sty-99-U21mUX"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-99-SPreao",
+        "gold_biosample_identifiers": [
+            "gold:Gb0305833"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-BdlWdQ",
+        "type": "nmdc:Biosample",
+        "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
+        "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+        "associated_studies": [
+            "nmdc:sty-99-U21mUX"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-99-SPreao",
+        "gold_biosample_identifiers": [
+            "gold:Gb0291692"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-vn74Wq",
+        "type": "nmdc:Biosample",
+        "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL1_35_33",
+        "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+        "associated_studies": [
+            "nmdc:sty-99-U21mUX"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-99-SPreao",
+        "gold_biosample_identifiers": [
+            "gold:Gb0291582"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-P8FdpS",
+        "type": "nmdc:Biosample",
+        "name": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29 endosphere",
+        "description": "Root microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+        "associated_studies": [
+            "nmdc:sty-99-U21mUX"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-99-h2mYFG",
+        "gold_biosample_identifiers": [
+            "gold:Gb0305834"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-ugBwz3",
+        "type": "nmdc:Biosample",
+        "name": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
+        "description": "Rhizosphere soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+        "associated_studies": [
+            "nmdc:sty-99-U21mUX"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-99-h2mYFG",
+        "gold_biosample_identifiers": [
+            "gold:Gb0291693"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-tN5lxM",
+        "type": "nmdc:Biosample",
+        "name": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA - BESC-13-CL2_39_29",
+        "description": "Bulk soil microbial communities from poplar common garden site in Clatskanie, Oregon, USA",
+        "associated_studies": [
+            "nmdc:sty-99-U21mUX"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-99-h2mYFG",
+        "gold_biosample_identifiers": [
+            "gold:Gb0291583"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-ae4-n3ybxz",
+        "type": "nmdc:Biosample",
+        "name": "soil sample 1",
+        "description": "soil sample collected from a grassland ecosystem",
+        "associated_studies": [
+            "nmdc:sty-99-b27v55"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000446",
+            "term": {
+                "id": "ENVO:00000446",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00001998",
+            "term": {
+                "id": "ENVO:00001998",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-ae4-78f4bc"
+    },
+    {
+        "id": "nmdc:bsm-ae4-b316vq",
+        "type": "nmdc:Biosample",
+        "name": "soil sample 2",
+        "description": "soil sample collected from a grassland ecosystem",
+        "associated_studies": [
+            "nmdc:sty-99-b27v55"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000446",
+            "term": {
+                "id": "ENVO:00000446",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00001998",
+            "term": {
+                "id": "ENVO:00001998",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-ae4-78f4bc"
+    },
+    {
+        "id": "nmdc:bsm-ae4-q9t93w",
+        "type": "nmdc:Biosample",
+        "name": "soil sample 3",
+        "description": "soil sample collected from a grassland ecosystem",
+        "associated_studies": [
+            "nmdc:sty-99-b27v55"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000446",
+            "term": {
+                "id": "ENVO:00000446",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00001998",
+            "term": {
+                "id": "ENVO:00001998",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-ae4-78f4bc"
+    },
+    {
+        "id": "nmdc:bsm-ae4-t2r77l",
+        "type": "nmdc:Biosample",
+        "name": "water sample 1",
+        "description": "water sample from a freshwater lake",
+        "associated_studies": [
+            "nmdc:sty-99-t9w6g8"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000234",
+            "term": {
+                "id": "ENVO:00000234",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002004",
+            "term": {
+                "id": "ENVO:00002004",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-ae4-k4m6j9"
+    },
+    {
+        "id": "nmdc:bsm-ae4-x971d3",
+        "type": "nmdc:Biosample",
+        "name": "water sample 2",
+        "description": "water sample from a freshwater lake",
+        "associated_studies": [
+            "nmdc:sty-99-t9w6g8"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000234",
+            "term": {
+                "id": "ENVO:00000234",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002004",
+            "term": {
+                "id": "ENVO:00002004",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-ae4-k4m6j9"
+    },
+    {
+        "id": "nmdc:bsm-ae4-c6dlm7",
+        "type": "nmdc:Biosample",
+        "name": "water sample 3",
+        "description": "water sample from a freshwater lake",
+        "associated_studies": [
+            "nmdc:sty-99-t9w6g8"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000234",
+            "term": {
+                "id": "ENVO:00000234",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002004",
+            "term": {
+                "id": "ENVO:00002004",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-ae4-k4m6j9"
+    },
+    {
+        "id": "nmdc:bsm-ae4-p7k6v9",
+        "type": "nmdc:Biosample",
+        "name": "human gut sample 1",
+        "description": "fecal sample from a human subject",
+        "associated_studies": [
+            "nmdc:sty-99-q4g1z3"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "UBERON:0000059",
+            "term": {
+                "id": "UBERON:0000059",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002005",
+            "term": {
+                "id": "ENVO:00002005",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "host_taxid": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "NCBITaxon:9606",
+            "term": {
+                "id": "NCBITaxon:9606",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-ae4-v9w6y6",
+        "type": "nmdc:Biosample",
+        "name": "human gut sample 2",
+        "description": "fecal sample from a human subject",
+        "associated_studies": [
+            "nmdc:sty-99-q4g1z3"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "UBERON:0000059",
+            "term": {
+                "id": "UBERON:0000059",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002005",
+            "term": {
+                "id": "ENVO:00002005",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "host_taxid": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "NCBITaxon:9606",
+            "term": {
+                "id": "NCBITaxon:9606",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-ae4-d9j6n9",
+        "type": "nmdc:Biosample",
+        "name": "human gut sample 3",
+        "description": "fecal sample from a human subject",
+        "associated_studies": [
+            "nmdc:sty-99-q4g1z3"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "UBERON:0000059",
+            "term": {
+                "id": "UBERON:0000059",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002005",
+            "term": {
+                "id": "ENVO:00002005",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "host_taxid": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "NCBITaxon:9606",
+            "term": {
+                "id": "NCBITaxon:9606",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "name": "Lithgow State Coal Mine Calcium nutrients (early)",
+        "description": "Bulk Aqueous phase filtered water",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "gold_biosample_identifiers": [
+            "gold:Gb0101224"
+        ],
+        "ecosystem": "Environmental",
+        "ecosystem_category": "Aquatic",
+        "ecosystem_subtype": "Groundwater",
+        "ecosystem_type": "Freshwater",
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "Lithgow"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "-33.460524 150.168149",
+            "latitude": -33.460524,
+            "longitude": 150.168149
+        },
+        "samp_taxon_id": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "coal metagenome [NCBITaxon:1260732]",
+            "term": {
+                "id": "NCBITaxon:1260732",
+                "type": "nmdc:OntologyClass",
+                "name": "coal metagenome"
+            }
+        },
+        "specific_ecosystem": "Coalbed water",
+        "add_date": "28-JUL-14 12.00.00.000000000 AM",
+        "community": "microbial communities",
+        "habitat": "Coalbed water",
+        "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
+        "mod_date": "26-AUG-16 01.50.27.000000000 PM",
+        "ncbi_taxonomy_name": "coal metagenome",
+        "sample_collection_site": "Lithgow State Coal Mine"
+    },
+    {
+        "id": "nmdc:bsm-99-AtTUOs",
+        "type": "nmdc:Biosample",
+        "name": "Lithgow State Coal Mine Calcium nutrients (early)",
+        "description": "Bulk Aqueous phase filtered water",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "biosample_categories": [
+            "LTER",
+            "SIP"
+        ],
+        "gold_biosample_identifiers": [
+            "gold:Gb0101224"
+        ],
+        "ecosystem": "Environmental",
+        "ecosystem_category": "Aquatic",
+        "ecosystem_subtype": "Groundwater",
+        "ecosystem_type": "Freshwater",
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "Lithgow"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "-33.460524 150.168149",
+            "latitude": -33.460524,
+            "longitude": 150.168149
+        },
+        "samp_taxon_id": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "coal metagenome [NCBITaxon:1260732]",
+            "term": {
+                "id": "NCBITaxon:1260732",
+                "type": "nmdc:OntologyClass",
+                "name": "coal metagenome"
+            }
+        },
+        "specific_ecosystem": "Coalbed water",
+        "add_date": "28-JUL-14 12.00.00.000000000 AM",
+        "community": "microbial communities",
+        "habitat": "Coalbed water",
+        "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
+        "mod_date": "26-AUG-16 01.50.27.000000000 PM",
+        "ncbi_taxonomy_name": "coal metagenome",
+        "sample_collection_site": "Lithgow State Coal Mine"
+    },
+    {
+        "id": "nmdc:bsm-99-eBVHjN",
+        "type": "nmdc:Biosample",
+        "name": "Lithgow State Coal Mine Calcium nutrients Extra",
+        "description": "Bulk Aqueous phase filtered water",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "gold_biosample_identifiers": [
+            "gold:Gb0101225"
+        ],
+        "ecosystem": "Environmental",
+        "ecosystem_category": "Aquatic",
+        "ecosystem_subtype": "Groundwater",
+        "ecosystem_type": "Freshwater",
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "Lithgow"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "-33.460524 150.168149",
+            "latitude": -33.460524,
+            "longitude": 150.168149
+        },
+        "samp_taxon_id": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "coal metagenome [NCBITaxon:1260732]",
+            "term": {
+                "id": "NCBITaxon:1260732",
+                "type": "nmdc:OntologyClass",
+                "name": "coal metagenome"
+            }
+        },
+        "specific_ecosystem": "Coalbed water",
+        "add_date": "28-JUL-14 12.00.00.000000000 AM",
+        "community": "microbial communities",
+        "habitat": "Coalbed water",
+        "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
+        "mod_date": "26-AUG-16 01.50.27.000000000 PM",
+        "ncbi_taxonomy_name": "coal metagenome",
+        "sample_collection_site": "Lithgow State Coal Mine"
+    },
+    {
+        "id": "nmdc:bsm-99-TDPHTh",
+        "type": "nmdc:Biosample",
+        "name": "Lithgow State Coal Mine Calcium nutrients",
+        "description": "Bulk Aqueous phase filtered water",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "gold_biosample_identifiers": [
+            "gold:Gb0101226"
+        ],
+        "ecosystem": "Environmental",
+        "ecosystem_category": "Aquatic",
+        "ecosystem_subtype": "Groundwater",
+        "ecosystem_type": "Freshwater",
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "Lithgow"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "-33.460524 150.168149",
+            "latitude": -33.460524,
+            "longitude": 150.168149
+        },
+        "samp_taxon_id": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "coal metagenome [NCBITaxon:1260732]",
+            "term": {
+                "id": "NCBITaxon:1260732",
+                "type": "nmdc:OntologyClass",
+                "name": "coal metagenome"
+            }
+        },
+        "specific_ecosystem": "Coalbed water",
+        "add_date": "28-JUL-14 12.00.00.000000000 AM",
+        "community": "microbial communities",
+        "habitat": "Coalbed water",
+        "location": "from the Lithgow State Coal Mine, New South Wales, Australia",
+        "mod_date": "26-AUG-16 01.50.27.000000000 PM",
+        "ncbi_taxonomy_name": "coal metagenome",
+        "sample_collection_site": "Lithgow State Coal Mine"
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "infiltrations": [
+            "00:01:32",
+            "00:00:53"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-abcdef",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "infiltrations": [
+            "00:02:54"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-qwerty",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "infiltrations": [
+            "01:24:03",
+            "00:02:33",
+            "00:02:02"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-j8p-74d83z",
+        "type": "nmdc:Biosample",
+        "name": "soil sample from tropical rainforest",
+        "description": "Soil sample collected from the forest floor of a tropical rainforest.",
+        "associated_studies": [
+            "nmdc:sty-99-dl968v"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000428",
+            "term": {
+                "id": "ENVO:00000428",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:01000338",
+            "term": {
+                "id": "ENVO:01000338",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00001998",
+            "term": {
+                "id": "ENVO:00001998",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-j8p-29dl6v",
+        "gold_biosample_identifiers": [
+            "gold:Gb01234567"
+        ],
+        "insdc_biosample_identifiers": [
+            "biosample:SAMN12345678"
+        ],
+        "emsl_biosample_identifiers": [
+            "emsl:emsl_12345"
+        ],
+        "igsn_biosample_identifiers": [
+            "igsn:IEPA12345"
+        ],
+        "annual_precpt": {
+            "type": "nmdc:QuantityValue",
+            "has_numeric_value": 2500,
+            "has_unit": "mm"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "latitude": 1.23456789,
+            "longitude": -54.32109876
+        },
+        "ph": 6.5,
+        "salinity": {
+            "type": "nmdc:QuantityValue",
+            "has_numeric_value": 0.1,
+            "has_unit": "PSU"
+        },
+        "temp": {
+            "type": "nmdc:QuantityValue",
+            "has_numeric_value": 25,
+            "has_unit": "Celsius"
+        }
+    },
+    {
+        "id": "nmdc:bsm-m2l-49z38t",
+        "type": "nmdc:Biosample",
+        "name": "mouse gut sample",
+        "description": "Fecal sample collected from a laboratory mouse.",
+        "associated_studies": [
+            "nmdc:sty-99-dl968v"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "UBERON:0000059",
+            "term": {
+                "id": "UBERON:0000059",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002005",
+            "term": {
+                "id": "ENVO:00002005",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-m2l-96d7l4",
+        "host_taxid": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "NCBITaxon:10090",
+            "term": {
+                "id": "NCBITaxon:10090",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "gold_biosample_identifiers": [
+            "gold:Gb76543210"
+        ],
+        "insdc_biosample_identifiers": [
+            "biosample:SAMN98765432"
+        ],
+        "emsl_biosample_identifiers": [
+            "emsl:emsl_67890"
+        ],
+        "igsn_biosample_identifiers": [
+            "igsn:IEPA65432"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-k48-v9w6y6",
+        "type": "nmdc:Biosample",
+        "name": "human gut sample",
+        "description": "Fecal sample collected from a human subject.",
+        "associated_studies": [
+            "nmdc:sty-99-z3t9g4"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00000001",
+            "term": {
+                "id": "ENVO:00000001",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "UBERON:0000059",
+            "term": {
+                "id": "UBERON:0000059",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002005",
+            "term": {
+                "id": "ENVO:00002005",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "collected_from": "nmdc:frsite-k48-9j6n9t",
+        "host_taxid": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "NCBITaxon:9606",
+            "term": {
+                "id": "NCBITaxon:9606",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "gold_biosample_identifiers": [
+            "gold:Gb90123456"
+        ],
+        "insdc_biosample_identifiers": [
+            "biosample:SAMN23456789"
+        ],
+        "emsl_biosample_identifiers": [
+            "emsl:emsl_78901"
+        ],
+        "igsn_biosample_identifiers": [
+            "igsn:IEPA76543"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_volume": 12.0
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_well": "B2",
+        "dna_cont_type": "plate"
+    },
+    {
+        "id": "nmdc:bsm-99-000001",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_well": "A10",
+        "dna_cont_type": "plate"
+    },
+    {
+        "id": "nmdc:bsm-99-000002",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_well": "A11",
+        "dna_cont_type": "plate"
+    },
+    {
+        "id": "nmdc:bsm-99-000003",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_well": "H10",
+        "dna_cont_type": "plate"
+    },
+    {
+        "id": "nmdc:bsm-99-000004",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_well": "H11",
+        "dna_cont_type": "plate"
+    },
+    {
+        "id": "nmdc:bsm-99-000005",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_well": "C1",
+        "dna_cont_type": "plate"
+    },
+    {
+        "id": "nmdc:bsm-99-000006",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "dna_cont_well": "C12",
+        "dna_cont_type": "plate"
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "name": "Sample Exhaustive Biosample instance. Although all of these values should pass validation, that does not mean that any Biosample of any type would necessarily have this particular combination of values.",
+        "description": "unconstrained text",
+        "alternative_identifiers": [
+            "generic:abc123"
+        ],
+        "associated_studies": [
+            "nmdc:sty-00-987654",
+            "nmdc:sty-00-qwerty"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "biosample_categories": [
+            "LTER",
+            "FICUS"
+        ],
+        "collected_from": "nmdc:unconstrained_site_identifier_string",
+        "embargoed": true,
+        "host_taxid": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "NCBITaxon:9606",
+            "term": {
+                "id": "NCBITaxon:9606",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "img_identifiers": [
+            "img.taxon:abc123"
+        ],
+        "samp_name": "see also name",
+        "gold_biosample_identifiers": [
+            "gold:Gb123456789",
+            "gold:Gb90909090"
+        ],
+        "insdc_biosample_identifiers": [
+            "biosample:SAMN123456789",
+            "biosample:SAMN000"
+        ],
+        "emsl_biosample_identifiers": [
+            "generic:abc123"
+        ],
+        "igsn_biosample_identifiers": [
+            "any:curie_1",
+            "any:curie_2"
+        ],
+        "abs_air_humidity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "add_recov_method": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "additional_info": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "address": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "adj_room": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "aero_struc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "agrochem_addition": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "lime;1 kg/acre;2022-11-16T16:05:42+0000"
+            }
+        ],
+        "air_PM_concen": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "air_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "air_temp_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+            }
+        ],
+        "al_sat": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.1 mg/kg"
+        },
+        "al_sat_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://journaljeai.com/index.php/JEAI/article/view/583"
+        },
+        "alkalinity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "50 milligram per liter"
+        },
+        "alkalinity_method": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity"
+        },
+        "alkyl_diethers": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.005 mole per liter"
+        },
+        "alt": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "100 meter"
+        },
+        "aminopept_act": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.269 mole per liter per hour"
+        },
+        "ammonium": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1.5 milligram per liter"
+        },
+        "ammonium_nitrogen": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.5 milligram per liter"
+        },
+        "amount_light": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "ances_data": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "annual_precpt": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.5 milligram per liter"
+        },
+        "annual_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "12.5 degree Celsius"
+        },
+        "antibiotic_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "api": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "arch_struc": "building",
+        "aromatics_pc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "asphaltenes_pc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "atmospheric_data": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "avg_dew_point": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "avg_occup": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "avg_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "bac_prod": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "bac_resp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "bacteria_carb_prod": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "2.53 microgram per liter per hour"
+        },
+        "barometric_press": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "basin": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "bathroom_count": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "bedroom_count": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "benzene": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "biochem_oxygen_dem": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "biocide": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "biocide_admin_method": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "biol_stat": "wild",
+        "biomass": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "biotic_regm": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "sample inoculated with Rhizobium spp. Culture"
+        },
+        "biotic_relationship": "parasite",
+        "bishomohopanol": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "14 microgram per liter"
+        },
+        "blood_press_diast": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "blood_press_syst": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "bromide": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.05 parts per million"
+        },
+        "build_docs": "building information model",
+        "build_occup_type": [
+            "office"
+        ],
+        "building_setting": "urban",
+        "built_struc_age": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "built_struc_set": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "built_struc_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "calcium": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.2 micromole per liter"
+        },
+        "carb_dioxide": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "carb_monoxide": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "carb_nitro_ratio": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.417361111"
+        },
+        "ceil_area": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "ceil_cond": "new",
+        "ceil_finish_mat": "drywall",
+        "ceil_struc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "ceil_texture": "crows feet",
+        "ceil_thermal_mass": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "ceil_type": "cathedral",
+        "ceil_water_mold": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "chem_administration": [
+            {
+                "type": "nmdc:ControlledTermValue",
+                "has_raw_value": "agar [CHEBI:2509];2018-05-11T20:00Z"
+            }
+        ],
+        "chem_mutagen": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "chem_oxygen_dem": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "chem_treat_method": "xxx",
+        "chem_treatment": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "chloride": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "5000 milligram per liter"
+        },
+        "chlorophyll": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "5 milligram per cubic meter"
+        },
+        "climate_environment": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+            }
+        ],
+        "collection_date": {
+            "type": "nmdc:TimestampValue",
+            "has_raw_value": "xxx"
+        },
+        "conduc": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "cool_syst_id": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "crop_rotation": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "yes;R2/2017-01-01/2018-12-31/P6M"
+        },
+        "cult_root_med": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "cur_land_use": "farmstead",
+        "cur_vegetation": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "MIxS doesn't provide any guidance more specific than \"text\""
+        },
+        "cur_vegetation_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://link.springer.com/article/10.1023/A:1011975321668"
+        },
+        "date_last_rain": {
+            "type": "nmdc:TimestampValue",
+            "has_raw_value": "xxx"
+        },
+        "density": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1000 kilogram per cubic meter"
+        },
+        "depos_env": "other",
+        "depth": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1.5 to 2.5 meters (that may not be the pattern the submission schema expects). Extractions below require external migration logic.",
+            "has_maximum_numeric_value": 2.5,
+            "has_minimum_numeric_value": 1.5,
+            "has_numeric_value": 2,
+            "has_unit": "meter"
+        },
+        "dew_point": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "diether_lipids": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "diss_carb_dioxide": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "5 milligram per liter"
+        },
+        "diss_hydrogen": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.3 micromole per liter"
+        },
+        "diss_inorg_carb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "2059 micromole per kilogram"
+        },
+        "diss_inorg_nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "diss_inorg_phosp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "56.5 micromole per liter"
+        },
+        "diss_iron": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "diss_org_carb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "197 micromole per liter"
+        },
+        "diss_org_nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.05 micromole per liter"
+        },
+        "diss_oxygen": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "175 micromole per kilogram"
+        },
+        "diss_oxygen_fluid": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "dna_cont_well": "C2",
+        "door_comp_type": "revolving",
+        "door_cond": "damaged",
+        "door_direct": "inward",
+        "door_loc": "north",
+        "door_mat": "aluminum",
+        "door_move": "collapsible",
+        "door_size": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "door_type": "composite",
+        "door_type_metal": "collapsible",
+        "door_type_wood": "battened",
+        "door_water_mold": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "down_par": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "drainage_class": "well",
+        "drawings": "operation",
+        "ecosystem": "unconstrained text. should be validated against the controlled vocabulary, by the sample's environmental package. would also be nice to align the CV with MIxS environmental triads",
+        "ecosystem_category": "unconstrained text",
+        "ecosystem_subtype": "unconstrained text",
+        "ecosystem_type": "unconstrained text",
+        "efficiency_percent": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "elev": 100.0,
+        "elevator": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "emulsions": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "env_package": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "unconstrained text. should require the name of a MIxS EnvironmentalPackage class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!"
+        },
+        "escalator": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "ethylbenzene": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "exp_duct": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "exp_pipe": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "experimental_factor": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "unconstrained text, unlike the MIxS environmental triad"
+        },
+        "ext_door": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "ext_wall_orient": "north",
+        "ext_window_orient": "north",
+        "extreme_event": "2023-01-15",
+        "fao_class": "Fluvisols",
+        "fertilizer_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "field": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "filter_type": [
+            "HEPA"
+        ],
+        "fire": "2000-11 to 2000-12",
+        "fireplace_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "flooding": "2000-01-15",
+        "floor_age": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "floor_area": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "floor_cond": "new",
+        "floor_count": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "floor_finish_mat": "tile",
+        "floor_struc": "balcony",
+        "floor_thermal_mass": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "floor_water_mold": "condensation",
+        "fluor": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "freq_clean": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "freq_cook": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "fungicide_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "furniture": "cabinet",
+        "gaseous_environment": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+            }
+        ],
+        "gaseous_substances": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "gender_restroom": "female",
+        "genetic_mod": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "geo_loc_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "USA: Maryland, Bethesda"
+        },
+        "glucosidase_act": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "5 mol per liter per hour"
+        },
+        "gravidity": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "gravity": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "growth_facil": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "Growth chamber [CO_715:0000189]"
+        },
+        "growth_habit": "erect",
+        "growth_hormone_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "hall_count": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "handidness": "ambidexterity",
+        "hc_produced": "Oil",
+        "hcr": "Shale",
+        "hcr_fw_salinity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "hcr_geol_age": "Archean",
+        "hcr_pressure": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "hcr_temp": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "heat_cool_type": [
+            "radiant system"
+        ],
+        "heat_deliv_loc": "north",
+        "heat_sys_deliv_meth": "xxx",
+        "heat_system_id": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "heavy_metals": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "arsenic;0.09 micrograms per gram"
+            }
+        ],
+        "heavy_metals_meth": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "https://link.springer.com/article/10.1007/s42452-019-1578-x"
+            }
+        ],
+        "height_carper_fiber": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "herbicide_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "horizon_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_age": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "host_body_habitat": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_body_product": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "xxx"
+        },
+        "host_body_site": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "xxx"
+        },
+        "host_body_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "host_color": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_common_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_diet": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "host_dry_mass": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "host_family_relation": [
+            "xxx"
+        ],
+        "host_genotype": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_growth_cond": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_height": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "host_last_meal": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "host_length": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "host_life_stage": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_phenotype": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "xxx"
+        },
+        "host_sex": "female",
+        "host_shape": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_subject_id": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_subspecf_genlin": [
+            "xxx"
+        ],
+        "host_substrate": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "host_symbiont": [
+            "xxx"
+        ],
+        "host_tot_mass": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "host_wet_mass": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "humidity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "humidity_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+            }
+        ],
+        "indoor_space": "bedroom",
+        "indoor_surf": "cabinet",
+        "indust_eff_percent": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "inorg_particles": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "inside_lux": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "int_wall_cond": "new",
+        "iw_bt_date_well": {
+            "type": "nmdc:TimestampValue",
+            "has_raw_value": "xxx"
+        },
+        "iwf": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "last_clean": {
+            "type": "nmdc:TimestampValue",
+            "has_raw_value": "xxx"
+        },
+        "lat_lon": {
+            "type": "nmdc:GeolocationValue",
+            "has_raw_value": "50.586825 6.408977",
+            "latitude": 50.586825,
+            "longitude": 6.408977
+        },
+        "lbc_thirty": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "543 mg/kg"
+        },
+        "lbceq": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1575 mg/kg"
+        },
+        "light_intensity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "light_regm": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "incandescent light;10 lux;450 nanometer"
+        },
+        "light_type": [
+            "none"
+        ],
+        "link_addit_analys": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://pubmed.ncbi.nlm.nih.gov/2315679/"
+        },
+        "link_class_info": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://wisconsindot.gov/Documents/doing-bus/eng-consultants/cnslt-rsrces/geotechmanual/gt-03-03.pdf"
+        },
+        "link_climate_info": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://www.int-res.com/abstracts/cr/v14/n3/p161-173/"
+        },
+        "lithology": "Basement",
+        "local_class": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "jicama soil"
+        },
+        "local_class_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://www.sciencedirect.com/science/article/abs/pii/S0016706105003083"
+        },
+        "magnesium": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "52.8 micromole per kilogram"
+        },
+        "manganese": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "24.7 mg/kg"
+        },
+        "max_occup": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "mean_frict_vel": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.5 meter per second"
+        },
+        "mean_peak_frict_vel": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1 meter per second"
+        },
+        "mech_struc": "subway",
+        "mechanical_damage": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "methane": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "micro_biomass_meth": "xxx",
+        "microbial_biomass": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "mineral_nutr_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "misc_param": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "Bicarbonate ion concentration;2075 micromole per kilogram"
+            }
+        ],
+        "n_alkanes": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "n-hexadecane;100 milligram per liter"
+            }
+        ],
+        "nitrate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "65 micromole per liter"
+        },
+        "nitrite": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.5 micromole per liter"
+        },
+        "nitrite_nitrogen": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1.2 mg/kg"
+        },
+        "nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "non_min_nutr_regm": [
+            "xxx"
+        ],
+        "number_pets": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "number_plants": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "number_resident": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "occup_density_samp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "occup_document": "estimate",
+        "occup_samp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "org_carb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "org_count_qpcr_info": "xxx",
+        "org_matter": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1.75 milligram per cubic meter"
+        },
+        "org_nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "4 micromole per liter"
+        },
+        "org_particles": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "organism_count": [
+            {
+                "type": "nmdc:QuantityValue",
+                "has_raw_value": "ATP"
+            }
+        ],
+        "owc_tvdss": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "oxy_stat_samp": "aerobic",
+        "oxygen": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "part_org_carb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "1.92 micromole per liter"
+        },
+        "part_org_nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "particle_class": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "permeability": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "perturbation": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M"
+            }
+        ],
+        "pesticide_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "petroleum_hydrocarb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.05 micromole per liter"
+        },
+        "ph": 99.99,
+        "ph_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf"
+        },
+        "ph_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "phaeopigments": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "2.5 milligram per cubic meter"
+            }
+        ],
+        "phosphate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.7 micromole per liter"
+        },
+        "phosplipid_fatt_acid": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "2.98 milligram per liter"
+            }
+        ],
+        "photon_flux": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "plant_growth_med": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "xxx"
+        },
+        "plant_product": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "plant_sex": "Androdioecious",
+        "plant_struc": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "xxx"
+        },
+        "pollutants": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "porosity": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "potassium": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "463 milligram per liter"
+        },
+        "pour_point": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "pre_treatment": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "pres_animal_insect": "cat;3",
+        "pressure": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "50 atmosphere"
+        },
+        "prev_land_use_meth": "xxx",
+        "previous_land_use": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "primary_prod": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "primary_treatment": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "prod_rate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "prod_start_date": {
+            "type": "nmdc:TimestampValue",
+            "has_raw_value": "xxx"
+        },
+        "profile_position": "summit",
+        "quad_pos": "North side",
+        "radiation_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "rainfall_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "reactor_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "redox_potential": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "300 millivolt"
+        },
+        "rel_air_humidity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "rel_humidity_out": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "rel_samp_loc": "edge of car",
+        "reservoir": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "resins_pc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_air_exch_rate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "room_architec_elem": "xxx",
+        "room_condt": "new",
+        "room_connected": "attic",
+        "room_count": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_dim": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_door_dist": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_door_share": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_hallway": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_loc": "corner room",
+        "room_moist_dam_hist": 123,
+        "room_net_area": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_occup": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "room_samp_pos": "north corner",
+        "room_type": "attic",
+        "room_vol": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_wall_share": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "room_window_count": 123,
+        "root_cond": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "root_med_carbon": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "root_med_macronutr": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "root_med_micronutr": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "root_med_ph": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "root_med_regl": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "root_med_solid": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "root_med_suppl": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "salinity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "25 practical salinity unit"
+        },
+        "salinity_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "PMID:22895776"
+        },
+        "salt_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "samp_capt_status": "other",
+        "samp_collec_device": "xxx",
+        "samp_collec_method": "swabbing",
+        "samp_collect_point": "well",
+        "samp_dis_stage": "dissemination",
+        "samp_floor": "basement",
+        "samp_loc_corr_rate": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_mat_process": {
+            "type": "nmdc:ControlledTermValue",
+            "has_raw_value": "filtering of seawater"
+        },
+        "samp_md": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_preserv": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_room_id": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_size": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "5 liters"
+        },
+        "samp_sort_meth": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "samp_store_dur": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "P1Y6M"
+        },
+        "samp_store_loc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "Freezer no:5"
+        },
+        "samp_store_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "-80 degree Celsius"
+        },
+        "samp_subtype": "biofilm",
+        "samp_taxon_id": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "soil metagenome [NCBItaxon:410658]",
+            "term": {
+                "id": "NCBItaxon:410658",
+                "type": "nmdc:OntologyClass",
+                "name": "soil metagenome"
+            }
+        },
+        "samp_time_out": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_transport_cond": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_tvdss": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "samp_weather": "cloudy",
+        "samp_well_name": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "saturates_pc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "season": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "season_environment": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "season_precpt": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "75 millimeters"
+        },
+        "season_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "18 degree Celsius"
+        },
+        "season_use": "Spring",
+        "secondary_treatment": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "sediment_type": "biogenous",
+        "sewage_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "shad_dev_water_mold": "xxx",
+        "shading_device_cond": "damaged",
+        "shading_device_loc": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "shading_device_mat": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "shading_device_type": "tree",
+        "sieving": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "MIxS does not provide an example"
+        },
+        "silicate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "size_frac": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "size_frac_low": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.2 micrometer"
+        },
+        "size_frac_up": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "20 micrometer"
+        },
+        "slope_aspect": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "MIxS does not provide an example"
+        },
+        "slope_gradient": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "MIxS does not provide an example"
+        },
+        "sludge_retent_time": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "sodium": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "10.5 milligram per liter"
+        },
+        "soil_horizon": "O horizon",
+        "soil_text_measure": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "soil_texture_meth": "xxx",
+        "soil_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "plinthosol [ENVO:00002250]"
+        },
+        "soil_type_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "Frederick series"
+        },
+        "solar_irradiance": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "soluble_inorg_mat": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "soluble_org_mat": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "soluble_react_phosp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "source_mat_id": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "MPI012345"
+        },
+        "space_typ_state": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "specific": "operation",
+        "specific_ecosystem": "unconstrained text",
+        "specific_humidity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "sr_dep_env": "Lacustine",
+        "sr_geol_age": "Archean",
+        "sr_kerog_type": "other",
+        "sr_lithology": "Clastic",
+        "standing_water_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "store_cond": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "-20 degree Celsius freezer;P2Y10D"
+        },
+        "substructure_type": [
+            "basement"
+        ],
+        "sulfate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "5 micromole per liter"
+        },
+        "sulfate_fw": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "sulfide": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "2 micromole per liter"
+        },
+        "surf_air_cont": [
+            "dust"
+        ],
+        "surf_humidity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "surf_material": "adobe",
+        "surf_moisture": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "surf_moisture_ph": 123.0,
+        "surf_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "suspend_part_matter": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "suspend_solids": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "tan": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "25 degree Celsius"
+        },
+        "temp_out": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tertiary_treatment": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "tidal_stage": "high tide",
+        "tillage": [
+            "chisel"
+        ],
+        "tiss_cult_growth_med": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "toluene": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tot_carb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "MIxS does not provide an example"
+        },
+        "tot_depth_water_col": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "500 meter"
+        },
+        "tot_diss_nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "40 microgram per liter"
+        },
+        "tot_inorg_nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tot_iron": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tot_nitro": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tot_nitro_cont_meth": "https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00",
+        "tot_nitro_content": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "35 milligrams Nitrogen per kilogram of soil"
+        },
+        "tot_org_c_meth": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf"
+        },
+        "tot_org_carb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "2%"
+        },
+        "tot_part_carb": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tot_phosp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "0.03 milligram per liter"
+        },
+        "tot_phosphate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tot_sulfur": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "train_line": "red",
+        "train_stat_loc": "south station above ground",
+        "train_stop_loc": "end",
+        "turbidity": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tvdss_of_hcr_press": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "tvdss_of_hcr_temp": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "typ_occup_density": 123.0,
+        "ventilation_rate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "ventilation_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "vfa": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "vfa_fw": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "vis_media": "photos",
+        "viscosity": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "volatile_org_comp": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "wall_area": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "wall_const_type": "frame construction",
+        "wall_finish_mat": "plaster",
+        "wall_height": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "wall_loc": "north",
+        "wall_surf_treatment": "painted",
+        "wall_texture": "knockdown",
+        "wall_thermal_mass": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "wall_water_mold": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "wastewater_type": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "water_cont_soil_meth": "MIxS doesn't provide an example",
+        "water_content": [
+            "MIxS doesn't provide an example 1",
+            "MIxS doesn't provide an example 2"
+        ],
+        "water_current": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "water_cut": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "water_feat_size": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "water_feat_type": "fountain",
+        "water_prod_rate": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "water_temp_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "xxx"
+            }
+        ],
+        "watering_regm": [
+            {
+                "type": "nmdc:TextValue",
+                "has_raw_value": "1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M"
+            }
+        ],
+        "weekday": "Monday",
+        "win": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "wind_direction": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "wind_speed": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "window_cond": "damaged",
+        "window_cover": "blinds",
+        "window_horiz_pos": "left",
+        "window_loc": "north",
+        "window_mat": "fiberglass",
+        "window_open_freq": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "window_size": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "window_status": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "window_type": "single-hung sash window",
+        "window_vert_pos": "bottom",
+        "window_water_mold": {
+            "type": "nmdc:TextValue",
+            "has_raw_value": "xxx"
+        },
+        "xylene": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "xxx"
+        },
+        "zinc": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "2.5 mg/kg"
+        },
+        "add_date": "2021-03-31",
+        "community": "no_example_from_mixs",
+        "habitat": "unconstrained text",
+        "host_name": "snail is an example value, but unconstrained text is accepted at this point",
+        "location": "unconstrained text. should we even keep this slot? check if it has been used in MongoDB.",
+        "mod_date": "2023-01-25",
+        "ncbi_taxonomy_name": "soil metagenome",
+        "proport_woa_temperature": "no example from MIxS",
+        "salinity_category": "halotolerant is an example from the schema, but MIxS doesn't provide this slot any more",
+        "sample_collection_site": "unconstrained text",
+        "soluble_iron_micromol": "MIxS doesn't provide an example",
+        "subsurface_depth": {
+            "type": "nmdc:QuantityValue",
+            "has_raw_value": "MIxS does not provide an example"
+        },
+        "dna_absorb1": 2.02,
+        "dna_absorb2": 2.02,
+        "dna_collect_site": "untreated pond water",
+        "dna_concentration": 100.0,
+        "dna_cont_type": "plate",
+        "dna_container_id": "Pond_MT_041618",
+        "dna_dnase": "yes",
+        "dna_isolate_meth": "DNA",
+        "dna_organisms": "expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)",
+        "dna_project_contact": "John Jones",
+        "dna_samp_id": "187654",
+        "dna_sample_format": "10 mM Tris-HCl",
+        "dna_sample_name": "JGI_pond_041618",
+        "dna_seq_project": "1191234",
+        "dna_seq_project_pi": "Jane Johnson",
+        "dna_seq_project_name": "JGI Pond metagenomics",
+        "dna_volume": 25.0,
+        "proposal_dna": "504000",
+        "dnase_rna": "yes",
+        "proposal_rna": "504000",
+        "rna_absorb1": 2.02,
+        "rna_absorb2": 2.02,
+        "rna_collect_site": "untreated pond water",
+        "rna_concentration": 100.0,
+        "rna_cont_type": "plate",
+        "rna_cont_well": "C2",
+        "rna_container_id": "Pond_MT_041618",
+        "rna_isolate_meth": "RNA",
+        "rna_organisms": "expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles (1%)",
+        "rna_project_contact": "John Jones",
+        "rna_samp_id": "187654",
+        "rna_sample_format": "10 mM Tris-HCl",
+        "rna_sample_name": "JGI_pond_041618",
+        "rna_seq_project": "1191234",
+        "rna_seq_project_pi": "Jane Johnson",
+        "rna_seq_project_name": "JGI Pond metagenomics",
+        "rna_volume": 25.0,
+        "collection_date_inc": "2023-01-29",
+        "collection_time": "05:42+0000",
+        "collection_time_inc": "13:42+0000",
+        "experimental_factor_other": "unconstrained text, but presumably expects 'term label [term id]'",
+        "filter_method": "Basix PES, 13-100-106 FisherSci is an example value, but unconstrained text is accepted at this point",
+        "isotope_exposure": "13C glucose",
+        "micro_biomass_c_meth": "https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12",
+        "micro_biomass_n_meth": "https://acsess.onlinelibrary.wiley.com/doi/abs/10.2136/sssaspecpub49.c12",
+        "microbial_biomass_c": "0.05 ug C/g dry soil",
+        "microbial_biomass_n": "0.05 ug N/g dry soil",
+        "non_microb_biomass": "insect 0.23 ug; plant 1g",
+        "non_microb_biomass_method": "https://doi.org/10.1038/s41467-021-26181-3",
+        "org_nitro_method": "https://doi.org/10.1016/0038-0717(85)90144-0",
+        "other_treatment": "unconstrained text",
+        "start_date_inc": "2023-01-27",
+        "start_time_inc": "13:42+0000",
+        "project_id": "no example from MIxS",
+        "replicate_number": "1",
+        "sample_shipped": "15 g",
+        "sample_type": "soil - water extract",
+        "technical_reps": "2",
+        "analysis_type": [
+            "metabolomics",
+            "metagenomics"
+        ],
+        "sample_link": [
+            "IGSN:DSJ0284",
+            "any:curie"
+        ]
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "plate",
+        "rna_cont_well": "B2"
+    },
+    {
+        "id": "nmdc:bsm-99-000001",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "plate",
+        "rna_cont_well": "A10"
+    },
+    {
+        "id": "nmdc:bsm-99-000002",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "plate",
+        "rna_cont_well": "A11"
+    },
+    {
+        "id": "nmdc:bsm-99-000003",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "plate",
+        "rna_cont_well": "H10"
+    },
+    {
+        "id": "nmdc:bsm-99-000004",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "plate",
+        "rna_cont_well": "H11"
+    },
+    {
+        "id": "nmdc:bsm-99-000005",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "plate",
+        "rna_cont_well": "C1"
+    },
+    {
+        "id": "nmdc:bsm-99-000006",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "rna_cont_type": "plate",
+        "rna_cont_well": "C12"
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "name": "real biosample from the field",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-XYZ",
+        "type": "nmdc:Biosample",
+        "name": "one DNA library, like an analytical sample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-abcdef1",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-abcdef2",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-abcdef3",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-abcdef1",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-11-34xj1150"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-abcdef2",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-11-34xj1150"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-abcdef3",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-11-34xj1150"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "id": "nmdc:bsm-99-dtTMNb",
+        "type": "nmdc:Biosample",
+        "associated_studies": [
+            "nmdc:sty-00-abc123"
+        ],
+        "env_broad_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002030",
+            "term": {
+                "id": "ENVO:00002030",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_local_scale": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00002169",
+            "term": {
+                "id": "ENVO:00002169",
+                "type": "nmdc:OntologyClass"
+            }
+        },
+        "env_medium": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "ENVO:00005792",
+            "term": {
+                "id": "ENVO:00005792",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    }
+]

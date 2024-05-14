@@ -1,0 +1,19 @@
+[
+    {
+        "end": 2000,
+        "seqid": "NC_000913.3",
+        "start": 1000,
+        "type": "nmdc:GenomeFeature",
+        "encodes": "nmdc:geneproduct-k2d-7v9t3",
+        "feature_type": "CDS",
+        "strand": "+",
+        "feature_category": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "SO:0000316",
+            "term": {
+                "id": "SO:0000316",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    }
+]

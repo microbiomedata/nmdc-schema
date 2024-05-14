@@ -1,0 +1,20 @@
+[
+    {
+        "id": "nmdc:wfrbt-38t-74d83",
+        "type": "nmdc:ReadBasedTaxonomyAnalysis",
+        "name": "soil read-based taxonomy analysis",
+        "has_input": [
+            "nmdc:dobj-83z-74d83z"
+        ],
+        "has_output": [
+            "nmdc:dobj-38t-74d83"
+        ],
+        "ended_at_time": "2023-08-09T16:30:00Z",
+        "execution_resource": "LANL-B-div",
+        "git_url": "https://github.com/microbiomedata/read_based_taxonomy_analysis/releases/tag/v0.4.5",
+        "part_of": [
+            "nmdc:wfch-j8p-93z8"
+        ],
+        "started_at_time": "2023-08-09T10:30:00Z"
+    }
+]

@@ -1,0 +1,76 @@
+[
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "KEGG.ORTHOLOGY:K01198",
+        "subject": "nmdc:geneproduct-k2d-7v9t3",
+        "was_generated_by": "nmdc:wfmgan-v9w-4d83z",
+        "feature_category": {
+            "type": "nmdc:ControlledIdentifiedTermValue",
+            "has_raw_value": "SO:0000316",
+            "term": {
+                "id": "SO:0000316",
+                "type": "nmdc:OntologyClass"
+            }
+        }
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "KEGG_PATHWAY:rsk00410"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "KEGG.REACTION:R00100"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "RHEA:12345"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "MetaCyc:RXN-14904"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "EC:1.1.1.1"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "GO:0032571"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "MetaNetX:MNXR101574"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "SEED:Biotin_biosynthesis"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "KEGG.ORTHOLOGY:K00001"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "EGGNOG:veNOG12876"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "PFAM:PF11779"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "TIGRFAM:TIGR00010"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "SUPFAM:SSF57615"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "CATH:1.10.10.200"
+    },
+    {
+        "type": "nmdc:FunctionalAnnotation",
+        "has_function": "PANTHER.FAMILY:PTHR12345"
+    }
+]

@@ -1,0 +1,39 @@
+[
+    {
+        "id": "nmdc:cspro-99-oW43DzG1",
+        "type": "nmdc:ChromatographicSeparationProcess",
+        "has_input": [
+            "nmdc:procsm-11-9gjxns62"
+        ],
+        "has_output": [
+            "nmdc:procsm-11-05g48p91"
+        ],
+        "has_calibration": "nmdc:calib-99-zUCd5Q",
+        "chromatographic_category": "gas_chromatography",
+        "stationary_phase": "Polysiloxane"
+    },
+    {
+        "id": "nmdc:poolp-00-123456",
+        "type": "nmdc:Pooling"
+    },
+    {
+        "id": "nmdc:extrp-00-999999",
+        "type": "nmdc:Extraction",
+        "has_input": [
+            "nmdc:bsm-00-435737"
+        ],
+        "has_output": [
+            "nmdc:procsm-00-0938548"
+        ]
+    },
+    {
+        "id": "nmdc:libprp-00-999999",
+        "type": "nmdc:LibraryPreparation",
+        "has_input": [
+            "nmdc:procsm-00-0938548"
+        ],
+        "has_output": [
+            "nmdc:procsm-00-sdsdll"
+        ]
+    }
+]

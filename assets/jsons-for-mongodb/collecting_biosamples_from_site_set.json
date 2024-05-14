@@ -1,0 +1,100 @@
+[
+    {
+        "id": "nmdc:clsite-99-Cq00d1",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "Collection of biosamples from BESC-13-CL1_35_33",
+        "has_input": [
+            "nmdc:frsite-99-SPreao"
+        ],
+        "has_output": [
+            "nmdc:bsm-99-J9FcnC",
+            "nmdc:bsm-99-BdlWdQ",
+            "nmdc:bsm-99-vn74Wq"
+        ]
+    },
+    {
+        "id": "nmdc:clsite-99-yzmLBN",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "Collection of biosamples from BESC-13-CL2_39_29",
+        "has_input": [
+            "nmdc:frsite-99-h2mYFG"
+        ],
+        "has_output": [
+            "nmdc:bsm-99-P8FdpS",
+            "nmdc:bsm-99-ugBwz3",
+            "nmdc:bsm-99-tN5lxM"
+        ]
+    },
+    {
+        "id": "nmdc:clsite-ae4-r9j8vl",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "soil sample collection",
+        "has_input": [
+            "nmdc:frsite-ae4-78f4bc"
+        ],
+        "has_output": [
+            "nmdc:bsm-ae4-n3ybxz",
+            "nmdc:bsm-ae4-b316vq",
+            "nmdc:bsm-ae4-q9t93w"
+        ]
+    },
+    {
+        "id": "nmdc:clsite-ae4-dlm16g",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "lake water sample collection",
+        "has_input": [
+            "nmdc:frsite-ae4-k4m6j9"
+        ],
+        "has_output": [
+            "nmdc:bsm-ae4-t2r77l",
+            "nmdc:bsm-ae4-x971d3",
+            "nmdc:bsm-ae4-c6dlm7"
+        ]
+    },
+    {
+        "id": "nmdc:clsite-ae4-f5k2l6",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "human gut sample collection",
+        "has_input": [
+            "nmdc:frsite-ae4-k48dl3"
+        ],
+        "has_output": [
+            "nmdc:bsm-ae4-p7k6v9",
+            "nmdc:bsm-ae4-v9w6y6",
+            "nmdc:bsm-ae4-d9j6n9"
+        ]
+    },
+    {
+        "id": "nmdc:clsite-j8p-93z8t7",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "soil sample collection from tropical rainforest",
+        "has_input": [
+            "nmdc:frsite-j8p-29dl6v"
+        ],
+        "has_output": [
+            "nmdc:bsm-j8p-74d83z"
+        ]
+    },
+    {
+        "id": "nmdc:clsite-m2l-d9j6n9",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "mouse gut sample collection",
+        "has_input": [
+            "nmdc:frsite-m2l-96d7l4"
+        ],
+        "has_output": [
+            "nmdc:bsm-m2l-49z38t"
+        ]
+    },
+    {
+        "id": "nmdc:clsite-k48-98f7b2",
+        "type": "nmdc:CollectingBiosamplesFromSite",
+        "name": "human gut sample collection",
+        "has_input": [
+            "nmdc:frsite-k48-9j6n9t"
+        ],
+        "has_output": [
+            "nmdc:bsm-k48-v9w6y6"
+        ]
+    }
+]

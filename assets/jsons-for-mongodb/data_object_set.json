@@ -1,0 +1,138 @@
+[
+    {
+        "id": "nmdc:dobj-99-dkJ8xX",
+        "type": "nmdc:DataObject",
+        "name": "11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz",
+        "description": "Raw sequencer read data",
+        "file_size_bytes": 9208349052
+    },
+    {
+        "id": "nmdc:dobj-99-7zrm55",
+        "type": "nmdc:DataObject",
+        "name": "11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz",
+        "description": "Raw sequencer read data",
+        "file_size_bytes": 34243309819
+    },
+    {
+        "id": "nmdc:dobj-99-sQQw0I",
+        "type": "nmdc:DataObject",
+        "name": "12660.4.274923.GATCGTAC-GTACGATC.fastq.gz",
+        "description": "Raw sequencer read data",
+        "file_size_bytes": 7580035314
+    },
+    {
+        "id": "nmdc:dobj-70-izwYW6",
+        "type": "nmdc:DataObject",
+        "name": "CoreMS.toml",
+        "description": "Confiuration toml file for CoreMS",
+        "data_category": "workflow_parameter_data",
+        "data_object_type": "Configuration toml",
+        "file_size_bytes": 4262400
+    },
+    {
+        "id": "nmdc:dobj-80-izwYW6",
+        "type": "nmdc:DataObject",
+        "name": "Froze_Core_2015_S1_20_30_19_Metab_raw_data.raw",
+        "description": "raw direct infusion FT ICR-MS for Froze_Core_2015_S1_20_30_19",
+        "data_category": "instrument_data",
+        "data_object_type": "Direct Infusion FT ICR-MS Raw Data",
+        "file_size_bytes": 3262400
+    },
+    {
+        "id": "nmdc:dobj-90-izwYW61",
+        "type": "nmdc:DataObject",
+        "name": "Froze_Core_2015_S1_20_30_19_Metab_raw_data.processed",
+        "description": "Full scan GC-MS (but not GC QExactive, which is EI-HMS)",
+        "data_category": "processed_data",
+        "data_object_type": "FT ICR-MS Analysis Results",
+        "file_size_bytes": 5262400
+    },
+    {
+        "id": "nmdc:dobj-12-krhrtjw9",
+        "type": "nmdc:DataObject",
+        "name": "emsl_calibration_run.raw",
+        "description": "GCMS data file",
+        "data_category": "instrument_data",
+        "file_size_bytes": 9208349052,
+        "url": "https://emsl_site/emsl_calibration_run.raw"
+    },
+    {
+        "id": "nmdc:dobj-83z-74d83z",
+        "type": "nmdc:DataObject",
+        "name": "soil metagenome raw reads",
+        "description": "Raw sequencing reads from soil metagenome sample.",
+        "data_object_type": "Metagenome Raw Reads",
+        "file_size_bytes": 1234567890,
+        "md5_checksum": "e5b511d7874186800c4ac88d593c4209",
+        "url": "https://example.com/soil_metagenome.fastq.gz",
+        "was_generated_by": "nmdc:dgns-83z-49z38t"
+    },
+    {
+        "id": "nmdc:dobj-49z-38t74d",
+        "type": "nmdc:DataObject",
+        "name": "mouse gut metagenome raw reads",
+        "description": "Raw sequencing reads from mouse gut metagenome sample.",
+        "data_object_type": "Metagenome Raw Read 1",
+        "file_size_bytes": 9876543210,
+        "md5_checksum": "9c4984a6377192532692281a81f760a3",
+        "url": "https://example.com/mouse_gut_metagenome_R1.fastq.gz",
+        "was_generated_by": "nmdc:dgns-49z-96d7l"
+    },
+    {
+        "id": "nmdc:dobj-96d-7l49z3",
+        "type": "nmdc:DataObject",
+        "name": "mouse gut metagenome raw reads",
+        "description": "Raw sequencing reads from mouse gut metagenome sample.",
+        "data_object_type": "Metagenome Raw Read 2",
+        "file_size_bytes": 9876543210,
+        "md5_checksum": "8b387395266081701080729a98765f4a",
+        "url": "https://example.com/mouse_gut_metagenome_R2.fastq.gz",
+        "was_generated_by": "nmdc:dgns-49z-96d7l"
+    },
+    {
+        "id": "nmdc:dobj-j6n-9t74d8",
+        "type": "nmdc:DataObject",
+        "name": "human gut metagenome assembled contigs",
+        "description": "Assembled contigs from human gut metagenome sample.",
+        "data_object_type": "Metagenome Raw Reads",
+        "file_size_bytes": 5678901234,
+        "md5_checksum": "7a2938b51609f4c38d75e64a9012b3c8",
+        "url": "https://example.com/human_gut_metagenome_contigs.fasta",
+        "was_generated_by": "nmdc:wfmgas-j6n-v9w6y"
+    },
+    {
+        "id": "nmdc:dobj-v9w-6y6j6n",
+        "type": "nmdc:DataObject",
+        "name": "human gut metagenome functional annotation",
+        "description": "Functional annotations for human gut metagenome contigs.",
+        "data_object_type": "Functional Annotation GFF",
+        "file_size_bytes": 4321098765,
+        "md5_checksum": "6b1827a40598e3c27d64f53a8901c2b7",
+        "url": "https://example.com/human_gut_metagenome_annotation.gff",
+        "was_generated_by": "nmdc:wfmgan-v9w-4d83z"
+    },
+    {
+        "id": "nmdc:dobj-12-jdhk9537",
+        "type": "nmdc:DataObject",
+        "name": "BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz",
+        "description": "Test R1 data",
+        "data_object_type": "Metagenome Raw Read 1",
+        "url": "https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz"
+    },
+    {
+        "id": "nmdc:dobj-12-yx0tfp52",
+        "type": "nmdc:DataObject",
+        "name": "W2BGXG_Plate19S_13WellG10_R2.fastq.gz",
+        "description": "Test R2 data",
+        "data_object_type": "Metagenome Raw Read 2",
+        "url": "https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz"
+    },
+    {
+        "id": "nmdc:dobj-12-71q7wv80",
+        "type": "nmdc:DataObject",
+        "name": "1472_51293.filtered.fastq.gz",
+        "description": "Test filtered data for NEON",
+        "data_object_type": "Filtered Sequencing Reads",
+        "url": "https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz"
+    }
+]
