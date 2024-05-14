@@ -609,7 +609,7 @@ Extraction	has_output	NamedThing
 Extraction	id	uriorcurie			
 Extraction	input_mass	QuantityValue			
 Extraction	instrument_name	string			
-Extraction	name	string			
+Extraction	name	string			MAN_IGNORE
 Extraction	processing_institution	processing_institution_enum			
 Extraction	protocol_link	Protocol			
 Extraction	qc_comment	string			
@@ -627,7 +627,7 @@ LibraryPreparation	id	uriorcurie
 LibraryPreparation	instrument_name	string			
 LibraryPreparation	library_preparation_kit	string			
 LibraryPreparation	library_type	LibraryTypeEnum			
-LibraryPreparation	name	string			
+LibraryPreparation	name	string			MAN_IGNORE
 LibraryPreparation	pcr_cycles	integer			
 LibraryPreparation	processing_institution	processing_institution_enum			
 LibraryPreparation	protocol_link	Protocol			
@@ -649,7 +649,7 @@ OmicsProcessing	insdc_bioproject_identifiers	external_identifier
 OmicsProcessing	insdc_experiment_identifiers	external_identifier			
 OmicsProcessing	instrument_name	string			
 OmicsProcessing	mod_date	string			
-OmicsProcessing	name	string			
+OmicsProcessing	name	string			MAN_IGNORE
 OmicsProcessing	ncbi_project_name	string			
 OmicsProcessing	nucl_acid_amp	TextValue			
 OmicsProcessing	nucl_acid_ext	TextValue			
@@ -676,7 +676,7 @@ DataObject	description	string	description
 DataObject	file_size_bytes	bytes			
 DataObject	id	uriorcurie			
 DataObject	md5_checksum	string			
-DataObject	name	string			
+DataObject	name	string			MAN_IGNORE
 DataObject	type	string			MAN_IGNORE
 DataObject	url	string			
 DataObject	was_generated_by	Activity			
