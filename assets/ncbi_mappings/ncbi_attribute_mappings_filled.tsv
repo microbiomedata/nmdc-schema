@@ -552,7 +552,7 @@ Biosample	turbidity	QuantityValue	turbidity
 Biosample	tvdss_of_hcr_press	QuantityValue	tvdss_of_hcr_press		
 Biosample	tvdss_of_hcr_temp	QuantityValue	tvdss_of_hcr_temp		
 Biosample	typ_occup_density	double			
-Biosample	type	string			
+Biosample	type	string			MAN_IGNORE
 Biosample	ventilation_rate	QuantityValue	ventilation_rate		
 Biosample	ventilation_type	TextValue	ventilation_type		
 Biosample	vfa	QuantityValue	vfa		
@@ -668,7 +668,7 @@ OmicsProcessing	seq_quality_check	TextValue
 OmicsProcessing	start_date	string			
 OmicsProcessing	target_gene	TextValue			
 OmicsProcessing	target_subfragment	TextValue			
-OmicsProcessing	type	string			
+OmicsProcessing	type	string			MAN_IGNORE
 DataObject	alternative_identifiers	uriorcurie			
 DataObject	compression_type	string			
 DataObject	data_object_type	FileTypeEnum			
@@ -677,6 +677,6 @@ DataObject	file_size_bytes	bytes
 DataObject	id	uriorcurie			
 DataObject	md5_checksum	string			
 DataObject	name	string			
-DataObject	type	string			
+DataObject	type	string			MAN_IGNORE
 DataObject	url	string			
 DataObject	was_generated_by	Activity			
