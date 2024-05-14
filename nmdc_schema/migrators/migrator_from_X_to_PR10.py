@@ -1,6 +1,20 @@
-from nmdc_schema.migrators.migrator_base import MigratorBase
 from typing import Optional
+
+from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.nmdc_data import get_nmdc_schema_definition
 from linkml_runtime import SchemaView
+
+
+def create_schema_view() -> SchemaView:
+    """
+    Returns a LinkML SchemaView instance that can be used to traverse the schema.
+    
+    >>> isinstance(create_schema_view(), SchemaView)
+    True
+    """
+    schema_definition = get_nmdc_schema_definition()
+    schema_view = SchemaView(schema_definition)
+    return schema_view
 
 
 class Migrator(MigratorBase):
@@ -13,7 +27,7 @@ class Migrator(MigratorBase):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
         # Get a dictionary of slots and the class uris of their range if they have inlined classes as their range.
-        view = SchemaView("src/schema/nmdc.yaml")
+        view = create_schema_view()
 
         slots_with_inlined_classes = {}
         classes_with_inlined_classes = ["Biosample", "Study", "Extraction", "MetabolomicsAnalysis" , "MetaproteomicsAnalysis", "MagsAnalysis"]
