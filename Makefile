@@ -87,7 +87,7 @@ create-data-harmonizer:
 all: site
 
 # TODO: Document this make target.
-site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv accepting-legacy-ids-all
+site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv accepting-legacy-ids-all
 
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
@@ -120,9 +120,9 @@ gen-project: $(PYMODEL) # depends on src/schema/mixs.yaml # can be nuked with mi
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
-
-test: examples-clean site accepting-legacy-ids-all test-python examples/output
-only-test: examples-clean accepting-legacy-ids-all test-python examples/output
+# TODO: Document these make targets.
+test: examples-clean site accepting-legacy-ids-all test-python migration-doctests examples/output
+only-test: examples-clean accepting-legacy-ids-all test-python migration-doctests examples/output
 
 test-schema:
 	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema

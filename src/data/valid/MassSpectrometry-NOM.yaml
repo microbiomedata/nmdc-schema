@@ -4,8 +4,8 @@ has_input:
   - nmdc:procsm-11-9gjxns61
 has_output:
   - nmdc:dobj-00-9n9n9n
-has_configuration: nmdc:mscon-99-oW43DzG0
-eluent_introduction: nmdc:cspro-99-hello00
+has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0
+eluent_introduction_category: direct_infusion_syringe
 analyte_category: nom
 associated_studies:
   - nmdc:sty-00-555xxx
