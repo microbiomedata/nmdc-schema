@@ -86,11 +86,7 @@ classes:
       execution_resource:
         required: true
       type:
-        required: true
-      was_informed_by:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}"
-          interpolated: true      
+        required: true   
       id:
         required: true
         structured_pattern:
