@@ -10,7 +10,7 @@ activity_set:
   was_informed_by: nmdc:omprc-11-24727
   execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
-  id: nmdc:wfmgan-11-v7tNhU
+  id: nmdc:act-11-v7tNhU
   ended_at_time: '2021-01-12T00:00:00+00:00'
 - has_input:
   - nmdc:dobj-11-22475
@@ -23,5 +23,5 @@ activity_set:
   was_informed_by: nmdc:omprc-11-1245
   execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
-  id: nmdc:wfmgan-1-bzS2v1
+  id: nmdc:act-1-bzS2v1
   ended_at_time: '2021-01-12T00:00:00+00:00'
