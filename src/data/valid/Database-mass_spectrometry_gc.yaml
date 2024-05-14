@@ -1,0 +1,55 @@
+data_generation_set:
+  - id: nmdc:dgms-99-oW43DzG1
+    type: nmdc:MassSpectrometry
+    has_input:
+      - nmdc:procsm-11-9gjxns61                                 #random example process sample
+    has_output:
+      - nmdc:dobj-11-9n9n9n                                     #defined below
+    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
+    has_chromatography_configuration: nmdc:chrocon-99-oW43DzG1  #defined below
+    eluent_introduction_category: gas_chromatography
+    has_calibration: nmdc:calib-99-zUCd5Q                       #defined below
+    analyte_category: metabolome
+    associated_studies:
+      - nmdc:sty-00-555xxx
+calibration_set:
+  - id: nmdc:calib-99-zUCd5Q
+    type: nmdc:CalibrationInformation
+    calibration_object: nmdc:dobj-12-krhrtjw9                   #defined below
+    internal_calibration: false
+    calibration_target: retention_index
+    calibration_standard: fames
+configuration_set:
+  - id: nmdc:chrocon-99-oW43DzG1
+    type: nmdc:ChromatographyConfiguration
+    name: "EMSL GC method for small molecules"
+    description: "EMSL's Gas Chromatography method for small molecules"
+    stationary_phase: Polysiloxane
+    chromatographic_category: gas_chromatography
+  - id: nmdc:mscon-99-oW43DzG0
+    type: nmdc:MassSpectrometryConfiguration
+    name: "EMSL EI mass spectrometry method for small molecules"
+    description: "Electron impact mass spectrometry method for small molecules"
+    ionization_source: electron_ionization
+    mass_analyzers: 
+      - quadrupole
+    resolution_categories: 
+      - low
+    mass_spectrum_collection_modes:
+      - centroid
+    polarity_mode: positive
+data_object_set:
+  - id: nmdc:dobj-12-krhrtjw9
+    type: nmdc:DataObject
+    data_category: instrument_data
+    url: https://emsl_site/emsl_calibration_run.raw       #example url, not real
+    name: emsl_calibration_run.raw                        #example name
+    description: GCMS data file
+    file_size_bytes: 9208349052
+  - id: nmdc:dobj-11-9n9n9n
+    type: nmdc:DataObject
+    data_category: instrument_data
+    url: https://emsl_site/example_gcms_emsl_run.raw     #example url, not real 
+    name: example_gcms_emsl_run.raw                      #example name
+    description: GCMS data file
+    file_size_bytes: 9208349052

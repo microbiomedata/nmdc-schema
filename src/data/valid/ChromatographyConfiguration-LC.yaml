@@ -1,10 +1,7 @@
-id: nmdc:cspro-99-oW43DzG0
-type: nmdc:ChromatographicSeparationProcess
-has_input:
-  - nmdc:procsm-11-9gjxns61
-has_output:
-  - nmdc:procsm-11-05g48p90
-  - nmdc:procsm-11-05g48p91
+id: nmdc:chrocon-99-oW43DzG0
+type: nmdc:ChromatographyConfiguration
+name: "EMSL HILIC method for small molecules"
+description: "EMSL's hydrophilic interaction liquid chromatography method for small molecules"
 stationary_phase: BEH-HILIC
 chromatographic_category: liquid_chromatography
 temperature:
