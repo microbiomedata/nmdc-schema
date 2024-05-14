@@ -9,10 +9,9 @@ def create_schema_view() -> SchemaView:
     """
     Returns a LinkML SchemaView instance that can be used to traverse the schema.
     
-    >>> sv = create_schema_view()
-    >>> isinstance(sv, SchemaView)
+    >>> isinstance(create_schema_view(), SchemaView)
     True
-    >>> hasattr(sv, "schema")
+    >>> hasattr(create_schema_view(), "schema")
     True
     """
     schema_definition = get_nmdc_schema_definition()
