@@ -499,7 +499,6 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
-      - has_calibration
       - chromatographic_category
       - ordered_mobile_phases
       - stationary_phase
