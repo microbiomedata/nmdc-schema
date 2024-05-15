@@ -7,7 +7,7 @@ planned_process_set:
       - nmdc:procsm-00-1
     substances_used:
       - type: nmdc:PortionOfSubstance
-        known_as: chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
         final_concentration:
           type: nmdc:QuantityValue
           has_unit: 'g.mL-1'
@@ -54,7 +54,7 @@ planned_process_set:
       - nmdc:chcpr-99-123
       - nmdc:filtpr-00-123
     protocol_execution_category: organic_matter_extraction
-    protocol_link: 
+    protocol_link:
       type: nmdc:Protocol
       name: Organic Matter Extraction Analytical Processes
       url: https://pnnl.sharepoint.com/:w:/r/sites/EMSL/_layouts/15/Doc.aspx?sourcedoc=%7B06286DC5-9E52-4CF9-B583-F8BE695F60D9%7D&file=Protocol_WEOM.docx&action=default&mobileredirect=true
@@ -105,7 +105,7 @@ planned_process_set:
       - nmdc:procsm-00-5
     substances_used:
       - type: nmdc:PortionOfSubstance
-        known_as: chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
         volume:
           type: nmdc:QuantityValue
           has_unit: 'mL'
@@ -138,8 +138,7 @@ planned_process_set:
       - nmdc:dispro-99-456
       - nmdc:chcpr-99-456
     protocol_execution_category: solid_phase_extraction
-    protocol_link: 
+    protocol_link:
       type: nmdc:Protocol
       name: Organic Matter Solid Phase Extraction Analytical Processes
       url: https://pnnl.sharepoint.com/sites/EMSL/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FEMSL%2FShared%20Documents%2FScience%20and%20Technology%2FScience%20Areas%2FEnvironmental%20Transformations%20%26%20Interactions%20Group%2FResearch%20Campaigns%2FFY21%2F1000%20Soil%20Pilot%2Fprotocols%2FFTICR%2DMS%2FFTICRMS%2DGilsonAutomatedSPESOP%2D130521%2D1547%2D150%2Epdf&parent=%2Fsites%2FEMSL%2FShared%20Documents%2FScience%20and%20Technology%2FScience%20Areas%2FEnvironmental%20Transformations%20%26%20Interactions%20Group%2FResearch%20Campaigns%2FFY21%2F1000%20Soil%20Pilot%2Fprotocols%2FFTICR%2DMS
-  
