@@ -195,7 +195,6 @@ classes:
       value and the structured value
     slots:
       - has_raw_value
-      - was_generated_by
     slot_usage:
       type:
         description: An optional string that specified the type of object.
