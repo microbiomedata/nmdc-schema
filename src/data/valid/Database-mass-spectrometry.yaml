@@ -1,7 +1,7 @@
 data_generation_set: 
   - id: nmdc:dgms-99-zUCd5N
     type: nmdc:MassSpectrometry
-#    eluent_introduction_category: liquid_chromatography
+    eluent_introduction_category: liquid_chromatography
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
     has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0
     analyte_category: lipidome
@@ -17,7 +17,7 @@ data_generation_set:
       - nmdc:sty-00-555xxx
   - id: nmdc:dgms-99-zUCd5x
     type: nmdc:MassSpectrometry
-#    eluent_introduction_category: liquid_chromatography
+    eluent_introduction_category: liquid_chromatography
     analyte_category: lipidome
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
     has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0

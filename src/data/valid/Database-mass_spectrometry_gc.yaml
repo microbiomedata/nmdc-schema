@@ -7,7 +7,7 @@ data_generation_set:
       - nmdc:dobj-11-9n9n9n                                     #defined below
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
     has_chromatography_configuration: nmdc:chrocon-99-oW43DzG1  #defined below
-#    eluent_introduction_category: gas_chromatography
+    eluent_introduction_category: gas_chromatography
     has_calibration: nmdc:calib-99-zUCd5Q                       #defined below
     analyte_category: metabolome
     associated_studies:
