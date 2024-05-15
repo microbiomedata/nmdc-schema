@@ -16,7 +16,7 @@ imports:
 classes:
 
   NamedThing:
-    class_uri: "nmdc:NamedThing"
+    class_uri: nmdc:NamedThing
     description: "a databased entity or concept/class"
     abstract: true
     slots:
@@ -26,7 +26,7 @@ classes:
       - alternative_identifiers
       - type
   OntologyClass:
-    class_uri: "nmdc:OntologyClass"
+    class_uri: nmdc:OntologyClass
     is_a: NamedThing
     notes:
       - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
@@ -42,7 +42,7 @@ classes:
       - type
 
   MaterialEntity:
-    class_uri: "nmdc:MaterialEntity"
+    class_uri: nmdc:MaterialEntity
     abstract: true
     aliases:
       - Material
@@ -73,7 +73,6 @@ classes:
     slots:
       - has_input
       - has_output
-      - instrument_used
       - processing_institution
       - protocol_link
       - start_date
@@ -105,7 +104,7 @@ classes:
     see_also:
       - https://casrai.org/credit/
   Doi:
-    class_uri: "nmdc:Doi"
+    class_uri: nmdc:Doi
     aliases:
       - DOIs
       - digital object identifiers
@@ -259,6 +258,7 @@ classes:
       - "GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers, but no longer for the Study.id"
 
   InformationObject:
+    abstract: true
     is_a: NamedThing
     class_uri: nmdc:InformationObject
     description: >-
@@ -325,6 +325,7 @@ classes:
       - mod_date
       - part_of
       - principal_investigator
+      - instrument_used
     slot_usage:
       has_input:
         required: true
@@ -341,7 +342,7 @@ classes:
       - OBI:0000070
       - ISA:Assay
   WorkflowChain:
-    class_uri: "nmdc:WorkflowChain"
+    class_uri: nmdc:WorkflowChain
     is_a: PlannedProcess
     description: >-
       A workflow chain is a collection of Workflow Execution(s) that
@@ -372,7 +373,8 @@ classes:
           output data and the metadata of the Data Generation.
 
   WorkflowExecution:
-    class_uri: "nmdc:WorkflowExecution"
+    abstract: true
+    class_uri: nmdc:WorkflowExecution
     is_a: PlannedProcess
     aliases:
       - analysis
@@ -647,6 +649,10 @@ enums:
           - NCIT:C61538
   InstrumentModelEnum:
     permissible_values:
+      exploris_21T:
+        aliases:
+          - Exploris 21T
+
       exploris_240:
         aliases:
           - Orbitrap Exploris 240
@@ -828,6 +834,9 @@ enums:
         aliases:
           - Oxford Nanopore Technologies
         meaning: OBI:0002755
+      pnnl:
+        aliases:
+          - PNNL
   FailureWhatEnum:
     description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
     permissible_values:

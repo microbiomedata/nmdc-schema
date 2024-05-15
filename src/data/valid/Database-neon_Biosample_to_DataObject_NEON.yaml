@@ -126,13 +126,19 @@ data_generation_set:
       - nmdc:dobj-12-jdhk9537
       - nmdc:dobj-12-yx0tfp52
     instrument_used:
-      - nmdc:inst-12-yx0tfp52
+      - nmdc:inst-14-xx07be40
     part_of:
       - nmdc:dgns-11-34xj1150
     processing_institution: Battelle
     type: nmdc:NucleotideSequencing
     associated_studies: 
       - nmdc:sty-11-34xj1150
+instrument_set:
+  - id: nmdc:inst-14-xx07be40
+    model: novaseq
+    name: Illumina NovaSeq
+    vendor: illumina
+    type: nmdc:Instrument
 workflow_chain_set:
   - id: nmdc:wfch-11-ab
     analyte_category: metagenome

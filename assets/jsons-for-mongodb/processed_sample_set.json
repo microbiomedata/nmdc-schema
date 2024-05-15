@@ -1,0 +1,81 @@
+[
+    {
+        "id": "nmdc:procsm-99-k4m6j",
+        "type": "nmdc:ProcessedSample",
+        "name": "soil DNA extract",
+        "biomaterial_purity": {
+            "type": "nmdc:QuantityValue",
+            "has_numeric_value": 1.8,
+            "has_unit": "260/280"
+        },
+        "dna_concentration": 123.0
+    },
+    {
+        "id": "nmdc:procsm-99-29dl",
+        "type": "nmdc:ProcessedSample",
+        "name": "mouse gut DNA extract"
+    },
+    {
+        "id": "nmdc:procsm-99-3z8t",
+        "type": "nmdc:ProcessedSample",
+        "name": "human gut DNA extract"
+    },
+    {
+        "id": "nmdc:procsm-99-96d7",
+        "type": "nmdc:ProcessedSample",
+        "name": "soil DNA library"
+    },
+    {
+        "id": "nmdc:procsm-99-38t7",
+        "type": "nmdc:ProcessedSample",
+        "name": "mouse gut DNA library"
+    },
+    {
+        "id": "nmdc:procsm-99-9t7",
+        "type": "nmdc:ProcessedSample",
+        "name": "human gut DNA library"
+    },
+    {
+        "id": "nmdc:procsm-99-t2r77",
+        "type": "nmdc:ProcessedSample",
+        "name": "pooled soil sample"
+    },
+    {
+        "id": "nmdc:procsm-99-x971",
+        "type": "nmdc:ProcessedSample",
+        "name": "pooled water sample"
+    },
+    {
+        "id": "nmdc:procsm-99-d9j6",
+        "type": "nmdc:ProcessedSample",
+        "name": "pooled human gut sample"
+    },
+    {
+        "id": "nmdc:procsm-99-dtTMNb",
+        "type": "nmdc:ProcessedSample",
+        "name": "WOOD_024-M-20190715-COMP-DNA1",
+        "description": "Extracted DNA from WOOD_024-M-20190715-COMP",
+        "biomaterial_purity": {
+            "type": "nmdc:QuantityValue",
+            "has_numeric_value": 2
+        },
+        "external_database_identifiers": [
+            "neon.identifier:19S_31_2826"
+        ]
+    },
+    {
+        "id": "nmdc:procsm-99-xyz1",
+        "type": "nmdc:ProcessedSample",
+        "name": "first processed sample set"
+    },
+    {
+        "id": "nmdc:procsm-99-xyz2",
+        "type": "nmdc:ProcessedSample",
+        "name": "first DNA extract"
+    },
+    {
+        "id": "nmdc:procsm-99-xyz3",
+        "type": "nmdc:ProcessedSample",
+        "name": "first library"
+    }
+]

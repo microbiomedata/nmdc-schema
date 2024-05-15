@@ -636,3 +636,23 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 
 assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/partial_imports_graph.py
+
+local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
+	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
+
+
+local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-interleaved-class-count.tsv
+	$(RUN) python src/scripts/class_instantiation_counts.py \
+		--schemasheets-input $(word 1,$^) \
+		--counts-input $(word 2,$^) \
+		--output $@
+
+.PHONY: generate-json-collections
+generate-json-collections: src/data/valid/Database-interleaved.yaml
+	$(RUN) python src/scripts/database-to-json-list-files.py \
+		--yaml-input $< \
+		--output-dir assets/jsons-for-mongodb
+
+.PHONY: populate-mongodb-form-json-collections
+populate-mongodb-form-json-collections: generate-json-collections
+	src/scripts/json-dir-to-mongodb.sh # requires that the script's permissions have been set like: chmod +x src/scripts/json-dir-to-mongodb.sh

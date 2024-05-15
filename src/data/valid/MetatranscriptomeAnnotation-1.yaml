@@ -1,0 +1,32 @@
+id: nmdc:wfmtan-99-101010
+alternative_identifiers:
+  - generic:xxx
+description: xxx
+end_date: '2019-99-08'
+ended_at_time: '2023-08-11T17:00:00Z'
+execution_resource: EMSL-RZR
+git_url: http://example.com
+has_failure_categorization:
+  - type: nmdc:FailureCategorization
+    qc_failure_where: MetagenomeAssembly
+    qc_failure_what: low_read_count
+has_input:
+  - generic:i1
+has_output:
+  - generic:o1
+img_identifiers:
+  - img.taxon:x1
+name: xxx
+part_of:
+  - generic:parent
+processing_institution: JGI
+protocol_link:
+  type: nmdc:Protocol
+  url: http://example.com
+  name: xxx
+qc_comment: xxx
+qc_status: pass
+start_date: '2019-99-08'
+started_at_time: '2023-08-11T01:00:00Z'
+type: nmdc:MetatranscriptomeAnnotation
+version: xxx

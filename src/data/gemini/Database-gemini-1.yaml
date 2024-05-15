@@ -1,0 +1,326 @@
+biosample_set:
+  - id: nmdc:bsm-ae4-n3ybxz
+    type: nmdc:Biosample
+    name: soil sample 1
+    description: soil sample collected from a grassland ecosystem
+    collected_from: nmdc:frsite-ae4-78f4bc
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000446
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000446
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00001998
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00001998
+    associated_studies:
+      - nmdc:sty-99-b27v55
+  - id: nmdc:bsm-ae4-b316vq
+    type: nmdc:Biosample
+    name: soil sample 2
+    description: soil sample collected from a grassland ecosystem
+    collected_from: nmdc:frsite-ae4-78f4bc
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000446
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000446
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00001998
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00001998
+    associated_studies:
+      - nmdc:sty-99-b27v55
+  - id: nmdc:bsm-ae4-q9t93w
+    type: nmdc:Biosample
+    name: soil sample 3
+    description: soil sample collected from a grassland ecosystem
+    collected_from: nmdc:frsite-ae4-78f4bc
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000446
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000446
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00001998
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00001998
+    associated_studies:
+      - nmdc:sty-99-b27v55
+  - id: nmdc:bsm-ae4-t2r77l
+    type: nmdc:Biosample
+    name: water sample 1
+    description: water sample from a freshwater lake
+    collected_from: nmdc:frsite-ae4-k4m6j9
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000234
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000234
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002004
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002004
+    associated_studies:
+      - nmdc:sty-99-t9w6g8
+  - id: nmdc:bsm-ae4-x971d3
+    type: nmdc:Biosample
+    name: water sample 2
+    description: water sample from a freshwater lake
+    collected_from: nmdc:frsite-ae4-k4m6j9
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000234
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000234
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002004
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002004
+    associated_studies:
+      - nmdc:sty-99-t9w6g8
+  - id: nmdc:bsm-ae4-c6dlm7
+    type: nmdc:Biosample
+    name: water sample 3
+    description: water sample from a freshwater lake
+    collected_from: nmdc:frsite-ae4-k4m6j9
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000234
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000234
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002004
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002004
+    associated_studies:
+      - nmdc:sty-99-t9w6g8
+  - id: nmdc:bsm-ae4-p7k6v9
+    type: nmdc:Biosample
+    name: human gut sample 1
+    description: fecal sample from a human subject
+    host_taxid:
+      has_raw_value: NCBITaxon:9606
+      term:
+        id: NCBITaxon:9606
+        type: nmdc:OntologyClass
+      type: nmdc:ControlledIdentifiedTermValue
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: UBERON:0000059
+      term:
+        type: nmdc:OntologyClass
+        id: UBERON:0000059
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002005
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002005
+    associated_studies:
+      - nmdc:sty-99-q4g1z3
+  - id: nmdc:bsm-ae4-v9w6y6
+    type: nmdc:Biosample
+    name: human gut sample 2
+    description: fecal sample from a human subject
+    host_taxid:
+      has_raw_value: NCBITaxon:9606
+      term:
+        id: NCBITaxon:9606
+        type: nmdc:OntologyClass
+      type: nmdc:ControlledIdentifiedTermValue
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: UBERON:0000059
+      term:
+        type: nmdc:OntologyClass
+        id: UBERON:0000059
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002005
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002005
+    associated_studies:
+      - nmdc:sty-99-q4g1z3
+  - id: nmdc:bsm-ae4-d9j6n9
+    type: nmdc:Biosample
+    name: human gut sample 3
+    description: fecal sample from a human subject
+    host_taxid:
+      has_raw_value: NCBITaxon:9606
+      term:
+        id: NCBITaxon:9606
+        type: nmdc:OntologyClass
+      type: nmdc:ControlledIdentifiedTermValue
+    env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00000001
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00000001
+    env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: UBERON:0000059
+      term:
+        type: nmdc:OntologyClass
+        id: UBERON:0000059
+    env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
+      has_raw_value: ENVO:00002005
+      term:
+        type: nmdc:OntologyClass
+        id: ENVO:00002005
+    associated_studies:
+      - nmdc:sty-99-q4g1z3
+collecting_biosamples_from_site_set:
+  - id: nmdc:clsite-ae4-r9j8vl
+    type: nmdc:CollectingBiosamplesFromSite
+    name: soil sample collection
+    has_input:
+      - nmdc:frsite-ae4-78f4bc
+    has_output:
+      - nmdc:bsm-ae4-n3ybxz
+      - nmdc:bsm-ae4-b316vq
+      - nmdc:bsm-ae4-q9t93w
+  - id: nmdc:clsite-ae4-dlm16g
+    type: nmdc:CollectingBiosamplesFromSite
+    name: lake water sample collection
+    has_input:
+      - nmdc:frsite-ae4-k4m6j9
+    has_output:
+      - nmdc:bsm-ae4-t2r77l
+      - nmdc:bsm-ae4-x971d3
+      - nmdc:bsm-ae4-c6dlm7
+  - id: nmdc:clsite-ae4-f5k2l6
+    type: nmdc:CollectingBiosamplesFromSite
+    name: human gut sample collection
+    has_input:
+      - nmdc:frsite-ae4-k48dl3
+    has_output:
+      - nmdc:bsm-ae4-p7k6v9
+      - nmdc:bsm-ae4-v9w6y6
+      - nmdc:bsm-ae4-d9j6n9
+field_research_site_set:
+  - id: nmdc:frsite-ae4-78f4bc
+    name: Grassland Site A
+    description: a grassland research site
+    type: nmdc:FieldResearchSite
+  - id: nmdc:frsite-ae4-k4m6j9
+    name: Lake B
+    description: a freshwater lake
+    type: nmdc:FieldResearchSite
+  - id: nmdc:frsite-ae4-k48dl3
+    name: Human Subject X
+    description: a human subject enrolled in a microbiome study
+    type: nmdc:FieldResearchSite
+study_set:
+  - id: nmdc:sty-99-b27v55
+    name: Grassland Microbiome Study
+    description: A study of microbial diversity in grassland soils
+    type: nmdc:Study
+    study_category: research_study
+    principal_investigator:
+      has_raw_value: Jane Doe
+      name: Jane Doe
+      email: jane.doe@example.org
+      orcid: '0000-0001-2345-6789'
+      type: nmdc:PersonValue
+    has_credit_associations:
+      - applies_to_person:
+          has_raw_value: John Smith
+          name: John Smith
+          email: john.smith@example.org
+          orcid: '0000-0002-9876-5432'
+          type: nmdc:PersonValue
+        applied_roles:
+          - Data curation
+        type: prov:Association
+  - id: nmdc:sty-99-t9w6g8
+    name: Freshwater Lake Microbiome Study
+    description: A study of the microbiome of a freshwater lake
+    type: nmdc:Study
+    study_category: research_study
+    principal_investigator:
+      has_raw_value: Bob Jones
+      name: Bob Jones
+      email: bob.jones@example.org
+      orcid: '0000-0003-4567-8901'
+      type: nmdc:PersonValue
+  - id: nmdc:sty-99-q4g1z3
+    name: Human Gut Microbiome Project
+    description: A large-scale study of the human gut microbiome
+    type: nmdc:Study
+    study_category: consortium
+    principal_investigator:
+      has_raw_value: Alice Lee
+      name: Alice Lee
+      email: alice.lee@example.org
+      orcid: '0000-0004-7890-1234'
+      type: nmdc:PersonValue

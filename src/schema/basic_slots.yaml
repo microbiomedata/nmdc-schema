@@ -81,9 +81,11 @@ slots:
       - prov:endedAtTime
 
   git_url:
+    description: The url that points to the exact github location of a workflow.
     range: string
     examples:
       - value: "https://github.com/microbiomedata/mg_annotation/releases/tag/0.1"
+      - value: "https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py"
 
   execution_resource:
     range: string
@@ -904,6 +906,15 @@ enums:
       LC-MS Lipidomics Results:
         description: >- 
           LC-MS-based lipid assignment results table.
+
+      Contaminants Amino Acid FASTA:
+        description: FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
+
+      Analysis Tool Parameter File:
+        description: A configuration file used by a single computational software tool that stores settings that are specific to that tool.
+
+      Workflow Operation Summary:
+        description: A human readable record of analysis steps applied during an instance of a workflow operation.
 
   DoiProviderEnum:
     see_also:
