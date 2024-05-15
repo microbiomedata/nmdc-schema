@@ -293,11 +293,6 @@
 
   QuantityValue : has_unit
 
-  QuantityValue : was_generated_by
-
-      QuantityValue --&gt; "0..1" Activity : was_generated_by
-    click Activity href "../Activity"
-
 
 
 </div>
@@ -348,12 +343,6 @@
 <td>0..1 <br/> <a href="../Unit/">Unit</a></td>
 <td>The unit of the quantity</td>
 <td>direct</td>
-</tr>
-<tr>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>0..1 <br/> <a href="../Activity/">Activity</a></td>
-<td></td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>
 </table>
@@ -1712,19 +1701,6 @@ attributes:
     domain_of:
     - QuantityValue
     range: unit
-  was_generated_by:
-    name: was_generated_by
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasGeneratedBy
-    rank: 1000
-    alias: was_generated_by
-    owner: QuantityValue
-    domain_of:
-    - DataObject
-    - AttributeValue
-    - FunctionalAnnotation
-    range: Activity
 
 </code></pre>
 </details>

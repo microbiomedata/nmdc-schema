@@ -300,11 +300,6 @@
 
   PersonValue : profile_image_url
 
-  PersonValue : was_generated_by
-
-      PersonValue --&gt; "0..1" Activity : was_generated_by
-    click Activity href "../Activity"
-
   PersonValue : websites
 
 
@@ -362,12 +357,6 @@
 <td><a href="../has_raw_value/">has_raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The full name of the Investigator in format FIRST LAST</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>0..1 <br/> <a href="../Activity/">Activity</a></td>
-<td></td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>
@@ -642,19 +631,6 @@ attributes:
     - AttributeValue
     - QuantityValue
     range: string
-  was_generated_by:
-    name: was_generated_by
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasGeneratedBy
-    rank: 1000
-    alias: was_generated_by
-    owner: PersonValue
-    domain_of:
-    - DataObject
-    - AttributeValue
-    - FunctionalAnnotation
-    range: Activity
 
 </code></pre>
 </details>
