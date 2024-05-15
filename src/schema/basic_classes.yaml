@@ -327,10 +327,6 @@ classes:
       - principal_investigator
       - instrument_used
     slot_usage:
-#      id:
-#        structured_pattern:
-#          syntax: "{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-#          interpolated: true
       has_input:
         required: true
         pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"

@@ -1,4 +1,4 @@
-data_generation_set:
+data_generation_set: 
   - id: nmdc:dgms-99-oW43DzG1
     type: nmdc:MassSpectrometry
     has_input:
@@ -12,6 +12,7 @@ data_generation_set:
     analyte_category: metabolome
     associated_studies:
       - nmdc:sty-00-555xxx
+
 calibration_set:
   - id: nmdc:calib-99-zUCd5Q
     type: nmdc:CalibrationInformation
