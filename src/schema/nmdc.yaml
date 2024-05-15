@@ -624,21 +624,6 @@ enums:
       positive: { }
       negative: { }
 
-  EluentIntroductionCategoryEnum:
-    permissible_values:
-      liquid_chromatography:
-        aliases:
-          - LC
-        description: The processed sample is introduced into the mass spectrometer through a liquid chromatography process.
-      gas_chromatography:
-        aliases:
-          - GC
-        description: The processed sample is introduced into the mass spectrometer through a gas chromatography process.
-      direct_infusion_syringe:
-        description: The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.
-      direct_infusion_autosampler:
-        description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
-
   LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic

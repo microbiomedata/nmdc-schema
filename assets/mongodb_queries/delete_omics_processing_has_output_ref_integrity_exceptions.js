@@ -1,3 +1,6 @@
+// Description: Delete omics_processing_set documents that have invalid references in has_output field.
+// This script will delete the omics_processing_set documents that have invalid references in has_output field.
+
 db.omics_processing_set.aggregate([
   {
     $unwind: "$has_output"
@@ -18,5 +21,6 @@ db.omics_processing_set.aggregate([
       ]
     }
   }
-])
-
+]).forEach(function(doc) {
+    db.omics_processing_set.deleteMany({ _id: doc._id }); // Delete the matching documents
+});

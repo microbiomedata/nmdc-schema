@@ -656,3 +656,17 @@ generate-json-collections: src/data/valid/Database-interleaved.yaml
 .PHONY: populate-mongodb-form-json-collections
 populate-mongodb-form-json-collections: generate-json-collections
 	src/scripts/json-dir-to-mongodb.sh # requires that the script's permissions have been set like: chmod +x src/scripts/json-dir-to-mongodb.sh
+
+# ----	NMDC NCBI mapping process ---- #
+assets/ncbi_mappings/ncbi_attribute_mappings.tsv:
+	poetry run nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
+		--tsv-output $@
+
+assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/ncbi_attribute_mappings.tsv
+	poetry run nmdc-ncbi-mapping exact-term-matching \
+		--tsv-input $< \
+		--tsv-output $@
+
+	poetry run nmdc-ncbi-mapping ignore-import-schema-slots $@
+	
+
