@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Path to the schema file
-SCHEMA="../../nmdc_schema/nmdc_materialized_patterns.yaml"
+#SCHEMA="../../nmdc_schema/nmdc_materialized_patterns.yaml"
+SCHEMA="../../src/schema/nmdc.yaml"
 
 # Directory containing the data files
-DATA_DIR="../../src/data/valid"
+DATA_DIR="../../src/data/problem/valid"
 
 # Loop over all files in the directory
-for file in "$DATA_DIR"/*; do
+for file in "$DATA_DIR"/*.yaml; do
   # Extract the class name from the filename by cutting on the first hyphen
   class_name=$(basename "$file" | cut -d'-' -f1)
 

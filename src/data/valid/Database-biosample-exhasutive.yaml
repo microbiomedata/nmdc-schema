@@ -71,18 +71,18 @@ biosample_set:
     aero_struc:
       has_raw_value: xxx
       type: nmdc:TextValue
-    agrochem_addition:
-      - has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
-        type: nmdc:TextValue
-    air_PM_concen:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    agrochem_addition:
+    #      - has_raw_value: lime;1 kg/acre;2022-11-16T16:05:42+0000
+    #        type: nmdc:TextValue
+    #    air_PM_concen:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     air_temp:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    air_temp_regm:
-      - has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-        type: nmdc:TextValue
+    #    air_temp_regm:
+    #      - has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    #        type: nmdc:TextValue
     al_sat:
       has_raw_value: 0.1 mg/kg
       type: nmdc:QuantityValue
@@ -122,9 +122,9 @@ biosample_set:
     annual_temp:
       has_raw_value: 12.5 degree Celsius
       type: nmdc:QuantityValue
-    antibiotic_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    antibiotic_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     api:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -135,9 +135,9 @@ biosample_set:
     asphaltenes_pc:
       has_raw_value: xxx
       type: nmdc:TextValue
-    atmospheric_data:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    atmospheric_data:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     avg_dew_point:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -181,9 +181,9 @@ biosample_set:
       has_raw_value: xxx
       type: nmdc:TextValue
     biol_stat: wild
-    biomass:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    biomass:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     biotic_regm:
       has_raw_value: sample inoculated with Rhizobium spp. Culture
       type: nmdc:TextValue
@@ -241,12 +241,12 @@ biosample_set:
     ceil_water_mold:
       has_raw_value: xxx
       type: nmdc:TextValue
-    chem_administration:
-      - has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
-        type: nmdc:ControlledTermValue
-    chem_mutagen:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    chem_administration:
+    #      - has_raw_value: agar [CHEBI:2509];2018-05-11T20:00Z
+    #        type: nmdc:ControlledTermValue
+    #    chem_mutagen:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     chem_oxygen_dem:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -260,9 +260,9 @@ biosample_set:
     chlorophyll:
       has_raw_value: 5 milligram per cubic meter
       type: nmdc:QuantityValue
-    climate_environment:
-      - has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-        type: nmdc:TextValue
+    #    climate_environment:
+    #      - has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    #        type: nmdc:TextValue
     collection_date:
       has_raw_value: xxx
       type: nmdc:TimestampValue
@@ -303,9 +303,9 @@ biosample_set:
     dew_point:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    diether_lipids:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    diether_lipids:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     diss_carb_dioxide:
       has_raw_value: 5 milligram per liter
       type: nmdc:QuantityValue
@@ -370,9 +370,9 @@ biosample_set:
     elevator:
       has_raw_value: xxx
       type: nmdc:TextValue
-    emulsions:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    emulsions:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     env_package:
       has_raw_value: unconstrained text. should require the name of a MIxS EnvironmentalPackage
         class. have asked MIxS to return this term to their model. UPDATE VALIDATION
@@ -400,9 +400,9 @@ biosample_set:
     ext_window_orient: north
     extreme_event: '2023-01-15'
     fao_class: Fluvisols
-    fertilizer_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    fertilizer_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     field:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -438,16 +438,16 @@ biosample_set:
     freq_cook:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    fungicide_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    fungicide_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     furniture: cabinet
-    gaseous_environment:
-      - has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-        type: nmdc:TextValue
-    gaseous_substances:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    gaseous_environment:
+    #      - has_raw_value: nitric oxide;0.5 micromole per liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    #        type: nmdc:TextValue
+    #    gaseous_substances:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     gender_restroom: female
     genetic_mod:
       has_raw_value: xxx
@@ -461,16 +461,16 @@ biosample_set:
     gravidity:
       has_raw_value: xxx
       type: nmdc:TextValue
-    gravity:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    gravity:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     growth_facil:
       has_raw_value: Growth chamber [CO_715:0000189]
       type: nmdc:ControlledTermValue
     growth_habit: erect
-    growth_hormone_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    growth_hormone_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     hall_count:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -494,20 +494,20 @@ biosample_set:
     heat_system_id:
       has_raw_value: xxx
       type: nmdc:TextValue
-    heavy_metals:
-      - has_raw_value: mercury;0.09 micrograms per gram
-        type: nmdc:TextValue
-      - has_raw_value: arsenic;0.09 micrograms per gram
-        type: nmdc:TextValue
-    heavy_metals_meth:
-      - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
-        type: nmdc:TextValue
+    #    heavy_metals:
+    #      - has_raw_value: mercury;0.09 micrograms per gram
+    #        type: nmdc:TextValue
+    #      - has_raw_value: arsenic;0.09 micrograms per gram
+    #        type: nmdc:TextValue
+    #    heavy_metals_meth:
+    #      - has_raw_value: https://link.springer.com/article/10.1007/s42452-019-1578-x
+    #        type: nmdc:TextValue
     height_carper_fiber:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    herbicide_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    herbicide_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     horizon_meth:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -532,9 +532,9 @@ biosample_set:
     host_common_name:
       has_raw_value: xxx
       type: nmdc:TextValue
-    host_diet:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    host_diet:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     host_dry_mass:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -549,9 +549,9 @@ biosample_set:
     host_height:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    host_last_meal:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    host_last_meal:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     host_length:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -584,17 +584,17 @@ biosample_set:
     humidity:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    humidity_regm:
-      - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-        type: nmdc:TextValue
+    #    humidity_regm:
+    #      - has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    #        type: nmdc:TextValue
     indoor_space: bedroom
     indoor_surf: cabinet
     indust_eff_percent:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    inorg_particles:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    inorg_particles:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     inside_lux:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -659,9 +659,9 @@ biosample_set:
       has_raw_value: 1 meter per second
       type: nmdc:QuantityValue
     mech_struc: subway
-    mechanical_damage:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    mechanical_damage:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     methane:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -669,15 +669,15 @@ biosample_set:
     microbial_biomass:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    mineral_nutr_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
-    misc_param:
-      - has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
-        type: nmdc:TextValue
-    n_alkanes:
-      - has_raw_value: n-hexadecane;100 milligram per liter
-        type: nmdc:TextValue
+    #    mineral_nutr_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
+    #    misc_param:
+    #      - has_raw_value: Bicarbonate ion concentration;2075 micromole per kilogram
+    #        type: nmdc:TextValue
+    #    n_alkanes:
+    #      - has_raw_value: n-hexadecane;100 milligram per liter
+    #        type: nmdc:TextValue
     nitrate:
       has_raw_value: 65 micromole per liter
       type: nmdc:QuantityValue
@@ -721,12 +721,12 @@ biosample_set:
     org_nitro:
       has_raw_value: 4 micromole per liter
       type: nmdc:QuantityValue
-    org_particles:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
-    organism_count:
-      - has_raw_value: ATP
-        type: nmdc:QuantityValue
+    #    org_particles:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
+    #    organism_count:
+    #      - has_raw_value: ATP
+    #        type: nmdc:QuantityValue
     owc_tvdss:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -740,9 +740,9 @@ biosample_set:
     part_org_nitro:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    particle_class:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    particle_class:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     #    pcr_cond:
     #      has_raw_value: xxx
     #      type: nmdc:TextValue
@@ -752,12 +752,12 @@ biosample_set:
     permeability:
       has_raw_value: xxx
       type: nmdc:TextValue
-    perturbation:
-      - has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
-        type: nmdc:TextValue
-    pesticide_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    perturbation:
+    #      - has_raw_value: antibiotic addition;R2/2018-05-11T14:30Z/2018-05-11T19:30Z/P1H30M
+    #        type: nmdc:TextValue
+    #    pesticide_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     petroleum_hydrocarb:
       has_raw_value: 0.05 micromole per liter
       type: nmdc:QuantityValue
@@ -765,18 +765,18 @@ biosample_set:
     ph_meth:
       has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9040c.pdf
       type: nmdc:TextValue
-    ph_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
-    phaeopigments:
-      - has_raw_value: 2.5 milligram per cubic meter
-        type: nmdc:TextValue
+    #    ph_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
+    #    phaeopigments:
+    #      - has_raw_value: 2.5 milligram per cubic meter
+    #        type: nmdc:TextValue
     phosphate:
       has_raw_value: 0.7 micromole per liter
       type: nmdc:QuantityValue
-    phosplipid_fatt_acid:
-      - has_raw_value: 2.98 milligram per liter
-        type: nmdc:TextValue
+    #    phosplipid_fatt_acid:
+    #      - has_raw_value: 2.98 milligram per liter
+    #        type: nmdc:TextValue
     photon_flux:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -790,9 +790,9 @@ biosample_set:
     plant_struc:
       has_raw_value: xxx
       type: nmdc:ControlledTermValue
-    pollutants:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    pollutants:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     #    pool_dna_extracts:
     #      has_raw_value: yes, 5
     #      type: nmdc:TextValue
@@ -830,12 +830,12 @@ biosample_set:
       type: nmdc:TimestampValue
     profile_position: summit
     quad_pos: North side
-    radiation_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
-    rainfall_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    radiation_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
+    #    rainfall_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     reactor_type:
       has_raw_value: xxx
       type: nmdc:TextValue
@@ -923,9 +923,9 @@ biosample_set:
     salinity_meth:
       has_raw_value: PMID:22895776
       type: nmdc:TextValue
-    salt_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    salt_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     samp_capt_status: other
     samp_collec_device: xxx
     samp_collec_method: swabbing
@@ -950,9 +950,9 @@ biosample_set:
     samp_size:
       has_raw_value: 5 liters
       type: nmdc:QuantityValue
-    samp_sort_meth:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    samp_sort_meth:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     samp_store_dur:
       has_raw_value: P1Y6M
       type: nmdc:TextValue
@@ -1003,9 +1003,9 @@ biosample_set:
     season:
       has_raw_value: xxx
       type: nmdc:TextValue
-    season_environment:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    season_environment:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     season_precpt:
       has_raw_value: 75 millimeters
       type: nmdc:QuantityValue
@@ -1073,12 +1073,12 @@ biosample_set:
     solar_irradiance:
       has_raw_value: xxx
       type: nmdc:QuantityValue
-    soluble_inorg_mat:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
-    soluble_org_mat:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    soluble_inorg_mat:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
+    #    soluble_org_mat:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     soluble_react_phosp:
       has_raw_value: xxx
       type: nmdc:QuantityValue
@@ -1097,9 +1097,9 @@ biosample_set:
     sr_geol_age: Archean
     sr_kerog_type: other
     sr_lithology: Clastic
-    standing_water_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    standing_water_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     store_cond:
       has_raw_value: -20 degree Celsius freezer;P2Y10D
       type: nmdc:TextValue
@@ -1130,9 +1130,9 @@ biosample_set:
     suspend_part_matter:
       type: nmdc:QuantityValue
       has_raw_value: xxx
-    suspend_solids:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    suspend_solids:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     tan:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -1229,9 +1229,9 @@ biosample_set:
     viscosity:
       type: nmdc:TextValue
       has_raw_value: xxx
-    volatile_org_comp:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
+    #    volatile_org_comp:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
     wall_area:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -1269,12 +1269,12 @@ biosample_set:
     water_prod_rate:
       type: nmdc:QuantityValue
       has_raw_value: xxx
-    water_temp_regm:
-      - has_raw_value: xxx
-        type: nmdc:TextValue
-    watering_regm:
-      - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-        type: nmdc:TextValue
+    #    water_temp_regm:
+    #      - has_raw_value: xxx
+    #        type: nmdc:TextValue
+    #    watering_regm:
+    #      - has_raw_value: 1 liter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
+    #        type: nmdc:TextValue
     weekday: Monday
     win:
       type: nmdc:TextValue

@@ -475,6 +475,7 @@ slots:
     domain: MagsAnalysis
     range: MagBin
     multivalued: true
+    inlined_as_list: true
 
   too_short_contig_num:
     range: integer
@@ -556,6 +557,7 @@ slots:
     domain: MetabolomicsAnalysis
     range: MetaboliteIdentification
     multivalued: true
+    inlined_as_list: true
 
 enums:
   CalibrationTargetEnum:
