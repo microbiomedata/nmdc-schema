@@ -110,6 +110,12 @@ class Migrator(MigratorBase):
         # workflow_chain_id = self.mint_id()
         workflow_chain_ids = load_yaml_asset("migrator_from_X_to_PR9/workflow_chain_ids.yaml")
 
+        # Note: If the YAML file is empty (e.g. during early development), the loaded asset will be `None`.
+        #       Instead of allowing the `for` loop below to raise a `TypeError` (since `None` isn't iterable),
+        #       we'll convert the value into something that is iterable (but still `None`-like).
+        if workflow_chain_ids is None:
+            workflow_chain_ids = []
+
         for workflow_chain_id in workflow_chain_ids:
             # Get the `omics_processing_id`` from the `was_informed_by` slot of the `WorkflowExecution` doc
             omics_processing_id = workflow_doc["was_informed_by"]
