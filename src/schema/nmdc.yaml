@@ -162,8 +162,6 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - planned_process_set
-      - functional_annotation_agg
       - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
@@ -189,8 +187,6 @@ classes:
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
-
-
 
   Pooling:
     class_uri: nmdc:Pooling
