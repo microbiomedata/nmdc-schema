@@ -141,40 +141,41 @@ classes:
     exact_mappings:
       - CHMO:0000470
     slots:
-      - eluent_introduction_category
+#      - eluent_introduction_category
       - has_mass_spectrometry_configuration
       - has_chromatography_configuration
       - has_calibration
-    rules:
-    - title: has_calibration_required_if_gc
-      description: >-
-        If eluent_introduction_category is gas_chromatography, then has_calibration is required.
-      preconditions:
-        slot_conditions:
-          eluent_introduction_category:
-            equals_string: gas_chromatography
-      postconditions:
-        slot_conditions:
-          has_calibration:
-            required: true
-    - title: has_chromatography_configuration_required_if_lc_or_gc
-      description: >-
-        If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
-      preconditions:
-        slot_conditions:
-          eluent_introduction_category:
-            any_of:
-            - equals_string: liquid_chromatography
-            - equals_string: gas_chromatography
-      postconditions:
-        slot_conditions:
-          has_chromatography_configuration:
-            required: true
     slot_usage:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
           interpolated: true
+#    rules:
+#    - title: has_calibration_required_if_gc
+#      description: >-
+#        If eluent_introduction_category is gas_chromatography, then has_calibration is required.
+#      preconditions:
+#        slot_conditions:
+#          eluent_introduction_category:
+#            equals_string: gas_chromatography
+#      postconditions:
+#        slot_conditions:
+#          has_calibration:
+#            required: true
+#    - title: has_chromatography_configuration_required_if_lc_or_gc
+#      description: >-
+#        If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
+#      preconditions:
+#        slot_conditions:
+#          eluent_introduction_category:
+#            any_of:
+#            - equals_string: liquid_chromatography
+#            - equals_string: gas_chromatography
+#      postconditions:
+#        slot_conditions:
+#          has_chromatography_configuration:
+#            required: true
+
 
   Configuration:
     abstract: true
@@ -773,9 +774,9 @@ slots:
     range: AcquisitionCategoryEnum
     description: whether only survey or tandem mass spectra are part of the experiment
 
-  eluent_introduction_category:
-    range: EluentIntroductionCategoryEnum
-    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
+#  eluent_introduction_category:
+#    range: EluentIntroductionCategoryEnum
+#    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
   has_mass_spectrometry_configuration:
     range: MassSpectrometryConfiguration

@@ -5,7 +5,7 @@ has_input:
 has_output:
   - nmdc:dobj-00-9n9n9n
 has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0
-eluent_introduction_category: direct_infusion_syringe
+#eluent_introduction_category: direct_infusion_syringe
 analyte_category: nom
 associated_studies:
   - nmdc:sty-00-555xxx

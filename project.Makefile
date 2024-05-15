@@ -637,7 +637,7 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/partial_imports_graph.py
 
-local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
+local/Database-interleaved-class-count.tsv: src/data/problem/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
@@ -648,7 +648,7 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 		--output $@
 
 .PHONY: generate-json-collections
-generate-json-collections: src/data/valid/Database-interleaved.yaml
+generate-json-collections: src/data/problem/Database-interleaved.yaml
 	$(RUN) python src/scripts/database-to-json-list-files.py \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb
