@@ -24,6 +24,7 @@ class TestModulesAreIndependent(unittest.TestCase):
         schema_modules.sort()
 
         for schema_module in schema_modules:
+            print(schema_module)
             # print(schema_module)
             view = SchemaView(schema_module)
             # print(view.schema.name)
@@ -43,6 +44,7 @@ class TestModulesForOwl(unittest.TestCase):
         # ] # could test a defined subset
 
         for schema_module in schema_modules:
+            print(schema_module)
             # print(schema_module)
             view = SchemaView(schema_module)
             # print(view.schema.name)

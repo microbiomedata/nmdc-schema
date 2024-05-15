@@ -38,8 +38,6 @@ slots:
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
     deprecated: true
-    domain: DataGeneration
-    range: ControlledTermValue
     description: The type of omics data
     examples:
       - value: metatranscriptome
