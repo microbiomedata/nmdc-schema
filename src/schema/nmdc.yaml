@@ -128,11 +128,11 @@ classes:
       - ncbi_project_name
       - target_gene
       - target_subfragment
-    slot_usage:
-      id:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+#    slot_usage:
+#      id:
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
 
   MassSpectrometry:
     class_uri: nmdc:MassSpectrometry
@@ -141,40 +141,40 @@ classes:
     exact_mappings:
       - CHMO:0000470
     slots:
-#      - eluent_introduction_category
+      - eluent_introduction_category
       - has_mass_spectrometry_configuration
       - has_chromatography_configuration
       - has_calibration
-    slot_usage:
-      id:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
-#    rules:
-#    - title: has_calibration_required_if_gc
-#      description: >-
-#        If eluent_introduction_category is gas_chromatography, then has_calibration is required.
-#      preconditions:
-#        slot_conditions:
-#          eluent_introduction_category:
-#            equals_string: gas_chromatography
-#      postconditions:
-#        slot_conditions:
-#          has_calibration:
-#            required: true
-#    - title: has_chromatography_configuration_required_if_lc_or_gc
-#      description: >-
-#        If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
-#      preconditions:
-#        slot_conditions:
-#          eluent_introduction_category:
-#            any_of:
-#            - equals_string: liquid_chromatography
-#            - equals_string: gas_chromatography
-#      postconditions:
-#        slot_conditions:
-#          has_chromatography_configuration:
-#            required: true
+#    slot_usage:
+#      id:
+#        structured_pattern:
+#          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+#          interpolated: true
+  #    rules:
+  #    - title: has_calibration_required_if_gc
+  #      description: >-
+  #        If eluent_introduction_category is gas_chromatography, then has_calibration is required.
+  #      preconditions:
+  #        slot_conditions:
+  #          eluent_introduction_category:
+  #            equals_string: gas_chromatography
+  #      postconditions:
+  #        slot_conditions:
+  #          has_calibration:
+  #            required: true
+  #    - title: has_chromatography_configuration_required_if_lc_or_gc
+  #      description: >-
+  #        If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
+  #      preconditions:
+  #        slot_conditions:
+  #          eluent_introduction_category:
+  #            any_of:
+  #            - equals_string: liquid_chromatography
+  #            - equals_string: gas_chromatography
+  #      postconditions:
+  #        slot_conditions:
+  #          has_chromatography_configuration:
+  #            required: true
 
 
   Configuration:
@@ -188,7 +188,7 @@ classes:
   MassSpectrometryConfiguration:
     is_a: Configuration
     class_uri: nmdc:MassSpectrometryConfiguration
-    description: A set of parameters that define and control the actions of a mass spectrometry process. 
+    description: A set of parameters that define and control the actions of a mass spectrometry process.
     notes:
       - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
     slots:
@@ -495,7 +495,7 @@ classes:
       A planned process with the objective to preserve and protect material entities by placing them in an identified 
       location which may have a controlled environment.
     is_a: PlannedProcess
-    related_mappings: 
+    related_mappings:
       - OBI:0302893
     slots:
       - substances_used
@@ -503,7 +503,7 @@ classes:
       - temperature
     slot_usage:
       substances_used:
-        description: The substance(s) that a processed sample is stored in. 
+        description: The substance(s) that a processed sample is stored in.
 
   ChromatographicSeparationProcess:
     class_uri: 'nmdc:ChromatographicSeparationProcess'
@@ -551,6 +551,21 @@ classes:
           interpolated: true
 
 enums:
+
+  EluentIntroductionCategoryEnum:
+    permissible_values:
+      liquid_chromatography:
+        aliases:
+          - LC
+        description: The processed sample is introduced into the mass spectrometer through a liquid chromatography process.
+      gas_chromatography:
+        aliases:
+          - GC
+        description: The processed sample is introduced into the mass spectrometer through a gas chromatography process.
+      direct_infusion_syringe:
+        description: The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.
+      direct_infusion_autosampler:
+        description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
 
   AcquisitionCategoryEnum:
     permissible_values:
@@ -740,7 +755,7 @@ enums:
       aqueous_layer:
       non_polar_layer:
 
-      
+
 slots:
 
   polarity_mode:
@@ -774,9 +789,9 @@ slots:
     range: AcquisitionCategoryEnum
     description: whether only survey or tandem mass spectra are part of the experiment
 
-#  eluent_introduction_category:
-#    range: EluentIntroductionCategoryEnum
-#    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
+  eluent_introduction_category:
+    range: EluentIntroductionCategoryEnum
+    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
 
   has_mass_spectrometry_configuration:
     range: MassSpectrometryConfiguration
@@ -1156,24 +1171,24 @@ slots:
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
-#  solvent: # see SubstanceRoleEnum
-#    domain: DissolvingProcess
-#    #    range: Solution
-#    any_of:
-#      - range: Solution
-#      - range: PortionOfSubstance
-#    required: true
-#    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
-#    exact_mappings:
-#      - CHEBI:46787
-#
-#  solubilizing_agent: # see SubstanceRoleEnum
-#    domain: DissolvingProcess
-#    #    range: CompoundEnum
-#    range: PortionOfSubstance # or chemical entity?
-#    description: A substance within a formulation that enhances the solubility of another substance.
-#    exact_mappings:
-#      - NCIT:C176640
+  #  solvent: # see SubstanceRoleEnum
+  #    domain: DissolvingProcess
+  #    #    range: Solution
+  #    any_of:
+  #      - range: Solution
+  #      - range: PortionOfSubstance
+  #    required: true
+  #    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
+  #    exact_mappings:
+  #      - CHEBI:46787
+  #
+  #  solubilizing_agent: # see SubstanceRoleEnum
+  #    domain: DissolvingProcess
+  #    #    range: CompoundEnum
+  #    range: PortionOfSubstance # or chemical entity?
+  #    description: A substance within a formulation that enhances the solubility of another substance.
+  #    exact_mappings:
+  #      - NCIT:C176640
   sampled_portion:
     domain: SubSamplingProcess
     range: SamplePortionEnum
