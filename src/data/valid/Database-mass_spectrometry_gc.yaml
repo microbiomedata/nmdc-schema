@@ -1,17 +1,18 @@
-data_generation_set:
+data_generation_set: #this validates elsewhere as a standalone MassSpectrometry object
   - id: nmdc:dgms-99-oW43DzG1
     type: nmdc:MassSpectrometry
-#    has_input:
-#      - nmdc:procsm-11-9gjxns61                                 #random example process sample
-#    has_output:
-#      - nmdc:dobj-11-9n9n9n                                     #defined below
-#    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
-#    has_chromatography_configuration: nmdc:chrocon-99-oW43DzG1  #defined below
+    has_input:
+      - nmdc:procsm-11-9gjxns61                                 #random example process sample
+    has_output:
+      - nmdc:dobj-11-9n9n9n                                     #defined below
+    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
+    has_chromatography_configuration: nmdc:chrocon-99-oW43DzG1  #defined below
 #    eluent_introduction_category: gas_chromatography
-#    has_calibration: nmdc:calib-99-zUCd5Q                       #defined below
-#    analyte_category: metabolome
-#    associated_studies:
-#      - nmdc:sty-00-555xxx
+    has_calibration: nmdc:calib-99-zUCd5Q                       #defined below
+    analyte_category: metabolome
+    associated_studies:
+      - nmdc:sty-00-555xxx
+      
 calibration_set:
   - id: nmdc:calib-99-zUCd5Q
     type: nmdc:CalibrationInformation
