@@ -791,7 +791,10 @@ slots:
 
   eluent_introduction_category:
     range: EluentIntroductionCategoryEnum
-    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
+    description: Details how a processed sample is introduced into a mass spectrometer.
+    examples:
+      - value: liquid_chromatography
+      - value: direct_infusion_syringe
 
   has_mass_spectrometry_configuration:
     range: MassSpectrometryConfiguration
