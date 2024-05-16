@@ -4,10 +4,6 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
 
-# TODO: remove import uuid and fix minter function to how we will actually mint ids.
-# TODO: Add doc tests
-
-
 class Migrator(MigratorBase):
     """
     Migrates data from X to PR9, namely creates the workflow_chain_set, moves was_informed_by onto the
@@ -58,8 +54,8 @@ class Migrator(MigratorBase):
             "metaproteomics_analysis_activity_set",
         ]
 
-        # Map was_informed_by slot values to newly minted workflow chain ids and populate workflow execution records part_of
-        # with newly minted workflow chain id.
+        # Map was_informed_by slot values to workflow chain ids and populate workflow execution records part_of
+        # with workflow chain ids.
         for workflow_execution in workflow_executions:
             self.adapter.process_each_document(
                 collection_name=workflow_execution,
