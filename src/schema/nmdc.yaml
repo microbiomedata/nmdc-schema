@@ -1149,7 +1149,11 @@ slots:
 
   contained_in:
     range: ContainerCategoryEnum
-    description: A type of container. i.e. test tube, falcon tube, etc.
+    description: A type of container.
+    examples:
+      - value: test tube
+      - value: falcon tube
+      - value: whirlpak
   #  extractant:
   #    domain: Extraction
   #    range: Solution
