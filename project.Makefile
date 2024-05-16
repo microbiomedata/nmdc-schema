@@ -177,26 +177,36 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--page-size 200000 \
 		--schema-file src/schema/nmdc.yaml \
+		--selected-collections activity_set \
+		--selected-collections biosample_set \
+		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections extraction_set \
+		--selected-collections genome_feature_set \
+		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
+		--selected-collections material_sample_set \
 		--selected-collections metabolomics_analysis_activity_set \
 		--selected-collections metagenome_annotation_activity_set \
 		--selected-collections metagenome_assembly_set \
 		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metap_gene_function_aggregation \
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections nom_analysis_activity_set \
 		--selected-collections omics_processing_set \
+		--selected-collections planned_process_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections metaproteomics_analysis_activity_set \
-		--skip-collection-check
+		--selected-collections study_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
 		--skip-collection-check
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_X_to_PR4 \
-		--migrator-name migrator_from_X_to_PR53 \
-		--migrator-name migrator_from_X_to_PR9 \
+		--migrator-name migrator_from_X_to_PR2_and_PR24 \
 		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
 		--salvage-prefix generic \
@@ -409,24 +419,38 @@ local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 		--output-yaml $@.tmp \
 		--page-size 200000 \
 		--schema-file $< \
+		--selected-collections activity_set \
+		--selected-collections biosample_set \
+		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections extraction_set \
+		--selected-collections genome_feature_set \
+		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
+		--selected-collections material_sample_set \
 		--selected-collections metabolomics_analysis_activity_set \
 		--selected-collections metagenome_annotation_activity_set \
 		--selected-collections metagenome_assembly_set \
 		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metap_gene_function_aggregation \
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections nom_analysis_activity_set \
 		--selected-collections omics_processing_set \
+		--selected-collections planned_process_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections metaproteomics_analysis_activity_set \
+		--selected-collections study_set \
+		--selected-collections data_object_set \
+		--selected-collections field_research_site_set \
 		--skip-collection-check
 	sed -i.bak 's/gold:/GOLD:/' $@.tmp # kludge modify data to match (old!) schema
 	rm -rf $@.tmp.bak
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_X_to_PR53 \
 		--migrator-name migrator_from_X_to_PR4 \
-		--migrator-name migrator_from_X_to_PR9 \
+		--migrator-name migrator_from_X_to_PR2_and_PR24 \
+		--migrator-name migrator_from_X_to_PR3 \
+		--schema-path $< \
 		--input-path $@.tmp \
 		--salvage-prefix generic \
 		--output-path $@ # kludge masks ids that contain whitespace
@@ -612,3 +636,37 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 
 assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/partial_imports_graph.py
+
+local/Database-interleaved-class-count.tsv: src/data/problem/Database-interleaved.yaml
+	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
+
+
+local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-interleaved-class-count.tsv
+	$(RUN) python src/scripts/class_instantiation_counts.py \
+		--schemasheets-input $(word 1,$^) \
+		--counts-input $(word 2,$^) \
+		--output $@
+
+.PHONY: generate-json-collections
+generate-json-collections: src/data/problem/Database-interleaved.yaml
+	$(RUN) python src/scripts/database-to-json-list-files.py \
+		--yaml-input $< \
+		--output-dir assets/jsons-for-mongodb
+
+.PHONY: populate-mongodb-form-json-collections
+populate-mongodb-form-json-collections: generate-json-collections
+	src/scripts/json-dir-to-mongodb.sh # requires that the script's permissions have been set like: chmod +x src/scripts/json-dir-to-mongodb.sh
+
+# ----	NMDC NCBI mapping process ---- #
+assets/ncbi_mappings/ncbi_attribute_mappings.tsv:
+	poetry run nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
+		--tsv-output $@
+
+assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/ncbi_attribute_mappings.tsv
+	poetry run nmdc-ncbi-mapping exact-term-matching \
+		--tsv-input $< \
+		--tsv-output $@
+
+	poetry run nmdc-ncbi-mapping ignore-import-schema-slots $@
+	
+
