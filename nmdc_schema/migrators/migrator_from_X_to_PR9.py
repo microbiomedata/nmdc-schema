@@ -38,6 +38,7 @@ class Migrator(MigratorBase):
 
         self.workflow_omics_dict = {}
         self.omics_analyte_category_dict = {}
+        self.workflow_chain_ids = load_yaml_asset("migrator_from_X_to_PR9/workflow_chain_ids.yaml")
 
     def upgrade(self):
         r"""
@@ -85,13 +86,6 @@ class Migrator(MigratorBase):
                 pipeline=[self.remove_was_informed_by],
             )
 
-    # def mint_id(self):
-    #     r"""
-    #     TODO: Replace me with real minting.
-    #     """
-
-    #     return "potato:" + str(uuid.uuid4())
-
     def was_informed_by_chain_mapping(self, workflow_doc: dict):
         r"""
         Get the was_informed_by value (an omics processing id) from the WorkflowExecution documents and
@@ -106,22 +100,17 @@ class Migrator(MigratorBase):
         True
         """
 
-        # # TODO: Replace me with real minting
-        # workflow_chain_id = self.mint_id()
-        workflow_chain_ids = load_yaml_asset("migrator_from_X_to_PR9/workflow_chain_ids.yaml")
+        # Get the `omics_processing_id`` from the `was_informed_by` slot of the `WorkflowExecution` doc
+        omics_processing_id = workflow_doc["was_informed_by"]
 
-        # Note: If the YAML file is empty (e.g. during early development), the loaded asset will be `None`.
-        #       Instead of allowing the `for` loop below to raise a `TypeError` (since `None` isn't iterable),
-        #       we'll convert the value into something that is iterable (but still `None`-like).
-        if workflow_chain_ids is None:
-            workflow_chain_ids = []
-
-        for workflow_chain_id in workflow_chain_ids:
-            # Get the `omics_processing_id`` from the `was_informed_by` slot of the `WorkflowExecution` doc
-            omics_processing_id = workflow_doc["was_informed_by"]
-
-            if omics_processing_id not in self.workflow_omics_dict:
+        if omics_processing_id not in self.workflow_omics_dict:
+            
+            if self.workflow_chain_ids:
+                workflow_chain_id = self.workflow_chain_ids.pop(0)
                 self.workflow_omics_dict[omics_processing_id] = workflow_chain_id
+
+            else:
+                self.logger.error(f"No more workflow chain ids available and needed for omics doc: {omics_processing_id}")
 
         return workflow_doc
 
