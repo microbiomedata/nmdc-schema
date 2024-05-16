@@ -565,33 +565,6 @@ slots:
       - For example Low read count from a sequencer, malformed fastq files, etc)
 
 enums:
-  ExecutionResourceEnum:
-    see_also:
-      - nmdc:DoiProviderEnum
-      - nmdc:ProcessingInstitutionEnum
-      - nmdc:ExecutionResourceEnum
-    permissible_values:
-      NERSC-Cori:
-        description: NERSC Cori supercomputer
-        aliases:
-          - Cori
-      NERSC-Perlmutter:
-        description: NERSC Perlmutter supercomputer
-        aliases:
-          - Perlmutter
-          - Saul
-      EMSL:
-        description: Environmental Molecular Sciences Laboratory
-      EMSL-RZR:
-        description: Environmental Molecular Sciences Laboratory RZR cluster
-        aliases:
-          - RZR
-      JGI:
-        description: Joint Genome Institute
-      LANL-B-div:
-        description: LANL Bioscience Division
-        aliases:
-          - B-div
   CreditEnum:
     permissible_values:
       Conceptualization:
