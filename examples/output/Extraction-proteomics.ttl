@@ -4,9 +4,9 @@
 nmdc:extrp-38-r2pk nmdc:designated_class "nmdc:Extraction"^^xsd:anyURI ;
     nmdc:extractant [ a nmdc:Solution ;
             nmdc:has_solution_components [ a nmdc:SolutionComponent ;
-                    nmdc:compound "deionized water" ],
-                [ a nmdc:SolutionComponent ;
                     nmdc:compound "ammonium bicarbonate" ],
+                [ a nmdc:SolutionComponent ;
+                    nmdc:compound "deionized water" ],
                 [ a nmdc:SolutionComponent ;
                     nmdc:compound "trypsin" ;
                     nmdc:concentration [ a nmdc:QuantityValue ;

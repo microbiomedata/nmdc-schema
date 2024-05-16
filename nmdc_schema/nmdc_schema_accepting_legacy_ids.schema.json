@@ -97,9 +97,6 @@
                 "has_raw_value": {
                     "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
                     "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "title": "AttributeValue",
@@ -2940,9 +2937,6 @@
                 "has_raw_value": {
                     "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
                     "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "title": "BooleanValue",
@@ -3339,9 +3333,6 @@
                 "term": {
                     "$ref": "#/$defs/OntologyClass",
                     "description": "pointer to an ontology class"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "required": [
@@ -3361,9 +3352,6 @@
                 "term": {
                     "$ref": "#/$defs/OntologyClass",
                     "description": "pointer to an ontology class"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "title": "ControlledTermValue",
@@ -3527,6 +3515,14 @@
                     "type": "string"
                 },
                 "was_generated_by": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
                     "type": "string"
                 }
             },
@@ -4183,8 +4179,7 @@
                 "DNA",
                 "RNA",
                 "metabolite",
-                "protein",
-                "phenol/chloroform extraction"
+                "protein"
             ],
             "title": "ExtractionTargetEnum",
             "type": "string"
@@ -4788,9 +4783,6 @@
                 "longitude": {
                     "description": "longitude",
                     "type": "number"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "required": [
@@ -4927,9 +4919,6 @@
                 },
                 "url": {
                     "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "title": "ImageValue",
@@ -5009,9 +4998,6 @@
                 },
                 "has_raw_value": {
                     "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },
@@ -7327,9 +7313,6 @@
                     "description": "A url that points to an image of a person.",
                     "type": "string"
                 },
-                "was_generated_by": {
-                    "type": "string"
-                },
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
                     "items": {
@@ -7638,9 +7621,6 @@
                 },
                 "has_unit": {
                     "description": "The unit of the quantity",
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },
@@ -8859,9 +8839,6 @@
                 "language": {
                     "description": "Should use ISO 639-1 code e.g. \"en\", \"fr\"",
                     "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "title": "TextValue",
@@ -8900,9 +8877,6 @@
             "properties": {
                 "has_raw_value": {
                     "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },
@@ -8947,9 +8921,6 @@
             "properties": {
                 "has_raw_value": {
                     "description": "The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"",
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },

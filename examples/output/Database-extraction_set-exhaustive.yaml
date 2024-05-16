@@ -13,7 +13,6 @@ extraction_set:
     name: BMI_dnaExtractionSOP_v7
   start_date: '2019-11-08'
   qc_status: pass
-  extraction_method: phenol/chloroform extraction
   extraction_target: DNA
   input_mass:
     has_numeric_value: 0.25

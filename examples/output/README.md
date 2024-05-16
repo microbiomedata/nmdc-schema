@@ -1263,6 +1263,12 @@ part_of:
 soil_horizon: M horizon
 
 ```
+## TextValue-raw_value
+### Input
+```yaml
+has_raw_value: 1600 Pennsylvania Ave
+
+```
 ## ReadQcAnalysisActivity-1
 ### Input
 ```yaml
@@ -2624,7 +2630,6 @@ has_credit_associations:
     name: J. Craig Venter
     orcid: ORCID:0000-0002-7086-765X
     profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
-    was_generated_by: nmdc:any_string_1
     websites:
     - https://www.jcvi.org/
     - https://www.jcvi.org/about/j-craig-venter
@@ -2651,7 +2656,6 @@ principal_investigator:
   name: J. Craig Venter
   orcid: ORCID:0000-0002-7086-765X
   profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
-  was_generated_by: nmdc:any_string_1
   websites:
   - https://www.jcvi.org/
   - https://www.jcvi.org/about/j-craig-venter
@@ -2666,12 +2670,10 @@ study_image:
   display_order: 1
   has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
   url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-  was_generated_by: nmdc:any_string_1
 - description: Photo of Craig Venter Institute, La Jolla, California
   display_order: 2
   has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
   url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-  was_generated_by: nmdc:any_string_1
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -6963,7 +6965,6 @@ stationary_phase: CN
 extraction_set:
 - description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
   end_date: '2019-11-08'
-  extraction_method: phenol/chloroform extraction
   extraction_target: DNA
   has_input:
   - generic:xxx
@@ -7010,7 +7011,6 @@ processed_sample_set:
 extraction_set:
 - description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
   end_date: '2019-11-08'
-  extraction_method: phenol/chloroform extraction
   extraction_target: DNA
   has_input:
   - generic:xxx
@@ -7325,6 +7325,23 @@ omics_processing_set:
   - nmdc:sty-00-555xxx
   processing_institution: JGI
   type: nmdc:OmicsProcessing
+
+```
+## Extraction-invalid_enum
+### Input
+```yaml
+end_date: '2021-08-19'
+extraction_target: phenol/chloroform extraction
+has_input:
+- nmdc:procsm-11-9gjxns61
+has_output:
+- nmdc:procsm-11-0wxpzf07
+id: nmdc:extrp-11-00r2pk65
+input_mass:
+  has_numeric_value: 0.25
+  has_unit: g
+qc_status: pass
+start_date: 2020-06-24T22:06Z
 
 ```
 ## Biosample-invalid_fire
@@ -8303,6 +8320,13 @@ ordered_mobile_phases:
 stationary_phase: CN
 
 ```
+## TextValue-was_generated_by
+### Input
+```yaml
+has_raw_value: 1600 Pennsylvania Ave
+was_generated_by: generic:xxx
+
+```
 ## Biosample-incomplete_napa_id
 ### Input
 ```yaml
@@ -8438,6 +8462,13 @@ homepage_website:
 - https://consortium.org/
 id: nmdc:sty-11-ab
 study_category: consortium
+
+```
+## TextValue-forbidden-processed-value
+### Input
+```yaml
+has_processed_value: white house
+has_raw_value: 1600 Pennsylvania Ave
 
 ```
 ## Study-using-undefined-genome_portal_identifiers-slot
@@ -9005,6 +9036,113 @@ biosample_set:
   - nmdc:sty-00-abc123
   rna_cont_type: tube
   rna_cont_well: B2
+
+```
+## Study-valueswith-generators
+### Input
+```yaml
+alternative_descriptions:
+- any string 1
+- any string 2
+alternative_identifiers:
+- generic:abc1
+alternative_names:
+- any string 1
+- any string 2
+alternative_titles:
+- any string 1
+- any string 2
+associated_dois:
+- doi_category: publication_doi
+  doi_value: doi:10.1126/science.1058040
+- doi_category: dataset_doi
+  doi_provider: kbase
+  doi_value: doi:10.1126/science.1456956
+- doi_category: award_doi
+  doi_provider: jgi
+  doi_value: doi:10.1126/science.1234545
+- doi_category: data_management_plan_doi
+  doi_provider: gsc
+  doi_value: doi:10.48321/D1Z60Q
+description: see also name, title, objective, various alternatives
+ecosystem: unconstrained text. should be validated against the controlled vocabulary,
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
+ecosystem_category: unconstrained text
+ecosystem_subtype: unconstrained text
+ecosystem_type: unconstrained text
+funding_sources:
+- any string 1
+- any string 2
+gold_study_identifiers:
+- gold:Gs12345
+- gold:Gs90909
+has_credit_associations:
+- applied_roles:
+  - Supervision
+  - Conceptualization
+  - Funding acquisition
+  applies_to_person:
+    email: jcventer@jcvi.org
+    has_raw_value: Craig Venter
+    name: J. Craig Venter
+    orcid: ORCID:0000-0002-7086-765X
+    profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+    was_generated_by: nmdc:any_string_1
+    websites:
+    - https://www.jcvi.org/
+    - https://www.jcvi.org/about/j-craig-venter
+  type: any string
+- applied_roles:
+  - Investigation
+  - Supervision
+  applies_to_person:
+    name: Tanja Davidsen
+homepage_website:
+- https://www.neonscience.org/
+id: nmdc:sty-11-ab
+mgnify_project_identifiers:
+- mgnify.proj:ABC123
+name: see also description, title, objective, various alternatives
+objective: This record, an instance of class Study from the nmdc-schema was had authored,
+  so that the NMDC team would have at least one instance, using all slots, with a
+  mixture of reasonable values and minimally compliant values.
+part_of:
+- nmdc:sty-11-34xj1157
+principal_investigator:
+  email: jcventer@jcvi.org
+  has_raw_value: Craig Venter
+  name: J. Craig Venter
+  orcid: ORCID:0000-0002-7086-765X
+  profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
+  was_generated_by: nmdc:any_string_1
+  websites:
+  - https://www.jcvi.org/
+  - https://www.jcvi.org/about/j-craig-venter
+related_identifiers: any string R1
+relevant_protocols:
+- any string 1
+- any string 2
+specific_ecosystem: unconstrained text
+study_category: research_study
+study_image:
+- description: Photo of Craig Venter Institute, Rockville, Maryland
+  display_order: 1
+  has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+  url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+  was_generated_by: nmdc:any_string_1
+- description: Photo of Craig Venter Institute, La Jolla, California
+  display_order: 2
+  has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+  url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+  was_generated_by: nmdc:any_string_1
+title: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
+  have this particular combination of values.
+type: any string
+websites:
+- https://w3id.org/nmdc
+- https://w3id.org/linkml
 
 ```
 ## Database-functional_annotation_agg
