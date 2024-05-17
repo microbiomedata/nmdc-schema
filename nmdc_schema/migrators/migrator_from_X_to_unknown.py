@@ -33,7 +33,7 @@ class Migrator(MigratorBase):
         Removes the slot `designated_class` from collections that use it. 
 
         >>> m = Migrator()
-        >>> m.add_type_slot_with_class_uri({'id': 123, 'designated_class': 'nmdc:OmicsProcessing'}) 
+        >>> m.remove_designated_class_slot({'id': 123, 'designated_class': 'nmdc:OmicsProcessing'}) 
         {'id': 123}
         """
 
