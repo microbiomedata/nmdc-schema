@@ -2,6 +2,9 @@ db.getCollection('data_object_set').aggregate(
 
 [
 {
+$match: { id : { $regex: 'nmdc:dobj' } }
+},
+{
 $match: { was_generated_by: { $ne: null } }
 },
 {
