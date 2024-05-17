@@ -77,7 +77,7 @@ class Migrator(MigratorBase):
                     )
 
                     instrument_id = instrument.get("id")
-                    omics_doc["instrument_used"] = instrument_id
+                    omics_doc["instrument_used"] = [instrument_id]
                     del omics_doc["instrument_name"]
         
             else:
