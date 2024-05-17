@@ -55,7 +55,7 @@ class Migrator(MigratorBase):
         >>> adapter = DictionaryAdapter(database=database)
         >>> m = Migrator(adapter=adapter)
         >>> m.transform_instrument_slot({'id': 'nmdc:omcp-123', 'instrument_name': '12T_FTICR_B'})
-        {'id': 'nmdc:omcp-123', 'instrument_used': 'nmdc:inst-456'}
+        {'id': 'nmdc:omcp-123', 'instrument_used': ['nmdc:inst-456']}
         """
 
         if "instrument_name" in omics_doc:
