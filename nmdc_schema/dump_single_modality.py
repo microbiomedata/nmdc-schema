@@ -196,7 +196,7 @@ def cli(ctx, schema_source, selected_collections, output_yaml, max_docs_per_coll
 @click.option('--client-base-url', default="https://api.microbiomedata.org", show_default=True,
               help='HTTP(S) path to the API server.')
 @click.option('--endpoint-prefix', default="nmdcschema", show_default=True,
-              help='FastAPI path component between the URL and the endpoint name')
+              help='API path component between the URL and the endpoint name')
 @click.option('--page-size', default=200_000, show_default=True,
               help='Size of each page in pagination.')
 @click.pass_context
