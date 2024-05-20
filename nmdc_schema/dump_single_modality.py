@@ -79,7 +79,7 @@ def determine_exclusive_and_common_elements(set1, set2, set1_name='set 1 only', 
 
 def get_collection_stats(selected_collections, db):
     selected_stats = {}
-    for collection_name in selected_collections:
+    for collection_name in sorted(selected_collections):
         try:
             for_selected_stats = {}
 
@@ -123,7 +123,7 @@ def fetch_and_log_schema_info(ctx):
 
     logger.info("Relationship between selected collections and schema slots:")
     for key, value in selected_vs_schema.items():
-        logger.info(f"{key}: {pprint.pformat(value)}")
+        logger.info(f"{key}: {pprint.pformat(sorted(value))}")
 
     return database_slots, selected_vs_schema
 
@@ -219,6 +219,9 @@ def api_access(ctx, client_base_url, endpoint_prefix, page_size):
     if response.status_code == 200:
         collection_stats = response.json()
         logger.info("Collection statistics:")
+
+        # sort collection_stats by the ns value
+        collection_stats = sorted(collection_stats, key=lambda x: x.get("ns"))
         for stats in collection_stats:
             ns = stats.get("ns")
             storage_stats = stats.get("storageStats")
@@ -243,6 +246,7 @@ def api_access(ctx, client_base_url, endpoint_prefix, page_size):
 
     output_yaml = ctx.obj['OUTPUT_YAML']
 
+    logger.info(f"Writing data to {output_yaml}")
     yaml_dumper.dump(documents, output_yaml)
     logger.info(f"Data from PyMongo successfully written to {output_yaml}")
 
@@ -304,11 +308,16 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
 
     # Get collection statistics
     collection_stats = get_collection_stats(database_slots, db)
-    logger.info("Statistics for applicable collections:")
-    for collection_name, stats in collection_stats.items():
 
+    logger.info("Statistics for applicable collections:")
+
+    # sort collection_stats by collection name key
+    collection_stats = dict(sorted(collection_stats.items()))
+
+    for collection_name, stats in collection_stats.items():
         logger.info(f"{collection_name}: {stats}")
         collection = db[collection_name]
+
         try:
             documents = list(collection.find(limit=max_docs_per_coll))
             # Remove '_id' field from documents to avoid issues with ObjectId
@@ -324,6 +333,7 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
 
     output_yaml = ctx.obj['OUTPUT_YAML']
 
+    logger.info(f"Writing data to {output_yaml}")
     yaml_dumper.dump(data, output_yaml)
     logger.info(f"Data from PyMongo successfully written to {output_yaml}")
 

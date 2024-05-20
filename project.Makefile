@@ -171,37 +171,7 @@ make-rdf: rdf-clean \
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
-#		--selected-collections activity_set \
-#		--selected-collections collecting_biosamples_from_site_set \
- #		--selected-collections data_object_set \
- #		--selected-collections extraction_set \
- #		--selected-collections field_research_site_set \
- #		--selected-collections functional_annotation_set \
- #		--selected-collections genome_feature_set \
- #		--selected-collections library_preparation_set \
- #		--selected-collections mags_activity_set \
- #		--selected-collections mags_set \
- #		--selected-collections material_sample_set \
- #		--selected-collections metabolomics_analysis_activity_set \
- #		--selected-collections metabolomics_analysis_set \
- #		--selected-collections metagenome_annotation_activity_set \
- #		--selected-collections metagenome_annotation_set \
- #		--selected-collections metagenome_assembly_set \
- #		--selected-collections metagenome_sequencing_activity_set \
- #		--selected-collections metagenome_sequencing_set \
- #		--selected-collections metap_gene_function_aggregation \
- #		--selected-collections metaproteomics_analysis_set \
- #		--selected-collections metatranscriptome_activity_set \
- #		--selected-collections metatranscriptome_analysis_set \
- #		--selected-collections nom_analysis_activity_set \
- #		--selected-collections omics_processing_set \
- #		--selected-collections planned_process_set \
- #		--selected-collections pooling_set \
- #		--selected-collections processed_sample_set \
- #		--selected-collections read_based_taxonomy_analysis_activity_set \
- #		--selected-collections read_qc_analysis_activity_set \
- # 		--selected-collections workflow_chain_set \
-    #		--selected-collections workflow_execution_set \
+
 
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
@@ -210,8 +180,39 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--max-docs-per-coll 200000 \
 		--output-yaml $@ \
 		--schema-source src/schema/nmdc.yaml \
+		--selected-collections activity_set \
 		--selected-collections biosample_set \
+		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections data_object_set \
+		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections functional_annotation_set \
+		--selected-collections genome_feature_set \
+		--selected-collections library_preparation_set \
+		--selected-collections mags_activity_set \
+		--selected-collections mags_set \
+		--selected-collections material_sample_set \
+		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metabolomics_analysis_set \
+		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_annotation_set \
+		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metagenome_sequencing_set \
+		--selected-collections metap_gene_function_aggregation \
+		--selected-collections metaproteomics_analysis_set \
+		--selected-collections metatranscriptome_activity_set \
+		--selected-collections metatranscriptome_analysis_set \
+		--selected-collections nom_analysis_activity_set \
+		--selected-collections omics_processing_set \
+		--selected-collections planned_process_set \
+		--selected-collections pooling_set \
+		--selected-collections processed_sample_set \
+		--selected-collections read_based_taxonomy_analysis_activity_set \
+		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
+		--selected-collections workflow_chain_set \
+		--selected-collections workflow_execution_set \
 		api-access \
 		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
@@ -227,21 +228,22 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 #		--selected-collections biosample_set \
 #		--selected-collections study_set \
 #		pymongo-access \
-#		--admin-db "" \
-#		--auth-mechanism "" \
+#		--admin-db "admin" \
+#		--auth-mechanism "DEFAULT" \
 #		--env-file local/.env \
 #		--mongo-db-name nmdc \
 #		--mongo-host localhost \
 #		--mongo-port 27777 \
-#		--no-direct-connection false
+#		--direct-connection
 
-# 		--migrator-name migrator_from_9_3_to_10_0
+#
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
+		--migrator-name migrator_from_9_3_to_10_0 \
 		--salvage-prefix generic \
+		--schema-path $(word 1,$^) \
 		--output-path $@
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
