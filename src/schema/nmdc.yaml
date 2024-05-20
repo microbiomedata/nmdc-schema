@@ -203,9 +203,9 @@ classes:
         maximum_cardinality: 1
       id:
         structured_pattern:
+          required: true
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
-          partial_match: true
 
   Extraction:
     class_uri: nmdc:Extraction
