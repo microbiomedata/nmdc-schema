@@ -150,7 +150,7 @@ def get_collection_documents(client_base_url, endpoint_prefix, collection_name, 
 
         if next_page_token:
             url += f"&page_token={next_page_token}"
-        print(url)
+        logger.info(url)
 
         response = requests.get(url)
         if response.status_code == 200:
@@ -214,7 +214,7 @@ def api_access(ctx, client_base_url, endpoint_prefix, page_size):
     collection_stats_url = f"{client_base_url}/{endpoint_prefix}/collection_stats"
     response = requests.get(collection_stats_url)
 
-    documents = []
+    documents = {}
 
     if response.status_code == 200:
         collection_stats = response.json()
@@ -228,14 +228,14 @@ def api_access(ctx, client_base_url, endpoint_prefix, page_size):
             logger.info("------------------------------------")
             as_collection_name = ns.split(".")[-1]
             if as_collection_name in selected_collections:
-                documents = get_collection_documents(
+                documents[as_collection_name] = get_collection_documents(
                     client_base_url,
                     as_collection_name,
                     endpoint_prefix,
                     max_docs_per_coll,
                     page_size,
                 )
-                print(f"{len(documents) = }")
+                logger.info(f"{len(documents) = }")
             else:
                 logger.warning(f"Collection '{ns}' is not selected.")
     else:
