@@ -52,13 +52,13 @@ classes:
       - seqid
       - start
       - strand
-      - type
+#      - type
     slot_usage:
       seqid:
         required: true
-      type:
-        range: OntologyClass
-        description: A type from the sequence ontology
+#      type:
+#        range: OntologyClass
+#        description: A type from the sequence ontology
       start:
         required: true
       end:
@@ -88,7 +88,7 @@ classes:
 
     slot_usage:
       has_part:
-        range: Reaction
+#        range: Reaction
         required: true
         description: >-
           A pathway can be broken down to a series of reaction step

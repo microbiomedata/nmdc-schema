@@ -1095,7 +1095,7 @@ classes:
     slot_usage:
       elev:
         title: elevation, meters
-        range: float
+        #        range: float
         comments:
           - All elevations must be reported in meters. Provide the numerical portion only.
           - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates,
@@ -1103,8 +1103,8 @@ classes:
         examples:
           value: 100
 
-      oxy_stat_samp:
-        range: oxy_stat_samp_enum
+      #      oxy_stat_samp:
+      #        range: oxy_stat_samp_enum
 
       id:
         required: true
@@ -1118,7 +1118,7 @@ classes:
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
-        range: uriorcurie
+      #        range: uriorcurie
 
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
@@ -1148,7 +1148,7 @@ classes:
           - is "to" acceptable? Is there a better way to request that be written?
         annotations:
           expected_value: date string
-        range: string
+        #        range: string
         pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
       flooding:
         annotations:
@@ -1161,13 +1161,13 @@ classes:
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
           - What about if the "day" isn't known? Is this ok?
-        range: string
+      #        range: string
       extreme_event:
         examples:
           - value: 1980-05-18, volcanic eruption
         annotations:
           expected_value: date, string
-        range: string
+      #        range: string
       slope_aspect:
         examples:
           - value: 35
@@ -1274,7 +1274,7 @@ classes:
           expected_value: string
           preferred_unit: gram per gram or cubic centimeter per cubic centimeter
         multivalued: true
-        range: string
+        #        range: string
         examples:
           - value: 0.75 g water/g dry soil
           - value: 75% water holding capacity

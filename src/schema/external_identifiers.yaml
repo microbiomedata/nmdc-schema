@@ -223,6 +223,7 @@ slots:
     description: identifiers for corresponding sample in GOLD
     examples:
       - value: https://bioregistry.io/gold:Gb0312930
+    range: uriorcurie
 
   insdc_biosample_identifiers:
     is_a: biosample_identifiers

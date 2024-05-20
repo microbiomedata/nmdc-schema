@@ -36,3 +36,4 @@
 '(.classes[] | select(.name == "ReadQcAnalysisActivity") | .slot_usage.id.structured_pattern.syntax) = ".*"'
 '(.classes[] | select(.name == "Study") | .slot_usage.id.pattern) = ".*"'
 '(.classes[] | select(.name == "Study") | .slot_usage.id.structured_pattern.syntax) = ".*"'
+

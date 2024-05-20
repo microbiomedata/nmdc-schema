@@ -1523,6 +1523,31 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000094
     multivalued: false
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: QuantityValue
   aminopept_act:
     annotations:
@@ -3606,7 +3631,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000093
     multivalued: false
-    range: QuantityValue
+    range: float
   elevator:
     annotations:
       expected_value:
@@ -3874,7 +3899,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000320
     multivalued: false
-    range: TimestampValue
+    range: string
   fao_class:
     annotations:
       expected_value:
@@ -3974,7 +3999,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0001086
     multivalued: false
-    range: TimestampValue
+    range: string
   fireplace_type:
     annotations:
       expected_value:
@@ -4013,7 +4038,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000319
     multivalued: false
-    range: TimestampValue
+    range: string
   floor_age:
     annotations:
       expected_value:
@@ -10759,7 +10784,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000185
     multivalued: false
-    range: QuantityValue
+    range: string
   water_current:
     annotations:
       expected_value:

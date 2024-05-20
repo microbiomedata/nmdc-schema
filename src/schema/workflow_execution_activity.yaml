@@ -334,7 +334,7 @@ classes:
       - has_calibration
     slot_usage:
       used:
-        range: string
+#        range: string
         description: The instrument used to collect the data used in the analysis
       id:
         required: true
