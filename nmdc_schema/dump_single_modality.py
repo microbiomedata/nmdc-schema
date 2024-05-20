@@ -44,7 +44,8 @@ class SchemaHandler:
         return acceptable_slots
 
 
-def set_arithmetic(set1, set2, set1_name='set 1 only', set2_name='set 2 only', intersection_name='intersection'):
+def determine_exclusive_and_common_elements(set1, set2, set1_name='set 1 only', set2_name='set 2 only',
+                                            intersection_name='intersection'):
     """
     Perform arithmetic between two sets (or lists) and return a dictionary detailing elements unique to each set
     and their intersection.
@@ -113,8 +114,9 @@ def fetch_and_log_schema_info(ctx):
     selected_collections = ctx.obj['SELECTED_COLLECTIONS']
 
     # Determine the relationship between selected_collections and database_slots
-    selected_vs_schema = set_arithmetic(set1=selected_collections, set1_name="selected_collections only",
-                                        set2=database_slots, set2_name="Database slots only")
+    selected_vs_schema = determine_exclusive_and_common_elements(set1=selected_collections,
+                                                                 set1_name="selected_collections only",
+                                                                 set2=database_slots, set2_name="Database slots only")
 
     # Sort the dictionary keys
     selected_vs_schema = {key: selected_vs_schema[key] for key in sorted(selected_vs_schema)}
@@ -192,7 +194,7 @@ def cli(ctx, schema_source, selected_collections, output_yaml, max_docs_per_coll
 # Sub-command for API access
 @cli.command()
 @click.option('--client-base-url', default="https://api.microbiomedata.org", show_default=True,
-              help='HTTP(S) path to the FastAPI server.')
+              help='HTTP(S) path to the API server.')
 @click.option('--endpoint-prefix', default="nmdcschema", show_default=True,
               help='FastAPI path component between the URL and the endpoint name')
 @click.option('--page-size', default=200_000, show_default=True,

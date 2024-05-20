@@ -209,7 +209,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections workflow_chain_set \
 		--selected-collections workflow_execution_set \
 		api-access \
-		--client-base-url "https://api-napa.microbiomedata.org" \
+		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschem \
 		--page-size 200000
 
