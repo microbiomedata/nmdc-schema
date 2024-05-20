@@ -71,7 +71,7 @@ classes:
           slot_conditions:
             has_output:
               required: true
-          
+
     slot_usage:
       started_at_time:
         required: true
@@ -308,7 +308,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}"
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetaproteomicsAnalysisActivity:
