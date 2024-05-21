@@ -16,10 +16,10 @@ class Migrator(MigratorBase):
         """
 
         collection_names = [
-            "OmicsProcessing",
-            "Pooling",
-            "LibraryPreparation",
-            "Extraction"
+            "omics_processing_set",
+            "pooling_set",
+            "library_preparation_set",
+            "extraction_set"
         ]
         
         for collection_name in collection_names:
