@@ -128,7 +128,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   AnalyticalSample:
@@ -138,7 +138,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}"
+          syntax: "{id_nmdc_prefix}:ansm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   Site:
@@ -151,7 +151,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}"
+          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   PlannedProcess:
