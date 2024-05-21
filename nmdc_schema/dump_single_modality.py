@@ -200,7 +200,7 @@ def cli(ctx, schema_source, selected_collections, output_yaml, max_docs_per_coll
 @click.option('--page-size', default=200_000, show_default=True,
               help='Size of each page in pagination.')
 @click.pass_context
-def api_access(ctx, client_base_url, endpoint_prefix, page_size):
+def dump_from_api(ctx, client_base_url, endpoint_prefix, page_size):
     """Sub-command that dumps selected records from the nmdc-runtime API."""
     # click.echo("Warning: This API access method is under development and not fully operational.")
     # logger.warning("This API access method is under development and not fully operational.")
@@ -265,8 +265,8 @@ def api_access(ctx, client_base_url, endpoint_prefix, page_size):
               help='Authentication mechanism for MongoDB connection. Leave blank to not specify.')
 @click.option('--direct-connection/--no-direct-connection', default=True,
               help='Whether to use a direct connection to MongoDB. Defaults to direct connection.')
-def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
-                   admin_db, auth_mechanism, direct_connection):
+def dump_from_database(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
+                       admin_db, auth_mechanism, direct_connection):
     """Sub-command that dumps selected records from NMDC's PyMongo."""
     (database_slots, selected_vs_schema) = fetch_and_log_schema_info(ctx)  # just printing for now
 
@@ -325,9 +325,10 @@ def pymongo_access(ctx, env_file, mongo_db_name, mongo_host, mongo_port,
                 document.pop('_id', None)  # Remove '_id' if it exists in the document
             if collection_name in selected_collections:
                 data[collection_name] = documents
+                logger.info(f"Retrieved {len(documents)} documents from collection '{collection_name}'")
             else:
                 logger.warning(f"Collection '{collection_name}' was not requested.")
-            logger.info(f"Retrieved {len(documents)} documents from collection '{collection_name}'")
+
         except OperationFailure as e:
             logger.error(f"Failed to fetch from collection {collection_name}: {e}")
 

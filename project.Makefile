@@ -155,24 +155,18 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
+
 make-rdf: rdf-clean \
 	local/mongo_as_nmdc_database_validation.log \
 	local/mongo_as_nmdc_database_cuire_repaired.ttl \
 	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
-# THIS IS A NEW IMPLEMENTATION OF pure-export as of early May 2024
-# see pure-export (nmdc_schema/dump_single_modality.py)'s pymongo-access/pymongo_access method further down
-
 # statistics of large collections as of 2024-05-17
-
 #ns	size	count	avgObjSize	storageSize	totalIndexSize	totalSize	scaleFactor
 #nmdc.functional_annotation_agg	2194573252	16167688	135	567922688	1772920832	2340843520	1
 #nmdc.metaproteomics_analysis_activity_set	133268047	52	2562847	37380096	40960	37421056	1
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
-
-
-
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
@@ -213,7 +207,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections study_set \
 		--selected-collections workflow_chain_set \
 		--selected-collections workflow_execution_set \
-		api-access \
+		dump-from-api \
 		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
@@ -227,7 +221,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 #		--schema-source src/schema/nmdc.yaml \
 #		--selected-collections biosample_set \
 #		--selected-collections study_set \
-#		pymongo-access \
+#		dump-from-database \
 #		--admin-db "admin" \
 #		--auth-mechanism "DEFAULT" \
 #		--env-file local/.env \
@@ -236,7 +230,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 #		--mongo-port 27777 \
 #		--direct-connection
 
-#
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
@@ -256,8 +249,12 @@ local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_l
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(JENA_DIR)/riot --validate $@ # < 1 minute
+	mv $@ $@.tmp
+	cat  assets/my_emsl_prefix.ttl $@.tmp  > $@
+	rm -rf $@.tmp
+	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local ; $(JENA_DIR)/riot --validate $@ # < 1 minute
+	date
+
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
@@ -267,8 +264,7 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- $(JENA_DIR)/riot --validate $@ # < 1 minute
+	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local && $(JENA_DIR)/riot --validate $@ # < 1 minute
 	date
 
 .PHONY: migration-doctests migrator
