@@ -5076,12 +5076,6 @@ slot_usage:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: float
-  oxy_stat_samp:
-    name: oxy_stat_samp
-    domain_of:
-    - Biosample
-    range: oxy_stat_samp_enum
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
@@ -5106,7 +5100,6 @@ slot_usage:
     - This is the ID provided by GOLD that starts with 'GB'
     domain_of:
     - Biosample
-    range: uriorcurie
   alternative_identifiers:
     name: alternative_identifiers
     description: Unique identifier for a biosample submitted to additional resources.
@@ -5166,7 +5159,6 @@ slot_usage:
     - value: 1871-10-01 to 1871-10-31
     domain_of:
     - Biosample
-    range: string
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
   flooding:
     name: flooding
@@ -5185,7 +5177,6 @@ slot_usage:
     - value: 1927-04 to 1927-05
     domain_of:
     - Biosample
-    range: string
   extreme_event:
     name: extreme_event
     annotations:
@@ -5196,7 +5187,6 @@ slot_usage:
     - value: 1980-05-18, volcanic eruption
     domain_of:
     - Biosample
-    range: string
   slope_aspect:
     name: slope_aspect
     description: The direction a slope faces. While looking down a slope use a compass
@@ -5367,7 +5357,6 @@ slot_usage:
     multivalued: true
     domain_of:
     - Biosample
-    range: string
   ph_meth:
     name: ph_meth
     comments:
@@ -5582,12 +5571,6 @@ slot_usage:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: float
-  oxy_stat_samp:
-    name: oxy_stat_samp
-    domain_of:
-    - Biosample
-    range: oxy_stat_samp_enum
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
@@ -5612,7 +5595,6 @@ slot_usage:
     - This is the ID provided by GOLD that starts with 'GB'
     domain_of:
     - Biosample
-    range: uriorcurie
   alternative_identifiers:
     name: alternative_identifiers
     description: Unique identifier for a biosample submitted to additional resources.
@@ -5672,7 +5654,6 @@ slot_usage:
     - value: 1871-10-01 to 1871-10-31
     domain_of:
     - Biosample
-    range: string
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
   flooding:
     name: flooding
@@ -5691,7 +5672,6 @@ slot_usage:
     - value: 1927-04 to 1927-05
     domain_of:
     - Biosample
-    range: string
   extreme_event:
     name: extreme_event
     annotations:
@@ -5702,7 +5682,6 @@ slot_usage:
     - value: 1980-05-18, volcanic eruption
     domain_of:
     - Biosample
-    range: string
   slope_aspect:
     name: slope_aspect
     description: The direction a slope faces. While looking down a slope use a compass
@@ -5873,7 +5852,6 @@ slot_usage:
     multivalued: true
     domain_of:
     - Biosample
-    range: string
   ph_meth:
     name: ph_meth
     comments:
@@ -6104,7 +6082,6 @@ attributes:
     - OmicsProcessing
     - CreditAssociation
     - MagBin
-    - GenomeFeature
     - WorkflowExecutionActivity
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
@@ -6754,6 +6731,30 @@ attributes:
     alias: alt
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: QuantityValue
   aminopept_act:
@@ -13623,9 +13624,20 @@ attributes:
     range: QuantityValue
   oxy_stat_samp:
     name: oxy_stat_samp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: enumeration
+      occurrence:
+        tag: occurrence
+        value: '1'
     description: Oxygenation status of sample
     title: oxygenation status of sample
+    examples:
+    - value: aerobic
     from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - oxygenation status of sample
     rank: 1000
     is_a: core field
     slot_uri: MIXS:0000753

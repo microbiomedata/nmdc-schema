@@ -303,11 +303,6 @@
 
   GenomeFeature : strand
 
-  GenomeFeature : type
-
-      GenomeFeature --&gt; "0..1" OntologyClass : type
-    click OntologyClass href "../OntologyClass"
-
 
 
 </div>
@@ -363,12 +358,6 @@
 <td><a href="../strand/">strand</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The strand on which a feature is located</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../OntologyClass/">OntologyClass</a></td>
-<td>A type from the sequence ontology</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -479,33 +468,12 @@ slots:
 - seqid
 - start
 - strand
-- type
 slot_usage:
   seqid:
     name: seqid
     domain_of:
     - GenomeFeature
     required: true
-  type:
-    name: type
-    description: A type from the sequence ontology
-    domain_of:
-    - DataObject
-    - Biosample
-    - Study
-    - OmicsProcessing
-    - CreditAssociation
-    - MagBin
-    - GenomeFeature
-    - WorkflowExecutionActivity
-    - MetagenomeAssembly
-    - MetagenomeAnnotationActivity
-    - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeActivity
-    - MagsAnalysisActivity
-    - ReadQcAnalysisActivity
-    - ReadBasedTaxonomyAnalysisActivity
-    range: OntologyClass
   start:
     name: start
     domain_of:
@@ -534,26 +502,6 @@ slot_usage:
     domain_of:
     - GenomeFeature
     required: true
-  type:
-    name: type
-    description: A type from the sequence ontology
-    domain_of:
-    - DataObject
-    - Biosample
-    - Study
-    - OmicsProcessing
-    - CreditAssociation
-    - MagBin
-    - GenomeFeature
-    - WorkflowExecutionActivity
-    - MetagenomeAssembly
-    - MetagenomeAnnotationActivity
-    - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeActivity
-    - MagsAnalysisActivity
-    - ReadQcAnalysisActivity
-    - ReadBasedTaxonomyAnalysisActivity
-    range: OntologyClass
   start:
     name: start
     domain_of:
@@ -661,33 +609,6 @@ attributes:
     domain_of:
     - GenomeFeature
     range: string
-  type:
-    name: type
-    description: A type from the sequence ontology
-    deprecated: Due to confusion about what values are used for this slot, it is best
-      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: type
-    owner: GenomeFeature
-    domain_of:
-    - DataObject
-    - Biosample
-    - Study
-    - OmicsProcessing
-    - CreditAssociation
-    - MagBin
-    - GenomeFeature
-    - WorkflowExecutionActivity
-    - MetagenomeAssembly
-    - MetagenomeAnnotationActivity
-    - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeActivity
-    - MagsAnalysisActivity
-    - ReadQcAnalysisActivity
-    - ReadBasedTaxonomyAnalysisActivity
-    range: OntologyClass
 
 </code></pre>
 </details>

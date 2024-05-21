@@ -308,9 +308,6 @@
 
   FieldResearchSite : elev
 
-      FieldResearchSite --&gt; "0..1" QuantityValue : elev
-    click QuantityValue href "../QuantityValue"
-
   FieldResearchSite : geo_loc_name
 
       FieldResearchSite --&gt; "0..1" TextValue : geo_loc_name
@@ -377,7 +374,7 @@
 </tr>
 <tr>
 <td><a href="../elev/">elev</a></td>
-<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>0..1 <br/> <a href="../Float/">Float</a></td>
 <td>Elevation of the sampling site is its height above a fixed reference point, m...</td>
 <td>direct</td>
 </tr>
@@ -629,7 +626,7 @@ attributes:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: QuantityValue
+    range: float
   geo_loc_name:
     name: geo_loc_name
     annotations:
