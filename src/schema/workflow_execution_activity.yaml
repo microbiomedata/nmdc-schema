@@ -71,7 +71,7 @@ classes:
           slot_conditions:
             has_output:
               required: true
-          
+
     slot_usage:
       started_at_time:
         required: true
@@ -90,7 +90,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -135,7 +135,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetatranscriptomeAssembly:
@@ -175,7 +175,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetagenomeAnnotationActivity:
@@ -190,7 +190,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetatranscriptomeAnnotationActivity:
@@ -204,7 +204,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetatranscriptomeActivity:
@@ -219,7 +219,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -241,7 +241,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -255,7 +255,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -278,7 +278,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   ReadBasedTaxonomyAnalysisActivity:
@@ -293,7 +293,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -308,7 +308,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetaproteomicsAnalysisActivity:
@@ -323,7 +323,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   NomAnalysisActivity:
@@ -339,7 +339,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
