@@ -212,23 +212,23 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
 
-# ALTERNATIVELY:
-local/mongo_as_unvalidated_nmdc_database.yaml:
-	date
-	time $(RUN) pure-export \
-		--max-docs-per-coll 200000 \
-		--output-yaml $@ \
-		--schema-source src/schema/nmdc.yaml \
-		--selected-collections biosample_set \
-		--selected-collections study_set \
-		dump-from-database \
-		--admin-db "admin" \
-		--auth-mechanism "DEFAULT" \
-		--env-file local/.env \
-		--mongo-db-name nmdc \
-		--mongo-host localhost \
-		--mongo-port 27777 \
-		--direct-connection
+## ALTERNATIVELY:
+#local/mongo_as_unvalidated_nmdc_database.yaml:
+#	date
+#	time $(RUN) pure-export \
+#		--max-docs-per-coll 200000 \
+#		--output-yaml $@ \
+#		--schema-source src/schema/nmdc.yaml \
+#		--selected-collections biosample_set \
+#		--selected-collections study_set \
+#		dump-from-database \
+#		--admin-db "admin" \
+#		--auth-mechanism "DEFAULT" \
+#		--env-file local/.env \
+#		--mongo-db-name nmdc \
+#		--mongo-host localhost \
+#		--mongo-port 27777 \
+#		--direct-connection
 
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
