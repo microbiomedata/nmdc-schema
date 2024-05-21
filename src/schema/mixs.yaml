@@ -1523,31 +1523,6 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000094
     multivalued: false
-    domain_of:
-      - agriculture
-      - air
-      - built environment
-      - core
-      - food-animal and animal feed
-      - food-farm environment
-      - food-food production facility
-      - food-human foods
-      - host-associated
-      - human-associated
-      - human-gut
-      - human-oral
-      - human-skin
-      - human-vaginal
-      - hydrocarbon resources-cores
-      - hydrocarbon resources-fluids_swabs
-      - microbial mat_biofilm
-      - miscellaneous natural or artificial environment
-      - plant-associated
-      - sediment
-      - soil
-      - symbiont-associated
-      - wastewater_sludge
-      - water
     range: QuantityValue
   aminopept_act:
     annotations:
