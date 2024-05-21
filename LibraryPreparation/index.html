@@ -402,7 +402,7 @@
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../Biosample/">Biosample</a></td>
 <td>An input to a process</td>
-<td><a href="../PlannedProcess/">PlannedProcess</a>, <a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
+<td><a href="../BiosampleProcessing/">BiosampleProcessing</a>, <a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../designated_class/">designated_class</a></td>
@@ -593,7 +593,7 @@ slot_usage:
     - Activity
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+      syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true
 class_uri: nmdc:LibraryPreparation
 
@@ -635,7 +635,7 @@ slot_usage:
     - Activity
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+      syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
   library_preparation_kit:
@@ -835,7 +835,7 @@ attributes:
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+      syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true
   name:
     name: name

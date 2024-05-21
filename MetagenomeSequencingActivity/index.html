@@ -520,7 +520,7 @@ slot_usage:
     - Activity
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
 
 </code></pre>
@@ -545,7 +545,7 @@ slot_usage:
     - Activity
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
 attributes:
   execution_resource:
@@ -716,7 +716,7 @@ attributes:
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
   name:
     name: name
