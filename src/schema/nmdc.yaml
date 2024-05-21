@@ -202,8 +202,8 @@ classes:
         minimum_cardinality: 1
         maximum_cardinality: 1
       id:
+        required: true
         structured_pattern:
-          required: true
           syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
 
