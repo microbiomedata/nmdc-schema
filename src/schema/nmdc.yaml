@@ -798,11 +798,11 @@ slots:
 
   has_mass_spectrometry_configuration:
     range: MassSpectrometryConfiguration
-    description: a description of how the mass spectrometry was configured
+    description: An identifier for the associated MassSpectrometryConfiguration.
 
   has_chromatography_configuration:
     range: ChromatographyConfiguration
-    description: a description of how the chromatographic introduction was configured for the introduction of the sample into the mass spectrometer
+    description: An identifier for the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer. 
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
