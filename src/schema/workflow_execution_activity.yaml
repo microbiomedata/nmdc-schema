@@ -56,7 +56,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetatranscriptomeAssembly:
@@ -97,7 +97,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -112,7 +112,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -130,7 +130,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -155,7 +155,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -172,7 +172,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -194,7 +194,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   ReadBasedTaxonomyAnalysis:
@@ -208,7 +208,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -224,7 +224,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetaproteomicsAnalysis:
@@ -238,7 +238,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   NomAnalysis:
@@ -252,7 +252,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
   
   CalibrationInformation:
@@ -293,7 +293,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 slots:
