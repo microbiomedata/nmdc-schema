@@ -291,21 +291,6 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 		--output $@ \
 		--schema-class Biosample
 
-### example of preparing to validate napa squad data
-
-local/nmdc-schema-v7.8.0.yaml:
-	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
-	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
-	#     see_also:
-	#       - MIxS:experimental_factor|additional_info
-	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	rm -rf $@.bak
-
-local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
-	$(RUN) gen-owl --no-use-native-uris $< > $@
-
 
 ## FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
@@ -399,7 +384,7 @@ local/gold-study-ids.json:
 local/gold-study-ids.yaml: local/gold-study-ids.json
 	yq -p json -o yaml $< | cat > $@
 
-local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
+local/study-files/%.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $(@D)
 	study_file_name=`echo $@` ; \
 		echo $$study_file_name ; \
@@ -427,7 +412,7 @@ create-study-yaml-files-subset: local/study-files/nmdc-sty-11-8fb6t785.yaml \
 local/study-files/nmdc-sty-11-1t150432.yaml \
 local/study-files/nmdc-sty-11-dcqce727.yaml
 
-local/study-files/%.ttl: local/nmdc-schema-v7.8.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
+local/study-files/%.ttl: nmdc_schema/nmdc_materialized_patterns.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
 	$(RUN) linkml-convert --output $@ --schema $< $(subst .ttl,.yaml,$@)
 
 create-study-ttl-files-subset: local/study-files/nmdc-sty-11-8fb6t785.ttl \
@@ -436,7 +421,7 @@ local/study-files/nmdc-sty-11-dcqce727.ttl
 
 ## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
 # retrieve selected collections from the Napa squad's MongoDB and fix ids containing whitespace
-local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
+local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	date
 	time $(RUN) pure-export \
 		--client-base-url https://api-napa.microbiomedata.org \
@@ -469,10 +454,10 @@ local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 	rm -rf $@.tmp
 
 .PRECIOUS: local/some_napa_collections.validation.log
-local/some_napa_collections.validation.log: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml
+local/some_napa_collections.validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-local/some_napa_collections.ttl: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
+local/some_napa_collections.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
 	$(RUN) linkml-convert --output $@.tmp.ttl --schema $(word 1, $^) $(word 2, $^)
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $@.tmp.ttl \

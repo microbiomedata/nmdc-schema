@@ -19,6 +19,7 @@ default_range: string
 classes:
 
   Activity:
+    abstract: true
     description: Something that occurs over a period of time and acts upon or with entities;
       it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
     slots:
