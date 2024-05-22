@@ -10,7 +10,7 @@ activity_set:
   - nmdc:dobj-11-0abycm73
   - nmdc:dobj-11-0abycm74
   started_at_time: '2021-01-12T00:00:00+00:00'
-  was_informed_by: nmdc:act-11-0abycm67.1
+  was_informed_by: nmdc:omprc-11-0abycm67
   execution_resource: NERSC - Cori
   type: nmdc:MetagenomeAnnotation
   id: nmdc:wfmgan-11-0abycm66.1
