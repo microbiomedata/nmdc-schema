@@ -829,8 +829,8 @@ enums:
     comments:
       - At Chris' recommendation permissible values for this enumeration are the same as Class names.
     permissible_values:
-      OmicsProcessing:
-        description: A failure has occurred in omics processing, a lab process.
+      DataGeneration:
+        description: A failure has occurred in during data generation, a lab process.
       Pooling:
         description: A failure has occurred in pooling, a lab process.
       Extraction:
@@ -839,13 +839,13 @@ enums:
         description: A failure has occurred in library preparation, a lab process.
       MetagenomeAssembly:
         description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeActivity:
+      MetatranscriptomeAnalysis:
         description: A failure has occurred in metatranscriptome analysis, a workflow process.
-      MagsAnalysisActivity:
+      MagsAnalysis:
         description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
-      ReadQcAnalysisActivity:
+      ReadQcAnalysis:
         description: A failure has occurred in read qc, a workflow process.
-      ReadBasedTaxonomyAnalysisActivity:
+      ReadBasedTaxonomyAnalysis:
         description: A failure has occurred in reads based taxonomy, a workflow process.
-      MetagenomeAnnotationActivity:
+      MetagenomeAnnotation:
         description: A failure has occurred in annotation, a workflow process.
