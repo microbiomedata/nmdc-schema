@@ -802,7 +802,6 @@ slots:
     description: a description of how the chromatographic introduction was configured for the introduction of the sample into the mass spectrometer
 
   metagenome_annotation_id:
-    domain: FunctionalAnnotationAggMember
     range: WorkflowExecution
   #    range: WorkflowExecutionActivity
   #    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
@@ -818,7 +817,6 @@ slots:
     range: integer
     required: true
   functional_annotation_agg:
-    domain: Database
     range: FunctionalAnnotationAggMember
     multivalued: true
     inlined: true
@@ -860,14 +858,12 @@ slots:
       - MS:1000004
     narrow_mappings:
       - MIXS:0000111
-    domain: PlannedProcess
     range: QuantityValue
 
   library_type:
     title: library type
     examples:
       - value: DNA
-    domain: LibraryPreparation
     range: LibraryTypeEnum
 
   date_created:
@@ -876,7 +872,6 @@ slots:
     description: from database class
 
   object_set:
-    domain: Database # not inherited by mixin users
     inlined_as_list: true
     mixin: true
     multivalued: true
@@ -885,7 +880,6 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   chemical_entity_set:
-    domain: Database # not inherited by mixin users
     mixins:
       - object_set
     range: ChemicalEntity
@@ -893,7 +887,6 @@ slots:
       This property links a database object to the set of chemical entities
       within it.
   planned_process_set:
-    domain: Database # not inherited by mixin users
     mixins:
       - object_set
     range: PlannedProcess
@@ -901,157 +894,132 @@ slots:
       This property links a database object to the set of planned processes
       within it.
   biosample_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: CollectingBiosamplesFromSite
   data_object_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
   genome_feature_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
   functional_annotation_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
   workflow_execution_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
   mags_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MagsAnalysis
     description:
       This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAnnotation
     description:
       This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAssembly
     description:
       This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeSequencing
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_analysis_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
   read_qc_analysis_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadQcAnalysis
     description:
       This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   data_generation_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataGeneration
     description:
       This property links a database object to the set of omics processings
       within it.
   workflow_chain_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: WorkflowChain
     description:
       This property links a database object to the set of workflow chains
       within it.
   pooling_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Pooling
   processed_sample_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
   extraction_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Extraction
     description: This property links a database object to the set of extractions within it.
   library_preparation_set:
-    domain: Database # not inherited by mixin users
     aliases:
       - library_construction_set
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
   instrument_set:
-    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
@@ -1066,7 +1034,6 @@ slots:
 
   omics_type:
     deprecated_element_has_exact_replacement: analyte_category
-    domain: DataGeneration
     range: ControlledTermValue
     description: The type of omics data
     examples:
@@ -1099,12 +1066,10 @@ slots:
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
   protocol_execution_category:
-    domain: ProtocolExecution
     range: ProtocolCategoryEnum
     required: true
 
   has_process_parts:
-    domain: ProtocolExecution
     range: PlannedProcess
     description: A list of process parts that make up a protocol.
     required: true
@@ -1117,7 +1082,6 @@ slots:
       - "Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
     range: string
   filter_pore_size:
-    domain: FiltrationProcess
     range: QuantityValue
     description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
   conditionings:
@@ -1126,7 +1090,6 @@ slots:
     multivalued: true
     list_elements_ordered: true
   separation_method:
-    domain: FiltrationProcess
     range: SeparationMethodEnum
     description: The method that was used to separate a substance from a solution or mixture.
   filtration_category:
@@ -1153,7 +1116,6 @@ slots:
   #    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
 
   input_volume: # see also `volume`
-    domain: PlannedProcess
     range: QuantityValue
     description: The volume of the input sample.
 
@@ -1190,7 +1152,6 @@ slots:
 #    exact_mappings:
 #      - NCIT:C176640
   sampled_portion:
-    domain: SubSamplingProcess
     range: SamplePortionEnum
     multivalued: true
     description: The portion of the sample that is taken for downstream activity.
