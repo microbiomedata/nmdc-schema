@@ -157,7 +157,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -1192,7 +1192,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_input:
         any_of:
@@ -1233,7 +1233,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   Site:
@@ -1247,7 +1247,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   EnvironmentalMaterialTerm:
