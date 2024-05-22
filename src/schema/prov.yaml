@@ -70,8 +70,7 @@ slots:
       - prov:endedAtTime
 
   was_informed_by:
-    domain: Activity
-    range: Activity
+    range: OmicsProcessing
     mappings:
       - prov:wasInformedBy
 
