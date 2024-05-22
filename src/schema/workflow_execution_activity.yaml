@@ -86,7 +86,7 @@ classes:
       execution_resource:
         required: true
       type:
-        required: true
+        required: true   
       id:
         required: true
         structured_pattern:
