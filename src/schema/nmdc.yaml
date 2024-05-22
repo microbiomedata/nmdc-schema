@@ -112,7 +112,7 @@ settings:
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
-  id_version: "(\\.[A-Za-z0-9]{1,})*"
+  id_version: "(\\.[0-9]{1,})"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
 
 classes:
@@ -131,7 +131,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   MassSpectrometry:
@@ -148,7 +148,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
     rules:
     - title: has_calibration_required_if_gc
@@ -206,7 +206,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}$"
           interpolated: true
   
   ChromatographyConfiguration:
@@ -227,7 +227,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(chrocon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(chrocon)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   FunctionalAnnotationAggMember:
@@ -299,7 +299,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   Extraction:
@@ -320,7 +320,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
           interpolated: true
       volume:
         description: The volume of the solvent/solute being used, not the input.
@@ -354,7 +354,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
           interpolated: true
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
@@ -377,7 +377,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   ProtocolExecution:
@@ -391,7 +391,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   SubSamplingProcess:
@@ -423,7 +423,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$"
           interpolated: true
       volume:
         description: The output volume of the SubSampling Process.
@@ -453,7 +453,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
         range: ProcessedSample
@@ -484,7 +484,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$"
           interpolated: true
       volume:
         description: The volume of sample filtered.
@@ -522,7 +522,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   DissolvingProcess:
@@ -547,7 +547,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$"
           interpolated: true
 
 enums:

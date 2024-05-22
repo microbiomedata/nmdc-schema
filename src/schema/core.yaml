@@ -190,7 +190,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   Biosample:
@@ -918,7 +918,7 @@ classes:
         required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
       gold_biosample_identifiers:
