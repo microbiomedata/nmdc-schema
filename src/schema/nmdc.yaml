@@ -153,7 +153,7 @@ classes:
     slot_usage:
       metagenome_annotation_id:
         structured_pattern: # doesn't include act
-          syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   Database:
@@ -2422,7 +2422,7 @@ slots:
 
   metagenome_annotation_id:
     domain: FunctionalAnnotationAggMember
-    range: WorkflowExecutionActivity
+    range: MetagenomeAnnotationActivity
     description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
     required: true
   gene_function_id:
