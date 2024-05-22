@@ -378,8 +378,8 @@
 
   MetatranscriptomeAssembly : was_informed_by
 
-      MetatranscriptomeAssembly --&gt; "0..1" Activity : was_informed_by
-    click Activity href "../Activity"
+      MetatranscriptomeAssembly --&gt; "0..1" OmicsProcessing : was_informed_by
+    click OmicsProcessing href "../OmicsProcessing"
 
 
 
@@ -659,7 +659,7 @@
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>0..1 <br/> <a href="../Activity/">Activity</a></td>
+<td>0..1 <br/> <a href="../OmicsProcessing/">OmicsProcessing</a></td>
 <td></td>
 <td><a href="../Activity/">Activity</a></td>
 </tr>
@@ -1336,12 +1336,11 @@ attributes:
     mappings:
     - prov:wasInformedBy
     rank: 1000
-    domain: Activity
     alias: was_informed_by
     owner: MetatranscriptomeAssembly
     domain_of:
     - Activity
-    range: Activity
+    range: OmicsProcessing
   used:
     name: used
     from_schema: https://w3id.org/nmdc/nmdc

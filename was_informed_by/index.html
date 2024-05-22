@@ -496,8 +496,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
+<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
+<td>A workflow execution activity that uses computational binning tools to group ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+<td>Represents an instance of an execution of a particular workflow</td>
 <td>no</td>
 </tr>
 <tr>
@@ -511,8 +516,18 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td>Represents an instance of an execution of a particular workflow</td>
+<td><a href="../Activity/">Activity</a></td>
+<td>Something that occurs over a period of time and acts upon or with entities; i...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
@@ -521,7 +536,17 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
 <td></td>
 <td>no</td>
 </tr>
@@ -536,40 +561,15 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td>A workflow execution activity that uses computational binning tools to group ...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
 <td>A workflow execution activity that provides functional and structural annotat...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>Something that occurs over a period of time and acts upon or with entities; i...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Activity/">Activity</a></li>
+<li>Range: <a href="../OmicsProcessing/">OmicsProcessing</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -584,11 +584,10 @@ from_schema: https://w3id.org/nmdc/nmdc
 mappings:
 - prov:wasInformedBy
 rank: 1000
-domain: Activity
 alias: was_informed_by
 domain_of:
 - Activity
-range: Activity
+range: OmicsProcessing
 
 </code></pre>
 
