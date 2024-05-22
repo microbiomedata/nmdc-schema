@@ -153,7 +153,7 @@ chlorophyll:
   has_raw_value: 5 milligram per cubic meter
 climate_environment:
   - has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
-collected_from: nmdc:unconstrained_site_identifier_string
+collected_from: nmdc:frsite-99-1234
 collection_date:
   has_raw_value: xxx
 collection_date_inc: '2023-01-29'

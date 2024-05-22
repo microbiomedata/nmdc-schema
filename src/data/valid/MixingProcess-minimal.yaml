@@ -1,9 +1,9 @@
 id: nmdc:mp-1
 has_input:
-  - nmdc:biosample-1 #This is an example biosample ID and does not represent a real biosample
-  - nmdc:processed-sample-2
+  - nmdc:bsm-99-12346 #This is an example biosample ID and does not represent a real biosample
+  - nmdc:procsm-99-12346
 has_output:
-  - nmdc:4
+  - nmdc:procsm-99-9876654
 duration:
   has_numeric_value: 2
   has_unit: hours

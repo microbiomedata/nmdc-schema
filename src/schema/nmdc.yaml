@@ -150,6 +150,11 @@ classes:
       - metagenome_annotation_id
       - gene_function_id
       - count
+    slot_usage:
+      metagenome_annotation_id:
+        structured_pattern: # doesn't include act
+          syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   Database:
     tree_root: true
@@ -209,7 +214,7 @@ classes:
 
   Extraction:
     class_uri: nmdc:Extraction
-    is_a: PlannedProcess # from core.yaml
+    is_a: PlannedProcess
     description: A material separation in which a desired component of an input material is separated from the remainder.
     exact_mappings:
       - OBI:0302884
@@ -225,6 +230,9 @@ classes:
         any_of:
           - range: Biosample
           - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}"
+          interpolated: true
       has_output:
         required: true
       id:
@@ -328,9 +336,15 @@ classes:
       has_input:
         range: Site
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: Biosample
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -361,6 +375,10 @@ classes:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      was_generated_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(act|wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   Biosample:
@@ -461,13 +479,6 @@ classes:
       - igsn_biosample_identifiers
 
       ## MIXS slots
-      #      - horizon
-      #      - microbial_biomass
-      #      - microbial_biomass_meth
-      #      - previous_land_use_meth
-      #      - samp_collect_device
-      #      - texture
-      #      - texture_meth
       - abs_air_humidity
       - add_recov_method
       - additional_info
@@ -1093,9 +1104,13 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
+      collected_from:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
       elev:
         title: elevation, meters
-        #        range: float
         comments:
           - All elevations must be reported in meters. Provide the numerical portion only.
           - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates,
@@ -1103,23 +1118,18 @@ classes:
         examples:
           value: 100
 
-      #      oxy_stat_samp:
-      #        range: oxy_stat_samp_enum
-
       id:
         required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
           syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
           interpolated: true
-      #          partial_match: false
 
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
           display_hint: Provide the GOLD biosample IDs associated with this biosample.
-      #        range: uriorcurie
 
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
@@ -1137,8 +1147,9 @@ classes:
       part_of:
         required: true
         range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
-
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
@@ -1149,7 +1160,6 @@ classes:
           - is "to" acceptable? Is there a better way to request that be written?
         annotations:
           expected_value: date string
-        #        range: string
         pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
       flooding:
         annotations:
@@ -1162,13 +1172,11 @@ classes:
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
           - What about if the "day" isn't known? Is this ok?
-      #        range: string
       extreme_event:
         examples:
           - value: 1980-05-18, volcanic eruption
         annotations:
           expected_value: date, string
-      #        range: string
       slope_aspect:
         examples:
           - value: 35
@@ -1275,7 +1283,6 @@ classes:
           expected_value: string
           preferred_unit: gram per gram or cubic centimeter per cubic centimeter
         multivalued: true
-        #        range: string
         examples:
           - value: 0.75 g water/g dry soil
           - value: 75% water holding capacity
@@ -1424,8 +1431,6 @@ classes:
       - gnps_task_identifiers
 
       ## Related IDs
-      #- insdc_sra_ena_study_identifiers
-
       - alternative_descriptions
       - alternative_names
       - alternative_titles
@@ -1495,13 +1500,14 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-      # emsl_project_identifier:
-      #  description: The EMSL project ID that relates to the NMDC submitted study
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
         comments:
           - Value is the id of the umbrella study or consortium.
         range: Study
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -1538,6 +1544,12 @@ classes:
           interpolated: true
       has_input:
         range: Biosample
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
     broad_mappings:
       - OBI:0000094
 
@@ -1576,9 +1588,15 @@ classes:
         any_of:
           - range: Biosample
           - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: ProcessedSample
         description: The subsample.
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   MixingProcess:
     description: >
@@ -1600,9 +1618,15 @@ classes:
         any_of:
           - range: Biosample
           - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: ProcessedSample
         description: The mixed sample.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   FiltrationProcess:
     description: >-
@@ -1644,6 +1668,9 @@ classes:
         any_of:
           - range: Biosample
           - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   OmicsProcessing:
     aliases:
@@ -1693,15 +1720,27 @@ classes:
           interpolated: true
       has_input:
         required: true
-        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
-        comments:
-          - pattern should allow typecode for Biosample and ProcessedSample
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      #        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+      #        comments:
+      #          - pattern should allow typecode for Biosample and ProcessedSample
       part_of:
         range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      #        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
       has_output:
         range: DataObject
-        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+    #        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
@@ -2480,7 +2519,6 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-    #    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2497,7 +2535,6 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2514,7 +2551,6 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2533,7 +2569,6 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2550,7 +2585,6 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -2571,7 +2605,6 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-    #    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -2590,7 +2623,6 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    #    is_a: attribute
     range: QuantityValue
 
   env_package:
@@ -2606,7 +2638,6 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-    #    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -2703,7 +2734,7 @@ slots:
     required: true
 
   object_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     inlined_as_list: true
     mixin: true
     multivalued: true
@@ -2712,7 +2743,7 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   planned_process_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins:
       - object_set
     range: PlannedProcess
@@ -2722,143 +2753,143 @@ slots:
     comments:
       - PlannedProcess instances aggregated by this slot will require the designated_class slot
   biosample_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: CollectingBiosamplesFromSite
   data_object_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
   genome_feature_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
   functional_annotation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
   activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: WorkflowExecutionActivity
     description: This property links a database object to the set of workflow activities.
   mags_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MagsAnalysisActivity
     description:
       This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetabolomicsAnalysisActivity
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetaproteomicsAnalysisActivity
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAnnotationActivity
     description:
       This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAssembly
     description:
       This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeSequencingActivity
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
   metatranscriptome_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetatranscriptomeActivity
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
   read_qc_analysis_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadQcAnalysisActivity
     description:
       This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadBasedTaxonomyAnalysisActivity
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_activity_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: NomAnalysisActivity
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   omics_processing_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: OmicsProcessing
     description:
       This property links a database object to the set of omics processings
       within it.
   pooling_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Pooling
   processed_sample_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
   extraction_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Extraction
     description: This property links a database object to the set of extractions within it.
   library_preparation_set:
-    domain: Database # not inherited byt mixin users
+    domain: Database # not inherited by mixin users
     aliases:
       - library_construction_set
     mixins: object_set
@@ -2889,7 +2920,6 @@ slots:
 
   ## GOLD PATHS
   gold_path_field:
-    #    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -2959,7 +2989,6 @@ slots:
   principal_investigator:
     aliases:
       - PI
-    #    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 

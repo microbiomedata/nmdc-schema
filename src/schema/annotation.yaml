@@ -52,13 +52,13 @@ classes:
       - seqid
       - start
       - strand
-#      - type
+    #      - type
     slot_usage:
       seqid:
         required: true
-#      type:
-#        range: OntologyClass
-#        description: A type from the sequence ontology
+      #      type:
+      #        range: OntologyClass
+      #        description: A type from the sequence ontology
       start:
         required: true
       end:
@@ -88,7 +88,7 @@ classes:
 
     slot_usage:
       has_part:
-#        range: Reaction
+        #        range: Reaction
         required: true
         description: >-
           A pathway can be broken down to a series of reaction step
@@ -176,6 +176,10 @@ classes:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
         range: MetagenomeAnnotationActivity
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
+
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
 

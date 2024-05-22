@@ -11,4 +11,4 @@ nom_analysis_activity_set:
     type: xxx
     started_at_time: "2018-11-13T20:20:39+00:00"
     ended_at_time: "2018-11-13T20:20:39+00:00"
-    was_informed_by: nmdc:omproc-11-647rwq96
+    was_informed_by: nmdc:act-11-647rwq96.1

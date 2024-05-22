@@ -1,7 +1,8 @@
 metagenome_assembly_set:
   - id: nmdc:wfmgas-99-B7Vogx.1
     name: Metagenome assembly 1472_51277
-    was_informed_by: nmdc:omprc-11-547rwq94
+    #    was_informed_by: nmdc:omprc-11-547rwq94 # MAM 2024-05-22
+    was_informed_by: nmdc:act-11-547rwq94.1 # should this allow an omics processing as the informer? what about act? that's abstract isn't it?
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     type: nmdc:MetagenomeAssembly
@@ -44,7 +45,8 @@ metagenome_assembly_set:
     num_aligned_reads: 63046103
   - id: nmdc:wfmgas-99-CvgXTq.1
     name: Metagenome assembly 1472_51278
-    was_informed_by: nmdc:omprc-11-548rwq94
+    #    was_informed_by: nmdc:omprc-11-548rwq94 # MAM 2024-05-22
+    was_informed_by: nmdc:act-11-548rwq94.1
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     type: nmdc:MetagenomeAssembly
@@ -87,7 +89,8 @@ metagenome_assembly_set:
     num_aligned_reads: 95369019
   - id: nmdc:wfmgas-99-1vjxjy88.1
     name: Metagenome assembly 1472_51279
-    was_informed_by: nmdc:omprc-11-1vjxjy80
+    #    was_informed_by: nmdc:omprc-11-1vjxjy80 # MAM 2024-05-22
+    was_informed_by: nmdc:act-11-1vjxjy80.1
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     type: nmdc:MetagenomeAssembly

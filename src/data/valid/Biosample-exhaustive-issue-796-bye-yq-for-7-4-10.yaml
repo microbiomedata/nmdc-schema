@@ -21,7 +21,7 @@ env_medium:
   term:
     id: ENVO:00005792
 embargoed: true
-collected_from: nmdc:unconstrained_site_identifier_string
+collected_from: nmdc:frsite-99-1234
 type: nmdc:Biosample. change this to require a class name or an enumeration
 img_identifiers:
   - img.taxon:abc123

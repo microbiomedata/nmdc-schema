@@ -40,6 +40,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(act|wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf)-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
 slots:
 

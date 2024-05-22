@@ -14,7 +14,7 @@ metagenome_sequencing_activity_set:
       - nmdc:dobj-11-547rwq74
     # legacy was_informed_by id? validator won't catch pattern violations
     #   or referential integrity violations
-    was_informed_by: nmdc:omprc-11-547rwq95
+    was_informed_by: nmdc:act-11-547rwq95.1
     name: Sequencing Activity for my awesome project
     started_at_time: '2021-08-05T14:48:51+00:00'
     ended_at_time: '2021-09-15T10:13:20+00:00'

@@ -9,7 +9,7 @@ metagenome_assembly_set:
         qc_failure_where: MetagenomeAssembly
     qc_comment: 15% human contamination and assembly size is below 5 MB
     name: Metagenome assembly 1472_51277
-    was_informed_by: nmdc:omprc-12-d11daf12
+    was_informed_by: nmdc:act-12-d11daf12.1
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     type: nmdc:MetagenomeAssembly

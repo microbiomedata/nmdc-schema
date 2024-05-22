@@ -15,7 +15,7 @@ read_qc_analysis_activity_set:
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
     version: v1.0.8
-    was_informed_by: nmdc:omprc-11-r0pjgp16
+    was_informed_by: nmdc:act-11-r0pjgp16.1
     has_input:
       - nmdc:dobj-11-1k62bt83
       - nmdc:dobj-11-e8hs8y25
@@ -31,7 +31,7 @@ read_qc_analysis_activity_set:
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
     version: v1.0.8
-    was_informed_by: nmdc:omprc-11-r0pjgp16
+    was_informed_by: nmdc:act-11-r0pjgp16.1
     has_input:
       - nmdc:dobj-11-1k62bt83
       - nmdc:dobj-11-e8hs8y25
@@ -54,7 +54,7 @@ read_qc_analysis_activity_set:
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
     version: v1.0.8
-    was_informed_by: nmdc:omprc-11-r0pjgp16
+    was_informed_by: nmdc:act-11-r0pjgp16.1
     has_input:
       - nmdc:dobj-11-1k62bt83
       - nmdc:dobj-11-e8hs8y25
