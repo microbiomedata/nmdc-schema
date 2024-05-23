@@ -775,8 +775,10 @@ slots:
 
   mass_analyzers:
     range: MassAnalyzerEnum
-    description: which kind of mass analyzer(s) used during the spectra collection.
+    description: The kind of mass analyzer(s) used during the spectra collection.
     multivalued: true
+    exact_mappings:
+      - MS:1000443
 
   resolution_categories:
     range: ResolutionCategoryEnum
