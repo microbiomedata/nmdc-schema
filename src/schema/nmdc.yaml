@@ -791,15 +791,18 @@ slots:
 
   eluent_introduction_category:
     range: EluentIntroductionCategoryEnum
-    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
+    description: A high-level description for how the processed sample is introduced into a mass spectrometer.
+    examples:
+      - value: liquid_chromatography
+      - value: direct_infusion_syringe
 
   has_mass_spectrometry_configuration:
     range: MassSpectrometryConfiguration
-    description: a description of how the mass spectrometry was configured
+    description: An identifier for the associated MassSpectrometryConfiguration.
 
   has_chromatography_configuration:
     range: ChromatographyConfiguration
-    description: a description of how the chromatographic introduction was configured for the introduction of the sample into the mass spectrometer
+    description: An identifier for the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer. 
 
   metagenome_annotation_id:
     range: WorkflowExecution
@@ -1109,7 +1112,11 @@ slots:
 
   contained_in:
     range: ContainerCategoryEnum
-    description: A type of container. i.e. test tube, falcon tube, etc.
+    description: A type of container.
+    examples:
+      - value: test tube
+      - value: falcon tube
+      - value: whirlpak
   #  extractant:
   #    domain: Extraction
   #    range: Solution
