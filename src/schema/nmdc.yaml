@@ -769,7 +769,9 @@ slots:
 
   ionization_source:
     range: IonizationSourceEnum
-    description: which kind of ionization source is used to introduce analytes into a mass spectrometer
+    description: The ionization source used to introduce processed samples into a mass spectrometer
+    exact_mapping:
+      - MS:1000008
 
   mass_analyzers:
     range: MassAnalyzerEnum
