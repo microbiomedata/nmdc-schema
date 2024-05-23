@@ -802,7 +802,7 @@ slots:
 
   has_chromatography_configuration:
     range: ChromatographyConfiguration
-    description: An identifier for the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer. 
+    description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer. 
 
   metagenome_annotation_id:
     range: WorkflowExecution
