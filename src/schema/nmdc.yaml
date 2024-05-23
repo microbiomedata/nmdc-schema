@@ -770,7 +770,7 @@ slots:
   ionization_source:
     range: IonizationSourceEnum
     description: The ionization source used to introduce processed samples into a mass spectrometer
-    exact_mapping:
+    exact_mappings:
       - MS:1000008
 
   mass_analyzers:
