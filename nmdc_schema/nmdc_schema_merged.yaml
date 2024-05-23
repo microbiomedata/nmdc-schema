@@ -686,12 +686,12 @@ enums:
         text: matrix_assisted_laser_desorption_ionization
         aliases:
         - MALDI
-      athmospheric_pressure_photo_ionization:
-        text: athmospheric_pressure_photo_ionization
+      atmospheric_pressure_photo_ionization:
+        text: atmospheric_pressure_photo_ionization
         aliases:
         - APPI
-      athmospheric_pressure_chemical_ionization:
-        text: athmospheric_pressure_chemical_ionization
+      atmospheric_pressure_chemical_ionization:
+        text: atmospheric_pressure_chemical_ionization
         aliases:
         - APCI
       electron_ionization:
