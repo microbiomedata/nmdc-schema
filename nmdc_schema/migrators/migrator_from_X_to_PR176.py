@@ -18,13 +18,13 @@ class Migrator(MigratorBase):
             self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
 
 
-    def standardize_failure_where_enum(self, read_qc_set: dict):
+    def standardize_failure_where_enum(self, read_qc_analysis: dict):
         r"""
         Transforms the values of the qc_failure_where slot to the new permissible values of the FailureWhereEnum.
         
         >>> m = Migrator()
-        >>> m.standardize_failure_where_enum({'id': 123, 'qc_failure_where': 'OmicsProcessing'})
-        {'id': 123, 'qc_failure_where': 'DataGeneration'}
+        >>> m.standardize_failure_where_enum({'id': 123, 'has_failure_categorization':{'qc_failure_where': 'OmicsProcessing'}})
+        {'id': 123, 'has_failure_categorization':{'qc_failure_where': 'DataGeneration'}})
         """
 
         failure_where_translation_dict = {
@@ -40,10 +40,11 @@ class Migrator(MigratorBase):
             "MetagenomeAnnotationActivity": "MetagenomeAnnotation",
         }
 
-        if 'qc_failure_where' in read_qc_set:
-            og_value = read_qc_set['qc_failure_where']
-            if og_value in failure_where_translation_dict.keys():
-                read_qc_set['qc_failure_where'] = failure_where_translation_dict[og_value]
-            else:
-                raise ValueError(f"Value {og_value} is not a valid value for the qc_failure_where slot.")
-        return read_qc_set
+        if 'has_failure_categorization' in read_qc_analysis.keys():
+            if 'qc_failure_where' in read_qc_analysis['has_failure_categorization'].keys():
+                og_value = read_qc_analysis['has_failure_categorization']['qc_failure_where']
+                if og_value in failure_where_translation_dict.keys():
+                    read_qc_analysis['has_failure_categorization']['qc_failure_where'] = failure_where_translation_dict[og_value]
+                else:
+                    raise ValueError(f"Value {og_value} is not a valid value for the qc_failure_where slot.")
+        return read_qc_analysis
