@@ -41,11 +41,12 @@ class Migrator(MigratorBase):
             "MetagenomeAnnotationActivity": "MetagenomeAnnotation",
         }
 
-        if 'has_failure_categorization' in read_qc_analysis.keys():
-            if 'qc_failure_where' in read_qc_analysis['has_failure_categorization'].keys():
-                og_value = read_qc_analysis['has_failure_categorization']['qc_failure_where']
-                if og_value in failure_where_translation_dict.keys():
-                    read_qc_analysis['has_failure_categorization']['qc_failure_where'] = failure_where_translation_dict[og_value]
+        if 'has_failure_categorization' in read_qc_analysis:
+            for failure_categorization in read_qc_analysis['has_failure_categorization']:
+                if 'qc_failure_where' in failure_categorization:
+                    og_value = failure_categorization.get('qc_failure_where')
+                    if og_value in failure_where_translation_dict:
+                        failure_categorization['qc_failure_where'] = failure_where_translation_dict.get(og_value)
                 else:
                     raise ValueError(f"Value {og_value} is not a valid value for the qc_failure_where slot.")
         return read_qc_analysis
