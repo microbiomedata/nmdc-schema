@@ -3,7 +3,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 class Migrator(MigratorBase):
     """
-    Migrates data from X to PR126, namely changes the permissible values of the failure_where slot in the read_qc_analysis_set collection.
+    Migrates data from X to PR176, namely changes the permissible values of the failure_where slot in the read_qc_analysis_set collection.
 
     Should be run after migrator_from_X_to_PR2_and_PR24.py.
     """
