@@ -24,7 +24,7 @@ class Migrator(MigratorBase):
         
         >>> m = Migrator()
         >>> m.standardize_failure_where_enum({'id': 123, 'has_failure_categorization': {'qc_failure_where': 'OmicsProcessing'}})
-        {'id': 123, 'has_failure_categorization': {'qc_failure_where': 'DataGeneration'}})
+        {'id': 123, 'has_failure_categorization': {'qc_failure_where': 'DataGeneration'}}
         """
 
         failure_where_translation_dict = {
