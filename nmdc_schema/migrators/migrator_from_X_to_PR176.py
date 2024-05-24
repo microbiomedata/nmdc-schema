@@ -3,7 +3,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 class Migrator(MigratorBase):
     """
-    Migrates data from X to PR129, namely changes the permissible values of the failure_where slot in the read_qc_analysis_set collection.
+    Migrates data from X to PR126, namely changes the permissible values of the failure_where slot in the read_qc_analysis_set collection.
     """
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""

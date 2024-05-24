@@ -830,7 +830,7 @@ enums:
       - At Chris' recommendation permissible values for this enumeration are the same as Class names.
     permissible_values:
       DataGeneration:
-        description: A failure has occurred in during data generation, a lab process.
+        description: A failure has occurred during data generation, a lab process.
       Pooling:
         description: A failure has occurred in pooling, a lab process.
       Extraction:
