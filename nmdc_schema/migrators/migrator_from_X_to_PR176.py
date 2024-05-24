@@ -12,24 +12,25 @@ class Migrator(MigratorBase):
 
         # Populate the "collection-to-transformers" map for this specific migration.
         agenda = dict(
-            read_qc_analysis_set=[self.standardize_failure_where_enum], 
+            # We can assume that all the documents in the read_qc_analysis_set collection are of the type ReadQcAnalysisActivity, and any OmicsProcessing failures should be mapped to NucleotideSequencing
+            read_qc_analysis_set=[self.standardize_failure_where_enum_ns], 
         )
 
         for collection_name, pipeline in agenda.items():
             self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
 
 
-    def standardize_failure_where_enum(self, read_qc_analysis: dict):
+    def standardize_failure_where_enum_ns(self, read_qc_analysis: dict):
         r"""
-        Transforms the values of the qc_failure_where slot to the new permissible values of the FailureWhereEnum.
+        Transforms the values of the qc_failure_where slot to the new permissible values of the FailureWhereEnum, for sets related to NucleatideSequencing
         
         >>> m = Migrator()
-        >>> m.standardize_failure_where_enum({'id': 123, 'has_failure_categorization': {'qc_failure_where': 'OmicsProcessing'}})
-        {'id': 123, 'has_failure_categorization': {'qc_failure_where': 'DataGeneration'}}
+        >>> m.standardize_failure_where_enum_ns({'id': 123, 'has_failure_categorization': [{'qc_failure_where': 'OmicsProcessing'}]})
+        {'id': 123, 'has_failure_categorization': [{'qc_failure_where': 'NucleotideSequencing'}]}
         """
 
         failure_where_translation_dict = {
-            "OmicsProcessing": "DataGeneration",
+            "OmicsProcessing": "NucleotideSequencing",
             "Pooling": "Pooling",
             "Extraction": "Extraction",
             "LibraryPreparation": "LibraryPreparation",
