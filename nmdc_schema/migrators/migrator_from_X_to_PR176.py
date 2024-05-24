@@ -10,8 +10,7 @@ class Migrator(MigratorBase):
 
         # Populate the "collection-to-transformers" map for this specific migration.
         agenda = dict(
-            read_qc_analysis_activity_set=[self.standardize_failure_where_enum], 
-            # QUESTION: Should this be read_qc_analysis_activity_set or read_qc_analysis_set?  
+            read_qc_analysis_set=[self.standardize_failure_where_enum], 
         )
 
         for collection_name, pipeline in agenda.items():
