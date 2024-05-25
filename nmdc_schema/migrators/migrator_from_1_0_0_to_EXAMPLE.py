@@ -49,7 +49,7 @@ class Migrator(MigratorBase):
 
         # Advanced: Create and populate another new collection; based upon the documents in a _different_ collection.
         self.adapter.create_collection("report_set")
-        self.adapter.read_each_document("comment_set", self.create_report_based_upon_comment)
+        self.adapter.do_for_each_document("comment_set", self.create_report_based_upon_comment)
 
     def allow_multiple_names(self, study: dict) -> dict:
         """

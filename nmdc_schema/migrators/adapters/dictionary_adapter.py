@@ -304,7 +304,7 @@ class DictionaryAdapter(AdapterBase):
                 # Overwrite the original document with the processed one.
                 self._db[collection_name][index] = processed_document
 
-    def read_each_document(
+    def do_for_each_document(
         self, collection_name: str, reader: Callable[[dict], None]
     ) -> None:
         r"""
@@ -326,7 +326,7 @@ class DictionaryAdapter(AdapterBase):
         >>> da = DictionaryAdapter(database)
         >>> total
         0
-        >>> da.read_each_document("payment_set", add_to_total)
+        >>> da.do_for_each_document("payment_set", add_to_total)
         >>> total
         600
         """

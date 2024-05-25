@@ -108,7 +108,7 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
-    def read_each_document(
+    def do_for_each_document(
         self, collection_name: str, reader: Callable[[dict], None]
     ) -> None:
         r"""

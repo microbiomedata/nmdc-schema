@@ -186,7 +186,7 @@ class MongoAdapter(AdapterBase):
                 # Overwrite the original document with the processed one.
                 collection.replace_one(filter=filter_, replacement=document)
 
-    def read_each_document(
+    def do_for_each_document(
         self, collection_name: str, reader: Callable[[dict], None]
     ) -> None:
         r"""
