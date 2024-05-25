@@ -106,3 +106,13 @@ class AdapterBase(ABC):
         back in the collection, replacing the original document.
         """
         pass
+
+    @abstractmethod
+    def read_each_document(
+        self, collection_name: str, reader: Callable[[dict], None]
+    ) -> None:
+        r"""
+        Passes each document in the specified collection to the specified function. This function was designed to
+        facilitate iterating over all documents in a collection without actually modifying them.
+        """
+        pass

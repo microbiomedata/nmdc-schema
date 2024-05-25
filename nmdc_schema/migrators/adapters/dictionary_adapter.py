@@ -303,3 +303,35 @@ class DictionaryAdapter(AdapterBase):
 
                 # Overwrite the original document with the processed one.
                 self._db[collection_name][index] = processed_document
+
+    def read_each_document(
+        self, collection_name: str, reader: Callable[[dict], None]
+    ) -> None:
+        r"""
+        Passes each document in the specified collection to the specified function. This function was designed to
+        facilitate iterating over all documents in a collection without actually modifying them.
+
+        >>> total = 0
+        >>> def add_to_total(document: dict) -> None:
+        ...     global total
+        ...     total += document["amount"]
+        >>>
+        >>> database = {
+        ...   "payment_set": [
+        ...     {"id": "111", "amount": 100},
+        ...     {"id": "222", "amount": 200},
+        ...     {"id": "333", "amount": 300}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> total
+        0
+        >>> da.read_each_document("payment_set", add_to_total)
+        >>> total
+        600
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db:
+            for document in self._db[collection_name]:
+                reader(document)
