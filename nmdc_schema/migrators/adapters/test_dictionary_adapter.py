@@ -229,9 +229,9 @@ class TestDictionaryAdapter(unittest.TestCase):
         assert self._characters[2] == "c"
         # - The collection was not modified.
         collection = self.db[collection_name]
-        assert len([doc for doc in collection if doc["id"] == 1 and doc["x"] == "a"]) == 1
-        assert len([doc for doc in collection if doc["id"] == 2 and doc["x"] == "b"]) == 1
-        assert len([doc for doc in collection if doc["id"] == 3 and doc["x"] == "c"]) == 1
+        assert len([doc for doc in collection if doc["_id"] == 1 and doc["id"] == 1 and doc["x"] == "a"]) == 1
+        assert len([doc for doc in collection if doc["_id"] == 2 and doc["id"] == 2 and doc["x"] == "b"]) == 1
+        assert len([doc for doc in collection if doc["_id"] == 3 and doc["id"] == 3 and doc["x"] == "c"]) == 1
 
         # Clean up:
         delattr(self, "_characters")
