@@ -199,7 +199,6 @@ class TestDictionaryAdapter(unittest.TestCase):
         assert len([doc for doc in collection if doc["id"] == 2 and doc["x"] == "Bz"]) == 1
         assert len([doc for doc in collection if doc["id"] == 3 and doc["x"] == "Cz"]) == 1
 
-
     def test_do_for_each_document(self):
         # Set up:
         collection_name = "my_collection"
@@ -236,7 +235,6 @@ class TestDictionaryAdapter(unittest.TestCase):
 
         # Clean up:
         delattr(self, "_characters")
-
 
     def test_callbacks(self):
         # Set up:
