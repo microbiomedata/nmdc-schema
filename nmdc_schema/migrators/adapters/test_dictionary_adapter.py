@@ -4,7 +4,7 @@ from typing import Optional
 from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
 
 
-class TestMongoAdapter(unittest.TestCase):
+class TestDictionaryAdapter(unittest.TestCase):
     r"""
     Tests targeting the `DictionaryAdapter` class.
 
