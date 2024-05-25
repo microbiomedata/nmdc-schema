@@ -265,9 +265,9 @@ class DictionaryAdapter(AdapterBase):
 
         Reference: https://docs.python.org/3/library/copy.html#copy.deepcopy
 
-        >>> def capitalize_foo_value(document: dict) -> dict:
-        ...     document["foo"] = document["foo"].upper()
-        ...     return document
+        >>> def capitalize_foo_value(thing: dict) -> dict:
+        ...     thing["foo"] = thing["foo"].upper()
+        ...     return thing
         >>>
         >>> database = {
         ...   "thing_set": [
@@ -305,16 +305,16 @@ class DictionaryAdapter(AdapterBase):
                 self._db[collection_name][index] = processed_document
 
     def do_for_each_document(
-        self, collection_name: str, reader: Callable[[dict], None]
+        self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
         r"""
-        Passes each document in the specified collection to the specified function. This function was designed to
-        facilitate iterating over all documents in a collection without actually modifying them.
+        Passes each document in the specified collection to the specified function. This method was designed
+        to facilitate iterating over all documents in a collection without actually modifying them.
 
         >>> total = 0
-        >>> def add_to_total(document: dict) -> None:
+        >>> def add_to_total(payment: dict) -> None:
         ...     global total
-        ...     total += document["amount"]
+        ...     total += payment["amount"]
         >>>
         >>> database = {
         ...   "payment_set": [
@@ -334,4 +334,4 @@ class DictionaryAdapter(AdapterBase):
         # Iterate over every document in the collection, if the collection exists.
         if collection_name in self._db:
             for document in self._db[collection_name]:
-                reader(document)
+                action(document)

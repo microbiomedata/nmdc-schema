@@ -187,15 +187,15 @@ class MongoAdapter(AdapterBase):
                 collection.replace_one(filter=filter_, replacement=document)
 
     def do_for_each_document(
-        self, collection_name: str, reader: Callable[[dict], None]
+        self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
         r"""
-        Passes each document in the specified collection to the specified function. This function was designed to
-        facilitate iterating over all documents in a collection without actually modifying them.
+        Passes each document in the specified collection to the specified function. This method was designed
+        to facilitate iterating over all documents in a collection without actually modifying them.
         """
 
         # Iterate over every document in the collection, if the collection exists.
         if collection_name in self._db.list_collection_names():
             collection = self._db.get_collection(name=collection_name)
             for document in collection.find():
-                reader(document)
+                action(document)

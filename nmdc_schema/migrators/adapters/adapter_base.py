@@ -109,10 +109,10 @@ class AdapterBase(ABC):
 
     @abstractmethod
     def do_for_each_document(
-        self, collection_name: str, reader: Callable[[dict], None]
+        self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
         r"""
-        Passes each document in the specified collection to the specified function. This function was designed to
-        facilitate iterating over all documents in a collection without actually modifying them.
+        Passes each document in the specified collection to the specified function. This method was designed
+        to facilitate iterating over all documents in a collection without actually modifying them.
         """
         pass
