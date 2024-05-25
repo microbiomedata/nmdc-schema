@@ -247,6 +247,45 @@ class TestMongoAdapter(unittest.TestCase):
         assert collection.count_documents({"id": 2, "x": "Bz"}) == 1
         assert collection.count_documents({"id": 3, "x": "Cz"}) == 1
 
+    def test_do_for_each_document(self):
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(_id=1, id=1, x="a")
+        document_2 = dict(_id=2, id=2, x="b")
+        document_3 = dict(_id=3, id=3, x="c")
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3]
+        )
+        # Temporarily add an attribute to this class instance so that
+        # this test has something persistent it can modify and examine.
+        self._characters = []
+
+        def append_x_to_sequence(doc: dict) -> None:
+            r"""Example pipeline stage that appends the `x` value to some list."""
+            self._characters.append(doc["x"])
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        adapter.do_for_each_document(
+            collection_name, append_x_to_sequence
+        )
+
+        # Validate result:
+        # - The list consists of the `x` values from the documents in the collection.
+        assert len(self._characters) == 3
+        assert self._characters[0] == "a"
+        assert self._characters[1] == "b"
+        assert self._characters[2] == "c"
+        # - The collection was not modified.
+        collection = self.db.get_collection(collection_name)
+        assert collection.count_documents({"_id": 1, "id": 1, "x": "a"}) == 1
+        assert collection.count_documents({"_id": 2, "id": 2, "x": "b"}) == 1
+        assert collection.count_documents({"_id": 3, "id": 3, "x": "c"}) == 1
+
+        # Clean up:
+        delattr(self, "_characters")
+
     def test_callbacks(self):
         # Set up:
         collection_name = "my_collection"
