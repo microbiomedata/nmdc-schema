@@ -49,7 +49,7 @@ class Migrator(MigratorBase):
 
         # Advanced: Create and populate another new collection; based upon the documents in a _different_ collection.
         self.adapter.create_collection("report_set")
-        self.adapter.process_each_document("comment_set", [self.create_report_based_upon_comment])
+        self.adapter.read_each_document("comment_set", self.create_report_based_upon_comment)
 
     def allow_multiple_names(self, study: dict) -> dict:
         """
@@ -109,15 +109,12 @@ class Migrator(MigratorBase):
         # Return the transformed dictionary.
         return study
 
-    def create_report_based_upon_comment(self, comment: dict) -> dict:
+    def create_report_based_upon_comment(self, comment: dict) -> None:
         """
         Creates a report based upon the comment passed in.
 
-        Note: Although this function will be passed a document from the `comment_set` collection, it actually modifies
-              a _different_ (i.e. arbitrary) collection instead, and then returns the original `comment_set` document
-              unchanged. I consider this to be a "shoehorned" usage of the migration framework, but a necessary
-              usage since the migration framework doesn't provide a different way to do the same thing (yet).
+        Note: Although this function will be passed a document from the `comment_set` collection,
+              the function will actually modify a *different* collection instead.
         """
         report = {"body": f"Someone wrote {comment['text']}"}
         self.adapter.insert_document(collection_name="report_set", document=report)
-        return comment  # returns the original `comment_set` document, unmodified
