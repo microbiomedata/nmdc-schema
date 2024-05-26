@@ -33,8 +33,22 @@ help: status
 	@echo "Please excuse the currently verbose logging mode"
 	@echo "make help -- show this help"
 	@echo ""
+	@#
+	@# Display a list of documented targets.
+	@#
+	@# Note: This `@sed` command finds all the Makefile lines that contain a target name (optional) and contain the
+	@#       made-up token — `#//` — and prints the target name (if present) and the post-token text to the console.
+	@#       You can use the `cookiecutter-help` target below as an example.
+	@#
+	@#           ↓ skip             ↓ token
+	@#           -------            -----
+	@sed -n -e '/@sed/!s/\(^.*:\)*.*#\/\/ \(.*\)/\1 \2/p' $(MAKEFILE_LIST)
+	@#                      --    --        --   -----    ----------------
+	@#               target ↑     ↑ deps    ↑ docs   ↑ output  ↑ all Makefiles
+	@#
+	@# Reference: https://stackoverflow.com/questions/8889035/how-to-document-a-makefile/47107132
 
-cookiecutter-help: status
+cookiecutter-help: status  #// Show targets inherited from cookiecutter
 	@echo ""
 	@echo "make setup -- initial setup (run this first)"
 	@echo "make site -- makes site locally"
@@ -47,7 +61,7 @@ cookiecutter-help: status
 	@echo "make cookiecutter-help -- show this help"
 	@echo ""
 
-status: check-config
+status: check-config  #// Show project metadata
 	@echo "Project: $(SCHEMA_NAME)"
 	@echo "Source: $(SOURCE_SCHEMA_PATH)"
 
