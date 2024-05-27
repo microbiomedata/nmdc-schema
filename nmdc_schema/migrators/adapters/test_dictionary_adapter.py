@@ -219,6 +219,9 @@ class TestMongoAdapter(unittest.TestCase):
 
         # Validate result:
         collection = self.db[collection_name]
+        assert len([doc for doc in collection if doc["x"] == "original"]) == 0
+        assert len([doc for doc in collection if "x" not in doc]) == 0
+        assert len([doc for doc in collection if doc["x"] is None]) == 0
         assert len([doc for doc in collection if doc["_id"] == 1 and doc["id"] == 1 and doc["x"] == "new"]) == 1
         assert len([doc for doc in collection if doc["_id"] == 2 and doc["id"] == 2 and doc["x"] == "new"]) == 1
         assert len([doc for doc in collection if doc["_id"] == 3 and doc["id"] == 3 and doc["x"] == "new"]) == 1
