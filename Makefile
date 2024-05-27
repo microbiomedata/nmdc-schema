@@ -36,8 +36,8 @@ help: status
 	@#
 	@# Display a list of documented targets.
 	@#
-	@# Note: This `@sed` command finds all the Makefile lines that contain a target name (optional) and contain the
-	@#       made-up token — `#//` — and prints the target name (if present) and the post-token text to the console.
+	@# Note: This `@sed` command finds all the Makefile lines that contain a target name, a colon, and the
+	@#       made-up token — `#//` — and prints the target name and the post-token text to the console.
 	@#       You can use the `cookiecutter-help` target below as an example.
 	@#
 	@#                                ↓ skip                      ↓ token           ↙  ↘ ANSI escape codes (for color)
