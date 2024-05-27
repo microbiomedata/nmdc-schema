@@ -44,7 +44,7 @@ help: status
 	@#                                -------                     -----      --------  -------
 	@sed --silent --regexp-extended '/@sed/!s/^([^[:space:]]+?):.*#\/\/ (.*)/\x1b[35m\1\x1b[0m: \2/p' $(MAKEFILE_LIST)
 	@#                                          --------------  --       --  ---------------------    ----------------
-	@#                                  target ↑                ↑ deps   ↑ docs   ↑ output             ↑ all Makefiles
+	@#                                   target ↑               ↑ deps   ↑ docs   ↑ output            ↑ all Makefiles
 	@#
 	@# Reference: https://stackoverflow.com/questions/8889035/how-to-document-a-makefile/47107132
 
