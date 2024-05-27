@@ -40,11 +40,11 @@ help: status
 	@#       made-up token — `#//` — and prints the target name (if present) and the post-token text to the console.
 	@#       You can use the `cookiecutter-help` target below as an example.
 	@#
-	@#           ↓ skip             ↓ token
-	@#           -------            -----
-	@sed -n -e '/@sed/!s/\(^.*:\)*.*#\/\/ \(.*\)/\1 \2/p' $(MAKEFILE_LIST)
-	@#                      --    --        --   -----    ----------------
-	@#               target ↑     ↑ deps    ↑ docs   ↑ output  ↑ all Makefiles
+	@#           ↓ skip             ↓ token             ↙  ↘ ANSI escape codes (for color)
+	@#           -------            -----        --------  -------
+	@sed -n -e '/@sed/!s/\(^.*\)*:.*#\/\/ \(.*\)/\x1b[35m\1\x1b[0m: \2/p' $(MAKEFILE_LIST)
+	@#                      --    --        --   ---------------------    ----------------
+	@#               target ↑     ↑ deps    ↑ docs   ↑ output             ↑ all Makefiles
 	@#
 	@# Reference: https://stackoverflow.com/questions/8889035/how-to-document-a-makefile/47107132
 
