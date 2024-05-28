@@ -88,7 +88,7 @@ slots:
       - value: "https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py"
 
   execution_resource:
-    range: string
+    range: ExecutionResourceEnum
     description: The computing resource or facility where the workflow was executed.
     examples:
       - value: NERSC-Cori
@@ -569,6 +569,34 @@ slots:
 #  #    range: InstrumentValue
 
 enums:
+
+  ExecutionResourceEnum:
+    see_also:
+      - nmdc:DoiProviderEnum
+      - nmdc:ProcessingInstitutionEnum
+      - nmdc:ExecutionResourceEnum
+    permissible_values:
+      NERSC-Cori:
+        description: NERSC Cori supercomputer
+        aliases:
+          - Cori
+      NERSC-Perlmutter:
+        description: NERSC Perlmutter supercomputer
+        aliases:
+          - Perlmutter
+          - Saul
+      EMSL:
+        description: Environmental Molecular Sciences Laboratory
+      EMSL-RZR:
+        description: Environmental Molecular Sciences Laboratory RZR cluster
+        aliases:
+          - RZR
+      JGI:
+        description: Joint Genome Institute
+      LANL-B-div:
+        description: LANL Bioscience Division
+        aliases:
+          - B-div
 
   FileTypeEnum:
     permissible_values:

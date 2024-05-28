@@ -30,7 +30,14 @@ class Migrator(MigratorBase):
         view = create_schema_view()
 
         slots_with_inlined_classes = {}
-        classes_with_inlined_classes = ["Biosample", "Study", "Extraction", "MetabolomicsAnalysis" , "MetaproteomicsAnalysis", "MagsAnalysis"]
+        classes_with_inlined_classes = ["Biosample", 
+                                        "Study", 
+                                        "Extraction", 
+                                        "MetabolomicsAnalysis" , 
+                                        "MetaproteomicsAnalysis", 
+                                        "MagsAnalysis",
+                                        "ReadQcAnalysis",
+                                        "DataGeneration"]
         for nmdc_class in classes_with_inlined_classes:
             induced_slots = view.class_induced_slots(nmdc_class)
             for slot_def in induced_slots:
@@ -66,11 +73,11 @@ class Migrator(MigratorBase):
             metaproteomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetaproteomicsAnalysis", slots_with_inlined_classes)],
             metatranscriptome_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAnalysis")],
             nom_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:NomAnalysis")],
-            data_generation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataGeneration")],
+            data_generation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataGeneration", slots_with_inlined_classes)],
             pooling_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Pooling")],
             processed_sample_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ProcessedSample")],
             read_based_taxonomy_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadBasedTaxonomyAnalysis")],
-            read_qc_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadQcAnalysis")],
+            read_qc_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadQcAnalysis", slots_with_inlined_classes)],
         )
 
         for collection_name, pipeline in agenda.items():

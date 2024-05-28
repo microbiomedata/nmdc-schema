@@ -1365,7 +1365,6 @@ classes:
 slots:
 
   chemical_conversion_category:
-    domain: ChemicalConversionProcess
     range: ChemicalConversionCategoryEnum
     description: The type of chemical conversion process.
   substances_volume:

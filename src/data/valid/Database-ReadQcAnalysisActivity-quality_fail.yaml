@@ -7,7 +7,7 @@ read_qc_analysis_set:
     #since there can be multivalued and what/where should be paired we need this structure
     has_failure_categorization:
       - qc_failure_what: malformed_data
-        qc_failure_where: ReadQcAnalysisActivity
+        qc_failure_where: ReadQcAnalysis
         type: nmdc:FailureCategorization
     qc_comment: Failure during call-stage to interleave fastq files
     type: nmdc:ReadQcAnalysis
@@ -49,7 +49,7 @@ read_qc_analysis_set:
     qc_status: fail
     has_failure_categorization:
       - qc_failure_what: low_read_count
-        qc_failure_where: ReadQcAnalysisActivity
+        qc_failure_where: ReadQcAnalysis
         type: nmdc:FailureCategorization
     qc_comment: Most data removed for artifacts
     type: nmdc:ReadQcAnalysis

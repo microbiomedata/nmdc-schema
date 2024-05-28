@@ -149,11 +149,9 @@ slots:
     description: A Sequence Ontology term that describes the category of a feature
 
   subject:
-    domain: FunctionalAnnotation
     range: GeneProduct
 
   has_function:
-    domain: FunctionalAnnotation
     range: string
     notes:
       - "the range for has_function was asserted as functional_annotation_term/FunctionalAnnotationTerm,"
@@ -175,7 +173,6 @@ slots:
       - "change range from string to object"
 
   strand:
-    domain: GenomeFeature
     todos:
       - "set the range to an enum?"
     description: >-
@@ -185,7 +182,6 @@ slots:
       - biolink:strand
 
   encodes:
-    domain: GenomeFeature
     range: GeneProduct
     description: >-
       The gene product encoded by this feature.
@@ -194,7 +190,6 @@ slots:
     todos:
       - If we revert Reaction back into the schema, that would be a reasonable domain for this slot
   end:
-    domain: GenomeFeature
     range: integer
     is_a: gff_coordinate
     description: The end of the feature in positive 1-based integer coordinates
@@ -204,12 +199,10 @@ slots:
     close_mappings:
       - biolink:end_interbase_coordinate
   feature_type:
-    domain: GenomeFeature
     range: string
     description: "TODO: Yuri to write"
 
   phase:
-    domain: GenomeFeature
     range: integer
     minimum_value: 0
     maximum_value: 2
@@ -219,6 +212,5 @@ slots:
       - biolink:phase
   start:
     is_a: gff_coordinate
-    domain: GenomeFeature
     description: The start of the feature in positive 1-based integer coordinates
     close_mappings: biolink:start_interbase_coordinate

@@ -302,7 +302,6 @@ slots:
     abstract: true
 
   has_peptide_quantifications:
-    domain: MetaproteomicsAnalysis
     range: PeptideQuantification
     multivalued: true
 
@@ -472,7 +471,6 @@ slots:
     abstract: true
 
   mags_list:
-    domain: MagsAnalysis
     range: MagBin
     multivalued: true
     inlined_as_list: true
@@ -554,7 +552,6 @@ slots:
     description: the reference standard(s) used for calibration
 
   has_metabolite_identifications:
-    domain: MetabolomicsAnalysis
     range: MetaboliteIdentification
     multivalued: true
     inlined_as_list: true

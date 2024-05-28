@@ -4349,7 +4349,7 @@ read_qc_analysis_set:
     has_failure_categorization:
       - type: nmdc:FailureCategorization
         qc_failure_what: malformed_data
-        qc_failure_where: ReadQcAnalysisActivity
+        qc_failure_where: ReadQcAnalysis
     ended_at_time: '2023-08-30T13:26:02.892410+00:00'
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
@@ -4391,7 +4391,7 @@ read_qc_analysis_set:
     has_failure_categorization:
       - type: nmdc:FailureCategorization
         qc_failure_what: low_read_count
-        qc_failure_where: ReadQcAnalysisActivity
+        qc_failure_where: ReadQcAnalysis
     ended_at_time: '2023-08-30T13:26:02.892410+00:00'
     execution_resource: NERSC-Perlmutter
     git_url: https://github.com/microbiomedata/ReadsQC
