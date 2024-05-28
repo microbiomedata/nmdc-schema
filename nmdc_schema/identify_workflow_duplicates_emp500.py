@@ -5,6 +5,7 @@ from pymongo import MongoClient
 from pymongo.errors import ConnectionFailure
 from dotenv import load_dotenv
 import urllib
+
 # this code deletes multiple workflow records from EMP500 which have different base IDs with a .1 version.
 
 envfile_path = "../../.env.client"
@@ -112,9 +113,11 @@ rbt_delete = []
 do_delete = []
 test_list = list(asm_coll.aggregate(pipeline))
 
+
 def data_objects_to_delete(output_list):
     for do in output_list:
-      do_delete.append(do)
+        do_delete.append(do)
+
 
 def find_asm_dups(omics_identifier, asm_keep_id):
     asm_duplicate_cursor = asm_coll.find(
@@ -123,6 +126,7 @@ def find_asm_dups(omics_identifier, asm_keep_id):
     for dup_asm in asm_duplicate_cursor:
         asm_delete.append(dup_asm["id"])
         data_objects_to_delete(dup_asm["has_output"])
+
 
 def find_qc_dups(omics_identifier, qc_keep_id):
     qc_duplicate_cursor = qc_coll.find(
@@ -192,6 +196,7 @@ print(len(rbt_delete))
 print(len(qc_delete))
 print(len(asm_delete))
 print(len(do_delete))
+
 
 def make_deletes(delete_list, del_coll):
     request_body_file = del_coll + "_request_body.json"
