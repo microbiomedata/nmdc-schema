@@ -37,10 +37,12 @@ study_id = "nmdc:sty-11-547rwq94"
 asm_coll_name = "metagenome_assembly_set"
 qc_coll_name = "read_qc_analysis_activity_set"
 rbt_coll_name = "read_based_taxonomy_analysis_activity_set"
+do_coll_name = "data_object_set"
 # collection connections
 asm_coll = mydb[asm_coll_name]
 qc_coll = mydb[qc_coll_name]
 rbt_coll = mydb[rbt_coll_name]
+do_coll = mydb[do_coll_name]
 
 # aggregation pipeline varaibles
 pipeline = [
@@ -107,9 +109,12 @@ rbt_keep = []
 asm_delete = []
 qc_delete = []
 rbt_delete = []
-
+do_delete = []
 test_list = list(asm_coll.aggregate(pipeline))
 
+def data_objects_to_delete(output_list):
+    for do in output_list:
+      do_delete.append(do)
 
 def find_asm_dups(omics_identifier, asm_keep_id):
     asm_duplicate_cursor = asm_coll.find(
@@ -117,7 +122,7 @@ def find_asm_dups(omics_identifier, asm_keep_id):
     )
     for dup_asm in asm_duplicate_cursor:
         asm_delete.append(dup_asm["id"])
-
+        data_objects_to_delete(dup_asm["has_output"])
 
 def find_qc_dups(omics_identifier, qc_keep_id):
     qc_duplicate_cursor = qc_coll.find(
@@ -125,6 +130,7 @@ def find_qc_dups(omics_identifier, qc_keep_id):
     )
     for qc_dup in qc_duplicate_cursor:
         qc_delete.append(qc_dup["id"])
+        data_objects_to_delete(qc_dup["has_output"])
 
 
 def find_rbt_dups(omics_identifier, rbt_keep_id):
@@ -133,6 +139,7 @@ def find_rbt_dups(omics_identifier, rbt_keep_id):
     )
     for rbt_dup in rbt_duplicate_cursor:
         rbt_delete.append(rbt_dup["id"])
+        data_objects_to_delete(rbt_dup["has_output"])
 
 
 for doc in test_list:
@@ -184,7 +191,7 @@ print(len(qc_keep))
 print(len(rbt_delete))
 print(len(qc_delete))
 print(len(asm_delete))
-
+print(len(do_delete))
 
 def make_deletes(delete_list, del_coll):
     request_body_file = del_coll + "_request_body.json"
@@ -199,3 +206,4 @@ def make_deletes(delete_list, del_coll):
 make_deletes(rbt_delete, rbt_coll_name)
 make_deletes(qc_delete, qc_coll_name)
 make_deletes(asm_delete, asm_coll_name)
+make_deletes(do_delete, do_coll_name)
