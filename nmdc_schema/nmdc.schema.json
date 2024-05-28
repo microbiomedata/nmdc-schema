@@ -4799,16 +4799,16 @@
         "FailureWhereEnum": {
             "description": "The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.",
             "enum": [
-                "OmicsProcessing",
+                "NucleotideSequencing",
                 "Pooling",
                 "Extraction",
                 "LibraryPreparation",
                 "MetagenomeAssembly",
-                "MetatranscriptomeActivity",
-                "MagsAnalysisActivity",
-                "ReadQcAnalysisActivity",
-                "ReadBasedTaxonomyAnalysisActivity",
-                "MetagenomeAnnotationActivity"
+                "MetatranscriptomeAnalysis",
+                "MagsAnalysis",
+                "ReadQcAnalysis",
+                "ReadBasedTaxonomyAnalysis",
+                "MetagenomeAnnotation"
             ],
             "title": "FailureWhereEnum",
             "type": "string"
@@ -6282,7 +6282,7 @@
                 },
                 "eluent_introduction_category": {
                     "$ref": "#/$defs/EluentIntroductionCategoryEnum",
-                    "description": "how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe"
+                    "description": "A high-level description for how the processed sample is introduced into a mass spectrometer."
                 },
                 "end_date": {
                     "description": "The date on which any process or activity was ended",
@@ -6301,7 +6301,7 @@
                     "type": "string"
                 },
                 "has_chromatography_configuration": {
-                    "description": "a description of how the chromatographic introduction was configured for the introduction of the sample into the mass spectrometer",
+                    "description": "An identifier for the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -6319,7 +6319,7 @@
                     "type": "array"
                 },
                 "has_mass_spectrometry_configuration": {
-                    "description": "a description of how the mass spectrometry was configured",
+                    "description": "An identifier for the associated MassSpectrometryConfiguration.",
                     "type": "string"
                 },
                 "has_output": {
@@ -10086,7 +10086,7 @@
                 },
                 "contained_in": {
                     "$ref": "#/$defs/ContainerCategoryEnum",
-                    "description": "A type of container. i.e. test tube, falcon tube, etc."
+                    "description": "A type of container."
                 },
                 "description": {
                     "description": "a human-readable description of a thing",
@@ -10411,7 +10411,7 @@
                 },
                 "contained_in": {
                     "$ref": "#/$defs/ContainerCategoryEnum",
-                    "description": "A type of container. i.e. test tube, falcon tube, etc."
+                    "description": "A type of container."
                 },
                 "container_size": {
                     "$ref": "#/$defs/QuantityValue",

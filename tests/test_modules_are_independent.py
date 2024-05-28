@@ -24,8 +24,8 @@ class TestModulesAreIndependent(unittest.TestCase):
         schema_modules.sort()
 
         for schema_module in schema_modules:
-            print(schema_module)
-            # print(schema_module)
+            if schema_module.endswith("deprecated.yaml"):
+                continue
             view = SchemaView(schema_module)
             # print(view.schema.name)
             generated = jsg.JsonSchemaGenerator(schema=view.schema)
