@@ -283,6 +283,8 @@
 
 
 
+  MetagenomeAnnotationActivity : alternative_identifiers
+
   MetagenomeAnnotationActivity : ended_at_time
 
   MetagenomeAnnotationActivity : execution_resource
@@ -423,6 +425,12 @@
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>0..* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
 <td></td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of alternative identifiers for the entity</td>
 <td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
 </tr>
 <tr>
@@ -730,6 +738,22 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: FailureCategorization
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: A list of alternative identifiers for the entity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: alternative_identifiers
+    owner: MetagenomeAnnotationActivity
+    domain_of:
+    - Biosample
+    - Study
+    - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
+    range: uriorcurie
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

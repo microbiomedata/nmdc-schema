@@ -323,6 +323,8 @@
 
 
 
+  WorkflowExecutionActivity : alternative_identifiers
+
   WorkflowExecutionActivity : ended_at_time
 
   WorkflowExecutionActivity : execution_resource
@@ -469,6 +471,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of alternative identifiers for the entity</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
@@ -594,6 +602,7 @@ slots:
 - qc_status
 - qc_comment
 - has_failure_categorization
+- alternative_identifiers
 slot_usage:
   started_at_time:
     name: started_at_time
@@ -906,6 +915,22 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: FailureCategorization
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: A list of alternative identifiers for the entity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: alternative_identifiers
+    owner: WorkflowExecutionActivity
+    domain_of:
+    - Biosample
+    - Study
+    - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
+    range: uriorcurie
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
