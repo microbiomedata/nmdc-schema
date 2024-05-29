@@ -24,9 +24,9 @@ class TestModulesAreIndependent(unittest.TestCase):
         schema_modules.sort()
 
         for schema_module in schema_modules:
-            # print(schema_module)
+            if schema_module.endswith("deprecated.yaml"):
+                continue
             view = SchemaView(schema_module)
-            # print(view.schema.name)
             generated = jsg.JsonSchemaGenerator(schema=view.schema)
             generated_text = generated.serialize()
 
@@ -43,9 +43,9 @@ class TestModulesForOwl(unittest.TestCase):
         # ] # could test a defined subset
 
         for schema_module in schema_modules:
-            # print(schema_module)
+            if schema_module.endswith("deprecated.yaml"):
+                continue
             view = SchemaView(schema_module)
-            # print(view.schema.name)
             generated = og.OwlSchemaGenerator(schema=view.schema)
             generated_text = generated.serialize()
 

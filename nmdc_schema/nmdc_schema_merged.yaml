@@ -3387,9 +3387,10 @@ enums:
       as Class names.
     from_schema: https://w3id.org/nmdc/basic_classes
     permissible_values:
-      OmicsProcessing:
-        text: OmicsProcessing
-        description: A failure has occurred in omics processing, a lab process.
+      NucleotideSequencing:
+        text: NucleotideSequencing
+        description: A failure has occurred during nucleotide sequencing, a data generation
+          process.
       Pooling:
         text: Pooling
         description: A failure has occurred in pooling, a lab process.
@@ -3402,22 +3403,22 @@ enums:
       MetagenomeAssembly:
         text: MetagenomeAssembly
         description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeActivity:
-        text: MetatranscriptomeActivity
+      MetatranscriptomeAnalysis:
+        text: MetatranscriptomeAnalysis
         description: A failure has occurred in metatranscriptome analysis, a workflow
           process.
-      MagsAnalysisActivity:
-        text: MagsAnalysisActivity
+      MagsAnalysis:
+        text: MagsAnalysis
         description: A failure has occurred in binning, a workflow process to generate
           metagenome-assembled genomes (MAGS).
-      ReadQcAnalysisActivity:
-        text: ReadQcAnalysisActivity
+      ReadQcAnalysis:
+        text: ReadQcAnalysis
         description: A failure has occurred in read qc, a workflow process.
-      ReadBasedTaxonomyAnalysisActivity:
-        text: ReadBasedTaxonomyAnalysisActivity
+      ReadBasedTaxonomyAnalysis:
+        text: ReadBasedTaxonomyAnalysis
         description: A failure has occurred in reads based taxonomy, a workflow process.
-      MetagenomeAnnotationActivity:
-        text: MetagenomeAnnotationActivity
+      MetagenomeAnnotation:
+        text: MetagenomeAnnotation
         description: A failure has occurred in annotation, a workflow process.
   ExecutionResourceEnum:
     name: ExecutionResourceEnum
@@ -4265,25 +4266,27 @@ slots:
     range: AcquisitionCategoryEnum
   eluent_introduction_category:
     name: eluent_introduction_category
-    description: how a processed sample is introduced into a mass spectrometer, for
-      example liquid chromatography or direct infusion through a syringe
+    description: A high-level description for how the processed sample is introduced
+      into a mass spectrometer.
+    examples:
+    - value: liquid_chromatography
+    - value: direct_infusion_syringe
     from_schema: https://w3id.org/nmdc/nmdc
     range: EluentIntroductionCategoryEnum
   has_mass_spectrometry_configuration:
     name: has_mass_spectrometry_configuration
-    description: a description of how the mass spectrometry was configured
+    description: An identifier for the associated MassSpectrometryConfiguration.
     from_schema: https://w3id.org/nmdc/nmdc
     range: MassSpectrometryConfiguration
   has_chromatography_configuration:
     name: has_chromatography_configuration
-    description: a description of how the chromatographic introduction was configured
-      for the introduction of the sample into the mass spectrometer
+    description: An identifier for the associated ChromatographyConfiguration, providing
+      information about how a sample was introduced into the mass spectrometer.
     from_schema: https://w3id.org/nmdc/nmdc
     range: ChromatographyConfiguration
   metagenome_annotation_id:
     name: metagenome_annotation_id
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FunctionalAnnotationAggMember
     range: WorkflowExecution
   gene_function_id:
     name: gene_function_id
@@ -4301,7 +4304,6 @@ slots:
   functional_annotation_agg:
     name: functional_annotation_agg
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: Database
     multivalued: true
     range: FunctionalAnnotationAggMember
     inlined: true
@@ -4340,7 +4342,6 @@ slots:
     - MS:1000004
     narrow_mappings:
     - MIXS:0000111
-    domain: PlannedProcess
     range: QuantityValue
   library_type:
     name: library_type
@@ -4348,7 +4349,6 @@ slots:
     examples:
     - value: DNA
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: LibraryPreparation
     range: LibraryTypeEnum
   date_created:
     name: date_created
@@ -4365,7 +4365,6 @@ slots:
       for a single json object that combines multiple object types
     from_schema: https://w3id.org/nmdc/nmdc
     mixin: true
-    domain: Database
     multivalued: true
     inlined_as_list: true
   chemical_entity_set:
@@ -4375,7 +4374,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ChemicalEntity
   planned_process_set:
     name: planned_process_set
@@ -4384,7 +4382,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: PlannedProcess
   biosample_set:
     name: biosample_set
@@ -4393,7 +4390,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Biosample
   study_set:
     name: study_set
@@ -4402,21 +4398,18 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Study
   field_research_site_set:
     name: field_research_site_set
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
     name: collecting_biosamples_from_site_set
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: CollectingBiosamplesFromSite
   data_object_set:
     name: data_object_set
@@ -4425,7 +4418,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: DataObject
   genome_feature_set:
     name: genome_feature_set
@@ -4433,7 +4425,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: GenomeFeature
   functional_annotation_set:
     name: functional_annotation_set
@@ -4442,7 +4433,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: FunctionalAnnotation
   workflow_execution_set:
     name: workflow_execution_set
@@ -4450,7 +4440,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: WorkflowExecution
   mags_set:
     name: mags_set
@@ -4459,7 +4448,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MagsAnalysis
   metabolomics_analysis_set:
     name: metabolomics_analysis_set
@@ -4468,7 +4456,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetabolomicsAnalysis
   metaproteomics_analysis_set:
     name: metaproteomics_analysis_set
@@ -4477,7 +4464,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetaproteomicsAnalysis
   metagenome_annotation_set:
     name: metagenome_annotation_set
@@ -4486,7 +4472,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetagenomeAnnotation
   metagenome_assembly_set:
     name: metagenome_assembly_set
@@ -4495,7 +4480,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetagenomeAssembly
   metagenome_sequencing_set:
     name: metagenome_sequencing_set
@@ -4504,7 +4488,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetagenomeSequencing
   metatranscriptome_analysis_set:
     name: metatranscriptome_analysis_set
@@ -4513,7 +4496,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetatranscriptomeAnalysis
   read_qc_analysis_set:
     name: read_qc_analysis_set
@@ -4522,7 +4504,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ReadQcAnalysis
   read_based_taxonomy_analysis_set:
     name: read_based_taxonomy_analysis_set
@@ -4531,7 +4512,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ReadBasedTaxonomyAnalysis
   nom_analysis_set:
     name: nom_analysis_set
@@ -4540,7 +4520,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: NomAnalysis
   data_generation_set:
     name: data_generation_set
@@ -4549,7 +4528,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: DataGeneration
   workflow_chain_set:
     name: workflow_chain_set
@@ -4558,14 +4536,12 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: WorkflowChain
   pooling_set:
     name: pooling_set
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Pooling
   processed_sample_set:
     name: processed_sample_set
@@ -4574,7 +4550,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ProcessedSample
   extraction_set:
     name: extraction_set
@@ -4583,7 +4558,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Extraction
   library_preparation_set:
     name: library_preparation_set
@@ -4594,7 +4568,6 @@ slots:
     - library_construction_set
     mixins:
     - object_set
-    domain: Database
     range: LibraryPreparation
   instrument_set:
     name: instrument_set
@@ -4603,7 +4576,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Instrument
   calibration_set:
     name: calibration_set
@@ -4621,16 +4593,6 @@ slots:
     mixins:
     - object_set
     range: Configuration
-  omics_type:
-    name: omics_type
-    description: The type of omics data
-    examples:
-    - value: metatranscriptome
-    - value: metagenome
-    from_schema: https://w3id.org/nmdc/nmdc
-    deprecated_element_has_exact_replacement: analyte_category
-    domain: DataGeneration
-    range: ControlledTermValue
   sample_collection_day:
     name: sample_collection_day
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4671,14 +4633,12 @@ slots:
   protocol_execution_category:
     name: protocol_execution_category
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: ProtocolExecution
     range: ProtocolCategoryEnum
     required: true
   has_process_parts:
     name: has_process_parts
     description: A list of process parts that make up a protocol.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: ProtocolExecution
     multivalued: true
     list_elements_ordered: true
     range: PlannedProcess
@@ -4702,7 +4662,6 @@ slots:
     description: A quantitative or qualitative measurement of the physical dimensions
       of the pores in a material.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FiltrationProcess
     range: QuantityValue
   conditionings:
     name: conditionings
@@ -4719,7 +4678,6 @@ slots:
     description: The method that was used to separate a substance from a solution
       or mixture.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FiltrationProcess
     range: SeparationMethodEnum
   filtration_category:
     name: filtration_category
@@ -4748,14 +4706,17 @@ slots:
     range: boolean
   contained_in:
     name: contained_in
-    description: A type of container. i.e. test tube, falcon tube, etc.
+    description: A type of container.
+    examples:
+    - value: test tube
+    - value: falcon tube
+    - value: whirlpak
     from_schema: https://w3id.org/nmdc/nmdc
     range: ContainerCategoryEnum
   input_volume:
     name: input_volume
     description: The volume of the input sample.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: PlannedProcess
     range: QuantityValue
   ordered_mobile_phases:
     name: ordered_mobile_phases
@@ -4779,14 +4740,12 @@ slots:
     name: sampled_portion
     description: The portion of the sample that is taken for downstream activity.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: SubSamplingProcess
     multivalued: true
     range: SamplePortionEnum
   chemical_conversion_category:
     name: chemical_conversion_category
     description: The type of chemical conversion process.
     from_schema: https://w3id.org/nmdc/core
-    domain: ChemicalConversionProcess
     range: ChemicalConversionCategoryEnum
   substances_volume:
     name: substances_volume
@@ -5288,7 +5247,6 @@ slots:
   subject:
     name: subject
     from_schema: https://w3id.org/nmdc/annotation
-    domain: FunctionalAnnotation
     range: GeneProduct
   has_function:
     name: has_function
@@ -5297,7 +5255,6 @@ slots:
     - but is actually taking string arguments in MongoDB,
     - and those are frequently fulltext, not CURIEs. MAM 2021-06-23
     from_schema: https://w3id.org/nmdc/annotation
-    domain: FunctionalAnnotation
     range: string
     pattern: ^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$
   gff_coordinate:
@@ -5328,7 +5285,6 @@ slots:
     from_schema: https://w3id.org/nmdc/annotation
     exact_mappings:
     - biolink:strand
-    domain: GenomeFeature
   encodes:
     name: encodes
     description: The gene product encoded by this feature. Typically this is used
@@ -5338,7 +5294,6 @@ slots:
     - If we revert Reaction back into the schema, that would be a reasonable domain
       for this slot
     from_schema: https://w3id.org/nmdc/annotation
-    domain: GenomeFeature
     range: GeneProduct
   end:
     name: end
@@ -5350,13 +5305,11 @@ slots:
     close_mappings:
     - biolink:end_interbase_coordinate
     is_a: gff_coordinate
-    domain: GenomeFeature
     range: integer
   feature_type:
     name: feature_type
     description: 'TODO: Yuri to write'
     from_schema: https://w3id.org/nmdc/annotation
-    domain: GenomeFeature
     range: string
   phase:
     name: phase
@@ -5365,7 +5318,6 @@ slots:
     from_schema: https://w3id.org/nmdc/annotation
     exact_mappings:
     - biolink:phase
-    domain: GenomeFeature
     range: integer
     minimum_value: 0
     maximum_value: 2
@@ -5376,7 +5328,6 @@ slots:
     close_mappings:
     - biolink:start_interbase_coordinate
     is_a: gff_coordinate
-    domain: GenomeFeature
   biomaterial_purity:
     name: biomaterial_purity
     from_schema: https://w3id.org/nmdc/attribute_values
@@ -18498,7 +18449,6 @@ slots:
   has_peptide_quantifications:
     name: has_peptide_quantifications
     from_schema: https://w3id.org/nmdc/workflow_execution_activity
-    domain: MetaproteomicsAnalysis
     multivalued: true
     range: PeptideQuantification
   asm_score:
@@ -18688,7 +18638,6 @@ slots:
   mags_list:
     name: mags_list
     from_schema: https://w3id.org/nmdc/workflow_execution_activity
-    domain: MagsAnalysis
     multivalued: true
     range: MagBin
     inlined_as_list: true
@@ -18782,7 +18731,6 @@ slots:
   has_metabolite_identifications:
     name: has_metabolite_identifications
     from_schema: https://w3id.org/nmdc/workflow_execution_activity
-    domain: MetabolomicsAnalysis
     multivalued: true
     range: MetaboliteIdentification
     inlined_as_list: true
