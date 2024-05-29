@@ -6,7 +6,8 @@ from pymongo.errors import ConnectionFailure
 from dotenv import load_dotenv
 import urllib
 
-# this code deletes multiple workflow records from EMP500 which have different base IDs with a .1 version.
+# this is generating a .json data file that can be used to delete these records by submitting it to the appropriate endpoint (ie queries:run)
+# for EMP500 (nmdc:sty-11-547rwq94) which have different base IDs with a .1 version.
 
 envfile_path = "../../.env.client"
 
@@ -187,6 +188,8 @@ for doc in test_list:
                     find_rbt_dups(doc["_id"], rbt["id"])
                 else:
                     print("not sure what to do")
+    else:
+        print("not sure what to do for " + omics_id)
 
 print(len(rbt_keep))
 print(len(asm_keep))
