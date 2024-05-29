@@ -38,7 +38,7 @@ class Migrator(MigratorBase):
         elif data_gen_doc["analyte_category"] in mass_spec:
             data_gen_doc["type"] = 'nmdc:MassSpectrometry'
         else:
-            self.logger.error(
-                    f"ERROR: analyte_category for {data_gen_doc['id']} is {data_gen_doc['analyte_category']}, which is not one of {nucleotide_seqs} or {mass_spec}")
+            raise ValueError(f"The 'analyte_category' value ({data_gen_doc['analyte_category']}) in document "
+                             f"({data_gen_doc['id']}) is not one of: {', '.join(nucleotide_seqs + mass_spec)}.")
 
         return data_gen_doc

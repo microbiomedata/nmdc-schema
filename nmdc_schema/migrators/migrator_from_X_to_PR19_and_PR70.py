@@ -63,8 +63,9 @@ class Migrator(MigratorBase):
             
             instruments = load_yaml_asset("migrator_from_X_to_PR19_and_PR70/instrument_set.yaml")
             allowed_instrument_names = [instrument["name"] for instrument in instruments]
-            
-            matches = difflib.get_close_matches(existing_instrument_name, allowed_instrument_names, n=1, cutoff=0.25)
+
+            cutoff = 0.25
+            matches = difflib.get_close_matches(existing_instrument_name, allowed_instrument_names, n=1, cutoff=cutoff)
 
             if matches:
 
@@ -81,7 +82,10 @@ class Migrator(MigratorBase):
                     del omics_doc["instrument_name"]
         
             else:
-                self.logger.error(f"The instrument_name {omics_doc['id']} has a value of {omics_doc['instrument_name']}, but did not have any matches with the cutoff set at 0.25")
+                raise ValueError(f"The 'instrument_name' value ({existing_instrument_name}) "
+                                 f"on the OmicsProcessing document ({omics_doc['id']}) "
+                                 f"does not match any of the allowed instrument names "
+                                 f"(with a similarity score of at least {cutoff}).")
 
         return omics_doc
 
