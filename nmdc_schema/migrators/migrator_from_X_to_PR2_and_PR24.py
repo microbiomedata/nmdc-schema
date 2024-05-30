@@ -31,5 +31,4 @@ class Migrator(MigratorBase):
             try:
                 self.adapter.rename_collection(current_name=current_collection_name, new_name=new_collection_name)
             except KeyError:
-                print(f"Error: Collection '{current_collection_name}' not found in the adapter.")
-
+                raise KeyError(f"Error: Collection '{current_collection_name}' does not exist.")
