@@ -570,6 +570,8 @@ enums:
       full_scan_only:
         aliases:
           - MS
+        description:
+          Mass spectrometer data acquisition method wherein only MS1 data are acquired.
 
   ResolutionCategoryEnum:
     permissible_values:
