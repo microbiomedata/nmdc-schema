@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Optional, Callable, List, Any
+from typing import Optional, Callable, List, Any, Union
 
 
 class AdapterBase(ABC):
@@ -108,11 +108,11 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
-    def do_for_each_document(
-        self, collection_name: str, action: Callable[[dict], None]
+    def set_field_of_each_document(
+        self, collection_name: str, field_name: str, value: Union[None, str, int, float, bool],
     ) -> None:
         r"""
-        Passes each document in the specified collection to the specified function. This method was designed
-        to facilitate iterating over all documents in a collection without actually modifying them.
+        Assigns the specified value to the specified field of each document in the collection.
+        This method is a specialized alternative to the `process_each_document` method.
         """
         pass

@@ -199,42 +199,33 @@ class TestDictionaryAdapter(unittest.TestCase):
         assert len([doc for doc in collection if doc["id"] == 2 and doc["x"] == "Bz"]) == 1
         assert len([doc for doc in collection if doc["id"] == 3 and doc["x"] == "Cz"]) == 1
 
-    def test_do_for_each_document(self):
+    def test_set_field_of_each_document(self):
         # Set up:
         collection_name = "my_collection"
-        document_1 = dict(_id=1, id=1, x="a")
-        document_2 = dict(_id=2, id=2, x="b")
-        document_3 = dict(_id=3, id=3, x="c")
-        self.db[collection_name] = [document_1, document_2, document_3]
+        document_1 = dict(_id=1, id=1, x="original")
+        document_2 = dict(_id=2, id=2)
+        document_3 = dict(_id=3, id=3, x=None)
+        self.db[collection_name] = []
+        self.db[collection_name].extend(
+            [document_1, document_2, document_3]
+        )
         assert len(self.db[collection_name]) == 3
-        # Temporarily add an attribute to this class instance so that
-        # this test has something persistent it can modify and examine.
-        self._characters = []
-
-        def append_x_to_sequence(doc: dict) -> None:
-            r"""Example pipeline stage that appends the `x` value to some list."""
-            self._characters.append(doc["x"])
 
         # Invoke function-under-test:
         adapter = DictionaryAdapter(database=self.db)
-        adapter.do_for_each_document(
-            collection_name, append_x_to_sequence
+        adapter.set_field_of_each_document(
+            collection_name, "x", "new"
         )
 
         # Validate result:
-        # - The list consists of the `x` values from the documents in the collection.
-        assert len(self._characters) == 3
-        assert self._characters[0] == "a"
-        assert self._characters[1] == "b"
-        assert self._characters[2] == "c"
-        # - The collection was not modified.
         collection = self.db[collection_name]
-        assert len([doc for doc in collection if doc["_id"] == 1 and doc["id"] == 1 and doc["x"] == "a"]) == 1
-        assert len([doc for doc in collection if doc["_id"] == 2 and doc["id"] == 2 and doc["x"] == "b"]) == 1
-        assert len([doc for doc in collection if doc["_id"] == 3 and doc["id"] == 3 and doc["x"] == "c"]) == 1
+        assert len([doc for doc in collection if doc["x"] == "original"]) == 0
+        assert len([doc for doc in collection if "x" not in doc]) == 0
+        assert len([doc for doc in collection if doc["x"] is None]) == 0
+        assert len([doc for doc in collection if doc["_id"] == 1 and doc["id"] == 1 and doc["x"] == "new"]) == 1
+        assert len([doc for doc in collection if doc["_id"] == 2 and doc["id"] == 2 and doc["x"] == "new"]) == 1
+        assert len([doc for doc in collection if doc["_id"] == 3 and doc["id"] == 3 and doc["x"] == "new"]) == 1
 
-        # Clean up:
-        delattr(self, "_characters")
 
     def test_callbacks(self):
         # Set up:

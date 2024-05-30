@@ -1,5 +1,5 @@
 from copy import deepcopy
-from typing import Optional, Callable, List
+from typing import Optional, Callable, List, Union
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 
 
@@ -304,34 +304,31 @@ class DictionaryAdapter(AdapterBase):
                 # Overwrite the original document with the processed one.
                 self._db[collection_name][index] = processed_document
 
-    def do_for_each_document(
-        self, collection_name: str, action: Callable[[dict], None]
+    def set_field_of_each_document(
+        self, collection_name: str, field_name: str, value: Union[None, str, int, float, bool],
     ) -> None:
         r"""
-        Passes each document in the specified collection to the specified function. This method was designed
-        to facilitate iterating over all documents in a collection without actually modifying them.
+        Assigns the specified value to the specified field of each document in the collection.
+        This method is a specialized alternative to the `process_each_document` method.
 
-        >>> total = 0
-        >>> def add_to_total(payment: dict) -> None:
-        ...     global total
-        ...     total += payment["amount"]
-        >>>
         >>> database = {
-        ...   "payment_set": [
-        ...     {"id": "111", "amount": 100},
-        ...     {"id": "222", "amount": 200},
-        ...     {"id": "333", "amount": 300}
+        ...   "thing_set": [
+        ...     {"id": "1", "name": "original"},
+        ...     {"id": "2"},
+        ...     {"id": "3", "name": None}
         ...   ]
         ... }
         >>> da = DictionaryAdapter(database)
-        >>> total
-        0
-        >>> da.do_for_each_document("payment_set", add_to_total)
-        >>> total
-        600
+        >>> da.set_field_of_each_document("thing_set", "name", "new")
+        >>> database["thing_set"][0]
+        {'id': '1', 'name': 'new'}
+        >>> database["thing_set"][1]
+        {'id': '2', 'name': 'new'}
+        >>> database["thing_set"][2]
+        {'id': '3', 'name': 'new'}
         """
 
         # Iterate over every document in the collection, if the collection exists.
         if collection_name in self._db:
             for document in self._db[collection_name]:
-                action(document)
+                document[field_name] = value
