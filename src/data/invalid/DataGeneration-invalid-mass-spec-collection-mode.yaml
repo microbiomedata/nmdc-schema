@@ -2,7 +2,7 @@ id: nmdc:dgms-99-zUCd5N
 analyte_category: metabolome
 mass_spectrum_collection_modes: 
   - profile
-mass_spectrometry_acquisition_strategy: data_independent_acquisition
+acquisition_strategy: data_independent_acquisition
 resolution_categories: 
   - high
 mass_analyzers: 

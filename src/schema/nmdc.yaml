@@ -189,9 +189,9 @@ classes:
     class_uri: nmdc:MassSpectrometryConfiguration
     description: A set of parameters that define and control the actions of a mass spectrometry process. 
     notes:
-      - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
+      - This class is intended to represent a mass spectrometry method file that controls a mass spectrometry process.
     slots:
-      - mass_spectrometry_acquisition_strategy
+      - acquisition_strategy
       - resolution_categories
       - mass_analyzers
       - ionization_source
@@ -793,7 +793,7 @@ slots:
           - high
           - low
     multivalued: true
-  mass_spectrometry_acquisition_strategy:
+  acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
     exact_mappings:
