@@ -4,7 +4,7 @@ from typing import Optional
 from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
 
 
-class TestMongoAdapter(unittest.TestCase):
+class TestDictionaryAdapter(unittest.TestCase):
     r"""
     Tests targeting the `DictionaryAdapter` class.
 
@@ -225,6 +225,7 @@ class TestMongoAdapter(unittest.TestCase):
         assert len([doc for doc in collection if doc["_id"] == 1 and doc["id"] == 1 and doc["x"] == "new"]) == 1
         assert len([doc for doc in collection if doc["_id"] == 2 and doc["id"] == 2 and doc["x"] == "new"]) == 1
         assert len([doc for doc in collection if doc["_id"] == 3 and doc["id"] == 3 and doc["x"] == "new"]) == 1
+
 
     def test_callbacks(self):
         # Set up:

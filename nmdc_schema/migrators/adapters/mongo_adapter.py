@@ -198,3 +198,4 @@ class MongoAdapter(AdapterBase):
         if collection_name in self._db.list_collection_names():
             collection = self._db.get_collection(name=collection_name)
             collection.update_many({}, {"$set": {field_name: value}})
+

@@ -265,9 +265,9 @@ class DictionaryAdapter(AdapterBase):
 
         Reference: https://docs.python.org/3/library/copy.html#copy.deepcopy
 
-        >>> def capitalize_foo_value(document: dict) -> dict:
-        ...     document["foo"] = document["foo"].upper()
-        ...     return document
+        >>> def capitalize_foo_value(thing: dict) -> dict:
+        ...     thing["foo"] = thing["foo"].upper()
+        ...     return thing
         >>>
         >>> database = {
         ...   "thing_set": [

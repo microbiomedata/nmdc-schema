@@ -48,6 +48,7 @@ classes:
       - qc_status
       - qc_comment
       - has_failure_categorization
+      - alternative_identifiers
     rules:
       - title: qc_status_pass_has_output_required
         description: >-

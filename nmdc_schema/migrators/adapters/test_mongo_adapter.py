@@ -271,6 +271,7 @@ class TestMongoAdapter(unittest.TestCase):
         assert collection.count_documents({"_id": 2, "id": 2, "x": "new"}) == 1
         assert collection.count_documents({"_id": 3, "id": 3, "x": "new"}) == 1
 
+
     def test_callbacks(self):
         # Set up:
         collection_name = "my_collection"
