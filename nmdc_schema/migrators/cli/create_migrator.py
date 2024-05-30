@@ -98,8 +98,7 @@ class Migrator(MigratorBase):
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
         pass
-
-'''
+'''.lstrip()  # remove leading whitespace
 
     # Create and populate the file (unless it already exists).
     file_path = Path(MIGRATOR_DIRECTORY) / Path(file_name)
