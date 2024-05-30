@@ -793,7 +793,6 @@ slots:
           - high
           - low
     multivalued: true
-
   mass_spectrometry_acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
