@@ -4893,8 +4893,7 @@ configuration_set:
     name: EMSL lipidomics mass spectrometry method, positive polarity
     description: Mass spectrometry method used by EMSL for lipidomics analysis, positive polarity
     type: nmdc:MassSpectrometryConfiguration
-    acquisition_category: tandem_mass_spectrum
-    acquisition_strategy: data_dependent_acquisition
+    mass_spctrometry_acquisition_strategy: data_dependent_acquisition
     mass_spectrum_collection_modes:
       - full_profile
       - centroid
@@ -4910,8 +4909,7 @@ configuration_set:
     name: EMSL lipidomics mass spectrometry method, negative polarity
     description: Mass spectrometry method used by EMSL for lipidomics analysis, negative polarity
     type: nmdc:MassSpectrometryConfiguration
-    acquisition_category: tandem_mass_spectrum
-    acquisition_strategy: data_dependent_acquisition
+    mass_spectrometry_acquisition_strategy: data_dependent_acquisition
     mass_spectrum_collection_modes:
       - full_profile
       - centroid

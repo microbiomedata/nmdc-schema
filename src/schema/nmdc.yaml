@@ -191,8 +191,7 @@ classes:
     notes:
       - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
     slots:
-      - acquisition_category
-      - acquisition_strategy
+      - mass_spectrometry_acquisition_strategy
       - resolution_categories
       - mass_analyzers
       - ionization_source
@@ -551,23 +550,26 @@ classes:
 
 enums:
 
-  AcquisitionCategoryEnum:
-    permissible_values:
-      full_scan:
-        aliases:
-          - MS
-      tandem_mass_spectrum:
-        aliases:
-          -MSn
-
-  AcquisitionStrategyEnum:
+  MassSpectrometryAcquisitionStrategyEnum:
     permissible_values:
       data_independent_acquisition:
+        description:
+          - Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.
         aliases:
           - DIA
+          - data independent acquisition from dissociation of full mass range
+        exact_mappings:
+          - MS:1003227
       data_dependent_acquisition:
+        description:
+          Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.
         aliases:
           -DDA
+        exact_mappings:
+          - MS:1003221
+      full_scan_only:
+        aliases:
+          - MS
 
   ResolutionCategoryEnum:
     permissible_values:
@@ -790,13 +792,11 @@ slots:
           - low
     multivalued: true
 
-  acquisition_strategy:
-    range: AcquisitionStrategyEnum
-    description: whether spectra are dependent on or independent of any other spectra during the experiment
-
-  acquisition_category:
-    range: AcquisitionCategoryEnum
-    description: whether only survey or tandem mass spectra are part of the experiment
+  mass_spectrometry_acquisition_strategy:
+    range: MassSpectrometryAcquisitionStrategyEnum
+    description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragmented?
+    exact_mappings:
+      - MS:1003213
 
   eluent_introduction_category:
     range: EluentIntroductionCategoryEnum
