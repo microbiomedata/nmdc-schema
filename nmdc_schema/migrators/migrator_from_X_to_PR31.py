@@ -78,7 +78,9 @@ class Migrator(MigratorBase):
                     self.logger.info(f"Workflow with id {doc['id']} has instrument: {doc['used']} matches OmicsProcessing doc instrument: {omics_processing_doc['instrument_name']} well enough")
                 doc.pop("used")
             else:
-                self.logger.error(f"Workflow doc {doc['id']} with instrument: {doc['used']} does not match {omics_processing_doc['instrument_name']}")
+                raise ValueError(f"The 'used' value ({doc['used']}) "
+                                 f"on the WorkflowExecution document ({doc['id']}) "
+                                 f"does not match the instrument name ({omics_processing_doc['instrument_name']}).")
         
         return doc
 

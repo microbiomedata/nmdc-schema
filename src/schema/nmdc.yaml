@@ -1044,14 +1044,6 @@ slots:
     range: Configuration
     description: This property links a database object to the set of configurations within it.
 
-  omics_type:
-    deprecated_element_has_exact_replacement: analyte_category
-    range: ControlledTermValue
-    description: The type of omics data
-    examples:
-      - value: metatranscriptome
-      - value: metagenome
-
   sample_collection_day:
     range: integer
   sample_collection_hour:

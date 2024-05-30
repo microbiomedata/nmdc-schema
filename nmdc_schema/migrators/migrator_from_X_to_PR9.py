@@ -216,9 +216,9 @@ class Migrator(MigratorBase):
             if workflow_chain_doc["was_informed_by"] == omics_id:
                 del workflow_doc["was_informed_by"]
             else:
-                self.logger.error(
-                    f"WorkflowExecution doc with id {workflow_doc['id']} was_informed_by slot does not match"
-                    f"its workflow chain doc with id {workflow_chain_doc['id']} was_informed_by slot"
-                )
+                raise ValueError(f"The 'was_informed_by' value ({omics_id}) "
+                                 f"on the WorkflowExecutionActivity document ({workflow_doc['id']}) "
+                                 f"doesn't match the 'was_informed_by' value ({workflow_chain_doc['was_informed_by']}) "
+                                 f"on the corresponding WorkflowChain document ({workflow_chain_doc['id']}).")
 
         return workflow_doc

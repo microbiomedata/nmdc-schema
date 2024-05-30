@@ -44,9 +44,10 @@ class Migrator(MigratorBase):
             # remove omics_type slot
             del omics_proc["omics_type"]
     
-        else: 
-            self.logger.error(f"omics type does not match any analyte categories for {omics_proc['id']}")
-        
+        else:
+            raise ValueError(f"The 'omics_type' value ({omics_type}) of document '{omics_proc['id']}' "
+                             f"does not match any 'analyte_category' values.")
+
         return omics_proc
 
     
