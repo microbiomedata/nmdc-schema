@@ -27,6 +27,8 @@ site/
 tdbcontent
 tdbcontent/
 
+src/scripts/cachedir/
+
 # PyCharm project config
 .idea/
 

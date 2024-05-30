@@ -5,8 +5,8 @@ pooling_set:
       - generic:xxx
     description: xxx
     has_input:
-      - generic:xxx
-      - generic:yyy
+      - nmdc:bsm-99-123456
+      - nmdc:bsm-99-987654
     has_output:
       - generic:xxx
     # participating_agent: xxx # Agent isn't a named thing and doesn't have an ID so must be inlined

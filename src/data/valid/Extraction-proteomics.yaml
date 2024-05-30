@@ -1,6 +1,6 @@
 id: "nmdc:extrp-38-r2pk"
 has_input:
-  - "nmdc:fasp-37"
+  - nmdc:procsm-99-abcdef
 has_output:
   - "nmdc:ome-39"
 extractant: # range: Solution... multivalued? (no) -> has_solution_component
