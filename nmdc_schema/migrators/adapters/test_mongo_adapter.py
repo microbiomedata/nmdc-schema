@@ -247,6 +247,31 @@ class TestMongoAdapter(unittest.TestCase):
         assert collection.count_documents({"id": 2, "x": "Bz"}) == 1
         assert collection.count_documents({"id": 3, "x": "Cz"}) == 1
 
+    def test_set_field_of_each_document(self):
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(_id=1, id=1, x="original")
+        document_2 = dict(_id=2, id=2)
+        document_3 = dict(_id=3, id=3, x=None)
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3]
+        )
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        adapter.set_field_of_each_document(collection_name, "x", "new")
+
+        # Validate result:
+        collection = self.db[collection_name]
+        assert collection.count_documents({"x": "original"}) == 0
+        assert collection.count_documents({"x": {"$exists": False}}) == 0
+        assert collection.count_documents({"x": None}) == 0
+        assert collection.count_documents({"_id": 1, "id": 1, "x": "new"}) == 1
+        assert collection.count_documents({"_id": 2, "id": 2, "x": "new"}) == 1
+        assert collection.count_documents({"_id": 3, "id": 3, "x": "new"}) == 1
+
+
     def test_callbacks(self):
         # Set up:
         collection_name = "my_collection"
@@ -255,7 +280,9 @@ class TestMongoAdapter(unittest.TestCase):
         adapter = MongoAdapter(
             database=self.db,
             on_collection_created=lambda name: event_log.append(f"Created {name}"),
-            on_collection_renamed=lambda old_name, name: event_log.append(f"Renamed {old_name} to {name}"),
+            on_collection_renamed=lambda old_name, name: event_log.append(
+                f"Renamed {old_name} to {name}"
+            ),
             on_collection_deleted=lambda name: event_log.append(f"Deleted {name}"),
         )
         assert len(event_log) == 0

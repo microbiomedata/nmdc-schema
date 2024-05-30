@@ -113,8 +113,12 @@ migration-recursion = 'nmdc_schema.migration_recursion:main'
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
-pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
 test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
 get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main"
 nmdc-ncbi-mapping = "src.scripts.ncbi_nmdc_exact_term_matching:cli"
+
+#pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
+#dump-single-modality = "nmdc_schema.dump_single_modality:cli"
+
+pure-export = "nmdc_schema.dump_single_modality:cli"

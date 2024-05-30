@@ -15,6 +15,7 @@ default_prefix: nmdc
 default_range: string
 
 classes:
+
   MetagenomeAssembly:
     class_uri: nmdc:MetagenomeAssembly
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -56,7 +57,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetatranscriptomeAssembly:
@@ -97,9 +98,8 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
-
 
   MetatranscriptomeAnnotation:
     class_uri: nmdc:MetatranscriptomeAnnotation
@@ -112,7 +112,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -130,7 +130,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -155,7 +155,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -172,7 +172,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -194,7 +194,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   ReadBasedTaxonomyAnalysis:
@@ -208,7 +208,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -224,7 +224,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetaproteomicsAnalysis:
@@ -238,7 +238,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   NomAnalysis:
@@ -249,12 +249,14 @@ classes:
     slots:
       - has_calibration
     slot_usage:
+      used:
+        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
-  
+
   CalibrationInformation:
     class_uri: nmdc:CalibrationInformation
     is_a: InformationObject
@@ -532,9 +534,9 @@ slots:
     notes: >-
       has_calibration slot will be removed from all WorkflowExecution classes but remain on the
       MassSpectrometry class after an ingest of the appropriate set has occurred. 
-      Once this has occured, this slot's range can be updated to CalibrationInformation and class/slot definitions can move to nmdc.yaml.  
+      Once this has occurred, this slot's range can be updated to CalibrationInformation and class/slot definitions can move to nmdc.yaml.  
       See PR #29 in Berkeley schema.
-  
+
   calibration_object:
     range: DataObject
     description: the file containing calibration data object

@@ -5561,6 +5561,7 @@ slots:
     is_a: biosample_identifiers
     mixins:
     - gold_identifiers
+    range: uriorcurie
     pattern: ^gold:Gb[0-9]+$
   insdc_biosample_identifiers:
     name: insdc_biosample_identifiers
@@ -8376,7 +8377,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000093
     multivalued: false
-    range: QuantityValue
+    range: float
   elevator:
     name: elevator
     annotations:
@@ -8691,7 +8692,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000320
     multivalued: false
-    range: TimestampValue
+    range: string
   fao_class:
     name: fao_class
     annotations:
@@ -8802,7 +8803,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0001086
     multivalued: false
-    range: TimestampValue
+    range: string
   fireplace_type:
     name: fireplace_type
     annotations:
@@ -8843,7 +8844,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000319
     multivalued: false
-    range: TimestampValue
+    range: string
   floor_age:
     name: floor_age
     annotations:
@@ -16271,7 +16272,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000185
     multivalued: false
-    range: QuantityValue
+    range: string
   water_current:
     name: water_current
     annotations:
@@ -18701,8 +18702,9 @@ slots:
     notes:
     - 'has_calibration slot will be removed from all WorkflowExecution classes but
       remain on the MassSpectrometry class after an ingest of the appropriate set
-      has occurred.  Once this has occured, this slot''s range can be updated to CalibrationInformation
-      and class/slot definitions can move to nmdc.yaml.   See PR #29 in Berkeley schema.'
+      has occurred.  Once this has occurred, this slot''s range can be updated to
+      CalibrationInformation and class/slot definitions can move to nmdc.yaml.   See
+      PR #29 in Berkeley schema.'
     from_schema: https://w3id.org/nmdc/workflow_execution_activity
     any_of:
     - range: CalibrationInformation
@@ -18894,17 +18896,19 @@ classes:
     aliases:
     - NMDC metadata object
     slots:
-    - chemical_entity_set
-    - planned_process_set
-    - functional_annotation_agg
     - biosample_set
+    - calibration_set
+    - chemical_entity_set
     - collecting_biosamples_from_site_set
+    - configuration_set
+    - data_generation_set
     - data_object_set
     - extraction_set
     - field_research_site_set
     - functional_annotation_agg
     - functional_annotation_set
     - genome_feature_set
+    - instrument_set
     - library_preparation_set
     - mags_set
     - metabolomics_analysis_set
@@ -18914,18 +18918,14 @@ classes:
     - metaproteomics_analysis_set
     - metatranscriptome_analysis_set
     - nom_analysis_set
-    - data_generation_set
-    - workflow_chain_set
     - planned_process_set
     - pooling_set
     - processed_sample_set
     - read_based_taxonomy_analysis_set
     - read_qc_analysis_set
     - study_set
+    - workflow_chain_set
     - workflow_execution_set
-    - instrument_set
-    - configuration_set
-    - calibration_set
     class_uri: nmdc:Database
     tree_root: true
   Pooling:
@@ -18947,7 +18947,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:Pooling
   Extraction:
@@ -18971,7 +18971,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'
           interpolated: true
       volume:
         name: volume
@@ -19002,7 +19002,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
           interpolated: true
       pcr_cond:
         name: pcr_cond
@@ -19031,7 +19031,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:CollectingBiosamplesFromSite
   ProtocolExecution:
@@ -20418,7 +20418,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:ProcessedSample
   Site:
@@ -20434,7 +20434,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:Site
   EnvironmentalMaterialTerm:
@@ -21379,7 +21379,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:MetagenomeAssembly
   MetatranscriptomeAssembly:
@@ -21422,7 +21422,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:MetatranscriptomeAssembly
   MetatranscriptomeAnnotation:
@@ -21438,7 +21438,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -21459,7 +21459,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -21487,7 +21487,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -21507,7 +21507,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:MetagenomeSequencing
   ReadQcAnalysis:
@@ -21533,7 +21533,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:ReadQcAnalysis
   ReadBasedTaxonomyAnalysis:
@@ -21550,7 +21550,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
   MetabolomicsAnalysis:
@@ -21567,7 +21567,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:MetabolomicsAnalysis
   MetaproteomicsAnalysis:
@@ -21583,7 +21583,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:MetaproteomicsAnalysis
   NomAnalysis:
@@ -21595,11 +21595,14 @@ classes:
     slots:
     - has_calibration
     slot_usage:
+      used:
+        name: used
+        description: The instrument used to collect the data used in the analysis
       id:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:NomAnalysis
   CalibrationInformation:
@@ -21665,7 +21668,7 @@ settings:
     setting_value: ([A-Za-z0-9]{1,})
   id_version:
     setting_key: id_version
-    setting_value: (\.[A-Za-z0-9]{1,})*
+    setting_value: (\.[0-9]{1,})
   id_locus:
     setting_key: id_locus
     setting_value: (_[A-Za-z0-9_\.-]+)?$

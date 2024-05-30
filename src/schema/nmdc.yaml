@@ -112,7 +112,7 @@ settings:
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
-  id_version: "(\\.[A-Za-z0-9]{1,})*"
+  id_version: "(\\.[0-9]{1,})"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
 
 classes:
@@ -250,17 +250,19 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - chemical_entity_set
-      - planned_process_set
-      - functional_annotation_agg
       - biosample_set
+      - calibration_set
+      - chemical_entity_set
       - collecting_biosamples_from_site_set
+      - configuration_set
+      - data_generation_set
       - data_object_set
       - extraction_set
       - field_research_site_set
       - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
+      - instrument_set
       - library_preparation_set
       - mags_set
       - metabolomics_analysis_set
@@ -270,18 +272,14 @@ classes:
       - metaproteomics_analysis_set
       - metatranscriptome_analysis_set
       - nom_analysis_set
-      - data_generation_set
-      - workflow_chain_set
       - planned_process_set
       - pooling_set
       - processed_sample_set
       - read_based_taxonomy_analysis_set
       - read_qc_analysis_set
       - study_set
+      - workflow_chain_set
       - workflow_execution_set
-      - instrument_set
-      - configuration_set
-      - calibration_set
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -299,7 +297,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   Extraction:
@@ -309,7 +307,6 @@ classes:
     exact_mappings:
       - OBI:0302884
     slots:
-      #      - extractant
       - substances_used
       - extraction_target
       - input_mass
@@ -320,17 +317,10 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
           interpolated: true
       volume:
         description: The volume of the solvent/solute being used, not the input.
-
-  #  QualityControlReport:
-  #    class_uri: nmdc:QualityControlReport
-  #    slots:
-  #      - status
-  #      - name
-  #      - type
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -354,7 +344,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
           interpolated: true
       pcr_cond:
         description: Description of reaction conditions and components of polymerase chain reaction performed during library preparation
@@ -377,7 +367,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   ProtocolExecution:
@@ -538,8 +528,6 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
-      #      - solvent
-      #      - solubilizing_agent
       - duration
       - temperature
       - substances_used # whether a substance was used as a solvent or a solubilizing_agent will be captured in substance_role
@@ -641,8 +629,6 @@ enums:
         description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
 
   LibraryTypeEnum:
-    # start using the right case for enum names
-    # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
       DNA: { }
       RNA: { }
@@ -664,26 +650,6 @@ enums:
     permissible_values:
       ptfe_96_well_filter_plate:
       syringe:
-
-  #  SolventEnum:
-  #    description: The solvents that may be used in processing metabolomic samples.
-  #    permissible_values:
-  #      deionized Water:
-  #      methanol:
-  #      chloroform:
-  #      ammonium bicarbonate buffer:
-  #      methoxyamine:
-  #      MeOH/H2O:
-  #      MeOH:
-  #      Potassium sulfate:
-  #      ethanol-free chloroform:
-  #      bray extract solution:
-  #      olsen extract solution:
-  #      Milli-Q H2O:
-  #      ultrapure water:
-  #      MSTFA:
-  #      cloridic acid:
-  #      Water:
 
   StationaryPhaseEnum:
     description: The type of stationary phase used in a chromatography process.
@@ -1109,10 +1075,6 @@ slots:
       - value: test tube
       - value: falcon tube
       - value: whirlpak
-  #  extractant:
-  #    domain: Extraction
-  #    range: Solution
-  #    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
 
   input_volume: # see also `volume`
     range: QuantityValue
@@ -1132,24 +1094,6 @@ slots:
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
-#  solvent: # see SubstanceRoleEnum
-#    domain: DissolvingProcess
-#    #    range: Solution
-#    any_of:
-#      - range: Solution
-#      - range: PortionOfSubstance
-#    required: true
-#    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
-#    exact_mappings:
-#      - CHEBI:46787
-#
-#  solubilizing_agent: # see SubstanceRoleEnum
-#    domain: DissolvingProcess
-#    #    range: CompoundEnum
-#    range: PortionOfSubstance # or chemical entity?
-#    description: A substance within a formulation that enhances the solubility of another substance.
-#    exact_mappings:
-#      - NCIT:C176640
   sampled_portion:
     range: SamplePortionEnum
     multivalued: true

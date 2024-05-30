@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Optional, Callable, List, Any
+from typing import Optional, Callable, List, Any, Union
 
 
 class AdapterBase(ABC):
@@ -104,5 +104,15 @@ class AdapterBase(ABC):
         Passes each document in the specified collection through the specified processing pipeline—in which
         the output of any given function is the input to the function after it—and stores the final output
         back in the collection, replacing the original document.
+        """
+        pass
+
+    @abstractmethod
+    def set_field_of_each_document(
+        self, collection_name: str, field_name: str, value: Union[None, str, int, float, bool],
+    ) -> None:
+        r"""
+        Assigns the specified value to the specified field of each document in the collection.
+        This method is a specialized alternative to the `process_each_document` method.
         """
         pass

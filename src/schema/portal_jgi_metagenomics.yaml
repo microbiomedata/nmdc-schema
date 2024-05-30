@@ -19,34 +19,6 @@ default_prefix: nmdc
 default_range: string
 
 slots:
-  #  dna_absorb1:
-  #    is_a: biomaterial_purity
-  #    description: 260/280 measurement of DNA sample purity
-  #    title: DNA absorbance 260/280
-  #    comments:
-  #      - Recommended value is between 1 and 3.
-  #    examples:
-  #      - value: '2.02'
-  #    from_schema: https://example.com/nmdc_dh
-  #    rank: 7
-  #    string_serialization: '{float}'
-  #    range: float
-  #    slot_group: JGI-Metagenomics
-  #    recommended: true
-  #  dna_absorb2:
-  #    is_a: biomaterial_purity
-  #    description: 260/230 measurement of DNA sample purity
-  #    title: DNA absorbance 260/230
-  #    comments:
-  #      - Recommended value is between 1 and 3.
-  #    examples:
-  #      - value: '2.02'
-  #    from_schema: https://example.com/nmdc_dh
-  #    rank: 8
-  #    string_serialization: '{float}'
-  #    range: float
-  #    slot_group: JGI-Metagenomics
-  #    recommended: true
   dna_collect_site:
     description: Provide information on the site your DNA sample was collected from
     title: DNA collection site

@@ -1,11 +1,34 @@
 import re
 from pathlib import Path
 from functools import wraps
+from string import Template
 
 import click
 
-# TODO: Determine directory path dynamically, instead of hard-coding it.
+# TODO: Determine directory paths dynamically, instead of hard-coding them.
 MIGRATOR_DIRECTORY = "nmdc_schema/migrators"
+TEMPLATE_DIRECTORY = "nmdc_schema/migrators/cli"
+
+
+def generate_migrator_contents(from_version: str, to_version: str) -> str:
+    r"""
+    Generates the code for a migrator, based upon a template and the specified version identifiers.
+
+    >>> contents = generate_migrator_contents("1.2.3", "4.5.6")
+    >>> "1.2.3" in contents and "4.5.6" in contents
+    True
+    >>> "MigratorBase" in contents
+    True
+    """
+
+    template_parameters = dict(from_version=from_version, to_version=to_version)
+
+    template_file_name = "migrator.py.template"
+    template_file_path = Path(TEMPLATE_DIRECTORY) / Path(template_file_name)
+    with template_file_path.open("r") as template_file:
+        template = Template(template_file.read())
+        file_contents = template.substitute(template_parameters)
+    return file_contents
 
 
 def click_option_validator(function_to_decorate):
@@ -83,23 +106,10 @@ def create_migrator(from_version: str, to_version: str) -> None:
     to_version_snake = to_version.replace(".", "_")
     file_name = f"migrator_from_{from_version_snake}_to_{to_version_snake}.py"
 
-    # Generate the migrator file contents.
-    # TODO: Move this to a dedicated template file to facilitate maintenance.
-    file_contents = f'''
-from nmdc_schema.migrators.migrator_base import MigratorBase
-
-
-class Migrator(MigratorBase):
-    r"""Migrates a database between two schemas."""
-
-    _from_version = "{from_version}"
-    _to_version = "{to_version}"    
-    
-    def upgrade(self) -> None:
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
-        pass
-
-'''
+    # Generate the migrator file contents from a template.
+    file_contents = generate_migrator_contents(
+        from_version=from_version, to_version=to_version
+    )
 
     # Create and populate the file (unless it already exists).
     file_path = Path(MIGRATOR_DIRECTORY) / Path(file_name)

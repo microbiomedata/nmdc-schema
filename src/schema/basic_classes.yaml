@@ -164,7 +164,6 @@ classes:
       - neon_study_identifiers
 
       ## Related IDs
-      #- insdc_sra_ena_study_identifiers
       - related_identifiers
 
       - alternative_descriptions
@@ -230,8 +229,6 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-      # emsl_project_identifier:
-      #  description: The EMSL project ID that relates to the NMDC submitted study
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
         comments:
@@ -426,8 +423,6 @@ classes:
         required: true
       has_input:
         required: true
-      # has_output:
-      #   required: true
       execution_resource:
         required: true
       part_of:
