@@ -176,7 +176,6 @@ classes:
           has_chromatography_configuration:
             required: true
 
-
   Configuration:
     abstract: true
     is_a: InformationObject
@@ -572,8 +571,10 @@ enums:
 
   ResolutionCategoryEnum:
     permissible_values:
-      high: { }
-      low: { }
+      high:
+        description: higher than unit resolution
+      low:
+        description: at unit resolution
 
   MassAnalyzerEnum:
     permissible_values:
@@ -782,7 +783,11 @@ slots:
 
   resolution_categories:
     range: ResolutionCategoryEnum
-    description: whether mass spectra are collected at higher than unit resolution
+    description: The relative resolution at which spectra were collected.
+    examples:
+      - value:
+          - high
+          - low
     multivalued: true
 
   acquisition_strategy:
