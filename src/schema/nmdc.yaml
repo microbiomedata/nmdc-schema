@@ -191,7 +191,7 @@ classes:
     notes:
       - This class is intended to represent a mass spectrometry method file that controls a mass spectrometry process.
     slots:
-      - acquisition_strategy
+      - mass_spectrometry_acquisition_strategy
       - resolution_categories
       - mass_analyzers
       - ionization_source
@@ -813,7 +813,7 @@ slots:
           - high
           - low
     multivalued: true
-  acquisition_strategy:
+  mass_spectrometry_acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
     description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
     exact_mappings:
