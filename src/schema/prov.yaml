@@ -19,6 +19,7 @@ default_range: string
 classes:
 
   Activity:
+    abstract: true
     description: Something that occurs over a period of time and acts upon or with entities;
       it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.
     slots:
@@ -35,10 +36,10 @@ classes:
     mappings:
       - prov:Activity
     slot_usage:
-      id:
-        required: true
+      was_informed_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}$"
+          #          syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf)-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
 slots:
@@ -76,6 +77,9 @@ slots:
       - range: OmicsProcessing
     mappings:
       - prov:wasGeneratedBy
+    structured_pattern:
+      syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$"
+      interpolated: true
 
   used:
     domain: Activity
