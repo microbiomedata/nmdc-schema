@@ -270,10 +270,16 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 .PHONY: migration-doctests migrator
 
 # Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
+#
+# To run in non-verbose mode:
+# ```
+# $ make migration-doctests DOCTEST_OPT=''
+# ```
+DOCTEST_OPT ?= -v
 migration-doctests:
-	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
-	$(RUN) python -m doctest -v nmdc_schema/migrators/adapters/*.py
-	$(RUN) python -m doctest -v nmdc_schema/migrators/cli/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
 
 # Generates a migrator skeleton for the specified schema versions.
 # Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
