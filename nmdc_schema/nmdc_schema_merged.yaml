@@ -690,8 +690,8 @@ enums:
         text: athmospheric_pressure_photo_ionization
         aliases:
         - APPI
-      atmospheric_pressure_chemical_ionization:
-        text: atmospheric_pressure_chemical_ionization
+      athmospheric_pressure_chemical_ionization:
+        text: athmospheric_pressure_chemical_ionization
         aliases:
         - APCI
       electron_ionization:
