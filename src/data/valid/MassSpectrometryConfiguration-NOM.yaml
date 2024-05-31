@@ -2,6 +2,7 @@ id: nmdc:mscon-99-oW43DzG0
 name: EMSL_NOM_method1
 description: Mass Spectrometry method used by EMSL for NOM analysis
 type: nmdc:MassSpectrometryConfiguration
+mass_spectrometry_acquisition_strategy: full_scan_only
 resolution_categories:
   - high
 mass_analyzers: 
