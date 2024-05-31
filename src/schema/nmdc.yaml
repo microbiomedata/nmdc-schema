@@ -176,7 +176,6 @@ classes:
           has_chromatography_configuration:
             required: true
 
-
   Configuration:
     abstract: true
     is_a: InformationObject
@@ -190,10 +189,9 @@ classes:
     class_uri: nmdc:MassSpectrometryConfiguration
     description: A set of parameters that define and control the actions of a mass spectrometry process. 
     notes:
-      - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
+      - This class is intended to represent a mass spectrometry method file that controls a mass spectrometry process.
     slots:
-      - acquisition_category
-      - acquisition_strategy
+      - mass_spectrometry_acquisition_strategy
       - resolution_categories
       - mass_analyzers
       - ionization_source
@@ -552,49 +550,76 @@ classes:
 
 enums:
 
-  AcquisitionCategoryEnum:
-    permissible_values:
-      full_scan:
-        aliases:
-          - MS
-      tandem_mass_spectrum:
-        aliases:
-          -MSn
-
-  AcquisitionStrategyEnum:
+  MassSpectrometryAcquisitionStrategyEnum:
     permissible_values:
       data_independent_acquisition:
+        description:
+          - Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.
         aliases:
           - DIA
+          - data independent acquisition from dissociation of full mass range
+        exact_mappings:
+          - MS:1003227
       data_dependent_acquisition:
+        description:
+          Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.
         aliases:
           -DDA
+        exact_mappings:
+          - MS:1003221
+      full_scan_only:
+        aliases:
+          - MS
+        description:
+          Mass spectrometer data acquisition method wherein only MS1 data are acquired.
 
   ResolutionCategoryEnum:
     permissible_values:
-      high: { }
-      low: { }
+      high:
+        description: higher than unit resolution
+      low:
+        description: at unit resolution
 
   MassAnalyzerEnum:
     permissible_values:
       time_of_flight:
         aliases:
           - TOF
+        description:
+          Instrument that separates ions by m/z in a field-free region after acceleration to a fixed acceleration energy.
+        exact_mappings:
+          - MS:1000084
       quadrupole:
         aliases:
           - Quad
           - Q
+        description:
+          A mass spectrometer that consists of four parallel rods whose centers form the corners of a square and whose opposing poles are connected. The voltage applied to the rods is a superposition of a static potential and a sinusoidal radio frequency potential. The motion of an ion in the x and y dimensions is described by the Matthieu equation whose solutions show that ions in a particular m/z range can be transmitted along the z axis.
+        exact_mappings:
+          - MS:1000081
       Orbitrap:
         aliases:
           - Orbi
+        description:
+          An ion trapping device that consists of an outer barrel-like electrode and a coaxial inner spindle-like electrode that form an electrostatic field with quadro-logarithmic potential distribution. The frequency of harmonic oscillations of the orbitally trapped ions along the axis of the electrostatic field is independent of the ion velocity and is inversely proportional to the square root of m/z so that the trap can be used as a mass analyzer.
+        exact_mappings:
+          - MS:1000484
       ion_cyclotron_resonance:
         aliases:
           - ICR
+        description:
+          A mass spectrometer based on the principle of ion cyclotron resonance in which an ion in a magnetic field moves in a circular orbit at a frequency characteristic of its m/z value. Ions are coherently excited to a larger radius orbit using a pulse of radio frequency energy and their image charge is detected on receiver plates as a time domain signal. Fourier transformation of the time domain signal results in a frequency domain signal which is converted to a mass spectrum based in the inverse relationship between frequency and m/z.
+        exact_mappings:
+          - MS:1000079
       ion_trap:
         aliases:
           - LTQ
           - Ion Trap
           - Paul Trap
+        description:
+          A device for spatially confining ions using electric and magnetic fields alone or in combination.
+        exact_mappings:
+          - MS:1000264
 
   IonizationSourceEnum:
     permissible_values:
@@ -604,10 +629,10 @@ enums:
       matrix_assisted_laser_desorption_ionization:
         aliases:
           - MALDI
-      athmospheric_pressure_photo_ionization:
+      atmospheric_pressure_photo_ionization:
         aliases:
           - APPI
-      athmospheric_pressure_chemical_ionization:
+      atmospheric_pressure_chemical_ionization:
         aliases:
           - APCI
       electron_ionization:
@@ -769,40 +794,45 @@ slots:
 
   ionization_source:
     range: IonizationSourceEnum
-    description: which kind of ionization source is used to introduce analytes into a mass spectrometer
+    description: The ionization source used to introduce processed samples into a mass spectrometer
+    exact_mappings:
+      - MS:1000008
 
   mass_analyzers:
     range: MassAnalyzerEnum
-    description: which kind of mass analyzer(s) used during the spectra collection.
+    description: The kind of mass analyzer(s) used during the spectra collection.
     multivalued: true
+    exact_mappings:
+      - MS:1000443
 
   resolution_categories:
     range: ResolutionCategoryEnum
-    description: whether mass spectra are collected at higher than unit resolution
+    description: The relative resolution at which spectra were collected.
+    examples:
+      - value:
+          - high
+          - low
     multivalued: true
-
-  acquisition_strategy:
-    range: AcquisitionStrategyEnum
-    description: whether spectra are dependent on or independent of any other spectra during the experiment
-
-  acquisition_category:
-    range: AcquisitionCategoryEnum
-    description: whether only survey or tandem mass spectra are part of the experiment
+  mass_spectrometry_acquisition_strategy:
+    range: MassSpectrometryAcquisitionStrategyEnum
+    description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
+    exact_mappings:
+      - MS:1003213
 
   eluent_introduction_category:
     range: EluentIntroductionCategoryEnum
-    description: A high-level description for how the processed sample is introduced into a mass spectrometer.
+    description: A high-level categorization for how the processed sample is introduced into a mass spectrometer.
     examples:
       - value: liquid_chromatography
       - value: direct_infusion_syringe
 
   has_mass_spectrometry_configuration:
     range: MassSpectrometryConfiguration
-    description: An identifier for the associated MassSpectrometryConfiguration.
+    description: The identifier of the associated MassSpectrometryConfiguration.
 
   has_chromatography_configuration:
     range: ChromatographyConfiguration
-    description: An identifier for the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer. 
+    description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer. 
 
   metagenome_annotation_id:
     range: WorkflowExecution
