@@ -483,6 +483,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../FunctionalAnnotationAggMember/">FunctionalAnnotationAggMember</a></td>
+<td><a href="../metagenome_annotation_id/">metagenome_annotation_id</a></td>
+<td>range</td>
+<td><a href="./">MetagenomeAnnotationActivity</a></td>
+</tr>
+<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../metagenome_annotation_activity_set/">metagenome_annotation_activity_set</a></td>
 <td>range</td>
@@ -654,12 +660,13 @@ attributes:
     - WorkflowExecutionActivity
     range: NamedThing
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     description: An output biosample to a processing step
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - output
     rank: 1000
     domain: NamedThing
     multivalued: true
@@ -670,6 +677,9 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: NamedThing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
@@ -814,14 +824,15 @@ attributes:
   was_informed_by:
     name: was_informed_by
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasInformedBy
     rank: 1000
     alias: was_informed_by
     owner: MetagenomeAnnotationActivity
     domain_of:
     - Activity
     range: OmicsProcessing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   used:
     name: used
     from_schema: https://w3id.org/nmdc/nmdc

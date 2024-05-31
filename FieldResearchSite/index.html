@@ -331,8 +331,8 @@
 
   FieldResearchSite : part_of
 
-      FieldResearchSite --&gt; "0..*" NamedThing : part_of
-    click NamedThing href "../NamedThing"
+      FieldResearchSite --&gt; "0..*" FieldResearchSite : part_of
+    click FieldResearchSite href "../FieldResearchSite"
 
   FieldResearchSite : soil_type
 
@@ -404,7 +404,7 @@
 </tr>
 <tr>
 <td><a href="../part_of/">part_of</a></td>
-<td>0..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>0..* <br/> <a href="./">FieldResearchSite</a></td>
 <td>Links a resource to another resource that either logically or physically incl...</td>
 <td>direct</td>
 </tr>
@@ -454,6 +454,12 @@
 <tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../field_research_site_set/">field_research_site_set</a></td>
+<td>range</td>
+<td><a href="./">FieldResearchSite</a></td>
+</tr>
+<tr>
+<td><a href="./">FieldResearchSite</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">FieldResearchSite</a></td>
 </tr>
@@ -540,6 +546,18 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
       interpolated: true
+  part_of:
+    name: part_of
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - Study
+    - OmicsProcessing
+    - WorkflowExecutionActivity
+    range: FieldResearchSite
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
 
 </code></pre>
 </details>
@@ -569,6 +587,18 @@ slot_usage:
     - NamedThing
     - Activity
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  part_of:
+    name: part_of
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - Study
+    - OmicsProcessing
+    - WorkflowExecutionActivity
+    range: FieldResearchSite
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -722,8 +752,6 @@ attributes:
     description: Links a resource to another resource that either logically or physically
       includes it.
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - is part of
     rank: 1000
     domain: NamedThing
     slot_uri: dcterms:isPartOf
@@ -736,7 +764,10 @@ attributes:
     - Study
     - OmicsProcessing
     - WorkflowExecutionActivity
-    range: NamedThing
+    range: FieldResearchSite
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
   soil_type:
     name: soil_type
     annotations:

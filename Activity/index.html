@@ -281,6 +281,10 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-activity">Class: Activity</h1>
 <p><em>Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract class and should not be instantiated directly.</p>
+</div>
 <p>URI: <a href="https://w3id.org/nmdc/Activity">nmdc:Activity</a></p>
 <div class="mermaid">classDiagram
   class Activity
@@ -839,6 +843,7 @@ comments:
 from_schema: https://w3id.org/nmdc/nmdc
 mappings:
 - prov:Activity
+abstract: true
 slots:
 - id
 - name
@@ -847,16 +852,12 @@ slots:
 - was_informed_by
 - used
 slot_usage:
-  id:
-    name: id
+  was_informed_by:
+    name: was_informed_by
     domain_of:
-    - Biosample
-    - Study
-    - NamedThing
     - Activity
-    required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
       interpolated: true
 
 </code></pre>
@@ -875,23 +876,31 @@ comments:
 from_schema: https://w3id.org/nmdc/nmdc
 mappings:
 - prov:Activity
+abstract: true
 slot_usage:
-  id:
-    name: id
+  was_informed_by:
+    name: was_informed_by
     domain_of:
-    - Biosample
-    - Study
-    - NamedThing
     - Activity
-    required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
+    notes:
+    - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
+    - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
+      will be accepted
+    - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked
+      via per-class id slot usage assertions
+    - minting authority shoulders should probably be enumerated and checked in the
+      pattern
+    examples:
+    - value: nmdc:mgmag-00-x012.1_7_c1
+      description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     identifier: true
@@ -905,9 +914,6 @@ attributes:
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}$'
-      interpolated: true
   name:
     name: name
     description: A human readable label for an entity
@@ -956,14 +962,15 @@ attributes:
   was_informed_by:
     name: was_informed_by
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasInformedBy
     rank: 1000
     alias: was_informed_by
     owner: Activity
     domain_of:
     - Activity
     range: OmicsProcessing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   used:
     name: used
     from_schema: https://w3id.org/nmdc/nmdc

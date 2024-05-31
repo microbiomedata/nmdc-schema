@@ -5064,6 +5064,13 @@ slots:
 - lbc_thirty
 - lbceq
 slot_usage:
+  collected_from:
+    name: collected_from
+    domain_of:
+    - Biosample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
   elev:
     name: elev
     title: elevation, meters
@@ -5143,7 +5150,9 @@ slot_usage:
     - WorkflowExecutionActivity
     range: Study
     required: true
-    pattern: ^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
   fire:
     name: fire
     annotations:
@@ -5560,6 +5569,13 @@ exact_mappings:
 - http://purl.obolibrary.org/obo/FBcv_0003024
 is_a: MaterialEntity
 slot_usage:
+  collected_from:
+    name: collected_from
+    domain_of:
+    - Biosample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
   elev:
     name: elev
     title: elevation, meters
@@ -5639,7 +5655,9 @@ slot_usage:
     - WorkflowExecutionActivity
     range: Study
     required: true
-    pattern: ^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
   fire:
     name: fire
     annotations:
@@ -6049,10 +6067,6 @@ attributes:
   collected_from:
     name: collected_from
     description: The Site from which a Biosample was collected
-    todos:
-    - add an OBO slot_uri ?
-    comments:
-    - this illustrates implementing a Biosample relation with a (binary) slot
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: Biosample
@@ -6061,6 +6075,9 @@ attributes:
     domain_of:
     - Biosample
     range: FieldResearchSite
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
   type:
     name: type
     description: An optional string that specifies the type object.  This is used
@@ -6171,7 +6188,9 @@ attributes:
     - WorkflowExecutionActivity
     range: Study
     required: true
-    pattern: ^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.

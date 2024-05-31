@@ -592,6 +592,9 @@ slot_usage:
     - OmicsProcessing
     - PlannedProcess
     - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
     any_of:
     - range: Biosample
     - range: ProcessedSample
@@ -603,6 +606,9 @@ slot_usage:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: ProcessedSample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
 
 </code></pre>
 </details>
@@ -653,6 +659,9 @@ slot_usage:
     - OmicsProcessing
     - PlannedProcess
     - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
     any_of:
     - range: Biosample
     - range: ProcessedSample
@@ -664,6 +673,9 @@ slot_usage:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: ProcessedSample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
 attributes:
   container_size:
     name: container_size
@@ -774,6 +786,9 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: NamedThing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
     any_of:
     - range: Biosample
     - range: ProcessedSample
@@ -791,6 +806,9 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: ProcessedSample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   processing_institution:
     name: processing_institution
     description: The organization that processed the sample.

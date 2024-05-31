@@ -960,6 +960,9 @@ slot_usage:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
 
 </code></pre>
 </details>
@@ -1116,6 +1119,9 @@ slot_usage:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
 attributes:
   emsl_project_identifiers:
     name: emsl_project_identifiers
@@ -1589,6 +1595,9 @@ attributes:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
   principal_investigator:
     name: principal_investigator
     description: Principal Investigator who led the study and/or generated the dataset.

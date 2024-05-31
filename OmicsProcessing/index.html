@@ -461,7 +461,7 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>1..* <br/> <a href="../NamedThing/">NamedThing</a> or <br/><a href="../Biosample/">Biosample</a> or <br/><a href="../ProcessedSample/">ProcessedSample</a></td>
 <td>An input to a process</td>
 <td>direct</td>
 </tr>
@@ -870,15 +870,18 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
-    comments:
-    - pattern should allow typecode for Biosample and ProcessedSample
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
     - PlannedProcess
     - WorkflowExecutionActivity
     required: true
-    pattern: ^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+    any_of:
+    - range: Biosample
+    - range: ProcessedSample
   part_of:
     name: part_of
     domain_of:
@@ -888,7 +891,9 @@ slot_usage:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
-    pattern: ^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     domain_of:
@@ -896,7 +901,9 @@ slot_usage:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: DataObject
-    pattern: ^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      interpolated: true
 
 </code></pre>
 </details>
@@ -935,15 +942,18 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
-    comments:
-    - pattern should allow typecode for Biosample and ProcessedSample
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
     - PlannedProcess
     - WorkflowExecutionActivity
     required: true
-    pattern: ^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+    any_of:
+    - range: Biosample
+    - range: ProcessedSample
   part_of:
     name: part_of
     domain_of:
@@ -953,7 +963,9 @@ slot_usage:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
-    pattern: ^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     domain_of:
@@ -961,7 +973,9 @@ slot_usage:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: DataObject
-    pattern: ^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      interpolated: true
 attributes:
   add_date:
     name: add_date
@@ -1021,8 +1035,6 @@ attributes:
   has_input:
     name: has_input
     description: An input to a process.
-    comments:
-    - pattern should allow typecode for Biosample and ProcessedSample
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: NamedThing
@@ -1036,7 +1048,12 @@ attributes:
     - WorkflowExecutionActivity
     range: NamedThing
     required: true
-    pattern: ^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+    any_of:
+    - range: Biosample
+    - range: ProcessedSample
   has_output:
     name: has_output
     description: An output biosample to a processing step
@@ -1051,7 +1068,9 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: DataObject
-    pattern: ^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   insdc_bioproject_identifiers:
     name: insdc_bioproject_identifiers
     description: identifiers for corresponding project in INSDC Bioproject
@@ -1212,7 +1231,9 @@ attributes:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
-    pattern: ^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   pcr_cond:
     name: pcr_cond
     annotations:

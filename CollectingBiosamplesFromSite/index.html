@@ -526,6 +526,9 @@ slot_usage:
     - WorkflowExecutionActivity
     range: Site
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     domain_of:
@@ -534,6 +537,9 @@ slot_usage:
     - WorkflowExecutionActivity
     range: Biosample
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
   id:
     name: id
     domain_of:
@@ -568,6 +574,9 @@ slot_usage:
     - WorkflowExecutionActivity
     range: Site
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     domain_of:
@@ -576,6 +585,9 @@ slot_usage:
     - WorkflowExecutionActivity
     range: Biosample
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
   id:
     name: id
     domain_of:
@@ -632,6 +644,9 @@ attributes:
     - WorkflowExecutionActivity
     range: Site
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     description: An output biosample to a processing step
@@ -647,6 +662,9 @@ attributes:
     - WorkflowExecutionActivity
     range: Biosample
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
   processing_institution:
     name: processing_institution
     description: The organization that processed the sample.

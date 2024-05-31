@@ -303,8 +303,8 @@
 
   ChromatographicSeparationProcess : has_output
 
-      ChromatographicSeparationProcess --&gt; "0..*" NamedThing : has_output
-    click NamedThing href "../NamedThing"
+      ChromatographicSeparationProcess --&gt; "0..*" ProcessedSample : has_output
+    click ProcessedSample href "../ProcessedSample"
 
   ChromatographicSeparationProcess : id
 
@@ -408,7 +408,7 @@
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>0..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>0..* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
 <td>An output biosample to a processing step</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -553,9 +553,22 @@ slot_usage:
     - OmicsProcessing
     - PlannedProcess
     - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
     any_of:
     - range: Biosample
     - range: ProcessedSample
+  has_output:
+    name: has_output
+    domain_of:
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    range: ProcessedSample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
 
 </code></pre>
 </details>
@@ -577,9 +590,22 @@ slot_usage:
     - OmicsProcessing
     - PlannedProcess
     - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
     any_of:
     - range: Biosample
     - range: ProcessedSample
+  has_output:
+    name: has_output
+    domain_of:
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    range: ProcessedSample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
 attributes:
   ordered_mobile_phases:
     name: ordered_mobile_phases
@@ -666,6 +692,9 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: NamedThing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
     any_of:
     - range: Biosample
     - range: ProcessedSample
@@ -673,8 +702,6 @@ attributes:
     name: has_output
     description: An output biosample to a processing step
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - output
     rank: 1000
     domain: NamedThing
     multivalued: true
@@ -684,7 +711,10 @@ attributes:
     - OmicsProcessing
     - PlannedProcess
     - WorkflowExecutionActivity
-    range: NamedThing
+    range: ProcessedSample
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
   processing_institution:
     name: processing_institution
     description: The organization that processed the sample.

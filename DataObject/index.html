@@ -358,7 +358,7 @@
 </tr>
 <tr>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>0..1 <br/> <a href="../Activity/">Activity</a> or <br/><a href="../Activity/">Activity</a> or <br/><a href="../OmicsProcessing/">OmicsProcessing</a></td>
+<td>0..1 <br/> <a href="../Activity/">Activity</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -501,6 +501,14 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
       interpolated: true
+  was_generated_by:
+    name: was_generated_by
+    domain_of:
+    - DataObject
+    - FunctionalAnnotation
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
 
 </code></pre>
 </details>
@@ -539,6 +547,14 @@ slot_usage:
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  was_generated_by:
+    name: was_generated_by
+    domain_of:
+    - DataObject
+    - FunctionalAnnotation
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
 attributes:
   file_size_bytes:
@@ -592,8 +608,6 @@ attributes:
   was_generated_by:
     name: was_generated_by
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasGeneratedBy
     rank: 1000
     alias: was_generated_by
     owner: DataObject
@@ -601,9 +615,9 @@ attributes:
     - DataObject
     - FunctionalAnnotation
     range: Activity
-    any_of:
-    - range: Activity
-    - range: OmicsProcessing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
   url:
     name: url
     notes:

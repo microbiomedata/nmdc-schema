@@ -288,6 +288,10 @@
 <article class="md-content__inner md-typeset">
 <h1 id="class-workflowexecutionactivity">Class: WorkflowExecutionActivity</h1>
 <p><em>Represents an instance of an execution of a particular workflow</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract class and should not be instantiated directly.</p>
+</div>
 <p>URI: <a href="https://w3id.org/nmdc/WorkflowExecutionActivity">nmdc:WorkflowExecutionActivity</a></p>
 <div class="mermaid">classDiagram
   class WorkflowExecutionActivity
@@ -526,12 +530,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FunctionalAnnotationAggMember/">FunctionalAnnotationAggMember</a></td>
-<td><a href="../metagenome_annotation_id/">metagenome_annotation_id</a></td>
-<td>range</td>
-<td><a href="./">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../activity_set/">activity_set</a></td>
 <td>range</td>
@@ -591,6 +589,7 @@ from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - analysis
 is_a: Activity
+abstract: true
 slots:
 - execution_resource
 - git_url
@@ -627,6 +626,18 @@ slot_usage:
     - PlannedProcess
     - WorkflowExecutionActivity
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  has_output:
+    name: has_output
+    domain_of:
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   execution_resource:
     name: execution_resource
     domain_of:
@@ -707,6 +718,7 @@ from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - analysis
 is_a: Activity
+abstract: true
 slot_usage:
   started_at_time:
     name: started_at_time
@@ -731,6 +743,18 @@ slot_usage:
     - PlannedProcess
     - WorkflowExecutionActivity
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  has_output:
+    name: has_output
+    domain_of:
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   execution_resource:
     name: execution_resource
     domain_of:
@@ -803,12 +827,13 @@ attributes:
     - WorkflowExecutionActivity
     range: NamedThing
     required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_output:
     name: has_output
     description: An output biosample to a processing step
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - output
     rank: 1000
     domain: NamedThing
     multivalued: true
@@ -819,6 +844,9 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: NamedThing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
@@ -991,14 +1019,15 @@ attributes:
   was_informed_by:
     name: was_informed_by
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasInformedBy
     rank: 1000
     alias: was_informed_by
     owner: WorkflowExecutionActivity
     domain_of:
     - Activity
     range: OmicsProcessing
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   used:
     name: used
     from_schema: https://w3id.org/nmdc/nmdc
