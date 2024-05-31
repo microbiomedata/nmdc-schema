@@ -585,13 +585,25 @@ enums:
       time_of_flight:
         aliases:
           - TOF
+        description:
+          Instrument that separates ions by m/z in a field-free region after acceleration to a fixed acceleration energy.
+        exact_mappings:
+          - MS:1000084
       quadrupole:
         aliases:
           - Quad
           - Q
-      Orbitrap:
+        description:
+          A mass spectrometer that consists of four parallel rods whose centers form the corners of a square and whose opposing poles are connected. The voltage applied to the rods is a superposition of a static potential and a sinusoidal radio frequency potential. The motion of an ion in the x and y dimensions is described by the Matthieu equation whose solutions show that ions in a particular m/z range can be transmitted along the z axis.
+        exact_mappings:
+          - MS:1000081
+      orbitrap:
         aliases:
           - Orbi
+        description:
+          An ion trapping device that consists of an outer barrel-like electrode and a coaxial inner spindle-like electrode that form an electrostatic field with quadro-logarithmic potential distribution. The frequency of harmonic oscillations of the orbitally trapped ions along the axis of the electrostatic field is independent of the ion velocity and is inversely proportional to the square root of m/z so that the trap can be used as a mass analyzer.
+        exact_mappings:
+          - MS:1000484
       ion_cyclotron_resonance:
         aliases:
           - ICR
