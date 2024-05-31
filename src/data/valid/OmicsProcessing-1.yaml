@@ -14,6 +14,6 @@ ncbi_project_name: Thawing permafrost microbial communities from the Arctic, stu
 omics_type:
   has_raw_value: Metagenome
 part_of:
-  - nmdc:sty-00-555xxx
+  - nmdc:sty-00-123456
 processing_institution: JGI
 type: nmdc:OmicsProcessing

@@ -33,7 +33,7 @@ biosample_set:
     alt:
       has_raw_value: 100 meter
     alternative_identifiers:
-      - generic:abc123
+      - generic:xxx
     aminopept_act:
       has_raw_value: 0.269 mole per liter per hour
     ammonium:
@@ -428,7 +428,7 @@ biosample_set:
       has_raw_value: xxx
     embargoed: true
     emsl_biosample_identifiers:
-      - generic:abc123
+      - generic:xxx
     emulsions:
       - has_raw_value: xxx
     env_broad_scale:

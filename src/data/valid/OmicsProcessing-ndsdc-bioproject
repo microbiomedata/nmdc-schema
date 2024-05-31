@@ -16,6 +16,6 @@ insdc_bioproject_identifiers:
 omics_type:
   has_raw_value: Metagenome
 part_of:
-  - nmdc:sty-00-555xxx
+  - nmdc:sty-00-123456
 processing_institution: JGI
 type: nmdc:OmicsProcessing

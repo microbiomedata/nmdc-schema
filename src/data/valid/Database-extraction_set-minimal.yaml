@@ -6,4 +6,4 @@ extraction_set:
       - nmdc:procsm-99-123456
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
-      - generic:yyy
+      - nmdc:procsm-99-987654

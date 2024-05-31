@@ -17,7 +17,7 @@ extraction_set:
 
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
-      - generic:xxx
+      - nmdc:procsm-99-555555
 
     #processing_institution: Battelle
 

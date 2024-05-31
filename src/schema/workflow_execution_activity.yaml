@@ -83,17 +83,23 @@ classes:
         required: true
       has_input:
         required: true
-      # has_output:
-      #   required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+          interpolated: true
       execution_resource:
         required: true
       type:
-        required: true   
+        required: true
       id:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+
 
 
   MetagenomeAssembly:
@@ -258,6 +264,10 @@ classes:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
+      has_input:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
 

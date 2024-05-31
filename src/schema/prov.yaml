@@ -36,14 +36,9 @@ classes:
     mappings:
       - prov:Activity
     slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}$"
-          interpolated: true
       was_informed_by:
         structured_pattern:
-          #          syntax: "{id_nmdc_prefix}:(act|wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf)-{id_shoulder}-{id_blade}{id_version}$"
+          #          syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf)-{id_shoulder}-{id_blade}{id_version}$"
           syntax: "{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
@@ -82,6 +77,9 @@ slots:
       - range: OmicsProcessing
     mappings:
       - prov:wasGeneratedBy
+    structured_pattern:
+      syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$"
+      interpolated: true
 
   used:
     domain: Activity

@@ -4,7 +4,7 @@ name: Sample Exhaustive Biosample instance. Although all of these values should 
   have this particular combination of values.
 description: unconstrained text
 alternative_identifiers:
-  - generic:abc123
+  - generic:xxx
 part_of:
   - nmdc:sty-00-987654
   - nmdc:sty-00-qwerty
@@ -36,7 +36,7 @@ insdc_biosample_identifiers:
   - biosample:SAMN123456789
   - biosample:SAMN000
 emsl_biosample_identifiers:
-  - generic:abc123
+  - generic:xxx
 igsn_biosample_identifiers:
   - any:curie_1
   - any:curie_2

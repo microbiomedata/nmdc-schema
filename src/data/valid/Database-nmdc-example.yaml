@@ -256,7 +256,7 @@ biosample_set:
     ncbi_taxonomy_name: rhizosphere metagenome
     sample_collection_site: Peat Soil
 data_object_set:
-  - id: nmdc:dobj-99-dkJ8xX
+  - id: nmdc:dobj-99-dkJ8ab
     name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
     description: Raw sequencer read data
     file_size_bytes: 9208349052

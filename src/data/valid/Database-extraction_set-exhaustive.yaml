@@ -10,7 +10,7 @@ extraction_set:
       - nmdc:procsm-99-123456
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
-      - generic:xxx
+      - nmdc:procsm-99-555555
     #range for processing_institution should be processing_institution_enum
     #processing_institution: Battelle
     #updating protocol info to be nested
