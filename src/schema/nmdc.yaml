@@ -597,7 +597,7 @@ enums:
           A mass spectrometer that consists of four parallel rods whose centers form the corners of a square and whose opposing poles are connected. The voltage applied to the rods is a superposition of a static potential and a sinusoidal radio frequency potential. The motion of an ion in the x and y dimensions is described by the Matthieu equation whose solutions show that ions in a particular m/z range can be transmitted along the z axis.
         exact_mappings:
           - MS:1000081
-      orbitrap:
+      Orbitrap:
         aliases:
           - Orbi
         description:
@@ -607,11 +607,19 @@ enums:
       ion_cyclotron_resonance:
         aliases:
           - ICR
+        description:
+          A mass spectrometer based on the principle of ion cyclotron resonance in which an ion in a magnetic field moves in a circular orbit at a frequency characteristic of its m/z value. Ions are coherently excited to a larger radius orbit using a pulse of radio frequency energy and their image charge is detected on receiver plates as a time domain signal. Fourier transformation of the time domain signal results in a frequency domain signal which is converted to a mass spectrum based in the inverse relationship between frequency and m/z.
+        exact_mappings:
+          - MS:1000079
       ion_trap:
         aliases:
           - LTQ
           - Ion Trap
           - Paul Trap
+        description:
+          A device for spatially confining ions using electric and magnetic fields alone or in combination.
+        exact_mappings:
+          - MS:1000264
 
   IonizationSourceEnum:
     permissible_values:
