@@ -341,6 +341,11 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
+      part_of:
+        range: FieldResearchSite
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   CollectingBiosamplesFromSite:
     is_a: PlannedProcess
@@ -1671,8 +1676,26 @@ classes:
       - separation_method
       - volume
     slot_usage:
+      id:
+        name: id
+        required: true
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'
+          interpolated: true
       volume:
         description: The volume of sample filtered.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   ChromatographicSeparationProcess:
     description:
@@ -1692,6 +1715,11 @@ classes:
           - range: ProcessedSample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   OmicsProcessing:
