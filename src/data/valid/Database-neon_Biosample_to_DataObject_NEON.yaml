@@ -97,23 +97,21 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-#data_generation_set:
-#  - id: nmdc:dgns-11-s9xj2r24
-#    analyte_category: metagenome
-#    name: Test NEON data
-#    has_input:
-#      - nmdc:procsm-99-xyz3
-#    has_output:
-#      - nmdc:dobj-12-jdhk9537
-#      - nmdc:dobj-12-yx0tfp52
-#    instrument_used:
-#      - nmdc:inst-14-xx07be40
-#    part_of:
-#      - nmdc:dgns-11-34xj1150
-#    processing_institution: Battelle
-#    type: nmdc:NucleotideSequencing
-#    associated_studies:
-#      - nmdc:sty-11-34xj1150
+data_generation_set:
+  - id: nmdc:dgns-11-s9xj2r24
+    analyte_category: metagenome
+    name: Test NEON data
+    has_input:
+      - nmdc:procsm-99-xyz3
+    has_output:
+      - nmdc:dobj-12-jdhk9537
+      - nmdc:dobj-12-yx0tfp52
+    instrument_used:
+      - nmdc:inst-14-xx07be40
+    processing_institution: Battelle
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-11-34xj1150
 instrument_set:
   - id: nmdc:inst-14-xx07be40
     model: novaseq
