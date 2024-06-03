@@ -3,7 +3,7 @@ type: nmdc:Study
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
-  - generic:abc1
+  - generic:xxx
 related_identifiers: any string R1
 gold_study_identifiers:
   - gold:Gs12345
@@ -86,15 +86,18 @@ has_credit_associations:
     applied_roles:
       - Investigation
       - Supervision
+    type: prov:Association
 study_image:
   - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     description: Photo of Craig Venter Institute, Rockville, Maryland
-    display_order: 1 # MAM 2023-12-08 switched from string to integer
+    display_order: 1
+    type: nmdc:ImageValue
   - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
-    display_order: 2 # MAM 2023-12-08 switched from string to integer
+    display_order: 2
+    type: nmdc:ImageValue
 study_category: research_study
 part_of:
   - nmdc:sty-11-34xj1157

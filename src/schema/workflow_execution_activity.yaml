@@ -174,6 +174,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      has_input:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
 
   ReadQcAnalysis:
@@ -249,8 +253,6 @@ classes:
     slots:
       - has_calibration
     slot_usage:
-      used:
-        description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
@@ -295,7 +297,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
           interpolated: true
 
 slots:

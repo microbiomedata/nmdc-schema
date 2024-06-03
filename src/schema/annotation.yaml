@@ -82,6 +82,7 @@ classes:
     is_a: FunctionalAnnotationTerm
     description: >-
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
+
     id_prefixes:
       - KEGG_PATHWAY
       - COG
@@ -139,6 +140,9 @@ classes:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
         range: MetagenomeAnnotation
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
 

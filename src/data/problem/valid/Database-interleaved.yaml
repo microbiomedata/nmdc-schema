@@ -3686,9 +3686,9 @@ mags_set:
         number_of_contig: 300
     unbinned_contig_num: 2000
 metabolomics_analysis_set:
-  - id: nmdc:wfmb-99-ABCDEF
+  - id: nmdc:wfmb-99-ABCDEF.1
     type: nmdc:MetabolomicsAnalysis
-    name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF
+    name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF.1
     has_input:
       - nmdc:i1
       - nmdc:i2

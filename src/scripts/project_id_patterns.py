@@ -3,7 +3,7 @@ from linkml_runtime import SchemaView
 from typing import Dict, List, Set, Union
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG, format='%(levelname)s: %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger = logging.getLogger(__name__)
 
 scrutinized_file = "../schema/basic_slots.yaml"
@@ -31,7 +31,7 @@ def get_range_dict(reference_view: SchemaView, reference_slot_name: str, referen
     ranges = []
 
     global_range = reference_view.get_slot(reference_slot_name).range or reference_view.schema.default_range
-    logger.debug(f"    global_range = {global_range}")
+    logger.info(f"    global_range = {global_range}")
     range_types.append(reference_view.get_element(global_range).class_class_curie)
     ranges.append(global_range)
     range_dict["global_range"] = {
@@ -57,7 +57,7 @@ def handle_usage(reference_view: SchemaView, usage, global_range: str, range_typ
     """
     if usage.range is not None:
         if usage.range != global_range:
-            logger.debug(f"    usage.range = {usage.range}")
+            logger.info(f"    usage.range = {usage.range}")
         range_types.append(reference_view.get_element(usage.range).class_class_curie)
         ranges.append(usage.range)
         range_dict["usage.range"] = {
@@ -81,7 +81,7 @@ def handle_any_of(reference_view: SchemaView, any_ofs: List, range_types: List[s
     if any_ofs:
         for any_of in any_ofs:
             if any_of.range is not None:
-                logger.debug(f"    any_of.range = {any_of.range}")
+                logger.info(f"    any_of.range = {any_of.range}")
                 if "any_of.range" not in range_dict:
                     range_dict["any_of.range"] = []
                 range_types.append(reference_view.get_element(any_of.range).class_class_curie)
@@ -139,7 +139,7 @@ def process_class_definitions(reference_view: SchemaView, prioritized_range: Dic
     """
     identifying_slot = reference_view.get_identifier_slot(prioritized_range["range"])
     if identifying_slot is not None and prioritized_range['range'] not in skip_classes:
-        logger.debug(f"    prioritized_range = {prioritized_range}")
+        logger.info(f"    prioritized_range = {prioritized_range}")
         pr_descendants = sorted(reference_view.class_descendants(prioritized_range['range']))
         for pr_descendant in pr_descendants:
             process_descendants(reference_view, pr_descendant, reference_class_name, reference_slot_name)
@@ -165,11 +165,11 @@ def process_descendants(reference_view: SchemaView, pr_descendant: str, referenc
                 f"{pr_descendant} with identifying slot {pr_identifying_slot.name} "
                 f"with structured_pattern {pr_is_object.structured_pattern.syntax}")
         else:
-            logger.debug(
+            logger.info(
                 f"{pr_descendant} has identifying slot {pr_identifying_slot.name} "
                 f"but without a structured_pattern")
     else:
-        logger.debug(f"{pr_descendant} has no identifying slot")
+        logger.info(f"{pr_descendant} has no identifying slot")
 
 
 def main() -> None:
@@ -193,7 +193,7 @@ def main() -> None:
         reference_slot_names.sort()
 
         for reference_slot_name in reference_slot_names:
-            logger.debug(f"{reference_class_name}.{reference_slot_name}")
+            logger.info(f"{reference_class_name}.{reference_slot_name}")
 
             range_dict, range_types, ranges = get_range_dict(reference_view, reference_slot_name, reference_class_name)
 
@@ -207,7 +207,7 @@ def main() -> None:
 
             range_types = set(range_types)
             if len(range_types) > 1:
-                logger.debug(f"    range_types = {range_types}")
+                logger.info(f"    range_types = {range_types}")
 
             prioritized_ranges = get_prioritized_ranges(range_dict)
             process_prioritized_ranges(reference_view, prioritized_ranges, skip_classes, reference_class_name,

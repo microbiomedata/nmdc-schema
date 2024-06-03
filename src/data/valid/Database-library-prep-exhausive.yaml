@@ -1,14 +1,14 @@
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
 
 library_preparation_set:
-  - id: nmdc:libprp-99-xxx2
+  - id: nmdc:libprp-99-123456
     type: nmdc:LibraryPreparation
     name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
     description: DNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP BMI_metagenomicsSequencingSOP_v2
     has_input:
-      - generic:xxx
+      - nmdc:bsm-99-987654
     has_output:
-      - generic:xxx
+      - nmdc:procsm-99-555555
 
     processing_institution: Battelle
 
@@ -27,15 +27,15 @@ library_preparation_set:
     library_type: DNA
 
   #rna library not strictly required for NEON but rna_seq_type needed for MetatranscriptomeAnnotation
-  - id: nmdc:libprp-99-xxx1
+  - id: nmdc:libprp-99-555555
     type: nmdc:LibraryPreparation
     name: RNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
     description: RNA extraction of NEON sample TREE_001-O-20170707-COMP-DNA1 using SOP XX
     has_input:
-      - generic:xxy
+      - nmdc:bsm-99-123456
     has_output:
-      - generic:xxz
     #range for processing_institution should be ProcessingInstitutionEnum
+      - nmdc:procsm-99-123456
     processing_institution: Battelle
     #    #updating protocol info to be nested
     #    protocol:

@@ -6,7 +6,6 @@ mags_set:
       - img.taxon:3300062116
     part_of:
       - nmdc:wfch-11-ab
-    was_informed_by: nmdc:omprc-11-bweaz680
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     execution_resource: NERSC-Cori
@@ -64,7 +63,6 @@ mags_set:
     name: MAGs activiity 1781_86089
     part_of:
       - nmdc:wfch-12-ab
-    was_informed_by: nmdc:omprc-11-0abycm67
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     type: nmdc:MagsAnalysis

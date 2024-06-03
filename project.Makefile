@@ -98,14 +98,14 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--log-file $@.log.txt \
 		--report-style exhaustive
 
-examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
+examples/output/Biosample-exhaustive_report.yaml: src/data/problem/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
 	$(RUN) exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
@@ -156,10 +156,10 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo compress large files
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
-pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
+pure-export-and-validate: local/keep/keep/mongo_as_nmdc_database_validation.log
 
 make-rdf: rdf-clean \
-	local/mongo_as_nmdc_database_validation.log \
+	local/keep/keep/mongo_as_nmdc_database_validation.log \
 	local/mongo_as_nmdc_database_cuire_repaired.ttl \
 	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
@@ -243,14 +243,14 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_le
 		--schema-path $(word 1,$^) \
 		--output-path $@
 
-.PRECIOUS: local/mongo_as_nmdc_database_validation.log
+.PRECIOUS: local/keep/keep/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/keep/keep/mongo_as_nmdc_database_rdf_safe.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/keep/keep/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	mv $@ $@.tmp
@@ -300,21 +300,6 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 		--schema $< \
 		--output $@ \
 		--schema-class Biosample
-
-### example of preparing to validate napa squad data
-
-local/nmdc-schema-v7.8.0.yaml:
-	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
-	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
-	#     see_also:
-	#       - MIxS:experimental_factor|additional_info
-	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	rm -rf $@.bak
-
-local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
-	$(RUN) gen-owl --no-use-native-uris $< > $@
 
 
 ## FUSEKI, DOCKER, ETC
@@ -409,7 +394,7 @@ local/gold-study-ids.json:
 local/gold-study-ids.yaml: local/gold-study-ids.json
 	yq -p json -o yaml $< | cat > $@
 
-local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
+local/study-files/%.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $(@D)
 	study_file_name=`echo $@` ; \
 		echo $$study_file_name ; \
@@ -437,7 +422,7 @@ create-study-yaml-files-subset: local/study-files/nmdc-sty-11-8fb6t785.yaml \
 local/study-files/nmdc-sty-11-1t150432.yaml \
 local/study-files/nmdc-sty-11-dcqce727.yaml
 
-local/study-files/%.ttl: local/nmdc-schema-v7.8.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
+local/study-files/%.ttl: nmdc_schema/nmdc_materialized_patterns.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
 	$(RUN) linkml-convert --output $@ --schema $< $(subst .ttl,.yaml,$@)
 
 create-study-ttl-files-subset: local/study-files/nmdc-sty-11-8fb6t785.ttl \
@@ -446,7 +431,7 @@ local/study-files/nmdc-sty-11-dcqce727.ttl
 
 ## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
 # retrieve selected collections from the Napa squad's MongoDB and fix ids containing whitespace
-local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
+local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	date
 	time $(RUN) pure-export \
 		--client-base-url https://api-napa.microbiomedata.org \
@@ -497,10 +482,10 @@ local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 	rm -rf $@.tmp
 
 .PRECIOUS: local/some_napa_collections.validation.log
-local/some_napa_collections.validation.log: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml
+local/some_napa_collections.validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-local/some_napa_collections.ttl: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
+local/some_napa_collections.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
 	$(RUN) linkml-convert --output $@.tmp.ttl --schema $(word 1, $^) $(word 2, $^)
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $@.tmp.ttl \
@@ -677,7 +662,7 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/partial_imports_graph.py
 
-local/Database-interleaved-class-count.tsv: src/data/problem/Database-interleaved.yaml
+local/Database-interleaved-class-count.tsv: src/data/problem/valid/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
@@ -688,7 +673,7 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 		--output $@
 
 .PHONY: generate-json-collections
-generate-json-collections: src/data/problem/Database-interleaved.yaml
+generate-json-collections: src/data/problem/valid/Database-interleaved.yaml
 	$(RUN) python src/scripts/database-to-json-list-files.py \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb

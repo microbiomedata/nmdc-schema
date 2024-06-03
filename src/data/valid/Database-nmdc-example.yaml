@@ -67,68 +67,68 @@ study_set:
         type: nmdc:Doi
     type: nmdc:Study
     study_category: research_study
-data_generation_set:
-  - id: nmdc:dgns-99-9XUVVF
-    analyte_category: metagenome
-    alternative_identifiers:
-      - gold:Gp0225767
-    name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
-      Petersham, Massachusetts, United States - Inc-BW-C-14-O
-    description: Forest soil from Barre Woods Harvard Forest LTER site was incubated
-      at 10C with heavy water. Sample is from a control plot at ambient soil temperature,
-      organic horizon - top 4cm of soil
-    has_input:
-      - nmdc:bsm-00-yellow
-    add_date: 17-AUG-17 05.08.38.451000000 PM
-    mod_date: 16-OCT-20 02.04.01.374000000 AM
-    has_output:
-      - nmdc:dobj-00-90125
-    ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
-      LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
-    part_of:
-      - nmdc:dgms-00-31415
-    processing_institution: JGI
-    type: nmdc:NucleotideSequencing
-    associated_studies:
-      - nmdc:sty-00-31415
-  - id: nmdc:dgns-99-dk9vgI
-    analyte_category: metagenome
-    alternative_identifiers:
-      - gold:Gp0208560
-    name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
-    description: Permafrost microbial communities from Stordalen Mire, Sweden
-    has_input:
-      - nmdc:bsm-00-green
-    add_date: 17-MAR-17 04.55.44.822000000 PM
-    mod_date: 22-MAY-20 06.38.19.576000000 PM
-    has_output:
-      - nmdc:dobj-00-pizza
-    ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
-      - 611E1M metaG
-    processing_institution: JGI
-    type: nmdc:NucleotideSequencing
-    associated_studies: 
-      - nmdc:sty-00-8675309
-  - id: nmdc:dgns-99-MVW1FV
-    analyte_category: metagenome
-    alternative_identifiers:
-      - gold:Gp0306221
-    name: Rhizosphere microbial communities from Carex aquatilis grown in University
-      of Washington, Seatle, WA, United States - 4-1-23 metaG
-    description: Rhizosphere microbial communities from Carex aquatilis grown in submerged
-      peat from a thermokarst bog, University of Washington, Seatle, WA, United States
-    has_input:
-      - nmdc:bsm-00-blue
-    add_date: 29-MAR-18 01.27.30.036000000 PM
-    mod_date: 04-APR-20 08.26.35.067000000 AM
-    has_output:
-      - nmdc:dobj-00-mobydick
-    ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
-      in University of Washington, Seatle, WA, United States - 4-1-23 metaG
-    processing_institution: JGI
-    type: nmdc:NucleotideSequencing
-    associated_studies:
-      - nmdc:sty-00-avacado
+#data_generation_set:
+#  - id: nmdc:dgns-99-9XUVVF
+#    analyte_category: metagenome
+#    alternative_identifiers:
+#      - gold:Gp0225767
+#    name: Forest soil microbial communities from Barre Woods Harvard Forest LTER site,
+#      Petersham, Massachusetts, United States - Inc-BW-C-14-O
+#    description: Forest soil from Barre Woods Harvard Forest LTER site was incubated
+#      at 10C with heavy water. Sample is from a control plot at ambient soil temperature,
+#      organic horizon - top 4cm of soil
+#    has_input:
+#      - nmdc:bsm-00-yellow
+#    add_date: 17-AUG-17 05.08.38.451000000 PM
+#    mod_date: 16-OCT-20 02.04.01.374000000 AM
+#    has_output:
+#      - nmdc:dobj-00-90125
+#    ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
+#      LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
+#    part_of:
+#      - nmdc:dgms-00-31415
+#    processing_institution: JGI
+#    type: nmdc:NucleotideSequencing
+#    associated_studies:
+#      - nmdc:sty-00-31415
+#  - id: nmdc:dgns-99-dk9vgI
+#    analyte_category: metagenome
+#    alternative_identifiers:
+#      - gold:Gp0208560
+#    name: Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG
+#    description: Permafrost microbial communities from Stordalen Mire, Sweden
+#    has_input:
+#      - nmdc:bsm-00-green
+#    add_date: 17-MAR-17 04.55.44.822000000 PM
+#    mod_date: 22-MAY-20 06.38.19.576000000 PM
+#    has_output:
+#      - nmdc:dobj-00-pizza
+#    ncbi_project_name: Permafrost microbial communities from Stordalen Mire, Sweden
+#      - 611E1M metaG
+#    processing_institution: JGI
+#    type: nmdc:NucleotideSequencing
+#    associated_studies:
+#      - nmdc:sty-00-8675309
+#  - id: nmdc:dgns-99-MVW1FV
+#    analyte_category: metagenome
+#    alternative_identifiers:
+#      - gold:Gp0306221
+#    name: Rhizosphere microbial communities from Carex aquatilis grown in University
+#      of Washington, Seatle, WA, United States - 4-1-23 metaG
+#    description: Rhizosphere microbial communities from Carex aquatilis grown in submerged
+#      peat from a thermokarst bog, University of Washington, Seatle, WA, United States
+#    has_input:
+#      - nmdc:bsm-00-blue
+#    add_date: 29-MAR-18 01.27.30.036000000 PM
+#    mod_date: 04-APR-20 08.26.35.067000000 AM
+#    has_output:
+#      - nmdc:dobj-00-mobydick
+#    ncbi_project_name: Rhizosphere microbial communities from Carex aquatilis grown
+#      in University of Washington, Seatle, WA, United States - 4-1-23 metaG
+#    processing_institution: JGI
+#    type: nmdc:NucleotideSequencing
+#    associated_studies:
+#      - nmdc:sty-00-avacado
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
     gold_biosample_identifiers:
@@ -138,8 +138,6 @@ biosample_set:
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-8675309
-    #    collection_date:
-    #      has_raw_value: '2011-06-15'
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -190,8 +188,6 @@ biosample_set:
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-8675309
-    #    collection_date:
-    #      has_raw_value: '2017-05-24'
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -242,8 +238,6 @@ biosample_set:
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-8675309
-    #    collection_date:
-    #      has_raw_value: '2018-01-29'
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -284,19 +278,19 @@ biosample_set:
     mod_date: '08-JAN-20 02.49.25.000000000 PM'
     ncbi_taxonomy_name: rhizosphere metagenome
     sample_collection_site: Peat Soil
-data_object_set:
-  - id: nmdc:dobj-99-dkJ8xX
-    name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
-    description: Raw sequencer read data
-    file_size_bytes: 9208349052
-    type: nmdc:DataObject
-  - id: nmdc:dobj-99-7zrm55
-    name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
-    description: Raw sequencer read data
-    file_size_bytes: 34243309819
-    type: nmdc:DataObject
-  - id: nmdc:dobj-99-sQQw0I
-    name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
-    description: Raw sequencer read data
-    file_size_bytes: 7580035314
-    type: nmdc:DataObject
+#data_object_set:
+#  - id: nmdc:dobj-99-dkJ8ab
+#    name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
+#    description: Raw sequencer read data
+#    file_size_bytes: 9208349052
+#    type: nmdc:DataObject
+#  - id: nmdc:dobj-99-7zrm55
+#    name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
+#    description: Raw sequencer read data
+#    file_size_bytes: 34243309819
+#    type: nmdc:DataObject
+#  - id: nmdc:dobj-99-sQQw0I
+#    name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
+#    description: Raw sequencer read data
+#    file_size_bytes: 7580035314
+#    type: nmdc:DataObject

@@ -1,4 +1,4 @@
-id: nmdc:wfmtan-99-101010
+id: nmdc:wfmtan-99-101010.1
 alternative_identifiers:
   - generic:xxx
 description: xxx
@@ -18,7 +18,7 @@ img_identifiers:
   - img.taxon:x1
 name: xxx
 part_of:
-  - generic:parent
+  - nmdc:wfch-99-101010
 processing_institution: JGI
 protocol_link:
   type: nmdc:Protocol

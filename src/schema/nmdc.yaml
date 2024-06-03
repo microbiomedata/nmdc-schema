@@ -131,7 +131,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   MassSpectrometry:
@@ -148,33 +148,33 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
     rules:
-    - title: has_calibration_required_if_gc
-      description: >-
-        If eluent_introduction_category is gas_chromatography, then has_calibration is required.
-      preconditions:
-        slot_conditions:
-          eluent_introduction_category:
-            equals_string: gas_chromatography
-      postconditions:
-        slot_conditions:
-          has_calibration:
-            required: true
-    - title: has_chromatography_configuration_required_if_lc_or_gc
-      description: >-
-        If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
-      preconditions:
-        slot_conditions:
-          eluent_introduction_category:
-            any_of:
-            - equals_string: liquid_chromatography
-            - equals_string: gas_chromatography
-      postconditions:
-        slot_conditions:
-          has_chromatography_configuration:
-            required: true
+      - title: has_calibration_required_if_gc
+        description: >-
+          If eluent_introduction_category is gas_chromatography, then has_calibration is required.
+        preconditions:
+          slot_conditions:
+            eluent_introduction_category:
+              equals_string: gas_chromatography
+        postconditions:
+          slot_conditions:
+            has_calibration:
+              required: true
+      - title: has_chromatography_configuration_required_if_lc_or_gc
+        description: >-
+          If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
+        preconditions:
+          slot_conditions:
+            eluent_introduction_category:
+              any_of:
+                - equals_string: liquid_chromatography
+                - equals_string: gas_chromatography
+        postconditions:
+          slot_conditions:
+            has_chromatography_configuration:
+              required: true
 
   Configuration:
     abstract: true
@@ -187,7 +187,7 @@ classes:
   MassSpectrometryConfiguration:
     is_a: Configuration
     class_uri: nmdc:MassSpectrometryConfiguration
-    description: A set of parameters that define and control the actions of a mass spectrometry process. 
+    description: A set of parameters that define and control the actions of a mass spectrometry process.
     notes:
       - This class is intended to represent a mass spectrometry method file that controls a mass spectrometry process.
     slots:
@@ -204,7 +204,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}$"
           interpolated: true
   
   ChromatographyConfiguration:
@@ -225,7 +225,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(chrocon)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:(chrocon)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   FunctionalAnnotationAggMember:
@@ -235,6 +235,11 @@ classes:
       - gene_function_id
       - count
       - type
+    slot_usage:
+      metagenome_annotation_id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   Database:
     class_uri: nmdc:Database
@@ -289,9 +294,17 @@ classes:
     slot_usage:
       has_input:
         minimum_cardinality: 2
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
+        required: true
         minimum_cardinality: 1
         maximum_cardinality: 1
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -310,8 +323,19 @@ classes:
       - input_mass
       - volume
     slot_usage:
+      has_input:
+        required: true
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -337,8 +361,16 @@ classes:
     comments:
       - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
     slot_usage:
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -359,9 +391,15 @@ classes:
       has_input:
         range: Site
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: Biosample
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -379,7 +417,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   SubSamplingProcess:
@@ -411,15 +449,25 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$"
           interpolated: true
       volume:
         description: The output volume of the SubSampling Process.
       mass:
         description: The output mass of the SubSampling Process.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: ProcessedSample
         description: The subsample.
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   MixingProcess:
     class_uri: 'nmdc:MixingProcess'
@@ -441,11 +489,20 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}"
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
         range: ProcessedSample
         description: The mixed sample.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   FiltrationProcess:
     class_uri: 'nmdc:FiltrationProcess'
@@ -472,10 +529,22 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'
           interpolated: true
       volume:
         description: The volume of sample filtered.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   StorageProcess:
     class_uri: 'nmdc:StorageProcess'
@@ -483,7 +552,7 @@ classes:
       A planned process with the objective to preserve and protect material entities by placing them in an identified 
       location which may have a controlled environment.
     is_a: PlannedProcess
-    related_mappings: 
+    related_mappings:
       - OBI:0302893
     slots:
       - substances_used
@@ -491,7 +560,7 @@ classes:
       - temperature
     slot_usage:
       substances_used:
-        description: The substance(s) that a processed sample is stored in. 
+        description: The substance(s) that a processed sample is stored in.
 
   ChromatographicSeparationProcess:
     class_uri: 'nmdc:ChromatographicSeparationProcess'
@@ -510,7 +579,18 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   DissolvingProcess:
@@ -528,12 +608,12 @@ classes:
     slots:
       - duration
       - temperature
-      - substances_used # whether a substance was used as a solvent or a solubilizing_agent will be captured in substance_role
+      - substances_used
     slot_usage:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$"
           interpolated: true
 
 enums:
@@ -746,7 +826,7 @@ enums:
       aqueous_layer:
       non_polar_layer:
 
-      
+
 slots:
 
   polarity_mode:
@@ -798,13 +878,12 @@ slots:
 
   has_chromatography_configuration:
     range: ChromatographyConfiguration
-    description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer. 
+    description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.
 
   metagenome_annotation_id:
     range: WorkflowExecution
-  #    range: WorkflowExecutionActivity
-  #    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
-  #    required: true
+    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
+    required: true
 
   gene_function_id:
     range: uriorcurie
@@ -907,15 +986,18 @@ slots:
   field_research_site_set:
     mixins: object_set
     range: FieldResearchSite
+
   collecting_biosamples_from_site_set:
     mixins: object_set
     range: CollectingBiosamplesFromSite
+
   data_object_set:
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
+
   genome_feature_set:
     mixins: object_set
     range: GenomeFeature
@@ -926,28 +1008,33 @@ slots:
     description:
       This property links a database object to the set of all functional
       annotations
+
   workflow_execution_set:
     mixins: object_set
     range: WorkflowExecution
     description: This property links a database object to the set of workflow activities.
+
   mags_set:
     mixins: object_set
     range: MagsAnalysis
     description:
       This property links a database object to the set of MAGs analysis
       activities.
+
   metabolomics_analysis_set:
     mixins: object_set
     range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
+
   metaproteomics_analysis_set:
     mixins: object_set
     range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
+
   metagenome_annotation_set:
     mixins: object_set
     range: MetagenomeAnnotation
@@ -966,29 +1053,34 @@ slots:
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
+
   metatranscriptome_analysis_set:
     mixins: object_set
     range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
       analysis activities.
+
   read_qc_analysis_set:
     mixins: object_set
     range: ReadQcAnalysis
     description:
       This property links a database object to the set of read QC analysis
       activities.
+
   read_based_taxonomy_analysis_set:
     mixins: object_set
     range: ReadBasedTaxonomyAnalysis
     description: >-
       This property links a database object to the set of read based analysis activities.
+
   nom_analysis_set:
     mixins: object_set
     range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
+
   data_generation_set:
     mixins: object_set
     range: DataGeneration
@@ -1018,6 +1110,7 @@ slots:
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
+
   instrument_set:
     mixins: object_set
     range: Instrument

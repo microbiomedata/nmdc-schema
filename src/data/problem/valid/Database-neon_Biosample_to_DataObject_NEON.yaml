@@ -126,8 +126,8 @@ workflow_chain_set:
     was_informed_by: nmdc:dgns-11-s9xj2r24
     type: nmdc:WorkflowChain
 read_qc_analysis_set:
-  - id: nmdc:wfrqc-12-63da5n74
-    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
+  - id: nmdc:wfrqc-12-63da5n74.1
+    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'
     part_of:
@@ -177,8 +177,8 @@ pooling_set:
     start_date: '2021-01-14'
     end_date: '2021-01-14'
 read_qc_analysis_activity_set:
-  - id: nmdc:wfrqc-12-63da5n74.1
-    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '
+  - id: nmdc:wfrqc-12-63da5n74.1.1
+    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1.1 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'
     was_informed_by: nmdc:omprc-11-s9xj2r24

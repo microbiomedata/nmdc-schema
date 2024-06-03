@@ -1,7 +1,7 @@
-#this file is a valid example of using an alterantive identifier on a workflow execution subclass.
-nom_analysis_activity_set:
+#this file is a valid example of using an alternative identifier on a workflow execution subclass.
+nom_analysis_set:
   - id: nmdc:wfnom-11-547rwq94.1
-    execution_resource: xxx
+    execution_resource: LANL-B-div
     git_url: xxx
     has_input:
       - nmdc:dobj-11-647rwq94
@@ -9,9 +9,10 @@ nom_analysis_activity_set:
     has_output:
       - nmdc:dobj-11-647rwq97
       - nmdc:dobj-11-647rwq98
-    type: xxx
+    type: nmdc:NomAnalysis
     started_at_time: "2018-11-13T20:20:39+00:00"
     ended_at_time: "2018-11-13T20:20:39+00:00"
-    was_informed_by: nmdc:omproc-11-647rwq96
     alternative_identifiers:
       - nmdc:wfnom-11-547rwq94
+    part_of:
+      - nmdc:wfch-11-547rwq94

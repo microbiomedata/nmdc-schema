@@ -1,10 +1,9 @@
 metagenome_assembly_set:
   - id: nmdc:wfmgas-99-B7Vogx.1
     type: nmdc:MetagenomeAssembly
-    name: Metagenome assembly 1472_51277
     part_of:
       - nmdc:wfch-11-ab
-    was_informed_by: nmdc:omprc-11-547rwq94
+    name: Metagenome assembly 1472_51277
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
@@ -44,98 +43,179 @@ metagenome_assembly_set:
     gc_std: 0.09822
     num_input_reads: 87803950
     num_aligned_reads: 63046103
-  <<<<<<< HEAD
-- id: nmdc:wfmgas-99-CvgXTq
-  type: nmdc:MetagenomeAssembly
-  name: Metagenome assembly 1472_51278
-  part_of:
-    - nmdc:wfch-11-ab
-  =======
-- id: nmdc:wfmgas-99-CvgXTq.1
-  name: Metagenome assembly 1472_51278
-  was_informed_by: nmdc:omprc-11-548rwq94
-  >>>>>>> upstream/main
-started_at_time: '2020-03-25T00:00:00+00:00'
-ended_at_time: '2020-03-25T00:00:00+00:00'
-execution_resource: LANL-B-div
-git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
-has_input:
-  - nmdc:dobj-11-548rwq96
-has_output:
-  - nmdc:dobj-11-548rwq96
-  - nmdc:dobj-11-548rwq97
-  - nmdc:dobj-11-548rwq98
-  - nmdc:dobj-11-548rwq99
-  - nmdc:dobj-11-548rwq93
-scaffolds: 747801
-contigs: 747801
-scaf_bp: 333164102
-contig_bp: 333164102
-gap_pct: 0
-scaf_n50: 235059
-scaf_l50: 432
-ctg_n50: 235059
-ctg_l50: 432
-scaf_n90: 623912
-scaf_l90: 289
-ctg_n90: 623912
-ctg_l90: 289
-scaf_logsum: 483596
-scaf_powsum: 51427
-ctg_logsum: 483596
-ctg_powsum: 51427
-asm_score: 3.196
-scaf_max: 15780
-ctg_max: 15780
-scaf_n_gt50k: 0
-scaf_l_gt50k: 0
-scaf_pct_gt50k: 0
-gc_avg: 0.57087
-gc_std: 0.09613
-num_input_reads: 141175680
-num_aligned_reads: 95369019
-- id: nmdc:wfmgas-99-1vjxjy88.1
-  type: nmdc:MetagenomeAssembly
-  name: Metagenome assembly 1472_51279
-  part_of:
-    - nmdc:wfch-11-ab
-  was_informed_by: nmdc:omprc-11-1vjxjy80
-  started_at_time: '2020-03-25T00:00:00+00:00'
-  ended_at_time: '2020-03-25T00:00:00+00:00'
-  execution_resource: LANL-B-div
-  git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
-  has_input:
-    - nmdc:dobj-11-1vjxjy81
-  has_output:
-    - nmdc:11-1vjxjy82
-    - nmdc:11-1vjxjy83
-    - nmdc:11-1vjxjy84
-    - nmdc:11-1vjxjy85
-    - nmdc:11-1vjxjy86
-  scaffolds: 607951
-  contigs: 607951
-  scaf_bp: 279001661
-  contig_bp: 279001661
-  gap_pct: 0
-  scaf_n50: 183452
-  scaf_l50: 449
-  ctg_n50: 183452
-  ctg_l50: 449
-  scaf_n90: 505179
-  scaf_l90: 290
-  ctg_n90: 505179
-  ctg_l90: 290
-  scaf_logsum: 475574
-  scaf_powsum: 50819
-  ctg_logsum: 475574
-  ctg_powsum: 50819
-  asm_score: 3.527
-  scaf_max: 26906
-  ctg_max: 26906
-  scaf_n_gt50k: 0
-  scaf_l_gt50k: 0
-  scaf_pct_gt50k: 0
-  gc_avg: 0.55832
-  gc_std: 0.09898
-  num_input_reads: 116129794
-  num_aligned_reads: 79146088
+  - id: nmdc:wfmgas-99-CvgXTq.2
+    type: nmdc:MetagenomeAssembly
+    name: Metagenome assembly 1472_51278
+    part_of:
+      - nmdc:wfch-11-ab
+    started_at_time: '2020-03-25T00:00:00+00:00'
+    ended_at_time: '2020-03-25T00:00:00+00:00'
+    execution_resource: LANL-B-div
+    git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
+    has_input:
+      - nmdc:dobj-11-548rwq96
+    has_output:
+      - nmdc:dobj-11-548rwq96
+      - nmdc:dobj-11-548rwq97
+      - nmdc:dobj-11-548rwq98
+      - nmdc:dobj-11-548rwq99
+      - nmdc:dobj-11-548rwq93
+    scaffolds: 747801
+    contigs: 747801
+    scaf_bp: 333164102
+    contig_bp: 333164102
+    gap_pct: 0
+    scaf_n50: 235059
+    scaf_l50: 432
+    ctg_n50: 235059
+    ctg_l50: 432
+    scaf_n90: 623912
+    scaf_l90: 289
+    ctg_n90: 623912
+    ctg_l90: 289
+    scaf_logsum: 483596
+    scaf_powsum: 51427
+    ctg_logsum: 483596
+    ctg_powsum: 51427
+    asm_score: 3.196
+    scaf_max: 15780
+    ctg_max: 15780
+    scaf_n_gt50k: 0
+    scaf_l_gt50k: 0
+    scaf_pct_gt50k: 0
+    gc_avg: 0.57087
+    gc_std: 0.09613
+    num_input_reads: 141175680
+    num_aligned_reads: 95369019
+  - id: nmdc:wfmgas-99-1vjxjy88.2
+    type: nmdc:MetagenomeAssembly
+    name: Metagenome assembly 1472_51279
+    part_of:
+      - nmdc:wfch-11-ab
+    started_at_time: '2020-03-25T00:00:00+00:00'
+    ended_at_time: '2020-03-25T00:00:00+00:00'
+    execution_resource: LANL-B-div
+    git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
+    has_input:
+      - nmdc:dobj-11-1vjxjy81
+    has_output:
+      - nmdc:11-1vjxjy82
+      - nmdc:11-1vjxjy83
+      - nmdc:11-1vjxjy84
+      - nmdc:11-1vjxjy85
+      - nmdc:11-1vjxjy86
+    scaffolds: 607951
+    contigs: 607951
+    scaf_bp: 279001661
+    contig_bp: 279001661
+    gap_pct: 0
+    scaf_n50: 183452
+    scaf_l50: 449
+    ctg_n50: 183452
+    ctg_l50: 449
+    scaf_n90: 505179
+    scaf_l90: 290
+    ctg_n90: 505179
+    ctg_l90: 290
+    scaf_logsum: 475574
+    scaf_powsum: 50819
+    ctg_logsum: 475574
+    ctg_powsum: 50819
+    asm_score: 3.527
+    scaf_max: 26906
+    ctg_max: 26906
+    scaf_n_gt50k: 0
+    scaf_l_gt50k: 0
+    scaf_pct_gt50k: 0
+    gc_avg: 0.55832
+    gc_std: 0.09898
+    num_input_reads: 116129794
+    num_aligned_reads: 79146088
+  - id: nmdc:wfmgas-99-CvgXTq.1
+    part_of:
+      - nmdc:wfch-11-ab
+    name: Metagenome assembly 1472_51278
+    started_at_time: '2020-03-25T00:00:00+00:00'
+    ended_at_time: '2020-03-25T00:00:00+00:00'
+    type: nmdc:MetagenomeAssembly
+    execution_resource: LANL-B-div
+    git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
+    has_input:
+      - nmdc:dobj-11-548rwq96
+    has_output:
+      - nmdc:dobj-11-548rwq96
+      - nmdc:dobj-11-548rwq97
+      - nmdc:dobj-11-548rwq98
+      - nmdc:dobj-11-548rwq99
+      - nmdc:dobj-11-548rwq93
+    scaffolds: 747801
+    contigs: 747801
+    scaf_bp: 333164102
+    contig_bp: 333164102
+    gap_pct: 0
+    scaf_n50: 235059
+    scaf_l50: 432
+    ctg_n50: 235059
+    ctg_l50: 432
+    scaf_n90: 623912
+    scaf_l90: 289
+    ctg_n90: 623912
+    ctg_l90: 289
+    scaf_logsum: 483596
+    scaf_powsum: 51427
+    ctg_logsum: 483596
+    ctg_powsum: 51427
+    asm_score: 3.196
+    scaf_max: 15780
+    ctg_max: 15780
+    scaf_n_gt50k: 0
+    scaf_l_gt50k: 0
+    scaf_pct_gt50k: 0
+    gc_avg: 0.57087
+    gc_std: 0.09613
+    num_input_reads: 141175680
+    num_aligned_reads: 95369019
+  - id: nmdc:wfmgas-99-1vjxjy88.1
+    part_of:
+      - nmdc:wfch-11-ab
+    name: Metagenome assembly 1472_51279
+    started_at_time: '2020-03-25T00:00:00+00:00'
+    ended_at_time: '2020-03-25T00:00:00+00:00'
+    type: nmdc:MetagenomeAssembly
+    execution_resource: LANL-B-div
+    git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
+    has_input:
+      - nmdc:dobj-11-1vjxjy81
+    has_output:
+      - nmdc:dobj-11-1vjxjy82
+      - nmdc:dobj-11-1vjxjy83
+      - nmdc:dobj-11-1vjxjy84
+      - nmdc:dobj-11-1vjxjy85
+      - nmdc:dobj-11-1vjxjy86
+    scaffolds: 607951
+    contigs: 607951
+    scaf_bp: 279001661
+    contig_bp: 279001661
+    gap_pct: 0
+    scaf_n50: 183452
+    scaf_l50: 449
+    ctg_n50: 183452
+    ctg_l50: 449
+    scaf_n90: 505179
+    scaf_l90: 290
+    ctg_n90: 505179
+    ctg_l90: 290
+    scaf_logsum: 475574
+    scaf_powsum: 50819
+    ctg_logsum: 475574
+    ctg_powsum: 50819
+    asm_score: 3.527
+    scaf_max: 26906
+    ctg_max: 26906
+    scaf_n_gt50k: 0
+    scaf_l_gt50k: 0
+    scaf_pct_gt50k: 0
+    gc_avg: 0.55832
+    gc_std: 0.09898
+    num_input_reads: 116129794
+    num_aligned_reads: 79146088

@@ -13,7 +13,7 @@ name: name1
 type: nmdc:ReadQcAnalysis
 part_of:
   - nmdc:wfch-11-ab
-was_informed_by: "nmdc:omprc-11-547rwq95.1"
+was_informed_by: "nmdc:omprc-11-547rwq95"
 has_input:
   - "nmdc:dobj-11-547rwq96"
 has_output:
