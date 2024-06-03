@@ -49,5 +49,5 @@ jobs:
       #              run test suite   
       #----------------------------------------------
       - name: Run tests
-        run: squeaky-clean all test
+        run: make squeaky-clean all test
 
