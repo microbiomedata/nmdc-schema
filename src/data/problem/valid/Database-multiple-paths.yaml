@@ -63,5 +63,5 @@ data_generation_set:
       - nmdc:sty-00-123456
     processing_institution: JGI
     type: nmdc:NucleotideSequencing
-    associated_studies: 
+    associated_studies:
       - nmdc:sty-00-555xxx

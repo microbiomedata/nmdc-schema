@@ -98,14 +98,14 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--log-file $@.log.txt \
 		--report-style exhaustive
 
-examples/output/Biosample-exhaustive_report.yaml: src/data/problem/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
+examples/output/Biosample-exhaustive_report.yaml: src/data/problem/valid/biosample-only/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
 	$(RUN) exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/biosample-only/Biosample-exhasutive.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
@@ -662,7 +662,7 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/partial_imports_graph.py
 
-local/Database-interleaved-class-count.tsv: src/data/problem/valid/Database-interleaved.yaml
+local/Database-interleaved-class-count.tsv: src/data/problem/valid/huge/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
@@ -673,7 +673,7 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 		--output $@
 
 .PHONY: generate-json-collections
-generate-json-collections: src/data/problem/valid/Database-interleaved.yaml
+generate-json-collections: src/data/problem/valid/huge/Database-interleaved.yaml
 	$(RUN) python src/scripts/database-to-json-list-files.py \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb
