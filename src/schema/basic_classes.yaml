@@ -306,15 +306,15 @@ classes:
           interpolated: true
 
   DataGeneration:
-    class_uri: 'nmdc:DataGeneration'
+    class_uri: nmdc:DataGeneration
+    is_a: PlannedProcess
+    abstract: true
     aliases:
       - OmicsProcessing
       - assay
       - omics assay
       - sequencing project
       - experiment
-    is_a: PlannedProcess
-    abstract: true
     in_subset:
       - sample subset
     description: >-
@@ -327,9 +327,9 @@ classes:
       - add_date
       - analyte_category
       - associated_studies
+      - instrument_used
       - mod_date
       - principal_investigator
-      - instrument_used
     slot_usage:
       has_input:
         required: true

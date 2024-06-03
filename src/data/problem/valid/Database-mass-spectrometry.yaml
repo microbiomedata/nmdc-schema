@@ -1,37 +1,37 @@
-data_generation_set: 
-  - id: nmdc:dgms-99-zUCd5N
-    type: nmdc:MassSpectrometry
-    eluent_introduction_category: liquid_chromatography
-    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
-    has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0
-    analyte_category: lipidome
-    has_input:
-      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
-    start_date: 30-OCT-14 01.00.00.000000000 AM
-    end_date: 30-OCT-14 01.30.00.000000000 AM
-    add_date: 07-MAY-24 12.00.00.000000000 AM
-    mod_date: 07-MAY-24 12.00.00.000000000 AM
-    has_output:
-      - nmdc:dobj-00-msdem1
-    associated_studies:
-      - nmdc:sty-00-555xxx
-  - id: nmdc:dgms-99-zUCd5x
-    type: nmdc:MassSpectrometry
-    eluent_introduction_category: liquid_chromatography
-    analyte_category: lipidome
-    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
-    has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0
-    has_input:
-      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
-    start_date: 31-OCT-14 01.00.00.000000000 AM
-    end_date: 31-OCT-14 01.30.00.000000000 AM
-    add_date: 07-MAY-24 12.00.00.000000000 AM
-    mod_date: 07-MAY-24 12.00.00.000000000 AM
-    has_output:
-      - nmdc:dobj-00-msdem2
-    associated_studies:
-      - nmdc:sty-00-555xxx
-
+#data_generation_set:
+#  - id: nmdc:dgms-99-zUCd5N
+#    type: nmdc:MassSpectrometry
+#    eluent_introduction_category: liquid_chromatography
+#    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG1
+#    has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0
+#    analyte_category: lipidome
+#    has_input:
+#      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+#    start_date: 30-OCT-14 01.00.00.000000000 AM
+#    end_date: 30-OCT-14 01.30.00.000000000 AM
+#    add_date: 07-MAY-24 12.00.00.000000000 AM
+#    mod_date: 07-MAY-24 12.00.00.000000000 AM
+#    has_output:
+#      - nmdc:dobj-00-msdem1
+#    associated_studies:
+#      - nmdc:sty-00-555xxx
+#  - id: nmdc:dgms-99-zUCd5x
+#    type: nmdc:MassSpectrometry
+#    eluent_introduction_category: liquid_chromatography
+#    analyte_category: lipidome
+#    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
+#    has_chromatography_configuration: nmdc:chrocon-11-oW43DzG0
+#    has_input:
+#      - nmdc:procsm-11-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+#    start_date: 31-OCT-14 01.00.00.000000000 AM
+#    end_date: 31-OCT-14 01.30.00.000000000 AM
+#    add_date: 07-MAY-24 12.00.00.000000000 AM
+#    mod_date: 07-MAY-24 12.00.00.000000000 AM
+#    has_output:
+#      - nmdc:dobj-00-msdem2
+#    associated_studies:
+#      - nmdc:sty-00-555xxx
+#
 # example data objects for the mass spectrometry data generation set
 data_object_set:
   - id: nmdc:dobj-00-msdem1
@@ -120,5 +120,3 @@ configuration_set:
               type: nmdc:QuantityValue
               has_unit: mM
               has_numeric_value: 15
-
-  

@@ -118,8 +118,8 @@ settings:
 classes:
   NucleotideSequencing:
     class_uri: nmdc:NucleotideSequencing
-    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
+    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     comments: For example data generated from an Illumina or Pacific Biosciences instrument.
     slots:
       - gold_sequencing_project_identifiers
@@ -136,15 +136,15 @@ classes:
 
   MassSpectrometry:
     class_uri: nmdc:MassSpectrometry
-    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
+    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     exact_mappings:
       - CHMO:0000470
     slots:
       - eluent_introduction_category
-      - has_mass_spectrometry_configuration
-      - has_chromatography_configuration
       - has_calibration
+      - has_chromatography_configuration
+      - has_mass_spectrometry_configuration
     slot_usage:
       id:
         structured_pattern:
