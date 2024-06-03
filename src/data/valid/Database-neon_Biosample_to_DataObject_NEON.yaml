@@ -97,23 +97,21 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-#data_generation_set:
-#  - id: nmdc:dgns-11-s9xj2r24
-#    analyte_category: metagenome
-#    name: Test NEON data
-#    has_input:
-#      - nmdc:procsm-99-xyz3
-#    has_output:
-#      - nmdc:dobj-12-jdhk9537
-#      - nmdc:dobj-12-yx0tfp52
-#    instrument_used:
-#      - nmdc:inst-14-xx07be40
-#    part_of:
-#      - nmdc:dgns-11-34xj1150
-#    processing_institution: Battelle
-#    type: nmdc:NucleotideSequencing
-#    associated_studies:
-#      - nmdc:sty-11-34xj1150
+data_generation_set:
+  - id: nmdc:dgns-11-s9xj2r24
+    analyte_category: metagenome
+    name: Test NEON data
+    has_input:
+      - nmdc:procsm-99-xyz3
+    has_output:
+      - nmdc:dobj-12-jdhk9537
+      - nmdc:dobj-12-yx0tfp52
+    instrument_used:
+      - nmdc:inst-14-xx07be40
+    processing_institution: Battelle
+    type: nmdc:NucleotideSequencing
+    associated_studies:
+      - nmdc:sty-11-34xj1150
 instrument_set:
   - id: nmdc:inst-14-xx07be40
     model: novaseq
@@ -142,22 +140,6 @@ read_qc_analysis_set:
       - nmdc:dobj-12-y236qp68
     type: nmdc:ReadQcAnalysis
     version: b1.0.7
-  - id: nmdc:wfrqc-12-63da5n74.1
-    name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1'
-    started_at_time: '2023-03-23T17:17:05.111689+00:00'
-    ended_at_time: '2023-03-23T17:17:05.111725+00:00'
-    execution_resource: NERSC-Cori
-    git_url: https://github.com/microbiomedata/ReadsQC
-    has_input:
-      - nmdc:dobj-12-jdhk9537
-      - nmdc:dobj-12-yx0tfp52
-    has_output:
-      - nmdc:dobj-12-71q7wv80
-      - nmdc:dobj-12-y236qp68
-    type: nmdc:ReadQcAnalysis
-    version: b1.0.7
-    part_of:
-      - nmdc:wfch-11-ab
 
 data_object_set:
   - id: nmdc:dobj-12-jdhk9537
