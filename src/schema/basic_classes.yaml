@@ -329,6 +329,7 @@ classes:
       - associated_studies
       - instrument_used
       - mod_date
+      - part_of
       - principal_investigator
     slot_usage:
       has_input:
@@ -349,6 +350,12 @@ classes:
         range: DataObject
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated:
+            true
+      part_of:
+        range: DataGeneration
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated:
             true
     broad_mappings:
