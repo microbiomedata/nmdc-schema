@@ -31,7 +31,6 @@ def do_test():
                            name='freshwater environment',
                        ),
                    ),
-                   part_of="nmdc:sty-99-123456",
                    )
 
     print(yaml_dumper.dumps(bs))

@@ -82,7 +82,6 @@ classes:
     is_a: FunctionalAnnotationTerm
     description: >-
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
-
     id_prefixes:
       - KEGG_PATHWAY
       - COG
