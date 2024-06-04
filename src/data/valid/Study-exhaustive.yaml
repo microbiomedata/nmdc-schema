@@ -3,7 +3,7 @@ type: nmdc:Study
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
-  - generic:abc1
+  - generic:xxx
 related_identifiers: any string R1
 gold_study_identifiers:
   - gold:Gs12345
@@ -20,7 +20,6 @@ specific_ecosystem: unconstrained text
 principal_investigator:
   type: nmdc:PersonValue
   has_raw_value: Craig Venter
-  was_generated_by: nmdc:any_string_1
   orcid: ORCID:0000-0002-7086-765X
   profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
   email: jcventer@jcvi.org
@@ -62,11 +61,6 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-#protocol_link:
-#  - name: any string 1
-#    type: nmdc:Protocol
-#  - name: any string 2
-#    type: nmdc:Protocol
 funding_sources:
   - any string 1
   - any string 2
@@ -74,7 +68,6 @@ has_credit_associations:
   - applies_to_person:
       type: nmdc:PersonValue
       has_raw_value: Craig Venter
-      was_generated_by: nmdc:any_string_1
       orcid: ORCID:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       email: jcventer@jcvi.org
@@ -94,21 +87,19 @@ has_credit_associations:
       - Investigation
       - Supervision
     type: prov:Association
-#study_image:
-#  - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-#    was_generated_by: nmdc:any_string_1
-#    url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-#    description: Photo of Craig Venter Institute, Rockville, Maryland
-#    display_order: 1
-#    type: nmdc:ImageValue
-#  - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-#    was_generated_by: nmdc:any_string_1
-#    url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-#    description: Photo of Craig Venter Institute, La Jolla, California
-#    display_order: 2
-#    type: nmdc:ImageValue
+study_image:
+  - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+    url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+    description: Photo of Craig Venter Institute, Rockville, Maryland
+    display_order: 1
+    type: nmdc:ImageValue
+  - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+    url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+    description: Photo of Craig Venter Institute, La Jolla, California
+    display_order: 2
+    type: nmdc:ImageValue
 study_category: research_study
 part_of:
   - nmdc:sty-11-34xj1157
-homepage_website: 
+homepage_website:
   - https://www.neonscience.org/

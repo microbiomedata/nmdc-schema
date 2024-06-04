@@ -15,7 +15,6 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
 
 imports:
-  #  - nmdc_prefixes
   - nmdc_subsets
   - nmdc_types
 
@@ -564,9 +563,6 @@ slots:
       - The date should be formatted as YYYY-MM-DD
     todos:
       - add date string validation pattern
-
-#  #  nucleic_acid_concentration:
-#  #    range: InstrumentValue
 
 enums:
 

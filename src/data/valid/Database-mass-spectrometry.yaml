@@ -1,4 +1,4 @@
-data_generation_set: 
+data_generation_set:
   - id: nmdc:dgms-99-zUCd5N
     type: nmdc:MassSpectrometry
     eluent_introduction_category: liquid_chromatography
@@ -31,7 +31,7 @@ data_generation_set:
       - nmdc:dobj-00-msdem2
     associated_studies:
       - nmdc:sty-00-555xxx
-
+#
 # example data objects for the mass spectrometry data generation set
 data_object_set:
   - id: nmdc:dobj-00-msdem1
@@ -120,5 +120,3 @@ configuration_set:
               type: nmdc:QuantityValue
               has_unit: mM
               has_numeric_value: 15
-
-  

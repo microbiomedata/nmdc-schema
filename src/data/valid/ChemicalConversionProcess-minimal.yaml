@@ -1,9 +1,9 @@
 id: nmdc:chcpr-19-789
 type: nmdc:ChemicalConversionProcess
 has_input:
-  - "nmdc:fasp-37"
+  - nmdc:procsm-99-123456
 has_output:
-  - "nmdc:ome-39"
+  - nmdc:procsm-99-555555
 chemical_conversion_category: acid_base
 substances_used:
   - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml

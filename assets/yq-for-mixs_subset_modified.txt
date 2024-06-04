@@ -213,3 +213,8 @@ make: *** [Makefile:102: gen-project] Error 1
 'del(.types)'
 
 '.imports += ["attribute_values"]'
+'.slots.elev.range |= "float"'
+'.slots.extreme_event.range |= "string"'
+'.slots.fire.range |= "string"'
+'.slots.flooding.range |= "string"'
+'.slots.water_content.range |= "string"'

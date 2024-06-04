@@ -3642,7 +3642,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000093
     multivalued: false
-    range: QuantityValue
+    range: float
   elevator:
     annotations:
       expected_value:
@@ -3920,7 +3920,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000320
     multivalued: false
-    range: TimestampValue
+    range: string
   fao_class:
     annotations:
       expected_value:
@@ -4021,7 +4021,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0001086
     multivalued: false
-    range: TimestampValue
+    range: string
   fireplace_type:
     annotations:
       expected_value:
@@ -4060,7 +4060,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000319
     multivalued: false
-    range: TimestampValue
+    range: string
   floor_age:
     annotations:
       expected_value:
@@ -10840,7 +10840,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000185
     multivalued: false
-    range: QuantityValue
+    range: string
   water_current:
     annotations:
       expected_value:

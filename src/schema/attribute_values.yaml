@@ -87,31 +87,12 @@ classes:
     slots:
       - language
 
-  #  UrlValue:
-  #    class_uri: nmdc:UrlValue
-  #    is_a: AttributeValue
-  #    description: A value that is a string that conforms to URL syntax
-
   TimestampValue:
     class_uri: nmdc:TimestampValue
     is_a: AttributeValue
     description: A value that is a timestamp. The range should be ISO-8601
     notes:
       - "removed the following slots: year, month, day"
-
-  #  IntegerValue:
-  #    class_uri: 'nmdc:IntegerValue'
-  #    is_a: AttributeValue
-  #    description: A value that is an integer
-  #    slots:
-  #      - has_numeric_value
-
-  #  BooleanValue:
-  #    class_uri: 'nmdc:BooleanValue'
-  #    is_a: AttributeValue
-  #    description: A value that is a boolean
-  #    slots:
-  #      - has_boolean_value
 
   ControlledTermValue:
     class_uri: 'nmdc:ControlledTermValue'

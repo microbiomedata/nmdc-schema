@@ -1,9 +1,9 @@
-id: nmdc:filtpr-22-32G2BS
+id: nmdc:filtpr-99-abcdef
 type: nmdc:FiltrationProcess
 has_input:
-  - nmdc:processed-sample-3
+  - nmdc:procsm-99-123456
 has_output:
-  - nmdc:7
+  - nmdc:procsm-99-555555
 conditionings:
   - Methanol
   - Sterile water #Milli-Q

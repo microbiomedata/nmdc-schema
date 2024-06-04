@@ -8,11 +8,10 @@ extraction_set:
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
     #enforce analytical sample typecode?
     has_input:
-      - generic:xxx
+      - nmdc:procsm-99-123456
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
-      - generic:xxx
-    #range for processing_institution should be ProcessingInstitutionEnum
+      - nmdc:procsm-99-555555
     #processing_institution: Battelle
     #updating protocol info to be nested
     #protocol_link:

@@ -4,7 +4,7 @@ from typing import Optional
 from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
 
 
-class TestMongoAdapter(unittest.TestCase):
+class TestDictionaryAdapter(unittest.TestCase):
     r"""
     Tests targeting the `DictionaryAdapter` class.
 
@@ -198,6 +198,34 @@ class TestMongoAdapter(unittest.TestCase):
         assert len([doc for doc in collection if doc["id"] == 1 and doc["x"] == "Az"]) == 1  # post-pipeline
         assert len([doc for doc in collection if doc["id"] == 2 and doc["x"] == "Bz"]) == 1
         assert len([doc for doc in collection if doc["id"] == 3 and doc["x"] == "Cz"]) == 1
+
+    def test_set_field_of_each_document(self):
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(_id=1, id=1, x="original")
+        document_2 = dict(_id=2, id=2)
+        document_3 = dict(_id=3, id=3, x=None)
+        self.db[collection_name] = []
+        self.db[collection_name].extend(
+            [document_1, document_2, document_3]
+        )
+        assert len(self.db[collection_name]) == 3
+
+        # Invoke function-under-test:
+        adapter = DictionaryAdapter(database=self.db)
+        adapter.set_field_of_each_document(
+            collection_name, "x", "new"
+        )
+
+        # Validate result:
+        collection = self.db[collection_name]
+        assert len([doc for doc in collection if doc["x"] == "original"]) == 0
+        assert len([doc for doc in collection if "x" not in doc]) == 0
+        assert len([doc for doc in collection if doc["x"] is None]) == 0
+        assert len([doc for doc in collection if doc["_id"] == 1 and doc["id"] == 1 and doc["x"] == "new"]) == 1
+        assert len([doc for doc in collection if doc["_id"] == 2 and doc["id"] == 2 and doc["x"] == "new"]) == 1
+        assert len([doc for doc in collection if doc["_id"] == 3 and doc["id"] == 3 and doc["x"] == "new"]) == 1
+
 
     def test_callbacks(self):
         # Set up:

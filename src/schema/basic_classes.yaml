@@ -63,7 +63,7 @@ classes:
     slot_usage:
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
           interpolated: true
   PlannedProcess:
     abstract: true
@@ -164,7 +164,6 @@ classes:
       - neon_study_identifiers
 
       ## Related IDs
-      #- insdc_sra_ena_study_identifiers
       - related_identifiers
 
       - alternative_descriptions
@@ -194,7 +193,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
           interpolated: true
       name:
         annotations:
@@ -230,13 +229,14 @@ classes:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
           display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-      # emsl_project_identifier:
-      #  description: The EMSL project ID that relates to the NMDC submitted study
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
         comments:
           - Value is the id of the umbrella study or consortium.
         range: Study
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
       protocol_link:
         multivalued: true
         inlined_as_list: true
@@ -298,18 +298,23 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
           interpolated: true
+      was_generated_by:
+        structured_pattern:
+          syntax: "^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
   DataGeneration:
-    class_uri: 'nmdc:DataGeneration'
+    class_uri: nmdc:DataGeneration
+    is_a: PlannedProcess
+    abstract: true
     aliases:
       - OmicsProcessing
       - assay
       - omics assay
       - sequencing project
       - experiment
-    is_a: PlannedProcess
-    abstract: true
     in_subset:
       - sample subset
     description: >-
@@ -322,25 +327,41 @@ classes:
       - add_date
       - analyte_category
       - associated_studies
+      - instrument_used
       - mod_date
       - part_of
       - principal_investigator
-      - instrument_used
     slot_usage:
       has_input:
         required: true
-        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
-        comments:
-          - pattern should allow typecode for Biosample and ProcessedSample
-      part_of:
-        range: DataGeneration
-        pattern: "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      associated_studies:
+        range: Study
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$"
+          interpolated:
+            true
       has_output:
         range: DataObject
-        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated:
+            true
+      part_of:
+        range: DataGeneration
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated:
+            true
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
+
   WorkflowChain:
     class_uri: nmdc:WorkflowChain
     is_a: PlannedProcess
@@ -358,7 +379,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
           interpolated: true
       analyte_category:
         required: true
@@ -426,8 +447,6 @@ classes:
         required: true
       has_input:
         required: true
-      # has_output:
-      #   required: true
       execution_resource:
         required: true
       part_of:
@@ -435,17 +454,22 @@ classes:
         description: >-
           The WorkflowChain that this WorkflowExecution is part of
         range: WorkflowChain
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 slots:
   associated_studies:
     description: The study associated with a resource.
     range: Study
     multivalued: true
-    pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+    structured_pattern:
+      syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+      interpolated: true
     required: true
   part_of:
     aliases:
