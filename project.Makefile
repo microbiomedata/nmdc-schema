@@ -187,6 +187,9 @@ make-rdf: rdf-clean \
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
+# todo: metagenome_sequencing_set and metagenome_sequencing_activity_set are degenerate
+#   and can't be validated, migrated or converted to RDF
+
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
@@ -210,10 +213,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections metagenome_annotation_activity_set \
 		--selected-collections metagenome_annotation_set \
 		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set \
-		--selected-collections metagenome_sequencing_set \
 		--selected-collections metap_gene_function_aggregation \
-		--selected-collections metaproteomics_analysis_set \
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections metatranscriptome_analysis_set \
 		--selected-collections nom_analysis_activity_set \
