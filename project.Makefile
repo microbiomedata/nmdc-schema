@@ -21,7 +21,7 @@ examples-clean:
 
 mixs-yaml-clean:
 	rm -rf src/schema/mixs.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml
+	rm -rf local/mixs_regen/mixs_subset_modified*yaml
 
 rdf-clean:
 	rm -rf \
@@ -40,7 +40,7 @@ shuttle-clean:
 	touch local/mixs_regen/.gitkeep
 
 
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_land_use.yaml
+src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
@@ -59,14 +59,33 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
 	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
+	rm -rf $@.bak
 
 
-local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_files/cur_land_use_enum.yaml local/mixs_regen/mixs_subset_modified.yaml
+local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
+assets/other_mixs_yaml_files/cur_land_use_enum.yaml
 	# inject re-structured cur_land_use_enum
 	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
 	yq eval-all \
-		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
+		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_alt_descriptions.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_broad_scale.alt_descriptions = select(fileIndex==1).slots.env_broad_scale.alt_descriptions | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_alt_descriptions.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_local_scale.alt_descriptions = select(fileIndex==1).slots.env_local_scale.alt_descriptions | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_alt_descriptions.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_medium.alt_descriptions = select(fileIndex==1).slots.env_medium.alt_descriptions | select(fileIndex==0)' \
 		$^ | cat > $@
 
 # will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
