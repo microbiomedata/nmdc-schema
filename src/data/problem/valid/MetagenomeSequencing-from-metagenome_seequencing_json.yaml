@@ -1,6 +1,6 @@
 id: nmdc:wfmsa-11-ebq93z66.1
 has_input:
-  - 'nmdc:bsm-11-ebq93z67'
+  - None
 part_of:
   - nmdc:wfch-11-ab
 git_url: 'https://github.com/microbiomedata/RawSequencingData'

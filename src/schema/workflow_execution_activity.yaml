@@ -183,10 +183,13 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
-      has_input:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
+  #      has_input:
+  #        comments:
+  #          - the value is always expected to be the string "None", but that isn't a valid prefixed CURIe
+  #      has_output:
+  #        structured_pattern:
+  #          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+  #          interpolated: true
 
 
   ReadQcAnalysis:
