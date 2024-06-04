@@ -1151,7 +1151,7 @@ classes:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
-          display_hint: Provide the GOLD biosample IDs associated with this biosample.
+          tooltip: Provide the GOLD biosample IDs associated with this biosample.
 
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
@@ -1490,30 +1490,30 @@ classes:
 
       name:
         annotations:
-          display_hint: Provide a name for the study your samples will belong with.
+          tooltip: Provide a name for the study your samples will belong with.
       websites:
         annotations:
-          display_hint:
+          tooltip:
             Link to the Principal Investigator's research lab webpage
             or the study webpage associated with this collection of samples.
             Multiple links can be provided.
       homepage_website:
         annotations:
-          display_hint:
+          tooltip:
             Link to the consortium's homepage if the study_category is a consortium.
       description:
         description: A brief, link-free summary of a Study
         annotations:
-          display_hint: Provide a brief description of your study.
+          tooltip: Provide a brief description of your study.
         comments: Include links in other Study slots, such as websites or dois.
       notes:
         annotations:
-          display_hint: Add any additional notes or comments about this study.
+          tooltip: Add any additional notes or comments about this study.
       alternative_identifiers:
         description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
         annotations:
-          display_hint:
+          tooltip:
             Project, study, or sample set names the are also associated with this submission
             or other names / identifiers for this study.
       related_identifiers:
@@ -1521,7 +1521,7 @@ classes:
       insdc_bioproject_identifiers:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
-          display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
+          tooltip: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
         comments:
@@ -2739,7 +2739,7 @@ slots:
       semantics: person should get credit X for their participation in the study"
     slot_uri: prov:qualifiedAssociation
     annotations:
-      display_hint: Other researchers associated with this study.
+      tooltip: Other researchers associated with this study.
   study_image:
     domain: Study
     range: ImageValue
@@ -2771,7 +2771,7 @@ slots:
     multivalued: true
     required: true
     annotations:
-      display_hint: >-
+      tooltip: >-
         Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
   applies_to_person:
     domain: CreditAssociation
