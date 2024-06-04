@@ -274,6 +274,7 @@ classes:
       - metagenome_sequencing_set
       - metaproteomics_analysis_set
       - metatranscriptome_analysis_set
+      - metatranscriptome_assembly_set
       - nom_analysis_set
       - planned_process_set
       - pooling_set
@@ -1011,74 +1012,77 @@ slots:
   workflow_execution_set:
     mixins: object_set
     range: WorkflowExecution
-    description: This property links a database object to the set of workflow activities.
+    description: This property links a database object to the set of workflow executions.
 
   mags_set:
     mixins: object_set
     range: MagsAnalysis
     description:
-      This property links a database object to the set of MAGs analysis
-      activities.
+      This property links a database object to the set of MAGs analyses.
 
   metabolomics_analysis_set:
     mixins: object_set
     range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
-      analysis activities.
+      analyses.
 
   metaproteomics_analysis_set:
     mixins: object_set
     range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
-      analysis activities.
+      analyses.
 
   metagenome_annotation_set:
     mixins: object_set
     range: MetagenomeAnnotation
     description:
-      This property links a database object to the set of metagenome annotation
-      activities.
+      This property links a database object to the set of metagenome annotations.
+
   metagenome_assembly_set:
     mixins: object_set
     range: MetagenomeAssembly
     description:
-      This property links a database object to the set of metagenome assembly
-      activities.
+      This property links a database object to the set of metagenome assemblies.
+
+  metatranscriptome_assembly_set:
+    mixins: object_set
+    range: MetatranscriptomeAssembly
+    description:
+      This property links a database object to the set of metatranscriptome assemblies.
+
   metagenome_sequencing_set:
     mixins: object_set
     range: MetagenomeSequencing
     description:
-      This property links a database object to the set of metagenome sequencing
-      activities.
+      This property links a database object to the set of metagenome sequencings.
 
   metatranscriptome_analysis_set:
     mixins: object_set
     range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
-      analysis activities.
+      analyses.
 
   read_qc_analysis_set:
     mixins: object_set
     range: ReadQcAnalysis
     description:
-      This property links a database object to the set of read QC analysis
-      activities.
+      This property links a database object to the set of read QC analyses.
 
   read_based_taxonomy_analysis_set:
     mixins: object_set
     range: ReadBasedTaxonomyAnalysis
     description: >-
-      This property links a database object to the set of read based analysis activities.
+      This property links a database object to the set of read based analyses.
 
   nom_analysis_set:
     mixins: object_set
     range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
-      matter (NOM) analysis activities.
+      matter (NOM) analyses,
 
   data_generation_set:
     mixins: object_set

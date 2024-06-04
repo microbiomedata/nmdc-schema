@@ -1,54 +1,21 @@
-#metagenome_assembly_set:
-#  - id: nmdc:wfmtas-99-v9w6y.1
-#    type: nmdc:MetatranscriptomeAssembly
-#    name: human gut metatranscriptome assembly
-#    has_input:
-#      - nmdc:dobj-99-7l49z
-#    has_output:
-#      - nmdc:dobj-99-9t74d
-#    ended_at_time: '2023-08-04T14:00:00Z'
-#    execution_resource: NERSC-Perlmutter
-#    git_url: https://github.com/microbiomedata/metatranscriptome_assembly/releases/tag/v1.2.3
-#    part_of:
-#      - nmdc:wfch-99-98f7b
-#    started_at_time: '2023-08-04T08:00:00Z'
-#    asm_score: 0.85
-#    scaffolds: 1234.0
-#    scaf_bp: 567890123.0
-#    ctg_n50: 10000.0
-#metagenome_annotation_set:
-#  - id: nmdc:wfmtan-99-101010
-#    alternative_identifiers:
-#      - generic:xxx
-#    description: xxx
-#    end_date: '2019-99-08'
-#    ended_at_time: '2023-08-11T17:00:00Z'
-#    execution_resource: EMSL-RZR
-#    git_url: http://example.com
-#    has_failure_categorization:
-#      - type: nmdc:FailureCategorization
-#        qc_failure_where: MetagenomeAssembly
-#        qc_failure_what: low_read_count
-#    has_input:
-#      - nmdc:dobj-99-7l49x
-#    has_output:
-#      - nmdc:dobj-99-7l49p
-#    img_identifiers:
-#      - img.taxon:3300005610
-#    name: xxx
-#    part_of:
-#      - nmdc:wfch-99-98f7c
-#    processing_institution: JGI
-#    protocol_link:
-#      type: nmdc:Protocol
-#      url: http://example.com
-#      name: xxx
-#    qc_comment: xxx
-#    qc_status: pass
-#    start_date: '2019-99-08'
-#    started_at_time: '2023-08-11T01:00:00Z'
-#    type: nmdc:MetagenomeAnnotation
-#    version: xxx
+metatranscriptome_assembly_set:
+  - id: nmdc:wfmtas-99-v9w6y.1
+    type: nmdc:MetatranscriptomeAssembly
+    asm_score: 0.85
+    ctg_n50: 10000.0
+    ended_at_time: '2023-08-04T14:00:00Z'
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/metatranscriptome_assembly/releases/tag/v1.2.3
+    name: human gut metatranscriptome assembly
+    scaf_bp: 567890123.0
+    scaffolds: 1234.0
+    started_at_time: '2023-08-04T08:00:00Z'
+    part_of:
+      - nmdc:wfch-99-98f7b
+    has_input:
+      - nmdc:dobj-99-7l49z
+    has_output:
+      - nmdc:dobj-99-9t74d
 
 metaproteomics_analysis_set:
   - id: nmdc:wfmp-99-74d83.1
@@ -187,271 +154,279 @@ chemical_entity_set:
     name: alphaLP
     description: A serine protease that hydrolyzes peptide bonds at the C-terminus of
       threonine, alanine, serine, and valine.
-#planned_process_set:
-#  - id: nmdc:cspro-99-oW43DzG0
-#    type: nmdc:ChromatographicSeparationProcess
-#    has_input:
-#      - nmdc:procsm-99-9gjxns61
-#    has_output:
-#      - nmdc:procsm-99-05g48p90
-#      - nmdc:procsm-99-05g48p91
-#    stationary_phase: "CN"
-#    chromatographic_category: solid_phase_extraction
-#    ordered_mobile_phases:
-#      - type: nmdc:MobilePhaseSegment
-#        substances_used:
-#          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#            type: nmdc:PortionOfSubstance
-#            final_concentration:
-#              type: nmdc:QuantityValue
-#              has_unit: '%'
-#              has_numeric_value: 10
-#        volume:
-#          type: nmdc:QuantityValue
-#          has_numeric_value: 700
-#          has_unit: mL
-#      - type: nmdc:MobilePhaseSegment
-#        substances_used:
-#          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#            type: nmdc:PortionOfSubstance
-#            final_concentration:
-#              type: nmdc:QuantityValue
-#              has_unit: mM
-#              has_numeric_value: 15
-#        volume:
-#          type: nmdc:QuantityValue
-#          has_numeric_value: 700
-#          has_unit: mL
-#  - id: nmdc:subspr-99-oW43DzG0
-#    type: nmdc:SubSamplingProcess
-#    has_input:
-#      - nmdc:bsm-99-oW43DzG1 #This is an example biosample ID and does not represent a real biosample
-#    container_size:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 50
-#      has_unit: mL
-#    contained_in: v-bottom_conical_tube
-#    volume:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 20
-#      has_unit: mL
-#    temperature:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 25
-#      has_unit: C
-#    mass:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 30
-#      has_unit: g
-#    has_output:
-#      - nmdc:procsm-99-05g48p90
-#    sampled_portion:
-#      - supernatant
-#  - id: nmdc:matprc-99-zUCd5N
-#    substances_used:
-#      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#        type: nmdc:PortionOfSubstance
-#        final_concentration:
-#          type: nmdc:QuantityValue
-#          has_unit: '%'
-#          has_numeric_value: 1
-#    contained_in: falcon_tube
-#    start_date: "2021-01-14"
-#    temperature:
-#      type: nmdc:QuantityValue
-#      has_unit: degrees Celsius
-#      has_numeric_value: 80
-#    has_input:
-#      - nmdc:procsm-99-dtTMNb
-#    has_output:
-#      - nmdc:procsm-78-BZAPKH
-#    type: nmdc:StorageProcess
-#  - id: nmdc:pex-99-18sD2
-#    type: nmdc:ProtocolExecution
-#    has_input:
-#      - nmdc:bsm-6
-#    has_process_parts:
-#      - nmdc:extrp-71-r2pk
-#      - nmdc:filtpr-22-32G2BS
-#    protocol_execution_category: organic_matter_extraction
-#    protocol_link:
-#      type: nmdc:Protocol
-#      url: https://www.protocols.io/view/water-extractable-organic-matter-weom-ewov1o4oylr2/v1
-#      name: Water Extractable Organic Matter (WEOM)
-#  - id: nmdc:cspro-99-xyzxyz
-#    type: nmdc:ChromatographicSeparationProcess
-#    has_input:
-#      - nmdc:procsm-99-9gjxns61
-#    has_output:
-#      - nmdc:procsm-99-05g48p90
-#      - nmdc:procsm-99-05g48p91
-#    stationary_phase: BEH-HILIC
-#    chromatographic_category: liquid_chromatography
-#    temperature:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 25
-#      has_unit: Cel
-#    ordered_mobile_phases:
-#      - type: nmdc:MobilePhaseSegment
-#        duration:
-#          type: nmdc:QuantityValue
-#          has_unit: min
-#          has_numeric_value: 60
-#        substances_used:
-#          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#            type: nmdc:PortionOfSubstance
-#            final_concentration:
-#              type: nmdc:QuantityValue
-#              has_unit: '%'
-#              has_numeric_value: 10
-#      - type: nmdc:MobilePhaseSegment
-#        substances_used:
-#          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#            type: nmdc:PortionOfSubstance
-#            final_concentration:
-#              type: nmdc:QuantityValue
-#              has_unit: mM
-#              has_numeric_value: 15
-#  - id: nmdc:mixpro-99-A74
-#    type: nmdc:MixingProcess
-#    has_input:
-#      - nmdc:bsm-99-A67
-#      - nmdc:bsm-99-A68
-#    has_output:
-#      - nmdc:procsm-11-abd123
-#    duration:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 2
-#      has_unit: hours
-#    instrument_used:
-#      - nmdc:inst-12-124
-#  - id: nmdc:filtpr-22-32G2BS
-#    type: nmdc:FiltrationProcess
-#    has_input:
-#      - nmdc:procsm-99-05g48p90
-#    has_output:
-#      - nmdc:procsm-99-05g48p91
-#    conditionings:
-#      - Methanol
-#      - Sterile water #Milli-Q
-#    filtration_category: pressure
-#    instrument_used:
-#      - nmdc:inst-12-125
-#    is_pressurized: true
-#  - id: nmdc:dispro-99-A74
-#    type: nmdc:DissolvingProcess
-#    has_input:
-#      - nmdc:bsm-12-A67
-#    has_output:
-#      - nmdc:procsm-13-S67F
-#    substances_used:
-#      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#        type: nmdc:PortionOfSubstance
-#        final_concentration:
-#          type: nmdc:QuantityValue
-#          has_unit: mM
-#          has_numeric_value: 15
-#        volume:
-#          type: nmdc:QuantityValue
-#          has_numeric_value: 500
-#          has_unit: mL
-#      - known_as: nmdc:chem-99-000006
-#        type: nmdc:PortionOfSubstance
-#        substance_role: solubilizing_agent
-#    duration:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 2
-#      has_unit: hours
-#    instrument_used:
-#      - nmdc:inst-12-124
-#  - id: nmdc:chcpr-19-789
-#    type: nmdc:ChemicalConversionProcess
-#    has_input:
-#      - nmdc-procsm-99-000a01
-#    has_output:
-#      - nmdc-procsm-99-000a02
-#    chemical_conversion_category: acid_base
-#    substances_used:
-#      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#        type: nmdc:PortionOfSubstance
-#        sample_state_information: liquid
-#        volume:
-#          type: nmdc:QuantityValue
-#          has_numeric_value: 120
-#          has_unit: mL
-#        final_concentration:
-#          type: nmdc:QuantityValue
-#          has_unit: mM
-#          has_numeric_value: 10
-#    temperature:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 25
-#      has_unit: Cel
-#    duration:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 1
-#      has_unit: h
-#  - id: nmdc:chcpr-19-7890
-#    type: nmdc:ChemicalConversionProcess
-#    has_input:
-#      - nmdc:procsm-37
-#    has_output:
-#      - nmdc:procsm-39
-#    substances_used:
-#      - known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
-#        type: nmdc:PortionOfSubstance
-#        sample_state_information: liquid
-#        substance_role: solvent
-#      - known_as: nmdc:chem-99-000002
-#        type: nmdc:PortionOfSubstance
-#        substance_role: buffer
-#        source_concentration:
-#          type: nmdc:QuantityValue
-#          has_unit: mM
-#          has_numeric_value: 50
-#      - known_as: nmdc:chem-99-000014
-#        type: nmdc:PortionOfSubstance
-#        substance_role: ms_proteolytic_enzyme
-#        final_concentration:
-#          type: nmdc:QuantityValue
-#          has_unit: μg/μL
-#          has_numeric_value: 0.05
-#    substances_volume:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 75
-#      has_unit: μL
-#    temperature:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 37
-#      has_unit: Cel
-#    duration:
-#      type: nmdc:QuantityValue
-#      has_numeric_value: 3
-#      has_unit: h
-#  - id: nmdc:poolp-99-123456
-#    type: nmdc:Pooling
-#    has_input:
-#     - nmdc:bsm-99-74d83z
-#     - nmdc:bsm-99-74d83y
-#    has_output:
-#     - nmdc:procsm-99-74d83a
-#  - id: nmdc:extrp-99-999999
-#    type: nmdc:Extraction
-#    has_input:
-#      - nmdc:bsm-99-435737
-#    has_output:
-#      - nmdc:procsm-99-0938548
-#  - id: nmdc:libprp-99-999999
-#    type: nmdc:LibraryPreparation
-#    has_input:
-#      - nmdc:procsm-99-0938548
-#    has_output:
-#      - nmdc:procsm-99-sdsdll
-#functional_annotation_agg:
-#  - gene_function_id: KEGG.ORTHOLOGY:K00627
-#    count: 120
-#    type: nmdc:FunctionalAnnotationAggMember
-#    metagenome_annotation_id: nmdc:wfmgan-99-123456.1
+planned_process_set:
+  - id: nmdc:cspro-99-oW43DzG0
+    type: nmdc:ChromatographicSeparationProcess
+    has_input:
+      - nmdc:procsm-99-9gjxns61
+    has_output:
+      - nmdc:procsm-99-05g48p90
+      - nmdc:procsm-99-05g48p91
+    stationary_phase: "CN"
+    chromatographic_category: solid_phase_extraction
+    ordered_mobile_phases:
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: '%'
+              has_numeric_value: 10
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 700
+          has_unit: mL
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: mM
+              has_numeric_value: 15
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 700
+          has_unit: mL
+  - id: nmdc:subspr-99-oW43DzG0
+    type: nmdc:SubSamplingProcess
+    has_input:
+      - nmdc:bsm-99-oW43DzG1
+    container_size:
+      type: nmdc:QuantityValue
+      has_numeric_value: 50
+      has_unit: mL
+    contained_in: v-bottom_conical_tube
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 20
+      has_unit: mL
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 25
+      has_unit: C
+    mass:
+      type: nmdc:QuantityValue
+      has_numeric_value: 30
+      has_unit: g
+    has_output:
+      - nmdc:procsm-99-05g48p90
+    sampled_portion:
+      - supernatant
+  - id: nmdc:matprc-99-zUCd5N
+    substances_used:
+      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: '%'
+          has_numeric_value: 1
+    contained_in: falcon_tube
+    start_date: "2021-01-14"
+    temperature:
+      type: nmdc:QuantityValue
+      has_unit: degrees Celsius
+      has_numeric_value: 80
+    has_input:
+      - nmdc:procsm-99-dtTMNb
+    has_output:
+      - nmdc:procsm-78-BZAPKH
+    type: nmdc:StorageProcess
+  - id: nmdc:pex-99-18sD2
+    type: nmdc:ProtocolExecution
+    has_input:
+      - nmdc:bsm-6
+    has_process_parts:
+      - nmdc:extrp-71-r2pk
+      - nmdc:filtpr-22-32G2BS
+    protocol_execution_category: organic_matter_extraction
+    protocol_link:
+      type: nmdc:Protocol
+      url: https://www.protocols.io/view/water-extractable-organic-matter-weom-ewov1o4oylr2/v1
+      name: Water Extractable Organic Matter (WEOM)
+  - id: nmdc:cspro-99-xyzxyz
+    type: nmdc:ChromatographicSeparationProcess
+    has_input:
+      - nmdc:procsm-99-9gjxns61
+    has_output:
+      - nmdc:procsm-99-05g48p90
+      - nmdc:procsm-99-05g48p91
+    stationary_phase: BEH-HILIC
+    chromatographic_category: liquid_chromatography
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 25
+      has_unit: Cel
+    ordered_mobile_phases:
+      - type: nmdc:MobilePhaseSegment
+        duration:
+          type: nmdc:QuantityValue
+          has_unit: min
+          has_numeric_value: 60
+        substances_used:
+          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: '%'
+              has_numeric_value: 10
+      - type: nmdc:MobilePhaseSegment
+        substances_used:
+          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+            type: nmdc:PortionOfSubstance
+            final_concentration:
+              type: nmdc:QuantityValue
+              has_unit: mM
+              has_numeric_value: 15
+  - id: nmdc:mixpro-99-A74
+    type: nmdc:MixingProcess
+    has_input:
+      - nmdc:bsm-99-A67
+      - nmdc:bsm-99-A68
+    has_output:
+      - nmdc:procsm-11-abd123
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 2
+      has_unit: hours
+    instrument_used:
+      - nmdc:inst-12-124
+  - id: nmdc:filtpr-22-32G2BS
+    type: nmdc:FiltrationProcess
+    has_input:
+      - nmdc:procsm-99-05g48p90
+    has_output:
+      - nmdc:procsm-99-05g48p91
+    conditionings:
+      - Methanol
+      - Sterile water #Milli-Q
+    filtration_category: pressure
+    instrument_used:
+      - nmdc:inst-12-125
+    is_pressurized: true
+  - id: nmdc:dispro-99-A74
+    type: nmdc:DissolvingProcess
+    has_input:
+      - nmdc:bsm-12-A67
+    has_output:
+      - nmdc:procsm-13-S67F
+    substances_used:
+      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 15
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 500
+          has_unit: mL
+      - known_as: nmdc:chem-99-000006
+        type: nmdc:PortionOfSubstance
+        substance_role: solubilizing_agent
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 2
+      has_unit: hours
+    instrument_used:
+      - nmdc:inst-12-124
+
+  - id: nmdc:chcpr-19-789
+    type: nmdc:ChemicalConversionProcess
+    #    has_input:
+    #      - nmdc-procsm-99-000001
+    #    has_output:
+    #      - nmdc-procsm-99-000002
+    chemical_conversion_category: acid_base
+    substances_used:
+      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        sample_state_information: liquid
+        volume:
+          type: nmdc:QuantityValue
+          has_numeric_value: 120
+          has_unit: mL
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 10
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 25
+      has_unit: Cel
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 1
+      has_unit: h
+
+  - id: nmdc:chcpr-19-7890
+    type: nmdc:ChemicalConversionProcess
+      #    has_input:
+      #      - nmdc:procsm-37
+      #    has_output:
+    #      - nmdc:procsm-39
+    substances_used:
+      - known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        sample_state_information: liquid
+        substance_role: solvent
+      - known_as: nmdc:chem-99-000002
+        type: nmdc:PortionOfSubstance
+        substance_role: buffer
+        source_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 50
+      - known_as: nmdc:chem-99-000014
+        type: nmdc:PortionOfSubstance
+        substance_role: ms_proteolytic_enzyme
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: μg/μL
+          has_numeric_value: 0.05
+    substances_volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 75
+      has_unit: μL
+    temperature:
+      type: nmdc:QuantityValue
+      has_numeric_value: 37
+      has_unit: Cel
+    duration:
+      type: nmdc:QuantityValue
+      has_numeric_value: 3
+      has_unit: h
+  - id: nmdc:poolp-9x9-1x
+    type: nmdc:Pooling
+    name: first pooling process
+    description: xxx
+    alternative_identifiers:
+      - generic:xxx
+    has_input:
+      - nmdc:procsm-99-xyz1
+      - nmdc:procsm-99-xyz2
+    has_output:
+      - nmdc:procsm-99-xyz3
+  - id: nmdc:extrp-99-999999
+    type: nmdc:Extraction
+    has_input:
+      - nmdc:bsm-99-435737
+    has_output:
+      - nmdc:procsm-99-0938548
+
+  - id: nmdc:libprp-99-999999
+    type: nmdc:LibraryPreparation
+    has_input:
+      - nmdc:procsm-99-0938548
+    has_output:
+      - nmdc:procsm-99-sdsdll
+
+functional_annotation_agg:
+  - gene_function_id: KEGG.ORTHOLOGY:K00627
+    count: 120
+    type: nmdc:FunctionalAnnotationAggMember
+    metagenome_annotation_id: nmdc:wfmgan-99-123456.1
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
     type: nmdc:Biosample
@@ -3211,133 +3186,133 @@ collecting_biosamples_from_site_set:
       - nmdc:frsite-99-9j6n9t
     has_output:
       - nmdc:bsm-99-bbbbbb
-#data_object_set:
-#  - id: nmdc:dobj-99-msdem1
-#    name: EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820
-#    description: raw instrument file for nmdc:dgms-99-zUCd5N
-#    file_size_bytes: 1150434379
-#    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lcms metabolite data, this is just an example resolvable url
-#    md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
-#    data_object_type: LC-DDA-MS/MS Raw Data
-#    type: nmdc:DataObject
-#    alternative_identifiers:
-#      - my_emsl:1826381
-#  - id: nmdc:dobj-99-msdem2
-#    name: EMSL_49991_Brodie_123_Lipids_Neg_12Aug19_Lola-WCSH417820
-#    description: raw instrument file for nmdc:dgms-99-zUCd5x
-#    file_size_bytes: 1150434379
-#    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lipid data, this is just an example resolvable url
-#    md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
-#    data_object_type: LC-DDA-MS/MS Raw Data
-#    type: nmdc:DataObject
-#    alternative_identifiers:
-#      - my_emsl:1826333
-#  - id: nmdc:dobj-99-dkJ8xX
-#    type: nmdc:DataObject
-#    name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
-#    description: Raw sequencer read data
-#    file_size_bytes: 9208349052
-#  - id: nmdc:dobj-99-7zrm55
-#    type: nmdc:DataObject
-#    name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
-#    description: Raw sequencer read data
-#    file_size_bytes: 34243309819
-#  - id: nmdc:dobj-99-sQQw0I
-#    type: nmdc:DataObject
-#    name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
-#    description: Raw sequencer read data
-#    file_size_bytes: 7580035314
-#  - id: nmdc:dobj-70-izwYW6
-#    type: nmdc:DataObject
-#    name: CoreMS.toml
-#    description: Confiuration toml file for CoreMS
-#    data_category: workflow_parameter_data
-#    data_object_type: Configuration toml
-#    file_size_bytes: 4262400
-#  - id: nmdc:dobj-80-izwYW6
-#    type: nmdc:DataObject
-#    name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.raw
-#    description: raw direct infusion FT ICR-MS for Froze_Core_2015_S1_20_30_19
-#    data_category: instrument_data
-#    data_object_type: Direct Infusion FT ICR-MS Raw Data
-#    file_size_bytes: 3262400
-#  - id: nmdc:dobj-90-izwYW61
-#    type: nmdc:DataObject
-#    name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.processed
-#    description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
-#    data_category: processed_data
-#    data_object_type: FT ICR-MS Analysis Results
-#    file_size_bytes: 5262400
-#  - id: nmdc:dobj-12-krhrtjw9
-#    type: nmdc:DataObject
-#    name: emsl_calibration_run.raw
-#    description: GCMS data file
-#    data_category: instrument_data
-#    file_size_bytes: 9208349052
-#    url: https://emsl_site/emsl_calibration_run.raw
-#  - id: nmdc:dobj-99-74d83z
-#    type: nmdc:DataObject
-#    name: soil metagenome raw reads
-#    description: Raw sequencing reads from soil metagenome sample.
-#    data_object_type: Metagenome Raw Reads
-#    file_size_bytes: 1234567890
-#    md5_checksum: e5b511d7874186800c4ac88d593c4209
-#    url: https://example.com/soil_metagenome.fastq.gz
-#    was_generated_by: nmdc:dgns-99-49z38t
-#  - id: nmdc:dobj-99-38t74d
-#    type: nmdc:DataObject
-#    name: mouse gut metagenome raw reads
-#    description: Raw sequencing reads from mouse gut metagenome sample.
-#    data_object_type: Metagenome Raw Read 1
-#    file_size_bytes: 9876543210
-#    md5_checksum: 9c4984a6377192532692281a81f760a3
-#    url: https://example.com/mouse_gut_metagenome_R1.fastq.gz
-#    was_generated_by: nmdc:wfmsa-99-96d7l.1
-#  - id: nmdc:dobj-99-7l49z3
-#    type: nmdc:DataObject
-#    name: mouse gut metagenome raw reads
-#    description: Raw sequencing reads from mouse gut metagenome sample.
-#    data_object_type: Metagenome Raw Read 2
-#    file_size_bytes: 9876543210
-#    md5_checksum: 8b387395266081701080729a98765f4a
-#    url: https://example.com/mouse_gut_metagenome_R2.fastq.gz
-#    was_generated_by: nmdc:wfmsa-99-96d7l.1
-#  - id: nmdc:dobj-99-9t74d8
-#    type: nmdc:DataObject
-#    name: human gut metagenome assembled contigs
-#    description: Assembled contigs from human gut metagenome sample.
-#    data_object_type: Metagenome Raw Reads
-#    file_size_bytes: 5678901234
-#    md5_checksum: 7a2938b51609f4c38d75e64a9012b3c8
-#    url: https://example.com/human_gut_metagenome_contigs.fasta
-#    was_generated_by: nmdc:wfmgas-99-v9w6y.1
-#  - id: nmdc:dobj-99-6y6j6n
-#    type: nmdc:DataObject
-#    name: human gut metagenome functional annotation
-#    description: Functional annotations for human gut metagenome contigs.
-#    data_object_type: Functional Annotation GFF
-#    file_size_bytes: 4321098765
-#    md5_checksum: 6b1827a40598e3c27d64f53a8901c2b7
-#    url: https://example.com/human_gut_metagenome_annotation.gff
-#    was_generated_by: nmdc:wfmgan-99-4d83z.1
-#  - id: nmdc:dobj-12-jdhk9537
-#    type: nmdc:DataObject
-#    name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
-#    description: Test R1 data
-#    data_object_type: Metagenome Raw Read 1
-#    url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
-#  - id: nmdc:dobj-12-yx0tfp52
-#    type: nmdc:DataObject
-#    name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
-#    description: Test R2 data
-#    data_object_type: Metagenome Raw Read 2
-#    url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
-#  - id: nmdc:dobj-12-71q7wv80
-#    type: nmdc:DataObject
-#    name: 1472_51293.filtered.fastq.gz
-#    description: Test filtered data for NEON
-#    data_object_type: Filtered Sequencing Reads
-#    url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
+data_object_set:
+  - id: nmdc:dobj-99-msdem1
+    name: EMSL_49991_Brodie_122_Lipids_POS_09Aug19_Lola-WCSH417820
+    description: raw instrument file for nmdc:dgms-99-zUCd5N
+    file_size_bytes: 1150434379
+    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exist for lcms metabolite data, this is just an example resolvable url
+    md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
+    data_object_type: LC-DDA-MS/MS Raw Data
+    type: nmdc:DataObject
+    alternative_identifiers:
+      - my_emsl:1826381
+  - id: nmdc:dobj-99-msdem2
+    name: EMSL_49991_Brodie_123_Lipids_Neg_12Aug19_Lola-WCSH417820
+    description: raw instrument file for nmdc:dgms-99-zUCd5x
+    file_size_bytes: 1150434379
+    url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exist for lipid data, this is just an example resolvable url
+    md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
+    data_object_type: LC-DDA-MS/MS Raw Data
+    type: nmdc:DataObject
+    alternative_identifiers:
+      - my_emsl:1826333
+  - id: nmdc:dobj-99-dkJ8xX
+    type: nmdc:DataObject
+    name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
+    description: Raw sequencer read data
+    file_size_bytes: 9208349052
+  - id: nmdc:dobj-99-7zrm55
+    type: nmdc:DataObject
+    name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
+    description: Raw sequencer read data
+    file_size_bytes: 34243309819
+  - id: nmdc:dobj-99-sQQw0I
+    type: nmdc:DataObject
+    name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
+    description: Raw sequencer read data
+    file_size_bytes: 7580035314
+  - id: nmdc:dobj-70-izwYW6
+    type: nmdc:DataObject
+    name: CoreMS.toml
+    description: Confiuration toml file for CoreMS
+    data_category: workflow_parameter_data
+    data_object_type: Configuration toml
+    file_size_bytes: 4262400
+  - id: nmdc:dobj-80-izwYW6
+    type: nmdc:DataObject
+    name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.raw
+    description: raw direct infusion FT ICR-MS for Froze_Core_2015_S1_20_30_19
+    data_category: instrument_data
+    data_object_type: Direct Infusion FT ICR-MS Raw Data
+    file_size_bytes: 3262400
+  - id: nmdc:dobj-90-izwYW61
+    type: nmdc:DataObject
+    name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.processed
+    description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
+    data_category: processed_data
+    data_object_type: FT ICR-MS Analysis Results
+    file_size_bytes: 5262400
+  - id: nmdc:dobj-12-krhrtjw9
+    type: nmdc:DataObject
+    name: emsl_calibration_run.raw
+    description: GCMS data file
+    data_category: instrument_data
+    file_size_bytes: 9208349052
+    url: https://emsl_site/emsl_calibration_run.raw
+  - id: nmdc:dobj-99-74d83z
+    type: nmdc:DataObject
+    name: soil metagenome raw reads
+    description: Raw sequencing reads from soil metagenome sample.
+    data_object_type: Metagenome Raw Reads
+    file_size_bytes: 1234567890
+    md5_checksum: e5b511d7874186800c4ac88d593c4209
+    url: https://example.com/soil_metagenome.fastq.gz
+    was_generated_by: nmdc:dgns-99-49z38t
+  - id: nmdc:dobj-99-38t74d
+    type: nmdc:DataObject
+    name: mouse gut metagenome raw reads
+    description: Raw sequencing reads from mouse gut metagenome sample.
+    data_object_type: Metagenome Raw Read 1
+    file_size_bytes: 9876543210
+    md5_checksum: 9c4984a6377192532692281a81f760a3
+    url: https://example.com/mouse_gut_metagenome_R1.fastq.gz
+    was_generated_by: nmdc:wfmsa-99-96d7l.1
+  - id: nmdc:dobj-99-7l49z3
+    type: nmdc:DataObject
+    name: mouse gut metagenome raw reads
+    description: Raw sequencing reads from mouse gut metagenome sample.
+    data_object_type: Metagenome Raw Read 2
+    file_size_bytes: 9876543210
+    md5_checksum: 8b387395266081701080729a98765f4a
+    url: https://example.com/mouse_gut_metagenome_R2.fastq.gz
+    was_generated_by: nmdc:wfmsa-99-96d7l.1
+  - id: nmdc:dobj-99-9t74d8
+    type: nmdc:DataObject
+    name: human gut metagenome assembled contigs
+    description: Assembled contigs from human gut metagenome sample.
+    data_object_type: Metagenome Raw Reads
+    file_size_bytes: 5678901234
+    md5_checksum: 7a2938b51609f4c38d75e64a9012b3c8
+    url: https://example.com/human_gut_metagenome_contigs.fasta
+    was_generated_by: nmdc:wfmgas-99-v9w6y.1
+  - id: nmdc:dobj-99-6y6j6n
+    type: nmdc:DataObject
+    name: human gut metagenome functional annotation
+    description: Functional annotations for human gut metagenome contigs.
+    data_object_type: Functional Annotation GFF
+    file_size_bytes: 4321098765
+    md5_checksum: 6b1827a40598e3c27d64f53a8901c2b7
+    url: https://example.com/human_gut_metagenome_annotation.gff
+    was_generated_by: nmdc:wfmgan-99-4d83z.1
+  - id: nmdc:dobj-12-jdhk9537
+    type: nmdc:DataObject
+    name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
+    description: Test R1 data
+    data_object_type: Metagenome Raw Read 1
+    url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
+  - id: nmdc:dobj-12-yx0tfp52
+    type: nmdc:DataObject
+    name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
+    description: Test R2 data
+    data_object_type: Metagenome Raw Read 2
+    url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
+  - id: nmdc:dobj-12-71q7wv80
+    type: nmdc:DataObject
+    name: 1472_51293.filtered.fastq.gz
+    description: Test filtered data for NEON
+    data_object_type: Filtered Sequencing Reads
+    url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
 extraction_set:
   - id: nmdc:extrp-99-abcdef
     type: nmdc:Extraction
@@ -3741,6 +3716,38 @@ metagenome_annotation_set:
     started_at_time: '2023-08-03T10:00:00Z'
     img_identifiers:
       - img.taxon:2763570002
+  - id: nmdc:wfmgan-99-101010.1
+    alternative_identifiers:
+      - generic:xxx
+    description: xxx
+    end_date: '2019-99-08'
+    ended_at_time: '2023-08-11T17:00:00Z'
+    execution_resource: EMSL-RZR
+    git_url: http://example.com
+    has_failure_categorization:
+      - type: nmdc:FailureCategorization
+        qc_failure_where: MetagenomeAssembly
+        qc_failure_what: low_read_count
+    has_input:
+      - nmdc:dobj-99-7l49x
+    has_output:
+      - nmdc:dobj-99-7l49p
+    img_identifiers:
+      - img.taxon:3300005610
+    name: xxx
+    part_of:
+      - nmdc:wfch-99-98f7c
+    processing_institution: JGI
+    protocol_link:
+      type: nmdc:Protocol
+      url: http://example.com
+      name: xxx
+    qc_comment: xxx
+    qc_status: pass
+    start_date: '2019-99-08'
+    started_at_time: '2023-08-11T01:00:00Z'
+    type: nmdc:MetagenomeAnnotation
+    version: xxx
 metagenome_assembly_set:
   - id: nmdc:wfmgas-99-B7Vogx.1
     type: nmdc:MetagenomeAssembly
@@ -4020,7 +4027,7 @@ data_generation_set:
     has_chromatography_configuration: nmdc:chrocon-99-oW43DzG0
     analyte_category: lipidome
     has_input:
-      - nmdc:procsm-99-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+      - nmdc:procsm-99-0wxpzf08
     start_date: 30-OCT-14 01.00.00.000000000 AM
     end_date: 30-OCT-14 01.30.00.000000000 AM
     add_date: 07-MAY-24 12.00.00.000000000 AM
@@ -4036,7 +4043,7 @@ data_generation_set:
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG2
     has_chromatography_configuration: nmdc:chrocon-99-oW43DzG0
     has_input:
-      - nmdc:procsm-99-0wxpzf08 # See src/data/valid/Extraction-metabolomics.yaml
+      - nmdc:procsm-99-0wxpzf08
     start_date: 31-OCT-14 01.00.00.000000000 AM
     end_date: 31-OCT-14 01.30.00.000000000 AM
     add_date: 07-MAY-24 12.00.00.000000000 AM
