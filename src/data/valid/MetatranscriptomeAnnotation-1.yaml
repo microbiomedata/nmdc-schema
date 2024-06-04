@@ -11,9 +11,9 @@ has_failure_categorization:
     qc_failure_where: MetagenomeAssembly
     qc_failure_what: low_read_count
 has_input:
-  - generic:i1
+  - nmdc:dobj-99-123456
 has_output:
-  - generic:o1
+  - nmdc:dobj-99-987654
 img_identifiers:
   - img.taxon:x1
 name: xxx

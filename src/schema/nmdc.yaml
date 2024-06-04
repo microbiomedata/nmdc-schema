@@ -489,7 +489,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}"
+          syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
       has_input:
         any_of:
           - range: Biosample

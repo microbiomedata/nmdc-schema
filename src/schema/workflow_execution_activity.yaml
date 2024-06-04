@@ -116,6 +116,15 @@ classes:
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
+      has_input:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
 
   MetatranscriptomeAnalysis:
     class_uri: nmdc:MetatranscriptomeAnalysis

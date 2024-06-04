@@ -112,6 +112,8 @@ data_generation_set:
     type: nmdc:NucleotideSequencing
     associated_studies:
       - nmdc:sty-11-34xj1150
+    part_of:
+      - nmdc:dgns-11-34xj1150
 instrument_set:
   - id: nmdc:inst-14-xx07be40
     model: novaseq
