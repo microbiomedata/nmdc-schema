@@ -3678,6 +3678,9 @@ slots:
     slot_uri: MIXS:0000012
     multivalued: false
     range: ControlledIdentifiedTermValue
+    alt_descriptions:
+      - source: NMDC
+        description: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
   env_local_scale:
     annotations:
       expected_value:
@@ -3695,6 +3698,9 @@ slots:
     slot_uri: MIXS:0000013
     multivalued: false
     range: ControlledIdentifiedTermValue
+    alt_descriptions:
+      - source: NMDC
+        description: The specific environmental entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
   env_medium:
     annotations:
       expected_value:
@@ -3712,6 +3718,9 @@ slots:
     slot_uri: MIXS:0000014
     multivalued: false
     range: ControlledIdentifiedTermValue
+    alt_descriptions:
+      - source: NMDC
+        description: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
   escalator:
     annotations:
       expected_value:
