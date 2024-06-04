@@ -282,7 +282,6 @@ classes:
       - read_qc_analysis_set
       - study_set
       - workflow_chain_set
-      - workflow_execution_set
 
   Pooling:
     class_uri: nmdc:Pooling
