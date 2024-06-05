@@ -24,7 +24,16 @@ class Migrator(MigratorBase):
     _to_version = "PR10"
 
     def upgrade(self):
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+        r"""
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = {"data_object_set": [{'id': 1}, {'id': 2, 'type': 'old'}]}
+        >>> m = Migrator(adapter=DictionaryAdapter(database=database))
+        >>> m.upgrade()
+        >>> all(document['type'] == 'nmdc:DataObject' for document in database['data_object_set'])
+        True
+        """
 
         # Get a dictionary of slots and the class uris of their range if they have inlined classes as their range.
         view = create_schema_view()
