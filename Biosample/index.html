@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.66ac8b77.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
       
       
 
@@ -568,7 +568,7 @@
 </tr>
 <tr>
 <td><a href="../neon_biosample_identifiers/">neon_biosample_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -598,7 +598,7 @@
 </tr>
 <tr>
 <td><a href="../img_identifiers/">img_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>A list of identifiers that relate the biosample to records in the IMG databas...</td>
 <td>direct</td>
 </tr>
@@ -610,7 +610,7 @@
 </tr>
 <tr>
 <td><a href="../biosample_categories/">biosample_categories</a></td>
-<td>0..* <br/> <a href="../BiosampleCategoryEnum/">BiosampleCategoryEnum</a></td>
+<td>* <br/> <a href="../BiosampleCategoryEnum/">BiosampleCategoryEnum</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -628,37 +628,37 @@
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>An NMDC assigned unique identifier for a biosample submitted to NMDC</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unique identifier for a biosample submitted to additional resources</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../gold_biosample_identifiers/">gold_biosample_identifiers</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unique identifier for a biosample submitted to GOLD that matches the NMDC sub...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../insdc_biosample_identifiers/">insdc_biosample_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>identifiers for corresponding sample in INSDC</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../emsl_biosample_identifiers/">emsl_biosample_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>A list of identifiers for the biosample from the EMSL database</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../igsn_biosample_identifiers/">igsn_biosample_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>A list of identifiers for the biosample from the IGSN database</td>
 <td>direct</td>
 </tr>
@@ -700,13 +700,13 @@
 </tr>
 <tr>
 <td><a href="../agrochem_addition/">agrochem_addition</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Addition of fertilizers, pesticides, etc</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../air_PM_concen/">air_PM_concen</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of substances that remain suspended in the air, and comprise mi...</td>
 <td>direct</td>
 </tr>
@@ -718,7 +718,7 @@
 </tr>
 <tr>
 <td><a href="../air_temp_regm/">air_temp_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to varying temperatures; sh...</td>
 <td>direct</td>
 </tr>
@@ -802,7 +802,7 @@
 </tr>
 <tr>
 <td><a href="../antibiotic_regm/">antibiotic_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving antibiotic administration; should inclu...</td>
 <td>direct</td>
 </tr>
@@ -832,7 +832,7 @@
 </tr>
 <tr>
 <td><a href="../atmospheric_data/">atmospheric_data</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Measurement of atmospheric data; can include multiple data</td>
 <td>direct</td>
 </tr>
@@ -928,7 +928,7 @@
 </tr>
 <tr>
 <td><a href="../biomass/">biomass</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Amount of biomass; should include the name for the part of biomass measured, ...</td>
 <td>direct</td>
 </tr>
@@ -976,7 +976,7 @@
 </tr>
 <tr>
 <td><a href="../build_occup_type/">build_occup_type</a></td>
-<td>0..* <br/> <a href="../BuildOccupTypeEnum/">BuildOccupTypeEnum</a></td>
+<td>* <br/> <a href="../BuildOccupTypeEnum/">BuildOccupTypeEnum</a></td>
 <td>The primary function for which a building or discrete part of a building is i...</td>
 <td>direct</td>
 </tr>
@@ -1078,13 +1078,13 @@
 </tr>
 <tr>
 <td><a href="../chem_administration/">chem_administration</a></td>
-<td>0..* <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
+<td>* <br/> <a href="../ControlledTermValue/">ControlledTermValue</a></td>
 <td>List of chemical compounds administered to the host or site where sampling oc...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../chem_mutagen/">chem_mutagen</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Treatment involving use of mutagens; should include the name of mutagen, amou...</td>
 <td>direct</td>
 </tr>
@@ -1126,7 +1126,7 @@
 </tr>
 <tr>
 <td><a href="../climate_environment/">climate_environment</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Treatment involving an exposure to a particular climate; treatment regimen in...</td>
 <td>direct</td>
 </tr>
@@ -1216,7 +1216,7 @@
 </tr>
 <tr>
 <td><a href="../diether_lipids/">diether_lipids</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of diether lipids; can include multiple types of diether lipids</td>
 <td>direct</td>
 </tr>
@@ -1414,25 +1414,25 @@
 </tr>
 <tr>
 <td><a href="../emulsions/">emulsions</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Amount or concentration of substances such as paints, adhesives, mayonnaise, ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../env_broad_scale/">env_broad_scale</a></td>
-<td>1..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
 <td>Report the major environmental system the sample or specimen came from</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../env_local_scale/">env_local_scale</a></td>
-<td>1..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
 <td>Report the entity or entities which are in the sample or specimen’s local vic...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../env_medium/">env_medium</a></td>
-<td>1..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
 <td>Report the environmental material(s) immediately surrounding the sample or sp...</td>
 <td>direct</td>
 </tr>
@@ -1510,7 +1510,7 @@
 </tr>
 <tr>
 <td><a href="../fertilizer_regm/">fertilizer_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving the use of fertilizers; should include ...</td>
 <td>direct</td>
 </tr>
@@ -1522,7 +1522,7 @@
 </tr>
 <tr>
 <td><a href="../filter_type/">filter_type</a></td>
-<td>0..* <br/> <a href="../FilterTypeEnum/">FilterTypeEnum</a></td>
+<td>* <br/> <a href="../FilterTypeEnum/">FilterTypeEnum</a></td>
 <td>A device which removes solid particulates or airborne molecular contaminants</td>
 <td>direct</td>
 </tr>
@@ -1612,7 +1612,7 @@
 </tr>
 <tr>
 <td><a href="../fungicide_regm/">fungicide_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving use of fungicides; should include the n...</td>
 <td>direct</td>
 </tr>
@@ -1624,13 +1624,13 @@
 </tr>
 <tr>
 <td><a href="../gaseous_environment/">gaseous_environment</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Use of conditions with differing gaseous environments; should include the nam...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../gaseous_substances/">gaseous_substances</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Amount or concentration of substances such as hydrogen sulfide, carbon dioxid...</td>
 <td>direct</td>
 </tr>
@@ -1666,7 +1666,7 @@
 </tr>
 <tr>
 <td><a href="../gravity/">gravity</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving use of gravity factor to study various ...</td>
 <td>direct</td>
 </tr>
@@ -1684,7 +1684,7 @@
 </tr>
 <tr>
 <td><a href="../growth_hormone_regm/">growth_hormone_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving use of growth hormones; should include ...</td>
 <td>direct</td>
 </tr>
@@ -1738,7 +1738,7 @@
 </tr>
 <tr>
 <td><a href="../heat_cool_type/">heat_cool_type</a></td>
-<td>0..* <br/> <a href="../HeatCoolTypeEnum/">HeatCoolTypeEnum</a></td>
+<td>* <br/> <a href="../HeatCoolTypeEnum/">HeatCoolTypeEnum</a></td>
 <td>Methods of conditioning or heating a room or building</td>
 <td>direct</td>
 </tr>
@@ -1762,13 +1762,13 @@
 </tr>
 <tr>
 <td><a href="../heavy_metals/">heavy_metals</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Heavy metals present in the sample and their concentrations</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../heavy_metals_meth/">heavy_metals_meth</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Reference or method used in determining heavy metals</td>
 <td>direct</td>
 </tr>
@@ -1780,7 +1780,7 @@
 </tr>
 <tr>
 <td><a href="../herbicide_regm/">herbicide_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving use of herbicides; information about tr...</td>
 <td>direct</td>
 </tr>
@@ -1834,7 +1834,7 @@
 </tr>
 <tr>
 <td><a href="../host_diet/">host_diet</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Type of diet depending on the host, for animals omnivore, herbivore etc</td>
 <td>direct</td>
 </tr>
@@ -1846,7 +1846,7 @@
 </tr>
 <tr>
 <td><a href="../host_family_relation/">host_family_relation</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Familial relationships to other hosts in the same study; can include multiple...</td>
 <td>direct</td>
 </tr>
@@ -1870,7 +1870,7 @@
 </tr>
 <tr>
 <td><a href="../host_last_meal/">host_last_meal</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Content of last meal and time since feeding; can include multiple values</td>
 <td>direct</td>
 </tr>
@@ -1912,7 +1912,7 @@
 </tr>
 <tr>
 <td><a href="../host_subspecf_genlin/">host_subspecf_genlin</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Information about the genetic distinctness of the host organism below the sub...</td>
 <td>direct</td>
 </tr>
@@ -1924,7 +1924,7 @@
 </tr>
 <tr>
 <td><a href="../host_symbiont/">host_symbiont</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>The taxonomic name of the organism(s) found living in mutualistic, commensali...</td>
 <td>direct</td>
 </tr>
@@ -1954,7 +1954,7 @@
 </tr>
 <tr>
 <td><a href="../humidity_regm/">humidity_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to varying degree of humidi...</td>
 <td>direct</td>
 </tr>
@@ -1978,7 +1978,7 @@
 </tr>
 <tr>
 <td><a href="../inorg_particles/">inorg_particles</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of particles such as sand, grit, metal particles, ceramics, etc</td>
 <td>direct</td>
 </tr>
@@ -2050,7 +2050,7 @@
 </tr>
 <tr>
 <td><a href="../light_type/">light_type</a></td>
-<td>0..* <br/> <a href="../LightTypeEnum/">LightTypeEnum</a></td>
+<td>* <br/> <a href="../LightTypeEnum/">LightTypeEnum</a></td>
 <td>Application of light to achieve some practical or aesthetic effect</td>
 <td>direct</td>
 </tr>
@@ -2128,7 +2128,7 @@
 </tr>
 <tr>
 <td><a href="../mechanical_damage/">mechanical_damage</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about any mechanical damage exerted on the plant; can include mul...</td>
 <td>direct</td>
 </tr>
@@ -2152,19 +2152,19 @@
 </tr>
 <tr>
 <td><a href="../mineral_nutr_regm/">mineral_nutr_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving the use of mineral supplements; should ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../misc_param/">misc_param</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Any other measurement performed or parameter collected, that is not listed he...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../n_alkanes/">n_alkanes</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of n-alkanes; can include multiple n-alkanes</td>
 <td>direct</td>
 </tr>
@@ -2200,7 +2200,7 @@
 </tr>
 <tr>
 <td><a href="../non_min_nutr_regm/">non_min_nutr_regm</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Information about treatment involving the exposure of plant to non-mineral nu...</td>
 <td>direct</td>
 </tr>
@@ -2284,13 +2284,13 @@
 </tr>
 <tr>
 <td><a href="../org_particles/">org_particles</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of particles such as faeces, hairs, food, vomit, paper fibers, ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../organism_count/">organism_count</a></td>
-<td>0..* <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>* <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Total cell count of any organism (or group of organisms) per gram, volume or ...</td>
 <td>direct</td>
 </tr>
@@ -2326,7 +2326,7 @@
 </tr>
 <tr>
 <td><a href="../particle_class/">particle_class</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Particles are classified, based on their size, into six general categories:cl...</td>
 <td>direct</td>
 </tr>
@@ -2350,13 +2350,13 @@
 </tr>
 <tr>
 <td><a href="../perturbation/">perturbation</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Type of perturbation, e</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../pesticide_regm/">pesticide_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving use of insecticides; should include the...</td>
 <td>direct</td>
 </tr>
@@ -2380,13 +2380,13 @@
 </tr>
 <tr>
 <td><a href="../ph_regm/">ph_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving exposure of plants to varying levels of...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../phaeopigments/">phaeopigments</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of phaeopigments; can include multiple phaeopigments</td>
 <td>direct</td>
 </tr>
@@ -2398,7 +2398,7 @@
 </tr>
 <tr>
 <td><a href="../phosplipid_fatt_acid/">phosplipid_fatt_acid</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of phospholipid fatty acids; can include multiple values</td>
 <td>direct</td>
 </tr>
@@ -2434,7 +2434,7 @@
 </tr>
 <tr>
 <td><a href="../pollutants/">pollutants</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Pollutant types and, amount or concentrations measured at the time of samplin...</td>
 <td>direct</td>
 </tr>
@@ -2530,13 +2530,13 @@
 </tr>
 <tr>
 <td><a href="../radiation_regm/">radiation_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving exposure of plant or a plant part to a ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../rainfall_regm/">rainfall_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to a given amount of rainfa...</td>
 <td>direct</td>
 </tr>
@@ -2752,7 +2752,7 @@
 </tr>
 <tr>
 <td><a href="../salt_regm/">salt_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving use of salts as supplement to liquid an...</td>
 <td>direct</td>
 </tr>
@@ -2836,7 +2836,7 @@
 </tr>
 <tr>
 <td><a href="../samp_sort_meth/">samp_sort_meth</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Method by which samples are sorted; open face filter collecting total suspend...</td>
 <td>direct</td>
 </tr>
@@ -2926,7 +2926,7 @@
 </tr>
 <tr>
 <td><a href="../season_environment/">season_environment</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Treatment involving an exposure to a particular season (e</td>
 <td>direct</td>
 </tr>
@@ -3106,13 +3106,13 @@
 </tr>
 <tr>
 <td><a href="../soluble_inorg_mat/">soluble_inorg_mat</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hy...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../soluble_org_mat/">soluble_org_mat</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of substances such as urea, fruit sugars, soluble proteins, dru...</td>
 <td>direct</td>
 </tr>
@@ -3178,7 +3178,7 @@
 </tr>
 <tr>
 <td><a href="../standing_water_regm/">standing_water_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Treatment involving an exposure to standing water during a plant's life span,...</td>
 <td>direct</td>
 </tr>
@@ -3190,7 +3190,7 @@
 </tr>
 <tr>
 <td><a href="../substructure_type/">substructure_type</a></td>
-<td>0..* <br/> <a href="../SubstructureTypeEnum/">SubstructureTypeEnum</a></td>
+<td>* <br/> <a href="../SubstructureTypeEnum/">SubstructureTypeEnum</a></td>
 <td>The substructure or under building is that largely hidden section of the buil...</td>
 <td>direct</td>
 </tr>
@@ -3214,7 +3214,7 @@
 </tr>
 <tr>
 <td><a href="../surf_air_cont/">surf_air_cont</a></td>
-<td>0..* <br/> <a href="../SurfAirContEnum/">SurfAirContEnum</a></td>
+<td>* <br/> <a href="../SurfAirContEnum/">SurfAirContEnum</a></td>
 <td>Contaminant identified on surface</td>
 <td>direct</td>
 </tr>
@@ -3256,7 +3256,7 @@
 </tr>
 <tr>
 <td><a href="../suspend_solids/">suspend_solids</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of substances including a wide variety of material, such as sil...</td>
 <td>direct</td>
 </tr>
@@ -3304,7 +3304,7 @@
 </tr>
 <tr>
 <td><a href="../tillage/">tillage</a></td>
-<td>0..* <br/> <a href="../TillageEnum/">TillageEnum</a></td>
+<td>* <br/> <a href="../TillageEnum/">TillageEnum</a></td>
 <td>Note method(s) used for tilling</td>
 <td>direct</td>
 </tr>
@@ -3484,7 +3484,7 @@
 </tr>
 <tr>
 <td><a href="../volatile_org_comp/">volatile_org_comp</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Concentration of carbon-based chemicals that easily evaporate at room tempera...</td>
 <td>direct</td>
 </tr>
@@ -3556,7 +3556,7 @@
 </tr>
 <tr>
 <td><a href="../water_content/">water_content</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>Water content measurement</td>
 <td>direct</td>
 </tr>
@@ -3592,13 +3592,13 @@
 </tr>
 <tr>
 <td><a href="../water_temp_regm/">water_temp_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to water with varying degre...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../watering_regm/">watering_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to watering frequencies, tr...</td>
 <td>direct</td>
 </tr>
@@ -3808,7 +3808,7 @@
 </tr>
 <tr>
 <td><a href="../air_temp_regm/">air_temp_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to varying temperatures; sh...</td>
 <td>direct</td>
 </tr>
@@ -3826,7 +3826,7 @@
 </tr>
 <tr>
 <td><a href="../climate_environment/">climate_environment</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Treatment involving an exposure to a particular climate; treatment regimen in...</td>
 <td>direct</td>
 </tr>
@@ -3838,7 +3838,7 @@
 </tr>
 <tr>
 <td><a href="../gaseous_environment/">gaseous_environment</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Use of conditions with differing gaseous environments; should include the nam...</td>
 <td>direct</td>
 </tr>
@@ -3850,7 +3850,7 @@
 </tr>
 <tr>
 <td><a href="../humidity_regm/">humidity_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to varying degree of humidi...</td>
 <td>direct</td>
 </tr>
@@ -3886,7 +3886,7 @@
 </tr>
 <tr>
 <td><a href="../watering_regm/">watering_regm</a></td>
-<td>0..* <br/> <a href="../TextValue/">TextValue</a></td>
+<td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Information about treatment involving an exposure to watering frequencies, tr...</td>
 <td>direct</td>
 </tr>
@@ -4246,13 +4246,13 @@
 </tr>
 <tr>
 <td><a href="../analysis_type/">analysis_type</a></td>
-<td>0..* <em>recommended</em> <br/> <a href="../AnalysisTypeEnum/">AnalysisTypeEnum</a></td>
+<td>* <em>recommended</em> <br/> <a href="../AnalysisTypeEnum/">AnalysisTypeEnum</a></td>
 <td>Select all the data types associated or available for this biosample</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../sample_link/">sample_link</a></td>
-<td>0..* <em>recommended</em> <br/> <a href="../String/">String</a></td>
+<td>* <em>recommended</em> <br/> <a href="../String/">String</a></td>
 <td>A unique identifier to assign parent-child, subsample, or sibling samples</td>
 <td>direct</td>
 </tr>
@@ -4264,7 +4264,7 @@
 </tr>
 <tr>
 <td><a href="../infiltrations/">infiltrations</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>The amount of time it takes to complete each infiltration activity</td>
 <td>direct</td>
 </tr>
@@ -21403,7 +21403,7 @@ rules:
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       

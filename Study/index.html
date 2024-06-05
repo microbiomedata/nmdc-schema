@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Study/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.5.3, mkdocs-material-9.5.18" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: Study - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.66ac8b77.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -314,7 +314,7 @@
 
   Study : associated_dois
 
-      Study --&gt; "0..*" Doi : associated_dois
+      Study --&gt; "*" Doi : associated_dois
     click Doi href "../Doi"
 
   Study : description
@@ -337,7 +337,7 @@
 
   Study : has_credit_associations
 
-      Study --&gt; "0..*" CreditAssociation : has_credit_associations
+      Study --&gt; "*" CreditAssociation : has_credit_associations
     click CreditAssociation href "../CreditAssociation"
 
   Study : homepage_website
@@ -360,7 +360,7 @@
 
   Study : part_of
 
-      Study --&gt; "0..*" Study : part_of
+      Study --&gt; "*" Study : part_of
     click Study href "../Study"
 
   Study : principal_investigator
@@ -376,12 +376,12 @@
 
   Study : study_category
 
-      Study --&gt; "1..1" StudyCategoryEnum : study_category
+      Study --&gt; "1" StudyCategoryEnum : study_category
     click StudyCategoryEnum href "../StudyCategoryEnum"
 
   Study : study_image
 
-      Study --&gt; "0..*" ImageValue : study_image
+      Study --&gt; "*" ImageValue : study_image
     click ImageValue href "../ImageValue"
 
   Study : title
@@ -413,55 +413,55 @@
 <tbody>
 <tr>
 <td><a href="../emsl_project_identifiers/">emsl_project_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>Identifiers that link a NMDC study to the EMSL user facility website hosting ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../neon_study_identifiers/">neon_study_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../jgi_portal_study_identifiers/">jgi_portal_study_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>Identifiers that link a NMDC study to a website hosting raw and analyzed data...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
-<td>1..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
-<td>0..* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unique identifier for a study submitted to additional resources</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../gnps_task_identifiers/">gnps_task_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>identifiers that link a NMDC study to a web-based report about metabolomics a...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../alternative_descriptions/">alternative_descriptions</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>A list of alternative descriptions for the entity</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../alternative_names/">alternative_names</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>A list of alternative names used to refer to the entity</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../alternative_titles/">alternative_titles</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>A list of alternative titles for the entity</td>
 <td>direct</td>
 </tr>
@@ -473,7 +473,7 @@
 </tr>
 <tr>
 <td><a href="../associated_dois/">associated_dois</a></td>
-<td>0..* <br/> <a href="../Doi/">Doi</a></td>
+<td>* <br/> <a href="../Doi/">Doi</a></td>
 <td>A list of DOIs associated with a resource, such as a list of DOIS associated ...</td>
 <td>direct</td>
 </tr>
@@ -503,37 +503,37 @@
 </tr>
 <tr>
 <td><a href="../funding_sources/">funding_sources</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>A list of organizations, along with the award numbers, that underwrite financ...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../gold_study_identifiers/">gold_study_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>identifiers for corresponding project(s) in GOLD</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_credit_associations/">has_credit_associations</a></td>
-<td>0..* <br/> <a href="../CreditAssociation/">CreditAssociation</a></td>
+<td>* <br/> <a href="../CreditAssociation/">CreditAssociation</a></td>
 <td>This slot links a study to a credit association</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../study_category/">study_category</a></td>
-<td>1..1 <br/> <a href="../StudyCategoryEnum/">StudyCategoryEnum</a></td>
+<td>1 <br/> <a href="../StudyCategoryEnum/">StudyCategoryEnum</a></td>
 <td>The type of research initiative</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../insdc_bioproject_identifiers/">insdc_bioproject_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>Unique identifier for a bioproject submitted to INSDC that relates to the NMD...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../mgnify_project_identifiers/">mgnify_project_identifiers</a></td>
-<td>0..* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>identifiers for corresponding project in MGnify</td>
 <td>direct</td>
 </tr>
@@ -551,7 +551,7 @@
 </tr>
 <tr>
 <td><a href="../part_of/">part_of</a></td>
-<td>0..* <br/> <a href="./">Study</a></td>
+<td>* <br/> <a href="./">Study</a></td>
 <td>Links a study or consortium to a parent (or umbrella) study or consortium</td>
 <td>direct</td>
 </tr>
@@ -569,7 +569,7 @@
 </tr>
 <tr>
 <td><a href="../relevant_protocols/">relevant_protocols</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -581,7 +581,7 @@
 </tr>
 <tr>
 <td><a href="../study_image/">study_image</a></td>
-<td>0..* <br/> <a href="../ImageValue/">ImageValue</a></td>
+<td>* <br/> <a href="../ImageValue/">ImageValue</a></td>
 <td>Links a study to one or more images</td>
 <td>direct</td>
 </tr>
@@ -599,13 +599,13 @@
 </tr>
 <tr>
 <td><a href="../websites/">websites</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>A list of websites that are associated with the entity</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../homepage_website/">homepage_website</a></td>
-<td>0..* <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td>The website address (URL) of an entity's homepage</td>
 <td>direct</td>
 </tr>
@@ -1795,7 +1795,7 @@ attributes:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.3220b9d7.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
