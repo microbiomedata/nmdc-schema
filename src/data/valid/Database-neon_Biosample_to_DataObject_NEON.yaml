@@ -28,7 +28,8 @@ extraction_set:
       - nmdc:procsm-99-xyz2
     start_date: '2021-01-15'
     end_date: '2021-01-15'
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     type: nmdc:Extraction
 biosample_set:
   - id: nmdc:bsm-99-abcdef1

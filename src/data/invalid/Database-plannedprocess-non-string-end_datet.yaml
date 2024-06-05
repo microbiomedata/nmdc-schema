@@ -6,7 +6,8 @@ extraction_set:
       - bare:pool_out_1
     has_output:
       - bare:dna_extract_1
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     end_date: 2021-01-15
 
 library_preparation_set:

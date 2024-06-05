@@ -319,7 +319,7 @@ classes:
       - OBI:0302884
     slots:
       - substances_used
-      - extraction_target
+      - extraction_targets
       - input_mass
       - volume
     slot_usage:
