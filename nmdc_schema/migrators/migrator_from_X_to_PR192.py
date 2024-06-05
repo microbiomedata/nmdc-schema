@@ -3,7 +3,11 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator(MigratorBase):
-    r"""Migrates a database between two schemas."""
+    """
+    Migrates data from X to PR192, makes the existing extracion_target slot multivalued and change its name to extraction_targets
+
+    Should be run after migrator_from_X_to_PR2_and_PR24.py.
+    """
 
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
