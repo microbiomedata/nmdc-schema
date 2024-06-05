@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-05T12:08:31
+# Generation date: 2024-06-05T14:48:54
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc

@@ -41,7 +41,6 @@ mkdocs-redirects = "^1.2.1"
 pymongo = "^4.7.2"
 ruamel-yaml = "^0.18.6"
 
-
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
 black = ">=23.1,<25.0"
 click = "^8.1.3"
