@@ -79,7 +79,6 @@ classes:
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
           display_hint: First name, middle initial, and last name of this person.
-
   TextValue:
     class_uri: nmdc:TextValue
     is_a: AttributeValue
