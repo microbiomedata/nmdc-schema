@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-04T21:02:10
+# Generation date: 2024-06-05T15:38:19
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -5707,16 +5707,22 @@ class MetagenomeSequencingActivity(WorkflowExecutionActivity):
     id: Union[str, MetagenomeSequencingActivityId] = None
     execution_resource: str = None
     git_url: str = None
-    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     type: str = None
     started_at_time: str = None
     ended_at_time: str = None
+    has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomeSequencingActivityId):
             self.id = MetagenomeSequencingActivityId(self.id)
+
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
         super().__post_init__(**kwargs)
 
@@ -11736,6 +11742,9 @@ slots.MagsAnalysisActivity_id = Slot(uri=NMDC.id, name="MagsAnalysisActivity_id"
 slots.MetagenomeSequencingActivity_id = Slot(uri=NMDC.id, name="MetagenomeSequencingActivity_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetagenomeSequencingActivity_id, domain=MetagenomeSequencingActivity, range=Union[str, MetagenomeSequencingActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.MetagenomeSequencingActivity_has_input = Slot(uri=NMDC.has_input, name="MetagenomeSequencingActivity_has_input", curie=NMDC.curie('has_input'),
+                   model_uri=NMDC.MetagenomeSequencingActivity_has_input, domain=MetagenomeSequencingActivity, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
 
 slots.ReadQcAnalysisActivity_id = Slot(uri=NMDC.id, name="ReadQcAnalysisActivity_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ReadQcAnalysisActivity_id, domain=ReadQcAnalysisActivity, range=Union[str, ReadQcAnalysisActivityId],
