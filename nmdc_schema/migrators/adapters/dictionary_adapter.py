@@ -332,3 +332,35 @@ class DictionaryAdapter(AdapterBase):
         if collection_name in self._db:
             for document in self._db[collection_name]:
                 document[field_name] = value
+
+    def do_for_each_document(
+        self, collection_name: str, action: Callable[[dict], None]
+    ) -> None:
+        r"""
+        Passes each document in the specified collection to the specified function. This method was designed
+        to facilitate iterating over all documents in a collection without actually modifying them.
+
+        >>> total = 0
+        >>> def add_to_total(payment: dict) -> None:
+        ...     global total
+        ...     total += payment["amount"]
+        >>>
+        >>> database = {
+        ...   "payment_set": [
+        ...     {"id": "111", "amount": 100},
+        ...     {"id": "222", "amount": 200},
+        ...     {"id": "333", "amount": 300}
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> total
+        0
+        >>> da.do_for_each_document("payment_set", add_to_total)
+        >>> total
+        600
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db:
+            for document in self._db[collection_name]:
+                action(document)
