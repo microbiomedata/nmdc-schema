@@ -521,7 +521,7 @@ slots:
       semantics: person should get credit X for their participation in the study"
     slot_uri: prov:qualifiedAssociation
     annotations:
-      display_hint: Other researchers associated with this study.
+      tooltip: Other researchers associated with this study.
   protocol_link:
     range: Protocol
   study_category:
@@ -541,8 +541,9 @@ slots:
     multivalued: true
     required: true
     annotations:
-      display_hint: >-
+      tooltip: >-
         Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
+
   has_input:
     aliases:
       - input

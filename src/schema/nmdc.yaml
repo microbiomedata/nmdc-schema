@@ -949,6 +949,10 @@ slots:
   etl_software_version:
     description: from database class
 
+  relevant_protocols:
+    multivalued: true
+    range: string
+
   object_set:
     inlined_as_list: true
     mixin: true

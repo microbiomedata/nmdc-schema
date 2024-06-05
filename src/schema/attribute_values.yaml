@@ -18,8 +18,10 @@ classes:
       value and the structured value
     slots:
       - has_raw_value
-      - was_generated_by
       - type
+    slot_usage:
+      type:
+        description: An optional string that specified the type of object.
 
   QuantityValue:
     class_uri: nmdc:QuantityValue
@@ -80,6 +82,7 @@ classes:
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
           display_hint: First name, middle initial, and last name of this person.
+
   TextValue:
     class_uri: nmdc:TextValue
     is_a: AttributeValue

@@ -36,8 +36,8 @@ rdf-clean:
 
 shuttle-clean:
 	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
-	rm -rf local/mixs_regen/mixs_subset.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
+	rm -rf local/mixs_regen/*.yaml
+	rm -rf $@.bak
 	mkdir -p local/mixs_regen
 	touch local/mixs_regen/.gitkeep
 
@@ -73,21 +73,21 @@ assets/other_mixs_yaml_files/cur_land_use_enum.yaml
 		$^ | cat > $@
 
 local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
-assets/other_mixs_yaml_files/nmdc_mixs_env_triad_alt_descriptions.yaml
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	yq eval-all \
-		'select(fileIndex==0).slots.env_broad_scale.alt_descriptions = select(fileIndex==1).slots.env_broad_scale.alt_descriptions | select(fileIndex==0)' \
+		'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
 local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml \
-assets/other_mixs_yaml_files/nmdc_mixs_env_triad_alt_descriptions.yaml
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	yq eval-all \
-		'select(fileIndex==0).slots.env_local_scale.alt_descriptions = select(fileIndex==1).slots.env_local_scale.alt_descriptions | select(fileIndex==0)' \
+		'select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
 local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml \
-assets/other_mixs_yaml_files/nmdc_mixs_env_triad_alt_descriptions.yaml
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	yq eval-all \
-		'select(fileIndex==0).slots.env_medium.alt_descriptions = select(fileIndex==1).slots.env_medium.alt_descriptions | select(fileIndex==0)' \
+		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
 # will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
@@ -175,10 +175,10 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo compress large files
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
-pure-export-and-validate: local/keep/keep/mongo_as_nmdc_database_validation.log
+pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
 
 make-rdf: rdf-clean \
-	local/keep/keep/mongo_as_nmdc_database_validation.log \
+	local/mongo_as_nmdc_database_validation.log \
 	local/mongo_as_nmdc_database_cuire_repaired.ttl \
 	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
@@ -188,6 +188,9 @@ make-rdf: rdf-clean \
 #nmdc.metaproteomics_analysis_activity_set	133268047	52	2562847	37380096	40960	37421056	1
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
+
+# todo: metagenome_sequencing_set and metagenome_sequencing_activity_set are degenerate
+#   and can't be validated, migrated or converted to RDF
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
@@ -212,10 +215,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections metagenome_annotation_activity_set \
 		--selected-collections metagenome_annotation_set \
 		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set \
-		--selected-collections metagenome_sequencing_set \
 		--selected-collections metap_gene_function_aggregation \
-		--selected-collections metaproteomics_analysis_set \
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections metatranscriptome_analysis_set \
 		--selected-collections nom_analysis_activity_set \
@@ -262,14 +262,14 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_le
 		--schema-path $(word 1,$^) \
 		--output-path $@
 
-.PRECIOUS: local/keep/keep/mongo_as_nmdc_database_validation.log
+.PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/keep/keep/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/keep/keep/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	mv $@ $@.tmp
