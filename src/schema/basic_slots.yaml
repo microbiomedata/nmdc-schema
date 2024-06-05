@@ -1058,6 +1058,7 @@ enums:
       RNA: { }
       metabolite: { }
       protein: { }
+      lipid: { }
 
   ProcessingInstitutionEnum:
     notes:
