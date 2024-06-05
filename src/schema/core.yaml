@@ -1199,11 +1199,6 @@ classes:
     notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_input:
         any_of:
           - range: Biosample
@@ -1259,12 +1254,6 @@ classes:
     title: Site
     comments:
       - BCO sample collection site ?
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}$"
-          interpolated: true
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
