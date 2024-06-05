@@ -4,7 +4,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 class Migrator(MigratorBase):
     """
-    Migrates data from X to PR192, makes the existing extracion_target slot multivalued and change its name to extraction_targets
+    Migrates data from X to PR192, makes the existing extraction_target slot multivalued and change its name to extraction_targets
 
     Should be run after migrator_from_X_to_PR2_and_PR24.py.
     """
