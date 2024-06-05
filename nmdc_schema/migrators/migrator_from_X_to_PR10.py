@@ -24,7 +24,16 @@ class Migrator(MigratorBase):
     _to_version = "PR10"
 
     def upgrade(self):
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+        r"""
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = {"data_object_set": [{'id': 1}, {'id': 2, 'type': 'old'}]}
+        >>> m = Migrator(adapter=DictionaryAdapter(database=database))
+        >>> m.upgrade()
+        >>> all(document['type'] == 'nmdc:DataObject' for document in database['data_object_set'])
+        True
+        """
 
         # Get a dictionary of slots and the class uris of their range if they have inlined classes as their range.
         view = create_schema_view()
@@ -59,29 +68,33 @@ class Migrator(MigratorBase):
         # Populate the "collection-to-transformers" map for this specific migration.
         agenda = dict(
             biosample_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Biosample", slots_with_inlined_classes)],
-            data_object_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataObject")],
-            functional_annotation_agg=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:FunctionalAnnotationAggMember")],
             study_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Study", slots_with_inlined_classes)],
             extraction_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Extraction", slots_with_inlined_classes)],
-            field_research_site_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:FieldResearchSite")],
-            library_preparation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:LibraryPreparation")],
             mags_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MagsAnalysis", slots_with_inlined_classes)],
             metabolomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetabolomicsAnalysis", slots_with_inlined_classes)],
-            metagenome_annotation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeAnnotation")],
-            metagenome_assembly_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeAssembly")],
-            metagenome_sequencing_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeSequencing")],
             metaproteomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetaproteomicsAnalysis", slots_with_inlined_classes)],
-            metatranscriptome_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAnalysis")],
-            nom_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:NomAnalysis")],
             data_generation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataGeneration", slots_with_inlined_classes)],
-            pooling_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Pooling")],
-            processed_sample_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ProcessedSample")],
-            read_based_taxonomy_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadBasedTaxonomyAnalysis")],
             read_qc_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadQcAnalysis", slots_with_inlined_classes)],
         )
 
         for collection_name, pipeline in agenda.items():
             self.adapter.process_each_document(collection_name=collection_name, pipeline=pipeline)
+
+        # For each collection that is not allowed to contain documents having any slots having inlined classes,
+        # we can use this more optimized adapter method to set the `type` field of all documents in that collection.
+        self.adapter.set_field_of_each_document("data_object_set", "type", "nmdc:DataObject")
+        self.adapter.set_field_of_each_document("functional_annotation_agg", "type", "nmdc:FunctionalAnnotationAggMember")
+        self.adapter.set_field_of_each_document("field_research_site_set", "type", "nmdc:FieldResearchSite")
+        self.adapter.set_field_of_each_document("library_preparation_set", "type", "nmdc:LibraryPreparation")
+        self.adapter.set_field_of_each_document("metagenome_annotation_set", "type", "nmdc:MetagenomeAnnotation")
+        self.adapter.set_field_of_each_document("metagenome_assembly_set", "type", "nmdc:MetagenomeAssembly")
+        self.adapter.set_field_of_each_document("metagenome_sequencing_set", "type", "nmdc:MetagenomeSequencing")
+        self.adapter.set_field_of_each_document("metatranscriptome_analysis_set", "type", "nmdc:MetatranscriptomeAnalysis")
+        self.adapter.set_field_of_each_document("nom_analysis_set", "type", "nmdc:NomAnalysis")
+        self.adapter.set_field_of_each_document("pooling_set", "type", "nmdc:Pooling")
+        self.adapter.set_field_of_each_document("processed_sample_set", "type", "nmdc:ProcessedSample")
+        self.adapter.set_field_of_each_document("read_based_taxonomy_analysis_set", "type", "nmdc:ReadBasedTaxonomyAnalysis")
+
 
     def add_type_to_inlined_classes(self, document: dict, slot: str, uri: str):
         r"""
