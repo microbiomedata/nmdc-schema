@@ -6772,7 +6772,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})(_[A-Za-z0-9_\\.-]+)?$$",
+                    "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
