@@ -3,4 +3,3 @@ display_order: 2
 has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
 type: nmdc:ImageValue
 url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-was_generated_by: nmdc:any_string_1

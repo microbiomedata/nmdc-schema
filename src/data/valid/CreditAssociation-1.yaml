@@ -1,7 +1,6 @@
 applies_to_person:
   type: nmdc:PersonValue
   has_raw_value: Craig Venter
-  was_generated_by: nmdc:any_string_1
   email: jcventer@jcvi.org
   name: J. Craig Venter
   orcid: ORCID:0000-0002-7086-765X

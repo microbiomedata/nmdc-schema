@@ -189,6 +189,8 @@ classes:
   #      has_output:
   #        structured_pattern:
   #          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+  #        structured_pattern:
+  #          syntax: ".*" # todo this accounts for an extreme edge case and should nto be repeated anywhere
   #          interpolated: true
 
 
