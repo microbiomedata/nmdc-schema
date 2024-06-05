@@ -1,0 +1,5 @@
+id: nmdc:inst-12-dtTMNb
+name: Illumina AnyTimeSeq
+vendor: illumina
+model: anytimeseq #invalid model name
+type: nmdc:Instrument

@@ -1,0 +1,123 @@
+[
+    {
+        "id": "nmdc:wfmag-99-5MiDJM",
+        "type": "nmdc:MagsAnalysis",
+        "name": "MAGs activiity 1781_86101",
+        "has_input": [
+            "nmdc:0a3d00715d01ad7b8f3aee59b674dfe9",
+            "nmdc:668d207be5ea844f988fbfb2813564cc",
+            "nmdc:b7e9c8d0bffdd13ace6f862a61fa87d2"
+        ],
+        "has_output": [
+            "nmdc:818f5a47d1371295f9313909ea12eb50",
+            "nmdc:e0b7421514f976cb7ad8c343cf3077a9",
+            "nmdc:a755bb87aded36aefbd8022506a793c7",
+            "nmdc:1346fe25b6ff22180eb3a51204e0b1fc"
+        ],
+        "ended_at_time": "2021-01-10T00:00:00+00:00",
+        "execution_resource": "NERSC-Cori",
+        "git_url": "https://img.jgi.doe.gov",
+        "part_of": [
+            "nmdc:wfch-99-ab"
+        ],
+        "started_at_time": "2021-01-10T00:00:00+00:00",
+        "binned_contig_num": 489,
+        "input_contig_num": 169782,
+        "low_depth_contig_num": 0,
+        "mags_list": [
+            {
+                "type": "nmdc:MagBin",
+                "bin_name": "bins.3",
+                "bin_quality": "LQ",
+                "completeness": 2.0,
+                "contamination": 0.0,
+                "gene_count": 294,
+                "num_16s": 0,
+                "num_23s": 0,
+                "num_5s": 0,
+                "num_t_rna": 1,
+                "number_of_contig": 11
+            }
+        ],
+        "too_short_contig_num": 159810,
+        "unbinned_contig_num": 9483,
+        "img_identifiers": [
+            "img.taxon:3300062116"
+        ]
+    },
+    {
+        "id": "nmdc:wfmag-99-VOgM5i",
+        "type": "nmdc:MagsAnalysis",
+        "name": "MAGs activiity 1781_86089",
+        "has_input": [
+            "nmdc:b78f599c21fb31b00d3f8a3c56daeb88",
+            "nmdc:662dc676b0b5a486248357f5b887c18b",
+            "nmdc:bc034c7024043ea88b44d0897bb5bece"
+        ],
+        "has_output": [
+            "nmdc:c24915651cfdfc91f3e6b5bac679c3af",
+            "nmdc:e8ec230bfe68a272b34540e7f5ab5b2b",
+            "nmdc:474fa29bd39452fa80f5a32e9e6be6f4",
+            "nmdc:9800add41d26829494265ba81a100c53"
+        ],
+        "ended_at_time": "2021-01-10T00:00:00+00:00",
+        "execution_resource": "NERSC-Cori",
+        "git_url": "https://img.jgi.doe.gov",
+        "part_of": [
+            "nmdc:wfch-12-ab"
+        ],
+        "started_at_time": "2021-01-10T00:00:00+00:00",
+        "binned_contig_num": 206,
+        "input_contig_num": 78376,
+        "low_depth_contig_num": 0,
+        "mags_list": [
+            {
+                "type": "nmdc:MagBin",
+                "bin_name": "bins.3",
+                "bin_quality": "LQ",
+                "completeness": 17.61,
+                "contamination": 0.0,
+                "gene_count": 313,
+                "num_16s": 0,
+                "num_23s": 0,
+                "num_5s": 0,
+                "num_t_rna": 7,
+                "number_of_contig": 58
+            }
+        ],
+        "too_short_contig_num": 75364,
+        "unbinned_contig_num": 2806
+    },
+    {
+        "id": "nmdc:wfmag-6y6-j6n9t",
+        "type": "nmdc:MagsAnalysis",
+        "name": "human gut MAGs analysis",
+        "has_input": [
+            "nmdc:dobj-99-9t74d"
+        ],
+        "has_output": [
+            "nmdc:dobj-6y6-j6n9t"
+        ],
+        "ended_at_time": "2023-08-01T18:00:00Z",
+        "execution_resource": "NERSC-Cori",
+        "git_url": "https://github.com/microbiomedata/mags_analysis/releases/tag/v1.0.0",
+        "part_of": [
+            "nmdc:wfch-99-98f7b"
+        ],
+        "started_at_time": "2023-08-01T12:00:00Z",
+        "binned_contig_num": 8000,
+        "input_contig_num": 10000,
+        "mags_list": [
+            {
+                "type": "nmdc:MagBin",
+                "bin_name": "MAG_2",
+                "bin_quality": "medium",
+                "completeness": 85.0,
+                "contamination": 5.0,
+                "gene_count": 1500,
+                "number_of_contig": 300
+            }
+        ],
+        "unbinned_contig_num": 2000
+    }
+]

@@ -45,13 +45,17 @@ packages = [
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
-linkml = "^1.6.10"
-linkml-runtime = "^1.6.2"
+linkml = "^1.7.10"
+linkml-runtime = "^1.7.5"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
-pymongo = "^4.3.3"
+pymongo = "4.7.2"
+plotly = "^5.20.0"
+ruamel-yaml = "^0.18.6"
+networkx = "^3.2.1"
+llm = "^0.13.1"
 
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
@@ -60,7 +64,7 @@ click = "^8.1.3"
 click-log = "^0.4.0"
 exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
 oaklib = "^0.5.24"
-pydantic = "^1.10.13"
+#pydantic = "^1.10.13"
 python-dotenv = "^0.21.0"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 schemasheets = "^0.1.24" # was in main dependencies but brings in so much like pandas
@@ -68,6 +72,7 @@ semsimian = "^0.2.11"
 sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
+matplotlib = "^3.8.3"
 
 [tool.poetry-dynamic-versioning]
 # We need poetry-dynamic-versioning to update the version in the src schema file,

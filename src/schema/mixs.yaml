@@ -7,6 +7,7 @@ notes:
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
 imports:
   - linkml:types
+  - attribute_values
 prefixes:
   nmdc:
     prefix_prefix: nmdc
@@ -1334,6 +1335,7 @@ slots:
     slot_uri: MIXS:0000639
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   air_PM_concen:
     annotations:
       expected_value:
@@ -1357,6 +1359,7 @@ slots:
     slot_uri: MIXS:0000108
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   air_temp:
     annotations:
       expected_value:
@@ -1402,6 +1405,7 @@ slots:
     slot_uri: MIXS:0000551
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   al_sat:
     annotations:
       expected_value:
@@ -1702,6 +1706,7 @@ slots:
     slot_uri: MIXS:0000553
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   api:
     annotations:
       expected_value:
@@ -1809,6 +1814,7 @@ slots:
     slot_uri: MIXS:0001097
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   avg_dew_point:
     annotations:
       expected_value:
@@ -2147,6 +2153,7 @@ slots:
     slot_uri: MIXS:0000174
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   biotic_regm:
     annotations:
       expected_value:
@@ -2655,6 +2662,7 @@ slots:
     slot_uri: MIXS:0000751
     multivalued: true
     range: ControlledTermValue
+    inlined_as_list: true
   chem_mutagen:
     annotations:
       expected_value:
@@ -2678,6 +2686,7 @@ slots:
     slot_uri: MIXS:0000555
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   chem_oxygen_dem:
     annotations:
       expected_value:
@@ -2824,6 +2833,7 @@ slots:
     slot_uri: MIXS:0001040
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   collection_date:
     annotations:
       expected_value:
@@ -3101,6 +3111,7 @@ slots:
     slot_uri: MIXS:0000178
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   diss_carb_dioxide:
     annotations:
       expected_value:
@@ -3674,6 +3685,7 @@ slots:
     slot_uri: MIXS:0000660
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   env_broad_scale:
     annotations:
       expected_value:
@@ -3945,6 +3957,7 @@ slots:
     slot_uri: MIXS:0000556
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   field:
     annotations:
       expected_value:
@@ -4286,6 +4299,7 @@ slots:
     slot_uri: MIXS:0000557
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   furniture:
     annotations:
       expected_value:
@@ -4328,6 +4342,7 @@ slots:
     slot_uri: MIXS:0000558
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   gaseous_substances:
     annotations:
       expected_value:
@@ -4351,6 +4366,7 @@ slots:
     slot_uri: MIXS:0000661
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   gender_restroom:
     annotations:
       expected_value:
@@ -4472,6 +4488,7 @@ slots:
     slot_uri: MIXS:0000559
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   growth_facil:
     annotations:
       expected_value:
@@ -4534,6 +4551,7 @@ slots:
     slot_uri: MIXS:0000560
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   hall_count:
     annotations:
       expected_value:
@@ -4797,6 +4815,7 @@ slots:
     slot_uri: MIXS:0000652
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   heavy_metals_meth:
     annotations:
       expected_value:
@@ -4862,6 +4881,7 @@ slots:
     slot_uri: MIXS:0000561
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   horizon_meth:
     annotations:
       expected_value:
@@ -5046,6 +5066,7 @@ slots:
     slot_uri: MIXS:0000869
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   host_disease_stat:
     annotations:
       expected_value:
@@ -5187,6 +5208,7 @@ slots:
     slot_uri: MIXS:0000870
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   host_length:
     annotations:
       expected_value:
@@ -5476,6 +5498,7 @@ slots:
     slot_uri: MIXS:0000568
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   indoor_space:
     annotations:
       expected_value:
@@ -5559,6 +5582,7 @@ slots:
     slot_uri: MIXS:0000664
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   inside_lux:
     annotations:
       expected_value:
@@ -5984,6 +6008,7 @@ slots:
     slot_uri: MIXS:0001052
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   methane:
     annotations:
       expected_value:
@@ -6071,6 +6096,7 @@ slots:
     slot_uri: MIXS:0000570
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   misc_param:
     annotations:
       expected_value:
@@ -6091,6 +6117,7 @@ slots:
     slot_uri: MIXS:0000752
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   n_alkanes:
     annotations:
       expected_value:
@@ -6114,6 +6141,7 @@ slots:
     slot_uri: MIXS:0000503
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   nitrate:
     annotations:
       expected_value:
@@ -6463,6 +6491,7 @@ slots:
     slot_uri: MIXS:0000665
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   organism_count:
     annotations:
       expected_value:
@@ -6485,6 +6514,7 @@ slots:
     slot_uri: MIXS:0000103
     multivalued: true
     range: QuantityValue
+    inlined_as_list: true
   owc_tvdss:
     annotations:
       expected_value:
@@ -6615,6 +6645,7 @@ slots:
     slot_uri: MIXS:0000206
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   pcr_cond:
     annotations:
       expected_value:
@@ -6692,6 +6723,7 @@ slots:
     slot_uri: MIXS:0000754
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   pesticide_regm:
     annotations:
       expected_value:
@@ -6715,6 +6747,7 @@ slots:
     slot_uri: MIXS:0000573
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   petroleum_hydrocarb:
     annotations:
       expected_value:
@@ -6796,6 +6829,7 @@ slots:
     slot_uri: MIXS:0001056
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   phaeopigments:
     annotations:
       expected_value:
@@ -6819,6 +6853,7 @@ slots:
     slot_uri: MIXS:0000180
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   phosphate:
     annotations:
       expected_value:
@@ -6864,6 +6899,7 @@ slots:
     slot_uri: MIXS:0000181
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   photon_flux:
     annotations:
       expected_value:
@@ -6987,6 +7023,7 @@ slots:
     slot_uri: MIXS:0000107
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   pool_dna_extracts:
     annotations:
       expected_value:
@@ -7320,6 +7357,7 @@ slots:
     slot_uri: MIXS:0000575
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   rainfall_regm:
     annotations:
       expected_value:
@@ -7343,6 +7381,7 @@ slots:
     slot_uri: MIXS:0000576
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   reactor_type:
     annotations:
       expected_value:
@@ -8095,6 +8134,7 @@ slots:
     slot_uri: MIXS:0000582
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   samp_capt_status:
     annotations:
       expected_value:
@@ -8365,6 +8405,7 @@ slots:
     slot_uri: MIXS:0000216
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   samp_store_dur:
     annotations:
       expected_value:
@@ -8671,6 +8712,7 @@ slots:
     slot_uri: MIXS:0001068
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   season_precpt:
     annotations:
       expected_value:
@@ -9259,6 +9301,7 @@ slots:
     slot_uri: MIXS:0000672
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   soluble_org_mat:
     annotations:
       expected_value:
@@ -9282,6 +9325,7 @@ slots:
     slot_uri: MIXS:0000673
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   soluble_react_phosp:
     annotations:
       expected_value:
@@ -9478,6 +9522,7 @@ slots:
     slot_uri: MIXS:0001069
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   store_cond:
     annotations:
       expected_value:
@@ -9751,6 +9796,7 @@ slots:
     slot_uri: MIXS:0000150
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   tan:
     annotations:
       expected_value:
@@ -10545,6 +10591,7 @@ slots:
     slot_uri: MIXS:0000115
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   wall_area:
     annotations:
       expected_value:
@@ -10918,6 +10965,7 @@ slots:
     slot_uri: MIXS:0000590
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   watering_regm:
     annotations:
       expected_value:
@@ -10941,6 +10989,7 @@ slots:
     slot_uri: MIXS:0000591
     multivalued: true
     range: TextValue
+    inlined_as_list: true
   weekday:
     annotations:
       expected_value:

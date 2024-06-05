@@ -1,0 +1,10 @@
+instrument_set:
+  - id: nmdc:inst-12-dtTMNb
+    name: Illumina NovaSeq
+    vendor: illumina
+    model: novaseq_6000
+    type: nmdc:Instrument
+  - id: nmdc:inst-12-dtTMN3
+    name: my favorite Orbitrap
+    model: exploris_480
+    type: nmdc:Instrument
