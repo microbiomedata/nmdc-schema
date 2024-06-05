@@ -530,6 +530,16 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  has_input:
+    name: has_input
+    domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
 
 </code></pre>
 </details>
@@ -554,6 +564,16 @@ slot_usage:
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
+  has_input:
+    name: has_input
+    domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
   execution_resource:
@@ -594,7 +614,7 @@ attributes:
     range: NamedThing
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
