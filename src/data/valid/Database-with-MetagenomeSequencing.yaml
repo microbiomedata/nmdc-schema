@@ -1,4 +1,4 @@
-metagenome_sequencing_set:
+workflow_execution_set:
   - id: 'nmdc:wfmsa-11-547rwq94.1'
     has_input:
       - 'nmdc:bsm-11-547rwq94'
