@@ -116,3 +116,13 @@ class AdapterBase(ABC):
         This method is a specialized alternative to the `process_each_document` method.
         """
         pass
+
+    @abstractmethod
+    def do_for_each_document(
+        self, collection_name: str, action: Callable[[dict], None]
+    ) -> None:
+        r"""
+        Passes each document in the specified collection to the specified function. This method was designed
+        to facilitate iterating over all documents in a collection without actually modifying them.
+        """
+        pass
