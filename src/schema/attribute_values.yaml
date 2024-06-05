@@ -19,9 +19,6 @@ classes:
     slots:
       - has_raw_value
       - type
-    slot_usage:
-      type:
-        description: An optional string that specified the type of object.
 
   QuantityValue:
     class_uri: nmdc:QuantityValue
