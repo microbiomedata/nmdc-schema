@@ -3642,7 +3642,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000093
     multivalued: false
-    range: QuantityValue
+    range: float
   elevator:
     annotations:
       expected_value:
@@ -3691,6 +3691,7 @@ slots:
       expected_value:
         tag: expected_value
         value: The major environment type(s) where the sample was collected. Recommend subclasses of biome [ENVO:00000428]. Multiple terms can be separated by one or more pipes.
+      tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
     description: 'Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: broad-scale environmental context
     examples:
@@ -3708,6 +3709,7 @@ slots:
       expected_value:
         tag: expected_value
         value: Environmental entities having causal influences upon the entity at time of sampling.
+      tooltip: The specific environmental entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
     description: 'Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
     title: local environmental context
     examples:
@@ -3725,6 +3727,7 @@ slots:
       expected_value:
         tag: expected_value
         value: The material displaced by the entity at time of sampling. Recommend subclasses of environmental material [ENVO:00010483].
+      tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).'
     title: environmental medium
     examples:
@@ -3911,7 +3914,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000320
     multivalued: false
-    range: TimestampValue
+    range: string
   fao_class:
     annotations:
       expected_value:
@@ -4012,7 +4015,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0001086
     multivalued: false
-    range: TimestampValue
+    range: string
   fireplace_type:
     annotations:
       expected_value:
@@ -4051,7 +4054,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000319
     multivalued: false
-    range: TimestampValue
+    range: string
   floor_age:
     annotations:
       expected_value:
@@ -10831,7 +10834,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000185
     multivalued: false
-    range: QuantityValue
+    range: string
   water_current:
     annotations:
       expected_value:

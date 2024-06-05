@@ -118,8 +118,8 @@ settings:
 classes:
   NucleotideSequencing:
     class_uri: nmdc:NucleotideSequencing
-    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     is_a: DataGeneration
+    description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
     comments: For example data generated from an Illumina or Pacific Biosciences instrument.
     slots:
       - gold_sequencing_project_identifiers
@@ -136,46 +136,45 @@ classes:
 
   MassSpectrometry:
     class_uri: nmdc:MassSpectrometry
-    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     is_a: DataGeneration
+    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
     exact_mappings:
       - CHMO:0000470
     slots:
       - eluent_introduction_category
-      - has_mass_spectrometry_configuration
-      - has_chromatography_configuration
       - has_calibration
+      - has_chromatography_configuration
+      - has_mass_spectrometry_configuration
     slot_usage:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
     rules:
-    - title: has_calibration_required_if_gc
-      description: >-
-        If eluent_introduction_category is gas_chromatography, then has_calibration is required.
-      preconditions:
-        slot_conditions:
-          eluent_introduction_category:
-            equals_string: gas_chromatography
-      postconditions:
-        slot_conditions:
-          has_calibration:
-            required: true
-    - title: has_chromatography_configuration_required_if_lc_or_gc
-      description: >-
-        If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
-      preconditions:
-        slot_conditions:
-          eluent_introduction_category:
-            any_of:
-            - equals_string: liquid_chromatography
-            - equals_string: gas_chromatography
-      postconditions:
-        slot_conditions:
-          has_chromatography_configuration:
-            required: true
-
+      - title: has_calibration_required_if_gc
+        description: >-
+          If eluent_introduction_category is gas_chromatography, then has_calibration is required.
+        preconditions:
+          slot_conditions:
+            eluent_introduction_category:
+              equals_string: gas_chromatography
+        postconditions:
+          slot_conditions:
+            has_calibration:
+              required: true
+      - title: has_chromatography_configuration_required_if_lc_or_gc
+        description: >-
+          If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
+        preconditions:
+          slot_conditions:
+            eluent_introduction_category:
+              any_of:
+                - equals_string: liquid_chromatography
+                - equals_string: gas_chromatography
+        postconditions:
+          slot_conditions:
+            has_chromatography_configuration:
+              required: true
 
   Configuration:
     abstract: true
@@ -188,12 +187,11 @@ classes:
   MassSpectrometryConfiguration:
     is_a: Configuration
     class_uri: nmdc:MassSpectrometryConfiguration
-    description: A set of parameters that define and control the actions of a mass spectrometry process. 
+    description: A set of parameters that define and control the actions of a mass spectrometry process.
     notes:
-      - This class is intended to represent a mass sepctrometry method file that controls a mass spectrometry process.
+      - This class is intended to represent a mass spectrometry method file that controls a mass spectrometry process.
     slots:
-      - acquisition_category
-      - acquisition_strategy
+      - mass_spectrometry_acquisition_strategy
       - resolution_categories
       - mass_analyzers
       - ionization_source
@@ -237,6 +235,11 @@ classes:
       - gene_function_id
       - count
       - type
+    slot_usage:
+      metagenome_annotation_id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}$"
+          interpolated: true
 
   Database:
     class_uri: nmdc:Database
@@ -250,17 +253,19 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - chemical_entity_set
-      - planned_process_set
-      - functional_annotation_agg
       - biosample_set
+      - calibration_set
+      - chemical_entity_set
       - collecting_biosamples_from_site_set
+      - configuration_set
+      - data_generation_set
       - data_object_set
       - extraction_set
       - field_research_site_set
       - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
+      - instrument_set
       - library_preparation_set
       - mags_set
       - metabolomics_analysis_set
@@ -269,19 +274,15 @@ classes:
       - metagenome_sequencing_set
       - metaproteomics_analysis_set
       - metatranscriptome_analysis_set
+      - metatranscriptome_assembly_set
       - nom_analysis_set
-      - data_generation_set
-      - workflow_chain_set
       - planned_process_set
       - pooling_set
       - processed_sample_set
       - read_based_taxonomy_analysis_set
       - read_qc_analysis_set
       - study_set
-      - workflow_execution_set
-      - instrument_set
-      - configuration_set
-      - calibration_set
+      - workflow_chain_set
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -293,9 +294,17 @@ classes:
     slot_usage:
       has_input:
         minimum_cardinality: 2
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
+        required: true
         minimum_cardinality: 1
         maximum_cardinality: 1
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -309,14 +318,24 @@ classes:
     exact_mappings:
       - OBI:0302884
     slots:
-      #      - extractant
       - substances_used
       - extraction_target
       - input_mass
       - volume
     slot_usage:
+      has_input:
+        required: true
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -324,13 +343,6 @@ classes:
           interpolated: true
       volume:
         description: The volume of the solvent/solute being used, not the input.
-
-  #  QualityControlReport:
-  #    class_uri: nmdc:QualityControlReport
-  #    slots:
-  #      - status
-  #      - name
-  #      - type
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
@@ -349,8 +361,16 @@ classes:
     comments:
       - OBI:0000711 specifies a DNA input (but not ONLY a DNA input)
     slot_usage:
+      has_input:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -371,9 +391,15 @@ classes:
       has_input:
         range: Site
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: Biosample
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
@@ -429,9 +455,19 @@ classes:
         description: The output volume of the SubSampling Process.
       mass:
         description: The output mass of the SubSampling Process.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: ProcessedSample
         description: The subsample.
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   MixingProcess:
     class_uri: 'nmdc:MixingProcess'
@@ -454,10 +490,19 @@ classes:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_output:
         range: ProcessedSample
         description: The mixed sample.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   FiltrationProcess:
     class_uri: 'nmdc:FiltrationProcess'
@@ -488,6 +533,18 @@ classes:
           interpolated: true
       volume:
         description: The volume of sample filtered.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   StorageProcess:
     class_uri: 'nmdc:StorageProcess'
@@ -495,7 +552,7 @@ classes:
       A planned process with the objective to preserve and protect material entities by placing them in an identified 
       location which may have a controlled environment.
     is_a: PlannedProcess
-    related_mappings: 
+    related_mappings:
       - OBI:0302893
     slots:
       - substances_used
@@ -503,7 +560,7 @@ classes:
       - temperature
     slot_usage:
       substances_used:
-        description: The substance(s) that a processed sample is stored in. 
+        description: The substance(s) that a processed sample is stored in.
 
   ChromatographicSeparationProcess:
     class_uri: 'nmdc:ChromatographicSeparationProcess'
@@ -523,6 +580,17 @@ classes:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   DissolvingProcess:
@@ -538,11 +606,9 @@ classes:
       - ORCID:0000-0002-1368-8217 #Yuri Corilo
     is_a: MaterialProcessing
     slots:
-      #      - solvent
-      #      - solubilizing_agent
       - duration
       - temperature
-      - substances_used # whether a substance was used as a solvent or a solubilizing_agent will be captured in substance_role
+      - substances_used
     slot_usage:
       id:
         required: true
@@ -552,49 +618,76 @@ classes:
 
 enums:
 
-  AcquisitionCategoryEnum:
-    permissible_values:
-      full_scan:
-        aliases:
-          - MS
-      tandem_mass_spectrum:
-        aliases:
-          -MSn
-
-  AcquisitionStrategyEnum:
+  MassSpectrometryAcquisitionStrategyEnum:
     permissible_values:
       data_independent_acquisition:
+        description:
+          - Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.
         aliases:
           - DIA
+          - data independent acquisition from dissociation of full mass range
+        exact_mappings:
+          - MS:1003227
       data_dependent_acquisition:
+        description:
+          Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.
         aliases:
           -DDA
+        exact_mappings:
+          - MS:1003221
+      full_scan_only:
+        aliases:
+          - MS
+        description:
+          Mass spectrometer data acquisition method wherein only MS1 data are acquired.
 
   ResolutionCategoryEnum:
     permissible_values:
-      high: { }
-      low: { }
+      high:
+        description: higher than unit resolution
+      low:
+        description: at unit resolution
 
   MassAnalyzerEnum:
     permissible_values:
       time_of_flight:
         aliases:
           - TOF
+        description:
+          Instrument that separates ions by m/z in a field-free region after acceleration to a fixed acceleration energy.
+        exact_mappings:
+          - MS:1000084
       quadrupole:
         aliases:
           - Quad
           - Q
+        description:
+          A mass spectrometer that consists of four parallel rods whose centers form the corners of a square and whose opposing poles are connected. The voltage applied to the rods is a superposition of a static potential and a sinusoidal radio frequency potential. The motion of an ion in the x and y dimensions is described by the Matthieu equation whose solutions show that ions in a particular m/z range can be transmitted along the z axis.
+        exact_mappings:
+          - MS:1000081
       Orbitrap:
         aliases:
           - Orbi
+        description:
+          An ion trapping device that consists of an outer barrel-like electrode and a coaxial inner spindle-like electrode that form an electrostatic field with quadro-logarithmic potential distribution. The frequency of harmonic oscillations of the orbitally trapped ions along the axis of the electrostatic field is independent of the ion velocity and is inversely proportional to the square root of m/z so that the trap can be used as a mass analyzer.
+        exact_mappings:
+          - MS:1000484
       ion_cyclotron_resonance:
         aliases:
           - ICR
+        description:
+          A mass spectrometer based on the principle of ion cyclotron resonance in which an ion in a magnetic field moves in a circular orbit at a frequency characteristic of its m/z value. Ions are coherently excited to a larger radius orbit using a pulse of radio frequency energy and their image charge is detected on receiver plates as a time domain signal. Fourier transformation of the time domain signal results in a frequency domain signal which is converted to a mass spectrum based in the inverse relationship between frequency and m/z.
+        exact_mappings:
+          - MS:1000079
       ion_trap:
         aliases:
           - LTQ
           - Ion Trap
           - Paul Trap
+        description:
+          A device for spatially confining ions using electric and magnetic fields alone or in combination.
+        exact_mappings:
+          - MS:1000264
 
   IonizationSourceEnum:
     permissible_values:
@@ -604,10 +697,10 @@ enums:
       matrix_assisted_laser_desorption_ionization:
         aliases:
           - MALDI
-      athmospheric_pressure_photo_ionization:
+      atmospheric_pressure_photo_ionization:
         aliases:
           - APPI
-      athmospheric_pressure_chemical_ionization:
+      atmospheric_pressure_chemical_ionization:
         aliases:
           - APCI
       electron_ionization:
@@ -641,8 +734,6 @@ enums:
         description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
 
   LibraryTypeEnum:
-    # start using the right case for enum names
-    # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
     permissible_values:
       DNA: { }
       RNA: { }
@@ -664,26 +755,6 @@ enums:
     permissible_values:
       ptfe_96_well_filter_plate:
       syringe:
-
-  #  SolventEnum:
-  #    description: The solvents that may be used in processing metabolomic samples.
-  #    permissible_values:
-  #      deionized Water:
-  #      methanol:
-  #      chloroform:
-  #      ammonium bicarbonate buffer:
-  #      methoxyamine:
-  #      MeOH/H2O:
-  #      MeOH:
-  #      Potassium sulfate:
-  #      ethanol-free chloroform:
-  #      bray extract solution:
-  #      olsen extract solution:
-  #      Milli-Q H2O:
-  #      ultrapure water:
-  #      MSTFA:
-  #      cloridic acid:
-  #      Water:
 
   StationaryPhaseEnum:
     description: The type of stationary phase used in a chromatography process.
@@ -755,7 +826,7 @@ enums:
       aqueous_layer:
       non_polar_layer:
 
-      
+
 slots:
 
   polarity_mode:
@@ -769,43 +840,50 @@ slots:
 
   ionization_source:
     range: IonizationSourceEnum
-    description: which kind of ionization source is used to introduce analytes into a mass spectrometer
+    description: The ionization source used to introduce processed samples into a mass spectrometer
+    exact_mappings:
+      - MS:1000008
 
   mass_analyzers:
     range: MassAnalyzerEnum
-    description: which kind of mass analyzer(s) used during the spectra collection.
+    description: The kind of mass analyzer(s) used during the spectra collection.
     multivalued: true
+    exact_mappings:
+      - MS:1000443
 
   resolution_categories:
     range: ResolutionCategoryEnum
-    description: whether mass spectra are collected at higher than unit resolution
+    description: The relative resolution at which spectra were collected.
+    examples:
+      - value:
+          - high
+          - low
     multivalued: true
-
-  acquisition_strategy:
-    range: AcquisitionStrategyEnum
-    description: whether spectra are dependent on or independent of any other spectra during the experiment
-
-  acquisition_category:
-    range: AcquisitionCategoryEnum
-    description: whether only survey or tandem mass spectra are part of the experiment
+  mass_spectrometry_acquisition_strategy:
+    range: MassSpectrometryAcquisitionStrategyEnum
+    description: Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.
+    exact_mappings:
+      - MS:1003213
 
   eluent_introduction_category:
     range: EluentIntroductionCategoryEnum
-    description: how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe
+    description: A high-level categorization for how the processed sample is introduced into a mass spectrometer.
+    examples:
+      - value: liquid_chromatography
+      - value: direct_infusion_syringe
 
   has_mass_spectrometry_configuration:
     range: MassSpectrometryConfiguration
-    description: a description of how the mass spectrometry was configured
+    description: The identifier of the associated MassSpectrometryConfiguration.
 
   has_chromatography_configuration:
     range: ChromatographyConfiguration
-    description: a description of how the chromatographic introduction was configured for the introduction of the sample into the mass spectrometer
+    description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.
 
   metagenome_annotation_id:
     range: WorkflowExecution
-  #    range: WorkflowExecutionActivity
-  #    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
-  #    required: true
+    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
+    required: true
 
   gene_function_id:
     range: uriorcurie
@@ -908,15 +986,18 @@ slots:
   field_research_site_set:
     mixins: object_set
     range: FieldResearchSite
+
   collecting_biosamples_from_site_set:
     mixins: object_set
     range: CollectingBiosamplesFromSite
+
   data_object_set:
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
+
   genome_feature_set:
     mixins: object_set
     range: GenomeFeature
@@ -927,69 +1008,82 @@ slots:
     description:
       This property links a database object to the set of all functional
       annotations
+
   workflow_execution_set:
     mixins: object_set
     range: WorkflowExecution
-    description: This property links a database object to the set of workflow activities.
+    description: This property links a database object to the set of workflow executions.
+
   mags_set:
     mixins: object_set
     range: MagsAnalysis
     description:
-      This property links a database object to the set of MAGs analysis
-      activities.
+      This property links a database object to the set of MAGs analyses.
+
   metabolomics_analysis_set:
     mixins: object_set
     range: MetabolomicsAnalysis
     description:
       This property links a database object to the set of metabolomics
-      analysis activities.
+      analyses.
+
   metaproteomics_analysis_set:
     mixins: object_set
     range: MetaproteomicsAnalysis
     description:
       This property links a database object to the set of metaproteomics
-      analysis activities.
+      analyses.
+
   metagenome_annotation_set:
     mixins: object_set
     range: MetagenomeAnnotation
     description:
-      This property links a database object to the set of metagenome annotation
-      activities.
+      This property links a database object to the set of metagenome annotations.
+
   metagenome_assembly_set:
     mixins: object_set
     range: MetagenomeAssembly
     description:
-      This property links a database object to the set of metagenome assembly
-      activities.
+      This property links a database object to the set of metagenome assemblies.
+
+  metatranscriptome_assembly_set:
+    mixins: object_set
+    range: MetatranscriptomeAssembly
+    description:
+      This property links a database object to the set of metatranscriptome assemblies.
+
   metagenome_sequencing_set:
     mixins: object_set
     range: MetagenomeSequencing
     description:
-      This property links a database object to the set of metagenome sequencing
-      activities.
+      This property links a database object to the set of metagenome sequencings.
+
   metatranscriptome_analysis_set:
     mixins: object_set
     range: MetatranscriptomeAnalysis
     description:
       This property links a database object to the set of metatranscriptome
-      analysis activities.
+      analyses.
+
   read_qc_analysis_set:
     mixins: object_set
     range: ReadQcAnalysis
     description:
-      This property links a database object to the set of read QC analysis
-      activities.
+      This property links a database object to the set of read QC analyses.
+
   read_based_taxonomy_analysis_set:
     mixins: object_set
     range: ReadBasedTaxonomyAnalysis
     description: >-
-      This property links a database object to the set of read based analysis activities.
+      This property links a database object to the set of read based analyses.
+
   nom_analysis_set:
     mixins: object_set
     range: NomAnalysis
     description:
       This property links a database object to the set of natural organic
-      matter (NOM) analysis activities.
+      matter (NOM) analyses,
+
   data_generation_set:
     mixins: object_set
     range: DataGeneration
@@ -1019,6 +1113,7 @@ slots:
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
+
   instrument_set:
     mixins: object_set
     range: Instrument
@@ -1031,14 +1126,6 @@ slots:
     mixins: object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
-
-  omics_type:
-    deprecated_element_has_exact_replacement: analyte_category
-    range: ControlledTermValue
-    description: The type of omics data
-    examples:
-      - value: metatranscriptome
-      - value: metagenome
 
   sample_collection_day:
     range: integer
@@ -1109,11 +1196,11 @@ slots:
 
   contained_in:
     range: ContainerCategoryEnum
-    description: A type of container. i.e. test tube, falcon tube, etc.
-  #  extractant:
-  #    domain: Extraction
-  #    range: Solution
-  #    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+    description: A type of container.
+    examples:
+      - value: test tube
+      - value: falcon tube
+      - value: whirlpak
 
   input_volume: # see also `volume`
     range: QuantityValue
@@ -1133,24 +1220,6 @@ slots:
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
 
-#  solvent: # see SubstanceRoleEnum
-#    domain: DissolvingProcess
-#    #    range: Solution
-#    any_of:
-#      - range: Solution
-#      - range: PortionOfSubstance
-#    required: true
-#    description: A liquid that can dissolve other substances (solutes) without any change in their chemical composition.
-#    exact_mappings:
-#      - CHEBI:46787
-#
-#  solubilizing_agent: # see SubstanceRoleEnum
-#    domain: DissolvingProcess
-#    #    range: CompoundEnum
-#    range: PortionOfSubstance # or chemical entity?
-#    description: A substance within a formulation that enhances the solubility of another substance.
-#    exact_mappings:
-#      - NCIT:C176640
   sampled_portion:
     range: SamplePortionEnum
     multivalued: true

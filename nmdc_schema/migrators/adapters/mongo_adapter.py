@@ -1,4 +1,4 @@
-from typing import Optional, Callable, List
+from typing import Optional, Callable, List, Union
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 from pymongo.database import Database
 
@@ -185,3 +185,30 @@ class MongoAdapter(AdapterBase):
 
                 # Overwrite the original document with the processed one.
                 collection.replace_one(filter=filter_, replacement=document)
+
+    def set_field_of_each_document(
+        self, collection_name: str, field_name: str, value: Union[None, str, int, float, bool],
+    ) -> None:
+        r"""
+        Assigns the specified value to the specified field of each document in the collection.
+        This method is a specialized alternative to the `process_each_document` method.
+        """
+
+        # Update every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            collection.update_many({}, {"$set": {field_name: value}})
+
+    def do_for_each_document(
+        self, collection_name: str, action: Callable[[dict], None]
+    ) -> None:
+        r"""
+        Passes each document in the specified collection to the specified function. This method was designed
+        to facilitate iterating over all documents in a collection without actually modifying them.
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            for document in collection.find():
+                action(document)

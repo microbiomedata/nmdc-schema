@@ -1,9 +1,9 @@
 id: nmdc:chcpr-19-7890
 type: nmdc:ChemicalConversionProcess
 has_input:
-  - "nmdc:procsm-37"
+  - nmdc:procsm-99-37
 has_output:
-  - "nmdc:procsm-39"
+  - nmdc:procsm-99-39
 substances_used:
   - known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
     type: nmdc:PortionOfSubstance

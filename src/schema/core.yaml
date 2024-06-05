@@ -81,8 +81,8 @@ enums:
         meaning: CHEBI:35225
       acid:
         description: Donates a proton or accepts an electron pair in a chemical reaction.
-        meaning: CHEBI:37527 
-      base: 
+        meaning: CHEBI:37527
+      base:
         description: Accepts a proton or donates an electron pair in a chemical reaction.
         meaning: CHEBI:22695
       # protease:
@@ -192,6 +192,12 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
+      part_of:
+        range: FieldResearchSite
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
 
   Biosample:
     class_uri: 'nmdc:Biosample'
@@ -281,12 +287,6 @@ classes:
       - igsn_biosample_identifiers
 
       ## MIXS slots
-      #      - horizon
-      #      - microbial_biomass_meth
-      #      - previous_land_use_meth
-      #      - samp_collect_device
-      #      - texture
-      #      - texture_meth
       - abs_air_humidity
       - add_recov_method
       - additional_info
@@ -361,7 +361,6 @@ classes:
       - chem_oxygen_dem
       - chem_treat_method
       - chem_treatment
-      #- chimera_check
       - chloride
       - chlorophyll
       - climate_environment
@@ -713,8 +712,6 @@ classes:
       - suspend_part_matter
       - suspend_solids
       - tan
-      #      - target_gene
-      #      - target_subfragment
       - temp
       - temp_out
       - tertiary_treatment
@@ -904,6 +901,12 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
+
+      collected_from:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
       elev:
         title: elevation, meters
         range: float
@@ -925,7 +928,7 @@ classes:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
-          display_hint: Provide the GOLD biosample IDs associated with this biosample.
+          tooltip: Provide the GOLD biosample IDs associated with this biosample.
 
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
@@ -940,6 +943,13 @@ classes:
         required: true
       env_medium:
         required: true
+
+      associated_studies:
+        required: true
+        range: Study
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
       fire:
         comments:
@@ -1189,17 +1199,18 @@ classes:
     notes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}$"
-          interpolated: true
       has_input:
         any_of:
           - range: Biosample
           - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
     broad_mappings:
       - OBI:0000094
 
@@ -1228,7 +1239,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
-    #      - nucleic_acid_concentration
+
     slot_usage:
       id:
         required: true
@@ -1243,12 +1254,6 @@ classes:
     title: Site
     comments:
       - BCO sample collection site ?
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}$"
-          interpolated: true
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
@@ -1651,19 +1656,6 @@ slots:
     range: string
   gtdbtk_species:
     range: string
-
-  #  alternate_emails:
-  #    description: One or more other email addresses for an entity.
-  #    range: string
-
-  #  keywords:
-  #    range: string
-  #    multivalued: true
-  #    description: >-
-  #      A list of keywords that used to associate the entity.
-  #      Keywords SHOULD come from controlled vocabularies, including MESH, ENVO.
-  #    mappings:
-  #      - dcterms:subject
 
   highest_similarity_score:
     todos:

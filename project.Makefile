@@ -2,6 +2,8 @@
 
 RUN=poetry run
 
+JENA_DIR=~/apache-jena/bin/
+
 FD_ROOT=local/fuseki-data/databases
 
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
@@ -21,7 +23,7 @@ examples-clean:
 
 mixs-yaml-clean:
 	rm -rf src/schema/mixs.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml
+	rm -rf local/mixs_regen/mixs_subset_modified*yaml
 
 rdf-clean:
 	rm -rf \
@@ -34,13 +36,13 @@ rdf-clean:
 
 shuttle-clean:
 	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
-	rm -rf local/mixs_regen/mixs_subset.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
+	rm -rf local/mixs_regen/*.yaml
+	rm -rf $@.bak
 	mkdir -p local/mixs_regen
 	touch local/mixs_regen/.gitkeep
 
 
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_land_use.yaml
+src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
@@ -59,14 +61,33 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
 	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
+	rm -rf $@.bak
 
 
-local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_files/cur_land_use_enum.yaml local/mixs_regen/mixs_subset_modified.yaml
+local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
+assets/other_mixs_yaml_files/cur_land_use_enum.yaml
 	# inject re-structured cur_land_use_enum
 	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
 	yq eval-all \
-		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
+		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
 # will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
@@ -96,14 +117,14 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--log-file $@.log.txt \
 		--report-style exhaustive
 
-examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
+examples/output/Biosample-exhaustive_report.yaml: src/data/problem/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
 	$(RUN) exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
@@ -155,42 +176,48 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepti
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
+
 make-rdf: rdf-clean \
 	local/mongo_as_nmdc_database_validation.log \
 	local/mongo_as_nmdc_database_cuire_repaired.ttl \
 	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
-# functional_annotation_agg is enormous. metaproteomics_analysis_activity_set is large. metap_gene_function_aggregation?
+# statistics of large collections as of 2024-05-17
+#ns	size	count	avgObjSize	storageSize	totalIndexSize	totalSize	scaleFactor
+#nmdc.functional_annotation_agg	2194573252	16167688	135	567922688	1772920832	2340843520	1
+#nmdc.metaproteomics_analysis_activity_set	133268047	52	2562847	37380096	40960	37421056	1
+#nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
+#nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
-## to ensure API only access: --skip-collection-check
+# todo: metagenome_sequencing_set and metagenome_sequencing_activity_set are degenerate
+#   and can't be validated, migrated or converted to RDF
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
-	date  # 276.50 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	date
 	time $(RUN) pure-export \
-		--client-base-url https://api.microbiomedata.org \
-		--endpoint-prefix nmdcschema \
-		--env-file local/.env \
 		--max-docs-per-coll 200000 \
-		--mongo-db-name nmdc \
-		--mongo-host localhost \
-		--mongo-port 27777 \
 		--output-yaml $@ \
-		--page-size 200000 \
-		--schema-file src/schema/nmdc.yaml \
+		--schema-source src/schema/nmdc.yaml \
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
 		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections data_object_set \
 		--selected-collections extraction_set \
+		--selected-collections field_research_site_set \
+		--selected-collections functional_annotation_set \
 		--selected-collections genome_feature_set \
 		--selected-collections library_preparation_set \
 		--selected-collections mags_activity_set \
+		--selected-collections mags_set \
 		--selected-collections material_sample_set \
 		--selected-collections metabolomics_analysis_activity_set \
+		--selected-collections metabolomics_analysis_set \
 		--selected-collections metagenome_annotation_activity_set \
+		--selected-collections metagenome_annotation_set \
 		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set \
 		--selected-collections metap_gene_function_aggregation \
 		--selected-collections metatranscriptome_activity_set \
+		--selected-collections metatranscriptome_analysis_set \
 		--selected-collections nom_analysis_activity_set \
 		--selected-collections omics_processing_set \
 		--selected-collections planned_process_set \
@@ -199,17 +226,40 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
-		--skip-collection-check
+		--selected-collections workflow_chain_set \
+		--selected-collections workflow_execution_set \
+		dump-from-api \
+		--client-base-url "https://api.microbiomedata.org" \
+		--endpoint-prefix nmdcschema \
+		--page-size 200000
 
+## ALTERNATIVELY:
+#local/mongo_as_unvalidated_nmdc_database.yaml:
+#	date
+#	time $(RUN) pure-export \
+#		--max-docs-per-coll 200000 \
+#		--output-yaml $@ \
+#		--schema-source src/schema/nmdc.yaml \
+#		--selected-collections biosample_set \
+#		--selected-collections study_set \
+#		dump-from-database \
+#		--admin-db "admin" \
+#		--auth-mechanism "DEFAULT" \
+#		--env-file local/.env \
+#		--mongo-db-name nmdc \
+#		--mongo-host localhost \
+#		--mongo-port 27777 \
+#		--direct-connection
+
+# TODO reassess these migrator choices after merge conflicts are resolved MAM 2024-05-30
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_X_to_PR2_and_PR24 \
-		--schema-path $(word 1,$^) \
 		--input-path $(word 2,$^) \
+		--migrator-name migrator_from_9_3_to_10_0 \
+		--migrator-name migrator_from_X_to_PR2_and_PR24 \
 		--salvage-prefix generic \
+		--schema-path $(word 1,$^) \
 		--output-path $@
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
@@ -222,8 +272,12 @@ local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_l
 local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- riot --validate $@ # < 1 minute
+	mv $@ $@.tmp
+	cat  assets/my_emsl_prefix.ttl $@.tmp  > $@
+	rm -rf $@.tmp
+	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local ; $(JENA_DIR)/riot --validate $@ # < 1 minute
+	date
+
 
 # todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
@@ -233,17 +287,22 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 		--jsonld-context-jsons project/jsonld/nmdc.context.jsonld \
 		--emsl-uuid-replacement emsl_uuid_like \
 		--output-ttl $@
-	export _JAVA_OPTIONS=-Djava.io.tmpdir=local
-	- riot --validate $@ # < 1 minute
+	- export _JAVA_OPTIONS=-Djava.io.tmpdir=local && $(JENA_DIR)/riot --validate $@ # < 1 minute
 	date
 
 .PHONY: migration-doctests migrator
 
 # Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
+#
+# To run in non-verbose mode:
+# ```
+# $ make migration-doctests DOCTEST_OPT=''
+# ```
+DOCTEST_OPT ?= -v
 migration-doctests:
-	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
-	$(RUN) python -m doctest -v nmdc_schema/migrators/adapters/*.py
-	$(RUN) python -m doctest -v nmdc_schema/migrators/cli/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
 
 # Generates a migrator skeleton for the specified schema versions.
 # Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
@@ -260,21 +319,6 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 		--schema $< \
 		--output $@ \
 		--schema-class Biosample
-
-### example of preparing to validate napa squad data
-
-local/nmdc-schema-v7.8.0.yaml:
-	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
-	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
-	#     see_also:
-	#       - MIxS:experimental_factor|additional_info
-	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	rm -rf $@.bak
-
-local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
-	$(RUN) gen-owl --no-use-native-uris $< > $@
 
 
 ## FUSEKI, DOCKER, ETC
@@ -369,7 +413,7 @@ local/gold-study-ids.json:
 local/gold-study-ids.yaml: local/gold-study-ids.json
 	yq -p json -o yaml $< | cat > $@
 
-local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
+local/study-files/%.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $(@D)
 	study_file_name=`echo $@` ; \
 		echo $$study_file_name ; \
@@ -397,7 +441,7 @@ create-study-yaml-files-subset: local/study-files/nmdc-sty-11-8fb6t785.yaml \
 local/study-files/nmdc-sty-11-1t150432.yaml \
 local/study-files/nmdc-sty-11-dcqce727.yaml
 
-local/study-files/%.ttl: local/nmdc-schema-v7.8.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
+local/study-files/%.ttl: nmdc_schema/nmdc_materialized_patterns.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
 	$(RUN) linkml-convert --output $@ --schema $< $(subst .ttl,.yaml,$@)
 
 create-study-ttl-files-subset: local/study-files/nmdc-sty-11-8fb6t785.ttl \
@@ -406,7 +450,7 @@ local/study-files/nmdc-sty-11-dcqce727.ttl
 
 ## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
 # retrieve selected collections from the Napa squad's MongoDB and fix ids containing whitespace
-local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
+local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	date
 	time $(RUN) pure-export \
 		--client-base-url https://api-napa.microbiomedata.org \
@@ -457,10 +501,10 @@ local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 	rm -rf $@.tmp
 
 .PRECIOUS: local/some_napa_collections.validation.log
-local/some_napa_collections.validation.log: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml
+local/some_napa_collections.validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-local/some_napa_collections.ttl: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
+local/some_napa_collections.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
 	$(RUN) linkml-convert --output $@.tmp.ttl --schema $(word 1, $^) $(word 2, $^)
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $@.tmp.ttl \
@@ -637,7 +681,7 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
 	$(RUN) python src/scripts/partial_imports_graph.py
 
-local/Database-interleaved-class-count.tsv: src/data/problem/Database-interleaved.yaml
+local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
@@ -648,7 +692,7 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 		--output $@
 
 .PHONY: generate-json-collections
-generate-json-collections: src/data/problem/Database-interleaved.yaml
+generate-json-collections: src/data/valid/Database-interleaved.yaml
 	$(RUN) python src/scripts/database-to-json-list-files.py \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb

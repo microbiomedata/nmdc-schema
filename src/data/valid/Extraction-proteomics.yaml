@@ -1,9 +1,9 @@
 id: "nmdc:extrp-38-r2pk"
 type: nmdc:Extraction
 has_input:
-  - "nmdc:procsm-37"
+  - nmdc:procsm-99-abcdef
 has_output:
-  - "nmdc:procsm-39"
+  - nmdc:procsm-99-123456
 substances_used:
   - known_as: nmdc:chem-99-000005  # see src/data/valid/Database-chemical_entity_set-1.yaml
     type: nmdc:PortionOfSubstance
@@ -15,3 +15,4 @@ substances_used:
       type: nmdc:QuantityValue
       has_numeric_value: 0.05
       has_unit: "μg/μL"
+

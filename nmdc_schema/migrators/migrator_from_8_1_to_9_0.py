@@ -151,8 +151,8 @@ class Migrator(MigratorBase):
             if not study[slot_name]:
                 del study[slot_name]
             else:
-                self.logger.error(
-                    f'ERROR: Unexpected value in {slot_name} of {study["id"]} skipping slot deletion')
+                self.logger.error(f'Field {slot_name} of Study {study["id"]} was not falsy. Skipped slot deletion.')
+                raise ValueError(f'Field {slot_name} of Study ({study["id"]}) is not empty.')
 
         # Remove associated_dois if empty (no dois were moved over and the slot is unnecessary)
         if not study['associated_dois']:

@@ -50,7 +50,6 @@ has_credit_associations:
   - applies_to_person:
       type: nmdc:PersonValue
       has_raw_value: Craig Venter
-      was_generated_by: nmdc:any_string_1
       email: jcventer@jcvi.org
       name: J. Craig Venter
       orcid: ORCID:0000-0002-7086-765X
@@ -80,7 +79,6 @@ part_of:
 principal_investigator:
   type: nmdc:PersonValue
   has_raw_value: Craig Venter
-  was_generated_by: nmdc:any_string_1
   email: jcventer@jcvi.org
   name: J. Craig Venter
   orcid: ORCID:0000-0002-7086-765X
@@ -96,13 +94,11 @@ protocol_link:
 study_image:
   - type: nmdc:ImageValue
     has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-    was_generated_by: nmdc:any_string_1
     url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     description: Photo of Craig Venter Institute, Rockville, Maryland
     display_order: 1
   - type: nmdc:ImageValue
     has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-    was_generated_by: nmdc:any_string_1
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
     display_order: 2

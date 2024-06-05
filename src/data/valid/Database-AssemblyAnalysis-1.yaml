@@ -1,6 +1,6 @@
 #multiple failure categorization values
 metagenome_assembly_set:
-  - id: nmdc:wfmgas-99-B7Vogx
+  - id: nmdc:wfmgas-11-d11daf11.1
     qc_status: fail
     has_failure_categorization:
       - qc_failure_what: assembly_size_too_small
@@ -19,6 +19,6 @@ metagenome_assembly_set:
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     has_input:
-      - nmdc:dobj-12-1243
+      - nmdc:dobj-12-d11daf13
     has_output:
-      - nmdc:dobj-12-1247
+      - nmdc:dobj-12-d11daf14

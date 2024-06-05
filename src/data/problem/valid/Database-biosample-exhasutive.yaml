@@ -39,6 +39,66 @@ biosample_set:
     img_identifiers:
       - img.taxon:abc123
     samp_name: see also name
+      - generic:xxx
+    aminopept_act:
+      has_raw_value: 0.269 mole per liter per hour
+    ammonium:
+      has_raw_value: 1.5 milligram per liter
+    ammonium_nitrogen:
+      has_raw_value: 0.5 milligram per liter
+    amount_light:
+      has_raw_value: xxx
+    analysis_type:
+      - metabolomics
+      - metagenomics
+    ances_data:
+      has_raw_value: xxx
+    annual_precpt:
+      has_raw_value: 0.5 milligram per liter
+    annual_temp:
+      has_raw_value: 12.5 degree Celsius
+    antibiotic_regm:
+      - has_raw_value: xxx
+    api:
+      has_raw_value: xxx
+    arch_struc: building
+    aromatics_pc:
+      has_raw_value: xxx
+    asphaltenes_pc:
+      has_raw_value: xxx
+    atmospheric_data:
+      - has_raw_value: xxx
+    avg_dew_point:
+      has_raw_value: xxx
+    avg_occup:
+      has_raw_value: xxx
+    avg_temp:
+      has_raw_value: xxx
+    bac_prod:
+      has_raw_value: xxx
+    bac_resp:
+      has_raw_value: xxx
+    bacteria_carb_prod:
+      has_raw_value: 2.53 microgram per liter per hour
+    barometric_press:
+      has_raw_value: xxx
+    basin:
+      has_raw_value: xxx
+    bathroom_count:
+      has_raw_value: xxx
+    bedroom_count:
+      has_raw_value: xxx
+    benzene:
+      has_raw_value: xxx
+    biochem_oxygen_dem:
+      has_raw_value: xxx
+    biocide:
+      has_raw_value: xxx
+    biocide_admin_method:
+      has_raw_value: xxx
+    biol_stat: wild
+    biomass:
+      - has_raw_value: xxx
     biosample_categories:
       - LTER
       - FICUS
@@ -101,6 +161,7 @@ biosample_set:
     alt:
       has_raw_value: 100 meter
       type: nmdc:QuantityValue
+
     aminopept_act:
       has_raw_value: 0.269 mole per liter per hour
       type: nmdc:QuantityValue
@@ -263,6 +324,7 @@ biosample_set:
     climate_environment:
       - has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
         type: nmdc:TextValue
+    collected_from: nmdc:frsite-99-1234
     collection_date:
       has_raw_value: xxx
       type: nmdc:TimestampValue
@@ -370,6 +432,9 @@ biosample_set:
     elevator:
       has_raw_value: xxx
       type: nmdc:TextValue
+    embargoed: true
+    emsl_biosample_identifiers:
+      - generic:xxx
     emulsions:
       - has_raw_value: xxx
         type: nmdc:TextValue

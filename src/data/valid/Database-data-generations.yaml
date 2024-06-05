@@ -13,8 +13,6 @@ data_generation_set:
       - nmdc:dobj-00-9n9n9n
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
-    part_of:
-      - nmdc:dgns-00-555xxx
     processing_institution: JGI
     type: nmdc:NucleotideSequencing
     associated_studies:
@@ -30,7 +28,7 @@ data_generation_set:
     add_date: 30-OCT-14 12.00.00.000000000 AM
     mod_date: 22-MAY-20 06.10.59.590000000 PM
     has_output:
-      - nmdc:dobj-00-zzzbrxzzz
+      - nmdc:dobj-00-123456
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 612S3M
     processing_institution: JGI

@@ -52,7 +52,8 @@ class Migrator(MigratorBase):
             # Get the permissible value, if any, that is most similar to the original value
             # and has a similarity score of at least 0.8 with respect to the original value.
             # Reference: https://docs.python.org/3/library/difflib.html#difflib.get_close_matches
-            matches = difflib.get_close_matches(workflow_resource_value, allowed_execution_resources, n=1, cutoff=0.8)
+            cutoff = 0.8
+            matches = difflib.get_close_matches(workflow_resource_value, allowed_execution_resources, n=1, cutoff=cutoff)
             
             if matches:
 
@@ -62,7 +63,10 @@ class Migrator(MigratorBase):
                     workflow_execution['execution_resource'] = matches[0]
 
             else:
-                self.logger.error(f"The workflow {workflow_id} has an execution_resource value of {workflow_resource_value}, but did not have any matches with the cutoff set at 0.8")
+                raise ValueError(f"The 'execution_resource' value ({workflow_resource_value}) "
+                                 f"on the WorkflowExecution document ({workflow_id}) "
+                                 f"does not match any of the allowed execution resources "
+                                 f"(with a similarity score of at least {cutoff}).")
 
         return workflow_execution
 

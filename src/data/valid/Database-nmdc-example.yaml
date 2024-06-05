@@ -107,7 +107,7 @@ data_generation_set:
       - 611E1M metaG
     processing_institution: JGI
     type: nmdc:NucleotideSequencing
-    associated_studies: 
+    associated_studies:
       - nmdc:sty-00-8675309
   - id: nmdc:dgns-99-MVW1FV
     analyte_category: metagenome
@@ -138,8 +138,6 @@ biosample_set:
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-8675309
-    #    collection_date:
-    #      has_raw_value: '2011-06-15'
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -190,8 +188,6 @@ biosample_set:
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-8675309
-    #    collection_date:
-    #      has_raw_value: '2017-05-24'
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -242,8 +238,6 @@ biosample_set:
     type: nmdc:Biosample
     associated_studies:
       - nmdc:sty-00-8675309
-    #    collection_date:
-    #      has_raw_value: '2018-01-29'
     env_broad_scale:
       type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
@@ -285,7 +279,7 @@ biosample_set:
     ncbi_taxonomy_name: rhizosphere metagenome
     sample_collection_site: Peat Soil
 data_object_set:
-  - id: nmdc:dobj-99-dkJ8xX
+  - id: nmdc:dobj-99-dkJ8ab
     name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
     description: Raw sequencer read data
     file_size_bytes: 9208349052

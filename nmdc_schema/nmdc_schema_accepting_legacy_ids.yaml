@@ -615,65 +615,106 @@ types:
     base: str
     uri: xsd:string
 enums:
-  AcquisitionCategoryEnum:
-    name: AcquisitionCategoryEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      full_scan:
-        text: full_scan
-        aliases:
-        - MS
-      tandem_mass_spectrum:
-        text: tandem_mass_spectrum
-        aliases:
-        - -MSn
-  AcquisitionStrategyEnum:
-    name: AcquisitionStrategyEnum
+  MassSpectrometryAcquisitionStrategyEnum:
+    name: MassSpectrometryAcquisitionStrategyEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       data_independent_acquisition:
         text: data_independent_acquisition
+        description: '[''Data independent mass spectrometer acquisition method wherein
+          the full mass range is fragmented. Examples of such an approach include
+          MS^E, AIF, and bbCID.'']'
         aliases:
         - DIA
+        - data independent acquisition from dissociation of full mass range
+        exact_mappings:
+        - MS:1003227
       data_dependent_acquisition:
         text: data_dependent_acquisition
+        description: Mass spectrometer data acquisition method wherein MSn spectra
+          are triggered based on the m/z of precursor ions detected in the same run.
         aliases:
         - -DDA
+        exact_mappings:
+        - MS:1003221
+      full_scan_only:
+        text: full_scan_only
+        description: Mass spectrometer data acquisition method wherein only MS1 data
+          are acquired.
+        aliases:
+        - MS
   ResolutionCategoryEnum:
     name: ResolutionCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       high:
         text: high
+        description: higher than unit resolution
       low:
         text: low
+        description: at unit resolution
   MassAnalyzerEnum:
     name: MassAnalyzerEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       time_of_flight:
         text: time_of_flight
+        description: Instrument that separates ions by m/z in a field-free region
+          after acceleration to a fixed acceleration energy.
         aliases:
         - TOF
+        exact_mappings:
+        - MS:1000084
       quadrupole:
         text: quadrupole
+        description: A mass spectrometer that consists of four parallel rods whose
+          centers form the corners of a square and whose opposing poles are connected.
+          The voltage applied to the rods is a superposition of a static potential
+          and a sinusoidal radio frequency potential. The motion of an ion in the
+          x and y dimensions is described by the Matthieu equation whose solutions
+          show that ions in a particular m/z range can be transmitted along the z
+          axis.
         aliases:
         - Quad
         - Q
+        exact_mappings:
+        - MS:1000081
       Orbitrap:
         text: Orbitrap
+        description: An ion trapping device that consists of an outer barrel-like
+          electrode and a coaxial inner spindle-like electrode that form an electrostatic
+          field with quadro-logarithmic potential distribution. The frequency of harmonic
+          oscillations of the orbitally trapped ions along the axis of the electrostatic
+          field is independent of the ion velocity and is inversely proportional to
+          the square root of m/z so that the trap can be used as a mass analyzer.
         aliases:
         - Orbi
+        exact_mappings:
+        - MS:1000484
       ion_cyclotron_resonance:
         text: ion_cyclotron_resonance
+        description: A mass spectrometer based on the principle of ion cyclotron resonance
+          in which an ion in a magnetic field moves in a circular orbit at a frequency
+          characteristic of its m/z value. Ions are coherently excited to a larger
+          radius orbit using a pulse of radio frequency energy and their image charge
+          is detected on receiver plates as a time domain signal. Fourier transformation
+          of the time domain signal results in a frequency domain signal which is
+          converted to a mass spectrum based in the inverse relationship between frequency
+          and m/z.
         aliases:
         - ICR
+        exact_mappings:
+        - MS:1000079
       ion_trap:
         text: ion_trap
+        description: A device for spatially confining ions using electric and magnetic
+          fields alone or in combination.
         aliases:
         - LTQ
         - Ion Trap
         - Paul Trap
+        exact_mappings:
+        - MS:1000264
   IonizationSourceEnum:
     name: IonizationSourceEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -686,12 +727,12 @@ enums:
         text: matrix_assisted_laser_desorption_ionization
         aliases:
         - MALDI
-      athmospheric_pressure_photo_ionization:
-        text: athmospheric_pressure_photo_ionization
+      atmospheric_pressure_photo_ionization:
+        text: atmospheric_pressure_photo_ionization
         aliases:
         - APPI
-      athmospheric_pressure_chemical_ionization:
-        text: athmospheric_pressure_chemical_ionization
+      atmospheric_pressure_chemical_ionization:
+        text: atmospheric_pressure_chemical_ionization
         aliases:
         - APCI
       electron_ionization:
@@ -3387,9 +3428,10 @@ enums:
       as Class names.
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      OmicsProcessing:
-        text: OmicsProcessing
-        description: A failure has occurred in omics processing, a lab process.
+      NucleotideSequencing:
+        text: NucleotideSequencing
+        description: A failure has occurred during nucleotide sequencing, a data generation
+          process.
       Pooling:
         text: Pooling
         description: A failure has occurred in pooling, a lab process.
@@ -3402,22 +3444,22 @@ enums:
       MetagenomeAssembly:
         text: MetagenomeAssembly
         description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeActivity:
-        text: MetatranscriptomeActivity
+      MetatranscriptomeAnalysis:
+        text: MetatranscriptomeAnalysis
         description: A failure has occurred in metatranscriptome analysis, a workflow
           process.
-      MagsAnalysisActivity:
-        text: MagsAnalysisActivity
+      MagsAnalysis:
+        text: MagsAnalysis
         description: A failure has occurred in binning, a workflow process to generate
           metagenome-assembled genomes (MAGS).
-      ReadQcAnalysisActivity:
-        text: ReadQcAnalysisActivity
+      ReadQcAnalysis:
+        text: ReadQcAnalysis
         description: A failure has occurred in read qc, a workflow process.
-      ReadBasedTaxonomyAnalysisActivity:
-        text: ReadBasedTaxonomyAnalysisActivity
+      ReadBasedTaxonomyAnalysis:
+        text: ReadBasedTaxonomyAnalysis
         description: A failure has occurred in reads based taxonomy, a workflow process.
-      MetagenomeAnnotationActivity:
-        text: MetagenomeAnnotationActivity
+      MetagenomeAnnotation:
+        text: MetagenomeAnnotation
         description: A failure has occurred in annotation, a workflow process.
   ExecutionResourceEnum:
     name: ExecutionResourceEnum
@@ -4236,55 +4278,63 @@ slots:
     range: MassSpectrumCollectionModeEnum
   ionization_source:
     name: ionization_source
-    description: which kind of ionization source is used to introduce analytes into
-      a mass spectrometer
+    description: The ionization source used to introduce processed samples into a
+      mass spectrometer
     from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - MS:1000008
     range: IonizationSourceEnum
   mass_analyzers:
     name: mass_analyzers
-    description: which kind of mass analyzer(s) used during the spectra collection.
+    description: The kind of mass analyzer(s) used during the spectra collection.
     from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - MS:1000443
     multivalued: true
     range: MassAnalyzerEnum
   resolution_categories:
     name: resolution_categories
-    description: whether mass spectra are collected at higher than unit resolution
+    description: The relative resolution at which spectra were collected.
+    examples:
+    - value: '[''high'', ''low'']'
     from_schema: https://w3id.org/nmdc/nmdc
     multivalued: true
     range: ResolutionCategoryEnum
-  acquisition_strategy:
-    name: acquisition_strategy
-    description: whether spectra are dependent on or independent of any other spectra
-      during the experiment
+  mass_spectrometry_acquisition_strategy:
+    name: mass_spectrometry_acquisition_strategy
+    description: Mode of running a mass spectrometer method by which m/z ranges are
+      selected and ions possibly fragment.
     from_schema: https://w3id.org/nmdc/nmdc
-    range: AcquisitionStrategyEnum
-  acquisition_category:
-    name: acquisition_category
-    description: whether only survey or tandem mass spectra are part of the experiment
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: AcquisitionCategoryEnum
+    exact_mappings:
+    - MS:1003213
+    range: MassSpectrometryAcquisitionStrategyEnum
   eluent_introduction_category:
     name: eluent_introduction_category
-    description: how a processed sample is introduced into a mass spectrometer, for
-      example liquid chromatography or direct infusion through a syringe
+    description: A high-level categorization for how the processed sample is introduced
+      into a mass spectrometer.
+    examples:
+    - value: liquid_chromatography
+    - value: direct_infusion_syringe
     from_schema: https://w3id.org/nmdc/nmdc
     range: EluentIntroductionCategoryEnum
   has_mass_spectrometry_configuration:
     name: has_mass_spectrometry_configuration
-    description: a description of how the mass spectrometry was configured
+    description: The identifier of the associated MassSpectrometryConfiguration.
     from_schema: https://w3id.org/nmdc/nmdc
     range: MassSpectrometryConfiguration
   has_chromatography_configuration:
     name: has_chromatography_configuration
-    description: a description of how the chromatographic introduction was configured
-      for the introduction of the sample into the mass spectrometer
+    description: The identifier of the associated ChromatographyConfiguration, providing
+      information about how a sample was introduced into the mass spectrometer.
     from_schema: https://w3id.org/nmdc/nmdc
     range: ChromatographyConfiguration
   metagenome_annotation_id:
     name: metagenome_annotation_id
+    description: The identifier for the analysis activity (WorkflowExecutionActivity)
+      that generated the functional annotation results.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FunctionalAnnotationAggMember
     range: WorkflowExecution
+    required: true
   gene_function_id:
     name: gene_function_id
     description: The identifier for the gene function.
@@ -4301,7 +4351,6 @@ slots:
   functional_annotation_agg:
     name: functional_annotation_agg
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: Database
     multivalued: true
     range: FunctionalAnnotationAggMember
     inlined: true
@@ -4340,7 +4389,6 @@ slots:
     - MS:1000004
     narrow_mappings:
     - MIXS:0000111
-    domain: PlannedProcess
     range: QuantityValue
   library_type:
     name: library_type
@@ -4348,7 +4396,6 @@ slots:
     examples:
     - value: DNA
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: LibraryPreparation
     range: LibraryTypeEnum
   date_created:
     name: date_created
@@ -4365,7 +4412,6 @@ slots:
       for a single json object that combines multiple object types
     from_schema: https://w3id.org/nmdc/nmdc
     mixin: true
-    domain: Database
     multivalued: true
     inlined_as_list: true
   chemical_entity_set:
@@ -4375,7 +4421,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ChemicalEntity
   planned_process_set:
     name: planned_process_set
@@ -4384,7 +4429,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: PlannedProcess
   biosample_set:
     name: biosample_set
@@ -4393,7 +4437,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Biosample
   study_set:
     name: study_set
@@ -4402,21 +4445,18 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Study
   field_research_site_set:
     name: field_research_site_set
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
     name: collecting_biosamples_from_site_set
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: CollectingBiosamplesFromSite
   data_object_set:
     name: data_object_set
@@ -4425,7 +4465,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: DataObject
   genome_feature_set:
     name: genome_feature_set
@@ -4433,7 +4472,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: GenomeFeature
   functional_annotation_set:
     name: functional_annotation_set
@@ -4442,105 +4480,95 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: FunctionalAnnotation
   workflow_execution_set:
     name: workflow_execution_set
-    description: This property links a database object to the set of workflow activities.
+    description: This property links a database object to the set of workflow executions.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: WorkflowExecution
   mags_set:
     name: mags_set
-    description: This property links a database object to the set of MAGs analysis
-      activities.
+    description: This property links a database object to the set of MAGs analyses.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MagsAnalysis
   metabolomics_analysis_set:
     name: metabolomics_analysis_set
     description: This property links a database object to the set of metabolomics
-      analysis activities.
+      analyses.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetabolomicsAnalysis
   metaproteomics_analysis_set:
     name: metaproteomics_analysis_set
     description: This property links a database object to the set of metaproteomics
-      analysis activities.
+      analyses.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetaproteomicsAnalysis
   metagenome_annotation_set:
     name: metagenome_annotation_set
-    description: This property links a database object to the set of metagenome annotation
-      activities.
+    description: This property links a database object to the set of metagenome annotations.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetagenomeAnnotation
   metagenome_assembly_set:
     name: metagenome_assembly_set
-    description: This property links a database object to the set of metagenome assembly
-      activities.
+    description: This property links a database object to the set of metagenome assemblies.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetagenomeAssembly
+  metatranscriptome_assembly_set:
+    name: metatranscriptome_assembly_set
+    description: This property links a database object to the set of metatranscriptome
+      assemblies.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    range: MetatranscriptomeAssembly
   metagenome_sequencing_set:
     name: metagenome_sequencing_set
-    description: This property links a database object to the set of metagenome sequencing
-      activities.
+    description: This property links a database object to the set of metagenome sequencings.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetagenomeSequencing
   metatranscriptome_analysis_set:
     name: metatranscriptome_analysis_set
     description: This property links a database object to the set of metatranscriptome
-      analysis activities.
+      analyses.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: MetatranscriptomeAnalysis
   read_qc_analysis_set:
     name: read_qc_analysis_set
-    description: This property links a database object to the set of read QC analysis
-      activities.
+    description: This property links a database object to the set of read QC analyses.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ReadQcAnalysis
   read_based_taxonomy_analysis_set:
     name: read_based_taxonomy_analysis_set
-    description: This property links a database object to the set of read based analysis
-      activities.
+    description: This property links a database object to the set of read based analyses.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ReadBasedTaxonomyAnalysis
   nom_analysis_set:
     name: nom_analysis_set
     description: This property links a database object to the set of natural organic
-      matter (NOM) analysis activities.
+      matter (NOM) analyses,
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: NomAnalysis
   data_generation_set:
     name: data_generation_set
@@ -4549,7 +4577,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: DataGeneration
   workflow_chain_set:
     name: workflow_chain_set
@@ -4558,14 +4585,12 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: WorkflowChain
   pooling_set:
     name: pooling_set
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Pooling
   processed_sample_set:
     name: processed_sample_set
@@ -4574,7 +4599,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: ProcessedSample
   extraction_set:
     name: extraction_set
@@ -4583,7 +4607,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Extraction
   library_preparation_set:
     name: library_preparation_set
@@ -4594,7 +4617,6 @@ slots:
     - library_construction_set
     mixins:
     - object_set
-    domain: Database
     range: LibraryPreparation
   instrument_set:
     name: instrument_set
@@ -4603,7 +4625,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    domain: Database
     range: Instrument
   calibration_set:
     name: calibration_set
@@ -4621,16 +4642,6 @@ slots:
     mixins:
     - object_set
     range: Configuration
-  omics_type:
-    name: omics_type
-    description: The type of omics data
-    examples:
-    - value: metatranscriptome
-    - value: metagenome
-    from_schema: https://w3id.org/nmdc/nmdc
-    deprecated_element_has_exact_replacement: analyte_category
-    domain: DataGeneration
-    range: ControlledTermValue
   sample_collection_day:
     name: sample_collection_day
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4671,14 +4682,12 @@ slots:
   protocol_execution_category:
     name: protocol_execution_category
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: ProtocolExecution
     range: ProtocolCategoryEnum
     required: true
   has_process_parts:
     name: has_process_parts
     description: A list of process parts that make up a protocol.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: ProtocolExecution
     multivalued: true
     list_elements_ordered: true
     range: PlannedProcess
@@ -4702,7 +4711,6 @@ slots:
     description: A quantitative or qualitative measurement of the physical dimensions
       of the pores in a material.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FiltrationProcess
     range: QuantityValue
   conditionings:
     name: conditionings
@@ -4719,7 +4727,6 @@ slots:
     description: The method that was used to separate a substance from a solution
       or mixture.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FiltrationProcess
     range: SeparationMethodEnum
   filtration_category:
     name: filtration_category
@@ -4748,14 +4755,17 @@ slots:
     range: boolean
   contained_in:
     name: contained_in
-    description: A type of container. i.e. test tube, falcon tube, etc.
+    description: A type of container.
+    examples:
+    - value: test tube
+    - value: falcon tube
+    - value: whirlpak
     from_schema: https://w3id.org/nmdc/nmdc
     range: ContainerCategoryEnum
   input_volume:
     name: input_volume
     description: The volume of the input sample.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: PlannedProcess
     range: QuantityValue
   ordered_mobile_phases:
     name: ordered_mobile_phases
@@ -4779,14 +4789,12 @@ slots:
     name: sampled_portion
     description: The portion of the sample that is taken for downstream activity.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: SubSamplingProcess
     multivalued: true
     range: SamplePortionEnum
   chemical_conversion_category:
     name: chemical_conversion_category
     description: The type of chemical conversion process.
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: ChemicalConversionProcess
     range: ChemicalConversionCategoryEnum
   substances_volume:
     name: substances_volume
@@ -5288,7 +5296,6 @@ slots:
   subject:
     name: subject
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FunctionalAnnotation
     range: GeneProduct
   has_function:
     name: has_function
@@ -5297,7 +5304,6 @@ slots:
     - but is actually taking string arguments in MongoDB,
     - and those are frequently fulltext, not CURIEs. MAM 2021-06-23
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: FunctionalAnnotation
     range: string
     pattern: ^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$
   gff_coordinate:
@@ -5328,7 +5334,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - biolink:strand
-    domain: GenomeFeature
   encodes:
     name: encodes
     description: The gene product encoded by this feature. Typically this is used
@@ -5338,7 +5343,6 @@ slots:
     - If we revert Reaction back into the schema, that would be a reasonable domain
       for this slot
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: GenomeFeature
     range: GeneProduct
   end:
     name: end
@@ -5350,13 +5354,11 @@ slots:
     close_mappings:
     - biolink:end_interbase_coordinate
     is_a: gff_coordinate
-    domain: GenomeFeature
     range: integer
   feature_type:
     name: feature_type
     description: 'TODO: Yuri to write'
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: GenomeFeature
     range: string
   phase:
     name: phase
@@ -5365,7 +5367,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - biolink:phase
-    domain: GenomeFeature
     range: integer
     minimum_value: 0
     maximum_value: 2
@@ -5376,7 +5377,6 @@ slots:
     close_mappings:
     - biolink:start_interbase_coordinate
     is_a: gff_coordinate
-    domain: GenomeFeature
   biomaterial_purity:
     name: biomaterial_purity
     from_schema: https://w3id.org/nmdc/nmdc
@@ -5610,6 +5610,7 @@ slots:
     is_a: biosample_identifiers
     mixins:
     - gold_identifiers
+    range: uriorcurie
     pattern: ^gold:Gb[0-9]+$
   insdc_biosample_identifiers:
     name: insdc_biosample_identifiers
@@ -8425,7 +8426,7 @@ slots:
     is_a: environment field
     slot_uri: MIXS:0000093
     multivalued: false
-    range: QuantityValue
+    range: float
   elevator:
     name: elevator
     annotations:
@@ -8481,6 +8482,13 @@ slots:
         value: The major environment type(s) where the sample was collected. Recommend
           subclasses of biome [ENVO:00000428]. Multiple terms can be separated by
           one or more pipes.
+      tooltip:
+        tag: tooltip
+        value: The biome or major environmental system where the sample or specimen
+          originated. Choose values from subclasses of the 'biome' class [ENVO:00000428]
+          in the Environment Ontology (ENVO). For host-associated or plant-associated
+          samples, use terms from the UBERON or Plant Ontology to describe the broad
+          anatomical or morphological context
     description: 'Report the major environmental system the sample or specimen came
       from. The system(s) identified should have a coarse spatial grain, to provide
       the general environmental context of where the sampling was done (e.g. in the
@@ -8505,6 +8513,16 @@ slots:
         tag: expected_value
         value: Environmental entities having causal influences upon the entity at
           time of sampling.
+      tooltip:
+        tag: tooltip
+        value: The specific environmental entities or features near the sample or
+          specimen that significantly influence its characteristics or composition.
+          These entities are typically smaller in scale than the broad environmental
+          context. Values for this field should be countable, material nouns and must
+          be chosen from subclasses of BFO:0000040 (material entity) that appear in
+          the Environment Ontology (ENVO). For host-associated or plant-associated
+          samples, use terms from the UBERON or Plant Ontology to describe specific
+          anatomical structures or plant parts.
     description: 'Report the entity or entities which are in the sample or specimen’s
       local vicinity and which you believe have significant causal influences on your
       sample or specimen. We recommend using EnvO terms which are of smaller spatial
@@ -8532,6 +8550,15 @@ slots:
         tag: expected_value
         value: The material displaced by the entity at time of sampling. Recommend
           subclasses of environmental material [ENVO:00010483].
+      tooltip:
+        tag: tooltip
+        value: The predominant environmental material or substrate that directly surrounds
+          or hosts the sample or specimen at the time of sampling. Choose values from
+          subclasses of the 'environmental material' class [ENVO:00010483] in the
+          Environment Ontology (ENVO). Values for this field should be measurable
+          or mass material nouns, representing continuous environmental materials.
+          For host-associated or plant-associated samples, use terms from the UBERON
+          or Plant Ontology to indicate a tissue, organ, or plant structure
     description: 'Report the environmental material(s) immediately surrounding the
       sample or specimen at the time of sampling. We recommend using subclasses of
       ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO
@@ -8740,7 +8767,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000320
     multivalued: false
-    range: TimestampValue
+    range: string
   fao_class:
     name: fao_class
     annotations:
@@ -8851,7 +8878,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0001086
     multivalued: false
-    range: TimestampValue
+    range: string
   fireplace_type:
     name: fireplace_type
     annotations:
@@ -8892,7 +8919,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000319
     multivalued: false
-    range: TimestampValue
+    range: string
   floor_age:
     name: floor_age
     annotations:
@@ -16320,7 +16347,7 @@ slots:
     is_a: core field
     slot_uri: MIXS:0000185
     multivalued: false
-    range: QuantityValue
+    range: string
   water_current:
     name: water_current
     annotations:
@@ -16859,7 +16886,10 @@ slots:
     multivalued: true
     range: Study
     required: true
-    pattern: ^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+    pattern: ^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
@@ -16912,8 +16942,8 @@ slots:
   has_credit_associations:
     name: has_credit_associations
     annotations:
-      display_hint:
-        tag: display_hint
+      tooltip:
+        tag: tooltip
         value: Other researchers associated with this study.
     description: 'This slot links a study to a credit association.  The credit association
       will be linked to a person value and to a CRediT Contributor Roles term. Overall
@@ -16948,8 +16978,8 @@ slots:
   applied_roles:
     name: applied_roles
     annotations:
-      display_hint:
-        tag: display_hint
+      tooltip:
+        tag: tooltip
         value: 'Identify all CRediT roles associated with this contributor. CRediT
           Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
           https://credit.niso.org/'
@@ -18498,7 +18528,6 @@ slots:
   has_peptide_quantifications:
     name: has_peptide_quantifications
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: MetaproteomicsAnalysis
     multivalued: true
     range: PeptideQuantification
   asm_score:
@@ -18688,7 +18717,6 @@ slots:
   mags_list:
     name: mags_list
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: MagsAnalysis
     multivalued: true
     range: MagBin
     inlined_as_list: true
@@ -18752,8 +18780,9 @@ slots:
     notes:
     - 'has_calibration slot will be removed from all WorkflowExecution classes but
       remain on the MassSpectrometry class after an ingest of the appropriate set
-      has occurred.  Once this has occured, this slot''s range can be updated to CalibrationInformation
-      and class/slot definitions can move to nmdc.yaml.   See PR #29 in Berkeley schema.'
+      has occurred.  Once this has occurred, this slot''s range can be updated to
+      CalibrationInformation and class/slot definitions can move to nmdc.yaml.   See
+      PR #29 in Berkeley schema.'
     from_schema: https://w3id.org/nmdc/nmdc
     any_of:
     - range: CalibrationInformation
@@ -18782,7 +18811,6 @@ slots:
   has_metabolite_identifications:
     name: has_metabolite_identifications
     from_schema: https://w3id.org/nmdc/nmdc
-    domain: MetabolomicsAnalysis
     multivalued: true
     range: MetaboliteIdentification
     inlined_as_list: true
@@ -18805,9 +18833,9 @@ classes:
     slot_usage:
       id:
         name: id
-        pattern: ^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:NucleotideSequencing
   MassSpectrometry:
@@ -18820,15 +18848,15 @@ classes:
     is_a: DataGeneration
     slots:
     - eluent_introduction_category
-    - has_mass_spectrometry_configuration
-    - has_chromatography_configuration
     - has_calibration
+    - has_chromatography_configuration
+    - has_mass_spectrometry_configuration
     slot_usage:
       id:
         name: id
-        pattern: ^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:MassSpectrometry
     rules:
@@ -18876,13 +18904,12 @@ classes:
     description: A set of parameters that define and control the actions of a mass
       spectrometry process.
     notes:
-    - This class is intended to represent a mass sepctrometry method file that controls
+    - This class is intended to represent a mass spectrometry method file that controls
       a mass spectrometry process.
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: Configuration
     slots:
-    - acquisition_category
-    - acquisition_strategy
+    - mass_spectrometry_acquisition_strategy
     - resolution_categories
     - mass_analyzers
     - ionization_source
@@ -18897,9 +18924,9 @@ classes:
         required: true
       id:
         name: id
-        pattern: ^(nmdc):(mscon)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:MassSpectrometryConfiguration
   ChromatographyConfiguration:
@@ -18925,9 +18952,9 @@ classes:
         required: true
       id:
         name: id
-        pattern: ^(nmdc):(chrocon)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(chrocon)-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:ChromatographyConfiguration
   FunctionalAnnotationAggMember:
@@ -18938,6 +18965,13 @@ classes:
     - gene_function_id
     - count
     - type
+    slot_usage:
+      metagenome_annotation_id:
+        name: metagenome_annotation_id
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:FunctionalAnnotationAggMember
   Database:
     name: Database
@@ -18950,17 +18984,19 @@ classes:
     aliases:
     - NMDC metadata object
     slots:
-    - chemical_entity_set
-    - planned_process_set
-    - functional_annotation_agg
     - biosample_set
+    - calibration_set
+    - chemical_entity_set
     - collecting_biosamples_from_site_set
+    - configuration_set
+    - data_generation_set
     - data_object_set
     - extraction_set
     - field_research_site_set
     - functional_annotation_agg
     - functional_annotation_set
     - genome_feature_set
+    - instrument_set
     - library_preparation_set
     - mags_set
     - metabolomics_analysis_set
@@ -18969,19 +19005,15 @@ classes:
     - metagenome_sequencing_set
     - metaproteomics_analysis_set
     - metatranscriptome_analysis_set
+    - metatranscriptome_assembly_set
     - nom_analysis_set
-    - data_generation_set
-    - workflow_chain_set
     - planned_process_set
     - pooling_set
     - processed_sample_set
     - read_based_taxonomy_analysis_set
     - read_qc_analysis_set
     - study_set
-    - workflow_execution_set
-    - instrument_set
-    - configuration_set
-    - calibration_set
+    - workflow_chain_set
     class_uri: nmdc:Database
     tree_root: true
   Pooling:
@@ -18994,17 +19026,27 @@ classes:
     slot_usage:
       has_input:
         name: has_input
+        required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
         minimum_cardinality: 2
       has_output:
         name: has_output
+        required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
         minimum_cardinality: 1
         maximum_cardinality: 1
       id:
         name: id
         required: true
-        pattern: ^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:Pooling
   Extraction:
@@ -19021,15 +19063,29 @@ classes:
     - input_mass
     - volume
     slot_usage:
+      has_input:
+        name: has_input
+        required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+        any_of:
+        - range: Biosample
+        - range: ProcessedSample
       has_output:
         name: has_output
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       id:
         name: id
         required: true
-        pattern: ^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       volume:
         name: volume
@@ -19053,15 +19109,26 @@ classes:
     - pcr_cond
     - pcr_primers
     slot_usage:
+      has_input:
+        name: has_input
+        required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       has_output:
         name: has_output
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       id:
         name: id
         required: true
-        pattern: ^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       pcr_cond:
         name: pcr_cond
@@ -19082,16 +19149,24 @@ classes:
         name: has_input
         range: Site
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       has_output:
         name: has_output
         range: Biosample
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       id:
         name: id
         required: true
-        pattern: ^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:CollectingBiosamplesFromSite
   ProtocolExecution:
@@ -19107,9 +19182,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):pex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:ProtocolExecution
   SubSamplingProcess:
@@ -19145,9 +19220,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       volume:
         name: volume
@@ -19155,10 +19230,23 @@ classes:
       mass:
         name: mass
         description: The output mass of the SubSampling Process.
+      has_input:
+        name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+        any_of:
+        - range: Biosample
+        - range: ProcessedSample
       has_output:
         name: has_output
         description: The subsample.
         range: ProcessedSample
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:SubSamplingProcess
   MixingProcess:
     name: MixingProcess
@@ -19184,14 +19272,26 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
+      has_input:
+        name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
           interpolated: true
+        any_of:
+        - range: Biosample
+        - range: ProcessedSample
       has_output:
         name: has_output
         description: The mixed sample.
         range: ProcessedSample
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MixingProcess
   FiltrationProcess:
     name: FiltrationProcess
@@ -19220,13 +19320,29 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       volume:
         name: volume
         description: The volume of sample filtered.
+      has_input:
+        name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+        any_of:
+        - range: Biosample
+        - range: ProcessedSample
+      has_output:
+        name: has_output
+        range: ProcessedSample
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:FiltrationProcess
   StorageProcess:
     name: StorageProcess
@@ -19264,9 +19380,24 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
+      has_input:
+        name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+        any_of:
+        - range: Biosample
+        - range: ProcessedSample
+      has_output:
+        name: has_output
+        range: ProcessedSample
+        pattern: .*
+        structured_pattern:
+          syntax: .*
           interpolated: true
     class_uri: nmdc:ChromatographicSeparationProcess
   DissolvingProcess:
@@ -19291,9 +19422,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:DissolvingProcess
   ChemicalConversionProcess:
@@ -19324,9 +19455,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:ChemicalConversionProcess
   MetagenomeAnnotation:
@@ -19343,9 +19474,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -19380,9 +19511,16 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
+          interpolated: true
+      part_of:
+        name: part_of
+        range: FieldResearchSite
+        pattern: .*
+        structured_pattern:
+          syntax: .*
           interpolated: true
     class_uri: nmdc:FieldResearchSite
   Biosample:
@@ -20021,6 +20159,12 @@ classes:
     - lbc_thirty
     - lbceq
     slot_usage:
+      collected_from:
+        name: collected_from
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       elev:
         name: elev
         title: elevation, meters
@@ -20045,8 +20189,8 @@ classes:
       gold_biosample_identifiers:
         name: gold_biosample_identifiers
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Provide the GOLD biosample IDs associated with this biosample.
         description: Unique identifier for a biosample submitted to GOLD that matches
           the NMDC submitted biosample
@@ -20070,6 +20214,14 @@ classes:
       env_medium:
         name: env_medium
         required: true
+      associated_studies:
+        name: associated_studies
+        range: Study
+        required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       fire:
         name: fire
         annotations:
@@ -20085,7 +20237,7 @@ classes:
         - value: '1871-10-10'
         - value: 1871-10-01 to 1871-10-31
         range: string
-        pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
+        pattern: .*
       flooding:
         name: flooding
         annotations:
@@ -20347,9 +20499,6 @@ classes:
         examples:
         - value: IGSN:AU1243
         - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
-      part_of:
-        name: part_of
-        pattern: .*
     class_uri: nmdc:Biosample
     unique_keys:
       samp_name_unique_key:
@@ -20443,21 +20592,22 @@ classes:
     slots:
     - instrument_used
     slot_usage:
-      id:
-        name: id
-        required: true
-        pattern: ^(nmdc):matprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:matprc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
-          interpolated: true
       has_input:
         name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
         any_of:
         - range: Biosample
         - range: ProcessedSample
       has_output:
         name: has_output
         range: ProcessedSample
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MaterialProcessing
   PortionOfSubstance:
     name: PortionOfSubstance
@@ -20491,9 +20641,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:ProcessedSample
   Site:
@@ -20504,14 +20654,6 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: MaterialEntity
     abstract: true
-    slot_usage:
-      id:
-        name: id
-        required: true
-        pattern: ^(nmdc):site-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:site-{id_shoulder}-{id_blade}{id_version}{id_locus}'
-          interpolated: true
     class_uri: nmdc:Site
   EnvironmentalMaterialTerm:
     name: EnvironmentalMaterialTerm
@@ -20760,6 +20902,10 @@ classes:
         - To be consistent with the rest of the NMDC schema we use the PROV annotation
           model, rather than GPAD
         range: MetagenomeAnnotation
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:FunctionalAnnotation
   AttributeValue:
     name: AttributeValue
@@ -20769,7 +20915,6 @@ classes:
     abstract: true
     slots:
     - has_raw_value
-    - was_generated_by
     - type
     class_uri: nmdc:AttributeValue
   QuantityValue:
@@ -20824,14 +20969,14 @@ classes:
       orcid:
         name: orcid
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Open Researcher and Contributor ID for this person. See https://orcid.org
       email:
         name: email
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Email address for this person.
       has_raw_value:
         name: has_raw_value
@@ -20841,8 +20986,8 @@ classes:
       name:
         name: name
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: First name, middle initial, and last name of this person.
         description: The full name of the Investigator. It should follow the format
           FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
@@ -20932,7 +21077,7 @@ classes:
     slot_usage:
       id:
         name: id
-        pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+        pattern: .*
     class_uri: nmdc:OntologyClass
   FailureCategorization:
     name: FailureCategorization
@@ -20968,9 +21113,9 @@ classes:
     slot_usage:
       id:
         name: id
-        pattern: ^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:Instrument
   PlannedProcess:
@@ -21131,28 +21276,28 @@ classes:
       name:
         name: name
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Provide a name for the study your samples will belong with.
       websites:
         name: websites
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Link to the Principal Investigator's research lab webpage or the
               study webpage associated with this collection of samples. Multiple links
               can be provided.
       homepage_website:
         name: homepage_website
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Link to the consortium's homepage if the study_category is a consortium.
       description:
         name: description
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Provide a brief description of your study.
         description: A brief, link-free summary of a Study
         comments:
@@ -21160,8 +21305,8 @@ classes:
       notes:
         name: notes
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Add any additional notes or comments about this study.
       alternative_identifiers:
         name: alternative_identifiers
@@ -21170,8 +21315,8 @@ classes:
       alternative_names:
         name: alternative_names
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Project, study, or sample set names the are also associated with
               this submission or other names / identifiers for this study.
       related_identifiers:
@@ -21182,8 +21327,8 @@ classes:
       insdc_bioproject_identifiers:
         name: insdc_bioproject_identifiers
         annotations:
-          display_hint:
-            tag: display_hint
+          tooltip:
+            tag: tooltip
             value: Provide the NCBI BioProject Accession Number associated with the
               listed NCBI BioProject Title.
         description: Unique identifier for a bioproject submitted to INSDC that relates
@@ -21195,6 +21340,10 @@ classes:
         comments:
         - Value is the id of the umbrella study or consortium.
         range: Study
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       protocol_link:
         name: protocol_link
         multivalued: true
@@ -21253,6 +21402,12 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
+      was_generated_by:
+        name: was_generated_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:DataObject
   DataGeneration:
     name: DataGeneration
@@ -21281,25 +21436,42 @@ classes:
     - add_date
     - analyte_category
     - associated_studies
+    - instrument_used
     - mod_date
     - part_of
     - principal_investigator
-    - instrument_used
     slot_usage:
       has_input:
         name: has_input
-        comments:
-        - pattern should allow typecode for Biosample and ProcessedSample
         required: true
-        pattern: ^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
-      part_of:
-        name: part_of
-        range: DataGeneration
-        pattern: ^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+        any_of:
+        - range: Biosample
+        - range: ProcessedSample
+      associated_studies:
+        name: associated_studies
+        range: Study
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       has_output:
         name: has_output
         range: DataObject
-        pattern: ^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      part_of:
+        name: part_of
+        range: DataGeneration
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:DataGeneration
   WorkflowChain:
     name: WorkflowChain
@@ -21319,9 +21491,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfch-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       analyte_category:
         name: analyte_category
@@ -21382,12 +21554,9 @@ classes:
         description: The WorkflowChain that this WorkflowExecution is part of
         range: WorkflowChain
         required: true
-      id:
-        name: id
-        required: true
-        pattern: ^(nmdc):wf-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:WorkflowExecution
     rules:
@@ -21520,13 +21689,25 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       img_identifiers:
         name: img_identifiers
         maximum_cardinality: 1
+      has_input:
+        name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_output:
+        name: has_output
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MetatranscriptomeAnnotation
   MetatranscriptomeAnalysis:
     name: MetatranscriptomeAnalysis
@@ -21542,9 +21723,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -21571,9 +21752,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -21592,9 +21773,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmsa-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:MetagenomeSequencing
   ReadQcAnalysis:
@@ -21619,9 +21800,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:ReadQcAnalysis
   ReadBasedTaxonomyAnalysis:
@@ -21637,9 +21818,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
   MetabolomicsAnalysis:
@@ -21655,9 +21836,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:MetabolomicsAnalysis
   MetaproteomicsAnalysis:
@@ -21672,9 +21853,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:MetaproteomicsAnalysis
   NomAnalysis:
@@ -21689,9 +21870,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:NomAnalysis
   CalibrationInformation:
@@ -21713,9 +21894,9 @@ classes:
         required: true
       id:
         name: id
-        pattern: ^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\.-]+)?$
+        pattern: .*
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+          syntax: .*
           interpolated: true
     class_uri: nmdc:CalibrationInformation
     rules:
@@ -21758,7 +21939,7 @@ settings:
     setting_value: ([A-Za-z0-9]{1,})
   id_version:
     setting_key: id_version
-    setting_value: (\.[A-Za-z0-9]{1,})*
+    setting_value: (\.[0-9]{1,})
   id_locus:
     setting_key: id_locus
     setting_value: (_[A-Za-z0-9_\.-]+)?$

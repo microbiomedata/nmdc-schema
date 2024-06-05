@@ -1,23 +1,5 @@
 {
     "$defs": {
-        "AcquisitionCategoryEnum": {
-            "description": "",
-            "enum": [
-                "full_scan",
-                "tandem_mass_spectrum"
-            ],
-            "title": "AcquisitionCategoryEnum",
-            "type": "string"
-        },
-        "AcquisitionStrategyEnum": {
-            "description": "",
-            "enum": [
-                "data_independent_acquisition",
-                "data_dependent_acquisition"
-            ],
-            "title": "AcquisitionStrategyEnum",
-            "type": "string"
-        },
         "AnalysisTypeEnum": {
             "description": "",
             "enum": [
@@ -309,7 +291,6 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -3562,9 +3543,6 @@
                         "nmdc:ControlledIdentifiedTermValue"
                     ],
                     "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "required": [
@@ -3607,9 +3585,6 @@
                     "enum": [
                         "nmdc:ControlledTermValue"
                     ],
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },
@@ -3931,56 +3906,63 @@
                     "type": "array"
                 },
                 "mags_set": {
-                    "description": "This property links a database object to the set of MAGs analysis activities.",
+                    "description": "This property links a database object to the set of MAGs analyses.",
                     "items": {
                         "$ref": "#/$defs/MagsAnalysis"
                     },
                     "type": "array"
                 },
                 "metabolomics_analysis_set": {
-                    "description": "This property links a database object to the set of metabolomics analysis activities.",
+                    "description": "This property links a database object to the set of metabolomics analyses.",
                     "items": {
                         "$ref": "#/$defs/MetabolomicsAnalysis"
                     },
                     "type": "array"
                 },
                 "metagenome_annotation_set": {
-                    "description": "This property links a database object to the set of metagenome annotation activities.",
+                    "description": "This property links a database object to the set of metagenome annotations.",
                     "items": {
                         "$ref": "#/$defs/MetagenomeAnnotation"
                     },
                     "type": "array"
                 },
                 "metagenome_assembly_set": {
-                    "description": "This property links a database object to the set of metagenome assembly activities.",
+                    "description": "This property links a database object to the set of metagenome assemblies.",
                     "items": {
                         "$ref": "#/$defs/MetagenomeAssembly"
                     },
                     "type": "array"
                 },
                 "metagenome_sequencing_set": {
-                    "description": "This property links a database object to the set of metagenome sequencing activities.",
+                    "description": "This property links a database object to the set of metagenome sequencings.",
                     "items": {
                         "$ref": "#/$defs/MetagenomeSequencing"
                     },
                     "type": "array"
                 },
                 "metaproteomics_analysis_set": {
-                    "description": "This property links a database object to the set of metaproteomics analysis activities.",
+                    "description": "This property links a database object to the set of metaproteomics analyses.",
                     "items": {
                         "$ref": "#/$defs/MetaproteomicsAnalysis"
                     },
                     "type": "array"
                 },
                 "metatranscriptome_analysis_set": {
-                    "description": "This property links a database object to the set of metatranscriptome analysis activities.",
+                    "description": "This property links a database object to the set of metatranscriptome analyses.",
                     "items": {
                         "$ref": "#/$defs/MetatranscriptomeAnalysis"
                     },
                     "type": "array"
                 },
+                "metatranscriptome_assembly_set": {
+                    "description": "This property links a database object to the set of metatranscriptome assemblies.",
+                    "items": {
+                        "$ref": "#/$defs/MetatranscriptomeAssembly"
+                    },
+                    "type": "array"
+                },
                 "nom_analysis_set": {
-                    "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
+                    "description": "This property links a database object to the set of natural organic matter (NOM) analyses,",
                     "items": {
                         "$ref": "#/$defs/NomAnalysis"
                     },
@@ -4089,14 +4071,14 @@
                     "type": "array"
                 },
                 "read_based_taxonomy_analysis_set": {
-                    "description": "This property links a database object to the set of read based analysis activities.",
+                    "description": "This property links a database object to the set of read based analyses.",
                     "items": {
                         "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
                     },
                     "type": "array"
                 },
                 "read_qc_analysis_set": {
-                    "description": "This property links a database object to the set of read QC analysis activities.",
+                    "description": "This property links a database object to the set of read QC analyses.",
                     "items": {
                         "$ref": "#/$defs/ReadQcAnalysis"
                     },
@@ -4113,50 +4095,6 @@
                     "description": "This property links a database object to the set of workflow chains within it.",
                     "items": {
                         "$ref": "#/$defs/WorkflowChain"
-                    },
-                    "type": "array"
-                },
-                "workflow_execution_set": {
-                    "description": "This property links a database object to the set of workflow activities.",
-                    "items": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/MetagenomeAnnotation"
-                            },
-                            {
-                                "$ref": "#/$defs/MetagenomeAssembly"
-                            },
-                            {
-                                "$ref": "#/$defs/MetatranscriptomeAssembly"
-                            },
-                            {
-                                "$ref": "#/$defs/MetatranscriptomeAnnotation"
-                            },
-                            {
-                                "$ref": "#/$defs/MetatranscriptomeAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/MagsAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/MetagenomeSequencing"
-                            },
-                            {
-                                "$ref": "#/$defs/ReadQcAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/MetabolomicsAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/MetaproteomicsAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/NomAnalysis"
-                            }
-                        ]
                     },
                     "type": "array"
                 }
@@ -4740,6 +4678,7 @@
                 }
             },
             "required": [
+                "has_input",
                 "has_output",
                 "id",
                 "type"
@@ -4799,16 +4738,16 @@
         "FailureWhereEnum": {
             "description": "The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.",
             "enum": [
-                "OmicsProcessing",
+                "NucleotideSequencing",
                 "Pooling",
                 "Extraction",
                 "LibraryPreparation",
                 "MetagenomeAssembly",
-                "MetatranscriptomeActivity",
-                "MagsAnalysisActivity",
-                "ReadQcAnalysisActivity",
-                "ReadBasedTaxonomyAnalysisActivity",
-                "MetagenomeAnnotationActivity"
+                "MetatranscriptomeAnalysis",
+                "MagsAnalysis",
+                "ReadQcAnalysis",
+                "ReadBasedTaxonomyAnalysis",
+                "MetagenomeAnnotation"
             ],
             "title": "FailureWhereEnum",
             "type": "string"
@@ -4867,8 +4806,8 @@
                     "type": "string"
                 },
                 "elev": {
-                    "$ref": "#/$defs/QuantityValue",
-                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
+                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.",
+                    "type": "number"
                 },
                 "geo_loc_name": {
                     "$ref": "#/$defs/TextValue",
@@ -5276,6 +5215,7 @@
                     "type": "string"
                 },
                 "metagenome_annotation_id": {
+                    "description": "The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.",
                     "type": "string"
                 },
                 "type": {
@@ -5287,6 +5227,7 @@
                 }
             },
             "required": [
+                "metagenome_annotation_id",
                 "gene_function_id",
                 "count",
                 "type"
@@ -5436,9 +5377,6 @@
                         "nmdc:GeolocationValue"
                     ],
                     "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "required": [
@@ -5582,9 +5520,6 @@
                     "type": "string"
                 },
                 "url": {
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },
@@ -5748,8 +5683,8 @@
             "enum": [
                 "electrospray_ionization",
                 "matrix_assisted_laser_desorption_ionization",
-                "athmospheric_pressure_photo_ionization",
-                "athmospheric_pressure_chemical_ionization",
+                "atmospheric_pressure_photo_ionization",
+                "atmospheric_pressure_chemical_ionization",
                 "electron_ionization"
             ],
             "title": "IonizationSourceEnum",
@@ -5793,14 +5728,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -5877,6 +5804,7 @@
                 }
             },
             "required": [
+                "has_input",
                 "has_output",
                 "id",
                 "type"
@@ -6271,7 +6199,6 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6282,7 +6209,7 @@
                 },
                 "eluent_introduction_category": {
                     "$ref": "#/$defs/EluentIntroductionCategoryEnum",
-                    "description": "how a processed sample is introduced into a mass spectrometer, for example liquid chromatography or direct infusion through a syringe"
+                    "description": "A high-level categorization for how the processed sample is introduced into a mass spectrometer."
                 },
                 "end_date": {
                     "description": "The date on which any process or activity was ended",
@@ -6301,7 +6228,7 @@
                     "type": "string"
                 },
                 "has_chromatography_configuration": {
-                    "description": "a description of how the chromatographic introduction was configured for the introduction of the sample into the mass spectrometer",
+                    "description": "The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -6313,19 +6240,25 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
                         "type": "string"
                     },
                     "type": "array"
                 },
                 "has_mass_spectrometry_configuration": {
-                    "description": "a description of how the mass spectrometry was configured",
+                    "description": "The identifier of the associated MassSpectrometryConfiguration.",
                     "type": "string"
                 },
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6353,7 +6286,6 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "pattern": "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6399,18 +6331,20 @@
             "title": "MassSpectrometry",
             "type": "object"
         },
+        "MassSpectrometryAcquisitionStrategyEnum": {
+            "description": "",
+            "enum": [
+                "data_independent_acquisition",
+                "data_dependent_acquisition",
+                "full_scan_only"
+            ],
+            "title": "MassSpectrometryAcquisitionStrategyEnum",
+            "type": "string"
+        },
         "MassSpectrometryConfiguration": {
             "additionalProperties": false,
             "description": "A set of parameters that define and control the actions of a mass spectrometry process.",
             "properties": {
-                "acquisition_category": {
-                    "$ref": "#/$defs/AcquisitionCategoryEnum",
-                    "description": "whether only survey or tandem mass spectra are part of the experiment"
-                },
-                "acquisition_strategy": {
-                    "$ref": "#/$defs/AcquisitionStrategyEnum",
-                    "description": "whether spectra are dependent on or independent of any other spectra during the experiment"
-                },
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
@@ -6430,14 +6364,18 @@
                 },
                 "ionization_source": {
                     "$ref": "#/$defs/IonizationSourceEnum",
-                    "description": "which kind of ionization source is used to introduce analytes into a mass spectrometer"
+                    "description": "The ionization source used to introduce processed samples into a mass spectrometer"
                 },
                 "mass_analyzers": {
-                    "description": "which kind of mass analyzer(s) used during the spectra collection.",
+                    "description": "The kind of mass analyzer(s) used during the spectra collection.",
                     "items": {
                         "$ref": "#/$defs/MassAnalyzerEnum"
                     },
                     "type": "array"
+                },
+                "mass_spectrometry_acquisition_strategy": {
+                    "$ref": "#/$defs/MassSpectrometryAcquisitionStrategyEnum",
+                    "description": "Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment."
                 },
                 "mass_spectrum_collection_modes": {
                     "description": "Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.",
@@ -6455,7 +6393,7 @@
                     "description": "the polarity of which ions are generated and detected"
                 },
                 "resolution_categories": {
-                    "description": "whether mass spectra are collected at higher than unit resolution",
+                    "description": "The relative resolution at which spectra were collected.",
                     "items": {
                         "$ref": "#/$defs/ResolutionCategoryEnum"
                     },
@@ -8395,7 +8333,6 @@
                 "associated_studies": {
                     "description": "The study associated with a resource.",
                     "items": {
-                        "pattern": "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8425,7 +8362,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -8433,7 +8377,6 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
-                        "pattern": "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8479,7 +8422,6 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "pattern": "^nmdc:(omprc|dgms|dgns)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8759,9 +8701,6 @@
                     ],
                     "type": "string"
                 },
-                "was_generated_by": {
-                    "type": "string"
-                },
                 "websites": {
                     "description": "A list of websites that are associated with the entity.",
                     "items": {
@@ -8925,6 +8864,8 @@
                 }
             },
             "required": [
+                "has_input",
+                "has_output",
                 "id",
                 "type"
             ],
@@ -9280,9 +9221,6 @@
                     "enum": [
                         "nmdc:QuantityValue"
                     ],
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },
@@ -10086,7 +10024,7 @@
                 },
                 "contained_in": {
                     "$ref": "#/$defs/ContainerCategoryEnum",
-                    "description": "A type of container. i.e. test tube, falcon tube, etc."
+                    "description": "A type of container."
                 },
                 "description": {
                     "description": "a human-readable description of a thing",
@@ -10411,7 +10349,7 @@
                 },
                 "contained_in": {
                     "$ref": "#/$defs/ContainerCategoryEnum",
-                    "description": "A type of container. i.e. test tube, falcon tube, etc."
+                    "description": "A type of container."
                 },
                 "container_size": {
                     "$ref": "#/$defs/QuantityValue",
@@ -10602,9 +10540,6 @@
                         "nmdc:TextValue"
                     ],
                     "type": "string"
-                },
-                "was_generated_by": {
-                    "type": "string"
                 }
             },
             "required": [
@@ -10653,9 +10588,6 @@
                     "enum": [
                         "nmdc:TimestampValue"
                     ],
-                    "type": "string"
-                },
-                "was_generated_by": {
                     "type": "string"
                 }
             },
@@ -11125,56 +11057,63 @@
             "type": "array"
         },
         "mags_set": {
-            "description": "This property links a database object to the set of MAGs analysis activities.",
+            "description": "This property links a database object to the set of MAGs analyses.",
             "items": {
                 "$ref": "#/$defs/MagsAnalysis"
             },
             "type": "array"
         },
         "metabolomics_analysis_set": {
-            "description": "This property links a database object to the set of metabolomics analysis activities.",
+            "description": "This property links a database object to the set of metabolomics analyses.",
             "items": {
                 "$ref": "#/$defs/MetabolomicsAnalysis"
             },
             "type": "array"
         },
         "metagenome_annotation_set": {
-            "description": "This property links a database object to the set of metagenome annotation activities.",
+            "description": "This property links a database object to the set of metagenome annotations.",
             "items": {
                 "$ref": "#/$defs/MetagenomeAnnotation"
             },
             "type": "array"
         },
         "metagenome_assembly_set": {
-            "description": "This property links a database object to the set of metagenome assembly activities.",
+            "description": "This property links a database object to the set of metagenome assemblies.",
             "items": {
                 "$ref": "#/$defs/MetagenomeAssembly"
             },
             "type": "array"
         },
         "metagenome_sequencing_set": {
-            "description": "This property links a database object to the set of metagenome sequencing activities.",
+            "description": "This property links a database object to the set of metagenome sequencings.",
             "items": {
                 "$ref": "#/$defs/MetagenomeSequencing"
             },
             "type": "array"
         },
         "metaproteomics_analysis_set": {
-            "description": "This property links a database object to the set of metaproteomics analysis activities.",
+            "description": "This property links a database object to the set of metaproteomics analyses.",
             "items": {
                 "$ref": "#/$defs/MetaproteomicsAnalysis"
             },
             "type": "array"
         },
         "metatranscriptome_analysis_set": {
-            "description": "This property links a database object to the set of metatranscriptome analysis activities.",
+            "description": "This property links a database object to the set of metatranscriptome analyses.",
             "items": {
                 "$ref": "#/$defs/MetatranscriptomeAnalysis"
             },
             "type": "array"
         },
+        "metatranscriptome_assembly_set": {
+            "description": "This property links a database object to the set of metatranscriptome assemblies.",
+            "items": {
+                "$ref": "#/$defs/MetatranscriptomeAssembly"
+            },
+            "type": "array"
+        },
         "nom_analysis_set": {
-            "description": "This property links a database object to the set of natural organic matter (NOM) analysis activities.",
+            "description": "This property links a database object to the set of natural organic matter (NOM) analyses,",
             "items": {
                 "$ref": "#/$defs/NomAnalysis"
             },
@@ -11283,14 +11222,14 @@
             "type": "array"
         },
         "read_based_taxonomy_analysis_set": {
-            "description": "This property links a database object to the set of read based analysis activities.",
+            "description": "This property links a database object to the set of read based analyses.",
             "items": {
                 "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
             },
             "type": "array"
         },
         "read_qc_analysis_set": {
-            "description": "This property links a database object to the set of read QC analysis activities.",
+            "description": "This property links a database object to the set of read QC analyses.",
             "items": {
                 "$ref": "#/$defs/ReadQcAnalysis"
             },
@@ -11307,50 +11246,6 @@
             "description": "This property links a database object to the set of workflow chains within it.",
             "items": {
                 "$ref": "#/$defs/WorkflowChain"
-            },
-            "type": "array"
-        },
-        "workflow_execution_set": {
-            "description": "This property links a database object to the set of workflow activities.",
-            "items": {
-                "anyOf": [
-                    {
-                        "$ref": "#/$defs/MetagenomeAnnotation"
-                    },
-                    {
-                        "$ref": "#/$defs/MetagenomeAssembly"
-                    },
-                    {
-                        "$ref": "#/$defs/MetatranscriptomeAssembly"
-                    },
-                    {
-                        "$ref": "#/$defs/MetatranscriptomeAnnotation"
-                    },
-                    {
-                        "$ref": "#/$defs/MetatranscriptomeAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/MagsAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/MetagenomeSequencing"
-                    },
-                    {
-                        "$ref": "#/$defs/ReadQcAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/MetabolomicsAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/MetaproteomicsAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/NomAnalysis"
-                    }
-                ]
             },
             "type": "array"
         }

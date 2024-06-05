@@ -1,7 +1,5 @@
 [tool.poetry]
 
-#include = ["README.md", "src/nmdc-schema/schema", "project"] # https://python-poetry.org/docs/pyproject/#include-and-exclude # Explicitly declaring entries in include will negate VCS' ignore settings.
-
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 documentation = "https://microbiomedata.github.io/nmdc-schema/"
 homepage = "https://microbiomedata.github.io/nmdc-schema/"
@@ -19,7 +17,6 @@ authors = [
     "Sujay Patil <spatil@lbl.gov>",
 ]
 
-
 classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
@@ -27,16 +24,6 @@ classifiers = [
     "Programming Language :: Python :: 3 :: Only",
 ]
 
-# Tell Poetry which Python packages we want it to include in the build it creates.
-#
-# Note: This will allow consumers of the PyPI package to import things from not only `nmdc_schema`,
-#       but also from `nmdc_schema.migrators`.
-#
-#       The [Poetry docs](https://python-poetry.org/docs/basic-usage/) say:
-#       > "Poetry assumes your package contains a package with the same name as `tool.poetry.name`
-#       > located in the root of your project. If this is not the case, populate `tool.poetry.packages`
-#       > to specify your packages and their locations."
-#
 packages = [
     { include = "nmdc_schema" }, # this is the package Poetry would have included by default
     { include = "migrators", from = "nmdc_schema" },
@@ -45,34 +32,36 @@ packages = [
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
-linkml = "^1.6.10"
-linkml-runtime = "^1.6.2"
+linkml = "^1.7.10"
+linkml-runtime = "^1.7.5"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
-pymongo = "^4.3.3"
-plotly = "^5.20.0"
+pymongo = "^4.7.2"
 ruamel-yaml = "^0.18.6"
-networkx = "^3.2.1"
-llm = "^0.13.1"
-
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
 black = ">=23.1,<25.0"
 click = "^8.1.3"
 click-log = "^0.4.0"
 exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
-oaklib = "^0.5.24"
-#pydantic = "^1.10.13"
 python-dotenv = "^0.21.0"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 schemasheets = "^0.1.24" # was in main dependencies but brings in so much like pandas
-semsimian = "^0.2.11"
 sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
-matplotlib = "^3.8.3"
+pylint = "^3.2.2"
+flake8 = "^7.0.0"
+mypy = "^1.10.0"
+isort = "^5.13.2"
+ruff = "^0.4.7"
+bandit = "^1.7.8"
+pydocstyle = "^6.3.0"
+vulture = "^2.11"
+pyroma = "^4.2"
+autopep8 = "^2.2.0"
 
 [tool.poetry-dynamic-versioning]
 # We need poetry-dynamic-versioning to update the version in the src schema file,
@@ -103,18 +92,18 @@ docs = ["mkdocs-material"]
 anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
 build-datafile-from-api-requests = "nmdc_schema.build_datafile_from_api_requests:main"
 class-sparql = "nmdc_schema.class_sparql:main"
+create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 generate-import-slots-regardless = "nmdc_schema.generate_import_slots_regardless:main"
 get-mixs-slots-matching-slot-list = "nmdc_schema.get_mixs_slots_matching_slot_list:main"
 get-mixs-slots-used-in-schema = "nmdc_schema.get_mixs_slots_used_in_schema:main" # see nmdc_schema/generate_import_slots_regardless.py
 get-slots-from-class = "nmdc_schema.get_slots_from_class:main" # see tests/test_getters.py
+get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main"
 get-study-related-records = "src.scripts.nmdc_database_tools:cli"
 migration-recursion = 'nmdc_schema.migration_recursion:main'
-create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 nmdc-data = "nmdc_schema.nmdc_data:cli"
-nmdc-version = "nmdc_schema.nmdc_version:cli"
-pure-export = "nmdc_schema.mongo_dump_api_emph:cli"
-test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
-slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
-get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main"
 nmdc-ncbi-mapping = "src.scripts.ncbi_nmdc_exact_term_matching:cli"
+nmdc-version = "nmdc_schema.nmdc_version:cli"
+pure-export = "nmdc_schema.dump_single_modality:cli"
+slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
+test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
