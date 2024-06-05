@@ -20755,6 +20755,11 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
+      has_input:
+        name: has_input
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+          interpolated: true
   ReadQcAnalysisActivity:
     name: ReadQcAnalysisActivity
     description: A workflow execution activity that performs quality control on raw

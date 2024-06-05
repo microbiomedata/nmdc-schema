@@ -6033,7 +6033,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
