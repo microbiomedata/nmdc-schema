@@ -457,11 +457,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
           interpolated: true
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}$"
-          interpolated: true
+
 slots:
   associated_studies:
     description: The study associated with a resource.

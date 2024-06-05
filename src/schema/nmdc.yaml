@@ -238,7 +238,7 @@ classes:
     slot_usage:
       metagenome_annotation_id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}$"
           interpolated: true
 
   Database:
