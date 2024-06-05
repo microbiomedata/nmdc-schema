@@ -35,7 +35,8 @@ extraction_set:
 
     #extraction_type should have range of dna_extraction_enum with possible values of 'DNA extraction', 'RNA extraction', 'protein extraction'
     #http://purl.obolibrary.org/obo/OBI_0000257
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     #not needed at this time
     #protocol_materials:
     #  - { material_name : DNeasy 96 PowerSoil Pro Kit, material_vendor: Qiagen, catalog_number: 47017 }

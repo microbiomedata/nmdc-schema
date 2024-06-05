@@ -466,9 +466,10 @@ slots:
     minimum_value: 0
     maximum_value: 2000
 
-  extraction_target:
+  extraction_targets:
     description: Provides the target biomolecule that has been separated from a sample during an extraction process.
     rank: 1000
+    multivalued: true
     range: ExtractionTargetEnum
     notes:
       - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)

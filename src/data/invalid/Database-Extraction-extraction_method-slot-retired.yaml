@@ -16,5 +16,6 @@ extraction_set:
     end_date: "2019-11-08"
     qc_status: pass
     extraction_method: phenol/chloroform extraction # not allowed anymore
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     

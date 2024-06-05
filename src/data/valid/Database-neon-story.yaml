@@ -33,7 +33,8 @@ extraction_set:
       - nmdc:procsm-99-pooled
     has_output:
       - nmdc:procsm-99-extract
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     start_date: "2021-01-15"
     end_date: "2021-01-15"
     type: nmdc:Extraction
