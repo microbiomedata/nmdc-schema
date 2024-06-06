@@ -23,7 +23,6 @@ specific_ecosystem: unconstrained text
 principal_investigator:
   has_raw_value: Craig Venter
   type: nmdc:PersonValue
-  was_generated_by: nmdc:any_string_1
   orcid: ORCID:0000-0002-7086-765X
   profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
   email: jcventer@jcvi.org
@@ -66,7 +65,6 @@ has_credit_associations:
   - applies_to_person:
       has_raw_value: Craig Venter
       type: nmdc:PersonValue
-      was_generated_by: nmdc:any_string_1
       orcid: ORCID:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       email: jcventer@jcvi.org

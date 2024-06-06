@@ -7,8 +7,8 @@ workflow_chain_set:
     analyte_category: metagenome
     was_informed_by: nmdc:dgns-11-s9xj2r24
     type: nmdc:WorkflowChain
-read_qc_analysis_set:
-  - id: nmdc:wfrqc-12-63da5n74
+workflow_execution_set:
+  - id: nmdc:wfrqc-12-63da5n74.1
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'

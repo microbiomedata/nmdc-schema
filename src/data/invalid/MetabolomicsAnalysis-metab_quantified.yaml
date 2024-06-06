@@ -1,4 +1,4 @@
-id: nmdc:wfmb-99-ABCDEF
+id: nmdc:wfmb-99-ABCDEF.1
 type: nmdc:MetabolomicsAnalysis
 started_at_time: '2021-08-05T14:48:51+00:00'
 ended_at_time: '2021-09-15T10:13:20+00:00'
@@ -7,11 +7,11 @@ part_of:
     - nmdc:wfch-11-ab
 git_url: https://example.org/WorkflowExecutionActivity
 has_input:
-  - nmdc:i1
-  - nmdc:i2
+  - nmdc:dobj-11-dr43d
+  - nmdc:dobj-11-dr3fg
 has_output:
-  - nmdc:o1
-  - nmdc:o2
+  - nmdc:dobj-11-dr3d
+  - nmdc:dobj-11-dj43d
 has_metabolite_quantifications:
   - alternative_identifiers:
     - kegg:C00583
