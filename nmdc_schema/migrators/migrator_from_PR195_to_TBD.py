@@ -91,14 +91,19 @@ class Migrator(MigratorBase):
         >>> f = m.remove_gold_analysis_project_identifiers_field
         >>> len(m.workflow_chain_ids_to_gap_identifiers.keys())
         0
-        >>> wfe = {'gold_analysis_project_identifiers': ['a', 'b'], 'part_of': ['x', 'y']}
+        >>> wfe = {'type': 'nmdc:MetagenomeAnnotation',
+        ...        'gold_analysis_project_identifiers': ['a', 'b'], 'part_of': ['x', 'y']}
         >>> f(wfe)
-        {'part_of': ['x', 'y']}
+        {'type': 'nmdc:MetagenomeAnnotation', 'part_of': ['x', 'y']}
         >>> m.workflow_chain_ids_to_gap_identifiers
         {'x': ['a', 'b'], 'y': ['a', 'b']}
         """
-        # Check whether the field exists.
-        if "gold_analysis_project_identifiers" in workflow_execution:
+
+        # Check whether this is a document we're interested in.
+        if (
+            workflow_execution["type"] == "nmdc:MetagenomeAnnotation"
+            and "gold_analysis_project_identifiers" in workflow_execution
+        ):
             # Remove the field and get its value.
             identifiers = workflow_execution.pop("gold_analysis_project_identifiers")
             assert type(identifiers) is list
