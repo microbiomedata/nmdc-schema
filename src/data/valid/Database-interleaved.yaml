@@ -3325,7 +3325,8 @@ extraction_set:
     start_date: '2019-99-08'
     end_date: '2019-99-08'
     qc_status: pass
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     input_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
@@ -3337,7 +3338,8 @@ extraction_set:
       - nmdc:bsm-99-74d83z
     has_output:
       - nmdc:procsm-99-k4m6j
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     input_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
@@ -3349,7 +3351,8 @@ extraction_set:
       - nmdc:bsm-99-49z38t
     has_output:
       - nmdc:procsm-99-29dl
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     volume:
       type: nmdc:QuantityValue
       has_numeric_value: 100
@@ -3361,7 +3364,8 @@ extraction_set:
       - nmdc:bsm-99-bbbbbb
     has_output:
       - nmdc:procsm-99-3z8t
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
 field_research_site_set:
   - id: nmdc:frsite-99-SPreao
     type: nmdc:FieldResearchSite

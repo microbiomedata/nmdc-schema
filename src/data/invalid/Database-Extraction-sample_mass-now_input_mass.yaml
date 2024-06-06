@@ -19,4 +19,5 @@ extraction_set:
       has_numeric_value: 0.25
       has_unit: gram
     qc_status: pass
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
