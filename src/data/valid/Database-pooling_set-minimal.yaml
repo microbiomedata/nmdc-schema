@@ -1,4 +1,4 @@
-pooling_set:
+material_processing_set:
   - id: nmdc:poolp-9x9-1x
     name: first pooling process
     type: nmdc:Pooling

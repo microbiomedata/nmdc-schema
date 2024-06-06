@@ -1,4 +1,4 @@
-mags_set:
+workflow_execution_set:
   - id: nmdc:wfmag-11-bweaz670.1
     type: nmdc:MagsAnalysis
     name: MAGs activiity 1781_86101

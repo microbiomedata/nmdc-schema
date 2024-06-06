@@ -1,4 +1,4 @@
-metabolomics_analysis_set:
+workflow_execution_set:
   - id: nmdc:wfmb-99-ABCDEF.1
     name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF.1
     started_at_time: '2021-08-05T14:48:51+00:00'
@@ -8,9 +8,9 @@ metabolomics_analysis_set:
       - nmdc:wfch-11-ab
     git_url: https://example.org/WorkflowExecutionActivity
     has_input:
-      - nmdc:i1
-      - nmdc:i2
+      - nmdc:dobj-11-djd2
+      - nmdc:dobj-11-d43d
     has_output:
-      - nmdc:o1
-      - nmdc:o2
+      - nmdc:dobj-11-dj4cg
+      - nmdc:dobj-11-dkefg1
     type: nmdc:MetabolomicsAnalysis

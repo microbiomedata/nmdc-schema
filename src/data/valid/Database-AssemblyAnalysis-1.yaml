@@ -1,5 +1,5 @@
 #multiple failure categorization values
-metagenome_assembly_set:
+workflow_execution_set:
   - id: nmdc:wfmgas-11-d11daf11.1
     qc_status: fail
     has_failure_categorization:
