@@ -5,13 +5,16 @@ class Migrator(MigratorBase):
     r"""
     Migrates a database between two schemas.
 
+    Note: This migrator was designed to accommodate the schema changes made via PR195:
+          https://github.com/microbiomedata/berkeley-schema-fy24/pull/195
+
     Note: The `_to_version` is "Unknown" because the schema to which this migrator migrates a database
           may not be one that resulted from a particular PR being merged in. We were motivated to write
           this migrator after seeing a validation error when testing some previously-written migrators.
     """
 
-    _from_version = "PR95"
-    _to_version = "Unknown"
+    _from_version = "PR195"
+    _to_version = "unknown"
 
     # Initialize a mapping from `WorkflowChain.id` values to lists of gold analysis project identifiers.
     # Example: {'some_workflow_chain_id': ['some_gap_identifier', 'other_gap_identifier']}
