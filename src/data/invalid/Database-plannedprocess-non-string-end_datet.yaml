@@ -6,7 +6,8 @@ material_processing_set:
       - nmdc:bsm-11-123v
     has_output:
       - nmdc:procsm-11-123d
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     end_date: 2021-01-15
   - id: nmdc:libprp-99-abcdefg
     type: nmdc:LibraryPreparation

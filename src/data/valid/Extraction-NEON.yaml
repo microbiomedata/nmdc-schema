@@ -9,7 +9,8 @@ start_date: "2020-06-24T22:06Z"
 end_date: "2021-08-19"
 processing_institution: Battelle
 qc_status: pass
-extraction_target: DNA
+extraction_targets: 
+  - DNA
 input_mass:
   type: nmdc:QuantityValue
   has_numeric_value: 0.25
