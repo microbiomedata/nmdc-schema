@@ -7,11 +7,11 @@ part_of:
   - nmdc:wfch-11-ab
 git_url: https://example.org/WorkflowExecutionActivity
 has_input:
-  - nmdc:i1
-  - nmdc:i2
+  - nmdc:dobj-99-xxxxxx1
+  - nmdc:dobj-99-xxxxxx2
 has_output:
-  - nmdc:o1
-  - nmdc:o2
+  - nmdc:dobj-99-xxxxxx3
+  - nmdc:dobj-99-xxxxxx4
 has_metabolite_identifications:
   - alternative_identifiers:
       - kegg:C00583

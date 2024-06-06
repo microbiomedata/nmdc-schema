@@ -389,9 +389,13 @@ classes:
           A Workflow Chain instance was informed by the data and metadata of a of a
             Data Generation instance
         comments: >-
-          The value of this slot is a reference to a Data Generation
-          instance that informed the Workflow Chain instance with its
-          output data and the metadata of the Data Generation.
+          - The value of this slot is a reference to a Data Generation
+            instance that informed the Workflow Chain instance with its
+            output data and the metadata of the Data Generation.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
 
   WorkflowExecution:
     abstract: true
@@ -447,6 +451,13 @@ classes:
         required: true
       has_input:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       execution_resource:
         required: true
       part_of:
