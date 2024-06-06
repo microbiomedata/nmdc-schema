@@ -4,10 +4,14 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""
     Migrates a database between two schemas.
+
+    Note: The `_to_version` is "Unknown" because the schema to which this migrator migrates a database
+          may not be one that resulted from a particular PR being merged in. We were motivated to write
+          this migrator after seeing a validation error when testing some previously-written migrators.
     """
 
     _from_version = "PR95"
-    _to_version = "TBD"  # TODO: Update this destination version
+    _to_version = "Unknown"
 
     # Initialize a mapping from `WorkflowChain.id` values to lists of gold analysis project identifiers.
     # Example: {'some_workflow_chain_id': ['some_gap_identifier', 'other_gap_identifier']}
@@ -43,7 +47,9 @@ class Migrator(MigratorBase):
         self, workflow_chain: dict
     ) -> dict:
         r"""
-        TODO: Document this function.
+        Updates the `WorkflowChain` so that its `gold_analysis_project_identifiers` field contains all values that
+        existed in the `gold_analysis_project_identifiers` field of any `WorkflowExecution`s that are part of that
+        `WorkflowChain`.
 
         >>> m = Migrator()
         >>> f = m.add_gold_analysis_project_identifiers_values
@@ -85,7 +91,12 @@ class Migrator(MigratorBase):
         self, workflow_execution: dict
     ) -> dict:
         r"""
-        TODO: Document this function.
+        Removes the `gold_analysis_project_identifiers` field from the specified `WorkflowExecution`,
+        if (a) that field exists and (b) the `WorkflowChain`'s `type` is `nmdc:MetagenomeAnnotation`.
+
+        If the field exists, this function stores its value(s) in a shared data structure, which will be used
+        later to effectively store those same value(s) in the `gold_analysis_project_identifiers` field
+        of the `WorkflowChain`(s) of which the original `WorkflowExecution` is a part.
 
         >>> m = Migrator()
         >>> f = m.remove_gold_analysis_project_identifiers_field
