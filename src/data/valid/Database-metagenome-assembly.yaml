@@ -1,4 +1,4 @@
-metagenome_assembly_set:
+workflow_execution_set:
   - id: nmdc:wfmgas-99-B7Vogx.1
     type: nmdc:MetagenomeAssembly
     part_of:

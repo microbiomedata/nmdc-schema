@@ -1,4 +1,4 @@
-planned_process_set:
+material_processing_set:
   - id: nmdc:poolp-00-123456
     type: nmdc:Pooling
     has_input:

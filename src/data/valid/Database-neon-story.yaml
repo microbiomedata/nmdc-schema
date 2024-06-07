@@ -1,4 +1,4 @@
-pooling_set:
+material_processing_set:
   - id: nmdc:poolp-99-abcdef
     name: first pooling process
     alternative_identifiers:
@@ -26,7 +26,7 @@ processed_sample_set:
     name: first library
     type: nmdc:ProcessedSample
 
-extraction_set:
+material_processing_set:
   - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
     has_input:
@@ -44,7 +44,7 @@ extraction_set:
 # Alicia has been
 #   - calling the Database -> set of libraries "library_preparation_set"
 #   - using single-valued "has_input" and "has_output" slots
-library_preparation_set:
+material_processing_set:
   - id: nmdc:libprp-99-abcdef
     name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
     #library_type should be enum "DNA", "RNA"
