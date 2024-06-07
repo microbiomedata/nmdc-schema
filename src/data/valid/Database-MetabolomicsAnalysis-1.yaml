@@ -1,4 +1,4 @@
-metabolomics_analysis_set:
+workflow_execution_set:
   - id: nmdc:wfmb-99-ABCDEF.1
     name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF.1
     started_at_time: '2021-08-05T14:48:51+00:00'

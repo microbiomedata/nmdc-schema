@@ -265,12 +265,12 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - instrument_set
+      - material_processing_set
       - processed_sample_set
-      - study_set
-      - workflow_chain_set
       - protocol_execution_set
       - storage_process_set
-      - material_processing_set
+      - study_set
+      - workflow_chain_set
       - workflow_execution_set
 
   Pooling:
