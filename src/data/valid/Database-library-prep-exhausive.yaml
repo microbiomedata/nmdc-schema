@@ -1,6 +1,6 @@
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
 
-library_preparation_set:
+material_processing_set:
   - id: nmdc:libprp-99-123456
     type: nmdc:LibraryPreparation
     name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1

@@ -1,4 +1,4 @@
-nom_analysis_set:
+workflow_execution_set:
   - id: nmdc:wfnom-11-547rwq94.1
     type: nmdc:NomAnalysis
     execution_resource: EMSL-RZR

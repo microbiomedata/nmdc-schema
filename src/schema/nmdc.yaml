@@ -260,29 +260,18 @@ classes:
       - configuration_set
       - data_generation_set
       - data_object_set
-      - extraction_set
       - field_research_site_set
       - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
       - instrument_set
-      - library_preparation_set
-      - mags_set
-      - metabolomics_analysis_set
-      - metagenome_annotation_set
-      - metagenome_assembly_set
-      - metagenome_sequencing_set
-      - metaproteomics_analysis_set
-      - metatranscriptome_analysis_set
-      - metatranscriptome_assembly_set
-      - nom_analysis_set
-      - planned_process_set
-      - pooling_set
       - processed_sample_set
-      - read_based_taxonomy_analysis_set
-      - read_qc_analysis_set
       - study_set
       - workflow_chain_set
+      - protocol_execution_set
+      - storage_process_set
+      - material_processing_set
+      - workflow_execution_set
 
   Pooling:
     class_uri: nmdc:Pooling
@@ -319,7 +308,7 @@ classes:
       - OBI:0302884
     slots:
       - substances_used
-      - extraction_target
+      - extraction_targets
       - input_mass
       - volume
     slot_usage:
@@ -529,7 +518,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'
+          syntax: "{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$"
           interpolated: true
       volume:
         description: The volume of sample filtered.
@@ -964,13 +953,6 @@ slots:
     description:
       This property links a database object to the set of chemical entities
       within it.
-  planned_process_set:
-    mixins:
-      - object_set
-    range: PlannedProcess
-    description:
-      This property links a database object to the set of planned processes
-      within it.
   biosample_set:
     mixins: object_set
     range: Biosample
@@ -1002,6 +984,7 @@ slots:
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
+
   functional_annotation_set:
     mixins: object_set
     range: FunctionalAnnotation
@@ -1014,118 +997,54 @@ slots:
     range: WorkflowExecution
     description: This property links a database object to the set of workflow executions.
 
-  mags_set:
-    mixins: object_set
-    range: MagsAnalysis
-    description:
-      This property links a database object to the set of MAGs analyses.
-
-  metabolomics_analysis_set:
-    mixins: object_set
-    range: MetabolomicsAnalysis
-    description:
-      This property links a database object to the set of metabolomics
-      analyses.
-
-  metaproteomics_analysis_set:
-    mixins: object_set
-    range: MetaproteomicsAnalysis
-    description:
-      This property links a database object to the set of metaproteomics
-      analyses.
-
-  metagenome_annotation_set:
-    mixins: object_set
-    range: MetagenomeAnnotation
-    description:
-      This property links a database object to the set of metagenome annotations.
-
-  metagenome_assembly_set:
-    mixins: object_set
-    range: MetagenomeAssembly
-    description:
-      This property links a database object to the set of metagenome assemblies.
-
-  metatranscriptome_assembly_set:
-    mixins: object_set
-    range: MetatranscriptomeAssembly
-    description:
-      This property links a database object to the set of metatranscriptome assemblies.
-
-  metagenome_sequencing_set:
-    mixins: object_set
-    range: MetagenomeSequencing
-    description:
-      This property links a database object to the set of metagenome sequencings.
-
-  metatranscriptome_analysis_set:
-    mixins: object_set
-    range: MetatranscriptomeAnalysis
-    description:
-      This property links a database object to the set of metatranscriptome
-      analyses.
-
-  read_qc_analysis_set:
-    mixins: object_set
-    range: ReadQcAnalysis
-    description:
-      This property links a database object to the set of read QC analyses.
-
-  read_based_taxonomy_analysis_set:
-    mixins: object_set
-    range: ReadBasedTaxonomyAnalysis
-    description: >-
-      This property links a database object to the set of read based analyses.
-
-  nom_analysis_set:
-    mixins: object_set
-    range: NomAnalysis
-    description:
-      This property links a database object to the set of natural organic
-      matter (NOM) analyses,
-
   data_generation_set:
     mixins: object_set
     range: DataGeneration
     description:
       This property links a database object to the set of omics processings
       within it.
+
   workflow_chain_set:
     mixins: object_set
     range: WorkflowChain
     description:
       This property links a database object to the set of workflow chains
       within it.
-  pooling_set:
-    mixins: object_set
-    range: Pooling
+
   processed_sample_set:
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
-  extraction_set:
-    mixins: object_set
-    range: Extraction
-    description: This property links a database object to the set of extractions within it.
-  library_preparation_set:
-    aliases:
-      - library_construction_set
-    mixins: object_set
-    range: LibraryPreparation
-    description: This property links a database object to the set of DNA extractions within it.
 
   instrument_set:
     mixins: object_set
     range: Instrument
     description: This property links a database object to the set of instruments within it.
+
   calibration_set:
     mixins: object_set
     range: CalibrationInformation
     description: This property links a database object to the set of calibrations within it.
+
   configuration_set:
     mixins: object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
+
+  protocol_execution_set:
+    mixins: object_set
+    range: ProtocolExecution
+    description: This property links a database object to the set of protocol executions within it.
+
+  storage_process_set:
+    mixins: object_set
+    range: StorageProcess
+    description: This property links a database object to the set of storage processes within it.
+
+  material_processing_set:
+    mixins: object_set
+    range: MaterialProcessing
+    description: This property links a database object to the set of material processing within it.
 
   sample_collection_day:
     range: integer
@@ -1135,6 +1054,7 @@ slots:
     range: integer
 
   biogas_temperature:
+
     range: string
   soil_annual_season_temp:
     range: string

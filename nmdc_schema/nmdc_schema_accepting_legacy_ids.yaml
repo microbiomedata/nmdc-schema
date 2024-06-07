@@ -4079,6 +4079,8 @@ enums:
         text: metabolite
       protein:
         text: protein
+      lipid:
+        text: lipid
   ProcessingInstitutionEnum:
     name: ProcessingInstitutionEnum
     notes:
@@ -17550,8 +17552,8 @@ slots:
     recommended: true
     minimum_value: 0
     maximum_value: 2000
-  extraction_target:
-    name: extraction_target
+  extraction_targets:
+    name: extraction_targets
     description: Provides the target biomolecule that has been separated from a sample
       during an extraction process.
     notes:
@@ -17561,6 +17563,7 @@ slots:
     - NCIT:C177560
     - MIXS:0000037
     rank: 1000
+    multivalued: true
     range: ExtractionTargetEnum
   id:
     name: id
@@ -19059,7 +19062,7 @@ classes:
     is_a: MaterialProcessing
     slots:
     - substances_used
-    - extraction_target
+    - extraction_targets
     - input_mass
     - volume
     slot_usage:
@@ -21773,6 +21776,12 @@ classes:
       id:
         name: id
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_input:
+        name: has_input
         pattern: .*
         structured_pattern:
           syntax: .*

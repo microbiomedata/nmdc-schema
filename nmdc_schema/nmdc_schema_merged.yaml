@@ -4079,6 +4079,8 @@ enums:
         text: metabolite
       protein:
         text: protein
+      lipid:
+        text: lipid
   ProcessingInstitutionEnum:
     name: ProcessingInstitutionEnum
     notes:
@@ -17549,8 +17551,8 @@ slots:
     recommended: true
     minimum_value: 0
     maximum_value: 2000
-  extraction_target:
-    name: extraction_target
+  extraction_targets:
+    name: extraction_targets
     description: Provides the target biomolecule that has been separated from a sample
       during an extraction process.
     notes:
@@ -17560,6 +17562,7 @@ slots:
     - NCIT:C177560
     - MIXS:0000037
     rank: 1000
+    multivalued: true
     range: ExtractionTargetEnum
   id:
     name: id
@@ -19050,7 +19053,7 @@ classes:
     is_a: MaterialProcessing
     slots:
     - substances_used
-    - extraction_target
+    - extraction_targets
     - input_mass
     - volume
     slot_usage:
@@ -19442,7 +19445,7 @@ classes:
         name: id
         required: true
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}$'
+          syntax: '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
       img_identifiers:
         name: img_identifiers
@@ -21714,6 +21717,11 @@ classes:
         required: true
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
+          interpolated: true
+      has_input:
+        name: has_input
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:MetagenomeSequencing
   ReadQcAnalysis:

@@ -461,7 +461,7 @@ classes:
           The WorkflowChain that this WorkflowExecution is part of
         range: WorkflowChain
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$" # todo ask Shane whether id should include version
           interpolated: true
 
 slots:

@@ -4598,9 +4598,12 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
-                "extraction_target": {
-                    "$ref": "#/$defs/ExtractionTargetEnum",
-                    "description": "Provides the target biomolecule that has been separated from a sample during an extraction process."
+                "extraction_targets": {
+                    "description": "Provides the target biomolecule that has been separated from a sample during an extraction process.",
+                    "items": {
+                        "$ref": "#/$defs/ExtractionTargetEnum"
+                    },
+                    "type": "array"
                 },
                 "has_failure_categorization": {
                     "items": {
@@ -4705,7 +4708,8 @@
                 "DNA",
                 "RNA",
                 "metabolite",
-                "protein"
+                "protein",
+                "lipid"
             ],
             "title": "ExtractionTargetEnum",
             "type": "string"
@@ -6772,7 +6776,7 @@
                 },
                 "id": {
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})(_[A-Za-z0-9_\\.-]+)?$$",
+                    "pattern": "^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
                     "type": "string"
                 },
                 "img_identifiers": {
@@ -7196,6 +7200,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"

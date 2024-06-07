@@ -1,12 +1,12 @@
-extraction_set:
+material_processing_set:
   - id: nmdc:extrp-99-abcdef
     type: nmdc:Extraction
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
     has_input:
-      - nmdc:xxx
+      - nmdc:bsm-11-24vb2d
     has_output:
-      - nmdc:xxx
+      - nmdc:procsm-11-sdt3
     processing_institution: Battelle
     protocol_link:
       type: nmdc:Protocol
@@ -16,5 +16,7 @@ extraction_set:
     end_date: "2019-11-08"
     qc_status: pass
     extraction_method: phenol/chloroform extraction # not allowed anymore
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
+
     

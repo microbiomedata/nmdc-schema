@@ -215,6 +215,8 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections metagenome_annotation_activity_set \
 		--selected-collections metagenome_annotation_set \
 		--selected-collections metagenome_assembly_set \
+		--selected-collections metagenome_sequencing_activity_set \
+		--selected-collections metagenome_sequencing_set \
 		--selected-collections metap_gene_function_aggregation \
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections metatranscriptome_analysis_set \

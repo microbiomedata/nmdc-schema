@@ -1,4 +1,4 @@
-metatranscriptome_assembly_set:
+workflow_execution_set:
   - id: nmdc:wfmtas-99-v9w6y.1
     type: nmdc:MetatranscriptomeAssembly
     asm_score: 0.85
@@ -16,8 +16,6 @@ metatranscriptome_assembly_set:
       - nmdc:dobj-99-7l49z
     has_output:
       - nmdc:dobj-99-9t74d
-
-metaproteomics_analysis_set:
   - id: nmdc:wfmp-99-74d83.1
     type: nmdc:MetaproteomicsAnalysis
     name: soil metaproteomics analysis
@@ -154,7 +152,7 @@ chemical_entity_set:
     name: alphaLP
     description: A serine protease that hydrolyzes peptide bonds at the C-terminus of
       threonine, alanine, serine, and valine.
-planned_process_set:
+material_processing_set:
   - id: nmdc:cspro-99-oW43DzG0
     type: nmdc:ChromatographicSeparationProcess
     has_input:
@@ -214,6 +212,7 @@ planned_process_set:
       - nmdc:procsm-99-05g48p90
     sampled_portion:
       - supernatant
+storage_process_set:
   - id: nmdc:matprc-99-zUCd5N
     substances_used:
       - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
@@ -233,6 +232,8 @@ planned_process_set:
     has_output:
       - nmdc:procsm-78-BZAPKH
     type: nmdc:StorageProcess
+
+protocol_execution_set:
   - id: nmdc:pex-99-18sD2
     type: nmdc:ProtocolExecution
     has_input:
@@ -245,6 +246,7 @@ planned_process_set:
       type: nmdc:Protocol
       url: https://www.protocols.io/view/water-extractable-organic-matter-weom-ewov1o4oylr2/v1
       name: Water Extractable Organic Matter (WEOM)
+material_processing_set:
   - id: nmdc:cspro-99-xyzxyz
     type: nmdc:ChromatographicSeparationProcess
     has_input:
@@ -279,6 +281,7 @@ planned_process_set:
               type: nmdc:QuantityValue
               has_unit: mM
               has_numeric_value: 15
+material_processing_set:
   - id: nmdc:mixpro-99-A74
     type: nmdc:MixingProcess
     has_input:
@@ -3313,7 +3316,7 @@ data_object_set:
     description: Test filtered data for NEON
     data_object_type: Filtered Sequencing Reads
     url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
-extraction_set:
+material_processing_set:
   - id: nmdc:extrp-99-abcdef
     type: nmdc:Extraction
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
@@ -3325,7 +3328,8 @@ extraction_set:
     start_date: '2019-99-08'
     end_date: '2019-99-08'
     qc_status: pass
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     input_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
@@ -3337,7 +3341,8 @@ extraction_set:
       - nmdc:bsm-99-74d83z
     has_output:
       - nmdc:procsm-99-k4m6j
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     input_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
@@ -3349,7 +3354,8 @@ extraction_set:
       - nmdc:bsm-99-49z38t
     has_output:
       - nmdc:procsm-99-29dl
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     volume:
       type: nmdc:QuantityValue
       has_numeric_value: 100
@@ -3361,7 +3367,8 @@ extraction_set:
       - nmdc:bsm-99-bbbbbb
     has_output:
       - nmdc:procsm-99-3z8t
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
 field_research_site_set:
   - id: nmdc:frsite-99-SPreao
     type: nmdc:FieldResearchSite
@@ -3500,7 +3507,7 @@ genome_feature_set:
       term:
         id: SO:0000316
         type: nmdc:OntologyClass
-library_preparation_set:
+material_processing_set:
   - id: nmdc:libprp-99-xxx2
     type: nmdc:LibraryPreparation
     name: DNA library creation of NEON sample TREE_001-O-20170707-COMP-DNA1
@@ -3569,19 +3576,16 @@ library_preparation_set:
     start_date: '2021-01-15'
     end_date: '2021-01-15'
     library_type: DNA
-mags_set:
+workflow_execution_set:
   - id: nmdc:wfmag-99-5MiDJM.1
     type: nmdc:MagsAnalysis
     name: MAGs activiity 1781_86101
     has_input:
-      - nmdc:0a3d00715d01ad7b8f3aee59b674dfe9
-      - nmdc:668d207be5ea844f988fbfb2813564cc
-      - nmdc:b7e9c8d0bffdd13ace6f862a61fa87d2
+      - nmdc:dobj-11-er3d
+      - nmdc:dobj-11-aer3d
+      - nmdc:dobj-11-djr3d
     has_output:
-      - nmdc:818f5a47d1371295f9313909ea12eb50
-      - nmdc:e0b7421514f976cb7ad8c343cf3077a9
-      - nmdc:a755bb87aded36aefbd8022506a793c7
-      - nmdc:1346fe25b6ff22180eb3a51204e0b1fc
+      - nmdc:dobj-11-djkr3
     ended_at_time: '2021-01-10T00:00:00+00:00'
     execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
@@ -3611,14 +3615,11 @@ mags_set:
     type: nmdc:MagsAnalysis
     name: MAGs activiity 1781_86089
     has_input:
-      - nmdc:b78f599c21fb31b00d3f8a3c56daeb88
-      - nmdc:662dc676b0b5a486248357f5b887c18b
-      - nmdc:bc034c7024043ea88b44d0897bb5bece
+      - nmdc:dobj-11-zdrc
     has_output:
-      - nmdc:c24915651cfdfc91f3e6b5bac679c3af
-      - nmdc:e8ec230bfe68a272b34540e7f5ab5b2b
-      - nmdc:474fa29bd39452fa80f5a32e9e6be6f4
-      - nmdc:9800add41d26829494265ba81a100c53
+      - nmdc:dobj-11-adre3
+      - nmdc:dobj-11-dr3fb
+      - nmdc:dobj-11-dr34d
     ended_at_time: '2021-01-10T00:00:00+00:00'
     execution_resource: NERSC-Cori
     git_url: https://img.jgi.doe.gov
@@ -3666,16 +3667,15 @@ mags_set:
         gene_count: 1500
         number_of_contig: 300
     unbinned_contig_num: 2000
-metabolomics_analysis_set:
   - id: nmdc:wfmb-99-ABCDEF.1
     type: nmdc:MetabolomicsAnalysis
     name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF.1
     has_input:
-      - nmdc:i1
-      - nmdc:i2
+      - nmdc:dobj-11-34dg
+      - nmdc:dobj-11-34d
     has_output:
-      - nmdc:o1
-      - nmdc:o2
+      - nmdc:dobj-11-dj43d
+      - nmdc:dobj-11-dajfe
     ended_at_time: '2021-09-15T10:13:20+00:00'
     execution_resource: NERSC-Cori
     git_url: https://example.org/WorkflowExecutionActivity
@@ -3700,7 +3700,6 @@ metabolomics_analysis_set:
       - type: nmdc:MetaboliteIdentification
         highest_similarity_score: 0.88
         metabolite_identified: CHEBI:16236
-metagenome_annotation_set:
   - id: nmdc:wfmgan-99-4d83z.1
     type: nmdc:MetagenomeAnnotation
     name: human gut metagenome annotation
@@ -3748,18 +3747,13 @@ metagenome_annotation_set:
     started_at_time: '2023-08-11T01:00:00Z'
     type: nmdc:MetagenomeAnnotation
     version: xxx
-metagenome_assembly_set:
   - id: nmdc:wfmgas-99-B7Vogx.1
     type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51277
     has_input:
-      - nmdc:bd723452a107e973fcc6734ff7894bb9
+      - nmdc:dobj-11-djrec
     has_output:
-      - nmdc:8ecc9e4fe4c74d7a58b02fd8954555b9
-      - nmdc:3f85e34d2c32b65e33e4abd2431dfbe8
-      - nmdc:3c892f96e847b0b524d5d4e50611b5fd
-      - nmdc:8e504039a96e9ab885eef69155127754
-      - nmdc:cf15f0ee330bfda8f666a43222b23f8a
+      - nmdc:dobj-11-11238
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
@@ -3797,13 +3791,9 @@ metagenome_assembly_set:
     type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51278
     has_input:
-      - nmdc:b7e3ca7843cc0cf9a4944a9a9d3e2a66
+      - nmdc:dobj-11-dfj
     has_output:
-      - nmdc:df1fa16afe70385923b5d36cfe9513f4
-      - nmdc:c4358d917f029c6fd0f8a81f4e0f1119
-      - nmdc:d3bfc0e4a96431a4c07f46ad150b6edd
-      - nmdc:76655ec7b8a1e70a3cdf05bcd91ed9ed
-      - nmdc:8cebf127e41e82bd908676051acf154b
+      - nmdc:dobj-11-dfa2ee
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
@@ -3837,16 +3827,6 @@ metagenome_assembly_set:
     gc_avg: 0.57087
     num_input_reads: 141175680.0
     num_aligned_reads: 95369019.0
-  - id: nmdc:wfmgas-99-L9Z34K.1
-    type: nmdc:MetagenomeAssembly
-    name: Metagenome assembly 1472_51279
-    has_input:
-      - nmdc:918109eabfaabfa7b7e948154c013e8a
-    has_output:
-      - nmdc:72f3b35ad52c9f2f17c39054ae05d8c7
-      - nmdc:97deb14198281d7ff3e1a6d4ff7ab223
-      - nmdc:2f4e213f4334bc304ff9d2f02c60e4a8
-      - nmdc:66ac3134506a741f4e05b85a8b62e330
       - nmdc:1a84af1136a19bdd716320bdd0e47c67
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
@@ -3959,7 +3939,6 @@ metagenome_assembly_set:
 #      - nmdc:wfch-99-ab
 #    started_at_time: '2021-08-05T14:48:51+00:00'
 #    version: v1.0.0
-metatranscriptome_analysis_set:
   - id: nmdc:wfmt-99-4d83z.1
     type: nmdc:MetatranscriptomeAnalysis
     name: human gut metatranscriptome annotation
@@ -3990,15 +3969,14 @@ metatranscriptome_analysis_set:
     started_at_time: '2023-08-07T08:30:00Z'
     img_identifiers:
       - img.taxon:2763570003
-nom_analysis_set:
   - id: nmdc:wfnom-99-abcdefg.1
     type: nmdc:NomAnalysis
     has_input:
-      - nmdc:1
-      - nmdc:2
+      - nmdc:dobj-11-djfer
+      - nmdc:dobj-11-djjr
     has_output:
-      - nmdc:3
-      - nmdc:4
+      - nmdc:dobj-11-dj4ba
+      - nmdc:dobj-11-djre4d
     ended_at_time: '2018-11-13T20:20:39+00:00'
     execution_resource: EMSL-RZR
     git_url: xxx
@@ -4220,7 +4198,7 @@ workflow_chain_set:
     gold_analysis_project_identifiers:
       - gold:Ga90123456
     ended_at_time: '2023-08-07T16:00:00Z'
-pooling_set:
+material_processing_set:
   - id: nmdc:poolp-9x9-1x
     type: nmdc:Pooling
     name: first pooling process
@@ -4324,7 +4302,7 @@ processed_sample_set:
   - id: nmdc:procsm-99-xyz3
     type: nmdc:ProcessedSample
     name: first library
-read_based_taxonomy_analysis_set:
+workflow_execution_set:
   - id: nmdc:wfrbt-99-74d83.1
     type: nmdc:ReadBasedTaxonomyAnalysis
     name: soil read-based taxonomy analysis
@@ -4338,7 +4316,6 @@ read_based_taxonomy_analysis_set:
     part_of:
       - nmdc:wfch-99-93z8
     started_at_time: '2023-08-09T10:30:00Z'
-read_qc_analysis_set:
   - id: nmdc:wfrqc-12-63da5n74.1
     type: nmdc:ReadQcAnalysis
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 '

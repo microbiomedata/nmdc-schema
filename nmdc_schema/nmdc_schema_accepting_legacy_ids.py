@@ -1,5 +1,5 @@
 # Auto generated from nmdc_schema_accepting_legacy_ids.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-05T14:48:54
+# Generation date: 2024-06-05T18:47:32
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -4664,7 +4664,7 @@ class Extraction(MaterialProcessing):
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     substances_used: Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]] = empty_list()
-    extraction_target: Optional[Union[str, "ExtractionTargetEnum"]] = None
+    extraction_targets: Optional[Union[Union[str, "ExtractionTargetEnum"], List[Union[str, "ExtractionTargetEnum"]]]] = empty_list()
     input_mass: Optional[Union[dict, QuantityValue]] = None
     volume: Optional[Union[dict, QuantityValue]] = None
 
@@ -4690,8 +4690,9 @@ class Extraction(MaterialProcessing):
             self.substances_used = [self.substances_used] if self.substances_used is not None else []
         self.substances_used = [v if isinstance(v, PortionOfSubstance) else PortionOfSubstance(**as_dict(v)) for v in self.substances_used]
 
-        if self.extraction_target is not None and not isinstance(self.extraction_target, ExtractionTargetEnum):
-            self.extraction_target = ExtractionTargetEnum(self.extraction_target)
+        if not isinstance(self.extraction_targets, list):
+            self.extraction_targets = [self.extraction_targets] if self.extraction_targets is not None else []
+        self.extraction_targets = [v if isinstance(v, ExtractionTargetEnum) else ExtractionTargetEnum(v) for v in self.extraction_targets]
 
         if self.input_mass is not None and not isinstance(self.input_mass, QuantityValue):
             self.input_mass = QuantityValue(**as_dict(self.input_mass))
@@ -6391,6 +6392,12 @@ class MetagenomeSequencing(WorkflowExecution):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetagenomeSequencingId):
             self.id = MetagenomeSequencingId(self.id)
+
+        if self._is_empty(self.has_input):
+            self.MissingRequiredField("has_input")
+        if not isinstance(self.has_input, list):
+            self.has_input = [self.has_input] if self.has_input is not None else []
+        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -9580,6 +9587,7 @@ class ExtractionTargetEnum(EnumDefinitionImpl):
     RNA = PermissibleValue(text="RNA")
     metabolite = PermissibleValue(text="metabolite")
     protein = PermissibleValue(text="protein")
+    lipid = PermissibleValue(text="lipid")
 
     _defn = EnumDefinition(
         name="ExtractionTargetEnum",
@@ -12084,8 +12092,8 @@ slots.external_database_identifiers = Slot(uri=NMDC.external_database_identifier
 slots.dna_concentration = Slot(uri=NMDC.dna_concentration, name="dna_concentration", curie=NMDC.curie('dna_concentration'),
                    model_uri=NMDC.dna_concentration, domain=None, range=Optional[float])
 
-slots.extraction_target = Slot(uri=NMDC.extraction_target, name="extraction_target", curie=NMDC.curie('extraction_target'),
-                   model_uri=NMDC.extraction_target, domain=None, range=Optional[Union[str, "ExtractionTargetEnum"]])
+slots.extraction_targets = Slot(uri=NMDC.extraction_targets, name="extraction_targets", curie=NMDC.curie('extraction_targets'),
+                   model_uri=NMDC.extraction_targets, domain=None, range=Optional[Union[Union[str, "ExtractionTargetEnum"], List[Union[str, "ExtractionTargetEnum"]]]])
 
 slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
                    model_uri=NMDC.id, domain=None, range=URIRef,
@@ -12954,6 +12962,10 @@ slots.MagsAnalysis_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MagsAn
 
 slots.MetagenomeSequencing_id = Slot(uri=NMDC.id, name="MetagenomeSequencing_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MetagenomeSequencing_id, domain=MetagenomeSequencing, range=Union[str, MetagenomeSequencingId],
+                   pattern=re.compile(r'.*'))
+
+slots.MetagenomeSequencing_has_input = Slot(uri=NMDC.has_input, name="MetagenomeSequencing_has_input", curie=NMDC.curie('has_input'),
+                   model_uri=NMDC.MetagenomeSequencing_has_input, domain=MetagenomeSequencing, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]],
                    pattern=re.compile(r'.*'))
 
 slots.ReadQcAnalysis_id = Slot(uri=NMDC.id, name="ReadQcAnalysis_id", curie=NMDC.curie('id'),

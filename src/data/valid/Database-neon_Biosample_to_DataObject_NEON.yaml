@@ -1,4 +1,4 @@
-library_preparation_set:
+material_processing_set:
   - id: nmdc:libprp-99-abcdef
     name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
     has_input:
@@ -19,7 +19,7 @@ processed_sample_set:
   - id: nmdc:procsm-99-xyz3
     name: first library
     type: nmdc:ProcessedSample
-extraction_set:
+material_processing_set:
   - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
     has_input:
@@ -28,7 +28,8 @@ extraction_set:
       - nmdc:procsm-99-xyz2
     start_date: '2021-01-15'
     end_date: '2021-01-15'
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
     type: nmdc:Extraction
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
@@ -126,7 +127,7 @@ workflow_chain_set:
     was_informed_by: nmdc:dgns-11-s9xj2r24
     type: nmdc:WorkflowChain
     ended_at_time: '2021-01-10T00:00:00+00:00'
-read_qc_analysis_set:
+workflow_execution_set:
   - id: nmdc:wfrqc-12-63da5n74.1
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '
     started_at_time: '2023-03-23T17:17:05.111689+00:00'
@@ -164,7 +165,7 @@ data_object_set:
     type: nmdc:DataObject
     url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
 
-pooling_set:
+material_processing_set:
   - id: nmdc:poolp-99-abcdef
     type: nmdc:Pooling
     name: first pooling process

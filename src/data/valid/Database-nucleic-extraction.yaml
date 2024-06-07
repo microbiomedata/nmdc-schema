@@ -1,7 +1,7 @@
 #example populated by w/example mostly from NEON.D16.WREF.DP1.10107.001.mms_metagenomeDnaExtraction.2019-06.expanded.20230113T225219Z.csv
 
 #extraction http://purl.obolibrary.org/obo/OBI_0302884
-extraction_set:
+material_processing_set:
   - id: nmdc:extrp-99-abcdef
     type: nmdc:Extraction
     name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
@@ -47,7 +47,8 @@ extraction_set:
 
     #extraction_type should have range of dna_extraction_enum with possible values of 'DNA extraction', 'RNA extraction', 'protein extraction'
     #http://purl.obolibrary.org/obo/OBI_0000257
-    extraction_target: DNA
+    extraction_targets: 
+      - DNA
 
     #not needed at this time
     #protocol_materials:
