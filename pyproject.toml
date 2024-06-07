@@ -90,7 +90,6 @@ docs = ["mkdocs-material"]
 
 [tool.poetry.scripts]
 anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
-build-datafile-from-api-requests = "nmdc_schema.build_datafile_from_api_requests:main"
 class-sparql = "nmdc_schema.class_sparql:main"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
