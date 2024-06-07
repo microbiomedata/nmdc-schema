@@ -99,11 +99,11 @@ workflow_execution_set:
     has_input:
       - nmdc:dobj-11-1vjxjy81
     has_output:
-      - nmdc:11-1vjxjy82
-      - nmdc:11-1vjxjy83
-      - nmdc:11-1vjxjy84
-      - nmdc:11-1vjxjy85
-      - nmdc:11-1vjxjy86
+      - nmdc:dobj-99-xxxxx1
+      - nmdc:dobj-99-xxxxx2
+      - nmdc:dobj-99-xxxxx3
+      - nmdc:dobj-99-xxxxx4
+      - nmdc:dobj-99-xxxxx5
     scaffolds: 607951
     contigs: 607951
     scaf_bp: 279001661

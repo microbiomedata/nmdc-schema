@@ -3867,13 +3867,6 @@
                     },
                     "type": "array"
                 },
-                "extraction_set": {
-                    "description": "This property links a database object to the set of extractions within it.",
-                    "items": {
-                        "$ref": "#/$defs/Extraction"
-                    },
-                    "type": "array"
-                },
                 "field_research_site_set": {
                     "items": {
                         "$ref": "#/$defs/FieldResearchSite"
@@ -3907,92 +3900,80 @@
                     },
                     "type": "array"
                 },
-                "library_preparation_set": {
-                    "description": "This property links a database object to the set of DNA extractions within it.",
-                    "items": {
-                        "$ref": "#/$defs/LibraryPreparation"
-                    },
-                    "type": "array"
-                },
-                "mags_set": {
-                    "description": "This property links a database object to the set of MAGs analyses.",
-                    "items": {
-                        "$ref": "#/$defs/MagsAnalysis"
-                    },
-                    "type": "array"
-                },
-                "metabolomics_analysis_set": {
-                    "description": "This property links a database object to the set of metabolomics analyses.",
-                    "items": {
-                        "$ref": "#/$defs/MetabolomicsAnalysis"
-                    },
-                    "type": "array"
-                },
-                "metagenome_annotation_set": {
-                    "description": "This property links a database object to the set of metagenome annotations.",
-                    "items": {
-                        "$ref": "#/$defs/MetagenomeAnnotation"
-                    },
-                    "type": "array"
-                },
-                "metagenome_assembly_set": {
-                    "description": "This property links a database object to the set of metagenome assemblies.",
-                    "items": {
-                        "$ref": "#/$defs/MetagenomeAssembly"
-                    },
-                    "type": "array"
-                },
-                "metagenome_sequencing_set": {
-                    "description": "This property links a database object to the set of metagenome sequencings.",
-                    "items": {
-                        "$ref": "#/$defs/MetagenomeSequencing"
-                    },
-                    "type": "array"
-                },
-                "metaproteomics_analysis_set": {
-                    "description": "This property links a database object to the set of metaproteomics analyses.",
-                    "items": {
-                        "$ref": "#/$defs/MetaproteomicsAnalysis"
-                    },
-                    "type": "array"
-                },
-                "metatranscriptome_analysis_set": {
-                    "description": "This property links a database object to the set of metatranscriptome analyses.",
-                    "items": {
-                        "$ref": "#/$defs/MetatranscriptomeAnalysis"
-                    },
-                    "type": "array"
-                },
-                "metatranscriptome_assembly_set": {
-                    "description": "This property links a database object to the set of metatranscriptome assemblies.",
-                    "items": {
-                        "$ref": "#/$defs/MetatranscriptomeAssembly"
-                    },
-                    "type": "array"
-                },
-                "nom_analysis_set": {
-                    "description": "This property links a database object to the set of natural organic matter (NOM) analyses,",
-                    "items": {
-                        "$ref": "#/$defs/NomAnalysis"
-                    },
-                    "type": "array"
-                },
-                "planned_process_set": {
-                    "description": "This property links a database object to the set of planned processes within it.",
+                "material_processing_set": {
+                    "description": "This property links a database object to the set of material processing within it.",
                     "items": {
                         "anyOf": [
                             {
-                                "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                                "$ref": "#/$defs/Pooling"
                             },
                             {
-                                "$ref": "#/$defs/ProtocolExecution"
+                                "$ref": "#/$defs/Extraction"
                             },
                             {
-                                "$ref": "#/$defs/StorageProcess"
+                                "$ref": "#/$defs/LibraryPreparation"
                             },
                             {
-                                "$ref": "#/$defs/WorkflowChain"
+                                "$ref": "#/$defs/SubSamplingProcess"
                             },
+                            {
+                                "$ref": "#/$defs/MixingProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/FiltrationProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/ChromatographicSeparationProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/DissolvingProcess"
+                            },
+                            {
+                                "$ref": "#/$defs/ChemicalConversionProcess"
+                            }
+                        ]
+                    },
+                    "type": "array"
+                },
+                "processed_sample_set": {
+                    "description": "This property links a database object to the set of processed samples within it.",
+                    "items": {
+                        "$ref": "#/$defs/ProcessedSample"
+                    },
+                    "type": "array"
+                },
+                "protocol_execution_set": {
+                    "description": "This property links a database object to the set of protocol executions within it.",
+                    "items": {
+                        "$ref": "#/$defs/ProtocolExecution"
+                    },
+                    "type": "array"
+                },
+                "storage_process_set": {
+                    "description": "This property links a database object to the set of storage processes within it.",
+                    "items": {
+                        "$ref": "#/$defs/StorageProcess"
+                    },
+                    "type": "array"
+                },
+                "study_set": {
+                    "description": "This property links a database object to the set of studies within it.",
+                    "items": {
+                        "$ref": "#/$defs/Study"
+                    },
+                    "type": "array"
+                },
+                "workflow_chain_set": {
+                    "description": "This property links a database object to the set of workflow chains within it.",
+                    "items": {
+                        "$ref": "#/$defs/WorkflowChain"
+                    },
+                    "type": "array"
+                },
+                "workflow_execution_set": {
+                    "description": "This property links a database object to the set of workflow executions.",
+                    "items": {
+                        "anyOf": [
                             {
                                 "$ref": "#/$defs/MetagenomeAnnotation"
                             },
@@ -4028,82 +4009,8 @@
                             },
                             {
                                 "$ref": "#/$defs/NomAnalysis"
-                            },
-                            {
-                                "$ref": "#/$defs/NucleotideSequencing"
-                            },
-                            {
-                                "$ref": "#/$defs/MassSpectrometry"
-                            },
-                            {
-                                "$ref": "#/$defs/Pooling"
-                            },
-                            {
-                                "$ref": "#/$defs/Extraction"
-                            },
-                            {
-                                "$ref": "#/$defs/LibraryPreparation"
-                            },
-                            {
-                                "$ref": "#/$defs/SubSamplingProcess"
-                            },
-                            {
-                                "$ref": "#/$defs/MixingProcess"
-                            },
-                            {
-                                "$ref": "#/$defs/FiltrationProcess"
-                            },
-                            {
-                                "$ref": "#/$defs/ChromatographicSeparationProcess"
-                            },
-                            {
-                                "$ref": "#/$defs/DissolvingProcess"
-                            },
-                            {
-                                "$ref": "#/$defs/ChemicalConversionProcess"
                             }
                         ]
-                    },
-                    "type": "array"
-                },
-                "pooling_set": {
-                    "items": {
-                        "$ref": "#/$defs/Pooling"
-                    },
-                    "type": "array"
-                },
-                "processed_sample_set": {
-                    "description": "This property links a database object to the set of processed samples within it.",
-                    "items": {
-                        "$ref": "#/$defs/ProcessedSample"
-                    },
-                    "type": "array"
-                },
-                "read_based_taxonomy_analysis_set": {
-                    "description": "This property links a database object to the set of read based analyses.",
-                    "items": {
-                        "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
-                    },
-                    "type": "array"
-                },
-                "read_qc_analysis_set": {
-                    "description": "This property links a database object to the set of read QC analyses.",
-                    "items": {
-                        "$ref": "#/$defs/ReadQcAnalysis"
-                    },
-                    "type": "array"
-                },
-                "study_set": {
-                    "description": "This property links a database object to the set of studies within it.",
-                    "items": {
-                        "$ref": "#/$defs/Study"
-                    },
-                    "type": "array"
-                },
-                "workflow_chain_set": {
-                    "description": "This property links a database object to the set of workflow chains within it.",
-                    "items": {
-                        "$ref": "#/$defs/WorkflowChain"
                     },
                     "type": "array"
                 }
@@ -6038,6 +5945,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6045,6 +5953,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6599,6 +6508,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6612,6 +6522,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6763,6 +6674,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6770,6 +6682,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6982,6 +6895,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -6989,6 +6903,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7208,6 +7123,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7359,6 +7275,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7366,6 +7283,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7523,6 +7441,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7530,6 +7449,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7911,6 +7831,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7918,6 +7839,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8278,6 +8200,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -8285,6 +8208,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9381,6 +9305,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9388,6 +9313,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9539,6 +9465,7 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -9546,6 +9473,7 @@
                 "has_output": {
                     "description": "An output from a process.",
                     "items": {
+                        "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": "array"
@@ -10973,6 +10901,7 @@
                 },
                 "was_informed_by": {
                     "description": "A Workflow Chain instance was informed by the data and metadata of a of a\n  Data Generation instance",
+                    "pattern": "^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 }
             },
@@ -11063,13 +10992,6 @@
             },
             "type": "array"
         },
-        "extraction_set": {
-            "description": "This property links a database object to the set of extractions within it.",
-            "items": {
-                "$ref": "#/$defs/Extraction"
-            },
-            "type": "array"
-        },
         "field_research_site_set": {
             "items": {
                 "$ref": "#/$defs/FieldResearchSite"
@@ -11103,92 +11025,80 @@
             },
             "type": "array"
         },
-        "library_preparation_set": {
-            "description": "This property links a database object to the set of DNA extractions within it.",
-            "items": {
-                "$ref": "#/$defs/LibraryPreparation"
-            },
-            "type": "array"
-        },
-        "mags_set": {
-            "description": "This property links a database object to the set of MAGs analyses.",
-            "items": {
-                "$ref": "#/$defs/MagsAnalysis"
-            },
-            "type": "array"
-        },
-        "metabolomics_analysis_set": {
-            "description": "This property links a database object to the set of metabolomics analyses.",
-            "items": {
-                "$ref": "#/$defs/MetabolomicsAnalysis"
-            },
-            "type": "array"
-        },
-        "metagenome_annotation_set": {
-            "description": "This property links a database object to the set of metagenome annotations.",
-            "items": {
-                "$ref": "#/$defs/MetagenomeAnnotation"
-            },
-            "type": "array"
-        },
-        "metagenome_assembly_set": {
-            "description": "This property links a database object to the set of metagenome assemblies.",
-            "items": {
-                "$ref": "#/$defs/MetagenomeAssembly"
-            },
-            "type": "array"
-        },
-        "metagenome_sequencing_set": {
-            "description": "This property links a database object to the set of metagenome sequencings.",
-            "items": {
-                "$ref": "#/$defs/MetagenomeSequencing"
-            },
-            "type": "array"
-        },
-        "metaproteomics_analysis_set": {
-            "description": "This property links a database object to the set of metaproteomics analyses.",
-            "items": {
-                "$ref": "#/$defs/MetaproteomicsAnalysis"
-            },
-            "type": "array"
-        },
-        "metatranscriptome_analysis_set": {
-            "description": "This property links a database object to the set of metatranscriptome analyses.",
-            "items": {
-                "$ref": "#/$defs/MetatranscriptomeAnalysis"
-            },
-            "type": "array"
-        },
-        "metatranscriptome_assembly_set": {
-            "description": "This property links a database object to the set of metatranscriptome assemblies.",
-            "items": {
-                "$ref": "#/$defs/MetatranscriptomeAssembly"
-            },
-            "type": "array"
-        },
-        "nom_analysis_set": {
-            "description": "This property links a database object to the set of natural organic matter (NOM) analyses,",
-            "items": {
-                "$ref": "#/$defs/NomAnalysis"
-            },
-            "type": "array"
-        },
-        "planned_process_set": {
-            "description": "This property links a database object to the set of planned processes within it.",
+        "material_processing_set": {
+            "description": "This property links a database object to the set of material processing within it.",
             "items": {
                 "anyOf": [
                     {
-                        "$ref": "#/$defs/CollectingBiosamplesFromSite"
+                        "$ref": "#/$defs/Pooling"
                     },
                     {
-                        "$ref": "#/$defs/ProtocolExecution"
+                        "$ref": "#/$defs/Extraction"
                     },
                     {
-                        "$ref": "#/$defs/StorageProcess"
+                        "$ref": "#/$defs/LibraryPreparation"
                     },
                     {
-                        "$ref": "#/$defs/WorkflowChain"
+                        "$ref": "#/$defs/SubSamplingProcess"
                     },
+                    {
+                        "$ref": "#/$defs/MixingProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/FiltrationProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/ChromatographicSeparationProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/DissolvingProcess"
+                    },
+                    {
+                        "$ref": "#/$defs/ChemicalConversionProcess"
+                    }
+                ]
+            },
+            "type": "array"
+        },
+        "processed_sample_set": {
+            "description": "This property links a database object to the set of processed samples within it.",
+            "items": {
+                "$ref": "#/$defs/ProcessedSample"
+            },
+            "type": "array"
+        },
+        "protocol_execution_set": {
+            "description": "This property links a database object to the set of protocol executions within it.",
+            "items": {
+                "$ref": "#/$defs/ProtocolExecution"
+            },
+            "type": "array"
+        },
+        "storage_process_set": {
+            "description": "This property links a database object to the set of storage processes within it.",
+            "items": {
+                "$ref": "#/$defs/StorageProcess"
+            },
+            "type": "array"
+        },
+        "study_set": {
+            "description": "This property links a database object to the set of studies within it.",
+            "items": {
+                "$ref": "#/$defs/Study"
+            },
+            "type": "array"
+        },
+        "workflow_chain_set": {
+            "description": "This property links a database object to the set of workflow chains within it.",
+            "items": {
+                "$ref": "#/$defs/WorkflowChain"
+            },
+            "type": "array"
+        },
+        "workflow_execution_set": {
+            "description": "This property links a database object to the set of workflow executions.",
+            "items": {
+                "anyOf": [
                     {
                         "$ref": "#/$defs/MetagenomeAnnotation"
                     },
@@ -11224,82 +11134,8 @@
                     },
                     {
                         "$ref": "#/$defs/NomAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/NucleotideSequencing"
-                    },
-                    {
-                        "$ref": "#/$defs/MassSpectrometry"
-                    },
-                    {
-                        "$ref": "#/$defs/Pooling"
-                    },
-                    {
-                        "$ref": "#/$defs/Extraction"
-                    },
-                    {
-                        "$ref": "#/$defs/LibraryPreparation"
-                    },
-                    {
-                        "$ref": "#/$defs/SubSamplingProcess"
-                    },
-                    {
-                        "$ref": "#/$defs/MixingProcess"
-                    },
-                    {
-                        "$ref": "#/$defs/FiltrationProcess"
-                    },
-                    {
-                        "$ref": "#/$defs/ChromatographicSeparationProcess"
-                    },
-                    {
-                        "$ref": "#/$defs/DissolvingProcess"
-                    },
-                    {
-                        "$ref": "#/$defs/ChemicalConversionProcess"
                     }
                 ]
-            },
-            "type": "array"
-        },
-        "pooling_set": {
-            "items": {
-                "$ref": "#/$defs/Pooling"
-            },
-            "type": "array"
-        },
-        "processed_sample_set": {
-            "description": "This property links a database object to the set of processed samples within it.",
-            "items": {
-                "$ref": "#/$defs/ProcessedSample"
-            },
-            "type": "array"
-        },
-        "read_based_taxonomy_analysis_set": {
-            "description": "This property links a database object to the set of read based analyses.",
-            "items": {
-                "$ref": "#/$defs/ReadBasedTaxonomyAnalysis"
-            },
-            "type": "array"
-        },
-        "read_qc_analysis_set": {
-            "description": "This property links a database object to the set of read QC analyses.",
-            "items": {
-                "$ref": "#/$defs/ReadQcAnalysis"
-            },
-            "type": "array"
-        },
-        "study_set": {
-            "description": "This property links a database object to the set of studies within it.",
-            "items": {
-                "$ref": "#/$defs/Study"
-            },
-            "type": "array"
-        },
-        "workflow_chain_set": {
-            "description": "This property links a database object to the set of workflow chains within it.",
-            "items": {
-                "$ref": "#/$defs/WorkflowChain"
             },
             "type": "array"
         }

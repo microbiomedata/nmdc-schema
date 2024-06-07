@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-05T18:48:06
+# Generation date: 2024-06-07T13:32:03
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -428,29 +428,18 @@ class Database(YAMLRoot):
     configuration_set: Optional[Union[Dict[Union[str, ConfigurationId], Union[dict, "Configuration"]], List[Union[dict, "Configuration"]]]] = empty_dict()
     data_generation_set: Optional[Union[Dict[Union[str, DataGenerationId], Union[dict, "DataGeneration"]], List[Union[dict, "DataGeneration"]]]] = empty_dict()
     data_object_set: Optional[Union[Dict[Union[str, DataObjectId], Union[dict, "DataObject"]], List[Union[dict, "DataObject"]]]] = empty_dict()
-    extraction_set: Optional[Union[Dict[Union[str, ExtractionId], Union[dict, "Extraction"]], List[Union[dict, "Extraction"]]]] = empty_dict()
     field_research_site_set: Optional[Union[Dict[Union[str, FieldResearchSiteId], Union[dict, "FieldResearchSite"]], List[Union[dict, "FieldResearchSite"]]]] = empty_dict()
     functional_annotation_agg: Optional[Union[Union[dict, FunctionalAnnotationAggMember], List[Union[dict, FunctionalAnnotationAggMember]]]] = empty_list()
     functional_annotation_set: Optional[Union[Union[dict, "FunctionalAnnotation"], List[Union[dict, "FunctionalAnnotation"]]]] = empty_list()
     genome_feature_set: Optional[Union[Union[dict, "GenomeFeature"], List[Union[dict, "GenomeFeature"]]]] = empty_list()
     instrument_set: Optional[Union[Dict[Union[str, InstrumentId], Union[dict, "Instrument"]], List[Union[dict, "Instrument"]]]] = empty_dict()
-    library_preparation_set: Optional[Union[Dict[Union[str, LibraryPreparationId], Union[dict, "LibraryPreparation"]], List[Union[dict, "LibraryPreparation"]]]] = empty_dict()
-    mags_set: Optional[Union[Dict[Union[str, MagsAnalysisId], Union[dict, "MagsAnalysis"]], List[Union[dict, "MagsAnalysis"]]]] = empty_dict()
-    metabolomics_analysis_set: Optional[Union[Dict[Union[str, MetabolomicsAnalysisId], Union[dict, "MetabolomicsAnalysis"]], List[Union[dict, "MetabolomicsAnalysis"]]]] = empty_dict()
-    metagenome_annotation_set: Optional[Union[Dict[Union[str, MetagenomeAnnotationId], Union[dict, "MetagenomeAnnotation"]], List[Union[dict, "MetagenomeAnnotation"]]]] = empty_dict()
-    metagenome_assembly_set: Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]] = empty_dict()
-    metagenome_sequencing_set: Optional[Union[Dict[Union[str, MetagenomeSequencingId], Union[dict, "MetagenomeSequencing"]], List[Union[dict, "MetagenomeSequencing"]]]] = empty_dict()
-    metaproteomics_analysis_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisId], Union[dict, "MetaproteomicsAnalysis"]], List[Union[dict, "MetaproteomicsAnalysis"]]]] = empty_dict()
-    metatranscriptome_analysis_set: Optional[Union[Dict[Union[str, MetatranscriptomeAnalysisId], Union[dict, "MetatranscriptomeAnalysis"]], List[Union[dict, "MetatranscriptomeAnalysis"]]]] = empty_dict()
-    metatranscriptome_assembly_set: Optional[Union[Dict[Union[str, MetatranscriptomeAssemblyId], Union[dict, "MetatranscriptomeAssembly"]], List[Union[dict, "MetatranscriptomeAssembly"]]]] = empty_dict()
-    nom_analysis_set: Optional[Union[Dict[Union[str, NomAnalysisId], Union[dict, "NomAnalysis"]], List[Union[dict, "NomAnalysis"]]]] = empty_dict()
-    planned_process_set: Optional[Union[Dict[Union[str, PlannedProcessId], Union[dict, "PlannedProcess"]], List[Union[dict, "PlannedProcess"]]]] = empty_dict()
-    pooling_set: Optional[Union[Dict[Union[str, PoolingId], Union[dict, "Pooling"]], List[Union[dict, "Pooling"]]]] = empty_dict()
+    material_processing_set: Optional[Union[Dict[Union[str, MaterialProcessingId], Union[dict, "MaterialProcessing"]], List[Union[dict, "MaterialProcessing"]]]] = empty_dict()
     processed_sample_set: Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], List[Union[dict, "ProcessedSample"]]]] = empty_dict()
-    read_based_taxonomy_analysis_set: Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisId], Union[dict, "ReadBasedTaxonomyAnalysis"]], List[Union[dict, "ReadBasedTaxonomyAnalysis"]]]] = empty_dict()
-    read_qc_analysis_set: Optional[Union[Dict[Union[str, ReadQcAnalysisId], Union[dict, "ReadQcAnalysis"]], List[Union[dict, "ReadQcAnalysis"]]]] = empty_dict()
+    protocol_execution_set: Optional[Union[Dict[Union[str, ProtocolExecutionId], Union[dict, "ProtocolExecution"]], List[Union[dict, "ProtocolExecution"]]]] = empty_dict()
+    storage_process_set: Optional[Union[Dict[Union[str, StorageProcessId], Union[dict, "StorageProcess"]], List[Union[dict, "StorageProcess"]]]] = empty_dict()
     study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
     workflow_chain_set: Optional[Union[Dict[Union[str, WorkflowChainId], Union[dict, "WorkflowChain"]], List[Union[dict, "WorkflowChain"]]]] = empty_dict()
+    workflow_execution_set: Optional[Union[Dict[Union[str, WorkflowExecutionId], Union[dict, "WorkflowExecution"]], List[Union[dict, "WorkflowExecution"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
@@ -466,8 +455,6 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="data_generation_set", slot_type=DataGeneration, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="data_object_set", slot_type=DataObject, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="extraction_set", slot_type=Extraction, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="field_research_site_set", slot_type=FieldResearchSite, key_name="id", keyed=True)
 
@@ -485,39 +472,19 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="instrument_set", slot_type=Instrument, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="library_preparation_set", slot_type=LibraryPreparation, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="mags_set", slot_type=MagsAnalysis, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="metabolomics_analysis_set", slot_type=MetabolomicsAnalysis, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="metagenome_annotation_set", slot_type=MetagenomeAnnotation, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="metagenome_assembly_set", slot_type=MetagenomeAssembly, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="metagenome_sequencing_set", slot_type=MetagenomeSequencing, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_set", slot_type=MetaproteomicsAnalysis, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="metatranscriptome_analysis_set", slot_type=MetatranscriptomeAnalysis, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="metatranscriptome_assembly_set", slot_type=MetatranscriptomeAssembly, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="nom_analysis_set", slot_type=NomAnalysis, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="planned_process_set", slot_type=PlannedProcess, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="pooling_set", slot_type=Pooling, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="material_processing_set", slot_type=MaterialProcessing, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="processed_sample_set", slot_type=ProcessedSample, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="read_based_taxonomy_analysis_set", slot_type=ReadBasedTaxonomyAnalysis, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="protocol_execution_set", slot_type=ProtocolExecution, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="read_qc_analysis_set", slot_type=ReadQcAnalysis, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="storage_process_set", slot_type=StorageProcess, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="study_set", slot_type=Study, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="workflow_chain_set", slot_type=WorkflowChain, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="workflow_execution_set", slot_type=WorkflowExecution, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -5740,6 +5707,7 @@ class WorkflowExecution(PlannedProcess):
     started_at_time: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     version: Optional[str] = None
+    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.ended_at_time):
@@ -5776,6 +5744,10 @@ class WorkflowExecution(PlannedProcess):
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
+
+        if not isinstance(self.has_output, list):
+            self.has_output = [self.has_output] if self.has_output is not None else []
+        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -9681,9 +9653,6 @@ slots.object_set = Slot(uri=NMDC.object_set, name="object_set", curie=NMDC.curie
 slots.chemical_entity_set = Slot(uri=NMDC.chemical_entity_set, name="chemical_entity_set", curie=NMDC.curie('chemical_entity_set'),
                    model_uri=NMDC.chemical_entity_set, domain=None, range=Optional[Union[Dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], List[Union[dict, ChemicalEntity]]]])
 
-slots.planned_process_set = Slot(uri=NMDC.planned_process_set, name="planned_process_set", curie=NMDC.curie('planned_process_set'),
-                   model_uri=NMDC.planned_process_set, domain=None, range=Optional[Union[Dict[Union[str, PlannedProcessId], Union[dict, PlannedProcess]], List[Union[dict, PlannedProcess]]]])
-
 slots.biosample_set = Slot(uri=NMDC.biosample_set, name="biosample_set", curie=NMDC.curie('biosample_set'),
                    model_uri=NMDC.biosample_set, domain=None, range=Optional[Union[Dict[Union[str, BiosampleId], Union[dict, Biosample]], List[Union[dict, Biosample]]]])
 
@@ -9708,56 +9677,14 @@ slots.functional_annotation_set = Slot(uri=NMDC.functional_annotation_set, name=
 slots.workflow_execution_set = Slot(uri=NMDC.workflow_execution_set, name="workflow_execution_set", curie=NMDC.curie('workflow_execution_set'),
                    model_uri=NMDC.workflow_execution_set, domain=None, range=Optional[Union[Dict[Union[str, WorkflowExecutionId], Union[dict, WorkflowExecution]], List[Union[dict, WorkflowExecution]]]])
 
-slots.mags_set = Slot(uri=NMDC.mags_set, name="mags_set", curie=NMDC.curie('mags_set'),
-                   model_uri=NMDC.mags_set, domain=None, range=Optional[Union[Dict[Union[str, MagsAnalysisId], Union[dict, MagsAnalysis]], List[Union[dict, MagsAnalysis]]]])
-
-slots.metabolomics_analysis_set = Slot(uri=NMDC.metabolomics_analysis_set, name="metabolomics_analysis_set", curie=NMDC.curie('metabolomics_analysis_set'),
-                   model_uri=NMDC.metabolomics_analysis_set, domain=None, range=Optional[Union[Dict[Union[str, MetabolomicsAnalysisId], Union[dict, MetabolomicsAnalysis]], List[Union[dict, MetabolomicsAnalysis]]]])
-
-slots.metaproteomics_analysis_set = Slot(uri=NMDC.metaproteomics_analysis_set, name="metaproteomics_analysis_set", curie=NMDC.curie('metaproteomics_analysis_set'),
-                   model_uri=NMDC.metaproteomics_analysis_set, domain=None, range=Optional[Union[Dict[Union[str, MetaproteomicsAnalysisId], Union[dict, MetaproteomicsAnalysis]], List[Union[dict, MetaproteomicsAnalysis]]]])
-
-slots.metagenome_annotation_set = Slot(uri=NMDC.metagenome_annotation_set, name="metagenome_annotation_set", curie=NMDC.curie('metagenome_annotation_set'),
-                   model_uri=NMDC.metagenome_annotation_set, domain=None, range=Optional[Union[Dict[Union[str, MetagenomeAnnotationId], Union[dict, MetagenomeAnnotation]], List[Union[dict, MetagenomeAnnotation]]]])
-
-slots.metagenome_assembly_set = Slot(uri=NMDC.metagenome_assembly_set, name="metagenome_assembly_set", curie=NMDC.curie('metagenome_assembly_set'),
-                   model_uri=NMDC.metagenome_assembly_set, domain=None, range=Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, MetagenomeAssembly]], List[Union[dict, MetagenomeAssembly]]]])
-
-slots.metatranscriptome_assembly_set = Slot(uri=NMDC.metatranscriptome_assembly_set, name="metatranscriptome_assembly_set", curie=NMDC.curie('metatranscriptome_assembly_set'),
-                   model_uri=NMDC.metatranscriptome_assembly_set, domain=None, range=Optional[Union[Dict[Union[str, MetatranscriptomeAssemblyId], Union[dict, MetatranscriptomeAssembly]], List[Union[dict, MetatranscriptomeAssembly]]]])
-
-slots.metagenome_sequencing_set = Slot(uri=NMDC.metagenome_sequencing_set, name="metagenome_sequencing_set", curie=NMDC.curie('metagenome_sequencing_set'),
-                   model_uri=NMDC.metagenome_sequencing_set, domain=None, range=Optional[Union[Dict[Union[str, MetagenomeSequencingId], Union[dict, MetagenomeSequencing]], List[Union[dict, MetagenomeSequencing]]]])
-
-slots.metatranscriptome_analysis_set = Slot(uri=NMDC.metatranscriptome_analysis_set, name="metatranscriptome_analysis_set", curie=NMDC.curie('metatranscriptome_analysis_set'),
-                   model_uri=NMDC.metatranscriptome_analysis_set, domain=None, range=Optional[Union[Dict[Union[str, MetatranscriptomeAnalysisId], Union[dict, MetatranscriptomeAnalysis]], List[Union[dict, MetatranscriptomeAnalysis]]]])
-
-slots.read_qc_analysis_set = Slot(uri=NMDC.read_qc_analysis_set, name="read_qc_analysis_set", curie=NMDC.curie('read_qc_analysis_set'),
-                   model_uri=NMDC.read_qc_analysis_set, domain=None, range=Optional[Union[Dict[Union[str, ReadQcAnalysisId], Union[dict, ReadQcAnalysis]], List[Union[dict, ReadQcAnalysis]]]])
-
-slots.read_based_taxonomy_analysis_set = Slot(uri=NMDC.read_based_taxonomy_analysis_set, name="read_based_taxonomy_analysis_set", curie=NMDC.curie('read_based_taxonomy_analysis_set'),
-                   model_uri=NMDC.read_based_taxonomy_analysis_set, domain=None, range=Optional[Union[Dict[Union[str, ReadBasedTaxonomyAnalysisId], Union[dict, ReadBasedTaxonomyAnalysis]], List[Union[dict, ReadBasedTaxonomyAnalysis]]]])
-
-slots.nom_analysis_set = Slot(uri=NMDC.nom_analysis_set, name="nom_analysis_set", curie=NMDC.curie('nom_analysis_set'),
-                   model_uri=NMDC.nom_analysis_set, domain=None, range=Optional[Union[Dict[Union[str, NomAnalysisId], Union[dict, NomAnalysis]], List[Union[dict, NomAnalysis]]]])
-
 slots.data_generation_set = Slot(uri=NMDC.data_generation_set, name="data_generation_set", curie=NMDC.curie('data_generation_set'),
                    model_uri=NMDC.data_generation_set, domain=None, range=Optional[Union[Dict[Union[str, DataGenerationId], Union[dict, DataGeneration]], List[Union[dict, DataGeneration]]]])
 
 slots.workflow_chain_set = Slot(uri=NMDC.workflow_chain_set, name="workflow_chain_set", curie=NMDC.curie('workflow_chain_set'),
                    model_uri=NMDC.workflow_chain_set, domain=None, range=Optional[Union[Dict[Union[str, WorkflowChainId], Union[dict, WorkflowChain]], List[Union[dict, WorkflowChain]]]])
 
-slots.pooling_set = Slot(uri=NMDC.pooling_set, name="pooling_set", curie=NMDC.curie('pooling_set'),
-                   model_uri=NMDC.pooling_set, domain=None, range=Optional[Union[Dict[Union[str, PoolingId], Union[dict, Pooling]], List[Union[dict, Pooling]]]])
-
 slots.processed_sample_set = Slot(uri=NMDC.processed_sample_set, name="processed_sample_set", curie=NMDC.curie('processed_sample_set'),
                    model_uri=NMDC.processed_sample_set, domain=None, range=Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, ProcessedSample]], List[Union[dict, ProcessedSample]]]])
-
-slots.extraction_set = Slot(uri=NMDC.extraction_set, name="extraction_set", curie=NMDC.curie('extraction_set'),
-                   model_uri=NMDC.extraction_set, domain=None, range=Optional[Union[Dict[Union[str, ExtractionId], Union[dict, Extraction]], List[Union[dict, Extraction]]]])
-
-slots.library_preparation_set = Slot(uri=NMDC.library_preparation_set, name="library_preparation_set", curie=NMDC.curie('library_preparation_set'),
-                   model_uri=NMDC.library_preparation_set, domain=None, range=Optional[Union[Dict[Union[str, LibraryPreparationId], Union[dict, LibraryPreparation]], List[Union[dict, LibraryPreparation]]]])
 
 slots.instrument_set = Slot(uri=NMDC.instrument_set, name="instrument_set", curie=NMDC.curie('instrument_set'),
                    model_uri=NMDC.instrument_set, domain=None, range=Optional[Union[Dict[Union[str, InstrumentId], Union[dict, Instrument]], List[Union[dict, Instrument]]]])
@@ -9767,6 +9694,15 @@ slots.calibration_set = Slot(uri=NMDC.calibration_set, name="calibration_set", c
 
 slots.configuration_set = Slot(uri=NMDC.configuration_set, name="configuration_set", curie=NMDC.curie('configuration_set'),
                    model_uri=NMDC.configuration_set, domain=None, range=Optional[Union[Dict[Union[str, ConfigurationId], Union[dict, Configuration]], List[Union[dict, Configuration]]]])
+
+slots.protocol_execution_set = Slot(uri=NMDC.protocol_execution_set, name="protocol_execution_set", curie=NMDC.curie('protocol_execution_set'),
+                   model_uri=NMDC.protocol_execution_set, domain=None, range=Optional[Union[Dict[Union[str, ProtocolExecutionId], Union[dict, ProtocolExecution]], List[Union[dict, ProtocolExecution]]]])
+
+slots.storage_process_set = Slot(uri=NMDC.storage_process_set, name="storage_process_set", curie=NMDC.curie('storage_process_set'),
+                   model_uri=NMDC.storage_process_set, domain=None, range=Optional[Union[Dict[Union[str, StorageProcessId], Union[dict, StorageProcess]], List[Union[dict, StorageProcess]]]])
+
+slots.material_processing_set = Slot(uri=NMDC.material_processing_set, name="material_processing_set", curie=NMDC.curie('material_processing_set'),
+                   model_uri=NMDC.material_processing_set, domain=None, range=Optional[Union[Dict[Union[str, MaterialProcessingId], Union[dict, MaterialProcessing]], List[Union[dict, MaterialProcessing]]]])
 
 slots.sample_collection_day = Slot(uri=NMDC.sample_collection_day, name="sample_collection_day", curie=NMDC.curie('sample_collection_day'),
                    model_uri=NMDC.sample_collection_day, domain=None, range=Optional[int])
@@ -12796,6 +12732,9 @@ slots.WorkflowExecution_git_url = Slot(uri=NMDC.git_url, name="WorkflowExecution
 
 slots.WorkflowExecution_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="WorkflowExecution_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.WorkflowExecution_has_input, domain=WorkflowExecution, range=Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]])
+
+slots.WorkflowExecution_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="WorkflowExecution_has_output", curie=NMDC.curie('basic_classes/has_output'),
+                   model_uri=NMDC.WorkflowExecution_has_output, domain=WorkflowExecution, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
 
 slots.WorkflowExecution_execution_resource = Slot(uri=NMDC.execution_resource, name="WorkflowExecution_execution_resource", curie=NMDC.curie('execution_resource'),
                    model_uri=NMDC.WorkflowExecution_execution_resource, domain=WorkflowExecution, range=Union[str, "ExecutionResourceEnum"])

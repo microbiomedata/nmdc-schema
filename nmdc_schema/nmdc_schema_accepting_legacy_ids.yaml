@@ -4424,14 +4424,6 @@ slots:
     mixins:
     - object_set
     range: ChemicalEntity
-  planned_process_set:
-    name: planned_process_set
-    description: This property links a database object to the set of planned processes
-      within it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: PlannedProcess
   biosample_set:
     name: biosample_set
     description: This property links a database object to the set of samples within
@@ -4490,88 +4482,6 @@ slots:
     mixins:
     - object_set
     range: WorkflowExecution
-  mags_set:
-    name: mags_set
-    description: This property links a database object to the set of MAGs analyses.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MagsAnalysis
-  metabolomics_analysis_set:
-    name: metabolomics_analysis_set
-    description: This property links a database object to the set of metabolomics
-      analyses.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MetabolomicsAnalysis
-  metaproteomics_analysis_set:
-    name: metaproteomics_analysis_set
-    description: This property links a database object to the set of metaproteomics
-      analyses.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MetaproteomicsAnalysis
-  metagenome_annotation_set:
-    name: metagenome_annotation_set
-    description: This property links a database object to the set of metagenome annotations.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MetagenomeAnnotation
-  metagenome_assembly_set:
-    name: metagenome_assembly_set
-    description: This property links a database object to the set of metagenome assemblies.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MetagenomeAssembly
-  metatranscriptome_assembly_set:
-    name: metatranscriptome_assembly_set
-    description: This property links a database object to the set of metatranscriptome
-      assemblies.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MetatranscriptomeAssembly
-  metagenome_sequencing_set:
-    name: metagenome_sequencing_set
-    description: This property links a database object to the set of metagenome sequencings.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MetagenomeSequencing
-  metatranscriptome_analysis_set:
-    name: metatranscriptome_analysis_set
-    description: This property links a database object to the set of metatranscriptome
-      analyses.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: MetatranscriptomeAnalysis
-  read_qc_analysis_set:
-    name: read_qc_analysis_set
-    description: This property links a database object to the set of read QC analyses.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: ReadQcAnalysis
-  read_based_taxonomy_analysis_set:
-    name: read_based_taxonomy_analysis_set
-    description: This property links a database object to the set of read based analyses.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: ReadBasedTaxonomyAnalysis
-  nom_analysis_set:
-    name: nom_analysis_set
-    description: This property links a database object to the set of natural organic
-      matter (NOM) analyses,
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: NomAnalysis
   data_generation_set:
     name: data_generation_set
     description: This property links a database object to the set of omics processings
@@ -4588,12 +4498,6 @@ slots:
     mixins:
     - object_set
     range: WorkflowChain
-  pooling_set:
-    name: pooling_set
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: Pooling
   processed_sample_set:
     name: processed_sample_set
     description: This property links a database object to the set of processed samples
@@ -4602,24 +4506,6 @@ slots:
     mixins:
     - object_set
     range: ProcessedSample
-  extraction_set:
-    name: extraction_set
-    description: This property links a database object to the set of extractions within
-      it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: Extraction
-  library_preparation_set:
-    name: library_preparation_set
-    description: This property links a database object to the set of DNA extractions
-      within it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - library_construction_set
-    mixins:
-    - object_set
-    range: LibraryPreparation
   instrument_set:
     name: instrument_set
     description: This property links a database object to the set of instruments within
@@ -4644,6 +4530,30 @@ slots:
     mixins:
     - object_set
     range: Configuration
+  protocol_execution_set:
+    name: protocol_execution_set
+    description: This property links a database object to the set of protocol executions
+      within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    range: ProtocolExecution
+  storage_process_set:
+    name: storage_process_set
+    description: This property links a database object to the set of storage processes
+      within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    range: StorageProcess
+  material_processing_set:
+    name: material_processing_set
+    description: This property links a database object to the set of material processing
+      within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    range: MaterialProcessing
   sample_collection_day:
     name: sample_collection_day
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18994,29 +18904,18 @@ classes:
     - configuration_set
     - data_generation_set
     - data_object_set
-    - extraction_set
     - field_research_site_set
     - functional_annotation_agg
     - functional_annotation_set
     - genome_feature_set
     - instrument_set
-    - library_preparation_set
-    - mags_set
-    - metabolomics_analysis_set
-    - metagenome_annotation_set
-    - metagenome_assembly_set
-    - metagenome_sequencing_set
-    - metaproteomics_analysis_set
-    - metatranscriptome_analysis_set
-    - metatranscriptome_assembly_set
-    - nom_analysis_set
-    - planned_process_set
-    - pooling_set
+    - material_processing_set
     - processed_sample_set
-    - read_based_taxonomy_analysis_set
-    - read_qc_analysis_set
+    - protocol_execution_set
+    - storage_process_set
     - study_set
     - workflow_chain_set
+    - workflow_execution_set
     class_uri: nmdc:Database
     tree_root: true
   Pooling:
@@ -21506,10 +21405,14 @@ classes:
         description: "A Workflow Chain instance was informed by the data and metadata\
           \ of a of a\n  Data Generation instance"
         comments:
-        - The value of this slot is a reference to a Data Generation instance that
-          informed the Workflow Chain instance with its output data and the metadata
-          of the Data Generation.
+        - "- The value of this slot is a reference to a Data Generation\n  instance\
+          \ that informed the Workflow Chain instance with its\n  output data and\
+          \ the metadata of the Data Generation."
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:WorkflowChain
   WorkflowExecution:
     name: WorkflowExecution
@@ -21549,6 +21452,16 @@ classes:
       has_input:
         name: has_input
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_output:
+        name: has_output
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
       execution_resource:
         name: execution_resource
         required: true
