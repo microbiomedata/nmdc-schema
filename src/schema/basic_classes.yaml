@@ -383,8 +383,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
           interpolated: true
-      ended_at_time:
-        required: true
       replaces:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
