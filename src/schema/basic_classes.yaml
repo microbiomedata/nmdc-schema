@@ -449,8 +449,6 @@ classes:
     slot_usage:
       started_at_time:
         required: true
-      ended_at_time:
-        required: true
       git_url:
         required: true
       has_input:
