@@ -1,8 +1,8 @@
-db.omics_processing_set.aggregate([
+db.data_generation_set.aggregate([
   {
     $lookup: {
       from: "study_set",
-      localField: "part_of",
+      localField: "associated_studies",
       foreignField: "id",
       as: "studies"
     }

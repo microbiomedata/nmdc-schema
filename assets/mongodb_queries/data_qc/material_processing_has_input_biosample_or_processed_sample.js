@@ -1,5 +1,5 @@
-// Check referential integrity for pooling has_input biosample or processed sample
-db.pooling_set.aggregate([
+// Check referential integrity for material processing has_input biosample or processed sample
+db.material_processing_set.aggregate([
     {
         $lookup: {
         from: "biosample_set",
