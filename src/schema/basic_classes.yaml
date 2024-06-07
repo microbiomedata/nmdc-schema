@@ -589,7 +589,7 @@ slots:
     description: >-
       Provides a summary about what caused a lab or workflow process to fail
     comments:
-      - For example Low read count from a sequencer, malformed fastq files, etc)
+      - For example, low read count from a sequencer, malformed fastq files, etc.
 
   replaces:
     range: WorkflowChain
