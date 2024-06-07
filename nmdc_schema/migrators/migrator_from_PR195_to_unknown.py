@@ -92,7 +92,7 @@ class Migrator(MigratorBase):
     ) -> dict:
         r"""
         Removes the `gold_analysis_project_identifiers` field from the specified `WorkflowExecution`,
-        if (a) that field exists and (b) the `WorkflowChain`'s `type` is `nmdc:MetagenomeAnnotation`.
+        if (a) that field exists and (b) the `WorkflowExecution`'s `type` is `nmdc:MetagenomeAnnotation`.
 
         If the field exists, this function stores its value(s) in a shared data structure, which will be used
         later to effectively store those same value(s) in the `gold_analysis_project_identifiers` field
