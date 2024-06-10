@@ -3,10 +3,12 @@ workflow_chain_set:
     analyte_category: metagenome
     was_informed_by: nmdc:dgns-11-s9xj2r24
     type: nmdc:WorkflowChain
+    ended_at_time: '2023-08-04T16:00:00Z'
   - id: nmdc:wfch-12-cd
     analyte_category: metagenome
     was_informed_by: nmdc:dgns-11-s9xj2r24
     type: nmdc:WorkflowChain
+    ended_at_time: '2024-08-04T16:00:00Z'
 workflow_execution_set:
   - id: nmdc:wfrqc-12-63da5n74.1
     name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '

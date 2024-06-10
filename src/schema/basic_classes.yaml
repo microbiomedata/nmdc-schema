@@ -375,9 +375,15 @@ classes:
       - was_informed_by
       - gold_analysis_project_identifiers
       - jgi_portal_analysis_project_identifiers
+      - replaces
+      - ended_at_time
     slot_usage:
       id:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      replaces:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -444,8 +450,6 @@ classes:
               required: true
     slot_usage:
       started_at_time:
-        required: true
-      ended_at_time:
         required: true
       git_url:
         required: true
@@ -594,7 +598,13 @@ slots:
     description: >-
       Provides a summary about what caused a lab or workflow process to fail
     comments:
-      - For example Low read count from a sequencer, malformed fastq files, etc)
+      - For example, low read count from a sequencer, malformed fastq files, etc.
+
+  replaces:
+    range: WorkflowChain
+    description: >-
+      The id of the WorkflowChain that is a previous iteration of the current WorkflowChain.
+
 
 enums:
   CreditEnum:
