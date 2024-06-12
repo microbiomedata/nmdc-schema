@@ -551,10 +551,6 @@ slots:
     comments:
       - For example, low read count from a sequencer, malformed fastq files, etc.
 
-  replaces:
-    range: WorkflowChain
-    description: >-
-      The id of the WorkflowChain that is a previous iteration of the current WorkflowChain.
 
 
 enums:
