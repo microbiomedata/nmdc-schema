@@ -6,7 +6,7 @@ import io
 import json
 import pkgutil
 from os.path import getatime
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import click
 import yaml
@@ -59,7 +59,7 @@ def get_materialized_nmdc_yaml_string():
     return materialized_nmdc_yaml_string
 
 
-def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
+def get_nmdc_jsonschema_bytesIO(variant: Optional[str] = None) -> io.BytesIO:
     """Returns the nmdc.schema.json file as bytes steam.
     This function is not intended to be used directly, but it used by other functions
 
@@ -68,11 +68,16 @@ def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
     BytesIO
         A bytes stream of nmdc.schema.json file.
     """
-    # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc.schema.json"))
+
+    # Determine which resource we will return.
+    resource = "nmdc.schema.json"
+    if variant == "materialized":
+        resource = "nmdc_materialized_patterns.schema.json"
+
+    return io.BytesIO(pkgutil.get_data(__name__, resource))
 
 
-def get_nmdc_jsonschema_bytes() -> bytes:
+def get_nmdc_jsonschema_bytes(variant: Optional[str] = None) -> bytes:
     """Reruns the nmdc.schema.json file as bytes.
 
     Returns
@@ -80,11 +85,11 @@ def get_nmdc_jsonschema_bytes() -> bytes:
     bytes
         The bytes of the nmdc.schema.json file.
     """
-    nmdc_json = get_nmdc_jsonschema_bytesIO()
+    nmdc_json = get_nmdc_jsonschema_bytesIO(variant=variant)
     return nmdc_json.getvalue()
 
 
-def get_nmdc_jsonschema_string() -> str:
+def get_nmdc_jsonschema_string(variant: Optional[str] = None) -> str:
     """Reruns the nmdc.schema.json file as a string.
 
     Returns
@@ -92,11 +97,11 @@ def get_nmdc_jsonschema_string() -> str:
     str
         A string containing the contents of nmdc.schema.json file.
     """
-    nmdc_json = get_nmdc_jsonschema_bytes()
+    nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
     return nmdc_json.decode("utf-8")
 
 
-def get_nmdc_jsonschema_dict() -> Dict:
+def get_nmdc_jsonschema_dict(variant: Optional[str] = None) -> Dict:
     """Parses the nmdc.schema.json file into a dict.
 
     Returns
@@ -104,11 +109,11 @@ def get_nmdc_jsonschema_dict() -> Dict:
     dict
         The dict of the keys and value in the nmdc.schema.json file.
     """
-    nmdc_json = get_nmdc_jsonschema_bytes()
+    nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
     return json.loads(nmdc_json)
 
 
-def get_nmdc_jsonschema() -> str:
+def get_nmdc_jsonschema(variant: Optional[str] = None) -> str:
     """
     Returns the NMDC jsonschema (nmdc.schema.json) as json.
 
@@ -117,7 +122,7 @@ def get_nmdc_jsonschema() -> str:
     str
         JSON string representation of the NMDC jsonschema (nmdc.schema.json).
     """
-    nmdc_schema = get_nmdc_jsonschema_dict()
+    nmdc_schema = get_nmdc_jsonschema_dict(variant=variant)
     return json.dumps(nmdc_schema, indent=2)
 
 
