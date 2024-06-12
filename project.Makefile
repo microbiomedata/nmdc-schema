@@ -259,7 +259,7 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_le
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
 		--migrator-name migrator_from_9_3_to_10_0 \
-		--migrator-name migrator_from_X_to_PR2_and_PR24 \
+		--migrator-name migrator_from_10_3_0_to_11_0_0 \
 		--salvage-prefix generic \
 		--schema-path $(word 1,$^) \
 		--output-path $@
@@ -493,9 +493,7 @@ local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	sed -i.bak 's/gold:/GOLD:/' $@.tmp # kludge modify data to match (old!) schema
 	rm -rf $@.tmp.bak
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_X_to_PR4 \
-		--migrator-name migrator_from_X_to_PR2_and_PR24 \
-		--migrator-name migrator_from_X_to_PR3 \
+		--migrator-name migrator_from_10_3_0_to_11_0_0 \
 		--schema-path $< \
 		--input-path $@.tmp \
 		--salvage-prefix generic \
