@@ -6,8 +6,7 @@ workflow_execution_set:
     img_identifiers: 
       - img.taxon:3300062116
       - img.taxon:3300062117
-    part_of:
-      - nmdc:wfch-11-ab
+    was_informed_by: nmdc:dgns-11-d9u4ua
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     execution_resource: NERSC-Cori
@@ -63,8 +62,7 @@ workflow_execution_set:
 
   - id: nmdc:wfmag-99-VOgM5i.1
     name: MAGs activiity 1781_86089
-    part_of:
-      - nmdc:wfch-12-ab
+    was_informed_by: nmdc:dgns-11-s95am8
     started_at_time: '2021-01-10T00:00:00+00:00'
     ended_at_time: '2021-01-10T00:00:00+00:00'
     type: nmdc:MagsAnalysis
