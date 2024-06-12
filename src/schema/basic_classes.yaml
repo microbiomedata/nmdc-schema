@@ -423,7 +423,8 @@ classes:
           interpolated: true
       execution_resource:
         required: true
-
+      was_informed_by:
+        required: true
 slots:
   associated_studies:
     description: The study associated with a resource.
