@@ -11,5 +11,4 @@ workflow_execution_set:
       - nmdc:dobj-11-647rwq98
     started_at_time: "2018-11-13T20:20:39+00:00"
     ended_at_time: "2018-11-13T20:20:39+00:00"
-    part_of:
-      - nmdc:wfch-99-abcdefg
+    was_informed_by: nmdc:dgms-11-djr98s

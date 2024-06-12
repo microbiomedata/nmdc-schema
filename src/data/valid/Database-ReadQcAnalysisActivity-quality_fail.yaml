@@ -14,8 +14,7 @@ workflow_execution_set:
     started_at_time: "2023-08-29T19:41:47.365957+00:00"
     ended_at_time: "2023-08-30T13:26:02.892410+00:00"
     execution_resource: NERSC-Perlmutter
-    part_of:
-      - nmdc:wfch-11-ab
+    was_informed_by: nmdc:dgns-11-dkd74a
     git_url: https://github.com/microbiomedata/ReadsQC
     version: v1.0.8
     has_input:
@@ -31,8 +30,7 @@ workflow_execution_set:
     started_at_time: "2023-08-29T19:41:47.365957+00:00"
     ended_at_time: "2023-08-30T13:26:02.892410+00:00"
     execution_resource: NERSC-Perlmutter
-    part_of:
-      - nmdc:wfch-11-ab
+    was_informed_by: nmdc:omprc-11-d9ra7y
     git_url: https://github.com/microbiomedata/ReadsQC
     version: v1.0.8
     has_input:
@@ -53,8 +51,7 @@ workflow_execution_set:
         type: nmdc:FailureCategorization
     qc_comment: Most data removed for artifacts
     type: nmdc:ReadQcAnalysis
-    part_of:
-      - nmdc:wfch-11-ab
+    was_informed_by: nmdc:dgns-11-dkf85s
     started_at_time: "2023-08-29T19:41:47.365957+00:00"
     ended_at_time: "2023-08-30T13:26:02.892410+00:00"
     execution_resource: NERSC-Perlmutter

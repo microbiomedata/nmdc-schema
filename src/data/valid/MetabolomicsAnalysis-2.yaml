@@ -11,5 +11,4 @@ has_output:
   - nmdc:dobj-11-ndgg7b37
   - nmdc:dobj-11-ndgg7b38
 type: nmdc:MetabolomicsAnalysis
-part_of:
-  - nmdc:wfch-11-ndgg7b31
+was_informed_by: nmdc:dgms-11-dj832d
