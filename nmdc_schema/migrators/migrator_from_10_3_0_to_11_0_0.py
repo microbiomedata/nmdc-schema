@@ -26,5 +26,9 @@ class Migrator(MigratorBase):
         num_migrators = len(migrator_classes)
         for idx, migrator_class in enumerate(migrator_classes):
             self.logger.info(f"Running migrator {idx + 1} of {num_migrators}")
+            self.logger.debug(
+                f"Migrating from {migrator_class.get_origin_version()} "
+                f"to {migrator_class.get_destination_version()}"
+            )
             migrator = migrator_class(adapter=self.adapter, logger=self.logger)
             migrator.upgrade()
