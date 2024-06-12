@@ -59,7 +59,11 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
-
+      was_informed_by:
+       	structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true 
+       
   MetatranscriptomeAssembly:
     class_uri: nmdc:MetatranscriptomeAssembly
     is_a: WorkflowExecution
@@ -100,6 +104,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   MetatranscriptomeAnnotation:
     class_uri: nmdc:MetatranscriptomeAnnotation
@@ -124,7 +132,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated: true
-
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   MetatranscriptomeAnalysis:
     class_uri: nmdc:MetatranscriptomeAnalysis
@@ -143,6 +154,10 @@ classes:
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
 
   MagsAnalysis:
@@ -168,6 +183,10 @@ classes:
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
 
   MetagenomeSequencing:
@@ -186,6 +205,10 @@ classes:
       has_input:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   ReadQcAnalysis:
@@ -208,6 +231,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   ReadBasedTaxonomyAnalysis:
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
@@ -222,7 +249,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
-
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   MetabolomicsAnalysis:
     class_uri: nmdc:MetabolomicsAnalysis
@@ -238,6 +268,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
@@ -252,6 +286,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   NomAnalysis:
     class_uri: nmdc:NomAnalysis
@@ -265,6 +303,10 @@ classes:
         required: true
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
+      was_informed_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   CalibrationInformation:
