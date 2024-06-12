@@ -60,7 +60,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       was_informed_by:
-       	structured_pattern:
+        structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true 
        
