@@ -1386,6 +1386,13 @@ classes:
           - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter
             we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
 
+      wind_speed:
+        aliases:
+          - Wind_Speed_Mean
+        alt_descriptions:
+          alt_description_source: GLBRC
+          alt_description_text: Wind speed measured at 10 m every 10 seconds, integrated and stored hourly. Arithmetic mean per sampling day reported.
+
     exact_mappings:
       - OBI:0000747
       - NCIT:C43412
