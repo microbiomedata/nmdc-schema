@@ -112,6 +112,8 @@ def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None)
     >>> bytes_b = get_nmdc_jsonschema_bytes(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
     >>> type(bytes_b) is bytes and b"version" in bytes_b
     True
+    >>> len(bytes_b) > len(bytes_a)  # assumes that including structured patterns makes the file larger
+    True
     """
     nmdc_json = get_nmdc_jsonschema_bytesIO(variant=variant)
     return nmdc_json.getvalue()
@@ -130,6 +132,8 @@ def get_nmdc_jsonschema_string(variant: Optional[SchemaVariantIdentifier] = None
     True
     >>> str_b = get_nmdc_jsonschema_string(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
     >>> type(str_b) is str and "version" in str_b
+    True
+    >>> len(str_b) > len(str_a)  # assumes that including structured patterns makes the file larger
     True
     """
     nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
