@@ -7,8 +7,8 @@ class Migrator(MigratorBase):
     r"""Migrates a database between two schemas.
     """
 
-    _from_version = "10.3.0"
-    _to_version = "10.4.0"
+    _from_version = "10.5.3"
+    _to_version = "10.6.0"
 
     pattern = re.compile(r"(^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$)")
 
