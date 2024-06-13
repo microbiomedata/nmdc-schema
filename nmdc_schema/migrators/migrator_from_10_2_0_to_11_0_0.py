@@ -1,5 +1,7 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import get_migrators
+from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
+    get_migrator_classes,
+)
 
 
 class Migrator(MigratorBase):
@@ -22,7 +24,7 @@ class Migrator(MigratorBase):
         This migrator uses partial migrators. It runs them in the order in which they were designed to be run.
         """
 
-        migrator_classes = get_migrators()
+        migrator_classes = get_migrator_classes()
         num_migrators = len(migrator_classes)
         for idx, migrator_class in enumerate(migrator_classes):
             self.logger.info(f"Running migrator {idx + 1} of {num_migrators}")

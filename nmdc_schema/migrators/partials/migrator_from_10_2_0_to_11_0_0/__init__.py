@@ -20,17 +20,18 @@ from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrat
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_PR195_to_unknown
 
 
-def get_migrators() -> List[Type[MigratorBase]]:
+def get_migrator_classes() -> List[Type[MigratorBase]]:
     r"""
-    Returns a list of migrators (i.e. classes) in the order in which they were designed to be run.
+    Returns a list of migrator classes in the order in which they (i.e. their `upgrade` methods)
+    were designed to be run.
 
-    >>> migrators = get_migrators()
-    >>> type(migrators) is list and len(migrators) > 0  # the function returns a list
+    >>> migrator_classes = get_migrator_classes()
+    >>> type(migrator_classes) is list and len(migrator_classes) > 0  # the function returns a list
     True
     >>> from inspect import isclass
-    >>> all(isclass(m) for m in migrators)  # each list item is a classes
+    >>> all(isclass(c) for c in migrator_classes)  # each list item is a classes
     True
-    >>> all(callable(getattr(m, "upgrade")) for m in migrators)  # each class has an `upgrade` method
+    >>> all(callable(getattr(c, "upgrade")) for c in migrator_classes)  # each class has an `upgrade` method
     True
     """
 
