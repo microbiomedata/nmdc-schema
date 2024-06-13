@@ -22,7 +22,11 @@ class SchemaVariantIdentifier(str, Enum):
 
     >>> type(SchemaVariantIdentifier.nmdc_materialized_patterns) is SchemaVariantIdentifier
     True
+    >>> "nmdc_materialized_patterns" == SchemaVariantIdentifier.nmdc_materialized_patterns
+    True
     >>> type(SchemaVariantIdentifier.nmdc_materialized_patterns.value) is str
+    True
+    >>> "nmdc_materialized_patterns" == SchemaVariantIdentifier.nmdc_materialized_patterns.value
     True
     """
 
@@ -92,7 +96,7 @@ def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = Non
 
     # Determine which file we will use.
     file_name = "nmdc.schema.json"
-    if variant == SchemaVariantIdentifier.nmdc_materialized_patterns.value:
+    if variant == SchemaVariantIdentifier.nmdc_materialized_patterns:
         file_name = "nmdc_materialized_patterns.schema.json"
 
     return io.BytesIO(pkgutil.get_data(__name__, file_name))
