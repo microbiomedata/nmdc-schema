@@ -112,10 +112,29 @@ docs = ["mkdocs-material"]
 #-rw-rw-r-- 1 mark mark 677874 Jun 13 13:49 nmdc_schema/nmdc.py
 #-rw-rw-r-- 1 mark mark 680860 Jun 13 13:49 nmdc_schema/nmdc_schema_accepting_legacy_ids.py
 
+# YAML VERSIONS OF THE SCHEMA
+#src/schema/nmdc.yaml
+#nmdc_schema/nmdc_schema_merged.yaml
+#nmdc_schema/nmdc_materialized_patterns.yaml
+#nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+
+#project/nmdc_schema_merged.yaml
+#project/nmdc_materialized_patterns.yaml
+#project/nmdc_schema_generated.yaml
+
+# JSON SCHEMA VERSIONS OF THE SCHEMA doesn't include nmdc_schema/nmdc.schema.json
+# some of these get bundled; all could be regerenated from any bundled YAML
+#nmdc_schema/nmdc_materialized_patterns.schema.json
+#nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json
+
+#project/nmdc_materialized_patterns.schema.json
+#project/jsonschema/nmdc.schema.json
+
+
+
 [tool.poetry.scripts]
 # ncbi_postgres_nmdc_exact_term_matching.py
 # shell: iterative-validation.sh
-# shell: json-dir-to-mongodb.sh
 analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
 anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
 check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
