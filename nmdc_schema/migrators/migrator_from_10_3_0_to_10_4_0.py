@@ -10,7 +10,7 @@ class Migrator(MigratorBase):
     _from_version = "10.3.0"
     _to_version = "10.4.0"
 
-    pattern = re.compile(r"\.[0-9]+$")
+    pattern = re.compile(r"(^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$)")
 
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
@@ -25,11 +25,11 @@ class Migrator(MigratorBase):
         Reference: https://docs.python.org/3/library/re.html#re.Pattern.search
 
         >>> m = Migrator()
-        >>> m.is_valid_id("invalid_id")
+        >>> m.is_valid_id("nmdc:wfnom-13-7yf9qj85")
         False
-        >>> m.is_valid_id("valid.1")
+        >>> m.is_valid_id("nmdc:wfnom-13-7yf9qj85.1")
         True
-        >>> m.is_valid_id("valid.123")
+        >>> m.is_valid_id("nmdc:wfnom-13-7yf9qj85.10")
         True
         """
 
@@ -42,12 +42,12 @@ class Migrator(MigratorBase):
         If there are not then the alternative_identifiers slot is created if needed with the invalid id as a value.
 
         >>> m = Migrator()
-        >>> m.populate_alternative_identifiers({'id': '1'}) # test: adds alternative identifiers
-        {'id': '1', 'alternative_identifiers': ['1']}
-        >>> m.populate_alternative_identifiers({'id': '1.1','alternative_identifiers': ['alt 1']}) # test no change, alternative identifiers already present with valid id
-        {'id': '1.1', 'alternative_identifiers': ['alt 1']}
-        >>> m.populate_alternative_identifiers({'id': '1.1'}) # test no change, alternative identifiers not present, but with valid id
-        {'id': '1.1'}
+        >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85'}) # test: adds alternative identifiers
+        {'id': 'nmdc:wfnom-13-7yf9qj85', 'alternative_identifiers': ['nmdc:wfnom-13-7yf9qj85']}
+        >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85.1','alternative_identifiers': ['alt 1']}) # test no change, alternative identifiers already present with valid id
+        {'id': 'nmdc:wfnom-13-7yf9qj85.1', 'alternative_identifiers': ['alt 1']}
+        >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85.1'}) # test no change, alternative identifiers not present, but with valid id
+        {'id': 'nmdc:wfnom-13-7yf9qj85.1'}
 
         """
         self.logger.info(f"Checking alternative_identifiers for NomAnalysisActivity: {nom_analysis_activity['id']}")
@@ -66,10 +66,10 @@ class Migrator(MigratorBase):
         if it has no version number.
 
         >>> m = Migrator()
-        >>> m.update_nom_analysis_activity_id({'id': '1'}) # test: adds version number to id
-        {'id': '1.1'}
-        >>> m.update_nom_analysis_activity_id({'id': '1.1'}) # test if version number is already there, no change
-        {'id': '1.1'}
+        >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj85'}) # test: adds version number to id
+        {'id': 'nmdc:wfnom-13-7yf9qj85.1'}
+        >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj85.1'}) # test if version number is already there, no change
+        {'id': 'nmdc:wfnom-13-7yf9qj85.1'}
 
         """
         self.logger.info(f"Checking ID for NomAnalysisActivity: {nom_analysis_activity['id']}")
