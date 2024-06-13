@@ -102,35 +102,6 @@ docs = ["mkdocs-material"]
 # be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
 # cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
 
-# EXECUTABLE
-#-rwxrwxr-x 1 mark mark    320 Feb 13 14:11 nmdc_schema/get_json_schema.py
-#-rw-rw-r-- 1 mark mark    393 Feb 13 14:11 nmdc_schema/get_nmdc_view.py
-#-rwxrwxr-x 1 mark mark   7237 Apr  5 16:29 nmdc_schema/nmdc_data.py
-#-rwxrwxr-x 1 mark mark   3148 Feb 13 14:11 nmdc_schema/validate_nmdc_json.py
-
-# PYTHON VERSION OF THE SCHEMA
-#-rw-rw-r-- 1 mark mark 677874 Jun 13 13:49 nmdc_schema/nmdc.py
-#-rw-rw-r-- 1 mark mark 680860 Jun 13 13:49 nmdc_schema/nmdc_schema_accepting_legacy_ids.py
-
-# YAML VERSIONS OF THE SCHEMA
-#src/schema/nmdc.yaml
-#nmdc_schema/nmdc_schema_merged.yaml
-#nmdc_schema/nmdc_materialized_patterns.yaml
-#nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-
-#project/nmdc_schema_merged.yaml
-#project/nmdc_materialized_patterns.yaml
-#project/nmdc_schema_generated.yaml
-
-# JSON SCHEMA VERSIONS OF THE SCHEMA doesn't include nmdc_schema/nmdc.schema.json
-# some of these get bundled; all could be regerenated from any bundled YAML
-#nmdc_schema/nmdc_materialized_patterns.schema.json
-#nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json
-
-#project/nmdc_materialized_patterns.schema.json
-#project/jsonschema/nmdc.schema.json
-
-
 
 [tool.poetry.scripts]
 # ncbi_postgres_nmdc_exact_term_matching.py
@@ -160,3 +131,32 @@ schema-view-relation-graph = "src.scripts.schema_view_relation_graph:cli"
 scrutinize-elements = "src.scripts.scrutinize_elements:process_schema_elements"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
 test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"
+
+# YAML VERSIONS OF THE SCHEMA
+#src/schema/nmdc.yaml
+#nmdc_schema/nmdc_schema_merged.yaml
+#nmdc_schema/nmdc_materialized_patterns.yaml
+#nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
+
+#project/nmdc_schema_merged.yaml
+#project/nmdc_materialized_patterns.yaml
+#project/nmdc_schema_generated.yaml
+
+# JSON SCHEMA VERSIONS OF THE SCHEMA doesn't include nmdc_schema/nmdc.schema.json
+# some of these get bundled; all could be regerenated from any bundled YAML
+#nmdc_schema/nmdc_materialized_patterns.schema.json
+#nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json
+
+#project/nmdc_materialized_patterns.schema.json
+#project/jsonschema/nmdc.schema.json
+
+# PYTHON VERSION OF THE SCHEMA
+#-rw-rw-r-- 1 mark mark 677874 Jun 13 13:49 nmdc_schema/nmdc.py
+#-rw-rw-r-- 1 mark mark 680860 Jun 13 13:49 nmdc_schema/nmdc_schema_accepting_legacy_ids.py
+
+# EXECUTABLE
+#-rwxrwxr-x 1 mark mark    320 Feb 13 14:11 nmdc_schema/get_json_schema.py
+#-rw-rw-r-- 1 mark mark    393 Feb 13 14:11 nmdc_schema/get_nmdc_view.py
+#-rwxrwxr-x 1 mark mark   7237 Apr  5 16:29 nmdc_schema/nmdc_data.py
+#-rwxrwxr-x 1 mark mark   3148 Feb 13 14:11 nmdc_schema/validate_nmdc_json.py
+
