@@ -303,6 +303,7 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 DOCTEST_OPT ?= -v
 migration-doctests:
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/partials/**/*.py
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
 
