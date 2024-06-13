@@ -408,6 +408,20 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$"
           interpolated: true
+      has_input:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_process_parts:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+        description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
 
   SubSamplingProcess:
     class_uri: 'nmdc:SubSamplingProcess'

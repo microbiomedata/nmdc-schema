@@ -1,7 +1,7 @@
 id: nmdc:pex-99-18sD2
 type: nmdc:ProtocolExecution
 has_input:
-  - nmdc:bsm-6
+  - nmdc:bsm-65-0002
 has_process_parts:
   - nmdc:extrp-71-r2pk
 protocol_execution_category: organic_matter_extraction

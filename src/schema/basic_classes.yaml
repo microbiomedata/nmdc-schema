@@ -562,8 +562,6 @@ slots:
     multivalued: true
     description: >-
       An input to a process.
-    structured_pattern:
-      syntax: "XXXX"
 
   has_output:
     aliases:
@@ -571,8 +569,6 @@ slots:
     range: NamedThing
     multivalued: true
     description: An output from a process.
-    structured_pattern:
-      syntax: "XXXX"
 
   instrument_used:
     range: Instrument
