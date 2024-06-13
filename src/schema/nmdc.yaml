@@ -270,7 +270,6 @@ classes:
       - protocol_execution_set
       - storage_process_set
       - study_set
-      - workflow_chain_set
       - workflow_execution_set
 
   Pooling:
@@ -1004,12 +1003,6 @@ slots:
       This property links a database object to the set of omics processings
       within it.
 
-  workflow_chain_set:
-    mixins: object_set
-    range: WorkflowChain
-    description:
-      This property links a database object to the set of workflow chains
-      within it.
 
   processed_sample_set:
     mixins: object_set

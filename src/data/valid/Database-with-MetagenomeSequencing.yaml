@@ -2,11 +2,10 @@ workflow_execution_set:
   - id: 'nmdc:wfmsa-11-547rwq94.1'
     has_input:
       - 'nmdc:bsm-11-547rwq94'
-    part_of:
-      - nmdc:wfch-11-ab
     git_url: 'https://github.com/microbiomedata/RawSequencingData'
     execution_resource: JGI
     version: v1.0.0
+    was_informed_by: nmdc:dgns-11-448dfa
     has_output:
       - nmdc:dobj-11-547rwq74
     name: Sequencing Activity for my awesome project

@@ -1,14 +1,13 @@
 id: nmdc:wfmsa-11-ebq93z66.1
 has_input:
   - 'nmdc:bsm-11-547rwq94'
-part_of:
-  - nmdc:wfch-11-ab
+was_informed_by: nmdc:dgns-11-kabd12
 git_url: 'https://github.com/microbiomedata/RawSequencingData'
 execution_resource: JGI
 version: v1.0.0
 has_output:
   - nmdc:dobj-11-ebq93z68
-name: Sequencing Activity for nmdc:mga0vx38
+name: Sequencing Activity for nmdc:dgns-11-kabd12
 started_at_time: '2021-08-05T14:48:51+00:00'
 ended_at_time: '2021-09-15T10:13:20+00:00'
 type: nmdc:MetagenomeSequencing

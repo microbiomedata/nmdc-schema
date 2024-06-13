@@ -17,8 +17,7 @@ has_output:
 img_identifiers:
   - img.taxon:x1
 name: xxx
-part_of:
-  - nmdc:wfch-99-101010
+was_informed_by: nmdc:omprc-11-djb2d2
 processing_institution: JGI
 protocol_link:
   type: nmdc:Protocol

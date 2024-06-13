@@ -14,5 +14,4 @@ workflow_execution_set:
     ended_at_time: "2018-11-13T20:20:39+00:00"
     alternative_identifiers:
       - nmdc:wfnom-11-547rwq94
-    part_of:
-      - nmdc:wfch-11-547rwq94
+    was_informed_by: nmdc:dgms-11-sd2d94

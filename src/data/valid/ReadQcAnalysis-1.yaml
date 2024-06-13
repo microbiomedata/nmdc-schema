@@ -11,8 +11,7 @@ output_base_count: 100.0
 output_read_bases: 100.0
 output_read_count: 3.0
 started_at_time: '2021-08-05T14:48:51+00:00'
-part_of:
-  - nmdc:wfch-99-xxxxx1
+was_informed_by: nmdc:omprc-11-547rwq95
 has_input:
   - nmdc:dobj-99-xxxxx1
 has_output:
