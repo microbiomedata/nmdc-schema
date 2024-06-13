@@ -6037,7 +6037,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -6579,7 +6578,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -6748,7 +6746,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -7020,7 +7017,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -7180,7 +7176,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -7346,7 +7341,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -7515,7 +7509,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -7684,7 +7677,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -7956,7 +7948,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -8265,7 +8256,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -9370,7 +9360,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -9554,7 +9543,6 @@
                 }
             },
             "required": [
-                "ended_at_time",
                 "execution_resource",
                 "git_url",
                 "part_of",
@@ -10828,6 +10816,10 @@
                     "description": "The date on which any process or activity was ended",
                     "type": "string"
                 },
+                "ended_at_time": {
+                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+                    "type": "string"
+                },
                 "gold_analysis_project_identifiers": {
                     "description": "identifiers for corresponding analysis projects in GOLD",
                     "items": {
@@ -10887,6 +10879,11 @@
                 "qc_status": {
                     "$ref": "#/$defs/StatusEnum",
                     "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
+                },
+                "replaces": {
+                    "description": "The id of the WorkflowChain that is a previous iteration of the current WorkflowChain.",
+                    "pattern": ".*",
+                    "type": "string"
                 },
                 "start_date": {
                     "description": "The date on which any process or activity was started",

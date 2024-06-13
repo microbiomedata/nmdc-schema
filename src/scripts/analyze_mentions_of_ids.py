@@ -1,6 +1,8 @@
 import logging
 from linkml_runtime import SchemaView
-from typing import Dict, List, Set, Union
+from typing import Dict, List, Union
+
+import click
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -172,14 +174,18 @@ def process_descendants(reference_view: SchemaView, pr_descendant: str, referenc
         logger.info(f"{pr_descendant} has no identifying slot")
 
 
-def main() -> None:
+@click.command()
+@click.option('--schema-file', default="src/schema/nmdc.yaml", help="Path to the reference schema file.")
+def main(schema_file):
+    # Your existing script functions and logic here
+    # Ensure your function calls and logic are indented to be included in the main function.
+
     """
     Main function to process the schema and extract structured patterns.
 
     :return: None
     """
-    scrutinized_view = SchemaView(scrutinized_file)
-    reference_view = SchemaView(reference_file)
+    reference_view = SchemaView(schema_file)
 
     reference_classes = reference_view.all_classes()
     reference_class_names = sorted(reference_classes.keys())

@@ -88,18 +88,56 @@ build-backend = "poetry_dynamic_versioning.backend"
 [tool.poetry.extras]
 docs = ["mkdocs-material"]
 
+
+# scripts should have click clis
+# click parameters/options should be written out with hyphens
+# click parameters/options should use consistent names
+# scripts should be listed here in tool.poetry.scripts
+# use underscores to delimit file name
+# use hyphens to delimit CLI alias
+# scripts/aliases should be illustrated in a Makefile
+# Makefile targets should make use of $< etc for input and $@ for output
+# input and output files should use hyphens as delimters in their names
+# check usages of these features in other NMDC code before changing
+# be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
+# cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
+
+# EXECUTABLE
+#-rwxrwxr-x 1 mark mark    320 Feb 13 14:11 nmdc_schema/get_json_schema.py
+#-rw-rw-r-- 1 mark mark    393 Feb 13 14:11 nmdc_schema/get_nmdc_view.py
+#-rwxrwxr-x 1 mark mark   7237 Apr  5 16:29 nmdc_schema/nmdc_data.py
+#-rwxrwxr-x 1 mark mark   3148 Feb 13 14:11 nmdc_schema/validate_nmdc_json.py
+
+# PYTHON VERSION OF THE SCHEMA
+#-rw-rw-r-- 1 mark mark 677874 Jun 13 13:49 nmdc_schema/nmdc.py
+#-rw-rw-r-- 1 mark mark 680860 Jun 13 13:49 nmdc_schema/nmdc_schema_accepting_legacy_ids.py
+
 [tool.poetry.scripts]
+# ncbi_postgres_nmdc_exact_term_matching.py
+# shell: iterative-validation.sh
+# shell: json-dir-to-mongodb.sh
+analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
 anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
+check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
+class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
 class-sparql = "nmdc_schema.class_sparql:main"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
+database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
+date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Tutrle string, for copying into other RDF/TTL files. may need some paramterizastion.
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema"
 get-slots-from-class = "nmdc_schema.get_slots_from_class:main" # see tests/test_getters.py
 get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main"
 get-study-related-records = "src.scripts.nmdc_database_tools:cli"
+interleave-yaml = "src.scripts.interleave_yaml:process_yaml"
 migration-recursion = 'nmdc_schema.migration_recursion:main'
 nmdc-data = "nmdc_schema.nmdc_data:cli"
 nmdc-ncbi-mapping = "src.scripts.ncbi_nmdc_exact_term_matching:cli"
 nmdc-version = "nmdc_schema.nmdc_version:cli"
 pure-export = "nmdc_schema.dump_single_modality:cli"
+report-biosamples-per-study = "src.scripts.report_biosamples_per_study:query_biosamples"
+report-usages = "src.scripts.report_usages:display_slot_usage"
+schema-pattern-linting = "src.scripts.schema_pattern_linting:main"
+schema-view-relation-graph = "src.scripts.schema_view_relation_graph:cli"
+scrutinize-elements = "src.scripts.scrutinize_elements:process_schema_elements"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
 test-more-tolerant-schema = "nmdc_schema.test_more_tolerant_schema:do_test"

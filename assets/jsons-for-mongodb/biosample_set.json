@@ -5,7 +5,7 @@
         "name": "Permafrost microbial communities from Stordalen Mire, Sweden - 611E1M metaG",
         "description": "Permafrost microbial communities from Stordalen Mire, Sweden",
         "associated_studies": [
-            "nmdc:sty-00-8675309"
+            "nmdc:sty-99-8675309"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -64,7 +64,7 @@
         "name": "Forest soil microbial communities from Barre Woods Harvard Forest LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O",
         "description": "Forest soil from Barre Woods Harvard Forest LTER site was incubated at 10C with heavy water. Sample is from a control plot at ambient soil temperature, organic horizon - top 4cm of soil",
         "associated_studies": [
-            "nmdc:sty-00-8675309"
+            "nmdc:sty-99-8675309"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -123,7 +123,7 @@
         "name": "Rhizosphere microbial communities from Carex aquatilis grown in University of Washington, Seatle, WA, United States - 4-1-23 metaG",
         "description": "Rhizosphere microbial communities from Carex aquatilis grown in submerged peat from a thermokarst bog, University of Washington, Seatle, WA, United States",
         "associated_studies": [
-            "nmdc:sty-00-8675309"
+            "nmdc:sty-99-8675309"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -181,7 +181,7 @@
         "id": "nmdc:bsm-99-dtTMNb",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -764,7 +764,7 @@
         "name": "Lithgow State Coal Mine Calcium nutrients (early)",
         "description": "Bulk Aqueous phase filtered water",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -831,7 +831,7 @@
         "name": "Lithgow State Coal Mine Calcium nutrients (early)",
         "description": "Bulk Aqueous phase filtered water",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -902,7 +902,7 @@
         "name": "Lithgow State Coal Mine Calcium nutrients Extra",
         "description": "Bulk Aqueous phase filtered water",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -969,7 +969,7 @@
         "name": "Lithgow State Coal Mine Calcium nutrients",
         "description": "Bulk Aqueous phase filtered water",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1034,7 +1034,7 @@
         "id": "nmdc:bsm-99-111111",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1068,7 +1068,7 @@
         "id": "nmdc:bsm-99-abcdef",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1102,7 +1102,7 @@
         "id": "nmdc:bsm-99-qwerty",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1313,7 +1313,7 @@
         "id": "nmdc:bsm-99-222222",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1345,7 +1345,7 @@
         "id": "nmdc:bsm-99-333333",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1378,7 +1378,7 @@
         "id": "nmdc:bsm-99-000002",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1411,7 +1411,7 @@
         "id": "nmdc:bsm-99-000003",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1444,7 +1444,7 @@
         "id": "nmdc:bsm-99-000004",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1477,7 +1477,7 @@
         "id": "nmdc:bsm-99-000005",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1515,8 +1515,8 @@
             "generic:abc123"
         ],
         "associated_studies": [
-            "nmdc:sty-00-987654",
-            "nmdc:sty-00-qwerty"
+            "nmdc:sty-99-987654",
+            "nmdc:sty-99-qwerty"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -1546,7 +1546,7 @@
             "LTER",
             "FICUS"
         ],
-        "collected_from": "nmdc:unconstrained_site_identifier_string",
+        "collected_from": "nmdc:frsite-99-29dl6v",
         "embargoed": true,
         "host_taxid": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3345,7 +3345,7 @@
         "id": "nmdc:bsm-99-555555",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3378,7 +3378,7 @@
         "id": "nmdc:bsm-99-000001",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3411,7 +3411,7 @@
         "id": "nmdc:bsm-99-000006",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3445,7 +3445,7 @@
         "type": "nmdc:Biosample",
         "name": "real biosample from the field",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3477,7 +3477,7 @@
         "type": "nmdc:Biosample",
         "name": "one DNA library, like an analytical sample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3508,7 +3508,7 @@
         "id": "nmdc:bsm-99-abcdef1",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3539,7 +3539,7 @@
         "id": "nmdc:bsm-99-abcdef2",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
@@ -3570,7 +3570,7 @@
         "id": "nmdc:bsm-99-abcdef3",
         "type": "nmdc:Biosample",
         "associated_studies": [
-            "nmdc:sty-00-abc123"
+            "nmdc:sty-99-abc123"
         ],
         "env_broad_scale": {
             "type": "nmdc:ControlledIdentifiedTermValue",
