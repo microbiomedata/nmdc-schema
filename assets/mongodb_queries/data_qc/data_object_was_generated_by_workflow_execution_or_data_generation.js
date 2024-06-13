@@ -9,7 +9,7 @@ applicableClasses.forEach(function(applicableClass) {
         },
         {
             $lookup: {
-                from: "activity_set",
+                from: "workflow_execution_set",
                 localField: "was_generated_by",
                 foreignField: "id",
                 as: "was_generated_by_docs"
@@ -17,7 +17,7 @@ applicableClasses.forEach(function(applicableClass) {
         },
         {
             $lookup: {
-                from: "omics_processing_set",
+                from: "data_generation_set",
                 localField: "was_generated_by",
                 foreignField: "id",
                 as: "generated_by_omics_processing_docs"

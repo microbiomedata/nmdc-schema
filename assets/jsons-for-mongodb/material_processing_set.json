@@ -8,11 +8,11 @@
             "generic:xxx"
         ],
         "has_input": [
-            "generic:xxx",
-            "generic:yyy"
+            "nmdc:procsm-99-xyz1",
+            "nmdc:procsm-99-xyz2"
         ],
         "has_output": [
-            "generic:xxx"
+            "nmdc:procsm-99-xyz3"
         ]
     },
     {
@@ -20,9 +20,9 @@
         "type": "nmdc:Pooling",
         "name": "soil sample pooling",
         "has_input": [
-            "nmdc:bsm-99-n3ybxz",
-            "nmdc:bsm-99-b316vq",
-            "nmdc:bsm-99-q9t93w"
+            "nmdc:procsm-99-k4m6j",
+            "nmdc:procsm-99-29dl",
+            "nmdc:procsm-99-3z8t"
         ],
         "has_output": [
             "nmdc:procsm-99-t2r77"

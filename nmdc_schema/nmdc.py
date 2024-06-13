@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-07T13:32:03
+# Generation date: 2024-06-13T13:49:36
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -5655,6 +5655,8 @@ class WorkflowChain(PlannedProcess):
     was_informed_by: Union[str, DataGenerationId] = None
     gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     jgi_portal_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
+    replaces: Optional[Union[str, WorkflowChainId]] = None
+    ended_at_time: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -5680,6 +5682,12 @@ class WorkflowChain(PlannedProcess):
             self.jgi_portal_analysis_project_identifiers = [self.jgi_portal_analysis_project_identifiers] if self.jgi_portal_analysis_project_identifiers is not None else []
         self.jgi_portal_analysis_project_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.jgi_portal_analysis_project_identifiers]
 
+        if self.replaces is not None and not isinstance(self.replaces, WorkflowChainId):
+            self.replaces = WorkflowChainId(self.replaces)
+
+        if self.ended_at_time is not None and not isinstance(self.ended_at_time, str):
+            self.ended_at_time = str(self.ended_at_time)
+
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
@@ -5700,21 +5708,16 @@ class WorkflowExecution(PlannedProcess):
 
     id: Union[str, WorkflowExecutionId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
     started_at_time: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    ended_at_time: Optional[str] = None
     version: Optional[str] = None
     has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.ended_at_time):
-            self.MissingRequiredField("ended_at_time")
-        if not isinstance(self.ended_at_time, str):
-            self.ended_at_time = str(self.ended_at_time)
-
         if self._is_empty(self.execution_resource):
             self.MissingRequiredField("execution_resource")
         if not isinstance(self.execution_resource, ExecutionResourceEnum):
@@ -5741,6 +5744,9 @@ class WorkflowExecution(PlannedProcess):
         if not isinstance(self.has_input, list):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
+
+        if self.ended_at_time is not None and not isinstance(self.ended_at_time, str):
+            self.ended_at_time = str(self.ended_at_time)
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
@@ -5769,7 +5775,6 @@ class MetagenomeAssembly(WorkflowExecution):
 
     id: Union[str, MetagenomeAssemblyId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -5911,7 +5916,6 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 
     id: Union[str, MetatranscriptomeAssemblyId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6053,7 +6057,6 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
 
     id: Union[str, MetatranscriptomeAnnotationId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6100,7 +6103,6 @@ class MetatranscriptomeAnalysis(WorkflowExecution):
 
     id: Union[str, MetatranscriptomeAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6138,7 +6140,6 @@ class MagsAnalysis(WorkflowExecution):
 
     id: Union[str, MagsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6202,7 +6203,6 @@ class MetagenomeSequencing(WorkflowExecution):
 
     id: Union[str, MetagenomeSequencingId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6241,7 +6241,6 @@ class ReadQcAnalysis(WorkflowExecution):
 
     id: Union[str, ReadQcAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6298,7 +6297,6 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 
     id: Union[str, ReadBasedTaxonomyAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6328,7 +6326,6 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
     id: Union[str, MetabolomicsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6367,7 +6364,6 @@ class MetaproteomicsAnalysis(WorkflowExecution):
 
     id: Union[str, MetaproteomicsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6400,7 +6396,6 @@ class NomAnalysis(WorkflowExecution):
 
     id: Union[str, NomAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -6437,7 +6432,6 @@ class MetagenomeAnnotation(WorkflowExecution):
 
     id: Union[str, MetagenomeAnnotationId] = None
     type: Union[str, URIorCURIE] = None
-    ended_at_time: str = None
     execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     part_of: Union[Union[str, WorkflowChainId], List[Union[str, WorkflowChainId]]] = None
@@ -10385,6 +10379,9 @@ slots.qc_failure_where = Slot(uri=NMDC['basic_classes/qc_failure_where'], name="
 slots.qc_failure_what = Slot(uri=NMDC['basic_classes/qc_failure_what'], name="qc_failure_what", curie=NMDC.curie('basic_classes/qc_failure_what'),
                    model_uri=NMDC.qc_failure_what, domain=None, range=Optional[Union[str, "FailureWhatEnum"]])
 
+slots.replaces = Slot(uri=NMDC['basic_classes/replaces'], name="replaces", curie=NMDC.curie('basic_classes/replaces'),
+                   model_uri=NMDC.replaces, domain=None, range=Optional[Union[str, WorkflowChainId]])
+
 slots.qc_comment = Slot(uri=NMDC.qc_comment, name="qc_comment", curie=NMDC.curie('qc_comment'),
                    model_uri=NMDC.qc_comment, domain=None, range=Optional[str])
 
@@ -12713,6 +12710,9 @@ slots.WorkflowChain_id = Slot(uri=NMDC.id, name="WorkflowChain_id", curie=NMDC.c
                    model_uri=NMDC.WorkflowChain_id, domain=WorkflowChain, range=Union[str, WorkflowChainId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
+slots.WorkflowChain_replaces = Slot(uri=NMDC['basic_classes/replaces'], name="WorkflowChain_replaces", curie=NMDC.curie('basic_classes/replaces'),
+                   model_uri=NMDC.WorkflowChain_replaces, domain=WorkflowChain, range=Optional[Union[str, WorkflowChainId]])
+
 slots.WorkflowChain_analyte_category = Slot(uri=NMDC.analyte_category, name="WorkflowChain_analyte_category", curie=NMDC.curie('analyte_category'),
                    model_uri=NMDC.WorkflowChain_analyte_category, domain=WorkflowChain, range=Union[str, "AnalyteCategoryEnum"])
 
@@ -12721,10 +12721,6 @@ slots.WorkflowChain_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_
 
 slots.WorkflowExecution_started_at_time = Slot(uri=NMDC.started_at_time, name="WorkflowExecution_started_at_time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.WorkflowExecution_started_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["startedAtTime"]],
-                   pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
-
-slots.WorkflowExecution_ended_at_time = Slot(uri=NMDC.ended_at_time, name="WorkflowExecution_ended_at_time", curie=NMDC.curie('ended_at_time'),
-                   model_uri=NMDC.WorkflowExecution_ended_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["endedAtTime"]],
                    pattern=re.compile(r'^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$'))
 
 slots.WorkflowExecution_git_url = Slot(uri=NMDC.git_url, name="WorkflowExecution_git_url", curie=NMDC.curie('git_url'),

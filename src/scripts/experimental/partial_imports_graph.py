@@ -129,7 +129,7 @@ def visualize_imports_graph(graph):
 
 
 # Example usage
-schema_dir = "../schema"
+schema_dir = "../../schema"
 graph = build_imports_graph(schema_dir)
 
 redundant_paths = find_redundant_paths(graph)

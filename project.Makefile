@@ -404,7 +404,9 @@ print-intended-yaml-files: local/gold-study-ids.yaml
 ## may help predict how long it will take to run study-id-from-filename on a particular study
 ## will become unnecessary once aggregation queries are available in the napa nmdc-runtime API
 local/biosamples-per-study.txt:
-	$(RUN) python src/scripts/report_biosamples_per_study.py > $@
+	$(RUN) report-biosamples-per-study \
+		--api-server api \
+		--max-page-size 10000 > $@
 
 ## getting a report of GOLD study identifiers, which might have been used a Study ids in legacy (pre-Napa) data
 local/gold-study-ids.json:
@@ -583,12 +585,12 @@ local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
 
 
 local/nmdc_materialized.ttl: src/schema/nmdc.yaml
-	$(RUN) python src/scripts/schema_view_relation_graph.py \
+	$(RUN) schema-view-relation-graph \
 		--schema $< \
 		--output $@
 
 local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
-	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
+	$(RUN) date-created-blank-node > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
 
@@ -669,32 +671,32 @@ assets/mermaid-erd.png: assets/mermaid-erd.mmd
 #	inkscape --export-filename=$@ $<
 
 assets/check_examples_class_coverage.txt:
-	$(RUN) python src/scripts/check_examples_class_coverage.py > $@
+	$(RUN) check-examples-class-coverage \
+		--source_directory src/data/valid \
+		--schema_file src/schema/nmdc.yaml > $@
 
 assets/schema_pattern_linting.txt:
-	$(RUN) python src/scripts/schema_pattern_linting.py > $@
+	$(RUN) schema-pattern-linting \
+ 		--schema-file src/schema/nmdc.yaml > $@
 
 assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 	$(RUN) linkml2sheets \
 		--output $@ \
 		--schema $< $(word 2,$^)
 
-assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
-	$(RUN) python src/scripts/partial_imports_graph.py
-
 local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
 local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-interleaved-class-count.tsv
-	$(RUN) python src/scripts/class_instantiation_counts.py \
+	$(RUN) class-instantiation-counts \
 		--schemasheets-input $(word 1,$^) \
 		--counts-input $(word 2,$^) \
 		--output $@
 
 .PHONY: generate-json-collections
 generate-json-collections: src/data/valid/Database-interleaved.yaml
-	$(RUN) python src/scripts/database-to-json-list-files.py \
+	$(RUN) database-to-json-list-files \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb
 
@@ -704,14 +706,37 @@ populate-mongodb-form-json-collections: generate-json-collections
 
 # ----	NMDC NCBI mapping process ---- #
 assets/ncbi_mappings/ncbi_attribute_mappings.tsv:
-	poetry run nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
+	$(RUN) nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
 		--tsv-output $@
 
 assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/ncbi_attribute_mappings.tsv
-	poetry run nmdc-ncbi-mapping exact-term-matching \
+	$(RUN) nmdc-ncbi-mapping exact-term-matching \
 		--tsv-input $< \
 		--tsv-output $@
 
-	poetry run nmdc-ncbi-mapping ignore-import-schema-slots $@
+	$(RUN) nmdc-ncbi-mapping ignore-import-schema-slots $@
 	
 
+src/data/valid/Database-interleaved-new.yaml: src/schema/nmdc.yaml
+	$(RUN) interleave-yaml \
+		--directory-path src/data/valid \
+		--output-file $@ \
+		--schema-file $<
+
+assets/mentions-of-ids-analysis.txt: src/schema/nmdc.yaml
+	$(RUN) analyze-mentions-of-ids \
+		--schema-file $< 1> $@ 2> $@.log
+
+assets/usages-report.txt: src/schema/nmdc.yaml
+	$(RUN) report-usages \
+		--schema-file $< > $@
+
+
+assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
+	$(RUN)  scrutinize-elements \
+		--schema-file $< \
+		--output-file assets/element-scrutiny.tsv
+
+# EXPERIMENTAL
+assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
+	$(RUN) python src/scripts/experimental/partial_imports_graph.py # needs networkx and plotly

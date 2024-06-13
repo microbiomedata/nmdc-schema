@@ -1,4 +1,4 @@
-db.omics_processing_set.aggregate([
+db.data_generation_set.aggregate([
   {
     $lookup: {
       from: "biosample_set",
