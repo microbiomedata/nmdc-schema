@@ -150,6 +150,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
+      has_calibration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_chromatography_configuration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:chrocon-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_mass_spectrometry_configuration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
+          interpolated: true
     rules:
       - title: has_calibration_required_if_gc
         description: >-
