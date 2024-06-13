@@ -30,7 +30,7 @@ class Migrator(MigratorBase):
 
     def is_valid_id(self, s: str) -> bool:
         r"""
-        Helper function that checks whether a string is a valid ID (has a version number).
+        Helper function that checks whether a string is a valid ID.
         Reference: https://docs.python.org/3/library/re.html#re.Pattern.search
 
         >>> m = Migrator()
@@ -46,16 +46,21 @@ class Migrator(MigratorBase):
 
     def populate_alternative_identifiers(self, nom_analysis_activity: dict) -> dict:
         r"""
-        Checks to see if a nom_analysis_activity has any alternative_identifiers. If there are any, then the ID is added if it's invalid.
-        If there are not then the alternative_identifiers slot is created if needed with the invalid id as a value.
+        Checks to see if a nom_analysis_activity has any alternative_identifiers.
+        If there are any, then the ID is added if it's invalid.
+        If there are not any, then the alternative_identifiers slot is created
+        if needed with the invalid id as a value.
 
         >>> m = Migrator()
-        >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85'}) # test: adds alternative identifiers
+        >>> # test: adds alternative identifiers
+        >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85'})
         {'id': 'nmdc:wfnom-13-7yf9qj85', 'alternative_identifiers': ['nmdc:wfnom-13-7yf9qj85']}
+        >>> # test: no change, alternative identifiers already present with valid id
         >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85.1',
-        ...                                     'alternative_identifiers': ['alt 1']}) # test no change, alternative identifiers already present with valid id
+        ...                                     'alternative_identifiers': ['alt 1']})
         {'id': 'nmdc:wfnom-13-7yf9qj85.1', 'alternative_identifiers': ['alt 1']}
-        >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85.1'}) # test no change, alternative identifiers not present, but with valid id
+        >>> # test: no change, alternative identifiers not present, but with valid id
+        >>> m.populate_alternative_identifiers({'id': 'nmdc:wfnom-13-7yf9qj85.1'})
         {'id': 'nmdc:wfnom-13-7yf9qj85.1'}
 
         """
@@ -77,9 +82,11 @@ class Migrator(MigratorBase):
         if it has no version number.
 
         >>> m = Migrator()
-        >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj85'}) # test: adds version number to id
+        >>> # test: adds version number to id
+        >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj85'})
         {'id': 'nmdc:wfnom-13-7yf9qj85.1'}
-        >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj85.1'}) # test if version number is already there, no change
+        >>> # test: if version number is already there, no change
+        >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj85.1'})
         {'id': 'nmdc:wfnom-13-7yf9qj85.1'}
 
         """
