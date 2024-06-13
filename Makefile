@@ -145,6 +145,7 @@ test-schema:
 
 test-python:
 	$(RUN) python -m unittest discover
+	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
 
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
