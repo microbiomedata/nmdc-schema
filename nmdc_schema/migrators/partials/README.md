@@ -21,5 +21,5 @@ flowchart LR
     dba -.-> p1 --> p2 --> ellipses --> pn -.-> dbb
 ```
 
-An example of a "top level" migrator is `migrator_from_10_3_0_to_11_0_0.py`. That migrator imports the partial migrator,
+An example of a "top level" migrator is `migrator_from_10_2_0_to_11_0_0.py`. That migrator imports the partial migrator,
 `migrator_from_PR104_to_PR195.py` (among others).

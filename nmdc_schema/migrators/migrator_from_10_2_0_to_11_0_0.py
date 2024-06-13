@@ -1,5 +1,5 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.partials.migrator_from_10_3_0_to_11_0_0 import get_migrators
+from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import get_migrators
 
 
 class Migrator(MigratorBase):
@@ -12,7 +12,7 @@ class Migrator(MigratorBase):
     Reference: https://pypi.org/project/nmdc-schema/#history
     """
 
-    _from_version = "10.3.0"
+    _from_version = "10.2.0"
     _to_version = "11.0.0"  # a.k.a. the Berkeley schema
 
     def upgrade(self) -> None:
