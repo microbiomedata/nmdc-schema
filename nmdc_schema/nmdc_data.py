@@ -92,7 +92,7 @@ def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = Non
 
     # Determine which file we will use.
     file_name = "nmdc.schema.json"
-    if variant == SchemaVariantIdentifier.nmdc_materialized_patterns:
+    if variant == SchemaVariantIdentifier.nmdc_materialized_patterns.value:
         file_name = "nmdc_materialized_patterns.schema.json"
 
     return io.BytesIO(pkgutil.get_data(__name__, file_name))
