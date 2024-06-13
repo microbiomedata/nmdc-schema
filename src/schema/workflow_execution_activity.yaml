@@ -114,6 +114,7 @@ classes:
     is_a: WorkflowExecution
     slots:
       - img_identifiers
+      - gold_analysis_project_identifiers
     in_subset:
       - workflow subset
     slot_usage:
@@ -136,7 +137,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
-
+      gold_analysis_project_identifiers:
+        structured_pattern:
+          syntax: "^gold:Ga[0-9]+$"
+          interpolated: true
   MetatranscriptomeAnalysis:
     class_uri: nmdc:MetatranscriptomeAnalysis
     is_a: WorkflowExecution
