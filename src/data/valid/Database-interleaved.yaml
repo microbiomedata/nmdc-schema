@@ -213,7 +213,7 @@ material_processing_set:
     sampled_portion:
       - supernatant
 storage_process_set:
-  - id: nmdc:matprc-99-zUCd5N
+  - id: nmdc:storpro-99-zUCd5N
     substances_used:
       - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
         type: nmdc:PortionOfSubstance
