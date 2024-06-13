@@ -10,6 +10,10 @@ class Migrator(MigratorBase):
     _from_version = "10.5.3"
     _to_version = "10.6.0"
 
+    # Note: I think the author of the migrator got this regex pattern by running `$ make all`
+    #       and getting this pattern from the file `project/nmdc_materialized_patterns.yaml`.
+    #       Reference: https://github.com/microbiomedata/nmdc-schema/pull/2059#discussion_r1639005255
+    #
     pattern = re.compile(r"(^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$)")
 
     def upgrade(self) -> None:
@@ -74,7 +78,6 @@ class Migrator(MigratorBase):
         """
         self.logger.info(f"Checking ID for NomAnalysisActivity: {nom_analysis_activity['id']}")
 
-        
         # If there's no version number, add one
         if not self.is_valid_id(nom_analysis_activity["id"]):
             nom_analysis_activity['id'] = str(nom_analysis_activity['id']) + ".1"
