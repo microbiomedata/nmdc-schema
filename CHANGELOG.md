@@ -1,3 +1,11 @@
+## As of 2024-06-14, see 
+- https://github.com/microbiomedata/berkeley-schema-fy24/releases
+- https://github.com/microbiomedata/berkeley-schema-fy24/tags
+- https://github.com/microbiomedata/nmdc-schema/releases
+- https://github.com/microbiomedata/nmdc-schema/tags
+
+Note that there are tagged but un-released commits corresponding to "the last commit that includes XYZ"
+
 # Changelog
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) beginning with the 8.1.0 version. Previous content was copied over without reformatting.
