@@ -426,7 +426,7 @@ classes:
           interpolated: true
       has_output:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_process_parts:
         required: true
