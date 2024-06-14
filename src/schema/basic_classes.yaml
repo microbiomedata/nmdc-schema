@@ -362,47 +362,6 @@ classes:
       - OBI:0000070
       - ISA:Assay
 
-  WorkflowChain:
-    class_uri: nmdc:WorkflowChain
-    is_a: PlannedProcess
-    description: >-
-      A workflow chain is a collection of Workflow Execution(s) that
-      analyse the output of DataGeneration.
-    comments: >-
-      The sequence of Workflow Execution(s) can be inferred from the has_input and has_output slots of the Workflow Execution(s)
-    slots:
-      - analyte_category
-      - was_informed_by
-      - gold_analysis_project_identifiers
-      - jgi_portal_analysis_project_identifiers
-      - replaces
-      - ended_at_time
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      replaces:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      analyte_category:
-        required: true
-      was_informed_by:
-        required: true
-        description: >-
-          A Workflow Chain instance was informed by the data and metadata of a of a
-            Data Generation instance
-        comments: >-
-          - The value of this slot is a reference to a Data Generation
-            instance that informed the Workflow Chain instance with its
-            output data and the metadata of the Data Generation.
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-
-
   WorkflowExecution:
     abstract: true
     class_uri: nmdc:WorkflowExecution
@@ -422,9 +381,9 @@ classes:
       - ended_at_time
       - execution_resource
       - git_url
-      - part_of
       - started_at_time
       - version
+      - was_informed_by
     rules:
       - title: qc_status_pass_has_output_required
         description: >-
@@ -464,15 +423,8 @@ classes:
           interpolated: true
       execution_resource:
         required: true
-      part_of:
+      was_informed_by:
         required: true
-        description: >-
-          The WorkflowChain that this WorkflowExecution is part of
-        range: WorkflowChain
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfch-{id_shoulder}-{id_blade}$" # todo ask Shane whether id should include version
-          interpolated: true
-
 slots:
   associated_studies:
     description: The study associated with a resource.
@@ -600,10 +552,6 @@ slots:
     comments:
       - For example, low read count from a sequencer, malformed fastq files, etc.
 
-  replaces:
-    range: WorkflowChain
-    description: >-
-      The id of the WorkflowChain that is a previous iteration of the current WorkflowChain.
 
 
 enums:

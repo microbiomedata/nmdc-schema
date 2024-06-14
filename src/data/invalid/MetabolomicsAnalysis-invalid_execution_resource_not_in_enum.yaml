@@ -10,5 +10,4 @@ has_input:
 has_output:
   - nmdc:dobj-11-123d
   - nmdc:dobj-11-34dj4
-part_of: 
- - nmdc:wfch-00-ABCDEF
+was_informed_by: nmdc:omprc-11-284u7d

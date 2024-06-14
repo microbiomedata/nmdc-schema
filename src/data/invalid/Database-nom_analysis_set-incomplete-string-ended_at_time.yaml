@@ -11,5 +11,4 @@ workflow_execution_set:
     type: nmdc:NomAnalysis
     started_at_time: "2018-11-111"
     ended_at_time: "2018-11-13T20:20:39+00:00"
-    part_of: 
-      - nmdc:wfch-11-34xj1150
+    was_informed_by: nmdc:omprc-11-4u7da8
