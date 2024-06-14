@@ -329,8 +329,12 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 .PHONY: thorough-docker-fuseki-cleanup-from-host # this level of cleanup may not be needed on a regular basis
 thorough-docker-fuseki-cleanup-from-host: some-napa-collections-cleanup
 	- docker compose down
+	rm -rf local/biosamples-per-study.txt
 	rm -rf local/fuseki-data
+	rm -rf local/gold-study-ids.*
+	rm -rf local/gold-study-ids.yaml
 	rm -rf local/sparql-results/*
+	rm -rf local/study-files/*
 	rm -rf .venv
 	docker system prune --force # very aggressive. may delete containers etc that you want but are not currently running
 
