@@ -4,10 +4,23 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 
 
 class Migrator(MigratorBase):
-    r"""Migrates a database between two schemas."""
+    r"""
+    Migrates a database between two schemas.
 
-    _from_version = "10.5.3"
-    _to_version = "10.6.0"
+    Note: In schema version 10.3.0, the `NomAnalysisActivity.id` slot had this `structured_pattern.syntax`:
+          "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+
+          In schema version 10.4.0, it had _this_ `structured_pattern.syntax`:
+          "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}"
+
+          That specific change was made in commit `a1d5686`:
+          https://github.com/microbiomedata/nmdc-schema/commit/a1d5686
+
+          This migrator was designed to migrate `NomAnalysisActivity.id` values to conform to the latter pattern.
+    """
+
+    _from_version = "10.3.0"
+    _to_version = "10.4.0"
 
     # Note: I think the author of the migrator got this regex pattern by running `$ make all`
     #       and getting this pattern from the file `project/nmdc_materialized_patterns.yaml`.
