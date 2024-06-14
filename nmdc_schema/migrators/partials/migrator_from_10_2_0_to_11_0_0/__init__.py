@@ -8,7 +8,6 @@ from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrat
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_X_to_PR21
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_X_to_PR129
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_X_to_PR31
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_X_to_PR9
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_X_to_PR19_and_PR70
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_X_to_PR2_and_PR24
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import migrator_from_X_to_PR10
@@ -43,7 +42,6 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
         migrator_from_X_to_PR21.Migrator,
         migrator_from_X_to_PR129.Migrator,
         migrator_from_X_to_PR31.Migrator,
-        migrator_from_X_to_PR9.Migrator,
         migrator_from_X_to_PR19_and_PR70.Migrator,
         migrator_from_X_to_PR2_and_PR24.Migrator,
         migrator_from_X_to_PR10.Migrator,
