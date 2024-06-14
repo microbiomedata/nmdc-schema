@@ -150,6 +150,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
+      has_calibration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_chromatography_configuration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:chrocon-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_mass_spectrometry_configuration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
+          interpolated: true
     rules:
       - title: has_calibration_required_if_gc
         description: >-
@@ -407,6 +419,20 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$"
           interpolated: true
+      has_input:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_process_parts:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+        description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
 
   SubSamplingProcess:
     class_uri: 'nmdc:SubSamplingProcess'
@@ -549,6 +575,19 @@ classes:
     slot_usage:
       substances_used:
         description: The substance(s) that a processed sample is stored in.
+      id:
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:storpro-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_input:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   ChromatographicSeparationProcess:
     class_uri: 'nmdc:ChromatographicSeparationProcess'

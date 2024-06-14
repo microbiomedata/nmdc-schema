@@ -210,7 +210,7 @@ material_processing_set:
     sampled_portion:
       - supernatant
 storage_process_set:
-  - id: nmdc:matprc-99-zUCd5N
+  - id: nmdc:storpro-99-zUCd5N
     substances_used:
       - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
         type: nmdc:PortionOfSubstance
@@ -234,7 +234,7 @@ protocol_execution_set:
   - id: nmdc:pex-99-18sD2
     type: nmdc:ProtocolExecution
     has_input:
-      - nmdc:bsm-6
+      - nmdc:bsm-65-0002
     has_process_parts:
       - nmdc:extrp-71-r2pk
       - nmdc:filtpr-22-32G2BS
