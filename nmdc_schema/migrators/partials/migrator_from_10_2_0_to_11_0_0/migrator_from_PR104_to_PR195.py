@@ -32,7 +32,6 @@ class Migrator(MigratorBase):
             "nucleotide_sequencing_set",
             "mass_spectrometry_set",
         ],
-        "workflow_chain_set": [],
         "workflow_execution_set": [
             "metagenome_annotation_set",
             "metagenome_assembly_set",
