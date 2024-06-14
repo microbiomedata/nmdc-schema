@@ -228,7 +228,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
-		--selected-collections workflow_chain_set \
 		--selected-collections workflow_execution_set \
 		dump-from-api \
 		--client-base-url "https://api.microbiomedata.org" \
