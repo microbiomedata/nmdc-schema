@@ -37,6 +37,31 @@ class Migrator(MigratorBase):
     def upgrade(self) -> None:
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> db = {
+        ...   'workflow_execution_set': [
+        ...     {'id': 1},
+        ...     {'id': 2, 'part_of': 'a'},
+        ...     {'id': 3, 'part_of': 'b', 'foo': 'bar'},
+        ...   ],
+        ...   'metagenome_annotation_set': [
+        ...     {'id': 1},
+        ...     {'id': 2, 'part_of': 'a'},
+        ...     {'id': 3, 'part_of': 'b', 'foo': 'bar'},
+        ...   ]
+        ... }
+        >>> any("part_of" in document for document in db["workflow_execution_set"])
+        True
+        >>> any("part_of" in document for document in db["metagenome_annotation_set"])
+        True
+        >>> a = DictionaryAdapter(database=db)
+        >>> m = Migrator(adapter=a)
+        >>> m.upgrade()
+        >>> any("part_of" in document for document in db["workflow_execution_set"])
+        False
+        >>> any("part_of" in document for document in db["metagenome_annotation_set"])
+        False
         """
 
         for collection_name in self.collection_names:
