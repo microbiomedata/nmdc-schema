@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MixingProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
 <title>Class: MixingProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -279,16 +279,14 @@
 <div class="mermaid">classDiagram
   class MixingProcess
   click MixingProcess href "../MixingProcess"
-    PlannedProcess &lt;|-- MixingProcess
-      click PlannedProcess href "../PlannedProcess"
+    MaterialProcessing &lt;|-- MixingProcess
+      click MaterialProcessing href "../MaterialProcessing"
 
 
 
   MixingProcess : alternative_identifiers
 
   MixingProcess : description
-
-  MixingProcess : designated_class
 
   MixingProcess : duration
 
@@ -314,7 +312,10 @@
 
   MixingProcess : id
 
-  MixingProcess : instrument_name
+  MixingProcess : instrument_used
+
+      MixingProcess --&gt; "*" Instrument : instrument_used
+    click Instrument href "../Instrument"
 
   MixingProcess : name
 
@@ -337,6 +338,8 @@
 
   MixingProcess : start_date
 
+  MixingProcess : type
+
 
 
 </div>
@@ -344,7 +347,10 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
 <li><strong>MixingProcess</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -368,16 +374,10 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../designated_class/">designated_class</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td></td>
-<td><a href="../PlannedProcess/">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../end_date/">end_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which any process or activity was ended</td>
-<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+<td><a href="../instrument_used/">instrument_used</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>What instrument was used during DataGeneration or MaterialProcessing</td>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
@@ -410,9 +410,9 @@
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
-<td><a href="../instrument_name/">instrument_name</a></td>
+<td><a href="../end_date/">end_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the instrument that was used for processing the sample</td>
+<td>The date on which any process or activity was ended</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -455,6 +455,12 @@
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -509,17 +515,21 @@ from_schema: https://w3id.org/nmdc/nmdc
 contributors:
 - ORCID:0009-0001-1555-1601
 - ORCID:0000-0002-8683-0050
-is_a: PlannedProcess
+is_a: MaterialProcessing
 slots:
 - duration
 slot_usage:
+  id:
+    name: id
+    domain_of:
+    - NamedThing
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -530,13 +540,12 @@ slot_usage:
     name: has_output
     description: The mixed sample.
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
       interpolated: true
+class_uri: nmdc:MixingProcess
 
 </code></pre>
 </details>
@@ -558,15 +567,19 @@ from_schema: https://w3id.org/nmdc/nmdc
 contributors:
 - ORCID:0009-0001-1555-1601
 - ORCID:0000-0002-8683-0050
-is_a: PlannedProcess
+is_a: MaterialProcessing
 slot_usage:
+  id:
+    name: id
+    domain_of:
+    - NamedThing
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -577,9 +590,7 @@ slot_usage:
     name: has_output
     description: The mixed sample.
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -592,54 +603,36 @@ attributes:
     - value: JsonObj(has_numeric_value=2, has_unit='hours')
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: duration
     owner: MixingProcess
     domain_of:
     - MixingProcess
+    - DissolvingProcess
+    - ChemicalConversionProcess
+    - MobilePhaseSegment
     range: QuantityValue
-  designated_class:
-    name: designated_class
-    comments:
-    - required on all instances in a polymorphic Database slot like planned_process_set
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    designates_type: true
-    alias: designated_class
+    multivalued: true
+    alias: instrument_used
     owner: MixingProcess
     domain_of:
-    - PlannedProcess
-    range: uriorcurie
-  end_date:
-    name: end_date
-    description: The date on which any process or activity was ended
-    todos:
-    - add date string validation pattern
-    comments:
-    - We are using string representations of dates until all components of our ecosystem
-      can handle ISO 8610 dates
-    - The date should be formatted as YYYY-MM-DD
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: end_date
-    owner: MixingProcess
-    domain_of:
-    - PlannedProcess
-    range: string
+    - MaterialProcessing
+    - DataGeneration
+    range: Instrument
   has_input:
     name: has_input
     description: An input to a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_input
     owner: MixingProcess
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: NamedThing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -652,14 +645,11 @@ attributes:
     description: The mixed sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_output
     owner: MixingProcess
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -669,22 +659,20 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: processing_institution
     owner: MixingProcess
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: protocol_link
     owner: MixingProcess
     domain_of:
     - PlannedProcess
+    - Study
     range: Protocol
   start_date:
     name: start_date
@@ -702,16 +690,20 @@ attributes:
     domain_of:
     - PlannedProcess
     range: string
-  instrument_name:
-    name: instrument_name
-    description: The name of the instrument that was used for processing the sample.
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
-    alias: instrument_name
+    alias: end_date
     owner: MixingProcess
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
     range: string
   qc_status:
@@ -725,7 +717,6 @@ attributes:
     owner: MixingProcess
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -738,7 +729,6 @@ attributes:
     owner: MixingProcess
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -749,36 +739,25 @@ attributes:
     owner: MixingProcess
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: FailureCategorization
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
-    notes:
-    - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
-    - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
-      will be accepted
-    - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked
-      via per-class id slot usage assertions
-    - minting authority shoulders should probably be enumerated and checked in the
-      pattern
-    examples:
-    - value: nmdc:mgmag-00-x012.1_7_c1
-      description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     identifier: true
     alias: id
     owner: MixingProcess
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
   name:
     name: name
     description: A human readable label for an entity
@@ -787,10 +766,9 @@ attributes:
     alias: name
     owner: MixingProcess
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -801,9 +779,8 @@ attributes:
     alias: description
     owner: MixingProcess
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -814,13 +791,49 @@ attributes:
     alias: alternative_identifiers
     owner: MixingProcess
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: MixingProcess
+    domain_of:
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:MixingProcess
 
 </code></pre>
 </details>
@@ -849,7 +862,7 @@ attributes:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

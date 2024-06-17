@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeAssembly/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
 <title>Class: MetatranscriptomeAssembly - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -270,8 +270,8 @@
 <div class="mermaid">classDiagram
   class MetatranscriptomeAssembly
   click MetatranscriptomeAssembly href "../MetatranscriptomeAssembly"
-    WorkflowExecutionActivity &lt;|-- MetatranscriptomeAssembly
-      click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
+    WorkflowExecution &lt;|-- MetatranscriptomeAssembly
+      click WorkflowExecution href "../WorkflowExecution"
 
 
 
@@ -297,9 +297,16 @@
 
   MetatranscriptomeAssembly : ctg_powsum
 
+  MetatranscriptomeAssembly : description
+
+  MetatranscriptomeAssembly : end_date
+
   MetatranscriptomeAssembly : ended_at_time
 
   MetatranscriptomeAssembly : execution_resource
+
+      MetatranscriptomeAssembly --&gt; "1" ExecutionResourceEnum : execution_resource
+    click ExecutionResourceEnum href "../ExecutionResourceEnum"
 
   MetatranscriptomeAssembly : gap_pct
 
@@ -334,10 +341,15 @@
 
   MetatranscriptomeAssembly : num_input_reads
 
-  MetatranscriptomeAssembly : part_of
+  MetatranscriptomeAssembly : processing_institution
 
-      MetatranscriptomeAssembly --&gt; "*" NamedThing : part_of
-    click NamedThing href "../NamedThing"
+      MetatranscriptomeAssembly --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+    click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
+
+  MetatranscriptomeAssembly : protocol_link
+
+      MetatranscriptomeAssembly --&gt; "0..1" Protocol : protocol_link
+    click Protocol href "../Protocol"
 
   MetatranscriptomeAssembly : qc_comment
 
@@ -370,27 +382,30 @@
 
   MetatranscriptomeAssembly : scaffolds
 
+  MetatranscriptomeAssembly : start_date
+
   MetatranscriptomeAssembly : started_at_time
 
   MetatranscriptomeAssembly : type
-
-  MetatranscriptomeAssembly : used
 
   MetatranscriptomeAssembly : version
 
   MetatranscriptomeAssembly : was_informed_by
 
-      MetatranscriptomeAssembly --&gt; "0..1" OmicsProcessing : was_informed_by
-    click OmicsProcessing href "../OmicsProcessing"
+      MetatranscriptomeAssembly --&gt; "1" DataGeneration : was_informed_by
+    click DataGeneration href "../DataGeneration"
 
 
 
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../Activity/">Activity</a><ul>
-<li><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a><ul>
+<li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../WorkflowExecution/">WorkflowExecution</a><ul>
 <li><strong>MetatranscriptomeAssembly</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -576,106 +591,124 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td><a href="../ended_at_time/">ended_at_time</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+</tr>
+<tr>
+<td><a href="../execution_resource/">execution_resource</a></td>
+<td>1 <br/> <a href="../ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
+<td>The computing resource or facility where the workflow was executed</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../git_url/">git_url</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
-<td>An input to a process</td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../has_output/">has_output</a></td>
-<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
-<td>An output biosample to a processing step</td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../part_of/">part_of</a></td>
-<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
-<td>Links a resource to another resource that either logically or physically incl...</td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>An optional string that specifies the type object</td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../version/">version</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../qc_status/">qc_status</a></td>
-<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
-<td>Stores information about the result of a process (ie the process of sequencin...</td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../qc_comment/">qc_comment</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Slot to store additional comments about laboratory or workflow output</td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
-<td>* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
-<td></td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A list of alternative identifiers for the entity</td>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-</tr>
-<tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
-<td><a href="../Activity/">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../name/">name</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A human readable label for an entity</td>
-<td><a href="../Activity/">Activity</a></td>
+<td>The url that points to the exact github location of a workflow</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../started_at_time/">started_at_time</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td><a href="../Activity/">Activity</a></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
+<td><a href="../version/">version</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td><a href="../Activity/">Activity</a></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>0..1 <br/> <a href="../OmicsProcessing/">OmicsProcessing</a></td>
+<td>1 <br/> <a href="../DataGeneration/">DataGeneration</a></td>
 <td></td>
-<td><a href="../Activity/">Activity</a></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
-<td><a href="../used/">used</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>An input to a process</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_output/">has_output</a></td>
+<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>An output from a process</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../processing_institution/">processing_institution</a></td>
+<td>0..1 <br/> <a href="../ProcessingInstitutionEnum/">ProcessingInstitutionEnum</a></td>
+<td>The organization that processed the sample</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
 <td></td>
-<td><a href="../Activity/">Activity</a></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../start_date/">start_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was started</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../end_date/">end_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was ended</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
+<td></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A unique identifier for a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A human readable label for an entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a human-readable description of a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
 </table>
@@ -711,7 +744,7 @@
 in_subset:
 - workflow subset
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecutionActivity
+is_a: WorkflowExecution
 slots:
 - asm_score
 - scaffolds
@@ -745,14 +778,19 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  was_informed_by:
+    name: was_informed_by
+    domain_of:
+    - WorkflowExecution
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+class_uri: nmdc:MetatranscriptomeAssembly
 
 </code></pre>
 </details>
@@ -762,18 +800,22 @@ slot_usage:
 in_subset:
 - workflow subset
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecutionActivity
+is_a: WorkflowExecution
 slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
+  was_informed_by:
+    name: was_informed_by
+    domain_of:
+    - WorkflowExecution
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
   asm_score:
@@ -1132,121 +1174,156 @@ attributes:
     - MetatranscriptomeAssembly
     range: string
     pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
+  ended_at_time:
+    name: ended_at_time
+    notes:
+    - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
+      It may not be complete, but it is good enough for now.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - prov:endedAtTime
+    rank: 1000
+    alias: ended_at_time
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - WorkflowExecution
+    range: string
+    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
   execution_resource:
     name: execution_resource
+    description: The computing resource or facility where the workflow was executed.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Activity
     alias: execution_resource
     owner: MetatranscriptomeAssembly
     domain_of:
-    - WorkflowExecutionActivity
-    range: string
+    - WorkflowExecution
+    range: ExecutionResourceEnum
     required: true
   git_url:
     name: git_url
+    description: The url that points to the exact github location of a workflow.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: git_url
     owner: MetatranscriptomeAssembly
     domain_of:
-    - WorkflowExecutionActivity
+    - WorkflowExecution
     range: string
     required: true
+  started_at_time:
+    name: started_at_time
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: started_at_time
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - WorkflowExecution
+    range: string
+    required: true
+    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+  version:
+    name: version
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: version
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - WorkflowExecution
+    range: string
+  was_informed_by:
+    name: was_informed_by
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: was_informed_by
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - WorkflowExecution
+    range: DataGeneration
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
+      interpolated: true
   has_input:
     name: has_input
     description: An input to a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_input
     owner: MetatranscriptomeAssembly
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: NamedThing
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
-    description: An output biosample to a processing step
+    description: An output from a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_output
     owner: MetatranscriptomeAssembly
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: NamedThing
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
-  part_of:
-    name: part_of
-    description: Links a resource to another resource that either logically or physically
-      includes it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - is part of
-    rank: 1000
-    domain: NamedThing
-    slot_uri: dcterms:isPartOf
-    multivalued: true
-    alias: part_of
-    owner: MetatranscriptomeAssembly
-    domain_of:
-    - FieldResearchSite
-    - Biosample
-    - Study
-    - OmicsProcessing
-    - WorkflowExecutionActivity
-    range: NamedThing
-  type:
-    name: type
-    description: An optional string that specifies the type object.  This is used
-      to allow for searches for different kinds of objects.
-    deprecated: Due to confusion about what values are used for this slot, it is best
-      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
+  processing_institution:
+    name: processing_institution
+    description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: type
+    alias: processing_institution
     owner: MetatranscriptomeAssembly
     domain_of:
-    - DataObject
-    - Biosample
+    - PlannedProcess
+    range: ProcessingInstitutionEnum
+  protocol_link:
+    name: protocol_link
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: protocol_link
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - PlannedProcess
     - Study
-    - OmicsProcessing
-    - CreditAssociation
-    - MagBin
-    - WorkflowExecutionActivity
-    - MetagenomeAssembly
-    - MetagenomeAnnotationActivity
-    - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeActivity
-    - MagsAnalysisActivity
-    - ReadQcAnalysisActivity
-    - ReadBasedTaxonomyAnalysisActivity
+    range: Protocol
+  start_date:
+    name: start_date
+    description: The date on which any process or activity was started
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: start_date
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - PlannedProcess
     range: string
-    required: true
-  version:
-    name: version
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Activity
-    alias: version
+    alias: end_date
     owner: MetatranscriptomeAssembly
     domain_of:
-    - WorkflowExecutionActivity
-    - ReadQcAnalysisActivity
+    - PlannedProcess
     range: string
   qc_status:
     name: qc_status
@@ -1259,7 +1336,6 @@ attributes:
     owner: MetatranscriptomeAssembly
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -1272,7 +1348,6 @@ attributes:
     owner: MetatranscriptomeAssembly
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -1283,24 +1358,9 @@ attributes:
     owner: MetatranscriptomeAssembly
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: FailureCategorization
-  alternative_identifiers:
-    name: alternative_identifiers
-    description: A list of alternative identifiers for the entity.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    multivalued: true
-    alias: alternative_identifiers
-    owner: MetatranscriptomeAssembly
-    domain_of:
-    - Biosample
-    - Study
-    - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
-    range: uriorcurie
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -1311,10 +1371,7 @@ attributes:
     alias: id
     owner: MetatranscriptomeAssembly
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -1329,59 +1386,74 @@ attributes:
     alias: name
     owner: MetatranscriptomeAssembly
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
-  started_at_time:
-    name: started_at_time
+  description:
+    name: description
+    description: a human-readable description of a thing
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Activity
-    alias: started_at_time
+    slot_uri: dcterms:description
+    alias: description
     owner: MetatranscriptomeAssembly
     domain_of:
-    - Activity
+    - ImageValue
+    - NamedThing
     range: string
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: A list of alternative identifiers for the entity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: alternative_identifiers
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - MetaboliteIdentification
+    - NamedThing
+    range: uriorcurie
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
     required: true
-    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
-  ended_at_time:
-    name: ended_at_time
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    domain: Activity
-    alias: ended_at_time
-    owner: MetatranscriptomeAssembly
-    domain_of:
-    - Activity
-    range: string
-    required: true
-    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
-  was_informed_by:
-    name: was_informed_by
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: was_informed_by
-    owner: MetatranscriptomeAssembly
-    domain_of:
-    - Activity
-    range: OmicsProcessing
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  used:
-    name: used
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:used
-    rank: 1000
-    domain: Activity
-    alias: used
-    owner: MetatranscriptomeAssembly
-    domain_of:
-    - Activity
-    range: string
+class_uri: nmdc:MetatranscriptomeAssembly
 
 </code></pre>
 </details>
@@ -1410,7 +1482,7 @@ attributes:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

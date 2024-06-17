@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/QuantityValue/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
 <title>Class: QuantityValue - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -293,6 +293,8 @@
 
   QuantityValue : has_unit
 
+  QuantityValue : type
+
 
 
 </div>
@@ -316,26 +318,20 @@
 <tbody>
 <tr>
 <td><a href="../has_maximum_numeric_value/">has_maximum_numeric_value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../Decimal/">Decimal</a></td>
 <td>The maximum value part, expressed as number, of the quantity value when the v...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_minimum_numeric_value/">has_minimum_numeric_value</a></td>
-<td>0..1 <br/> <a href="../Float/">Float</a></td>
+<td>0..1 <br/> <a href="../Decimal/">Decimal</a></td>
 <td>The minimum value part, expressed as number, of the quantity value when the v...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../has_numeric_value/">has_numeric_value</a></td>
-<td>0..1 <br/> <a href="../Double/">Double</a></td>
+<td>0..1 <br/> <a href="../Decimal/">Decimal</a></td>
 <td>The number part of the quantity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../has_raw_value/">has_raw_value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Unnormalized atomic string representation, should in syntax {number} {unit}</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -343,6 +339,18 @@
 <td>0..1 <br/> <a href="../Unit/">Unit</a></td>
 <td>The unit of the quantity</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_raw_value/">has_raw_value</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Unnormalized atomic string representation, should in syntax {number} {unit}</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>
 </table>
@@ -358,6 +366,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
+<td><a href="../temperature/">temperature</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
 <td><a href="../Extraction/">Extraction</a></td>
 <td><a href="../input_mass/">input_mass</a></td>
 <td>range</td>
@@ -370,14 +384,92 @@
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../SolutionComponent/">SolutionComponent</a></td>
-<td><a href="../concentration/">concentration</a></td>
+<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
+<td><a href="../container_size/">container_size</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../Solution/">Solution</a></td>
+<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
+<td><a href="../temperature/">temperature</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
 <td><a href="../volume/">volume</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
+<td><a href="../mass/">mass</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../MixingProcess/">MixingProcess</a></td>
+<td><a href="../duration/">duration</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
+<td><a href="../container_size/">container_size</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
+<td><a href="../filter_pore_size/">filter_pore_size</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
+<td><a href="../volume/">volume</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../StorageProcess/">StorageProcess</a></td>
+<td><a href="../temperature/">temperature</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
+<td><a href="../temperature/">temperature</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
+<td><a href="../duration/">duration</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
+<td><a href="../temperature/">temperature</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../duration/">duration</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../temperature/">temperature</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../substances_volume/">substances_volume</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
@@ -1109,12 +1201,6 @@
 </tr>
 <tr>
 <td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../samp_vol_we_dna_ext/">samp_vol_we_dna_ext</a></td>
-<td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../season_precpt/">season_precpt</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
@@ -1438,62 +1524,38 @@
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../container_size/">container_size</a></td>
-<td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../temperature/">temperature</a></td>
-<td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../volume/">volume</a></td>
-<td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../mass/">mass</a></td>
-<td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
+<td><a href="../MobilePhaseSegment/">MobilePhaseSegment</a></td>
 <td><a href="../duration/">duration</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../container_size/">container_size</a></td>
-<td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../filter_pore_size/">filter_pore_size</a></td>
-<td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
+<td><a href="../MobilePhaseSegment/">MobilePhaseSegment</a></td>
 <td><a href="../volume/">volume</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
-<td><a href="../temperature/">temperature</a></td>
+<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td><a href="../final_concentration/">final_concentration</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
 <tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td><a href="../samp_vol_we_dna_ext/">samp_vol_we_dna_ext</a></td>
+<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td><a href="../mass/">mass</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td><a href="../source_concentration/">source_concentration</a></td>
+<td>range</td>
+<td><a href="./">QuantityValue</a></td>
+</tr>
+<tr>
+<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td><a href="../volume/">volume</a></td>
 <td>range</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
@@ -1501,36 +1563,6 @@
 <td><a href="../ProcessedSample/">ProcessedSample</a></td>
 <td><a href="../biomaterial_purity/">biomaterial_purity</a></td>
 <td>range</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="./">QuantityValue</a></td>
-<td><a href="../has_maximum_numeric_value/">has_maximum_numeric_value</a></td>
-<td>domain</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="./">QuantityValue</a></td>
-<td><a href="../has_minimum_numeric_value/">has_minimum_numeric_value</a></td>
-<td>domain</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="./">QuantityValue</a></td>
-<td><a href="../has_numeric_value/">has_numeric_value</a></td>
-<td>domain</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="./">QuantityValue</a></td>
-<td><a href="../has_unit/">has_unit</a></td>
-<td>domain</td>
-<td><a href="./">QuantityValue</a></td>
-</tr>
-<tr>
-<td><a href="../IntegerValue/">IntegerValue</a></td>
-<td><a href="../has_numeric_value/">has_numeric_value</a></td>
-<td>domain</td>
 <td><a href="./">QuantityValue</a></td>
 </tr>
 </tbody>
@@ -1577,7 +1609,6 @@ slots:
 - has_maximum_numeric_value
 - has_minimum_numeric_value
 - has_numeric_value
-- has_raw_value
 - has_unit
 slot_usage:
   has_raw_value:
@@ -1586,7 +1617,6 @@ slot_usage:
       {unit}
     domain_of:
     - AttributeValue
-    - QuantityValue
   has_unit:
     name: has_unit
     description: The unit of the quantity
@@ -1597,8 +1627,7 @@ slot_usage:
     description: The number part of the quantity
     domain_of:
     - QuantityValue
-    - IntegerValue
-    range: double
+class_uri: nmdc:QuantityValue
 
 </code></pre>
 </details>
@@ -1617,7 +1646,6 @@ slot_usage:
       {unit}
     domain_of:
     - AttributeValue
-    - QuantityValue
   has_unit:
     name: has_unit
     description: The unit of the quantity
@@ -1628,8 +1656,6 @@ slot_usage:
     description: The number part of the quantity
     domain_of:
     - QuantityValue
-    - IntegerValue
-    range: double
 attributes:
   has_maximum_numeric_value:
     name: has_maximum_numeric_value
@@ -1638,12 +1664,11 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: has_numeric_value
-    domain: QuantityValue
     alias: has_maximum_numeric_value
     owner: QuantityValue
     domain_of:
     - QuantityValue
-    range: float
+    range: decimal
   has_minimum_numeric_value:
     name: has_minimum_numeric_value
     description: The minimum value part, expressed as number, of the quantity value
@@ -1651,48 +1676,81 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: has_numeric_value
-    domain: QuantityValue
     alias: has_minimum_numeric_value
     owner: QuantityValue
     domain_of:
     - QuantityValue
-    range: float
+    range: decimal
   has_numeric_value:
     name: has_numeric_value
     description: The number part of the quantity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: QuantityValue
     alias: has_numeric_value
     owner: QuantityValue
     domain_of:
     - QuantityValue
-    - IntegerValue
-    range: double
+    range: decimal
+  has_unit:
+    name: has_unit
+    description: The unit of the quantity
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_unit
+    owner: QuantityValue
+    domain_of:
+    - QuantityValue
+    range: unit
   has_raw_value:
     name: has_raw_value
     description: Unnormalized atomic string representation, should in syntax {number}
       {unit}
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: AttributeValue
     alias: has_raw_value
     owner: QuantityValue
     domain_of:
     - AttributeValue
-    - QuantityValue
     range: string
-  has_unit:
-    name: has_unit
-    description: The unit of the quantity
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
     rank: 1000
-    domain: QuantityValue
-    alias: has_unit
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
     owner: QuantityValue
     domain_of:
-    - QuantityValue
-    range: unit
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:QuantityValue
 
 </code></pre>
 </details>
@@ -1721,7 +1779,7 @@ attributes:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

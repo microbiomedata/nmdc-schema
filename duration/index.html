@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -133,7 +133,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -506,8 +506,23 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td>A process that results in the interconversion of chemical species by a reacti...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MobilePhaseSegment/">MobilePhaseSegment</a></td>
+<td>A fluid mixture of substances that flow though a chromatographic stationary p...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../MixingProcess/">MixingProcess</a></td>
 <td>The combining of components, particles or layers into a more homogeneous stat...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
+<td>A mixing step where a soluble component is mixed with a liquid component</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -543,10 +558,12 @@ examples:
 - value: JsonObj(has_numeric_value=2, has_unit='hours')
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-domain: PlannedProcess
 alias: duration
 domain_of:
 - MixingProcess
+- DissolvingProcess
+- ChemicalConversionProcess
+- MobilePhaseSegment
 range: QuantityValue
 
 </code></pre>
@@ -603,7 +620,7 @@ range: QuantityValue
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       

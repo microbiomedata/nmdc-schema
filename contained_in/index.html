@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -133,7 +133,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -431,6 +431,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -482,7 +491,7 @@
 
 
 <h1 id="slot-contained_in">Slot: contained_in</h1>
-<p><em>A type of container. i.e. test tube, falcon tube, etc.</em></p>
+<p><em>A type of container.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/contained_in">nmdc:contained_in</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -497,6 +506,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../StorageProcess/">StorageProcess</a></td>
+<td>A planned process with the objective to preserve and protect material entitie...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
 <td>Separating a sample aliquot from the starting material for downstream activit...</td>
 <td>no</td>
@@ -507,6 +521,25 @@
 <ul>
 <li>Range: <a href="../ContainerCategoryEnum/">ContainerCategoryEnum</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>test tube</td>
+</tr>
+<tr>
+<td>falcon tube</td>
+</tr>
+<tr>
+<td>whirlpak</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -516,12 +549,17 @@
 <details>
 
 <pre><code class="language-yaml">name: contained_in
-description: A type of container. i.e. test tube, falcon tube, etc.
+description: A type of container.
+examples:
+- value: test tube
+- value: falcon tube
+- value: whirlpak
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: contained_in
 domain_of:
 - SubSamplingProcess
+- StorageProcess
 range: ContainerCategoryEnum
 
 </code></pre>
@@ -578,7 +616,7 @@ range: ContainerCategoryEnum
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
