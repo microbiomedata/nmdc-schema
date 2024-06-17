@@ -4,7 +4,7 @@
 
 name: Build and test nmdc-schema
 
-on: [ pull_request ]
+on: [pull_request]
 
 jobs:
   test:
@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ "3.9", "3.10" ]
+        python-version: ["3.9", "3.10"]
 
     steps:
 
@@ -49,5 +49,5 @@ jobs:
       #              run test suite   
       #----------------------------------------------
       - name: Run tests
-        run: make squeaky-clean all test
+        run: make test
 

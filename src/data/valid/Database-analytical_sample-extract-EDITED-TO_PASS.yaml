@@ -2,8 +2,8 @@ processed_sample_set:
   - id: nmdc:procsm-99-dtTMNb
     name: WOOD_024-M-20190715-COMP-DNA1
     description: Extracted DNA from WOOD_024-M-20190715-COMP
-    type: nmdc:ProcessedSample
-    # extract # type value OBI_0001051
+    #    type: nmdc:ProcessedSample # type slot has not been set up as a class designator yet
+    # extract type value OBI_0001051
     #    processed_sample_type: DNA # slot not defined
     #    alternative_identifiers: # must be a curie
     #      - 19S_31_2826

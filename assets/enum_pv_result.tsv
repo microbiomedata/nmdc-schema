@@ -1,16 +1,12 @@
 enumeration name	permissible value name	PV meaning
 > enum	permissible_value	meaning
-SubstanceRoleEnum		
-SubstanceRoleEnum	buffer	CHEBI:35225
-SubstanceRoleEnum	ms_proteolytic_enzyme	MS:1002986
-SubstanceRoleEnum	solvent	CHEBI:46787
-SubstanceRoleEnum	surfactant	CHEBI:35195
-SubstanceRoleEnum	derivatizing_agent	
-SubstanceRoleEnum	solubilizing_agent	
-SampleStateEnum		
-SampleStateEnum	solid	
-SampleStateEnum	liquid	
-SampleStateEnum	gas	
+DeviceEnum		
+DeviceEnum	Orbital Shaker	
+DeviceEnum	Thermomixer	
+DeviceEnum	Vortex	
+DeviceEnum	Agitation plunger	
+DeviceEnum	Drying oven	
+DeviceEnum	CEREX System 96 processor	
 arch_struc_enum		
 arch_struc_enum	building	
 arch_struc_enum	shed	
@@ -875,160 +871,67 @@ window_vert_pos_enum	middle
 window_vert_pos_enum	top	
 window_vert_pos_enum	low	
 window_vert_pos_enum	high	
-SampleTypeEnum		
-SampleTypeEnum	soil	
-SampleTypeEnum	soil - water extract	
-SampleTypeEnum	plant associated	
-SampleTypeEnum	sediment	
-SampleTypeEnum	water	
-DNASampleFormatEnum		
-DNASampleFormatEnum	10 mM Tris-HCl	
-DNASampleFormatEnum	DNAStable	
-DNASampleFormatEnum	Ethanol	
-DNASampleFormatEnum	Low EDTA TE	
-DNASampleFormatEnum	MDA reaction buffer	
-DNASampleFormatEnum	PBS	
-DNASampleFormatEnum	Pellet	
-DNASampleFormatEnum	RNAStable	
-DNASampleFormatEnum	TE	
-DNASampleFormatEnum	Water	
-DNASampleFormatEnum	Gentegra-DNA	
-DNASampleFormatEnum	Gentegra-RNA	
-RNASampleFormatEnum		
-RNASampleFormatEnum	10 mM Tris-HCl	
-RNASampleFormatEnum	DNAStable	
-RNASampleFormatEnum	Ethanol	
-RNASampleFormatEnum	Low EDTA TE	
-RNASampleFormatEnum	MDA reaction buffer	
-RNASampleFormatEnum	PBS	
-RNASampleFormatEnum	Pellet	
-RNASampleFormatEnum	RNAStable	
-RNASampleFormatEnum	TE	
-RNASampleFormatEnum	Water	
-RNASampleFormatEnum	Gentegra-DNA	
-RNASampleFormatEnum	Gentegra-RNA	
-AnalysisTypeEnum		
-AnalysisTypeEnum	metabolomics	
-AnalysisTypeEnum	metagenomics	
-AnalysisTypeEnum	metagenomics_long_read	
-AnalysisTypeEnum	metaproteomics	
-AnalysisTypeEnum	metatranscriptomics	
-AnalysisTypeEnum	natural organic matter	
+sample_type_enum		
+sample_type_enum	soil	
+sample_type_enum	water_extract_soil	
+dna_sample_format_enum		
+dna_sample_format_enum	10 mM Tris-HCl	
+dna_sample_format_enum	DNAStable	
+dna_sample_format_enum	Ethanol	
+dna_sample_format_enum	Low EDTA TE	
+dna_sample_format_enum	MDA reaction buffer	
+dna_sample_format_enum	PBS	
+dna_sample_format_enum	Pellet	
+dna_sample_format_enum	RNAStable	
+dna_sample_format_enum	TE	
+dna_sample_format_enum	Water	
+dna_sample_format_enum	Gentegra-DNA	
+dna_sample_format_enum	Gentegra-RNA	
+rna_sample_format_enum		
+rna_sample_format_enum	10 mM Tris-HCl	
+rna_sample_format_enum	DNAStable	
+rna_sample_format_enum	Ethanol	
+rna_sample_format_enum	Low EDTA TE	
+rna_sample_format_enum	MDA reaction buffer	
+rna_sample_format_enum	PBS	
+rna_sample_format_enum	Pellet	
+rna_sample_format_enum	RNAStable	
+rna_sample_format_enum	TE	
+rna_sample_format_enum	Water	
+rna_sample_format_enum	Gentegra-DNA	
+rna_sample_format_enum	Gentegra-RNA	
+analysis_type_enum		
+analysis_type_enum	metabolomics	
+analysis_type_enum	metagenomics	
+analysis_type_enum	metaproteomics	
+analysis_type_enum	metatranscriptomics	
+analysis_type_enum	natural organic matter	
+processing_institution_enum		
+processing_institution_enum	UCSD	https://ror.org/0168r3w48
+processing_institution_enum	JGI	https://ror.org/04xm1d337
+processing_institution_enum	EMSL	https://ror.org/04rc0xn13
+processing_institution_enum	Battelle	https://ror.org/01h5tnr73
+processing_institution_enum	ANL	https://ror.org/05gvnxz63
+processing_institution_enum	UCD_Genome_Center	https://genomecenter.ucdavis.edu/
+InstrumentModelEnum		
+InstrumentModelEnum	Orbitrap	
+InstrumentModelEnum	VortexGenie2	
+InstrumentModelEnum	PIPETMAN F144059M	
+InstrumentVendorEnum		
+InstrumentVendorEnum	ThermoFisher	
+InstrumentVendorEnum	VWR	
+InstrumentVendorEnum	PerkinElmer	
+InstrumentVendorEnum	Gilson	
+InstrumentVendorEnum	ScientificIndustries	
 StatusEnum		
 StatusEnum	pass	
 StatusEnum	fail	
-ProcessingInstitutionEnum		
-ProcessingInstitutionEnum	UCSD	https://ror.org/0168r3w48
-ProcessingInstitutionEnum	JGI	https://ror.org/04xm1d337
-ProcessingInstitutionEnum	EMSL	https://ror.org/04rc0xn13
-ProcessingInstitutionEnum	Battelle	https://ror.org/01h5tnr73
-ProcessingInstitutionEnum	ANL	https://ror.org/05gvnxz63
-ProcessingInstitutionEnum	UCD_Genome_Center	https://genomecenter.ucdavis.edu/
-ChemicalConversionCategoryEnum		
-ChemicalConversionCategoryEnum	addition	
-ChemicalConversionCategoryEnum	substitution	
-ChemicalConversionCategoryEnum	acid_base	
-ChemicalConversionCategoryEnum	reduction_oxidation	
-ChemicalConversionCategoryEnum	combustion	
-ChemicalConversionCategoryEnum	decomposition	
-ChemicalConversionCategoryEnum	protease_cleavage	OBI:0600056
-DirectInfusionEnum		
-DirectInfusionEnum	direct_infusion	
-DirectInfusionEnum	autosampler	
-AcquisitionCategoryEnum		
-AcquisitionCategoryEnum	full_scan	
-AcquisitionCategoryEnum	tandem_mass_spectrum	
-AcquisitionStrategyEnum		
-AcquisitionStrategyEnum	data_independent_acquisition	
-AcquisitionStrategyEnum	data_dependent_acquisition	
-ResolutionCategoryEnum		
-ResolutionCategoryEnum	high	
-ResolutionCategoryEnum	low	
-MassAnalyzerEnum		
-MassAnalyzerEnum	time_of_flight	
-MassAnalyzerEnum	quadrupole	
-MassAnalyzerEnum	Orbitrap	
-MassAnalyzerEnum	ion_cyclotron_resonance	
-MassAnalyzerEnum	ion_trap	
-IonizationSourceEnum		
-IonizationSourceEnum	electrospray_ionization	
-IonizationSourceEnum	matrix_assisted_laser_desorption_ionization	
-IonizationSourceEnum	athmospheric_pressure_photo_ionization	
-IonizationSourceEnum	athmospheric_pressure_chemical_ionization	
-IonizationSourceEnum	electron_ionization	
-MassSpectrumCollectionModeEnum		
-MassSpectrumCollectionModeEnum	full_profile	
-MassSpectrumCollectionModeEnum	reduced_profile	
-MassSpectrumCollectionModeEnum	centroid	
-PolarityModeEnum		
-PolarityModeEnum	positive	
-PolarityModeEnum	negative	
-AnalyteCategoryEnum		
-AnalyteCategoryEnum	metagenome	
-AnalyteCategoryEnum	metatranscriptome	
-AnalyteCategoryEnum	metaproteome	
-AnalyteCategoryEnum	metabolome	
-AnalyteCategoryEnum	lipidome	
-AnalyteCategoryEnum	nom	
-ExecutionResourceEnum		
-ExecutionResourceEnum	NERSC-Cori	
-ExecutionResourceEnum	NERSC-Perlmutter	
-ExecutionResourceEnum	EMSL	
-ExecutionResourceEnum	EMSL-RZR	
-ExecutionResourceEnum	JGI	
-ExecutionResourceEnum	LANL-B-div	
-InstrumentModelEnum		
-InstrumentModelEnum	exploris_240	
-InstrumentModelEnum	exploris_480	
-InstrumentModelEnum	ltq_orbitrap_velos	
-InstrumentModelEnum	orbitrap_fusion_lumos	
-InstrumentModelEnum	orbitrap_eclipse_tribid	
-InstrumentModelEnum	orbitrap_q_exactive	
-InstrumentModelEnum	solarix_7T	
-InstrumentModelEnum	solarix_12T	
-InstrumentModelEnum	solarix_15T	
-InstrumentModelEnum	agilent_8890A	
-InstrumentModelEnum	agilent_7980A	
-InstrumentModelEnum	vortex_genie_2	
-InstrumentModelEnum	novaseq	
-InstrumentModelEnum	novaseq_6000	OBI:0002630
-InstrumentModelEnum	hiseq	
-InstrumentModelEnum	hiseq_1000	OBI:0002022
-InstrumentModelEnum	hiseq_1500	OBI:0003386
-InstrumentModelEnum	hiseq_2000	OBI:0002001
-InstrumentModelEnum	hiseq_2500	OBI:0002002
-InstrumentModelEnum	hiseq_3000	OBI:0002048
-InstrumentModelEnum	hiseq_4000	OBI:0002049
-InstrumentModelEnum	hiseq_x_ten	OBI:0002129
-InstrumentModelEnum	miniseq	OBI:0003114
-InstrumentModelEnum	nextseq_1000	OBI:0003606
-InstrumentModelEnum	miseq	OBI:0002003
-InstrumentModelEnum	nextseq_500	OBI:0002021
-InstrumentModelEnum	nextseq_550	OBI:0003387
-InstrumentModelEnum	gridion	OBI:0002751
-InstrumentModelEnum	minion	OBI:0002750
-InstrumentModelEnum	promethion	OBI:0002752
-InstrumentModelEnum	rs_II	OBI:0002012
-InstrumentModelEnum	sequel	OBI:0002632
-InstrumentModelEnum	sequel_II	OBI:0002633
-InstrumentModelEnum	revio	
-InstrumentVendorEnum		
-InstrumentVendorEnum	waters	
-InstrumentVendorEnum	agilent	
-InstrumentVendorEnum	bruker	
-InstrumentVendorEnum	thermo_fisher	
-InstrumentVendorEnum	vwr	
-InstrumentVendorEnum	perkin_elmer	
-InstrumentVendorEnum	gilson	
-InstrumentVendorEnum	scientific_industries	
-InstrumentVendorEnum	illumina	OBI:0000759
-InstrumentVendorEnum	pacbio	OBI:0001856
-InstrumentVendorEnum	oxford_nanopore	OBI:0002755
 ExtractionTargetEnum		
 ExtractionTargetEnum	DNA	
 ExtractionTargetEnum	RNA	
 ExtractionTargetEnum	metabolite	
 ExtractionTargetEnum	protein	
+ExtractionTargetEnum	phenol/chloroform extraction	
 LibraryTypeEnum		
 LibraryTypeEnum	DNA	
 LibraryTypeEnum	RNA	
@@ -1044,100 +947,93 @@ BiosampleCategoryEnum	SIP
 BiosampleCategoryEnum	SFA	https://science.osti.gov/ber/funding-opportunities/laboratory-scientific-focus-area-guidance
 BiosampleCategoryEnum	FICUS	https://jgi.doe.gov/user-programs/program-info/ficus-overview
 BiosampleCategoryEnum	NEON	https://www.neonscience.org
-DataCategoryEnum		
-DataCategoryEnum	instrument_data	
-DataCategoryEnum	processed_data	
-FileTypeEnum		
-FileTypeEnum	Metagenome Raw Reads	
-FileTypeEnum	Metagenome Raw Read 1	
-FileTypeEnum	Metagenome Raw Read 2	
-FileTypeEnum	FT ICR-MS Analysis Results	
-FileTypeEnum	GC-MS Metabolomics Results	
-FileTypeEnum	Metaproteomics Workflow Statistics	
-FileTypeEnum	Protein Report	
-FileTypeEnum	Peptide Report	
-FileTypeEnum	Unfiltered Metaproteomics Results	
-FileTypeEnum	Read Count and RPKM	
-FileTypeEnum	QC non-rRNA R2	
-FileTypeEnum	QC non-rRNA R1	
-FileTypeEnum	Metagenome Bins	
-FileTypeEnum	Metagenome HQMQ Bins Compression File	
-FileTypeEnum	Metagenome LQ Bins Compression File	
-FileTypeEnum	Metagenome Bins Info File	
-FileTypeEnum	CheckM Statistics	
-FileTypeEnum	Metagenome Bins Heatmap	
-FileTypeEnum	Metagenome Bins Barplot	
-FileTypeEnum	Metagenome Bins Krona Plot	
-FileTypeEnum	Read Based Analysis Info File	
-FileTypeEnum	GTDBTK Bacterial Summary	
-FileTypeEnum	GTDBTK Archaeal Summary	
-FileTypeEnum	GOTTCHA2 Krona Plot	
-FileTypeEnum	GOTTCHA2 Classification Report	
-FileTypeEnum	GOTTCHA2 Report Full	
-FileTypeEnum	Kraken2 Krona Plot	
-FileTypeEnum	Centrifuge Krona Plot	
-FileTypeEnum	Centrifuge output report file	
-FileTypeEnum	Kraken2 Classification Report	
-FileTypeEnum	Kraken2 Taxonomic Classification	
-FileTypeEnum	Centrifuge Classification Report	
-FileTypeEnum	Centrifuge Taxonomic Classification	
-FileTypeEnum	Structural Annotation GFF	
-FileTypeEnum	Structural Annotation Stats Json	
-FileTypeEnum	Functional Annotation GFF	
-FileTypeEnum	Annotation Info File	
-FileTypeEnum	Annotation Amino Acid FASTA	
-FileTypeEnum	Annotation Enzyme Commission	
-FileTypeEnum	Annotation KEGG Orthology	
-FileTypeEnum	Assembly Info File	
-FileTypeEnum	Assembly Coverage BAM	
-FileTypeEnum	Assembly AGP	
-FileTypeEnum	Assembly Scaffolds	
-FileTypeEnum	Assembly Contigs	
-FileTypeEnum	Assembly Coverage Stats	
-FileTypeEnum	Contig Mapping File	
-FileTypeEnum	Error Corrected Reads	
-FileTypeEnum	Filtered Sequencing Reads	
-FileTypeEnum	Read Filtering Info File	
-FileTypeEnum	QC Statistics Extended	
-FileTypeEnum	QC Statistics	
-FileTypeEnum	TIGRFam Annotation GFF	
-FileTypeEnum	CRT Annotation GFF	
-FileTypeEnum	Genemark Annotation GFF	
-FileTypeEnum	Prodigal Annotation GFF	
-FileTypeEnum	TRNA Annotation GFF	
-FileTypeEnum	Misc Annotation GFF	
-FileTypeEnum	RFAM Annotation GFF	
-FileTypeEnum	TMRNA Annotation GFF	
-FileTypeEnum	Crispr Terms	
-FileTypeEnum	Product Names	
-FileTypeEnum	Gene Phylogeny tsv	
-FileTypeEnum	Scaffold Lineage tsv	
-FileTypeEnum	Clusters of Orthologous Groups (COG) Annotation GFF	
-FileTypeEnum	KO_EC Annotation GFF	
-FileTypeEnum	CATH FunFams (Functional Families) Annotation GFF	
-FileTypeEnum	SUPERFam Annotation GFF	
-FileTypeEnum	SMART Annotation GFF	
-FileTypeEnum	Pfam Annotation GFF	
-FileTypeEnum	Annotation Statistics	
-FileTypeEnum	Direct Infusion FT ICR-MS Raw Data	
-FileTypeEnum	LC-DDA-MS/MS Raw Data	
-CreditEnum		
-CreditEnum	Conceptualization	
-CreditEnum	Data curation	
-CreditEnum	Formal Analysis	
-CreditEnum	Funding acquisition	
-CreditEnum	Investigation	
-CreditEnum	Methodology	
-CreditEnum	Project administration	
-CreditEnum	Resources	
-CreditEnum	Software	
-CreditEnum	Supervision	
-CreditEnum	Validation	
-CreditEnum	Visualization	
-CreditEnum	Writing original draft	
-CreditEnum	Writing review and editing	
-CreditEnum	Principal Investigator	OBI:0000103
-CreditEnum	Submitter	EFO:0001741
+file type enum		
+file type enum	Metagenome Raw Reads	
+file type enum	Metagenome Raw Read 1	
+file type enum	Metagenome Raw Read 2	
+file type enum	FT ICR-MS Analysis Results	
+file type enum	GC-MS Metabolomics Results	
+file type enum	Metaproteomics Workflow Statistics	
+file type enum	Protein Report	
+file type enum	Peptide Report	
+file type enum	Unfiltered Metaproteomics Results	
+file type enum	Read Count and RPKM	
+file type enum	QC non-rRNA R2	
+file type enum	QC non-rRNA R1	
+file type enum	Metagenome Bins	
+file type enum	Metagenome Bins Compression File	
+file type enum	Metagenome Bins Info File	
+file type enum	CheckM Statistics	
+file type enum	Read Based Analysis Info File	
+file type enum	GTDBTK Bacterial Summary	
+file type enum	GTDBTK Archaeal Summary	
+file type enum	GOTTCHA2 Krona Plot	
+file type enum	GOTTCHA2 Classification Report	
+file type enum	GOTTCHA2 Report Full	
+file type enum	Kraken2 Krona Plot	
+file type enum	Centrifuge Krona Plot	
+file type enum	Centrifuge output report file	
+file type enum	Kraken2 Classification Report	
+file type enum	Kraken2 Taxonomic Classification	
+file type enum	Centrifuge Classification Report	
+file type enum	Centrifuge Taxonomic Classification	
+file type enum	Structural Annotation GFF	
+file type enum	Structural Annotation Stats Json	
+file type enum	Functional Annotation GFF	
+file type enum	Annotation Info File	
+file type enum	Annotation Amino Acid FASTA	
+file type enum	Annotation Enzyme Commission	
+file type enum	Annotation KEGG Orthology	
+file type enum	Assembly Info File	
+file type enum	Assembly Coverage BAM	
+file type enum	Assembly AGP	
+file type enum	Assembly Scaffolds	
+file type enum	Assembly Contigs	
+file type enum	Assembly Coverage Stats	
+file type enum	Contig Mapping File	
+file type enum	Error Corrected Reads	
+file type enum	Filtered Sequencing Reads	
+file type enum	Read Filtering Info File	
+file type enum	QC Statistics Extended	
+file type enum	QC Statistics	
+file type enum	TIGRFam Annotation GFF	
+file type enum	CRT Annotation GFF	
+file type enum	Genemark Annotation GFF	
+file type enum	Prodigal Annotation GFF	
+file type enum	TRNA Annotation GFF	
+file type enum	Misc Annotation GFF	
+file type enum	RFAM Annotation GFF	
+file type enum	TMRNA Annotation GFF	
+file type enum	Crispr Terms	
+file type enum	Product Names	
+file type enum	Gene Phylogeny tsv	
+file type enum	Scaffold Lineage tsv	
+file type enum	Clusters of Orthologous Groups (COG) Annotation GFF	
+file type enum	KO_EC Annotation GFF	
+file type enum	CATH FunFams (Functional Families) Annotation GFF	
+file type enum	SUPERFam Annotation GFF	
+file type enum	SMART Annotation GFF	
+file type enum	Pfam Annotation GFF	
+file type enum	Annotation Statistics	
+file type enum	Direct Infusion FT ICR-MS Raw Data	
+file type enum	LC-DDA-MS/MS Raw Data	
+credit enum		
+credit enum	Conceptualization	
+credit enum	Data curation	
+credit enum	Formal Analysis	
+credit enum	Funding acquisition	
+credit enum	Investigation	
+credit enum	Methodology	
+credit enum	Project administration	
+credit enum	Resources	
+credit enum	Software	
+credit enum	Supervision	
+credit enum	Validation	
+credit enum	Visualization	
+credit enum	Writing original draft	
+credit enum	Writing review and editing	
+credit enum	Principal Investigator	OBI:0000103
+credit enum	Submitter	EFO:0001741
 StudyCategoryEnum		
 StudyCategoryEnum	research_study	
 StudyCategoryEnum	consortium	
@@ -1157,8 +1053,8 @@ DoiCategoryEnum	dataset_doi
 DoiCategoryEnum	publication_doi	
 DoiCategoryEnum	data_management_plan_doi	
 ContainerCategoryEnum		
-ContainerCategoryEnum	v-bottom_conical_tube	
-ContainerCategoryEnum	falcon_tube	
+ContainerCategoryEnum	V-bottom conical tube	
+ContainerCategoryEnum	falcon tube	
 FailureWhatEnum		
 FailureWhatEnum	low_read_count	
 FailureWhatEnum	malformed_data	
@@ -1177,7 +1073,14 @@ FailureWhereEnum	ReadQcAnalysisActivity
 FailureWhereEnum	ReadBasedTaxonomyAnalysisActivity	
 FailureWhereEnum	MetagenomeAnnotationActivity	
 SeparationMethodEnum		
-SeparationMethodEnum	ptfe_96_well_filter_plate	
+SeparationMethodEnum	PTFE 96-well filter plate	
+CompoundEnum		
+CompoundEnum	ammonium bicarbonate	
+CompoundEnum	deionized water	
+CompoundEnum	methanol	
+CompoundEnum	trypsin	
+CompoundEnum	chloridic acid	
+CompoundEnum	water	
 StationaryPhaseEnum		
 StationaryPhaseEnum	C18	
 StationaryPhaseEnum	C8	
@@ -1201,19 +1104,3 @@ StationaryPhaseEnum	WAX
 StationaryPhaseEnum	ZIC-HILIC	
 StationaryPhaseEnum	ZIC-pHILIC	
 StationaryPhaseEnum	ZIC-cHILIC	
-ProtocolCategoryEnum		
-ProtocolCategoryEnum	mplex	
-ProtocolCategoryEnum	derivatization	
-ProtocolCategoryEnum	filter_clean_up	
-ProtocolCategoryEnum	organic_matter_extraction	
-ProtocolCategoryEnum	solid_phase_extraction	
-ProtocolCategoryEnum	phosphorus_extraction	
-ProtocolCategoryEnum	ph_measurement	
-ProtocolCategoryEnum	respiration_measurement	
-ProtocolCategoryEnum	texture_measurement	
-ProtocolCategoryEnum	dna_extraction	
-ProtocolCategoryEnum	phenol_chloroform_extraction	
-ChromatographicCategoryEnum		
-ChromatographicCategoryEnum	liquid_chromatography	
-ChromatographicCategoryEnum	gas_chromatography	
-ChromatographicCategoryEnum	solid_phase_extraction	

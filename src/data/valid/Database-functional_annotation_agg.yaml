@@ -2,4 +2,3 @@ functional_annotation_agg:
   - metagenome_annotation_id: nmdc:wfmgan-99-123456.1
     gene_function_id: KEGG.ORTHOLOGY:K00627
     count: 120
-    type: nmdc:FunctionalAnnotationAggMember

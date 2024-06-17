@@ -13,4 +13,3 @@ study_set:
       - gnps.task:51cc733a80ed41139ecdd1bedf3c01af
       - gnps.task:8062948726c543dba53ec58c0f1ebb25
       - gnps.task:f8efbde4cc154db6a4cf269072d42d40
-    type: nmdc:Study

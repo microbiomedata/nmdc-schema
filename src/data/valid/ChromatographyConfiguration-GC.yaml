@@ -1,6 +1,0 @@
-id: nmdc:chrocon-99-oW43DzG0
-type: nmdc:ChromatographyConfiguration
-name: "EMSL GC method for small molecules"
-description: "EMSL's GC method for small molecule analysis"
-stationary_phase: Polysiloxane
-chromatographic_category: gas_chromatography

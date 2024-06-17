@@ -1,20 +1,26 @@
 db.functional_annotation_agg.aggregate([
- 
- {
-  {
-    $match: {"type":{"$in":[ "nmdc:MetagenomeAnnotation","nmdc:MetatranscriptomeAnnotation"]}}
-  },
   {
     $lookup: {
-      from: "workflow_exeuction_set",
+      from: "metagenome_annotation_activity_set",
       localField: "metagenome_annotation_id",
       foreignField: "id",
       as: "metagenome_annotation_activities"
     }
   },
   {
+    $lookup: {
+      from: "metatranscriptome_annotation_activity_set",
+      localField: "metatranscriptome_annotation_id",
+      foreignField: "id",
+      as: "metatranscriptome_annotation_activities"
+    }
+  },
+  {
     $match: {
-        { metagenome_annotation_activities: { $eq: [] } }
+      $and: [
+        { metagenome_annotation_activities: { $eq: [] } },
+        { metatranscriptome_annotation_activities: { $eq: [] } }
+      ]
     }
   }
 ])

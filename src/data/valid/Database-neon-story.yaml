@@ -1,4 +1,4 @@
-material_processing_set:
+pooling_set:
   - id: nmdc:poolp-99-abcdef
     name: first pooling process
     alternative_identifiers:
@@ -14,37 +14,31 @@ material_processing_set:
     #using generic start and end dates for planned processes http://purl.obolibrary.org/obo/OBI_0002471
     start_date: "2021-01-14"
     end_date: "2021-01-14"
-    type: nmdc:Pooling
 processed_sample_set:
   - id: nmdc:procsm-99-xyz1
     name: first processed sample set
-    type: nmdc:ProcessedSample
   - id: nmdc:procsm-99-xyz2
     name: first DNA extract
-    type: nmdc:ProcessedSample
   - id: nmdc:procsm-99-xyz3
     name: first library
-    type: nmdc:ProcessedSample
 
-material_processing_set:
+extraction_set:
   - id: nmdc:extrp-99-abcdef
     name: first dna extraction set
     has_input:
       - nmdc:procsm-99-pooled
     has_output:
       - nmdc:procsm-99-extract
-    extraction_targets: 
-      - DNA
+    extraction_target: DNA
     start_date: "2021-01-15"
     end_date: "2021-01-15"
-    type: nmdc:Extraction
 
 #example populated by w/example mostly from NEON.D05.TREE.DP1.10107.001.mms_metagenomeSequencing.2017-07.expanded.20230113T225024Z.csv
 #library preparation OBI:0000711
 # Alicia has been
 #   - calling the Database -> set of libraries "library_preparation_set"
 #   - using single-valued "has_input" and "has_output" slots
-material_processing_set:
+library_preparation_set:
   - id: nmdc:libprp-99-abcdef
     name: DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1
     #library_type should be enum "DNA", "RNA"
@@ -55,72 +49,50 @@ material_processing_set:
       - nmdc:procsm-99-extract
     has_output:
       - nmdc:procsm-99-library
-    type: nmdc:LibraryPreparation
 
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
-    associated_studies:
+    part_of:
       - nmdc:sty-00-abc123
     env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00005792
-    type: nmdc:Biosample
   - id: nmdc:bsm-99-abcdef2
-    associated_studies:
+    part_of:
       - nmdc:sty-00-abc123
     env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00005792
-    type: nmdc:Biosample
   - id: nmdc:bsm-99-abcdef3
-    associated_studies:
+    part_of:
       - nmdc:sty-00-abc123
     env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00005792
-    type: nmdc:Biosample

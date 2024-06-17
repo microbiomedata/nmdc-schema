@@ -1,16 +1,11 @@
 id: 'nmdc:sty-99-WoeqAi'
-type: nmdc:Study
 study_category: research_study
 has_credit_associations:
   - applied_roles:
       - Data curation
     applies_to_person:
-      type: nmdc:PersonValue
       orcid: 'orcid:0000-0002-1825-00'
-    type: prov:Association
   - applied_roles:
       - Software
     applies_to_person:
-      type: nmdc:PersonValue
       orcid: 'orcid:0000-0001-9076-6066'
-    type: prov:Association

@@ -1,0 +1,48 @@
+study_set:
+  - foo: bar
+    baz: blah
+    id: nmdc:sty-00-abc123
+    name: Avena fatua rhizosphere microbial communities from Hopland, California, USA,
+      for root-enhanced decomposition of organic matter studies
+    description: Using analytical expertise at both the JGI and EMSL, we plan to follow
+      successional patterns of protein expression
+    ecosystem: Host-associated
+    ecosystem_category: Plants
+    ecosystem_type: Rhizosphere
+    ecosystem_subtype: Soil
+    specific_ecosystem: Unclassified
+    principal_investigator_name:
+      has_raw_value: Mary Firestone
+    doi:
+      has_raw_value: 10.25585/1487760
+    type: nmdc:Study
+  - id: gold:Gs0110132
+    name: Cyanobacterial communities from the Joint Genome Institute, California, USA
+    description: We propose to utilize the unique resources at EMSL and the JGI to
+      obtain a better understanding of the phylogenetic and functional diversity of
+      cyanobacteria
+    ecosystem: Host-associated
+    ecosystem_category: Microbial
+    ecosystem_type: Bacteria
+    ecosystem_subtype: Unclassified
+    specific_ecosystem: Unclassified
+    principal_investigator_name:
+      has_raw_value: Matthias Hess
+    doi:
+      has_raw_value: 10.25585/1487758
+    type: nmdc:Study
+  - id: nmdc:sty-00-555xxx
+    name: Thawing permafrost microbial communities from the Arctic, studying carbon
+      transformations
+    description: A fundamental challenge of microbial environmental science is to understand
+      how earth systems will respond to climate change
+    ecosystem: Environmental
+    ecosystem_category: Terrestrial
+    ecosystem_type: Soil
+    ecosystem_subtype: Wetlands
+    specific_ecosystem: Permafrost
+    principal_investigator_name:
+      has_raw_value: Virginia Rich
+    doi:
+      has_raw_value: 10.25585/1487764
+    type: nmdc:Study

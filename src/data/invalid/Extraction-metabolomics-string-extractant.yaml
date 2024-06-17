@@ -1,5 +1,4 @@
 id: "nmdc:extrp-71-r2pk"
-type: nmdc:Extraction
 has_input:
   - "nmdc:ome-6"
 has_output:

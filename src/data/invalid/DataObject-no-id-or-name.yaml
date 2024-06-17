@@ -1,0 +1,4 @@
+description: "Crispr Terms for nmdc:ann0vx38"
+# absence of an id should be enough to make this invalid
+# see https://github.com/microbiomedata/nmdc-schema/issues/755
+# could just add an id slot, but it should be inherited from NamedThing

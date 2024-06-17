@@ -15,31 +15,23 @@ study_set:
     specific_ecosystem: Permafrost
     principal_investigator:
       has_raw_value: Virginia Rich
-      type: nmdc:PersonValue
     associated_dois:
       - doi_value: doi:10.25585/1487763
         doi_category: award_doi
         doi_provider: jgi
-        type: nmdc:Doi
       - doi_value: doi:10.25585/1487765
         doi_category: award_doi
         doi_provider: emsl
-        type: nmdc:Doi
       - doi_value: doi:10.21/FQSQT4T3
         doi_category: publication_doi
-        doi_provider: jgi
-        type: nmdc:Doi
-      - doi_value: doi:10.1016/j.foodchem.2008.11.065
+        doi_value: doi:10.1016/j.foodchem.2008.11.065
         doi_category: publication_doi
-        type: nmdc:Doi
       - doi_value: doi:10.1333/s00897980202a
         doi_category: dataset_doi
         doi_provider: ess_dive
-        type: nmdc:Doi
       - doi_value: doi:10.1093/acprof:oso/9780195159561.001.1
         doi_category: dataset_doi
         doi_provider: massive
-        type: nmdc:Doi
     type: nmdc:Study
     gnps_task_identifiers:
       - "gnps.task:4b848c342a4f4abc871bdf8a09a60807"

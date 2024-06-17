@@ -4,5 +4,5 @@ description: "Crispr Terms for nmdc:ann0vx38"
 file_size_bytes: 1234 # looks like "file_size_bytes" : NumberLong(6700067822) in MongoDB
 md5_checksum: "22afa3d49b73eaec2e9787a6b88fbdc3"
 name: Crispr Terms
-type: nmdc:DataObject
+type: "nmdc:DataObject"
 url: http://example.com

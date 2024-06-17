@@ -1,5 +1,4 @@
 id: nmdc:poolp-9x9-1x
-type: nmdc:Pooling
 name: first pooling process
 alternative_identifiers:
   - generic:xxx

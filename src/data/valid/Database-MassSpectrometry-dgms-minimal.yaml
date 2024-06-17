@@ -1,8 +1,0 @@
-data_generation_set:
-  - id: nmdc:dgms-99-zUCd5N
-    type: nmdc:MassSpectrometry
-    analyte_category: metabolome
-    associated_studies:
-      - nmdc:sty-00-555xxx
-    has_input:
-      - nmdc:procsm-11-0wxpzf08
