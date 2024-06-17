@@ -1,0 +1,27 @@
+id: nmdc:chcpr-19-789
+type: nmdc:ChemicalConversionProcess
+has_input:
+  - nmdc:procsm-99-123456
+has_output:
+  - nmdc:procsm-99-555555
+chemical_conversion_category: acid_base
+substances_used:
+  - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+    type: nmdc:PortionOfSubstance
+    sample_state_information: liquid
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 120
+      has_unit: mL
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_unit: mM
+      has_numeric_value: 10
+temperature:
+  type: nmdc:QuantityValue
+  has_numeric_value: 25
+  has_unit: Cel
+duration:
+  type: nmdc:QuantityValue
+  has_numeric_value: 1
+  has_unit: h

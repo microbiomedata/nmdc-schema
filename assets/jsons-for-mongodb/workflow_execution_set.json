@@ -1,0 +1,144 @@
+[
+    {
+        "id": "nmdc:wfrbt-99-74d83.1",
+        "type": "nmdc:ReadBasedTaxonomyAnalysis",
+        "name": "soil read-based taxonomy analysis",
+        "has_input": [
+            "nmdc:dobj-99-74d83z"
+        ],
+        "has_output": [
+            "nmdc:dobj-99-74d83"
+        ],
+        "ended_at_time": "2023-08-09T16:30:00Z",
+        "execution_resource": "LANL-B-div",
+        "git_url": "https://github.com/microbiomedata/read_based_taxonomy_analysis/releases/tag/v0.4.5",
+        "part_of": [
+            "nmdc:wfch-99-93z8"
+        ],
+        "started_at_time": "2023-08-09T10:30:00Z"
+    },
+    {
+        "id": "nmdc:wfrqc-12-63da5n74.1",
+        "type": "nmdc:ReadQcAnalysis",
+        "name": "TEST Read QC Activity for nmdc:wfrqc-12-63da5n74 ",
+        "has_input": [
+            "nmdc:dobj-12-jdhk9537",
+            "nmdc:dobj-12-yx0tfp52"
+        ],
+        "has_output": [
+            "nmdc:dobj-12-71q7wv80",
+            "nmdc:dobj-12-y236qp68"
+        ],
+        "ended_at_time": "2023-03-23T17:17:05.111725+00:00",
+        "execution_resource": "NERSC-Cori",
+        "git_url": "https://github.com/microbiomedata/ReadsQC",
+        "part_of": [
+            "nmdc:wfch-99-ab",
+            "nmdc:wfch-12-cd"
+        ],
+        "started_at_time": "2023-03-23T17:17:05.111689+00:00",
+        "version": "b1.0.7"
+    },
+    {
+        "id": "nmdc:wfrqc-99-hemh0a87.1",
+        "type": "nmdc:ReadQcAnalysis",
+        "name": "Read QC Activity for nmdc:wfrqc-99-hemh0a87.1",
+        "has_input": [
+            "nmdc:dobj-99-1k62bt83",
+            "nmdc:dobj-99-e8hs8y25"
+        ],
+        "qc_status": "fail",
+        "qc_comment": "Failure during call-stage to interleave fastq files",
+        "has_failure_categorization": [
+            {
+                "type": "nmdc:FailureCategorization",
+                "qc_failure_what": "malformed_data",
+                "qc_failure_where": "ReadQcAnalysis"
+            }
+        ],
+        "ended_at_time": "2023-08-30T13:26:02.892410+00:00",
+        "execution_resource": "NERSC-Perlmutter",
+        "git_url": "https://github.com/microbiomedata/ReadsQC",
+        "part_of": [
+            "nmdc:wfch-99-ab"
+        ],
+        "started_at_time": "2023-08-29T19:41:47.365957+00:00",
+        "version": "v1.0.8"
+    },
+    {
+        "id": "nmdc:wfrqc-99-hemh0a88.1",
+        "type": "nmdc:ReadQcAnalysis",
+        "name": "Read QC Activity for nmdc:wfrqc-99-hemh0a88.1",
+        "has_input": [
+            "nmdc:dobj-99-1k62bt83",
+            "nmdc:dobj-99-e8hs8y25"
+        ],
+        "has_output": [
+            "nmdc:dobj-99-e8hs8y26",
+            "nmdc:dobj-99-e8hs8y27",
+            "nmdc:dobj-99-e8hs8y28"
+        ],
+        "qc_status": "pass",
+        "qc_comment": "Number of output reads from readqc is above threshold (6000000 > 1000000)",
+        "ended_at_time": "2023-08-30T13:26:02.892410+00:00",
+        "execution_resource": "NERSC-Perlmutter",
+        "git_url": "https://github.com/microbiomedata/ReadsQC",
+        "part_of": [
+            "nmdc:wfch-99-ab"
+        ],
+        "started_at_time": "2023-08-29T19:41:47.365957+00:00",
+        "version": "v1.0.8"
+    },
+    {
+        "id": "nmdc:wfrqc-99-hemh0a90.1",
+        "type": "nmdc:ReadQcAnalysis",
+        "name": "Read QC Activity for nmdc:wfrqc-99-hemh0a87.1",
+        "has_input": [
+            "nmdc:dobj-99-1k62bt83",
+            "nmdc:dobj-99-e8hs8y25"
+        ],
+        "has_output": [
+            "nmdc:dobj-99-e8hs8y26",
+            "nmdc:dobj-99-e8hs8y27",
+            "nmdc:dobj-99-e8hs8y28"
+        ],
+        "qc_status": "fail",
+        "qc_comment": "Most data removed for artifacts",
+        "has_failure_categorization": [
+            {
+                "type": "nmdc:FailureCategorization",
+                "qc_failure_what": "low_read_count",
+                "qc_failure_where": "ReadQcAnalysis"
+            }
+        ],
+        "ended_at_time": "2023-08-30T13:26:02.892410+00:00",
+        "execution_resource": "NERSC-Perlmutter",
+        "git_url": "https://github.com/microbiomedata/ReadsQC",
+        "part_of": [
+            "nmdc:wfch-99-ab"
+        ],
+        "started_at_time": "2023-08-29T19:41:47.365957+00:00",
+        "version": "v1.0.8"
+    },
+    {
+        "id": "nmdc:wfrqc-99-7l49z.1",
+        "type": "nmdc:ReadQcAnalysis",
+        "name": "mouse gut read QC analysis",
+        "has_input": [
+            "nmdc:dobj-99-38t74d",
+            "nmdc:dobj-99-7l49z3"
+        ],
+        "has_output": [
+            "nmdc:dobj-99-7l49z"
+        ],
+        "ended_at_time": "2023-08-10T15:00:00Z",
+        "execution_resource": "JGI",
+        "git_url": "https://github.com/microbiomedata/read_qc_analysis/releases/tag/v0.2.1",
+        "part_of": [
+            "nmdc:wfch-99-dl96"
+        ],
+        "started_at_time": "2023-08-10T09:00:00Z",
+        "input_read_count": 10000000.0,
+        "output_read_count": 9000000.0
+    }
+]

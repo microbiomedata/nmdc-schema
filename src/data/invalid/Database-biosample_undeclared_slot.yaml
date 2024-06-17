@@ -1,28 +1,36 @@
 biosample_set:
   - foo: bar
-    id: nmdc:bsm-6057d02c-664c-41c9-8486-3624ca845747
+    id: nmdc:bsm-99-dtTMNb
+    type: nmdc:Biosample
     gold_biosample_identifiers:
       - gold:Gb0101224
     name: Lithgow State Coal Mine Calcium nutrients (early)
     description: Bulk Aqueous phase filtered water
-    type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
     geo_loc_name:
+      type: nmdc:TextValue
       has_raw_value: Lithgow
     lat_lon:
+      type: nmdc:GeolocationValue
       has_raw_value: "-33.460524 150.168149"
       latitude: -33.460524
       longitude: 150.168149
@@ -38,32 +46,41 @@ biosample_set:
     mod_date: 26-AUG-16 01.50.27.000000000 PM
     ncbi_taxonomy_name: coal metagenome
     sample_collection_site: Lithgow State Coal Mine
-  - id: nmdc:bsm-e924072f-98b5-4f88-a796-a7ba1d8ddd92
+  - id: nmdc:bsm-99-dtTMNb2
     gold_biosample_identifiers:
       - gold:Gb0101225
     name: Lithgow State Coal Mine Calcium nutrients Extra
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
     geo_loc_name:
+      type: nmdc:TextValue
       has_raw_value: Lithgow
     lat_lon:
+      type: nmdc:GeolocationValue
       has_raw_value: "-33.460524 150.168149"
       latitude: -33.460524
-      longitude: 150.168149
+      longitude:
+        150.168149
     ecosystem: Environmental
     ecosystem_category: Aquatic
     ecosystem_type: Freshwater
@@ -76,29 +93,37 @@ biosample_set:
     mod_date: 26-AUG-16 01.50.27.000000000 PM
     ncbi_taxonomy_name: coal metagenome
     sample_collection_site: Lithgow State Coal Mine
-  - id: nmdc:bsm-61c3332d-f654-4db8-8d2f-59475894daa5
+  - id: nmdc:bsm-99-dtTMNb3
     gold_biosample_identifiers:
       - gold:Gb0101226
     name: Lithgow State Coal Mine Calcium nutrients
     description: Bulk Aqueous phase filtered water
     type: nmdc:Biosample
-    part_of:
+    associated_studies:
       - nmdc:sty-00-8675309
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
     geo_loc_name:
+      type: nmdc:TextValue
       has_raw_value: Lithgow
     lat_lon:
+      type: nmdc:GeolocationValue
       has_raw_value: "-33.460524 150.168149"
       latitude: -33.460524
       longitude: 150.168149
