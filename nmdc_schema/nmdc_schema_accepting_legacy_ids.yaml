@@ -4490,14 +4490,6 @@ slots:
     mixins:
     - object_set
     range: DataGeneration
-  workflow_chain_set:
-    name: workflow_chain_set
-    description: This property links a database object to the set of workflow chains
-      within it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: WorkflowChain
   processed_sample_set:
     name: processed_sample_set
     description: This property links a database object to the set of processed samples
@@ -16952,12 +16944,6 @@ slots:
     - For example, low read count from a sequencer, malformed fastq files, etc.
     from_schema: https://w3id.org/nmdc/nmdc
     range: FailureWhatEnum
-  replaces:
-    name: replaces
-    description: The id of the WorkflowChain that is a previous iteration of the current
-      WorkflowChain.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: WorkflowChain
   qc_comment:
     name: qc_comment
     description: Slot to store additional comments about laboratory or workflow output.
@@ -18777,6 +18763,24 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
+      has_calibration:
+        name: has_calibration
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_chromatography_configuration:
+        name: has_chromatography_configuration
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_mass_spectrometry_configuration:
+        name: has_mass_spectrometry_configuration
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MassSpectrometry
     rules:
     - preconditions:
@@ -18920,7 +18924,6 @@ classes:
     - protocol_execution_set
     - storage_process_set
     - study_set
-    - workflow_chain_set
     - workflow_execution_set
     class_uri: nmdc:Database
     tree_root: true
@@ -19089,6 +19092,26 @@ classes:
     slot_usage:
       id:
         name: id
+        required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_input:
+        name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_output:
+        name: has_output
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_process_parts:
+        name: has_process_parts
+        description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
         required: true
         pattern: .*
         structured_pattern:
@@ -19269,6 +19292,25 @@ classes:
       substances_used:
         name: substances_used
         description: The substance(s) that a processed sample is stored in.
+      id:
+        name: id
+        required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_input:
+        name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      has_output:
+        name: has_output
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:StorageProcess
   ChromatographicSeparationProcess:
     name: ChromatographicSeparationProcess
@@ -19378,6 +19420,7 @@ classes:
     is_a: WorkflowExecution
     slots:
     - img_identifiers
+    - gold_analysis_project_identifiers
     slot_usage:
       id:
         name: id
@@ -19389,6 +19432,18 @@ classes:
       img_identifiers:
         name: img_identifiers
         maximum_cardinality: 1
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      gold_analysis_project_identifiers:
+        name: gold_analysis_project_identifiers
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MetagenomeAnnotation
   FieldResearchSite:
     name: FieldResearchSite
@@ -21381,53 +21436,6 @@ classes:
           syntax: .*
           interpolated: true
     class_uri: nmdc:DataGeneration
-  WorkflowChain:
-    name: WorkflowChain
-    description: A workflow chain is a collection of Workflow Execution(s) that analyse
-      the output of DataGeneration.
-    comments:
-    - The sequence of Workflow Execution(s) can be inferred from the has_input and
-      has_output slots of the Workflow Execution(s)
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: PlannedProcess
-    slots:
-    - analyte_category
-    - was_informed_by
-    - gold_analysis_project_identifiers
-    - jgi_portal_analysis_project_identifiers
-    - replaces
-    - ended_at_time
-    slot_usage:
-      id:
-        name: id
-        required: true
-        pattern: .*
-        structured_pattern:
-          syntax: .*
-          interpolated: true
-      replaces:
-        name: replaces
-        pattern: .*
-        structured_pattern:
-          syntax: .*
-          interpolated: true
-      analyte_category:
-        name: analyte_category
-        required: true
-      was_informed_by:
-        name: was_informed_by
-        description: "A Workflow Chain instance was informed by the data and metadata\
-          \ of a of a\n  Data Generation instance"
-        comments:
-        - "- The value of this slot is a reference to a Data Generation\n  instance\
-          \ that informed the Workflow Chain instance with its\n  output data and\
-          \ the metadata of the Data Generation."
-        required: true
-        pattern: .*
-        structured_pattern:
-          syntax: .*
-          interpolated: true
-    class_uri: nmdc:WorkflowChain
   WorkflowExecution:
     name: WorkflowExecution
     description: Represents an instance of an execution of a particular workflow
@@ -21450,9 +21458,9 @@ classes:
     - ended_at_time
     - execution_resource
     - git_url
-    - part_of
     - started_at_time
     - version
+    - was_informed_by
     slot_usage:
       started_at_time:
         name: started_at_time
@@ -21476,15 +21484,9 @@ classes:
       execution_resource:
         name: execution_resource
         required: true
-      part_of:
-        name: part_of
-        description: The WorkflowChain that this WorkflowExecution is part of
-        range: WorkflowChain
+      was_informed_by:
+        name: was_informed_by
         required: true
-        pattern: .*
-        structured_pattern:
-          syntax: .*
-          interpolated: true
     class_uri: nmdc:WorkflowExecution
     rules:
     - preconditions:
@@ -21559,6 +21561,12 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MetagenomeAssembly
   MetatranscriptomeAssembly:
     name: MetatranscriptomeAssembly
@@ -21603,6 +21611,12 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MetatranscriptomeAssembly
   MetatranscriptomeAnnotation:
     name: MetatranscriptomeAnnotation
@@ -21612,6 +21626,7 @@ classes:
     is_a: WorkflowExecution
     slots:
     - img_identifiers
+    - gold_analysis_project_identifiers
     slot_usage:
       id:
         name: id
@@ -21631,6 +21646,18 @@ classes:
           interpolated: true
       has_output:
         name: has_output
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      gold_analysis_project_identifiers:
+        name: gold_analysis_project_identifiers
         pattern: .*
         structured_pattern:
           syntax: .*
@@ -21657,6 +21684,12 @@ classes:
       img_identifiers:
         name: img_identifiers
         maximum_cardinality: 1
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MetatranscriptomeAnalysis
   MagsAnalysis:
     name: MagsAnalysis
@@ -21686,6 +21719,12 @@ classes:
       img_identifiers:
         name: img_identifiers
         maximum_cardinality: 1
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MagsAnalysis
   MetagenomeSequencing:
     name: MetagenomeSequencing
@@ -21706,6 +21745,12 @@ classes:
           interpolated: true
       has_input:
         name: has_input
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      was_informed_by:
+        name: was_informed_by
         pattern: .*
         structured_pattern:
           syntax: .*
@@ -21737,6 +21782,12 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:ReadQcAnalysis
   ReadBasedTaxonomyAnalysis:
     name: ReadBasedTaxonomyAnalysis
@@ -21751,6 +21802,12 @@ classes:
       id:
         name: id
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      was_informed_by:
+        name: was_informed_by
         pattern: .*
         structured_pattern:
           syntax: .*
@@ -21773,6 +21830,12 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MetabolomicsAnalysis
   MetaproteomicsAnalysis:
     name: MetaproteomicsAnalysis
@@ -21790,6 +21853,12 @@ classes:
         structured_pattern:
           syntax: .*
           interpolated: true
+      was_informed_by:
+        name: was_informed_by
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
     class_uri: nmdc:MetaproteomicsAnalysis
   NomAnalysis:
     name: NomAnalysis
@@ -21803,6 +21872,12 @@ classes:
       id:
         name: id
         required: true
+        pattern: .*
+        structured_pattern:
+          syntax: .*
+          interpolated: true
+      was_informed_by:
+        name: was_informed_by
         pattern: .*
         structured_pattern:
           syntax: .*
