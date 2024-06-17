@@ -3954,13 +3954,6 @@
                     },
                     "type": "array"
                 },
-                "workflow_chain_set": {
-                    "description": "This property links a database object to the set of workflow chains within it.",
-                    "items": {
-                        "$ref": "#/$defs/WorkflowChain"
-                    },
-                    "type": "array"
-                },
                 "workflow_execution_set": {
                     "description": "This property links a database object to the set of workflow executions.",
                     "items": {
@@ -5966,13 +5959,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -6011,13 +5997,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -6126,14 +6115,6 @@
                     "type": "string"
                 },
                 "has_calibration": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
                     "description": "a calibration instance associated with a process",
                     "type": "string"
                 },
@@ -6506,13 +6487,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -6545,13 +6519,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -6633,6 +6610,14 @@
                     "description": "The url that points to the exact github location of a workflow.",
                     "type": "string"
                 },
+                "gold_analysis_project_identifiers": {
+                    "description": "identifiers for corresponding analysis projects in GOLD",
+                    "items": {
+                        "pattern": "^gold:Ga[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -6671,13 +6656,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -6710,13 +6688,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -6891,13 +6872,6 @@
                     "description": "The sequence count number of input reads for assembly.",
                     "type": "number"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -6978,13 +6952,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -7095,13 +7072,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -7134,13 +7104,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -7257,13 +7230,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -7296,13 +7262,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -7422,13 +7391,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -7461,13 +7423,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -7549,6 +7514,14 @@
                     "description": "The url that points to the exact github location of a workflow.",
                     "type": "string"
                 },
+                "gold_analysis_project_identifiers": {
+                    "description": "identifiers for corresponding analysis projects in GOLD",
+                    "items": {
+                        "pattern": "^gold:Ga[0-9]+$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -7587,13 +7560,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -7626,13 +7592,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -7807,13 +7776,6 @@
                     "description": "The sequence count number of input reads for assembly.",
                     "type": "number"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -7894,13 +7856,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -8158,13 +8123,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -8197,13 +8155,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -9028,7 +8989,7 @@
                     "type": "array"
                 },
                 "has_process_parts": {
-                    "description": "A list of process parts that make up a protocol.",
+                    "description": "The MaterialProcessing steps that are discrete parts of the ProtocolExecution.",
                     "items": {
                         "type": "string"
                     },
@@ -9253,13 +9214,6 @@
                     "description": "A human readable label for an entity",
                     "type": "string"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -9292,13 +9246,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -9433,13 +9390,6 @@
                     "description": "After QC analysis sequence count number.",
                     "type": "number"
                 },
-                "part_of": {
-                    "description": "The WorkflowChain that this WorkflowExecution is part of",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
                 "processing_institution": {
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
@@ -9472,13 +9422,16 @@
                 },
                 "version": {
                     "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
                 }
             },
             "required": [
                 "execution_resource",
                 "git_url",
-                "part_of",
                 "started_at_time",
+                "was_informed_by",
                 "has_input",
                 "id",
                 "type"
@@ -10721,123 +10674,6 @@
             "title": "WindowVertPosEnum",
             "type": "string"
         },
-        "WorkflowChain": {
-            "additionalProperties": false,
-            "description": "A workflow chain is a collection of Workflow Execution(s) that analyse the output of DataGeneration.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "analyte_category": {
-                    "$ref": "#/$defs/AnalyteCategoryEnum",
-                    "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": "string"
-                },
-                "end_date": {
-                    "description": "The date on which any process or activity was ended",
-                    "type": "string"
-                },
-                "ended_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": "string"
-                },
-                "gold_analysis_project_identifiers": {
-                    "description": "identifiers for corresponding analysis projects in GOLD",
-                    "items": {
-                        "pattern": "^gold:Ga[0-9]+$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "has_failure_categorization": {
-                    "items": {
-                        "$ref": "#/$defs/FailureCategorization"
-                    },
-                    "type": "array"
-                },
-                "has_input": {
-                    "description": "An input to a process.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "has_output": {
-                    "description": "An output from a process.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "jgi_portal_analysis_project_identifiers": {
-                    "description": "identifiers for corresponding analysis projects in JGI Portal",
-                    "items": {
-                        "pattern": "^jgi.analysis:[0-9]+$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                },
-                "processing_institution": {
-                    "$ref": "#/$defs/ProcessingInstitutionEnum",
-                    "description": "The organization that processed the sample."
-                },
-                "protocol_link": {
-                    "$ref": "#/$defs/Protocol"
-                },
-                "qc_comment": {
-                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
-                    "type": "string"
-                },
-                "qc_status": {
-                    "$ref": "#/$defs/StatusEnum",
-                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
-                },
-                "replaces": {
-                    "description": "The id of the WorkflowChain that is a previous iteration of the current WorkflowChain.",
-                    "type": "string"
-                },
-                "start_date": {
-                    "description": "The date on which any process or activity was started",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:WorkflowChain"
-                    ],
-                    "type": "string"
-                },
-                "was_informed_by": {
-                    "description": "A Workflow Chain instance was informed by the data and metadata of a of a\n  Data Generation instance",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "analyte_category",
-                "was_informed_by",
-                "id",
-                "type"
-            ],
-            "title": "WorkflowChain",
-            "type": "object"
-        },
         "YesNoEnum": {
             "description": "replaces DnaDnaseEnum and DnaseRnaEnum",
             "enum": [
@@ -11009,13 +10845,6 @@
             "description": "This property links a database object to the set of studies within it.",
             "items": {
                 "$ref": "#/$defs/Study"
-            },
-            "type": "array"
-        },
-        "workflow_chain_set": {
-            "description": "This property links a database object to the set of workflow chains within it.",
-            "items": {
-                "$ref": "#/$defs/WorkflowChain"
             },
             "type": "array"
         },
