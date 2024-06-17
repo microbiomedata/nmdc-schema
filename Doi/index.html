@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Doi/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
 <title>Class: Doi - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -291,6 +291,8 @@
 
   Doi : doi_value
 
+  Doi : type
+
 
 
 </div>
@@ -324,6 +326,12 @@
 <td>The resource type the corresponding doi resolves to</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -337,24 +345,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="./">Doi</a></td>
-<td><a href="../doi_value/">doi_value</a></td>
-<td>domain</td>
-<td><a href="./">Doi</a></td>
-</tr>
-<tr>
-<td><a href="./">Doi</a></td>
-<td><a href="../doi_provider/">doi_provider</a></td>
-<td>domain</td>
-<td><a href="./">Doi</a></td>
-</tr>
-<tr>
-<td><a href="./">Doi</a></td>
-<td><a href="../doi_category/">doi_category</a></td>
-<td>domain</td>
-<td><a href="./">Doi</a></td>
-</tr>
 <tr>
 <td><a href="../Study/">Study</a></td>
 <td><a href="../associated_dois/">associated_dois</a></td>
@@ -414,6 +404,8 @@ slots:
 - doi_value
 - doi_provider
 - doi_category
+- type
+class_uri: nmdc:Doi
 rules:
 - preconditions:
     slot_conditions:
@@ -464,7 +456,6 @@ attributes:
     narrow_mappings:
     - edam.data:1188
     rank: 1000
-    domain: Doi
     alias: doi_value
     owner: Doi
     domain_of:
@@ -484,7 +475,6 @@ attributes:
     close_mappings:
     - NCIT:C74932
     rank: 1000
-    domain: Doi
     alias: doi_provider
     owner: Doi
     domain_of:
@@ -500,13 +490,51 @@ attributes:
     - data_portal_subset
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Doi
     alias: doi_category
     owner: Doi
     domain_of:
     - Doi
     range: DoiCategoryEnum
     required: true
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: Doi
+    domain_of:
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:Doi
 rules:
 - preconditions:
     slot_conditions:
@@ -551,7 +579,7 @@ rules:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

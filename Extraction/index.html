@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Extraction/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
 <title>Class: Extraction - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -209,13 +209,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -278,8 +271,8 @@
 <div class="mermaid">classDiagram
   class Extraction
   click Extraction href "../Extraction"
-    PlannedProcess &lt;|-- Extraction
-      click PlannedProcess href "../PlannedProcess"
+    MaterialProcessing &lt;|-- Extraction
+      click MaterialProcessing href "../MaterialProcessing"
 
 
 
@@ -287,23 +280,11 @@
 
   Extraction : description
 
-  Extraction : designated_class
-
   Extraction : end_date
 
-  Extraction : extractant
+  Extraction : extraction_targets
 
-      Extraction --&gt; "0..1" Solution : extractant
-    click Solution href "../Solution"
-
-  Extraction : extraction_method
-
-      Extraction --&gt; "0..1" ExtractionTargetEnum : extraction_method
-    click ExtractionTargetEnum href "../ExtractionTargetEnum"
-
-  Extraction : extraction_target
-
-      Extraction --&gt; "0..1" ExtractionTargetEnum : extraction_target
+      Extraction --&gt; "*" ExtractionTargetEnum : extraction_targets
     click ExtractionTargetEnum href "../ExtractionTargetEnum"
 
   Extraction : has_failure_categorization
@@ -318,8 +299,8 @@
 
   Extraction : has_output
 
-      Extraction --&gt; "1..*" NamedThing : has_output
-    click NamedThing href "../NamedThing"
+      Extraction --&gt; "1..*" ProcessedSample : has_output
+    click ProcessedSample href "../ProcessedSample"
 
   Extraction : id
 
@@ -328,7 +309,10 @@
       Extraction --&gt; "0..1" QuantityValue : input_mass
     click QuantityValue href "../QuantityValue"
 
-  Extraction : instrument_name
+  Extraction : instrument_used
+
+      Extraction --&gt; "*" Instrument : instrument_used
+    click Instrument href "../Instrument"
 
   Extraction : name
 
@@ -351,6 +335,13 @@
 
   Extraction : start_date
 
+  Extraction : substances_used
+
+      Extraction --&gt; "*" PortionOfSubstance : substances_used
+    click PortionOfSubstance href "../PortionOfSubstance"
+
+  Extraction : type
+
   Extraction : volume
 
       Extraction --&gt; "0..1" QuantityValue : volume
@@ -363,7 +354,10 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
 <li><strong>Extraction</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -381,21 +375,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../extractant/">extractant</a></td>
-<td>0..1 <br/> <a href="../Solution/">Solution</a></td>
-<td>The active component(s) primarily responsible for transfer of a solute from o...</td>
+<td><a href="../substances_used/">substances_used</a></td>
+<td>* <br/> <a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td>The substances that are combined to enable a ChemicalConversionProcess</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../extraction_method/">extraction_method</a></td>
-<td>0..1 <br/> <a href="../ExtractionTargetEnum/">ExtractionTargetEnum</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../extraction_target/">extraction_target</a></td>
-<td>0..1 <br/> <a href="../ExtractionTargetEnum/">ExtractionTargetEnum</a></td>
-<td></td>
+<td><a href="../extraction_targets/">extraction_targets</a></td>
+<td>* <br/> <a href="../ExtractionTargetEnum/">ExtractionTargetEnum</a></td>
+<td>Provides the target biomolecule that has been separated from a sample during ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -411,16 +399,10 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../designated_class/">designated_class</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td></td>
-<td><a href="../PlannedProcess/">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../end_date/">end_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which any process or activity was ended</td>
-<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+<td><a href="../instrument_used/">instrument_used</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>What instrument was used during DataGeneration or MaterialProcessing</td>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
@@ -430,8 +412,8 @@
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
-<td>An output biosample to a processing step</td>
+<td>1..* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -453,9 +435,9 @@
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
-<td><a href="../instrument_name/">instrument_name</a></td>
+<td><a href="../end_date/">end_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the instrument that was used for processing the sample</td>
+<td>The date on which any process or activity was ended</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -500,36 +482,11 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
 <tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../extraction_set/">extraction_set</a></td>
-<td>range</td>
-<td><a href="./">Extraction</a></td>
-</tr>
-<tr>
-<td><a href="./">Extraction</a></td>
-<td><a href="../extractant/">extractant</a></td>
-<td>domain</td>
-<td><a href="./">Extraction</a></td>
-</tr>
-<tr>
-<td><a href="./">Extraction</a></td>
-<td><a href="../extraction_method/">extraction_method</a></td>
-<td>domain</td>
-<td><a href="./">Extraction</a></td>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
 </table>
@@ -571,21 +528,17 @@ description: A material separation in which a desired component of an input mate
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - OBI:0302884
-is_a: PlannedProcess
+is_a: MaterialProcessing
 slots:
-- extractant
-- extraction_method
-- extraction_target
+- substances_used
+- extraction_targets
 - input_mass
 - volume
 slot_usage:
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -596,9 +549,7 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
@@ -606,10 +557,7 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'
@@ -619,9 +567,10 @@ slot_usage:
     description: The volume of the solvent/solute being used, not the input.
     domain_of:
     - Extraction
-    - Solution
     - SubSamplingProcess
     - FiltrationProcess
+    - MobilePhaseSegment
+    - PortionOfSubstance
 class_uri: nmdc:Extraction
 
 </code></pre>
@@ -634,15 +583,12 @@ description: A material separation in which a desired component of an input mate
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - OBI:0302884
-is_a: PlannedProcess
+is_a: MaterialProcessing
 slot_usage:
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -653,9 +599,7 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
@@ -663,10 +607,7 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'
@@ -676,37 +617,41 @@ slot_usage:
     description: The volume of the solvent/solute being used, not the input.
     domain_of:
     - Extraction
-    - Solution
     - SubSamplingProcess
     - FiltrationProcess
+    - MobilePhaseSegment
+    - PortionOfSubstance
 attributes:
-  extractant:
-    name: extractant
-    description: The active component(s) primarily responsible for transfer of a solute
-      from one phase to the other.
+  substances_used:
+    name: substances_used
+    description: The substances that are combined to enable a ChemicalConversionProcess.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Extraction
-    alias: extractant
+    multivalued: true
+    alias: substances_used
     owner: Extraction
     domain_of:
     - Extraction
-    range: Solution
-  extraction_method:
-    name: extraction_method
+    - StorageProcess
+    - DissolvingProcess
+    - ChemicalConversionProcess
+    - MobilePhaseSegment
+    range: PortionOfSubstance
+    inlined: true
+    inlined_as_list: true
+  extraction_targets:
+    name: extraction_targets
+    description: Provides the target biomolecule that has been separated from a sample
+      during an extraction process.
+    notes:
+    - todos, remove nucl_acid_ext from OmicsProcessing (DataGeneration)
     from_schema: https://w3id.org/nmdc/nmdc
+    narrow_mappings:
+    - NCIT:C177560
+    - MIXS:0000037
     rank: 1000
-    domain: Extraction
-    alias: extraction_method
-    owner: Extraction
-    domain_of:
-    - Extraction
-    range: ExtractionTargetEnum
-  extraction_target:
-    name: extraction_target
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: extraction_target
+    multivalued: true
+    alias: extraction_targets
     owner: Extraction
     domain_of:
     - Extraction
@@ -721,8 +666,9 @@ attributes:
     - sample weight
     exact_mappings:
     - MS:1000004
+    narrow_mappings:
+    - MIXS:0000111
     rank: 1000
-    domain: PlannedProcess
     alias: input_mass
     owner: Extraction
     domain_of:
@@ -733,57 +679,37 @@ attributes:
     description: The volume of the solvent/solute being used, not the input.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: volume
     owner: Extraction
     domain_of:
     - Extraction
-    - Solution
     - SubSamplingProcess
     - FiltrationProcess
+    - MobilePhaseSegment
+    - PortionOfSubstance
     range: QuantityValue
-  designated_class:
-    name: designated_class
-    comments:
-    - required on all instances in a polymorphic Database slot like planned_process_set
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    designates_type: true
-    alias: designated_class
+    multivalued: true
+    alias: instrument_used
     owner: Extraction
     domain_of:
-    - PlannedProcess
-    range: uriorcurie
-  end_date:
-    name: end_date
-    description: The date on which any process or activity was ended
-    todos:
-    - add date string validation pattern
-    comments:
-    - We are using string representations of dates until all components of our ecosystem
-      can handle ISO 8610 dates
-    - The date should be formatted as YYYY-MM-DD
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: end_date
-    owner: Extraction
-    domain_of:
-    - PlannedProcess
-    range: string
+    - MaterialProcessing
+    - DataGeneration
+    range: Instrument
   has_input:
     name: has_input
     description: An input to a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_input
     owner: Extraction
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: NamedThing
     required: true
     structured_pattern:
@@ -794,18 +720,15 @@ attributes:
     - range: ProcessedSample
   has_output:
     name: has_output
-    description: An output biosample to a processing step
+    description: An output from a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_output
     owner: Extraction
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
-    range: NamedThing
+    range: ProcessedSample
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
@@ -815,22 +738,20 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: processing_institution
     owner: Extraction
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: protocol_link
     owner: Extraction
     domain_of:
     - PlannedProcess
+    - Study
     range: Protocol
   start_date:
     name: start_date
@@ -848,16 +769,20 @@ attributes:
     domain_of:
     - PlannedProcess
     range: string
-  instrument_name:
-    name: instrument_name
-    description: The name of the instrument that was used for processing the sample.
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
-    alias: instrument_name
+    alias: end_date
     owner: Extraction
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
     range: string
   qc_status:
@@ -871,7 +796,6 @@ attributes:
     owner: Extraction
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -884,7 +808,6 @@ attributes:
     owner: Extraction
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -895,8 +818,9 @@ attributes:
     owner: Extraction
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: FailureCategorization
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -907,10 +831,7 @@ attributes:
     alias: id
     owner: Extraction
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -925,10 +846,9 @@ attributes:
     alias: name
     owner: Extraction
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -939,9 +859,8 @@ attributes:
     alias: description
     owner: Extraction
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -952,13 +871,48 @@ attributes:
     alias: alternative_identifiers
     owner: Extraction
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: Extraction
+    domain_of:
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
 class_uri: nmdc:Extraction
 
 </code></pre>
@@ -988,7 +942,7 @@ class_uri: nmdc:Extraction
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/LibraryPreparation/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
 <title>Class: LibraryPreparation - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -209,13 +209,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#aliases">
 <span class="md-ellipsis">
       Aliases
@@ -291,16 +284,14 @@
 <div class="mermaid">classDiagram
   class LibraryPreparation
   click LibraryPreparation href "../LibraryPreparation"
-    BiosampleProcessing &lt;|-- LibraryPreparation
-      click BiosampleProcessing href "../BiosampleProcessing"
+    MaterialProcessing &lt;|-- LibraryPreparation
+      click MaterialProcessing href "../MaterialProcessing"
 
 
 
   LibraryPreparation : alternative_identifiers
 
   LibraryPreparation : description
-
-  LibraryPreparation : designated_class
 
   LibraryPreparation : end_date
 
@@ -311,8 +302,8 @@
 
   LibraryPreparation : has_input
 
-      LibraryPreparation --&gt; "1..*" Biosample : has_input
-    click Biosample href "../Biosample"
+      LibraryPreparation --&gt; "1..*" NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   LibraryPreparation : has_output
 
@@ -321,7 +312,10 @@
 
   LibraryPreparation : id
 
-  LibraryPreparation : instrument_name
+  LibraryPreparation : instrument_used
+
+      LibraryPreparation --&gt; "*" Instrument : instrument_used
+    click Instrument href "../Instrument"
 
   LibraryPreparation : library_preparation_kit
 
@@ -332,7 +326,22 @@
 
   LibraryPreparation : name
 
+  LibraryPreparation : nucl_acid_amp
+
+      LibraryPreparation --&gt; "0..1" TextValue : nucl_acid_amp
+    click TextValue href "../TextValue"
+
+  LibraryPreparation : pcr_cond
+
+      LibraryPreparation --&gt; "0..1" TextValue : pcr_cond
+    click TextValue href "../TextValue"
+
   LibraryPreparation : pcr_cycles
+
+  LibraryPreparation : pcr_primers
+
+      LibraryPreparation --&gt; "0..1" TextValue : pcr_primers
+    click TextValue href "../TextValue"
 
   LibraryPreparation : processing_institution
 
@@ -353,6 +362,8 @@
 
   LibraryPreparation : start_date
 
+  LibraryPreparation : type
+
 
 
 </div>
@@ -360,7 +371,7 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
-<li><a href="../BiosampleProcessing/">BiosampleProcessing</a><ul>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
 <li><strong>LibraryPreparation</strong></li>
 </ul>
 </li>
@@ -399,27 +410,39 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../nucl_acid_amp/">nucl_acid_amp</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>A link to a literature reference, electronic resource or a standard operating...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pcr_cond/">pcr_cond</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Description of reaction conditions and components of polymerase chain reactio...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pcr_primers/">pcr_primers</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>PCR primers that were used to amplify the sequence of the targeted gene, locu...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../instrument_used/">instrument_used</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>What instrument was used during DataGeneration or MaterialProcessing</td>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
+</tr>
+<tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../Biosample/">Biosample</a></td>
+<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
 <td>An input to a process</td>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a>, <a href="../PlannedProcess/">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../designated_class/">designated_class</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td></td>
-<td><a href="../PlannedProcess/">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../end_date/">end_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which any process or activity was ended</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
 <td>1..* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
-<td>An output biosample to a processing step</td>
+<td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -441,9 +464,9 @@
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
-<td><a href="../instrument_name/">instrument_name</a></td>
+<td><a href="../end_date/">end_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the instrument that was used for processing the sample</td>
+<td>The date on which any process or activity was ended</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -488,30 +511,11 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
 <tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../library_preparation_set/">library_preparation_set</a></td>
-<td>range</td>
-<td><a href="./">LibraryPreparation</a></td>
-</tr>
-<tr>
-<td><a href="./">LibraryPreparation</a></td>
-<td><a href="../library_type/">library_type</a></td>
-<td>domain</td>
-<td><a href="./">LibraryPreparation</a></td>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
 </table>
@@ -563,19 +567,19 @@ aliases:
 - LibraryConstruction
 close_mappings:
 - OBI:0000711
-is_a: BiosampleProcessing
+is_a: MaterialProcessing
 slots:
 - library_preparation_kit
 - library_type
 - pcr_cycles
+- nucl_acid_amp
+- pcr_cond
+- pcr_primers
 slot_usage:
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -583,9 +587,7 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
@@ -593,14 +595,17 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true
+  pcr_cond:
+    name: pcr_cond
+    description: Description of reaction conditions and components of polymerase chain
+      reaction performed during library preparation
+    domain_of:
+    - LibraryPreparation
 class_uri: nmdc:LibraryPreparation
 
 </code></pre>
@@ -615,15 +620,12 @@ aliases:
 - LibraryConstruction
 close_mappings:
 - OBI:0000711
-is_a: BiosampleProcessing
+is_a: MaterialProcessing
 slot_usage:
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -631,9 +633,7 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
@@ -641,14 +641,17 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'
       interpolated: true
+  pcr_cond:
+    name: pcr_cond
+    description: Description of reaction conditions and components of polymerase chain
+      reaction performed during library preparation
+    domain_of:
+    - LibraryPreparation
 attributes:
   library_preparation_kit:
     name: library_preparation_kit
@@ -666,7 +669,6 @@ attributes:
     - value: DNA
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: LibraryPreparation
     alias: library_type
     owner: LibraryPreparation
     domain_of:
@@ -683,66 +685,111 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: integer
+  nucl_acid_amp:
+    name: nucl_acid_amp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID, DOI or URL
+    description: A link to a literature reference, electronic resource or a standard
+      operating procedure (SOP), that describes the enzymatic amplification (PCR,
+      TMA, NASBA) of specific nucleic acids
+    title: nucleic acid amplification
+    examples:
+    - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - nucleic acid amplification
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: MIXS:0000038
+    multivalued: false
+    alias: nucl_acid_amp
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: TextValue
+  pcr_cond:
+    name: pcr_cond
+    description: Description of reaction conditions and components of polymerase chain
+      reaction performed during library preparation
+    title: pcr conditions
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
+      elongation:degrees_minutes;total cycles
+    slot_uri: MIXS:0000049
+    multivalued: false
+    alias: pcr_cond
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: TextValue
+  pcr_primers:
+    name: pcr_primers
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: 'FWD: forward primer sequence;REV:reverse primer sequence'
+    description: PCR primers that were used to amplify the sequence of the targeted
+      gene, locus or subfragment. This field should contain all the primers used for
+      a single PCR reaction if multiple forward or reverse primers are present in
+      a single PCR reaction. The primer sequence should be reported in uppercase letters
+    title: pcr primers
+    examples:
+    - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - pcr primers
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: FWD:{dna};REV:{dna}
+    slot_uri: MIXS:0000046
+    multivalued: false
+    alias: pcr_primers
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: TextValue
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: instrument_used
+    owner: LibraryPreparation
+    domain_of:
+    - MaterialProcessing
+    - DataGeneration
+    range: Instrument
   has_input:
     name: has_input
     description: An input to a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_input
     owner: LibraryPreparation
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
-    range: Biosample
+    range: NamedThing
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
-  designated_class:
-    name: designated_class
-    comments:
-    - required on all instances in a polymorphic Database slot like planned_process_set
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    designates_type: true
-    alias: designated_class
-    owner: LibraryPreparation
-    domain_of:
-    - PlannedProcess
-    range: uriorcurie
-  end_date:
-    name: end_date
-    description: The date on which any process or activity was ended
-    todos:
-    - add date string validation pattern
-    comments:
-    - We are using string representations of dates until all components of our ecosystem
-      can handle ISO 8610 dates
-    - The date should be formatted as YYYY-MM-DD
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: end_date
-    owner: LibraryPreparation
-    domain_of:
-    - PlannedProcess
-    range: string
   has_output:
     name: has_output
-    description: An output biosample to a processing step
+    description: An output from a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     multivalued: true
     alias: has_output
     owner: LibraryPreparation
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: ProcessedSample
     required: true
     structured_pattern:
@@ -753,22 +800,20 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: processing_institution
     owner: LibraryPreparation
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: protocol_link
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
+    - Study
     range: Protocol
   start_date:
     name: start_date
@@ -786,16 +831,20 @@ attributes:
     domain_of:
     - PlannedProcess
     range: string
-  instrument_name:
-    name: instrument_name
-    description: The name of the instrument that was used for processing the sample.
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
-    alias: instrument_name
+    alias: end_date
     owner: LibraryPreparation
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
     range: string
   qc_status:
@@ -809,7 +858,6 @@ attributes:
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -822,7 +870,6 @@ attributes:
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -833,8 +880,9 @@ attributes:
     owner: LibraryPreparation
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: FailureCategorization
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -845,10 +893,7 @@ attributes:
     alias: id
     owner: LibraryPreparation
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -863,10 +908,9 @@ attributes:
     alias: name
     owner: LibraryPreparation
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -877,9 +921,8 @@ attributes:
     alias: description
     owner: LibraryPreparation
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -890,13 +933,48 @@ attributes:
     alias: alternative_identifiers
     owner: LibraryPreparation
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: LibraryPreparation
+    domain_of:
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
 class_uri: nmdc:LibraryPreparation
 
 </code></pre>
@@ -926,7 +1004,7 @@ class_uri: nmdc:LibraryPreparation
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
+<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
