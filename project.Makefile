@@ -21,7 +21,7 @@ examples-clean:
 
 mixs-yaml-clean:
 	rm -rf src/schema/mixs.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml
+	rm -rf local/mixs_regen/mixs_subset_modified*yaml
 
 rdf-clean:
 	rm -rf \
@@ -34,13 +34,13 @@ rdf-clean:
 
 shuttle-clean:
 	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
-	rm -rf local/mixs_regen/mixs_subset.yaml
-	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
+	rm -rf local/mixs_regen/*.yaml
+	rm -rf $@.bak
 	mkdir -p local/mixs_regen
 	touch local/mixs_regen/.gitkeep
 
 
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_land_use.yaml
+src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
@@ -62,11 +62,30 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 
-local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: assets/other_mixs_yaml_files/cur_land_use_enum.yaml local/mixs_regen/mixs_subset_modified.yaml
+local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
+assets/other_mixs_yaml_files/cur_land_use_enum.yaml
 	# inject re-structured cur_land_use_enum
 	#   using '| cat > ' because yq doesn't seem to like redirecting out to a file
 	yq eval-all \
-		'select(fileIndex==1).enums.cur_land_use_enum = select(fileIndex==0).enums.cur_land_use_enum | select(fileIndex==1)' \
+		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_local_scale.annotations.tooltip = select(fileIndex==1).slots.env_local_scale.annotations.tooltip | select(fileIndex==0)' \
+		$^ | cat > $@
+
+local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_env_local_scale_alt_description.yaml \
+assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
 # will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
@@ -168,6 +187,9 @@ make-rdf: rdf-clean \
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
+# todo: metagenome_sequencing_set and metagenome_sequencing_activity_set are degenerate
+#   and can't be validated, migrated or converted to RDF
+
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
@@ -194,7 +216,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections metagenome_sequencing_activity_set \
 		--selected-collections metagenome_sequencing_set \
 		--selected-collections metap_gene_function_aggregation \
-		--selected-collections metaproteomics_analysis_set \
 		--selected-collections metatranscriptome_activity_set \
 		--selected-collections metatranscriptome_analysis_set \
 		--selected-collections nom_analysis_activity_set \
@@ -270,10 +291,16 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 .PHONY: migration-doctests migrator
 
 # Runs all doctests defined within the migrator modules, adapters, and CLI scripts.
+#
+# To run in non-verbose mode:
+# ```
+# $ make migration-doctests DOCTEST_OPT=''
+# ```
+DOCTEST_OPT ?= -v
 migration-doctests:
-	$(RUN) python -m doctest -v nmdc_schema/migrators/*.py
-	$(RUN) python -m doctest -v nmdc_schema/migrators/adapters/*.py
-	$(RUN) python -m doctest -v nmdc_schema/migrators/cli/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
+	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
 
 # Generates a migrator skeleton for the specified schema versions.
 # Note: `create-migrator` is a Poetry script registered in `pyproject.toml`.
@@ -290,21 +317,6 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 		--schema $< \
 		--output $@ \
 		--schema-class Biosample
-
-### example of preparing to validate napa squad data
-
-local/nmdc-schema-v7.8.0.yaml:
-	curl -o $@ https://raw.githubusercontent.com/microbiomedata/nmdc-schema/v7.8.0/nmdc_schema/nmdc_materialized_patterns.yaml
-	# need to remove lines like this (see_alsos whose values aren't legitimate URIs)
-	#     see_also:
-	#       - MIxS:experimental_factor|additional_info
-	yq eval-all -i 'del(select(fileIndex == 0) | .. | select(has("see_also")) | .see_also)' $@
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	yq -i 'del(.classes.DataObject.slot_usage.id.pattern)' $@ # kludge modify schema to match data
-	rm -rf $@.bak
-
-local/nmdc-schema-v7.8.0.owl.ttl: local/nmdc-schema-v7.8.0.yaml
-	$(RUN) gen-owl --no-use-native-uris $< > $@
 
 
 ## FUSEKI, DOCKER, ETC
@@ -399,7 +411,7 @@ local/gold-study-ids.json:
 local/gold-study-ids.yaml: local/gold-study-ids.json
 	yq -p json -o yaml $< | cat > $@
 
-local/study-files/%.yaml: local/nmdc-schema-v7.8.0.yaml
+local/study-files/%.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $(@D)
 	study_file_name=`echo $@` ; \
 		echo $$study_file_name ; \
@@ -427,7 +439,7 @@ create-study-yaml-files-subset: local/study-files/nmdc-sty-11-8fb6t785.yaml \
 local/study-files/nmdc-sty-11-1t150432.yaml \
 local/study-files/nmdc-sty-11-dcqce727.yaml
 
-local/study-files/%.ttl: local/nmdc-schema-v7.8.0.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
+local/study-files/%.ttl: nmdc_schema/nmdc_materialized_patterns.yaml create-nmdc-tdb2-from-app create-study-yaml-files-subset
 	$(RUN) linkml-convert --output $@ --schema $< $(subst .ttl,.yaml,$@)
 
 create-study-ttl-files-subset: local/study-files/nmdc-sty-11-8fb6t785.ttl \
@@ -436,7 +448,7 @@ local/study-files/nmdc-sty-11-dcqce727.ttl
 
 ## Option 2 of 2 for getting data from MongoDB for Napa QC: get-study-id-from-filename
 # retrieve selected collections from the Napa squad's MongoDB and fix ids containing whitespace
-local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
+local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	date
 	time $(RUN) pure-export \
 		--client-base-url https://api-napa.microbiomedata.org \
@@ -469,10 +481,10 @@ local/some_napa_collections.yaml: local/nmdc-schema-v7.8.0.yaml
 	rm -rf $@.tmp
 
 .PRECIOUS: local/some_napa_collections.validation.log
-local/some_napa_collections.validation.log: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml
+local/some_napa_collections.validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml
 	- $(RUN) linkml-validate --schema $^ > $@
 
-local/some_napa_collections.ttl: local/nmdc-schema-v7.8.0.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
+local/some_napa_collections.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/some_napa_collections.yaml local/some_napa_collections.validation.log
 	$(RUN) linkml-convert --output $@.tmp.ttl --schema $(word 1, $^) $(word 2, $^)
 	time $(RUN) anyuri-strings-to-iris \
 		--input-ttl $@.tmp.ttl \

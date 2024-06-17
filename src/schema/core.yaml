@@ -102,7 +102,7 @@ classes:
   #      id:
   #        required: true
   #        structured_pattern:
-  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+  #          syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}{id_version}{id_locus}$"
   #          interpolated: true
   #    exact_mappings:
   #      - OBI:0000485
@@ -242,10 +242,10 @@ classes:
     slot_usage:
       orcid:
         annotations:
-          display_hint: Open Researcher and Contributor ID for this person. See https://orcid.org
+          tooltip: Open Researcher and Contributor ID for this person. See https://orcid.org
       email:
         annotations:
-          display_hint: Email address for this person.
+          tooltip: Email address for this person.
       has_raw_value:
         description: The full name of the Investigator in format FIRST LAST.
         notes:
@@ -255,7 +255,7 @@ classes:
           The full name of the Investigator.
           It should follow the format FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL is optional.
         annotations:
-          display_hint: First name, middle initial, and last name of this person.
+          tooltip: First name, middle initial, and last name of this person.
   
   MagBin:
     slots:

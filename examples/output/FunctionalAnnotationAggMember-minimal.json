@@ -1,6 +1,0 @@
-{
-  "metagenome_annotation_id": "nmdc:8253bcdcd0387177ff895c38a047c719",
-  "gene_function_id": "KEGG.ORTHOLOGY:K00627",
-  "count": 120,
-  "@type": "FunctionalAnnotationAggMember"
-}

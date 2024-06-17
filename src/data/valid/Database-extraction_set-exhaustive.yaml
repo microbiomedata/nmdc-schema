@@ -7,10 +7,10 @@ extraction_set:
     description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
     #enforce analytical sample typecode?
     has_input:
-      - generic:xxx
+      - nmdc:procsm-99-123456
     #cardinality of outputs should be 1-many, may want to fractionate samples or keep supernatant
     has_output:
-      - generic:xxx
+      - nmdc:procsm-99-555555
     #range for processing_institution should be processing_institution_enum
     #processing_institution: Battelle
     #updating protocol info to be nested
@@ -25,7 +25,7 @@ extraction_set:
     input_mass: #http://purl.obolibrary.org/obo/MS_1000004
       has_numeric_value: 0.25
       has_unit: gram #http://purl.obolibrary.org/obo/UO_0000021
-    #based on qaqc criteria for a given process does the output 'Pass' or 'Failed' https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fdata_3914&lang=en&viewMode=All&siblings=false
+      #based on qaqc criteria for a given process does the output 'Pass' or 'Failed' https://www.ebi.ac.uk/ols/ontologies/edam/terms?iri=http%3A%2F%2Fedamontology.org%2Fdata_3914&lang=en&viewMode=All&siblings=false
       #status range should be new status_enum with possible values of 'Pass' or Failed'
     qc_status: pass
     #extraction_type should have range of dna_extraction_enum with possible values of 'DNA extraction', 'RNA extraction', 'protein extraction'

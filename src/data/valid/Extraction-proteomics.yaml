@@ -1,8 +1,8 @@
 id: "nmdc:extrp-38-r2pk"
 has_input:
-  - "nmdc:fasp-37"
+  - nmdc:procsm-99-abcdef
 has_output:
-  - "nmdc:ome-39"
+  - nmdc:procsm-99-123456
 extractant: # range: Solution... multivalued? (no) -> has_solution_component
   has_solution_components:
     - compound: deionized water

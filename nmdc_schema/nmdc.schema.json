@@ -1,39 +1,5 @@
 {
     "$defs": {
-        "Activity": {
-            "additionalProperties": false,
-            "description": "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
-            "properties": {
-                "ended_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                },
-                "started_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": "string"
-                },
-                "used": {
-                    "type": "string"
-                },
-                "was_informed_by": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "id"
-            ],
-            "title": "Activity",
-            "type": "object"
-        },
         "AnalysisTypeEnum": {
             "description": "",
             "enum": [
@@ -1678,7 +1644,6 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "pattern": "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -2865,6 +2830,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -3515,14 +3488,6 @@
                     "type": "string"
                 },
                 "was_generated_by": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
                     "type": "string"
                 }
             },
@@ -4283,8 +4248,8 @@
                     "type": "string"
                 },
                 "elev": {
-                    "$ref": "#/$defs/QuantityValue",
-                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit."
+                    "description": "Elevation of the sampling site is its height above a fixed reference point, most commonly the mean sea level. Elevation is mainly used when referring to points on the earth's surface, while altitude is used for points above the surface, such as an aircraft in flight or a spacecraft in orbit.",
+                    "type": "number"
                 },
                 "geo_loc_name": {
                     "$ref": "#/$defs/TextValue",
@@ -4479,6 +4444,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -4753,10 +4726,6 @@
                 },
                 "strand": {
                     "description": "The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "A type from the sequence ontology",
                     "type": "string"
                 }
             },
@@ -5265,6 +5234,14 @@
             ],
             "description": "A workflow execution activity that uses computational binning tools to group assembled contigs into genomes",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "binned_contig_num": {
                     "type": "integer"
                 },
@@ -5455,6 +5432,14 @@
             ],
             "description": "",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5595,6 +5580,14 @@
             ],
             "description": "A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -5733,6 +5726,14 @@
             ],
             "description": "A workflow execution activity that converts sequencing reads into an assembled metagenome.",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "asm_score": {
                     "description": "A score for comparing metagenomic assembly quality from same sample.",
                     "type": "number"
@@ -5975,6 +5976,14 @@
             ],
             "description": "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -6105,6 +6114,14 @@
             ],
             "description": "",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -6242,6 +6259,14 @@
             ],
             "description": "A metatranscriptome activity that e.g. pools assembly and annotation activity.",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -6372,6 +6397,14 @@
             ],
             "description": "",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -6510,6 +6543,14 @@
             ],
             "description": "",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "asm_score": {
                     "description": "A score for comparing metagenomic assembly quality from same sample.",
                     "type": "number"
@@ -6849,6 +6890,14 @@
             ],
             "description": "",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -7000,7 +7049,14 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "pattern": "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ],
                         "type": "string"
                     },
                     "type": "array"
@@ -7008,7 +7064,6 @@
                 "has_output": {
                     "description": "An output biosample to a processing step",
                     "items": {
-                        "pattern": "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7063,7 +7118,6 @@
                 "part_of": {
                     "description": "Links a resource to another resource that either logically or physically includes it.",
                     "items": {
-                        "pattern": "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$",
                         "type": "string"
                     },
                     "type": "array"
@@ -7460,6 +7514,8 @@
                 }
             },
             "required": [
+                "has_input",
+                "has_output",
                 "id"
             ],
             "title": "Pooling",
@@ -7775,6 +7831,14 @@
             ],
             "description": "A workflow execution activity that performs taxonomy classification using sequencing reads",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -7905,6 +7969,14 @@
             ],
             "description": "A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal",
             "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "ended_at_time": {
                     "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
                     "type": "string"
@@ -9119,136 +9191,6 @@
             ],
             "title": "WindowVertPosEnum",
             "type": "string"
-        },
-        "WorkflowExecutionActivity": {
-            "additionalProperties": false,
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "qc_status": {
-                                "const": "pass"
-                            }
-                        },
-                        "required": [
-                            "qc_status"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "has_output": {}
-                        },
-                        "required": [
-                            "has_output"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "not": {
-                            "required": [
-                                "qc_status"
-                            ]
-                        },
-                        "properties": {
-                            "qc_status": {}
-                        }
-                    },
-                    "then": {
-                        "properties": {
-                            "has_output": {}
-                        },
-                        "required": [
-                            "has_output"
-                        ]
-                    }
-                }
-            ],
-            "description": "Represents an instance of an execution of a particular workflow",
-            "properties": {
-                "ended_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": "string"
-                },
-                "execution_resource": {
-                    "type": "string"
-                },
-                "git_url": {
-                    "type": "string"
-                },
-                "has_failure_categorization": {
-                    "items": {
-                        "$ref": "#/$defs/FailureCategorization"
-                    },
-                    "type": "array"
-                },
-                "has_input": {
-                    "description": "An input to a process.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "has_output": {
-                    "description": "An output biosample to a processing step",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": "string"
-                },
-                "part_of": {
-                    "description": "Links a resource to another resource that either logically or physically includes it.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "qc_comment": {
-                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
-                    "type": "string"
-                },
-                "qc_status": {
-                    "$ref": "#/$defs/StatusEnum",
-                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
-                },
-                "started_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "An optional string that specifies the type object.  This is used to allow for searches for different kinds of objects.",
-                    "type": "string"
-                },
-                "used": {
-                    "type": "string"
-                },
-                "version": {
-                    "type": "string"
-                },
-                "was_informed_by": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "execution_resource",
-                "git_url",
-                "has_input",
-                "type",
-                "id",
-                "started_at_time",
-                "ended_at_time"
-            ],
-            "title": "WorkflowExecutionActivity",
-            "type": "object"
         },
         "YesNoEnum": {
             "description": "replaces DnaDnaseEnum and DnaseRnaEnum",
