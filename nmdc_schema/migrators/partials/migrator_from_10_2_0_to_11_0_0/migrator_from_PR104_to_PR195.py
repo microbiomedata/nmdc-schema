@@ -38,7 +38,7 @@ class Migrator(MigratorBase):
             "metatranscriptome_assembly_set",
             "metatranscriptome_annotation_set",
             "metatranscriptome_analysis_set",
-            "mags_analysis_set",
+            "mags_set",
             "metagenome_sequencing_set",
             "read_qc_analysis_set",
             "read_based_taxonomy_analysis_set",
