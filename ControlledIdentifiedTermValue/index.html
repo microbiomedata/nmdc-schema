@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/ControlledIdentifiedTermValue/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: ControlledIdentifiedTermValue - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -290,8 +290,6 @@
       ControlledIdentifiedTermValue --&gt; "1" OntologyClass : term
     click OntologyClass href "../OntologyClass"
 
-  ControlledIdentifiedTermValue : type
-
 
 
 </div>
@@ -326,12 +324,6 @@
 <td><a href="../has_raw_value/">has_raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The value that was specified for an annotation in raw form, i</td>
-<td><a href="../AttributeValue/">AttributeValue</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>
@@ -374,18 +366,6 @@
 <tr>
 <td><a href="../Biosample/">Biosample</a></td>
 <td><a href="../samp_taxon_id/">samp_taxon_id</a></td>
-<td>range</td>
-<td><a href="./">ControlledIdentifiedTermValue</a></td>
-</tr>
-<tr>
-<td><a href="../GenomeFeature/">GenomeFeature</a></td>
-<td><a href="../feature_category/">feature_category</a></td>
-<td>range</td>
-<td><a href="./">ControlledIdentifiedTermValue</a></td>
-</tr>
-<tr>
-<td><a href="../FunctionalAnnotation/">FunctionalAnnotation</a></td>
-<td><a href="../feature_category/">feature_category</a></td>
 <td>range</td>
 <td><a href="./">ControlledIdentifiedTermValue</a></td>
 </tr>
@@ -432,7 +412,6 @@ slot_usage:
     domain_of:
     - ControlledTermValue
     required: true
-class_uri: nmdc:ControlledIdentifiedTermValue
 
 </code></pre>
 </details>
@@ -457,6 +436,7 @@ attributes:
     description: pointer to an ontology class
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: ControlledTermValue
     alias: term
     owner: ControlledIdentifiedTermValue
     domain_of:
@@ -470,50 +450,13 @@ attributes:
       a string. E.g. "2 cm" or "2-4 cm"
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: AttributeValue
     alias: has_raw_value
     owner: ControlledIdentifiedTermValue
     domain_of:
     - AttributeValue
+    - QuantityValue
     range: string
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: ControlledIdentifiedTermValue
-    domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
-    - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
-class_uri: nmdc:ControlledIdentifiedTermValue
 
 </code></pre>
 </details>
@@ -542,7 +485,7 @@ class_uri: nmdc:ControlledIdentifiedTermValue
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MagBin/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: MagBin - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -442,8 +442,8 @@
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>An optional string that specifies the type object</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -460,7 +460,19 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
+<td><a href="./">MagBin</a></td>
+<td><a href="../members_id/">members_id</a></td>
+<td>domain</td>
+<td><a href="./">MagBin</a></td>
+</tr>
+<tr>
+<td><a href="./">MagBin</a></td>
+<td><a href="../total_bases/">total_bases</a></td>
+<td>domain</td>
+<td><a href="./">MagBin</a></td>
+</tr>
+<tr>
+<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
 <td><a href="../mags_list/">mags_list</a></td>
 <td>range</td>
 <td><a href="./">MagBin</a></td>
@@ -518,7 +530,6 @@ slots:
 - number_of_contig
 - total_bases
 - type
-class_uri: nmdc:MagBin
 
 </code></pre>
 </details>
@@ -641,6 +652,7 @@ attributes:
     - this slot needs some basic textual annotations and constraints
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: MagBin
     alias: members_id
     owner: MagBin
     domain_of:
@@ -697,6 +709,7 @@ attributes:
     - this slot needs some basic textual annotations and constraints
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: MagBin
     alias: total_bases
     owner: MagBin
     domain_of:
@@ -704,43 +717,36 @@ attributes:
     range: integer
   type:
     name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
+    description: An optional string that specifies the type object.  This is used
+      to allow for searches for different kinds of objects.
+    deprecated: Due to confusion about what values are used for this slot, it is best
+      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
+      MAM removed designates_type and rdf:type slot uri 2022-11-30
     examples:
     - value: nmdc:Biosample
     - value: nmdc:Study
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
     rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
     alias: type
     owner: MagBin
     domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
+    - DataObject
+    - Biosample
+    - Study
+    - OmicsProcessing
     - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
-class_uri: nmdc:MagBin
+    - MagBin
+    - WorkflowExecutionActivity
+    - MetagenomeAssembly
+    - MetagenomeAnnotationActivity
+    - MetatranscriptomeAnnotationActivity
+    - MetatranscriptomeActivity
+    - MagsAnalysisActivity
+    - ReadQcAnalysisActivity
+    - ReadBasedTaxonomyAnalysisActivity
+    range: string
 
 </code></pre>
 </details>
@@ -769,7 +775,7 @@ class_uri: nmdc:MagBin
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

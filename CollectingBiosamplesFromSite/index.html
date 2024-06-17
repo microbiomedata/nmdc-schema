@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/CollectingBiosamplesFromSite/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: Collecting Biosamples From Site (CollectingBiosamplesFromSite) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -293,6 +293,8 @@
 
   CollectingBiosamplesFromSite : description
 
+  CollectingBiosamplesFromSite : designated_class
+
   CollectingBiosamplesFromSite : end_date
 
   CollectingBiosamplesFromSite : has_failure_categorization
@@ -311,6 +313,8 @@
     click Biosample href "../Biosample"
 
   CollectingBiosamplesFromSite : id
+
+  CollectingBiosamplesFromSite : instrument_name
 
   CollectingBiosamplesFromSite : name
 
@@ -332,8 +336,6 @@
     click StatusEnum href "../StatusEnum"
 
   CollectingBiosamplesFromSite : start_date
-
-  CollectingBiosamplesFromSite : type
 
 
 
@@ -360,6 +362,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../designated_class/">designated_class</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../end_date/">end_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was ended</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
 <td><a href="../has_input/">has_input</a></td>
 <td>1..* <br/> <a href="../Site/">Site</a></td>
 <td>An input to a process</td>
@@ -368,7 +382,7 @@
 <tr>
 <td><a href="../has_output/">has_output</a></td>
 <td>1..* <br/> <a href="../Biosample/">Biosample</a></td>
-<td>An output from a process</td>
+<td>An output biosample to a processing step</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -390,9 +404,9 @@
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
-<td><a href="../end_date/">end_date</a></td>
+<td><a href="../instrument_name/">instrument_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which any process or activity was ended</td>
+<td>The name of the instrument that was used for processing the sample</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -435,12 +449,6 @@
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of alternative identifiers for the entity</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -512,7 +520,10 @@ slot_usage:
   has_input:
     name: has_input
     domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Site
     required: true
     structured_pattern:
@@ -521,7 +532,9 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Biosample
     required: true
     structured_pattern:
@@ -530,12 +543,14 @@ slot_usage:
   id:
     name: id
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
       interpolated: true
-class_uri: nmdc:CollectingBiosamplesFromSite
 
 </code></pre>
 </details>
@@ -553,7 +568,10 @@ slot_usage:
   has_input:
     name: has_input
     domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Site
     required: true
     structured_pattern:
@@ -562,7 +580,9 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Biosample
     required: true
     structured_pattern:
@@ -571,22 +591,57 @@ slot_usage:
   id:
     name: id
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
+  designated_class:
+    name: designated_class
+    comments:
+    - required on all instances in a polymorphic Database slot like planned_process_set
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    designates_type: true
+    alias: designated_class
+    owner: CollectingBiosamplesFromSite
+    domain_of:
+    - PlannedProcess
+    range: uriorcurie
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: end_date
+    owner: CollectingBiosamplesFromSite
+    domain_of:
+    - PlannedProcess
+    range: string
   has_input:
     name: has_input
     description: An input to a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: NamedThing
     multivalued: true
     alias: has_input
     owner: CollectingBiosamplesFromSite
     domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Site
     required: true
     structured_pattern:
@@ -594,14 +649,17 @@ attributes:
       interpolated: true
   has_output:
     name: has_output
-    description: An output from a process.
+    description: An output biosample to a processing step
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: NamedThing
     multivalued: true
     alias: has_output
     owner: CollectingBiosamplesFromSite
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: Biosample
     required: true
     structured_pattern:
@@ -612,20 +670,22 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: PlannedProcess
     alias: processing_institution
     owner: CollectingBiosamplesFromSite
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
-    range: ProcessingInstitutionEnum
+    range: processing_institution_enum
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: PlannedProcess
     alias: protocol_link
     owner: CollectingBiosamplesFromSite
     domain_of:
     - PlannedProcess
-    - Study
     range: Protocol
   start_date:
     name: start_date
@@ -643,20 +703,16 @@ attributes:
     domain_of:
     - PlannedProcess
     range: string
-  end_date:
-    name: end_date
-    description: The date on which any process or activity was ended
-    todos:
-    - add date string validation pattern
-    comments:
-    - We are using string representations of dates until all components of our ecosystem
-      can handle ISO 8610 dates
-    - The date should be formatted as YYYY-MM-DD
+  instrument_name:
+    name: instrument_name
+    description: The name of the instrument that was used for processing the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
+    domain: PlannedProcess
+    alias: instrument_name
     owner: CollectingBiosamplesFromSite
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
     range: string
   qc_status:
@@ -670,6 +726,7 @@ attributes:
     owner: CollectingBiosamplesFromSite
     domain_of:
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -682,6 +739,7 @@ attributes:
     owner: CollectingBiosamplesFromSite
     domain_of:
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -692,9 +750,8 @@ attributes:
     owner: CollectingBiosamplesFromSite
     domain_of:
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
-    inlined: true
-    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -705,7 +762,10 @@ attributes:
     alias: id
     owner: CollectingBiosamplesFromSite
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -720,9 +780,10 @@ attributes:
     alias: name
     owner: CollectingBiosamplesFromSite
     domain_of:
-    - PersonValue
-    - NamedThing
     - Protocol
+    - NamedThing
+    - PersonValue
+    - Activity
     range: string
   description:
     name: description
@@ -733,8 +794,9 @@ attributes:
     alias: description
     owner: CollectingBiosamplesFromSite
     domain_of:
-    - ImageValue
+    - Study
     - NamedThing
+    - ImageValue
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -745,49 +807,13 @@ attributes:
     alias: alternative_identifiers
     owner: CollectingBiosamplesFromSite
     domain_of:
-    - MetaboliteIdentification
+    - Biosample
+    - Study
     - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
     range: uriorcurie
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: CollectingBiosamplesFromSite
-    domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
-    - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
-class_uri: nmdc:CollectingBiosamplesFromSite
 
 </code></pre>
 </details>
@@ -816,7 +842,7 @@ class_uri: nmdc:CollectingBiosamplesFromSite
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
