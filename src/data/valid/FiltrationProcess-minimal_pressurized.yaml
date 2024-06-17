@@ -1,5 +1,4 @@
 id: nmdc:filtpr-99-abcdef
-type: nmdc:FiltrationProcess
 has_input:
   - nmdc:procsm-99-123456
 has_output:
@@ -8,6 +7,5 @@ conditionings:
   - Methanol
   - Sterile water #Milli-Q
 filtration_category: pressure
-instrument_used:
-  - nmdc:inst-12-125
+instrument_name: CEREX System 96 processor
 is_pressurized: true

@@ -3,7 +3,6 @@ study_set:
     name: NEON Parent Consortium
     description: The parent consortium of all the NEON consortia
     study_category: consortium
-    type: nmdc:Study
   - id: "nmdc:sty-11-34xj1150"
     name: "National Ecological Observatory Network: soil metagenomes (DP1.10107.001)"
     description: The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.
@@ -11,14 +10,13 @@ study_set:
       - gold:Gs0144570
       - gold:Gs0161344
     principal_investigator:
-      type: nmdc:PersonValue
       has_raw_value: Kate Thibault
       email: kthibault@battelleecology.org
       name: Kate Thibault
       orcid: orcid:0000-0003-3477-6424
       profile_image_url: https://portal.nersc.gov/project/m3408/profile_images/thibault_katy.jpg
     title: "National Ecological Observatory Network: soil metagenomes (DP1.10107.001)"
-    type: nmdc:Study
+    type: "nmdc:Study"
     websites:
       - https://www.neonscience.org/
       - https://data.neonscience.org/data-products/DP1.10107.001
@@ -26,7 +24,6 @@ study_set:
       - https://data.neonscience.org/api/v0/documents/NEON_metagenomes_userGuide_vE.pdf
     study_image:
       - url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
-        type: nmdc:ImageValue
     funding_sources:
       - "NSF#1724433 National Ecological Observatory Network: Operations Activities"
     study_category: consortium
@@ -34,7 +31,7 @@ study_set:
       - nmdc:sty-11-34xj1152
   - id: "nmdc:sty-11-hht5sb92"
     name: "National Ecological Observatory Network: surface water metagenomes (DP1.20281.001)"
-    type: nmdc:Study
+    type: "nmdc:Study"
     title: "National Ecological Observatory Network: surface water metagenomes (DP1.20281.001)"
     description: The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.
     websites:
@@ -44,20 +41,18 @@ study_set:
     funding_sources:
       - "NSF#1724433 National Ecological Observatory Network: Operations Activities"
     principal_investigator:
-      type: nmdc:PersonValue
       name: Kate Thibault
       email: kthibault@battelleecology.org
       orcid: orcid:0000-0003-3477-6424
       has_raw_value: Kate Thibault
     study_image:
       - url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
-        type: nmdc:ImageValue
     study_category: consortium
     part_of:
       - nmdc:sty-11-34xj1152
   - id: "nmdc:sty-11-pzmd0x14"
     name: "National Ecological Observatory Network: benthic metagenomes (DP1.20279.001)"
-    type: nmdc:Study
+    type: "nmdc:Study"
     title: "National Ecological Observatory Network: benthic metagenomes (DP1.20279.001)"
     description: The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.
     websites:
@@ -67,13 +62,11 @@ study_set:
     funding_sources:
       - "NSF#1724433 National Ecological Observatory Network: Operations Activities"
     principal_investigator:
-      type: nmdc:PersonValue
       name: Kate Thibault
       email: kthibault@battelleecology.org
       orcid: orcid:0000-0003-3477-6424
     study_image:
       - url: https://portal.nersc.gov/project/m3408/profile_images/nmdc_sty-11-34xj1150.jpg
-        type: nmdc:ImageValue
     study_category: consortium
     part_of:
       - nmdc:sty-11-34xj1152

@@ -1,7 +1,0 @@
-id: nmdc:omprc-99-gKlQlF
-type: nmdc:NucleotideSequencing
-analyte_category: metagenome # allows metabolome
-associated_studies:
-  - nmdc:sty-00-555xxx
-has_input:
-  - nmdc:procsm-11-0wxpzf08

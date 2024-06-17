@@ -9,8 +9,6 @@ FD_ROOT=local/fuseki-data/databases
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
-PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
-
 .PHONY: accepting-legacy-ids-all accepting-legacy-ids-clean \
 dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
 rdf-clean shuttle-clean
@@ -61,7 +59,7 @@ local/mixs_regen/mixs_subset_modified.yaml: local/mixs_regen/mixs_subset.yaml as
 	sed -i.bak 's/range: text value/range: TextValue/' $@
 
 	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-	rm -rf $@.bak
+	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
 
 local/mixs_regen/mixs_subset_modified_inj_land_use.yaml: local/mixs_regen/mixs_subset_modified.yaml \
@@ -117,14 +115,14 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--log-file $@.log.txt \
 		--report-style exhaustive
 
-examples/output/Biosample-exhaustive_report.yaml: src/data/problem/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
+examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
 	$(RUN) exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
@@ -228,6 +226,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections read_based_taxonomy_analysis_activity_set \
 		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
+		--selected-collections workflow_chain_set \
 		--selected-collections workflow_execution_set \
 		dump-from-api \
 		--client-base-url "https://api.microbiomedata.org" \
@@ -252,13 +251,11 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 #		--mongo-port 27777 \
 #		--direct-connection
 
-# TODO reassess these migrator choices after merge conflicts are resolved MAM 2024-05-30
 local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
 		--migrator-name migrator_from_9_3_to_10_0 \
-		--migrator-name migrator_from_10_2_0_to_11_0_0 \
 		--salvage-prefix generic \
 		--schema-path $(word 1,$^) \
 		--output-path $@
@@ -302,7 +299,6 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 DOCTEST_OPT ?= -v
 migration-doctests:
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
-	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/partials/**/*.py
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/cli/*.py
 
@@ -403,9 +399,7 @@ print-intended-yaml-files: local/gold-study-ids.yaml
 ## may help predict how long it will take to run study-id-from-filename on a particular study
 ## will become unnecessary once aggregation queries are available in the napa nmdc-runtime API
 local/biosamples-per-study.txt:
-	$(RUN) report-biosamples-per-study \
-		--api-server api \
-		--max-page-size 10000 > $@
+	$(RUN) python src/scripts/report_biosamples_per_study.py > $@
 
 ## getting a report of GOLD study identifiers, which might have been used a Study ids in legacy (pre-Napa) data
 local/gold-study-ids.json:
@@ -467,35 +461,19 @@ local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 		--output-yaml $@.tmp \
 		--page-size 200000 \
 		--schema-file $< \
-		--selected-collections activity_set \
 		--selected-collections biosample_set \
-		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections data_object_set \
 		--selected-collections extraction_set \
-		--selected-collections genome_feature_set \
+		--selected-collections field_research_site_set \
 		--selected-collections library_preparation_set \
-		--selected-collections mags_activity_set \
-		--selected-collections material_sample_set \
-		--selected-collections metabolomics_analysis_activity_set \
-		--selected-collections metagenome_annotation_activity_set \
-		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set \
-		--selected-collections metap_gene_function_aggregation \
-		--selected-collections metatranscriptome_activity_set \
-		--selected-collections nom_analysis_activity_set \
 		--selected-collections omics_processing_set \
-		--selected-collections planned_process_set \
 		--selected-collections pooling_set \
 		--selected-collections processed_sample_set \
-		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
 		--selected-collections study_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
 		--skip-collection-check
 	sed -i.bak 's/gold:/GOLD:/' $@.tmp # kludge modify data to match (old!) schema
 	rm -rf $@.tmp.bak
 	time $(RUN) migration-recursion \
-		--migrator-name migrator_from_10_2_0_to_11_0_0 \
 		--schema-path $< \
 		--input-path $@.tmp \
 		--salvage-prefix generic \
@@ -584,158 +562,24 @@ local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
 
 
 local/nmdc_materialized.ttl: src/schema/nmdc.yaml
-	$(RUN) schema-view-relation-graph \
+	$(RUN) python src/scripts/schema_view_relation_graph.py \
 		--schema $< \
 		--output $@
 
 local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl: local/mongo_as_nmdc_database_cuire_repaired.ttl
-	$(RUN) date-created-blank-node > local/date_created_blank_node.ttl
+	$(RUN) python src/scripts/date_created_blank_node.py > local/date_created_blank_node.ttl
 	cat $^ local/date_created_blank_node.ttl > $@
 	rm local/date_created_blank_node.ttl
 
-###
-
-diagrams-clean:
-	rm -rf assets/mermaid-erd* \
-		assets/plantuml*
-
-# requires java and the plantuml jar https://plantuml.com/download
-#   https://github.com/plantuml/plantuml/releases/download/v1.2024.3/plantuml-lgpl-1.2024.3.jar
-# requires npm and https://www.npmjs.com/package/@mermaid-js/mermaid-cli
-# requires inkscape
-diagrams-all: diagrams-clean assets/plantuml.png assets/plantuml.pdf assets/mermaid-erd.pdf assets/mermaid-erd.png
-
-#		--classes ChemicalConversionProcess \
-#		--classes ChemicalEntity \
-#		--classes ChromatographicSeparationProcess \
-#		--classes DissolvingProcess \
-#		--classes Extraction \
-#		--classes FluidHandling \
-#		--classes MassSpectrometry \
-#		--classes MaterialProcessing \
-#		--classes MetaboliteQuantification \
-#		--classes PlannedProcess \
-#		--classes PortionOfSubstance \
-#		--classes Solution \
-#		--classes SubstanceEntity
-
-assets/plantuml.puml: src/schema/nmdc.yaml
-	$(RUN) gen-plantuml \
-		--classes ChemicalConversionProcess \
-		--classes ChemicalEntity \
-		--classes ChromatographicSeparationProcess \
-		--classes DissolvingProcess \
-		--classes Extraction \
-		--classes MobilePhaseSegment \
-		--classes PortionOfSubstance \
-		$< > $@
-
-assets/plantuml.svg: assets/plantuml.puml # https://plantuml.com/download
-	java -jar $(PLANTUML_JAR) $< -tsvg
-
-assets/plantuml.png: assets/plantuml.puml # https://plantuml.com/download
-#	docker run \
-#		-v plantuml_diagrams:/plantuml/in \
-#		-v plantuml_images:/plantuml/out \
-#		plantuml/plantuml render /plantuml/in/chemistry.puml -f png -o /plantuml/out/chemistry.png
-	java -jar $(PLANTUML_JAR) $< -tpng
-
-assets/plantuml.pdf: assets/plantuml.svg
-	inkscape --export-filename=$@ $<
-
-assets/mermaid-erd.mmd: src/schema/nmdc.yaml
-	$(RUN) gen-erdiagram \
-		--format mermaid \
-		--classes ChemicalConversionProcess \
-		--classes ChemicalEntity \
-		--classes ChromatographicSeparationProcess \
-		--classes DissolvingProcess \
-		--classes Extraction \
-		--classes MobilePhaseSegment \
-		--classes PortionOfSubstance \
-		$< > $@.tmp
-	sed 's/language code/language_code/g' $@.tmp > $@
-	rm -rf $@.tmp
-
-assets/mermaid-erd.svg: assets/mermaid-erd.mmd
-	mmdc -i $< -o $@
-
-assets/mermaid-erd.pdf: assets/mermaid-erd.mmd
-	mmdc -i $< -o $@
-
-assets/mermaid-erd.png: assets/mermaid-erd.mmd
-	mmdc -i $< -o $@
-
-#assets/mermaid-erd.pdf: assets/mermaid-erd.svg # illegible
-#	inkscape --export-filename=$@ $<
-
-assets/check_examples_class_coverage.txt:
-	$(RUN) check-examples-class-coverage \
-		--source_directory src/data/valid \
-		--schema_file src/schema/nmdc.yaml > $@
-
-assets/schema_pattern_linting.txt:
-	$(RUN) schema-pattern-linting \
- 		--schema-file src/schema/nmdc.yaml > $@
-
-assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
-	$(RUN) linkml2sheets \
-		--output $@ \
-		--schema $< $(word 2,$^)
-
-local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
-	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
-
-
-local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-interleaved-class-count.tsv
-	$(RUN) class-instantiation-counts \
-		--schemasheets-input $(word 1,$^) \
-		--counts-input $(word 2,$^) \
-		--output $@
-
-.PHONY: generate-json-collections
-generate-json-collections: src/data/valid/Database-interleaved.yaml
-	$(RUN) database-to-json-list-files \
-		--yaml-input $< \
-		--output-dir assets/jsons-for-mongodb
-
-.PHONY: populate-mongodb-form-json-collections
-populate-mongodb-form-json-collections: generate-json-collections
-	src/scripts/json-dir-to-mongodb.sh # requires that the script's permissions have been set like: chmod +x src/scripts/json-dir-to-mongodb.sh
-
 # ----	NMDC NCBI mapping process ---- #
 assets/ncbi_mappings/ncbi_attribute_mappings.tsv:
-	$(RUN) nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
+	poetry run nmdc-ncbi-mapping create-unmapped-ncbi-mapping-file \
 		--tsv-output $@
 
 assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/ncbi_attribute_mappings.tsv
-	$(RUN) nmdc-ncbi-mapping exact-term-matching \
+	poetry run nmdc-ncbi-mapping exact-term-matching \
 		--tsv-input $< \
 		--tsv-output $@
 
-	$(RUN) nmdc-ncbi-mapping ignore-import-schema-slots $@
+	poetry run nmdc-ncbi-mapping ignore-import-schema-slots $@
 	
-
-src/data/valid/Database-interleaved-new.yaml: src/schema/nmdc.yaml
-	$(RUN) interleave-yaml \
-		--directory-path src/data/valid \
-		--output-file $@ \
-		--schema-file $<
-
-assets/mentions-of-ids-analysis.txt: src/schema/nmdc.yaml
-	$(RUN) analyze-mentions-of-ids \
-		--schema-file $< 1> $@ 2> $@.log
-
-assets/usages-report.txt: src/schema/nmdc.yaml
-	$(RUN) report-usages \
-		--schema-file $< > $@
-
-
-assets/element-scrutiny.tsv: nmdc_schema/nmdc_materialized_patterns.yaml
-	$(RUN)  scrutinize-elements \
-		--schema-file $< \
-		--output-file assets/element-scrutiny.tsv
-
-# EXPERIMENTAL
-assets/partial-imports-graph.pdf: src/schema/nmdc.yaml
-	$(RUN) python src/scripts/experimental/partial_imports_graph.py # needs networkx and plotly

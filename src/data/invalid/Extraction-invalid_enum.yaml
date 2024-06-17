@@ -6,8 +6,7 @@ has_output:
 start_date: "2020-06-24T22:06Z"
 end_date: "2021-08-19"
 qc_status: "pass"
-extraction_targets: 
-  - "phenol/chloroform extraction"
+extraction_target: "phenol/chloroform extraction"
 input_mass:
   has_numeric_value: 0.25
   has_unit: "g"

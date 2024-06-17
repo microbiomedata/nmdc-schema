@@ -1,20 +1,13 @@
 biosample_set:
-  - id: nmdc:local
-    type: nmdc:Biosample
-    associated_studies:
+  - id: local
+    part_of:
       - nmdc:sty-00-8675309
     env_broad_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
-      type: nmdc:ControlledIdentifiedTermValue
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
-      type: nmdc:ControlledIdentifiedTermValue
       term:
-        type: nmdc:OntologyClass
         id: ENVO:00005792

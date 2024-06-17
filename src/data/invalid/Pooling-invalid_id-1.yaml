@@ -1,10 +1,3 @@
 #invalid because ID has locus tag
 id: nmdc:poolp-11-547rwq94_scf_1000_c1_466_1380
-type: nmdc:Pooling
 name: first pooling process
-has_input:
-  - nmdc:bsm-99-abcdef1
-  - nmdc:bsm-99-abcdef2
-  - nmdc:bsm-99-abcdef3
-has_output:
-  - nmdc:procsm-99-xyz2

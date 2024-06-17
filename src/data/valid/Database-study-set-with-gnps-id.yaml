@@ -13,13 +13,11 @@ study_set:
     ecosystem_subtype: Wetlands
     specific_ecosystem: Permafrost
     principal_investigator:
-      type: nmdc:PersonValue
       has_raw_value: Virginia Rich
     associated_dois:
       - doi_value: doi:10.25585/1488217
         doi_category: award_doi
         doi_provider: emsl
-        type: nmdc:Doi
     type: nmdc:Study
     gnps_task_identifiers:
       - "gnps.task:4b848c342a4f4abc871bdf8a09a60807"

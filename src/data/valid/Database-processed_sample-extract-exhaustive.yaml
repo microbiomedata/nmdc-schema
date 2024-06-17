@@ -1,10 +1,9 @@
 processed_sample_set:
   - id: nmdc:procsm-99-dtTMNb
-    type: nmdc:ProcessedSample
     name: WOOD_024-M-20190715-COMP-DNA1
     description: Extracted DNA from WOOD_024-M-20190715-COMP
     #    type: nmdc:ProcessedSample
-    #    #extract # type value OBI_0001051
+    #    #extract type value OBI_0001051
     #    processed_sample_type: DNA
 
     # if it is necessary to capture NEON internalLabID values, then we will have to allow initial digits in teh local portion of the curies.
@@ -12,12 +11,11 @@ processed_sample_set:
       - neon.identifier:19S_31_2826
 
     # units for nucl_acid_concentration will use nanogram per microliter 
-    #    nucleic_acid_concentration: #http://purl.obolibrary.org/obo/NCIT_C171277
-    #      has_numeric_value: 47.0
-    #      #add instrument_name as a slot to Class QuantityValue?
-    #      instrument_name: Promega Quantus Fluorometer
+#    nucleic_acid_concentration: #http://purl.obolibrary.org/obo/NCIT_C171277
+#      has_numeric_value: 47.0
+#      #add instrument_name as a slot to Class QuantityValue?
+#      instrument_name: Promega Quantus Fluorometer
     #instrument_name for Class ProcessedSample should have range of TBD enum. Recommended possible values 'Promega Quantus Fluorometer', 'other', 'Quant-iT PicoGreen', 'Qubit'
     #replace nucl_acid_purity w/biomaterial_purity https://ontobee.org/ontology/PATO?iri=http://purl.obolibrary.org/obo/PATO_0001339
     biomaterial_purity:
-      type: nmdc:QuantityValue
       has_numeric_value: 2

@@ -1,7 +1,6 @@
-material_processing_set:
+pooling_set:
   - id: nmdc:poolp-9x9-1x
     name: first pooling process
-    type: nmdc:Pooling
     has_input:
       - nmdc:bsm-99-abcdef1
       - nmdc:bsm-99-abcdef2

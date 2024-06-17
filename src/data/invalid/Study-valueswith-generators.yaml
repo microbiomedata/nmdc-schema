@@ -21,6 +21,7 @@ ecosystem_subtype: unconstrained text
 specific_ecosystem: unconstrained text
 principal_investigator:
   has_raw_value: Craig Venter
+  was_generated_by: nmdc:any_string_1
   orcid: ORCID:0000-0002-7086-765X
   profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
   email: jcventer@jcvi.org
@@ -68,6 +69,7 @@ funding_sources:
 has_credit_associations:
   - applies_to_person:
       has_raw_value: Craig Venter
+      was_generated_by: nmdc:any_string_1
       orcid: ORCID:0000-0002-7086-765X
       profile_image_url: https://en.wikipedia.org/wiki/Craig_Venter#/media/File:Craigventer2.jpg
       email: jcventer@jcvi.org
@@ -87,10 +89,12 @@ has_credit_associations:
       - Supervision
 study_image:
   - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
+    was_generated_by: nmdc:any_string_1
     url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     description: Photo of Craig Venter Institute, Rockville, Maryland
     display_order: 1 # MAM 2023-12-08 switched from string to integer
   - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
+    was_generated_by: nmdc:any_string_1
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
     display_order: 2 # MAM 2023-12-08 switched from string to integer
