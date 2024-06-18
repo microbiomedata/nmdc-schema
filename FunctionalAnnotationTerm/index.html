@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/FunctionalAnnotationTerm/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: FunctionalAnnotationTerm - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -295,6 +295,8 @@
 
     FunctionalAnnotationTerm &lt;|-- Pathway
       click Pathway href "../Pathway"
+    FunctionalAnnotationTerm &lt;|-- Reaction
+      click Reaction href "../Reaction"
     FunctionalAnnotationTerm &lt;|-- OrthologyGroup
       click OrthologyGroup href "../OrthologyGroup"
 
@@ -308,8 +310,6 @@
 
   FunctionalAnnotationTerm : name
 
-  FunctionalAnnotationTerm : type
-
 
 
 </div>
@@ -319,6 +319,7 @@
 <li><a href="../OntologyClass/">OntologyClass</a><ul>
 <li><strong>FunctionalAnnotationTerm</strong><ul>
 <li><a href="../Pathway/">Pathway</a></li>
+<li><a href="../Reaction/">Reaction</a></li>
 <li><a href="../OrthologyGroup/">OrthologyGroup</a></li>
 </ul>
 </li>
@@ -362,12 +363,6 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="aliases">Aliases</h2>
@@ -377,8 +372,7 @@
 </ul>
 <h2 id="todos">TODOs</h2>
 <ul>
-<li>decide if this should be used for product naming (Duncan, 2021-04-02)</li>
-<li>Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup subclasses.</li>
+<li>decide if this should be used for product naming</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -412,16 +406,13 @@
 description: Abstract grouping class for any term/descriptor that can be applied to
   a functional unit of a genome (protein, ncRNA, complex).
 todos:
-- decide if this should be used for product naming (Duncan, 2021-04-02)
-- Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup
-  subclasses.
+- decide if this should be used for product naming
 from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - function
 - FunctionalAnnotation
 is_a: OntologyClass
 abstract: true
-class_uri: nmdc:FunctionalAnnotationTerm
 
 </code></pre>
 </details>
@@ -431,9 +422,7 @@ class_uri: nmdc:FunctionalAnnotationTerm
 description: Abstract grouping class for any term/descriptor that can be applied to
   a functional unit of a genome (protein, ncRNA, complex).
 todos:
-- decide if this should be used for product naming (Duncan, 2021-04-02)
-- Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup
-  subclasses.
+- decide if this should be used for product naming
 from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - function
@@ -451,7 +440,10 @@ attributes:
     alias: id
     owner: FunctionalAnnotationTerm
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -463,9 +455,10 @@ attributes:
     alias: name
     owner: FunctionalAnnotationTerm
     domain_of:
-    - PersonValue
-    - NamedThing
     - Protocol
+    - NamedThing
+    - PersonValue
+    - Activity
     range: string
   description:
     name: description
@@ -476,8 +469,9 @@ attributes:
     alias: description
     owner: FunctionalAnnotationTerm
     domain_of:
-    - ImageValue
+    - Study
     - NamedThing
+    - ImageValue
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -488,49 +482,13 @@ attributes:
     alias: alternative_identifiers
     owner: FunctionalAnnotationTerm
     domain_of:
-    - MetaboliteIdentification
+    - Biosample
+    - Study
     - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
     range: uriorcurie
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: FunctionalAnnotationTerm
-    domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
-    - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
-class_uri: nmdc:FunctionalAnnotationTerm
 
 </code></pre>
 </details>
@@ -559,7 +517,7 @@ class_uri: nmdc:FunctionalAnnotationTerm
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

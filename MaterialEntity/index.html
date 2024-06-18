@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MaterialEntity/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: Material Entity (MaterialEntity) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -289,10 +289,10 @@
       click Biosample href "../Biosample"
     MaterialEntity &lt;|-- ProcessedSample
       click ProcessedSample href "../ProcessedSample"
+    MaterialEntity &lt;|-- AnalyticalSample
+      click AnalyticalSample href "../AnalyticalSample"
     MaterialEntity &lt;|-- Site
       click Site href "../Site"
-    MaterialEntity &lt;|-- Instrument
-      click Instrument href "../Instrument"
 
 
 
@@ -304,8 +304,6 @@
 
   MaterialEntity : name
 
-  MaterialEntity : type
-
 
 
 </div>
@@ -315,8 +313,8 @@
 <li><strong>MaterialEntity</strong><ul>
 <li><a href="../Biosample/">Biosample</a></li>
 <li><a href="../ProcessedSample/">ProcessedSample</a></li>
+<li><a href="../AnalyticalSample/">AnalyticalSample</a></li>
 <li><a href="../Site/">Site</a></li>
-<li><a href="../Instrument/">Instrument</a></li>
 </ul>
 </li>
 </ul>
@@ -355,12 +353,6 @@
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of alternative identifiers for the entity</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -406,7 +398,6 @@ aliases:
 - Physical entity
 is_a: NamedThing
 abstract: true
-class_uri: nmdc:MaterialEntity
 
 </code></pre>
 </details>
@@ -442,7 +433,10 @@ attributes:
     alias: id
     owner: MaterialEntity
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -454,9 +448,10 @@ attributes:
     alias: name
     owner: MaterialEntity
     domain_of:
-    - PersonValue
-    - NamedThing
     - Protocol
+    - NamedThing
+    - PersonValue
+    - Activity
     range: string
   description:
     name: description
@@ -467,8 +462,9 @@ attributes:
     alias: description
     owner: MaterialEntity
     domain_of:
-    - ImageValue
+    - Study
     - NamedThing
+    - ImageValue
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -479,49 +475,13 @@ attributes:
     alias: alternative_identifiers
     owner: MaterialEntity
     domain_of:
-    - MetaboliteIdentification
+    - Biosample
+    - Study
     - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
     range: uriorcurie
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: MaterialEntity
-    domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
-    - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
-class_uri: nmdc:MaterialEntity
 
 </code></pre>
 </details>
@@ -550,7 +510,7 @@ class_uri: nmdc:MaterialEntity
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

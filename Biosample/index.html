@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -133,7 +133,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -561,45 +561,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../associated_studies/">associated_studies</a></td>
-<td>1..* <br/> <a href="../Study/">Study</a></td>
-<td>The study associated with a resource</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../biosample_categories/">biosample_categories</a></td>
-<td>* <br/> <a href="../BiosampleCategoryEnum/">BiosampleCategoryEnum</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../collected_from/">collected_from</a></td>
-<td>0..1 <br/> <a href="../FieldResearchSite/">FieldResearchSite</a></td>
-<td>The Site from which a Biosample was collected</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../embargoed/">embargoed</a></td>
-<td>0..1 <em>recommended</em> <br/> <a href="../Boolean/">Boolean</a></td>
-<td>If true, the data are embargoed and not available for public access</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../host_disease_stat/">host_disease_stat</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>List of diseases with which the host has been diagnosed; can include multiple...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../host_taxid/">host_taxid</a></td>
-<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
-<td>NCBI taxon id of the host, e</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../img_identifiers/">img_identifiers</a></td>
-<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td>A list of identifiers that relate the biosample to records in the IMG databas...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -609,9 +573,69 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../host_taxid/">host_taxid</a></td>
+<td>0..1 <br/> <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
+<td>NCBI taxon id of the host, e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../embargoed/">embargoed</a></td>
+<td>0..1 <em>recommended</em> <br/> <a href="../Boolean/">Boolean</a></td>
+<td>If true, the data are embargoed and not available for public access</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../collected_from/">collected_from</a></td>
+<td>0..1 <br/> <a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td>The Site from which a Biosample was collected</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>An optional string that specifies the type object</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../img_identifiers/">img_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>A list of identifiers that relate the biosample to records in the IMG databas...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../samp_name/">samp_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A local identifier or name that for the material sample used for extracting n...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../biosample_categories/">biosample_categories</a></td>
+<td>* <br/> <a href="../BiosampleCategoryEnum/">BiosampleCategoryEnum</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>An optional string that specifies the type object</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>1..* <br/> <a href="../Study/">Study</a></td>
+<td>Links a resource to another resource that either logically or physically incl...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>An NMDC assigned unique identifier for a biosample submitted to NMDC</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Unique identifier for a biosample submitted to additional resources</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -1080,6 +1104,12 @@
 <td><a href="../chem_treatment/">chem_treatment</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>List of chemical compounds administered upstream the sampling location where ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../chimera_check/">chimera_check</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Tool(s) used for chimera checking, including version number and parameters, t...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2175,6 +2205,18 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../nucl_acid_amp/">nucl_acid_amp</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>A link to a literature reference, electronic resource or a standard operating...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../nucl_acid_ext/">nucl_acid_ext</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>A link to a literature reference, electronic resource or a standard operating...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../nucleic_acid_sequence_source_field/">nucleic_acid_sequence_source_field</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
@@ -2289,6 +2331,18 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../pcr_cond/">pcr_cond</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Description of reaction conditions and components of PCR in the form of 'init...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pcr_primers/">pcr_primers</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>PCR primers that were used to amplify the sequence of the targeted gene, locu...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../permeability/">permeability</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Measure of the ability of a hydrocarbon resource to allow fluids to pass thro...</td>
@@ -2382,6 +2436,12 @@
 <td><a href="../pollutants/">pollutants</a></td>
 <td>* <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Pollutant types and, amount or concentrations measured at the time of samplin...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../pool_dna_extracts/">pool_dna_extracts</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Indicate whether multiple DNA extractions were mixed</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2835,6 +2895,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../samp_vol_we_dna_ext/">samp_vol_we_dna_ext</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>Volume (ml) or mass (g) of total collected sample processed for DNA extractio...</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../samp_weather/">samp_weather</a></td>
 <td>0..1 <br/> <a href="../SampWeatherEnum/">SampWeatherEnum</a></td>
 <td>The weather on the sampling day</td>
@@ -2892,6 +2958,18 @@
 <td><a href="../sediment_type/">sediment_type</a></td>
 <td>0..1 <br/> <a href="../SedimentTypeEnum/">SedimentTypeEnum</a></td>
 <td>Information about the sediment type based on major constituents</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../seq_meth/">seq_meth</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Sequencing machine used</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../seq_quality_check/">seq_quality_check</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Indicate if the sequence has been called by automatic systems (none) or under...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -3186,6 +3264,18 @@
 <td><a href="../tan/">tan</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>Total Acid Number¬†(TAN) is a measurement of acidity that is determined by th...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../target_gene/">target_gene</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Targeted gene or locus name for marker gene studies</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../target_subfragment/">target_subfragment</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Name of subfragment of a gene or locus</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4221,12 +4311,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>An NMDC assigned unique identifier for a biosample submitted to NMDC</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A human readable label for an entity</td>
@@ -4236,18 +4320,6 @@
 <td><a href="../description/">description</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>a human-readable description of a thing</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Unique identifier for a biosample submitted to additional resources</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -4264,20 +4336,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Biosample</a></td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Biosample</a></td>
-</tr>
-<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../biosample_set/">biosample_set</a></td>
+<td>range</td>
+<td><a href="./">Biosample</a></td>
+</tr>
+<tr>
+<td><a href="../Pooling/">Pooling</a></td>
+<td><a href="../has_input/">has_input</a></td>
 <td>range</td>
 <td><a href="./">Biosample</a></td>
 </tr>
@@ -4288,9 +4354,33 @@
 <td><a href="./">Biosample</a></td>
 </tr>
 <tr>
+<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>range</td>
+<td><a href="./">Biosample</a></td>
+</tr>
+<tr>
 <td><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
+<td><a href="./">Biosample</a></td>
+</tr>
+<tr>
+<td><a href="./">Biosample</a></td>
+<td><a href="../collected_from/">collected_from</a></td>
+<td>domain</td>
+<td><a href="./">Biosample</a></td>
+</tr>
+<tr>
+<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>range</td>
+<td><a href="./">Biosample</a></td>
+</tr>
+<tr>
+<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>any_of[range]</td>
 <td><a href="./">Biosample</a></td>
 </tr>
 <tr>
@@ -4318,25 +4408,7 @@
 <td><a href="./">Biosample</a></td>
 </tr>
 <tr>
-<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Biosample</a></td>
-</tr>
-<tr>
-<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Biosample</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">Biosample</a></td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
 <td><a href="../has_input/">has_input</a></td>
 <td>any_of[range]</td>
 <td><a href="./">Biosample</a></td>
@@ -4408,15 +4480,19 @@ exact_mappings:
 - http://purl.obolibrary.org/obo/FBcv_0003024
 is_a: MaterialEntity
 slots:
-- associated_studies
-- biosample_categories
-- collected_from
-- embargoed
 - host_disease_stat
-- host_taxid
-- img_identifiers
 - neon_biosample_identifiers
+- host_taxid
+- embargoed
+- collected_from
+- type
+- img_identifiers
 - samp_name
+- biosample_categories
+- type
+- part_of
+- id
+- alternative_identifiers
 - gold_biosample_identifiers
 - insdc_biosample_identifiers
 - emsl_biosample_identifiers
@@ -4495,6 +4571,7 @@ slots:
 - chem_oxygen_dem
 - chem_treat_method
 - chem_treatment
+- chimera_check
 - chloride
 - chlorophyll
 - climate_environment
@@ -4677,6 +4754,8 @@ slots:
 - nitrite_nitrogen
 - nitro
 - non_min_nutr_regm
+- nucl_acid_amp
+- nucl_acid_ext
 - nucleic acid sequence source field
 - number_pets
 - number_plants
@@ -4696,6 +4775,8 @@ slots:
 - part_org_carb
 - part_org_nitro
 - particle_class
+- pcr_cond
+- pcr_primers
 - permeability
 - perturbation
 - pesticide_regm
@@ -4712,6 +4793,7 @@ slots:
 - plant_sex
 - plant_struc
 - pollutants
+- pool_dna_extracts
 - porosity
 - potassium
 - pour_point
@@ -4787,6 +4869,7 @@ slots:
 - samp_transport_cond
 - samp_tvdss
 - samp_type
+- samp_vol_we_dna_ext
 - samp_weather
 - samp_well_name
 - saturates_pc
@@ -4797,6 +4880,8 @@ slots:
 - season_use
 - secondary_treatment
 - sediment_type
+- seq_meth
+- seq_quality_check
 - sequencing field
 - sewage_type
 - shad_dev_water_mold
@@ -4846,6 +4931,8 @@ slots:
 - suspend_part_matter
 - suspend_solids
 - tan
+- target_gene
+- target_subfragment
 - temp
 - temp_out
 - tertiary_treatment
@@ -5038,12 +5125,14 @@ slot_usage:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: float
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
@@ -5065,8 +5154,11 @@ slot_usage:
     description: Unique identifier for a biosample submitted to additional resources.
       Matches the entity that has been submitted to NMDC
     domain_of:
-    - MetaboliteIdentification
+    - Biosample
+    - Study
     - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
   lat_lon:
     name: lat_lon
     notes:
@@ -5090,11 +5182,14 @@ slot_usage:
     domain_of:
     - Biosample
     required: true
-  associated_studies:
-    name: associated_studies
+  part_of:
+    name: part_of
     domain_of:
+    - FieldResearchSite
     - Biosample
-    - DataGeneration
+    - Study
+    - OmicsProcessing
+    - WorkflowExecutionActivity
     range: Study
     required: true
     structured_pattern:
@@ -5116,7 +5211,6 @@ slot_usage:
     - value: 1871-10-01 to 1871-10-31
     domain_of:
     - Biosample
-    range: string
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
   flooding:
     name: flooding
@@ -5135,7 +5229,6 @@ slot_usage:
     - value: 1927-04 to 1927-05
     domain_of:
     - Biosample
-    range: string
   extreme_event:
     name: extreme_event
     annotations:
@@ -5146,7 +5239,6 @@ slot_usage:
     - value: 1980-05-18, volcanic eruption
     domain_of:
     - Biosample
-    range: string
   slope_aspect:
     name: slope_aspect
     description: The direction a slope faces. While looking down a slope use a compass
@@ -5317,7 +5409,6 @@ slot_usage:
     multivalued: true
     domain_of:
     - Biosample
-    range: string
   ph_meth:
     name: ph_meth
     comments:
@@ -5428,7 +5519,6 @@ slot_usage:
     - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
     domain_of:
     - Biosample
-class_uri: nmdc:Biosample
 unique_keys:
   samp_name_unique_key:
     unique_key_name: samp_name_unique_key
@@ -5540,12 +5630,14 @@ slot_usage:
     domain_of:
     - FieldResearchSite
     - Biosample
-    range: float
   id:
     name: id
     description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
@@ -5567,8 +5659,11 @@ slot_usage:
     description: Unique identifier for a biosample submitted to additional resources.
       Matches the entity that has been submitted to NMDC
     domain_of:
-    - MetaboliteIdentification
+    - Biosample
+    - Study
     - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
   lat_lon:
     name: lat_lon
     notes:
@@ -5592,11 +5687,14 @@ slot_usage:
     domain_of:
     - Biosample
     required: true
-  associated_studies:
-    name: associated_studies
+  part_of:
+    name: part_of
     domain_of:
+    - FieldResearchSite
     - Biosample
-    - DataGeneration
+    - Study
+    - OmicsProcessing
+    - WorkflowExecutionActivity
     range: Study
     required: true
     structured_pattern:
@@ -5618,7 +5716,6 @@ slot_usage:
     - value: 1871-10-01 to 1871-10-31
     domain_of:
     - Biosample
-    range: string
     pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
   flooding:
     name: flooding
@@ -5637,7 +5734,6 @@ slot_usage:
     - value: 1927-04 to 1927-05
     domain_of:
     - Biosample
-    range: string
   extreme_event:
     name: extreme_event
     annotations:
@@ -5648,7 +5744,6 @@ slot_usage:
     - value: 1980-05-18, volcanic eruption
     domain_of:
     - Biosample
-    range: string
   slope_aspect:
     name: slope_aspect
     description: The direction a slope faces. While looking down a slope use a compass
@@ -5819,7 +5914,6 @@ slot_usage:
     multivalued: true
     domain_of:
     - Biosample
-    range: string
   ph_meth:
     name: ph_meth
     comments:
@@ -5931,62 +6025,6 @@ slot_usage:
     domain_of:
     - Biosample
 attributes:
-  associated_studies:
-    name: associated_studies
-    description: The study associated with a resource.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    multivalued: true
-    alias: associated_studies
-    owner: Biosample
-    domain_of:
-    - Biosample
-    - DataGeneration
-    range: Study
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  biosample_categories:
-    name: biosample_categories
-    title: Categories the biosample belongs to
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    multivalued: true
-    alias: biosample_categories
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: BiosampleCategoryEnum
-  collected_from:
-    name: collected_from
-    description: The Site from which a Biosample was collected
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: collected_from
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: FieldResearchSite
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  embargoed:
-    name: embargoed
-    description: If true, the data are embargoed and not available for public access.
-    todos:
-    - make this required?
-    - first apply to Biosample
-    - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
-    - applying to a Study may not be granular enough
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: embargoed
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: boolean
-    recommended: true
   host_disease_stat:
     name: host_disease_stat
     annotations:
@@ -6013,6 +6051,20 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
+  neon_biosample_identifiers:
+    name: neon_biosample_identifiers
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: biosample_identifiers
+    mixins:
+    - neon_identifiers
+    multivalued: true
+    alias: neon_biosample_identifiers
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: external_identifier
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   host_taxid:
     name: host_taxid
     annotations:
@@ -6038,6 +6090,68 @@ attributes:
     domain_of:
     - Biosample
     range: ControlledIdentifiedTermValue
+  embargoed:
+    name: embargoed
+    description: If true, the data are embargoed and not available for public access.
+    todos:
+    - make this required?
+    - first apply to Biosample
+    - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
+    - applying to a Study may not be granular enough
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: embargoed
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: boolean
+    recommended: true
+  collected_from:
+    name: collected_from
+    description: The Site from which a Biosample was collected
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    domain: Biosample
+    alias: collected_from
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: FieldResearchSite
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  type:
+    name: type
+    description: An optional string that specifies the type object.  This is used
+      to allow for searches for different kinds of objects.
+    deprecated: Due to confusion about what values are used for this slot, it is best
+      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
+      MAM removed designates_type and rdf:type slot uri 2022-11-30
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    rank: 1000
+    alias: type
+    owner: Biosample
+    domain_of:
+    - DataObject
+    - Biosample
+    - Study
+    - OmicsProcessing
+    - CreditAssociation
+    - MagBin
+    - WorkflowExecutionActivity
+    - MetagenomeAssembly
+    - MetagenomeAnnotationActivity
+    - MetatranscriptomeAnnotationActivity
+    - MetatranscriptomeActivity
+    - MagsAnalysisActivity
+    - ReadQcAnalysisActivity
+    - ReadBasedTaxonomyAnalysisActivity
+    range: string
   img_identifiers:
     name: img_identifiers
     description: A list of identifiers that relate the biosample to records in the
@@ -6054,27 +6168,9 @@ attributes:
     alias: img_identifiers
     owner: Biosample
     domain_of:
-    - MetagenomeAnnotation
     - Biosample
-    - MetatranscriptomeAnnotation
-    - MetatranscriptomeAnalysis
-    - MagsAnalysis
     range: external_identifier
     pattern: ^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$
-  neon_biosample_identifiers:
-    name: neon_biosample_identifiers
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    is_a: biosample_identifiers
-    mixins:
-    - neon_identifiers
-    multivalued: true
-    alias: neon_biosample_identifiers
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: external_identifier
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   samp_name:
     name: samp_name
     annotations:
@@ -6104,6 +6200,75 @@ attributes:
     domain_of:
     - Biosample
     range: string
+  biosample_categories:
+    name: biosample_categories
+    title: Categories the biosample belongs to
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: biosample_categories
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: BiosampleCategoryEnum
+  part_of:
+    name: part_of
+    description: Links a resource to another resource that either logically or physically
+      includes it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    domain: NamedThing
+    slot_uri: dcterms:isPartOf
+    multivalued: true
+    alias: part_of
+    owner: Biosample
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - Study
+    - OmicsProcessing
+    - WorkflowExecutionActivity
+    range: Study
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  id:
+    name: id
+    description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - Study
+    - NamedThing
+    - Activity
+    range: uriorcurie
+    required: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: Unique identifier for a biosample submitted to additional resources.
+      Matches the entity that has been submitted to NMDC
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    multivalued: true
+    alias: alternative_identifiers
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - Study
+    - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
+    range: uriorcurie
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
     annotations:
@@ -6384,8 +6549,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   air_PM_concen:
     name: air_PM_concen
     annotations:
@@ -6417,8 +6580,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   air_temp:
     name: air_temp
     annotations:
@@ -6479,8 +6640,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   al_sat:
     name: al_sat
     description: The relative abundance of aluminum in the sample
@@ -6881,8 +7040,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   api:
     name: api
     annotations:
@@ -7031,8 +7188,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   avg_dew_point:
     name: avg_dew_point
     annotations:
@@ -7477,8 +7632,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   biotic_regm:
     name: biotic_regm
     annotations:
@@ -8151,8 +8304,6 @@ attributes:
     domain_of:
     - Biosample
     range: ControlledTermValue
-    inlined: true
-    inlined_as_list: true
   chem_mutagen:
     name: chem_mutagen
     annotations:
@@ -8185,8 +8336,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   chem_oxygen_dem:
     name: chem_oxygen_dem
     annotations:
@@ -8278,6 +8427,32 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
+  chimera_check:
+    name: chimera_check
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: name and version of software, parameters used
+    description: Tool(s) used for chimera checking, including version number and parameters,
+      to discover and remove chimeric sequences. A chimeric sequence is comprised
+      of two or more phylogenetically distinct parent sequences.
+    title: chimera check software
+    examples:
+    - value: uchime;v4.1;default parameters
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - chimera check software
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{software};{version};{parameters}'
+    slot_uri: MIXS:0000052
+    multivalued: false
+    alias: chimera_check
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
   chloride:
     name: chloride
     annotations:
@@ -8355,8 +8530,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   collection_date:
     name: collection_date
     annotations:
@@ -8737,8 +8910,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   diss_carb_dioxide:
     name: diss_carb_dioxide
     annotations:
@@ -9601,8 +9772,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   env_broad_scale:
     name: env_broad_scale
     description: 'Report the major environmental system the sample or specimen came
@@ -9985,8 +10154,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   field:
     name: field
     annotations:
@@ -10441,8 +10608,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   furniture:
     name: furniture
     annotations:
@@ -10493,8 +10658,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   gaseous_substances:
     name: gaseous_substances
     annotations:
@@ -10525,8 +10688,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   gender_restroom:
     name: gender_restroom
     annotations:
@@ -10697,8 +10858,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   growth_facil:
     name: growth_facil
     annotations:
@@ -10785,8 +10944,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   hall_count:
     name: hall_count
     annotations:
@@ -11134,8 +11291,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   heavy_metals_meth:
     name: heavy_metals_meth
     description: Reference or method used in determining heavy metals
@@ -11219,8 +11374,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   horizon_meth:
     name: horizon_meth
     annotations:
@@ -11467,8 +11620,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   host_dry_mass:
     name: host_dry_mass
     annotations:
@@ -11631,8 +11782,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   host_length:
     name: host_length
     annotations:
@@ -11993,8 +12142,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   indoor_space:
     name: indoor_space
     annotations:
@@ -12105,8 +12252,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   inside_lux:
     name: inside_lux
     annotations:
@@ -12769,8 +12914,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   methane:
     name: methane
     annotations:
@@ -12889,8 +13032,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   misc_param:
     name: misc_param
     annotations:
@@ -12918,8 +13059,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   n_alkanes:
     name: n_alkanes
     annotations:
@@ -12949,8 +13088,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   nitrate:
     name: nitrate
     annotations:
@@ -13127,6 +13264,58 @@ attributes:
     domain_of:
     - Biosample
     range: string
+  nucl_acid_amp:
+    name: nucl_acid_amp
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID, DOI or URL
+    description: A link to a literature reference, electronic resource or a standard
+      operating procedure (SOP), that describes the enzymatic amplification (PCR,
+      TMA, NASBA) of specific nucleic acids
+    title: nucleic acid amplification
+    examples:
+    - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - nucleic acid amplification
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: MIXS:0000038
+    multivalued: false
+    alias: nucl_acid_amp
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
+  nucl_acid_ext:
+    name: nucl_acid_ext
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: PMID, DOI or URL
+    description: A link to a literature reference, electronic resource or a standard
+      operating procedure (SOP), that describes the material separation to recover
+      the nucleic acid fraction from a sample
+    title: nucleic acid extraction
+    examples:
+    - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - nucleic acid extraction
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_uri: MIXS:0000037
+    multivalued: false
+    alias: nucl_acid_ext
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
   nucleic acid sequence source field:
     name: nucleic acid sequence source field
     from_schema: https://w3id.org/nmdc/nmdc
@@ -13437,8 +13626,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   organism_count:
     name: organism_count
     annotations:
@@ -13471,8 +13658,6 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
-    inlined: true
-    inlined_as_list: true
   owc_tvdss:
     name: owc_tvdss
     annotations:
@@ -13641,8 +13826,60 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
+  pcr_cond:
+    name: pcr_cond
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
+          elongation:degrees_minutes;total cycles
+    description: Description of reaction conditions and components of PCR in the form
+      of 'initial denaturation:94degC_1.5min; annealing=...'
+    title: pcr conditions
+    examples:
+    - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - pcr conditions
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
+      elongation:degrees_minutes;total cycles
+    slot_uri: MIXS:0000049
+    multivalued: false
+    alias: pcr_cond
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
+  pcr_primers:
+    name: pcr_primers
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: 'FWD: forward primer sequence;REV:reverse primer sequence'
+    description: PCR primers that were used to amplify the sequence of the targeted
+      gene, locus or subfragment. This field should contain all the primers used for
+      a single PCR reaction if multiple forward or reverse primers are present in
+      a single PCR reaction. The primer sequence should be reported in uppercase letters
+    title: pcr primers
+    examples:
+    - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - pcr primers
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: FWD:{dna};REV:{dna}
+    slot_uri: MIXS:0000046
+    multivalued: false
+    alias: pcr_primers
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
   permeability:
     name: permeability
     annotations:
@@ -13702,8 +13939,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   pesticide_regm:
     name: pesticide_regm
     annotations:
@@ -13737,8 +13972,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   petroleum_hydrocarb:
     name: petroleum_hydrocarb
     annotations:
@@ -13842,8 +14075,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   phaeopigments:
     name: phaeopigments
     annotations:
@@ -13873,8 +14104,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   phosphate:
     name: phosphate
     annotations:
@@ -13932,8 +14161,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   photon_flux:
     name: photon_flux
     annotations:
@@ -14103,8 +14330,33 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
+  pool_dna_extracts:
+    name: pool_dna_extracts
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: pooling status;number of pooled extracts
+      occurrence:
+        tag: occurrence
+        value: '1'
+    description: Indicate whether multiple DNA extractions were mixed. If the answer
+      yes, the number of extracts that were pooled should be given
+    title: pooling of DNA extracts (if done)
+    examples:
+    - value: yes;5
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - pooling of DNA extracts (if done)
+    rank: 1000
+    is_a: core field
+    string_serialization: '{boolean};{integer}'
+    slot_uri: MIXS:0000325
+    multivalued: false
+    alias: pool_dna_extracts
+    owner: Biosample
+    domain_of:
+    - Biosample
+    range: TextValue
   porosity:
     name: porosity
     annotations:
@@ -14522,8 +14774,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   rainfall_regm:
     name: rainfall_regm
     annotations:
@@ -14556,8 +14806,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   reactor_type:
     name: reactor_type
     annotations:
@@ -15550,8 +15798,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   samp_capt_status:
     name: samp_capt_status
     annotations:
@@ -15907,8 +16153,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   samp_store_dur:
     name: samp_store_dur
     annotations:
@@ -16160,6 +16404,34 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
+  samp_vol_we_dna_ext:
+    name: samp_vol_we_dna_ext
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: measurement value
+      preferred_unit:
+        tag: preferred_unit
+        value: millliter, gram, milligram, square centimeter
+    description: 'Volume (ml) or mass (g) of total collected sample processed for
+      DNA extraction. Note: total sample collected should be entered under the term
+      Sample Size (MIXS:0000001).'
+    title: sample volume or weight for DNA extraction
+    examples:
+    - value: 1500 milliliter
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - sample volume or weight for DNA extraction
+    rank: 1000
+    is_a: nucleic acid sequence source field
+    slot_uri: MIXS:0000111
+    multivalued: false
+    alias: samp_vol_we_dna_ext
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: QuantityValue
   samp_weather:
     name: samp_weather
     annotations:
@@ -16301,8 +16573,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   season_precpt:
     name: season_precpt
     description: The average of all seasonal precipitation values known, or an estimated
@@ -16434,6 +16704,58 @@ attributes:
     domain_of:
     - Biosample
     range: sediment_type_enum
+  seq_meth:
+    name: seq_meth
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: Text or OBI
+    description: Sequencing machine used. Where possible the term should be taken
+      from the OBI list of DNA sequencers (http://purl.obolibrary.org/obo/OBI_0400103).
+    title: sequencing method
+    examples:
+    - value: 454 Genome Sequencer FLX [OBI:0000702]
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - sequencing method
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{termLabel} {[termID]}|{text}'
+    slot_uri: MIXS:0000050
+    multivalued: false
+    alias: seq_meth
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
+  seq_quality_check:
+    name: seq_quality_check
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: none or manually edited
+    description: Indicate if the sequence has been called by automatic systems (none)
+      or undergone a manual editing procedure (e.g. by inspecting the raw data or
+      chromatograms). Applied only for sequences that are not submitted to SRA,ENA
+      or DRA
+    title: sequence quality check
+    examples:
+    - value: none
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - sequence quality check
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '[none|manually edited]'
+    slot_uri: MIXS:0000051
+    multivalued: false
+    alias: seq_quality_check
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
   sequencing field:
     name: sequencing field
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17030,8 +17352,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   soluble_org_mat:
     name: soluble_org_mat
     annotations:
@@ -17062,8 +17382,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   soluble_react_phosp:
     name: soluble_react_phosp
     annotations:
@@ -17356,8 +17674,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   store_cond:
     name: store_cond
     annotations:
@@ -17713,8 +18029,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   tan:
     name: tan
     annotations:
@@ -17746,6 +18060,55 @@ attributes:
     domain_of:
     - Biosample
     range: QuantityValue
+  target_gene:
+    name: target_gene
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene name
+    description: Targeted gene or locus name for marker gene studies
+    title: target gene
+    examples:
+    - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - target gene
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: MIXS:0000044
+    multivalued: false
+    alias: target_gene
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
+  target_subfragment:
+    name: target_subfragment
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene fragment name
+    description: Name of subfragment of a gene or locus. Important to e.g. identify
+      special regions on marker genes like V6 on 16S rRNA
+    title: target subfragment
+    examples:
+    - value: V6, V9, ITS
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - target subfragment
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: MIXS:0000045
+    multivalued: false
+    alias: target_subfragment
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OmicsProcessing
+    range: TextValue
   temp:
     name: temp
     annotations:
@@ -18660,8 +19023,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   wall_area:
     name: wall_area
     annotations:
@@ -19154,8 +19515,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   watering_regm:
     name: watering_regm
     description: Information about treatment involving an exposure to watering frequencies,
@@ -19177,8 +19536,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-    inlined: true
-    inlined_as_list: true
   weekday:
     name: weekday
     annotations:
@@ -19633,7 +19990,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    - DataGeneration
+    - OmicsProcessing
     range: string
   community:
     name: community
@@ -19681,7 +20038,7 @@ attributes:
     owner: Biosample
     domain_of:
     - Biosample
-    - DataGeneration
+    - OmicsProcessing
     range: string
   ncbi_taxonomy_name:
     name: ncbi_taxonomy_name
@@ -19754,6 +20111,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 7
     is_a: biomaterial_purity
+    domain: ProcessedSample
     alias: dna_absorb1
     owner: Biosample
     domain_of:
@@ -19773,6 +20131,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 8
     is_a: biomaterial_purity
+    domain: ProcessedSample
     alias: dna_absorb2
     owner: Biosample
     domain_of:
@@ -20116,7 +20475,9 @@ attributes:
     - value: '2.02'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 7
+    is_a: biomaterial_purity
     string_serialization: '{float}'
+    domain: ProcessedSample
     alias: rna_absorb1
     owner: Biosample
     domain_of:
@@ -20134,7 +20495,9 @@ attributes:
     - value: '2.02'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 8
+    is_a: biomaterial_purity
     string_serialization: '{float}'
+    domain: ProcessedSample
     alias: rna_absorb2
     owner: Biosample
     domain_of:
@@ -20941,22 +21304,6 @@ attributes:
     - Biosample
     range: string
     pattern: ^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$
-  id:
-    name: id
-    description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    identifier: true
-    alias: id
-    owner: Biosample
-    domain_of:
-    - NamedThing
-    range: uriorcurie
-    required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'
-      interpolated: true
   name:
     name: name
     description: A human readable label for an entity
@@ -20965,9 +21312,10 @@ attributes:
     alias: name
     owner: Biosample
     domain_of:
-    - PersonValue
-    - NamedThing
     - Protocol
+    - NamedThing
+    - PersonValue
+    - Activity
     range: string
   description:
     name: description
@@ -20978,62 +21326,10 @@ attributes:
     alias: description
     owner: Biosample
     domain_of:
+    - Study
+    - NamedThing
     - ImageValue
-    - NamedThing
     range: string
-  alternative_identifiers:
-    name: alternative_identifiers
-    description: Unique identifier for a biosample submitted to additional resources.
-      Matches the entity that has been submitted to NMDC
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    multivalued: true
-    alias: alternative_identifiers
-    owner: Biosample
-    domain_of:
-    - MetaboliteIdentification
-    - NamedThing
-    range: uriorcurie
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: Biosample
-    domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
-    - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
-class_uri: nmdc:Biosample
 unique_keys:
   samp_name_unique_key:
     unique_key_name: samp_name_unique_key
@@ -21149,7 +21445,7 @@ rules:
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       

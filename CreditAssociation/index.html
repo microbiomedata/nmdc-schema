@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/CreditAssociation/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: CreditAssociation - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -280,7 +280,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-creditassociation">Class: CreditAssociation</h1>
-<p><em>This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role and for a person value. Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at <a href="https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0">https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0</a></em></p>
+<p><em>This class supports binding associated researchers to studies.  There will be at least a slot for a CRediT Contributor Role and for a person value. Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates  at <a href="https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0">https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0</a></em></p>
 <p>URI: <a href="http://www.w3.org/ns/prov#Association">prov:Association</a></p>
 <div class="mermaid">classDiagram
   class CreditAssociation
@@ -327,8 +327,8 @@
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>An optional string that specifies the type object</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -348,6 +348,18 @@
 <td><a href="../Study/">Study</a></td>
 <td><a href="../has_credit_associations/">has_credit_associations</a></td>
 <td>range</td>
+<td><a href="./">CreditAssociation</a></td>
+</tr>
+<tr>
+<td><a href="./">CreditAssociation</a></td>
+<td><a href="../applies_to_person/">applies_to_person</a></td>
+<td>domain</td>
+<td><a href="./">CreditAssociation</a></td>
+</tr>
+<tr>
+<td><a href="./">CreditAssociation</a></td>
+<td><a href="../applied_roles/">applied_roles</a></td>
+<td>domain</td>
 <td><a href="./">CreditAssociation</a></td>
 </tr>
 </tbody>
@@ -391,10 +403,10 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding associated researchers to studies. There
+description: This class supports binding associated researchers to studies.  There
   will be at least a slot for a CRediT Contributor Role and for a person value. Specifically
-  see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates
-  at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+  see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates  at
+  https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
@@ -413,10 +425,10 @@ class_uri: prov:Association
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: CreditAssociation
-description: This class supports binding associated researchers to studies. There
+description: This class supports binding associated researchers to studies.  There
   will be at least a slot for a CRediT Contributor Role and for a person value. Specifically
-  see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates
-  at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+  see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates  at
+  https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
 from_schema: https://w3id.org/nmdc/nmdc
 see_also:
 - https://casrai.org/credit/
@@ -429,6 +441,7 @@ attributes:
     name: applies_to_person
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: CreditAssociation
     alias: applies_to_person
     owner: CreditAssociation
     domain_of:
@@ -445,6 +458,7 @@ attributes:
           https://credit.niso.org/'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: CreditAssociation
     multivalued: true
     alias: applied_roles
     owner: CreditAssociation
@@ -454,42 +468,36 @@ attributes:
     required: true
   type:
     name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
+    description: An optional string that specifies the type object.  This is used
+      to allow for searches for different kinds of objects.
+    deprecated: Due to confusion about what values are used for this slot, it is best
+      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
+      MAM removed designates_type and rdf:type slot uri 2022-11-30
     examples:
     - value: nmdc:Biosample
     - value: nmdc:Study
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
     rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
     alias: type
     owner: CreditAssociation
     domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
+    - DataObject
+    - Biosample
+    - Study
+    - OmicsProcessing
     - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
+    - MagBin
+    - WorkflowExecutionActivity
+    - MetagenomeAssembly
+    - MetagenomeAnnotationActivity
+    - MetatranscriptomeAnnotationActivity
+    - MetatranscriptomeActivity
+    - MagsAnalysisActivity
+    - ReadQcAnalysisActivity
+    - ReadBasedTaxonomyAnalysisActivity
+    range: string
 class_uri: prov:Association
 
 </code></pre>
@@ -519,7 +527,7 @@ class_uri: prov:Association
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

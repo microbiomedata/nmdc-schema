@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -133,7 +133,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -504,9 +504,9 @@
 </thead>
 <tbody>
 <tr>
-<td>NucleotideSequencing</td>
+<td>OmicsProcessing</td>
 <td>None</td>
-<td>A failure has occurred during nucleotide sequencing, a data generation proces...</td>
+<td>A failure has occurred in omics processing, a lab process</td>
 </tr>
 <tr>
 <td>Pooling</td>
@@ -529,27 +529,27 @@
 <td>A failure has occurred in metagenome assembly, a workflow process</td>
 </tr>
 <tr>
-<td>MetatranscriptomeAnalysis</td>
+<td>MetatranscriptomeActivity</td>
 <td>None</td>
 <td>A failure has occurred in metatranscriptome analysis, a workflow process</td>
 </tr>
 <tr>
-<td>MagsAnalysis</td>
+<td>MagsAnalysisActivity</td>
 <td>None</td>
 <td>A failure has occurred in binning, a workflow process to generate metagenome-...</td>
 </tr>
 <tr>
-<td>ReadQcAnalysis</td>
+<td>ReadQcAnalysisActivity</td>
 <td>None</td>
 <td>A failure has occurred in read qc, a workflow process</td>
 </tr>
 <tr>
-<td>ReadBasedTaxonomyAnalysis</td>
+<td>ReadBasedTaxonomyAnalysisActivity</td>
 <td>None</td>
 <td>A failure has occurred in reads based taxonomy, a workflow process</td>
 </tr>
 <tr>
-<td>MetagenomeAnnotation</td>
+<td>MetagenomeAnnotationActivity</td>
 <td>None</td>
 <td>A failure has occurred in annotation, a workflow process</td>
 </tr>
@@ -591,10 +591,9 @@ comments:
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  NucleotideSequencing:
-    text: NucleotideSequencing
-    description: A failure has occurred during nucleotide sequencing, a data generation
-      process.
+  OmicsProcessing:
+    text: OmicsProcessing
+    description: A failure has occurred in omics processing, a lab process.
   Pooling:
     text: Pooling
     description: A failure has occurred in pooling, a lab process.
@@ -607,22 +606,22 @@ permissible_values:
   MetagenomeAssembly:
     text: MetagenomeAssembly
     description: A failure has occurred in metagenome assembly, a workflow process.
-  MetatranscriptomeAnalysis:
-    text: MetatranscriptomeAnalysis
+  MetatranscriptomeActivity:
+    text: MetatranscriptomeActivity
     description: A failure has occurred in metatranscriptome analysis, a workflow
       process.
-  MagsAnalysis:
-    text: MagsAnalysis
+  MagsAnalysisActivity:
+    text: MagsAnalysisActivity
     description: A failure has occurred in binning, a workflow process to generate
       metagenome-assembled genomes (MAGS).
-  ReadQcAnalysis:
-    text: ReadQcAnalysis
+  ReadQcAnalysisActivity:
+    text: ReadQcAnalysisActivity
     description: A failure has occurred in read qc, a workflow process.
-  ReadBasedTaxonomyAnalysis:
-    text: ReadBasedTaxonomyAnalysis
+  ReadBasedTaxonomyAnalysisActivity:
+    text: ReadBasedTaxonomyAnalysisActivity
     description: A failure has occurred in reads based taxonomy, a workflow process.
-  MetagenomeAnnotation:
-    text: MetagenomeAnnotation
+  MetagenomeAnnotationActivity:
+    text: MetagenomeAnnotationActivity
     description: A failure has occurred in annotation, a workflow process.
 
 </code></pre>
@@ -679,7 +678,7 @@ permissible_values:
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       

@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/SubSamplingProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.25" name="generator"/>
 <title>Class: SubSamplingProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -70,7 +70,7 @@
 </nav>
 </form>
 <div class="md-search__output">
-<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
 <div class="md-search-result" data-md-component="search-result">
 <div class="md-search-result__meta">
             Initializing search
@@ -209,6 +209,13 @@
 </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#todos">
+<span class="md-ellipsis">
+      TODOs
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -272,8 +279,8 @@
 <div class="mermaid">classDiagram
   class SubSamplingProcess
   click SubSamplingProcess href "../SubSamplingProcess"
-    MaterialProcessing &lt;|-- SubSamplingProcess
-      click MaterialProcessing href "../MaterialProcessing"
+    PlannedProcess &lt;|-- SubSamplingProcess
+      click PlannedProcess href "../PlannedProcess"
 
 
 
@@ -290,6 +297,8 @@
     click QuantityValue href "../QuantityValue"
 
   SubSamplingProcess : description
+
+  SubSamplingProcess : designated_class
 
   SubSamplingProcess : end_date
 
@@ -310,10 +319,7 @@
 
   SubSamplingProcess : id
 
-  SubSamplingProcess : instrument_used
-
-      SubSamplingProcess --&gt; "*" Instrument : instrument_used
-    click Instrument href "../Instrument"
+  SubSamplingProcess : instrument_name
 
   SubSamplingProcess : mass
 
@@ -339,19 +345,12 @@
       SubSamplingProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
-  SubSamplingProcess : sampled_portion
-
-      SubSamplingProcess --&gt; "*" SamplePortionEnum : sampled_portion
-    click SamplePortionEnum href "../SamplePortionEnum"
-
   SubSamplingProcess : start_date
 
   SubSamplingProcess : temperature
 
       SubSamplingProcess --&gt; "0..1" QuantityValue : temperature
     click QuantityValue href "../QuantityValue"
-
-  SubSamplingProcess : type
 
   SubSamplingProcess : volume
 
@@ -365,10 +364,7 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
-<li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
 <li><strong>SubSamplingProcess</strong></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -416,16 +412,16 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../sampled_portion/">sampled_portion</a></td>
-<td>* <br/> <a href="../SamplePortionEnum/">SamplePortionEnum</a></td>
-<td>The portion of the sample that is taken for downstream activity</td>
-<td>direct</td>
+<td><a href="../designated_class/">designated_class</a></td>
+<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>* <br/> <a href="../Instrument/">Instrument</a></td>
-<td>What instrument was used during DataGeneration or MaterialProcessing</td>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
+<td><a href="../end_date/">end_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was ended</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
@@ -458,9 +454,9 @@
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
-<td><a href="../end_date/">end_date</a></td>
+<td><a href="../instrument_name/">instrument_name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which any process or activity was ended</td>
+<td>The name of the instrument that was used for processing the sample</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -505,14 +501,14 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
-<tr>
-<td><a href="../type/">type</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>the class_uri of the class that has been instantiated</td>
-<td><a href="../NamedThing/">NamedThing</a></td>
-</tr>
 </tbody>
 </table>
+<h2 id="todos">TODOs</h2>
+<ul>
+<li>add intermediate class between PlannedProcess and this (MaterialProcessing potentially)</li>
+<li>Montana to visit slot descriptions</li>
+<li>add 'has_output' usage for processed sample - James</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -550,13 +546,16 @@ description: 'Separating a sample aliquot from the starting material for downstr
   activity.
 
   '
+todos:
+- add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
+- Montana to visit slot descriptions
+- add 'has_output' usage for processed sample - James
 notes:
 - A subsample may be (a) a portion of the sample obtained by selection or division;
   (b) an individual unit of the lot taken as part of the sample; (c) the final unit
   of multistage sampling. The term 'subsample' is used either in the sense of a 'sample
   of a sample' or as a synonym for 'unit'. In practice, the meaning is usually apparent
   from the context or is defined.
-- TODO - Montana to visit slot descriptions
 from_schema: https://w3id.org/nmdc/nmdc
 related_mappings:
 - OBI:0000744
@@ -565,42 +564,34 @@ contributors:
 - ORCID:0000-0002-8683-0050
 - ORCID:0000-0001-9076-6066
 - ORCID:0009-0008-4013-7737
-is_a: MaterialProcessing
+is_a: PlannedProcess
 slots:
 - container_size
 - contained_in
 - temperature
 - volume
 - mass
-- sampled_portion
 slot_usage:
-  id:
-    name: id
-    domain_of:
-    - NamedThing
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$'
-      interpolated: true
   volume:
     name: volume
     description: The output volume of the SubSampling Process.
     domain_of:
     - Extraction
+    - Solution
     - SubSamplingProcess
     - FiltrationProcess
-    - MobilePhaseSegment
-    - PortionOfSubstance
   mass:
     name: mass
     description: The output mass of the SubSampling Process.
     domain_of:
     - SubSamplingProcess
-    - PortionOfSubstance
   has_input:
     name: has_input
     domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -611,12 +602,13 @@ slot_usage:
     name: has_output
     description: The subsample.
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
-class_uri: nmdc:SubSamplingProcess
 
 </code></pre>
 </details>
@@ -627,13 +619,16 @@ description: 'Separating a sample aliquot from the starting material for downstr
   activity.
 
   '
+todos:
+- add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
+- Montana to visit slot descriptions
+- add 'has_output' usage for processed sample - James
 notes:
 - A subsample may be (a) a portion of the sample obtained by selection or division;
   (b) an individual unit of the lot taken as part of the sample; (c) the final unit
   of multistage sampling. The term 'subsample' is used either in the sense of a 'sample
   of a sample' or as a synonym for 'unit'. In practice, the meaning is usually apparent
   from the context or is defined.
-- TODO - Montana to visit slot descriptions
 from_schema: https://w3id.org/nmdc/nmdc
 related_mappings:
 - OBI:0000744
@@ -642,35 +637,28 @@ contributors:
 - ORCID:0000-0002-8683-0050
 - ORCID:0000-0001-9076-6066
 - ORCID:0009-0008-4013-7737
-is_a: MaterialProcessing
+is_a: PlannedProcess
 slot_usage:
-  id:
-    name: id
-    domain_of:
-    - NamedThing
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$'
-      interpolated: true
   volume:
     name: volume
     description: The output volume of the SubSampling Process.
     domain_of:
     - Extraction
+    - Solution
     - SubSamplingProcess
     - FiltrationProcess
-    - MobilePhaseSegment
-    - PortionOfSubstance
   mass:
     name: mass
     description: The output mass of the SubSampling Process.
     domain_of:
     - SubSamplingProcess
-    - PortionOfSubstance
   has_input:
     name: has_input
     domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -681,7 +669,9 @@ slot_usage:
     name: has_output
     description: The subsample.
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
@@ -704,18 +694,13 @@ attributes:
     range: QuantityValue
   contained_in:
     name: contained_in
-    description: A type of container.
-    examples:
-    - value: test tube
-    - value: falcon tube
-    - value: whirlpak
+    description: A type of container. i.e. test tube, falcon tube, etc.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: contained_in
     owner: SubSamplingProcess
     domain_of:
     - SubSamplingProcess
-    - StorageProcess
     range: ContainerCategoryEnum
   temperature:
     name: temperature
@@ -730,26 +715,22 @@ attributes:
     alias: temperature
     owner: SubSamplingProcess
     domain_of:
-    - ChromatographyConfiguration
     - SubSamplingProcess
-    - StorageProcess
     - ChromatographicSeparationProcess
-    - DissolvingProcess
-    - ChemicalConversionProcess
     range: QuantityValue
   volume:
     name: volume
     description: The output volume of the SubSampling Process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: PlannedProcess
     alias: volume
     owner: SubSamplingProcess
     domain_of:
     - Extraction
+    - Solution
     - SubSamplingProcess
     - FiltrationProcess
-    - MobilePhaseSegment
-    - PortionOfSubstance
     range: QuantityValue
   mass:
     name: mass
@@ -761,41 +742,49 @@ attributes:
     owner: SubSamplingProcess
     domain_of:
     - SubSamplingProcess
-    - PortionOfSubstance
     range: QuantityValue
-  sampled_portion:
-    name: sampled_portion
-    description: The portion of the sample that is taken for downstream activity.
+  designated_class:
+    name: designated_class
+    comments:
+    - required on all instances in a polymorphic Database slot like planned_process_set
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
-    alias: sampled_portion
+    designates_type: true
+    alias: designated_class
     owner: SubSamplingProcess
     domain_of:
-    - SubSamplingProcess
-    range: SamplePortionEnum
-  instrument_used:
-    name: instrument_used
-    description: What instrument was used during DataGeneration or MaterialProcessing.
+    - PlannedProcess
+    range: uriorcurie
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
-    alias: instrument_used
+    alias: end_date
     owner: SubSamplingProcess
     domain_of:
-    - MaterialProcessing
-    - DataGeneration
-    range: Instrument
+    - PlannedProcess
+    range: string
   has_input:
     name: has_input
     description: An input to a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: NamedThing
     multivalued: true
     alias: has_input
     owner: SubSamplingProcess
     domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: NamedThing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -808,11 +797,14 @@ attributes:
     description: The subsample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: NamedThing
     multivalued: true
     alias: has_output
     owner: SubSamplingProcess
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
@@ -822,20 +814,22 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: PlannedProcess
     alias: processing_institution
     owner: SubSamplingProcess
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
-    range: ProcessingInstitutionEnum
+    range: processing_institution_enum
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
+    domain: PlannedProcess
     alias: protocol_link
     owner: SubSamplingProcess
     domain_of:
     - PlannedProcess
-    - Study
     range: Protocol
   start_date:
     name: start_date
@@ -853,20 +847,16 @@ attributes:
     domain_of:
     - PlannedProcess
     range: string
-  end_date:
-    name: end_date
-    description: The date on which any process or activity was ended
-    todos:
-    - add date string validation pattern
-    comments:
-    - We are using string representations of dates until all components of our ecosystem
-      can handle ISO 8610 dates
-    - The date should be formatted as YYYY-MM-DD
+  instrument_name:
+    name: instrument_name
+    description: The name of the instrument that was used for processing the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: end_date
+    domain: PlannedProcess
+    alias: instrument_name
     owner: SubSamplingProcess
     domain_of:
+    - OmicsProcessing
     - PlannedProcess
     range: string
   qc_status:
@@ -880,6 +870,7 @@ attributes:
     owner: SubSamplingProcess
     domain_of:
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -892,6 +883,7 @@ attributes:
     owner: SubSamplingProcess
     domain_of:
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -902,26 +894,36 @@ attributes:
     owner: SubSamplingProcess
     domain_of:
     - PlannedProcess
+    - WorkflowExecutionActivity
     range: FailureCategorization
-    inlined: true
-    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
+    notes:
+    - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
+    - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
+      will be accepted
+    - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked
+      via per-class id slot usage assertions
+    - minting authority shoulders should probably be enumerated and checked in the
+      pattern
+    examples:
+    - value: nmdc:mgmag-00-x012.1_7_c1
+      description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     identifier: true
     alias: id
     owner: SubSamplingProcess
     domain_of:
+    - Biosample
+    - Study
     - NamedThing
+    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$'
-      interpolated: true
   name:
     name: name
     description: A human readable label for an entity
@@ -930,9 +932,10 @@ attributes:
     alias: name
     owner: SubSamplingProcess
     domain_of:
-    - PersonValue
-    - NamedThing
     - Protocol
+    - NamedThing
+    - PersonValue
+    - Activity
     range: string
   description:
     name: description
@@ -943,8 +946,9 @@ attributes:
     alias: description
     owner: SubSamplingProcess
     domain_of:
-    - ImageValue
+    - Study
     - NamedThing
+    - ImageValue
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -955,49 +959,13 @@ attributes:
     alias: alternative_identifiers
     owner: SubSamplingProcess
     domain_of:
-    - MetaboliteIdentification
+    - Biosample
+    - Study
     - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
     range: uriorcurie
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - replaces legacy nmdc:type slot
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    rank: 1000
-    slot_uri: rdf:type
-    designates_type: true
-    alias: type
-    owner: SubSamplingProcess
-    domain_of:
-    - FunctionalAnnotationAggMember
-    - MobilePhaseSegment
-    - PortionOfSubstance
-    - MagBin
-    - MetaboliteIdentification
-    - PeptideQuantification
-    - ProteinQuantification
-    - GenomeFeature
-    - FunctionalAnnotation
-    - AttributeValue
-    - NamedThing
-    - FailureCategorization
-    - Protocol
-    - CreditAssociation
-    - Doi
-    range: uriorcurie
-    required: true
-class_uri: nmdc:SubSamplingProcess
 
 </code></pre>
 </details>
@@ -1026,7 +994,7 @@ class_uri: nmdc:SubSamplingProcess
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>

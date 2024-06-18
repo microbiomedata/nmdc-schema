@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.25">
     
     
       
@@ -133,7 +133,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -498,9 +498,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../chemical_entity_set/">chemical_entity_set</a></td>
-<td>This property links a database object to the set of chemical entities within ...</td>
-<td>ChemicalEntity</td>
+<td><a href="../planned_process_set/">planned_process_set</a></td>
+<td>This property links a database object to the set of planned processes within ...</td>
+<td>PlannedProcess</td>
 <td>Database</td>
 </tr>
 <tr>
@@ -546,15 +546,81 @@
 <td>Database</td>
 </tr>
 <tr>
-<td><a href="../workflow_execution_set/">workflow_execution_set</a></td>
-<td>This property links a database object to the set of workflow executions</td>
-<td>WorkflowExecution</td>
+<td><a href="../activity_set/">activity_set</a></td>
+<td>This property links a database object to the set of workflow activities</td>
+<td>WorkflowExecutionActivity</td>
 <td>Database</td>
 </tr>
 <tr>
-<td><a href="../data_generation_set/">data_generation_set</a></td>
+<td><a href="../mags_activity_set/">mags_activity_set</a></td>
+<td>This property links a database object to the set of MAGs analysis activities</td>
+<td>MagsAnalysisActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../metabolomics_analysis_activity_set/">metabolomics_analysis_activity_set</a></td>
+<td>This property links a database object to the set of metabolomics analysis act...</td>
+<td>MetabolomicsAnalysisActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../metaproteomics_analysis_activity_set/">metaproteomics_analysis_activity_set</a></td>
+<td>This property links a database object to the set of metaproteomics analysis a...</td>
+<td>MetaproteomicsAnalysisActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../metagenome_annotation_activity_set/">metagenome_annotation_activity_set</a></td>
+<td>This property links a database object to the set of metagenome annotation act...</td>
+<td>MetagenomeAnnotationActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../metagenome_assembly_set/">metagenome_assembly_set</a></td>
+<td>This property links a database object to the set of metagenome assembly activ...</td>
+<td>MetagenomeAssembly</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../metagenome_sequencing_activity_set/">metagenome_sequencing_activity_set</a></td>
+<td>This property links a database object to the set of metagenome sequencing act...</td>
+<td>MetagenomeSequencingActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../metatranscriptome_activity_set/">metatranscriptome_activity_set</a></td>
+<td>This property links a database object to the set of metatranscriptome analysi...</td>
+<td>MetatranscriptomeActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../read_qc_analysis_activity_set/">read_qc_analysis_activity_set</a></td>
+<td>This property links a database object to the set of read QC analysis activiti...</td>
+<td>ReadQcAnalysisActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../read_based_taxonomy_analysis_activity_set/">read_based_taxonomy_analysis_activity_set</a></td>
+<td>This property links a database object to the set of read based analysis activ...</td>
+<td>ReadBasedTaxonomyAnalysisActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../nom_analysis_activity_set/">nom_analysis_activity_set</a></td>
+<td>This property links a database object to the set of natural organic matter (N...</td>
+<td>NomAnalysisActivity</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../omics_processing_set/">omics_processing_set</a></td>
 <td>This property links a database object to the set of omics processings within ...</td>
-<td>DataGeneration</td>
+<td>OmicsProcessing</td>
+<td>Database</td>
+</tr>
+<tr>
+<td><a href="../pooling_set/">pooling_set</a></td>
+<td></td>
+<td>Pooling</td>
 <td>Database</td>
 </tr>
 <tr>
@@ -564,39 +630,15 @@
 <td>Database</td>
 </tr>
 <tr>
-<td><a href="../instrument_set/">instrument_set</a></td>
-<td>This property links a database object to the set of instruments within it</td>
-<td>Instrument</td>
+<td><a href="../extraction_set/">extraction_set</a></td>
+<td>This property links a database object to the set of extractions within it</td>
+<td>Extraction</td>
 <td>Database</td>
 </tr>
 <tr>
-<td><a href="../calibration_set/">calibration_set</a></td>
-<td>This property links a database object to the set of calibrations within it</td>
-<td>CalibrationInformation</td>
-<td>Database</td>
-</tr>
-<tr>
-<td><a href="../configuration_set/">configuration_set</a></td>
-<td>This property links a database object to the set of configurations within it</td>
-<td>Configuration</td>
-<td>Database</td>
-</tr>
-<tr>
-<td><a href="../protocol_execution_set/">protocol_execution_set</a></td>
-<td>This property links a database object to the set of protocol executions withi...</td>
-<td>ProtocolExecution</td>
-<td>Database</td>
-</tr>
-<tr>
-<td><a href="../storage_process_set/">storage_process_set</a></td>
-<td>This property links a database object to the set of storage processes within ...</td>
-<td>StorageProcess</td>
-<td>Database</td>
-</tr>
-<tr>
-<td><a href="../material_processing_set/">material_processing_set</a></td>
-<td>This property links a database object to the set of material processing withi...</td>
-<td>MaterialProcessing</td>
+<td><a href="../library_preparation_set/">library_preparation_set</a></td>
+<td>This property links a database object to the set of DNA extractions within it</td>
+<td>LibraryPreparation</td>
 <td>Database</td>
 </tr>
 </tbody>
@@ -628,6 +670,7 @@ description: Applies to a property that links a database object to a set of obje
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 mixin: true
+domain: Database
 multivalued: true
 alias: object_set
 range: string
@@ -687,7 +730,7 @@ inlined_as_list: true
     <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
         <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
       
