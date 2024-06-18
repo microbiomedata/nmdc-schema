@@ -3,6 +3,10 @@ import csv
 
 
 def gen_delete(delete_list: list, key: str, limit: int, del_coll: str):
+    r"""
+    Generates HTTP request bodies that can be sent to the Runtime API's
+    `/queries:run` endpoint in order to delete documents from the database.
+    """
     if limit not in (0, 1):
         raise ValueError("limit must be 0 or 1.")
     delete_statement = []
