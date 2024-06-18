@@ -28,16 +28,15 @@ del_coll = "functional_annotation_agg"
 gen_delete(delete_agg_list, "metagenome_annotation_id", 0, del_coll)
 
 # delete leagacy orphan data_object_set records
-#uses regex as a workaround for newline issues double backslash issues
+# uses regex as a workaround for newline issues double backslash issues
 delete_do_list = []
 with open("legacy_orphan.nmdc.data_object_set.csv", newline="") as csvfile:
     do_records = csv.reader(csvfile, delimiter=",")
     for row in do_records:
-        strip_id=row[1].replace("\\n", "")
+        strip_id = row[1].replace("\\n", "")
         print(strip_id)
-        delete_do_list.append({"q":{"id":{"$regex":strip_id}}, "limit": 1})
+        delete_do_list.append({"q": {"id": {"$regex": strip_id}}, "limit": 1})
     request_body_json = {"delete": "data_object_set", "deletes": delete_do_list}
     request_body_file = "data_object_set_request_body.json"
     with open(request_body_file, "w") as f:
         json.dump(request_body_json, f)
-    
