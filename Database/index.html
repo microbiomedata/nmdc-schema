@@ -544,12 +544,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../activity_set/">activity_set</a></td>
-<td>* <br/> <a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td>This property links a database object to the set of workflow activities</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../biosample_set/">biosample_set</a></td>
 <td>* <br/> <a href="../Biosample/">Biosample</a></td>
 <td>This property links a database object to the set of samples within it</td>
@@ -706,12 +700,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="./">Database</a></td>
-<td><a href="../activity_set/">activity_set</a></td>
-<td>domain</td>
-<td><a href="./">Database</a></td>
-</tr>
 <tr>
 <td><a href="./">Database</a></td>
 <td><a href="../biosample_set/">biosample_set</a></td>
@@ -902,7 +890,6 @@ from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - NMDC metadata object
 slots:
-- activity_set
 - biosample_set
 - collecting_biosamples_from_site_set
 - data_object_set
@@ -946,21 +933,6 @@ from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - NMDC metadata object
 attributes:
-  activity_set:
-    name: activity_set
-    description: This property links a database object to the set of workflow activities.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    mixins:
-    - object_set
-    domain: Database
-    multivalued: true
-    alias: activity_set
-    owner: Database
-    domain_of:
-    - Database
-    range: WorkflowExecutionActivity
-    inlined_as_list: true
   biosample_set:
     name: biosample_set
     description: This property links a database object to the set of samples within
