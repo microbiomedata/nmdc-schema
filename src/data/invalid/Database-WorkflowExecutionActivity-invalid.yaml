@@ -1,5 +1,5 @@
 activity_set:
-  #test should fail because activity_set does not exist anymore, WorkflowExeuctionActivity is abstract
+  #test should fail because activity_set does not exist anymore, WorkflowExecutionActivity is abstract
   - id: nmdc:wfact-11-hemh0a87.1
     name: WXA for nmdc:wfact-11-hemh0a87.1
     type: nmdc:WorkflowExecutionActivity
