@@ -167,7 +167,6 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
@@ -2843,11 +2842,6 @@ slots:
     description:
       This property links a database object to the set of all functional
       annotations
-  activity_set:
-    domain: Database # not inherited by mixin users
-    mixins: object_set
-    range: WorkflowExecutionActivity
-    description: This property links a database object to the set of workflow activities.
   mags_activity_set:
     domain: Database # not inherited by mixin users
     mixins: object_set
