@@ -1,0 +1,16 @@
+activity_set:
+  #test should fail because activity_set does not exist anymore, WorkflowExeuctionActivity is abstract
+  - id: nmdc:wfact-11-hemh0a87.1
+    name: WXA for nmdc:wfact-11-hemh0a87.1
+    type: nmdc:WorkflowExecutionActivity
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time:  "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/
+    version: v1.0.8
+    was_informed_by: nmdc:omprc-11-r0pjgp16
+    has_input:
+      - nmdc:dobj-11-1k62bt83
+      - nmdc:dobj-11-e8hs8y25
+    has_output:
+      - nmdc:dobj-11-1k62bt84
