@@ -1,4 +1,4 @@
-activity_set:
+metagenome_annotation_activity_set:
 - has_input:
   - nmdc:dobj-11-0abycm67
   git_url: https://img.jgi.doe.gov
