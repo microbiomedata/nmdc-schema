@@ -1,0 +1,3 @@
+generator_args:
+  jsonschema:
+    include_range_class_descendants: true
