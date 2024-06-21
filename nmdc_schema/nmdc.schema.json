@@ -506,7 +506,14 @@
                 "chem_administration": {
                     "description": "List of chemical compounds administered to the host or site where sampling occurred, and when (e.g. Antibiotics, n fertilizer, air filter); can include multiple compounds. For chemical entities of biological interest ontology (chebi) (v 163), http://purl.bioontology.org/ontology/chebi",
                     "items": {
-                        "$ref": "#/$defs/ControlledTermValue"
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/ControlledTermValue"
+                            },
+                            {
+                                "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                            }
+                        ]
                     },
                     "type": "array"
                 },
@@ -884,7 +891,14 @@
                     "description": "The number of exposed pipes in the room"
                 },
                 "experimental_factor": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "Experimental factors are essentially the variable aspects of an experiment design which can be used to describe an experiment, or set of experiments, in an increasingly detailed manner. This field accepts ontology terms from Experimental Factor Ontology (EFO) and/or Ontology for Biomedical Investigations (OBI). For a browser of EFO (v 2.95) terms, please see http://purl.bioontology.org/ontology/EFO; for a browser of OBI (v 2018-02-12) terms please see http://purl.bioontology.org/ontology/OBI"
                 },
                 "experimental_factor_other": {
@@ -1051,7 +1065,14 @@
                     "type": "array"
                 },
                 "growth_facil": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "Type of facility where the sampled plant was grown; controlled vocabulary: growth chamber, open top chamber, glasshouse, experimental garden, field. Alternatively use Crop Ontology (CO) terms, see http://www.cropontology.org/ontology/CO_715/Crop%20Research"
                 },
                 "growth_habit": {
@@ -1157,11 +1178,25 @@
                     "description": "Original body habitat where the sample was obtained from"
                 },
                 "host_body_product": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon"
                 },
                 "host_body_site": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "Name of body site where the sample was obtained from, such as a specific organ or tissue (tongue, lung etc...). For foundational model of anatomy ontology (fma) (v 4.11.0) or Uber-anatomy ontology (UBERON) (v releases/2014-06-15) terms, please see http://purl.bioontology.org/ontology/FMA or http://purl.bioontology.org/ontology/UBERON"
                 },
                 "host_body_temp": {
@@ -1229,7 +1264,14 @@
                     "type": "string"
                 },
                 "host_phenotype": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "Phenotype of human or other host. For phenotypic quality ontology (pato) (v 2018-03-27) terms, please see http://purl.bioontology.org/ontology/pato. For Human Phenotype Ontology (HP) (v 2018-06-13) please see http://purl.bioontology.org/ontology/HP"
                 },
                 "host_sex": {
@@ -1731,7 +1773,14 @@
                     "description": "Measurement of photon flux"
                 },
                 "plant_growth_med": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "Specification of the media for growing the plants or tissue cultured samples, e.g. soil, aeroponic, hydroponic, in vitro solid culture medium, in vitro liquid culture medium. Recommended value is a specific value from EO:plant growth medium (follow this link for terms http://purl.obolibrary.org/obo/EO_0007147) or other controlled vocabulary"
                 },
                 "plant_product": {
@@ -1743,7 +1792,14 @@
                     "description": "Sex of the reproductive parts on the whole plant, e.g. pistillate, staminate, monoecieous, hermaphrodite."
                 },
                 "plant_struc": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "Name of plant structure the sample was obtained from; for Plant Ontology (PO) (v releases/2017-12-14) terms, see http://purl.bioontology.org/ontology/PO, e.g. petiole epidermis (PO_0000051). If an individual flower is sampled, the sex of it can be recorded here."
                 },
                 "pollutants": {
@@ -2091,7 +2147,14 @@
                     "description": "Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays"
                 },
                 "samp_mat_process": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "A brief description of any processing applied to the sample during or after retrieving the sample from environment, or a link to the relevant protocol(s) performed."
                 },
                 "samp_md": {
@@ -3304,7 +3367,26 @@
                     "type": "string"
                 },
                 "term": {
-                    "$ref": "#/$defs/OntologyClass",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OntologyClass"
+                        },
+                        {
+                            "$ref": "#/$defs/EnvironmentalMaterialTerm"
+                        },
+                        {
+                            "$ref": "#/$defs/ChemicalEntity"
+                        },
+                        {
+                            "$ref": "#/$defs/Pathway"
+                        },
+                        {
+                            "$ref": "#/$defs/Reaction"
+                        },
+                        {
+                            "$ref": "#/$defs/OrthologyGroup"
+                        }
+                    ],
                     "description": "pointer to an ontology class"
                 }
             },
@@ -3323,7 +3405,26 @@
                     "type": "string"
                 },
                 "term": {
-                    "$ref": "#/$defs/OntologyClass",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/OntologyClass"
+                        },
+                        {
+                            "$ref": "#/$defs/EnvironmentalMaterialTerm"
+                        },
+                        {
+                            "$ref": "#/$defs/ChemicalEntity"
+                        },
+                        {
+                            "$ref": "#/$defs/Pathway"
+                        },
+                        {
+                            "$ref": "#/$defs/Reaction"
+                        },
+                        {
+                            "$ref": "#/$defs/OrthologyGroup"
+                        }
+                    ],
                     "description": "pointer to an ontology class"
                 }
             },
@@ -3503,13 +3604,6 @@
             "additionalProperties": false,
             "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
             "properties": {
-                "activity_set": {
-                    "description": "This property links a database object to the set of workflow activities.",
-                    "items": {
-                        "$ref": "#/$defs/WorkflowExecutionActivity"
-                    },
-                    "type": "array"
-                },
                 "biosample_set": {
                     "description": "This property links a database object to the set of samples within it.",
                     "items": {
@@ -7112,7 +7206,14 @@
                     "description": "A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample"
                 },
                 "omics_type": {
-                    "$ref": "#/$defs/ControlledTermValue",
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ControlledTermValue"
+                        },
+                        {
+                            "$ref": "#/$defs/ControlledIdentifiedTermValue"
+                        }
+                    ],
                     "description": "The type of omics data"
                 },
                 "part_of": {
@@ -9208,13 +9309,6 @@
     "description": "An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database top level holder class. When translated to JSON-Schema this is the 'root' object. It should contain pointers to other objects of interest. For MongoDB, the lists of objects that Database slots point to correspond to **collections**.",
     "metamodel_version": "1.7.0",
     "properties": {
-        "activity_set": {
-            "description": "This property links a database object to the set of workflow activities.",
-            "items": {
-                "$ref": "#/$defs/WorkflowExecutionActivity"
-            },
-            "type": "array"
-        },
         "biosample_set": {
             "description": "This property links a database object to the set of samples within it.",
             "items": {

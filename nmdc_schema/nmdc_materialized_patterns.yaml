@@ -4157,14 +4157,6 @@ slots:
     - object_set
     domain: Database
     range: FunctionalAnnotation
-  activity_set:
-    name: activity_set
-    description: This property links a database object to the set of workflow activities.
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    domain: Database
-    range: WorkflowExecutionActivity
   mags_activity_set:
     name: mags_activity_set
     description: This property links a database object to the set of MAGs analysis
@@ -17834,9 +17826,9 @@ slots:
     mappings:
     - prov:wasGeneratedBy
     range: Activity
-    pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+    pattern: ^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$
       interpolated: true
     any_of:
     - range: Activity
@@ -18149,7 +18141,6 @@ classes:
     aliases:
     - NMDC metadata object
     slots:
-    - activity_set
     - biosample_set
     - collecting_biosamples_from_site_set
     - data_object_set
@@ -18427,9 +18418,9 @@ classes:
           interpolated: true
       was_generated_by:
         name: was_generated_by
-        pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc|wf|omprc)-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$
           interpolated: true
   Biosample:
     name: Biosample
