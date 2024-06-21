@@ -113,6 +113,7 @@ gen-project: $(PYMODEL) src/schema/mixs.yaml
 		--include owl \
 		--include python \
 		--include rdf \
+		--config-file gen-project-config.yaml \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
@@ -252,6 +253,7 @@ project/nmdc_materialized_patterns.yaml:
 project/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.yaml
 	$(RUN) gen-json-schema \
 		--closed \
+		--include-range-class-descendants \
 		--top-class Database $< > $@
 
 nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
