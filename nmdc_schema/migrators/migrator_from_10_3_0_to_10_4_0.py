@@ -33,7 +33,7 @@ class Migrator(MigratorBase):
     )
 
     # A mapping from `DataObject.id` value to `NomAnalysisActivity.id` value.
-    data_object_id_to_noma_activity_id_map: Dict[str, str] = dict()
+    data_object_id_to_nom_id_map: Dict[str, str] = dict()
 
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
@@ -55,7 +55,7 @@ class Migrator(MigratorBase):
         the `id` of the `nom_analysis_activity_set` document that "generated" that `data_object_set` document.
 
         >>> m = Migrator()
-        >>> m.data_object_id_to_noma_activity_id_map = {'do1': 'nom1.1'}
+        >>> m.data_object_id_to_nom_id_map = {'do1': 'nom1.1'}
         >>> m.update_was_generated_by_field({'id': 'do1', 'was_generated_by': 'nom1'})  # changes `was_generated_by`
         {'id': 'do1', 'was_generated_by': 'nom1.1'}
         >>> m.update_was_generated_by_field({'id': 'do2', 'was_generated_by': 'nom2'})  # no change (not in dictionary)
@@ -63,8 +63,8 @@ class Migrator(MigratorBase):
         """
 
         data_object_id = data_object["id"]
-        if data_object_id in self.data_object_id_to_noma_activity_id_map.keys():
-            data_object["was_generated_by"] = self.data_object_id_to_noma_activity_id_map[data_object_id]
+        if data_object_id in self.data_object_id_to_nom_id_map.keys():
+            data_object["was_generated_by"] = self.data_object_id_to_nom_id_map[data_object_id]
 
         return data_object
 
@@ -122,7 +122,7 @@ class Migrator(MigratorBase):
         this function does two things:
         1. Make the `id` valid (by appending a version number to it); and
         2. If it has a `has_output` field (which is a list) consisting of a single item,
-           add an entry to the `data_object_id_to_noma_activity_id_map` dictionary, using
+           add an entry to the `data_object_id_to_nom_id_map` dictionary, using
            the `has_output` value as the key and the newly-valid `id` as the value.
            Raise an exception if the `has_output` list contains more than 1 item.
 
@@ -139,22 +139,22 @@ class Migrator(MigratorBase):
 
         Test the production of the ID map.
 
-        >>> m.data_object_id_to_noma_activity_id_map = {}
+        >>> m.data_object_id_to_nom_id_map = {}
         >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj85',
         ...                                    'has_output': ['do1']})  # creates dict entry
         {'id': 'nmdc:wfnom-13-7yf9qj85.1', 'has_output': ['do1']}
-        >>> len(m.data_object_id_to_noma_activity_id_map.keys())
+        >>> len(m.data_object_id_to_nom_id_map.keys())
         1
-        >>> m.data_object_id_to_noma_activity_id_map['do1']
+        >>> m.data_object_id_to_nom_id_map['do1']
         'nmdc:wfnom-13-7yf9qj85.1'
         >>> m.update_nom_analysis_activity_id({'id': 'nmdc:wfnom-13-7yf9qj86',
         ...                                    'has_output': ['do2']})  # creates other dict entry
         {'id': 'nmdc:wfnom-13-7yf9qj86.1', 'has_output': ['do2']}
-        >>> len(m.data_object_id_to_noma_activity_id_map.keys())
+        >>> len(m.data_object_id_to_nom_id_map.keys())
         2
-        >>> m.data_object_id_to_noma_activity_id_map['do1']
+        >>> m.data_object_id_to_nom_id_map['do1']
         'nmdc:wfnom-13-7yf9qj85.1'
-        >>> m.data_object_id_to_noma_activity_id_map['do2']
+        >>> m.data_object_id_to_nom_id_map['do2']
         'nmdc:wfnom-13-7yf9qj86.1'
         """
         nom_analysis_activity_id = nom_analysis_activity["id"]
@@ -182,10 +182,10 @@ class Migrator(MigratorBase):
                                  f"contains more than one item. Contains: {nom_outputs}")
             elif len(nom_outputs) == 1:
                 data_object_id = nom_outputs[0]
-                if data_object_id in self.data_object_id_to_noma_activity_id_map.keys():
+                if data_object_id in self.data_object_id_to_nom_id_map.keys():
                     raise ValueError(f"Multiple NomAnalysisActivity instances have same DataObject ({data_object_id}) "
                                      f"instance as their output.")
-                self.data_object_id_to_noma_activity_id_map[data_object_id] = nom_analysis_activity_id_new
+                self.data_object_id_to_nom_id_map[data_object_id] = nom_analysis_activity_id_new
             else:  # This `NomAnalysisActivity` instance didn't have any output.
                 pass
 
