@@ -42,6 +42,13 @@ body:
       placeholder: ex. /issues/issues/100, nmdc-schema/issues/400
     validations:
       required: false
+  - type: dropdown
+    attributes:
+      label: Added or Updated tests & example files?
+      description: Yes or no, if you added or changed any test or example files
+      options:
+        - label: Yes
+        - label: No
 
       
   
