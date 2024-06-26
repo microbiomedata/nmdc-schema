@@ -31,9 +31,8 @@ body:
   - type: textarea
     attributes:
       label: Description
-      description: Provide a description of the PR. PRs should be small and concise
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      description: Provide a description of the PR. 
+      value: "PRs should be small and concise"
     validations:
       required: true
 
