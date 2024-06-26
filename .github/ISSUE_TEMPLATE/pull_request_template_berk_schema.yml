@@ -25,7 +25,7 @@ body:
         - label: Bug Fix
         - label: Optimization
         - label: Documentation Update
-        - label: Content change Ex: slot or Class name, slot multiplicity changes, slot movement from one Class to another, creating a new slot/Class, Enum value changes
+        - label: Content change _Example, slot or Class name, slot multiplicity changes, slot movement from one Class to another, creating a new slot/Class, Enum value changes_
         - label: Informitive change
         - label: changes to ANY files in /src/schema
   - type: input
