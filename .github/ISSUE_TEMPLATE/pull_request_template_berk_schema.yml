@@ -25,7 +25,7 @@ body:
         - label: Bug Fix
         - label: Optimization
         - label: Documentation Update
-        - label: Content change (Ex- slot or Class name, slot multiplicity changes, slot movement from one Class to another, creating a new slot/Class, Enum value changes)
+        - label: Content change (Ex- slot or Class name, slot multivalued changes, slot movement from one Class to another, creating a new slot/Class, Enum value changes)
         - label: Informitive change (Ex- descriptions of slots, classes, or enums, removal of unused, commented, or invalid code, updated mappings of terms, classes, or slots to ontologies, added an additional Enum to accommodate new or future metadata)
         - label: changes to ANY files in /src/schema
     validations:
