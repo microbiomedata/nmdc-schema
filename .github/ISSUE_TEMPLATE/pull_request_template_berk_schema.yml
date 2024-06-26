@@ -7,7 +7,7 @@ body:
       value: |
         # Guidelines
         
-        ## _Light_ Schema Freeze
+        ## _Soft_ Schema Freeze
         The nmdc-schema and berkeley-schema are under a light freeze this means changes **should not** be made that have any down stream implications. 
         To ensure this, PRs need to be closely reviewed with **every** component of the NMDC in mind.
         
