@@ -10,8 +10,7 @@ body:
         The nmdc-schema and berkeley-schema are under a light freeze this means changes **should not** be made that have any down stream implications. To ensure this, PRs need to be closely reviewed with **every** component of the NMDC in mind.
         ## Reviewers
         To ensure no changes are made unexpectedly, ALL berkeley-schema refacror roll out task coordinators should be listed as reviewrs for ALL PRs. See [squad proposal](https://docs.google.com/document/d/1XXN1YuaBuSkxPXeiLKm5YxYzXTamBPQrzzeLhlh7PWs/edit#heading=h.u52g8v319adh) for list of names
-
-PRs should NOT be merged until they have been approved by all task coordinators.
+        PRs should NOT be merged until they have been approved by all task coordinators.
   - type: input
     id: contact
     attributes:
