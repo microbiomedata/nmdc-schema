@@ -26,7 +26,6 @@ body:
       description: Select all applicable options to catagorize this PR. 
       options:
         - label: Refactor
-        - help: Test
         - label: Feature
         - label: Bug Fix
         - label: Optimization
