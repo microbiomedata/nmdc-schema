@@ -81,7 +81,7 @@ body:
   - type: textarea
     attributes:
       label: Downstream implications
-      description: Ideally no schema changes will be performed that have down stream implications. /n If your change does results in downstream changes, provide a justification/need for this change
+      description: Ideally no schema changes will be performed that have down stream implications. If your change does results in downstream changes, provide a justification/need for this change
       value: "Examples of downstream changes include any change that requires an update or change to workflows, workflow automation, Postgres ingest, Jupyter notebooks, runtime, & more"
   - type: textarea
     attributes:
