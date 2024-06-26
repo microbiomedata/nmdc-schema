@@ -17,7 +17,7 @@ PRs should NOT be merged until they have been approved by all task coordinators.
 - [ ] Optimization
 - [ ] Documentation Update
 - [ ] Content change
-  - slot or Class name
+    - slot or Class name
   - slot multiplicity changes (from a single value to a list or vice versa)
   - slot movement from one Class to another
   - creating a new slot/Class
