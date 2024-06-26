@@ -31,6 +31,7 @@ body:
   - type: markdown
     attributes:
       value: |
+        ### Content change
         - slot or Class name
         - slot multiplicity changes (from a single value to a list or vice versa)
         - slot movement from one Class to another
