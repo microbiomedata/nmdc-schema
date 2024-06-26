@@ -13,7 +13,7 @@ body:
         
         ## Reviewers
         To ensure no changes are made unexpectedly, ALL berkeley-schema refacror roll out task coordinators should be listed as reviewrs for ALL PRs. 
-        See [squad proposal](https://docs.google.com/document/d/1XXN1YuaBuSkxPXeiLKm5YxYzXTamBPQrzzeLhlh7PWs/edit#heading=h.u52g8v319adh) for list of names.
+        See [squad proposal](https://docs.google.com/document/d/1XXN1YuaBuSkxPXeiLKm5YxYzXTamBPQrzzeLhlh7PWs/edit#heading=h.u52g8v319adh) for list of names. Task coordinators should review PRs and provide feedback within a week. Expedition, questions, and discussion can happen at any meeting.
         PRs should NOT be merged until they have been approved by all task coordinators.
   - type: checkboxes
     attributes: 
