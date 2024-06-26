@@ -1,10 +1,6 @@
 name: Berkeley Schema Change
 description: Describe all PRs for changes during berkeley-schema freeze
-title: "[Bug]: "
-labels: ["bug", "triage"]
-projects: ["octo-org/1", "octo-org/44"]
-assignees:
-  - octocat
+title: "[berkeley-schema] <title>"
 body:
   - type: markdown
     attributes:
