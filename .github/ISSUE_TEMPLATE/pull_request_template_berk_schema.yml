@@ -31,11 +31,14 @@ body:
         - label: Optimization
         - label: Documentation Update
         - label: Content change
+        - type: markdown
+          attributes:
+            value: |
               - slot or Class name
-            - slot multiplicity changes (from a single value to a list or vice versa)
-            - slot movement from one Class to another
-            - creating a new slot/Class
-            - Enum value changes
+              - slot multiplicity changes (from a single value to a list or vice versa)
+              - slot movement from one Class to another
+              - creating a new slot/Class
+              - Enum value changes
         - label: Informitive change
             - descriptions of slots, classes, or enums
             - removal of unused, commented, or invalid code
