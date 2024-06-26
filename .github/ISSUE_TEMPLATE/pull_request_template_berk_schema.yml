@@ -75,9 +75,9 @@ body:
     attributes:
       value: |
         Migrations are required if the change results in any existing data being no longer valid. This includes
-          -  slot or Class name changes 
-          -  slot multiplicity changes (from a single value to a list or vice versa) 
-          3) slot movement from one Class to another 4) Enum value changes.     
+        - slot or Class name changes 
+        - slot multiplicity changes (from a single value to a list or vice versa) 
+        - slot movement from one Class to another 4) Enum value changes.     
   
   
   
