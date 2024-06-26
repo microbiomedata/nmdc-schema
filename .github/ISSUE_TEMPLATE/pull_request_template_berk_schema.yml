@@ -20,7 +20,6 @@ body:
       value: |
         # PR Information
   - type: checkboxes
-    id: terms
     attributes: 
       label: What type of PR is this?
       description: Select all applicable options to catagorize this PR. 
