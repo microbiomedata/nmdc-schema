@@ -28,6 +28,8 @@ body:
         - label: Content change (Ex- slot or Class name, slot multiplicity changes, slot movement from one Class to another, creating a new slot/Class, Enum value changes)
         - label: Informitive change (Ex- descriptions of slots, classes, or enums, removal of unused, commented, or invalid code, updated mappings of terms, classes, or slots to ontologies, added an additional Enum to accommodate new or future metadata)
         - label: changes to ANY files in /src/schema
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Description
@@ -50,11 +52,15 @@ body:
         - label: Yes
         - label: No
         - label: I need help with writing tests
+    validations:
+      required: false
   - type: textarea
     attributes:
       label: If no, why
       description: Provide why no examples or tests were updated or added
       value: "This is why I have no tests or example files."
+    validations:
+      required: false
   - type: dropdown
     attributes:
       label: Will this change to the schema result in any invalid data?
@@ -63,6 +69,8 @@ body:
         - label: Yes
         - label: No
         - label: Unsure
+    validations:
+      required: true
   - type: dropdown
     attributes:
       label: Will this change to the schema require a migration?
@@ -71,6 +79,8 @@ body:
         - label: Yes
         - label: No
         - label: Unsure
+    validations:
+      required: true
   - type: markdown
     attributes:
       value: |
@@ -83,7 +93,11 @@ body:
       label: Downstream implications
       description: Ideally no schema changes will be performed that have down stream implications. If your change does results in downstream changes, provide a justification/need for this change
       value: "Examples of downstream changes include any change that requires an update or change to workflows, workflow automation, Postgres ingest, Jupyter notebooks, runtime, & more"
+    validations:
+      required: false
   - type: textarea
     attributes:
       label: Are there any post deployment tasks we need to perform?
       description: Indicate any tasks that need completed after this PR is merged.
+    validations:
+      required: false
