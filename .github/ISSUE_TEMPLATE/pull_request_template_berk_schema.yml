@@ -31,7 +31,7 @@ body:
         - label: Optimization
         - label: Documentation Update
         - label: Content change
-            - slot or Class name
+              - slot or Class name
             - slot multiplicity changes (from a single value to a list or vice versa)
             - slot movement from one Class to another
             - creating a new slot/Class
