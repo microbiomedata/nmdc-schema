@@ -42,10 +42,6 @@ body:
     attributes: 
       options:
         - label: Informitive change
-            - descriptions of slots, classes, or enums
-            - removal of unused, commented, or invalid code
-            - updated mappings of terms, classes, or slots to ontologies
-            - added an additional Enum to accommodate new or future metadata.
         - label: changes to ANY files in /src/schema
         
   - type: input
