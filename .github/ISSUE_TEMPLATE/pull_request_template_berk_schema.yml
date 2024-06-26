@@ -55,7 +55,14 @@ body:
       label: If no, why
       description: Provide why no examples or tests were updated or added
       value: "This is why I have no tests or example files."
-
+  - type: dropdown
+    attributes:
+      label: Will this change to the schema result in any invalid data?
+      description: Yes or no, if you added or changed any test or example files
+      options:
+        - label: Yes
+        - label: No
+        - label: Unsure
 
       
   
