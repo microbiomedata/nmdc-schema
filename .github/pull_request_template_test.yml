@@ -1,8 +1,0 @@
-name: Berkeley Schema Change
-description: Describe all PRs for changes during berkeley-schema freeze
-title: "[berkeley-schema] <title>"
-body:
- - type: markdown
-    attributes:
-      value: |
-        Thanks for taking the time to fill out this bug report!
