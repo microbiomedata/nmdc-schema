@@ -32,6 +32,10 @@ body:
         - label: Content change
         - label: Informitive change
         - label: changes to ANY files in /src/schema
+  - type: markdown
+    attributes:
+      value: |
+        # Guidelines      
   - type: input
     id: contact
     attributes:
