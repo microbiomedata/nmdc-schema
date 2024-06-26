@@ -32,7 +32,7 @@ body:
     attributes:
       label: Description
       description: PRs should be small and concise
-      value: "Provide a description of the PR. "
+      value: "Provide a description of the PR."
     validations:
       required: true
   - type: input
@@ -49,6 +49,13 @@ body:
       options:
         - label: Yes
         - label: No
+        - label: I need help with writing tests
+      - type: textarea
+        attributes:
+          label: If no, why
+          description: Provide why no examples or tests were updated or added
+          value: "This is why I have no tests or example files."
+
 
       
   
