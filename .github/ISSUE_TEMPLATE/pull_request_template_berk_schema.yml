@@ -78,47 +78,13 @@ body:
            -slot or Class name changes 
            -slot multiplicity changes (from a single value to a list or vice versa) 
            -slot movement from one Class to another 4) Enum value changes.     
-  
-  
-  
-  
-  
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
-  
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-      default: 0
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
-    id: logs
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-  
-
-
+      label: Downstream implications
+      description: Ideally no schema changes will be performed that have down stream implications. 
+      If your change does results in downstream changes, provide a justification/need for this change
+      value: "Examples of downstream changes include any change that requires an update or change to workflows, workflow automation, Postgres ingest, Jupyter notebooks, runtime, & more"
+  - type: textarea
+    attributes:
+      label: Are there any post deployment tasks we need to perform?
+      description: Indicate any tasks that need completed after this PR is merged.
