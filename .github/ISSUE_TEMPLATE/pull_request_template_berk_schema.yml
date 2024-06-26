@@ -6,6 +6,7 @@ body:
     attributes:
       value: |
         # Guidelines
+        Test
   - type: input
     id: contact
     attributes:
