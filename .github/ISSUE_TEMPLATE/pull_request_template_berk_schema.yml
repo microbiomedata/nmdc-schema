@@ -25,21 +25,9 @@ body:
         - label: Bug Fix
         - label: Optimization
         - label: Documentation Update
-        - label: Content change
+        - label: Content change _Ex: slot or Class name, slot multiplicity changes, slot movement from one Class to another, creating a new slot/Class, Enum value changes)_
         - label: Informitive change
         - label: changes to ANY files in /src/schema
-  - type: markdown
-    attributes:
-      value: |
-        ### Content change
-  - type: markdown
-    attributes:
-      value: |
-          - slot or Class name
-          - slot multiplicity changes (from a single value to a list or vice versa)
-          - slot movement from one Class to another
-          - creating a new slot/Class
-          - Enum value changes    
   - type: input
     id: contact
     attributes:
