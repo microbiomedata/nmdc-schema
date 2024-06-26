@@ -25,7 +25,8 @@ body:
       label: What type of PR is this?
       description: Select all applicable options to catagorize this PR. 
       options:
-        - refactor: Refactor
+        - label: Refactor
+        - help: Test
         - label: Feature
         - label: Bug Fix
         - label: Optimization
