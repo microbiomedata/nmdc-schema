@@ -15,6 +15,34 @@ body:
         To ensure no changes are made unexpectedly, ALL berkeley-schema refacror roll out task coordinators should be listed as reviewrs for ALL PRs. 
         See [squad proposal](https://docs.google.com/document/d/1XXN1YuaBuSkxPXeiLKm5YxYzXTamBPQrzzeLhlh7PWs/edit#heading=h.u52g8v319adh) for list of names.
         PRs should NOT be merged until they have been approved by all task coordinators.
+  - type: markdown
+    attributes:
+      value: |
+        # PR Information
+  - type: checkboxes
+    id: terms
+    attributes: 
+      label: What type of PR is this?
+      description: Select all applicable options to catagorize this PR. 
+      options:
+        - label: Refactor
+        - label: Feature
+        - label: Bug Fix
+        - label: Optimization
+        - label: Documentation Update
+        - label: Content change
+            - slot or Class name
+            - slot multiplicity changes (from a single value to a list or vice versa)
+            - slot movement from one Class to another
+            - creating a new slot/Class
+            - Enum value changes
+        - label: Informitive change
+            - descriptions of slots, classes, or enums
+            - removal of unused, commented, or invalid code
+            - updated mappings of terms, classes, or slots to ontologies
+            - added an additional Enum to accommodate new or future metadata.
+        - label: changes to ANY files in /src/schema
+        
   - type: input
     id: contact
     attributes:
@@ -59,13 +87,6 @@ body:
       label: Relevant log output
       description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
-  - type: checkboxes
-    id: terms
-    attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com). 
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+  
 
 
