@@ -52,7 +52,7 @@ body:
         - label: I need help with writing tests
   - type: textarea
     attributes:
-       label: If no, why
+      label: If no, why
       description: Provide why no examples or tests were updated or added
        value: "This is why I have no tests or example files."
 
