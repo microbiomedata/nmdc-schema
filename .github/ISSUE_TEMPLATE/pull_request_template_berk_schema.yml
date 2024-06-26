@@ -32,10 +32,6 @@ body:
         - label: Content change
         - label: Informitive change
         - label: changes to ANY files in /src/schema
-  - type: markdown
-      attributes:
-        value: |
-          slot or Class name, slot multiplicity changes (from a single value to a list or vice versa), slot movement from one Class to another, creating a new slot/Class, Enum value changes  
   - type: input
     id: contact
     attributes:
