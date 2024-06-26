@@ -40,8 +40,6 @@ body:
             Enum value changes_
   - type: checkboxes
     attributes: 
-      label: What type of PR is this?
-      description: Select all applicable options to catagorize this PR. 
       options:
         - label: Informitive change
             - descriptions of slots, classes, or enums
