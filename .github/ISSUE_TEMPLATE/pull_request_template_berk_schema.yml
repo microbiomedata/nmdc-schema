@@ -71,10 +71,6 @@ body:
         - label: Yes
         - label: No
         - label: Unsure
-   - type: markdown
-    attributes:
-      value: |
-        Migrations are required if the change results in any existing data being no longer valid. This includes 1) slot or Class name changes 2) slot multiplicity changes (from a single value to a list or vice versa) 3) slot movement from one Class to another 4) Enum value changes.     
   
   
   
