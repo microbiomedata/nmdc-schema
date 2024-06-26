@@ -18,7 +18,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        test
+        - slot or Class name
+        - slot multiplicity changes (from a single value to a list or vice versa)
+        - slot movement from one Class to another
+        - creating a new slot/Class
+        - Enum value changes
   - type: checkboxes
     attributes: 
       label: What type of PR is this?
