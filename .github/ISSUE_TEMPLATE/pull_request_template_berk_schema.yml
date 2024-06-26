@@ -31,11 +31,17 @@ body:
   - type: textarea
     attributes:
       label: Description
-      description: Provide a description of the PR. 
-      value: "PRs should be small and concise"
+      description: PRs should be small and concise
+      value: "Provide a description of the PR. "
     validations:
       required: true
-
+  - type: input
+    attributes:
+      label: Issues
+      description: What issues are part of this PR?
+      placeholder: ex. /issues/issues/100, nmdc-schema/issues/400
+    validations:
+      required: false
 
       
   
