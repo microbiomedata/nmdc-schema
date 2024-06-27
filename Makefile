@@ -113,6 +113,7 @@ gen-project: $(PYMODEL) src/schema/mixs.yaml
 		--include owl \
 		--include python \
 		--include rdf \
+		--include prefixmap \
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
@@ -161,6 +162,8 @@ gendoc: $(DOCDIR)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
+	$(RUN) gen-prefix-map -o project/prefixmap/nmdc-prefix-map.json $(SOURCE_SCHEMA_PATH) ; \
+	cp project/prefixmap/nmdc-prefix-map.json $(DOCDIR) ; \
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) $(SOURCE_SCHEMA_PATH)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
