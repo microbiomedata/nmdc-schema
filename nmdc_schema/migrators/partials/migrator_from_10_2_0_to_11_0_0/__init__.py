@@ -1,57 +1,24 @@
 from typing import List, Type
 
-# TODO: Import all partials within a single `from` block.
-
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_01,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_02,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_03,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_04,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_05,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_06,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_07,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_08,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_09,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_10,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_11,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_12,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_13,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_14,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_15,
-)
-from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_16,
 )
-
 
 def get_migrator_classes() -> List[Type[MigratorBase]]:
     r"""
