@@ -6,7 +6,7 @@ class Migrator(MigratorBase):
     """
     Migrates data from X to PR192, makes the existing extraction_target slot multivalued and change its name to extraction_targets
 
-    Should be run after migrator_from_X_to_PR2_and_PR24.py.
+    Should be run after migrator_from_10_2_0_to_11_0_0_part_09.py.
     """
 
     def upgrade(self):

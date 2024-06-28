@@ -1,53 +1,55 @@
 from typing import List, Type
 
+# TODO: Import all partials within a single `from` block.
+
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_unknown,
+    migrator_from_10_2_0_to_11_0_0_part_01,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR23,
+    migrator_from_10_2_0_to_11_0_0_part_02,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR4,
+    migrator_from_10_2_0_to_11_0_0_part_03,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR53,
+    migrator_from_10_2_0_to_11_0_0_part_04,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR21,
+    migrator_from_10_2_0_to_11_0_0_part_05,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR129,
+    migrator_from_10_2_0_to_11_0_0_part_06,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR31,
+    migrator_from_10_2_0_to_11_0_0_part_07,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR19_and_PR70,
+    migrator_from_10_2_0_to_11_0_0_part_08,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR2_and_PR24,
+    migrator_from_10_2_0_to_11_0_0_part_09,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR10,
+    migrator_from_10_2_0_to_11_0_0_part_10,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR3,
+    migrator_from_10_2_0_to_11_0_0_part_11,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR176,
+    migrator_from_10_2_0_to_11_0_0_part_12,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_PR176_to_PR104,
+    migrator_from_10_2_0_to_11_0_0_part_13,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR192,
+    migrator_from_10_2_0_to_11_0_0_part_14,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_X_to_PR104,
+    migrator_from_10_2_0_to_11_0_0_part_15,
 )
 from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
-    migrator_from_PR104_to_PR195,
+    migrator_from_10_2_0_to_11_0_0_part_16,
 )
 
 
@@ -67,20 +69,20 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
     """
 
     return [
-        migrator_from_X_to_unknown.Migrator,
-        migrator_from_X_to_PR23.Migrator,
-        migrator_from_X_to_PR4.Migrator,
-        migrator_from_X_to_PR53.Migrator,
-        migrator_from_X_to_PR21.Migrator,
-        migrator_from_X_to_PR129.Migrator,
-        migrator_from_X_to_PR31.Migrator,
-        migrator_from_X_to_PR19_and_PR70.Migrator,
-        migrator_from_X_to_PR2_and_PR24.Migrator,
-        migrator_from_X_to_PR10.Migrator,
-        migrator_from_X_to_PR3.Migrator,
-        migrator_from_X_to_PR176.Migrator,
-        migrator_from_PR176_to_PR104.Migrator,
-        migrator_from_X_to_PR192.Migrator,
-        migrator_from_X_to_PR104.Migrator,
-        migrator_from_PR104_to_PR195.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_01.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_02.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_03.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_04.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_05.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_06.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_07.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_08.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_09.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_10.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_11.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_12.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_13.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_14.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_15.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_16.Migrator,
     ]

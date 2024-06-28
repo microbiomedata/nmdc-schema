@@ -11,7 +11,7 @@ class Migrator(MigratorBase):
     The creation of this migrator was prompted by this GitHub comment:
     https://github.com/microbiomedata/berkeley-schema-fy24/pull/210#pullrequestreview-2119492107
 
-    This migrator was designed to be run before `migrator_from_PR104_to_PR195.py`, since that one
+    This migrator was designed to be run before `migrator_from_10_2_0_to_11_0_0_part_16.py`, since that one
     moves the documents from all of these collections into one named `workflow_execution_set`.
     """
 
