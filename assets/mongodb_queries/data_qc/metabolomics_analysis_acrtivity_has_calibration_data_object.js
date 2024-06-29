@@ -1,4 +1,4 @@
-db.getCollection('nom_analysis_activity_set').aggregate(
+db.getCollection('metabolomics_analysis_activity_set').aggregate(
 [
 {
 $match: { has_calibration: { $ne: null } }
