@@ -246,7 +246,6 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patter
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
-		--salvage-prefix generic \
 		--schema-path $(word 1,$^) \
 		--output-path $@
 
@@ -419,7 +418,6 @@ local/study-files/%.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	time $(RUN) migration-recursion \
 		--schema-path $< \
 		--input-path $@.tmp.yaml \
-		--salvage-prefix generic \
 		--output-path $@ # kludge masks ids that contain whitespace
 	rm -rf $@.tmp.yaml $@.tmp.yaml.bak
 
@@ -466,7 +464,6 @@ local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	time $(RUN) migration-recursion \
 		--schema-path $< \
 		--input-path $@.tmp \
-		--salvage-prefix generic \
 		--output-path $@ # kludge masks ids that contain whitespace
 	rm -rf $@.tmp
 
