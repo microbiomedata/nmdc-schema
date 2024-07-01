@@ -3,7 +3,7 @@ import pprint
 from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
 
-schema_file = '../nmdc_schema/nmdc_schema_merged.yaml'
+schema_file = '../nmdc_schema/nmdc_materialized_patterns.yaml'
 
 ignored_slots = [
     'aliases',

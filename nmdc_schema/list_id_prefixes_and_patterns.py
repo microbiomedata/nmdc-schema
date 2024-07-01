@@ -2,7 +2,7 @@ import pprint
 
 from linkml_runtime import SchemaView
 
-schema_file = '../nmdc_schema/nmdc_schema_merged.yaml'
+schema_file = '../nmdc_schema/nmdc_materialized_patterns.yaml'
 
 schema_view = SchemaView(schema_file)
 
