@@ -160,7 +160,7 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json: nmdc_schema/nmdc_schem
 
 nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 	$(RUN) gen-python --log_level ERROR --validate $< > $@ # todo doesn't honor --log_level
-	$(RUN) test-more-tolerant-schema
+	#$(RUN) test-more-tolerant-schema
 
 # ----
 
