@@ -42,7 +42,7 @@ PRs should **NOT** be merged until they have been approved by all task coordinat
 
 - Replace this text with a description of what this PR branch contains. Please keep in mind that all reviewers will be reading this description. Example: "In this branch, I..."
 
-## Related Tickets & Documents
+## Related Issues
 
 > All PRs should relate to or fix an issue(s). Please identify the issue(s) below.
 
