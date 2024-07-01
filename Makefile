@@ -233,17 +233,6 @@ site-clean: clean
 
 squeaky-clean: clean accepting-legacy-ids-clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 
-project/nmdc_schema_merged.yaml:
-	$(RUN) gen-linkml \
-		--format yaml \
-		--no-materialize-attributes \
-		--no-materialize-patterns \
-		--output $@ $(SOURCE_SCHEMA_PATH)
-#	mkdir -p project/prefixmap
-#	$(RUN) gen-prefix-map \
-#		--output project/prefixmap/nmdc.json \
-#	  	--mergeimports $@
-
 project/nmdc_materialized_patterns.yaml:
 	$(RUN) gen-linkml \
 		--format yaml \
@@ -258,7 +247,7 @@ project/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patter
 		--top-class Database $< > $@
 
 nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
-nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
+nmdc_schema/nmdc_materialized_patterns.yaml
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
 	#   so reverting to copying into the module
 	cp $< $@
@@ -269,5 +258,3 @@ nmdc_schema/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_pa
 nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.yaml
 	cp $< $@
 
-nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
-	cp $< $@
