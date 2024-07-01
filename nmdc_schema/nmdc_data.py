@@ -103,7 +103,7 @@ def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = Non
 
 
 def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None) -> bytes:
-    """Retruns the nmdc.schema.json file as bytes.
+    """Returns the nmdc.schema.json file as bytes.
 
     Returns
     -------
