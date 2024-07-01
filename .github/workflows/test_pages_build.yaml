@@ -7,14 +7,14 @@ on:
       - reopened
       - synchronize
 
-concurrency: preview-${{ github.ref }}
+concurrency: {% raw %}preview-${{ github.ref }}{% endraw %}
 
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
