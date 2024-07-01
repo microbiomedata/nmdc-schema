@@ -2,6 +2,7 @@ import logging
 import re
 import importlib
 import inspect
+import shutil
 
 import click
 import click_log
@@ -123,8 +124,11 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
             continue
 
     if len(migrators) == 0:
-        logger.info("No valid migrators specified. Will perform default migration")
-        # exit()
+        # logger.info("No valid migrators specified. Will perform default migration")
+        logger.info("No valid migrators specified. Just copying the input file to the output file.")
+        # Copy the input file to the output file
+        shutil.copy(input_path, output_path)
+        exit()
 
     # Load the input data
     logger.info(f"Loading data from {input_path}")
@@ -154,12 +158,12 @@ def main(schema_path, input_path, output_path, salvage_prefix, migrator_name):
     curie_migrator = CurieMigrator()
     curie_migrator.forced_prefix = salvage_prefix
 
-    # iterate over collections, applying CURIe fixes
-    for tdk, tdv in total_dict.items():
-        logger.info(f"Fixing CURIes in {tdk} if necessary")
-
-        total_dict[tdk] = curie_migrator.fix_curies_recursively_by_key(
-            tdv, set(curie_slots))
+    # # iterate over collections, applying CURIe fixes
+    # for tdk, tdv in total_dict.items():
+    #     logger.info(f"Fixing CURIes in {tdk} if necessary")
+    #
+    #     total_dict[tdk] = curie_migrator.fix_curies_recursively_by_key(
+    #         tdv, set(curie_slots))
 
     # Instantiate an adapter that the migrator can use to manipulate a "database" represented as a Python dictionary.
     # Also, specify some callback functions, so we can react when certain events occur.

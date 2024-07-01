@@ -1,2 +1,8 @@
-'(.classes.[].slot_usage.[] | select(has("pattern")).pattern) = ".*" '
-'(.classes.[].slot_usage.[] | select(has("structured_pattern")).structured_pattern.syntax) = ".*" '
+# '(.classes.[].slot_usage.[] | select(has("pattern")).pattern) = ".*" '
+# '(.classes.[].slot_usage.[] | select(has("structured_pattern")).structured_pattern.syntax) = ".*" '
+
+'.classes.ReadBasedTaxonomyAnalysisActivity.slot_usage.id.pattern = ".*"'
+'.classes.ReadBasedTaxonomyAnalysisActivity.slot_usage.id.structured_pattern.syntax = ".*"'
+'.classes.ReadQcAnalysisActivity.slot_usage.id.pattern = ".*"'
+'.classes.ReadQcAnalysisActivity.slot_usage.id.structured_pattern.syntax = ".*"'
+
