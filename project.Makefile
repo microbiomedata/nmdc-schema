@@ -127,8 +127,7 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 		-i $< \
 		-o $@
 
-accepting-legacy-ids-all: accepting-legacy-ids-clean \
-nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json nmdc_schema/nmdc_schema_accepting_legacy_ids.py
+accepting-legacy-ids-all: accepting-legacy-ids-clean nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
 
 nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml assets/yq-for-nmdc_schema_accepting_legacy_ids.txt
 	$(RUN) gen-linkml \
@@ -152,15 +151,6 @@ nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml assets/y
 		--output $@.temp $@
 
 	mv $@.temp $@
-
-nmdc_schema/nmdc_schema_accepting_legacy_ids.schema.json: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-	$(RUN) gen-json-schema \
-		--include-range-class-descendants \
-		--closed $< > $@
-
-nmdc_schema/nmdc_schema_accepting_legacy_ids.py: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-	$(RUN) gen-python --log_level ERROR --validate $< > $@ # todo doesn't honor --log_level
-	#$(RUN) test-more-tolerant-schema
 
 # ----
 
@@ -252,11 +242,10 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 #		--mongo-port 27777 \
 #		--direct-connection
 
-local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
-		--migrator-name migrator_from_9_3_to_10_0 \
 		--salvage-prefix generic \
 		--schema-path $(word 1,$^) \
 		--output-path $@
