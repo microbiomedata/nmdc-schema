@@ -40,7 +40,7 @@ class Migrator(MigratorBase):
 
         """
 
-        instruments = load_yaml_asset("migrator_from_X_to_PR19_and_PR70/instrument_set.yaml")
+        instruments = load_yaml_asset("migrator_from_10_2_0_to_11_0_0_part_08/instrument_set.yaml")
         for instrument in instruments:
             self.adapter.insert_document("instrument_set", instrument)
 
@@ -61,7 +61,7 @@ class Migrator(MigratorBase):
         if "instrument_name" in omics_doc:
             existing_instrument_name = omics_doc["instrument_name"]
             
-            instruments = load_yaml_asset("migrator_from_X_to_PR19_and_PR70/instrument_set.yaml")
+            instruments = load_yaml_asset("migrator_from_10_2_0_to_11_0_0_part_08/instrument_set.yaml")
             allowed_instrument_names = [instrument["name"] for instrument in instruments]
 
             cutoff = 0.25

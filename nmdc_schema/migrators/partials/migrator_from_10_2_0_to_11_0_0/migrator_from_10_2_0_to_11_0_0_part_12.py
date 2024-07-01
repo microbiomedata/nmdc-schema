@@ -5,7 +5,7 @@ class Migrator(MigratorBase):
     """
     Migrates data from X to PR176, namely changes the permissible values of the failure_where slot in the read_qc_analysis_set collection.
 
-    Should be run after migrator_from_X_to_PR2_and_PR24.py.
+    Should be run after migrator_from_10_2_0_to_11_0_0_part_09.py.
     """
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
