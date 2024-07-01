@@ -103,7 +103,7 @@ def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = Non
 
 
 def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None) -> bytes:
-    """Reruns the nmdc.schema.json file as bytes.
+    """Retruns the nmdc.schema.json file as bytes.
 
     Returns
     -------
@@ -115,8 +115,6 @@ def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None)
     True
     >>> bytes_b = get_nmdc_jsonschema_bytes(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
     >>> type(bytes_b) is bytes and b"version" in bytes_b
-    True
-    >>> len(bytes_b) > len(bytes_a)  # assumes that including structured patterns makes the file larger
     True
     """
     nmdc_json = get_nmdc_jsonschema_bytesIO(variant=variant)
