@@ -11,5 +11,6 @@ extraction_targets:
 input_mass:
   has_numeric_value: 0.25
   has_unit: "g"
-
+  type: nmdc:QuantityValue
+type: nmdc:Extraction
 
