@@ -24,6 +24,7 @@ rdf-clean:
 		OmicsProcessing.rq \
 		local/mongo_as_nmdc_database.ttl \
 		local/mongo_as_nmdc_database_cuire_repaired.ttl \
+		local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl \
 		local/mongo_as_nmdc_database_rdf_safe.yaml \
 		local/mongo_as_nmdc_database_validation.log \
 		local/mongo_as_unvalidated_nmdc_database.yaml
