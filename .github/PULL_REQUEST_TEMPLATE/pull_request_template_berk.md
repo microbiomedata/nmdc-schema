@@ -25,17 +25,17 @@ Delays in review & merging should be addressed in meetings or with NMDC leadersh
 - [ ] Bug Fix
 - [ ] Optimization
 - [ ] Documentation
-- [ ] Schema change: Content
-  - `slot` or `class` name
-  - changes to a `slot`'s `multivalued` state. `true` means the schema expects a list of values and `false` means  a single value is expected.
-  - any changes to the ways `slot`s are assigned to any `class`es
-  - creating a new `slot` or `class`
-  - additions, removals or changes to the `permissible_values` in an `enum`
-- [ ] Schema change: Cleanup
-  - descriptions of `slot`s, `class`es, or `enum`s
-  - removal of unused, commented, or invalid code
-  - updated `mappings` of `slot`s, `class`es, or `slot`s to ontologies
-  - addition of a new `enum` in the absence of making that `enum` the `range` for any existing `slot`
+- [ ] Schema change: Structure and content
+  - created, updated, or deleted a `class`, `slot`, or `enum`
+  - changed whether a `slot` is `multivalued`
+  - changed the way a `slot` is assigned to a `class`
+  - changed the `permissible_values` of an `enum`
+  - _etc._
+- [ ] Schema change: Cleanup and preparation
+  - updated the description of a `class`, `slot`, or `enum`
+  - updated the `mappings` of a `class`, `slot`, or `enum` to an ontology
+  - added an `enum` for _future_ use (it is not in the `range` of any `slot`)
+  - _etc._
      
 ## Description
 
