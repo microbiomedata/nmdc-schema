@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/OmicsProcessing/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.27" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
 <title>Class: OmicsProcessing - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -1007,13 +1007,13 @@ attributes:
     is_a: sequencing field
     string_serialization: '{software};{version};{parameters}'
     slot_uri: MIXS:0000052
-    multivalued: false
     alias: chimera_check
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   gold_sequencing_project_identifiers:
     name: gold_sequencing_project_identifiers
     description: identifiers for corresponding sequencing project in GOLD
@@ -1025,12 +1025,12 @@ attributes:
     mixins:
     - gold_identifiers
     domain: OmicsProcessing
-    multivalued: true
     alias: gold_sequencing_project_identifiers
     owner: OmicsProcessing
     domain_of:
     - OmicsProcessing
     range: external_identifier
+    multivalued: true
     pattern: ^gold:Gp[0-9]+$
   has_input:
     name: has_input
@@ -1038,7 +1038,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: NamedThing
-    multivalued: true
     alias: has_input
     owner: OmicsProcessing
     domain_of:
@@ -1048,6 +1047,7 @@ attributes:
     - WorkflowExecutionActivity
     range: NamedThing
     required: true
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1060,7 +1060,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: NamedThing
-    multivalued: true
     alias: has_output
     owner: OmicsProcessing
     domain_of:
@@ -1068,6 +1067,7 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: DataObject
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1092,13 +1092,13 @@ attributes:
     is_a: study_identifiers
     mixins:
     - insdc_identifiers
-    multivalued: true
     alias: insdc_bioproject_identifiers
     owner: OmicsProcessing
     domain_of:
     - Study
     - OmicsProcessing
     range: external_identifier
+    multivalued: true
     pattern: ^bioproject:PRJ[DEN][A-Z][0-9]+$
   insdc_experiment_identifiers:
     name: insdc_experiment_identifiers
@@ -1108,12 +1108,12 @@ attributes:
     mixins:
     - insdc_identifiers
     domain: OmicsProcessing
-    multivalued: true
     alias: insdc_experiment_identifiers
     owner: OmicsProcessing
     domain_of:
     - OmicsProcessing
     range: external_identifier
+    multivalued: true
     pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$
   instrument_name:
     name: instrument_name
@@ -1166,13 +1166,13 @@ attributes:
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000038
-    multivalued: false
     alias: nucl_acid_amp
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   nucl_acid_ext:
     name: nucl_acid_ext
     annotations:
@@ -1192,13 +1192,13 @@ attributes:
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000037
-    multivalued: false
     alias: nucl_acid_ext
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   omics_type:
     name: omics_type
     description: The type of omics data
@@ -1221,7 +1221,6 @@ attributes:
     rank: 1000
     domain: NamedThing
     slot_uri: dcterms:isPartOf
-    multivalued: true
     alias: part_of
     owner: OmicsProcessing
     domain_of:
@@ -1231,6 +1230,7 @@ attributes:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1254,13 +1254,13 @@ attributes:
     string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final
       elongation:degrees_minutes;total cycles
     slot_uri: MIXS:0000049
-    multivalued: false
     alias: pcr_cond
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   pcr_primers:
     name: pcr_primers
     annotations:
@@ -1281,13 +1281,13 @@ attributes:
     is_a: sequencing field
     string_serialization: FWD:{dna};REV:{dna}
     slot_uri: MIXS:0000046
-    multivalued: false
     alias: pcr_primers
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   principal_investigator:
     name: principal_investigator
     description: Principal Investigator who led the study and/or generated the dataset.
@@ -1334,13 +1334,13 @@ attributes:
     rank: 1000
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000111
-    multivalued: false
     alias: samp_vol_we_dna_ext
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: QuantityValue
+    multivalued: false
   seq_meth:
     name: seq_meth
     annotations:
@@ -1359,13 +1359,13 @@ attributes:
     is_a: sequencing field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000050
-    multivalued: false
     alias: seq_meth
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   seq_quality_check:
     name: seq_quality_check
     annotations:
@@ -1386,13 +1386,13 @@ attributes:
     is_a: sequencing field
     string_serialization: '[none|manually edited]'
     slot_uri: MIXS:0000051
-    multivalued: false
     alias: seq_quality_check
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   target_gene:
     name: target_gene
     annotations:
@@ -1410,13 +1410,13 @@ attributes:
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000044
-    multivalued: false
     alias: target_gene
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   target_subfragment:
     name: target_subfragment
     annotations:
@@ -1435,13 +1435,13 @@ attributes:
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000045
-    multivalued: false
     alias: target_subfragment
     owner: OmicsProcessing
     domain_of:
     - Biosample
     - OmicsProcessing
     range: TextValue
+    multivalued: false
   type:
     name: type
     description: An optional string that specifies the type object.  This is used
@@ -1558,13 +1558,13 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: has_failure_categorization
     owner: OmicsProcessing
     domain_of:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: FailureCategorization
+    multivalued: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -1616,7 +1616,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: OmicsProcessing
     domain_of:
@@ -1626,6 +1625,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 
 </code></pre>
@@ -1655,7 +1655,7 @@ attributes:
 <div class="md-dialog__inner md-typeset"></div>
 </div>
 <script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
-<script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+<script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
 <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
 <script src="../javascripts/tablesort.js"></script>
 <script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
