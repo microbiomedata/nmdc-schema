@@ -27,7 +27,7 @@ TEMPLATEDIR = doc-templates
 help: status
 	@echo ""
 	@echo "This project requires that dependencies are loaded into a poetry environment with 'poetry install'"
-	@echo "Most typical usage: 'make squeaky-clean all test'" # I removed the `enchilada` convenience target
+	@echo "Most typical usage: 'make squeaky-clean all test'"
 	@echo "Documentation publication is handled by a GitHub merge action"
 	@echo "  but users can generate a local documentation site with 'make testdoc'"
 	@echo "Please excuse the currently verbose logging mode"
@@ -92,7 +92,6 @@ site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to
 deploy: gendoc mkd-gh-deploy
 
 gen-project: $(PYMODEL) src/schema/mixs.yaml
-	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
 	$(RUN) gen-project \
 		--exclude excel \
 		--exclude graphql \
@@ -116,7 +115,6 @@ test: examples-clean site test-python examples/output
 only-test: examples-clean test-python examples/output
 
 test-schema:
-	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
 	$(RUN) gen-project \
 		--exclude excel \
 		--exclude graphql \
@@ -167,7 +165,6 @@ MKDOCS = $(RUN) mkdocs
 mkd-%:
 	$(MKDOCS) $*
 
-# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
 PROJECT_FOLDERS = jsonldcontext jsonschema owl python rdf
 git-init-add: git-init git-add git-commit git-status
 git-init:
@@ -246,10 +243,3 @@ nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialize
 		--closed \
 		--include-range-class-descendants \
 		--top-class Database $< > $@
-
-nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
-nmdc_schema/nmdc_materialized_patterns.yaml
-	# just can't seem to tell pyproject.toml to bundle artifacts like these
-	#   so reverting to copying into the module
-	cp $< $@
-
