@@ -14,7 +14,7 @@ PRs will **NOT** be merged until all task coordinators (or one of their delegate
 
 Expedition, questions, and discussion can happen at any meeting.
 
-Delays in review & mergeing should be address in meetings or with NMDC Leadership.
+Delays in review & merging should be addressed in meetings or with NMDC leadership.
 
 # PR Information
 
@@ -26,17 +26,16 @@ Delays in review & mergeing should be address in meetings or with NMDC Leadershi
 - [ ] Optimization
 - [ ] Documentation
 - [ ] Schema change: Content
-  - slot or class name
-  - slot multiplicity changes (from a single value to a list or vice versa)
-  - any changes to the ways slots are assigned to any classes
-  - creating a new slot/Class
-  - Enum value changes
+  - `slot` or `class` name
+  - changes to a `slot`'s `multivalued` state (from a single value to a list or vice versa)
+  - any changes to the ways `slot`s are assigned to any `class`es
+  - creating a new `slot` or `class`
+  - `enum` value changes
 - [ ] Schema change: Cleanup
-  - descriptions of slots, classes, or enums
+  - descriptions of `slot`s, `class`es, or `enum`s
   - removal of unused, commented, or invalid code
-  - updated mappings of terms, classes, or slots to ontologies
-  - added an additional Enum to accommodate new or future metadata
-- [ ] Changes to any files or directories in `src/schema`
+  - updated `mappings` of `slot`s, `class`es, or `slot`s to ontologies
+  - added an additional `enum` to accommodate new or future metadata
      
 ## Description
 
@@ -63,9 +62,9 @@ Delays in review & mergeing should be address in meetings or with NMDC Leadershi
 
 > This is a question about what the schema allows. It is not a question about what happens to exists in the NMDC database right now.
 > 
-> Example: If, in this PR branch, you renamed a slot named `foo` to `foo_bar`, the answer to this question would be "yes," **even if** nothing in the NMDC database _currently_ uses the `foo` slot.
+> Example: If, in this PR branch, you renamed a `slot` named `foo` to `foo_bar`, the answer to this question would be "yes," **even if** nothing in the NMDC database _currently_ uses the `foo` `slot`.
 >
-> More examples: slot or class name changes, slot multiplicity changes (e.g. string versus list), slot movement from one class to another, some kinds of enum value changes.
+> More examples: `slot` or `class` name changes, changes to a `slot`'s `multivalued` state, changes to a `slot's `range` (e.g. string to integer), changes to `slot` assignments to `class`es, some kinds of `enum` value changes.
 
 - [ ] Yes _(A migrator is required)_
 - [ ] No
