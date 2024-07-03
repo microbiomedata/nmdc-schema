@@ -8,9 +8,10 @@ The `nmdc-schema` and `berkeley-schema-fy24` schemas are under a soft freeze, wh
 
 To ensure no changes are made unexpectedly, PR creators will request reviews from _all_ [Berkeley Schema Roll Out task coordinators](https://docs.google.com/document/d/1XXN1YuaBuSkxPXeiLKm5YxYzXTamBPQrzzeLhlh7PWs/edit#heading=h.u52g8v319adh).
 
-We expect task coordinators to review PRs and provide feedback/approval within 1 week of when they are identified as reviewers. Expedition, questions, and discussion can happen at any meeting.
-
-PRs should **NOT** be merged until they have been approved by all task coordinators.
+We expect task coordinators to review PRs and provide feedback/approval within 1 week of when they are identified as reviewers. 
+PRs will **NOT** be merged until all task coordinators (or one of their delegates) have approved. 
+Expedition, questions, and discussion can happen at any meeting.
+Delays in review & mergeing should be address in meetings or with NMDC Leadership.
 
 # PR Information
 
