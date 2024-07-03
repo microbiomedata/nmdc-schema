@@ -27,15 +27,15 @@ Delays in review & merging should be addressed in meetings or with NMDC leadersh
 - [ ] Documentation
 - [ ] Schema change: Content
   - `slot` or `class` name
-  - changes to a `slot`'s `multivalued` state (from a single value to a list or vice versa)
+  - changes to a `slot`'s `multivalued` state. `true` means the schema expects a list of values and `false` means  a single value is expected.
   - any changes to the ways `slot`s are assigned to any `class`es
   - creating a new `slot` or `class`
-  - `enum` value changes
+  - additions, removals or changes to the `permissible_values` in an `enum`
 - [ ] Schema change: Cleanup
   - descriptions of `slot`s, `class`es, or `enum`s
   - removal of unused, commented, or invalid code
   - updated `mappings` of `slot`s, `class`es, or `slot`s to ontologies
-  - added an additional `enum` to accommodate new or future metadata
+  - addition of a new `enum` in the absence of making that `enum` the `range` for any existing `slot`
      
 ## Description
 
@@ -62,9 +62,9 @@ Delays in review & merging should be addressed in meetings or with NMDC leadersh
 
 > This is a question about what the schema allows. It is not a question about what happens to exists in the NMDC database right now.
 > 
-> Example: If, in this PR branch, you renamed a `slot` named `foo` to `foo_bar`, the answer to this question would be "yes," **even if** nothing in the NMDC database _currently_ uses the `foo` `slot`.
+> Example: If, in this PR branch, you renamed a `slot` from `foo` to `foo_bar`, the answer to this question would be "yes," **even if** nothing in the NMDC database _currently_ uses the `foo` `slot`.
 >
-> More examples: `slot` or `class` name changes, changes to a `slot`'s `multivalued` state, changes to a `slot's `range` (e.g. string to integer), changes to `slot` assignments to `class`es, some kinds of `enum` value changes.
+> More examples: `slot` or `class` name changes, changes to a `slot`'s `multivalued` state, changes to a `slot`'s `range` (e.g. string to integer), changes to `slot` assignments to `class`es, changes to an `enum`'s `permissible_values`
 
 - [ ] Yes _(A migrator is required)_
 - [ ] No
