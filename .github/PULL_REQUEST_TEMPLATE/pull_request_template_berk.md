@@ -81,5 +81,5 @@ Delays in review & merging should be addressed in meetings or with NMDC leadersh
 >
 > Examples: any change here that requires a change to workflows, workflow automation, the Mongo-to-Postgres ingest process, Jupyter notebooks, the Runtime, etc.
 
-- [ ] Yes _(Add a justification below)_
+- [ ] Yes _(Explain below)_
 - [ ] No
