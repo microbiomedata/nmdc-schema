@@ -27,7 +27,7 @@ def load_yaml_file(filename):
 
 @click.command()
 @click_log.simple_verbosity_option(logger)
-@click.option("--schema-path", default='nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml', required=True, type=str,
+@click.option("--schema-path", default='nmdc_schema/nmdc_materialized_patterns.yaml', required=True, type=str,
               help="Path to the schema file to which the input YAML data file conforms")
 @click.option("--input-path", default='local/mongo_as_unvalidated_nmdc_database.yaml', required=True, type=str,
               help="Path to the input YAML data file")

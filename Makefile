@@ -84,7 +84,7 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv accepting-legacy-ids-all
+site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
@@ -118,8 +118,8 @@ gen-project: $(PYMODEL) src/schema/mixs.yaml
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site accepting-legacy-ids-all test-python examples/output
-only-test: examples-clean accepting-legacy-ids-all test-python examples/output
+test: examples-clean site test-python examples/output
+only-test: examples-clean test-python examples/output
 
 test-schema:
 	# keep these in sync between PROJECT_FOLDERS and the includes/excludes for gen-project and test-schema
@@ -230,7 +230,7 @@ site-clean: clean
 	rm -rf nmdc_schema/*.tsv
 	rm -rf nmdc_schema/*.yaml
 
-squeaky-clean: clean accepting-legacy-ids-clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
@@ -243,18 +243,25 @@ project/nmdc_schema_merged.yaml:
 #		--output project/prefixmap/nmdc.json \
 #	  	--mergeimports $@
 
-project/nmdc_materialized_patterns.yaml:
+#project/nmdc_materialized_patterns.yaml:
+#	$(RUN) gen-linkml \
+#		--format yaml \
+#		--materialize-patterns \
+#		--no-materialize-attributes \
+#		--output $@ $(SOURCE_SCHEMA_PATH)
+
+nmdc_schema/nmdc_materialized_patterns.yaml:
 	$(RUN) gen-linkml \
 		--format yaml \
 		--materialize-patterns \
 		--no-materialize-attributes \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 
-project/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.yaml
-	$(RUN) gen-json-schema \
-		--closed \
-		--include-range-class-descendants \
-		--top-class Database $< > $@
+#project/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.yaml
+#	$(RUN) gen-json-schema \
+#		--closed \
+#		--include-range-class-descendants \
+#		--top-class Database $< > $@
 
 nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
 nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
@@ -262,11 +269,17 @@ nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
 	#   so reverting to copying into the module
 	cp $< $@
 
-nmdc_schema/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.schema.json
-	cp $< $@
+#nmdc_schema/nmdc_materialized_patterns.schema.json: project/nmdc_materialized_patterns.schema.json
+#	cp $< $@
 
-nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.yaml
-	cp $< $@
+nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialized_patterns.yaml
+	$(RUN) gen-json-schema \
+		--closed \
+		--include-range-class-descendants \
+		--top-class Database $< > $@
+
+#nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.yaml
+#	cp $< $@
 
 nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
 	cp $< $@

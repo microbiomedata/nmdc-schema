@@ -9,12 +9,8 @@ FD_ROOT=local/fuseki-data/databases
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
-.PHONY: accepting-legacy-ids-all accepting-legacy-ids-clean \
-dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
+.PHONY: dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
 rdf-clean shuttle-clean
-
-accepting-legacy-ids-clean:
-	rm -rf nmdc_schema/nmdc_schema_accepting_legacy_ids*
 
 examples-clean:
 	rm -rf examples/output
@@ -90,15 +86,15 @@ assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 
 # will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
 
-project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
-	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
-	$(RUN) gen-linkml \
-		--output $@ \
-		--materialize-patterns \
-		--no-materialize-attributes \
-		--format yaml $<
+#project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
+#	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
+#	$(RUN) gen-linkml \
+#		--output $@ \
+#		--materialize-patterns \
+#		--no-materialize-attributes \
+#		--format yaml $<
 
-examples/output: project/nmdc_schema_generated.yaml
+examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
 		--schema $< \
@@ -126,33 +122,6 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
-
-accepting-legacy-ids-all: accepting-legacy-ids-clean nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml
-
-nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml: src/schema/nmdc.yaml assets/yq-for-nmdc_schema_accepting_legacy_ids.txt
-	$(RUN) gen-linkml \
-		--format yaml \
-		--mergeimports \
-		--metadata \
-		--no-materialize-attributes \
-		--no-materialize-patterns \
-		--useuris \
-		--output $@ $(word 1, $^)
-
-	grep "^'" $(word 2, $^) | while IFS= read -r line ; do echo $$line ; eval yq -i $$line $@ ; done
-
-	$(RUN) gen-linkml \
-		--format yaml \
-		--mergeimports \
-		--metadata \
-		--no-materialize-attributes \
-		--materialize-patterns \
-		--useuris \
-		--output $@.temp $@
-
-	mv $@.temp $@
-
-# ----
 
 # this setup is required if you want to retreive any content or statistics from PyMongo
 # pure-export doesn't require a PyMongo connection when run in the --skip-collection-check mode
@@ -251,12 +220,11 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patter
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
-	# nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml or nmdc_schema/nmdc_materialized_patterns.yaml
+local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	mv $@ $@.tmp
@@ -299,7 +267,7 @@ migrator:
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \
-		grep -v 'nmdc.py' | grep -v 'nmdc_schema_accepting_legacy_ids.py' | grep -v 'examples/output/'
+		grep -v 'nmdc.py' | grep -v 'examples/output/' # | grep -v 'nmdc_materialized_patterns.py' |
 
 local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 	$(RUN) slot-range-type-reporter \
