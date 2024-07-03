@@ -30,7 +30,7 @@ rdf-clean:
 		local/mongo_as_unvalidated_nmdc_database.yaml
 
 shuttle-clean:
-	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
+	#mixs-yaml-clean triggers complete regeneration
 	rm -rf local/mixs_regen/*.yaml
 	rm -rf $@.bak
 	mkdir -p local/mixs_regen
@@ -85,16 +85,6 @@ assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
-# will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
-
-#project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
-#	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
-#	$(RUN) gen-linkml \
-#		--output $@ \
-#		--materialize-patterns \
-#		--no-materialize-attributes \
-#		--format yaml $<
-
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
@@ -130,9 +120,7 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 #   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
 
 # todo mongodb collection stats vs Database slots report
-# todo convert to json
 # todo compress large files
-# todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
 

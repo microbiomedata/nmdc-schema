@@ -229,7 +229,6 @@ site-clean: clean
 squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 	rm -rf local/biosample_slots_ranges_report.tsv
 
-<<<<<<< HEAD
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
 		--format yaml \
