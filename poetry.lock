@@ -1423,13 +1423,13 @@ regex = ["regex"]
 
 [[package]]
 name = "linkml"
-version = "1.7.10"
+version = "1.8.0"
 description = "Linked Open Data Modeling Language"
 optional = false
 python-versions = "<4.0.0,>=3.8.1"
 files = [
-    {file = "linkml-1.7.10-py3-none-any.whl", hash = "sha256:bf21cce814e9d1509489f1e6e15a7e86e4f11d949490d9a7a5c3f6b5b412ec62"},
-    {file = "linkml-1.7.10.tar.gz", hash = "sha256:1c38601c3cd495e34490b8cf7277fd3674ec68dcbe9f5efcec2658093801ce91"},
+    {file = "linkml-1.8.0-py3-none-any.whl", hash = "sha256:18551502ce5ba62045fed9f74c85abf05abc954b4d637d2fb6e443b1f7d8f2a2"},
+    {file = "linkml-1.8.0.tar.gz", hash = "sha256:120fda1e3bb8763c04d53501909aa8c13daaecb98bae40509564372785a5b907"},
 ]
 
 [package.dependencies]
@@ -1442,7 +1442,7 @@ jinja2 = ">=3.1.0"
 jsonasobj2 = ">=1.0.3,<2.0.0"
 jsonschema = {version = ">=4.0.0", extras = ["format"]}
 linkml-dataops = "*"
-linkml-runtime = ">=1.7.4"
+linkml-runtime = "1.8.0"
 openpyxl = "*"
 parse = "*"
 prefixcommons = ">=0.1.7"

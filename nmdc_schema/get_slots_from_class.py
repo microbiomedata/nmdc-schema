@@ -9,12 +9,6 @@ from nmdc_schema.get_nmdc_view import ViewGetter
 class ClassSlotsGetter:
     @staticmethod
     def get_class_slots(class_name) -> List[str]:
-        # assumes user wants slots from induced class
-        # if the user adds a MIxS slot to class Biosample, will the view be created?
-        # might need a pure YAML solution
-        # or user could just add slot name to ???
-        # most importantly, this get the view from nmdc_schema,nmdc_schema_merged.yaml
-        # which won't include the user's changes!!!
         view_getter = ViewGetter()
         nmdc_view = view_getter.get_view()
         nmdc_class = nmdc_view.induced_class(class_name)
