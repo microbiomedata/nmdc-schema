@@ -1,5 +1,5 @@
 data_generation_set:
-  - id: nmdc:dgns-99-zUCd5N
+  - id: nmdc:dgms-9a9-zUCd5N # dgms errors saying it doesn't fit dgns, dgns errors saying it doesn't fit dgms....what do??
     analyte_category: metagenome
     alternative_identifiers:
       - gold:Gp0108335

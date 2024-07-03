@@ -4,23 +4,15 @@ has_input:
   - nmdc:procsm-99-123456
 has_output:
   - nmdc:procsm-99-555555
-has_reagents:
-  solutions_used:
-    - has_solution_components:
-      - compound: Hot Chocolate, yummy yummy
-      - compound: ammonium_bicarbonate
-        concentration:
-          has_numeric_value: 50
-          has_unit: mM
-      volume:
-        has_numeric_value: 75
-        has_unit: μL     
-catalyzed_by:
-  - has_solution_components:
-    - compound: trypsin
-      concentration:
-          has_numeric_value: 0.05
-          has_unit: μg/μL
+substances_used:
+  - known_as: my favorite chemical!!!!!!!! # shouldn't this error out?
+    type: nmdc:PortionOfSubstance
+    sample_state_information: liquid
+    substance_role: solvent
+substances_volume:
+  type: nmdc:QuantityValue
+  has_numeric_value: 75
+  has_unit: μL
 temperature:
   type: nmdc:QuantityValue
   has_numeric_value: 37

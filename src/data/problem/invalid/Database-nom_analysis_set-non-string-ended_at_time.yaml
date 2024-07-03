@@ -3,7 +3,7 @@ workflow_execution_set:
     execution_resource: EMSL-RZR
     git_url: xxx
     has_input:
-      - nmdc:dobj-11-abdc
+      - nmdc:dobj-11-abdc # this should be valid but errors "does not match(bsm|procsm)"
       - nmdc:dobj-11-sdec
     has_output:
       - nmdc:dobj-11-adb42

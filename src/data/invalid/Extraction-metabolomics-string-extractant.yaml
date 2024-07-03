@@ -1,0 +1,7 @@
+id: "nmdc:extrp-71-r2pk"
+type: nmdc:Extraction
+has_input:
+  - nmdc:procsm-99-abcdef
+has_output:
+  - nmdc:procsm-99-123456
+substances_used: 10 methanol in deionized water

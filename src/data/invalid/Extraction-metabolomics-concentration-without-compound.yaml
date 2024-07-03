@@ -1,0 +1,11 @@
+id: "nmdc:extrp-71-r2pk"
+type: nmdc:Extraction
+has_input:
+  - nmdc:procsm-99-abcdef
+has_output:
+  - nmdc:procsm-99-123456
+substances_used:
+  - final_concentration: #PortionOfSubstance entry is incomplete, should error
+      type: nmdc:QuantityValue
+      has_numeric_value: 0.05
+      has_unit: "μg/μL"

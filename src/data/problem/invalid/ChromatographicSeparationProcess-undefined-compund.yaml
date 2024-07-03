@@ -7,31 +7,27 @@ has_output:
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
 ordered_mobile_phases:
-  - volume:
-      type: nmdc:QuantityValue
-      has_numeric_value: 700
-      has_unit: mL
-    has_solution_components:
-      - compound: MeOH
-        type: nmdc:SolutionComponent
-    type: nmdc:Solution
-  - volume:
-      type: nmdc:QuantityValue
-      has_numeric_value: 700
-      has_unit: mL
-    has_solution_components:
-      - compound: hydrochloric_acid
-        type: nmdc:SolutionComponent
-        concentration:
+  - type: nmdc:MobilePhaseSegment
+    substances_used:
+      - known_as: Dracula # shouldn't this error out??
+        type: nmdc:PortionOfSubstance
+        final_concentration:
           type: nmdc:QuantityValue
+          has_unit: '%'
           has_numeric_value: 10
-          has_unit: mM
-    type: nmdc:Solution
-  - volume:
+    volume:
       type: nmdc:QuantityValue
-      has_numeric_value: 1000
+      has_numeric_value: 700
       has_unit: mL
-    has_solution_components:
-      - compound: water
-        type: nmdc:SolutionComponent
-    type: nmdc:Solution
+  - type: nmdc:MobilePhaseSegment
+    substances_used:
+      - known_as: nmdc:chem-99-000015
+        type: nmdc:PortionOfSubstance
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 15
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 700
+      has_unit: mL
