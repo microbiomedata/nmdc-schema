@@ -77,8 +77,6 @@ Delays in review & merging should be addressed in meetings or with NMDC leadersh
 
 ## Does this PR have any downstream implications?
 
-> **Ideally**, no schema changes will be performed that have downstream implications.
->
 > Examples: any change here that requires a change to workflows, workflow automation, the Mongo-to-Postgres ingest process, Jupyter notebooks, the Runtime, etc.
 
 - [ ] Yes _(Explain below)_
