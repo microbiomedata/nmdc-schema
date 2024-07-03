@@ -24,7 +24,7 @@ PRs should **NOT** be merged until they have been approved by all task coordinat
 - [ ] Schema change: Content
   - slot or class name
   - slot multiplicity changes (from a single value to a list or vice versa)
-  - slot movement from one class to another
+  - any changes to the ways slots are assigned to any classes
   - creating a new slot/Class
   - Enum value changes
 - [ ] Schema change: Cleanup
