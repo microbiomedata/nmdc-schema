@@ -2,7 +2,7 @@
 
 ## _Soft_ Schema Freeze
 
-The `nmdc-schema` and `berkeley-schema-fy24` schemas are under a light freeze, which means changes **should not** be made that have any downstream implications. To ensure this, all PRs created creating during the freeze will be closely reviewed with **every** component of the NMDC system in mind.
+The `nmdc-schema` and `berkeley-schema-fy24` schemas are under a soft freeze, which means changes **should not** be made that have any downstream implications. To ensure this, all PRs created creating during the freeze will be closely reviewed with **every** component of the NMDC system in mind.
 
 ## Reviewers
 
