@@ -6,13 +6,31 @@ import io
 import json
 import pkgutil
 from os.path import getatime
-from typing import Dict, List
+from typing import Dict, List, Optional
+from enum import Enum
 
 import click
 import yaml
 from linkml.utils.rawloader import load_raw_schema
 from linkml_runtime.linkml_model.meta import SchemaDefinition
 from linkml_runtime.utils.schemaview import SchemaView
+
+
+class SchemaVariantIdentifier(str, Enum):
+    r"""
+    Identifiers of schema variants.
+
+    >>> type(SchemaVariantIdentifier.nmdc_materialized_patterns) is SchemaVariantIdentifier
+    True
+    >>> "nmdc_materialized_patterns" == SchemaVariantIdentifier.nmdc_materialized_patterns
+    True
+    >>> type(SchemaVariantIdentifier.nmdc_materialized_patterns.value) is str
+    True
+    >>> "nmdc_materialized_patterns" == SchemaVariantIdentifier.nmdc_materialized_patterns.value
+    True
+    """
+
+    nmdc_materialized_patterns = "nmdc_materialized_patterns"
 
 
 def get_nmdc_yaml_bytesIO() -> io.BytesIO:
@@ -59,7 +77,7 @@ def get_materialized_nmdc_yaml_string():
     return materialized_nmdc_yaml_string
 
 
-def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
+def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = None) -> io.BytesIO:
     """Returns the nmdc.schema.json file as bytes steam.
     This function is not intended to be used directly, but it used by other functions
 
@@ -67,48 +85,85 @@ def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
     -------
     BytesIO
         A bytes stream of nmdc.schema.json file.
+
+    >>> stream_a = get_nmdc_jsonschema_bytesIO()
+    >>> type(stream_a) is io.BytesIO
+    True
+    >>> stream_b = get_nmdc_jsonschema_bytesIO(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(stream_b) is io.BytesIO
+    True
     """
-    # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc.schema.json"))
+
+    # Determine which file we will use.
+    file_name = "nmdc.schema.json"
+    if variant == SchemaVariantIdentifier.nmdc_materialized_patterns:
+        file_name = "nmdc_materialized_patterns.schema.json"
+
+    return io.BytesIO(pkgutil.get_data(__name__, file_name))
 
 
-def get_nmdc_jsonschema_bytes() -> bytes:
+def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None) -> bytes:
     """Reruns the nmdc.schema.json file as bytes.
 
     Returns
     -------
     bytes
         The bytes of the nmdc.schema.json file.
+
+    >>> bytes_a = get_nmdc_jsonschema_bytes()
+    >>> type(bytes_a) is bytes and b"version" in bytes_a
+    True
+    >>> bytes_b = get_nmdc_jsonschema_bytes(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(bytes_b) is bytes and b"version" in bytes_b
+    True
+    >>> len(bytes_b) > len(bytes_a)  # assumes that including structured patterns makes the file larger
+    True
     """
-    nmdc_json = get_nmdc_jsonschema_bytesIO()
+    nmdc_json = get_nmdc_jsonschema_bytesIO(variant=variant)
     return nmdc_json.getvalue()
 
 
-def get_nmdc_jsonschema_string() -> str:
+def get_nmdc_jsonschema_string(variant: Optional[SchemaVariantIdentifier] = None) -> str:
     """Reruns the nmdc.schema.json file as a string.
 
     Returns
     -------
     str
         A string containing the contents of nmdc.schema.json file.
+
+    >>> str_a = get_nmdc_jsonschema_string()
+    >>> type(str_a) is str and "version" in str_a
+    True
+    >>> str_b = get_nmdc_jsonschema_string(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(str_b) is str and "version" in str_b
+    True
+    >>> len(str_b) > len(str_a)  # assumes that including structured patterns makes the file larger
+    True
     """
-    nmdc_json = get_nmdc_jsonschema_bytes()
+    nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
     return nmdc_json.decode("utf-8")
 
 
-def get_nmdc_jsonschema_dict() -> Dict:
+def get_nmdc_jsonschema_dict(variant: Optional[SchemaVariantIdentifier] = None) -> Dict:
     """Parses the nmdc.schema.json file into a dict.
 
     Returns
     -------
     dict
         The dict of the keys and value in the nmdc.schema.json file.
+
+    >>> dict_a = get_nmdc_jsonschema_dict()
+    >>> type(dict_a) is dict and "version" in dict_a.keys()
+    True
+    >>> dict_b = get_nmdc_jsonschema_dict(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(dict_b) is dict and "version" in dict_b.keys()
+    True
     """
-    nmdc_json = get_nmdc_jsonschema_bytes()
+    nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
     return json.loads(nmdc_json)
 
 
-def get_nmdc_jsonschema() -> str:
+def get_nmdc_jsonschema(variant: Optional[SchemaVariantIdentifier] = None) -> str:
     """
     Returns the NMDC jsonschema (nmdc.schema.json) as json.
 
@@ -117,7 +172,7 @@ def get_nmdc_jsonschema() -> str:
     str
         JSON string representation of the NMDC jsonschema (nmdc.schema.json).
     """
-    nmdc_schema = get_nmdc_jsonschema_dict()
+    nmdc_schema = get_nmdc_jsonschema_dict(variant=variant)
     return json.dumps(nmdc_schema, indent=2)
 
 
