@@ -605,12 +605,12 @@ attributes:
       For example, CCO, OCC and C(O)C all specify the structure of ethanol.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: smiles
     owner: ChemicalEntity
     domain_of:
     - ChemicalEntity
     range: string
+    multivalued: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -659,7 +659,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: ChemicalEntity
     domain_of:
@@ -669,6 +668,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 
 </code></pre>

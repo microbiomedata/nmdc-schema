@@ -1143,12 +1143,12 @@ attributes:
     mixins:
     - emsl_identifiers
     domain: Study
-    multivalued: true
     alias: emsl_project_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
+    multivalued: true
     pattern: ^emsl\.project:[0-9]{5}$
   neon_study_identifiers:
     name: neon_study_identifiers
@@ -1158,12 +1158,12 @@ attributes:
     mixins:
     - neon_identifiers
     domain: Study
-    multivalued: true
     alias: neon_study_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   jgi_portal_study_identifiers:
     name: jgi_portal_study_identifiers
@@ -1187,12 +1187,12 @@ attributes:
     mixins:
     - jgi_portal_identifiers
     domain: Study
-    multivalued: true
     alias: jgi_portal_study_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
+    multivalued: true
     pattern: ^jgi.proposal:\d+$
   id:
     name: id
@@ -1220,7 +1220,6 @@ attributes:
       Matches that which has been submitted to NMDC
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: Study
     domain_of:
@@ -1230,6 +1229,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   gnps_task_identifiers:
     name: gnps_task_identifiers
@@ -1250,12 +1250,12 @@ attributes:
     mixins:
     - gnps_identifiers
     domain: Study
-    multivalued: true
     alias: gnps_task_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
+    multivalued: true
     pattern: ^gnps\.task:[a-f0-9]+$
   alternative_descriptions:
     name: alternative_descriptions
@@ -1263,12 +1263,12 @@ attributes:
       between description and alternative descriptions is application-specific.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_descriptions
     owner: Study
     domain_of:
     - Study
     range: string
+    multivalued: true
   alternative_names:
     name: alternative_names
     annotations:
@@ -1280,12 +1280,12 @@ attributes:
       between name and alternative names is application-specific.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_names
     owner: Study
     domain_of:
     - Study
     range: string
+    multivalued: true
   alternative_titles:
     name: alternative_titles
     description: A list of alternative titles for the entity. The distinction between
@@ -1294,12 +1294,12 @@ attributes:
     exact_mappings:
     - dcterms:alternative
     rank: 1000
-    multivalued: true
     alias: alternative_titles
     owner: Study
     domain_of:
     - Study
     range: string
+    multivalued: true
   description:
     name: description
     annotations:
@@ -1338,12 +1338,12 @@ attributes:
     - Associated digital object identifiers
     rank: 1000
     domain: Study
-    multivalued: true
     alias: associated_dois
     owner: Study
     domain_of:
     - Study
     range: Doi
+    multivalued: true
     inlined: true
     inlined_as_list: true
   ecosystem:
@@ -1449,12 +1449,12 @@ attributes:
     close_mappings:
     - NCIT:C39409
     rank: 1000
-    multivalued: true
     alias: funding_sources
     owner: Study
     domain_of:
     - Study
     range: string
+    multivalued: true
   gold_study_identifiers:
     name: gold_study_identifiers
     description: identifiers for corresponding project(s) in GOLD
@@ -1471,12 +1471,12 @@ attributes:
     mixins:
     - gold_identifiers
     domain: Study
-    multivalued: true
     alias: gold_study_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
+    multivalued: true
     pattern: ^gold:Gs[0-9]+$
   has_credit_associations:
     name: has_credit_associations
@@ -1491,12 +1491,12 @@ attributes:
     rank: 1000
     domain: Study
     slot_uri: prov:qualifiedAssociation
-    multivalued: true
     alias: has_credit_associations
     owner: Study
     domain_of:
     - Study
     range: CreditAssociation
+    multivalued: true
     inlined: true
     inlined_as_list: true
   study_category:
@@ -1523,13 +1523,13 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: study_identifiers
-    multivalued: true
     alias: insdc_bioproject_identifiers
     owner: Study
     domain_of:
     - Study
     - OmicsProcessing
     range: external_identifier
+    multivalued: true
     pattern: ^bioproject:PRJ[DEN][A-Z][0-9]+$
   mgnify_project_identifiers:
     name: mgnify_project_identifiers
@@ -1542,12 +1542,12 @@ attributes:
     mixins:
     - mgnify_identifiers
     domain: Study
-    multivalued: true
     alias: mgnify_project_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
+    multivalued: true
     pattern: ^mgnify.proj:[A-Z]+[0-9]+$
   notes:
     name: notes
@@ -1585,7 +1585,6 @@ attributes:
     rank: 1000
     domain: NamedThing
     slot_uri: dcterms:isPartOf
-    multivalued: true
     alias: part_of
     owner: Study
     domain_of:
@@ -1595,6 +1594,7 @@ attributes:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: Study
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1628,12 +1628,12 @@ attributes:
     name: relevant_protocols
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: relevant_protocols
     owner: Study
     domain_of:
     - Study
     range: string
+    multivalued: true
   specific_ecosystem:
     name: specific_ecosystem
     description: Specific ecosystems represent specific features of the environment
@@ -1659,12 +1659,12 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: Study
-    multivalued: true
     alias: study_image
     owner: Study
     domain_of:
     - Study
     range: ImageValue
+    multivalued: true
     inlined: true
   title:
     name: title
@@ -1724,13 +1724,13 @@ attributes:
     description: A list of websites that are associated with the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: websites
     owner: Study
     domain_of:
     - Study
     - PersonValue
     range: string
+    multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
   homepage_website:
     name: homepage_website
@@ -1742,12 +1742,12 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: websites
-    multivalued: true
     alias: homepage_website
     owner: Study
     domain_of:
     - Study
     range: string
+    multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
     maximum_cardinality: 1
   name:

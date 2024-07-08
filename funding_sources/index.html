@@ -473,6 +473,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mappings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -555,6 +564,29 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>nmdc:funding_sources</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nmdc:funding_sources</td>
+</tr>
+<tr>
+<td>close</td>
+<td>NCIT:C39409</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -572,11 +604,11 @@ from_schema: https://w3id.org/nmdc/nmdc
 close_mappings:
 - NCIT:C39409
 rank: 1000
-multivalued: true
 alias: funding_sources
 domain_of:
 - Study
 range: string
+multivalued: true
 
 </code></pre>
 

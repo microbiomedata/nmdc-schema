@@ -455,6 +455,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mappings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -517,6 +526,25 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>nmdc:smiles</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nmdc:smiles</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -526,11 +554,11 @@ description: A string encoding of a molecular graph, no chiral or isotopic infor
   For example, CCO, OCC and C(O)C all specify the structure of ethanol.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-multivalued: true
 alias: smiles
 domain_of:
 - ChemicalEntity
 range: string
+multivalued: true
 
 </code></pre>
 

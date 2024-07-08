@@ -492,13 +492,13 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: Pathway
-    multivalued: true
     alias: has_part
     owner: Pathway
     domain_of:
     - Pathway
     range: Reaction
     required: true
+    multivalued: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -547,7 +547,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: Pathway
     domain_of:
@@ -557,6 +556,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 
 </code></pre>

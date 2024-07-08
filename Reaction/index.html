@@ -639,24 +639,24 @@ attributes:
     rank: 1000
     is_a: has_participants
     domain: Reaction
-    multivalued: true
     alias: left_participants
     owner: Reaction
     domain_of:
     - Reaction
     range: ReactionParticipant
+    multivalued: true
   right_participants:
     name: right_participants
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: has_participants
     domain: Reaction
-    multivalued: true
     alias: right_participants
     owner: Reaction
     domain_of:
     - Reaction
     range: ReactionParticipant
+    multivalued: true
   smarts_string:
     name: smarts_string
     from_schema: https://w3id.org/nmdc/nmdc
@@ -714,7 +714,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: Reaction
     domain_of:
@@ -724,6 +723,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 
 </code></pre>

@@ -776,7 +776,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: NamedThing
-    multivalued: true
     alias: has_input
     owner: Extraction
     domain_of:
@@ -786,6 +785,7 @@ attributes:
     - WorkflowExecutionActivity
     range: NamedThing
     required: true
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -798,7 +798,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: NamedThing
-    multivalued: true
     alias: has_output
     owner: Extraction
     domain_of:
@@ -807,6 +806,7 @@ attributes:
     - WorkflowExecutionActivity
     range: NamedThing
     required: true
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -890,13 +890,13 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: has_failure_categorization
     owner: Extraction
     domain_of:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: FailureCategorization
+    multivalued: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -948,7 +948,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: Extraction
     domain_of:
@@ -958,6 +957,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 class_uri: nmdc:Extraction
 

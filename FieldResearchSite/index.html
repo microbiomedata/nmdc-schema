@@ -624,13 +624,13 @@ attributes:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000312
-    multivalued: false
     alias: cur_vegetation
     owner: FieldResearchSite
     domain_of:
     - FieldResearchSite
     - Biosample
     range: TextValue
+    multivalued: false
   elev:
     name: elev
     annotations:
@@ -650,13 +650,13 @@ attributes:
     rank: 1000
     is_a: environment field
     slot_uri: MIXS:0000093
-    multivalued: false
     alias: elev
     owner: FieldResearchSite
     domain_of:
     - FieldResearchSite
     - Biosample
     range: float
+    multivalued: false
   geo_loc_name:
     name: geo_loc_name
     annotations:
@@ -678,13 +678,13 @@ attributes:
     is_a: environment field
     string_serialization: '{term}: {term}, {text}'
     slot_uri: MIXS:0000010
-    multivalued: false
     alias: geo_loc_name
     owner: FieldResearchSite
     domain_of:
     - FieldResearchSite
     - Biosample
     range: TextValue
+    multivalued: false
   habitat:
     name: habitat
     from_schema: https://w3id.org/nmdc/nmdc
@@ -713,13 +713,13 @@ attributes:
     is_a: environment field
     string_serialization: '{float} {float}'
     slot_uri: MIXS:0000009
-    multivalued: false
     alias: lat_lon
     owner: FieldResearchSite
     domain_of:
     - FieldResearchSite
     - Biosample
     range: GeolocationValue
+    multivalued: false
   local_class:
     name: local_class
     annotations:
@@ -740,13 +740,13 @@ attributes:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000330
-    multivalued: false
     alias: local_class
     owner: FieldResearchSite
     domain_of:
     - FieldResearchSite
     - Biosample
     range: TextValue
+    multivalued: false
   part_of:
     name: part_of
     description: Links a resource to another resource that either logically or physically
@@ -755,7 +755,6 @@ attributes:
     rank: 1000
     domain: NamedThing
     slot_uri: dcterms:isPartOf
-    multivalued: true
     alias: part_of
     owner: FieldResearchSite
     domain_of:
@@ -765,6 +764,7 @@ attributes:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: FieldResearchSite
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -790,13 +790,13 @@ attributes:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000332
-    multivalued: false
     alias: soil_type
     owner: FieldResearchSite
     domain_of:
     - FieldResearchSite
     - Biosample
     range: TextValue
+    multivalued: false
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -848,7 +848,6 @@ attributes:
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: FieldResearchSite
     domain_of:
@@ -858,6 +857,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 
 </code></pre>

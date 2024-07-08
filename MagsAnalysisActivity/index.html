@@ -699,12 +699,12 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: MagsAnalysisActivity
-    multivalued: true
     alias: mags_list
     owner: MagsAnalysisActivity
     domain_of:
     - MagsAnalysisActivity
     range: MagBin
+    multivalued: true
   execution_resource:
     name: execution_resource
     from_schema: https://w3id.org/nmdc/nmdc
@@ -732,7 +732,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: NamedThing
-    multivalued: true
     alias: has_input
     owner: MagsAnalysisActivity
     domain_of:
@@ -742,6 +741,7 @@ attributes:
     - WorkflowExecutionActivity
     range: NamedThing
     required: true
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -751,7 +751,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: NamedThing
-    multivalued: true
     alias: has_output
     owner: MagsAnalysisActivity
     domain_of:
@@ -759,6 +758,7 @@ attributes:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: NamedThing
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -772,7 +772,6 @@ attributes:
     rank: 1000
     domain: NamedThing
     slot_uri: dcterms:isPartOf
-    multivalued: true
     alias: part_of
     owner: MagsAnalysisActivity
     domain_of:
@@ -782,6 +781,7 @@ attributes:
     - OmicsProcessing
     - WorkflowExecutionActivity
     range: NamedThing
+    multivalued: true
   version:
     name: version
     from_schema: https://w3id.org/nmdc/nmdc
@@ -823,19 +823,18 @@ attributes:
     name: has_failure_categorization
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: has_failure_categorization
     owner: MagsAnalysisActivity
     domain_of:
     - PlannedProcess
     - WorkflowExecutionActivity
     range: FailureCategorization
+    multivalued: true
   alternative_identifiers:
     name: alternative_identifiers
     description: A list of alternative identifiers for the entity.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    multivalued: true
     alias: alternative_identifiers
     owner: MagsAnalysisActivity
     domain_of:
@@ -845,6 +844,7 @@ attributes:
     - MetaboliteQuantification
     - WorkflowExecutionActivity
     range: uriorcurie
+    multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   id:
     name: id
