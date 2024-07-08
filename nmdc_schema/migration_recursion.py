@@ -97,6 +97,9 @@ def main(schema_path, input_path, output_path, migrator_name):
 
     logger.info(curie_slots)
 
+    # Instantiate an adapter that the migrator can use to manipulate a "database" represented as a Python dictionary.
+    # Also, specify some callback functions, so we can react when certain events occur.
+
     dictionary_adapter = DictionaryAdapter(
         database=total_dict,
         on_collection_created=lambda name: logger.info(f'Created collection "{name}"'),
