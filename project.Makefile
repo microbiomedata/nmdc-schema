@@ -85,16 +85,6 @@ assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
-# will we ever want to use deepdiff to compare the MIxS schema between two verisons or forms?
-
-#project/nmdc_schema_generated.yaml: $(SOURCE_SCHEMA_PATH)
-#	# the need for this may be eliminated by adding mandatory pattern materialization to gen-json-schema
-#	$(RUN) gen-linkml \
-#		--output $@ \
-#		--materialize-patterns \
-#		--no-materialize-attributes \
-#		--format yaml $<
-
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
@@ -112,7 +102,7 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--log-file $@.log.txt \
 		--report-style exhaustive
 
-examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml # replaces misspelled Biosample-exhasutive_report target
+examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
 	$(RUN) exhaustion-check \
 		--class-name Biosample \
 		--instance-yaml-file $< \
@@ -235,7 +225,7 @@ local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_materialized_patterns.yaml lo
 	date
 
 
-# todo: still getting anyurl typed string statement objects in RDF. I added a workarround in anyuri-strings-to-iris
+# todo: still getting anyurl typed string statement objects in RDF. I added a workaround in anyuri-strings-to-iris
 local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.ttl
 	date
 	time $(RUN) anyuri-strings-to-iris \
