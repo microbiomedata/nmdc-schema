@@ -1267,6 +1267,7 @@ classes:
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
     class_uri: 'nmdc:EnvironmentalMaterialTerm'
+    deprecated: "not used or planned to be used. https://github.com/microbiomedata/nmdc-schema/issues/1881"
 
   MagBin:
     class_uri: nmdc:MagBin
