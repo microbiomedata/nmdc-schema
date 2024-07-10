@@ -72,7 +72,7 @@ classes:
     todos:
       - decide if this should be used for product naming (Duncan, 2021-04-02)
       - Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup subclasses.
-    deprecated: "not used or planned to be used. 2024-07-09 https://github.com/microbiomedata/nmdc-schema/issues/1881"
+    deprecated: "not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881"
 
   Pathway:
     class_uri: nmdc:Pathway
@@ -91,7 +91,7 @@ classes:
     todos:
       - If we reverted to including Reaction in the schema, then a Reaction would be a reasonable part_of a Pathway
       - is Pathway instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
-    deprecated: "not used or planned to be used. 2024-07-09 https://github.com/microbiomedata/nmdc-schema/issues/1881"
+    deprecated: "not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881"
 
   OrthologyGroup:
     class_uri: nmdc:OrthologyGroup
@@ -112,7 +112,7 @@ classes:
       - KEGG.ORTHOLOGY prefix is used for KO numbers
     todos:
       - is OrthologyGroup instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
-    deprecated: "not used or planned to be used. 2024-07-09 https://github.com/microbiomedata/nmdc-schema/issues/1881"
+    deprecated: "not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881"
 
   FunctionalAnnotation:
     class_uri: nmdc:FunctionalAnnotation
