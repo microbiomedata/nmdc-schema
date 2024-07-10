@@ -19,7 +19,7 @@ omics_processing_set:
    has_output:
     - nmdc:dobj-11-dtTMNb
    omics_type:
-   has_raw_value: Metagenome
+     has_raw_value: Metagenome
    part_of:
     - nmdc:sty-00-123456
    processing_institution: JGI
