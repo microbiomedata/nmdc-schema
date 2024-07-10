@@ -218,7 +218,7 @@ classes:
   MetatranscriptomeActivity:
     is_a: WorkflowExecutionActivity
     description: >-
-      A metatranscriptome activity that e.g. pools assembly and annotation activity.
+      A workflow process that provides expression values and read counts for gene features predicted on the contigs.
     in_subset:
       - workflow subset
     slots:
