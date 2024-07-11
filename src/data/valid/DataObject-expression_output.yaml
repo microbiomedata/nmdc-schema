@@ -1,4 +1,3 @@
-data_object_set:
   - id: nmdc:dobj-99-izwYW6
     name: nmdc:wfmt-11-2471da.rnaseq_gea.txt
     description: Metatranscriptome expression results for nmdc:omprc-11-a894kd
