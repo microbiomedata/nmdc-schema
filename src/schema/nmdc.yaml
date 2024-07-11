@@ -2221,15 +2221,15 @@ enums:
         annotations:
           file_name_pattern: "*.rnaseq_gea.txt"
 
-     Metatranscriptome Expression Intergenic:
-       description: Metatranscriptome expression values and read counts for intergenic regions.
-       annotations:
+      Metatranscriptome Expression Intergenic:
+        description: Metatranscriptome expression values and read counts for intergenic regions.
+        annotations:
           file_name_pattern: "*.rnaseq_gea.intergenic.txt" 
 
-     Metatranscriptome Expression Info File:
-       description: File containing version information on the expression workflow   
-       annotations:
-         file_name_pattern: "*_readcount.info"
+      Metatranscriptome Expression Info File:
+        description: File containing version information on the expression workflow   
+        annotations:
+          file_name_pattern: "*_readcount.info"
 
 
   CreditEnum:
