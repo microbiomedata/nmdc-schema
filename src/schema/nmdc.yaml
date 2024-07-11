@@ -2231,6 +2231,10 @@ enums:
         annotations:
           file_name_pattern: "*_readcount.info"
 
+      rRNA Filtered Sequencing Reads:
+        description: File containing ribosomal reads from the read qc filtering step.   
+        annotations:
+          file_name_pattern: "*.rRNA.fastq.gz"
 
   CreditEnum:
     permissible_values:
