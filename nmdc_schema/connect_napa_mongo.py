@@ -18,8 +18,6 @@ envfile_path = "../../.env.client"
 load_dotenv(envfile_path)
 
 
-# nersc ssh tunnel required to connect to mongo
-# ssh -L 37020:mongo-loadbalancer.nmdc-napa.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
 
 napa_mongo_pw = os.environ["MONGO_NAPA_PW"]
 # print("napa_mongo_pw:", os.environ['MONGO_NAPA_PW'])
