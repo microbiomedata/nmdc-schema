@@ -2231,10 +2231,6 @@ enums:
        annotations:
          file_name_pattern: "*_readcount.info"
 
-     Metatranscriptome Expression README:
-       description: File containing workflow description and label legend for the expression workflow
-       annotations:
-         file_name_pattern: "[IMG SUBMISSION ID]/README"
 
   CreditEnum:
     permissible_values:
