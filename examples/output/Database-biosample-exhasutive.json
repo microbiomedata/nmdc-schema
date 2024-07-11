@@ -8,8 +8,8 @@
         "generic:abc123"
       ],
       "part_of": [
-        "nmdc:unconstrained_study_identifier_string1_needs_pattern_materialization_what_about_referential_integrity",
-        "nmdc:unconstrained_study_identifier_string2"
+        "nmdc:sty-00-987654",
+        "nmdc:sty-00-qwerty"
       ],
       "env_broad_scale": {
         "has_raw_value": "ENVO:00002030",
@@ -1491,7 +1491,7 @@
       "project_id": "no example from MIxS",
       "replicate_number": "1",
       "sample_shipped": "15 g",
-      "sample_type": "water_extract_soil",
+      "sample_type": "soil - water extract",
       "technical_reps": "2",
       "analysis_type": [
         "metabolomics",

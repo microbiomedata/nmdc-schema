@@ -1,5 +1,6 @@
 {
   "id": "nmdc:sty-99-WoeqAi",
+  "study_category": "research_study",
   "has_credit_associations": [
     {
       "applies_to_person": {
@@ -18,6 +19,5 @@
       ]
     }
   ],
-  "study_category": "research_study",
   "@type": "Study"
 }

@@ -3,6 +3,7 @@ name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
 alternative_identifiers:
 - generic:abc1
+study_category: research_study
 alternative_descriptions:
 - any string 1
 - any string 2
@@ -12,17 +13,24 @@ alternative_names:
 alternative_titles:
 - any string 1
 - any string 2
-publication_dois:
-- doi:10.1126/science.1058040
+associated_dois:
+- doi_value: doi:10.1126/science.1058040
+  doi_category: publication_doi
+- doi_value: doi:10.1126/science.1456956
+  doi_category: dataset_doi
+  doi_provider: kbase
+- doi_value: doi:10.1126/science.1234545
+  doi_category: award_doi
+  doi_provider: jgi
+- doi_value: doi:10.48321/D1Z60Q
+  doi_category: data_management_plan_doi
+  doi_provider: gsc
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
   environmental triads
 ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
-ess_dive_datasets:
-- any string 1
-- any string 2
 funding_sources:
 - any string 1
 - any string 2
@@ -32,7 +40,6 @@ gold_study_identifiers:
 has_credit_associations:
 - applies_to_person:
     has_raw_value: Craig Venter
-    was_generated_by: nmdc:any_string_1
     email: jcventer@jcvi.org
     name: J. Craig Venter
     orcid: ORCID:0000-0002-7086-765X
@@ -43,14 +50,13 @@ has_credit_associations:
   applied_roles:
   - Supervision
   - Conceptualization
-  applied_role: Funding acquisition
+  - Funding acquisition
   type: any string
 - applies_to_person:
     name: Tanja Davidsen
   applied_roles:
   - Investigation
   - Supervision
-study_category: research_study
 mgnify_project_identifiers:
 - mgnify.proj:ABC123
 objective: This record, an instance of class Study from the nmdc-schema was had authored,
@@ -60,7 +66,6 @@ part_of:
 - nmdc:sty-11-34xj1157
 principal_investigator:
   has_raw_value: Craig Venter
-  was_generated_by: nmdc:any_string_1
   email: jcventer@jcvi.org
   name: J. Craig Venter
   orcid: ORCID:0000-0002-7086-765X
@@ -68,9 +73,6 @@ principal_investigator:
   websites:
   - https://www.jcvi.org/
   - https://www.jcvi.org/about/j-craig-venter
-publications:
-- any string 1
-- any string 2
 related_identifiers: any string R1
 relevant_protocols:
 - any string 1
@@ -78,15 +80,13 @@ relevant_protocols:
 specific_ecosystem: unconstrained text
 study_image:
 - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
-  was_generated_by: nmdc:any_string_1
   url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
   description: Photo of Craig Venter Institute, Rockville, Maryland
-  display_order: '1'
+  display_order: 1
 - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
-  was_generated_by: nmdc:any_string_1
   url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
   description: Photo of Craig Venter Institute, La Jolla, California
-  display_order: '2'
+  display_order: 2
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -94,3 +94,5 @@ type: any string
 websites:
 - https://w3id.org/nmdc
 - https://w3id.org/linkml
+homepage_website:
+- https://www.neonscience.org/

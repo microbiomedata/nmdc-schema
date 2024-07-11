@@ -9,11 +9,7 @@
       },
       "external_database_identifiers": [
         "neon.identifier:19S_31_2826"
-      ],
-      "nucleic_acid_concentration": {
-        "has_numeric_value": 47.0,
-        "instrument_name": "Promega Quantus Fluorometer"
-      }
+      ]
     }
   ],
   "@type": "Database"

@@ -1,18 +1,30 @@
 <p align="center">
-    <img src="images/nmdc_logo_long.jpeg" width="100" height="40"/>
+    <img src="https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/images/nmdc_logo_long.jpeg" width="119" height="40"/>
 </p>
 
 # National Microbiome Data Collaborative Schema
 
 [![PyPI - License](https://img.shields.io/pypi/l/nmdc-schema)](https://github.com/microbiomedata/nmdc-schema/blob/main/LICENSE)
-[![PyPI version](https://badge.fury.io/py/nmdc-schema.svg)](https://badge.fury.io/py/nmdc-schema)
+[![PyPI version](https://badge.fury.io/py/nmdc-schema.svg?any-param=to-cause-a-cache-miss)](https://badge.fury.io/py/nmdc-schema)
 
-The NMDC is a multi-organizational effort to integrate microbiome data across diverse areas in medicine, agriculture,
-bioenergy, and the environment. This integrated platform facilitates comprehensive discovery of and access to
-multidisciplinary microbiome data in order to unlock new possibilities with microbiome data science.
+The mission of the NMDC is to build a FAIR microbiome data sharing network, through infrastructure, data standards,
+and community building, that addresses pressing challenges in environmental sciences. The NMDC platform is built on
+top of a unified data model (schema) that weaves together existing standards and ontologies to provide a systematic
+representation of all aspects of the microbiome data life cycle.
 
 This repository mainly defines a [LinkML](https://github.com/linkml/linkml) schema for managing metadata from
 the [National Microbiome Data Collaborative (NMDC)](https://microbiomedata.org/).
+
+## Documentation
+
+The documentation for the NMDC schema can be found at [https://microbiomedata.github.io/nmdc-schema/](https://microbiomedata.github.io/nmdc-schema/).
+This documentation is aimed at consumers of NMDC data and metadata, it describes the different data elements used to describe studies, samples,
+sample processing, data generation, workflows, and downstream data objects.
+
+The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/)
+primer provides some the context for this project.
+
+The remainder of this page is primary for the internal maintainers and contributors to the NMDC schema
 
 ## Repository Contents Overview
 
@@ -29,20 +41,27 @@ Some products that are maintained, and tasks orchestrated within this repository
 - Automatic publishing of refreshed documentation upon change to the schema,
   accessible [here](https://microbiomedata.github.io/nmdc-schema/)
 
-## Background
-
-The NMDC [Introduction to metadata and ontologies](https://microbiomedata.org/introduction-to-metadata-and-ontologies/)
-primer provides some the context for this project.
-
 ## Maintaining the Schema
 
-**New system requirement: [Mike Farah's GO-based yq](https://github.com/mikefarah/yq)**
+See [DEVELOPMENT.md](DEVELOPMENT.md) for instructions on setting up a development environment.
 
-Some optional components use the Java-based [ROBOT](http://robot.obolibrary.org/), which might be replaced with Jena arq
-in the future. Jena riot is also a part of the MongoDB dumping, repairing and validation workflow, if the user wishes
-to generate and validate RDF/TTL.
+See [MAINTAINERS.md](MAINTAINERS.md) for instructions on using that development environment to maintain the schema.
 
-See [MAINTAINERS.md](MAINTAINERS.md) for instructions on maintaining and updating the schema.
+## Makefiles
+
+Makefiles are text files people can use to tell [`make`](https://www.gnu.org/software/make/manual/make.html#Introduction) (a computer program) how it can _make_ things (or—in general—_do_ things). In the world of Makefiles, those _things_ are called _targets_.
+
+This repo contains 2 Makefiles:
+- `Makefile`, based on the generic Makefile from the [LinkML cookiecutter](https://github.com/linkml/linkml-project-cookiecutter)
+- `project.Makefile`, which contains _targets_ that are specific to this project
+
+Here's an example of using `make` in this repo:
+
+```shell
+# Deletes all files in `examples/output`.
+make examples-clean
+```
+> The `examples-clean` _target_ is defined in the `project.Makefile`. In this repo, the `Makefile` `include`s the `project.Makefile`. As a result, `make` has access to the _targets_ defined in both files.
 
 ## Data downloads
 

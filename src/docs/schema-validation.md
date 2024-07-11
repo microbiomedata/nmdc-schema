@@ -1,100 +1,56 @@
-# Validating json objects against the NMDC schema
+# Validating data against the nmdc-schema
 
-This document assumes knowledge of
-[JSON](https://www.json.org/json-en.html). It also assumes rudimentary
-familiarity with [JSON-Schema](https://json-schema.org/) but don't
-worry if you are not an expert on this.
+The nmdc-schema's preferred on-disk data serializations are YAML, closely followed by JSON. Preferred databases
+are MongDB and any RDF triplestore.
 
-We can conceive of validation of a piece of JSON at two levels
+The nmdc-schema Makefiles use the `linkml-validate` and `linkml-run-examples` CLIs for build-time validation of data
+file,
+both of which build upon JSON Schema validation. `linkml-validate` can even validate against TSV,
+as long as the schema classes that are instantiated can reasonably be expressed in a table.
+Programmers can learn more about the internals of these tools at https://linkml.io/linkml/data/validating-data.html
 
-1. The JSON should be syntactically correct JSON
-2. The JSON should conform to the NMDC schema
+We can conceive of validating a data file at two levels
 
-## Syntactically correct JSON
+1. The file should be syntactically correct
+2. The file should conform to the NMDC schema
 
-It is crucial that the JSON is syntactically valid, otherwise it can't even be schema-validated.
+## Syntactically correct YAML or JSON
 
-There are a variety of ways to check for this. We recommend using jsonschema to validate this, see below.
+All tools, libraries, or scripts generating NMDC data SHOULD instantiate Python data classes from the nmdc-schema PyPI
+package.
+It is strongly discouraged to generate Python dicts or JSON by any method other than object instantiation, even using
+high-quality, standard JSON libraries. That practice may generate valid data files when first tested but is likely to
+degrade
+over time. That degradation can be difficult to debug.
 
-NOTE: all NMDC JSON-producing tools, libraries, or scripts SHOULD use a standard json library. If you are using a robust
-standard json library, your output is practically guaranteed to be syntactically valid JSON.
+Mike Farrah's [yq](https://mikefarah.gitbook.io/yq/v/v3.x/commands/validate)
+is a system dependency for the nmdc-schema. It can be used to validate legacy YAML and JSON data.
+If malformed YAML or JSON is presented to `linkml-validate`, the error messages may not be as helpful as the messages
+from `yq` or some other syntactical validator.
 
-It is strongly recommended that you do NOT generate JSON by methods such as directly manipulating json strings or
-printing directly. This is guaranteed to be fragile/non-robust. Even if your code works now, it is certain it will fail
-later and produce incorrect JSON.
+## What to do if the data do not validate
 
-For Python, there is only one choice:
+Start by reflecting on whether your data may be ahead of what the schema can currently account for.
 
-https://docs.python.org/3/library/json.html
+1. The data are reasonable, but the schema needs to be extended or modified to account for it
+2. The schema really does provide support for your data, but you are just not adhering to it
 
-If you are not using this, you should
+For 1, you can make PR on the schema yaml. If you aren't comfortable editing LinkML YAML,
+then you can get help from one of the schema developers. We recommend filing a new ticket explaining the issue.
+Please include your error messages.
 
-## Schema validation
+For 2, we suggest taking a minimal example approach. `linkml-validate` is very good at identifying schema violations
+in small, syntactically valid data files. Debugging can be aided in pulling out single data instances
+and first verifying that they are syntactically valid YAML or JSON. If you don't want to use yq, then you could paste
+one instance into a website like https://jsonlint.com/.
+A common issue in multi-instance files is using incorrect syntax for grouping the instances into a YAML or JSON array.
+Using a small subsample of your data and an online linter as above can aide in debugging this.
 
-The JSON-Schema for NMDC is maintained in this github repo,
-under [jsonschema/nmdc.schema.json](https://github.com/microbiomedata/nmdc-schema/blob/main/project/jsonschema/nmdc.schema.json)
+## Expectations of NMDC data producers
 
-Note that the JSON-Schema is generated from a higher level YAML
-representation, using a modeling framework called linkML. See the
-README for details. For understanding the schema, you may be better
-looking at the auto-generated docs. However, for computational
-conformance, the JSON-Schema is what should be used.
+It is expected that data producers or transformers take the upfront initiative to validate their data.
 
-There are a variety of json schema validators, these will give the same results. There are web playgrounds for this. But
-for simplicity we recommend the Python [jsonschema package](https://pypi.org/project/jsonschema/)
-
-To install:
-
-```bash
-pip install jsonschema
-```
-
-Assume you have a file MYFILE that is json intended to conform
-
-```bash
-jsonschema -i /PATH/TO/MYFILE.json jsonschema/nmdc.schema.json
-```
-
-If the json is valid, there will be no output and the script will pass. If there are problems these will be reported.
-
-You can try this with some ready-made examples in this repo:
-
-```bash
-jsonschema -i examples/nmdc-01.json jsonschema/nmdc.schema.json
-```
-
-Note: nmdc.schema.json describes each model object, its required attributes and attribute types. The examples themselves
-use JSON notation to allow multiple instances of the objects in the JSON schema, to be submitted in one file.
-
-You can also use the jsonschema library to validate directly from within your python.
-
-## What to do if your JSON does not validate
-
-There are 3 possibilities:
-
-1. Your json is good, and the schema needs to be extended or modified to account
-2. you need to modify the json to conform
-3. some other odd bug somewhere
-
-For 1, you can go right ahead and make PR on the schema yaml. However,
-if you are not comfortable doing this then you can get help from one
-of the schema developers. We recommend filing a new ticket explaining the issue.
-
-For 2, this is upon you to fix this, however debugging can be aided in pulling out single instances of your model
-objects, and verifying that you are creating valid JSON (ie: paste one instance of your object
-into https://jsonlint.com/ or tools like it to verify its syntax).
-Another common issue is that you might have incorrect syntax for grouping many instances of a JSON object into an array.
-Using a small subsample of your data and an online linter as above, can aide in debugging this.
-Sometimes the validation can complain about invalid syntax if the attribute of an instance object disagrees with the
-schema's typing (ie: you have an integer where a string is expected).
-
-## NMDC Producer SOP
-
-It is expected that different providers of JSON within the NMDC take
-responsibility for validating their JSON. Aim1 can help with any
-problems.
-
-Currently not all providers of information to NMDC provide JSON - for
+Currently, not all providers of information to NMDC provide JSON - for
 example, GOLD is provided as database dumps, and an ETL process
-transforms this into JSON. In future we would like to move towards a
+transforms this into JSON. In the future, we would like to move towards a
 situation where all information is provided as JSON.

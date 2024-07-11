@@ -28,11 +28,11 @@ from rdflib import Graph, term, XSD, URIRef, Namespace
 )
 @click.option(
     "-p",
-    "--emsl-biosample-uuid-replacement",
+    "--emsl-uuid-replacement",
     required=True,
     help="A prefix, from one of the jsonld-context-jsons, that should replace the UUID prefix used in some emsl_biosample_identifiers values",
 )
-def expand_curies(input_ttl, output_ttl, jsonld_context_jsons, emsl_biosample_uuid_replacement):
+def expand_curies(input_ttl, output_ttl, jsonld_context_jsons, emsl_uuid_replacement):
     """Expand CURIE literals in an RDF graph to their full URI references."""
 
     graph = Graph()
@@ -68,7 +68,7 @@ def expand_curies(input_ttl, output_ttl, jsonld_context_jsons, emsl_biosample_uu
                 if str(p) == "https://w3id.org/nmdc/emsl_biosample_identifiers":
                     as_true_curie = (
                         URIRef(graph.namespace_manager.expand_curie(
-                            f"{emsl_biosample_uuid_replacement}:{current_suffix}")))
+                            f"{emsl_uuid_replacement}:{current_suffix}")))
             else:
                 try:
                     as_true_curie = URIRef(graph.namespace_manager.expand_curie(o_str))

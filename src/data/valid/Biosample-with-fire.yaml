@@ -1,7 +1,7 @@
 id: nmdc:bsm-99-dtTMNb
 fire: 1871-10-01 to 1871-10-31
 part_of:
-  - gold:Gs0110115
+  - nmdc:sty-00-abc123
 env_broad_scale:
   has_raw_value: ENVO:00002030
   term:

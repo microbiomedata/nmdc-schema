@@ -10,6 +10,7 @@
       "id": "nmdc:sty-11-34xj1150",
       "name": "National Ecological Observatory Network: soil metagenomes (DP1.10107.001)",
       "description": "The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.",
+      "study_category": "consortium",
       "funding_sources": [
         "NSF#1724433 National Ecological Observatory Network: Operations Activities"
       ],
@@ -17,7 +18,6 @@
         "gold:Gs0144570",
         "gold:Gs0161344"
       ],
-      "study_category": "consortium",
       "part_of": [
         "nmdc:sty-11-34xj1152"
       ],
@@ -46,10 +46,10 @@
       "id": "nmdc:sty-11-hht5sb92",
       "name": "National Ecological Observatory Network: surface water metagenomes (DP1.20281.001)",
       "description": "The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.",
+      "study_category": "consortium",
       "funding_sources": [
         "NSF#1724433 National Ecological Observatory Network: Operations Activities"
       ],
-      "study_category": "consortium",
       "part_of": [
         "nmdc:sty-11-34xj1152"
       ],
@@ -76,10 +76,10 @@
       "id": "nmdc:sty-11-pzmd0x14",
       "name": "National Ecological Observatory Network: benthic metagenomes (DP1.20279.001)",
       "description": "The National Science Foundation's National Ecological Observatory Network (NEON) is a continental-scale observation facility operated by Battelle and designed to collect long-term open access ecological data to better understand how U.S. ecosystems are changing.",
+      "study_category": "consortium",
       "funding_sources": [
         "NSF#1724433 National Ecological Observatory Network: Operations Activities"
       ],
-      "study_category": "consortium",
       "part_of": [
         "nmdc:sty-11-34xj1152"
       ],

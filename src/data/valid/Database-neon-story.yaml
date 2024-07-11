@@ -53,7 +53,7 @@ library_preparation_set:
 biosample_set:
   - id: nmdc:bsm-99-abcdef1
     part_of:
-      - gold:Gs0110115
+      - nmdc:sty-00-abc123
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -68,7 +68,7 @@ biosample_set:
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef2
     part_of:
-      - gold:Gs0110115
+      - nmdc:sty-00-abc123
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:
@@ -83,7 +83,7 @@ biosample_set:
         id: ENVO:00005792
   - id: nmdc:bsm-99-abcdef3
     part_of:
-      - gold:Gs0110115
+      - nmdc:sty-00-abc123
     env_broad_scale:
       has_raw_value: ENVO:00002030
       term:

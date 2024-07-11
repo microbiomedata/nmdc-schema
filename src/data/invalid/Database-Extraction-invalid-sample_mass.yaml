@@ -15,8 +15,7 @@ extraction_set:
     sample_mass:
       has_numeric_value: 0.25
       has_unit: gram 
-    quality_control_report:
-      status: pass
+    qc_status: pass
     extraction_method: phenol/chloroform extraction
     extraction_target: DNA
     

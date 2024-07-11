@@ -29,19 +29,19 @@ def get_nmdc_yaml_bytesIO() -> io.BytesIO:
 
 
 def get_nmdc_yaml_bytes() -> bytes:
-    """Retruns the nmdc.yaml file as bytes.
+    """Reruns the nmdc.yaml file as bytes.
 
     Returns
     -------
     bytes
-        The bytes of thenmdc.yaml file.
+        The bytes of the nmdc.yaml file.
     """
     nmdc_yaml = get_nmdc_yaml_bytesIO()
     return nmdc_yaml.getvalue()
 
 
 def get_nmdc_yaml_string() -> str:
-    """Retruns the nmdc.yaml file as a string.
+    """Reruns the nmdc.yaml file as a string.
 
     Returns
     -------
@@ -73,7 +73,7 @@ def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
 
 
 def get_nmdc_jsonschema_bytes() -> bytes:
-    """Retruns the nmdc.schema.json file as bytes.
+    """Reruns the nmdc.schema.json file as bytes.
 
     Returns
     -------
@@ -85,7 +85,7 @@ def get_nmdc_jsonschema_bytes() -> bytes:
 
 
 def get_nmdc_jsonschema_string() -> str:
-    """Retruns the nmdc.schema.json file as a string.
+    """Reruns the nmdc.schema.json file as a string.
 
     Returns
     -------
@@ -122,12 +122,12 @@ def get_nmdc_jsonschema() -> str:
 
 
 def get_nmdc_schema_definition() -> SchemaDefinition:
-    """Returns a LinkML SchemaDefintion object created from the nmdc.yaml file.
+    """Returns a LinkML SchemaDefinition object created from the nmdc.yaml file.
 
     Returns
     -------
     SchemaDefinition
-        A SchemaDefintion object created from nmdc.yaml file.
+        A SchemaDefinition object created from nmdc.yaml file.
     """
     nmdc_yaml = get_nmdc_yaml_string()
     return load_raw_schema(nmdc_yaml)
@@ -148,7 +148,7 @@ def get_nmdc_file_type_enums() -> List[Dict[str, str]]:
     List of dicts with information about each NMDC file enum.
     """
     schema = get_nmdc_schema_definition()
-    file_enums = schema.enums["file type enum"].permissible_values  # returns a dict
+    file_enums = schema.enums["FileTypeEnum"].permissible_values  # returns a dict
 
     # todo: report error
     # view = SchemaView(schema)
@@ -174,7 +174,7 @@ def get_nmdc_file_type_enums() -> List[Dict[str, str]]:
 
 
 def get_nmdc_file_type_enums_json() -> str:
-    """Returns informaton about the file type enums as json.
+    """Returns information about the file type enums as json.
     Each object contains the following key/values:
     {
         name: the name of the enum
@@ -186,7 +186,7 @@ def get_nmdc_file_type_enums_json() -> str:
     Returns
     -------
     str
-        JSON formated string of file type enum information.getatime
+        JSON formatted string of file type enum information.getatime
     """
     file_enums = get_nmdc_file_type_enums()
     return json.dumps(file_enums, indent=2)
@@ -218,8 +218,8 @@ def get_gold_sssom() -> str:
     yaml            returns the merged nmdc.yaml file as a string
     jsonschema      returns the NMDC jsonschema as json
     dict            returns the NMDC jsonschema as a dict
-    schemadef       returns the LinkML SchemaDefintion created from the merged nmdc.yaml file
-    filetypeenums   returns informaton about the NMDC file type enums as json
+    schemadef       returns the LinkML SchemaDefinition created from the merged nmdc.yaml file
+    filetypeenums   returns information about the NMDC file type enums as json
     goldsssom       returns the gold-to-mixs.sssom.tsv file contents
     """,
 )

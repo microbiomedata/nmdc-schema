@@ -5,8 +5,8 @@
     "source": "nmdc.yaml"
   },
   "@context": {
-    "emsl": "http://example.org/emsl_biosample_in_mongodb/",
-    "emsl_biosample_uuid_like": "http://example.org/emsl_biosample_uuid_like/",
+    "emsl": "http://example.org/emsl_in_mongodb/",
+    "emsl_uuid_like": "http://example.org/emsl_uuid_like/",
     "GOLD": "https://bioregistry.io/gold:"
   }
 }

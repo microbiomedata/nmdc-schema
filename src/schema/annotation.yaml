@@ -16,17 +16,16 @@ notes:
 imports:
   - core
 
-
 prefixes:
-  COG: "https://bioregistry.io/cog:" # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  COG: "https://bioregistry.io/cog:"
   EC: "https://bioregistry.io/eccode:"
-  GO: http://purl.obolibrary.org/obo/GO_ # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
-  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://bioregistry.io/kegg.orthology:K00001
-  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:" # https://bioregistry.io/kegg.reaction:R00100
-  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:" # https://bioregistry.io/kegg.pathway:rsk00410
-  MetaCyc: "https://bioregistry.io/metacyc.compound:" # https://bioregistry.io/metacyc.compound:CPD-10330
-  RHEA: "https://bioregistry.io/rhea:" # https://bioregistry.io/rhea:12345
-  SEED: "https://bioregistry.io/seed:" # https://bioregistry.io/seed:Biotin_biosynthesis
+  GO: http://purl.obolibrary.org/obo/GO_
+  KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"
+  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:"
+  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:"
+  MetaCyc: "https://bioregistry.io/metacyc.compound:"
+  RHEA: "https://bioregistry.io/rhea:"
+  SEED: "https://bioregistry.io/seed:"
 
   biolink: https://w3id.org/biolink/vocab/
   linkml: https://w3id.org/linkml/
@@ -86,6 +85,14 @@ classes:
       A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
     slots:
       - has_part
+
+    slot_usage:
+      has_part:
+        range: Reaction
+        required: true
+        description: >-
+          A pathway can be broken down to a series of reaction step
+
     id_prefixes:
       - KEGG_PATHWAY
       - COG
@@ -169,14 +176,19 @@ classes:
         description: provenance for the annotation.
         notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
         range: MetagenomeAnnotationActivity
-    #        required: true
     narrow_mappings:
       - biolink:GeneToGoTermAssociation
 
 slots:
 
+  has_part:
+    domain: Pathway
+    range: Reaction
+    multivalued: true
+
   chemical:
     description: from reaction participant class
+    domain: ReactionParticipant
     range: ChemicalEntity
 
   stoichiometry:
@@ -184,9 +196,11 @@ slots:
     range: integer
 
   subject:
+    domain: FunctionalAnnotation
     range: GeneProduct
 
   has_function:
+    domain: FunctionalAnnotation
     range: string
     notes:
       - "the range for has_function was asserted as functional_annotation_term/FunctionalAnnotationTerm,"
@@ -214,6 +228,7 @@ slots:
       - "change range from string to object"
 
   strand:
+    domain: GenomeFeature
     todos:
       - "set the range to an enum?"
     description: >-
@@ -222,14 +237,19 @@ slots:
       - biolink:strand
 
   direction:
-    description: One of l->r, r->l, bidirectional, neutral
+    domain: Reaction
+    range: string
+    description: One of l->r, r->l, bidirectional, neutral # create an enum
   encodes:
+    domain: GenomeFeature
     range: GeneProduct
     description: >-
       The gene product encoded by this feature.
       Typically this is used for a CDS feature or gene feature which will encode a protein.
       It can also be used by a nc transcript ot gene feature that encoded a ncRNA
   end:
+    domain: GenomeFeature
+    range: integer
     is_a: gff_coordinate
     description: The end of the feature in positive 1-based integer coordinates
     comments: >-
@@ -238,11 +258,10 @@ slots:
     close_mappings:
       - biolink:end_interbase_coordinate
   feature_type:
+    domain: GenomeFeature
+    range: string
     description: "TODO: Yuri to write"
-  has_part:
-    range: Reaction
-    multivalued: true
-    description: A pathway can be broken down to a series of reaction step
+
   is_balanced:
     range: boolean
   is_diastereoselective:
@@ -257,8 +276,10 @@ slots:
   left_participants:
     is_a: has_participants
     multivalued: true
+    domain: Reaction
     range: ReactionParticipant
   phase:
+    domain: GenomeFeature
     range: integer
     minimum_value: 0
     maximum_value: 2
@@ -269,11 +290,13 @@ slots:
   right_participants:
     is_a: has_participants
     multivalued: true
+    domain: Reaction
     range: ReactionParticipant
   smarts_string:
     range: string
   start:
     is_a: gff_coordinate
+    domain: GenomeFeature
     description: The start of the feature in positive 1-based integer coordinates
     close_mappings: biolink:start_interbase_coordinate
 

@@ -1,8 +1,0 @@
-PREFIX MIXS: <https://w3id.org/mixs/>
-PREFIX nmdc: <https://w3id.org/nmdc/>
-
-select ?neon_soil_type (COUNT(?neon_soil_type) AS ?count)
-where {
-  ?s nmdc:neon_soil_type ?neon_soil_type
-}
-GROUP BY ?neon_soil_type

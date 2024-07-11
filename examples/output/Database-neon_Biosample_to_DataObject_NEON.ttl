@@ -2,8 +2,9 @@
 @prefix MIXS: <https://w3id.org/mixs/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix nmdc: <https://w3id.org/nmdc/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-nmdc:extrp-99-abcdef a nmdc:Extraction ;
+nmdc:extrp-99-abcdef nmdc:designated_class "nmdc:Extraction"^^xsd:anyURI ;
     nmdc:end_date "2021-01-15" ;
     nmdc:extraction_target "DNA" ;
     nmdc:has_input nmdc:procsm-99-xyz1 ;
@@ -11,7 +12,7 @@ nmdc:extrp-99-abcdef a nmdc:Extraction ;
     nmdc:name "first dna extraction set" ;
     nmdc:start_date "2021-01-15" .
 
-nmdc:libprp-99-abcdef a nmdc:LibraryPreparation ;
+nmdc:libprp-99-abcdef nmdc:designated_class "nmdc:LibraryPreparation"^^xsd:anyURI ;
     nmdc:end_date "2021-01-15" ;
     nmdc:has_input nmdc:procsm-99-xyz2 ;
     nmdc:has_output nmdc:procsm-99-xyz3 ;
@@ -19,8 +20,8 @@ nmdc:libprp-99-abcdef a nmdc:LibraryPreparation ;
     nmdc:name "DNA library preparation of NEON sample TREE_001-O-20170707-COMP-DNA1" ;
     nmdc:start_date "2021-01-15" .
 
-nmdc:poolp-99-abcdef a nmdc:Pooling ;
-    dcterms:description "This is the first pooling process that has ever occurred on earth" ;
+nmdc:poolp-99-abcdef dcterms:description "This is the first pooling process that has ever occurred on earth" ;
+    nmdc:designated_class "nmdc:Pooling"^^xsd:anyURI ;
     nmdc:end_date "2021-01-14" ;
     nmdc:has_input nmdc:bsm-99-abcdef1,
         nmdc:bsm-99-abcdef2,
@@ -87,8 +88,8 @@ nmdc:dobj-12-71q7wv80 a nmdc:DataObject ;
     nmdc:type "nmdc:DataObject" ;
     nmdc:url "https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz" .
 
-nmdc:omprc-11-s9xj2r24 a nmdc:OmicsProcessing ;
-    dcterms:isPartOf nmdc:sty-11-34xj1150 ;
+nmdc:omprc-11-s9xj2r24 dcterms:isPartOf nmdc:sty-11-34xj1150 ;
+    nmdc:designated_class "nmdc:OmicsProcessing"^^xsd:anyURI ;
     nmdc:has_input nmdc:procsm-99-xyz3 ;
     nmdc:has_output nmdc:dobj-12-jdhk9537,
         nmdc:dobj-12-yx0tfp52 ;

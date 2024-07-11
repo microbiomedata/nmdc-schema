@@ -5,6 +5,7 @@
   "alternative_identifiers": [
     "generic:xxx"
   ],
+  "designated_class": "nmdc:Pooling",
   "has_input": [
     "generic:xxx",
     "generic:yyy"

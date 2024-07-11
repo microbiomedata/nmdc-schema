@@ -1,0 +1,17 @@
+prefix dcterms: <http://purl.org/dc/terms/>
+prefix linkml: <https://w3id.org/linkml/>
+prefix mixs: <https://w3id.org/mixs/>
+prefix nmdc: <https://w3id.org/nmdc/>
+prefix owl: <http://www.w3.org/2002/07/owl#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix skos: <http://www.w3.org/2004/02/skos/core#>
+prefix tdbcontent:  <http://example.com/tdbcontent/>
+prefix src-schema:  <https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/>
+select *
+where {
+    graph ?g {
+        ?s ?p ?o .
+    }
+}
+limit 9

@@ -23,7 +23,18 @@ TEMPLATEDIR = doc-templates
 
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
+
 help: status
+	@echo ""
+	@echo "This project requires that dependencies are loaded into a poetry environment with 'poetry install'"
+	@echo "Most typical usage: 'make squeaky-clean all test'" # I removed the `enchilada` convenience target
+	@echo "Documentation publication is handled by a GitHub merge action"
+	@echo "  but users can generate a local documentation site with 'make testdoc'"
+	@echo "Please excuse the currently verbose logging mode"
+	@echo "make help -- show this help"
+	@echo ""
+
+cookiecutter-help: status
 	@echo ""
 	@echo "make setup -- initial setup (run this first)"
 	@echo "make site -- makes site locally"
@@ -33,7 +44,7 @@ help: status
 	@echo "make testdoc -- builds docs and runs local test server"
 	@echo "make deploy -- deploys site"
 	@echo "make update -- updates linkml version"
-	@echo "make help -- show this help"
+	@echo "make cookiecutter-help -- show this help"
 	@echo ""
 
 status: check-config
@@ -73,7 +84,7 @@ create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
 all: site
-site: clean site-clean gen-project gendoc nmdc_schema/gold-to-mixs.sssom.tsv
+site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv accepting-legacy-ids-all
 # may change files in nmdc_schema/ or project/. uncommitted changes are not tolerated by mkd-gh-deploy
 
 %.yaml: gen-project
@@ -151,6 +162,8 @@ gendoc: $(DOCDIR)
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) $(SOURCE_SCHEMA_PATH)
+	mkdir -p $(DOCDIR)/javascripts
+	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 
 testdoc: gendoc serve
 
@@ -216,7 +229,7 @@ site-clean: clean
 	rm -rf nmdc_schema/*.tsv
 	rm -rf nmdc_schema/*.yaml
 
-squeaky-clean: clean OmicsProcessing-clean accepting-legacy-ids-clean examples-clean mongodb-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+squeaky-clean: clean accepting-legacy-ids-clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 
 project/nmdc_schema_merged.yaml:
 	$(RUN) gen-linkml \
@@ -255,6 +268,3 @@ nmdc_schema/nmdc_materialized_patterns.yaml: project/nmdc_materialized_patterns.
 
 nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
 	cp $< $@
-
-
-enchilada: squeaky-clean all test make-rdf OmicsProcessing-all
