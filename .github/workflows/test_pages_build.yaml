@@ -7,7 +7,7 @@ on:
       - reopened
       - synchronize
 
-concurrency: {% raw %}preview-${{ github.ref }}{% endraw %}
+concurrency: preview-${{ github.ref }}
 
 jobs:
   run:
