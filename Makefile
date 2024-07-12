@@ -232,6 +232,12 @@ nmdc_schema/nmdc_materialized_patterns.yaml:
 		--no-materialize-attributes \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 
+nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialized_patterns.yaml
+	$(RUN) gen-json-schema \
+		--closed \
+		--include-range-class-descendants \
+		--top-class Database $< > $@
+
 # todo this target makes a lot of prerequisites if necessary, but they aren't part of the copying prpocess
 # the sssom/ files should be double checked too... they're probably not all SSSSOM files
 nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
