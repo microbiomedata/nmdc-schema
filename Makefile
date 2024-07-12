@@ -225,13 +225,6 @@ site-clean: clean
 squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
 	rm -rf local/biosample_slots_ranges_report.tsv
 
-project/nmdc_schema_merged.yaml:
-	$(RUN) gen-linkml \
-		--format yaml \
-		--no-materialize-attributes \
-		--no-materialize-patterns \
-		--output $@ $(SOURCE_SCHEMA_PATH)
-
 nmdc_schema/nmdc_materialized_patterns.yaml:
 	$(RUN) gen-linkml \
 		--format yaml \
@@ -239,17 +232,18 @@ nmdc_schema/nmdc_materialized_patterns.yaml:
 		--no-materialize-attributes \
 		--output $@ $(SOURCE_SCHEMA_PATH)
 
-# todo this target makes a lot of prerequisites if necessary, but they aren't part of the copying prpocess
-# the sssom/ files should be double checked too... they're probably not all SSSSOM files
-nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
-nmdc_schema/nmdc_materialized_patterns.yaml nmdc_schema/nmdc_schema_merged.yaml
-	cp $< $@
-
 nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) gen-json-schema \
 		--closed \
 		--include-range-class-descendants \
 		--top-class Database $< > $@
 
-nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
+# todo this target makes a lot of prerequisites if necessary, but they aren't part of the copying prpocess
+# the sssom/ files should be double checked too... they're probably not all SSSSOM files
+nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
+nmdc_schema/nmdc_materialized_patterns.yaml
+	# just can't seem to tell pyproject.toml to bundle artifacts like these
+	#   so reverting to copying into the module
 	cp $< $@
+
+
