@@ -69,6 +69,7 @@ def expand_curies(input_ttl, output_ttl, jsonld_context_jsons, emsl_uuid_replace
                     as_true_curie = (
                         URIRef(graph.namespace_manager.expand_curie(
                             f"{emsl_uuid_replacement}:{current_suffix}")))
+                    click.echo(f"Replaced UUID with {emsl_uuid_replacement} in {o_str}")
             else:
                 try:
                     as_true_curie = URIRef(graph.namespace_manager.expand_curie(o_str))
