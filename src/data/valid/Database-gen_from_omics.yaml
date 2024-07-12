@@ -12,6 +12,7 @@ omics_processing_set:
    alternative_identifiers:
     - gold:Gp0108335
    name:  Permafrost 712P3D
+   name: Permafrost 712P3D   
    has_input:
     - nmdc:bsm-00-red
    add_date: 30-OCT-14 12.00.00.000000000 AM
