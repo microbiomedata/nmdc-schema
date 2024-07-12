@@ -162,7 +162,7 @@ check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
 
 # Test documentation locally
-serve: mkd-serve
+serve: mkd-serve  #// Alias for "mkdocs serve" command (which runs Mkdocs web server)
 
 # Python datamodel
 $(PYMODEL):
@@ -171,7 +171,7 @@ $(PYMODEL):
 $(DOCDIR):
 	mkdir -p $@
 
-gendoc: $(DOCDIR)
+gendoc: $(DOCDIR)  #// Converts schema content into Markdown files (in "docs" folder)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
@@ -179,7 +179,7 @@ gendoc: $(DOCDIR)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 
-testdoc: gendoc serve
+testdoc: gendoc serve  #// Generates Markdown files, converts them into HTML, and serves them
 
 MKDOCS = $(RUN) mkdocs
 mkd-%:
@@ -229,7 +229,8 @@ git-status:
 	echo "creating a stub for .cruft.json. IMPORTANT: setup via cruft not cookiecutter recommended!" ; \
 	touch $@
 
-clean:
+# TODO: Consider removing `rm -rf docs/*.html` since HTML files go to "site/", not "docs/".
+clean:  #// Deletes project directory, temporary build artifacts, and generated doc files
 	rm -rf $(DEST)
 	rm -rf tmp
 	rm -rf docs/*.md
