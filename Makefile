@@ -42,7 +42,7 @@ help: status
 	@#
 	@#                                ↓ skip                      ↓ token           ↙  ↘ ANSI escape codes (for color)
 	@#                                -------                     -----      --------  -------
-	@sed --silent --regexp-extended '/@sed/!s/^([^[:space:]]+?):.*#\/\/ (.*)/\x1b[35m\1\x1b[0m: \2/p' $(MAKEFILE_LIST)
+	@sed --silent --regexp-extended '/@sed/!s/^([^[:space:]]+?):.*#\/\/ (.*)/\x1b[35m\1\x1b[0m: \2/p' $(MAKEFILE_LIST) | sort
 	@#                                          --------------  --       --  ---------------------    ----------------
 	@#                                   target ↑               ↑ deps   ↑ docs   ↑ output            ↑ all Makefiles
 	@#
