@@ -171,7 +171,7 @@ $(PYMODEL):
 $(DOCDIR):
 	mkdir -p $@
 
-gendoc: $(DOCDIR)  #// Convert schema content into Markdown files (in "docs" folder)
+gendoc: $(DOCDIR)  #// Convert schema content into Markdown files in "docs" folder
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
