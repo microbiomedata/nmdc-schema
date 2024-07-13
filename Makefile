@@ -171,7 +171,7 @@ $(PYMODEL):
 $(DOCDIR):
 	mkdir -p $@
 
-gendoc: $(DOCDIR)  #// Converts schema content into Markdown files (in "docs" folder)
+gendoc: $(DOCDIR)  #// Convert schema content into Markdown files (in "docs" folder)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
@@ -179,7 +179,7 @@ gendoc: $(DOCDIR)  #// Converts schema content into Markdown files (in "docs" fo
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 
-testdoc: gendoc serve  #// Generates Markdown files, converts them into HTML, and serves them
+testdoc: gendoc serve  #// Generate Markdown files, convert them into HTML, and serve them
 
 MKDOCS = $(RUN) mkdocs
 mkd-%:
@@ -230,7 +230,7 @@ git-status:
 	touch $@
 
 # TODO: Consider removing `rm -rf docs/*.html` since HTML files go to "site/", not "docs/".
-clean:  #// Deletes project directory, temporary build artifacts, and generated doc files
+clean:  #// Delete project directory, temporary build artifacts, and generated doc files
 	rm -rf $(DEST)
 	rm -rf tmp
 	rm -rf docs/*.md
