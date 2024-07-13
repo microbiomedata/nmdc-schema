@@ -162,7 +162,7 @@ check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
 
 # Test documentation locally
-serve: mkd-serve  #// Alias for "mkdocs serve" command (which runs Mkdocs web server)
+serve: mkd-serve  #// Run Mkdocs web server (alias for "mkdocs serve" command)
 
 # Python datamodel
 $(PYMODEL):
