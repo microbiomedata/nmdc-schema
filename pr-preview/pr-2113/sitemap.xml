@@ -991,6 +991,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/StrandedOrentationEnum/</loc>
+         <lastmod>2024-07-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/String/</loc>
          <lastmod>2024-07-15</lastmod>
          <changefreq>daily</changefreq>
@@ -3211,6 +3216,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/is_stranded/</loc>
+         <lastmod>2024-07-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/is_transport/</loc>
          <lastmod>2024-07-15</lastmod>
          <changefreq>daily</changefreq>
@@ -4977,6 +4987,11 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/strand/</loc>
+         <lastmod>2024-07-15</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/stranded_orientation/</loc>
          <lastmod>2024-07-15</lastmod>
          <changefreq>daily</changefreq>
     </url>

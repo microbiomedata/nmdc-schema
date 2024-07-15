@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/used/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/StrandedOrentationEnum/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: used - NMDC Schema Documentation</title>
+        <title>Enum: StrandedOrentationEnum - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-used" class="md-skip">
+        <a href="#enum-strandedorentationenum" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: used
+              Enum: StrandedOrentationEnum
             
           </span>
         </div>
@@ -413,18 +413,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
-      Applicable Classes
+      Permissible Values
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
-      Properties
+      Slots
     </span>
   </a>
   
@@ -455,15 +455,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -490,137 +481,63 @@
   
 
 
-<h1 id="slot-used">Slot: used</h1>
-<p>URI: <a href="https://w3id.org/nmdc/used">nmdc:used</a></p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-strandedorentationenum">Enum: StrandedOrentationEnum</h1>
+<p><em>This enumeration specifies information about stranded RNA library preparations.</em></p>
+<p>URI: <a href="./">StrandedOrentationEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>antisense orientation</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>sense orientation</td>
+<td>None</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>Something that occurs over a period of time and acts upon or with entities; i...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
-<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td>Represents an instance of an execution of a particular workflow</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeActivity/">MetatranscriptomeActivity</a></td>
-<td>A metatranscriptome activity that e</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td>A workflow execution activity that provides functional and structural annotat...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td>A workflow execution activity that uses computational binning tools to group ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
-<td>A workflow execution activity that performs taxonomy classification using seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
-<td></td>
-<td>yes</td>
+<td><a href="../stranded_orientation/">stranded_orientation</a></td>
+<td>Lists the strand orientiation for a stranded RNA library preparation</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nmdc:used</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nmdc:used</td>
-</tr>
-<tr>
-<td>undefined</td>
-<td>prov:used</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: used
+<pre><code class="language-yaml">name: StrandedOrentationEnum
+description: This enumeration specifies information about stranded RNA library preparations.
 from_schema: https://w3id.org/nmdc/nmdc
-mappings:
-- prov:used
 rank: 1000
-domain: Activity
-alias: used
-domain_of:
-- Activity
-range: string
+permissible_values:
+  antisense orientation:
+    text: antisense orientation
+  sense orientation:
+    text: sense orientation
 
 </code></pre>
 

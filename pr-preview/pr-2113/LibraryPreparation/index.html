@@ -323,6 +323,8 @@
 
   LibraryPreparation : instrument_name
 
+  LibraryPreparation : is_stranded
+
   LibraryPreparation : library_preparation_kit
 
   LibraryPreparation : library_type
@@ -352,6 +354,11 @@
     click StatusEnum href "../StatusEnum"
 
   LibraryPreparation : start_date
+
+  LibraryPreparation : stranded_orientation
+
+      LibraryPreparation --&gt; "0..1" StrandedOrentationEnum : stranded_orientation
+    click StrandedOrentationEnum href "../StrandedOrentationEnum"
 
 
 
@@ -396,6 +403,18 @@
 <td><a href="../pcr_cycles/">pcr_cycles</a></td>
 <td>0..1 <br/> <a href="../Integer/">Integer</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../is_stranded/">is_stranded</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>Is the (RNA) library stranded or non-stranded (unstranded)</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../stranded_orientation/">stranded_orientation</a></td>
+<td>0..1 <br/> <a href="../StrandedOrentationEnum/">StrandedOrentationEnum</a></td>
+<td>Lists the strand orientiation for a stranded RNA library preparation</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -568,6 +587,8 @@ slots:
 - library_preparation_kit
 - library_type
 - pcr_cycles
+- is_stranded
+- stranded_orientation
 slot_usage:
   has_input:
     name: has_input
@@ -683,6 +704,28 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: integer
+  is_stranded:
+    name: is_stranded
+    description: Is the (RNA) library stranded or non-stranded (unstranded).
+    comments:
+    - A value of true means the library is stranded, flase means non-stranded.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: is_stranded
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: boolean
+  stranded_orientation:
+    name: stranded_orientation
+    description: Lists the strand orientiation for a stranded RNA library preparation.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: stranded_orientation
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: StrandedOrentationEnum
   has_input:
     name: has_input
     description: An input to a process.
