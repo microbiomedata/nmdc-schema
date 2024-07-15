@@ -2953,7 +2953,7 @@ slots:
   metatranscriptome_annotation_set:
     domain: Database # not inherited by mixin users
     mixins: object_set
-    range: MetatranscriptomeAnnotation
+    range: MetatranscriptomeAnnotationActivity
     description: This property links a database object to the set of metatranscriptome annotations within it.
   
 
