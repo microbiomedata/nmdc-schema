@@ -2968,10 +2968,11 @@ slots:
     abstract: true
     description: >-
       This is a grouping for any of the gold path fields
+    
     annotations:
-      tool_tip: 
-        GOLD Ecosystem Classification paths describe the surroundings from which an environmental 
-        sample or an organism is collected.
+      tool_tip: GOLD Ecosystem Classification paths describe the surroundings from which an environmental sample or an organism is collected.
+    comments:
+      - Tool tip pull from https://gold.jgi.doe.gov/ecosystem_classification
   ecosystem:
     is_a: gold_path_field
     description:
