@@ -13,18 +13,21 @@ In the interest of fostering an open and welcoming environment, we pledge to mak
 We commit to the following principles:
 - *Embrace Diversity and Inclusivity*: Celebrate and support our diversity of data, people, and questions, recognizing it as a core strength of our community.
 - *Cultivate a Harassment-Free Environment*: Ensure our community is free from harassment of all kinds, including inappropriate verbal and written language and imagery.
-- *Promote Constructive Engagement*: Engage in constructive, transparent, and inclusive dialogue, allowing diverse perspectives to be shared, supporting new ideas, and providing solutions to current challenges.
+- *Promote Constructive Engagement*: Engage in constructive, transparent, and inclusive dialogue, allowing diverse perspectives to be shared, supporting new ideas, and providing solutions to current challenges. Acknowledge that we all have biases and be mindful that both explicit and implicit bias affects our daily behaviors.
 - *Demonstrate Professionalism and Positivity*: Celebrate all contributions, understand the learning opportunities in failure, and foster a culture of trust through accountability and transparent communication.
 - *Encourage Collaboration and Shared Ownership*: Advance collaboration with shared ownership across all microbiome research communities, respecting the contributions of every member.
-- *Abide by Community Guidelines*: All community interactions should align with [NMDC's Data Use Policy](https://microbiomedata.org/nmdc-data-use-policy/) and the principles outlined in this document.
+- *Abide by Community Guidelines*: All community interactions should align with [NMDC's Data Use Policy](https://microbiomedata.org/nmdc-data-use-policy/) and the principles outlined in this document. Any contributions to the NMDC must be done by submitters with the authority to do so, and with appropriate citations included. 
+ 
 
 Examples of behavior that contributes to creating a positive environment include:
 
 * Using welcoming and inclusive language
+* Whenever possible, use gender-neutral language to avoid assumptions about sexual orientation or gender identity
 * Being respectful of differing viewpoints and experiences
 * Gracefully accepting constructive criticism
 * Focusing on what is best for the community
 * Showing empathy towards other community members
+* Taking steps to recognize and address implicit bias.
 
 Examples of unacceptable behavior by participants include:
 
@@ -32,13 +35,14 @@ Examples of unacceptable behavior by participants include:
 * Trolling, insulting/derogatory comments, and personal or political attacks
 * Public or private harassment
 * Publishing others' private information, such as a physical or electronic address, without explicit permission
+* Contributing data or code from other parties, without appropriate authority and/or citations
 * Other conduct which could reasonably be considered inappropriate in a professional setting
 
 ## Our Responsibilities
 
-Program maintainers are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
+NMDC Leads are responsible for clarifying the standards of acceptable behavior and are expected to take appropriate and fair corrective action in response to any instances of unacceptable behavior.
 
-Program maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
+NMDC Leads have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.
 
 ## Scope
 
@@ -46,13 +50,13 @@ This Code of Conduct applies within all community spaces, including online forum
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by [contacting the program team](contact.md). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The program team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by [contacting the program team](https://docs.google.com/forms/d/e/1FAIpQLSfo7wbvmbDyrdIysC_uI4rsDvnk_awk-yx2-8h5UUQGJ1Tnig/viewform). All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The program team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.
 
-Program maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the Program's leadership.
+NMDC Leads who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the Program's leadership.
 
 ## Attribution
 
-This Code of Conduct has been derived from the excellent code of conduct of the [ATOM project](https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md) which in turn is adapted from the [Contributor Covenant][homepage], version 1.4, available at [https://contributor-covenant.org/version/1/4][version]. It has also been informed by earlier versions of the NMDC code of conduct. 
+This Code of Conduct has been derived from the excellent code of conduct of the [ATOM project](https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md) which in turn is adapted from the [Contributor Covenant][homepage], version 1.4, available at [https://contributor-covenant.org/version/1/4][version]. It has been informed by earlier versions of the NMDC code of conduct. Additional language was also taken from the [US Department of Labor Policies on Gender Identity](https://www.dol.gov/agencies/oasam/centers-offices/civil-rights-center/internal/policies/gender-identity), and the [Northwestern University Department of Molecular Biosciences Code of Conduct](https://molbiosci.northwestern.edu/diversity-inclusion/code-of-conduct-page.html). 
 
 [homepage]: https://contributor-covenant.org
 [version]: https://contributor-covenant.org/version/1/4/
