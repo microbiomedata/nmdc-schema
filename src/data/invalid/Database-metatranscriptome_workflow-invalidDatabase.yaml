@@ -27,7 +27,7 @@ metagenome_assembly_set:
     has_output:
      - nmdc:dobj-11-547rwq72
      - nmdc:dobj-11-547rwq73
-metagenome_annotation_activity_set:
+metatranscriptome_annotation_set:
   - id: nmdc:wfmtan-11-23987.1
     git_url: https://github.com/microbiomedata/mg_annotation
     version: v1.1.1
@@ -42,7 +42,7 @@ metagenome_annotation_activity_set:
      - nmdc:dobj-11-547rwq75
      - nmdc:dobj-11-547rwq77
 metatranscriptome_expression_set:
-  - id: nmdc:wfmtan-11-23989.1
+  - id: nmdc:wfmtex-11-23989.1
     git_url: https://github.com/microbiomedata/metaT_ReadCounts
     version: v0.0.1
     started_at_time: '2024-07-08T14:48:51+00:00'
