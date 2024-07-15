@@ -2550,7 +2550,7 @@ slots:
   
   stranded_orientation:
     description: Lists the strand orientiation for a stranded RNA library preparation.
-    range: StrandedOrentationEnum
+    range: StrandedOrientationEnum
     
   
   mass:
