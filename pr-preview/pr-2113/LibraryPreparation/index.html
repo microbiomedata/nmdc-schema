@@ -357,8 +357,8 @@
 
   LibraryPreparation : stranded_orientation
 
-      LibraryPreparation --&gt; "0..1" StrandedOrentationEnum : stranded_orientation
-    click StrandedOrentationEnum href "../StrandedOrentationEnum"
+      LibraryPreparation --&gt; "0..1" StrandedOrientationEnum : stranded_orientation
+    click StrandedOrientationEnum href "../StrandedOrientationEnum"
 
 
 
@@ -413,7 +413,7 @@
 </tr>
 <tr>
 <td><a href="../stranded_orientation/">stranded_orientation</a></td>
-<td>0..1 <br/> <a href="../StrandedOrentationEnum/">StrandedOrentationEnum</a></td>
+<td>0..1 <br/> <a href="../StrandedOrientationEnum/">StrandedOrientationEnum</a></td>
 <td>Lists the strand orientiation for a stranded RNA library preparation</td>
 <td>direct</td>
 </tr>
@@ -725,7 +725,7 @@ attributes:
     owner: LibraryPreparation
     domain_of:
     - LibraryPreparation
-    range: StrandedOrentationEnum
+    range: StrandedOrientationEnum
   has_input:
     name: has_input
     description: An input to a process.
