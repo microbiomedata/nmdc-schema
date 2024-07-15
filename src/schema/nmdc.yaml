@@ -290,6 +290,8 @@ classes:
       - library_preparation_kit
       - library_type
       - pcr_cycles
+      - is_stranded
+      - stranded_orientation
     close_mappings:
       - OBI:0000711
     comments:
@@ -1813,6 +1815,14 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+
+  StrandedOrentationEnum:
+    description: This enumeration specifies information about stranded RNA library preparations.
+    permissible_values:
+      antisense orientation:
+      sense orientation:
+
+      
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -2531,6 +2541,17 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
+  
+  is_stranded:
+    description: Is the (RNA) library stranded or non-stranded (unstranded). 
+    range: boolean
+    comments: 
+      - A value of true means the library is stranded, flase means non-stranded. 
+  
+  stranded_orientation:
+    description: Lists the strand orientiation for a stranded RNA library preparation.
+    range: StrandedOrentationEnum
+    
   
   mass:
     title: mass
