@@ -42,8 +42,7 @@ metatranscriptome_annotation_set:
      - nmdc:dobj-11-547rwq77
 metatranscriptome_expression_set:
   - id: nmdc:wfmtex-11-23989.1
-    git_url: https://github.com/
-microbiomedata/metaT_ReadCounts
+    git_url: https://github.com/microbiomedata/metaT_ReadCounts
     version: v0.0.1
     started_at_time: '2024-07-08T14:48:51+00:00'
     ended_at_time: '2024-07-08T14:48:51+00:00'
