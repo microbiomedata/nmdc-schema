@@ -1816,7 +1816,7 @@ classes:
 
 enums:
 
-  StrandedOrentationEnum:
+  StrandedOrientationEnum:
     description: This enumeration specifies information about stranded RNA library preparations.
     permissible_values:
       antisense orientation:
