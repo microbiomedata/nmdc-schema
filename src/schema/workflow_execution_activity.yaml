@@ -215,7 +215,7 @@ classes:
           syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
-  MetatranscriptomeExpressionAnlaysis:
+  MetatranscriptomeExpressionAnalysis:
     is_a: WorkflowExecutionActivity
     description: >-
       A workflow process that provides expression values and read counts for gene features predicted on the contigs.
