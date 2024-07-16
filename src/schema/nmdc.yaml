@@ -237,7 +237,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:chrocon-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   FunctionalAnnotationAggMember:
@@ -578,7 +578,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:storpro-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_input:
         structured_pattern:
