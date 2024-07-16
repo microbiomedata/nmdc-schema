@@ -1,8 +1,13 @@
 # Napa Compliance
 
 This code has been executed, the results were accepted, and it should not need to be run again. It is being included as
-documentation. The Python files have been moved from `nmdc_schema/` to `nmdc_schema/completed_napa_compliance/` and they
-shouldn't be expected to work from that location.
+documentation. The Python files have been moved from `nmdc_schema/` to `src/scripts/task_specific_code/` and they
+shouldn't be expected to work from that location. These scripts demonstrate many good design principles, but may not
+meet all of nmdc-schema's current code quality standards.
+
+* insert_many_pymongo.py
+* metap_records_delete.py
+* misc_reid_code.py
 
 One shouldn't assume that the installation notes below are intended for any other nmdc-schema development.
 
