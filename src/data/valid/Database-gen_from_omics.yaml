@@ -1,0 +1,25 @@
+data_object_set:
+  - id: nmdc:dobj-11-dtTMNb
+    data_object_type: Metagenome Raw Reads
+    description: my awesome fastq file
+    file_size_bytes: 1382304
+    md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
+    name: 1237.14.3718.ATCG-ACTG.fastq.gz
+    type: nmdc:DataObject
+    was_generated_by: nmdc:omprc-99-123456
+data_generation_set:
+  - id: nmdc:omprc-99-123456
+    alternative_identifiers:
+      - gold:Gp0108335
+    name: Permafrost 712P3D
+    has_input:
+      - nmdc:bsm-00-red
+    add_date: 30-OCT-14 12.00.00.000000000 AM
+    mod_date: 22-MAY-20 06.13.12.927000000 PM
+    has_output:
+      - nmdc:dobj-11-dtTMNb
+    associated_studies:
+      - nmdc:sty-00-123456
+    processing_institution: JGI
+    type: nmdc:NucleotideSequencing
+    analyte_category: metagenome
