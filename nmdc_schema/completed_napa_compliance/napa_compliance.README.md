@@ -1,5 +1,11 @@
 # Napa Compliance
 
+This code has been executed, the results were accepted, and it should not need to be run again. It is being included as
+documentation. The Python files have been moved from `nmdc_schema/` to `nmdc_schema/completed_napa_compliance/` and they
+shouldn't be expected to work from that location.
+
+One shouldn't assume that the installation notes below are intended for any other nmdc-schema development.
+
 ## Installing Python packages
 
 ```shell
