@@ -2893,7 +2893,7 @@ slots:
   metatranscriptome_expression_set:
     domain: Database # not inherited by mixin users
     mixins: object_set
-    range: MetatranscriptomeExpressionAnlaysis
+    range: MetatranscriptomeExpressionAnalysis
     description:
       This property links a database object to the set of metatranscriptome expression
       analysis activities.
