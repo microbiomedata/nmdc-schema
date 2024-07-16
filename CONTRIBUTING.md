@@ -111,7 +111,7 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Inheritance should be monotonic: `slot_usage` should refine rather than override
 - ID patterning and checks
     - ID patterns for new classes should follow conventions found [here](https://microbiomedata.github.io/nmdc-schema/identifiers/)
-    - Class-linking slots (i.e. `has_input`) should have slot_usage declared that limit range to only instances of the expecting linked class (i.e. `syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"`)
+    - Class-linking slots (i.e. `has_input`) should have slot_usage declared that limit to only instances of the expecting linked class (i.e. `syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"` on the `structured_pattern` to ensure that only records with ids associated with the typecode "chrcon" can fill that slot)
 
 ### Testing Changes Locally
 
