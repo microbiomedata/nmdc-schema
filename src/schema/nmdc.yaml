@@ -2382,7 +2382,7 @@ enums:
         description: A failure has occurred in library preparation, a lab process.
       MetagenomeAssembly:
         description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeExpressionActivity:
+      MetatranscriptomeExpressionAnalysis:
         description: A failure has occurred in metatranscriptome expression analysis, a workflow process.
       MetatranscriptomeAnnotation:
         description: A failure has occurred in metatranscriptome annotation analysis, a workflow process.
