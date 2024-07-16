@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/Activity/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeExpressionAnalysis/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
-<title>Class: Activity - NMDC Schema Documentation</title>
+<title>Class: MetatranscriptomeExpressionAnalysis - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-activity">
+<a class="md-skip" href="#class-metatranscriptomeexpressionanalysis">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Activity
+              Class: MetatranscriptomeExpressionAnalysis
             
           </span>
 </div>
@@ -216,13 +216,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#comments">
-<span class="md-ellipsis">
-      Comments
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -279,34 +272,67 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-activity">Class: Activity</h1>
-<p><em>Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.</em></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This is an abstract class and should not be instantiated directly.</p>
-</div>
-<p>URI: <a href="https://w3id.org/nmdc/Activity">nmdc:Activity</a></p>
+<h1 id="class-metatranscriptomeexpressionanalysis">Class: MetatranscriptomeExpressionAnalysis</h1>
+<p><em>A workflow process that provides expression values and read counts for gene features predicted on the contigs.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/MetatranscriptomeExpressionAnalysis">nmdc:MetatranscriptomeExpressionAnalysis</a></p>
 <div class="mermaid">classDiagram
-  class Activity
-  click Activity href "../Activity"
-    Activity &lt;|-- WorkflowExecutionActivity
+  class MetatranscriptomeExpressionAnalysis
+  click MetatranscriptomeExpressionAnalysis href "../MetatranscriptomeExpressionAnalysis"
+    WorkflowExecutionActivity &lt;|-- MetatranscriptomeExpressionAnalysis
       click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
-  Activity : ended_at_time
+  MetatranscriptomeExpressionAnalysis : alternative_identifiers
 
-  Activity : id
+  MetatranscriptomeExpressionAnalysis : ended_at_time
 
-  Activity : name
+  MetatranscriptomeExpressionAnalysis : execution_resource
 
-  Activity : started_at_time
+  MetatranscriptomeExpressionAnalysis : git_url
 
-  Activity : used
+  MetatranscriptomeExpressionAnalysis : has_failure_categorization
 
-  Activity : was_informed_by
+      MetatranscriptomeExpressionAnalysis --&gt; "*" FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
 
-      Activity --&gt; "0..1" OmicsProcessing : was_informed_by
+  MetatranscriptomeExpressionAnalysis : has_input
+
+      MetatranscriptomeExpressionAnalysis --&gt; "1..*" NamedThing : has_input
+    click NamedThing href "../NamedThing"
+
+  MetatranscriptomeExpressionAnalysis : has_output
+
+      MetatranscriptomeExpressionAnalysis --&gt; "*" NamedThing : has_output
+    click NamedThing href "../NamedThing"
+
+  MetatranscriptomeExpressionAnalysis : id
+
+  MetatranscriptomeExpressionAnalysis : name
+
+  MetatranscriptomeExpressionAnalysis : part_of
+
+      MetatranscriptomeExpressionAnalysis --&gt; "*" NamedThing : part_of
+    click NamedThing href "../NamedThing"
+
+  MetatranscriptomeExpressionAnalysis : qc_comment
+
+  MetatranscriptomeExpressionAnalysis : qc_status
+
+      MetatranscriptomeExpressionAnalysis --&gt; "0..1" StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
+
+  MetatranscriptomeExpressionAnalysis : started_at_time
+
+  MetatranscriptomeExpressionAnalysis : type
+
+  MetatranscriptomeExpressionAnalysis : used
+
+  MetatranscriptomeExpressionAnalysis : version
+
+  MetatranscriptomeExpressionAnalysis : was_informed_by
+
+      MetatranscriptomeExpressionAnalysis --&gt; "0..1" OmicsProcessing : was_informed_by
     click OmicsProcessing href "../OmicsProcessing"
 
 
@@ -314,8 +340,11 @@
 </div>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><strong>Activity</strong><ul>
-<li><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></li>
+<li><a href="../Activity/">Activity</a><ul>
+<li><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a><ul>
+<li><strong>MetatranscriptomeExpressionAnalysis</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -331,40 +360,106 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td>An optional string that specifies the type object</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../execution_resource/">execution_resource</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../git_url/">git_url</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../has_input/">has_input</a></td>
+<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>An input to a process</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../has_output/">has_output</a></td>
+<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>An output biosample to a processing step</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../part_of/">part_of</a></td>
+<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>Links a resource to another resource that either logically or physically incl...</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../version/">version</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
+<td></td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of alternative identifiers for the entity</td>
+<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+</tr>
+<tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A unique identifier for a thing</td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A human readable label for an entity</td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../started_at_time/">started_at_time</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
 <td>0..1 <br/> <a href="../OmicsProcessing/">OmicsProcessing</a></td>
 <td></td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 <tr>
 <td><a href="../used/">used</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td></td>
-<td>direct</td>
+<td><a href="../Activity/">Activity</a></td>
 </tr>
 </tbody>
 </table>
@@ -380,425 +475,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../DataObject/">DataObject</a></td>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td><a href="../Database/">Database</a></td>
+<td><a href="../metatranscriptome_expression_analysis_set/">metatranscriptome_expression_analysis_set</a></td>
 <td>range</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="./">Activity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="./">Activity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="./">Activity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
-<td><a href="../version/">version</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
-</tr>
-<tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
-<td><a href="../used/">used</a></td>
-<td>domain</td>
-<td><a href="./">Activity</a></td>
+<td><a href="./">MetatranscriptomeExpressionAnalysis</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>to be replaced with PlannedProcess in the monterey-schema</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -815,15 +498,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nmdc:Activity</td>
+<td>nmdc:MetatranscriptomeExpressionAnalysis</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nmdc:Activity</td>
-</tr>
-<tr>
-<td>undefined</td>
-<td>prov:Activity</td>
+<td>nmdc:MetatranscriptomeExpressionAnalysis</td>
 </tr>
 </tbody>
 </table>
@@ -831,81 +510,230 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: Activity
-description: Something that occurs over a period of time and acts upon or with entities;
-  it may include consuming, processing, transforming, modifying, relocating, using,
-  or generating entities.
-notes:
-- removed was_associated_with because we are trying to avoid instantiating id-less
-  Agents
-comments:
-- to be replaced with PlannedProcess in the monterey-schema
+<pre><code class="language-yaml">name: MetatranscriptomeExpressionAnalysis
+description: A workflow process that provides expression values and read counts for
+  gene features predicted on the contigs.
+in_subset:
+- workflow subset
 from_schema: https://w3id.org/nmdc/nmdc
-mappings:
-- prov:Activity
-abstract: true
+is_a: WorkflowExecutionActivity
 slots:
-- id
-- name
-- started_at_time
-- ended_at_time
-- was_informed_by
-- used
+- type
 slot_usage:
-  was_informed_by:
-    name: was_informed_by
+  id:
+    name: id
     domain_of:
+    - Biosample
+    - Study
+    - NamedThing
     - Activity
+    required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: Activity
-description: Something that occurs over a period of time and acts upon or with entities;
-  it may include consuming, processing, transforming, modifying, relocating, using,
-  or generating entities.
-notes:
-- removed was_associated_with because we are trying to avoid instantiating id-less
-  Agents
-comments:
-- to be replaced with PlannedProcess in the monterey-schema
+<pre><code class="language-yaml">name: MetatranscriptomeExpressionAnalysis
+description: A workflow process that provides expression values and read counts for
+  gene features predicted on the contigs.
+in_subset:
+- workflow subset
 from_schema: https://w3id.org/nmdc/nmdc
-mappings:
-- prov:Activity
-abstract: true
+is_a: WorkflowExecutionActivity
 slot_usage:
-  was_informed_by:
-    name: was_informed_by
+  id:
+    name: id
     domain_of:
+    - Biosample
+    - Study
+    - NamedThing
     - Activity
+    required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
 attributes:
+  type:
+    name: type
+    description: An optional string that specifies the type object.  This is used
+      to allow for searches for different kinds of objects.
+    deprecated: Due to confusion about what values are used for this slot, it is best
+      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
+      MAM removed designates_type and rdf:type slot uri 2022-11-30
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: type
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - DataObject
+    - Biosample
+    - Study
+    - OmicsProcessing
+    - CreditAssociation
+    - MagBin
+    - WorkflowExecutionActivity
+    - MetagenomeAssembly
+    - MetagenomeAnnotationActivity
+    - MetatranscriptomeAnnotationActivity
+    - MetatranscriptomeExpressionAnalysis
+    - MagsAnalysisActivity
+    - ReadQcAnalysisActivity
+    - ReadBasedTaxonomyAnalysisActivity
+    range: string
+    required: true
+  execution_resource:
+    name: execution_resource
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    domain: Activity
+    alias: execution_resource
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - WorkflowExecutionActivity
+    range: string
+    required: true
+  git_url:
+    name: git_url
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: git_url
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - WorkflowExecutionActivity
+    range: string
+    required: true
+  has_input:
+    name: has_input
+    description: An input to a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    domain: NamedThing
+    alias: has_input
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - BiosampleProcessing
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    range: NamedThing
+    required: true
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  has_output:
+    name: has_output
+    description: An output biosample to a processing step
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    domain: NamedThing
+    alias: has_output
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - OmicsProcessing
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    range: NamedThing
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  part_of:
+    name: part_of
+    description: Links a resource to another resource that either logically or physically
+      includes it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - is part of
+    rank: 1000
+    domain: NamedThing
+    slot_uri: dcterms:isPartOf
+    alias: part_of
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - FieldResearchSite
+    - Biosample
+    - Study
+    - OmicsProcessing
+    - WorkflowExecutionActivity
+    range: NamedThing
+    multivalued: true
+  version:
+    name: version
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    domain: Activity
+    alias: version
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - WorkflowExecutionActivity
+    - ReadQcAnalysisActivity
+    range: string
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_status
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    range: StatusEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_comment
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    range: string
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_failure_categorization
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - PlannedProcess
+    - WorkflowExecutionActivity
+    range: FailureCategorization
+    multivalued: true
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: A list of alternative identifiers for the entity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: alternative_identifiers
+    owner: MetatranscriptomeExpressionAnalysis
+    domain_of:
+    - Biosample
+    - Study
+    - NamedThing
+    - MetaboliteQuantification
+    - WorkflowExecutionActivity
+    range: uriorcurie
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
       for a URI or a complete URI
-    notes:
-    - 'abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?'
-    - a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters
-      will be accepted
-    - typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked
-      via per-class id slot usage assertions
-    - minting authority shoulders should probably be enumerated and checked in the
-      pattern
-    examples:
-    - value: nmdc:mgmag-00-x012.1_7_c1
-      description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     identifier: true
     alias: id
-    owner: Activity
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Biosample
     - Study
@@ -914,13 +742,16 @@ attributes:
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
+      interpolated: true
   name:
     name: name
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: name
-    owner: Activity
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Protocol
     - NamedThing
@@ -929,42 +760,34 @@ attributes:
     range: string
   started_at_time:
     name: started_at_time
-    notes:
-    - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
-      It may not be complete, but it is good enough for now.'
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:startedAtTime
     rank: 1000
     domain: Activity
     alias: started_at_time
-    owner: Activity
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: string
+    required: true
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
   ended_at_time:
     name: ended_at_time
-    notes:
-    - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
-      It may not be complete, but it is good enough for now.'
     from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:endedAtTime
     rank: 1000
     domain: Activity
     alias: ended_at_time
-    owner: Activity
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: string
+    required: true
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
   was_informed_by:
     name: was_informed_by
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: was_informed_by
-    owner: Activity
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: OmicsProcessing
@@ -979,7 +802,7 @@ attributes:
     rank: 1000
     domain: Activity
     alias: used
-    owner: Activity
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: string

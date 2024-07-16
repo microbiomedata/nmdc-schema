@@ -631,17 +631,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeActivity/</loc>
-         <lastmod>2024-07-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeAnnotationActivity/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeAssembly/</loc>
+         <lastmod>2024-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeExpressionAnalysis/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -3471,7 +3471,17 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/metatranscriptome_activity_set/</loc>
+         <loc>https://microbiomedata.github.io/nmdc-schema/metatranscriptome_annotation_set/</loc>
+         <lastmod>2024-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/metatranscriptome_assembly_set/</loc>
+         <lastmod>2024-07-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/metatranscriptome_expression_analysis_set/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>

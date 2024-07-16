@@ -634,9 +634,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../metatranscriptome_activity_set/">metatranscriptome_activity_set</a></td>
-<td>* <br/> <a href="../MetatranscriptomeActivity/">MetatranscriptomeActivity</a></td>
-<td>This property links a database object to the set of metatranscriptome analysi...</td>
+<td><a href="../metatranscriptome_annotation_set/">metatranscriptome_annotation_set</a></td>
+<td>* <br/> <a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
+<td>This property links a database object to the set of metatranscriptome annotat...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../metatranscriptome_assembly_set/">metatranscriptome_assembly_set</a></td>
+<td>* <br/> <a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td>This property links a database object to the set of metatranscriptome assembl...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../metatranscriptome_expression_analysis_set/">metatranscriptome_expression_analysis_set</a></td>
+<td>* <br/> <a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td>This property links a database object to the set of metatranscriptome express...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -792,7 +804,19 @@
 </tr>
 <tr>
 <td><a href="./">Database</a></td>
-<td><a href="../metatranscriptome_activity_set/">metatranscriptome_activity_set</a></td>
+<td><a href="../metatranscriptome_annotation_set/">metatranscriptome_annotation_set</a></td>
+<td>domain</td>
+<td><a href="./">Database</a></td>
+</tr>
+<tr>
+<td><a href="./">Database</a></td>
+<td><a href="../metatranscriptome_assembly_set/">metatranscriptome_assembly_set</a></td>
+<td>domain</td>
+<td><a href="./">Database</a></td>
+</tr>
+<tr>
+<td><a href="./">Database</a></td>
+<td><a href="../metatranscriptome_expression_analysis_set/">metatranscriptome_expression_analysis_set</a></td>
 <td>domain</td>
 <td><a href="./">Database</a></td>
 </tr>
@@ -905,7 +929,9 @@ slots:
 - metagenome_assembly_set
 - metagenome_sequencing_activity_set
 - metaproteomics_analysis_activity_set
-- metatranscriptome_activity_set
+- metatranscriptome_annotation_set
+- metatranscriptome_assembly_set
+- metatranscriptome_expression_analysis_set
 - nom_analysis_activity_set
 - omics_processing_set
 - planned_process_set
@@ -1167,20 +1193,52 @@ attributes:
     range: MetaproteomicsAnalysisActivity
     multivalued: true
     inlined_as_list: true
-  metatranscriptome_activity_set:
-    name: metatranscriptome_activity_set
+  metatranscriptome_annotation_set:
+    name: metatranscriptome_annotation_set
     description: This property links a database object to the set of metatranscriptome
-      analysis activities.
+      annotations within it.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     mixins:
     - object_set
     domain: Database
-    alias: metatranscriptome_activity_set
+    alias: metatranscriptome_annotation_set
     owner: Database
     domain_of:
     - Database
-    range: MetatranscriptomeActivity
+    range: MetatranscriptomeAnnotationActivity
+    multivalued: true
+    inlined_as_list: true
+  metatranscriptome_assembly_set:
+    name: metatranscriptome_assembly_set
+    description: This property links a database object to the set of metatranscriptome
+      assemblies within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    mixins:
+    - object_set
+    domain: Database
+    alias: metatranscriptome_assembly_set
+    owner: Database
+    domain_of:
+    - Database
+    range: MetatranscriptomeAssembly
+    multivalued: true
+    inlined_as_list: true
+  metatranscriptome_expression_analysis_set:
+    name: metatranscriptome_expression_analysis_set
+    description: This property links a database object to the set of metatranscriptome
+      expression analysis activities.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    mixins:
+    - object_set
+    domain: Database
+    alias: metatranscriptome_expression_analysis_set
+    owner: Database
+    domain_of:
+    - Database
+    range: MetatranscriptomeExpressionAnalysis
     multivalued: true
     inlined_as_list: true
   nom_analysis_activity_set:
