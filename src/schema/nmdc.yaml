@@ -1825,7 +1825,7 @@ enums:
         exact_mappings:
           - SO:0000077
       sense orientation:
-        description: Orientation that corresponds to the coding sequencing of messenger RNA.
+        description: Orientation that corresponds to the coding sequence of messenger RNA.
 
       
   InstrumentModelEnum:
