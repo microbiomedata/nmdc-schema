@@ -19,7 +19,7 @@ def read_yaml(file_path):
 ROOT = os.path.join(os.path.dirname(__file__), '..')
 SCHEMA_DIR = os.path.join(ROOT, "nmdc_schema")
 
-SCHEMA_FILE = os.path.join(SCHEMA_DIR, 'nmdc_schema_merged.yaml')
+SCHEMA_FILE = os.path.join(SCHEMA_DIR, 'nmdc_materialized_patterns.yaml')
 
 
 class TestAllClassesAssertAClassUri(unittest.TestCase):

@@ -245,7 +245,7 @@ local/mongo_as_nmdc_database_cuire_repaired.ttl: local/mongo_as_nmdc_database.tt
 # $ make migration-doctests DOCTEST_OPT=''
 # ```
 DOCTEST_OPT ?= -v
-migration-doctests:
+migration-doctests: nmdc_schema/nmdc_materialized_patterns.yaml
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/*.py
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/partials/**/*.py
 	$(RUN) python -m doctest $(DOCTEST_OPT) nmdc_schema/migrators/adapters/*.py

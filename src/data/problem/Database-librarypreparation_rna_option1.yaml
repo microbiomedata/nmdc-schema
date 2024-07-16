@@ -1,4 +1,4 @@
-library_preparation_set:
+material_processing_set:
   - id: nmdc:libprp-99-555555
     name: RNA library creation of TREE_001-O-20170707-COMP-RNA
     description: RNA extraction of TREE_001-O-20170707-COMP-RNA using SOP 123
