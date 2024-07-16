@@ -35,8 +35,5 @@ python -m black /path/to/python/code.py
 For example:
 
 ```shell
-python -m black nmdc_schema/connect_napa_mongo.py
-python -m black nmdc_schema/metab_id_refactor.py
-python -m black nmdc_schema/napa_study_biosample_omics_migration.py
-python -m black nmdc_schema/runtime_api_operations.py
+python -m black src/scripts/task_specific_code/metap_records_delete.py
 ```
