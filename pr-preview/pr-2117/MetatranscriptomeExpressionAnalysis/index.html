@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeExpressionAnlaysis/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/MetatranscriptomeExpressionAnalysis/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
-<title>Class: MetatranscriptomeExpressionAnlaysis - NMDC Schema Documentation</title>
+<title>Class: MetatranscriptomeExpressionAnalysis - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-metatranscriptomeexpressionanlaysis">
+<a class="md-skip" href="#class-metatranscriptomeexpressionanalysis">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: MetatranscriptomeExpressionAnlaysis
+              Class: MetatranscriptomeExpressionAnalysis
             
           </span>
 </div>
@@ -272,67 +272,67 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-metatranscriptomeexpressionanlaysis">Class: MetatranscriptomeExpressionAnlaysis</h1>
+<h1 id="class-metatranscriptomeexpressionanalysis">Class: MetatranscriptomeExpressionAnalysis</h1>
 <p><em>A workflow process that provides expression values and read counts for gene features predicted on the contigs.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/MetatranscriptomeExpressionAnlaysis">nmdc:MetatranscriptomeExpressionAnlaysis</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/MetatranscriptomeExpressionAnalysis">nmdc:MetatranscriptomeExpressionAnalysis</a></p>
 <div class="mermaid">classDiagram
-  class MetatranscriptomeExpressionAnlaysis
-  click MetatranscriptomeExpressionAnlaysis href "../MetatranscriptomeExpressionAnlaysis"
-    WorkflowExecutionActivity &lt;|-- MetatranscriptomeExpressionAnlaysis
+  class MetatranscriptomeExpressionAnalysis
+  click MetatranscriptomeExpressionAnalysis href "../MetatranscriptomeExpressionAnalysis"
+    WorkflowExecutionActivity &lt;|-- MetatranscriptomeExpressionAnalysis
       click WorkflowExecutionActivity href "../WorkflowExecutionActivity"
 
 
 
-  MetatranscriptomeExpressionAnlaysis : alternative_identifiers
+  MetatranscriptomeExpressionAnalysis : alternative_identifiers
 
-  MetatranscriptomeExpressionAnlaysis : ended_at_time
+  MetatranscriptomeExpressionAnalysis : ended_at_time
 
-  MetatranscriptomeExpressionAnlaysis : execution_resource
+  MetatranscriptomeExpressionAnalysis : execution_resource
 
-  MetatranscriptomeExpressionAnlaysis : git_url
+  MetatranscriptomeExpressionAnalysis : git_url
 
-  MetatranscriptomeExpressionAnlaysis : has_failure_categorization
+  MetatranscriptomeExpressionAnalysis : has_failure_categorization
 
-      MetatranscriptomeExpressionAnlaysis --&gt; "*" FailureCategorization : has_failure_categorization
+      MetatranscriptomeExpressionAnalysis --&gt; "*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
-  MetatranscriptomeExpressionAnlaysis : has_input
+  MetatranscriptomeExpressionAnalysis : has_input
 
-      MetatranscriptomeExpressionAnlaysis --&gt; "1..*" NamedThing : has_input
+      MetatranscriptomeExpressionAnalysis --&gt; "1..*" NamedThing : has_input
     click NamedThing href "../NamedThing"
 
-  MetatranscriptomeExpressionAnlaysis : has_output
+  MetatranscriptomeExpressionAnalysis : has_output
 
-      MetatranscriptomeExpressionAnlaysis --&gt; "*" NamedThing : has_output
+      MetatranscriptomeExpressionAnalysis --&gt; "*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
-  MetatranscriptomeExpressionAnlaysis : id
+  MetatranscriptomeExpressionAnalysis : id
 
-  MetatranscriptomeExpressionAnlaysis : name
+  MetatranscriptomeExpressionAnalysis : name
 
-  MetatranscriptomeExpressionAnlaysis : part_of
+  MetatranscriptomeExpressionAnalysis : part_of
 
-      MetatranscriptomeExpressionAnlaysis --&gt; "*" NamedThing : part_of
+      MetatranscriptomeExpressionAnalysis --&gt; "*" NamedThing : part_of
     click NamedThing href "../NamedThing"
 
-  MetatranscriptomeExpressionAnlaysis : qc_comment
+  MetatranscriptomeExpressionAnalysis : qc_comment
 
-  MetatranscriptomeExpressionAnlaysis : qc_status
+  MetatranscriptomeExpressionAnalysis : qc_status
 
-      MetatranscriptomeExpressionAnlaysis --&gt; "0..1" StatusEnum : qc_status
+      MetatranscriptomeExpressionAnalysis --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
-  MetatranscriptomeExpressionAnlaysis : started_at_time
+  MetatranscriptomeExpressionAnalysis : started_at_time
 
-  MetatranscriptomeExpressionAnlaysis : type
+  MetatranscriptomeExpressionAnalysis : type
 
-  MetatranscriptomeExpressionAnlaysis : used
+  MetatranscriptomeExpressionAnalysis : used
 
-  MetatranscriptomeExpressionAnlaysis : version
+  MetatranscriptomeExpressionAnalysis : version
 
-  MetatranscriptomeExpressionAnlaysis : was_informed_by
+  MetatranscriptomeExpressionAnalysis : was_informed_by
 
-      MetatranscriptomeExpressionAnlaysis --&gt; "0..1" OmicsProcessing : was_informed_by
+      MetatranscriptomeExpressionAnalysis --&gt; "0..1" OmicsProcessing : was_informed_by
     click OmicsProcessing href "../OmicsProcessing"
 
 
@@ -342,7 +342,7 @@
 <ul>
 <li><a href="../Activity/">Activity</a><ul>
 <li><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a><ul>
-<li><strong>MetatranscriptomeExpressionAnlaysis</strong></li>
+<li><strong>MetatranscriptomeExpressionAnalysis</strong></li>
 </ul>
 </li>
 </ul>
@@ -478,7 +478,7 @@
 <td><a href="../Database/">Database</a></td>
 <td><a href="../metatranscriptome_expression_set/">metatranscriptome_expression_set</a></td>
 <td>range</td>
-<td><a href="./">MetatranscriptomeExpressionAnlaysis</a></td>
+<td><a href="./">MetatranscriptomeExpressionAnalysis</a></td>
 </tr>
 </tbody>
 </table>
@@ -498,11 +498,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nmdc:MetatranscriptomeExpressionAnlaysis</td>
+<td>nmdc:MetatranscriptomeExpressionAnalysis</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nmdc:MetatranscriptomeExpressionAnlaysis</td>
+<td>nmdc:MetatranscriptomeExpressionAnalysis</td>
 </tr>
 </tbody>
 </table>
@@ -510,7 +510,7 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: MetatranscriptomeExpressionAnlaysis
+<pre><code class="language-yaml">name: MetatranscriptomeExpressionAnalysis
 description: A workflow process that provides expression values and read counts for
   gene features predicted on the contigs.
 in_subset:
@@ -536,7 +536,7 @@ slot_usage:
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: MetatranscriptomeExpressionAnlaysis
+<pre><code class="language-yaml">name: MetatranscriptomeExpressionAnalysis
 description: A workflow process that provides expression values and read counts for
   gene features predicted on the contigs.
 in_subset:
@@ -566,7 +566,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: type
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - DataObject
     - Biosample
@@ -578,7 +578,7 @@ attributes:
     - MetagenomeAssembly
     - MetagenomeAnnotationActivity
     - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeExpressionAnlaysis
+    - MetatranscriptomeExpressionAnalysis
     - MagsAnalysisActivity
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
@@ -590,7 +590,7 @@ attributes:
     rank: 1000
     domain: Activity
     alias: execution_resource
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecutionActivity
     range: string
@@ -600,7 +600,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: git_url
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecutionActivity
     range: string
@@ -612,7 +612,7 @@ attributes:
     rank: 1000
     domain: NamedThing
     alias: has_input
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - BiosampleProcessing
     - OmicsProcessing
@@ -631,7 +631,7 @@ attributes:
     rank: 1000
     domain: NamedThing
     alias: has_output
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - OmicsProcessing
     - PlannedProcess
@@ -652,7 +652,7 @@ attributes:
     domain: NamedThing
     slot_uri: dcterms:isPartOf
     alias: part_of
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - FieldResearchSite
     - Biosample
@@ -667,7 +667,7 @@ attributes:
     rank: 1000
     domain: Activity
     alias: version
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - WorkflowExecutionActivity
     - ReadQcAnalysisActivity
@@ -680,7 +680,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: qc_status
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
     - WorkflowExecutionActivity
@@ -693,7 +693,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: qc_comment
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
     - WorkflowExecutionActivity
@@ -703,7 +703,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: has_failure_categorization
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - PlannedProcess
     - WorkflowExecutionActivity
@@ -715,7 +715,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: alternative_identifiers
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Biosample
     - Study
@@ -733,7 +733,7 @@ attributes:
     rank: 1000
     identifier: true
     alias: id
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Biosample
     - Study
@@ -751,7 +751,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: name
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Protocol
     - NamedThing
@@ -764,7 +764,7 @@ attributes:
     rank: 1000
     domain: Activity
     alias: started_at_time
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: string
@@ -776,7 +776,7 @@ attributes:
     rank: 1000
     domain: Activity
     alias: ended_at_time
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: string
@@ -787,7 +787,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: was_informed_by
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: OmicsProcessing
@@ -802,7 +802,7 @@ attributes:
     rank: 1000
     domain: Activity
     alias: used
-    owner: MetatranscriptomeExpressionAnlaysis
+    owner: MetatranscriptomeExpressionAnalysis
     domain_of:
     - Activity
     range: string
