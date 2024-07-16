@@ -1,7 +1,6 @@
 id: https://w3id.org/nmdc/nmdc
 name: NMDC
 title: NMDC Schema
-
 notes:
   - not importing any MIxS terms where the relationship between the name (SCN) and the id isn't 1:1
 description: >-
@@ -290,6 +289,8 @@ classes:
       - library_preparation_kit
       - library_type
       - pcr_cycles
+      - is_stranded
+      - stranded_orientation
     close_mappings:
       - OBI:0000711
     comments:
@@ -1813,6 +1814,20 @@ classes:
       - https://casrai.org/credit/
 
 enums:
+
+  StrandedOrientationEnum:
+    description: This enumeration specifies information about stranded RNA library preparations.
+    permissible_values:
+      antisense orientation:
+        description: Orientation that is complementary (non-coding) to a sequence of messenger RNA.
+        comments:
+          - See https://www.genome.gov/genetics-glossary/antisense
+        exact_mappings:
+          - SO:0000077
+      sense orientation:
+        description: Orientation that corresponds to the coding sequence of messenger RNA.
+
+      
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -2531,6 +2546,17 @@ slots:
     range: integer
     exact_mappings:
       - OBI:0002475
+  
+  is_stranded:
+    description: Is the (RNA) library stranded or non-stranded (unstranded). 
+    range: boolean
+    comments: 
+      - A value of true means the library is stranded, flase means non-stranded. 
+  
+  stranded_orientation:
+    description: Lists the strand orientiation for a stranded RNA library preparation.
+    range: StrandedOrientationEnum
+    
   
   mass:
     title: mass
