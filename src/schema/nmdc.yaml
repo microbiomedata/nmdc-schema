@@ -184,7 +184,7 @@ classes:
       - metaproteomics_analysis_activity_set
       - metatranscriptome_annotation_set
       - metatranscriptome_assembly_set
-      - metatranscriptome_expression_set
+      - metatranscriptome_expression_analysis_set
       - nom_analysis_activity_set
       - omics_processing_set
       - planned_process_set
