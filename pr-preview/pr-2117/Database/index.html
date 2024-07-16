@@ -646,7 +646,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../metatranscriptome_expression_set/">metatranscriptome_expression_set</a></td>
+<td><a href="../metatranscriptome_expression_analysis_set/">metatranscriptome_expression_analysis_set</a></td>
 <td>* <br/> <a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
 <td>This property links a database object to the set of metatranscriptome express...</td>
 <td>direct</td>
@@ -816,7 +816,7 @@
 </tr>
 <tr>
 <td><a href="./">Database</a></td>
-<td><a href="../metatranscriptome_expression_set/">metatranscriptome_expression_set</a></td>
+<td><a href="../metatranscriptome_expression_analysis_set/">metatranscriptome_expression_analysis_set</a></td>
 <td>domain</td>
 <td><a href="./">Database</a></td>
 </tr>
@@ -931,7 +931,7 @@ slots:
 - metaproteomics_analysis_activity_set
 - metatranscriptome_annotation_set
 - metatranscriptome_assembly_set
-- metatranscriptome_expression_set
+- metatranscriptome_expression_analysis_set
 - nom_analysis_activity_set
 - omics_processing_set
 - planned_process_set
@@ -1225,8 +1225,8 @@ attributes:
     range: MetatranscriptomeAssembly
     multivalued: true
     inlined_as_list: true
-  metatranscriptome_expression_set:
-    name: metatranscriptome_expression_set
+  metatranscriptome_expression_analysis_set:
+    name: metatranscriptome_expression_analysis_set
     description: This property links a database object to the set of metatranscriptome
       expression analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1234,7 +1234,7 @@ attributes:
     mixins:
     - object_set
     domain: Database
-    alias: metatranscriptome_expression_set
+    alias: metatranscriptome_expression_analysis_set
     owner: Database
     domain_of:
     - Database

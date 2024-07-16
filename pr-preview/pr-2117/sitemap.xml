@@ -3471,7 +3471,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/metatranscriptome_expression_set/</loc>
+         <loc>https://microbiomedata.github.io/nmdc-schema/metatranscriptome_expression_analysis_set/</loc>
          <lastmod>2024-07-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
