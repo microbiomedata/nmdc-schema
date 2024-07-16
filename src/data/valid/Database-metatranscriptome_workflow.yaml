@@ -40,7 +40,7 @@ metatranscriptome_annotation_set:
     has_output:
      - nmdc:dobj-11-547rwq75
      - nmdc:dobj-11-547rwq77
-metatranscriptome_expression_set:
+metatranscriptome_expression_analysis_set:
   - id: nmdc:wfmtex-11-23989.1
     git_url: https://github.com/microbiomedata/metaT_ReadCounts
     version: v0.0.1
