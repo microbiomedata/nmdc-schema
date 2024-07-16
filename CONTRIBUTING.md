@@ -109,9 +109,9 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Follow the naming conventions of the parent class
     - Descriptions of child classes may reference parent classes in a genus-differentia definition structure (e.g. "A workflow execution activity that...")
     - Inheritance should be monotonic: `slot_usage` should refine rather than override
-- ID patterning
-    - New classes should follow conventions found [here](https://microbiomedata.github.io/nmdc-schema/identifiers/)
-    - Class-linking slots (i.e. `has_input`) should have slot_usage declared that limit range to the expecting linked class
+- ID patterning and checks
+    - ID patterns for new classes should follow conventions found [here](https://microbiomedata.github.io/nmdc-schema/identifiers/)
+    - Class-linking slots (i.e. `has_input`) should have slot_usage declared that limit range to only instances of the expecting linked class (i.e. `syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"`)
 
 ### Testing Changes Locally
 
