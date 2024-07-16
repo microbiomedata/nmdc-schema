@@ -431,15 +431,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -526,10 +517,6 @@
 <ul>
 <li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Tool tip pull from <a href="https://gold.jgi.doe.gov/ecosystem_classification">https://gold.jgi.doe.gov/ecosystem_classification</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="annotations">Annotations</h3>
 <table>
@@ -578,9 +565,11 @@ annotations:
     tag: tool_tip
     value: GOLD Ecosystem Classification paths describe the surroundings from which
       an environmental sample or an organism is collected.
+    annotations:
+      source:
+        tag: source
+        value: https://gold.jgi.doe.gov/ecosystem_classification
 description: This is a grouping for any of the gold path fields
-comments:
-- Tool tip pull from https://gold.jgi.doe.gov/ecosystem_classification
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 abstract: true
