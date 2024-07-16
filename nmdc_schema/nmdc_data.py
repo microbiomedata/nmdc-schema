@@ -43,7 +43,7 @@ def get_nmdc_yaml_bytesIO() -> io.BytesIO:
         A bytes stream of nmdc.yaml file.
     """
     # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc_schema_merged.yaml"))
+    return io.BytesIO(pkgutil.get_data(__name__, "nmdc_materialized_patterns.yaml"))
 
 
 def get_nmdc_yaml_bytes() -> bytes:
@@ -94,7 +94,7 @@ def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = Non
     True
     """
 
-    # Determine which file we will use.
+    # Determine which JSON Schema file we will use.
     file_name = "nmdc.schema.json"
     if variant == SchemaVariantIdentifier.nmdc_materialized_patterns:
         file_name = "nmdc_materialized_patterns.schema.json"
@@ -103,7 +103,7 @@ def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = Non
 
 
 def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None) -> bytes:
-    """Reruns the nmdc.schema.json file as bytes.
+    """Returns the nmdc.schema.json file as bytes.
 
     Returns
     -------
