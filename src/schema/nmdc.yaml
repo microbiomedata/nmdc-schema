@@ -181,7 +181,9 @@ classes:
       - metagenome_assembly_set
       - metagenome_sequencing_activity_set
       - metaproteomics_analysis_activity_set
-      - metatranscriptome_activity_set
+      - metatranscriptome_annotation_set
+      - metatranscriptome_assembly_set
+      - metatranscriptome_expression_analysis_set
       - nom_analysis_activity_set
       - omics_processing_set
       - planned_process_set
@@ -2395,8 +2397,12 @@ enums:
         description: A failure has occurred in library preparation, a lab process.
       MetagenomeAssembly:
         description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeActivity:
-        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      MetatranscriptomeExpressionAnalysis:
+        description: A failure has occurred in metatranscriptome expression analysis, a workflow process.
+      MetatranscriptomeAnnotation:
+        description: A failure has occurred in metatranscriptome annotation analysis, a workflow process.
+      MetatranscriptomeAssembly:
+        description: A failure has occurred in metatranscriptome assembly analysis, a workflow process.
       MagsAnalysisActivity:
         description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
       ReadQcAnalysisActivity:
@@ -2910,12 +2916,12 @@ slots:
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
-  metatranscriptome_activity_set:
+  metatranscriptome_expression_analysis_set:
     domain: Database # not inherited by mixin users
     mixins: object_set
-    range: MetatranscriptomeActivity
+    range: MetatranscriptomeExpressionAnalysis
     description:
-      This property links a database object to the set of metatranscriptome
+      This property links a database object to the set of metatranscriptome expression
       analysis activities.
   read_qc_analysis_activity_set:
     domain: Database # not inherited by mixin users
@@ -2965,6 +2971,17 @@ slots:
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
+  metatranscriptome_assembly_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetatranscriptomeAssembly
+    description: This property links a database object to the set of metatranscriptome assemblies within it.
+  metatranscriptome_annotation_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetatranscriptomeAnnotationActivity
+    description: This property links a database object to the set of metatranscriptome annotations within it.
+  
 
   omics_type:
     domain: OmicsProcessing
