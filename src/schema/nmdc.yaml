@@ -216,7 +216,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(mscon)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
   
   ChromatographyConfiguration:
@@ -237,7 +237,7 @@ classes:
         required: true
       id:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(chrocon)-{id_shoulder}-{id_blade}$"
+          syntax: "{id_nmdc_prefix}:chrocon-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   FunctionalAnnotationAggMember:
