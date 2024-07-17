@@ -879,7 +879,6 @@ classes:
       - sediment_type
       - seq_meth
       - seq_quality_check
-      #      - sequencing field
       - sewage_type
       - shad_dev_water_mold
       - shading_device_cond
