@@ -25,7 +25,5 @@ omics_processing_set:
     - nmdc:sty-00-123456
    processing_institution: JGI
    type: nmdc:OmicsProcessing
-   seq_meth:
-     has_raw_value: xxx
 
 

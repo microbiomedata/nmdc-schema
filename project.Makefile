@@ -1,6 +1,5 @@
 ## Add your own custom Makefile targets here
 
-JENA_PATH=~/apache-jena/bin/
 RUN=poetry run
 
 JENA_DIR=~/apache-jena/bin/
@@ -20,8 +19,8 @@ examples-clean:
 	rm -rf examples/output
 
 mixs-yaml-clean:
-	rm -rf local/mixs_regen/mixs_subset_modified*yaml
 	rm -rf src/schema/mixs.yaml
+	rm -rf local/mixs_regen/mixs_subset_modified*yaml
 
 rdf-clean:
 	rm -rf \
@@ -116,6 +115,7 @@ examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhas
 		--schema-path src/schema/nmdc.yaml
 
 examples/output/Pooling-minimal-report.yaml: src/data/valid/Pooling-minimal.yaml
+	mkdir -p $(@D) # create parent directory
 	poetry run exhaustion-check \
 		--class-name Pooling \
 		--instance-yaml-file $< \

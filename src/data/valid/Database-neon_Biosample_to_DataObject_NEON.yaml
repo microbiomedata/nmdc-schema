@@ -105,8 +105,6 @@ omics_processing_set:
   - nmdc:sty-11-34xj1150
   processing_institution: Battelle
   type: nmdc:OmicsProcessing
-  seq_meth:
-    has_raw_value: xxx
 read_qc_analysis_activity_set:
 - id: nmdc:wfrqc-12-63da5n74.1
   name: 'TEST Read QC Activity for nmdc:wfrqc-12-63da5n74.1 '

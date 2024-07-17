@@ -18,8 +18,6 @@ omics_processing_set:
       - nmdc:sty-00-123456
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-    seq_meth:
-      has_raw_value: xxx
   - id: nmdc:omprc-99-gKlQlF
     alternative_identifiers:
       - gold:Gp0108340
@@ -39,8 +37,6 @@ omics_processing_set:
       - nmdc:sty-00-123456
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-    seq_meth:
-      has_raw_value: xxx
   - id: nmdc:omprc-99-5kgIJR
     alternative_identifiers:
       - gold:Gp0108341
@@ -60,5 +56,3 @@ omics_processing_set:
       - nmdc:sty-00-123456
     processing_institution: JGI
     type: nmdc:OmicsProcessing
-    seq_meth:
-      has_raw_value: xxx
