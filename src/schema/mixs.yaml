@@ -8463,10 +8463,4 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
-  host_family_relation:
-    range: string
-  samp_collec_device:
-    range: string
-  samp_collec_method:
-    range: string
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml

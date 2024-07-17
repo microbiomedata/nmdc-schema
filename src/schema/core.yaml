@@ -28,12 +28,6 @@ default_prefix: nmdc
 default_range: string
 
 
-subsets:
-#  environment: { }
-#  investigation: { }
-#  nucleic acid sequence source: { }
-#  sequencing: { }
-
 types:
 
   bytes:

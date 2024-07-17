@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-17T15:01:35
+# Generation date: 2024-07-17T15:17:22
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -1407,8 +1407,6 @@ class Biosample(MaterialEntity):
     salinity: Optional[Union[dict, "TextValue"]] = None
     salt_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     samp_capt_status: Optional[Union[str, "SAMPCAPTSTATUSENUM"]] = None
-    samp_collec_device: Optional[str] = None
-    samp_collec_method: Optional[str] = None
     samp_collect_point: Optional[Union[str, "SAMPCOLLECTPOINTENUM"]] = None
     samp_dis_stage: Optional[Union[str, "SAMPDISSTAGEENUM"]] = None
     samp_floor: Optional[str] = None
@@ -2784,12 +2782,6 @@ class Biosample(MaterialEntity):
 
         if self.samp_capt_status is not None and not isinstance(self.samp_capt_status, SAMPCAPTSTATUSENUM):
             self.samp_capt_status = SAMPCAPTSTATUSENUM(self.samp_capt_status)
-
-        if self.samp_collec_device is not None and not isinstance(self.samp_collec_device, str):
-            self.samp_collec_device = str(self.samp_collec_device)
-
-        if self.samp_collec_method is not None and not isinstance(self.samp_collec_method, str):
-            self.samp_collec_method = str(self.samp_collec_method)
 
         if self.samp_collect_point is not None and not isinstance(self.samp_collect_point, SAMPCOLLECTPOINTENUM):
             self.samp_collect_point = SAMPCOLLECTPOINTENUM(self.samp_collect_point)
@@ -10689,15 +10681,6 @@ slots.window_water_mold = Slot(uri=MIXS['0000854'], name="window_water_mold", cu
 slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('0000156'),
                    model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, TextValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
-
-slots.host_family_relation = Slot(uri=MIXS.host_family_relation, name="host_family_relation", curie=MIXS.curie('host_family_relation'),
-                   model_uri=NMDC.host_family_relation, domain=None, range=Optional[str])
-
-slots.samp_collec_device = Slot(uri=MIXS.samp_collec_device, name="samp_collec_device", curie=MIXS.curie('samp_collec_device'),
-                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
-
-slots.samp_collec_method = Slot(uri=MIXS.samp_collec_method, name="samp_collec_method", curie=MIXS.curie('samp_collec_method'),
-                   model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])

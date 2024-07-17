@@ -279,6 +279,7 @@ local/biosample-slot-range-type-report.tsv: src/schema/nmdc.yaml
 		--output $@ \
 		--schema-class Biosample
 
+
 ## FUSEKI, DOCKER, ETC
 # we use Apache's Jena RDF/SPARQL framework
 # Jena provides command line tools for accessing RDF *files*
