@@ -137,10 +137,10 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosampl
 # todo compress large files
 # todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
-pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
+pure-export-and-validate: local/mongo_as_nmdc_database_validation.log.txt
 
 make-rdf: rdf-clean \
-	local/mongo_as_nmdc_database_validation.log \
+	local/mongo_as_nmdc_database_validation.log.txt \
 	local/mongo_as_nmdc_database_cuire_repaired.ttl \
 	local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl # could omit rdf-clean. then this could build incrementally on top of pure-export-and-validate
 
@@ -222,7 +222,7 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patter
 		--schema-path $(word 1,$^) \
 		--output-path $@
 
-.PRECIOUS: local/mongo_as_nmdc_database_validation.log
+.PRECIOUS: local/mongo_as_nmdc_database_validation.log.txt
 
 local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set

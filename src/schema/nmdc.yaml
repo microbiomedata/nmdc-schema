@@ -122,6 +122,31 @@ settings:
   id_version: "(\\.[0-9]{1,})"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
 
+  country: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+) # from https://github.com/GenomicsStandardsConsortium/mixs/blob/main/src/mixs/schema/mixs.yaml
+  parameters: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  region: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_name: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  software: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  specific_location: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  storage_condition_type: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  termLabel: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  unit: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  version: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  DOI: ^doi:10.\d{2,9}/.*$
+  NCBItaxon_id: NCBITaxon:\d+
+  PMID: ^PMID:\d+$
+  URL: ^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$
+  adapter: '[ACGTRKSYMWBHDVN]+'
+  ambiguous_nucleotides: '[ACGTRKSYMWBHDVN]+'
+  duration: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
+  float: '[-+]?[0-9]*\.?[0-9]+'
+  integer: '[1-9][0-9]*'
+  lat: (-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90))
+  lon: -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})
+  room_number: '[1-9][0-9]*'
+  scientific_float: '[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?'
+  termID: '[a-zA-Z]{2,}:[a-zA-Z0-9]\d+'
+
 subsets:
   sample subset:
     description:
