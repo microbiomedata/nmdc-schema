@@ -1,9 +1,0 @@
-PREFIX nmdc: <https://w3id.org/nmdc/>
-PREFIX MIXS: <https://w3id.org/mixs/>
-
-select ?cur_vegetation (COUNT(?cur_vegetation) AS ?count)
-where {
-  ?s MIXS:0000312 ?o .
-  ?o nmdc:has_raw_value ?cur_vegetation .
-}
-GROUP BY ?cur_vegetation

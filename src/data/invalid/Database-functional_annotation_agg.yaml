@@ -1,0 +1,4 @@
+#invalid b/c a required slot is missing
+functional_annotation_agg:
+  - metagenome_annotation_id: nmdc:8253bcdcd0387177ff895c38a047c719
+    count: 120

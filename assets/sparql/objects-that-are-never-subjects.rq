@@ -1,0 +1,33 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT
+distinct
+?st ?p ?o
+# ?p
+WHERE {
+  graph <https://api-napa.microbiomedata.org> {
+    ?s ?p ?o .
+    filter(isuri(?o))
+    minus {
+      ?o ?op ?oo .
+    } minus {
+      ?s <https://w3id.org/nmdc/award_dois> ?o .
+    } minus {
+      ?s <https://w3id.org/nmdc/publication_dois> ?o .
+    } minus {
+      ?s <https://w3id.org/nmdc/massive_study_identifiers> ?o .
+    }
+    optional {
+      ?s a ?st
+    }
+  } minus {
+    graph <https://w3id.org/nmdc/nmdc> {
+      ?o ?op ?oo .
+    }
+  } minus {
+    graph <https://w3id.org/nmdc/nmdc> {
+      ?p rdfs:subPropertyOf* <https://w3id.org/nmdc/alternative_identifiers>
+    }
+  }
+}
+order by ?st ?p ?o

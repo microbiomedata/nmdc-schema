@@ -8,7 +8,6 @@ notes:
   - "should type be required for WorkflowExecutionActivity ?  What would the range be ?"
 
 imports:
-  - external_identifiers
   - core
 
 prefixes:
@@ -24,7 +23,9 @@ subsets:
       Subset consisting of just the workflow execution activities
 
 classes:
+
   WorkflowExecutionActivity:
+    abstract: true
     aliases:
       - analysis
     comments:
@@ -45,6 +46,33 @@ classes:
       - part_of
       - type
       - version
+      - qc_status
+      - qc_comment
+      - has_failure_categorization
+      - alternative_identifiers
+    rules:
+      - title: qc_status_pass_has_output_required
+        description: >-
+          If qc_status has a value of pass, then the has_output slot is required.
+        preconditions:
+          slot_conditions:
+            qc_status:
+              equals_string: pass
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
+      - title: qc_status_pass_null_has_output_required
+        description: >-
+          If qc_status is not specified, then the has_output slot is required.
+        preconditions:
+          slot_conditions:
+            qc_status:
+              value_presence: ABSENT
+        postconditions:
+          slot_conditions:
+            has_output:
+              required: true
 
     slot_usage:
       started_at_time:
@@ -55,8 +83,13 @@ classes:
         required: true
       has_input:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
-        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+          interpolated: true
       execution_resource:
         required: true
       type:
@@ -64,8 +97,10 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+
+
 
   MetagenomeAssembly:
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -108,7 +143,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetatranscriptomeAssembly:
@@ -148,7 +183,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetagenomeAnnotationActivity:
@@ -163,7 +198,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetatranscriptomeAnnotationActivity:
@@ -177,13 +212,13 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
-  MetatranscriptomeActivity:
+  MetatranscriptomeExpressionAnalysis:
     is_a: WorkflowExecutionActivity
     description: >-
-      A metatranscriptome activity that e.g. pools assembly and annotation activity.
+      A workflow process that provides expression values and read counts for gene features predicted on the contigs.
     in_subset:
       - workflow subset
     slots:
@@ -192,7 +227,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -214,7 +249,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -228,7 +263,11 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
+      has_input:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
 
 
@@ -251,7 +290,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   ReadBasedTaxonomyAnalysisActivity:
@@ -266,7 +305,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -281,7 +320,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   MetaproteomicsAnalysisActivity:
@@ -292,12 +331,11 @@ classes:
       - has_peptide_quantifications
     slot_usage:
       used:
-        # range: Instrument
         description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   NomAnalysisActivity:
@@ -308,13 +346,12 @@ classes:
       - has_calibration
     slot_usage:
       used:
-        range: string
-        #        range: Instrument
+        #        range: string
         description: The instrument used to collect the data used in the analysis
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
 
@@ -324,6 +361,7 @@ slots:
     abstract: true
 
   has_peptide_quantifications:
+    domain: MetaproteomicsAnalysisActivity
     range: PeptideQuantification
     multivalued: true
 
@@ -493,6 +531,7 @@ slots:
     abstract: true
 
   mags_list:
+    domain: MagsAnalysisActivity
     range: MagBin
     multivalued: true
 
@@ -551,7 +590,10 @@ slots:
       A reference to a file that holds calibration information.
 
   has_metabolite_quantifications:
+    domain: MetabolomicsAnalysisActivity
     range: MetaboliteQuantification
     multivalued: true
 
-  version: { }
+  version:
+    domain: Activity
+    range: string

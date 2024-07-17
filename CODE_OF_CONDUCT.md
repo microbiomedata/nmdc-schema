@@ -13,7 +13,7 @@ In the interest of fostering an open and welcoming environment, we pledge to mak
 We commit to the following principles:
 - *Embrace Diversity and Inclusivity*: Celebrate and support our diversity of data, people, and questions, recognizing it as a core strength of our community.
 - *Cultivate a Harassment-Free Environment*: Ensure our community is free from harassment of all kinds, including inappropriate verbal and written language and imagery.
-- *Promote Constructive Engagement*: Engage in constructive, transparent, and inclusive dialogue, allowing diverse perspectives to be shared, supporting new ideas, and providing novel solutions to current challenges.
+- *Promote Constructive Engagement*: Engage in constructive, transparent, and inclusive dialogue, allowing diverse perspectives to be shared, supporting new ideas, and providing solutions to current challenges.
 - *Demonstrate Professionalism and Positivity*: Celebrate all contributions, understand the learning opportunities in failure, and foster a culture of trust through accountability and transparent communication.
 - *Encourage Collaboration and Shared Ownership*: Advance collaboration with shared ownership across all microbiome research communities, respecting the contributions of every member.
 - *Abide by Community Guidelines*: All community interactions should align with [NMDC's Data Use Policy](https://microbiomedata.org/nmdc-data-use-policy/) and the principles outlined in this document.

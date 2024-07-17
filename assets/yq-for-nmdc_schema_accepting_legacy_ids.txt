@@ -1,0 +1,6 @@
+# targeted removal of pattern constraints that have not been fully implemented by the Napa squad
+
+'.classes.ReadBasedTaxonomyAnalysisActivity.slot_usage.id.pattern = ".*"'
+'.classes.ReadBasedTaxonomyAnalysisActivity.slot_usage.id.structured_pattern.syntax = ".*"'
+'.classes.ReadQcAnalysisActivity.slot_usage.id.pattern = ".*"'
+'.classes.ReadQcAnalysisActivity.slot_usage.id.structured_pattern.syntax = ".*"'

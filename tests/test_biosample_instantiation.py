@@ -9,6 +9,8 @@ from nmdc_schema.nmdc import (
 
 
 class TestBiosampleInstantiation(unittest.TestCase):
+    # @unittest.skip(
+    #     "why is abs_air_humidity required? moving away from unit tests an instantiation test in gneeral anyway")
     def test_with_part_of(self):
         self.assertTrue(True)
 
@@ -21,6 +23,7 @@ class TestBiosampleInstantiation(unittest.TestCase):
             env_broad_scale=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
             env_local_scale=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
             env_medium=ControlledIdentifiedTermValue(term=OntologyClass(id="ENVO:00000000")),
+            samp_name="xxx",
         )
 
     def test_invalid_biosample(self):
@@ -31,6 +34,7 @@ class TestBiosampleInstantiation(unittest.TestCase):
                 env_broad_scale=ControlledTermValue(),
                 env_local_scale=ControlledTermValue(),
                 env_medium=ControlledTermValue(),
+                samp_name="xxx",
             )
 
 

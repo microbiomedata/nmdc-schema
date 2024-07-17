@@ -11,6 +11,11 @@ Versioning for this project is based on [Semantic Versioning](https://semver.org
 ## Unreleased
 
 ### Added
+- pattern to the `websites` slot that accepts websites that start with http or https (case insensitive) and does not allow doi.org.
+
+## 9.1.0 - 2023-11-07 (multiple releases since 8.1.0)
+
+### Added
 - `Doi` class with slots `doi_value`, `doi_category`, and `doi_provider`.
 - `DoiProviderEnum` and `DoiCategoryEnum`
 

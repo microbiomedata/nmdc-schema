@@ -351,11 +351,15 @@ def cli(
             nmdc_database_object[current_collection] = paginated_data
         else:  # todo needs safer programming like try/except
             logger.warning(f"FastAPI request to {endpoint_name} appears to have failed. Trying as a PyMongo query.")
-            direct_data_all = nmdc_pymongo_client.get_docs_from_pymongo(current_collection, max_docs)
-            if direct_data_all:
-                logger.info(
-                    f"Successfully retrieved {len(direct_data_all)} documents from {current_collection} via PyMongo")
-                nmdc_database_object[current_collection] = direct_data_all
+            try:
+                direct_data_all = nmdc_pymongo_client.get_docs_from_pymongo(current_collection, max_docs)
+                if direct_data_all:
+                    logger.info(
+                        f"Successfully retrieved {len(direct_data_all)} documents from {current_collection} via PyMongo")
+                    nmdc_database_object[current_collection] = direct_data_all
+            except Exception as e:
+                logger.warning(
+                    f"PyMongo request to {endpoint_name} appears to have failed, probably because you specified {collection_check = }. Error = {e}.")
 
     logger.info(f"Writing {output_yaml}")
     yaml_dumper.dump(nmdc_database_object, output_yaml)

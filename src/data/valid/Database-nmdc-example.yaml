@@ -84,6 +84,8 @@ omics_processing_set:
       - nmdc:sty-00-31415
     processing_institution: JGI
     type: nmdc:OmicsProcessing
+    seq_meth:
+      has_raw_value: xxx
   - id: nmdc:omprc-99-dk9vgI
     alternative_identifiers:
       - gold:Gp0208560
@@ -103,6 +105,10 @@ omics_processing_set:
       - nmdc:sty-00-8675309
     processing_institution: JGI
     type: nmdc:OmicsProcessing
+    seq_meth:
+      has_raw_value: xxx
+    seq_meth:
+      has_raw_value: xxx
   - id: nmdc:omprc-99-MVW1FV
     alternative_identifiers:
       - gold:Gp0306221
@@ -124,6 +130,8 @@ omics_processing_set:
       - nmdc:sty-00-avacado
     processing_institution: JGI
     type: nmdc:OmicsProcessing
+    seq_meth:
+      has_raw_value: xxx
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
     gold_biosample_identifiers:
@@ -256,7 +264,7 @@ biosample_set:
     ncbi_taxonomy_name: rhizosphere metagenome
     sample_collection_site: Peat Soil
 data_object_set:
-  - id: nmdc:dobj-99-dkJ8xX
+  - id: nmdc:dobj-99-dkJ8ab
     name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
     description: Raw sequencer read data
     file_size_bytes: 9208349052

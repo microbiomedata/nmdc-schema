@@ -1,7 +1,14 @@
+import logging
 from typing import Any
 from importlib import resources
 from pathlib import Path
 import yaml
+
+logger = logging.getLogger(__name__)
+
+# TODO: Determine directory path and package path dynamically, instead of hard-coding them.
+MIGRATOR_DIRECTORY = "nmdc_schema/migrators"
+MIGRATOR_PACKAGE = "nmdc_schema.migrators"
 
 
 def load_yaml_asset(path_to_asset_file: str) -> Any:
@@ -19,8 +26,7 @@ def load_yaml_asset(path_to_asset_file: str) -> Any:
     - https://realpython.com/python-yaml/#load-a-document-from-a-string-a-file-or-a-stream
     """
     # Define the Python path someone could use to `import` the package containing the `assets` directory.
-    # TODO: Determine package base name dynamically, instead of hard-coding it.
-    package_import_path = "nmdc_schema.migrators"
+    package_import_path = MIGRATOR_PACKAGE
 
     # Define the filesystem path to the `assets` directory (relative to that package).
     path_to_assets_directory = "assets"
@@ -33,7 +39,6 @@ def load_yaml_asset(path_to_asset_file: str) -> Any:
 
     # Use `resources.as_file()` to get an `open()`-able path to the asset file.
     with resources.as_file(traversable_resource_container) as file_path:
-
         # Finally, open the asset file and parse its contents as YAML.
         with open(file_path, "r") as f:
             obj = yaml.safe_load(f)  # the object type depends upon the YAML data

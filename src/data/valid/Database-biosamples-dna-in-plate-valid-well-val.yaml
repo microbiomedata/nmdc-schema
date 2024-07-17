@@ -16,4 +16,105 @@ biosample_set:
         id: ENVO:00005792
     dna_cont_type: plate
     dna_cont_well: B2
-
+  - id: nmdc:bsm-99-000001
+    part_of:
+      - nmdc:sty-00-abc123
+    env_broad_scale:
+      has_raw_value: ENVO:00002030
+      term:
+        id: ENVO:00002030
+    env_local_scale:
+      has_raw_value: ENVO:00002169
+      term:
+        id: ENVO:00002169
+    env_medium:
+      has_raw_value: ENVO:00005792
+      term:
+        id: ENVO:00005792
+    dna_cont_type: plate
+    dna_cont_well: A10
+  - id: nmdc:bsm-99-000002
+    part_of:
+      - nmdc:sty-00-abc123
+    env_broad_scale:
+      has_raw_value: ENVO:00002030
+      term:
+        id: ENVO:00002030
+    env_local_scale:
+      has_raw_value: ENVO:00002169
+      term:
+        id: ENVO:00002169
+    env_medium:
+      has_raw_value: ENVO:00005792
+      term:
+        id: ENVO:00005792
+    dna_cont_type: plate
+    dna_cont_well: A11
+  - id: nmdc:bsm-99-000003
+    part_of:
+      - nmdc:sty-00-abc123
+    env_broad_scale:
+      has_raw_value: ENVO:00002030
+      term:
+        id: ENVO:00002030
+    env_local_scale:
+      has_raw_value: ENVO:00002169
+      term:
+        id: ENVO:00002169
+    env_medium:
+      has_raw_value: ENVO:00005792
+      term:
+        id: ENVO:00005792
+    dna_cont_type: plate
+    dna_cont_well: H10
+  - id: nmdc:bsm-99-000004
+    part_of:
+      - nmdc:sty-00-abc123
+    env_broad_scale:
+      has_raw_value: ENVO:00002030
+      term:
+        id: ENVO:00002030
+    env_local_scale:
+      has_raw_value: ENVO:00002169
+      term:
+        id: ENVO:00002169
+    env_medium:
+      has_raw_value: ENVO:00005792
+      term:
+        id: ENVO:00005792
+    dna_cont_type: plate
+    dna_cont_well: H11
+  - id: nmdc:bsm-99-000005
+    part_of:
+      - nmdc:sty-00-abc123
+    env_broad_scale:
+      has_raw_value: ENVO:00002030
+      term:
+        id: ENVO:00002030
+    env_local_scale:
+      has_raw_value: ENVO:00002169
+      term:
+        id: ENVO:00002169
+    env_medium:
+      has_raw_value: ENVO:00005792
+      term:
+        id: ENVO:00005792
+    dna_cont_type: plate
+    dna_cont_well: C1
+  - id: nmdc:bsm-99-000006
+    part_of:
+      - nmdc:sty-00-abc123
+    env_broad_scale:
+      has_raw_value: ENVO:00002030
+      term:
+        id: ENVO:00002030
+    env_local_scale:
+      has_raw_value: ENVO:00002169
+      term:
+        id: ENVO:00002169
+    env_medium:
+      has_raw_value: ENVO:00005792
+      term:
+        id: ENVO:00005792
+    dna_cont_type: plate
+    dna_cont_well: C12

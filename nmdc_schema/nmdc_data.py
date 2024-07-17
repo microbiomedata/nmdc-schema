@@ -6,13 +6,31 @@ import io
 import json
 import pkgutil
 from os.path import getatime
-from typing import Dict, List
+from typing import Dict, List, Optional
+from enum import Enum
 
 import click
 import yaml
 from linkml.utils.rawloader import load_raw_schema
 from linkml_runtime.linkml_model.meta import SchemaDefinition
 from linkml_runtime.utils.schemaview import SchemaView
+
+
+class SchemaVariantIdentifier(str, Enum):
+    r"""
+    Identifiers of schema variants.
+
+    >>> type(SchemaVariantIdentifier.nmdc_materialized_patterns) is SchemaVariantIdentifier
+    True
+    >>> "nmdc_materialized_patterns" == SchemaVariantIdentifier.nmdc_materialized_patterns
+    True
+    >>> type(SchemaVariantIdentifier.nmdc_materialized_patterns.value) is str
+    True
+    >>> "nmdc_materialized_patterns" == SchemaVariantIdentifier.nmdc_materialized_patterns.value
+    True
+    """
+
+    nmdc_materialized_patterns = "nmdc_materialized_patterns"
 
 
 def get_nmdc_yaml_bytesIO() -> io.BytesIO:
@@ -25,23 +43,23 @@ def get_nmdc_yaml_bytesIO() -> io.BytesIO:
         A bytes stream of nmdc.yaml file.
     """
     # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc_schema_merged.yaml"))
+    return io.BytesIO(pkgutil.get_data(__name__, "nmdc_materialized_patterns.yaml"))
 
 
 def get_nmdc_yaml_bytes() -> bytes:
-    """Retruns the nmdc.yaml file as bytes.
+    """Reruns the nmdc.yaml file as bytes.
 
     Returns
     -------
     bytes
-        The bytes of thenmdc.yaml file.
+        The bytes of the nmdc.yaml file.
     """
     nmdc_yaml = get_nmdc_yaml_bytesIO()
     return nmdc_yaml.getvalue()
 
 
 def get_nmdc_yaml_string() -> str:
-    """Retruns the nmdc.yaml file as a string.
+    """Reruns the nmdc.yaml file as a string.
 
     Returns
     -------
@@ -59,7 +77,7 @@ def get_materialized_nmdc_yaml_string():
     return materialized_nmdc_yaml_string
 
 
-def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
+def get_nmdc_jsonschema_bytesIO(variant: Optional[SchemaVariantIdentifier] = None) -> io.BytesIO:
     """Returns the nmdc.schema.json file as bytes steam.
     This function is not intended to be used directly, but it used by other functions
 
@@ -67,48 +85,92 @@ def get_nmdc_jsonschema_bytesIO() -> io.BytesIO:
     -------
     BytesIO
         A bytes stream of nmdc.schema.json file.
+
+    >>> stream_a = get_nmdc_jsonschema_bytesIO()
+    >>> type(stream_a) is io.BytesIO
+    True
+    >>> stream_b = get_nmdc_jsonschema_bytesIO(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(stream_b) is io.BytesIO
+    True
     """
-    # get nmdc.yaml file from the package data
-    return io.BytesIO(pkgutil.get_data(__name__, "nmdc.schema.json"))
+
+    # Determine which JSON Schema file we will use.
+    file_name = "nmdc.schema.json"
+    if variant == SchemaVariantIdentifier.nmdc_materialized_patterns:
+        file_name = "nmdc_materialized_patterns.schema.json"
+
+    return io.BytesIO(pkgutil.get_data(__name__, file_name))
 
 
-def get_nmdc_jsonschema_bytes() -> bytes:
-    """Retruns the nmdc.schema.json file as bytes.
+def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None) -> bytes:
+    """Returns the nmdc.schema.json file as bytes.
 
     Returns
     -------
     bytes
         The bytes of the nmdc.schema.json file.
+
+    >>> bytes_a = get_nmdc_jsonschema_bytes()
+    >>> type(bytes_a) is bytes and b"version" in bytes_a
+    True
+    >>> bytes_b = get_nmdc_jsonschema_bytes(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(bytes_b) is bytes and b"version" in bytes_b
+    True
     """
-    nmdc_json = get_nmdc_jsonschema_bytesIO()
+
+    # # removed
+    # >>> len(bytes_b) > len(bytes_a)  # assumes that including structured patterns makes the file larger
+    # True
+
+    nmdc_json = get_nmdc_jsonschema_bytesIO(variant=variant)
     return nmdc_json.getvalue()
 
 
-def get_nmdc_jsonschema_string() -> str:
-    """Retruns the nmdc.schema.json file as a string.
+def get_nmdc_jsonschema_string(variant: Optional[SchemaVariantIdentifier] = None) -> str:
+    """Reruns the nmdc.schema.json file as a string.
 
     Returns
     -------
     str
         A string containing the contents of nmdc.schema.json file.
+
+    >>> str_a = get_nmdc_jsonschema_string()
+    >>> type(str_a) is str and "version" in str_a
+    True
+    >>> str_b = get_nmdc_jsonschema_string(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(str_b) is str and "version" in str_b
+    True
+
     """
-    nmdc_json = get_nmdc_jsonschema_bytes()
+
+    # # removed
+    # >>> len(str_b) > len(str_a)  # assumes that including structured patterns makes the file larger
+    # True
+
+    nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
     return nmdc_json.decode("utf-8")
 
 
-def get_nmdc_jsonschema_dict() -> Dict:
+def get_nmdc_jsonschema_dict(variant: Optional[SchemaVariantIdentifier] = None) -> Dict:
     """Parses the nmdc.schema.json file into a dict.
 
     Returns
     -------
     dict
         The dict of the keys and value in the nmdc.schema.json file.
+
+    >>> dict_a = get_nmdc_jsonschema_dict()
+    >>> type(dict_a) is dict and "version" in dict_a.keys()
+    True
+    >>> dict_b = get_nmdc_jsonschema_dict(variant=SchemaVariantIdentifier.nmdc_materialized_patterns)
+    >>> type(dict_b) is dict and "version" in dict_b.keys()
+    True
     """
-    nmdc_json = get_nmdc_jsonschema_bytes()
+    nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
     return json.loads(nmdc_json)
 
 
-def get_nmdc_jsonschema() -> str:
+def get_nmdc_jsonschema(variant: Optional[SchemaVariantIdentifier] = None) -> str:
     """
     Returns the NMDC jsonschema (nmdc.schema.json) as json.
 
@@ -117,17 +179,17 @@ def get_nmdc_jsonschema() -> str:
     str
         JSON string representation of the NMDC jsonschema (nmdc.schema.json).
     """
-    nmdc_schema = get_nmdc_jsonschema_dict()
+    nmdc_schema = get_nmdc_jsonschema_dict(variant=variant)
     return json.dumps(nmdc_schema, indent=2)
 
 
 def get_nmdc_schema_definition() -> SchemaDefinition:
-    """Returns a LinkML SchemaDefintion object created from the nmdc.yaml file.
+    """Returns a LinkML SchemaDefinition object created from the nmdc.yaml file.
 
     Returns
     -------
     SchemaDefinition
-        A SchemaDefintion object created from nmdc.yaml file.
+        A SchemaDefinition object created from nmdc.yaml file.
     """
     nmdc_yaml = get_nmdc_yaml_string()
     return load_raw_schema(nmdc_yaml)
@@ -148,7 +210,7 @@ def get_nmdc_file_type_enums() -> List[Dict[str, str]]:
     List of dicts with information about each NMDC file enum.
     """
     schema = get_nmdc_schema_definition()
-    file_enums = schema.enums["file type enum"].permissible_values  # returns a dict
+    file_enums = schema.enums["FileTypeEnum"].permissible_values  # returns a dict
 
     # todo: report error
     # view = SchemaView(schema)
@@ -174,7 +236,7 @@ def get_nmdc_file_type_enums() -> List[Dict[str, str]]:
 
 
 def get_nmdc_file_type_enums_json() -> str:
-    """Returns informaton about the file type enums as json.
+    """Returns information about the file type enums as json.
     Each object contains the following key/values:
     {
         name: the name of the enum
@@ -186,7 +248,7 @@ def get_nmdc_file_type_enums_json() -> str:
     Returns
     -------
     str
-        JSON formated string of file type enum information.getatime
+        JSON formatted string of file type enum information.getatime
     """
     file_enums = get_nmdc_file_type_enums()
     return json.dumps(file_enums, indent=2)
@@ -218,8 +280,8 @@ def get_gold_sssom() -> str:
     yaml            returns the merged nmdc.yaml file as a string
     jsonschema      returns the NMDC jsonschema as json
     dict            returns the NMDC jsonschema as a dict
-    schemadef       returns the LinkML SchemaDefintion created from the merged nmdc.yaml file
-    filetypeenums   returns informaton about the NMDC file type enums as json
+    schemadef       returns the LinkML SchemaDefinition created from the merged nmdc.yaml file
+    filetypeenums   returns information about the NMDC file type enums as json
     goldsssom       returns the gold-to-mixs.sssom.tsv file contents
     """,
 )

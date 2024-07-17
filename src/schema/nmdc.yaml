@@ -1,10 +1,7 @@
 id: https://w3id.org/nmdc/nmdc
 name: NMDC
 title: NMDC Schema
-
 notes:
-  - "informal ## section delimiters should be replaced with subsets ?"
-  - "commented out insdc_biosample_identifiers insdc_secondary_sample_identifiers... need better understanding of id patterns (at least)"
   - not importing any MIxS terms where the relationship between the name (SCN) and the id isn't 1:1
 description: >-
   Schema for National Microbiome Data Collaborative (NMDC).
@@ -17,27 +14,22 @@ description: >-
    * the NMDC schema itself, into which the other modules are imported
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
-version: v9.1.0 # GH uses same version string # pyproject.toml says "9.1.0"
+version: 0.0.0
 
 imports:
   - annotation
   - core
-  - external_identifiers
   - linkml:types
   - mixs
-  - mixs_legacy
   - portal/emsl
   - portal/jgi_metagenomics
   - portal/jgi_metatranscriptomics
   - portal/mixs_inspired
   - portal/sample_id
-  - sample_prep
   - workflow_execution_activity
 
 
 prefixes:
-  #  AFO: "http://example.org/UNKNOWN/AFO/" # no expansion at https://bioregistry.io/registry/afo
-  FMA: "http://purl.obolibrary.org/obo/FMA_"
   CATH: "https://bioregistry.io/cath:"
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
   CHEMBL.COMPOUND: "https://bioregistry.io/chembl.compound:" # https://bioregistry.io/chembl.compound:CHEMBL465070
@@ -48,6 +40,7 @@ prefixes:
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
   FBcv: "http://purl.obolibrary.org/obo/FBcv_"
+  FMA: "http://purl.obolibrary.org/obo/FMA_"
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
   ISA: http://example.org/isa/
@@ -58,7 +51,10 @@ prefixes:
   MetaNetX: http://example.org/metanetx/
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_"
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  ORCID: https://orcid.org/
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
+  PATO: "http://purl.obolibrary.org/obo/PATO_"
   PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
   PO: "http://purl.obolibrary.org/obo/PO_"
   PR: "http://purl.obolibrary.org/obo/PR_"
@@ -69,10 +65,14 @@ prefixes:
   TIGRFAM: "https://bioregistry.io/tigrfam:" # https://bioregistry.io/tigrfam:TIGR00010
   UBERON: "http://purl.obolibrary.org/obo/UBERON_"
   UO: "http://purl.obolibrary.org/obo/UO_"
+  bioproject: "https://identifiers.org/bioproject:"
   biosample: "https://bioregistry.io/biosample:"
   cas: "https://bioregistry.io/cas:"
   doi: "https://bioregistry.io/doi:"
+  edam.data: "http://edamontology.org/data_"
   emsl.project: "https://bioregistry.io/emsl.project:"
+  emsl: "http://example.org/emsl_in_mongodb/"
+  emsl_uuid_like: "http://example.org/emsl_uuid_like/"
   generic: https://example.org/generic/
   gnps.task: "https://bioregistry.io/gnps.task:"
   gtpo: http://example.org/gtpo/
@@ -91,20 +91,13 @@ prefixes:
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
   xsd: http://www.w3.org/2001/XMLSchema#
-  emsl: "http://example.org/emsl_in_mongodb/"
-  emsl_uuid_like: "http://example.org/emsl_uuid_like/"
-  edam.data: "http://edamontology.org/data_"
-  OBI: http://purl.obolibrary.org/obo/OBI_
-  ORCID: https://orcid.org/
-  bioproject: "https://identifiers.org/bioproject:"
+  CHMO: "http://purl.obolibrary.org/obo/CHMO_"
+  wikidata: "http://www.wikidata.org/entity/"
+  my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
 
 
 default_prefix: nmdc
 default_range: string
-
-#default_curi_maps:
-#  - obo_context
-#  - idot_context
 
 emit_prefixes:
   - KEGG.ORTHOLOGY
@@ -126,7 +119,7 @@ settings:
   id_nmdc_prefix: "^(nmdc)"
   id_shoulder: "([0-9][a-z]{0,6}[0-9])"
   id_blade: "([A-Za-z0-9]{1,})"
-  id_version: "(\\.[A-Za-z0-9]{1,})*"
+  id_version: "(\\.[0-9]{1,})"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
 
 subsets:
@@ -142,16 +135,25 @@ subsets:
     description:
       Subset consisting of entities that Kitware/nmdc-server use to populate the data portal.
     comments:
-      - Schema authors are responsible for alerting and supporting Kitware and nmdc-server authors about changes they will have to make if entities labeled with data_portal_subset are modified.
+      - Schema authors are responsible for alerting and supporting Kitware and nmdc-server authors about
+        changes they will have to make if entities labeled with data_portal_subset are modified.
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
-
+  FailureCategorization:
+    slots:
+      - qc_failure_what
+      - qc_failure_where
   FunctionalAnnotationAggMember:
     slots:
       - metagenome_annotation_id
       - gene_function_id
       - count
+    slot_usage:
+      metagenome_annotation_id:
+        structured_pattern: # doesn't include act
+          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
+          interpolated: true
 
   Database:
     tree_root: true
@@ -164,40 +166,36 @@ classes:
       to other objects of interest. For MongoDB, the lists of objects that Database
       slots point to correspond to **collections**.
     slots:
-      - planned_process_set
-      - functional_annotation_agg
-      - activity_set
       - biosample_set
       - collecting_biosamples_from_site_set
       - data_object_set
-      - dissolving_activity_set
       - extraction_set
       - field_research_site_set
+      - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
       - library_preparation_set
       - mags_activity_set
-      - material_sample_set
-      - material_sampling_activity_set
       - metabolomics_analysis_activity_set
       - metagenome_annotation_activity_set
       - metagenome_assembly_set
       - metagenome_sequencing_activity_set
       - metaproteomics_analysis_activity_set
-      - metatranscriptome_activity_set
+      - metatranscriptome_annotation_set
+      - metatranscriptome_assembly_set
+      - metatranscriptome_expression_analysis_set
       - nom_analysis_activity_set
       - omics_processing_set
+      - planned_process_set
       - pooling_set
       - processed_sample_set
-      - reaction_activity_set
       - read_based_taxonomy_analysis_activity_set
       - read_qc_analysis_activity_set
       - study_set
 
-
   Pooling:
     class_uri: nmdc:Pooling
-    is_a: BiosampleProcessing # from core.yaml
+    is_a: BiosampleProcessing
     description: physical combination of several instances of like material.
     slots:
     exact_mappings:
@@ -205,59 +203,96 @@ classes:
     slot_usage:
       has_input:
         minimum_cardinality: 2
+        required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
+        required: true
         minimum_cardinality: 1
         maximum_cardinality: 1
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   Extraction:
     class_uri: nmdc:Extraction
-    is_a: BiosampleProcessing # from core.yaml
+    is_a: PlannedProcess
     description: A material separation in which a desired component of an input material is separated from the remainder.
     exact_mappings:
       - OBI:0302884
     slots:
+      - extractant
       - extraction_method
       - extraction_target
-      - processing_institution
-      - protocol_link
-      - quality_control_report
       - input_mass
+      - volume
     slot_usage:
       has_input:
         required: true
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$"
           interpolated: true
+      volume:
+        description: The volume of the solvent/solute being used, not the input.
+
+  SolutionComponent:
+    description: One constituent of a solution
+    slots:
+      - compound
+      - concentration
+
+  Solution:
+    description: A mixture that is homogeneous, made up of two or more scattered molecular aggregates, one playing the role of solute and the other playing the role of solvent.
+    aliases:
+      - mixture
+      - solvent
+    comments:
+      - We acknowledge that users of the nmdc-schema may instantiate Solution with only a single component which goes against the letter of the description.
+      - The solution class may be used to instantiate a single component in the has_solution_components slot
+    notes:
+      - TODO review the description, possibly more descriptive modeling to allow solvent to be used
+      - TODO consider making a "Fluid" class
+    slots:
+      - has_solution_components
+      - volume
 
   Protocol:
     slots:
       - url
       - name
 
-  QualityControlReport:
-    slots:
-      - status
-      - name
+
 
   LibraryPreparation:
     class_uri: nmdc:LibraryPreparation
     aliases:
       - LibraryConstruction
-    is_a: BiosampleProcessing # from core.yaml
+    is_a: BiosampleProcessing
     slots:
       - library_preparation_kit
       - library_type
       - pcr_cycles
-      - processing_institution
+      - is_stranded
+      - stranded_orientation
     close_mappings:
       - OBI:0000711
     comments:
@@ -265,12 +300,18 @@ classes:
     slot_usage:
       has_input:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   FieldResearchSite:
@@ -300,7 +341,12 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      part_of:
+        range: FieldResearchSite
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   CollectingBiosamplesFromSite:
@@ -314,13 +360,19 @@ classes:
       has_input:
         range: Site
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(frsite|site)-{id_shoulder}-{id_blade}$"
+          interpolated: true
       has_output:
         range: Biosample
         required: true
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
   DataObject:
@@ -330,8 +382,6 @@ classes:
     description:
       "An object that primarily consists of symbols that represent information.   Files,
       records, and omics data are examples of data objects."
-    notes:
-      - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
     slots:
       - file_size_bytes
       - md5_checksum
@@ -348,10 +398,12 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
           interpolated: true
-    comments:
-      - removed id_prefixes value of GOLD, since we are now using pattern-based id validation
+      was_generated_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   Biosample:
     rules:
@@ -378,7 +430,7 @@ classes:
         postconditions:
           slot_conditions:
             dna_cont_well:
-              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
 
       - title: rna_well_requires_plate
         description: RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
@@ -403,14 +455,12 @@ classes:
         postconditions:
           slot_conditions:
             rna_cont_well:
-              pattern: ^(?!A1|A12|H1|H12)(([A-H][1-9])|([A-H]1[0-2]))$
+              pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
 
     unique_keys:
       samp_name_unique_key:
-        notes:
-          - "id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing. Remember, notes like this could be exposed to end users. CJM suggested YAML # comment"
         unique_key_slots:
-          - samp_name
+          - samp_name # id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing
 
     is_a: MaterialEntity
     in_subset:
@@ -422,10 +472,8 @@ classes:
       - biospecimen
     description: >-
       Biological source material which can be characterized by an experiment.
-    todos:
-      - could add GOLD and EBI's biosample definitions to the alt_descriptions?
     notes:
-      - removed previous id_prefixes value of GOLD, since we are now using pattern-based id validation
+      - could add GOLD and EBI's biosample definitions to the alt_descriptions?
     alt_descriptions:
       embl.ena:
         A sample contains information about the sequenced source material.
@@ -450,20 +498,10 @@ classes:
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
       - insdc_biosample_identifiers
-      #      - insdc_secondary_sample_identifiers
       - emsl_biosample_identifiers
       - igsn_biosample_identifiers
 
       ## MIXS slots
-      #      - horizon
-      #      - horizon_meth
-      #      - microbial_biomass
-      #      - microbial_biomass_meth
-      #      - previous_land_use
-      #      - previous_land_use_meth
-      #      - samp_collect_device
-      #      - texture
-      #      - texture_meth
       - abs_air_humidity
       - add_recov_method
       - additional_info
@@ -637,9 +675,6 @@ classes:
       - growth_hormone_regm
       - hall_count
       - handidness
-      #      - has numeric value
-      #      - has raw value
-      #      - has unit
       - hc_produced
       - hcr
       - hcr_fw_salinity
@@ -1007,12 +1042,9 @@ classes:
       - growth_facil
       - humidity_regm
       - light_regm
-      #      - micro_biomass_meth
       - phosphate
       #      - samp_collec_method
       - samp_size
-      #      - soil_text_measure
-      #      - soil_texture_meth
       - source_mat_id
       - watering_regm
 
@@ -1057,7 +1089,7 @@ classes:
       - rna_seq_project_name
       - rna_volume
 
-      # MIxS Inspired fields
+      ## MIxS Inspired fields
       - collection_date_inc
       - collection_time
       - collection_time_inc
@@ -1083,6 +1115,8 @@ classes:
       - sample_link
 
       ## EMSL slots
+      - bulk_elect_conductivity
+      - infiltrations
 
       ## bioscales slots
       - zinc
@@ -1093,37 +1127,38 @@ classes:
       - lbc_thirty
       - lbceq
     slot_usage:
+      collected_from:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
       elev:
         title: elevation, meters
-        range: float
         comments:
           - All elevations must be reported in meters. Provide the numerical portion only.
-          - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates, if needed, to help estimate the elevation based on latitude and longitude coordinates.
+          - Please use https://www.advancedconverter.com/map-tools/find-altitude-by-coordinates,
+            if needed, to help estimate the elevation based on latitude and longitude coordinates.
         examples:
           value: 100
-
-      #      oxy_stat_samp:
-      #        range: oxy_stat_samp_enum
 
       id:
         required: true
         description: An NMDC assigned unique identifier for a biosample submitted to NMDC.
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$"
           interpolated: true
 
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments: This is the ID provided by GOLD that starts with 'GB'
         annotations:
-          display_hint: Provide the GOLD biosample IDs associated with this biosample.
-        range: uriorcurie
+          tooltip: Provide the GOLD biosample IDs associated with this biosample.
 
       alternative_identifiers:
         description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
 
       lat_lon:
-        todos:
+        notes:
           - This is currently a required field but it's not clear if this
             should be required for human hosts
       env_broad_scale:
@@ -1135,8 +1170,9 @@ classes:
       part_of:
         required: true
         range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
-
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
       fire:
         comments:
           - Provide the date the fire occurred. If extended burning occurred provide the date range.
@@ -1145,10 +1181,8 @@ classes:
           - value: 1871-10-01 to 1871-10-31
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
         annotations:
           expected_value: date string
-        range: string
         pattern: ^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$
       flooding:
         annotations:
@@ -1161,26 +1195,20 @@ classes:
         todos:
           - is "to" acceptable? Is there a better way to request that be written?
           - What about if the "day" isn't known? Is this ok?
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
-        range: string
       extreme_event:
         examples:
           - value: 1980-05-18, volcanic eruption
         annotations:
           expected_value: date, string
-        range: string
-        todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
       slope_aspect:
         examples:
           - value: 35
         comments:
-          - Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360, where 0 is north-facing, 90 is east-facing, 180 is south-facing, and 270 is west-facing.
+          - Aspect is the orientation of slope, measured clockwise in degrees from 0 to 360,
+            where 0 is north-facing, 90 is east-facing, 180 is south-facing, and 270 is west-facing.
         description:
           The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees).
-          - This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
-        todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
+          This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.
       slope_gradient:
         examples:
           - value: 10%
@@ -1191,14 +1219,15 @@ classes:
       al_sat:
         title: aluminum saturation/ extreme unusual properties
         description: The relative abundance of aluminum in the sample
-        comments:
-          - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like all cations, aluminum held by the cation exchange complex is in equilibrium with aluminum in the soil solution.
+        notes:
+          - Aluminum saturation is the percentage of the CEC occupies by aluminum. Like all cations,
+            aluminum held by the cation exchange complex is in equilibrium with aluminum in the soil solution.
         examples:
           - value: 27%
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
-          - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
-          - I think it's weird the way GSC writes the title. I recommend this change. Thoughts? I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
+          - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
+          - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
+            I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
       al_sat_meth:
         title: aluminum saturation method/ extreme unusual properties
         description: Reference or method used in determining Aluminum saturation
@@ -1206,13 +1235,10 @@ classes:
         examples:
           - value: https://doi.org/10.1371/journal.pone.0176357
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts?
       annual_precpt:
         examples:
           - value: 8.94 inch
-        todos:
-          - This is no longer matching the listed IRI from GSC, added example. When NMDC has its own slots, map this to the MIxS slot
       cur_vegetation:
         description:
           Vegetation classification from one or more standard classification
@@ -1225,7 +1251,6 @@ classes:
           - value: forest
           - value: Bauhinia variegata
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - Recommend changing this from text value to some king of ontology?
       cur_vegetation_meth:
         comments:
@@ -1233,21 +1258,17 @@ classes:
         examples:
           - value: https://doi.org/10.1111/j.1654-109X.2011.01154.x
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - I'm not sure this is a DOI, PMID, or URI. Should pool the community and find out how they accomplish this if provided.
       heavy_metals:
         title: heavy metals/ extreme unusual properties
         description: Heavy metals present in the sample and their concentrations.
         comments:
           - For multiple heavy metals and concentrations, separate by ;
-        notes:
-          - Changed to multi-valued. In MIxS, you add another column to denote multiple heavy metals. We don't have that ability in the submission portal.
         examples:
           - value: mercury 0.09 micrograms per gram
           - value: mercury 0.09 ug/g; chromium 0.03 ug/g
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
-          - Example & validation. Can we make rules that 27% & 27 % & 0.27 will validate?
+          - Example & validation. Can we configure things so that 27% & 27 % & 0.27 will validate?
           - I think it's weird the way GSC writes the title. I recommend this change. Thoughts? I would argue this isn't an extreme unusual property. It's just a biogeochemical measurement.
       heavy_metals_meth:
         title: heavy metals method/ extreme unusual properties
@@ -1258,19 +1279,17 @@ classes:
         examples:
           - value: https://doi.org/10.3390/ijms9040434
           - value: mercury https://doi.org/10.1007/BF01056090; chromium https://doi.org/10.1007/s00216-006-0322-8
-        todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
       season_precpt:
         title: average seasonal precipitation
         comments:
-          - Seasons are defined as spring (March, April, May), summer (June, July, August), autumn (September, October, November) and winter (December, January, February).
+          - Seasons are defined as spring (March, April, May), summer (June, July, August),
+            autumn (September, October, November) and winter (December, January, February).
         examples:
           - value: 0.4 inch
           - value: 10.16 mm
         notes:
           - mean and average are the same thing, but it seems like bad practice to not be consistent. Changed mean to average
         todos:
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - check validation & examples. always mm? so value only? Or value + unit
       water_cont_soil_meth:
         comments:
@@ -1287,7 +1306,6 @@ classes:
           expected_value: string
           preferred_unit: gram per gram or cubic centimeter per cubic centimeter
         multivalued: true
-        range: string
         examples:
           - value: 0.75 g water/g dry soil
           - value: 75% water holding capacity
@@ -1296,7 +1314,6 @@ classes:
         todos:
           - value in preferred unit is too limiting. need to change this
           - check and correct validation so examples are accepted
-          - This is no longer matching the listed IRI from GSC. When NMDC has its own slots, map this to the MIxS slot
           - how to manage multiple water content methods?
       ph_meth:
         examples:
@@ -1309,7 +1326,8 @@ classes:
           - value: 1 ug/L
         todos:
           - is this inorganic and organic? both? could use some clarification.
-          - ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate. I couldn't find any references that provided this data in this format
+          - ug/L doesn't seem like the right units. Should check this slots usage in databases and re-evaluate.
+            I couldn't find any references that provided this data in this format
       tot_nitro_cont_meth:
         examples:
           - value: https://doi.org/10.2134/agronmonogr9.2.c32
@@ -1357,12 +1375,17 @@ classes:
         description: A globally unique identifier assigned to the biological sample.
         title: source material identifier
         comments:
-          - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn), NCBI biosample accession numbers, ARK identifiers (https://arks.org/). These IDs enable linking to derived analytes and subsamples. If you have not assigned FAIR identifiers to your samples, you can generate UUIDs (https://www.uuidgenerator.net/).
+          - Identifiers must be prefixed. Possible FAIR prefixes are IGSNs (http://www.geosamples.org/getigsn),
+            NCBI biosample accession numbers, ARK identifiers (https://arks.org/).
+            These IDs enable linking to derived analytes and subsamples.
+            If you have not assigned FAIR identifiers to your samples,
+            you can generate UUIDs (https://www.uuidgenerator.net/).
         examples:
           - value: IGSN:AU1243
           - value: UUID:24f1467a-40f4-11ed-b878-0242ac120002
         todos:
-          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
+          - Currently, the comments say to use UUIDs. However, if we implement assigning NMDC identifiers with the minter
+            we dont need to require a GUID. It can be an optional field to fill out only if they already have a resolvable ID.
 
     exact_mappings:
       - OBI:0000747
@@ -1431,8 +1454,6 @@ classes:
       - gnps_task_identifiers
 
       ## Related IDs
-      #- insdc_bioproject_identifiers
-      #- insdc_sra_ena_study_identifiers
       - alternative_descriptions
       - alternative_names
       - alternative_titles
@@ -1459,36 +1480,41 @@ classes:
       - title
       - type
       - websites
+      - homepage_website
 
     slot_usage:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
           interpolated: true
 
       name:
         annotations:
-          display_hint: Provide a name for the study your samples will belong with.
+          tooltip: Provide a name for the study your samples will belong with.
       websites:
         annotations:
-          display_hint:
+          tooltip:
             Link to the Principal Investigator's research lab webpage
             or the study webpage associated with this collection of samples.
             Multiple links can be provided.
+      homepage_website:
+        annotations:
+          tooltip:
+            Link to the consortium's homepage if the study_category is a consortium.
       description:
         description: A brief, link-free summary of a Study
         annotations:
-          display_hint: Provide a brief description of your study.
+          tooltip: Provide a brief description of your study.
         comments: Include links in other Study slots, such as websites or dois.
       notes:
         annotations:
-          display_hint: Add any additional notes or comments about this study.
+          tooltip: Add any additional notes or comments about this study.
       alternative_identifiers:
         description: Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC
       alternative_names:
         annotations:
-          display_hint:
+          tooltip:
             Project, study, or sample set names the are also associated with this submission
             or other names / identifiers for this study.
       related_identifiers:
@@ -1496,16 +1522,15 @@ classes:
       insdc_bioproject_identifiers:
         description: Unique identifier for a bioproject submitted to INSDC that relates to the NMDC submitted study.
         annotations:
-          display_hint: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
-      #      emsl_project_identifier:
-      #        description: The EMSL project ID that relates to the NMDC submitted study
-      #      emsl_proposal_doi:
-      #        description: The DOI for the EMSL awarded study that relates to the NMDC submitted study
+          tooltip: Provide the NCBI BioProject Accession Number associated with the listed NCBI BioProject Title.
       part_of:
         description: Links a study or consortium to a parent (or umbrella) study or consortium.
         comments:
           - Value is the id of the umbrella study or consortium.
         range: Study
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$"
+          interpolated: true
     exact_mappings:
       - OBI:0000066
       - SIO:000747
@@ -1538,18 +1563,29 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:bsmprc-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_input:
         range: Biosample
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
     broad_mappings:
       - OBI:0000094
 
   SubSamplingProcess:
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
-    see_also:
-      - http://purl.obolibrary.org/obo/OBI_0000744
+    related_mappings:
+      - OBI:0000744
     todos:
       - add intermediate class between PlannedProcess and this (MaterialProcessing potentially)
       - Montana to visit slot descriptions
@@ -1567,12 +1603,125 @@ classes:
     is_a: PlannedProcess
     slots:
       - container_size
-      - container_type
+      - contained_in
       - temperature
       - volume
+      - mass
     slot_usage:
       volume:
-        description: The volume of subsample.
+        description: The output volume of the SubSampling Process.
+      mass:
+        description: The output mass of the SubSampling Process.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        description: The subsample.
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+  MixingProcess:
+    description: >
+      The combining of components, particles or layers into a more homogeneous state.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    is_a: PlannedProcess
+    comments:
+      - The mixing may be achieved manually or mechanically by shifting the material with stirrers or pumps
+        or by revolving or shaking the container.
+      - The process must not permit segregation of particles of different size or properties.
+      - Homogeneity may be considered to have been achieved in a practical sense when the sampling error
+        of the processed portion is negligible compared to the total error of the measurement system.
+    slots:
+      - duration
+    slot_usage:
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        description: The mixed sample.
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+  FiltrationProcess:
+    description: >-
+      The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
+    related_mappings:
+      - CHMO:0001640
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+      - ORCID:0000-0001-9076-6066 #Mark Miller
+      - ORCID:0009-0008-4013-7737 #James Tessmer
+    is_a: PlannedProcess
+    slots:
+      - conditionings
+      - container_size
+      - filter_material
+      - filter_pore_size
+      - filtration_category
+      - is_pressurized
+      - separation_method
+      - volume
+    slot_usage:
+      id:
+        name: id
+        required: true
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'
+          interpolated: true
+      volume:
+        description: The volume of sample filtered.
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
+
+  ChromatographicSeparationProcess:
+    description:
+      The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-1368-8217 #Yuri Corilo
+    is_a: PlannedProcess
+    slots:
+      - ordered_mobile_phases
+      - stationary_phase
+      - temperature
+    slot_usage:
+      has_input:
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      has_output:
+        range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   OmicsProcessing:
     aliases:
@@ -1588,8 +1737,6 @@ classes:
       embl.ena:
         An experiment contains information about a sequencing experiment including
         library and instrument details.
-    comments:
-      - The ID prefix for objects coming from GOLD will be gold:Gp
     slots:
       - add_date
       - chimera_check
@@ -1620,19 +1767,31 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+          syntax: "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_input:
         required: true
-        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
-        comments:
-          - pattern should allow typecode for Biosample and ProcessedSample
+        any_of:
+          - range: Biosample
+          - range: ProcessedSample
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      #        pattern: "^nmdc:(bsm|procsm)-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$"
+      #        comments:
+      #          - pattern should allow typecode for Biosample and ProcessedSample
       part_of:
         range: Study
-        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+      #        pattern: "^nmdc:sty-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted Study structured_pattern
       has_output:
         range: DataObject
-        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
+          interpolated: true
+    #        pattern: "^nmdc:dobj-[0-9][a-z]{0,6}[0-9]-[A-Za-z0-9]{1,}(\\.[A-Za-z0-9]{1,})*(_[A-Za-z0-9_\\.-]+)?$" # better applied as a structured_pattern, but even that might get out of sync from the asserted DataObject structured_pattern
     broad_mappings:
       - OBI:0000070
       - ISA:Assay
@@ -1643,15 +1802,33 @@ classes:
       - credit table
       - associated researchers
     description: >-
-      This class supports binding associated researchers to studies. There will be at least a slot for a CRediT Contributor Role (https://casrai.org/credit/) and for a person value
-      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
+      This class supports binding associated researchers to studies. 
+      There will be at least a slot for a CRediT Contributor Role and for a person value.
+      Specifically see the associated researchers tab on the NMDC_SampleMetadata-V4_CommentsForUpdates 
+      at https://docs.google.com/spreadsheets/d/1INlBo5eoqn2efn4H2P2i8rwRBtnbDVTqXrochJEAPko/edit#gid=0
     slots:
       - applies_to_person
       - applied_roles
       - type
     class_uri: prov:Association
+    see_also:
+      - https://casrai.org/credit/
 
 enums:
+
+  StrandedOrientationEnum:
+    description: This enumeration specifies information about stranded RNA library preparations.
+    permissible_values:
+      antisense orientation:
+        description: Orientation that is complementary (non-coding) to a sequence of messenger RNA.
+        comments:
+          - See https://www.genome.gov/genetics-glossary/antisense
+        exact_mappings:
+          - SO:0000077
+      sense orientation:
+        description: Orientation that corresponds to the coding sequence of messenger RNA.
+
+
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -1686,6 +1863,7 @@ enums:
       metabolite: { }
       protein: { }
 
+
   LibraryTypeEnum:
     # start using the right case for enum names
     # we have other slots which need a DNA or RNA answer, so maybe we should make this enum name more generic
@@ -1699,14 +1877,11 @@ enums:
       tube: { }
 
   YesNoEnum:
-    name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
-    from_schema: https://example.com/nmdc_submission_schema
     permissible_values:
-      "no":
-        text: "no"
-      "yes":
-        text: "yes"
+      'no': { }
+      'yes': { }
+
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
     aliases:
@@ -1731,7 +1906,7 @@ enums:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
 
-  file type enum:
+  FileTypeEnum:
     permissible_values:
       Metagenome Raw Reads:
         description: Interleaved paired-end raw sequencing data
@@ -1782,12 +1957,19 @@ enums:
       Metagenome Bins:
         description: Metagenome bin contigs fasta
 
-      Metagenome Bins Compression File:
-        description: Compressed file containing all metagenome bins and associated files
+      Metagenome HQMQ Bins Compression File:
+        description: Compressed file containing high qulaity and medium quality metagenome bins and associated files
         annotations:
           file_name_pattern:
             tag: file_name_pattern
             value: "[mag_wf_activity_id]_hqmq_bin.zip"
+
+      Metagenome LQ Bins Compression File:
+        description: Compressed file containing low quality metagenome bins and associated files
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: "[mag_wf_activity_id]_lq_bin.zip"
 
       Metagenome Bins Info File:
         description: File containing version information on the binning workflow
@@ -1796,6 +1978,24 @@ enums:
 
       CheckM Statistics:
         description: CheckM statistics report
+
+      Metagenome Bins Heatmap:
+        description: The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_heatmap.pdf"
+
+      Metagenome Bins Barplot:
+        description: The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_barplot.pdf"
+
+      Metagenome Bins Krona Plot:
+        description: The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_kronaplot.html"
 
       Read Based Analysis Info File:
         description: File containing reads based analysis information
@@ -2029,7 +2229,10 @@ enums:
           Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
           mass spectrometry raw data acquired in broadband full scan mode
 
-  credit enum:
+      LC-DDA-MS/MS Raw Data:
+        description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
+
+  CreditEnum:
     permissible_values:
       Conceptualization:
         description: Conceptualization
@@ -2066,39 +2269,7 @@ enums:
         description: the person(s) who enter study and biosample metadata into the NMDC submission portal
         meaning: EFO:0001741
     comments:
-      - credit enums come from https://casrai.org/credit/
-  processing_institution_enum:
-    notes:
-      - This will become the range of processing_institution.omics processing
-      - use ROR meanings like https://ror.org/0168r3w48 for UCSD
-    from_schema: NMDC_enums_roundtrip
-    permissible_values:
-      UCSD:
-        title: University of California, San Diego
-        meaning: https://ror.org/0168r3w48
-
-      JGI:
-        title: Joint Genome Institute
-        meaning: https://ror.org/04xm1d337
-
-      EMSL:
-        title: Environmental Molecular Sciences Laboratory
-        meaning: https://ror.org/04rc0xn13
-        notes:
-          - replaces Environmental Molecular Science Laboratory
-          - replaces Environmental Molecular Sciences Lab
-
-      Battelle:
-        title: Battelle Memorial Institute
-        meaning: https://ror.org/01h5tnr73
-
-      ANL:
-        title: Argonne National Laboratory
-        meaning: https://ror.org/05gvnxz63
-      
-      UCD_Genome_Center:
-        title: University of California, Davis Genome Center
-        meaning: https://genomecenter.ucdavis.edu/
+      - CreditEnums come from https://casrai.org/credit/
 
   StudyCategoryEnum:
     permissible_values:
@@ -2155,6 +2326,21 @@ enums:
           - MassIVE
           - Mass Spectrometry Virtual Environment
         title: MassIVE
+      gsc:
+        aliases:
+          - GSC
+          - Genomic Standards Consortium
+        title: GSC
+      zenodo:
+        aliases:
+          - Zenodo
+        title: Zenodo
+      edi:
+        aliases:
+          - EDI
+          - Environmental Data Initiative
+        title: EDI
+        meaning: https://ror.org/0330j0z60
 
   DoiCategoryEnum:
     permissible_values:
@@ -2164,46 +2350,161 @@ enums:
         description: A type of DOI that resolves to generated data.
       publication_doi:
         description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        description: A type of DOI that resolves to a data management plan.
     see_also:
       - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
       - https://api.crossref.org/types
     comments:
       - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
 
-  ContainerTypeEnum:
+  ContainerCategoryEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
       V-bottom conical tube:
+      falcon tube:
+
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
+    permissible_values:
+      low_read_count:
+        description: Number of output reads is not sufficient to continue to the next analysis step.
+      malformed_data:
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+
+  FailureWhereEnum:
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    comments:
+      - At Chris' recommendation permissible values for this enumeration are the same as Class names.
+    permissible_values:
+      OmicsProcessing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeExpressionAnalysis:
+        description: A failure has occurred in metatranscriptome expression analysis, a workflow process.
+      MetatranscriptomeAnnotation:
+        description: A failure has occurred in metatranscriptome annotation analysis, a workflow process.
+      MetatranscriptomeAssembly:
+        description: A failure has occurred in metatranscriptome assembly analysis, a workflow process.
+      MagsAnalysisActivity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      ReadQcAnalysisActivity:
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysisActivity:
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotationActivity:
+        description: A failure has occurred in annotation, a workflow process.
+
+  SeparationMethodEnum:
+    description: The tool/substance used to separate or filter a solution or mixture.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+      - ORCID:0000-0002-8683-0050 #Montana Smith
+    permissible_values:
+      PTFE 96-well filter plate:
+  
+  #  SolventEnum:
+  #    description: The solvents that may be used in processing metabolomic samples.
+  #    permissible_values:
+  #      deionized Water:
+  #      methanol:
+  #      chloroform:
+  #      ammonium bicarbonate buffer:
+  #      methoxyamine:
+  #      MeOH/H2O:
+  #      MeOH:
+  #      Potassium sulfate:
+  #      ethanol-free chloroform:
+  #      bray extract solution:
+  #      olsen extract solution:
+  #      Milli-Q H2O:
+  #      ultrapure water:
+  #      MSTFA:
+  #      cloridic acid:
+  #      Water:
+  #      trypsin in ammonium bicarbonate:
+  
+  CompoundEnum:
+    permissible_values:
+      ammonium bicarbonate:
+      deionized water:
+      methanol:
+      trypsin:
+      chloridic acid:
+        aliases:
+          - hydrochloric acid
+      water:
+
+  
+  StationaryPhaseEnum:
+    description: The type of stationary phase used in a solid phase extraction process.
+    contributors:
+      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
+    permissible_values:
+      C18:
+      C8:
+      C4:
+      C2:
+      C1:
+      C30:
+      C60:
+      CNT:
+      CN:
+      Diol:
+      HILIC:
+      NH2:
+      Phenyl:
+      PS-DVB:
+      SAX:
+      SCX:
+      Silica:
+      WCX:
+      WAX:
+      ZIC-HILIC:
+      ZIC-pHILIC:
+      ZIC-cHILIC:
 
 slots:
-
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
   model:
     range: InstrumentModelEnum
   vendor:
     range: InstrumentVendorEnum
 
-  designated_class:
-    range: uriorcurie
-    designates_type: true
-    comments:
-      - MAM prefers to use this functionality in a `type` class and to eliminate '...type...' from the names
-        of any NMDC-owned elements
-      - this would be required on all instances in a polymorphic Database slot, like planned_process_set
-    see_also:
-      - https://github.com/microbiomedata/nmdc-schema/issues/1048
-      - https://github.com/microbiomedata/nmdc-schema/issues/1233
-
-  #  for FunctionalAnnotationAggMember:
   metagenome_annotation_id:
-    range: WorkflowExecutionActivity
+    domain: FunctionalAnnotationAggMember
+    range: MetagenomeAnnotationActivity
+    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
+    required: true
   gene_function_id:
     range: uriorcurie
+    description: The identifier for the gene function.
+    examples:
+      - value: KEGG.ORTHOLOGY:K00627
+    required: true
   count:
     range: integer
+    required: true
   functional_annotation_agg:
+    domain: Database
     range: FunctionalAnnotationAggMember
     multivalued: true
     inlined: true
@@ -2228,7 +2529,8 @@ slots:
     range: integer
   sample_collection_month:
 
-  status:
+  qc_status:
+    description: Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)
     range: StatusEnum
 
   library_preparation_kit:
@@ -2241,19 +2543,32 @@ slots:
   #  extraction_date: # replacing with start_ and end_date
   #    #    range: date
   #    range: string
-  extraction_method: { }
-  extraction_target:
+  extraction_method:
+    domain: Extraction
     range: ExtractionTargetEnum
-
-  quality_control_report:
-    #    range: integer
-    range: QualityControlReport
-  # structure
 
   pcr_cycles:
     range: integer
     exact_mappings:
       - OBI:0002475
+  
+  is_stranded:
+    description: Is the (RNA) library stranded or non-stranded (unstranded).
+    range: boolean
+    comments:
+      - A value of true means the library is stranded, flase means non-stranded.
+  
+  stranded_orientation:
+    description: Lists the strand orientiation for a stranded RNA library preparation.
+    range: StrandedOrientationEnum
+
+  
+  mass:
+    title: mass
+    description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
+    exact_mappings:
+      - PATO:0000125
+    range: QuantityValue
 
   input_mass:
     title: sample mass used
@@ -2263,13 +2578,14 @@ slots:
       - sample weight
     exact_mappings:
       - MS:1000004
-    #      - AFO:/result#AFR_0001982 # reconsidering use of AFO mappings in https://github.com/microbiomedata/nmdc-schema/issues/1113
+    domain: PlannedProcess
     range: QuantityValue
 
   library_type:
     title: library type
     examples:
       - value: DNA
+    domain: LibraryPreparation
     range: LibraryTypeEnum
 
   zinc:
@@ -2283,7 +2599,6 @@ slots:
     title: zinc
     examples:
       - value: 2.5 mg/kg
-    is_a: attribute
     range: QuantityValue
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
@@ -2300,7 +2615,6 @@ slots:
       - value: 24.7 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    is_a: attribute
     range: QuantityValue
 
   ammonium_nitrogen:
@@ -2317,7 +2631,6 @@ slots:
       - value: 2.3 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    is_a: attribute
     range: QuantityValue
 
   nitrate_nitrogen:
@@ -2336,7 +2649,6 @@ slots:
       - value: 0.29 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    is_a: attribute
     range: QuantityValue
 
   nitrite_nitrogen:
@@ -2353,7 +2665,6 @@ slots:
       - value: 1.2 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    is_a: attribute
     range: QuantityValue
 
   lbc_thirty:
@@ -2374,7 +2685,6 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
       - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
-    is_a: attribute
     range: QuantityValue
 
   lbceq:
@@ -2393,14 +2703,13 @@ slots:
       - value: 1575 mg/kg
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
-    is_a: attribute
     range: QuantityValue
 
   env_package:
     aliases:
       - environmental package
-    #      mappings:
-    #        - mixs:env_package
+    notes:
+      - no longer in MIxS as of 6.0?
     description:
       MIxS extension for reporting of measurements and observations obtained
       from one or more of the environments where the sample was obtained. All environmental
@@ -2409,7 +2718,6 @@ slots:
       subtables and can be reported
     in_subset:
       - mixs extension
-    is_a: attribute
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -2424,7 +2732,7 @@ slots:
       - make this required?
       - first apply to Biosample
       - try to apply to all Biosamples in a particular nmdc-server SubmissionMetadata?
-      - applying to a Study may nto be granular enough
+      - applying to a Study may not be granular enough
 
   collected_from:
     description: The Site from which a Biosample was collected
@@ -2444,16 +2752,9 @@ slots:
   etl_software_version:
     description: from database class
   related_identifiers:
+    domain: Study
     title: Related Identifiers
     description: Identifiers assigned to a thing that is similar to that which is represented in NMDC. Related identifier are not an identical match and may have some variation.
-
-  #  emsl_proposal_doi:
-  #    title: EMSL Proposal DOI
-  #    description: The proposal DOI assigned to the awarded EMSL study.
-
-  #- insdc_bioproject_identifiers
-  #- insdc_sra_ena_study_identifiers
-
   notes:
     description: from study class
 
@@ -2461,8 +2762,6 @@ slots:
     domain: Study
     range: CreditAssociation
     multivalued: true
-    notes:
-      - 'had just been "inlined: true"'
     inlined_as_list: true
     description:
       "This slot links a study to a credit association.  The credit association
@@ -2470,7 +2769,7 @@ slots:
       semantics: person should get credit X for their participation in the study"
     slot_uri: prov:qualifiedAssociation
     annotations:
-      display_hint: Other researchers associated with this study.
+      tooltip: Other researchers associated with this study.
   study_image:
     domain: Study
     range: ImageValue
@@ -2487,7 +2786,6 @@ slots:
       A list of organizations, along with the award numbers, that underwrite financial support for projects of 
       a particular type. Typically, they process applications and award funds to the chosen qualified 
       applicants.
-    #    pattern: ^.{1,200}$
     comments:
       - Include only the name of the funding organization and the award or contract number.
     examples:
@@ -2499,28 +2797,24 @@ slots:
       - NCIT:C39409
   applied_roles:
     domain: CreditAssociation
-    range: credit enum
+    range: CreditEnum
     multivalued: true
     required: true
     annotations:
-      display_hint: >-
+      tooltip: >-
         Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
   applies_to_person:
     domain: CreditAssociation
     range: PersonValue
-    todos:
-      prov:agent takes an Agent object. Is a person value an Agent? Also try
-      to relate to principal investigator slot? could include OBI:0000103 principal
-      investigator role... do we need to define the OBI prefix?
     required: true
-  #    slot_uri: prov:agent
   study_category:
     description: The type of research initiative
+    domain: Study
     range: StudyCategoryEnum
     required: true
 
   object_set:
-    domain: Database
+    domain: Database # not inherited by mixin users
     inlined_as_list: true
     mixin: true
     multivalued: true
@@ -2529,6 +2823,7 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   planned_process_set:
+    domain: Database # not inherited by mixin users
     mixins:
       - object_set
     range: PlannedProcess
@@ -2538,136 +2833,165 @@ slots:
     comments:
       - PlannedProcess instances aggregated by this slot will require the designated_class slot
   biosample_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Biosample
     description:
       This property links a database object to the set of samples within
       it.
   study_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Study
     description:
       This property links a database object to the set of studies within
       it.
   field_research_site_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FieldResearchSite
   collecting_biosamples_from_site_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: CollectingBiosamplesFromSite
   data_object_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: DataObject
     description:
       This property links a database object to the set of data objects
       within it.
   genome_feature_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: GenomeFeature
     description: This property links a database object to the set of all features
   functional_annotation_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: FunctionalAnnotation
     description:
       This property links a database object to the set of all functional
       annotations
-  activity_set:
-    mixins: object_set
-    range: WorkflowExecutionActivity
-    description: This property links a database object to the set of workflow activities.
   mags_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MagsAnalysisActivity
     description:
       This property links a database object to the set of MAGs analysis
       activities.
   metabolomics_analysis_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetabolomicsAnalysisActivity
     description:
       This property links a database object to the set of metabolomics
       analysis activities.
   metaproteomics_analysis_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetaproteomicsAnalysisActivity
     description:
       This property links a database object to the set of metaproteomics
       analysis activities.
   metagenome_annotation_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAnnotationActivity
     description:
       This property links a database object to the set of metagenome annotation
       activities.
   metagenome_assembly_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeAssembly
     description:
       This property links a database object to the set of metagenome assembly
       activities.
   metagenome_sequencing_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: MetagenomeSequencingActivity
     description:
       This property links a database object to the set of metagenome sequencing
       activities.
-  metatranscriptome_activity_set:
+  metatranscriptome_expression_analysis_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
-    range: MetatranscriptomeActivity
+    range: MetatranscriptomeExpressionAnalysis
     description:
-      This property links a database object to the set of metatranscriptome
+      This property links a database object to the set of metatranscriptome expression
       analysis activities.
   read_qc_analysis_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadQcAnalysisActivity
     description:
       This property links a database object to the set of read QC analysis
       activities.
   read_based_taxonomy_analysis_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ReadBasedTaxonomyAnalysisActivity
     description: >-
       This property links a database object to the set of read based analysis activities.
   nom_analysis_activity_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: NomAnalysisActivity
     description:
       This property links a database object to the set of natural organic
       matter (NOM) analysis activities.
   omics_processing_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: OmicsProcessing
     description:
       This property links a database object to the set of omics processings
       within it.
   pooling_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Pooling
   processed_sample_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: ProcessedSample
     description: This property links a database object to the set of processed samples within it.
   extraction_set:
+    domain: Database # not inherited by mixin users
     mixins: object_set
     range: Extraction
     description: This property links a database object to the set of extractions within it.
   library_preparation_set:
+    domain: Database # not inherited by mixin users
     aliases:
       - library_construction_set
     mixins: object_set
     range: LibraryPreparation
     description: This property links a database object to the set of DNA extractions within it.
+  metatranscriptome_assembly_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetatranscriptomeAssembly
+    description: This property links a database object to the set of metatranscriptome assemblies within it.
+  metatranscriptome_annotation_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetatranscriptomeAnnotationActivity
+    description: This property links a database object to the set of metatranscriptome annotations within it.
+  
 
   omics_type:
+    domain: OmicsProcessing
     range: ControlledTermValue
     description: The type of omics data
     examples:
       - value: metatranscriptome
       - value: metagenome
-    notes:
-      - "was the range string at one point? the values in MongoDB don't look like NMDC classes"
+
   data_object_type:
-    range: file type enum
+    range: FileTypeEnum
     description: The type of file represented by the data object.
     examples:
       - value: FT ICR-MS Analysis Results
@@ -2678,11 +3002,10 @@ slots:
     examples:
       - value: gzip
     todos:
-      - consider enum
+      - consider setting the range to an enum
 
   ## GOLD PATHS
   gold_path_field:
-    is_a: attribute
     range: string
     abstract: true
     description: >-
@@ -2694,13 +3017,13 @@ slots:
       factors) and all the organisms (biotic factors) that interact with this environment.
       Ecosystem is in position 1/5 in a GOLD path.
     comments:
-      The abiotic factors play a profound role on the type and composition
-      of organisms in a given environment. The GOLD Ecosystem at the top of the five-level
-      classification system is aimed at capturing the broader environment from which
-      an organism or environmental sample is collected. The three broad groups under
-      Ecosystem are Environmental, Host-associated, and Engineered. They represent
-      samples collected from a natural environment or from another organism or from
-      engineered environments like bioreactors respectively.
+      - The abiotic factors play a profound role on the type and composition
+        of organisms in a given environment. The GOLD Ecosystem at the top of the five-level
+        classification system is aimed at capturing the broader environment from which
+        an organism or environmental sample is collected. The three broad groups under
+        Ecosystem are Environmental, Host-associated, and Engineered. They represent
+        samples collected from a natural environment or from another organism or from
+        engineered environments like bioreactors respectively.
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_category:
     is_a: gold_path_field
@@ -2709,10 +3032,10 @@ slots:
       on specific characteristics of the environment from where an organism or sample
       is isolated. Ecosystem category is in position 2/5 in a GOLD path.
     comments:
-      The Environmental ecosystem (for example) is divided into Air, Aquatic
-      and Terrestrial. Ecosystem categories for Host-associated samples can be individual
-      hosts or phyla and for engineered samples it may be manipulated environments
-      like bioreactors, solid waste etc.
+      - The Environmental ecosystem (for example) is divided into Air, Aquatic
+        and Terrestrial. Ecosystem categories for Host-associated samples can be individual
+        hosts or phyla and for engineered samples it may be manipulated environments
+        like bioreactors, solid waste etc.
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_type:
     is_a: gold_path_field
@@ -2722,11 +3045,11 @@ slots:
       broad but specific to the characteristics of a given environment. Ecosystem
       type is in position 3/5 in a GOLD path.
     comments:
-      The Aquatic ecosystem category (for example) may have ecosystem types
-      like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air
-      or Outdoor air as different Ecosystem Types. In the case of Host-associated
-      samples, ecosystem type can represent Respiratory system, Digestive system,
-      Roots etc.
+      - The Aquatic ecosystem category (for example) may have ecosystem types
+        like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air
+        or Outdoor air as different Ecosystem Types. In the case of Host-associated
+        samples, ecosystem type can represent Respiratory system, Digestive system,
+        Roots etc.
     see_also: https://gold.jgi.doe.gov/help
   ecosystem_subtype:
     is_a: gold_path_field
@@ -2735,9 +3058,9 @@ slots:
       into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
       path.
     comments:
-      Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
-      divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone
-      etc. in the Ecosystem subtype category.
+      - Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
+        divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone
+        etc. in the Ecosystem subtype category.
     see_also: https://gold.jgi.doe.gov/help
   specific_ecosystem:
     is_a: gold_path_field
@@ -2746,13 +3069,12 @@ slots:
       like aphotic zone in an ocean or gastric mucosa within a host digestive system.
       Specific ecosystem is in position 5/5 in a GOLD path.
     comments:
-      Specific ecosystems help to define samples based on very specific characteristics
-      of an environment under the five-level classification system.
+      - Specific ecosystems help to define samples based on very specific characteristics
+        of an environment under the five-level classification system.
     see_also: https://gold.jgi.doe.gov/help
   principal_investigator:
     aliases:
       - PI
-    is_a: attribute
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
 
@@ -2773,6 +3095,9 @@ slots:
           doi_category: award_doi
         - doi: doi:10.1101/2022.12.12.520098
           doi_category: publication_doi
+        - doi: doi:10.48321/D1Z60Q
+          doi_category: data_management_plan_doi
+          doi_provider: gsc
       description: Provides a list of two DOIs; specifically, an EMSL award DOI and a publication DOI.
 
   doi_value:
@@ -2834,7 +3159,7 @@ slots:
   salinity_category:
     description:
       "Categorical description of the sample's salinity. Examples: halophile,
-      halotolerant, hypersaline, huryhaline"
+        halotolerant, hypersaline, huryhaline"
     range: string
     see_also:
       - https://github.com/microbiomedata/nmdc-metadata/pull/297
@@ -2857,9 +3182,6 @@ slots:
 
   biogas_retention_time:
     range: string
-  processing_institution:
-    range: processing_institution_enum
-    description: The organization that processed the sample.
 
   completion_date:
     range: string
@@ -2871,15 +3193,8 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  container_type:
-    range: ContainerTypeEnum
-    description: >-
-      A type of container. i.e. test tube, falcon tube, etc.
-    contributors:
-      - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
-      - ORCID:0000-0002-8683-0050 #Montana Smith
-
-  volume:
+  volume: # see also input_volume
+    domain: PlannedProcess
     range: QuantityValue
     description: The volume of a substance.
     contributors:
@@ -2894,3 +3209,114 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+
+  bulk_elect_conductivity:
+    comments:
+      - Provide the value output of the field instrument.
+    description:
+      Electrical conductivity is a measure of the ability to carry electric
+      current, which is mostly dictated by the chemistry of and amount of water.
+    title: bulk electrical conductivity
+    examples:
+      value:
+        has_raw_value: 0.017 mS/cm
+        has_numeric_value: 0.017
+        has_unit: mS/cm
+      description: The conductivity measurement was 0.017 millisiemens per centimeter.
+    range: QuantityValue
+
+  infiltrations:
+    description: The amount of time it takes to complete each infiltration activity
+    examples:
+      - value: [ '00:01:32', '00:00:53' ]
+    aliases:
+      - infiltration_1
+      - infiltration_2
+    multivalued: true
+    list_elements_ordered: true
+    range: string
+    pattern: ^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$
+    see_also:
+      - https://www.protocols.io/view/field-sampling-protocol-kqdg3962pg25/v1
+
+  filter_material:
+    description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
+    comments:
+      - "Filters are made with a variety of materials: cellulose and derivatives, glass fibre, ceramic, synthetic plastics and fibres. Filters may be naturally porous or be made so by mechanical or other means. Membrane/ceramic filters are prepared with highly controlled pore size in a sheet of suitable material such as polyfluoroethylene, polycarbonate or cellulose esters. Nylon mesh is sometimes used for reinforcement. The pores constitute 80–85% of the filter volume commonly and several pore sizes are available for air sampling (0.45−0.8 μm are commonly employed)."
+    range: string
+  filter_pore_size:
+    domain: FiltrationProcess
+    range: QuantityValue
+    description: "A quantitative or qualitative measurement of the physical dimensions of the pores in a material."
+  conditionings:
+    range: string
+    description: "Preliminary treatment of either phase with a suitable solution of the other phase (in the absence of main extractable solute(s)) so that when the subsequent equilibration is carried out changes in the (volume) phase ratio or in the concentrations of other components are minimized."
+    multivalued: true
+    list_elements_ordered: true
+  separation_method:
+    domain: FiltrationProcess
+    range: SeparationMethodEnum
+    description: The method that was used to separate a substance from a solution or mixture.
+  filtration_category:
+    range: string
+    description: The type of conditioning applied to a filter, device, etc.
+  material_component_separation:
+    range: string
+    description: "A material processing in which components of an input material become segregated in space"
+  value:
+    range: QuantityValue
+  modifier_substance:
+    range: string
+    description: The type of modification being done
+  is_pressurized:
+    range: boolean
+    description: Whether or not pressure was applied to a thing or process.
+  duration: # or could be a ISO8601 period string
+    domain: PlannedProcess
+    range: QuantityValue
+    description: The elapsed time of an activity.
+    examples:
+      - value:
+          has_numeric_value: 2
+          has_unit: hours
+  contained_in:
+    range: ContainerCategoryEnum
+    description: A type of container. i.e. test tube, falcon tube, etc.
+  extractant:
+    domain: Extraction
+    range: Solution
+    description: "The active component(s) primarily responsible for transfer of a solute from one phase to the other."
+  concentration:
+    domain: SolutionComponent
+    range: QuantityValue
+    description: The concentration of a substance used in a process
+  input_volume: # see also `volume`
+    domain: PlannedProcess
+    range: QuantityValue
+    description: The volume of the input sample.
+  has_solution_components:
+    description: Relationship from a Solution to one or more constituent solution components
+    range: SolutionComponent
+    domain: Solution
+    multivalued: true
+    inlined_as_list: true
+    required: true
+    minimum_cardinality: 1
+    #list example
+  compound:
+    domain: SolutionComponent
+    range: CompoundEnum
+    description: A substance that consists of more than one atom or ion. Includes solvents and solutes. Can be combined into solutions.
+    required: true
+  ordered_mobile_phases:
+    domain: ChromatographicSeparationProcess
+    range: Solution
+    description: The solution(s) that moves through a chromatography column.
+    multivalued: true
+    list_elements_ordered: true
+    inlined_as_list: true
+  stationary_phase:
+    domain: ChromatographicSeparationProcess
+    range: StationaryPhaseEnum
+    description: The material the stationary phase is comprised of used in chromatography.
+

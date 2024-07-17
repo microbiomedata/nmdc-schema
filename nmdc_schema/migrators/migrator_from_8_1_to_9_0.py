@@ -2,21 +2,40 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import load_yaml_asset
 
 
-class Migrator_from_8_1_to_9_0(MigratorBase):
-    """previously: Migrates data from schema 8.1.0 to 9.0.0"""
+class Migrator(MigratorBase):
+    r"""Migrates a database between two schemas."""
 
-    def __init__(self, *args, **kwargs) -> None:
-        """Invokes parent constructor and populates collection-to-transformations map."""
+    _from_version = "8.1"
+    _to_version = "9.0"
 
-        super().__init__(*args, **kwargs)
+    def upgrade(self):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        # Populate the "collection-to-transformers" map for this specific migration.
-        self.agenda = dict(
-            study_set=[self.fix_award_dois, self.fix_pub_dois,
-                       self.fix_massive, self.fix_ess_dive, self.remove_doi_slots],
-        )
+        self.adapter.process_each_document("study_set", [
+            self.fix_award_dois,
+            self.fix_pub_dois,
+            self.fix_massive,
+            self.fix_ess_dive,
+            self.remove_doi_slots
+        ])
 
     def process_doi(self, study: dict, doi_list: list, doi_category: str):
+        r"""
+        For each update descriptor in the `doi_list` list; if the specified study's `id` matches that descriptor's `id`,
+        this function appends a DOI dictionary to the study's `associated_dois` list (creating the list if necessary).
+
+        >>> m = Migrator()
+        >>> m.process_doi({'id': 123}, [{'id': 123, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` matches
+        {'id': 123, 'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
+        >>> m.process_doi({'id': 123}, [{'id': 555, 'doi': 'a', 'doi_prov': 'b'}], 'c')  # `id` does not match
+        {'id': 123}
+        >>> m.process_doi(
+        ...     {'id': 123, 'associated_dois': [{'doi_value': 'x', 'doi_category': 'y', 'doi_provider': 'z'}]},
+        ...     [{'id': 123, 'doi': 'a', 'doi_prov': 'b'}], 'c'
+        ... )  # study already has an `associated_dois` field
+        {'id': 123, 'associated_dois': [{'doi_value': 'x', 'doi_category': 'y', 'doi_provider': 'z'}, {'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
+        """
+
         id_value = study['id']
         for doi_updates in doi_list:
             if id_value == doi_updates['id']:
@@ -44,7 +63,13 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         return study
 
     def fix_pub_dois(self, study: dict):
-        """Move publication_dois values to new associated_dois slot"""
+        r"""
+        Copies `publication_dois` values into a new slot named `associated_dois`.
+
+        >>> m = Migrator()
+        >>> m.fix_pub_dois({'id': 1, 'publication_dois': ['a']})  # test: a single DOI
+        {'id': 1, 'publication_dois': ['a'], 'associated_dois': [{'doi_value': 'a', 'doi_category': 'publication_doi'}]}
+        """
 
         study.setdefault('associated_dois', []).extend(
             {'doi_value': pub_doi, 'doi_category': 'publication_doi'}
@@ -54,7 +79,17 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         return study
 
     def fix_massive(self, study: dict):
-        """Change the one massive_study_identifiers value to a doi and move under new associated_dois slot"""
+        r"""
+        Changes the one `massive_study_identifiers` value into a DOI and moves it to a new `associated_dois` slot.
+
+        >>> m = Migrator()
+        >>> m.fix_massive({'id': 123})
+        {'id': 123, 'associated_dois': []}
+        >>> m.fix_massive({'id': 123, 'massive_study_identifiers': ['not-the-one']})
+        {'id': 123, 'massive_study_identifiers': ['not-the-one'], 'associated_dois': []}
+        >>> m.fix_massive({'id': 123, 'massive_study_identifiers': ['MASSIVE:MSV000090886']})  # this is the one!
+        {'id': 123, 'associated_dois': [{'doi_value': 'doi:10.25345/C58K7520G', 'doi_category': 'dataset_doi', 'doi_provider': 'massive'}]}
+        """
 
         mass_id = 'MASSIVE:MSV000090886'
         mass_doi = 'doi:10.25345/C58K7520G'
@@ -70,7 +105,13 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         return study
 
     def fix_ess_dive(self, study: dict):
-        """Move ess_dive_datasets values to associated_dois slot"""
+        r"""
+        Copies `ess_dive_datasets` values into a new slot named `associated_dois`.
+
+        >>> m = Migrator()
+        >>> m.fix_ess_dive({'id': 1, 'ess_dive_datasets': ['a']})  # test: a single DOI
+        {'id': 1, 'ess_dive_datasets': ['a'], 'associated_dois': [{'doi_value': 'a', 'doi_category': 'dataset_doi', 'doi_provider': 'ess_dive'}]}
+        """
 
         study.setdefault('associated_dois', []).extend(
             {'doi_value': dataset_doi, 'doi_category': 'dataset_doi',
@@ -80,7 +121,19 @@ class Migrator_from_8_1_to_9_0(MigratorBase):
         return study
 
     def remove_doi_slots(self, study: dict):
-        """Remove slots that are no longer needed because their values have been moved to the associated_dois slot"""
+        r"""
+        Removes slots that are no longer needed because their values have been moved to the `associated_dois` slot.
+
+        >>> m = Migrator()
+        >>> m.remove_doi_slots({'id': 123, 'associated_dois': []})  # empty `associated_dois` list gets removed
+        {'id': 123}
+        >>> m.remove_doi_slots({
+        ...    'id': 123,
+        ...    'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}],
+        ...    'publication_dois': ['a'],
+        ... })  # lists in which all values match an `associated_dois[].doi_value` get removed
+        {'id': 123, 'associated_dois': [{'doi_value': 'a', 'doi_category': 'c', 'doi_provider': 'b'}]}
+        """
 
         removal_slots = ['publication_dois', 'dataset_dois',
                          'award_dois', 'ess_dive_datasets', 'massive_study_identifiers']

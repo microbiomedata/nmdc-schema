@@ -1,0 +1,7 @@
+#invalid b/c the was_generated_by value has an ID version
+id: nmdc:dobj-99-izwYW6
+name: 1232.4.481.ATCGATC.fastq.gz
+description: Sequencing from project ABDC description  
+file_size_bytes: 32787380
+type: nmdc:DataObject
+was_generated_by: nmdc:omprc-11-abd4sg.1

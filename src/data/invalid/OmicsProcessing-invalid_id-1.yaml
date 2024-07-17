@@ -1,0 +1,20 @@
+#invalid because id has ID version
+id: nmdc:omprc-99-547rwq81.1
+alternative_identifiers:
+  - gold:Gp0108335
+name: Thawing permafrost microbial communities from the Arctic, studying carbon
+  transformations - Permafrost 712P3D
+has_input:
+  - nmdc:bsm-11-547rwq94
+add_date: 30-OCT-14 12.00.00.000000000 AM
+mod_date: 22-MAY-20 06.13.12.927000000 PM
+has_output:
+  - nmdc:dobj-11-547rwq95
+ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+  carbon transformations - Permafrost 712P3D
+omics_type:
+  has_raw_value: Metagenome
+part_of:
+  - nmdc:sty-11-547rwq98
+processing_institution: JGI
+type: nmdc:OmicsProcessing

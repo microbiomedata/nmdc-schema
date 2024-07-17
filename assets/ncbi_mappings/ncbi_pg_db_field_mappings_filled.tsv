@@ -1,0 +1,633 @@
+NMDC schema class	NMDC schema slot	NCBI postgres field name	static_value
+Biosample	abs_air_humidity	abs_air_humidity	
+Biosample	add_date		
+Biosample	add_recov_method	add_recov_method	
+Biosample	additional_info	additional_info	
+Biosample	address	address	
+Biosample	adj_room	adj_room	
+Biosample	aero_struc		
+Biosample	agrochem_addition	agrochem_addition	
+Biosample	air_PM_concen		
+Biosample	air_temp	air_temp	
+Biosample	air_temp_regm	air_temp_regm	
+Biosample	al_sat	al_sat	
+Biosample	al_sat_meth	al_sat_meth	
+Biosample	alkalinity	alkalinity	
+Biosample	alkalinity_method	alkalinity_method	
+Biosample	alkyl_diethers	alkyl_diethers	
+Biosample	alt	altitude	
+Biosample	alternative_identifiers		
+Biosample	aminopept_act	aminopept_act	
+Biosample	ammonium	ammonium	
+Biosample	ammonium_nitrogen		
+Biosample	amount_light		
+Biosample	analysis_type		
+Biosample	ances_data	ances_data	
+Biosample	annual_precpt	annual_precpt	
+Biosample	annual_temp	annual_temp	
+Biosample	antibiotic_regm	antibiotic_regm	
+Biosample	api	api	
+Biosample	arch_struc		
+Biosample	aromatics_pc		
+Biosample	asphaltenes_pc		
+Biosample	atmospheric_data	atmospheric_data	
+Biosample	avg_dew_point		
+Biosample	avg_occup	avg_occup	
+Biosample	avg_temp	avg_temp	
+Biosample	bac_prod	bac_prod	
+Biosample	bac_resp	bac_resp	
+Biosample	bacteria_carb_prod	bacteria_carb_prod	
+Biosample	barometric_press	barometric_press	
+Biosample	basin		
+Biosample	bathroom_count		
+Biosample	bedroom_count		
+Biosample	benzene	benzene	
+Biosample	biochem_oxygen_dem	biochem_oxygen_dem	
+Biosample	biocide	biocide_used	
+Biosample	biocide_admin_method		
+Biosample	biol_stat	biol_stat	
+Biosample	biomass	biomass	
+Biosample	biosample_categories		
+Biosample	biotic_regm	biotic_regm	
+Biosample	biotic_relationship	biotic_relationship	
+Biosample	bishomohopanol	bishomohopanol	
+Biosample	blood_press_diast	blood_press_diast	
+Biosample	blood_press_syst	blood_press_syst	
+Biosample	bromide	bromide	
+Biosample	build_docs		
+Biosample	build_occup_type	build_occup_type	
+Biosample	building_setting	building_setting	
+Biosample	built_struc_age		
+Biosample	built_struc_set		
+Biosample	built_struc_type		
+Biosample	bulk_elect_conductivity		
+Biosample	calcium	calcium	
+Biosample	carb_dioxide	carb_dioxide	
+Biosample	carb_monoxide		
+Biosample	carb_nitro_ratio	carb_nitro_ratio	
+Biosample	ceil_area		
+Biosample	ceil_cond		
+Biosample	ceil_finish_mat		
+Biosample	ceil_struc		
+Biosample	ceil_texture		
+Biosample	ceil_thermal_mass		
+Biosample	ceil_type		
+Biosample	ceil_water_mold		
+Biosample	chem_administration	chem_administration	
+Biosample	chem_mutagen	chem_mutagen	
+Biosample	chem_oxygen_dem	chem_oxygen_dem	
+Biosample	chem_treat_method		
+Biosample	chem_treatment	chem_treatment	
+Biosample	chimera_check		
+Biosample	chloride	chloride	
+Biosample	chlorophyll	chlorophyll	
+Biosample	climate_environment	climate_environment	
+Biosample	collected_from		
+Biosample	collection_date	collection_date	
+Biosample	collection_date_inc		
+Biosample	collection_time		
+Biosample	collection_time_inc		
+Biosample	community		
+Biosample	conduc	conduc	
+Biosample	cool_syst_id		
+Biosample	core field		
+Biosample	crop_rotation	crop_rotation	
+Biosample	cult_root_med	cult_root_med	
+Biosample	cur_land_use	cur_land_use	
+Biosample	cur_vegetation	cur_vegetation	
+Biosample	cur_vegetation_meth	cur_vegetation_meth	
+Biosample	date_last_rain		
+Biosample	density	density	
+Biosample	depos_env		
+Biosample	depth	depth	
+Biosample	description	description	
+Biosample	dew_point	dew_point	
+Biosample	diether_lipids	diether_lipids	
+Biosample	diss_carb_dioxide	diss_carb_dioxide	
+Biosample	diss_hydrogen	diss_hydrogen	
+Biosample	diss_inorg_carb	diss_inorg_carb	
+Biosample	diss_inorg_nitro	diss_inorg_nitro	
+Biosample	diss_inorg_phosp	diss_inorg_phosp	
+Biosample	diss_iron		
+Biosample	diss_org_carb	diss_org_carb	
+Biosample	diss_org_nitro	diss_org_nitro	
+Biosample	diss_oxygen	diss_oxygen	
+Biosample	diss_oxygen_fluid		
+Biosample	dna_absorb1		
+Biosample	dna_absorb2		
+Biosample	dna_collect_site		
+Biosample	dna_concentration		
+Biosample	dna_cont_type		
+Biosample	dna_cont_well		
+Biosample	dna_container_id		
+Biosample	dna_dnase		
+Biosample	dna_isolate_meth		
+Biosample	dna_organisms		
+Biosample	dna_project_contact		
+Biosample	dna_samp_id		
+Biosample	dna_sample_format		
+Biosample	dna_sample_name		
+Biosample	dna_seq_project		
+Biosample	dna_seq_project_name		
+Biosample	dna_seq_project_pi		
+Biosample	dna_volume		
+Biosample	dnase_rna		
+Biosample	door_comp_type		
+Biosample	door_cond		
+Biosample	door_direct		
+Biosample	door_loc		
+Biosample	door_mat		
+Biosample	door_move		
+Biosample	door_size		
+Biosample	door_type		
+Biosample	door_type_metal		
+Biosample	door_type_wood		
+Biosample	door_water_mold		
+Biosample	down_par	down_par	
+Biosample	drainage_class	drainage_class	
+Biosample	drawings	drawings	
+Biosample	ecosystem		
+Biosample	ecosystem_category		
+Biosample	ecosystem_subtype		
+Biosample	ecosystem_type		
+Biosample	efficiency_percent	efficiency_percent	
+Biosample	elev	elev	
+Biosample	elevator	elevator	
+Biosample	embargoed		
+Biosample	emsl_biosample_identifiers		
+Biosample	emulsions	emulsions	
+Biosample	env_broad_scale	env_broad_scale	
+Biosample	env_local_scale	env_local_scale	
+Biosample	env_medium	env_medium	
+Biosample	env_package	env_package	
+Biosample	environment field		
+Biosample	escalator	escalator	
+Biosample	ethylbenzene	ethylbenzene	
+Biosample	exp_duct		
+Biosample	exp_pipe		
+Biosample	experimental_factor	experimental_factor	
+Biosample	experimental_factor_other		
+Biosample	ext_door		
+Biosample	ext_wall_orient		
+Biosample	ext_window_orient		
+Biosample	extreme_event	extreme_event	
+Biosample	fao_class	fao_class	
+Biosample	fertilizer_regm	fertilizer_regm	
+Biosample	field	field	
+Biosample	filter_method		
+Biosample	filter_type	filter_type	
+Biosample	fire	fire	
+Biosample	fireplace_type		
+Biosample	flooding	flooding	
+Biosample	floor_age		
+Biosample	floor_area		
+Biosample	floor_cond		
+Biosample	floor_count		
+Biosample	floor_finish_mat		
+Biosample	floor_struc		
+Biosample	floor_thermal_mass		
+Biosample	floor_water_mold		
+Biosample	fluor	fluor	
+Biosample	freq_clean	freq_clean	
+Biosample	freq_cook		
+Biosample	fungicide_regm	fungicide_regm	
+Biosample	furniture	furniture	
+Biosample	gaseous_environment	gaseous_environment	
+Biosample	gaseous_substances	gaseous_substances	
+Biosample	gender_restroom	gender_restroom	
+Biosample	genetic_mod	genetic_mod	
+Biosample	geo_loc_name	geo_loc_name	
+Biosample	glucosidase_act	glucosidase_act	
+Biosample	gold_biosample_identifiers		
+Biosample	gravidity	gravidity	
+Biosample	gravity	gravity	
+Biosample	growth_facil	growth_facil	
+Biosample	growth_habit	growth_habit	
+Biosample	growth_hormone_regm	growth_hormone_regm	
+Biosample	habitat		
+Biosample	hall_count		
+Biosample	handidness	handidness	
+Biosample	hc_produced	hc_produced	
+Biosample	hcr	hcr	
+Biosample	hcr_fw_salinity		
+Biosample	hcr_geol_age		
+Biosample	hcr_pressure		
+Biosample	hcr_temp	hcr_temp	
+Biosample	heat_cool_type	heat_cool_type	
+Biosample	heat_deliv_loc		
+Biosample	heat_sys_deliv_meth		
+Biosample	heat_system_id		
+Biosample	heavy_metals	heavy_metals	
+Biosample	heavy_metals_meth	heavy_metals_meth	
+Biosample	height_carper_fiber		
+Biosample	herbicide_regm	herbicide_regm	
+Biosample	horizon_meth	horizon_meth	
+Biosample	host_age	host_age	
+Biosample	host_body_habitat	host_body_habitat	
+Biosample	host_body_product	host_body_product	
+Biosample	host_body_site		
+Biosample	host_body_temp	host_body_temp	
+Biosample	host_color	host_color	
+Biosample	host_common_name	host_common_name	
+Biosample	host_diet	host_diet	
+Biosample	host_disease_stat		
+Biosample	host_dry_mass	host_dry_mass	
+Biosample	host_family_relation		
+Biosample	host_genotype	host_genotype	
+Biosample	host_growth_cond	host_growth_cond	
+Biosample	host_height	host_height	
+Biosample	host_last_meal	host_last_meal	
+Biosample	host_length	host_length	
+Biosample	host_life_stage	host_life_stage	
+Biosample	host_name		
+Biosample	host_phenotype	host_phenotype	
+Biosample	host_sex	host_sex	
+Biosample	host_shape	host_shape	
+Biosample	host_subject_id	host_subject_id	
+Biosample	host_subspecf_genlin	host_subspecf_genlin	
+Biosample	host_substrate	host_substrate	
+Biosample	host_symbiont	host_symbiont	
+Biosample	host_taxid	host_taxid	
+Biosample	host_tot_mass	host_tot_mass	
+Biosample	host_wet_mass	host_wet_mass	
+Biosample	humidity	humidity	
+Biosample	humidity_regm	humidity_regm	
+Biosample	id		
+Biosample	igsn_biosample_identifiers		
+Biosample	img_identifiers		
+Biosample	indoor_space	indoor_space	
+Biosample	indoor_surf	indoor_surf	
+Biosample	indust_eff_percent	indust_eff_percent	
+Biosample	infiltrations		
+Biosample	inorg_particles	inorg_particles	
+Biosample	insdc_biosample_identifiers		
+Biosample	inside_lux		
+Biosample	int_wall_cond		
+Biosample	investigation field		
+Biosample	isotope_exposure		
+Biosample	iw_bt_date_well		
+Biosample	iwf	iwf	
+Biosample	last_clean		
+Biosample	lat_lon	lat_lon	
+Biosample	lbc_thirty		
+Biosample	lbceq		
+Biosample	light_intensity	light_intensity	
+Biosample	light_regm	light_regm	
+Biosample	light_type	light_type	
+Biosample	link_addit_analys	link_addit_analys	
+Biosample	link_class_info	link_class_info	
+Biosample	link_climate_info	link_climate_info	
+Biosample	lithology	lithology	
+Biosample	local_class	local_class	
+Biosample	local_class_meth	local_class_meth	
+Biosample	location		
+Biosample	magnesium	magnesium	
+Biosample	manganese		
+Biosample	max_occup		
+Biosample	mean_frict_vel	mean_frict_vel	
+Biosample	mean_peak_frict_vel	mean_peak_frict_vel	
+Biosample	mech_struc		
+Biosample	mechanical_damage	mechanical_damage	
+Biosample	methane	methane	
+Biosample	micro_biomass_c_meth		
+Biosample	micro_biomass_meth		
+Biosample	micro_biomass_n_meth		
+Biosample	microbial_biomass	microbial_biomass	
+Biosample	microbial_biomass_c		
+Biosample	microbial_biomass_n		
+Biosample	mineral_nutr_regm	mineral_nutr_regm	
+Biosample	misc_param	misc_param	
+Biosample	mod_date		
+Biosample	n_alkanes	n_alkanes	
+Biosample	name		
+Biosample	ncbi_taxonomy_name		
+Biosample	neon_biosample_identifiers		
+Biosample	nitrate	nitrate	
+Biosample	nitrate_nitrogen		
+Biosample	nitrite	nitrite	
+Biosample	nitrite_nitrogen		
+Biosample	nitro	nitro	
+Biosample	non_microb_biomass		
+Biosample	non_microb_biomass_method		
+Biosample	non_min_nutr_regm		
+Biosample	nucl_acid_amp		
+Biosample	nucl_acid_ext		
+Biosample	nucleic acid sequence source field		
+Biosample	number_pets	number_pets	
+Biosample	number_plants		
+Biosample	number_resident		
+Biosample	occup_density_samp		
+Biosample	occup_document		
+Biosample	occup_samp	occup_samp	
+Biosample	org_carb	org_carb	
+Biosample	org_count_qpcr_info		
+Biosample	org_matter	org_matter	
+Biosample	org_nitro	org_nitro	
+Biosample	org_nitro_method		
+Biosample	org_particles	org_particles	
+Biosample	organism_count	organism_count	
+Biosample	other_treatment		
+Biosample	owc_tvdss		
+Biosample	oxy_stat_samp	oxy_stat_samp	
+Biosample	oxygen	oxygen	
+Biosample	part_of		
+Biosample	part_org_carb	part_org_carb	
+Biosample	part_org_nitro	part_org_nitro	
+Biosample	particle_class	particle_class	
+Biosample	pcr_cond		
+Biosample	pcr_primers		
+Biosample	permeability	permeability	
+Biosample	perturbation	perturbation	
+Biosample	pesticide_regm	pesticide_regm	
+Biosample	petroleum_hydrocarb	petroleum_hydrocarb	
+Biosample	ph	ph	
+Biosample	ph_meth	ph_meth	
+Biosample	ph_regm	ph_regm	
+Biosample	phaeopigments	phaeopigments	
+Biosample	phosphate	phosphate	
+Biosample	phosplipid_fatt_acid	phosplipid_fatt_acid	
+Biosample	photon_flux	photon_flux	
+Biosample	plant_growth_med	plant_growth_med	
+Biosample	plant_product	plant_product	
+Biosample	plant_sex	plant_sex	
+Biosample	plant_struc	plant_struc	
+Biosample	pollutants	pollutants	
+Biosample	pool_dna_extracts	pool_dna_extracts	
+Biosample	porosity	porosity	
+Biosample	potassium	potassium	
+Biosample	pour_point		
+Biosample	pre_treatment	pre_treatment	
+Biosample	pres_animal_insect	pres_animal_insect	
+Biosample	pressure	pressure	
+Biosample	prev_land_use_meth		
+Biosample	previous_land_use	previous_land_use	
+Biosample	primary_prod	primary_prod	
+Biosample	primary_treatment	primary_treatment	
+Biosample	prod_rate		
+Biosample	prod_start_date		
+Biosample	profile_position	profile_position	
+Biosample	project_id		
+Biosample	proport_woa_temperature		
+Biosample	proposal_dna		
+Biosample	proposal_rna		
+Biosample	quad_pos		
+Biosample	radiation_regm	radiation_regm	
+Biosample	rainfall_regm	rainfall_regm	
+Biosample	reactor_type	reactor_type	
+Biosample	redox_potential	redox_potential	
+Biosample	rel_air_humidity	rel_air_humidity	
+Biosample	rel_humidity_out		
+Biosample	rel_samp_loc		
+Biosample	replicate_number		
+Biosample	reservoir		
+Biosample	resins_pc		
+Biosample	rna_absorb1		
+Biosample	rna_absorb2		
+Biosample	rna_collect_site		
+Biosample	rna_concentration		
+Biosample	rna_cont_type		
+Biosample	rna_cont_well		
+Biosample	rna_container_id		
+Biosample	rna_isolate_meth		
+Biosample	rna_organisms		
+Biosample	rna_project_contact		
+Biosample	rna_samp_id		
+Biosample	rna_sample_format		
+Biosample	rna_sample_name		
+Biosample	rna_seq_project		
+Biosample	rna_seq_project_name		
+Biosample	rna_seq_project_pi		
+Biosample	rna_volume		
+Biosample	room_air_exch_rate		
+Biosample	room_architec_elem		
+Biosample	room_condt		
+Biosample	room_connected		
+Biosample	room_count		
+Biosample	room_dim		
+Biosample	room_door_dist		
+Biosample	room_door_share		
+Biosample	room_hallway		
+Biosample	room_loc		
+Biosample	room_moist_dam_hist		
+Biosample	room_net_area		
+Biosample	room_occup		
+Biosample	room_samp_pos		
+Biosample	room_type	room_type	
+Biosample	room_vol		
+Biosample	room_wall_share		
+Biosample	room_window_count		
+Biosample	root_cond	root_cond	
+Biosample	root_med_carbon	root_med_carbon	
+Biosample	root_med_macronutr	root_med_macronutr	
+Biosample	root_med_micronutr	root_med_micronutr	
+Biosample	root_med_ph	root_med_ph	
+Biosample	root_med_regl	root_med_regl	
+Biosample	root_med_solid	root_med_solid	
+Biosample	root_med_suppl	root_med_suppl	
+Biosample	salinity	salinity	
+Biosample	salinity_category		
+Biosample	salinity_meth	salinity_meth	
+Biosample	salt_regm	salt_regm	
+Biosample	samp_capt_status	samp_capt_status	
+Biosample	samp_collec_device		
+Biosample	samp_collec_method		
+Biosample	samp_collect_point	samp_collect_point	
+Biosample	samp_dis_stage	samp_dis_stage	
+Biosample	samp_floor		
+Biosample	samp_loc_corr_rate		
+Biosample	samp_mat_process	samp_mat_process	
+Biosample	samp_md		
+Biosample	samp_name	samp_name	
+Biosample	samp_preserv		
+Biosample	samp_room_id		
+Biosample	samp_size	samp_size	
+Biosample	samp_sort_meth	samp_sort_meth	
+Biosample	samp_store_dur	samp_store_dur	
+Biosample	samp_store_loc	samp_store_loc	
+Biosample	samp_store_temp	samp_store_temp	
+Biosample	samp_subtype	samp_subtype	
+Biosample	samp_taxon_id		
+Biosample	samp_time_out		
+Biosample	samp_transport_cond		
+Biosample	samp_tvdss		
+Biosample	samp_type		
+Biosample	samp_vol_we_dna_ext	samp_vol_we_dna_ext	
+Biosample	samp_weather		
+Biosample	samp_well_name		
+Biosample	sample_collection_site		
+Biosample	sample_link		
+Biosample	sample_shipped		
+Biosample	sample_type	sample_type	
+Biosample	saturates_pc		
+Biosample	season	season	
+Biosample	season_environment	season_environment	
+Biosample	season_precpt	season_precpt	
+Biosample	season_temp	season_temp	
+Biosample	season_use		
+Biosample	secondary_treatment	secondary_treatment	
+Biosample	sediment_type	sediment_type	
+Biosample	seq_meth		
+Biosample	seq_quality_check		
+Biosample	sequencing field		
+Biosample	sewage_type	sewage_type	
+Biosample	shad_dev_water_mold		
+Biosample	shading_device_cond		
+Biosample	shading_device_loc		
+Biosample	shading_device_mat		
+Biosample	shading_device_type		
+Biosample	sieving	sieving	
+Biosample	silicate	silicate	
+Biosample	size_frac	size_frac	
+Biosample	size_frac_low	size_frac_low	
+Biosample	size_frac_up	size_frac_up	
+Biosample	slope_aspect	slope_aspect	
+Biosample	slope_gradient	slope_gradient	
+Biosample	sludge_retent_time	sludge_retent_time	
+Biosample	sodium	sodium	
+Biosample	soil_horizon	soil_horizon	
+Biosample	soil_text_measure	soil_text_measure	
+Biosample	soil_texture_meth	soil_texture_meth	
+Biosample	soil_type	soil_type	
+Biosample	soil_type_meth	soil_type_meth	
+Biosample	solar_irradiance	solar_irradiance	
+Biosample	soluble_inorg_mat	soluble_inorg_mat	
+Biosample	soluble_iron_micromol		
+Biosample	soluble_org_mat	soluble_org_mat	
+Biosample	soluble_react_phosp	soluble_react_phosp	
+Biosample	source_mat_id		
+Biosample	space_typ_state	space_typ_state	
+Biosample	specific	specific	
+Biosample	specific_ecosystem		
+Biosample	specific_humidity		
+Biosample	sr_dep_env		
+Biosample	sr_geol_age		
+Biosample	sr_kerog_type		
+Biosample	sr_lithology		
+Biosample	standing_water_regm	standing_water_regm	
+Biosample	start_date_inc		
+Biosample	start_time_inc		
+Biosample	store_cond	store_cond	
+Biosample	substructure_type	substructure_type	
+Biosample	subsurface_depth		
+Biosample	sulfate	sulfate	
+Biosample	sulfate_fw	sulfate_fw	
+Biosample	sulfide	sulfide	
+Biosample	surf_air_cont	surf_air_cont	
+Biosample	surf_humidity	surf_humidity	
+Biosample	surf_material	surf_material	
+Biosample	surf_moisture	surf_moisture	
+Biosample	surf_moisture_ph	surf_moisture_ph	
+Biosample	surf_temp	surf_temp	
+Biosample	suspend_part_matter	suspend_part_matter	
+Biosample	suspend_solids	suspend_solids	
+Biosample	tan	tan	
+Biosample	target_gene		
+Biosample	target_subfragment		
+Biosample	technical_reps		
+Biosample	temp	temp	
+Biosample	temp_out		
+Biosample	tertiary_treatment	tertiary_treatment	
+Biosample	tidal_stage	tidal_stage	
+Biosample	tillage	tillage	
+Biosample	tiss_cult_growth_med	tiss_cult_growth_med	
+Biosample	toluene	toluene	
+Biosample	tot_carb	tot_carb	
+Biosample	tot_depth_water_col	tot_depth_water_col	
+Biosample	tot_diss_nitro	tot_diss_nitro	
+Biosample	tot_inorg_nitro	tot_inorg_nitro	
+Biosample	tot_iron	tot_iron	
+Biosample	tot_nitro	tot_nitro	
+Biosample	tot_nitro_cont_meth	tot_nitro_cont_meth	
+Biosample	tot_nitro_content		
+Biosample	tot_org_c_meth	tot_org_c_meth	
+Biosample	tot_org_carb	tot_org_carb	
+Biosample	tot_part_carb	tot_part_carb	
+Biosample	tot_phosp	tot_phosp	
+Biosample	tot_phosphate	tot_phosphate	
+Biosample	tot_sulfur	tot_sulfur	
+Biosample	train_line	train_line	
+Biosample	train_stat_loc		
+Biosample	train_stop_loc		
+Biosample	turbidity	turbidity	
+Biosample	tvdss_of_hcr_press		
+Biosample	tvdss_of_hcr_temp		
+Biosample	typ_occup_density		
+Biosample	type		
+Biosample	ventilation_rate	ventilation_rate	
+Biosample	ventilation_type	ventilation_type	
+Biosample	vfa	vfa	
+Biosample	vfa_fw	vfa_fw	
+Biosample	vis_media		
+Biosample	viscosity	viscosity	
+Biosample	volatile_org_comp	volatile_org_comp	
+Biosample	wall_area		
+Biosample	wall_const_type		
+Biosample	wall_finish_mat		
+Biosample	wall_height		
+Biosample	wall_loc		
+Biosample	wall_surf_treatment		
+Biosample	wall_texture		
+Biosample	wall_thermal_mass		
+Biosample	wall_water_mold		
+Biosample	wastewater_type	wastewater_type	
+Biosample	water_cont_soil_meth		
+Biosample	water_content	water_content	
+Biosample	water_current	water_current	
+Biosample	water_cut	water_cut	
+Biosample	water_feat_size		
+Biosample	water_feat_type		
+Biosample	water_prod_rate		
+Biosample	water_temp_regm	water_temp_regm	
+Biosample	watering_regm	watering_regm	
+Biosample	weekday	weekday	
+Biosample	win	win	
+Biosample	wind_direction	wind_direction	
+Biosample	wind_speed	wind_speed	
+Biosample	window_cond		
+Biosample	window_cover		
+Biosample	window_horiz_pos		
+Biosample	window_loc		
+Biosample	window_mat		
+Biosample	window_open_freq	window_open_freq	
+Biosample	window_size		
+Biosample	window_status		
+Biosample	window_type		
+Biosample	window_vert_pos		
+Biosample	window_water_mold		
+Biosample	xylene	xylene	
+Biosample	zinc		
+OmicsProcessing	add_date		
+OmicsProcessing	alternative_identifiers		
+OmicsProcessing	chimera_check		
+OmicsProcessing	description	description	
+OmicsProcessing	designated_class		
+OmicsProcessing	end_date		
+OmicsProcessing	gold_sequencing_project_identifiers		
+OmicsProcessing	has_failure_categorization		
+OmicsProcessing	has_input		
+OmicsProcessing	has_output		
+OmicsProcessing	id		
+OmicsProcessing	insdc_bioproject_identifiers		
+OmicsProcessing	insdc_experiment_identifiers		
+OmicsProcessing	instrument_name		
+OmicsProcessing	mod_date		
+OmicsProcessing	name		
+OmicsProcessing	ncbi_project_name		
+OmicsProcessing	nucl_acid_amp		
+OmicsProcessing	nucl_acid_ext		
+OmicsProcessing	omics_type		
+OmicsProcessing	part_of		
+OmicsProcessing	pcr_cond		
+OmicsProcessing	pcr_primers		
+OmicsProcessing	principal_investigator		
+OmicsProcessing	processing_institution		
+OmicsProcessing	protocol_link		
+OmicsProcessing	qc_comment		
+OmicsProcessing	qc_status		
+OmicsProcessing	samp_vol_we_dna_ext	samp_vol_we_dna_ext	
+OmicsProcessing	seq_meth		
+OmicsProcessing	seq_quality_check		
+OmicsProcessing	start_date		
+OmicsProcessing	target_gene		
+OmicsProcessing	target_subfragment		
+OmicsProcessing	type		

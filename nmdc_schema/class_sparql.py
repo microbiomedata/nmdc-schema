@@ -382,7 +382,7 @@ class QueryException(Exception):
     type=click.Path(dir_okay=False),
 )
 @click.option("--query-file", help="Optional SPARQL query file. Bypasses class-based query building.")
-@click.option("--schema-file", default="nmdc_schema/nmdc_schema_accepting_legacy_ids.yaml")
+@click.option("--schema-file", default="nmdc_schema/nmdc_materialized_patterns.yaml")
 @click.option("--sparql-endpoint", default="https://graphdb-dev.microbiomedata.org/repositories/nmdc-metadata")
 @click.option("--target-class-name", default="Study")
 @click.option("--target-p-o-constraint",

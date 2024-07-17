@@ -1,0 +1,8 @@
+data_object_type: Metagenome Raw Reads
+description: "my awesome fastq file"
+file_size_bytes: 1382304
+id: "nmdc:dobj-11-dtTMNb"
+md5_checksum: "22afa3d49b73eaec2e9787a6b88fbdc3"
+name: "1237.14.3718.ATCG-ACTG.fastq.gz"
+type: "nmdc:DataObject"
+was_generated_by: "nmdc:omprc-99-123456"
