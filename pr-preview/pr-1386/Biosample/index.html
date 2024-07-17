@@ -2721,18 +2721,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../samp_collec_device/">samp_collec_device</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../samp_collec_method/">samp_collec_method</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../samp_collect_point/">samp_collect_point</a></td>
 <td>0..1 <br/> <a href="../SAMPCOLLECTPOINTENUM/">SAMPCOLLECTPOINTENUM</a></td>
 <td>Sampling point on the asset were sample was collected (e</td>
@@ -4780,8 +4768,6 @@ slots:
 - salinity
 - salt_regm
 - samp_capt_status
-- samp_collec_device
-- samp_collec_method
 - samp_collect_point
 - samp_dis_stage
 - samp_floor
@@ -14023,24 +14009,6 @@ attributes:
     domain_of:
     - Biosample
     range: SAMP_CAPT_STATUS_ENUM
-  samp_collec_device:
-    name: samp_collec_device
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: samp_collec_device
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
-  samp_collec_method:
-    name: samp_collec_method
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: samp_collec_method
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
   samp_collect_point:
     name: samp_collect_point
     description: Sampling point on the asset were sample was collected (e.g. Wellhead,

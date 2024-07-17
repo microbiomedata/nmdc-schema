@@ -2861,11 +2861,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/host_family_relation/</loc>
-         <lastmod>2024-07-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/host_genotype/</loc>
          <lastmod>2024-07-17</lastmod>
          <changefreq>daily</changefreq>
@@ -4362,16 +4357,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/samp_capt_status/</loc>
-         <lastmod>2024-07-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/samp_collec_device/</loc>
-         <lastmod>2024-07-17</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/samp_collec_method/</loc>
          <lastmod>2024-07-17</lastmod>
          <changefreq>daily</changefreq>
     </url>
