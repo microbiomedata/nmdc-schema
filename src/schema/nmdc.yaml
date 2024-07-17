@@ -2232,6 +2232,26 @@ enums:
 
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
+      
+      Metatranscriptome Expression:
+        description: Metatranscriptome expression values and read counts for gene features predicted on contigs
+        annotations:
+          file_name_pattern: "*.rnaseq_gea.txt"
+
+      Metatranscriptome Expression Intergenic:
+        description: Metatranscriptome expression values and read counts for intergenic regions.
+        annotations:
+          file_name_pattern: "*.rnaseq_gea.intergenic.txt" 
+
+      Metatranscriptome Expression Info File:
+        description: File containing version information on the expression workflow   
+        annotations:
+          file_name_pattern: "*_readcount.info"
+
+      rRNA Filtered Sequencing Reads:
+        description: File containing ribosomal reads from the read qc filtering step.   
+        annotations:
+          file_name_pattern: "*.rRNA.fastq.gz"
 
   CreditEnum:
     permissible_values:
