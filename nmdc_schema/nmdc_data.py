@@ -118,10 +118,6 @@ def get_nmdc_jsonschema_bytes(variant: Optional[SchemaVariantIdentifier] = None)
     True
     """
 
-    # # removed
-    # >>> len(bytes_b) > len(bytes_a)  # assumes that including structured patterns makes the file larger
-    # True
-
     nmdc_json = get_nmdc_jsonschema_bytesIO(variant=variant)
     return nmdc_json.getvalue()
 
@@ -142,10 +138,6 @@ def get_nmdc_jsonschema_string(variant: Optional[SchemaVariantIdentifier] = None
     True
 
     """
-
-    # # removed
-    # >>> len(str_b) > len(str_a)  # assumes that including structured patterns makes the file larger
-    # True
 
     nmdc_json = get_nmdc_jsonschema_bytes(variant=variant)
     return nmdc_json.decode("utf-8")
