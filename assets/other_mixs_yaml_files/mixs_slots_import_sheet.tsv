@@ -482,3 +482,4 @@ MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.2
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.2.0/src/mixs/schema/mixs.yaml			window_vert_pos	placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.2.0/src/mixs/schema/mixs.yaml			window_water_mold	placeholder_class
 MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.2.0/src/mixs/schema/mixs.yaml			xylene	placeholder_class
+MimsSoil	https://raw.githubusercontent.com/GenomicsStandardsConsortium/mixs/v6.2.0/src/mixs/schema/mixs.yaml			samp_collect_method	placeholder_class

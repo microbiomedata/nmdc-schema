@@ -505,6 +505,8 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
+      - samp_collec_method # see assets/yq-for-mixs_subset_modified.txt for foced alignment with MIxS 6.2
+      - samp_collec_device # see assets/yq-for-mixs_subset_modified.txt for foced alignment with MIxS 6.2
       - neon_biosample_identifiers
       - host_taxid
       - embargoed
@@ -2727,8 +2729,6 @@ slots:
       packages listed here are further defined in separate subtables. By giving the
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
-    in_subset:
-      - mixs extension
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc

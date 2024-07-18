@@ -27,20 +27,6 @@ prefixes:
     prefix_prefix: schema
     prefix_reference: http://schema.org/
 default_prefix: MIXS
-subsets:
-  mixs_environmental_triad:
-    title: MIxS Environmental Triad
-  mixs extension: {}
-  combination_classes:
-    from_schema: https://w3id.org/mixs
-  sequencing:
-    from_schema: https://w3id.org/mixs
-  environment:
-    from_schema: https://w3id.org/mixs
-  nucleic acid sequence source:
-    from_schema: https://w3id.org/mixs
-  investigation:
-    from_schema: https://w3id.org/mixs
 enums:
   AERO_STRUC_ENUM:
     from_schema: https://w3id.org/mixs
@@ -1031,7 +1017,7 @@ slots:
       - air
       - humidity
     slot_uri: MIXS:0000122
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -1267,8 +1253,6 @@ slots:
     title: altitude
     examples:
       - value: 100 meter
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000094
     range: TextValue
@@ -1305,7 +1289,7 @@ slots:
       - value: 1.5 milligram per liter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000427
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -1510,7 +1494,7 @@ slots:
       - average
       - temperature
     slot_uri: MIXS:0000142
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -1730,8 +1714,6 @@ slots:
     title: observed biotic relationship
     examples:
       - value: free living
-    in_subset:
-      - nucleic acid sequence source
     from_schema: https://w3id.org/mixs
     keywords:
       - observed
@@ -1885,7 +1867,7 @@ slots:
       - value: 0.2 micromole per liter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000432
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -1945,7 +1927,7 @@ slots:
       - ratio
     string_serialization: '{float}:{float}'
     slot_uri: MIXS:0000310
-    range: float
+    range: QuantityValue
   ceil_area:
     annotations:
       Preferred_unit:
@@ -2134,8 +2116,6 @@ slots:
     title: chimera check software
     examples:
       - value: uchime;v4.1;default parameters
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     keywords:
       - software
@@ -2157,7 +2137,7 @@ slots:
       - value: 5000 milligram per liter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000429
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2174,7 +2154,7 @@ slots:
       - value: 5 milligram per cubic meter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000177
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2196,8 +2176,6 @@ slots:
     title: collection date
     examples:
       - value: '2013-03-25T12:42:31+01:00'
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - date
@@ -2231,7 +2209,7 @@ slots:
       - value: 10 milliSiemens per centimeter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000692
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2304,6 +2282,7 @@ slots:
       - vegetation
     string_serialization: '{text}'
     slot_uri: MIXS:0000312
+    range: TextValue
   cur_vegetation_meth:
     description: Reference or method used in vegetation classification
     title: current vegetation method
@@ -2364,13 +2343,11 @@ slots:
         value: meter
     description: The vertical distance below local surface. For sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples
     title: depth
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - depth
     slot_uri: MIXS:0000018
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2464,7 +2441,7 @@ slots:
       - dissolved
       - inorganic
     slot_uri: MIXS:0000434
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2485,7 +2462,7 @@ slots:
       - inorganic
       - nitrogen
     slot_uri: MIXS:0000698
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2519,7 +2496,7 @@ slots:
     keywords:
       - dissolved
     slot_uri: MIXS:0000139
-    range: TextValue
+    range: QuantityValue
     recommended: true
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
@@ -2541,7 +2518,7 @@ slots:
       - dissolved
       - organic
     slot_uri: MIXS:0000433
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2578,7 +2555,7 @@ slots:
       - dissolved
       - oxygen
     slot_uri: MIXS:0000119
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -2798,8 +2775,6 @@ slots:
     title: elevation
     examples:
       - value: 100 meter
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - elevation
@@ -2840,8 +2815,6 @@ slots:
     title: broad-scale environmental context
     examples:
       - value: rangeland biome [ENVO:01000247]
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - context
@@ -2877,8 +2850,6 @@ slots:
     title: local environmental context
     examples:
       - value: hillside [ENVO:01000333]
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - context
@@ -2903,8 +2874,6 @@ slots:
     title: environmental medium
     examples:
       - value: bluegrass field soil [ENVO:00005789]
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - environmental
@@ -2992,8 +2961,6 @@ slots:
     title: experimental factor
     examples:
       - value: time series design [EFO:0001779]
-    in_subset:
-      - investigation
     from_schema: https://w3id.org/mixs
     keywords:
       - experimental
@@ -3001,7 +2968,7 @@ slots:
     string_serialization: '{termLabel} [{termID}]|{text}'
     slot_uri: MIXS:0000008
     range: ControlledTermValue
-    multivalued: true
+    multivalued: false
     pattern: ^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$
   ext_door:
     description: The number of exterior doors in the built structure
@@ -3345,8 +3312,6 @@ slots:
     title: geographic location (country and/or sea,region)
     examples:
       - value: 'USA: Maryland, Bethesda'
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - geographic
@@ -3400,6 +3365,7 @@ slots:
     from_schema: https://w3id.org/mixs
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
+    range: TextValue
   gravity:
     annotations:
       Expected_value:
@@ -3716,7 +3682,7 @@ slots:
       - host
       - host.
     slot_uri: MIXS:0000255
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -3836,7 +3802,7 @@ slots:
       - host.
       - mass
     slot_uri: MIXS:0000257
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -3882,7 +3848,7 @@ slots:
       - host
       - host.
     slot_uri: MIXS:0000264
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -3937,6 +3903,7 @@ slots:
       - life
     string_serialization: '{text}'
     slot_uri: MIXS:0000251
+    range: TextValue
   host_phenotype:
     annotations:
       Expected_value:
@@ -4100,7 +4067,7 @@ slots:
     keywords:
       - humidity
     slot_uri: MIXS:0000100
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -4265,8 +4232,6 @@ slots:
     title: geographic location (latitude and longitude)
     examples:
       - value: 50.586825 6.408977
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - geographic
@@ -4444,7 +4409,7 @@ slots:
       - value: 52.8 micromole per kilogram
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000431
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -4554,11 +4519,6 @@ slots:
       - microbial
     slot_uri: MIXS:0000339
     range: string
-    pattern: ^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$
-    structured_pattern:
-      syntax: ^{PMID}|{DOI}|{URL}$
-      interpolated: true
-      partial_match: true
   microbial_biomass:
     annotations:
       Preferred_unit:
@@ -4664,7 +4624,7 @@ slots:
     keywords:
       - nitrate
     slot_uri: MIXS:0000425
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -4702,7 +4662,7 @@ slots:
     keywords:
       - nitrogen
     slot_uri: MIXS:0000504
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -4730,8 +4690,6 @@ slots:
     title: nucleic acid amplification
     examples:
       - value: https://phylogenomics.me/protocols/16s-pcr-protocol/
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000038
     range: TextValue
@@ -4745,8 +4703,6 @@ slots:
     title: nucleic acid extraction
     examples:
       - value: https://mobio.com/media/wysiwyg/pdfs/protocols/12888.pdf
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000037
     range: TextValue
@@ -4837,7 +4793,7 @@ slots:
       - carbon
       - organic
     slot_uri: MIXS:0000508
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -5052,8 +5008,6 @@ slots:
     title: pcr conditions
     examples:
       - value: initial denaturation:94_3;annealing:50_1;elongation:72_1.5;final elongation:72_10;35
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     keywords:
       - condition
@@ -5069,8 +5023,6 @@ slots:
     title: pcr primers
     examples:
       - value: FWD:GTGCCAGCMGCCGCGGTAA;REV:GGACTACHVGGGTWTCTAAT
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     keywords:
       - pcr
@@ -5105,6 +5057,7 @@ slots:
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000754
     multivalued: true
+    range: TextValue
   pesticide_regm:
     annotations:
       Preferred_unit:
@@ -5239,7 +5192,7 @@ slots:
       - value: 3.926 micromole photons per second per square meter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000725
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -5360,7 +5313,7 @@ slots:
       - value: 463 milligram per liter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000430
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -6154,8 +6107,6 @@ slots:
     title: sample material processing
     examples:
       - value: filtering of seawater, storing samples in ethanol
-    in_subset:
-      - nucleic acid sequence source
     from_schema: https://w3id.org/mixs
     keywords:
       - material
@@ -6192,8 +6143,6 @@ slots:
     title: sample name
     examples:
       - value: ISDsoil1
-    in_subset:
-      - investigation
     from_schema: https://w3id.org/mixs
     keywords:
       - sample
@@ -6264,14 +6213,12 @@ slots:
     title: amount or size of sample collected
     examples:
       - value: 5 liter
-    in_subset:
-      - nucleic acid sequence source
     from_schema: https://w3id.org/mixs
     keywords:
       - sample
       - size
     slot_uri: MIXS:0000001
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -6337,7 +6284,7 @@ slots:
       - storage
       - temperature
     slot_uri: MIXS:0000110
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -6357,8 +6304,6 @@ slots:
   samp_taxon_id:
     description: NCBI taxon id of the sample.  Maybe be a single taxon or mixed taxa sample. Use 'synthetic metagenome  for mock community/positive controls, or 'blank sample' for negative controls
     title: taxonomy ID of DNA sample
-    in_subset:
-      - investigation
     from_schema: https://w3id.org/mixs
     keywords:
       - dna
@@ -6465,8 +6410,6 @@ slots:
     title: sample volume or weight for DNA extraction
     examples:
       - value: 1500 milliliter
-    in_subset:
-      - nucleic acid sequence source
     from_schema: https://w3id.org/mixs
     keywords:
       - dna
@@ -6632,8 +6575,6 @@ slots:
     title: sequencing method
     examples:
       - value: 454 Genome Sequencer FLX [OBI:0000702]
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     keywords:
       - method
@@ -6670,8 +6611,6 @@ slots:
     title: sequence quality check
     examples:
       - value: none
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     keywords:
       - quality
@@ -6783,8 +6722,6 @@ slots:
     title: size fraction selected
     examples:
       - value: 0-0.22 micrometer
-    in_subset:
-      - nucleic acid sequence source
     from_schema: https://w3id.org/mixs
     keywords:
       - fraction
@@ -6892,7 +6829,7 @@ slots:
       - value: 10.5 milligram per liter
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000428
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -6972,8 +6909,8 @@ slots:
       - value: 1.36 kilowatts per square meter per day
     from_schema: https://w3id.org/mixs
     slot_uri: MIXS:0000112
-    range: TextValue
-    multivalued: true
+    range: QuantityValue
+    multivalued: false
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7031,7 +6968,7 @@ slots:
       - phosphorus
       - soluble
     slot_uri: MIXS:0000738
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7046,8 +6983,6 @@ slots:
     title: source material identifiers
     examples:
       - value: MPI012345
-    in_subset:
-      - nucleic acid sequence source
     from_schema: https://w3id.org/mixs
     keywords:
       - identifier
@@ -7055,7 +6990,8 @@ slots:
       - source
     string_serialization: '{text}'
     slot_uri: MIXS:0000026
-    multivalued: true
+    multivalued: false
+    range: TextValue
   space_typ_state:
     description: Customary or normal state of the space
     title: space typical state
@@ -7162,6 +7098,7 @@ slots:
       - storage
     string_serialization: '{text};{period}'
     slot_uri: MIXS:0000327
+    range: TextValue
   substructure_type:
     description: The substructure or under building is that largely hidden section of the building which is built off the foundations to the ground floor level
     title: substructure type
@@ -7186,7 +7123,7 @@ slots:
     keywords:
       - sulfate
     slot_uri: MIXS:0000423
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7391,8 +7328,6 @@ slots:
     title: target gene
     examples:
       - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     keywords:
       - target
@@ -7403,8 +7338,6 @@ slots:
     title: target subfragment
     examples:
       - value: V6, V9, ITS
-    in_subset:
-      - sequencing
     from_schema: https://w3id.org/mixs
     keywords:
       - target
@@ -7419,13 +7352,11 @@ slots:
     title: temperature
     examples:
       - value: 25 degree Celsius
-    in_subset:
-      - environment
     from_schema: https://w3id.org/mixs
     keywords:
       - temperature
     slot_uri: MIXS:0000113
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7522,7 +7453,7 @@ slots:
       - carbon
       - total
     slot_uri: MIXS:0000525
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7624,7 +7555,7 @@ slots:
       - nitrogen
       - total
     slot_uri: MIXS:0000102
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7659,7 +7590,7 @@ slots:
       - nitrogen
       - total
     slot_uri: MIXS:0000530
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7698,7 +7629,7 @@ slots:
       - organic
       - total
     slot_uri: MIXS:0000533
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -7740,7 +7671,7 @@ slots:
       - phosphorus
       - total
     slot_uri: MIXS:0000117
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -8153,11 +8084,6 @@ slots:
       - water
     slot_uri: MIXS:0000185
     range: string
-    pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
-    structured_pattern:
-      syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
-      interpolated: true
-      partial_match: true
   water_current:
     annotations:
       Preferred_unit:
@@ -8321,7 +8247,7 @@ slots:
       - speed
       - wind
     slot_uri: MIXS:0000118
-    range: TextValue
+    range: QuantityValue
     pattern: ^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$
     structured_pattern:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
@@ -8463,4 +8389,17 @@ slots:
       syntax: ^{scientific_float}( *- *{scientific_float})? *{text}$
       interpolated: true
       partial_match: true
+  samp_collec_method:
+    description: The method employed for collecting the sample
+    title: sample collection method
+    from_schema: https://w3id.org/mixs
+    keywords:
+      - method
+      - sample
+    slot_uri: MIXS:0001225
+    range: string
+    notes: cloned from MIxS 6.2 samp_collect_method
+  samp_collec_device:
+    notes: cloned from MIxS 6.2 samp_collect_device
+    range: string
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml

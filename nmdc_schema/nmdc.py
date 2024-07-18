@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-17T15:55:15
+# Generation date: 2024-07-18T12:38:28
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -1054,6 +1054,8 @@ class Biosample(MaterialEntity):
     env_broad_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_local_scale: Union[dict, "ControlledIdentifiedTermValue"] = None
     env_medium: Union[dict, "ControlledIdentifiedTermValue"] = None
+    samp_collec_method: Optional[str] = None
+    samp_collec_device: Optional[str] = None
     neon_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     host_taxid: Optional[Union[dict, "ControlledIdentifiedTermValue"]] = None
     embargoed: Optional[Union[bool, Bool]] = None
@@ -1067,7 +1069,7 @@ class Biosample(MaterialEntity):
     insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     emsl_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     igsn_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
-    abs_air_humidity: Optional[Union[dict, "TextValue"]] = None
+    abs_air_humidity: Optional[Union[dict, "QuantityValue"]] = None
     add_recov_method: Optional[str] = None
     additional_info: Optional[Union[dict, "TextValue"]] = None
     address: Optional[str] = None
@@ -1084,7 +1086,7 @@ class Biosample(MaterialEntity):
     alkyl_diethers: Optional[Union[dict, "TextValue"]] = None
     alt: Optional[Union[dict, "TextValue"]] = None
     aminopept_act: Optional[Union[dict, "TextValue"]] = None
-    ammonium: Optional[Union[dict, "TextValue"]] = None
+    ammonium: Optional[Union[dict, "QuantityValue"]] = None
     ammonium_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
     amount_light: Optional[Union[dict, "TextValue"]] = None
     ances_data: Optional[Union[dict, "TextValue"]] = None
@@ -1098,7 +1100,7 @@ class Biosample(MaterialEntity):
     atmospheric_data: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     avg_dew_point: Optional[Union[dict, "TextValue"]] = None
     avg_occup: Optional[Union[dict, "TextValue"]] = None
-    avg_temp: Optional[Union[dict, "TextValue"]] = None
+    avg_temp: Optional[Union[dict, "QuantityValue"]] = None
     bac_prod: Optional[Union[dict, "TextValue"]] = None
     bac_resp: Optional[Union[dict, "TextValue"]] = None
     bacteria_carb_prod: Optional[Union[dict, "TextValue"]] = None
@@ -1124,10 +1126,10 @@ class Biosample(MaterialEntity):
     built_struc_age: Optional[Union[dict, "TextValue"]] = None
     built_struc_set: Optional[Union[str, "BUILTSTRUCSETENUM"]] = None
     built_struc_type: Optional[Union[dict, "TextValue"]] = None
-    calcium: Optional[Union[dict, "TextValue"]] = None
+    calcium: Optional[Union[dict, "QuantityValue"]] = None
     carb_dioxide: Optional[Union[dict, "TextValue"]] = None
     carb_monoxide: Optional[Union[dict, "TextValue"]] = None
-    carb_nitro_ratio: Optional[float] = None
+    carb_nitro_ratio: Optional[Union[dict, "QuantityValue"]] = None
     ceil_area: Optional[Union[dict, "TextValue"]] = None
     ceil_cond: Optional[Union[str, "SHAREDENUM3"]] = None
     ceil_finish_mat: Optional[Union[str, "CEILFINISHMATENUM"]] = None
@@ -1142,32 +1144,32 @@ class Biosample(MaterialEntity):
     chem_treat_method: Optional[str] = None
     chem_treatment: Optional[str] = None
     chimera_check: Optional[Union[dict, "TextValue"]] = None
-    chloride: Optional[Union[dict, "TextValue"]] = None
-    chlorophyll: Optional[Union[dict, "TextValue"]] = None
+    chloride: Optional[Union[dict, "QuantityValue"]] = None
+    chlorophyll: Optional[Union[dict, "QuantityValue"]] = None
     climate_environment: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     collection_date: Optional[Union[dict, "TimestampValue"]] = None
-    conduc: Optional[Union[dict, "TextValue"]] = None
+    conduc: Optional[Union[dict, "QuantityValue"]] = None
     cool_syst_id: Optional[Union[dict, "TextValue"]] = None
     crop_rotation: Optional[str] = None
     cult_root_med: Optional[str] = None
     cur_land_use: Optional[str] = None
-    cur_vegetation: Optional[str] = None
+    cur_vegetation: Optional[Union[dict, "TextValue"]] = None
     cur_vegetation_meth: Optional[Union[dict, "TextValue"]] = None
     date_last_rain: Optional[Union[dict, "TimestampValue"]] = None
     density: Optional[Union[dict, "TextValue"]] = None
     depos_env: Optional[Union[str, "DEPOSENVENUM"]] = None
-    depth: Optional[Union[dict, "TextValue"]] = None
+    depth: Optional[Union[dict, "QuantityValue"]] = None
     dew_point: Optional[Union[dict, "TextValue"]] = None
     diether_lipids: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     diss_carb_dioxide: Optional[Union[dict, "TextValue"]] = None
     diss_hydrogen: Optional[Union[dict, "TextValue"]] = None
-    diss_inorg_carb: Optional[Union[dict, "TextValue"]] = None
-    diss_inorg_nitro: Optional[Union[dict, "TextValue"]] = None
+    diss_inorg_carb: Optional[Union[dict, "QuantityValue"]] = None
+    diss_inorg_nitro: Optional[Union[dict, "QuantityValue"]] = None
     diss_inorg_phosp: Optional[Union[dict, "TextValue"]] = None
-    diss_iron: Optional[Union[dict, "TextValue"]] = None
-    diss_org_carb: Optional[Union[dict, "TextValue"]] = None
+    diss_iron: Optional[Union[dict, "QuantityValue"]] = None
+    diss_org_carb: Optional[Union[dict, "QuantityValue"]] = None
     diss_org_nitro: Optional[Union[dict, "TextValue"]] = None
-    diss_oxygen: Optional[Union[dict, "TextValue"]] = None
+    diss_oxygen: Optional[Union[dict, "QuantityValue"]] = None
     diss_oxygen_fluid: Optional[Union[dict, "TextValue"]] = None
     dna_cont_well: Optional[str] = None
     door_comp_type: Optional[Union[str, "DOORCOMPTYPEENUM"]] = None
@@ -1197,7 +1199,7 @@ class Biosample(MaterialEntity):
     ethylbenzene: Optional[Union[dict, "TextValue"]] = None
     exp_duct: Optional[Union[dict, "TextValue"]] = None
     exp_pipe: Optional[Union[dict, "QuantityValue"]] = None
-    experimental_factor: Optional[Union[Union[dict, "ControlledTermValue"], List[Union[dict, "ControlledTermValue"]]]] = empty_list()
+    experimental_factor: Optional[Union[dict, "ControlledTermValue"]] = None
     ext_door: Optional[Union[dict, "TextValue"]] = None
     ext_wall_orient: Optional[Union[str, "SHAREDENUM0"]] = None
     ext_window_orient: Optional[Union[str, "SHAREDENUM0"]] = None
@@ -1228,7 +1230,7 @@ class Biosample(MaterialEntity):
     genetic_mod: Optional[str] = None
     geo_loc_name: Optional[Union[dict, "TextValue"]] = None
     glucosidase_act: Optional[Union[dict, "TextValue"]] = None
-    gravidity: Optional[str] = None
+    gravidity: Optional[Union[dict, "TextValue"]] = None
     gravity: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     growth_facil: Optional[Union[dict, "ControlledTermValue"]] = None
     growth_habit: Optional[Union[str, "GROWTHHABITENUM"]] = None
@@ -1250,7 +1252,7 @@ class Biosample(MaterialEntity):
     height_carper_fiber: Optional[Union[dict, "TextValue"]] = None
     herbicide_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     horizon_meth: Optional[Union[dict, "TextValue"]] = None
-    host_age: Optional[Union[dict, "TextValue"]] = None
+    host_age: Optional[Union[dict, "QuantityValue"]] = None
     host_body_habitat: Optional[Union[dict, "TextValue"]] = None
     host_body_product: Optional[Union[dict, "ControlledTermValue"]] = None
     host_body_site: Optional[Union[dict, "ControlledTermValue"]] = None
@@ -1258,13 +1260,13 @@ class Biosample(MaterialEntity):
     host_color: Optional[Union[dict, "TextValue"]] = None
     host_common_name: Optional[Union[dict, "TextValue"]] = None
     host_diet: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    host_dry_mass: Optional[Union[dict, "TextValue"]] = None
+    host_dry_mass: Optional[Union[dict, "QuantityValue"]] = None
     host_genotype: Optional[Union[dict, "TextValue"]] = None
     host_growth_cond: Optional[Union[dict, "TextValue"]] = None
-    host_height: Optional[Union[dict, "TextValue"]] = None
+    host_height: Optional[Union[dict, "QuantityValue"]] = None
     host_last_meal: Optional[Union[str, List[str]]] = empty_list()
     host_length: Optional[Union[dict, "TextValue"]] = None
-    host_life_stage: Optional[str] = None
+    host_life_stage: Optional[Union[dict, "TextValue"]] = None
     host_phenotype: Optional[Union[dict, "ControlledTermValue"]] = None
     host_sex: Optional[str] = None
     host_shape: Optional[Union[dict, "TextValue"]] = None
@@ -1274,7 +1276,7 @@ class Biosample(MaterialEntity):
     host_symbiont: Optional[Union[str, List[str]]] = empty_list()
     host_tot_mass: Optional[Union[dict, "TextValue"]] = None
     host_wet_mass: Optional[Union[dict, "TextValue"]] = None
-    humidity: Optional[Union[dict, "TextValue"]] = None
+    humidity: Optional[Union[dict, "QuantityValue"]] = None
     humidity_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     indoor_space: Optional[Union[str, "INDOORSPACEENUM"]] = None
     indoor_surf: Optional[Union[str, "INDOORSURFENUM"]] = None
@@ -1297,7 +1299,7 @@ class Biosample(MaterialEntity):
     lithology: Optional[Union[str, "LITHOLOGYENUM"]] = None
     local_class: Optional[str] = None
     local_class_meth: Optional[Union[dict, "TextValue"]] = None
-    magnesium: Optional[Union[dict, "TextValue"]] = None
+    magnesium: Optional[Union[dict, "QuantityValue"]] = None
     manganese: Optional[Union[dict, "QuantityValue"]] = None
     max_occup: Optional[Union[dict, "QuantityValue"]] = None
     mean_frict_vel: Optional[Union[dict, "TextValue"]] = None
@@ -1310,11 +1312,11 @@ class Biosample(MaterialEntity):
     mineral_nutr_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     misc_param: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     n_alkanes: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    nitrate: Optional[Union[dict, "TextValue"]] = None
+    nitrate: Optional[Union[dict, "QuantityValue"]] = None
     nitrate_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
     nitrite: Optional[Union[dict, "TextValue"]] = None
     nitrite_nitrogen: Optional[Union[dict, "QuantityValue"]] = None
-    nitro: Optional[Union[dict, "TextValue"]] = None
+    nitro: Optional[Union[dict, "QuantityValue"]] = None
     non_min_nutr_regm: Optional[Union[str, List[str]]] = empty_list()
     nucl_acid_amp: Optional[Union[dict, "TextValue"]] = None
     nucl_acid_ext: Optional[Union[dict, "TextValue"]] = None
@@ -1324,7 +1326,7 @@ class Biosample(MaterialEntity):
     occup_density_samp: Optional[Union[dict, "QuantityValue"]] = None
     occup_document: Optional[Union[str, "OCCUPDOCUMENTENUM"]] = None
     occup_samp: Optional[Union[dict, "QuantityValue"]] = None
-    org_carb: Optional[Union[dict, "TextValue"]] = None
+    org_carb: Optional[Union[dict, "QuantityValue"]] = None
     org_count_qpcr_info: Optional[str] = None
     org_matter: Optional[Union[dict, "TextValue"]] = None
     org_nitro: Optional[Union[dict, "TextValue"]] = None
@@ -1339,7 +1341,7 @@ class Biosample(MaterialEntity):
     pcr_cond: Optional[str] = None
     pcr_primers: Optional[str] = None
     permeability: Optional[Union[dict, "TextValue"]] = None
-    perturbation: Optional[Union[str, List[str]]] = empty_list()
+    perturbation: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     pesticide_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     petroleum_hydrocarb: Optional[Union[dict, "TextValue"]] = None
     ph: Optional[float] = None
@@ -1348,7 +1350,7 @@ class Biosample(MaterialEntity):
     phaeopigments: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     phosphate: Optional[Union[dict, "TextValue"]] = None
     phosplipid_fatt_acid: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    photon_flux: Optional[Union[dict, "TextValue"]] = None
+    photon_flux: Optional[Union[dict, "QuantityValue"]] = None
     plant_growth_med: Optional[Union[dict, "ControlledTermValue"]] = None
     plant_product: Optional[str] = None
     plant_sex: Optional[Union[str, "PLANTSEXENUM"]] = None
@@ -1356,7 +1358,7 @@ class Biosample(MaterialEntity):
     pollutants: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     pool_dna_extracts: Optional[str] = None
     porosity: Optional[Union[dict, "TextValue"]] = None
-    potassium: Optional[Union[dict, "TextValue"]] = None
+    potassium: Optional[Union[dict, "QuantityValue"]] = None
     pour_point: Optional[Union[dict, "TextValue"]] = None
     pre_treatment: Optional[str] = None
     pres_animal_insect: Optional[str] = None
@@ -1415,11 +1417,11 @@ class Biosample(MaterialEntity):
     samp_md: Optional[Union[dict, "QuantityValue"]] = None
     samp_preserv: Optional[Union[dict, "TextValue"]] = None
     samp_room_id: Optional[Union[dict, "TextValue"]] = None
-    samp_size: Optional[Union[dict, "TextValue"]] = None
+    samp_size: Optional[Union[dict, "QuantityValue"]] = None
     samp_sort_meth: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     samp_store_dur: Optional[Union[dict, "TextValue"]] = None
     samp_store_loc: Optional[str] = None
-    samp_store_temp: Optional[Union[dict, "TextValue"]] = None
+    samp_store_temp: Optional[Union[dict, "QuantityValue"]] = None
     samp_subtype: Optional[Union[str, "SAMPSUBTYPEENUM"]] = None
     samp_taxon_id: Optional[Union[dict, "ControlledIdentifiedTermValue"]] = None
     samp_time_out: Optional[Union[dict, "TextValue"]] = None
@@ -1453,16 +1455,16 @@ class Biosample(MaterialEntity):
     slope_aspect: Optional[Union[dict, "TextValue"]] = None
     slope_gradient: Optional[Union[dict, "TextValue"]] = None
     sludge_retent_time: Optional[Union[dict, "TextValue"]] = None
-    sodium: Optional[Union[dict, "TextValue"]] = None
+    sodium: Optional[Union[dict, "QuantityValue"]] = None
     soil_horizon: Optional[Union[str, "SOILHORIZONENUM"]] = None
     soil_texture_meth: Optional[str] = None
     soil_type: Optional[str] = None
     soil_type_meth: Optional[Union[dict, "TextValue"]] = None
-    solar_irradiance: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
+    solar_irradiance: Optional[Union[dict, "QuantityValue"]] = None
     soluble_inorg_mat: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
     soluble_org_mat: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    soluble_react_phosp: Optional[Union[dict, "TextValue"]] = None
-    source_mat_id: Optional[Union[str, List[str]]] = empty_list()
+    soluble_react_phosp: Optional[Union[dict, "QuantityValue"]] = None
+    source_mat_id: Optional[Union[dict, "TextValue"]] = None
     space_typ_state: Optional[Union[str, "SPACETYPSTATEENUM"]] = None
     specific: Optional[Union[str, "SPECIFICENUM"]] = None
     specific_ecosystem: Optional[str] = None
@@ -1472,9 +1474,9 @@ class Biosample(MaterialEntity):
     sr_kerog_type: Optional[Union[str, "SRKEROGTYPEENUM"]] = None
     sr_lithology: Optional[Union[str, "SRLITHOLOGYENUM"]] = None
     standing_water_regm: Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]] = empty_list()
-    store_cond: Optional[str] = None
+    store_cond: Optional[Union[dict, "TextValue"]] = None
     substructure_type: Optional[Union[Union[str, "SUBSTRUCTURETYPEENUM"], List[Union[str, "SUBSTRUCTURETYPEENUM"]]]] = empty_list()
-    sulfate: Optional[Union[dict, "TextValue"]] = None
+    sulfate: Optional[Union[dict, "QuantityValue"]] = None
     sulfate_fw: Optional[Union[dict, "TextValue"]] = None
     sulfide: Optional[Union[dict, "TextValue"]] = None
     surf_air_cont: Optional[Union[Union[str, "SURFAIRCONTENUM"], List[Union[str, "SURFAIRCONTENUM"]]]] = empty_list()
@@ -1488,25 +1490,25 @@ class Biosample(MaterialEntity):
     tan: Optional[Union[dict, "TextValue"]] = None
     target_gene: Optional[Union[dict, "TextValue"]] = None
     target_subfragment: Optional[Union[dict, "TextValue"]] = None
-    temp: Optional[Union[dict, "TextValue"]] = None
+    temp: Optional[Union[dict, "QuantityValue"]] = None
     temp_out: Optional[Union[dict, "TextValue"]] = None
     tertiary_treatment: Optional[str] = None
     tidal_stage: Optional[Union[str, "TIDALSTAGEENUM"]] = None
     tillage: Optional[Union[Union[str, "TILLAGEENUM"], List[Union[str, "TILLAGEENUM"]]]] = empty_list()
     tiss_cult_growth_med: Optional[Union[dict, "TextValue"]] = None
     toluene: Optional[Union[dict, "TextValue"]] = None
-    tot_carb: Optional[Union[dict, "TextValue"]] = None
+    tot_carb: Optional[Union[dict, "QuantityValue"]] = None
     tot_depth_water_col: Optional[Union[dict, "TextValue"]] = None
     tot_diss_nitro: Optional[Union[dict, "TextValue"]] = None
     tot_inorg_nitro: Optional[Union[dict, "TextValue"]] = None
     tot_iron: Optional[Union[dict, "TextValue"]] = None
-    tot_nitro: Optional[Union[dict, "TextValue"]] = None
+    tot_nitro: Optional[Union[dict, "QuantityValue"]] = None
     tot_nitro_cont_meth: Optional[str] = None
-    tot_nitro_content: Optional[Union[dict, "TextValue"]] = None
+    tot_nitro_content: Optional[Union[dict, "QuantityValue"]] = None
     tot_org_c_meth: Optional[Union[dict, "TextValue"]] = None
-    tot_org_carb: Optional[Union[dict, "TextValue"]] = None
+    tot_org_carb: Optional[Union[dict, "QuantityValue"]] = None
     tot_part_carb: Optional[Union[dict, "TextValue"]] = None
-    tot_phosp: Optional[Union[dict, "TextValue"]] = None
+    tot_phosp: Optional[Union[dict, "QuantityValue"]] = None
     tot_phosphate: Optional[Union[dict, "TextValue"]] = None
     tot_sulfur: Optional[Union[dict, "TextValue"]] = None
     train_line: Optional[Union[str, "TRAINLINEENUM"]] = None
@@ -1545,7 +1547,7 @@ class Biosample(MaterialEntity):
     weekday: Optional[Union[str, "WEEKDAYENUM"]] = None
     win: Optional[Union[dict, "TextValue"]] = None
     wind_direction: Optional[Union[dict, "TextValue"]] = None
-    wind_speed: Optional[Union[dict, "TextValue"]] = None
+    wind_speed: Optional[Union[dict, "QuantityValue"]] = None
     window_cond: Optional[Union[str, "SHAREDENUM2"]] = None
     window_cover: Optional[Union[str, "WINDOWCOVERENUM"]] = None
     window_horiz_pos: Optional[Union[str, "WINDOWHORIZPOSENUM"]] = None
@@ -1661,6 +1663,12 @@ class Biosample(MaterialEntity):
         if not isinstance(self.env_medium, ControlledIdentifiedTermValue):
             self.env_medium = ControlledIdentifiedTermValue(**as_dict(self.env_medium))
 
+        if self.samp_collec_method is not None and not isinstance(self.samp_collec_method, str):
+            self.samp_collec_method = str(self.samp_collec_method)
+
+        if self.samp_collec_device is not None and not isinstance(self.samp_collec_device, str):
+            self.samp_collec_device = str(self.samp_collec_device)
+
         if not isinstance(self.neon_biosample_identifiers, list):
             self.neon_biosample_identifiers = [self.neon_biosample_identifiers] if self.neon_biosample_identifiers is not None else []
         self.neon_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.neon_biosample_identifiers]
@@ -1711,8 +1719,8 @@ class Biosample(MaterialEntity):
             self.igsn_biosample_identifiers = [self.igsn_biosample_identifiers] if self.igsn_biosample_identifiers is not None else []
         self.igsn_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.igsn_biosample_identifiers]
 
-        if self.abs_air_humidity is not None and not isinstance(self.abs_air_humidity, TextValue):
-            self.abs_air_humidity = TextValue(**as_dict(self.abs_air_humidity))
+        if self.abs_air_humidity is not None and not isinstance(self.abs_air_humidity, QuantityValue):
+            self.abs_air_humidity = QuantityValue(**as_dict(self.abs_air_humidity))
 
         if self.add_recov_method is not None and not isinstance(self.add_recov_method, str):
             self.add_recov_method = str(self.add_recov_method)
@@ -1765,8 +1773,8 @@ class Biosample(MaterialEntity):
         if self.aminopept_act is not None and not isinstance(self.aminopept_act, TextValue):
             self.aminopept_act = TextValue(**as_dict(self.aminopept_act))
 
-        if self.ammonium is not None and not isinstance(self.ammonium, TextValue):
-            self.ammonium = TextValue(**as_dict(self.ammonium))
+        if self.ammonium is not None and not isinstance(self.ammonium, QuantityValue):
+            self.ammonium = QuantityValue(**as_dict(self.ammonium))
 
         if self.ammonium_nitrogen is not None and not isinstance(self.ammonium_nitrogen, QuantityValue):
             self.ammonium_nitrogen = QuantityValue(**as_dict(self.ammonium_nitrogen))
@@ -1809,8 +1817,8 @@ class Biosample(MaterialEntity):
         if self.avg_occup is not None and not isinstance(self.avg_occup, TextValue):
             self.avg_occup = TextValue(**as_dict(self.avg_occup))
 
-        if self.avg_temp is not None and not isinstance(self.avg_temp, TextValue):
-            self.avg_temp = TextValue(**as_dict(self.avg_temp))
+        if self.avg_temp is not None and not isinstance(self.avg_temp, QuantityValue):
+            self.avg_temp = QuantityValue(**as_dict(self.avg_temp))
 
         if self.bac_prod is not None and not isinstance(self.bac_prod, TextValue):
             self.bac_prod = TextValue(**as_dict(self.bac_prod))
@@ -1890,8 +1898,8 @@ class Biosample(MaterialEntity):
         if self.built_struc_type is not None and not isinstance(self.built_struc_type, TextValue):
             self.built_struc_type = TextValue(**as_dict(self.built_struc_type))
 
-        if self.calcium is not None and not isinstance(self.calcium, TextValue):
-            self.calcium = TextValue(**as_dict(self.calcium))
+        if self.calcium is not None and not isinstance(self.calcium, QuantityValue):
+            self.calcium = QuantityValue(**as_dict(self.calcium))
 
         if self.carb_dioxide is not None and not isinstance(self.carb_dioxide, TextValue):
             self.carb_dioxide = TextValue(**as_dict(self.carb_dioxide))
@@ -1899,8 +1907,8 @@ class Biosample(MaterialEntity):
         if self.carb_monoxide is not None and not isinstance(self.carb_monoxide, TextValue):
             self.carb_monoxide = TextValue(**as_dict(self.carb_monoxide))
 
-        if self.carb_nitro_ratio is not None and not isinstance(self.carb_nitro_ratio, float):
-            self.carb_nitro_ratio = float(self.carb_nitro_ratio)
+        if self.carb_nitro_ratio is not None and not isinstance(self.carb_nitro_ratio, QuantityValue):
+            self.carb_nitro_ratio = QuantityValue(**as_dict(self.carb_nitro_ratio))
 
         if self.ceil_area is not None and not isinstance(self.ceil_area, TextValue):
             self.ceil_area = TextValue(**as_dict(self.ceil_area))
@@ -1946,11 +1954,11 @@ class Biosample(MaterialEntity):
         if self.chimera_check is not None and not isinstance(self.chimera_check, TextValue):
             self.chimera_check = TextValue(**as_dict(self.chimera_check))
 
-        if self.chloride is not None and not isinstance(self.chloride, TextValue):
-            self.chloride = TextValue(**as_dict(self.chloride))
+        if self.chloride is not None and not isinstance(self.chloride, QuantityValue):
+            self.chloride = QuantityValue(**as_dict(self.chloride))
 
-        if self.chlorophyll is not None and not isinstance(self.chlorophyll, TextValue):
-            self.chlorophyll = TextValue(**as_dict(self.chlorophyll))
+        if self.chlorophyll is not None and not isinstance(self.chlorophyll, QuantityValue):
+            self.chlorophyll = QuantityValue(**as_dict(self.chlorophyll))
 
         if not isinstance(self.climate_environment, list):
             self.climate_environment = [self.climate_environment] if self.climate_environment is not None else []
@@ -1959,8 +1967,8 @@ class Biosample(MaterialEntity):
         if self.collection_date is not None and not isinstance(self.collection_date, TimestampValue):
             self.collection_date = TimestampValue(**as_dict(self.collection_date))
 
-        if self.conduc is not None and not isinstance(self.conduc, TextValue):
-            self.conduc = TextValue(**as_dict(self.conduc))
+        if self.conduc is not None and not isinstance(self.conduc, QuantityValue):
+            self.conduc = QuantityValue(**as_dict(self.conduc))
 
         if self.cool_syst_id is not None and not isinstance(self.cool_syst_id, TextValue):
             self.cool_syst_id = TextValue(**as_dict(self.cool_syst_id))
@@ -1974,8 +1982,8 @@ class Biosample(MaterialEntity):
         if self.cur_land_use is not None and not isinstance(self.cur_land_use, str):
             self.cur_land_use = str(self.cur_land_use)
 
-        if self.cur_vegetation is not None and not isinstance(self.cur_vegetation, str):
-            self.cur_vegetation = str(self.cur_vegetation)
+        if self.cur_vegetation is not None and not isinstance(self.cur_vegetation, TextValue):
+            self.cur_vegetation = TextValue(**as_dict(self.cur_vegetation))
 
         if self.cur_vegetation_meth is not None and not isinstance(self.cur_vegetation_meth, TextValue):
             self.cur_vegetation_meth = TextValue(**as_dict(self.cur_vegetation_meth))
@@ -1989,8 +1997,8 @@ class Biosample(MaterialEntity):
         if self.depos_env is not None and not isinstance(self.depos_env, DEPOSENVENUM):
             self.depos_env = DEPOSENVENUM(self.depos_env)
 
-        if self.depth is not None and not isinstance(self.depth, TextValue):
-            self.depth = TextValue(**as_dict(self.depth))
+        if self.depth is not None and not isinstance(self.depth, QuantityValue):
+            self.depth = QuantityValue(**as_dict(self.depth))
 
         if self.dew_point is not None and not isinstance(self.dew_point, TextValue):
             self.dew_point = TextValue(**as_dict(self.dew_point))
@@ -2005,26 +2013,26 @@ class Biosample(MaterialEntity):
         if self.diss_hydrogen is not None and not isinstance(self.diss_hydrogen, TextValue):
             self.diss_hydrogen = TextValue(**as_dict(self.diss_hydrogen))
 
-        if self.diss_inorg_carb is not None and not isinstance(self.diss_inorg_carb, TextValue):
-            self.diss_inorg_carb = TextValue(**as_dict(self.diss_inorg_carb))
+        if self.diss_inorg_carb is not None and not isinstance(self.diss_inorg_carb, QuantityValue):
+            self.diss_inorg_carb = QuantityValue(**as_dict(self.diss_inorg_carb))
 
-        if self.diss_inorg_nitro is not None and not isinstance(self.diss_inorg_nitro, TextValue):
-            self.diss_inorg_nitro = TextValue(**as_dict(self.diss_inorg_nitro))
+        if self.diss_inorg_nitro is not None and not isinstance(self.diss_inorg_nitro, QuantityValue):
+            self.diss_inorg_nitro = QuantityValue(**as_dict(self.diss_inorg_nitro))
 
         if self.diss_inorg_phosp is not None and not isinstance(self.diss_inorg_phosp, TextValue):
             self.diss_inorg_phosp = TextValue(**as_dict(self.diss_inorg_phosp))
 
-        if self.diss_iron is not None and not isinstance(self.diss_iron, TextValue):
-            self.diss_iron = TextValue(**as_dict(self.diss_iron))
+        if self.diss_iron is not None and not isinstance(self.diss_iron, QuantityValue):
+            self.diss_iron = QuantityValue(**as_dict(self.diss_iron))
 
-        if self.diss_org_carb is not None and not isinstance(self.diss_org_carb, TextValue):
-            self.diss_org_carb = TextValue(**as_dict(self.diss_org_carb))
+        if self.diss_org_carb is not None and not isinstance(self.diss_org_carb, QuantityValue):
+            self.diss_org_carb = QuantityValue(**as_dict(self.diss_org_carb))
 
         if self.diss_org_nitro is not None and not isinstance(self.diss_org_nitro, TextValue):
             self.diss_org_nitro = TextValue(**as_dict(self.diss_org_nitro))
 
-        if self.diss_oxygen is not None and not isinstance(self.diss_oxygen, TextValue):
-            self.diss_oxygen = TextValue(**as_dict(self.diss_oxygen))
+        if self.diss_oxygen is not None and not isinstance(self.diss_oxygen, QuantityValue):
+            self.diss_oxygen = QuantityValue(**as_dict(self.diss_oxygen))
 
         if self.diss_oxygen_fluid is not None and not isinstance(self.diss_oxygen_fluid, TextValue):
             self.diss_oxygen_fluid = TextValue(**as_dict(self.diss_oxygen_fluid))
@@ -2114,9 +2122,8 @@ class Biosample(MaterialEntity):
         if self.exp_pipe is not None and not isinstance(self.exp_pipe, QuantityValue):
             self.exp_pipe = QuantityValue(**as_dict(self.exp_pipe))
 
-        if not isinstance(self.experimental_factor, list):
-            self.experimental_factor = [self.experimental_factor] if self.experimental_factor is not None else []
-        self.experimental_factor = [v if isinstance(v, ControlledTermValue) else ControlledTermValue(**as_dict(v)) for v in self.experimental_factor]
+        if self.experimental_factor is not None and not isinstance(self.experimental_factor, ControlledTermValue):
+            self.experimental_factor = ControlledTermValue(**as_dict(self.experimental_factor))
 
         if self.ext_door is not None and not isinstance(self.ext_door, TextValue):
             self.ext_door = TextValue(**as_dict(self.ext_door))
@@ -2213,8 +2220,8 @@ class Biosample(MaterialEntity):
         if self.glucosidase_act is not None and not isinstance(self.glucosidase_act, TextValue):
             self.glucosidase_act = TextValue(**as_dict(self.glucosidase_act))
 
-        if self.gravidity is not None and not isinstance(self.gravidity, str):
-            self.gravidity = str(self.gravidity)
+        if self.gravidity is not None and not isinstance(self.gravidity, TextValue):
+            self.gravidity = TextValue(**as_dict(self.gravidity))
 
         if not isinstance(self.gravity, list):
             self.gravity = [self.gravity] if self.gravity is not None else []
@@ -2285,8 +2292,8 @@ class Biosample(MaterialEntity):
         if self.horizon_meth is not None and not isinstance(self.horizon_meth, TextValue):
             self.horizon_meth = TextValue(**as_dict(self.horizon_meth))
 
-        if self.host_age is not None and not isinstance(self.host_age, TextValue):
-            self.host_age = TextValue(**as_dict(self.host_age))
+        if self.host_age is not None and not isinstance(self.host_age, QuantityValue):
+            self.host_age = QuantityValue(**as_dict(self.host_age))
 
         if self.host_body_habitat is not None and not isinstance(self.host_body_habitat, TextValue):
             self.host_body_habitat = TextValue(**as_dict(self.host_body_habitat))
@@ -2310,8 +2317,8 @@ class Biosample(MaterialEntity):
             self.host_diet = [self.host_diet] if self.host_diet is not None else []
         self.host_diet = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.host_diet]
 
-        if self.host_dry_mass is not None and not isinstance(self.host_dry_mass, TextValue):
-            self.host_dry_mass = TextValue(**as_dict(self.host_dry_mass))
+        if self.host_dry_mass is not None and not isinstance(self.host_dry_mass, QuantityValue):
+            self.host_dry_mass = QuantityValue(**as_dict(self.host_dry_mass))
 
         if self.host_genotype is not None and not isinstance(self.host_genotype, TextValue):
             self.host_genotype = TextValue(**as_dict(self.host_genotype))
@@ -2319,8 +2326,8 @@ class Biosample(MaterialEntity):
         if self.host_growth_cond is not None and not isinstance(self.host_growth_cond, TextValue):
             self.host_growth_cond = TextValue(**as_dict(self.host_growth_cond))
 
-        if self.host_height is not None and not isinstance(self.host_height, TextValue):
-            self.host_height = TextValue(**as_dict(self.host_height))
+        if self.host_height is not None and not isinstance(self.host_height, QuantityValue):
+            self.host_height = QuantityValue(**as_dict(self.host_height))
 
         if not isinstance(self.host_last_meal, list):
             self.host_last_meal = [self.host_last_meal] if self.host_last_meal is not None else []
@@ -2329,8 +2336,8 @@ class Biosample(MaterialEntity):
         if self.host_length is not None and not isinstance(self.host_length, TextValue):
             self.host_length = TextValue(**as_dict(self.host_length))
 
-        if self.host_life_stage is not None and not isinstance(self.host_life_stage, str):
-            self.host_life_stage = str(self.host_life_stage)
+        if self.host_life_stage is not None and not isinstance(self.host_life_stage, TextValue):
+            self.host_life_stage = TextValue(**as_dict(self.host_life_stage))
 
         if self.host_phenotype is not None and not isinstance(self.host_phenotype, ControlledTermValue):
             self.host_phenotype = ControlledTermValue(**as_dict(self.host_phenotype))
@@ -2364,8 +2371,8 @@ class Biosample(MaterialEntity):
         if self.host_wet_mass is not None and not isinstance(self.host_wet_mass, TextValue):
             self.host_wet_mass = TextValue(**as_dict(self.host_wet_mass))
 
-        if self.humidity is not None and not isinstance(self.humidity, TextValue):
-            self.humidity = TextValue(**as_dict(self.humidity))
+        if self.humidity is not None and not isinstance(self.humidity, QuantityValue):
+            self.humidity = QuantityValue(**as_dict(self.humidity))
 
         if not isinstance(self.humidity_regm, list):
             self.humidity_regm = [self.humidity_regm] if self.humidity_regm is not None else []
@@ -2436,8 +2443,8 @@ class Biosample(MaterialEntity):
         if self.local_class_meth is not None and not isinstance(self.local_class_meth, TextValue):
             self.local_class_meth = TextValue(**as_dict(self.local_class_meth))
 
-        if self.magnesium is not None and not isinstance(self.magnesium, TextValue):
-            self.magnesium = TextValue(**as_dict(self.magnesium))
+        if self.magnesium is not None and not isinstance(self.magnesium, QuantityValue):
+            self.magnesium = QuantityValue(**as_dict(self.magnesium))
 
         if self.manganese is not None and not isinstance(self.manganese, QuantityValue):
             self.manganese = QuantityValue(**as_dict(self.manganese))
@@ -2479,8 +2486,8 @@ class Biosample(MaterialEntity):
             self.n_alkanes = [self.n_alkanes] if self.n_alkanes is not None else []
         self.n_alkanes = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.n_alkanes]
 
-        if self.nitrate is not None and not isinstance(self.nitrate, TextValue):
-            self.nitrate = TextValue(**as_dict(self.nitrate))
+        if self.nitrate is not None and not isinstance(self.nitrate, QuantityValue):
+            self.nitrate = QuantityValue(**as_dict(self.nitrate))
 
         if self.nitrate_nitrogen is not None and not isinstance(self.nitrate_nitrogen, QuantityValue):
             self.nitrate_nitrogen = QuantityValue(**as_dict(self.nitrate_nitrogen))
@@ -2491,8 +2498,8 @@ class Biosample(MaterialEntity):
         if self.nitrite_nitrogen is not None and not isinstance(self.nitrite_nitrogen, QuantityValue):
             self.nitrite_nitrogen = QuantityValue(**as_dict(self.nitrite_nitrogen))
 
-        if self.nitro is not None and not isinstance(self.nitro, TextValue):
-            self.nitro = TextValue(**as_dict(self.nitro))
+        if self.nitro is not None and not isinstance(self.nitro, QuantityValue):
+            self.nitro = QuantityValue(**as_dict(self.nitro))
 
         if not isinstance(self.non_min_nutr_regm, list):
             self.non_min_nutr_regm = [self.non_min_nutr_regm] if self.non_min_nutr_regm is not None else []
@@ -2522,8 +2529,8 @@ class Biosample(MaterialEntity):
         if self.occup_samp is not None and not isinstance(self.occup_samp, QuantityValue):
             self.occup_samp = QuantityValue(**as_dict(self.occup_samp))
 
-        if self.org_carb is not None and not isinstance(self.org_carb, TextValue):
-            self.org_carb = TextValue(**as_dict(self.org_carb))
+        if self.org_carb is not None and not isinstance(self.org_carb, QuantityValue):
+            self.org_carb = QuantityValue(**as_dict(self.org_carb))
 
         if self.org_count_qpcr_info is not None and not isinstance(self.org_count_qpcr_info, str):
             self.org_count_qpcr_info = str(self.org_count_qpcr_info)
@@ -2572,7 +2579,7 @@ class Biosample(MaterialEntity):
 
         if not isinstance(self.perturbation, list):
             self.perturbation = [self.perturbation] if self.perturbation is not None else []
-        self.perturbation = [v if isinstance(v, str) else str(v) for v in self.perturbation]
+        self.perturbation = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.perturbation]
 
         if not isinstance(self.pesticide_regm, list):
             self.pesticide_regm = [self.pesticide_regm] if self.pesticide_regm is not None else []
@@ -2602,8 +2609,8 @@ class Biosample(MaterialEntity):
             self.phosplipid_fatt_acid = [self.phosplipid_fatt_acid] if self.phosplipid_fatt_acid is not None else []
         self.phosplipid_fatt_acid = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.phosplipid_fatt_acid]
 
-        if self.photon_flux is not None and not isinstance(self.photon_flux, TextValue):
-            self.photon_flux = TextValue(**as_dict(self.photon_flux))
+        if self.photon_flux is not None and not isinstance(self.photon_flux, QuantityValue):
+            self.photon_flux = QuantityValue(**as_dict(self.photon_flux))
 
         if self.plant_growth_med is not None and not isinstance(self.plant_growth_med, ControlledTermValue):
             self.plant_growth_med = ControlledTermValue(**as_dict(self.plant_growth_med))
@@ -2627,8 +2634,8 @@ class Biosample(MaterialEntity):
         if self.porosity is not None and not isinstance(self.porosity, TextValue):
             self.porosity = TextValue(**as_dict(self.porosity))
 
-        if self.potassium is not None and not isinstance(self.potassium, TextValue):
-            self.potassium = TextValue(**as_dict(self.potassium))
+        if self.potassium is not None and not isinstance(self.potassium, QuantityValue):
+            self.potassium = QuantityValue(**as_dict(self.potassium))
 
         if self.pour_point is not None and not isinstance(self.pour_point, TextValue):
             self.pour_point = TextValue(**as_dict(self.pour_point))
@@ -2810,8 +2817,8 @@ class Biosample(MaterialEntity):
         if self.samp_room_id is not None and not isinstance(self.samp_room_id, TextValue):
             self.samp_room_id = TextValue(**as_dict(self.samp_room_id))
 
-        if self.samp_size is not None and not isinstance(self.samp_size, TextValue):
-            self.samp_size = TextValue(**as_dict(self.samp_size))
+        if self.samp_size is not None and not isinstance(self.samp_size, QuantityValue):
+            self.samp_size = QuantityValue(**as_dict(self.samp_size))
 
         if not isinstance(self.samp_sort_meth, list):
             self.samp_sort_meth = [self.samp_sort_meth] if self.samp_sort_meth is not None else []
@@ -2823,8 +2830,8 @@ class Biosample(MaterialEntity):
         if self.samp_store_loc is not None and not isinstance(self.samp_store_loc, str):
             self.samp_store_loc = str(self.samp_store_loc)
 
-        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, TextValue):
-            self.samp_store_temp = TextValue(**as_dict(self.samp_store_temp))
+        if self.samp_store_temp is not None and not isinstance(self.samp_store_temp, QuantityValue):
+            self.samp_store_temp = QuantityValue(**as_dict(self.samp_store_temp))
 
         if self.samp_subtype is not None and not isinstance(self.samp_subtype, SAMPSUBTYPEENUM):
             self.samp_subtype = SAMPSUBTYPEENUM(self.samp_subtype)
@@ -2926,8 +2933,8 @@ class Biosample(MaterialEntity):
         if self.sludge_retent_time is not None and not isinstance(self.sludge_retent_time, TextValue):
             self.sludge_retent_time = TextValue(**as_dict(self.sludge_retent_time))
 
-        if self.sodium is not None and not isinstance(self.sodium, TextValue):
-            self.sodium = TextValue(**as_dict(self.sodium))
+        if self.sodium is not None and not isinstance(self.sodium, QuantityValue):
+            self.sodium = QuantityValue(**as_dict(self.sodium))
 
         if self.soil_horizon is not None and not isinstance(self.soil_horizon, SOILHORIZONENUM):
             self.soil_horizon = SOILHORIZONENUM(self.soil_horizon)
@@ -2941,9 +2948,8 @@ class Biosample(MaterialEntity):
         if self.soil_type_meth is not None and not isinstance(self.soil_type_meth, TextValue):
             self.soil_type_meth = TextValue(**as_dict(self.soil_type_meth))
 
-        if not isinstance(self.solar_irradiance, list):
-            self.solar_irradiance = [self.solar_irradiance] if self.solar_irradiance is not None else []
-        self.solar_irradiance = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.solar_irradiance]
+        if self.solar_irradiance is not None and not isinstance(self.solar_irradiance, QuantityValue):
+            self.solar_irradiance = QuantityValue(**as_dict(self.solar_irradiance))
 
         if not isinstance(self.soluble_inorg_mat, list):
             self.soluble_inorg_mat = [self.soluble_inorg_mat] if self.soluble_inorg_mat is not None else []
@@ -2953,12 +2959,11 @@ class Biosample(MaterialEntity):
             self.soluble_org_mat = [self.soluble_org_mat] if self.soluble_org_mat is not None else []
         self.soluble_org_mat = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.soluble_org_mat]
 
-        if self.soluble_react_phosp is not None and not isinstance(self.soluble_react_phosp, TextValue):
-            self.soluble_react_phosp = TextValue(**as_dict(self.soluble_react_phosp))
+        if self.soluble_react_phosp is not None and not isinstance(self.soluble_react_phosp, QuantityValue):
+            self.soluble_react_phosp = QuantityValue(**as_dict(self.soluble_react_phosp))
 
-        if not isinstance(self.source_mat_id, list):
-            self.source_mat_id = [self.source_mat_id] if self.source_mat_id is not None else []
-        self.source_mat_id = [v if isinstance(v, str) else str(v) for v in self.source_mat_id]
+        if self.source_mat_id is not None and not isinstance(self.source_mat_id, TextValue):
+            self.source_mat_id = TextValue(**as_dict(self.source_mat_id))
 
         if self.space_typ_state is not None and not isinstance(self.space_typ_state, SPACETYPSTATEENUM):
             self.space_typ_state = SPACETYPSTATEENUM(self.space_typ_state)
@@ -2988,15 +2993,15 @@ class Biosample(MaterialEntity):
             self.standing_water_regm = [self.standing_water_regm] if self.standing_water_regm is not None else []
         self.standing_water_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.standing_water_regm]
 
-        if self.store_cond is not None and not isinstance(self.store_cond, str):
-            self.store_cond = str(self.store_cond)
+        if self.store_cond is not None and not isinstance(self.store_cond, TextValue):
+            self.store_cond = TextValue(**as_dict(self.store_cond))
 
         if not isinstance(self.substructure_type, list):
             self.substructure_type = [self.substructure_type] if self.substructure_type is not None else []
         self.substructure_type = [v if isinstance(v, SUBSTRUCTURETYPEENUM) else SUBSTRUCTURETYPEENUM(v) for v in self.substructure_type]
 
-        if self.sulfate is not None and not isinstance(self.sulfate, TextValue):
-            self.sulfate = TextValue(**as_dict(self.sulfate))
+        if self.sulfate is not None and not isinstance(self.sulfate, QuantityValue):
+            self.sulfate = QuantityValue(**as_dict(self.sulfate))
 
         if self.sulfate_fw is not None and not isinstance(self.sulfate_fw, TextValue):
             self.sulfate_fw = TextValue(**as_dict(self.sulfate_fw))
@@ -3039,8 +3044,8 @@ class Biosample(MaterialEntity):
         if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
             self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
 
-        if self.temp is not None and not isinstance(self.temp, TextValue):
-            self.temp = TextValue(**as_dict(self.temp))
+        if self.temp is not None and not isinstance(self.temp, QuantityValue):
+            self.temp = QuantityValue(**as_dict(self.temp))
 
         if self.temp_out is not None and not isinstance(self.temp_out, TextValue):
             self.temp_out = TextValue(**as_dict(self.temp_out))
@@ -3061,8 +3066,8 @@ class Biosample(MaterialEntity):
         if self.toluene is not None and not isinstance(self.toluene, TextValue):
             self.toluene = TextValue(**as_dict(self.toluene))
 
-        if self.tot_carb is not None and not isinstance(self.tot_carb, TextValue):
-            self.tot_carb = TextValue(**as_dict(self.tot_carb))
+        if self.tot_carb is not None and not isinstance(self.tot_carb, QuantityValue):
+            self.tot_carb = QuantityValue(**as_dict(self.tot_carb))
 
         if self.tot_depth_water_col is not None and not isinstance(self.tot_depth_water_col, TextValue):
             self.tot_depth_water_col = TextValue(**as_dict(self.tot_depth_water_col))
@@ -3076,26 +3081,26 @@ class Biosample(MaterialEntity):
         if self.tot_iron is not None and not isinstance(self.tot_iron, TextValue):
             self.tot_iron = TextValue(**as_dict(self.tot_iron))
 
-        if self.tot_nitro is not None and not isinstance(self.tot_nitro, TextValue):
-            self.tot_nitro = TextValue(**as_dict(self.tot_nitro))
+        if self.tot_nitro is not None and not isinstance(self.tot_nitro, QuantityValue):
+            self.tot_nitro = QuantityValue(**as_dict(self.tot_nitro))
 
         if self.tot_nitro_cont_meth is not None and not isinstance(self.tot_nitro_cont_meth, str):
             self.tot_nitro_cont_meth = str(self.tot_nitro_cont_meth)
 
-        if self.tot_nitro_content is not None and not isinstance(self.tot_nitro_content, TextValue):
-            self.tot_nitro_content = TextValue(**as_dict(self.tot_nitro_content))
+        if self.tot_nitro_content is not None and not isinstance(self.tot_nitro_content, QuantityValue):
+            self.tot_nitro_content = QuantityValue(**as_dict(self.tot_nitro_content))
 
         if self.tot_org_c_meth is not None and not isinstance(self.tot_org_c_meth, TextValue):
             self.tot_org_c_meth = TextValue(**as_dict(self.tot_org_c_meth))
 
-        if self.tot_org_carb is not None and not isinstance(self.tot_org_carb, TextValue):
-            self.tot_org_carb = TextValue(**as_dict(self.tot_org_carb))
+        if self.tot_org_carb is not None and not isinstance(self.tot_org_carb, QuantityValue):
+            self.tot_org_carb = QuantityValue(**as_dict(self.tot_org_carb))
 
         if self.tot_part_carb is not None and not isinstance(self.tot_part_carb, TextValue):
             self.tot_part_carb = TextValue(**as_dict(self.tot_part_carb))
 
-        if self.tot_phosp is not None and not isinstance(self.tot_phosp, TextValue):
-            self.tot_phosp = TextValue(**as_dict(self.tot_phosp))
+        if self.tot_phosp is not None and not isinstance(self.tot_phosp, QuantityValue):
+            self.tot_phosp = QuantityValue(**as_dict(self.tot_phosp))
 
         if self.tot_phosphate is not None and not isinstance(self.tot_phosphate, TextValue):
             self.tot_phosphate = TextValue(**as_dict(self.tot_phosphate))
@@ -3216,8 +3221,8 @@ class Biosample(MaterialEntity):
         if self.wind_direction is not None and not isinstance(self.wind_direction, TextValue):
             self.wind_direction = TextValue(**as_dict(self.wind_direction))
 
-        if self.wind_speed is not None and not isinstance(self.wind_speed, TextValue):
-            self.wind_speed = TextValue(**as_dict(self.wind_speed))
+        if self.wind_speed is not None and not isinstance(self.wind_speed, QuantityValue):
+            self.wind_speed = QuantityValue(**as_dict(self.wind_speed))
 
         if self.window_cond is not None and not isinstance(self.window_cond, SHAREDENUM2):
             self.window_cond = SHAREDENUM2(self.window_cond)
@@ -3324,9 +3329,8 @@ class Biosample(MaterialEntity):
             self.climate_environment = [self.climate_environment] if self.climate_environment is not None else []
         self.climate_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.climate_environment]
 
-        if not isinstance(self.experimental_factor, list):
-            self.experimental_factor = [self.experimental_factor] if self.experimental_factor is not None else []
-        self.experimental_factor = [v if isinstance(v, ControlledTermValue) else ControlledTermValue(**as_dict(v)) for v in self.experimental_factor]
+        if self.experimental_factor is not None and not isinstance(self.experimental_factor, ControlledTermValue):
+            self.experimental_factor = ControlledTermValue(**as_dict(self.experimental_factor))
 
         if not isinstance(self.gaseous_environment, list):
             self.gaseous_environment = [self.gaseous_environment] if self.gaseous_environment is not None else []
@@ -3345,12 +3349,11 @@ class Biosample(MaterialEntity):
         if self.phosphate is not None and not isinstance(self.phosphate, TextValue):
             self.phosphate = TextValue(**as_dict(self.phosphate))
 
-        if self.samp_size is not None and not isinstance(self.samp_size, TextValue):
-            self.samp_size = TextValue(**as_dict(self.samp_size))
+        if self.samp_size is not None and not isinstance(self.samp_size, QuantityValue):
+            self.samp_size = QuantityValue(**as_dict(self.samp_size))
 
-        if not isinstance(self.source_mat_id, list):
-            self.source_mat_id = [self.source_mat_id] if self.source_mat_id is not None else []
-        self.source_mat_id = [v if isinstance(v, str) else str(v) for v in self.source_mat_id]
+        if self.source_mat_id is not None and not isinstance(self.source_mat_id, TextValue):
+            self.source_mat_id = TextValue(**as_dict(self.source_mat_id))
 
         if not isinstance(self.watering_regm, list):
             self.watering_regm = [self.watering_regm] if self.watering_regm is not None else []
@@ -3662,7 +3665,7 @@ class FieldResearchSite(Site):
     class_model_uri: ClassVar[URIRef] = NMDC.FieldResearchSite
 
     id: Union[str, FieldResearchSiteId] = None
-    cur_vegetation: Optional[str] = None
+    cur_vegetation: Optional[Union[dict, "TextValue"]] = None
     elev: Optional[float] = None
     geo_loc_name: Optional[Union[dict, "TextValue"]] = None
     habitat: Optional[str] = None
@@ -3677,8 +3680,8 @@ class FieldResearchSite(Site):
         if not isinstance(self.id, FieldResearchSiteId):
             self.id = FieldResearchSiteId(self.id)
 
-        if self.cur_vegetation is not None and not isinstance(self.cur_vegetation, str):
-            self.cur_vegetation = str(self.cur_vegetation)
+        if self.cur_vegetation is not None and not isinstance(self.cur_vegetation, TextValue):
+            self.cur_vegetation = TextValue(**as_dict(self.cur_vegetation))
 
         if self.elev is not None and not isinstance(self.elev, float):
             self.elev = float(self.elev)
@@ -9025,7 +9028,7 @@ slots.smiles = Slot(uri=NMDC.smiles, name="smiles", curie=NMDC.curie('smiles'),
                    model_uri=NMDC.smiles, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.abs_air_humidity = Slot(uri=MIXS['0000122'], name="abs_air_humidity", curie=MIXS.curie('0000122'),
-                   model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.abs_air_humidity, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.add_recov_method = Slot(uri=MIXS['0001009'], name="add_recov_method", curie=MIXS.curie('0001009'),
@@ -9085,7 +9088,7 @@ slots.aminopept_act = Slot(uri=MIXS['0000172'], name="aminopept_act", curie=MIXS
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.ammonium = Slot(uri=MIXS['0000427'], name="ammonium", curie=MIXS.curie('0000427'),
-                   model_uri=NMDC.ammonium, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.ammonium, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.amount_light = Slot(uri=MIXS['0000140'], name="amount_light", curie=MIXS.curie('0000140'),
@@ -9132,7 +9135,7 @@ slots.avg_occup = Slot(uri=MIXS['0000775'], name="avg_occup", curie=MIXS.curie('
                    model_uri=NMDC.avg_occup, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.avg_temp = Slot(uri=MIXS['0000142'], name="avg_temp", curie=MIXS.curie('0000142'),
-                   model_uri=NMDC.avg_temp, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.avg_temp, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.bac_prod = Slot(uri=MIXS['0000683'], name="bac_prod", curie=MIXS.curie('0000683'),
@@ -9222,7 +9225,7 @@ slots.built_struc_type = Slot(uri=MIXS['0000721'], name="built_struc_type", curi
                    model_uri=NMDC.built_struc_type, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.calcium = Slot(uri=MIXS['0000432'], name="calcium", curie=MIXS.curie('0000432'),
-                   model_uri=NMDC.calcium, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.calcium, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.carb_dioxide = Slot(uri=MIXS['0000097'], name="carb_dioxide", curie=MIXS.curie('0000097'),
@@ -9234,7 +9237,7 @@ slots.carb_monoxide = Slot(uri=MIXS['0000098'], name="carb_monoxide", curie=MIXS
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.carb_nitro_ratio = Slot(uri=MIXS['0000310'], name="carb_nitro_ratio", curie=MIXS.curie('0000310'),
-                   model_uri=NMDC.carb_nitro_ratio, domain=None, range=Optional[float])
+                   model_uri=NMDC.carb_nitro_ratio, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.ceil_area = Slot(uri=MIXS['0000148'], name="ceil_area", curie=MIXS.curie('0000148'),
                    model_uri=NMDC.ceil_area, domain=None, range=Optional[Union[dict, TextValue]],
@@ -9283,11 +9286,11 @@ slots.chimera_check = Slot(uri=MIXS['0000052'], name="chimera_check", curie=MIXS
                    pattern=re.compile(r'^([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+);([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.chloride = Slot(uri=MIXS['0000429'], name="chloride", curie=MIXS.curie('0000429'),
-                   model_uri=NMDC.chloride, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.chloride, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.chlorophyll = Slot(uri=MIXS['0000177'], name="chlorophyll", curie=MIXS.curie('0000177'),
-                   model_uri=NMDC.chlorophyll, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.chlorophyll, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.climate_environment = Slot(uri=MIXS['0001040'], name="climate_environment", curie=MIXS.curie('0001040'),
@@ -9297,7 +9300,7 @@ slots.collection_date = Slot(uri=MIXS['0000011'], name="collection_date", curie=
                    model_uri=NMDC.collection_date, domain=None, range=Optional[Union[dict, TimestampValue]])
 
 slots.conduc = Slot(uri=MIXS['0000692'], name="conduc", curie=MIXS.curie('0000692'),
-                   model_uri=NMDC.conduc, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.conduc, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.cool_syst_id = Slot(uri=MIXS['0000785'], name="cool_syst_id", curie=MIXS.curie('0000785'),
@@ -9313,7 +9316,7 @@ slots.cur_land_use = Slot(uri=MIXS['0001080'], name="cur_land_use", curie=MIXS.c
                    model_uri=NMDC.cur_land_use, domain=None, range=Optional[str])
 
 slots.cur_vegetation = Slot(uri=MIXS['0000312'], name="cur_vegetation", curie=MIXS.curie('0000312'),
-                   model_uri=NMDC.cur_vegetation, domain=None, range=Optional[str])
+                   model_uri=NMDC.cur_vegetation, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="cur_vegetation_meth", curie=MIXS.curie('0000314'),
                    model_uri=NMDC.cur_vegetation_meth, domain=None, range=Optional[Union[dict, TextValue]],
@@ -9330,7 +9333,7 @@ slots.depos_env = Slot(uri=MIXS['0000992'], name="depos_env", curie=MIXS.curie('
                    model_uri=NMDC.depos_env, domain=None, range=Optional[Union[str, "DEPOSENVENUM"]])
 
 slots.depth = Slot(uri=MIXS['0000018'], name="depth", curie=MIXS.curie('0000018'),
-                   model_uri=NMDC.depth, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.depth, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.dew_point = Slot(uri=MIXS['0000129'], name="dew_point", curie=MIXS.curie('0000129'),
@@ -9349,11 +9352,11 @@ slots.diss_hydrogen = Slot(uri=MIXS['0000179'], name="diss_hydrogen", curie=MIXS
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_inorg_carb = Slot(uri=MIXS['0000434'], name="diss_inorg_carb", curie=MIXS.curie('0000434'),
-                   model_uri=NMDC.diss_inorg_carb, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.diss_inorg_carb, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_inorg_nitro = Slot(uri=MIXS['0000698'], name="diss_inorg_nitro", curie=MIXS.curie('0000698'),
-                   model_uri=NMDC.diss_inorg_nitro, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.diss_inorg_nitro, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_inorg_phosp = Slot(uri=MIXS['0000106'], name="diss_inorg_phosp", curie=MIXS.curie('0000106'),
@@ -9361,11 +9364,11 @@ slots.diss_inorg_phosp = Slot(uri=MIXS['0000106'], name="diss_inorg_phosp", curi
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_iron = Slot(uri=MIXS['0000139'], name="diss_iron", curie=MIXS.curie('0000139'),
-                   model_uri=NMDC.diss_iron, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.diss_iron, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_org_carb = Slot(uri=MIXS['0000433'], name="diss_org_carb", curie=MIXS.curie('0000433'),
-                   model_uri=NMDC.diss_org_carb, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.diss_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_org_nitro = Slot(uri=MIXS['0000162'], name="diss_org_nitro", curie=MIXS.curie('0000162'),
@@ -9373,7 +9376,7 @@ slots.diss_org_nitro = Slot(uri=MIXS['0000162'], name="diss_org_nitro", curie=MI
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_oxygen = Slot(uri=MIXS['0000119'], name="diss_oxygen", curie=MIXS.curie('0000119'),
-                   model_uri=NMDC.diss_oxygen, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.diss_oxygen, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.diss_oxygen_fluid = Slot(uri=MIXS['0000438'], name="diss_oxygen_fluid", curie=MIXS.curie('0000438'),
@@ -9465,7 +9468,7 @@ slots.exp_pipe = Slot(uri=MIXS['0000220'], name="exp_pipe", curie=MIXS.curie('00
                    pattern=re.compile(r'^[1-9][0-9]* ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.experimental_factor = Slot(uri=MIXS['0000008'], name="experimental_factor", curie=MIXS.curie('0000008'),
-                   model_uri=NMDC.experimental_factor, domain=None, range=Optional[Union[Union[dict, ControlledTermValue], List[Union[dict, ControlledTermValue]]]],
+                   model_uri=NMDC.experimental_factor, domain=None, range=Optional[Union[dict, ControlledTermValue]],
                    pattern=re.compile(r'^\S+.*\S+ \[[a-zA-Z]{2,}:\d+\]$'))
 
 slots.ext_door = Slot(uri=MIXS['0000170'], name="ext_door", curie=MIXS.curie('0000170'),
@@ -9566,7 +9569,7 @@ slots.glucosidase_act = Slot(uri=MIXS['0000137'], name="glucosidase_act", curie=
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.gravidity = Slot(uri=MIXS['0000875'], name="gravidity", curie=MIXS.curie('0000875'),
-                   model_uri=NMDC.gravidity, domain=None, range=Optional[str])
+                   model_uri=NMDC.gravidity, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.gravity = Slot(uri=MIXS['0000559'], name="gravity", curie=MIXS.curie('0000559'),
                    model_uri=NMDC.gravity, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
@@ -9638,7 +9641,7 @@ slots.horizon_meth = Slot(uri=MIXS['0000321'], name="horizon_meth", curie=MIXS.c
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.host_age = Slot(uri=MIXS['0000255'], name="host_age", curie=MIXS.curie('0000255'),
-                   model_uri=NMDC.host_age, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.host_age, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.host_body_habitat = Slot(uri=MIXS['0000866'], name="host_body_habitat", curie=MIXS.curie('0000866'),
@@ -9664,7 +9667,7 @@ slots.host_diet = Slot(uri=MIXS['0000869'], name="host_diet", curie=MIXS.curie('
                    model_uri=NMDC.host_diet, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.host_dry_mass = Slot(uri=MIXS['0000257'], name="host_dry_mass", curie=MIXS.curie('0000257'),
-                   model_uri=NMDC.host_dry_mass, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.host_dry_mass, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.host_genotype = Slot(uri=MIXS['0000365'], name="host_genotype", curie=MIXS.curie('0000365'),
@@ -9675,7 +9678,7 @@ slots.host_growth_cond = Slot(uri=MIXS['0000871'], name="host_growth_cond", curi
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$|([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.host_height = Slot(uri=MIXS['0000264'], name="host_height", curie=MIXS.curie('0000264'),
-                   model_uri=NMDC.host_height, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.host_height, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.host_last_meal = Slot(uri=MIXS['0000870'], name="host_last_meal", curie=MIXS.curie('0000870'),
@@ -9686,7 +9689,7 @@ slots.host_length = Slot(uri=MIXS['0000256'], name="host_length", curie=MIXS.cur
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.host_life_stage = Slot(uri=MIXS['0000251'], name="host_life_stage", curie=MIXS.curie('0000251'),
-                   model_uri=NMDC.host_life_stage, domain=None, range=Optional[str])
+                   model_uri=NMDC.host_life_stage, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.host_phenotype = Slot(uri=MIXS['0000874'], name="host_phenotype", curie=MIXS.curie('0000874'),
                    model_uri=NMDC.host_phenotype, domain=None, range=Optional[Union[dict, ControlledTermValue]])
@@ -9721,7 +9724,7 @@ slots.host_wet_mass = Slot(uri=MIXS['0000567'], name="host_wet_mass", curie=MIXS
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.humidity = Slot(uri=MIXS['0000100'], name="humidity", curie=MIXS.curie('0000100'),
-                   model_uri=NMDC.humidity, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.humidity, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.humidity_regm = Slot(uri=MIXS['0000568'], name="humidity_regm", curie=MIXS.curie('0000568'),
@@ -9793,7 +9796,7 @@ slots.local_class_meth = Slot(uri=MIXS['0000331'], name="local_class_meth", curi
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.magnesium = Slot(uri=MIXS['0000431'], name="magnesium", curie=MIXS.curie('0000431'),
-                   model_uri=NMDC.magnesium, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.magnesium, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.max_occup = Slot(uri=MIXS['0000229'], name="max_occup", curie=MIXS.curie('0000229'),
@@ -9819,8 +9822,7 @@ slots.methane = Slot(uri=MIXS['0000101'], name="methane", curie=MIXS.curie('0000
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.micro_biomass_meth = Slot(uri=MIXS['0000339'], name="micro_biomass_meth", curie=MIXS.curie('0000339'),
-                   model_uri=NMDC.micro_biomass_meth, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
+                   model_uri=NMDC.micro_biomass_meth, domain=None, range=Optional[str])
 
 slots.microbial_biomass = Slot(uri=MIXS['0000650'], name="microbial_biomass", curie=MIXS.curie('0000650'),
                    model_uri=NMDC.microbial_biomass, domain=None, range=Optional[Union[dict, TextValue]],
@@ -9836,7 +9838,7 @@ slots.n_alkanes = Slot(uri=MIXS['0000503'], name="n_alkanes", curie=MIXS.curie('
                    model_uri=NMDC.n_alkanes, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.nitrate = Slot(uri=MIXS['0000425'], name="nitrate", curie=MIXS.curie('0000425'),
-                   model_uri=NMDC.nitrate, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.nitrate, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.nitrite = Slot(uri=MIXS['0000426'], name="nitrite", curie=MIXS.curie('0000426'),
@@ -9844,7 +9846,7 @@ slots.nitrite = Slot(uri=MIXS['0000426'], name="nitrite", curie=MIXS.curie('0000
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.nitro = Slot(uri=MIXS['0000504'], name="nitro", curie=MIXS.curie('0000504'),
-                   model_uri=NMDC.nitro, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.nitro, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.non_min_nutr_regm = Slot(uri=MIXS['0000571'], name="non_min_nutr_regm", curie=MIXS.curie('0000571'),
@@ -9881,7 +9883,7 @@ slots.occup_samp = Slot(uri=MIXS['0000772'], name="occup_samp", curie=MIXS.curie
                    pattern=re.compile(r'^[1-9][0-9]* ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.org_carb = Slot(uri=MIXS['0000508'], name="org_carb", curie=MIXS.curie('0000508'),
-                   model_uri=NMDC.org_carb, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.org_carb, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.org_count_qpcr_info = Slot(uri=MIXS['0000099'], name="org_count_qpcr_info", curie=MIXS.curie('0000099'),
@@ -9933,7 +9935,7 @@ slots.permeability = Slot(uri=MIXS['0000404'], name="permeability", curie=MIXS.c
                    model_uri=NMDC.permeability, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.perturbation = Slot(uri=MIXS['0000754'], name="perturbation", curie=MIXS.curie('0000754'),
-                   model_uri=NMDC.perturbation, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.perturbation, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.pesticide_regm = Slot(uri=MIXS['0000573'], name="pesticide_regm", curie=MIXS.curie('0000573'),
                    model_uri=NMDC.pesticide_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
@@ -9963,7 +9965,7 @@ slots.phosplipid_fatt_acid = Slot(uri=MIXS['0000181'], name="phosplipid_fatt_aci
                    model_uri=NMDC.phosplipid_fatt_acid, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.photon_flux = Slot(uri=MIXS['0000725'], name="photon_flux", curie=MIXS.curie('0000725'),
-                   model_uri=NMDC.photon_flux, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.photon_flux, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.plant_growth_med = Slot(uri=MIXS['0001057'], name="plant_growth_med", curie=MIXS.curie('0001057'),
@@ -9989,7 +9991,7 @@ slots.porosity = Slot(uri=MIXS['0000211'], name="porosity", curie=MIXS.curie('00
                    model_uri=NMDC.porosity, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.potassium = Slot(uri=MIXS['0000430'], name="potassium", curie=MIXS.curie('0000430'),
-                   model_uri=NMDC.potassium, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.potassium, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.pour_point = Slot(uri=MIXS['0000127'], name="pour_point", curie=MIXS.curie('0000127'),
@@ -10191,7 +10193,7 @@ slots.samp_room_id = Slot(uri=MIXS['0000244'], name="samp_room_id", curie=MIXS.c
                    model_uri=NMDC.samp_room_id, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.samp_size = Slot(uri=MIXS['0000001'], name="samp_size", curie=MIXS.curie('0000001'),
-                   model_uri=NMDC.samp_size, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.samp_size, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.samp_sort_meth = Slot(uri=MIXS['0000216'], name="samp_sort_meth", curie=MIXS.curie('0000216'),
@@ -10205,7 +10207,7 @@ slots.samp_store_loc = Slot(uri=MIXS['0000755'], name="samp_store_loc", curie=MI
                    model_uri=NMDC.samp_store_loc, domain=None, range=Optional[str])
 
 slots.samp_store_temp = Slot(uri=MIXS['0000110'], name="samp_store_temp", curie=MIXS.curie('0000110'),
-                   model_uri=NMDC.samp_store_temp, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.samp_store_temp, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.samp_subtype = Slot(uri=MIXS['0000999'], name="samp_subtype", curie=MIXS.curie('0000999'),
@@ -10322,7 +10324,7 @@ slots.sludge_retent_time = Slot(uri=MIXS['0000669'], name="sludge_retent_time", 
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.sodium = Slot(uri=MIXS['0000428'], name="sodium", curie=MIXS.curie('0000428'),
-                   model_uri=NMDC.sodium, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.sodium, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.soil_horizon = Slot(uri=MIXS['0001082'], name="soil_horizon", curie=MIXS.curie('0001082'),
@@ -10340,7 +10342,7 @@ slots.soil_type_meth = Slot(uri=MIXS['0000334'], name="soil_type_meth", curie=MI
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.solar_irradiance = Slot(uri=MIXS['0000112'], name="solar_irradiance", curie=MIXS.curie('0000112'),
-                   model_uri=NMDC.solar_irradiance, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]],
+                   model_uri=NMDC.solar_irradiance, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.soluble_inorg_mat = Slot(uri=MIXS['0000672'], name="soluble_inorg_mat", curie=MIXS.curie('0000672'),
@@ -10350,11 +10352,11 @@ slots.soluble_org_mat = Slot(uri=MIXS['0000673'], name="soluble_org_mat", curie=
                    model_uri=NMDC.soluble_org_mat, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.soluble_react_phosp = Slot(uri=MIXS['0000738'], name="soluble_react_phosp", curie=MIXS.curie('0000738'),
-                   model_uri=NMDC.soluble_react_phosp, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.soluble_react_phosp, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.source_mat_id = Slot(uri=MIXS['0000026'], name="source_mat_id", curie=MIXS.curie('0000026'),
-                   model_uri=NMDC.source_mat_id, domain=None, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.source_mat_id, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.space_typ_state = Slot(uri=MIXS['0000770'], name="space_typ_state", curie=MIXS.curie('0000770'),
                    model_uri=NMDC.space_typ_state, domain=None, range=Optional[Union[str, "SPACETYPSTATEENUM"]])
@@ -10382,13 +10384,13 @@ slots.standing_water_regm = Slot(uri=MIXS['0001069'], name="standing_water_regm"
                    model_uri=NMDC.standing_water_regm, domain=None, range=Optional[Union[Union[dict, TextValue], List[Union[dict, TextValue]]]])
 
 slots.store_cond = Slot(uri=MIXS['0000327'], name="store_cond", curie=MIXS.curie('0000327'),
-                   model_uri=NMDC.store_cond, domain=None, range=Optional[str])
+                   model_uri=NMDC.store_cond, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.substructure_type = Slot(uri=MIXS['0000767'], name="substructure_type", curie=MIXS.curie('0000767'),
                    model_uri=NMDC.substructure_type, domain=None, range=Optional[Union[Union[str, "SUBSTRUCTURETYPEENUM"], List[Union[str, "SUBSTRUCTURETYPEENUM"]]]])
 
 slots.sulfate = Slot(uri=MIXS['0000423'], name="sulfate", curie=MIXS.curie('0000423'),
-                   model_uri=NMDC.sulfate, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.sulfate, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.sulfate_fw = Slot(uri=MIXS['0000407'], name="sulfate_fw", curie=MIXS.curie('0000407'),
@@ -10438,7 +10440,7 @@ slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", 
                    model_uri=NMDC.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.temp = Slot(uri=MIXS['0000113'], name="temp", curie=MIXS.curie('0000113'),
-                   model_uri=NMDC.temp, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.temp, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.temp_out = Slot(uri=MIXS['0000197'], name="temp_out", curie=MIXS.curie('0000197'),
@@ -10463,7 +10465,7 @@ slots.toluene = Slot(uri=MIXS['0000154'], name="toluene", curie=MIXS.curie('0000
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_carb = Slot(uri=MIXS['0000525'], name="tot_carb", curie=MIXS.curie('0000525'),
-                   model_uri=NMDC.tot_carb, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.tot_carb, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_depth_water_col = Slot(uri=MIXS['0000634'], name="tot_depth_water_col", curie=MIXS.curie('0000634'),
@@ -10483,7 +10485,7 @@ slots.tot_iron = Slot(uri=MIXS['0000105'], name="tot_iron", curie=MIXS.curie('00
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_nitro = Slot(uri=MIXS['0000102'], name="tot_nitro", curie=MIXS.curie('0000102'),
-                   model_uri=NMDC.tot_nitro, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.tot_nitro, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
@@ -10491,7 +10493,7 @@ slots.tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="tot_nitro_cont_meth"
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.tot_nitro_content = Slot(uri=MIXS['0000530'], name="tot_nitro_content", curie=MIXS.curie('0000530'),
-                   model_uri=NMDC.tot_nitro_content, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.tot_nitro_content, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_org_c_meth = Slot(uri=MIXS['0000337'], name="tot_org_c_meth", curie=MIXS.curie('0000337'),
@@ -10499,7 +10501,7 @@ slots.tot_org_c_meth = Slot(uri=MIXS['0000337'], name="tot_org_c_meth", curie=MI
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.tot_org_carb = Slot(uri=MIXS['0000533'], name="tot_org_carb", curie=MIXS.curie('0000533'),
-                   model_uri=NMDC.tot_org_carb, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.tot_org_carb, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_part_carb = Slot(uri=MIXS['0000747'], name="tot_part_carb", curie=MIXS.curie('0000747'),
@@ -10507,7 +10509,7 @@ slots.tot_part_carb = Slot(uri=MIXS['0000747'], name="tot_part_carb", curie=MIXS
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_phosp = Slot(uri=MIXS['0000117'], name="tot_phosp", curie=MIXS.curie('0000117'),
-                   model_uri=NMDC.tot_phosp, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.tot_phosp, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.tot_phosphate = Slot(uri=MIXS['0000689'], name="tot_phosphate", curie=MIXS.curie('0000689'),
@@ -10604,8 +10606,7 @@ slots.water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="water_cont_soil_met
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.water_content = Slot(uri=MIXS['0000185'], name="water_content", curie=MIXS.curie('0000185'),
-                   model_uri=NMDC.water_content, domain=None, range=Optional[str],
-                   pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
+                   model_uri=NMDC.water_content, domain=None, range=Optional[str])
 
 slots.water_current = Slot(uri=MIXS['0000203'], name="water_current", curie=MIXS.curie('0000203'),
                    model_uri=NMDC.water_current, domain=None, range=Optional[Union[dict, TextValue]],
@@ -10642,7 +10643,7 @@ slots.wind_direction = Slot(uri=MIXS['0000757'], name="wind_direction", curie=MI
                    model_uri=NMDC.wind_direction, domain=None, range=Optional[Union[dict, TextValue]])
 
 slots.wind_speed = Slot(uri=MIXS['0000118'], name="wind_speed", curie=MIXS.curie('0000118'),
-                   model_uri=NMDC.wind_speed, domain=None, range=Optional[Union[dict, TextValue]],
+                   model_uri=NMDC.wind_speed, domain=None, range=Optional[Union[dict, QuantityValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.window_cond = Slot(uri=MIXS['0000849'], name="window_cond", curie=MIXS.curie('0000849'),
@@ -10681,6 +10682,12 @@ slots.window_water_mold = Slot(uri=MIXS['0000854'], name="window_water_mold", cu
 slots.xylene = Slot(uri=MIXS['0000156'], name="xylene", curie=MIXS.curie('0000156'),
                    model_uri=NMDC.xylene, domain=None, range=Optional[Union[dict, TextValue]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
+
+slots.samp_collec_method = Slot(uri=MIXS['0001225'], name="samp_collec_method", curie=MIXS.curie('0001225'),
+                   model_uri=NMDC.samp_collec_method, domain=None, range=Optional[str])
+
+slots.samp_collec_device = Slot(uri=MIXS.samp_collec_device, name="samp_collec_device", curie=MIXS.curie('samp_collec_device'),
+                   model_uri=NMDC.samp_collec_device, domain=None, range=Optional[str])
 
 slots.emsl_store_temp = Slot(uri=NMDC.emsl_store_temp, name="emsl_store_temp", curie=NMDC.curie('emsl_store_temp'),
                    model_uri=NMDC.emsl_store_temp, domain=None, range=Optional[str])
@@ -11349,7 +11356,7 @@ slots.Biosample_annual_precpt = Slot(uri=MIXS['0000644'], name="Biosample_annual
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.Biosample_cur_vegetation = Slot(uri=MIXS['0000312'], name="Biosample_cur_vegetation", curie=MIXS.curie('0000312'),
-                   model_uri=NMDC.Biosample_cur_vegetation, domain=Biosample, range=Optional[str])
+                   model_uri=NMDC.Biosample_cur_vegetation, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
 
 slots.Biosample_cur_vegetation_meth = Slot(uri=MIXS['0000314'], name="Biosample_cur_vegetation_meth", curie=MIXS.curie('0000314'),
                    model_uri=NMDC.Biosample_cur_vegetation_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]],
@@ -11371,15 +11378,14 @@ slots.Biosample_water_cont_soil_meth = Slot(uri=MIXS['0000323'], name="Biosample
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.Biosample_water_content = Slot(uri=MIXS['0000185'], name="Biosample_water_content", curie=MIXS.curie('0000185'),
-                   model_uri=NMDC.Biosample_water_content, domain=Biosample, range=Optional[Union[str, List[str]]],
-                   pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
+                   model_uri=NMDC.Biosample_water_content, domain=Biosample, range=Optional[Union[str, List[str]]])
 
 slots.Biosample_ph_meth = Slot(uri=MIXS['0001106'], name="Biosample_ph_meth", curie=MIXS.curie('0001106'),
                    model_uri=NMDC.Biosample_ph_meth, domain=Biosample, range=Optional[Union[dict, "TextValue"]],
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.Biosample_tot_carb = Slot(uri=MIXS['0000525'], name="Biosample_tot_carb", curie=MIXS.curie('0000525'),
-                   model_uri=NMDC.Biosample_tot_carb, domain=Biosample, range=Optional[Union[dict, "TextValue"]],
+                   model_uri=NMDC.Biosample_tot_carb, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.Biosample_tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="Biosample_tot_nitro_cont_meth", curie=MIXS.curie('0000338'),
@@ -11387,7 +11393,7 @@ slots.Biosample_tot_nitro_cont_meth = Slot(uri=MIXS['0000338'], name="Biosample_
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.Biosample_tot_nitro_content = Slot(uri=MIXS['0000530'], name="Biosample_tot_nitro_content", curie=MIXS.curie('0000530'),
-                   model_uri=NMDC.Biosample_tot_nitro_content, domain=Biosample, range=Optional[Union[dict, "TextValue"]],
+                   model_uri=NMDC.Biosample_tot_nitro_content, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.Biosample_tot_org_c_meth = Slot(uri=MIXS['0000337'], name="Biosample_tot_org_c_meth", curie=MIXS.curie('0000337'),
@@ -11395,7 +11401,7 @@ slots.Biosample_tot_org_c_meth = Slot(uri=MIXS['0000337'], name="Biosample_tot_o
                    pattern=re.compile(r'^^PMID:\d+$|^doi:10.\d{2,9}/.*$|^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$$'))
 
 slots.Biosample_tot_org_carb = Slot(uri=MIXS['0000533'], name="Biosample_tot_org_carb", curie=MIXS.curie('0000533'),
-                   model_uri=NMDC.Biosample_tot_org_carb, domain=Biosample, range=Optional[Union[dict, "TextValue"]],
+                   model_uri=NMDC.Biosample_tot_org_carb, domain=Biosample, range=Optional[Union[dict, "QuantityValue"]],
                    pattern=re.compile(r'^[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?( *- *[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?)? *([^\s-]{1,2}|[^\s-]+.+[^\s-]+)$'))
 
 slots.Biosample_sieving = Slot(uri=MIXS['0000322'], name="Biosample_sieving", curie=MIXS.curie('0000322'),
@@ -11411,7 +11417,7 @@ slots.Biosample_watering_regm = Slot(uri=MIXS['0000591'], name="Biosample_wateri
                    model_uri=NMDC.Biosample_watering_regm, domain=Biosample, range=Optional[Union[Union[dict, "TextValue"], List[Union[dict, "TextValue"]]]])
 
 slots.Biosample_source_mat_id = Slot(uri=MIXS['0000026'], name="Biosample_source_mat_id", curie=MIXS.curie('0000026'),
-                   model_uri=NMDC.Biosample_source_mat_id, domain=Biosample, range=Optional[Union[str, List[str]]])
+                   model_uri=NMDC.Biosample_source_mat_id, domain=Biosample, range=Optional[Union[dict, "TextValue"]])
 
 slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId],
