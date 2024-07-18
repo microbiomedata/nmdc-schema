@@ -9,8 +9,11 @@ FD_ROOT=local/fuseki-data/databases
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
-.PHONY: dump-validate-report-convert-mongodb examples-clean linkml-validate-mongodb mixs-yaml-clean mixs-deepdiff \
-rdf-clean shuttle-clean
+.PHONY: examples-clean \
+mixs-yaml-clean \
+rdf-clean \
+shuttle-clean \
+squeaky-clean
 
 examples-clean:
 	rm -rf examples/output
@@ -22,17 +25,19 @@ mixs-yaml-clean:
 rdf-clean:
 	rm -rf \
 		OmicsProcessing.rq \
+		local/mongo_as_*
+
+shuttle-clean:
+	rm -rf \
+		local/mixs_regen/mixs_subset.yaml \
+		local/mixs_regen/mixs_subset_modified.yaml.bak \
 		local/mongo_as_nmdc_database.ttl \
 		local/mongo_as_nmdc_database_cuire_repaired.ttl \
 		local/mongo_as_nmdc_database_cuire_repaired_stamped.ttl \
 		local/mongo_as_nmdc_database_rdf_safe.yaml \
 		local/mongo_as_nmdc_database_validation.log \
 		local/mongo_as_unvalidated_nmdc_database.yaml
-
-shuttle-clean:
-	#rm -rf local/mixs_regen/mixs_subset_modified.yaml # triggers complete regeneration
 	rm -rf local/mixs_regen/*.yaml
-	rm -rf $@.bak
 	mkdir -p local/mixs_regen
 	touch local/mixs_regen/.gitkeep
 
@@ -41,7 +46,7 @@ src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_en
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
-local/mixs_regen/mixs_subset.yaml: assets/import_mixs_slots_regardless.tsv
+local/mixs_regen/mixs_subset.yaml: assets/other_mixs_yaml_files/mixs_slots_import_sheet.tsv
 	$(RUN) do_shuttle \
 		--recipient_model assets/other_mixs_yaml_files/mixs_template.yaml \
 		--config_tsv $< \
@@ -109,6 +114,14 @@ examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhas
 		--output-yaml-file $@ \
 		--schema-path src/schema/nmdc.yaml
 
+examples/output/Pooling-minimal-report.yaml: src/data/valid/Pooling-minimal.yaml
+	mkdir -p $(@D) # create parent directory
+	poetry run exhaustion-check \
+		--class-name Pooling \
+		--instance-yaml-file $< \
+		--output-yaml-file $@ \
+		--schema-path src/schema/nmdc.yaml
+
 examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/valid/Biosample-exhasutive.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
@@ -141,44 +154,45 @@ make-rdf: rdf-clean \
 # todo: metagenome_sequencing_set and metagenome_sequencing_activity_set are degenerate
 #   and can't be validated, migrated or converted to RDF
 
+#		--selected-collections activity_set \
+#		--selected-collections collecting_biosamples_from_site_set \
+#		--selected-collections data_object_set \
+#		--selected-collections extraction_set \
+#		--selected-collections field_research_site_set \
+#		--selected-collections functional_annotation_set \
+#		--selected-collections genome_feature_set \
+#		--selected-collections library_preparation_set \
+#		--selected-collections mags_activity_set \
+#		--selected-collections mags_set \
+#		--selected-collections material_sample_set \
+#		--selected-collections metabolomics_analysis_activity_set \
+#		--selected-collections metabolomics_analysis_set \
+#		--selected-collections metagenome_annotation_activity_set \
+#		--selected-collections metagenome_annotation_set \
+#		--selected-collections metagenome_assembly_set \
+#		--selected-collections metagenome_sequencing_activity_set \
+#		--selected-collections metagenome_sequencing_set \
+#		--selected-collections metap_gene_function_aggregation \
+#		--selected-collections metatranscriptome_activity_set \
+#		--selected-collections metatranscriptome_analysis_set \
+#		--selected-collections nom_analysis_activity_set \
+#		--selected-collections omics_processing_set \
+#		--selected-collections planned_process_set \
+#		--selected-collections pooling_set \
+#		--selected-collections processed_sample_set \
+#		--selected-collections read_based_taxonomy_analysis_activity_set \
+#		--selected-collections read_qc_analysis_activity_set \
+#		--selected-collections study_set \
+#		--selected-collections workflow_chain_set \
+#		--selected-collections workflow_execution_set \
+
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
 		--output-yaml $@ \
 		--schema-source src/schema/nmdc.yaml \
-		--selected-collections activity_set \
 		--selected-collections biosample_set \
-		--selected-collections collecting_biosamples_from_site_set \
-		--selected-collections data_object_set \
-		--selected-collections extraction_set \
-		--selected-collections field_research_site_set \
-		--selected-collections functional_annotation_set \
-		--selected-collections genome_feature_set \
-		--selected-collections library_preparation_set \
-		--selected-collections mags_activity_set \
-		--selected-collections mags_set \
-		--selected-collections material_sample_set \
-		--selected-collections metabolomics_analysis_activity_set \
-		--selected-collections metabolomics_analysis_set \
-		--selected-collections metagenome_annotation_activity_set \
-		--selected-collections metagenome_annotation_set \
-		--selected-collections metagenome_assembly_set \
-		--selected-collections metagenome_sequencing_activity_set \
-		--selected-collections metagenome_sequencing_set \
-		--selected-collections metap_gene_function_aggregation \
-		--selected-collections metatranscriptome_activity_set \
-		--selected-collections metatranscriptome_analysis_set \
-		--selected-collections nom_analysis_activity_set \
-		--selected-collections omics_processing_set \
-		--selected-collections planned_process_set \
-		--selected-collections pooling_set \
-		--selected-collections processed_sample_set \
-		--selected-collections read_based_taxonomy_analysis_activity_set \
-		--selected-collections read_qc_analysis_activity_set \
-		--selected-collections study_set \
-		--selected-collections workflow_chain_set \
-		--selected-collections workflow_execution_set \
 		dump-from-api \
 		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \

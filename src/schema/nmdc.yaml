@@ -122,6 +122,31 @@ settings:
   id_version: "(\\.[0-9]{1,})"
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
 
+  country: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+) # from https://github.com/GenomicsStandardsConsortium/mixs/blob/main/src/mixs/schema/mixs.yaml
+  parameters: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  region: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  room_name: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  software: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  specific_location: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  storage_condition_type: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  termLabel: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  unit: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  version: ([^\s-]{1,2}|[^\s-]+.+[^\s-]+)
+  DOI: ^doi:10.\d{2,9}/.*$
+  NCBItaxon_id: NCBITaxon:\d+
+  PMID: ^PMID:\d+$
+  URL: ^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$
+  adapter: '[ACGTRKSYMWBHDVN]+'
+  ambiguous_nucleotides: '[ACGTRKSYMWBHDVN]+'
+  duration: P(?:(?:\d+D|\d+M(?:\d+D)?|\d+Y(?:\d+M(?:\d+D)?)?)(?:T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S))?|T(?:\d+H(?:\d+M(?:\d+S)?)?|\d+M(?:\d+S)?|\d+S)|\d+W)
+  float: '[-+]?[0-9]*\.?[0-9]+'
+  integer: '[1-9][0-9]*'
+  lat: (-?((?:[0-8]?[0-9](?:\.\d{0,8})?)|90))
+  lon: -?[0-9]+(?:\.[0-9]{0,8})?$|^-?(1[0-7]{1,2})
+  room_number: '[1-9][0-9]*'
+  scientific_float: '[-+]?[0-9]*\.?[0-9]+(?:[eE][-+]?[0-9]+)?'
+  termID: '[a-zA-Z]{2,}:[a-zA-Z0-9]\d+'
+
 subsets:
   sample subset:
     description:
@@ -480,7 +505,8 @@ classes:
         Samples are associated with checklists, which define the fields used to annotate
         the samples. Samples are always associated with a taxon.
     slots:
-      - host_disease_stat
+      - samp_collec_method # see assets/yq-for-mixs_subset_modified.txt for foced alignment with MIxS 6.2
+      - samp_collec_device # see assets/yq-for-mixs_subset_modified.txt for foced alignment with MIxS 6.2
       - neon_biosample_identifiers
       - host_taxid
       - embargoed
@@ -584,7 +610,6 @@ classes:
       - collection_date
       - conduc
       - cool_syst_id
-      - core field
       - crop_rotation
       - cult_root_med
       - cur_land_use
@@ -633,7 +658,6 @@ classes:
       - env_local_scale
       - env_medium
       - env_package
-      - environment field
       - escalator
       - ethylbenzene
       - exp_duct
@@ -700,7 +724,6 @@ classes:
       - host_common_name
       - host_diet
       - host_dry_mass
-      - host_family_relation
       - host_genotype
       - host_growth_cond
       - host_height
@@ -725,7 +748,6 @@ classes:
       - inorg_particles
       - inside_lux
       - int_wall_cond
-      - investigation field
       - iw_bt_date_well
       - iwf
       - last_clean
@@ -762,7 +784,6 @@ classes:
       - non_min_nutr_regm
       - nucl_acid_amp
       - nucl_acid_ext
-      - nucleic acid sequence source field
       - number_pets
       - number_plants
       - number_resident
@@ -850,11 +871,8 @@ classes:
       - root_med_solid
       - root_med_suppl
       - salinity
-      - salinity_meth
       - salt_regm
       - samp_capt_status
-      - samp_collec_device
-      - samp_collec_method
       - samp_collect_point
       - samp_dis_stage
       - samp_floor
@@ -888,7 +906,6 @@ classes:
       - sediment_type
       - seq_meth
       - seq_quality_check
-      - sequencing field
       - sewage_type
       - shad_dev_water_mold
       - shading_device_cond
@@ -905,7 +922,6 @@ classes:
       - sludge_retent_time
       - sodium
       - soil_horizon
-      - soil_text_measure
       - soil_texture_meth
       - soil_type
       - soil_type_meth
@@ -1044,7 +1060,6 @@ classes:
       - humidity_regm
       - light_regm
       - phosphate
-      - samp_collec_method
       - samp_size
       - source_mat_id
       - watering_regm
@@ -1344,9 +1359,6 @@ classes:
           - value: 5 mg N/ L
         todos:
           - check description. How are they different?
-      salinity_meth:
-        examples:
-          - value: https://doi.org/10.1007/978-1-61779-986-0_28
       sieving:
         comments:
           - Describe how samples were composited or sieved.
@@ -1829,7 +1841,7 @@ enums:
       sense orientation:
         description: Orientation that corresponds to the coding sequence of messenger RNA.
 
-      
+
   InstrumentModelEnum:
     permissible_values:
       Orbitrap:
@@ -2574,15 +2586,15 @@ slots:
       - OBI:0002475
   
   is_stranded:
-    description: Is the (RNA) library stranded or non-stranded (unstranded). 
+    description: Is the (RNA) library stranded or non-stranded (unstranded).
     range: boolean
-    comments: 
-      - A value of true means the library is stranded, flase means non-stranded. 
+    comments:
+      - A value of true means the library is stranded, flase means non-stranded.
   
   stranded_orientation:
     description: Lists the strand orientiation for a stranded RNA library preparation.
     range: StrandedOrientationEnum
-    
+
   
   mass:
     title: mass
@@ -2737,8 +2749,6 @@ slots:
       packages listed here are further defined in separate subtables. By giving the
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
-    in_subset:
-      - mixs extension
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
