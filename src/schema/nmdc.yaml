@@ -152,7 +152,7 @@ classes:
     slot_usage:
       metagenome_annotation_id:
         structured_pattern: # doesn't include act
-          syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
 
   Database:
@@ -2515,6 +2515,9 @@ slots:
     range: MetagenomeAnnotationActivity
     description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
     required: true
+    any_of:
+      - range: MetagenomeAnnotationActivity
+      - range: MetatranscriptomeAnnotationActivity
   gene_function_id:
     range: uriorcurie
     description: The identifier for the gene function.
