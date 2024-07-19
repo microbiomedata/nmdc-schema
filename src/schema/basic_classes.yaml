@@ -454,6 +454,9 @@ slots:
     range: WorkflowExecution
     mappings:
       - prov:wasGeneratedBy
+    any_of:
+      - range: WorkflowExecution
+      - range: DataGeneration
   associated_dois:
     description: A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.
     aliases:
