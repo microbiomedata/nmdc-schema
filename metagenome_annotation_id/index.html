@@ -515,7 +515,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></p>
+<p>Range: <a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a>&nbsp;or&nbsp;<br /><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a>&nbsp;or&nbsp;<br /><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -559,6 +559,9 @@ domain_of:
 - FunctionalAnnotationAggMember
 range: MetagenomeAnnotationActivity
 required: true
+any_of:
+- range: MetagenomeAnnotationActivity
+- range: MetatranscriptomeAnnotationActivity
 
 </code></pre>
 
