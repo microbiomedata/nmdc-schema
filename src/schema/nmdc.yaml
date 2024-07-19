@@ -923,7 +923,7 @@ slots:
 
   metagenome_annotation_id:
     range: WorkflowExecution
-    description: The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.
+    description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
     required: true
 
   gene_function_id:
@@ -977,13 +977,6 @@ slots:
     description: Lists the strand orientiation for a stranded RNA library preparation.
     range: StrandedOrientationEnum
 
-
-  #  mass:
-  #    title: mass
-  #    description: A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.
-  #    exact_mappings:
-  #      - PATO:0000125
-  #    range: QuantityValue
 
   input_mass:
     title: sample mass used

@@ -103,12 +103,6 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--log-file $@.log.txt \
 		--report-style exhaustive
 
-#examples/output/Biosample-exhaustive_report.yaml: src/data/valid/Biosample-exhasutive.yaml
-#	$(RUN) exhaustion-check \
-#		--class-name Biosample \
-#		--instance-yaml-file $< \
-#		--output-yaml-file $@ \
-#		--schema-path src/schema/nmdc.yaml
 
 examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
 	$(RUN) pretty-sort-yaml \
@@ -119,11 +113,6 @@ examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/
 # pure-export doesn't require a PyMongo connection when run in the --skip-collection-check mode
 #   1. . ~/sshproxy.sh -u {YOUR_NERSC_USERNAME}
 #   2. ssh -i ~/.ssh/nersc -L27777:mongo-loadbalancer.nmdc.production.svc.spin.nersc.org:27017 -o ServerAliveInterval=60 {YOUR_NERSC_USERNAME}@dtn01.nersc.gov
-
-# todo mongodb collection stats vs Database slots report
-# todo convert to json
-# todo compress large files
-# todo: switch to API method for getting collection names and stats: https://api.microbiomedata.org/nmdcschema/collection_stats # partially implemented
 
 pure-export-and-validate: local/mongo_as_nmdc_database_validation.log
 
