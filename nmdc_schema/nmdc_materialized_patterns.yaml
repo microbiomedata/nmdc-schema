@@ -603,6 +603,24 @@ types:
     uri: xsd:anyURI
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 enums:
+  StrandedOrientationEnum:
+    name: StrandedOrientationEnum
+    description: This enumeration specifies information about stranded RNA library
+      preparations.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      antisense orientation:
+        text: antisense orientation
+        description: Orientation that is complementary (non-coding) to a sequence
+          of messenger RNA.
+        comments:
+        - See https://www.genome.gov/genetics-glossary/antisense
+        exact_mappings:
+        - SO:0000077
+      sense orientation:
+        text: sense orientation
+        description: Orientation that corresponds to the coding sequence of messenger
+          RNA.
   InstrumentModelEnum:
     name: InstrumentModelEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1125,6 +1143,36 @@ enums:
         text: LC-DDA-MS/MS Raw Data
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2
           binary instrument file
+      Metatranscriptome Expression:
+        text: Metatranscriptome Expression
+        description: Metatranscriptome expression values and read counts for gene
+          features predicted on contigs
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '*.rnaseq_gea.txt'
+      Metatranscriptome Expression Intergenic:
+        text: Metatranscriptome Expression Intergenic
+        description: Metatranscriptome expression values and read counts for intergenic
+          regions.
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '*.rnaseq_gea.intergenic.txt'
+      Metatranscriptome Expression Info File:
+        text: Metatranscriptome Expression Info File
+        description: File containing version information on the expression workflow
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '*_readcount.info'
+      rRNA Filtered Sequencing Reads:
+        text: rRNA Filtered Sequencing Reads
+        description: File containing ribosomal reads from the read qc filtering step.
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: '*.rRNA.fastq.gz'
   CreditEnum:
     name: CreditEnum
     comments:
@@ -1356,10 +1404,18 @@ enums:
       MetagenomeAssembly:
         text: MetagenomeAssembly
         description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeActivity:
-        text: MetatranscriptomeActivity
-        description: A failure has occurred in metatranscriptome analysis, a workflow
-          process.
+      MetatranscriptomeExpressionAnalysis:
+        text: MetatranscriptomeExpressionAnalysis
+        description: A failure has occurred in metatranscriptome expression analysis,
+          a workflow process.
+      MetatranscriptomeAnnotation:
+        text: MetatranscriptomeAnnotation
+        description: A failure has occurred in metatranscriptome annotation analysis,
+          a workflow process.
+      MetatranscriptomeAssembly:
+        text: MetatranscriptomeAssembly
+        description: A failure has occurred in metatranscriptome assembly analysis,
+          a workflow process.
       MagsAnalysisActivity:
         text: MagsAnalysisActivity
         description: A failure has occurred in binning, a workflow process to generate
@@ -3667,6 +3723,9 @@ slots:
     domain: FunctionalAnnotationAggMember
     range: MetagenomeAnnotationActivity
     required: true
+    any_of:
+    - range: MetagenomeAnnotationActivity
+    - range: MetatranscriptomeAnnotationActivity
   gene_function_id:
     name: gene_function_id
     description: The identifier for the gene function.
@@ -3746,6 +3805,18 @@ slots:
     exact_mappings:
     - OBI:0002475
     range: integer
+  is_stranded:
+    name: is_stranded
+    description: Is the (RNA) library stranded or non-stranded (unstranded).
+    comments:
+    - A value of true means the library is stranded, flase means non-stranded.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
+  stranded_orientation:
+    name: stranded_orientation
+    description: Lists the strand orientiation for a stranded RNA library preparation.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: StrandedOrientationEnum
   mass:
     name: mass
     description: A physical quality that inheres in a bearer by virtue of the proportion
@@ -4211,15 +4282,15 @@ slots:
     - object_set
     domain: Database
     range: MetagenomeSequencingActivity
-  metatranscriptome_activity_set:
-    name: metatranscriptome_activity_set
+  metatranscriptome_expression_analysis_set:
+    name: metatranscriptome_expression_analysis_set
     description: This property links a database object to the set of metatranscriptome
-      analysis activities.
+      expression analysis activities.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
     domain: Database
-    range: MetatranscriptomeActivity
+    range: MetatranscriptomeExpressionAnalysis
   read_qc_analysis_activity_set:
     name: read_qc_analysis_activity_set
     description: This property links a database object to the set of read QC analysis
@@ -4292,6 +4363,24 @@ slots:
     - object_set
     domain: Database
     range: LibraryPreparation
+  metatranscriptome_assembly_set:
+    name: metatranscriptome_assembly_set
+    description: This property links a database object to the set of metatranscriptome
+      assemblies within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    domain: Database
+    range: MetatranscriptomeAssembly
+  metatranscriptome_annotation_set:
+    name: metatranscriptome_annotation_set
+    description: This property links a database object to the set of metatranscriptome
+      annotations within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    domain: Database
+    range: MetatranscriptomeAnnotationActivity
   omics_type:
     name: omics_type
     description: The type of omics data
@@ -4320,6 +4409,15 @@ slots:
     range: string
   gold_path_field:
     name: gold_path_field
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: GOLD Ecosystem Classification paths describe the surroundings from
+          which an environmental sample or an organism is collected.
+        annotations:
+          source:
+            tag: source
+            value: https://gold.jgi.doe.gov/ecosystem_classification
     description: This is a grouping for any of the gold path fields
     from_schema: https://w3id.org/nmdc/nmdc
     abstract: true
@@ -17826,9 +17924,9 @@ slots:
     mappings:
     - prov:wasGeneratedBy
     range: Activity
-    pattern: ^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
     structured_pattern:
-      syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$
+      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$'
       interpolated: true
     any_of:
     - range: Activity
@@ -18126,9 +18224,9 @@ classes:
     slot_usage:
       metagenome_annotation_id:
         name: metagenome_annotation_id
-        pattern: ^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):(wfmgan|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
   Database:
     name: Database
@@ -18156,7 +18254,9 @@ classes:
     - metagenome_assembly_set
     - metagenome_sequencing_activity_set
     - metaproteomics_analysis_activity_set
-    - metatranscriptome_activity_set
+    - metatranscriptome_annotation_set
+    - metatranscriptome_assembly_set
+    - metatranscriptome_expression_analysis_set
     - nom_analysis_activity_set
     - omics_processing_set
     - planned_process_set
@@ -18290,6 +18390,8 @@ classes:
     - library_preparation_kit
     - library_type
     - pcr_cycles
+    - is_stranded
+    - stranded_orientation
     slot_usage:
       has_input:
         name: has_input
@@ -18418,9 +18520,9 @@ classes:
           interpolated: true
       was_generated_by:
         name: was_generated_by
-        pattern: ^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):omprc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
-          syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$
+          syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$'
           interpolated: true
   Biosample:
     name: Biosample
@@ -20740,10 +20842,10 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
-  MetatranscriptomeActivity:
-    name: MetatranscriptomeActivity
-    description: A metatranscriptome activity that e.g. pools assembly and annotation
-      activity.
+  MetatranscriptomeExpressionAnalysis:
+    name: MetatranscriptomeExpressionAnalysis
+    description: A workflow process that provides expression values and read counts
+      for gene features predicted on the contigs.
     in_subset:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
@@ -20754,9 +20856,9 @@ classes:
       id:
         name: id
         required: true
-        pattern: ^(nmdc):wfmt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+        pattern: ^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
   MagsAnalysisActivity:
     name: MagsAnalysisActivity

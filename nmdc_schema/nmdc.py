@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-21T09:39:03
+# Generation date: 2024-07-19T10:42:33
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -298,7 +298,7 @@ class MetatranscriptomeAnnotationActivityId(WorkflowExecutionActivityId):
     pass
 
 
-class MetatranscriptomeActivityId(WorkflowExecutionActivityId):
+class MetatranscriptomeExpressionAnalysisId(WorkflowExecutionActivityId):
     pass
 
 
@@ -414,7 +414,9 @@ class Database(YAMLRoot):
     metagenome_assembly_set: Optional[Union[Dict[Union[str, MetagenomeAssemblyId], Union[dict, "MetagenomeAssembly"]], List[Union[dict, "MetagenomeAssembly"]]]] = empty_dict()
     metagenome_sequencing_activity_set: Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencingActivity"]], List[Union[dict, "MetagenomeSequencingActivity"]]]] = empty_dict()
     metaproteomics_analysis_activity_set: Optional[Union[Dict[Union[str, MetaproteomicsAnalysisActivityId], Union[dict, "MetaproteomicsAnalysisActivity"]], List[Union[dict, "MetaproteomicsAnalysisActivity"]]]] = empty_dict()
-    metatranscriptome_activity_set: Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]] = empty_dict()
+    metatranscriptome_annotation_set: Optional[Union[Dict[Union[str, MetatranscriptomeAnnotationActivityId], Union[dict, "MetatranscriptomeAnnotationActivity"]], List[Union[dict, "MetatranscriptomeAnnotationActivity"]]]] = empty_dict()
+    metatranscriptome_assembly_set: Optional[Union[Dict[Union[str, MetatranscriptomeAssemblyId], Union[dict, "MetatranscriptomeAssembly"]], List[Union[dict, "MetatranscriptomeAssembly"]]]] = empty_dict()
+    metatranscriptome_expression_analysis_set: Optional[Union[Dict[Union[str, MetatranscriptomeExpressionAnalysisId], Union[dict, "MetatranscriptomeExpressionAnalysis"]], List[Union[dict, "MetatranscriptomeExpressionAnalysis"]]]] = empty_dict()
     nom_analysis_activity_set: Optional[Union[Dict[Union[str, NomAnalysisActivityId], Union[dict, "NomAnalysisActivity"]], List[Union[dict, "NomAnalysisActivity"]]]] = empty_dict()
     omics_processing_set: Optional[Union[Dict[Union[str, OmicsProcessingId], Union[dict, "OmicsProcessing"]], List[Union[dict, "OmicsProcessing"]]]] = empty_dict()
     planned_process_set: Optional[Union[Dict[Union[str, PlannedProcessId], Union[dict, "PlannedProcess"]], List[Union[dict, "PlannedProcess"]]]] = empty_dict()
@@ -461,7 +463,11 @@ class Database(YAMLRoot):
 
         self._normalize_inlined_as_list(slot_name="metaproteomics_analysis_activity_set", slot_type=MetaproteomicsAnalysisActivity, key_name="id", keyed=True)
 
-        self._normalize_inlined_as_list(slot_name="metatranscriptome_activity_set", slot_type=MetatranscriptomeActivity, key_name="id", keyed=True)
+        self._normalize_inlined_as_list(slot_name="metatranscriptome_annotation_set", slot_type=MetatranscriptomeAnnotationActivity, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="metatranscriptome_assembly_set", slot_type=MetatranscriptomeAssembly, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="metatranscriptome_expression_analysis_set", slot_type=MetatranscriptomeExpressionAnalysis, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="nom_analysis_activity_set", slot_type=NomAnalysisActivity, key_name="id", keyed=True)
 
@@ -4007,6 +4013,8 @@ class LibraryPreparation(BiosampleProcessing):
     library_preparation_kit: Optional[str] = None
     library_type: Optional[Union[str, "LibraryTypeEnum"]] = None
     pcr_cycles: Optional[int] = None
+    is_stranded: Optional[Union[bool, Bool]] = None
+    stranded_orientation: Optional[Union[str, "StrandedOrientationEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -4034,6 +4042,12 @@ class LibraryPreparation(BiosampleProcessing):
 
         if self.pcr_cycles is not None and not isinstance(self.pcr_cycles, int):
             self.pcr_cycles = int(self.pcr_cycles)
+
+        if self.is_stranded is not None and not isinstance(self.is_stranded, Bool):
+            self.is_stranded = Bool(self.is_stranded)
+
+        if self.stranded_orientation is not None and not isinstance(self.stranded_orientation, StrandedOrientationEnum):
+            self.stranded_orientation = StrandedOrientationEnum(self.stranded_orientation)
 
         super().__post_init__(**kwargs)
         self.designated_class = str(self.class_class_curie)
@@ -5600,18 +5614,18 @@ class MetatranscriptomeAnnotationActivity(WorkflowExecutionActivity):
 
 
 @dataclass
-class MetatranscriptomeActivity(WorkflowExecutionActivity):
+class MetatranscriptomeExpressionAnalysis(WorkflowExecutionActivity):
     """
-    A metatranscriptome activity that e.g. pools assembly and annotation activity.
+    A workflow process that provides expression values and read counts for gene features predicted on the contigs.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeActivity"]
-    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeActivity"
-    class_name: ClassVar[str] = "MetatranscriptomeActivity"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeActivity
+    class_class_uri: ClassVar[URIRef] = NMDC["MetatranscriptomeExpressionAnalysis"]
+    class_class_curie: ClassVar[str] = "nmdc:MetatranscriptomeExpressionAnalysis"
+    class_name: ClassVar[str] = "MetatranscriptomeExpressionAnalysis"
+    class_model_uri: ClassVar[URIRef] = NMDC.MetatranscriptomeExpressionAnalysis
 
-    id: Union[str, MetatranscriptomeActivityId] = None
+    id: Union[str, MetatranscriptomeExpressionAnalysisId] = None
     execution_resource: str = None
     git_url: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
@@ -5622,8 +5636,8 @@ class MetatranscriptomeActivity(WorkflowExecutionActivity):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
-        if not isinstance(self.id, MetatranscriptomeActivityId):
-            self.id = MetatranscriptomeActivityId(self.id)
+        if not isinstance(self.id, MetatranscriptomeExpressionAnalysisId):
+            self.id = MetatranscriptomeExpressionAnalysisId(self.id)
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
@@ -5923,6 +5937,26 @@ class NomAnalysisActivity(WorkflowExecutionActivity):
 
 
 # Enumerations
+class StrandedOrientationEnum(EnumDefinitionImpl):
+    """
+    This enumeration specifies information about stranded RNA library preparations.
+    """
+    _defn = EnumDefinition(
+        name="StrandedOrientationEnum",
+        description="This enumeration specifies information about stranded RNA library preparations.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "antisense orientation",
+            PermissibleValue(
+                text="antisense orientation",
+                description="Orientation that is complementary (non-coding) to a sequence of messenger RNA."))
+        setattr(cls, "sense orientation",
+            PermissibleValue(
+                text="sense orientation",
+                description="Orientation that corresponds to the coding sequence of messenger RNA."))
+
 class InstrumentModelEnum(EnumDefinitionImpl):
 
     Orbitrap = PermissibleValue(text="Orbitrap")
@@ -6327,6 +6361,22 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="LC-DDA-MS/MS Raw Data",
                 description="Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file"))
+        setattr(cls, "Metatranscriptome Expression",
+            PermissibleValue(
+                text="Metatranscriptome Expression",
+                description="""Metatranscriptome expression values and read counts for gene features predicted on contigs"""))
+        setattr(cls, "Metatranscriptome Expression Intergenic",
+            PermissibleValue(
+                text="Metatranscriptome Expression Intergenic",
+                description="Metatranscriptome expression values and read counts for intergenic regions."))
+        setattr(cls, "Metatranscriptome Expression Info File",
+            PermissibleValue(
+                text="Metatranscriptome Expression Info File",
+                description="File containing version information on the expression workflow"))
+        setattr(cls, "rRNA Filtered Sequencing Reads",
+            PermissibleValue(
+                text="rRNA Filtered Sequencing Reads",
+                description="File containing ribosomal reads from the read qc filtering step."))
 
 class CreditEnum(EnumDefinitionImpl):
 
@@ -6517,9 +6567,15 @@ class FailureWhereEnum(EnumDefinitionImpl):
     MetagenomeAssembly = PermissibleValue(
         text="MetagenomeAssembly",
         description="A failure has occurred in metagenome assembly, a workflow process.")
-    MetatranscriptomeActivity = PermissibleValue(
-        text="MetatranscriptomeActivity",
-        description="A failure has occurred in metatranscriptome analysis, a workflow process.")
+    MetatranscriptomeExpressionAnalysis = PermissibleValue(
+        text="MetatranscriptomeExpressionAnalysis",
+        description="A failure has occurred in metatranscriptome expression analysis, a workflow process.")
+    MetatranscriptomeAnnotation = PermissibleValue(
+        text="MetatranscriptomeAnnotation",
+        description="A failure has occurred in metatranscriptome annotation analysis, a workflow process.")
+    MetatranscriptomeAssembly = PermissibleValue(
+        text="MetatranscriptomeAssembly",
+        description="A failure has occurred in metatranscriptome assembly analysis, a workflow process.")
     MagsAnalysisActivity = PermissibleValue(
         text="MagsAnalysisActivity",
         description="""A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).""")
@@ -8747,6 +8803,12 @@ slots.extraction_method = Slot(uri=NMDC.extraction_method, name="extraction_meth
 slots.pcr_cycles = Slot(uri=NMDC.pcr_cycles, name="pcr_cycles", curie=NMDC.curie('pcr_cycles'),
                    model_uri=NMDC.pcr_cycles, domain=None, range=Optional[int])
 
+slots.is_stranded = Slot(uri=NMDC.is_stranded, name="is_stranded", curie=NMDC.curie('is_stranded'),
+                   model_uri=NMDC.is_stranded, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.stranded_orientation = Slot(uri=NMDC.stranded_orientation, name="stranded_orientation", curie=NMDC.curie('stranded_orientation'),
+                   model_uri=NMDC.stranded_orientation, domain=None, range=Optional[Union[str, "StrandedOrientationEnum"]])
+
 slots.mass = Slot(uri=NMDC.mass, name="mass", curie=NMDC.curie('mass'),
                    model_uri=NMDC.mass, domain=None, range=Optional[Union[dict, QuantityValue]])
 
@@ -8867,8 +8929,8 @@ slots.metagenome_assembly_set = Slot(uri=NMDC.metagenome_assembly_set, name="met
 slots.metagenome_sequencing_activity_set = Slot(uri=NMDC.metagenome_sequencing_activity_set, name="metagenome_sequencing_activity_set", curie=NMDC.curie('metagenome_sequencing_activity_set'),
                    model_uri=NMDC.metagenome_sequencing_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetagenomeSequencingActivityId], Union[dict, "MetagenomeSequencingActivity"]], List[Union[dict, "MetagenomeSequencingActivity"]]]])
 
-slots.metatranscriptome_activity_set = Slot(uri=NMDC.metatranscriptome_activity_set, name="metatranscriptome_activity_set", curie=NMDC.curie('metatranscriptome_activity_set'),
-                   model_uri=NMDC.metatranscriptome_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeActivityId], Union[dict, "MetatranscriptomeActivity"]], List[Union[dict, "MetatranscriptomeActivity"]]]])
+slots.metatranscriptome_expression_analysis_set = Slot(uri=NMDC.metatranscriptome_expression_analysis_set, name="metatranscriptome_expression_analysis_set", curie=NMDC.curie('metatranscriptome_expression_analysis_set'),
+                   model_uri=NMDC.metatranscriptome_expression_analysis_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeExpressionAnalysisId], Union[dict, "MetatranscriptomeExpressionAnalysis"]], List[Union[dict, "MetatranscriptomeExpressionAnalysis"]]]])
 
 slots.read_qc_analysis_activity_set = Slot(uri=NMDC.read_qc_analysis_activity_set, name="read_qc_analysis_activity_set", curie=NMDC.curie('read_qc_analysis_activity_set'),
                    model_uri=NMDC.read_qc_analysis_activity_set, domain=Database, range=Optional[Union[Dict[Union[str, ReadQcAnalysisActivityId], Union[dict, "ReadQcAnalysisActivity"]], List[Union[dict, "ReadQcAnalysisActivity"]]]])
@@ -8893,6 +8955,12 @@ slots.extraction_set = Slot(uri=NMDC.extraction_set, name="extraction_set", curi
 
 slots.library_preparation_set = Slot(uri=NMDC.library_preparation_set, name="library_preparation_set", curie=NMDC.curie('library_preparation_set'),
                    model_uri=NMDC.library_preparation_set, domain=Database, range=Optional[Union[Dict[Union[str, LibraryPreparationId], Union[dict, "LibraryPreparation"]], List[Union[dict, "LibraryPreparation"]]]])
+
+slots.metatranscriptome_assembly_set = Slot(uri=NMDC.metatranscriptome_assembly_set, name="metatranscriptome_assembly_set", curie=NMDC.curie('metatranscriptome_assembly_set'),
+                   model_uri=NMDC.metatranscriptome_assembly_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeAssemblyId], Union[dict, "MetatranscriptomeAssembly"]], List[Union[dict, "MetatranscriptomeAssembly"]]]])
+
+slots.metatranscriptome_annotation_set = Slot(uri=NMDC.metatranscriptome_annotation_set, name="metatranscriptome_annotation_set", curie=NMDC.curie('metatranscriptome_annotation_set'),
+                   model_uri=NMDC.metatranscriptome_annotation_set, domain=Database, range=Optional[Union[Dict[Union[str, MetatranscriptomeAnnotationActivityId], Union[dict, "MetatranscriptomeAnnotationActivity"]], List[Union[dict, "MetatranscriptomeAnnotationActivity"]]]])
 
 slots.omics_type = Slot(uri=NMDC.omics_type, name="omics_type", curie=NMDC.curie('omics_type'),
                    model_uri=NMDC.omics_type, domain=OmicsProcessing, range=Optional[Union[dict, "ControlledTermValue"]])
@@ -11725,8 +11793,8 @@ slots.MetatranscriptomeAnnotationActivity_id = Slot(uri=NMDC.id, name="Metatrans
                    model_uri=NMDC.MetatranscriptomeAnnotationActivity_id, domain=MetatranscriptomeAnnotationActivity, range=Union[str, MetatranscriptomeAnnotationActivityId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
-slots.MetatranscriptomeActivity_id = Slot(uri=NMDC.id, name="MetatranscriptomeActivity_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetatranscriptomeActivity_id, domain=MetatranscriptomeActivity, range=Union[str, MetatranscriptomeActivityId],
+slots.MetatranscriptomeExpressionAnalysis_id = Slot(uri=NMDC.id, name="MetatranscriptomeExpressionAnalysis_id", curie=NMDC.curie('id'),
+                   model_uri=NMDC.MetatranscriptomeExpressionAnalysis_id, domain=MetatranscriptomeExpressionAnalysis, range=Union[str, MetatranscriptomeExpressionAnalysisId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.MagsAnalysisActivity_id = Slot(uri=NMDC.id, name="MagsAnalysisActivity_id", curie=NMDC.curie('id'),
