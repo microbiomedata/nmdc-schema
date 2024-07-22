@@ -1,0 +1,85 @@
+read_qc_analysis_activity_set:
+  - id: nmdc:wfrqc-13-hemh0a80.1
+    name: Read QC Activity mt test
+    type: nmdc:ReadQcAnalysisActivity
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time: "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/metaT_ReadsQC
+    version: v1.0.8
+    was_informed_by: nmdc:omprc-11-yvd51073
+    has_input:
+      - nmdc:dobj-11-3fn9ej64
+    has_output:
+      - nmdc:dobj-13-e8hs8y26
+metatranscriptome_assembly_set:
+  - id: nmdc:wfmtas-13-hemh0a81.1
+    name: MT assembly test
+    type: nmdc:MetatranscriptomeAssembly
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time: "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/metaT_Assembly
+    version: v1.0.8
+    was_informed_by: nmdc:omprc-11-yvd51073
+    has_input:
+      - nmdc:dobj-13-e8hs8y26
+    has_output:
+      - nmdc:dobj-13-e8hs8y27
+metatranscriptome_annotation_set:
+  - id: nmdc:wfmtan-13-hemh0a82.1
+    name: MT annotation test
+    type: MetatranscriptomeAnnotationActivity
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time: "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/mg_annotation
+    version: v1.0.8
+    was_informed_by: nmdc:omprc-11-yvd51073
+    has_input:
+      - nmdc:dobj-13-e8hs8y27
+    has_output:
+      - nmdc:dobj-13-e8hs8y28
+metatranscriptome_expression_analysis_set:
+  - id: nmdc:wfmtex-13-hemh0a83.1
+    name: MT expression test
+    type: MetatranscriptomeExpressionAnalysis
+    started_at_time: "2023-08-29T19:41:47.365957+00:00"
+    ended_at_time: "2023-08-30T13:26:02.892410+00:00"
+    execution_resource: NERSC-Perlmutter
+    git_url: https://github.com/microbiomedata/metaT_ReadCounts
+    version: v1.0.8
+    was_informed_by: nmdc:omprc-11-yvd51073
+    has_input:
+      - nmdc:dobj-13-e8hs8y28
+    has_output:
+      - nmdc:dobj-13-e8hs8y29
+data_object_set:
+  - id: nmdc:dobj-13-e8hs8y26
+    name: nmdc_xxxxxxx_filtered.fastq.gz
+    description: mt test filtered data
+    file_size_bytes: 592149
+    type: nmdc:DataObject
+    data_object_type: Filtered Sequencing Reads
+    url: https://portal.nersc.gov/project/m3408/testing/metatranscriptome/readsQC/nmdc_xxxxxxx_filtered.fastq.gz
+  - id: nmdc:dobj-13-e8hs8y27
+    name: nmdc_xxxxxxx_contigs.fna
+    description: mt test assembly
+    file_size_bytes: 76710
+    type: nmdc:DataObject
+    data_object_type: Assembly Contigs
+    url: https://portal.nersc.gov/project/m3408/testing/metatranscriptome/assembly/nmdc_xxxxxxx_contigs.fna
+  - id: nmdc:dobj-13-e8hs8y28
+    name: nmdc_xxxxxxx_functional_annotation.gff
+    description: mt test annotation
+    file_size_bytes: 62428
+    type: nmdc:DataObject
+    data_object_type: Functional Annotation GFF
+    url: https://portal.nersc.gov/project/m3408/testing/metatranscriptome/annotation/nmdc_xxxxxxx_functional_annotation.gff
+  - id: nmdc:dobj-13-e8hs8y29
+    name: nmdc_xxxxxxx.readcount
+    description: mt test expression
+    file_size_bytes: 28162
+    type: nmdc:DataObject
+    data_object_type: Metatranscriptome Expression
+    url: https://portal.nersc.gov/project/m3408/testing/metatranscriptome/readMapping/nmdc_xxxxxxx.readcount
