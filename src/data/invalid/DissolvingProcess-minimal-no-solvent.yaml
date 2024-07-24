@@ -1,0 +1,13 @@
+id: nmdc:dispro-11-A74
+type: nmdc:DissolvingProcess
+has_input:
+  - nmdc:bsm-12-A67 #This is an example biosample ID and does not represent a real biosample
+has_output:
+  - nmdc:procsm-13-S67F
+solubilizing_agent: triton_X-100
+duration:
+  type: nmdc:QuantityValue
+  has_numeric_value: 2
+  has_unit: hours
+instrument_used:
+  - nmdc:inst-12-124

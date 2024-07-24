@@ -1,0 +1,5 @@
+has_maximum_numeric_value: 100
+has_minimum_numeric_value: 200
+has_unit: ml
+has_raw_value: 100-200 ml
+type: 'nmdc:QuantityValue'

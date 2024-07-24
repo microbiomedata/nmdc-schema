@@ -1,0 +1,15 @@
+[
+    {
+        "id": "nmdc:inst-12-dtTMNb",
+        "type": "nmdc:Instrument",
+        "name": "Illumina NovaSeq",
+        "vendor": "illumina",
+        "model": "novaseq_6000"
+    },
+    {
+        "id": "nmdc:inst-12-dtTMN3",
+        "type": "nmdc:Instrument",
+        "name": "my favorite Orbitrap",
+        "model": "exploris_480"
+    }
+]

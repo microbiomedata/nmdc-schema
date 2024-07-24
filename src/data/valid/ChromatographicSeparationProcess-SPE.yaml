@@ -1,26 +1,34 @@
-id: nmdc:psp-99-oW43DzG0 
-has_input: 
+id: nmdc:cspro-99-oW43DzG0
+type: nmdc:ChromatographicSeparationProcess
+has_input:
   - nmdc:procsm-11-9gjxns61
 has_output:
   - nmdc:procsm-11-05g48p90
   - nmdc:procsm-11-05g48p91
 stationary_phase: "CN"
+chromatographic_category: solid_phase_extraction
 ordered_mobile_phases:
-  - volume:
-      has_numeric_value: 700
-      has_unit: mL
-    has_solution_components:
-      - compound: methanol
-  - volume:
-      has_numeric_value: 700
-      has_unit: mL
-    has_solution_components:
-      - compound: chloridic acid
-        concentration:
+  - type: nmdc:MobilePhaseSegment
+    substances_used:
+      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: '%'
           has_numeric_value: 10
-          has_unit: mM 
-  - volume:
-      has_numeric_value: 1000
-      has_unit: mL  
-    has_solution_components:
-      - compound: water
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 700
+      has_unit: mL
+  - type: nmdc:MobilePhaseSegment
+    substances_used:
+      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        type: nmdc:PortionOfSubstance
+        final_concentration:
+          type: nmdc:QuantityValue
+          has_unit: mM
+          has_numeric_value: 15
+    volume:
+      type: nmdc:QuantityValue
+      has_numeric_value: 700
+      has_unit: mL

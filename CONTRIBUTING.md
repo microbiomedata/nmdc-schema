@@ -109,6 +109,10 @@ Core developers should read the material on the [LinkML site](https://linkml.io/
     - Follow the naming conventions of the parent class
     - Descriptions of child classes may reference parent classes in a genus-differentia definition structure (e.g. "A workflow execution activity that...")
     - Inheritance should be monotonic: `slot_usage` should refine rather than override
+- ID patterning and checks
+    - ID patterns for new classes should follow conventions found [here](https://microbiomedata.github.io/nmdc-schema/identifiers/)
+    - In the _rare_ case that NMCD records must support legacy typecodes, typecodes can be declared on new classes with multiple typecodes (i.e. `syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"`). In this case, the _first_ typecode is the one the NMDC Runtime's [minter](https://github.com/microbiomedata/nmdc-runtime/tree/main/nmdc_runtime/minter) will use when generating new ids for the class.
+    - Class-linking slots (i.e. `has_input`) should have a `slot_usage` declared that limits the slot's values to ids of instances of _only_ the specific classes you want to allow the slot to link to (e.g. using `syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"` on the `structured_pattern` will make it so only ids having the typecode `chrcon` can fill that slot)
 
 ### Testing Changes Locally
 

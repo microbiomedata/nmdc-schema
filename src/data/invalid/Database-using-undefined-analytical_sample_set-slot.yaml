@@ -1,5 +1,4 @@
 analytical_sample_set: # slot not defined
   - id: nmdc:ansm-99-dtTMNb
     name: WOOD_024-M-20190715-COMP-DNA1
-    #is was_informed_by the right slot? The value of this slot should be the id from a PlannedProcess (ie extraction)
-    was_informed_by: nmdc:extr-1235
+

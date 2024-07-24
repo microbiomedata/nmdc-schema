@@ -1,0 +1,20 @@
+id: nmdc:wfmb-99-ABCDEF.1
+type: nmdc:MetabolomicsAnalysis
+started_at_time: '2021-08-05T14:48:51+00:00'
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: NERSC-Cori
+was_informed_by: nmdc:omprc-11-u748ad
+git_url: https://example.org/WorkflowExecutionActivity
+has_input:
+  - nmdc:dobj-11-dr43d
+  - nmdc:dobj-11-dr3fg
+has_output:
+  - nmdc:dobj-11-dr3d
+  - nmdc:dobj-11-dj43d
+has_metabolite_quantifications:
+  - alternative_identifiers:
+    - kegg:C00583
+    - cas:57-55-6
+    highest_similarity_score: 0.9534156546099186
+    metabolite_quantified: chebi:16997
+    type: nmdc:MetaboliteQuantification

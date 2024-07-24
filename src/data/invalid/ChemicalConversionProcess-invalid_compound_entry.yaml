@@ -1,0 +1,28 @@
+id: nmdc:chcpr-19-7890
+has_input:
+  - "nmdc:procsm-37"
+has_output:
+  - "nmdc:procsm-39"
+has_reagents:
+  solutions_used:
+    - has_solution_components:
+      - compound: Hot Chocolate, yummy yummy
+      - compound: ammonium_bicarbonate
+        concentration:
+          has_numeric_value: 50
+          has_unit: mM
+      volume:
+        has_numeric_value: 75
+        has_unit: μL     
+catalyzed_by:
+  - has_solution_components:
+    - compound: trypsin
+      concentration:
+          has_numeric_value: 0.05
+          has_unit: μg/μL
+temperature:
+  has_numeric_value: 37
+  has_unit: Cel
+duration:
+  has_numeric_value: 3
+  has_unit: h

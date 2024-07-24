@@ -1,0 +1,13 @@
+study_set:
+  - id: gold:Gs0110132
+    study_category: research_study
+    name: Cyanobacterial communities from the Joint Genome Institute, California, USA
+    description: We propose to utilize the unique resources at EMSL and the JGI to
+      obtain a better understanding of the phylogenetic and functional diversity of
+      cyanobacteria
+    ecosystem: Host-associated
+    ecosystem_category: Microbial
+    ecosystem_type: Bacteria
+    ecosystem_subtype: Unclassified
+    specific_ecosystem: Unclassified
+    type: nmdc:Study

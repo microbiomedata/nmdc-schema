@@ -1,0 +1,12 @@
+type: nmdc:MobilePhaseSegment
+substances_used:
+  - type: nmdc:PortionOfSubstance
+    known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+    final_concentration:
+      type: nmdc:QuantityValue
+      has_unit: '%'
+      has_numeric_value: 10
+duration:
+  type: nmdc:QuantityValue
+  has_unit: hours
+  has_numeric_value: 2

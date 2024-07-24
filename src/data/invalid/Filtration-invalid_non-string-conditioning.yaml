@@ -1,0 +1,16 @@
+id: nmdc:filtpr-99-123
+type: nmdc:FiltrationProcess
+has_input:
+  - nmdc:biosample-1
+#  - previous step in process #not a URI or CURIE
+has_output:
+  - nmdc:5
+filter_material: PTFE
+filter_pore_size:
+  type: nmdc:QuantityValue
+  has_numeric_value: 0.02
+  has_unit: µm
+conditionings:
+  - Methanol
+  - 123 #not a string
+filtration_category: pre-condition

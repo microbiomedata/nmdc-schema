@@ -1,17 +1,19 @@
 id: nmdc:sty-11-ab
+type: nmdc:Study
+study_category: research_study
 jgi_genome_portal_identifiers: # this slot is not defined
- - https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
-# maybe "other data links" instead?
-# could be links to raw data or analysis results
-# NMDC is *not* using the data in these slots
-# not a research project/summary page
-# these links should be checked outside of (or ideally) LinkML
-# would these always be displayed on the Data Portal?
-# separate slots for the following, (so icon could be displayed) ?
- #   JGI Genome Portal,
- #   GNPS processed metabolomics,
- #   EMSL study & samples
- # and others
+  - https://genome.jgi.doe.gov/portal/BioDefcarcycling/BioDefcarcycling.info.html
+  # maybe "other data links" instead?
+  # could be links to raw data or analysis results
+  # NMDC is *not* using the data in these slots
+  # not a research project/summary page
+  # these links should be checked outside of (or ideally) LinkML
+  # would these always be displayed on the Data Portal?
+  # separate slots for the following, (so icon could be displayed) ?
+  #   JGI Genome Portal,
+  #   GNPS processed metabolomics,
+  #   EMSL study & samples
+  # and others
 # can we put parameterization into curie prefix expansions
 # maybe we should just replicate at lest the spirit of the https://microbiomedata.github.io/nmdc-schema/external_database_identifiers/
 # see https://data.microbiomedata.org/details/study/nmdc:sty-11-r2h77870
