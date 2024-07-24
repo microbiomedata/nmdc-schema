@@ -1211,8 +1211,8 @@ slots:
       - absolute air humidity
     is_a: core field
     slot_uri: MIXS:0000122
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   add_recov_method:
     annotations:
       expected_value:
@@ -1230,8 +1230,8 @@ slots:
       - secondary and tertiary recovery methods and start date
     is_a: core field
     slot_uri: MIXS:0001009
-    multivalued: false
     range: TextValue
+    multivalued: false
   additional_info:
     annotations:
       expected_value:
@@ -1250,8 +1250,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000300
-    multivalued: false
     range: TextValue
+    multivalued: false
   address:
     annotations:
       expected_value:
@@ -1270,8 +1270,8 @@ slots:
     is_a: core field
     string_serialization: '{integer}{text}'
     slot_uri: MIXS:0000218
-    multivalued: false
     range: TextValue
+    multivalued: false
   adj_room:
     annotations:
       expected_value:
@@ -1290,8 +1290,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000219
-    multivalued: false
     range: TextValue
+    multivalued: false
   aero_struc:
     annotations:
       expected_value:
@@ -1310,8 +1310,8 @@ slots:
     is_a: core field
     string_serialization: '[plane|glider]'
     slot_uri: MIXS:0000773
-    multivalued: false
     range: TextValue
+    multivalued: false
   agrochem_addition:
     annotations:
       expected_value:
@@ -1333,8 +1333,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{timestamp}'
     slot_uri: MIXS:0000639
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   air_PM_concen:
     annotations:
@@ -1357,8 +1357,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000108
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   air_temp:
     annotations:
@@ -1380,8 +1380,8 @@ slots:
       - air temperature
     is_a: core field
     slot_uri: MIXS:0000124
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   air_temp_regm:
     annotations:
       expected_value:
@@ -1403,8 +1403,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000551
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   al_sat:
     annotations:
@@ -1426,8 +1426,8 @@ slots:
       - extreme_unusual_properties/Al saturation
     is_a: core field
     slot_uri: MIXS:0000607
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   al_sat_meth:
     annotations:
       expected_value:
@@ -1446,8 +1446,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000324
-    multivalued: false
     range: TextValue
+    multivalued: false
   alkalinity:
     annotations:
       expected_value:
@@ -1468,8 +1468,8 @@ slots:
       - alkalinity
     is_a: core field
     slot_uri: MIXS:0000421
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   alkalinity_method:
     annotations:
       expected_value:
@@ -1488,8 +1488,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000298
-    multivalued: false
     range: TextValue
+    multivalued: false
   alkyl_diethers:
     annotations:
       expected_value:
@@ -1510,8 +1510,8 @@ slots:
       - alkyl diethers
     is_a: core field
     slot_uri: MIXS:0000490
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   alt:
     annotations:
       expected_value:
@@ -1526,7 +1526,6 @@ slots:
       - altitude
     is_a: environment field
     slot_uri: MIXS:0000094
-    multivalued: false
     domain_of:
       - agriculture
       - air
@@ -1553,6 +1552,7 @@ slots:
       - wastewater_sludge
       - water
     range: QuantityValue
+    multivalued: false
   aminopept_act:
     annotations:
       expected_value:
@@ -1573,8 +1573,8 @@ slots:
       - aminopeptidase activity
     is_a: core field
     slot_uri: MIXS:0000172
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   ammonium:
     annotations:
       expected_value:
@@ -1595,8 +1595,8 @@ slots:
       - ammonium
     is_a: core field
     slot_uri: MIXS:0000427
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   amount_light:
     annotations:
       expected_value:
@@ -1617,8 +1617,8 @@ slots:
       - amount of light
     is_a: core field
     slot_uri: MIXS:0000140
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   ances_data:
     annotations:
       expected_value:
@@ -1637,8 +1637,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000247
-    multivalued: false
     range: TextValue
+    multivalued: false
   annual_precpt:
     annotations:
       expected_value:
@@ -1659,8 +1659,8 @@ slots:
       - mean annual precipitation
     is_a: core field
     slot_uri: MIXS:0000644
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   annual_temp:
     annotations:
       expected_value:
@@ -1681,8 +1681,8 @@ slots:
       - mean annual temperature
     is_a: core field
     slot_uri: MIXS:0000642
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   antibiotic_regm:
     annotations:
       expected_value:
@@ -1704,8 +1704,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000553
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   api:
     annotations:
@@ -1727,8 +1727,8 @@ slots:
       - API gravity
     is_a: core field
     slot_uri: MIXS:0000157
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   arch_struc:
     annotations:
       expected_value:
@@ -1746,8 +1746,8 @@ slots:
       - architectural structure
     is_a: core field
     slot_uri: MIXS:0000774
-    multivalued: false
     range: arch_struc_enum
+    multivalued: false
   aromatics_pc:
     annotations:
       expected_value:
@@ -1769,8 +1769,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000133
-    multivalued: false
     range: TextValue
+    multivalued: false
   asphaltenes_pc:
     annotations:
       expected_value:
@@ -1792,8 +1792,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000135
-    multivalued: false
     range: TextValue
+    multivalued: false
   atmospheric_data:
     annotations:
       expected_value:
@@ -1812,8 +1812,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0001097
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   avg_dew_point:
     annotations:
@@ -1835,8 +1835,8 @@ slots:
       - average dew point
     is_a: core field
     slot_uri: MIXS:0000141
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   avg_occup:
     annotations:
       expected_value:
@@ -1854,8 +1854,8 @@ slots:
       - average daily occupancy
     is_a: core field
     slot_uri: MIXS:0000775
-    multivalued: false
     range: TextValue
+    multivalued: false
   avg_temp:
     annotations:
       expected_value:
@@ -1876,8 +1876,8 @@ slots:
       - average temperature
     is_a: core field
     slot_uri: MIXS:0000142
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   bac_prod:
     annotations:
       expected_value:
@@ -1898,8 +1898,8 @@ slots:
       - bacterial production
     is_a: core field
     slot_uri: MIXS:0000683
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   bac_resp:
     annotations:
       expected_value:
@@ -1920,8 +1920,8 @@ slots:
       - bacterial respiration
     is_a: core field
     slot_uri: MIXS:0000684
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   bacteria_carb_prod:
     annotations:
       expected_value:
@@ -1942,8 +1942,8 @@ slots:
       - bacterial carbon production
     is_a: core field
     slot_uri: MIXS:0000173
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   barometric_press:
     annotations:
       expected_value:
@@ -1964,8 +1964,8 @@ slots:
       - barometric pressure
     is_a: core field
     slot_uri: MIXS:0000096
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   basin:
     annotations:
       expected_value:
@@ -1984,8 +1984,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000290
-    multivalued: false
     range: TextValue
+    multivalued: false
   bathroom_count:
     annotations:
       expected_value:
@@ -2003,8 +2003,8 @@ slots:
       - bathroom count
     is_a: core field
     slot_uri: MIXS:0000776
-    multivalued: false
     range: TextValue
+    multivalued: false
   bedroom_count:
     annotations:
       expected_value:
@@ -2022,8 +2022,8 @@ slots:
       - bedroom count
     is_a: core field
     slot_uri: MIXS:0000777
-    multivalued: false
     range: TextValue
+    multivalued: false
   benzene:
     annotations:
       expected_value:
@@ -2044,8 +2044,8 @@ slots:
       - benzene
     is_a: core field
     slot_uri: MIXS:0000153
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   biochem_oxygen_dem:
     annotations:
       expected_value:
@@ -2066,8 +2066,8 @@ slots:
       - biochemical oxygen demand
     is_a: core field
     slot_uri: MIXS:0000653
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   biocide:
     annotations:
       expected_value:
@@ -2086,8 +2086,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: MIXS:0001011
-    multivalued: false
     range: TextValue
+    multivalued: false
   biocide_admin_method:
     annotations:
       expected_value:
@@ -2109,8 +2109,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration}'
     slot_uri: MIXS:0000456
-    multivalued: false
     range: TextValue
+    multivalued: false
   biol_stat:
     annotations:
       expected_value:
@@ -2128,8 +2128,8 @@ slots:
       - biological status
     is_a: core field
     slot_uri: MIXS:0000858
-    multivalued: false
     range: biol_stat_enum
+    multivalued: false
   biomass:
     annotations:
       expected_value:
@@ -2151,8 +2151,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000174
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   biotic_regm:
     annotations:
@@ -2172,8 +2172,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001038
-    multivalued: false
     range: TextValue
+    multivalued: false
   biotic_relationship:
     annotations:
       expected_value:
@@ -2188,8 +2188,8 @@ slots:
       - observed biotic relationship
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000028
-    multivalued: false
     range: biotic_relationship_enum
+    multivalued: false
   bishomohopanol:
     annotations:
       expected_value:
@@ -2210,8 +2210,8 @@ slots:
       - bishomohopanol
     is_a: core field
     slot_uri: MIXS:0000175
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   blood_press_diast:
     annotations:
       expected_value:
@@ -2232,8 +2232,8 @@ slots:
       - host blood pressure diastolic
     is_a: core field
     slot_uri: MIXS:0000258
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   blood_press_syst:
     annotations:
       expected_value:
@@ -2254,8 +2254,8 @@ slots:
       - host blood pressure systolic
     is_a: core field
     slot_uri: MIXS:0000259
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   bromide:
     annotations:
       expected_value:
@@ -2276,8 +2276,8 @@ slots:
       - bromide
     is_a: core field
     slot_uri: MIXS:0000176
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   build_docs:
     annotations:
       expected_value:
@@ -2295,8 +2295,8 @@ slots:
       - design, construction, and operation documents
     is_a: core field
     slot_uri: MIXS:0000787
-    multivalued: false
     range: build_docs_enum
+    multivalued: false
   build_occup_type:
     annotations:
       expected_value:
@@ -2314,8 +2314,8 @@ slots:
       - building occupancy type
     is_a: core field
     slot_uri: MIXS:0000761
-    multivalued: true
     range: build_occup_type_enum
+    multivalued: true
   building_setting:
     annotations:
       expected_value:
@@ -2333,8 +2333,8 @@ slots:
       - building setting
     is_a: core field
     slot_uri: MIXS:0000768
-    multivalued: false
     range: building_setting_enum
+    multivalued: false
   built_struc_age:
     annotations:
       expected_value:
@@ -2355,8 +2355,8 @@ slots:
       - built structure age
     is_a: core field
     slot_uri: MIXS:0000145
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   built_struc_set:
     annotations:
       expected_value:
@@ -2375,8 +2375,8 @@ slots:
     is_a: core field
     string_serialization: '[urban|rural]'
     slot_uri: MIXS:0000778
-    multivalued: false
     range: TextValue
+    multivalued: false
   built_struc_type:
     annotations:
       expected_value:
@@ -2395,8 +2395,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000721
-    multivalued: false
     range: TextValue
+    multivalued: false
   calcium:
     annotations:
       expected_value:
@@ -2417,8 +2417,8 @@ slots:
       - calcium
     is_a: core field
     slot_uri: MIXS:0000432
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   carb_dioxide:
     annotations:
       expected_value:
@@ -2439,8 +2439,8 @@ slots:
       - carbon dioxide
     is_a: core field
     slot_uri: MIXS:0000097
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   carb_monoxide:
     annotations:
       expected_value:
@@ -2461,8 +2461,8 @@ slots:
       - carbon monoxide
     is_a: core field
     slot_uri: MIXS:0000098
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   carb_nitro_ratio:
     annotations:
       expected_value:
@@ -2480,8 +2480,8 @@ slots:
       - carbon/nitrogen ratio
     is_a: core field
     slot_uri: MIXS:0000310
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   ceil_area:
     annotations:
       expected_value:
@@ -2502,8 +2502,8 @@ slots:
       - ceiling area
     is_a: core field
     slot_uri: MIXS:0000148
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   ceil_cond:
     annotations:
       expected_value:
@@ -2521,8 +2521,8 @@ slots:
       - ceiling condition
     is_a: core field
     slot_uri: MIXS:0000779
-    multivalued: false
     range: ceil_cond_enum
+    multivalued: false
   ceil_finish_mat:
     annotations:
       expected_value:
@@ -2540,8 +2540,8 @@ slots:
       - ceiling finish material
     is_a: core field
     slot_uri: MIXS:0000780
-    multivalued: false
     range: ceil_finish_mat_enum
+    multivalued: false
   ceil_struc:
     annotations:
       expected_value:
@@ -2560,8 +2560,8 @@ slots:
     is_a: core field
     string_serialization: '[wood frame|concrete]'
     slot_uri: MIXS:0000782
-    multivalued: false
     range: TextValue
+    multivalued: false
   ceil_texture:
     annotations:
       expected_value:
@@ -2579,8 +2579,8 @@ slots:
       - ceiling texture
     is_a: core field
     slot_uri: MIXS:0000783
-    multivalued: false
     range: ceil_texture_enum
+    multivalued: false
   ceil_thermal_mass:
     annotations:
       expected_value:
@@ -2601,8 +2601,8 @@ slots:
       - ceiling thermal mass
     is_a: core field
     slot_uri: MIXS:0000143
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   ceil_type:
     annotations:
       expected_value:
@@ -2620,8 +2620,8 @@ slots:
       - ceiling type
     is_a: core field
     slot_uri: MIXS:0000784
-    multivalued: false
     range: ceil_type_enum
+    multivalued: false
   ceil_water_mold:
     annotations:
       expected_value:
@@ -2640,8 +2640,8 @@ slots:
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000781
-    multivalued: false
     range: TextValue
+    multivalued: false
   chem_administration:
     annotations:
       expected_value:
@@ -2660,8 +2660,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]};{timestamp}'
     slot_uri: MIXS:0000751
-    multivalued: true
     range: ControlledTermValue
+    multivalued: true
     inlined_as_list: true
   chem_mutagen:
     annotations:
@@ -2684,8 +2684,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000555
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   chem_oxygen_dem:
     annotations:
@@ -2707,8 +2707,8 @@ slots:
       - chemical oxygen demand
     is_a: core field
     slot_uri: MIXS:0000656
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   chem_treat_method:
     annotations:
       expected_value:
@@ -2730,8 +2730,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration};{duration};{duration}'
     slot_uri: MIXS:0000457
-    multivalued: false
     range: string
+    multivalued: false
   chem_treatment:
     annotations:
       expected_value:
@@ -2750,8 +2750,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{text};{timestamp}'
     slot_uri: MIXS:0001012
-    multivalued: false
     range: TextValue
+    multivalued: false
   chimera_check:
     annotations:
       expected_value:
@@ -2767,8 +2767,8 @@ slots:
     is_a: sequencing field
     string_serialization: '{software};{version};{parameters}'
     slot_uri: MIXS:0000052
-    multivalued: false
     range: TextValue
+    multivalued: false
   chloride:
     annotations:
       expected_value:
@@ -2789,8 +2789,8 @@ slots:
       - chloride
     is_a: core field
     slot_uri: MIXS:0000429
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   chlorophyll:
     annotations:
       expected_value:
@@ -2811,8 +2811,8 @@ slots:
       - chlorophyll
     is_a: core field
     slot_uri: MIXS:0000177
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   climate_environment:
     annotations:
       expected_value:
@@ -2831,8 +2831,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001040
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   collection_date:
     annotations:
@@ -2848,8 +2848,8 @@ slots:
       - collection date
     is_a: environment field
     slot_uri: MIXS:0000011
-    multivalued: false
     range: TimestampValue
+    multivalued: false
   conduc:
     annotations:
       expected_value:
@@ -2870,8 +2870,8 @@ slots:
       - conductivity
     is_a: core field
     slot_uri: MIXS:0000692
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   cool_syst_id:
     annotations:
       expected_value:
@@ -2889,8 +2889,8 @@ slots:
       - cooling system identifier
     is_a: core field
     slot_uri: MIXS:0000785
-    multivalued: false
     range: TextValue
+    multivalued: false
   crop_rotation:
     annotations:
       expected_value:
@@ -2909,8 +2909,8 @@ slots:
     is_a: core field
     string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000318
-    multivalued: false
     range: TextValue
+    multivalued: false
   cult_root_med:
     annotations:
       expected_value:
@@ -2929,8 +2929,8 @@ slots:
     is_a: core field
     string_serialization: '{text}|{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0001041
-    multivalued: false
     range: TextValue
+    multivalued: false
   cur_land_use:
     annotations:
       expected_value:
@@ -2948,8 +2948,8 @@ slots:
       - current land use
     is_a: core field
     slot_uri: MIXS:0001080
-    multivalued: false
     range: cur_land_use_enum
+    multivalued: false
   cur_vegetation:
     annotations:
       expected_value:
@@ -2968,8 +2968,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000312
-    multivalued: false
     range: TextValue
+    multivalued: false
   cur_vegetation_meth:
     annotations:
       expected_value:
@@ -2988,8 +2988,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000314
-    multivalued: false
     range: TextValue
+    multivalued: false
   date_last_rain:
     annotations:
       expected_value:
@@ -3007,8 +3007,8 @@ slots:
       - date last rain
     is_a: core field
     slot_uri: MIXS:0000786
-    multivalued: false
     range: TimestampValue
+    multivalued: false
   density:
     annotations:
       expected_value:
@@ -3029,8 +3029,8 @@ slots:
       - density
     is_a: core field
     slot_uri: MIXS:0000435
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   depos_env:
     annotations:
       expected_value:
@@ -3048,8 +3048,8 @@ slots:
       - depositional environment
     is_a: core field
     slot_uri: MIXS:0000992
-    multivalued: false
     range: depos_env_enum
+    multivalued: false
   depth:
     annotations:
       expected_value:
@@ -3064,8 +3064,8 @@ slots:
       - depth
     is_a: environment field
     slot_uri: MIXS:0000018
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   dew_point:
     annotations:
       expected_value:
@@ -3086,8 +3086,8 @@ slots:
       - dew point
     is_a: core field
     slot_uri: MIXS:0000129
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diether_lipids:
     annotations:
       expected_value:
@@ -3109,8 +3109,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000178
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   diss_carb_dioxide:
     annotations:
@@ -3132,8 +3132,8 @@ slots:
       - dissolved carbon dioxide
     is_a: core field
     slot_uri: MIXS:0000436
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_hydrogen:
     annotations:
       expected_value:
@@ -3154,8 +3154,8 @@ slots:
       - dissolved hydrogen
     is_a: core field
     slot_uri: MIXS:0000179
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_inorg_carb:
     annotations:
       expected_value:
@@ -3176,8 +3176,8 @@ slots:
       - dissolved inorganic carbon
     is_a: core field
     slot_uri: MIXS:0000434
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_inorg_nitro:
     annotations:
       expected_value:
@@ -3198,8 +3198,8 @@ slots:
       - dissolved inorganic nitrogen
     is_a: core field
     slot_uri: MIXS:0000698
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_inorg_phosp:
     annotations:
       expected_value:
@@ -3220,8 +3220,8 @@ slots:
       - dissolved inorganic phosphorus
     is_a: core field
     slot_uri: MIXS:0000106
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_iron:
     annotations:
       expected_value:
@@ -3242,8 +3242,8 @@ slots:
       - dissolved iron
     is_a: core field
     slot_uri: MIXS:0000139
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_org_carb:
     annotations:
       expected_value:
@@ -3264,8 +3264,8 @@ slots:
       - dissolved organic carbon
     is_a: core field
     slot_uri: MIXS:0000433
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_org_nitro:
     annotations:
       expected_value:
@@ -3286,8 +3286,8 @@ slots:
       - dissolved organic nitrogen
     is_a: core field
     slot_uri: MIXS:0000162
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_oxygen:
     annotations:
       expected_value:
@@ -3308,8 +3308,8 @@ slots:
       - dissolved oxygen
     is_a: core field
     slot_uri: MIXS:0000119
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   diss_oxygen_fluid:
     annotations:
       expected_value:
@@ -3330,8 +3330,8 @@ slots:
       - dissolved oxygen in fluids
     is_a: core field
     slot_uri: MIXS:0000438
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   door_comp_type:
     annotations:
       expected_value:
@@ -3349,8 +3349,8 @@ slots:
       - door type, composite
     is_a: core field
     slot_uri: MIXS:0000795
-    multivalued: false
     range: door_comp_type_enum
+    multivalued: false
   door_cond:
     annotations:
       expected_value:
@@ -3368,8 +3368,8 @@ slots:
       - door condition
     is_a: core field
     slot_uri: MIXS:0000788
-    multivalued: false
     range: door_cond_enum
+    multivalued: false
   door_direct:
     annotations:
       expected_value:
@@ -3387,8 +3387,8 @@ slots:
       - door direction of opening
     is_a: core field
     slot_uri: MIXS:0000789
-    multivalued: false
     range: door_direct_enum
+    multivalued: false
   door_loc:
     annotations:
       expected_value:
@@ -3406,8 +3406,8 @@ slots:
       - door location
     is_a: core field
     slot_uri: MIXS:0000790
-    multivalued: false
     range: door_loc_enum
+    multivalued: false
   door_mat:
     annotations:
       expected_value:
@@ -3425,8 +3425,8 @@ slots:
       - door material
     is_a: core field
     slot_uri: MIXS:0000791
-    multivalued: false
     range: door_mat_enum
+    multivalued: false
   door_move:
     annotations:
       expected_value:
@@ -3444,8 +3444,8 @@ slots:
       - door movement
     is_a: core field
     slot_uri: MIXS:0000792
-    multivalued: false
     range: door_move_enum
+    multivalued: false
   door_size:
     annotations:
       expected_value:
@@ -3466,8 +3466,8 @@ slots:
       - door area or size
     is_a: core field
     slot_uri: MIXS:0000158
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   door_type:
     annotations:
       expected_value:
@@ -3485,8 +3485,8 @@ slots:
       - door type
     is_a: core field
     slot_uri: MIXS:0000794
-    multivalued: false
     range: door_type_enum
+    multivalued: false
   door_type_metal:
     annotations:
       expected_value:
@@ -3504,8 +3504,8 @@ slots:
       - door type, metal
     is_a: core field
     slot_uri: MIXS:0000796
-    multivalued: false
     range: door_type_metal_enum
+    multivalued: false
   door_type_wood:
     annotations:
       expected_value:
@@ -3523,8 +3523,8 @@ slots:
       - door type, wood
     is_a: core field
     slot_uri: MIXS:0000797
-    multivalued: false
     range: door_type_wood_enum
+    multivalued: false
   door_water_mold:
     annotations:
       expected_value:
@@ -3543,8 +3543,8 @@ slots:
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000793
-    multivalued: false
     range: TextValue
+    multivalued: false
   down_par:
     annotations:
       expected_value:
@@ -3565,8 +3565,8 @@ slots:
       - downward PAR
     is_a: core field
     slot_uri: MIXS:0000703
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   drainage_class:
     annotations:
       expected_value:
@@ -3584,8 +3584,8 @@ slots:
       - drainage classification
     is_a: core field
     slot_uri: MIXS:0001085
-    multivalued: false
     range: drainage_class_enum
+    multivalued: false
   drawings:
     annotations:
       expected_value:
@@ -3603,8 +3603,8 @@ slots:
       - drawings
     is_a: core field
     slot_uri: MIXS:0000798
-    multivalued: false
     range: drawings_enum
+    multivalued: false
   efficiency_percent:
     annotations:
       expected_value:
@@ -3625,8 +3625,8 @@ slots:
       - efficiency percent
     is_a: core field
     slot_uri: MIXS:0000657
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   elev:
     annotations:
       expected_value:
@@ -3641,8 +3641,8 @@ slots:
       - elevation
     is_a: environment field
     slot_uri: MIXS:0000093
-    multivalued: false
     range: float
+    multivalued: false
   elevator:
     annotations:
       expected_value:
@@ -3660,8 +3660,8 @@ slots:
       - elevator count
     is_a: core field
     slot_uri: MIXS:0000799
-    multivalued: false
     range: TextValue
+    multivalued: false
   emulsions:
     annotations:
       expected_value:
@@ -3683,8 +3683,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000660
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   env_broad_scale:
     annotations:
@@ -3702,8 +3702,8 @@ slots:
     is_a: environment field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000012
-    multivalued: false
     range: ControlledIdentifiedTermValue
+    multivalued: false
   env_local_scale:
     annotations:
       expected_value:
@@ -3720,8 +3720,8 @@ slots:
     is_a: environment field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000013
-    multivalued: false
     range: ControlledIdentifiedTermValue
+    multivalued: false
   env_medium:
     annotations:
       expected_value:
@@ -3738,8 +3738,8 @@ slots:
     is_a: environment field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000014
-    multivalued: false
     range: ControlledIdentifiedTermValue
+    multivalued: false
   escalator:
     annotations:
       expected_value:
@@ -3757,8 +3757,8 @@ slots:
       - escalator count
     is_a: core field
     slot_uri: MIXS:0000800
-    multivalued: false
     range: TextValue
+    multivalued: false
   ethylbenzene:
     annotations:
       expected_value:
@@ -3779,8 +3779,8 @@ slots:
       - ethylbenzene
     is_a: core field
     slot_uri: MIXS:0000155
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   exp_duct:
     annotations:
       expected_value:
@@ -3801,8 +3801,8 @@ slots:
       - exposed ductwork
     is_a: core field
     slot_uri: MIXS:0000144
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   exp_pipe:
     annotations:
       expected_value:
@@ -3820,8 +3820,8 @@ slots:
       - exposed pipes
     is_a: core field
     slot_uri: MIXS:0000220
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   experimental_factor:
     annotations:
       expected_value:
@@ -3837,8 +3837,8 @@ slots:
     is_a: investigation field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000008
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   ext_door:
     annotations:
       expected_value:
@@ -3856,8 +3856,8 @@ slots:
       - exterior door count
     is_a: core field
     slot_uri: MIXS:0000170
-    multivalued: false
     range: TextValue
+    multivalued: false
   ext_wall_orient:
     annotations:
       expected_value:
@@ -3875,8 +3875,8 @@ slots:
       - orientations of exterior wall
     is_a: core field
     slot_uri: MIXS:0000817
-    multivalued: false
     range: ext_wall_orient_enum
+    multivalued: false
   ext_window_orient:
     annotations:
       expected_value:
@@ -3894,8 +3894,8 @@ slots:
       - orientations of exterior window
     is_a: core field
     slot_uri: MIXS:0000818
-    multivalued: false
     range: ext_window_orient_enum
+    multivalued: false
   extreme_event:
     annotations:
       expected_value:
@@ -3913,8 +3913,8 @@ slots:
       - history/extreme events
     is_a: core field
     slot_uri: MIXS:0000320
-    multivalued: false
     range: string
+    multivalued: false
   fao_class:
     annotations:
       expected_value:
@@ -3932,8 +3932,8 @@ slots:
       - soil_taxonomic/FAO classification
     is_a: core field
     slot_uri: MIXS:0001083
-    multivalued: false
     range: fao_class_enum
+    multivalued: false
   fertilizer_regm:
     annotations:
       expected_value:
@@ -3955,8 +3955,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000556
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   field:
     annotations:
@@ -3976,8 +3976,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000291
-    multivalued: false
     range: TextValue
+    multivalued: false
   filter_type:
     annotations:
       expected_value:
@@ -3995,8 +3995,8 @@ slots:
       - filter type
     is_a: core field
     slot_uri: MIXS:0000765
-    multivalued: true
     range: filter_type_enum
+    multivalued: true
   fire:
     annotations:
       expected_value:
@@ -4014,8 +4014,8 @@ slots:
       - history/fire
     is_a: core field
     slot_uri: MIXS:0001086
-    multivalued: false
     range: string
+    multivalued: false
   fireplace_type:
     annotations:
       expected_value:
@@ -4034,8 +4034,8 @@ slots:
     is_a: core field
     string_serialization: '[gas burning|wood burning]'
     slot_uri: MIXS:0000802
-    multivalued: false
     range: TextValue
+    multivalued: false
   flooding:
     annotations:
       expected_value:
@@ -4053,8 +4053,8 @@ slots:
       - history/flooding
     is_a: core field
     slot_uri: MIXS:0000319
-    multivalued: false
     range: string
+    multivalued: false
   floor_age:
     annotations:
       expected_value:
@@ -4075,8 +4075,8 @@ slots:
       - floor age
     is_a: core field
     slot_uri: MIXS:0000164
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   floor_area:
     annotations:
       expected_value:
@@ -4097,8 +4097,8 @@ slots:
       - floor area
     is_a: core field
     slot_uri: MIXS:0000165
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   floor_cond:
     annotations:
       expected_value:
@@ -4116,8 +4116,8 @@ slots:
       - floor condition
     is_a: core field
     slot_uri: MIXS:0000803
-    multivalued: false
     range: floor_cond_enum
+    multivalued: false
   floor_count:
     annotations:
       expected_value:
@@ -4135,8 +4135,8 @@ slots:
       - floor count
     is_a: core field
     slot_uri: MIXS:0000225
-    multivalued: false
     range: TextValue
+    multivalued: false
   floor_finish_mat:
     annotations:
       expected_value:
@@ -4154,8 +4154,8 @@ slots:
       - floor finish material
     is_a: core field
     slot_uri: MIXS:0000804
-    multivalued: false
     range: floor_finish_mat_enum
+    multivalued: false
   floor_struc:
     annotations:
       expected_value:
@@ -4173,8 +4173,8 @@ slots:
       - floor structure
     is_a: core field
     slot_uri: MIXS:0000806
-    multivalued: false
     range: floor_struc_enum
+    multivalued: false
   floor_thermal_mass:
     annotations:
       expected_value:
@@ -4195,8 +4195,8 @@ slots:
       - floor thermal mass
     is_a: core field
     slot_uri: MIXS:0000166
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   floor_water_mold:
     annotations:
       expected_value:
@@ -4214,8 +4214,8 @@ slots:
       - floor signs of water/mold
     is_a: core field
     slot_uri: MIXS:0000805
-    multivalued: false
     range: floor_water_mold_enum
+    multivalued: false
   fluor:
     annotations:
       expected_value:
@@ -4236,8 +4236,8 @@ slots:
       - fluorescence
     is_a: core field
     slot_uri: MIXS:0000704
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   freq_clean:
     annotations:
       expected_value:
@@ -4255,8 +4255,8 @@ slots:
       - frequency of cleaning
     is_a: core field
     slot_uri: MIXS:0000226
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   freq_cook:
     annotations:
       expected_value:
@@ -4274,8 +4274,8 @@ slots:
       - frequency of cooking
     is_a: core field
     slot_uri: MIXS:0000227
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   fungicide_regm:
     annotations:
       expected_value:
@@ -4297,8 +4297,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000557
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   furniture:
     annotations:
@@ -4317,8 +4317,8 @@ slots:
       - furniture
     is_a: core field
     slot_uri: MIXS:0000807
-    multivalued: false
     range: furniture_enum
+    multivalued: false
   gaseous_environment:
     annotations:
       expected_value:
@@ -4340,8 +4340,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000558
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   gaseous_substances:
     annotations:
@@ -4364,8 +4364,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000661
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   gender_restroom:
     annotations:
@@ -4384,8 +4384,8 @@ slots:
       - gender of restroom
     is_a: core field
     slot_uri: MIXS:0000808
-    multivalued: false
     range: gender_restroom_enum
+    multivalued: false
   genetic_mod:
     annotations:
       expected_value:
@@ -4404,8 +4404,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0000859
-    multivalued: false
     range: TextValue
+    multivalued: false
   geo_loc_name:
     annotations:
       expected_value:
@@ -4421,8 +4421,8 @@ slots:
     is_a: environment field
     string_serialization: '{term}: {term}, {text}'
     slot_uri: MIXS:0000010
-    multivalued: false
     range: TextValue
+    multivalued: false
   glucosidase_act:
     annotations:
       expected_value:
@@ -4443,8 +4443,8 @@ slots:
       - glucosidase activity
     is_a: core field
     slot_uri: MIXS:0000137
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   gravidity:
     annotations:
       expected_value:
@@ -4463,8 +4463,8 @@ slots:
     is_a: core field
     string_serialization: '{boolean};{timestamp}'
     slot_uri: MIXS:0000875
-    multivalued: false
     range: TextValue
+    multivalued: false
   gravity:
     annotations:
       expected_value:
@@ -4486,8 +4486,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000559
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   growth_facil:
     annotations:
@@ -4507,8 +4507,8 @@ slots:
     is_a: core field
     string_serialization: '{text}|{termLabel} {[termID]}'
     slot_uri: MIXS:0001043
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   growth_habit:
     annotations:
       expected_value:
@@ -4526,8 +4526,8 @@ slots:
       - growth habit
     is_a: core field
     slot_uri: MIXS:0001044
-    multivalued: false
     range: growth_habit_enum
+    multivalued: false
   growth_hormone_regm:
     annotations:
       expected_value:
@@ -4549,8 +4549,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000560
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   hall_count:
     annotations:
@@ -4569,8 +4569,8 @@ slots:
       - hallway/corridor count
     is_a: core field
     slot_uri: MIXS:0000228
-    multivalued: false
     range: TextValue
+    multivalued: false
   handidness:
     annotations:
       expected_value:
@@ -4588,8 +4588,8 @@ slots:
       - handidness
     is_a: core field
     slot_uri: MIXS:0000809
-    multivalued: false
     range: handidness_enum
+    multivalued: false
   hc_produced:
     annotations:
       expected_value:
@@ -4607,8 +4607,8 @@ slots:
       - hydrocarbon type produced
     is_a: core field
     slot_uri: MIXS:0000989
-    multivalued: false
     range: hc_produced_enum
+    multivalued: false
   hcr:
     annotations:
       expected_value:
@@ -4626,8 +4626,8 @@ slots:
       - hydrocarbon resource type
     is_a: core field
     slot_uri: MIXS:0000988
-    multivalued: false
     range: hcr_enum
+    multivalued: false
   hcr_fw_salinity:
     annotations:
       expected_value:
@@ -4648,8 +4648,8 @@ slots:
       - formation water salinity
     is_a: core field
     slot_uri: MIXS:0000406
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   hcr_geol_age:
     annotations:
       expected_value:
@@ -4667,8 +4667,8 @@ slots:
       - hydrocarbon resource geological age
     is_a: core field
     slot_uri: MIXS:0000993
-    multivalued: false
     range: hcr_geol_age_enum
+    multivalued: false
   hcr_pressure:
     annotations:
       expected_value:
@@ -4690,8 +4690,8 @@ slots:
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000395
-    multivalued: false
     range: TextValue
+    multivalued: false
   hcr_temp:
     annotations:
       expected_value:
@@ -4713,8 +4713,8 @@ slots:
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000393
-    multivalued: false
     range: TextValue
+    multivalued: false
   heat_cool_type:
     annotations:
       expected_value:
@@ -4732,8 +4732,8 @@ slots:
       - heating and cooling system type
     is_a: core field
     slot_uri: MIXS:0000766
-    multivalued: true
     range: heat_cool_type_enum
+    multivalued: true
   heat_deliv_loc:
     annotations:
       expected_value:
@@ -4751,8 +4751,8 @@ slots:
       - heating delivery locations
     is_a: core field
     slot_uri: MIXS:0000810
-    multivalued: false
     range: heat_deliv_loc_enum
+    multivalued: false
   heat_sys_deliv_meth:
     annotations:
       expected_value:
@@ -4771,8 +4771,8 @@ slots:
     is_a: core field
     string_serialization: '[conductive|radiant]'
     slot_uri: MIXS:0000812
-    multivalued: false
     range: string
+    multivalued: false
   heat_system_id:
     annotations:
       expected_value:
@@ -4790,8 +4790,8 @@ slots:
       - heating system identifier
     is_a: core field
     slot_uri: MIXS:0000833
-    multivalued: false
     range: TextValue
+    multivalued: false
   heavy_metals:
     annotations:
       expected_value:
@@ -4813,8 +4813,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000652
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   heavy_metals_meth:
     annotations:
@@ -4834,8 +4834,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000343
-    multivalued: false
     range: TextValue
+    multivalued: false
   height_carper_fiber:
     annotations:
       expected_value:
@@ -4856,8 +4856,8 @@ slots:
       - height carpet fiber mat
     is_a: core field
     slot_uri: MIXS:0000167
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   herbicide_regm:
     annotations:
       expected_value:
@@ -4879,8 +4879,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000561
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   horizon_meth:
     annotations:
@@ -4900,8 +4900,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000321
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_age:
     annotations:
       expected_value:
@@ -4922,8 +4922,8 @@ slots:
       - host age
     is_a: core field
     slot_uri: MIXS:0000255
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   host_body_habitat:
     annotations:
       expected_value:
@@ -4942,8 +4942,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000866
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_body_product:
     annotations:
       expected_value:
@@ -4962,8 +4962,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000888
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   host_body_site:
     annotations:
       expected_value:
@@ -4982,8 +4982,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000867
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   host_body_temp:
     annotations:
       expected_value:
@@ -5004,8 +5004,8 @@ slots:
       - host body temperature
     is_a: core field
     slot_uri: MIXS:0000274
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   host_color:
     annotations:
       expected_value:
@@ -5024,8 +5024,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000260
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_common_name:
     annotations:
       expected_value:
@@ -5044,8 +5044,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000248
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_diet:
     annotations:
       expected_value:
@@ -5064,8 +5064,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000869
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   host_disease_stat:
     annotations:
@@ -5082,8 +5082,8 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000031
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_dry_mass:
     annotations:
       expected_value:
@@ -5104,8 +5104,8 @@ slots:
       - host dry mass
     is_a: core field
     slot_uri: MIXS:0000257
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   host_family_relation:
     annotations:
       expected_value:
@@ -5124,8 +5124,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{text}'
     slot_uri: MIXS:0000872
-    multivalued: true
     range: string
+    multivalued: true
   host_genotype:
     annotations:
       expected_value:
@@ -5144,8 +5144,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000365
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_growth_cond:
     annotations:
       expected_value:
@@ -5164,8 +5164,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0000871
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_height:
     annotations:
       expected_value:
@@ -5186,8 +5186,8 @@ slots:
       - host height
     is_a: core field
     slot_uri: MIXS:0000264
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   host_last_meal:
     annotations:
       expected_value:
@@ -5206,8 +5206,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000870
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   host_length:
     annotations:
@@ -5229,8 +5229,8 @@ slots:
       - host length
     is_a: core field
     slot_uri: MIXS:0000256
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   host_life_stage:
     annotations:
       expected_value:
@@ -5249,8 +5249,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000251
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_phenotype:
     annotations:
       expected_value:
@@ -5269,8 +5269,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000874
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   host_sex:
     annotations:
       expected_value:
@@ -5288,8 +5288,8 @@ slots:
       - host sex
     is_a: core field
     slot_uri: MIXS:0000811
-    multivalued: false
     range: host_sex_enum
+    multivalued: false
   host_shape:
     annotations:
       expected_value:
@@ -5308,8 +5308,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000261
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_subject_id:
     annotations:
       expected_value:
@@ -5328,8 +5328,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000861
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_subspecf_genlin:
     annotations:
       expected_value:
@@ -5348,8 +5348,8 @@ slots:
     is_a: core field
     string_serialization: '{rank name}:{text}'
     slot_uri: MIXS:0001318
-    multivalued: true
     range: string
+    multivalued: true
   host_substrate:
     annotations:
       expected_value:
@@ -5368,8 +5368,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000252
-    multivalued: false
     range: TextValue
+    multivalued: false
   host_symbiont:
     annotations:
       expected_value:
@@ -5388,8 +5388,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001298
-    multivalued: true
     range: string
+    multivalued: true
   host_taxid:
     annotations:
       expected_value:
@@ -5405,8 +5405,8 @@ slots:
       - host taxid
     is_a: core field
     slot_uri: MIXS:0000250
-    multivalued: false
     range: ControlledIdentifiedTermValue
+    multivalued: false
     comments:
       - Homo sapiens [NCBITaxon:9606] would be a reasonable has_raw_value
   host_tot_mass:
@@ -5429,8 +5429,8 @@ slots:
       - host total mass
     is_a: core field
     slot_uri: MIXS:0000263
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   host_wet_mass:
     annotations:
       expected_value:
@@ -5451,8 +5451,8 @@ slots:
       - host wet mass
     is_a: core field
     slot_uri: MIXS:0000567
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   humidity:
     annotations:
       expected_value:
@@ -5473,8 +5473,8 @@ slots:
       - humidity
     is_a: core field
     slot_uri: MIXS:0000100
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   humidity_regm:
     annotations:
       expected_value:
@@ -5496,8 +5496,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000568
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   indoor_space:
     annotations:
@@ -5516,8 +5516,8 @@ slots:
       - indoor space
     is_a: core field
     slot_uri: MIXS:0000763
-    multivalued: false
     range: indoor_space_enum
+    multivalued: false
   indoor_surf:
     annotations:
       expected_value:
@@ -5535,8 +5535,8 @@ slots:
       - indoor surface
     is_a: core field
     slot_uri: MIXS:0000764
-    multivalued: false
     range: indoor_surf_enum
+    multivalued: false
   indust_eff_percent:
     annotations:
       expected_value:
@@ -5557,8 +5557,8 @@ slots:
       - industrial effluent percent
     is_a: core field
     slot_uri: MIXS:0000662
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   inorg_particles:
     annotations:
       expected_value:
@@ -5580,8 +5580,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000664
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   inside_lux:
     annotations:
@@ -5603,8 +5603,8 @@ slots:
       - inside lux light
     is_a: core field
     slot_uri: MIXS:0000168
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   int_wall_cond:
     annotations:
       expected_value:
@@ -5622,8 +5622,8 @@ slots:
       - interior wall condition
     is_a: core field
     slot_uri: MIXS:0000813
-    multivalued: false
     range: int_wall_cond_enum
+    multivalued: false
   iw_bt_date_well:
     annotations:
       expected_value:
@@ -5641,8 +5641,8 @@ slots:
       - injection water breakthrough date of specific well
     is_a: core field
     slot_uri: MIXS:0001010
-    multivalued: false
     range: TimestampValue
+    multivalued: false
   iwf:
     annotations:
       expected_value:
@@ -5663,8 +5663,8 @@ slots:
       - injection water fraction
     is_a: core field
     slot_uri: MIXS:0000455
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   last_clean:
     annotations:
       expected_value:
@@ -5682,8 +5682,8 @@ slots:
       - last time swept/mopped/vacuumed
     is_a: core field
     slot_uri: MIXS:0000814
-    multivalued: false
     range: TimestampValue
+    multivalued: false
   lat_lon:
     annotations:
       expected_value:
@@ -5699,8 +5699,8 @@ slots:
     is_a: environment field
     string_serialization: '{float} {float}'
     slot_uri: MIXS:0000009
-    multivalued: false
     range: GeolocationValue
+    multivalued: false
   light_intensity:
     annotations:
       expected_value:
@@ -5721,8 +5721,8 @@ slots:
       - light intensity
     is_a: core field
     slot_uri: MIXS:0000706
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   light_regm:
     annotations:
       expected_value:
@@ -5744,8 +5744,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000569
-    multivalued: false
     range: TextValue
+    multivalued: false
   light_type:
     annotations:
       expected_value:
@@ -5763,8 +5763,8 @@ slots:
       - light type
     is_a: core field
     slot_uri: MIXS:0000769
-    multivalued: true
     range: light_type_enum
+    multivalued: true
   link_addit_analys:
     annotations:
       expected_value:
@@ -5783,8 +5783,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000340
-    multivalued: false
     range: TextValue
+    multivalued: false
   link_class_info:
     annotations:
       expected_value:
@@ -5803,8 +5803,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000329
-    multivalued: false
     range: TextValue
+    multivalued: false
   link_climate_info:
     annotations:
       expected_value:
@@ -5823,8 +5823,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000328
-    multivalued: false
     range: TextValue
+    multivalued: false
   lithology:
     annotations:
       expected_value:
@@ -5842,8 +5842,8 @@ slots:
       - lithology
     is_a: core field
     slot_uri: MIXS:0000990
-    multivalued: false
     range: lithology_enum
+    multivalued: false
   local_class:
     annotations:
       expected_value:
@@ -5862,8 +5862,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000330
-    multivalued: false
     range: TextValue
+    multivalued: false
   local_class_meth:
     annotations:
       expected_value:
@@ -5882,8 +5882,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000331
-    multivalued: false
     range: TextValue
+    multivalued: false
   magnesium:
     annotations:
       expected_value:
@@ -5904,8 +5904,8 @@ slots:
       - magnesium
     is_a: core field
     slot_uri: MIXS:0000431
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   max_occup:
     annotations:
       expected_value:
@@ -5923,8 +5923,8 @@ slots:
       - maximum occupancy
     is_a: core field
     slot_uri: MIXS:0000229
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   mean_frict_vel:
     annotations:
       expected_value:
@@ -5945,8 +5945,8 @@ slots:
       - mean friction velocity
     is_a: core field
     slot_uri: MIXS:0000498
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   mean_peak_frict_vel:
     annotations:
       expected_value:
@@ -5967,8 +5967,8 @@ slots:
       - mean peak friction velocity
     is_a: core field
     slot_uri: MIXS:0000502
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   mech_struc:
     annotations:
       expected_value:
@@ -5986,8 +5986,8 @@ slots:
       - mechanical structure
     is_a: core field
     slot_uri: MIXS:0000815
-    multivalued: false
     range: mech_struc_enum
+    multivalued: false
   mechanical_damage:
     annotations:
       expected_value:
@@ -6006,8 +6006,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{text}'
     slot_uri: MIXS:0001052
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   methane:
     annotations:
@@ -6029,8 +6029,8 @@ slots:
       - methane
     is_a: core field
     slot_uri: MIXS:0000101
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   micro_biomass_meth:
     annotations:
       expected_value:
@@ -6049,8 +6049,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000339
-    multivalued: false
     range: string
+    multivalued: false
   microbial_biomass:
     annotations:
       expected_value:
@@ -6071,8 +6071,8 @@ slots:
       - microbial biomass
     is_a: core field
     slot_uri: MIXS:0000650
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   mineral_nutr_regm:
     annotations:
       expected_value:
@@ -6094,8 +6094,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000570
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   misc_param:
     annotations:
@@ -6115,8 +6115,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   n_alkanes:
     annotations:
@@ -6139,8 +6139,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000503
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   nitrate:
     annotations:
@@ -6162,8 +6162,8 @@ slots:
       - nitrate
     is_a: core field
     slot_uri: MIXS:0000425
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   nitrite:
     annotations:
       expected_value:
@@ -6184,8 +6184,8 @@ slots:
       - nitrite
     is_a: core field
     slot_uri: MIXS:0000426
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   nitro:
     annotations:
       expected_value:
@@ -6206,8 +6206,8 @@ slots:
       - nitrogen
     is_a: core field
     slot_uri: MIXS:0000504
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   non_min_nutr_regm:
     annotations:
       expected_value:
@@ -6229,8 +6229,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000571
-    multivalued: true
     range: string
+    multivalued: true
   nucl_acid_amp:
     annotations:
       expected_value:
@@ -6246,8 +6246,8 @@ slots:
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000038
-    multivalued: false
     range: TextValue
+    multivalued: false
   nucl_acid_ext:
     annotations:
       expected_value:
@@ -6263,8 +6263,8 @@ slots:
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000037
-    multivalued: false
     range: TextValue
+    multivalued: false
   number_pets:
     annotations:
       expected_value:
@@ -6282,8 +6282,8 @@ slots:
       - number of pets
     is_a: core field
     slot_uri: MIXS:0000231
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   number_plants:
     annotations:
       expected_value:
@@ -6301,8 +6301,8 @@ slots:
       - number of houseplants
     is_a: core field
     slot_uri: MIXS:0000230
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   number_resident:
     annotations:
       expected_value:
@@ -6320,8 +6320,8 @@ slots:
       - number of residents
     is_a: core field
     slot_uri: MIXS:0000232
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   occup_density_samp:
     annotations:
       expected_value:
@@ -6339,8 +6339,8 @@ slots:
       - occupant density at sampling
     is_a: core field
     slot_uri: MIXS:0000217
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   occup_document:
     annotations:
       expected_value:
@@ -6358,8 +6358,8 @@ slots:
       - occupancy documentation
     is_a: core field
     slot_uri: MIXS:0000816
-    multivalued: false
     range: occup_document_enum
+    multivalued: false
   occup_samp:
     annotations:
       expected_value:
@@ -6377,8 +6377,8 @@ slots:
       - occupancy at sampling
     is_a: core field
     slot_uri: MIXS:0000772
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   org_carb:
     annotations:
       expected_value:
@@ -6399,8 +6399,8 @@ slots:
       - organic carbon
     is_a: core field
     slot_uri: MIXS:0000508
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   org_count_qpcr_info:
     annotations:
       expected_value:
@@ -6422,8 +6422,8 @@ slots:
     is_a: core field
     string_serialization: '{text};FWD:{dna};REV:{dna};initial denaturation:degrees_minutes;denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes; total cycles'
     slot_uri: MIXS:0000099
-    multivalued: false
     range: string
+    multivalued: false
   org_matter:
     annotations:
       expected_value:
@@ -6444,8 +6444,8 @@ slots:
       - organic matter
     is_a: core field
     slot_uri: MIXS:0000204
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   org_nitro:
     annotations:
       expected_value:
@@ -6466,8 +6466,8 @@ slots:
       - organic nitrogen
     is_a: core field
     slot_uri: MIXS:0000205
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   org_particles:
     annotations:
       expected_value:
@@ -6489,8 +6489,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000665
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   organism_count:
     annotations:
@@ -6512,8 +6512,8 @@ slots:
       - organism count
     is_a: core field
     slot_uri: MIXS:0000103
-    multivalued: true
     range: QuantityValue
+    multivalued: true
     inlined_as_list: true
   owc_tvdss:
     annotations:
@@ -6535,8 +6535,8 @@ slots:
       - oil water contact depth
     is_a: core field
     slot_uri: MIXS:0000405
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   oxy_stat_samp:
     annotations:
       expected_value:
@@ -6554,8 +6554,8 @@ slots:
       - oxygenation status of sample
     is_a: core field
     slot_uri: MIXS:0000753
-    multivalued: false
     range: oxy_stat_samp_enum
+    multivalued: false
   oxygen:
     annotations:
       expected_value:
@@ -6576,8 +6576,8 @@ slots:
       - oxygen
     is_a: core field
     slot_uri: MIXS:0000104
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   part_org_carb:
     annotations:
       expected_value:
@@ -6598,8 +6598,8 @@ slots:
       - particulate organic carbon
     is_a: core field
     slot_uri: MIXS:0000515
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   part_org_nitro:
     annotations:
       expected_value:
@@ -6620,8 +6620,8 @@ slots:
       - particulate organic nitrogen
     is_a: core field
     slot_uri: MIXS:0000719
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   particle_class:
     annotations:
       expected_value:
@@ -6643,8 +6643,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000206
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   pcr_cond:
     annotations:
@@ -6661,8 +6661,8 @@ slots:
     is_a: sequencing field
     string_serialization: initial denaturation:degrees_minutes;annealing:degrees_minutes;elongation:degrees_minutes;final elongation:degrees_minutes;total cycles
     slot_uri: MIXS:0000049
-    multivalued: false
     range: TextValue
+    multivalued: false
   pcr_primers:
     annotations:
       expected_value:
@@ -6678,8 +6678,8 @@ slots:
     is_a: sequencing field
     string_serialization: FWD:{dna};REV:{dna}
     slot_uri: MIXS:0000046
-    multivalued: false
     range: TextValue
+    multivalued: false
   permeability:
     annotations:
       expected_value:
@@ -6701,8 +6701,8 @@ slots:
     is_a: core field
     string_serialization: '{integer} - {integer} {unit}'
     slot_uri: MIXS:0000404
-    multivalued: false
     range: TextValue
+    multivalued: false
   perturbation:
     annotations:
       expected_value:
@@ -6721,8 +6721,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000754
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   pesticide_regm:
     annotations:
@@ -6745,8 +6745,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000573
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   petroleum_hydrocarb:
     annotations:
@@ -6768,8 +6768,8 @@ slots:
       - petroleum hydrocarbon
     is_a: core field
     slot_uri: MIXS:0000516
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   ph:
     annotations:
       expected_value:
@@ -6787,8 +6787,8 @@ slots:
       - pH
     is_a: core field
     slot_uri: MIXS:0001001
-    multivalued: false
     range: double
+    multivalued: false
   ph_meth:
     annotations:
       expected_value:
@@ -6807,8 +6807,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0001106
-    multivalued: false
     range: TextValue
+    multivalued: false
   ph_regm:
     annotations:
       expected_value:
@@ -6827,8 +6827,8 @@ slots:
     is_a: core field
     string_serialization: '{float};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001056
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   phaeopigments:
     annotations:
@@ -6851,8 +6851,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000180
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   phosphate:
     annotations:
@@ -6874,8 +6874,8 @@ slots:
       - phosphate
     is_a: core field
     slot_uri: MIXS:0000505
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   phosplipid_fatt_acid:
     annotations:
       expected_value:
@@ -6897,8 +6897,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000181
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   photon_flux:
     annotations:
@@ -6920,8 +6920,8 @@ slots:
       - photon flux
     is_a: core field
     slot_uri: MIXS:0000725
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   plant_growth_med:
     annotations:
       expected_value:
@@ -6939,8 +6939,8 @@ slots:
       - plant growth medium
     is_a: core field
     slot_uri: MIXS:0001057
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   plant_product:
     annotations:
       expected_value:
@@ -6959,8 +6959,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001058
-    multivalued: false
     range: TextValue
+    multivalued: false
   plant_sex:
     annotations:
       expected_value:
@@ -6978,8 +6978,8 @@ slots:
       - plant sex
     is_a: core field
     slot_uri: MIXS:0001059
-    multivalued: false
     range: plant_sex_enum
+    multivalued: false
   plant_struc:
     annotations:
       expected_value:
@@ -6998,8 +6998,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0001060
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   pollutants:
     annotations:
       expected_value:
@@ -7021,8 +7021,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000107
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   pool_dna_extracts:
     annotations:
@@ -7042,8 +7042,8 @@ slots:
     is_a: core field
     string_serialization: '{boolean};{integer}'
     slot_uri: MIXS:0000325
-    multivalued: false
     range: TextValue
+    multivalued: false
   porosity:
     annotations:
       expected_value:
@@ -7065,8 +7065,8 @@ slots:
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000211
-    multivalued: false
     range: TextValue
+    multivalued: false
   potassium:
     annotations:
       expected_value:
@@ -7087,8 +7087,8 @@ slots:
       - potassium
     is_a: core field
     slot_uri: MIXS:0000430
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   pour_point:
     annotations:
       expected_value:
@@ -7109,8 +7109,8 @@ slots:
       - pour point
     is_a: core field
     slot_uri: MIXS:0000127
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   pre_treatment:
     annotations:
       expected_value:
@@ -7129,8 +7129,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000348
-    multivalued: false
     range: TextValue
+    multivalued: false
   pres_animal_insect:
     annotations:
       expected_value:
@@ -7148,8 +7148,8 @@ slots:
       - presence of pets, animals, or insects
     is_a: core field
     slot_uri: MIXS:0000819
-    multivalued: false
     range: string
+    multivalued: false
     pattern: ^(cat|dog|rodent|snake|other);\d+$
   pressure:
     annotations:
@@ -7171,8 +7171,8 @@ slots:
       - pressure
     is_a: core field
     slot_uri: MIXS:0000412
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   prev_land_use_meth:
     annotations:
       expected_value:
@@ -7191,8 +7191,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000316
-    multivalued: false
     range: string
+    multivalued: false
   previous_land_use:
     annotations:
       expected_value:
@@ -7211,8 +7211,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{timestamp}'
     slot_uri: MIXS:0000315
-    multivalued: false
     range: TextValue
+    multivalued: false
   primary_prod:
     annotations:
       expected_value:
@@ -7233,8 +7233,8 @@ slots:
       - primary production
     is_a: core field
     slot_uri: MIXS:0000728
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   primary_treatment:
     annotations:
       expected_value:
@@ -7253,8 +7253,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000349
-    multivalued: false
     range: TextValue
+    multivalued: false
   prod_rate:
     annotations:
       expected_value:
@@ -7275,8 +7275,8 @@ slots:
       - production rate
     is_a: core field
     slot_uri: MIXS:0000452
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   prod_start_date:
     annotations:
       expected_value:
@@ -7294,8 +7294,8 @@ slots:
       - production start date
     is_a: core field
     slot_uri: MIXS:0001008
-    multivalued: false
     range: TimestampValue
+    multivalued: false
   profile_position:
     annotations:
       expected_value:
@@ -7313,8 +7313,8 @@ slots:
       - profile position
     is_a: core field
     slot_uri: MIXS:0001084
-    multivalued: false
     range: profile_position_enum
+    multivalued: false
   quad_pos:
     annotations:
       expected_value:
@@ -7332,8 +7332,8 @@ slots:
       - quadrant position
     is_a: core field
     slot_uri: MIXS:0000820
-    multivalued: false
     range: quad_pos_enum
+    multivalued: false
   radiation_regm:
     annotations:
       expected_value:
@@ -7355,8 +7355,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000575
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   rainfall_regm:
     annotations:
@@ -7379,8 +7379,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000576
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   reactor_type:
     annotations:
@@ -7400,8 +7400,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000350
-    multivalued: false
     range: TextValue
+    multivalued: false
   redox_potential:
     annotations:
       expected_value:
@@ -7422,8 +7422,8 @@ slots:
       - redox potential
     is_a: core field
     slot_uri: MIXS:0000182
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   rel_air_humidity:
     annotations:
       expected_value:
@@ -7444,8 +7444,8 @@ slots:
       - relative air humidity
     is_a: core field
     slot_uri: MIXS:0000121
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   rel_humidity_out:
     annotations:
       expected_value:
@@ -7466,8 +7466,8 @@ slots:
       - outside relative humidity
     is_a: core field
     slot_uri: MIXS:0000188
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   rel_samp_loc:
     annotations:
       expected_value:
@@ -7485,8 +7485,8 @@ slots:
       - relative sampling location
     is_a: core field
     slot_uri: MIXS:0000821
-    multivalued: false
     range: rel_samp_loc_enum
+    multivalued: false
   reservoir:
     annotations:
       expected_value:
@@ -7505,8 +7505,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000303
-    multivalued: false
     range: TextValue
+    multivalued: false
   resins_pc:
     annotations:
       expected_value:
@@ -7528,8 +7528,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000134
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_air_exch_rate:
     annotations:
       expected_value:
@@ -7550,8 +7550,8 @@ slots:
       - room air exchange rate
     is_a: core field
     slot_uri: MIXS:0000169
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   room_architec_elem:
     annotations:
       expected_value:
@@ -7570,8 +7570,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000233
-    multivalued: false
     range: string
+    multivalued: false
   room_condt:
     annotations:
       expected_value:
@@ -7589,8 +7589,8 @@ slots:
       - room condition
     is_a: core field
     slot_uri: MIXS:0000822
-    multivalued: false
     range: room_condt_enum
+    multivalued: false
   room_connected:
     annotations:
       expected_value:
@@ -7608,8 +7608,8 @@ slots:
       - rooms connected by a doorway
     is_a: core field
     slot_uri: MIXS:0000826
-    multivalued: false
     range: room_connected_enum
+    multivalued: false
   room_count:
     annotations:
       expected_value:
@@ -7627,8 +7627,8 @@ slots:
       - room count
     is_a: core field
     slot_uri: MIXS:0000234
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_dim:
     annotations:
       expected_value:
@@ -7650,8 +7650,8 @@ slots:
     is_a: core field
     string_serialization: '{integer} {unit} x {integer} {unit} x {integer} {unit}'
     slot_uri: MIXS:0000192
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_door_dist:
     annotations:
       expected_value:
@@ -7673,8 +7673,8 @@ slots:
     is_a: core field
     string_serialization: '{integer} {unit}'
     slot_uri: MIXS:0000193
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_door_share:
     annotations:
       expected_value:
@@ -7693,8 +7693,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000242
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_hallway:
     annotations:
       expected_value:
@@ -7713,8 +7713,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000238
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_loc:
     annotations:
       expected_value:
@@ -7732,8 +7732,8 @@ slots:
       - room location in building
     is_a: core field
     slot_uri: MIXS:0000823
-    multivalued: false
     range: room_loc_enum
+    multivalued: false
   room_moist_dam_hist:
     annotations:
       expected_value:
@@ -7751,8 +7751,8 @@ slots:
       - room moisture damage or mold history
     is_a: core field
     slot_uri: MIXS:0000235
-    multivalued: false
     range: integer
+    multivalued: false
   room_net_area:
     annotations:
       expected_value:
@@ -7774,8 +7774,8 @@ slots:
     is_a: core field
     string_serialization: '{integer} {unit}'
     slot_uri: MIXS:0000194
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_occup:
     annotations:
       expected_value:
@@ -7793,8 +7793,8 @@ slots:
       - room occupancy
     is_a: core field
     slot_uri: MIXS:0000236
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   room_samp_pos:
     annotations:
       expected_value:
@@ -7812,8 +7812,8 @@ slots:
       - room sampling position
     is_a: core field
     slot_uri: MIXS:0000824
-    multivalued: false
     range: room_samp_pos_enum
+    multivalued: false
   room_type:
     annotations:
       expected_value:
@@ -7831,8 +7831,8 @@ slots:
       - room type
     is_a: core field
     slot_uri: MIXS:0000825
-    multivalued: false
     range: room_type_enum
+    multivalued: false
   room_vol:
     annotations:
       expected_value:
@@ -7854,8 +7854,8 @@ slots:
     is_a: core field
     string_serialization: '{integer} {unit}'
     slot_uri: MIXS:0000195
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_wall_share:
     annotations:
       expected_value:
@@ -7874,8 +7874,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{integer}'
     slot_uri: MIXS:0000243
-    multivalued: false
     range: TextValue
+    multivalued: false
   room_window_count:
     annotations:
       expected_value:
@@ -7893,8 +7893,8 @@ slots:
       - room window count
     is_a: core field
     slot_uri: MIXS:0000237
-    multivalued: false
     range: integer
+    multivalued: false
   root_cond:
     annotations:
       expected_value:
@@ -7913,8 +7913,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001061
-    multivalued: false
     range: TextValue
+    multivalued: false
   root_med_carbon:
     annotations:
       expected_value:
@@ -7936,8 +7936,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000577
-    multivalued: false
     range: TextValue
+    multivalued: false
   root_med_macronutr:
     annotations:
       expected_value:
@@ -7959,8 +7959,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000578
-    multivalued: false
     range: TextValue
+    multivalued: false
   root_med_micronutr:
     annotations:
       expected_value:
@@ -7982,8 +7982,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000579
-    multivalued: false
     range: TextValue
+    multivalued: false
   root_med_ph:
     annotations:
       expected_value:
@@ -8001,8 +8001,8 @@ slots:
       - rooting medium pH
     is_a: core field
     slot_uri: MIXS:0001062
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   root_med_regl:
     annotations:
       expected_value:
@@ -8024,8 +8024,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000581
-    multivalued: false
     range: TextValue
+    multivalued: false
   root_med_solid:
     annotations:
       expected_value:
@@ -8044,8 +8044,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0001063
-    multivalued: false
     range: TextValue
+    multivalued: false
   root_med_suppl:
     annotations:
       expected_value:
@@ -8067,8 +8067,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000580
-    multivalued: false
     range: TextValue
+    multivalued: false
   salinity:
     annotations:
       expected_value:
@@ -8089,8 +8089,8 @@ slots:
       - salinity
     is_a: core field
     slot_uri: MIXS:0000183
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   salinity_meth:
     annotations:
       expected_value:
@@ -8109,8 +8109,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000341
-    multivalued: false
     range: TextValue
+    multivalued: false
   salt_regm:
     annotations:
       expected_value:
@@ -8132,8 +8132,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000582
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   samp_capt_status:
     annotations:
@@ -8152,8 +8152,8 @@ slots:
       - sample capture status
     is_a: core field
     slot_uri: MIXS:0000860
-    multivalued: false
     range: samp_capt_status_enum
+    multivalued: false
   samp_collec_device:
     annotations:
       expected_value:
@@ -8169,8 +8169,8 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000002
-    multivalued: false
     range: string
+    multivalued: false
   samp_collec_method:
     annotations:
       expected_value:
@@ -8186,8 +8186,8 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001225
-    multivalued: false
     range: string
+    multivalued: false
   samp_collect_point:
     annotations:
       expected_value:
@@ -8205,8 +8205,8 @@ slots:
       - sample collection point
     is_a: core field
     slot_uri: MIXS:0001015
-    multivalued: false
     range: samp_collect_point_enum
+    multivalued: false
   samp_dis_stage:
     annotations:
       expected_value:
@@ -8224,8 +8224,8 @@ slots:
       - sample disease stage
     is_a: core field
     slot_uri: MIXS:0000249
-    multivalued: false
     range: samp_dis_stage_enum
+    multivalued: false
   samp_floor:
     annotations:
       expected_value:
@@ -8243,8 +8243,8 @@ slots:
       - sampling floor
     is_a: core field
     slot_uri: MIXS:0000828
-    multivalued: false
     range: samp_floor_enum
+    multivalued: false
   samp_loc_corr_rate:
     annotations:
       expected_value:
@@ -8266,8 +8266,8 @@ slots:
     is_a: core field
     string_serialization: '{float} - {float} {unit}'
     slot_uri: MIXS:0000136
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_mat_process:
     annotations:
       expected_value:
@@ -8283,8 +8283,8 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{text}'
     slot_uri: MIXS:0000016
-    multivalued: false
     range: ControlledTermValue
+    multivalued: false
   samp_md:
     annotations:
       expected_value:
@@ -8305,8 +8305,8 @@ slots:
       - sample measured depth
     is_a: core field
     slot_uri: MIXS:0000413
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   samp_name:
     annotations:
       expected_value:
@@ -8322,8 +8322,8 @@ slots:
     is_a: investigation field
     string_serialization: '{text}'
     slot_uri: MIXS:0001107
-    multivalued: false
     range: string
+    multivalued: false
   samp_preserv:
     annotations:
       expected_value:
@@ -8345,8 +8345,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000463
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_room_id:
     annotations:
       expected_value:
@@ -8364,8 +8364,8 @@ slots:
       - sampling room ID or name
     is_a: core field
     slot_uri: MIXS:0000244
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_size:
     annotations:
       expected_value:
@@ -8383,8 +8383,8 @@ slots:
       - amount or size of sample collected
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000001
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   samp_sort_meth:
     annotations:
       expected_value:
@@ -8403,8 +8403,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000216
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   samp_store_dur:
     annotations:
@@ -8424,8 +8424,8 @@ slots:
     is_a: core field
     string_serialization: '{duration}'
     slot_uri: MIXS:0000116
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_store_loc:
     annotations:
       expected_value:
@@ -8444,8 +8444,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000755
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_store_temp:
     annotations:
       expected_value:
@@ -8466,8 +8466,8 @@ slots:
       - sample storage temperature
     is_a: core field
     slot_uri: MIXS:0000110
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   samp_subtype:
     annotations:
       expected_value:
@@ -8485,8 +8485,8 @@ slots:
       - sample subtype
     is_a: core field
     slot_uri: MIXS:0000999
-    multivalued: false
     range: samp_subtype_enum
+    multivalued: false
   samp_taxon_id:
     annotations:
       expected_value:
@@ -8499,8 +8499,8 @@ slots:
       - Taxonomy ID of DNA sample
     is_a: investigation field
     slot_uri: MIXS:0001320
-    multivalued: false
     range: ControlledIdentifiedTermValue
+    multivalued: false
     comments:
       - coal metagenome [NCBITaxon:1260732] would be a reasonable has_raw_value
   samp_time_out:
@@ -8523,8 +8523,8 @@ slots:
       - sampling time outside
     is_a: core field
     slot_uri: MIXS:0000196
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_transport_cond:
     annotations:
       expected_value:
@@ -8546,8 +8546,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000410
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_tvdss:
     annotations:
       expected_value:
@@ -8569,8 +8569,8 @@ slots:
     is_a: core field
     string_serialization: '{float}-{float} {unit}'
     slot_uri: MIXS:0000409
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_type:
     annotations:
       expected_value:
@@ -8589,8 +8589,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000998
-    multivalued: false
     range: TextValue
+    multivalued: false
   samp_vol_we_dna_ext:
     annotations:
       expected_value:
@@ -8608,8 +8608,8 @@ slots:
       - sample volume or weight for DNA extraction
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000111
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   samp_weather:
     annotations:
       expected_value:
@@ -8627,8 +8627,8 @@ slots:
       - sampling day weather
     is_a: core field
     slot_uri: MIXS:0000827
-    multivalued: false
     range: samp_weather_enum
+    multivalued: false
   samp_well_name:
     annotations:
       expected_value:
@@ -8647,8 +8647,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000296
-    multivalued: false
     range: TextValue
+    multivalued: false
   saturates_pc:
     annotations:
       expected_value:
@@ -8670,8 +8670,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000131
-    multivalued: false
     range: TextValue
+    multivalued: false
   season:
     annotations:
       expected_value:
@@ -8690,8 +8690,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000829
-    multivalued: false
     range: TextValue
+    multivalued: false
   season_environment:
     annotations:
       expected_value:
@@ -8710,8 +8710,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001068
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   season_precpt:
     annotations:
@@ -8733,8 +8733,8 @@ slots:
       - mean seasonal precipitation
     is_a: core field
     slot_uri: MIXS:0000645
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   season_temp:
     annotations:
       expected_value:
@@ -8755,8 +8755,8 @@ slots:
       - mean seasonal temperature
     is_a: core field
     slot_uri: MIXS:0000643
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   season_use:
     annotations:
       expected_value:
@@ -8774,8 +8774,8 @@ slots:
       - seasonal use
     is_a: core field
     slot_uri: MIXS:0000830
-    multivalued: false
     range: season_use_enum
+    multivalued: false
   secondary_treatment:
     annotations:
       expected_value:
@@ -8794,8 +8794,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000351
-    multivalued: false
     range: TextValue
+    multivalued: false
   sediment_type:
     annotations:
       expected_value:
@@ -8813,8 +8813,8 @@ slots:
       - sediment type
     is_a: core field
     slot_uri: MIXS:0001078
-    multivalued: false
     range: sediment_type_enum
+    multivalued: false
   seq_meth:
     annotations:
       expected_value:
@@ -8830,8 +8830,8 @@ slots:
     is_a: sequencing field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000050
-    multivalued: false
     range: TextValue
+    multivalued: false
   seq_quality_check:
     annotations:
       expected_value:
@@ -8847,8 +8847,8 @@ slots:
     is_a: sequencing field
     string_serialization: '[none|manually edited]'
     slot_uri: MIXS:0000051
-    multivalued: false
     range: TextValue
+    multivalued: false
   sewage_type:
     annotations:
       expected_value:
@@ -8867,8 +8867,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000215
-    multivalued: false
     range: TextValue
+    multivalued: false
   shad_dev_water_mold:
     annotations:
       expected_value:
@@ -8887,8 +8887,8 @@ slots:
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000834
-    multivalued: false
     range: string
+    multivalued: false
   shading_device_cond:
     annotations:
       expected_value:
@@ -8906,8 +8906,8 @@ slots:
       - shading device condition
     is_a: core field
     slot_uri: MIXS:0000831
-    multivalued: false
     range: shading_device_cond_enum
+    multivalued: false
   shading_device_loc:
     annotations:
       expected_value:
@@ -8926,8 +8926,8 @@ slots:
     is_a: core field
     string_serialization: '[exterior|interior]'
     slot_uri: MIXS:0000832
-    multivalued: false
     range: TextValue
+    multivalued: false
   shading_device_mat:
     annotations:
       expected_value:
@@ -8946,8 +8946,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000245
-    multivalued: false
     range: TextValue
+    multivalued: false
   shading_device_type:
     annotations:
       expected_value:
@@ -8965,8 +8965,8 @@ slots:
       - shading device type
     is_a: core field
     slot_uri: MIXS:0000835
-    multivalued: false
     range: shading_device_type_enum
+    multivalued: false
   sieving:
     annotations:
       expected_value:
@@ -8985,8 +8985,8 @@ slots:
     is_a: core field
     string_serialization: '{{text}|{float} {unit}};{float} {unit}'
     slot_uri: MIXS:0000322
-    multivalued: false
     range: TextValue
+    multivalued: false
   silicate:
     annotations:
       expected_value:
@@ -9007,8 +9007,8 @@ slots:
       - silicate
     is_a: core field
     slot_uri: MIXS:0000184
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   size_frac:
     annotations:
       expected_value:
@@ -9024,8 +9024,8 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{float}-{float} {unit}'
     slot_uri: MIXS:0000017
-    multivalued: false
     range: TextValue
+    multivalued: false
   size_frac_low:
     annotations:
       expected_value:
@@ -9046,8 +9046,8 @@ slots:
       - size-fraction lower threshold
     is_a: core field
     slot_uri: MIXS:0000735
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   size_frac_up:
     annotations:
       expected_value:
@@ -9068,8 +9068,8 @@ slots:
       - size-fraction upper threshold
     is_a: core field
     slot_uri: MIXS:0000736
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   slope_aspect:
     annotations:
       expected_value:
@@ -9090,8 +9090,8 @@ slots:
       - slope aspect
     is_a: core field
     slot_uri: MIXS:0000647
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   slope_gradient:
     annotations:
       expected_value:
@@ -9112,8 +9112,8 @@ slots:
       - slope gradient
     is_a: core field
     slot_uri: MIXS:0000646
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   sludge_retent_time:
     annotations:
       expected_value:
@@ -9134,8 +9134,8 @@ slots:
       - sludge retention time
     is_a: core field
     slot_uri: MIXS:0000669
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   sodium:
     annotations:
       expected_value:
@@ -9156,8 +9156,8 @@ slots:
       - sodium
     is_a: core field
     slot_uri: MIXS:0000428
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   soil_horizon:
     annotations:
       expected_value:
@@ -9175,8 +9175,8 @@ slots:
       - soil horizon
     is_a: core field
     slot_uri: MIXS:0001082
-    multivalued: false
     range: soil_horizon_enum
+    multivalued: false
   soil_text_measure:
     annotations:
       expected_value:
@@ -9194,8 +9194,8 @@ slots:
       - soil texture measurement
     is_a: core field
     slot_uri: MIXS:0000335
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   soil_texture_meth:
     annotations:
       expected_value:
@@ -9214,8 +9214,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000336
-    multivalued: false
     range: string
+    multivalued: false
   soil_type:
     annotations:
       expected_value:
@@ -9234,8 +9234,8 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000332
-    multivalued: false
     range: TextValue
+    multivalued: false
   soil_type_meth:
     annotations:
       expected_value:
@@ -9254,8 +9254,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000334
-    multivalued: false
     range: TextValue
+    multivalued: false
   solar_irradiance:
     annotations:
       expected_value:
@@ -9276,8 +9276,8 @@ slots:
       - solar irradiance
     is_a: core field
     slot_uri: MIXS:0000112
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   soluble_inorg_mat:
     annotations:
       expected_value:
@@ -9299,8 +9299,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000672
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   soluble_org_mat:
     annotations:
@@ -9323,8 +9323,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000673
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   soluble_react_phosp:
     annotations:
@@ -9346,8 +9346,8 @@ slots:
       - soluble reactive phosphorus
     is_a: core field
     slot_uri: MIXS:0000738
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   source_mat_id:
     annotations:
       expected_value:
@@ -9363,8 +9363,8 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{text}'
     slot_uri: MIXS:0000026
-    multivalued: false
     range: TextValue
+    multivalued: false
   space_typ_state:
     annotations:
       expected_value:
@@ -9383,8 +9383,8 @@ slots:
     is_a: core field
     string_serialization: '[typically occupied|typically unoccupied]'
     slot_uri: MIXS:0000770
-    multivalued: false
     range: TextValue
+    multivalued: false
   specific:
     annotations:
       expected_value:
@@ -9402,8 +9402,8 @@ slots:
       - specifications
     is_a: core field
     slot_uri: MIXS:0000836
-    multivalued: false
     range: specific_enum
+    multivalued: false
   specific_humidity:
     annotations:
       expected_value:
@@ -9424,8 +9424,8 @@ slots:
       - specific humidity
     is_a: core field
     slot_uri: MIXS:0000214
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   sr_dep_env:
     annotations:
       expected_value:
@@ -9443,8 +9443,8 @@ slots:
       - source rock depositional environment
     is_a: core field
     slot_uri: MIXS:0000996
-    multivalued: false
     range: sr_dep_env_enum
+    multivalued: false
   sr_geol_age:
     annotations:
       expected_value:
@@ -9462,8 +9462,8 @@ slots:
       - source rock geological age
     is_a: core field
     slot_uri: MIXS:0000997
-    multivalued: false
     range: sr_geol_age_enum
+    multivalued: false
   sr_kerog_type:
     annotations:
       expected_value:
@@ -9481,8 +9481,8 @@ slots:
       - source rock kerogen type
     is_a: core field
     slot_uri: MIXS:0000994
-    multivalued: false
     range: sr_kerog_type_enum
+    multivalued: false
   sr_lithology:
     annotations:
       expected_value:
@@ -9500,8 +9500,8 @@ slots:
       - source rock lithology
     is_a: core field
     slot_uri: MIXS:0000995
-    multivalued: false
     range: sr_lithology_enum
+    multivalued: false
   standing_water_regm:
     annotations:
       expected_value:
@@ -9520,8 +9520,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0001069
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   store_cond:
     annotations:
@@ -9541,8 +9541,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000327
-    multivalued: false
     range: TextValue
+    multivalued: false
   substructure_type:
     annotations:
       expected_value:
@@ -9560,8 +9560,8 @@ slots:
       - substructure type
     is_a: core field
     slot_uri: MIXS:0000767
-    multivalued: true
     range: substructure_type_enum
+    multivalued: true
   sulfate:
     annotations:
       expected_value:
@@ -9582,8 +9582,8 @@ slots:
       - sulfate
     is_a: core field
     slot_uri: MIXS:0000423
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   sulfate_fw:
     annotations:
       expected_value:
@@ -9604,8 +9604,8 @@ slots:
       - sulfate in formation water
     is_a: core field
     slot_uri: MIXS:0000407
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   sulfide:
     annotations:
       expected_value:
@@ -9626,8 +9626,8 @@ slots:
       - sulfide
     is_a: core field
     slot_uri: MIXS:0000424
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   surf_air_cont:
     annotations:
       expected_value:
@@ -9645,8 +9645,8 @@ slots:
       - surface-air contaminant
     is_a: core field
     slot_uri: MIXS:0000759
-    multivalued: true
     range: surf_air_cont_enum
+    multivalued: true
   surf_humidity:
     annotations:
       expected_value:
@@ -9667,8 +9667,8 @@ slots:
       - surface humidity
     is_a: core field
     slot_uri: MIXS:0000123
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   surf_material:
     annotations:
       expected_value:
@@ -9686,8 +9686,8 @@ slots:
       - surface material
     is_a: core field
     slot_uri: MIXS:0000758
-    multivalued: false
     range: surf_material_enum
+    multivalued: false
   surf_moisture:
     annotations:
       expected_value:
@@ -9708,8 +9708,8 @@ slots:
       - surface moisture
     is_a: core field
     slot_uri: MIXS:0000128
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   surf_moisture_ph:
     annotations:
       expected_value:
@@ -9727,8 +9727,8 @@ slots:
       - surface moisture pH
     is_a: core field
     slot_uri: MIXS:0000760
-    multivalued: false
     range: double
+    multivalued: false
   surf_temp:
     annotations:
       expected_value:
@@ -9749,8 +9749,8 @@ slots:
       - surface temperature
     is_a: core field
     slot_uri: MIXS:0000125
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   suspend_part_matter:
     annotations:
       expected_value:
@@ -9771,8 +9771,8 @@ slots:
       - suspended particulate matter
     is_a: core field
     slot_uri: MIXS:0000741
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   suspend_solids:
     annotations:
       expected_value:
@@ -9794,8 +9794,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000150
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   tan:
     annotations:
@@ -9817,8 +9817,8 @@ slots:
       - total acid number
     is_a: core field
     slot_uri: MIXS:0000120
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   target_gene:
     annotations:
       expected_value:
@@ -9834,8 +9834,8 @@ slots:
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000044
-    multivalued: false
     range: TextValue
+    multivalued: false
   target_subfragment:
     annotations:
       expected_value:
@@ -9851,8 +9851,8 @@ slots:
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000045
-    multivalued: false
     range: TextValue
+    multivalued: false
   temp:
     annotations:
       expected_value:
@@ -9870,8 +9870,8 @@ slots:
       - temperature
     is_a: environment field
     slot_uri: MIXS:0000113
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   temp_out:
     annotations:
       expected_value:
@@ -9892,8 +9892,8 @@ slots:
       - temperature outside house
     is_a: core field
     slot_uri: MIXS:0000197
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tertiary_treatment:
     annotations:
       expected_value:
@@ -9912,8 +9912,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000352
-    multivalued: false
     range: TextValue
+    multivalued: false
   tidal_stage:
     annotations:
       expected_value:
@@ -9931,8 +9931,8 @@ slots:
       - tidal stage
     is_a: core field
     slot_uri: MIXS:0000750
-    multivalued: false
     range: tidal_stage_enum
+    multivalued: false
   tillage:
     annotations:
       expected_value:
@@ -9950,8 +9950,8 @@ slots:
       - history/tillage
     is_a: core field
     slot_uri: MIXS:0001081
-    multivalued: true
     range: tillage_enum
+    multivalued: true
   tiss_cult_growth_med:
     annotations:
       expected_value:
@@ -9970,8 +9970,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001070
-    multivalued: false
     range: TextValue
+    multivalued: false
   toluene:
     annotations:
       expected_value:
@@ -9992,8 +9992,8 @@ slots:
       - toluene
     is_a: core field
     slot_uri: MIXS:0000154
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_carb:
     annotations:
       expected_value:
@@ -10014,8 +10014,8 @@ slots:
       - total carbon
     is_a: core field
     slot_uri: MIXS:0000525
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_depth_water_col:
     annotations:
       expected_value:
@@ -10036,8 +10036,8 @@ slots:
       - total depth of water column
     is_a: core field
     slot_uri: MIXS:0000634
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_diss_nitro:
     annotations:
       expected_value:
@@ -10058,8 +10058,8 @@ slots:
       - total dissolved nitrogen
     is_a: core field
     slot_uri: MIXS:0000744
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_inorg_nitro:
     annotations:
       expected_value:
@@ -10080,8 +10080,8 @@ slots:
       - total inorganic nitrogen
     is_a: core field
     slot_uri: MIXS:0000745
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_iron:
     annotations:
       expected_value:
@@ -10102,8 +10102,8 @@ slots:
       - total iron
     is_a: core field
     slot_uri: MIXS:0000105
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_nitro:
     annotations:
       expected_value:
@@ -10124,8 +10124,8 @@ slots:
       - total nitrogen concentration
     is_a: core field
     slot_uri: MIXS:0000102
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_nitro_cont_meth:
     annotations:
       expected_value:
@@ -10144,8 +10144,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000338
-    multivalued: false
     range: string
+    multivalued: false
   tot_nitro_content:
     annotations:
       expected_value:
@@ -10166,8 +10166,8 @@ slots:
       - total nitrogen content
     is_a: core field
     slot_uri: MIXS:0000530
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_org_c_meth:
     annotations:
       expected_value:
@@ -10186,8 +10186,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000337
-    multivalued: false
     range: TextValue
+    multivalued: false
   tot_org_carb:
     annotations:
       expected_value:
@@ -10208,8 +10208,8 @@ slots:
       - total organic carbon
     is_a: core field
     slot_uri: MIXS:0000533
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_part_carb:
     annotations:
       expected_value:
@@ -10230,8 +10230,8 @@ slots:
       - total particulate carbon
     is_a: core field
     slot_uri: MIXS:0000747
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_phosp:
     annotations:
       expected_value:
@@ -10252,8 +10252,8 @@ slots:
       - total phosphorus
     is_a: core field
     slot_uri: MIXS:0000117
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_phosphate:
     annotations:
       expected_value:
@@ -10274,8 +10274,8 @@ slots:
       - total phosphate
     is_a: core field
     slot_uri: MIXS:0000689
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tot_sulfur:
     annotations:
       expected_value:
@@ -10296,8 +10296,8 @@ slots:
       - total sulfur
     is_a: core field
     slot_uri: MIXS:0000419
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   train_line:
     annotations:
       expected_value:
@@ -10315,8 +10315,8 @@ slots:
       - train line
     is_a: core field
     slot_uri: MIXS:0000837
-    multivalued: false
     range: train_line_enum
+    multivalued: false
   train_stat_loc:
     annotations:
       expected_value:
@@ -10334,8 +10334,8 @@ slots:
       - train station collection location
     is_a: core field
     slot_uri: MIXS:0000838
-    multivalued: false
     range: train_stat_loc_enum
+    multivalued: false
   train_stop_loc:
     annotations:
       expected_value:
@@ -10353,8 +10353,8 @@ slots:
       - train stop collection location
     is_a: core field
     slot_uri: MIXS:0000839
-    multivalued: false
     range: train_stop_loc_enum
+    multivalued: false
   turbidity:
     annotations:
       expected_value:
@@ -10375,8 +10375,8 @@ slots:
       - turbidity
     is_a: core field
     slot_uri: MIXS:0000191
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tvdss_of_hcr_press:
     annotations:
       expected_value:
@@ -10397,8 +10397,8 @@ slots:
       - depth (TVDSS) of hydrocarbon resource pressure
     is_a: core field
     slot_uri: MIXS:0000397
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   tvdss_of_hcr_temp:
     annotations:
       expected_value:
@@ -10419,8 +10419,8 @@ slots:
       - depth (TVDSS) of hydrocarbon resource temperature
     is_a: core field
     slot_uri: MIXS:0000394
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   typ_occup_density:
     annotations:
       expected_value:
@@ -10438,8 +10438,8 @@ slots:
       - typical occupant density
     is_a: core field
     slot_uri: MIXS:0000771
-    multivalued: false
     range: double
+    multivalued: false
   ventilation_rate:
     annotations:
       expected_value:
@@ -10460,8 +10460,8 @@ slots:
       - ventilation rate
     is_a: core field
     slot_uri: MIXS:0000114
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   ventilation_type:
     annotations:
       expected_value:
@@ -10480,8 +10480,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000756
-    multivalued: false
     range: TextValue
+    multivalued: false
   vfa:
     annotations:
       expected_value:
@@ -10502,8 +10502,8 @@ slots:
       - volatile fatty acids
     is_a: core field
     slot_uri: MIXS:0000152
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   vfa_fw:
     annotations:
       expected_value:
@@ -10524,8 +10524,8 @@ slots:
       - vfa in formation water
     is_a: core field
     slot_uri: MIXS:0000408
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   vis_media:
     annotations:
       expected_value:
@@ -10543,8 +10543,8 @@ slots:
       - visual media
     is_a: core field
     slot_uri: MIXS:0000840
-    multivalued: false
     range: vis_media_enum
+    multivalued: false
   viscosity:
     annotations:
       expected_value:
@@ -10566,8 +10566,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{float} {unit}'
     slot_uri: MIXS:0000126
-    multivalued: false
     range: TextValue
+    multivalued: false
   volatile_org_comp:
     annotations:
       expected_value:
@@ -10589,8 +10589,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000115
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   wall_area:
     annotations:
@@ -10612,8 +10612,8 @@ slots:
       - wall area
     is_a: core field
     slot_uri: MIXS:0000198
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   wall_const_type:
     annotations:
       expected_value:
@@ -10631,8 +10631,8 @@ slots:
       - wall construction type
     is_a: core field
     slot_uri: MIXS:0000841
-    multivalued: false
     range: wall_const_type_enum
+    multivalued: false
   wall_finish_mat:
     annotations:
       expected_value:
@@ -10650,8 +10650,8 @@ slots:
       - wall finish material
     is_a: core field
     slot_uri: MIXS:0000842
-    multivalued: false
     range: wall_finish_mat_enum
+    multivalued: false
   wall_height:
     annotations:
       expected_value:
@@ -10672,8 +10672,8 @@ slots:
       - wall height
     is_a: core field
     slot_uri: MIXS:0000221
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   wall_loc:
     annotations:
       expected_value:
@@ -10691,8 +10691,8 @@ slots:
       - wall location
     is_a: core field
     slot_uri: MIXS:0000843
-    multivalued: false
     range: wall_loc_enum
+    multivalued: false
   wall_surf_treatment:
     annotations:
       expected_value:
@@ -10710,8 +10710,8 @@ slots:
       - wall surface treatment
     is_a: core field
     slot_uri: MIXS:0000845
-    multivalued: false
     range: wall_surf_treatment_enum
+    multivalued: false
   wall_texture:
     annotations:
       expected_value:
@@ -10729,8 +10729,8 @@ slots:
       - wall texture
     is_a: core field
     slot_uri: MIXS:0000846
-    multivalued: false
     range: wall_texture_enum
+    multivalued: false
   wall_thermal_mass:
     annotations:
       expected_value:
@@ -10751,8 +10751,8 @@ slots:
       - wall thermal mass
     is_a: core field
     slot_uri: MIXS:0000222
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   wall_water_mold:
     annotations:
       expected_value:
@@ -10771,8 +10771,8 @@ slots:
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000844
-    multivalued: false
     range: TextValue
+    multivalued: false
   wastewater_type:
     annotations:
       expected_value:
@@ -10791,8 +10791,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000353
-    multivalued: false
     range: TextValue
+    multivalued: false
   water_cont_soil_meth:
     annotations:
       expected_value:
@@ -10811,8 +10811,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000323
-    multivalued: false
     range: string
+    multivalued: false
   water_content:
     annotations:
       expected_value:
@@ -10833,8 +10833,8 @@ slots:
       - water content
     is_a: core field
     slot_uri: MIXS:0000185
-    multivalued: false
     range: string
+    multivalued: false
   water_current:
     annotations:
       expected_value:
@@ -10855,8 +10855,8 @@ slots:
       - water current
     is_a: core field
     slot_uri: MIXS:0000203
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   water_cut:
     annotations:
       expected_value:
@@ -10877,8 +10877,8 @@ slots:
       - water cut
     is_a: core field
     slot_uri: MIXS:0000454
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   water_feat_size:
     annotations:
       expected_value:
@@ -10899,8 +10899,8 @@ slots:
       - water feature size
     is_a: core field
     slot_uri: MIXS:0000223
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   water_feat_type:
     annotations:
       expected_value:
@@ -10918,8 +10918,8 @@ slots:
       - water feature type
     is_a: core field
     slot_uri: MIXS:0000847
-    multivalued: false
     range: water_feat_type_enum
+    multivalued: false
   water_prod_rate:
     annotations:
       expected_value:
@@ -10940,8 +10940,8 @@ slots:
       - water production rate
     is_a: core field
     slot_uri: MIXS:0000453
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   water_temp_regm:
     annotations:
       expected_value:
@@ -10963,8 +10963,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000590
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   watering_regm:
     annotations:
@@ -10987,8 +10987,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000591
-    multivalued: true
     range: TextValue
+    multivalued: true
     inlined_as_list: true
   weekday:
     annotations:
@@ -11007,8 +11007,8 @@ slots:
       - weekday
     is_a: core field
     slot_uri: MIXS:0000848
-    multivalued: false
     range: weekday_enum
+    multivalued: false
   win:
     annotations:
       expected_value:
@@ -11027,8 +11027,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000297
-    multivalued: false
     range: TextValue
+    multivalued: false
   wind_direction:
     annotations:
       expected_value:
@@ -11047,8 +11047,8 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000757
-    multivalued: false
     range: TextValue
+    multivalued: false
   wind_speed:
     annotations:
       expected_value:
@@ -11069,8 +11069,8 @@ slots:
       - wind speed
     is_a: core field
     slot_uri: MIXS:0000118
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   window_cond:
     annotations:
       expected_value:
@@ -11088,8 +11088,8 @@ slots:
       - window condition
     is_a: core field
     slot_uri: MIXS:0000849
-    multivalued: false
     range: window_cond_enum
+    multivalued: false
   window_cover:
     annotations:
       expected_value:
@@ -11107,8 +11107,8 @@ slots:
       - window covering
     is_a: core field
     slot_uri: MIXS:0000850
-    multivalued: false
     range: window_cover_enum
+    multivalued: false
   window_horiz_pos:
     annotations:
       expected_value:
@@ -11126,8 +11126,8 @@ slots:
       - window horizontal position
     is_a: core field
     slot_uri: MIXS:0000851
-    multivalued: false
     range: window_horiz_pos_enum
+    multivalued: false
   window_loc:
     annotations:
       expected_value:
@@ -11145,8 +11145,8 @@ slots:
       - window location
     is_a: core field
     slot_uri: MIXS:0000852
-    multivalued: false
     range: window_loc_enum
+    multivalued: false
   window_mat:
     annotations:
       expected_value:
@@ -11164,8 +11164,8 @@ slots:
       - window material
     is_a: core field
     slot_uri: MIXS:0000853
-    multivalued: false
     range: window_mat_enum
+    multivalued: false
   window_open_freq:
     annotations:
       expected_value:
@@ -11183,8 +11183,8 @@ slots:
       - window open frequency
     is_a: core field
     slot_uri: MIXS:0000246
-    multivalued: false
     range: TextValue
+    multivalued: false
   window_size:
     annotations:
       expected_value:
@@ -11206,8 +11206,8 @@ slots:
     is_a: core field
     string_serialization: '{float} {unit} x {float} {unit}'
     slot_uri: MIXS:0000224
-    multivalued: false
     range: TextValue
+    multivalued: false
   window_status:
     annotations:
       expected_value:
@@ -11226,8 +11226,8 @@ slots:
     is_a: core field
     string_serialization: '[closed|open]'
     slot_uri: MIXS:0000855
-    multivalued: false
     range: TextValue
+    multivalued: false
   window_type:
     annotations:
       expected_value:
@@ -11245,8 +11245,8 @@ slots:
       - window type
     is_a: core field
     slot_uri: MIXS:0000856
-    multivalued: false
     range: window_type_enum
+    multivalued: false
   window_vert_pos:
     annotations:
       expected_value:
@@ -11264,8 +11264,8 @@ slots:
       - window vertical position
     is_a: core field
     slot_uri: MIXS:0000857
-    multivalued: false
     range: window_vert_pos_enum
+    multivalued: false
   window_water_mold:
     annotations:
       expected_value:
@@ -11284,8 +11284,8 @@ slots:
     is_a: core field
     string_serialization: '[presence of mold visible|no presence of mold visible]'
     slot_uri: MIXS:0000854
-    multivalued: false
     range: TextValue
+    multivalued: false
   xylene:
     annotations:
       expected_value:
@@ -11306,8 +11306,8 @@ slots:
       - xylene
     is_a: core field
     slot_uri: MIXS:0000156
-    multivalued: false
     range: QuantityValue
+    multivalued: false
   core field:
     description: basic fields
     from_schema: http://w3id.org/mixs/terms
