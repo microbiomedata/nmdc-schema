@@ -248,8 +248,13 @@ classes:
       - type
     slot_usage:
       metagenome_annotation_id:
+<<<<<<< HEAD
         structured_pattern:
           syntax: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}$"
+=======
+        structured_pattern: # doesn't include act
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
+>>>>>>> upstream/main
           interpolated: true
 
   Database:
@@ -275,8 +280,25 @@ classes:
       - functional_annotation_agg
       - functional_annotation_set
       - genome_feature_set
+<<<<<<< HEAD
       - instrument_set
       - material_processing_set
+=======
+      - library_preparation_set
+      - mags_activity_set
+      - metabolomics_analysis_activity_set
+      - metagenome_annotation_activity_set
+      - metagenome_assembly_set
+      - metagenome_sequencing_activity_set
+      - metaproteomics_analysis_activity_set
+      - metatranscriptome_annotation_set
+      - metatranscriptome_assembly_set
+      - metatranscriptome_expression_analysis_set
+      - nom_analysis_activity_set
+      - omics_processing_set
+      - planned_process_set
+      - pooling_set
+>>>>>>> upstream/main
       - processed_sample_set
       - protocol_execution_set
       - storage_process_set
@@ -779,14 +801,581 @@ enums:
       DNA: { }
       RNA: { }
 
+<<<<<<< HEAD
+=======
+  JgiContTypeEnum:
+    permissible_values:
+      plate: { }
+      tube: { }
+
+  YesNoEnum:
+    description: replaces DnaDnaseEnum and DnaseRnaEnum
+    permissible_values:
+      'no': { }
+      'yes': { }
+
+  BiosampleCategoryEnum:
+    description: Funding-based, sample location-based, or experimental method-based defined categories
+    aliases:
+      - category tag
+    notes:
+      - Currently, these values can associated with biosamples via the biosample_categories slot
+      - They might also be applicable to other classes
+      - They are intended to enable metadata search and or filtering, for example in the NMDC data portal, https://data.microbiomedata.org/
+    permissible_values:
+      LTER:
+        title: National Science Foundation's Long Term Ecological Research Network
+        meaning: https://lternet.edu/
+      SIP: { }
+      SFA:
+        title: Department of Energy Office of Science Biological and Environmental Research Program Laboratory Science Focus Areas
+        description: Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
+        meaning: https://science.osti.gov/ber/funding-opportunities/laboratory-scientific-focus-area-guidance
+      FICUS:
+        title: Facilities Integrating Collaborations for User Science
+        meaning: https://jgi.doe.gov/user-programs/program-info/ficus-overview
+      NEON:
+        title: National Science Foundation's National Ecological Observatory Network
+        meaning: https://www.neonscience.org
+
+  FileTypeEnum:
+    permissible_values:
+      Metagenome Raw Reads:
+        description: Interleaved paired-end raw sequencing data
+        annotations:
+          file_name_pattern: '^\.fastq(\.gz)?$'
+
+      Metagenome Raw Read 1:
+        description: Read 1 raw sequencing data, aka forward reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
+
+      Metagenome Raw Read 2:
+        description: Read 2 raw sequencing data, aka reverse reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
+
+      FT ICR-MS Analysis Results:
+        description: FT ICR-MS-based molecular formula assignment results table
+
+      GC-MS Metabolomics Results:
+        description: GC-MS-based metabolite assignment results table
+
+      Metaproteomics Workflow Statistics:
+        description: Aggregate workflow statistics file
+
+      Protein Report:
+        description: Filtered protein report file
+
+      Peptide Report:
+        description: Filtered peptide report file
+
+      Unfiltered Metaproteomics Results:
+        description: MSGFjobs and MASIC output file
+
+      Read Count and RPKM:
+        description: Annotation read count and RPKM per feature JSON
+
+      QC non-rRNA R2:
+        description: QC removed rRNA reads (R2) fastq
+
+      QC non-rRNA R1:
+        description: QC removed rRNA reads (R1) fastq
+
+      Metagenome Bins:
+        description: Metagenome bin contigs fasta
+
+      Metagenome HQMQ Bins Compression File:
+        description: Compressed file containing high qulaity and medium quality metagenome bins and associated files
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: "[mag_wf_activity_id]_hqmq_bin.zip"
+
+      Metagenome LQ Bins Compression File:
+        description: Compressed file containing low quality metagenome bins and associated files
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: "[mag_wf_activity_id]_lq_bin.zip"
+
+      Metagenome Bins Info File:
+        description: File containing version information on the binning workflow
+        annotations:
+          file_name_pattern: "[mag_wf_activity_id]_bin.info"
+
+      CheckM Statistics:
+        description: CheckM statistics report
+
+      Metagenome Bins Heatmap:
+        description: The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_heatmap.pdf"
+
+      Metagenome Bins Barplot:
+        description: The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_barplot.pdf"
+
+      Metagenome Bins Krona Plot:
+        description: The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
+        annotations:
+          file_name_pattern:
+            value: "[mag_wf_activity_id]_kronaplot.html"
+
+      Read Based Analysis Info File:
+        description: File containing reads based analysis information
+        annotations:
+          file_name_pattern: "profiler.info"
+
+      GTDBTK Bacterial Summary:
+        description: GTDBTK bacterial summary
+
+      GTDBTK Archaeal Summary:
+        description: GTDBTK archaeal summary
+
+      GOTTCHA2 Krona Plot:
+        description: GOTTCHA2 krona plot HTML file
+
+      GOTTCHA2 Classification Report:
+        description: GOTTCHA2 classification report file
+
+      GOTTCHA2 Report Full:
+        description: GOTTCHA2 report file
+
+      Kraken2 Krona Plot:
+        description: Kraken2 krona plot HTML file
+
+      Centrifuge Krona Plot:
+        description: Centrifuge krona plot HTML file
+
+      Centrifuge output report file:
+        description: Centrifuge output report file
+
+      Kraken2 Classification Report:
+        description: Kraken2 output report file
+
+      Kraken2 Taxonomic Classification:
+        description: Kraken2 output read classification file
+
+      Centrifuge Classification Report:
+        description: Centrifuge output report file
+
+      Centrifuge Taxonomic Classification:
+        description: Centrifuge output read classification file
+
+      Structural Annotation GFF:
+        description: GFF3 format file with structural annotations
+        annotations:
+          file_name_pattern: "[GOLD-AP]_structural_annotation.gff"
+
+      Structural Annotation Stats Json:
+        description: Structural annotations stats json
+        annotations:
+          file_name_pattern: "[GOLD-AP]_structural_annotation_stats.json"
+
+      Functional Annotation GFF:
+        description: GFF3 format file with functional annotations
+        annotations:
+          file_name_pattern: "[GOLD-AP]_functional_annotation.gff"
+
+      Annotation Info File:
+        description: File containing annotation info
+        annotations:
+          file_name_pattern: "[GOLD-AP]_imgap.info"
+
+      Annotation Amino Acid FASTA:
+        description: FASTA amino acid file for annotated proteins
+        annotations:
+          file_name_pattern: "[GOLD-AP]_proteins.faa"
+
+      Annotation Enzyme Commission:
+        description: Tab delimited file for EC annotation
+        annotations:
+          file_name_pattern: "[GOLD-AP]_ec.tsv"
+
+      Annotation KEGG Orthology:
+        description: Tab delimited file for KO annotation
+        annotations:
+          file_name_pattern: "[GOLD-AP]_ko.tsv"
+
+      Assembly Info File:
+        description: File containing assembly info
+        annotations:
+          file_name_pattern: "README.txt"
+
+      Assembly Coverage BAM:
+        description: Sorted bam file of reads mapping back to the final assembly
+        annotations:
+          file_name_pattern: "[GOLD-AP]_pairedMapped.sam.gz"
+
+      Assembly AGP:
+        description: An AGP format file that describes the assembly
+
+      Assembly Scaffolds:
+        description: Final assembly scaffolds fasta
+        annotations:
+          file_name_pattern: "[GOLD-AP]_assembly.contigs.fasta"
+
+      Assembly Contigs:
+        description: Final assembly contigs fasta
+        annotations:
+          file_name_pattern: "assembly.contigs.fasta"
+
+      Assembly Coverage Stats:
+        description: Assembled contigs coverage information
+        annotations:
+          file_name_pattern: "[GOLD-AP]_pairedMapped_sorted.bam.cov"
+
+      Contig Mapping File:
+        description: Contig mappings between contigs and scaffolds
+        annotations:
+          file_name_pattern: "[GOLD-AP]_contig_names_mapping.tsv"
+
+      Error Corrected Reads:
+        description: Error corrected reads fastq
+        annotations:
+          file_name_pattern: "input.corr.fastq.gz"
+
+      Filtered Sequencing Reads:
+        description: Reads QC result fastq (clean data)
+        annotations:
+          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz "
+
+      Read Filtering Info File:
+        description: File containing read filtering information
+        annotations:
+          file_name_pattern: "[rqc_wf_activity_id]_readsQC.info"
+
+      QC Statistics Extended:
+        description: Extended report including methods and results for read filtering
+        annotations:
+          file_name_pattern: "/.+?(?=filter)/filtered-report.txt"
+
+      QC Statistics:
+        description: Reads QC summary statistics
+        annotations:
+          file_name_pattern: "[rqc_wf_activity_id]_filterStats2.txt"
+
+      TIGRFam Annotation GFF:
+        description: GFF3 format file with TIGRfam
+        annotations:
+          file_name_pattern: "[GOLD-AP]_tigrfam.gff"
+
+      CRT Annotation GFF:
+        description: GFF3 format file with CRT
+        annotations:
+          file_name_pattern: "[GOLD-AP]_crt.gff"
+
+      Genemark Annotation GFF:
+        description: GFF3 format file with Genemark
+        annotations:
+          file_name_pattern: "[GOLD-AP]_genemark.gff"
+
+      Prodigal Annotation GFF:
+        description: GFF3 format file with Prodigal
+        annotations:
+          file_name_pattern: "[GOLD-AP]_prodigal.gff"
+
+      TRNA Annotation GFF:
+        description: GFF3 format file with TRNA
+        annotations:
+          file_name_pattern: "[GOLD-AP]_trna.gff"
+
+      Misc Annotation GFF:
+        description: GFF3 format file with Misc
+        annotations:
+          file_name_pattern: "[GOLD-AP]_rfam_misc_bind_misc_feature_regulatory.gff"
+
+      RFAM Annotation GFF:
+        description: GFF3 format file with RFAM
+        annotations:
+          file_name_pattern: "[GOLD-AP]_rfam.gff"
+
+      TMRNA Annotation GFF:
+        description: GFF3 format file with TMRNA
+        annotations:
+          file_name_pattern: "[GOLD-AP]_rfam_ncrna_tmrna.gff"
+
+      Crispr Terms:
+        description: Crispr Terms
+        annotations:
+          file_name_pattern: "[GOLD-AP]_crt.crisprs"
+
+      Product Names:
+        description: Product names file
+        annotations:
+          file_name_pattern: "[GOLD-AP]_product_names.tsv"
+
+      Gene Phylogeny tsv:
+        description: Gene Phylogeny tsv
+        annotations:
+          file_name_pattern: "[GOLD-AP]_gene_phylogeny.tsv"
+
+      Scaffold Lineage tsv:
+        description: phylogeny at the scaffold level
+        annotations:
+          file_name_pattern: "[GOLD-AP]_scaffold_lineage.tsv"
+
+      Clusters of Orthologous Groups (COG) Annotation GFF:
+        description: GFF3 format file with COGs
+        annotations:
+          file_name_pattern: "[GOLD-AP]_cog.gff"
+
+      KO_EC Annotation GFF:
+        description: GFF3 format file with KO_EC
+        annotations:
+          file_name_pattern: "[GOLD-AP]_ko_ec.gff"
+
+      CATH FunFams (Functional Families) Annotation GFF:
+        description: GFF3 format file with CATH FunFams
+        annotations:
+          file_name_pattern: "[GOLD-AP]_cath_funfam.gff"
+
+      SUPERFam Annotation GFF:
+        description: GFF3 format file with SUPERFam
+        annotations:
+          file_name_pattern: "[GOLD-AP]_supfam.gff"
+
+      SMART Annotation GFF:
+        description: GFF3 format file with SMART
+        annotations:
+          file_name_pattern: "[GOLD-AP]_smart.gff"
+
+      Pfam Annotation GFF:
+        description: GFF3 format file with Pfam
+        annotations:
+          file_name_pattern: "[GOLD-AP]_pfam.gff"
+
+      Annotation Statistics:
+        description: Annotation statistics report
+
+      Direct Infusion FT ICR-MS Raw Data:
+        description:
+          Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
+          mass spectrometry raw data acquired in broadband full scan mode
+
+      LC-DDA-MS/MS Raw Data:
+        description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
+      
+      Metatranscriptome Expression:
+        description: Metatranscriptome expression values and read counts for gene features predicted on contigs
+        annotations:
+          file_name_pattern: "*.rnaseq_gea.txt"
+
+      Metatranscriptome Expression Intergenic:
+        description: Metatranscriptome expression values and read counts for intergenic regions.
+        annotations:
+          file_name_pattern: "*.rnaseq_gea.intergenic.txt" 
+
+      Metatranscriptome Expression Info File:
+        description: File containing version information on the expression workflow   
+        annotations:
+          file_name_pattern: "*_readcount.info"
+
+      rRNA Filtered Sequencing Reads:
+        description: File containing ribosomal reads from the read qc filtering step.   
+        annotations:
+          file_name_pattern: "*.rRNA.fastq.gz"
+
+      BAI File:
+        description: An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
+        exact_mappings:
+          - NCIT:C190163
+        annotations:
+          file_name_pattern: "*.pairedMapped_sorted.bam.bai"
+          
+
+  CreditEnum:
+    permissible_values:
+      Conceptualization:
+        description: Conceptualization
+      Data curation:
+        description: Data curation
+      Formal Analysis:
+        description: Formal Analysis
+      Funding acquisition:
+        description: Funding acquisition
+      Investigation:
+        description: Investigation
+      Methodology:
+        description: Methodology
+      Project administration:
+        description: Project administration
+      Resources:
+        description: Resources
+      Software:
+        description: Software
+      Supervision:
+        description: Supervision
+      Validation:
+        description: Validation
+      Visualization:
+        description: Visualization
+      Writing original draft:
+        description: "Writing \u2013 original draft"
+      Writing review and editing:
+        description: "Writing \u2013 review & editing"
+      Principal Investigator:
+        description: principal investigator role
+        meaning: OBI:0000103
+      Submitter:
+        description: the person(s) who enter study and biosample metadata into the NMDC submission portal
+        meaning: EFO:0001741
+    comments:
+      - CreditEnums come from https://casrai.org/credit/
+
+  StudyCategoryEnum:
+    permissible_values:
+      research_study:
+        description: A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
+        exact_mappings:
+          - SIO:001066
+          - NCIT:C63536
+          - ISA:Study
+        close_mappings:
+          - OBI:0000355
+      consortium:
+        description: >-
+          A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the 
+          consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
+        comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
+        exact_mappings:
+          - NCIT:C61538
+
+  DoiProviderEnum:
+    see_also: nmdc:ProcessingInstitutionEnum
+    permissible_values:
+      emsl:
+        aliases:
+          - Environmental Molecular Sciences Laboratory
+          - EMSL
+        title: EMSL
+        meaning: https://ror.org/04rc0xn13
+      jgi:
+        aliases:
+          - Joint Genome Institute
+          - JGI
+        title: JGI
+        meaning: https://ror.org/04xm1d337
+      kbase:
+        aliases:
+          - KBase
+        title: KBase
+        meaning: https://ror.org/01znn6x10
+      osti:
+        aliases:
+          - Office of Scientific and Technical Information
+          - OSTI
+        title: OSTI
+        meaning: https://ror.org/031478740
+      ess_dive:
+        aliases:
+          - ESS-DIVE
+          - Environmental System Science Data Infrastructure for a Virtual Ecosystem
+        title: ESS-DIVE
+        meaning: https://ror.org/01t14bp54
+      massive:
+        aliases:
+          - MassIVE
+          - Mass Spectrometry Virtual Environment
+        title: MassIVE
+      gsc:
+        aliases:
+          - GSC
+          - Genomic Standards Consortium
+        title: GSC
+      zenodo:
+        aliases:
+          - Zenodo
+        title: Zenodo
+      edi:
+        aliases:
+          - EDI
+          - Environmental Data Initiative
+        title: EDI
+        meaning: https://ror.org/0330j0z60
+
+  DoiCategoryEnum:
+    permissible_values:
+      award_doi:
+        description: A type of DOI that resolves to a funding authority.
+      dataset_doi:
+        description: A type of DOI that resolves to generated data.
+      publication_doi:
+        description: A type of DOI that resolves to a publication.
+      data_management_plan_doi:
+        description: A type of DOI that resolves to a data management plan.
+    see_also:
+      - https://schema.datacite.org/meta/kernel-4.4/doc/DataCite-MetadataKernel_v4.4.pdf
+      - https://api.crossref.org/types
+    comments:
+      - See especially the resourceTypeGeneral section of the DataCite PDF, on pp48-53 as of 2023-07-19
+
+>>>>>>> upstream/main
   ContainerCategoryEnum:
     description: The permitted types of containers used in processing metabolomic samples.
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
     permissible_values:
+<<<<<<< HEAD
       v-bottom_conical_tube:
       falcon_tube:
+=======
+      V-bottom conical tube:
+      falcon tube:
+
+  FailureWhatEnum:
+    description: The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
+    permissible_values:
+      low_read_count:
+        description: Number of output reads is not sufficient to continue to the next analysis step.
+      malformed_data:
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        description: The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        description: A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+      other:
+        description: A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+
+  FailureWhereEnum:
+    description: The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    comments:
+      - At Chris' recommendation permissible values for this enumeration are the same as Class names.
+    permissible_values:
+      OmicsProcessing:
+        description: A failure has occurred in omics processing, a lab process.
+      Pooling:
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeExpressionAnalysis:
+        description: A failure has occurred in metatranscriptome expression analysis, a workflow process.
+      MetatranscriptomeAnnotation:
+        description: A failure has occurred in metatranscriptome annotation analysis, a workflow process.
+      MetatranscriptomeAssembly:
+        description: A failure has occurred in metatranscriptome assembly analysis, a workflow process.
+      MagsAnalysisActivity:
+        description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+      ReadQcAnalysisActivity:
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysisActivity:
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotationActivity:
+        description: A failure has occurred in annotation, a workflow process.
+>>>>>>> upstream/main
 
   SeparationMethodEnum:
     description: The tool/substance used to separate or filter a solution or mixture.
@@ -925,7 +1514,13 @@ slots:
     range: WorkflowExecution
     description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
     required: true
+<<<<<<< HEAD
 
+=======
+    any_of:
+      - range: MetagenomeAnnotationActivity
+      - range: MetatranscriptomeAnnotationActivity
+>>>>>>> upstream/main
   gene_function_id:
     range: uriorcurie
     description: The identifier for the gene function.
@@ -1062,7 +1657,73 @@ slots:
 
   data_generation_set:
     mixins: object_set
+<<<<<<< HEAD
     range: DataGeneration
+=======
+    range: MetabolomicsAnalysisActivity
+    description:
+      This property links a database object to the set of metabolomics
+      analysis activities.
+  metaproteomics_analysis_activity_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetaproteomicsAnalysisActivity
+    description:
+      This property links a database object to the set of metaproteomics
+      analysis activities.
+  metagenome_annotation_activity_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetagenomeAnnotationActivity
+    description:
+      This property links a database object to the set of metagenome annotation
+      activities.
+  metagenome_assembly_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetagenomeAssembly
+    description:
+      This property links a database object to the set of metagenome assembly
+      activities.
+  metagenome_sequencing_activity_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetagenomeSequencingActivity
+    description:
+      This property links a database object to the set of metagenome sequencing
+      activities.
+  metatranscriptome_expression_analysis_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetatranscriptomeExpressionAnalysis
+    description:
+      This property links a database object to the set of metatranscriptome expression
+      analysis activities.
+  read_qc_analysis_activity_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: ReadQcAnalysisActivity
+    description:
+      This property links a database object to the set of read QC analysis
+      activities.
+  read_based_taxonomy_analysis_activity_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: ReadBasedTaxonomyAnalysisActivity
+    description: >-
+      This property links a database object to the set of read based analysis activities.
+  nom_analysis_activity_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: NomAnalysisActivity
+    description:
+      This property links a database object to the set of natural organic
+      matter (NOM) analysis activities.
+  omics_processing_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: OmicsProcessing
+>>>>>>> upstream/main
     description:
       This property links a database object to the set of omics processings
       within it.
@@ -1079,8 +1740,24 @@ slots:
 
   calibration_set:
     mixins: object_set
+<<<<<<< HEAD
     range: CalibrationInformation
     description: This property links a database object to the set of calibrations within it.
+=======
+    range: LibraryPreparation
+    description: This property links a database object to the set of DNA extractions within it.
+  metatranscriptome_assembly_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetatranscriptomeAssembly
+    description: This property links a database object to the set of metatranscriptome assemblies within it.
+  metatranscriptome_annotation_set:
+    domain: Database # not inherited by mixin users
+    mixins: object_set
+    range: MetatranscriptomeAnnotationActivity
+    description: This property links a database object to the set of metatranscriptome annotations within it.
+  
+>>>>>>> upstream/main
 
   configuration_set:
     mixins: object_set
@@ -1092,10 +1769,92 @@ slots:
     range: ProtocolExecution
     description: This property links a database object to the set of protocol executions within it.
 
+<<<<<<< HEAD
   storage_process_set:
     mixins: object_set
     range: StorageProcess
     description: This property links a database object to the set of storage processes within it.
+=======
+  ## GOLD PATHS
+  gold_path_field:
+    range: string
+    abstract: true
+    description: >-
+      This is a grouping for any of the gold path fields
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: GOLD Ecosystem Classification paths describe the surroundings from which an environmental sample or an organism is collected.
+        annotations:
+          source: https://gold.jgi.doe.gov/ecosystem_classification
+  ecosystem:
+    is_a: gold_path_field
+    description:
+      An ecosystem is a combination of a physical environment (abiotic
+      factors) and all the organisms (biotic factors) that interact with this environment.
+      Ecosystem is in position 1/5 in a GOLD path.
+    comments:
+      - The abiotic factors play a profound role on the type and composition
+        of organisms in a given environment. The GOLD Ecosystem at the top of the five-level
+        classification system is aimed at capturing the broader environment from which
+        an organism or environmental sample is collected. The three broad groups under
+        Ecosystem are Environmental, Host-associated, and Engineered. They represent
+        samples collected from a natural environment or from another organism or from
+        engineered environments like bioreactors respectively.
+    see_also: https://gold.jgi.doe.gov/help
+  ecosystem_category:
+    is_a: gold_path_field
+    description:
+      Ecosystem categories represent divisions within the ecosystem based
+      on specific characteristics of the environment from where an organism or sample
+      is isolated. Ecosystem category is in position 2/5 in a GOLD path.
+    comments:
+      - The Environmental ecosystem (for example) is divided into Air, Aquatic
+        and Terrestrial. Ecosystem categories for Host-associated samples can be individual
+        hosts or phyla and for engineered samples it may be manipulated environments
+        like bioreactors, solid waste etc.
+    see_also: https://gold.jgi.doe.gov/help
+  ecosystem_type:
+    is_a: gold_path_field
+    description:
+      Ecosystem types represent things having common characteristics within
+      the Ecosystem Category. These common characteristics based grouping is still
+      broad but specific to the characteristics of a given environment. Ecosystem
+      type is in position 3/5 in a GOLD path.
+    comments:
+      - The Aquatic ecosystem category (for example) may have ecosystem types
+        like Marine or Thermal springs etc. Ecosystem category Air may have Indoor air
+        or Outdoor air as different Ecosystem Types. In the case of Host-associated
+        samples, ecosystem type can represent Respiratory system, Digestive system,
+        Roots etc.
+    see_also: https://gold.jgi.doe.gov/help
+  ecosystem_subtype:
+    is_a: gold_path_field
+    description:
+      Ecosystem subtypes represent further subdivision of Ecosystem types
+      into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD
+      path.
+    comments:
+      - Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is further
+        divided (for example) into Intertidal zone, Coastal, Pelagic, Intertidal zone
+        etc. in the Ecosystem subtype category.
+    see_also: https://gold.jgi.doe.gov/help
+  specific_ecosystem:
+    is_a: gold_path_field
+    description:
+      Specific ecosystems represent specific features of the environment
+      like aphotic zone in an ocean or gastric mucosa within a host digestive system.
+      Specific ecosystem is in position 5/5 in a GOLD path.
+    comments:
+      - Specific ecosystems help to define samples based on very specific characteristics
+        of an environment under the five-level classification system.
+    see_also: https://gold.jgi.doe.gov/help
+  principal_investigator:
+    aliases:
+      - PI
+    range: PersonValue
+    description: Principal Investigator who led the study and/or generated the dataset.
+>>>>>>> upstream/main
 
   material_processing_set:
     mixins: object_set
