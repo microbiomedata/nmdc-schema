@@ -57,3 +57,8 @@ metatranscriptome_expression_analysis_set:
      - nmdc:dobj-11-547rwq82
      - nmdc:dobj-11-547rwq83
      - nmdc:dobj-11-547rwq84
+data_object_set:
+ - id: nmdc:dobj-11-547rwq72
+   data_object_type: BAI File
+   name: nmdc_wfmgas-11-abec.mapped.bam.bai
+   description: Alignment index file for nmdc_wfmgas-11-abec
