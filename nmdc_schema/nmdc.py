@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-19T10:42:33
+# Generation date: 2024-07-24T13:21:38
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -6377,6 +6377,10 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="rRNA Filtered Sequencing Reads",
                 description="File containing ribosomal reads from the read qc filtering step."))
+        setattr(cls, "BAI File",
+            PermissibleValue(
+                text="BAI File",
+                description="""An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file."""))
 
 class CreditEnum(EnumDefinitionImpl):
 

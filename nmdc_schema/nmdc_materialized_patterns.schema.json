@@ -4494,7 +4494,8 @@
                 "Metatranscriptome Expression",
                 "Metatranscriptome Expression Intergenic",
                 "Metatranscriptome Expression Info File",
-                "rRNA Filtered Sequencing Reads"
+                "rRNA Filtered Sequencing Reads",
+                "BAI File"
             ],
             "title": "FileTypeEnum",
             "type": "string"
