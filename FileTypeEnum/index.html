@@ -878,6 +878,11 @@
 <td>None</td>
 <td>File containing ribosomal reads from the read qc filtering step</td>
 </tr>
+<tr>
+<td>BAI File</td>
+<td>None</td>
+<td>An index file found in the same directory as the binary alignment map (BAM) f...</td>
+</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -1351,6 +1356,17 @@ permissible_values:
       file_name_pattern:
         tag: file_name_pattern
         value: '*.rRNA.fastq.gz'
+  BAI File:
+    text: BAI File
+    description: An index file found in the same directory as the binary alignment
+      map (BAM) file, a compressed binary version of a sequence alignment/map (SAM)
+      file.
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: '*.pairedMapped_sorted.bam.bai'
+    exact_mappings:
+    - NCIT:C190163
 
 </code></pre>
 
