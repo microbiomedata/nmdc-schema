@@ -2253,6 +2253,14 @@ enums:
         annotations:
           file_name_pattern: "*.rRNA.fastq.gz"
 
+      BAI File:
+        description: An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
+        exact_mappings:
+          - NCIT:C190163
+        annotations:
+          file_name_pattern: "*.pairedMapped_sorted.bam.bai"
+          
+
   CreditEnum:
     permissible_values:
       Conceptualization:
