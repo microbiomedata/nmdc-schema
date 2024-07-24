@@ -211,7 +211,13 @@ classes:
     class_uri: nmdc:Sample
     is_a: MaterialEntity
     description: >-
-      
+    slot_usage:
+      id:
+          required: true
+          description: An NMDC assigned unique identifier for a biosample or processed sample.
+          structured_pattern:
+            syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
+            interpolated: true
     in_subset:
       - sample subset
 
@@ -1216,12 +1222,7 @@ classes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
+        range: Sample
       has_output:
         range: ProcessedSample
         structured_pattern:
@@ -1255,7 +1256,6 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
-
     slot_usage:
       id:
         required: true
