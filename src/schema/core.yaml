@@ -207,6 +207,13 @@ classes:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  Sample:
+    class_uri: nmdc:Sample
+    is_a: MaterialEntity
+    description: >-
+      
+    in_subset:
+      - sample subset
 
   Biosample:
     class_uri: 'nmdc:Biosample'
@@ -261,7 +268,7 @@ classes:
       samp_name_unique_key:
         unique_key_slots:
           - samp_name # id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing
-    is_a: MaterialEntity
+    is_a: Sample
     in_subset:
       - sample subset
     aliases:
@@ -1241,7 +1248,7 @@ classes:
 
   ProcessedSample:
     class_uri: nmdc:ProcessedSample
-    is_a: MaterialEntity
+    is_a: Sample
     title: Processed Sample
     slots:
       - biomaterial_purity
