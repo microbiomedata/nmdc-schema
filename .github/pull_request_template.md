@@ -16,7 +16,16 @@ Expedition, questions, and discussion can happen at any meeting.
 
 Delays in review & merging should be addressed in meetings or with NMDC leadership.
 
-@mslarae13, @eecavanna,  @shreddd, @naglepuff, @aclum, @mbthornton-lbl, @corilo, @kheal, @SamuelPurvine, @sujaypatil96, @brynnz22 
+@mslarae13 - Metadata & Schema
+@eecavanna - Runtime & Migrations & MongoDB (also, @shreddd)
+@naglepuff - Postgres & Ingest
+@aclum - Data Portal
+@mbthornton-lbl - Workflows: MG & MT
+@corilo - Workflows: MetaB & NOM
+@kheal - Workflows: LipidO
+@SamuelPurvine - Workflows: MetaP
+@sujaypatil96 - ETL Code
+@brynnz22 - Notebooks
 
 
 # PR Information
