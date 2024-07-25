@@ -10,7 +10,7 @@ To ensure no changes are made unexpectedly, PR creators will use this PR templat
 
 We expect task coordinators to review PRs and provide feedback/approval within 1 week of when they are identified as reviewers. 
 
-PRs will **NOT** be merged until all task coordinators (or one of their delegates) have approved either officially as a review, in a metting, or via a comment. 
+PRs will **NOT** be merged until all task coordinators (or their delegates) have approved it; either here on GitHub (via "`Review changes` > `Approve`" or an equivalent comment) or verbally.
 
 Expedition, questions, and discussion can happen at any meeting.
 
