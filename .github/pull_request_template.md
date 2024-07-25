@@ -16,17 +16,18 @@ Expedition, questions, and discussion can happen at any meeting.
 
 Delays in review & merging should be addressed in meetings or with NMDC leadership.
 
-@mslarae13 - Metadata & Schema
-@eecavanna - Runtime & Migrations & MongoDB (also, @shreddd)
-@naglepuff - Postgres & Ingest
-@aclum - Data Portal
-@mbthornton-lbl - Workflows: MG & MT
-@corilo - Workflows: MetaB & NOM
-@kheal - Workflows: LipidO
-@SamuelPurvine - Workflows: MetaP
-@sujaypatil96 - ETL Code
-@brynnz22 - Notebooks
-
+| If you expect the changes to<br>impact this component... | ...[request a review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)<br>from this person |
+| -- | -- |
+| Metadata<br>Schema | @mslarae13 |
+| Runtime<br>Mongo database<br>Database migrations | @eecavanna,<br>who will pull in<br>@shreddd as needed |
+| Postgres<br>Ingest | @naglepuff |
+| Data Portal | @aclum |
+| Workflows: MG & MT | @mbthornton-lbl |
+| Workflows: MetaB & NOM | @corilo |
+| Workflows: LipidO | @kheal |
+| Workflows: MetaP | @SamuelPurvine |
+| ETL code | @sujaypatil96 |
+| Jupyter notebooks | @brynnz22 |
 
 # PR Information
 
