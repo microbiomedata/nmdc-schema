@@ -283,7 +283,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - has_peptide_quantifications
+      - has_protein_annotations
     slot_usage:
       id:
         required: true
@@ -358,10 +358,6 @@ slots:
 
   metagenome_assembly_parameter:
     abstract: true
-
-  has_peptide_quantifications:
-    range: PeptideQuantification
-    multivalued: true
 
   asm_score:
     is_a: metagenome_assembly_parameter
