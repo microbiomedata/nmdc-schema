@@ -3,7 +3,7 @@ type: nmdc:Extraction
 name: DNA extraction of NEON sample WREF_072-O-20190618-COMP
 description: DNA extraction of NEON sample WREF_072-O-20190618-COMP using SOP BMI_dnaExtractionSOP_v7
 has_input:
-  - nmdc:procsm-9d9-123456777 # "too short" error
+  - nmdc:procsm-9d9-123456777
 has_output:
   - nmdc:procsm-9d9-555555777
 processing_institution: Battelle
@@ -13,7 +13,7 @@ protocol_link:
   url: https://data.neonscience.org/documents/10179/2431540/BMI_dnaExtractionSOP_v7/61204962-bb01-a0b9-3354-ccdaab5132c3
 start_date: "2019-11-08"
 end_date: "2019-11-08"
-sample_mass: # changed to input mass - this isn't erroring
+sample_mass: # slot name changed to input mass
   type: nmdc:QuantityValue
   has_numeric_value: 0.25
   has_unit: gram
