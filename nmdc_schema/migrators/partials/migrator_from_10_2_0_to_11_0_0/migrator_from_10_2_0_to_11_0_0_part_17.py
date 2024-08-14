@@ -53,7 +53,3 @@ class Migrator(MigratorBase):
                 del workflow_dict["peptide_identifications"]
 
         return workflow_dict
-
-m = Migrator()
-workflow_dict = {'id': 123, 'type': 'MetaproteomicsAnalysis', 'peptide_identifications': [{'best_protein': 'protein1', 'all_proteins': ['protein1', 'protein2']}, {'best_protein': 'protein2', 'all_proteins': ['protein2', 'protein3']}]}
-m.update_metaproteomics_analysis(workflow_dict)
