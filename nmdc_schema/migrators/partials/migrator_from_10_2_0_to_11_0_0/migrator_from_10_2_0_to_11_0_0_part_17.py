@@ -45,6 +45,8 @@ class Migrator(MigratorBase):
                 
                 # remove duplicates
                 protein_list = list(set(protein_list))
+                # order alphabetically so tests are reproducible
+                protein_list.sort()
                 workflow_dict['has_protein_annotations'] = protein_list
 
                 # remove peptide_identifications slot
