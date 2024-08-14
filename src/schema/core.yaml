@@ -1649,7 +1649,7 @@ slots:
     range: ChemicalEntity
 
   has_protein_annotations:
-    description: the list of proteins that were annotated during a metaprotemics analysis
+    description: proteins that were annotated during a metaprotemics analysis
     range: GeneProduct
     multivalued: true
   
