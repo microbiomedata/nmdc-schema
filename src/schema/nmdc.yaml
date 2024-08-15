@@ -140,6 +140,17 @@ subsets:
       - Assignment of the data_portal_subset is incomplete in the schema.
 
 classes:
+  EukEval:
+    description: This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukyarotic.
+    comments:
+     - A tool like eukCC (https://doi.org/10.1186/s13059-020-02155-4) would generate information for this class.
+    slots:
+     - bin_name
+     - completeness
+     - contamination
+     - ncbi_lineage_taxIDs
+     - ncbi_lineage
+
   FailureCategorization:
     slots:
       - qc_failure_what
@@ -2510,6 +2521,22 @@ enums:
       ZIC-cHILIC:
 
 slots:
+  eukaryotic_evaluation:
+    domain: MagBin
+    range: EukEval
+    description: Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.
+  ncbi_lineage_taxIDs:
+    domain: EukEval
+    range: string
+    description: Dash delimited ordered list of NCBI taxonomy identifiers (TaxId)
+    comments:
+      - Example 1-131567-2759-2611352-33682-191814-2603949
+  ncbi_lineage:
+    domain: EukEval
+    range: string
+    description: Comma delimited ordered list of NCBI taxonomy names.
+    comments: 
+      - Example root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
   has_failure_categorization:
     range: FailureCategorization
     multivalued: true

@@ -279,6 +279,7 @@ classes:
       - number_of_contig
       - total_bases
       - type
+      - eukaryotic_evaluation
 
   MetaboliteQuantification:
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
@@ -419,6 +420,9 @@ classes:
       - schema:GeoCoordinates
 
 slots:
+  eukaryotic_evaluation:
+    range: EukEval
+    description: Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.
   total_bases:
     domain: MagBin
     range: integer # MAM 2023-12-08
