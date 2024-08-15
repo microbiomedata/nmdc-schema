@@ -145,7 +145,6 @@ classes:
     comments:
      - A tool like eukCC (https://doi.org/10.1186/s13059-020-02155-4) would generate information for this class.
     slots:
-     - bin_name
      - completeness
      - contamination
      - ncbi_lineage_taxIDs
