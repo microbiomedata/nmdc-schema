@@ -2521,7 +2521,6 @@ enums:
 
 slots:
   eukaryotic_evaluation:
-    domain: MagBin
     range: EukEval
     description: Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.
   ncbi_lineage_taxIDs:
