@@ -141,11 +141,11 @@ classes:
         structured_pattern:
           syntax: "^gold:Ga[0-9]+$"
           interpolated: true
-  MetatranscriptomeAnalysis:
-    class_uri: nmdc:MetatranscriptomeAnalysis
+  MetatranscriptomeExpressionAnalysis:
+    class_uri: nmdc:MetatranscriptomeExpressionAnalysis
     is_a: WorkflowExecution
     description: >-
-      A metatranscriptome activity that e.g. pools assembly and annotation activity.
+      A workflow process that provides expression values and read counts for gene features predicted on the contigs.
     in_subset:
       - workflow subset
     slots:
