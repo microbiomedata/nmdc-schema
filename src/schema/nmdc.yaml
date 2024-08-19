@@ -56,6 +56,7 @@ prefixes:
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PATO: "http://purl.obolibrary.org/obo/PATO_"
   PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
+  PFAM.CLAN: "https://bioregistry.io/pfam.clan:" # https://bioregistry.io/pfam.clan:CL0192
   PO: "http://purl.obolibrary.org/obo/PO_"
   PR: "http://purl.obolibrary.org/obo/PR_"
   PUBCHEM.COMPOUND: "https://bioregistry.io/pubchem.compound:"
