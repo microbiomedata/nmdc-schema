@@ -147,7 +147,7 @@ classes:
     slots:
      - completeness
      - contamination
-     - ncbi_lineage_taxIDs
+     - ncbi_lineage_tax_ids
      - ncbi_lineage
 
   FailureCategorization:
