@@ -1,0 +1,19 @@
+id: nmdc:wfmp-99-ABCDEF.1
+type: nmdc:MetaproteomicsAnalysis
+started_at_time: '2021-08-05T14:48:51+00:00'
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: NERSC-Cori
+was_informed_by: nmdc:omprc-11-3u74da
+git_url: https://example.org/WorkflowExecutionActivity
+has_input:
+  - nmdc:dobj-99-xxxxxx1
+  - nmdc:dobj-99-xxxxxx2
+has_output:
+  - nmdc:dobj-99-xxxxxx3
+  - nmdc:dobj-99-xxxxxx4
+has_protein_annotations:
+  - nmdc:wfmgan-11-hnkgb304.1_000002_115083_117116
+  - nmdc:wfmgan-11-hnkgb304.1_000033_139473_143666
+  - nmdc:wfmgan-11-hnkgb304.1_000004_12966_14216
+  - nmdc:wfmgan-11-hnkgb304.1_000067_67501_68535
+  - nmdc:wfmgan-11-hnkgb304.1_001466_20294_22240
