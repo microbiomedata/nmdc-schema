@@ -20656,6 +20656,7 @@ classes:
     class_uri: nmdc:Site
   EnvironmentalMaterialTerm:
     name: EnvironmentalMaterialTerm
+    deprecated: not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: OntologyClass
     class_uri: nmdc:EnvironmentalMaterialTerm
@@ -20832,6 +20833,7 @@ classes:
     - COG
     description: A pathway is a sequence of steps/reactions carried out by an organism
       or community of organisms
+    deprecated: not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881
     todos:
     - If we reverted to including Reaction in the schema, then a Reaction would be
       a reasonable part_of a Pathway
