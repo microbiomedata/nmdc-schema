@@ -2527,7 +2527,7 @@ slots:
     domain: EukEval
     range: string
     pattern: '^\d+(-\d+)*$'   
-    description: Dash delimited ordered list of NCBI taxonomy identifiers (TaxId)
+    description: Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)
     comments:
       - Example 1-131567-2759-2611352-33682-191814-2603949
   ncbi_lineage:
