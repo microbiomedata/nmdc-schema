@@ -285,7 +285,7 @@
 
   EukEval : ncbi_lineage
 
-  EukEval : ncbi_lineage_taxIDs
+  EukEval : ncbi_lineage_tax_ids
 
 
 
@@ -315,7 +315,7 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../ncbi_lineage_taxIDs/">ncbi_lineage_taxIDs</a></td>
+<td><a href="../ncbi_lineage_tax_ids/">ncbi_lineage_tax_ids</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>Dash delimited ordered list of NCBI taxonomy identifiers (TaxId)</td>
 <td>direct</td>
@@ -341,7 +341,7 @@
 <tbody>
 <tr>
 <td><a href="./">EukEval</a></td>
-<td><a href="../ncbi_lineage_taxIDs/">ncbi_lineage_taxIDs</a></td>
+<td><a href="../ncbi_lineage_tax_ids/">ncbi_lineage_tax_ids</a></td>
 <td>domain</td>
 <td><a href="./">EukEval</a></td>
 </tr>
@@ -401,7 +401,7 @@ from_schema: https://w3id.org/nmdc/nmdc
 slots:
 - completeness
 - contamination
-- ncbi_lineage_taxIDs
+- ncbi_lineage_tax_ids
 - ncbi_lineage
 
 </code></pre>
@@ -436,15 +436,15 @@ attributes:
     - EukEval
     - MagBin
     range: float
-  ncbi_lineage_taxIDs:
-    name: ncbi_lineage_taxIDs
+  ncbi_lineage_tax_ids:
+    name: ncbi_lineage_tax_ids
     description: Dash delimited ordered list of NCBI taxonomy identifiers (TaxId)
     comments:
     - Example 1-131567-2759-2611352-33682-191814-2603949
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     domain: EukEval
-    alias: ncbi_lineage_taxIDs
+    alias: ncbi_lineage_tax_ids
     owner: EukEval
     domain_of:
     - EukEval
