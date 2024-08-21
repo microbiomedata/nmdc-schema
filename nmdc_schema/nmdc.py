@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-07-24T13:21:38
+# Generation date: 2024-08-21T17:07:04
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -71,6 +71,7 @@ ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
 PANTHER_FAMILY = CurieNamespace('PANTHER_FAMILY', 'https://bioregistry.io/panther.family:')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
 PFAM = CurieNamespace('PFAM', 'https://bioregistry.io/pfam:')
+PFAM_CLAN = CurieNamespace('PFAM_CLAN', 'https://bioregistry.io/pfam.clan:')
 PO = CurieNamespace('PO', 'http://purl.obolibrary.org/obo/PO_')
 PR = CurieNamespace('PR', 'http://purl.obolibrary.org/obo/PR_')
 PUBCHEM_COMPOUND = CurieNamespace('PUBCHEM_COMPOUND', 'https://bioregistry.io/pubchem.compound:')
@@ -328,6 +329,39 @@ class MetaproteomicsAnalysisActivityId(WorkflowExecutionActivityId):
 
 class NomAnalysisActivityId(WorkflowExecutionActivityId):
     pass
+
+
+@dataclass
+class EukEval(YAMLRoot):
+    """
+    This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["EukEval"]
+    class_class_curie: ClassVar[str] = "nmdc:EukEval"
+    class_name: ClassVar[str] = "EukEval"
+    class_model_uri: ClassVar[URIRef] = NMDC.EukEval
+
+    completeness: Optional[float] = None
+    contamination: Optional[float] = None
+    ncbi_lineage_tax_ids: Optional[str] = None
+    ncbi_lineage: Optional[str] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.completeness is not None and not isinstance(self.completeness, float):
+            self.completeness = float(self.completeness)
+
+        if self.contamination is not None and not isinstance(self.contamination, float):
+            self.contamination = float(self.contamination)
+
+        if self.ncbi_lineage_tax_ids is not None and not isinstance(self.ncbi_lineage_tax_ids, str):
+            self.ncbi_lineage_tax_ids = str(self.ncbi_lineage_tax_ids)
+
+        if self.ncbi_lineage is not None and not isinstance(self.ncbi_lineage, str):
+            self.ncbi_lineage = str(self.ncbi_lineage)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass
@@ -4721,6 +4755,7 @@ class MagBin(YAMLRoot):
     number_of_contig: Optional[int] = None
     total_bases: Optional[int] = None
     type: Optional[str] = None
+    eukaryotic_evaluation: Optional[Union[dict, EukEval]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.bin_name is not None and not isinstance(self.bin_name, str):
@@ -4782,6 +4817,9 @@ class MagBin(YAMLRoot):
 
         if self.type is not None and not isinstance(self.type, str):
             self.type = str(self.type)
+
+        if self.eukaryotic_evaluation is not None and not isinstance(self.eukaryotic_evaluation, EukEval):
+            self.eukaryotic_evaluation = EukEval(**as_dict(self.eukaryotic_evaluation))
 
         super().__post_init__(**kwargs)
 
@@ -8746,6 +8784,16 @@ class ProcessingInstitutionEnum(EnumDefinitionImpl):
 # Slots
 class slots:
     pass
+
+slots.eukaryotic_evaluation = Slot(uri=NMDC.eukaryotic_evaluation, name="eukaryotic_evaluation", curie=NMDC.curie('eukaryotic_evaluation'),
+                   model_uri=NMDC.eukaryotic_evaluation, domain=None, range=Optional[Union[dict, EukEval]])
+
+slots.ncbi_lineage_tax_ids = Slot(uri=NMDC.ncbi_lineage_tax_ids, name="ncbi_lineage_tax_ids", curie=NMDC.curie('ncbi_lineage_tax_ids'),
+                   model_uri=NMDC.ncbi_lineage_tax_ids, domain=None, range=Optional[str],
+                   pattern=re.compile(r'^\d+(-\d+)*$'))
+
+slots.ncbi_lineage = Slot(uri=NMDC.ncbi_lineage, name="ncbi_lineage", curie=NMDC.curie('ncbi_lineage'),
+                   model_uri=NMDC.ncbi_lineage, domain=None, range=Optional[str])
 
 slots.has_failure_categorization = Slot(uri=NMDC.has_failure_categorization, name="has_failure_categorization", curie=NMDC.curie('has_failure_categorization'),
                    model_uri=NMDC.has_failure_categorization, domain=None, range=Optional[Union[Union[dict, FailureCategorization], List[Union[dict, FailureCategorization]]]])

@@ -4112,6 +4112,29 @@
             "title": "EnvironmentalMaterialTerm",
             "type": "object"
         },
+        "EukEval": {
+            "additionalProperties": false,
+            "description": "This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.",
+            "properties": {
+                "completeness": {
+                    "type": "number"
+                },
+                "contamination": {
+                    "type": "number"
+                },
+                "ncbi_lineage": {
+                    "description": "Comma delimited ordered list of NCBI taxonomy names.",
+                    "type": "string"
+                },
+                "ncbi_lineage_tax_ids": {
+                    "description": "Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)",
+                    "pattern": "^\\d+(-\\d+)*$",
+                    "type": "string"
+                }
+            },
+            "title": "EukEval",
+            "type": "object"
+        },
         "ExtWallOrientEnum": {
             "description": "",
             "enum": [
@@ -5275,6 +5298,10 @@
                 },
                 "contamination": {
                     "type": "number"
+                },
+                "eukaryotic_evaluation": {
+                    "$ref": "#/$defs/EukEval",
+                    "description": "Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage."
                 },
                 "gene_count": {
                     "type": "integer"
