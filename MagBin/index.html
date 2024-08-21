@@ -279,6 +279,11 @@
 
   MagBin : contamination
 
+  MagBin : eukaryotic_evaluation
+
+      MagBin --&gt; "0..1" EukEval : eukaryotic_evaluation
+    click EukEval href "../EukEval"
+
   MagBin : gene_count
 
   MagBin : gtdbtk_class
@@ -446,6 +451,12 @@
 <td>An optional string that specifies the type object</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../eukaryotic_evaluation/">eukaryotic_evaluation</a></td>
+<td>0..1 <br/> <a href="../EukEval/">EukEval</a></td>
+<td>Contains results from evaluating if a Metagenome-Assembled Genome is of eukar...</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -530,6 +541,7 @@ slots:
 - number_of_contig
 - total_bases
 - type
+- eukaryotic_evaluation
 
 </code></pre>
 </details>
@@ -563,6 +575,7 @@ attributes:
     alias: completeness
     owner: MagBin
     domain_of:
+    - EukEval
     - MagBin
     range: float
   contamination:
@@ -572,6 +585,7 @@ attributes:
     alias: contamination
     owner: MagBin
     domain_of:
+    - EukEval
     - MagBin
     range: float
   gene_count:
@@ -747,6 +761,17 @@ attributes:
     - ReadQcAnalysisActivity
     - ReadBasedTaxonomyAnalysisActivity
     range: string
+  eukaryotic_evaluation:
+    name: eukaryotic_evaluation
+    description: Contains results from evaluating if a Metagenome-Assembled Genome
+      is of eukaryotic lineage.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: eukaryotic_evaluation
+    owner: MagBin
+    domain_of:
+    - MagBin
+    range: EukEval
 
 </code></pre>
 </details>
