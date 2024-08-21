@@ -141,7 +141,7 @@ subsets:
 
 classes:
   EukEval:
-    description: This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukyarotic.
+    description: This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.
     comments:
      - A tool like eukCC (https://doi.org/10.1186/s13059-020-02155-4) would generate information for this class.
     slots:
