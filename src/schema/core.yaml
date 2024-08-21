@@ -279,6 +279,7 @@ classes:
       - number_of_contig
       - total_bases
       - type
+      - eukaryotic_evaluation
 
   MetaboliteQuantification:
     description: This is used to link a metabolomics analysis workflow to a specific metabolite
