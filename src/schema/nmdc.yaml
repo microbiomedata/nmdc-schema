@@ -2523,7 +2523,7 @@ slots:
   eukaryotic_evaluation:
     range: EukEval
     description: Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.
-  ncbi_lineage_taxIDs:
+  ncbi_lineage_tax_ids:
     domain: EukEval
     range: string
     pattern: '^\d+(-\d+)*$'   
