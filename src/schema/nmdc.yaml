@@ -1891,8 +1891,8 @@ enums:
   YesNoEnum:
     description: replaces DnaDnaseEnum and DnaseRnaEnum
     permissible_values:
-      'no': { }
-      'yes': { }
+      'N': { }
+      'Y': { }
 
   BiosampleCategoryEnum:
     description: Funding-based, sample location-based, or experimental method-based defined categories
