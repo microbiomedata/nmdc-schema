@@ -320,7 +320,7 @@ dna_concentration: 100
 dna_container_id: Pond_MT_041618
 
 # dna_dnase expects a yes or no enumerated string. unquoated yes gets converted into Boolean True, whcih isn't acceptable in this case
-dna_dnase: 'yes'
+dna_dnase: 'N'
 
 dna_isolate_meth: phenol/chloroform extraction
 dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
@@ -334,7 +334,7 @@ dna_seq_project_pi: Jane Johnson
 dna_seq_project_name: JGI Pond metagenomics
 dna_volume: 25
 proposal_dna: "504000"
-dnase_rna: 'yes'
+dnase_rna: 'Y'
 proposal_rna: "504000"
 rna_absorb1: 2.02
 rna_absorb2: 2.02

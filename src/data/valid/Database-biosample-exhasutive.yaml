@@ -390,7 +390,7 @@ biosample_set:
     #dna_cont_type: plate
     #dna_cont_well: C2
     dna_container_id: Pond_MT_041618
-    dna_dnase: 'yes'
+    dna_dnase: 'Y'
     dna_isolate_meth: phenol/chloroform extraction
     dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
       (1%)
@@ -402,7 +402,7 @@ biosample_set:
     dna_seq_project_name: JGI Pond metagenomics
     dna_seq_project_pi: Jane Johnson
     dna_volume: 25
-    dnase_rna: 'yes'
+    dnase_rna: 'Y'
     door_comp_type: revolving
     door_cond: damaged
     door_direct: inward
