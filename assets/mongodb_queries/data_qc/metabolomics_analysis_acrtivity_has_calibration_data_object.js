@@ -1,7 +1,7 @@
-db.getCollection('metabolomics_analysis_activity_set').aggregate(
+db.getCollection('workflow_execution_set').aggregate(
 [
 {
-$match: { has_calibration: { $ne: null } }
+$match: { has_calibration: { $ne: null }, type: 'nmdc:MetabolomicsAnalysis' }
 },
 {
 $lookup: {
