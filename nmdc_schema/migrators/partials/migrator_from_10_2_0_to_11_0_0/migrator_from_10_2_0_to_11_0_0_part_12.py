@@ -35,7 +35,7 @@ class Migrator(MigratorBase):
             "Extraction": "Extraction",
             "LibraryPreparation": "LibraryPreparation",
             "MetagenomeAssembly": "MetagenomeAssembly",
-            "MetatranscriptomeActivity": "MetatranscriptomeAnalysis",
+            "MetatranscriptomeActivity": "MetatranscriptomeExpressionAnalysis",
             "MagsAnalysisActivity": "MagsAnalysis",
             "ReadQcAnalysisActivity": "ReadQcAnalysis",
             "ReadBasedTaxonomyAnalysisActivity": "ReadBasedTaxonomyAnalysis",
