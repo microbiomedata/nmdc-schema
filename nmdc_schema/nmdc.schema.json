@@ -5119,7 +5119,7 @@
                     "type": "string"
                 },
                 "metagenome_annotation_id": {
-                    "description": "The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.",
+                    "description": "The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution",
                     "type": "string"
                 },
                 "type": {
@@ -5655,6 +5655,10 @@
                     },
                     "type": "array"
                 },
+                "is_stranded": {
+                    "description": "Is the (RNA) library stranded or non-stranded (unstranded).",
+                    "type": "boolean"
+                },
                 "library_preparation_kit": {
                     "type": "string"
                 },
@@ -5698,6 +5702,10 @@
                 "start_date": {
                     "description": "The date on which any process or activity was started",
                     "type": "string"
+                },
+                "stranded_orientation": {
+                    "$ref": "#/$defs/StrandedOrientationEnum",
+                    "description": "Lists the strand orientiation for a stranded RNA library preparation."
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -9959,6 +9967,15 @@
             ],
             "title": "StorageProcess",
             "type": "object"
+        },
+        "StrandedOrientationEnum": {
+            "description": "This enumeration specifies information about stranded RNA library preparations.",
+            "enum": [
+                "antisense orientation",
+                "sense orientation"
+            ],
+            "title": "StrandedOrientationEnum",
+            "type": "string"
         },
         "Study": {
             "additionalProperties": false,

@@ -90,6 +90,7 @@ classes:
     todos:
       - If we reverted to including Reaction in the schema, then a Reaction would be a reasonable part_of a Pathway
       - is Pathway instantiated in an MongoDB collection? Aren't Pathways searchable in the Data Portal?
+    deprecated: "not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881"
 
   OrthologyGroup:
     class_uri: nmdc:OrthologyGroup

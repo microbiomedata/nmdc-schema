@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-06-17T20:17:56
+# Generation date: 2024-08-22T09:37:18
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -4542,12 +4542,14 @@ class LibraryPreparation(MaterialProcessing):
     type: Union[str, URIorCURIE] = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
     has_output: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    is_stranded: Optional[Union[bool, Bool]] = None
     library_preparation_kit: Optional[str] = None
     library_type: Optional[Union[str, "LibraryTypeEnum"]] = None
-    pcr_cycles: Optional[int] = None
     nucl_acid_amp: Optional[Union[dict, TextValue]] = None
     pcr_cond: Optional[Union[dict, TextValue]] = None
+    pcr_cycles: Optional[int] = None
     pcr_primers: Optional[Union[dict, TextValue]] = None
+    stranded_orientation: Optional[Union[str, "StrandedOrientationEnum"]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -4567,14 +4569,14 @@ class LibraryPreparation(MaterialProcessing):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
+        if self.is_stranded is not None and not isinstance(self.is_stranded, Bool):
+            self.is_stranded = Bool(self.is_stranded)
+
         if self.library_preparation_kit is not None and not isinstance(self.library_preparation_kit, str):
             self.library_preparation_kit = str(self.library_preparation_kit)
 
         if self.library_type is not None and not isinstance(self.library_type, LibraryTypeEnum):
             self.library_type = LibraryTypeEnum(self.library_type)
-
-        if self.pcr_cycles is not None and not isinstance(self.pcr_cycles, int):
-            self.pcr_cycles = int(self.pcr_cycles)
 
         if self.nucl_acid_amp is not None and not isinstance(self.nucl_acid_amp, TextValue):
             self.nucl_acid_amp = TextValue(**as_dict(self.nucl_acid_amp))
@@ -4582,8 +4584,14 @@ class LibraryPreparation(MaterialProcessing):
         if self.pcr_cond is not None and not isinstance(self.pcr_cond, TextValue):
             self.pcr_cond = TextValue(**as_dict(self.pcr_cond))
 
+        if self.pcr_cycles is not None and not isinstance(self.pcr_cycles, int):
+            self.pcr_cycles = int(self.pcr_cycles)
+
         if self.pcr_primers is not None and not isinstance(self.pcr_primers, TextValue):
             self.pcr_primers = TextValue(**as_dict(self.pcr_primers))
+
+        if self.stranded_orientation is not None and not isinstance(self.stranded_orientation, StrandedOrientationEnum):
+            self.stranded_orientation = StrandedOrientationEnum(self.stranded_orientation)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6457,6 +6465,26 @@ class MetagenomeAnnotation(WorkflowExecution):
 
 
 # Enumerations
+class StrandedOrientationEnum(EnumDefinitionImpl):
+    """
+    This enumeration specifies information about stranded RNA library preparations.
+    """
+    _defn = EnumDefinition(
+        name="StrandedOrientationEnum",
+        description="This enumeration specifies information about stranded RNA library preparations.",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "antisense orientation",
+            PermissibleValue(
+                text="antisense orientation",
+                description="Orientation that is complementary (non-coding) to a sequence of messenger RNA."))
+        setattr(cls, "sense orientation",
+            PermissibleValue(
+                text="sense orientation",
+                description="Orientation that corresponds to the coding sequence of messenger RNA."))
+
 class MassSpectrometryAcquisitionStrategyEnum(EnumDefinitionImpl):
 
     data_independent_acquisition = PermissibleValue(
@@ -9629,6 +9657,12 @@ slots.library_preparation_kit = Slot(uri=NMDC.library_preparation_kit, name="lib
 
 slots.pcr_cycles = Slot(uri=NMDC.pcr_cycles, name="pcr_cycles", curie=NMDC.curie('pcr_cycles'),
                    model_uri=NMDC.pcr_cycles, domain=None, range=Optional[int])
+
+slots.is_stranded = Slot(uri=NMDC.is_stranded, name="is_stranded", curie=NMDC.curie('is_stranded'),
+                   model_uri=NMDC.is_stranded, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.stranded_orientation = Slot(uri=NMDC.stranded_orientation, name="stranded_orientation", curie=NMDC.curie('stranded_orientation'),
+                   model_uri=NMDC.stranded_orientation, domain=None, range=Optional[Union[str, "StrandedOrientationEnum"]])
 
 slots.input_mass = Slot(uri=NMDC.input_mass, name="input_mass", curie=NMDC.curie('input_mass'),
                    model_uri=NMDC.input_mass, domain=None, range=Optional[Union[dict, QuantityValue]])

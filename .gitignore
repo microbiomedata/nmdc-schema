@@ -3,15 +3,6 @@
 
 # for releases: git add -f examples nmdc_schema project src
 examples/output/
-nmdc_schema/*json
-nmdc_schema/*yaml
-nmdc_schema/.*json
-nmdc_schema/.*yaml
-nmdc_schema/gold-to-mixs.sssom.tsv
-nmdc_schema/nmdc.py
-nmdc_schema/nmdc_materialized_patterns*
-nmdc_schema/nmdc_schema_accepting_legacy_ids*
-nmdc_schema/nmdc_schema_accepting_legacy_ids.py
 project
 project/
 src/schema/mixs.yaml

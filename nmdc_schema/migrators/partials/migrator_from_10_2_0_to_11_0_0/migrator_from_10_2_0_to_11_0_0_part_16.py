@@ -38,6 +38,7 @@ class Migrator(MigratorBase):
             "metatranscriptome_assembly_set",
             "metatranscriptome_annotation_set",
             "metatranscriptome_analysis_set",
+            "metatranscriptome_expression_analysis_set",  # included in order to accommodate: https://github.com/microbiomedata/nmdc-schema/pull/2117
             "mags_set",
             "metagenome_sequencing_set",
             "read_qc_analysis_set",
@@ -59,6 +60,7 @@ class Migrator(MigratorBase):
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> database = {'material_processing_set': [{'id': 'mp'}],
         ...             'pooling_set': [{'id': 'p'}],
+        ...             'metatranscriptome_expression_analysis_set': [{'id': 'ma1'}],
         ...             'nom_analysis_set': [{'id': 'na1'}, {'id': 'na2'}, {'id': 'na3'}]}
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
         >>> m.upgrade()
@@ -67,7 +69,9 @@ class Migrator(MigratorBase):
         >>> 'pooling_set' in database  # ensure migrator deletes "child" collection
         False
         >>> len(database['workflow_execution_set'])  # ensure migrator creates "parent" collection (if nonexistent)
-        3
+        4
+        >>> 'metatranscriptome_expression_analysis_set' in database
+        False
         >>> 'nom_analysis_set' in database
         False
         """
