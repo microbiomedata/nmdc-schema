@@ -252,6 +252,18 @@ classes:
           syntax: "{id_nmdc_prefix}:(wfmgan|wfmp)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
         required: true
+    rules:
+      - title: count_required_if_was_generated_by_is_wfmgan
+        description: >-
+          If was_generated_by is a WorkflowMetagenomeAnnotation, then count is required.
+        preconditions:
+          slot_conditions:
+            was_generated_by:
+              structured_pattern: "{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$"
+        postconditions:
+          slot_conditions:
+            count:
+              required: true
 
   Database:
     class_uri: nmdc:Database
@@ -936,7 +948,6 @@ slots:
     required: true
   count:
     range: integer
-    required: true
   functional_annotation_agg:
     range: FunctionalAnnotationAggMember
     multivalued: true
