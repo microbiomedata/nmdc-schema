@@ -251,6 +251,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(wfmgan|wfmp)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        required: true
 
   Database:
     class_uri: nmdc:Database
