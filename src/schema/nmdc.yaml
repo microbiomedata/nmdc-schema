@@ -253,9 +253,9 @@ classes:
           interpolated: true
         required: true
     rules:
-      - title: count_required_if_MetaGenomeAnnotation
+      - title: count_required_if_MetagenomeAnnotation
         description: >-
-          If was_generated_by is a WorkflowMetagenomeAnnotation, then count is required.
+          If was_generated_by is a MetagenomeAnnotation, then count is required.
         preconditions:
           slot_conditions:
             was_generated_by:
