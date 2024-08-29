@@ -1,5 +1,5 @@
 #invalid because using metagenome_assembly_set for a metatranscriptome assembly record
-read_qc_analysis_activity_set:
+workflow_execution_set:
   - id: nmdc:wfrqc-11-23984.1
     git_url: https://github.com/microbiomedata/metaT_ReadsQC
     version: v0.0.1
@@ -27,7 +27,7 @@ metagenome_assembly_set:
     has_output:
      - nmdc:dobj-11-547rwq72
      - nmdc:dobj-11-547rwq73
-metatranscriptome_annotation_set:
+workflow_execution_set:
   - id: nmdc:wfmtan-11-23987.1
     git_url: https://github.com/microbiomedata/mg_annotation
     version: v1.1.1
@@ -41,7 +41,7 @@ metatranscriptome_annotation_set:
     has_output:
      - nmdc:dobj-11-547rwq75
      - nmdc:dobj-11-547rwq77
-metatranscriptome_expression_set:
+workflow_execution_set:
   - id: nmdc:wfmtex-11-23989.1
     git_url: https://github.com/microbiomedata/metaT_ReadCounts
     version: v0.0.1
