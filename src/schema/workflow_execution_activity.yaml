@@ -283,7 +283,7 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - has_protein_annotations
+      - has_protein_identifications
     slot_usage:
       id:
         required: true

@@ -11,9 +11,16 @@ has_input:
 has_output:
   - nmdc:dobj-99-xxxxxx3
   - nmdc:dobj-99-xxxxxx4
-has_protein_annotations:
-  - nmdc:wfmgan-11-hnkgb304.1_000002_115083_117116
-  - nmdc:wfmgan-11-hnkgb304.1_000033_139473_143666
-  - nmdc:wfmgan-11-hnkgb304.1_000004_12966_14216
-  - nmdc:wfmgan-11-hnkgb304.1_000067_67501_68535
-  - nmdc:wfmgan-11-hnkgb304.1_001466_20294_22240
+has_protein_identifications: #TODO KRH: add protein identifications
+  - type: nmdc:ProteinIdentification
+    razor_protein: nmdc:wfmgan-11-hnkgb304.1_000002_115083_117116
+    peptide_sequence_count: 1
+    protein_spectral_count: 10
+  - type: nmdc:ProteinIdentification
+    razor_protein: nmdc:wfmgan-11-hnkgb304.1_000033_139473_143666
+    peptide_sequence_count: 5
+    protein_spectral_count: 50
+  - type: nmdc:ProteinIdentification
+    razor_protein: nmdc:wfmgan-11-hnkgb304.1_000004_12966_14216
+    peptide_sequence_count: 2
+    protein_spectral_count: 20

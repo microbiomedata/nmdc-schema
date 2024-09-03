@@ -1315,22 +1315,17 @@ classes:
       - peptide_sum_masic_abundance
     deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/2157"
 
-  ProteinQuantification:
-    class_uri: nmdc:ProteinQuantification
+  ProteinIdentification:
+    class_uri: nmdc:ProteinIdentification
     description: This is used to link a metaproteomics analysis workflow to a specific protein
     slots:
-      - all_proteins
-      - best_protein
+      - razor_protein
       - peptide_sequence_count
       - protein_spectral_count
-      - protein_sum_masic_abundance
       - type
     slot_usage:
-      best_protein:
+      razor_protein:
         description: the specific protein identifier most correctly grouped to its associated peptide sequences
-      all_proteins:
-        description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
-    deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/2157"
 
   ChemicalEntity:
     class_uri: nmdc:ChemicalEntity
@@ -1678,9 +1673,9 @@ slots:
     description: the specific metabolite identifier
     range: ChemicalEntity
 
-  has_protein_annotations:
-    description: proteins that were annotated during a metaprotemics analysis
-    range: GeneProduct
+  has_protein_identifications:
+    description: proteins that were annotated during a metaprotemics analysis and their associated information
+    range: ProteinIdentifications
     multivalued: true
 
   all_proteins:
@@ -1730,12 +1725,10 @@ slots:
   peptide_sequence_count:
     description: count of peptide sequences grouped to the best_protein
     range: integer
-    deprecated: "not used. 2024-10.  See https://github.com/microbiomedata/nmdc-schema/issues/2157"
 
   protein_spectral_count:
     description: sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
     range: integer
-    deprecated: "not used. 2024-10.  See https://github.com/microbiomedata/nmdc-schema/issues/2157"
 
   protein_sum_masic_abundance:
     description: >-
