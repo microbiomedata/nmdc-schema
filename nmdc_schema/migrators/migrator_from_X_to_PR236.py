@@ -23,11 +23,11 @@ class Migrator(MigratorBase):
         # Example 1, two peptides mapped to two proteins
         >>> m = Migrator()
         >>> m.update_metaproteomics_analysis({'id': 123, 'type': 'MetaproteomicsAnalysis', 'peptide_identifications': [{'best_protein': 'protein1', 'all_proteins': ['protein1', 'protein2'], 'peptide_spectral_count':1}, {'best_protein': 'protein2', 'all_proteins': ['protein2', 'protein3'], 'peptide_spectral_count':3}]})
-        {'id': 123, 'type': 'MetaproteomicsAnalysis', 'has_protein_identifications': [{'type': 'ProteinIdentification', 'razor_protein': 'protein1', 'peptide_sequence_count': 1, 'protein_spectral_count': 1}, {'type': 'ProteinIdentification', 'razor_protein': 'protein2', 'peptide_sequence_count': 1, 'protein_spectral_count': 3}]}
+        {'id': 123, 'type': 'MetaproteomicsAnalysis', 'has_protein_identifications': [{'type': 'ProteinIdentification', 'razor_protein': 'protein1', 'unique_peptide_count': 1, 'protein_spectral_count': 1}, {'type': 'ProteinIdentification', 'razor_protein': 'protein2', 'unique_peptide_count': 1, 'protein_spectral_count': 3}]}
 
         # Example 2, two peptides mapped to the same protein
         >>> m.update_metaproteomics_analysis({'id': 234, 'type': 'MetaproteomicsAnalysis', 'peptide_identifications': [{'best_protein': 'protein1', 'all_proteins': ['protein1', 'protein2'], 'peptide_spectral_count': 5}, {'best_protein': 'protein1', 'all_proteins': ['protein1', 'protein3'], 'peptide_spectral_count': 1}]})
-        {'id': 234, 'type': 'MetaproteomicsAnalysis', 'has_protein_identifications': [{'type': 'ProteinIdentification', 'razor_protein': 'protein1', 'peptide_sequence_count': 2, 'protein_spectral_count': 6}]}
+        {'id': 234, 'type': 'MetaproteomicsAnalysis', 'has_protein_identifications': [{'type': 'ProteinIdentification', 'razor_protein': 'protein1', 'unique_peptide_count': 2, 'protein_spectral_count': 6}]}
 
         # Example 3, no peptide_identifications slot
         >>> m.update_metaproteomics_analysis({'id': 345, 'type': 'MetaproteomicsAnalysis'}) # no peptide_identifications slot
@@ -50,10 +50,10 @@ class Migrator(MigratorBase):
                     
                     razor_protein = peptide_iden.get("best_protein")
                     if razor_protein in protein_dict:
-                        protein_dict[razor_protein]["peptide_sequence_count"] += 1
+                        protein_dict[razor_protein]["unique_peptide_count"] += 1
                         protein_dict[razor_protein]["protein_spectral_count"] += peptide_iden.get("peptide_spectral_count")
                     else:
-                        protein_dict[razor_protein] = {"type": "ProteinIdentification", "razor_protein": razor_protein, "peptide_sequence_count": 1, "protein_spectral_count": peptide_iden.get("peptide_spectral_count")}
+                        protein_dict[razor_protein] = {"type": "ProteinIdentification", "razor_protein": razor_protein, "unique_peptide_count": 1, "protein_spectral_count": peptide_iden.get("peptide_spectral_count")}
                 
                 # convert dict to list
                 protein_list = [x for x in protein_dict.values()]

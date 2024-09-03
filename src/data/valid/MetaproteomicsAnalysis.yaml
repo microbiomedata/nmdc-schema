@@ -14,13 +14,13 @@ has_output:
 has_protein_identifications:
   - type: nmdc:ProteinIdentification
     razor_protein: nmdc:wfmgan-11-hnkgb304.1_000002_115083_117116
-    peptide_sequence_count: 1
+    unique_peptide_count: 1
     protein_spectral_count: 10
   - type: nmdc:ProteinIdentification
     razor_protein: nmdc:wfmgan-11-hnkgb304.1_000033_139473_143666
-    peptide_sequence_count: 5
+    unique_peptide_count: 5
     protein_spectral_count: 50
   - type: nmdc:ProteinIdentification
     razor_protein: nmdc:wfmgan-11-hnkgb304.1_000004_12966_14216
-    peptide_sequence_count: 2
+    unique_peptide_count: 2
     protein_spectral_count: 20

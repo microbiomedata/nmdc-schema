@@ -1312,7 +1312,7 @@ classes:
       - best_protein
       - min_q_value
       - peptide_sequence
-      - peptide_spectral_count
+      - unique_peptide_count
       - peptide_sum_masic_abundance
     deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/2157"
 
@@ -1321,7 +1321,7 @@ classes:
     description: This is used to link a metaproteomics analysis workflow to a specific protein
     slots:
       - razor_protein
-      - peptide_sequence_count
+      - unique_peptide_count
       - protein_spectral_count
       - type
     slot_usage:
@@ -1727,7 +1727,7 @@ slots:
   inchi:
     range: string
   
-  peptide_sequence_count:
+  unique_peptide_count:
     description: count of peptide sequences grouped to the best_protein
     range: integer
 
