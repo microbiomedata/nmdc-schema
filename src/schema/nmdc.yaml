@@ -968,8 +968,12 @@ slots:
     examples:
       - value: KEGG.ORTHOLOGY:K00627
     required: true
+
   count:
     range: integer
+    description: The number of sequences (for a metagenome or metatraanscriptome) or spectra (for metaproteomics) associated with the specified function.
+    required: true
+
   functional_annotation_agg:
     range: FunctionalAnnotationAggMember
     multivalued: true
