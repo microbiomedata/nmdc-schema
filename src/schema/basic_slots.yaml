@@ -317,6 +317,12 @@ slots:
     abstract: true
     description: >-
       This is a grouping for any of the gold path fields
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: GOLD Ecosystem Classification paths describe the surroundings from which an environmental sample or an organism is collected.
+        annotations:
+          source: https://gold.jgi.doe.gov/ecosystem_classification
   ecosystem:
     is_a: gold_path_field
     description:
@@ -940,6 +946,34 @@ enums:
 
       Workflow Operation Summary:
         description: A human readable record of analysis steps applied during an instance of a workflow operation.
+
+      Metatranscriptome Expression:
+        description: Metatranscriptome expression values and read counts for gene features predicted on contigs
+        annotations:
+          file_name_pattern: "*.rnaseq_gea.txt"
+
+      Metatranscriptome Expression Intergenic:
+        description: Metatranscriptome expression values and read counts for intergenic regions.
+        annotations:
+          file_name_pattern: "*.rnaseq_gea.intergenic.txt"
+
+      Metatranscriptome Expression Info File:
+        description: File containing version information on the expression workflow
+        annotations:
+          file_name_pattern: "*_readcount.info"
+
+      rRNA Filtered Sequencing Reads:
+        description: File containing ribosomal reads from the read qc filtering step.
+        annotations:
+          file_name_pattern: "*.rRNA.fastq.gz"
+
+      BAI File:
+        description: An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
+        exact_mappings:
+          - NCIT:C190163
+        annotations:
+          file_name_pattern: "*.pairedMapped_sorted.bam.bai"
+
 
   DoiProviderEnum:
     see_also:

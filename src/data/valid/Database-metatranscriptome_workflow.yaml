@@ -1,0 +1,65 @@
+workflow_execution_set:
+  - id: nmdc:wfrqc-11-23984.1
+    git_url: https://github.com/microbiomedata/metaT_ReadsQC
+    version: v0.0.1
+    started_at_time: '2023-08-05T14:48:51+00:00'
+    ended_at_time: '2021-08-05T14:48:51+00:00'
+    type: nmdc:ReadQcAnalysis
+    execution_resource: LANL-B-div
+    was_informed_by: nmdc:omprc-11-547rwq95
+    has_input:
+      - nmdc:dobj-11-547rwq96
+    has_output:
+      - nmdc:dobj-11-547rwq97
+      - nmdc:dobj-11-547rwq98
+  #metatranscriptome_assembly_set:
+  - id: nmdc:wfmtas-11-23986.1
+    git_url: https://github.com/microbiomedata/metaT_Assembly/releases
+    version: v0.0.1
+    started_at_time: '2024-07-06T14:48:51+00:00'
+    ended_at_time: '2024-07-06T14:48:51+00:00'
+    type: nmdc:MetatranscriptomeAssembly
+    execution_resource: LANL-B-div
+    was_informed_by: nmdc:omprc-11-547rwq95
+    has_input:
+      - nmdc:dobj-11-547rwq97
+    has_output:
+      - nmdc:dobj-11-547rwq72
+      - nmdc:dobj-11-547rwq73
+  #metatranscriptome_annotation_set:
+  - id: nmdc:wfmtan-11-23987.1
+    git_url: https://github.com/microbiomedata/mg_annotation
+    version: v1.1.1
+    started_at_time: '2024-07-07T14:48:51+00:00'
+    ended_at_time: '2024-07-07T14:48:51+00:00'
+    type: nmdc:MetatranscriptomeAnnotation
+    was_informed_by: nmdc:omprc-11-547rwq95
+    execution_resource: LANL-B-div
+    has_input:
+      - nmdc:dobj-11-547rwq72
+    has_output:
+      - nmdc:dobj-11-547rwq75
+      - nmdc:dobj-11-547rwq77
+  #metatranscriptome_expression_analysis_set:
+  - id: nmdc:wfmtex-11-23989.1
+    git_url: https://github.com/microbiomedata/metaT_ReadCounts
+    version: v0.0.1
+    started_at_time: '2024-07-08T14:48:51+00:00'
+    ended_at_time: '2024-07-08T14:48:51+00:00'
+    type: nmdc:MetatranscriptomeExpressionAnalysis
+    was_informed_by: nmdc:omprc-11-547rwq95
+    execution_resource: LANL-B-div
+    has_input:
+      - nmdc:dobj-11-547rwq75
+      - nmdc:dobj-11-547rwq77
+      - nmdc:dobj-11-547rwq73
+    has_output:
+      - nmdc:dobj-11-547rwq82
+      - nmdc:dobj-11-547rwq83
+      - nmdc:dobj-11-547rwq84
+data_object_set:
+  - id: nmdc:dobj-11-547rwq72
+    data_object_type: BAI File
+    name: nmdc_wfmgas-11-abec.mapped.bam.bai
+    description: Alignment index file for nmdc_wfmgas-11-abec
+    type: nmdc:DataObject

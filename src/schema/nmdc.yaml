@@ -48,6 +48,7 @@ prefixes:
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PATO: "http://purl.obolibrary.org/obo/PATO_"
   PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
+  PFAM.CLAN: "https://bioregistry.io/pfam.clan:" # https://bioregistry.io/pfam.clan:CL0192
   PO: "http://purl.obolibrary.org/obo/PO_"
   PR: "http://purl.obolibrary.org/obo/PR_"
   PUBCHEM.COMPOUND: "https://bioregistry.io/pubchem.compound:"
@@ -115,6 +116,19 @@ settings:
   id_locus: "(_[A-Za-z0-9_\\.-]+)?$"
 
 classes:
+
+  EukEval:
+    description: This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.
+    comments:
+      - A tool like eukCC (https://doi.org/10.1186/s13059-020-02155-4) would generate information for this class.
+    slots:
+      - type
+      - completeness
+      - contamination
+      - ncbi_lineage_tax_ids
+      - ncbi_lineage
+    class_uri: nmdc:EukEval
+
   NucleotideSequencing:
     class_uri: nmdc:NucleotideSequencing
     is_a: DataGeneration
@@ -870,7 +884,6 @@ enums:
 
 
 slots:
-
   polarity_mode:
     range: PolarityModeEnum
     description: the polarity of which ions are generated and detected
@@ -879,6 +892,26 @@ slots:
     range: MassSpectrumCollectionModeEnum
     description: Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.
     multivalued: true
+
+  eukaryotic_evaluation:
+    range: EukEval
+    description: Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.
+  ncbi_lineage_tax_ids:
+    range: string
+    pattern: '^\d+(-\d+)*$'
+    description: Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)
+    comments:
+      - Example 1-131567-2759-2611352-33682-191814-2603949
+  ncbi_lineage:
+    range: string
+    description: Comma delimited ordered list of NCBI taxonomy names.
+    comments:
+      - Example root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
+
+  has_failure_categorization:
+    range: FailureCategorization
+    multivalued: true
+    inlined_as_list: true
 
   ionization_source:
     range: IonizationSourceEnum
@@ -927,6 +960,7 @@ slots:
     description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
     required: true
     deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253"
+
 
   gene_function_id:
     range: uriorcurie
@@ -1065,7 +1099,7 @@ slots:
     mixins: object_set
     range: DataGeneration
     description:
-      This property links a database object to the set of omics processings
+      This property links a database object to the set of data generations
       within it.
 
   processed_sample_set:
