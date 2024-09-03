@@ -1675,7 +1675,7 @@ slots:
 
   has_protein_identifications:
     description: proteins that were annotated during a metaprotemics analysis and their associated information
-    range: ProteinIdentifications
+    range: ProteinIdentification
     multivalued: true
 
   all_proteins:
@@ -1688,6 +1688,10 @@ slots:
     description: the specific protein identifier most correctly associated with the peptide sequence
     range: GeneProduct
     deprecated: "not used. 2024-10.  See https://github.com/microbiomedata/nmdc-schema/issues/2157"
+
+  razor_protein:
+    description: the specific protein identifier identified in the metaproteomics analysis that is most correctly grouped to its associated peptide sequences
+    range: GeneProduct
 
   min_q_value:
     description: smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
