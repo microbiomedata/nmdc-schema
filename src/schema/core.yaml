@@ -1292,6 +1292,7 @@ classes:
       - number_of_contig
       - total_bases
       - type
+      - eukaryotic_evaluation
 
   MetaboliteIdentification:
     class_uri: nmdc:MetaboliteIdentification

@@ -535,11 +535,6 @@ slots:
   vendor:
     range: InstrumentVendorEnum
 
-  has_failure_categorization:
-    range: FailureCategorization
-    multivalued: true
-    inlined_as_list: true
-
   qc_failure_where:
     range: FailureWhereEnum
     description: >-
@@ -554,8 +549,6 @@ slots:
       Provides a summary about what caused a lab or workflow process to fail
     comments:
       - For example, low read count from a sequencer, malformed fastq files, etc.
-
-
 
 enums:
   CreditEnum:
