@@ -1,4 +1,4 @@
-# This example is invalid because the count field is missing and the was_generated_by field refers to a MetagenomeAnnotation
+# This example is invalid because the count field is and it is required.
 type: nmdc:FunctionalAnnotationAggMember
 was_generated_by: nmdc:wfmgan-99-123456.1
 gene_function_id: KEGG.ORTHOLOGY:K00627
