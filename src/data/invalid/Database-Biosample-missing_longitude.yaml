@@ -31,7 +31,7 @@ biosample_set:
     lat_lon:
       type: nmdc:GeolocationValue
       has_raw_value: "-33.460524 0.000"
-      latitude: -33.460524
+      latitude: -33.460524 # this file is invalid because longitude is missing
     ecosystem: Environmental
     ecosystem_category: Aquatic
     ecosystem_type: Freshwater

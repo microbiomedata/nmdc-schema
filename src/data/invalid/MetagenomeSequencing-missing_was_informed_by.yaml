@@ -1,3 +1,4 @@
+# invalid because was_informed_by is required but missing
 id: 'nmdc:wfmsa-9d9-qwertyuiop.3'
 type: nmdc:MetagenomeSequencing
 has_input:

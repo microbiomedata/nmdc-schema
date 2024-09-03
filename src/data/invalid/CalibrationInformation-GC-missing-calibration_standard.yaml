@@ -1,4 +1,4 @@
-# this example is invalid because it has a internal_calibration of false without a corresponding calibration_object
+# this example is invalid because it has calibration_target = retention_index but no calibration_standard
 id: nmdc:calib-99-zUCd5N
 type: nmdc:CalibrationInformation
 internal_calibration: false
