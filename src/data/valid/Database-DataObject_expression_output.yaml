@@ -1,0 +1,19 @@
+data_object_set:
+  - id: nmdc:dobj-99-izwYW6
+    name: nmdc:wfmt-11-2471da.rnaseq_gea.txt
+    description: Metatranscriptome expression results for nmdc:omprc-11-a894kd
+    file_size_bytes: 32787380
+    data_object_type: Metatranscriptome Expression
+    type: nmdc:DataObject
+  - id: nmdc:dobj-99-izwYW7
+    name: nmdc:wfmt-11-2471da.rnaseq_gea.intergenic.txt
+    description: Metatranscriptome expression intergentic results for nmdc:omprc-11-a894kd
+    file_size_bytes: 2787380
+    data_object_type: Metatranscriptome Expression Intergenic
+    type: nmdc:DataObject
+  - id: nmdc:dobj-99-izwYW8
+    name: nmdc:wfmt-11-2471da_readcount.info
+    description: Metatranscriptome expression version information for nmdc:omprc-11-a894kd
+    file_size_bytes: 4982
+    data_object_type: Metatranscriptome Expression Info File
+    type: nmdc:DataObject
