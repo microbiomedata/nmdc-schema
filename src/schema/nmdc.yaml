@@ -249,21 +249,9 @@ classes:
     slot_usage:
       was_generated_by:
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp)-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
         required: true
-    rules:
-      - title: count_required_if_MetagenomeAnnotation
-        description: >-
-          If was_generated_by is a MetagenomeAnnotation, then count is required.
-        preconditions:
-          slot_conditions:
-            was_generated_by:
-              pattern: ^.+:wfmgan-.+$
-        postconditions:
-          slot_conditions:
-            count:
-              required: true
 
   Database:
     class_uri: nmdc:Database
