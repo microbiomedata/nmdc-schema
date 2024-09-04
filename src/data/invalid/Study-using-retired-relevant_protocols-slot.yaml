@@ -1,3 +1,4 @@
+# What is this supposed to be testing? it has several errors 
 id: nmdc:sty-11-ab
 name: see also description, title, objective, various alternatives
 description: see also name, title, objective, various alternatives
@@ -28,18 +29,23 @@ principal_investigator:
   websites:
     - https://www.jcvi.org/
     - https://www.jcvi.org/about/j-craig-venter
+  type: nmdc:PersonValue
 associated_dois:
   - doi_value: doi:10.1126/science.1058040
     doi_category: publication_doi
+    type: nmdc:Doi
   - doi_value: doi:10.1126/science.1456956
     doi_provider: kbase
     doi_category: dataset_doi
+    type: nmdc:Doi
   - doi_value: doi:10.1126/science.1234545
     doi_provider: jgi
     doi_category: award_doi
+    type: nmdc:Doi
   - doi_value: doi:10.48321/D1Z60Q
     doi_category: data_management_plan_doi
     doi_provider: gsc
+    type: nmdc:Doi
 title: Sample Exhaustive Biosample instance. Although all of these values should pass
   validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
@@ -58,7 +64,7 @@ objective: This record, an instance of class Study from the nmdc-schema was had 
 websites:
   - https://w3id.org/nmdc
   - https://w3id.org/linkml
-type: any string
+type: nmdc:Study
 relevant_protocols:
   - any string 1
   - any string 2
@@ -75,27 +81,32 @@ has_credit_associations:
       websites:
         - https://www.jcvi.org/
         - https://www.jcvi.org/about/j-craig-venter
+      type: nmdc:PersonValue
     applied_roles:
       - Supervision
       - Conceptualization
       - Funding acquisition
-    type: any string
+    type: prov:Association
   - applies_to_person:
       name: Tanja Davidsen
+      type: nmdc:PersonValue
     applied_roles:
       - Investigation
       - Supervision
+    type: prov:Association
 study_image:
   - has_raw_value: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     url: https://upload.wikimedia.org/wikipedia/commons/8/86/J._Craig_Vernter_Institute_Rockville_Maryland.jpg
     description: Photo of Craig Venter Institute, Rockville, Maryland
-    display_order: 1 # MAM 2023-12-08 switched from string to integer
+    display_order: 1
+    type: nmdc:ImageValue
   - has_raw_value: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     url: https://today.ucsd.edu/news_uploads/140213ventor2.jpg
     description: Photo of Craig Venter Institute, La Jolla, California
-    display_order: 2 # MAM 2023-12-08 switched from string to integer
+    display_order: 2
+    type: nmdc:ImageValue
 study_category: research_study
 part_of:
   - nmdc:sty-11-34xj1157
-homepage_website: 
+homepage_website:
   - https://www.neonscience.org/

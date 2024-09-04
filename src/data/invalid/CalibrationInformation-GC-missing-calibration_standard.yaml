@@ -1,0 +1,6 @@
+# this example is invalid because it has calibration_target = retention_index but no calibration_standard
+id: nmdc:calib-99-zUCd5N
+type: nmdc:CalibrationInformation
+internal_calibration: false
+calibration_target: retention_index
+calibration_object: nmdc:dobj-12-krhrtjw9
