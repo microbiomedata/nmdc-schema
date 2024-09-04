@@ -30,11 +30,11 @@ workflow_execution_set:
     has_protein_identifications:
       - type: nmdc:ProteinIdentification
         razor_protein: nmdc:geneproduct-99-ASDSDGASDGAS
-        peptide_sequence_count: 1
+        unique_peptide_count: 1
         protein_spectral_count: 10
       - type: nmdc:ProteinIdentification
         razor_protein: nmdc:geneproduct-99-SDGASDGASDG
-        peptide_sequence_count: 2
+        unique_peptide_count: 2
         protein_spectral_count: 20
 chemical_entity_set:
   - id: nmdc:chem-99-000016
