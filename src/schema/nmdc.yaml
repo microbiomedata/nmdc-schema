@@ -971,7 +971,7 @@ slots:
 
   count:
     range: integer
-    description: The number of sequences (for a metagenome or metatraanscriptome) or spectra (for metaproteomics) associated with the specified function.
+    description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
     required: true
 
   functional_annotation_agg:
