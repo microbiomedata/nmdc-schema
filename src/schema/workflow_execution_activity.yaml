@@ -142,7 +142,6 @@ classes:
           interpolated: true
 
   MetatranscriptomeExpressionAnalysis:
-    class_uri: nmdc:MetatranscriptomeExpressionAnalysis
     is_a: WorkflowExecution
     description: >-
       A workflow process that provides expression values and read counts for gene features predicted on the contigs.
