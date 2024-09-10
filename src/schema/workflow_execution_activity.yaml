@@ -15,7 +15,6 @@ default_prefix: nmdc
 default_range: string
 
 classes:
-
   MetagenomeAssembly:
     class_uri: nmdc:MetagenomeAssembly
     description: A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -62,8 +61,8 @@ classes:
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
-          interpolated: true 
-       
+          interpolated: true
+
   MetatranscriptomeAssembly:
     class_uri: nmdc:MetatranscriptomeAssembly
     is_a: WorkflowExecution
@@ -141,6 +140,7 @@ classes:
         structured_pattern:
           syntax: "^gold:Ga[0-9]+$"
           interpolated: true
+
   MetatranscriptomeExpressionAnalysis:
     class_uri: nmdc:MetatranscriptomeExpressionAnalysis
     is_a: WorkflowExecution
@@ -154,7 +154,7 @@ classes:
       id:
         required: true
         structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmt-{id_shoulder}-{id_blade}{id_version}$"
+          syntax: "{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
       img_identifiers:
         maximum_cardinality: 1
@@ -162,6 +162,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+    class_uri: nmdc:MetatranscriptomeExpressionAnalysis
 
 
   MagsAnalysis:

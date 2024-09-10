@@ -1,0 +1,4 @@
+functional_annotation_set:
+  - has_function: KEGG_PATHWAY:XOXOXOXO
+    type: nmdc:FunctionalAnnotation
+
