@@ -46,16 +46,23 @@ class Migrator(MigratorBase):
 
     def transform_instrument_slot(self, omics_doc: dict):
         r"""
-        Changes the instrument_name slot to be instrument_used, and replaces the name string value with an identifier for 
+        Changes the `instrument_name` slot to be `instrument_used`, and replaces the name string value with an identifier for 
         the instrument
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>>
-        >>> database = {'instrument_set': [{'id': 'nmdc:inst-456', 'name': '12T FT-ICR MS', 'model':'solarix_12T', 'vendor':'bruker', 'type':'nmdc:Instrument'}]} 
+        >>> database = {
+        ...     'instrument_set': [
+        ...        {'id': 'nmdc:inst-456', 'name': '12T FT-ICR MS', 'model':'solarix_12T', 'vendor':'bruker', 'type':'nmdc:Instrument'},
+        ...        {'id': 'nmdc:inst-101', 'name': 'Illumina NovaSeq 6000', 'model':'my model', 'vendor':'my vendor', 'type':'nmdc:Instrument'},
+        ...     ]
+        ... } 
         >>> adapter = DictionaryAdapter(database=database)
         >>> m = Migrator(adapter=adapter)
         >>> m.transform_instrument_slot({'id': 'nmdc:omcp-123', 'instrument_name': '12T_FTICR_B'})
         {'id': 'nmdc:omcp-123', 'instrument_used': ['nmdc:inst-456']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'NovaSeq X'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-101']}
         """
 
         if "instrument_name" in omics_doc:
