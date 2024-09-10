@@ -68,16 +68,26 @@ class Migrator(MigratorBase):
             matches = difflib.get_close_matches(existing_instrument_name, allowed_instrument_names, n=1, cutoff=cutoff)
 
             if matches:
+            
+                    # If the omics doc instrument_name has "NovaSeq" in its name but it doesn't end with "NovaSeq" (so has S4 or SP) map to Illumina NovaSeq 6000
+                    if "NovaSeq" in omics_doc['instrument_name'] and not omics_doc['instrument_name'].endswith("NovaSeq"):
+                        instrument_id = self.adapter.get_document_having_value_in_field(
+                              collection_name="instrument_set", field_name="name", value="Illumina NovaSeq 6000"
+                              )
+                         
+                        self.logger.info(f"instrument_name in {omics_doc['id']} is {omics_doc['instrument_name']} and will be matched to instrument with name Illumina NovaSeq 6000")
 
-                    # Match instrument_name with instrument set and get corresponding instrument id
-                    match = matches[0]
-                    self.logger.info(f"instrument_name in {omics_doc['id']} is {omics_doc['instrument_name']} and will be matched to instrument with name {match}")
+                    else:
+                        # Match instrument_name with instrument set and get corresponding instrument id
+                        match = matches[0]
+                        self.logger.info(f"instrument_name in {omics_doc['id']} is {omics_doc['instrument_name']} and will be matched to instrument with name {match}")
+                        
+                        instrument = self.adapter.get_document_having_value_in_field(
+                            collection_name="instrument_set", field_name="name", value=match
+                        )
+
+                        instrument_id = instrument.get("id")
                     
-                    instrument = self.adapter.get_document_having_value_in_field(
-                        collection_name="instrument_set", field_name="name", value=match
-                    )
-
-                    instrument_id = instrument.get("id")
                     omics_doc["instrument_used"] = [instrument_id]
                     del omics_doc["instrument_name"]
         
