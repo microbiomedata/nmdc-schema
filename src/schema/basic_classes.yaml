@@ -749,20 +749,22 @@ enums:
         aliases:
           - Illumina MiniSeq
         meaning: OBI:0003114
-     
-      nextseq_1000:
-        aliases:
-          - Illumina NextSeq 1000
-        meaning: OBI:0003606
+           
       miseq:
         aliases:
           - MiSeq
           - Illumina MiSeq
         meaning: OBI:0002003
-
+        
+      nextseq_1000:
+        aliases:
+          - Illumina NextSeq 1000
+        meaning: OBI:0003606
+        
       nextseq:
         aliases:
           - NextSeq
+          - Illumina NextSeq
         structured_aliases:
           - literal_form: Illumina NextSeq-HO
             alias_contexts:
@@ -776,11 +778,13 @@ enums:
       nextseq_500:
         aliases:
           - NextSeq 500
+          - Illumina NextSeq 500
         meaning: OBI:0002021
       
       nextseq_550:
         aliases:
           - NextSeq 550
+          - Illumina NextSeq 550
         meaning: OBI:0003387
       
       gridion:
