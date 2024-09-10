@@ -63,6 +63,7 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:omcp-123', 'instrument_used': ['nmdc:inst-456']}
         >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'NovaSeq X'})
         {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-101']}
+        >>> matches = difflib.get_close_matches("a", ["a", "b"], n=1, cutoff=0.25)
         """
 
         if "instrument_name" in omics_doc:
@@ -71,11 +72,13 @@ class Migrator(MigratorBase):
             instruments = load_yaml_asset("migrator_from_10_2_0_to_11_0_0_part_08/instrument_set.yaml")
             allowed_instrument_names = [instrument["name"] for instrument in instruments]
 
+            # Determine which of the allowed instrument names most closely matches the "existing" (original) one.
+            # Reference: https://docs.python.org/3/library/difflib.html#difflib.get_close_matches
             cutoff = 0.25
             matches = difflib.get_close_matches(existing_instrument_name, allowed_instrument_names, n=1, cutoff=cutoff)
 
-            if matches:
-                allowed_instrument_name = matches[0]
+            if len(matches) > 0:
+                allowed_instrument_name = matches[0]  # this is the most closely-matching name
 
                 # SPECIAL CASE: If the name of the original instrument contains—but does not end with—"NovaSeq",
                 #               (e.g. "NovaSeq S4" or "NovaSeq SP"), map it to "Illumina NovaSeq 6000".
