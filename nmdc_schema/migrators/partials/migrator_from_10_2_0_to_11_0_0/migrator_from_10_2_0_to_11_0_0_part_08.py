@@ -63,54 +63,59 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:omcp-123', 'instrument_used': ['nmdc:inst-456']}
         >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'NovaSeq X'})
         {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-101']}
-        >>> matches = difflib.get_close_matches("a", ["a", "b"], n=1, cutoff=0.25)
+        >>> difflib.get_close_matches("a", ["ab", "cd"], n=1, cutoff=0.25)  # returns list containing the closest match
+        ['ab']
+        >>> difflib.get_close_matches("x", ["ab", "cd"], n=1, cutoff=0.25)  # returns empty list when no close matches
+        []
         """
 
         if "instrument_name" in omics_doc:
-            existing_instrument_name = omics_doc["instrument_name"]
-            
-            instruments = load_yaml_asset("migrator_from_10_2_0_to_11_0_0_part_08/instrument_set.yaml")
-            allowed_instrument_names = [instrument["name"] for instrument in instruments]
+            original_instrument_name = omics_doc["instrument_name"]
 
-            # Determine which of the allowed instrument names most closely matches the "existing" (original) one.
-            # Reference: https://docs.python.org/3/library/difflib.html#difflib.get_close_matches
-            cutoff = 0.25
-            matches = difflib.get_close_matches(existing_instrument_name, allowed_instrument_names, n=1, cutoff=cutoff)
+            # SPECIAL CASE: If the instrument name contains–but does not end with—"NovaSeq" (e.g. "NovaSeq S4"
+            #               or "NovaSeq SP"), map it to "Illumina NovaSeq 6000", specifically.
+            if "NovaSeq" in omics_doc['instrument_name'] and not omics_doc['instrument_name'].endswith("NovaSeq"):
+                instrument = self.adapter.get_document_having_value_in_field(
+                    collection_name="instrument_set", field_name="name", value="Illumina NovaSeq 6000"
+                )
 
-            if len(matches) > 0:
-                allowed_instrument_name = matches[0]  # this is the most closely-matching name
+                self.logger.info(f"'instrument_name' in '{omics_doc['id']}' is '{omics_doc['instrument_name']}' "
+                                 f"and will be mapped to instrument named 'Illumina NovaSeq 6000'")
+            else:
+                # Get a list of the allowed instrument names.
+                #
+                # Note: Instead of consulting the database, we consult the YAML file that was used to seed the database.
+                #
+                instruments = load_yaml_asset("migrator_from_10_2_0_to_11_0_0_part_08/instrument_set.yaml")
+                allowed_instrument_names = [instrument["name"] for instrument in instruments]
 
-                # SPECIAL CASE: If the name of the original instrument contains—but does not end with—"NovaSeq",
-                #               (e.g. "NovaSeq S4" or "NovaSeq SP"), map it to "Illumina NovaSeq 6000".
-                if "NovaSeq" in omics_doc['instrument_name'] and not omics_doc['instrument_name'].endswith("NovaSeq"):
-                    instrument = self.adapter.get_document_having_value_in_field(
-                        collection_name="instrument_set", field_name="name", value="Illumina NovaSeq 6000"
-                    )
+                # Determine which of the allowed instrument names most closely matches the original one.
+                # Reference: https://docs.python.org/3/library/difflib.html#difflib.get_close_matches
+                cutoff = 0.25
+                matches = difflib.get_close_matches(original_instrument_name, allowed_instrument_names, n=1, cutoff=cutoff)
+                if len(matches) > 0:
+                    allowed_instrument_name = matches[0]  # this is the most closely-matching, allowed instrument name
 
-                    self.logger.info(f"'instrument_name' in '{omics_doc['id']}' is '{omics_doc['instrument_name']}' "
-                                     f"and will be mapped to instrument named 'Illumina NovaSeq 6000'")
-
-                else:
                     # Use the allowed instrument whose name most closely matches the original instrument's name.
                     self.logger.info(f"'instrument_name' in '{omics_doc['id']}' is '{omics_doc['instrument_name']}' "
                                      f"and will be mapped to instrument named '{allowed_instrument_name}'")
-                    
+
                     instrument = self.adapter.get_document_having_value_in_field(
                         collection_name="instrument_set", field_name="name", value=allowed_instrument_name
                     )
 
-                # Map the Omics document to the allowed instrument.
-                instrument_id = instrument.get("id")
-                omics_doc["instrument_used"] = [instrument_id]
+                else:
+                    raise ValueError(f"The 'instrument_name' value ({original_instrument_name}) "
+                                     f"on the OmicsProcessing document ({omics_doc['id']}) "
+                                     f"does not match any of the allowed instrument names "
+                                     f"(with a similarity score of at least {cutoff}).")
 
-                # Delete the obsolete field from the Omics document.
-                del omics_doc["instrument_name"]
-        
-            else:
-                raise ValueError(f"The 'instrument_name' value ({existing_instrument_name}) "
-                                 f"on the OmicsProcessing document ({omics_doc['id']}) "
-                                 f"does not match any of the allowed instrument names "
-                                 f"(with a similarity score of at least {cutoff}).")
+            # Map the Omics document to the allowed instrument.
+            instrument_id = instrument.get("id")
+            omics_doc["instrument_used"] = [instrument_id]
+
+            # Delete the obsolete field from the Omics document.
+            del omics_doc["instrument_name"]
 
         return omics_doc
 
