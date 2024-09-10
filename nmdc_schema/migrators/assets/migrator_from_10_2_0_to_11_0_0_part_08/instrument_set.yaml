@@ -33,14 +33,9 @@
   name: Illumina HiSeq 2500
   vendor: illumina
   type: nmdc:Instrument
-- id: nmdc:inst-14-f3fa7010
-  model: hiseq_2500
-  name: Illumina HiSeq 2500-1TB
-  vendor: illumina
-  type: nmdc:Instrument
 - id: nmdc:inst-14-xz5tb342
   model: nextseq_550
-  name: Illumina NextSeq550
+  name: Illumina NextSeq 550
   vendor: illumina
   type: nmdc:Instrument
 - id: nmdc:inst-14-xx07be40
@@ -49,13 +44,8 @@
   vendor: illumina
   type: nmdc:Instrument
 - id: nmdc:inst-14-mr4r2w09
-  model: novaseq
-  name: Illumina NovaSeq S4
-  vendor: illumina
-  type: nmdc:Instrument
-- id: nmdc:inst-14-8z926823
-  model: novaseq
-  name: NovaSeq SP
+  model: novaseq_6000
+  name: Illumina NovaSeq 6000
   vendor: illumina
   type: nmdc:Instrument
 - id: nmdc:inst-14-kw06tx33
