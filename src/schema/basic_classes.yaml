@@ -329,7 +329,6 @@ classes:
       - associated_studies
       - instrument_used
       - mod_date
-      - part_of
       - principal_investigator
     slot_usage:
       has_input:
