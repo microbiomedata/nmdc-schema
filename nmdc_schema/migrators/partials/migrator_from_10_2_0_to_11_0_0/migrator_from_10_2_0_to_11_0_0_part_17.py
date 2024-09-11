@@ -1,0 +1,46 @@
+from nmdc_schema.migrators.migrator_base import MigratorBase
+
+
+class Migrator(MigratorBase):
+    r"""
+    Migrates a database between two schemas.
+    """
+
+    _from_version = "XX"
+    _to_version = "XX" #TODO KRH: add version number
+
+
+
+    def upgrade(self) -> None:
+        r"""
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
+
+        Should be run after migrator_from_10_2_0_to_11_0_0_part_16.py.
+        """
+        # Add a type slot on the Protocol class within the protocol_link slot on each document
+        collections_to_update = [
+            "material_processing_set",
+            "data_generation_set",
+            "workflow_execution_set"
+        ] #TODOD KRH: check that these encapsulate all the collections that need to be updated
+
+        for collection_name in collections_to_update:
+            self.adapter.process_each_document(collection_name, [self.add_type_to_protocol_link])
+    
+    def add_type_to_protocol_link(self, document: dict) -> dict:
+        r"""
+        Add a type slot on the Protocol class within the protocol_link slot on each document
+
+        >>> m = Migrator()
+        >>> m.add_type_to_protocol_link({'id': 123})  # no protocol_link field
+        {'id': 123}
+        >>> m.add_type_to_protocol_link({'id': 123, 'protocol_link': {'id': 456}})
+        {'id': 123, 'protocol_link': {'id': 456, 'type': 'nmdc:Protocol'}}
+        >>> m.add_type_to_protocol_link({'id': 123, 'protocol_link': {'id': 456, 'type': 'nmdc:Protocol'}}) # test: does not overwrite existing type slot
+        {'id': 123, 'protocol_link': {'id': 456, 'type': 'nmdc:Protocol'}}
+        """
+
+        self.logger.info(f"Starting migration of {document['id']}")
+        if "protocol_link" in document:
+            if "type" not in document["protocol_link"]:
+                document["protocol_link"]["type"] = "nmdc:Protocol"
