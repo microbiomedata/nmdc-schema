@@ -57,18 +57,59 @@ class Migrator(MigratorBase):
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>>
-        >>> database = {
-        ...     'instrument_set': [
-        ...        {'id': 'nmdc:inst-456', 'name': '12T FT-ICR MS', 'model':'solarix_12T', 'vendor':'bruker', 'type':'nmdc:Instrument'},
-        ...        {'id': 'nmdc:inst-101', 'name': 'Illumina NovaSeq 6000', 'model':'my model', 'vendor':'my vendor', 'type':'nmdc:Instrument'},
-        ...     ]
-        ... } 
+        >>> # Seed the database with instruments representative of those described in `instrument_set.yaml`.
+        >>> #
+        >>> # Note: These "input" names and the corresponding "output" names below were reviewed by a stakeholder at:
+        >>> #       https://github.com/microbiomedata/berkeley-schema-fy24/pull/247#issuecomment-2342009832
+        >>> #
+        >>> database = dict(instrument_set=[])
+        >>> for (id, name) in [
+        ...     ('nmdc:inst-14-tjtq1d92', '12T FT-ICR MS'),
+        ...     ('nmdc:inst-14-dzs60b60', '15T FT-ICR MS'),
+        ...     ('nmdc:inst-14-nstrhv39', '21T FT-ICR MS'),
+        ...     ('nmdc:inst-14-mwrrj632', '7T FT-ICR MS'),
+        ...     ('nmdc:inst-14-fas8ny90', 'GC-MS'),
+        ...     ('nmdc:inst-14-79zxap02', 'Illumina HiSeq'),
+        ...     ('nmdc:inst-14-nn4b6k72', 'Illumina HiSeq 2500'),
+        ...     ('nmdc:inst-14-xz5tb342', 'Illumina NextSeq 550'),
+        ...     ('nmdc:inst-14-xx07be40', 'Illumina NovaSeq'),
+        ...     ('nmdc:inst-14-mr4r2w09', 'Illumina NovaSeq 6000'),
+        ...     ('nmdc:inst-14-kw06tx33', 'QExactHF03'),
+        ...     ('nmdc:inst-14-e32bpm65', 'QExactP02'),
+        ...     ('nmdc:inst-14-njkx0e66', 'VOrbiETD04'),
+        ... ]:
+        ...     instrument_doc = dict(id=id, name=name, model='', vendor='', type='nmdc:Instrument')
+        ...     database['instrument_set'].append(instrument_doc)
         >>> adapter = DictionaryAdapter(database=database)
         >>> m = Migrator(adapter=adapter)
-        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-123', 'instrument_name': '12T_FTICR_B'})
-        {'id': 'nmdc:omcp-123', 'instrument_used': ['nmdc:inst-456']}
-        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'NovaSeq X'})
-        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-101']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': '12T_FTICR_B'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-tjtq1d92']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': '21T_Agilent'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-nstrhv39']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': '21T Agilent'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-nstrhv39']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': '7T_FT_ICR_MS'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-mwrrj632']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'Agilent_GC_MS_01'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-fas8ny90']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'Illumina HiSeq'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-79zxap02']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'Illumina HiSeq 2500-1TB'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-nn4b6k72']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'QExactP02'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-e32bpm65']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'QExactHF03'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-kw06tx33']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'Illumina NovaSeq S4'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-mr4r2w09']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'Illumina NovaSeq'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-xx07be40']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'Illumina NextSeq550'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-xz5tb342']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'NovaSeq SP'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-mr4r2w09']}
+        >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'Illumina Illumina HiSeq'})
+        {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-14-79zxap02']}
 
         Sanity tests related to `difflib`:
         >>> difflib.get_close_matches("a", ["ab", "cd"], n=1, cutoff=0.25)  # returns list containing the closest match
