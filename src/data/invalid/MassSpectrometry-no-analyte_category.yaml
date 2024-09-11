@@ -10,5 +10,5 @@ has_input:
   - nmdc:bsm-00-red
 has_output:
   - nmdc:dobj-00-9n9n9n
-part_of:
+associated_studies:
   - nmdc:sty-00-555xxx

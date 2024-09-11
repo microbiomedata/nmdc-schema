@@ -10,6 +10,8 @@ gold_study_identifiers:
   - gold:Gs90909
 mgnify_project_identifiers:
   - mgnify.proj:ABC123
+neon_study_identifiers:
+  - NEON:DP1.20279.001
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
   by the sample's environmental package. would also be nice to align the CV with MIxS
   environmental triads

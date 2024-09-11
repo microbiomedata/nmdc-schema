@@ -1,15 +1,11 @@
 id: "nmdc:extrp-71-r2pk"
 type: nmdc:Extraction
 has_input:
-  - "nmdc:ome-6"
+  - nmdc:procsm-99-abcdef
 has_output:
-  - "nmdc:ome-8"
-extractant: # range: Solution... multivalued? (no) -> has_solution_component
-  has_solution_components:
-    - concentration:
-        type: nmdc:QuantityValue
-        has_numeric_value: 5
-        has_unit: "%"
-      type: nmdc:SolutionComponent
-  type: nmdc:Solution
-
+  - nmdc:procsm-99-123456
+substances_used:
+  - final_concentration: #PortionOfSubstance entry is incomplete, should error
+      type: nmdc:QuantityValue
+      has_numeric_value: 0.05
+      has_unit: "μg/μL"

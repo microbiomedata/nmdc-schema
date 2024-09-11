@@ -1,4 +1,4 @@
-id: nmdc:nmdc-12-1984da
+id: nmdc:wfmsa-1b2-1984da.2
 has_input:
   - nmdc:procsm-99-123456
 # legacy part_of id? validator won't catch pattern violations

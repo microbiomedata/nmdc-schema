@@ -251,3 +251,21 @@ nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv
 	cp $< $@
 
 
+nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
+	cp $< $@
+
+####
+
+.PHONY: check-invalids-for-single-failure
+
+# 		echo "Running command: $$cmd"; \
+
+check-invalids-for-single-failure:
+	for file in src/data/invalid/*.yaml; do \
+		echo "$$file:"; \
+		target_class=$$(basename $$file | cut -d'-' -f1); \
+		cmd="poetry run linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
+		output=$$($$cmd 2>&1 || true); \
+		echo "$$output" | sort | uniq; \
+	done
+

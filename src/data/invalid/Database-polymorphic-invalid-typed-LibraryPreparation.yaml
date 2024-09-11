@@ -5,7 +5,7 @@ material_processing_set:
       - nmdc:bsm-00-435737
       - nmdc:bsm-00-435738
     has_output:
-      - nmdc:procsm-00-0938548
+      - nmdc:procsm-00-0938548 # errors "too short", however, the error disappears when the type is corrected below
   - id: nmdc:extrp-00-999999
     type: nmdc:Extraction
     has_input:
@@ -13,7 +13,7 @@ material_processing_set:
     has_output:
       - nmdc:procsm-00-0938548
   - id: nmdc:libprp-00-999999
-    type: nmdc:UndefinedClass
+    type: nmdc:UndefinedClass # "No issues found" if you change this to "nmdc:LibraryPreparation"
     has_input:
       - nmdc:procsm-00-0938548
     has_output:
