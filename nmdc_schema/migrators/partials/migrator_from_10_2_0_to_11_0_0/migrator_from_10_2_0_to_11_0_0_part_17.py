@@ -7,7 +7,7 @@ class Migrator(MigratorBase):
     """
 
     _from_version = "XX"
-    _to_version = "PR250"
+    _to_version = "FIXES_ISSUE_2180"
 
     def upgrade(self) -> None:
         r"""
