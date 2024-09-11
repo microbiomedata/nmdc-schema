@@ -1,7 +1,9 @@
-from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.helpers import load_yaml_asset
 import difflib
 import uuid
+from typing import List
+
+from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.helpers import load_yaml_asset
 
 
 class Migrator(MigratorBase):
@@ -9,6 +11,12 @@ class Migrator(MigratorBase):
 
     _from_version = "X"
     _to_version = "PR19_and_PR70"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        # Read the instrument data into an instance variable up front, for future reference.
+        self.instruments: List[dict] = load_yaml_asset("migrator_from_10_2_0_to_11_0_0_part_08/instrument_set.yaml")
 
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
@@ -19,7 +27,7 @@ class Migrator(MigratorBase):
         self.adapter.process_each_document(collection_name="omics_processing_set", pipeline=[self.transform_instrument_slot]) 
 
     def fill_instrument_set(self):
-        r""""
+        r"""
         Fills the instrument_set collection from a YAML file of curated instrument instances
         
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
@@ -37,11 +45,9 @@ class Migrator(MigratorBase):
         'solarix_12T'
         >>> result['type']
         'nmdc:Instrument'
-
         """
 
-        instruments = load_yaml_asset("migrator_from_10_2_0_to_11_0_0_part_08/instrument_set.yaml")
-        for instrument in instruments:
+        for instrument in self.instruments:
             self.adapter.insert_document("instrument_set", instrument)
 
     def transform_instrument_slot(self, omics_doc: dict):
@@ -63,6 +69,8 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:omcp-123', 'instrument_used': ['nmdc:inst-456']}
         >>> m.transform_instrument_slot({'id': 'nmdc:omcp-001', 'instrument_name': 'NovaSeq X'})
         {'id': 'nmdc:omcp-001', 'instrument_used': ['nmdc:inst-101']}
+
+        Sanity tests related to `difflib`:
         >>> difflib.get_close_matches("a", ["ab", "cd"], n=1, cutoff=0.25)  # returns list containing the closest match
         ['ab']
         >>> difflib.get_close_matches("x", ["ab", "cd"], n=1, cutoff=0.25)  # returns empty list when no close matches
