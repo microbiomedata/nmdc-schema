@@ -7,9 +7,7 @@ class Migrator(MigratorBase):
     """
 
     _from_version = "XX"
-    _to_version = "XX" #TODO KRH: add version number
-
-
+    _to_version = "PR250"
 
     def upgrade(self) -> None:
         r"""
@@ -44,3 +42,5 @@ class Migrator(MigratorBase):
         if "protocol_link" in document:
             if "type" not in document["protocol_link"]:
                 document["protocol_link"]["type"] = "nmdc:Protocol"
+
+        return document
