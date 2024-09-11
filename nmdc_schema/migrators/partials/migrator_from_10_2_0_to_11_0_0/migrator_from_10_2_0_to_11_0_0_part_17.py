@@ -31,7 +31,7 @@ class Migrator(MigratorBase):
     
     def add_type_to_protocol_link(self, document: dict) -> dict:
         r"""
-        Add a type slot on the Protocol class within the protocol_link slot on each document
+        Add a `type` field to the `Protocol` instance within the `protocol_link` field on each document.
 
         >>> m = Migrator()
         >>> m.add_type_to_protocol_link({'id': 123})  # no protocol_link field
