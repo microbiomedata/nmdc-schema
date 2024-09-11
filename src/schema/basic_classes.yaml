@@ -724,11 +724,11 @@ enums:
           Illumina HiSeq 2500-1TB:
             contexts:
             -  https://gold.jgi.doe.gov/
-            alias_predicate: RELATED_SYNONYM
+            predicate: RELATED_SYNONYM
           Illumina HiSeq 2500-Rapid:
-            alias_contexts:
+            contexts:
             -  https://gold.jgi.doe.gov/
-            alias_predicate: RELATED_SYNONYM    
+            predicate: RELATED_SYNONYM    
       
       hiseq_3000:
         aliases:
@@ -767,13 +767,13 @@ enums:
           - Illumina NextSeq
         structured_aliases:
           Illumina NextSeq-HO:
-           alias_contexts:
+           contexts:
             -  https://gold.jgi.doe.gov/
-           alias_predicate: RELATED_SYNONYM
+           predicate: RELATED_SYNONYM
           Illumina NextSeq-MO:
-            alias_contexts:
+            contexts:
             -  https://gold.jgi.doe.gov/
-            alias_predicate: RELATED_SYNONYM              
+            predicate: RELATED_SYNONYM              
       
       nextseq_500:
         aliases:
