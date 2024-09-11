@@ -18,6 +18,7 @@ from nmdc_schema.migrators.partials.migrator_from_10_2_0_to_11_0_0 import (
     migrator_from_10_2_0_to_11_0_0_part_14,
     migrator_from_10_2_0_to_11_0_0_part_15,
     migrator_from_10_2_0_to_11_0_0_part_16,
+    migrator_from_10_2_0_to_11_0_0_part_17,
 )
 
 def get_migrator_classes() -> List[Type[MigratorBase]]:
@@ -52,4 +53,5 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
         migrator_from_10_2_0_to_11_0_0_part_14.Migrator,
         migrator_from_10_2_0_to_11_0_0_part_15.Migrator,
         migrator_from_10_2_0_to_11_0_0_part_16.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_17.Migrator,
     ]
