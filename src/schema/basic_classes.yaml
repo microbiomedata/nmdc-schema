@@ -695,7 +695,7 @@ enums:
           Illumina NovaSeq SP:
             contexts:
             -  https://gold.jgi.doe.gov/
-            predicate: RELATED_SYNONYM                
+            predicate: NARROW_SYNONYM                
         
       hiseq:
         aliases:
@@ -724,11 +724,11 @@ enums:
           Illumina HiSeq 2500-1TB:
             contexts:
             -  https://gold.jgi.doe.gov/
-            predicate: RELATED_SYNONYM
+            predicate: NARROW_SYNONYM
           Illumina HiSeq 2500-Rapid:
             contexts:
             -  https://gold.jgi.doe.gov/
-            predicate: RELATED_SYNONYM    
+            predicate: NARROW_SYNONYM    
       
       hiseq_3000:
         aliases:
@@ -769,11 +769,11 @@ enums:
           Illumina NextSeq-HO:
            contexts:
             -  https://gold.jgi.doe.gov/
-           predicate: RELATED_SYNONYM
+           predicate: NARROW_SYNONYM
           Illumina NextSeq-MO:
             contexts:
             -  https://gold.jgi.doe.gov/
-            predicate: RELATED_SYNONYM              
+            predicate: NARROW_SYNONYM              
       
       nextseq_500:
         aliases:
