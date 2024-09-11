@@ -255,12 +255,12 @@ classes:
 
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
-    #unique_keys: 
-    #  main:
-    #    description: A FunctionalAnntoationAggMember record is uniquely identified by the combination of the was_generated_by and gene_function_id slots.
-    #    unique_key_slots:
-    #      - was_generated_by
-    #      - gene_function_id
+    unique_keys: 
+      main:
+        description: A FunctionalAnntoationAggMember record is uniquely identified by the combination of the was_generated_by and gene_function_id slots.
+        unique_key_slots:
+          - was_generated_by
+          - gene_function_id
     slots:
       - was_generated_by
       - gene_function_id
