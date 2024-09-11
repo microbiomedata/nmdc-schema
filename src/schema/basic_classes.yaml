@@ -685,17 +685,17 @@ enums:
         meaning: OBI:0002630
         structured_aliases:
           Illumina NovaSeq S2:
-            alias_contexts:
+            contexts:
             -  https://gold.jgi.doe.gov/
-            alias_predicate: RELATED_SYNONYM
+            predicate: NARROW_SYNONYM
           Illumina NovaSeq S4:
-            alias_contexts:
+            contexts:
             -  https://gold.jgi.doe.gov/
-            alias_predicate: RELATED_SYNONYM    
+            predicate: NARROW_SYNONYM    
           Illumina NovaSeq SP:
-            alias_contexts:
+            contexts:
             -  https://gold.jgi.doe.gov/
-            alias_predicate: RELATED_SYNONYM                
+            predicate: RELATED_SYNONYM                
         
       hiseq:
         aliases:
@@ -722,7 +722,7 @@ enums:
         meaning: OBI:0002002
         structured_aliases:
           Illumina HiSeq 2500-1TB:
-            alias_contexts:
+            contexts:
             -  https://gold.jgi.doe.gov/
             alias_predicate: RELATED_SYNONYM
           Illumina HiSeq 2500-Rapid:
@@ -767,9 +767,9 @@ enums:
           - Illumina NextSeq
         structured_aliases:
           Illumina NextSeq-HO:
-            alias_contexts:
+           alias_contexts:
             -  https://gold.jgi.doe.gov/
-            alias_predicate: RELATED_SYNONYM
+           alias_predicate: RELATED_SYNONYM
           Illumina NextSeq-MO:
             alias_contexts:
             -  https://gold.jgi.doe.gov/
