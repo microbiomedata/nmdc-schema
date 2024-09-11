@@ -54,7 +54,9 @@ class Migrator(MigratorBase):
                                         "MetagenomeSequencing",
                                         "NomAnalysis",
                                         "ReadBasedTaxonomyAnalysis",
-                                        "MetatranscriptomeAnalysis"
+                                        "MetatranscriptomeAnnotation",
+                                        "MetatranscriptomeAssembly",
+                                        "MetatranscriptomeExpressionAnalysis"
                                         ]
         for nmdc_class in classes_with_inlined_classes:
             induced_slots = view.class_induced_slots(nmdc_class)
@@ -91,7 +93,9 @@ class Migrator(MigratorBase):
             metagenome_sequencing_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeSequencing", slots_with_inlined_classes)],
             nom_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:NomAnalysis", slots_with_inlined_classes)],
             read_based_taxonomy_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadBasedTaxonomyAnalysis", slots_with_inlined_classes)],
-            metatranscriptome_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAnalysis", slots_with_inlined_classes)],
+            metatranscriptome_annotation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAnnotation", slots_with_inlined_classes)],
+            metatranscriptome_assembly_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAssembly", slots_with_inlined_classes)],
+            metatranscriptome_expression_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeExpressionAnalysis", slots_with_inlined_classes)]
         )  
         
 
