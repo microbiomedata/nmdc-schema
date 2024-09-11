@@ -1,3 +1,4 @@
+#invalid because it contains parthood to another NucelotideSequencing record.
 id: nmdc:dgns-99-zUCd5N
 type: nmdc:NucleotideSequencing
 analyte_category: metagenome

@@ -3954,8 +3954,6 @@ data_generation_set:
       - nmdc:sty-99-31415
     add_date: 17-AUG-17 05.08.38.451000000 PM
     mod_date: 16-OCT-20 02.04.01.374000000 AM
-    part_of:
-      - nmdc:dgms-99-31415
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
       LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
   - id: nmdc:dgns-99-dk9vgI
@@ -4012,8 +4010,6 @@ data_generation_set:
       - nmdc:sty-99-555xxx
     add_date: 30-OCT-14 12.00.00.000000000 AM
     mod_date: 22-MAY-20 06.13.12.927000000 PM
-    part_of:
-      - nmdc:dgns-99-555xxx
     ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
       carbon transformations - Permafrost 712P3D
   - id: nmdc:dgns-99-gKlQlF
@@ -4066,8 +4062,6 @@ data_generation_set:
     analyte_category: metagenome
     associated_studies:
       - nmdc:sty-99-34xj1150
-    part_of:
-      - nmdc:dgns-99-34xj1150
 material_processing_set:
   - id: nmdc:poolp-9x9-1x
     type: nmdc:Pooling
