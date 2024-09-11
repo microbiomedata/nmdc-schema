@@ -766,11 +766,11 @@ enums:
           - NextSeq
           - Illumina NextSeq
         structured_aliases:
-          - literal_form: Illumina NextSeq-HO
+          Illumina NextSeq-HO:
             alias_contexts:
             -  https://gold.jgi.doe.gov/
             alias_predicate: RELATED_SYNONYM
-          - literal_form: Illumina NextSeq-MO
+          Illumina NextSeq-MO:
             alias_contexts:
             -  https://gold.jgi.doe.gov/
             alias_predicate: RELATED_SYNONYM              
