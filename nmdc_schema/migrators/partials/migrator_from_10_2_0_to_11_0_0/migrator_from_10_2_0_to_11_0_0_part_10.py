@@ -46,7 +46,15 @@ class Migrator(MigratorBase):
                                         "MetaproteomicsAnalysis", 
                                         "MagsAnalysis",
                                         "ReadQcAnalysis",
-                                        "DataGeneration"]
+                                        "DataGeneration",
+                                        "LibraryPreparation",
+                                        "Pooling",
+                                        "MetagenomeAnnotation",
+                                        "MetagenomeAssembly",
+                                        "MetagenomeSequencing",
+                                        "NomAnalysis",
+                                        "ReadBasedTaxonomyAnalysis"
+                                        ]
         for nmdc_class in classes_with_inlined_classes:
             induced_slots = view.class_induced_slots(nmdc_class)
             for slot_def in induced_slots:
@@ -75,6 +83,13 @@ class Migrator(MigratorBase):
             metaproteomics_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetaproteomicsAnalysis", slots_with_inlined_classes)],
             data_generation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:DataGeneration", slots_with_inlined_classes)],
             read_qc_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadQcAnalysis", slots_with_inlined_classes)],
+            library_preparation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:LibraryPreparation", slots_with_inlined_classes)],
+            pooling_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:Pooling", slots_with_inlined_classes)],
+            metagenome_annotation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeAnnotation", slots_with_inlined_classes)],
+            metagenome_assembly_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeAssembly", slots_with_inlined_classes)],
+            metagenome_sequencing_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetagenomeSequencing", slots_with_inlined_classes)],
+            nom_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:NomAnalysis", slots_with_inlined_classes)],
+            read_based_taxonomy_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadBasedTaxonomyAnalysis", slots_with_inlined_classes)]   
         )
 
         for collection_name, pipeline in agenda.items():
@@ -85,15 +100,7 @@ class Migrator(MigratorBase):
         self.adapter.set_field_of_each_document("data_object_set", "type", "nmdc:DataObject")
         self.adapter.set_field_of_each_document("functional_annotation_agg", "type", "nmdc:FunctionalAnnotationAggMember")
         self.adapter.set_field_of_each_document("field_research_site_set", "type", "nmdc:FieldResearchSite")
-        self.adapter.set_field_of_each_document("library_preparation_set", "type", "nmdc:LibraryPreparation")
-        self.adapter.set_field_of_each_document("metagenome_annotation_set", "type", "nmdc:MetagenomeAnnotation")
-        self.adapter.set_field_of_each_document("metagenome_assembly_set", "type", "nmdc:MetagenomeAssembly")
-        self.adapter.set_field_of_each_document("metagenome_sequencing_set", "type", "nmdc:MetagenomeSequencing")
-        self.adapter.set_field_of_each_document("metatranscriptome_analysis_set", "type", "nmdc:MetatranscriptomeAnalysis")
-        self.adapter.set_field_of_each_document("nom_analysis_set", "type", "nmdc:NomAnalysis")
-        self.adapter.set_field_of_each_document("pooling_set", "type", "nmdc:Pooling")
         self.adapter.set_field_of_each_document("processed_sample_set", "type", "nmdc:ProcessedSample")
-        self.adapter.set_field_of_each_document("read_based_taxonomy_analysis_set", "type", "nmdc:ReadBasedTaxonomyAnalysis")
 
 
     def add_type_to_inlined_classes(self, document: dict, slot: str, uri: str):
