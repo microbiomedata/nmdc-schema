@@ -17,10 +17,14 @@ class Migrator(MigratorBase):
         """
         # Add a type slot on the Protocol class within the protocol_link slot on each document
         collections_to_update = [
-            "material_processing_set",
             "data_generation_set",
-            "workflow_execution_set"
-        ] #TODOD KRH: check that these encapsulate all the collections that need to be updated
+            "material_processing_set",
+            "collecting_biosamples_from_site_set",
+            "protocol_execution_set",
+            "storage_process_set",
+            "workflow_execution_set",
+            "study_set"
+        ] 
 
         for collection_name in collections_to_update:
             self.adapter.process_each_document(collection_name, [self.add_type_to_protocol_link])
