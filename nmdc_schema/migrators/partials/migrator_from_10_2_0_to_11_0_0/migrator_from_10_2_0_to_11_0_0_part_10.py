@@ -123,7 +123,8 @@ class Migrator(MigratorBase):
             read_based_taxonomy_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:ReadBasedTaxonomyAnalysis", slots_with_inlined_classes)],
             metatranscriptome_annotation_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAnnotation", slots_with_inlined_classes)],
             metatranscriptome_assembly_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeAssembly", slots_with_inlined_classes)],
-            metatranscriptome_expression_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeExpressionAnalysis", slots_with_inlined_classes)]
+            metatranscriptome_expression_analysis_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:MetatranscriptomeExpressionAnalysis", slots_with_inlined_classes)],
+            collecting_biosamples_from_site_set=[lambda document: self.add_type_slot_with_class_uri(document, "nmdc:CollectingBiosamplesFromSite", slots_with_inlined_classes)]
         )  
         
 
