@@ -47,14 +47,14 @@ class Migrator(MigratorBase):
         >>> all(document['type'] == 'nmdc:LibraryPreparation' for document in database['library_preparation_set'])
         True
 
-        # Confirm a `type` field has been added to the inline `protocol_link` instance that lacked one.
+        Confirm a `type` field has been added to the inline `protocol_link` instance that lacked one.
         >>> library_prep_3 = next(document for document in database['library_preparation_set'] if document['id'] == 3)
         >>> library_prep_3['protocol_link']['name']
         'nombre'
         >>> library_prep_3['protocol_link']['type']
         'nmdc:Protocol'
 
-        # Confirm the `type` value has been updated on the inline `protocol_link` instance had an incorrect one.
+        Confirm the `type` value has been updated on the inline `protocol_link` instance that had an incorrect one.
         >>> library_prep_4 = next(document for document in database['library_preparation_set'] if document['id'] == 4)
         >>> library_prep_4['protocol_link']['name']
         'nombre'
