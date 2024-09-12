@@ -83,7 +83,8 @@ class Migrator(MigratorBase):
                                         "ReadBasedTaxonomyAnalysis",
                                         "MetatranscriptomeAnnotation",
                                         "MetatranscriptomeAssembly",
-                                        "MetatranscriptomeExpressionAnalysis"
+                                        "MetatranscriptomeExpressionAnalysis",
+                                        "CollectingBiosamplesFromSite"
                                         ]
         for nmdc_class in classes_with_inlined_classes:
             induced_slots = view.class_induced_slots(nmdc_class)
