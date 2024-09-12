@@ -665,89 +665,162 @@ enums:
       vortex_genie_2:
         aliases:
           - VortexGenie2
+          
       novaseq:
         aliases:
           - NovaSeq
+          - Illumina NovaSeq
+          
       novaseq_6000:
         aliases:
           - NovaSeq 6000
+          - Illumina NovaSeq 6000
         meaning: OBI:0002630
+        comments: Possible flowcell versions are SP, S1, S2, S4.
+        see_also: 
+         - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
+        structured_aliases:
+          Illumina NovaSeq S2:
+            contexts:
+            -  https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM
+          Illumina NovaSeq S4:
+            contexts:
+            -  https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM    
+          Illumina NovaSeq SP:
+            contexts:
+            -  https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM                
+
+      novaseq_x:
+        aliases:
+          - Illumina NovaSeq X
+          - Illumina NovaSeq X Plus 
+        comments: Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        see_also: 
+          - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
+      
       hiseq:
         aliases:
           - Illumina HiSeq
+      
       hiseq_1000:
         aliases:
           - Illumina HiSeq 1000
         meaning: OBI:0002022
+      
       hiseq_1500:
         aliases:
           - Illumina HiSeq 1500
         meaning: OBI:0003386
+      
       hiseq_2000:
         aliases:
           - Illumina HiSeq 2000
         meaning: OBI:0002001
+     
       hiseq_2500:
         aliases:
           - Illumina HiSeq 2500
         meaning: OBI:0002002
+        structured_aliases:
+          Illumina HiSeq 2500-1TB:
+            contexts:
+            -  https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM
+          Illumina HiSeq 2500-Rapid:
+            contexts:
+            -  https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM    
+      
       hiseq_3000:
         aliases:
           - Illumina HiSeq 3000
         meaning: OBI:0002048
+      
       hiseq_4000:
         aliases:
           - Illumina HiSeq 4000
         meaning: OBI:0002049
+     
       hiseq_x_ten:
         aliases:
           - Illumina HiSeq X Ten
         meaning: OBI:0002129
+      
       miniseq:
         aliases:
           - Illumina MiniSeq
         meaning: OBI:0003114
-      nextseq_1000:
-        aliases:
-          - Illumina NextSeq 1000
-        meaning: OBI:0003606
+           
       miseq:
         aliases:
           - MiSeq
           - Illumina MiSeq
         meaning: OBI:0002003
+        
+      nextseq_1000:
+        aliases:
+          - Illumina NextSeq 1000
+        meaning: OBI:0003606
+        
+      nextseq:
+        aliases:
+          - NextSeq
+          - Illumina NextSeq
+        structured_aliases:
+          Illumina NextSeq-HO:
+           contexts:
+            -  https://gold.jgi.doe.gov/
+           predicate: NARROW_SYNONYM
+          Illumina NextSeq-MO:
+            contexts:
+            -  https://gold.jgi.doe.gov/
+            predicate: NARROW_SYNONYM              
+      
       nextseq_500:
         aliases:
           - NextSeq 500
+          - Illumina NextSeq 500
         meaning: OBI:0002021
+      
       nextseq_550:
         aliases:
           - NextSeq 550
+          - Illumina NextSeq 550
         meaning: OBI:0003387
+      
       gridion:
         aliases:
           - Oxford Nanopore GridION Mk1
         meaning: OBI:0002751
+      
       minion:
         aliases:
           - Oxford Nanopore MinION
         meaning: OBI:0002750
+      
       promethion:
         aliases:
           - Oxford Nanopore PromethION
         meaning: OBI:0002752
+      
       rs_II:
         aliases:
           - PacBio RS II
         meaning: OBI:0002012
+      
       sequel:
         aliases:
           - PacBio Sequel
         meaning: OBI:0002632
+      
       sequel_II:
         aliases:
           - PacBio Sequel II
         meaning: OBI:0002633
+      
       revio:
         aliases:
           - PacBio Revio
