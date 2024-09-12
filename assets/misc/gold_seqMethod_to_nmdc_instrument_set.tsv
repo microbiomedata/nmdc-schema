@@ -1,4 +1,4 @@
-#GOLD SeqMethod	NMDC instrument_set
+GOLD SeqMethod	NMDC instrument_set id
 Illumina HiSeq	nmdc:inst-14-79zxap02
 Illumina HiSeq 2500	nmdc:inst-14-nn4b6k72
 Illumina HiSeq 2500-1TB	nmdc:inst-14-nn4b6k72
