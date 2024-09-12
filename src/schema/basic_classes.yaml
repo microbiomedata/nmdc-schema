@@ -810,6 +810,8 @@ enums:
     permissible_values:
       NucleotideSequencing:
         description: A failure has occurred during nucleotide sequencing, a data generation process.
+      MassSpectrometry:
+        description: A failure has occurred during mass spectrometry, a data generation process.
       Pooling:
         description: A failure has occurred in pooling, a lab process.
       Extraction:
@@ -818,8 +820,8 @@ enums:
         description: A failure has occurred in library preparation, a lab process.
       MetagenomeAssembly:
         description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeAnalysis:
-        description: A failure has occurred in metatranscriptome analysis, a workflow process.
+      MetatranscriptomeExpressionAnalysis:
+        description: A failure has occurred in metatranscriptome expression analysis, a workflow process.
       MagsAnalysis:
         description: A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
       ReadQcAnalysis:
@@ -828,3 +830,13 @@ enums:
         description: A failure has occurred in reads based taxonomy, a workflow process.
       MetagenomeAnnotation:
         description: A failure has occurred in annotation, a workflow process.
+      MetatranscriptomeAssembly:
+        description: A failure has occurred in assembly, a workflow process.
+      MetatranscriptomeAnnotation:
+        description: A failure has occurred in annotation, a workflow process.
+      MetabolomicsAnalysis:
+        description: A failure has occurred in analyzing metabolomics data.
+      MetaproteomicsAnalysis:
+        description: A failure has occurred in analyzing metaproteomics data.
+      NomAnalysis:
+        description: A failure has occurred in analyzing NOM data.

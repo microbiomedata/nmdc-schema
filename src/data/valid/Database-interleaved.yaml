@@ -3849,8 +3849,8 @@ workflow_execution_set:
     scaf_bp: 567890123.0
     ctg_n50: 10000.0
   - id: nmdc:wfmt-99-4d83z.1
-    type: nmdc:MetatranscriptomeAnalysis
-    name: human gut metatranscriptome annotation
+    type: nmdc:MetatranscriptomeExpressionAnalysis
+    name: human gut metatranscriptome expression
     has_input:
       - nmdc:dobj-99-9t74d
     has_output:
@@ -3863,8 +3863,8 @@ workflow_execution_set:
     img_identifiers:
       - img.taxon:2763570002
   - id: nmdc:wfmt-99-74dk4.1
-    type: nmdc:MetatranscriptomeAnalysis
-    name: soil metatranscriptome analysis
+    type: nmdc:MetatranscriptomeExpressionAnalysis
+    name: soil metatranscriptome expression
     has_input:
       - nmdc:dobj-99-74d83z
     has_output:

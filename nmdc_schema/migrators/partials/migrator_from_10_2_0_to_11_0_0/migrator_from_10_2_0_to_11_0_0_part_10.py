@@ -89,7 +89,7 @@ class Migrator(MigratorBase):
         self.adapter.set_field_of_each_document("metagenome_annotation_set", "type", "nmdc:MetagenomeAnnotation")
         self.adapter.set_field_of_each_document("metagenome_assembly_set", "type", "nmdc:MetagenomeAssembly")
         self.adapter.set_field_of_each_document("metagenome_sequencing_set", "type", "nmdc:MetagenomeSequencing")
-        self.adapter.set_field_of_each_document("metatranscriptome_analysis_set", "type", "nmdc:MetatranscriptomeAnalysis")
+        self.adapter.set_field_of_each_document("metatranscriptome_analysis_set", "type", "nmdc:MetatranscriptomeExpressionAnalysis")
         self.adapter.set_field_of_each_document("nom_analysis_set", "type", "nmdc:NomAnalysis")
         self.adapter.set_field_of_each_document("pooling_set", "type", "nmdc:Pooling")
         self.adapter.set_field_of_each_document("processed_sample_set", "type", "nmdc:ProcessedSample")
