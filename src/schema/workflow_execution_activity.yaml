@@ -141,7 +141,6 @@ classes:
           syntax: "^gold:Ga[0-9]+$"
           interpolated: true
 
-
   MetatranscriptomeExpressionAnalysis:
     is_a: WorkflowExecution
     description: >-
