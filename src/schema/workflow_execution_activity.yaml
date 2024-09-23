@@ -617,7 +617,8 @@ slots:
 enums:
   CalibrationTargetEnum:
     permissible_values:
-      mass:
+      mass_charge_ratio:
+        title: m/z
         aliases:
           - Mass
           - m/z
