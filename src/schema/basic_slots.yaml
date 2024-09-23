@@ -603,6 +603,10 @@ enums:
 
   FileTypeEnum:
     permissible_values:
+      
+      Reference Calibration File:
+        description: A file that contains data used to calibrate a computational software tool.
+      
       Metagenome Raw Reads:
         description: Interleaved paired-end raw sequencing data
         annotations:
