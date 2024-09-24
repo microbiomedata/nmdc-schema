@@ -605,7 +605,7 @@ enums:
     permissible_values:
       
       Reference Calibration File:
-        description: A file that contains data used to calibrate a computational software tool.
+        description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
         comments:
           - A general term meant to capture reference calibration files broadly.
       
