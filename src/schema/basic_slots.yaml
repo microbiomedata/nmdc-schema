@@ -606,8 +606,6 @@ enums:
       
       Reference Calibration File:
         description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
-        comments:
-          - A general term meant to capture reference calibration files broadly.
       
       Metagenome Raw Reads:
         description: Interleaved paired-end raw sequencing data
