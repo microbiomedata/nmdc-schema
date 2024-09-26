@@ -3,7 +3,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 SELECT
 distinct ?s
 WHERE {
-  graph <https://api-napa.microbiomedata.org> {
+  graph <https://api-berkeley.microbiomedata.org> {
     ?s ?p ?o .
     minus {
       ?s a ?st .
