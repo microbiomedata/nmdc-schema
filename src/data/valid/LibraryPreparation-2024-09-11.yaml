@@ -1,0 +1,12 @@
+end_date: '2017-12-12'
+has_input:
+- nmdc:procsm-12-px6qn983
+has_output:
+- nmdc:procsm-12-h63qmv56
+id: nmdc:libprp-12-1qp98z14
+processing_institution: Battelle
+start_date: 2014-08-05T18:40Z
+protocol_link:
+  name: BMI_metagenomicsSequencingSOP_v1
+  type: nmdc:Protocol
+type: nmdc:LibraryPreparation

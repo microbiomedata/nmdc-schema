@@ -108,6 +108,7 @@ docs = ["mkdocs-material"]
 # be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
 # cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
 
+# what does recheck mean?!
 
 [tool.poetry.scripts]
 analyze-mentions-of-ids = "src.scripts.analyze_mentions_of_ids:main"
@@ -118,7 +119,7 @@ create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
 date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Tutrle string, for copying into other RDF/TTL files. may need some paramterizastion.
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema" # todo recheck
-get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main" # todo not used in makefiles
+get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main"
 get-study-related-records = "src.scripts.nmdc_database_tools:cli" # todo recheck
 interleave-yaml = "src.scripts.interleave_yaml:process_yaml" # todo recheck
 migration-recursion = 'nmdc_schema.migration_recursion:main'
