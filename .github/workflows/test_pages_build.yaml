@@ -31,12 +31,24 @@ jobs:
       - name: Install dependencies
         run: poetry install -E docs
 
-      - name: Build documentation
+      - name: Compile derivative files from source
         run: |
-          mkdir -p site
-          touch site/.nojekyll
+          make squeaky-clean all
+
+      - name: Generate web-based documentation
+        run: |
+          mkdir -p docs
+          touch docs/.nojekyll
           make gendoc
           poetry run mkdocs build -d site
+
+      - name: Generate interactive schema visualizations
+        run: |
+          poetry run refgraph --version
+          poetry run refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph site/collection-graph.html
+          poetry run refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class --graph site/class-graph.html
+          head -10 site/collection-graph.html
+          head -10 site/class-graph.html
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
