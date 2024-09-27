@@ -32,7 +32,11 @@ jobs:
         run: poetry install -E docs
 
       - name: Derive files from sources
+        # Note: First, we replace the "0.0.0" placeholder version number in `pyproject.toml`.
+        # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
         run: |
+          poetry self add "poetry-dynamic-versioning[plugin]"
+          poetry dynamic-versioning
           make squeaky-clean all
 
       - name: Generate web-based documentation
