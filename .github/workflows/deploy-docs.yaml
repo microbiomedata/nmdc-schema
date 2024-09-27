@@ -40,8 +40,8 @@ jobs:
       - name: Generate interactive schema visualizations
         # Reference: https://github.com/microbiomedata/refscan
         run: |
-          pipx run --spec "refscan>=0.1.20,<1.0.0" refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph docs/collection-graph.html
-          pipx run --spec "refscan>=0.1.20,<1.0.0" refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph docs/class-graph.html
+          pipx run --spec 'refscan==0.1.20' refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph docs/collection-graph.html
+          pipx run --spec 'refscan==0.1.20' refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph docs/class-graph.html
 
         # Deploy the docs to GitHub Pages.
         #

@@ -44,8 +44,8 @@ jobs:
 
       - name: Generate interactive schema visualizations
         run: |
-          pipx run --spec "refscan>=0.1.20,<1.0.0" refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph site/collection-graph.html
-          pipx run --spec "refscan>=0.1.20,<1.0.0" refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph site/class-graph.html
+          pipx run --spec 'refscan==0.1.20' refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph site/collection-graph.html
+          pipx run --spec 'refscan==0.1.20' refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph site/class-graph.html
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
