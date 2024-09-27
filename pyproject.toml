@@ -91,7 +91,6 @@ patterns = [
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
-# Reference: https://python-poetry.org/docs/main/pyproject#extras
 [tool.poetry.extras]
 docs = ["mkdocs-material"]
 
