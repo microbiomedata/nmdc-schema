@@ -21,9 +21,6 @@ jobs:
         uses: snok/install-poetry@v1.3
 
       - name: Install dependencies.
-        # Note: The `-E docs` option tells Poetry we want it to install the packages listed
-        #       in the "docs" list in the `tool.poetry.extras` section of `pyproject.toml`.
-        #       Reference: https://python-poetry.org/docs/main/pyproject#extras
         run: poetry install -E docs
 
       - name: Compile derivative files from source
