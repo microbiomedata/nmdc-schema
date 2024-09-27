@@ -44,9 +44,10 @@ jobs:
 
       - name: Generate interactive schema visualizations
         run: |
-          poetry run refgraph --version
-          poetry run refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph site/collection-graph.html
-          poetry run refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class --graph site/class-graph.html
+          pipx install "refscan>=0.1.20,<1.0.0"
+          refgraph --version
+          refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph site/collection-graph.html
+          refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class --graph site/class-graph.html
           head -10 site/collection-graph.html
           head -10 site/class-graph.html
 
