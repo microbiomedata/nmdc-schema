@@ -21,10 +21,32 @@ jobs:
         uses: snok/install-poetry@v1.3
 
       - name: Install dependencies.
+        # Note: The `-E docs` option tells Poetry we want it to install the packages listed
+        #       in the "docs" list in the `tool.poetry.extras` section of `pyproject.toml`.
+        #       Reference: https://python-poetry.org/docs/main/pyproject#extras
         run: poetry install -E docs
 
-      - name: Build and deploy documentation.
-        # Build the docs and deploy them to GitHub Pages.
+      - name: Compile derivative files from source
+        # Note: `refgraph` requires a YAML file that gets generated here.
+        run: |
+          make squeaky-clean all
+
+      - name: Generate web-based documentation
+        run: |
+          mkdir -p docs
+          touch docs/.nojekyll
+          make gendoc
+
+      - name: Generate interactive schema visualizations
+        # Reference: https://github.com/microbiomedata/refscan
+        run: |
+          poetry run refgraph --version
+          poetry run refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph docs/collection-graph.html
+          poetry run refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class --graph docs/class-graph.html
+          head -10 docs/collection-graph.html
+          head -10 docs/class-graph.html
+
+        # Deploy the docs to GitHub Pages.
         #
         # Note: The `make mkd-gh-deploy` command below uses the `mkd-%` target
         #       defined in `Makefile`. That target's action (i.e. recipe)
@@ -34,8 +56,6 @@ jobs:
         #
         # Reference: https://www.mkdocs.org/user-guide/deploying-your-docs/
         #
+      - name: Deploy web-based documentation to GitHub Pages
         run: |
-          mkdir -p docs
-          touch docs/.nojekyll
-          make gendoc
           make mkd-gh-deploy
