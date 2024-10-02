@@ -5,7 +5,7 @@ distinct
 ?st ?p ?o
 # ?p
 WHERE {
-  graph <https://api-napa.microbiomedata.org> {
+  graph <https://api-berkeley.microbiomedata.org> {
     ?s ?p ?o .
     filter(isuri(?o))
     minus {
