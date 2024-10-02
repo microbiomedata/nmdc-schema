@@ -130,6 +130,8 @@ make-rdf: rdf-clean \
 #   and can't be validated, migrated or converted to RDF
 
 #		--selected-collections calibration_set
+#[ERROR] [local/mongo_as_nmdc_database_rdf_safe.yaml/0] 'mass' is not one of ['mass_charge_ratio', 'retention_time', 'retention_index'] in /calibration_set/2/calibration_target
+#[ERROR] [local/mongo_as_nmdc_database_rdf_safe.yaml/0] 'mass' is not one of ['mass_charge_ratio', 'retention_time', 'retention_index'] in /calibration_set/3/calibration_target
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
