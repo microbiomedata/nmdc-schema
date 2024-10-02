@@ -345,7 +345,7 @@ local/biosamples-per-study.txt:
 local/gold-study-ids.json:
 	curl -X 'GET' \
 		--output $@ \
-		'https://api-napa.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
+		'https://api-berkeley.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
 		-H 'accept: application/json'
 
 local/gold-study-ids.yaml: local/gold-study-ids.json
@@ -359,7 +359,7 @@ local/study-files/%.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 		echo $$study_id ; \
 		date ; \
 		time $(RUN) get-study-related-records \
-			--api-base-url https://api-napa.microbiomedata.org \
+			--api-base-url https://api-berkeley.microbiomedata.org \
 			extract-study \
 			--study-id $$study_id \
 			--output-file $@.tmp.yaml
@@ -390,7 +390,7 @@ local/study-files/nmdc-sty-11-dcqce727.ttl
 local/some_napa_collections.yaml: nmdc_schema/nmdc_materialized_patterns.yaml
 	date
 	time $(RUN) pure-export \
-		--client-base-url https://api-napa.microbiomedata.org \
+		--client-base-url https://api-berkeley.microbiomedata.org \
 		--endpoint-prefix nmdcschema \
 		--env-file local/.env \
 		--max-docs-per-coll 200000 \
@@ -451,7 +451,7 @@ load-from-some-napa-collections: local/some_napa_collections.ttl
 	curl -X \
 		POST -H "Content-Type: text/turtle" \
 		--user 'admin:password' \
-		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://api-napa.microbiomedata.org
+		--data-binary @$< http://fuseki:3030/nmdc-tdb2/data?graph=https://api-berkeley.microbiomedata.org
 
 .PHONY: load-non-native-uri-schema
 load-non-native-uri-schema: local/nmdc-schema-v7.8.0.owl.ttl create-nmdc-tdb2-from-app
@@ -478,7 +478,7 @@ clear-data-graph:
 	curl -X \
 		POST -H "Content-Type: application/sparql-update" \
 		--user 'admin:password' \
-		--data "CLEAR GRAPH <https://api-napa.microbiomedata.org>" \
+		--data "CLEAR GRAPH <https://api-berkeley.microbiomedata.org>" \
 		http://fuseki:3030/nmdc-tdb2/update
 
 .PHONY: docker-compose-down-from-host
