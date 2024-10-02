@@ -4836,6 +4836,7 @@ slots:
     slot_uri: MIXS:0000343
     range: TextValue
     multivalued: false
+    inlined_as_list: true
   height_carper_fiber:
     annotations:
       expected_value:

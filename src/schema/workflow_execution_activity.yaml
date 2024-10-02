@@ -362,6 +362,7 @@ slots:
   has_peptide_quantifications:
     range: PeptideQuantification
     multivalued: true
+    inlined_as_list: true
 
   asm_score:
     is_a: metagenome_assembly_parameter
@@ -617,7 +618,8 @@ slots:
 enums:
   CalibrationTargetEnum:
     permissible_values:
-      mass:
+      mass_charge_ratio:
+        title: m/z
         aliases:
           - Mass
           - m/z
