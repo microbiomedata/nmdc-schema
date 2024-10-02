@@ -362,6 +362,7 @@ slots:
   has_peptide_quantifications:
     range: PeptideQuantification
     multivalued: true
+    inlined_as_list: true
 
   asm_score:
     is_a: metagenome_assembly_parameter
