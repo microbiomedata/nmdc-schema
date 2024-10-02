@@ -130,6 +130,7 @@ make-rdf: rdf-clean \
 #   and can't be validated, migrated or converted to RDF
 
 # --selected-collections workflow_execution_set
+#		--selected-collections calibration_set
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
@@ -138,7 +139,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
-		--selected-collections calibration_set \
 		--selected-collections chemical_entity_set \
 		--selected-collections collecting_biosamples_from_site_set \
 		--selected-collections configuration_set \
