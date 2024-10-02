@@ -129,14 +129,13 @@ make-rdf: rdf-clean \
 # todo: metagenome_sequencing_set and metagenome_sequencing_activity_set are degenerate
 #   and can't be validated, migrated or converted to RDF
 
-# --selected-collections workflow_execution_set
 #		--selected-collections calibration_set
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
-		--output-yaml $@ \
+		--output-yaml $@.tmp \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
 		--selected-collections chemical_entity_set \
@@ -153,10 +152,15 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections protocol_execution_set \
 		--selected-collections storage_process_set \
 		--selected-collections study_set \
+		--selected-collections workflow_execution_set \
 		dump-from-api \
 		--client-base-url "https://api-berkeley.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
+	cat $@.tmp | \
+		yq eval 'del(.workflow_execution_set[].has_peptide_quantifications)' | \
+		cat > $@ # many has_peptide_quantifications.all_proteins values are missing prefixes (contaminants)
+	rm -rf $@.tmp
 
 ## ALTERNATIVELY:
 #local/mongo_as_unvalidated_nmdc_database.yaml:
