@@ -135,7 +135,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
-		--output-yaml $@ \
+		-output-yaml $@.tmp \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
@@ -172,6 +172,10 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
+	cat $@.tmp | \
+		yq eval '.workflow_execution_set |= map(select(.type != "nmdc:MetaproteomicsAnalysis"))' | \
+		cat > $@
+	rm -rf $@.tmp
 
 ## ALTERNATIVELY:
 #local/mongo_as_unvalidated_nmdc_database.yaml:
