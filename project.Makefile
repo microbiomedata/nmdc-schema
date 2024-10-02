@@ -135,7 +135,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
-		-output-yaml $@.tmp \
+		--output-yaml $@.tmp \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections activity_set \
 		--selected-collections biosample_set \
