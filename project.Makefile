@@ -159,7 +159,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--page-size 200000
 	cat $@.tmp | \
 		yq eval 'del(.workflow_execution_set[].has_peptide_quantifications)' | \
-		cat > $@ # many has_peptide_quantifications.all_protiens values are mising prefixes (contaminants)
+		cat > $@ # many has_peptide_quantifications.all_proteins values are missing prefixes (contaminants)
 	rm -rf $@.tmp
 
 ## ALTERNATIVELY:
