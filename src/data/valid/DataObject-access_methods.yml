@@ -1,0 +1,19 @@
+alternative_identifiers:
+  - prefix:value1
+  - prefix:value2
+compression_type: any string
+data_object_type: Crispr Terms
+description: "Crispr Terms for nmdc:ann0vx38"
+file_size_bytes: 1234
+id: "nmdc:dobj-11-dtTMNb"
+md5_checksum: "22afa3d49b73eaec2e9787a6b88fbdc3"
+name: Crispr Terms
+type: "nmdc:DataObject"
+was_generated_by: "nmdc:invalid_id"
+access_methods:
+  - type: neon
+    access_url:
+      url: "https://neon.example.org/here-you-go"
+  - type: nersc
+    access_url:
+      url: "https://nersc.example.org/public/here-you-go"
