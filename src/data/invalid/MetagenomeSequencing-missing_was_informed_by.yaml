@@ -1,0 +1,15 @@
+# invalid because was_informed_by is required but missing
+id: 'nmdc:wfmsa-9d9-qwertyuiop.3'
+type: nmdc:MetagenomeSequencing
+has_input:
+  - 'nmdc:bsm-3d2-09s0f9'
+git_url: 'https://github.com/microbiomedata/RawSequencingData'
+execution_resource: JGI
+version: v1.0.0
+# legacy has_output id? validator won't catch pattern violations
+#   or referential integrity violations
+has_output:
+  - nmdc:dobj-2a3-s09d8f
+name: Sequencing Activity for nmdc:mga0vx38
+started_at_time: '2021-08-05T14:48:51+00:00'
+ended_at_time: '2021-09-15T10:13:20+00:00'

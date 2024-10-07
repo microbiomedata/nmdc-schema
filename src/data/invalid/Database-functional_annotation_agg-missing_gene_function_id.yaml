@@ -1,0 +1,5 @@
+#invalid because gene_function_id is required but missing
+functional_annotation_agg:
+  - metagenome_annotation_id: nmdc:wfmgan-3a9-A.3
+    count: 120
+    type: nmdc:FunctionalAnnotationAggMember

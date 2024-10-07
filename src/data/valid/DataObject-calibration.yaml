@@ -1,0 +1,8 @@
+id: nmdc:dobj-12-bxzqgh77
+name: Hawkes_neg.ref
+description: Natural organic matter negative electrospray mode reference calibration file for Calibration object nmdc:calib-14-hhn3qb47
+file_size_bytes: 1150434379
+url: https://nmdcdemo.emsl.pnnl.gov/nom/reference_calibration_files/Hawkes_neg.ref
+md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
+data_object_type: Reference Calibration File
+type: nmdc:DataObject

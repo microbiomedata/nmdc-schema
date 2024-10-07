@@ -1,0 +1,23 @@
+id: nmdc:wfmag-11-547rwq94.1
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: NERSC-Perlmutter
+git_url: git_url1
+name: MAG analysis for project ABCD
+started_at_time: '2021-08-05T14:48:51+00:00'
+type: nmdc:MagsAnalysis
+was_informed_by: "nmdc:omprc-11-547rwq95"
+has_input:
+  - "nmdc:dobj-11-547rwq96"
+has_output:
+  - "nmdc:dobj-11-547rwq97"
+  - "nmdc:dobj-11-547rwq98"
+mags_list:
+  - bin_name: bins.10
+    bin_quality: LQ
+    type: nmdc:MagBin
+    eukaryotic_evaluation:
+      type: nmdc:EukEval
+      completeness: 14.71
+      contamination: 8.82
+      ncbi_lineage_tax_ids: "1-131567-2759-2611352-33682-191814-2603949"
+      ncbi_lineage: "root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae" 

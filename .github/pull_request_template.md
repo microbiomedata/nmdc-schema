@@ -2,19 +2,32 @@
 
 ## _Soft_ Schema Freeze
 
-The `nmdc-schema` and `berkeley-schema-fy24` schemas are under a soft freeze, which means changes **should not** be made that have any downstream implications. To ensure this, all PRs created creating during the freeze will be closely reviewed with **every** component of the NMDC system in mind.
+The `nmdc-schema` and `berkeley-schema-fy24` schemas are under a soft freeze, which means changes **should not** be made that have any downstream implications. To ensure this, all PRs created during the freeze will be closely reviewed with **every** component of the NMDC system in mind.
 
 ## Reviewers
 
-To ensure no changes are made unexpectedly, PR creators will request reviews from _all_ [Berkeley Schema Roll Out task coordinators](https://docs.google.com/document/d/1XXN1YuaBuSkxPXeiLKm5YxYzXTamBPQrzzeLhlh7PWs/edit#heading=h.u52g8v319adh).
+To ensure no changes are made unexpectedly, PR creators will use this PR template to tag and notify all task coordinators. Review should be specifically requested from _all_ [Berkeley Schema Roll Out task coordinators](https://docs.google.com/document/d/1XXN1YuaBuSkxPXeiLKm5YxYzXTamBPQrzzeLhlh7PWs/edit#heading=h.u52g8v319adh) that you expect to be affected by this PR.
 
 We expect task coordinators to review PRs and provide feedback/approval within 1 week of when they are identified as reviewers. 
 
-PRs will **NOT** be merged until all task coordinators (or one of their delegates) have approved. 
+PRs will **NOT** be merged until all task coordinators (or their delegates) have approved it; either here on GitHub (via "`Review changes` > `Approve`" or an equivalent comment) or verbally.
 
 Expedition, questions, and discussion can happen at any meeting.
 
 Delays in review & merging should be addressed in meetings or with NMDC leadership.
+
+| If you expect the changes to<br>impact this component... | ...[request a review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review)<br>from this person |
+| -- | -- |
+| Metadata<br>Schema | @mslarae13 |
+| Runtime<br>Mongo database<br>Database migrations | @eecavanna,<br>who will pull in<br>@shreddd as needed |
+| Postgres<br>Ingest | @naglepuff |
+| Data Portal | @aclum |
+| Workflows: MG & MT | @mbthornton-lbl |
+| Workflows: MetaB & NOM | @corilo |
+| Workflows: LipidO | @kheal |
+| Workflows: MetaP | @SamuelPurvine |
+| ETL code | @sujaypatil96 |
+| Jupyter notebooks | @brynnz22 |
 
 # PR Information
 
