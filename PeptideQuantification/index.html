@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/PeptideQuantification/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: PeptideQuantification - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -290,6 +290,8 @@
 
   PeptideQuantification : peptide_sum_masic_abundance
 
+  PeptideQuantification : type
+
 
 
 </div>
@@ -305,6 +307,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../all_proteins/">all_proteins</a></td>
 <td>* <br/> <a href="../GeneProduct/">GeneProduct</a></td>
@@ -355,7 +363,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
 <td><a href="../has_peptide_quantifications/">has_peptide_quantifications</a></td>
 <td>range</td>
 <td><a href="./">PeptideQuantification</a></td>
@@ -395,12 +403,14 @@ description: This is used to link a metaproteomics analysis workflow to a specif
   peptide sequence and related information
 from_schema: https://w3id.org/nmdc/nmdc
 slots:
+- type
 - all_proteins
 - best_protein
 - min_q_value
 - peptide_sequence
 - peptide_spectral_count
 - peptide_sum_masic_abundance
+class_uri: nmdc:PeptideQuantification
 
 </code></pre>
 </details>
@@ -411,6 +421,45 @@ description: This is used to link a metaproteomics analysis workflow to a specif
   peptide sequence and related information
 from_schema: https://w3id.org/nmdc/nmdc
 attributes:
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: PeptideQuantification
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
   all_proteins:
     name: all_proteins
     description: the list of protein identifiers that are associated with the peptide
@@ -481,6 +530,7 @@ attributes:
     domain_of:
     - PeptideQuantification
     range: integer
+class_uri: nmdc:PeptideQuantification
 
 </code></pre>
 </details>

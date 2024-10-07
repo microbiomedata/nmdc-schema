@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Pooling/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: Pooling - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -209,13 +209,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -278,16 +271,14 @@
 <div class="mermaid">classDiagram
   class Pooling
   click Pooling href "../Pooling"
-    BiosampleProcessing &lt;|-- Pooling
-      click BiosampleProcessing href "../BiosampleProcessing"
+    MaterialProcessing &lt;|-- Pooling
+      click MaterialProcessing href "../MaterialProcessing"
 
 
 
   Pooling : alternative_identifiers
 
   Pooling : description
-
-  Pooling : designated_class
 
   Pooling : end_date
 
@@ -298,8 +289,8 @@
 
   Pooling : has_input
 
-      Pooling --&gt; "1..*" Biosample : has_input
-    click Biosample href "../Biosample"
+      Pooling --&gt; "1..*" NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
   Pooling : has_output
 
@@ -308,7 +299,10 @@
 
   Pooling : id
 
-  Pooling : instrument_name
+  Pooling : instrument_used
+
+      Pooling --&gt; "*" Instrument : instrument_used
+    click Instrument href "../Instrument"
 
   Pooling : name
 
@@ -331,6 +325,8 @@
 
   Pooling : start_date
 
+  Pooling : type
+
 
 
 </div>
@@ -338,7 +334,7 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
-<li><a href="../BiosampleProcessing/">BiosampleProcessing</a><ul>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
 <li><strong>Pooling</strong></li>
 </ul>
 </li>
@@ -359,27 +355,21 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../instrument_used/">instrument_used</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>What instrument was used during DataGeneration or MaterialProcessing</td>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
+</tr>
+<tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../Biosample/">Biosample</a></td>
+<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
 <td>An input to a process</td>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a>, <a href="../PlannedProcess/">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../designated_class/">designated_class</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td></td>
-<td><a href="../PlannedProcess/">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../end_date/">end_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which any process or activity was ended</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
 <td>1..* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
-<td>An output biosample to a processing step</td>
+<td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -401,9 +391,9 @@
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
-<td><a href="../instrument_name/">instrument_name</a></td>
+<td><a href="../end_date/">end_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the instrument that was used for processing the sample</td>
+<td>The date on which any process or activity was ended</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
@@ -448,24 +438,11 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
-</tbody>
-</table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
 <tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../pooling_set/">pooling_set</a></td>
-<td>range</td>
-<td><a href="./">Pooling</a></td>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
 </table>
@@ -506,15 +483,12 @@ description: physical combination of several instances of like material.
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - OBI:0600016
-is_a: BiosampleProcessing
+is_a: MaterialProcessing
 slot_usage:
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -523,9 +497,7 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -535,10 +507,7 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'
@@ -554,15 +523,12 @@ description: physical combination of several instances of like material.
 from_schema: https://w3id.org/nmdc/nmdc
 exact_mappings:
 - OBI:0600016
-is_a: BiosampleProcessing
+is_a: MaterialProcessing
 slot_usage:
   has_input:
     name: has_input
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -571,9 +537,7 @@ slot_usage:
   has_output:
     name: has_output
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -583,75 +547,49 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: instrument_used
+    owner: Pooling
+    domain_of:
+    - MaterialProcessing
+    - DataGeneration
+    range: Instrument
+    multivalued: true
   has_input:
     name: has_input
     description: An input to a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     alias: has_input
     owner: Pooling
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
-    range: Biosample
+    range: NamedThing
     required: true
     multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
     minimum_cardinality: 2
-  designated_class:
-    name: designated_class
-    comments:
-    - required on all instances in a polymorphic Database slot like planned_process_set
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    designates_type: true
-    alias: designated_class
-    owner: Pooling
-    domain_of:
-    - PlannedProcess
-    range: uriorcurie
-  end_date:
-    name: end_date
-    description: The date on which any process or activity was ended
-    todos:
-    - add date string validation pattern
-    comments:
-    - We are using string representations of dates until all components of our ecosystem
-      can handle ISO 8610 dates
-    - The date should be formatted as YYYY-MM-DD
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: end_date
-    owner: Pooling
-    domain_of:
-    - PlannedProcess
-    range: string
   has_output:
     name: has_output
-    description: An output biosample to a processing step
+    description: An output from a process.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     alias: has_output
     owner: Pooling
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: ProcessedSample
     required: true
     multivalued: true
@@ -665,22 +603,20 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: processing_institution
     owner: Pooling
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: protocol_link
     owner: Pooling
     domain_of:
     - PlannedProcess
+    - Study
     range: Protocol
   start_date:
     name: start_date
@@ -698,16 +634,20 @@ attributes:
     domain_of:
     - PlannedProcess
     range: string
-  instrument_name:
-    name: instrument_name
-    description: The name of the instrument that was used for processing the sample.
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
-    alias: instrument_name
+    alias: end_date
     owner: Pooling
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
     range: string
   qc_status:
@@ -721,7 +661,6 @@ attributes:
     owner: Pooling
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -734,7 +673,6 @@ attributes:
     owner: Pooling
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -744,9 +682,10 @@ attributes:
     owner: Pooling
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: FailureCategorization
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -757,10 +696,7 @@ attributes:
     alias: id
     owner: Pooling
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -775,10 +711,9 @@ attributes:
     alias: name
     owner: Pooling
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -789,9 +724,8 @@ attributes:
     alias: description
     owner: Pooling
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -801,14 +735,50 @@ attributes:
     alias: alternative_identifiers
     owner: Pooling
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: Pooling
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
 class_uri: nmdc:Pooling
 
 </code></pre>

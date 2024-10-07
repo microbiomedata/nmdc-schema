@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/MagBin/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: MagBin - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -447,8 +447,8 @@
 </tr>
 <tr>
 <td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>An optional string that specifies the type object</td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -471,19 +471,7 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="./">MagBin</a></td>
-<td><a href="../members_id/">members_id</a></td>
-<td>domain</td>
-<td><a href="./">MagBin</a></td>
-</tr>
-<tr>
-<td><a href="./">MagBin</a></td>
-<td><a href="../total_bases/">total_bases</a></td>
-<td>domain</td>
-<td><a href="./">MagBin</a></td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
 <td><a href="../mags_list/">mags_list</a></td>
 <td>range</td>
 <td><a href="./">MagBin</a></td>
@@ -542,6 +530,7 @@ slots:
 - total_bases
 - type
 - eukaryotic_evaluation
+class_uri: nmdc:MagBin
 
 </code></pre>
 </details>
@@ -666,7 +655,6 @@ attributes:
     - this slot needs some basic textual annotations and constraints
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: MagBin
     alias: members_id
     owner: MagBin
     domain_of:
@@ -723,7 +711,6 @@ attributes:
     - this slot needs some basic textual annotations and constraints
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: MagBin
     alias: total_bases
     owner: MagBin
     domain_of:
@@ -731,36 +718,43 @@ attributes:
     range: integer
   type:
     name: type
-    description: An optional string that specifies the type object.  This is used
-      to allow for searches for different kinds of objects.
-    deprecated: Due to confusion about what values are used for this slot, it is best
-      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
     examples:
     - value: nmdc:Biosample
     - value: nmdc:Study
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
     rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
     alias: type
     owner: MagBin
     domain_of:
-    - DataObject
-    - Biosample
-    - Study
-    - OmicsProcessing
-    - CreditAssociation
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
     - MagBin
-    - WorkflowExecutionActivity
-    - MetagenomeAssembly
-    - MetagenomeAnnotationActivity
-    - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeExpressionAnalysis
-    - MagsAnalysisActivity
-    - ReadQcAnalysisActivity
-    - ReadBasedTaxonomyAnalysisActivity
-    range: string
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
   eukaryotic_evaluation:
     name: eukaryotic_evaluation
     description: Contains results from evaluating if a Metagenome-Assembled Genome
@@ -772,6 +766,7 @@ attributes:
     domain_of:
     - MagBin
     range: EukEval
+class_uri: nmdc:MagBin
 
 </code></pre>
 </details>

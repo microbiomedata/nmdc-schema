@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/FunctionalAnnotationAggMember/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: FunctionalAnnotationAggMember - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -277,8 +277,10 @@
 
   FunctionalAnnotationAggMember : metagenome_annotation_id
 
-      FunctionalAnnotationAggMember --&gt; "1" MetagenomeAnnotationActivity : metagenome_annotation_id
-    click MetagenomeAnnotationActivity href "../MetagenomeAnnotationActivity"
+      FunctionalAnnotationAggMember --&gt; "1" WorkflowExecution : metagenome_annotation_id
+    click WorkflowExecution href "../WorkflowExecution"
+
+  FunctionalAnnotationAggMember : type
 
 
 
@@ -297,8 +299,8 @@
 <tbody>
 <tr>
 <td><a href="../metagenome_annotation_id/">metagenome_annotation_id</a></td>
-<td>1 <br/> <a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td>The identifier for the analysis activity (WorkflowExecutionActivity) that gen...</td>
+<td>1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>The identifier for the analysis activity that generated the functional annota...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -311,6 +313,12 @@
 <td><a href="../count/">count</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -326,12 +334,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="./">FunctionalAnnotationAggMember</a></td>
-<td><a href="../metagenome_annotation_id/">metagenome_annotation_id</a></td>
-<td>domain</td>
-<td><a href="./">FunctionalAnnotationAggMember</a></td>
-</tr>
 <tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../functional_annotation_agg/">functional_annotation_agg</a></td>
@@ -374,6 +376,7 @@ slots:
 - metagenome_annotation_id
 - gene_function_id
 - count
+- type
 slot_usage:
   metagenome_annotation_id:
     name: metagenome_annotation_id
@@ -382,6 +385,7 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+class_uri: nmdc:FunctionalAnnotationAggMember
 
 </code></pre>
 </details>
@@ -400,16 +404,16 @@ slot_usage:
 attributes:
   metagenome_annotation_id:
     name: metagenome_annotation_id
-    description: The identifier for the analysis activity (WorkflowExecutionActivity)
-      that generated the functional annotation results.
+    description: The identifier for the analysis activity that generated the functional
+      annotation results, where the analysis activity is an instance of the/an appropriate
+      subclass of WorkflowExecution
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: FunctionalAnnotationAggMember
     alias: metagenome_annotation_id
     owner: FunctionalAnnotationAggMember
     domain_of:
     - FunctionalAnnotationAggMember
-    range: MetagenomeAnnotationActivity
+    range: WorkflowExecution
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
@@ -437,6 +441,46 @@ attributes:
     - FunctionalAnnotationAggMember
     range: integer
     required: true
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: FunctionalAnnotationAggMember
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:FunctionalAnnotationAggMember
 
 </code></pre>
 </details>

@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -455,15 +455,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -491,7 +482,7 @@
 
 
 <h1 id="slot-metagenome_annotation_id">Slot: metagenome_annotation_id</h1>
-<p><em>The identifier for the analysis activity (WorkflowExecutionActivity) that generated the functional annotation results.</em></p>
+<p><em>The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/metagenome_annotation_id">nmdc:metagenome_annotation_id</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -515,7 +506,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a>&nbsp;or&nbsp;<br /><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a>&nbsp;or&nbsp;<br /><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></p>
+<p>Range: <a href="../WorkflowExecution/">WorkflowExecution</a>&nbsp;or&nbsp;<br /><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a>&nbsp;or&nbsp;<br /><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -526,42 +517,23 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nmdc:metagenome_annotation_id</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nmdc:metagenome_annotation_id</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: metagenome_annotation_id
-description: The identifier for the analysis activity (WorkflowExecutionActivity)
-  that generated the functional annotation results.
+description: The identifier for the analysis activity that generated the functional
+  annotation results, where the analysis activity is an instance of the/an appropriate
+  subclass of WorkflowExecution
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-domain: FunctionalAnnotationAggMember
 alias: metagenome_annotation_id
 domain_of:
 - FunctionalAnnotationAggMember
-range: MetagenomeAnnotationActivity
+range: WorkflowExecution
 required: true
 any_of:
-- range: MetagenomeAnnotationActivity
-- range: MetatranscriptomeAnnotationActivity
+- range: MetagenomeAnnotation
+- range: MetatranscriptomeAnnotation
 
 </code></pre>
 

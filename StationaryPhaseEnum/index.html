@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -482,7 +482,7 @@
 
 
 <h1 id="enum-stationaryphaseenum">Enum: StationaryPhaseEnum</h1>
-<p><em>The type of stationary phase used in a solid phase extraction process.</em></p>
+<p><em>The type of stationary phase used in a chromatography process.</em></p>
 <p>URI: <a href="./">StationaryPhaseEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -494,6 +494,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>BEH-HILIC</td>
+<td>None</td>
+<td></td>
+</tr>
 <tr>
 <td>C18</td>
 <td>None</td>
@@ -556,6 +561,11 @@
 </tr>
 <tr>
 <td>Phenyl</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>Polysiloxane</td>
 <td>None</td>
 <td></td>
 </tr>
@@ -630,12 +640,15 @@
 <details>
 
 <pre><code class="language-yaml">name: StationaryPhaseEnum
-description: The type of stationary phase used in a solid phase extraction process.
+description: The type of stationary phase used in a chromatography process.
 from_schema: https://w3id.org/nmdc/nmdc
 contributors:
 - ORCID:0009-0001-1555-1601
+- ORCID:0000-0002-4504-1039
 rank: 1000
 permissible_values:
+  BEH-HILIC:
+    text: BEH-HILIC
   C18:
     text: C18
   C8:
@@ -662,6 +675,8 @@ permissible_values:
     text: NH2
   Phenyl:
     text: Phenyl
+  Polysiloxane:
+    text: Polysiloxane
   PS-DVB:
     text: PS-DVB
   SAX:

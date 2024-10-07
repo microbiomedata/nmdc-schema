@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -431,6 +431,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -451,15 +460,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
   
 </li>
       
@@ -491,7 +491,7 @@
 
 
 <h1 id="slot-contained_in">Slot: contained_in</h1>
-<p><em>A type of container. i.e. test tube, falcon tube, etc.</em></p>
+<p><em>A type of container.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/contained_in">nmdc:contained_in</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -506,6 +506,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../StorageProcess/">StorageProcess</a></td>
+<td>A planned process with the objective to preserve and protect material entitie...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
 <td>Separating a sample aliquot from the starting material for downstream activit...</td>
 <td>no</td>
@@ -516,40 +521,45 @@
 <ul>
 <li>Range: <a href="../ContainerCategoryEnum/">ContainerCategoryEnum</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>test tube</td>
+</tr>
+<tr>
+<td>falcon tube</td>
+</tr>
+<tr>
+<td>whirlpak</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nmdc:contained_in</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nmdc:contained_in</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
 <pre><code class="language-yaml">name: contained_in
-description: A type of container. i.e. test tube, falcon tube, etc.
+description: A type of container.
+examples:
+- value: test tube
+- value: falcon tube
+- value: whirlpak
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: contained_in
 domain_of:
 - SubSamplingProcess
+- StorageProcess
 range: ContainerCategoryEnum
 
 </code></pre>

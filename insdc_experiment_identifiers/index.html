@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -464,15 +464,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -522,8 +513,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td>The methods and processes used to generate omics data from a biosample or org...</td>
+<td><a href="../DataObject/">DataObject</a></td>
+<td>An object that primarily consists of symbols that represent information</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -545,25 +541,6 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nmdc:insdc_experiment_identifiers</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nmdc:insdc_experiment_identifiers</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -573,10 +550,10 @@ rank: 1000
 is_a: external_database_identifiers
 mixins:
 - insdc_identifiers
-domain: OmicsProcessing
 alias: insdc_experiment_identifiers
 domain_of:
-- OmicsProcessing
+- NucleotideSequencing
+- DataObject
 range: external_identifier
 multivalued: true
 pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$

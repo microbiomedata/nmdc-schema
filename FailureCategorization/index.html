@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/FailureCategorization/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: FailureCategorization - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -281,6 +281,8 @@
       FailureCategorization --&gt; "0..1" FailureWhereEnum : qc_failure_where
     click FailureWhereEnum href "../FailureWhereEnum"
 
+  FailureCategorization : type
+
 
 
 </div>
@@ -308,6 +310,12 @@
 <td>Describes the nmdc schema class that corresonds to where the failure occurred</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -322,15 +330,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="./">FailureCategorization</a></td>
-<td><a href="../qc_failure_what/">qc_failure_what</a></td>
-<td>domain</td>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="./">FailureCategorization</a></td>
-<td><a href="../qc_failure_where/">qc_failure_where</a></td>
-<td>domain</td>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
@@ -358,7 +366,7 @@
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
@@ -382,13 +390,37 @@
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
+<td><a href="../StorageProcess/">StorageProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
 <td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
+<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
@@ -400,7 +432,13 @@
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>range</td>
+<td><a href="./">FailureCategorization</a></td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
@@ -418,13 +456,7 @@
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
-<td>range</td>
-<td><a href="./">FailureCategorization</a></td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
+<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
@@ -436,43 +468,43 @@
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
+<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
 </tr>
 <tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
 <td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
 <td>range</td>
 <td><a href="./">FailureCategorization</a></td>
@@ -512,6 +544,8 @@ from_schema: https://w3id.org/nmdc/nmdc
 slots:
 - qc_failure_what
 - qc_failure_where
+- type
+class_uri: nmdc:FailureCategorization
 
 </code></pre>
 </details>
@@ -525,10 +559,9 @@ attributes:
     description: Provides a summary about what caused a lab or workflow process to
       fail
     comments:
-    - For example Low read count from a sequencer, malformed fastq files, etc)
+    - For example, low read count from a sequencer, malformed fastq files, etc.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: FailureCategorization
     alias: qc_failure_what
     owner: FailureCategorization
     domain_of:
@@ -543,12 +576,51 @@ attributes:
       be MetagenomeAssembly.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: FailureCategorization
     alias: qc_failure_where
     owner: FailureCategorization
     domain_of:
     - FailureCategorization
     range: FailureWhereEnum
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: FailureCategorization
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:FailureCategorization
 
 </code></pre>
 </details>

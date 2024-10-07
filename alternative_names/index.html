@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -455,15 +455,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -510,6 +501,11 @@
 <td>A study summarizes the overall goal of a research initiative and outlines the...</td>
 <td>yes</td>
 </tr>
+<tr>
+<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>An atom or molecule that can be represented with a chemical formula</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
@@ -526,29 +522,6 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nmdc:alternative_names</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nmdc:alternative_names</td>
-</tr>
-<tr>
-<td>exact</td>
-<td>dcterms:alternative, skos:altLabel</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -562,6 +535,7 @@ exact_mappings:
 rank: 1000
 alias: alternative_names
 domain_of:
+- ChemicalEntity
 - Study
 range: string
 multivalued: true

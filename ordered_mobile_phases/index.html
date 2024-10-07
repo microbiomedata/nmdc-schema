@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -455,15 +455,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -506,6 +497,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../ChromatographyConfiguration/">ChromatographyConfiguration</a></td>
+<td>A set of parameters that define and control the actions of a chromatography p...</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
 <td>The process of using a selective partitioning of the analyte or interferent b...</td>
 <td>no</td>
@@ -515,7 +511,7 @@
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../Solution/">Solution</a></p>
+<p>Range: <a href="../MobilePhaseSegment/">MobilePhaseSegment</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -526,25 +522,6 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nmdc:ordered_mobile_phases</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nmdc:ordered_mobile_phases</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -552,12 +529,12 @@
 description: The solution(s) that moves through a chromatography column.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-domain: ChromatographicSeparationProcess
 list_elements_ordered: true
 alias: ordered_mobile_phases
 domain_of:
+- ChromatographyConfiguration
 - ChromatographicSeparationProcess
-range: Solution
+range: MobilePhaseSegment
 multivalued: true
 inlined: true
 inlined_as_list: true

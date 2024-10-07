@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/ProcessedSample/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: Processed Sample (ProcessedSample) - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -301,6 +301,8 @@
 
   ProcessedSample : name
 
+  ProcessedSample : type
+
 
 
 </div>
@@ -373,6 +375,12 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -386,6 +394,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>any_of[range]</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>any_of[range]</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
 <tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../processed_sample_set/">processed_sample_set</a></td>
@@ -405,48 +425,18 @@
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
+<td><a href="../Extraction/">Extraction</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
 <td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../dna_absorb1/">dna_absorb1</a></td>
-<td>domain</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../dna_absorb2/">dna_absorb2</a></td>
-<td>domain</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../rna_absorb1/">rna_absorb1</a></td>
-<td>domain</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../rna_absorb2/">rna_absorb2</a></td>
-<td>domain</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
-<td><a href="../has_output/">has_output</a></td>
-<td>range</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
 <td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
 <td><a href="../has_input/">has_input</a></td>
 <td>any_of[range]</td>
@@ -495,21 +485,45 @@
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
+<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
 <td><a href="../has_input/">has_input</a></td>
 <td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
-<td><a href="./">ProcessedSample</a></td>
-<td><a href="../biomaterial_purity/">biomaterial_purity</a></td>
-<td>domain</td>
+<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
-<td><a href="../dna_absorb1/">dna_absorb1</a></td>
-<td>domain</td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>any_of[range]</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">ProcessedSample</a></td>
+</tr>
+<tr>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 </tbody>
@@ -555,14 +569,12 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
       interpolated: true
+class_uri: nmdc:ProcessedSample
 
 </code></pre>
 </details>
@@ -576,10 +588,7 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -589,7 +598,6 @@ attributes:
     name: biomaterial_purity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: ProcessedSample
     alias: biomaterial_purity
     owner: ProcessedSample
     domain_of:
@@ -606,7 +614,6 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 7
     is_a: biomaterial_purity
-    domain: ProcessedSample
     alias: dna_absorb1
     owner: ProcessedSample
     domain_of:
@@ -667,10 +674,7 @@ attributes:
     alias: id
     owner: ProcessedSample
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -685,10 +689,9 @@ attributes:
     alias: name
     owner: ProcessedSample
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -699,9 +702,8 @@ attributes:
     alias: description
     owner: ProcessedSample
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -711,14 +713,51 @@ attributes:
     alias: alternative_identifiers
     owner: ProcessedSample
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: ProcessedSample
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:ProcessedSample
 
 </code></pre>
 </details>

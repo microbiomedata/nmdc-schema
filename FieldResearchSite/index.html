@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/FieldResearchSite/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: Field Research Site (FieldResearchSite) - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -339,6 +339,8 @@
       FieldResearchSite --&gt; "0..1" TextValue : soil_type
     click TextValue href "../TextValue"
 
+  FieldResearchSite : type
+
 
 
 </div>
@@ -436,6 +438,12 @@
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -538,10 +546,7 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
@@ -550,14 +555,12 @@ slot_usage:
     name: part_of
     domain_of:
     - FieldResearchSite
-    - Biosample
     - Study
-    - OmicsProcessing
-    - WorkflowExecutionActivity
     range: FieldResearchSite
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
       interpolated: true
+class_uri: nmdc:FieldResearchSite
 
 </code></pre>
 </details>
@@ -582,10 +585,7 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
@@ -594,10 +594,7 @@ slot_usage:
     name: part_of
     domain_of:
     - FieldResearchSite
-    - Biosample
     - Study
-    - OmicsProcessing
-    - WorkflowExecutionActivity
     range: FieldResearchSite
     structured_pattern:
       syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
@@ -753,16 +750,12 @@ attributes:
       includes it.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     slot_uri: dcterms:isPartOf
     alias: part_of
     owner: FieldResearchSite
     domain_of:
     - FieldResearchSite
-    - Biosample
     - Study
-    - OmicsProcessing
-    - WorkflowExecutionActivity
     range: FieldResearchSite
     multivalued: true
     structured_pattern:
@@ -807,10 +800,7 @@ attributes:
     alias: id
     owner: FieldResearchSite
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -825,10 +815,9 @@ attributes:
     alias: name
     owner: FieldResearchSite
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -839,9 +828,8 @@ attributes:
     alias: description
     owner: FieldResearchSite
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -851,14 +839,51 @@ attributes:
     alias: alternative_identifiers
     owner: FieldResearchSite
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: FieldResearchSite
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:FieldResearchSite
 
 </code></pre>
 </details>

@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/DataObject/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: DataObject - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -278,14 +278,19 @@
 <div class="mermaid">classDiagram
   class DataObject
   click DataObject href "../DataObject"
-    NamedThing &lt;|-- DataObject
-      click NamedThing href "../NamedThing"
+    InformationObject &lt;|-- DataObject
+      click InformationObject href "../InformationObject"
 
 
 
   DataObject : alternative_identifiers
 
   DataObject : compression_type
+
+  DataObject : data_category
+
+      DataObject --&gt; "0..1" DataCategoryEnum : data_category
+    click DataCategoryEnum href "../DataCategoryEnum"
 
   DataObject : data_object_type
 
@@ -298,6 +303,8 @@
 
   DataObject : id
 
+  DataObject : insdc_experiment_identifiers
+
   DataObject : md5_checksum
 
   DataObject : name
@@ -308,8 +315,8 @@
 
   DataObject : was_generated_by
 
-      DataObject --&gt; "0..1" Activity : was_generated_by
-    click Activity href "../Activity"
+      DataObject --&gt; "0..1" WorkflowExecution : was_generated_by
+    click WorkflowExecution href "../WorkflowExecution"
 
 
 
@@ -317,7 +324,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../InformationObject/">InformationObject</a><ul>
 <li><strong>DataObject</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -333,15 +343,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../file_size_bytes/">file_size_bytes</a></td>
-<td>0..1 <br/> <a href="../Bytes/">Bytes</a></td>
-<td>Size of the file in bytes</td>
+<td><a href="../compression_type/">compression_type</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>If provided, specifies the compression type</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../md5_checksum/">md5_checksum</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>MD5 checksum of file (pre-compressed)</td>
+<td><a href="../data_category/">data_category</a></td>
+<td>0..1 <br/> <a href="../DataCategoryEnum/">DataCategoryEnum</a></td>
+<td>The category of the file, such as instrument data from data generation or pro...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -351,15 +361,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../compression_type/">compression_type</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>If provided, specifies the compression type</td>
+<td><a href="../file_size_bytes/">file_size_bytes</a></td>
+<td>0..1 <br/> <a href="../Bytes/">Bytes</a></td>
+<td>Size of the file in bytes</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>0..1 <br/> <a href="../Activity/">Activity</a></td>
+<td><a href="../insdc_experiment_identifiers/">insdc_experiment_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../md5_checksum/">md5_checksum</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>MD5 checksum of file (pre-compressed)</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -369,9 +385,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>An optional string that specifies the type object</td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>0..1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -398,6 +414,12 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -412,20 +434,32 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../data_object_set/">data_object_set</a></td>
 <td>range</td>
 <td><a href="./">DataObject</a></td>
 </tr>
 <tr>
-<td><a href="./">DataObject</a></td>
-<td><a href="../file_size_bytes/">file_size_bytes</a></td>
-<td>domain</td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../has_output/">has_output</a></td>
+<td>range</td>
 <td><a href="./">DataObject</a></td>
 </tr>
 <tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td><a href="../has_output/">has_output</a></td>
+<td><a href="../CalibrationInformation/">CalibrationInformation</a></td>
+<td><a href="../calibration_object/">calibration_object</a></td>
 <td>range</td>
 <td><a href="./">DataObject</a></td>
 </tr>
@@ -465,38 +499,34 @@ description: An object that primarily consists of symbols that represent informa
 in_subset:
 - data object subset
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: NamedThing
+is_a: InformationObject
 slots:
-- file_size_bytes
-- md5_checksum
-- data_object_type
 - compression_type
-- was_generated_by
+- data_category
+- data_object_type
+- file_size_bytes
+- insdc_experiment_identifiers
+- md5_checksum
 - url
-- type
+- was_generated_by
 slot_usage:
   name:
     name: name
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     required: true
   description:
     name: description
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     required: true
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
@@ -504,11 +534,12 @@ slot_usage:
   was_generated_by:
     name: was_generated_by
     domain_of:
-    - DataObject
     - FunctionalAnnotation
+    - DataObject
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$'
+      syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
       interpolated: true
+class_uri: nmdc:DataObject
 
 </code></pre>
 </details>
@@ -520,30 +551,25 @@ description: An object that primarily consists of symbols that represent informa
 in_subset:
 - data object subset
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: NamedThing
+is_a: InformationObject
 slot_usage:
   name:
     name: name
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     required: true
   description:
     name: description
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     required: true
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
@@ -551,46 +577,12 @@ slot_usage:
   was_generated_by:
     name: was_generated_by
     domain_of:
-    - DataObject
     - FunctionalAnnotation
+    - DataObject
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$'
+      syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
       interpolated: true
 attributes:
-  file_size_bytes:
-    name: file_size_bytes
-    description: Size of the file in bytes
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    domain: DataObject
-    alias: file_size_bytes
-    owner: DataObject
-    domain_of:
-    - DataObject
-    range: bytes
-  md5_checksum:
-    name: md5_checksum
-    description: MD5 checksum of file (pre-compressed)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: md5_checksum
-    owner: DataObject
-    domain_of:
-    - DataObject
-    range: string
-  data_object_type:
-    name: data_object_type
-    description: The type of file represented by the data object.
-    examples:
-    - value: FT ICR-MS Analysis Results
-    - value: GC-MS Metabolomics Results
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: data_object_type
-    owner: DataObject
-    domain_of:
-    - DataObject
-    range: FileTypeEnum
   compression_type:
     name: compression_type
     description: If provided, specifies the compression type
@@ -605,19 +597,65 @@ attributes:
     domain_of:
     - DataObject
     range: string
-  was_generated_by:
-    name: was_generated_by
+  data_category:
+    name: data_category
+    description: The category of the file, such as instrument data from data generation
+      or processed data from a workflow execution.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: was_generated_by
+    alias: data_category
     owner: DataObject
     domain_of:
     - DataObject
-    - FunctionalAnnotation
-    range: Activity
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}$'
-      interpolated: true
+    range: DataCategoryEnum
+  data_object_type:
+    name: data_object_type
+    description: The type of file represented by the data object.
+    examples:
+    - value: FT ICR-MS Analysis Results
+    - value: GC-MS Metabolomics Results
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: data_object_type
+    owner: DataObject
+    domain_of:
+    - DataObject
+    range: FileTypeEnum
+  file_size_bytes:
+    name: file_size_bytes
+    description: Size of the file in bytes
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: file_size_bytes
+    owner: DataObject
+    domain_of:
+    - DataObject
+    range: bytes
+  insdc_experiment_identifiers:
+    name: insdc_experiment_identifiers
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: external_database_identifiers
+    mixins:
+    - insdc_identifiers
+    alias: insdc_experiment_identifiers
+    owner: DataObject
+    domain_of:
+    - NucleotideSequencing
+    - DataObject
+    range: external_identifier
+    multivalued: true
+    pattern: ^insdc.sra:(E|D|S)RX[0-9]{6,}$
+  md5_checksum:
+    name: md5_checksum
+    description: MD5 checksum of file (pre-compressed)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: md5_checksum
+    owner: DataObject
+    domain_of:
+    - DataObject
+    range: string
   url:
     name: url
     notes:
@@ -627,42 +665,23 @@ attributes:
     alias: url
     owner: DataObject
     domain_of:
+    - ImageValue
     - Protocol
     - DataObject
-    - ImageValue
     range: string
-  type:
-    name: type
-    description: An optional string that specifies the type object.  This is used
-      to allow for searches for different kinds of objects.
-    deprecated: Due to confusion about what values are used for this slot, it is best
-      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
+  was_generated_by:
+    name: was_generated_by
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
     rank: 1000
-    alias: type
+    alias: was_generated_by
     owner: DataObject
     domain_of:
+    - FunctionalAnnotation
     - DataObject
-    - Biosample
-    - Study
-    - OmicsProcessing
-    - CreditAssociation
-    - MagBin
-    - WorkflowExecutionActivity
-    - MetagenomeAssembly
-    - MetagenomeAnnotationActivity
-    - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeExpressionAnalysis
-    - MagsAnalysisActivity
-    - ReadQcAnalysisActivity
-    - ReadBasedTaxonomyAnalysisActivity
-    range: string
+    range: WorkflowExecution
+    structured_pattern:
+      syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
+      interpolated: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -673,10 +692,7 @@ attributes:
     alias: id
     owner: DataObject
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -691,10 +707,9 @@ attributes:
     alias: name
     owner: DataObject
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
     required: true
   description:
@@ -706,9 +721,8 @@ attributes:
     alias: description
     owner: DataObject
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
     required: true
   alternative_identifiers:
@@ -719,14 +733,51 @@ attributes:
     alias: alternative_identifiers
     owner: DataObject
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: DataObject
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:DataObject
 
 </code></pre>
 </details>

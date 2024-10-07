@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/EukEval/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: EukEval - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -287,6 +287,8 @@
 
   EukEval : ncbi_lineage_tax_ids
 
+  EukEval : type
+
 
 
 </div>
@@ -302,6 +304,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../completeness/">completeness</a></td>
 <td>0..1 <br/> <a href="../Float/">Float</a></td>
@@ -387,10 +395,12 @@ comments:
   for this class.
 from_schema: https://w3id.org/nmdc/nmdc
 slots:
+- type
 - completeness
 - contamination
 - ncbi_lineage_tax_ids
 - ncbi_lineage
+class_uri: nmdc:EukEval
 
 </code></pre>
 </details>
@@ -404,6 +414,45 @@ comments:
   for this class.
 from_schema: https://w3id.org/nmdc/nmdc
 attributes:
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: EukEval
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
   completeness:
     name: completeness
     from_schema: https://w3id.org/nmdc/nmdc
@@ -449,6 +498,7 @@ attributes:
     domain_of:
     - EukEval
     range: string
+class_uri: nmdc:EukEval
 
 </code></pre>
 </details>

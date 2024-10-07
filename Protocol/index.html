@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Protocol/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: Protocol - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -273,6 +273,8 @@
 
   Protocol : name
 
+  Protocol : type
+
   Protocol : url
 
 
@@ -302,6 +304,12 @@
 <td>A human readable label for an entity</td>
 <td>direct</td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -315,6 +323,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
 <tr>
 <td><a href="../Pooling/">Pooling</a></td>
 <td><a href="../protocol_link/">protocol_link</a></td>
@@ -340,7 +360,7 @@
 <td><a href="./">Protocol</a></td>
 </tr>
 <tr>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
 <td><a href="../protocol_link/">protocol_link</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
@@ -364,19 +384,127 @@
 <td><a href="./">Protocol</a></td>
 </tr>
 <tr>
+<td><a href="../StorageProcess/">StorageProcess</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
 <td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
 <td><a href="../protocol_link/">protocol_link</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
 </tr>
 <tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
+<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td><a href="../protocol_link/">protocol_link</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
 </tr>
 <tr>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../Study/">Study</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>range</td>
+<td><a href="./">Protocol</a></td>
+</tr>
+<tr>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
 <td><a href="../protocol_link/">protocol_link</a></td>
 <td>range</td>
 <td><a href="./">Protocol</a></td>
@@ -416,6 +544,8 @@ from_schema: https://w3id.org/nmdc/nmdc
 slots:
 - url
 - name
+- type
+class_uri: nmdc:Protocol
 
 </code></pre>
 </details>
@@ -433,9 +563,9 @@ attributes:
     alias: url
     owner: Protocol
     domain_of:
+    - ImageValue
     - Protocol
     - DataObject
-    - ImageValue
     range: string
   name:
     name: name
@@ -445,11 +575,50 @@ attributes:
     alias: name
     owner: Protocol
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: Protocol
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:Protocol
 
 </code></pre>
 </details>

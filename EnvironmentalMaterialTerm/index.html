@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/EnvironmentalMaterialTerm/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
-<title>Class: EnvironmentalMaterialTerm - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
+<title>Class: EnvironmentalMaterialTerm (DEPRECATED) - NMDC Schema Documentation</title>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-environmentalmaterialterm">
+<a class="md-skip" href="#class-environmentalmaterialterm-deprecated">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: EnvironmentalMaterialTerm
+              Class: EnvironmentalMaterialTerm (DEPRECATED)
             
           </span>
 </div>
@@ -265,7 +265,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-environmentalmaterialterm">Class: EnvironmentalMaterialTerm</h1>
+<h1 id="class-environmentalmaterialterm-deprecated">Class: EnvironmentalMaterialTerm  <span style="color: red;"><strong> (DEPRECATED) </strong></span></h1>
 <p>URI: <a href="https://w3id.org/nmdc/EnvironmentalMaterialTerm">nmdc:EnvironmentalMaterialTerm</a></p>
 <div class="mermaid">classDiagram
   class EnvironmentalMaterialTerm
@@ -282,6 +282,8 @@
   EnvironmentalMaterialTerm : id
 
   EnvironmentalMaterialTerm : name
+
+  EnvironmentalMaterialTerm : type
 
 
 
@@ -331,6 +333,12 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -362,14 +370,17 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: EnvironmentalMaterialTerm
+deprecated: not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: OntologyClass
+class_uri: nmdc:EnvironmentalMaterialTerm
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: EnvironmentalMaterialTerm
+deprecated: not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: OntologyClass
 attributes:
@@ -383,10 +394,7 @@ attributes:
     alias: id
     owner: EnvironmentalMaterialTerm
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -398,10 +406,9 @@ attributes:
     alias: name
     owner: EnvironmentalMaterialTerm
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -412,9 +419,8 @@ attributes:
     alias: description
     owner: EnvironmentalMaterialTerm
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -424,14 +430,51 @@ attributes:
     alias: alternative_identifiers
     owner: EnvironmentalMaterialTerm
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: EnvironmentalMaterialTerm
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:EnvironmentalMaterialTerm
 
 </code></pre>
 </details>

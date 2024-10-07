@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/PlannedProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: Planned Process (PlannedProcess) - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -285,30 +285,24 @@
       click NamedThing href "../NamedThing"
 
 
-    PlannedProcess &lt;|-- Extraction
-      click Extraction href "../Extraction"
     PlannedProcess &lt;|-- CollectingBiosamplesFromSite
       click CollectingBiosamplesFromSite href "../CollectingBiosamplesFromSite"
-    PlannedProcess &lt;|-- BiosampleProcessing
-      click BiosampleProcessing href "../BiosampleProcessing"
-    PlannedProcess &lt;|-- SubSamplingProcess
-      click SubSamplingProcess href "../SubSamplingProcess"
-    PlannedProcess &lt;|-- MixingProcess
-      click MixingProcess href "../MixingProcess"
-    PlannedProcess &lt;|-- FiltrationProcess
-      click FiltrationProcess href "../FiltrationProcess"
-    PlannedProcess &lt;|-- ChromatographicSeparationProcess
-      click ChromatographicSeparationProcess href "../ChromatographicSeparationProcess"
-    PlannedProcess &lt;|-- OmicsProcessing
-      click OmicsProcessing href "../OmicsProcessing"
+    PlannedProcess &lt;|-- ProtocolExecution
+      click ProtocolExecution href "../ProtocolExecution"
+    PlannedProcess &lt;|-- StorageProcess
+      click StorageProcess href "../StorageProcess"
+    PlannedProcess &lt;|-- MaterialProcessing
+      click MaterialProcessing href "../MaterialProcessing"
+    PlannedProcess &lt;|-- DataGeneration
+      click DataGeneration href "../DataGeneration"
+    PlannedProcess &lt;|-- WorkflowExecution
+      click WorkflowExecution href "../WorkflowExecution"
 
 
 
   PlannedProcess : alternative_identifiers
 
   PlannedProcess : description
-
-  PlannedProcess : designated_class
 
   PlannedProcess : end_date
 
@@ -328,8 +322,6 @@
     click NamedThing href "../NamedThing"
 
   PlannedProcess : id
-
-  PlannedProcess : instrument_name
 
   PlannedProcess : name
 
@@ -352,6 +344,8 @@
 
   PlannedProcess : start_date
 
+  PlannedProcess : type
+
 
 
 </div>
@@ -359,14 +353,12 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><strong>PlannedProcess</strong><ul>
-<li><a href="../Extraction/">Extraction</a></li>
 <li><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></li>
-<li><a href="../BiosampleProcessing/">BiosampleProcessing</a></li>
-<li><a href="../SubSamplingProcess/">SubSamplingProcess</a></li>
-<li><a href="../MixingProcess/">MixingProcess</a></li>
-<li><a href="../FiltrationProcess/">FiltrationProcess</a></li>
-<li><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></li>
-<li><a href="../OmicsProcessing/">OmicsProcessing</a></li>
+<li><a href="../ProtocolExecution/">ProtocolExecution</a></li>
+<li><a href="../StorageProcess/">StorageProcess</a></li>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a></li>
+<li><a href="../DataGeneration/">DataGeneration</a></li>
+<li><a href="../WorkflowExecution/">WorkflowExecution</a></li>
 </ul>
 </li>
 </ul>
@@ -384,18 +376,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../designated_class/">designated_class</a></td>
-<td>0..1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../end_date/">end_date</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which any process or activity was ended</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../has_input/">has_input</a></td>
 <td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
 <td>An input to a process</td>
@@ -404,7 +384,7 @@
 <tr>
 <td><a href="../has_output/">has_output</a></td>
 <td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
-<td>An output biosample to a processing step</td>
+<td>An output from a process</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -426,9 +406,9 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../instrument_name/">instrument_name</a></td>
+<td><a href="../end_date/">end_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The name of the instrument that was used for processing the sample</td>
+<td>The date on which any process or activity was ended</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -473,6 +453,12 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="usages">Usages</h2>
@@ -487,243 +473,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../planned_process_set/">planned_process_set</a></td>
+<td><a href="../ProtocolExecution/">ProtocolExecution</a></td>
+<td><a href="../has_process_parts/">has_process_parts</a></td>
 <td>range</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Pooling/">Pooling</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Pooling/">Pooling</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Pooling/">Pooling</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../input_mass/">input_mass</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../volume/">volume</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../Solution/">Solution</a></td>
-<td><a href="../volume/">volume</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../CollectingBiosamplesFromSite/">CollectingBiosamplesFromSite</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../BiosampleProcessing/">BiosampleProcessing</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../volume/">volume</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
-<td><a href="../duration/">duration</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../volume/">volume</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="./">PlannedProcess</a></td>
-<td><a href="../processing_institution/">processing_institution</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="./">PlannedProcess</a></td>
-<td><a href="../protocol_link/">protocol_link</a></td>
-<td>domain</td>
-<td><a href="./">PlannedProcess</a></td>
-</tr>
-<tr>
-<td><a href="./">PlannedProcess</a></td>
-<td><a href="../instrument_name/">instrument_name</a></td>
-<td>domain</td>
 <td><a href="./">PlannedProcess</a></td>
 </tr>
 </tbody>
@@ -762,24 +514,15 @@ from_schema: https://w3id.org/nmdc/nmdc
 is_a: NamedThing
 abstract: true
 slots:
-- designated_class
-- end_date
 - has_input
 - has_output
 - processing_institution
 - protocol_link
 - start_date
-- instrument_name
+- end_date
 - qc_status
 - qc_comment
 - has_failure_categorization
-slot_usage:
-  designated_class:
-    name: designated_class
-    comments:
-    - required on all instances in a polymorphic Database slot like planned_process_set
-    domain_of:
-    - PlannedProcess
 class_uri: OBI:0000011
 
 </code></pre>
@@ -791,42 +534,7 @@ title: Planned Process
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: NamedThing
 abstract: true
-slot_usage:
-  designated_class:
-    name: designated_class
-    comments:
-    - required on all instances in a polymorphic Database slot like planned_process_set
-    domain_of:
-    - PlannedProcess
 attributes:
-  designated_class:
-    name: designated_class
-    comments:
-    - required on all instances in a polymorphic Database slot like planned_process_set
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    designates_type: true
-    alias: designated_class
-    owner: PlannedProcess
-    domain_of:
-    - PlannedProcess
-    range: uriorcurie
-  end_date:
-    name: end_date
-    description: The date on which any process or activity was ended
-    todos:
-    - add date string validation pattern
-    comments:
-    - We are using string representations of dates until all components of our ecosystem
-      can handle ISO 8610 dates
-    - The date should be formatted as YYYY-MM-DD
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: end_date
-    owner: PlannedProcess
-    domain_of:
-    - PlannedProcess
-    range: string
   has_input:
     name: has_input
     description: An input to a process.
@@ -834,30 +542,23 @@ attributes:
     aliases:
     - input
     rank: 1000
-    domain: NamedThing
     alias: has_input
     owner: PlannedProcess
     domain_of:
-    - BiosampleProcessing
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: NamedThing
     multivalued: true
   has_output:
     name: has_output
-    description: An output biosample to a processing step
+    description: An output from a process.
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - output
     rank: 1000
-    domain: NamedThing
     alias: has_output
     owner: PlannedProcess
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: NamedThing
     multivalued: true
   processing_institution:
@@ -865,22 +566,20 @@ attributes:
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: processing_institution
     owner: PlannedProcess
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
-    range: processing_institution_enum
+    range: ProcessingInstitutionEnum
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
     alias: protocol_link
     owner: PlannedProcess
     domain_of:
     - PlannedProcess
+    - Study
     range: Protocol
   start_date:
     name: start_date
@@ -898,16 +597,20 @@ attributes:
     domain_of:
     - PlannedProcess
     range: string
-  instrument_name:
-    name: instrument_name
-    description: The name of the instrument that was used for processing the sample.
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: PlannedProcess
-    alias: instrument_name
+    alias: end_date
     owner: PlannedProcess
     domain_of:
-    - OmicsProcessing
     - PlannedProcess
     range: string
   qc_status:
@@ -921,7 +624,6 @@ attributes:
     owner: PlannedProcess
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: StatusEnum
   qc_comment:
     name: qc_comment
@@ -934,7 +636,6 @@ attributes:
     owner: PlannedProcess
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: string
   has_failure_categorization:
     name: has_failure_categorization
@@ -944,9 +645,10 @@ attributes:
     owner: PlannedProcess
     domain_of:
     - PlannedProcess
-    - WorkflowExecutionActivity
     range: FailureCategorization
     multivalued: true
+    inlined: true
+    inlined_as_list: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
@@ -968,10 +670,7 @@ attributes:
     alias: id
     owner: PlannedProcess
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -983,10 +682,9 @@ attributes:
     alias: name
     owner: PlannedProcess
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -997,9 +695,8 @@ attributes:
     alias: description
     owner: PlannedProcess
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -1009,14 +706,50 @@ attributes:
     alias: alternative_identifiers
     owner: PlannedProcess
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: PlannedProcess
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
 class_uri: OBI:0000011
 
 </code></pre>

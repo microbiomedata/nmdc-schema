@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -455,15 +455,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -505,109 +496,81 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../WorkflowExecutionActivity/">WorkflowExecutionActivity</a></td>
-<td>Represents an instance of an execution of a particular workflow</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencingActivity/">MetagenomeSequencingActivity</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MagsAnalysisActivity/">MagsAnalysisActivity</a></td>
-<td>A workflow execution activity that uses computational binning tools to group ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAnnotationActivity/">MetatranscriptomeAnnotationActivity</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetaproteomicsAnalysisActivity/">MetaproteomicsAnalysisActivity</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReadQcAnalysisActivity/">ReadQcAnalysisActivity</a></td>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
 <td>A workflow execution activity that performs quality control on raw Illumina r...</td>
-<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td>A workflow execution activity that provides functional and structural annotat...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
+<td>A workflow execution activity that uses computational binning tools to group ...</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
 <td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 <tr>
-<td><a href="../MetabolomicsAnalysisActivity/">MetabolomicsAnalysisActivity</a></td>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
 <td></td>
-<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Represents an instance of an execution of a particular workflow</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
+<td>A workflow execution activity that performs taxonomy classification using seq...</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
 <td>A workflow process that provides expression values and read counts for gene f...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeAnnotationActivity/">MetagenomeAnnotationActivity</a></td>
-<td>A workflow execution activity that provides functional and structural annotat...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysisActivity/">ReadBasedTaxonomyAnalysisActivity</a></td>
-<td>A workflow execution activity that performs taxonomy classification using seq...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>Something that occurs over a period of time and acts upon or with entities; i...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../NomAnalysisActivity/">NomAnalysisActivity</a></td>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
 <td></td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../OmicsProcessing/">OmicsProcessing</a></li>
+<li>Range: <a href="../DataGeneration/">DataGeneration</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>self</td>
-<td>nmdc:was_informed_by</td>
-</tr>
-<tr>
-<td>native</td>
-<td>nmdc:was_informed_by</td>
-</tr>
-<tr>
-<td>undefined</td>
-<td>prov:wasInformedBy</td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
@@ -618,8 +581,8 @@ mappings:
 rank: 1000
 alias: was_informed_by
 domain_of:
-- Activity
-range: OmicsProcessing
+- WorkflowExecution
+range: DataGeneration
 
 </code></pre>
 

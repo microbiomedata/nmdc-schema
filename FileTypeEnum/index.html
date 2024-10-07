@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
       
 
@@ -494,6 +494,11 @@
 </thead>
 <tbody>
 <tr>
+<td>Reference Calibration File</td>
+<td>None</td>
+<td>A file that contains data used to calibrate a natural organic matter or metab...</td>
+</tr>
+<tr>
 <td>Metagenome Raw Reads</td>
 <td>None</td>
 <td>Interleaved paired-end raw sequencing data</td>
@@ -859,6 +864,31 @@
 <td>Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instru...</td>
 </tr>
 <tr>
+<td>Configuration toml</td>
+<td>None</td>
+<td>A configuration toml file used by various programs to store settings that are...</td>
+</tr>
+<tr>
+<td>LC-MS Lipidomics Results</td>
+<td>None</td>
+<td>LC-MS-based lipid assignment results table</td>
+</tr>
+<tr>
+<td>Contaminants Amino Acid FASTA</td>
+<td>None</td>
+<td>FASTA amino acid file for contaminant proteins commonly observed in proteomic...</td>
+</tr>
+<tr>
+<td>Analysis Tool Parameter File</td>
+<td>None</td>
+<td>A configuration file used by a single computational software tool that stores...</td>
+</tr>
+<tr>
+<td>Workflow Operation Summary</td>
+<td>None</td>
+<td>A human readable record of analysis steps applied during an instance of a wor...</td>
+</tr>
+<tr>
 <td>Metatranscriptome Expression</td>
 <td>None</td>
 <td>Metatranscriptome expression values and read counts for gene features predict...</td>
@@ -912,6 +942,10 @@
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
+  Reference Calibration File:
+    text: Reference Calibration File
+    description: A file that contains data used to calibrate a natural organic matter
+      or metabalomics analysis.
   Metagenome Raw Reads:
     text: Metagenome Raw Reads
     description: Interleaved paired-end raw sequencing data
@@ -1326,6 +1360,27 @@ permissible_values:
     text: LC-DDA-MS/MS Raw Data
     description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary
       instrument file
+  Configuration toml:
+    text: Configuration toml
+    description: A configuration toml file used by various programs to store settings
+      that are specific to their respective software.
+    broad_mappings:
+    - edam.format:4005
+  LC-MS Lipidomics Results:
+    text: LC-MS Lipidomics Results
+    description: LC-MS-based lipid assignment results table.
+  Contaminants Amino Acid FASTA:
+    text: Contaminants Amino Acid FASTA
+    description: FASTA amino acid file for contaminant proteins commonly observed
+      in proteomics data.
+  Analysis Tool Parameter File:
+    text: Analysis Tool Parameter File
+    description: A configuration file used by a single computational software tool
+      that stores settings that are specific to that tool.
+  Workflow Operation Summary:
+    text: Workflow Operation Summary
+    description: A human readable record of analysis steps applied during an instance
+      of a workflow operation.
   Metatranscriptome Expression:
     text: Metatranscriptome Expression
     description: Metatranscriptome expression values and read counts for gene features

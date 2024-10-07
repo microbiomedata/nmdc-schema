@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/FunctionalAnnotationTerm/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: FunctionalAnnotationTerm - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -295,8 +295,6 @@
 
     FunctionalAnnotationTerm &lt;|-- Pathway
       click Pathway href "../Pathway"
-    FunctionalAnnotationTerm &lt;|-- Reaction
-      click Reaction href "../Reaction"
     FunctionalAnnotationTerm &lt;|-- OrthologyGroup
       click OrthologyGroup href "../OrthologyGroup"
 
@@ -310,6 +308,8 @@
 
   FunctionalAnnotationTerm : name
 
+  FunctionalAnnotationTerm : type
+
 
 
 </div>
@@ -319,7 +319,6 @@
 <li><a href="../OntologyClass/">OntologyClass</a><ul>
 <li><strong>FunctionalAnnotationTerm</strong><ul>
 <li><a href="../Pathway/">Pathway</a></li>
-<li><a href="../Reaction/">Reaction</a></li>
 <li><a href="../OrthologyGroup/">OrthologyGroup</a></li>
 </ul>
 </li>
@@ -363,6 +362,12 @@
 <td>A list of alternative identifiers for the entity</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
 </tbody>
 </table>
 <h2 id="aliases">Aliases</h2>
@@ -372,7 +377,8 @@
 </ul>
 <h2 id="todos">TODOs</h2>
 <ul>
-<li>decide if this should be used for product naming</li>
+<li>decide if this should be used for product naming (Duncan, 2021-04-02)</li>
+<li>Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup subclasses.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -406,13 +412,16 @@
 description: Abstract grouping class for any term/descriptor that can be applied to
   a functional unit of a genome (protein, ncRNA, complex).
 todos:
-- decide if this should be used for product naming
+- decide if this should be used for product naming (Duncan, 2021-04-02)
+- Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup
+  subclasses.
 from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - function
 - FunctionalAnnotation
 is_a: OntologyClass
 abstract: true
+class_uri: nmdc:FunctionalAnnotationTerm
 
 </code></pre>
 </details>
@@ -422,7 +431,9 @@ abstract: true
 description: Abstract grouping class for any term/descriptor that can be applied to
   a functional unit of a genome (protein, ncRNA, complex).
 todos:
-- decide if this should be used for product naming
+- decide if this should be used for product naming (Duncan, 2021-04-02)
+- Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup
+  subclasses.
 from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - function
@@ -440,10 +451,7 @@ attributes:
     alias: id
     owner: FunctionalAnnotationTerm
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
@@ -455,10 +463,9 @@ attributes:
     alias: name
     owner: FunctionalAnnotationTerm
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
   description:
     name: description
@@ -469,9 +476,8 @@ attributes:
     alias: description
     owner: FunctionalAnnotationTerm
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
     range: string
   alternative_identifiers:
     name: alternative_identifiers
@@ -481,14 +487,51 @@ attributes:
     alias: alternative_identifiers
     owner: FunctionalAnnotationTerm
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
     range: uriorcurie
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: FunctionalAnnotationTerm
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:FunctionalAnnotationTerm
 
 </code></pre>
 </details>

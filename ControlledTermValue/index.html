@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/ControlledTermValue/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: ControlledTermValue - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -301,6 +301,8 @@
       ControlledTermValue --&gt; "0..1" OntologyClass : term
     click OntologyClass href "../OntologyClass"
 
+  ControlledTermValue : type
+
 
 
 </div>
@@ -335,6 +337,12 @@
 <td><a href="../has_raw_value/">has_raw_value</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The value that was specified for an annotation in raw form, i</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
 </tbody>
@@ -404,24 +412,6 @@
 <td>range</td>
 <td><a href="./">ControlledTermValue</a></td>
 </tr>
-<tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td><a href="../omics_type/">omics_type</a></td>
-<td>range</td>
-<td><a href="./">ControlledTermValue</a></td>
-</tr>
-<tr>
-<td><a href="./">ControlledTermValue</a></td>
-<td><a href="../term/">term</a></td>
-<td>domain</td>
-<td><a href="./">ControlledTermValue</a></td>
-</tr>
-<tr>
-<td><a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></td>
-<td><a href="../term/">term</a></td>
-<td>domain</td>
-<td><a href="./">ControlledTermValue</a></td>
-</tr>
 </tbody>
 </table>
 <h2 id="todos">TODOs</h2>
@@ -464,6 +454,7 @@ from_schema: https://w3id.org/nmdc/nmdc
 is_a: AttributeValue
 slots:
 - term
+class_uri: nmdc:ControlledTermValue
 
 </code></pre>
 </details>
@@ -483,7 +474,6 @@ attributes:
     - 'removed ''slot_uri: rdf:type'''
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: ControlledTermValue
     alias: term
     owner: ControlledTermValue
     domain_of:
@@ -496,13 +486,51 @@ attributes:
       a string. E.g. "2 cm" or "2-4 cm"
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: AttributeValue
     alias: has_raw_value
     owner: ControlledTermValue
     domain_of:
     - AttributeValue
-    - QuantityValue
     range: string
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: ControlledTermValue
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:ControlledTermValue
 
 </code></pre>
 </details>

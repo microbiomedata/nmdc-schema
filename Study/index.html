@@ -7,9 +7,9 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://microbiomedata.github.io/nmdc-schema/Study/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.6.0, mkdocs-material-9.5.28" name="generator"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
 <title>Class: Study - NMDC Schema Documentation</title>
-<link href="../assets/stylesheets/main.6543a935.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -368,9 +368,12 @@
       Study --&gt; "0..1" PersonValue : principal_investigator
     click PersonValue href "../PersonValue"
 
-  Study : related_identifiers
+  Study : protocol_link
 
-  Study : relevant_protocols
+      Study --&gt; "*" Protocol : protocol_link
+    click Protocol href "../Protocol"
+
+  Study : related_identifiers
 
   Study : specific_ecosystem
 
@@ -418,9 +421,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../neon_study_identifiers/">neon_study_identifiers</a></td>
+<td><a href="../gnps_task_identifiers/">gnps_task_identifiers</a></td>
 <td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td></td>
+<td>identifiers that link a NMDC study to a web-based report about metabolomics a...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../gold_study_identifiers/">gold_study_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>identifiers for corresponding project(s) in GOLD</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../insdc_bioproject_identifiers/">insdc_bioproject_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td>Unique identifier for a bioproject submitted to INSDC that relates to the NMD...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -430,21 +445,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../id/">id</a></td>
-<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A unique identifier for a thing</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
-<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Unique identifier for a study submitted to additional resources</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../gnps_task_identifiers/">gnps_task_identifiers</a></td>
+<td><a href="../mgnify_project_identifiers/">mgnify_project_identifiers</a></td>
 <td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td>identifiers that link a NMDC study to a web-based report about metabolomics a...</td>
+<td>identifiers for corresponding project in MGnify</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../neon_study_identifiers/">neon_study_identifiers</a></td>
+<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../related_identifiers/">related_identifiers</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Unique identifier for a study submitted to additional resources</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -463,18 +478,6 @@
 <td><a href="../alternative_titles/">alternative_titles</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>A list of alternative titles for the entity</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../description/">description</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A brief, link-free summary of a Study</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../associated_dois/">associated_dois</a></td>
-<td>* <br/> <a href="../Doi/">Doi</a></td>
-<td>A list of DOIs associated with a resource, such as a list of DOIS associated ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -502,15 +505,21 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../funding_sources/">funding_sources</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>A list of organizations, along with the award numbers, that underwrite financ...</td>
+<td><a href="../specific_ecosystem/">specific_ecosystem</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Specific ecosystems represent specific features of the environment like aphot...</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../gold_study_identifiers/">gold_study_identifiers</a></td>
-<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td>identifiers for corresponding project(s) in GOLD</td>
+<td><a href="../associated_dois/">associated_dois</a></td>
+<td>* <br/> <a href="../Doi/">Doi</a></td>
+<td>A list of DOIs associated with a resource, such as a list of DOIS associated ...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../funding_sources/">funding_sources</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A list of organizations, along with the award numbers, that underwrite financ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -520,27 +529,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../study_category/">study_category</a></td>
-<td>1 <br/> <a href="../StudyCategoryEnum/">StudyCategoryEnum</a></td>
-<td>The type of research initiative</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../insdc_bioproject_identifiers/">insdc_bioproject_identifiers</a></td>
-<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td>Unique identifier for a bioproject submitted to INSDC that relates to the NMD...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../mgnify_project_identifiers/">mgnify_project_identifiers</a></td>
-<td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
-<td>identifiers for corresponding project in MGnify</td>
+<td><a href="../homepage_website/">homepage_website</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>The website address (URL) of an entity's homepage</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../notes/">notes</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>from study class</td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -562,21 +559,15 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../related_identifiers/">related_identifiers</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Unique identifier for a study submitted to additional resources</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../relevant_protocols/">relevant_protocols</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>* <br/> <a href="../Protocol/">Protocol</a></td>
 <td></td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../specific_ecosystem/">specific_ecosystem</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>Specific ecosystems represent specific features of the environment like aphot...</td>
+<td><a href="../study_category/">study_category</a></td>
+<td>1 <br/> <a href="../StudyCategoryEnum/">StudyCategoryEnum</a></td>
+<td>The type of research initiative</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -592,27 +583,39 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../type/">type</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>An optional string that specifies the type object</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../websites/">websites</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>A list of websites that are associated with the entity</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../homepage_website/">homepage_website</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>The website address (URL) of an entity's homepage</td>
-<td>direct</td>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A unique identifier for a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
 <td><a href="../name/">name</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A human readable label for an entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A brief, link-free summary of a Study</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>Unique identifier for a study submitted to additional resources</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 </tbody>
@@ -629,6 +632,18 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../associated_studies/">associated_studies</a></td>
+<td>range</td>
+<td><a href="./">Study</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../associated_studies/">associated_studies</a></td>
+<td>range</td>
+<td><a href="./">Study</a></td>
+</tr>
+<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../study_set/">study_set</a></td>
 <td>range</td>
@@ -636,62 +651,8 @@
 </tr>
 <tr>
 <td><a href="../Biosample/">Biosample</a></td>
-<td><a href="../part_of/">part_of</a></td>
+<td><a href="../associated_studies/">associated_studies</a></td>
 <td>range</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../emsl_project_identifiers/">emsl_project_identifiers</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../neon_study_identifiers/">neon_study_identifiers</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../jgi_portal_study_identifiers/">jgi_portal_study_identifiers</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../gnps_task_identifiers/">gnps_task_identifiers</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../associated_dois/">associated_dois</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../gold_study_identifiers/">gold_study_identifiers</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../has_credit_associations/">has_credit_associations</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../study_category/">study_category</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../mgnify_project_identifiers/">mgnify_project_identifiers</a></td>
-<td>domain</td>
 <td><a href="./">Study</a></td>
 </tr>
 <tr>
@@ -701,20 +662,8 @@
 <td><a href="./">Study</a></td>
 </tr>
 <tr>
-<td><a href="./">Study</a></td>
-<td><a href="../related_identifiers/">related_identifiers</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="./">Study</a></td>
-<td><a href="../study_image/">study_image</a></td>
-<td>domain</td>
-<td><a href="./">Study</a></td>
-</tr>
-<tr>
-<td><a href="../OmicsProcessing/">OmicsProcessing</a></td>
-<td><a href="../part_of/">part_of</a></td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../associated_studies/">associated_studies</a></td>
 <td>range</td>
 <td><a href="./">Study</a></td>
 </tr>
@@ -816,46 +765,39 @@ broad_mappings:
 is_a: NamedThing
 slots:
 - emsl_project_identifiers
-- neon_study_identifiers
-- jgi_portal_study_identifiers
-- id
-- alternative_identifiers
 - gnps_task_identifiers
+- gold_study_identifiers
+- insdc_bioproject_identifiers
+- jgi_portal_study_identifiers
+- mgnify_project_identifiers
+- neon_study_identifiers
+- related_identifiers
 - alternative_descriptions
 - alternative_names
 - alternative_titles
-- description
-- associated_dois
 - ecosystem
 - ecosystem_category
 - ecosystem_subtype
 - ecosystem_type
+- specific_ecosystem
+- associated_dois
 - funding_sources
-- gold_study_identifiers
 - has_credit_associations
-- study_category
-- insdc_bioproject_identifiers
-- mgnify_project_identifiers
+- homepage_website
 - notes
 - objective
 - part_of
 - principal_investigator
-- related_identifiers
-- relevant_protocols
-- specific_ecosystem
+- protocol_link
+- study_category
 - study_image
 - title
-- type
 - websites
-- homepage_website
 slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
@@ -867,10 +809,9 @@ slot_usage:
         tag: tooltip
         value: Provide a name for the study your samples will belong with.
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
   websites:
     name: websites
     annotations:
@@ -880,8 +821,8 @@ slot_usage:
           webpage associated with this collection of samples. Multiple links can be
           provided.
     domain_of:
-    - Study
     - PersonValue
+    - Study
   homepage_website:
     name: homepage_website
     annotations:
@@ -900,9 +841,8 @@ slot_usage:
     comments:
     - Include links in other Study slots, such as websites or dois.
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
   notes:
     name: notes
     annotations:
@@ -916,11 +856,8 @@ slot_usage:
     description: Unique identifier for a study submitted to additional resources.
       Matches that which has been submitted to NMDC
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
   alternative_names:
     name: alternative_names
     annotations:
@@ -929,6 +866,7 @@ slot_usage:
         value: Project, study, or sample set names the are also associated with this
           submission or other names / identifiers for this study.
     domain_of:
+    - ChemicalEntity
     - Study
   related_identifiers:
     name: related_identifiers
@@ -946,8 +884,8 @@ slot_usage:
     description: Unique identifier for a bioproject submitted to INSDC that relates
       to the NMDC submitted study.
     domain_of:
+    - NucleotideSequencing
     - Study
-    - OmicsProcessing
   part_of:
     name: part_of
     description: Links a study or consortium to a parent (or umbrella) study or consortium.
@@ -955,14 +893,19 @@ slot_usage:
     - Value is the id of the umbrella study or consortium.
     domain_of:
     - FieldResearchSite
-    - Biosample
     - Study
-    - OmicsProcessing
-    - WorkflowExecutionActivity
     range: Study
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
+  protocol_link:
+    name: protocol_link
+    domain_of:
+    - PlannedProcess
+    - Study
+    multivalued: true
+    inlined_as_list: true
+class_uri: nmdc:Study
 
 </code></pre>
 </details>
@@ -1011,10 +954,7 @@ slot_usage:
   id:
     name: id
     domain_of:
-    - Biosample
-    - Study
     - NamedThing
-    - Activity
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
@@ -1026,10 +966,9 @@ slot_usage:
         tag: tooltip
         value: Provide a name for the study your samples will belong with.
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
   websites:
     name: websites
     annotations:
@@ -1039,8 +978,8 @@ slot_usage:
           webpage associated with this collection of samples. Multiple links can be
           provided.
     domain_of:
-    - Study
     - PersonValue
+    - Study
   homepage_website:
     name: homepage_website
     annotations:
@@ -1059,9 +998,8 @@ slot_usage:
     comments:
     - Include links in other Study slots, such as websites or dois.
     domain_of:
-    - Study
-    - NamedThing
     - ImageValue
+    - NamedThing
   notes:
     name: notes
     annotations:
@@ -1075,11 +1013,8 @@ slot_usage:
     description: Unique identifier for a study submitted to additional resources.
       Matches that which has been submitted to NMDC
     domain_of:
-    - Biosample
-    - Study
+    - MetaboliteIdentification
     - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
   alternative_names:
     name: alternative_names
     annotations:
@@ -1088,6 +1023,7 @@ slot_usage:
         value: Project, study, or sample set names the are also associated with this
           submission or other names / identifiers for this study.
     domain_of:
+    - ChemicalEntity
     - Study
   related_identifiers:
     name: related_identifiers
@@ -1105,8 +1041,8 @@ slot_usage:
     description: Unique identifier for a bioproject submitted to INSDC that relates
       to the NMDC submitted study.
     domain_of:
+    - NucleotideSequencing
     - Study
-    - OmicsProcessing
   part_of:
     name: part_of
     description: Links a study or consortium to a parent (or umbrella) study or consortium.
@@ -1114,14 +1050,18 @@ slot_usage:
     - Value is the id of the umbrella study or consortium.
     domain_of:
     - FieldResearchSite
-    - Biosample
     - Study
-    - OmicsProcessing
-    - WorkflowExecutionActivity
     range: Study
     structured_pattern:
       syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
       interpolated: true
+  protocol_link:
+    name: protocol_link
+    domain_of:
+    - PlannedProcess
+    - Study
+    multivalued: true
+    inlined_as_list: true
 attributes:
   emsl_project_identifiers:
     name: emsl_project_identifiers
@@ -1142,7 +1082,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - emsl_identifiers
-    domain: Study
     alias: emsl_project_identifiers
     owner: Study
     domain_of:
@@ -1150,21 +1089,73 @@ attributes:
     range: external_identifier
     multivalued: true
     pattern: ^emsl\.project:[0-9]{5}$
-  neon_study_identifiers:
-    name: neon_study_identifiers
+  gnps_task_identifiers:
+    name: gnps_task_identifiers
+    description: identifiers that link a NMDC study to a web-based report about metabolomics
+      analysis progress and results
+    title: GNPS task identifiers
+    comments:
+    - this could be considered a related identifier, as the metabolomics progress
+      and results aren't a study per se
+    - this identifier was registered with bioregistry but not identifiers.org
+    examples:
+    - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysis/
     rank: 1000
     is_a: study_identifiers
     mixins:
-    - neon_identifiers
-    domain: Study
-    alias: neon_study_identifiers
+    - gnps_identifiers
+    alias: gnps_task_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
     multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^gnps\.task:[a-f0-9]+$
+  gold_study_identifiers:
+    name: gold_study_identifiers
+    description: identifiers for corresponding project(s) in GOLD
+    title: GOLD Study Identifiers
+    comments:
+    - uses the prefix GS (but possibly in a different case)
+    examples:
+    - value: https://bioregistry.io/gold:Gs0110115
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/studies
+    rank: 1000
+    is_a: study_identifiers
+    mixins:
+    - gold_identifiers
+    alias: gold_study_identifiers
+    owner: Study
+    domain_of:
+    - Study
+    range: external_identifier
+    multivalued: true
+    pattern: ^gold:Gs[0-9]+$
+  insdc_bioproject_identifiers:
+    name: insdc_bioproject_identifiers
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: Provide the NCBI BioProject Accession Number associated with the listed
+          NCBI BioProject Title.
+    description: Unique identifier for a bioproject submitted to INSDC that relates
+      to the NMDC submitted study.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: study_identifiers
+    alias: insdc_bioproject_identifiers
+    owner: Study
+    domain_of:
+    - NucleotideSequencing
+    - Study
+    range: external_identifier
+    multivalued: true
+    pattern: ^bioproject:PRJ[DEN][A-Z][0-9]+$
   jgi_portal_study_identifiers:
     name: jgi_portal_study_identifiers
     id_prefixes:
@@ -1186,7 +1177,6 @@ attributes:
     is_a: study_identifiers
     mixins:
     - jgi_portal_identifiers
-    domain: Study
     alias: jgi_portal_study_identifiers
     owner: Study
     domain_of:
@@ -1194,69 +1184,49 @@ attributes:
     range: external_identifier
     multivalued: true
     pattern: ^jgi.proposal:\d+$
-  id:
-    name: id
-    description: A unique identifier for a thing. Must be either a CURIE shorthand
-      for a URI or a complete URI
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    identifier: true
-    alias: id
-    owner: Study
-    domain_of:
-    - Biosample
-    - Study
-    - NamedThing
-    - Activity
-    range: uriorcurie
-    required: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  alternative_identifiers:
-    name: alternative_identifiers
-    description: Unique identifier for a study submitted to additional resources.
-      Matches that which has been submitted to NMDC
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: alternative_identifiers
-    owner: Study
-    domain_of:
-    - Biosample
-    - Study
-    - NamedThing
-    - MetaboliteQuantification
-    - WorkflowExecutionActivity
-    range: uriorcurie
-    multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  gnps_task_identifiers:
-    name: gnps_task_identifiers
-    description: identifiers that link a NMDC study to a web-based report about metabolomics
-      analysis progress and results
-    title: GNPS task identifiers
-    comments:
-    - this could be considered a related identifier, as the metabolomics progress
-      and results aren't a study per se
-    - this identifier was registered with bioregistry but not identifiers.org
+  mgnify_project_identifiers:
+    name: mgnify_project_identifiers
+    description: identifiers for corresponding project in MGnify
     examples:
-    - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
+    - value: https://bioregistry.io/mgnify.proj:MGYS00005757
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisActivity/
     rank: 1000
     is_a: study_identifiers
     mixins:
-    - gnps_identifiers
-    domain: Study
-    alias: gnps_task_identifiers
+    - mgnify_identifiers
+    alias: mgnify_project_identifiers
     owner: Study
     domain_of:
     - Study
     range: external_identifier
     multivalued: true
-    pattern: ^gnps\.task:[a-f0-9]+$
+    pattern: ^mgnify.proj:[A-Z]+[0-9]+$
+  neon_study_identifiers:
+    name: neon_study_identifiers
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    is_a: study_identifiers
+    mixins:
+    - neon_identifiers
+    alias: neon_study_identifiers
+    owner: Study
+    domain_of:
+    - Study
+    range: external_identifier
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  related_identifiers:
+    name: related_identifiers
+    description: Unique identifier for a study submitted to additional resources.
+      Similar, but not necessarily identical to that which has been submitted to NMDC
+    title: Related Identifiers
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: related_identifiers
+    owner: Study
+    domain_of:
+    - Study
+    range: string
   alternative_descriptions:
     name: alternative_descriptions
     description: A list of alternative descriptions for the entity. The distinction
@@ -1283,6 +1253,7 @@ attributes:
     alias: alternative_names
     owner: Study
     domain_of:
+    - ChemicalEntity
     - Study
     range: string
     multivalued: true
@@ -1300,52 +1271,6 @@ attributes:
     - Study
     range: string
     multivalued: true
-  description:
-    name: description
-    annotations:
-      tooltip:
-        tag: tooltip
-        value: Provide a brief description of your study.
-    description: A brief, link-free summary of a Study
-    comments:
-    - Include links in other Study slots, such as websites or dois.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    slot_uri: dcterms:description
-    alias: description
-    owner: Study
-    domain_of:
-    - Study
-    - NamedThing
-    - ImageValue
-    range: string
-  associated_dois:
-    name: associated_dois
-    description: A list of DOIs associated with a resource, such as a list of DOIS
-      associated with a Study.
-    examples:
-    - value: '[{''doi'': ''doi:10.46936/intm.proj.2021.60141/60000423'', ''doi_provider'':
-        ''emsl'', ''doi_category'': ''award_doi''}, {''doi'': ''doi:10.1101/2022.12.12.520098'',
-        ''doi_category'': ''publication_doi''}, {''doi'': ''doi:10.48321/D1Z60Q'',
-        ''doi_category'': ''data_management_plan_doi'', ''doi_provider'': ''gsc''}]'
-      description: Provides a list of two DOIs; specifically, an EMSL award DOI and
-        a publication DOI.
-    in_subset:
-    - data_portal_subset
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Associated DOIs
-    - Associated digital object identifiers
-    rank: 1000
-    domain: Study
-    alias: associated_dois
-    owner: Study
-    domain_of:
-    - Study
-    range: Doi
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   ecosystem:
     name: ecosystem
     description: An ecosystem is a combination of a physical environment (abiotic
@@ -1433,18 +1358,63 @@ attributes:
     - Biosample
     - Study
     range: string
+  specific_ecosystem:
+    name: specific_ecosystem
+    description: Specific ecosystems represent specific features of the environment
+      like aphotic zone in an ocean or gastric mucosa within a host digestive system.
+      Specific ecosystem is in position 5/5 in a GOLD path.
+    comments:
+    - Specific ecosystems help to define samples based on very specific characteristics
+      of an environment under the five-level classification system.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://gold.jgi.doe.gov/help
+    rank: 1000
+    is_a: gold_path_field
+    alias: specific_ecosystem
+    owner: Study
+    domain_of:
+    - Biosample
+    - Study
+    range: string
+  associated_dois:
+    name: associated_dois
+    description: A list of DOIs associated with a resource, such as a list of DOIS
+      associated with a Study.
+    examples:
+    - value: '[{''doi'': ''doi:10.46936/intm.proj.2021.60141/60000423'', ''doi_provider'':
+        ''emsl'', ''doi_category'': ''award_doi''}, {''doi'': ''doi:10.1101/2022.12.12.520098'',
+        ''doi_category'': ''publication_doi''}, {''doi'': ''doi:10.48321/D1Z60Q'',
+        ''doi_category'': ''data_management_plan_doi'', ''doi_provider'': ''gsc''}]'
+      description: Provides a list of two DOIs; specifically, an EMSL award DOI and
+        a publication DOI.
+    in_subset:
+    - data_portal_subset
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Associated DOIs
+    - Associated digital object identifiers
+    rank: 1000
+    alias: associated_dois
+    owner: Study
+    domain_of:
+    - Study
+    range: Doi
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   funding_sources:
     name: funding_sources
     description: A list of organizations, along with the award numbers, that underwrite
-      financial support for projects of  a particular type. Typically, they process
-      applications and award funds to the chosen qualified  applicants.
+      financial support for projects of a particular type. Typically, they process
+      applications and award funds to the chosen qualified applicants.
     comments:
     - Include only the name of the funding organization and the award or contract
       number.
     examples:
     - value: National Sciences Foundation Dimensions of Biodiversity (award no. 1342701)
     - value: U.S. Department of Energy, Office of Science, Office of Biological and
-        Environmental Research  (BER) under contract DE-AC05-00OR2275
+        Environmental Research (BER) under contract DE-AC05-00OR2275
     from_schema: https://w3id.org/nmdc/nmdc
     close_mappings:
     - NCIT:C39409
@@ -1455,29 +1425,6 @@ attributes:
     - Study
     range: string
     multivalued: true
-  gold_study_identifiers:
-    name: gold_study_identifiers
-    description: identifiers for corresponding project(s) in GOLD
-    title: GOLD Study Identifiers
-    comments:
-    - uses the prefix GS (but possibly in a different case)
-    examples:
-    - value: https://bioregistry.io/gold:Gs0110115
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://gold.jgi.doe.gov/studies
-    rank: 1000
-    is_a: study_identifiers
-    mixins:
-    - gold_identifiers
-    domain: Study
-    alias: gold_study_identifiers
-    owner: Study
-    domain_of:
-    - Study
-    range: external_identifier
-    multivalued: true
-    pattern: ^gold:Gs[0-9]+$
   has_credit_associations:
     name: has_credit_associations
     annotations:
@@ -1489,7 +1436,6 @@ attributes:
       semantics: person should get credit X for their participation in the study'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Study
     slot_uri: prov:qualifiedAssociation
     alias: has_credit_associations
     owner: Study
@@ -1499,63 +1445,30 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  study_category:
-    name: study_category
-    description: The type of research initiative
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    domain: Study
-    alias: study_category
-    owner: Study
-    domain_of:
-    - Study
-    range: StudyCategoryEnum
-    required: true
-  insdc_bioproject_identifiers:
-    name: insdc_bioproject_identifiers
+  homepage_website:
+    name: homepage_website
     annotations:
       tooltip:
         tag: tooltip
-        value: Provide the NCBI BioProject Accession Number associated with the listed
-          NCBI BioProject Title.
-    description: Unique identifier for a bioproject submitted to INSDC that relates
-      to the NMDC submitted study.
+        value: Link to the consortium's homepage if the study_category is a consortium.
+    description: The website address (URL) of an entity's homepage.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: study_identifiers
-    alias: insdc_bioproject_identifiers
+    is_a: websites
+    alias: homepage_website
     owner: Study
     domain_of:
     - Study
-    - OmicsProcessing
-    range: external_identifier
+    range: string
     multivalued: true
-    pattern: ^bioproject:PRJ[DEN][A-Z][0-9]+$
-  mgnify_project_identifiers:
-    name: mgnify_project_identifiers
-    description: identifiers for corresponding project in MGnify
-    examples:
-    - value: https://bioregistry.io/mgnify.proj:MGYS00005757
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    is_a: study_identifiers
-    mixins:
-    - mgnify_identifiers
-    domain: Study
-    alias: mgnify_project_identifiers
-    owner: Study
-    domain_of:
-    - Study
-    range: external_identifier
-    multivalued: true
-    pattern: ^mgnify.proj:[A-Z]+[0-9]+$
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+    maximum_cardinality: 1
   notes:
     name: notes
     annotations:
       tooltip:
         tag: tooltip
         value: Add any additional notes or comments about this study.
-    description: from study class
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: notes
@@ -1583,16 +1496,12 @@ attributes:
     - Value is the id of the umbrella study or consortium.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: NamedThing
     slot_uri: dcterms:isPartOf
     alias: part_of
     owner: Study
     domain_of:
     - FieldResearchSite
-    - Biosample
     - Study
-    - OmicsProcessing
-    - WorkflowExecutionActivity
     range: Study
     multivalued: true
     structured_pattern:
@@ -1609,56 +1518,36 @@ attributes:
     owner: Study
     domain_of:
     - Study
-    - OmicsProcessing
+    - DataGeneration
     range: PersonValue
-  related_identifiers:
-    name: related_identifiers
-    description: Unique identifier for a study submitted to additional resources.
-      Similar, but not necessarily identical to that which has been submitted to NMDC
-    title: Related Identifiers
+  protocol_link:
+    name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Study
-    alias: related_identifiers
+    alias: protocol_link
     owner: Study
     domain_of:
+    - PlannedProcess
     - Study
-    range: string
-  relevant_protocols:
-    name: relevant_protocols
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: relevant_protocols
-    owner: Study
-    domain_of:
-    - Study
-    range: string
+    range: Protocol
     multivalued: true
-  specific_ecosystem:
-    name: specific_ecosystem
-    description: Specific ecosystems represent specific features of the environment
-      like aphotic zone in an ocean or gastric mucosa within a host digestive system.
-      Specific ecosystem is in position 5/5 in a GOLD path.
-    comments:
-    - Specific ecosystems help to define samples based on very specific characteristics
-      of an environment under the five-level classification system.
+    inlined_as_list: true
+  study_category:
+    name: study_category
+    description: The type of research initiative
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://gold.jgi.doe.gov/help
     rank: 1000
-    is_a: gold_path_field
-    alias: specific_ecosystem
+    alias: study_category
     owner: Study
     domain_of:
-    - Biosample
     - Study
-    range: string
+    range: StudyCategoryEnum
+    required: true
   study_image:
     name: study_image
     description: Links a study to one or more images.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    domain: Study
     alias: study_image
     owner: Study
     domain_of:
@@ -1666,6 +1555,7 @@ attributes:
     range: ImageValue
     multivalued: true
     inlined: true
+    inlined_as_list: true
   title:
     name: title
     description: A name given to the entity that differs from the name/label programmatically
@@ -1681,38 +1571,6 @@ attributes:
     domain_of:
     - Study
     range: string
-  type:
-    name: type
-    description: An optional string that specifies the type object.  This is used
-      to allow for searches for different kinds of objects.
-    deprecated: Due to confusion about what values are used for this slot, it is best
-      not to use this slot. See https://github.com/microbiomedata/nmdc-schema/issues/248.
-      MAM removed designates_type and rdf:type slot uri 2022-11-30
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    rank: 1000
-    alias: type
-    owner: Study
-    domain_of:
-    - DataObject
-    - Biosample
-    - Study
-    - OmicsProcessing
-    - CreditAssociation
-    - MagBin
-    - WorkflowExecutionActivity
-    - MetagenomeAssembly
-    - MetagenomeAnnotationActivity
-    - MetatranscriptomeAnnotationActivity
-    - MetatranscriptomeExpressionAnalysis
-    - MagsAnalysisActivity
-    - ReadQcAnalysisActivity
-    - ReadBasedTaxonomyAnalysisActivity
-    range: string
   websites:
     name: websites
     annotations:
@@ -1727,29 +1585,28 @@ attributes:
     alias: websites
     owner: Study
     domain_of:
-    - Study
     - PersonValue
+    - Study
     range: string
     multivalued: true
     pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
-  homepage_website:
-    name: homepage_website
-    annotations:
-      tooltip:
-        tag: tooltip
-        value: Link to the consortium's homepage if the study_category is a consortium.
-    description: The website address (URL) of an entity's homepage.
+  id:
+    name: id
+    description: A unique identifier for a thing. Must be either a CURIE shorthand
+      for a URI or a complete URI
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    is_a: websites
-    alias: homepage_website
+    identifier: true
+    alias: id
     owner: Study
     domain_of:
-    - Study
-    range: string
-    multivalued: true
-    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
-    maximum_cardinality: 1
+    - NamedThing
+    range: uriorcurie
+    required: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
   name:
     name: name
     annotations:
@@ -1762,11 +1619,82 @@ attributes:
     alias: name
     owner: Study
     domain_of:
-    - Protocol
-    - NamedThing
     - PersonValue
-    - Activity
+    - NamedThing
+    - Protocol
     range: string
+  description:
+    name: description
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: Provide a brief description of your study.
+    description: A brief, link-free summary of a Study
+    comments:
+    - Include links in other Study slots, such as websites or dois.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: Study
+    domain_of:
+    - ImageValue
+    - NamedThing
+    range: string
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: Unique identifier for a study submitted to additional resources.
+      Matches that which has been submitted to NMDC
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: alternative_identifiers
+    owner: Study
+    domain_of:
+    - MetaboliteIdentification
+    - NamedThing
+    range: uriorcurie
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: Study
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:Study
 
 </code></pre>
 </details>
