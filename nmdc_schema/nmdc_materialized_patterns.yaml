@@ -74,6 +74,9 @@ prefixes:
   NCBITaxon:
     prefix_prefix: NCBITaxon
     prefix_reference: http://purl.obolibrary.org/obo/NCBITaxon_
+  NCBI:
+    prefix_prefix: NCBI
+    prefix_reference: http://example.com/ncbitaxon/
   NCIT:
     prefix_prefix: NCIT
     prefix_reference: http://purl.obolibrary.org/obo/NCIT_
@@ -3601,6 +3604,10 @@ enums:
     name: FileTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
+      Reference Calibration File:
+        text: Reference Calibration File
+        description: A file that contains data used to calibrate a natural organic
+          matter or metabalomics analysis.
       Metagenome Raw Reads:
         text: Metagenome Raw Reads
         description: Interleaved paired-end raw sequencing data
@@ -4382,8 +4389,9 @@ enums:
     name: CalibrationTargetEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      mass:
-        text: mass
+      mass_charge_ratio:
+        text: mass_charge_ratio
+        title: m/z
         aliases:
         - Mass
         - m/z
@@ -9867,6 +9875,7 @@ slots:
     slot_uri: MIXS:0000343
     range: TextValue
     multivalued: false
+    inlined_as_list: true
   height_carper_fiber:
     name: height_carper_fiber
     annotations:
@@ -18626,6 +18635,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: PeptideQuantification
     multivalued: true
+    inlined_as_list: true
   asm_score:
     name: asm_score
     description: A score for comparing metagenomic assembly quality from same sample.

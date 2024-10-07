@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-09-16T22:54:24
+# Generation date: 2024-10-07T14:43:36
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -63,6 +63,7 @@ MISO = CurieNamespace('MISO', 'http://purl.obolibrary.org/obo/MISO_')
 MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
 METANETX = CurieNamespace('MetaNetX', 'http://example.org/metanetx/')
+NCBI = CurieNamespace('NCBI', 'http://example.com/ncbitaxon/')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
@@ -2784,7 +2785,9 @@ class Biosample(MaterialEntity):
             self.heavy_metals = [self.heavy_metals] if self.heavy_metals is not None else []
         self.heavy_metals = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals]
 
-        self._normalize_inlined_as_dict(slot_name="heavy_metals_meth", slot_type=TextValue, key_name="type", keyed=False)
+        if not isinstance(self.heavy_metals_meth, list):
+            self.heavy_metals_meth = [self.heavy_metals_meth] if self.heavy_metals_meth is not None else []
+        self.heavy_metals_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals_meth]
 
         if self.height_carper_fiber is not None and not isinstance(self.height_carper_fiber, QuantityValue):
             self.height_carper_fiber = QuantityValue(**as_dict(self.height_carper_fiber))
@@ -6410,7 +6413,9 @@ class MetaproteomicsAnalysis(WorkflowExecution):
         if not isinstance(self.id, MetaproteomicsAnalysisId):
             self.id = MetaproteomicsAnalysisId(self.id)
 
-        self._normalize_inlined_as_dict(slot_name="has_peptide_quantifications", slot_type=PeptideQuantification, key_name="type", keyed=False)
+        if not isinstance(self.has_peptide_quantifications, list):
+            self.has_peptide_quantifications = [self.has_peptide_quantifications] if self.has_peptide_quantifications is not None else []
+        self.has_peptide_quantifications = [v if isinstance(v, PeptideQuantification) else PeptideQuantification(**as_dict(v)) for v in self.has_peptide_quantifications]
 
         if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
             self.was_informed_by = DataGenerationId(self.was_informed_by)
@@ -6748,7 +6753,7 @@ class SamplePortionEnum(EnumDefinitionImpl):
 
 class CalibrationTargetEnum(EnumDefinitionImpl):
 
-    mass = PermissibleValue(text="mass")
+    mass_charge_ratio = PermissibleValue(text="mass_charge_ratio")
     retention_time = PermissibleValue(text="retention_time")
     retention_index = PermissibleValue(text="retention_index")
 
@@ -7163,6 +7168,10 @@ class FileTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "Reference Calibration File",
+            PermissibleValue(
+                text="Reference Calibration File",
+                description="""A file that contains data used to calibrate a natural organic matter or metabalomics analysis."""))
         setattr(cls, "Metagenome Raw Reads",
             PermissibleValue(
                 text="Metagenome Raw Reads",

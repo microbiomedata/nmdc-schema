@@ -2958,7 +2958,7 @@
         "CalibrationTargetEnum": {
             "description": "",
             "enum": [
-                "mass",
+                "mass_charge_ratio",
                 "retention_time",
                 "retention_index"
             ],
@@ -4805,6 +4805,7 @@
         "FileTypeEnum": {
             "description": "",
             "enum": [
+                "Reference Calibration File",
                 "Metagenome Raw Reads",
                 "Metagenome Raw Read 1",
                 "Metagenome Raw Read 2",
