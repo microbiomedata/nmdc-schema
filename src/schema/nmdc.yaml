@@ -273,6 +273,8 @@ classes:
           syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
         required: true
+      count:
+        description: The number of times gene or transcript counts or spectral counts were assigned to a gene product with the associated function.
 
   Database:
     class_uri: nmdc:Database
