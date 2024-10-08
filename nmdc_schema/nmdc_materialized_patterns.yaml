@@ -4385,6 +4385,8 @@ enums:
         text: metatranscriptomics
       natural organic matter:
         text: natural organic matter
+      bulk chemistry:
+        text: bulk chemistry
   CalibrationTargetEnum:
     name: CalibrationTargetEnum
     from_schema: https://w3id.org/nmdc/nmdc

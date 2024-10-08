@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-07T15:57:32
+# Generation date: 2024-10-08T10:37:57
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -7752,6 +7752,8 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "natural organic matter",
             PermissibleValue(text="natural organic matter"))
+        setattr(cls, "bulk chemistry",
+            PermissibleValue(text="bulk chemistry"))
 
 class ArchStrucEnum(EnumDefinitionImpl):
 
