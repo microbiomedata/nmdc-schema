@@ -5,6 +5,7 @@ has_input:
 has_output:
   - nmdc:procsm-13-S67F
 substances_used:
+  - eenie meenie miney mo
 duration:
   type: nmdc:QuantityValue
   has_numeric_value: 2
