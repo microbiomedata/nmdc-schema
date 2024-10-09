@@ -1678,6 +1678,7 @@ slots:
     description: proteins that were annotated during a metaprotemics analysis and their associated information
     range: ProteinIdentification
     multivalued: true
+    inlined_as_list: true
 
   all_proteins:
     description: the list of protein identifiers that are associated with the peptide sequence
