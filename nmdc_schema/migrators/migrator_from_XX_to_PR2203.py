@@ -4,8 +4,9 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
+    # TODO KRH: Update _from_version and _to_version and name of migrator
     _from_version = "XX"
-    _to_version = "XX" # PR242
+    _to_version = "XX" # PR2203
 
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
@@ -23,10 +24,9 @@ class Migrator(MigratorBase):
         so no data is lost in this migration nor do we need to check for the existence of the field.
 
         >>> m = Migrator()
-        >>> m.move_metagenome_id_to_was_generated_by({'id': 123, 'metagenome_annotation_id': 'mgm123', 'count': 1})
-        {'id': 123, 'count': 1, 'was_generated_by': 'mgm123'}
+        >>> m.move_metagenome_id_to_was_generated_by({'metagenome_annotation_id': 'mgm123', 'count': 1})
+        {'count': 1, 'was_generated_by': 'mgm123'}
         
         """
-        self.logger.info(f"Migrating Extraction: {fun_agg['id']}")
         fun_agg["was_generated_by"] = fun_agg.pop("metagenome_annotation_id")
         return fun_agg
