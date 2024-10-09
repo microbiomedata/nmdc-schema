@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-08-28T17:18:12
+# Generation date: 2024-10-08T10:37:57
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -63,6 +63,7 @@ MISO = CurieNamespace('MISO', 'http://purl.obolibrary.org/obo/MISO_')
 MIXS = CurieNamespace('MIXS', 'https://w3id.org/mixs/')
 MS = CurieNamespace('MS', 'http://purl.obolibrary.org/obo/MS_')
 METANETX = CurieNamespace('MetaNetX', 'http://example.org/metanetx/')
+NCBI = CurieNamespace('NCBI', 'http://example.com/ncbitaxon/')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
@@ -2784,7 +2785,9 @@ class Biosample(MaterialEntity):
             self.heavy_metals = [self.heavy_metals] if self.heavy_metals is not None else []
         self.heavy_metals = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals]
 
-        self._normalize_inlined_as_dict(slot_name="heavy_metals_meth", slot_type=TextValue, key_name="type", keyed=False)
+        if not isinstance(self.heavy_metals_meth, list):
+            self.heavy_metals_meth = [self.heavy_metals_meth] if self.heavy_metals_meth is not None else []
+        self.heavy_metals_meth = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.heavy_metals_meth]
 
         if self.height_carper_fiber is not None and not isinstance(self.height_carper_fiber, QuantityValue):
             self.height_carper_fiber = QuantityValue(**as_dict(self.height_carper_fiber))
@@ -5548,7 +5551,6 @@ class DataGeneration(PlannedProcess):
     add_date: Optional[str] = None
     instrument_used: Optional[Union[Union[str, InstrumentId], List[Union[str, InstrumentId]]]] = empty_list()
     mod_date: Optional[str] = None
-    part_of: Optional[Union[Union[str, DataGenerationId], List[Union[str, DataGenerationId]]]] = empty_list()
     principal_investigator: Optional[Union[dict, PersonValue]] = None
     has_output: Optional[Union[Union[str, DataObjectId], List[Union[str, DataObjectId]]]] = empty_list()
 
@@ -5579,10 +5581,6 @@ class DataGeneration(PlannedProcess):
 
         if self.mod_date is not None and not isinstance(self.mod_date, str):
             self.mod_date = str(self.mod_date)
-
-        if not isinstance(self.part_of, list):
-            self.part_of = [self.part_of] if self.part_of is not None else []
-        self.part_of = [v if isinstance(v, DataGenerationId) else DataGenerationId(v) for v in self.part_of]
 
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
@@ -6415,7 +6413,9 @@ class MetaproteomicsAnalysis(WorkflowExecution):
         if not isinstance(self.id, MetaproteomicsAnalysisId):
             self.id = MetaproteomicsAnalysisId(self.id)
 
-        self._normalize_inlined_as_dict(slot_name="has_peptide_quantifications", slot_type=PeptideQuantification, key_name="type", keyed=False)
+        if not isinstance(self.has_peptide_quantifications, list):
+            self.has_peptide_quantifications = [self.has_peptide_quantifications] if self.has_peptide_quantifications is not None else []
+        self.has_peptide_quantifications = [v if isinstance(v, PeptideQuantification) else PeptideQuantification(**as_dict(v)) for v in self.has_peptide_quantifications]
 
         if self.was_informed_by is not None and not isinstance(self.was_informed_by, DataGenerationId):
             self.was_informed_by = DataGenerationId(self.was_informed_by)
@@ -6753,7 +6753,7 @@ class SamplePortionEnum(EnumDefinitionImpl):
 
 class CalibrationTargetEnum(EnumDefinitionImpl):
 
-    mass = PermissibleValue(text="mass")
+    mass_charge_ratio = PermissibleValue(text="mass_charge_ratio")
     retention_time = PermissibleValue(text="retention_time")
     retention_index = PermissibleValue(text="retention_index")
 
@@ -6955,6 +6955,7 @@ class InstrumentModelEnum(EnumDefinitionImpl):
     novaseq_6000 = PermissibleValue(
         text="novaseq_6000",
         meaning=OBI["0002630"])
+    novaseq_x = PermissibleValue(text="novaseq_x")
     hiseq = PermissibleValue(text="hiseq")
     hiseq_1000 = PermissibleValue(
         text="hiseq_1000",
@@ -6980,12 +6981,13 @@ class InstrumentModelEnum(EnumDefinitionImpl):
     miniseq = PermissibleValue(
         text="miniseq",
         meaning=OBI["0003114"])
-    nextseq_1000 = PermissibleValue(
-        text="nextseq_1000",
-        meaning=OBI["0003606"])
     miseq = PermissibleValue(
         text="miseq",
         meaning=OBI["0002003"])
+    nextseq_1000 = PermissibleValue(
+        text="nextseq_1000",
+        meaning=OBI["0003606"])
+    nextseq = PermissibleValue(text="nextseq")
     nextseq_500 = PermissibleValue(
         text="nextseq_500",
         meaning=OBI["0002021"])
@@ -7075,6 +7077,9 @@ class FailureWhereEnum(EnumDefinitionImpl):
     NucleotideSequencing = PermissibleValue(
         text="NucleotideSequencing",
         description="A failure has occurred during nucleotide sequencing, a data generation process.")
+    MassSpectrometry = PermissibleValue(
+        text="MassSpectrometry",
+        description="A failure has occurred during mass spectrometry, a data generation process.")
     Pooling = PermissibleValue(
         text="Pooling",
         description="A failure has occurred in pooling, a lab process.")
@@ -7087,9 +7092,9 @@ class FailureWhereEnum(EnumDefinitionImpl):
     MetagenomeAssembly = PermissibleValue(
         text="MetagenomeAssembly",
         description="A failure has occurred in metagenome assembly, a workflow process.")
-    MetatranscriptomeAnalysis = PermissibleValue(
-        text="MetatranscriptomeAnalysis",
-        description="A failure has occurred in metatranscriptome analysis, a workflow process.")
+    MetatranscriptomeExpressionAnalysis = PermissibleValue(
+        text="MetatranscriptomeExpressionAnalysis",
+        description="A failure has occurred in metatranscriptome expression analysis, a workflow process.")
     MagsAnalysis = PermissibleValue(
         text="MagsAnalysis",
         description="""A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).""")
@@ -7102,6 +7107,21 @@ class FailureWhereEnum(EnumDefinitionImpl):
     MetagenomeAnnotation = PermissibleValue(
         text="MetagenomeAnnotation",
         description="A failure has occurred in annotation, a workflow process.")
+    MetatranscriptomeAssembly = PermissibleValue(
+        text="MetatranscriptomeAssembly",
+        description="A failure has occurred in assembly, a workflow process.")
+    MetatranscriptomeAnnotation = PermissibleValue(
+        text="MetatranscriptomeAnnotation",
+        description="A failure has occurred in annotation, a workflow process.")
+    MetabolomicsAnalysis = PermissibleValue(
+        text="MetabolomicsAnalysis",
+        description="A failure has occurred in analyzing metabolomics data.")
+    MetaproteomicsAnalysis = PermissibleValue(
+        text="MetaproteomicsAnalysis",
+        description="A failure has occurred in analyzing metaproteomics data.")
+    NomAnalysis = PermissibleValue(
+        text="NomAnalysis",
+        description="A failure has occurred in analyzing NOM data.")
 
     _defn = EnumDefinition(
         name="FailureWhereEnum",
@@ -7148,6 +7168,10 @@ class FileTypeEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
+        setattr(cls, "Reference Calibration File",
+            PermissibleValue(
+                text="Reference Calibration File",
+                description="""A file that contains data used to calibrate a natural organic matter or metabalomics analysis."""))
         setattr(cls, "Metagenome Raw Reads",
             PermissibleValue(
                 text="Metagenome Raw Reads",
@@ -7728,6 +7752,8 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
     def _addvals(cls):
         setattr(cls, "natural organic matter",
             PermissibleValue(text="natural organic matter"))
+        setattr(cls, "bulk chemistry",
+            PermissibleValue(text="bulk chemistry"))
 
 class ArchStrucEnum(EnumDefinitionImpl):
 
@@ -12876,9 +12902,6 @@ slots.DataGeneration_associated_studies = Slot(uri=NMDC['basic_classes/associate
 
 slots.DataGeneration_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="DataGeneration_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.DataGeneration_has_output, domain=DataGeneration, range=Optional[Union[Union[str, DataObjectId], List[Union[str, DataObjectId]]]])
-
-slots.DataGeneration_part_of = Slot(uri=DCTERMS.isPartOf, name="DataGeneration_part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=NMDC.DataGeneration_part_of, domain=DataGeneration, range=Optional[Union[Union[str, DataGenerationId], List[Union[str, DataGenerationId]]]])
 
 slots.WorkflowExecution_started_at_time = Slot(uri=NMDC.started_at_time, name="WorkflowExecution_started_at_time", curie=NMDC.curie('started_at_time'),
                    model_uri=NMDC.WorkflowExecution_started_at_time, domain=WorkflowExecution, range=str, mappings = [PROV["startedAtTime"]],

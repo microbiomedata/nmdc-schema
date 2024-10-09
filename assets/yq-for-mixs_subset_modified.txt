@@ -147,6 +147,7 @@
 '.slots.gravity.inlined_as_list |= true'
 '.slots.growth_hormone_regm.inlined_as_list |= true'
 '.slots.heavy_metals.inlined_as_list |= true'
+'.slots.heavy_metals_meth.inlined_as_list |= true'
 '.slots.herbicide_regm.inlined_as_list |= true'
 '.slots.host_diet.inlined_as_list |= true'
 '.slots.host_last_meal.inlined_as_list |= true'

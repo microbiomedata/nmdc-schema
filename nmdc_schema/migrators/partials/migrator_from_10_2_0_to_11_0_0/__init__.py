@@ -51,5 +51,5 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
         migrator_from_10_2_0_to_11_0_0_part_13.Migrator,
         migrator_from_10_2_0_to_11_0_0_part_14.Migrator,
         migrator_from_10_2_0_to_11_0_0_part_15.Migrator,
-        migrator_from_10_2_0_to_11_0_0_part_16.Migrator,
+        migrator_from_10_2_0_to_11_0_0_part_16.Migrator
     ]

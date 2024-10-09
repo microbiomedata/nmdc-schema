@@ -141,7 +141,6 @@ classes:
           syntax: "^gold:Ga[0-9]+$"
           interpolated: true
 
-
   MetatranscriptomeExpressionAnalysis:
     is_a: WorkflowExecution
     description: >-
@@ -364,6 +363,7 @@ slots:
     range: PeptideQuantification
     multivalued: true
     deprecated: "not used. 2024-10.  See https://github.com/microbiomedata/nmdc-schema/issues/2157"
+    inlined_as_list: true
 
   asm_score:
     is_a: metagenome_assembly_parameter
@@ -619,7 +619,8 @@ slots:
 enums:
   CalibrationTargetEnum:
     permissible_values:
-      mass:
+      mass_charge_ratio:
+        title: m/z
         aliases:
           - Mass
           - m/z

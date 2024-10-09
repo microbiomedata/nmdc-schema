@@ -1357,6 +1357,11 @@ technical_reps: '2'
 analysis_type:
   - metabolomics
   - metagenomics
+  - metagenomics_long_read
+  - metaproteomics
+  - metatranscriptomics
+  - natural organic matter
+  - bulk chemistry
 sample_link:
   - IGSN:DSJ0284
   - any:curie

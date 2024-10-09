@@ -85,8 +85,6 @@ data_generation_set:
       - nmdc:dobj-00-90125
     ncbi_project_name: Forest soil microbial communities from Barre Woods Harvard Forest
       LTER site, Petersham, Massachusetts, United States - Inc-BW-C-14-O
-    part_of:
-      - nmdc:dgms-00-31415
     processing_institution: JGI
     type: nmdc:NucleotideSequencing
     associated_studies:
