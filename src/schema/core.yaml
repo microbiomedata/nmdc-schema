@@ -1675,7 +1675,7 @@ slots:
     range: ChemicalEntity
 
   has_protein_identifications:
-    description: proteins that were annotated during a metaprotemics analysis and their associated information
+    description: proteins that were annotated during a metaproteomics analysis and their associated count information
     range: ProteinIdentification
     multivalued: true
     inlined_as_list: true
