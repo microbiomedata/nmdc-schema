@@ -22,7 +22,7 @@ class Migrator(MigratorBase):
 
         # Example 1, two peptides mapped to two proteins
         >>> m = Migrator()
-        >>> m.update_metaproteomics_analysis({'id': 123, 'type': 'MetaproteomicsAnalysis', 'peptide_identifications': [{'best_protein': 'protein1', 'all_proteins': ['protein1', 'protein2'], 'peptide_spectral_count':1}, {'best_protein': 'protein2', 'all_proteins': ['protein2', 'protein3'], 'peptide_spectral_count':3}]})
+        >>> m.update_metaproteomics_analysis({'id': 123, 'type': 'MetaproteomicsAnalysis', 'peptide_identifications': [{'best_protein': 'protein1', 'all_proteins': ['protein1', 'protein2'], 'peptide_spectral_count': 1}, {'best_protein': 'protein2', 'all_proteins': ['protein2', 'protein3'], 'peptide_spectral_count': 3}]})
         {'id': 123, 'type': 'MetaproteomicsAnalysis', 'has_protein_identifications': [{'type': 'ProteinIdentification', 'razor_protein': 'protein1', 'unique_peptide_count': 1, 'protein_spectral_count': 1}, {'type': 'ProteinIdentification', 'razor_protein': 'protein2', 'unique_peptide_count': 1, 'protein_spectral_count': 3}]}
 
         # Example 2, two peptides mapped to the same protein
