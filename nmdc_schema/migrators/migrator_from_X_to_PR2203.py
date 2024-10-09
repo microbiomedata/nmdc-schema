@@ -6,9 +6,9 @@ class Migrator(MigratorBase):
     Migrates a database between two schemas.
     """
 
-    #TODO KRH: update _from_version and _to_version
+    #TODO KRH: update _from_version and _to_version and name of migrator
     _from_version = "X"
-    _to_version = "PR236" 
+    _to_version = "PR2203" 
 
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
@@ -58,7 +58,6 @@ class Migrator(MigratorBase):
                 # convert dict to list
                 protein_list = [x for x in protein_dict.values()]
                 
-                # order alphabetically so tests are reproducible
                 workflow_dict['has_protein_identifications'] = protein_list
 
                 # remove peptide_identifications slot
