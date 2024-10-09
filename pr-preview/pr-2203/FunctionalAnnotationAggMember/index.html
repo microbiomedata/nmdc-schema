@@ -312,7 +312,7 @@
 <tr>
 <td><a href="../count/">count</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td>The number of sequences (for a metagenome or metatranscriptome) or spectra (f...</td>
+<td>The number of times gene or transcript counts or spectral counts were assigne...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -388,6 +388,12 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  count:
+    name: count
+    description: The number of times gene or transcript counts or spectral counts
+      were assigned to a gene product with the associated function.
+    domain_of:
+    - FunctionalAnnotationAggMember
 class_uri: nmdc:FunctionalAnnotationAggMember
 unique_keys:
   main:
@@ -415,6 +421,12 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  count:
+    name: count
+    description: The number of times gene or transcript counts or spectral counts
+      were assigned to a gene product with the associated function.
+    domain_of:
+    - FunctionalAnnotationAggMember
 attributes:
   was_generated_by:
     name: was_generated_by
@@ -446,8 +458,8 @@ attributes:
     required: true
   count:
     name: count
-    description: The number of sequences (for a metagenome or metatranscriptome) or
-      spectra (for metaproteomics) associated with the specified function.
+    description: The number of times gene or transcript counts or spectral counts
+      were assigned to a gene product with the associated function.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: count
