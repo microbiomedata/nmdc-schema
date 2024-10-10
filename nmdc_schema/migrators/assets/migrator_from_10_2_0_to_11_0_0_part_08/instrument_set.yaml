@@ -20,7 +20,7 @@
   type: nmdc:Instrument
 - id: nmdc:inst-14-fas8ny90
   model: agilent_7980A
-  name: GC-MS
+  name: Agilent GC-MS 1 (2009)
   vendor: agilent
   type: nmdc:Instrument
 - id: nmdc:inst-14-79zxap02
