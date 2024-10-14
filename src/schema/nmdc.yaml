@@ -77,6 +77,7 @@ prefixes:
   jgi.proposal: "https://bioregistry.io/jgi.proposal:"
   jgi: http://example.org/jgi/
   kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
+  kegg.module: "https://bioregistry.io/kegg.module:" #https://bioregistry.io/kegg.module:M00002
   linkml: https://w3id.org/linkml/
   mgnify.proj: "https://bioregistry.io/mgnify.proj:"
   my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
