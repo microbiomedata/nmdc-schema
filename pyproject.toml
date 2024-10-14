@@ -1,5 +1,6 @@
 [tool.poetry]
 
+
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 documentation = "https://microbiomedata.github.io/nmdc-schema/"
 homepage = "https://microbiomedata.github.io/nmdc-schema/"
@@ -10,25 +11,28 @@ readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
 version = "0.0.0"
 authors = [
-    "Bill Duncan <wdduncan@gmail.com>",
-    "Chris Mungall <cjmungall@lbl.gov>",
-    "Mark Andrew Miller <MAM@lbl.gov>",
-    "Patrick Kalita <pkalita@lbl.gov>",
-    "Sujay Patil <spatil@lbl.gov>",
+   "Bill Duncan <wdduncan@gmail.com>",
+   "Chris Mungall <cjmungall@lbl.gov>",
+   "Mark Andrew Miller <MAM@lbl.gov>",
+   "Patrick Kalita <pkalita@lbl.gov>",
+   "Sujay Patil <spatil@lbl.gov>",
 ]
+
 
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
-    "Intended Audience :: Developers",
-    "Intended Audience :: Science/Research",
-    "Programming Language :: Python :: 3 :: Only",
+   "Development Status :: 5 - Production/Stable",
+   "Intended Audience :: Developers",
+   "Intended Audience :: Science/Research",
+   "Programming Language :: Python :: 3 :: Only",
 ]
 
+
 packages = [
-    { include = "nmdc_schema" }, # this is the package Poetry would have included by default
-    { include = "migrators", from = "nmdc_schema" },
-    { include = "adapters", from = "nmdc_schema/migrators" },
+   { include = "nmdc_schema" }, # this is the package Poetry would have included by default
+   { include = "migrators", from = "nmdc_schema" },
+   { include = "adapters", from = "nmdc_schema/migrators" },
 ]
+
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
@@ -40,6 +44,7 @@ mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
 pymongo = "^4.7.2"
 ruamel-yaml = "^0.18.6"
+
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
@@ -65,8 +70,12 @@ sparql-dataframe = "^0.4"
 vulture = "^2.11"
 
 
+
+
 #oaklib = "^0.5.24"
 #pydantic = "^1.10.13"
+
+
 
 
 [tool.poetry-dynamic-versioning]
@@ -78,21 +87,26 @@ enable = false
 vcs = "git"
 style = "pep440"
 
+
 [tool.poetry-dynamic-versioning.substitution]
 files = [
-    "src/schema/nmdc.yaml"
+   "src/schema/nmdc.yaml"
 ]
 patterns = [
-    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
-    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
+   "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
+   "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
 ]
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
+
 [tool.poetry.extras]
 docs = ["mkdocs-material"]
+
+
 
 
 # scripts should have click clis
@@ -103,10 +117,12 @@ docs = ["mkdocs-material"]
 # use hyphens to delimit CLI alias
 # scripts/aliases should be illustrated in a Makefile
 # Makefile targets should make use of $< etc for input and $@ for output
-# input and output files should use hyphens as delimters in their names
+# input and output files should use hyphens as delimiters in their names
 # check usages of these features in other NMDC code before changing
 # be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
 # cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
+
+
 
 
 [tool.poetry.scripts]
@@ -116,7 +132,7 @@ check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
 class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
-date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Tutrle string, for copying into other RDF/TTL files. may need some paramterizastion.
+date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Turtle string, for copying into other RDF/TTL files. may need some parameterization.
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema" # todo recheck
 get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main" # todo not used in makefiles
 get-study-related-records = "src.scripts.nmdc_database_tools:cli" # todo recheck
