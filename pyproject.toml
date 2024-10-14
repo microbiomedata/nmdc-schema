@@ -1,6 +1,5 @@
 [tool.poetry]
 
-
 description = "Schema resources for the National Microbiome Data Collaborative (NMDC)"
 documentation = "https://microbiomedata.github.io/nmdc-schema/"
 homepage = "https://microbiomedata.github.io/nmdc-schema/"
@@ -11,28 +10,25 @@ readme = "README.md"
 repository = "https://github.com/microbiomedata/nmdc-schema"
 version = "0.0.0"
 authors = [
-   "Bill Duncan <wdduncan@gmail.com>",
-   "Chris Mungall <cjmungall@lbl.gov>",
-   "Mark Andrew Miller <MAM@lbl.gov>",
-   "Patrick Kalita <pkalita@lbl.gov>",
-   "Sujay Patil <spatil@lbl.gov>",
+    "Bill Duncan <wdduncan@gmail.com>",
+    "Chris Mungall <cjmungall@lbl.gov>",
+    "Mark Andrew Miller <MAM@lbl.gov>",
+    "Patrick Kalita <pkalita@lbl.gov>",
+    "Sujay Patil <spatil@lbl.gov>",
 ]
-
 
 classifiers = [
-   "Development Status :: 5 - Production/Stable",
-   "Intended Audience :: Developers",
-   "Intended Audience :: Science/Research",
-   "Programming Language :: Python :: 3 :: Only",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3 :: Only",
 ]
-
 
 packages = [
-   { include = "nmdc_schema" }, # this is the package Poetry would have included by default
-   { include = "migrators", from = "nmdc_schema" },
-   { include = "adapters", from = "nmdc_schema/migrators" },
+    { include = "nmdc_schema" }, # this is the package Poetry would have included by default
+    { include = "migrators", from = "nmdc_schema" },
+    { include = "adapters", from = "nmdc_schema/migrators" },
 ]
-
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
@@ -44,7 +40,6 @@ mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
 pymongo = "^4.7.2"
 ruamel-yaml = "^0.18.6"
-
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
@@ -70,12 +65,8 @@ sparql-dataframe = "^0.4"
 vulture = "^2.11"
 
 
-
-
 #oaklib = "^0.5.24"
 #pydantic = "^1.10.13"
-
-
 
 
 [tool.poetry-dynamic-versioning]
@@ -87,26 +78,21 @@ enable = false
 vcs = "git"
 style = "pep440"
 
-
 [tool.poetry-dynamic-versioning.substitution]
 files = [
-   "src/schema/nmdc.yaml"
+    "src/schema/nmdc.yaml"
 ]
 patterns = [
-   "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
-   "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
+    "(^\\s*__version__\\s*(?::.*?)?=\\s*['\\\"])[^'\\\"]*(['\\\"])",
+    "(^version:\\s*['\\\"]?)[^'\\\"]*?(['\\\"]?)$"
 ]
-
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
 
-
 [tool.poetry.extras]
 docs = ["mkdocs-material"]
-
-
 
 
 # scripts should have click clis
@@ -121,8 +107,6 @@ docs = ["mkdocs-material"]
 # check usages of these features in other NMDC code before changing
 # be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
 # cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
-
-
 
 
 [tool.poetry.scripts]
