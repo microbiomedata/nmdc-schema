@@ -37,19 +37,6 @@ jobs:
           touch docs/.nojekyll
           make gendoc
 
-      - name: Generate reference graphs
-        # Use `refgraph` (part of `refscan`) to generate graphs (i.e. network diagrams)
-        # depicting the relationships between collections and between classes.
-        #
-        # Note: We generate the graphs (i.e. the HTML files) within the directory that
-        #       will eventually be deployed to GitHub Pages.
-        #
-        # Reference: https://github.com/microbiomedata/refscan
-        #
-        run: |
-          pipx run --spec 'refscan==0.1.20' refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph docs/collection-graph.html
-          pipx run --spec 'refscan==0.1.20' refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph docs/class-graph.html
-
         # Deploy the docs to GitHub Pages.
         #
         # Note: The `make mkd-gh-deploy` command below uses the `mkd-%` target

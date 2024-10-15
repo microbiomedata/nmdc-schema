@@ -156,7 +156,12 @@ $(DOCDIR):
 	mkdir -p $@
 
 # Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
-# Then, use `refgraph` to generate diagrams at the paths referenced in the `nav` section of `mkdocs.yml`.
+#
+# Then, use `refgraph` (part of `refscan`) to generate a pair of graphs (i.e. network diagrams),
+# one that depicts inter-collection relationships and one that depicts inter-class relationships.
+# We generate them (i.e. their HTML files) at paths referenced in the `nav` section of `mkdocs.yml`,
+# making it so that they appear when the user clicks on the associated sidebar navigation links.
+#
 gendoc: $(DOCDIR)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
