@@ -1,0 +1,48 @@
+material_processing_set:
+  - id: nmdc:libprp-99-555555
+    name: RNA library creation of TREE_001-O-20170707-COMP-RNA
+    type: nmdc:LibraryPreparation
+    description: RNA extraction of TREE_001-O-20170707-COMP-RNA using SOP 123
+    has_input:
+      - nmdc:bsm-99-123456
+    has_output:
+      - nmdc:procsm-99-123456
+    is_stranded: true
+    stranded_orientation: sense orientation
+    library_preparation_kit: TruSeq Stranded mRNA
+    library_type: RNA
+    pcr_cycles: 12
+    processing_institution: JGI
+    start_date: '2018-09-26'
+    end_date: '2018-09-26'
+  - id: nmdc:libprp-99-555556
+    name: RNA library creation of TREE_001-O-20180707-COMP-RNA
+    type: nmdc:LibraryPreparation
+    description: RNA extraction of TREE_001-O-20180707-COMP-RNA using SOP 127
+    has_input:
+      - nmdc:bsm-99-123457
+    has_output:
+      - nmdc:procsm-99-123457
+    processing_institution: JGI
+    library_preparation_kit: TruSeq Stranded mRNA
+    start_date: '2018-09-26'
+    end_date: '2018-09-26'
+    pcr_cycles: 12
+    library_type: RNA
+    is_stranded: true
+    stranded_orientation: antisense orientation
+  - id: nmdc:libprp-99-555557
+    name: RNA library creation of TREE_001-O-20190707-COMP-RNA
+    type: nmdc:LibraryPreparation
+    description: RNA extraction of TREE_001-O-20190707-COMP-RNA using SOP 130
+    has_input:
+      - nmdc:bsm-99-123458
+    has_output:
+      - nmdc:procsm-99-123459
+    processing_institution: JGI
+    library_preparation_kit: TruSeq standard mRNA
+    start_date: '2018-09-26'
+    end_date: '2018-09-26'
+    pcr_cycles: 12
+    library_type: RNA
+    is_stranded: false

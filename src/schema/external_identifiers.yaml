@@ -6,11 +6,8 @@ description: >-
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
-todos:
-  - "## section delimiters should be subsets"
-
 imports:
-  - basic_slots
+  - attribute_values # in cycle with basic_classes
 
 prefixes:
   gold: "https://bioregistry.io/gold:"
@@ -73,6 +70,8 @@ slots:
   jgi_portal_identifiers:
     mixin: true
     description: identifiers for entities according to JGI Portal
+    see_also:
+      - https://data.jgi.doe.gov/
 
   gnps_identifiers:
     mixin: true
@@ -85,7 +84,6 @@ slots:
 
   jgi_portal_study_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - jgi_portal_identifiers
     id_prefixes:
@@ -105,7 +103,6 @@ slots:
 
   neon_study_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - neon_identifiers
 
@@ -147,7 +144,6 @@ slots:
 
   gold_study_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - gold_identifiers
     pattern: "^gold:Gs[0-9]+$"
@@ -162,7 +158,6 @@ slots:
 
   mgnify_project_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - mgnify_identifiers
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
@@ -172,7 +167,6 @@ slots:
 
   gnps_task_identifiers:
     is_a: study_identifiers
-    domain: Study
     mixins:
       - gnps_identifiers
     title: GNPS task identifiers
@@ -181,7 +175,7 @@ slots:
       - this could be considered a related identifier, as the metabolomics progress and results aren't a study per se
       - this identifier was registered with bioregistry but not identifiers.org
     see_also:
-      - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisActivity/
+      - https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysis/
     examples:
       - value: gnps.task:4b848c342a4f4abc871bdf8a09a60807
     pattern: "^gnps\\.task:[a-f0-9]+$"
@@ -190,7 +184,6 @@ slots:
   emsl_project_identifiers:
     title: EMSL Project Identifiers
     is_a: study_identifiers
-    domain: Study
     mixins:
       - emsl_identifiers
     description: Identifiers that link a NMDC study to the EMSL user facility website hosting the project description of an EMSL user project
@@ -278,14 +271,13 @@ slots:
     mixins:
       - igsn_identifiers
 
-  ## OmicsProcessing
+  ## DataGeneration
 
   omics_processing_identifiers:
     abstract: true
     is_a: external_database_identifiers
 
   gold_sequencing_project_identifiers:
-    domain: OmicsProcessing
     is_a: omics_processing_identifiers
     mixins:
       - gold_identifiers
@@ -296,7 +288,6 @@ slots:
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
-    domain: OmicsProcessing
     pattern: "^insdc.sra:(E|D|S)RX[0-9]{6,}$"
     mixins:
       - insdc_identifiers
@@ -312,9 +303,21 @@ slots:
     mixins:
       - gold_identifiers
     pattern: "^gold:Ga[0-9]+$"
-    description: identifiers for corresponding analysis project in GOLD
+    description: identifiers for corresponding analysis projects in GOLD
     examples:
       - value: https://bioregistry.io/gold:Ga0526289
+
+  jgi_portal_analysis_project_identifiers:
+    is_a: analysis_identifiers
+    mixins:
+      - jgi_portal_identifiers
+    id_prefixes:
+      - jgi.analysis
+    pattern: '^jgi.analysis:[0-9]+$'
+    description: identifiers for corresponding analysis projects in JGI Portal
+    examples:
+      - value: https://data.jgi.doe.gov/search?q=1414320
+        description: Metagenome - Draft Assembly YELL_051-M-20210705-comp-DNA1
 
   insdc_analysis_identifiers:
     is_a: analysis_identifiers

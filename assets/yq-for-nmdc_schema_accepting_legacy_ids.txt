@@ -1,2 +1,0 @@
-'(.classes.[].slot_usage.[] | select(has("pattern")).pattern) = ".*" '
-'(.classes.[].slot_usage.[] | select(has("structured_pattern")).structured_pattern.syntax) = ".*" '

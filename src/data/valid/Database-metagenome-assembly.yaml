@@ -1,12 +1,11 @@
-metagenome_assembly_set:
+workflow_execution_set:
   - id: nmdc:wfmgas-99-B7Vogx.1
-    name: Metagenome assembly 1472_51277
-    was_informed_by: nmdc:omprc-11-547rwq94 # MAM 2024-05-22
-    #    was_informed_by: nmdc:act-11-547rwq94.1 # should this allow an omics processing as the informer? what about act? that's abstract isn't it?
+    type: nmdc:MetagenomeAssembly
+    was_informed_by: nmdc:omprc-12-x123fa
+    name: Metagenome assembly for nmdc:omprc-12-x123fa
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
-    type: nmdc:MetagenomeAssembly
-    execution_resource: LANL B-div
+    execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     has_input:
       - nmdc:dobj-11-547rwq84
@@ -43,14 +42,13 @@ metagenome_assembly_set:
     gc_std: 0.09822
     num_input_reads: 87803950
     num_aligned_reads: 63046103
-  - id: nmdc:wfmgas-99-CvgXTq.1
+  - id: nmdc:wfmgas-99-CvgXTq.2
+    type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51278
-    was_informed_by: nmdc:omprc-11-548rwq94 # MAM 2024-05-22
-    #    was_informed_by: nmdc:act-11-548rwq94.1
+    was_informed_by: nmdc:omprc-12-x123fa
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
-    type: nmdc:MetagenomeAssembly
-    execution_resource: LANL B-div
+    execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     has_input:
       - nmdc:dobj-11-548rwq96
@@ -87,23 +85,22 @@ metagenome_assembly_set:
     gc_std: 0.09613
     num_input_reads: 141175680
     num_aligned_reads: 95369019
-  - id: nmdc:wfmgas-99-1vjxjy88.1
+  - id: nmdc:wfmgas-99-1vjxjy88.2
+    type: nmdc:MetagenomeAssembly
     name: Metagenome assembly 1472_51279
-    was_informed_by: nmdc:omprc-11-1vjxjy80 # MAM 2024-05-22
-    #    was_informed_by: nmdc:act-11-1vjxjy80.1
+    was_informed_by: nmdc:omprc-12-x123fa
     started_at_time: '2020-03-25T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
-    type: nmdc:MetagenomeAssembly
-    execution_resource: LANL B-div
+    execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     has_input:
       - nmdc:dobj-11-1vjxjy81
     has_output:
-      - nmdc:dobj-11-1vjxjy82
-      - nmdc:dobj-11-1vjxjy83
-      - nmdc:dobj-11-1vjxjy84
-      - nmdc:dobj-11-1vjxjy85
-      - nmdc:dobj-11-1vjxjy86
+      - nmdc:dobj-99-xxxxx1
+      - nmdc:dobj-99-xxxxx2
+      - nmdc:dobj-99-xxxxx3
+      - nmdc:dobj-99-xxxxx4
+      - nmdc:dobj-99-xxxxx5
     scaffolds: 607951
     contigs: 607951
     scaf_bp: 279001661

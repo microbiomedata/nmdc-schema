@@ -1,0 +1,21 @@
+id: nmdc:dgns-99-gKlQlF
+type: nmdc:NucleotideSequencing
+analyte_category: metagenome
+alternative_identifiers:
+  - gold:Gp0108340
+name: Thawing permafrost microbial communities from the Arctic, studying carbon
+  transformations - Permafrost 612S3M
+has_input:
+  - nmdc:bsm-00-orange0
+add_date: 30-OCT-14 12.00.00.000000000 AM
+mod_date: 22-MAY-20 06.10.59.590000000 PM
+has_output:
+  - nmdc:dobj-00-zzzbrxzzz
+ncbi_project_name: Thawing permafrost microbial communities from the Arctic, studying
+  carbon transformations - Permafrost 612S3M
+part_of:
+  - nmdc:dgns-00-555xxx
+processing_institution: JGI
+omics_type: This slot is deprecated and no longer on this class
+associated_studies:
+  - nmdc:sty-00-abc123

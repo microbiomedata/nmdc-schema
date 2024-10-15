@@ -158,7 +158,6 @@ Then, more constraint can be imposed with a pattern on the `place_of_birth` slot
 * should prefixes be uppercase or lowercase?
   * it must be consistent. look for precedent
 * bogus emsl UUID prefixes handled with `--emsl-biosample-uuid-replacement` in `anyuri-strings-to-iris`
-* values that are supposed to be curies but don't have a prefix get the prefix `--salvage-prefix` added by `migration-recursion`
 * keep an eye on validation `pattern`s and id_prefixes
 * MetaCyc expansion assumes we're talking about metacyc reactions and not genes, compounds etc. The same may hold for other under-qualified prefixes
 
