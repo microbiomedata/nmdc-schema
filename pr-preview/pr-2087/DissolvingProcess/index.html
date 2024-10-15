@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/DissolvingProcess/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
+<title>Class: DissolvingProcess - NMDC Schema Documentation</title>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-dissolvingprocess">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="NMDC Schema Documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: DissolvingProcess
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="NMDC Schema Documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    NMDC Schema Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    NMDC Schema
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../about/">
+<span class="md-ellipsis">
+    About
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://linkml.io/linkml/howtos/collaborative-development.html">
+<span class="md-ellipsis">
+    How to run a collaborative data modeling project
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../identifiers/">
+<span class="md-ellipsis">
+    Identifiers in NMDC
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prefixes_curies_ids_mappings_etc/">
+<span class="md-ellipsis">
+    Identifiers, CURIes, Prefixes, etc.
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Metadata_Documentation_Overview/">
+<span class="md-ellipsis">
+    NMDC Metadata Standards Documentation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://docs.google.com/presentation/d/1ZH41QAoESUwAkdHyUxlrmSKS5M-bT0TOulBgX4rBx2A/edit#slide=id.g26390794265_0_693">
+<span class="md-ellipsis">
+    NMDC Schema Contributors How-to from Schema Hackathon 2023-12-10
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema-validation/">
+<span class="md-ellipsis">
+    NMDC Schema Validation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema_element_deprecation_guide/">
+<span class="md-ellipsis">
+    Schema element deprecation guide
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      Slots
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#aliases">
+<span class="md-ellipsis">
+      Aliases
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      Identifier and Mapping Information
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      Schema Source
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      Mappings
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      LinkML Source
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      Direct
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      Induced
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="class-dissolvingprocess">Class: DissolvingProcess</h1>
+<p><em>A mixing step where a soluble component is mixed with a liquid component.</em></p>
+<p>__</p>
+<p>URI: <a href="https://w3id.org/nmdc/DissolvingProcess">nmdc:DissolvingProcess</a></p>
+<div class="mermaid">classDiagram
+  class DissolvingProcess
+  click DissolvingProcess href "../DissolvingProcess"
+    MaterialProcessing &lt;|-- DissolvingProcess
+      click MaterialProcessing href "../MaterialProcessing"
+
+
+
+  DissolvingProcess : alternative_identifiers
+
+  DissolvingProcess : description
+
+  DissolvingProcess : duration
+
+      DissolvingProcess --&gt; "0..1" QuantityValue : duration
+    click QuantityValue href "../QuantityValue"
+
+  DissolvingProcess : end_date
+
+  DissolvingProcess : has_failure_categorization
+
+      DissolvingProcess --&gt; "*" FailureCategorization : has_failure_categorization
+    click FailureCategorization href "../FailureCategorization"
+
+  DissolvingProcess : has_input
+
+      DissolvingProcess --&gt; "*" NamedThing : has_input
+    click NamedThing href "../NamedThing"
+
+  DissolvingProcess : has_output
+
+      DissolvingProcess --&gt; "*" ProcessedSample : has_output
+    click ProcessedSample href "../ProcessedSample"
+
+  DissolvingProcess : id
+
+  DissolvingProcess : instrument_used
+
+      DissolvingProcess --&gt; "*" Instrument : instrument_used
+    click Instrument href "../Instrument"
+
+  DissolvingProcess : name
+
+  DissolvingProcess : processing_institution
+
+      DissolvingProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+    click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
+
+  DissolvingProcess : protocol_link
+
+      DissolvingProcess --&gt; "0..1" Protocol : protocol_link
+    click Protocol href "../Protocol"
+
+  DissolvingProcess : qc_comment
+
+  DissolvingProcess : qc_status
+
+      DissolvingProcess --&gt; "0..1" StatusEnum : qc_status
+    click StatusEnum href "../StatusEnum"
+
+  DissolvingProcess : start_date
+
+  DissolvingProcess : substances_used
+
+      DissolvingProcess --&gt; "*" PortionOfSubstance : substances_used
+    click PortionOfSubstance href "../PortionOfSubstance"
+
+  DissolvingProcess : temperature
+
+      DissolvingProcess --&gt; "0..1" QuantityValue : temperature
+    click QuantityValue href "../QuantityValue"
+
+  DissolvingProcess : type
+
+
+
+</div>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../NamedThing/">NamedThing</a><ul>
+<li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../MaterialProcessing/">MaterialProcessing</a><ul>
+<li><strong>DissolvingProcess</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../duration/">duration</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The elapsed time of an activity</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../temperature/">temperature</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The value of a temperature measurement or temperature used in a process</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../substances_used/">substances_used</a></td>
+<td>* <br/> <a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td>The substances that are combined to enable a ChemicalConversionProcess</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../instrument_used/">instrument_used</a></td>
+<td>* <br/> <a href="../Instrument/">Instrument</a></td>
+<td>What instrument was used during DataGeneration or MaterialProcessing</td>
+<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
+</tr>
+<tr>
+<td><a href="../has_input/">has_input</a></td>
+<td>* <br/> <a href="../NamedThing/">NamedThing</a> or <br/><a href="../Biosample/">Biosample</a> or <br/><a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>An input to a process</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_output/">has_output</a></td>
+<td>* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>An output from a process</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../processing_institution/">processing_institution</a></td>
+<td>0..1 <br/> <a href="../ProcessingInstitutionEnum/">ProcessingInstitutionEnum</a></td>
+<td>The organization that processed the sample</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
+<td></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../start_date/">start_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was started</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../end_date/">end_date</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The date on which any process or activity was ended</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_status/">qc_status</a></td>
+<td>0..1 <br/> <a href="../StatusEnum/">StatusEnum</a></td>
+<td>Stores information about the result of a process (ie the process of sequencin...</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../qc_comment/">qc_comment</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Slot to store additional comments about laboratory or workflow output</td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../has_failure_categorization/">has_failure_categorization</a></td>
+<td>* <br/> <a href="../FailureCategorization/">FailureCategorization</a></td>
+<td></td>
+<td><a href="../PlannedProcess/">PlannedProcess</a></td>
+</tr>
+<tr>
+<td><a href="../id/">id</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A unique identifier for a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../name/">name</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A human readable label for an entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a human-readable description of a thing</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
+<td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>A list of alternative identifiers for the entity</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../NamedThing/">NamedThing</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="aliases">Aliases</h2>
+<ul>
+<li>Solubilization</li>
+</ul>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>nmdc:DissolvingProcess</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nmdc:DissolvingProcess</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>CHMO:0002773</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: DissolvingProcess
+description: 'A mixing step where a soluble component is mixed with a liquid component.
+
+  '
+from_schema: https://w3id.org/nmdc/nmdc
+aliases:
+- Solubilization
+exact_mappings:
+- CHMO:0002773
+contributors:
+- ORCID:0009-0001-1555-1601
+- ORCID:0000-0002-1368-8217
+is_a: MaterialProcessing
+slots:
+- duration
+- temperature
+- substances_used
+slot_usage:
+  id:
+    name: id
+    domain_of:
+    - NamedThing
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'
+      interpolated: true
+class_uri: nmdc:DissolvingProcess
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: DissolvingProcess
+description: 'A mixing step where a soluble component is mixed with a liquid component.
+
+  '
+from_schema: https://w3id.org/nmdc/nmdc
+aliases:
+- Solubilization
+exact_mappings:
+- CHMO:0002773
+contributors:
+- ORCID:0009-0001-1555-1601
+- ORCID:0000-0002-1368-8217
+is_a: MaterialProcessing
+slot_usage:
+  id:
+    name: id
+    domain_of:
+    - NamedThing
+    required: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'
+      interpolated: true
+attributes:
+  duration:
+    name: duration
+    description: The elapsed time of an activity.
+    examples:
+    - value: JsonObj(has_numeric_value=2, has_unit='hours')
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: duration
+    owner: DissolvingProcess
+    domain_of:
+    - MixingProcess
+    - DissolvingProcess
+    - ChemicalConversionProcess
+    - MobilePhaseSegment
+    range: QuantityValue
+  temperature:
+    name: temperature
+    description: The value of a temperature measurement or temperature used in a process.
+    notes:
+    - Not to be confused with the MIXS:0000113
+    from_schema: https://w3id.org/nmdc/nmdc
+    contributors:
+    - ORCID:0009-0001-1555-1601
+    - ORCID:0000-0002-8683-0050
+    rank: 1000
+    alias: temperature
+    owner: DissolvingProcess
+    domain_of:
+    - ChromatographyConfiguration
+    - SubSamplingProcess
+    - StorageProcess
+    - ChromatographicSeparationProcess
+    - DissolvingProcess
+    - ChemicalConversionProcess
+    range: QuantityValue
+  substances_used:
+    name: substances_used
+    description: The substances that are combined to enable a ChemicalConversionProcess.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: substances_used
+    owner: DissolvingProcess
+    domain_of:
+    - Extraction
+    - StorageProcess
+    - DissolvingProcess
+    - ChemicalConversionProcess
+    - MobilePhaseSegment
+    range: PortionOfSubstance
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: instrument_used
+    owner: DissolvingProcess
+    domain_of:
+    - MaterialProcessing
+    - DataGeneration
+    range: Instrument
+    multivalued: true
+  has_input:
+    name: has_input
+    description: An input to a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_input
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: NamedThing
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+    any_of:
+    - range: Biosample
+    - range: ProcessedSample
+  has_output:
+    name: has_output
+    description: An output from a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_output
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: ProcessedSample
+    multivalued: true
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  processing_institution:
+    name: processing_institution
+    description: The organization that processed the sample.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: processing_institution
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: ProcessingInstitutionEnum
+  protocol_link:
+    name: protocol_link
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: protocol_link
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    - Study
+    range: Protocol
+  start_date:
+    name: start_date
+    description: The date on which any process or activity was started
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: start_date
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: string
+  end_date:
+    name: end_date
+    description: The date on which any process or activity was ended
+    todos:
+    - add date string validation pattern
+    comments:
+    - We are using string representations of dates until all components of our ecosystem
+      can handle ISO 8610 dates
+    - The date should be formatted as YYYY-MM-DD
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: end_date
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: string
+  qc_status:
+    name: qc_status
+    description: Stores information about the result of a process (ie the process
+      of sequencing a library may have for qc_status of 'fail' if not enough data
+      was generated)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_status
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: StatusEnum
+  qc_comment:
+    name: qc_comment
+    description: Slot to store additional comments about laboratory or workflow output.
+      For workflow output it may describe the particular workflow stage that failed.
+      (ie Failed at call-stage due to a malformed fastq file).
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: qc_comment
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: string
+  has_failure_categorization:
+    name: has_failure_categorization
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_failure_categorization
+    owner: DissolvingProcess
+    domain_of:
+    - PlannedProcess
+    range: FailureCategorization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  id:
+    name: id
+    description: A unique identifier for a thing. Must be either a CURIE shorthand
+      for a URI or a complete URI
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    identifier: true
+    alias: id
+    owner: DissolvingProcess
+    domain_of:
+    - NamedThing
+    range: uriorcurie
+    required: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  name:
+    name: name
+    description: A human readable label for an entity
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: name
+    owner: DissolvingProcess
+    domain_of:
+    - PersonValue
+    - NamedThing
+    - Protocol
+    range: string
+  description:
+    name: description
+    description: a human-readable description of a thing
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: DissolvingProcess
+    domain_of:
+    - ImageValue
+    - NamedThing
+    range: string
+  alternative_identifiers:
+    name: alternative_identifiers
+    description: A list of alternative identifiers for the entity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: alternative_identifiers
+    owner: DissolvingProcess
+    domain_of:
+    - MetaboliteIdentification
+    - NamedThing
+    range: uriorcurie
+    multivalued: true
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: DissolvingProcess
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:DissolvingProcess
+
+</code></pre>
+</details>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>

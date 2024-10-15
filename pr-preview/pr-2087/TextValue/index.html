@@ -1,0 +1,1546 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/TextValue/" rel="canonical"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.29" name="generator"/>
+<title>Class: TextValue - NMDC Schema Documentation</title>
+<link href="../assets/stylesheets/main.76a95c52.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#class-textvalue">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="NMDC Schema Documentation" class="md-header__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            NMDC Schema Documentation
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Class: TextValue
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="" tabindex="0">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="NMDC Schema Documentation" class="md-nav__button md-logo" data-md-component="logo" href=".." title="NMDC Schema Documentation">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    NMDC Schema Documentation
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/microbiomedata/nmdc-schema" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+<span class="md-ellipsis">
+    NMDC Schema
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../about/">
+<span class="md-ellipsis">
+    About
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://linkml.io/linkml/howtos/collaborative-development.html">
+<span class="md-ellipsis">
+    How to run a collaborative data modeling project
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../identifiers/">
+<span class="md-ellipsis">
+    Identifiers in NMDC
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../prefixes_curies_ids_mappings_etc/">
+<span class="md-ellipsis">
+    Identifiers, CURIes, Prefixes, etc.
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../Metadata_Documentation_Overview/">
+<span class="md-ellipsis">
+    NMDC Metadata Standards Documentation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="https://docs.google.com/presentation/d/1ZH41QAoESUwAkdHyUxlrmSKS5M-bT0TOulBgX4rBx2A/edit#slide=id.g26390794265_0_693">
+<span class="md-ellipsis">
+    NMDC Schema Contributors How-to from Schema Hackathon 2023-12-10
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema-validation/">
+<span class="md-ellipsis">
+    NMDC Schema Validation
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../schema_element_deprecation_guide/">
+<span class="md-ellipsis">
+    Schema element deprecation guide
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance">
+<span class="md-ellipsis">
+      Inheritance
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#slots">
+<span class="md-ellipsis">
+      Slots
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#usages">
+<span class="md-ellipsis">
+      Usages
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#identifier-and-mapping-information">
+<span class="md-ellipsis">
+      Identifier and Mapping Information
+    </span>
+</a>
+<nav aria-label="Identifier and Mapping Information" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#schema-source">
+<span class="md-ellipsis">
+      Schema Source
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mappings">
+<span class="md-ellipsis">
+      Mappings
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#linkml-source">
+<span class="md-ellipsis">
+      LinkML Source
+    </span>
+</a>
+<nav aria-label="LinkML Source" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#direct">
+<span class="md-ellipsis">
+      Direct
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#induced">
+<span class="md-ellipsis">
+      Induced
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="class-textvalue">Class: TextValue</h1>
+<p><em>A basic string value</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/TextValue">nmdc:TextValue</a></p>
+<div class="mermaid">classDiagram
+  class TextValue
+  click TextValue href "../TextValue"
+    AttributeValue &lt;|-- TextValue
+      click AttributeValue href "../AttributeValue"
+
+
+
+  TextValue : has_raw_value
+
+  TextValue : language
+
+  TextValue : type
+
+
+
+</div>
+<h2 id="inheritance">Inheritance</h2>
+<ul>
+<li><a href="../AttributeValue/">AttributeValue</a><ul>
+<li><strong>TextValue</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Cardinality and Range</th>
+<th>Description</th>
+<th>Inheritance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../language/">language</a></td>
+<td>0..1 <br/> <a href="../LanguageCode/">LanguageCode</a></td>
+<td>Should use ISO 639-1 code e</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../has_raw_value/">has_raw_value</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>The value that was specified for an annotation in raw form, i</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+<tr>
+<td><a href="../type/">type</a></td>
+<td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
+<td>the class_uri of the class that has been instantiated</td>
+<td><a href="../AttributeValue/">AttributeValue</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="usages">Usages</h2>
+<table>
+<thead>
+<tr>
+<th>used by</th>
+<th>used in</th>
+<th>type</th>
+<th>used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../target_gene/">target_gene</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td><a href="../target_subfragment/">target_subfragment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
+<td><a href="../nucl_acid_amp/">nucl_acid_amp</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
+<td><a href="../pcr_cond/">pcr_cond</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
+<td><a href="../pcr_primers/">pcr_primers</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td><a href="../cur_vegetation/">cur_vegetation</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td><a href="../geo_loc_name/">geo_loc_name</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td><a href="../local_class/">local_class</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td><a href="../soil_type/">soil_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_disease_stat/">host_disease_stat</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../add_recov_method/">add_recov_method</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../additional_info/">additional_info</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../address/">address</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../adj_room/">adj_room</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../aero_struc/">aero_struc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../agrochem_addition/">agrochem_addition</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../air_PM_concen/">air_PM_concen</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../air_temp_regm/">air_temp_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../al_sat_meth/">al_sat_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../alkalinity_method/">alkalinity_method</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../ances_data/">ances_data</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../antibiotic_regm/">antibiotic_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../aromatics_pc/">aromatics_pc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../asphaltenes_pc/">asphaltenes_pc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../atmospheric_data/">atmospheric_data</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../avg_occup/">avg_occup</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../basin/">basin</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../bathroom_count/">bathroom_count</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../bedroom_count/">bedroom_count</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../biocide/">biocide</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../biocide_admin_method/">biocide_admin_method</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../biomass/">biomass</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../biotic_regm/">biotic_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../built_struc_set/">built_struc_set</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../built_struc_type/">built_struc_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../ceil_struc/">ceil_struc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../ceil_water_mold/">ceil_water_mold</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../chem_mutagen/">chem_mutagen</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../chem_treatment/">chem_treatment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../climate_environment/">climate_environment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../cool_syst_id/">cool_syst_id</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../crop_rotation/">crop_rotation</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../cult_root_med/">cult_root_med</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../cur_vegetation/">cur_vegetation</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../cur_vegetation_meth/">cur_vegetation_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../diether_lipids/">diether_lipids</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../door_water_mold/">door_water_mold</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../elevator/">elevator</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../emulsions/">emulsions</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../env_package/">env_package</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../escalator/">escalator</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../ext_door/">ext_door</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../fertilizer_regm/">fertilizer_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../field/">field</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../fireplace_type/">fireplace_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../floor_count/">floor_count</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../fungicide_regm/">fungicide_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../gaseous_environment/">gaseous_environment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../gaseous_substances/">gaseous_substances</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../genetic_mod/">genetic_mod</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../geo_loc_name/">geo_loc_name</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../gravidity/">gravidity</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../gravity/">gravity</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../growth_hormone_regm/">growth_hormone_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../hall_count/">hall_count</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../hcr_pressure/">hcr_pressure</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../hcr_temp/">hcr_temp</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../heat_system_id/">heat_system_id</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../heavy_metals/">heavy_metals</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../heavy_metals_meth/">heavy_metals_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../herbicide_regm/">herbicide_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../horizon_meth/">horizon_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_body_habitat/">host_body_habitat</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_color/">host_color</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_common_name/">host_common_name</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_diet/">host_diet</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_genotype/">host_genotype</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_growth_cond/">host_growth_cond</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_last_meal/">host_last_meal</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_life_stage/">host_life_stage</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_shape/">host_shape</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_subject_id/">host_subject_id</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../host_substrate/">host_substrate</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../humidity_regm/">humidity_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../inorg_particles/">inorg_particles</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../light_regm/">light_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../link_addit_analys/">link_addit_analys</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../link_class_info/">link_class_info</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../link_climate_info/">link_climate_info</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../local_class/">local_class</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../local_class_meth/">local_class_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../mechanical_damage/">mechanical_damage</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../mineral_nutr_regm/">mineral_nutr_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../misc_param/">misc_param</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../n_alkanes/">n_alkanes</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../org_particles/">org_particles</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../particle_class/">particle_class</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../permeability/">permeability</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../perturbation/">perturbation</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../pesticide_regm/">pesticide_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../ph_meth/">ph_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../ph_regm/">ph_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../phaeopigments/">phaeopigments</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../phosplipid_fatt_acid/">phosplipid_fatt_acid</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../plant_product/">plant_product</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../pollutants/">pollutants</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../porosity/">porosity</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../pre_treatment/">pre_treatment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../previous_land_use/">previous_land_use</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../primary_treatment/">primary_treatment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../radiation_regm/">radiation_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../rainfall_regm/">rainfall_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../reactor_type/">reactor_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../reservoir/">reservoir</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../resins_pc/">resins_pc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_count/">room_count</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_dim/">room_dim</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_door_dist/">room_door_dist</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_door_share/">room_door_share</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_hallway/">room_hallway</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_net_area/">room_net_area</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_vol/">room_vol</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../room_wall_share/">room_wall_share</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../root_cond/">root_cond</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../root_med_carbon/">root_med_carbon</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../root_med_macronutr/">root_med_macronutr</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../root_med_micronutr/">root_med_micronutr</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../root_med_regl/">root_med_regl</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../root_med_solid/">root_med_solid</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../root_med_suppl/">root_med_suppl</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../salinity_meth/">salinity_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../salt_regm/">salt_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_loc_corr_rate/">samp_loc_corr_rate</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_preserv/">samp_preserv</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_room_id/">samp_room_id</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_sort_meth/">samp_sort_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_store_dur/">samp_store_dur</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_store_loc/">samp_store_loc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_time_out/">samp_time_out</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_transport_cond/">samp_transport_cond</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_tvdss/">samp_tvdss</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_type/">samp_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../samp_well_name/">samp_well_name</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../saturates_pc/">saturates_pc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../season/">season</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../season_environment/">season_environment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../secondary_treatment/">secondary_treatment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../sewage_type/">sewage_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../shading_device_loc/">shading_device_loc</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../shading_device_mat/">shading_device_mat</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../sieving/">sieving</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../size_frac/">size_frac</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../soil_type/">soil_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../soil_type_meth/">soil_type_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../soluble_inorg_mat/">soluble_inorg_mat</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../soluble_org_mat/">soluble_org_mat</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../source_mat_id/">source_mat_id</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../space_typ_state/">space_typ_state</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../standing_water_regm/">standing_water_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../store_cond/">store_cond</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../suspend_solids/">suspend_solids</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../tertiary_treatment/">tertiary_treatment</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../tiss_cult_growth_med/">tiss_cult_growth_med</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../tot_org_c_meth/">tot_org_c_meth</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../ventilation_type/">ventilation_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../viscosity/">viscosity</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../volatile_org_comp/">volatile_org_comp</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../wall_water_mold/">wall_water_mold</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../wastewater_type/">wastewater_type</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../water_temp_regm/">water_temp_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../watering_regm/">watering_regm</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../win/">win</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../wind_direction/">wind_direction</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../window_open_freq/">window_open_freq</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../window_size/">window_size</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../window_status/">window_status</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+<tr>
+<td><a href="../Biosample/">Biosample</a></td>
+<td><a href="../window_water_mold/">window_water_mold</a></td>
+<td>range</td>
+<td><a href="./">TextValue</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="schema-source">Schema Source</h3>
+<ul>
+<li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
+</ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>nmdc:TextValue</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nmdc:TextValue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="linkml-source">LinkML Source</h2>
+<!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
+<h3 id="direct">Direct</h3>
+<details>
+<pre><code class="language-yaml">name: TextValue
+description: A basic string value
+from_schema: https://w3id.org/nmdc/nmdc
+is_a: AttributeValue
+slots:
+- language
+class_uri: nmdc:TextValue
+
+</code></pre>
+</details>
+<h3 id="induced">Induced</h3>
+<details>
+<pre><code class="language-yaml">name: TextValue
+description: A basic string value
+from_schema: https://w3id.org/nmdc/nmdc
+is_a: AttributeValue
+attributes:
+  language:
+    name: language
+    description: Should use ISO 639-1 code e.g. "en", "fr"
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: language
+    owner: TextValue
+    domain_of:
+    - TextValue
+    range: language code
+  has_raw_value:
+    name: has_raw_value
+    description: The value that was specified for an annotation in raw form, i.e.
+      a string. E.g. "2 cm" or "2-4 cm"
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: has_raw_value
+    owner: TextValue
+    domain_of:
+    - AttributeValue
+    range: string
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - replaces legacy nmdc:type slot
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    rank: 1000
+    slot_uri: rdf:type
+    designates_type: true
+    alias: type
+    owner: TextValue
+    domain_of:
+    - EukEval
+    - FunctionalAnnotationAggMember
+    - MobilePhaseSegment
+    - PortionOfSubstance
+    - MagBin
+    - MetaboliteIdentification
+    - PeptideQuantification
+    - ProteinQuantification
+    - GenomeFeature
+    - FunctionalAnnotation
+    - AttributeValue
+    - NamedThing
+    - FailureCategorization
+    - Protocol
+    - CreditAssociation
+    - Doi
+    range: uriorcurie
+    required: true
+class_uri: nmdc:TextValue
+
+</code></pre>
+</details>
+</article>
+</div>
+<script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["content.tabs.link"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+<script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+<script src="../javascripts/tablesort.js"></script>
+<script src="https://unpkg.com/mermaid@10.9.0/dist/mermaid.min.js"></script><script>mermaid.initialize({});</script></body>
+</html>
