@@ -159,8 +159,8 @@ $(DOCDIR):
 #
 # Then, use `refgraph` (part of `refscan`) to generate a pair of graphs (i.e. network diagrams),
 # one that depicts inter-collection relationships and one that depicts inter-class relationships.
-# We generate them (i.e. their HTML files) at paths referenced in the `nav` section of `mkdocs.yml`,
-# making it so that they appear when the user clicks on the associated sidebar navigation links.
+# We generate them (i.e. their HTML files) at paths referenced in the `nav` section of `mkdocs.yml`.
+# As a result, a pair of navigation links in the sidebar of the document website will lead to them.
 #
 gendoc: $(DOCDIR)
 	# added copying of images and renaming of TEMP.md
