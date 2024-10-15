@@ -1,0 +1,5 @@
+[MASTER]
+ignore-paths=nmdc_schema/migrators/*,nmdc_schema/nmdc_data.py,nmdc_schema/nmdc_version.py,nmdc_schema/validate_nmdc_json.py
+
+[MESSAGES CONTROL]
+disable=line-too-long

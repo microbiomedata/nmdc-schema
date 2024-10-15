@@ -21,6 +21,7 @@ TEMPLATEDIR = doc-templates
 
 .PHONY: all clean examples-clean install site site-clean site-copy squeaky-clean test test-python test-with-examples
 
+
 # note: "help" MUST be the first target in the file,
 # when the user types "make" they should get help info
 
@@ -83,15 +84,19 @@ update-linkml:
 create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
+# Note: `all` is an alias for `site`.
 all: site
-site: clean site-clean gen-project gendoc migration-doctests nmdc_schema/gold-to-mixs.sssom.tsv
+site: clean site-clean gen-project gendoc \
+nmdc_schema/gold-to-mixs.sssom.tsv \
+nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml \
+migration-doctests
 
 %.yaml: gen-project
 
 # was deploy: all mkd-gh-deploy
 deploy: gendoc mkd-gh-deploy
 
-gen-project: $(PYMODEL) src/schema/mixs.yaml
+gen-project: $(PYMODEL) # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
 	$(RUN) gen-project \
 		--exclude excel \
 		--exclude graphql \
@@ -110,9 +115,8 @@ gen-project: $(PYMODEL) src/schema/mixs.yaml
 		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
-
-test: examples-clean site test-python examples/output
-only-test: examples-clean test-python examples/output
+test: examples-clean site test-python migration-doctests examples/output
+only-test: examples-clean test-python migration-doctests examples/output
 
 test-schema:
 	$(RUN) gen-project \
@@ -155,7 +159,7 @@ gendoc: $(DOCDIR)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
 	cp -r $(SRC)/docs/images $(DOCDIR) ; \
-	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) $(SOURCE_SCHEMA_PATH)
+	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 
@@ -222,7 +226,9 @@ site-clean: clean
 	rm -rf nmdc_schema/*.tsv
 	rm -rf nmdc_schema/*.yaml
 
+
 squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+	mkdir project
 	rm -rf local/biosample_slots_ranges_report.tsv
 
 nmdc_schema/nmdc_materialized_patterns.yaml:
@@ -238,12 +244,28 @@ nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialize
 		--include-range-class-descendants \
 		--top-class Database $< > $@
 
-# todo this target makes a lot of prerequisites if necessary, but they aren't part of the copying prpocess
 # the sssom/ files should be double checked too... they're probably not all SSSSOM files
-nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv nmdc_schema/nmdc_materialized_patterns.schema.json \
-nmdc_schema/nmdc_materialized_patterns.yaml
+nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv
 	# just can't seem to tell pyproject.toml to bundle artifacts like these
 	#   so reverting to copying into the module
 	cp $< $@
 
+
+nmdc_schema/nmdc_schema_merged.yaml: project/nmdc_schema_merged.yaml
+	cp $< $@
+
+####
+
+.PHONY: check-invalids-for-single-failure
+
+# 		echo "Running command: $$cmd"; \
+
+check-invalids-for-single-failure:
+	for file in src/data/invalid/*.yaml; do \
+		echo "$$file:"; \
+		target_class=$$(basename $$file | cut -d'-' -f1); \
+		cmd="poetry run linkml-validate --schema nmdc_schema/nmdc_materialized_patterns.yaml --target-class $$target_class $$file"; \
+		output=$$($$cmd 2>&1 || true); \
+		echo "$$output" | sort | uniq; \
+	done
 

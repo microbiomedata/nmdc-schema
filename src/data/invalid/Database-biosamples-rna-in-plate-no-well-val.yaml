@@ -1,17 +1,27 @@
 biosample_set:
   - id: nmdc:bsm-99-dtTMNb
-    part_of:
+    type: nmdc:Biosample
+    associated_studies:
       - nmdc:sty-00-abc123
     env_broad_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002030
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002030
     env_local_scale:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00002169
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00002169
     env_medium:
+      type: nmdc:ControlledIdentifiedTermValue
       has_raw_value: ENVO:00005792
       term:
+        type: nmdc:OntologyClass
         id: ENVO:00005792
+    geo_loc_name:
+      type: nmdc:TextValue
+      has_raw_value: Lithgow
     rna_cont_type: plate

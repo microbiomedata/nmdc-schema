@@ -1,0 +1,6 @@
+id: nmdc:calib-99-zUCd5N
+type: nmdc:CalibrationInformation
+calibration_object: nmdc:dobj-12-krhrtjw9
+internal_calibration: false
+calibration_target: retention_index
+calibration_standard: fames

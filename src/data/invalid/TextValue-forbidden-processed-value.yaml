@@ -1,2 +1,3 @@
 has_raw_value: 1600 Pennsylvania Ave
 has_processed_value: white house
+type: nmdc:TextValue

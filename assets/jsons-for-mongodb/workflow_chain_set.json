@@ -1,0 +1,49 @@
+[
+    {
+        "id": "nmdc:wfch-99-ab",
+        "type": "nmdc:WorkflowChain",
+        "analyte_category": "metagenome",
+        "was_informed_by": "nmdc:dgns-99-s9xj2r24",
+        "ended_at_time": "2023-08-03T16:00:00Z"
+    },
+    {
+        "id": "nmdc:wfch-12-cd",
+        "type": "nmdc:WorkflowChain",
+        "analyte_category": "metagenome",
+        "was_informed_by": "nmdc:dgns-99-s9xj2r24",
+        "ended_at_time": "2023-08-04T16:00:00Z"
+    },
+    {
+        "id": "nmdc:wfch-99-93z8",
+        "type": "nmdc:WorkflowChain",
+        "name": "soil metagenome workflow chain",
+        "analyte_category": "metagenome",
+        "was_informed_by": "nmdc:dgns-99-49z38t",
+        "gold_analysis_project_identifiers": [
+            "gold:Ga01234567"
+        ],
+        "ended_at_time": "2023-08-05T16:00:00Z"
+    },
+    {
+        "id": "nmdc:wfch-99-dl96",
+        "type": "nmdc:WorkflowChain",
+        "name": "mouse gut metagenome workflow chain",
+        "analyte_category": "metagenome",
+        "was_informed_by": "nmdc:dgms-99-96d7l",
+        "gold_analysis_project_identifiers": [
+            "gold:Ga76543210"
+        ],
+        "ended_at_time": "2023-08-06T16:00:00Z"
+    },
+    {
+        "id": "nmdc:wfch-99-98f7b",
+        "type": "nmdc:WorkflowChain",
+        "name": "human gut metagenome workflow chain",
+        "analyte_category": "metagenome",
+        "was_informed_by": "nmdc:dgns-99-v9w6",
+        "gold_analysis_project_identifiers": [
+            "gold:Ga90123456"
+        ],
+        "ended_at_time": "2023-08-07T16:00:00Z"
+    }
+]

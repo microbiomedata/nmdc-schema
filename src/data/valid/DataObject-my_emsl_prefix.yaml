@@ -1,9 +1,10 @@
 id: nmdc:dobj-11-mzxj8743
+type: nmdc:DataObject
 name: Froze_Core_2015_S1_30_40_3_QE_26May16_Pippin_16-03-39.raw
-description: raw instrument file for nmdc:omprc-11-7nfk8n58
+description: raw instrument file for nmdc:dgms-11-7nfk8n58
 file_size_bytes: 448727423
 url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/Froze_Core_2015_S1_30_40_3_QE_26May16_Pippin_16-03-39.raw
 md5_checksum: ED2BA6CD95CE5D86D8D29A8DD548F48F
 data_object_type: LC-DDA-MS/MS Raw Data
 alternative_identifiers:
-- my_emsl:1016236
+  - my_emsl:1016236
