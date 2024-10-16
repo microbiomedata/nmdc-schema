@@ -458,7 +458,8 @@ slots:
     range: Doi
     multivalued: true
     inlined_as_list: true
-    in_subset: data_portal_subset
+    in_subset:
+      - data_portal_subset
     examples:
       value:
         - doi: doi:10.46936/intm.proj.2021.60141/60000423
