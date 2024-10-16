@@ -1037,6 +1037,9 @@ enums:
           - Environmental Data Initiative
         title: EDI
         meaning: https://ror.org/0330j0z60
+      figshare:
+        title: Figshare
+        meaning: https://ror.org/041mxqs23
 
   DoiCategoryEnum:
     permissible_values:
