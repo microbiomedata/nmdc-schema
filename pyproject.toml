@@ -103,7 +103,7 @@ docs = ["mkdocs-material"]
 # use hyphens to delimit CLI alias
 # scripts/aliases should be illustrated in a Makefile
 # Makefile targets should make use of $< etc for input and $@ for output
-# input and output files should use hyphens as delimters in their names
+# input and output files should use hyphens as delimiters in their names
 # check usages of these features in other NMDC code before changing
 # be intentional about output: most should go in assets unless its really large or likely to change independently of the schema, like MOngoDB summaries
 # cli entry points should probably all be main or cli unless there's a compelling reason to do otherwise
@@ -116,7 +116,7 @@ check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
 class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
 database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
-date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Tutrle string, for copying into other RDF/TTL files. may need some paramterizastion.
+date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Turtle string, for copying into other RDF/TTL files. may need some parameterization.
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema" # todo recheck
 get-study-id-from-filename = "src.scripts.get_study_id_from_filename:main" # todo not used in makefiles
 get-study-related-records = "src.scripts.nmdc_database_tools:cli" # todo recheck
