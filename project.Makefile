@@ -156,7 +156,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections study_set \
 		--selected-collections workflow_execution_set \
 		dump-from-api \
-		--client-base-url "https://api.microbiomedata.org" \
+		--client-base-url "https://api-berkeley.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
 	cat $@.tmp | \
@@ -259,7 +259,7 @@ local/biosamples-per-study.txt:
 local/gold-study-ids.json:
 	curl -X 'GET' \
 		--output $@ \
-		'https://api.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
+		'https://api-berkeley.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
 		-H 'accept: application/json'
 
 local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
