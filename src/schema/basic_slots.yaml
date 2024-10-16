@@ -256,7 +256,8 @@ slots:
     aliases:
       - DOI
       - digital object identifier
-    in_subset: data_portal_subset
+    in_subset:
+      - data_portal_subset
     range: uriorcurie
     pattern: '^doi:10.\d{2,9}/.*$'
     examples:
@@ -273,7 +274,8 @@ slots:
     range: DoiProviderEnum
     close_mappings:
       - NCIT:C74932
-    in_subset: data_portal_subset
+    in_subset:
+      - data_portal_subset
     examples:
       - value: ess_dive
         description: The corresponding DOI is associated with ESS-DIVE.
@@ -283,7 +285,8 @@ slots:
       The resource type the corresponding doi resolves to.
     range: DoiCategoryEnum
     required: true
-    in_subset: data_portal_subset
+    in_subset:
+      - data_portal_subset
     examples:
       - value: dataset_doi
         description: The corresponding DOI is a dataset resource type.
