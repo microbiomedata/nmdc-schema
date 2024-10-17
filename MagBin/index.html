@@ -405,7 +405,7 @@
 </tr>
 <tr>
 <td><a href="../members_id/">members_id</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -660,6 +660,7 @@ attributes:
     domain_of:
     - MagBin
     range: string
+    multivalued: true
   num_16s:
     name: num_16s
     from_schema: https://w3id.org/nmdc/nmdc
