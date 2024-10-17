@@ -5,6 +5,7 @@ has_input:
 has_output:
   - nmdc:procsm-13-S67F
 substances_used:
+  - eenie meenie miney moe # backporting from bmeluch 991d779904e1a91fd6ef5f75b4b685d1035e2f6c
 duration:
   type: nmdc:QuantityValue
   has_numeric_value: 2
