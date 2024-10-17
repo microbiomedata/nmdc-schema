@@ -14,6 +14,9 @@ has_output:
 mags_list:
   - bin_name: bins.10
     bin_quality: LQ
+    members_id:
+      - nmdc:wfmgas-13-56028x05.1_7_c1
+      - nmdc:wfmgas-13-56028x05.1_9_c1
     type: nmdc:MagBin
     eukaryotic_evaluation:
       type: nmdc:EukEval
