@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-17T14:33:36
+# Generation date: 2024-10-17T13:22:45
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -1346,12 +1346,17 @@ class OntologyClass(NamedThing):
 
     id: Union[str, OntologyClassId] = None
     type: Union[str, URIorCURIE] = None
+    alternative_names: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OntologyClassId):
             self.id = OntologyClassId(self.id)
+
+        if not isinstance(self.alternative_names, list):
+            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
+        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -7528,6 +7533,9 @@ class DoiProviderEnum(EnumDefinitionImpl):
     zenodo = PermissibleValue(text="zenodo")
     edi = PermissibleValue(
         text="edi",
+        meaning=None)
+    figshare = PermissibleValue(
+        text="figshare",
         meaning=None)
 
     _defn = EnumDefinition(

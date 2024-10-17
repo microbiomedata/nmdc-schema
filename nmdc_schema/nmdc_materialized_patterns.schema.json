@@ -7231,7 +7231,8 @@
                 "massive",
                 "gsc",
                 "zenodo",
-                "edi"
+                "edi",
+                "figshare"
             ],
             "title": "DoiProviderEnum",
             "type": "string"
@@ -7396,6 +7397,16 @@
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
                         "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
                         "type": "string"
                     },
                     "type": [
@@ -12682,6 +12693,16 @@
                         "null"
                     ]
                 },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -12741,6 +12762,16 @@
                         "null"
                     ]
                 },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -12793,6 +12824,16 @@
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
                         "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
                         "type": "string"
                     },
                     "type": [

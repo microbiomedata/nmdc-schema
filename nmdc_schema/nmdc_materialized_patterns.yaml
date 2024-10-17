@@ -4150,6 +4150,10 @@ enums:
         aliases:
         - EDI
         - Environmental Data Initiative
+      figshare:
+        text: figshare
+        meaning: https://ror.org/041mxqs23
+        title: Figshare
   DoiCategoryEnum:
     name: DoiCategoryEnum
     comments:
@@ -21261,6 +21265,8 @@ classes:
       to the nmdc namespace
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: NamedThing
+    slots:
+    - alternative_names
     slot_usage:
       id:
         name: id
