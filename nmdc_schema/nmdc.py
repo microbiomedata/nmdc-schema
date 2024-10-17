@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-08T10:37:57
+# Generation date: 2024-10-17T14:33:36
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -17,7 +17,7 @@ import re
 from jsonasobj2 import JsonObj, as_dict
 from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from datetime import date, datetime
+from datetime import date, datetime, time
 from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
 
 from linkml_runtime.utils.slot import Slot
@@ -367,7 +367,7 @@ class MetagenomeAnnotationId(WorkflowExecutionId):
     pass
 
 
-@dataclass
+@dataclass(repr=False)
 class EukEval(YAMLRoot):
     """
     This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.
@@ -405,7 +405,7 @@ class EukEval(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class FunctionalAnnotationAggMember(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -442,7 +442,7 @@ class FunctionalAnnotationAggMember(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class Database(YAMLRoot):
     """
     An abstract holder for any set of metadata and data. It does not need to correspond to an actual managed database
@@ -522,7 +522,7 @@ class Database(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class GenomeFeature(YAMLRoot):
     """
     A feature localized to an interval along a genome
@@ -582,7 +582,7 @@ class GenomeFeature(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class FunctionalAnnotation(YAMLRoot):
     """
     An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product, or which the gene
@@ -623,7 +623,7 @@ class FunctionalAnnotation(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MobilePhaseSegment(YAMLRoot):
     """
     A fluid mixture of substances that flow though a chromatographic stationary phase.
@@ -658,7 +658,7 @@ class MobilePhaseSegment(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class PortionOfSubstance(YAMLRoot):
     """
     A portion of any matter of defined composition that has discrete existence, whose origin may be biological,
@@ -709,7 +709,7 @@ class PortionOfSubstance(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MagBin(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -731,7 +731,7 @@ class MagBin(YAMLRoot):
     gtdbtk_order: Optional[str] = None
     gtdbtk_phylum: Optional[str] = None
     gtdbtk_species: Optional[str] = None
-    members_id: Optional[str] = None
+    members_id: Optional[Union[str, List[str]]] = empty_list()
     num_16s: Optional[int] = None
     num_23s: Optional[int] = None
     num_5s: Optional[int] = None
@@ -781,8 +781,9 @@ class MagBin(YAMLRoot):
         if self.gtdbtk_species is not None and not isinstance(self.gtdbtk_species, str):
             self.gtdbtk_species = str(self.gtdbtk_species)
 
-        if self.members_id is not None and not isinstance(self.members_id, str):
-            self.members_id = str(self.members_id)
+        if not isinstance(self.members_id, list):
+            self.members_id = [self.members_id] if self.members_id is not None else []
+        self.members_id = [v if isinstance(v, str) else str(v) for v in self.members_id]
 
         if self.num_16s is not None and not isinstance(self.num_16s, int):
             self.num_16s = int(self.num_16s)
@@ -808,7 +809,7 @@ class MagBin(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetaboliteIdentification(YAMLRoot):
     """
     This is used to link a metabolomics analysis workflow to a specific metabolite
@@ -843,7 +844,7 @@ class MetaboliteIdentification(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class PeptideQuantification(YAMLRoot):
     """
     This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
@@ -890,7 +891,7 @@ class PeptideQuantification(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class ProteinQuantification(YAMLRoot):
     """
     This is used to link a metaproteomics analysis workflow to a specific protein
@@ -933,7 +934,7 @@ class ProteinQuantification(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class AttributeValue(YAMLRoot):
     """
     The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and
@@ -985,7 +986,7 @@ class AttributeValue(YAMLRoot):
 
 
 
-@dataclass
+@dataclass(repr=False)
 class QuantityValue(AttributeValue):
     """
     A simple quantity, e.g. 2cm
@@ -1026,7 +1027,7 @@ class QuantityValue(AttributeValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ImageValue(AttributeValue):
     """
     An attribute value representing an image.
@@ -1059,7 +1060,7 @@ class ImageValue(AttributeValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class PersonValue(AttributeValue):
     """
     An attribute value representing a person
@@ -1105,7 +1106,7 @@ class PersonValue(AttributeValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class TextValue(AttributeValue):
     """
     A basic string value
@@ -1130,7 +1131,7 @@ class TextValue(AttributeValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class TimestampValue(AttributeValue):
     """
     A value that is a timestamp. The range should be ISO-8601
@@ -1152,7 +1153,7 @@ class TimestampValue(AttributeValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ControlledTermValue(AttributeValue):
     """
     A controlled term or class from an ontology
@@ -1177,7 +1178,7 @@ class ControlledTermValue(AttributeValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ControlledIdentifiedTermValue(ControlledTermValue):
     """
     A controlled term or class from an ontology, requiring the presence of term with an id
@@ -1204,7 +1205,7 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class GeolocationValue(AttributeValue):
     """
     A normalized value for a location on the earth's surface
@@ -1241,7 +1242,7 @@ class GeolocationValue(AttributeValue):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class NamedThing(YAMLRoot):
     """
     a databased entity or concept/class
@@ -1307,7 +1308,7 @@ class NamedThing(YAMLRoot):
 
 
 
-@dataclass
+@dataclass(repr=False)
 class GeneProduct(NamedThing):
     """
     A molecule encoded by a gene that has an evolved function
@@ -1334,7 +1335,7 @@ class GeneProduct(NamedThing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class OntologyClass(NamedThing):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1358,7 +1359,7 @@ class OntologyClass(NamedThing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class FunctionalAnnotationTerm(OntologyClass):
     """
     Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein,
@@ -1382,7 +1383,7 @@ class FunctionalAnnotationTerm(OntologyClass):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Pathway(FunctionalAnnotationTerm):
     """
     A pathway is a sequence of steps/reactions carried out by an organism or community of organisms
@@ -1409,7 +1410,7 @@ class Pathway(FunctionalAnnotationTerm):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class OrthologyGroup(FunctionalAnnotationTerm):
     """
     A set of genes or gene products in which all members are orthologous
@@ -1436,7 +1437,7 @@ class OrthologyGroup(FunctionalAnnotationTerm):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class EnvironmentalMaterialTerm(OntologyClass):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1460,7 +1461,7 @@ class EnvironmentalMaterialTerm(OntologyClass):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ChemicalEntity(OntologyClass):
     """
     An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products,
@@ -1510,7 +1511,7 @@ class ChemicalEntity(OntologyClass):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class FailureCategorization(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1537,7 +1538,7 @@ class FailureCategorization(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class MaterialEntity(NamedThing):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1557,7 +1558,7 @@ class MaterialEntity(NamedThing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Biosample(MaterialEntity):
     """
     Biological source material which can be characterized by an experiment.
@@ -4085,7 +4086,7 @@ class Biosample(MaterialEntity):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ProcessedSample(MaterialEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4126,7 +4127,7 @@ class ProcessedSample(MaterialEntity):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Site(MaterialEntity):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4146,7 +4147,7 @@ class Site(MaterialEntity):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class FieldResearchSite(Site):
     """
     A site, outside of a laboratory, from which biosamples may be collected.
@@ -4206,7 +4207,7 @@ class FieldResearchSite(Site):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Instrument(MaterialEntity):
     """
     A material entity that is designed to perform a function in a scientific investigation, but is not a reagent.
@@ -4241,7 +4242,7 @@ class Instrument(MaterialEntity):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class PlannedProcess(NamedThing):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4299,7 +4300,7 @@ class PlannedProcess(NamedThing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class CollectingBiosamplesFromSite(PlannedProcess):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4337,7 +4338,7 @@ class CollectingBiosamplesFromSite(PlannedProcess):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ProtocolExecution(PlannedProcess):
     """
     A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
@@ -4387,7 +4388,7 @@ class ProtocolExecution(PlannedProcess):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class StorageProcess(PlannedProcess):
     """
     A planned process with the objective to preserve and protect material entities by placing them in an identified
@@ -4438,7 +4439,7 @@ class StorageProcess(PlannedProcess):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MaterialProcessing(PlannedProcess):
     """
     A process that takes one or more samples as inputs and generates one or more samples as outputs.
@@ -4475,7 +4476,7 @@ class MaterialProcessing(PlannedProcess):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Pooling(MaterialProcessing):
     """
     physical combination of several instances of like material.
@@ -4516,7 +4517,7 @@ class Pooling(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Extraction(MaterialProcessing):
     """
     A material separation in which a desired component of an input material is separated from the remainder.
@@ -4575,7 +4576,7 @@ class Extraction(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class LibraryPreparation(MaterialProcessing):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4645,7 +4646,7 @@ class LibraryPreparation(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class SubSamplingProcess(MaterialProcessing):
     """
     Separating a sample aliquot from the starting material for downstream activity.
@@ -4707,7 +4708,7 @@ class SubSamplingProcess(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MixingProcess(MaterialProcessing):
     """
     The combining of components, particles or layers into a more homogeneous state.
@@ -4748,7 +4749,7 @@ class MixingProcess(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class FiltrationProcess(MaterialProcessing):
     """
     The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by
@@ -4819,7 +4820,7 @@ class FiltrationProcess(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ChromatographicSeparationProcess(MaterialProcessing):
     """
     The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
@@ -4873,7 +4874,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class DissolvingProcess(MaterialProcessing):
     """
     A mixing step where a soluble component is mixed with a liquid component.
@@ -4913,7 +4914,7 @@ class DissolvingProcess(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ChemicalConversionProcess(MaterialProcessing):
     """
     A process that results in the interconversion of chemical species by a reaction to transform the reagents into
@@ -4962,7 +4963,7 @@ class ChemicalConversionProcess(MaterialProcessing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Protocol(YAMLRoot):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -4989,7 +4990,7 @@ class Protocol(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class CreditAssociation(YAMLRoot):
     """
     This class supports binding associated researchers to studies. There will be at least a slot for a CRediT
@@ -5027,7 +5028,7 @@ class CreditAssociation(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class Doi(YAMLRoot):
     """
     A centrally registered identifier symbol used to uniquely identify objects given by the International DOI
@@ -5066,7 +5067,7 @@ class Doi(YAMLRoot):
         super().__post_init__(**kwargs)
 
 
-@dataclass
+@dataclass(repr=False)
 class Study(NamedThing):
     """
     A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying
@@ -5243,7 +5244,7 @@ class Study(NamedThing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class InformationObject(NamedThing):
     """
     Any data or knowledge that reduces uncertainty or enhances understanding about a system, process, or entity.
@@ -5266,7 +5267,7 @@ class InformationObject(NamedThing):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class Configuration(InformationObject):
     """
     A set of parameters that define the actions of a process and is shared among multiple instances of the process.
@@ -5289,7 +5290,7 @@ class Configuration(InformationObject):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MassSpectrometryConfiguration(Configuration):
     """
     A set of parameters that define and control the actions of a mass spectrometry process.
@@ -5355,7 +5356,7 @@ class MassSpectrometryConfiguration(Configuration):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ChromatographyConfiguration(Configuration):
     """
     A set of parameters that define and control the actions of a chromatography process.
@@ -5411,7 +5412,7 @@ class ChromatographyConfiguration(Configuration):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class CalibrationInformation(InformationObject):
     """
     A calibration object that is associated with a process.
@@ -5458,7 +5459,7 @@ class CalibrationInformation(InformationObject):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class DataObject(InformationObject):
     """
     An object that primarily consists of symbols that represent information. Files, records, and omics data are
@@ -5531,7 +5532,7 @@ class DataObject(InformationObject):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class DataGeneration(PlannedProcess):
     """
     The methods and processes used to generate omics data from a biosample or organism.
@@ -5595,7 +5596,7 @@ class DataGeneration(PlannedProcess):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class NucleotideSequencing(DataGeneration):
     """
     A DataGeneration in which the sequence of DNA or RNA molecules is generated.
@@ -5652,7 +5653,7 @@ class NucleotideSequencing(DataGeneration):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MassSpectrometry(DataGeneration):
     """
     Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio
@@ -5699,7 +5700,7 @@ class MassSpectrometry(DataGeneration):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class WorkflowExecution(PlannedProcess):
     """
     Represents an instance of an execution of a particular workflow
@@ -5765,7 +5766,7 @@ class WorkflowExecution(PlannedProcess):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetagenomeAssembly(WorkflowExecution):
     """
     A workflow execution activity that converts sequencing reads into an assembled metagenome.
@@ -5912,7 +5913,7 @@ class MetagenomeAssembly(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetatranscriptomeAssembly(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -6056,7 +6057,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetatranscriptomeAnnotation(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -6107,7 +6108,7 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
     """
     A workflow process that provides expression values and read counts for gene features predicted on the contigs.
@@ -6147,7 +6148,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MagsAnalysis(WorkflowExecution):
     """
     A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
@@ -6212,7 +6213,7 @@ class MagsAnalysis(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetagenomeSequencing(WorkflowExecution):
     """
     Initial sequencing activity that precedes any analysis. This activity has output(s) that are the raw sequencing
@@ -6252,7 +6253,7 @@ class MetagenomeSequencing(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ReadQcAnalysis(WorkflowExecution):
     """
     A workflow execution activity that performs quality control on raw Illumina reads including quality trimming,
@@ -6313,7 +6314,7 @@ class ReadQcAnalysis(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     """
     A workflow execution activity that performs taxonomy classification using sequencing reads
@@ -6348,7 +6349,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetabolomicsAnalysis(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -6389,7 +6390,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetaproteomicsAnalysis(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -6426,7 +6427,7 @@ class MetaproteomicsAnalysis(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class NomAnalysis(WorkflowExecution):
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -6462,7 +6463,7 @@ class NomAnalysis(WorkflowExecution):
         self.type = str(self.class_class_curie)
 
 
-@dataclass
+@dataclass(repr=False)
 class MetagenomeAnnotation(WorkflowExecution):
     """
     A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
@@ -10164,7 +10165,7 @@ slots.total_bases = Slot(uri=NMDC.total_bases, name="total_bases", curie=NMDC.cu
                    model_uri=NMDC.total_bases, domain=None, range=Optional[int])
 
 slots.members_id = Slot(uri=NMDC.members_id, name="members_id", curie=NMDC.curie('members_id'),
-                   model_uri=NMDC.members_id, domain=None, range=Optional[str])
+                   model_uri=NMDC.members_id, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.bin_name = Slot(uri=NMDC.bin_name, name="bin_name", curie=NMDC.curie('bin_name'),
                    model_uri=NMDC.bin_name, domain=None, range=Optional[str])

@@ -1631,6 +1631,7 @@ slots:
       - this slot needs some basic textual annotations and constraints
   members_id:
     range: string
+    multivalued: true
     todos:
       - this slot needs some basic textual annotations and constraints
   bin_name:
