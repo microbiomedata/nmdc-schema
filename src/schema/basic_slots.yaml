@@ -1135,6 +1135,10 @@ enums:
         title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
 
+      Azenta:
+        title: Azenta Life Sciences
+        meaning: https://www.azenta.com/
+
   DataCategoryEnum:
     permissible_values:
       instrument_data:
