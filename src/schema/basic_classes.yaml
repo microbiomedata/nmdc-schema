@@ -28,6 +28,8 @@ classes:
   OntologyClass:
     class_uri: nmdc:OntologyClass
     is_a: NamedThing
+    slots:
+      - alternative_names
     notes:
       - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
     slot_usage:
