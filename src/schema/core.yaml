@@ -1660,8 +1660,6 @@ slots:
     range: float
     minimum_value: 0
     maximum_value: 100
-    todos: 
-     - range should be 0 to 100, float
   contamination:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
