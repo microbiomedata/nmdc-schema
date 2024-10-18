@@ -1637,9 +1637,8 @@ slots:
 
   total_bases:
     range: integer
+    minimum_value: 0
     description: Total number of basepairs.
-    todos:
-      - How to set range to positive integers?
   members_id:
     range: string
     multivalued: true
@@ -1655,51 +1654,46 @@ slots:
     exact_mappings:
       - GENEPIO:0000093
     range: integer
-    todos: 
-     - set range as positive integer
+    minimum_value: 0
   completeness:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
+    minimum_value: 0
+    maximum_value: 100
     todos: 
      - range should be 0 to 100, float
   contamination:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
-    todos: 
-     - range should be 0 to 100, float
+    minimum_value: 0
   gene_count:
     range: integer
     description: Number of genes.
-    todos: 
-     - range should be positive numbers only
+    minimum_value: 0
   bin_quality:
     description: The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893).
     range: BinQualityEnum
   num_16s:
     description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
     range: integer
-    todos: 
-     - range should be positive number only, include 0
+    minimum_value: 0
     broad_mappings:
       - NCIT:C105370
   num_5s:
     description: Number of 5s seqeuences detected, a subunit of ribosomes.
     range: integer
-    todos: 
-      - range should be positive ints only, include 0
+    minimum_value: 0
     broad_mappings:
       - OMIT:0013248
   num_23s:
     description: Number of 23 seqeuences detected, a subunit of ribosomes.
-    todos: 
-      - range should be positive ints only, include 0
+    minimum_value: 0
     range: integer
     broad_mappings:
       - OMIT:0013245
   num_t_rna:
     description: Number of transfer transfer RNAs.
-    todos: 
-      - range should be positive ints only, include 0
+    minimum_value: 0
     range: integer
     broad_mappings:
       - NCIT:C816
