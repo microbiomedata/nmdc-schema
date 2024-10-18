@@ -12,6 +12,7 @@ mags_list:
   contamination: 3.38
   total_bases: 0
   gene_count: 20
+  type: nmdc:MagBin
   bin_quality: MQ
   num_16s: 0
   num_5s: 0
