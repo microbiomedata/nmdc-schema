@@ -1,10 +1,17 @@
 #this example is invalid because it has negative value for number_of_contig.
-input_contig_num: 2273412
-too_short_contig_num: 2005162
-low_depth_contig_num: 0
-unbinned_contig_num: 241036
-binned_contig_num: 27214
+id: nmdc:wfmag-11-547rwq94.1
+ended_at_time: '2021-09-15T10:13:20+00:00'
+execution_resource: NERSC-Perlmutter
+git_url: git_url1
+name: MAG analysis for project ABCD
+started_at_time: '2021-08-05T14:48:51+00:00'
 type: nmdc:MagsAnalysis
+was_informed_by: "nmdc:omprc-11-547rwq95"
+has_input:
+  - "nmdc:dobj-11-547rwq96"
+has_output:
+  - "nmdc:dobj-11-547rwq97"
+  - "nmdc:dobj-11-547rwq98"
 mags_list:
 - bin_name: bins.40
   number_of_contig: -20
