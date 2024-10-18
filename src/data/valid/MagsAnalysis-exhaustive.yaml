@@ -12,6 +12,7 @@ mags_list:
   total_bases: 0
   gene_count: 20
   bin_quality: MQ
+  type: nmdc:MagBin
   num_16s: 0
   num_5s: 0
   num_23s: 0
