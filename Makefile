@@ -155,6 +155,13 @@ $(PYMODEL):
 $(DOCDIR):
 	mkdir -p $@
 
+# Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
+#
+# Then, use `refgraph` (part of `refscan`) to generate a pair of graphs (i.e. network diagrams),
+# one that depicts inter-collection relationships and one that depicts inter-class relationships.
+# We generate them (i.e. their HTML files) at paths referenced in the `nav` section of `mkdocs.yml`.
+# As a result, a pair of navigation links in the sidebar of the document website will lead to them.
+#
 gendoc: $(DOCDIR)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
@@ -162,6 +169,10 @@ gendoc: $(DOCDIR)
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
+	# Use `refgraph` (part of `refscan`) to generate interactive diagrams within the compiled documentation file tree.
+	# One diagram depicts the relationships between collections and the other depicts the relationships between classes.
+	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/collection-graph.html
+	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph $(DOCDIR)/class-graph.html
 
 testdoc: gendoc serve
 
