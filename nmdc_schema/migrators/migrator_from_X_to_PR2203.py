@@ -63,7 +63,7 @@ class Migrator(MigratorBase):
                         )
                     else:
                         protein_dict[razor_protein] = {
-                            "type": "ProteinIdentification",
+                            "type": "nmdc:ProteinIdentification",
                             "razor_protein": razor_protein,
                             "unique_peptide_count": 1,
                             "protein_spectral_count": peptide_iden.get(
