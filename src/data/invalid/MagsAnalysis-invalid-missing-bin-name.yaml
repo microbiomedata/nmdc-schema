@@ -23,7 +23,6 @@ mags_list:
   num_16s: 0
   num_5s: 0
   num_23s: 0
-  num_tRNA: 0
   gtdbtk_domain: Bacteria
   gtdbtk_phylum: Verrucomicrobiota
   gtdbtk_class: Verrucomicrobiae
