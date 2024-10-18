@@ -1660,17 +1660,17 @@ slots:
   completeness:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
-    todo: 
+    todos: 
      - range should be 0 to 100, float
   contamination:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
-    todo: 
+    todos: 
      - range should be 0 to 100, float
   gene_count:
     range: integer
     description: Number of genes.
-    todo: 
+    todos: 
      - range should be positive numbers only
   bin_quality:
     description: The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893).
@@ -1678,27 +1678,27 @@ slots:
   num_16s:
     description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
     range: integer
-    todo: 
+    todos: 
      - range should be positive number only, include 0
     broad_mappings:
       - NCIT:C105370
   num_5s:
     description: Number of 5s seqeuences detected, a subunit of ribosomes.
     range: integer
-    todo: 
+    todos: 
       - range should be positive ints only, include 0
     broad_mappings:
       - OMIT:0013248
   num_23s:
     description: Number of 23 seqeuences detected, a subunit of ribosomes.
-    todo: 
+    todos: 
       - range should be positive ints only, include 0
     range: integer
     broad_mappings:
       - OMIT:0013245
   num_t_rna:
     description: Number of transfer transfer RNAs.
-    todo: 
+    todos: 
       - range should be positive ints only, include 0
     range: integer
     broad_mappings:
