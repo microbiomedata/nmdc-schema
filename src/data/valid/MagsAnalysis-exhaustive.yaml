@@ -1,0 +1,34 @@
+input_contig_num: 2273412
+too_short_contig_num: 2005162
+low_depth_contig_num: 0
+unbinned_contig_num: 241036
+binned_contig_num: 27214
+type: nmdc:MagsAnalysis
+mags_list:
+- bin_name: bins.40
+  number_of_contig: 44
+  completeness: 97.3
+  contamination: 3.38
+  total_bases: 0
+  gene_count: 20
+  bin_quality: MQ
+  num_16s: 0
+  num_5s: 0
+  num_23s: 0
+  num_tRNA: 0
+  gtdbtk_domain: Bacteria
+  gtdbtk_phylum: Verrucomicrobiota
+  gtdbtk_class: Verrucomicrobiae
+  gtdbtk_order: Pedosphaerales
+  gtdbtk_family: UBA11358
+  gtdbtk_genus: UBA11358
+  gtdbtk_species: UBA11358 abc
+  members_id:
+  - nmdc:wfmgas-13-56028x05.1_7_c1
+  - nmdc:wfmgas-13-56028x05.1_9_c1
+  eukaryotic_evaluation:
+      type: nmdc:EukEval
+      completeness: 14.71
+      contamination: 8.82
+      ncbi_lineage_tax_ids: "1-131567-2759-2611352-33682-191814-2603949"
+      ncbi_lineage: "root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae" 
