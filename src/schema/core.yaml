@@ -1659,11 +1659,11 @@ slots:
   completeness:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
-    todo: range should be 0-100
+    todo: range should be 0 to 100, float
   contamination:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
-    todo: range should be 0-100
+    todo: range should be 0 to 100, float
   gene_count:
     range: integer
     description: Number of genes.
