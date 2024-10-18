@@ -46,7 +46,7 @@ enums:
         aliases: medium quality
         description: Metagenome-assembled genome is medium quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
       LQ:
-        alises: low quality
+        aliases: low quality
         description: Metagenome-assembled genome is low quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
   ChemicalConversionCategoryEnum:
     permissible_values:
