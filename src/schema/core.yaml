@@ -1650,7 +1650,7 @@ slots:
     required: true
     description: Name of the metagenome-assembled genome.
   number_of_contig:
-    description: Number of contig
+    description: Number of contigs
     exact_mappings:
       - GENEPIO:0000093
     range: integer
@@ -1659,7 +1659,6 @@ slots:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
     minimum_value: 0
-    maximum_value: 100
   contamination:
     description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
