@@ -467,12 +467,12 @@ attributes:
     - EukEval
     - MagBin
     range: float
+    minimum_value: 0
+    maximum_value: 100
   contamination:
     name: contamination
     description: Estimate of the completeness of the metagenome-assembled genome,
       estimated by a tool like CheckM.
-    todos:
-    - range should be 0 to 100, float
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: contamination
@@ -481,6 +481,7 @@ attributes:
     - EukEval
     - MagBin
     range: float
+    minimum_value: 0
   ncbi_lineage_tax_ids:
     name: ncbi_lineage_tax_ids
     description: Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)

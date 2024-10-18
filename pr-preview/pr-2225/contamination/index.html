@@ -431,15 +431,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#todos" class="md-nav__link">
-    <span class="md-ellipsis">
-      TODOs
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -519,11 +510,12 @@
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
-<h2 id="todos">TODOs</h2>
-<ul>
-<li>range should be 0 to 100, float</li>
+<li>
+<p>Range: <a href="../Float/">Float</a></p>
+</li>
+<li>
+<p>Minimum Value: 0</p>
+</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -536,8 +528,6 @@
 <pre><code class="language-yaml">name: contamination
 description: Estimate of the completeness of the metagenome-assembled genome, estimated
   by a tool like CheckM.
-todos:
-- range should be 0 to 100, float
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: contamination
@@ -545,6 +535,7 @@ domain_of:
 - EukEval
 - MagBin
 range: float
+minimum_value: 0
 
 </code></pre>
 
