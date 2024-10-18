@@ -556,7 +556,7 @@ slots:
     minimum_value: 0
 
   low_depth_contig_num:
-    Number of contigs which were excluded from binning for depth of coverage.
+    description: Number of contigs which were excluded from binning for depth of coverage.
     range: integer
     minimum_value: 0
 
