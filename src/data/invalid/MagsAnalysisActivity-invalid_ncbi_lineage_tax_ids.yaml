@@ -18,5 +18,6 @@ mags_list:
     eukaryotic_evaluation:
       completeness: 14.71
       contamination: 8.82
+      type: nmdc:MagBin
       ncbi_lineage_tax_ids: 1-131567-2759-2611352-33682-191814-2603949-Aspergillus
       ncbi_lineage: root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
