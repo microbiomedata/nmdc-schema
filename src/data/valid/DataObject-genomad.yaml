@@ -1,0 +1,18 @@
+-  id: nmdc:dobj-11-dtTMNa
+   type: nmdc:DataObject
+   description: "Virus summary nmdc:ann0vx38"
+   name: nmdc_wfmgan-11-abc123_virus_summary.tsv
+   data_object_type: Virus Summary
+   file_size_bytes: 1234
+-  id: nmdc:dobj-11-dtTMNc
+   type: nmdc:DataObject
+   description: "Plasmid summary nmdc:ann0vx38"
+   name: nmdc_wfmgan-11-abc123_plasmid_summary.tsv
+   data_object_type: Plasmid Summary
+   file_size_bytes: 1234
+-  id: nmdc:dobj-11-dtTMNd
+   type: nmdc:DataObject
+   description: "agg results nmdc:ann0vx38"
+   name: nmdc_wfmgan-11-abc12_aggregated_classification\.tsv
+   data_object_type: GeNomad Aggregated Classification
+  
