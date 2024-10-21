@@ -1696,43 +1696,50 @@ slots:
       - NCIT:C816
   gtdbtk_domain:
     description: Taxonomic domain assigned by GTDB-Tk.
-    comments: https://doi.org/10.1093/bioinformatics/btz848
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:superkingdom
   gtdbtk_phylum:
     description: Taxonomic phylum assigned by GTDB-Tk.
-    comments: https://doi.org/10.1093/bioinformatics/btz848
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:phylum
   gtdbtk_class:
     description: Taxonomic class assigned by GTDB-Tk.
-    comments: https://doi.org/10.1093/bioinformatics/btz848
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:class
   gtdbtk_order:
     description: Taxonomic order assigned by GTDB-Tk.
-    comments: https://doi.org/10.1093/bioinformatics/btz848
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:order
   gtdbtk_family:
     description: Taxonomic family assigned by GTDB-Tk.
-    comments: https://doi.org/10.1093/bioinformatics/btz848
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:family
   gtdbtk_genus:
     range: string
     description: Taxonomic genus assigned by GTDB-Tk.
-    comments: https://doi.org/10.1093/bioinformatics/btz848
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     exact_mappings:
       - NCBITaxon:genus
   gtdbtk_species:
     description: Taxonomic genus assigned by GTDB-Tk.
-    comments: https://doi.org/10.1093/bioinformatics/btz848
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:species
