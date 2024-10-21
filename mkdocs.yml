@@ -30,6 +30,7 @@ nav:
   - NMDC Schema Contributors How-to from Schema Hackathon 2023-12-10: https://docs.google.com/presentation/d/1ZH41QAoESUwAkdHyUxlrmSKS5M-bT0TOulBgX4rBx2A/edit#slide=id.g26390794265_0_693
   - NMDC Schema Validation: schema-validation.md
   - Schema element deprecation guide: schema_element_deprecation_guide.md
+  - v10 vs v11 (Berkeley schema) retrospective: v10-vs-v11-retrospective.md
 
 
 site_url: https://microbiomedata.github.io/nmdc-schema
