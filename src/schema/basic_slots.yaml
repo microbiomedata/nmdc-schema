@@ -607,6 +607,29 @@ enums:
   FileTypeEnum:
     permissible_values:
       
+      Virus Summary:
+        description: Tab separated file listing the viruses found by geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_virus_summary\.tsv?$'
+      
+      Plasmid Summary:
+        description: Tab separated file listing the plasmids found be geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_plasmid_summary\.tsv?$'
+        
+      GeNomad Aggregated Classification:
+        description: >-
+          Tab separated file which combines the results from neural network-based classification
+          and marker-based classification for virus and plasmid detection with geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_aggregated_classification\.tsv?$'  
+        
       Reference Calibration File:
         description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
       
