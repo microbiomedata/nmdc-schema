@@ -91,12 +91,12 @@ important organizational role.
 
 ### v10.9.1
 
-![Activity.png](Activity.png)
+![Activity.png](../images/Activity.png)
 
 `ProtocolExecution` has been added as a `PlannedProcess` for aggregating other processes together when they follow the
 same `Protocol`.
 
-![ProtocolExecution.png](ProtocolExecution.png)
+![ProtocolExecution.png](../images/ProtocolExecution.png)
 
 Several other kinds of processual classes were also migrated into the `NamedThing.PlannedProcess`, with or without
 renaming or other refactoring. For example, the fairly vague root class `OmicsProcessing` is now
@@ -113,7 +113,7 @@ direct subclasses of `PlannedProcess` (`Extraction`, `SubSamplingProcess`, `Mixi
 
 ### v11.0.1
 
-![MaterialProcessing.png](MaterialProcessing.png)
+![MaterialProcessing.png](../images/MaterialProcessing.png)
 
 `StorageProcess` has been added as a new  `PlannedProcess` but the schema does not classify it as a
 `MaterialProcessing` because it does not intrinsically create new/modified samples.
@@ -128,11 +128,11 @@ of `NamedThing`.
 
 ### v11.0.1
 
-![InformationObject.png](InformationObject.png)
+![InformationObject.png](../images/InformationObject.png)
 
 ### v11.0.1
 
-![Configuration.png](Configuration.png)
+![Configuration.png](../images/Configuration.png)
 
 Solution-centric modelling for laboratory processes was also replaced with substance-centric modelling
 
@@ -148,22 +148,22 @@ Solution-centric modelling for laboratory processes was also replaced with subst
 
 ### v11.0.1
 
-![PortionOfSubstance.png](PortionOfSubstance.png)
+![PortionOfSubstance.png](../images/PortionOfSubstance.png)
 
 ### v11.0.1
 
-![MobilePhaseSegment.png](MobilePhaseSegment.png)
+![MobilePhaseSegment.png](../images/MobilePhaseSegment.png)
 
 The Berkeley schema retains the `AttributeValue` hierarchy but eliminates classes like `IntegerValue`, and `UrlValue`
 whose only advantages over a values of integer or string types were never-used provenance slots.
 
 ### v10.9.0
 
-![AttributeValue10.png](AttributeValue10.png)
+![AttributeValue10.png](../images/AttributeValue10.png)
 
 ### v11.0.1
 
-![AttributeValue11.png](AttributeValue11.png)
+![AttributeValue11.png](../images/AttributeValue11.png)
 
 Classes related to metabolic reactions that a cell could carry out, based on some functionality in its genome, have been
 removed, due to potential confusion with reactions that an experimenter might carry out in order to amke a sample
