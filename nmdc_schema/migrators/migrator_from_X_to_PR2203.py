@@ -46,13 +46,13 @@ class Migrator(MigratorBase):
                 # gather all the proteins from the peptide identification nested data
                 protein_dict = {}
                 for peptide_iden in workflow_dict.get("has_peptide_quantifications"):
-                    # check that the peptide_identification has a best_protein and peptide_spectral_count slots
+                    # check that the has_peptide_quantifications field has a best_protein and peptide_spectral_count fields
                     if (
                         "best_protein" not in peptide_iden
                         or "peptide_spectral_count" not in peptide_iden
                     ):
                         raise ValueError(
-                            "peptide_identification is missing best_protein or peptide_spectral_count slot"
+                            "has_peptide_quantifications is missing best_protein or peptide_spectral_count field"
                         )
 
                     razor_protein = peptide_iden.get("best_protein")
