@@ -29,11 +29,11 @@ workflow_execution_set:
     started_at_time: '2023-08-11T11:00:00Z'
     has_protein_identifications:
       - type: nmdc:ProteinIdentification
-        razor_protein: nmdc:geneproduct-99-ASDSDGASDGAS
+        razor_protein: nmdc:wfmgan-11-hnkgb304.1_002345_3958_5136
         unique_peptide_count: 1
         protein_spectral_count: 10
       - type: nmdc:ProteinIdentification
-        razor_protein: nmdc:geneproduct-99-SDGASDGASDG
+        razor_protein: nmdc:wfmgan-11-hnkgb304.1_002345_3958_5137
         unique_peptide_count: 2
         protein_spectral_count: 20
 chemical_entity_set:
