@@ -1695,7 +1695,7 @@ slots:
     description: the specific protein identifier identified in the metaproteomics analysis that is most correctly grouped to its associated peptide sequences
     range: GeneProduct
     structured_pattern:
-      syntax: "^{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}{id_locus}"
+      syntax: "^{id_nmdc_prefix}:(wfmgan|wfmgas)-{id_shoulder}-{id_blade}{id_version}{id_locus}"
       interpolated: true
 
   min_q_value:
