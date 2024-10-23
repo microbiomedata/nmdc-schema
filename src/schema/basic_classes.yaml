@@ -330,6 +330,7 @@ classes:
       - instrument_used
       - mod_date
       - principal_investigator
+      - in_manifest
     slot_usage:
       has_input:
         required: true
@@ -524,6 +525,16 @@ slots:
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
 
+  in_manifest:
+    range: Manifest
+    multivalued: true
+    #TODO KRH: add description and structured_pattern constraints
+
+  collection_type:
+    range: CollectionTypeEnum
+    description: >-
+      The type of collection that describes the data in the collection.
+
   model:
     range: InstrumentModelEnum
   vendor:
@@ -600,6 +611,14 @@ enums:
         comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
         exact_mappings:
           - NCIT:C61538
+  
+  CollectionTypeEnum:
+    permissible_values:
+    #TODO KRH: add more collection types, mappings, and descriptions
+      instrument_run:
+        description: >-
+          A collection of data generated from a single run of an instrument.
+
   InstrumentModelEnum:
     permissible_values:
       exploris_21T:

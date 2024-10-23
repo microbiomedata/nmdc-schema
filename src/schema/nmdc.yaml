@@ -254,6 +254,17 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+  
+  Manifest:
+    is_a: InformationObject
+    class_uri: nmdc:Manifest
+    #TODO KRH: add description
+    slots:
+      - collection_type
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
 
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
