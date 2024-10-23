@@ -258,7 +258,7 @@ classes:
   Manifest:
     is_a: InformationObject
     class_uri: nmdc:Manifest
-    #TODO KRH: add description
+    description: A representation of a collection of data objects and a description of why these data objects are grouped together.
     slots:
       - manifest_category
     slot_usage:

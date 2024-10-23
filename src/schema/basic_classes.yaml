@@ -533,7 +533,7 @@ slots:
   manifest_category:
     range: ManifestCategoryEnum
     description: >-
-      The type of collection that describes the data in the collection.
+      The type of collection that describes the data in the manifest.
     required: true
 
   model:
@@ -618,13 +618,13 @@ enums:
     #TODO KRH: add more collection types, mappings, and descriptions
       instrument_run:
         description: >-
-          A collection of data generation records from a single run of an instrument.
+          A collection of data objects from a single run of an instrument.
       technical_replicates:
         description: >-
-          A collection of data generation records that represent technical replicates of a single sample.
+          A collection of data objects that represent technical replicates of a single sample.
       fractions:
         description: >-
-          A collection of data generation records that represent fractions of a single sample.
+          A collection of data objects that represent fractions of a single sample.
 
   InstrumentModelEnum:
     permissible_values:
