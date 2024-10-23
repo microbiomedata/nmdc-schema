@@ -25,8 +25,6 @@ data_generation_set:
     analyte_category: metabolome
     associated_studies:
       - nmdc:sty-00-555xxx
-    in_manifest:
-      - nmdc:manif-99-krhtest                                   #defined below
 manifest_set:
   - id: nmdc:manif-99-krhtest
     type: nmdc:Manifest
