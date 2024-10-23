@@ -28,7 +28,7 @@ data_generation_set:
 manifest_set:
   - id: nmdc:manif-99-krhtest
     type: nmdc:Manifest
-    manifest_collection: instrument_run
+    manifest_category: instrument_run
 calibration_set:
   - id: nmdc:calib-99-zUCd5Q
     type: nmdc:CalibrationInformation
