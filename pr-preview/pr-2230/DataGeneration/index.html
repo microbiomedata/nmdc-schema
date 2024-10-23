@@ -335,11 +335,6 @@
 
   DataGeneration : id
 
-  DataGeneration : in_manifest
-
-      DataGeneration --&gt; "*" Manifest : in_manifest
-    click Manifest href "../Manifest"
-
   DataGeneration : instrument_used
 
       DataGeneration --&gt; "*" Instrument : instrument_used
@@ -437,12 +432,6 @@
 <td><a href="../principal_investigator/">principal_investigator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
 <td>Principal Investigator who led the study and/or generated the dataset</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../in_manifest/">in_manifest</a></td>
-<td>* <br/> <a href="../Manifest/">Manifest</a></td>
-<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -709,7 +698,6 @@ slots:
 - instrument_used
 - mod_date
 - principal_investigator
-- in_manifest
 slot_usage:
   has_input:
     name: has_input
@@ -858,16 +846,6 @@ attributes:
     - Study
     - DataGeneration
     range: PersonValue
-  in_manifest:
-    name: in_manifest
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: in_manifest
-    owner: DataGeneration
-    domain_of:
-    - DataGeneration
-    range: Manifest
-    multivalued: true
   has_input:
     name: has_input
     description: An input to a process.

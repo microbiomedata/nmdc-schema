@@ -121,10 +121,6 @@
          <lastmod>2024-10-23</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/CollectionTypeEnum/</loc>
-         <lastmod>2024-10-23</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Configuration/</loc>
          <lastmod>2024-10-23</lastmod>
     </url>
@@ -526,6 +522,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Manifest/</loc>
+         <lastmod>2024-10-23</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/ManifestCategoryEnum/</loc>
          <lastmod>2024-10-23</lastmod>
     </url>
     <url>
@@ -1526,10 +1526,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/collection_time_inc/</loc>
-         <lastmod>2024-10-23</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/collection_type/</loc>
          <lastmod>2024-10-23</lastmod>
     </url>
     <url>
@@ -2842,6 +2838,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/manganese/</loc>
+         <lastmod>2024-10-23</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/manifest_category/</loc>
          <lastmod>2024-10-23</lastmod>
     </url>
     <url>

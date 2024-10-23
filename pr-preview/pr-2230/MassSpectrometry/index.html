@@ -328,11 +328,6 @@
 
   MassSpectrometry : id
 
-  MassSpectrometry : in_manifest
-
-      MassSpectrometry --&gt; "*" Manifest : in_manifest
-    click Manifest href "../Manifest"
-
   MassSpectrometry : instrument_used
 
       MassSpectrometry --&gt; "*" Instrument : instrument_used
@@ -453,12 +448,6 @@
 <td><a href="../principal_investigator/">principal_investigator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
 <td>Principal Investigator who led the study and/or generated the dataset</td>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-</tr>
-<tr>
-<td><a href="../in_manifest/">in_manifest</a></td>
-<td>* <br/> <a href="../Manifest/">Manifest</a></td>
-<td></td>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 </tr>
 <tr>
@@ -816,16 +805,6 @@ attributes:
     - Study
     - DataGeneration
     range: PersonValue
-  in_manifest:
-    name: in_manifest
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: in_manifest
-    owner: MassSpectrometry
-    domain_of:
-    - DataGeneration
-    range: Manifest
-    multivalued: true
   has_input:
     name: has_input
     description: An input to a process.

@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/CollectionTypeEnum/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/manifest_category/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Enum: CollectionTypeEnum - NMDC Schema Documentation</title>
+        <title>Slot: manifest_category - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enum-collectiontypeenum" class="md-skip">
+        <a href="#slot-manifest_category" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enum: CollectionTypeEnum
+              Slot: manifest_category
             
           </span>
         </div>
@@ -413,18 +413,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#permissible-values" class="md-nav__link">
+  <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
-      Permissible Values
+      Applicable Classes
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#slots" class="md-nav__link">
+  <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
-      Slots
+      Properties
     </span>
   </a>
   
@@ -481,50 +481,37 @@
   
 
 
-<h1 id="enum-collectiontypeenum">Enum: CollectionTypeEnum</h1>
-<p>URI: <a href="./">CollectionTypeEnum</a></p>
-<h2 id="permissible-values">Permissible Values</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-<th>Meaning</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>instrument_run</td>
-<td>None</td>
-<td>A collection of data generation records from a single run of an instrument</td>
-</tr>
-<tr>
-<td>technical_replicates</td>
-<td>None</td>
-<td>A collection of data generation records that represent technical replicates o...</td>
-</tr>
-<tr>
-<td>fractions</td>
-<td>None</td>
-<td>A collection of data generation records that represent fractions of a single ...</td>
-</tr>
-</tbody>
-</table>
-<h2 id="slots">Slots</h2>
+<h1 id="slot-manifest_category">Slot: manifest_category</h1>
+<p><em>The type of collection that describes the data in the collection.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/manifest_category">nmdc:manifest_category</a></p>
+<!-- no inheritance hierarchy -->
+
+<h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
+<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../collection_type/">collection_type</a></td>
-<td>The type of collection that describes the data in the collection</td>
+<td><a href="../Manifest/">Manifest</a></td>
+<td></td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
+<h2 id="properties">Properties</h2>
+<ul>
+<li>
+<p>Range: <a href="../ManifestCategoryEnum/">ManifestCategoryEnum</a></p>
+</li>
+<li>
+<p>Required: True</p>
+</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -533,21 +520,15 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: CollectionTypeEnum
+<pre><code class="language-yaml">name: manifest_category
+description: The type of collection that describes the data in the collection.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-permissible_values:
-  instrument_run:
-    text: instrument_run
-    description: A collection of data generation records from a single run of an instrument.
-  technical_replicates:
-    text: technical_replicates
-    description: A collection of data generation records that represent technical
-      replicates of a single sample.
-  fractions:
-    text: fractions
-    description: A collection of data generation records that represent fractions
-      of a single sample.
+alias: manifest_category
+domain_of:
+- Manifest
+range: ManifestCategoryEnum
+required: true
 
 </code></pre>
 

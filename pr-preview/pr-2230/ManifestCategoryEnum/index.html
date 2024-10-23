@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/collection_type/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ManifestCategoryEnum/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: collection_type - NMDC Schema Documentation</title>
+        <title>Enum: ManifestCategoryEnum - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-collection_type" class="md-skip">
+        <a href="#enum-manifestcategoryenum" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: collection_type
+              Enum: ManifestCategoryEnum
             
           </span>
         </div>
@@ -413,18 +413,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
-      Applicable Classes
+      Permissible Values
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
-      Properties
+      Slots
     </span>
   </a>
   
@@ -481,37 +481,50 @@
   
 
 
-<h1 id="slot-collection_type">Slot: collection_type</h1>
-<p><em>The type of collection that describes the data in the collection.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/collection_type">nmdc:collection_type</a></p>
-<!-- no inheritance hierarchy -->
-
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-manifestcategoryenum">Enum: ManifestCategoryEnum</h1>
+<p>URI: <a href="./">ManifestCategoryEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>instrument_run</td>
+<td>None</td>
+<td>A collection of data generation records from a single run of an instrument</td>
+</tr>
+<tr>
+<td>technical_replicates</td>
+<td>None</td>
+<td>A collection of data generation records that represent technical replicates o...</td>
+</tr>
+<tr>
+<td>fractions</td>
+<td>None</td>
+<td>A collection of data generation records that represent fractions of a single ...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Manifest/">Manifest</a></td>
-<td></td>
-<td>no</td>
+<td><a href="../manifest_category/">manifest_category</a></td>
+<td>The type of collection that describes the data in the collection</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>
-<p>Range: <a href="../CollectionTypeEnum/">CollectionTypeEnum</a></p>
-</li>
-<li>
-<p>Required: True</p>
-</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -520,15 +533,21 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: collection_type
-description: The type of collection that describes the data in the collection.
+<pre><code class="language-yaml">name: ManifestCategoryEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-alias: collection_type
-domain_of:
-- Manifest
-range: CollectionTypeEnum
-required: true
+permissible_values:
+  instrument_run:
+    text: instrument_run
+    description: A collection of data generation records from a single run of an instrument.
+  technical_replicates:
+    text: technical_replicates
+    description: A collection of data generation records that represent technical
+      replicates of a single sample.
+  fractions:
+    text: fractions
+    description: A collection of data generation records that represent fractions
+      of a single sample.
 
 </code></pre>
 

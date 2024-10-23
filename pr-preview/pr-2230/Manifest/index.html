@@ -284,14 +284,14 @@
 
   Manifest : alternative_identifiers
 
-  Manifest : collection_type
-
-      Manifest --&gt; "1" CollectionTypeEnum : collection_type
-    click CollectionTypeEnum href "../CollectionTypeEnum"
-
   Manifest : description
 
   Manifest : id
+
+  Manifest : manifest_category
+
+      Manifest --&gt; "1" ManifestCategoryEnum : manifest_category
+    click ManifestCategoryEnum href "../ManifestCategoryEnum"
 
   Manifest : name
 
@@ -322,8 +322,8 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../collection_type/">collection_type</a></td>
-<td>1 <br/> <a href="../CollectionTypeEnum/">CollectionTypeEnum</a></td>
+<td><a href="../manifest_category/">manifest_category</a></td>
+<td>1 <br/> <a href="../ManifestCategoryEnum/">ManifestCategoryEnum</a></td>
 <td>The type of collection that describes the data in the collection</td>
 <td>direct</td>
 </tr>
@@ -371,25 +371,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td><a href="../in_manifest/">in_manifest</a></td>
-<td>range</td>
-<td><a href="./">Manifest</a></td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td><a href="../in_manifest/">in_manifest</a></td>
-<td>range</td>
-<td><a href="./">Manifest</a></td>
-</tr>
-<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../manifest_set/">manifest_set</a></td>
 <td>range</td>
 <td><a href="./">Manifest</a></td>
 </tr>
 <tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td><a href="../DataObject/">DataObject</a></td>
 <td><a href="../in_manifest/">in_manifest</a></td>
 <td>range</td>
 <td><a href="./">Manifest</a></td>
@@ -428,7 +416,7 @@
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: InformationObject
 slots:
-- collection_type
+- manifest_category
 slot_usage:
   id:
     name: id
@@ -449,16 +437,16 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
 attributes:
-  collection_type:
-    name: collection_type
+  manifest_category:
+    name: manifest_category
     description: The type of collection that describes the data in the collection.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: collection_type
+    alias: manifest_category
     owner: Manifest
     domain_of:
     - Manifest
-    range: CollectionTypeEnum
+    range: ManifestCategoryEnum
     required: true
   id:
     name: id
