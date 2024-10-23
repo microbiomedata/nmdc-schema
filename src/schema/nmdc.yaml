@@ -1138,7 +1138,6 @@ slots:
     description: This property links a database object to the set of configurations within it.
 
   manifest_set:
-    #TODO KRH: Do I need a mix in here?
     mixins: object_set
     range: Manifest
     description: This property links a database object to the set of manifests within it.

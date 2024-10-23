@@ -534,6 +534,7 @@ slots:
     range: CollectionTypeEnum
     description: >-
       The type of collection that describes the data in the collection.
+    required: true
 
   model:
     range: InstrumentModelEnum
@@ -617,7 +618,13 @@ enums:
     #TODO KRH: add more collection types, mappings, and descriptions
       instrument_run:
         description: >-
-          A collection of data generated from a single run of an instrument.
+          A collection of data generation records from a single run of an instrument.
+      technical_replicates:
+        description: >-
+          A collection of data generation records that represent technical replicates of a single sample.
+      fractions:
+        description: >-
+          A collection of data generation records that represent fractions of a single sample.
 
   InstrumentModelEnum:
     permissible_values:
