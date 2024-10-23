@@ -290,6 +290,7 @@ classes:
       - md5_checksum
       - url
       - was_generated_by
+      - in_manifest
     slot_usage:
       name:
         required: true
@@ -330,7 +331,6 @@ classes:
       - instrument_used
       - mod_date
       - principal_investigator
-      - in_manifest
     slot_usage:
       has_input:
         required: true
