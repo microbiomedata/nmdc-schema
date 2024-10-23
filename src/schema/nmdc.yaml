@@ -260,7 +260,7 @@ classes:
     class_uri: nmdc:Manifest
     #TODO KRH: add description
     slots:
-      - manifest_collection
+      - manifest_category
     slot_usage:
       id:
         structured_pattern:

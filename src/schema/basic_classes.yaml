@@ -530,8 +530,8 @@ slots:
     multivalued: true
     #TODO KRH: add description and structured_pattern constraints
 
-  collection_type:
-    range: CollectionTypeEnum
+  manifest_category:
+    range: ManifestCategoryEnum
     description: >-
       The type of collection that describes the data in the collection.
     required: true
@@ -613,7 +613,7 @@ enums:
         exact_mappings:
           - NCIT:C61538
   
-  CollectionTypeEnum:
+  ManifestCategoryEnum:
     permissible_values:
     #TODO KRH: add more collection types, mappings, and descriptions
       instrument_run:
