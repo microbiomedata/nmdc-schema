@@ -290,6 +290,7 @@ classes:
       - md5_checksum
       - url
       - was_generated_by
+      - in_manifest
     slot_usage:
       name:
         required: true
@@ -524,6 +525,17 @@ slots:
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
 
+  in_manifest:
+    range: Manifest
+    multivalued: true
+    #TODO KRH: add description and structured_pattern constraints
+
+  manifest_category:
+    range: ManifestCategoryEnum
+    description: >-
+      The type of collection that describes the data in the manifest.
+    required: true
+
   model:
     range: InstrumentModelEnum
   vendor:
@@ -600,6 +612,20 @@ enums:
         comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
         exact_mappings:
           - NCIT:C61538
+  
+  ManifestCategoryEnum:
+    permissible_values:
+    #TODO KRH: add more collection types, mappings, and descriptions
+      instrument_run:
+        description: >-
+          A collection of data objects from a single run of an instrument.
+      technical_replicates:
+        description: >-
+          A collection of data objects that represent technical replicates of a single sample.
+      fractions:
+        description: >-
+          A collection of data objects that represent fractions of a single sample.
+
   InstrumentModelEnum:
     permissible_values:
       exploris_21T:

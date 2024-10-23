@@ -254,6 +254,17 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+  
+  Manifest:
+    is_a: InformationObject
+    class_uri: nmdc:Manifest
+    description: A representation of a collection of data objects and a description of why these data objects are grouped together.
+    slots:
+      - manifest_category
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
 
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
@@ -292,6 +303,7 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - instrument_set
+      - manifest_set
       - material_processing_set
       - processed_sample_set
       - protocol_execution_set
@@ -1124,6 +1136,11 @@ slots:
     mixins: object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
+
+  manifest_set:
+    mixins: object_set
+    range: Manifest
+    description: This property links a database object to the set of manifests within it.
 
   protocol_execution_set:
     mixins: object_set
