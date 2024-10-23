@@ -273,6 +273,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-manifest">Class: Manifest</h1>
+<p><em>A representation of a collection of data objects and a description of why these data objects are grouped together.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/Manifest">nmdc:Manifest</a></p>
 <div class="mermaid">classDiagram
   class Manifest
@@ -324,7 +325,7 @@
 <tr>
 <td><a href="../manifest_category/">manifest_category</a></td>
 <td>1 <br/> <a href="../ManifestCategoryEnum/">ManifestCategoryEnum</a></td>
-<td>The type of collection that describes the data in the collection</td>
+<td>The type of collection that describes the data in the manifest</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -413,6 +414,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: Manifest
+description: A representation of a collection of data objects and a description of
+  why these data objects are grouped together.
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: InformationObject
 slots:
@@ -429,6 +432,8 @@ class_uri: nmdc:Manifest
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: Manifest
+description: A representation of a collection of data objects and a description of
+  why these data objects are grouped together.
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: InformationObject
 slot_usage:
@@ -439,7 +444,7 @@ slot_usage:
 attributes:
   manifest_category:
     name: manifest_category
-    description: The type of collection that describes the data in the collection.
+    description: The type of collection that describes the data in the manifest.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: manifest_category
