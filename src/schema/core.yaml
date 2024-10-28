@@ -37,7 +37,17 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-
+  BinQualityEnum:
+    permissible_values:
+      HQ:
+        aliases: high quality
+        description: Metagenome-assembled genome is high quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
+      MQ:
+        aliases: medium quality
+        description: Metagenome-assembled genome is medium quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
+      LQ:
+        aliases: low quality
+        description: Metagenome-assembled genome is low quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
   ChemicalConversionCategoryEnum:
     permissible_values:
       addition:
@@ -1627,47 +1637,112 @@ slots:
 
   total_bases:
     range: integer
-    todos:
-      - this slot needs some basic textual annotations and constraints
+    minimum_value: 0
+    description: Total number of basepairs.
   members_id:
     range: string
     multivalued: true
-    todos:
-      - this slot needs some basic textual annotations and constraints
+    description: Names of the contigs that make up a metagenome-assembled genome.
+    close_mappings:
+      - GENEPIO:0100596
   bin_name:
     range: string
+    required: true
+    description: Name of the metagenome-assembled genome.
   number_of_contig:
+    description: Number of contigs
+    exact_mappings:
+      - GENEPIO:0000093
     range: integer
+    minimum_value: 0
   completeness:
+    description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
+    minimum_value: 0
   contamination:
+    description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
+    minimum_value: 0
   gene_count:
     range: integer
+    description: Number of genes.
+    minimum_value: 0
   bin_quality:
-    range: string
+    description: The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893).
+    range: BinQualityEnum
   num_16s:
+    description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
     range: integer
+    minimum_value: 0
+    broad_mappings:
+      - NCIT:C105370
   num_5s:
+    description: Number of 5s seqeuences detected, a subunit of ribosomes.
     range: integer
+    minimum_value: 0
+    broad_mappings:
+      - OMIT:0013248
   num_23s:
+    description: Number of 23 seqeuences detected, a subunit of ribosomes.
+    minimum_value: 0
     range: integer
+    broad_mappings:
+      - OMIT:0013245
   num_t_rna:
+    description: Number of transfer transfer RNAs.
+    minimum_value: 0
     range: integer
+    broad_mappings:
+      - NCIT:C816
   gtdbtk_domain:
+    description: Taxonomic domain assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:superkingdom
   gtdbtk_phylum:
+    description: Taxonomic phylum assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:phylum
   gtdbtk_class:
+    description: Taxonomic class assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:class
   gtdbtk_order:
+    description: Taxonomic order assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:order
   gtdbtk_family:
+    description: Taxonomic family assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:family
   gtdbtk_genus:
     range: string
+    description: Taxonomic genus assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+      - NCBITaxon:genus
   gtdbtk_species:
+    description: Taxonomic genus assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:species
 
   highest_similarity_score:
     todos:
