@@ -1732,11 +1732,11 @@ slots:
     range: string
   
   unique_peptide_count:
-    description: count of peptide sequences grouped to the best_protein
+    description: count of peptide sequences grouped to the razor_protein
     range: integer
 
   protein_spectral_count:
-    description: sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
+    description: sum of filter passing MS2 spectra associated with the razor protein within a given LC-MS/MS data file
     range: integer
 
   protein_sum_masic_abundance:
