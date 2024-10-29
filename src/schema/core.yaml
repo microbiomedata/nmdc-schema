@@ -1324,9 +1324,6 @@ classes:
       - unique_peptide_count
       - protein_spectral_count
       - type
-    slot_usage:
-      razor_protein:
-        description: the specific protein identifier most correctly grouped to its associated peptide sequences
 
   ChemicalEntity:
     class_uri: nmdc:ChemicalEntity
