@@ -169,7 +169,7 @@ whose only advantages over a values of integer or string types were never-used p
 ![AttributeValue11.png](../images/AttributeValue11.png)
 
 Classes related to metabolic reactions that a cell could carry out, based on some functionality in its genome, have been
-removed, due to potential confusion with reactions that an experimenter might carry out in order to amke a sample
+removed, due to potential confusion with reactions that an experimenter might carry out in order to make a sample
 suitable for analysis.
 
 ### Removed:
