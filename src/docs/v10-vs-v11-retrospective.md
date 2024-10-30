@@ -323,7 +323,7 @@ attributes of laboratory methods, not about samples of biological materials that
 
 Some, but not all, of those slots were re-associated with `Extraction`, `LibraryPreparation`, or `NucleotideSequencing`.
 
-`has_process_parts` has been added to capture the relationship between a `ProtocolExecution` and the Process instances
+`has_process_parts` has been added to capture the relationship between a `ProtocolExecution` and the `Process` instances
 that were carried out with the intention of completing a specified protocol under specified circumstances.
 
 The following slots have been added in support of the new `CalibrationInformation` and `Configuration` modelling for
