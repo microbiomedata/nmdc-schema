@@ -146,7 +146,6 @@ class Migrator(MigratorBase):
             if has_calibration_data_obj.lower() == 'false':
                 workflow_execution_doc.pop("has_calibration")
             
-                self.logger.info(f"calib_data_object is {has_calibration_data_obj}")
             # If the has_calibration value is not a data object id or does not have a value of "false"
             # raise an error.
             elif not self.check_has_calibration(has_calibration_data_obj) and has_calibration_data_obj.lower() != 'false':
