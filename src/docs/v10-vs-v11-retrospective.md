@@ -306,8 +306,8 @@ The `part_of` slots have been replaced in many cases with more specific slots. F
 `associated_studies` relationship with `Study`.
 
 The NMDC schema has always imported many slots from the MIxS standard, and has generally associated them with the
-`Biosample` class. In schema v11, several of those have been de-associated with `Biosample` as they aren't really
-attributes of Biosamples
+`Biosample` class. In schema v11, several of those have been de-associated with `Biosample` as they are arguably
+attributes of laboratory methods, not about samples of biological materials that are extracted from some environment.
 
 * `chimera_check`
 * `nucl_acid_amp`
