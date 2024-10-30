@@ -252,8 +252,8 @@ enforced with the following Python tests:
 Note that classes should not re-associate themselves with any slot that they inherit from a superclass. For example, the
 class definition for `Study`. This no-reasserting rule is tested with `test_inherited_slots_not_reiterated.py`
 
-Also note that the legacy v10 schema did include a `type` slot, but it was used very inconsistently. v10 also ahd a
-similar `designated_class` slot which ahs been retired.
+Also note that the legacy v10 schema did include a `type` slot, but it was used very inconsistently. v10 also had a
+similar `designated_class` slot which has been retired.
 
 The following slots were removed as a consequence of removing the `Reaction` class and beginning the process of
 deprecating the `Pathway` class:
