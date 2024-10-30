@@ -30,7 +30,7 @@ See also: https://github.com/microbiomedata/nmdc-schema/releases/tag/v11.0.0
 - Things that appear in the back-ticked font and use `lower_snake_case` are schema slots unless otherwise noted.
 - Other LinkML schema [naming conventions](https://linkml.io/linkml/schemas/linter.html#standard-naming) are not
   discussed here.
-- A dotted notation in the back-ticked font, with elements in UpperCamelCase, like `Vehichle.MotorVehicle.PassengerCar`
+- A dotted notation in the back-ticked font, with elements in UpperCamelCase, like `Vehicle.MotorVehicle.PassengerCar`
   indicates a class hierarchy. `PassengerCar is_a MotorVehicle` and `MotorVehicle is_a Vehicle`.
 
 ## Refactoring of Classes
