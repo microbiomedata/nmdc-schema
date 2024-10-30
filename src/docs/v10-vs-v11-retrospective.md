@@ -1,6 +1,6 @@
 # Merging the Berkeley schema into the NMDC schema
 
-This document is a retrospective on the changes made to the NMDC schema between major versions 10 and 11. 
+This document is a retrospective on the changes made to the NMDC schema between major versions 10 and 11.
 
 Motivations for the Berkeley schema development included:
 
@@ -20,13 +20,15 @@ See also: https://github.com/microbiomedata/nmdc-schema/releases/tag/v11.0.0
 
 ## Conventions:
 
-- `this monospaced code font` is used to indicate the verbatim names of elements from the schema and variables, functions,
+- `this monospaced code font` is used to indicate the verbatim names of elements from the schema and variables,
+  functions,
   etc. in code
 - Things that appear in the monospaced code font and use `UpperCamelCase` are schema classes unless otherwise noted.
 - Things that appear in the monospaced code font and use `lower_snake_case` are schema slots unless otherwise noted.
 - Other LinkML schema [naming conventions](https://linkml.io/linkml/schemas/linter.html#standard-naming) are not
   discussed here.
-- A dotted notation in the monospaced code font, with elements in UpperCamelCase, like `Vehicle.MotorVehicle.PassengerCar`
+- A dotted notation in the monospaced code font, with elements in UpperCamelCase, like
+  `Vehicle.MotorVehicle.PassengerCar`
   indicates a class hierarchy. `PassengerCar is_a MotorVehicle` and `MotorVehicle is_a Vehicle`.
 
 ## Refactoring of Classes
@@ -194,7 +196,8 @@ retired from the legacy schema and 44 that were added in the switch from v10 to 
 
 Many of the slot changes can be understood by looking at the Python data migration code in `nmdc_schema/migrators`
 
-A major explanation for the slot differences is the adoption of a _polymorphic_ (i.e., multi-shaped) _model_ for slots in
+A major explanation for the slot differences is the adoption of a _polymorphic_ (i.e., multi-shaped) _model_ for slots
+in
 the `Database` class, which corresponds to polymorphic collections in the v11-compliant MongoDB. In the legacy model,
 the range for each of the `Database` slots was intended to be one class, with no provision for class hierarchy. In the
 new model, the range for each slot is still specified as a single class, but the slots can collect instances of that
@@ -246,7 +249,8 @@ enforced with the following Python tests:
 * test_all_classes_can_use_type_slot.py
 
 Note that classes should not re-associate themselves with any slot that they inherit from a superclass. For example, the
-class definition for `Study`. This no-reasserting rule is tested with `test_inherited_slots_not_reiterated.py`
+class definition for `Study` inherits the `id` slot from `NamedThing`, so `Study` doesn't include `id` in its `slots`
+list. This no-reasserting rule is tested with `test_inherited_slots_not_reiterated.py`
 
 Also note that the legacy v10 schema did include a `type` slot, but it was used very inconsistently. v10 also had a
 similar `designated_class` slot which has been retired.
