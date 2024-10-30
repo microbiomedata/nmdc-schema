@@ -119,14 +119,14 @@ class Migrator(MigratorBase):
         ... }
         >>> a = DictionaryAdapter(database=db)
         >>> m = Migrator(adapter=a)
-        >>> doc = {'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1'}
-        >>> m.store_and_remove_calibrations(doc)
+        >>> workflow_execution_doc = {'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1'}
+        >>> m.store_and_remove_calibrations(workflow_execution_doc)
         {'id': 'nmdc:wfx1', 'was_informed_by': 'nmdc:dgen1'}
-        >>> doc = {'id': 'nmdc:wfx2', 'has_calibration': 'false', 'was_informed_by': 'nmdc:dgen2'}
-        >>> m.store_and_remove_calibrations(doc)
+        >>> workflow_execution_doc = {'id': 'nmdc:wfx2', 'has_calibration': 'false', 'was_informed_by': 'nmdc:dgen2'}
+        >>> m.store_and_remove_calibrations(workflow_execution_doc)
         {'id': 'nmdc:wfx2', 'was_informed_by': 'nmdc:dgen2'}
-        >>> doc = {'id': 'nmdc:wfx3', 'has_calibration': 'invalid', 'was_informed_by': 'nmdc:dgen3'}
-        >>> m.store_and_remove_calibrations(doc)  # doctest: +IGNORE_EXCEPTION_DETAIL
+        >>> workflow_execution_doc = {'id': 'nmdc:wfx3', 'has_calibration': 'invalid', 'was_informed_by': 'nmdc:dgen3'}
+        >>> m.store_and_remove_calibrations(workflow_execution_doc)  # doctest: +IGNORE_EXCEPTION_DETAIL
         Traceback (most recent call last):
         ValueError: The 'has_calibration' value (invalid) in document (nmdc:wfx3) is not recognized
         """
@@ -190,11 +190,12 @@ class Migrator(MigratorBase):
         >>> a = DictionaryAdapter(database=db)
         >>> m = Migrator(adapter=a)
         >>> # First store calibrations
-        >>> doc = {'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1', 'type': 'nmdc:MetabolomicsAnalysis'}
-        >>> m.store_and_remove_calibrations(doc)
+        >>> workflow_execution_doc = {'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1', 'type': 'nmdc:MetabolomicsAnalysis'}
+        >>> _ = m.store_and_remove_calibrations(workflow_execution_doc)  # Store the calibrations first
         >>> # Then test update_data_gen_calibration
         >>> m.update_data_gen_calibration({'id': 'nmdc:dgen1'})  # doc with corresponding calibration
         {'id': 'nmdc:dgen1', 'has_calibration': 'nmdc:dobj-13-abc123'}
+        >>> # Test document without calibration
         >>> m.update_data_gen_calibration({'id': 'nmdc:dgen2'})  # doc without corresponding calibration
         {'id': 'nmdc:dgen2'}
         """
