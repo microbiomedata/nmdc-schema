@@ -179,7 +179,7 @@ suitable for analysis.
 - `ChemicalConversionProcess`
 
 A very general `Instrument` class was added as a subclass of `MaterialEntity`, but without any subclasses. Knowledge
-about instruments is captured directly in NMDC's MongoDB. The instances are normalized by populating their `vendor` slot
+about instruments is captured directly in NMDC's MongoDB database. The instances are normalized by populating their `vendor` slot
 with a value from the `InstrumentVendorEnum` and by populating the `model` slot with a value from the
 `InstrumentModelEnum`. Mappings between these NMDC vocabularies and vocabularies from collaborators like NCBI and GOLD
 are saved in various repos like nmdc-schema and nmdc-runtime.
