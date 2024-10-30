@@ -306,7 +306,7 @@ The `part_of` slots has been replaced in many cases with more specific slots. Fo
 `associated_studies` relationship with `Study`.
 
 The NMDC schema has always imported many slots from the MIxS standard, and has generally associated them with the
-`Biosmaple` class. In schema v11, several of those have been de-associated with Biosample as they aren't really
+`Biosample` class. In schema v11, several of those have been de-associated with `Biosample` as they aren't really
 attributes of Biosamples
 
 * `chimera_check`
