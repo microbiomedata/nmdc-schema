@@ -10,19 +10,18 @@ Motivations for the Berkeley schema development included:
 - Renaming and refactoring of the processes that model the processing of data, i.e. bioinformatics workflows.
 - A continuation of bipartite (material->process->material->process) modeling for the processing of samples, following
   the bipartite modeling used in the bioinformatics workflows (data->process->data).
-- Continuation of using example data files as unit tests of the schema
+- Continuation of using example data files as unit tests of the schema.
 - Switching numerous string-range slots to enumeration-range slots.
 - A requirement that all data records assert their own type and the addition of support for polymorphic aggregations of
-  data
-- Establishing schema development and modeling best practices and sharing domain understanding between subteams
+  data.
+- Establishing schema development and modeling best practices and sharing domain understanding between subteams.
 
 See also: https://github.com/microbiomedata/nmdc-schema/releases/tag/v11.0.0
 
 ## Conventions:
 
-- `this monospaced code font` is used to indicate the verbatim names of elements from the schema and variables,
-  functions,
-  etc. in code
+- `This monospaced code font` is used to indicate the verbatim names of elements from the schema and variables,
+  functions, etc. in code.
 - Things that appear in the monospaced code font and use `UpperCamelCase` are schema classes unless otherwise noted.
 - Things that appear in the monospaced code font and use `lower_snake_case` are schema slots unless otherwise noted.
 - Other LinkML schema [naming conventions](https://linkml.io/linkml/schemas/linter.html#standard-naming) are not
@@ -120,7 +119,7 @@ direct subclasses of `PlannedProcess` (`Extraction`, `SubSamplingProcess`, `Mixi
 `MaterialProcessing` because it does not intrinsically create new/modified samples.
 
 Terms that implied quantification like `MetaboliteQuantification` have been renamed to reemphasize the more fundamental
-activity of identifying, thus `MetaboliteIdentification`
+activity of identifying, thus `MetaboliteIdentification`.
 
 A `CalibrationInformation` class, a `Configuration` class and two `Configuration` subclasses (illustrated below) have
 been added in support of chromatographic separations and mass spectrometry analyses. These are subclasses of the
@@ -135,7 +134,7 @@ of `NamedThing`.
 
 ![Configuration.png](../images/Configuration.png)
 
-Solution-centric modelling for laboratory processes was also replaced with substance-centric modelling
+Solution-centric modelling for laboratory processes was also replaced with substance-centric modelling.
 
 ### Removed:
 
@@ -194,7 +193,7 @@ analytical path, such that they could not be subject to any more `MaterialProces
 The number of **slots** in the schema remains 872 after the Berkeley merger, although there are 44 slots that have been
 retired from the legacy schema and 44 that were added in the switch from v10 to v11.
 
-Many of the slot changes can be understood by looking at the Python data migration code in `nmdc_schema/migrators`
+Many of the slot changes can be understood by looking at the Python data migration code in `nmdc_schema/migrators`.
 
 A major explanation for the slot differences is the adoption of a _polymorphic_ (i.e., multi-shaped) _model_ for slots
 in the `Database` class, which corresponds to polymorphic collections in the v11-compliant MongoDB. In the legacy model,
@@ -249,7 +248,7 @@ enforced with the following Python tests:
 
 Note that classes should not re-associate themselves with any slot that they inherit from a superclass. For example, the
 class definition for `Study` inherits the `id` slot from `NamedThing`, so `Study` doesn't include `id` in its `slots`
-list. This no-reasserting rule is tested with `test_inherited_slots_not_reiterated.py`
+list. This no-reasserting rule is tested with `test_inherited_slots_not_reiterated.py`.
 
 Also note that the legacy v10 schema did include a `type` slot, but it was used very inconsistently. v10 also had a
 similar `designated_class` slot which has been retired.
@@ -297,7 +296,7 @@ are the **permissible values** for `analyte_category`:
 
 In keeping with the focus on identification rather that quantification, `has_metabolite_quantifications` has been
 replaced with `has_metabolite_identifications` and `metabolite_quantified` has been replaced with
-`metabolite_identified`
+`metabolite_identified`.
 
 `alternate_emails` and `keywords` were removed due to lack of use.
 
@@ -337,7 +336,7 @@ open-ended string ranges) is nicely illustrated by these slots.
 * `has_mass_spectrometry_configuration`
 
 The following slots have been added, specifically on `MassSpectrometryConfiguration`, so that a small number of
-`MassSpectrometryConfiguration` instances can be reused to describe
+`MassSpectrometryConfiguration` instances can be reused to describe the following:
 
 * `mass_analyzers`
 * `mass_spectrometry_acquisition_strategy`
@@ -347,7 +346,7 @@ The following slots have been added, specifically on `MassSpectrometryConfigurat
 * `resolution_categories`
 
 These new slots are examplars of the increased emphasis on enumeration ranges (and the avoidance of the word 'type' in
-slot names other than `type`)
+slot names other than `type`):
 
 - `analyte_category`
 - `chemical_conversion_category`
@@ -381,7 +380,7 @@ The following enumerations were removed:
 - `CompoundEnum`
 - `DeviceEnum`
 
-`processing_institution_enum` was renamed to `ProcessingInstitutionEnum`
+`processing_institution_enum` was renamed to `ProcessingInstitutionEnum`.
 
 And the following **enumerations** were added:
 
@@ -418,11 +417,11 @@ Expansions for the following **prefixes** were added:
 ## Refactoring of example data files
 
 v10 of the schema provided 168 example data files. v11 has increased that to 224, providing better testing coverage of
-the schema via the `run-linkml-example` phase of `make test`
+the schema via the `run-linkml-example` phase of `make test`.
 
 v11 is also more thorough in annotating abstract classes, with 11, compared to 7 in v10. That includes a new `abstract`
 annotation for `AttributeValue`,  `MaterialProcessing` (which essentially replaces `BiosampleProcessing`) and
-`DataGeneration` (which essentially replaces `OmicsProcessing`)
+`DataGeneration` (which essentially replaces `OmicsProcessing`).
 
 ## Methods used to compare the two versions of the schema
 
@@ -502,7 +501,7 @@ class, which has the `Study` class as its range. The definition of `associated_s
 or `inlined_as_list` to be true, and the `Study` class inherits
 the [id](https://microbiomedata.github.io/nmdc-schema/id/#linkml-source) slot as an identifier
 from [NamedThing](https://microbiomedata.github.io/nmdc-schema/NamedThing/). Therefore, the value of
-an `associated_studies` slot in a data file must be the `id` of a `Study`
+an `associated_studies` slot in a data file must be the `id` of a `Study`.
 
 **In the absense of any other data or constraints**, the nmdc-schema will consider the following assertion valid for
 a `Biosample`, even if `xyz` isn't defined in the same data source:
@@ -551,7 +550,7 @@ intended pattern:
 ```
 
 Therefore, when using `nmdc_schema/nmdc_materialized_patterns.yaml` for validation, a `Biosample` with
-this assertion
+this assertion:
 
 ```yaml
 associated_studies:
@@ -565,7 +564,7 @@ definition with a constraint on how identifiers for instances of that class are 
 
 Now that we have addressed `structured_pattern`s including `settings` and `gen-linkml`, let's
 address `slot_usage`s, which are attributes of LinkML classes that are intended to refine the behavior of slots,
-relative to their global definition within the schema. For example, here's the global definition of `has_input`
+relative to their global definition within the schema. For example, here's the global definition of `has_input`:
 
 ```yaml
   has_input:
@@ -601,7 +600,7 @@ like [refgraph](https://github.com/microbiomedata/refscan?tab=readme-ov-file#ref
 
 Finally, we should point out that some `slot_usage` `range`s in nmdc-schema use the LinkML `any_of` construct. For
 example, here's part of the `slot_usage`
-for [MaterialProcessing](https://microbiomedata.github.io/nmdc-schema/MaterialProcessing/)
+for [MaterialProcessing](https://microbiomedata.github.io/nmdc-schema/MaterialProcessing/):
 
 ```yaml
       has_input:
@@ -624,15 +623,16 @@ to the use of the `|` character: "{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$
 ### Summary of challenges
 
 - LinkML validation does not guarantee that references have been checked for presence and correct form within a
-  distributed data ecosystem
-- `slot_usage` is complex to understand and use
+  distributed data ecosystem.
+- `slot_usage` is complex to understand and use.
 - `structured_pattern` requires the definition of `settings` and pattern materialization with `gen-linkml` in order to
-  be useful
+  be useful.
 - LinkML doesn't provide any automation for the alignment of `id` patterns in class definitions, `slot_usage`
-  `structured_pattern`s, and `slot_usage` `range`s
-- a human's refinement understanding of `any_of` `range`s may not match LinkML's union-based understanding
+  `structured_pattern`s, and `slot_usage` `range`s.
+- A human's refinement- or narrowing-based understanding of `any_of` `range`s may not match LinkML's union-based
+  understanding.
 - `any_of` `range`s can easily override global slot definitions, when they are meant to refine them (in the spirit of
-  monotonicity)
+  monotonicity).
 - `slot_usage` `structured_pattern`s, as used in the nmdc-schema, imply that the ranges of some slots are both a
   referred thing (asserted in the `range`), and a string (by way of the pattern). That can never be true, and it breaks
   the functionality of some derived artifacts, such as OWL and RDF.
