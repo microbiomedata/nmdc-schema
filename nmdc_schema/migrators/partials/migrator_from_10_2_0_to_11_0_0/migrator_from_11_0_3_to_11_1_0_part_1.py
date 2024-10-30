@@ -177,17 +177,21 @@ class Migrator(MigratorBase):
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> db = {
         ...   'workflow_execution_set': [
-        ...     {'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1'}
+        ...     {'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1', 'type': 'nmdc:MetabolomicsAnalysis'}
         ...   ],
         ...   'data_generation_set': [
         ...     {'id': 'nmdc:dgen1'},
         ...     {'id': 'nmdc:dgen2'}  # doc without corresponding calibration
+        ...   ],
+        ...   'data_object_set': [
+        ...     {'id': 'nmdc:dobj-13-abc123'}
         ...   ]
         ... }
         >>> a = DictionaryAdapter(database=db)
         >>> m = Migrator(adapter=a)
         >>> # First store calibrations
-        >>> m.store_and_remove_calibrations({'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1'})
+        >>> doc = {'id': 'nmdc:wfx1', 'has_calibration': 'nmdc:dobj-13-abc123', 'was_informed_by': 'nmdc:dgen1', 'type': 'nmdc:MetabolomicsAnalysis'}
+        >>> m.store_and_remove_calibrations(doc)
         >>> # Then test update_data_gen_calibration
         >>> m.update_data_gen_calibration({'id': 'nmdc:dgen1'})  # doc with corresponding calibration
         {'id': 'nmdc:dgen1', 'has_calibration': 'nmdc:dobj-13-abc123'}
