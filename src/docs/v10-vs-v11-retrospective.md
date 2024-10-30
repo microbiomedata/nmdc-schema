@@ -370,7 +370,7 @@ The following new slots support the change from solution-based modeling to subst
 
 The `ChemicalEntity` class has been refactored for nmdc-schema v11, and is likely to undergo additional changes in later
 2024 and 2025. For now, a `known_as` slot has been added to allow for flexibility in `PortionOfSubstance` and retain
-precision in `ChemicalEntity`
+precision in `ChemicalEntity`.
 
 `extraction_targets` was added to `Extraction`. `sampled_portion` was added to `SubSamplingProcess` and
 `jgi_portal_analysis_project_identifiers`.
