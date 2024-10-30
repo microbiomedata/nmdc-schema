@@ -197,11 +197,10 @@ retired from the legacy schema and 44 that were added in the switch from v10 to 
 Many of the slot changes can be understood by looking at the Python data migration code in `nmdc_schema/migrators`
 
 A major explanation for the slot differences is the adoption of a _polymorphic_ (i.e., multi-shaped) _model_ for slots
-in
-the `Database` class, which corresponds to polymorphic collections in the v11-compliant MongoDB. In the legacy model,
+in the `Database` class, which corresponds to polymorphic collections in the v11-compliant MongoDB. In the legacy model,
 the range for each of the `Database` slots was intended to be one class, with no provision for class hierarchy. In the
-new model, the range for each slot is still specified as a single class, but the slots can collect instances of that
-named class, plus the instances of any subclass of the class in the slots' range.
+new model, the range for each slot is still specified as a single class, but the slots can now collect instances of that
+named class, plus the instances of any subclass of the named class.
 
 ### Slots removed from `Database`
 
