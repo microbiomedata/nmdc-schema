@@ -1,10 +1,6 @@
 # Merging the Berkeley schema into the NMDC schema
 
-This document is a retrospective on the changes made to the NMDC schema between major versions 10 and 11. The
-development of version 11 was launched during a meeting at the Lawrence Berkeley National Laboratory in December 2023,
-and the development took place in a fork of the nmdc-schema called berkeley-schema-fy24. This is the first time a major
-update had comprehensive planning and development in a fork. A subsequent update in the same style has not been planned yet
-but is not ruled out.
+This document is a retrospective on the changes made to the NMDC schema between major versions 10 and 11. 
 
 Motivations for the Berkeley schema development included:
 
