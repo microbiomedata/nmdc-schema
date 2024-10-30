@@ -182,8 +182,8 @@ suitable for analysis.
 - `ChemicalConversionProcess`
 
 A very general `Instrument` class was added as a subclass of `MaterialEntity`, but without any subclasses. Knowledge
-about instruments is captured directly in NMDC's MongoDB database. The instances are normalized by populating their `vendor` slot
-with a value from the `InstrumentVendorEnum` and by populating the `model` slot with a value from the
+about instruments is captured directly in NMDC's MongoDB database. The instances are normalized by populating their
+`vendor` slot with a value from the `InstrumentVendorEnum` and by populating the `model` slot with a value from the
 `InstrumentModelEnum`. Mappings between these NMDC vocabularies and vocabularies from collaborators like NCBI and GOLD
 are saved in various repos like nmdc-schema and nmdc-runtime.
 
@@ -199,10 +199,10 @@ retired from the legacy schema and 44 that were added in the switch from v10 to 
 Many of the slot changes can be understood by looking at the Python data migration code in `nmdc_schema/migrators`.
 
 A major explanation for the slot differences is the adoption of a _polymorphic_ (i.e., multi-shaped) _model_ for slots
-in the `Database` class, which corresponds to polymorphic collections in the v11-compliant MongoDB. In the legacy model,
-the range for each of the `Database` slots was intended to be one class, with no provision for class hierarchy. In the
-new model, the range for each slot is still specified as a single class, but each `Database` slot can now collect
-instances of that specified class, plus the instances of any subclass of the specified class.
+in the `Database` class, which corresponds to polymorphic collections in the v11-compliant MongoDB database. In the
+legacy model, the range for each of the `Database` slots was intended to be one class, with no provision for class
+hierarchy. In the new model, the range for each slot is still specified as a single class, but each `Database` slot can
+now collect instances of that specified class, plus the instances of any subclass of the specified class.
 
 ### Slots removed from `Database`
 
