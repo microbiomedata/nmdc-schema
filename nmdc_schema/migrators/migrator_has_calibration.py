@@ -152,8 +152,7 @@ class Migrator(MigratorBase):
 
                 if not self.check_for_valid_data_object(calib_data_object):
                     raise ValueError(f"The 'has_calibration' value ({has_calibration}) in document "
-                             f"({workflow_execution_doc['id']}) is not a valid data object. The data object
-                             does not exist")
+                             f"({workflow_execution_doc['id']}) is not a valid data object. The data object does not exist")
                 else:
                     data_gen_doc = self.adapter.get_document_having_value_in_field(
                         collection_name="data_generation_set", field_name="id", value=workflow_execution_doc["was_informed_by"]
