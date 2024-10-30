@@ -8,7 +8,7 @@ but is not ruled out.
 
 Motivations for the Berkeley schema development included:
 
-- First class representations of "omics" methods beyond nucleic acid analysis, like mass-spectrometry based
+- First class representations of "omics" methods beyond nucleic acid analysis, like mass spectrometry-based
   proteomics and metabolomics. Within the Berkeley schema development team, this effort has gone by names like
   "replacing `OmicsProcessing` with `DataGeneration`".
 - Renaming and refactoring of the processes that model the processing of data, i.e. bioinformatics workflows.
