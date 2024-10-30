@@ -249,7 +249,7 @@ enforced with the following Python tests:
 * test_all_classes_assert_a_class_uri.py
 * test_all_classes_can_use_type_slot.py
 
-Note that classes should not re-associate themselves with any slot that they inherit form a superclass. For example, the
+Note that classes should not re-associate themselves with any slot that they inherit from a superclass. For example, the
 class definition for `Study`. This no-reasserting rule is tested with `test_inherited_slots_not_reiterated.py`
 
 Also note that the legacy v10 schema did include a `type` slot, but it was used very inconsistently. v10 also ahd a
