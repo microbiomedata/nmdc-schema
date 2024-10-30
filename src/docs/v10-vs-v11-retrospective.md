@@ -42,6 +42,9 @@ root classes._
 
 ### Table of classes removed, added or refactored in v10 to v11 migration
 
+_The **Selected legacy parents** column is provided to highlight two groups of updates that are discussed further below.
+Not every parent is shown for every legacy class._
+
 | Removed legacy class                  | New/Replacement class from Berkeley schema | Selected legacy parents     |
 |---------------------------------------|--------------------------------------------|-----------------------------|
 | `Activity`                            |                                            |                             |
@@ -582,7 +585,7 @@ assert `inlined` or `inlined_as_list`, and `NamedThing` used `id` as it's identi
 classes that use `has_input`, and they don't all use the same range for `has_input`. For
 example, [CollectingBiosamplesFromSite](https://microbiomedata.github.io/nmdc-schema/CollectingBiosamplesFromSite/)
 specifies that it's range for `has_input` is `Site`. _Note that not all nmdc-schema contributors are in favor of those
-semantics_
+semantics._
 
 ```yaml
   has_input:
