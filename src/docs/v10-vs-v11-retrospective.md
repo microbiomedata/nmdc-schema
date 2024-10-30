@@ -302,7 +302,7 @@ replaced with `has_metabolite_identifications` and `metabolite_quantified` has b
 
 `alternate_emails` and `keywords` were removed due to lack of use.
 
-The `part_of` slots has been replaced in many cases with more specific slots. For example, Biosample now has an
+The `part_of` slots have been replaced in many cases with more specific slots. For example, `Biosample` now has an
 `associated_studies` relationship with `Study`.
 
 The NMDC schema has always imported many slots from the MIxS standard, and has generally associated them with the
