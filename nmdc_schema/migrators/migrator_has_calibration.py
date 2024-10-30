@@ -54,12 +54,43 @@ class Migrator(MigratorBase):
         self.adapter.process_each_document(collection_name="data_generation_set", pipeline=[self.update_data_gen_calibration])
 
     def check_has_calibration(self, has_calibration_value) -> bool:
+        r"""
+        Checks for a valid data object id format (starts with 'nmdc:dobj')
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> db = {}
+        >>> a = DictionaryAdapter(database=db)
+        >>> m = Migrator(adapter=a)
+        >>> m.check_has_calibration('nmdc:dobj-13-abc123')  # Valid format
+        True
+        >>> m.check_has_calibration('false')  # Invalid format
+        False
+        >>> m.check_has_calibration('nmdc:something-else')  # Invalid format
+        False
+        """
 
         pattern = r'^nmdc:dobj'
 
         return bool(re.match(pattern, has_calibration_value))
     
     def check_for_valid_data_object(self, data_obj_id) -> bool:
+        r"""
+        Checks database for valid data object. Returns False if not valid
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> db = {
+        ...   'data_object_set': [
+        ...     {'id': 'nmdc:dobj-13-abc123'},
+        ...     {'id': 'nmdc:dobj-13-def456'}
+        ...   ]
+        ... }
+        >>> a = DictionaryAdapter(database=db)
+        >>> m = Migrator(adapter=a)
+        >>> m.check_for_valid_data_object('nmdc:dobj-13-abc123')  # Exists in database
+        True
+        >>> m.check_for_valid_data_object('nmdc:dobj-13-nonexistent')  # Doesn't exist
+        False
+        """
 
         data_obj_doc = self.adapter.get_document_having_value_in_field(
                     collection_name="data_object_set", field_name="id", value=data_obj_id
