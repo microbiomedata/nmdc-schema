@@ -951,11 +951,6 @@ slots:
   has_calibration:
     range: CalibrationInformation
     description: a calibration instance associated with a process
-    notes: >-
-      has_calibration slot will be removed from all WorkflowExecution classes but remain on the
-      MassSpectrometry class after an ingest of the appropriate set has occurred. 
-      Once this has occurred, this slot's range can be updated to CalibrationInformation and class/slot definitions can move to nmdc.yaml.  
-      See PR #29 in Berkeley schema.
 
   calibration_object:
     range: DataObject
