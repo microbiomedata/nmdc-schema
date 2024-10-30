@@ -8,9 +8,6 @@ class Migrator(MigratorBase):
     r"""
     Migrates a database between two schemas.
 
-    Specifically, this migrator migrates a database that conforms to the "pre-Berkeley schema"
-    into one that conforms to the "Berkeley schema".
-
     Reference: https://pypi.org/project/nmdc-schema/#history
     """
 
