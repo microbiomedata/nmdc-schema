@@ -278,11 +278,11 @@ deprecating the `Pathway` class:
 The string-typed `instrument_name` and `used` were removed due to refactoring around the new `Instrument` class and the
 `instrument_used` slot, which is associated with numerous `PlannedProcess` subclasses.
 
-The following have been removed from the `Extraction` class. _more details required_
+The following changes have been made to the `Extraction` class:
 
-* `extractant`
-* `extraction_method`
-* `extraction_target`
+* `extractant` was replaced with `substances_used`
+* `extraction_method` was replaced with `protocol_link`
+* `extraction_target` was replaced with a `multivalued` slot `extraction_targets`
 
 The string-typed `relevant_protocols` slot has been replaced with the `protocol_link` slot, which uses the `Protocol`
 class as its range.
