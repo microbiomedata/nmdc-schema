@@ -157,7 +157,7 @@ Solution-centric modelling for laboratory processes was also replaced with subst
 
 ![MobilePhaseSegment.png](../images/MobilePhaseSegment.png)
 
-The Berkeley schema retains the `AttributeValue` hierarchy but eliminates classes like `IntegerValue`, and `UrlValue`
+The Berkeley schema retains the `AttributeValue` hierarchy but eliminates classes like `IntegerValue` and `UrlValue`,
 whose only advantages over a values of integer or string types were never-used provenance slots.
 
 ### v10.9.0
