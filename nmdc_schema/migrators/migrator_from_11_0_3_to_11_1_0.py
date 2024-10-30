@@ -4,9 +4,9 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    # TODO KRH: Update _from_version and _to_version and name of migrator
-    _from_version = "XX"
-    _to_version = "XX" # PR2203
+    _from_version = "11_0_3"
+    _to_version = "11_1_0" 
+    # See PR2203
 
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
