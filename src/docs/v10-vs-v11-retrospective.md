@@ -188,7 +188,7 @@ with a value from the `InstrumentVendorEnum` and by populating the `model` slot 
 are saved in various repos like nmdc-schema and nmdc-runtime.
 
 `AnalyticalSample` was removed from the `MaterialEntity` hierarchy, as NMDC does not wish to imply that certain samples
-could be used for analyses or that other could not be used for analyses, or even that some samples a locked into an
+could be used for analyses or that others could not be used for analyses, or even that some samples are locked into an
 analytical path, such that they could not be subject to any more `MaterialProcessing`.
 
 ## Refactoring of Slots
