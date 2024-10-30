@@ -36,6 +36,9 @@ class Migrator(MigratorBase):
         ...   ],
         ...   'data_object_set': [
         ...     {'id': 'nmdc:dobj-13-abc123'}
+        ...   ],
+        ...   'calibration_set': [
+        ...     {'id': 'nmdc:calib1', 'calibration_object': 'nmdc:dobj-13-abc123'}
         ...   ]
         ... }
         >>> a = DictionaryAdapter(database=db)
@@ -44,7 +47,7 @@ class Migrator(MigratorBase):
         >>> any('has_calibration' in doc for doc in db['workflow_execution_set'])  # Calibrations removed from workflow
         False
         >>> db['data_generation_set'][0]  # Calibration moved to data generation
-        {'id': 'nmdc:dgen1', 'has_calibration': 'nmdc:dobj-13-abc123'}
+        {'id': 'nmdc:dgen1', 'has_calibration': 'nmdc:calib1'}
         >>> db['data_generation_set'][1]  # No calibration added when value was 'false'
         {'id': 'nmdc:dgen2'}
         """
@@ -115,6 +118,9 @@ class Migrator(MigratorBase):
         ...   ],
         ...   'data_object_set': [
         ...     {'id': 'nmdc:dobj-13-abc123'}
+        ...   ],
+        ...   'calibration_set': [
+        ...     {'id': 'nmdc:calib1', 'calibration_object': 'nmdc:dobj-13-abc123'}
         ...   ]
         ... }
         >>> a = DictionaryAdapter(database=db)
@@ -134,32 +140,36 @@ class Migrator(MigratorBase):
         calibration_mapping = {} #create dictionary to store mappings
 
         if "has_calibration" in workflow_execution_doc:
-            has_calibration = workflow_execution_doc.get("has_calibration")
+            has_calibration_data_obj = workflow_execution_doc.get("has_calibration")
 
             # If has_calibration has a string value of false, remove the slot altogether from the document
-            if has_calibration.lower() == 'false':
+            if has_calibration_data_obj.lower() == 'false':
                 workflow_execution_doc.pop("has_calibration")
             
+                self.logger.info(f"calib_data_object is {has_calibration_data_obj}")
             # If the has_calibration value is not a data object id or does not have a value of "false"
             # raise an error.
-            elif not self.check_has_calibration(has_calibration) and has_calibration.lower() != 'false':
-                raise ValueError(f"The 'has_calibration' value ({has_calibration}) in document "
+            elif not self.check_has_calibration(has_calibration_data_obj) and has_calibration_data_obj.lower() != 'false':
+                raise ValueError(f"The 'has_calibration' value ({has_calibration_data_obj}) in document "
                              f"({workflow_execution_doc['id']}) is not recognized")
             
             # If has_calibration is a nmdc data object identifier:
-            elif self.check_has_calibration(has_calibration):
-                calib_data_object = workflow_execution_doc.get("has_calibration")
-
-                if not self.check_for_valid_data_object(calib_data_object):
-                    raise ValueError(f"The 'has_calibration' value ({has_calibration}) in document "
+            elif self.check_has_calibration(has_calibration_data_obj):
+    
+                if not self.check_for_valid_data_object(has_calibration_data_obj):
+                    raise ValueError(f"The 'has_calibration' value ({has_calibration_data_obj}) in document "
                              f"({workflow_execution_doc['id']}) is not a valid data object. The data object does not exist")
                 else:
                     data_gen_doc = self.adapter.get_document_having_value_in_field(
                         collection_name="data_generation_set", field_name="id", value=workflow_execution_doc["was_informed_by"]
                         )
+                    
+                    calibration_doc = self.adapter.get_document_having_value_in_field(
+                        collection_name="calibration_set", field_name="calibration_object", value=has_calibration_data_obj
+                    )
                    
                    # Store has_calibrations in calibration_mapping dictionary
-                    calibration_mapping[data_gen_doc["id"]] = has_calibration
+                    calibration_mapping[data_gen_doc["id"]] = calibration_doc["id"]
 
                     if not hasattr(self, "calibration_mappings"):
                         self.calibration_mappings = {}
@@ -185,6 +195,9 @@ class Migrator(MigratorBase):
         ...   ],
         ...   'data_object_set': [
         ...     {'id': 'nmdc:dobj-13-abc123'}
+        ...   ],
+        ...   'calibration_set': [
+        ...     {'id': 'nmdc:calib1', 'calibration_object': 'nmdc:dobj-13-abc123'}
         ...   ]
         ... }
         >>> a = DictionaryAdapter(database=db)
@@ -194,7 +207,7 @@ class Migrator(MigratorBase):
         >>> _ = m.store_and_remove_calibrations(workflow_execution_doc)  # Store the calibrations first
         >>> # Then test update_data_gen_calibration
         >>> m.update_data_gen_calibration({'id': 'nmdc:dgen1'})  # doc with corresponding calibration
-        {'id': 'nmdc:dgen1', 'has_calibration': 'nmdc:dobj-13-abc123'}
+        {'id': 'nmdc:dgen1', 'has_calibration': 'nmdc:calib1'}
         >>> # Test document without calibration
         >>> m.update_data_gen_calibration({'id': 'nmdc:dgen2'})  # doc without corresponding calibration
         {'id': 'nmdc:dgen2'}
