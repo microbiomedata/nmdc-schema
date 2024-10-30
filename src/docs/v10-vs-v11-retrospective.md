@@ -321,7 +321,7 @@ attributes of Biosamples
 * `target_gene`
 * `target_subfragment`
 
-Some, but not all of those slots were re-associated with `Extraction`, `LibraryPreparation` or `NucleotideSequencing`
+Some, but not all, of those slots were re-associated with `Extraction`, `LibraryPreparation`, or `NucleotideSequencing`.
 
 `has_process_parts` has been added to capture the relationship between a `ProtocolExecution` and the Process instances
 that were carried out with the intention of completing a specified protocol under specified circumstances.
