@@ -199,8 +199,8 @@ Many of the slot changes can be understood by looking at the Python data migrati
 A major explanation for the slot differences is the adoption of a _polymorphic_ (i.e., multi-shaped) _model_ for slots
 in the `Database` class, which corresponds to polymorphic collections in the v11-compliant MongoDB. In the legacy model,
 the range for each of the `Database` slots was intended to be one class, with no provision for class hierarchy. In the
-new model, the range for each slot is still specified as a single class, but the slots can now collect instances of that
-named class, plus the instances of any subclass of the named class.
+new model, the range for each slot is still specified as a single class, but each `Database` slot can now collect
+instances of that specified class, plus the instances of any subclass of the specified class.
 
 ### Slots removed from `Database`
 
