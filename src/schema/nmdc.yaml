@@ -949,8 +949,7 @@ enums:
 
 slots:
   has_calibration:
-    any_of:
-      - range: CalibrationInformation
+    range: CalibrationInformation
     description: a calibration instance associated with a process
     notes: >-
       has_calibration slot will be removed from all WorkflowExecution classes but remain on the
