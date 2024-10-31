@@ -14,7 +14,7 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
     >>> type(migrator_classes) is list and len(migrator_classes) > 0  # the function returns a list
     True
     >>> from inspect import isclass
-    >>> all(isclass(c) for c in migrator_classes)  # each list item is a classes
+    >>> all(isclass(c) for c in migrator_classes)  # each list item is a class
     True
     >>> all(callable(getattr(c, "upgrade")) for c in migrator_classes)  # each class has an `upgrade` method
     True
