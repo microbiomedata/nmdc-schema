@@ -27,7 +27,10 @@ classes:
       - type
 
   OntologyClass:
+    aliases: ["OntologyClass"]
     class_uri: nmdc:OntologyClass
+    description: >-
+      This class is used to represent ontology terms.
     is_a: NamedThing
     slots:
       - alternative_names
@@ -37,30 +40,52 @@ classes:
       id:
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
     attributes:
-      relationships:
-        range: OntologyAssociation
+      relations:
+        range: OntologyRelation
         multivalued: true
         inlined_as_list: true
         inlined: true
+    exact_mappings:
+      - biolink:OntologyClass
+      - owl:Class
+      - schema:Class
+    examples:
+      - value: ENVO:00001998
+        description: >-
+          the class 'soil' from ENVO, the environmental ontology
 
-  OntologyAssociation:
+  OntologyRelation:
+    aliases: ["OntologyAssociation"]
     description: >-
-      A relationship between two ontology classes.
+      A relationship between two ontology classes as specified either directly in the ontology in the form
+      of axioms (statements or assertions that defines rules or constraints in an ontology) or inferred via
+      reasoning.  The association object is defined by two terms (the subject and the object) and the relationship
+      between them (the predicate). Because ontologies often have a plethora of relationships/axiom types and can have
+      additional metadata on the relationship itself, these kinds of relationships are structured as a class instead
+      of a simple set of slots on OntologyClass itself.
+    comments: >-
+      For example, the relationship between 'soil' and 'enriched soil' in the Environmental Ontology (ENVO)
+      is defined by the following axioms: 'enriched soil' subclass_of 'soil', and 'enriched soil' 
+      has_increased_levels_of (some) 'material entity.'  Converting these statements to OntologyAssociations 
+      so they can be used in the NMDC data stores, the subject of the first axiom or statement, 
+      would be 'soil', the predicate would be 'subclass_of', and the object would be 'enriched soil'.  For the second
+      axiom, the subject would be 'enriched soil', the predicate would be 'has_increased_levels_of', and the object
+      would be 'material entity.' (Note that text labels are used in this example for ease of understanding and 
+      the literal values of subject, predicate, and object in this class will be the id (curie) of the 
+      `OntologyClass` as defined below).  Not all ontology axioms (associations) between terms need to be 
+      ingested into the NMDC data stores.  In general, subclass_of and part_of relationships/axioms are often 
+      good default relations/associations to support ontology browsing in user interfaces.
     class_uri: nmdc:OntologyAssociation
     attributes:
-        subject:
-        predicate:
-        object:
-    slot_usage:
-        subject:
-            required: true
-            range: OntologyClass
-        predicate:
-            required: true
-            range: OntologyClass
-        object:
-            required: true
-            range: OntologyClass
+      subject:
+        range: OntologyClass
+        required: true
+      predicate:
+        range: OntologyClass
+        required: true
+      object:
+        range: OntologyClass
+        required: true
 
 
   FailureCategorization:
