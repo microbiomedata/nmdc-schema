@@ -140,23 +140,23 @@ class Migrator(MigratorBase):
         calibration_mapping = {} #create dictionary to store mappings
 
         if "has_calibration" in workflow_execution_doc:
-            has_calibration_data_obj = workflow_execution_doc.get("has_calibration")
+            has_calibration_data_obj_id = workflow_execution_doc.get("has_calibration")
 
             # If has_calibration has a string value of false, remove the slot altogether from the document
-            if has_calibration_data_obj.lower() == 'false':
+            if has_calibration_data_obj_id.lower() == 'false':
                 workflow_execution_doc.pop("has_calibration")
             
             # If the has_calibration value is not a data object id or does not have a value of "false"
             # raise an error.
-            elif not self.check_has_calibration(has_calibration_data_obj):
-                raise ValueError(f"The 'has_calibration' value ({has_calibration_data_obj}) in document "
+            elif not self.check_has_calibration(has_calibration_data_obj_id):
+                raise ValueError(f"The 'has_calibration' value ({has_calibration_data_obj_id}) in document "
                              f"({workflow_execution_doc['id']}) is not recognized")
             
             # If has_calibration is a nmdc data object identifier:
-            elif self.check_has_calibration(has_calibration_data_obj):
+            elif self.check_has_calibration(has_calibration_data_obj_id):
     
-                if not self.check_for_valid_data_object(has_calibration_data_obj):
-                    raise ValueError(f"The 'has_calibration' value ({has_calibration_data_obj}) in document "
+                if not self.check_for_valid_data_object(has_calibration_data_obj_id):
+                    raise ValueError(f"The 'has_calibration' value ({has_calibration_data_obj_id}) in document "
                              f"({workflow_execution_doc['id']}) is not a valid data object. The data object does not exist")
                 else:
                     data_gen_doc = self.adapter.get_document_having_value_in_field(
@@ -164,7 +164,7 @@ class Migrator(MigratorBase):
                         )
                     
                     calibration_doc = self.adapter.get_document_having_value_in_field(
-                        collection_name="calibration_set", field_name="calibration_object", value=has_calibration_data_obj
+                        collection_name="calibration_set", field_name="calibration_object", value=has_calibration_data_obj_id
                     )
                    
                    # Store has_calibrations in calibration_mapping dictionary
