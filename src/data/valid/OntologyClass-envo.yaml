@@ -1,0 +1,26 @@
+id: ENVO:00001998
+name: soil
+description: >-
+  An environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, 
+  organic material such as humus, interstitial gases, liquids, and a broad range of resident micro- and macroorganisms.
+type: nmdc:OntologyClass
+relations:
+  - subject: ENVO:00001998
+    predicate: rdfs:subclassOf     # subclassOf
+    object: ENVO:00010483
+    type: nmdc:OntologyRelation
+  - subject: ENVO:00001998
+    predicate: rdf:subclassOf      # subclassOf
+    object: ENVO:01000813
+    type: nmdc:OntologyRelation
+  - subject: ENVO:00001998
+    predicate: BFO:0000050  # part_of
+    object: ENVO:01000820
+    type: nmdc:OntologyRelation
+alternative_identifiers:
+  - LTER:535
+  - SPIRE:Soil
+  - SWEETRealm:Soil
+  - wiki:Soil
+alternative_names:
+  - regolith

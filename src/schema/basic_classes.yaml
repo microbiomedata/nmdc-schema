@@ -8,10 +8,15 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
   linkml: https://w3id.org/linkml/
   EFO: http://www.ebi.ac.uk/efo/
+  BFO: http://purl.obolibrary.org/obo/BFO_
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  biolink: https://w3id.org/biolink/vocab/
+  owl: http://www.w3.org/2002/07/owl#
 
 imports:
   - external_identifiers # in cycle with attribute_values
   - mixs # in cycle with attribute_values
+
 
 classes:
 
@@ -75,7 +80,7 @@ classes:
       `OntologyClass` as defined below).  Not all ontology axioms (associations) between terms need to be 
       ingested into the NMDC data stores.  In general, subclass_of and part_of relationships/axioms are often 
       good default relations/associations to support ontology browsing in user interfaces.
-    class_uri: nmdc:OntologyAssociation
+    class_uri: nmdc:OntologyRelation
     slots:
       - type
     attributes:

@@ -5934,6 +5934,13 @@
                         "null"
                     ]
                 },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -5962,6 +5969,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -7414,6 +7430,13 @@
                         "null"
                     ]
                 },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -7430,6 +7453,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -12680,7 +12712,7 @@
         },
         "OntologyClass": {
             "additionalProperties": false,
-            "description": "",
+            "description": "This class is used to represent ontology terms.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -12703,6 +12735,13 @@
                         "null"
                     ]
                 },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -12722,6 +12761,15 @@
                         "null"
                     ]
                 },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -12735,6 +12783,36 @@
                 "type"
             ],
             "title": "OntologyClass",
+            "type": "object"
+        },
+        "OntologyRelation": {
+            "additionalProperties": false,
+            "description": "A relationship between two ontology classes as specified either directly in the ontology in the form of axioms (statements or assertions that defines rules or constraints in an ontology) or inferred via reasoning.  The association object is defined by two terms (the subject and the object) and the relationship between them (the predicate). Because ontologies often have a plethora of relationships/axiom types and can have additional metadata on the relationship itself, these kinds of relationships are structured as a class instead of a simple set of slots on OntologyClass itself.",
+            "properties": {
+                "object": {
+                    "type": "string"
+                },
+                "predicate": {
+                    "type": "string"
+                },
+                "subject": {
+                    "type": "string"
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:OntologyRelation"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "subject",
+                "predicate",
+                "object"
+            ],
+            "title": "OntologyRelation",
             "type": "object"
         },
         "OrganismCountEnum": {
@@ -12772,6 +12850,13 @@
                         "null"
                     ]
                 },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -12788,6 +12873,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -12841,6 +12935,13 @@
                         "null"
                     ]
                 },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "description": {
                     "description": "a human-readable description of a thing",
                     "type": [
@@ -12857,6 +12958,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
