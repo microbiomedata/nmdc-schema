@@ -16,7 +16,7 @@ class Migrator(MigratorBase):
     """
 
     _from_version = "11.0.3"
-    _to_version = "11.1.0"
+    _to_version = "11.1.0.part_1"
 
     def upgrade(self) -> None:
         r"""
@@ -160,12 +160,10 @@ class Migrator(MigratorBase):
                              f"({workflow_execution_doc['id']}) is not a valid data object. The data object does not exist")
                 else:
                     data_gen_doc = self.adapter.get_document_having_value_in_field(
-                        collection_name="data_generation_set", field_name="id", value=workflow_execution_doc["was_informed_by"]
-                        )
+                        collection_name="data_generation_set", field_name="id", value=workflow_execution_doc["was_informed_by"])
                     
                     calibration_doc = self.adapter.get_document_having_value_in_field(
-                        collection_name="calibration_set", field_name="calibration_object", value=has_calibration_data_obj_id
-                    )
+                        collection_name="calibration_set", field_name="calibration_object", value=has_calibration_data_obj_id)
                    
                    # Store has_calibrations in calibration_mapping dictionary
                     calibration_mapping[data_gen_doc["id"]] = calibration_doc["id"]
