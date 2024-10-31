@@ -25,6 +25,7 @@ classes:
       - description
       - alternative_identifiers
       - type
+
   OntologyClass:
     class_uri: nmdc:OntologyClass
     is_a: NamedThing
@@ -35,6 +36,32 @@ classes:
     slot_usage:
       id:
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+    attributes:
+      relationships:
+        range: OntologyAssociation
+        multivalued: true
+        inlined_as_list: true
+        inlined: true
+
+  OntologyAssociation:
+    description: >-
+      A relationship between two ontology classes.
+    class_uri: nmdc:OntologyAssociation
+    attributes:
+        subject:
+        predicate:
+        object:
+    slot_usage:
+        subject:
+            required: true
+            range: OntologyClass
+        predicate:
+            required: true
+            range: OntologyClass
+        object:
+            required: true
+            range: OntologyClass
+
 
   FailureCategorization:
     class_uri: nmdc:FailureCategorization
