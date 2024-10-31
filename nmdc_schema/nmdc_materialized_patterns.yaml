@@ -275,6 +275,9 @@ prefixes:
   BFO:
     prefix_prefix: BFO
     prefix_reference: http://purl.obolibrary.org/obo/BFO_
+  owl:
+    prefix_prefix: owl
+    prefix_reference: http://www.w3.org/2002/07/owl#
 emit_prefixes:
 - KEGG.ORTHOLOGY
 - MASSIVE
@@ -17758,7 +17761,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
     multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
   start_date:
     name: start_date
     description: The date on which any process or activity was started

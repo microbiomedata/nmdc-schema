@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-10-31T14:56:23
+# Generation date: 2024-10-31T16:13:01
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -10792,7 +10792,7 @@ slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="a
 
 slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie('start_date'),
                    model_uri=NMDC.start_date, domain=None, range=Optional[str])
@@ -12764,7 +12764,7 @@ slots.Biosample_gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identi
 
 slots.Biosample_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Biosample_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.Biosample_alternative_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.Biosample_lat_lon = Slot(uri=MIXS['0000009'], name="Biosample_lat_lon", curie=MIXS.curie('0000009'),
                    model_uri=NMDC.Biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, GeolocationValue]])
@@ -12943,7 +12943,7 @@ slots.Study_notes = Slot(uri=NMDC.notes, name="Study_notes", curie=NMDC.curie('n
 
 slots.Study_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Study_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.Study_alternative_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.Study_alternative_names = Slot(uri=NMDC.alternative_names, name="Study_alternative_names", curie=NMDC.curie('alternative_names'),
                    model_uri=NMDC.Study_alternative_names, domain=Study, range=Optional[Union[str, List[str]]])

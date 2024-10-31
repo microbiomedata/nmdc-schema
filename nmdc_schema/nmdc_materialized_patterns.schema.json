@@ -329,7 +329,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -5559,7 +5559,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -5725,7 +5725,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -5909,7 +5909,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6023,7 +6023,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6189,7 +6189,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6263,7 +6263,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6604,7 +6604,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -7005,7 +7005,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -7412,7 +7412,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -7575,7 +7575,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -7856,7 +7856,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -8088,7 +8088,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -8495,7 +8495,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -8839,7 +8839,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -8990,7 +8990,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9411,7 +9411,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9680,7 +9680,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9893,7 +9893,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10006,7 +10006,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10090,7 +10090,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10306,7 +10306,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10521,7 +10521,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10909,7 +10909,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11101,7 +11101,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11302,7 +11302,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11517,7 +11517,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11905,7 +11905,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12067,7 +12067,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12307,7 +12307,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12479,7 +12479,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12717,7 +12717,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12832,7 +12832,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12917,7 +12917,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13179,7 +13179,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13391,7 +13391,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13606,7 +13606,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13863,7 +13863,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -14055,7 +14055,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -14670,7 +14670,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -14833,7 +14833,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -15148,7 +15148,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [

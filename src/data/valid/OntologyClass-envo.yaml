@@ -4,18 +4,30 @@ description: >-
   An environmental material which is primarily composed of minerals, varying proportions of sand, silt, and clay, 
   organic material such as humus, interstitial gases, liquids, and a broad range of resident micro- and macroorganisms.
 type: nmdc:OntologyClass
-relations:
-  - subject: ENVO:00001998
+relations:                         # http://purl.obolibrary.org/obo/ENVO_00001998
+  - subject: ENVO:00001998         # soil
     predicate: rdfs:subclassOf     # subclassOf
-    object: ENVO:00010483
+    object: ENVO:00010483          # environmental material
     type: nmdc:OntologyRelation
-  - subject: ENVO:00001998
-    predicate: rdf:subclassOf      # subclassOf
-    object: ENVO:01000813
+  - subject: ENVO:00001998         # soil
+    predicate: rdfs:subclassOf     # subclassOf
+    object: ENVO:01000813          # astronomical body part
     type: nmdc:OntologyRelation
-  - subject: ENVO:00001998
-    predicate: BFO:0000050  # part_of
-    object: ENVO:01000820
+  - subject: ENVO:00001998         # soil
+    predicate: BFO:0000050         # partOf
+    object: ENVO:01000820          # pedosphere
+    type: nmdc:OntologyRelation
+  - subject: ENVO:00001998         # soil
+    predicate: BFO:0000050         # partOf
+    object: ENVO:01000804          # astronomical object
+    type: nmdc:OntologyRelation
+  - subject: ENVO:00001998         # soil
+    predicate: BFO:0000050         # partOf
+    object: ENVO:01000799          # astronomical body
+    type: nmdc:OntologyRelation
+  - subject: ENVO:00001998         # soil
+    predicate: BFO:0000050         # partOf
+    object: ENVO:01000813          # astronomical body part
     type: nmdc:OntologyRelation
 alternative_identifiers:
   - LTER:535
