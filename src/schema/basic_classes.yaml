@@ -34,11 +34,6 @@ classes:
     is_a: NamedThing
     slots:
       - alternative_names
-    notes:
-      - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
-    slot_usage:
-      id:
-        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
     attributes:
       definition:
         range: string
@@ -49,6 +44,11 @@ classes:
         multivalued: true
         inlined_as_list: true
         inlined: true
+    slot_usage:
+      id:
+        pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+        notes:
+          - The identifiers for terms from external ontologies can't have their ids constrained to the nmdc namespace
     exact_mappings:
       - biolink:OntologyClass
       - owl:Class
