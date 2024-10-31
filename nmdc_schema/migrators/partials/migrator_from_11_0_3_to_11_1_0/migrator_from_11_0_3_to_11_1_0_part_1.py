@@ -148,7 +148,7 @@ class Migrator(MigratorBase):
             
             # If the has_calibration value is not a data object id or does not have a value of "false"
             # raise an error.
-            elif not self.check_has_calibration(has_calibration_data_obj) and has_calibration_data_obj.lower() != 'false':
+            elif not self.check_has_calibration(has_calibration_data_obj):
                 raise ValueError(f"The 'has_calibration' value ({has_calibration_data_obj}) in document "
                              f"({workflow_execution_doc['id']}) is not recognized")
             
