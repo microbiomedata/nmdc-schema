@@ -35,7 +35,7 @@ jobs:
       # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
       - name: Replace placeholder version number
         run: |
-          pipx inject poetry "poetry-dynamic-versioning[plugin]"
+          poetry self add "poetry-dynamic-versioning[plugin]"
           poetry dynamic-versioning
 
       - name: Derive files from sources
