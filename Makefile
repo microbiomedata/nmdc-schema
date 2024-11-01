@@ -157,8 +157,8 @@ $(DOCDIR):
 
 # Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
 #
-# Then, use `refgraph` (part of `refscan`) to generate a graph (i.e. network diagram) that
-# depicts inter-collection relationships. Finally, add that graph to the documentation website.
+# Then, use `refgraph` (part of `refscan`) to generate a diagram (i.e. a graph that depicts
+# inter-collection relationships) in the documentation website's file tree.
 gendoc: $(DOCDIR)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
