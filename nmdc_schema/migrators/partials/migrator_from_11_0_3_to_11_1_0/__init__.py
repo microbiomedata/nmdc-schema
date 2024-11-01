@@ -23,5 +23,5 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
 
     return [
         migrator_from_11_0_3_to_11_1_0_part_1.Migrator,
-        migrator_from_11_0_3_to_11_1_0_part_2
+        migrator_from_11_0_3_to_11_1_0_part_2.Migrator
     ]
