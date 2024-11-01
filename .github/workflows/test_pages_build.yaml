@@ -31,10 +31,21 @@ jobs:
       - name: Install dependencies
         run: poetry install -E docs
 
-      - name: Build documentation
+      # Replace the `0.0.0` placeholder `version` number in various files (per the config in `pyproject.toml`).
+      # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
+      - name: Replace placeholder version number
         run: |
-          mkdir -p site
-          touch site/.nojekyll
+          poetry self add "poetry-dynamic-versioning[plugin]"
+          poetry dynamic-versioning
+
+      - name: Derive files from sources
+        run: |
+          make squeaky-clean all
+
+      - name: Generate web-based documentation
+        run: |
+          mkdir -p docs
+          touch docs/.nojekyll
           make gendoc
           poetry run mkdocs build -d site
 
