@@ -23,8 +23,24 @@ jobs:
       - name: Install dependencies.
         run: poetry install -E docs
 
-      - name: Build and deploy documentation.
-        # Build the docs and deploy them to GitHub Pages.
+      # Replace the `0.0.0` placeholder `version` number in various files (per the config in `pyproject.toml`).
+      # Reference: https://github.com/mtkennerly/poetry-dynamic-versioning/blob/master/README.md#command-line-mode
+      - name: Replace placeholder version number
+        run: |
+          pipx inject poetry "poetry-dynamic-versioning[plugin]"
+          poetry dynamic-versioning
+
+      - name: Derive files from sources
+        run: |
+          make squeaky-clean all
+
+      - name: Generate web-based documentation
+        run: |
+          mkdir -p docs
+          touch docs/.nojekyll
+          make gendoc
+
+        # Deploy the docs to GitHub Pages.
         #
         # Note: The `make mkd-gh-deploy` command below uses the `mkd-%` target
         #       defined in `Makefile`. That target's action (i.e. recipe)
@@ -34,8 +50,6 @@ jobs:
         #
         # Reference: https://www.mkdocs.org/user-guide/deploying-your-docs/
         #
+      - name: Deploy web-based documentation to GitHub Pages
         run: |
-          mkdir -p docs
-          touch docs/.nojekyll
-          make gendoc
           make mkd-gh-deploy
