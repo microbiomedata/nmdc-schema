@@ -255,6 +255,48 @@ classes:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  CalibrationInformation:
+      class_uri: nmdc:CalibrationInformation
+      is_a: InformationObject
+      description: A calibration object that is associated with a process.
+      slots:
+        - calibration_object
+        - internal_calibration
+        - calibration_target
+        - calibration_standard
+      rules:
+        - title: calibration_standard_if_rt
+          description: >-
+            If the calibration_target is retention_index, a calibration_standard is required.
+          preconditions:
+            slot_conditions:
+              calibration_target:
+                equals_string: retention_index
+          postconditions:
+            slot_conditions:
+              calibration_standard:
+                required: true
+        - title: calibration_object_if_not_internal_calibration
+          description: >-
+            If internal_calibration is false, a calibration_object is required.
+          preconditions:
+            slot_conditions:
+              internal_calibration: false
+          postconditions:
+            slot_conditions:
+              calibration_object:
+                required: true
+      slot_usage:
+        internal_calibration:
+          required: true
+        calibration_target:
+          required: true
+        id:
+          structured_pattern:
+            syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+            interpolated: true
+
+
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
@@ -661,7 +703,28 @@ classes:
           interpolated: true
 
 enums:
+  CalibrationTargetEnum:
+    permissible_values:
+      mass_charge_ratio:
+        title: m/z
+        aliases:
+          - Mass
+          - m/z
+      retention_time:
+        aliases:
+          - RT
+      retention_index:
+        aliases:
+          - RI
 
+  CalibrationStandardEnum:
+    permissible_values:
+      fames:
+        aliases:
+          - FAMES
+      alkanes:
+        aliases:
+          - Alkanes
 
   StrandedOrientationEnum:
     description: This enumeration specifies information about stranded RNA library preparations.
@@ -885,6 +948,26 @@ enums:
 
 
 slots:
+  has_calibration:
+    range: CalibrationInformation
+    description: a calibration instance associated with a process
+
+  calibration_object:
+    range: DataObject
+    description: the file containing calibration data object
+
+  internal_calibration:
+    range: boolean
+    description: whether internal calibration was used, if false, external calibration was used
+
+  calibration_target:
+    range: CalibrationTargetEnum
+    description: the target measurement of the calibration
+
+  calibration_standard:
+    range: CalibrationStandardEnum
+    description: the reference standard(s) used for calibration
+
   polarity_mode:
     range: PolarityModeEnum
     description: the polarity of which ions are generated and detected
