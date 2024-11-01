@@ -1040,12 +1040,9 @@ slots:
     description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.
 
   metagenome_annotation_id:
-    range: WorkflowExecution
+    range: Annotation
     description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
     required: true
-    any_of:
-      - range: MetagenomeAnnotation
-      - range: MetatranscriptomeAnnotation
 
   gene_function_id:
     range: uriorcurie
