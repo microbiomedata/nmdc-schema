@@ -21,6 +21,7 @@ extra_javascript:
   - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
   - javascripts/tablesort.js
 nav:
+  # Reference: https://www.mkdocs.org/user-guide/configuration/#nav
   - NMDC Schema: index.md
   - About: about.md
   - How to run a collaborative data modeling project: https://linkml.io/linkml/howtos/collaborative-development.html
@@ -31,6 +32,7 @@ nav:
   - NMDC Schema Validation: schema-validation.md
   - Schema element deprecation guide: schema_element_deprecation_guide.md
   - v10 vs v11 (Berkeley schema) retrospective: v10-vs-v11-retrospective.md
+  - Visualizations: visualizations.md
 
 
 site_url: https://microbiomedata.github.io/nmdc-schema
