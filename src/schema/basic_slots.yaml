@@ -256,7 +256,8 @@ slots:
     aliases:
       - DOI
       - digital object identifier
-    in_subset: data_portal_subset
+    in_subset:
+      - data_portal_subset
     range: uriorcurie
     pattern: '^doi:10.\d{2,9}/.*$'
     examples:
@@ -273,7 +274,8 @@ slots:
     range: DoiProviderEnum
     close_mappings:
       - NCIT:C74932
-    in_subset: data_portal_subset
+    in_subset:
+      - data_portal_subset
     examples:
       - value: ess_dive
         description: The corresponding DOI is associated with ESS-DIVE.
@@ -283,7 +285,8 @@ slots:
       The resource type the corresponding doi resolves to.
     range: DoiCategoryEnum
     required: true
-    in_subset: data_portal_subset
+    in_subset:
+      - data_portal_subset
     examples:
       - value: dataset_doi
         description: The corresponding DOI is a dataset resource type.
@@ -604,6 +607,29 @@ enums:
   FileTypeEnum:
     permissible_values:
       
+      Virus Summary:
+        description: Tab separated file listing the viruses found by geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_virus_summary\.tsv?$'
+      
+      Plasmid Summary:
+        description: Tab separated file listing the plasmids found be geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_plasmid_summary\.tsv?$'
+        
+      GeNomad Aggregated Classification:
+        description: >-
+          Tab separated file which combines the results from neural network-based classification
+          and marker-based classification for virus and plasmid detection with geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_aggregated_classification\.tsv?$'  
+        
       Reference Calibration File:
         description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
       
@@ -1034,6 +1060,9 @@ enums:
           - Environmental Data Initiative
         title: EDI
         meaning: https://ror.org/0330j0z60
+      figshare:
+        title: Figshare
+        meaning: https://ror.org/041mxqs23
 
   DoiCategoryEnum:
     permissible_values:
@@ -1128,6 +1157,10 @@ enums:
       UCD_Genome_Center:
         title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
+
+      Azenta:
+        title: Azenta Life Sciences
+        meaning: https://www.azenta.com/
 
   DataCategoryEnum:
     permissible_values:

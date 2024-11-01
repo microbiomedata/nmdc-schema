@@ -264,7 +264,6 @@ classes:
     in_subset:
       - workflow subset
     slots:
-      - has_calibration
       - has_metabolite_identifications
     slot_usage:
       id:
@@ -300,8 +299,6 @@ classes:
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
-    slots:
-      - has_calibration
     slot_usage:
       id:
         required: true
@@ -311,47 +308,6 @@ classes:
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-
-  CalibrationInformation:
-    class_uri: nmdc:CalibrationInformation
-    is_a: InformationObject
-    description: A calibration object that is associated with a process.
-    slots:
-      - calibration_object
-      - internal_calibration
-      - calibration_target
-      - calibration_standard
-    rules:
-      - title: calibration_standard_if_rt
-        description: >-
-          If the calibration_target is retention_index, a calibration_standard is required.
-        preconditions:
-          slot_conditions:
-            calibration_target:
-              equals_string: retention_index
-        postconditions:
-          slot_conditions:
-            calibration_standard:
-              required: true
-      - title: calibration_object_if_not_internal_calibration
-        description: >-
-          If internal_calibration is false, a calibration_object is required.
-        preconditions:
-          slot_conditions:
-            internal_calibration: false
-        postconditions:
-          slot_conditions:
-            calibration_object:
-              required: true
-    slot_usage:
-      internal_calibration:
-        required: true
-      calibration_target:
-        required: true
-      id:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
           interpolated: true
 
 slots:
@@ -530,24 +486,35 @@ slots:
     abstract: true
 
   mags_list:
+    description: Contains detailed information about each metagenome-assembled genome.
     range: MagBin
     multivalued: true
     inlined_as_list: true
 
   too_short_contig_num:
+    description: Number of contigs which were excluded from binning for length.
     range: integer
+    minimum_value: 0
 
   binned_contig_num:
+    description: Number of contigs that ended up in a medium or high quality bin.
     range: integer
-
+    minimum_value: 0
+    
   input_contig_num:
+    description: Total number of input contigs.
     range: integer
-
+    minimum_value: 0
+    
   unbinned_contig_num:
+    description: Number of contigs which did not end up in a medium or high quality bin.
     range: integer
+    minimum_value: 0
 
   low_depth_contig_num:
+    description: Number of contigs which were excluded from binning for depth of coverage.
     range: integer
+    minimum_value: 0
 
   input_read_count:
     is_a: read_qc_analysis_statistic
@@ -583,58 +550,7 @@ slots:
     description: >-
       TODO      
 
-  has_calibration:
-    any_of:
-      - range: CalibrationInformation
-      - range: string
-    description: a calibration instance associated with a process
-    notes: >-
-      has_calibration slot will be removed from all WorkflowExecution classes but remain on the
-      MassSpectrometry class after an ingest of the appropriate set has occurred. 
-      Once this has occurred, this slot's range can be updated to CalibrationInformation and class/slot definitions can move to nmdc.yaml.  
-      See PR #29 in Berkeley schema.
-
-  calibration_object:
-    range: DataObject
-    description: the file containing calibration data object
-
-  internal_calibration:
-    range: boolean
-    description: whether internal calibration was used, if false, external calibration was used
-
-  calibration_target:
-    range: CalibrationTargetEnum
-    description: the target measurement of the calibration
-
-  calibration_standard:
-    range: CalibrationStandardEnum
-    description: the reference standard(s) used for calibration
-
   has_metabolite_identifications:
     range: MetaboliteIdentification
     multivalued: true
     inlined_as_list: true
-
-enums:
-  CalibrationTargetEnum:
-    permissible_values:
-      mass_charge_ratio:
-        title: m/z
-        aliases:
-          - Mass
-          - m/z
-      retention_time:
-        aliases:
-          - RT
-      retention_index:
-        aliases:
-          - RI
-
-  CalibrationStandardEnum:
-    permissible_values:
-      fames:
-        aliases:
-          - FAMES
-      alkanes:
-        aliases:
-          - Alkanes

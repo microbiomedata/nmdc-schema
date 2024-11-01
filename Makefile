@@ -155,6 +155,10 @@ $(PYMODEL):
 $(DOCDIR):
 	mkdir -p $@
 
+# Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
+#
+# Then, use `refgraph` (part of `refscan`) to generate a diagram (i.e. a graph that depicts
+# inter-collection relationships) in the documentation website's file tree.
 gendoc: $(DOCDIR)
 	# added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR) ; \
@@ -162,6 +166,9 @@ gendoc: $(DOCDIR)
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
+	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
+	mkdir -p $(DOCDIR)/visualizations
+	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
 
 testdoc: gendoc serve
 

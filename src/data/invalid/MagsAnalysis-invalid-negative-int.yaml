@@ -1,3 +1,4 @@
+#this example is invalid because it has negative value for number_of_contig.
 id: nmdc:wfmag-11-547rwq94.1
 ended_at_time: '2021-09-15T10:13:20+00:00'
 execution_resource: NERSC-Perlmutter
@@ -12,13 +13,28 @@ has_output:
   - "nmdc:dobj-11-547rwq97"
   - "nmdc:dobj-11-547rwq98"
 mags_list:
-  - bin_name: bins.10
-    bin_quality: LQ
-    members_id:
-      - nmdc:wfmgas-13-56028x05.1_7_c1
-      - nmdc:wfmgas-13-56028x05.1_9_c1
-    type: nmdc:MagBin
-    eukaryotic_evaluation:
+- bin_name: bins.40
+  number_of_contig: -20
+  completeness: 97.3
+  contamination: 3.38
+  total_bases: 0
+  gene_count: 20
+  type: nmdc:MagBin
+  bin_quality: MQ
+  num_16s: 0
+  num_5s: 0
+  num_23s: 0
+  gtdbtk_domain: Bacteria
+  gtdbtk_phylum: Verrucomicrobiota
+  gtdbtk_class: Verrucomicrobiae
+  gtdbtk_order: Pedosphaerales
+  gtdbtk_family: UBA11358
+  gtdbtk_genus: UBA11358
+  gtdbtk_species: UBA11358 abc
+  members_id:
+  - nmdc:wfmgas-13-56028x05.1_7_c1
+  - nmdc:wfmgas-13-56028x05.1_9_c1
+  eukaryotic_evaluation:
       type: nmdc:EukEval
       completeness: 14.71
       contamination: 8.82

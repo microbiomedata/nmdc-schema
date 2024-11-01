@@ -40,6 +40,10 @@ study_set:
         doi_category: dataset_doi
         doi_provider: massive
         type: nmdc:Doi
+      - doi_value: doi:10.6084/m9.figshare.c.7373842
+        doi_category: dataset_doi
+        doi_provider: figshare
+        type: nmdc:Doi
     type: nmdc:Study
     gnps_task_identifiers:
       - "gnps.task:4b848c342a4f4abc871bdf8a09a60807"

@@ -3687,7 +3687,6 @@ workflow_execution_set:
     git_url: https://github.com/microbiomedata/metabolomics_analysis/releases/tag/v0.5.0
     was_informed_by: nmdc:omprc-11-di84md
     started_at_time: '2023-08-02T09:00:00Z'
-    has_calibration: nmdc:calib-l2k-9d6j3
     has_metabolite_identifications:
       - type: nmdc:MetaboliteIdentification
         highest_similarity_score: 0.88
@@ -3901,7 +3900,6 @@ workflow_execution_set:
     git_url: https://github.com/microbiomedata/nom_analysis/releases/tag/v0.3.2
     was_informed_by: nmdc:dgms-12-dfa74b
     started_at_time: '2023-08-08T09:30:00Z'
-    has_calibration: nmdc:calib-99-v9w6
 data_generation_set:
   - id: nmdc:dgms-99-zUCd5N
     type: nmdc:MassSpectrometry

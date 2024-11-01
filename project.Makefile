@@ -122,16 +122,17 @@ make-rdf: rdf-clean \
 # statistics of large collections as of 2024-05-17
 #ns	size	count	avgObjSize	storageSize	totalIndexSize	totalSize	scaleFactor
 #nmdc.functional_annotation_agg	2194573252	16167688	135	567922688	1772920832	2340843520	1
-#nmdc.metaproteomics_analysis_activity_set	133268047	52	2562847	37380096	40960	37421056	1
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
-# todo: metagenome_sequencing_set and metagenome_sequencing_activity_set are degenerate
-#   and can't be validated, migrated or converted to RDF
-
 #		--selected-collections calibration_set
+#		--selected-collections configuration_set
 #[ERROR] [local/mongo_as_nmdc_database_rdf_safe.yaml/0] 'mass' is not one of ['mass_charge_ratio', 'retention_time', 'retention_index'] in /calibration_set/2/calibration_target
-#[ERROR] [local/mongo_as_nmdc_database_rdf_safe.yaml/0] 'mass' is not one of ['mass_charge_ratio', 'retention_time', 'retention_index'] in /calibration_set/3/calibration_target
+# https://nmdc-group.slack.com/archives/CFVF3G3H7/p1729101060720919?thread_ts=1729100685.966959&cid=CFVF3G3H7
+# Katherine Heal
+# https://github.com/microbiomedata/issues/issues/750#issuecomment-2369147228 for Calibration records to be uploaded
+# https://github.com/microbiomedata/issues/issues/748#issuecomment-2369150887 and https://github.com/microbiomedata/issues/issues/749#issuecomment-2369163551
+#   for Configuration records
 
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
@@ -142,7 +143,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections biosample_set \
 		--selected-collections chemical_entity_set \
 		--selected-collections collecting_biosamples_from_site_set \
-		--selected-collections configuration_set \
 		--selected-collections data_generation_set \
 		--selected-collections data_object_set \
 		--selected-collections field_research_site_set \
@@ -156,12 +156,12 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections study_set \
 		--selected-collections workflow_execution_set \
 		dump-from-api \
-		--client-base-url "https://api-berkeley.microbiomedata.org" \
+		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
 	cat $@.tmp | \
 		yq eval 'del(.workflow_execution_set[].has_peptide_quantifications)' | \
-		cat > $@ # many has_peptide_quantifications.all_proteins values are missing prefixes (contaminants)
+		cat > $@ # many has_peptide_quantifications.all_proteins values are missing prefixes (contaminants) https://github.com/microbiomedata/issues/issues/897
 	rm -rf $@.tmp
 
 ## ALTERNATIVELY:
@@ -259,7 +259,7 @@ local/biosamples-per-study.txt:
 local/gold-study-ids.json:
 	curl -X 'GET' \
 		--output $@ \
-		'https://api-berkeley.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
+		'https://api.microbiomedata.org/nmdcschema/study_set?max_page_size=999&projection=id%2Cgold_study_identifiers' \
 		-H 'accept: application/json'
 
 local/nmdc-no-use-native-uris.owl.ttl: src/schema/nmdc.yaml
