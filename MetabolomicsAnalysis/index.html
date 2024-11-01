@@ -304,8 +304,6 @@
 
   MetabolomicsAnalysis : git_url
 
-  MetabolomicsAnalysis : has_calibration
-
   MetabolomicsAnalysis : has_failure_categorization
 
       MetabolomicsAnalysis --&gt; "*" FailureCategorization : has_failure_categorization
@@ -387,12 +385,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../has_calibration/">has_calibration</a></td>
-<td>0..1 <br/> <a href="../String/">String</a> or <br/><a href="../CalibrationInformation/">CalibrationInformation</a> or <br/><a href="../String/">String</a></td>
-<td>a calibration instance associated with a process</td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../has_metabolite_identifications/">has_metabolite_identifications</a></td>
 <td>* <br/> <a href="../MetaboliteIdentification/">MetaboliteIdentification</a></td>
@@ -555,7 +547,6 @@ in_subset:
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: WorkflowExecution
 slots:
-- has_calibration
 - has_metabolite_identifications
 slot_usage:
   id:
@@ -593,27 +584,6 @@ slot_usage:
       syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
-  has_calibration:
-    name: has_calibration
-    description: a calibration instance associated with a process
-    notes:
-    - 'has_calibration slot will be removed from all WorkflowExecution classes but
-      remain on the MassSpectrometry class after an ingest of the appropriate set
-      has occurred.  Once this has occurred, this slot''s range can be updated to
-      CalibrationInformation and class/slot definitions can move to nmdc.yaml.   See
-      PR #29 in Berkeley schema.'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: has_calibration
-    owner: MetabolomicsAnalysis
-    domain_of:
-    - MassSpectrometry
-    - MetabolomicsAnalysis
-    - NomAnalysis
-    range: string
-    any_of:
-    - range: CalibrationInformation
-    - range: string
   has_metabolite_identifications:
     name: has_metabolite_identifications
     from_schema: https://w3id.org/nmdc/nmdc

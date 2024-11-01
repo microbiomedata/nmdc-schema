@@ -541,21 +541,11 @@
 <td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
 <td>yes</td>
 </tr>
-<tr>
-<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../NomAnalysis/">NomAnalysis</a></td>
-<td></td>
-<td>no</td>
-</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a>&nbsp;or&nbsp;<br /><a href="../CalibrationInformation/">CalibrationInformation</a>&nbsp;or&nbsp;<br /><a href="../String/">String</a></li>
+<li>Range: <a href="../CalibrationInformation/">CalibrationInformation</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -567,22 +557,12 @@
 
 <pre><code class="language-yaml">name: has_calibration
 description: a calibration instance associated with a process
-notes:
-- 'has_calibration slot will be removed from all WorkflowExecution classes but remain
-  on the MassSpectrometry class after an ingest of the appropriate set has occurred.  Once
-  this has occurred, this slot''s range can be updated to CalibrationInformation and
-  class/slot definitions can move to nmdc.yaml.   See PR #29 in Berkeley schema.'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: has_calibration
 domain_of:
 - MassSpectrometry
-- MetabolomicsAnalysis
-- NomAnalysis
-range: string
-any_of:
-- range: CalibrationInformation
-- range: string
+range: CalibrationInformation
 
 </code></pre>
 

@@ -315,6 +315,9 @@
 
   MassSpectrometry : has_calibration
 
+      MassSpectrometry --&gt; "0..1" CalibrationInformation : has_calibration
+    click CalibrationInformation href "../CalibrationInformation"
+
   MassSpectrometry : has_chromatography_configuration
 
       MassSpectrometry --&gt; "0..1" ChromatographyConfiguration : has_chromatography_configuration
@@ -412,7 +415,7 @@
 </tr>
 <tr>
 <td><a href="../has_calibration/">has_calibration</a></td>
-<td>0..1 <br/> <a href="../String/">String</a> or <br/><a href="../CalibrationInformation/">CalibrationInformation</a> or <br/><a href="../String/">String</a></td>
+<td>0..1 <br/> <a href="../CalibrationInformation/">CalibrationInformation</a></td>
 <td>a calibration instance associated with a process</td>
 <td>direct</td>
 </tr>
@@ -696,27 +699,16 @@ attributes:
   has_calibration:
     name: has_calibration
     description: a calibration instance associated with a process
-    notes:
-    - 'has_calibration slot will be removed from all WorkflowExecution classes but
-      remain on the MassSpectrometry class after an ingest of the appropriate set
-      has occurred.  Once this has occurred, this slot''s range can be updated to
-      CalibrationInformation and class/slot definitions can move to nmdc.yaml.   See
-      PR #29 in Berkeley schema.'
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: has_calibration
     owner: MassSpectrometry
     domain_of:
     - MassSpectrometry
-    - MetabolomicsAnalysis
-    - NomAnalysis
-    range: string
+    range: CalibrationInformation
     structured_pattern:
       syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
       interpolated: true
-    any_of:
-    - range: CalibrationInformation
-    - range: string
   has_chromatography_configuration:
     name: has_chromatography_configuration
     description: The identifier of the associated ChromatographyConfiguration, providing
