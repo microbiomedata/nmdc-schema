@@ -316,6 +316,8 @@ classes:
           syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
         required: true
+      count: 
+          description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
 
   Database:
     class_uri: nmdc:Database
@@ -1062,7 +1064,6 @@ slots:
 
   count:
     range: integer
-    description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
     required: true
 
   functional_annotation_agg:
