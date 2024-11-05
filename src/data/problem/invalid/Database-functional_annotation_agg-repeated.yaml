@@ -2,6 +2,7 @@
 functional_annotation_agg:
   - was_generated_by: nmdc:wfmgan-99-123456.1
     gene_function_id: KEGG.ORTHOLOGY:K00627
+    count: 150
     type: nmdc:FunctionalAnnotationAggMember
   - was_generated_by: nmdc:wfmgan-99-123456.1
     gene_function_id: KEGG.ORTHOLOGY:K00627
