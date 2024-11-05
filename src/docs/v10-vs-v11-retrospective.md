@@ -355,7 +355,6 @@ slot names other than `type`):
 - `chemical_conversion_category`
 - `chromatographic_category` _applicable to `ChromatographyConfiguration` and `ChromatographicSeparationProcess` ?_
 - `data_category`
-- `direct_infusion_category`
 - `eluent_introduction_category`
 - `feature_category`
 - `protocol_execution_category`
@@ -393,7 +392,6 @@ And the following **enumerations** were added:
 - `ChemicalConversionCategoryEnum`
 - `ChromatographicCategoryEnum`
 - `DataCategoryEnum`
-- `DirectInfusionEnum`
 - `EluentIntroductionCategoryEnum`
 - `ExecutionResourceEnum`
 - `IonizationSourceEnum`
