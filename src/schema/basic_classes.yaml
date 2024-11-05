@@ -535,7 +535,7 @@ slots:
   manifest_category:
     range: ManifestCategoryEnum
     description: >-
-      The type of collection that describes the data in the manifest.
+      The type of context in which the constituent DataObjects can be analyzed together.
     required: true
 
   model:
@@ -616,8 +616,8 @@ enums:
           - NCIT:C61538
   
   ManifestCategoryEnum:
+    description: A list of contexts in which some DataObjects can be analyzed together.
     permissible_values:
-    #TODO KRH: add more collection types, mappings, and descriptions
       instrument_run:
         description: >-
           A collection of data objects from a single run of an instrument.

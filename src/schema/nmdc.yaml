@@ -258,7 +258,9 @@ classes:
   Manifest:
     is_a: InformationObject
     class_uri: nmdc:Manifest
-    description: A representation of a collection of data objects and a description of why these data objects are grouped together.
+    description: A qualified collection of DataObjects that can be analyzed together in the same experimental context.
+    comments:
+      - Manifest are currently uncoupled from other modelling. For example, there is no schema requirement that DataObjects in a fractions Manifest were all obtained by analyzing the same ProcessedSample.
     slots:
       - manifest_category
     slot_usage:
