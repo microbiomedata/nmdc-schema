@@ -528,7 +528,9 @@ slots:
   in_manifest:
     range: Manifest
     multivalued: true
-    #TODO KRH: add description and structured_pattern constraints
+    description: one or more combinations of other DataObjects that can be analyzed together
+    comments:
+      - A DataObject can be part of multiple manifests, for example, a DataObject could be part of a manifest for a single run of an instrument and a manifest for technical replicates of a single sample.
 
   manifest_category:
     range: ManifestCategoryEnum
