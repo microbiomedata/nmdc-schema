@@ -621,9 +621,9 @@ enums:
       instrument_run:
         description: >-
           A collection of data objects from a single run of an instrument.
-      technical_replicates:
+      poolable_replicates:
         description: >-
-          A collection of data objects that represent technical replicates of a single sample.
+          A collection of data objects that can be pooled for downstream analyses.
       fractions:
         description: >-
           A collection of data objects that represent fractions of a single sample.
