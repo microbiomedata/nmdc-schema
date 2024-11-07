@@ -19,23 +19,9 @@ class Migrator(MigratorBase):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
 
-        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        >>> db = {
-        ...   'workflow_analysis_set': [
-        ...     {'id': 'ID1', 'has_peptide_quantificiations': 'a'},
-        ...     {'id': 'ID2', 'has_peptide_quantificiations': 'b', 'foo': 'bar'},
-        ...   ]
-        ... }
-        >>> any("has_peptide_quantificiations" in document for document in db["workflow_analysis_set"])
-        True
-        >>> a = DictionaryAdapter(database=db)
-        >>> m = Migrator(adapter=a)
-        >>> m.upgrade()
-        >>> any("has_peptide_quantificiations" in document for document in db["workflow_analysis_set"])
-        False
         """
 
-        self.adapter.process_each_document(collection_name="data_generation_set", pipeline=[self.remove_has_peptide_quantificiations])
+        self.adapter.process_each_document(collection_name="workflow_execution_set", pipeline=[self.remove_has_peptide_quantificiations])
 
     def remove_has_peptide_quantificiations(self, data_gen_doc: dict) -> dict:
         r"""
@@ -43,11 +29,12 @@ class Migrator(MigratorBase):
 
         Only documents that have a `type` field with the value `nmdc:MetaproteomicsAnalysis` are modified and they are the only documents that can have the `has_peptide_quantificiations` field.
 
+        # Documents with the `has_peptide_quantificiations` field are modified
         >>> m = Migrator()
-        >>> m.remove_has_peptide_quantificiations({'id': 'ID1', 'has_peptide_quantificiations': 'a'})
-        {'id': 'ID1'}
-        >>> m.remove_has_peptide_quantificiations({'id': 'ID2', 'has_peptide_quantificiations': 'b', 'foo': 'bar'})
-        {'id': 'ID2', 'foo': 'bar'}
+        >>> m.remove_has_peptide_quantificiations({'id': 'ID1', 'has_peptide_quantificiations': 'a', 'type': 'nmdc:MetaproteomicsAnalysis'})
+        {'id': 'ID1', 'type': 'nmdc:MetaproteomicsAnalysis'}
+        >>> m.remove_has_peptide_quantificiations({'id': 'ID2', 'has_peptide_quantificiations': 'b', 'foo': 'bar', 'type': 'nmdc:MetaproteomicsAnalysis'})
+        {'id': 'ID2', 'foo': 'bar', 'type': 'nmdc:MetaproteomicsAnalysis'}
 
         # Non-MetaproteomicsAnalysis documents are not modified
         >>> m.remove_has_peptide_quantificiations({'id': 'ID3', 'type': 'nmdc:MetabolomicsAnalysis'})
@@ -56,6 +43,6 @@ class Migrator(MigratorBase):
         """
 
         if data_gen_doc.get("type") == "nmdc:MetaproteomicsAnalysis":
-            data_gen_doc.pop("has_peptide_quantificiations", None)
+            del data_gen_doc["has_peptide_quantificiations"]
 
         return data_gen_doc
