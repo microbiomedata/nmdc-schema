@@ -1107,6 +1107,24 @@ enums:
       nom:
         aliases:
           - natural organic matter
+  
+  NucleotideSequencingEnum:
+    inherits:
+      - AnalyteCategoryEnum
+    minus:
+      - permissible_values:
+          metaproteome:
+          metabolome:
+          lipidome:
+          nom:
+
+  MassSpectrometryEnum:
+    inherits:
+      - AnalyteCategoryEnum
+    minus:
+      - permissible_values:
+          metagenome:
+          metatranscriptome:
 
   ExtractionTargetEnum:
     permissible_values:

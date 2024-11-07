@@ -148,6 +148,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$"
           interpolated: true
+      analyte_category:
+        range: NucleotideSequencingEnum
 
   MassSpectrometry:
     class_uri: nmdc:MassSpectrometry
@@ -177,6 +179,8 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+      analyte_category: 
+        range: MassSpectrometryEnum
     rules:
       - title: has_calibration_required_if_gc
         description: >-
