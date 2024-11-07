@@ -254,6 +254,19 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+  
+  Manifest:
+    is_a: InformationObject
+    class_uri: nmdc:Manifest
+    description: A qualified collection of DataObjects that can be analyzed together in the same experimental context.
+    comments:
+      - Manifest are currently uncoupled from other modelling. For example, there is no schema requirement that DataObjects in a fractions Manifest were all obtained by analyzing the same ProcessedSample.
+    slots:
+      - manifest_category
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
 
   CalibrationInformation:
       class_uri: nmdc:CalibrationInformation
@@ -334,6 +347,7 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - instrument_set
+      - manifest_set
       - material_processing_set
       - processed_sample_set
       - protocol_execution_set
@@ -1207,6 +1221,11 @@ slots:
     mixins: object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
+
+  manifest_set:
+    mixins: object_set
+    range: Manifest
+    description: This property links a database object to the set of manifests within it.
 
   protocol_execution_set:
     mixins: object_set

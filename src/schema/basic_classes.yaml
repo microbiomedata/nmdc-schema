@@ -290,6 +290,7 @@ classes:
       - md5_checksum
       - url
       - was_generated_by
+      - in_manifest
     slot_usage:
       name:
         required: true
@@ -524,6 +525,19 @@ slots:
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
 
+  in_manifest:
+    range: Manifest
+    multivalued: true
+    description: one or more combinations of other DataObjects that can be analyzed together
+    comments:
+      - A DataObject can be part of multiple manifests, for example, a DataObject could be part of a manifest for a single run of an instrument and a manifest for technical replicates of a single sample.
+
+  manifest_category:
+    range: ManifestCategoryEnum
+    description: >-
+      The type of context in which the constituent DataObjects can be analyzed together.
+    required: true
+
   model:
     range: InstrumentModelEnum
   vendor:
@@ -600,6 +614,20 @@ enums:
         comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
         exact_mappings:
           - NCIT:C61538
+  
+  ManifestCategoryEnum:
+    description: A list of contexts in which some DataObjects can be analyzed together.
+    permissible_values:
+      instrument_run:
+        description: >-
+          A collection of data objects from a single run of an instrument.
+      poolable_replicates:
+        description: >-
+          A collection of data objects that can be pooled for downstream analyses.
+      fractions:
+        description: >-
+          A collection of data objects that represent fractions of a single sample.
+
   InstrumentModelEnum:
     permissible_values:
       exploris_21T:
