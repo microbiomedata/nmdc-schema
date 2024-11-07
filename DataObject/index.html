@@ -317,6 +317,11 @@
 
   DataObject : id
 
+  DataObject : in_manifest
+
+      DataObject --&gt; "*" Manifest : in_manifest
+    click Manifest href "../Manifest"
+
   DataObject : insdc_experiment_identifiers
 
   DataObject : md5_checksum
@@ -402,6 +407,12 @@
 <td><a href="../was_generated_by/">was_generated_by</a></td>
 <td>0..1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../DataGeneration/">DataGeneration</a></td>
 <td></td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../in_manifest/">in_manifest</a></td>
+<td>* <br/> <a href="../Manifest/">Manifest</a></td>
+<td>one or more combinations of other DataObjects that can be analyzed together</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -523,6 +534,7 @@ slots:
 - md5_checksum
 - url
 - was_generated_by
+- in_manifest
 slot_usage:
   name:
     name: name
@@ -677,6 +689,22 @@ attributes:
     any_of:
     - range: WorkflowExecution
     - range: DataGeneration
+  in_manifest:
+    name: in_manifest
+    description: one or more combinations of other DataObjects that can be analyzed
+      together
+    comments:
+    - A DataObject can be part of multiple manifests, for example, a DataObject could
+      be part of a manifest for a single run of an instrument and a manifest for technical
+      replicates of a single sample.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: in_manifest
+    owner: DataObject
+    domain_of:
+    - DataObject
+    range: Manifest
+    multivalued: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

@@ -346,6 +346,11 @@
       Database --&gt; "*" Instrument : instrument_set
     click Instrument href "../Instrument"
 
+  Database : manifest_set
+
+      Database --&gt; "*" Manifest : manifest_set
+    click Manifest href "../Manifest"
+
   Database : material_processing_set
 
       Database --&gt; "*" MaterialProcessing : material_processing_set
@@ -464,6 +469,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../manifest_set/">manifest_set</a></td>
+<td>* <br/> <a href="../Manifest/">Manifest</a></td>
+<td>This property links a database object to the set of manifests within it</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../material_processing_set/">material_processing_set</a></td>
 <td>* <br/> <a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td>This property links a database object to the set of material processing withi...</td>
@@ -555,6 +566,7 @@ slots:
 - functional_annotation_set
 - genome_feature_set
 - instrument_set
+- manifest_set
 - material_processing_set
 - processed_sample_set
 - protocol_execution_set
@@ -748,6 +760,21 @@ attributes:
     domain_of:
     - Database
     range: Instrument
+    multivalued: true
+    inlined_as_list: true
+  manifest_set:
+    name: manifest_set
+    description: This property links a database object to the set of manifests within
+      it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    mixins:
+    - object_set
+    alias: manifest_set
+    owner: Database
+    domain_of:
+    - Database
+    range: Manifest
     multivalued: true
     inlined_as_list: true
   material_processing_set:
