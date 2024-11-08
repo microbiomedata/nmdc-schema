@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: metagenome_annotation_id - NMDC Schema Documentation</title>
+        <title>Slot: metagenome_annotation_id (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-metagenome_annotation_id" class="md-skip">
+        <a href="#slot-metagenome_annotation_id-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: metagenome_annotation_id
+              Slot: metagenome_annotation_id (DEPRECATED)
             
           </span>
         </div>
@@ -453,15 +453,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
@@ -521,32 +512,15 @@
   
 
 
-<h1 id="slot-metagenome_annotation_id">Slot: metagenome_annotation_id</h1>
+<h1 id="slot-metagenome_annotation_id-deprecated">Slot: metagenome_annotation_id  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/metagenome_annotation_id">nmdc:metagenome_annotation_id</a></p>
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../FunctionalAnnotationAggMember/">FunctionalAnnotationAggMember</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-</tbody>
-</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../WorkflowExecution/">WorkflowExecution</a>&nbsp;or&nbsp;<br /><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a>&nbsp;or&nbsp;<br /><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></p>
+<p>Range: <a href="../WorkflowExecution/">WorkflowExecution</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -564,16 +538,12 @@
 description: The identifier for the analysis activity that generated the functional
   annotation results, where the analysis activity is an instance of the/an appropriate
   subclass of WorkflowExecution
+deprecated: not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: metagenome_annotation_id
-domain_of:
-- FunctionalAnnotationAggMember
 range: WorkflowExecution
 required: true
-any_of:
-- range: MetagenomeAnnotation
-- range: MetatranscriptomeAnnotation
 
 </code></pre>
 

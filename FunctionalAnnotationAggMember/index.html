@@ -289,12 +289,12 @@
 
   FunctionalAnnotationAggMember : gene_function_id
 
-  FunctionalAnnotationAggMember : metagenome_annotation_id
-
-      FunctionalAnnotationAggMember --&gt; "1" WorkflowExecution : metagenome_annotation_id
-    click WorkflowExecution href "../WorkflowExecution"
-
   FunctionalAnnotationAggMember : type
+
+  FunctionalAnnotationAggMember : was_generated_by
+
+      FunctionalAnnotationAggMember --&gt; "1" WorkflowExecution : was_generated_by
+    click WorkflowExecution href "../WorkflowExecution"
 
 
 
@@ -312,9 +312,9 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../metagenome_annotation_id/">metagenome_annotation_id</a></td>
-<td>1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a> or <br/><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
-<td>The identifier for the analysis activity that generated the functional annota...</td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
+<td>1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../DataGeneration/">DataGeneration</a></td>
+<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -326,7 +326,7 @@
 <tr>
 <td><a href="../count/">count</a></td>
 <td>1 <br/> <a href="../Integer/">Integer</a></td>
-<td></td>
+<td>The number of sequences (for a metagenome or metatranscriptome) or spectra (f...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -387,16 +387,21 @@
 <pre><code class="language-yaml">name: FunctionalAnnotationAggMember
 from_schema: https://w3id.org/nmdc/nmdc
 slots:
-- metagenome_annotation_id
+- was_generated_by
 - gene_function_id
 - count
 - type
 slot_usage:
-  metagenome_annotation_id:
-    name: metagenome_annotation_id
+  was_generated_by:
+    name: was_generated_by
+    required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  count:
+    name: count
+    description: The number of sequences (for a metagenome or metatranscriptome) or
+      spectra (for metaproteomics) associated with the specified function.
 class_uri: nmdc:FunctionalAnnotationAggMember
 
 </code></pre>
@@ -406,31 +411,37 @@ class_uri: nmdc:FunctionalAnnotationAggMember
 <pre><code class="language-yaml">name: FunctionalAnnotationAggMember
 from_schema: https://w3id.org/nmdc/nmdc
 slot_usage:
-  metagenome_annotation_id:
-    name: metagenome_annotation_id
+  was_generated_by:
+    name: was_generated_by
+    required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+  count:
+    name: count
+    description: The number of sequences (for a metagenome or metatranscriptome) or
+      spectra (for metaproteomics) associated with the specified function.
 attributes:
-  metagenome_annotation_id:
-    name: metagenome_annotation_id
-    description: The identifier for the analysis activity that generated the functional
-      annotation results, where the analysis activity is an instance of the/an appropriate
-      subclass of WorkflowExecution
+  was_generated_by:
+    name: was_generated_by
     from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - prov:wasGeneratedBy
     rank: 1000
-    alias: metagenome_annotation_id
+    alias: was_generated_by
     owner: FunctionalAnnotationAggMember
     domain_of:
     - FunctionalAnnotationAggMember
+    - FunctionalAnnotation
+    - DataObject
     range: WorkflowExecution
     required: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+      syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
     any_of:
-    - range: MetagenomeAnnotation
-    - range: MetatranscriptomeAnnotation
+    - range: WorkflowExecution
+    - range: DataGeneration
   gene_function_id:
     name: gene_function_id
     description: The identifier for the gene function.
@@ -446,6 +457,8 @@ attributes:
     required: true
   count:
     name: count
+    description: The number of sequences (for a metagenome or metatranscriptome) or
+      spectra (for metaproteomics) associated with the specified function.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: count
