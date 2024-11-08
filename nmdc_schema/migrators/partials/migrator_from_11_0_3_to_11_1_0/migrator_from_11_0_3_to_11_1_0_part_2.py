@@ -7,10 +7,8 @@ class Migrator(MigratorBase):
 
     This migrator removes the `has_peptide_quantificiations` field from all documents that represent an instance of the `MetaproteomicsAnalysis` class.
     """
-
-    #TODO KRH: Update these values when known
-    _from_version = "XX"
-    _to_version = "XX" 
+    _from_version = "11.0.3"
+    _to_version = "11.1.0.part_2"
 
     def upgrade(self) -> None:
         r"""
