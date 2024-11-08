@@ -408,7 +408,7 @@ functional_annotation_agg:
   - gene_function_id: KEGG.ORTHOLOGY:K00627
     count: 120
     type: nmdc:FunctionalAnnotationAggMember
-    metagenome_annotation_id: nmdc:wfmgan-99-123456.1
+    was_generated_by: nmdc:wfmgan-99-123456.1
 biosample_set:
   - id: nmdc:bsm-99-isqhuW
     type: nmdc:Biosample
