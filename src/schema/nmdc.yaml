@@ -313,15 +313,18 @@ classes:
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
-      - metagenome_annotation_id
+      - was_generated_by
       - gene_function_id
       - count
       - type
     slot_usage:
-      metagenome_annotation_id:
-        structured_pattern: # doesn't include act
-          syntax: "{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
+      was_generated_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        required: true
+      count: 
+          description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
 
   Database:
     class_uri: nmdc:Database
@@ -1057,9 +1060,8 @@ slots:
     range: WorkflowExecution
     description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
     required: true
-    any_of:
-      - range: MetagenomeAnnotation
-      - range: MetatranscriptomeAnnotation
+    deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253"
+
 
   gene_function_id:
     range: uriorcurie
@@ -1067,9 +1069,11 @@ slots:
     examples:
       - value: KEGG.ORTHOLOGY:K00627
     required: true
+
   count:
     range: integer
     required: true
+
   functional_annotation_agg:
     range: FunctionalAnnotationAggMember
     multivalued: true
