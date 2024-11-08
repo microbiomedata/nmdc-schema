@@ -23,17 +23,17 @@ class Migrator(MigratorBase):
 
         self.adapter.process_each_document(collection_name="workflow_execution_set", pipeline=[self.remove_has_peptide_quantificiations])
 
-    def remove_has_peptide_quantificiations(self, data_gen_doc: dict) -> dict:
+    def remove_has_peptide_quantificiations(self, workflow_doc: dict) -> dict:
         r"""
-        Removes the `has_peptide_quantificiations` field from all documents that represent an instance of the `MetaproteomicsAnalysis` class.
+        Removes the `has_peptide_quantifications` field from all documents that represent an instance of the `MetaproteomicsAnalysis` class.
 
         Only documents that have a `type` field with the value `nmdc:MetaproteomicsAnalysis` are modified and they are the only documents that can have the `has_peptide_quantificiations` field.
 
         # Documents with the `has_peptide_quantificiations` field are modified
         >>> m = Migrator()
-        >>> m.remove_has_peptide_quantificiations({'id': 'ID1', 'has_peptide_quantificiations': 'a', 'type': 'nmdc:MetaproteomicsAnalysis'})
+        >>> m.remove_has_peptide_quantificiations({'id': 'ID1', 'has_peptide_quantifications': 'a', 'type': 'nmdc:MetaproteomicsAnalysis'})
         {'id': 'ID1', 'type': 'nmdc:MetaproteomicsAnalysis'}
-        >>> m.remove_has_peptide_quantificiations({'id': 'ID2', 'has_peptide_quantificiations': 'b', 'foo': 'bar', 'type': 'nmdc:MetaproteomicsAnalysis'})
+        >>> m.remove_has_peptide_quantificiations({'id': 'ID2', 'has_peptide_quantifications': 'b', 'foo': 'bar', 'type': 'nmdc:MetaproteomicsAnalysis'})
         {'id': 'ID2', 'foo': 'bar', 'type': 'nmdc:MetaproteomicsAnalysis'}
 
         # Non-MetaproteomicsAnalysis documents are not modified
@@ -42,7 +42,8 @@ class Migrator(MigratorBase):
 
         """
 
-        if data_gen_doc.get("type") == "nmdc:MetaproteomicsAnalysis":
-            del data_gen_doc["has_peptide_quantificiations"]
+        if workflow_doc.get("type") == "nmdc:MetaproteomicsAnalysis":
+            if "has_peptide_quantifications" in workflow_doc.keys():
+                del workflow_doc["has_peptide_quantifications"]
 
-        return data_gen_doc
+        return workflow_doc
