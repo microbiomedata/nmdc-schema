@@ -4,9 +4,9 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11_0_3"
-    _to_version = "11_1_0" 
-    # See PR2203
+    # Note: This migrator was introduced via PR 2203 (i.e. https://github.com/microbiomedata/nmdc-schema/pull/2203).
+    _from_version = "11.1.0.part_1"
+    _to_version = "11.1.0.part_2" 
 
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
