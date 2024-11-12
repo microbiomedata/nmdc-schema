@@ -212,3 +212,27 @@ class MongoAdapter(AdapterBase):
             collection = self._db.get_collection(name=collection_name)
             for document in collection.find():
                 action(document)
+
+    def copy_value_from_field_to_field_in_each_document(
+        self,
+        collection_name: str,
+        source_field_name: str,
+        destination_field_name: str,
+    ) -> None:
+        r"""
+        For each document in the collection that has the source field, copy the value of the source field
+        into the destination field, creating the destination field if it doesn't already exist.
+
+        References:
+        - https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany
+        - https://www.mongodb.com/docs/manual/reference/operator/update/set/
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.update_many
+        """
+
+        # Update every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            collection.update_many(
+                {source_field_name: {"$exists": True}},
+                [{"$set": {destination_field_name: f"${source_field_name}"}}]
+            )
