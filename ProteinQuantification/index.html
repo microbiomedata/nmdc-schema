@@ -8,7 +8,7 @@
 <link href="https://microbiomedata.github.io/nmdc-schema/ProteinQuantification/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.5.41" name="generator"/>
-<title>Class: ProteinQuantification - NMDC Schema Documentation</title>
+<title>Class: ProteinQuantification (DEPRECATED) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.0253249f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-proteinquantification">
+<a class="md-skip" href="#class-proteinquantification-deprecated">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: ProteinQuantification
+              Class: ProteinQuantification (DEPRECATED)
             
           </span>
 </div>
@@ -272,7 +272,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-proteinquantification">Class: ProteinQuantification</h1>
+<h1 id="class-proteinquantification-deprecated">Class: ProteinQuantification  <span style="color: red;"><strong> (DEPRECATED) </strong></span></h1>
 <p><em>This is used to link a metaproteomics analysis workflow to a specific protein</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/ProteinQuantification">nmdc:ProteinQuantification</a></p>
 <div class="mermaid">classDiagram
@@ -315,13 +315,13 @@
 <tr>
 <td><a href="../all_proteins/">all_proteins</a></td>
 <td>* <br/> <a href="../GeneProduct/">GeneProduct</a></td>
-<td>the grouped list of protein identifiers associated with the peptide sequences...</td>
+<td>the list of protein identifiers that are associated with the peptide sequence</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../best_protein/">best_protein</a></td>
 <td>0..1 <br/> <a href="../GeneProduct/">GeneProduct</a></td>
-<td>the specific protein identifier most correctly grouped to its associated pept...</td>
+<td>the specific protein identifier most correctly associated with the peptide se...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -381,6 +381,7 @@
 <pre><code class="language-yaml">name: ProteinQuantification
 description: This is used to link a metaproteomics analysis workflow to a specific
   protein
+deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
 from_schema: https://w3id.org/nmdc/nmdc
 slots:
 - all_proteins
@@ -389,15 +390,6 @@ slots:
 - protein_spectral_count
 - protein_sum_masic_abundance
 - type
-slot_usage:
-  best_protein:
-    name: best_protein
-    description: the specific protein identifier most correctly grouped to its associated
-      peptide sequences
-  all_proteins:
-    name: all_proteins
-    description: the grouped list of protein identifiers associated with the peptide
-      sequences that were grouped to a best protein
 class_uri: nmdc:ProteinQuantification
 
 </code></pre>
@@ -407,21 +399,14 @@ class_uri: nmdc:ProteinQuantification
 <pre><code class="language-yaml">name: ProteinQuantification
 description: This is used to link a metaproteomics analysis workflow to a specific
   protein
+deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
 from_schema: https://w3id.org/nmdc/nmdc
-slot_usage:
-  best_protein:
-    name: best_protein
-    description: the specific protein identifier most correctly grouped to its associated
-      peptide sequences
-  all_proteins:
-    name: all_proteins
-    description: the grouped list of protein identifiers associated with the peptide
-      sequences that were grouped to a best protein
 attributes:
   all_proteins:
     name: all_proteins
-    description: the grouped list of protein identifiers associated with the peptide
-      sequences that were grouped to a best protein
+    description: the list of protein identifiers that are associated with the peptide
+      sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: all_proteins
@@ -433,8 +418,9 @@ attributes:
     multivalued: true
   best_protein:
     name: best_protein
-    description: the specific protein identifier most correctly grouped to its associated
-      peptide sequences
+    description: the specific protein identifier most correctly associated with the
+      peptide sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: best_protein
@@ -446,6 +432,7 @@ attributes:
   peptide_sequence_count:
     name: peptide_sequence_count
     description: count of peptide sequences grouped to the best_protein
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: peptide_sequence_count
@@ -457,6 +444,7 @@ attributes:
     name: protein_spectral_count
     description: sum of filter passing MS2 spectra associated with the best protein
       within a given LC-MS/MS data file
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: protein_spectral_count
@@ -469,6 +457,7 @@ attributes:
     description: combined MS1 extracted ion chromatograms derived from MS2 spectra
       associated with the best protein from a given LC-MS/MS data file using the MASIC
       tool
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: protein_sum_masic_abundance

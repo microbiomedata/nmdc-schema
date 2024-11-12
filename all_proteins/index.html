@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: all_proteins - NMDC Schema Documentation</title>
+        <title>Slot: all_proteins (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-all_proteins" class="md-skip">
+        <a href="#slot-all_proteins-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: all_proteins
+              Slot: all_proteins (DEPRECATED)
             
           </span>
         </div>
@@ -521,7 +521,7 @@
   
 
 
-<h1 id="slot-all_proteins">Slot: all_proteins</h1>
+<h1 id="slot-all_proteins-deprecated">Slot: all_proteins  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>the list of protein identifiers that are associated with the peptide sequence</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/all_proteins">nmdc:all_proteins</a></p>
 <!-- no inheritance hierarchy -->
@@ -539,7 +539,7 @@
 <tr>
 <td><a href="../ProteinQuantification/">ProteinQuantification</a></td>
 <td>This is used to link a metaproteomics analysis workflow to a specific protein</td>
-<td>yes</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../PeptideQuantification/">PeptideQuantification</a></td>
@@ -568,6 +568,7 @@
 <pre><code class="language-yaml">name: all_proteins
 description: the list of protein identifiers that are associated with the peptide
   sequence
+deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: all_proteins

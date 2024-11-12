@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: best_protein - NMDC Schema Documentation</title>
+        <title>Slot: best_protein (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-best_protein" class="md-skip">
+        <a href="#slot-best_protein-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: best_protein
+              Slot: best_protein (DEPRECATED)
             
           </span>
         </div>
@@ -521,7 +521,7 @@
   
 
 
-<h1 id="slot-best_protein">Slot: best_protein</h1>
+<h1 id="slot-best_protein-deprecated">Slot: best_protein  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>the specific protein identifier most correctly associated with the peptide sequence</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/best_protein">nmdc:best_protein</a></p>
 <!-- no inheritance hierarchy -->
@@ -539,7 +539,7 @@
 <tr>
 <td><a href="../ProteinQuantification/">ProteinQuantification</a></td>
 <td>This is used to link a metaproteomics analysis workflow to a specific protein</td>
-<td>yes</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../PeptideQuantification/">PeptideQuantification</a></td>
@@ -563,6 +563,7 @@
 <pre><code class="language-yaml">name: best_protein
 description: the specific protein identifier most correctly associated with the peptide
   sequence
+deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: best_protein

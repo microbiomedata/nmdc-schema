@@ -8,7 +8,7 @@
 <link href="https://microbiomedata.github.io/nmdc-schema/PeptideQuantification/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.5.41" name="generator"/>
-<title>Class: PeptideQuantification - NMDC Schema Documentation</title>
+<title>Class: PeptideQuantification (DEPRECATED) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.0253249f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-peptidequantification">
+<a class="md-skip" href="#class-peptidequantification-deprecated">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: PeptideQuantification
+              Class: PeptideQuantification (DEPRECATED)
             
           </span>
 </div>
@@ -216,13 +216,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -279,7 +272,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-peptidequantification">Class: PeptideQuantification</h1>
+<h1 id="class-peptidequantification-deprecated">Class: PeptideQuantification  <span style="color: red;"><strong> (DEPRECATED) </strong></span></h1>
 <p><em>This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/PeptideQuantification">nmdc:PeptideQuantification</a></p>
 <div class="mermaid">classDiagram
@@ -365,25 +358,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
-<td><a href="../has_peptide_quantifications/">has_peptide_quantifications</a></td>
-<td>range</td>
-<td><a href="./">PeptideQuantification</a></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -415,6 +389,7 @@
 <pre><code class="language-yaml">name: PeptideQuantification
 description: This is used to link a metaproteomics analysis workflow to a specific
   peptide sequence and related information
+deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
 from_schema: https://w3id.org/nmdc/nmdc
 slots:
 - type
@@ -433,6 +408,7 @@ class_uri: nmdc:PeptideQuantification
 <pre><code class="language-yaml">name: PeptideQuantification
 description: This is used to link a metaproteomics analysis workflow to a specific
   peptide sequence and related information
+deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
 from_schema: https://w3id.org/nmdc/nmdc
 attributes:
   type:
@@ -478,6 +454,7 @@ attributes:
     name: all_proteins
     description: the list of protein identifiers that are associated with the peptide
       sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: all_proteins
@@ -491,6 +468,7 @@ attributes:
     name: best_protein
     description: the specific protein identifier most correctly associated with the
       peptide sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: best_protein
@@ -503,6 +481,7 @@ attributes:
     name: min_q_value
     description: smallest Q-Value associated with the peptide sequence as provided
       by MSGFPlus tool
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - OBI:0001442
@@ -514,6 +493,7 @@ attributes:
     range: float
   peptide_sequence:
     name: peptide_sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: peptide_sequence
@@ -525,6 +505,7 @@ attributes:
     name: peptide_spectral_count
     description: sum of filter passing MS2 spectra associated with the peptide sequence
       within a given LC-MS/MS data file
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: peptide_spectral_count
@@ -537,6 +518,7 @@ attributes:
     description: combined MS1 extracted ion chromatograms derived from MS2 spectra
       associated with the peptide sequence from a given LC-MS/MS data file using the
       MASIC tool
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: peptide_sum_masic_abundance

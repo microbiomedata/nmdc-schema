@@ -319,11 +319,6 @@
       MetaproteomicsAnalysis --&gt; "*" NamedThing : has_output
     click NamedThing href "../NamedThing"
 
-  MetaproteomicsAnalysis : has_peptide_quantifications
-
-      MetaproteomicsAnalysis --&gt; "*" PeptideQuantification : has_peptide_quantifications
-    click PeptideQuantification href "../PeptideQuantification"
-
   MetaproteomicsAnalysis : id
 
   MetaproteomicsAnalysis : name
@@ -385,12 +380,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><a href="../has_peptide_quantifications/">has_peptide_quantifications</a></td>
-<td>* <br/> <a href="../PeptideQuantification/">PeptideQuantification</a></td>
-<td></td>
-<td>direct</td>
-</tr>
 <tr>
 <td><a href="../ended_at_time/">ended_at_time</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -546,8 +535,6 @@ in_subset:
 - workflow subset
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: WorkflowExecution
-slots:
-- has_peptide_quantifications
 slot_usage:
   id:
     name: id
@@ -584,18 +571,6 @@ slot_usage:
       syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
-  has_peptide_quantifications:
-    name: has_peptide_quantifications
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: has_peptide_quantifications
-    owner: MetaproteomicsAnalysis
-    domain_of:
-    - MetaproteomicsAnalysis
-    range: PeptideQuantification
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   ended_at_time:
     name: ended_at_time
     notes:
