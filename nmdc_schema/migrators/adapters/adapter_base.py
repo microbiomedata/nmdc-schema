@@ -126,3 +126,16 @@ class AdapterBase(ABC):
         to facilitate iterating over all documents in a collection without actually modifying them.
         """
         pass
+
+    @abstractmethod
+    def copy_value_from_field_to_field_in_each_document(
+        self,
+        collection_name: str,
+        source_field_name: str,
+        destination_field_name: str,
+    ) -> None:
+        r"""
+        For each document in the collection that has the source field, copy the value of the source field
+        into the destination field, creating the destination field if it doesn't already exist.
+        """
+        pass
