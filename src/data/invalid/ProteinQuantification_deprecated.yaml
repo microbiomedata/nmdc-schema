@@ -1,0 +1,2 @@
+# This example is invalid because the ProteinQuantification type is deprecated.
+type: nmdc:ProteinQuantification
