@@ -118,6 +118,17 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
+    def remove_field_from_each_document(
+        self,
+        collection_name: str,
+        field_name: str,
+    ) -> None:
+        r"""
+        Removes the specified field from each document in the collection.
+        """
+        pass
+
+    @abstractmethod
     def do_for_each_document(
         self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
