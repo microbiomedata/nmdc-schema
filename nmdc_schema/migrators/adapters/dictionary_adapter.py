@@ -378,8 +378,8 @@ class DictionaryAdapter(AdapterBase):
         >>> database = {
         ...   "thing_set": [
         ...     {"id": "1", "color": "blue"},
-        ...     {"id": "2"},
-        ...     {"id": "3", "color": None},
+        ...     {"id": "2", "color": None},
+        ...     {"id": "3"},
         ...     {"id": "4", "color": "blue", "hue": "yellow"},
         ...     {"id": "5", "color": "blue", "hue": None},
         ...   ]
@@ -388,10 +388,10 @@ class DictionaryAdapter(AdapterBase):
         >>> da.copy_value_from_field_to_field_in_each_document("thing_set", "color", "hue")
         >>> database["thing_set"][0]  # source field exists and is not empty
         {'id': '1', 'color': 'blue', 'hue': 'blue'}
-        >>> database["thing_set"][1]  # source field does not exist
-        {'id': '2'}
-        >>> database["thing_set"][2]  # source field is empty
-        {'id': '3', 'color': None, 'hue': None}
+        >>> database["thing_set"][1]  # source field is empty
+        {'id': '2', 'color': None, 'hue': None}
+        >>> database["thing_set"][2]  # source field does not exist
+        {'id': '3'}
         >>> database["thing_set"][3]  # destination field exists and is not empty
         {'id': '4', 'color': 'blue', 'hue': 'blue'}
         >>> database["thing_set"][4]  # destination field exists and is empty
