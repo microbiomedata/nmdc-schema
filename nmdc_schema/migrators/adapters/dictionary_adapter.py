@@ -333,6 +333,37 @@ class DictionaryAdapter(AdapterBase):
             for document in self._db[collection_name]:
                 document[field_name] = value
 
+    def remove_field_from_each_document(
+        self,
+        collection_name: str,
+        field_name: str,
+    ) -> None:
+        r"""
+        Removes the specified field from each document in the collection.
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "1", "x": "a"},
+        ...     {"id": "2"},
+        ...     {"id": "3", "x": None},
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.remove_field_from_each_document("thing_set", "x")
+        >>> database["thing_set"][0]
+        {'id': '1'}
+        >>> database["thing_set"][1]
+        {'id': '2'}
+        >>> database["thing_set"][2]
+        {'id': '3'}
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db:
+            for document in self._db[collection_name]:
+                if field_name in document:
+                    del document[field_name]
+
     def do_for_each_document(
         self, collection_name: str, action: Callable[[dict], None]
     ) -> None:

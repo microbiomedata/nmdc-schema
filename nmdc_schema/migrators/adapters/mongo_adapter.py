@@ -199,6 +199,23 @@ class MongoAdapter(AdapterBase):
             collection = self._db.get_collection(name=collection_name)
             collection.update_many({}, {"$set": {field_name: value}})
 
+    def remove_field_from_each_document(
+        self,
+        collection_name: str,
+        field_name: str,
+    ) -> None:
+        r"""
+        Removes the specified field from each document in the collection.
+
+        References:
+        - https://www.mongodb.com/docs/manual/reference/operator/update/unset/
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            collection.update_many({}, {"$unset": {field_name: 0}})  # value is arbitrary (e.g. 0)
+
     def do_for_each_document(
         self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
