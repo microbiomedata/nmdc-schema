@@ -9,24 +9,39 @@ class Migrator(MigratorBase):
     _to_version = "11.1.0.part_2" 
 
     def upgrade(self):
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+        r"""
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
 
-        self.adapter.process_each_document(
-            "functional_annotation_agg", [self.move_metagenome_id_to_was_generated_by]
+        Updates each document in the `functional_annotation_agg` collection so that
+        its `metagenome_annotation_id` field is effectively renamed to `was_generated_by`.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> db = {
+        ...   'functional_annotation_agg': [
+        ...     {'metagenome_annotation_id': 'x', 'other': 'a'},
+        ...     {'metagenome_annotation_id': 'y', 'other': 'b'},
+        ...   ],
+        ... }
+        >>> a = DictionaryAdapter(database=db)
+        >>> m = Migrator(adapter=a)
+        >>> m.upgrade()
+        >>> all('metagenome_annotation_id' not in doc for doc in db['functional_annotation_agg'])
+        True
+        >>> all('was_generated_by' in doc for doc in db['functional_annotation_agg'])
+        True
+        >>> db['functional_annotation_agg'][0]
+        {'other': 'a', 'was_generated_by': 'x'}
+        >>> db['functional_annotation_agg'][1]
+        {'other': 'b', 'was_generated_by': 'y'}
+        """
+
+        self.adapter.copy_value_from_field_to_field_in_each_document(
+            collection_name="functional_annotation_agg",
+            source_field_name="metagenome_annotation_id",
+            destination_field_name="was_generated_by",
         )
 
-    def move_metagenome_id_to_was_generated_by(self, fun_agg: dict) -> dict:
-        r"""
-        Updates the `FunctionalAnnotationAggMember` records so the value originally in its `metagenome_annotation_id` field 
-        is stored in a new field named `was_generated_by`; and removes the `metagenome_annotation_id` field.
-
-        `metagenome_annotation_id` is required on these records and has the same value as `was_generated_by` in the new schema,
-        so no data is lost in this migration nor do we need to check for the existence of the field.
-
-        >>> m = Migrator()
-        >>> m.move_metagenome_id_to_was_generated_by({'metagenome_annotation_id': 'mgm123', 'count': 1})
-        {'count': 1, 'was_generated_by': 'mgm123'}
-        
-        """
-        fun_agg["was_generated_by"] = fun_agg.pop("metagenome_annotation_id")
-        return fun_agg
+        self.adapter.remove_field_from_each_document(
+            collection_name="functional_annotation_agg",
+            field_name="metagenome_annotation_id",
+        )
