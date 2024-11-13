@@ -37,6 +37,16 @@
             "title": "ArchStrucEnum",
             "type": "string"
         },
+        "BinQualityEnum": {
+            "description": "",
+            "enum": [
+                "HQ",
+                "MQ",
+                "LQ"
+            ],
+            "title": "BinQualityEnum",
+            "type": "string"
+        },
         "BiolStatEnum": {
             "description": "",
             "enum": [
@@ -6627,6 +6637,16 @@
                     "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 },
+                "in_manifest": {
+                    "description": "one or more combinations of other DataObjects that can be analyzed together",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "insdc_experiment_identifiers": {
                     "items": {
                         "pattern": "^insdc.sra:(E|D|S)RX[0-9]{6,}$",
@@ -6821,6 +6841,16 @@
                         "null"
                     ]
                 },
+                "manifest_set": {
+                    "description": "This property links a database object to the set of manifests within it.",
+                    "items": {
+                        "$ref": "#/$defs/Manifest"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "material_processing_set": {
                     "description": "This property links a database object to the set of material processing within it.",
                     "items": {
@@ -6971,15 +7001,6 @@
                 "other"
             ],
             "title": "DeposEnvEnum",
-            "type": "string"
-        },
-        "DirectInfusionEnum": {
-            "description": "",
-            "enum": [
-                "direct_infusion",
-                "autosampler"
-            ],
-            "title": "DirectInfusionEnum",
             "type": "string"
         },
         "DissolvingProcess": {
@@ -7231,7 +7252,8 @@
                 "massive",
                 "gsc",
                 "zenodo",
-                "edi"
+                "edi",
+                "figshare"
             ],
             "title": "DoiProviderEnum",
             "type": "string"
@@ -7442,12 +7464,16 @@
             "description": "This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.",
             "properties": {
                 "completeness": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "contamination": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
@@ -7937,6 +7963,9 @@
         "FileTypeEnum": {
             "description": "",
             "enum": [
+                "Virus Summary",
+                "Plasmid Summary",
+                "GeNomad Aggregated Classification",
                 "Reference Calibration File",
                 "Metagenome Raw Reads",
                 "Metagenome Raw Read 1",
@@ -8386,23 +8415,11 @@
             "description": "",
             "properties": {
                 "count": {
+                    "description": "The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.",
                     "type": "integer"
                 },
                 "gene_function_id": {
                     "description": "The identifier for the gene function.",
-                    "type": "string"
-                },
-                "metagenome_annotation_id": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "description": "The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution",
-                    "pattern": "^(nmdc):(wfmgan|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
                     "type": "string"
                 },
                 "type": {
@@ -8411,10 +8428,22 @@
                         "nmdc:FunctionalAnnotationAggMember"
                     ],
                     "type": "string"
+                },
+                "was_generated_by": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "pattern": "^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
+                    "type": "string"
                 }
             },
             "required": [
-                "metagenome_annotation_id",
+                "was_generated_by",
                 "gene_function_id",
                 "count",
                 "type"
@@ -9178,24 +9207,24 @@
             "description": "",
             "properties": {
                 "bin_name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "Name of the metagenome-assembled genome.",
+                    "type": "string"
                 },
                 "bin_quality": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/BinQualityEnum",
+                    "description": "The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893)."
                 },
                 "completeness": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "contamination": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
@@ -9213,54 +9242,64 @@
                     "description": "Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage."
                 },
                 "gene_count": {
+                    "description": "Number of genes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "gtdbtk_class": {
+                    "description": "Taxonomic class assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_domain": {
+                    "description": "Taxonomic domain assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_family": {
+                    "description": "Taxonomic family assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_genus": {
+                    "description": "Taxonomic genus assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_order": {
+                    "description": "Taxonomic order assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_phylum": {
+                    "description": "Taxonomic phylum assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_species": {
+                    "description": "Taxonomic genus assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "members_id": {
+                    "description": "Names of the contigs that make up a metagenome-assembled genome.",
                     "items": {
                         "type": "string"
                     },
@@ -9270,36 +9309,48 @@
                     ]
                 },
                 "num_16s": {
+                    "description": "Number of 16s sequences detected, a subunit of prokaryotic ribosomes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "num_23s": {
+                    "description": "Number of 23 seqeuences detected, a subunit of ribosomes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "num_5s": {
+                    "description": "Number of 5s seqeuences detected, a subunit of ribosomes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "num_t_rna": {
+                    "description": "Number of transfer transfer RNAs.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "number_of_contig": {
+                    "description": "Number of contigs",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "total_bases": {
+                    "description": "Total number of basepairs.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9314,6 +9365,7 @@
                 }
             },
             "required": [
+                "bin_name",
                 "type"
             ],
             "title": "MagBin",
@@ -9377,6 +9429,8 @@
                     ]
                 },
                 "binned_contig_num": {
+                    "description": "Number of contigs that ended up in a medium or high quality bin.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9457,18 +9511,23 @@
                     ]
                 },
                 "input_contig_num": {
+                    "description": "Total number of input contigs.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "low_depth_contig_num": {
+                    "description": "Number of contigs which were excluded from binning for depth of coverage.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "mags_list": {
+                    "description": "Contains detailed information about each metagenome-assembled genome.",
                     "items": {
                         "$ref": "#/$defs/MagBin"
                     },
@@ -9521,6 +9580,8 @@
                     "type": "string"
                 },
                 "too_short_contig_num": {
+                    "description": "Number of contigs which were excluded from binning for length.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9534,6 +9595,8 @@
                     "type": "string"
                 },
                 "unbinned_contig_num": {
+                    "description": "Number of contigs which did not end up in a medium or high quality bin.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9561,6 +9624,70 @@
             ],
             "title": "MagsAnalysis",
             "type": "object"
+        },
+        "Manifest": {
+            "additionalProperties": false,
+            "description": "A qualified collection of DataObjects that can be analyzed together in the same experimental context.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "type": "string"
+                },
+                "manifest_category": {
+                    "$ref": "#/$defs/ManifestCategoryEnum",
+                    "description": "The type of context in which the constituent DataObjects can be analyzed together."
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Manifest"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "manifest_category",
+                "id",
+                "type"
+            ],
+            "title": "Manifest",
+            "type": "object"
+        },
+        "ManifestCategoryEnum": {
+            "description": "A list of contexts in which some DataObjects can be analyzed together.",
+            "enum": [
+                "instrument_run",
+                "poolable_replicates",
+                "fractions"
+            ],
+            "title": "ManifestCategoryEnum",
+            "type": "string"
         },
         "MassAnalyzerEnum": {
             "description": "",
@@ -9676,20 +9803,12 @@
                     ]
                 },
                 "has_calibration": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "description": "a calibration instance associated with a process",
                     "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "has_chromatography_configuration": {
                     "description": "The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.",
@@ -10082,21 +10201,6 @@
                 },
                 "git_url": {
                     "description": "The url that points to the exact github location of a workflow.",
-                    "type": "string"
-                },
-                "has_calibration": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "a calibration instance associated with a process",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -11117,15 +11221,6 @@
                     "items": {
                         "pattern": "^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_peptide_quantifications": {
-                    "items": {
-                        "$ref": "#/$defs/PeptideQuantification"
                     },
                     "type": [
                         "array",
@@ -12301,21 +12396,6 @@
                     "description": "The url that points to the exact github location of a workflow.",
                     "type": "string"
                 },
-                "has_calibration": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "a calibration instance associated with a process",
-                    "type": "string"
-                },
                 "has_failure_categorization": {
                     "items": {
                         "$ref": "#/$defs/FailureCategorization"
@@ -13326,7 +13406,8 @@
                 "EMSL",
                 "Battelle",
                 "ANL",
-                "UCD_Genome_Center"
+                "UCD_Genome_Center",
+                "Azenta"
             ],
             "title": "ProcessingInstitutionEnum",
             "type": "string"
@@ -13348,7 +13429,7 @@
             "description": "This is used to link a metaproteomics analysis workflow to a specific protein",
             "properties": {
                 "all_proteins": {
-                    "description": "the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein",
+                    "description": "the list of protein identifiers that are associated with the peptide sequence",
                     "items": {
                         "type": "string"
                     },
@@ -13358,7 +13439,7 @@
                     ]
                 },
                 "best_protein": {
-                    "description": "the specific protein identifier most correctly grouped to its associated peptide sequences",
+                    "description": "the specific protein identifier most correctly associated with the peptide sequence",
                     "type": [
                         "string",
                         "null"
@@ -15697,6 +15778,16 @@
             "description": "This property links a database object to the set of instruments within it.",
             "items": {
                 "$ref": "#/$defs/Instrument"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "manifest_set": {
+            "description": "This property links a database object to the set of manifests within it.",
+            "items": {
+                "$ref": "#/$defs/Manifest"
             },
             "type": [
                 "array",
