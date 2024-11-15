@@ -61,7 +61,8 @@ slots:
     comments:
       - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-      - value: 13:33 or 13:33:55
+      - value: 13:33
+      - value: 13:33:55
     see_also:
       - MIXS:0000011
     rank: 3
