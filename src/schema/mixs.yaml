@@ -598,8 +598,12 @@ enums:
     permissible_values:
       female: {}
       hermaphrodite: {}
+      non-binary: {}
       male: {}
-      neuter: {}
+      transgender: {}
+      transgender (female to male): {}
+      transgender (male to female): {}
+      undeclared: {}
   indoor_space_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
