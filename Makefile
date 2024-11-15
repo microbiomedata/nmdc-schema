@@ -176,7 +176,7 @@ gendoc: $(DOCDIR) prefixmaps
 	# Create directory for JavaScript files and copy them
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
-	# Use `refgraph` to generate an interactive diagram
+	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
 	mkdir -p $(DOCDIR)/visualizations
 	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
 testdoc: gendoc serve
