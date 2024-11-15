@@ -25,7 +25,9 @@ slots:
       - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
         are all acceptable.
     examples:
-      - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
+      - value: 2021-04-15
+      - value: 2021-04
+      - value: 2021
     see_also:
       - MIXS:0000011
     rank: 2
