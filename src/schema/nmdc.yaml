@@ -77,6 +77,7 @@ prefixes:
   jgi.proposal: "https://bioregistry.io/jgi.proposal:"
   jgi: http://example.org/jgi/
   kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
+  KEGG.MODULE: "https://bioregistry.io/kegg.module:" #https://bioregistry.io/kegg.module:M00002
   linkml: https://w3id.org/linkml/
   mgnify.proj: "https://bioregistry.io/mgnify.proj:"
   my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
@@ -253,19 +254,77 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+  
+  Manifest:
+    is_a: InformationObject
+    class_uri: nmdc:Manifest
+    description: A qualified collection of DataObjects that can be analyzed together in the same experimental context.
+    comments:
+      - Manifest are currently uncoupled from other modelling. For example, there is no schema requirement that DataObjects in a fractions Manifest were all obtained by analyzing the same ProcessedSample.
+    slots:
+      - manifest_category
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
+
+  CalibrationInformation:
+      class_uri: nmdc:CalibrationInformation
+      is_a: InformationObject
+      description: A calibration object that is associated with a process.
+      slots:
+        - calibration_object
+        - internal_calibration
+        - calibration_target
+        - calibration_standard
+      rules:
+        - title: calibration_standard_if_rt
+          description: >-
+            If the calibration_target is retention_index, a calibration_standard is required.
+          preconditions:
+            slot_conditions:
+              calibration_target:
+                equals_string: retention_index
+          postconditions:
+            slot_conditions:
+              calibration_standard:
+                required: true
+        - title: calibration_object_if_not_internal_calibration
+          description: >-
+            If internal_calibration is false, a calibration_object is required.
+          preconditions:
+            slot_conditions:
+              internal_calibration: false
+          postconditions:
+            slot_conditions:
+              calibration_object:
+                required: true
+      slot_usage:
+        internal_calibration:
+          required: true
+        calibration_target:
+          required: true
+        id:
+          structured_pattern:
+            syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+            interpolated: true
+
 
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
-      - metagenome_annotation_id
+      - was_generated_by
       - gene_function_id
       - count
       - type
     slot_usage:
-      metagenome_annotation_id:
-        structured_pattern: # doesn't include act
-          syntax: "{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
+      was_generated_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        required: true
+      count: 
+          description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
 
   Database:
     class_uri: nmdc:Database
@@ -291,6 +350,7 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - instrument_set
+      - manifest_set
       - material_processing_set
       - processed_sample_set
       - protocol_execution_set
@@ -660,7 +720,28 @@ classes:
           interpolated: true
 
 enums:
+  CalibrationTargetEnum:
+    permissible_values:
+      mass_charge_ratio:
+        title: m/z
+        aliases:
+          - Mass
+          - m/z
+      retention_time:
+        aliases:
+          - RT
+      retention_index:
+        aliases:
+          - RI
 
+  CalibrationStandardEnum:
+    permissible_values:
+      fames:
+        aliases:
+          - FAMES
+      alkanes:
+        aliases:
+          - Alkanes
 
   StrandedOrientationEnum:
     description: This enumeration specifies information about stranded RNA library preparations.
@@ -884,6 +965,26 @@ enums:
 
 
 slots:
+  has_calibration:
+    range: CalibrationInformation
+    description: a calibration instance associated with a process
+
+  calibration_object:
+    range: DataObject
+    description: the file containing calibration data object
+
+  internal_calibration:
+    range: boolean
+    description: whether internal calibration was used, if false, external calibration was used
+
+  calibration_target:
+    range: CalibrationTargetEnum
+    description: the target measurement of the calibration
+
+  calibration_standard:
+    range: CalibrationStandardEnum
+    description: the reference standard(s) used for calibration
+
   polarity_mode:
     range: PolarityModeEnum
     description: the polarity of which ions are generated and detected
@@ -959,9 +1060,8 @@ slots:
     range: WorkflowExecution
     description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
     required: true
-    any_of:
-      - range: MetagenomeAnnotation
-      - range: MetatranscriptomeAnnotation
+    deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253"
+
 
   gene_function_id:
     range: uriorcurie
@@ -969,9 +1069,11 @@ slots:
     examples:
       - value: KEGG.ORTHOLOGY:K00627
     required: true
+
   count:
     range: integer
     required: true
+
   functional_annotation_agg:
     range: FunctionalAnnotationAggMember
     multivalued: true
@@ -1130,6 +1232,11 @@ slots:
     mixins: object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
+
+  manifest_set:
+    mixins: object_set
+    range: Manifest
+    description: This property links a database object to the set of manifests within it.
 
   protocol_execution_set:
     mixins: object_set

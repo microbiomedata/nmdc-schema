@@ -138,7 +138,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
-		--output-yaml $@.tmp \
+		--output-yaml $@ \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
 		--selected-collections chemical_entity_set \
@@ -159,10 +159,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
-	cat $@.tmp | \
-		yq eval 'del(.workflow_execution_set[].has_peptide_quantifications)' | \
-		cat > $@ # many has_peptide_quantifications.all_proteins values are missing prefixes (contaminants) https://github.com/microbiomedata/issues/issues/897
-	rm -rf $@.tmp
 
 ## ALTERNATIVELY:
 #local/mongo_as_unvalidated_nmdc_database.yaml:

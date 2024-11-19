@@ -422,10 +422,6 @@ slots:
         in the Workflow Chain
     range: AnalyteCategoryEnum
 
-  direct_infusion_category:
-    range: DirectInfusionEnum
-    description: used when a processed sample is introduced into a mass spectrometer without chromatographic separation
-
   type:
     required: true
     range: uriorcurie
@@ -607,6 +603,29 @@ enums:
   FileTypeEnum:
     permissible_values:
       
+      Virus Summary:
+        description: Tab separated file listing the viruses found by geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_virus_summary\.tsv?$'
+      
+      Plasmid Summary:
+        description: Tab separated file listing the plasmids found be geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_plasmid_summary\.tsv?$'
+        
+      GeNomad Aggregated Classification:
+        description: >-
+          Tab separated file which combines the results from neural network-based classification
+          and marker-based classification for virus and plasmid detection with geNomad.
+        see_also: 
+          - https://portal.nersc.gov/genomad/
+        annotations:
+          file_name_pattern: '^_aggregated_classification\.tsv?$'  
+        
       Reference Calibration File:
         description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
       
@@ -1089,13 +1108,6 @@ enums:
         aliases:
           - natural organic matter
 
-  DirectInfusionEnum:
-    permissible_values:
-      direct_infusion:
-        aliases:
-          - DI
-      autosampler: { }
-
   ExtractionTargetEnum:
     permissible_values:
       DNA: { }
@@ -1134,6 +1146,10 @@ enums:
       UCD_Genome_Center:
         title: University of California, Davis Genome Center
         meaning: https://genomecenter.ucdavis.edu/
+
+      Azenta:
+        title: Azenta Life Sciences
+        meaning: https://www.azenta.com/
 
   DataCategoryEnum:
     permissible_values:
