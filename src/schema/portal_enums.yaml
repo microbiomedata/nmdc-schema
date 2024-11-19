@@ -78,3 +78,6 @@ enums:
       metatranscriptomics:
       natural organic matter:
       bulk chemistry:
+      amplicon sequencing assay:
+        meaning: OBI:0002767
+        Title: Amplicon sequencing assay
