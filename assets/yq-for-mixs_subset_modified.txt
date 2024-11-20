@@ -209,6 +209,17 @@
 # add "M horizon" to soil_horizon_enum
 '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'
 
+# replace host_sex_enum permissible values
+'del(.enums.host_sex_enum.permissible_values)'
+'.enums.host_sex_enum.permissible_values.["female"] = {}'
+'.enums.host_sex_enum.permissible_values.["hermaphrodite"] = {}'
+'.enums.host_sex_enum.permissible_values.["non-binary"] = {}'
+'.enums.host_sex_enum.permissible_values.["male"] = {}'
+'.enums.host_sex_enum.permissible_values.["transgender"] = {}'
+'.enums.host_sex_enum.permissible_values.["transgender (female to male)"] = {}'
+'.enums.host_sex_enum.permissible_values.["transgender (male to female)"] = {}'
+'.enums.host_sex_enum.permissible_values.["undeclared"] = {}'
+
 # Fix a few examples so that they are validatable
 'del(.slots.env_broad_scale.examples)'
 '.slots.env_broad_scale.examples.[0].value = "oceanic epipelagic zone biome [ENVO:01000035]"'
