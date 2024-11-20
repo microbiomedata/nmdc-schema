@@ -1108,8 +1108,6 @@ enums:
         aliases:
           - natural organic matter
       amplicon_sequencing_assay:
-        aliases:
-	 - amplicon sequencing assay
         meaning: OBI:0002767 
   ExtractionTargetEnum:
     permissible_values:
