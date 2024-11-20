@@ -33,6 +33,30 @@ default_prefix: nmdc
 default_range: string
 
 classes:
+  PeptideQuantification:
+    class_uri: nmdc:PeptideQuantification
+    description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
+    slots:
+      - type
+      - all_proteins
+      - best_protein
+      - min_q_value
+      - peptide_sequence
+      - peptide_spectral_count
+      - peptide_sum_masic_abundance
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+
+  ProteinQuantification:
+    class_uri: nmdc:ProteinQuantification
+    description: This is used to link a metaproteomics analysis workflow to a specific protein
+    slots:
+      - all_proteins
+      - best_protein
+      - peptide_sequence_count
+      - protein_spectral_count
+      - protein_sum_masic_abundance
+      - type
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
 
 slots:
   omics_type:
@@ -42,3 +66,53 @@ slots:
     examples:
       - value: metatranscriptome
       - value: metagenome
+  all_proteins:
+    description: the list of protein identifiers that are associated with the peptide sequence
+    range: GeneProduct
+    multivalued: true
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  best_protein:
+    description: the specific protein identifier most correctly associated with the peptide sequence
+    range: GeneProduct
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  min_q_value:
+    description: smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
+    range: float
+    see_also:
+      - OBI:0001442
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  peptide_sequence:
+    range: string
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  peptide_spectral_count:
+    description: sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
+    range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  peptide_sum_masic_abundance:
+    description: >-
+      combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool
+    range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  peptide_sequence_count:
+    description: count of peptide sequences grouped to the best_protein
+    range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  protein_spectral_count:
+    description: sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
+    range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  protein_sum_masic_abundance:
+    description: >-
+      combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool
+    range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
+  metagenome_annotation_id:
+    range: WorkflowExecution
+    description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
+    required: true
+    deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253"
+  has_peptide_quantifications:
+    range: PeptideQuantification
+    multivalued: true
+    inlined_as_list: true
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"

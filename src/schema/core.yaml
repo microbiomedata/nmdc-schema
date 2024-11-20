@@ -1313,19 +1313,6 @@ classes:
       - metabolite_identified
       - type
 
-  PeptideQuantification:
-    class_uri: nmdc:PeptideQuantification
-    description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
-    slots:
-      - type
-      - all_proteins
-      - best_protein
-      - min_q_value
-      - peptide_sequence
-      - peptide_spectral_count
-      - peptide_sum_masic_abundance
-    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
-
   ProteinQuantification:
     class_uri: nmdc:ProteinQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific protein
