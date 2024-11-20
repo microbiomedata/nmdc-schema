@@ -432,7 +432,6 @@ classes:
       - pcr_cycles
       - pcr_primers
       - stranded_orientation
-      - target_gene_specification
     close_mappings:
       - OBI:0000711
     comments:
@@ -966,9 +965,6 @@ enums:
 
 
 slots:
-  target_gene_specification:
-    meaning: OBI:0001962
-
   has_calibration:
     range: CalibrationInformation
     description: a calibration instance associated with a process
