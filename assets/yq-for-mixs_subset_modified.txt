@@ -183,7 +183,8 @@
 'del(.classes)'
 'del(.enums.[].name)' 
 'del(.enums.[].permissible_values.[].text)' 
-'del(.slots.[].name)' 
+'del(.slots.[].name)'
+'del(.slots.[].domain_of)'
 'del(.slots.add_recov_method.pattern)' 
 'del(.subsets.[].name)' 
 
@@ -207,6 +208,19 @@
 
 # add "M horizon" to soil_horizon_enum
 '.enums.soil_horizon_enum.permissible_values.["M horizon"] = {}'
+
+# Fix a few examples so that they are validatable
+'del(.slots.env_broad_scale.examples)'
+'.slots.env_broad_scale.examples.[0].value = "oceanic epipelagic zone biome [ENVO:01000035]"'
+
+'del(.slots.env_local_scale.examples)'
+'.slots.env_local_scale.examples.[0].value = "litter layer [ENVO:01000338]"'
+
+'del(.slots.env_medium.examples)'
+'.slots.env_medium.examples.[0].value = "soil [ENVO:00001998]"'
+
+'del(.slots.host_body_product.examples)'
+'.slots.host_body_product.examples.[0].value = "mucus [UBERON:0000912]"'
 
 # as of 2024-01-30:
 # ValueError: Conflicting URIs (https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml, https://w3id.org/linkml/types) for item: date
