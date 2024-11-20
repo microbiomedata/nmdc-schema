@@ -1,6 +1,4 @@
 #example data to model amplicon sequencing
-
-biosample_set:
   - id: nmdc:bsm-99-dtTMNb
     associated_studies:
       - nmdc:sty-00-abc123
@@ -26,14 +24,3 @@ biosample_set:
     analysis_type:
       - amplicon sequencing assay
       - metagenomics
-data_generation_set:
-  - id: nmdc:dgns-11-abcd
-#    analyte_category: amplicon_sequencing_assay
-    has_input: nmdc:bsm-99-dtTMNb
-    target_gene: 16S rRNA
-    associated_studies: 
-      - nmdc:sty-00-abc123
-    name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
-    type: nmdc:NucleotideSequencing
-    insdc_experiment_identifiers: 
-      - insdc.sra:SRX26008237
