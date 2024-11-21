@@ -5999,6 +5999,18 @@ attributes:
     alias: samp_name
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: string
     multivalued: false
@@ -6283,6 +6295,8 @@ attributes:
     alias: agrochem_addition
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: true
@@ -6418,6 +6432,7 @@ attributes:
     alias: al_sat
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -6448,6 +6463,7 @@ attributes:
     alias: al_sat_meth
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -6752,6 +6768,8 @@ attributes:
     alias: annual_precpt
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -6780,6 +6798,8 @@ attributes:
     alias: annual_temp
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -8325,6 +8345,41 @@ attributes:
     alias: collection_date
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: TimestampValue
     multivalued: false
@@ -8415,6 +8470,9 @@ attributes:
     alias: crop_rotation
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -8469,6 +8527,8 @@ attributes:
     alias: cur_land_use
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: cur_land_use_enum
     multivalued: false
@@ -8503,6 +8563,8 @@ attributes:
     alias: cur_vegetation
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - FieldResearchSite
     - Biosample
     range: TextValue
@@ -8535,6 +8597,8 @@ attributes:
     alias: cur_vegetation_meth
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -8639,6 +8703,30 @@ attributes:
     alias: depth
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -9341,6 +9429,8 @@ attributes:
     alias: drainage_class
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: drainage_class_enum
     multivalued: false
@@ -9511,6 +9601,30 @@ attributes:
     alias: elev
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - FieldResearchSite
     - Biosample
     range: float
@@ -9607,6 +9721,41 @@ attributes:
     alias: env_broad_scale
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: ControlledIdentifiedTermValue
     required: true
@@ -9650,6 +9799,41 @@ attributes:
     alias: env_local_scale
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: ControlledIdentifiedTermValue
     required: true
@@ -9692,6 +9876,41 @@ attributes:
     alias: env_medium
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: ControlledIdentifiedTermValue
     required: true
@@ -9858,6 +10077,18 @@ attributes:
     alias: experimental_factor
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: ControlledTermValue
     multivalued: false
@@ -9955,6 +10186,8 @@ attributes:
     alias: extreme_event
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -9981,6 +10214,8 @@ attributes:
     alias: fao_class
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: fao_class_enum
     multivalued: false
@@ -10095,6 +10330,8 @@ attributes:
     alias: fire
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -10151,6 +10388,8 @@ attributes:
     alias: flooding
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -10654,6 +10893,41 @@ attributes:
     alias: geo_loc_name
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - FieldResearchSite
     - Biosample
     range: TextValue
@@ -11192,6 +11466,7 @@ attributes:
     alias: heavy_metals
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: TextValue
     multivalued: true
@@ -11225,6 +11500,8 @@ attributes:
     alias: heavy_metals_meth
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: true
@@ -11316,6 +11593,8 @@ attributes:
     alias: horizon_meth
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -12349,6 +12628,41 @@ attributes:
     alias: lat_lon
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - FieldResearchSite
     - Biosample
     range: GeolocationValue
@@ -12526,6 +12840,7 @@ attributes:
     alias: link_addit_analys
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -12552,6 +12867,8 @@ attributes:
     alias: link_class_info
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -12578,6 +12895,8 @@ attributes:
     alias: link_climate_info
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -12630,6 +12949,8 @@ attributes:
     alias: local_class
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - FieldResearchSite
     - Biosample
     range: TextValue
@@ -12657,6 +12978,8 @@ attributes:
     alias: local_class_meth
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -12902,6 +13225,7 @@ attributes:
     alias: micro_biomass_meth
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -12932,6 +13256,8 @@ attributes:
     alias: microbial_biomass
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -12995,6 +13321,28 @@ attributes:
     alias: misc_param
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: TextValue
     multivalued: true
@@ -13456,6 +13804,11 @@ attributes:
     alias: org_matter
     owner: Biosample
     domain_of:
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - sediment
+    - soil
+    - water
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -13484,6 +13837,11 @@ attributes:
     alias: org_nitro
     owner: Biosample
     domain_of:
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - sediment
+    - soil
+    - water
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -13870,6 +14228,15 @@ attributes:
     alias: ph
     owner: Biosample
     domain_of:
+    - food-farm environment
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - sediment
+    - soil
+    - wastewater_sludge
+    - water
     - Biosample
     range: double
     multivalued: false
@@ -13899,6 +14266,9 @@ attributes:
     alias: ph_meth
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -14388,6 +14758,7 @@ attributes:
     alias: prev_land_use_meth
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -14414,6 +14785,9 @@ attributes:
     alias: previous_land_use
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -14550,6 +14924,8 @@ attributes:
     alias: profile_position
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: profile_position_enum
     multivalued: false
@@ -15612,6 +15988,8 @@ attributes:
     alias: salinity_meth
     owner: Biosample
     domain_of:
+    - food-farm environment
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -15697,6 +16075,18 @@ attributes:
     alias: samp_collec_device
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: string
     multivalued: false
@@ -15720,6 +16110,18 @@ attributes:
     alias: samp_collec_method
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: string
     multivalued: false
@@ -15858,6 +16260,18 @@ attributes:
     alias: samp_mat_process
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: ControlledTermValue
     multivalued: false
@@ -15973,6 +16387,18 @@ attributes:
     alias: samp_size
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -16135,6 +16561,18 @@ attributes:
     alias: samp_taxon_id
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: ControlledIdentifiedTermValue
     multivalued: false
@@ -16436,6 +16874,9 @@ attributes:
     alias: season_precpt
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -16464,6 +16905,9 @@ attributes:
     alias: season_temp
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -16739,6 +17183,8 @@ attributes:
     alias: sieving
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -16790,6 +17236,12 @@ attributes:
     alias: size_frac
     owner: Biosample
     domain_of:
+    - MIMS
+    - MIMARKS specimen
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: TextValue
     multivalued: false
@@ -16883,6 +17335,8 @@ attributes:
     alias: slope_aspect
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -16917,6 +17371,8 @@ attributes:
     alias: slope_gradient
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -17000,6 +17456,8 @@ attributes:
     alias: soil_horizon
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: soil_horizon_enum
     multivalued: false
@@ -17028,6 +17486,7 @@ attributes:
     alias: soil_text_measure
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -17054,6 +17513,8 @@ attributes:
     alias: soil_texture_meth
     owner: Biosample
     domain_of:
+    - food-farm environment
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -17082,6 +17543,9 @@ attributes:
     alias: soil_type
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - FieldResearchSite
     - Biosample
     range: TextValue
@@ -17110,6 +17574,9 @@ attributes:
     alias: soil_type_meth
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -17266,6 +17733,18 @@ attributes:
     alias: source_mat_id
     owner: Biosample
     domain_of:
+    - MIGS eukaryote
+    - MIGS bacteria
+    - MIGS plant
+    - MIGS virus
+    - MIGS org
+    - MIMS
+    - MIMARKS specimen
+    - MIMARKS survey
+    - MISAG
+    - MIMAG
+    - MIUVIG
+    - core
     - Biosample
     range: TextValue
     multivalued: false
@@ -17532,6 +18011,8 @@ attributes:
     alias: store_cond
     owner: Biosample
     domain_of:
+    - agriculture
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -17918,6 +18399,30 @@ attributes:
     alias: temp
     owner: Biosample
     domain_of:
+    - agriculture
+    - air
+    - built environment
+    - core
+    - food-animal and animal feed
+    - food-farm environment
+    - food-food production facility
+    - food-human foods
+    - host-associated
+    - human-associated
+    - human-gut
+    - human-oral
+    - human-skin
+    - human-vaginal
+    - hydrocarbon resources-cores
+    - hydrocarbon resources-fluids_swabs
+    - microbial mat_biofilm
+    - miscellaneous natural or artificial environment
+    - plant-associated
+    - sediment
+    - soil
+    - symbiont-associated
+    - wastewater_sludge
+    - water
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -18023,6 +18528,9 @@ attributes:
     alias: tillage
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: tillage_enum
     multivalued: true
@@ -18280,6 +18788,8 @@ attributes:
     alias: tot_nitro_cont_meth
     owner: Biosample
     domain_of:
+    - food-farm environment
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -18308,6 +18818,10 @@ attributes:
     alias: tot_nitro_content
     owner: Biosample
     domain_of:
+    - food-farm environment
+    - microbial mat_biofilm
+    - sediment
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -18334,6 +18848,9 @@ attributes:
     alias: tot_org_c_meth
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - soil
     - Biosample
     range: TextValue
     multivalued: false
@@ -18365,6 +18882,11 @@ attributes:
     alias: tot_org_carb
     owner: Biosample
     domain_of:
+    - agriculture
+    - food-farm environment
+    - microbial mat_biofilm
+    - sediment
+    - soil
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -19164,6 +19686,7 @@ attributes:
     alias: water_cont_soil_meth
     owner: Biosample
     domain_of:
+    - soil
     - Biosample
     range: string
     multivalued: false
@@ -19196,6 +19719,9 @@ attributes:
     alias: water_content
     owner: Biosample
     domain_of:
+    - microbial mat_biofilm
+    - sediment
+    - soil
     - Biosample
     range: string
     multivalued: true
