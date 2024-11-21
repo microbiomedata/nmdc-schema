@@ -2,9 +2,7 @@ id: nmdc:dgns-11-abcd
 analyte_category: amplicon_sequencing_assay
 has_input: 
   - nmdc:bsm-99-dtTMNb
-target_gene: 
-  has_raw_value: 16S rRNA
-  type: nmdc:TextValue
+target_gene: 16S_rRNA
 associated_studies: 
   - nmdc:sty-00-abc123
 name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
