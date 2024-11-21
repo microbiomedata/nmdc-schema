@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ctg_logsum/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/TargetGeneEnum/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: ctg_logsum - NMDC Schema Documentation</title>
+        <title>Enum: TargetGeneEnum - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-ctg_logsum" class="md-skip">
+        <a href="#enum-targetgeneenum" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: ctg_logsum
+              Enum: TargetGeneEnum
             
           </span>
         </div>
@@ -453,27 +453,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
+      Permissible Values
     </span>
   </a>
   
@@ -530,42 +512,35 @@
   
 
 
-<h1 id="slot-ctg_logsum">Slot: ctg_logsum</h1>
-<p><em>Maximum contig length.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/ctg_logsum">nmdc:ctg_logsum</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../metagenome_assembly_parameter/">metagenome_assembly_parameter</a><ul>
-<li><strong>ctg_logsum</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-targetgeneenum">Enum: TargetGeneEnum</h1>
+<p>URI: <a href="./">TargetGeneEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
+<td>16S_rRNA</td>
+<td>None</td>
+<td>the small subunit of the bacterial/archean ribosome</td>
 </tr>
 <tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
+<td>23S_rRNA</td>
+<td>None</td>
+<td>the large subunit  of the bacterial/archean ribosome</td>
+</tr>
+<tr>
+<td>28S_rRNA</td>
+<td>None</td>
+<td>the large subunit of the eukaryotic ribosome</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -574,16 +549,29 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: ctg_logsum
-description: Maximum contig length.
+<pre><code class="language-yaml">name: TargetGeneEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: metagenome_assembly_parameter
-alias: ctg_logsum
-domain_of:
-- MetagenomeAssembly
-- MetatranscriptomeAssembly
-range: float
+permissible_values:
+  16S_rRNA:
+    text: 16S_rRNA
+    description: the small subunit of the bacterial/archean ribosome
+    aliases:
+    - 16S rRNA
+    - 16S ribosomal RNA
+    narrow_mappings:
+    - OBI:0002763
+  23S_rRNA:
+    text: 23S_rRNA
+    description: the large subunit  of the bacterial/archean ribosome
+    aliases:
+    - 23S rRNA
+    - 23S ribosomal RNA
+  28S_rRNA:
+    text: 28S_rRNA
+    description: the large subunit of the eukaryotic ribosome
+    aliases:
+    - -28S rRNA - 28S ribosomal RNA
 
 </code></pre>
 
