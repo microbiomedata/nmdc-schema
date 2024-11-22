@@ -6558,30 +6558,6 @@ attributes:
     alias: alt
     owner: Biosample
     domain_of:
-    - agriculture
-    - air
-    - built environment
-    - core
-    - food-animal and animal feed
-    - food-farm environment
-    - food-food production facility
-    - food-human foods
-    - host-associated
-    - human-associated
-    - human-gut
-    - human-oral
-    - human-skin
-    - human-vaginal
-    - hydrocarbon resources-cores
-    - hydrocarbon resources-fluids_swabs
-    - microbial mat_biofilm
-    - miscellaneous natural or artificial environment
-    - plant-associated
-    - sediment
-    - soil
-    - symbiont-associated
-    - wastewater_sludge
-    - water
     - Biosample
     range: QuantityValue
     multivalued: false
@@ -9595,8 +9571,7 @@ attributes:
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: broad-scale environmental context
     examples:
-    - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water
-        sample from the photic zone in middle of the Atlantic Ocean
+    - value: oceanic epipelagic zone biome [ENVO:01000035]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - broad-scale environmental context
@@ -9636,10 +9611,7 @@ attributes:
       are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
     title: local environmental context
     examples:
-    - value: 'litter layer [ENVO:01000338]; Annotating a pooled sample taken from
-        various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb
-        and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub
-        layer [ENVO:01000336].'
+    - value: litter layer [ENVO:01000338]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - local environmental context
@@ -9679,9 +9651,7 @@ attributes:
       (e.g. a tree, a leaf, a table top).'
     title: environmental medium
     examples:
-    - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m
-        of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating
-        a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
+    - value: soil [ENVO:00001998]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - environmental medium
@@ -11389,7 +11359,7 @@ attributes:
       or https://www.ebi.ac.uk/ols/ontologies/uberon
     title: host body product
     examples:
-    - value: Portion of mucus [fma66938]
+    - value: mucus [UBERON:0000912]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - host body product
@@ -20657,7 +20627,9 @@ attributes:
     - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
       are all acceptable.
     examples:
-    - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
+    - value: '2021-04-15'
+    - value: 2021-04
+    - value: '2021'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -20680,7 +20652,8 @@ attributes:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: 13:33 or 13:33:55
+    - value: '813'
+    - value: '48835'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -20704,7 +20677,8 @@ attributes:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: 13:33 or 13:33:55
+    - value: '813'
+    - value: '48835'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -20774,12 +20748,11 @@ attributes:
       labeled compounds
     examples:
     - value: 13C glucose
-    - value: H218O
+    - value: 18O water
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000751
     rank: 16
-    string_serialization: '{termLabel} {[termID]}; {timestamp}'
     alias: isotope_exposure
     owner: Biosample
     domain_of:
@@ -20964,7 +20937,9 @@ attributes:
     - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
       are all acceptable.
     examples:
-    - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
+    - value: '2021-04-15'
+    - value: 2021-04
+    - value: '2021'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -20987,7 +20962,8 @@ attributes:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: 13:33 or 13:33:55
+    - value: '813'
+    - value: '48835'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -21094,7 +21070,7 @@ attributes:
     description: Select all the data types associated or available for this biosample
     title: analysis/data type
     examples:
-    - value: metagenomics; metabolomics; proteomics
+    - value: metagenomics; metabolomics; metaproteomics
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIxS:investigation_type
