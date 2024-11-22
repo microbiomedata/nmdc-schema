@@ -578,14 +578,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
-<td>A site, outside of a laboratory, from which biosamples may be collected</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Biosample/">Biosample</a></td>
 <td>Biological source material which can be characterized by an experiment</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
+<td>A site, outside of a laboratory, from which biosamples may be collected</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -655,6 +655,8 @@ string_serialization: '{text}'
 slot_uri: MIXS:0000312
 alias: cur_vegetation
 domain_of:
+- agriculture
+- soil
 - FieldResearchSite
 - Biosample
 range: TextValue

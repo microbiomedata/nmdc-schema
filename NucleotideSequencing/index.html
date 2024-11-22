@@ -375,8 +375,8 @@
 
   NucleotideSequencing : target_gene
 
-      NucleotideSequencing --&gt; "0..1" TextValue : target_gene
-    click TextValue href "../TextValue"
+      NucleotideSequencing --&gt; "0..1" TargetGeneEnum : target_gene
+    click TargetGeneEnum href "../TargetGeneEnum"
 
   NucleotideSequencing : target_subfragment
 
@@ -438,7 +438,7 @@
 </tr>
 <tr>
 <td><a href="../target_gene/">target_gene</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>0..1 <br/> <a href="../TargetGeneEnum/">TargetGeneEnum</a></td>
 <td>Targeted gene or locus name for marker gene studies</td>
 <td>direct</td>
 </tr>
@@ -731,7 +731,7 @@ attributes:
     owner: NucleotideSequencing
     domain_of:
     - NucleotideSequencing
-    range: TextValue
+    range: TargetGeneEnum
     multivalued: false
   target_subfragment:
     name: target_subfragment
