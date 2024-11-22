@@ -598,8 +598,12 @@ enums:
     permissible_values:
       female: {}
       hermaphrodite: {}
+      non-binary: {}
       male: {}
-      neuter: {}
+      transgender: {}
+      transgender (female to male): {}
+      transgender (male to female): {}
+      undeclared: {}
   indoor_space_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -1526,31 +1530,6 @@ slots:
       - altitude
     is_a: environment field
     slot_uri: MIXS:0000094
-    domain_of:
-      - agriculture
-      - air
-      - built environment
-      - core
-      - food-animal and animal feed
-      - food-farm environment
-      - food-food production facility
-      - food-human foods
-      - host-associated
-      - human-associated
-      - human-gut
-      - human-oral
-      - human-skin
-      - human-vaginal
-      - hydrocarbon resources-cores
-      - hydrocarbon resources-fluids_swabs
-      - microbial mat_biofilm
-      - miscellaneous natural or artificial environment
-      - plant-associated
-      - sediment
-      - soil
-      - symbiont-associated
-      - wastewater_sludge
-      - water
     range: QuantityValue
     multivalued: false
   aminopept_act:
@@ -3694,8 +3673,6 @@ slots:
       tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
     description: 'Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: broad-scale environmental context
-    examples:
-      - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water sample from the photic zone in middle of the Atlantic Ocean
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - broad-scale environmental context
@@ -3704,6 +3681,8 @@ slots:
     slot_uri: MIXS:0000012
     range: ControlledIdentifiedTermValue
     multivalued: false
+    examples:
+      - value: oceanic epipelagic zone biome [ENVO:01000035]
   env_local_scale:
     annotations:
       expected_value:
@@ -3712,8 +3691,6 @@ slots:
       tooltip: The specific environmental entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
     description: 'Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
     title: local environmental context
-    examples:
-      - value: 'litter layer [ENVO:01000338]; Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336].'
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - local environmental context
@@ -3722,6 +3699,8 @@ slots:
     slot_uri: MIXS:0000013
     range: ControlledIdentifiedTermValue
     multivalued: false
+    examples:
+      - value: litter layer [ENVO:01000338]
   env_medium:
     annotations:
       expected_value:
@@ -3730,8 +3709,6 @@ slots:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).'
     title: environmental medium
-    examples:
-      - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - environmental medium
@@ -3740,6 +3717,8 @@ slots:
     slot_uri: MIXS:0000014
     range: ControlledIdentifiedTermValue
     multivalued: false
+    examples:
+      - value: soil [ENVO:00001998]
   escalator:
     annotations:
       expected_value:
@@ -4955,8 +4934,6 @@ slots:
         value: '1'
     description: Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon
     title: host body product
-    examples:
-      - value: Portion of mucus [fma66938]
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - host body product
@@ -4965,6 +4942,8 @@ slots:
     slot_uri: MIXS:0000888
     range: ControlledTermValue
     multivalued: false
+    examples:
+      - value: mucus [UBERON:0000912]
   host_body_site:
     annotations:
       expected_value:
