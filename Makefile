@@ -88,20 +88,25 @@ prefixmaps:
 	@mkdir -p $(DEST)/prefixmap
 	$(RUN) gen-prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
 
+pydantic:
+	@mkdir -p $(DEST)/pydantic
+	$(RUN) gen-pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc-pydantic.py
+
 # Note: `all` is an alias for `site`.
 all: site
 site: clean site-clean gen-project gendoc \
 nmdc_schema/gold-to-mixs.sssom.tsv \
 nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml \
 migration-doctests \
-prefixmaps
+prefixmaps \
+pydantic
 
 %.yaml: gen-project
 
 # was deploy: all mkd-gh-deploy
 deploy: gendoc mkd-gh-deploy
 
-gen-project: $(PYMODEL) prefixmaps # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
+gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
 	$(RUN) gen-project \
 		--exclude excel \
 		--exclude graphql \
@@ -117,7 +122,7 @@ gen-project: $(PYMODEL) prefixmaps # depends on src/schema/mixs.yaml # can be nu
 		--include python \
 		--include rdf \
 		--config-file gen-project-config.yaml \
-		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc-pydantic.py
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
@@ -244,6 +249,8 @@ site-clean: clean
 
 
 squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+	rm -rf $(PYMODEL)/nmdc.py
+	rm -rf $(PYMODEL)/nmdc-pydantic.py
 	mkdir project
 	rm -rf local/biosample_slots_ranges_report.tsv
 

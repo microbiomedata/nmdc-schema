@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-11-13T01:04:03
+# Generation date: 2024-11-20T18:20:40
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
