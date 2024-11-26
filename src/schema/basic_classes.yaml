@@ -305,10 +305,6 @@ classes:
         structured_pattern:
           syntax: "^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
-      in_manifest:
-        structured_pattern:
-          syntax: "^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
-          interpolated: true
   
   DataGeneration:
     class_uri: nmdc:DataGeneration
