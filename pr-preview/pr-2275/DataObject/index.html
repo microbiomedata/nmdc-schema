@@ -553,11 +553,6 @@ slot_usage:
     structured_pattern:
       syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
       interpolated: true
-  in_manifest:
-    name: in_manifest
-    structured_pattern:
-      syntax: ^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$
-      interpolated: true
 class_uri: nmdc:DataObject
 
 </code></pre>
@@ -588,11 +583,6 @@ slot_usage:
     name: was_generated_by
     structured_pattern:
       syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
-      interpolated: true
-  in_manifest:
-    name: in_manifest
-    structured_pattern:
-      syntax: ^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$
       interpolated: true
 attributes:
   compression_type:
@@ -716,9 +706,6 @@ attributes:
     - DataObject
     range: Manifest
     multivalued: true
-    structured_pattern:
-      syntax: ^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$
-      interpolated: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
