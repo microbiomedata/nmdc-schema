@@ -313,7 +313,7 @@ classes:
 slots:
 
   metaproteomics_analysis_category:
-    range: MetaProteomicsAnalysisCategoryEnum
+    range: MetaproteomicsAnalysisCategoryEnum
     description: >-
       The category of metaproteomics analysis being performed.
     required: true
@@ -563,7 +563,7 @@ slots:
     inlined_as_list: true
 
 enums:
-  MetaProteomicsAnalysisCategoryEnum:
+  MetaproteomicsAnalysisCategoryEnum:
     description: The category of metaproteomics analysis being performed.
     permissible_values:
       matched_metagenome:
