@@ -14,17 +14,17 @@ class Migrator(MigratorBase):
 
     def set_metap_analysis_category(self, workflow: dict) -> dict:
         r"""
-        If the workflow execution records is of the type "nmdc:MetaprotemicsAnalysis", 
+        If the workflow execution records is of the type "nmdc:MetaproteomicsAnalysis", 
         add field `metaproteomics_analysis_category` and assign it the value "matched_metagenome".
 
         >>> m = Migrator()
-        >>> m.set_metap_analysis_category({'id': 123, 'type': 'nmdc:MetaprotemicsAnalysis'})  # field doesn't exist yet
-        {'id': 123, 'type': 'nmdc:MetaprotemicsAnalysis', 'metaproteomics_analysis_category': 'matched_metagenome'}
+        >>> m.set_metap_analysis_category({'id': 123, 'type': 'nmdc:MetaproteomicsAnalysis'})  # field doesn't exist yet
+        {'id': 123, 'type': 'nmdc:MetaproteomicsAnalysis', 'metaproteomics_analysis_category': 'matched_metagenome'}
         >>> m.set_metap_analysis_category({'id': 123, 'type': 'nmdc:MetabolomicsAnalysis'})  # not a metaproteomics analysis
         {'id': 123, 'type': 'nmdc:MetabolomicsAnalysis'}
         """
 
-        if workflow["type"] == "nmdc:MetaprotemicsAnalysis":
+        if workflow["type"] == "nmdc:MetaproteomicsAnalysis":
             if "metaproteomics_analysis_category" not in workflow:
                 workflow["metaproteomics_analysis_category"] = "matched_metagenome"
         return workflow
