@@ -1,0 +1,15 @@
+id: nmdc:omprc-11-pf500b03
+name: Terrestrial soil microbial communities - BONA_009-O-20210707-COMP
+has_input:
+- nmdc:procsm-11-275kn883
+gold_sequencing_project_identifiers:
+- gold:Gp0704888
+processing_institution: Azenta
+type: nmdc:NucleotideSequencing
+insdc_bioproject_identifiers:
+- bioproject:PRJNA1029070
+analyte_category: metagenome
+associated_studies:
+- nmdc:sty-11-34xj1150
+instrument_used:
+- nmdc:inst-14-mr4r2w09

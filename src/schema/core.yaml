@@ -37,7 +37,17 @@ default_prefix: nmdc
 default_range: string
 
 enums:
-
+  BinQualityEnum:
+    permissible_values:
+      HQ:
+        aliases: high quality
+        description: Metagenome-assembled genome is high quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
+      MQ:
+        aliases: medium quality
+        description: Metagenome-assembled genome is medium quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
+      LQ:
+        aliases: low quality
+        description: Metagenome-assembled genome is low quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
   ChemicalConversionCategoryEnum:
     permissible_values:
       addition:
@@ -1314,6 +1324,7 @@ classes:
       - peptide_sequence
       - peptide_spectral_count
       - peptide_sum_masic_abundance
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
 
   ProteinQuantification:
     class_uri: nmdc:ProteinQuantification
@@ -1325,11 +1336,7 @@ classes:
       - protein_spectral_count
       - protein_sum_masic_abundance
       - type
-    slot_usage:
-      best_protein:
-        description: the specific protein identifier most correctly grouped to its associated peptide sequences
-      all_proteins:
-        description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
 
   ChemicalEntity:
     class_uri: nmdc:ChemicalEntity
@@ -1626,47 +1633,112 @@ slots:
 
   total_bases:
     range: integer
-    todos:
-      - this slot needs some basic textual annotations and constraints
+    minimum_value: 0
+    description: Total number of basepairs.
   members_id:
     range: string
     multivalued: true
-    todos:
-      - this slot needs some basic textual annotations and constraints
+    description: Names of the contigs that make up a metagenome-assembled genome.
+    close_mappings:
+      - GENEPIO:0100596
   bin_name:
     range: string
+    required: true
+    description: Name of the metagenome-assembled genome.
   number_of_contig:
+    description: Number of contigs
+    exact_mappings:
+      - GENEPIO:0000093
     range: integer
+    minimum_value: 0
   completeness:
+    description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
+    minimum_value: 0
   contamination:
+    description: Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.
     range: float
+    minimum_value: 0
   gene_count:
     range: integer
+    description: Number of genes.
+    minimum_value: 0
   bin_quality:
-    range: string
+    description: The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893).
+    range: BinQualityEnum
   num_16s:
+    description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
     range: integer
+    minimum_value: 0
+    broad_mappings:
+      - NCIT:C105370
   num_5s:
+    description: Number of 5s seqeuences detected, a subunit of ribosomes.
     range: integer
+    minimum_value: 0
+    broad_mappings:
+      - OMIT:0013248
   num_23s:
+    description: Number of 23 seqeuences detected, a subunit of ribosomes.
+    minimum_value: 0
     range: integer
+    broad_mappings:
+      - OMIT:0013245
   num_t_rna:
+    description: Number of transfer transfer RNAs.
+    minimum_value: 0
     range: integer
+    broad_mappings:
+      - NCIT:C816
   gtdbtk_domain:
+    description: Taxonomic domain assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:superkingdom
   gtdbtk_phylum:
+    description: Taxonomic phylum assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:phylum
   gtdbtk_class:
+    description: Taxonomic class assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:class
   gtdbtk_order:
+    description: Taxonomic order assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:order
   gtdbtk_family:
+    description: Taxonomic family assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:family
   gtdbtk_genus:
     range: string
+    description: Taxonomic genus assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+      - NCBITaxon:genus
   gtdbtk_species:
+    description: Taxonomic genus assigned by GTDB-Tk.
+    see_also: 
+      - https://doi.org/10.1093/bioinformatics/btz848
     range: string
+    exact_mappings:
+      - NCBITaxon:species
 
   highest_similarity_score:
     todos:
@@ -1681,24 +1753,29 @@ slots:
     description: the list of protein identifiers that are associated with the peptide sequence
     range: GeneProduct
     multivalued: true
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   best_protein:
     description: the specific protein identifier most correctly associated with the peptide sequence
     range: GeneProduct
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   min_q_value:
     description: smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
     range: float
     see_also:
       - OBI:0001442
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   peptide_sequence:
     range: string
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   peptide_spectral_count:
     description: sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
     range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   peptide_sum_masic_abundance:
     description: >-
       combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool
     range: integer
-
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   chemical_formula:
     description: A generic grouping for molecular formulae and empirical formulae
     range: string
@@ -1712,13 +1789,16 @@ slots:
   peptide_sequence_count:
     description: count of peptide sequences grouped to the best_protein
     range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   protein_spectral_count:
     description: sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
     range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   protein_sum_masic_abundance:
     description: >-
       combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool
     range: integer
+    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
   smiles:
     description: >-
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.

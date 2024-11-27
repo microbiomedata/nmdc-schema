@@ -84,19 +84,29 @@ update-linkml:
 create-data-harmonizer:
 	npm init data-harmonizer $(SOURCE_SCHEMA_PATH)
 
+prefixmaps:
+	@mkdir -p $(DEST)/prefixmap
+	$(RUN) gen-prefix-map nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/prefixmap/nmdc-prefix-map.json
+
+pydantic:
+	@mkdir -p $(DEST)/pydantic
+	$(RUN) gen-pydantic nmdc_schema/nmdc_materialized_patterns.yaml > $(DEST)/pydantic/nmdc-pydantic.py
+
 # Note: `all` is an alias for `site`.
 all: site
 site: clean site-clean gen-project gendoc \
 nmdc_schema/gold-to-mixs.sssom.tsv \
 nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml \
-migration-doctests
+migration-doctests \
+prefixmaps \
+pydantic
 
 %.yaml: gen-project
 
 # was deploy: all mkd-gh-deploy
 deploy: gendoc mkd-gh-deploy
 
-gen-project: $(PYMODEL) # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
+gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # can be nuked with mixs-yaml-clean
 	$(RUN) gen-project \
 		--exclude excel \
 		--exclude graphql \
@@ -112,8 +122,9 @@ gen-project: $(PYMODEL) # depends on src/schema/mixs.yaml # can be nuked with mi
 		--include python \
 		--include rdf \
 		--config-file gen-project-config.yaml \
-		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL)
+		-d $(DEST) $(SOURCE_SCHEMA_PATH) && mv $(DEST)/*.py $(PYMODEL) && cp $(DEST)/pydantic/*.py $(PYMODEL)/nmdc-pydantic.py
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
+
 
 test: examples-clean site test-python migration-doctests examples/output
 only-test: examples-clean test-python migration-doctests examples/output
@@ -155,14 +166,24 @@ $(PYMODEL):
 $(DOCDIR):
 	mkdir -p $@
 
-gendoc: $(DOCDIR)
-	# added copying of images and renaming of TEMP.md
-	cp $(SRC)/docs/*md $(DOCDIR) ; \
-	cp -r $(SRC)/docs/images $(DOCDIR) ; \
+# Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
+#
+# Then, use `refgraph` (part of `refscan`) to generate a diagram (i.e. a graph that depicts
+# inter-collection relationships) in the documentation website's file tree.
+gendoc: $(DOCDIR) prefixmaps
+	# Copy all documentation files to the documentation directory
+	cp -rf $(SRC)/docs/* $(DOCDIR)
+	# Added copying of images and renaming of TEMP.md
+	cp $(SRC)/docs/*md $(DOCDIR)
+	cp -r $(SRC)/docs/images $(DOCDIR)
+	# Generate documentation using the gen-doc command
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
+	# Create directory for JavaScript files and copy them
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
-
+	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
+	mkdir -p $(DOCDIR)/visualizations
+	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
 testdoc: gendoc serve
 
 MKDOCS = $(RUN) mkdocs
@@ -228,6 +249,8 @@ site-clean: clean
 
 
 squeaky-clean: clean examples-clean rdf-clean shuttle-clean site-clean # does not include mixs-yaml-clean
+	rm -rf $(PYMODEL)/nmdc.py
+	rm -rf $(PYMODEL)/nmdc-pydantic.py
 	mkdir project
 	rm -rf local/biosample_slots_ranges_report.tsv
 

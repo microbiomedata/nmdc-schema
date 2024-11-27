@@ -25,7 +25,7 @@ class TestMongoAdapter(unittest.TestCase):
     You can start up a containerized MongoDB server like this:
     $ docker run --rm --detach --name mongo-test-nmdc-schema -p 27017:27017 mongo
 
-    One that's running, other containers will be able to access it via:
+    Once that's running, other containers will be able to access it via:
     - host.docker.internal:27017
 
     You can run these tests like this:
@@ -263,13 +263,35 @@ class TestMongoAdapter(unittest.TestCase):
         adapter.set_field_of_each_document(collection_name, "x", "new")
 
         # Validate result:
-        collection = self.db[collection_name]
+        collection = self.db.get_collection(collection_name)
         assert collection.count_documents({"x": "original"}) == 0
         assert collection.count_documents({"x": {"$exists": False}}) == 0
         assert collection.count_documents({"x": None}) == 0
         assert collection.count_documents({"_id": 1, "id": 1, "x": "new"}) == 1
         assert collection.count_documents({"_id": 2, "id": 2, "x": "new"}) == 1
         assert collection.count_documents({"_id": 3, "id": 3, "x": "new"}) == 1
+
+    def test_remove_field_of_each_document(self):
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(_id=1, id=1, x="original")
+        document_2 = dict(_id=2, id=2)
+        document_3 = dict(_id=3, id=3, x=None)
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3]
+        )
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        adapter.remove_field_from_each_document(collection_name, "x")
+
+        # Validate result:
+        collection = self.db.get_collection(collection_name)
+        assert collection.count_documents({"x": {"$exists": True}}) == 0
+        assert collection.count_documents({"_id": 1, "id": 1}) == 1
+        assert collection.count_documents({"_id": 2, "id": 2}) == 1
+        assert collection.count_documents({"_id": 3, "id": 3}) == 1
 
     def test_do_for_each_document(self):
         # Set up:
@@ -309,6 +331,34 @@ class TestMongoAdapter(unittest.TestCase):
 
         # Clean up:
         delattr(self, "_characters")
+
+    def test_copy_value_from_field_to_field_in_each_document(self):
+        # Set up:
+        collection_name = "my_collection"
+        document_1 = dict(_id=1, id=1, x="a")
+        document_2 = dict(_id=2, id=2, x=None)
+        document_3 = dict(_id=3, id=3)
+        document_4 = dict(_id=4, id=4, x="a", y="b")
+        document_5 = dict(_id=5, id=5, x="a", y=None)
+        self.db.create_collection(collection_name)
+        self.db.get_collection(collection_name).insert_many(
+            [document_1, document_2, document_3, document_4, document_5]
+        )
+
+        # Invoke function-under-test:
+        adapter = MongoAdapter(database=self.db)
+        adapter.copy_value_from_field_to_field_in_each_document(
+            collection_name, "x", "y"
+        )
+
+        # Validate result:
+        collection = self.db.get_collection(collection_name)
+        assert collection.count_documents({}) == 5
+        assert collection.count_documents({"_id": 1, "id": 1, "x": "a", "y": "a"}) == 1
+        assert collection.count_documents({"_id": 2, "id": 2, "x": None, "y": None}) == 1
+        assert collection.count_documents({"_id": 3, "id": 3}) == 1
+        assert collection.count_documents({"_id": 4, "id": 4, "x": "a", "y": "a"}) == 1
+        assert collection.count_documents({"_id": 5, "id": 5, "x": "a", "y": "a"}) == 1
 
     def test_callbacks(self):
         # Set up:

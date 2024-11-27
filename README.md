@@ -1,6 +1,6 @@
-<p align="center">
-    <img src="https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/images/nmdc_logo_long.jpeg" width="119" height="40"/>
-</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/images/nmdc_logo_long.jpeg" width="119" height="40" alt="Long NMDC logo"/>
+</div>
 
 # National Microbiome Data Collaborative Schema
 

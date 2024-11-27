@@ -598,8 +598,12 @@ enums:
     permissible_values:
       female: {}
       hermaphrodite: {}
+      non-binary: {}
       male: {}
-      neuter: {}
+      transgender: {}
+      transgender (female to male): {}
+      transgender (male to female): {}
+      undeclared: {}
   indoor_space_enum:
     from_schema: http://w3id.org/mixs/terms
     permissible_values:
@@ -1190,6 +1194,23 @@ enums:
       top: {}
       low: {}
       high: {}
+  TargetGeneEnum:
+    permissible_values:
+      16S_rRNA:
+        description: the small subunit of the bacterial/archean ribosome
+        aliases:
+          - 16S rRNA
+          - 16S ribosomal RNA
+        narrow_mappings:
+          - OBI:0002763
+      23S_rRNA:
+        aliases:
+          - 23S rRNA
+          - 23S ribosomal RNA
+        description: the large subunit  of the bacterial/archean ribosome
+      28S_rRNA:
+        aliases: -28S rRNA - 28S ribosomal RNA
+        description: the large subunit of the eukaryotic ribosome
 slots:
   abs_air_humidity:
     annotations:
@@ -1333,6 +1354,9 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit};{timestamp}'
     slot_uri: MIXS:0000639
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: true
     inlined_as_list: true
@@ -1426,6 +1450,8 @@ slots:
       - extreme_unusual_properties/Al saturation
     is_a: core field
     slot_uri: MIXS:0000607
+    domain_of:
+      - soil
     range: QuantityValue
     multivalued: false
   al_sat_meth:
@@ -1446,6 +1472,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000324
+    domain_of:
+      - soil
     range: TextValue
     multivalued: false
   alkalinity:
@@ -1526,31 +1554,6 @@ slots:
       - altitude
     is_a: environment field
     slot_uri: MIXS:0000094
-    domain_of:
-      - agriculture
-      - air
-      - built environment
-      - core
-      - food-animal and animal feed
-      - food-farm environment
-      - food-food production facility
-      - food-human foods
-      - host-associated
-      - human-associated
-      - human-gut
-      - human-oral
-      - human-skin
-      - human-vaginal
-      - hydrocarbon resources-cores
-      - hydrocarbon resources-fluids_swabs
-      - microbial mat_biofilm
-      - miscellaneous natural or artificial environment
-      - plant-associated
-      - sediment
-      - soil
-      - symbiont-associated
-      - wastewater_sludge
-      - water
     range: QuantityValue
     multivalued: false
   aminopept_act:
@@ -1659,6 +1662,9 @@ slots:
       - mean annual precipitation
     is_a: core field
     slot_uri: MIXS:0000644
+    domain_of:
+      - agriculture
+      - soil
     range: QuantityValue
     multivalued: false
   annual_temp:
@@ -1681,6 +1687,9 @@ slots:
       - mean annual temperature
     is_a: core field
     slot_uri: MIXS:0000642
+    domain_of:
+      - agriculture
+      - soil
     range: QuantityValue
     multivalued: false
   antibiotic_regm:
@@ -2848,6 +2857,42 @@ slots:
       - collection date
     is_a: environment field
     slot_uri: MIXS:0000011
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: TimestampValue
     multivalued: false
   conduc:
@@ -2909,6 +2954,10 @@ slots:
     is_a: core field
     string_serialization: '{boolean};{Rn/start_time/end_time/duration}'
     slot_uri: MIXS:0000318
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: TextValue
     multivalued: false
   cult_root_med:
@@ -2948,6 +2997,9 @@ slots:
       - current land use
     is_a: core field
     slot_uri: MIXS:0001080
+    domain_of:
+      - agriculture
+      - soil
     range: cur_land_use_enum
     multivalued: false
   cur_vegetation:
@@ -2968,6 +3020,9 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000312
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   cur_vegetation_meth:
@@ -2988,6 +3043,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000314
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   date_last_rain:
@@ -3064,6 +3122,31 @@ slots:
       - depth
     is_a: environment field
     slot_uri: MIXS:0000018
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: QuantityValue
     multivalued: false
   dew_point:
@@ -3584,6 +3667,9 @@ slots:
       - drainage classification
     is_a: core field
     slot_uri: MIXS:0001085
+    domain_of:
+      - agriculture
+      - soil
     range: drainage_class_enum
     multivalued: false
   drawings:
@@ -3641,6 +3727,31 @@ slots:
       - elevation
     is_a: environment field
     slot_uri: MIXS:0000093
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: float
     multivalued: false
   elevator:
@@ -3694,16 +3805,52 @@ slots:
       tooltip: The biome or major environmental system where the sample or specimen originated. Choose values from subclasses of the 'biome' class [ENVO:00000428] in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe the broad anatomical or morphological context
     description: 'Report the major environmental system the sample or specimen came from. The system(s) identified should have a coarse spatial grain, to provide the general environmental context of where the sampling was done (e.g. in the desert or a rainforest). We recommend using subclasses of EnvO’s biome class:  http://purl.obolibrary.org/obo/ENVO_00000428. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: broad-scale environmental context
-    examples:
-      - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water sample from the photic zone in middle of the Atlantic Ocean
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - broad-scale environmental context
     is_a: environment field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000012
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: ControlledIdentifiedTermValue
     multivalued: false
+    examples:
+      - value: oceanic epipelagic zone biome [ENVO:01000035]
   env_local_scale:
     annotations:
       expected_value:
@@ -3712,16 +3859,52 @@ slots:
       tooltip: The specific environmental entities or features near the sample or specimen that significantly influence its characteristics or composition. These entities are typically smaller in scale than the broad environmental context. Values for this field should be countable, material nouns and must be chosen from subclasses of BFO:0000040 (material entity) that appear in the Environment Ontology (ENVO). For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to describe specific anatomical structures or plant parts.
     description: 'Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
     title: local environmental context
-    examples:
-      - value: 'litter layer [ENVO:01000338]; Annotating a pooled sample taken from various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub layer [ENVO:01000336].'
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - local environmental context
     is_a: environment field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000013
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: ControlledIdentifiedTermValue
     multivalued: false
+    examples:
+      - value: litter layer [ENVO:01000338]
   env_medium:
     annotations:
       expected_value:
@@ -3730,16 +3913,52 @@ slots:
       tooltip: The predominant environmental material or substrate that directly surrounds or hosts the sample or specimen at the time of sampling. Choose values from subclasses of the 'environmental material' class [ENVO:00010483] in the Environment Ontology (ENVO). Values for this field should be measurable or mass material nouns, representing continuous environmental materials. For host-associated or plant-associated samples, use terms from the UBERON or Plant Ontology to indicate a tissue, organ, or plant structure
     description: 'Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of ''environmental material'' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).'
     title: environmental medium
-    examples:
-      - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - environmental medium
     is_a: environment field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000014
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: ControlledIdentifiedTermValue
     multivalued: false
+    examples:
+      - value: soil [ENVO:00001998]
   escalator:
     annotations:
       expected_value:
@@ -3837,6 +4056,19 @@ slots:
     is_a: investigation field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000008
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: ControlledTermValue
     multivalued: false
   ext_door:
@@ -3913,6 +4145,9 @@ slots:
       - history/extreme events
     is_a: core field
     slot_uri: MIXS:0000320
+    domain_of:
+      - agriculture
+      - soil
     range: string
     multivalued: false
   fao_class:
@@ -3932,6 +4167,9 @@ slots:
       - soil_taxonomic/FAO classification
     is_a: core field
     slot_uri: MIXS:0001083
+    domain_of:
+      - agriculture
+      - soil
     range: fao_class_enum
     multivalued: false
   fertilizer_regm:
@@ -4014,6 +4252,9 @@ slots:
       - history/fire
     is_a: core field
     slot_uri: MIXS:0001086
+    domain_of:
+      - agriculture
+      - soil
     range: string
     multivalued: false
   fireplace_type:
@@ -4053,6 +4294,9 @@ slots:
       - history/flooding
     is_a: core field
     slot_uri: MIXS:0000319
+    domain_of:
+      - agriculture
+      - soil
     range: string
     multivalued: false
   floor_age:
@@ -4421,6 +4665,42 @@ slots:
     is_a: environment field
     string_serialization: '{term}: {term}, {text}'
     slot_uri: MIXS:0000010
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: TextValue
     multivalued: false
   glucosidase_act:
@@ -4813,6 +5093,8 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000652
+    domain_of:
+      - soil
     range: TextValue
     multivalued: true
     inlined_as_list: true
@@ -4834,6 +5116,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000343
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
     inlined_as_list: true
@@ -4901,6 +5186,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000321
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   host_age:
@@ -4955,8 +5243,6 @@ slots:
         value: '1'
     description: Substance produced by the body, e.g. Stool, mucus, where the sample was obtained from. For foundational model of anatomy ontology (fma) or Uber-anatomy ontology (UBERON) terms, please see https://www.ebi.ac.uk/ols/ontologies/fma or https://www.ebi.ac.uk/ols/ontologies/uberon
     title: host body product
-    examples:
-      - value: Portion of mucus [fma66938]
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - host body product
@@ -4965,6 +5251,8 @@ slots:
     slot_uri: MIXS:0000888
     range: ControlledTermValue
     multivalued: false
+    examples:
+      - value: mucus [UBERON:0000912]
   host_body_site:
     annotations:
       expected_value:
@@ -5700,6 +5988,42 @@ slots:
     is_a: environment field
     string_serialization: '{float} {float}'
     slot_uri: MIXS:0000009
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: GeolocationValue
     multivalued: false
   light_intensity:
@@ -5784,6 +6108,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000340
+    domain_of:
+      - soil
     range: TextValue
     multivalued: false
   link_class_info:
@@ -5804,6 +6130,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000329
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   link_climate_info:
@@ -5824,6 +6153,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000328
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   lithology:
@@ -5863,6 +6195,9 @@ slots:
     is_a: core field
     string_serialization: '{text}'
     slot_uri: MIXS:0000330
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   local_class_meth:
@@ -5883,6 +6218,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000331
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   magnesium:
@@ -6050,6 +6388,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000339
+    domain_of:
+      - soil
     range: string
     multivalued: false
   microbial_biomass:
@@ -6072,6 +6412,9 @@ slots:
       - microbial biomass
     is_a: core field
     slot_uri: MIXS:0000650
+    domain_of:
+      - agriculture
+      - soil
     range: QuantityValue
     multivalued: false
   mineral_nutr_regm:
@@ -6116,6 +6459,29 @@ slots:
     is_a: core field
     string_serialization: '{text};{float} {unit}'
     slot_uri: MIXS:0000752
+    domain_of:
+      - agriculture
+      - air
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: TextValue
     multivalued: true
     inlined_as_list: true
@@ -6247,6 +6613,19 @@ slots:
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000038
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: TextValue
     multivalued: false
   nucl_acid_ext:
@@ -6264,6 +6643,19 @@ slots:
     is_a: sequencing field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000037
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: TextValue
     multivalued: false
   number_pets:
@@ -6445,6 +6837,12 @@ slots:
       - organic matter
     is_a: core field
     slot_uri: MIXS:0000204
+    domain_of:
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - sediment
+      - soil
+      - water
     range: QuantityValue
     multivalued: false
   org_nitro:
@@ -6467,6 +6865,12 @@ slots:
       - organic nitrogen
     is_a: core field
     slot_uri: MIXS:0000205
+    domain_of:
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - sediment
+      - soil
+      - water
     range: QuantityValue
     multivalued: false
   org_particles:
@@ -6788,6 +7192,16 @@ slots:
       - pH
     is_a: core field
     slot_uri: MIXS:0001001
+    domain_of:
+      - food-farm environment
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - sediment
+      - soil
+      - wastewater_sludge
+      - water
     range: double
     multivalued: false
   ph_meth:
@@ -6808,6 +7222,10 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0001106
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: TextValue
     multivalued: false
   ph_regm:
@@ -7043,6 +7461,12 @@ slots:
     is_a: core field
     string_serialization: '{boolean};{integer}'
     slot_uri: MIXS:0000325
+    domain_of:
+      - agriculture
+      - food-animal and animal feed
+      - food-food production facility
+      - food-human foods
+      - soil
     range: TextValue
     multivalued: false
   porosity:
@@ -7192,6 +7616,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000316
+    domain_of:
+      - soil
     range: string
     multivalued: false
   previous_land_use:
@@ -7212,6 +7638,10 @@ slots:
     is_a: core field
     string_serialization: '{text};{timestamp}'
     slot_uri: MIXS:0000315
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: TextValue
     multivalued: false
   primary_prod:
@@ -7314,6 +7744,9 @@ slots:
       - profile position
     is_a: core field
     slot_uri: MIXS:0001084
+    domain_of:
+      - agriculture
+      - soil
     range: profile_position_enum
     multivalued: false
   quad_pos:
@@ -8110,6 +8543,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000341
+    domain_of:
+      - food-farm environment
+      - soil
     range: TextValue
     multivalued: false
   salt_regm:
@@ -8170,6 +8606,19 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000002
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: string
     multivalued: false
   samp_collec_method:
@@ -8187,6 +8636,19 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{PMID}|{DOI}|{URL}|{text}'
     slot_uri: MIXS:0001225
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: string
     multivalued: false
   samp_collect_point:
@@ -8284,6 +8746,19 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{text}'
     slot_uri: MIXS:0000016
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: ControlledTermValue
     multivalued: false
   samp_md:
@@ -8323,6 +8798,19 @@ slots:
     is_a: investigation field
     string_serialization: '{text}'
     slot_uri: MIXS:0001107
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: string
     multivalued: false
   samp_preserv:
@@ -8384,6 +8872,19 @@ slots:
       - amount or size of sample collected
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000001
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: QuantityValue
     multivalued: false
   samp_sort_meth:
@@ -8500,6 +9001,19 @@ slots:
       - Taxonomy ID of DNA sample
     is_a: investigation field
     slot_uri: MIXS:0001320
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: ControlledIdentifiedTermValue
     multivalued: false
     comments:
@@ -8609,6 +9123,19 @@ slots:
       - sample volume or weight for DNA extraction
     is_a: nucleic acid sequence source field
     slot_uri: MIXS:0000111
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: QuantityValue
     multivalued: false
   samp_weather:
@@ -8734,6 +9261,10 @@ slots:
       - mean seasonal precipitation
     is_a: core field
     slot_uri: MIXS:0000645
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: QuantityValue
     multivalued: false
   season_temp:
@@ -8756,6 +9287,10 @@ slots:
       - mean seasonal temperature
     is_a: core field
     slot_uri: MIXS:0000643
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: QuantityValue
     multivalued: false
   season_use:
@@ -8831,6 +9366,19 @@ slots:
     is_a: sequencing field
     string_serialization: '{termLabel} {[termID]}|{text}'
     slot_uri: MIXS:0000050
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: TextValue
     multivalued: false
   seq_quality_check:
@@ -8986,6 +9534,9 @@ slots:
     is_a: core field
     string_serialization: '{{text}|{float} {unit}};{float} {unit}'
     slot_uri: MIXS:0000322
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   silicate:
@@ -9025,6 +9576,13 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{float}-{float} {unit}'
     slot_uri: MIXS:0000017
+    domain_of:
+      - MIMS
+      - MIMARKS specimen
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: TextValue
     multivalued: false
   size_frac_low:
@@ -9091,6 +9649,9 @@ slots:
       - slope aspect
     is_a: core field
     slot_uri: MIXS:0000647
+    domain_of:
+      - agriculture
+      - soil
     range: QuantityValue
     multivalued: false
   slope_gradient:
@@ -9113,6 +9674,9 @@ slots:
       - slope gradient
     is_a: core field
     slot_uri: MIXS:0000646
+    domain_of:
+      - agriculture
+      - soil
     range: QuantityValue
     multivalued: false
   sludge_retent_time:
@@ -9176,6 +9740,9 @@ slots:
       - soil horizon
     is_a: core field
     slot_uri: MIXS:0001082
+    domain_of:
+      - agriculture
+      - soil
     range: soil_horizon_enum
     multivalued: false
   soil_text_measure:
@@ -9195,6 +9762,8 @@ slots:
       - soil texture measurement
     is_a: core field
     slot_uri: MIXS:0000335
+    domain_of:
+      - soil
     range: QuantityValue
     multivalued: false
   soil_texture_meth:
@@ -9215,6 +9784,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000336
+    domain_of:
+      - food-farm environment
+      - soil
     range: string
     multivalued: false
   soil_type:
@@ -9235,6 +9807,10 @@ slots:
     is_a: core field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000332
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: TextValue
     multivalued: false
   soil_type_meth:
@@ -9255,6 +9831,10 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000334
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: TextValue
     multivalued: false
   solar_irradiance:
@@ -9364,6 +9944,19 @@ slots:
     is_a: nucleic acid sequence source field
     string_serialization: '{text}'
     slot_uri: MIXS:0000026
+    domain_of:
+      - MIGS eukaryote
+      - MIGS bacteria
+      - MIGS plant
+      - MIGS virus
+      - MIGS org
+      - MIMS
+      - MIMARKS specimen
+      - MIMARKS survey
+      - MISAG
+      - MIMAG
+      - MIUVIG
+      - core
     range: TextValue
     multivalued: false
   space_typ_state:
@@ -9542,6 +10135,9 @@ slots:
     is_a: core field
     string_serialization: '{text};{duration}'
     slot_uri: MIXS:0000327
+    domain_of:
+      - agriculture
+      - soil
     range: TextValue
     multivalued: false
   substructure_type:
@@ -9835,7 +10431,7 @@ slots:
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000044
-    range: TextValue
+    range: TargetGeneEnum
     multivalued: false
   target_subfragment:
     annotations:
@@ -9871,6 +10467,31 @@ slots:
       - temperature
     is_a: environment field
     slot_uri: MIXS:0000113
+    domain_of:
+      - agriculture
+      - air
+      - built environment
+      - core
+      - food-animal and animal feed
+      - food-farm environment
+      - food-food production facility
+      - food-human foods
+      - host-associated
+      - human-associated
+      - human-gut
+      - human-oral
+      - human-skin
+      - human-vaginal
+      - hydrocarbon resources-cores
+      - hydrocarbon resources-fluids_swabs
+      - microbial mat_biofilm
+      - miscellaneous natural or artificial environment
+      - plant-associated
+      - sediment
+      - soil
+      - symbiont-associated
+      - wastewater_sludge
+      - water
     range: QuantityValue
     multivalued: false
   temp_out:
@@ -9951,6 +10572,10 @@ slots:
       - history/tillage
     is_a: core field
     slot_uri: MIXS:0001081
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: tillage_enum
     multivalued: true
   tiss_cult_growth_med:
@@ -10145,6 +10770,9 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000338
+    domain_of:
+      - food-farm environment
+      - soil
     range: string
     multivalued: false
   tot_nitro_content:
@@ -10167,6 +10795,11 @@ slots:
       - total nitrogen content
     is_a: core field
     slot_uri: MIXS:0000530
+    domain_of:
+      - food-farm environment
+      - microbial mat_biofilm
+      - sediment
+      - soil
     range: QuantityValue
     multivalued: false
   tot_org_c_meth:
@@ -10187,6 +10820,10 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000337
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - soil
     range: TextValue
     multivalued: false
   tot_org_carb:
@@ -10209,6 +10846,12 @@ slots:
       - total organic carbon
     is_a: core field
     slot_uri: MIXS:0000533
+    domain_of:
+      - agriculture
+      - food-farm environment
+      - microbial mat_biofilm
+      - sediment
+      - soil
     range: QuantityValue
     multivalued: false
   tot_part_carb:
@@ -10812,6 +11455,8 @@ slots:
     is_a: core field
     string_serialization: '{PMID}|{DOI}|{URL}'
     slot_uri: MIXS:0000323
+    domain_of:
+      - soil
     range: string
     multivalued: false
   water_content:
@@ -10834,6 +11479,10 @@ slots:
       - water content
     is_a: core field
     slot_uri: MIXS:0000185
+    domain_of:
+      - microbial mat_biofilm
+      - sediment
+      - soil
     range: string
     multivalued: false
   water_current:
