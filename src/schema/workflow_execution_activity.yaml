@@ -313,12 +313,6 @@ slots:
   metagenome_assembly_parameter:
     abstract: true
 
-  has_peptide_quantifications:
-    range: PeptideQuantification
-    multivalued: true
-    inlined_as_list: true
-    deprecated: "not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250"
-
   asm_score:
     is_a: metagenome_assembly_parameter
     description: >-

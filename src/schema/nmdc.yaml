@@ -1056,13 +1056,6 @@ slots:
     range: ChromatographyConfiguration
     description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.
 
-  metagenome_annotation_id:
-    range: WorkflowExecution
-    description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
-    required: true
-    deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253"
-
-
   gene_function_id:
     range: uriorcurie
     description: The identifier for the gene function.
