@@ -13,11 +13,6 @@ prefixes:
   biolink: https://w3id.org/biolink/vocab/
   owl: http://www.w3.org/2002/07/owl#
 
-default_curi_maps:
-  - obo_context
-  - idot_context
-  - monarch_context
-  - semweb_context
 
 imports:
   - external_identifiers # in cycle with attribute_values
@@ -38,10 +33,9 @@ classes:
       - type
 
   OntologyClass:
-    aliases: ["OntologyClass"]
     class_uri: nmdc:OntologyClass
     description: >-
-      This class is used to represent ontology terms.
+      A representation of class defined in an external ontology.
     is_a: NamedThing
     slots:
       - alternative_names
