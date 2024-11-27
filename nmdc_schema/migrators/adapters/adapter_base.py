@@ -118,11 +118,35 @@ class AdapterBase(ABC):
         pass
 
     @abstractmethod
+    def remove_field_from_each_document(
+        self,
+        collection_name: str,
+        field_name: str,
+    ) -> None:
+        r"""
+        Removes the specified field from each document in the collection.
+        """
+        pass
+
+    @abstractmethod
     def do_for_each_document(
         self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
         r"""
         Passes each document in the specified collection to the specified function. This method was designed
         to facilitate iterating over all documents in a collection without actually modifying them.
+        """
+        pass
+
+    @abstractmethod
+    def copy_value_from_field_to_field_in_each_document(
+        self,
+        collection_name: str,
+        source_field_name: str,
+        destination_field_name: str,
+    ) -> None:
+        r"""
+        For each document in the collection that has the source field, copy the value of the source field
+        into the destination field, creating the destination field if it doesn't already exist.
         """
         pass

@@ -254,6 +254,19 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+  
+  Manifest:
+    is_a: InformationObject
+    class_uri: nmdc:Manifest
+    description: A qualified collection of DataObjects that can be analyzed together in the same experimental context.
+    comments:
+      - Manifest are currently uncoupled from other modelling. For example, there is no schema requirement that DataObjects in a fractions Manifest were all obtained by analyzing the same ProcessedSample.
+    slots:
+      - manifest_category
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
 
   CalibrationInformation:
       class_uri: nmdc:CalibrationInformation
@@ -300,15 +313,18 @@ classes:
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
-      - metagenome_annotation_id
+      - was_generated_by
       - gene_function_id
       - count
       - type
     slot_usage:
-      metagenome_annotation_id:
-        structured_pattern: # doesn't include act
-          syntax: "{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
+      was_generated_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        required: true
+      count: 
+          description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
 
   Database:
     class_uri: nmdc:Database
@@ -334,6 +350,7 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - instrument_set
+      - manifest_set
       - material_processing_set
       - processed_sample_set
       - protocol_execution_set
@@ -1033,9 +1050,8 @@ slots:
     range: WorkflowExecution
     description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
     required: true
-    any_of:
-      - range: MetagenomeAnnotation
-      - range: MetatranscriptomeAnnotation
+    deprecated: "not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253"
+
 
   gene_function_id:
     range: uriorcurie
@@ -1043,9 +1059,11 @@ slots:
     examples:
       - value: KEGG.ORTHOLOGY:K00627
     required: true
+
   count:
     range: integer
     required: true
+
   functional_annotation_agg:
     range: FunctionalAnnotationAggMember
     multivalued: true
@@ -1197,6 +1215,11 @@ slots:
     mixins: object_set
     range: Configuration
     description: This property links a database object to the set of configurations within it.
+
+  manifest_set:
+    mixins: object_set
+    range: Manifest
+    description: This property links a database object to the set of manifests within it.
 
   protocol_execution_set:
     mixins: object_set

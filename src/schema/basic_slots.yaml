@@ -422,10 +422,6 @@ slots:
         in the Workflow Chain
     range: AnalyteCategoryEnum
 
-  direct_infusion_category:
-    range: DirectInfusionEnum
-    description: used when a processed sample is introduced into a mass spectrometer without chromatographic separation
-
   type:
     required: true
     range: uriorcurie
@@ -1111,14 +1107,8 @@ enums:
       nom:
         aliases:
           - natural organic matter
-
-  DirectInfusionEnum:
-    permissible_values:
-      direct_infusion:
-        aliases:
-          - DI
-      autosampler: { }
-
+      amplicon_sequencing_assay:
+        meaning: OBI:0002767 
   ExtractionTargetEnum:
     permissible_values:
       DNA: { }
