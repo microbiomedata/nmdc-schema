@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-11-27T12:29:52
+# Generation date: 2024-11-27T12:35:41
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -51,7 +51,7 @@ EGGNOG = CurieNamespace('EGGNOG', 'https://bioregistry.io/eggnog:')
 ENVO = CurieNamespace('ENVO', 'http://purl.obolibrary.org/obo/ENVO_')
 FBCV = CurieNamespace('FBcv', 'http://purl.obolibrary.org/obo/FBcv_')
 FMA = CurieNamespace('FMA', 'http://purl.obolibrary.org/obo/FMA_')
-GENEPIO = CurieNamespace('GENEPIO', 'http://purl.obolibrary.org/obo/GENEPIO_')
+GENEPIO = CurieNamespace('GENEPIO', 'http://example.org/UNKNOWN/GENEPIO/')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HMDB = CurieNamespace('HMDB', 'https://bioregistry.io/hmdb:')
 ISA = CurieNamespace('ISA', 'http://example.org/isa/')
@@ -69,7 +69,7 @@ NCBI = CurieNamespace('NCBI', 'http://example.com/ncbitaxon/')
 NCBITAXON = CurieNamespace('NCBITaxon', 'http://purl.obolibrary.org/obo/NCBITaxon_')
 NCIT = CurieNamespace('NCIT', 'http://purl.obolibrary.org/obo/NCIT_')
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
-OMIT = CurieNamespace('OMIT', 'http://purl.obolibrary.org/obo/OMIT_')
+OMIT = CurieNamespace('OMIT', 'http://example.org/UNKNOWN/OMIT/')
 ORCID = CurieNamespace('ORCID', 'https://orcid.org/')
 PANTHER_FAMILY = CurieNamespace('PANTHER_FAMILY', 'https://bioregistry.io/panther.family:')
 PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
@@ -1351,7 +1351,7 @@ class GeneProduct(NamedThing):
 @dataclass(repr=False)
 class OntologyClass(NamedThing):
     """
-    This class is used to represent ontology terms.
+    A representation of class defined in an external ontology.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
