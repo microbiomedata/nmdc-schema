@@ -276,7 +276,8 @@ classes:
     unique_keys:
       samp_name_unique_key:
         unique_key_slots:
-          - samp_name # id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing
+          - samp_name # id is already required to be unique because it is the identifier
+                      # in Biosample's ancestor class, NamedThing (parent is MaterialEntity)
     is_a: Sample
     in_subset:
       - sample subset
