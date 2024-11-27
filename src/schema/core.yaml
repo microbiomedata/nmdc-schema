@@ -220,7 +220,7 @@ classes:
   Sample:
     class_uri: 'nmdc:Sample'
     description: A sample is a material entity that can be characterized by an experiment.
-    is_a: NamedThing
+    is_a: MaterialEntity
     abstract: true
 
 
@@ -1255,7 +1255,7 @@ classes:
 
   ProcessedSample:
     class_uri: nmdc:ProcessedSample
-    is_a: MaterialEntity
+    is_a: Sample
     title: Processed Sample
     slots:
       - biomaterial_purity
