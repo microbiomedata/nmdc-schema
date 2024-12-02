@@ -1,0 +1,56 @@
+data_generation_set:
+- id: nmdc:omprc-11-0003fm52
+  name: 1000S_WLUP_FTMS_SPE_BTM_1_run2_Fir_22Apr22_300SA_p01_149_1_3506
+  description: High resolution MS spectra only
+  has_input:
+  - nmdc:bsm-11-jht0ty76
+  has_output:
+  - nmdc:dobj-11-cp4p5602
+  processing_institution: EMSL
+  type: nmdc:MassSpectrometry
+  analyte_category: nom
+  associated_studies:
+  - nmdc:sty-11-28tm5d36
+  instrument_used:
+  - nmdc:inst-14-mwrrj632
+  eluent_introduction_category: direct_infusion_autosampler
+  end_date: '2022-04-25 14:01:57.000'
+  has_calibration: nmdc:calib-14-hhn3qb47
+  has_mass_spectrometry_configuration: nmdc:mscon-14-j5y11q51
+  mod_date: '2024-11-07T15:02:18'
+  start_date: '2022-04-25 13:48:27.000'
+calibration_set:
+- id: nmdc:calib-14-hhn3qb47
+  calibration_object: nmdc:dobj-14-1e9qeq49
+  name: Negative mode NOM reference calibration
+  description: Negative electrospray mode reference calibration for Natural Organic
+    Matter analysis
+  internal_calibration: false
+  calibration_target: mass_charge_ratio
+  type: nmdc:CalibrationInformation
+- id: nmdc:dobj-14-1e9qeq49
+  data_category: workflow_parameter_data
+  data_object_type: Reference Calibration File
+  file_size_bytes: 67316
+  md5_checksum: 2ef63544da2bbe6b703c3559f1d5ef2f
+  url: https://nmdcdemo.emsl.pnnl.gov/nom/reference_calibration_files/Hawkes_neg.ref
+  name: Hawkes_neg.ref
+  description: Natural organic matter negative electrospray mode reference calibration
+    file for Calibration object nmdc:calib-14-hhn3qb47
+  type: nmdc:DataObject
+workflow_execution_set:
+- id: nmdc:wfnom-11-zs6pnn44.1
+  started_at_time: '2024-03-10 23:25:16'
+  ended_at_time: '2024-03-10 23:25:16'
+  was_informed_by: nmdc:omprc-11-0003fm52
+  execution_resource: EMSL-RZR
+  git_url: https://github.com/microbiomedata/enviroMS
+  has_input:
+  - nmdc:dobj-11-cp4p5602
+  - nmdc:dobj-14-1e9qeq49
+  type: nmdc:NomAnalysis
+  has_output:
+  - nmdc:dobj-11-wkvtnj47
+  alternative_identifiers:
+  - nmdc:wfnom-11-zs6pnn44
+  
