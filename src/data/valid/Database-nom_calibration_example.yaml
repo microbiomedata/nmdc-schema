@@ -28,6 +28,7 @@ calibration_set:
   internal_calibration: false
   calibration_target: mass_charge_ratio
   type: nmdc:CalibrationInformation
+data_object_set:
 - id: nmdc:dobj-14-1e9qeq49
   data_category: workflow_parameter_data
   data_object_type: Reference Calibration File
