@@ -15,7 +15,6 @@ data_generation_set:
   - nmdc:inst-14-mwrrj632
   eluent_introduction_category: direct_infusion_autosampler
   end_date: '2022-04-25 14:01:57.000'
-  has_calibration: nmdc:calib-14-hhn3qb47
   has_mass_spectrometry_configuration: nmdc:mscon-14-j5y11q51
   mod_date: '2024-11-07T15:02:18'
   start_date: '2022-04-25 13:48:27.000'
