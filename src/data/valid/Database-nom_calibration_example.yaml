@@ -1,5 +1,5 @@
 data_generation_set:
-- id: nmdc:dgns-11-0003fm52
+- id: nmdc:dgms-11-0003fm52
   name: 1000S_WLUP_FTMS_SPE_BTM_1_run2_Fir_22Apr22_300SA_p01_149_1_3506
   description: High resolution MS spectra only
   has_input:
