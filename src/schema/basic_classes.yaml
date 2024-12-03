@@ -305,7 +305,6 @@ classes:
         structured_pattern:
           syntax: "^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
-
   DataGeneration:
     class_uri: nmdc:DataGeneration
     is_a: PlannedProcess
@@ -531,6 +530,9 @@ slots:
     description: one or more combinations of other DataObjects that can be analyzed together
     comments:
       - A DataObject can be part of multiple manifests, for example, a DataObject could be part of a manifest for a single run of an instrument and a manifest for technical replicates of a single sample.
+    structured_pattern:
+      syntax: "^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$"
+      interpolated: true  
 
   manifest_category:
     range: ManifestCategoryEnum
