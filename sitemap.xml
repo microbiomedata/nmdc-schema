@@ -657,6 +657,10 @@
          <lastmod>2024-12-03</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/OntologyRelation/</loc>
+         <lastmod>2024-12-03</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/OrganismCountEnum/</loc>
          <lastmod>2024-12-03</lastmod>
     </url>
@@ -1666,6 +1670,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/date_last_rain/</loc>
+         <lastmod>2024-12-03</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/definition/</loc>
          <lastmod>2024-12-03</lastmod>
     </url>
     <url>
@@ -3101,6 +3109,10 @@
          <lastmod>2024-12-03</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/object/</loc>
+         <lastmod>2024-12-03</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/object_set/</loc>
          <lastmod>2024-12-03</lastmod>
     </url>
@@ -3126,6 +3138,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/omics_type/</loc>
+         <lastmod>2024-12-03</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/ontology_class_set/</loc>
          <lastmod>2024-12-03</lastmod>
     </url>
     <url>
@@ -3329,6 +3345,10 @@
          <lastmod>2024-12-03</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/predicate/</loc>
+         <lastmod>2024-12-03</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/prefixes_curies_ids_mappings_etc/</loc>
          <lastmod>2024-12-03</lastmod>
     </url>
@@ -3474,6 +3494,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/related_identifiers/</loc>
+         <lastmod>2024-12-03</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/relations/</loc>
          <lastmod>2024-12-03</lastmod>
     </url>
     <url>
