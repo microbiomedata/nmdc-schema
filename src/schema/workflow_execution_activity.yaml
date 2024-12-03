@@ -568,7 +568,7 @@ enums:
     permissible_values:
       matched_metagenome:
         description: >-
-          A metaproteomics analysis that is matched to an experimental metagenome.
+          A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
       in_silico_metagenome:
         description: >-
           A metaproteomics analysis that is matched to an in silico generated metagenome.
