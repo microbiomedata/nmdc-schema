@@ -1327,7 +1327,6 @@ classes:
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slots:
-      - alternative_names
       - chemical_formula
       - inchi
       - inchi_key

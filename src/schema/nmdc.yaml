@@ -1148,6 +1148,13 @@ slots:
     description:
       This property links a database object to the set of chemical entities
       within it.
+  ontology_class_set:
+    mixins:
+      - object_set
+    range: OntologyClass
+    description:
+      This property links a database object to the set of ontology classes
+      within it.
   biosample_set:
     mixins: object_set
     range: Biosample
@@ -1257,6 +1264,7 @@ slots:
 
   completion_date:
     range: string
+
 
   container_size:
     range: QuantityValue

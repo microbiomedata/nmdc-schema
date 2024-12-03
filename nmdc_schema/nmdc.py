@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-11-20T18:20:40
+# Generation date: 2024-11-27T12:35:41
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -113,6 +113,7 @@ MY_EMSL = CurieNamespace('my_emsl', 'https://release.my.emsl.pnnl.gov/released_d
 NEON_IDENTIFIER = CurieNamespace('neon_identifier', 'http://example.org/neon/identifier/')
 NEON_SCHEMA = CurieNamespace('neon_schema', 'http://example.org/neon/schema/')
 NMDC = CurieNamespace('nmdc', 'https://w3id.org/nmdc/')
+OWL = CurieNamespace('owl', 'http://www.w3.org/2002/07/owl#')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUD = CurieNamespace('qud', 'http://qudt.org/1.1/schema/qudt#')
 RDF = CurieNamespace('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#')
@@ -1349,6 +1350,9 @@ class GeneProduct(NamedThing):
 
 @dataclass(repr=False)
 class OntologyClass(NamedThing):
+    """
+    A representation of class defined in an external ontology.
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["OntologyClass"]
@@ -1358,12 +1362,26 @@ class OntologyClass(NamedThing):
 
     id: Union[str, OntologyClassId] = None
     type: Union[str, URIorCURIE] = None
+    alternative_names: Optional[Union[str, List[str]]] = empty_list()
+    definition: Optional[str] = None
+    relations: Optional[Union[Union[dict, "OntologyRelation"], List[Union[dict, "OntologyRelation"]]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
             self.MissingRequiredField("id")
         if not isinstance(self.id, OntologyClassId):
             self.id = OntologyClassId(self.id)
+
+        if not isinstance(self.alternative_names, list):
+            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
+        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
+
+        if self.definition is not None and not isinstance(self.definition, str):
+            self.definition = str(self.definition)
+
+        if not isinstance(self.relations, list):
+            self.relations = [self.relations] if self.relations is not None else []
+        self.relations = [v if isinstance(v, OntologyRelation) else OntologyRelation(**as_dict(v)) for v in self.relations]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -1488,7 +1506,6 @@ class ChemicalEntity(OntologyClass):
 
     id: Union[str, ChemicalEntityId] = None
     type: Union[str, URIorCURIE] = None
-    alternative_names: Optional[Union[str, List[str]]] = empty_list()
     chemical_formula: Optional[str] = None
     inchi: Optional[str] = None
     inchi_key: Optional[str] = None
@@ -1499,10 +1516,6 @@ class ChemicalEntity(OntologyClass):
             self.MissingRequiredField("id")
         if not isinstance(self.id, ChemicalEntityId):
             self.id = ChemicalEntityId(self.id)
-
-        if not isinstance(self.alternative_names, list):
-            self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
-        self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
 
         if self.chemical_formula is not None and not isinstance(self.chemical_formula, str):
             self.chemical_formula = str(self.chemical_formula)
@@ -1521,6 +1534,51 @@ class ChemicalEntity(OntologyClass):
         if self._is_empty(self.type):
             self.MissingRequiredField("type")
         self.type = str(self.class_class_curie)
+
+
+@dataclass(repr=False)
+class OntologyRelation(YAMLRoot):
+    """
+    A relationship between two ontology classes as specified either directly in the ontology in the form of axioms
+    (statements or assertions that defines rules or constraints in an ontology) or inferred via reasoning. The
+    association object is defined by two terms (the subject and the object) and the relationship between them (the
+    predicate). Because ontologies often have a plethora of relationships/axiom types and can have additional metadata
+    on the relationship itself, these kinds of relationships are structured as a class instead of a simple set of
+    slots on OntologyClass itself.
+    """
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = NMDC["OntologyRelation"]
+    class_class_curie: ClassVar[str] = "nmdc:OntologyRelation"
+    class_name: ClassVar[str] = "OntologyRelation"
+    class_model_uri: ClassVar[URIRef] = NMDC.OntologyRelation
+
+    type: Union[str, URIorCURIE] = None
+    subject: Union[str, OntologyClassId] = None
+    predicate: Union[str, OntologyClassId] = None
+    object: Union[str, OntologyClassId] = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self._is_empty(self.type):
+            self.MissingRequiredField("type")
+        self.type = str(self.class_class_curie)
+
+        if self._is_empty(self.subject):
+            self.MissingRequiredField("subject")
+        if not isinstance(self.subject, OntologyClassId):
+            self.subject = OntologyClassId(self.subject)
+
+        if self._is_empty(self.predicate):
+            self.MissingRequiredField("predicate")
+        if not isinstance(self.predicate, OntologyClassId):
+            self.predicate = OntologyClassId(self.predicate)
+
+        if self._is_empty(self.object):
+            self.MissingRequiredField("object")
+        if not isinstance(self.object, OntologyClassId):
+            self.object = OntologyClassId(self.object)
+
+        super().__post_init__(**kwargs)
 
 
 @dataclass(repr=False)
@@ -5667,7 +5725,7 @@ class NucleotideSequencing(DataGeneration):
     insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     ncbi_project_name: Optional[str] = None
-    target_gene: Optional[Union[dict, TextValue]] = None
+    target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
     target_subfragment: Optional[Union[dict, TextValue]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
@@ -5691,8 +5749,8 @@ class NucleotideSequencing(DataGeneration):
         if self.ncbi_project_name is not None and not isinstance(self.ncbi_project_name, str):
             self.ncbi_project_name = str(self.ncbi_project_name)
 
-        if self.target_gene is not None and not isinstance(self.target_gene, TextValue):
-            self.target_gene = TextValue(**as_dict(self.target_gene))
+        if self.target_gene is not None and not isinstance(self.target_gene, TargetGeneEnum):
+            self.target_gene = TargetGeneEnum(self.target_gene)
 
         if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
             self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
@@ -7661,6 +7719,9 @@ class AnalyteCategoryEnum(EnumDefinitionImpl):
     metabolome = PermissibleValue(text="metabolome")
     lipidome = PermissibleValue(text="lipidome")
     nom = PermissibleValue(text="nom")
+    amplicon_sequencing_assay = PermissibleValue(
+        text="amplicon_sequencing_assay",
+        meaning=OBI["0002767"])
 
     _defn = EnumDefinition(
         name="AnalyteCategoryEnum",
@@ -7836,6 +7897,10 @@ class AnalysisTypeEnum(EnumDefinitionImpl):
             PermissibleValue(text="natural organic matter"))
         setattr(cls, "bulk chemistry",
             PermissibleValue(text="bulk chemistry"))
+        setattr(cls, "amplicon sequencing assay",
+            PermissibleValue(
+                text="amplicon sequencing assay",
+                meaning=OBI["0002767"]))
 
 class ArchStrucEnum(EnumDefinitionImpl):
 
@@ -8694,11 +8759,21 @@ class HostSexEnum(EnumDefinitionImpl):
     female = PermissibleValue(text="female")
     hermaphrodite = PermissibleValue(text="hermaphrodite")
     male = PermissibleValue(text="male")
-    neuter = PermissibleValue(text="neuter")
+    transgender = PermissibleValue(text="transgender")
+    undeclared = PermissibleValue(text="undeclared")
 
     _defn = EnumDefinition(
         name="HostSexEnum",
     )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "non-binary",
+            PermissibleValue(text="non-binary"))
+        setattr(cls, "transgender (female to male)",
+            PermissibleValue(text="transgender (female to male)"))
+        setattr(cls, "transgender (male to female)",
+            PermissibleValue(text="transgender (male to female)"))
 
 class IndoorSpaceEnum(EnumDefinitionImpl):
 
@@ -9771,6 +9846,27 @@ class WindowVertPosEnum(EnumDefinitionImpl):
         name="WindowVertPosEnum",
     )
 
+class TargetGeneEnum(EnumDefinitionImpl):
+
+    _defn = EnumDefinition(
+        name="TargetGeneEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "16S_rRNA",
+            PermissibleValue(
+                text="16S_rRNA",
+                description="the small subunit of the bacterial/archean ribosome"))
+        setattr(cls, "23S_rRNA",
+            PermissibleValue(
+                text="23S_rRNA",
+                description="the large subunit  of the bacterial/archean ribosome"))
+        setattr(cls, "28S_rRNA",
+            PermissibleValue(
+                text="28S_rRNA",
+                description="the large subunit of the eukaryotic ribosome"))
+
 # Slots
 class slots:
     pass
@@ -9880,6 +9976,9 @@ slots.object_set = Slot(uri=NMDC.object_set, name="object_set", curie=NMDC.curie
 
 slots.chemical_entity_set = Slot(uri=NMDC.chemical_entity_set, name="chemical_entity_set", curie=NMDC.curie('chemical_entity_set'),
                    model_uri=NMDC.chemical_entity_set, domain=None, range=Optional[Union[Dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], List[Union[dict, ChemicalEntity]]]])
+
+slots.ontology_class_set = Slot(uri=NMDC.ontology_class_set, name="ontology_class_set", curie=NMDC.curie('ontology_class_set'),
+                   model_uri=NMDC.ontology_class_set, domain=None, range=Optional[Union[Dict[Union[str, OntologyClassId], Union[dict, OntologyClass]], List[Union[dict, OntologyClass]]]])
 
 slots.biosample_set = Slot(uri=NMDC.biosample_set, name="biosample_set", curie=NMDC.curie('biosample_set'),
                    model_uri=NMDC.biosample_set, domain=None, range=Optional[Union[Dict[Union[str, BiosampleId], Union[dict, Biosample]], List[Union[dict, Biosample]]]])
@@ -10815,7 +10914,7 @@ slots.alternative_descriptions = Slot(uri=NMDC.alternative_descriptions, name="a
 
 slots.alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.alternative_identifiers, domain=None, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.start_date = Slot(uri=NMDC.start_date, name="start_date", curie=NMDC.curie('start_date'),
                    model_uri=NMDC.start_date, domain=None, range=Optional[str])
@@ -12207,7 +12306,7 @@ slots.tan = Slot(uri=MIXS['0000120'], name="tan", curie=MIXS.curie('0000120'),
                    model_uri=NMDC.tan, domain=None, range=Optional[Union[dict, QuantityValue]])
 
 slots.target_gene = Slot(uri=MIXS['0000044'], name="target_gene", curie=MIXS.curie('0000044'),
-                   model_uri=NMDC.target_gene, domain=None, range=Optional[Union[dict, TextValue]])
+                   model_uri=NMDC.target_gene, domain=None, range=Optional[Union[str, "TargetGeneEnum"]])
 
 slots.target_subfragment = Slot(uri=MIXS['0000045'], name="target_subfragment", curie=MIXS.curie('0000045'),
                    model_uri=NMDC.target_subfragment, domain=None, range=Optional[Union[dict, TextValue]])
@@ -12436,6 +12535,21 @@ slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_s
 
 slots.sequencing_field = Slot(uri=MIXS.sequencing_field, name="sequencing field", curie=MIXS.curie('sequencing_field'),
                    model_uri=NMDC.sequencing_field, domain=None, range=Optional[str])
+
+slots.ontologyClass__definition = Slot(uri=NMDC['basic_classes/definition'], name="ontologyClass__definition", curie=NMDC.curie('basic_classes/definition'),
+                   model_uri=NMDC.ontologyClass__definition, domain=None, range=Optional[str])
+
+slots.ontologyClass__relations = Slot(uri=NMDC['basic_classes/relations'], name="ontologyClass__relations", curie=NMDC.curie('basic_classes/relations'),
+                   model_uri=NMDC.ontologyClass__relations, domain=None, range=Optional[Union[Union[dict, OntologyRelation], List[Union[dict, OntologyRelation]]]])
+
+slots.ontologyRelation__subject = Slot(uri=NMDC['basic_classes/subject'], name="ontologyRelation__subject", curie=NMDC.curie('basic_classes/subject'),
+                   model_uri=NMDC.ontologyRelation__subject, domain=None, range=Union[str, OntologyClassId])
+
+slots.ontologyRelation__predicate = Slot(uri=NMDC['basic_classes/predicate'], name="ontologyRelation__predicate", curie=NMDC.curie('basic_classes/predicate'),
+                   model_uri=NMDC.ontologyRelation__predicate, domain=None, range=Union[str, OntologyClassId])
+
+slots.ontologyRelation__object = Slot(uri=NMDC['basic_classes/object'], name="ontologyRelation__object", curie=NMDC.curie('basic_classes/object'),
+                   model_uri=NMDC.ontologyRelation__object, domain=None, range=Union[str, OntologyClassId])
 
 slots.NucleotideSequencing_id = Slot(uri=NMDC.id, name="NucleotideSequencing_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.NucleotideSequencing_id, domain=NucleotideSequencing, range=Union[str, NucleotideSequencingId],
@@ -12779,7 +12893,7 @@ slots.Biosample_gold_biosample_identifiers = Slot(uri=NMDC.gold_biosample_identi
 
 slots.Biosample_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Biosample_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.Biosample_alternative_identifiers, domain=Biosample, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.Biosample_lat_lon = Slot(uri=MIXS['0000009'], name="Biosample_lat_lon", curie=MIXS.curie('0000009'),
                    model_uri=NMDC.Biosample_lat_lon, domain=Biosample, range=Optional[Union[dict, GeolocationValue]])
@@ -12952,7 +13066,7 @@ slots.Study_notes = Slot(uri=NMDC.notes, name="Study_notes", curie=NMDC.curie('n
 
 slots.Study_alternative_identifiers = Slot(uri=NMDC.alternative_identifiers, name="Study_alternative_identifiers", curie=NMDC.curie('alternative_identifiers'),
                    model_uri=NMDC.Study_alternative_identifiers, domain=Study, range=Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'))
 
 slots.Study_alternative_names = Slot(uri=NMDC.alternative_names, name="Study_alternative_names", curie=NMDC.curie('alternative_names'),
                    model_uri=NMDC.Study_alternative_names, domain=Study, range=Optional[Union[str, List[str]]])
