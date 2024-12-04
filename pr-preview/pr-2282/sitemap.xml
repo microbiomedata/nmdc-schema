@@ -2221,6 +2221,10 @@
          <lastmod>2024-12-04</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/generates_calibration/</loc>
+         <lastmod>2024-12-04</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/genetic_mod/</loc>
          <lastmod>2024-12-04</lastmod>
     </url>
@@ -2338,10 +2342,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/has_boolean_value/</loc>
-         <lastmod>2024-12-04</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/has_calibration/</loc>
          <lastmod>2024-12-04</lastmod>
     </url>
     <url>
@@ -4406,6 +4406,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/url/</loc>
+         <lastmod>2024-12-04</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/uses_calibration/</loc>
          <lastmod>2024-12-04</lastmod>
     </url>
     <url>

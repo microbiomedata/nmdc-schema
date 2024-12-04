@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/has_calibration/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/generates_calibration/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: has_calibration - NMDC Schema Documentation</title>
+        <title>Slot: generates_calibration - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-has_calibration" class="md-skip">
+        <a href="#slot-generates_calibration" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: has_calibration
+              Slot: generates_calibration
             
           </span>
         </div>
@@ -471,6 +471,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -530,9 +539,9 @@
   
 
 
-<h1 id="slot-has_calibration">Slot: has_calibration</h1>
-<p><em>a calibration instance associated with a process</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/has_calibration">nmdc:has_calibration</a></p>
+<h1 id="slot-generates_calibration">Slot: generates_calibration</h1>
+<p><em>calibration information is generated a process</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/generates_calibration">nmdc:generates_calibration</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -556,6 +565,10 @@
 <ul>
 <li>Range: <a href="../CalibrationInformation/">CalibrationInformation</a></li>
 </ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>A gas chromatography mass spectromery run generates data to calibrate the retention index</li>
+</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -572,22 +585,25 @@
 <tbody>
 <tr>
 <td>self</td>
-<td>nmdc:has_calibration</td>
+<td>nmdc:generates_calibration</td>
 </tr>
 <tr>
 <td>native</td>
-<td>nmdc:has_calibration</td>
+<td>nmdc:generates_calibration</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: has_calibration
-description: a calibration instance associated with a process
+<pre><code class="language-yaml">name: generates_calibration
+description: calibration information is generated a process
+comments:
+- A gas chromatography mass spectromery run generates data to calibrate the retention
+  index
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-alias: has_calibration
+alias: generates_calibration
 domain_of:
 - MassSpectrometry
 range: CalibrationInformation
