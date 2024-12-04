@@ -22,16 +22,6 @@ prefixes:
     prefix_prefix: MIXS_yaml
     prefix_reference: https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/
 default_prefix: MIXS
-subsets:
-  checklist:
-    description: A MIxS checklist. These can be combined with packages
-    from_schema: http://w3id.org/mixs/terms
-  package:
-    description: A MIxS package. These can be combined with checklists
-    from_schema: http://w3id.org/mixs/terms
-  checklist_package_combination:
-    description: A combination of a checklist and a package
-    from_schema: http://w3id.org/mixs/terms
 enums:
   arch_struc_enum:
     from_schema: http://w3id.org/mixs/terms

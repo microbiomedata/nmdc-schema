@@ -179,7 +179,7 @@
 '.slots.water_temp_regm.inlined_as_list |= true'
 '.slots.watering_regm.inlined_as_list |= true'
 
-
+'del(.subsets)'
 'del(.classes)'
 'del(.enums.[].name)' 
 'del(.enums.[].permissible_values.[].text)' 
