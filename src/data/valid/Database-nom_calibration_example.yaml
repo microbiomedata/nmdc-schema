@@ -47,8 +47,8 @@ workflow_execution_set:
   git_url: https://github.com/microbiomedata/enviroMS
   has_input:
   - nmdc:dobj-11-cp4p5602
-  - nmdc:dobj-14-1e9qeq49
   type: nmdc:NomAnalysis
+  uses_calibration: nmdc:calib-14-hhn3qb47
   has_output:
   - nmdc:dobj-11-wkvtnj47
   alternative_identifiers:
