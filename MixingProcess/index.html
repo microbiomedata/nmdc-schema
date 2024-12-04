@@ -316,8 +316,8 @@
 
   MixingProcess : has_input
 
-      MixingProcess --&gt; "*" NamedThing : has_input
-    click NamedThing href "../NamedThing"
+      MixingProcess --&gt; "*" Sample : has_input
+    click Sample href "../Sample"
 
   MixingProcess : has_output
 
@@ -395,7 +395,7 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>* <br/> <a href="../NamedThing/">NamedThing</a> or <br/><a href="../Biosample/">Biosample</a> or <br/><a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>* <br/> <a href="../Sample/">Sample</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -540,12 +540,10 @@ slot_usage:
       syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
   has_input:
     name: has_input
+    range: Sample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
-    any_of:
-    - range: Biosample
-    - range: ProcessedSample
   has_output:
     name: has_output
     description: The mixed sample.
@@ -584,12 +582,10 @@ slot_usage:
       syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
   has_input:
     name: has_input
+    range: Sample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
-    any_of:
-    - range: Biosample
-    - range: ProcessedSample
   has_output:
     name: has_output
     description: The mixed sample.
@@ -636,14 +632,11 @@ attributes:
     owner: MixingProcess
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: Sample
     multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
-    any_of:
-    - range: Biosample
-    - range: ProcessedSample
   has_output:
     name: has_output
     description: The mixed sample.

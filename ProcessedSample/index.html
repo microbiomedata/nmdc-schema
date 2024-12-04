@@ -291,8 +291,8 @@
 <div class="mermaid">classDiagram
   class ProcessedSample
   click ProcessedSample href "../ProcessedSample"
-    MaterialEntity &lt;|-- ProcessedSample
-      click MaterialEntity href "../MaterialEntity"
+    Sample &lt;|-- ProcessedSample
+      click Sample href "../Sample"
 
 
 
@@ -324,7 +324,10 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../MaterialEntity/">MaterialEntity</a><ul>
+<li><a href="../Sample/">Sample</a><ul>
 <li><strong>ProcessedSample</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -409,18 +412,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../processed_sample_set/">processed_sample_set</a></td>
 <td>range</td>
@@ -428,20 +419,8 @@
 </tr>
 <tr>
 <td><a href="../Pooling/">Pooling</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../Pooling/">Pooling</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../Extraction/">Extraction</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
@@ -452,20 +431,8 @@
 </tr>
 <tr>
 <td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../LibraryPreparation/">LibraryPreparation</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
@@ -476,20 +443,8 @@
 </tr>
 <tr>
 <td><a href="../MixingProcess/">MixingProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../MixingProcess/">MixingProcess</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../FiltrationProcess/">FiltrationProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
@@ -500,20 +455,8 @@
 </tr>
 <tr>
 <td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../ChromatographicSeparationProcess/">ChromatographicSeparationProcess</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../DissolvingProcess/">DissolvingProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
@@ -524,32 +467,14 @@
 </tr>
 <tr>
 <td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../ChemicalConversionProcess/">ChemicalConversionProcess</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 <tr>
 <td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialProcessing/">MaterialProcessing</a></td>
 <td><a href="../has_output/">has_output</a></td>
 <td>range</td>
-<td><a href="./">ProcessedSample</a></td>
-</tr>
-<tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td><a href="../has_input/">has_input</a></td>
-<td>any_of[range]</td>
 <td><a href="./">ProcessedSample</a></td>
 </tr>
 </tbody>
@@ -585,7 +510,7 @@
 <pre><code class="language-yaml">name: ProcessedSample
 title: Processed Sample
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: MaterialEntity
+is_a: Sample
 slots:
 - biomaterial_purity
 - dna_absorb1
@@ -607,7 +532,7 @@ class_uri: nmdc:ProcessedSample
 <pre><code class="language-yaml">name: ProcessedSample
 title: Processed Sample
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: MaterialEntity
+is_a: Sample
 slot_usage:
   id:
     name: id

@@ -303,8 +303,8 @@
 
   Pooling : has_input
 
-      Pooling --&gt; "1..*" NamedThing : has_input
-    click NamedThing href "../NamedThing"
+      Pooling --&gt; "1..*" Sample : has_input
+    click Sample href "../Sample"
 
   Pooling : has_output
 
@@ -376,7 +376,7 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a> or <br/><a href="../Biosample/">Biosample</a> or <br/><a href="../ProcessedSample/">ProcessedSample</a></td>
+<td>1..* <br/> <a href="../Sample/">Sample</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -578,16 +578,13 @@ attributes:
     owner: Pooling
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: Sample
     required: true
     multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
     minimum_cardinality: 2
-    any_of:
-    - range: Biosample
-    - range: ProcessedSample
   has_output:
     name: has_output
     description: An output from a process.
