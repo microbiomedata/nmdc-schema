@@ -265,6 +265,7 @@ classes:
       - workflow subset
     slots:
       - has_metabolite_identifications
+      - has_calibration
     slot_usage:
       id:
         required: true
@@ -293,12 +294,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
+      has_calibration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+          interpolated: true
 
   NomAnalysis:
     class_uri: nmdc:NomAnalysis
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
+    slots:
+      - has_calibration
     slot_usage:
       id:
         required: true
@@ -309,7 +316,12 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
-
+      has_calibration:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+          interpolated: true
+        
+      
 slots:
 
   metaproteomics_analysis_category:
