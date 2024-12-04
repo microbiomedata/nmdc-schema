@@ -51,4 +51,4 @@ workflow_execution_set:
   execution_resource: EMSL-RZR
   git_url: https://github.com/microbiomedata/metaMS
   started_at_time: '2021-01-07T23:54:40Z'
-  was_informed_by: nmdc:omprc-13-2ej6ck07
+  was_informed_by: nmdc:dgms-13-122e4240
