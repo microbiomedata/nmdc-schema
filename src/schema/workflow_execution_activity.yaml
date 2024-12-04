@@ -281,6 +281,8 @@ classes:
     is_a: WorkflowExecution
     in_subset:
       - workflow subset
+    slots:
+      - metaproteomics_analysis_category
     slot_usage:
       id:
         required: true
@@ -309,6 +311,12 @@ classes:
           interpolated: true
 
 slots:
+
+  metaproteomics_analysis_category:
+    range: MetaproteomicsAnalysisCategoryEnum
+    description: >-
+      The category of metaproteomics analysis being performed.
+    required: true
 
   metagenome_assembly_parameter:
     abstract: true
@@ -547,3 +555,14 @@ slots:
     range: MetaboliteIdentification
     multivalued: true
     inlined_as_list: true
+
+enums:
+  MetaproteomicsAnalysisCategoryEnum:
+    description: The category of metaproteomics analysis being performed.
+    permissible_values:
+      matched_metagenome:
+        description: >-
+          A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
+      in_silico_metagenome:
+        description: >-
+          A metaproteomics analysis that is matched to an in silico generated metagenome.
