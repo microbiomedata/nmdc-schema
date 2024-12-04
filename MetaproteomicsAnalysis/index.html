@@ -321,6 +321,11 @@
 
   MetaproteomicsAnalysis : id
 
+  MetaproteomicsAnalysis : metaproteomics_analysis_category
+
+      MetaproteomicsAnalysis --&gt; "1" MetaproteomicsAnalysisCategoryEnum : metaproteomics_analysis_category
+    click MetaproteomicsAnalysisCategoryEnum href "../MetaproteomicsAnalysisCategoryEnum"
+
   MetaproteomicsAnalysis : name
 
   MetaproteomicsAnalysis : processing_institution
@@ -380,6 +385,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../metaproteomics_analysis_category/">metaproteomics_analysis_category</a></td>
+<td>1 <br/> <a href="../MetaproteomicsAnalysisCategoryEnum/">MetaproteomicsAnalysisCategoryEnum</a></td>
+<td>The category of metaproteomics analysis being performed</td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../ended_at_time/">ended_at_time</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
@@ -535,6 +546,8 @@ in_subset:
 - workflow subset
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: WorkflowExecution
+slots:
+- metaproteomics_analysis_category
 slot_usage:
   id:
     name: id
@@ -571,6 +584,17 @@ slot_usage:
       syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
       interpolated: true
 attributes:
+  metaproteomics_analysis_category:
+    name: metaproteomics_analysis_category
+    description: The category of metaproteomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: metaproteomics_analysis_category
+    owner: MetaproteomicsAnalysis
+    domain_of:
+    - MetaproteomicsAnalysis
+    range: MetaproteomicsAnalysisCategoryEnum
+    required: true
   ended_at_time:
     name: ended_at_time
     notes:
