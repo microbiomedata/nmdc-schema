@@ -137,7 +137,7 @@ slots:
       - See issue 207 - this clashes with the mixs field
 
   language:
-    range: language code
+    range: language_code
     description: Should use ISO 639-1 code e.g. "en", "fr"
 
   has_raw_value:
@@ -173,7 +173,7 @@ slots:
     range: boolean
 
   latitude:
-    range: decimal degree
+    range: decimal_degree
     description: latitude
     slot_uri: wgs84:lat
     examples:
@@ -182,7 +182,7 @@ slots:
       - schema:latitude
 
   longitude:
-    range: decimal degree
+    range: decimal_degree
     description: longitude
     slot_uri: wgs84:long
     examples:
