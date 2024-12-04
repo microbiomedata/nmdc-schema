@@ -1,0 +1,27 @@
+id: http:/example.com/TargetGeneEnum_schema
+name: TargetGeneEnum_schema
+enums:
+  TargetGeneEnum:
+    permissible_values:
+      16S_rRNA:
+        description: the small subunit of the bacterial/archean ribosome
+        aliases:
+          - 16S rRNA
+          - 16S ribosomal RNA
+        narrow_mappings:
+          - OBI:0002763
+      23S_rRNA:
+        aliases:
+          - 23S rRNA
+          - 23S ribosomal RNA
+        description: the large subunit  of the bacterial/archean ribosome
+      18S_rRNA:
+        aliases:
+          - 18S rRNA
+          - 18S ribosomal RNA
+        description: the small subunit of the eukaryotic ribosome
+      28S_rRNA:
+        aliases:
+          -28S rRNA
+          - 28S ribosomal RNA
+        description: the large subunit of the eukaryotic ribosome

@@ -199,6 +199,23 @@ class MongoAdapter(AdapterBase):
             collection = self._db.get_collection(name=collection_name)
             collection.update_many({}, {"$set": {field_name: value}})
 
+    def remove_field_from_each_document(
+        self,
+        collection_name: str,
+        field_name: str,
+    ) -> None:
+        r"""
+        Removes the specified field from each document in the collection.
+
+        References:
+        - https://www.mongodb.com/docs/manual/reference/operator/update/unset/
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            collection.update_many({}, {"$unset": {field_name: 0}})  # value is arbitrary (e.g. 0)
+
     def do_for_each_document(
         self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
@@ -212,3 +229,27 @@ class MongoAdapter(AdapterBase):
             collection = self._db.get_collection(name=collection_name)
             for document in collection.find():
                 action(document)
+
+    def copy_value_from_field_to_field_in_each_document(
+        self,
+        collection_name: str,
+        source_field_name: str,
+        destination_field_name: str,
+    ) -> None:
+        r"""
+        For each document in the collection that has the source field, copy the value of the source field
+        into the destination field, creating the destination field if it doesn't already exist.
+
+        References:
+        - https://www.mongodb.com/docs/manual/reference/method/db.collection.updateMany
+        - https://www.mongodb.com/docs/manual/reference/operator/update/set/
+        - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.update_many
+        """
+
+        # Update every document in the collection, if the collection exists.
+        if collection_name in self._db.list_collection_names():
+            collection = self._db.get_collection(name=collection_name)
+            collection.update_many(
+                {source_field_name: {"$exists": True}},
+                [{"$set": {destination_field_name: f"${source_field_name}"}}]
+            )

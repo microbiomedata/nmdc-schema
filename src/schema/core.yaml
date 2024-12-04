@@ -217,6 +217,12 @@ classes:
           syntax: "{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  Sample:
+    class_uri: 'nmdc:Sample'
+    description: A sample is a material entity that can be characterized by an experiment.
+    is_a: MaterialEntity
+    abstract: true
+
 
   Biosample:
     class_uri: 'nmdc:Biosample'
@@ -270,8 +276,9 @@ classes:
     unique_keys:
       samp_name_unique_key:
         unique_key_slots:
-          - samp_name # id is already required to be unique because it is the identifier in Biosample's parent class, NamedThing
-    is_a: MaterialEntity
+          - samp_name # id is already required to be unique because it is the identifier
+                      # in Biosample's ancestor class, NamedThing (parent is MaterialEntity)
+    is_a: Sample
     in_subset:
       - sample subset
     aliases:
@@ -1219,9 +1226,7 @@ classes:
       - This class is a replacement for BiosampleProcessing.
     slot_usage:
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -1251,7 +1256,7 @@ classes:
 
   ProcessedSample:
     class_uri: nmdc:ProcessedSample
-    is_a: MaterialEntity
+    is_a: Sample
     title: Processed Sample
     slots:
       - biomaterial_purity
@@ -1313,34 +1318,6 @@ classes:
       - metabolite_identified
       - type
 
-  PeptideQuantification:
-    class_uri: nmdc:PeptideQuantification
-    description: This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
-    slots:
-      - type
-      - all_proteins
-      - best_protein
-      - min_q_value
-      - peptide_sequence
-      - peptide_spectral_count
-      - peptide_sum_masic_abundance
-
-  ProteinQuantification:
-    class_uri: nmdc:ProteinQuantification
-    description: This is used to link a metaproteomics analysis workflow to a specific protein
-    slots:
-      - all_proteins
-      - best_protein
-      - peptide_sequence_count
-      - protein_spectral_count
-      - protein_sum_masic_abundance
-      - type
-    slot_usage:
-      best_protein:
-        description: the specific protein identifier most correctly grouped to its associated peptide sequences
-      all_proteins:
-        description: the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein
-
   ChemicalEntity:
     class_uri: nmdc:ChemicalEntity
     aliases:
@@ -1355,7 +1332,6 @@ classes:
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slots:
-      - alternative_names
       - chemical_formula
       - inchi
       - inchi_key
@@ -1753,27 +1729,6 @@ slots:
     description: the specific metabolite identifier
     range: ChemicalEntity
 
-  all_proteins:
-    description: the list of protein identifiers that are associated with the peptide sequence
-    range: GeneProduct
-    multivalued: true
-  best_protein:
-    description: the specific protein identifier most correctly associated with the peptide sequence
-    range: GeneProduct
-  min_q_value:
-    description: smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool
-    range: float
-    see_also:
-      - OBI:0001442
-  peptide_sequence:
-    range: string
-  peptide_spectral_count:
-    description: sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file
-    range: integer
-  peptide_sum_masic_abundance:
-    description: >-
-      combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool
-    range: integer
 
   chemical_formula:
     description: A generic grouping for molecular formulae and empirical formulae
@@ -1785,16 +1740,7 @@ slots:
       - "key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12"
   inchi:
     range: string
-  peptide_sequence_count:
-    description: count of peptide sequences grouped to the best_protein
-    range: integer
-  protein_spectral_count:
-    description: sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file
-    range: integer
-  protein_sum_masic_abundance:
-    description: >-
-      combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool
-    range: integer
+
   smiles:
     description: >-
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.

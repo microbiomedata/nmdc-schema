@@ -333,6 +333,37 @@ class DictionaryAdapter(AdapterBase):
             for document in self._db[collection_name]:
                 document[field_name] = value
 
+    def remove_field_from_each_document(
+        self,
+        collection_name: str,
+        field_name: str,
+    ) -> None:
+        r"""
+        Removes the specified field from each document in the collection.
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "1", "x": "a"},
+        ...     {"id": "2"},
+        ...     {"id": "3", "x": None},
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.remove_field_from_each_document("thing_set", "x")
+        >>> database["thing_set"][0]
+        {'id': '1'}
+        >>> database["thing_set"][1]
+        {'id': '2'}
+        >>> database["thing_set"][2]
+        {'id': '3'}
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db:
+            for document in self._db[collection_name]:
+                if field_name in document:
+                    del document[field_name]
+
     def do_for_each_document(
         self, collection_name: str, action: Callable[[dict], None]
     ) -> None:
@@ -364,3 +395,42 @@ class DictionaryAdapter(AdapterBase):
         if collection_name in self._db:
             for document in self._db[collection_name]:
                 action(document)
+
+    def copy_value_from_field_to_field_in_each_document(
+        self,
+        collection_name: str,
+        source_field_name: str,
+        destination_field_name: str,
+    ) -> None:
+        r"""
+        For each document in the collection that has the source field, copy the value of the source field
+        into the destination field, creating the destination field if it doesn't already exist.
+
+        >>> database = {
+        ...   "thing_set": [
+        ...     {"id": "1", "color": "blue"},
+        ...     {"id": "2", "color": None},
+        ...     {"id": "3"},
+        ...     {"id": "4", "color": "blue", "hue": "yellow"},
+        ...     {"id": "5", "color": "blue", "hue": None},
+        ...   ]
+        ... }
+        >>> da = DictionaryAdapter(database)
+        >>> da.copy_value_from_field_to_field_in_each_document("thing_set", "color", "hue")
+        >>> database["thing_set"][0]  # source field exists and is not empty
+        {'id': '1', 'color': 'blue', 'hue': 'blue'}
+        >>> database["thing_set"][1]  # source field is empty
+        {'id': '2', 'color': None, 'hue': None}
+        >>> database["thing_set"][2]  # source field does not exist
+        {'id': '3'}
+        >>> database["thing_set"][3]  # destination field exists and is not empty
+        {'id': '4', 'color': 'blue', 'hue': 'blue'}
+        >>> database["thing_set"][4]  # destination field exists and is empty
+        {'id': '5', 'color': 'blue', 'hue': 'blue'}
+        """
+
+        # Iterate over every document in the collection, if the collection exists.
+        if collection_name in self._db:
+            for document in self._db[collection_name]:
+                if source_field_name in document:
+                    document[destination_field_name] = document[source_field_name]

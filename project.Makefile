@@ -66,7 +66,15 @@ assets/other_mixs_yaml_files/cur_land_use_enum.yaml
 		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
 		$^ | cat > $@
 
-local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+assets/other_mixs_yaml_files/TargetGeneEnum.yaml
+	yq eval-all \
+		'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' \
+		$^ | cat > $@
+	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
+
+
+local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
 assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	yq eval-all \
 		'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0)' \
@@ -138,7 +146,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
-		--output-yaml $@.tmp \
+		--output-yaml $@ \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
 		--selected-collections chemical_entity_set \
@@ -159,10 +167,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
-	cat $@.tmp | \
-		yq eval 'del(.workflow_execution_set[].has_peptide_quantifications)' | \
-		cat > $@ # many has_peptide_quantifications.all_proteins values are missing prefixes (contaminants) https://github.com/microbiomedata/issues/issues/897
-	rm -rf $@.tmp
 
 ## ALTERNATIVELY:
 #local/mongo_as_unvalidated_nmdc_database.yaml:

@@ -179,6 +179,9 @@ prefixes:
   kegg:
     prefix_prefix: kegg
     prefix_reference: 'https://bioregistry.io/kegg:'
+  KEGG.MODULE:
+    prefix_prefix: KEGG.MODULE
+    prefix_reference: 'https://bioregistry.io/kegg.module:'
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
@@ -272,6 +275,12 @@ prefixes:
   MIXS_yaml:
     prefix_prefix: MIXS_yaml
     prefix_reference: https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/
+  BFO:
+    prefix_prefix: BFO
+    prefix_reference: http://purl.obolibrary.org/obo/BFO_
+  owl:
+    prefix_prefix: owl
+    prefix_reference: http://www.w3.org/2002/07/owl#
 emit_prefixes:
 - KEGG.ORTHOLOGY
 - MASSIVE
@@ -621,6 +630,36 @@ types:
     base: str
     uri: xsd:string
 enums:
+  CalibrationTargetEnum:
+    name: CalibrationTargetEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      mass_charge_ratio:
+        text: mass_charge_ratio
+        title: m/z
+        aliases:
+        - Mass
+        - m/z
+      retention_time:
+        text: retention_time
+        aliases:
+        - RT
+      retention_index:
+        text: retention_index
+        aliases:
+        - RI
+  CalibrationStandardEnum:
+    name: CalibrationStandardEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      fames:
+        text: fames
+        aliases:
+        - FAMES
+      alkanes:
+        text: alkanes
+        aliases:
+        - Alkanes
   StrandedOrientationEnum:
     name: StrandedOrientationEnum
     description: This enumeration specifies information about stranded RNA library
@@ -955,6 +994,28 @@ enums:
         text: aqueous_layer
       non_polar_layer:
         text: non_polar_layer
+  BinQualityEnum:
+    name: BinQualityEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      HQ:
+        text: HQ
+        description: Metagenome-assembled genome is high quality based on MIMAG standards
+          (https://doi.org/10.1038/nbt.3893)
+        aliases:
+        - high quality
+      MQ:
+        text: MQ
+        description: Metagenome-assembled genome is medium quality based on MIMAG
+          standards (https://doi.org/10.1038/nbt.3893)
+        aliases:
+        - medium quality
+      LQ:
+        text: LQ
+        description: Metagenome-assembled genome is low quality based on MIMAG standards
+          (https://doi.org/10.1038/nbt.3893)
+        aliases:
+        - low quality
   ChemicalConversionCategoryEnum:
     name: ChemicalConversionCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3189,6 +3250,22 @@ enums:
           experiment.
         exact_mappings:
         - NCIT:C61538
+  ManifestCategoryEnum:
+    name: ManifestCategoryEnum
+    description: A list of contexts in which some DataObjects can be analyzed together.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      instrument_run:
+        text: instrument_run
+        description: A collection of data objects from a single run of an instrument.
+      poolable_replicates:
+        text: poolable_replicates
+        description: A collection of data objects that can be pooled for downstream
+          analyses.
+      fractions:
+        text: fractions
+        description: A collection of data objects that represent fractions of a single
+          sample.
   InstrumentModelEnum:
     name: InstrumentModelEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3604,6 +3681,35 @@ enums:
     name: FileTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
+      Virus Summary:
+        text: Virus Summary
+        description: Tab separated file listing the viruses found by geNomad.
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^_virus_summary\.tsv?$
+        see_also:
+        - https://portal.nersc.gov/genomad/
+      Plasmid Summary:
+        text: Plasmid Summary
+        description: Tab separated file listing the plasmids found be geNomad.
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^_plasmid_summary\.tsv?$
+        see_also:
+        - https://portal.nersc.gov/genomad/
+      GeNomad Aggregated Classification:
+        text: GeNomad Aggregated Classification
+        description: Tab separated file which combines the results from neural network-based
+          classification and marker-based classification for virus and plasmid detection
+          with geNomad.
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^_aggregated_classification\.tsv?$
+        see_also:
+        - https://portal.nersc.gov/genomad/
       Reference Calibration File:
         text: Reference Calibration File
         description: A file that contains data used to calibrate a natural organic
@@ -4150,6 +4256,10 @@ enums:
         aliases:
         - EDI
         - Environmental Data Initiative
+      figshare:
+        text: figshare
+        meaning: https://ror.org/041mxqs23
+        title: Figshare
   DoiCategoryEnum:
     name: DoiCategoryEnum
     comments:
@@ -4206,16 +4316,6 @@ enums:
         text: nom
         aliases:
         - natural organic matter
-  DirectInfusionEnum:
-    name: DirectInfusionEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      direct_infusion:
-        text: direct_infusion
-        aliases:
-        - DI
-      autosampler:
-        text: autosampler
   ExtractionTargetEnum:
     name: ExtractionTargetEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4263,6 +4363,10 @@ enums:
         text: UCD_Genome_Center
         meaning: https://genomecenter.ucdavis.edu/
         title: University of California, Davis Genome Center
+      Azenta:
+        text: Azenta
+        meaning: https://www.azenta.com/
+        title: Azenta Life Sciences
   DataCategoryEnum:
     name: DataCategoryEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4387,37 +4491,33 @@ enums:
         text: natural organic matter
       bulk chemistry:
         text: bulk chemistry
-  CalibrationTargetEnum:
-    name: CalibrationTargetEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      mass_charge_ratio:
-        text: mass_charge_ratio
-        title: m/z
-        aliases:
-        - Mass
-        - m/z
-      retention_time:
-        text: retention_time
-        aliases:
-        - RT
-      retention_index:
-        text: retention_index
-        aliases:
-        - RI
-  CalibrationStandardEnum:
-    name: CalibrationStandardEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      fames:
-        text: fames
-        aliases:
-        - FAMES
-      alkanes:
-        text: alkanes
-        aliases:
-        - Alkanes
 slots:
+  has_calibration:
+    name: has_calibration
+    description: a calibration instance associated with a process
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: CalibrationInformation
+  calibration_object:
+    name: calibration_object
+    description: the file containing calibration data object
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: DataObject
+  internal_calibration:
+    name: internal_calibration
+    description: whether internal calibration was used, if false, external calibration
+      was used
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
+  calibration_target:
+    name: calibration_target
+    description: the target measurement of the calibration
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: CalibrationTargetEnum
+  calibration_standard:
+    name: calibration_standard
+    description: the reference standard(s) used for calibration
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: CalibrationStandardEnum
   polarity_mode:
     name: polarity_mode
     description: the polarity of which ions are generated and detected
@@ -4514,12 +4614,10 @@ slots:
     description: The identifier for the analysis activity that generated the functional
       annotation results, where the analysis activity is an instance of the/an appropriate
       subclass of WorkflowExecution
+    deprecated: not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253
     from_schema: https://w3id.org/nmdc/nmdc
     range: WorkflowExecution
     required: true
-    any_of:
-    - range: MetagenomeAnnotation
-    - range: MetatranscriptomeAnnotation
   gene_function_id:
     name: gene_function_id
     description: The identifier for the gene function.
@@ -4619,6 +4717,14 @@ slots:
     mixins:
     - object_set
     range: ChemicalEntity
+  ontology_class_set:
+    name: ontology_class_set
+    description: This property links a database object to the set of ontology classes
+      within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    range: OntologyClass
   biosample_set:
     name: biosample_set
     description: This property links a database object to the set of samples within
@@ -4717,6 +4823,14 @@ slots:
     mixins:
     - object_set
     range: Configuration
+  manifest_set:
+    name: manifest_set
+    description: This property links a database object to the set of manifests within
+      it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    range: Manifest
   protocol_execution_set:
     name: protocol_execution_set
     description: This property links a database object to the set of protocol executions
@@ -5204,84 +5318,152 @@ slots:
     range: QuantityValue
   total_bases:
     name: total_bases
-    todos:
-    - this slot needs some basic textual annotations and constraints
+    description: Total number of basepairs.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    minimum_value: 0
   members_id:
     name: members_id
-    todos:
-    - this slot needs some basic textual annotations and constraints
+    description: Names of the contigs that make up a metagenome-assembled genome.
     from_schema: https://w3id.org/nmdc/nmdc
+    close_mappings:
+    - GENEPIO:0100596
     range: string
     multivalued: true
   bin_name:
     name: bin_name
+    description: Name of the metagenome-assembled genome.
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
+    required: true
   number_of_contig:
     name: number_of_contig
+    description: Number of contigs
     from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - GENEPIO:0000093
     range: integer
+    minimum_value: 0
   completeness:
     name: completeness
+    description: Estimate of the completeness of the metagenome-assembled genome,
+      estimated by a tool like CheckM.
     from_schema: https://w3id.org/nmdc/nmdc
     range: float
+    minimum_value: 0
   contamination:
     name: contamination
+    description: Estimate of the completeness of the metagenome-assembled genome,
+      estimated by a tool like CheckM.
     from_schema: https://w3id.org/nmdc/nmdc
     range: float
+    minimum_value: 0
   gene_count:
     name: gene_count
+    description: Number of genes.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    minimum_value: 0
   bin_quality:
     name: bin_quality
+    description: The quality of the metagenome-assembled genome based on MIMAG standards
+      (https://doi.org/10.1038/nbt.3893).
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    range: BinQualityEnum
   num_16s:
     name: num_16s
+    description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
+    broad_mappings:
+    - NCIT:C105370
     range: integer
+    minimum_value: 0
   num_5s:
     name: num_5s
+    description: Number of 5s seqeuences detected, a subunit of ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
+    broad_mappings:
+    - OMIT:0013248
     range: integer
+    minimum_value: 0
   num_23s:
     name: num_23s
+    description: Number of 23 seqeuences detected, a subunit of ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
+    broad_mappings:
+    - OMIT:0013245
     range: integer
+    minimum_value: 0
   num_t_rna:
     name: num_t_rna
+    description: Number of transfer transfer RNAs.
     from_schema: https://w3id.org/nmdc/nmdc
+    broad_mappings:
+    - NCIT:C816
     range: integer
+    minimum_value: 0
   gtdbtk_domain:
     name: gtdbtk_domain
+    description: Taxonomic domain assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+    - NCBITaxon:superkingdom
     range: string
   gtdbtk_phylum:
     name: gtdbtk_phylum
+    description: Taxonomic phylum assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+    - NCBITaxon:phylum
     range: string
   gtdbtk_class:
     name: gtdbtk_class
+    description: Taxonomic class assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+    - NCBITaxon:class
     range: string
   gtdbtk_order:
     name: gtdbtk_order
+    description: Taxonomic order assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+    - NCBITaxon:order
     range: string
   gtdbtk_family:
     name: gtdbtk_family
+    description: Taxonomic family assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+    - NCBITaxon:family
     range: string
   gtdbtk_genus:
     name: gtdbtk_genus
+    description: Taxonomic genus assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+    - NCBITaxon:genus
     range: string
   gtdbtk_species:
     name: gtdbtk_species
+    description: Taxonomic genus assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://doi.org/10.1093/bioinformatics/btz848
+    exact_mappings:
+    - NCBITaxon:species
     range: string
   highest_similarity_score:
     name: highest_similarity_score
@@ -5298,6 +5480,7 @@ slots:
     name: all_proteins
     description: the list of protein identifiers that are associated with the peptide
       sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: GeneProduct
     multivalued: true
@@ -5305,24 +5488,28 @@ slots:
     name: best_protein
     description: the specific protein identifier most correctly associated with the
       peptide sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: GeneProduct
   min_q_value:
     name: min_q_value
     description: smallest Q-Value associated with the peptide sequence as provided
       by MSGFPlus tool
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - OBI:0001442
     range: float
   peptide_sequence:
     name: peptide_sequence
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   peptide_spectral_count:
     name: peptide_spectral_count
     description: sum of filter passing MS2 spectra associated with the peptide sequence
       within a given LC-MS/MS data file
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
   peptide_sum_masic_abundance:
@@ -5330,6 +5517,7 @@ slots:
     description: combined MS1 extracted ion chromatograms derived from MS2 spectra
       associated with the peptide sequence from a given LC-MS/MS data file using the
       MASIC tool
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
   chemical_formula:
@@ -5352,12 +5540,14 @@ slots:
   peptide_sequence_count:
     name: peptide_sequence_count
     description: count of peptide sequences grouped to the best_protein
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
   protein_spectral_count:
     name: protein_spectral_count
     description: sum of filter passing MS2 spectra associated with the best protein
       within a given LC-MS/MS data file
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
   protein_sum_masic_abundance:
@@ -5365,6 +5555,7 @@ slots:
     description: combined MS1 extracted ion chromatograms derived from MS2 spectra
       associated with the best protein from a given LC-MS/MS data file using the MASIC
       tool
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
   smiles:
@@ -17113,6 +17304,24 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Instrument
     multivalued: true
+  in_manifest:
+    name: in_manifest
+    description: one or more combinations of other DataObjects that can be analyzed
+      together
+    comments:
+    - A DataObject can be part of multiple manifests, for example, a DataObject could
+      be part of a manifest for a single run of an instrument and a manifest for technical
+      replicates of a single sample.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Manifest
+    multivalued: true
+  manifest_category:
+    name: manifest_category
+    description: The type of context in which the constituent DataObjects can be analyzed
+      together.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ManifestCategoryEnum
+    required: true
   model:
     name: model
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17600,12 +17809,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: AnalyteCategoryEnum
     required: true
-  direct_infusion_category:
-    name: direct_infusion_category
-    description: used when a processed sample is introduced into a mass spectrometer
-      without chromatographic separation
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: DirectInfusionEnum
   type:
     name: type
     description: the class_uri of the class that has been instantiated
@@ -17743,7 +17946,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
     multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
   start_date:
     name: start_date
     description: The date on which any process or activity was started
@@ -18635,6 +18838,7 @@ slots:
     abstract: true
   has_peptide_quantifications:
     name: has_peptide_quantifications
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     range: PeptideQuantification
     multivalued: true
@@ -18825,30 +19029,42 @@ slots:
     abstract: true
   mags_list:
     name: mags_list
+    description: Contains detailed information about each metagenome-assembled genome.
     from_schema: https://w3id.org/nmdc/nmdc
     range: MagBin
     multivalued: true
     inlined_as_list: true
   too_short_contig_num:
     name: too_short_contig_num
+    description: Number of contigs which were excluded from binning for length.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    minimum_value: 0
   binned_contig_num:
     name: binned_contig_num
+    description: Number of contigs that ended up in a medium or high quality bin.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    minimum_value: 0
   input_contig_num:
     name: input_contig_num
+    description: Total number of input contigs.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    minimum_value: 0
   unbinned_contig_num:
     name: unbinned_contig_num
+    description: Number of contigs which did not end up in a medium or high quality
+      bin.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    minimum_value: 0
   low_depth_contig_num:
     name: low_depth_contig_num
+    description: Number of contigs which were excluded from binning for depth of coverage.
     from_schema: https://w3id.org/nmdc/nmdc
     range: integer
+    minimum_value: 0
   input_read_count:
     name: input_read_count
     description: The sequence count number of input reads for QC analysis.
@@ -18883,40 +19099,6 @@ slots:
     description: 'TODO      '
     from_schema: https://w3id.org/nmdc/nmdc
     range: float
-  has_calibration:
-    name: has_calibration
-    description: a calibration instance associated with a process
-    notes:
-    - 'has_calibration slot will be removed from all WorkflowExecution classes but
-      remain on the MassSpectrometry class after an ingest of the appropriate set
-      has occurred.  Once this has occurred, this slot''s range can be updated to
-      CalibrationInformation and class/slot definitions can move to nmdc.yaml.   See
-      PR #29 in Berkeley schema.'
-    from_schema: https://w3id.org/nmdc/nmdc
-    any_of:
-    - range: CalibrationInformation
-    - range: string
-  calibration_object:
-    name: calibration_object
-    description: the file containing calibration data object
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: DataObject
-  internal_calibration:
-    name: internal_calibration
-    description: whether internal calibration was used, if false, external calibration
-      was used
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: boolean
-  calibration_target:
-    name: calibration_target
-    description: the target measurement of the calibration
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: CalibrationTargetEnum
-  calibration_standard:
-    name: calibration_standard
-    description: the reference standard(s) used for calibration
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: CalibrationStandardEnum
   has_metabolite_identifications:
     name: has_metabolite_identifications
     from_schema: https://w3id.org/nmdc/nmdc
@@ -19099,21 +19281,96 @@ classes:
           syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:ChromatographyConfiguration
+  Manifest:
+    name: Manifest
+    description: A qualified collection of DataObjects that can be analyzed together
+      in the same experimental context.
+    comments:
+    - Manifest are currently uncoupled from other modelling. For example, there is
+      no schema requirement that DataObjects in a fractions Manifest were all obtained
+      by analyzing the same ProcessedSample.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: InformationObject
+    slots:
+    - manifest_category
+    slot_usage:
+      id:
+        name: id
+        pattern: ^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+    class_uri: nmdc:Manifest
+  CalibrationInformation:
+    name: CalibrationInformation
+    description: A calibration object that is associated with a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: InformationObject
+    slots:
+    - calibration_object
+    - internal_calibration
+    - calibration_target
+    - calibration_standard
+    slot_usage:
+      internal_calibration:
+        name: internal_calibration
+        required: true
+      calibration_target:
+        name: calibration_target
+        required: true
+      id:
+        name: id
+        pattern: ^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        structured_pattern:
+          syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+          interpolated: true
+    class_uri: nmdc:CalibrationInformation
+    rules:
+    - preconditions:
+        slot_conditions:
+          calibration_target:
+            name: calibration_target
+            equals_string: retention_index
+      postconditions:
+        slot_conditions:
+          calibration_standard:
+            name: calibration_standard
+            required: true
+      description: If the calibration_target is retention_index, a calibration_standard
+        is required.
+      title: calibration_standard_if_rt
+    - preconditions:
+        slot_conditions:
+          internal_calibration:
+            name: internal_calibration
+            id_prefixes:
+            - 'False'
+      postconditions:
+        slot_conditions:
+          calibration_object:
+            name: calibration_object
+            required: true
+      description: If internal_calibration is false, a calibration_object is required.
+      title: calibration_object_if_not_internal_calibration
   FunctionalAnnotationAggMember:
     name: FunctionalAnnotationAggMember
     from_schema: https://w3id.org/nmdc/nmdc
     slots:
-    - metagenome_annotation_id
+    - was_generated_by
     - gene_function_id
     - count
     - type
     slot_usage:
-      metagenome_annotation_id:
-        name: metagenome_annotation_id
-        pattern: ^(nmdc):(wfmgan|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
+      was_generated_by:
+        name: was_generated_by
+        required: true
+        pattern: ^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
         structured_pattern:
-          syntax: '{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
+          syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
+      count:
+        name: count
+        description: The number of sequences (for a metagenome or metatranscriptome)
+          or spectra (for metaproteomics) associated with the specified function.
     class_uri: nmdc:FunctionalAnnotationAggMember
   Database:
     name: Database
@@ -19138,6 +19395,7 @@ classes:
     - functional_annotation_set
     - genome_feature_set
     - instrument_set
+    - manifest_set
     - material_processing_set
     - processed_sample_set
     - protocol_execution_set
@@ -20886,6 +21144,7 @@ classes:
     name: PeptideQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific
       peptide sequence and related information
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     slots:
     - type
@@ -20900,6 +21159,7 @@ classes:
     name: ProteinQuantification
     description: This is used to link a metaproteomics analysis workflow to a specific
       protein
+    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
     from_schema: https://w3id.org/nmdc/nmdc
     slots:
     - all_proteins
@@ -20908,15 +21168,6 @@ classes:
     - protein_spectral_count
     - protein_sum_masic_abundance
     - type
-    slot_usage:
-      best_protein:
-        name: best_protein
-        description: the specific protein identifier most correctly grouped to its
-          associated peptide sequences
-      all_proteins:
-        name: all_proteins
-        description: the grouped list of protein identifiers associated with the peptide
-          sequences that were grouped to a best protein
     class_uri: nmdc:ProteinQuantification
   ChemicalEntity:
     name: ChemicalEntity
@@ -20947,7 +21198,6 @@ classes:
     - biolink:ChemicalSubstance
     is_a: OntologyClass
     slots:
-    - alternative_names
     - chemical_formula
     - inchi
     - inchi_key
@@ -21256,16 +21506,86 @@ classes:
     class_uri: nmdc:NamedThing
   OntologyClass:
     name: OntologyClass
-    notes:
-    - The identifiers for terms from external ontologies can't have their ids constrained
-      to the nmdc namespace
+    description: This class is used to represent ontology terms.
     from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - OntologyClass
+    exact_mappings:
+    - biolink:OntologyClass
+    - owl:Class
+    - schema:Class
     is_a: NamedThing
+    slots:
+    - alternative_names
     slot_usage:
       id:
         name: id
+        notes:
+        - The identifiers for terms from external ontologies can't have their ids
+          constrained to the nmdc namespace
         pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    attributes:
+      definition:
+        name: definition
+        description: The definition of the ontology term as provided by the ontology.
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: string
+      relations:
+        name: relations
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyRelation
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
     class_uri: nmdc:OntologyClass
+  OntologyRelation:
+    name: OntologyRelation
+    description: A relationship between two ontology classes as specified either directly
+      in the ontology in the form of axioms (statements or assertions that defines
+      rules or constraints in an ontology) or inferred via reasoning.  The association
+      object is defined by two terms (the subject and the object) and the relationship
+      between them (the predicate). Because ontologies often have a plethora of relationships/axiom
+      types and can have additional metadata on the relationship itself, these kinds
+      of relationships are structured as a class instead of a simple set of slots
+      on OntologyClass itself.
+    comments:
+    - 'For example, the relationship between ''soil'' and ''enriched soil'' in the
+      Environmental Ontology (ENVO) is defined by the following axioms: ''enriched
+      soil'' subclass_of ''soil'', and ''enriched soil''  has_increased_levels_of
+      (some) ''material entity.''  Converting these stat∂ements to OntologyAssociations  so
+      they can be used in the NMDC data stores, the subject of the first axiom or
+      statement,  would be ''soil'', the predicate would be ''subclass_of'', and the
+      object would be ''enriched soil''.  For the second axiom, the subject would
+      be ''enriched soil'', the predicate would be ''has_increased_levels_of'', and
+      the object would be ''material entity.'' (Note that text labels are used in
+      this example for ease of understanding and  the literal values of subject, predicate,
+      and object in this class will be the id (curie) of the  `OntologyClass` as defined
+      below).  Not all ontology axioms (associations) between terms need to be  ingested
+      into the NMDC data stores.  In general, subclass_of and part_of relationships/axioms
+      are often  good default relations/associations to support ontology browsing
+      in user interfaces.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - OntologyAssociation
+    slots:
+    - type
+    attributes:
+      subject:
+        name: subject
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyClass
+        required: true
+      predicate:
+        name: predicate
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyClass
+        required: true
+      object:
+        name: object
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyClass
+        required: true
+    class_uri: nmdc:OntologyRelation
   FailureCategorization:
     name: FailureCategorization
     from_schema: https://w3id.org/nmdc/nmdc
@@ -21575,6 +21895,7 @@ classes:
     - md5_checksum
     - url
     - was_generated_by
+    - in_manifest
     slot_usage:
       name:
         name: name
@@ -22036,7 +22357,6 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
-    - has_calibration
     - has_metabolite_identifications
     slot_usage:
       id:
@@ -22059,8 +22379,6 @@ classes:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
-    slots:
-    - has_peptide_quantifications
     slot_usage:
       id:
         name: id
@@ -22082,8 +22400,6 @@ classes:
     - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
-    slots:
-    - has_calibration
     slot_usage:
       id:
         name: id
@@ -22099,57 +22415,6 @@ classes:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:NomAnalysis
-  CalibrationInformation:
-    name: CalibrationInformation
-    description: A calibration object that is associated with a process.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: InformationObject
-    slots:
-    - calibration_object
-    - internal_calibration
-    - calibration_target
-    - calibration_standard
-    slot_usage:
-      internal_calibration:
-        name: internal_calibration
-        required: true
-      calibration_target:
-        name: calibration_target
-        required: true
-      id:
-        name: id
-        pattern: ^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
-          interpolated: true
-    class_uri: nmdc:CalibrationInformation
-    rules:
-    - preconditions:
-        slot_conditions:
-          calibration_target:
-            name: calibration_target
-            equals_string: retention_index
-      postconditions:
-        slot_conditions:
-          calibration_standard:
-            name: calibration_standard
-            required: true
-      description: If the calibration_target is retention_index, a calibration_standard
-        is required.
-      title: calibration_standard_if_rt
-    - preconditions:
-        slot_conditions:
-          internal_calibration:
-            name: internal_calibration
-            id_prefixes:
-            - 'False'
-      postconditions:
-        slot_conditions:
-          calibration_object:
-            name: calibration_object
-            required: true
-      description: If internal_calibration is false, a calibration_object is required.
-      title: calibration_object_if_not_internal_calibration
 source_file: src/schema/nmdc.yaml
 settings:
   id_nmdc_prefix:
