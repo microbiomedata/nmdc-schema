@@ -89,14 +89,6 @@
          <lastmod>2024-12-04</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Checklist/</loc>
-         <lastmod>2024-12-04</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/ChecklistPackageCombination/</loc>
-         <lastmod>2024-12-04</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/ChemicalConversionCategoryEnum/</loc>
          <lastmod>2024-12-04</lastmod>
     </url>
@@ -642,10 +634,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/OxyStatSampEnum/</loc>
-         <lastmod>2024-12-04</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/Package/</loc>
          <lastmod>2024-12-04</lastmod>
     </url>
     <url>
