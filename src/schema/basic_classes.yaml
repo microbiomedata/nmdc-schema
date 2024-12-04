@@ -388,9 +388,7 @@ classes:
     slot_usage:
       has_input:
         required: true
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
