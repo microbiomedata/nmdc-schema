@@ -184,6 +184,8 @@ gendoc: $(DOCDIR) prefixmaps
 	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
 	mkdir -p $(DOCDIR)/visualizations
 	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
+	# Copy the prefix map to the documentation directory so that it is easily accessible programmatically
+	cp $(DEST)/prefixmap/nmdc-prefix-map.json $(DOCDIR)/nmdc-prefix-map.json
 testdoc: gendoc serve
 
 MKDOCS = $(RUN) mkdocs
