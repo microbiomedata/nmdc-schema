@@ -495,6 +495,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mappings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -536,12 +545,12 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
 <td></td>
 <td>yes</td>
 </tr>
@@ -551,13 +560,23 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td>A workflow process that provides expression values and read counts for gene f...</td>
+<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Represents an instance of an execution of a particular workflow</td>
 <td>yes</td>
 </tr>
 <tr>
 <td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
 <td>A workflow execution activity that provides functional and structural annotat...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td>A workflow process that provides expression values and read counts for gene f...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -571,27 +590,17 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../NomAnalysis/">NomAnalysis</a></td>
-<td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-<td>Represents an instance of an execution of a particular workflow</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
 <td>A workflow execution activity that performs taxonomy classification using seq...</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
 <td></td>
 <td>yes</td>
 </tr>
@@ -611,6 +620,29 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>nmdc:was_informed_by</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nmdc:was_informed_by</td>
+</tr>
+<tr>
+<td>undefined</td>
+<td>prov:wasInformedBy</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
