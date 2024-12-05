@@ -8,7 +8,26 @@ class Migrator(MigratorBase):
     _to_version = "11.2.0"
 
     def upgrade(self) -> None:
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+        r"""
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = dict(
+        ...   data_generation_set=[
+        ...       {'id': 1, 'type': 'nmdc:MassSpectrometry'},
+        ...       {'id': 2, 'type': 'nmdc:MassSpectrometry', 'has_calibration': 'nmdc:calib-99-abc123'},
+        ...       {'id': 3, 'type': 'nmdc:NucleotideSequencing', 'has_calibration': 'nmdc:calib-99-abc123'},
+        ...   ],
+        ... )
+        >>> m = Migrator(adapter=DictionaryAdapter(database=database))
+        >>> m.upgrade()
+        >>> database['data_generation_set'][0]
+        {'id': 1, 'type': 'nmdc:MassSpectrometry'}
+        >>> database['data_generation_set'][1]
+        {'id': 2, 'type': 'nmdc:MassSpectrometry', 'generates_calibration': 'nmdc:calib-99-abc123'}
+        >>> database['data_generation_set'][2]
+        {'id': 3, 'type': 'nmdc:NucleotideSequencing', 'has_calibration': 'nmdc:calib-99-abc123'}
+        """
 
         self.adapter.process_each_document(
             "data_generation_set",
