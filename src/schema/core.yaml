@@ -162,8 +162,6 @@ classes:
     slots:
       - img_identifiers
       - gold_analysis_project_identifiers
-    in_subset:
-      - workflow subset
     slot_usage:
       id:
         required: true
@@ -279,8 +277,6 @@ classes:
           - samp_name # id is already required to be unique because it is the identifier
                       # in Biosample's ancestor class, NamedThing (parent is MaterialEntity)
     is_a: Sample
-    in_subset:
-      - sample subset
     aliases:
       - sample
       - material sample
@@ -1415,8 +1411,6 @@ slots:
       packages listed here are further defined in separate subtables. By giving the
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
-    in_subset:
-      - mixs extension
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc

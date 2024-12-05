@@ -196,8 +196,6 @@ classes:
   Study:
     class_uri: 'nmdc:Study'
     is_a: NamedThing
-    in_subset:
-      - sample subset
     aliases:
       - proposal
       - research proposal
@@ -337,8 +335,6 @@ classes:
   DataObject:
     class_uri: nmdc:DataObject
     is_a: InformationObject
-    in_subset:
-      - data object subset
     description:
       "An object that primarily consists of symbols that represent information.   Files,
       records, and omics data are examples of data objects."
@@ -376,8 +372,6 @@ classes:
       - omics assay
       - sequencing project
       - experiment
-    in_subset:
-      - sample subset
     description: >-
       The methods and processes used to generate omics data from a biosample or organism.
     alt_descriptions:
@@ -422,8 +416,6 @@ classes:
       - analysis
     comments:
       - Each instance of this (and all other) subclasses of WorkflowExecution is a distinct run with start and stop times, potentially with different inputs and outputs
-    in_subset:
-      - workflow subset
     description: >-
       Represents an instance of an execution of a particular workflow
     alt_descriptions:
@@ -517,8 +509,6 @@ slots:
     range: Doi
     multivalued: true
     inlined_as_list: true
-    in_subset:
-      - data_portal_subset
     examples:
       value:
         - doi: doi:10.46936/intm.proj.2021.60141/60000423
