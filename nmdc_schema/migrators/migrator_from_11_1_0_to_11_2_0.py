@@ -16,7 +16,7 @@ class Migrator(MigratorBase):
         ...   data_generation_set=[
         ...       {'id': 1, 'type': 'nmdc:MassSpectrometry'},
         ...       {'id': 2, 'type': 'nmdc:MassSpectrometry', 'has_calibration': 'nmdc:calib-99-abc123'},
-        ...       {'id': 3, 'type': 'nmdc:NucleotideSequencing', 'has_calibration': 'nmdc:calib-99-abc123'},
+        ...       {'id': 3, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'},
         ...   ],
         ... )
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
@@ -26,7 +26,7 @@ class Migrator(MigratorBase):
         >>> database['data_generation_set'][1]
         {'id': 2, 'type': 'nmdc:MassSpectrometry', 'generates_calibration': 'nmdc:calib-99-abc123'}
         >>> database['data_generation_set'][2]
-        {'id': 3, 'type': 'nmdc:NucleotideSequencing', 'has_calibration': 'nmdc:calib-99-abc123'}
+        {'id': 3, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'}
         """
 
         self.adapter.process_each_document(
@@ -51,9 +51,9 @@ class Migrator(MigratorBase):
         ...                                 'has_calibration': 'nmdc:calib-99-abc123'})  # test: has `has_calibration`
         {'id': 1, 'type': 'nmdc:MassSpectrometry', 'generates_calibration': 'nmdc:calib-99-abc123'}
         >>> m.rename_has_calibration_field({'id': 1,
-        ...                                 'type': 'nmdc:NucleotideSequencing',
+        ...                                 'type': '__AnythingElse__',
         ...                                 'has_calibration': 'nmdc:calib-99-abc123'})  # test: has different `type`
-        {'id': 1, 'type': 'nmdc:NucleotideSequencing', 'has_calibration': 'nmdc:calib-99-abc123'}
+        {'id': 1, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'}
         """
         if (
             "type" in data_generation_document
