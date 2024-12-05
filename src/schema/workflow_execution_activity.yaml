@@ -276,10 +276,6 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
-      uses_calibration:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
-          interpolated: true
 
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
@@ -315,10 +311,6 @@ classes:
       was_informed_by:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      uses_calibration:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
           interpolated: true
      
 slots:
