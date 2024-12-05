@@ -550,6 +550,9 @@ attributes:
     domain_of:
     - CalibrationInformation
     range: DataObject
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   internal_calibration:
     name: internal_calibration
     description: whether internal calibration was used, if false, external calibration

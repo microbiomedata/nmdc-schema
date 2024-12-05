@@ -557,12 +557,12 @@
 <tr>
 <td><a href="../NomAnalysis/">NomAnalysis</a></td>
 <td></td>
-<td>yes</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
 <td></td>
-<td>yes</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -613,6 +613,9 @@ domain_of:
 - MetabolomicsAnalysis
 - NomAnalysis
 range: CalibrationInformation
+structured_pattern:
+  syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+  interpolated: true
 
 </code></pre>
 

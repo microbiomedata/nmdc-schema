@@ -557,7 +557,7 @@
 <tr>
 <td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
 <td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
-<td>yes</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -607,6 +607,9 @@ alias: generates_calibration
 domain_of:
 - MassSpectrometry
 range: CalibrationInformation
+structured_pattern:
+  syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+  interpolated: true
 
 </code></pre>
 
