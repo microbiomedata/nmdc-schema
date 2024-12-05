@@ -1,8 +1,15 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.partials.migrator_from_11_1_0_to_11_2_0 import (
+    get_migrator_classes,
+)
 
 
 class Migrator(MigratorBase):
-    r"""Migrates a database between two schemas."""
+    r"""
+    Migrates a database between two schemas.
+
+    Reference: https://pypi.org/project/nmdc-schema/#history
+    """
 
     _from_version = "11.1.0"
     _to_version = "11.2.0"
@@ -11,61 +18,16 @@ class Migrator(MigratorBase):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
 
-        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        >>> database = dict(
-        ...   data_generation_set=[
-        ...       {'id': 1, 'type': 'nmdc:MassSpectrometry'},
-        ...       {'id': 2, 'type': 'nmdc:MassSpectrometry', 'has_calibration': 'nmdc:calib-99-abc123'},
-        ...       {'id': 3, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'},
-        ...   ],
-        ... )
-        >>> m = Migrator(adapter=DictionaryAdapter(database=database))
-        >>> m.upgrade()
-        >>> database['data_generation_set'][0]
-        {'id': 1, 'type': 'nmdc:MassSpectrometry'}
-        >>> database['data_generation_set'][1]
-        {'id': 2, 'type': 'nmdc:MassSpectrometry', 'generates_calibration': 'nmdc:calib-99-abc123'}
-        >>> database['data_generation_set'][2]
-        {'id': 3, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'}
+        This migrator uses partial migrators. It runs them in the order in which they were designed to be run.
         """
 
-        self.adapter.process_each_document(
-            "data_generation_set",
-            [
-                self.rename_has_calibration_field,
-            ],
-        )
-
-    def rename_has_calibration_field(self, data_generation_document: dict) -> dict:
-        r"""
-        Renames the `has_calibration` field to `generates_calibration`, if the document represents
-        an instance of the `MassSpectrometry` class.
-
-        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        >>> m = Migrator(adapter=DictionaryAdapter(database={}))
-        >>> m.rename_has_calibration_field({'id': 1,
-        ...                                 'type': 'nmdc:MassSpectrometry'})  # test: lacks `has_calibration`
-        {'id': 1, 'type': 'nmdc:MassSpectrometry'}
-        >>> m.rename_has_calibration_field({'id': 1,
-        ...                                 'type': 'nmdc:MassSpectrometry',
-        ...                                 'has_calibration': 'nmdc:calib-99-abc123'})  # test: has `has_calibration`
-        {'id': 1, 'type': 'nmdc:MassSpectrometry', 'generates_calibration': 'nmdc:calib-99-abc123'}
-        >>> m.rename_has_calibration_field({'id': 1,
-        ...                                 'type': '__AnythingElse__',
-        ...                                 'has_calibration': 'nmdc:calib-99-abc123'})  # test: has different `type`
-        {'id': 1, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'}
-        """
-        if (
-            "type" in data_generation_document
-            and data_generation_document["type"] == "nmdc:MassSpectrometry"
-        ):
-            if "has_calibration" in data_generation_document:
-                self.logger.info(
-                    f"Renaming `has_calibration` field to `generates_calibration` "
-                    f"on document having id: {data_generation_document['id']}"
-                )
-                data_generation_document["generates_calibration"] = (
-                    data_generation_document.pop("has_calibration")
-                )
-
-        return data_generation_document
+        migrator_classes = get_migrator_classes()
+        num_migrators = len(migrator_classes)
+        for idx, migrator_class in enumerate(migrator_classes):
+            self.logger.info(f"Running migrator {idx + 1} of {num_migrators}")
+            self.logger.debug(
+                f"Migrating from {migrator_class.get_origin_version()} "
+                f"to {migrator_class.get_destination_version()}"
+            )
+            migrator = migrator_class(adapter=self.adapter, logger=self.logger)
+            migrator.upgrade()
