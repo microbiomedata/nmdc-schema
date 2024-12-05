@@ -7,8 +7,8 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11.1.0.part_1"
-    _to_version = "11.2.0"
+    _from_version = "11.2.0.part_1"
+    _to_version = "11.2.0.part_2"
 
     def upgrade(self):
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
