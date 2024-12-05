@@ -495,6 +495,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mappings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -537,6 +546,21 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
+<td>A set of genes or gene products in which all members are orthologous</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
+<td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../OntologyClass/">OntologyClass</a></td>
+<td>A representation of class defined in an external ontology</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../Pathway/">Pathway</a></td>
 <td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
 <td>no</td>
@@ -547,29 +571,14 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OntologyClass/">OntologyClass</a></td>
-<td>A representation of class defined in an external ontology</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
-<td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
-<td>no</td>
+<td><a href="../Study/">Study</a></td>
+<td>A study summarizes the overall goal of a research initiative and outlines the...</td>
+<td>yes</td>
 </tr>
 <tr>
 <td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
 <td></td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
-<td>A set of genes or gene products in which all members are orthologous</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Study/">Study</a></td>
-<td>A study summarizes the overall goal of a research initiative and outlines the...</td>
-<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -587,6 +596,29 @@
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
+<h2 id="mappings">Mappings</h2>
+<table>
+<thead>
+<tr>
+<th>Mapping Type</th>
+<th>Mapped Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>self</td>
+<td>nmdc:alternative_names</td>
+</tr>
+<tr>
+<td>native</td>
+<td>nmdc:alternative_names</td>
+</tr>
+<tr>
+<td>exact</td>
+<td>dcterms:alternative, skos:altLabel</td>
+</tr>
+</tbody>
+</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
