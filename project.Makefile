@@ -110,7 +110,7 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--report-style exhaustive
 
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database-interleaved.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
@@ -370,7 +370,7 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 		--output $@ \
 		--schema $< $(word 2,$^)
 
-local/Database-interleaved-class-count.tsv: src/data/problem/valid/Database-interleaved.yaml
+local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
@@ -381,7 +381,7 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 		--output $@
 
 .PHONY: generate-json-collections
-generate-json-collections: src/data/problem/valid/Database-interleaved.yaml
+generate-json-collections: src/data/valid/Database-interleaved.yaml
 	$(RUN) database-to-json-list-files \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb
