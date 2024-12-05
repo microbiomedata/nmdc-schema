@@ -275,6 +275,12 @@ prefixes:
   MIXS_yaml:
     prefix_prefix: MIXS_yaml
     prefix_reference: https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/
+  BFO:
+    prefix_prefix: BFO
+    prefix_reference: http://purl.obolibrary.org/obo/BFO_
+  owl:
+    prefix_prefix: owl
+    prefix_reference: http://www.w3.org/2002/07/owl#
 emit_prefixes:
 - KEGG.ORTHOLOGY
 - MASSIVE
@@ -4711,6 +4717,14 @@ slots:
     mixins:
     - object_set
     range: ChemicalEntity
+  ontology_class_set:
+    name: ontology_class_set
+    description: This property links a database object to the set of ontology classes
+      within it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    mixins:
+    - object_set
+    range: OntologyClass
   biosample_set:
     name: biosample_set
     description: This property links a database object to the set of samples within
@@ -17932,7 +17946,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: uriorcurie
     multivalued: true
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$
   start_date:
     name: start_date
     description: The date on which any process or activity was started
@@ -21184,7 +21198,6 @@ classes:
     - biolink:ChemicalSubstance
     is_a: OntologyClass
     slots:
-    - alternative_names
     - chemical_formula
     - inchi
     - inchi_key
@@ -21493,16 +21506,86 @@ classes:
     class_uri: nmdc:NamedThing
   OntologyClass:
     name: OntologyClass
-    notes:
-    - The identifiers for terms from external ontologies can't have their ids constrained
-      to the nmdc namespace
+    description: This class is used to represent ontology terms.
     from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - OntologyClass
+    exact_mappings:
+    - biolink:OntologyClass
+    - owl:Class
+    - schema:Class
     is_a: NamedThing
+    slots:
+    - alternative_names
     slot_usage:
       id:
         name: id
+        notes:
+        - The identifiers for terms from external ontologies can't have their ids
+          constrained to the nmdc namespace
         pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+    attributes:
+      definition:
+        name: definition
+        description: The definition of the ontology term as provided by the ontology.
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: string
+      relations:
+        name: relations
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyRelation
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
     class_uri: nmdc:OntologyClass
+  OntologyRelation:
+    name: OntologyRelation
+    description: A relationship between two ontology classes as specified either directly
+      in the ontology in the form of axioms (statements or assertions that defines
+      rules or constraints in an ontology) or inferred via reasoning.  The association
+      object is defined by two terms (the subject and the object) and the relationship
+      between them (the predicate). Because ontologies often have a plethora of relationships/axiom
+      types and can have additional metadata on the relationship itself, these kinds
+      of relationships are structured as a class instead of a simple set of slots
+      on OntologyClass itself.
+    comments:
+    - 'For example, the relationship between ''soil'' and ''enriched soil'' in the
+      Environmental Ontology (ENVO) is defined by the following axioms: ''enriched
+      soil'' subclass_of ''soil'', and ''enriched soil''  has_increased_levels_of
+      (some) ''material entity.''  Converting these stat∂ements to OntologyAssociations  so
+      they can be used in the NMDC data stores, the subject of the first axiom or
+      statement,  would be ''soil'', the predicate would be ''subclass_of'', and the
+      object would be ''enriched soil''.  For the second axiom, the subject would
+      be ''enriched soil'', the predicate would be ''has_increased_levels_of'', and
+      the object would be ''material entity.'' (Note that text labels are used in
+      this example for ease of understanding and  the literal values of subject, predicate,
+      and object in this class will be the id (curie) of the  `OntologyClass` as defined
+      below).  Not all ontology axioms (associations) between terms need to be  ingested
+      into the NMDC data stores.  In general, subclass_of and part_of relationships/axioms
+      are often  good default relations/associations to support ontology browsing
+      in user interfaces.'
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - OntologyAssociation
+    slots:
+    - type
+    attributes:
+      subject:
+        name: subject
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyClass
+        required: true
+      predicate:
+        name: predicate
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyClass
+        required: true
+      object:
+        name: object
+        from_schema: https://w3id.org/nmdc/basic_classes
+        range: OntologyClass
+        required: true
+    class_uri: nmdc:OntologyRelation
   FailureCategorization:
     name: FailureCategorization
     from_schema: https://w3id.org/nmdc/nmdc

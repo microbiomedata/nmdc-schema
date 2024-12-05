@@ -1,0 +1,19 @@
+id: CHEBI:17234
+name: glucose
+description: >-
+type: nmdc:OntologyClass
+relations:                         # http://purl.obolibrary.org/obo/CHEBI_24431
+  - subject: CHEBI:17234           # glucose
+    predicate: BFO:0000050         # subclassOf
+    object: CHEBI:33917            # aldohexose
+    type: nmdc:OntologyRelation
+alternative_identifiers:
+  - MetaCyc:Guloses
+  - PMID:24096672
+  - PMID:24367410
+  - CHEBI:33938                   # term merge
+  - CHEBI:33931                   # term merge
+  - INCHI:InChI=1S/C25H20N4O2/c1-31-19-13-11-18(12-14-19)25(30)29-24-21(15-26)23(20-9-5-6-10-22(20)28-24)27-16-17-7-3-2-4-8-17/h2-14H,16H2,1H3,(H2,27,28,29,30)
+  - INCHIKEY:FFHQNQNMELQOEF-UHFFFAOYSA-N
+  - SMILES:O=C(NC1=NC=2C(C(NCC3=CC=CC=C3)=C1C#N)=CC=CC2)C4=CC=C(OC)C=C4
+alternative_names:

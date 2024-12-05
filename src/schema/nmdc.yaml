@@ -399,9 +399,7 @@ classes:
     slot_usage:
       has_input:
         required: true
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -546,9 +544,7 @@ classes:
       mass:
         description: The output mass of the SubSampling Process.
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -581,9 +577,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -624,9 +618,7 @@ classes:
       volume:
         description: The volume of sample filtered.
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -684,9 +676,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -1155,6 +1145,13 @@ slots:
     description:
       This property links a database object to the set of chemical entities
       within it.
+  ontology_class_set:
+    mixins:
+      - object_set
+    range: OntologyClass
+    description:
+      This property links a database object to the set of ontology classes
+      within it.
   biosample_set:
     mixins: object_set
     range: Biosample
@@ -1264,6 +1261,7 @@ slots:
 
   completion_date:
     range: string
+
 
   container_size:
     range: QuantityValue
