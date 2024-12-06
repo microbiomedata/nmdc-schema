@@ -146,7 +146,10 @@ class Migrator(MigratorBase):
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> m = Migrator(adapter=DictionaryAdapter(database={}))
-        >>> m.calibration_mappings = {'nmdc:wfe-99-abc123': 'nmdc:calib-99-def456'}
+        >>> m.calibration_mappings = {
+        ...     'nmdc:wfe-99-abc123': 'nmdc:calib-99-def456',
+        ...     'nmdc:wfe-99-foobar': 'nmdc:calib-99-bazqux',
+        ... }
         >>> m.apply_calibration_mapping({'id': 'nmdc:wfe-99-abc123', 'type': 'nmdc:MetagenomeAnnotation'})  # id in map
         {'id': 'nmdc:wfe-99-abc123', 'type': 'nmdc:MetagenomeAnnotation', 'uses_calibration': 'nmdc:calib-99-def456'}
         >>> m.apply_calibration_mapping({'id': 'nmdc:wfe-00-abc123', 'type': 'nmdc:MetagenomeAnnotation'})  # random id
