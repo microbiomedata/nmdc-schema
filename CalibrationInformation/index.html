@@ -417,13 +417,25 @@
 <tbody>
 <tr>
 <td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td><a href="../has_calibration/">has_calibration</a></td>
+<td><a href="../generates_calibration/">generates_calibration</a></td>
 <td>range</td>
 <td><a href="./">CalibrationInformation</a></td>
 </tr>
 <tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../calibration_set/">calibration_set</a></td>
+<td>range</td>
+<td><a href="./">CalibrationInformation</a></td>
+</tr>
+<tr>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td><a href="../uses_calibration/">uses_calibration</a></td>
+<td>range</td>
+<td><a href="./">CalibrationInformation</a></td>
+</tr>
+<tr>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td><a href="../uses_calibration/">uses_calibration</a></td>
 <td>range</td>
 <td><a href="./">CalibrationInformation</a></td>
 </tr>
@@ -538,6 +550,9 @@ attributes:
     domain_of:
     - CalibrationInformation
     range: DataObject
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   internal_calibration:
     name: internal_calibration
     description: whether internal calibration was used, if false, external calibration
