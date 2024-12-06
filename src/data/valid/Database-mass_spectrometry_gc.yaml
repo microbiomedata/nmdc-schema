@@ -8,7 +8,7 @@ data_generation_set:
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
     has_chromatography_configuration: nmdc:chrcon-99-oW43DzG1   #defined below
     eluent_introduction_category: gas_chromatography
-    has_calibration: nmdc:calib-99-zUCd5Q                       #defined below
+    generates_calibration: nmdc:calib-99-zUCd5Q                       #defined below
     analyte_category: metabolome
     associated_studies:
       - nmdc:sty-00-555xxx
@@ -21,7 +21,7 @@ data_generation_set:
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
     has_chromatography_configuration: nmdc:chrcon-99-oW43DzG1   #defined below
     eluent_introduction_category: gas_chromatography
-    has_calibration: nmdc:calib-99-zUCd5Q                       #defined below
+    generates_calibration: nmdc:calib-99-zUCd5Q                       #defined below
     analyte_category: metabolome
     associated_studies:
       - nmdc:sty-00-555xxx

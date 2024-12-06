@@ -1,0 +1,53 @@
+data_generation_set:
+- id: nmdc:dgms-13-122e4240
+  name: Froze_Core_2015_S1_20_30_19_Metab
+  description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
+  has_input:
+  - nmdc:bsm-13-kem2v355
+  has_output:
+  - nmdc:dobj-13-vws2zc98
+  processing_institution: EMSL
+  type: nmdc:MassSpectrometry
+  alternative_identifiers:
+  - emsl:499777
+  analyte_category: metabolome
+  associated_studies:
+  - nmdc:sty-11-aygzgv51
+  instrument_used:
+  - nmdc:inst-14-fas8ny90
+  generates_calibration: nmdc:calib-14-dy7mc666
+  eluent_introduction_category: gas_chromatography
+  end_date: '2016-05-24 18:54:29.000'
+  has_chromatography_configuration: nmdc:chrcon-14-qpvt3v15
+  has_mass_spectrometry_configuration: nmdc:mscon-14-5jk7rg60
+  mod_date: '2024-11-07T15:02:18'
+  start_date: '2016-05-24 18:17:00.000'
+calibration_set:
+- id: nmdc:calib-14-93cjjw92
+  calibration_object: nmdc:dobj-13-rf3br219
+  name: GCMS FAMES calibration (GCMS_FAMEs_01_GCMS01_20160523)
+  description: Full scan GC-MS FAMES calibration run (GCMS_FAMEs_01_GCMS01_20160523)
+  internal_calibration: false
+  calibration_target: retention_index
+  calibration_standard: fames
+  type: nmdc:CalibrationInformation
+data_object_set:
+- id: nmdc:dobj-13-rf3br219
+  name: 'output: GCMS_FAMEs_01_GCMS01_20160523'
+  description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
+  file_size_bytes: 1818624
+  type: nmdc:DataObject
+  data_object_type: Reference Calibration File
+workflow_execution_set:
+- type: nmdc:MetabolomicsAnalysis
+  has_input:
+  - nmdc:dobj-13-f3b04f08
+  has_output:
+  - nmdc:dobj-13-hrf1h918
+  id: nmdc:wfmb-13-r954ws43.1
+  uses_calibration: nmdc:calib-14-93cjjw92
+  ended_at_time: '2021-01-07T23:54:40Z'
+  execution_resource: EMSL-RZR
+  git_url: https://github.com/microbiomedata/metaMS
+  started_at_time: '2021-01-07T23:54:40Z'
+  was_informed_by: nmdc:dgms-13-122e4240
