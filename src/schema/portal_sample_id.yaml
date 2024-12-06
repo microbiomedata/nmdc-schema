@@ -28,7 +28,7 @@ slots:
     description: Select all the data types associated or available for this biosample
     title: analysis/data type
     examples:
-      - value: metagenomics; metabolomics; proteomics
+      - value: metagenomics; metabolomics; metaproteomics
     from_schema: https://example.com/nmdc_dh
     see_also:
       - MIxS:investigation_type

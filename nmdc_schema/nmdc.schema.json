@@ -37,6 +37,16 @@
             "title": "ArchStrucEnum",
             "type": "string"
         },
+        "BinQualityEnum": {
+            "description": "",
+            "enum": [
+                "HQ",
+                "MQ",
+                "LQ"
+            ],
+            "title": "BinQualityEnum",
+            "type": "string"
+        },
         "BiolStatEnum": {
             "description": "",
             "enum": [
@@ -329,7 +339,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -5557,7 +5567,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -5723,7 +5733,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -5905,7 +5915,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -5925,6 +5935,13 @@
                 },
                 "chemical_formula": {
                     "description": "A generic grouping for molecular formulae and empirical formulae",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
                     "type": [
                         "string",
                         "null"
@@ -5958,6 +5975,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -6003,7 +6029,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6167,7 +6193,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6241,7 +6267,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6580,7 +6606,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -6618,6 +6644,16 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
+                },
+                "in_manifest": {
+                    "description": "one or more combinations of other DataObjects that can be analyzed together",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
                 },
                 "insdc_experiment_identifiers": {
                     "items": {
@@ -6812,6 +6848,16 @@
                         "null"
                     ]
                 },
+                "manifest_set": {
+                    "description": "This property links a database object to the set of manifests within it.",
+                    "items": {
+                        "$ref": "#/$defs/Manifest"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "material_processing_set": {
                     "description": "This property links a database object to the set of material processing within it.",
                     "items": {
@@ -6964,15 +7010,6 @@
             "title": "DeposEnvEnum",
             "type": "string"
         },
-        "DirectInfusionEnum": {
-            "description": "",
-            "enum": [
-                "direct_infusion",
-                "autosampler"
-            ],
-            "title": "DirectInfusionEnum",
-            "type": "string"
-        },
         "DissolvingProcess": {
             "additionalProperties": false,
             "description": "A mixing step where a soluble component is mixed with a liquid component.",
@@ -6980,7 +7017,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -7220,7 +7257,8 @@
                 "massive",
                 "gsc",
                 "zenodo",
-                "edi"
+                "edi",
+                "figshare"
             ],
             "title": "DoiProviderEnum",
             "type": "string"
@@ -7384,11 +7422,28 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -7408,6 +7463,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -7431,12 +7495,16 @@
             "description": "This class contains information pertaining to evaluating if a Metagenome-Assembled Genome (MAG) is eukaryotic.",
             "properties": {
                 "completeness": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "contamination": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
@@ -7521,7 +7589,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -7800,7 +7868,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -7923,6 +7991,9 @@
         "FileTypeEnum": {
             "description": "",
             "enum": [
+                "Virus Summary",
+                "Plasmid Summary",
+                "GeNomad Aggregated Classification",
                 "Reference Calibration File",
                 "Metagenome Raw Reads",
                 "Metagenome Raw Read 1",
@@ -8031,7 +8102,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -8369,22 +8440,11 @@
             "description": "",
             "properties": {
                 "count": {
+                    "description": "The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.",
                     "type": "integer"
                 },
                 "gene_function_id": {
                     "description": "The identifier for the gene function.",
-                    "type": "string"
-                },
-                "metagenome_annotation_id": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "description": "The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution",
                     "type": "string"
                 },
                 "type": {
@@ -8393,10 +8453,21 @@
                         "nmdc:FunctionalAnnotationAggMember"
                     ],
                     "type": "string"
+                },
+                "was_generated_by": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "type": "string"
                 }
             },
             "required": [
-                "metagenome_annotation_id",
+                "was_generated_by",
                 "gene_function_id",
                 "count",
                 "type"
@@ -8434,7 +8505,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -8778,7 +8849,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -8929,7 +9000,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9158,24 +9229,24 @@
             "description": "",
             "properties": {
                 "bin_name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "description": "Name of the metagenome-assembled genome.",
+                    "type": "string"
                 },
                 "bin_quality": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/BinQualityEnum",
+                    "description": "The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893)."
                 },
                 "completeness": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
                     ]
                 },
                 "contamination": {
+                    "description": "Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.",
+                    "minimum": 0,
                     "type": [
                         "number",
                         "null"
@@ -9193,54 +9264,64 @@
                     "description": "Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage."
                 },
                 "gene_count": {
+                    "description": "Number of genes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "gtdbtk_class": {
+                    "description": "Taxonomic class assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_domain": {
+                    "description": "Taxonomic domain assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_family": {
+                    "description": "Taxonomic family assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_genus": {
+                    "description": "Taxonomic genus assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_order": {
+                    "description": "Taxonomic order assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_phylum": {
+                    "description": "Taxonomic phylum assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "gtdbtk_species": {
+                    "description": "Taxonomic genus assigned by GTDB-Tk.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "members_id": {
+                    "description": "Names of the contigs that make up a metagenome-assembled genome.",
                     "items": {
                         "type": "string"
                     },
@@ -9250,36 +9331,48 @@
                     ]
                 },
                 "num_16s": {
+                    "description": "Number of 16s sequences detected, a subunit of prokaryotic ribosomes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "num_23s": {
+                    "description": "Number of 23 seqeuences detected, a subunit of ribosomes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "num_5s": {
+                    "description": "Number of 5s seqeuences detected, a subunit of ribosomes.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "num_t_rna": {
+                    "description": "Number of transfer transfer RNAs.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "number_of_contig": {
+                    "description": "Number of contigs",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "total_bases": {
+                    "description": "Total number of basepairs.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9294,6 +9387,7 @@
                 }
             },
             "required": [
+                "bin_name",
                 "type"
             ],
             "title": "MagBin",
@@ -9348,7 +9442,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9357,6 +9451,8 @@
                     ]
                 },
                 "binned_contig_num": {
+                    "description": "Number of contigs that ended up in a medium or high quality bin.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9435,18 +9531,23 @@
                     ]
                 },
                 "input_contig_num": {
+                    "description": "Total number of input contigs.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "low_depth_contig_num": {
+                    "description": "Number of contigs which were excluded from binning for depth of coverage.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
                     ]
                 },
                 "mags_list": {
+                    "description": "Contains detailed information about each metagenome-assembled genome.",
                     "items": {
                         "$ref": "#/$defs/MagBin"
                     },
@@ -9499,6 +9600,8 @@
                     "type": "string"
                 },
                 "too_short_contig_num": {
+                    "description": "Number of contigs which were excluded from binning for length.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9512,6 +9615,8 @@
                     "type": "string"
                 },
                 "unbinned_contig_num": {
+                    "description": "Number of contigs which did not end up in a medium or high quality bin.",
+                    "minimum": 0,
                     "type": [
                         "integer",
                         "null"
@@ -9538,6 +9643,70 @@
             ],
             "title": "MagsAnalysis",
             "type": "object"
+        },
+        "Manifest": {
+            "additionalProperties": false,
+            "description": "A qualified collection of DataObjects that can be analyzed together in the same experimental context.",
+            "properties": {
+                "alternative_identifiers": {
+                    "description": "A list of alternative identifiers for the entity.",
+                    "items": {
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "description": {
+                    "description": "a human-readable description of a thing",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "manifest_category": {
+                    "$ref": "#/$defs/ManifestCategoryEnum",
+                    "description": "The type of context in which the constituent DataObjects can be analyzed together."
+                },
+                "name": {
+                    "description": "A human readable label for an entity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:Manifest"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "manifest_category",
+                "id",
+                "type"
+            ],
+            "title": "Manifest",
+            "type": "object"
+        },
+        "ManifestCategoryEnum": {
+            "description": "A list of contexts in which some DataObjects can be analyzed together.",
+            "enum": [
+                "instrument_run",
+                "poolable_replicates",
+                "fractions"
+            ],
+            "title": "ManifestCategoryEnum",
+            "type": "string"
         },
         "MassAnalyzerEnum": {
             "description": "",
@@ -9614,7 +9783,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9652,19 +9821,11 @@
                     ]
                 },
                 "has_calibration": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
                     "description": "a calibration instance associated with a process",
-                    "type": "string"
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "has_chromatography_configuration": {
                     "description": "The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.",
@@ -9821,7 +9982,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9934,7 +10095,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10018,7 +10179,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10053,21 +10214,6 @@
                 },
                 "git_url": {
                     "description": "The url that points to the exact github location of a workflow.",
-                    "type": "string"
-                },
-                "has_calibration": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "a calibration instance associated with a process",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -10231,7 +10377,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10443,7 +10589,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -10828,7 +10974,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11017,7 +11163,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11074,15 +11220,6 @@
                     "description": "An output from a process.",
                     "items": {
                         "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_peptide_quantifications": {
-                    "items": {
-                        "$ref": "#/$defs/PeptideQuantification"
                     },
                     "type": [
                         "array",
@@ -11215,7 +11352,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11427,7 +11564,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11812,7 +11949,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -11971,7 +12108,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12209,7 +12346,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12244,21 +12381,6 @@
                 },
                 "git_url": {
                     "description": "The url that points to the exact github location of a workflow.",
-                    "type": "string"
-                },
-                "has_calibration": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "a calibration instance associated with a process",
                     "type": "string"
                 },
                 "has_failure_categorization": {
@@ -12378,7 +12500,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -12608,16 +12730,33 @@
         },
         "OntologyClass": {
             "additionalProperties": false,
-            "description": "",
+            "description": "This class is used to represent ontology terms.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -12640,6 +12779,15 @@
                         "null"
                     ]
                 },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -12653,6 +12801,36 @@
                 "type"
             ],
             "title": "OntologyClass",
+            "type": "object"
+        },
+        "OntologyRelation": {
+            "additionalProperties": false,
+            "description": "A relationship between two ontology classes as specified either directly in the ontology in the form of axioms (statements or assertions that defines rules or constraints in an ontology) or inferred via reasoning.  The association object is defined by two terms (the subject and the object) and the relationship between them (the predicate). Because ontologies often have a plethora of relationships/axiom types and can have additional metadata on the relationship itself, these kinds of relationships are structured as a class instead of a simple set of slots on OntologyClass itself.",
+            "properties": {
+                "object": {
+                    "type": "string"
+                },
+                "predicate": {
+                    "type": "string"
+                },
+                "subject": {
+                    "type": "string"
+                },
+                "type": {
+                    "description": "the class_uri of the class that has been instantiated",
+                    "enum": [
+                        "nmdc:OntologyRelation"
+                    ],
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type",
+                "subject",
+                "predicate",
+                "object"
+            ],
+            "title": "OntologyRelation",
             "type": "object"
         },
         "OrganismCountEnum": {
@@ -12672,11 +12850,28 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -12696,6 +12891,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -12731,11 +12935,28 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
                         "array",
+                        "null"
+                    ]
+                },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "definition": {
+                    "description": "The definition of the ontology term as provided by the ontology.",
+                    "type": [
+                        "string",
                         "null"
                     ]
                 },
@@ -12755,6 +12976,15 @@
                     "description": "A human readable label for an entity",
                     "type": [
                         "string",
+                        "null"
+                    ]
+                },
+                "relations": {
+                    "items": {
+                        "$ref": "#/$defs/OntologyRelation"
+                    },
+                    "type": [
+                        "array",
                         "null"
                     ]
                 },
@@ -12967,7 +13197,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13177,7 +13407,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13263,7 +13493,8 @@
                 "EMSL",
                 "Battelle",
                 "ANL",
-                "UCD_Genome_Center"
+                "UCD_Genome_Center",
+                "Azenta"
             ],
             "title": "ProcessingInstitutionEnum",
             "type": "string"
@@ -13285,7 +13516,7 @@
             "description": "This is used to link a metaproteomics analysis workflow to a specific protein",
             "properties": {
                 "all_proteins": {
-                    "description": "the grouped list of protein identifiers associated with the peptide sequences that were grouped to a best protein",
+                    "description": "the list of protein identifiers that are associated with the peptide sequence",
                     "items": {
                         "type": "string"
                     },
@@ -13295,7 +13526,7 @@
                     ]
                 },
                 "best_protein": {
-                    "description": "the specific protein identifier most correctly grouped to its associated peptide sequences",
+                    "description": "the specific protein identifier most correctly associated with the peptide sequence",
                     "type": [
                         "string",
                         "null"
@@ -13392,7 +13623,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13646,7 +13877,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -13835,7 +14066,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -14447,7 +14678,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -14608,7 +14839,7 @@
                 "alternative_identifiers": {
                     "description": "Unique identifier for a study submitted to additional resources. Matches that which has been submitted to NMDC",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -14922,7 +15153,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -15620,6 +15851,16 @@
             "description": "This property links a database object to the set of instruments within it.",
             "items": {
                 "$ref": "#/$defs/Instrument"
+            },
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "manifest_set": {
+            "description": "This property links a database object to the set of manifests within it.",
+            "items": {
+                "$ref": "#/$defs/Manifest"
             },
             "type": [
                 "array",

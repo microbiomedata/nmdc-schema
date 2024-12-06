@@ -21,8 +21,6 @@ classes:
     comments:
       - instances of this class may use a de novo assembly strategy in most or all cases relevant to NMDC
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slots:
       - asm_score
       - scaffolds
@@ -66,8 +64,6 @@ classes:
   MetatranscriptomeAssembly:
     class_uri: nmdc:MetatranscriptomeAssembly
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slots:
       - asm_score
       - scaffolds
@@ -114,8 +110,6 @@ classes:
     slots:
       - img_identifiers
       - gold_analysis_project_identifiers
-    in_subset:
-      - workflow subset
     slot_usage:
       id:
         required: true
@@ -145,8 +139,6 @@ classes:
     is_a: WorkflowExecution
     description: >-
       A workflow process that provides expression values and read counts for gene features predicted on the contigs.
-    in_subset:
-      - workflow subset
     slots:
       - img_identifiers
     slot_usage:
@@ -169,8 +161,6 @@ classes:
     description: A workflow execution activity that uses computational binning tools to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slots:
       - binned_contig_num
       - input_contig_num
@@ -198,8 +188,6 @@ classes:
     description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slot_usage:
       id:
         required: true
@@ -220,8 +208,6 @@ classes:
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
     title: Read quality control analysis activity
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slots:
       - input_base_count
       - input_read_bases
@@ -245,8 +231,6 @@ classes:
     description: A workflow execution activity that performs taxonomy classification using sequencing reads
     title: Read based analysis activity
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slot_usage:
       id:
         required: true
@@ -261,10 +245,9 @@ classes:
   MetabolomicsAnalysis:
     class_uri: nmdc:MetabolomicsAnalysis
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slots:
       - has_metabolite_identifications
+      - uses_calibration
     slot_usage:
       id:
         required: true
@@ -279,10 +262,8 @@ classes:
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
     slots:
-      - has_peptide_quantifications
+      - metaproteomics_analysis_category
     slot_usage:
       id:
         required: true
@@ -297,8 +278,8 @@ classes:
   NomAnalysis:
     class_uri: nmdc:NomAnalysis
     is_a: WorkflowExecution
-    in_subset:
-      - workflow subset
+    slots:
+      - uses_calibration
     slot_usage:
       id:
         required: true
@@ -309,16 +290,17 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
-
+     
 slots:
+
+  metaproteomics_analysis_category:
+    range: MetaproteomicsAnalysisCategoryEnum
+    description: >-
+      The category of metaproteomics analysis being performed.
+    required: true
 
   metagenome_assembly_parameter:
     abstract: true
-
-  has_peptide_quantifications:
-    range: PeptideQuantification
-    multivalued: true
-    inlined_as_list: true
 
   asm_score:
     is_a: metagenome_assembly_parameter
@@ -554,3 +536,14 @@ slots:
     range: MetaboliteIdentification
     multivalued: true
     inlined_as_list: true
+
+enums:
+  MetaproteomicsAnalysisCategoryEnum:
+    description: The category of metaproteomics analysis being performed.
+    permissible_values:
+      matched_metagenome:
+        description: >-
+          A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
+      in_silico_metagenome:
+        description: >-
+          A metaproteomics analysis that is matched to an in silico generated metagenome.

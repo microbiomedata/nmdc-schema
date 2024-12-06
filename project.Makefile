@@ -66,7 +66,15 @@ assets/other_mixs_yaml_files/cur_land_use_enum.yaml
 		'select(fileIndex==0).enums.cur_land_use_enum = select(fileIndex==1).enums.cur_land_use_enum | select(fileIndex==0)' \
 		$^ | cat > $@
 
-local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml: local/mixs_regen/mixs_subset_modified_inj_land_use.yaml \
+assets/other_mixs_yaml_files/TargetGeneEnum.yaml
+	yq eval-all \
+		'select(fileIndex==0).enums.TargetGeneEnum = select(fileIndex==1).enums.TargetGeneEnum | select(fileIndex==0)' \
+		$^ | cat > $@
+	yq -i '.slots.target_gene.range = "TargetGeneEnum"' $@
+
+
+local/mixs_regen/mixs_subset_modified_inj_env_broad_scale_alt_description.yaml: local/mixs_regen/mixs_subset_modified_inj_TargetGeneEnum.yaml \
 assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	yq eval-all \
 		'select(fileIndex==0).slots.env_broad_scale.annotations.tooltip = select(fileIndex==1).slots.env_broad_scale.annotations.tooltip | select(fileIndex==0)' \
@@ -102,7 +110,7 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--report-style exhaustive
 
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database-interleaved.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
@@ -138,7 +146,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
-		--output-yaml $@.tmp \
+		--output-yaml $@ \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
 		--selected-collections chemical_entity_set \
@@ -159,10 +167,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--client-base-url "https://api.microbiomedata.org" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
-	cat $@.tmp | \
-		yq eval 'del(.workflow_execution_set[].has_peptide_quantifications)' | \
-		cat > $@ # many has_peptide_quantifications.all_proteins values are missing prefixes (contaminants) https://github.com/microbiomedata/issues/issues/897
-	rm -rf $@.tmp
 
 ## ALTERNATIVELY:
 #local/mongo_as_unvalidated_nmdc_database.yaml:
@@ -366,7 +370,7 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 		--output $@ \
 		--schema $< $(word 2,$^)
 
-local/Database-interleaved-class-count.tsv: src/data/problem/valid/Database-interleaved.yaml
+local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
@@ -377,7 +381,7 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 		--output $@
 
 .PHONY: generate-json-collections
-generate-json-collections: src/data/problem/valid/Database-interleaved.yaml
+generate-json-collections: src/data/valid/Database-interleaved.yaml
 	$(RUN) database-to-json-list-files \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb

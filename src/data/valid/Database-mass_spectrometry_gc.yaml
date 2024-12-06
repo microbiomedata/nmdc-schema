@@ -8,11 +8,27 @@ data_generation_set:
     has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
     has_chromatography_configuration: nmdc:chrcon-99-oW43DzG1   #defined below
     eluent_introduction_category: gas_chromatography
-    has_calibration: nmdc:calib-99-zUCd5Q                       #defined below
+    generates_calibration: nmdc:calib-99-zUCd5Q                       #defined below
     analyte_category: metabolome
     associated_studies:
       - nmdc:sty-00-555xxx
-
+  - id: nmdc:dgms-99-oW43DzG2
+    type: nmdc:MassSpectrometry
+    has_input:
+      - nmdc:procsm-11-9gjxns62                                 #random example process sample
+    has_output:
+      - nmdc:dobj-11-9n9n91                                     #randome example data object
+    has_mass_spectrometry_configuration: nmdc:mscon-99-oW43DzG0 #defined below
+    has_chromatography_configuration: nmdc:chrcon-99-oW43DzG1   #defined below
+    eluent_introduction_category: gas_chromatography
+    generates_calibration: nmdc:calib-99-zUCd5Q                       #defined below
+    analyte_category: metabolome
+    associated_studies:
+      - nmdc:sty-00-555xxx
+manifest_set:
+  - id: nmdc:manif-99-krhtest
+    type: nmdc:Manifest
+    manifest_category: instrument_run
 calibration_set:
   - id: nmdc:calib-99-zUCd5Q
     type: nmdc:CalibrationInformation
@@ -47,6 +63,8 @@ data_object_set:
     name: emsl_calibration_run.raw                        #example name
     description: GCMS data file
     file_size_bytes: 9208349052
+    in_manifest:
+      - nmdc:manif-99-krhtest                                   #defined below
   - id: nmdc:dobj-11-9n9n9n
     type: nmdc:DataObject
     data_category: instrument_data
@@ -54,3 +72,5 @@ data_object_set:
     name: example_gcms_emsl_run.raw                      #example name
     description: GCMS data file
     file_size_bytes: 9208349052
+    in_manifest:
+      - nmdc:manif-99-krhtest                                   #defined below

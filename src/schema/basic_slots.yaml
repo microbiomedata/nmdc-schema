@@ -15,7 +15,6 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
 
 imports:
-  - nmdc_subsets
   - nmdc_types
 
 default_prefix: nmdc
@@ -137,7 +136,7 @@ slots:
       - See issue 207 - this clashes with the mixs field
 
   language:
-    range: language code
+    range: language_code
     description: Should use ISO 639-1 code e.g. "en", "fr"
 
   has_raw_value:
@@ -173,7 +172,7 @@ slots:
     range: boolean
 
   latitude:
-    range: decimal degree
+    range: decimal_degree
     description: latitude
     slot_uri: wgs84:lat
     examples:
@@ -182,7 +181,7 @@ slots:
       - schema:latitude
 
   longitude:
-    range: decimal degree
+    range: decimal_degree
     description: longitude
     slot_uri: wgs84:long
     examples:
@@ -256,8 +255,6 @@ slots:
     aliases:
       - DOI
       - digital object identifier
-    in_subset:
-      - data_portal_subset
     range: uriorcurie
     pattern: '^doi:10.\d{2,9}/.*$'
     examples:
@@ -274,8 +271,6 @@ slots:
     range: DoiProviderEnum
     close_mappings:
       - NCIT:C74932
-    in_subset:
-      - data_portal_subset
     examples:
       - value: ess_dive
         description: The corresponding DOI is associated with ESS-DIVE.
@@ -285,8 +280,6 @@ slots:
       The resource type the corresponding doi resolves to.
     range: DoiCategoryEnum
     required: true
-    in_subset:
-      - data_portal_subset
     examples:
       - value: dataset_doi
         description: The corresponding DOI is a dataset resource type.
@@ -550,7 +543,7 @@ slots:
     multivalued: true
     description: >-
       A list of alternative identifiers for the entity.
-    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
+    pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$'
 
   start_date:
     range: string
@@ -1107,6 +1100,8 @@ enums:
       nom:
         aliases:
           - natural organic matter
+      amplicon_sequencing_assay:
+        meaning: OBI:0002767 
   
   NucleotideSequencingEnum:
     inherits:
@@ -1125,6 +1120,7 @@ enums:
       - permissible_values:
           metagenome:
           metatranscriptome:
+          amplicon_sequencing_assay:
 
   ExtractionTargetEnum:
     permissible_values:

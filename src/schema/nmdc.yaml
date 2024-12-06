@@ -159,17 +159,13 @@ classes:
       - CHMO:0000470
     slots:
       - eluent_introduction_category
-      - has_calibration
+      - generates_calibration
       - has_chromatography_configuration
       - has_mass_spectrometry_configuration
     slot_usage:
       id:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-      has_calibration:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
           interpolated: true
       has_chromatography_configuration:
         structured_pattern:
@@ -182,16 +178,16 @@ classes:
       analyte_category: 
         range: MassSpectrometryEnum
     rules:
-      - title: has_calibration_required_if_gc
+      - title: generates_calibration_required_if_gc
         description: >-
-          If eluent_introduction_category is gas_chromatography, then has_calibration is required.
+          If eluent_introduction_category is gas_chromatography, then generates_calibration is required.
         preconditions:
           slot_conditions:
             eluent_introduction_category:
               equals_string: gas_chromatography
         postconditions:
           slot_conditions:
-            has_calibration:
+            generates_calibration:
               required: true
       - title: has_chromatography_configuration_required_if_lc_or_gc
         description: >-
@@ -258,6 +254,19 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+  
+  Manifest:
+    is_a: InformationObject
+    class_uri: nmdc:Manifest
+    description: A qualified collection of DataObjects that can be analyzed together in the same experimental context.
+    comments:
+      - Manifest are currently uncoupled from other modelling. For example, there is no schema requirement that DataObjects in a fractions Manifest were all obtained by analyzing the same ProcessedSample.
+    slots:
+      - manifest_category
+    slot_usage:
+      id:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$" 
 
   CalibrationInformation:
       class_uri: nmdc:CalibrationInformation
@@ -304,15 +313,18 @@ classes:
   FunctionalAnnotationAggMember:
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
-      - metagenome_annotation_id
+      - was_generated_by
       - gene_function_id
       - count
       - type
     slot_usage:
-      metagenome_annotation_id:
-        structured_pattern: # doesn't include act
-          syntax: "{id_nmdc_prefix}:(wfmgan|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
+      was_generated_by:
+        structured_pattern:
+          syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
+        required: true
+      count: 
+          description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
 
   Database:
     class_uri: nmdc:Database
@@ -338,6 +350,7 @@ classes:
       - functional_annotation_set
       - genome_feature_set
       - instrument_set
+      - manifest_set
       - material_processing_set
       - processed_sample_set
       - protocol_execution_set
@@ -386,9 +399,7 @@ classes:
     slot_usage:
       has_input:
         required: true
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -533,9 +544,7 @@ classes:
       mass:
         description: The output mass of the SubSampling Process.
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -568,9 +577,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$"
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern: # MAM 2024-05-22 isn't that inherited from a parent class?
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -611,9 +618,7 @@ classes:
       volume:
         description: The volume of sample filtered.
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -671,9 +676,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$"
       has_input:
-        any_of:
-          - range: Biosample
-          - range: ProcessedSample
+        range: Sample
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
           interpolated: true
@@ -952,13 +955,30 @@ enums:
 
 
 slots:
-  has_calibration:
+  generates_calibration:
     range: CalibrationInformation
-    description: a calibration instance associated with a process
+    description: calibration information is generated a process
+    comments:
+      - A gas chromatography mass spectromery run generates data to calibrate the retention index
+    structured_pattern:
+      syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+      interpolated: true
+
+  uses_calibration:
+    range: CalibrationInformation
+    description: calibration information is used by a process
+    comments:
+      - Retenion index calibration data generated by a gas chromatography mass spectromery run is used when analyzing metabolomics data 
+    structured_pattern:
+      syntax: "{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$"
+      interpolated: true 
 
   calibration_object:
     range: DataObject
     description: the file containing calibration data object
+    structured_pattern:
+      syntax: "{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$"
+      interpolated: true
 
   internal_calibration:
     range: boolean
@@ -1043,23 +1063,17 @@ slots:
     range: ChromatographyConfiguration
     description: The identifier of the associated ChromatographyConfiguration, providing information about how a sample was introduced into the mass spectrometer.
 
-  metagenome_annotation_id:
-    range: WorkflowExecution
-    description: The identifier for the analysis activity that generated the functional annotation results, where the analysis activity is an instance of the/an appropriate subclass of WorkflowExecution
-    required: true
-    any_of:
-      - range: MetagenomeAnnotation
-      - range: MetatranscriptomeAnnotation
-
   gene_function_id:
     range: uriorcurie
     description: The identifier for the gene function.
     examples:
       - value: KEGG.ORTHOLOGY:K00627
     required: true
+
   count:
     range: integer
     required: true
+
   functional_annotation_agg:
     range: FunctionalAnnotationAggMember
     multivalued: true
@@ -1141,6 +1155,13 @@ slots:
     description:
       This property links a database object to the set of chemical entities
       within it.
+  ontology_class_set:
+    mixins:
+      - object_set
+    range: OntologyClass
+    description:
+      This property links a database object to the set of ontology classes
+      within it.
   biosample_set:
     mixins: object_set
     range: Biosample
@@ -1212,6 +1233,11 @@ slots:
     range: Configuration
     description: This property links a database object to the set of configurations within it.
 
+  manifest_set:
+    mixins: object_set
+    range: Manifest
+    description: This property links a database object to the set of manifests within it.
+
   protocol_execution_set:
     mixins: object_set
     range: ProtocolExecution
@@ -1245,6 +1271,7 @@ slots:
 
   completion_date:
     range: string
+
 
   container_size:
     range: QuantityValue
