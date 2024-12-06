@@ -36,7 +36,7 @@ class Migrator(MigratorBase):
             ],
         )
 
-    def rename_has_calibration_field(self, data_generation_document: dict) -> dict:
+    def rename_has_calibration_field(self, data_generation: dict) -> dict:
         r"""
         Renames the `has_calibration` field to `generates_calibration`, if the document represents
         an instance of the `MassSpectrometry` class.
@@ -55,17 +55,14 @@ class Migrator(MigratorBase):
         ...                                 'has_calibration': 'nmdc:calib-99-abc123'})  # test: has different `type`
         {'id': 1, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'}
         """
-        if (
-            "type" in data_generation_document
-            and data_generation_document["type"] == "nmdc:MassSpectrometry"
-        ):
-            if "has_calibration" in data_generation_document:
+        if data_generation.get("type") == "nmdc:MassSpectrometry":
+            if "has_calibration" in data_generation:
                 self.logger.info(
                     f"Renaming `has_calibration` field to `generates_calibration` "
-                    f"on document having id: {data_generation_document['id']}"
+                    f"on document having id: {data_generation['id']}"
                 )
-                data_generation_document["generates_calibration"] = (
-                    data_generation_document.pop("has_calibration")
+                data_generation["generates_calibration"] = (
+                    data_generation.pop("has_calibration")
                 )
 
-        return data_generation_document
+        return data_generation
