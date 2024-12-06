@@ -70,16 +70,22 @@ class Migrator(MigratorBase):
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> m = Migrator(adapter=DictionaryAdapter(database={}))
-        >>> m.rename_has_calibration_field({'id': 1,
-        ...                                 'type': 'nmdc:MassSpectrometry'})  # test: lacks `has_calibration`
+        >>> m.rename_has_calibration_field({
+        ...     'id': 1,
+        ...     'type': 'nmdc:MassSpectrometry',
+        ... })  # test: lacks `has_calibration`
         {'id': 1, 'type': 'nmdc:MassSpectrometry'}
-        >>> m.rename_has_calibration_field({'id': 1,
-        ...                                 'type': 'nmdc:MassSpectrometry',
-        ...                                 'has_calibration': 'nmdc:calib-99-abc123'})  # test: has `has_calibration`
+        >>> m.rename_has_calibration_field({
+        ...     'id': 1,
+        ...     'type': 'nmdc:MassSpectrometry',
+        ...     'has_calibration': 'nmdc:calib-99-abc123',
+        ... })  # test: has `has_calibration`
         {'id': 1, 'type': 'nmdc:MassSpectrometry', 'generates_calibration': 'nmdc:calib-99-abc123'}
-        >>> m.rename_has_calibration_field({'id': 1,
-        ...                                 'type': '__AnythingElse__',
-        ...                                 'has_calibration': 'nmdc:calib-99-abc123'})  # test: has different `type`
+        >>> m.rename_has_calibration_field({
+        ...     'id': 1,
+        ...     'type': '__AnythingElse__',
+        ...     'has_calibration': 'nmdc:calib-99-abc123',
+        ... })  # test: has different `type`
         {'id': 1, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'}
         """
         if data_generation.get("type") == "nmdc:MassSpectrometry":
@@ -116,10 +122,10 @@ class Migrator(MigratorBase):
         #       preparing us to—eventually—set the associated `workflow_execution_set` document's `uses_calibration`
         #       field to the value that was in the input document's (now deleted) `has_calibration` field.
         >>> m.determine_calibration_mapping({
-        ...    'id': 'nmdc:dgms-99-000111',
-        ...    'type': 'nmdc:MassSpectrometry',
-        ...    'analyte_category': 'nom',
-        ...    'has_calibration': 'nmdc:calib-99-000000',
+        ...     'id': 'nmdc:dgms-99-000111',
+        ...     'type': 'nmdc:MassSpectrometry',
+        ...     'analyte_category': 'nom',
+        ...     'has_calibration': 'nmdc:calib-99-000000',
         ... })
         {'id': 'nmdc:dgms-99-000111', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom'}
         >>> len(m.calibration_mappings.items())
@@ -129,10 +135,10 @@ class Migrator(MigratorBase):
 
         # Test: Since the `analyte_category` is not `nom`, the input document retains its `has_calibration` field.
         >>> m.determine_calibration_mapping({
-        ...    'id': 'nmdc:dgms-99-000222',
-        ...    'type': 'nmdc:MassSpectrometry',
-        ...    'analyte_category': 'metabolome',
-        ...    'has_calibration': 'nmdc:calib-99-000111',
+        ...     'id': 'nmdc:dgms-99-000222',
+        ...     'type': 'nmdc:MassSpectrometry',
+        ...     'analyte_category': 'metabolome',
+        ...     'has_calibration': 'nmdc:calib-99-000111',
         ... })
         {'id': 'nmdc:dgms-99-000222', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'metabolome', 'has_calibration': 'nmdc:calib-99-000111'}
         >>> len(m.calibration_mappings.items())
@@ -142,10 +148,10 @@ class Migrator(MigratorBase):
 
         # Test: No changes to input document or mappings, since `analyte_category` is neither `nom` nor `metabolome`.
         >>> m.determine_calibration_mapping({
-        ...    'id': 'nmdc:dgms-99-000333',
-        ...    'type': 'nmdc:MassSpectrometry',
-        ...    'analyte_category': 'lipidome',
-        ...    'has_calibration': 'nmdc:calib-99-000333',
+        ...     'id': 'nmdc:dgms-99-000333',
+        ...     'type': 'nmdc:MassSpectrometry',
+        ...     'analyte_category': 'lipidome',
+        ...     'has_calibration': 'nmdc:calib-99-000333',
         ... })
         {'id': 'nmdc:dgms-99-000333', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'lipidome', 'has_calibration': 'nmdc:calib-99-000333'}
         >>> len(m.calibration_mappings.items())  # no mappings were created
@@ -153,9 +159,9 @@ class Migrator(MigratorBase):
 
         # Test: No changes to input document or mappings, since input document lacks calibration-related field.
         >>> m.determine_calibration_mapping({
-        ...    'id': 'nmdc:dgms-99-000444',
-        ...    'type': 'nmdc:MassSpectrometry',
-        ...    'analyte_category': 'nom',
+        ...     'id': 'nmdc:dgms-99-000444',
+        ...     'type': 'nmdc:MassSpectrometry',
+        ...     'analyte_category': 'nom',
         ... })
         {'id': 'nmdc:dgms-99-000444', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom'}
         >>> len(m.calibration_mappings.items())  # no mappings were created
@@ -165,10 +171,10 @@ class Migrator(MigratorBase):
         #       In other words, in our database (at the top of this set of doctests), there is no
         #       `workflow_execution_set` document whose `was_informed_by` field consists of `nmdc:dgms-99-000555`.
         >>> m.determine_calibration_mapping({
-        ...    'id': 'nmdc:dgms-99-000555',
-        ...    'type': 'nmdc:MassSpectrometry',
-        ...    'analyte_category': 'nom',
-        ...    'has_calibration': 'nmdc:calib-99-000444',
+        ...     'id': 'nmdc:dgms-99-000555',
+        ...     'type': 'nmdc:MassSpectrometry',
+        ...     'analyte_category': 'nom',
+        ...     'has_calibration': 'nmdc:calib-99-000444',
         ... })
         {'id': 'nmdc:dgms-99-000555', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom', 'has_calibration': 'nmdc:calib-99-000444'}
         >>> len(m.calibration_mappings.items())  # no mappings were created
