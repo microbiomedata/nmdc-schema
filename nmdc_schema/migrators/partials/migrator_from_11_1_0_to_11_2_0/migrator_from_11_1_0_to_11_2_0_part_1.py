@@ -20,22 +20,26 @@ class Migrator(MigratorBase):
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> database = dict(
-        ...   data_generation_set=[
-        ...       {'id': 1, 'type': 'nmdc:MassSpectrometry'},
-        ...       {'id': 2, 'type': 'nmdc:MassSpectrometry', 'has_calibration': 'nmdc:calib-99-abc123'},
-        ...       {'id': 3, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'},
-        ...   ],
+        ...     data_generation_set=[
+        ...         {'id': 'nmdc:dgms-99-000111', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom', 'has_calibration': 'nmdc:calib-99-000111'},
+        ...         {'id': 'nmdc:dgms-99-000222', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'metabolome', 'has_calibration': 'nmdc:calib-99-000222'},
+        ...     ],
+        ...     workflow_execution_set=[
+        ...         {'id': 'nmdc:wfnom-99-000111', 'type': 'nmdc:NomAnalysis', 'was_informed_by': 'nmdc:dgms-99-000111'},
+        ...         {'id': 'nmdc:wfnom-99-000222', 'type': 'nmdc:NomAnalysis', 'was_informed_by': 'nmdc:dgms-99-000222'},
+        ...     ],
         ... )
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
+        >>> m.calibration_mappings = {}
         >>> m.upgrade()
-        >>> database['data_generation_set'][0]
-        {'id': 1, 'type': 'nmdc:MassSpectrometry'}
-        >>> database['data_generation_set'][1]
-        {'id': 2, 'type': 'nmdc:MassSpectrometry', 'generates_calibration': 'nmdc:calib-99-abc123'}
-        >>> database['data_generation_set'][2]
-        {'id': 3, 'type': '__AnythingElse__', 'has_calibration': 'nmdc:calib-99-abc123'}
-
-        TODO: Update doctests to account for the two added function calls.
+        >>> database['data_generation_set'][0]  # test: loses `has_calibration` (and then `generates_calibration`) field
+        {'id': 'nmdc:dgms-99-000111', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom'}
+        >>> database['data_generation_set'][1]  # test: `has_calibration` field gets renamed to `generates_calibration`
+        {'id': 'nmdc:dgms-99-000222', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'metabolome', 'generates_calibration': 'nmdc:calib-99-000222'}
+        >>> database['workflow_execution_set'][0]  # test: gains `uses_calibration` field
+        {'id': 'nmdc:wfnom-99-000111', 'type': 'nmdc:NomAnalysis', 'was_informed_by': 'nmdc:dgms-99-000111', 'uses_calibration': 'nmdc:calib-99-000111'}
+        >>> database['workflow_execution_set'][1]  # test: gains `uses_calibration` field
+        {'id': 'nmdc:wfnom-99-000222', 'type': 'nmdc:NomAnalysis', 'was_informed_by': 'nmdc:dgms-99-000222', 'uses_calibration': 'nmdc:calib-99-000222'}
         """
 
         self.adapter.process_each_document(
@@ -99,12 +103,12 @@ class Migrator(MigratorBase):
         `has_calibration` field from that `data_generation_set` document.
 
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        >>> database = {
-        ...     'workflow_execution_set': [
-        ...         {'id': 'nmdc:wfe-99-000000', 'was_informed_by': 'nmdc:dgms-99-000111'},
-        ...         {'id': 'nmdc:wfe-99-000111', 'was_informed_by': 'nmdc:dgms-99-000222'},
+        >>> database = dict(
+        ...     workflow_execution_set=[
+        ...         {'id': 'nmdc:wfnom-99-000000', 'type': 'nmdc:NomAnalysis', 'was_informed_by': 'nmdc:dgms-99-000111'},
+        ...         {'id': 'nmdc:wfnom-99-000111', 'type': 'nmdc:NomAnalysis', 'was_informed_by': 'nmdc:dgms-99-000222'},
         ...     ]
-        ... }
+        ... )
         >>> m = Migrator(adapter=DictionaryAdapter(database=database))
         >>> m.calibration_mappings = {}
 
@@ -120,7 +124,7 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:dgms-99-000111', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom'}
         >>> len(m.calibration_mappings.items())
         1
-        >>> m.calibration_mappings['nmdc:wfe-99-000000']
+        >>> m.calibration_mappings['nmdc:wfnom-99-000000']
         'nmdc:calib-99-000000'
 
         # Test: Since the `analyte_category` is not `nom`, the input document retains its `has_calibration` field.
@@ -133,7 +137,7 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:dgms-99-000222', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'metabolome', 'has_calibration': 'nmdc:calib-99-000111'}
         >>> len(m.calibration_mappings.items())
         2
-        >>> m.calibration_mappings['nmdc:wfe-99-000111']
+        >>> m.calibration_mappings['nmdc:wfnom-99-000111']
         'nmdc:calib-99-000111'
 
         # Test: No changes to input document or mappings, since `analyte_category` is neither `nom` nor `metabolome`.
@@ -217,13 +221,13 @@ class Migrator(MigratorBase):
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> m = Migrator(adapter=DictionaryAdapter(database={}))
         >>> m.calibration_mappings = {
-        ...     'nmdc:wfe-99-abc123': 'nmdc:calib-99-def456',
-        ...     'nmdc:wfe-99-foobar': 'nmdc:calib-99-bazqux',
+        ...     'nmdc:wfnom-99-abc123': 'nmdc:calib-99-def456',
+        ...     'nmdc:wfnom-99-foobar': 'nmdc:calib-99-bazqux',
         ... }
-        >>> m.apply_calibration_mapping({'id': 'nmdc:wfe-99-abc123', 'type': 'nmdc:MetagenomeAnnotation'})  # id in map
-        {'id': 'nmdc:wfe-99-abc123', 'type': 'nmdc:MetagenomeAnnotation', 'uses_calibration': 'nmdc:calib-99-def456'}
-        >>> m.apply_calibration_mapping({'id': 'nmdc:wfe-00-abc123', 'type': 'nmdc:MetagenomeAnnotation'})  # random id
-        {'id': 'nmdc:wfe-00-abc123', 'type': 'nmdc:MetagenomeAnnotation'}
+        >>> m.apply_calibration_mapping({'id': 'nmdc:wfnom-99-abc123', 'type': 'nmdc:MetagenomeAnnotation'})  # id is in mapping dictionary
+        {'id': 'nmdc:wfnom-99-abc123', 'type': 'nmdc:MetagenomeAnnotation', 'uses_calibration': 'nmdc:calib-99-def456'}
+        >>> m.apply_calibration_mapping({'id': 'nmdc:wfnom-00-abc123', 'type': 'nmdc:MetagenomeAnnotation'})  # id is not in mapping dictionary
+        {'id': 'nmdc:wfnom-00-abc123', 'type': 'nmdc:MetagenomeAnnotation'}
         """
         workflow_execution_id = workflow_execution["id"]
 
