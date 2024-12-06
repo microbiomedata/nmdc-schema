@@ -156,6 +156,19 @@ class Migrator(MigratorBase):
         {'id': 'nmdc:dgms-99-000444', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom'}
         >>> len(m.calibration_mappings.items())  # no mappings were created
         2
+
+        # Test: No changes to input document or mappings, since no relevant `workflow_execution_set` document exists.
+        #       In other words, in our database (at the top of this set of doctests), there is no
+        #       `workflow_execution_set` document whose `was_informed_by` field consists of `nmdc:dgms-99-000555`.
+        >>> m.determine_calibration_mapping({
+        ...    'id': 'nmdc:dgms-99-000555',
+        ...    'type': 'nmdc:MassSpectrometry',
+        ...    'analyte_category': 'nom',
+        ...    'has_calibration': 'nmdc:calib-99-000444',
+        ... })
+        {'id': 'nmdc:dgms-99-000555', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom', 'has_calibration': 'nmdc:calib-99-000444'}
+        >>> len(m.calibration_mappings.items())  # no mappings were created
+        2
         """
 
         # Make handy aliases for some values.
