@@ -98,7 +98,64 @@ class Migrator(MigratorBase):
         `data_generation_set` document is "nom" (and not "metabolome"), deletes the `generates_calibration` or
         `has_calibration` field from that `data_generation_set` document.
 
-        TODO: Add doctests.
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = {
+        ...     'workflow_execution_set': [
+        ...         {'id': 'nmdc:wfe-99-000000', 'was_informed_by': 'nmdc:dgms-99-000111'},
+        ...         {'id': 'nmdc:wfe-99-000111', 'was_informed_by': 'nmdc:dgms-99-000222'},
+        ...     ]
+        ... }
+        >>> m = Migrator(adapter=DictionaryAdapter(database=database))
+        >>> m.calibration_mappings = {}
+
+        # Test: Function deletes `has_calibration` field from input document and adds an item to the mapping dictionary,
+        #       preparing us to—eventually—set the associated `workflow_execution_set` document's `uses_calibration`
+        #       field to the value that was in the input document's (now deleted) `has_calibration` field.
+        >>> m.determine_calibration_mapping({
+        ...    'id': 'nmdc:dgms-99-000111',
+        ...    'type': 'nmdc:MassSpectrometry',
+        ...    'analyte_category': 'nom',
+        ...    'has_calibration': 'nmdc:calib-99-000000',
+        ... })
+        {'id': 'nmdc:dgms-99-000111', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom'}
+        >>> len(m.calibration_mappings.items())
+        1
+        >>> m.calibration_mappings['nmdc:wfe-99-000000']
+        'nmdc:calib-99-000000'
+
+        # Test: Since the `analyte_category` is not `nom`, the input document retains its `has_calibration` field.
+        >>> m.determine_calibration_mapping({
+        ...    'id': 'nmdc:dgms-99-000222',
+        ...    'type': 'nmdc:MassSpectrometry',
+        ...    'analyte_category': 'metabolome',
+        ...    'has_calibration': 'nmdc:calib-99-000111',
+        ... })
+        {'id': 'nmdc:dgms-99-000222', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'metabolome', 'has_calibration': 'nmdc:calib-99-000111'}
+        >>> len(m.calibration_mappings.items())
+        2
+        >>> m.calibration_mappings['nmdc:wfe-99-000111']
+        'nmdc:calib-99-000111'
+
+        # Test: No changes to input document or mappings, since `analyte_category` is neither `nom` nor `metabolome`.
+        >>> m.determine_calibration_mapping({
+        ...    'id': 'nmdc:dgms-99-000333',
+        ...    'type': 'nmdc:MassSpectrometry',
+        ...    'analyte_category': 'lipidome',
+        ...    'has_calibration': 'nmdc:calib-99-000333',
+        ... })
+        {'id': 'nmdc:dgms-99-000333', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'lipidome', 'has_calibration': 'nmdc:calib-99-000333'}
+        >>> len(m.calibration_mappings.items())  # no mappings were created
+        2
+
+        # Test: No changes to input document or mappings, since input document lacks calibration-related field.
+        >>> m.determine_calibration_mapping({
+        ...    'id': 'nmdc:dgms-99-000444',
+        ...    'type': 'nmdc:MassSpectrometry',
+        ...    'analyte_category': 'nom',
+        ... })
+        {'id': 'nmdc:dgms-99-000444', 'type': 'nmdc:MassSpectrometry', 'analyte_category': 'nom'}
+        >>> len(m.calibration_mappings.items())  # no mappings were created
+        2
         """
 
         # Make handy aliases for some values.
