@@ -1081,27 +1081,6 @@ enums:
   #      submitted: { }
   #      superseded: { }
   #      withdrawn: { }
-
-  AnalyteCategoryEnum:
-    permissible_values:
-      metagenome:
-        aliases:
-          - metaG
-      metatranscriptome:
-        aliases:
-          - metaT
-      metaproteome:
-        aliases:
-          - metaP
-      metabolome:
-        aliases:
-          - metaB
-      lipidome: { }
-      nom:
-        aliases:
-          - natural organic matter
-      amplicon_sequencing_assay:
-        meaning: OBI:0002767 
   
   NucleotideSequencingEnum:
     permissible_values:
