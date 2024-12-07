@@ -1108,31 +1108,31 @@ enums:
       metagenome:
         aliases:
           - metaG
-        title: Metagenome
+        #title: Metagenome
       metatranscriptome:
         aliases:
           - metaT  
-        title: Metatranscriptome
+       # title: Metatranscriptome
       amplicon_sequencing_assay:
         meaning: OBI:0002767
-        title: Amplicon
+        #title: Amplicon
         
   MassSpectrometryEnum:
     permissible_values:
       metaproteome:
         aliases:
           - metaP
-        title: Metaproteome
+       # title: Metaproteome
       metabolome:
         aliases:
           - metaB
-        title: Metabolome
+       # title: Metabolome
       lipidome: { }
-        title: Lipidome
+       # title: Lipidome
       nom:
         aliases:
           - natural organic matter
-        title: Natural Organic Matter
+        #title: Natural Organic Matter
         
   ExtractionTargetEnum:
     permissible_values:
