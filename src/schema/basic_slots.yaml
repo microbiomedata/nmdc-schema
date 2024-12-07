@@ -1115,7 +1115,7 @@ enums:
         title: Metatranscriptome
       amplicon_sequencing_assay:
         meaning: OBI:0002767
-        Title: Amplicon
+        title: Amplicon
         
   MassSpectrometryEnum:
     permissible_values:
