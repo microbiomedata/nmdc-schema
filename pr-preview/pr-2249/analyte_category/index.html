@@ -548,11 +548,6 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../DataGeneration/">DataGeneration</a></td>
-<td>The methods and processes used to generate omics data from a biosample or org...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
 <td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
 <td>yes</td>
@@ -562,12 +557,17 @@
 <td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
 <td>yes</td>
 </tr>
+<tr>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td>The methods and processes used to generate omics data from a biosample or org...</td>
+<td>no</td>
+</tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../AnalyteCategoryEnum/">AnalyteCategoryEnum</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
 <p>Required: True</p>
@@ -608,7 +608,7 @@ rank: 1000
 alias: analyte_category
 domain_of:
 - DataGeneration
-range: AnalyteCategoryEnum
+range: string
 required: true
 
 </code></pre>

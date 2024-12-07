@@ -320,9 +320,6 @@
 
   DataGeneration : analyte_category
 
-      DataGeneration --&gt; "1" AnalyteCategoryEnum : analyte_category
-    click AnalyteCategoryEnum href "../AnalyteCategoryEnum"
-
   DataGeneration : associated_studies
 
       DataGeneration --&gt; "1..*" Study : associated_studies
@@ -420,7 +417,7 @@
 </tr>
 <tr>
 <td><a href="../analyte_category/">analyte_category</a></td>
-<td>1 <br/> <a href="../AnalyteCategoryEnum/">AnalyteCategoryEnum</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>The type of analyte(s) that were measured in the data generation process and ...</td>
 <td>direct</td>
 </tr>
@@ -804,7 +801,7 @@ attributes:
     owner: DataGeneration
     domain_of:
     - DataGeneration
-    range: AnalyteCategoryEnum
+    range: string
     required: true
   associated_studies:
     name: associated_studies

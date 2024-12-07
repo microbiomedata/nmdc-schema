@@ -453,6 +453,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#permissible-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permissible Values
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
       Slots
@@ -514,7 +523,33 @@
 
 <h1 id="enum-nucleotidesequencingenum">Enum: NucleotideSequencingEnum</h1>
 <p>URI: <a href="./">NucleotideSequencingEnum</a></p>
-<p><em>This is a dynamic enum</em></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metagenome</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>metatranscriptome</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
+<td>amplicon_sequencing_assay</td>
+<td>OBI:0002767</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h2 id="slots">Slots</h2>
 <table>
 <thead>
@@ -541,18 +576,18 @@
 <pre><code class="language-yaml">name: NucleotideSequencingEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-minus:
-- permissible_values:
-    metaproteome:
-      text: metaproteome
-    metabolome:
-      text: metabolome
-    lipidome:
-      text: lipidome
-    nom:
-      text: nom
-inherits:
-- AnalyteCategoryEnum
+permissible_values:
+  metagenome:
+    text: metagenome
+    aliases:
+    - metaG
+  metatranscriptome:
+    text: metatranscriptome
+    aliases:
+    - metaT
+  amplicon_sequencing_assay:
+    text: amplicon_sequencing_assay
+    meaning: OBI:0002767
 
 </code></pre>
 
