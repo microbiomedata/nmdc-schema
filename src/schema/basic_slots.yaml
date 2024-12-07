@@ -413,7 +413,7 @@ slots:
     description: >
       The type of analyte(s) that were measured in the data generation process and analyzed
         in the Workflow Chain
-    range: AnalyteCategoryEnum
+
 
   type:
     required: true
@@ -1081,27 +1081,38 @@ enums:
   #      submitted: { }
   #      superseded: { }
   #      withdrawn: { }
-
-  AnalyteCategoryEnum:
+  
+  NucleotideSequencingEnum:
     permissible_values:
       metagenome:
         aliases:
           - metaG
+        title: Metagenome
       metatranscriptome:
         aliases:
-          - metaT
+          - metaT  
+        title: Metatranscriptome
+      amplicon_sequencing_assay:
+        meaning: OBI:0002767
+        title: Amplicon
+        
+  MassSpectrometryEnum:
+    permissible_values:
       metaproteome:
         aliases:
           - metaP
+        title: Metaproteome
       metabolome:
         aliases:
           - metaB
-      lipidome: { }
+        title: Metabolome
+      lipidome: 
+        title: Lipidome
       nom:
         aliases:
           - natural organic matter
-      amplicon_sequencing_assay:
-        meaning: OBI:0002767 
+        title: Natural Organic Matter
+        
   ExtractionTargetEnum:
     permissible_values:
       DNA: { }
