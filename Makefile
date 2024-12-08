@@ -168,7 +168,9 @@ $(DOCDIR):
 
 # Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
 #
-# Then, use `refgraph` (part of `refscan`) to generate a diagram (i.e. a graph that depicts
+# Then, copy some additional schema-derived files into the documentation website file tree.
+#
+# Finally, use `refgraph` (part of `refscan`) to generate a diagram (i.e. a graph that depicts
 # inter-collection relationships) in the documentation website's file tree.
 gendoc: $(DOCDIR) prefixmaps
 	# Copy all documentation files to the documentation directory
@@ -181,6 +183,11 @@ gendoc: $(DOCDIR) prefixmaps
 	# Create directory for JavaScript files and copy them
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
+	# Copy additional schema-derived files into the documentation directory.
+	mkdir -p $(DOCDIR)/downloads
+	cp nmdc_schema/nmdc.schema.json                       $(DOCDIR)/downloads/nmdc.schema.json
+	cp nmdc_schema/nmdc_materialized_patterns.schema.json $(DOCDIR)/downloads/nmdc_materialized_patterns.schema.json
+	cp nmdc_schema/nmdc_materialized_patterns.yaml        $(DOCDIR)/downloads/nmdc_materialized_patterns.yaml
 	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
 	mkdir -p $(DOCDIR)/visualizations
 	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
