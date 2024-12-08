@@ -33,6 +33,7 @@ nav:
   - Schema element deprecation guide: schema_element_deprecation_guide.md
   - v10 vs v11 (Berkeley schema) retrospective: v10-vs-v11-retrospective.md
   - Visualizations: visualizations.md
+  - Downloads: downloads.md
 
 
 site_url: https://microbiomedata.github.io/nmdc-schema
