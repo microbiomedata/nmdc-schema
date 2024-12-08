@@ -183,11 +183,20 @@ gendoc: $(DOCDIR) prefixmaps
 	# Create directory for JavaScript files and copy them
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
+
 	# Copy additional schema-derived files into the documentation directory.
+	#
+	# Note: We use `[-f path]` to check whether the path leads to a file.
+	#       This `gendoc` target depends upon things generated via `$ make squeaky-clean all`,
+	#       and I think this target is sometimes being run after some of those things have been deleted.
+	#       There is a make-based solution to this (i.e. identifying inter-target dependence), but that is
+	#       more of a tangent than I want to take on this proof-of-concept branch focused on something else.
+	#
 	mkdir -p $(DOCDIR)/downloads
-	cp nmdc_schema/nmdc.schema.json                       $(DOCDIR)/downloads/nmdc.schema.json
-	cp nmdc_schema/nmdc_materialized_patterns.schema.json $(DOCDIR)/downloads/nmdc_materialized_patterns.schema.json
-	cp nmdc_schema/nmdc_materialized_patterns.yaml        $(DOCDIR)/downloads/nmdc_materialized_patterns.yaml
+	[ -f nmdc_schema/nmdc.schema.json ]                       && cp nmdc_schema/nmdc.schema.json $(DOCDIR)/downloads/nmdc.schema.json
+	[ -f nmdc_schema/nmdc_materialized_patterns.schema.json ] && cp nmdc_schema/nmdc_materialized_patterns.schema.json $(DOCDIR)/downloads/nmdc_materialized_patterns.schema.json
+	[ -f nmdc_schema/nmdc_materialized_patterns.yaml ]        && cp nmdc_schema/nmdc_materialized_patterns.yaml $(DOCDIR)/downloads/nmdc_materialized_patterns.yaml
+
 	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
 	mkdir -p $(DOCDIR)/visualizations
 	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
