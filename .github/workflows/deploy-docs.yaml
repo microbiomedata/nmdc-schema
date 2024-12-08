@@ -47,6 +47,13 @@ jobs:
       - name: Create .nojekyll file
         run: touch docs/.nojekyll
 
+      - name: Copy schema-derived files to downloads directory
+        run: |
+          mkdir -p docs/downloads
+          cp nmdc_schema/nmdc.schema.json                       docs/downloads/nmdc.schema.json
+          cp nmdc_schema/nmdc_materialized_patterns.schema.json docs/downloads/nmdc_materialized_patterns.schema.json
+          cp nmdc_schema/nmdc_materialized_patterns.yaml        docs/downloads/nmdc_materialized_patterns.yaml
+
         # Deploy the docs to GitHub Pages.
         #
         # Note: The `make mkd-gh-deploy` command below uses the `mkd-%` target
