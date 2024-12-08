@@ -39,6 +39,7 @@ nav:
   - Visualizations: visualizations.md
   - Data Validation: validation.md
   - Developer Docs: developer-docs.md
+  - Downloads: downloads.md
 
 
 site_url: https://microbiomedata.github.io/nmdc-schema
