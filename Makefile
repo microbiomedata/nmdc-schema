@@ -186,16 +186,17 @@ gendoc: $(DOCDIR) prefixmaps
 
 	# Copy additional schema-derived files into the documentation directory.
 	#
-	# Note: We use `[-f path]` to check whether the path leads to a file.
-	#       This `gendoc` target depends upon things generated via `$ make squeaky-clean all`,
-	#       and I think this target is sometimes being run after some of those things have been deleted.
-	#       There is a make-based solution to this (i.e. identifying inter-target dependence), but that is
-	#       more of a tangent than I want to take on this proof-of-concept branch focused on something else.
+	# Note: We use `[-f path]` to check whether the path leads to a file, and we use ` || true` so that — either way —
+	#       the overall command still returns an exit code of `0` (i.e. "success") so GitHub Actions does not abort.
+	#       This `gendoc` target depends upon files generated via the `all` target, and I think this target is sometimes
+	#       being run after some of those things have been deleted. There is a make-based solution to this (i.e.
+	#       identifying inter-target dependence), but that is more of a tangent than I want to take on this
+	#       proof-of-concept branch focused on something else.
 	#
 	mkdir -p $(DOCDIR)/downloads
-	[ -f nmdc_schema/nmdc.schema.json ]                       && cp nmdc_schema/nmdc.schema.json $(DOCDIR)/downloads/nmdc.schema.json
-	[ -f nmdc_schema/nmdc_materialized_patterns.schema.json ] && cp nmdc_schema/nmdc_materialized_patterns.schema.json $(DOCDIR)/downloads/nmdc_materialized_patterns.schema.json
-	[ -f nmdc_schema/nmdc_materialized_patterns.yaml ]        && cp nmdc_schema/nmdc_materialized_patterns.yaml $(DOCDIR)/downloads/nmdc_materialized_patterns.yaml
+	[ -f nmdc_schema/nmdc.schema.json ]                       && cp nmdc_schema/nmdc.schema.json $(DOCDIR)/downloads/nmdc.schema.json                                             || true
+	[ -f nmdc_schema/nmdc_materialized_patterns.schema.json ] && cp nmdc_schema/nmdc_materialized_patterns.schema.json $(DOCDIR)/downloads/nmdc_materialized_patterns.schema.json || true
+	[ -f nmdc_schema/nmdc_materialized_patterns.yaml ]        && cp nmdc_schema/nmdc_materialized_patterns.yaml $(DOCDIR)/downloads/nmdc_materialized_patterns.yaml               || true
 
 	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
 	mkdir -p $(DOCDIR)/visualizations
