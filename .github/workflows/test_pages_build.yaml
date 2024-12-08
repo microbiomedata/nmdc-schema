@@ -47,6 +47,10 @@ jobs:
           mkdir -p docs
           touch docs/.nojekyll
           make gendoc
+          mkdir -p docs/downloads
+          cp nmdc_schema/nmdc.schema.json                       docs/downloads/nmdc.schema.json
+          cp nmdc_schema/nmdc_materialized_patterns.schema.json docs/downloads/nmdc_materialized_patterns.schema.json
+          cp nmdc_schema/nmdc_materialized_patterns.yaml        docs/downloads/nmdc_materialized_patterns.yaml
           poetry run mkdocs build -d site
 
       - name: Deploy preview
