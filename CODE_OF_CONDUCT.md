@@ -1,9 +1,5 @@
 # NMDC Code of Conduct and Contributor Covenant 
 
-The NMDC Program builds data infrastructure for and with the microbiome research community. Microbiome data are generated and used by a variety of scientific disciplines, representing a diversity of research questions and researchers asking them. While this heterogeneity creates challenges, we believe that our diversity of data, people, and questions, is also a core strength.
-
-In order to carry out our mission, the NMDC has established a code of conduct that embodies our commitment to promote reproducibility and enhance cross-study comparisons of microbiome data through open science and Findable, Accessible, Interoperable, and Reusable (FAIR) data management best practices. By embracing these principles, the NMDC team, Ambassadors, Champions, and collaborators create a welcoming and productive community. If you would like to know more, please contact the NMDC at support@microbiomedata.org.
-
 ## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we pledge to make participation in the NMDC program and community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.
@@ -11,7 +7,6 @@ In the interest of fostering an open and welcoming environment, we pledge to mak
 ## Our Standards
 
 We commit to the following principles:
-- *Embrace Diversity and Inclusivity*: Celebrate and support our diversity of data, people, and questions, recognizing it as a core strength of our community.
 - *Cultivate a Harassment-Free Environment*: Ensure our community is free from harassment of all kinds, including inappropriate verbal and written language and imagery.
 - *Promote Constructive Engagement*: Engage in constructive, transparent, and inclusive dialogue, allowing diverse perspectives to be shared, supporting new ideas, and providing solutions to current challenges.
 - *Demonstrate Professionalism and Positivity*: Celebrate all contributions, understand the learning opportunities in failure, and foster a culture of trust through accountability and transparent communication.
