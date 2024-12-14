@@ -47,7 +47,9 @@ Program maintainers who do not follow or enforce the Code of Conduct in good fai
 
 ## Attribution
 
+
+
 This Code of Conduct has been derived from the excellent code of conduct of the [ATOM project](https://github.com/atom/atom/blob/master/CODE_OF_CONDUCT.md) which in turn is adapted from the [Contributor Covenant][homepage], version 1.4, available at [https://contributor-covenant.org/version/1/4][version]. It has also been informed by earlier versions of the NMDC code of conduct. 
 
-- homepage: https://contributor-covenant.org
-- version: https://contributor-covenant.org/version/1/4/
+[homepage]: https://contributor-covenant.org
+[version]: https://contributor-covenant.org/version/1/4/
