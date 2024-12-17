@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/AnalyteCategoryEnum/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/MassSpectrometryEnum/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Enum: AnalyteCategoryEnum - NMDC Schema Documentation</title>
+        <title>Enum: MassSpectrometryEnum - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#enum-analytecategoryenum" class="md-skip">
+        <a href="#enum-massspectrometryenum" class="md-skip">
           Skip to content
         </a>
       
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Enum: AnalyteCategoryEnum
+              Enum: MassSpectrometryEnum
             
           </span>
         </div>
@@ -561,8 +561,8 @@
   
 
 
-<h1 id="enum-analytecategoryenum">Enum: AnalyteCategoryEnum</h1>
-<p>URI: <a href="./">AnalyteCategoryEnum</a></p>
+<h1 id="enum-massspectrometryenum">Enum: MassSpectrometryEnum</h1>
+<p>URI: <a href="./">MassSpectrometryEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
@@ -573,16 +573,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>metagenome</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>metatranscriptome</td>
-<td>None</td>
-<td></td>
-</tr>
 <tr>
 <td>metaproteome</td>
 <td>None</td>
@@ -603,11 +593,6 @@
 <td>None</td>
 <td></td>
 </tr>
-<tr>
-<td>amplicon_sequencing_assay</td>
-<td>OBI:0002767</td>
-<td></td>
-</tr>
 </tbody>
 </table>
 <h2 id="slots">Slots</h2>
@@ -621,7 +606,7 @@
 <tbody>
 <tr>
 <td><a href="../analyte_category/">analyte_category</a></td>
-<td>The type of analyte(s) that were measured in the data generation process and ...</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -633,35 +618,28 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: AnalyteCategoryEnum
+<pre><code class="language-yaml">name: MassSpectrometryEnum
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 permissible_values:
-  metagenome:
-    text: metagenome
-    aliases:
-    - metaG
-  metatranscriptome:
-    text: metatranscriptome
-    aliases:
-    - metaT
   metaproteome:
     text: metaproteome
+    title: Metaproteome
     aliases:
     - metaP
   metabolome:
     text: metabolome
+    title: Metabolome
     aliases:
     - metaB
   lipidome:
     text: lipidome
+    title: Lipidome
   nom:
     text: nom
+    title: Natural Organic Matter
     aliases:
     - natural organic matter
-  amplicon_sequencing_assay:
-    text: amplicon_sequencing_assay
-    meaning: OBI:0002767
 
 </code></pre>
 

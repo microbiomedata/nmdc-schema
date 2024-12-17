@@ -317,8 +317,8 @@
 
   NucleotideSequencing : analyte_category
 
-      NucleotideSequencing --&gt; "1" AnalyteCategoryEnum : analyte_category
-    click AnalyteCategoryEnum href "../AnalyteCategoryEnum"
+      NucleotideSequencing --&gt; "1" NucleotideSequencingEnum : analyte_category
+    click NucleotideSequencingEnum href "../NucleotideSequencingEnum"
 
   NucleotideSequencing : associated_studies
 
@@ -470,7 +470,7 @@
 </tr>
 <tr>
 <td><a href="../analyte_category/">analyte_category</a></td>
-<td>1 <br/> <a href="../AnalyteCategoryEnum/">AnalyteCategoryEnum</a></td>
+<td>1 <br/> <a href="../NucleotideSequencingEnum/">NucleotideSequencingEnum</a></td>
 <td>The type of analyte(s) that were measured in the data generation process and ...</td>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 </tr>
@@ -635,6 +635,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  analyte_category:
+    name: analyte_category
+    range: NucleotideSequencingEnum
 class_uri: nmdc:NucleotideSequencing
 
 </code></pre>
@@ -653,6 +656,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  analyte_category:
+    name: analyte_category
+    range: NucleotideSequencingEnum
 attributes:
   gold_sequencing_project_identifiers:
     name: gold_sequencing_project_identifiers
@@ -792,7 +798,7 @@ attributes:
     owner: NucleotideSequencing
     domain_of:
     - DataGeneration
-    range: AnalyteCategoryEnum
+    range: NucleotideSequencingEnum
     required: true
   associated_studies:
     name: associated_studies

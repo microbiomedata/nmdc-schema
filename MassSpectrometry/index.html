@@ -310,8 +310,8 @@
 
   MassSpectrometry : analyte_category
 
-      MassSpectrometry --&gt; "1" AnalyteCategoryEnum : analyte_category
-    click AnalyteCategoryEnum href "../AnalyteCategoryEnum"
+      MassSpectrometry --&gt; "1" MassSpectrometryEnum : analyte_category
+    click MassSpectrometryEnum href "../MassSpectrometryEnum"
 
   MassSpectrometry : associated_studies
 
@@ -453,7 +453,7 @@
 </tr>
 <tr>
 <td><a href="../analyte_category/">analyte_category</a></td>
-<td>1 <br/> <a href="../AnalyteCategoryEnum/">AnalyteCategoryEnum</a></td>
+<td>1 <br/> <a href="../MassSpectrometryEnum/">MassSpectrometryEnum</a></td>
 <td>The type of analyte(s) that were measured in the data generation process and ...</td>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 </tr>
@@ -627,6 +627,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
+  analyte_category:
+    name: analyte_category
+    range: MassSpectrometryEnum
 class_uri: nmdc:MassSpectrometry
 rules:
 - preconditions:
@@ -685,6 +688,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
+  analyte_category:
+    name: analyte_category
+    range: MassSpectrometryEnum
 attributes:
   eluent_introduction_category:
     name: eluent_introduction_category
@@ -764,7 +770,7 @@ attributes:
     owner: MassSpectrometry
     domain_of:
     - DataGeneration
-    range: AnalyteCategoryEnum
+    range: MassSpectrometryEnum
     required: true
   associated_studies:
     name: associated_studies
