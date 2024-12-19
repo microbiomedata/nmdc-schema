@@ -362,7 +362,7 @@
 </tr>
 <tr>
 <td><a href="../has_raw_value/">has_raw_value</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
 <td>The value that was specified for an annotation in raw form, i</td>
 <td><a href="../AttributeValue/">AttributeValue</a></td>
 </tr>
@@ -432,6 +432,10 @@ slots:
 - country_or_sea
 - subnational_1_or_ocean_region
 - locality
+slot_usage:
+  has_raw_value:
+    name: has_raw_value
+    required: true
 class_uri: nmdc:GeoLocationNameValue
 
 </code></pre>
@@ -454,6 +458,10 @@ from_schema: https://w3id.org/nmdc/nmdc
 narrow_mappings:
 - mixs:0000010
 is_a: AttributeValue
+slot_usage:
+  has_raw_value:
+    name: has_raw_value
+    required: true
 attributes:
   country_or_sea:
     name: country_or_sea
@@ -537,6 +545,7 @@ attributes:
     domain_of:
     - AttributeValue
     range: string
+    required: true
   type:
     name: type
     description: the class_uri of the class that has been instantiated
