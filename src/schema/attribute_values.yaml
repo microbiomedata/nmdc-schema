@@ -14,8 +14,8 @@ classes:
     abstract: true
     class_uri: 'nmdc:AttributeValue'
     description: >-
-      The value for any value of a attribute for a sample. Instances of this class can hold both a raw string value
-      value and atomic parts that can be considered within or overlapping with one another
+      The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
+        value and the structured value.
     slots:
       - has_raw_value
       - type
