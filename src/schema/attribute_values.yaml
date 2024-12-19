@@ -36,6 +36,9 @@ classes:
       - country_or_sea
       - subnational_1_or_ocean_region
       - locality
+    slot_usage:
+      has_raw_value:
+        required: true
 
   QuantityValue:
     class_uri: nmdc:QuantityValue
