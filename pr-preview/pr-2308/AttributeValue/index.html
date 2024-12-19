@@ -294,7 +294,8 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-attributevalue">Class: AttributeValue</h1>
-<p><em>The value for any value of a attribute for a sample. Instances of this class can hold both a raw string value value and atomic parts that can be considered within or overlapping with one another</em></p>
+<p><em>The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic</em></p>
+<p>_  value and the structured value._</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is an abstract class and should not be instantiated directly.</p>
@@ -397,9 +398,8 @@
 <h3 id="direct">Direct</h3>
 <details>
 <pre><code class="language-yaml">name: AttributeValue
-description: The value for any value of a attribute for a sample. Instances of this
-  class can hold both a raw string value value and atomic parts that can be considered
-  within or overlapping with one another
+description: "The value for any value of a attribute for a sample. This object can\
+  \ hold both the un-normalized atomic\n  value and the structured value."
 from_schema: https://w3id.org/nmdc/nmdc
 abstract: true
 slots:
@@ -412,9 +412,8 @@ class_uri: nmdc:AttributeValue
 <h3 id="induced">Induced</h3>
 <details>
 <pre><code class="language-yaml">name: AttributeValue
-description: The value for any value of a attribute for a sample. Instances of this
-  class can hold both a raw string value value and atomic parts that can be considered
-  within or overlapping with one another
+description: "The value for any value of a attribute for a sample. This object can\
+  \ hold both the un-normalized atomic\n  value and the structured value."
 from_schema: https://w3id.org/nmdc/nmdc
 abstract: true
 attributes:
