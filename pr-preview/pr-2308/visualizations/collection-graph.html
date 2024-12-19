@@ -1,0 +1,220 @@
+<html>
+<head>
+    <title>refgraph</title>
+    <style>
+        #graph-container {
+            width: 100%;
+            height: 100vh;
+        }
+        #metadata-container {
+            font-family: sans-serif;
+            font-size: 0.8em;
+            color: #999999;
+            position: absolute;
+            bottom: 1em;
+            right: 1em;
+            text-align: right;
+        }
+        #metadata-container ul {
+            list-style-type: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Note: A Python script will replace the `{{ ... }}` placeholders. -->
+<div
+        id="graph-data"
+        data-graph-data-json-str-base64="W3siZGF0YSI6IHsiaWQiOiAiYmlvc2FtcGxlX3NldCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJzdHVkeV9zZXQifX0sIHsiZGF0YSI6IHsiaWQiOiAiZmllbGRfcmVzZWFyY2hfc2l0ZV9zZXQifX0sIHsiZGF0YSI6IHsiaWQiOiAiY2FsaWJyYXRpb25fc2V0In19LCB7ImRhdGEiOiB7ImlkIjogImRhdGFfb2JqZWN0X3NldCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJjb2xsZWN0aW5nX2Jpb3NhbXBsZXNfZnJvbV9zaXRlX3NldCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0In19LCB7ImRhdGEiOiB7ImlkIjogImluc3RydW1lbnRfc2V0In19LCB7ImRhdGEiOiB7ImlkIjogInByb2Nlc3NlZF9zYW1wbGVfc2V0In19LCB7ImRhdGEiOiB7ImlkIjogImNvbmZpZ3VyYXRpb25fc2V0In19LCB7ImRhdGEiOiB7ImlkIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQifX0sIHsiZGF0YSI6IHsiaWQiOiAibWFuaWZlc3Rfc2V0In19LCB7ImRhdGEiOiB7ImlkIjogImZ1bmN0aW9uYWxfYW5ub3RhdGlvbl9hZ2cifX0sIHsiZGF0YSI6IHsiaWQiOiAiZnVuY3Rpb25hbF9hbm5vdGF0aW9uX3NldCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJtYXRlcmlhbF9wcm9jZXNzaW5nX3NldCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0In19LCB7ImRhdGEiOiB7ImlkIjogInN0b3JhZ2VfcHJvY2Vzc19zZXQifX0sIHsiZGF0YSI6IHsiaWQiOiAiY2hlbWljYWxfZW50aXR5X3NldCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJiaW9zYW1wbGVfc2V0X190b19fc3R1ZHlfc2V0IiwgInNvdXJjZSI6ICJiaW9zYW1wbGVfc2V0IiwgInRhcmdldCI6ICJzdHVkeV9zZXQiLCAibGFiZWwiOiAiYXNzb2NpYXRlZF9zdHVkaWVzIn19LCB7ImRhdGEiOiB7ImlkIjogImJpb3NhbXBsZV9zZXRfX3RvX19maWVsZF9yZXNlYXJjaF9zaXRlX3NldCIsICJzb3VyY2UiOiAiYmlvc2FtcGxlX3NldCIsICJ0YXJnZXQiOiAiZmllbGRfcmVzZWFyY2hfc2l0ZV9zZXQiLCAibGFiZWwiOiAiY29sbGVjdGVkX2Zyb20ifX0sIHsiZGF0YSI6IHsiaWQiOiAiY2FsaWJyYXRpb25fc2V0X190b19fZGF0YV9vYmplY3Rfc2V0IiwgInNvdXJjZSI6ICJjYWxpYnJhdGlvbl9zZXQiLCAidGFyZ2V0IjogImRhdGFfb2JqZWN0X3NldCIsICJsYWJlbCI6ICJjYWxpYnJhdGlvbl9vYmplY3QifX0sIHsiZGF0YSI6IHsiaWQiOiAiY29sbGVjdGluZ19iaW9zYW1wbGVzX2Zyb21fc2l0ZV9zZXRfX3RvX19maWVsZF9yZXNlYXJjaF9zaXRlX3NldCIsICJzb3VyY2UiOiAiY29sbGVjdGluZ19iaW9zYW1wbGVzX2Zyb21fc2l0ZV9zZXQiLCAidGFyZ2V0IjogImZpZWxkX3Jlc2VhcmNoX3NpdGVfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJjb2xsZWN0aW5nX2Jpb3NhbXBsZXNfZnJvbV9zaXRlX3NldF9fdG9fX2Jpb3NhbXBsZV9zZXQiLCAic291cmNlIjogImNvbGxlY3RpbmdfYmlvc2FtcGxlc19mcm9tX3NpdGVfc2V0IiwgInRhcmdldCI6ICJiaW9zYW1wbGVfc2V0IiwgImxhYmVsIjogImhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAiZGF0YV9nZW5lcmF0aW9uX3NldF9fdG9fX3N0dWR5X3NldCIsICJzb3VyY2UiOiAiZGF0YV9nZW5lcmF0aW9uX3NldCIsICJ0YXJnZXQiOiAic3R1ZHlfc2V0IiwgImxhYmVsIjogImFzc29jaWF0ZWRfc3R1ZGllcyJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0X190b19faW5zdHJ1bWVudF9zZXQiLCAic291cmNlIjogImRhdGFfZ2VuZXJhdGlvbl9zZXQiLCAidGFyZ2V0IjogImluc3RydW1lbnRfc2V0IiwgImxhYmVsIjogImluc3RydW1lbnRfdXNlZCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0X190b19fcHJvY2Vzc2VkX3NhbXBsZV9zZXQiLCAic291cmNlIjogImRhdGFfZ2VuZXJhdGlvbl9zZXQiLCAidGFyZ2V0IjogInByb2Nlc3NlZF9zYW1wbGVfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0X190b19fYmlvc2FtcGxlX3NldCIsICJzb3VyY2UiOiAiZGF0YV9nZW5lcmF0aW9uX3NldCIsICJ0YXJnZXQiOiAiYmlvc2FtcGxlX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAiZGF0YV9nZW5lcmF0aW9uX3NldF9fdG9fX2RhdGFfb2JqZWN0X3NldCIsICJzb3VyY2UiOiAiZGF0YV9nZW5lcmF0aW9uX3NldCIsICJ0YXJnZXQiOiAiZGF0YV9vYmplY3Rfc2V0IiwgImxhYmVsIjogImhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAiZGF0YV9nZW5lcmF0aW9uX3NldF9fdG9fX2NhbGlicmF0aW9uX3NldCIsICJzb3VyY2UiOiAiZGF0YV9nZW5lcmF0aW9uX3NldCIsICJ0YXJnZXQiOiAiY2FsaWJyYXRpb25fc2V0IiwgImxhYmVsIjogImdlbmVyYXRlc19jYWxpYnJhdGlvbiJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0X190b19fY29uZmlndXJhdGlvbl9zZXQiLCAic291cmNlIjogImRhdGFfZ2VuZXJhdGlvbl9zZXQiLCAidGFyZ2V0IjogImNvbmZpZ3VyYXRpb25fc2V0IiwgImxhYmVsIjogImhhc19jaHJvbWF0b2dyYXBoeV9jb25maWd1cmF0aW9uLCBoYXNfbWFzc19zcGVjdHJvbWV0cnlfY29uZmlndXJhdGlvbiJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX29iamVjdF9zZXRfX3RvX193b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInNvdXJjZSI6ICJkYXRhX29iamVjdF9zZXQiLCAidGFyZ2V0IjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAibGFiZWwiOiAid2FzX2dlbmVyYXRlZF9ieSJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX29iamVjdF9zZXRfX3RvX19kYXRhX2dlbmVyYXRpb25fc2V0IiwgInNvdXJjZSI6ICJkYXRhX29iamVjdF9zZXQiLCAidGFyZ2V0IjogImRhdGFfZ2VuZXJhdGlvbl9zZXQiLCAibGFiZWwiOiAid2FzX2dlbmVyYXRlZF9ieSJ9fSwgeyJkYXRhIjogeyJpZCI6ICJkYXRhX29iamVjdF9zZXRfX3RvX19tYW5pZmVzdF9zZXQiLCAic291cmNlIjogImRhdGFfb2JqZWN0X3NldCIsICJ0YXJnZXQiOiAibWFuaWZlc3Rfc2V0IiwgImxhYmVsIjogImluX21hbmlmZXN0In19LCB7ImRhdGEiOiB7ImlkIjogImZpZWxkX3Jlc2VhcmNoX3NpdGVfc2V0X190b19fZmllbGRfcmVzZWFyY2hfc2l0ZV9zZXQiLCAic291cmNlIjogImZpZWxkX3Jlc2VhcmNoX3NpdGVfc2V0IiwgInRhcmdldCI6ICJmaWVsZF9yZXNlYXJjaF9zaXRlX3NldCIsICJsYWJlbCI6ICJwYXJ0X29mIn19LCB7ImRhdGEiOiB7ImlkIjogImZ1bmN0aW9uYWxfYW5ub3RhdGlvbl9hZ2dfX3RvX193b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInNvdXJjZSI6ICJmdW5jdGlvbmFsX2Fubm90YXRpb25fYWdnIiwgInRhcmdldCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0IiwgImxhYmVsIjogIndhc19nZW5lcmF0ZWRfYnkifX0sIHsiZGF0YSI6IHsiaWQiOiAiZnVuY3Rpb25hbF9hbm5vdGF0aW9uX2FnZ19fdG9fX2RhdGFfZ2VuZXJhdGlvbl9zZXQiLCAic291cmNlIjogImZ1bmN0aW9uYWxfYW5ub3RhdGlvbl9hZ2ciLCAidGFyZ2V0IjogImRhdGFfZ2VuZXJhdGlvbl9zZXQiLCAibGFiZWwiOiAid2FzX2dlbmVyYXRlZF9ieSJ9fSwgeyJkYXRhIjogeyJpZCI6ICJmdW5jdGlvbmFsX2Fubm90YXRpb25fc2V0X190b19fd29ya2Zsb3dfZXhlY3V0aW9uX3NldCIsICJzb3VyY2UiOiAiZnVuY3Rpb25hbF9hbm5vdGF0aW9uX3NldCIsICJ0YXJnZXQiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldCIsICJsYWJlbCI6ICJ3YXNfZ2VuZXJhdGVkX2J5In19LCB7ImRhdGEiOiB7ImlkIjogImZ1bmN0aW9uYWxfYW5ub3RhdGlvbl9zZXRfX3RvX19kYXRhX2dlbmVyYXRpb25fc2V0IiwgInNvdXJjZSI6ICJmdW5jdGlvbmFsX2Fubm90YXRpb25fc2V0IiwgInRhcmdldCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0IiwgImxhYmVsIjogIndhc19nZW5lcmF0ZWRfYnkifX0sIHsiZGF0YSI6IHsiaWQiOiAibWF0ZXJpYWxfcHJvY2Vzc2luZ19zZXRfX3RvX19pbnN0cnVtZW50X3NldCIsICJzb3VyY2UiOiAibWF0ZXJpYWxfcHJvY2Vzc2luZ19zZXQiLCAidGFyZ2V0IjogImluc3RydW1lbnRfc2V0IiwgImxhYmVsIjogImluc3RydW1lbnRfdXNlZCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJtYXRlcmlhbF9wcm9jZXNzaW5nX3NldF9fdG9fX3Byb2Nlc3NlZF9zYW1wbGVfc2V0IiwgInNvdXJjZSI6ICJtYXRlcmlhbF9wcm9jZXNzaW5nX3NldCIsICJ0YXJnZXQiOiAicHJvY2Vzc2VkX3NhbXBsZV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogIm1hdGVyaWFsX3Byb2Nlc3Npbmdfc2V0X190b19fYmlvc2FtcGxlX3NldCIsICJzb3VyY2UiOiAibWF0ZXJpYWxfcHJvY2Vzc2luZ19zZXQiLCAidGFyZ2V0IjogImJpb3NhbXBsZV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX193b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInNvdXJjZSI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0IiwgImxhYmVsIjogImhhc19wcm9jZXNzX3BhcnRzLCBoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldF9fdG9fX21hdGVyaWFsX3Byb2Nlc3Npbmdfc2V0IiwgInNvdXJjZSI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJtYXRlcmlhbF9wcm9jZXNzaW5nX3NldCIsICJsYWJlbCI6ICJoYXNfcHJvY2Vzc19wYXJ0cywgaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX19kYXRhX2dlbmVyYXRpb25fc2V0IiwgInNvdXJjZSI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0IiwgImxhYmVsIjogImhhc19wcm9jZXNzX3BhcnRzLCBoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldF9fdG9fX2NvbGxlY3RpbmdfYmlvc2FtcGxlc19mcm9tX3NpdGVfc2V0IiwgInNvdXJjZSI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJjb2xsZWN0aW5nX2Jpb3NhbXBsZXNfZnJvbV9zaXRlX3NldCIsICJsYWJlbCI6ICJoYXNfcHJvY2Vzc19wYXJ0cywgaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX19zdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInNvdXJjZSI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgImxhYmVsIjogImhhc19wcm9jZXNzX3BhcnRzLCBoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldF9fdG9fX3Byb3RvY29sX2V4ZWN1dGlvbl9zZXQiLCAic291cmNlIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXQiLCAibGFiZWwiOiAiaGFzX3Byb2Nlc3NfcGFydHMsIGhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0X190b19fZGF0YV9vYmplY3Rfc2V0IiwgInNvdXJjZSI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJkYXRhX29iamVjdF9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX19jYWxpYnJhdGlvbl9zZXQiLCAic291cmNlIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogImNhbGlicmF0aW9uX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldF9fdG9fX2ZpZWxkX3Jlc2VhcmNoX3NpdGVfc2V0IiwgInNvdXJjZSI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJmaWVsZF9yZXNlYXJjaF9zaXRlX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldF9fdG9fX21hbmlmZXN0X3NldCIsICJzb3VyY2UiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAibWFuaWZlc3Rfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0X190b19fYmlvc2FtcGxlX3NldCIsICJzb3VyY2UiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAiYmlvc2FtcGxlX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldF9fdG9fX2NoZW1pY2FsX2VudGl0eV9zZXQiLCAic291cmNlIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogImNoZW1pY2FsX2VudGl0eV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX19wcm9jZXNzZWRfc2FtcGxlX3NldCIsICJzb3VyY2UiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAicHJvY2Vzc2VkX3NhbXBsZV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX19jb25maWd1cmF0aW9uX3NldCIsICJzb3VyY2UiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAiY29uZmlndXJhdGlvbl9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX19pbnN0cnVtZW50X3NldCIsICJzb3VyY2UiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAiaW5zdHJ1bWVudF9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXRfX3RvX19zdHVkeV9zZXQiLCAic291cmNlIjogInByb3RvY29sX2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogInN0dWR5X3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAic3RvcmFnZV9wcm9jZXNzX3NldF9fdG9fX3dvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAic291cmNlIjogInN0b3JhZ2VfcHJvY2Vzc19zZXQiLCAidGFyZ2V0IjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInN0b3JhZ2VfcHJvY2Vzc19zZXRfX3RvX19tYXRlcmlhbF9wcm9jZXNzaW5nX3NldCIsICJzb3VyY2UiOiAic3RvcmFnZV9wcm9jZXNzX3NldCIsICJ0YXJnZXQiOiAibWF0ZXJpYWxfcHJvY2Vzc2luZ19zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInN0b3JhZ2VfcHJvY2Vzc19zZXRfX3RvX19kYXRhX2dlbmVyYXRpb25fc2V0IiwgInNvdXJjZSI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInRhcmdldCI6ICJkYXRhX2dlbmVyYXRpb25fc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0X190b19fY29sbGVjdGluZ19iaW9zYW1wbGVzX2Zyb21fc2l0ZV9zZXQiLCAic291cmNlIjogInN0b3JhZ2VfcHJvY2Vzc19zZXQiLCAidGFyZ2V0IjogImNvbGxlY3RpbmdfYmlvc2FtcGxlc19mcm9tX3NpdGVfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0X190b19fc3RvcmFnZV9wcm9jZXNzX3NldCIsICJzb3VyY2UiOiAic3RvcmFnZV9wcm9jZXNzX3NldCIsICJ0YXJnZXQiOiAic3RvcmFnZV9wcm9jZXNzX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAic3RvcmFnZV9wcm9jZXNzX3NldF9fdG9fX2RhdGFfb2JqZWN0X3NldCIsICJzb3VyY2UiOiAic3RvcmFnZV9wcm9jZXNzX3NldCIsICJ0YXJnZXQiOiAiZGF0YV9vYmplY3Rfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0X190b19fY2FsaWJyYXRpb25fc2V0IiwgInNvdXJjZSI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInRhcmdldCI6ICJjYWxpYnJhdGlvbl9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInN0b3JhZ2VfcHJvY2Vzc19zZXRfX3RvX19maWVsZF9yZXNlYXJjaF9zaXRlX3NldCIsICJzb3VyY2UiOiAic3RvcmFnZV9wcm9jZXNzX3NldCIsICJ0YXJnZXQiOiAiZmllbGRfcmVzZWFyY2hfc2l0ZV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInN0b3JhZ2VfcHJvY2Vzc19zZXRfX3RvX19tYW5pZmVzdF9zZXQiLCAic291cmNlIjogInN0b3JhZ2VfcHJvY2Vzc19zZXQiLCAidGFyZ2V0IjogIm1hbmlmZXN0X3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAic3RvcmFnZV9wcm9jZXNzX3NldF9fdG9fX2Jpb3NhbXBsZV9zZXQiLCAic291cmNlIjogInN0b3JhZ2VfcHJvY2Vzc19zZXQiLCAidGFyZ2V0IjogImJpb3NhbXBsZV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogInN0b3JhZ2VfcHJvY2Vzc19zZXRfX3RvX19jaGVtaWNhbF9lbnRpdHlfc2V0IiwgInNvdXJjZSI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInRhcmdldCI6ICJjaGVtaWNhbF9lbnRpdHlfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0X190b19fcHJvdG9jb2xfZXhlY3V0aW9uX3NldCIsICJzb3VyY2UiOiAic3RvcmFnZV9wcm9jZXNzX3NldCIsICJ0YXJnZXQiOiAicHJvdG9jb2xfZXhlY3V0aW9uX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAic3RvcmFnZV9wcm9jZXNzX3NldF9fdG9fX3Byb2Nlc3NlZF9zYW1wbGVfc2V0IiwgInNvdXJjZSI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInRhcmdldCI6ICJwcm9jZXNzZWRfc2FtcGxlX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAic3RvcmFnZV9wcm9jZXNzX3NldF9fdG9fX2NvbmZpZ3VyYXRpb25fc2V0IiwgInNvdXJjZSI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInRhcmdldCI6ICJjb25maWd1cmF0aW9uX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAic3RvcmFnZV9wcm9jZXNzX3NldF9fdG9fX2luc3RydW1lbnRfc2V0IiwgInNvdXJjZSI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInRhcmdldCI6ICJpbnN0cnVtZW50X3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAic3RvcmFnZV9wcm9jZXNzX3NldF9fdG9fX3N0dWR5X3NldCIsICJzb3VyY2UiOiAic3RvcmFnZV9wcm9jZXNzX3NldCIsICJ0YXJnZXQiOiAic3R1ZHlfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJzdHVkeV9zZXRfX3RvX19zdHVkeV9zZXQiLCAic291cmNlIjogInN0dWR5X3NldCIsICJ0YXJnZXQiOiAic3R1ZHlfc2V0IiwgImxhYmVsIjogInBhcnRfb2YifX0sIHsiZGF0YSI6IHsiaWQiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldF9fdG9fX2RhdGFfZ2VuZXJhdGlvbl9zZXQiLCAic291cmNlIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogImRhdGFfZ2VuZXJhdGlvbl9zZXQiLCAibGFiZWwiOiAid2FzX2luZm9ybWVkX2J5LCBoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldF9fdG9fX3dvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAic291cmNlIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXRfX3RvX19tYXRlcmlhbF9wcm9jZXNzaW5nX3NldCIsICJzb3VyY2UiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAibWF0ZXJpYWxfcHJvY2Vzc2luZ19zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXRfX3RvX19jb2xsZWN0aW5nX2Jpb3NhbXBsZXNfZnJvbV9zaXRlX3NldCIsICJzb3VyY2UiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAiY29sbGVjdGluZ19iaW9zYW1wbGVzX2Zyb21fc2l0ZV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXRfX3RvX19zdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgInNvdXJjZSI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJzdG9yYWdlX3Byb2Nlc3Nfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0X190b19fZGF0YV9vYmplY3Rfc2V0IiwgInNvdXJjZSI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJkYXRhX29iamVjdF9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXRfX3RvX19jYWxpYnJhdGlvbl9zZXQiLCAic291cmNlIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogImNhbGlicmF0aW9uX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQsIHVzZXNfY2FsaWJyYXRpb24ifX0sIHsiZGF0YSI6IHsiaWQiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldF9fdG9fX2ZpZWxkX3Jlc2VhcmNoX3NpdGVfc2V0IiwgInNvdXJjZSI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJmaWVsZF9yZXNlYXJjaF9zaXRlX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldF9fdG9fX21hbmlmZXN0X3NldCIsICJzb3VyY2UiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAibWFuaWZlc3Rfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0X190b19fYmlvc2FtcGxlX3NldCIsICJzb3VyY2UiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldCIsICJ0YXJnZXQiOiAiYmlvc2FtcGxlX3NldCIsICJsYWJlbCI6ICJoYXNfaW5wdXQsIGhhc19vdXRwdXQifX0sIHsiZGF0YSI6IHsiaWQiOiAid29ya2Zsb3dfZXhlY3V0aW9uX3NldF9fdG9fX2NoZW1pY2FsX2VudGl0eV9zZXQiLCAic291cmNlIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogImNoZW1pY2FsX2VudGl0eV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19LCB7ImRhdGEiOiB7ImlkIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXRfX3RvX19wcm90b2NvbF9leGVjdXRpb25fc2V0IiwgInNvdXJjZSI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJwcm90b2NvbF9leGVjdXRpb25fc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0X190b19fcHJvY2Vzc2VkX3NhbXBsZV9zZXQiLCAic291cmNlIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogInByb2Nlc3NlZF9zYW1wbGVfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0X190b19fY29uZmlndXJhdGlvbl9zZXQiLCAic291cmNlIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogImNvbmZpZ3VyYXRpb25fc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0X190b19faW5zdHJ1bWVudF9zZXQiLCAic291cmNlIjogIndvcmtmbG93X2V4ZWN1dGlvbl9zZXQiLCAidGFyZ2V0IjogImluc3RydW1lbnRfc2V0IiwgImxhYmVsIjogImhhc19pbnB1dCwgaGFzX291dHB1dCJ9fSwgeyJkYXRhIjogeyJpZCI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0X190b19fc3R1ZHlfc2V0IiwgInNvdXJjZSI6ICJ3b3JrZmxvd19leGVjdXRpb25fc2V0IiwgInRhcmdldCI6ICJzdHVkeV9zZXQiLCAibGFiZWwiOiAiaGFzX2lucHV0LCBoYXNfb3V0cHV0In19XQ=="
+        data-graph-metadata-json-str-base64="eyJhcHBfdmVyc2lvbiI6ICIwLjEuMjEiLCAic2NoZW1hX3ZlcnNpb24iOiAiMTEuMi4xLnBvc3QxOC5kZXYwKzFjNDYyOGJlIn0="
+></div>
+
+<!-- Note: The JavaScript code below will render the above graph data
+           as a graph within this HTML element. -->
+<div id="graph-container"></div>
+
+<!-- Note: The JavaScript code below will render metadata about the graph,
+           within this HTML element. -->
+<div id="metadata-container"></div>
+
+<!-- Note: The third-party JavaScript code we're loading here will add a function
+           named `cytoscape` to the `window` object (i.e. the global scope).
+           Reference: https://js.cytoscape.org/ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.30.1/cytoscape.min.js"
+        integrity="sha512-kv2oCpI8sYlWvr442qCcFNgXW9swhLRlDJ/39GlfZLGAWOqgU/Kz30YCYBm0yLumVzRvYEMU6uSxFniGzitKiA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    (function () {
+        // Note: A Python script will replace the `{{ ... }}` placeholder.
+        console.log("Schema version: {{ schema_version }}");
+
+        // Extract the base64-encoded graph metadata and data from the `graph-data` HTML element.
+        // Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dataset
+        let graphMetadata = {};
+        let graphData = [];
+        const graphDataEl = document.getElementById("graph-data");
+        const graphMetadataJsonStrBase64 = graphDataEl.dataset.graphMetadataJsonStrBase64;
+        const graphDataJsonStrBase64 = graphDataEl.dataset.graphDataJsonStrBase64;
+
+        // Base64-decode the graph metadata and parse it as JSON.
+        try {
+            const graphMetadataJsonStr = atob(graphMetadataJsonStrBase64);
+            graphMetadata = JSON.parse(graphMetadataJsonStr);
+            console.debug("graphMetadata", graphMetadata);
+        } catch (error) {
+            alert("Failed to parse metadata.");
+            console.debug("graphMetadataJsonStrBase64", graphMetadataJsonStrBase64);
+            console.error(error);
+        }
+
+        // Display the graph metadata on the web page.
+        const metadataContainerEl = document.getElementById("metadata-container");
+        const metadataListEl = document.createElement("ul");
+        if (typeof graphMetadata["schema_version"] === "string") {
+            const li = document.createElement("li");
+            li.textContent = `Schema version ${graphMetadata["schema_version"]}`;
+            metadataListEl.appendChild(li);
+        }
+        if (typeof graphMetadata["app_version"] === "string") {
+            const li = document.createElement("li");
+            li.textContent = `refgraph version ${graphMetadata["app_version"]}`;
+            metadataListEl.appendChild(li);
+        }
+        metadataContainerEl.appendChild(metadataListEl);
+
+        // Base64-decode the graph data and parse it as JSON.
+        try {
+            const graphDataJsonStr = atob(graphDataJsonStrBase64);
+            graphData = JSON.parse(graphDataJsonStr);
+            console.debug("graphData", graphData);
+        } catch (error) {
+            alert("Failed to parse reference data.");
+            console.debug("graphDataJsonStrBase64", graphDataJsonStrBase64);
+            console.error(error);
+        }
+
+        // Display the graph on the web page.
+        const cy = window.cytoscape({
+            container: document.getElementById("graph-container"),
+            elements: graphData,
+            layout: {
+                name: "circle" // For other options, see: https://js.cytoscape.org/#layouts
+            },
+            style: [
+                {
+                    selector: "node",
+                    style: {
+                        label: "data(id)",
+                        backgroundColor: "#666666",
+                    },
+                },
+                {
+                    selector: "edge",
+                    style: {
+                        fontSize: "0.75em",
+                        textRotation: "autorotate", // parallel to the edge
+                        lineColor: "#999999",
+                        targetArrowColor: "#999999",
+                        targetArrowShape: "triangle",
+                        curveStyle: "bezier",
+                        width: 1,
+                    },
+                },
+                {
+                    selector: "node.outgoer",
+                    style: {
+                        fontWeight: "bold",
+                        color: "#00FF00", // text color
+                        backgroundColor: "#00FF00",
+                    }
+                },
+                {
+                    selector: "edge.outgoer",
+                    style: {
+                        label: "data(label)",
+                        lineColor: "#00FF00",
+                        targetArrowColor: "#00FF00",
+                        width: 3,
+                    }
+                },
+                {
+                    selector: "node.incomer",
+                    style: {
+                        fontWeight: "bold",
+                        color: "#FFA500", // text color
+                        backgroundColor: "#FFA500",
+                    }
+                },
+                {
+                    selector: "edge.incomer",
+                    style: {
+                        label: "data(label)",
+                        lineColor: "#FFA500",
+                        targetArrowColor: "#FFA500",
+                        width: 3,
+                    }
+                },
+                {
+                    selector: "node.incomer.outgoer", // a node that is both an incomer and an outgoer
+                    style: {
+                        fontWeight: "bold",
+                        color: "#00FF00", // text color
+                        backgroundColor: "#00FF00",
+                        borderWidth: 3,
+                        borderStyle: "solid",
+                        borderColor: "#FFA500",
+                    }
+                },
+                {
+                    selector: "node.inFocus",
+                    style: {
+                        fontWeight: "bold",
+                        color: "#0000FF", // text color
+                        backgroundColor: "#0000FF"
+                    }
+                }
+            ],
+        });
+
+        // Whenever the user clicks on a node, highlight that node, all the edges
+        // emanating from that node, and all the nodes those edges point to.
+        //
+        // References:
+        // - https://js.cytoscape.org/#events
+        // - https://js.cytoscape.org/#collection/traversing
+        //
+        cy.bind("tap", "node", (event) => {
+            // Remove classes from all elements.
+            cy.elements()
+                .removeClass("outgoer")
+                .removeClass("incomer")
+                .removeClass("inFocus");
+
+            // Apply classes to the target node, the arrows coming out of it,
+            // and the nodes those arrows point to.
+            event.target
+                .addClass("inFocus")
+                .outgoers()
+                .addClass("outgoer");
+
+            // Apply classes to the arrows pointing to the target node,
+            // and the nodes those arrows are coming out of.
+            event.target
+                .incomers()
+                .addClass("incomer");
+        });
+
+        // Whenever the user double-clicks on a node, un-highlight all elements.
+        cy.bind("dbltap", "node", (event) => {
+            // Remove classes from all elements.
+            cy.elements()
+                .removeClass("outgoer")
+                .removeClass("incomer")
+                .removeClass("inFocus");
+        });
+    })();
+</script>
+</body>
+</html>
