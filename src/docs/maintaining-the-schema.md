@@ -9,18 +9,18 @@ to answer questions like:
 - How were they prepared, so that they would be suitable for sequencing, LC-MS proteomics, metabolomics, etc?
 - How were the results of those analyses interpreted?
 
-All metadata gathered and stored by the NMDC community must validate against the nmdc-schema.
+All metadata gathered and stored by the NMDC community must validate against the NMDC Schema.
 
-## The nmdc-schema is expressed in the [LinkML](https://linkml.github.io/linkml/) schema language.
+## The NMDC Schema is expressed in the [LinkML](https://linkml.github.io/linkml/) modeling language.
 
-LinkML uses structures like classes, slots (for relationships and properties), types and enumerations.
-People with object-oriented programming experience might find this familiar.
-
-## The name "LinkML" indicates that it's a modeling language for linked data.
-
+LinkML uses structures like classes, slots (for relationships and properties), types and enumerations to create a 
+blueprint of the NMDC data. The schema is used to define the structure of the data, and to ensure that the data is
+consistent and interoperable. The schema is expressed in a human-readable format, and can be generated in multiple
+formats, including JSONSchema (used to support validation on ingest to NMDC), YAML (for ease of editing), and OWL.
 LinkML schemas generally make good use of terminology from external resources, especially ontologies,
-especially those from the OBO Foundry. In return, LinkML schema elements and the corresponding data should be
-interoperable with other ontologies and semantic databases.
+and especially those from the OBO Foundry. 
+
+In return, LinkML schema elements and the corresponding data should be interoperable with other ontologies and semantic databases.
 
 ## Asserting element identifiers in the schema with URIs and CURIEs
 
