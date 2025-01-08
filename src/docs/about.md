@@ -11,7 +11,7 @@ In the context of the NMDC, this schema supports the integration of microbiome d
 bioenergy, and environmental science into a cohesive platform. 
 
 
-### Funding:
+#### Funding:
 The work conducted by the National Microbiome Data Collaborative (https://ror.org/05cwx3318) is supported by the 
 Genomic Science Program in the U.S. Department of Energy, Office of Science, Office of Biological and Environmental 
 Research (BER) under contract numbers DE-AC02-05CH11231 (LBNL), 89233218CNA000001 (LANL), and DE-AC05-76RL01830 (PNNL).
@@ -20,13 +20,13 @@ Research (BER) under contract numbers DE-AC02-05CH11231 (LBNL), 89233218CNA00000
 
 This project was made using the [LinkML framework](https://github.com/biolink/biolinkml)
 
-### Citing NMDC Schema:
+#### Citing NMDC:
+
+###### Schema
 
 Microbiome Data Coordination Center. (n.d.). NMDC schema. GitHub. from https://github.com/microbiomedata/nmdc-schema
 
-### How to cite the NMDC:
-
-##### Data Portal
+###### Data Portal
 Eloe-Fadrosh EA, Ahmed F, Anubhav, Babinski M, Baumes J, Borkum M, Bramer L, Canon S, Christianson DS, Corilo YE, 
 Davenport KW, Davis B, Drake M, Duncan WD, Flynn MC, Hays D, Hu B, Huntemann M, Kelliher J, Lebedeva S, Li PE, 
 Lipton M, Lo CC, Martin S, Millard D, Miller K, Miller MA, Piehowski P, Jackson EP, Purvine S, Reddy TBK, 
@@ -35,13 +35,13 @@ Wood-Charlson EM, Xu Y, Chain PSG, McCue LA, Mans D, Mungall CJ, Mouncey NJ, Fag
 The National Microbiome Data Collaborative Data Portal: an integrated multi-omics microbiome data resource.
 Nucleic Acids Res. 2022 January 7;60(D1):D828–D836. doi: 10.1093/nar/gkab990.
  
-#### Ambassador Program
+###### Ambassador Program
 Kelliher, JM, Rudolph M, Vangay P, Abbas A, Borton MA, Davenport ER, Davenport KW, Erazo NG, Herman C, Karstens L, 
 Kocurek D, Lutz HL, Myers KS, Ockert I,  Rodriguez FE, Santistevan C, Saunders JK, Smith ML, Vogtmann E, Windsor A, 
 Wood-Charlson EM, Woodley L, Eloe-Fadrosh EA. Cohort-based learning for microbiome research community standards. 
 Nature Microbiology. 2023 April 17. doi:10.1038/s41564-023-01361-7.
  
-#### Program Launch
+###### Program Launch
 E. M. Wood-Charlson, Anubhav, D. Auberry, H. Blanco, M. I. Borkum, Y. E. Corilo, K. W. Davenport, S. Deshpande, R.
 Devarakonda, M. Drake, W. D. Duncan, M. C. Flynn, D. Hays, B. Hu, M. Huntemann, P.-E. Li, M. Lipton, C.-C. Lo, 
 D. Millard, K. Miller, P. D. Piehowski, S. Purvine, T. B. K. Reddy, M. Shakya, J. C. Sundaramurthi, P. Vangay, 
