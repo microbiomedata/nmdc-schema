@@ -726,11 +726,34 @@ to answer questions like:</p>
 <h2 id="the-nmdc-schema-is-expressed-in-the-linkml-modeling-language">The NMDC Schema is expressed in the <a href="https://linkml.github.io/linkml/">LinkML</a> modeling language.</h2>
 <p>LinkML uses structures like classes, slots (for relationships and properties), types and enumerations to create a 
 blueprint of the NMDC data. The schema is used to define the structure of the data, and to ensure that the data is
-consistent and interoperable. The schema is expressed in a human-readable format, and can be generated in multiple
-formats, including JSONSchema (used to support validation on ingest to NMDC), YAML (for ease of editing), and OWL.
-LinkML schemas generally make good use of terminology from external resources, especially ontologies,
-and especially those from the OBO Foundry. </p>
-<p>In return, LinkML schema elements and the corresponding data should be interoperable with other ontologies and semantic databases.</p>
+consistent and interoperable. The schema is expressed in a human-readable format, and with the help of LinkML tooling, 
+can be generated in multiple formats, including JSONSchema (used to support validation on ingest to NMDC), 
+YAML (for ease of editing), and OWL. LinkML schemas generally make good use of terminology and concepts already modeled 
+in external, trusted knowledge centers, especially <a href="https://en.wikipedia.org/wiki/Ontology_(information_science)">ontologies</a>, 
+and especially those from the <a href="https://obofoundry.org/">OBO Foundry</a>. </p>
+<p>Reuse of existing terminologies and knowledge can be found in several places in the NMDC schema, including the use of
+the <a href="https://gensc.org/mixs/">MIxS</a> schema, the <a href="https://environmentontology.org/">EnvO</a> ontology, and the 
+<a href="https://www.ebi.ac.uk/chebi/">CHEBI</a> ontology.  In addition, the NMDC schema elements like slots and classes are
+annotated with mappings (<a href="https://linkml.io/linkml/schemas/uris-and-mappings.html">exact, narrow, related scopes</a>) 
+to these external resources.</p>
+<p>For example: </p>
+<pre><code class="language-yaml">  doi_value:
+    description: &gt;-
+      A digital object identifier, which is intended to persistantly identify some resource on the web.
+    required: true
+    aliases:
+      - DOI
+      - digital object identifier
+    range: uriorcurie
+    pattern: '^doi:10.\d{2,9}/.*$'
+    examples:
+      - value: doi:10.46936/10.25585/60000880
+        description: The DOI links to an electronic document.
+    exact_mappings:
+      - OBI:0002110
+    narrow_mappings:
+      - edam.data:1188
+</code></pre>
 <h2 id="asserting-element-identifiers-in-the-schema-with-uris-and-curies">Asserting element identifiers in the schema with URIs and CURIEs</h2>
 <p>One consequence of this semantic/linked data orientation is that all schema elements are identified by a URI,
 most often in the compact CURIe form: a prefix and a local identifier.
@@ -856,44 +879,8 @@ For example, an example <code>id</code> from the <code>NamedThing</code> class i
 The text that comes immediately after the <code>nmdc</code> prefix and colon, and before the first hyphen is the typecode, <code>mgmag</code> in this case.
 Typecodes must correspond 1:1 to a class in the NMDC schema. The typecodes currently in use are available from the
 nmdc-runtime API: <a href="https://api.microbiomedata.org/nmdcschema/typecodes">https://api.microbiomedata.org/nmdcschema/typecodes</a></p>
-<p>The typecodes for each class are auto-discovered each time the nmdc-runtime API is restarted, 
-and the API is restarted each time it is bound to a new version of the nmdc-schem.</p>
-<p>We do not currently have any criteria for good typecodes, other than they are ideally between 3 and 6 characters in length.</p>
-<h2 id="unresolved">unresolved</h2>
-<ul>
-<li>may need to reassert identifier, range and or unique for subclasses</li>
-<li>still getting anyurl typed string statement objects in RDF. I added a workaround in anyuri-strings-to-iris</li>
-<li>
-<p>make better use of id prefixes?</p>
-</li>
-<li>
-<p>todo what reference ontologies do we want to include in a graph database? </p>
-</li>
-<li>kegg, but from where?</li>
-<li>nmdc schema</li>
-<li>envo</li>
-<li>mixs</li>
-<li>chebi</li>
-<li>selected branches of NCBI taxonomy? protein ontology?</li>
-<li>
-<p>could federate uniprot</p>
-</li>
-<li>
-<p>gen-prefix-map </p>
-</li>
-<li>doesn't merge</li>
-<li>
-<p>emits JSON content into a file with the .yaml extension by default</p>
-</li>
-<li>
-<p>doesn't look like all the emit_prefixes are making it into the OWL output</p>
-</li>
-<li>
-<p>two graphdb endpoints: <a href="http://3.236.215.220:7200/sparql">http://3.236.215.220:7200/sparql</a> (switch to port 80) and <a href="https://graphdb-dev.microbiomedata.org/">https://graphdb-dev.microbiomedata.org/</a></p>
-</li>
-<li>configure graphdb visual graph for showing blank nodes ?</li>
-<li>MAM audit DOIs, websites, urls, and other uriorcurie values</li>
-</ul>
+<p>Please see <a href="../identifiers/">identifers</a> for more information on the minting of identifiers in NMDC directly, and
+for more discussion on identifier resolution and harmonization in NMDC.</p>
 
 
 
