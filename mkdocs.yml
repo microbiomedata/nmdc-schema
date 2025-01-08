@@ -6,6 +6,7 @@ theme:
   #    primary: cyan
   features:
     - content.tabs.link
+    - hide_page_title
   logo: images/NMDC_logo.png
 plugins:
   - search

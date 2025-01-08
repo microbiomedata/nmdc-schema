@@ -1,6 +1,4 @@
-## National Microbiome Data Collaborative (NMDC) Schema Documentation
-
-![NMDC_logo.png](images/NMDC_logo.png)
+# ![NMDC_logo.png](images/NMDC_logo.png)
 
 The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data 
 Collaborative (NMDC), ensuring that microbiome data from diverse fields can be seamlessly integrated and 
