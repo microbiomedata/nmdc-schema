@@ -6,7 +6,7 @@ theme:
   #    primary: cyan
   features:
     - content.tabs.link
-  logo: images/nmdc-logo.png
+  logo: NMDC_logo.png
 plugins:
   - search
   - mermaid2:

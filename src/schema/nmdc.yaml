@@ -10,19 +10,7 @@ description: >-
   share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate 
   interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines. 
   In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture, 
-  bioenergy, and environmental science into a cohesive platform. 
-
-  This schema is organized into three key modules:
-
-  * A core set of elements for representing data values represented in LinkML format (https://w3id.org/linkml/) consisting
-  of a set classes, slots, types, and enumerations that are used to define the structure of the NMDC schema.
-  
-  * A subset of the MIxS schema developed by the Genomic Standards Consortium, that is used to describe the 
-  environmental context of samples.
-    
-  * An annotation schema that provides a mechanism for annotating data with additional information, such as provenance, 
-  quality, and other metadata that is not part of the core data model.
-
+  bioenergy, and environmental science into a cohesive platform.
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.0
 
