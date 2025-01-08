@@ -1,4 +1,5 @@
-# NMDC Schema Development Funding:
+# Funding and Acknowledgements
+
 The work conducted by the National Microbiome Data Collaborative (https://ror.org/05cwx3318) is supported by the 
 Genomic Science Program in the U.S. Department of Energy, Office of Science, Office of Biological and Environmental 
 Research (BER) under contract numbers DE-AC02-05CH11231 (LBNL), 89233218CNA000001 (LANL), and DE-AC05-76RL01830 (PNNL).

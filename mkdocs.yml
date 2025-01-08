@@ -27,7 +27,7 @@ extra_javascript:
 nav:
   # Reference: https://www.mkdocs.org/user-guide/configuration/#nav
   - Overview: index.md
-  - Funding: about.md
+  - Funding and Acknowledgements: about.md
   - Contributing: collaboration.md
   - Metadata Standards Documentation: Metadata_Documentation_Overview.md
   - Maintaining the NMDC Schema: prefixes_curies_ids_mappings_etc.md
