@@ -1,7 +1,7 @@
 # Validating data against the nmdc-schema
 
-The nmdc-schema's preferred on-disk data serializations are YAML, closely followed by JSON. Preferred databases
-are MongDB and any RDF triplestore.
+The nmdc-schema's preferred serializations are YAML, closely followed by JSONSchema. MongoDB is the database of 
+choice for storing data. The nmdc-schema is designed to be a bridge between these formats.
 
 The nmdc-schema Makefiles use the `linkml-validate` and `linkml-run-examples` CLIs for build-time validation of data
 file,
