@@ -2226,14 +2226,17 @@ class StatusEnum(str, Enum):
     fail = "fail"
 
 
-class AnalyteCategoryEnum(str, Enum):
-    metagenome = "metagenome"
-    metatranscriptome = "metatranscriptome"
-    metaproteome = "metaproteome"
-    metabolome = "metabolome"
-    lipidome = "lipidome"
-    nom = "nom"
-    amplicon_sequencing_assay = "amplicon_sequencing_assay"
+class NucleotideSequencingEnum(str, Enum):
+    Metagenome = "metagenome"
+    Metatranscriptome = "metatranscriptome"
+    Amplicon = "amplicon_sequencing_assay"
+
+
+class MassSpectrometryEnum(str, Enum):
+    Metaproteome = "metaproteome"
+    Metabolome = "metabolome"
+    Lipidome = "lipidome"
+    Natural_Organic_Matter = "nom"
 
 
 class ExtractionTargetEnum(str, Enum):
@@ -10532,7 +10535,7 @@ class Biosample(Sample):
          'comments': ['Time should be entered as HH:MM(:SS) in GMT. See here for a '
                       'converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '813'}, {'value': '48835'}],
+         'examples': [{'value': '13:33'}, {'value': '13:33:55'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'seconds optional time only'],
          'rank': 1,
@@ -10544,7 +10547,7 @@ class Biosample(Sample):
          'comments': ['Time should be entered as HH:MM(:SS) in GMT. See here for a '
                       'converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '813'}, {'value': '48835'}],
+         'examples': [{'value': '13:33'}, {'value': '13:33:55'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'seconds optional time only'],
          'rank': 3,
@@ -10674,7 +10677,7 @@ class Biosample(Sample):
          'comments': ['Time should be entered as HH:MM(:SS) in GMT. See here for a '
                       'converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '813'}, {'value': '48835'}],
+         'examples': [{'value': '13:33'}, {'value': '13:33:55'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'seconds optional time only'],
          'rank': 5,
@@ -15215,7 +15218,7 @@ class DataGeneration(PlannedProcess):
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}}}})
 
     add_date: Optional[str] = Field(None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: AnalyteCategoryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
+    analyte_category: str = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
   in the Workflow Chain
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: List[str] = Field(..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
@@ -15368,7 +15371,9 @@ class NucleotideSequencing(DataGeneration):
          'comments': ['For example data generated from an Illumina or Pacific '
                       'Biosciences instrument.'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'id': {'name': 'id',
+         'slot_usage': {'analyte_category': {'name': 'analyte_category',
+                                             'range': 'NucleotideSequencingEnum'},
+                        'id': {'name': 'id',
                                'pattern': '^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'}}}})
@@ -15414,7 +15419,7 @@ class NucleotideSequencing(DataGeneration):
          'slot_uri': 'MIXS:0000045',
          'string_serialization': '{text}'} })
     add_date: Optional[str] = Field(None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: AnalyteCategoryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
+    analyte_category: NucleotideSequencingEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
   in the Workflow Chain
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: List[str] = Field(..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
@@ -15621,7 +15626,9 @@ class MassSpectrometry(DataGeneration):
                                                                                                       {'equals_string': 'gas_chromatography'}],
                                                                                            'name': 'eluent_introduction_category'}}},
                     'title': 'has_chromatography_configuration_required_if_lc_or_gc'}],
-         'slot_usage': {'has_chromatography_configuration': {'name': 'has_chromatography_configuration',
+         'slot_usage': {'analyte_category': {'name': 'analyte_category',
+                                             'range': 'MassSpectrometryEnum'},
+                        'has_chromatography_configuration': {'name': 'has_chromatography_configuration',
                                                              'pattern': '^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                                              'structured_pattern': {'interpolated': True,
                                                                                     'syntax': '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'}},
@@ -15653,7 +15660,7 @@ class MassSpectrometry(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}} })
     add_date: Optional[str] = Field(None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: AnalyteCategoryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
+    analyte_category: MassSpectrometryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
   in the Workflow Chain
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: List[str] = Field(..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',

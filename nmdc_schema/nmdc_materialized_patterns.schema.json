@@ -15,20 +15,6 @@
             "title": "AnalysisTypeEnum",
             "type": "string"
         },
-        "AnalyteCategoryEnum": {
-            "description": "",
-            "enum": [
-                "metagenome",
-                "metatranscriptome",
-                "metaproteome",
-                "metabolome",
-                "lipidome",
-                "nom",
-                "amplicon_sequencing_assay"
-            ],
-            "title": "AnalyteCategoryEnum",
-            "type": "string"
-        },
         "ArchStrucEnum": {
             "description": "",
             "enum": [
@@ -9775,7 +9761,7 @@
                     ]
                 },
                 "analyte_category": {
-                    "$ref": "#/$defs/AnalyteCategoryEnum",
+                    "$ref": "#/$defs/MassSpectrometryEnum",
                     "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
                 },
                 "associated_studies": {
@@ -10042,6 +10028,17 @@
             ],
             "title": "MassSpectrometryConfiguration",
             "type": "object"
+        },
+        "MassSpectrometryEnum": {
+            "description": "",
+            "enum": [
+                "metaproteome",
+                "metabolome",
+                "lipidome",
+                "nom"
+            ],
+            "title": "MassSpectrometryEnum",
+            "type": "string"
         },
         "MassSpectrumCollectionModeEnum": {
             "description": "",
@@ -12541,7 +12538,7 @@
                     ]
                 },
                 "analyte_category": {
-                    "$ref": "#/$defs/AnalyteCategoryEnum",
+                    "$ref": "#/$defs/NucleotideSequencingEnum",
                     "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
                 },
                 "associated_studies": {
@@ -12736,6 +12733,16 @@
             ],
             "title": "NucleotideSequencing",
             "type": "object"
+        },
+        "NucleotideSequencingEnum": {
+            "description": "",
+            "enum": [
+                "metagenome",
+                "metatranscriptome",
+                "amplicon_sequencing_assay"
+            ],
+            "title": "NucleotideSequencingEnum",
+            "type": "string"
         },
         "OccupDocumentEnum": {
             "description": "",
