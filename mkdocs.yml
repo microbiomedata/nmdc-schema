@@ -30,7 +30,7 @@ nav:
   - Funding and Acknowledgements: about.md
   - Contributing: collaboration.md
   - Metadata Standards Documentation: Metadata_Documentation_Overview.md
-  - Maintaining the NMDC Schema: prefixes_curies_ids_mappings_etc.md
+  - Maintaining the NMDC Schema: maintaining-the-schema.md
   - Schema element deprecation guide: schema_element_deprecation_guide.md
   - NMDC Schema Validation: schema-validation.md
   - Identifiers: identifiers.md

@@ -1,7 +1,7 @@
 # Identifiers in NMDC
 
 Identifiers are crucial for the NMDC, both for any data objects *created* (aka minted) and for any external objects
-*referenced*
+that are being *referenced* in NMDC.
 
 Examples of entities that require identifiers:
 
@@ -28,7 +28,7 @@ See [McMurry et al, PMID:28662064](https://www.ncbi.nlm.nih.gov/pubmed/28662064)
 
 ## CURIEs - prefixed IDs
 
-Following McMurry et al we adopt the use of *prefixed identifiers*
+Following McMurry et al. we adopt the use of *prefixed identifiers*
 
 The syntax is:
 
@@ -41,40 +41,44 @@ Examples:
 - DOI:10.1038/nbt1156
 
 These prefixed identifiers are also known as CURIEs (Compact URIs). There is
-a [W3C specification](https://www.w3.org/TR/curie) for these
+a [W3C specification](https://www.w3.org/TR/curie) for these.
 
-All prefixes should be registered with a standard identifier prefix system. These include:
+All prefixes should be registered with at least one standard identifier prefix system.  If a prefix is not already
+registered, please open a ticket at Bioregistry.io to request registration.  If an entity is registered in multiple 
+registries (possibly with differing syntax or case), we recommend using the bioregistry.io registry as the primary
+source of truth.
 
+Popular choices for identifier registry services include:
+
+* https://bioregistry.io
 * http://n2t.net
 * http://identifiers.org
-* http://obofoundry.org
 
 ## Examples
 
-### INSDC BioSamples
+#### 1. INSDC BioSamples (Example CURIE: `BIOSAMPLE:SAMEA2397676`)
 
-Registry entry: https://registry.identifiers.org/registry/biosample
+| Description        | Registry Entry                                                                                      | Resolvable Link                                             |
+|--------------------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| **Bioregistry.io** | [https://bioregistry.io/registry/biosample](https://bioregistry.io/registry/biosample)              | [https://bioregistry.io/biosample:SAMEA2397676](https://bioregistry.io/biosample:SAMEA2397676)        |
+| **Identifiers.org**| [https://registry.identifiers.org/registry/biosample](https://registry.identifiers.org/registry/biosample) | [https://identifiers.org/BIOSAMPLE:SAMEA2397676](https://identifiers.org/BIOSAMPLE:SAMEA2397676)      |
+| **N2T.net**        |                                                                                              | [http://n2t.net/BIOSAMPLE:SAMEA2397676](http://n2t.net/BIOSAMPLE:SAMEA2397676)                        |
 
-Example ID/CURIE: BIOSAMPLE:SAMEA2397676
 
-Resolving via
-identifiers.org: [https://identifiers.org/BIOSAMPLE:SAMEA2397676](https://identifiers.org/BIOSAMPLE:SAMEA2397676)
+#### 2. GOLD identifiers (Example CURIE: `GOLD:Gp0119849`)
 
-Resolving via nt2.net: [http://n2t.net/BIOSAMPLE:SAMEA2397676](http://n2t.net/BIOSAMPLE:SAMEA2397676)
+| Description        | Registry Entry                                                                                         | Resolvable Link                                                    |
+|--------------------|-------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|
+| **Bioregistry.io** | [https://bioregistry.io/registry/gold](https://bioregistry.io/registry/gold)                           | [https://bioregistry.io/gold:Gp0119849](https://bioregistry.io/gold:Gp0119849)                       |
+| **Identifiers.org**| [https://registry.identifiers.org/registry/gold](https://registry.identifiers.org/registry/gold)       | [https://identifiers.org/GOLD:Gp0119849](https://identifiers.org/GOLD:Gp0119849)                     |
+| **N2T.net**        | N/A                                                                                                   | [http://n2t.net/GOLD:Gp0119849](http://n2t.net/GOLD:Gp0119849)                                       |
 
-### GOLD identifiers
-
-https://registry.identifiers.org/registry/gold
-
-Example ID: `GOLD:Gp0119849`
-
-Resolving via identifiers.org: https://identifiers.org/GOLD:Gp0119849
 
 ### identifiers for ontology terms and function descriptors
 
-Most of the ontologies we use are in OBO. All OBO IDs are prefixed
-using the ontology ID space. The list of ID spaces can be found on
-http://obofoundry.org
+Most of the ontologies we use are in OBO. All OBO IDs are prefixed using the ontology ID space. 
+The list of ID spaces can be found on: http://obofoundry.org, and use a special resolver service called "PURL" 
+(Permanent URL) to resolve the ID to a URL.
 
 For example the ID/CURIE `ENVO:00002007` represents the class `sediment` and is expanded to a URI
 of http://purl.obolibrary.org/obo/ENVO_00002007
@@ -88,15 +92,14 @@ KEGG is actually a set of databases, each with its own prefix, usually of form `
 
 ## Recommended IDs for use within NMDC
 
-The NMDC schema is annotated with the set of IDs that are allowed to act as primary keys for instances of each class.
-
-For example the class [OrthologyGroup](https://microbiomedata.github.io/nmdc-metadata/docs/OrthologyGroup) has a
-description of the IDs allowed on the class web page, the first listed
-is [KEGG.ORTHOLOGY](https://registry.identifiers.org/registry/kegg.orthology)
+The NMDC schema is annotated with the set of IDs, ordered by preference, that are allowed to act as primary keys 
+for instances of each class. For example the class [OrthologyGroup](https://microbiomedata.github.io/nmdc-metadata/docs/OrthologyGroup) has a description of the IDs allowed 
+on the class web page, the first listed is [KEGG.ORTHOLOGY](https://registry.identifiers.org/registry/kegg.orthology).  The full URL for each is in the jsonld context file, 
+[jsonschema/nmdc.context.jsonld](...).
 
 The underlying yaml looks like this:
 
-```
+```yaml
   orthology group:
     is_a: functional annotation term
     description: >-
@@ -112,17 +115,11 @@ The underlying yaml looks like this:
       - biolink:GeneFamily
 ```
 
-The full URLs for each is in the jsonld context file
-
 ## IDs minted for use within NMDC
 
-The NMDC schema specifies legal identifiers for all of its classes. All data instances/records that are intended for upload into the NMDC metadata store must have an `id` field that follows this specification, which is discussed below.
-
-NMDC offers a central identifier minting [endpoint](https://api.microbiomedata.org/docs#/minter/mint_ids_pids_mint_post) in order to save data contributors the trouble of hand-crafting `id`s.
-
-The possibility of decentralized (or offline) minting of `id`s by trusted organizations has also been anticipated. `id` component 3 below (the shoulder) is used to indicate the organization that minted an `id`. LBL, which hosts the `id` minting endpoint will use one shoulder value. If another organization, like JGI or EMSL, needs to bulk-create `id`s outside of the central identifier minting endpoint, they would use different shoulders, to be determined by the NMDC schema and metadata team.
-
-No matter where they are minted, all NMDC `id` values must match this abstract pattern:
+The NMDC schema specifies legal identifiers for all of its classes. All data instances/records that are intended for 
+upload into the NMDC metadata store must have an `id` field that follows this specification. Ids that are minted
+at NMDC must match this abstract pattern:
 
 ```
 nmdc:<type-code>-<shoulder>-<blade><.version><_locus>
@@ -148,30 +145,34 @@ The per-part regular expression described above can be composed into one complet
 ^(?<prefix>nmdc):(?<typecode>[a-z]{1,6})-(?<shoulder>[0-9][a-z]{0,6}[0-9])-(?<blade>[A-Za-z0-9]+)(?<version>(\.[A-Za-z0-9]+)*)(?<locus>_[A-Za-z0-9_\.-]+)?$
 ```
 
+NMDC offers a central identifier minting [endpoint](https://api.microbiomedata.org/docs#/minter/mint_ids_pids_mint_post) in order to save data contributors the trouble of hand-crafting `id`s.
+The possibility of decentralized (or offline) minting of `id`s by trusted organizations has also been anticipated. 
+`id` component 3 below (the shoulder) is used to indicate the organization that minted an `id`. LBL, which hosts 
+the `id` minting endpoint will use one shoulder value. If another organization, like JGI or EMSL, needs to bulk-create
+`id`s outside of the central identifier minting endpoint, they would use different shoulders, to be determined by the 
+NMDC schema and metadata team.
+
 ## Annotation identifiers
 
-Both metaG and metaT analyses produce GFF3 files.
-See [issue 184](https://github.com/microbiomedata/nmdc-metadata/issues/184) for more on how the GFF is modeled.
+Both metaG and metaT analyses produce GFF3 files. See [issue 184](https://github.com/microbiomedata/nmdc-metadata/issues/184) for more on how the GFF is modeled.
 
-The main entity we care about in these is
-the [gene product] https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct) ID (usually a protein), this is what
-functional annotation hangs off.
-
-This is typically a protein encoded by a CDS, e.g.
+The main entity identifier used in NMDC is the [gene product](https://microbiomedata.github.io/nmdc-metadata/docs/GeneProduct) 
+ID.  This identifier is used in functioanl annotations. This is typically a protein encoded by a CDS, e.g.
 
 ```
 Ga0185794_41    GeneMark.hmm-2 v1.05    CDS     48      1037    56.13   +       0       ID=Ga0185794_41_48_1037;translation_table=11;start_type=ATG;product=5-methylthioadenosine/S-adenosylhomocysteine deaminase;product_source=KO:K12960;cath_funfam=3.20.20.140;cog=COG0402;ko=KO:K12960;ec_number=EC:3.5.4.28,EC:3.5.4.31;pfam=PF01979;superfamily=51338,51556
 ```
 
-When converting col9 we ensure that each ID is correctly prefixed. So for example, we use `KEGG.OTHOLOGY:K12960`
-not `KO:K12960` as the former is the official prefix according to KEGG and identifiers.org
-
-We will also later need a policy for IDs for the sequences in col1 (ie genome or transcript), please return later for
-more details...
+Note: when processing GFF column 9 values, NMDC first ensures that each ID in this field is correctly prefixed 
+according to the NMDC schema `id_prefixes` directives. In the example above, `KO:K12960` is translated to
+`KEGG.OTHOLOGY:K12960` to make sure the data is compliant with the registered prefix authorities and thus the 
+NMDC schema.  This helps to ensure that the data is interoperable and can be used in a variety of tools and
+services beyond NMDC.
 
 ## Reuse vs minting new IDs
 
-In 2023 NMDC transitioned from reusing identifiers from other organizations to using NMDC minted identifiers as the primary identifier. In April 2024 NMDC will update legacy records to use NMDC minted identifers as the primary identifier.  The  table below provides information is how legacy identifiers can be found in updated records. 
+In 2023 NMDC transitioned from reusing identifiers from other organizations to using NMDC minted identifiers as the 
+primary identifier. 
 
 ## Identifier mapping
 
@@ -184,11 +185,14 @@ In 2023 NMDC transitioned from reusing identifiers from other organizations to u
 | gold:Gp* | gold:Gp0452734 | OmicsProcessing | gold_sequencing_project_identifiers |
 | emsl:* | emsl:598506 | OmicsProcessing | alternative_identifiers |
 
-Some legacy data object identifiers were based on file md5sums, either with or without a prefix (nmdc, jgi, emsl). In some cases the legacy value can be found by removing the prefix and searching DataObject records on slot md5_checksum.  If you are having trouble finding information based on legacy identifiers please contact support@microbiomedata.org.
+Some legacy data object identifiers were based on file md5sums, either with or without a prefix (nmdc, jgi, emsl). 
+In some cases the legacy value can be found by removing the prefix and searching DataObject records on slot 
+md5_checksum.  If you are having trouble finding information based on legacy identifiers 
+please contact support@microbiomedata.org.
 
 ## Additional details on legacy identifiers
 
-Legacy metagenomics omics objects look like this:
+Legacy metagenomics objects look like this:
 
 ```yaml
       id: "gold:Gp0108335"
@@ -218,7 +222,7 @@ the linked data object uses a jgi prefix and an md5 hash
       type: "nmdc:DataObject"
 ```
 
-Legacy metaproteomics omics objects look like this:
+Legacy metaproteomics objects look like this:
 
 ```yaml
       id: "emsl:404590"
@@ -234,7 +238,7 @@ Legacy metaproteomics omics objects look like this:
       processing_institution: "Environmental Molecular Sciences Lab"
 ```
 
-the output data objects are formed from these:
+and the output data objects are formed from these:
 
 ```yaml
       id: "emsl:output_404590"
@@ -257,22 +261,15 @@ the data objects use hashes (md5) prefixed with nmdc:
 ## MIxS term identifiers
 
 We are working with the GSC to provide permanent IDs for MIxS terms. Note these terms are schema-level rather than
-data-level.
-
-Please check this section later
-
-For now we place these in the nmdc namespaces, e.g
-
-`nmdc:alt`
-
-
+data-level. For now we place these in the nmdc namespaces, e.g `nmdc:alt`
 
 ## Identifiers and semantic web URIs
 
-We produce a JSON-LD context with the schema:
+Using LinkML's default tooling, we produce a JSON-LD context with the schema:
 
 * [jsonschema/nmdc.context.jsonld](https://github.com/microbiomedata/nmdc-schema/blob/main/project/jsonschema/nmdc.schema.json)
 
 When this is combined with schema-conformant JSON, RDF can be automatically created using the intended URIs
 
-Please also see: [Maintaining identifiers](prefixes_curies_ids_mappings_etc.md)] for more information.
+Please see: [Maintaining identifiers](maintaining-the-schema)] for more information on 
+developing and maintaining identifiers in the schema.
