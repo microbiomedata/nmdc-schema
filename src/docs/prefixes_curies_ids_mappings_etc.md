@@ -1,8 +1,3 @@
-# Notes about prefixes, CURIEs, identifiers and mappings: 
-## An NMDC and LinkML perspective
-
-# First Draft: 2023-09-18
-
 ## The nmdc-schema is a framework for describing multi-omics microbiome experiments.
 
 - What samples were included?

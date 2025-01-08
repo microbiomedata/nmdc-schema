@@ -274,3 +274,5 @@ We produce a JSON-LD context with the schema:
 * [jsonschema/nmdc.context.jsonld](https://github.com/microbiomedata/nmdc-schema/blob/main/project/jsonschema/nmdc.schema.json)
 
 When this is combined with schema-conformant JSON, RDF can be automatically created using the intended URIs
+
+Please also see: [Maintaining identifiers](prefixes_curies_ids_mappings_etc.md)] for more information.

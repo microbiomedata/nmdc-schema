@@ -1,14 +1,5 @@
 # ![NMDC_logo.png](images/NMDC_logo.png)
 
-The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data 
-Collaborative (NMDC), ensuring that microbiome data from diverse fields can be seamlessly integrated and 
-utilized. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize, 
-share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate 
-interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines. 
-In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture, 
-bioenergy, and environmental science into a cohesive platform. 
-
-
 #### Funding:
 The work conducted by the National Microbiome Data Collaborative (https://ror.org/05cwx3318) is supported by the 
 Genomic Science Program in the U.S. Department of Energy, Office of Science, Office of Biological and Environmental 
