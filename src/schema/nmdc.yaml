@@ -4,14 +4,24 @@ title: NMDC Schema
 notes:
   - not importing any MIxS terms where the relationship between the name (SCN) and the id isn't 1:1
 description: >-
-  Schema for National Microbiome Data Collaborative (NMDC).
+  The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data 
+  Collaborative (NMDC), ensuring that microbiome data from diverse fields can be seamlessly integrated and 
+  utilized. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize, 
+  share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate 
+  interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines. 
+  In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture, 
+  bioenergy, and environmental science into a cohesive platform. 
 
-  This schema is organized into multiple modules, such as:
+  This schema is organized into three key modules:
 
-   * a set of core types for representing data values
-   * a subset of the mixs schema
-   * an annotation schema
-   * the NMDC schema itself, into which the other modules are imported
+  * A core set of elements for representing data values represented in LinkML format (https://w3id.org/linkml/) consisting
+  of a set classes, slots, types, and enumerations that are used to define the structure of the NMDC schema.
+  
+  * A subset of the MIxS schema developed by the Genomic Standards Consortium, that is used to describe the 
+  environmental context of samples.
+    
+  * An annotation schema that provides a mechanism for annotating data with additional information, such as provenance, 
+  quality, and other metadata that is not part of the core data model.
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.0

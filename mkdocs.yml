@@ -6,6 +6,7 @@ theme:
   #    primary: cyan
   features:
     - content.tabs.link
+  logo: images/nmdc-logo.png
 plugins:
   - search
   - mermaid2:
@@ -22,7 +23,7 @@ extra_javascript:
   - javascripts/tablesort.js
 nav:
   # Reference: https://www.mkdocs.org/user-guide/configuration/#nav
-  - NMDC Schema: index.md
+  - Overview: index.md
   - About: about.md
   - How to run a collaborative data modeling project: https://linkml.io/linkml/howtos/collaborative-development.html
   - Identifiers in NMDC: identifiers.md
