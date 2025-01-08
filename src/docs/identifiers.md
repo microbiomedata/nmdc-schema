@@ -92,7 +92,7 @@ KEGG is actually a set of databases, each with its own prefix, usually of form `
 
 ## Recommended IDs for use within NMDC
 
-The NMDC schema is annotated with the set of IDs, ordered by preference, that are allowed to act as primary keys 
+The NMDC Schema is annotated with the set of IDs, ordered by preference, that are allowed to act as primary keys 
 for instances of each class. For example the class [OrthologyGroup](https://microbiomedata.github.io/nmdc-metadata/docs/OrthologyGroup) has a description of the IDs allowed 
 on the class web page, the first listed is [KEGG.ORTHOLOGY](https://registry.identifiers.org/registry/kegg.orthology).  The full URL for each is in the jsonld context file, 
 [jsonschema/nmdc.context.jsonld](...).
@@ -117,7 +117,7 @@ The underlying yaml looks like this:
 
 ## IDs minted for use within NMDC
 
-The NMDC schema specifies legal identifiers for all of its classes. All data instances/records that are intended for 
+The NMDC Schema specifies legal identifiers for all of its classes. All data instances/records that are intended for 
 upload into the NMDC metadata store must have an `id` field that follows this specification. Ids that are minted
 at NMDC must match this abstract pattern:
 
@@ -129,7 +129,7 @@ The abstract pattern has six parts, delimited by hyphens (unless otherwise speci
 
 1. `nmdc`: All NMDC identifiers will begin with this static prefix.
 
-2. `<typecode>`: An alphabetical code with a 1:1 correspondence to a class from the NMDC schema. Answers the question "of what class is the data record that bears this `id`"? Must consist of 1 to 6 lower case letters, although a minimum of 3 letters is suggested. The *type code* portion of an NMDC `id` must match the regular expression `[a-z]{1,6}`.
+2. `<typecode>`: An alphabetical code with a 1:1 correspondence to a class from the NMDC Schema. Answers the question "of what class is the data record that bears this `id`"? Must consist of 1 to 6 lower case letters, although a minimum of 3 letters is suggested. The *type code* portion of an NMDC `id` must match the regular expression `[a-z]{1,6}`.
 
 3. `<shoulder>`: A code that indicates what organization minted the identifier. Shoulder values must be zero to six lower case letters, flanked by one digit on either side. Answers the question "what organization minted this `id`"? The central identifier endpoint, hosted at LBL, uses the shoulder 00. Should organizations like JGI or EMSL need to mint identifiers in bulk, they would be assigned other shoulders, so that `id` values aren't reused. The *shoulder* portion of an NMDC `id` must match the regular expression `[0-9][a-z]{0,6}[0-9]`.
 
@@ -150,7 +150,7 @@ The possibility of decentralized (or offline) minting of `id`s by trusted organi
 `id` component 3 below (the shoulder) is used to indicate the organization that minted an `id`. LBL, which hosts 
 the `id` minting endpoint will use one shoulder value. If another organization, like JGI or EMSL, needs to bulk-create
 `id`s outside of the central identifier minting endpoint, they would use different shoulders, to be determined by the 
-NMDC schema and metadata team.
+NMDC Schema and metadata team.
 
 ## Annotation identifiers
 
@@ -164,9 +164,9 @@ Ga0185794_41    GeneMark.hmm-2 v1.05    CDS     48      1037    56.13   +       
 ```
 
 Note: when processing GFF column 9 values, NMDC first ensures that each ID in this field is correctly prefixed 
-according to the NMDC schema `id_prefixes` directives. In the example above, `KO:K12960` is translated to
+according to the NMDC Schema `id_prefixes` directives. In the example above, `KO:K12960` is translated to
 `KEGG.OTHOLOGY:K12960` to make sure the data is compliant with the registered prefix authorities and thus the 
-NMDC schema.  This helps to ensure that the data is interoperable and can be used in a variety of tools and
+NMDC Schema.  This helps to ensure that the data is interoperable and can be used in a variety of tools and
 services beyond NMDC.
 
 ## Reuse vs minting new IDs
@@ -248,7 +248,7 @@ and the output data objects are formed from these:
       type: "nmdc:DataObject"
 ```
 
-the data objects use hashes (md5) prefixed with nmdc:
+the data objects use hashes (md5) prefixed with `nmdc`:
 
 ```yaml
       name: "404590_resultant.tsv"
@@ -261,7 +261,7 @@ the data objects use hashes (md5) prefixed with nmdc:
 ## MIxS term identifiers
 
 We are working with the GSC to provide permanent IDs for MIxS terms. Note these terms are schema-level rather than
-data-level. For now we place these in the nmdc namespaces, e.g `nmdc:alt`
+data-level. For now we place these in the NMDC namespaces, e.g `nmdc:alt`
 
 ## Identifiers and semantic web URIs
 

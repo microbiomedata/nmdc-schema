@@ -12,7 +12,7 @@ We welcome any and all kinds of contribution, including:
  * ideas for new features
  * testing
  * documentation improvements
- * stlyistic improvements
+ * stylistic improvements
  * general suggestions on how we can do better
 
 Please see our [Contributing Guidelines](https://github.com/microbiomedata/nmdc-schema/blob/main/CONTRIBUTING.md) for 

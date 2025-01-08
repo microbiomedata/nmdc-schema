@@ -1,4 +1,4 @@
-# Understanding the nmdc-schema
+# Understanding the NMDC Schema
 
 The nmdc-schema is a framework for describing multi-omics microbiome experiments and the data they produce.  We aim 
 to answer questions like:
@@ -62,7 +62,7 @@ Ideally, the expanded URI should be web resolvable, but that is not required.
 The prefixes can be expanded to base URIs owned by a particular resource, or they can be
 expanded to base URIs owned by some resolving service, like the bioregistry.
 
-## Asserting mappings in the nmdc-schema
+## Asserting mappings in the NMDC Schema
 
 As mentioned above, URIs are assigned to most elements of a LinkML schema, either explicitly by the schema authors,
 or implicitly through the default prefix and the element's key. If an external prefix is used, that means the semantics 

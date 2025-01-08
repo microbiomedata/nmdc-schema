@@ -19,7 +19,7 @@ understand the structure of the data and how it is related.
 
 ### Schema
 
-Microbiome Data Coordination Center. (n.d.). NMDC schema. GitHub. from https://github.com/microbiomedata/nmdc-schema
+Microbiome Data Coordination Center. (n.d.). NMDC Schema. GitHub. from https://github.com/microbiomedata/nmdc-schema
 
 ### Program Launch
 E. M. Wood-Charlson, Anubhav, D. Auberry, H. Blanco, M. I. Borkum, Y. E. Corilo, K. W. Davenport, S. Deshpande, 

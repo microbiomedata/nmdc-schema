@@ -1,4 +1,4 @@
-# Deprecating NMDC schema elements
+# Deprecating NMDC Schema elements
 
 By deprecating, rather than deleting, schema elements in the NMDC model, we ensure backward compatibility, extend user 
 trust, and provide a valuable historical record, aiding in the understanding of the model's evolution. Therefore, 

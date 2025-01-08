@@ -1,6 +1,6 @@
 # Schema Developer FAQs
 
-Some frequently asked questions about developing the NMDC schema.
+Some frequently asked questions about developing the NMDC Schema.
 
 ### What are some effective strategies for collaborative schema development?
 
