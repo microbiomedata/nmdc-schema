@@ -1469,6 +1469,10 @@
          <lastmod>2025-01-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/collaboration/</loc>
+         <lastmod>2025-01-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/collected_from/</loc>
          <lastmod>2025-01-08</lastmod>
     </url>
@@ -1646,6 +1650,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/description/</loc>
+         <lastmod>2025-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/developer-docs/</loc>
          <lastmod>2025-01-08</lastmod>
     </url>
     <url>
@@ -2918,6 +2926,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/microbial_biomass_n/</loc>
+         <lastmod>2025-01-08</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/migrations/</loc>
          <lastmod>2025-01-08</lastmod>
     </url>
     <url>

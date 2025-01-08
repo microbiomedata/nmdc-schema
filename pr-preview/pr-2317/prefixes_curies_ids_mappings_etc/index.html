@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/prefixes_curies_ids_mappings_etc/">
       
       
-        <link rel="prev" href="../identifiers/">
+        <link rel="prev" href="../Metadata_Documentation_Overview/">
       
       
-        <link rel="next" href="../Metadata_Documentation_Overview/">
+        <link rel="next" href="../schema_element_deprecation_guide/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Identifiers, CURIes, Prefixes, etc. - NMDC Schema Documentation</title>
+        <title>Maintaining the NMDC Schema - NMDC Schema Documentation</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#notes-about-prefixes-curies-identifiers-and-mappings" class="md-skip">
+        <a href="#the-nmdc-schema-is-a-framework-for-describing-multi-omics-microbiome-experiments" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Identifiers, CURIes, Prefixes, etc.
+              Maintaining the NMDC Schema
             
           </span>
         </div>
@@ -239,7 +239,7 @@
         
   
   <span class="md-ellipsis">
-    About
+    Funding
   </span>
   
 
@@ -255,11 +255,11 @@
   
   
     <li class="md-nav__item">
-      <a href="https://linkml.io/linkml/howtos/collaborative-development.html" class="md-nav__link">
+      <a href="../collaboration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    How to run a collaborative data modeling project
+    Contributing
   </span>
   
 
@@ -275,11 +275,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../identifiers/" class="md-nav__link">
+      <a href="../Metadata_Documentation_Overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Identifiers in NMDC
+    Metadata Standards Documentation
   </span>
   
 
@@ -301,14 +301,12 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Identifiers, CURIes, Prefixes, etc.
+    Maintaining the NMDC Schema
   </span>
   
 
@@ -319,7 +317,7 @@
         
   
   <span class="md-ellipsis">
-    Identifiers, CURIes, Prefixes, etc.
+    Maintaining the NMDC Schema
   </span>
   
 
@@ -331,8 +329,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -341,11 +337,167 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#an-nmdc-and-linkml-perspective" class="md-nav__link">
+  <a href="#the-nmdc-schema-is-a-framework-for-describing-multi-omics-microbiome-experiments" class="md-nav__link">
     <span class="md-ellipsis">
-      An NMDC and LinkML perspective
+      The nmdc-schema is a framework for describing multi-omics microbiome experiments.
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-nmdc-schema-is-expressed-in-the-linkml-schema-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      The nmdc-schema is expressed in the LinkML schema language.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-name-linkml-indicates-that-its-a-modeling-language-for-linked-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      The name "LinkML" indicates that it's a modeling language for linked data.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asserting-element-identifiers-in-the-schema-with-uris-and-curies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asserting element identifiers in the schema with URIs and CURIEs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefixes-in-linkml-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefixes in LinkML schemas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asserting-mappings-in-the-nmdc-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asserting mappings in the nmdc-schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asserting-identifiers-in-linkml-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asserting identifiers in LinkML data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mentioning-identifiers-in-linkml-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mentioning identifiers in LinkML data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraining-mentioned-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constraining mentioned identifiers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-uris-supports-scoping-and-self-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using URIs supports scoping and self-documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-curies-makes-things-more-compact-and-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using CURIes makes things more compact and readable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-find-a-report-of-nmdc-prefixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to find a report of NMDC prefixes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefix-id-and-curie-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      PREFIX, id and CURIe notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PREFIX, id and CURIe notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#see-locallintlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      see local/lint.log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="see local/lint.log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-bioregistry-not-identifiersorg-but" class="md-nav__link">
+    <span class="md-ellipsis">
+      use bioregistry, not identifiers.org, BUT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typecodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typecodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unresolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      unresolved
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -364,31 +516,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../Metadata_Documentation_Overview/" class="md-nav__link">
+      <a href="../schema_element_deprecation_guide/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    NMDC Metadata Standards Documentation
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="https://docs.google.com/presentation/d/1ZH41QAoESUwAkdHyUxlrmSKS5M-bT0TOulBgX4rBx2A/edit#slide=id.g26390794265_0_693" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    NMDC Schema Contributors How-to from Schema Hackathon 2023-12-10
+    Schema element deprecation guide
   </span>
   
 
@@ -424,11 +556,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../schema_element_deprecation_guide/" class="md-nav__link">
+      <a href="../identifiers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Schema element deprecation guide
+    Identifiers
   </span>
   
 
@@ -444,11 +576,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../v10-vs-v11-retrospective/" class="md-nav__link">
+      <a href="../migrations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    v10 vs v11 (Berkeley schema) retrospective
+    Version Migration Guides
   </span>
   
 
@@ -504,11 +636,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../schemaview/" class="md-nav__link">
+      <a href="../developer-docs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    SchemaView
+    Developer Docs
   </span>
   
 
@@ -534,8 +666,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -544,11 +674,167 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#an-nmdc-and-linkml-perspective" class="md-nav__link">
+  <a href="#the-nmdc-schema-is-a-framework-for-describing-multi-omics-microbiome-experiments" class="md-nav__link">
     <span class="md-ellipsis">
-      An NMDC and LinkML perspective
+      The nmdc-schema is a framework for describing multi-omics microbiome experiments.
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-nmdc-schema-is-expressed-in-the-linkml-schema-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      The nmdc-schema is expressed in the LinkML schema language.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-name-linkml-indicates-that-its-a-modeling-language-for-linked-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      The name "LinkML" indicates that it's a modeling language for linked data.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asserting-element-identifiers-in-the-schema-with-uris-and-curies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asserting element identifiers in the schema with URIs and CURIEs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefixes-in-linkml-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prefixes in LinkML schemas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asserting-mappings-in-the-nmdc-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asserting mappings in the nmdc-schema
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asserting-identifiers-in-linkml-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Asserting identifiers in LinkML data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mentioning-identifiers-in-linkml-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mentioning identifiers in LinkML data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constraining-mentioned-identifiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constraining mentioned identifiers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-uris-supports-scoping-and-self-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using URIs supports scoping and self-documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-curies-makes-things-more-compact-and-readable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using CURIes makes things more compact and readable
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-find-a-report-of-nmdc-prefixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to find a report of NMDC prefixes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prefix-id-and-curie-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      PREFIX, id and CURIe notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PREFIX, id and CURIe notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#see-locallintlog" class="md-nav__link">
+    <span class="md-ellipsis">
+      see local/lint.log
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="see local/lint.log">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-bioregistry-not-identifiersorg-but" class="md-nav__link">
+    <span class="md-ellipsis">
+      use bioregistry, not identifiers.org, BUT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typecodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Typecodes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unresolved" class="md-nav__link">
+    <span class="md-ellipsis">
+      unresolved
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -570,9 +856,6 @@
   
 
 
-<h1 id="notes-about-prefixes-curies-identifiers-and-mappings">Notes about prefixes, CURIEs, identifiers and mappings:</h1>
-<h2 id="an-nmdc-and-linkml-perspective">An NMDC and LinkML perspective</h2>
-<h1 id="first-draft-2023-09-18">First Draft: 2023-09-18</h1>
 <h2 id="the-nmdc-schema-is-a-framework-for-describing-multi-omics-microbiome-experiments">The nmdc-schema is a framework for describing multi-omics microbiome experiments.</h2>
 <ul>
 <li>What samples were included?</li>
