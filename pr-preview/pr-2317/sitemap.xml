@@ -2809,6 +2809,10 @@
          <lastmod>2025-01-08</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/maintaining-the-schema/</loc>
+         <lastmod>2025-01-08</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/manganese/</loc>
          <lastmod>2025-01-08</lastmod>
     </url>
@@ -3318,10 +3322,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/predicate/</loc>
-         <lastmod>2025-01-08</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/prefixes_curies_ids_mappings_etc/</loc>
          <lastmod>2025-01-08</lastmod>
     </url>
     <url>
