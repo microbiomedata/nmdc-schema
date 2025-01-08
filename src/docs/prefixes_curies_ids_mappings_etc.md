@@ -1,4 +1,7 @@
-## The nmdc-schema is a framework for describing multi-omics microbiome experiments.
+# Understanding the nmdc-schema
+
+The nmdc-schema is a framework for describing multi-omics microbiome experiments and the data they produce.  We aim 
+to answer questions like:
 
 - What samples were included?
 - Where were they gathered?
