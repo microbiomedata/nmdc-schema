@@ -341,18 +341,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-nmdc-schema-is-expressed-in-the-linkml-schema-language" class="md-nav__link">
+  <a href="#the-nmdc-schema-is-expressed-in-the-linkml-modeling-language" class="md-nav__link">
     <span class="md-ellipsis">
-      The nmdc-schema is expressed in the LinkML schema language.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-name-linkml-indicates-that-its-a-modeling-language-for-linked-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      The name "LinkML" indicates that it's a modeling language for linked data.
+      The NMDC Schema is expressed in the LinkML modeling language.
     </span>
   </a>
   
@@ -614,18 +605,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-nmdc-schema-is-expressed-in-the-linkml-schema-language" class="md-nav__link">
+  <a href="#the-nmdc-schema-is-expressed-in-the-linkml-modeling-language" class="md-nav__link">
     <span class="md-ellipsis">
-      The nmdc-schema is expressed in the LinkML schema language.
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-name-linkml-indicates-that-its-a-modeling-language-for-linked-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      The name "LinkML" indicates that it's a modeling language for linked data.
+      The NMDC Schema is expressed in the LinkML modeling language.
     </span>
   </a>
   
@@ -740,14 +722,15 @@ to answer questions like:</p>
 <li>How were they prepared, so that they would be suitable for sequencing, LC-MS proteomics, metabolomics, etc?</li>
 <li>How were the results of those analyses interpreted?</li>
 </ul>
-<p>All metadata gathered and stored by the NMDC community must validate against the nmdc-schema.</p>
-<h2 id="the-nmdc-schema-is-expressed-in-the-linkml-schema-language">The nmdc-schema is expressed in the <a href="https://linkml.github.io/linkml/">LinkML</a> schema language.</h2>
-<p>LinkML uses structures like classes, slots (for relationships and properties), types and enumerations.
-People with object-oriented programming experience might find this familiar.</p>
-<h2 id="the-name-linkml-indicates-that-its-a-modeling-language-for-linked-data">The name "LinkML" indicates that it's a modeling language for linked data.</h2>
-<p>LinkML schemas generally make good use of terminology from external resources, especially ontologies,
-especially those from the OBO Foundry. In return, LinkML schema elements and the corresponding data should be
-interoperable with other ontologies and semantic databases.</p>
+<p>All metadata gathered and stored by the NMDC community must validate against the NMDC Schema.</p>
+<h2 id="the-nmdc-schema-is-expressed-in-the-linkml-modeling-language">The NMDC Schema is expressed in the <a href="https://linkml.github.io/linkml/">LinkML</a> modeling language.</h2>
+<p>LinkML uses structures like classes, slots (for relationships and properties), types and enumerations to create a 
+blueprint of the NMDC data. The schema is used to define the structure of the data, and to ensure that the data is
+consistent and interoperable. The schema is expressed in a human-readable format, and can be generated in multiple
+formats, including JSONSchema (used to support validation on ingest to NMDC), YAML (for ease of editing), and OWL.
+LinkML schemas generally make good use of terminology from external resources, especially ontologies,
+and especially those from the OBO Foundry. </p>
+<p>In return, LinkML schema elements and the corresponding data should be interoperable with other ontologies and semantic databases.</p>
 <h2 id="asserting-element-identifiers-in-the-schema-with-uris-and-curies">Asserting element identifiers in the schema with URIs and CURIEs</h2>
 <p>One consequence of this semantic/linked data orientation is that all schema elements are identified by a URI,
 most often in the compact CURIe form: a prefix and a local identifier.
