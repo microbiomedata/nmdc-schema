@@ -24,7 +24,7 @@ slots:
 
   country_or_sea:
     range: string
-    description: A maximally coarse-grained, geo-political description of where something is, came from, or took place, etc.
+    description: A maximally coarse-grained, geo-political description of where something is, came from, took place, etc.
     comments:
       - MIxS states that country or sea names should be chosen from the INSDC country list aka the geo_loc_name-qualifier-vocabulary
       - https://www.insdc.org/submitting-standards/geo_loc_name-qualifier-vocabulary/
