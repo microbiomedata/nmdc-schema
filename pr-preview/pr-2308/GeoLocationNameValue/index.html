@@ -376,7 +376,7 @@
 </table>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>When an instance of this class is populated by an ETL, the raw value form the source should go into has_raw_value. The ETL can then interpret the raw value and parse it into this class' other slots.</li>
+<li>When an instance of this class is populated via an ETL pipeline, the raw value from the source should go into this class's has_raw_value slot. The ETL pipeline can parse that raw value and insert the results into this class's other slots.</li>
 <li>This class is more useful that string-only representations when data may be ingested from multiple sources, some of which may use a style like 'Nation: State, Locality' and other might use 'Nation: Locality, State'.</li>
 <li>country_or_sea is required. Instances of this class should have either a subnational_1_or_ocean_region or a locality. Preferably both.</li>
 </ul>
@@ -408,9 +408,9 @@
 description: A structured address-like record of where something is located, came
   from, or took place
 comments:
-- When an instance of this class is populated by an ETL, the raw value form the source
-  should go into has_raw_value. The ETL can then interpret the raw value and parse
-  it into this class' other slots.
+- When an instance of this class is populated via an ETL pipeline, the raw value from
+  the source should go into this class's has_raw_value slot. The ETL pipeline can
+  parse that raw value and insert the results into this class's other slots.
 - 'This class is more useful that string-only representations when data may be ingested
   from multiple sources, some of which may use a style like ''Nation: State, Locality''
   and other might use ''Nation: Locality, State''.'
@@ -438,9 +438,9 @@ class_uri: nmdc:GeoLocationNameValue
 description: A structured address-like record of where something is located, came
   from, or took place
 comments:
-- When an instance of this class is populated by an ETL, the raw value form the source
-  should go into has_raw_value. The ETL can then interpret the raw value and parse
-  it into this class' other slots.
+- When an instance of this class is populated via an ETL pipeline, the raw value from
+  the source should go into this class's has_raw_value slot. The ETL pipeline can
+  parse that raw value and insert the results into this class's other slots.
 - 'This class is more useful that string-only representations when data may be ingested
   from multiple sources, some of which may use a style like ''Nation: State, Locality''
   and other might use ''Nation: Locality, State''.'
