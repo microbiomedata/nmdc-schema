@@ -1,5 +1,4 @@
 # The NMDC Metadata Standards Documentation
-# Introduction
 
 This documentation provides details on the National Microbiome Data
 Collaborative’s ([<u>NMDC</u>](http://microbiomedata.org)) approach to
@@ -67,7 +66,7 @@ environment, elevation, altitude, depth, etc.) organized into different
 packages for 17 different sample environments.
 
 To standardize how physical samples are described (i.e., sample
-metadata, Figure 1), the NMDC schema includes environmental descriptors
+metadata, Figure 1), the NMDC Schema includes environmental descriptors
 from the GSC MIxS standards.
 
 *Explore how to create a MIxS-compliant sample metadata spreadsheet*
@@ -279,7 +278,7 @@ relationships between samples, and associated data objects. The schema
 is organized into object classes, which act as nodes. Each class has
 associated slots, which are fields that contain metadata that describe
 the object. For more in-depth information, full documentation of the
-NMDC schema can be found
+NMDC Schema can be found
 [<u>here</u>](https://microbiomedata.github.io/nmdc-metadata/#classes).
 
 For the NMDC pilot, a python
