@@ -22,7 +22,7 @@ def make_document(md_table: str = "") -> str:
     Returns a Markdown document (page) that includes the specified table.
     """
 
-    md_header: str = r"# Typecode to schema class map" + "\n"
+    md_header: str = r"# Typecode to class map" + "\n"
     md_intro: str = (r"Schema class definitions include structured patterns that constrain the format of their `id` "
                      r"values. One element of the structured pattern is the _typecode_. The following table—which was "
                      r"derived from the schema—shows which schema class can have a given string in the _typecode_ "
