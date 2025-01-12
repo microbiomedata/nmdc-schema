@@ -35,6 +35,7 @@ nav:
   - Visualizations: visualizations.md
   - Data Validation: validation.md
   - SchemaView: schemaview.md
+  - Typecode to class map: typecode-to-class-map.md
 
 
 site_url: https://microbiomedata.github.io/nmdc-schema
