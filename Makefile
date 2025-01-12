@@ -149,6 +149,7 @@ test-schema:
 test-python:
 	$(RUN) python -m unittest discover
 	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
+	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
@@ -170,12 +171,22 @@ $(DOCDIR):
 #
 # Then, use `refgraph` (part of `refscan`) to generate a diagram (i.e. a graph that depicts
 # inter-collection relationships) in the documentation website's file tree.
+#
+# Note: Using `refgraph` in this way requires the `nmdc_schema/nmdc_materialized_patterns.yaml`
+#       file to already have been generated. That dependency is currently not reflected in
+#       the dependency list of this `make` target.
+#
+# Then, generate a table showing a mapping from typecode to schema class; and add that to the
+# documentation website's file tree.
+#
 gendoc: $(DOCDIR) prefixmaps
 	# Copy all documentation files to the documentation directory
 	cp -rf $(SRC)/docs/* $(DOCDIR)
 	# Added copying of images and renaming of TEMP.md
 	cp $(SRC)/docs/*md $(DOCDIR)
 	cp -r $(SRC)/docs/images $(DOCDIR)
+	# Use `make_typecode_to_class_map.py` to make a Markdown page that can be used to map a typecode to a schema class.
+	$(RUN) python src/scripts/make_typecode_to_class_map.py > $(DOCDIR)/typecode-to-class-map.md
 	# Generate documentation using the gen-doc command
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	# Create directory for JavaScript files and copy them
