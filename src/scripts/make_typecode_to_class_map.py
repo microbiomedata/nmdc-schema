@@ -22,13 +22,13 @@ def make_document(md_table: str = "") -> str:
     Returns a Markdown document (page) that includes the specified table.
     """
 
-    md_header: str = r"# Typecode to class map" + "\n"
+    md_header: str = r"# Typecode to class map"
     md_intro: str = (r"Schema class definitions include structured patterns that constrain the format of their `id` "
                      r"values. One element of the structured pattern is the _typecode_. The following table—which was "
                      r"derived from the schema—shows which schema class can have a given string in the _typecode_ "
-                     r"portion of its `id` values.") + "\n"
-    md_footer: str = r"" + "\n"  # currently empty — it's here if we need it
-    return "\n".join([md_header, md_intro, md_table, md_footer])
+                     r"portion of its `id` values.")
+    md_footer: str = r""  # currently empty — it's here if we need it
+    return "\n\n".join([md_header, md_intro, md_table, md_footer])
 
 
 def get_typecodes_from_slot_pattern(slot_pattern: str) -> List[str]:
