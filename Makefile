@@ -176,9 +176,6 @@ $(DOCDIR):
 #       file to already have been generated. That dependency is currently not reflected in
 #       the dependency list of this `make` target.
 #
-# Then, generate a table showing a mapping from typecode to schema class; and add that to the
-# documentation website's file tree.
-#
 gendoc: $(DOCDIR) prefixmaps
 	# Copy all documentation files to the documentation directory
 	cp -rf $(SRC)/docs/* $(DOCDIR)
