@@ -1,5 +1,5 @@
 import re
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 import click
 from linkml_runtime import SchemaView
@@ -34,15 +34,16 @@ def make_document(md_table: str = "") -> str:
 def get_typecodes_from_slot_pattern(slot_pattern: str) -> List[str]:
     r"""
     Extracts typecodes from a slot pattern; i.e., the value of the `pattern` property of a slot definition.
+    The list of typecodes returned is sorted alphabetically, from A to Z.
 
-    >>> get_typecodes_from_slot_pattern("(nmdc):foo-...")
+    >>> get_typecodes_from_slot_pattern("(nmdc):foo-...")  # the parsing is regex-based
     []
-    >>> get_typecodes_from_slot_pattern("^(nmdc):foo-...")
+    >>> get_typecodes_from_slot_pattern("^(nmdc):foo-...")  # handles one
     ['foo']
-    >>> get_typecodes_from_slot_pattern("^(nmdc):(foo|bar)-...")
-    ['foo', 'bar']
-    >>> get_typecodes_from_slot_pattern("^(nmdc):(foo|bar|baz)-...")
-    ['foo', 'bar', 'baz']
+    >>> get_typecodes_from_slot_pattern("^(nmdc):(foo|bar)-...")  # handles two (sorts them)
+    ['bar', 'foo']
+    >>> get_typecodes_from_slot_pattern("^(nmdc):(foo|bar|baz)-...")  # handles more than two (sorts them)
+    ['bar', 'baz', 'foo']
     """
     typecodes: List[str] = []
 
@@ -57,7 +58,24 @@ def get_typecodes_from_slot_pattern(slot_pattern: str) -> List[str]:
         else:
             typecodes = typecode_portion.lstrip("(").rstrip(")").split("|")
 
-    return typecodes
+    sorted_typecodes = sorted(typecodes)
+    return sorted_typecodes
+
+
+def extract_comparison_key(class_name_and_typecodes: Tuple[str, List[str]]) -> str:
+    r"""
+    Helper function used to extract a comparison key from a tuple, for use with `sorted(key=...)`.
+
+    >>> extract_comparison_key(("MyClass", []))
+    ''
+    >>> extract_comparison_key(("MyClass", ['foo']))
+    'foo'
+    >>> extract_comparison_key(("MyClass", ['bar', 'foo']))
+    'bar'
+    """
+    class_name, typecodes = class_name_and_typecodes
+    first_typecode = typecodes[0] if len(typecodes) > 0 else ""
+    return first_typecode
 
 
 @click.command()
@@ -88,7 +106,7 @@ def main():
     # Build the Markdown table.
     md_table_lines: List[str] = [r"| Typecode(s) | Schema class |",
                                  r"| ----------- | ------------ |"]
-    for class_name, typecodes in class_name_to_typecodes.items():
+    for class_name, typecodes in sorted(class_name_to_typecodes.items(), key=extract_comparison_key):
         formatted_typecodes = [f"`{typecode}`" for typecode in typecodes]  # wraps each one in backticks
         typecode_cell = ", ".join(formatted_typecodes)  # if multiple exist, separates them with commas
         schema_class_documentation_url = make_schema_class_documentation_url(class_name)
