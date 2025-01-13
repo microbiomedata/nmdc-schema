@@ -31,7 +31,7 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     """
     typecodes: List[str] = []
 
-    # Make a regular expression that can be used to extract the typecode portion of the specified slot pattern.
+    # Make a regular expression that can be used to extract the typecode portion of a slot pattern.
     #
     # Examples:
     # - "^(nmdc):foo-..."           → "foo"
@@ -42,6 +42,8 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     #       group from consuming any hyphens at all.
     #
     id_pattern = re.compile(r"^\^\(nmdc\):(.+?)-")
+
+    # Use the regular expression to extract the typecode portion of the specified slot pattern.
     match_obj = id_pattern.match(slot_pattern)
     if match_obj is not None:
         typecode_portion = match_obj.group(1)
