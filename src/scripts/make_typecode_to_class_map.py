@@ -3,7 +3,7 @@ from typing import Dict, List, Tuple
 import click
 from linkml_runtime import SchemaView
 from nmdc_schema.nmdc_data import get_nmdc_schema_definition
-from nmdc_schema.id_helpers import get_typecodes_compatible_with_existing_ids
+from nmdc_schema.id_helpers import get_compatible_typecodes
 
 schema_view = SchemaView(get_nmdc_schema_definition())
 
@@ -74,16 +74,15 @@ def main():
 
             # If this slot's name is `id`, get all the typecodes — if any — from the slot definition's pattern.
             if slot_name == "id":
-                typecodes = get_typecodes_compatible_with_existing_ids(slot_def.pattern)
-                if len(typecodes) > 0:
-                    sorted_typecodes = sorted(typecodes)
-                    class_name_to_typecodes[class_name] = sorted_typecodes
+                compatible_typecodes = get_compatible_typecodes(slot_def.pattern)
+                if len(compatible_typecodes) > 0:
+                    class_name_to_typecodes[class_name] = sorted(compatible_typecodes)  # sorts them alphabetically
 
     # Build the Markdown table.
     md_table_lines: List[str] = [r"| Typecode(s) | Schema class |",
                                  r"| ----------- | ------------ |"]
-    for class_name, typecodes in sorted(class_name_to_typecodes.items(), key=extract_comparison_key):
-        formatted_typecodes = [f"`{typecode}`" for typecode in typecodes]  # wraps each one in backticks
+    for class_name, compatible_typecodes in sorted(class_name_to_typecodes.items(), key=extract_comparison_key):
+        formatted_typecodes = [f"`{typecode}`" for typecode in compatible_typecodes]  # wraps each one in backticks
         typecode_cell = ", ".join(formatted_typecodes)  # if multiple exist, separates them with commas
         schema_class_documentation_url = make_schema_class_documentation_url(class_name)
         class_cell = (f'<a href="{schema_class_documentation_url}" '

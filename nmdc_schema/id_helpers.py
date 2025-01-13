@@ -6,7 +6,7 @@ import re
 from typing import List, Optional
 
 
-def get_typecodes_compatible_with_existing_ids(slot_pattern: str) -> List[str]:
+def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     r"""
     Returns the typecodes, if any, that the schema says values of the specified `id` field can contain.
 
@@ -20,13 +20,13 @@ def get_typecodes_compatible_with_existing_ids(slot_pattern: str) -> List[str]:
           function returns the list for "use (b)." Eventually, we may specify the above two things using separate
           schema elements.
 
-    >>> get_typecodes_compatible_with_existing_ids("(nmdc):foo-...")
+    >>> get_compatible_typecodes("(nmdc):foo-...")
     []
-    >>> get_typecodes_compatible_with_existing_ids("^(nmdc):foo-...")
+    >>> get_compatible_typecodes("^(nmdc):foo-...")
     ['foo']
-    >>> get_typecodes_compatible_with_existing_ids("^(nmdc):(foo|bar)-...")
+    >>> get_compatible_typecodes("^(nmdc):(foo|bar)-...")
     ['foo', 'bar']
-    >>> get_typecodes_compatible_with_existing_ids("^(nmdc):(foo|bar|baz)-...")
+    >>> get_compatible_typecodes("^(nmdc):(foo|bar|baz)-...")
     ['foo', 'bar', 'baz']
     """
     typecodes: List[str] = []
@@ -62,5 +62,5 @@ def get_typecode_for_future_ids(slot_pattern: str) -> Optional[str]:
     >>> get_typecode_for_future_ids("^(nmdc):(foo|bar|baz)-...")
     'foo'
     """
-    compatible_typecodes = get_typecodes_compatible_with_existing_ids(slot_pattern)
+    compatible_typecodes = get_compatible_typecodes(slot_pattern)
     return compatible_typecodes[0] if len(compatible_typecodes) > 0 else None
