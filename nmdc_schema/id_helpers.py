@@ -31,17 +31,27 @@ def get_compatible_typecodes(slot_pattern: str) -> List[str]:
     """
     typecodes: List[str] = []
 
-    id_pattern = re.compile(
-        r"^\^\(nmdc\):(.+?)-"
-    )  # the `+?` is a lazy matcher (opposite of greedy)
+    # Make a regular expression that can be used to extract the typecode portion of the specified slot pattern.
+    #
+    # Examples:
+    # - "^(nmdc):foo-..."           → "foo"
+    # - "^(nmdc):(foo|bar|baz)-..." → "(foo|bar|baz)"
+    #
+    # Note: The `+?` is a lazy matcher (opposite of greedy). If we did a greedy match here, the capture group would
+    #       consume all but the final hyphen in the slot pattern. By doing a lazy match, we prevent the capture
+    #       group from consuming any hyphens at all.
+    #
+    id_pattern = re.compile(r"^\^\(nmdc\):(.+?)-")
     match_obj = id_pattern.match(slot_pattern)
     if match_obj is not None:
         typecode_portion = match_obj.group(1)
 
         # Extract the typecode from a single-typecode pattern, or extract all typecodes from a multi-typecode pattern.
         if "(" not in typecode_portion:
+            # Example: "foo" → ["foo"]
             typecodes = [typecode_portion]
         else:
+            # Example: "(foo|bar|baz)" → ["foo", "bar", "baz"]
             typecodes = typecode_portion.lstrip("(").rstrip(")").split("|")
 
     return typecodes
