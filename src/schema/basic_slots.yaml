@@ -47,7 +47,11 @@ slots:
     examples:
       - value: FT ICR-MS Analysis Results
       - value: GC-MS Metabolomics Results
-
+    structured_aliases:
+      data_object_type:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat
+        predicate: exact_synonym
   data_category:
     range: DataCategoryEnum
     description: The category of the file, such as instrument data from data generation or processed data from a workflow execution.
