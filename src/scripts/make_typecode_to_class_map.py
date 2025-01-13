@@ -1,9 +1,9 @@
-import re
 from typing import Dict, List, Tuple
 
 import click
 from linkml_runtime import SchemaView
 from nmdc_schema.nmdc_data import get_nmdc_schema_definition
+from nmdc_schema.id_helpers import get_typecodes_compatible_with_existing_ids
 
 schema_view = SchemaView(get_nmdc_schema_definition())
 
@@ -11,15 +11,21 @@ schema_view = SchemaView(get_nmdc_schema_definition())
 def make_schema_class_documentation_url(class_name: str) -> str:
     r"""
     Returns the URL of the documentation for the schema class having the specified name.
+
+    >>> make_schema_class_documentation_url("Foo")
+    'https://microbiomedata.github.io/nmdc-schema/Foo'
     """
 
-    base_url = "https://microbiomedata.github.io/nmdc-schema/"
+    base_url = "https://microbiomedata.github.io/nmdc-schema"  # lacks trailing slash
     return f"{base_url}/{class_name}"
 
 
 def make_document(md_table: str = "") -> str:
     r"""
     Returns a Markdown document (page) that includes the specified table.
+
+    >>> isinstance(make_document(), str)
+    True
     """
 
     md_header: str = r"# Typecode to class map"
@@ -29,37 +35,6 @@ def make_document(md_table: str = "") -> str:
                      r"portion of its `id` values.")
     md_footer: str = r""  # currently empty — it's here if we need it
     return "\n\n".join([md_header, md_intro, md_table, md_footer])
-
-
-def get_typecodes_from_slot_pattern(slot_pattern: str) -> List[str]:
-    r"""
-    Extracts typecodes from a slot pattern; i.e., the value of the `pattern` property of a slot definition.
-    The list of typecodes returned is sorted alphabetically, from A to Z.
-
-    >>> get_typecodes_from_slot_pattern("(nmdc):foo-...")  # the parsing is regex-based
-    []
-    >>> get_typecodes_from_slot_pattern("^(nmdc):foo-...")  # handles one
-    ['foo']
-    >>> get_typecodes_from_slot_pattern("^(nmdc):(foo|bar)-...")  # handles two (sorts them)
-    ['bar', 'foo']
-    >>> get_typecodes_from_slot_pattern("^(nmdc):(foo|bar|baz)-...")  # handles more than two (sorts them)
-    ['bar', 'baz', 'foo']
-    """
-    typecodes: List[str] = []
-
-    id_pattern = re.compile(r"^\^\(nmdc\):(.+?)-")  # the `+?` is a lazy matcher (opposite of greedy)
-    match_obj = id_pattern.match(slot_pattern)
-    if match_obj is not None:
-        typecode_portion = match_obj.group(1)
-
-        # Extract the typecode from a single-typecode pattern, or extract all typecodes from a multi-typecode pattern.
-        if "(" not in typecode_portion:
-            typecodes = [typecode_portion]
-        else:
-            typecodes = typecode_portion.lstrip("(").rstrip(")").split("|")
-
-    sorted_typecodes = sorted(typecodes)
-    return sorted_typecodes
 
 
 def extract_comparison_key(class_name_and_typecodes: Tuple[str, List[str]]) -> str:
@@ -99,9 +74,10 @@ def main():
 
             # If this slot's name is `id`, get all the typecodes — if any — from the slot definition's pattern.
             if slot_name == "id":
-                typecodes = get_typecodes_from_slot_pattern(slot_def.pattern)
+                typecodes = get_typecodes_compatible_with_existing_ids(slot_def.pattern)
                 if len(typecodes) > 0:
-                    class_name_to_typecodes[class_name] = typecodes
+                    sorted_typecodes = sorted(typecodes)
+                    class_name_to_typecodes[class_name] = sorted_typecodes
 
     # Build the Markdown table.
     md_table_lines: List[str] = [r"| Typecode(s) | Schema class |",
