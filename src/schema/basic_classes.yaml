@@ -418,7 +418,7 @@ classes:
       workflow_execution_class:
        contexts:
          -  https://bitbucket.org/berkeleylab/jgi-jat
-       predicate: exact_synonym
+       predicate: EXACT_SYNONYM
     comments:
       - Each instance of this (and all other) subclasses of WorkflowExecution is a distinct run with start and stop times, potentially with different inputs and outputs
     description: >-
