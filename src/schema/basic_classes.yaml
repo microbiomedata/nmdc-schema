@@ -494,6 +494,11 @@ slots:
     range: DataGeneration
     mappings:
       - prov:wasInformedBy
+    structured_aliases:
+      was_informed_by:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat
+        predicate: exact_synonym
   principal_investigator:
     aliases:
       - PI
