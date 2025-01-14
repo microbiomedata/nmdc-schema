@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-12-07T20:12:39
+# Generation date: 2025-01-08T12:52:37
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -5626,7 +5626,7 @@ class DataGeneration(PlannedProcess):
 
     id: Union[str, DataGenerationId] = None
     type: Union[str, URIorCURIE] = None
-    analyte_category: Union[str, "AnalyteCategoryEnum"] = None
+    analyte_category: str = None
     associated_studies: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
     has_input: Union[Union[str, SampleId], List[Union[str, SampleId]]] = None
     add_date: Optional[str] = None
@@ -5638,8 +5638,8 @@ class DataGeneration(PlannedProcess):
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.analyte_category):
             self.MissingRequiredField("analyte_category")
-        if not isinstance(self.analyte_category, AnalyteCategoryEnum):
-            self.analyte_category = AnalyteCategoryEnum(self.analyte_category)
+        if not isinstance(self.analyte_category, str):
+            self.analyte_category = str(self.analyte_category)
 
         if self._is_empty(self.associated_studies):
             self.MissingRequiredField("associated_studies")
@@ -5690,9 +5690,9 @@ class NucleotideSequencing(DataGeneration):
 
     id: Union[str, NucleotideSequencingId] = None
     type: Union[str, URIorCURIE] = None
-    analyte_category: Union[str, "AnalyteCategoryEnum"] = None
     associated_studies: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
     has_input: Union[Union[str, SampleId], List[Union[str, SampleId]]] = None
+    analyte_category: Union[str, "NucleotideSequencingEnum"] = None
     gold_sequencing_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
     insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], List[Union[str, ExternalIdentifier]]]] = empty_list()
@@ -5705,6 +5705,11 @@ class NucleotideSequencing(DataGeneration):
             self.MissingRequiredField("id")
         if not isinstance(self.id, NucleotideSequencingId):
             self.id = NucleotideSequencingId(self.id)
+
+        if self._is_empty(self.analyte_category):
+            self.MissingRequiredField("analyte_category")
+        if not isinstance(self.analyte_category, NucleotideSequencingEnum):
+            self.analyte_category = NucleotideSequencingEnum(self.analyte_category)
 
         if not isinstance(self.gold_sequencing_project_identifiers, list):
             self.gold_sequencing_project_identifiers = [self.gold_sequencing_project_identifiers] if self.gold_sequencing_project_identifiers is not None else []
@@ -5748,9 +5753,9 @@ class MassSpectrometry(DataGeneration):
 
     id: Union[str, MassSpectrometryId] = None
     type: Union[str, URIorCURIE] = None
-    analyte_category: Union[str, "AnalyteCategoryEnum"] = None
     associated_studies: Union[Union[str, StudyId], List[Union[str, StudyId]]] = None
     has_input: Union[Union[str, SampleId], List[Union[str, SampleId]]] = None
+    analyte_category: Union[str, "MassSpectrometryEnum"] = None
     eluent_introduction_category: Optional[Union[str, "EluentIntroductionCategoryEnum"]] = None
     generates_calibration: Optional[Union[str, CalibrationInformationId]] = None
     has_chromatography_configuration: Optional[Union[str, ChromatographyConfigurationId]] = None
@@ -5761,6 +5766,11 @@ class MassSpectrometry(DataGeneration):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MassSpectrometryId):
             self.id = MassSpectrometryId(self.id)
+
+        if self._is_empty(self.analyte_category):
+            self.MissingRequiredField("analyte_category")
+        if not isinstance(self.analyte_category, MassSpectrometryEnum):
+            self.analyte_category = MassSpectrometryEnum(self.analyte_category)
 
         if self.eluent_introduction_category is not None and not isinstance(self.eluent_introduction_category, EluentIntroductionCategoryEnum):
             self.eluent_introduction_category = EluentIntroductionCategoryEnum(self.eluent_introduction_category)
@@ -7713,20 +7723,27 @@ class StatusEnum(EnumDefinitionImpl):
         setattr(cls, "pass",
             PermissibleValue(text="pass"))
 
-class AnalyteCategoryEnum(EnumDefinitionImpl):
+class NucleotideSequencingEnum(EnumDefinitionImpl):
 
     metagenome = PermissibleValue(text="metagenome")
     metatranscriptome = PermissibleValue(text="metatranscriptome")
-    metaproteome = PermissibleValue(text="metaproteome")
-    metabolome = PermissibleValue(text="metabolome")
-    lipidome = PermissibleValue(text="lipidome")
-    nom = PermissibleValue(text="nom")
     amplicon_sequencing_assay = PermissibleValue(
         text="amplicon_sequencing_assay",
         meaning=OBI["0002767"])
 
     _defn = EnumDefinition(
-        name="AnalyteCategoryEnum",
+        name="NucleotideSequencingEnum",
+    )
+
+class MassSpectrometryEnum(EnumDefinitionImpl):
+
+    metaproteome = PermissibleValue(text="metaproteome")
+    metabolome = PermissibleValue(text="metabolome")
+    lipidome = PermissibleValue(text="lipidome")
+    nom = PermissibleValue(text="nom")
+
+    _defn = EnumDefinition(
+        name="MassSpectrometryEnum",
     )
 
 class ExtractionTargetEnum(EnumDefinitionImpl):
@@ -10854,7 +10871,7 @@ slots.file_size_bytes = Slot(uri=NMDC.file_size_bytes, name="file_size_bytes", c
                    model_uri=NMDC.file_size_bytes, domain=None, range=Optional[int])
 
 slots.analyte_category = Slot(uri=NMDC.analyte_category, name="analyte_category", curie=NMDC.curie('analyte_category'),
-                   model_uri=NMDC.analyte_category, domain=None, range=Union[str, "AnalyteCategoryEnum"])
+                   model_uri=NMDC.analyte_category, domain=None, range=str)
 
 slots.type = Slot(uri=RDF.type, name="type", curie=RDF.curie('type'),
                    model_uri=NMDC.type, domain=None, range=Union[str, URIorCURIE])
@@ -12534,6 +12551,9 @@ slots.NucleotideSequencing_id = Slot(uri=NMDC.id, name="NucleotideSequencing_id"
                    model_uri=NMDC.NucleotideSequencing_id, domain=NucleotideSequencing, range=Union[str, NucleotideSequencingId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
+slots.NucleotideSequencing_analyte_category = Slot(uri=NMDC.analyte_category, name="NucleotideSequencing_analyte_category", curie=NMDC.curie('analyte_category'),
+                   model_uri=NMDC.NucleotideSequencing_analyte_category, domain=NucleotideSequencing, range=Union[str, "NucleotideSequencingEnum"])
+
 slots.MassSpectrometry_id = Slot(uri=NMDC.id, name="MassSpectrometry_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.MassSpectrometry_id, domain=MassSpectrometry, range=Union[str, MassSpectrometryId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
@@ -12543,6 +12563,9 @@ slots.MassSpectrometry_has_chromatography_configuration = Slot(uri=NMDC.has_chro
 
 slots.MassSpectrometry_has_mass_spectrometry_configuration = Slot(uri=NMDC.has_mass_spectrometry_configuration, name="MassSpectrometry_has_mass_spectrometry_configuration", curie=NMDC.curie('has_mass_spectrometry_configuration'),
                    model_uri=NMDC.MassSpectrometry_has_mass_spectrometry_configuration, domain=MassSpectrometry, range=Optional[Union[str, MassSpectrometryConfigurationId]])
+
+slots.MassSpectrometry_analyte_category = Slot(uri=NMDC.analyte_category, name="MassSpectrometry_analyte_category", curie=NMDC.curie('analyte_category'),
+                   model_uri=NMDC.MassSpectrometry_analyte_category, domain=MassSpectrometry, range=Union[str, "MassSpectrometryEnum"])
 
 slots.MassSpectrometryConfiguration_name = Slot(uri=NMDC.name, name="MassSpectrometryConfiguration_name", curie=NMDC.curie('name'),
                    model_uri=NMDC.MassSpectrometryConfiguration_name, domain=MassSpectrometryConfiguration, range=str)

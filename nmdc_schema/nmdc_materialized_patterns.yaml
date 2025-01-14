@@ -4268,35 +4268,46 @@ enums:
         text: pass
       fail:
         text: fail
-  AnalyteCategoryEnum:
-    name: AnalyteCategoryEnum
+  NucleotideSequencingEnum:
+    name: NucleotideSequencingEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       metagenome:
         text: metagenome
+        title: Metagenome
         aliases:
         - metaG
       metatranscriptome:
         text: metatranscriptome
+        title: Metatranscriptome
         aliases:
         - metaT
+      amplicon_sequencing_assay:
+        text: amplicon_sequencing_assay
+        meaning: OBI:0002767
+        title: Amplicon
+  MassSpectrometryEnum:
+    name: MassSpectrometryEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
       metaproteome:
         text: metaproteome
+        title: Metaproteome
         aliases:
         - metaP
       metabolome:
         text: metabolome
+        title: Metabolome
         aliases:
         - metaB
       lipidome:
         text: lipidome
+        title: Lipidome
       nom:
         text: nom
+        title: Natural Organic Matter
         aliases:
         - natural organic matter
-      amplicon_sequencing_assay:
-        text: amplicon_sequencing_assay
-        meaning: OBI:0002767
   ExtractionTargetEnum:
     name: ExtractionTargetEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -17717,7 +17728,6 @@ slots:
     description: "The type of analyte(s) that were measured in the data generation\
       \ process and analyzed\n  in the Workflow Chain\n"
     from_schema: https://w3id.org/nmdc/nmdc
-    range: AnalyteCategoryEnum
     required: true
   type:
     name: type
@@ -18466,8 +18476,8 @@ slots:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: '813'
-    - value: '48835'
+    - value: '13:33'
+    - value: '13:33:55'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -18486,8 +18496,8 @@ slots:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: '813'
-    - value: '48835'
+    - value: '13:33'
+    - value: '13:33:55'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -18706,8 +18716,8 @@ slots:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: '813'
-    - value: '48835'
+    - value: '13:33'
+    - value: '13:33:55'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -19058,6 +19068,9 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      analyte_category:
+        name: analyte_category
+        range: NucleotideSequencingEnum
     class_uri: nmdc:NucleotideSequencing
   MassSpectrometry:
     name: MassSpectrometry
@@ -19091,6 +19104,9 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
           interpolated: true
+      analyte_category:
+        name: analyte_category
+        range: MassSpectrometryEnum
     class_uri: nmdc:MassSpectrometry
     rules:
     - preconditions:

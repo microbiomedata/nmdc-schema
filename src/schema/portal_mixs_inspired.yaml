@@ -25,9 +25,9 @@ slots:
       - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
         are all acceptable.
     examples:
-      - value: 2021-04-15
-      - value: 2021-04
-      - value: 2021
+      - value: '2021-04-15'
+      - value: '2021-04'
+      - value: '2021'
     see_also:
       - MIXS:0000011
     rank: 2
@@ -43,8 +43,8 @@ slots:
     comments:
       - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-      - value: 13:33
-      - value: 13:33:55
+      - value: '13:33'
+      - value: '13:33:55'
     see_also:
       - MIXS:0000011
     rank: 1
@@ -61,8 +61,8 @@ slots:
     comments:
       - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-      - value: 13:33
-      - value: 13:33:55
+      - value: '13:33'
+      - value: '13:33:55'
     see_also:
       - MIXS:0000011
     rank: 3
@@ -237,8 +237,8 @@ slots:
       - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
         are all acceptable.
     examples:
-      - value: 2021-04-15
-      - value: 2021-04
+      - value: '2021-04-15'
+      - value: '2021-04'
       - value: '2021'
     see_also:
       - MIXS:0000011
@@ -255,8 +255,8 @@ slots:
     comments:
       - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-      - value: 13:33
-      - value: 13:33:55
+      - value: '13:33'
+      - value: '13:33:55'
     see_also:
       - MIXS:0000011
     rank: 5

@@ -955,7 +955,11 @@ enums:
 
       LC-MS Lipidomics Results:
         description: >-
-          LC-MS-based lipid assignment results table.
+          LC-MS-based lipidomics analysis results table
+
+      LC-MS Lipidomics Processed Data:
+        description: >-
+          Processed data for the LC-MS-based lipidomics analysis in hdf5 format
 
       Contaminants Amino Acid FASTA:
         description: FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
