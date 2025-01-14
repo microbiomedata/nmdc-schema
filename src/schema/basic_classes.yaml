@@ -498,7 +498,7 @@ slots:
       was_informed_by:
         contexts:
         -  https://bitbucket.org/berkeleylab/jgi-jat
-        predicate: exact_synonym
+        predicate: EXACT_SYNONYM
   principal_investigator:
     aliases:
       - PI
