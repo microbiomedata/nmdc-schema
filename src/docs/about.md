@@ -8,9 +8,9 @@ Research (BER) under contract numbers DE-AC02-05CH11231 (LBNL), 89233218CNA00000
 
 ## Framework
 
-This schema was made using the [LinkML framework](https://github.com/biolink/biolinkml). LinkML is a data modeling language that is used to create data 
-models in a human-readable format. The LinkML framework is used to generate the schema in multiple formats, 
-including JSON-LD, YAML, and RDF.
+This schema was made using the [LinkML framework](https://linkml.github.io/linkml). LinkML is a data modeling language 
+that is used to create data models in a human-readable format. The LinkML framework is used to generate 
+the schema in multiple formats, including JSON-LD, YAML, and RDF.
 
 NMDC uses the LinkML framework to create a schema to be used by researchers, data scientists, and developers to 
 understand the structure of the data and how it is related.
