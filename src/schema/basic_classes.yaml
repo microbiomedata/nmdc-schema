@@ -492,7 +492,7 @@ slots:
     structured_aliases:
       was_informed_by:
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: EXACT_SYNONYM
   principal_investigator:
     aliases:
