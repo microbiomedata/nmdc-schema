@@ -50,7 +50,7 @@ slots:
     structured_aliases:
       data_object_type:
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: EXACT_SYNONYM
   data_category:
     range: DataCategoryEnum
@@ -435,7 +435,7 @@ slots:
     structured_aliases:
       workflow_execution_class:
        contexts:
-         -  https://bitbucket.org/berkeleylab/jgi-jat
+         -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
        predicate: NARROW_SYNONYM
     examples:
       - value: nmdc:Biosample
@@ -494,11 +494,11 @@ slots:
     structured_aliases:
       workflow_execution_id:
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: NARROW_SYNONYM
       data_object_id:
         contexts:
-        -  https://bitbucket.org/berkeleylab/jgi-jat
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
         predicate: NARROW_SYNONYM
     notes:
       - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
