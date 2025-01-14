@@ -1,4 +1,4 @@
-# Validating nmdc-schema data against the schema
+# Validating nmdc-schema data against the NMDC Schema
 
 ## Introduction
 
