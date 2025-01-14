@@ -432,6 +432,11 @@ slots:
       - https://github.com/microbiomedata/nmdc-schema/issues/1048
       - https://github.com/microbiomedata/nmdc-schema/issues/1233
       - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+       contexts:
+         -  https://bitbucket.org/berkeleylab/jgi-jat
+       predicate: NARROW_SYNONYM
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
