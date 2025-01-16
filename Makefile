@@ -180,14 +180,13 @@ $(DOCDIR):
 gendoc: $(DOCDIR) prefixmaps
 	# Copy all documentation files to the documentation directory
 	cp -rf $(SRC)/docs/* $(DOCDIR)
-	# Added copying of images and renaming of TEMP.md
-	cp $(SRC)/docs/*md $(DOCDIR)
-	cp -r $(SRC)/docs/images $(DOCDIR)
 	# Use `make_typecode_to_class_map.py` to make a Markdown page that can be used to map a typecode to a schema class.
 	$(RUN) python src/scripts/make_typecode_to_class_map.py > $(DOCDIR)/typecode-to-class-map.md
 	# Generate documentation using the gen-doc command
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	# Create directory for JavaScript files and copy them
+	# Added copying of prefixmaps output
+	cp -f $(DEST)/prefixmap/nmdc-prefix-map.json $(DOCDIR)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
