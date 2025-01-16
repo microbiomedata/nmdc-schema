@@ -34,6 +34,7 @@ nav:
   - Schema element deprecation guide: schema_element_deprecation_guide.md
   - NMDC Schema Validation: schema-validation.md
   - Identifiers: identifiers.md
+  - Typecode to class map: typecode-to-class-map.md
   - Version Migration Guides: migrations.md
   - Visualizations: visualizations.md
   - Data Validation: validation.md
