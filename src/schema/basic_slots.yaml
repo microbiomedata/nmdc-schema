@@ -47,7 +47,11 @@ slots:
     examples:
       - value: FT ICR-MS Analysis Results
       - value: GC-MS Metabolomics Results
-
+    structured_aliases:
+      data_object_type:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        predicate: EXACT_SYNONYM
   data_category:
     range: DataCategoryEnum
     description: The category of the file, such as instrument data from data generation or processed data from a workflow execution.
@@ -428,6 +432,11 @@ slots:
       - https://github.com/microbiomedata/nmdc-schema/issues/1048
       - https://github.com/microbiomedata/nmdc-schema/issues/1233
       - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+       contexts:
+         -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+       predicate: NARROW_SYNONYM
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
@@ -482,6 +491,15 @@ slots:
     description: >-
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
+    structured_aliases:
+      workflow_execution_id:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        predicate: NARROW_SYNONYM
+      data_object_id:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        predicate: NARROW_SYNONYM
     notes:
       - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
       - 'a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted'
