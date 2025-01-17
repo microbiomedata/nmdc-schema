@@ -8042,6 +8042,7 @@
                 "LC-DDA-MS/MS Raw Data",
                 "Configuration toml",
                 "LC-MS Lipidomics Results",
+                "LC-MS Lipidomics Processed Data",
                 "Contaminants Amino Acid FASTA",
                 "Analysis Tool Parameter File",
                 "Workflow Operation Summary",

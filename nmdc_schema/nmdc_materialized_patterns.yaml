@@ -1,8 +1,13 @@
 name: NMDC
-description: "Schema for National Microbiome Data Collaborative (NMDC).\nThis schema\
-  \ is organized into multiple modules, such as:\n\n * a set of core types for representing\
-  \ data values\n * a subset of the mixs schema\n * an annotation schema\n * the NMDC\
-  \ schema itself, into which the other modules are imported"
+description: The NMDC Schema is a foundational framework designed to standardize metadata
+  for the National Microbiome Data  Collaborative (NMDC) and collaborating data providors.
+  By establishing a structured approach to metadata, the NMDC Schema enables researchers
+  to organize,  share, and interpret complex datasets with consistency and clarity.
+  The NMDC Schema is critical substrate used to facilitate  interoperability and collaboration,
+  as it provide a common language for data exchange across systems and disciplines.  In
+  the context of the NMDC, this schema supports the integration of microbiome data
+  from medicine, agriculture,  bioenergy, and environmental science into a cohesive
+  platform.
 title: NMDC Schema
 notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
@@ -4114,7 +4119,11 @@ enums:
         - edam.format:4005
       LC-MS Lipidomics Results:
         text: LC-MS Lipidomics Results
-        description: LC-MS-based lipid assignment results table.
+        description: LC-MS-based lipidomics analysis results table
+      LC-MS Lipidomics Processed Data:
+        text: LC-MS Lipidomics Processed Data
+        description: Processed data for the LC-MS-based lipidomics analysis in hdf5
+          format
       Contaminants Amino Acid FASTA:
         text: Contaminants Amino Acid FASTA
         description: FASTA amino acid file for contaminant proteins commonly observed
@@ -17120,6 +17129,12 @@ slots:
   was_informed_by:
     name: was_informed_by
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      was_informed_by:
+        literal_form: was_informed_by
+        predicate: EXACT_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     mappings:
     - prov:wasInformedBy
     range: DataGeneration
@@ -17301,6 +17316,12 @@ slots:
     - value: FT ICR-MS Analysis Results
     - value: GC-MS Metabolomics Results
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      data_object_type:
+        literal_form: data_object_type
+        predicate: EXACT_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     range: FileTypeEnum
   data_category:
     name: data_category
@@ -17744,6 +17765,12 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/issues/1048
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
     - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+        literal_form: workflow_execution_class
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     slot_uri: rdf:type
     designates_type: true
     range: uriorcurie
@@ -17809,6 +17836,17 @@ slots:
     - value: nmdc:mgmag-00-x012.1_7_c1
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      workflow_execution_id:
+        literal_form: workflow_execution_id
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+      data_object_id:
+        literal_form: data_object_id
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     identifier: true
     range: uriorcurie
     required: true

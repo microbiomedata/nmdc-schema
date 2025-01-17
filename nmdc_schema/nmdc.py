@@ -1,15 +1,9 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-08T12:52:37
+# Generation date: 2025-01-17T21:04:40
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
-# description: Schema for National Microbiome Data Collaborative (NMDC).
-#   This schema is organized into multiple modules, such as:
-#
-#    * a set of core types for representing data values
-#    * a subset of the mixs schema
-#    * an annotation schema
-#    * the NMDC schema itself, into which the other modules are imported
+# description: The NMDC Schema is a foundational framework designed to standardize metadata for the National Microbiome Data  Collaborative (NMDC) and collaborating data providors. By establishing a structured approach to metadata, the NMDC Schema enables researchers to organize,  share, and interpret complex datasets with consistency and clarity. The NMDC Schema is critical substrate used to facilitate  interoperability and collaboration, as it provide a common language for data exchange across systems and disciplines.  In the context of the NMDC, this schema supports the integration of microbiome data from medicine, agriculture,  bioenergy, and environmental science into a cohesive platform.
 # license: https://creativecommons.org/publicdomain/zero/1.0/
 
 import dataclasses
@@ -7626,7 +7620,11 @@ class FileTypeEnum(EnumDefinitionImpl):
         setattr(cls, "LC-MS Lipidomics Results",
             PermissibleValue(
                 text="LC-MS Lipidomics Results",
-                description="LC-MS-based lipid assignment results table."))
+                description="LC-MS-based lipidomics analysis results table"))
+        setattr(cls, "LC-MS Lipidomics Processed Data",
+            PermissibleValue(
+                text="LC-MS Lipidomics Processed Data",
+                description="Processed data for the LC-MS-based lipidomics analysis in hdf5 format"))
         setattr(cls, "Contaminants Amino Acid FASTA",
             PermissibleValue(
                 text="Contaminants Amino Acid FASTA",
