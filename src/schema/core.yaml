@@ -1415,13 +1415,6 @@ classes:
           syntax: "{id_prefix}:{id}"
           interpolated: true
 
-  Reagent:
-    is_a: ChemicalEntity
-    class_uri: nmdc:Reagent
-    description: A substance or compound that is used in a chemical reaction.
-
-
-
   GeneProduct:
     class_uri: nmdc:GeneProduct
     is_a: NamedThing
