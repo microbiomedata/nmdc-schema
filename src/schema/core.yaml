@@ -48,6 +48,7 @@ enums:
       LQ:
         aliases: low quality
         description: Metagenome-assembled genome is low quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
+
   ChemicalConversionCategoryEnum:
     permissible_values:
       addition:
@@ -125,6 +126,68 @@ enums:
       solid:
       liquid:
       gas:
+
+  ChemicalEntityEnum:
+    permissible_values:
+      acetonitrile:
+        meaning: CHEBI:38472
+      alphaLP:
+        meaning: MS:1001303
+        description: >-
+          A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
+      ammonium_acetate:
+        meaning: CHEBI:62947
+      ammonium_bicarbonate:
+        meaning: CHEBI:184335
+      Arg-C:
+        meaning: CHEBI:157791
+        description: >-
+          A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with 
+          lower efficiency, lysine.
+      Asp-N:
+        meaning: MS:1001304
+        description: >-
+          A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
+      chloroform:
+        meaning: CHEBI:35255
+      chymotrypsin:
+        meaning: MS:1001306
+        description: >-
+          A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, 
+          and phenylalanine.
+      formic_acid:
+        meaning: CHEBI:30751
+        description: >-
+          A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising a hydrogen atom 
+          joined to the methyl group of methanol.
+      glucose:
+        meaning: CHEBI:17234
+        description: >-
+          Generally considered the most abundant monosaccharide in nature.
+      Glu-C:
+        description: >-
+          A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid.
+      isopropyl_alcohol:
+        meaning: CHEBI:17824
+      Lys-C:
+        meaning: MS:1001309
+        description: >-
+          A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
+      Lys-N:
+        meaning: MS:1003093
+        description: >-
+          A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+      methanol:
+        meaning: CHEBI:17790
+      trypsin:
+        meaning: CHEBI:9765
+        description: >-
+          A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
+      water:
+        meaning: CHEBI:15377
+        description: >- 
+          Any form of water used in an experiment including deionized water, distilled water, and ultrapure water.
+          Protocol or materials and methods should be consulted for exact type of water used in an experiment.
 
 classes:
 
@@ -1318,6 +1381,9 @@ classes:
       - type
 
   ChemicalEntity:
+    deprecated: >- 
+      true; as of Jan 2025, NMDC only needs a handful of chemicals and its use cases can be served via an enumeration
+      rather than supporting a full class.
     class_uri: nmdc:ChemicalEntity
     aliases:
       - metabolite
@@ -1585,7 +1651,6 @@ slots:
   substance_role:
     range: SubstanceRoleEnum
     description: The role of a substance in a process
-
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in a process
@@ -1727,8 +1792,7 @@ slots:
 
   metabolite_identified:
     description: the specific metabolite identifier
-    range: ChemicalEntity
-
+    range: string
 
   chemical_formula:
     description: A generic grouping for molecular formulae and empirical formulae
@@ -1759,8 +1823,8 @@ slots:
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
 
-  substance_used:
-    range: ChemicalEntity
+  known_as:
+    range: ChemicalEntityEnum
     description: The substance from which a portion was taken.
     #structured_pattern:
     #  syntax: "^CHEBI:\d{1,6}$"
