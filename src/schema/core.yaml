@@ -953,7 +953,10 @@ classes:
           tooltip: Provide the GOLD biosample IDs associated with this biosample.
 
       alternative_identifiers:
-        description: Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC
+        description: >-
+          A uriorcurie reference to an external database or resource that provides additional information or 
+          context about a specific entity at NMDC.
+        multivalued: true
 
       lat_lon:
         notes:
@@ -1242,10 +1245,10 @@ classes:
     description: A portion of any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
     slots:
       - final_concentration
-      - known_as
       - mass
       - sample_state_information
       - source_concentration
+      - substance_used
       - substance_role
       - type
       - volume
@@ -1324,28 +1327,34 @@ classes:
     is_a: OntologyClass
     description: >-
       An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
-      There may be different terms for distinct acid-base forms, protonation states
+      There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a 
+      physical entity that pertains to chemistry or biochemistry.
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slots:
       - chemical_formula
-      - inchi
-      - inchi_key
-      - smiles
-
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
     id_prefixes:
-      - cas
       - CHEBI
-      - CHEMBL.COMPOUND
-      - DRUGBANK
+      - MS
       - HMDB
-      - KEGG.COMPOUND
-      - MESH
-      - PUBCHEM.COMPOUND
     exact_mappings:
       - biolink:ChemicalSubstance
+    slot_usage:
+      id:
+        description: The identifier for the chemical entity
+        required: true
+        structured_pattern:
+          syntax: "{id_prefix}:{id}"
+          interpolated: true
+
+  Reagent:
+    is_a: ChemicalEntity
+    class_uri: nmdc:Reagent
+    description: A substance or compound that is used in a chemical reaction.
+
+
 
   GeneProduct:
     class_uri: nmdc:GeneProduct
@@ -1573,9 +1582,6 @@ slots:
     multivalued: true
     inlined_as_list: true
 
-  known_as:
-    range: ChemicalEntity
-
   substance_role:
     range: SubstanceRoleEnum
     description: The role of a substance in a process
@@ -1752,3 +1758,9 @@ slots:
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
+
+  substance_used:
+    range: ChemicalEntity
+    description: The substance from which a portion was taken.
+    #structured_pattern:
+    #  syntax: "^CHEBI:\d{1,6}$"
