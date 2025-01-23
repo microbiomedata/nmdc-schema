@@ -6711,16 +6711,6 @@
                         "null"
                     ]
                 },
-                "chemical_entity_set": {
-                    "description": "This property links a database object to the set of chemical entities within it.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "collecting_biosamples_from_site_set": {
                     "items": {
                         "$ref": "#/$defs/CollectingBiosamplesFromSite"
@@ -15580,16 +15570,6 @@
             "description": "This property links a database object to the set of calibrations within it.",
             "items": {
                 "$ref": "#/$defs/CalibrationInformation"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "chemical_entity_set": {
-            "description": "This property links a database object to the set of chemical entities within it.",
-            "items": {
-                "type": "string"
             },
             "type": [
                 "array",

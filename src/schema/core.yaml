@@ -1778,6 +1778,7 @@ slots:
 
   metabolite_identified:
     description: the specific metabolite identifier
+    range: string
 
   chemical_formula:
     description: A generic grouping for molecular formulae and empirical formulae
@@ -1811,5 +1812,3 @@ slots:
   known_as:
     range: ChemicalEntityEnum
     description: The substance from which a portion was taken.
-    #structured_pattern:
-    #  syntax: "^CHEBI:\d{1,6}$"

@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-23T10:42:00
+# Generation date: 2025-01-23T12:18:34
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -8,20 +8,55 @@
 
 import dataclasses
 import re
-from jsonasobj2 import JsonObj, as_dict
-from typing import Optional, List, Union, Dict, ClassVar, Any
 from dataclasses import dataclass
-from datetime import date, datetime, time
-from linkml_runtime.linkml_model.meta import EnumDefinition, PermissibleValue, PvFormulaOptions
+from datetime import (
+    date,
+    datetime,
+    time
+)
+from typing import (
+    Any,
+    ClassVar,
+    Dict,
+    List,
+    Optional,
+    Union
+)
 
-from linkml_runtime.utils.slot import Slot
-from linkml_runtime.utils.metamodelcore import empty_list, empty_dict, bnode
-from linkml_runtime.utils.yamlutils import YAMLRoot, extended_str, extended_float, extended_int
-from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
-from linkml_runtime.utils.formatutils import camelcase, underscore, sfx
-from linkml_runtime.utils.enumerations import EnumDefinitionImpl
-from rdflib import Namespace, URIRef
+from jsonasobj2 import (
+    JsonObj,
+    as_dict
+)
+from linkml_runtime.linkml_model.meta import (
+    EnumDefinition,
+    PermissibleValue,
+    PvFormulaOptions
+)
 from linkml_runtime.utils.curienamespace import CurieNamespace
+from linkml_runtime.utils.dataclass_extensions_376 import dataclasses_init_fn_with_kwargs
+from linkml_runtime.utils.enumerations import EnumDefinitionImpl
+from linkml_runtime.utils.formatutils import (
+    camelcase,
+    sfx,
+    underscore
+)
+from linkml_runtime.utils.metamodelcore import (
+    bnode,
+    empty_dict,
+    empty_list
+)
+from linkml_runtime.utils.slot import Slot
+from linkml_runtime.utils.yamlutils import (
+    YAMLRoot,
+    extended_float,
+    extended_int,
+    extended_str
+)
+from rdflib import (
+    Namespace,
+    URIRef
+)
+
 from linkml_runtime.linkml_model.types import Boolean, Decimal, Double, Float, Integer, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Bool, Decimal, URIorCURIE
 
@@ -464,7 +499,6 @@ class Database(YAMLRoot):
 
     biosample_set: Optional[Union[Dict[Union[str, BiosampleId], Union[dict, "Biosample"]], List[Union[dict, "Biosample"]]]] = empty_dict()
     calibration_set: Optional[Union[Dict[Union[str, CalibrationInformationId], Union[dict, "CalibrationInformation"]], List[Union[dict, "CalibrationInformation"]]]] = empty_dict()
-    chemical_entity_set: Optional[Union[str, List[str]]] = empty_list()
     collecting_biosamples_from_site_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
     configuration_set: Optional[Union[Dict[Union[str, ConfigurationId], Union[dict, "Configuration"]], List[Union[dict, "Configuration"]]]] = empty_dict()
     data_generation_set: Optional[Union[Dict[Union[str, DataGenerationId], Union[dict, "DataGeneration"]], List[Union[dict, "DataGeneration"]]]] = empty_dict()
@@ -486,10 +520,6 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="calibration_set", slot_type=CalibrationInformation, key_name="id", keyed=True)
-
-        if not isinstance(self.chemical_entity_set, list):
-            self.chemical_entity_set = [self.chemical_entity_set] if self.chemical_entity_set is not None else []
-        self.chemical_entity_set = [v if isinstance(v, str) else str(v) for v in self.chemical_entity_set]
 
         self._normalize_inlined_as_list(slot_name="collecting_biosamples_from_site_set", slot_type=CollectingBiosamplesFromSite, key_name="id", keyed=True)
 

@@ -2521,11 +2521,6 @@ class Database(ConfiguredBaseModel):
     calibration_set: Optional[List[CalibrationInformation]] = Field(None, description="""This property links a database object to the set of calibrations within it.""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
-    chemical_entity_set: Optional[List[str]] = Field(None, description="""This property links a database object to the set of chemical entities within it.""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_entity_set',
-         'deprecated': 'Deprecation of the ChemicalEntity class, means deprecation of '
-                       'the chemical_entity_set as well.',
-         'domain_of': ['Database'],
-         'mixins': ['object_set']} })
     collecting_biosamples_from_site_set: Optional[List[CollectingBiosamplesFromSite]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'collecting_biosamples_from_site_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })

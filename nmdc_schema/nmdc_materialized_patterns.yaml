@@ -5578,6 +5578,7 @@ slots:
     name: metabolite_identified
     description: the specific metabolite identifier
     from_schema: https://w3id.org/nmdc/nmdc
+    range: string
   chemical_formula:
     name: chemical_formula
     description: A generic grouping for molecular formulae and empirical formulae
@@ -19425,7 +19426,6 @@ classes:
     slots:
     - biosample_set
     - calibration_set
-    - chemical_entity_set
     - collecting_biosamples_from_site_set
     - configuration_set
     - data_generation_set

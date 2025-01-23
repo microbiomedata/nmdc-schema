@@ -59,7 +59,7 @@ python-dotenv = "^0.21.0"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 # We use `refscan` to generate diagrams of inter-collection relationships.
 # Reference: https://github.com/microbiomedata/refscan
-refscan = "==0.1.21"
+refscan = "^0.2.0"
 ruff = "^0.4.7"
 schemasheets = "^0.1.24" # was in main dependencies but brings in so much like pandas
 sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
