@@ -337,7 +337,6 @@ classes:
     slots:
       - biosample_set
       - calibration_set
-      - chemical_entity_set
       - collecting_biosamples_from_site_set
       - configuration_set
       - data_generation_set

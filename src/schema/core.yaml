@@ -1311,7 +1311,7 @@ classes:
       - mass
       - sample_state_information
       - source_concentration
-      - substance_used
+      - known_as
       - substance_role
       - type
       - volume
@@ -1407,13 +1407,6 @@ classes:
       - HMDB
     exact_mappings:
       - biolink:ChemicalSubstance
-    slot_usage:
-      id:
-        description: The identifier for the chemical entity
-        required: true
-        structured_pattern:
-          syntax: "{id_prefix}:{id}"
-          interpolated: true
 
   GeneProduct:
     class_uri: nmdc:GeneProduct
@@ -1785,7 +1778,6 @@ slots:
 
   metabolite_identified:
     description: the specific metabolite identifier
-    range: string
 
   chemical_formula:
     description: A generic grouping for molecular formulae and empirical formulae

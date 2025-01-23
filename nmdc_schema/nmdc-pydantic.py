@@ -766,6 +766,37 @@ class SampleStateEnum(str, Enum):
     gas = "gas"
 
 
+class ChemicalEntityEnum(str, Enum):
+    acetonitrile = "acetonitrile"
+    # A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
+    alphaLP = "alphaLP"
+    ammonium_acetate = "ammonium_acetate"
+    ammonium_bicarbonate = "ammonium_bicarbonate"
+    # A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with  lower efficiency, lysine.
+    Arg_C = "Arg-C"
+    # A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
+    Asp_N = "Asp-N"
+    chloroform = "chloroform"
+    # A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine,  and phenylalanine.
+    chymotrypsin = "chymotrypsin"
+    # A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising a hydrogen atom  joined to the methyl group of methanol.
+    formic_acid = "formic_acid"
+    # Generally considered the most abundant monosaccharide in nature.
+    glucose = "glucose"
+    # A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid.
+    Glu_C = "Glu-C"
+    isopropyl_alcohol = "isopropyl_alcohol"
+    # A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
+    Lys_C = "Lys-C"
+    # A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+    Lys_N = "Lys-N"
+    methanol = "methanol"
+    # A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
+    trypsin = "trypsin"
+    # Any form of water used in an experiment including deionized water, distilled water, and ultrapure water. Protocol or materials and methods should be consulted for exact type of water used in an experiment.
+    water = "water"
+
+
 class ArchStrucEnum(str, Enum):
     building = "building"
     shed = "shed"
@@ -2490,7 +2521,9 @@ class Database(ConfiguredBaseModel):
     calibration_set: Optional[List[CalibrationInformation]] = Field(None, description="""This property links a database object to the set of calibrations within it.""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
-    chemical_entity_set: Optional[List[ChemicalEntity]] = Field(None, description="""This property links a database object to the set of chemical entities within it.""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_entity_set',
+    chemical_entity_set: Optional[List[str]] = Field(None, description="""This property links a database object to the set of chemical entities within it.""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_entity_set',
+         'deprecated': 'Deprecation of the ChemicalEntity class, means deprecation of '
+                       'the chemical_entity_set as well.',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
     collecting_biosamples_from_site_set: Optional[List[CollectingBiosamplesFromSite]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'collecting_biosamples_from_site_set',
@@ -2611,7 +2644,6 @@ class PortionOfSubstance(ConfiguredBaseModel):
     final_concentration: Optional[QuantityValue] = Field(None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration',
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
-    known_as: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
     mass: Optional[QuantityValue] = Field(None, title="mass", description="""A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
          'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
          'exact_mappings': ['PATO:0000125']} })
@@ -2619,6 +2651,7 @@ class PortionOfSubstance(ConfiguredBaseModel):
     source_concentration: Optional[QuantityValue] = Field(None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A""", json_schema_extra = { "linkml_meta": {'alias': 'source_concentration',
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
+    known_as: Optional[ChemicalEntityEnum] = Field(None, description="""The substance from which a portion was taken.""", json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
     substance_role: Optional[SubstanceRoleEnum] = Field(None, description="""The role of a substance in a process""", json_schema_extra = { "linkml_meta": {'alias': 'substance_role', 'domain_of': ['PortionOfSubstance']} })
     type: Literal["https://w3id.org/nmdc/PortionOfSubstance","nmdc:PortionOfSubstance"] = Field("nmdc:PortionOfSubstance", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
@@ -3793,7 +3826,7 @@ class EnvironmentalMaterialTerm(OntologyClass):
 
 class ChemicalEntity(OntologyClass):
     """
-    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states
+    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['metabolite',
                      'chemical substance',
@@ -3802,26 +3835,15 @@ class ChemicalEntity(OntologyClass):
          'class_uri': 'nmdc:ChemicalEntity',
          'comments': ['As with the parent OntologyClass, we will not assign an nmdc id '
                       'pattern or typecode to this class.'],
+         'deprecated': 'true; as of Jan 2025, NMDC only needs a handful of chemicals '
+                       'and its use cases can be served via an enumeration rather than '
+                       'supporting a full class.',
          'exact_mappings': ['biolink:ChemicalSubstance'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'id_prefixes': ['cas',
-                         'CHEBI',
-                         'CHEMBL.COMPOUND',
-                         'DRUGBANK',
-                         'HMDB',
-                         'KEGG.COMPOUND',
-                         'MESH',
-                         'PUBCHEM.COMPOUND'],
+         'id_prefixes': ['CHEBI', 'MS', 'HMDB'],
          'see_also': ['https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html']})
 
     chemical_formula: Optional[str] = Field(None, description="""A generic grouping for molecular formulae and empirical formulae""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_formula', 'domain_of': ['ChemicalEntity']} })
-    inchi: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'inchi', 'domain_of': ['ChemicalEntity']} })
-    inchi_key: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'inchi_key',
-         'domain_of': ['ChemicalEntity'],
-         'notes': ['key set to false due to rare collisions: Pletnev I, Erin A, '
-                   'McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey '
-                   'collision resistance: an experimental testing. J Cheminform. 4:12']} })
-    smiles: Optional[List[str]] = Field(None, description="""A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.""", json_schema_extra = { "linkml_meta": {'alias': 'smiles', 'domain_of': ['ChemicalEntity']} })
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
@@ -4537,14 +4559,17 @@ class Biosample(Sample):
                                         'todos': ["I think it's weird the way GSC "
                                                   'writes the title. I recommend this '
                                                   'change. Thoughts?']},
-                        'alternative_identifiers': {'description': 'Unique identifier '
-                                                                   'for a biosample '
-                                                                   'submitted to '
+                        'alternative_identifiers': {'description': 'A uriorcurie '
+                                                                   'reference to an '
+                                                                   'external database '
+                                                                   'or resource that '
+                                                                   'provides '
                                                                    'additional '
-                                                                   'resources. Matches '
-                                                                   'the entity that '
-                                                                   'has been submitted '
-                                                                   'to NMDC',
+                                                                   'information or  '
+                                                                   'context about a '
+                                                                   'specific entity at '
+                                                                   'NMDC.',
+                                                    'multivalued': True,
                                                     'name': 'alternative_identifiers'},
                         'annual_precpt': {'examples': [{'value': '8.94 inch'}],
                                           'name': 'annual_precpt'},
@@ -10935,7 +10960,7 @@ class Biosample(Sample):
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
          'slot_uri': 'dcterms:description'} })
-    alternative_identifiers: Optional[List[str]] = Field(None, description="""Unique identifier for a biosample submitted to additional resources. Matches the entity that has been submitted to NMDC""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
+    alternative_identifiers: Optional[List[str]] = Field(None, description="""A uriorcurie reference to an external database or resource that provides additional information or  context about a specific entity at NMDC.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
          'domain_of': ['MetaboliteIdentification', 'NamedThing']} })
     type: Literal["https://w3id.org/nmdc/Biosample","nmdc:Biosample"] = Field("nmdc:Biosample", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
