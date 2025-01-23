@@ -15,7 +15,7 @@ ordered_mobile_phases:
       has_unit: min
       has_numeric_value: 60
     substances_used:
-      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: glucose
         type: nmdc:PortionOfSubstance
         final_concentration:
           type: nmdc:QuantityValue
@@ -23,7 +23,7 @@ ordered_mobile_phases:
           has_numeric_value: 10
   - type: nmdc:MobilePhaseSegment
     substances_used:
-      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: acetonitrile
         type: nmdc:PortionOfSubstance
         final_concentration:
           type: nmdc:QuantityValue
