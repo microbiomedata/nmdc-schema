@@ -1781,13 +1781,16 @@ slots:
     range: string
 
   inchi_key:
+    deprecated: true
     range: string
     notes:
       - "key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12"
   inchi:
+    deprecated: true
     range: string
 
   smiles:
+    deprecated: true
     description: >-
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
     multivalued: true
