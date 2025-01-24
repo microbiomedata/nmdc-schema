@@ -1404,7 +1404,6 @@ classes:
     id_prefixes:
       - CHEBI
       - MS
-      - HMDB
     exact_mappings:
       - biolink:ChemicalSubstance
 
