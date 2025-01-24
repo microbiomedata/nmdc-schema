@@ -6,7 +6,7 @@ has_output:
   - nmdc:procsm-99-555555
 chemical_conversion_category: acid_base
 substances_used:
-  - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+  - known_as: isopropyl_alcohol
     type: nmdc:PortionOfSubstance
     sample_state_information: liquid
     volume:

@@ -5,7 +5,7 @@ has_input:
 has_output:
   - nmdc:procsm-13-S67F
 substances_used:
-  - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+  - known_as: water
     type: nmdc:PortionOfSubstance
     final_concentration:
       type: nmdc:QuantityValue
@@ -15,7 +15,7 @@ substances_used:
       type: nmdc:QuantityValue
       has_numeric_value: 500
       has_unit: mL
-  - known_as: nmdc:chem-99-000006
+  - known_as: glucose
     type: nmdc:PortionOfSubstance
     substance_role: solubilizing_agent
 duration:

@@ -4,7 +4,7 @@
 #  has_unit: percent
 #  has_numeric_value: 10
 #sample_state_information: liquid
-#known_as: mmdc:chem-99-000003
+#known_as: glucose
 #substance_role: solvent
 #volume:
 #  type: nmdc:QuantityValue

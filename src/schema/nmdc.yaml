@@ -337,7 +337,6 @@ classes:
     slots:
       - biosample_set
       - calibration_set
-      - chemical_entity_set
       - collecting_biosamples_from_site_set
       - configuration_set
       - data_generation_set
@@ -1146,9 +1145,10 @@ slots:
       This is necessary in a json document to provide context for a list, and to allow
       for a single json object that combines multiple object types
   chemical_entity_set:
+    deprecated: >-
+      Deprecation of the ChemicalEntity class, means deprecation of the chemical_entity_set as well.
     mixins:
       - object_set
-    range: ChemicalEntity
     description:
       This property links a database object to the set of chemical entities
       within it.

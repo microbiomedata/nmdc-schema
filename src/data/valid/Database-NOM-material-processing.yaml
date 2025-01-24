@@ -7,7 +7,7 @@ material_processing_set:
       - nmdc:procsm-00-1
     substances_used:
       - type: nmdc:PortionOfSubstance
-        known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        known_as: glucose
         final_concentration:
           type: nmdc:QuantityValue
           has_unit: 'g.mL-1'
@@ -20,7 +20,7 @@ material_processing_set:
     has_output:
       - nmdc:procsm-00-2
     substances_used:
-      - known_as: nmdc:chem-99-000016 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: water
         type: nmdc:PortionOfSubstance
         substance_role: acid
         final_concentration:
@@ -55,7 +55,7 @@ material_processing_set:
     ordered_mobile_phases:
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: water
             type: nmdc:PortionOfSubstance
         volume:
           type: nmdc:QuantityValue
@@ -63,9 +63,9 @@ material_processing_set:
           has_numeric_value: 700
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000004 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: acetonitrile
             type: nmdc:PortionOfSubstance
-          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: glucose
             type: nmdc:PortionOfSubstance
             substance_role: acid
             final_concentration:
@@ -78,7 +78,7 @@ material_processing_set:
           has_numeric_value: 700
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: alphaLP
             type: nmdc:PortionOfSubstance
         volume:
           type: nmdc:QuantityValue
@@ -92,7 +92,7 @@ material_processing_set:
       - nmdc:procsm-00-5
     substances_used:
       - type: nmdc:PortionOfSubstance
-        known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+        known_as: Asp-N
         volume:
           type: nmdc:QuantityValue
           has_unit: 'mL'
@@ -105,7 +105,7 @@ material_processing_set:
     has_output:
       - nmdc:procsm-00-6
     substances_used:
-      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: formic_acid
         type: nmdc:PortionOfSubstance
         substance_role: acid
         final_concentration:

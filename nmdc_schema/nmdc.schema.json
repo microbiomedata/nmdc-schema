@@ -5890,7 +5890,7 @@
         },
         "ChemicalEntity": {
             "additionalProperties": false,
-            "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states",
+            "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -5939,18 +5939,6 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
-                "inchi": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "inchi_key": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -5961,16 +5949,6 @@
                 "relations": {
                     "items": {
                         "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "smiles": {
-                    "description": "A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.",
-                    "items": {
-                        "type": "string"
                     },
                     "type": [
                         "array",
@@ -5991,6 +5969,30 @@
             ],
             "title": "ChemicalEntity",
             "type": "object"
+        },
+        "ChemicalEntityEnum": {
+            "description": "",
+            "enum": [
+                "acetonitrile",
+                "alphaLP",
+                "ammonium_acetate",
+                "ammonium_bicarbonate",
+                "Arg-C",
+                "Asp-N",
+                "chloroform",
+                "chymotrypsin",
+                "formic_acid",
+                "glucose",
+                "Glu-C",
+                "isopropyl_alcohol",
+                "Lys-C",
+                "Lys-N",
+                "methanol",
+                "MS:1001251",
+                "water"
+            ],
+            "title": "ChemicalEntityEnum",
+            "type": "string"
         },
         "ChromatographicCategoryEnum": {
             "description": "",
@@ -6703,16 +6705,6 @@
                     "description": "This property links a database object to the set of calibrations within it.",
                     "items": {
                         "$ref": "#/$defs/CalibrationInformation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "chemical_entity_set": {
-                    "description": "This property links a database object to the set of chemical entities within it.",
-                    "items": {
-                        "$ref": "#/$defs/ChemicalEntity"
                     },
                     "type": [
                         "array",
@@ -13233,10 +13225,8 @@
                     "description": "When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination"
                 },
                 "known_as": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/ChemicalEntityEnum",
+                    "description": "The substance from which a portion was taken."
                 },
                 "mass": {
                     "anyOf": [
@@ -15580,16 +15570,6 @@
             "description": "This property links a database object to the set of calibrations within it.",
             "items": {
                 "$ref": "#/$defs/CalibrationInformation"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "chemical_entity_set": {
-            "description": "This property links a database object to the set of chemical entities within it.",
-            "items": {
-                "$ref": "#/$defs/ChemicalEntity"
             },
             "type": [
                 "array",

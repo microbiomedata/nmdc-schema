@@ -10,7 +10,7 @@ chromatographic_category: solid_phase_extraction
 ordered_mobile_phases:
   - type: nmdc:MobilePhaseSegment
     substances_used:
-      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: water
         type: nmdc:PortionOfSubstance
         final_concentration:
           type: nmdc:QuantityValue
@@ -22,7 +22,7 @@ ordered_mobile_phases:
       has_unit: mL
   - type: nmdc:MobilePhaseSegment
     substances_used:
-      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: acetonitrile
         type: nmdc:PortionOfSubstance
         final_concentration:
           type: nmdc:QuantityValue
