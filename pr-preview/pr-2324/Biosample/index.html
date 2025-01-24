@@ -4322,7 +4322,7 @@
 <tr>
 <td><a href="../alternative_identifiers/">alternative_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>A uriorcurie reference to an external database or resource that provides addi...</td>
+<td>Unique identifier for a biosample submitted to additional resources</td>
 <td><a href="../NamedThing/">NamedThing</a></td>
 </tr>
 <tr>
@@ -5058,9 +5058,8 @@ slot_usage:
     - This is the ID provided by GOLD that starts with 'GB'
   alternative_identifiers:
     name: alternative_identifiers
-    description: A uriorcurie reference to an external database or resource that provides
-      additional information or  context about a specific entity at NMDC.
-    multivalued: true
+    description: Unique identifier for a biosample submitted to additional resources.
+      Matches the entity that has been submitted to NMDC
   lat_lon:
     name: lat_lon
     notes:
@@ -5480,9 +5479,8 @@ slot_usage:
     - This is the ID provided by GOLD that starts with 'GB'
   alternative_identifiers:
     name: alternative_identifiers
-    description: A uriorcurie reference to an external database or resource that provides
-      additional information or  context about a specific entity at NMDC.
-    multivalued: true
+    description: Unique identifier for a biosample submitted to additional resources.
+      Matches the entity that has been submitted to NMDC
   lat_lon:
     name: lat_lon
     notes:
@@ -21159,8 +21157,8 @@ attributes:
     range: string
   alternative_identifiers:
     name: alternative_identifiers
-    description: A uriorcurie reference to an external database or resource that provides
-      additional information or  context about a specific entity at NMDC.
+    description: Unique identifier for a biosample submitted to additional resources.
+      Matches the entity that has been submitted to NMDC
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: alternative_identifiers
