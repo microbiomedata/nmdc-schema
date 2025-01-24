@@ -132,7 +132,6 @@ enums:
       acetonitrile:
         meaning: CHEBI:38472
       alphaLP:
-        meaning: MS:1001303
         description: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
       ammonium_acetate:
@@ -140,7 +139,7 @@ enums:
       ammonium_bicarbonate:
         meaning: CHEBI:184335
       Arg-C:
-        meaning: CHEBI:157791
+        meaning: MS:1001303
         description: >-
           A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with 
           lower efficiency, lysine.
@@ -165,6 +164,7 @@ enums:
         description: >-
           Generally considered the most abundant monosaccharide in nature.
       Glu-C:
+        meaning: MS:1001917
         description: >-
           A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid.
       isopropyl_alcohol:
@@ -180,7 +180,7 @@ enums:
       methanol:
         meaning: CHEBI:17790
       trypsin:
-        meaning: CHEBI:9765
+        meaning: MS:1001251
         description: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
       water:
