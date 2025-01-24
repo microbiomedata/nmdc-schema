@@ -132,7 +132,7 @@ enums:
       acetonitrile:
         meaning: CHEBI:38472
       alphaLP:
-        description: >-
+        comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
       ammonium_acetate:
         meaning: CHEBI:62947
@@ -140,52 +140,52 @@ enums:
         meaning: CHEBI:184335
       Arg-C:
         meaning: MS:1001303
-        description: >-
+        comments: >-
           A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with 
           lower efficiency, lysine.
       Asp-N:
         meaning: MS:1001304
-        description: >-
+        comments: >-
           A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
       chloroform:
         meaning: CHEBI:35255
       chymotrypsin:
         meaning: MS:1001306
-        description: >-
+        comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, 
           and phenylalanine.
       formic_acid:
         meaning: CHEBI:30751
-        description: >-
+        comments: >-
           A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising a hydrogen atom 
           joined to the methyl group of methanol.
       glucose:
         meaning: CHEBI:17234
-        description: >-
+        comments: >-
           Generally considered the most abundant monosaccharide in nature.
       Glu-C:
         meaning: MS:1001917
-        description: >-
+        comments: >-
           A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid.
       isopropyl_alcohol:
         meaning: CHEBI:17824
       Lys-C:
         meaning: MS:1001309
-        description: >-
+        comments: >-
           A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
       Lys-N:
         meaning: MS:1003093
-        description: >-
+        comments: >-
           A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
       methanol:
         meaning: CHEBI:17790
-      trypsin:
+      MS:1001251:
         meaning: MS:1001251
-        description: >-
+        comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
       water:
         meaning: CHEBI:15377
-        description: >- 
+        comments: >- 
           Any form of water used in an experiment including deionized water, distilled water, and ultrapure water.
           Protocol or materials and methods should be consulted for exact type of water used in an experiment.
 
