@@ -1063,82 +1063,6 @@ enums:
         text: liquid
       gas:
         text: gas
-  ChemicalEntityEnum:
-    name: ChemicalEntityEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      acetonitrile:
-        text: acetonitrile
-        meaning: CHEBI:38472
-      alphaLP:
-        text: alphaLP
-        description: A serine protease that hydrolyzes peptide bonds at the C-terminus
-          of threonine, alanine, serine, and valine.
-      ammonium_acetate:
-        text: ammonium_acetate
-        meaning: CHEBI:62947
-      ammonium_bicarbonate:
-        text: ammonium_bicarbonate
-        meaning: CHEBI:184335
-      Arg-C:
-        text: Arg-C
-        description: A cysteine protease that hydrolyzes peptide, ester, and amide
-          bonds at the C-terminus of arginine and with  lower efficiency, lysine.
-        meaning: MS:1001303
-      Asp-N:
-        text: Asp-N
-        description: A zinc metalloendopeptidase that hydrolyzes peptide bonds at
-          the N-terminus of aspartic acid.
-        meaning: MS:1001304
-      chloroform:
-        text: chloroform
-        meaning: CHEBI:35255
-      chymotrypsin:
-        text: chymotrypsin
-        description: A serine protease that hydrolyzes peptide bonds at the C-terminus
-          of tryptophan, leucine, tyrosine,  and phenylalanine.
-        meaning: MS:1001306
-      formic_acid:
-        text: formic_acid
-        description: A carboxylic acid that is the simplest aliphatic carboxylic acid,
-          comprising a hydrogen atom  joined to the methyl group of methanol.
-        meaning: CHEBI:30751
-      glucose:
-        text: glucose
-        description: Generally considered the most abundant monosaccharide in nature.
-        meaning: CHEBI:17234
-      Glu-C:
-        text: Glu-C
-        description: A serine protease that hydrolyzes peptide and ester bonds at
-          the C-terminus of aspartic acid or glutamic acid.
-        meaning: MS:1001917
-      isopropyl_alcohol:
-        text: isopropyl_alcohol
-        meaning: CHEBI:17824
-      Lys-C:
-        text: Lys-C
-        description: A serine protease that hydrolyzes peptide, ester, and amide bonds
-          at the C-terminus of lysine.
-        meaning: MS:1001309
-      Lys-N:
-        text: Lys-N
-        description: A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus
-          of lysine.
-        meaning: MS:1003093
-      methanol:
-        text: methanol
-        meaning: CHEBI:17790
-      MS:1001251:
-        text: MS:1001251
-        description: A serine protease that hydrolyzes peptide bonds at the C-terminus
-          of arginine and lysine.
-        meaning: MS:1001251
-      water:
-        text: water
-        description: Any form of water used in an experiment including deionized water,
-          distilled water, and ultrapure water. Protocol or materials and methods
-          should be consulted for exact type of water used in an experiment.
-        meaning: CHEBI:15377
   arch_struc_enum:
     name: arch_struc_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4821,11 +4745,10 @@ slots:
     name: chemical_entity_set
     description: This property links a database object to the set of chemical entities
       within it.
-    deprecated: Deprecation of the ChemicalEntity class, means deprecation of the
-      chemical_entity_set as well.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
+    range: ChemicalEntity
   ontology_class_set:
     name: ontology_class_set
     description: This property links a database object to the set of ontology classes
@@ -5380,6 +5303,10 @@ slots:
     range: PortionOfSubstance
     multivalued: true
     inlined_as_list: true
+  known_as:
+    name: known_as
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ChemicalEntity
   substance_role:
     name: substance_role
     description: The role of a substance in a process
@@ -5578,7 +5505,7 @@ slots:
     name: metabolite_identified
     description: the specific metabolite identifier
     from_schema: https://w3id.org/nmdc/nmdc
-    range: string
+    range: ChemicalEntity
   chemical_formula:
     name: chemical_formula
     description: A generic grouping for molecular formulae and empirical formulae
@@ -5586,7 +5513,6 @@ slots:
     range: string
   inchi_key:
     name: inchi_key
-    deprecated: 'True'
     notes:
     - 'key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov
       K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental
@@ -5595,7 +5521,6 @@ slots:
     range: string
   inchi:
     name: inchi
-    deprecated: 'True'
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   smiles:
@@ -5603,7 +5528,6 @@ slots:
     description: A string encoding of a molecular graph, no chiral or isotopic information.
       There are usually a large number of valid SMILES which represent a given structure.
       For example, CCO, OCC and C(O)C all specify the structure of ethanol.
-    deprecated: 'True'
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
     multivalued: true
@@ -5620,11 +5544,6 @@ slots:
     description: The chemical phase of a pure sample, or the state of a mixed sample
     from_schema: https://w3id.org/nmdc/nmdc
     range: SampleStateEnum
-  known_as:
-    name: known_as
-    description: The substance from which a portion was taken.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ChemicalEntityEnum
   feature_category:
     name: feature_category
     description: A Sequence Ontology term that describes the category of a feature
@@ -19429,6 +19348,7 @@ classes:
     slots:
     - biosample_set
     - calibration_set
+    - chemical_entity_set
     - collecting_biosamples_from_site_set
     - configuration_set
     - data_generation_set
@@ -21095,10 +21015,10 @@ classes:
     - schema:Substance
     slots:
     - final_concentration
+    - known_as
     - mass
     - sample_state_information
     - source_concentration
-    - known_as
     - substance_role
     - type
     - volume
@@ -21177,14 +21097,17 @@ classes:
   ChemicalEntity:
     name: ChemicalEntity
     id_prefixes:
+    - cas
     - CHEBI
-    - MS
+    - CHEMBL.COMPOUND
+    - DRUGBANK
+    - HMDB
+    - KEGG.COMPOUND
+    - MESH
+    - PUBCHEM.COMPOUND
     description: An atom or molecule that can be represented with a chemical formula.
       Include lipids, glycans, natural products, drugs. There may be different terms
-      for distinct acid-base forms, protonation states. A chemical entity is a  physical
-      entity that pertains to chemistry or biochemistry.
-    deprecated: true; as of Jan 2025, NMDC only needs a handful of chemicals and its
-      use cases can be served via an enumeration rather than supporting a full class.
+      for distinct acid-base forms, protonation states
     comments:
     - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode
       to this class.
@@ -21201,6 +21124,9 @@ classes:
     is_a: OntologyClass
     slots:
     - chemical_formula
+    - inchi
+    - inchi_key
+    - smiles
     class_uri: nmdc:ChemicalEntity
   GeneProduct:
     name: GeneProduct
