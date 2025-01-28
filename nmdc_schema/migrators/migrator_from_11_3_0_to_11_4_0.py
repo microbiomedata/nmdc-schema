@@ -23,7 +23,7 @@ class Migrator(MigratorBase):
         {'id': 123, 'type': 'nmdc:MetabolomicsAnalysis', 'has_metabolite_identifications': [], 'metabolomics_analysis_category': 'gc_ms_metabolomics'}
         >>> m.set_metab_analysis_category({'id': 123, 'type': 'nmdc:MetabolomicsAnalysis'})  # does not have has_metabolite_identifications field, therefore it's a lipid analysis
         {'id': 123, 'type': 'nmdc:MetabolomicsAnalysis', 'metabolomics_analysis_category': 'lc_ms_lipidomics'}
-        >>> m.set_metab_analysis_category({'id': 123, 'type': 'nmdc:Metaproteomics')  # not a metabolomics analysis
+        >>> m.set_metab_analysis_category({'id': 123, 'type': 'nmdc:Metaproteomics'})  # not a metabolomics analysis
         {'id': 123, 'type': 'nmdc:Metaproteomics'}
         """
 
