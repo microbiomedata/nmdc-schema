@@ -191,7 +191,7 @@ gendoc: $(DOCDIR) prefixmaps
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 	# Use `refgraph` to generate an interactive diagram within the compiled documentation website file tree.
 	mkdir -p $(DOCDIR)/visualizations
-	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
+	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
 testdoc: gendoc serve
 
 MKDOCS = $(RUN) mkdocs

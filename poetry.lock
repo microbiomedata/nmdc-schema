@@ -1911,8 +1911,8 @@ files = [
 [package.dependencies]
 numpy = [
     {version = ">=1.22.4", markers = "python_version < \"3.11\""},
-    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
     {version = ">=1.26.0", markers = "python_version >= \"3.12\""},
+    {version = ">=1.23.2", markers = "python_version == \"3.11\""},
 ]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
@@ -2361,8 +2361,8 @@ astroid = ">=3.3.4,<=3.4.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = [
     {version = ">=0.2", markers = "python_version < \"3.11\""},
-    {version = ">=0.3.6", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
     {version = ">=0.3.7", markers = "python_version >= \"3.12\""},
+    {version = ">=0.3.6", markers = "python_version >= \"3.11\" and python_version < \"3.12\""},
 ]
 isort = ">=4.2.5,<5.13.0 || >5.13.0,<6"
 mccabe = ">=0.6,<0.8"
@@ -2819,20 +2819,20 @@ rpds-py = ">=0.7.0"
 
 [[package]]
 name = "refscan"
-version = "0.1.21"
+version = "0.2.0"
 description = "Command-line program that scans the NMDC MongoDB database for referential integrity violations"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "refscan-0.1.21-py3-none-any.whl", hash = "sha256:acb211a5621c5ecec8f9b129e3fcc60ec559898535e0068913d20e4f0c7d5be2"},
-    {file = "refscan-0.1.21.tar.gz", hash = "sha256:36ade37ba227ad7c45d5668039d219e41cd8530dbc0400ca9d5a52b60a9207e2"},
+    {file = "refscan-0.2.0-py3-none-any.whl", hash = "sha256:32eb44e3ce6772d2ad8f291fd426892989a268f48898da85240d85a1d69e4c1e"},
+    {file = "refscan-0.2.0.tar.gz", hash = "sha256:4a115c4e39c5c9d3439275ff03cb7b87367f61d47b4974ba3ba9a777a94ecdfc"},
 ]
 
 [package.dependencies]
 linkml-runtime = ">=1.7.5,<2.0.0"
 pymongo = ">=4.7.1,<5.0.0"
 rich = ">=13.7.1,<14.0.0"
-typer = ">=0.12.3,<0.13.0"
+typer = ">=0.15.1,<0.16.0"
 
 [[package]]
 name = "regex"
@@ -3609,13 +3609,13 @@ files = [
 
 [[package]]
 name = "typer"
-version = "0.12.5"
+version = "0.15.1"
 description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "typer-0.12.5-py3-none-any.whl", hash = "sha256:62fe4e471711b147e3365034133904df3e235698399bc4de2b36c8579298d52b"},
-    {file = "typer-0.12.5.tar.gz", hash = "sha256:f592f089bedcc8ec1b974125d64851029c3b1af145f04aca64d69410f0c9b722"},
+    {file = "typer-0.15.1-py3-none-any.whl", hash = "sha256:7994fb7b8155b64d3402518560648446072864beefd44aa2dc36972a5972e847"},
+    {file = "typer-0.15.1.tar.gz", hash = "sha256:a0588c0a7fa68a1978a069818657778f86abe6ff5ea6abf472f940a08bfe4f0a"},
 ]
 
 [package.dependencies]
@@ -3865,4 +3865,4 @@ docs = ["mkdocs-material"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "75bd51f270387b3f9d69f7087804d4861c5b1847a8a708b6ca42a570efd0ed6f"
+content-hash = "7a97a3343b610bd39667fe8b02190b99d31bb4877c0086b66f0a6dd6b3a4a3e5"
