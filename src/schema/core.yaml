@@ -18,6 +18,7 @@ imports:
 prefixes:
   CHEBI: http://purl.obolibrary.org/obo/CHEBI_
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
+  eccode: "https://bioregistry.io/eccode:"
   OBI: http://purl.obolibrary.org/obo/OBI_
   PR: http://purl.obolibrary.org/obo/PR_
   SIO: http://semanticscience.org/resource/SIO_
@@ -132,6 +133,8 @@ enums:
       acetonitrile:
         meaning: CHEBI:38472
       alphaLP:
+        meaning: eccode:3.4.21.12
+        see_also: https://commonchemistry.cas.org/detail?cas_rn=37288-76-9&title= # CAS reference from wikipedia
         comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
       ammonium_acetate:
@@ -179,7 +182,7 @@ enums:
           A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
       methanol:
         meaning: CHEBI:17790
-      MS:1001251:
+      trypsin:
         meaning: MS:1001251
         comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
