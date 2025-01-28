@@ -60,7 +60,6 @@
    "cas": "https://bioregistry.io/cas:",
    "dcterms": "http://purl.org/dc/terms/",
    "doi": "https://bioregistry.io/doi:",
-   "eccode": "https://bioregistry.io/eccode:",
    "edam.data": "http://edamontology.org/data_",
    "emsl": "http://example.org/emsl_in_mongodb/",
    "emsl.project": "https://bioregistry.io/emsl.project:",
