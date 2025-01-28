@@ -248,6 +248,7 @@ classes:
     slots:
       - has_metabolite_identifications
       - uses_calibration
+      - metabolomics_analysis_category
     slot_usage:
       id:
         required: true
@@ -297,6 +298,12 @@ slots:
     range: MetaproteomicsAnalysisCategoryEnum
     description: >-
       The category of metaproteomics analysis being performed.
+    required: true
+
+  metabolomics_analysis_category:
+    range: MetabolomicsAnalysisCategoryEnum
+    description: >-
+      The category of metabolomics analysis being performed.
     required: true
 
   metagenome_assembly_parameter:
@@ -547,3 +554,16 @@ enums:
       in_silico_metagenome:
         description: >-
           A metaproteomics analysis that is matched to an in silico generated metagenome.
+  
+  MetabolomicsAnalysisCategoryEnum:
+    description: The category of metabolomics analysis being performed.
+    permissible_values:
+      gc_ms_metabolomics:
+        description: >-
+          A metabolomics analysis that is performed using gas chromatography mass spectrometry.
+      lc_ms_lipidomics:
+        description: >-
+          A metabolomics analysis that is performed using liquid chromatography mass spectrometry for lipidomics.
+      lc_ms_metabolomics:
+        description: >-
+          A metabolomics analysis that is performed using liquid chromatography mass spectrometry.
