@@ -32,35 +32,42 @@ packages = [
 
 [tool.poetry.dependencies] # having trouble with mkdocs in docker esp on linux. addits its ecosystem here may be unnecessary
 python = "^3.9"
+click = "^8"
+click-log = "^0.4.0"
+curies = "^0.9.0"
+deprecated = "^1"
+jsonasobj2 = "^1"
+jsonschema = "^4"
 linkml = "^1.7.10"
 linkml-runtime = "^1.7.7"
-mkdocs = "^1.4.2"
-mkdocs-material = "^9.0.12"
-mkdocs-mermaid2-plugin = "^0.6.0"
-mkdocs-redirects = "^1.2.1"
 pymongo = "^4.7.2"
-ruamel-yaml = "^0.18.6"
+python-dotenv = "*"
+pyyaml = "^6"
+rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
+requests = "^2"
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
 bandit = "^1.7.8"
 black = ">=23.1,<25.0"
-click = "^8.1.3"
-click-log = "^0.4.0"
 exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-first-of-first)
 fastjsonschema = "^2.20.0"
 flake8 = "^7.0.0"
 isort = "^5.13.2"
+mkdocs = "^1.4.2"
+mkdocs-material = "^9.0.12"
+mkdocs-mermaid2-plugin = "^0.6.0"
+mkdocs-redirects = "^1.2.1"
 mypy = "^1.10.0"
 pydocstyle = "^6.3.0"
 pylint = "^3.2.2"
 pyroma = "^4.2"
 python-dotenv = "^0.21.0"
-rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 # We use `refscan` to generate diagrams of inter-collection relationships.
 # Reference: https://github.com/microbiomedata/refscan
 refscan = "==0.1.21"
 ruff = "^0.4.7"
+ruamel-yaml = "^0.18.6"
 schemasheets = "^0.1.24" # was in main dependencies but brings in so much like pandas
 sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"
@@ -71,6 +78,8 @@ vulture = "^2.11"
 #oaklib = "^0.5.24"
 #pydantic = "^1.10.13"
 
+[tool.poetry.group.deps.dependencies]
+deptry = "^0.23.0"
 
 [tool.poetry-dynamic-versioning]
 # We need poetry-dynamic-versioning to update the version in the src schema file,
@@ -93,9 +102,6 @@ patterns = [
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
 build-backend = "poetry_dynamic_versioning.backend"
-
-[tool.poetry.extras]
-docs = ["mkdocs-material"]
 
 
 # scripts should have click clis
