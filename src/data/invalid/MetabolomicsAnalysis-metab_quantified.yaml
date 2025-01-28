@@ -1,3 +1,4 @@
+# this example is invalid because the has_metabolite_quantifications slot is used when it should be has_metabolite_identification
 id: nmdc:wfmb-99-ABCDEF.1
 type: nmdc:MetabolomicsAnalysis
 started_at_time: '2021-08-05T14:48:51+00:00'
@@ -18,3 +19,4 @@ has_metabolite_quantifications:
     highest_similarity_score: 0.9534156546099186
     metabolite_quantified: chebi:16997
     type: nmdc:MetaboliteQuantification
+metabolomics_analysis_category: gc_ms_metabolomics

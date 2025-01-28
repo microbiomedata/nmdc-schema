@@ -18,3 +18,4 @@ has_metabolite_identifications:
     highest_similarity_score: 0.9534156546099186
     metabolite_identified: CHEBI:16997
     type: nmdc:MetaboliteIdentification
+metabolomics_analysis_category: gc_ms_metabolomics

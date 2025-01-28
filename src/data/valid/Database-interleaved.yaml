@@ -3554,6 +3554,7 @@ workflow_execution_set:
     git_url: https://example.org/WorkflowExecutionActivity
     was_informed_by: nmdc:dgms-11-3u74ds
     started_at_time: '2021-08-05T14:48:51+00:00'
+    metabolomics_analysis_category: gc_ms_metabolomics
   - id: nmdc:wfmb-4d8-3z74d.1
     type: nmdc:MetabolomicsAnalysis
     name: soil metabolomics analysis
@@ -3570,6 +3571,7 @@ workflow_execution_set:
       - type: nmdc:MetaboliteIdentification
         highest_similarity_score: 0.88
         metabolite_identified: CHEBI:16236
+    metabolomics_analysis_category: gc_ms_metabolomics
   - id: nmdc:wfmgan-99-4d83z.1
     type: nmdc:MetagenomeAnnotation
     name: human gut metagenome annotation
