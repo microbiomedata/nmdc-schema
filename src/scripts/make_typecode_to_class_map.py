@@ -58,16 +58,11 @@ def extract_comparison_key(class_name_and_typecodes: Tuple[str, List[str]]) -> s
 
 def get_collection_names_for_class_name(class_name: str) -> List[str]:
     r"""
-    Returns the names of the collections the schema says can contain instances of the specified class.
+    Returns the names of the collection(s) the schema says can contain instances of the specified class.
 
-    Note: In the schema, the `multivalued`, `inlined_as_list` slots of the `Database` class represent collections (e.g.,
-          `workflow_execution_set`). Each such slot has a range indicated by its `range` attribute (e.g., the
-          `workflow_execution_set` slot has a range of `WorkflowExecution`). The effective range of the slot
-          consists of `WorkflowExecution` and each of its descendant classes (e.g., `MetagenomeAnnotation`).
-
-    References:
-    - https://microbiomedata.github.io/nmdc-schema/workflow_execution_set/ (for an example range)
-    - https://microbiomedata.github.io/nmdc-schema/WorkflowExecution/ (for an example class hierarchy)
+    Note: In the schema, each `multivalued`, `inlined_as_list` slot of the `Database` class represents a collection.
+          Each such slot has a range indicated by its `range` attribute. The _effective_ range of the slot consists of
+          both (a) the class identified by its `range` attribute and (b) all descendant classes of that class.
 
     >>> get_collection_names_for_class_name("")  # empty string
     []
