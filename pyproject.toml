@@ -65,7 +65,7 @@ pyroma = "^4.2"
 python-dotenv = "^0.21.0"
 # We use `refscan` to generate diagrams of inter-collection relationships.
 # Reference: https://github.com/microbiomedata/refscan
-refscan = "==0.1.21"
+refscan = "^0.2.0"
 ruff = "^0.4.7"
 ruamel-yaml = "^0.18.6"
 schemasheets = "^0.1.24" # was in main dependencies but brings in so much like pandas

@@ -460,23 +460,21 @@ files = [
 
 [[package]]
 name = "curies"
-version = "0.9.2"
+version = "0.9.0"
 description = "Idiomatic conversion between URIs and compact URIs (CURIEs)"
 optional = false
 python-versions = ">=3.9"
 files = [
-    {file = "curies-0.9.2-py3-none-any.whl", hash = "sha256:102ab6c3e55394744019eeac3b4775c47178a6023cdbb58f58f920b5f571fcc3"},
-    {file = "curies-0.9.2.tar.gz", hash = "sha256:938527aab5f6d2d952297848d73ef7d715f4a45d5c9904653e47d33ae60d385f"},
+    {file = "curies-0.9.0-py3-none-any.whl", hash = "sha256:a4b8d9fff89288190c658ac5941f3099196205cd805cc98fceba1ac5a96daa50"},
+    {file = "curies-0.9.0.tar.gz", hash = "sha256:f630fa05b31aff144da66ace18a2c25b30adfa859df36e5fbd8b633b43c80d3a"},
 ]
 
 [package.dependencies]
-eval_type_backport = {version = "*", markers = "python_version < \"3.10\""}
 pydantic = ">=2.0"
 pytrie = "*"
-typing-extensions = "*"
 
 [package.extras]
-docs = ["sphinx (>=8)", "sphinx-rtd-theme (>=3.0)", "sphinx_automodapi"]
+docs = ["sphinx (>=8)", "sphinx-automodapi", "sphinx-rtd-theme (>=3.0)"]
 fastapi = ["defusedxml", "fastapi", "httpx", "python-multipart", "uvicorn"]
 flask = ["defusedxml", "flask"]
 pandas = ["pandas"]
@@ -608,20 +606,6 @@ files = [
     {file = "et_xmlfile-2.0.0-py3-none-any.whl", hash = "sha256:7a91720bc756843502c3b7504c77b8fe44217c85c537d85037f0f536151b2caa"},
     {file = "et_xmlfile-2.0.0.tar.gz", hash = "sha256:dab3f4764309081ce75662649be815c4c9081e88f0837825f90fd28317d4da54"},
 ]
-
-[[package]]
-name = "eval-type-backport"
-version = "0.2.2"
-description = "Like `typing._eval_type`, but lets older Python versions use newer typing features."
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "eval_type_backport-0.2.2-py3-none-any.whl", hash = "sha256:cb6ad7c393517f476f96d456d0412ea80f0a8cf96f6892834cd9340149111b0a"},
-    {file = "eval_type_backport-0.2.2.tar.gz", hash = "sha256:f0576b4cf01ebb5bd358d02314d31846af5e07678387486e2c798af0e7d849c1"},
-]
-
-[package.extras]
-tests = ["pytest"]
 
 [[package]]
 name = "exceptiongroup"
@@ -2865,20 +2849,20 @@ rpds-py = ">=0.7.0"
 
 [[package]]
 name = "refscan"
-version = "0.1.21"
+version = "0.2.0"
 description = "Command-line program that scans the NMDC MongoDB database for referential integrity violations"
 optional = false
 python-versions = "<4.0,>=3.9"
 files = [
-    {file = "refscan-0.1.21-py3-none-any.whl", hash = "sha256:acb211a5621c5ecec8f9b129e3fcc60ec559898535e0068913d20e4f0c7d5be2"},
-    {file = "refscan-0.1.21.tar.gz", hash = "sha256:36ade37ba227ad7c45d5668039d219e41cd8530dbc0400ca9d5a52b60a9207e2"},
+    {file = "refscan-0.2.0-py3-none-any.whl", hash = "sha256:32eb44e3ce6772d2ad8f291fd426892989a268f48898da85240d85a1d69e4c1e"},
+    {file = "refscan-0.2.0.tar.gz", hash = "sha256:4a115c4e39c5c9d3439275ff03cb7b87367f61d47b4974ba3ba9a777a94ecdfc"},
 ]
 
 [package.dependencies]
 linkml-runtime = ">=1.7.5,<2.0.0"
 pymongo = ">=4.7.1,<5.0.0"
 rich = ">=13.7.1,<14.0.0"
-typer = ">=0.12.3,<0.13.0"
+typer = ">=0.15.1,<0.16.0"
 
 [[package]]
 name = "regex"
@@ -3670,13 +3654,13 @@ files = [
 
 [[package]]
 name = "typer"
-version = "0.12.5"
+version = "0.15.1"
 description = "Typer, build great CLIs. Easy to code. Based on Python type hints."
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "typer-0.12.5-py3-none-any.whl", hash = "sha256:62fe4e471711b147e3365034133904df3e235698399bc4de2b36c8579298d52b"},
-    {file = "typer-0.12.5.tar.gz", hash = "sha256:f592f089bedcc8ec1b974125d64851029c3b1af145f04aca64d69410f0c9b722"},
+    {file = "typer-0.15.1-py3-none-any.whl", hash = "sha256:7994fb7b8155b64d3402518560648446072864beefd44aa2dc36972a5972e847"},
+    {file = "typer-0.15.1.tar.gz", hash = "sha256:a0588c0a7fa68a1978a069818657778f86abe6ff5ea6abf472f940a08bfe4f0a"},
 ]
 
 [package.dependencies]
@@ -3934,4 +3918,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "bc33ec7390532402766156c20abfb55f43a3b654b6a035b86ebdd51144ba9899"
+content-hash = "4fe6596a70b25eb5941f1e77775c6ee020944fb53958cef26127f67d6d820342"
