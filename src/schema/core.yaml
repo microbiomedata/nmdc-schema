@@ -84,6 +84,10 @@ enums:
       NEON:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
+      BRC:
+        title: Bioenergy Research Centers
+        meaning: https://www.genomicscience.energy.gov/bioenergy-research-centers/
+        description: Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.
 
   SubstanceRoleEnum:
     permissible_values:
