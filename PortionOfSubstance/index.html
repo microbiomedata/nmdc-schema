@@ -307,8 +307,8 @@
 
   PortionOfSubstance : known_as
 
-      PortionOfSubstance --&gt; "0..1" ChemicalEntity : known_as
-    click ChemicalEntity href "../ChemicalEntity"
+      PortionOfSubstance --&gt; "0..1" ChemicalEntityEnum : known_as
+    click ChemicalEntityEnum href "../ChemicalEntityEnum"
 
   PortionOfSubstance : mass
 
@@ -359,12 +359,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../known_as/">known_as</a></td>
-<td>0..1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../mass/">mass</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>A physical quality that inheres in a bearer by virtue of the proportion of th...</td>
@@ -380,6 +374,12 @@
 <td><a href="../source_concentration/">source_concentration</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>When solutions A (containing substance X) and B are combined together, this s...</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../known_as/">known_as</a></td>
+<td>0..1 <br/> <a href="../ChemicalEntityEnum/">ChemicalEntityEnum</a></td>
+<td>The substance from which a portion was taken</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -478,10 +478,10 @@ mappings:
 - schema:Substance
 slots:
 - final_concentration
-- known_as
 - mass
 - sample_state_information
 - source_concentration
+- known_as
 - substance_role
 - type
 - volume
@@ -511,15 +511,6 @@ attributes:
     domain_of:
     - PortionOfSubstance
     range: QuantityValue
-  known_as:
-    name: known_as
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: known_as
-    owner: PortionOfSubstance
-    domain_of:
-    - PortionOfSubstance
-    range: ChemicalEntity
   mass:
     name: mass
     description: A physical quality that inheres in a bearer by virtue of the proportion
@@ -557,6 +548,16 @@ attributes:
     domain_of:
     - PortionOfSubstance
     range: QuantityValue
+  known_as:
+    name: known_as
+    description: The substance from which a portion was taken.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: known_as
+    owner: PortionOfSubstance
+    domain_of:
+    - PortionOfSubstance
+    range: ChemicalEntityEnum
   substance_role:
     name: substance_role
     description: The role of a substance in a process

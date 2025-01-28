@@ -310,11 +310,6 @@
       Database --&gt; "*" CalibrationInformation : calibration_set
     click CalibrationInformation href "../CalibrationInformation"
 
-  Database : chemical_entity_set
-
-      Database --&gt; "*" ChemicalEntity : chemical_entity_set
-    click ChemicalEntity href "../ChemicalEntity"
-
   Database : collecting_biosamples_from_site_set
 
       Database --&gt; "*" CollectingBiosamplesFromSite : collecting_biosamples_from_site_set
@@ -420,12 +415,6 @@
 <td><a href="../calibration_set/">calibration_set</a></td>
 <td>* <br/> <a href="../CalibrationInformation/">CalibrationInformation</a></td>
 <td>This property links a database object to the set of calibrations within it</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../chemical_entity_set/">chemical_entity_set</a></td>
-<td>* <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>This property links a database object to the set of chemical entities within ...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -566,7 +555,6 @@ aliases:
 slots:
 - biosample_set
 - calibration_set
-- chemical_entity_set
 - collecting_biosamples_from_site_set
 - configuration_set
 - data_generation_set
@@ -628,21 +616,6 @@ attributes:
     domain_of:
     - Database
     range: CalibrationInformation
-    multivalued: true
-    inlined_as_list: true
-  chemical_entity_set:
-    name: chemical_entity_set
-    description: This property links a database object to the set of chemical entities
-      within it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    mixins:
-    - object_set
-    alias: chemical_entity_set
-    owner: Database
-    domain_of:
-    - Database
-    range: ChemicalEntity
     multivalued: true
     inlined_as_list: true
   collecting_biosamples_from_site_set:

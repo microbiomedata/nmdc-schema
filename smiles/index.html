@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: smiles - NMDC Schema Documentation</title>
+        <title>Slot: smiles (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-smiles" class="md-skip">
+        <a href="#slot-smiles-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: smiles
+              Slot: smiles (DEPRECATED)
             
           </span>
         </div>
@@ -491,15 +491,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
@@ -568,28 +559,11 @@
   
 
 
-<h1 id="slot-smiles">Slot: smiles</h1>
+<h1 id="slot-smiles-deprecated">Slot: smiles  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/smiles">nmdc:smiles</a></p>
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>An atom or molecule that can be represented with a chemical formula</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
@@ -626,11 +600,10 @@
 description: A string encoding of a molecular graph, no chiral or isotopic information.
   There are usually a large number of valid SMILES which represent a given structure.
   For example, CCO, OCC and C(O)C all specify the structure of ethanol.
+deprecated: 'True'
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: smiles
-domain_of:
-- ChemicalEntity
 range: string
 multivalued: true
 

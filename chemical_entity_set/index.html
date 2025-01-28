@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: chemical_entity_set - NMDC Schema Documentation</title>
+        <title>Slot: chemical_entity_set (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-chemical_entity_set" class="md-skip">
+        <a href="#slot-chemical_entity_set-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: chemical_entity_set
+              Slot: chemical_entity_set (DEPRECATED)
             
           </span>
         </div>
@@ -500,15 +500,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
@@ -577,34 +568,17 @@
   
 
 
-<h1 id="slot-chemical_entity_set">Slot: chemical_entity_set</h1>
+<h1 id="slot-chemical_entity_set-deprecated">Slot: chemical_entity_set  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>This property links a database object to the set of chemical entities within it.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/chemical_entity_set">nmdc:chemical_entity_set</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>chemical_entity_set</strong> [ <a href="../object_set/">object_set</a>]</li>
 </ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Database/">Database</a></td>
-<td>An abstract holder for any set of metadata and data</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>
-<p>Range: <a href="../ChemicalEntity/">ChemicalEntity</a></p>
+<p>Range: <a href="../String/">String</a></p>
 </li>
 <li>
 <p>Multivalued: True</p>
@@ -636,14 +610,14 @@
 <pre><code class="language-yaml">name: chemical_entity_set
 description: This property links a database object to the set of chemical entities
   within it.
+deprecated: Deprecation of the ChemicalEntity class, means deprecation of the chemical_entity_set
+  as well.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 mixins:
 - object_set
 alias: chemical_entity_set
-domain_of:
-- Database
-range: ChemicalEntity
+range: string
 multivalued: true
 inlined: true
 inlined_as_list: true

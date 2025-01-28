@@ -306,9 +306,6 @@
 
   MetaboliteIdentification : metabolite_identified
 
-      MetaboliteIdentification --&gt; "0..1" ChemicalEntity : metabolite_identified
-    click ChemicalEntity href "../ChemicalEntity"
-
   MetaboliteIdentification : type
 
 
@@ -340,7 +337,7 @@
 </tr>
 <tr>
 <td><a href="../metabolite_identified/">metabolite_identified</a></td>
-<td>0..1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
 <td>the specific metabolite identifier</td>
 <td>direct</td>
 </tr>
@@ -446,7 +443,7 @@ attributes:
     owner: MetaboliteIdentification
     domain_of:
     - MetaboliteIdentification
-    range: ChemicalEntity
+    range: string
   type:
     name: type
     description: the class_uri of the class that has been instantiated

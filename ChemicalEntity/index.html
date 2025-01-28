@@ -8,7 +8,7 @@
 <link href="https://microbiomedata.github.io/nmdc-schema/ChemicalEntity/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.5.46" name="generator"/>
-<title>Class: ChemicalEntity - NMDC Schema Documentation</title>
+<title>Class: ChemicalEntity (DEPRECATED) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-chemicalentity">
+<a class="md-skip" href="#class-chemicalentity-deprecated">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: ChemicalEntity
+              Class: ChemicalEntity (DEPRECATED)
             
           </span>
 </div>
@@ -237,13 +237,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#aliases">
 <span class="md-ellipsis">
       Aliases
@@ -328,8 +321,8 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-chemicalentity">Class: ChemicalEntity</h1>
-<p><em>An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states</em></p>
+<h1 id="class-chemicalentity-deprecated">Class: ChemicalEntity  <span style="color: red;"><strong> (DEPRECATED) </strong></span></h1>
+<p><em>An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/ChemicalEntity">nmdc:ChemicalEntity</a></p>
 <div class="mermaid">classDiagram
   class ChemicalEntity
@@ -351,18 +344,12 @@
 
   ChemicalEntity : id
 
-  ChemicalEntity : inchi
-
-  ChemicalEntity : inchi_key
-
   ChemicalEntity : name
 
   ChemicalEntity : relations
 
       ChemicalEntity --&gt; "*" OntologyRelation : relations
     click OntologyRelation href "../OntologyRelation"
-
-  ChemicalEntity : smiles
 
   ChemicalEntity : type
 
@@ -394,24 +381,6 @@
 <td><a href="../chemical_formula/">chemical_formula</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>A generic grouping for molecular formulae and empirical formulae</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../inchi/">inchi</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../inchi_key/">inchi_key</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../smiles/">smiles</a></td>
-<td>* <br/> <a href="../String/">String</a></td>
-<td>A string encoding of a molecular graph, no chiral or isotopic information</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -464,37 +433,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../chemical_entity_set/">chemical_entity_set</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-<tr>
-<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
-<td><a href="../known_as/">known_as</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-<tr>
-<td><a href="../MetaboliteIdentification/">MetaboliteIdentification</a></td>
-<td><a href="../metabolite_identified/">metabolite_identified</a></td>
-<td>range</td>
-<td><a href="./">ChemicalEntity</a></td>
-</tr>
-</tbody>
-</table>
 <h2 id="aliases">Aliases</h2>
 <ul>
 <li>metabolite</li>
@@ -515,28 +453,10 @@
 <p>Instances of this class <em>should</em> have identifiers with one of the following prefixes:</p>
 <ul>
 <li>
-<p>cas</p>
-</li>
-<li>
 <p>CHEBI</p>
 </li>
 <li>
-<p>CHEMBL.COMPOUND</p>
-</li>
-<li>
-<p>DRUGBANK</p>
-</li>
-<li>
-<p>HMDB</p>
-</li>
-<li>
-<p>KEGG.COMPOUND</p>
-</li>
-<li>
-<p>MESH</p>
-</li>
-<li>
-<p>PUBCHEM.COMPOUND</p>
+<p>MS</p>
 </li>
 </ul>
 <h3 id="schema-source">Schema Source</h3>
@@ -564,17 +484,14 @@
 <details>
 <pre><code class="language-yaml">name: ChemicalEntity
 id_prefixes:
-- cas
 - CHEBI
-- CHEMBL.COMPOUND
-- DRUGBANK
-- HMDB
-- KEGG.COMPOUND
-- MESH
-- PUBCHEM.COMPOUND
+- MS
 description: An atom or molecule that can be represented with a chemical formula.
   Include lipids, glycans, natural products, drugs. There may be different terms for
-  distinct acid-base forms, protonation states
+  distinct acid-base forms, protonation states. A chemical entity is a  physical entity
+  that pertains to chemistry or biochemistry.
+deprecated: true; as of Jan 2025, NMDC only needs a handful of chemicals and its use
+  cases can be served via an enumeration rather than supporting a full class.
 comments:
 - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode
   to this class.
@@ -591,9 +508,6 @@ exact_mappings:
 is_a: OntologyClass
 slots:
 - chemical_formula
-- inchi
-- inchi_key
-- smiles
 class_uri: nmdc:ChemicalEntity
 
 </code></pre>
@@ -602,17 +516,14 @@ class_uri: nmdc:ChemicalEntity
 <details>
 <pre><code class="language-yaml">name: ChemicalEntity
 id_prefixes:
-- cas
 - CHEBI
-- CHEMBL.COMPOUND
-- DRUGBANK
-- HMDB
-- KEGG.COMPOUND
-- MESH
-- PUBCHEM.COMPOUND
+- MS
 description: An atom or molecule that can be represented with a chemical formula.
   Include lipids, glycans, natural products, drugs. There may be different terms for
-  distinct acid-base forms, protonation states
+  distinct acid-base forms, protonation states. A chemical entity is a  physical entity
+  that pertains to chemistry or biochemistry.
+deprecated: true; as of Jan 2025, NMDC only needs a handful of chemicals and its use
+  cases can be served via an enumeration rather than supporting a full class.
 comments:
 - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode
   to this class.
@@ -638,41 +549,6 @@ attributes:
     domain_of:
     - ChemicalEntity
     range: string
-  inchi:
-    name: inchi
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: inchi
-    owner: ChemicalEntity
-    domain_of:
-    - ChemicalEntity
-    range: string
-  inchi_key:
-    name: inchi_key
-    notes:
-    - 'key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov
-      K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental
-      testing. J Cheminform. 4:12'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: inchi_key
-    owner: ChemicalEntity
-    domain_of:
-    - ChemicalEntity
-    range: string
-  smiles:
-    name: smiles
-    description: A string encoding of a molecular graph, no chiral or isotopic information.
-      There are usually a large number of valid SMILES which represent a given structure.
-      For example, CCO, OCC and C(O)C all specify the structure of ethanol.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: smiles
-    owner: ChemicalEntity
-    domain_of:
-    - ChemicalEntity
-    range: string
-    multivalued: true
   alternative_names:
     name: alternative_names
     description: A list of alternative names used to refer to the entity. The distinction
