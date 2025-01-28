@@ -155,6 +155,10 @@ test-python:
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
 
+.PHONY: check-dependencies
+check-dependencies:
+	$(RUN) deptry nmdc_schema --known-first-party nmdc_schema
+
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
 
