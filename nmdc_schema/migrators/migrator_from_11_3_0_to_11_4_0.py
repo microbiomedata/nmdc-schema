@@ -14,7 +14,7 @@ class Migrator(MigratorBase):
 
     def set_metab_analysis_category(self, workflow: dict) -> dict:
         r"""
-        If the workflow execution records is of the type "nmdc:MetabolomicsAnalysis" and it has a `has_metabolite_identifications` field,
+        If the workflow execution record is of the type "nmdc:MetabolomicsAnalysis" and it has a `has_metabolite_identifications` field,
         add field `metabolomics_analysis_category` and assign it the value "gc_ms_metabolomics". If the record does not 
         have a `has_metabolite_identifications` field, it is assigned the value "lc_ms_lipidomics".
 
