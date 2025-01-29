@@ -16,6 +16,7 @@ workflow_execution_set:
     was_informed_by: "nmdc:dgms-11-vfzh1754"
     ended_at_time: "2024-12-19 03:09:58"
     version: "1.0.0"
+    metabolomics_analysis_category: lc_ms_lipidomics
 
 data_object_set:
   - id: "nmdc:dobj-11-r3xkmv70"

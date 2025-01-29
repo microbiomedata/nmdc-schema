@@ -11,3 +11,4 @@ has_output:
   - nmdc:dobj-11-123d
   - nmdc:dobj-11-34dj4
 was_informed_by: nmdc:omprc-11-284u7d
+metabolomics_analysis_category: gc_ms_metabolomics
