@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ctg_n90/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisCategoryEnum/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: ctg_n90 - NMDC Schema Documentation</title>
+        <title>Enum: MetabolomicsAnalysisCategoryEnum - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-ctg_n90" class="md-skip">
+        <a href="#enum-metabolomicsanalysiscategoryenum" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: ctg_n90
+              Enum: MetabolomicsAnalysisCategoryEnum
             
           </span>
         </div>
@@ -491,27 +491,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
-      Inheritance
+      Permissible Values
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
+  <a href="#slots" class="md-nav__link">
     <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
+      Slots
     </span>
   </a>
   
@@ -542,15 +533,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#linkml-source" class="md-nav__link">
     <span class="md-ellipsis">
       LinkML Source
@@ -577,76 +559,76 @@
   
 
 
-<h1 id="slot-ctg_n90">Slot: ctg_n90</h1>
-<p><em>Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/ctg_n90">nmdc:ctg_n90</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../metagenome_assembly_parameter/">metagenome_assembly_parameter</a><ul>
-<li><strong>ctg_n90</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-metabolomicsanalysiscategoryenum">Enum: MetabolomicsAnalysisCategoryEnum</h1>
+<p><em>The category of metabolomics analysis being performed.</em></p>
+<p>URI: <a href="./">MetabolomicsAnalysisCategoryEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gc_ms_metabolomics</td>
+<td>None</td>
+<td>A metabolomics analysis that is performed on gas chromatography mass spectrom...</td>
+</tr>
+<tr>
+<td>lc_ms_lipidomics</td>
+<td>None</td>
+<td>A metabolomics analysis that is performed on liquid chromatography mass spect...</td>
+</tr>
+<tr>
+<td>lc_ms_metabolomics</td>
+<td>None</td>
+<td>A metabolomics analysis that is performed on liquid chromatography mass spect...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
 <table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
+<td><a href="../metabolomics_analysis_category/">metabolomics_analysis_category</a></td>
+<td>The category of metabolomics analysis being performed</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../Float/">Float</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: ctg_n90
-description: Given a set of contigs, each with its own length, the N90 count is defined
-  as the smallest number of contigs whose length sum makes up 90% of genome size.
+<pre><code class="language-yaml">name: MetabolomicsAnalysisCategoryEnum
+description: The category of metabolomics analysis being performed.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: metagenome_assembly_parameter
-alias: ctg_n90
-domain_of:
-- MetagenomeAssembly
-- MetatranscriptomeAssembly
-range: float
+permissible_values:
+  gc_ms_metabolomics:
+    text: gc_ms_metabolomics
+    description: A metabolomics analysis that is performed on gas chromatography mass
+      spectrometry data.
+  lc_ms_lipidomics:
+    text: lc_ms_lipidomics
+    description: A metabolomics analysis that is performed on liquid chromatography
+      mass spectrometry data for lipidomics annotation.
+  lc_ms_metabolomics:
+    text: lc_ms_metabolomics
+    description: A metabolomics analysis that is performed on liquid chromatography
+      mass spectrometry data.
 
 </code></pre>
 

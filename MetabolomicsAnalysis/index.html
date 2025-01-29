@@ -340,6 +340,11 @@
 
   MetabolomicsAnalysis : id
 
+  MetabolomicsAnalysis : metabolomics_analysis_category
+
+      MetabolomicsAnalysis --&gt; "1" MetabolomicsAnalysisCategoryEnum : metabolomics_analysis_category
+    click MetabolomicsAnalysisCategoryEnum href "../MetabolomicsAnalysisCategoryEnum"
+
   MetabolomicsAnalysis : name
 
   MetabolomicsAnalysis : processing_institution
@@ -414,6 +419,12 @@
 <td><a href="../uses_calibration/">uses_calibration</a></td>
 <td>0..1 <br/> <a href="../CalibrationInformation/">CalibrationInformation</a></td>
 <td>calibration information is used by a process</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../metabolomics_analysis_category/">metabolomics_analysis_category</a></td>
+<td>1 <br/> <a href="../MetabolomicsAnalysisCategoryEnum/">MetabolomicsAnalysisCategoryEnum</a></td>
+<td>The category of metabolomics analysis being performed</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -568,6 +579,7 @@ is_a: WorkflowExecution
 slots:
 - has_metabolite_identifications
 - uses_calibration
+- metabolomics_analysis_category
 slot_usage:
   id:
     name: id
@@ -631,6 +643,17 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
       interpolated: true
+  metabolomics_analysis_category:
+    name: metabolomics_analysis_category
+    description: The category of metabolomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: metabolomics_analysis_category
+    owner: MetabolomicsAnalysis
+    domain_of:
+    - MetabolomicsAnalysis
+    range: MetabolomicsAnalysisCategoryEnum
+    required: true
   ended_at_time:
     name: ended_at_time
     notes:

@@ -549,6 +549,10 @@
          <lastmod>2025-01-29</lastmod>
     </url>
     <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/MetabolomicsAnalysisCategoryEnum/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Metadata_Documentation_Overview/</loc>
          <lastmod>2025-01-29</lastmod>
     </url>
@@ -2882,6 +2886,10 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/metabolite_identified/</loc>
+         <lastmod>2025-01-29</lastmod>
+    </url>
+    <url>
+         <loc>https://microbiomedata.github.io/nmdc-schema/metabolomics_analysis_category/</loc>
          <lastmod>2025-01-29</lastmod>
     </url>
     <url>
