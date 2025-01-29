@@ -132,7 +132,7 @@ def main():
         collection_names = get_collection_names_for_class_name(class_name)
         formatted_collection_names = [f"`{collection_name}`" for collection_name in collection_names]
         collection_cell = ", ".join(formatted_collection_names)  # if multiple exist, separates them with commas
-        md_table_lines.append(f"| {typecode_cell} | {class_cell} | {collection_cell}")
+        md_table_lines.append(f"| {typecode_cell} | {class_cell} | {collection_cell} |")
 
     # Build the entire Markdown document.
     md_document = make_document(md_table="\n".join(md_table_lines))
