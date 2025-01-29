@@ -560,10 +560,10 @@ enums:
     permissible_values:
       gc_ms_metabolomics:
         description: >-
-          A metabolomics analysis that is performed using gas chromatography mass spectrometry.
+          A metabolomics analysis that is performed on gas chromatography mass spectrometry data.
       lc_ms_lipidomics:
         description: >-
-          A metabolomics analysis that is performed using liquid chromatography mass spectrometry for lipidomics.
+          A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.
       lc_ms_metabolomics:
         description: >-
-          A metabolomics analysis that is performed using liquid chromatography mass spectrometry.
+          A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.

@@ -1,3 +1,4 @@
+# this example is invalid because the records in the workflow execution set do not have a metabolomics_analysis_category value
 workflow_execution_set:
   - id: nmdc:wfmb-99-ABCDEF.1
     name: Metabolomics Analysis Activity for nmdc:wfmb-99-ABCDEF.1
