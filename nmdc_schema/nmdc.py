@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-17T21:04:40
+# Generation date: 2025-01-30T16:05:51
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -84,7 +84,6 @@ GENEPIO = CurieNamespace('GENEPIO', 'http://example.org/UNKNOWN/GENEPIO/')
 GO = CurieNamespace('GO', 'http://purl.obolibrary.org/obo/GO_')
 HMDB = CurieNamespace('HMDB', 'https://bioregistry.io/hmdb:')
 ISA = CurieNamespace('ISA', 'http://example.org/isa/')
-KEGG_COMPOUND = CurieNamespace('KEGG_COMPOUND', 'https://bioregistry.io/kegg.compound:')
 KEGG_MODULE = CurieNamespace('KEGG_MODULE', 'https://bioregistry.io/kegg.module:')
 KEGG_ORTHOLOGY = CurieNamespace('KEGG_ORTHOLOGY', 'https://bioregistry.io/kegg.orthology:')
 KEGG_PATHWAY = CurieNamespace('KEGG_PATHWAY', 'https://bioregistry.io/kegg.pathway:')
@@ -500,7 +499,6 @@ class Database(YAMLRoot):
 
     biosample_set: Optional[Union[Dict[Union[str, BiosampleId], Union[dict, "Biosample"]], List[Union[dict, "Biosample"]]]] = empty_dict()
     calibration_set: Optional[Union[Dict[Union[str, CalibrationInformationId], Union[dict, "CalibrationInformation"]], List[Union[dict, "CalibrationInformation"]]]] = empty_dict()
-    chemical_entity_set: Optional[Union[Dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], List[Union[dict, "ChemicalEntity"]]]] = empty_dict()
     collecting_biosamples_from_site_set: Optional[Union[Dict[Union[str, CollectingBiosamplesFromSiteId], Union[dict, "CollectingBiosamplesFromSite"]], List[Union[dict, "CollectingBiosamplesFromSite"]]]] = empty_dict()
     configuration_set: Optional[Union[Dict[Union[str, ConfigurationId], Union[dict, "Configuration"]], List[Union[dict, "Configuration"]]]] = empty_dict()
     data_generation_set: Optional[Union[Dict[Union[str, DataGenerationId], Union[dict, "DataGeneration"]], List[Union[dict, "DataGeneration"]]]] = empty_dict()
@@ -522,8 +520,6 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="biosample_set", slot_type=Biosample, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="calibration_set", slot_type=CalibrationInformation, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="chemical_entity_set", slot_type=ChemicalEntity, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="collecting_biosamples_from_site_set", slot_type=CollectingBiosamplesFromSite, key_name="id", keyed=True)
 
@@ -717,10 +713,10 @@ class PortionOfSubstance(YAMLRoot):
 
     type: Union[str, URIorCURIE] = None
     final_concentration: Optional[Union[dict, "QuantityValue"]] = None
-    known_as: Optional[Union[str, ChemicalEntityId]] = None
     mass: Optional[Union[dict, "QuantityValue"]] = None
     sample_state_information: Optional[Union[str, "SampleStateEnum"]] = None
     source_concentration: Optional[Union[dict, "QuantityValue"]] = None
+    known_as: Optional[Union[str, "ChemicalEntityEnum"]] = None
     substance_role: Optional[Union[str, "SubstanceRoleEnum"]] = None
     volume: Optional[Union[dict, "QuantityValue"]] = None
 
@@ -732,9 +728,6 @@ class PortionOfSubstance(YAMLRoot):
         if self.final_concentration is not None and not isinstance(self.final_concentration, QuantityValue):
             self.final_concentration = QuantityValue(**as_dict(self.final_concentration))
 
-        if self.known_as is not None and not isinstance(self.known_as, ChemicalEntityId):
-            self.known_as = ChemicalEntityId(self.known_as)
-
         if self.mass is not None and not isinstance(self.mass, QuantityValue):
             self.mass = QuantityValue(**as_dict(self.mass))
 
@@ -743,6 +736,9 @@ class PortionOfSubstance(YAMLRoot):
 
         if self.source_concentration is not None and not isinstance(self.source_concentration, QuantityValue):
             self.source_concentration = QuantityValue(**as_dict(self.source_concentration))
+
+        if self.known_as is not None and not isinstance(self.known_as, ChemicalEntityEnum):
+            self.known_as = ChemicalEntityEnum(self.known_as)
 
         if self.substance_role is not None and not isinstance(self.substance_role, SubstanceRoleEnum):
             self.substance_role = SubstanceRoleEnum(self.substance_role)
@@ -870,7 +866,7 @@ class MetaboliteIdentification(YAMLRoot):
     type: Union[str, URIorCURIE] = None
     alternative_identifiers: Optional[Union[Union[str, URIorCURIE], List[Union[str, URIorCURIE]]]] = empty_list()
     highest_similarity_score: Optional[float] = None
-    metabolite_identified: Optional[Union[str, ChemicalEntityId]] = None
+    metabolite_identified: Optional[str] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.type):
@@ -884,8 +880,8 @@ class MetaboliteIdentification(YAMLRoot):
         if self.highest_similarity_score is not None and not isinstance(self.highest_similarity_score, float):
             self.highest_similarity_score = float(self.highest_similarity_score)
 
-        if self.metabolite_identified is not None and not isinstance(self.metabolite_identified, ChemicalEntityId):
-            self.metabolite_identified = ChemicalEntityId(self.metabolite_identified)
+        if self.metabolite_identified is not None and not isinstance(self.metabolite_identified, str):
+            self.metabolite_identified = str(self.metabolite_identified)
 
         super().__post_init__(**kwargs)
 
@@ -1438,7 +1434,8 @@ class EnvironmentalMaterialTerm(OntologyClass):
 class ChemicalEntity(OntologyClass):
     """
     An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products,
-    drugs. There may be different terms for distinct acid-base forms, protonation states
+    drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a
+    physical entity that pertains to chemistry or biochemistry.
     """
     _inherited_slots: ClassVar[List[str]] = []
 
@@ -1450,9 +1447,6 @@ class ChemicalEntity(OntologyClass):
     id: Union[str, ChemicalEntityId] = None
     type: Union[str, URIorCURIE] = None
     chemical_formula: Optional[str] = None
-    inchi: Optional[str] = None
-    inchi_key: Optional[str] = None
-    smiles: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1462,16 +1456,6 @@ class ChemicalEntity(OntologyClass):
 
         if self.chemical_formula is not None and not isinstance(self.chemical_formula, str):
             self.chemical_formula = str(self.chemical_formula)
-
-        if self.inchi is not None and not isinstance(self.inchi, str):
-            self.inchi = str(self.inchi)
-
-        if self.inchi_key is not None and not isinstance(self.inchi_key, str):
-            self.inchi_key = str(self.inchi_key)
-
-        if not isinstance(self.smiles, list):
-            self.smiles = [self.smiles] if self.smiles is not None else []
-        self.smiles = [v if isinstance(v, str) else str(v) for v in self.smiles]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -6448,6 +6432,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]] = None
+    metabolomics_analysis_category: Union[str, "MetabolomicsAnalysisCategoryEnum"] = None
     has_metabolite_identifications: Optional[Union[Union[dict, MetaboliteIdentification], List[Union[dict, MetaboliteIdentification]]]] = empty_list()
     uses_calibration: Optional[Union[str, CalibrationInformationId]] = None
     was_informed_by: Optional[Union[str, DataGenerationId]] = None
@@ -6457,6 +6442,11 @@ class MetabolomicsAnalysis(WorkflowExecution):
             self.MissingRequiredField("id")
         if not isinstance(self.id, MetabolomicsAnalysisId):
             self.id = MetabolomicsAnalysisId(self.id)
+
+        if self._is_empty(self.metabolomics_analysis_category):
+            self.MissingRequiredField("metabolomics_analysis_category")
+        if not isinstance(self.metabolomics_analysis_category, MetabolomicsAnalysisCategoryEnum):
+            self.metabolomics_analysis_category = MetabolomicsAnalysisCategoryEnum(self.metabolomics_analysis_category)
 
         if not isinstance(self.has_metabolite_identifications, list):
             self.has_metabolite_identifications = [self.has_metabolite_identifications] if self.has_metabolite_identifications is not None else []
@@ -6872,6 +6862,25 @@ class MetaproteomicsAnalysisCategoryEnum(EnumDefinitionImpl):
         description="The category of metaproteomics analysis being performed.",
     )
 
+class MetabolomicsAnalysisCategoryEnum(EnumDefinitionImpl):
+    """
+    The category of metabolomics analysis being performed.
+    """
+    gc_ms_metabolomics = PermissibleValue(
+        text="gc_ms_metabolomics",
+        description="A metabolomics analysis that is performed on gas chromatography mass spectrometry data.")
+    lc_ms_lipidomics = PermissibleValue(
+        text="lc_ms_lipidomics",
+        description="""A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.""")
+    lc_ms_metabolomics = PermissibleValue(
+        text="lc_ms_metabolomics",
+        description="A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.")
+
+    _defn = EnumDefinition(
+        name="MetabolomicsAnalysisCategoryEnum",
+        description="The category of metabolomics analysis being performed.",
+    )
+
 class BinQualityEnum(EnumDefinitionImpl):
 
     HQ = PermissibleValue(
@@ -6973,6 +6982,72 @@ class SampleStateEnum(EnumDefinitionImpl):
     _defn = EnumDefinition(
         name="SampleStateEnum",
     )
+
+class ChemicalEntityEnum(EnumDefinitionImpl):
+
+    acetonitrile = PermissibleValue(
+        text="acetonitrile",
+        meaning=CHEBI["38472"])
+    alphaLP = PermissibleValue(
+        text="alphaLP",
+        meaning=EC["3.4.21.12"])
+    ammonium_acetate = PermissibleValue(
+        text="ammonium_acetate",
+        meaning=CHEBI["62947"])
+    ammonium_bicarbonate = PermissibleValue(
+        text="ammonium_bicarbonate",
+        meaning=CHEBI["184335"])
+    chloroform = PermissibleValue(
+        text="chloroform",
+        meaning=CHEBI["35255"])
+    chymotrypsin = PermissibleValue(
+        text="chymotrypsin",
+        meaning=MS["1001306"])
+    formic_acid = PermissibleValue(
+        text="formic_acid",
+        meaning=CHEBI["30751"])
+    glucose = PermissibleValue(
+        text="glucose",
+        meaning=CHEBI["17234"])
+    isopropyl_alcohol = PermissibleValue(
+        text="isopropyl_alcohol",
+        meaning=CHEBI["17824"])
+    methanol = PermissibleValue(
+        text="methanol",
+        meaning=CHEBI["17790"])
+    trypsin = PermissibleValue(
+        text="trypsin",
+        meaning=MS["1001251"])
+    water = PermissibleValue(
+        text="water",
+        meaning=CHEBI["15377"])
+
+    _defn = EnumDefinition(
+        name="ChemicalEntityEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "Arg-C",
+            PermissibleValue(
+                text="Arg-C",
+                meaning=MS["1001303"]))
+        setattr(cls, "Asp-N",
+            PermissibleValue(
+                text="Asp-N",
+                meaning=MS["1001304"]))
+        setattr(cls, "Glu-C",
+            PermissibleValue(
+                text="Glu-C",
+                meaning=MS["1001917"]))
+        setattr(cls, "Lys-C",
+            PermissibleValue(
+                text="Lys-C",
+                meaning=MS["1001309"]))
+        setattr(cls, "Lys-N",
+            PermissibleValue(
+                text="Lys-N",
+                meaning=MS["1003093"]))
 
 class CreditEnum(EnumDefinitionImpl):
 
@@ -9996,7 +10071,7 @@ slots.object_set = Slot(uri=NMDC.object_set, name="object_set", curie=NMDC.curie
                    model_uri=NMDC.object_set, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.chemical_entity_set = Slot(uri=NMDC.chemical_entity_set, name="chemical_entity_set", curie=NMDC.curie('chemical_entity_set'),
-                   model_uri=NMDC.chemical_entity_set, domain=None, range=Optional[Union[Dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], List[Union[dict, ChemicalEntity]]]])
+                   model_uri=NMDC.chemical_entity_set, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.ontology_class_set = Slot(uri=NMDC.ontology_class_set, name="ontology_class_set", curie=NMDC.curie('ontology_class_set'),
                    model_uri=NMDC.ontology_class_set, domain=None, range=Optional[Union[Dict[Union[str, OntologyClassId], Union[dict, OntologyClass]], List[Union[dict, OntologyClass]]]])
@@ -10163,6 +10238,9 @@ slots.start = Slot(uri=NMDC.start, name="start", curie=NMDC.curie('start'),
 
 slots.metaproteomics_analysis_category = Slot(uri=NMDC.metaproteomics_analysis_category, name="metaproteomics_analysis_category", curie=NMDC.curie('metaproteomics_analysis_category'),
                    model_uri=NMDC.metaproteomics_analysis_category, domain=None, range=Union[str, "MetaproteomicsAnalysisCategoryEnum"])
+
+slots.metabolomics_analysis_category = Slot(uri=NMDC.metabolomics_analysis_category, name="metabolomics_analysis_category", curie=NMDC.curie('metabolomics_analysis_category'),
+                   model_uri=NMDC.metabolomics_analysis_category, domain=None, range=Union[str, "MetabolomicsAnalysisCategoryEnum"])
 
 slots.metagenome_assembly_parameter = Slot(uri=NMDC.metagenome_assembly_parameter, name="metagenome_assembly_parameter", curie=NMDC.curie('metagenome_assembly_parameter'),
                    model_uri=NMDC.metagenome_assembly_parameter, domain=None, range=Optional[str])
@@ -10344,9 +10422,6 @@ slots.mass = Slot(uri=NMDC.mass, name="mass", curie=NMDC.curie('mass'),
 slots.substances_used = Slot(uri=NMDC.substances_used, name="substances_used", curie=NMDC.curie('substances_used'),
                    model_uri=NMDC.substances_used, domain=None, range=Optional[Union[Union[dict, PortionOfSubstance], List[Union[dict, PortionOfSubstance]]]])
 
-slots.known_as = Slot(uri=NMDC.known_as, name="known_as", curie=NMDC.curie('known_as'),
-                   model_uri=NMDC.known_as, domain=None, range=Optional[Union[str, ChemicalEntityId]])
-
 slots.substance_role = Slot(uri=NMDC.substance_role, name="substance_role", curie=NMDC.curie('substance_role'),
                    model_uri=NMDC.substance_role, domain=None, range=Optional[Union[str, "SubstanceRoleEnum"]])
 
@@ -10426,7 +10501,7 @@ slots.highest_similarity_score = Slot(uri=NMDC.highest_similarity_score, name="h
                    model_uri=NMDC.highest_similarity_score, domain=None, range=Optional[float])
 
 slots.metabolite_identified = Slot(uri=NMDC.metabolite_identified, name="metabolite_identified", curie=NMDC.curie('metabolite_identified'),
-                   model_uri=NMDC.metabolite_identified, domain=None, range=Optional[Union[str, ChemicalEntityId]])
+                   model_uri=NMDC.metabolite_identified, domain=None, range=Optional[str])
 
 slots.chemical_formula = Slot(uri=NMDC.chemical_formula, name="chemical_formula", curie=NMDC.curie('chemical_formula'),
                    model_uri=NMDC.chemical_formula, domain=None, range=Optional[str])
@@ -10445,6 +10520,9 @@ slots.volume = Slot(uri=NMDC.volume, name="volume", curie=NMDC.curie('volume'),
 
 slots.sample_state_information = Slot(uri=NMDC.sample_state_information, name="sample_state_information", curie=NMDC.curie('sample_state_information'),
                    model_uri=NMDC.sample_state_information, domain=None, range=Optional[Union[str, "SampleStateEnum"]])
+
+slots.known_as = Slot(uri=NMDC.known_as, name="known_as", curie=NMDC.curie('known_as'),
+                   model_uri=NMDC.known_as, domain=None, range=Optional[Union[str, "ChemicalEntityEnum"]])
 
 slots.biomaterial_purity = Slot(uri=NMDC['attribute_values/biomaterial_purity'], name="biomaterial_purity", curie=NMDC.curie('attribute_values/biomaterial_purity'),
                    model_uri=NMDC.biomaterial_purity, domain=None, range=Optional[Union[dict, QuantityValue]])

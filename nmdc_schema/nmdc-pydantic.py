@@ -766,6 +766,26 @@ class SampleStateEnum(str, Enum):
     gas = "gas"
 
 
+class ChemicalEntityEnum(str, Enum):
+    acetonitrile = "acetonitrile"
+    alphaLP = "alphaLP"
+    ammonium_acetate = "ammonium_acetate"
+    ammonium_bicarbonate = "ammonium_bicarbonate"
+    Arg_C = "Arg-C"
+    Asp_N = "Asp-N"
+    chloroform = "chloroform"
+    chymotrypsin = "chymotrypsin"
+    formic_acid = "formic_acid"
+    glucose = "glucose"
+    Glu_C = "Glu-C"
+    isopropyl_alcohol = "isopropyl_alcohol"
+    Lys_C = "Lys-C"
+    Lys_N = "Lys-N"
+    methanol = "methanol"
+    trypsin = "trypsin"
+    water = "water"
+
+
 class ArchStrucEnum(str, Enum):
     building = "building"
     shed = "shed"
@@ -2347,6 +2367,18 @@ class MetaproteomicsAnalysisCategoryEnum(str, Enum):
     in_silico_metagenome = "in_silico_metagenome"
 
 
+class MetabolomicsAnalysisCategoryEnum(str, Enum):
+    """
+    The category of metabolomics analysis being performed.
+    """
+    # A metabolomics analysis that is performed on gas chromatography mass spectrometry data.
+    gc_ms_metabolomics = "gc_ms_metabolomics"
+    # A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.
+    lc_ms_lipidomics = "lc_ms_lipidomics"
+    # A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.
+    lc_ms_metabolomics = "lc_ms_metabolomics"
+
+
 
 class EukEval(ConfiguredBaseModel):
     """
@@ -2490,9 +2522,6 @@ class Database(ConfiguredBaseModel):
     calibration_set: Optional[List[CalibrationInformation]] = Field(None, description="""This property links a database object to the set of calibrations within it.""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
-    chemical_entity_set: Optional[List[ChemicalEntity]] = Field(None, description="""This property links a database object to the set of chemical entities within it.""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_entity_set',
-         'domain_of': ['Database'],
-         'mixins': ['object_set']} })
     collecting_biosamples_from_site_set: Optional[List[CollectingBiosamplesFromSite]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'collecting_biosamples_from_site_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
@@ -2611,7 +2640,6 @@ class PortionOfSubstance(ConfiguredBaseModel):
     final_concentration: Optional[QuantityValue] = Field(None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration',
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
-    known_as: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
     mass: Optional[QuantityValue] = Field(None, title="mass", description="""A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
          'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
          'exact_mappings': ['PATO:0000125']} })
@@ -2619,6 +2647,7 @@ class PortionOfSubstance(ConfiguredBaseModel):
     source_concentration: Optional[QuantityValue] = Field(None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A""", json_schema_extra = { "linkml_meta": {'alias': 'source_concentration',
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
+    known_as: Optional[ChemicalEntityEnum] = Field(None, description="""The substance from which a portion was taken.""", json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
     substance_role: Optional[SubstanceRoleEnum] = Field(None, description="""The role of a substance in a process""", json_schema_extra = { "linkml_meta": {'alias': 'substance_role', 'domain_of': ['PortionOfSubstance']} })
     type: Literal["https://w3id.org/nmdc/PortionOfSubstance","nmdc:PortionOfSubstance"] = Field("nmdc:PortionOfSubstance", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
@@ -3793,7 +3822,7 @@ class EnvironmentalMaterialTerm(OntologyClass):
 
 class ChemicalEntity(OntologyClass):
     """
-    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states
+    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['metabolite',
                      'chemical substance',
@@ -3802,26 +3831,15 @@ class ChemicalEntity(OntologyClass):
          'class_uri': 'nmdc:ChemicalEntity',
          'comments': ['As with the parent OntologyClass, we will not assign an nmdc id '
                       'pattern or typecode to this class.'],
+         'deprecated': 'true; as of Jan 2025, NMDC only needs a handful of chemicals '
+                       'and its use cases can be served via an enumeration rather than '
+                       'supporting a full class.',
          'exact_mappings': ['biolink:ChemicalSubstance'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'id_prefixes': ['cas',
-                         'CHEBI',
-                         'CHEMBL.COMPOUND',
-                         'DRUGBANK',
-                         'HMDB',
-                         'KEGG.COMPOUND',
-                         'MESH',
-                         'PUBCHEM.COMPOUND'],
+         'id_prefixes': ['CHEBI', 'MS'],
          'see_also': ['https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html']})
 
     chemical_formula: Optional[str] = Field(None, description="""A generic grouping for molecular formulae and empirical formulae""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_formula', 'domain_of': ['ChemicalEntity']} })
-    inchi: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'inchi', 'domain_of': ['ChemicalEntity']} })
-    inchi_key: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'inchi_key',
-         'domain_of': ['ChemicalEntity'],
-         'notes': ['key set to false due to rare collisions: Pletnev I, Erin A, '
-                   'McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey '
-                   'collision resistance: an experimental testing. J Cheminform. 4:12']} })
-    smiles: Optional[List[str]] = Field(None, description="""A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.""", json_schema_extra = { "linkml_meta": {'alias': 'smiles', 'domain_of': ['ChemicalEntity']} })
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
@@ -18796,6 +18814,8 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'domain_of': ['MetabolomicsAnalysis', 'NomAnalysis'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'}} })
+    metabolomics_analysis_category: MetabolomicsAnalysisCategoryEnum = Field(..., description="""The category of metabolomics analysis being performed.""", json_schema_extra = { "linkml_meta": {'alias': 'metabolomics_analysis_category',
+         'domain_of': ['MetabolomicsAnalysis']} })
     ended_at_time: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'ended_at_time',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:endedAtTime'],
