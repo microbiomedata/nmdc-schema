@@ -38,6 +38,12 @@ data_object_set:
   file_size_bytes: 1818624
   type: nmdc:DataObject
   data_object_type: Reference Calibration File
+- id: nmdc:dobj-13-vws2zc98
+  name: Froze_Core_2015_S1_20_30_19_Metab.cdf
+  description: Full scan GC-MS raw data file
+  file_size_bytes: 1818624
+  type: nmdc:DataObject
+  data_object_type: GC-MS Raw Data
 workflow_execution_set:
 - type: nmdc:MetabolomicsAnalysis
   has_input:
