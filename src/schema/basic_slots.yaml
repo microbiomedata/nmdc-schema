@@ -964,6 +964,9 @@ enums:
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
 
+      GC-MS Raw Data:
+        description: Gas chromatography-mass spectrometry raw data, full scan mode.
+
       Configuration toml:
         description: >-
           A configuration toml file used by various programs to store settings that are specific to their
