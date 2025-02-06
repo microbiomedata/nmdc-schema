@@ -8,7 +8,7 @@
 <link href="https://microbiomedata.github.io/nmdc-schema/ProtocolExecution/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.5.46" name="generator"/>
-<title>Class: ProtocolExecution - NMDC Schema Documentation</title>
+<title>Class: ProtocolExecution (DEPRECATED) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.6f8fc17f.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-protocolexecution">
+<a class="md-skip" href="#class-protocolexecution-deprecated">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: ProtocolExecution
+              Class: ProtocolExecution (DEPRECATED)
             
           </span>
 </div>
@@ -237,13 +237,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#usages">
-<span class="md-ellipsis">
-      Usages
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -300,7 +293,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-protocolexecution">Class: ProtocolExecution</h1>
+<h1 id="class-protocolexecution-deprecated">Class: ProtocolExecution  <span style="color: red;"><strong> (DEPRECATED) </strong></span></h1>
 <p><em>A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/ProtocolExecution">nmdc:ProtocolExecution</a></p>
 <div class="mermaid">classDiagram
@@ -489,25 +482,6 @@
 </tr>
 </tbody>
 </table>
-<h2 id="usages">Usages</h2>
-<table>
-<thead>
-<tr>
-<th>used by</th>
-<th>used in</th>
-<th>type</th>
-<th>used</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../protocol_execution_set/">protocol_execution_set</a></td>
-<td>range</td>
-<td><a href="./">ProtocolExecution</a></td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -535,6 +509,7 @@
 <pre><code class="language-yaml">name: ProtocolExecution
 description: A PlannedProces that has PlannedProcess parts. Can be used to represent
   the case of someone following a Protocol.
+deprecated: not used, not fulfilling intended purpose https://github.com/microbiomedata/nmdc-schema/issues/2336
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: PlannedProcess
 slots:
@@ -573,6 +548,7 @@ class_uri: nmdc:ProtocolExecution
 <pre><code class="language-yaml">name: ProtocolExecution
 description: A PlannedProces that has PlannedProcess parts. Can be used to represent
   the case of someone following a Protocol.
+deprecated: not used, not fulfilling intended purpose https://github.com/microbiomedata/nmdc-schema/issues/2336
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: PlannedProcess
 slot_usage:
@@ -603,6 +579,7 @@ attributes:
   has_process_parts:
     name: has_process_parts
     description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     list_elements_ordered: true
@@ -618,6 +595,7 @@ attributes:
       interpolated: true
   protocol_execution_category:
     name: protocol_execution_category
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: protocol_execution_category

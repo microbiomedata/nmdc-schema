@@ -370,11 +370,6 @@
       Database --&gt; "*" ProcessedSample : processed_sample_set
     click ProcessedSample href "../ProcessedSample"
 
-  Database : protocol_execution_set
-
-      Database --&gt; "*" ProtocolExecution : protocol_execution_set
-    click ProtocolExecution href "../ProtocolExecution"
-
   Database : storage_process_set
 
       Database --&gt; "*" StorageProcess : storage_process_set
@@ -490,12 +485,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../protocol_execution_set/">protocol_execution_set</a></td>
-<td>* <br/> <a href="../ProtocolExecution/">ProtocolExecution</a></td>
-<td>This property links a database object to the set of protocol executions withi...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../storage_process_set/">storage_process_set</a></td>
 <td>* <br/> <a href="../StorageProcess/">StorageProcess</a></td>
 <td>This property links a database object to the set of storage processes within ...</td>
@@ -567,7 +556,6 @@ slots:
 - manifest_set
 - material_processing_set
 - processed_sample_set
-- protocol_execution_set
 - storage_process_set
 - study_set
 - workflow_execution_set
@@ -788,21 +776,6 @@ attributes:
     domain_of:
     - Database
     range: ProcessedSample
-    multivalued: true
-    inlined_as_list: true
-  protocol_execution_set:
-    name: protocol_execution_set
-    description: This property links a database object to the set of protocol executions
-      within it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    mixins:
-    - object_set
-    alias: protocol_execution_set
-    owner: Database
-    domain_of:
-    - Database
-    range: ProtocolExecution
     multivalued: true
     inlined_as_list: true
   storage_process_set:
