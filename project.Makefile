@@ -159,7 +159,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections instrument_set \
 		--selected-collections material_processing_set \
 		--selected-collections processed_sample_set \
-		--selected-collections protocol_execution_set \
 		--selected-collections storage_process_set \
 		--selected-collections study_set \
 		--selected-collections workflow_execution_set \

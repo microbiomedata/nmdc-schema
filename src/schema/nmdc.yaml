@@ -349,7 +349,6 @@ classes:
       - manifest_set
       - material_processing_set
       - processed_sample_set
-      - protocol_execution_set
       - storage_process_set
       - study_set
       - workflow_execution_set
@@ -503,6 +502,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$"
           interpolated: true
         description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
+    deprecated: "not used, not fulfilling intended purpose https://github.com/microbiomedata/nmdc-schema/issues/2336"
 
   SubSamplingProcess:
     class_uri: 'nmdc:SubSamplingProcess'
@@ -1239,6 +1239,7 @@ slots:
     mixins: object_set
     range: ProtocolExecution
     description: This property links a database object to the set of protocol executions within it.
+    deprecated: "not used https://github.com/microbiomedata/nmdc-schema/issues/2336"
 
   storage_process_set:
     mixins: object_set
@@ -1280,6 +1281,7 @@ slots:
   protocol_execution_category:
     range: ProtocolCategoryEnum
     required: true
+    deprecated: "not used https://github.com/microbiomedata/nmdc-schema/issues/2336"
 
   has_process_parts:
     range: PlannedProcess
@@ -1287,6 +1289,7 @@ slots:
     required: true
     multivalued: true
     list_elements_ordered: true
+    deprecated: "not used https://github.com/microbiomedata/nmdc-schema/issues/2336"
 
   filter_material:
     description: "A porous material on which solid particles present in air or other fluid which flows through it are largely caught and retained."
