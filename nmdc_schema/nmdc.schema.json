@@ -5441,7 +5441,8 @@
                 "SIP",
                 "SFA",
                 "FICUS",
-                "NEON"
+                "NEON",
+                "BRC"
             ],
             "title": "BiosampleCategoryEnum",
             "type": "string"
@@ -6870,16 +6871,6 @@
                         "null"
                     ]
                 },
-                "protocol_execution_set": {
-                    "description": "This property links a database object to the set of protocol executions within it.",
-                    "items": {
-                        "$ref": "#/$defs/ProtocolExecution"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "storage_process_set": {
                     "description": "This property links a database object to the set of storage processes within it.",
                     "items": {
@@ -8016,6 +8007,7 @@
                 "Annotation Statistics",
                 "Direct Infusion FT ICR-MS Raw Data",
                 "LC-DDA-MS/MS Raw Data",
+                "GC-MS Raw Data",
                 "Configuration toml",
                 "LC-MS Lipidomics Results",
                 "LC-MS Lipidomics Processed Data",
@@ -15744,16 +15736,6 @@
             "description": "This property links a database object to the set of processed samples within it.",
             "items": {
                 "$ref": "#/$defs/ProcessedSample"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "protocol_execution_set": {
-            "description": "This property links a database object to the set of protocol executions within it.",
-            "items": {
-                "$ref": "#/$defs/ProtocolExecution"
             },
             "type": [
                 "array",

@@ -740,6 +740,8 @@ class BiosampleCategoryEnum(str, Enum):
     Department_of_Energy_Office_of_Science_Biological_and_Environmental_Research_Program_Laboratory_Science_Focus_Areas = "SFA"
     Facilities_Integrating_Collaborations_for_User_Science = "FICUS"
     National_Science_FoundationAPOSTROPHEs_National_Ecological_Observatory_Network = "NEON"
+    # Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.
+    Bioenergy_Research_Centers = "BRC"
 
 
 class SubstanceRoleEnum(str, Enum):
@@ -2200,6 +2202,8 @@ class FileTypeEnum(str, Enum):
     Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
     # Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
     LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
+    # Gas chromatography-mass spectrometry raw data, full scan mode.
+    GC_MS_Raw_Data = "GC-MS Raw Data"
     # A configuration toml file used by various programs to store settings that are specific to their respective software.
     Configuration_toml = "Configuration toml"
     # LC-MS-based lipidomics analysis results table
@@ -2550,9 +2554,6 @@ class Database(ConfiguredBaseModel):
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
     processed_sample_set: Optional[List[ProcessedSample]] = Field(None, description="""This property links a database object to the set of processed samples within it.""", json_schema_extra = { "linkml_meta": {'alias': 'processed_sample_set',
-         'domain_of': ['Database'],
-         'mixins': ['object_set']} })
-    protocol_execution_set: Optional[List[ProtocolExecution]] = Field(None, description="""This property links a database object to the set of protocol executions within it.""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_execution_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
     storage_process_set: Optional[List[StorageProcess]] = Field(None, description="""This property links a database object to the set of storage processes within it.""", json_schema_extra = { "linkml_meta": {'alias': 'storage_process_set',
@@ -11922,6 +11923,8 @@ class ProtocolExecution(PlannedProcess):
     A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProtocolExecution',
+         'deprecated': 'not used, not fulfilling intended purpose '
+                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
@@ -11947,11 +11950,16 @@ class ProtocolExecution(PlannedProcess):
                                                       'syntax': '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'}}}})
 
     has_process_parts: List[str] = Field(..., description="""The MaterialProcessing steps that are discrete parts of the ProtocolExecution.""", json_schema_extra = { "linkml_meta": {'alias': 'has_process_parts',
+         'deprecated': 'not used '
+                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
          'domain_of': ['ProtocolExecution'],
          'list_elements_ordered': True,
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'}} })
-    protocol_execution_category: ProtocolCategoryEnum = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'protocol_execution_category', 'domain_of': ['ProtocolExecution']} })
+    protocol_execution_category: ProtocolCategoryEnum = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'protocol_execution_category',
+         'deprecated': 'not used '
+                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
+         'domain_of': ['ProtocolExecution']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
