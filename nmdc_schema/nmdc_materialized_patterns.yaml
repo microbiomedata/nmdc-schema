@@ -1018,6 +1018,13 @@ enums:
         text: NEON
         meaning: https://www.neonscience.org
         title: National Science Foundation's National Ecological Observatory Network
+      BRC:
+        text: BRC
+        description: Bioenergy Research Centers funded by the Biological Systems Science
+          Division of the U.S. Department of Energy's Biological and Environmental
+          Research Program.
+        meaning: https://www.genomicscience.energy.gov/bioenergy-research-centers/
+        title: Bioenergy Research Centers
   SubstanceRoleEnum:
     name: SubstanceRoleEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4201,6 +4208,9 @@ enums:
         text: LC-DDA-MS/MS Raw Data
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2
           binary instrument file
+      GC-MS Raw Data:
+        text: GC-MS Raw Data
+        description: Gas chromatography-mass spectrometry raw data, full scan mode.
       Configuration toml:
         text: Configuration toml
         description: A configuration toml file used by various programs to store settings
@@ -4975,6 +4985,7 @@ slots:
     name: protocol_execution_set
     description: This property links a database object to the set of protocol executions
       within it.
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
@@ -5034,12 +5045,14 @@ slots:
     range: QuantityValue
   protocol_execution_category:
     name: protocol_execution_category
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     range: ProtocolCategoryEnum
     required: true
   has_process_parts:
     name: has_process_parts
     description: A list of process parts that make up a protocol.
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     list_elements_ordered: true
     range: PlannedProcess
@@ -19478,7 +19491,6 @@ classes:
     - manifest_set
     - material_processing_set
     - processed_sample_set
-    - protocol_execution_set
     - storage_process_set
     - study_set
     - workflow_execution_set
@@ -19641,6 +19653,7 @@ classes:
     name: ProtocolExecution
     description: A PlannedProces that has PlannedProcess parts. Can be used to represent
       the case of someone following a Protocol.
+    deprecated: not used, not fulfilling intended purpose https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: PlannedProcess
     slots:

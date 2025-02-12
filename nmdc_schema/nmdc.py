@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-01-30T16:05:51
+# Generation date: 2025-02-12T08:47:56
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -511,7 +511,6 @@ class Database(YAMLRoot):
     manifest_set: Optional[Union[Dict[Union[str, ManifestId], Union[dict, "Manifest"]], List[Union[dict, "Manifest"]]]] = empty_dict()
     material_processing_set: Optional[Union[Dict[Union[str, MaterialProcessingId], Union[dict, "MaterialProcessing"]], List[Union[dict, "MaterialProcessing"]]]] = empty_dict()
     processed_sample_set: Optional[Union[Dict[Union[str, ProcessedSampleId], Union[dict, "ProcessedSample"]], List[Union[dict, "ProcessedSample"]]]] = empty_dict()
-    protocol_execution_set: Optional[Union[Dict[Union[str, ProtocolExecutionId], Union[dict, "ProtocolExecution"]], List[Union[dict, "ProtocolExecution"]]]] = empty_dict()
     storage_process_set: Optional[Union[Dict[Union[str, StorageProcessId], Union[dict, "StorageProcess"]], List[Union[dict, "StorageProcess"]]]] = empty_dict()
     study_set: Optional[Union[Dict[Union[str, StudyId], Union[dict, "Study"]], List[Union[dict, "Study"]]]] = empty_dict()
     workflow_execution_set: Optional[Union[Dict[Union[str, WorkflowExecutionId], Union[dict, "WorkflowExecution"]], List[Union[dict, "WorkflowExecution"]]]] = empty_dict()
@@ -550,8 +549,6 @@ class Database(YAMLRoot):
         self._normalize_inlined_as_list(slot_name="material_processing_set", slot_type=MaterialProcessing, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="processed_sample_set", slot_type=ProcessedSample, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="protocol_execution_set", slot_type=ProtocolExecution, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="storage_process_set", slot_type=StorageProcess, key_name="id", keyed=True)
 
@@ -6932,6 +6929,10 @@ class BiosampleCategoryEnum(EnumDefinitionImpl):
     NEON = PermissibleValue(
         text="NEON",
         meaning=None)
+    BRC = PermissibleValue(
+        text="BRC",
+        description="""Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.""",
+        meaning=None)
 
     _defn = EnumDefinition(
         name="BiosampleCategoryEnum",
@@ -7688,6 +7689,10 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="LC-DDA-MS/MS Raw Data",
                 description="Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file"))
+        setattr(cls, "GC-MS Raw Data",
+            PermissibleValue(
+                text="GC-MS Raw Data",
+                description="Gas chromatography-mass spectrometry raw data, full scan mode."))
         setattr(cls, "Configuration toml",
             PermissibleValue(
                 text="Configuration toml",
