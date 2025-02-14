@@ -1,3 +1,4 @@
 NEON sequencingMethod	NMDC instrument_set id
 NextSeq550	nmdc:inst-14-xz5tb342
 Illumina HiSeq	nmdc:inst-14-79zxap02
+Illumina NovaSeq 6000	nmdc:inst-14-mr4r2w09
