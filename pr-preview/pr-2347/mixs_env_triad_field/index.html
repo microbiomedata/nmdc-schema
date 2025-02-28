@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ctg_n90/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/mixs_env_triad_field/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: ctg_n90 - NMDC Schema Documentation</title>
+        <title>Slot: mixs_env_triad_field - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-ctg_n90" class="md-skip">
+        <a href="#slot-mixs_env_triad_field" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: ctg_n90
+              Slot: mixs_env_triad_field
             
           </span>
         </div>
@@ -500,15 +500,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
@@ -577,41 +568,20 @@
   
 
 
-<h1 id="slot-ctg_n90">Slot: ctg_n90</h1>
-<p><em>Given a set of contigs, each with its own length, the N90 count is defined as the smallest number of contigs whose length sum makes up 90% of genome size.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/ctg_n90">nmdc:ctg_n90</a></p>
+<h1 id="slot-mixs_env_triad_field">Slot: mixs_env_triad_field</h1>
+<p>URI: <a href="https://w3id.org/nmdc/mixs_env_triad_field">nmdc:mixs_env_triad_field</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
-<li><a href="../metagenome_assembly_parameter/">metagenome_assembly_parameter</a><ul>
-<li><strong>ctg_n90</strong></li>
+<li><strong>mixs_env_triad_field</strong><ul>
+<li><a href="../env_broad_scale/">env_broad_scale</a></li>
+<li><a href="../env_local_scale/">env_local_scale</a></li>
+<li><a href="../env_medium/">env_medium</a></li>
 </ul>
 </li>
 </ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../Float/">Float</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -636,17 +606,11 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: ctg_n90
-description: Given a set of contigs, each with its own length, the N90 count is defined
-  as the smallest number of contigs whose length sum makes up 90% of genome size.
+<pre><code class="language-yaml">name: mixs_env_triad_field
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: metagenome_assembly_parameter
-alias: ctg_n90
-domain_of:
-- MetagenomeAssembly
-- MetatranscriptomeAssembly
-range: float
+alias: mixs_env_triad_field
+range: string
 
 </code></pre>
 
