@@ -951,11 +951,6 @@ enums:
 
 
 slots:
-  mixs_environmental_triad:
-    range: ControlledIdentifiedTermValue
-    description: >-
-      The MIxS environmental triad provides context about where a sample was collected from and what type of sample was collected.  
-      This information is required by the Genomic Standards Consortium (GSC).  For more information see https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS. 
   generates_calibration:
     range: CalibrationInformation
     description: calibration information is generated a process
