@@ -1,6 +1,6 @@
-'.slots.env_broad_scale.is_a |= "TextValue"'
-'.slots.env_local_scale.is_a |= "TextValue"'
-'.slots.env_medium.is_a |= "TextValue"'
+'.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
+'.slots.env_local_scale.is_a |= "mixs_env_triad_field"'
+'.slots.env_medium.is_a |= "mixs_env_triad_field"'
 
 '.slots.agrochem_addition.range |= "TextValue"'
 '.slots.air_temp_regm.range |= "TextValue"'
