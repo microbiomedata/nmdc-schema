@@ -1,3 +1,7 @@
+'.slots.env_broad_scale.is_a |= "TextValue"'
+'.slots.env_local_scale.is_a |= "TextValue"'
+'.slots.env_medium.is_a |= "TextValue"'
+
 '.slots.agrochem_addition.range |= "TextValue"'
 '.slots.air_temp_regm.range |= "TextValue"'
 '.slots.antibiotic_regm.range |= "TextValue"'
