@@ -391,6 +391,7 @@ classes:
       - extraction_targets
       - input_mass
       - volume
+      - mixing
     slot_usage:
       has_input:
         required: true
@@ -1344,6 +1345,7 @@ slots:
   stationary_phase:
     range: StationaryPhaseEnum
     description: The material the stationary phase is comprised of used in chromatography.
+  
   chromatographic_category:
     range: ChromatographicCategoryEnum
     description: The type of chromatography used in a process.
@@ -1352,3 +1354,11 @@ slots:
     range: SamplePortionEnum
     multivalued: true
     description: The portion of the sample that is taken for downstream activity.
+
+  mixing:
+    range: MixingProcess
+    inlined_as_list: true
+    inlined: true
+    description: Describes the mixing of a sample during a process.
+    list_elements_ordered: true
+
