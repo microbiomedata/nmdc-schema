@@ -62,10 +62,6 @@ classes:
         description: >-
           A boolean value indicating whether the ontology term is a root term; it is not a subclass of 
           any other term.
-      source_ontology:
-        range: string
-        description: >-
-          The obo-foundry name of the ontology from which the term is sourced.
     slot_usage:
       id:
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
