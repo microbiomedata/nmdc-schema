@@ -54,7 +54,7 @@ classes:
         description: >-
           A boolean value indicating whether the ontology term is obsolete.
         comments: >-
-          If true (the ontology term is delcared obsolete via the ontology source itself), 
+          If true (the ontology term is declared obsolete via the ontology source itself), 
           the term is no longer considered a valid term to use in an annotation at NMDC,
           and it no longer has ontology_relation_set records.
       is_root:
