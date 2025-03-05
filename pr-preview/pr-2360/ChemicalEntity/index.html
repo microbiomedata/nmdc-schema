@@ -368,8 +368,6 @@
       ChemicalEntity --&gt; "*" OntologyRelation : relations
     click OntologyRelation href "../OntologyRelation"
 
-  ChemicalEntity : source_ontology
-
   ChemicalEntity : type
 
 
@@ -430,12 +428,6 @@
 <td><a href="../is_root/">is_root</a></td>
 <td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
 <td>A boolean value indicating whether the ontology term is a root term; it is no...</td>
-<td><a href="../OntologyClass/">OntologyClass</a></td>
-</tr>
-<tr>
-<td><a href="../source_ontology/">source_ontology</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The obo-foundry name of the ontology from which the term is sourced</td>
 <td><a href="../OntologyClass/">OntologyClass</a></td>
 </tr>
 <tr>
@@ -628,7 +620,7 @@ attributes:
     name: is_obsolete
     description: A boolean value indicating whether the ontology term is obsolete.
     comments:
-    - If true (the ontology term is delcared obsolete via the ontology source itself),  the
+    - If true (the ontology term is declared obsolete via the ontology source itself),  the
       term is no longer considered a valid term to use in an annotation at NMDC, and
       it no longer has ontology_relation_set records.
     from_schema: https://w3id.org/nmdc/basic_classes
@@ -649,16 +641,6 @@ attributes:
     domain_of:
     - OntologyClass
     range: boolean
-  source_ontology:
-    name: source_ontology
-    description: The obo-foundry name of the ontology from which the term is sourced.
-    from_schema: https://w3id.org/nmdc/basic_classes
-    rank: 1000
-    alias: source_ontology
-    owner: ChemicalEntity
-    domain_of:
-    - OntologyClass
-    range: string
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
