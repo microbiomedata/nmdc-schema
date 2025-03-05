@@ -49,6 +49,23 @@ classes:
         multivalued: true
         inlined_as_list: true
         inlined: true
+      is_obsolete:
+        range: boolean
+        description: >-
+          A boolean value indicating whether the ontology term is obsolete.
+        comments: >-
+          If true (the ontology term is delcared obsolete via the ontology source itself), 
+          the term is no longer considered a valid term to use in an annotation at NMDC,
+          and it no longer has ontology_relation_set records.
+      is_root:
+        range: boolean
+        description: >-
+          A boolean value indicating whether the ontology term is a root term; it is not a subclass of 
+          any other term.
+      source_ontology:
+        range: string
+        description: >-
+          The obo-foundry name of the ontology from which the term is sourced.
     slot_usage:
       id:
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
