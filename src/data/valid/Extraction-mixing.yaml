@@ -22,10 +22,5 @@ mixing_steps:
       has_raw_value: 30 seconds
     id: nmdc:mixpro-11-qwerty
     description: Mixing the extraction to lyse cells via sonication probe
-    instrument_used: 
-      - type: nmdc:Instrument
-        id: nmdc:inst-12-dddddd
-        name: sonication probe
-        description: mixing and cell lysis via 6 mm sonication probe at 60% amplitude
 
 
