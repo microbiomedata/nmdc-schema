@@ -3685,7 +3685,7 @@ slots:
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - broad-scale environmental context
-    is_a: environment field
+    is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000012
     range: ControlledIdentifiedTermValue
@@ -3703,7 +3703,7 @@ slots:
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - local environmental context
-    is_a: environment field
+    is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000013
     range: ControlledIdentifiedTermValue
@@ -3721,7 +3721,7 @@ slots:
     from_schema: http://w3id.org/mixs/terms
     aliases:
       - environmental medium
-    is_a: environment field
+    is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000014
     range: ControlledIdentifiedTermValue
@@ -11315,4 +11315,5 @@ slots:
   sequencing field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
+  mixs_env_triad_field: null
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml
