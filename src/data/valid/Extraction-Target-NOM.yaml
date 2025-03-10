@@ -1,0 +1,26 @@
+id: "nmdc:extrp-38-r2pk"
+type: nmdc:Extraction
+name: Water_extraction_soil_NOM
+description: Water extraction preceding Folch extraction
+has_input:
+  - nmdc:procsm-99-abcdef
+has_output:
+  - nmdc:procsm-99-123456
+  - nmdc:procsm-99-789000
+processing_institution: EMSL
+extraction_targets:
+  - natural organic matter 
+input_mass:
+  type: nmdc:QuantityValue
+  has_raw_value: 0.5 g
+  has_unit: g
+  has_numeric_value: 0.5
+substances_used:
+  - type: nmdc:PortionOfSubstance
+    known_as: water
+    substance_role: solvent
+    volume:
+      type: nmdc:QuantityValue
+      has_raw_value: 2 mL
+      has_unit: mL
+      has_numeric_value: 2
