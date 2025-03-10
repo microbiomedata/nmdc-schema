@@ -20,3 +20,4 @@ mixing_steps:
       has_raw_value: 30 seconds
       has_numeric_vaue: 30
       has_unit: s
+    id: nmdc:mixpro-11-qwerty
