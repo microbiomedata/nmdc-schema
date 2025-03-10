@@ -1312,7 +1312,6 @@ classes:
     slots:
       - final_concentration
       - mass
-      - sample_state_information
       - source_concentration
       - known_as
       - substance_role
