@@ -16,8 +16,9 @@ type: nmdc:Extraction
 mixing_steps:
   - type: nmdc:MixingProcess
     duration:
-      type: QuantityValue
-      has_numeric_vaue: 30
-      has_unit: s
+      type: nmdc:QuantityValue
+      has_numeric_vaue: 2
+      has_unit: hours
     id: nmdc:mixpro-11-qwerty
     description: Mixing the extraction to lyse cells via sonication probe
+    instrument_used: 
