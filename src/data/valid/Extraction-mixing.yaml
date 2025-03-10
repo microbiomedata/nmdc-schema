@@ -1,0 +1,22 @@
+id: nmdc:extrp-71-r2pk
+has_input:
+  - nmdc:procsm-99-abcdef
+has_output:
+  - nmdc:procsm-99-123456
+substances_used:
+  - type: nmdc:PortionOfSubstance
+    known_as: water
+    substance_role: solvent
+    volume:
+      type: nmdc:QuantityValue
+      has_raw_value: 2 mL
+      has_unit: mL
+      has_numeric_value: 2
+type: nmdc:Extraction
+mixing_steps:
+  - type: nmdc:MixingProcess
+    duration:
+      type: QuantityValue
+      has_raw_value: 30 seconds
+      has_numeric_vaue: 30
+      has_unit: s

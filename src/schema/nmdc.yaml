@@ -391,7 +391,7 @@ classes:
       - extraction_targets
       - input_mass
       - volume
-      - mixing
+      - mixing_steps
     slot_usage:
       has_input:
         required: true
@@ -1355,10 +1355,10 @@ slots:
     multivalued: true
     description: The portion of the sample that is taken for downstream activity.
 
-  mixing:
+  mixing_steps:
     range: MixingProcess
     inlined_as_list: true
-    inlined: true
-    description: Describes the mixing of a sample during a process.
+    description: Describes how mixing of a sample was done during a process.
     list_elements_ordered: true
+    multivalued: true
 
