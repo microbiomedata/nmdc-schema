@@ -342,6 +342,10 @@
 
   OntologyClass : id
 
+  OntologyClass : is_obsolete
+
+  OntologyClass : is_root
+
   OntologyClass : name
 
   OntologyClass : relations
@@ -384,15 +388,27 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../relations/">relations</a></td>
+<td>* <br/> <a href="../OntologyRelation/">OntologyRelation</a></td>
+<td></td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../definition/">definition</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The definition of the ontology term as provided by the ontology</td>
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../relations/">relations</a></td>
-<td>* <br/> <a href="../OntologyRelation/">OntologyRelation</a></td>
-<td></td>
+<td><a href="../is_obsolete/">is_obsolete</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>A boolean value indicating whether the ontology term is obsolete</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../is_root/">is_root</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>A boolean value indicating whether the ontology term is a root term; it is no...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -504,6 +520,10 @@ exact_mappings:
 is_a: NamedThing
 slots:
 - alternative_names
+- relations
+- definition
+- is_obsolete
+- is_root
 slot_usage:
   id:
     name: id
@@ -511,25 +531,6 @@ slot_usage:
     - The identifiers for terms from external ontologies can't have their ids constrained
       to the nmdc namespace
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-attributes:
-  definition:
-    name: definition
-    description: The definition of the ontology term as provided by the ontology.
-    from_schema: https://w3id.org/nmdc/basic_classes
-    rank: 1000
-    domain_of:
-    - OntologyClass
-    range: string
-  relations:
-    name: relations
-    from_schema: https://w3id.org/nmdc/basic_classes
-    rank: 1000
-    domain_of:
-    - OntologyClass
-    range: OntologyRelation
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
 class_uri: nmdc:OntologyClass
 
 </code></pre>
@@ -552,28 +553,6 @@ slot_usage:
       to the nmdc namespace
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
 attributes:
-  definition:
-    name: definition
-    description: The definition of the ontology term as provided by the ontology.
-    from_schema: https://w3id.org/nmdc/basic_classes
-    rank: 1000
-    alias: definition
-    owner: OntologyClass
-    domain_of:
-    - OntologyClass
-    range: string
-  relations:
-    name: relations
-    from_schema: https://w3id.org/nmdc/basic_classes
-    rank: 1000
-    alias: relations
-    owner: OntologyClass
-    domain_of:
-    - OntologyClass
-    range: OntologyRelation
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   alternative_names:
     name: alternative_names
     description: A list of alternative names used to refer to the entity. The distinction
@@ -590,6 +569,53 @@ attributes:
     - Study
     range: string
     multivalued: true
+  relations:
+    name: relations
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: relations
+    owner: OntologyClass
+    domain_of:
+    - OntologyClass
+    range: OntologyRelation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  definition:
+    name: definition
+    description: The definition of the ontology term as provided by the ontology.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: definition
+    owner: OntologyClass
+    domain_of:
+    - OntologyClass
+    range: string
+  is_obsolete:
+    name: is_obsolete
+    description: A boolean value indicating whether the ontology term is obsolete.
+    comments:
+    - If true (the ontology term is declared obsolete via the ontology source itself),  the
+      term is no longer considered a valid term to use in an annotation at NMDC, and
+      it no longer has ontology_relation_set records.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: is_obsolete
+    owner: OntologyClass
+    domain_of:
+    - OntologyClass
+    range: boolean
+  is_root:
+    name: is_root
+    description: A boolean value indicating whether the ontology term is a root term;
+      it is not a subclass of  any other term.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: is_root
+    owner: OntologyClass
+    domain_of:
+    - OntologyClass
+    range: boolean
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

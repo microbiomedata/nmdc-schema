@@ -357,6 +357,10 @@
 
   ChemicalEntity : id
 
+  ChemicalEntity : is_obsolete
+
+  ChemicalEntity : is_root
+
   ChemicalEntity : name
 
   ChemicalEntity : relations
@@ -403,15 +407,27 @@
 <td><a href="../OntologyClass/">OntologyClass</a></td>
 </tr>
 <tr>
+<td><a href="../relations/">relations</a></td>
+<td>* <br/> <a href="../OntologyRelation/">OntologyRelation</a></td>
+<td></td>
+<td><a href="../OntologyClass/">OntologyClass</a></td>
+</tr>
+<tr>
 <td><a href="../definition/">definition</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The definition of the ontology term as provided by the ontology</td>
 <td><a href="../OntologyClass/">OntologyClass</a></td>
 </tr>
 <tr>
-<td><a href="../relations/">relations</a></td>
-<td>* <br/> <a href="../OntologyRelation/">OntologyRelation</a></td>
-<td></td>
+<td><a href="../is_obsolete/">is_obsolete</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>A boolean value indicating whether the ontology term is obsolete</td>
+<td><a href="../OntologyClass/">OntologyClass</a></td>
+</tr>
+<tr>
+<td><a href="../is_root/">is_root</a></td>
+<td>0..1 <br/> <a href="../Boolean/">Boolean</a></td>
+<td>A boolean value indicating whether the ontology term is a root term; it is no...</td>
 <td><a href="../OntologyClass/">OntologyClass</a></td>
 </tr>
 <tr>
@@ -578,19 +594,9 @@ attributes:
     - Study
     range: string
     multivalued: true
-  definition:
-    name: definition
-    description: The definition of the ontology term as provided by the ontology.
-    from_schema: https://w3id.org/nmdc/basic_classes
-    rank: 1000
-    alias: definition
-    owner: ChemicalEntity
-    domain_of:
-    - OntologyClass
-    range: string
   relations:
     name: relations
-    from_schema: https://w3id.org/nmdc/basic_classes
+    from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: relations
     owner: ChemicalEntity
@@ -600,6 +606,41 @@ attributes:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  definition:
+    name: definition
+    description: The definition of the ontology term as provided by the ontology.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: definition
+    owner: ChemicalEntity
+    domain_of:
+    - OntologyClass
+    range: string
+  is_obsolete:
+    name: is_obsolete
+    description: A boolean value indicating whether the ontology term is obsolete.
+    comments:
+    - If true (the ontology term is declared obsolete via the ontology source itself),  the
+      term is no longer considered a valid term to use in an annotation at NMDC, and
+      it no longer has ontology_relation_set records.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: is_obsolete
+    owner: ChemicalEntity
+    domain_of:
+    - OntologyClass
+    range: boolean
+  is_root:
+    name: is_root
+    description: A boolean value indicating whether the ontology term is a root term;
+      it is not a subclass of  any other term.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: is_root
+    owner: ChemicalEntity
+    domain_of:
+    - OntologyClass
+    range: boolean
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
