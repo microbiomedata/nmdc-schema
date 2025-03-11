@@ -59,6 +59,45 @@ class Migrator(MigratorBase):
             self.remove_sample_state_information_field_within_configuration
         ])
 
+    @staticmethod
+    def remove_sample_state_information_from_substances_used(substances_used: list) -> list:
+        r"""
+        Removes the `sample_state_information` key from each `nmdc:PortionOfSubstance` dictionary
+        in the specified `substances_used` list. Although the function modifies the list "in place",
+        it also returns the modified list to facilitate unit testing (see doctests below).
+
+        # Test: Returns empty list as is.
+        >>> Migrator.remove_sample_state_information_from_substances_used([])
+        []
+
+        # Test: Returns original list if no objects have the target `type`.
+        >>> Migrator.remove_sample_state_information_from_substances_used([
+        ...     {'type': 'Other', 'sample_state_information': 'solid', 'substance_role': 'base'},
+        ...     {'type': 'Other', 'sample_state_information': 'gas', 'substance_role': 'acid'},
+        ... ])
+        [{'type': 'Other', 'sample_state_information': 'solid', 'substance_role': 'base'}, {'type': 'Other', 'sample_state_information': 'gas', 'substance_role': 'acid'}]
+
+        # Test: Returns original list if no objects have the `sample_state_information` field.
+        >>> Migrator.remove_sample_state_information_from_substances_used([
+        ...     {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'},
+        ... ])
+        [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}]
+
+        # Test: Removes the `sample_state_information` from only—and all—objects having the target `type`.
+        >>> Migrator.remove_sample_state_information_from_substances_used([
+        ...     {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'},
+        ...     {'type': 'Other', 'sample_state_information': 'solid', 'substance_role': 'base'},
+        ...     {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'gas', 'substance_role': 'acid'},
+        ... ])
+        [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}, {'type': 'Other', 'sample_state_information': 'solid', 'substance_role': 'base'}, {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}]
+        """
+
+        for substance_used in substances_used:
+            if substance_used.get("type") == "nmdc:PortionOfSubstance":
+                substance_used.pop("sample_state_information", None)  # deletes the key if it is present
+
+        return substances_used
+
     def remove_sample_state_information_field_within_chromatographic_separation_process(self, material_processing: dict) -> dict:
         r"""
         If the specified document has a type value of `nmdc:ChromatographicSeparationProcess`,
@@ -99,9 +138,7 @@ class Migrator(MigratorBase):
             for mobile_phase_segment in ordered_mobile_phases:
                 if mobile_phase_segment.get("type") == "nmdc:MobilePhaseSegment":
                     substances_used = mobile_phase_segment.get("substances_used", [])  # slot is multivalued
-                    for substance_used in substances_used:
-                        if substance_used.get("type") == "nmdc:PortionOfSubstance":
-                            substance_used.pop("sample_state_information", None)  # deletes the key if it is present
+                    Migrator.remove_sample_state_information_from_substances_used(substances_used)
 
         return material_processing
 
@@ -145,9 +182,7 @@ class Migrator(MigratorBase):
             for mobile_phase_segment in ordered_mobile_phases:
                 if mobile_phase_segment.get("type") == "nmdc:MobilePhaseSegment":
                     substances_used = mobile_phase_segment.get("substances_used", [])  # slot is multivalued
-                    for substance_used in substances_used:
-                        if substance_used.get("type") == "nmdc:PortionOfSubstance":
-                            substance_used.pop("sample_state_information", None)  # deletes the key if it is present
+                    Migrator.remove_sample_state_information_from_substances_used(substances_used)
 
         return configuration
 
@@ -174,9 +209,7 @@ class Migrator(MigratorBase):
         target_document_type = "nmdc:StorageProcess"
         if storage_process.get("type", None) == target_document_type:
             substances_used = storage_process.get("substances_used", [])  # `substances_used` is multivalued
-            for substance_used in substances_used:
-                if substance_used.get("type") == "nmdc:PortionOfSubstance":
-                    substance_used.pop("sample_state_information", None)  # deletes the key if it is present
+            Migrator.remove_sample_state_information_from_substances_used(substances_used)
 
         return storage_process
 
@@ -244,8 +277,6 @@ class Migrator(MigratorBase):
 
         if material_processing.get("type", None) in target_document_types:
             substances_used = material_processing.get("substances_used", [])  # `substances_used` is multivalued
-            for substance_used in substances_used:
-                if substance_used.get("type") == "nmdc:PortionOfSubstance":
-                    substance_used.pop("sample_state_information", None)  # deletes the key if it is present
+            Migrator.remove_sample_state_information_from_substances_used(substances_used)
 
         return material_processing
