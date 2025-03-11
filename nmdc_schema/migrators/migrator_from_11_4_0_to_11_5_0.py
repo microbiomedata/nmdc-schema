@@ -43,42 +43,73 @@ class Migrator(MigratorBase):
                 having a type value of `nmdc:ChromatographicSeparationProcess`.
         """
 
-        self.adapter.process_each_document("material_processing_set",
-                                           [self.remove_field_within_extraction])
+        self.adapter.process_each_document("material_processing_set", [
+            self.remove_sample_state_information_field_within_material_processing
+        ])
 
-    def remove_field_within_extraction(self, material_processing: dict) -> dict:
+    def remove_sample_state_information_field_within_material_processing(self, material_processing: dict) -> dict:
         r"""
-        If the specified document has a type value of `nmdc:Extraction`, this function will remove
-        the `sample_state_information` field from any `PortionOfSubstance` instance that is
-        in this document's `substances_used` field.
+        If the specified document has a type value of `nmdc:Extraction`, `nmdc:DissolvingProcess`,
+        or `nmdc:ChemicalConversionProcess`, remove the `sample_state_information` field from any
+        `PortionOfSubstance` instances that are in the document's `substances_used` field.
 
         >>> m = Migrator()
 
-        # Test: Nothing to remove.
-        >>> m.remove_field_within_extraction({'id': 123, 'type': 'nmdc:Extraction'})
+        # Test: No changes are made to the document.
+        >>> m.remove_sample_state_information_field_within_material_processing({
+        ...     'id': 123,
+        ...     'type': 'nmdc:Extraction'
+        ... })
         {'id': 123, 'type': 'nmdc:Extraction'}
-        >>> m.remove_field_within_extraction({'id': 123, 'type': 'nmdc:Extraction', 'substances_used': []})
+        >>> m.remove_sample_state_information_field_within_material_processing({
+        ...     'id': 123,
+        ...     'type': 'nmdc:Extraction',
+        ...     'substances_used': []
+        ... })
         {'id': 123, 'type': 'nmdc:Extraction', 'substances_used': []}
-        >>> m.remove_field_within_extraction({'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [
-        ...     {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'},
-        ... ]})
+        >>> m.remove_sample_state_information_field_within_material_processing({
+        ...     'id': 123,
+        ...     'type': 'nmdc:Extraction',
+        ...     'substances_used': [
+        ...         {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'},
+        ...     ]
+        ... })
+        {'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}]}
+        >>> m.remove_sample_state_information_field_within_material_processing({
+        ...    'id': 123,
+        ...    'type': 'SomethingElse',  # not a type that we are targeting
+        ...    'substances_used': [
+        ...        {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'},
+        ...     ]
+        ... })
+        {'id': 123, 'type': 'SomethingElse', 'substances_used': [{'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'}]}
+
+        # Test: Removes the `sample_state_information` field from the only `substances_used` dictionary.
+        >>> m.remove_sample_state_information_field_within_material_processing({
+        ...    'id': 123,
+        ...    'type': 'nmdc:Extraction',
+        ...    'substances_used': [
+        ...        {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'},
+        ...    ]
+        ... })
         {'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}]}
 
-        # Test: Remove the `sample_state_information` field from a single `PortionOfSubstance`.
-        >>> m.remove_field_within_extraction({'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [
-        ...     {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'},
-        ... ]})
-        {'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}]}
-
-        # Test: Remove the `sample_state_information` field from multiple `PortionOfSubstance`s.
-        >>> m.remove_field_within_extraction({'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [
-        ...     {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'},
-        ...     {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'gas', 'substance_role': 'acid'},
-        ... ]})
+        # Test: Removes the `sample_state_information` field from multiple `substances_used` dictionaries.
+        >>> m.remove_sample_state_information_field_within_material_processing({
+        ...     'id': 123,
+        ...     'type': 'nmdc:Extraction',
+        ...     'substances_used': [
+        ...         {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'},
+        ...         {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'gas', 'substance_role': 'acid'},
+        ...     ]
+        ... })
         {'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}, {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}]}
         """
 
-        if material_processing.get("type", None) == "nmdc:Extraction":
+        # Note: We'll check whether the `type` field of the specified document consists of one of these strings.
+        target_document_types = ["nmdc:Extraction", "nmdc:DissolvingProcess", "nmdc:ChemicalConversionProcess"]
+
+        if material_processing.get("type", None) in target_document_types:
             substances_used = material_processing.get("substances_used", [])  # `substances_used` is multivalued
             for substance_used in substances_used:
                 if substance_used.get("type") == "nmdc:PortionOfSubstance":
