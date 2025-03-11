@@ -16,7 +16,7 @@ class Migrator(MigratorBase):
 
         Note: In a database conforming to schema 11.4.0, instances of the `PortionOfSubstance` class cannot exist
               as documents in a collection. Instead, they can only exist as objects in the multivalued `substances_used`
-              field of instances of the specific schema classes. Those schema classes are:
+              field of instances of specific schema classes. Those schema classes are:
               - [x] 1. `Extraction`
                 - Docs: https://microbiomedata.github.io/nmdc-schema/Extraction/
                 - All of these are documents in the `material_processing_set` collection,
@@ -132,8 +132,7 @@ class Migrator(MigratorBase):
         {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}
         """
 
-        target_document_type = "nmdc:ChromatographicSeparationProcess"
-        if material_processing.get("type", None) == target_document_type:
+        if material_processing.get("type", None) == "nmdc:ChromatographicSeparationProcess":
             ordered_mobile_phases = material_processing.get("ordered_mobile_phases", [])  # slot is multivalued
             for mobile_phase_segment in ordered_mobile_phases:
                 if mobile_phase_segment.get("type") == "nmdc:MobilePhaseSegment":
@@ -176,8 +175,7 @@ class Migrator(MigratorBase):
         {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}
         """
 
-        target_document_type = "nmdc:ChromatographyConfiguration"
-        if configuration.get("type", None) == target_document_type:
+        if configuration.get("type", None) == "nmdc:ChromatographyConfiguration":
             ordered_mobile_phases = configuration.get("ordered_mobile_phases", [])  # slot is multivalued
             for mobile_phase_segment in ordered_mobile_phases:
                 if mobile_phase_segment.get("type") == "nmdc:MobilePhaseSegment":
@@ -206,8 +204,7 @@ class Migrator(MigratorBase):
         {'id': 123, 'type': 'nmdc:StorageProcess', 'substances_used': [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}, {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}]}
         """
 
-        target_document_type = "nmdc:StorageProcess"
-        if storage_process.get("type", None) == target_document_type:
+        if storage_process.get("type", None) == "nmdc:StorageProcess":
             substances_used = storage_process.get("substances_used", [])  # `substances_used` is multivalued
             Migrator.remove_sample_state_information_from_substances_used(substances_used)
 
@@ -272,10 +269,9 @@ class Migrator(MigratorBase):
         {'id': 123, 'type': 'nmdc:Extraction', 'substances_used': [{'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}, {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}]}
         """
 
-        # Note: We'll check whether the `type` field of the specified document consists of one of these strings.
-        target_document_types = ["nmdc:Extraction", "nmdc:DissolvingProcess", "nmdc:ChemicalConversionProcess"]
-
-        if material_processing.get("type", None) in target_document_types:
+        if material_processing.get("type", None) in ["nmdc:Extraction",
+                                                     "nmdc:DissolvingProcess",
+                                                     "nmdc:ChemicalConversionProcess"]:
             substances_used = material_processing.get("substances_used", [])  # `substances_used` is multivalued
             Migrator.remove_sample_state_information_from_substances_used(substances_used)
 
