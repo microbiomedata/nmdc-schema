@@ -15,8 +15,8 @@ class Migrator(MigratorBase):
         ------------------------
         Slot `sample_state_information` was removed from schema class `PortionOfSubstance`.
 
-        Notes about writing migrator
-        ----------------------------
+        Notes while implementing this migrator
+        --------------------------------------
         In a database conforming to schema 11.4.0, instances of the `PortionOfSubstance` class can reside in
         the multivalued `substances_used` field of instances of the following schema classes:
         - [x] `Extraction` (https://microbiomedata.github.io/nmdc-schema/Extraction/)
@@ -31,20 +31,21 @@ class Migrator(MigratorBase):
         - [x] `ChemicalConversionProcess` (https://microbiomedata.github.io/nmdc-schema/ChemicalConversionProcess/)
           - All of these are documents in the `material_processing_set` collection,
             having a type value of `nmdc:ChemicalConversionProcess`.
-        - [ ] `MobilePhaseSegment` (https://microbiomedata.github.io/nmdc-schema/MobilePhaseSegment/)
+        - [x] `MobilePhaseSegment` (https://microbiomedata.github.io/nmdc-schema/MobilePhaseSegment/)
           - These are not represented by entire documents in any collection. Instead,
             they are represented by objects having a type value of `MobilePhaseSegment`
             in the multivalued `ordered_mobile_phases` fields of instances of the following schema classes:
             - [x] `ChromatographyConfiguration` (https://microbiomedata.github.io/nmdc-schema/ChromatographyConfiguration/)
               - All of these are documents in the `configuration_set` collection,
                 having a type value of `nmdc:ChromatographyConfiguration`.
-            - [ ] `ChromatographicSeparationProcess` (https://microbiomedata.github.io/nmdc-schema/ChromatographicSeparationProcess/)
+            - [x] `ChromatographicSeparationProcess` (https://microbiomedata.github.io/nmdc-schema/ChromatographicSeparationProcess/)
               - All of these are documents in the `material_processing_set` collection,
                 having a type value of `nmdc:ChromatographicSeparationProcess`.
         """
 
         self.adapter.process_each_document("material_processing_set", [
-            self.remove_sample_state_information_field_within_material_processing
+            self.remove_sample_state_information_field_within_material_processing,
+            self.remove_sample_state_information_field_within_chromatographic_separation_process,
         ])
         self.adapter.process_each_document("storage_process_set", [
             self.remove_sample_state_information_field_within_storage_process
@@ -52,6 +53,52 @@ class Migrator(MigratorBase):
         self.adapter.process_each_document("configuration_set", [
             self.remove_sample_state_information_field_within_configuration
         ])
+
+    def remove_sample_state_information_field_within_chromatographic_separation_process(self, material_processing: dict) -> dict:
+        r"""
+        If the specified document has a type value of `nmdc:ChromatographicSeparationProcess`,
+        process the `MobilePhaseSegment` instances in its `ordered_mobile_phases` field.
+        For each such instance, remove the `sample_state_information` field from any
+        `PortionOfSubstance` instances that are in its `substances_used` field.
+
+        >>> m = Migrator()
+
+        # Test: Removes the `sample_state_information` field from multiple `substances_used` dictionaries.
+        >>> transformed_document = m.remove_sample_state_information_field_within_chromatographic_separation_process({
+        ...     'id': 123,
+        ...     'type': 'nmdc:ChromatographicSeparationProcess',
+        ...     'ordered_mobile_phases': [
+        ...         {
+        ...              'id': 4,
+        ...              'type': 'nmdc:MobilePhaseSegment',
+        ...              'substances_used': [
+        ...                  {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'solid', 'substance_role': 'base'},
+        ...                  {'type': 'nmdc:PortionOfSubstance', 'sample_state_information': 'gas', 'substance_role': 'acid'},
+        ...              ]
+        ...         }
+        ...     ],
+        ... })
+        >>> transformed_document["id"]
+        123
+        >>> transformed_document["type"]
+        'nmdc:ChromatographicSeparationProcess'
+        >>> transformed_document["ordered_mobile_phases"][0]["substances_used"][0]
+        {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'base'}
+        >>> transformed_document["ordered_mobile_phases"][0]["substances_used"][1]
+        {'type': 'nmdc:PortionOfSubstance', 'substance_role': 'acid'}
+        """
+
+        target_document_type = "nmdc:ChromatographicSeparationProcess"
+        if material_processing.get("type", None) == target_document_type:
+            ordered_mobile_phases = material_processing.get("ordered_mobile_phases", [])  # slot is multivalued
+            for mobile_phase_segment in ordered_mobile_phases:
+                if mobile_phase_segment.get("type") == "nmdc:MobilePhaseSegment":
+                    substances_used = mobile_phase_segment.get("substances_used", [])  # slot is multivalued
+                    for substance_used in substances_used:
+                        if substance_used.get("type") == "nmdc:PortionOfSubstance":
+                            substance_used.pop("sample_state_information", None)  # deletes the key if it is present
+
+        return material_processing
 
     def remove_sample_state_information_field_within_configuration(self, configuration: dict) -> dict:
         r"""
