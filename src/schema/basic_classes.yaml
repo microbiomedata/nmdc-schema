@@ -39,29 +39,10 @@ classes:
     is_a: NamedThing
     slots:
       - alternative_names
-    attributes:
-      definition:
-        range: string
-        description: >-
-          The definition of the ontology term as provided by the ontology.
-      relations:
-        range: OntologyRelation
-        multivalued: true
-        inlined_as_list: true
-        inlined: true
-      is_obsolete:
-        range: boolean
-        description: >-
-          A boolean value indicating whether the ontology term is obsolete.
-        comments: >-
-          If true (the ontology term is declared obsolete via the ontology source itself), 
-          the term is no longer considered a valid term to use in an annotation at NMDC,
-          and it no longer has ontology_relation_set records.
-      is_root:
-        range: boolean
-        description: >-
-          A boolean value indicating whether the ontology term is a root term; it is not a subclass of 
-          any other term.
+      - relations
+      - definition
+      - is_obsolete
+      - is_root
     slot_usage:
       id:
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
@@ -571,6 +552,28 @@ slots:
       tooltip: >-
         Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
 
+  definition:
+    range: string
+    description: >-
+      The definition of the ontology term as provided by the ontology.
+  relations:
+    range: OntologyRelation
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+  is_obsolete:
+    range: boolean
+    description: >-
+      A boolean value indicating whether the ontology term is obsolete.
+    comments: >-
+      If true (the ontology term is declared obsolete via the ontology source itself), 
+      the term is no longer considered a valid term to use in an annotation at NMDC,
+      and it no longer has ontology_relation_set records.
+  is_root:
+    range: boolean
+    description: >-
+      A boolean value indicating whether the ontology term is a root term; it is not a subclass of 
+      any other term.
   has_input:
     aliases:
       - input
