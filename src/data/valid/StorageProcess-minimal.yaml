@@ -1,7 +1,7 @@
 
 id: nmdc:storpr-99-zUCd5N
 substances_used:
-  - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+  - known_as: water
     type: nmdc:PortionOfSubstance
     final_concentration:
       type: nmdc:QuantityValue

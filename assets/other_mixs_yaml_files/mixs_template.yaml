@@ -2,11 +2,6 @@ name: mixs-schema-subset
 title: MIxS Schema Subset for NMDC
 id: https://w3id.org/nmdc/mixs
 
-subsets:
-  mixs_environmental_triad:
-    title: MIxS Environmental Triad
-  mixs extension: { }
-
 notes:
   - removed several MIxS terms/slots that were sharing slot uris; commented out Biosample assignments
   - note that the NMDC submission schema in sheets_and_friends takes its MIxS terms

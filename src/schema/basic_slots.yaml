@@ -15,7 +15,6 @@ prefixes:
   nmdc: https://w3id.org/nmdc/
 
 imports:
-  - nmdc_subsets
   - nmdc_types
 
 default_prefix: nmdc
@@ -48,7 +47,11 @@ slots:
     examples:
       - value: FT ICR-MS Analysis Results
       - value: GC-MS Metabolomics Results
-
+    structured_aliases:
+      data_object_type:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        predicate: EXACT_SYNONYM
   data_category:
     range: DataCategoryEnum
     description: The category of the file, such as instrument data from data generation or processed data from a workflow execution.
@@ -137,7 +140,7 @@ slots:
       - See issue 207 - this clashes with the mixs field
 
   language:
-    range: language code
+    range: language_code
     description: Should use ISO 639-1 code e.g. "en", "fr"
 
   has_raw_value:
@@ -173,7 +176,7 @@ slots:
     range: boolean
 
   latitude:
-    range: decimal degree
+    range: decimal_degree
     description: latitude
     slot_uri: wgs84:lat
     examples:
@@ -182,7 +185,7 @@ slots:
       - schema:latitude
 
   longitude:
-    range: decimal degree
+    range: decimal_degree
     description: longitude
     slot_uri: wgs84:long
     examples:
@@ -256,8 +259,6 @@ slots:
     aliases:
       - DOI
       - digital object identifier
-    in_subset:
-      - data_portal_subset
     range: uriorcurie
     pattern: '^doi:10.\d{2,9}/.*$'
     examples:
@@ -274,8 +275,6 @@ slots:
     range: DoiProviderEnum
     close_mappings:
       - NCIT:C74932
-    in_subset:
-      - data_portal_subset
     examples:
       - value: ess_dive
         description: The corresponding DOI is associated with ESS-DIVE.
@@ -285,8 +284,6 @@ slots:
       The resource type the corresponding doi resolves to.
     range: DoiCategoryEnum
     required: true
-    in_subset:
-      - data_portal_subset
     examples:
       - value: dataset_doi
         description: The corresponding DOI is a dataset resource type.
@@ -420,7 +417,7 @@ slots:
     description: >
       The type of analyte(s) that were measured in the data generation process and analyzed
         in the Workflow Chain
-    range: AnalyteCategoryEnum
+
 
   type:
     required: true
@@ -435,6 +432,11 @@ slots:
       - https://github.com/microbiomedata/nmdc-schema/issues/1048
       - https://github.com/microbiomedata/nmdc-schema/issues/1233
       - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+       contexts:
+         -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+       predicate: NARROW_SYNONYM
     examples:
       - value: nmdc:Biosample
       - value: nmdc:Study
@@ -489,6 +491,15 @@ slots:
     description: >-
       A unique identifier for a thing.
       Must be either a CURIE shorthand for a URI or a complete URI
+    structured_aliases:
+      workflow_execution_id:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        predicate: NARROW_SYNONYM
+      data_object_id:
+        contexts:
+        -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+        predicate: NARROW_SYNONYM
     notes:
       - "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?"
       - 'a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted'
@@ -953,6 +964,9 @@ enums:
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
 
+      GC-MS Raw Data:
+        description: Gas chromatography-mass spectrometry raw data, full scan mode.
+
       Configuration toml:
         description: >-
           A configuration toml file used by various programs to store settings that are specific to their
@@ -962,7 +976,11 @@ enums:
 
       LC-MS Lipidomics Results:
         description: >-
-          LC-MS-based lipid assignment results table.
+          LC-MS-based lipidomics analysis results table
+
+      LC-MS Lipidomics Processed Data:
+        description: >-
+          Processed data for the LC-MS-based lipidomics analysis in hdf5 format
 
       Contaminants Amino Acid FASTA:
         description: FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
@@ -1088,27 +1106,38 @@ enums:
   #      submitted: { }
   #      superseded: { }
   #      withdrawn: { }
-
-  AnalyteCategoryEnum:
+  
+  NucleotideSequencingEnum:
     permissible_values:
       metagenome:
         aliases:
           - metaG
+        title: Metagenome
       metatranscriptome:
         aliases:
-          - metaT
+          - metaT  
+        title: Metatranscriptome
+      amplicon_sequencing_assay:
+        meaning: OBI:0002767
+        title: Amplicon
+        
+  MassSpectrometryEnum:
+    permissible_values:
       metaproteome:
         aliases:
           - metaP
+        title: Metaproteome
       metabolome:
         aliases:
           - metaB
-      lipidome: { }
+        title: Metabolome
+      lipidome: 
+        title: Lipidome
       nom:
         aliases:
           - natural organic matter
-      amplicon_sequencing_assay:
-        meaning: OBI:0002767 
+        title: Natural Organic Matter
+        
   ExtractionTargetEnum:
     permissible_values:
       DNA: { }

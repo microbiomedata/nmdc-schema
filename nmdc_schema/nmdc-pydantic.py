@@ -65,14 +65,19 @@ class LinkMLMeta(RootModel):
 
 linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
      'default_range': 'string',
-     'description': 'Schema for National Microbiome Data Collaborative (NMDC).\n'
-                    'This schema is organized into multiple modules, such as:\n'
-                    '\n'
-                    ' * a set of core types for representing data values\n'
-                    ' * a subset of the mixs schema\n'
-                    ' * an annotation schema\n'
-                    ' * the NMDC schema itself, into which the other modules are '
-                    'imported',
+     'description': 'The NMDC Schema is a foundational framework designed to '
+                    'standardize metadata for the National Microbiome Data  '
+                    'Collaborative (NMDC) and collaborating data providors. By '
+                    'establishing a structured approach to metadata, the NMDC '
+                    'Schema enables researchers to organize,  share, and interpret '
+                    'complex datasets with consistency and clarity. The NMDC '
+                    'Schema is critical substrate used to facilitate  '
+                    'interoperability and collaboration, as it provide a common '
+                    'language for data exchange across systems and disciplines.  '
+                    'In the context of the NMDC, this schema supports the '
+                    'integration of microbiome data from medicine, agriculture,  '
+                    'bioenergy, and environmental science into a cohesive '
+                    'platform.',
      'emit_prefixes': ['KEGG.ORTHOLOGY',
                        'MASSIVE',
                        'biosample',
@@ -92,7 +97,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
      'name': 'NMDC',
      'notes': ['not importing any MIxS terms where the relationship between the '
                "name (SCN) and the id isn't 1:1"],
-     'prefixes': {'CATH': {'prefix_prefix': 'CATH',
+     'prefixes': {'BFO': {'prefix_prefix': 'BFO',
+                          'prefix_reference': 'http://purl.obolibrary.org/obo/BFO_'},
+                  'CATH': {'prefix_prefix': 'CATH',
                            'prefix_reference': 'https://bioregistry.io/cath:'},
                   'CHEBI': {'prefix_prefix': 'CHEBI',
                             'prefix_reference': 'http://purl.obolibrary.org/obo/CHEBI_'},
@@ -248,6 +255,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                                   'prefix_reference': 'http://example.org/neon/schema/'},
                   'nmdc': {'prefix_prefix': 'nmdc',
                            'prefix_reference': 'https://w3id.org/nmdc/'},
+                  'owl': {'prefix_prefix': 'owl',
+                          'prefix_reference': 'http://www.w3.org/2002/07/owl#'},
                   'prov': {'prefix_prefix': 'prov',
                            'prefix_reference': 'http://www.w3.org/ns/prov#'},
                   'qud': {'prefix_prefix': 'qud',
@@ -279,69 +288,6 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'id_version': {'setting_key': 'id_version',
                                  'setting_value': '(\\.[0-9]{1,})'}},
      'source_file': 'nmdc_schema/nmdc_materialized_patterns.yaml',
-     'subsets': {'checklist': {'description': 'A MIxS checklist. These can be '
-                                              'combined with packages',
-                               'from_schema': 'https://w3id.org/nmdc/nmdc',
-                               'name': 'checklist'},
-                 'checklist_package_combination': {'description': 'A combination '
-                                                                  'of a checklist '
-                                                                  'and a package',
-                                                   'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                                   'name': 'checklist_package_combination'},
-                 'data object subset': {'description': 'Subset consisting of the '
-                                                       'data objects that either '
-                                                       'inputs or outputs of '
-                                                       'processes or workflows.',
-                                        'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                        'name': 'data object subset'},
-                 'data_portal_subset': {'comments': ['Schema authors are '
-                                                     'responsible for alerting and '
-                                                     'supporting Kitware and '
-                                                     'nmdc-server authors about '
-                                                     'changes they will have to '
-                                                     'make if entities labeled '
-                                                     'with data_portal_subset are '
-                                                     'modified.',
-                                                     'Assignment of the '
-                                                     'data_portal_subset is '
-                                                     'incomplete in the schema.'],
-                                        'description': 'Subset consisting of '
-                                                       'entities that '
-                                                       'Kitware/nmdc-server use to '
-                                                       'populate the data portal.',
-                                        'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                        'name': 'data_portal_subset'},
-                 'environment': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                 'name': 'environment'},
-                 'investigation': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                   'name': 'investigation'},
-                 'mixs extension': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                    'name': 'mixs extension'},
-                 'mixs_environmental_triad': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                              'name': 'mixs_environmental_triad',
-                                              'title': 'MIxS Environmental Triad'},
-                 'nucleic acid sequence source': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                                  'name': 'nucleic acid sequence '
-                                                          'source'},
-                 'package': {'description': 'A MIxS package. These can be combined '
-                                            'with checklists',
-                             'from_schema': 'https://w3id.org/nmdc/nmdc',
-                             'name': 'package'},
-                 'proteases': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                               'name': 'proteases'},
-                 'sample subset': {'description': 'Subset consisting of entities '
-                                                  'linked to the processing of '
-                                                  'samples.  Currently, this '
-                                                  'subset consists of study, omics '
-                                                  'process, and biosample.',
-                                   'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                   'name': 'sample subset'},
-                 'sequencing': {'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                'name': 'sequencing'},
-                 'workflow subset': {'description': 'Subset consisting of just the '
-                                                    'workflow execution activities',
-                                     'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                     'name': 'workflow subset'}},
      'title': 'NMDC Schema',
      'types': {'boolean': {'base': 'Bool',
                            'description': 'A binary (true or false) value',
@@ -418,12 +364,12 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                                      'the type is referenced with the lower case '
                                      '"decimal".'],
                            'uri': 'xsd:decimal'},
-               'decimal degree': {'base': 'float',
+               'decimal_degree': {'base': 'float',
                                   'description': 'A decimal degree expresses '
                                                  'latitude or longitude as decimal '
                                                  'fractions.',
                                   'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                  'name': 'decimal degree',
+                                  'name': 'decimal_degree',
                                   'see_also': ['https://en.wikipedia.org/wiki/Decimal_degrees'],
                                   'uri': 'xsd:decimal'},
                'double': {'base': 'float',
@@ -493,11 +439,11 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                                          'lower case "jsonpointer".'],
                                'repr': 'str',
                                'uri': 'xsd:string'},
-               'language code': {'base': 'str',
+               'language_code': {'base': 'str',
                                  'description': 'A language code conforming to '
                                                 'ISO_639-1',
                                  'from_schema': 'https://w3id.org/nmdc/nmdc',
-                                 'name': 'language code',
+                                 'name': 'language_code',
                                  'see_also': ['https://en.wikipedia.org/wiki/ISO_639-1'],
                                  'uri': 'xsd:language'},
                'ncname': {'base': 'NCName',
@@ -794,6 +740,8 @@ class BiosampleCategoryEnum(str, Enum):
     Department_of_Energy_Office_of_Science_Biological_and_Environmental_Research_Program_Laboratory_Science_Focus_Areas = "SFA"
     Facilities_Integrating_Collaborations_for_User_Science = "FICUS"
     National_Science_FoundationAPOSTROPHEs_National_Ecological_Observatory_Network = "NEON"
+    # Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.
+    Bioenergy_Research_Centers = "BRC"
 
 
 class SubstanceRoleEnum(str, Enum):
@@ -818,6 +766,26 @@ class SampleStateEnum(str, Enum):
     solid = "solid"
     liquid = "liquid"
     gas = "gas"
+
+
+class ChemicalEntityEnum(str, Enum):
+    acetonitrile = "acetonitrile"
+    alphaLP = "alphaLP"
+    ammonium_acetate = "ammonium_acetate"
+    ammonium_bicarbonate = "ammonium_bicarbonate"
+    Arg_C = "Arg-C"
+    Asp_N = "Asp-N"
+    chloroform = "chloroform"
+    chymotrypsin = "chymotrypsin"
+    formic_acid = "formic_acid"
+    glucose = "glucose"
+    Glu_C = "Glu-C"
+    isopropyl_alcohol = "isopropyl_alcohol"
+    Lys_C = "Lys-C"
+    Lys_N = "Lys-N"
+    methanol = "methanol"
+    trypsin = "trypsin"
+    water = "water"
 
 
 class ArchStrucEnum(str, Enum):
@@ -1292,8 +1260,12 @@ class HeatDelivLocEnum(str, Enum):
 class HostSexEnum(str, Enum):
     female = "female"
     hermaphrodite = "hermaphrodite"
+    non_binary = "non-binary"
     male = "male"
-    neuter = "neuter"
+    transgender = "transgender"
+    transgender_LEFT_PARENTHESISfemale_to_maleRIGHT_PARENTHESIS = "transgender (female to male)"
+    transgender_LEFT_PARENTHESISmale_to_femaleRIGHT_PARENTHESIS = "transgender (male to female)"
+    undeclared = "undeclared"
 
 
 class IndoorSpaceEnum(str, Enum):
@@ -1886,6 +1858,17 @@ class WindowVertPosEnum(str, Enum):
     high = "high"
 
 
+class TargetGeneEnum(str, Enum):
+    # the small subunit of the bacterial/archean ribosome
+    number_16S_rRNA = "16S_rRNA"
+    # the large subunit  of the bacterial/archean ribosome
+    number_23S_rRNA = "23S_rRNA"
+    # the small subunit of the eukaryotic ribosome
+    number_18S_rRNA = "18S_rRNA"
+    # the large subunit of the eukaryotic ribosome
+    number_28S_rRNA = "28S_rRNA"
+
+
 class CreditEnum(str, Enum):
     # Conceptualization
     Conceptualization = "Conceptualization"
@@ -2219,10 +2202,14 @@ class FileTypeEnum(str, Enum):
     Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
     # Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
     LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
+    # Gas chromatography-mass spectrometry raw data, full scan mode.
+    GC_MS_Raw_Data = "GC-MS Raw Data"
     # A configuration toml file used by various programs to store settings that are specific to their respective software.
     Configuration_toml = "Configuration toml"
-    # LC-MS-based lipid assignment results table.
+    # LC-MS-based lipidomics analysis results table
     LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
+    # Processed data for the LC-MS-based lipidomics analysis in hdf5 format
+    LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
     # FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
     Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
     # A configuration file used by a single computational software tool that stores settings that are specific to that tool.
@@ -2270,13 +2257,17 @@ class StatusEnum(str, Enum):
     fail = "fail"
 
 
-class AnalyteCategoryEnum(str, Enum):
-    metagenome = "metagenome"
-    metatranscriptome = "metatranscriptome"
-    metaproteome = "metaproteome"
-    metabolome = "metabolome"
-    lipidome = "lipidome"
-    nom = "nom"
+class NucleotideSequencingEnum(str, Enum):
+    Metagenome = "metagenome"
+    Metatranscriptome = "metatranscriptome"
+    Amplicon = "amplicon_sequencing_assay"
+
+
+class MassSpectrometryEnum(str, Enum):
+    Metaproteome = "metaproteome"
+    Metabolome = "metabolome"
+    Lipidome = "lipidome"
+    Natural_Organic_Matter = "nom"
 
 
 class ExtractionTargetEnum(str, Enum):
@@ -2367,6 +2358,29 @@ class AnalysisTypeEnum(str, Enum):
     metatranscriptomics = "metatranscriptomics"
     natural_organic_matter = "natural organic matter"
     bulk_chemistry = "bulk chemistry"
+    Amplicon_sequencing_assay = "amplicon sequencing assay"
+
+
+class MetaproteomicsAnalysisCategoryEnum(str, Enum):
+    """
+    The category of metaproteomics analysis being performed.
+    """
+    # A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
+    matched_metagenome = "matched_metagenome"
+    # A metaproteomics analysis that is matched to an in silico generated metagenome.
+    in_silico_metagenome = "in_silico_metagenome"
+
+
+class MetabolomicsAnalysisCategoryEnum(str, Enum):
+    """
+    The category of metabolomics analysis being performed.
+    """
+    # A metabolomics analysis that is performed on gas chromatography mass spectrometry data.
+    gc_ms_metabolomics = "gc_ms_metabolomics"
+    # A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.
+    lc_ms_lipidomics = "lc_ms_lipidomics"
+    # A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.
+    lc_ms_metabolomics = "lc_ms_metabolomics"
 
 
 
@@ -2387,12 +2401,11 @@ class EukEval(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -2404,7 +2417,10 @@ class EukEval(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
     completeness: Optional[float] = Field(None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'completeness', 'domain_of': ['EukEval', 'MagBin']} })
     contamination: Optional[float] = Field(None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'contamination', 'domain_of': ['EukEval', 'MagBin']} })
     ncbi_lineage_tax_ids: Optional[str] = Field(None, description="""Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)""", json_schema_extra = { "linkml_meta": {'alias': 'ncbi_lineage_tax_ids',
@@ -2463,12 +2479,11 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -2480,7 +2495,10 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
@@ -2506,9 +2524,6 @@ class Database(ConfiguredBaseModel):
 
     biosample_set: Optional[List[Biosample]] = Field(None, description="""This property links a database object to the set of samples within it.""", json_schema_extra = { "linkml_meta": {'alias': 'biosample_set', 'domain_of': ['Database'], 'mixins': ['object_set']} })
     calibration_set: Optional[List[CalibrationInformation]] = Field(None, description="""This property links a database object to the set of calibrations within it.""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_set',
-         'domain_of': ['Database'],
-         'mixins': ['object_set']} })
-    chemical_entity_set: Optional[List[ChemicalEntity]] = Field(None, description="""This property links a database object to the set of chemical entities within it.""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_entity_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
     collecting_biosamples_from_site_set: Optional[List[CollectingBiosamplesFromSite]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'collecting_biosamples_from_site_set',
@@ -2539,9 +2554,6 @@ class Database(ConfiguredBaseModel):
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
     processed_sample_set: Optional[List[ProcessedSample]] = Field(None, description="""This property links a database object to the set of processed samples within it.""", json_schema_extra = { "linkml_meta": {'alias': 'processed_sample_set',
-         'domain_of': ['Database'],
-         'mixins': ['object_set']} })
-    protocol_execution_set: Optional[List[ProtocolExecution]] = Field(None, description="""This property links a database object to the set of protocol executions within it.""", json_schema_extra = { "linkml_meta": {'alias': 'protocol_execution_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
     storage_process_set: Optional[List[StorageProcess]] = Field(None, description="""This property links a database object to the set of storage processes within it.""", json_schema_extra = { "linkml_meta": {'alias': 'storage_process_set',
@@ -2588,12 +2600,11 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -2605,7 +2616,10 @@ class MobilePhaseSegment(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
     volume: Optional[QuantityValue] = Field(None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
@@ -2627,7 +2641,6 @@ class PortionOfSubstance(ConfiguredBaseModel):
     final_concentration: Optional[QuantityValue] = Field(None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration',
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
-    known_as: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
     mass: Optional[QuantityValue] = Field(None, title="mass", description="""A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
          'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
          'exact_mappings': ['PATO:0000125']} })
@@ -2635,6 +2648,7 @@ class PortionOfSubstance(ConfiguredBaseModel):
     source_concentration: Optional[QuantityValue] = Field(None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A""", json_schema_extra = { "linkml_meta": {'alias': 'source_concentration',
          'domain_of': ['PortionOfSubstance'],
          'is_a': 'concentration'} })
+    known_as: Optional[ChemicalEntityEnum] = Field(None, description="""The substance from which a portion was taken.""", json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
     substance_role: Optional[SubstanceRoleEnum] = Field(None, description="""The role of a substance in a process""", json_schema_extra = { "linkml_meta": {'alias': 'substance_role', 'domain_of': ['PortionOfSubstance']} })
     type: Literal["https://w3id.org/nmdc/PortionOfSubstance","nmdc:PortionOfSubstance"] = Field("nmdc:PortionOfSubstance", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
@@ -2644,12 +2658,11 @@ class PortionOfSubstance(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -2661,7 +2674,10 @@ class PortionOfSubstance(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
     volume: Optional[QuantityValue] = Field(None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['Extraction',
@@ -2730,12 +2746,11 @@ class MagBin(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -2747,7 +2762,10 @@ class MagBin(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
     eukaryotic_evaluation: Optional[EukEval] = Field(None, description="""Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.""", json_schema_extra = { "linkml_meta": {'alias': 'eukaryotic_evaluation', 'domain_of': ['MagBin']} })
 
 
@@ -2772,12 +2790,11 @@ class MetaboliteIdentification(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -2789,11 +2806,14 @@ class MetaboliteIdentification(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -2802,125 +2822,6 @@ class MetaboliteIdentification(ConfiguredBaseModel):
             if not pattern.match(v):
                 raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
-
-
-class PeptideQuantification(ConfiguredBaseModel):
-    """
-    This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:PeptideQuantification',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'from_schema': 'https://w3id.org/nmdc/nmdc'})
-
-    type: Literal["https://w3id.org/nmdc/PeptideQuantification","nmdc:PeptideQuantification"] = Field("nmdc:PeptideQuantification", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
-    all_proteins: Optional[List[str]] = Field(None, description="""the list of protein identifiers that are associated with the peptide sequence""", json_schema_extra = { "linkml_meta": {'alias': 'all_proteins',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification', 'ProteinQuantification']} })
-    best_protein: Optional[str] = Field(None, description="""the specific protein identifier most correctly associated with the peptide sequence""", json_schema_extra = { "linkml_meta": {'alias': 'best_protein',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification', 'ProteinQuantification']} })
-    min_q_value: Optional[float] = Field(None, description="""smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool""", json_schema_extra = { "linkml_meta": {'alias': 'min_q_value',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification'],
-         'see_also': ['OBI:0001442']} })
-    peptide_sequence: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'peptide_sequence',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification']} })
-    peptide_spectral_count: Optional[int] = Field(None, description="""sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file""", json_schema_extra = { "linkml_meta": {'alias': 'peptide_spectral_count',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification']} })
-    peptide_sum_masic_abundance: Optional[int] = Field(None, description="""combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool""", json_schema_extra = { "linkml_meta": {'alias': 'peptide_sum_masic_abundance',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification']} })
-
-
-class ProteinQuantification(ConfiguredBaseModel):
-    """
-    This is used to link a metaproteomics analysis workflow to a specific protein
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProteinQuantification',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'from_schema': 'https://w3id.org/nmdc/nmdc'})
-
-    all_proteins: Optional[List[str]] = Field(None, description="""the list of protein identifiers that are associated with the peptide sequence""", json_schema_extra = { "linkml_meta": {'alias': 'all_proteins',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification', 'ProteinQuantification']} })
-    best_protein: Optional[str] = Field(None, description="""the specific protein identifier most correctly associated with the peptide sequence""", json_schema_extra = { "linkml_meta": {'alias': 'best_protein',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['PeptideQuantification', 'ProteinQuantification']} })
-    peptide_sequence_count: Optional[int] = Field(None, description="""count of peptide sequences grouped to the best_protein""", json_schema_extra = { "linkml_meta": {'alias': 'peptide_sequence_count',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['ProteinQuantification']} })
-    protein_spectral_count: Optional[int] = Field(None, description="""sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file""", json_schema_extra = { "linkml_meta": {'alias': 'protein_spectral_count',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['ProteinQuantification']} })
-    protein_sum_masic_abundance: Optional[int] = Field(None, description="""combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool""", json_schema_extra = { "linkml_meta": {'alias': 'protein_sum_masic_abundance',
-         'deprecated': 'not used. 2024-11 '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2250',
-         'domain_of': ['ProteinQuantification']} })
-    type: Literal["https://w3id.org/nmdc/ProteinQuantification","nmdc:ProteinQuantification"] = Field("nmdc:ProteinQuantification", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
 
 
 class GenomeFeature(ConfiguredBaseModel):
@@ -2969,12 +2870,11 @@ class GenomeFeature(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -2986,7 +2886,10 @@ class GenomeFeature(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
     feature_category: Optional[ControlledIdentifiedTermValue] = Field(None, description="""A Sequence Ontology term that describes the category of a feature""", json_schema_extra = { "linkml_meta": {'alias': 'feature_category',
          'domain_of': ['GenomeFeature', 'FunctionalAnnotation']} })
 
@@ -3028,7 +2931,7 @@ class FunctionalAnnotation(ConfiguredBaseModel):
                    'discussion about that possibility had been started, including the '
                    'question of whether these lists are intended to be open examples '
                    'or closed']} })
-    subject: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'subject', 'domain_of': ['FunctionalAnnotation']} })
+    subject: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'subject', 'domain_of': ['FunctionalAnnotation', 'OntologyRelation']} })
     was_generated_by: Optional[str] = Field(None, description="""provenance for the annotation.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'any_of': [{'range': 'WorkflowExecution'}, {'range': 'DataGeneration'}],
          'domain_of': ['FunctionalAnnotationAggMember',
@@ -3047,12 +2950,11 @@ class FunctionalAnnotation(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3064,7 +2966,10 @@ class FunctionalAnnotation(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
     feature_category: Optional[ControlledIdentifiedTermValue] = Field(None, description="""A Sequence Ontology term that describes the category of a feature""", json_schema_extra = { "linkml_meta": {'alias': 'feature_category',
          'domain_of': ['GenomeFeature', 'FunctionalAnnotation']} })
 
@@ -3110,12 +3015,11 @@ class AttributeValue(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3127,7 +3031,10 @@ class AttributeValue(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class QuantityValue(AttributeValue):
@@ -3169,12 +3076,11 @@ class QuantityValue(AttributeValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3186,7 +3092,10 @@ class QuantityValue(AttributeValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class ImageValue(AttributeValue):
@@ -3211,12 +3120,11 @@ class ImageValue(AttributeValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3228,7 +3136,10 @@ class ImageValue(AttributeValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class PersonValue(AttributeValue):
@@ -3310,12 +3221,11 @@ class PersonValue(AttributeValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3327,7 +3237,10 @@ class PersonValue(AttributeValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('websites')
     def pattern_websites(cls, v):
@@ -3358,12 +3271,11 @@ class TextValue(AttributeValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3375,7 +3287,10 @@ class TextValue(AttributeValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class TimestampValue(AttributeValue):
@@ -3395,12 +3310,11 @@ class TimestampValue(AttributeValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3412,7 +3326,10 @@ class TimestampValue(AttributeValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class ControlledTermValue(AttributeValue):
@@ -3435,12 +3352,11 @@ class ControlledTermValue(AttributeValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3452,7 +3368,10 @@ class ControlledTermValue(AttributeValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class ControlledIdentifiedTermValue(ControlledTermValue):
@@ -3476,12 +3395,11 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3493,7 +3411,10 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class GeolocationValue(AttributeValue):
@@ -3530,12 +3451,11 @@ class GeolocationValue(AttributeValue):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3547,7 +3467,10 @@ class GeolocationValue(AttributeValue):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class NamedThing(ConfiguredBaseModel):
@@ -3569,7 +3492,13 @@ class NamedThing(ConfiguredBaseModel):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -3584,12 +3513,11 @@ class NamedThing(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3601,7 +3529,10 @@ class NamedThing(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -3617,7 +3548,7 @@ class NamedThing(ConfiguredBaseModel):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -3650,7 +3581,13 @@ class GeneProduct(NamedThing):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -3665,12 +3602,11 @@ class GeneProduct(NamedThing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3682,7 +3618,10 @@ class GeneProduct(NamedThing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -3698,7 +3637,7 @@ class GeneProduct(NamedThing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -3710,25 +3649,35 @@ class GeneProduct(NamedThing):
 
 
 class OntologyClass(NamedThing):
+    """
+    A representation of class defined in an external ontology.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:OntologyClass',
+         'exact_mappings': ['biolink:OntologyClass', 'owl:Class', 'schema:Class'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'notes': ["The identifiers for terms from external ontologies can't have "
-                   'their ids constrained to the nmdc namespace'],
          'slot_usage': {'id': {'name': 'id',
+                               'notes': ['The identifiers for terms from external '
+                                         "ontologies can't have their ids constrained "
+                                         'to the nmdc namespace'],
                                'pattern': '^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$'}}})
 
+    alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['OntologyClass', 'Study'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+         'notes': ["The identifiers for terms from external ontologies can't have "
+                   'their ids constrained to the nmdc namespace'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -3743,12 +3692,11 @@ class OntologyClass(NamedThing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3760,7 +3708,10 @@ class OntologyClass(NamedThing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -3776,7 +3727,7 @@ class OntologyClass(NamedThing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -3793,18 +3744,23 @@ class EnvironmentalMaterialTerm(OntologyClass):
                        'https://github.com/microbiomedata/nmdc-schema/issues/1881',
          'from_schema': 'https://w3id.org/nmdc/nmdc'})
 
+    alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['OntologyClass', 'Study'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+         'notes': ["The identifiers for terms from external ontologies can't have "
+                   'their ids constrained to the nmdc namespace'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -3819,12 +3775,11 @@ class EnvironmentalMaterialTerm(OntologyClass):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3836,7 +3791,10 @@ class EnvironmentalMaterialTerm(OntologyClass):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -3852,7 +3810,7 @@ class EnvironmentalMaterialTerm(OntologyClass):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -3865,7 +3823,7 @@ class EnvironmentalMaterialTerm(OntologyClass):
 
 class ChemicalEntity(OntologyClass):
     """
-    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states
+    An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['metabolite',
                      'chemical substance',
@@ -3874,41 +3832,32 @@ class ChemicalEntity(OntologyClass):
          'class_uri': 'nmdc:ChemicalEntity',
          'comments': ['As with the parent OntologyClass, we will not assign an nmdc id '
                       'pattern or typecode to this class.'],
+         'deprecated': 'true; as of Jan 2025, NMDC only needs a handful of chemicals '
+                       'and its use cases can be served via an enumeration rather than '
+                       'supporting a full class.',
          'exact_mappings': ['biolink:ChemicalSubstance'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'id_prefixes': ['cas',
-                         'CHEBI',
-                         'CHEMBL.COMPOUND',
-                         'DRUGBANK',
-                         'HMDB',
-                         'KEGG.COMPOUND',
-                         'MESH',
-                         'PUBCHEM.COMPOUND'],
+         'id_prefixes': ['CHEBI', 'MS'],
          'see_also': ['https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html']})
 
-    alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['ChemicalEntity', 'Study'],
-         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     chemical_formula: Optional[str] = Field(None, description="""A generic grouping for molecular formulae and empirical formulae""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_formula', 'domain_of': ['ChemicalEntity']} })
-    inchi: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'inchi', 'domain_of': ['ChemicalEntity']} })
-    inchi_key: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'inchi_key',
-         'domain_of': ['ChemicalEntity'],
-         'notes': ['key set to false due to rare collisions: Pletnev I, Erin A, '
-                   'McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey '
-                   'collision resistance: an experimental testing. J Cheminform. 4:12']} })
-    smiles: Optional[List[str]] = Field(None, description="""A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.""", json_schema_extra = { "linkml_meta": {'alias': 'smiles', 'domain_of': ['ChemicalEntity']} })
+    alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['OntologyClass', 'Study'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+         'notes': ["The identifiers for terms from external ontologies can't have "
+                   'their ids constrained to the nmdc namespace'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -3923,12 +3872,11 @@ class ChemicalEntity(OntologyClass):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -3940,7 +3888,10 @@ class ChemicalEntity(OntologyClass):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -3956,7 +3907,7 @@ class ChemicalEntity(OntologyClass):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -3980,18 +3931,23 @@ class FunctionalAnnotationTerm(OntologyClass):
                    'Retaining this even after removing Reaction. See todos on the '
                    'Pathway and OrthologyGroup subclasses.']})
 
+    alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['OntologyClass', 'Study'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+         'notes': ["The identifiers for terms from external ontologies can't have "
+                   'their ids constrained to the nmdc namespace'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -4006,12 +3962,11 @@ class FunctionalAnnotationTerm(OntologyClass):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -4023,7 +3978,10 @@ class FunctionalAnnotationTerm(OntologyClass):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -4039,7 +3997,7 @@ class FunctionalAnnotationTerm(OntologyClass):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -4066,18 +4024,23 @@ class Pathway(FunctionalAnnotationTerm):
                    "is Pathway instantiated in an MongoDB collection? Aren't Pathways "
                    'searchable in the Data Portal?']})
 
+    alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['OntologyClass', 'Study'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+         'notes': ["The identifiers for terms from external ontologies can't have "
+                   'their ids constrained to the nmdc namespace'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -4092,12 +4055,11 @@ class Pathway(FunctionalAnnotationTerm):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -4109,7 +4071,10 @@ class Pathway(FunctionalAnnotationTerm):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -4125,7 +4090,7 @@ class Pathway(FunctionalAnnotationTerm):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -4154,18 +4119,23 @@ class OrthologyGroup(FunctionalAnnotationTerm):
          'todos': ["is OrthologyGroup instantiated in an MongoDB collection? Aren't "
                    'Pathways searchable in the Data Portal?']})
 
+    alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['OntologyClass', 'Study'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
                        'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+         'notes': ["The identifiers for terms from external ontologies can't have "
+                   'their ids constrained to the nmdc namespace'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -4180,12 +4150,11 @@ class OrthologyGroup(FunctionalAnnotationTerm):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -4197,7 +4166,10 @@ class OrthologyGroup(FunctionalAnnotationTerm):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -4213,7 +4185,7 @@ class OrthologyGroup(FunctionalAnnotationTerm):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -4222,6 +4194,66 @@ class OrthologyGroup(FunctionalAnnotationTerm):
             if not pattern.match(v):
                 raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
+
+
+class OntologyRelation(ConfiguredBaseModel):
+    """
+    A relationship between two ontology classes as specified either directly in the ontology in the form of axioms (statements or assertions that defines rules or constraints in an ontology) or inferred via reasoning.  The association object is defined by two terms (the subject and the object) and the relationship between them (the predicate). Because ontologies often have a plethora of relationships/axiom types and can have additional metadata on the relationship itself, these kinds of relationships are structured as a class instead of a simple set of slots on OntologyClass itself.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'aliases': ['OntologyAssociation'],
+         'class_uri': 'nmdc:OntologyRelation',
+         'comments': ["For example, the relationship between 'soil' and 'enriched "
+                      "soil' in the Environmental Ontology (ENVO) is defined by the "
+                      "following axioms: 'enriched soil' subclass_of 'soil', and "
+                      "'enriched soil'  has_increased_levels_of (some) 'material "
+                      "entity.'  Converting these stat∂ements to OntologyAssociations  "
+                      'so they can be used in the NMDC data stores, the subject of the '
+                      "first axiom or statement,  would be 'soil', the predicate would "
+                      "be 'subclass_of', and the object would be 'enriched soil'.  For "
+                      "the second axiom, the subject would be 'enriched soil', the "
+                      "predicate would be 'has_increased_levels_of', and the object "
+                      "would be 'material entity.' (Note that text labels are used in "
+                      'this example for ease of understanding and  the literal values '
+                      'of subject, predicate, and object in this class will be the id '
+                      '(curie) of the  `OntologyClass` as defined below).  Not all '
+                      'ontology axioms (associations) between terms need to be  '
+                      'ingested into the NMDC data stores.  In general, subclass_of '
+                      'and part_of relationships/axioms are often  good default '
+                      'relations/associations to support ontology browsing in user '
+                      'interfaces.'],
+         'from_schema': 'https://w3id.org/nmdc/nmdc'})
+
+    type: Literal["https://w3id.org/nmdc/OntologyRelation","nmdc:OntologyRelation"] = Field("nmdc:OntologyRelation", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['replaces legacy nmdc:type slot',
+                   'makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+    subject: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'subject', 'domain_of': ['FunctionalAnnotation', 'OntologyRelation']} })
+    predicate: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'predicate', 'domain_of': ['OntologyRelation']} })
+    object: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'object', 'domain_of': ['OntologyRelation']} })
 
 
 class FailureCategorization(ConfiguredBaseModel):
@@ -4244,12 +4276,11 @@ class FailureCategorization(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -4261,7 +4292,10 @@ class FailureCategorization(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class MaterialEntity(NamedThing):
@@ -4282,7 +4316,13 @@ class MaterialEntity(NamedThing):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -4297,12 +4337,11 @@ class MaterialEntity(NamedThing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -4314,7 +4353,10 @@ class MaterialEntity(NamedThing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -4330,7 +4372,7 @@ class MaterialEntity(NamedThing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -4341,7 +4383,93 @@ class MaterialEntity(NamedThing):
         return v
 
 
-class Biosample(MaterialEntity):
+class Sample(MaterialEntity):
+    """
+    A sample is a material entity that can be characterized by an experiment.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
+         'class_uri': 'nmdc:Sample',
+         'from_schema': 'https://w3id.org/nmdc/nmdc'})
+
+    id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
+         'domain_of': ['NamedThing'],
+         'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
+                       'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
+         'notes': ['abstracted pattern: '
+                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
+                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
+                   'or 2 characters will be accepted',
+                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
+                   'will be checked via per-class id slot usage assertions',
+                   'minting authority shoulders should probably be enumerated and '
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
+    name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
+    description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
+         'domain_of': ['ImageValue', 'NamedThing'],
+         'slot_uri': 'dcterms:description'} })
+    alternative_identifiers: Optional[List[str]] = Field(None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
+         'domain_of': ['MetaboliteIdentification', 'NamedThing']} })
+    type: Literal["https://w3id.org/nmdc/Sample","nmdc:Sample"] = Field("nmdc:Sample", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'AttributeValue',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['replaces legacy nmdc:type slot',
+                   'makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('id')
+    def pattern_id(cls, v):
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
+        return v
+
+    @field_validator('alternative_identifiers')
+    def pattern_alternative_identifiers(cls, v):
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
+        return v
+
+
+class Biosample(Sample):
     """
     Biological source material which can be characterized by an experiment.
     """
@@ -4361,7 +4489,6 @@ class Biosample(MaterialEntity):
                             'NCIT:C43412',
                             'http://purl.obolibrary.org/obo/FBcv_0003024'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['sample subset'],
          'notes': ["could add GOLD and EBI's biosample definitions to the "
                    'alt_descriptions?'],
          'rules': [{'description': 'DNA samples shipped to JGI for metagenomic '
@@ -5074,31 +5201,7 @@ class Biosample(MaterialEntity):
          'aliases': ['altitude'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'measurement value'}},
-         'domain_of': ['agriculture',
-                       'air',
-                       'built environment',
-                       'core',
-                       'food-animal and animal feed',
-                       'food-farm environment',
-                       'food-food production facility',
-                       'food-human foods',
-                       'host-associated',
-                       'human-associated',
-                       'human-gut',
-                       'human-oral',
-                       'human-skin',
-                       'human-vaginal',
-                       'hydrocarbon resources-cores',
-                       'hydrocarbon resources-fluids_swabs',
-                       'microbial mat_biofilm',
-                       'miscellaneous natural or artificial environment',
-                       'plant-associated',
-                       'sediment',
-                       'soil',
-                       'symbiont-associated',
-                       'wastewater_sludge',
-                       'water',
-                       'Biosample'],
+         'domain_of': ['Biosample'],
          'examples': [{'value': '100 meter'}],
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000094'} })
@@ -6282,9 +6385,7 @@ class Biosample(MaterialEntity):
                                               'describe the broad anatomical or '
                                               'morphological context'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'oceanic epipelagic zone biome [ENVO:01000033] for '
-                                'annotating a water sample from the photic zone in '
-                                'middle of the Atlantic Ocean'}],
+         'examples': [{'value': 'oceanic epipelagic zone biome [ENVO:01000035]'}],
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000012',
          'string_serialization': '{termLabel} {[termID]}'} })
@@ -6311,12 +6412,7 @@ class Biosample(MaterialEntity):
                                               'Plant Ontology to describe specific '
                                               'anatomical structures or plant parts.'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'litter layer [ENVO:01000338]; Annotating a pooled '
-                                'sample taken from various vegetation layers in a '
-                                'forest consider: canopy [ENVO:00000047]|herb and fern '
-                                'layer [ENVO:01000337]|litter layer '
-                                '[ENVO:01000338]|understory [01000335]|shrub layer '
-                                '[ENVO:01000336].'}],
+         'examples': [{'value': 'litter layer [ENVO:01000338]'}],
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000013',
          'string_serialization': '{termLabel} {[termID]}'} })
@@ -6344,18 +6440,13 @@ class Biosample(MaterialEntity):
                                               'Plant Ontology to indicate a tissue, '
                                               'organ, or plant structure'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'soil [ENVO:00001998]; Annotating a fish swimming in '
-                                'the upper 100 m of the Atlantic Ocean, consider: '
-                                'ocean water [ENVO:00002151]. Example: Annotating a '
-                                'duck on a pond consider: pond water '
-                                '[ENVO:00002228]|air [ENVO_00002005]'}],
+         'examples': [{'value': 'soil [ENVO:00001998]'}],
          'is_a': 'environment field',
          'slot_uri': 'MIXS:0000014',
          'string_serialization': '{termLabel} {[termID]}'} })
     env_package: Optional[TextValue] = Field(None, description="""MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported""", json_schema_extra = { "linkml_meta": {'alias': 'env_package',
          'aliases': ['environmental package'],
          'domain_of': ['Biosample'],
-         'in_subset': ['mixs extension'],
          'notes': ['no longer in MIxS as of 6.0?']} })
     environment_field: Optional[str] = Field(None, description="""field describing environmental aspect of a sample""", json_schema_extra = { "linkml_meta": {'abstract': True, 'alias': 'environment_field', 'domain_of': ['Biosample']} })
     escalator: Optional[TextValue] = Field(None, title="escalator count", description="""The number of escalators within the built structure""", json_schema_extra = { "linkml_meta": {'alias': 'escalator',
@@ -7001,7 +7092,7 @@ class Biosample(MaterialEntity):
                                             'value': 'FMA or UBERON'},
                          'occurrence': {'tag': 'occurrence', 'value': '1'}},
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'Portion of mucus [fma66938]'}],
+         'examples': [{'value': 'mucus [UBERON:0000912]'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000888',
          'string_serialization': '{termLabel} {[termID]}'} })
@@ -10605,7 +10696,7 @@ class Biosample(MaterialEntity):
          'comments': ['Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, '
                       '2021-04 and 2021 are all acceptable.'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2021-04-15, 2021-04 and 2021 are all acceptable.'}],
+         'examples': [{'value': '2021-04-15'}, {'value': '2021-04'}, {'value': '2021'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'arbitrary precision date only'],
          'rank': 2,
@@ -10617,7 +10708,7 @@ class Biosample(MaterialEntity):
          'comments': ['Time should be entered as HH:MM(:SS) in GMT. See here for a '
                       'converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '13:33 or 13:33:55'}],
+         'examples': [{'value': '13:33'}, {'value': '13:33:55'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'seconds optional time only'],
          'rank': 1,
@@ -10629,7 +10720,7 @@ class Biosample(MaterialEntity):
          'comments': ['Time should be entered as HH:MM(:SS) in GMT. See here for a '
                       'converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '13:33 or 13:33:55'}],
+         'examples': [{'value': '13:33'}, {'value': '13:33:55'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'seconds optional time only'],
          'rank': 3,
@@ -10663,12 +10754,11 @@ class Biosample(MaterialEntity):
          'comments': ['This is required when your experimental design includes the use '
                       'of isotopically labeled compounds'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '13C glucose'}, {'value': 'H218O'}],
+         'examples': [{'value': '13C glucose'}, {'value': '18O water'}],
          'rank': 16,
          'recommended': True,
          'see_also': ['MIXS:0000751'],
          'slot_group': 'MIxS Inspired',
-         'string_serialization': '{termLabel} {[termID]}; {timestamp}',
          'todos': ['Can we make the H218O correctly super and subscripted?']} })
     micro_biomass_c_meth: Optional[str] = Field(None, title="microbial biomass carbon method", description="""Reference or method used in determining microbial biomass carbon""", json_schema_extra = { "linkml_meta": {'alias': 'micro_biomass_c_meth',
          'comments': ['required if "microbial_biomass_c" is provided'],
@@ -10748,7 +10838,7 @@ class Biosample(MaterialEntity):
          'comments': ['Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, '
                       '2021-04 and 2021 are all acceptable.'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '2021-04-15, 2021-04 and 2021 are all acceptable.'}],
+         'examples': [{'value': '2021-04-15'}, {'value': '2021-04'}, {'value': '2021'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'arbitrary precision date only'],
          'rank': 4,
@@ -10760,7 +10850,7 @@ class Biosample(MaterialEntity):
          'comments': ['Time should be entered as HH:MM(:SS) in GMT. See here for a '
                       'converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': '13:33 or 13:33:55'}],
+         'examples': [{'value': '13:33'}, {'value': '13:33:55'}],
          'notes': ['MIxS collection_date accepts (truncated) ISO8601. DH taking '
                    'seconds optional time only'],
          'rank': 5,
@@ -10810,7 +10900,7 @@ class Biosample(MaterialEntity):
          'string_serialization': '{integer}'} })
     analysis_type: Optional[List[AnalysisTypeEnum]] = Field(None, title="analysis/data type", description="""Select all the data types associated or available for this biosample""", json_schema_extra = { "linkml_meta": {'alias': 'analysis_type',
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'metagenomics; metabolomics; proteomics'}],
+         'examples': [{'value': 'metagenomics; metabolomics; metaproteomics'}],
          'rank': 3,
          'recommended': True,
          'see_also': ['MIxS:investigation_type'],
@@ -10852,6 +10942,12 @@ class Biosample(MaterialEntity):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -10868,12 +10964,11 @@ class Biosample(MaterialEntity):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -10885,7 +10980,10 @@ class Biosample(MaterialEntity):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
@@ -11057,7 +11155,7 @@ class Biosample(MaterialEntity):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -11068,7 +11166,7 @@ class Biosample(MaterialEntity):
         return v
 
 
-class ProcessedSample(MaterialEntity):
+class ProcessedSample(Sample):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProcessedSample',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'id': {'name': 'id',
@@ -11116,6 +11214,12 @@ class ProcessedSample(MaterialEntity):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -11132,12 +11236,11 @@ class ProcessedSample(MaterialEntity):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -11149,7 +11252,10 @@ class ProcessedSample(MaterialEntity):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('external_database_identifiers')
     def pattern_external_database_identifiers(cls, v):
@@ -11177,7 +11283,7 @@ class ProcessedSample(MaterialEntity):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -11206,7 +11312,13 @@ class Site(MaterialEntity):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -11221,12 +11333,11 @@ class Site(MaterialEntity):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -11238,7 +11349,10 @@ class Site(MaterialEntity):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -11254,7 +11368,7 @@ class Site(MaterialEntity):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -11370,6 +11484,12 @@ class FieldResearchSite(Site):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -11386,12 +11506,11 @@ class FieldResearchSite(Site):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -11403,7 +11522,10 @@ class FieldResearchSite(Site):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('part_of')
     def pattern_part_of(cls, v):
@@ -11431,7 +11553,7 @@ class FieldResearchSite(Site):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -11469,6 +11591,12 @@ class Instrument(MaterialEntity):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -11485,12 +11613,11 @@ class Instrument(MaterialEntity):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -11502,7 +11629,10 @@ class Instrument(MaterialEntity):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -11518,7 +11648,7 @@ class Instrument(MaterialEntity):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -11565,7 +11695,13 @@ class PlannedProcess(NamedThing):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -11580,12 +11716,11 @@ class PlannedProcess(NamedThing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -11597,7 +11732,10 @@ class PlannedProcess(NamedThing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -11613,7 +11751,7 @@ class PlannedProcess(NamedThing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -11688,6 +11826,12 @@ class CollectingBiosamplesFromSite(PlannedProcess):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -11704,12 +11848,11 @@ class CollectingBiosamplesFromSite(PlannedProcess):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -11721,7 +11864,10 @@ class CollectingBiosamplesFromSite(PlannedProcess):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -11761,7 +11907,7 @@ class CollectingBiosamplesFromSite(PlannedProcess):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -11777,6 +11923,8 @@ class ProtocolExecution(PlannedProcess):
     A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProtocolExecution',
+         'deprecated': 'not used, not fulfilling intended purpose '
+                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
@@ -11802,11 +11950,16 @@ class ProtocolExecution(PlannedProcess):
                                                       'syntax': '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'}}}})
 
     has_process_parts: List[str] = Field(..., description="""The MaterialProcessing steps that are discrete parts of the ProtocolExecution.""", json_schema_extra = { "linkml_meta": {'alias': 'has_process_parts',
+         'deprecated': 'not used '
+                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
          'domain_of': ['ProtocolExecution'],
          'list_elements_ordered': True,
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'}} })
-    protocol_execution_category: ProtocolCategoryEnum = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'protocol_execution_category', 'domain_of': ['ProtocolExecution']} })
+    protocol_execution_category: ProtocolCategoryEnum = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'protocol_execution_category',
+         'deprecated': 'not used '
+                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
+         'domain_of': ['ProtocolExecution']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -11846,6 +11999,12 @@ class ProtocolExecution(PlannedProcess):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -11862,12 +12021,11 @@ class ProtocolExecution(PlannedProcess):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -11879,7 +12037,10 @@ class ProtocolExecution(PlannedProcess):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_process_parts')
     def pattern_has_process_parts(cls, v):
@@ -11931,7 +12092,7 @@ class ProtocolExecution(PlannedProcess):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12026,6 +12187,12 @@ class StorageProcess(PlannedProcess):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:storpr-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -12042,12 +12209,11 @@ class StorageProcess(PlannedProcess):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -12059,7 +12225,10 @@ class StorageProcess(PlannedProcess):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12099,7 +12268,7 @@ class StorageProcess(PlannedProcess):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12119,10 +12288,9 @@ class MaterialProcessing(PlannedProcess):
          'class_uri': 'nmdc:MaterialProcessing',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'notes': ['This class is a replacement for BiosampleProcessing.'],
-         'slot_usage': {'has_input': {'any_of': [{'range': 'Biosample'},
-                                                 {'range': 'ProcessedSample'}],
-                                      'name': 'has_input',
+         'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
@@ -12135,7 +12303,6 @@ class MaterialProcessing(PlannedProcess):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -12172,7 +12339,13 @@ class MaterialProcessing(PlannedProcess):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -12187,12 +12360,11 @@ class MaterialProcessing(PlannedProcess):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -12204,7 +12376,10 @@ class MaterialProcessing(PlannedProcess):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12244,7 +12419,7 @@ class MaterialProcessing(PlannedProcess):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12285,7 +12460,6 @@ class Pooling(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: List[str] = Field(..., description="""An input to a process.""", min_length=2, json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -12323,6 +12497,12 @@ class Pooling(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -12339,12 +12519,11 @@ class Pooling(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -12356,7 +12535,10 @@ class Pooling(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12396,7 +12578,7 @@ class Pooling(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12414,10 +12596,9 @@ class Extraction(MaterialProcessing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:Extraction',
          'exact_mappings': ['OBI:0302884'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'has_input': {'any_of': [{'range': 'Biosample'},
-                                                 {'range': 'ProcessedSample'}],
-                                      'name': 'has_input',
+         'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
@@ -12462,7 +12643,6 @@ class Extraction(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -12500,6 +12680,12 @@ class Extraction(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:extrp-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -12516,12 +12702,11 @@ class Extraction(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -12533,7 +12718,10 @@ class Extraction(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12573,7 +12761,7 @@ class Extraction(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12664,7 +12852,6 @@ class LibraryPreparation(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -12702,6 +12889,12 @@ class LibraryPreparation(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:libprp-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -12718,12 +12911,11 @@ class LibraryPreparation(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -12735,7 +12927,10 @@ class LibraryPreparation(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12775,7 +12970,7 @@ class LibraryPreparation(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12805,10 +13000,9 @@ class SubSamplingProcess(MaterialProcessing):
                    'usually apparent from the context or is defined.',
                    'TODO - Montana to visit slot descriptions'],
          'related_mappings': ['OBI:0000744'],
-         'slot_usage': {'has_input': {'any_of': [{'range': 'Biosample'},
-                                                 {'range': 'ProcessedSample'}],
-                                      'name': 'has_input',
+         'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'description': 'The subsample.',
@@ -12861,7 +13055,6 @@ class SubSamplingProcess(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -12899,6 +13092,12 @@ class SubSamplingProcess(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:subspr-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -12915,12 +13114,11 @@ class SubSamplingProcess(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -12932,7 +13130,10 @@ class SubSamplingProcess(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12972,7 +13173,7 @@ class SubSamplingProcess(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13000,10 +13201,9 @@ class MixingProcess(MaterialProcessing):
                       'measurement system.'],
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'has_input': {'any_of': [{'range': 'Biosample'},
-                                                 {'range': 'ProcessedSample'}],
-                                      'name': 'has_input',
+         'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'description': 'The mixed sample.',
@@ -13027,7 +13227,6 @@ class MixingProcess(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -13065,6 +13264,12 @@ class MixingProcess(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'syntax': '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
@@ -13080,12 +13285,11 @@ class MixingProcess(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13097,7 +13301,10 @@ class MixingProcess(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13137,7 +13344,7 @@ class MixingProcess(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13159,10 +13366,9 @@ class FiltrationProcess(MaterialProcessing):
                           'ORCID:0009-0008-4013-7737'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'related_mappings': ['CHMO:0001640'],
-         'slot_usage': {'has_input': {'any_of': [{'range': 'Biosample'},
-                                                 {'range': 'ProcessedSample'}],
-                                      'name': 'has_input',
+         'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
@@ -13211,7 +13417,6 @@ class FiltrationProcess(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -13249,6 +13454,12 @@ class FiltrationProcess(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:filtpr-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -13265,12 +13476,11 @@ class FiltrationProcess(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13282,7 +13492,10 @@ class FiltrationProcess(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13322,7 +13535,7 @@ class FiltrationProcess(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13340,10 +13553,9 @@ class ChromatographicSeparationProcess(MaterialProcessing):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ChromatographicSeparationProcess',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-1368-8217'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'has_input': {'any_of': [{'range': 'Biosample'},
-                                                 {'range': 'ProcessedSample'}],
-                                      'name': 'has_input',
+         'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
@@ -13379,7 +13591,6 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -13417,6 +13628,12 @@ class ChromatographicSeparationProcess(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'syntax': '{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
@@ -13432,12 +13649,11 @@ class ChromatographicSeparationProcess(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13449,7 +13665,10 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13489,7 +13708,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13541,7 +13760,6 @@ class DissolvingProcess(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -13579,6 +13797,12 @@ class DissolvingProcess(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -13595,12 +13819,11 @@ class DissolvingProcess(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13612,7 +13835,10 @@ class DissolvingProcess(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13652,7 +13878,7 @@ class DissolvingProcess(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13709,7 +13935,6 @@ class ChemicalConversionProcess(MaterialProcessing):
          'domain_of': ['MaterialProcessing', 'DataGeneration']} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -13747,6 +13972,12 @@ class ChemicalConversionProcess(MaterialProcessing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -13763,12 +13994,11 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13780,7 +14010,10 @@ class ChemicalConversionProcess(MaterialProcessing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13820,7 +14053,7 @@ class ChemicalConversionProcess(MaterialProcessing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13846,12 +14079,11 @@ class Protocol(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13863,7 +14095,10 @@ class Protocol(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class CreditAssociation(ConfiguredBaseModel):
@@ -13892,12 +14127,11 @@ class CreditAssociation(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13909,7 +14143,10 @@ class CreditAssociation(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
 
 class Doi(ConfiguredBaseModel):
@@ -13936,21 +14173,18 @@ class Doi(ConfiguredBaseModel):
          'exact_mappings': ['OBI:0002110'],
          'examples': [{'description': 'The DOI links to an electronic document.',
                        'value': 'doi:10.46936/10.25585/60000880'}],
-         'in_subset': ['data_portal_subset'],
          'narrow_mappings': ['edam.data:1188']} })
     doi_provider: Optional[DoiProviderEnum] = Field(None, description="""The authority, or organization, the DOI is associated with.""", json_schema_extra = { "linkml_meta": {'alias': 'doi_provider',
          'close_mappings': ['NCIT:C74932'],
          'domain_of': ['Doi'],
          'examples': [{'description': 'The corresponding DOI is associated with '
                                       'ESS-DIVE.',
-                       'value': 'ess_dive'}],
-         'in_subset': ['data_portal_subset']} })
+                       'value': 'ess_dive'}]} })
     doi_category: DoiCategoryEnum = Field(..., description="""The resource type the corresponding doi resolves to.""", json_schema_extra = { "linkml_meta": {'alias': 'doi_category',
          'domain_of': ['Doi'],
          'examples': [{'description': 'The corresponding DOI is a dataset resource '
                                       'type.',
-                       'value': 'dataset_doi'}],
-         'in_subset': ['data_portal_subset']} })
+                       'value': 'dataset_doi'}]} })
     type: Literal["https://w3id.org/nmdc/Doi","nmdc:Doi"] = Field("nmdc:Doi", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
          'domain_of': ['EukEval',
@@ -13959,12 +14193,11 @@ class Doi(ConfiguredBaseModel):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -13976,7 +14209,10 @@ class Doi(ConfiguredBaseModel):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('doi_value')
     def pattern_doi_value(cls, v):
@@ -14019,7 +14255,6 @@ class Study(NamedThing):
                             'NCIT:C41198',
                             'ISA:Investigation'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['sample subset'],
          'notes': ['sample GOLD link https://bioregistry.io/gold:Gs0110115',
                    'sample insdc.srs link '
                    'https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?',
@@ -14243,7 +14478,7 @@ class Study(NamedThing):
                                               'are also associated with this '
                                               'submission or other names / identifiers '
                                               'for this study.'}},
-         'domain_of': ['ChemicalEntity', 'Study'],
+         'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     alternative_titles: Optional[List[str]] = Field(None, description="""A list of alternative titles for the entity. The distinction between title and alternative titles is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_titles',
          'domain_of': ['Study'],
@@ -14305,8 +14540,7 @@ class Study(NamedThing):
                                 "{'doi': 'doi:10.1101/2022.12.12.520098', "
                                 "'doi_category': 'publication_doi'}, {'doi': "
                                 "'doi:10.48321/D1Z60Q', 'doi_category': "
-                                "'data_management_plan_doi', 'doi_provider': 'gsc'}]"}],
-         'in_subset': ['data_portal_subset']} })
+                                "'data_management_plan_doi', 'doi_provider': 'gsc'}]"}]} })
     funding_sources: Optional[List[str]] = Field(None, description="""A list of organizations, along with the award numbers, that underwrite financial support for projects of a particular type. Typically, they process applications and award funds to the chosen qualified applicants.""", json_schema_extra = { "linkml_meta": {'alias': 'funding_sources',
          'close_mappings': ['NCIT:C39409'],
          'comments': ['Include only the name of the funding organization and the award '
@@ -14380,6 +14614,12 @@ class Study(NamedThing):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name',
@@ -14404,12 +14644,11 @@ class Study(NamedThing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -14421,7 +14660,10 @@ class Study(NamedThing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('emsl_project_identifiers')
     def pattern_emsl_project_identifiers(cls, v):
@@ -14557,7 +14799,7 @@ class Study(NamedThing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -14602,7 +14844,13 @@ class InformationObject(NamedThing):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -14617,12 +14865,11 @@ class InformationObject(NamedThing):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -14634,7 +14881,10 @@ class InformationObject(NamedThing):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -14650,7 +14900,7 @@ class InformationObject(NamedThing):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -14682,7 +14932,13 @@ class Configuration(InformationObject):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -14697,12 +14953,11 @@ class Configuration(InformationObject):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -14714,7 +14969,10 @@ class Configuration(InformationObject):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -14730,7 +14988,7 @@ class Configuration(InformationObject):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -14783,6 +15041,12 @@ class MassSpectrometryConfiguration(Configuration):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}} })
     name: str = Field(..., description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -14799,12 +15063,11 @@ class MassSpectrometryConfiguration(Configuration):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -14816,7 +15079,10 @@ class MassSpectrometryConfiguration(Configuration):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -14832,7 +15098,7 @@ class MassSpectrometryConfiguration(Configuration):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -14889,6 +15155,12 @@ class ChromatographyConfiguration(Configuration):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'}} })
     name: str = Field(..., description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -14905,12 +15177,11 @@ class ChromatographyConfiguration(Configuration):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -14922,7 +15193,10 @@ class ChromatographyConfiguration(Configuration):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -14938,7 +15212,7 @@ class ChromatographyConfiguration(Configuration):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -14976,6 +15250,12 @@ class Manifest(InformationObject):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'syntax': '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
@@ -14991,12 +15271,11 @@ class Manifest(InformationObject):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -15008,7 +15287,10 @@ class Manifest(InformationObject):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -15024,7 +15306,7 @@ class Manifest(InformationObject):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15064,7 +15346,10 @@ class CalibrationInformation(InformationObject):
                         'internal_calibration': {'name': 'internal_calibration',
                                                  'required': True}}})
 
-    calibration_object: Optional[str] = Field(None, description="""the file containing calibration data object""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_object', 'domain_of': ['CalibrationInformation']} })
+    calibration_object: Optional[str] = Field(None, description="""the file containing calibration data object""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_object',
+         'domain_of': ['CalibrationInformation'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'}} })
     internal_calibration: bool = Field(..., description="""whether internal calibration was used, if false, external calibration was used""", json_schema_extra = { "linkml_meta": {'alias': 'internal_calibration', 'domain_of': ['CalibrationInformation']} })
     calibration_target: CalibrationTargetEnum = Field(..., description="""the target measurement of the calibration""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_target', 'domain_of': ['CalibrationInformation']} })
     calibration_standard: Optional[CalibrationStandardEnum] = Field(None, description="""the reference standard(s) used for calibration""", json_schema_extra = { "linkml_meta": {'alias': 'calibration_standard', 'domain_of': ['CalibrationInformation']} })
@@ -15080,6 +15365,12 @@ class CalibrationInformation(InformationObject):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -15096,12 +15387,11 @@ class CalibrationInformation(InformationObject):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -15113,7 +15403,22 @@ class CalibrationInformation(InformationObject):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('calibration_object')
+    def pattern_calibration_object(cls, v):
+        pattern=re.compile(r"^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid calibration_object format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid calibration_object format: {v}")
+        return v
 
     @field_validator('id')
     def pattern_id(cls, v):
@@ -15129,7 +15434,7 @@ class CalibrationInformation(InformationObject):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15146,7 +15451,6 @@ class DataObject(InformationObject):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:DataObject',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['data object subset'],
          'slot_usage': {'description': {'name': 'description', 'required': True},
                         'id': {'name': 'id',
                                'pattern': '^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
@@ -15167,7 +15471,10 @@ class DataObject(InformationObject):
     data_object_type: Optional[FileTypeEnum] = Field(None, description="""The type of file represented by the data object.""", json_schema_extra = { "linkml_meta": {'alias': 'data_object_type',
          'domain_of': ['DataObject'],
          'examples': [{'value': 'FT ICR-MS Analysis Results'},
-                      {'value': 'GC-MS Metabolomics Results'}]} })
+                      {'value': 'GC-MS Metabolomics Results'}],
+         'structured_aliases': {'data_object_type': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                     'literal_form': 'data_object_type',
+                                                     'predicate': 'EXACT_SYNONYM'}}} })
     file_size_bytes: Optional[int] = Field(None, description="""Size of the file in bytes""", json_schema_extra = { "linkml_meta": {'alias': 'file_size_bytes', 'domain_of': ['DataObject']} })
     insdc_experiment_identifiers: Optional[List[str]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'insdc_experiment_identifiers',
          'domain_of': ['NucleotideSequencing', 'DataObject'],
@@ -15190,7 +15497,9 @@ class DataObject(InformationObject):
                       'DataObject could be part of a manifest for a single run of an '
                       'instrument and a manifest for technical replicates of a single '
                       'sample.'],
-         'domain_of': ['DataObject']} })
+         'domain_of': ['DataObject'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -15203,6 +15512,12 @@ class DataObject(InformationObject):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'}} })
     name: str = Field(..., description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -15219,12 +15534,11 @@ class DataObject(InformationObject):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -15236,7 +15550,10 @@ class DataObject(InformationObject):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('insdc_experiment_identifiers')
     def pattern_insdc_experiment_identifiers(cls, v):
@@ -15262,6 +15579,18 @@ class DataObject(InformationObject):
                 raise ValueError(f"Invalid was_generated_by format: {v}")
         return v
 
+    @field_validator('in_manifest')
+    def pattern_in_manifest(cls, v):
+        pattern=re.compile(r"^^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid in_manifest format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid in_manifest format: {v}")
+        return v
+
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
@@ -15276,7 +15605,7 @@ class DataObject(InformationObject):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15306,16 +15635,14 @@ class DataGeneration(PlannedProcess):
          'broad_mappings': ['OBI:0000070', 'ISA:Assay'],
          'class_uri': 'nmdc:DataGeneration',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['sample subset'],
          'slot_usage': {'associated_studies': {'name': 'associated_studies',
                                                'pattern': '^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                                'range': 'Study',
                                                'structured_pattern': {'interpolated': True,
                                                                       'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}},
-                        'has_input': {'any_of': [{'range': 'Biosample'},
-                                                 {'range': 'ProcessedSample'}],
-                                      'name': 'has_input',
+                        'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
@@ -15326,7 +15653,7 @@ class DataGeneration(PlannedProcess):
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}}}})
 
     add_date: Optional[str] = Field(None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: AnalyteCategoryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
+    analyte_category: str = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
   in the Workflow Chain
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: List[str] = Field(..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
@@ -15341,7 +15668,6 @@ class DataGeneration(PlannedProcess):
          'domain_of': ['Study', 'DataGeneration']} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -15378,7 +15704,13 @@ class DataGeneration(PlannedProcess):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -15393,12 +15725,11 @@ class DataGeneration(PlannedProcess):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -15410,7 +15741,10 @@ class DataGeneration(PlannedProcess):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
@@ -15462,7 +15796,7 @@ class DataGeneration(PlannedProcess):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15481,7 +15815,9 @@ class NucleotideSequencing(DataGeneration):
          'comments': ['For example data generated from an Illumina or Pacific '
                       'Biosciences instrument.'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'id': {'name': 'id',
+         'slot_usage': {'analyte_category': {'name': 'analyte_category',
+                                             'range': 'NucleotideSequencingEnum'},
+                        'id': {'name': 'id',
                                'pattern': '^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'}}}})
@@ -15508,7 +15844,7 @@ class NucleotideSequencing(DataGeneration):
          'is_a': 'external_database_identifiers',
          'mixins': ['insdc_identifiers']} })
     ncbi_project_name: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'ncbi_project_name', 'domain_of': ['NucleotideSequencing']} })
-    target_gene: Optional[TextValue] = Field(None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'alias': 'target_gene',
+    target_gene: Optional[TargetGeneEnum] = Field(None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'alias': 'target_gene',
          'aliases': ['target gene'],
          'annotations': {'expected_value': {'tag': 'expected_value',
                                             'value': 'gene name'}},
@@ -15527,7 +15863,7 @@ class NucleotideSequencing(DataGeneration):
          'slot_uri': 'MIXS:0000045',
          'string_serialization': '{text}'} })
     add_date: Optional[str] = Field(None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: AnalyteCategoryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
+    analyte_category: NucleotideSequencingEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
   in the Workflow Chain
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: List[str] = Field(..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
@@ -15542,7 +15878,6 @@ class NucleotideSequencing(DataGeneration):
          'domain_of': ['Study', 'DataGeneration']} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -15580,6 +15915,12 @@ class NucleotideSequencing(DataGeneration):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -15596,12 +15937,11 @@ class NucleotideSequencing(DataGeneration):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -15613,7 +15953,10 @@ class NucleotideSequencing(DataGeneration):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('gold_sequencing_project_identifiers')
     def pattern_gold_sequencing_project_identifiers(cls, v):
@@ -15701,7 +16044,7 @@ class NucleotideSequencing(DataGeneration):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15720,13 +16063,13 @@ class MassSpectrometry(DataGeneration):
          'exact_mappings': ['CHMO:0000470'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'rules': [{'description': 'If eluent_introduction_category is '
-                                   'gas_chromatography, then has_calibration is '
+                                   'gas_chromatography, then generates_calibration is '
                                    'required.',
-                    'postconditions': {'slot_conditions': {'has_calibration': {'name': 'has_calibration',
-                                                                               'required': True}}},
+                    'postconditions': {'slot_conditions': {'generates_calibration': {'name': 'generates_calibration',
+                                                                                     'required': True}}},
                     'preconditions': {'slot_conditions': {'eluent_introduction_category': {'equals_string': 'gas_chromatography',
                                                                                            'name': 'eluent_introduction_category'}}},
-                    'title': 'has_calibration_required_if_gc'},
+                    'title': 'generates_calibration_required_if_gc'},
                    {'description': 'If eluent_introduction_category is '
                                    'liquid_chromatography or gas_chromatography, then '
                                    'has_chromatography_configuration is required.',
@@ -15736,10 +16079,8 @@ class MassSpectrometry(DataGeneration):
                                                                                                       {'equals_string': 'gas_chromatography'}],
                                                                                            'name': 'eluent_introduction_category'}}},
                     'title': 'has_chromatography_configuration_required_if_lc_or_gc'}],
-         'slot_usage': {'has_calibration': {'name': 'has_calibration',
-                                            'pattern': '^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                                            'structured_pattern': {'interpolated': True,
-                                                                   'syntax': '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'}},
+         'slot_usage': {'analyte_category': {'name': 'analyte_category',
+                                             'range': 'MassSpectrometryEnum'},
                         'has_chromatography_configuration': {'name': 'has_chromatography_configuration',
                                                              'pattern': '^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                                              'structured_pattern': {'interpolated': True,
@@ -15757,7 +16098,9 @@ class MassSpectrometry(DataGeneration):
          'domain_of': ['MassSpectrometry'],
          'examples': [{'value': 'liquid_chromatography'},
                       {'value': 'direct_infusion_syringe'}]} })
-    has_calibration: Optional[str] = Field(None, description="""a calibration instance associated with a process""", json_schema_extra = { "linkml_meta": {'alias': 'has_calibration',
+    generates_calibration: Optional[str] = Field(None, description="""calibration information is generated a process""", json_schema_extra = { "linkml_meta": {'alias': 'generates_calibration',
+         'comments': ['A gas chromatography mass spectromery run generates data to '
+                      'calibrate the retention index'],
          'domain_of': ['MassSpectrometry'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'}} })
@@ -15770,7 +16113,7 @@ class MassSpectrometry(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}} })
     add_date: Optional[str] = Field(None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: AnalyteCategoryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
+    analyte_category: MassSpectrometryEnum = Field(..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
   in the Workflow Chain
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: List[str] = Field(..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
@@ -15785,7 +16128,6 @@ class MassSpectrometry(DataGeneration):
          'domain_of': ['Study', 'DataGeneration']} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
-         'any_of': [{'range': 'Biosample'}, {'range': 'ProcessedSample'}],
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
@@ -15823,6 +16165,12 @@ class MassSpectrometry(DataGeneration):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -15839,12 +16187,11 @@ class MassSpectrometry(DataGeneration):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -15856,18 +16203,21 @@ class MassSpectrometry(DataGeneration):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
-    @field_validator('has_calibration')
-    def pattern_has_calibration(cls, v):
+    @field_validator('generates_calibration')
+    def pattern_generates_calibration(cls, v):
         pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
-                    raise ValueError(f"Invalid has_calibration format: {element}")
+                    raise ValueError(f"Invalid generates_calibration format: {element}")
         elif isinstance(v,str):
             if not pattern.match(v):
-                raise ValueError(f"Invalid has_calibration format: {v}")
+                raise ValueError(f"Invalid generates_calibration format: {v}")
         return v
 
     @field_validator('has_chromatography_configuration')
@@ -15944,7 +16294,7 @@ class MassSpectrometry(DataGeneration):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15971,7 +16321,6 @@ class WorkflowExecution(PlannedProcess):
                       'WorkflowExecution is a distinct run with start and stop times, '
                       'potentially with different inputs and outputs'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'rules': [{'description': 'If qc_status has a value of pass, then the '
                                    'has_output slot is required.',
                     'postconditions': {'slot_conditions': {'has_output': {'name': 'has_output',
@@ -16025,7 +16374,10 @@ class WorkflowExecution(PlannedProcess):
     version: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy']} })
+         'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -16064,7 +16416,13 @@ class WorkflowExecution(PlannedProcess):
                    'typecodes must correspond 1:1 to a class in the NMDC schema. this '
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern']} })
+                   'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
     description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
          'domain_of': ['ImageValue', 'NamedThing'],
@@ -16079,12 +16437,11 @@ class WorkflowExecution(PlannedProcess):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -16096,7 +16453,10 @@ class WorkflowExecution(PlannedProcess):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
@@ -16160,7 +16520,7 @@ class WorkflowExecution(PlannedProcess):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -16177,7 +16537,6 @@ class MetagenomeAnnotation(WorkflowExecution):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetagenomeAnnotation',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'gold_analysis_project_identifiers': {'name': 'gold_analysis_project_identifiers',
                                                               'pattern': '^gold:Ga[0-9]+$',
                                                               'structured_pattern': {'interpolated': True,
@@ -16234,6 +16593,9 @@ class MetagenomeAnnotation(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -16275,6 +16637,12 @@ class MetagenomeAnnotation(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmgan-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -16291,12 +16659,11 @@ class MetagenomeAnnotation(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -16308,7 +16675,10 @@ class MetagenomeAnnotation(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
@@ -16408,7 +16778,7 @@ class MetagenomeAnnotation(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -16427,7 +16797,6 @@ class MetagenomeAssembly(WorkflowExecution):
          'comments': ['instances of this class may use a de novo assembly strategy in '
                       'most or all cases relevant to NMDC'],
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -16546,6 +16915,9 @@ class MetagenomeAssembly(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -16587,6 +16959,12 @@ class MetagenomeAssembly(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -16603,12 +16981,11 @@ class MetagenomeAssembly(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -16620,7 +16997,10 @@ class MetagenomeAssembly(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('insdc_assembly_identifiers')
     def pattern_insdc_assembly_identifiers(cls, v):
@@ -16708,7 +17088,7 @@ class MetagenomeAssembly(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -16722,7 +17102,6 @@ class MetagenomeAssembly(WorkflowExecution):
 class MetatranscriptomeAssembly(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeAssembly',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -16841,6 +17220,9 @@ class MetatranscriptomeAssembly(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -16882,6 +17264,12 @@ class MetatranscriptomeAssembly(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -16898,12 +17286,11 @@ class MetatranscriptomeAssembly(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -16915,7 +17302,10 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('insdc_assembly_identifiers')
     def pattern_insdc_assembly_identifiers(cls, v):
@@ -17003,7 +17393,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -17017,7 +17407,6 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 class MetatranscriptomeAnnotation(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeAnnotation',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'gold_analysis_project_identifiers': {'name': 'gold_analysis_project_identifiers',
                                                               'pattern': '^gold:Ga[0-9]+$',
                                                               'structured_pattern': {'interpolated': True,
@@ -17082,6 +17471,9 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -17123,6 +17515,12 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmtan-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -17139,12 +17537,11 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -17156,7 +17553,10 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
@@ -17256,7 +17656,7 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -17273,7 +17673,6 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetatranscriptomeExpressionAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -17320,6 +17719,9 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -17361,6 +17763,12 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmtex-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -17377,12 +17785,11 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -17394,7 +17801,10 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
@@ -17482,7 +17892,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -17499,7 +17909,6 @@ class MagsAnalysis(WorkflowExecution):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MagsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -17553,6 +17962,9 @@ class MagsAnalysis(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -17594,6 +18006,12 @@ class MagsAnalysis(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmag-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -17610,12 +18028,11 @@ class MagsAnalysis(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -17627,7 +18044,10 @@ class MagsAnalysis(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
@@ -17715,7 +18135,7 @@ class MagsAnalysis(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -17732,7 +18152,6 @@ class MetagenomeSequencing(WorkflowExecution):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetagenomeSequencing',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                       'structured_pattern': {'interpolated': True,
@@ -17771,6 +18190,9 @@ class MetagenomeSequencing(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -17812,6 +18234,12 @@ class MetagenomeSequencing(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -17828,12 +18256,11 @@ class MetagenomeSequencing(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -17845,7 +18272,10 @@ class MetagenomeSequencing(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
@@ -17921,7 +18351,7 @@ class MetagenomeSequencing(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -17938,7 +18368,6 @@ class ReadQcAnalysis(WorkflowExecution):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ReadQcAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -17987,6 +18416,9 @@ class ReadQcAnalysis(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -18028,6 +18460,12 @@ class ReadQcAnalysis(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -18044,12 +18482,11 @@ class ReadQcAnalysis(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -18061,7 +18498,10 @@ class ReadQcAnalysis(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
@@ -18137,7 +18577,7 @@ class ReadQcAnalysis(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -18154,7 +18594,6 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ReadBasedTaxonomyAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -18189,6 +18628,9 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -18230,6 +18672,12 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -18246,12 +18694,11 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -18263,7 +18710,10 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
@@ -18339,7 +18789,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -18353,7 +18803,6 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 class MetabolomicsAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetabolomicsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -18365,6 +18814,15 @@ class MetabolomicsAnalysis(WorkflowExecution):
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
 
     has_metabolite_identifications: Optional[List[MetaboliteIdentification]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'has_metabolite_identifications',
+         'domain_of': ['MetabolomicsAnalysis']} })
+    uses_calibration: Optional[str] = Field(None, description="""calibration information is used by a process""", json_schema_extra = { "linkml_meta": {'alias': 'uses_calibration',
+         'comments': ['Retenion index calibration data generated by a gas '
+                      'chromatography mass spectromery run is used when analyzing '
+                      'metabolomics data'],
+         'domain_of': ['MetabolomicsAnalysis', 'NomAnalysis'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'}} })
+    metabolomics_analysis_category: MetabolomicsAnalysisCategoryEnum = Field(..., description="""The category of metabolomics analysis being performed.""", json_schema_extra = { "linkml_meta": {'alias': 'metabolomics_analysis_category',
          'domain_of': ['MetabolomicsAnalysis']} })
     ended_at_time: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'ended_at_time',
          'domain_of': ['WorkflowExecution'],
@@ -18389,6 +18847,9 @@ class MetabolomicsAnalysis(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -18430,6 +18891,12 @@ class MetabolomicsAnalysis(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -18446,12 +18913,11 @@ class MetabolomicsAnalysis(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -18463,7 +18929,22 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('uses_calibration')
+    def pattern_uses_calibration(cls, v):
+        pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid uses_calibration format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid uses_calibration format: {v}")
+        return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
@@ -18539,7 +19020,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -18553,7 +19034,6 @@ class MetabolomicsAnalysis(WorkflowExecution):
 class MetaproteomicsAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetaproteomicsAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -18564,6 +19044,8 @@ class MetaproteomicsAnalysis(WorkflowExecution):
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
 
+    metaproteomics_analysis_category: MetaproteomicsAnalysisCategoryEnum = Field(..., description="""The category of metaproteomics analysis being performed.""", json_schema_extra = { "linkml_meta": {'alias': 'metaproteomics_analysis_category',
+         'domain_of': ['MetaproteomicsAnalysis']} })
     ended_at_time: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'ended_at_time',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:endedAtTime'],
@@ -18587,6 +19069,9 @@ class MetaproteomicsAnalysis(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -18628,6 +19113,12 @@ class MetaproteomicsAnalysis(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -18644,12 +19135,11 @@ class MetaproteomicsAnalysis(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -18661,7 +19151,10 @@ class MetaproteomicsAnalysis(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
@@ -18737,7 +19230,7 @@ class MetaproteomicsAnalysis(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -18751,7 +19244,6 @@ class MetaproteomicsAnalysis(WorkflowExecution):
 class NomAnalysis(WorkflowExecution):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:NomAnalysis',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'in_subset': ['workflow subset'],
          'slot_usage': {'id': {'name': 'id',
                                'pattern': '^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
                                'required': True,
@@ -18762,6 +19254,13 @@ class NomAnalysis(WorkflowExecution):
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
 
+    uses_calibration: Optional[str] = Field(None, description="""calibration information is used by a process""", json_schema_extra = { "linkml_meta": {'alias': 'uses_calibration',
+         'comments': ['Retenion index calibration data generated by a gas '
+                      'chromatography mass spectromery run is used when analyzing '
+                      'metabolomics data'],
+         'domain_of': ['MetabolomicsAnalysis', 'NomAnalysis'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'}} })
     ended_at_time: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'ended_at_time',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:endedAtTime'],
@@ -18785,6 +19284,9 @@ class NomAnalysis(WorkflowExecution):
     was_informed_by: str = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
          'domain_of': ['WorkflowExecution'],
          'mappings': ['prov:wasInformedBy'],
+         'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                    'literal_form': 'was_informed_by',
+                                                    'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
@@ -18826,6 +19328,12 @@ class NomAnalysis(WorkflowExecution):
                    'will be checked via per-class id slot usage assertions',
                    'minting authority shoulders should probably be enumerated and '
                    'checked in the pattern'],
+         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                   'literal_form': 'data_object_id',
+                                                   'predicate': 'NARROW_SYNONYM'},
+                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                          'literal_form': 'workflow_execution_id',
+                                                          'predicate': 'NARROW_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}} })
     name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
@@ -18842,12 +19350,11 @@ class NomAnalysis(WorkflowExecution):
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
-                       'PeptideQuantification',
-                       'ProteinQuantification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
                        'AttributeValue',
                        'NamedThing',
+                       'OntologyRelation',
                        'FailureCategorization',
                        'Protocol',
                        'CreditAssociation',
@@ -18859,7 +19366,22 @@ class NomAnalysis(WorkflowExecution):
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
                       'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type'} })
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('uses_calibration')
+    def pattern_uses_calibration(cls, v):
+        pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid uses_calibration format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid uses_calibration format: {v}")
+        return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
@@ -18935,7 +19457,7 @@ class NomAnalysis(WorkflowExecution):
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -18955,8 +19477,6 @@ MobilePhaseSegment.model_rebuild()
 PortionOfSubstance.model_rebuild()
 MagBin.model_rebuild()
 MetaboliteIdentification.model_rebuild()
-PeptideQuantification.model_rebuild()
-ProteinQuantification.model_rebuild()
 GenomeFeature.model_rebuild()
 FunctionalAnnotation.model_rebuild()
 AttributeValue.model_rebuild()
@@ -18976,8 +19496,10 @@ ChemicalEntity.model_rebuild()
 FunctionalAnnotationTerm.model_rebuild()
 Pathway.model_rebuild()
 OrthologyGroup.model_rebuild()
+OntologyRelation.model_rebuild()
 FailureCategorization.model_rebuild()
 MaterialEntity.model_rebuild()
+Sample.model_rebuild()
 Biosample.model_rebuild()
 ProcessedSample.model_rebuild()
 Site.model_rebuild()

@@ -1,30 +1,33 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.partials.migrator_from_11_1_0_to_11_2_0 import (
+    get_migrator_classes,
+)
 
 
 class Migrator(MigratorBase):
-    r"""Migrates a database between two schemas."""
+    r"""
+    Migrates a database between two schemas.
+
+    Reference: https://pypi.org/project/nmdc-schema/#history
+    """
 
     _from_version = "11.1.0"
     _to_version = "11.2.0"
 
-    def upgrade(self):
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
-
-        self.adapter.process_each_document("workflow_execution_set", [self.set_metap_analysis_category])
-
-    def set_metap_analysis_category(self, workflow: dict) -> dict:
+    def upgrade(self) -> None:
         r"""
-        If the workflow execution records is of the type "nmdc:MetaproteomicsAnalysis", 
-        add field `metaproteomics_analysis_category` and assign it the value "matched_metagenome".
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
 
-        >>> m = Migrator()
-        >>> m.set_metap_analysis_category({'id': 123, 'type': 'nmdc:MetaproteomicsAnalysis'})  # field doesn't exist yet
-        {'id': 123, 'type': 'nmdc:MetaproteomicsAnalysis', 'metaproteomics_analysis_category': 'matched_metagenome'}
-        >>> m.set_metap_analysis_category({'id': 123, 'type': 'nmdc:MetabolomicsAnalysis'})  # not a metaproteomics analysis
-        {'id': 123, 'type': 'nmdc:MetabolomicsAnalysis'}
+        This migrator uses partial migrators. It runs them in the order in which they were designed to be run.
         """
 
-        if workflow["type"] == "nmdc:MetaproteomicsAnalysis":
-            if "metaproteomics_analysis_category" not in workflow:
-                workflow["metaproteomics_analysis_category"] = "matched_metagenome"
-        return workflow
+        migrator_classes = get_migrator_classes()
+        num_migrators = len(migrator_classes)
+        for idx, migrator_class in enumerate(migrator_classes):
+            self.logger.info(f"Running migrator {idx + 1} of {num_migrators}")
+            self.logger.debug(
+                f"Migrating from {migrator_class.get_origin_version()} "
+                f"to {migrator_class.get_destination_version()}"
+            )
+            migrator = migrator_class(adapter=self.adapter, logger=self.logger)
+            migrator.upgrade()

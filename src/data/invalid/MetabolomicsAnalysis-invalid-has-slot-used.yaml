@@ -12,3 +12,4 @@ has_input:
 has_output:
   - nmdc:dobj-11-547rwa36
   - nmdc:dobj-11-547rwa37
+metabolomics_analysis_category: gc_ms_metabolomics

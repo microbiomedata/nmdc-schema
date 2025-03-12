@@ -31,14 +31,14 @@ types:
     see_also:
       - UO:0000233
 
-  decimal degree:
+  decimal_degree:
     description: A decimal degree expresses latitude or longitude as decimal fractions.
     uri: xsd:decimal
     base: float
     see_also:
       - https://en.wikipedia.org/wiki/Decimal_degrees
 
-  language code:
+  language_code:
     description: A language code conforming to ISO_639-1
     see_also:
       - https://en.wikipedia.org/wiki/ISO_639-1

@@ -1,8 +1,13 @@
 name: NMDC
-description: "Schema for National Microbiome Data Collaborative (NMDC).\nThis schema\
-  \ is organized into multiple modules, such as:\n\n * a set of core types for representing\
-  \ data values\n * a subset of the mixs schema\n * an annotation schema\n * the NMDC\
-  \ schema itself, into which the other modules are imported"
+description: The NMDC Schema is a foundational framework designed to standardize metadata
+  for the National Microbiome Data  Collaborative (NMDC) and collaborating data providors.
+  By establishing a structured approach to metadata, the NMDC Schema enables researchers
+  to organize,  share, and interpret complex datasets with consistency and clarity.
+  The NMDC Schema is critical substrate used to facilitate  interoperability and collaboration,
+  as it provide a common language for data exchange across systems and disciplines.  In
+  the context of the NMDC, this schema supports the integration of microbiome data
+  from medicine, agriculture,  bioenergy, and environmental science into a cohesive
+  platform.
 title: NMDC Schema
 notes:
 - not importing any MIxS terms where the relationship between the name (SCN) and the
@@ -298,65 +303,6 @@ emit_prefixes:
 - xsd
 default_prefix: nmdc
 default_range: string
-subsets:
-  mixs_environmental_triad:
-    name: mixs_environmental_triad
-    title: MIxS Environmental Triad
-    from_schema: https://w3id.org/nmdc/nmdc
-  mixs extension:
-    name: mixs extension
-    from_schema: https://w3id.org/nmdc/nmdc
-  checklist:
-    name: checklist
-    description: A MIxS checklist. These can be combined with packages
-    from_schema: https://w3id.org/nmdc/nmdc
-  package:
-    name: package
-    description: A MIxS package. These can be combined with checklists
-    from_schema: https://w3id.org/nmdc/nmdc
-  checklist_package_combination:
-    name: checklist_package_combination
-    description: A combination of a checklist and a package
-    from_schema: https://w3id.org/nmdc/nmdc
-  data object subset:
-    name: data object subset
-    description: Subset consisting of the data objects that either inputs or outputs
-      of processes or workflows.
-    from_schema: https://w3id.org/nmdc/nmdc
-  data_portal_subset:
-    name: data_portal_subset
-    description: Subset consisting of entities that Kitware/nmdc-server use to populate
-      the data portal.
-    comments:
-    - Schema authors are responsible for alerting and supporting Kitware and nmdc-server
-      authors about changes they will have to make if entities labeled with data_portal_subset
-      are modified.
-    - Assignment of the data_portal_subset is incomplete in the schema.
-    from_schema: https://w3id.org/nmdc/nmdc
-  environment:
-    name: environment
-    from_schema: https://w3id.org/nmdc/nmdc
-  investigation:
-    name: investigation
-    from_schema: https://w3id.org/nmdc/nmdc
-  nucleic acid sequence source:
-    name: nucleic acid sequence source
-    from_schema: https://w3id.org/nmdc/nmdc
-  proteases:
-    name: proteases
-    from_schema: https://w3id.org/nmdc/nmdc
-  sample subset:
-    name: sample subset
-    description: Subset consisting of entities linked to the processing of samples.  Currently,
-      this subset consists of study, omics process, and biosample.
-    from_schema: https://w3id.org/nmdc/nmdc
-  sequencing:
-    name: sequencing
-    from_schema: https://w3id.org/nmdc/nmdc
-  workflow subset:
-    name: workflow subset
-    description: Subset consisting of just the workflow execution activities
-    from_schema: https://w3id.org/nmdc/nmdc
 types:
   string:
     name: string
@@ -605,16 +551,16 @@ types:
     - UO:0000233
     base: int
     uri: xsd:long
-  decimal degree:
-    name: decimal degree
+  decimal_degree:
+    name: decimal_degree
     description: A decimal degree expresses latitude or longitude as decimal fractions.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://en.wikipedia.org/wiki/Decimal_degrees
     base: float
     uri: xsd:decimal
-  language code:
-    name: language code
+  language_code:
+    name: language_code
     description: A language code conforming to ISO_639-1
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
@@ -1072,6 +1018,13 @@ enums:
         text: NEON
         meaning: https://www.neonscience.org
         title: National Science Foundation's National Ecological Observatory Network
+      BRC:
+        text: BRC
+        description: Bioenergy Research Centers funded by the Biological Systems Science
+          Division of the U.S. Department of Energy's Biological and Environmental
+          Research Program.
+        meaning: https://www.genomicscience.energy.gov/bioenergy-research-centers/
+        title: Bioenergy Research Centers
   SubstanceRoleEnum:
     name: SubstanceRoleEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1117,6 +1070,96 @@ enums:
         text: liquid
       gas:
         text: gas
+  ChemicalEntityEnum:
+    name: ChemicalEntityEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      acetonitrile:
+        text: acetonitrile
+        meaning: CHEBI:38472
+      alphaLP:
+        text: alphaLP
+        meaning: EC:3.4.21.12
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine,
+          alanine, serine, and valine.
+        see_also:
+        - https://commonchemistry.cas.org/detail?cas_rn=37288-76-9&title=
+      ammonium_acetate:
+        text: ammonium_acetate
+        meaning: CHEBI:62947
+      ammonium_bicarbonate:
+        text: ammonium_bicarbonate
+        meaning: CHEBI:184335
+      Arg-C:
+        text: Arg-C
+        meaning: MS:1001303
+        comments:
+        - A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the
+          C-terminus of arginine and with  lower efficiency, lysine.
+      Asp-N:
+        text: Asp-N
+        meaning: MS:1001304
+        comments:
+        - A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus
+          of aspartic acid.
+      chloroform:
+        text: chloroform
+        meaning: CHEBI:35255
+      chymotrypsin:
+        text: chymotrypsin
+        meaning: MS:1001306
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
+          leucine, tyrosine,  and phenylalanine.
+      formic_acid:
+        text: formic_acid
+        meaning: CHEBI:30751
+        comments:
+        - A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising
+          a hydrogen atom  joined to the methyl group of methanol.
+      glucose:
+        text: glucose
+        meaning: CHEBI:17234
+        comments:
+        - Generally considered the most abundant monosaccharide in nature.
+      Glu-C:
+        text: Glu-C
+        meaning: MS:1001917
+        comments:
+        - A serine protease that hydrolyzes peptide and ester bonds at the C-terminus
+          of aspartic acid or glutamic acid.
+      isopropyl_alcohol:
+        text: isopropyl_alcohol
+        meaning: CHEBI:17824
+      Lys-C:
+        text: Lys-C
+        meaning: MS:1001309
+        comments:
+        - A serine protease that hydrolyzes peptide, ester, and amide bonds at the
+          C-terminus of lysine.
+      Lys-N:
+        text: Lys-N
+        meaning: MS:1003093
+        comments:
+        - A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of
+          lysine.
+      methanol:
+        text: methanol
+        meaning: CHEBI:17790
+      trypsin:
+        text: trypsin
+        meaning: MS:1001251
+        comments:
+        - A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine
+          and lysine.
+      water:
+        text: water
+        meaning: CHEBI:15377
+        comments:
+        - Any form of water used in an experiment including deionized water, distilled
+          water, and ultrapure water. Protocol or materials and methods should be
+          consulted for exact type of water used in an experiment.
   arch_struc_enum:
     name: arch_struc_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2102,10 +2145,18 @@ enums:
         text: female
       hermaphrodite:
         text: hermaphrodite
+      non-binary:
+        text: non-binary
       male:
         text: male
-      neuter:
-        text: neuter
+      transgender:
+        text: transgender
+      transgender (female to male):
+        text: transgender (female to male)
+      transgender (male to female):
+        text: transgender (male to female)
+      undeclared:
+        text: undeclared
   indoor_space_enum:
     name: indoor_space_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -3168,6 +3219,35 @@ enums:
         text: low
       high:
         text: high
+  TargetGeneEnum:
+    name: TargetGeneEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      16S_rRNA:
+        text: 16S_rRNA
+        description: the small subunit of the bacterial/archean ribosome
+        aliases:
+        - 16S rRNA
+        - 16S ribosomal RNA
+        narrow_mappings:
+        - OBI:0002763
+      23S_rRNA:
+        text: 23S_rRNA
+        description: the large subunit  of the bacterial/archean ribosome
+        aliases:
+        - 23S rRNA
+        - 23S ribosomal RNA
+      18S_rRNA:
+        text: 18S_rRNA
+        description: the small subunit of the eukaryotic ribosome
+        aliases:
+        - 18S rRNA
+        - 18S ribosomal RNA
+      28S_rRNA:
+        text: 28S_rRNA
+        description: the large subunit of the eukaryotic ribosome
+        aliases:
+        - -28S rRNA - 28S ribosomal RNA
   CreditEnum:
     name: CreditEnum
     comments:
@@ -4128,6 +4208,9 @@ enums:
         text: LC-DDA-MS/MS Raw Data
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2
           binary instrument file
+      GC-MS Raw Data:
+        text: GC-MS Raw Data
+        description: Gas chromatography-mass spectrometry raw data, full scan mode.
       Configuration toml:
         text: Configuration toml
         description: A configuration toml file used by various programs to store settings
@@ -4136,7 +4219,11 @@ enums:
         - edam.format:4005
       LC-MS Lipidomics Results:
         text: LC-MS Lipidomics Results
-        description: LC-MS-based lipid assignment results table.
+        description: LC-MS-based lipidomics analysis results table
+      LC-MS Lipidomics Processed Data:
+        text: LC-MS Lipidomics Processed Data
+        description: Processed data for the LC-MS-based lipidomics analysis in hdf5
+          format
       Contaminants Amino Acid FASTA:
         text: Contaminants Amino Acid FASTA
         description: FASTA amino acid file for contaminant proteins commonly observed
@@ -4290,30 +4377,44 @@ enums:
         text: pass
       fail:
         text: fail
-  AnalyteCategoryEnum:
-    name: AnalyteCategoryEnum
+  NucleotideSequencingEnum:
+    name: NucleotideSequencingEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       metagenome:
         text: metagenome
+        title: Metagenome
         aliases:
         - metaG
       metatranscriptome:
         text: metatranscriptome
+        title: Metatranscriptome
         aliases:
         - metaT
+      amplicon_sequencing_assay:
+        text: amplicon_sequencing_assay
+        meaning: OBI:0002767
+        title: Amplicon
+  MassSpectrometryEnum:
+    name: MassSpectrometryEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
       metaproteome:
         text: metaproteome
+        title: Metaproteome
         aliases:
         - metaP
       metabolome:
         text: metabolome
+        title: Metabolome
         aliases:
         - metaB
       lipidome:
         text: lipidome
+        title: Lipidome
       nom:
         text: nom
+        title: Natural Organic Matter
         aliases:
         - natural organic matter
   ExtractionTargetEnum:
@@ -4491,17 +4592,74 @@ enums:
         text: natural organic matter
       bulk chemistry:
         text: bulk chemistry
+      amplicon sequencing assay:
+        text: amplicon sequencing assay
+        meaning: OBI:0002767
+        title: Amplicon sequencing assay
+  MetaproteomicsAnalysisCategoryEnum:
+    name: MetaproteomicsAnalysisCategoryEnum
+    description: The category of metaproteomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      matched_metagenome:
+        text: matched_metagenome
+        description: A metaproteomics analysis that is matched to a metagenome derived
+          from the same biosample.
+      in_silico_metagenome:
+        text: in_silico_metagenome
+        description: A metaproteomics analysis that is matched to an in silico generated
+          metagenome.
+  MetabolomicsAnalysisCategoryEnum:
+    name: MetabolomicsAnalysisCategoryEnum
+    description: The category of metabolomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      gc_ms_metabolomics:
+        text: gc_ms_metabolomics
+        description: A metabolomics analysis that is performed on gas chromatography
+          mass spectrometry data.
+      lc_ms_lipidomics:
+        text: lc_ms_lipidomics
+        description: A metabolomics analysis that is performed on liquid chromatography
+          mass spectrometry data for lipidomics annotation.
+      lc_ms_metabolomics:
+        text: lc_ms_metabolomics
+        description: A metabolomics analysis that is performed on liquid chromatography
+          mass spectrometry data.
 slots:
-  has_calibration:
-    name: has_calibration
-    description: a calibration instance associated with a process
+  generates_calibration:
+    name: generates_calibration
+    description: calibration information is generated a process
+    comments:
+    - A gas chromatography mass spectromery run generates data to calibrate the retention
+      index
     from_schema: https://w3id.org/nmdc/nmdc
     range: CalibrationInformation
+    pattern: ^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  uses_calibration:
+    name: uses_calibration
+    description: calibration information is used by a process
+    comments:
+    - Retenion index calibration data generated by a gas chromatography mass spectromery
+      run is used when analyzing metabolomics data
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: CalibrationInformation
+    pattern: ^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
+      interpolated: true
   calibration_object:
     name: calibration_object
     description: the file containing calibration data object
     from_schema: https://w3id.org/nmdc/nmdc
     range: DataObject
+    pattern: ^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'
+      interpolated: true
   internal_calibration:
     name: internal_calibration
     description: whether internal calibration was used, if false, external calibration
@@ -4609,15 +4767,6 @@ slots:
       information about how a sample was introduced into the mass spectrometer.
     from_schema: https://w3id.org/nmdc/nmdc
     range: ChromatographyConfiguration
-  metagenome_annotation_id:
-    name: metagenome_annotation_id
-    description: The identifier for the analysis activity that generated the functional
-      annotation results, where the analysis activity is an instance of the/an appropriate
-      subclass of WorkflowExecution
-    deprecated: not used. 2024-10 https://github.com/microbiomedata/nmdc-schema/issues/1253
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: WorkflowExecution
-    required: true
   gene_function_id:
     name: gene_function_id
     description: The identifier for the gene function.
@@ -4713,10 +4862,11 @@ slots:
     name: chemical_entity_set
     description: This property links a database object to the set of chemical entities
       within it.
+    deprecated: Deprecation of the ChemicalEntity class, means deprecation of the
+      chemical_entity_set as well.
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
-    range: ChemicalEntity
   ontology_class_set:
     name: ontology_class_set
     description: This property links a database object to the set of ontology classes
@@ -4835,6 +4985,7 @@ slots:
     name: protocol_execution_set
     description: This property links a database object to the set of protocol executions
       within it.
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     mixins:
     - object_set
@@ -4894,12 +5045,14 @@ slots:
     range: QuantityValue
   protocol_execution_category:
     name: protocol_execution_category
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     range: ProtocolCategoryEnum
     required: true
   has_process_parts:
     name: has_process_parts
     description: A list of process parts that make up a protocol.
+    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     list_elements_ordered: true
     range: PlannedProcess
@@ -5054,8 +5207,6 @@ slots:
       subtables and can be reported
     notes:
     - no longer in MIxS as of 6.0?
-    in_subset:
-    - mixs extension
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - environmental package
@@ -5273,10 +5424,6 @@ slots:
     range: PortionOfSubstance
     multivalued: true
     inlined_as_list: true
-  known_as:
-    name: known_as
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ChemicalEntity
   substance_role:
     name: substance_role
     description: The role of a substance in a process
@@ -5475,51 +5622,7 @@ slots:
     name: metabolite_identified
     description: the specific metabolite identifier
     from_schema: https://w3id.org/nmdc/nmdc
-    range: ChemicalEntity
-  all_proteins:
-    name: all_proteins
-    description: the list of protein identifiers that are associated with the peptide
-      sequence
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: GeneProduct
-    multivalued: true
-  best_protein:
-    name: best_protein
-    description: the specific protein identifier most correctly associated with the
-      peptide sequence
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: GeneProduct
-  min_q_value:
-    name: min_q_value
-    description: smallest Q-Value associated with the peptide sequence as provided
-      by MSGFPlus tool
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - OBI:0001442
-    range: float
-  peptide_sequence:
-    name: peptide_sequence
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
     range: string
-  peptide_spectral_count:
-    name: peptide_spectral_count
-    description: sum of filter passing MS2 spectra associated with the peptide sequence
-      within a given LC-MS/MS data file
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-  peptide_sum_masic_abundance:
-    name: peptide_sum_masic_abundance
-    description: combined MS1 extracted ion chromatograms derived from MS2 spectra
-      associated with the peptide sequence from a given LC-MS/MS data file using the
-      MASIC tool
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
   chemical_formula:
     name: chemical_formula
     description: A generic grouping for molecular formulae and empirical formulae
@@ -5527,6 +5630,7 @@ slots:
     range: string
   inchi_key:
     name: inchi_key
+    deprecated: 'True'
     notes:
     - 'key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov
       K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental
@@ -5535,34 +5639,15 @@ slots:
     range: string
   inchi:
     name: inchi
+    deprecated: 'True'
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
-  peptide_sequence_count:
-    name: peptide_sequence_count
-    description: count of peptide sequences grouped to the best_protein
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-  protein_spectral_count:
-    name: protein_spectral_count
-    description: sum of filter passing MS2 spectra associated with the best protein
-      within a given LC-MS/MS data file
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-  protein_sum_masic_abundance:
-    name: protein_sum_masic_abundance
-    description: combined MS1 extracted ion chromatograms derived from MS2 spectra
-      associated with the best protein from a given LC-MS/MS data file using the MASIC
-      tool
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
   smiles:
     name: smiles
     description: A string encoding of a molecular graph, no chiral or isotopic information.
       There are usually a large number of valid SMILES which represent a given structure.
       For example, CCO, OCC and C(O)C all specify the structure of ethanol.
+    deprecated: 'True'
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
     multivalued: true
@@ -5579,6 +5664,11 @@ slots:
     description: The chemical phase of a pure sample, or the state of a mixed sample
     from_schema: https://w3id.org/nmdc/nmdc
     range: SampleStateEnum
+  known_as:
+    name: known_as
+    description: The substance from which a portion was taken.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ChemicalEntityEnum
   feature_category:
     name: feature_category
     description: A Sequence Ontology term that describes the category of a feature
@@ -6417,31 +6507,6 @@ slots:
     - altitude
     is_a: environment field
     slot_uri: MIXS:0000094
-    domain_of:
-    - agriculture
-    - air
-    - built environment
-    - core
-    - food-animal and animal feed
-    - food-farm environment
-    - food-food production facility
-    - food-human foods
-    - host-associated
-    - human-associated
-    - human-gut
-    - human-oral
-    - human-skin
-    - human-vaginal
-    - hydrocarbon resources-cores
-    - hydrocarbon resources-fluids_swabs
-    - microbial mat_biofilm
-    - miscellaneous natural or artificial environment
-    - plant-associated
-    - sediment
-    - soil
-    - symbiont-associated
-    - wastewater_sludge
-    - water
     range: QuantityValue
     multivalued: false
   aminopept_act:
@@ -8787,8 +8852,7 @@ slots:
       EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS'
     title: broad-scale environmental context
     examples:
-    - value: oceanic epipelagic zone biome [ENVO:01000033] for annotating a water
-        sample from the photic zone in middle of the Atlantic Ocean
+    - value: oceanic epipelagic zone biome [ENVO:01000035]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - broad-scale environmental context
@@ -8822,10 +8886,7 @@ slots:
       are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.'
     title: local environmental context
     examples:
-    - value: 'litter layer [ENVO:01000338]; Annotating a pooled sample taken from
-        various vegetation layers in a forest consider: canopy [ENVO:00000047]|herb
-        and fern layer [ENVO:01000337]|litter layer [ENVO:01000338]|understory [01000335]|shrub
-        layer [ENVO:01000336].'
+    - value: litter layer [ENVO:01000338]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - local environmental context
@@ -8859,9 +8920,7 @@ slots:
       (e.g. a tree, a leaf, a table top).'
     title: environmental medium
     examples:
-    - value: 'soil [ENVO:00001998]; Annotating a fish swimming in the upper 100 m
-        of the Atlantic Ocean, consider: ocean water [ENVO:00002151]. Example: Annotating
-        a duck on a pond consider: pond water [ENVO:00002228]|air [ENVO_00002005]'
+    - value: soil [ENVO:00001998]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - environmental medium
@@ -10203,7 +10262,7 @@ slots:
       or https://www.ebi.ac.uk/ols/ontologies/uberon
     title: host body product
     examples:
-    - value: Portion of mucus [fma66938]
+    - value: mucus [UBERON:0000912]
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - host body product
@@ -15574,7 +15633,7 @@ slots:
     is_a: sequencing field
     string_serialization: '{text}'
     slot_uri: MIXS:0000044
-    range: TextValue
+    range: TargetGeneEnum
     multivalued: false
   target_subfragment:
     name: target_subfragment
@@ -17195,6 +17254,12 @@ slots:
   was_informed_by:
     name: was_informed_by
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      was_informed_by:
+        literal_form: was_informed_by
+        predicate: EXACT_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     mappings:
     - prov:wasInformedBy
     range: DataGeneration
@@ -17225,8 +17290,6 @@ slots:
         ''doi_category'': ''data_management_plan_doi'', ''doi_provider'': ''gsc''}]'
       description: Provides a list of two DOIs; specifically, an EMSL award DOI and
         a publication DOI.
-    in_subset:
-    - data_portal_subset
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - Associated DOIs
@@ -17315,6 +17378,10 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Manifest
     multivalued: true
+    pattern: ^^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: ^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$
+      interpolated: true
   manifest_category:
     name: manifest_category
     description: The type of context in which the constituent DataObjects can be analyzed
@@ -17374,6 +17441,12 @@ slots:
     - value: FT ICR-MS Analysis Results
     - value: GC-MS Metabolomics Results
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      data_object_type:
+        literal_form: data_object_type
+        predicate: EXACT_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     range: FileTypeEnum
   data_category:
     name: data_category
@@ -17481,7 +17554,7 @@ slots:
     name: language
     description: Should use ISO 639-1 code e.g. "en", "fr"
     from_schema: https://w3id.org/nmdc/nmdc
-    range: language code
+    range: language_code
   has_raw_value:
     name: has_raw_value
     description: The value that was specified for an annotation in raw form, i.e.
@@ -17532,7 +17605,7 @@ slots:
     mappings:
     - schema:latitude
     slot_uri: wgs84:lat
-    range: decimal degree
+    range: decimal_degree
   longitude:
     name: longitude
     description: longitude
@@ -17542,7 +17615,7 @@ slots:
     mappings:
     - schema:longitude
     slot_uri: wgs84:long
-    range: decimal degree
+    range: decimal_degree
   infiltrations:
     name: infiltrations
     description: The amount of time it takes to complete each infiltration activity
@@ -17618,8 +17691,6 @@ slots:
     examples:
     - value: doi:10.46936/10.25585/60000880
       description: The DOI links to an electronic document.
-    in_subset:
-    - data_portal_subset
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - DOI
@@ -17637,8 +17708,6 @@ slots:
     examples:
     - value: ess_dive
       description: The corresponding DOI is associated with ESS-DIVE.
-    in_subset:
-    - data_portal_subset
     from_schema: https://w3id.org/nmdc/nmdc
     close_mappings:
     - NCIT:C74932
@@ -17649,8 +17718,6 @@ slots:
     examples:
     - value: dataset_doi
       description: The corresponding DOI is a dataset resource type.
-    in_subset:
-    - data_portal_subset
     from_schema: https://w3id.org/nmdc/nmdc
     range: DoiCategoryEnum
     required: true
@@ -17807,7 +17874,6 @@ slots:
     description: "The type of analyte(s) that were measured in the data generation\
       \ process and analyzed\n  in the Workflow Chain\n"
     from_schema: https://w3id.org/nmdc/nmdc
-    range: AnalyteCategoryEnum
     required: true
   type:
     name: type
@@ -17824,6 +17890,12 @@ slots:
     - https://github.com/microbiomedata/nmdc-schema/issues/1048
     - https://github.com/microbiomedata/nmdc-schema/issues/1233
     - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+        literal_form: workflow_execution_class
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     slot_uri: rdf:type
     designates_type: true
     range: uriorcurie
@@ -17889,6 +17961,17 @@ slots:
     - value: nmdc:mgmag-00-x012.1_7_c1
       description: https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248
     from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      workflow_execution_id:
+        literal_form: workflow_execution_id
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+      data_object_id:
+        literal_form: data_object_id
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
     identifier: true
     range: uriorcurie
     required: true
@@ -18536,7 +18619,9 @@ slots:
     - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
       are all acceptable.
     examples:
-    - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
+    - value: '2021-04-15'
+    - value: 2021-04
+    - value: '2021'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -18554,7 +18639,8 @@ slots:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: 13:33 or 13:33:55
+    - value: '13:33'
+    - value: '13:33:55'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -18573,7 +18659,8 @@ slots:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: 13:33 or 13:33:55
+    - value: '13:33'
+    - value: '13:33:55'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -18628,12 +18715,11 @@ slots:
       labeled compounds
     examples:
     - value: 13C glucose
-    - value: H218O
+    - value: 18O water
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000751
     rank: 16
-    string_serialization: '{termLabel} {[termID]}; {timestamp}'
     slot_group: MIxS Inspired
     recommended: true
   micro_biomass_c_meth:
@@ -18773,7 +18859,9 @@ slots:
     - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
       are all acceptable.
     examples:
-    - value: 2021-04-15, 2021-04 and 2021 are all acceptable.
+    - value: '2021-04-15'
+    - value: 2021-04
+    - value: '2021'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -18791,7 +18879,8 @@ slots:
     comments:
     - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
     examples:
-    - value: 13:33 or 13:33:55
+    - value: '13:33'
+    - value: '13:33:55'
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIXS:0000011
@@ -18804,7 +18893,7 @@ slots:
     description: Select all the data types associated or available for this biosample
     title: analysis/data type
     examples:
-    - value: metagenomics; metabolomics; proteomics
+    - value: metagenomics; metabolomics; metaproteomics
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - MIxS:investigation_type
@@ -18832,17 +18921,22 @@ slots:
     slot_group: Sample ID
     recommended: true
     multivalued: true
+  metaproteomics_analysis_category:
+    name: metaproteomics_analysis_category
+    description: The category of metaproteomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: MetaproteomicsAnalysisCategoryEnum
+    required: true
+  metabolomics_analysis_category:
+    name: metabolomics_analysis_category
+    description: The category of metabolomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: MetabolomicsAnalysisCategoryEnum
+    required: true
   metagenome_assembly_parameter:
     name: metagenome_assembly_parameter
     from_schema: https://w3id.org/nmdc/nmdc
     abstract: true
-  has_peptide_quantifications:
-    name: has_peptide_quantifications
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: PeptideQuantification
-    multivalued: true
-    inlined_as_list: true
   asm_score:
     name: asm_score
     description: A score for comparing metagenomic assembly quality from same sample.
@@ -19143,6 +19237,9 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dgns|omprc)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      analyte_category:
+        name: analyte_category
+        range: NucleotideSequencingEnum
     class_uri: nmdc:NucleotideSequencing
   MassSpectrometry:
     name: MassSpectrometry
@@ -19154,7 +19251,7 @@ classes:
     is_a: DataGeneration
     slots:
     - eluent_introduction_category
-    - has_calibration
+    - generates_calibration
     - has_chromatography_configuration
     - has_mass_spectrometry_configuration
     slot_usage:
@@ -19163,12 +19260,6 @@ classes:
         pattern: ^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'
-          interpolated: true
-      has_calibration:
-        name: has_calibration
-        pattern: ^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:calib-{id_shoulder}-{id_blade}$'
           interpolated: true
       has_chromatography_configuration:
         name: has_chromatography_configuration
@@ -19182,6 +19273,9 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
           interpolated: true
+      analyte_category:
+        name: analyte_category
+        range: MassSpectrometryEnum
     class_uri: nmdc:MassSpectrometry
     rules:
     - preconditions:
@@ -19191,12 +19285,12 @@ classes:
             equals_string: gas_chromatography
       postconditions:
         slot_conditions:
-          has_calibration:
-            name: has_calibration
+          generates_calibration:
+            name: generates_calibration
             required: true
-      description: If eluent_introduction_category is gas_chromatography, then has_calibration
+      description: If eluent_introduction_category is gas_chromatography, then generates_calibration
         is required.
-      title: has_calibration_required_if_gc
+      title: generates_calibration_required_if_gc
     - preconditions:
         slot_conditions:
           eluent_introduction_category:
@@ -19385,7 +19479,6 @@ classes:
     slots:
     - biosample_set
     - calibration_set
-    - chemical_entity_set
     - collecting_biosamples_from_site_set
     - configuration_set
     - data_generation_set
@@ -19398,7 +19491,6 @@ classes:
     - manifest_set
     - material_processing_set
     - processed_sample_set
-    - protocol_execution_set
     - storage_process_set
     - study_set
     - workflow_execution_set
@@ -19453,14 +19545,12 @@ classes:
     slot_usage:
       has_input:
         name: has_input
+        range: Sample
         required: true
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
-        any_of:
-        - range: Biosample
-        - range: ProcessedSample
       has_output:
         name: has_output
         required: true
@@ -19563,6 +19653,7 @@ classes:
     name: ProtocolExecution
     description: A PlannedProces that has PlannedProcess parts. Can be used to represent
       the case of someone following a Protocol.
+    deprecated: not used, not fulfilling intended purpose https://github.com/microbiomedata/nmdc-schema/issues/2336
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: PlannedProcess
     slots:
@@ -19642,13 +19733,11 @@ classes:
         description: The output mass of the SubSampling Process.
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
-        any_of:
-        - range: Biosample
-        - range: ProcessedSample
       has_output:
         name: has_output
         description: The subsample.
@@ -19687,13 +19776,11 @@ classes:
           syntax: '{id_nmdc_prefix}:mixpro-{id_shoulder}-{id_blade}$'
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
-        any_of:
-        - range: Biosample
-        - range: ProcessedSample
       has_output:
         name: has_output
         description: The mixed sample.
@@ -19739,13 +19826,11 @@ classes:
         description: The volume of sample filtered.
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
-        any_of:
-        - range: Biosample
-        - range: ProcessedSample
       has_output:
         name: has_output
         range: ProcessedSample
@@ -19814,13 +19899,11 @@ classes:
           syntax: '{id_nmdc_prefix}:cspro-{id_shoulder}-{id_blade}$'
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
-        any_of:
-        - range: Biosample
-        - range: ProcessedSample
       has_output:
         name: has_output
         range: ProcessedSample
@@ -19893,8 +19976,6 @@ classes:
     name: MetagenomeAnnotation
     description: A workflow execution activity that provides functional and structural
       annotation of assembled metagenome contigs
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
@@ -19965,6 +20046,13 @@ classes:
           syntax: '{id_nmdc_prefix}:frsite-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:FieldResearchSite
+  Sample:
+    name: Sample
+    description: A sample is a material entity that can be characterized by an experiment.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: MaterialEntity
+    abstract: true
+    class_uri: nmdc:Sample
   Biosample:
     name: Biosample
     description: Biological source material which can be characterized by an experiment.
@@ -19976,8 +20064,6 @@ classes:
           annotate the samples. Samples are always associated with a taxon.
     notes:
     - could add GOLD and EBI's biosample definitions to the alt_descriptions?
-    in_subset:
-    - sample subset
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - sample
@@ -19988,7 +20074,7 @@ classes:
     - OBI:0000747
     - NCIT:C43412
     - http://purl.obolibrary.org/obo/FBcv_0003024
-    is_a: MaterialEntity
+    is_a: Sample
     slots:
     - associated_studies
     - biosample_categories
@@ -21036,13 +21122,11 @@ classes:
     slot_usage:
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
-        any_of:
-        - range: Biosample
-        - range: ProcessedSample
       has_output:
         name: has_output
         range: ProcessedSample
@@ -21061,10 +21145,10 @@ classes:
     - schema:Substance
     slots:
     - final_concentration
-    - known_as
     - mass
     - sample_state_information
     - source_concentration
+    - known_as
     - substance_role
     - type
     - volume
@@ -21073,7 +21157,7 @@ classes:
     name: ProcessedSample
     title: Processed Sample
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: MaterialEntity
+    is_a: Sample
     slots:
     - biomaterial_purity
     - dna_absorb1
@@ -21140,49 +21224,17 @@ classes:
     - metabolite_identified
     - type
     class_uri: nmdc:MetaboliteIdentification
-  PeptideQuantification:
-    name: PeptideQuantification
-    description: This is used to link a metaproteomics analysis workflow to a specific
-      peptide sequence and related information
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    slots:
-    - type
-    - all_proteins
-    - best_protein
-    - min_q_value
-    - peptide_sequence
-    - peptide_spectral_count
-    - peptide_sum_masic_abundance
-    class_uri: nmdc:PeptideQuantification
-  ProteinQuantification:
-    name: ProteinQuantification
-    description: This is used to link a metaproteomics analysis workflow to a specific
-      protein
-    deprecated: not used. 2024-11 https://github.com/microbiomedata/nmdc-schema/issues/2250
-    from_schema: https://w3id.org/nmdc/nmdc
-    slots:
-    - all_proteins
-    - best_protein
-    - peptide_sequence_count
-    - protein_spectral_count
-    - protein_sum_masic_abundance
-    - type
-    class_uri: nmdc:ProteinQuantification
   ChemicalEntity:
     name: ChemicalEntity
     id_prefixes:
-    - cas
     - CHEBI
-    - CHEMBL.COMPOUND
-    - DRUGBANK
-    - HMDB
-    - KEGG.COMPOUND
-    - MESH
-    - PUBCHEM.COMPOUND
+    - MS
     description: An atom or molecule that can be represented with a chemical formula.
       Include lipids, glycans, natural products, drugs. There may be different terms
-      for distinct acid-base forms, protonation states
+      for distinct acid-base forms, protonation states. A chemical entity is a  physical
+      entity that pertains to chemistry or biochemistry.
+    deprecated: true; as of Jan 2025, NMDC only needs a handful of chemicals and its
+      use cases can be served via an enumeration rather than supporting a full class.
     comments:
     - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode
       to this class.
@@ -21199,9 +21251,6 @@ classes:
     is_a: OntologyClass
     slots:
     - chemical_formula
-    - inchi
-    - inchi_key
-    - smiles
     class_uri: nmdc:ChemicalEntity
   GeneProduct:
     name: GeneProduct
@@ -21506,10 +21555,8 @@ classes:
     class_uri: nmdc:NamedThing
   OntologyClass:
     name: OntologyClass
-    description: This class is used to represent ontology terms.
+    description: A representation of class defined in an external ontology.
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - OntologyClass
     exact_mappings:
     - biolink:OntologyClass
     - owl:Class
@@ -21723,8 +21770,6 @@ classes:
       but no longer for the Study.id
     comments:
     - The Study class can include both consortia and research studies.
-    in_subset:
-    - sample subset
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - proposal
@@ -21882,8 +21927,6 @@ classes:
     name: DataObject
     description: An object that primarily consists of symbols that represent information.   Files,
       records, and omics data are examples of data objects.
-    in_subset:
-    - data object subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: InformationObject
     slots:
@@ -21926,8 +21969,6 @@ classes:
         source: embl.ena
         description: An experiment contains information about a sequencing experiment
           including library and instrument details.
-    in_subset:
-    - sample subset
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - OmicsProcessing
@@ -21950,14 +21991,12 @@ classes:
     slot_usage:
       has_input:
         name: has_input
+        range: Sample
         required: true
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
-        any_of:
-        - range: Biosample
-        - range: ProcessedSample
       associated_studies:
         name: associated_studies
         range: Study
@@ -21984,8 +22023,6 @@ classes:
     comments:
     - Each instance of this (and all other) subclasses of WorkflowExecution is a distinct
       run with start and stop times, potentially with different inputs and outputs
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - analysis
@@ -22057,8 +22094,6 @@ classes:
     comments:
     - instances of this class may use a de novo assembly strategy in most or all cases
       relevant to NMDC
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
@@ -22107,8 +22142,6 @@ classes:
     class_uri: nmdc:MetagenomeAssembly
   MetatranscriptomeAssembly:
     name: MetatranscriptomeAssembly
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
@@ -22157,8 +22190,6 @@ classes:
     class_uri: nmdc:MetatranscriptomeAssembly
   MetatranscriptomeAnnotation:
     name: MetatranscriptomeAnnotation
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
@@ -22204,8 +22235,6 @@ classes:
     name: MetatranscriptomeExpressionAnalysis
     description: A workflow process that provides expression values and read counts
       for gene features predicted on the contigs.
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
@@ -22233,8 +22262,6 @@ classes:
     description: A workflow execution activity that uses computational binning tools
       to group assembled contigs into genomes
     title: Metagenome-Assembled Genome analysis activity
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
@@ -22268,8 +22295,6 @@ classes:
     description: Initial sequencing activity that precedes any analysis.  This activity
       has output(s) that are the raw sequencing data.
     title: Metagenome sequencing activity
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slot_usage:
@@ -22300,8 +22325,6 @@ classes:
       adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant
       removal
     title: Read quality control analysis activity
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
@@ -22331,8 +22354,6 @@ classes:
     description: A workflow execution activity that performs taxonomy classification
       using sequencing reads
     title: Read based analysis activity
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slot_usage:
@@ -22352,12 +22373,12 @@ classes:
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
   MetabolomicsAnalysis:
     name: MetabolomicsAnalysis
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
     slots:
     - has_metabolite_identifications
+    - uses_calibration
+    - metabolomics_analysis_category
     slot_usage:
       id:
         name: id
@@ -22375,10 +22396,10 @@ classes:
     class_uri: nmdc:MetabolomicsAnalysis
   MetaproteomicsAnalysis:
     name: MetaproteomicsAnalysis
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
+    slots:
+    - metaproteomics_analysis_category
     slot_usage:
       id:
         name: id
@@ -22396,10 +22417,10 @@ classes:
     class_uri: nmdc:MetaproteomicsAnalysis
   NomAnalysis:
     name: NomAnalysis
-    in_subset:
-    - workflow subset
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: WorkflowExecution
+    slots:
+    - uses_calibration
     slot_usage:
       id:
         name: id

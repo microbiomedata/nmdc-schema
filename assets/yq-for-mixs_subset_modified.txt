@@ -1,3 +1,7 @@
+'.slots.env_broad_scale.is_a |= "mixs_env_triad_field"'
+'.slots.env_local_scale.is_a |= "mixs_env_triad_field"'
+'.slots.env_medium.is_a |= "mixs_env_triad_field"'
+
 '.slots.agrochem_addition.range |= "TextValue"'
 '.slots.air_temp_regm.range |= "TextValue"'
 '.slots.antibiotic_regm.range |= "TextValue"'
@@ -179,7 +183,7 @@
 '.slots.water_temp_regm.inlined_as_list |= true'
 '.slots.watering_regm.inlined_as_list |= true'
 
-
+'del(.subsets)'
 'del(.classes)'
 'del(.enums.[].name)' 
 'del(.enums.[].permissible_values.[].text)' 

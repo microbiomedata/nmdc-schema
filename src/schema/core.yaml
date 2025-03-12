@@ -48,6 +48,7 @@ enums:
       LQ:
         aliases: low quality
         description: Metagenome-assembled genome is low quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
+
   ChemicalConversionCategoryEnum:
     permissible_values:
       addition:
@@ -83,6 +84,10 @@ enums:
       NEON:
         title: National Science Foundation's National Ecological Observatory Network
         meaning: https://www.neonscience.org
+      BRC:
+        title: Bioenergy Research Centers
+        meaning: https://www.genomicscience.energy.gov/bioenergy-research-centers/
+        description: Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.
 
   SubstanceRoleEnum:
     permissible_values:
@@ -126,6 +131,70 @@ enums:
       liquid:
       gas:
 
+  ChemicalEntityEnum:
+    permissible_values:
+      acetonitrile:
+        meaning: CHEBI:38472
+      alphaLP:
+        meaning: EC:3.4.21.12
+        see_also: https://commonchemistry.cas.org/detail?cas_rn=37288-76-9&title= # CAS reference from wikipedia
+        comments: >-
+          A serine protease that hydrolyzes peptide bonds at the C-terminus of threonine, alanine, serine, and valine.
+      ammonium_acetate:
+        meaning: CHEBI:62947
+      ammonium_bicarbonate:
+        meaning: CHEBI:184335
+      Arg-C:
+        meaning: MS:1001303
+        comments: >-
+          A cysteine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of arginine and with 
+          lower efficiency, lysine.
+      Asp-N:
+        meaning: MS:1001304
+        comments: >-
+          A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus of aspartic acid.
+      chloroform:
+        meaning: CHEBI:35255
+      chymotrypsin:
+        meaning: MS:1001306
+        comments: >-
+          A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, 
+          and phenylalanine.
+      formic_acid:
+        meaning: CHEBI:30751
+        comments: >-
+          A carboxylic acid that is the simplest aliphatic carboxylic acid, comprising a hydrogen atom 
+          joined to the methyl group of methanol.
+      glucose:
+        meaning: CHEBI:17234
+        comments: >-
+          Generally considered the most abundant monosaccharide in nature.
+      Glu-C:
+        meaning: MS:1001917
+        comments: >-
+          A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid.
+      isopropyl_alcohol:
+        meaning: CHEBI:17824
+      Lys-C:
+        meaning: MS:1001309
+        comments: >-
+          A serine protease that hydrolyzes peptide, ester, and amide bonds at the C-terminus of lysine.
+      Lys-N:
+        meaning: MS:1003093
+        comments: >-
+          A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+      methanol:
+        meaning: CHEBI:17790
+      trypsin:
+        meaning: MS:1001251
+        comments: >-
+          A serine protease that hydrolyzes peptide bonds at the C-terminus of arginine and lysine.
+      water:
+        meaning: CHEBI:15377
+        comments: >- 
+          Any form of water used in an experiment including deionized water, distilled water, and ultrapure water.
+          Protocol or materials and methods should be consulted for exact type of water used in an experiment.
+
 classes:
 
   ChemicalConversionProcess:
@@ -162,8 +231,6 @@ classes:
     slots:
       - img_identifiers
       - gold_analysis_project_identifiers
-    in_subset:
-      - workflow subset
     slot_usage:
       id:
         required: true
@@ -279,8 +346,6 @@ classes:
           - samp_name # id is already required to be unique because it is the identifier
                       # in Biosample's ancestor class, NamedThing (parent is MaterialEntity)
     is_a: Sample
-    in_subset:
-      - sample subset
     aliases:
       - sample
       - material sample
@@ -1246,10 +1311,10 @@ classes:
     description: A portion of any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
     slots:
       - final_concentration
-      - known_as
       - mass
       - sample_state_information
       - source_concentration
+      - known_as
       - substance_role
       - type
       - volume
@@ -1319,6 +1384,9 @@ classes:
       - type
 
   ChemicalEntity:
+    deprecated: >- 
+      true; as of Jan 2025, NMDC only needs a handful of chemicals and its use cases can be served via an enumeration
+      rather than supporting a full class.
     class_uri: nmdc:ChemicalEntity
     aliases:
       - metabolite
@@ -1328,26 +1396,17 @@ classes:
     is_a: OntologyClass
     description: >-
       An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs.
-      There may be different terms for distinct acid-base forms, protonation states
+      There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a 
+      physical entity that pertains to chemistry or biochemistry.
     comments:
       - As with the parent OntologyClass, we will not assign an nmdc id pattern or typecode to this class.
     slots:
       - chemical_formula
-      - inchi
-      - inchi_key
-      - smiles
-
     see_also:
       - https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html
     id_prefixes:
-      - cas
       - CHEBI
-      - CHEMBL.COMPOUND
-      - DRUGBANK
-      - HMDB
-      - KEGG.COMPOUND
-      - MESH
-      - PUBCHEM.COMPOUND
+      - MS
     exact_mappings:
       - biolink:ChemicalSubstance
 
@@ -1415,8 +1474,6 @@ slots:
       packages listed here are further defined in separate subtables. By giving the
       name of the environmental package, a selection of fields can be made from the
       subtables and can be reported
-    in_subset:
-      - mixs extension
     range: TextValue
   #      pattern: '[air|built environment|host\-associated|human\-associated|human\-skin|human\-oral|human\-gut|human\-vaginal|hydrocarbon
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
@@ -1579,13 +1636,9 @@ slots:
     multivalued: true
     inlined_as_list: true
 
-  known_as:
-    range: ChemicalEntity
-
   substance_role:
     range: SubstanceRoleEnum
     description: The role of a substance in a process
-
   concentration:
     range: QuantityValue
     description: The concentration of a substance used in a process
@@ -1727,21 +1780,23 @@ slots:
 
   metabolite_identified:
     description: the specific metabolite identifier
-    range: ChemicalEntity
-
+    range: string
 
   chemical_formula:
     description: A generic grouping for molecular formulae and empirical formulae
     range: string
 
   inchi_key:
+    deprecated: true
     range: string
     notes:
       - "key set to false due to rare collisions: Pletnev I, Erin A, McNaught A, Blinov K, Tchekhovskoi D, Heller S (2012) InChIKey collision resistance: an experimental testing. J Cheminform. 4:12"
   inchi:
+    deprecated: true
     range: string
 
   smiles:
+    deprecated: true
     description: >-
       A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.
     multivalued: true
@@ -1758,3 +1813,7 @@ slots:
     description: >-
       The chemical phase of a pure sample, or the state of a mixed sample
     range: SampleStateEnum
+
+  known_as:
+    range: ChemicalEntityEnum
+    description: The substance from which a portion was taken.

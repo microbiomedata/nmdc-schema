@@ -36,7 +36,7 @@ shuttle-clean:
 	touch local/mixs_regen/.gitkeep
 
 
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml
+src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_mixs_env_triad_field_slot.yaml
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
@@ -92,6 +92,13 @@ assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
 		$^ | cat > $@
 
+
+local/mixs_regen/mixs_subset_modified_inj_mixs_env_triad_field_slot.yaml: local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml \
+assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' \
+		$^ | cat > $@
+
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
 	mkdir -p $@
 	$(RUN) linkml-run-examples \
@@ -110,7 +117,7 @@ local/usage_template.tsv: nmdc_schema/nmdc_materialized_patterns.yaml # replaces
 		--report-style exhaustive
 
 
-examples/output/Biosample-exhasutive-pretty-sorted.yaml: src/data/problem/valid/Biosample-exhasutive.yaml
+examples/output/Biosample-exhaustive-pretty-sorted.yaml: src/data/valid/Database-interleaved.yaml
 	$(RUN) pretty-sort-yaml \
 		-i $< \
 		-o $@
@@ -159,7 +166,6 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--selected-collections instrument_set \
 		--selected-collections material_processing_set \
 		--selected-collections processed_sample_set \
-		--selected-collections protocol_execution_set \
 		--selected-collections storage_process_set \
 		--selected-collections study_set \
 		--selected-collections workflow_execution_set \
@@ -370,7 +376,7 @@ assets/enum_pv_result.tsv: src/schema/nmdc.yaml assets/enum_pv_template.tsv
 		--output $@ \
 		--schema $< $(word 2,$^)
 
-local/Database-interleaved-class-count.tsv: src/data/problem/valid/Database-interleaved.yaml
+local/Database-interleaved-class-count.tsv: src/data/valid/Database-interleaved.yaml
 	cat $< | grep ' type: ' | sed 's/.*type: //' | sort | uniq -c | awk '{ OFS="\t"; $$1=$$1; print $$0 }' > $@
 
 
@@ -381,7 +387,7 @@ local/class_instantiation_counts.tsv: local/usage_template.tsv local/Database-in
 		--output $@
 
 .PHONY: generate-json-collections
-generate-json-collections: src/data/problem/valid/Database-interleaved.yaml
+generate-json-collections: src/data/valid/Database-interleaved.yaml
 	$(RUN) database-to-json-list-files \
 		--yaml-input $< \
 		--output-dir assets/jsons-for-mongodb

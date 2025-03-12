@@ -149,9 +149,15 @@ test-schema:
 test-python:
 	$(RUN) python -m unittest discover
 	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
+	$(RUN) python -m doctest nmdc_schema/id_helpers.py
+	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
 
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
+
+.PHONY: check-dependencies
+check-dependencies:
+	$(RUN) deptry nmdc_schema --known-first-party nmdc_schema
 
 check-config:
 	@(grep my-datamodel about.yaml > /dev/null && printf "\n**Project not configured**:\n\n - Remember to edit 'about.yaml'\n\n" || exit 0)
@@ -168,24 +174,30 @@ $(DOCDIR):
 
 # Compile static Markdown files, images, and JavaScript scripts, into a documentation website.
 #
-# Then, use `refgraph` (part of `refscan`) to generate a pair of diagrams within the website's file tree.
+# Then, use `refscan graph` to generate a pair of diagrams within the website's file tree.
 # One of the diagrams is a graph showing all the _inter-collection_ relationships the schema says can exist,
 # and the other diagram is a graph showing all the _inter-class_ relationships the schema says can exist.
+#
+# Note: Using `refgraph` in this way requires the `nmdc_schema/nmdc_materialized_patterns.yaml`
+#       file to already have been generated. That dependency is currently not reflected in
+#       the dependency list of this `make` target.
+#
 gendoc: $(DOCDIR) prefixmaps
 	# Copy all documentation files to the documentation directory
 	cp -rf $(SRC)/docs/* $(DOCDIR)
-	# Added copying of images and renaming of TEMP.md
-	cp $(SRC)/docs/*md $(DOCDIR)
-	cp -r $(SRC)/docs/images $(DOCDIR)
+	# Use `make_typecode_to_class_map.py` to make a Markdown page that can be used to map a typecode to a schema class.
+	$(RUN) python src/scripts/make_typecode_to_class_map.py > $(DOCDIR)/typecode-to-class-map.md
 	# Generate documentation using the gen-doc command
 	$(RUN) gen-doc -d $(DOCDIR) --template-directory $(SRC)/$(TEMPLATEDIR) --include src/schema/deprecated.yaml $(SOURCE_SCHEMA_PATH)
 	# Create directory for JavaScript files and copy them
+	# Added copying of prefixmaps output
+	cp -f $(DEST)/prefixmap/nmdc-prefix-map.json $(DOCDIR)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
 	# Use `refgraph` (part of `refscan`) to generate diagrams within the website's file tree.
 	mkdir -p $(DOCDIR)/visualizations
-	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
-	$(RUN) refgraph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph $(DOCDIR)/visualizations/class-graph.html
+	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
+  $(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph $(DOCDIR)/visualizations/class-graph.html
 
 testdoc: gendoc serve
 

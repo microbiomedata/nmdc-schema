@@ -12,6 +12,7 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-90-izwYW61
     type: nmdc:MetabolomicsAnalysis
+    metabolomics_analysis_category: gc_ms_metabolomics
 data_object_set:
   - id: nmdc:dobj-70-izwYW6
     data_category: workflow_parameter_data

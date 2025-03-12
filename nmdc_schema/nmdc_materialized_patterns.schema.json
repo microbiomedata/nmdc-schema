@@ -9,22 +9,10 @@
                 "metaproteomics",
                 "metatranscriptomics",
                 "natural organic matter",
-                "bulk chemistry"
+                "bulk chemistry",
+                "amplicon sequencing assay"
             ],
             "title": "AnalysisTypeEnum",
-            "type": "string"
-        },
-        "AnalyteCategoryEnum": {
-            "description": "",
-            "enum": [
-                "metagenome",
-                "metatranscriptome",
-                "metaproteome",
-                "metabolome",
-                "lipidome",
-                "nom"
-            ],
-            "title": "AnalyteCategoryEnum",
             "type": "string"
         },
         "ArchStrucEnum": {
@@ -5455,7 +5443,8 @@
                 "SIP",
                 "SFA",
                 "FICUS",
-                "NEON"
+                "NEON",
+                "BRC"
             ],
             "title": "BiosampleCategoryEnum",
             "type": "string"
@@ -5579,6 +5568,7 @@
                 },
                 "calibration_object": {
                     "description": "the file containing calibration data object",
+                    "pattern": "^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -5784,14 +5774,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -5914,7 +5896,7 @@
         },
         "ChemicalEntity": {
             "additionalProperties": false,
-            "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states",
+            "description": "An atom or molecule that can be represented with a chemical formula. Include lipids, glycans, natural products, drugs. There may be different terms for distinct acid-base forms, protonation states. A chemical entity is a  physical entity that pertains to chemistry or biochemistry.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -5963,18 +5945,6 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
-                "inchi": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "inchi_key": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -5985,16 +5955,6 @@
                 "relations": {
                     "items": {
                         "$ref": "#/$defs/OntologyRelation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "smiles": {
-                    "description": "A string encoding of a molecular graph, no chiral or isotopic information. There are usually a large number of valid SMILES which represent a given structure. For example, CCO, OCC and C(O)C all specify the structure of ethanol.",
-                    "items": {
-                        "type": "string"
                     },
                     "type": [
                         "array",
@@ -6015,6 +5975,30 @@
             ],
             "title": "ChemicalEntity",
             "type": "object"
+        },
+        "ChemicalEntityEnum": {
+            "description": "",
+            "enum": [
+                "acetonitrile",
+                "alphaLP",
+                "ammonium_acetate",
+                "ammonium_bicarbonate",
+                "Arg-C",
+                "Asp-N",
+                "chloroform",
+                "chymotrypsin",
+                "formic_acid",
+                "glucose",
+                "Glu-C",
+                "isopropyl_alcohol",
+                "Lys-C",
+                "Lys-N",
+                "methanol",
+                "trypsin",
+                "water"
+            ],
+            "title": "ChemicalEntityEnum",
+            "type": "string"
         },
         "ChromatographicCategoryEnum": {
             "description": "",
@@ -6071,14 +6055,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -6656,6 +6632,7 @@
                 "in_manifest": {
                     "description": "one or more combinations of other DataObjects that can be analyzed together",
                     "items": {
+                        "pattern": "^^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6740,16 +6717,6 @@
                     "description": "This property links a database object to the set of calibrations within it.",
                     "items": {
                         "$ref": "#/$defs/CalibrationInformation"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "chemical_entity_set": {
-                    "description": "This property links a database object to the set of chemical entities within it.",
-                    "items": {
-                        "$ref": "#/$defs/ChemicalEntity"
                     },
                     "type": [
                         "array",
@@ -6915,16 +6882,6 @@
                         "null"
                     ]
                 },
-                "protocol_execution_set": {
-                    "description": "This property links a database object to the set of protocol executions within it.",
-                    "items": {
-                        "$ref": "#/$defs/ProtocolExecution"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
                 "storage_process_set": {
                     "description": "This property links a database object to the set of storage processes within it.",
                     "items": {
@@ -7071,14 +7028,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -7644,14 +7593,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -8082,8 +8023,10 @@
                 "Annotation Statistics",
                 "Direct Infusion FT ICR-MS Raw Data",
                 "LC-DDA-MS/MS Raw Data",
+                "GC-MS Raw Data",
                 "Configuration toml",
                 "LC-MS Lipidomics Results",
+                "LC-MS Lipidomics Processed Data",
                 "Contaminants Amino Acid FASTA",
                 "Analysis Tool Parameter File",
                 "Workflow Operation Summary",
@@ -8196,14 +8139,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -8779,8 +8714,12 @@
             "enum": [
                 "female",
                 "hermaphrodite",
+                "non-binary",
                 "male",
-                "neuter"
+                "transgender",
+                "transgender (female to male)",
+                "transgender (male to female)",
+                "undeclared"
             ],
             "title": "HostSexEnum",
             "type": "string"
@@ -9052,14 +8991,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -9674,7 +9605,7 @@
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
                     "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
                         "type": "string"
                     },
                     "type": [
@@ -9759,10 +9690,10 @@
                     },
                     "then": {
                         "properties": {
-                            "has_calibration": {}
+                            "generates_calibration": {}
                         },
                         "required": [
-                            "has_calibration"
+                            "generates_calibration"
                         ]
                     }
                 },
@@ -9815,7 +9746,7 @@
                     ]
                 },
                 "analyte_category": {
-                    "$ref": "#/$defs/AnalyteCategoryEnum",
+                    "$ref": "#/$defs/MassSpectrometryEnum",
                     "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
                 },
                 "associated_studies": {
@@ -9844,8 +9775,8 @@
                         "null"
                     ]
                 },
-                "has_calibration": {
-                    "description": "a calibration instance associated with a process",
+                "generates_calibration": {
+                    "description": "calibration information is generated a process",
                     "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
@@ -9872,14 +9803,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -10091,6 +10014,17 @@
             "title": "MassSpectrometryConfiguration",
             "type": "object"
         },
+        "MassSpectrometryEnum": {
+            "description": "",
+            "enum": [
+                "metaproteome",
+                "metabolome",
+                "lipidome",
+                "nom"
+            ],
+            "title": "MassSpectrometryEnum",
+            "type": "string"
+        },
         "MassSpectrumCollectionModeEnum": {
             "description": "",
             "enum": [
@@ -10287,6 +10221,10 @@
                     "pattern": "^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
                     "type": "string"
                 },
+                "metabolomics_analysis_category": {
+                    "$ref": "#/$defs/MetabolomicsAnalysisCategoryEnum",
+                    "description": "The category of metabolomics analysis being performed."
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -10337,6 +10275,14 @@
                     ],
                     "type": "string"
                 },
+                "uses_calibration": {
+                    "description": "calibration information is used by a process",
+                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "version": {
                     "type": [
                         "string",
@@ -10349,6 +10295,7 @@
                 }
             },
             "required": [
+                "metabolomics_analysis_category",
                 "execution_resource",
                 "git_url",
                 "started_at_time",
@@ -10359,6 +10306,16 @@
             ],
             "title": "MetabolomicsAnalysis",
             "type": "object"
+        },
+        "MetabolomicsAnalysisCategoryEnum": {
+            "description": "The category of metabolomics analysis being performed.",
+            "enum": [
+                "gc_ms_metabolomics",
+                "lc_ms_lipidomics",
+                "lc_ms_metabolomics"
+            ],
+            "title": "MetabolomicsAnalysisCategoryEnum",
+            "type": "string"
         },
         "MetagenomeAnnotation": {
             "additionalProperties": false,
@@ -11274,6 +11231,10 @@
                     "pattern": "^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$",
                     "type": "string"
                 },
+                "metaproteomics_analysis_category": {
+                    "$ref": "#/$defs/MetaproteomicsAnalysisCategoryEnum",
+                    "description": "The category of metaproteomics analysis being performed."
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -11336,6 +11297,7 @@
                 }
             },
             "required": [
+                "metaproteomics_analysis_category",
                 "execution_resource",
                 "git_url",
                 "started_at_time",
@@ -11346,6 +11308,15 @@
             ],
             "title": "MetaproteomicsAnalysis",
             "type": "object"
+        },
+        "MetaproteomicsAnalysisCategoryEnum": {
+            "description": "The category of metaproteomics analysis being performed.",
+            "enum": [
+                "matched_metagenome",
+                "in_silico_metagenome"
+            ],
+            "title": "MetaproteomicsAnalysisCategoryEnum",
+            "type": "string"
         },
         "MetatranscriptomeAnnotation": {
             "additionalProperties": false,
@@ -12206,14 +12177,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -12521,6 +12484,14 @@
                     ],
                     "type": "string"
                 },
+                "uses_calibration": {
+                    "description": "calibration information is used by a process",
+                    "pattern": "^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "version": {
                     "type": [
                         "string",
@@ -12567,7 +12538,7 @@
                     ]
                 },
                 "analyte_category": {
-                    "$ref": "#/$defs/AnalyteCategoryEnum",
+                    "$ref": "#/$defs/NucleotideSequencingEnum",
                     "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
                 },
                 "associated_studies": {
@@ -12615,14 +12586,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -12739,14 +12702,7 @@
                     ]
                 },
                 "target_gene": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
+                    "$ref": "#/$defs/TargetGeneEnum",
                     "description": "Targeted gene or locus name for marker gene studies"
                 },
                 "target_subfragment": {
@@ -12778,6 +12734,16 @@
             "title": "NucleotideSequencing",
             "type": "object"
         },
+        "NucleotideSequencingEnum": {
+            "description": "",
+            "enum": [
+                "metagenome",
+                "metatranscriptome",
+                "amplicon_sequencing_assay"
+            ],
+            "title": "NucleotideSequencingEnum",
+            "type": "string"
+        },
         "OccupDocumentEnum": {
             "description": "",
             "enum": [
@@ -12791,7 +12757,7 @@
         },
         "OntologyClass": {
             "additionalProperties": false,
-            "description": "This class is used to represent ontology terms.",
+            "description": "A representation of class defined in an external ontology.",
             "properties": {
                 "alternative_identifiers": {
                     "description": "A list of alternative identifiers for the entity.",
@@ -13064,68 +13030,6 @@
             "title": "Pathway",
             "type": "object"
         },
-        "PeptideQuantification": {
-            "additionalProperties": false,
-            "description": "This is used to link a metaproteomics analysis workflow to a specific peptide sequence and related information",
-            "properties": {
-                "all_proteins": {
-                    "description": "the list of protein identifiers that are associated with the peptide sequence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "best_protein": {
-                    "description": "the specific protein identifier most correctly associated with the peptide sequence",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "min_q_value": {
-                    "description": "smallest Q-Value associated with the peptide sequence as provided by MSGFPlus tool",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "peptide_sequence": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "peptide_spectral_count": {
-                    "description": "sum of filter passing MS2 spectra associated with the peptide sequence within a given LC-MS/MS data file",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "peptide_sum_masic_abundance": {
-                    "description": "combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the peptide sequence from a given LC-MS/MS data file using the MASIC tool",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:PeptideQuantification"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "type"
-            ],
-            "title": "PeptideQuantification",
-            "type": "object"
-        },
         "PersonValue": {
             "additionalProperties": false,
             "description": "An attribute value representing a person",
@@ -13292,14 +13196,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -13403,10 +13299,8 @@
                     "description": "When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination"
                 },
                 "known_as": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "$ref": "#/$defs/ChemicalEntityEnum",
+                    "description": "The substance from which a portion was taken."
                 },
                 "mass": {
                     "anyOf": [
@@ -13573,62 +13467,6 @@
             ],
             "title": "ProfilePositionEnum",
             "type": "string"
-        },
-        "ProteinQuantification": {
-            "additionalProperties": false,
-            "description": "This is used to link a metaproteomics analysis workflow to a specific protein",
-            "properties": {
-                "all_proteins": {
-                    "description": "the list of protein identifiers that are associated with the peptide sequence",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "best_protein": {
-                    "description": "the specific protein identifier most correctly associated with the peptide sequence",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "peptide_sequence_count": {
-                    "description": "count of peptide sequences grouped to the best_protein",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "protein_spectral_count": {
-                    "description": "sum of filter passing MS2 spectra associated with the best protein within a given LC-MS/MS data file",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "protein_sum_masic_abundance": {
-                    "description": "combined MS1 extracted ion chromatograms derived from MS2 spectra associated with the best protein from a given LC-MS/MS data file using the MASIC tool",
-                    "type": [
-                        "integer",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:ProteinQuantification"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "type"
-            ],
-            "title": "ProteinQuantification",
-            "type": "object"
         },
         "Protocol": {
             "additionalProperties": false,
@@ -15277,14 +15115,6 @@
                 "has_input": {
                     "description": "An input to a process.",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ],
                         "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
@@ -15476,6 +15306,17 @@
                 "wood"
             ],
             "title": "SurfMaterialEnum",
+            "type": "string"
+        },
+        "TargetGeneEnum": {
+            "description": "",
+            "enum": [
+                "16S_rRNA",
+                "23S_rRNA",
+                "18S_rRNA",
+                "28S_rRNA"
+            ],
+            "title": "TargetGeneEnum",
             "type": "string"
         },
         "TextValue": {
@@ -15823,16 +15664,6 @@
                 "null"
             ]
         },
-        "chemical_entity_set": {
-            "description": "This property links a database object to the set of chemical entities within it.",
-            "items": {
-                "$ref": "#/$defs/ChemicalEntity"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
         "collecting_biosamples_from_site_set": {
             "items": {
                 "$ref": "#/$defs/CollectingBiosamplesFromSite"
@@ -15986,16 +15817,6 @@
             "description": "This property links a database object to the set of processed samples within it.",
             "items": {
                 "$ref": "#/$defs/ProcessedSample"
-            },
-            "type": [
-                "array",
-                "null"
-            ]
-        },
-        "protocol_execution_set": {
-            "description": "This property links a database object to the set of protocol executions within it.",
-            "items": {
-                "$ref": "#/$defs/ProtocolExecution"
             },
             "type": [
                 "array",

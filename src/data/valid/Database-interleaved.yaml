@@ -28,110 +28,6 @@ workflow_execution_set:
     was_informed_by: nmdc:dgms-12-384j8d
     started_at_time: '2023-08-11T11:00:00Z'
     metaproteomics_analysis_category: matched_metagenome
-chemical_entity_set:
-  - id: nmdc:chem-99-000016
-    type: nmdc:ChemicalEntity
-    name: formic acid
-    alternative_identifiers:
-      - CHEBI:30751
-    chemical_formula: CH2O2
-    inchi_key: BDAGIHXWWSANSR-UHFFFAOYSA-N
-  - id: nmdc:chem-99-000001
-    type: nmdc:ChemicalEntity
-    name: glucose
-    description: generally considered the most abundant monosaccharide in nature
-    alternative_identifiers:
-      - wd:Q37525
-    chemical_formula: C6H12O6
-    inchi: 1S/C6H12O6/c7-1-2-3(8)4(9)5(10)6(11)12-2/h2-11H,1H2/t2-,3-,4+,5-,6?/m1/s1
-    inchi_key: WQZGKKKJIJFFOK-GASJEMHNSA-N
-    smiles:
-      - OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@@H]1O
-      - C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O)O)O)O)O
-  - id: nmdc:chem-99-000002
-    type: nmdc:ChemicalEntity
-    name: ammonium bicarbonate
-    alternative_identifiers:
-      - CHEBI:184335
-  - id: nmdc:chem-99-000014
-    type: nmdc:ChemicalEntity
-    name: trypsin
-    description: A serine protease that hydrolyzes peptide bonds at the C-terminus of
-      arginine and lysine.
-    alternative_identifiers:
-      - MS:1001251
-  - id: nmdc:chem-99-000003
-    type: nmdc:ChemicalEntity
-    name: methanol
-    alternative_identifiers:
-      - CHEBI:17790
-    chemical_formula: CH3OH
-    inchi_key: OKKJLVBELUTLKV-UHFFFAOYSA-N
-  - id: nmdc:chem-99-000004
-    type: nmdc:ChemicalEntity
-    name: water
-    alternative_identifiers:
-      - CHEBI:15377
-    chemical_formula: H2O
-  - id: nmdc:chem-99-000005
-    type: nmdc:ChemicalEntity
-    name: deionized water
-  - id: nmdc:chem-99-000015
-    type: nmdc:ChemicalEntity
-    name: hydrochloric acid
-    alternative_identifiers:
-      - CHEBI:7696
-    chemical_formula: HCl
-  - id: nmdc:chem-99-000006
-    type: nmdc:ChemicalEntity
-    name: triton-x 100
-  - id: nmdc:chem-99-000007
-    type: nmdc:ChemicalEntity
-    name: chymotrypsin
-    description: A serine protease that hydrolyzes peptide bonds at the C-terminus of
-      tryptophan, leucine, tyrosine, and phenylalanine.
-    alternative_identifiers:
-      - MS:1001306
-  - id: nmdc:chem-99-000008
-    type: nmdc:ChemicalEntity
-    name: Lys-C
-    description: A serine protease that hydrolyzes peptide, ester, and amide bonds at
-      the C-terminus of lysine.
-    alternative_identifiers:
-      - MS:1001309
-  - id: nmdc:chem-99-000009
-    type: nmdc:ChemicalEntity
-    name: Lys-N
-    description: A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus
-      of lysine.
-    alternative_identifiers:
-      - MS:1003093
-  - id: nmdc:chem-99-000010
-    type: nmdc:ChemicalEntity
-    name: Glu-C
-    description: A serine protease that hydrolyzes peptide and ester bonds at the C-terminus
-      of aspartic acid or glutamic acid
-    alternative_identifiers:
-      - MS:1001917
-  - id: nmdc:chem-99-000011
-    type: nmdc:ChemicalEntity
-    name: Arg-C
-    description: A cysteine protease that hydrolyzes peptide, ester, and amide bonds
-      at the C-terminus of arginine and with lower efficiency, lysine.
-    alternative_identifiers:
-      - MS:1001303
-  - id: nmdc:chem-99-000012
-    type: nmdc:ChemicalEntity
-    name: Asp-N
-    description: A zinc metalloendopeptidase that hydrolyzes peptide bonds at the N-terminus
-      of aspartic acid.
-    alternative_identifiers:
-      - MS:1001304
-  - id: nmdc:chem-99-000013
-    type: nmdc:ChemicalEntity
-    name: alphaLP
-    description: A serine protease that hydrolyzes peptide bonds at the C-terminus of
-      threonine, alanine, serine, and valine.
 material_processing_set:
   - id: nmdc:cspro-99-oW43DzG0
     type: nmdc:ChromatographicSeparationProcess
@@ -145,7 +41,7 @@ material_processing_set:
     ordered_mobile_phases:
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: glucose
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
@@ -157,7 +53,7 @@ material_processing_set:
           has_unit: mL
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: water
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
@@ -195,7 +91,7 @@ material_processing_set:
 storage_process_set:
   - id: nmdc:storpr-99-zUCd5N
     substances_used:
-      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: acetonitrile
         type: nmdc:PortionOfSubstance
         final_concentration:
           type: nmdc:QuantityValue
@@ -213,19 +109,6 @@ storage_process_set:
       - nmdc:procsm-78-BZAPKH
     type: nmdc:StorageProcess
 
-protocol_execution_set:
-  - id: nmdc:pex-99-18sD2
-    type: nmdc:ProtocolExecution
-    has_input:
-      - nmdc:bsm-65-0002
-    has_process_parts:
-      - nmdc:extrp-71-r2pk
-      - nmdc:filtpr-22-32G2BS
-    protocol_execution_category: organic_matter_extraction
-    protocol_link:
-      type: nmdc:Protocol
-      url: https://www.protocols.io/view/water-extractable-organic-matter-weom-ewov1o4oylr2/v1
-      name: Water Extractable Organic Matter (WEOM)
 material_processing_set:
   - id: nmdc:cspro-99-xyzxyz
     type: nmdc:ChromatographicSeparationProcess
@@ -247,7 +130,7 @@ material_processing_set:
           has_unit: min
           has_numeric_value: 60
         substances_used:
-          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: water
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
@@ -255,7 +138,7 @@ material_processing_set:
               has_numeric_value: 10
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: glucose
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
@@ -295,7 +178,7 @@ material_processing_set:
     has_output:
       - nmdc:procsm-13-S67F
     substances_used:
-      - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: water
         type: nmdc:PortionOfSubstance
         final_concentration:
           type: nmdc:QuantityValue
@@ -305,7 +188,7 @@ material_processing_set:
           type: nmdc:QuantityValue
           has_numeric_value: 500
           has_unit: mL
-      - known_as: nmdc:chem-99-000006
+      - known_as: formic_acid
         type: nmdc:PortionOfSubstance
         substance_role: solubilizing_agent
     duration:
@@ -323,7 +206,7 @@ material_processing_set:
     #      - nmdc-procsm-99-000002
     chemical_conversion_category: acid_base
     substances_used:
-      - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: glucose
         type: nmdc:PortionOfSubstance
         sample_state_information: liquid
         volume:
@@ -350,18 +233,18 @@ material_processing_set:
     #    has_output:
     #      - nmdc:procsm-39
     substances_used:
-      - known_as: nmdc:chem-99-000005 # see src/data/valid/Database-chemical_entity_set-1.yaml
+      - known_as: water
         type: nmdc:PortionOfSubstance
         sample_state_information: liquid
         substance_role: solvent
-      - known_as: nmdc:chem-99-000002
+      - known_as: formic_acid
         type: nmdc:PortionOfSubstance
         substance_role: buffer
         source_concentration:
           type: nmdc:QuantityValue
           has_unit: mM
           has_numeric_value: 50
-      - known_as: nmdc:chem-99-000014
+      - known_as: glucose
         type: nmdc:PortionOfSubstance
         substance_role: ms_proteolytic_enzyme
         final_concentration:
@@ -3658,6 +3541,7 @@ workflow_execution_set:
     git_url: https://example.org/WorkflowExecutionActivity
     was_informed_by: nmdc:dgms-11-3u74ds
     started_at_time: '2021-08-05T14:48:51+00:00'
+    metabolomics_analysis_category: gc_ms_metabolomics
   - id: nmdc:wfmb-4d8-3z74d.1
     type: nmdc:MetabolomicsAnalysis
     name: soil metabolomics analysis
@@ -3674,6 +3558,7 @@ workflow_execution_set:
       - type: nmdc:MetaboliteIdentification
         highest_similarity_score: 0.88
         metabolite_identified: CHEBI:16236
+    metabolomics_analysis_category: gc_ms_metabolomics
   - id: nmdc:wfmgan-99-4d83z.1
     type: nmdc:MetagenomeAnnotation
     name: human gut metagenome annotation
@@ -4771,7 +4656,7 @@ configuration_set:
           has_unit: min
           has_numeric_value: 60
         substances_used:
-          - known_as: nmdc:chem-99-000003 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: glucose
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
@@ -4779,7 +4664,7 @@ configuration_set:
               has_numeric_value: 10
       - type: nmdc:MobilePhaseSegment
         substances_used:
-          - known_as: nmdc:chem-99-000015 # see src/data/valid/Database-chemical_entity_set-1.yaml
+          - known_as: water
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
