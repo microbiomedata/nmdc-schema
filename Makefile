@@ -194,10 +194,10 @@ gendoc: $(DOCDIR) prefixmaps
 	cp -f $(DEST)/prefixmap/nmdc-prefix-map.json $(DOCDIR)
 	mkdir -p $(DOCDIR)/javascripts
 	$(RUN) cp $(SRC)/scripts/*.js $(DOCDIR)/javascripts/
-	# Use `refgraph` (part of `refscan`) to generate diagrams within the website's file tree.
+	# Use `refscan graph` to generate diagrams within the website's file tree.
 	mkdir -p $(DOCDIR)/visualizations
 	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject collection --graph $(DOCDIR)/visualizations/collection-graph.html
-  $(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph $(DOCDIR)/visualizations/class-graph.html
+	$(RUN) refscan graph --schema nmdc_schema/nmdc_materialized_patterns.yaml --subject class      --graph $(DOCDIR)/visualizations/class-graph.html
 
 testdoc: gendoc serve
 
