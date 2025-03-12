@@ -18,7 +18,6 @@ If you click on a circle, the names of the fields will appear on the arrows conn
 This [**inter-class relationship diagram**](visualizations/class-graph.html)
 shows the **classes** defined within the schema, and the **relationships** between those classes.
 
-Each circle represents a class.
-Each arrow represents all of the slots that instances of that class—the one at that arrow's tail—can
-use to refer to instances of another class—the one at that arrow's head.
+Each circle represents a class. Each arrow represents all of the slots that instances of that class—the one
+at that arrow's tail—can use to refer to instances of another class—the one at that arrow's head.
 If you click on a circle, the names of the slots will appear on the arrows connected to that circle.
