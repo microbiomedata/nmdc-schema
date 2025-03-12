@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-02-12T08:47:56
+# Generation date: 2025-03-12T17:17:40
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -260,10 +260,6 @@ class PlannedProcessId(NamedThingId):
 
 
 class CollectingBiosamplesFromSiteId(PlannedProcessId):
-    pass
-
-
-class ProtocolExecutionId(PlannedProcessId):
     pass
 
 
@@ -1299,8 +1295,10 @@ class OntologyClass(NamedThing):
     id: Union[str, OntologyClassId] = None
     type: Union[str, URIorCURIE] = None
     alternative_names: Optional[Union[str, List[str]]] = empty_list()
-    definition: Optional[str] = None
     relations: Optional[Union[Union[dict, "OntologyRelation"], List[Union[dict, "OntologyRelation"]]]] = empty_list()
+    definition: Optional[str] = None
+    is_obsolete: Optional[Union[bool, Bool]] = None
+    is_root: Optional[Union[bool, Bool]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self._is_empty(self.id):
@@ -1312,12 +1310,18 @@ class OntologyClass(NamedThing):
             self.alternative_names = [self.alternative_names] if self.alternative_names is not None else []
         self.alternative_names = [v if isinstance(v, str) else str(v) for v in self.alternative_names]
 
-        if self.definition is not None and not isinstance(self.definition, str):
-            self.definition = str(self.definition)
-
         if not isinstance(self.relations, list):
             self.relations = [self.relations] if self.relations is not None else []
         self.relations = [v if isinstance(v, OntologyRelation) else OntologyRelation(**as_dict(v)) for v in self.relations]
+
+        if self.definition is not None and not isinstance(self.definition, str):
+            self.definition = str(self.definition)
+
+        if self.is_obsolete is not None and not isinstance(self.is_obsolete, Bool):
+            self.is_obsolete = Bool(self.is_obsolete)
+
+        if self.is_root is not None and not isinstance(self.is_root, Bool):
+            self.is_root = Bool(self.is_root)
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -4348,56 +4352,6 @@ class CollectingBiosamplesFromSite(PlannedProcess):
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, BiosampleId) else BiosampleId(v) for v in self.has_output]
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
-class ProtocolExecution(PlannedProcess):
-    """
-    A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
-    """
-    _inherited_slots: ClassVar[List[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["ProtocolExecution"]
-    class_class_curie: ClassVar[str] = "nmdc:ProtocolExecution"
-    class_name: ClassVar[str] = "ProtocolExecution"
-    class_model_uri: ClassVar[URIRef] = NMDC.ProtocolExecution
-
-    id: Union[str, ProtocolExecutionId] = None
-    type: Union[str, URIorCURIE] = None
-    has_process_parts: Union[Union[str, PlannedProcessId], List[Union[str, PlannedProcessId]]] = None
-    protocol_execution_category: Union[str, "ProtocolCategoryEnum"] = None
-    has_input: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-    has_output: Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]] = empty_list()
-
-    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, ProtocolExecutionId):
-            self.id = ProtocolExecutionId(self.id)
-
-        if self._is_empty(self.has_process_parts):
-            self.MissingRequiredField("has_process_parts")
-        if not isinstance(self.has_process_parts, list):
-            self.has_process_parts = [self.has_process_parts] if self.has_process_parts is not None else []
-        self.has_process_parts = [v if isinstance(v, PlannedProcessId) else PlannedProcessId(v) for v in self.has_process_parts]
-
-        if self._is_empty(self.protocol_execution_category):
-            self.MissingRequiredField("protocol_execution_category")
-        if not isinstance(self.protocol_execution_category, ProtocolCategoryEnum):
-            self.protocol_execution_category = ProtocolCategoryEnum(self.protocol_execution_category)
-
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_input]
-
-        if not isinstance(self.has_output, list):
-            self.has_output = [self.has_output] if self.has_output is not None else []
-        self.has_output = [v if isinstance(v, NamedThingId) else NamedThingId(v) for v in self.has_output]
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -7836,6 +7790,11 @@ class ExtractionTargetEnum(EnumDefinitionImpl):
         name="ExtractionTargetEnum",
     )
 
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "natural organic matter",
+            PermissibleValue(text="natural organic matter"))
+
 class ProcessingInstitutionEnum(EnumDefinitionImpl):
 
     UCSD = PermissibleValue(
@@ -10123,9 +10082,6 @@ slots.configuration_set = Slot(uri=NMDC.configuration_set, name="configuration_s
 slots.manifest_set = Slot(uri=NMDC.manifest_set, name="manifest_set", curie=NMDC.curie('manifest_set'),
                    model_uri=NMDC.manifest_set, domain=None, range=Optional[Union[Dict[Union[str, ManifestId], Union[dict, Manifest]], List[Union[dict, Manifest]]]])
 
-slots.protocol_execution_set = Slot(uri=NMDC.protocol_execution_set, name="protocol_execution_set", curie=NMDC.curie('protocol_execution_set'),
-                   model_uri=NMDC.protocol_execution_set, domain=None, range=Optional[Union[Dict[Union[str, ProtocolExecutionId], Union[dict, ProtocolExecution]], List[Union[dict, ProtocolExecution]]]])
-
 slots.storage_process_set = Slot(uri=NMDC.storage_process_set, name="storage_process_set", curie=NMDC.curie('storage_process_set'),
                    model_uri=NMDC.storage_process_set, domain=None, range=Optional[Union[Dict[Union[str, StorageProcessId], Union[dict, StorageProcess]], List[Union[dict, StorageProcess]]]])
 
@@ -10155,12 +10111,6 @@ slots.completion_date = Slot(uri=NMDC.completion_date, name="completion_date", c
 
 slots.container_size = Slot(uri=NMDC.container_size, name="container_size", curie=NMDC.curie('container_size'),
                    model_uri=NMDC.container_size, domain=None, range=Optional[Union[dict, QuantityValue]])
-
-slots.protocol_execution_category = Slot(uri=NMDC.protocol_execution_category, name="protocol_execution_category", curie=NMDC.curie('protocol_execution_category'),
-                   model_uri=NMDC.protocol_execution_category, domain=None, range=Union[str, "ProtocolCategoryEnum"])
-
-slots.has_process_parts = Slot(uri=NMDC.has_process_parts, name="has_process_parts", curie=NMDC.curie('has_process_parts'),
-                   model_uri=NMDC.has_process_parts, domain=None, range=Union[Union[str, PlannedProcessId], List[Union[str, PlannedProcessId]]])
 
 slots.filter_material = Slot(uri=NMDC.filter_material, name="filter_material", curie=NMDC.curie('filter_material'),
                    model_uri=NMDC.filter_material, domain=None, range=Optional[str])
@@ -10749,6 +10699,18 @@ slots.applies_to_person = Slot(uri=NMDC['basic_classes/applies_to_person'], name
 
 slots.applied_roles = Slot(uri=NMDC['basic_classes/applied_roles'], name="applied_roles", curie=NMDC.curie('basic_classes/applied_roles'),
                    model_uri=NMDC.applied_roles, domain=None, range=Union[Union[str, "CreditEnum"], List[Union[str, "CreditEnum"]]])
+
+slots.definition = Slot(uri=NMDC['basic_classes/definition'], name="definition", curie=NMDC.curie('basic_classes/definition'),
+                   model_uri=NMDC.definition, domain=None, range=Optional[str])
+
+slots.relations = Slot(uri=NMDC['basic_classes/relations'], name="relations", curie=NMDC.curie('basic_classes/relations'),
+                   model_uri=NMDC.relations, domain=None, range=Optional[Union[Union[dict, OntologyRelation], List[Union[dict, OntologyRelation]]]])
+
+slots.is_obsolete = Slot(uri=NMDC['basic_classes/is_obsolete'], name="is_obsolete", curie=NMDC.curie('basic_classes/is_obsolete'),
+                   model_uri=NMDC.is_obsolete, domain=None, range=Optional[Union[bool, Bool]])
+
+slots.is_root = Slot(uri=NMDC['basic_classes/is_root'], name="is_root", curie=NMDC.curie('basic_classes/is_root'),
+                   model_uri=NMDC.is_root, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.has_input = Slot(uri=NMDC['basic_classes/has_input'], name="has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.has_input, domain=None, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
@@ -12613,11 +12575,8 @@ slots.nucleic_acid_sequence_source_field = Slot(uri=MIXS.nucleic_acid_sequence_s
 slots.sequencing_field = Slot(uri=MIXS.sequencing_field, name="sequencing field", curie=MIXS.curie('sequencing_field'),
                    model_uri=NMDC.sequencing_field, domain=None, range=Optional[str])
 
-slots.ontologyClass__definition = Slot(uri=NMDC['basic_classes/definition'], name="ontologyClass__definition", curie=NMDC.curie('basic_classes/definition'),
-                   model_uri=NMDC.ontologyClass__definition, domain=None, range=Optional[str])
-
-slots.ontologyClass__relations = Slot(uri=NMDC['basic_classes/relations'], name="ontologyClass__relations", curie=NMDC.curie('basic_classes/relations'),
-                   model_uri=NMDC.ontologyClass__relations, domain=None, range=Optional[Union[Union[dict, OntologyRelation], List[Union[dict, OntologyRelation]]]])
+slots.mixs_env_triad_field = Slot(uri=MIXS.mixs_env_triad_field, name="mixs_env_triad_field", curie=MIXS.curie('mixs_env_triad_field'),
+                   model_uri=NMDC.mixs_env_triad_field, domain=None, range=Optional[str])
 
 slots.ontologyRelation__subject = Slot(uri=NMDC['basic_classes/subject'], name="ontologyRelation__subject", curie=NMDC.curie('basic_classes/subject'),
                    model_uri=NMDC.ontologyRelation__subject, domain=None, range=Union[str, OntologyClassId])
@@ -12733,19 +12692,6 @@ slots.CollectingBiosamplesFromSite_has_output = Slot(uri=NMDC['basic_classes/has
 slots.CollectingBiosamplesFromSite_id = Slot(uri=NMDC.id, name="CollectingBiosamplesFromSite_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.CollectingBiosamplesFromSite_id, domain=CollectingBiosamplesFromSite, range=Union[str, CollectingBiosamplesFromSiteId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.ProtocolExecution_id = Slot(uri=NMDC.id, name="ProtocolExecution_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.ProtocolExecution_id, domain=ProtocolExecution, range=Union[str, ProtocolExecutionId],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.ProtocolExecution_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="ProtocolExecution_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.ProtocolExecution_has_input, domain=ProtocolExecution, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.ProtocolExecution_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="ProtocolExecution_has_output", curie=NMDC.curie('basic_classes/has_output'),
-                   model_uri=NMDC.ProtocolExecution_has_output, domain=ProtocolExecution, range=Optional[Union[Union[str, NamedThingId], List[Union[str, NamedThingId]]]])
-
-slots.ProtocolExecution_has_process_parts = Slot(uri=NMDC.has_process_parts, name="ProtocolExecution_has_process_parts", curie=NMDC.curie('has_process_parts'),
-                   model_uri=NMDC.ProtocolExecution_has_process_parts, domain=ProtocolExecution, range=Union[Union[str, PlannedProcessId], List[Union[str, PlannedProcessId]]])
 
 slots.SubSamplingProcess_id = Slot(uri=NMDC.id, name="SubSamplingProcess_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.SubSamplingProcess_id, domain=SubSamplingProcess, range=Union[str, SubSamplingProcessId],

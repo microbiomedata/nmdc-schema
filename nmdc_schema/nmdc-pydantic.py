@@ -2276,6 +2276,7 @@ class ExtractionTargetEnum(str, Enum):
     metabolite = "metabolite"
     protein = "protein"
     lipid = "lipid"
+    natural_organic_matter = "natural organic matter"
 
 
 class ProcessingInstitutionEnum(str, Enum):
@@ -3664,8 +3665,15 @@ class OntologyClass(NamedThing):
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
     relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    is_obsolete: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'alias': 'is_obsolete',
+         'comments': ['If true (the ontology term is declared obsolete via the '
+                      'ontology source itself),  the term is no longer considered a '
+                      'valid term to use in an annotation at NMDC, and it no longer '
+                      'has ontology_relation_set records.'],
+         'domain_of': ['OntologyClass']} })
+    is_root: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'alias': 'is_root', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -3747,8 +3755,15 @@ class EnvironmentalMaterialTerm(OntologyClass):
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
     relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    is_obsolete: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'alias': 'is_obsolete',
+         'comments': ['If true (the ontology term is declared obsolete via the '
+                      'ontology source itself),  the term is no longer considered a '
+                      'valid term to use in an annotation at NMDC, and it no longer '
+                      'has ontology_relation_set records.'],
+         'domain_of': ['OntologyClass']} })
+    is_root: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'alias': 'is_root', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -3844,8 +3859,15 @@ class ChemicalEntity(OntologyClass):
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
     relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    is_obsolete: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'alias': 'is_obsolete',
+         'comments': ['If true (the ontology term is declared obsolete via the '
+                      'ontology source itself),  the term is no longer considered a '
+                      'valid term to use in an annotation at NMDC, and it no longer '
+                      'has ontology_relation_set records.'],
+         'domain_of': ['OntologyClass']} })
+    is_root: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'alias': 'is_root', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -3934,8 +3956,15 @@ class FunctionalAnnotationTerm(OntologyClass):
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
     relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    is_obsolete: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'alias': 'is_obsolete',
+         'comments': ['If true (the ontology term is declared obsolete via the '
+                      'ontology source itself),  the term is no longer considered a '
+                      'valid term to use in an annotation at NMDC, and it no longer '
+                      'has ontology_relation_set records.'],
+         'domain_of': ['OntologyClass']} })
+    is_root: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'alias': 'is_root', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -4027,8 +4056,15 @@ class Pathway(FunctionalAnnotationTerm):
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
     relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    is_obsolete: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'alias': 'is_obsolete',
+         'comments': ['If true (the ontology term is declared obsolete via the '
+                      'ontology source itself),  the term is no longer considered a '
+                      'valid term to use in an annotation at NMDC, and it no longer '
+                      'has ontology_relation_set records.'],
+         'domain_of': ['OntologyClass']} })
+    is_root: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'alias': 'is_root', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -4122,8 +4158,15 @@ class OrthologyGroup(FunctionalAnnotationTerm):
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
-    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
     relations: Optional[List[OntologyRelation]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
+    definition: Optional[str] = Field(None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
+    is_obsolete: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is obsolete.""", json_schema_extra = { "linkml_meta": {'alias': 'is_obsolete',
+         'comments': ['If true (the ontology term is declared obsolete via the '
+                      'ontology source itself),  the term is no longer considered a '
+                      'valid term to use in an annotation at NMDC, and it no longer '
+                      'has ontology_relation_set records.'],
+         'domain_of': ['OntologyClass']} })
+    is_root: Optional[bool] = Field(None, description="""A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.""", json_schema_extra = { "linkml_meta": {'alias': 'is_root', 'domain_of': ['OntologyClass']} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -6386,7 +6429,7 @@ class Biosample(Sample):
                                               'morphological context'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'oceanic epipelagic zone biome [ENVO:01000035]'}],
-         'is_a': 'environment field',
+         'is_a': 'mixs_env_triad_field',
          'slot_uri': 'MIXS:0000012',
          'string_serialization': '{termLabel} {[termID]}'} })
     env_local_scale: ControlledIdentifiedTermValue = Field(..., title="local environmental context", description="""Report the entity or entities which are in the sample or specimen’s local vicinity and which you believe have significant causal influences on your sample or specimen. We recommend using EnvO terms which are of smaller spatial grain than your entry for env_broad_scale. Terms, such as anatomical sites, from other OBO Library ontologies which interoperate with EnvO (e.g. UBERON) are accepted in this field. EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS.""", json_schema_extra = { "linkml_meta": {'alias': 'env_local_scale',
@@ -6413,7 +6456,7 @@ class Biosample(Sample):
                                               'anatomical structures or plant parts.'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'litter layer [ENVO:01000338]'}],
-         'is_a': 'environment field',
+         'is_a': 'mixs_env_triad_field',
          'slot_uri': 'MIXS:0000013',
          'string_serialization': '{termLabel} {[termID]}'} })
     env_medium: ControlledIdentifiedTermValue = Field(..., title="environmental medium", description="""Report the environmental material(s) immediately surrounding the sample or specimen at the time of sampling. We recommend using subclasses of 'environmental material' (http://purl.obolibrary.org/obo/ENVO_00010483). EnvO documentation about how to use the field: https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS . Terms from other OBO ontologies are permissible as long as they reference mass/volume nouns (e.g. air, water, blood) and not discrete, countable entities (e.g. a tree, a leaf, a table top).""", json_schema_extra = { "linkml_meta": {'alias': 'env_medium',
@@ -6441,7 +6484,7 @@ class Biosample(Sample):
                                               'organ, or plant structure'}},
          'domain_of': ['Biosample'],
          'examples': [{'value': 'soil [ENVO:00001998]'}],
-         'is_a': 'environment field',
+         'is_a': 'mixs_env_triad_field',
          'slot_uri': 'MIXS:0000014',
          'string_serialization': '{termLabel} {[termID]}'} })
     env_package: Optional[TextValue] = Field(None, description="""MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported""", json_schema_extra = { "linkml_meta": {'alias': 'env_package',
@@ -11896,191 +11939,6 @@ class CollectingBiosamplesFromSite(PlannedProcess):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v,list):
-            for element in v:
-                if isinstance(v, str) and not pattern.match(element):
-                    raise ValueError(f"Invalid id format: {element}")
-        elif isinstance(v,str):
-            if not pattern.match(v):
-                raise ValueError(f"Invalid id format: {v}")
-        return v
-
-    @field_validator('alternative_identifiers')
-    def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v,list):
-            for element in v:
-                if isinstance(v, str) and not pattern.match(element):
-                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
-        elif isinstance(v,str):
-            if not pattern.match(v):
-                raise ValueError(f"Invalid alternative_identifiers format: {v}")
-        return v
-
-
-class ProtocolExecution(PlannedProcess):
-    """
-    A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ProtocolExecution',
-         'deprecated': 'not used, not fulfilling intended purpose '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'has_input': {'name': 'has_input',
-                                      'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                                      'structured_pattern': {'interpolated': True,
-                                                             'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
-                        'has_output': {'name': 'has_output',
-                                       'pattern': '^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                                       'structured_pattern': {'interpolated': True,
-                                                              'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}},
-                        'has_process_parts': {'description': 'The MaterialProcessing '
-                                                             'steps that are discrete '
-                                                             'parts of the '
-                                                             'ProtocolExecution.',
-                                              'name': 'has_process_parts',
-                                              'pattern': '^(nmdc):(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                                              'required': True,
-                                              'structured_pattern': {'interpolated': True,
-                                                                     'syntax': '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'}},
-                        'id': {'name': 'id',
-                               'pattern': '^(nmdc):pex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
-                               'required': True,
-                               'structured_pattern': {'interpolated': True,
-                                                      'syntax': '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'}}}})
-
-    has_process_parts: List[str] = Field(..., description="""The MaterialProcessing steps that are discrete parts of the ProtocolExecution.""", json_schema_extra = { "linkml_meta": {'alias': 'has_process_parts',
-         'deprecated': 'not used '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
-         'domain_of': ['ProtocolExecution'],
-         'list_elements_ordered': True,
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'}} })
-    protocol_execution_category: ProtocolCategoryEnum = Field(..., json_schema_extra = { "linkml_meta": {'alias': 'protocol_execution_category',
-         'deprecated': 'not used '
-                       'https://github.com/microbiomedata/nmdc-schema/issues/2336',
-         'domain_of': ['ProtocolExecution']} })
-    has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
-         'aliases': ['input'],
-         'domain_of': ['PlannedProcess'],
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}} })
-    has_output: Optional[List[str]] = Field(None, description="""An output from a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_output',
-         'aliases': ['output'],
-         'domain_of': ['PlannedProcess'],
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
-    start_date: Optional[str] = Field(None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
-         'comments': ['We are using string representations of dates until all '
-                      'components of our ecosystem can handle ISO 8610 dates',
-                      'The date should be formatted as YYYY-MM-DD'],
-         'domain_of': ['PlannedProcess'],
-         'todos': ['add date string validation pattern']} })
-    end_date: Optional[str] = Field(None, description="""The date on which any process or activity was ended""", json_schema_extra = { "linkml_meta": {'alias': 'end_date',
-         'comments': ['We are using string representations of dates until all '
-                      'components of our ecosystem can handle ISO 8610 dates',
-                      'The date should be formatted as YYYY-MM-DD'],
-         'domain_of': ['PlannedProcess'],
-         'todos': ['add date string validation pattern']} })
-    qc_status: Optional[StatusEnum] = Field(None, description="""Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)""", json_schema_extra = { "linkml_meta": {'alias': 'qc_status', 'domain_of': ['PlannedProcess']} })
-    qc_comment: Optional[str] = Field(None, description="""Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).""", json_schema_extra = { "linkml_meta": {'alias': 'qc_comment', 'domain_of': ['PlannedProcess']} })
-    has_failure_categorization: Optional[List[FailureCategorization]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'has_failure_categorization', 'domain_of': ['PlannedProcess']} })
-    id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
-         'domain_of': ['NamedThing'],
-         'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
-                       'value': 'nmdc:mgmag-00-x012.1_7_c1'}],
-         'notes': ['abstracted pattern: '
-                   'prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?',
-                   'a minimum length of 3 characters is suggested for typecodes, but 1 '
-                   'or 2 characters will be accepted',
-                   'typecodes must correspond 1:1 to a class in the NMDC schema. this '
-                   'will be checked via per-class id slot usage assertions',
-                   'minting authority shoulders should probably be enumerated and '
-                   'checked in the pattern'],
-         'structured_aliases': {'data_object_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                   'literal_form': 'data_object_id',
-                                                   'predicate': 'NARROW_SYNONYM'},
-                                'workflow_execution_id': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                          'literal_form': 'workflow_execution_id',
-                                                          'predicate': 'NARROW_SYNONYM'}},
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'}} })
-    name: Optional[str] = Field(None, description="""A human readable label for an entity""", json_schema_extra = { "linkml_meta": {'alias': 'name', 'domain_of': ['PersonValue', 'NamedThing', 'Protocol']} })
-    description: Optional[str] = Field(None, description="""a human-readable description of a thing""", json_schema_extra = { "linkml_meta": {'alias': 'description',
-         'domain_of': ['ImageValue', 'NamedThing'],
-         'slot_uri': 'dcterms:description'} })
-    alternative_identifiers: Optional[List[str]] = Field(None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
-         'domain_of': ['MetaboliteIdentification', 'NamedThing']} })
-    type: Literal["https://w3id.org/nmdc/ProtocolExecution","nmdc:ProtocolExecution"] = Field("nmdc:ProtocolExecution", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-
-    @field_validator('has_process_parts')
-    def pattern_has_process_parts(cls, v):
-        pattern=re.compile(r"^(nmdc):(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v,list):
-            for element in v:
-                if isinstance(v, str) and not pattern.match(element):
-                    raise ValueError(f"Invalid has_process_parts format: {element}")
-        elif isinstance(v,str):
-            if not pattern.match(v):
-                raise ValueError(f"Invalid has_process_parts format: {v}")
-        return v
-
-    @field_validator('has_input')
-    def pattern_has_input(cls, v):
-        pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v,list):
-            for element in v:
-                if isinstance(v, str) and not pattern.match(element):
-                    raise ValueError(f"Invalid has_input format: {element}")
-        elif isinstance(v,str):
-            if not pattern.match(v):
-                raise ValueError(f"Invalid has_input format: {v}")
-        return v
-
-    @field_validator('has_output')
-    def pattern_has_output(cls, v):
-        pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v,list):
-            for element in v:
-                if isinstance(v, str) and not pattern.match(element):
-                    raise ValueError(f"Invalid has_output format: {element}")
-        elif isinstance(v,str):
-            if not pattern.match(v):
-                raise ValueError(f"Invalid has_output format: {v}")
-        return v
-
-    @field_validator('id')
-    def pattern_id(cls, v):
-        pattern=re.compile(r"^(nmdc):pex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -19507,7 +19365,6 @@ FieldResearchSite.model_rebuild()
 Instrument.model_rebuild()
 PlannedProcess.model_rebuild()
 CollectingBiosamplesFromSite.model_rebuild()
-ProtocolExecution.model_rebuild()
 StorageProcess.model_rebuild()
 MaterialProcessing.model_rebuild()
 Pooling.model_rebuild()
