@@ -1145,6 +1145,7 @@ enums:
       metabolite: { }
       protein: { }
       lipid: { }
+      natural organic matter: { }
 
   ProcessingInstitutionEnum:
     notes:
