@@ -3,7 +3,6 @@
 #  type: nmdc:QuantityValue
 #  has_unit: percent
 #  has_numeric_value: 10
-#sample_state_information: liquid
 #known_as: glucose
 #substance_role: solvent
 #volume:
