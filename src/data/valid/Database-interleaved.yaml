@@ -208,7 +208,6 @@ material_processing_set:
     substances_used:
       - known_as: glucose
         type: nmdc:PortionOfSubstance
-        sample_state_information: liquid
         volume:
           type: nmdc:QuantityValue
           has_numeric_value: 120
@@ -235,7 +234,6 @@ material_processing_set:
     substances_used:
       - known_as: water
         type: nmdc:PortionOfSubstance
-        sample_state_information: liquid
         substance_role: solvent
       - known_as: formic_acid
         type: nmdc:PortionOfSubstance
