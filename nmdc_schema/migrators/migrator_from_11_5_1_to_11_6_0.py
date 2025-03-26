@@ -4,17 +4,17 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11.4.0"
-    _to_version = "11.5.0"
+    _from_version = "11.5.1"
+    _to_version = "11.6.0"
 
     def upgrade(self):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
 
-        Between schema version 11.4.0 and 11.5.0, the slot `sample_state_information` was removed from the schema class
+        Between schema version 11.5.1 and 11.6.0, the slot `sample_state_information` was removed from the schema class
         `PortionOfSubstance`. This function updates all instances of that schema class in the database accordingly.
 
-        Note: In a database conforming to schema 11.4.0, instances of the `PortionOfSubstance` class cannot exist
+        Note: In a database conforming to schema 11.5.1, instances of the `PortionOfSubstance` class cannot exist
               as documents in a collection. Instead, they can only exist as objects in the multivalued `substances_used`
               field of instances of specific schema classes. Those schema classes are:
               - [x] 1. `Extraction`
