@@ -36,7 +36,7 @@ class Migrator(MigratorBase):
               - [x] 5. `MobilePhaseSegment`
                 - Docs: https://microbiomedata.github.io/nmdc-schema/MobilePhaseSegment/
                 - These are not represented by entire documents in any collection. Instead,
-                  they are represented by objects having a type value of `MobilePhaseSegment`
+                  they are represented by objects having a type value of `nmdc:MobilePhaseSegment`
                   in the multivalued `ordered_mobile_phases` fields of instances of the following schema classes:
                   - [x] A. `ChromatographyConfiguration`
                     - Docs: https://microbiomedata.github.io/nmdc-schema/ChromatographyConfiguration/
