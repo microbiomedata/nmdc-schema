@@ -593,6 +593,9 @@ slots:
     range: Instrument
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
+    structured_pattern:
+      syntax: "^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
+      interpolated: true
 
   in_manifest:
     range: Manifest
