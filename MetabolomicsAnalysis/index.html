@@ -392,8 +392,8 @@
 
   MetabolomicsAnalysis : was_informed_by
 
-      MetabolomicsAnalysis --&gt; "1" DataGeneration : was_informed_by
-    click DataGeneration href "../DataGeneration"
+      MetabolomicsAnalysis --&gt; "1" MassSpectrometry : was_informed_by
+    click MassSpectrometry href "../MassSpectrometry"
 
 
 
@@ -472,7 +472,7 @@
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>1 <br/> <a href="../DataGeneration/">DataGeneration</a></td>
+<td>1 <br/> <a href="../MassSpectrometry/">MassSpectrometry</a></td>
 <td></td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
@@ -602,6 +602,7 @@ slot_usage:
       interpolated: true
   was_informed_by:
     name: was_informed_by
+    range: MassSpectrometry
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -623,6 +624,7 @@ slot_usage:
       interpolated: true
   was_informed_by:
     name: was_informed_by
+    range: MassSpectrometry
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -750,7 +752,7 @@ attributes:
     owner: MetabolomicsAnalysis
     domain_of:
     - WorkflowExecution
-    range: DataGeneration
+    range: MassSpectrometry
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'

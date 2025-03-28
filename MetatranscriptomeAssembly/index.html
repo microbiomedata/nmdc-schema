@@ -433,8 +433,8 @@
 
   MetatranscriptomeAssembly : was_informed_by
 
-      MetatranscriptomeAssembly --&gt; "1" DataGeneration : was_informed_by
-    click DataGeneration href "../DataGeneration"
+      MetatranscriptomeAssembly --&gt; "1" NucleotideSequencing : was_informed_by
+    click NucleotideSequencing href "../NucleotideSequencing"
 
 
 
@@ -663,7 +663,7 @@
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>1 <br/> <a href="../DataGeneration/">DataGeneration</a></td>
+<td>1 <br/> <a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
 <td></td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
@@ -818,6 +818,7 @@ slot_usage:
       interpolated: true
   was_informed_by:
     name: was_informed_by
+    range: NucleotideSequencing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -839,6 +840,7 @@ slot_usage:
       interpolated: true
   was_informed_by:
     name: was_informed_by
+    range: NucleotideSequencing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1282,7 +1284,7 @@ attributes:
     owner: MetatranscriptomeAssembly
     domain_of:
     - WorkflowExecution
-    range: DataGeneration
+    range: NucleotideSequencing
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
