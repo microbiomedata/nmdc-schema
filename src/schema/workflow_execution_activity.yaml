@@ -60,6 +60,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
 
   MetatranscriptomeAssembly:
     class_uri: nmdc:MetatranscriptomeAssembly
@@ -103,6 +104,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
 
   MetatranscriptomeAnnotation:
     class_uri: nmdc:MetatranscriptomeAnnotation
@@ -130,6 +132,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
       gold_analysis_project_identifiers:
         structured_pattern:
           syntax: "^gold:Ga[0-9]+$"
@@ -153,6 +156,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
     class_uri: nmdc:MetatranscriptomeExpressionAnalysis
 
 
@@ -181,7 +185,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
-
+        range: NucleotideSequencing
 
   MetagenomeSequencing:
     class_uri: nmdc:MetagenomeSequencing
@@ -202,6 +206,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
 
   ReadQcAnalysis:
     class_uri: nmdc:ReadQcAnalysis
@@ -225,6 +230,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
 
   ReadBasedTaxonomyAnalysis:
     class_uri: nmdc:ReadBasedTaxonomyAnalysis
@@ -241,6 +247,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
 
   MetabolomicsAnalysis:
     class_uri: nmdc:MetabolomicsAnalysis
@@ -259,6 +266,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: MassSpectrometry
 
   MetaproteomicsAnalysis:
     class_uri: nmdc:MetaproteomicsAnalysis
@@ -275,6 +283,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: MassSpectrometry
 
   NomAnalysis:
     class_uri: nmdc:NomAnalysis
@@ -291,6 +300,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: MassSpectrometry
      
 slots:
 

@@ -665,6 +665,9 @@ enums:
       GC-MS Metabolomics Results:
         description: GC-MS-based metabolite assignment results table
 
+      LC-MS Metabolomics Results:
+        description: LC-MS-based metabolite assignment results table
+
       Metaproteomics Workflow Statistics:
         description: Aggregate workflow statistics file
 
@@ -981,6 +984,10 @@ enums:
       LC-MS Lipidomics Processed Data:
         description: >-
           Processed data for the LC-MS-based lipidomics analysis in hdf5 format
+      
+      LC-MS Metabolomics Processed Data:
+        description: >-
+          Processed data for the LC-MS-based metabolomics analysis in hdf5 format
 
       Contaminants Amino Acid FASTA:
         description: FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
@@ -1145,6 +1152,7 @@ enums:
       metabolite: { }
       protein: { }
       lipid: { }
+      natural organic matter: { }
 
   ProcessingInstitutionEnum:
     notes:
