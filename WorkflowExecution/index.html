@@ -717,13 +717,13 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>1..* <br/> <a href="../DataObject/">DataObject</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>* <br/> <a href="../DataObject/">DataObject</a></td>
 <td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -915,12 +915,14 @@ slot_usage:
     required: true
   has_input:
     name: has_input
+    range: DataObject
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
+    range: DataObject
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -988,12 +990,14 @@ slot_usage:
     required: true
   has_input:
     name: has_input
+    range: DataObject
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
+    range: DataObject
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -1100,7 +1104,7 @@ attributes:
     owner: WorkflowExecution
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: DataObject
     required: true
     multivalued: true
     structured_pattern:
@@ -1117,7 +1121,7 @@ attributes:
     owner: WorkflowExecution
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: DataObject
     multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'

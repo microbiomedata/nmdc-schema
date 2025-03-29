@@ -348,13 +348,13 @@
 
   MetagenomeAnnotation : has_input
 
-      MetagenomeAnnotation --&gt; "1..*" NamedThing : has_input
-    click NamedThing href "../NamedThing"
+      MetagenomeAnnotation --&gt; "1..*" DataObject : has_input
+    click DataObject href "../DataObject"
 
   MetagenomeAnnotation : has_output
 
-      MetagenomeAnnotation --&gt; "*" NamedThing : has_output
-    click NamedThing href "../NamedThing"
+      MetagenomeAnnotation --&gt; "*" DataObject : has_output
+    click DataObject href "../DataObject"
 
   MetagenomeAnnotation : id
 
@@ -469,13 +469,13 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>1..* <br/> <a href="../DataObject/">DataObject</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>* <br/> <a href="../DataObject/">DataObject</a></td>
 <td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -800,7 +800,7 @@ attributes:
     owner: MetagenomeAnnotation
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: DataObject
     required: true
     multivalued: true
     structured_pattern:
@@ -817,7 +817,7 @@ attributes:
     owner: MetagenomeAnnotation
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: DataObject
     multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'

@@ -342,13 +342,13 @@
 
   StorageProcess : has_input
 
-      StorageProcess --&gt; "*" NamedThing : has_input
-    click NamedThing href "../NamedThing"
+      StorageProcess --&gt; "*" Sample : has_input
+    click Sample href "../Sample"
 
   StorageProcess : has_output
 
-      StorageProcess --&gt; "*" NamedThing : has_output
-    click NamedThing href "../NamedThing"
+      StorageProcess --&gt; "*" ProcessedSample : has_output
+    click ProcessedSample href "../ProcessedSample"
 
   StorageProcess : id
 
@@ -429,13 +429,13 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>* <br/> <a href="../Sample/">Sample</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
+<td>* <br/> <a href="../ProcessedSample/">ProcessedSample</a></td>
 <td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -580,11 +580,13 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
+    range: Sample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
+    range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -614,11 +616,13 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
+    range: Sample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
+    range: ProcessedSample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -686,7 +690,7 @@ attributes:
     owner: StorageProcess
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: Sample
     multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -702,7 +706,7 @@ attributes:
     owner: StorageProcess
     domain_of:
     - PlannedProcess
-    range: NamedThing
+    range: ProcessedSample
     multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
