@@ -320,7 +320,10 @@ classes:
           syntax: "{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$"
           interpolated: true
         required: true
-        range: WorkflowExecution
+        any_of:
+          - range: MetagenomeAnnotation
+          - range: MetaproteomicsAnalysis
+          - range: MetatranscriptomeAnnotation
       count: 
           description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
 
