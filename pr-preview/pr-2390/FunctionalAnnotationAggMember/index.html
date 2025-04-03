@@ -340,7 +340,7 @@
 <tbody>
 <tr>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../DataGeneration/">DataGeneration</a></td>
+<td>1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a> or <br/><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a> or <br/><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -417,11 +417,14 @@ slots:
 slot_usage:
   was_generated_by:
     name: was_generated_by
-    range: WorkflowExecution
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+    any_of:
+    - range: MetagenomeAnnotation
+    - range: MetaproteomicsAnalysis
+    - range: MetatranscriptomeAnnotation
   count:
     name: count
     description: The number of sequences (for a metagenome or metatranscriptome) or
@@ -437,11 +440,14 @@ from_schema: https://w3id.org/nmdc/nmdc
 slot_usage:
   was_generated_by:
     name: was_generated_by
-    range: WorkflowExecution
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
+    any_of:
+    - range: MetagenomeAnnotation
+    - range: MetaproteomicsAnalysis
+    - range: MetatranscriptomeAnnotation
   count:
     name: count
     description: The number of sequences (for a metagenome or metatranscriptome) or
@@ -465,8 +471,9 @@ attributes:
       syntax: '{id_nmdc_prefix}:(wfmgan|wfmp|wfmtan)-{id_shoulder}-{id_blade}{id_version}$'
       interpolated: true
     any_of:
-    - range: WorkflowExecution
-    - range: DataGeneration
+    - range: MetagenomeAnnotation
+    - range: MetaproteomicsAnalysis
+    - range: MetatranscriptomeAnnotation
   gene_function_id:
     name: gene_function_id
     description: The identifier for the gene function.
