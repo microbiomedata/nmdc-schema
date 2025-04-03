@@ -356,6 +356,11 @@ classes:
         structured_pattern:
           syntax: "^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        any_of:
+          - range: WorkflowExecution
+          - range: DataGeneration
+          #TODO: Add grouping class to get rid of this any_of
+
   DataGeneration:
     class_uri: nmdc:DataGeneration
     is_a: PlannedProcess
@@ -496,12 +501,9 @@ slots:
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
   was_generated_by:
-    range: WorkflowExecution
+    range: PlannedProcess
     mappings:
       - prov:wasGeneratedBy
-    any_of:
-      - range: WorkflowExecution
-      - range: DataGeneration
   associated_dois:
     description: A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.
     aliases:
