@@ -243,6 +243,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: NucleotideSequencing
       gold_analysis_project_identifiers:
         structured_pattern:
           syntax: "^gold:Ga[0-9]+$"
