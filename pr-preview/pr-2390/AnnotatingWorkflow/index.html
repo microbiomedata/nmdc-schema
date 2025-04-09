@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/DataGeneration/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/AnnotatingWorkflow/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.5" name="generator"/>
-<title>Class: DataGeneration - NMDC Schema Documentation</title>
+<title>Class: AnnotatingWorkflow - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-datageneration">
+<a class="md-skip" href="#class-annotatingworkflow">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: DataGeneration
+              Class: AnnotatingWorkflow
             
           </span>
 </div>
@@ -257,13 +257,6 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#aliases">
-<span class="md-ellipsis">
-      Aliases
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#identifier-and-mapping-information">
 <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -320,93 +313,92 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-datageneration">Class: DataGeneration</h1>
-<p><em>The methods and processes used to generate omics data from a biosample or organism.</em></p>
+<h1 id="class-annotatingworkflow">Class: AnnotatingWorkflow</h1>
+<p><em>A WorkflowExecution whose output indicates the potential functions of genes or gene products</em></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This is an abstract class and should not be instantiated directly.</p>
 </div>
-<p>URI: <a href="https://w3id.org/nmdc/DataGeneration">nmdc:DataGeneration</a></p>
+<p>URI: <a href="https://w3id.org/nmdc/AnnotatingWorkflow">nmdc:AnnotatingWorkflow</a></p>
 <div class="mermaid">classDiagram
-  class DataGeneration
-  click DataGeneration href "../DataGeneration"
-    DataEmitterProcess &lt;|-- DataGeneration
-      click DataEmitterProcess href "../DataEmitterProcess"
+  class AnnotatingWorkflow
+  click AnnotatingWorkflow href "../AnnotatingWorkflow"
+    WorkflowExecution &lt;|-- AnnotatingWorkflow
+      click WorkflowExecution href "../WorkflowExecution"
 
 
-    DataGeneration &lt;|-- NucleotideSequencing
-      click NucleotideSequencing href "../NucleotideSequencing"
-    DataGeneration &lt;|-- MassSpectrometry
-      click MassSpectrometry href "../MassSpectrometry"
+    AnnotatingWorkflow &lt;|-- MetagenomeAnnotation
+      click MetagenomeAnnotation href "../MetagenomeAnnotation"
+    AnnotatingWorkflow &lt;|-- MetatranscriptomeAnnotation
+      click MetatranscriptomeAnnotation href "../MetatranscriptomeAnnotation"
+    AnnotatingWorkflow &lt;|-- MetaproteomicsAnalysis
+      click MetaproteomicsAnalysis href "../MetaproteomicsAnalysis"
 
 
 
-  DataGeneration : add_date
+  AnnotatingWorkflow : alternative_identifiers
 
-  DataGeneration : alternative_identifiers
+  AnnotatingWorkflow : description
 
-  DataGeneration : analyte_category
+  AnnotatingWorkflow : end_date
 
-  DataGeneration : associated_studies
+  AnnotatingWorkflow : ended_at_time
 
-      DataGeneration --&gt; "1..*" Study : associated_studies
-    click Study href "../Study"
+  AnnotatingWorkflow : execution_resource
 
-  DataGeneration : description
+      AnnotatingWorkflow --&gt; "1" ExecutionResourceEnum : execution_resource
+    click ExecutionResourceEnum href "../ExecutionResourceEnum"
 
-  DataGeneration : end_date
+  AnnotatingWorkflow : git_url
 
-  DataGeneration : has_failure_categorization
+  AnnotatingWorkflow : has_failure_categorization
 
-      DataGeneration --&gt; "*" FailureCategorization : has_failure_categorization
+      AnnotatingWorkflow --&gt; "*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
-  DataGeneration : has_input
+  AnnotatingWorkflow : has_input
 
-      DataGeneration --&gt; "1..*" Sample : has_input
-    click Sample href "../Sample"
-
-  DataGeneration : has_output
-
-      DataGeneration --&gt; "*" DataObject : has_output
+      AnnotatingWorkflow --&gt; "1..*" DataObject : has_input
     click DataObject href "../DataObject"
 
-  DataGeneration : id
+  AnnotatingWorkflow : has_output
 
-  DataGeneration : instrument_used
+      AnnotatingWorkflow --&gt; "*" DataObject : has_output
+    click DataObject href "../DataObject"
 
-      DataGeneration --&gt; "*" Instrument : instrument_used
-    click Instrument href "../Instrument"
+  AnnotatingWorkflow : id
 
-  DataGeneration : mod_date
+  AnnotatingWorkflow : name
 
-  DataGeneration : name
+  AnnotatingWorkflow : processing_institution
 
-  DataGeneration : principal_investigator
-
-      DataGeneration --&gt; "0..1" PersonValue : principal_investigator
-    click PersonValue href "../PersonValue"
-
-  DataGeneration : processing_institution
-
-      DataGeneration --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+      AnnotatingWorkflow --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
-  DataGeneration : protocol_link
+  AnnotatingWorkflow : protocol_link
 
-      DataGeneration --&gt; "0..1" Protocol : protocol_link
+      AnnotatingWorkflow --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
-  DataGeneration : qc_comment
+  AnnotatingWorkflow : qc_comment
 
-  DataGeneration : qc_status
+  AnnotatingWorkflow : qc_status
 
-      DataGeneration --&gt; "0..1" StatusEnum : qc_status
+      AnnotatingWorkflow --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
-  DataGeneration : start_date
+  AnnotatingWorkflow : start_date
 
-  DataGeneration : type
+  AnnotatingWorkflow : started_at_time
+
+  AnnotatingWorkflow : type
+
+  AnnotatingWorkflow : version
+
+  AnnotatingWorkflow : was_informed_by
+
+      AnnotatingWorkflow --&gt; "1" DataGeneration : was_informed_by
+    click DataGeneration href "../DataGeneration"
 
 
 
@@ -416,9 +408,13 @@
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
 <li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
-<li><strong>DataGeneration</strong><ul>
-<li><a href="../NucleotideSequencing/">NucleotideSequencing</a></li>
-<li><a href="../MassSpectrometry/">MassSpectrometry</a></li>
+<li><a href="../WorkflowExecution/">WorkflowExecution</a><ul>
+<li><strong>AnnotatingWorkflow</strong><ul>
+<li><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></li>
+<li><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></li>
+<li><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -440,44 +436,44 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../add_date/">add_date</a></td>
+<td><a href="../ended_at_time/">ended_at_time</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The date on which the information was added to the database</td>
-<td>direct</td>
+<td></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
-<td><a href="../analyte_category/">analyte_category</a></td>
+<td><a href="../execution_resource/">execution_resource</a></td>
+<td>1 <br/> <a href="../ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
+<td>The computing resource or facility where the workflow was executed</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+</tr>
+<tr>
+<td><a href="../git_url/">git_url</a></td>
 <td>1 <br/> <a href="../String/">String</a></td>
-<td>The type of analyte(s) that were measured in the data generation process and ...</td>
-<td>direct</td>
+<td>The url that points to the exact github location of a workflow</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
-<td><a href="../associated_studies/">associated_studies</a></td>
-<td>1..* <br/> <a href="../Study/">Study</a></td>
-<td>The study associated with a resource</td>
-<td>direct</td>
+<td><a href="../started_at_time/">started_at_time</a></td>
+<td>1 <br/> <a href="../String/">String</a></td>
+<td></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
-<td><a href="../instrument_used/">instrument_used</a></td>
-<td>* <br/> <a href="../Instrument/">Instrument</a></td>
-<td>What instrument was used during DataGeneration or MaterialProcessing</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../mod_date/">mod_date</a></td>
+<td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>The last date on which the database information was modified</td>
-<td>direct</td>
+<td></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
-<td><a href="../principal_investigator/">principal_investigator</a></td>
-<td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
-<td>Principal Investigator who led the study and/or generated the dataset</td>
-<td>direct</td>
+<td><a href="../was_informed_by/">was_informed_by</a></td>
+<td>1 <br/> <a href="../DataGeneration/">DataGeneration</a></td>
+<td></td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../Sample/">Sample</a></td>
+<td>1..* <br/> <a href="../DataObject/">DataObject</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -573,33 +569,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../Database/">Database</a></td>
-<td><a href="../data_generation_set/">data_generation_set</a></td>
+<td><a href="../FunctionalAnnotationAggMember/">FunctionalAnnotationAggMember</a></td>
+<td><a href="../was_generated_by/">was_generated_by</a></td>
 <td>range</td>
-<td><a href="./">DataGeneration</a></td>
-</tr>
-<tr>
-<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
-<td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>range</td>
-<td><a href="./">DataGeneration</a></td>
-</tr>
-<tr>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-<td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>range</td>
-<td><a href="./">DataGeneration</a></td>
+<td><a href="./">AnnotatingWorkflow</a></td>
 </tr>
 </tbody>
 </table>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>OmicsProcessing</li>
-<li>assay</li>
-<li>omics assay</li>
-<li>sequencing project</li>
-<li>experiment</li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -615,8 +591,8 @@
 </thead>
 <tbody>
 <tr>
-<td>broad</td>
-<td>OBI:0000070, ISA:Assay</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -624,178 +600,110 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: DataGeneration
-description: The methods and processes used to generate omics data from a biosample
-  or organism.
-alt_descriptions:
-  embl.ena:
-    source: embl.ena
-    description: An experiment contains information about a sequencing experiment
-      including library and instrument details.
+<pre><code class="language-yaml">name: AnnotatingWorkflow
+description: A WorkflowExecution whose output indicates the potential functions of
+  genes or gene products
 from_schema: https://w3id.org/nmdc/nmdc
-aliases:
-- OmicsProcessing
-- assay
-- omics assay
-- sequencing project
-- experiment
-broad_mappings:
-- OBI:0000070
-- ISA:Assay
-is_a: DataEmitterProcess
+is_a: WorkflowExecution
 abstract: true
-slots:
-- add_date
-- analyte_category
-- associated_studies
-- instrument_used
-- mod_date
-- principal_investigator
-slot_usage:
-  has_input:
-    name: has_input
-    range: Sample
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  associated_studies:
-    name: associated_studies
-    range: Study
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  has_output:
-    name: has_output
-    range: DataObject
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-class_uri: nmdc:DataGeneration
+class_uri: nmdc:AnnotatingWorkflow
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: DataGeneration
-description: The methods and processes used to generate omics data from a biosample
-  or organism.
-alt_descriptions:
-  embl.ena:
-    source: embl.ena
-    description: An experiment contains information about a sequencing experiment
-      including library and instrument details.
+<pre><code class="language-yaml">name: AnnotatingWorkflow
+description: A WorkflowExecution whose output indicates the potential functions of
+  genes or gene products
 from_schema: https://w3id.org/nmdc/nmdc
-aliases:
-- OmicsProcessing
-- assay
-- omics assay
-- sequencing project
-- experiment
-broad_mappings:
-- OBI:0000070
-- ISA:Assay
-is_a: DataEmitterProcess
+is_a: WorkflowExecution
 abstract: true
-slot_usage:
-  has_input:
-    name: has_input
-    range: Sample
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  associated_studies:
-    name: associated_studies
-    range: Study
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  has_output:
-    name: has_output
-    range: DataObject
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
-      interpolated: true
 attributes:
-  add_date:
-    name: add_date
-    description: The date on which the information was added to the database.
+  ended_at_time:
+    name: ended_at_time
+    notes:
+    - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
+      It may not be complete, but it is good enough for now.'
     from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - prov:endedAtTime
     rank: 1000
-    alias: add_date
-    owner: DataGeneration
+    alias: ended_at_time
+    owner: AnnotatingWorkflow
     domain_of:
-    - Biosample
-    - DataGeneration
+    - WorkflowExecution
     range: string
-  analyte_category:
-    name: analyte_category
-    description: "The type of analyte(s) that were measured in the data generation\
-      \ process and analyzed\n  in the Workflow Chain\n"
+    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+  execution_resource:
+    name: execution_resource
+    description: The computing resource or facility where the workflow was executed.
+    examples:
+    - value: NERSC-Cori
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
-    alias: analyte_category
-    owner: DataGeneration
+    alias: execution_resource
+    owner: AnnotatingWorkflow
     domain_of:
-    - DataGeneration
+    - WorkflowExecution
+    range: ExecutionResourceEnum
+    required: true
+  git_url:
+    name: git_url
+    description: The url that points to the exact github location of a workflow.
+    examples:
+    - value: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
+    - value: https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: git_url
+    owner: AnnotatingWorkflow
+    domain_of:
+    - WorkflowExecution
     range: string
     required: true
-  associated_studies:
-    name: associated_studies
-    description: The study associated with a resource.
+  started_at_time:
+    name: started_at_time
+    notes:
+    - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
+      It may not be complete, but it is good enough for now.'
     from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - prov:startedAtTime
     rank: 1000
-    alias: associated_studies
-    owner: DataGeneration
+    alias: started_at_time
+    owner: AnnotatingWorkflow
     domain_of:
-    - Biosample
-    - DataGeneration
-    range: Study
-    required: true
-    multivalued: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  instrument_used:
-    name: instrument_used
-    description: What instrument was used during DataGeneration or MaterialProcessing.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: instrument_used
-    owner: DataGeneration
-    domain_of:
-    - MaterialProcessing
-    - DataGeneration
-    range: Instrument
-    multivalued: true
-    structured_pattern:
-      syntax: ^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$
-      interpolated: true
-  mod_date:
-    name: mod_date
-    description: The last date on which the database information was modified.
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: mod_date
-    owner: DataGeneration
-    domain_of:
-    - Biosample
-    - DataGeneration
+    - WorkflowExecution
     range: string
-  principal_investigator:
-    name: principal_investigator
-    description: Principal Investigator who led the study and/or generated the dataset.
+    required: true
+    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
+  version:
+    name: version
     from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - PI
     rank: 1000
-    alias: principal_investigator
-    owner: DataGeneration
+    alias: version
+    owner: AnnotatingWorkflow
     domain_of:
-    - Study
-    - DataGeneration
-    range: PersonValue
+    - WorkflowExecution
+    range: string
+  was_informed_by:
+    name: was_informed_by
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      was_informed_by:
+        literal_form: was_informed_by
+        predicate: EXACT_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    mappings:
+    - prov:wasInformedBy
+    rank: 1000
+    alias: was_informed_by
+    owner: AnnotatingWorkflow
+    domain_of:
+    - WorkflowExecution
+    range: DataGeneration
+    required: true
   has_input:
     name: has_input
     description: An input to a process.
@@ -804,14 +712,14 @@ attributes:
     - input
     rank: 1000
     alias: has_input
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
-    range: Sample
+    range: DataObject
     required: true
     multivalued: true
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
+      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
   has_output:
     name: has_output
@@ -821,7 +729,7 @@ attributes:
     - output
     rank: 1000
     alias: has_output
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     range: DataObject
@@ -835,7 +743,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: processing_institution
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     range: ProcessingInstitutionEnum
@@ -844,7 +752,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: protocol_link
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     - Study
@@ -861,7 +769,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: start_date
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     range: string
@@ -877,7 +785,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: end_date
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     range: string
@@ -889,7 +797,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: qc_status
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     range: StatusEnum
@@ -901,7 +809,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: qc_comment
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     range: string
@@ -910,7 +818,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: has_failure_categorization
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PlannedProcess
     range: FailureCategorization
@@ -947,7 +855,7 @@ attributes:
     rank: 1000
     identifier: true
     alias: id
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - NamedThing
     range: uriorcurie
@@ -959,7 +867,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: name
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - PersonValue
     - NamedThing
@@ -972,7 +880,7 @@ attributes:
     rank: 1000
     slot_uri: dcterms:description
     alias: description
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - ImageValue
     - NamedThing
@@ -983,7 +891,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: alternative_identifiers
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - MetaboliteIdentification
     - NamedThing
@@ -1015,7 +923,7 @@ attributes:
     slot_uri: rdf:type
     designates_type: true
     alias: type
-    owner: DataGeneration
+    owner: AnnotatingWorkflow
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -1036,7 +944,7 @@ attributes:
     - Doi
     range: uriorcurie
     required: true
-class_uri: nmdc:DataGeneration
+class_uri: nmdc:AnnotatingWorkflow
 
 </code></pre>
 </details>
