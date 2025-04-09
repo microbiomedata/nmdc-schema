@@ -224,10 +224,16 @@ classes:
           syntax: "{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$"
           interpolated: true
 
+  AnnotatingWorkflow:
+    class_uri: nmdc:AnnotatingWorkflow
+    description: A WorkflowExecution whose output indicates the potential functions of genes or gene products
+    is_a: WorkflowExecution
+    abstract: true
+
   MetagenomeAnnotation:
     class_uri: nmdc:MetagenomeAnnotation
     description: A workflow execution activity that provides functional and structural annotation of assembled metagenome contigs
-    is_a: WorkflowExecution
+    is_a: AnnotatingWorkflow
     slots:
       - img_identifiers
       - gold_analysis_project_identifiers
