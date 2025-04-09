@@ -36,7 +36,7 @@ shuttle-clean:
 	touch local/mixs_regen/.gitkeep
 
 
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_mixs_env_triad_field_slot.yaml
+src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_minus_1.yaml
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
@@ -93,7 +93,7 @@ assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 		$^ | cat > $@
 
 
-local/mixs_regen/mixs_subset_modified_inj_mixs_env_triad_field_slot.yaml: local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml \
+local/mixs_regen/mixs_minus_1.yaml: local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml \
 assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
 	yq eval-all \
 		'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' \
