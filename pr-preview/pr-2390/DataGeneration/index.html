@@ -330,8 +330,8 @@
 <div class="mermaid">classDiagram
   class DataGeneration
   click DataGeneration href "../DataGeneration"
-    PlannedProcess &lt;|-- DataGeneration
-      click PlannedProcess href "../PlannedProcess"
+    DataEmitterProcess &lt;|-- DataGeneration
+      click DataEmitterProcess href "../DataEmitterProcess"
 
 
     DataGeneration &lt;|-- NucleotideSequencing
@@ -415,9 +415,12 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
 <li><strong>DataGeneration</strong><ul>
 <li><a href="../NucleotideSequencing/">NucleotideSequencing</a></li>
 <li><a href="../MassSpectrometry/">MassSpectrometry</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -645,7 +648,7 @@ aliases:
 broad_mappings:
 - OBI:0000070
 - ISA:Assay
-is_a: PlannedProcess
+is_a: DataEmitterProcess
 abstract: true
 slots:
 - add_date
@@ -698,7 +701,7 @@ aliases:
 broad_mappings:
 - OBI:0000070
 - ISA:Assay
-is_a: PlannedProcess
+is_a: DataEmitterProcess
 abstract: true
 slot_usage:
   has_input:

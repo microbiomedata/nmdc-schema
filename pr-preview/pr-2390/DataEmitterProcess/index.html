@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://microbiomedata.github.io/nmdc-schema/MetagenomeSequencing/" rel="canonical"/>
+<link href="https://microbiomedata.github.io/nmdc-schema/DataEmitterProcess/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.5" name="generator"/>
-<title>Class: Metagenome sequencing activity (MetagenomeSequencing) - NMDC Schema Documentation</title>
+<title>Class: DataEmitterProcess - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.8608ea7d.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-metagenome-sequencing-activity-metagenomesequencing">
+<a class="md-skip" href="#class-dataemitterprocess">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Metagenome sequencing activity (MetagenomeSequencing)
+              Class: DataEmitterProcess
             
           </span>
 </div>
@@ -306,80 +306,72 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-metagenome-sequencing-activity-metagenomesequencing">Class: Metagenome sequencing activity (MetagenomeSequencing)</h1>
-<p><em>Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/MetagenomeSequencing">nmdc:MetagenomeSequencing</a></p>
+<h1 id="class-dataemitterprocess">Class: DataEmitterProcess</h1>
+<p><em>A process that generates data objects as output.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract class and should not be instantiated directly.</p>
+</div>
+<p>URI: <a href="https://w3id.org/nmdc/DataEmitterProcess">nmdc:DataEmitterProcess</a></p>
 <div class="mermaid">classDiagram
-  class MetagenomeSequencing
-  click MetagenomeSequencing href "../MetagenomeSequencing"
-    WorkflowExecution &lt;|-- MetagenomeSequencing
+  class DataEmitterProcess
+  click DataEmitterProcess href "../DataEmitterProcess"
+    PlannedProcess &lt;|-- DataEmitterProcess
+      click PlannedProcess href "../PlannedProcess"
+
+
+    DataEmitterProcess &lt;|-- DataGeneration
+      click DataGeneration href "../DataGeneration"
+    DataEmitterProcess &lt;|-- WorkflowExecution
       click WorkflowExecution href "../WorkflowExecution"
 
 
 
-  MetagenomeSequencing : alternative_identifiers
+  DataEmitterProcess : alternative_identifiers
 
-  MetagenomeSequencing : description
+  DataEmitterProcess : description
 
-  MetagenomeSequencing : end_date
+  DataEmitterProcess : end_date
 
-  MetagenomeSequencing : ended_at_time
+  DataEmitterProcess : has_failure_categorization
 
-  MetagenomeSequencing : execution_resource
-
-      MetagenomeSequencing --&gt; "1" ExecutionResourceEnum : execution_resource
-    click ExecutionResourceEnum href "../ExecutionResourceEnum"
-
-  MetagenomeSequencing : git_url
-
-  MetagenomeSequencing : has_failure_categorization
-
-      MetagenomeSequencing --&gt; "*" FailureCategorization : has_failure_categorization
+      DataEmitterProcess --&gt; "*" FailureCategorization : has_failure_categorization
     click FailureCategorization href "../FailureCategorization"
 
-  MetagenomeSequencing : has_input
+  DataEmitterProcess : has_input
 
-      MetagenomeSequencing --&gt; "1..*" Sample : has_input
-    click Sample href "../Sample"
+      DataEmitterProcess --&gt; "*" NamedThing : has_input
+    click NamedThing href "../NamedThing"
 
-  MetagenomeSequencing : has_output
+  DataEmitterProcess : has_output
 
-      MetagenomeSequencing --&gt; "*" DataObject : has_output
-    click DataObject href "../DataObject"
+      DataEmitterProcess --&gt; "*" NamedThing : has_output
+    click NamedThing href "../NamedThing"
 
-  MetagenomeSequencing : id
+  DataEmitterProcess : id
 
-  MetagenomeSequencing : name
+  DataEmitterProcess : name
 
-  MetagenomeSequencing : processing_institution
+  DataEmitterProcess : processing_institution
 
-      MetagenomeSequencing --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+      DataEmitterProcess --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
-  MetagenomeSequencing : protocol_link
+  DataEmitterProcess : protocol_link
 
-      MetagenomeSequencing --&gt; "0..1" Protocol : protocol_link
+      DataEmitterProcess --&gt; "0..1" Protocol : protocol_link
     click Protocol href "../Protocol"
 
-  MetagenomeSequencing : qc_comment
+  DataEmitterProcess : qc_comment
 
-  MetagenomeSequencing : qc_status
+  DataEmitterProcess : qc_status
 
-      MetagenomeSequencing --&gt; "0..1" StatusEnum : qc_status
+      DataEmitterProcess --&gt; "0..1" StatusEnum : qc_status
     click StatusEnum href "../StatusEnum"
 
-  MetagenomeSequencing : start_date
+  DataEmitterProcess : start_date
 
-  MetagenomeSequencing : started_at_time
-
-  MetagenomeSequencing : type
-
-  MetagenomeSequencing : version
-
-  MetagenomeSequencing : was_informed_by
-
-      MetagenomeSequencing --&gt; "1" NucleotideSequencing : was_informed_by
-    click NucleotideSequencing href "../NucleotideSequencing"
+  DataEmitterProcess : type
 
 
 
@@ -388,11 +380,9 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
-<li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
-<li><a href="../WorkflowExecution/">WorkflowExecution</a><ul>
-<li><strong>MetagenomeSequencing</strong></li>
-</ul>
-</li>
+<li><strong>DataEmitterProcess</strong><ul>
+<li><a href="../DataGeneration/">DataGeneration</a></li>
+<li><a href="../WorkflowExecution/">WorkflowExecution</a></li>
 </ul>
 </li>
 </ul>
@@ -412,50 +402,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../ended_at_time/">ended_at_time</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-</tr>
-<tr>
-<td><a href="../execution_resource/">execution_resource</a></td>
-<td>1 <br/> <a href="../ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
-<td>The computing resource or facility where the workflow was executed</td>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-</tr>
-<tr>
-<td><a href="../git_url/">git_url</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td>The url that points to the exact github location of a workflow</td>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-</tr>
-<tr>
-<td><a href="../started_at_time/">started_at_time</a></td>
-<td>1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-</tr>
-<tr>
-<td><a href="../version/">version</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-</tr>
-<tr>
-<td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>1 <br/> <a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td></td>
-<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
-</tr>
-<tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../Sample/">Sample</a></td>
+<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
 <tr>
 <td><a href="../has_output/">has_output</a></td>
-<td>* <br/> <a href="../DataObject/">DataObject</a></td>
+<td>* <br/> <a href="../NamedThing/">NamedThing</a></td>
 <td>An output from a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -557,151 +511,23 @@
 <!-- TODO: investigate https://stackoverflow.com/questions/37606292/how-to-create-tabbed-code-blocks-in-mkdocs-or-sphinx -->
 <h3 id="direct">Direct</h3>
 <details>
-<pre><code class="language-yaml">name: MetagenomeSequencing
-description: Initial sequencing activity that precedes any analysis.  This activity
-  has output(s) that are the raw sequencing data.
-title: Metagenome sequencing activity
+<pre><code class="language-yaml">name: DataEmitterProcess
+description: A process that generates data objects as output.
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecution
-slot_usage:
-  id:
-    name: id
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
-      interpolated: true
-  has_input:
-    name: has_input
-    range: Sample
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  was_informed_by:
-    name: was_informed_by
-    range: NucleotideSequencing
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-class_uri: nmdc:MetagenomeSequencing
+is_a: PlannedProcess
+abstract: true
+class_uri: nmdc:DataEmitterProcess
 
 </code></pre>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
-<pre><code class="language-yaml">name: MetagenomeSequencing
-description: Initial sequencing activity that precedes any analysis.  This activity
-  has output(s) that are the raw sequencing data.
-title: Metagenome sequencing activity
+<pre><code class="language-yaml">name: DataEmitterProcess
+description: A process that generates data objects as output.
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecution
-slot_usage:
-  id:
-    name: id
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
-      interpolated: true
-  has_input:
-    name: has_input
-    range: Sample
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  was_informed_by:
-    name: was_informed_by
-    range: NucleotideSequencing
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
-      interpolated: true
+is_a: PlannedProcess
+abstract: true
 attributes:
-  ended_at_time:
-    name: ended_at_time
-    notes:
-    - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
-      It may not be complete, but it is good enough for now.'
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:endedAtTime
-    rank: 1000
-    alias: ended_at_time
-    owner: MetagenomeSequencing
-    domain_of:
-    - WorkflowExecution
-    range: string
-    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
-  execution_resource:
-    name: execution_resource
-    description: The computing resource or facility where the workflow was executed.
-    examples:
-    - value: NERSC-Cori
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: execution_resource
-    owner: MetagenomeSequencing
-    domain_of:
-    - WorkflowExecution
-    range: ExecutionResourceEnum
-    required: true
-  git_url:
-    name: git_url
-    description: The url that points to the exact github location of a workflow.
-    examples:
-    - value: https://github.com/microbiomedata/mg_annotation/releases/tag/0.1
-    - value: https://github.com/microbiomedata/metaMS/blob/master/metaMS/gcmsWorkflow.py
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: git_url
-    owner: MetagenomeSequencing
-    domain_of:
-    - WorkflowExecution
-    range: string
-    required: true
-  started_at_time:
-    name: started_at_time
-    notes:
-    - 'The regex for ISO-8601 format was taken from here: https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/
-      It may not be complete, but it is good enough for now.'
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:startedAtTime
-    rank: 1000
-    alias: started_at_time
-    owner: MetagenomeSequencing
-    domain_of:
-    - WorkflowExecution
-    range: string
-    required: true
-    pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
-  version:
-    name: version
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: version
-    owner: MetagenomeSequencing
-    domain_of:
-    - WorkflowExecution
-    range: string
-  was_informed_by:
-    name: was_informed_by
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-      was_informed_by:
-        literal_form: was_informed_by
-        predicate: EXACT_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    mappings:
-    - prov:wasInformedBy
-    rank: 1000
-    alias: was_informed_by
-    owner: MetagenomeSequencing
-    domain_of:
-    - WorkflowExecution
-    range: NucleotideSequencing
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
-      interpolated: true
   has_input:
     name: has_input
     description: An input to a process.
@@ -710,15 +536,11 @@ attributes:
     - input
     rank: 1000
     alias: has_input
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
-    range: Sample
-    required: true
+    range: NamedThing
     multivalued: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
-      interpolated: true
   has_output:
     name: has_output
     description: An output from a process.
@@ -727,21 +549,18 @@ attributes:
     - output
     rank: 1000
     alias: has_output
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
-    range: DataObject
+    range: NamedThing
     multivalued: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
-      interpolated: true
   processing_institution:
     name: processing_institution
     description: The organization that processed the sample.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: processing_institution
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
     range: ProcessingInstitutionEnum
@@ -750,7 +569,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: protocol_link
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
     - Study
@@ -767,7 +586,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: start_date
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -783,7 +602,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: end_date
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -795,7 +614,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: qc_status
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
     range: StatusEnum
@@ -807,7 +626,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: qc_comment
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
     range: string
@@ -816,7 +635,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: has_failure_categorization
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PlannedProcess
     range: FailureCategorization
@@ -853,22 +672,19 @@ attributes:
     rank: 1000
     identifier: true
     alias: id
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - NamedThing
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
-      interpolated: true
   name:
     name: name
     description: A human readable label for an entity
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: name
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - PersonValue
     - NamedThing
@@ -881,7 +697,7 @@ attributes:
     rank: 1000
     slot_uri: dcterms:description
     alias: description
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - ImageValue
     - NamedThing
@@ -892,7 +708,7 @@ attributes:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: alternative_identifiers
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - MetaboliteIdentification
     - NamedThing
@@ -924,7 +740,7 @@ attributes:
     slot_uri: rdf:type
     designates_type: true
     alias: type
-    owner: MetagenomeSequencing
+    owner: DataEmitterProcess
     domain_of:
     - EukEval
     - FunctionalAnnotationAggMember
@@ -945,7 +761,7 @@ attributes:
     - Doi
     range: uriorcurie
     required: true
-class_uri: nmdc:MetagenomeSequencing
+class_uri: nmdc:DataEmitterProcess
 
 </code></pre>
 </details>
