@@ -319,8 +319,8 @@
 <div class="mermaid">classDiagram
   class MetagenomeAnnotation
   click MetagenomeAnnotation href "../MetagenomeAnnotation"
-    WorkflowExecution &lt;|-- MetagenomeAnnotation
-      click WorkflowExecution href "../WorkflowExecution"
+    AnnotatingWorkflow &lt;|-- MetagenomeAnnotation
+      click AnnotatingWorkflow href "../AnnotatingWorkflow"
 
 
 
@@ -389,8 +389,8 @@
 
   MetagenomeAnnotation : was_informed_by
 
-      MetagenomeAnnotation --&gt; "1" DataGeneration : was_informed_by
-    click DataGeneration href "../DataGeneration"
+      MetagenomeAnnotation --&gt; "1" NucleotideSequencing : was_informed_by
+    click NucleotideSequencing href "../NucleotideSequencing"
 
 
 
@@ -399,8 +399,14 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
 <li><a href="../WorkflowExecution/">WorkflowExecution</a><ul>
+<li><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a><ul>
 <li><strong>MetagenomeAnnotation</strong></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -463,7 +469,7 @@
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>1 <br/> <a href="../DataGeneration/">DataGeneration</a></td>
+<td>1 <br/> <a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
 <td></td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
@@ -600,7 +606,7 @@
 description: A workflow execution activity that provides functional and structural
   annotation of assembled metagenome contigs
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecution
+is_a: AnnotatingWorkflow
 slots:
 - img_identifiers
 - gold_analysis_project_identifiers
@@ -616,6 +622,7 @@ slot_usage:
     maximum_cardinality: 1
   was_informed_by:
     name: was_informed_by
+    range: NucleotideSequencing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -634,7 +641,7 @@ class_uri: nmdc:MetagenomeAnnotation
 description: A workflow execution activity that provides functional and structural
   annotation of assembled metagenome contigs
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecution
+is_a: AnnotatingWorkflow
 slot_usage:
   id:
     name: id
@@ -647,6 +654,7 @@ slot_usage:
     maximum_cardinality: 1
   was_informed_by:
     name: was_informed_by
+    range: NucleotideSequencing
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -784,7 +792,7 @@ attributes:
     owner: MetagenomeAnnotation
     domain_of:
     - WorkflowExecution
-    range: DataGeneration
+    range: NucleotideSequencing
     required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'

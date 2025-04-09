@@ -311,8 +311,8 @@
 <div class="mermaid">classDiagram
   class MetaproteomicsAnalysis
   click MetaproteomicsAnalysis href "../MetaproteomicsAnalysis"
-    WorkflowExecution &lt;|-- MetaproteomicsAnalysis
-      click WorkflowExecution href "../WorkflowExecution"
+    AnnotatingWorkflow &lt;|-- MetaproteomicsAnalysis
+      click AnnotatingWorkflow href "../AnnotatingWorkflow"
 
 
 
@@ -392,8 +392,14 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
 <li><a href="../WorkflowExecution/">WorkflowExecution</a><ul>
+<li><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a><ul>
 <li><strong>MetaproteomicsAnalysis</strong></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -566,7 +572,7 @@
 <details>
 <pre><code class="language-yaml">name: MetaproteomicsAnalysis
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecution
+is_a: AnnotatingWorkflow
 slots:
 - metaproteomics_analysis_category
 slot_usage:
@@ -590,7 +596,7 @@ class_uri: nmdc:MetaproteomicsAnalysis
 <details>
 <pre><code class="language-yaml">name: MetaproteomicsAnalysis
 from_schema: https://w3id.org/nmdc/nmdc
-is_a: WorkflowExecution
+is_a: AnnotatingWorkflow
 slot_usage:
   id:
     name: id

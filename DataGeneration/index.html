@@ -330,8 +330,8 @@
 <div class="mermaid">classDiagram
   class DataGeneration
   click DataGeneration href "../DataGeneration"
-    PlannedProcess &lt;|-- DataGeneration
-      click PlannedProcess href "../PlannedProcess"
+    DataEmitterProcess &lt;|-- DataGeneration
+      click DataEmitterProcess href "../DataEmitterProcess"
 
 
     DataGeneration &lt;|-- NucleotideSequencing
@@ -415,9 +415,12 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
 <li><strong>DataGeneration</strong><ul>
 <li><a href="../NucleotideSequencing/">NucleotideSequencing</a></li>
 <li><a href="../MassSpectrometry/">MassSpectrometry</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -570,33 +573,15 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FunctionalAnnotationAggMember/">FunctionalAnnotationAggMember</a></td>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>any_of[range]</td>
-<td><a href="./">DataGeneration</a></td>
-</tr>
-<tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../data_generation_set/">data_generation_set</a></td>
 <td>range</td>
 <td><a href="./">DataGeneration</a></td>
 </tr>
 <tr>
-<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
 <td>range</td>
-<td><a href="./">DataGeneration</a></td>
-</tr>
-<tr>
-<td><a href="../FunctionalAnnotation/">FunctionalAnnotation</a></td>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>any_of[range]</td>
-<td><a href="./">DataGeneration</a></td>
-</tr>
-<tr>
-<td><a href="../DataObject/">DataObject</a></td>
-<td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>any_of[range]</td>
 <td><a href="./">DataGeneration</a></td>
 </tr>
 <tr>
@@ -657,7 +642,7 @@ aliases:
 broad_mappings:
 - OBI:0000070
 - ISA:Assay
-is_a: PlannedProcess
+is_a: DataEmitterProcess
 abstract: true
 slots:
 - add_date
@@ -710,7 +695,7 @@ aliases:
 broad_mappings:
 - OBI:0000070
 - ISA:Assay
-is_a: PlannedProcess
+is_a: DataEmitterProcess
 abstract: true
 slot_usage:
   has_input:

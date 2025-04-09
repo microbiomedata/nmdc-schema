@@ -361,8 +361,8 @@
 
   DataObject : was_generated_by
 
-      DataObject --&gt; "0..1" WorkflowExecution : was_generated_by
-    click WorkflowExecution href "../WorkflowExecution"
+      DataObject --&gt; "0..1" DataEmitterProcess : was_generated_by
+    click DataEmitterProcess href "../DataEmitterProcess"
 
 
 
@@ -432,7 +432,7 @@
 </tr>
 <tr>
 <td><a href="../was_generated_by/">was_generated_by</a></td>
-<td>0..1 <br/> <a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../WorkflowExecution/">WorkflowExecution</a> or <br/><a href="../DataGeneration/">DataGeneration</a></td>
+<td>0..1 <br/> <a href="../DataEmitterProcess/">DataEmitterProcess</a></td>
 <td></td>
 <td>direct</td>
 </tr>
@@ -506,6 +506,18 @@
 <tr>
 <td><a href="../Database/">Database</a></td>
 <td><a href="../data_object_set/">data_object_set</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td><a href="../has_input/">has_input</a></td>
+<td>range</td>
+<td><a href="./">DataObject</a></td>
+</tr>
+<tr>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td><a href="../has_output/">has_output</a></td>
 <td>range</td>
 <td><a href="./">DataObject</a></td>
 </tr>
@@ -596,12 +608,6 @@
 <tr>
 <td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
 <td><a href="../has_output/">has_output</a></td>
-<td>range</td>
-<td><a href="./">DataObject</a></td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
-<td><a href="../has_input/">has_input</a></td>
 <td>range</td>
 <td><a href="./">DataObject</a></td>
 </tr>
@@ -727,6 +733,7 @@ slot_usage:
       interpolated: true
   was_generated_by:
     name: was_generated_by
+    range: DataEmitterProcess
     structured_pattern:
       syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
       interpolated: true
@@ -756,6 +763,7 @@ slot_usage:
       interpolated: true
   was_generated_by:
     name: was_generated_by
+    range: DataEmitterProcess
     structured_pattern:
       syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
       interpolated: true
@@ -864,13 +872,10 @@ attributes:
     - FunctionalAnnotationAggMember
     - FunctionalAnnotation
     - DataObject
-    range: WorkflowExecution
+    range: DataEmitterProcess
     structured_pattern:
       syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
       interpolated: true
-    any_of:
-    - range: WorkflowExecution
-    - range: DataGeneration
   in_manifest:
     name: in_manifest
     description: one or more combinations of other DataObjects that can be analyzed

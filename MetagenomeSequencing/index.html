@@ -339,8 +339,8 @@
 
   MetagenomeSequencing : has_input
 
-      MetagenomeSequencing --&gt; "1..*" DataObject : has_input
-    click DataObject href "../DataObject"
+      MetagenomeSequencing --&gt; "1..*" Sample : has_input
+    click Sample href "../Sample"
 
   MetagenomeSequencing : has_output
 
@@ -388,8 +388,11 @@
 <ul>
 <li><a href="../NamedThing/">NamedThing</a><ul>
 <li><a href="../PlannedProcess/">PlannedProcess</a><ul>
+<li><a href="../DataEmitterProcess/">DataEmitterProcess</a><ul>
 <li><a href="../WorkflowExecution/">WorkflowExecution</a><ul>
 <li><strong>MetagenomeSequencing</strong></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -446,7 +449,7 @@
 </tr>
 <tr>
 <td><a href="../has_input/">has_input</a></td>
-<td>1..* <br/> <a href="../DataObject/">DataObject</a></td>
+<td>1..* <br/> <a href="../Sample/">Sample</a></td>
 <td>An input to a process</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -569,6 +572,7 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
+    range: Sample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -599,6 +603,7 @@ slot_usage:
       interpolated: true
   has_input:
     name: has_input
+    range: Sample
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
       interpolated: true
@@ -708,7 +713,7 @@ attributes:
     owner: MetagenomeSequencing
     domain_of:
     - PlannedProcess
-    range: DataObject
+    range: Sample
     required: true
     multivalued: true
     structured_pattern:
