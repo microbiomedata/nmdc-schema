@@ -6,12 +6,19 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Basic Typ
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  linkml: https://w3id.org/linkml/
-  EFO: http://www.ebi.ac.uk/efo/
-  BFO: http://purl.obolibrary.org/obo/BFO_
-  rdfs: http://www.w3.org/2000/01/rdf-schema#
-  biolink: https://w3id.org/biolink/vocab/
-  owl: http://www.w3.org/2002/07/owl#
+  BFO: "http://purl.obolibrary.org/obo/BFO_"
+  EFO: "http://www.ebi.ac.uk/efo/"
+  ISA: "http://example.org/isa/"
+  NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
+  OBI: "http://purl.obolibrary.org/obo/OBI_"
+  SIO: "http://semanticscience.org/resource/SIO_" # for Study, StudyCategoryEnum PVs, objective
+  biolink: "https://w3id.org/biolink/vocab/"
+  dcterms: "http://purl.org/dc/terms/"
+  linkml: "https://w3id.org/linkml/"
+  owl: "http://www.w3.org/2002/07/owl#"
+  prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  schema: "http://schema.org/"
 
 
 imports:
@@ -188,7 +195,7 @@ classes:
             doi_provider:
               required: true
   Study:
-    class_uri: 'nmdc:Study'
+    class_uri: nmdc:Study
     is_a: NamedThing
     aliases:
       - proposal
@@ -200,7 +207,8 @@ classes:
       - research initiative
     description: >-
       A study summarizes the overall goal of a research initiative and outlines the key objective of its underlying projects.
-    comments: The Study class can include both consortia and research studies.
+    comments:
+      - The Study includes both consortia and research studies.
     alt_descriptions:
       embl.ena:
         A study (project) groups together data submitted to the archive and
@@ -265,7 +273,8 @@ classes:
         description: A brief, link-free summary of a Study
         annotations:
           tooltip: Provide a brief description of your study.
-        comments: Include links in other Study slots, such as websites or dois.
+        comments:
+          - Include links in other Study slots, such as websites or dois.
       notes:
         annotations:
           tooltip: Add any additional notes or comments about this study.
@@ -301,9 +310,7 @@ classes:
     broad_mappings:
       - prov:Activity
     todos:
-      - determine how to get data values for submitted_to_insdc, investigation_type,
-        experimental_factor
-      - project_name is redundant with name, so excluding it
+      - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
     notes:
       - "sample GOLD link https://bioregistry.io/gold:Gs0110115"
       - "sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?"
@@ -688,7 +695,8 @@ enums:
         description: >-
           A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the
           consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
-        comments: A consortium has collections of data, those data do not come from a hypothesis-driven experiment.
+        comments:
+          - A consortium has collections of data, but those data do not come from a hypothesis-driven experiment.
         exact_mappings:
           - NCIT:C61538
   
@@ -782,7 +790,8 @@ enums:
           - NovaSeq 6000
           - Illumina NovaSeq 6000
         meaning: OBI:0002630
-        comments: Possible flowcell versions are SP, S1, S2, S4.
+        comments:
+          - Possible flowcell versions are SP, S1, S2, S4.
         see_also: 
          - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
         structured_aliases:
@@ -803,7 +812,8 @@ enums:
         aliases:
           - Illumina NovaSeq X
           - Illumina NovaSeq X Plus 
-        comments: Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        comments:
+          - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
         see_also: 
           - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
       

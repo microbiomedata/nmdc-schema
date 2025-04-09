@@ -19,7 +19,7 @@ slots:
       to EMSL
     title: EMSL sample storage temperature, deg. C
     todos:
-      - add 'see_alsos' with link to NEXUS info
+      - add 'see_also's with link to NEXUS info
     comments:
       - Enter a temperature in celsius. Numeric portion only.
     examples:

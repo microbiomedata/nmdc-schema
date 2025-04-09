@@ -5801,6 +5801,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6096,6 +6097,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7069,6 +7071,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7653,6 +7656,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7984,6 +7988,7 @@
                 "Metagenome Raw Read 2",
                 "FT ICR-MS Analysis Results",
                 "GC-MS Metabolomics Results",
+                "LC-MS Metabolomics Results",
                 "Metaproteomics Workflow Statistics",
                 "Protein Report",
                 "Peptide Report",
@@ -8056,6 +8061,7 @@
                 "Configuration toml",
                 "LC-MS Lipidomics Results",
                 "LC-MS Lipidomics Processed Data",
+                "LC-MS Metabolomics Processed Data",
                 "Contaminants Amino Acid FASTA",
                 "Analysis Tool Parameter File",
                 "Workflow Operation Summary",
@@ -8195,6 +8201,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -9041,6 +9048,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -9864,6 +9872,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -12233,6 +12242,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -12660,6 +12670,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -13291,6 +13302,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -15081,6 +15093,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
+                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [

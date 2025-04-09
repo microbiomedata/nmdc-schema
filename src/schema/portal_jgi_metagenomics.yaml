@@ -12,8 +12,8 @@ imports:
   - nmdc_types
 
 prefixes:
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
 
 default_prefix: nmdc
 default_range: string
@@ -24,7 +24,6 @@ slots:
     title: DNA collection site
     examples:
       - value: untreated pond water
-    from_schema: https://example.com/nmdc_dh
     rank: 15
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -35,7 +34,6 @@ slots:
     title: DNA container type
     examples:
       - value: plate
-    from_schema: https://example.com/nmdc_dh
     rank: 10
     slot_group: JGI-Metagenomics
     range: JgiContTypeEnum
@@ -49,7 +47,6 @@ slots:
       - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
     examples:
       - value: B2
-    from_schema: https://example.com/nmdc_dh
     rank: 11
     string_serialization: '{96 well plate pos}'
     slot_group: JGI-Metagenomics
@@ -62,7 +59,6 @@ slots:
         in a plate should have the same plate label.
     examples:
       - value: Pond_MT_041618
-    from_schema: https://example.com/nmdc_dh
     rank: 9
     string_serialization: '{text < 20 characters}'
     slot_group: JGI-Metagenomics
@@ -73,7 +69,6 @@ slots:
       - Note DNase treatment is required for all RNA samples.
     examples:
       - value: 'no'
-    from_schema: https://example.com/nmdc_dh
     rank: 13
     slot_group: JGI-Metagenomics
     range: YesNoEnum
@@ -83,7 +78,6 @@ slots:
     title: DNA isolation method
     examples:
       - value: phenol/chloroform extraction
-    from_schema: https://example.com/nmdc_dh
     rank: 16
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -97,7 +91,6 @@ slots:
     examples:
       - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
           (1%)
-    from_schema: https://example.com/nmdc_dh
     rank: 14
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -109,7 +102,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: John Jones
-    from_schema: https://example.com/nmdc_dh
     rank: 18
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -125,7 +117,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: '187654'
-    from_schema: https://example.com/nmdc_dh
     rank: 3
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -135,7 +126,6 @@ slots:
     title: DNA sample format
     examples:
       - value: Water
-    from_schema: https://example.com/nmdc_dh
     rank: 12
     slot_group: JGI-Metagenomics
     range: DNASampleFormatEnum
@@ -146,7 +136,6 @@ slots:
     title: DNA sample name
     examples:
       - value: JGI_pond_041618
-    from_schema: https://example.com/nmdc_dh
     rank: 4
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -158,7 +147,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: '1191234'
-    from_schema: https://example.com/nmdc_dh
     rank: 1
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -172,7 +160,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: Jane Johnson
-    from_schema: https://example.com/nmdc_dh
     rank: 17
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -184,7 +171,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: JGI Pond metagenomics
-    from_schema: https://example.com/nmdc_dh
     rank: 2
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
@@ -196,7 +182,6 @@ slots:
         This form accepts values < 25, but JGI may refuse to process them unless permission has been granted by a project manager
     examples:
       - value: '25'
-    from_schema: https://example.com/nmdc_dh
     rank: 6
     string_serialization: '{float}'
     range: float
@@ -211,7 +196,6 @@ slots:
         values have been pre-filled.
     examples:
       - value: '504000'
-    from_schema: https://example.com/nmdc_dh
     rank: 19
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics

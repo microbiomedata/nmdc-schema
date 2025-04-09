@@ -15,8 +15,8 @@ todos:
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
 
 default_prefix: nmdc
 default_range: string
@@ -29,9 +29,8 @@ slots:
     title: analysis/data type
     examples:
       - value: metagenomics; metabolomics; metaproteomics
-    from_schema: https://example.com/nmdc_dh
-    see_also:
-      - MIxS:investigation_type
+    comments:
+      - MIxS:investigation_type was included as a see_also but that term doesnt' resolve any more
     rank: 3
     multivalued: true
     slot_group: Sample ID
@@ -49,7 +48,6 @@ slots:
       to a new vial and generated a new sample)'
     examples:
       - value: IGSN:DSJ0284
-    from_schema: https://example.com/nmdc_dh
     multivalued: true
     rank: 5
     recommended: true

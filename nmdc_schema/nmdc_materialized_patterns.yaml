@@ -52,6 +52,9 @@ prefixes:
   FMA:
     prefix_prefix: FMA
     prefix_reference: http://purl.obolibrary.org/obo/FMA_
+  GENEPIO:
+    prefix_prefix: GENEPIO
+    prefix_reference: http://purl.obolibrary.org/obo/GENEPIO_
   GO:
     prefix_prefix: GO
     prefix_reference: http://purl.obolibrary.org/obo/GO_
@@ -61,6 +64,9 @@ prefixes:
   ISA:
     prefix_prefix: ISA
     prefix_reference: http://example.org/isa/
+  KEGG.MODULE:
+    prefix_prefix: KEGG.MODULE
+    prefix_reference: 'https://bioregistry.io/kegg.module:'
   KEGG.ORTHOLOGY:
     prefix_prefix: KEGG.ORTHOLOGY
     prefix_reference: 'https://bioregistry.io/kegg.orthology:'
@@ -70,24 +76,30 @@ prefixes:
   MESH:
     prefix_prefix: MESH
     prefix_reference: 'https://bioregistry.io/mesh:'
+  MIXS:
+    prefix_prefix: MIXS
+    prefix_reference: https://w3id.org/mixs/
   MS:
     prefix_prefix: MS
     prefix_reference: http://purl.obolibrary.org/obo/MS_
   MetaNetX:
     prefix_prefix: MetaNetX
     prefix_reference: http://example.org/metanetx/
-  NCBITaxon:
-    prefix_prefix: NCBITaxon
-    prefix_reference: http://purl.obolibrary.org/obo/NCBITaxon_
   NCBI:
     prefix_prefix: NCBI
     prefix_reference: http://example.com/ncbitaxon/
+  NCBITaxon:
+    prefix_prefix: NCBITaxon
+    prefix_reference: http://purl.obolibrary.org/obo/NCBITaxon_
   NCIT:
     prefix_prefix: NCIT
     prefix_reference: http://purl.obolibrary.org/obo/NCIT_
   OBI:
     prefix_prefix: OBI
     prefix_reference: http://purl.obolibrary.org/obo/OBI_
+  OMIT:
+    prefix_prefix: OMIT
+    prefix_reference: http://purl.obolibrary.org/obo/OMIT_
   ORCID:
     prefix_prefix: ORCID
     prefix_reference: https://orcid.org/
@@ -97,12 +109,12 @@ prefixes:
   PATO:
     prefix_prefix: PATO
     prefix_reference: http://purl.obolibrary.org/obo/PATO_
-  PFAM:
-    prefix_prefix: PFAM
-    prefix_reference: 'https://bioregistry.io/pfam:'
   PFAM.CLAN:
     prefix_prefix: PFAM.CLAN
     prefix_reference: 'https://bioregistry.io/pfam.clan:'
+  PFAM:
+    prefix_prefix: PFAM
+    prefix_reference: 'https://bioregistry.io/pfam:'
   PO:
     prefix_prefix: PO
     prefix_reference: http://purl.obolibrary.org/obo/PO_
@@ -118,6 +130,9 @@ prefixes:
   RetroRules:
     prefix_prefix: RetroRules
     prefix_reference: http://example.org/retrorules/
+  SIO:
+    prefix_prefix: SIO
+    prefix_reference: http://semanticscience.org/resource/SIO_
   SO:
     prefix_prefix: SO
     prefix_reference: http://purl.obolibrary.org/obo/SO_
@@ -157,6 +172,9 @@ prefixes:
   emsl_uuid_like:
     prefix_prefix: emsl_uuid_like
     prefix_reference: http://example.org/emsl_uuid_like/
+  my_emsl:
+    prefix_prefix: my_emsl
+    prefix_reference: https://release.my.emsl.pnnl.gov/released_data/
   generic:
     prefix_prefix: generic
     prefix_reference: https://example.org/generic/
@@ -172,6 +190,9 @@ prefixes:
   img.taxon:
     prefix_prefix: img.taxon
     prefix_reference: 'https://bioregistry.io/img.taxon:'
+  insdc.sra:
+    prefix_prefix: insdc.sra
+    prefix_reference: 'https://bioregistry.io/insdc.sra:'
   jgi.analysis:
     prefix_prefix: jgi.analysis
     prefix_reference: https://data.jgi.doe.gov/search?q=
@@ -184,18 +205,15 @@ prefixes:
   kegg:
     prefix_prefix: kegg
     prefix_reference: 'https://bioregistry.io/kegg:'
-  KEGG.MODULE:
-    prefix_prefix: KEGG.MODULE
-    prefix_reference: 'https://bioregistry.io/kegg.module:'
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
+  mgnify.analysis:
+    prefix_prefix: mgnify.analysis
+    prefix_reference: 'https://bioregistry.io/mgnify.analysis:'
   mgnify.proj:
     prefix_prefix: mgnify.proj
     prefix_reference: 'https://bioregistry.io/mgnify.proj:'
-  my_emsl:
-    prefix_prefix: my_emsl
-    prefix_reference: https://release.my.emsl.pnnl.gov/released_data/
   neon.identifier:
     prefix_prefix: neon.identifier
     prefix_reference: http://example.org/neon/identifier/
@@ -226,9 +244,9 @@ prefixes:
   KEGG.COMPOUND:
     prefix_prefix: KEGG.COMPOUND
     prefix_reference: 'https://bioregistry.io/kegg.compound:'
-  SIO:
-    prefix_prefix: SIO
-    prefix_reference: http://semanticscience.org/resource/SIO_
+  MISO:
+    prefix_prefix: MISO
+    prefix_reference: http://purl.obolibrary.org/obo/MISO_
   UniProtKB:
     prefix_prefix: UniProtKB
     prefix_reference: 'https://bioregistry.io/uniprot:'
@@ -247,9 +265,6 @@ prefixes:
   wgs84:
     prefix_prefix: wgs84
     prefix_reference: http://www.w3.org/2003/01/geo/wgs84_pos#
-  MISO:
-    prefix_prefix: MISO
-    prefix_reference: http://purl.obolibrary.org/obo/MISO_
   COG:
     prefix_prefix: COG
     prefix_reference: 'https://bioregistry.io/cog:'
@@ -274,9 +289,6 @@ prefixes:
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
-  MIXS:
-    prefix_prefix: MIXS
-    prefix_reference: https://w3id.org/mixs/
   MIXS_yaml:
     prefix_prefix: MIXS_yaml
     prefix_reference: https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/
@@ -286,6 +298,12 @@ prefixes:
   owl:
     prefix_prefix: owl
     prefix_reference: http://www.w3.org/2002/07/owl#
+  edam.format:
+    prefix_prefix: edam.format
+    prefix_reference: http://edamontology.org/format_
+  ror:
+    prefix_prefix: ror
+    prefix_reference: 'https://bioregistry.io/ror:'
 emit_prefixes:
 - KEGG.ORTHOLOGY
 - MASSIVE
@@ -3326,8 +3344,8 @@ enums:
           of expertise in a specific area to ensure the successful completion of the
           project.
         comments:
-        - A consortium has collections of data, those data do not come from a hypothesis-driven
-          experiment.
+        - A consortium has collections of data, but those data do not come from a
+          hypothesis-driven experiment.
         exact_mappings:
         - NCIT:C61538
   ManifestCategoryEnum:
@@ -3825,6 +3843,9 @@ enums:
       GC-MS Metabolomics Results:
         text: GC-MS Metabolomics Results
         description: GC-MS-based metabolite assignment results table
+      LC-MS Metabolomics Results:
+        text: LC-MS Metabolomics Results
+        description: LC-MS-based metabolite assignment results table
       Metaproteomics Workflow Statistics:
         text: Metaproteomics Workflow Statistics
         description: Aggregate workflow statistics file
@@ -4224,6 +4245,10 @@ enums:
         text: LC-MS Lipidomics Processed Data
         description: Processed data for the LC-MS-based lipidomics analysis in hdf5
           format
+      LC-MS Metabolomics Processed Data:
+        text: LC-MS Metabolomics Processed Data
+        description: Processed data for the LC-MS-based metabolomics analysis in hdf5
+          format
       Contaminants Amino Acid FASTA:
         text: Contaminants Amino Acid FASTA
         description: FASTA amino acid file for contaminant proteins commonly observed
@@ -4287,34 +4312,34 @@ enums:
     permissible_values:
       emsl:
         text: emsl
-        meaning: https://ror.org/04rc0xn13
+        meaning: ror:04rc0xn13
         title: EMSL
         aliases:
         - Environmental Molecular Sciences Laboratory
         - EMSL
       jgi:
         text: jgi
-        meaning: https://ror.org/04xm1d337
+        meaning: ror:04xm1d337
         title: JGI
         aliases:
         - Joint Genome Institute
         - JGI
       kbase:
         text: kbase
-        meaning: https://ror.org/01znn6x10
+        meaning: ror:01znn6x10
         title: KBase
         aliases:
         - KBase
       osti:
         text: osti
-        meaning: https://ror.org/031478740
+        meaning: ror:031478740
         title: OSTI
         aliases:
         - Office of Scientific and Technical Information
         - OSTI
       ess_dive:
         text: ess_dive
-        meaning: https://ror.org/01t14bp54
+        meaning: ror:01t14bp54
         title: ESS-DIVE
         aliases:
         - ESS-DIVE
@@ -4338,14 +4363,14 @@ enums:
         - Zenodo
       edi:
         text: edi
-        meaning: https://ror.org/0330j0z60
+        meaning: ror:0330j0z60
         title: EDI
         aliases:
         - EDI
         - Environmental Data Initiative
       figshare:
         text: figshare
-        meaning: https://ror.org/041mxqs23
+        meaning: ror:041mxqs23
         title: Figshare
   DoiCategoryEnum:
     name: DoiCategoryEnum
@@ -4436,31 +4461,31 @@ enums:
   ProcessingInstitutionEnum:
     name: ProcessingInstitutionEnum
     notes:
-    - use ROR meanings like https://ror.org/0168r3w48 for UCSD
+    - use ROR meanings like ror:0168r3w48 for UCSD
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
       UCSD:
         text: UCSD
-        meaning: https://ror.org/0168r3w48
+        meaning: ror:0168r3w48
         title: University of California, San Diego
       JGI:
         text: JGI
-        meaning: https://ror.org/04xm1d337
+        meaning: ror:04xm1d337
         title: Joint Genome Institute
       EMSL:
         text: EMSL
-        meaning: https://ror.org/04rc0xn13
+        meaning: ror:04rc0xn13
         title: Environmental Molecular Sciences Laboratory
         aliases:
         - Environmental Molecular Science Laboratory
         - Environmental Molecular Sciences Lab
       Battelle:
         text: Battelle
-        meaning: https://ror.org/01h5tnr73
+        meaning: ror:01h5tnr73
         title: Battelle Memorial Institute
       ANL:
         text: ANL
-        meaning: https://ror.org/05gvnxz63
+        meaning: ror:05gvnxz63
         title: Argonne National Laboratory
       UCD_Genome_Center:
         text: UCD_Genome_Center
@@ -4699,16 +4724,16 @@ slots:
   ncbi_lineage_tax_ids:
     name: ncbi_lineage_tax_ids
     description: Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)
-    comments:
-    - Example 1-131567-2759-2611352-33682-191814-2603949
+    examples:
+    - value: 1-131567-2759-2611352-33682-191814-2603949
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
     pattern: ^\d+(-\d+)*$
   ncbi_lineage:
     name: ncbi_lineage
     description: Comma delimited ordered list of NCBI taxonomy names.
-    comments:
-    - Example root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
+    examples:
+    - value: root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   has_failure_categorization:
@@ -4737,7 +4762,8 @@ slots:
     name: resolution_categories
     description: The relative resolution at which spectra were collected.
     examples:
-    - value: '[''high'', ''low'']'
+    - value: high
+    - value: low
     from_schema: https://w3id.org/nmdc/nmdc
     range: ResolutionCategoryEnum
     multivalued: true
@@ -4804,6 +4830,8 @@ slots:
   library_preparation_kit:
     name: library_preparation_kit
     from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - GENEPIO:0001450
     range: string
   pcr_cycles:
     name: pcr_cycles
@@ -5500,7 +5528,7 @@ slots:
     description: Number of 16s sequences detected, a subunit of prokaryotic ribosomes.
     from_schema: https://w3id.org/nmdc/nmdc
     broad_mappings:
-    - NCIT:C105370
+    - OMIT:0013243
     range: integer
     minimum_value: 0
   num_5s:
@@ -5524,7 +5552,7 @@ slots:
     description: Number of transfer transfer RNAs.
     from_schema: https://w3id.org/nmdc/nmdc
     broad_mappings:
-    - NCIT:C816
+    - OMIT:0013250
     range: integer
     minimum_value: 0
   gtdbtk_domain:
@@ -5532,7 +5560,7 @@ slots:
     description: Taxonomic domain assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://doi.org/10.1093/bioinformatics/btz848
+    - doi:10.1093/bioinformatics/btz848
     exact_mappings:
     - NCBITaxon:superkingdom
     range: string
@@ -5541,7 +5569,7 @@ slots:
     description: Taxonomic phylum assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://doi.org/10.1093/bioinformatics/btz848
+    - doi:10.1093/bioinformatics/btz848
     exact_mappings:
     - NCBITaxon:phylum
     range: string
@@ -5550,7 +5578,7 @@ slots:
     description: Taxonomic class assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://doi.org/10.1093/bioinformatics/btz848
+    - doi:10.1093/bioinformatics/btz848
     exact_mappings:
     - NCBITaxon:class
     range: string
@@ -5559,7 +5587,7 @@ slots:
     description: Taxonomic order assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://doi.org/10.1093/bioinformatics/btz848
+    - doi:10.1093/bioinformatics/btz848
     exact_mappings:
     - NCBITaxon:order
     range: string
@@ -5568,7 +5596,7 @@ slots:
     description: Taxonomic family assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://doi.org/10.1093/bioinformatics/btz848
+    - doi:10.1093/bioinformatics/btz848
     exact_mappings:
     - NCBITaxon:family
     range: string
@@ -5577,7 +5605,7 @@ slots:
     description: Taxonomic genus assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://doi.org/10.1093/bioinformatics/btz848
+    - doi:10.1093/bioinformatics/btz848
     exact_mappings:
     - NCBITaxon:genus
     range: string
@@ -5586,7 +5614,7 @@ slots:
     description: Taxonomic genus assigned by GTDB-Tk.
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
-    - https://doi.org/10.1093/bioinformatics/btz848
+    - doi:10.1093/bioinformatics/btz848
     exact_mappings:
     - NCBITaxon:species
     range: string
@@ -5681,7 +5709,7 @@ slots:
     description: The ID of the landmark used to establish the coordinate system for
       the current feature.
     todos:
-    - change range from string to object
+    - change range from string to a object like uriorcurie?
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
   strand:
@@ -5707,8 +5735,9 @@ slots:
     name: end
     description: The end of the feature in positive 1-based integer coordinates
     comments:
-    - '- "constraint: end > start" - "For features that cross the origin of a circular
-      feature,  end = the position of the end + the length of the landmark feature."'
+    - '- "unenforced constraint: end > start" - "For features that cross the origin
+      of a circular feature,  end = the position of the end + the length of the landmark
+      feature."'
     from_schema: https://w3id.org/nmdc/nmdc
     close_mappings:
     - biolink:end_interbase_coordinate
@@ -5743,8 +5772,6 @@ slots:
   term:
     name: term
     description: pointer to an ontology class
-    notes:
-    - 'removed ''slot_uri: rdf:type'''
     from_schema: https://w3id.org/nmdc/nmdc
     range: OntologyClass
     inlined: true
@@ -5850,7 +5877,7 @@ slots:
     name: insdc_sra_ena_study_identifiers
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
-    - value: https://bioregistry.io/insdc.sra:SRP121659
+    - value: insdc.sra:SRP121659
       description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2
         metatranscriptome
     from_schema: https://w3id.org/nmdc/nmdc
@@ -5873,7 +5900,7 @@ slots:
     - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?)
       one to one
     examples:
-    - value: https://bioregistry.io/bioproject:PRJNA366857
+    - value: bioproject:PRJNA366857
       description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2
         metatranscriptome
     from_schema: https://w3id.org/nmdc/nmdc
@@ -5894,7 +5921,7 @@ slots:
     comments:
     - uses the prefix GS (but possibly in a different case)
     examples:
-    - value: https://bioregistry.io/gold:Gs0110115
+    - value: gold:Gs0110115
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://gold.jgi.doe.gov/studies
@@ -5906,7 +5933,7 @@ slots:
     name: mgnify_project_identifiers
     description: identifiers for corresponding project in MGnify
     examples:
-    - value: https://bioregistry.io/mgnify.proj:MGYS00005757
+    - value: mgnify.proj:MGYS00005757
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: study_identifiers
     mixins:
@@ -5964,7 +5991,7 @@ slots:
     name: gold_biosample_identifiers
     description: identifiers for corresponding sample in GOLD
     examples:
-    - value: https://bioregistry.io/gold:Gb0312930
+    - value: gold:Gb0312930
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: biosample_identifiers
     mixins:
@@ -5975,8 +6002,8 @@ slots:
     name: insdc_biosample_identifiers
     description: identifiers for corresponding sample in INSDC
     examples:
-    - value: https://bioregistry.io/biosample:SAMEA5989477
-    - value: https://bioregistry.io/biosample:SAMD00212331
+    - value: biosample:SAMEA5989477
+    - value: biosample:SAMD00212331
       description: I13_N_5-10 sample from Soil fungal diversity along elevational
         gradients
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6001,7 +6028,7 @@ slots:
       -> SAMD00212331
     - MGnify uses these as their primary sample IDs
     examples:
-    - value: https://bioregistry.io/insdc.sra:DRS166340
+    - value: insdc.sra:DRS166340
       description: I13_N_5-10 sample from Soil fungal diversity along elevational
         gradients
     from_schema: https://w3id.org/nmdc/nmdc
@@ -6039,7 +6066,7 @@ slots:
     name: gold_sequencing_project_identifiers
     description: identifiers for corresponding sequencing project in GOLD
     examples:
-    - value: https://bioregistry.io/gold:Gp0108335
+    - value: gold:Gp0108335
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: omics_processing_identifiers
     mixins:
@@ -6061,7 +6088,7 @@ slots:
     name: gold_analysis_project_identifiers
     description: identifiers for corresponding analysis projects in GOLD
     examples:
-    - value: https://bioregistry.io/gold:Ga0526289
+    - value: gold:Ga0526289
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: analysis_identifiers
     mixins:
@@ -6073,7 +6100,7 @@ slots:
     - jgi.analysis
     description: identifiers for corresponding analysis projects in JGI Portal
     examples:
-    - value: https://data.jgi.doe.gov/search?q=1414320
+    - value: jgi.analysis:1414320
       description: Metagenome - Draft Assembly YELL_051-M-20210705-comp-DNA1
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: analysis_identifiers
@@ -6085,9 +6112,9 @@ slots:
     comments:
     - in INSDC this is a run but it corresponds to a GOLD analysis
     examples:
-    - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
+    - value: insdc.sra:DRR218479
       description: Illumina MiSeq paired end sequencing of SAMD00212331
-    - value: https://www.ebi.ac.uk/ena/browser/view/ERR436051
+    - value: insdc.sra:ERR436051
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: analysis_identifiers
     mixins:
@@ -6098,7 +6125,7 @@ slots:
     notes:
     - 'removed pattern: "^mgnify:MGYA[0-9]+$" ## TODO https://github.com/bioregistry/bioregistry/issues/109'
     examples:
-    - value: https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
+    - value: mgnify.analysis:MGYA00002270
       description: combined analyses (taxonomic, functional) of sample ERS438107
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: analysis_identifiers
@@ -17375,6 +17402,10 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Instrument
     multivalued: true
+    pattern: ^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: ^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$
+      interpolated: true
   in_manifest:
     name: in_manifest
     description: one or more combinations of other DataObjects that can be analyzed
@@ -17887,7 +17918,6 @@ slots:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:
@@ -17911,8 +17941,6 @@ slots:
   external_database_identifiers:
     name: external_database_identifiers
     description: Link to corresponding identifier in external database
-    notes:
-    - had tried ranges of external identifier and string
     comments:
     - The value of this field is always a registered CURIE
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18066,7 +18094,7 @@ slots:
       to EMSL
     title: EMSL sample storage temperature, deg. C
     todos:
-    - add 'see_alsos' with link to NEXUS info
+    - add 'see_also's with link to NEXUS info
     comments:
     - Enter a temperature in celsius. Numeric portion only.
     examples:
@@ -18900,11 +18928,12 @@ slots:
     name: analysis_type
     description: Select all the data types associated or available for this biosample
     title: analysis/data type
+    comments:
+    - MIxS:investigation_type was included as a see_also but that term doesnt' resolve
+      any more
     examples:
     - value: metagenomics; metabolomics; metaproteomics
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:investigation_type
     rank: 3
     slot_group: Sample ID
     range: AnalysisTypeEnum
@@ -19834,12 +19863,14 @@ classes:
           interpolated: true
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
       has_output:
         name: has_output
+        range: ProcessedSample
         pattern: ^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -21269,10 +21300,6 @@ classes:
     name: FunctionalAnnotationTerm
     description: Abstract grouping class for any term/descriptor that can be applied
       to a functional unit of a genome (protein, ncRNA, complex).
-    todos:
-    - decide if this should be used for product naming (Duncan, 2021-04-02)
-    - Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup
-      subclasses.
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - function
@@ -21347,9 +21374,8 @@ classes:
         name: has_function
         notes:
         - Still missing patterns for COG and RetroRules
-        - These patterns are not yet tied to the listed prefixes. A discussion about
-          that possibility had been started, including the question of whether these
-          lists are intended to be open examples or closed
+        - These patterns are not yet tied to the listed prefixes.
+        - Are these lists are intended to be open examples or closed?
       was_generated_by:
         name: was_generated_by
         description: provenance for the annotation.
@@ -21459,8 +21485,6 @@ classes:
   TimestampValue:
     name: TimestampValue
     description: A value that is a timestamp. The range should be ISO-8601
-    notes:
-    - 'removed the following slots: year, month, day'
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: AttributeValue
     class_uri: nmdc:TimestampValue
@@ -21478,8 +21502,6 @@ classes:
     name: ControlledIdentifiedTermValue
     description: A controlled term or class from an ontology, requiring the presence
       of term with an id
-    notes:
-    - To be used for slots like env_broad_scale
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: ControlledTermValue
     slot_usage:
@@ -21490,8 +21512,6 @@ classes:
   GeolocationValue:
     name: GeolocationValue
     description: A normalized value for a location on the earth's surface
-    notes:
-    - 'what did ''to_str: {latitude} {longitude}'' mean?'
     from_schema: https://w3id.org/nmdc/nmdc
     mappings:
     - schema:GeoCoordinates
@@ -21721,7 +21741,6 @@ classes:
     todos:
     - determine how to get data values for submitted_to_insdc, investigation_type,
       experimental_factor
-    - project_name is redundant with name, so excluding it
     notes:
     - sample GOLD link https://bioregistry.io/gold:Gs0110115
     - sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?
@@ -21729,7 +21748,7 @@ classes:
     - GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers,
       but no longer for the Study.id
     comments:
-    - The Study class can include both consortia and research studies.
+    - The Study includes both consortia and research studies.
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - proposal
@@ -22004,6 +22023,7 @@ classes:
         required: true
       has_input:
         name: has_input
+        range: DataObject
         required: true
         pattern: ^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
@@ -22011,6 +22031,7 @@ classes:
           interpolated: true
       has_output:
         name: has_output
+        range: DataObject
         pattern: ^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
@@ -22095,6 +22116,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22143,6 +22165,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22180,6 +22203,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22212,6 +22236,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22245,6 +22270,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22273,6 +22299,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22304,6 +22331,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22326,6 +22354,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22349,6 +22378,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
@@ -22370,6 +22400,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
@@ -22391,6 +22422,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
