@@ -356,9 +356,17 @@ classes:
         structured_pattern:
           syntax: "^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: DataEmitterProcess
+  DataEmitterProcess:
+    class_uri: nmdc:DataEmitterProcess
+    is_a: PlannedProcess
+    abstract: true
+    description: >-
+      A process that generates data objects as output.
+  
   DataGeneration:
     class_uri: nmdc:DataGeneration
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     abstract: true
     aliases:
       - OmicsProcessing
@@ -405,7 +413,7 @@ classes:
   WorkflowExecution:
     abstract: true
     class_uri: nmdc:WorkflowExecution
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     aliases:
       - analysis
     comments:
@@ -496,12 +504,9 @@ slots:
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
   was_generated_by:
-    range: WorkflowExecution
+    range: DataEmitterProcess
     mappings:
       - prov:wasGeneratedBy
-    any_of:
-      - range: WorkflowExecution
-      - range: DataGeneration
   associated_dois:
     description: A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.
     aliases:
