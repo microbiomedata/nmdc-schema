@@ -45,6 +45,7 @@ python-dotenv = "*"
 pyyaml = "^6"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 requests = "^2"
+jinja2 = "^3.1.6"
 
 [tool.poetry.group.dev.dependencies] # are some of these actually required as non-dev dependencies? # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
