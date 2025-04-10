@@ -11315,5 +11315,23 @@ slots:
   sequencing field:
     from_schema: http://w3id.org/mixs/terms
     abstract: true
-  mixs_env_triad_field: null
+  mixs_env_triad_field:
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: >-
+          The MIxS environmental triad provides context about where a sample was collected and what it consists of.
+        annotations:
+          source:
+            tag: source
+            value: https://link.springer.com/protocol/10.1007/978-1-0716-3838-5_20
+    description: >-
+      The MIxS environmental triad provides context about where a sample was collected and what it consists of. Its component slots capture the biome that the sample was found in, nearby geographical features that might influence the organisms in the sample, and the substance that was displaced in the process of collecting the sample. Careful population of these slots makes it easier for data users to find samples that are similar, not just in terms of textual values, but through ontological relationships. Furthermore, NMDC requires that its three component slots are populated because the INSDC Biosample databases require that they are populated because the MIxS standard from the GSC requires that they are populated.
+    abstract: true
+    range: ControlledIdentifiedTermValue
+    see_also:
+      - https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
+    created_by: orcid:0000-0002-5004-3362 # Alicia Clum
+    contributors:
+      - orcid:0000-0001-9076-6066 # Mark Andrew Miller
 source_file: assets/other_mixs_yaml_files/mixs_template.yaml

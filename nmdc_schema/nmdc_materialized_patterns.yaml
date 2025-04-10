@@ -3825,6 +3825,9 @@ enums:
       GC-MS Metabolomics Results:
         text: GC-MS Metabolomics Results
         description: GC-MS-based metabolite assignment results table
+      LC-MS Metabolomics Results:
+        text: LC-MS Metabolomics Results
+        description: LC-MS-based metabolite assignment results table
       Metaproteomics Workflow Statistics:
         text: Metaproteomics Workflow Statistics
         description: Aggregate workflow statistics file
@@ -4223,6 +4226,10 @@ enums:
       LC-MS Lipidomics Processed Data:
         text: LC-MS Lipidomics Processed Data
         description: Processed data for the LC-MS-based lipidomics analysis in hdf5
+          format
+      LC-MS Metabolomics Processed Data:
+        text: LC-MS Metabolomics Processed Data
+        description: Processed data for the LC-MS-based metabolomics analysis in hdf5
           format
       Contaminants Amino Acid FASTA:
         text: Contaminants Amino Acid FASTA
@@ -17210,7 +17217,33 @@ slots:
     abstract: true
   mixs_env_triad_field:
     name: mixs_env_triad_field
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: The MIxS environmental triad provides context about where a sample
+          was collected and what it consists of.
+        annotations:
+          source:
+            tag: source
+            value: https://link.springer.com/protocol/10.1007/978-1-0716-3838-5_20
+    description: The MIxS environmental triad provides context about where a sample
+      was collected and what it consists of. Its component slots capture the biome
+      that the sample was found in, nearby geographical features that might influence
+      the organisms in the sample, and the substance that was displaced in the process
+      of collecting the sample. Careful population of these slots makes it easier
+      for data users to find samples that are similar, not just in terms of textual
+      values, but through ontological relationships. Furthermore, NMDC requires that
+      its three component slots are populated because the INSDC Biosample databases
+      require that they are populated because the MIxS standard from the GSC requires
+      that they are populated.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
+    created_by: orcid:0000-0002-5004-3362
+    contributors:
+    - orcid:0000-0001-9076-6066
+    abstract: true
+    range: ControlledIdentifiedTermValue
   associated_studies:
     name: associated_studies
     description: The study associated with a resource.
@@ -17375,6 +17408,10 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Instrument
     multivalued: true
+    pattern: ^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: ^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$
+      interpolated: true
   in_manifest:
     name: in_manifest
     description: one or more combinations of other DataObjects that can be analyzed
@@ -19834,12 +19871,14 @@ classes:
           interpolated: true
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
       has_output:
         name: has_output
+        range: ProcessedSample
         pattern: ^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -22004,6 +22043,7 @@ classes:
         required: true
       has_input:
         name: has_input
+        range: DataObject
         required: true
         pattern: ^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
@@ -22011,6 +22051,7 @@ classes:
           interpolated: true
       has_output:
         name: has_output
+        range: DataObject
         pattern: ^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
@@ -22095,6 +22136,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22143,6 +22185,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22180,6 +22223,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22212,6 +22256,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22245,6 +22290,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22273,6 +22319,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22304,6 +22351,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22326,6 +22374,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22349,6 +22398,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
@@ -22370,6 +22420,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
@@ -22391,6 +22442,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
