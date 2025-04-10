@@ -8,8 +8,8 @@ imports:
   - core
 
 prefixes:
-  nmdc: https://w3id.org/nmdc/
-  linkml: https://w3id.org/linkml/
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
 
 default_prefix: nmdc
 default_range: string
@@ -302,7 +302,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: MassSpectrometry
-     
+
 slots:
 
   metaproteomics_analysis_category:

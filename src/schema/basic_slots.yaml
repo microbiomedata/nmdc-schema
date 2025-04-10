@@ -8,11 +8,23 @@ description: >-
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  dcterms: http://purl.org/dc/terms/
-
-  skos: http://www.w3.org/2004/02/skos/core#
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
+  MIXS: "https://w3id.org/mixs/"
+  NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
+  OBI: "http://purl.obolibrary.org/obo/OBI_"
+  SIO: "http://semanticscience.org/resource/SIO_" # for Study, StudyCategoryEnum PVs, objective
+  dcterms: "http://purl.org/dc/terms/"
+  doi: 'https://bioregistry.io/doi:'
+  edam.data: "http://edamontology.org/data_" # for doi_value and DataCategoryEnum only
+  edam.format: "http://edamontology.org/format_" # for 'Configuration toml' PV only only
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
+  prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
+  qud: "http://qudt.org/1.1/schema/qudt#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  ror: 'https://bioregistry.io/ror:' # https://ror.org/
+  schema: "http://schema.org/"
+  skos: "http://www.w3.org/2004/02/skos/core#"
+  wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
 
 imports:
   - nmdc_types
@@ -425,7 +437,6 @@ slots:
     slot_uri: rdf:type
     description: the class_uri of the class that has been instantiated
     notes:
-      - replaces legacy nmdc:type slot
       - makes it easier to read example data files
       - required for polymorphic MongoDB collections
     see_also:
@@ -451,8 +462,6 @@ slots:
     range: external_identifier
     comments:
       - The value of this field is always a registered CURIE
-    notes:
-      - "had tried ranges of external identifier and string"
     close_mappings:
       - skos:closeMatch
 
@@ -465,7 +474,6 @@ slots:
         a fluorometric method. Acceptable values are 0-2000.
     examples:
       - value: '100'
-    from_schema: https://example.com/nmdc_dh
     rank: 5
     range: float
     slot_group: JGI-Metagenomics
@@ -695,16 +703,12 @@ enums:
       Metagenome HQMQ Bins Compression File:
         description: Compressed file containing high qulaity and medium quality metagenome bins and associated files
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: "[mag_wf_activity_id]_hqmq_bin.zip"
+          file_name_pattern: "[mag_wf_activity_id]_hqmq_bin.zip"
 
       Metagenome LQ Bins Compression File:
         description: Compressed file containing low quality metagenome bins and associated files
         annotations:
-          file_name_pattern:
-            tag: file_name_pattern
-            value: "[mag_wf_activity_id]_lq_bin.zip"
+          file_name_pattern: "[mag_wf_activity_id]_lq_bin.zip"
 
       Metagenome Bins Info File:
         description: File containing version information on the binning workflow
@@ -1037,30 +1041,30 @@ enums:
           - Environmental Molecular Sciences Laboratory
           - EMSL
         title: EMSL
-        meaning: https://ror.org/04rc0xn13
+        meaning: ror:04rc0xn13
       jgi:
         aliases:
           - Joint Genome Institute
           - JGI
         title: JGI
-        meaning: https://ror.org/04xm1d337
+        meaning: ror:04xm1d337
       kbase:
         aliases:
           - KBase
         title: KBase
-        meaning: https://ror.org/01znn6x10
+        meaning: ror:01znn6x10
       osti:
         aliases:
           - Office of Scientific and Technical Information
           - OSTI
         title: OSTI
-        meaning: https://ror.org/031478740
+        meaning: ror:031478740
       ess_dive:
         aliases:
           - ESS-DIVE
           - Environmental System Science Data Infrastructure for a Virtual Ecosystem
         title: ESS-DIVE
-        meaning: https://ror.org/01t14bp54
+        meaning: ror:01t14bp54
       massive:
         aliases:
           - MassIVE
@@ -1080,10 +1084,10 @@ enums:
           - EDI
           - Environmental Data Initiative
         title: EDI
-        meaning: https://ror.org/0330j0z60
+        meaning: ror:0330j0z60
       figshare:
         title: Figshare
-        meaning: https://ror.org/041mxqs23
+        meaning: ror:041mxqs23
 
   DoiCategoryEnum:
     permissible_values:
@@ -1156,30 +1160,30 @@ enums:
 
   ProcessingInstitutionEnum:
     notes:
-      - use ROR meanings like https://ror.org/0168r3w48 for UCSD
+      - use ROR meanings like ror:0168r3w48 for UCSD
     permissible_values:
       UCSD:
         title: University of California, San Diego
-        meaning: https://ror.org/0168r3w48
+        meaning: ror:0168r3w48
 
       JGI:
         title: Joint Genome Institute
-        meaning: https://ror.org/04xm1d337
+        meaning: ror:04xm1d337
 
       EMSL:
         title: Environmental Molecular Sciences Laboratory
-        meaning: https://ror.org/04rc0xn13
+        meaning: ror:04rc0xn13
         aliases:
           - Environmental Molecular Science Laboratory
           - Environmental Molecular Sciences Lab
 
       Battelle:
         title: Battelle Memorial Institute
-        meaning: https://ror.org/01h5tnr73
+        meaning: ror:01h5tnr73
 
       ANL:
         title: Argonne National Laboratory
-        meaning: https://ror.org/05gvnxz63
+        meaning: ror:05gvnxz63
 
       UCD_Genome_Center:
         title: University of California, Davis Genome Center

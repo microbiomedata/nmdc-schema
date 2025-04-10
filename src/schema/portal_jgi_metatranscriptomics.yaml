@@ -6,8 +6,8 @@ title: 'NMDC Schema supplement for Submission Portal: JGI-Metatranscriptomics'
 id: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
 imports:
   - portal_enums
   #  - attribute_values # for inferring that rna_absorb1 and rna_absorb2 have the QuantityValue range, which isn't useful for the submission portal but might be required for Biosample>

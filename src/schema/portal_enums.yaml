@@ -4,7 +4,9 @@ title: 'NMDC Schema supplement for Submission Portal: shared enumerations'
 id: https://w3id.org/nmdc/portal_enums
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
-  nmdc: https://w3id.org/nmdc/
+  OBI: "http://purl.obolibrary.org/obo/OBI_"
+  nmdc: "https://w3id.org/nmdc/"
+
 default_prefix: nmdc
 enums:
   SampleTypeEnum:
@@ -38,8 +40,6 @@ enums:
       'no': { }
       'yes': { }
   RNASampleFormatEnum:
-    name: RNASampleFormatEnum
-    from_schema: https://w3id.org/nmdc/portal/jgi_metatranscriptomics
     permissible_values:
       10 mM Tris-HCl:
         text: 10 mM Tris-HCl

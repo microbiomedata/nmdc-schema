@@ -9,10 +9,14 @@ imports:
   - basic_classes # in cycle with external_identifier and mixs
   - basic_slots
 
+prefixes:
+  schema: "http://schema.org/"
+  nmdc: "https://w3id.org/nmdc/"
+
 classes:
   AttributeValue:
     abstract: true
-    class_uri: 'nmdc:AttributeValue'
+    class_uri: nmdc:AttributeValue
     description: >-
       The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
       value and the structured value
@@ -90,11 +94,9 @@ classes:
     class_uri: nmdc:TimestampValue
     is_a: AttributeValue
     description: A value that is a timestamp. The range should be ISO-8601
-    notes:
-      - "removed the following slots: year, month, day"
 
   ControlledTermValue:
-    class_uri: 'nmdc:ControlledTermValue'
+    class_uri: nmdc:ControlledTermValue
     is_a: AttributeValue
     description: A controlled term or class from an ontology
     slots:
@@ -103,10 +105,8 @@ classes:
       - add fields for ontology, branch
 
   ControlledIdentifiedTermValue:
-    class_uri: 'nmdc:ControlledIdentifiedTermValue'
+    class_uri: nmdc:ControlledIdentifiedTermValue
     description: A controlled term or class from an ontology, requiring the presence of term with an id
-    notes:
-      - To be used for slots like env_broad_scale
     is_a: ControlledTermValue
     slot_usage:
       term:
@@ -119,8 +119,6 @@ classes:
     slots:
       - latitude
       - longitude
-    notes:
-      - "what did 'to_str: {latitude} {longitude}' mean?"
     slot_usage:
       has_raw_value:
         description: The raw value for a geolocation should follow {latitude} {longitude}
@@ -137,5 +135,3 @@ slots:
     range: OntologyClass
     description: pointer to an ontology class
     inlined: true
-    notes:
-      - "removed 'slot_uri: rdf:type'"
