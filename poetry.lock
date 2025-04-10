@@ -3023,14 +3023,14 @@ typing-extensions = {version = ">=4.4.0", markers = "python_version < \"3.13\""}
 
 [[package]]
 name = "refscan"
-version = "0.2.2"
+version = "0.2.3"
 description = "Command-line program that scans the NMDC MongoDB database for referential integrity violations"
 optional = false
 python-versions = "<4.0,>=3.9"
 groups = ["dev"]
 files = [
-    {file = "refscan-0.2.2-py3-none-any.whl", hash = "sha256:6935b26aa8dd2ca029b731f79f295089b0bfb092d478705c0ff4e23dd401bf6d"},
-    {file = "refscan-0.2.2.tar.gz", hash = "sha256:fa8feceb97a953108918e4240feaad699c28b909fc8c0ce7f1a75246ae6caaa6"},
+    {file = "refscan-0.2.3-py3-none-any.whl", hash = "sha256:d6acb5c6bcc0f2d361084eb064d83eb00ad49049e60b93fde7dbb42802b9b1a0"},
+    {file = "refscan-0.2.3.tar.gz", hash = "sha256:c10182dfc68288d48c75792ac0ece5eef08277aa1a2db9ea02ef01becd31e8da"},
 ]
 
 [package.dependencies]
@@ -4204,4 +4204,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "d0282cf83ceb2de9db00692d7c69c7bbcdc54e39256cf4c7719b217c7ec9796e"
+content-hash = "bad3423022a91ff29503417b081b1ce92a84d81fa5c80b7ca3d35cf9d9d6d065"
