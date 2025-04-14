@@ -608,17 +608,32 @@
 <tr>
 <td>Metagenome Raw Reads</td>
 <td>None</td>
-<td>Interleaved paired-end raw sequencing data</td>
+<td>Interleaved paired-end raw metagenome sequencing data</td>
 </tr>
 <tr>
 <td>Metagenome Raw Read 1</td>
 <td>None</td>
-<td>Read 1 raw sequencing data, aka forward reads</td>
+<td>Read 1 raw metagenome sequencing data, aka forward reads</td>
 </tr>
 <tr>
 <td>Metagenome Raw Read 2</td>
 <td>None</td>
-<td>Read 2 raw sequencing data, aka reverse reads</td>
+<td>Read 2 raw metagenome sequencing data, aka reverse reads</td>
+</tr>
+<tr>
+<td>Metatranscriptome Raw Reads</td>
+<td>None</td>
+<td>Interleaved paired-end raw metatranscriptome sequencing data</td>
+</tr>
+<tr>
+<td>Metatranscriptome Raw Read 1</td>
+<td>None</td>
+<td>Read 1 raw metatranscriptome sequencing data, aka forward reads</td>
+</tr>
+<tr>
+<td>Metatranscriptome Raw Read 2</td>
+<td>None</td>
+<td>Read 2 raw metatranscriptome sequencing data, aka reverse reads</td>
 </tr>
 <tr>
 <td>FT ICR-MS Analysis Results</td>
@@ -1104,14 +1119,14 @@ permissible_values:
       or metabalomics analysis.
   Metagenome Raw Reads:
     text: Metagenome Raw Reads
-    description: Interleaved paired-end raw sequencing data
+    description: Interleaved paired-end raw metagenome sequencing data
     annotations:
       file_name_pattern:
         tag: file_name_pattern
         value: ^\.fastq(\.gz)?$
   Metagenome Raw Read 1:
     text: Metagenome Raw Read 1
-    description: Read 1 raw sequencing data, aka forward reads
+    description: Read 1 raw metagenome sequencing data, aka forward reads
     annotations:
       file_name_pattern:
         tag: file_name_pattern
@@ -1120,7 +1135,32 @@ permissible_values:
     - value: BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz
   Metagenome Raw Read 2:
     text: Metagenome Raw Read 2
-    description: Read 2 raw sequencing data, aka reverse reads
+    description: Read 2 raw metagenome sequencing data, aka reverse reads
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: ^.+_R2\.fastq(\.gz)?$
+    examples:
+    - value: BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz
+  Metatranscriptome Raw Reads:
+    text: Metatranscriptome Raw Reads
+    description: Interleaved paired-end raw metatranscriptome sequencing data
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: ^\.fastq(\.gz)?$
+  Metatranscriptome Raw Read 1:
+    text: Metatranscriptome Raw Read 1
+    description: Read 1 raw metatranscriptome sequencing data, aka forward reads
+    annotations:
+      file_name_pattern:
+        tag: file_name_pattern
+        value: ^.+_R1\.fastq(\.gz)?$
+    examples:
+    - value: BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz
+  Metatranscriptome Raw Read 2:
+    text: Metatranscriptome Raw Read 2
+    description: Read 2 raw metatranscriptome sequencing data, aka reverse reads
     annotations:
       file_name_pattern:
         tag: file_name_pattern
