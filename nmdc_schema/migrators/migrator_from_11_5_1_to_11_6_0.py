@@ -76,15 +76,18 @@ class Migrator(MigratorBase):
 
         >>> m = Migrator()
         >>> m.ids_of_metatranscriptome_data_generation_with_no_output = {'nmdc:dgns-11-12345678'}
-        >>> m.scan_workflow_execution_set({'id': 'nmdc:wfnom-11-12345678', 'was_informed_by': 'nmdc:dgns-11-12345678', 'has_output': ["nmdc:dobj-11-abcd1234"]})
+        >>> m.scan_workflow_execution_set({'id': 'nmdc:wfmsa-11-12345678', 'type': 'nmdc:MetagenomeSequencing', 'was_informed_by': 'nmdc:dgns-11-12345678', 'has_output': ["nmdc:dobj-11-abcd1234"]})
         >>> m.ids_of_data_objects_to_update
         {'nmdc:dobj-11-abcd1234'}
         >>> m = Migrator()
         >>> m.ids_of_metatranscriptome_data_generation_with_no_output = {'nmdc:dgns-11-12345678'}
-        >>> m.scan_workflow_execution_set({'id': 'nmdc:wfnom-11-12345678', 'was_informed_by': 'nmdc:dgns-11-98765432', 'has_output': ["nmdc:dobj-11-abcd1234"]})
+        >>> m.scan_workflow_execution_set({'id': 'nmdc:wfmsa-11-12345678', 'type': 'nmdc:MetagenomeSequencing', 'was_informed_by': 'nmdc:dgns-11-98765432', 'has_output': ["nmdc:dobj-11-abcd1234"]})
         >>> m.ids_of_data_objects_to_update
         set()
         """
+        if workflow_execution.get("type") != "nmdc:MetagenomeSequencing":
+            return
+
         if "was_informed_by" in workflow_execution:
             data_generation_id = workflow_execution["was_informed_by"]
             if data_generation_id in self.ids_of_metatranscriptome_data_generation_with_no_output:
