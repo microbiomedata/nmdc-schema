@@ -1024,7 +1024,7 @@ classes:
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
         comments:
-          - This is the ID provided by GOLD that starts with 'GB'
+          - This is the ID provided by GOLD that starts with 'Gb'
         annotations:
           tooltip: Provide the GOLD biosample IDs associated with this biosample.
 
