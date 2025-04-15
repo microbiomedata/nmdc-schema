@@ -444,9 +444,7 @@ rules:
     slot_conditions:
       doi_category:
         name: doi_category
-        any_of:
-        - equals_string: dataset_doi
-        - equals_string: award_doi
+        equals_string: dataset_doi
   postconditions:
     slot_conditions:
       doi_provider:
@@ -454,7 +452,20 @@ rules:
         required: true
   description: If doi_category is a publication_doi, then doi_provider is not required.
     Otherwise, doi_provider is required.
-  title: dataset_award_dois_required
+  title: dataset_dois_require_provider
+- preconditions:
+    slot_conditions:
+      doi_category:
+        name: doi_category
+        equals_string: award_doi
+  postconditions:
+    slot_conditions:
+      doi_provider:
+        name: doi_provider
+        required: true
+  description: If doi_category is a publication_doi, then doi_provider is not required.
+    Otherwise, doi_provider is required.
+  title: award_dois_require_provider
 
 </code></pre>
 </details>
@@ -575,9 +586,7 @@ rules:
     slot_conditions:
       doi_category:
         name: doi_category
-        any_of:
-        - equals_string: dataset_doi
-        - equals_string: award_doi
+        equals_string: dataset_doi
   postconditions:
     slot_conditions:
       doi_provider:
@@ -585,7 +594,20 @@ rules:
         required: true
   description: If doi_category is a publication_doi, then doi_provider is not required.
     Otherwise, doi_provider is required.
-  title: dataset_award_dois_required
+  title: dataset_dois_require_provider
+- preconditions:
+    slot_conditions:
+      doi_category:
+        name: doi_category
+        equals_string: award_doi
+  postconditions:
+    slot_conditions:
+      doi_provider:
+        name: doi_provider
+        required: true
+  description: If doi_category is a publication_doi, then doi_provider is not required.
+    Otherwise, doi_provider is required.
+  title: award_dois_require_provider
 
 </code></pre>
 </details>
