@@ -161,3 +161,9 @@ slots:
     multivalued: true
     list_elements_ordered: true
     deprecated: "not used https://github.com/microbiomedata/nmdc-schema/issues/2336"
+  sample_state_information:
+    description: >-
+      The chemical phase of a pure sample, or the state of a mixed sample
+    range: SampleStateEnum
+    deprecated: "not used https://github.com/microbiomedata/nmdc-schema/issues/2353"
+    last_updated_on: "2025-04-15"

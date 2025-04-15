@@ -5637,11 +5637,6 @@ slots:
     - ORCID:0009-0001-1555-1601
     - ORCID:0000-0002-8683-0050
     range: QuantityValue
-  sample_state_information:
-    name: sample_state_information
-    description: The chemical phase of a pure sample, or the state of a mixed sample
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: SampleStateEnum
   known_as:
     name: known_as
     description: The substance from which a portion was taken.

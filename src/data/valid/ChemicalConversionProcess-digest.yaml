@@ -7,7 +7,6 @@ has_output:
 substances_used:
   - known_as: acetonitrile # see src/data/valid/Database-chemical_entity_set-1.yaml
     type: nmdc:PortionOfSubstance
-    sample_state_information: liquid
     substance_role: solvent
   - known_as: isopropyl_alcohol
     type: nmdc:PortionOfSubstance
