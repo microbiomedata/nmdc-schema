@@ -1815,13 +1815,6 @@ slots:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
 
-  sample_state_information:
-    description: >-
-      The chemical phase of a pure sample, or the state of a mixed sample
-    range: SampleStateEnum
-    deprecated: true
-    last_updated_on: "2025-03-04"
-
   known_as:
     range: ChemicalEntityEnum
     description: The substance from which a portion was taken.
