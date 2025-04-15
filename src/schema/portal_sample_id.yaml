@@ -30,7 +30,7 @@ slots:
     examples:
       - value: metagenomics; metabolomics; metaproteomics
     comments:
-      - MIxS:investigation_type was included as a see_also but that term doesnt' resolve any more
+      - MIxS:investigation_type was included as a `see_also` but that term doesn't resolve any more
     rank: 3
     multivalued: true
     slot_group: Sample ID
