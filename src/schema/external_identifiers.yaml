@@ -10,7 +10,7 @@ imports:
   - attribute_values # in cycle with basic_classes
 
 prefixes:
-  bioproject: 'https://identifiers.org/bioproject:'
+  bioproject: 'https://bioregistry.io/bioproject:'
   biosample: 'https://bioregistry.io/biosample:'
   emsl.project: 'https://bioregistry.io/emsl.project:'
   gnps.task: 'https://bioregistry.io/gnps.task:'

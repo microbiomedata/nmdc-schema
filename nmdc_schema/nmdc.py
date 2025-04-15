@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-04-09T15:01:10
+# Generation date: 2025-04-14T20:23:41
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -116,7 +116,7 @@ UBERON = CurieNamespace('UBERON', 'http://purl.obolibrary.org/obo/UBERON_')
 UO = CurieNamespace('UO', 'http://purl.obolibrary.org/obo/UO_')
 UNIPROTKB = CurieNamespace('UniProtKB', 'https://bioregistry.io/uniprot:')
 BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/vocab/')
-BIOPROJECT = CurieNamespace('bioproject', 'https://identifiers.org/bioproject:')
+BIOPROJECT = CurieNamespace('bioproject', 'https://bioregistry.io/bioproject:')
 BIOSAMPLE = CurieNamespace('biosample', 'https://bioregistry.io/biosample:')
 CAS = CurieNamespace('cas', 'https://bioregistry.io/cas:')
 DCTERMS = CurieNamespace('dcterms', 'http://purl.org/dc/terms/')

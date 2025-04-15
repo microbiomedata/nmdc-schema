@@ -150,7 +150,7 @@ prefixes:
     prefix_reference: http://purl.obolibrary.org/obo/UO_
   bioproject:
     prefix_prefix: bioproject
-    prefix_reference: 'https://identifiers.org/bioproject:'
+    prefix_reference: 'https://bioregistry.io/bioproject:'
   biosample:
     prefix_prefix: biosample
     prefix_reference: 'https://bioregistry.io/biosample:'

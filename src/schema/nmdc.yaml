@@ -62,7 +62,7 @@ prefixes:
   TIGRFAM: "https://bioregistry.io/tigrfam:" # https://bioregistry.io/tigrfam:TIGR00010
   UBERON: "http://purl.obolibrary.org/obo/UBERON_"
   UO: "http://purl.obolibrary.org/obo/UO_"
-  bioproject: "https://identifiers.org/bioproject:"
+  bioproject: "https://bioregistry.io/bioproject:"
   biosample: "https://bioregistry.io/biosample:"
   cas: "https://bioregistry.io/cas:"
   doi: "https://bioregistry.io/doi:"
