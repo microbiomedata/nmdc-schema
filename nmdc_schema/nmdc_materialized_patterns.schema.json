@@ -5801,7 +5801,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6097,7 +6097,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6648,7 +6648,7 @@
                 "in_manifest": {
                     "description": "one or more combinations of other DataObjects that can be analyzed together",
                     "items": {
-                        "pattern": "^^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -6702,7 +6702,7 @@
                             "type": "null"
                         }
                     ],
-                    "pattern": "^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
                 }
             },
@@ -7071,7 +7071,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -7656,7 +7656,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -8201,7 +8201,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -9048,7 +9048,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -9872,7 +9872,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -12242,7 +12242,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -12670,7 +12670,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -13302,7 +13302,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [
@@ -15093,7 +15093,7 @@
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
-                        "pattern": "^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "pattern": "^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                         "type": "string"
                     },
                     "type": [

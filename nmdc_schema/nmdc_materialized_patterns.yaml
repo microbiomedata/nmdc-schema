@@ -17402,9 +17402,9 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Instrument
     multivalued: true
-    pattern: ^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    pattern: ^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
     structured_pattern:
-      syntax: ^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
   in_manifest:
     name: in_manifest
@@ -17417,9 +17417,9 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Manifest
     multivalued: true
-    pattern: ^^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    pattern: ^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
     structured_pattern:
-      syntax: ^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
       interpolated: true
   manifest_category:
     name: manifest_category
@@ -18929,7 +18929,7 @@ slots:
     description: Select all the data types associated or available for this biosample
     title: analysis/data type
     comments:
-    - MIxS:investigation_type was included as a see_also but that term doesnt' resolve
+    - MIxS:investigation_type was included as a `see_also` but that term doesn't resolve
       any more
     examples:
     - value: metagenomics; metabolomics; metaproteomics
@@ -20723,7 +20723,7 @@ classes:
         description: Unique identifier for a biosample submitted to GOLD that matches
           the NMDC submitted biosample
         comments:
-        - This is the ID provided by GOLD that starts with 'GB'
+        - This is the ID provided by GOLD that starts with 'Gb'
       alternative_identifiers:
         name: alternative_identifiers
         description: Unique identifier for a biosample submitted to additional resources.
@@ -21934,9 +21934,9 @@ classes:
           interpolated: true
       was_generated_by:
         name: was_generated_by
-        pattern: ^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+        pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
-          syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
+          syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:DataObject
   DataGeneration:

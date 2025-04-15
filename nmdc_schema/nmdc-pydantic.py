@@ -4711,7 +4711,7 @@ class Biosample(Sample):
                                                        'comments': ['This is the ID '
                                                                     'provided by GOLD '
                                                                     'that starts with '
-                                                                    "'GB'"],
+                                                                    "'Gb'"],
                                                        'description': 'Unique '
                                                                       'identifier for '
                                                                       'a biosample '
@@ -5009,7 +5009,7 @@ class Biosample(Sample):
          'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Provide the GOLD biosample IDs '
                                               'associated with this biosample.'}},
-         'comments': ["This is the ID provided by GOLD that starts with 'GB'"],
+         'comments': ["This is the ID provided by GOLD that starts with 'Gb'"],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'gold:Gb0312930'}],
          'is_a': 'biosample_identifiers',
@@ -10916,8 +10916,8 @@ class Biosample(Sample):
          'slot_group': 'EMSL',
          'string_serialization': '{integer}'} })
     analysis_type: Optional[List[AnalysisTypeEnum]] = Field(None, title="analysis/data type", description="""Select all the data types associated or available for this biosample""", json_schema_extra = { "linkml_meta": {'alias': 'analysis_type',
-         'comments': ['MIxS:investigation_type was included as a see_also but that '
-                      "term doesnt' resolve any more"],
+         'comments': ['MIxS:investigation_type was included as a `see_also` but that '
+                      "term doesn't resolve any more"],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'metagenomics; metabolomics; metaproteomics'}],
          'rank': 3,
@@ -12128,7 +12128,7 @@ class MaterialProcessing(PlannedProcess):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12210,7 +12210,7 @@ class MaterialProcessing(PlannedProcess):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12298,7 +12298,7 @@ class Pooling(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", min_length=2, json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12382,7 +12382,7 @@ class Pooling(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12494,7 +12494,7 @@ class Extraction(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12578,7 +12578,7 @@ class Extraction(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12718,7 +12718,7 @@ class LibraryPreparation(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12802,7 +12802,7 @@ class LibraryPreparation(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -12934,7 +12934,7 @@ class SubSamplingProcess(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13018,7 +13018,7 @@ class SubSamplingProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13119,7 +13119,7 @@ class MixingProcess(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13202,7 +13202,7 @@ class MixingProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13322,7 +13322,7 @@ class FiltrationProcess(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13406,7 +13406,7 @@ class FiltrationProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13509,7 +13509,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13592,7 +13592,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13691,7 +13691,7 @@ class DissolvingProcess(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13775,7 +13775,7 @@ class DissolvingProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -13879,7 +13879,7 @@ class ChemicalConversionProcess(MaterialProcessing):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13963,7 +13963,7 @@ class ChemicalConversionProcess(MaterialProcessing):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15405,9 +15405,9 @@ class DataObject(InformationObject):
                                                       'syntax': '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'}},
                         'name': {'name': 'name', 'required': True},
                         'was_generated_by': {'name': 'was_generated_by',
-                                             'pattern': '^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                             'pattern': '^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                              'structured_pattern': {'interpolated': True,
-                                                                    'syntax': '^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}}}})
+                                                                    'syntax': '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}}}})
 
     compression_type: Optional[str] = Field(None, description="""If provided, specifies the compression type""", json_schema_extra = { "linkml_meta": {'alias': 'compression_type',
          'domain_of': ['DataObject'],
@@ -15437,7 +15437,7 @@ class DataObject(InformationObject):
                        'DataObject'],
          'mappings': ['prov:wasGeneratedBy'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}} })
     in_manifest: Optional[List[str]] = Field(None, description="""one or more combinations of other DataObjects that can be analyzed together""", json_schema_extra = { "linkml_meta": {'alias': 'in_manifest',
          'comments': ['A DataObject can be part of multiple manifests, for example, a '
                       'DataObject could be part of a manifest for a single run of an '
@@ -15445,7 +15445,7 @@ class DataObject(InformationObject):
                       'sample.'],
          'domain_of': ['DataObject'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -15514,7 +15514,7 @@ class DataObject(InformationObject):
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15526,7 +15526,7 @@ class DataObject(InformationObject):
 
     @field_validator('in_manifest')
     def pattern_in_manifest(cls, v):
-        pattern=re.compile(r"^^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15608,7 +15608,7 @@ class DataGeneration(PlannedProcess):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     mod_date: Optional[str] = Field(None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'mod_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     principal_investigator: Optional[PersonValue] = Field(None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
@@ -15706,7 +15706,7 @@ class DataGeneration(PlannedProcess):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15831,7 +15831,7 @@ class NucleotideSequencing(DataGeneration):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     mod_date: Optional[str] = Field(None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'mod_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     principal_investigator: Optional[PersonValue] = Field(None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
@@ -15967,7 +15967,7 @@ class NucleotideSequencing(DataGeneration):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -16094,7 +16094,7 @@ class MassSpectrometry(DataGeneration):
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     mod_date: Optional[str] = Field(None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'mod_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     principal_investigator: Optional[PersonValue] = Field(None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
@@ -16230,7 +16230,7 @@ class MassSpectrometry(DataGeneration):
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
-        pattern=re.compile(r"^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
