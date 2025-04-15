@@ -55,7 +55,7 @@
    "UO": "http://purl.obolibrary.org/obo/UO_",
    "UniProtKB": "https://bioregistry.io/uniprot:",
    "biolink": "https://w3id.org/biolink/vocab/",
-   "bioproject": "https://identifiers.org/bioproject:",
+   "bioproject": "https://bioregistry.io/bioproject:",
    "biosample": "https://bioregistry.io/biosample:",
    "cas": "https://bioregistry.io/cas:",
    "dcterms": "http://purl.org/dc/terms/",
