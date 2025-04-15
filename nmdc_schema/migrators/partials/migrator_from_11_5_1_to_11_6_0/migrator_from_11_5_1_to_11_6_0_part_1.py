@@ -5,7 +5,7 @@ class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
     _from_version = "11.5.1"
-    _to_version = "11.6.0"
+    _to_version = "11.6.0.part_1"
 
     def upgrade(self):
         r"""
