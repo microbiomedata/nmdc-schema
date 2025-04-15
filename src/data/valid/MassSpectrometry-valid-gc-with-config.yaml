@@ -1,0 +1,12 @@
+type: nmdc:MassSpectrometry
+id: nmdc:dgms-00-1234
+has_input:
+  - nmdc:procsm-00-1234
+analyte_category: metabolome
+associated_studies:
+  - nmdc:sty-00-1234
+#eluent_introduction_category: ['liquid_chromatography', 'gas_chromatography', 'direct_infusion_syringe', 'direct_infusion_autosampler']
+# If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required
+eluent_introduction_category: gas_chromatography
+has_chromatography_configuration: nmdc:chrcon-00-1234
+generates_calibration: nmdc:calib-00-1234

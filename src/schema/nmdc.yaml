@@ -186,15 +186,24 @@ classes:
           slot_conditions:
             generates_calibration:
               required: true
-      - title: has_chromatography_configuration_required_if_lc_or_gc
+      - title: has_chromatography_configuration_required_if_lc
         description: >-
-          If eluent_introduction_category is liquid_chromatography or gas_chromatography, then has_chromatography_configuration is required.
+          If eluent_introduction_category is liquid_chromatography, then has_chromatography_configuration is required.
         preconditions:
           slot_conditions:
             eluent_introduction_category:
-              any_of:
-                - equals_string: liquid_chromatography
-                - equals_string: gas_chromatography
+              equals_string: liquid_chromatography
+        postconditions:
+          slot_conditions:
+            has_chromatography_configuration:
+              required: true
+      - title: has_chromatography_configuration_required_if_gc
+        description: >-
+          If eluent_introduction_category is gas_chromatography, then has_chromatography_configuration is required.
+        preconditions:
+          slot_conditions:
+            eluent_introduction_category:
+              equals_string: gas_chromatography
         postconditions:
           slot_conditions:
             has_chromatography_configuration:
