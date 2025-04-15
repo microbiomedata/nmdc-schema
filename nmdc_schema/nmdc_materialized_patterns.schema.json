@@ -5945,6 +5945,20 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -7419,6 +7433,20 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -7716,7 +7744,8 @@
                 "RNA",
                 "metabolite",
                 "protein",
-                "lipid"
+                "lipid",
+                "natural organic matter"
             ],
             "title": "ExtractionTargetEnum",
             "type": "string"
@@ -12799,6 +12828,20 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -12914,6 +12957,20 @@
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
                 "name": {
                     "description": "A human readable label for an entity",
                     "type": [
@@ -12998,6 +13055,20 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
+                },
+                "is_obsolete": {
+                    "description": "A boolean value indicating whether the ontology term is obsolete.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "is_root": {
+                    "description": "A boolean value indicating whether the ontology term is a root term; it is not a subclass of  any other term.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -13516,138 +13587,6 @@
             ],
             "title": "ProtocolCategoryEnum",
             "type": "string"
-        },
-        "ProtocolExecution": {
-            "additionalProperties": false,
-            "description": "A PlannedProces that has PlannedProcess parts. Can be used to represent the case of someone following a Protocol.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "end_date": {
-                    "description": "The date on which any process or activity was ended",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "has_failure_categorization": {
-                    "items": {
-                        "$ref": "#/$defs/FailureCategorization"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_input": {
-                    "description": "An input to a process.",
-                    "items": {
-                        "pattern": "^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_output": {
-                    "description": "An output from a process.",
-                    "items": {
-                        "pattern": "^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_process_parts": {
-                    "description": "The MaterialProcessing steps that are discrete parts of the ProtocolExecution.",
-                    "items": {
-                        "pattern": "^(nmdc):(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^(nmdc):pex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "processing_institution": {
-                    "$ref": "#/$defs/ProcessingInstitutionEnum",
-                    "description": "The organization that processed the sample."
-                },
-                "protocol_execution_category": {
-                    "$ref": "#/$defs/ProtocolCategoryEnum"
-                },
-                "protocol_link": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Protocol"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "qc_comment": {
-                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "qc_status": {
-                    "$ref": "#/$defs/StatusEnum",
-                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
-                },
-                "start_date": {
-                    "description": "The date on which any process or activity was started",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:ProtocolExecution"
-                    ],
-                    "type": "string"
-                }
-            },
-            "required": [
-                "has_process_parts",
-                "protocol_execution_category",
-                "id",
-                "type"
-            ],
-            "title": "ProtocolExecution",
-            "type": "object"
         },
         "QuadPosEnum": {
             "description": "",

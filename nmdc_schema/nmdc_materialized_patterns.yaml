@@ -4431,6 +4431,8 @@ enums:
         text: protein
       lipid:
         text: lipid
+      natural organic matter:
+        text: natural organic matter
   ProcessingInstitutionEnum:
     name: ProcessingInstitutionEnum
     notes:
@@ -4981,15 +4983,6 @@ slots:
     mixins:
     - object_set
     range: Manifest
-  protocol_execution_set:
-    name: protocol_execution_set
-    description: This property links a database object to the set of protocol executions
-      within it.
-    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
-    from_schema: https://w3id.org/nmdc/nmdc
-    mixins:
-    - object_set
-    range: ProtocolExecution
   storage_process_set:
     name: storage_process_set
     description: This property links a database object to the set of storage processes
@@ -5043,21 +5036,6 @@ slots:
     - ORCID:0009-0001-1555-1601
     - ORCID:0000-0002-8683-0050
     range: QuantityValue
-  protocol_execution_category:
-    name: protocol_execution_category
-    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ProtocolCategoryEnum
-    required: true
-  has_process_parts:
-    name: has_process_parts
-    description: A list of process parts that make up a protocol.
-    deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2336
-    from_schema: https://w3id.org/nmdc/nmdc
-    list_elements_ordered: true
-    range: PlannedProcess
-    required: true
-    multivalued: true
   filter_material:
     name: filter_material
     description: A porous material on which solid particles present in air or other
@@ -8856,7 +8834,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - broad-scale environmental context
-    is_a: environment field
+    is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000012
     range: ControlledIdentifiedTermValue
@@ -8890,7 +8868,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - local environmental context
-    is_a: environment field
+    is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000013
     range: ControlledIdentifiedTermValue
@@ -8924,7 +8902,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - environmental medium
-    is_a: environment field
+    is_a: mixs_env_triad_field
     string_serialization: '{termLabel} {[termID]}'
     slot_uri: MIXS:0000014
     range: ControlledIdentifiedTermValue
@@ -17230,6 +17208,9 @@ slots:
     name: sequencing field
     from_schema: https://w3id.org/nmdc/nmdc
     abstract: true
+  mixs_env_triad_field:
+    name: mixs_env_triad_field
+    from_schema: https://w3id.org/nmdc/nmdc
   associated_studies:
     name: associated_studies
     description: The study associated with a resource.
@@ -17345,6 +17326,33 @@ slots:
     range: CreditEnum
     required: true
     multivalued: true
+  definition:
+    name: definition
+    description: The definition of the ontology term as provided by the ontology.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  relations:
+    name: relations
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: OntologyRelation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  is_obsolete:
+    name: is_obsolete
+    description: A boolean value indicating whether the ontology term is obsolete.
+    comments:
+    - If true (the ontology term is declared obsolete via the ontology source itself),  the
+      term is no longer considered a valid term to use in an annotation at NMDC, and
+      it no longer has ontology_relation_set records.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
+  is_root:
+    name: is_root
+    description: A boolean value indicating whether the ontology term is a root term;
+      it is not a subclass of  any other term.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
   has_input:
     name: has_input
     description: An input to a process.
@@ -19649,45 +19657,6 @@ classes:
           syntax: '{id_nmdc_prefix}:clsite-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:CollectingBiosamplesFromSite
-  ProtocolExecution:
-    name: ProtocolExecution
-    description: A PlannedProces that has PlannedProcess parts. Can be used to represent
-      the case of someone following a Protocol.
-    deprecated: not used, not fulfilling intended purpose https://github.com/microbiomedata/nmdc-schema/issues/2336
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: PlannedProcess
-    slots:
-    - has_process_parts
-    - protocol_execution_category
-    slot_usage:
-      id:
-        name: id
-        required: true
-        pattern: ^(nmdc):pex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:pex-{id_shoulder}-{id_blade}$'
-          interpolated: true
-      has_input:
-        name: has_input
-        pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
-          interpolated: true
-      has_output:
-        name: has_output
-        pattern: ^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'
-          interpolated: true
-      has_process_parts:
-        name: has_process_parts
-        description: The MaterialProcessing steps that are discrete parts of the ProtocolExecution.
-        required: true
-        pattern: ^(nmdc):(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:(extrp|filtpr|dispro|poolp|libprp|subspr|mixpro|chcpr|cspro)-{id_shoulder}-{id_blade}$'
-          interpolated: true
-    class_uri: nmdc:ProtocolExecution
   SubSamplingProcess:
     name: SubSamplingProcess
     description: 'Separating a sample aliquot from the starting material for downstream
@@ -21564,6 +21533,10 @@ classes:
     is_a: NamedThing
     slots:
     - alternative_names
+    - relations
+    - definition
+    - is_obsolete
+    - is_root
     slot_usage:
       id:
         name: id
@@ -21571,19 +21544,6 @@ classes:
         - The identifiers for terms from external ontologies can't have their ids
           constrained to the nmdc namespace
         pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-    attributes:
-      definition:
-        name: definition
-        description: The definition of the ontology term as provided by the ontology.
-        from_schema: https://w3id.org/nmdc/basic_classes
-        range: string
-      relations:
-        name: relations
-        from_schema: https://w3id.org/nmdc/basic_classes
-        range: OntologyRelation
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
     class_uri: nmdc:OntologyClass
   OntologyRelation:
     name: OntologyRelation

@@ -641,19 +641,38 @@ enums:
         description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
       
       Metagenome Raw Reads:
-        description: Interleaved paired-end raw sequencing data
+        description: Interleaved paired-end raw metagenome sequencing data
         annotations:
           file_name_pattern: '^\.fastq(\.gz)?$'
 
       Metagenome Raw Read 1:
-        description: Read 1 raw sequencing data, aka forward reads
+        description: Read 1 raw metagenome sequencing data, aka forward reads
         examples:
           value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
         annotations:
           file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
 
       Metagenome Raw Read 2:
-        description: Read 2 raw sequencing data, aka reverse reads
+        description: Read 2 raw metagenome sequencing data, aka reverse reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
+
+      Metatranscriptome Raw Reads:
+        description: Interleaved paired-end raw metatranscriptome sequencing data
+        annotations:
+          file_name_pattern: '^\.fastq(\.gz)?$'
+
+      Metatranscriptome Raw Read 1:
+        description: Read 1 raw metatranscriptome sequencing data, aka forward reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
+
+      Metatranscriptome Raw Read 2:
+        description: Read 2 raw metatranscriptome sequencing data, aka reverse reads
         examples:
           value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
         annotations:
@@ -664,6 +683,9 @@ enums:
 
       GC-MS Metabolomics Results:
         description: GC-MS-based metabolite assignment results table
+
+      LC-MS Metabolomics Results:
+        description: LC-MS-based metabolite assignment results table
 
       Metaproteomics Workflow Statistics:
         description: Aggregate workflow statistics file
@@ -981,6 +1003,10 @@ enums:
       LC-MS Lipidomics Processed Data:
         description: >-
           Processed data for the LC-MS-based lipidomics analysis in hdf5 format
+      
+      LC-MS Metabolomics Processed Data:
+        description: >-
+          Processed data for the LC-MS-based metabolomics analysis in hdf5 format
 
       Contaminants Amino Acid FASTA:
         description: FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
@@ -1145,6 +1171,7 @@ enums:
       metabolite: { }
       protein: { }
       lipid: { }
+      natural organic matter: { }
 
   ProcessingInstitutionEnum:
     notes:

@@ -39,16 +39,10 @@ classes:
     is_a: NamedThing
     slots:
       - alternative_names
-    attributes:
-      definition:
-        range: string
-        description: >-
-          The definition of the ontology term as provided by the ontology.
-      relations:
-        range: OntologyRelation
-        multivalued: true
-        inlined_as_list: true
-        inlined: true
+      - relations
+      - definition
+      - is_obsolete
+      - is_root
     slot_usage:
       id:
         pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
@@ -362,9 +356,17 @@ classes:
         structured_pattern:
           syntax: "^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: DataEmitterProcess
+  DataEmitterProcess:
+    class_uri: nmdc:DataEmitterProcess
+    is_a: PlannedProcess
+    abstract: true
+    description: >-
+      A process that generates data objects as output.
+  
   DataGeneration:
     class_uri: nmdc:DataGeneration
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     abstract: true
     aliases:
       - OmicsProcessing
@@ -411,7 +413,7 @@ classes:
   WorkflowExecution:
     abstract: true
     class_uri: nmdc:WorkflowExecution
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     aliases:
       - analysis
     comments:
@@ -461,10 +463,12 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: DataObject
       has_output:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated: true
+        range: DataObject
       execution_resource:
         required: true
       was_informed_by:
@@ -500,12 +504,9 @@ slots:
     range: PersonValue
     description: Principal Investigator who led the study and/or generated the dataset.
   was_generated_by:
-    range: WorkflowExecution
+    range: DataEmitterProcess
     mappings:
       - prov:wasGeneratedBy
-    any_of:
-      - range: WorkflowExecution
-      - range: DataGeneration
   associated_dois:
     description: A list of DOIs associated with a resource, such as a list of DOIS associated with a Study.
     aliases:
@@ -558,6 +559,28 @@ slots:
       tooltip: >-
         Identify all CRediT roles associated with this contributor. CRediT Information: https://info.orcid.org/credit-for-research-contribution ; CRediT: https://credit.niso.org/
 
+  definition:
+    range: string
+    description: >-
+      The definition of the ontology term as provided by the ontology.
+  relations:
+    range: OntologyRelation
+    multivalued: true
+    inlined_as_list: true
+    inlined: true
+  is_obsolete:
+    range: boolean
+    description: >-
+      A boolean value indicating whether the ontology term is obsolete.
+    comments: >-
+      If true (the ontology term is declared obsolete via the ontology source itself), 
+      the term is no longer considered a valid term to use in an annotation at NMDC,
+      and it no longer has ontology_relation_set records.
+  is_root:
+    range: boolean
+    description: >-
+      A boolean value indicating whether the ontology term is a root term; it is not a subclass of 
+      any other term.
   has_input:
     aliases:
       - input
@@ -577,6 +600,9 @@ slots:
     range: Instrument
     multivalued: true
     description: What instrument was used during DataGeneration or MaterialProcessing.
+    structured_pattern:
+      syntax: "^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
+      interpolated: true
 
   in_manifest:
     range: Manifest

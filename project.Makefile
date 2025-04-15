@@ -36,7 +36,7 @@ shuttle-clean:
 	touch local/mixs_regen/.gitkeep
 
 
-src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml
+src/schema/mixs.yaml: shuttle-clean local/mixs_regen/mixs_subset_modified_inj_mixs_env_triad_field_slot.yaml
 	mv $(word 2,$^) $@
 	rm -rf local/mixs_regen/mixs_subset_modified.yaml.bak
 
@@ -90,6 +90,13 @@ local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml: local
 assets/other_mixs_yaml_files/nmdc_mixs_env_triad_tooltips.yaml
 	yq eval-all \
 		'select(fileIndex==0).slots.env_medium.annotations.tooltip = select(fileIndex==1).slots.env_medium.annotations.tooltip | select(fileIndex==0)' \
+		$^ | cat > $@
+
+
+local/mixs_regen/mixs_subset_modified_inj_mixs_env_triad_field_slot.yaml: local/mixs_regen/mixs_subset_modified_inj_env_medium_alt_description.yaml \
+assets/other_mixs_yaml_files/mixs_env_triad_field_slot.yaml
+	yq eval-all \
+		'select(fileIndex==0).slots.mixs_env_triad_field = select(fileIndex==1).slots.mixs_env_triad_field | select(fileIndex==0)' \
 		$^ | cat > $@
 
 examples/output: nmdc_schema/nmdc_materialized_patterns.yaml
