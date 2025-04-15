@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: sample_state_information - NMDC Schema Documentation</title>
+        <title>Slot: sample_state_information (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-sample_state_information" class="md-skip">
+        <a href="#slot-sample_state_information-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: sample_state_information
+              Slot: sample_state_information (DEPRECATED)
             
           </span>
         </div>
@@ -504,15 +504,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#properties" class="md-nav__link">
     <span class="md-ellipsis">
       Properties
@@ -582,28 +573,11 @@
   
 
 
-<h1 id="slot-sample_state_information">Slot: sample_state_information</h1>
+<h1 id="slot-sample_state_information-deprecated">Slot: sample_state_information  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p><em>The chemical phase of a pure sample, or the state of a mixed sample</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/sample_state_information">nmdc:sample_state_information</a></p>
 <!-- no inheritance hierarchy -->
 
-<h2 id="applicable-classes">Applicable Classes</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Modifies Slot</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
-<td>A portion of any matter of defined composition that has discrete existence, w...</td>
-<td>no</td>
-</tr>
-</tbody>
-</table>
 <h2 id="properties">Properties</h2>
 <ul>
 <li>Range: <a href="../SampleStateEnum/">SampleStateEnum</a></li>
@@ -633,11 +607,11 @@
 
 <pre><code class="language-yaml">name: sample_state_information
 description: The chemical phase of a pure sample, or the state of a mixed sample
+deprecated: not used https://github.com/microbiomedata/nmdc-schema/issues/2353
 from_schema: https://w3id.org/nmdc/nmdc
+last_updated_on: '2025-04-15T00:00:00'
 rank: 1000
 alias: sample_state_information
-domain_of:
-- PortionOfSubstance
 range: SampleStateEnum
 
 </code></pre>

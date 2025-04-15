@@ -328,11 +328,6 @@
       PortionOfSubstance --&gt; "0..1" QuantityValue : mass
     click QuantityValue href "../QuantityValue"
 
-  PortionOfSubstance : sample_state_information
-
-      PortionOfSubstance --&gt; "0..1" SampleStateEnum : sample_state_information
-    click SampleStateEnum href "../SampleStateEnum"
-
   PortionOfSubstance : source_concentration
 
       PortionOfSubstance --&gt; "0..1" QuantityValue : source_concentration
@@ -375,12 +370,6 @@
 <td><a href="../mass/">mass</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>A physical quality that inheres in a bearer by virtue of the proportion of th...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sample_state_information/">sample_state_information</a></td>
-<td>0..1 <br/> <a href="../SampleStateEnum/">SampleStateEnum</a></td>
-<td>The chemical phase of a pure sample, or the state of a mixed sample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -492,7 +481,6 @@ mappings:
 slots:
 - final_concentration
 - mass
-- sample_state_information
 - source_concentration
 - known_as
 - substance_role
@@ -539,16 +527,6 @@ attributes:
     - SubSamplingProcess
     - PortionOfSubstance
     range: QuantityValue
-  sample_state_information:
-    name: sample_state_information
-    description: The chemical phase of a pure sample, or the state of a mixed sample
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    alias: sample_state_information
-    owner: PortionOfSubstance
-    domain_of:
-    - PortionOfSubstance
-    range: SampleStateEnum
   source_concentration:
     name: source_concentration
     description: When solutions A (containing substance X) and B are combined together,
