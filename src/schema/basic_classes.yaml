@@ -483,6 +483,7 @@ classes:
         required: true
       was_informed_by:
         required: true
+        multivalued: true
 slots:
   associated_studies:
     description: The study associated with a resource.
