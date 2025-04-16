@@ -4,8 +4,8 @@ title: Subsets for NMDC Schema
 id: https://w3id.org/nmdc/nmdc_subsets
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
 default_prefix: nmdc
 default_range: string
 subsets:

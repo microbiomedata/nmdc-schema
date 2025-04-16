@@ -125,6 +125,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/FBcv_'},
                   'FMA': {'prefix_prefix': 'FMA',
                           'prefix_reference': 'http://purl.obolibrary.org/obo/FMA_'},
+                  'GENEPIO': {'prefix_prefix': 'GENEPIO',
+                              'prefix_reference': 'http://purl.obolibrary.org/obo/GENEPIO_'},
                   'GO': {'prefix_prefix': 'GO',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/GO_'},
                   'HMDB': {'prefix_prefix': 'HMDB',
@@ -165,6 +167,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/NCIT_'},
                   'OBI': {'prefix_prefix': 'OBI',
                           'prefix_reference': 'http://purl.obolibrary.org/obo/OBI_'},
+                  'OMIT': {'prefix_prefix': 'OMIT',
+                           'prefix_reference': 'http://purl.obolibrary.org/obo/OMIT_'},
                   'ORCID': {'prefix_prefix': 'ORCID',
                             'prefix_reference': 'https://orcid.org/'},
                   'PANTHER.FAMILY': {'prefix_prefix': 'PANTHER.FAMILY',
@@ -206,7 +210,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'biolink': {'prefix_prefix': 'biolink',
                               'prefix_reference': 'https://w3id.org/biolink/vocab/'},
                   'bioproject': {'prefix_prefix': 'bioproject',
-                                 'prefix_reference': 'https://identifiers.org/bioproject:'},
+                                 'prefix_reference': 'https://bioregistry.io/bioproject:'},
                   'biosample': {'prefix_prefix': 'biosample',
                                 'prefix_reference': 'https://bioregistry.io/biosample:'},
                   'cas': {'prefix_prefix': 'cas',
@@ -217,6 +221,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                           'prefix_reference': 'https://bioregistry.io/doi:'},
                   'edam.data': {'prefix_prefix': 'edam.data',
                                 'prefix_reference': 'http://edamontology.org/data_'},
+                  'edam.format': {'prefix_prefix': 'edam.format',
+                                  'prefix_reference': 'http://edamontology.org/format_'},
                   'emsl': {'prefix_prefix': 'emsl',
                            'prefix_reference': 'http://example.org/emsl_in_mongodb/'},
                   'emsl.project': {'prefix_prefix': 'emsl.project',
@@ -235,6 +241,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'https://app.geosamples.org/sample/igsn/'},
                   'img.taxon': {'prefix_prefix': 'img.taxon',
                                 'prefix_reference': 'https://bioregistry.io/img.taxon:'},
+                  'insdc.sra': {'prefix_prefix': 'insdc.sra',
+                                'prefix_reference': 'https://bioregistry.io/insdc.sra:'},
                   'jgi': {'prefix_prefix': 'jgi',
                           'prefix_reference': 'http://example.org/jgi/'},
                   'jgi.analysis': {'prefix_prefix': 'jgi.analysis',
@@ -245,6 +253,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                            'prefix_reference': 'https://bioregistry.io/kegg:'},
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
+                  'mgnify.analysis': {'prefix_prefix': 'mgnify.analysis',
+                                      'prefix_reference': 'https://bioregistry.io/mgnify.analysis:'},
                   'mgnify.proj': {'prefix_prefix': 'mgnify.proj',
                                   'prefix_reference': 'https://bioregistry.io/mgnify.proj:'},
                   'my_emsl': {'prefix_prefix': 'my_emsl',
@@ -265,6 +275,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                           'prefix_reference': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'},
                   'rdfs': {'prefix_prefix': 'rdfs',
                            'prefix_reference': 'http://www.w3.org/2000/01/rdf-schema#'},
+                  'ror': {'prefix_prefix': 'ror',
+                          'prefix_reference': 'https://bioregistry.io/ror:'},
                   'schema': {'prefix_prefix': 'schema',
                              'prefix_reference': 'http://schema.org/'},
                   'shex': {'prefix_prefix': 'shex',
@@ -2066,6 +2078,8 @@ class FileTypeEnum(str, Enum):
     FT_ICR_MS_Analysis_Results = "FT ICR-MS Analysis Results"
     # GC-MS-based metabolite assignment results table
     GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
+    # LC-MS-based metabolite assignment results table
+    LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
     # Aggregate workflow statistics file
     Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
     # Filtered protein report file
@@ -2210,6 +2224,8 @@ class FileTypeEnum(str, Enum):
     LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
     # Processed data for the LC-MS-based lipidomics analysis in hdf5 format
     LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
+    # Processed data for the LC-MS-based metabolomics analysis in hdf5 format
+    LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
     # FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
     Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
     # A configuration file used by a single computational software tool that stores settings that are specific to that tool.
@@ -2412,8 +2428,7 @@ class EukEval(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -2425,12 +2440,12 @@ class EukEval(ConfiguredBaseModel):
     completeness: Optional[float] = Field(None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'completeness', 'domain_of': ['EukEval', 'MagBin']} })
     contamination: Optional[float] = Field(None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'contamination', 'domain_of': ['EukEval', 'MagBin']} })
     ncbi_lineage_tax_ids: Optional[str] = Field(None, description="""Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)""", json_schema_extra = { "linkml_meta": {'alias': 'ncbi_lineage_tax_ids',
-         'comments': ['Example 1-131567-2759-2611352-33682-191814-2603949'],
-         'domain_of': ['EukEval']} })
+         'domain_of': ['EukEval'],
+         'examples': [{'value': '1-131567-2759-2611352-33682-191814-2603949'}]} })
     ncbi_lineage: Optional[str] = Field(None, description="""Comma delimited ordered list of NCBI taxonomy names.""", json_schema_extra = { "linkml_meta": {'alias': 'ncbi_lineage',
-         'comments': ['Example root,cellular '
-                      'organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae'],
-         'domain_of': ['EukEval']} })
+         'domain_of': ['EukEval'],
+         'examples': [{'value': 'root,cellular '
+                                'organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae'}]} })
 
     @field_validator('ncbi_lineage_tax_ids')
     def pattern_ncbi_lineage_tax_ids(cls, v):
@@ -2490,8 +2505,7 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -2611,8 +2625,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -2669,8 +2682,7 @@ class PortionOfSubstance(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -2699,42 +2711,44 @@ class MagBin(ConfiguredBaseModel):
     gtdbtk_class: Optional[str] = Field(None, description="""Taxonomic class assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_class',
          'domain_of': ['MagBin'],
          'exact_mappings': ['NCBITaxon:class'],
-         'see_also': ['https://doi.org/10.1093/bioinformatics/btz848']} })
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_domain: Optional[str] = Field(None, description="""Taxonomic domain assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_domain',
          'domain_of': ['MagBin'],
          'exact_mappings': ['NCBITaxon:superkingdom'],
-         'see_also': ['https://doi.org/10.1093/bioinformatics/btz848']} })
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_family: Optional[str] = Field(None, description="""Taxonomic family assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_family',
          'domain_of': ['MagBin'],
          'exact_mappings': ['NCBITaxon:family'],
-         'see_also': ['https://doi.org/10.1093/bioinformatics/btz848']} })
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_genus: Optional[str] = Field(None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_genus',
          'domain_of': ['MagBin'],
          'exact_mappings': ['NCBITaxon:genus'],
-         'see_also': ['https://doi.org/10.1093/bioinformatics/btz848']} })
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_order: Optional[str] = Field(None, description="""Taxonomic order assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_order',
          'domain_of': ['MagBin'],
          'exact_mappings': ['NCBITaxon:order'],
-         'see_also': ['https://doi.org/10.1093/bioinformatics/btz848']} })
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_phylum: Optional[str] = Field(None, description="""Taxonomic phylum assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_phylum',
          'domain_of': ['MagBin'],
          'exact_mappings': ['NCBITaxon:phylum'],
-         'see_also': ['https://doi.org/10.1093/bioinformatics/btz848']} })
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_species: Optional[str] = Field(None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_species',
          'domain_of': ['MagBin'],
          'exact_mappings': ['NCBITaxon:species'],
-         'see_also': ['https://doi.org/10.1093/bioinformatics/btz848']} })
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     members_id: Optional[List[str]] = Field(None, description="""Names of the contigs that make up a metagenome-assembled genome.""", json_schema_extra = { "linkml_meta": {'alias': 'members_id',
          'close_mappings': ['GENEPIO:0100596'],
          'domain_of': ['MagBin']} })
     num_16s: Optional[int] = Field(None, description="""Number of 16s sequences detected, a subunit of prokaryotic ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_16s',
-         'broad_mappings': ['NCIT:C105370'],
+         'broad_mappings': ['OMIT:0013243'],
          'domain_of': ['MagBin']} })
     num_23s: Optional[int] = Field(None, description="""Number of 23 seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_23s',
          'broad_mappings': ['OMIT:0013245'],
          'domain_of': ['MagBin']} })
     num_5s: Optional[int] = Field(None, description="""Number of 5s seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_5s', 'broad_mappings': ['OMIT:0013248'], 'domain_of': ['MagBin']} })
-    num_t_rna: Optional[int] = Field(None, description="""Number of transfer transfer RNAs.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_t_rna', 'broad_mappings': ['NCIT:C816'], 'domain_of': ['MagBin']} })
+    num_t_rna: Optional[int] = Field(None, description="""Number of transfer transfer RNAs.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_t_rna',
+         'broad_mappings': ['OMIT:0013250'],
+         'domain_of': ['MagBin']} })
     number_of_contig: Optional[int] = Field(None, description="""Number of contigs""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'number_of_contig',
          'domain_of': ['MagBin'],
          'exact_mappings': ['GENEPIO:0000093']} })
@@ -2757,8 +2771,7 @@ class MagBin(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -2801,8 +2814,7 @@ class MetaboliteIdentification(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -2843,9 +2855,9 @@ class GenomeFeature(ConfiguredBaseModel):
                    'reasonable domain for this slot']} })
     end: int = Field(..., description="""The end of the feature in positive 1-based integer coordinates""", ge=1, json_schema_extra = { "linkml_meta": {'alias': 'end',
          'close_mappings': ['biolink:end_interbase_coordinate'],
-         'comments': ['- "constraint: end > start" - "For features that cross the '
-                      'origin of a circular feature,  end = the position of the end + '
-                      'the length of the landmark feature."'],
+         'comments': ['- "unenforced constraint: end > start" - "For features that '
+                      'cross the origin of a circular feature,  end = the position of '
+                      'the end + the length of the landmark feature."'],
          'domain_of': ['GenomeFeature'],
          'is_a': 'gff_coordinate'} })
     feature_type: Optional[str] = Field(None, description="""TODO: Yuri to write""", json_schema_extra = { "linkml_meta": {'alias': 'feature_type', 'domain_of': ['GenomeFeature']} })
@@ -2854,7 +2866,7 @@ class GenomeFeature(ConfiguredBaseModel):
          'exact_mappings': ['biolink:phase']} })
     seqid: str = Field(..., description="""The ID of the landmark used to establish the coordinate system for the current feature.""", json_schema_extra = { "linkml_meta": {'alias': 'seqid',
          'domain_of': ['GenomeFeature'],
-         'todos': ['change range from string to object']} })
+         'todos': ['change range from string to a object like uriorcurie?']} })
     start: int = Field(..., description="""The start of the feature in positive 1-based integer coordinates""", ge=1, json_schema_extra = { "linkml_meta": {'alias': 'start',
          'close_mappings': ['biolink:start_interbase_coordinate'],
          'domain_of': ['GenomeFeature'],
@@ -2881,8 +2893,7 @@ class GenomeFeature(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -2908,11 +2919,9 @@ class FunctionalAnnotation(ConfiguredBaseModel):
                                          'notes': ['Still missing patterns for COG and '
                                                    'RetroRules',
                                                    'These patterns are not yet tied to '
-                                                   'the listed prefixes. A discussion '
-                                                   'about that possibility had been '
-                                                   'started, including the question of '
-                                                   'whether these lists are intended '
-                                                   'to be open examples or closed']},
+                                                   'the listed prefixes.',
+                                                   'Are these lists are intended to be '
+                                                   'open examples or closed?']},
                         'was_generated_by': {'description': 'provenance for the '
                                                             'annotation.',
                                              'name': 'was_generated_by',
@@ -2928,10 +2937,8 @@ class FunctionalAnnotation(ConfiguredBaseModel):
     has_function: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'has_function',
          'domain_of': ['FunctionalAnnotation'],
          'notes': ['Still missing patterns for COG and RetroRules',
-                   'These patterns are not yet tied to the listed prefixes. A '
-                   'discussion about that possibility had been started, including the '
-                   'question of whether these lists are intended to be open examples '
-                   'or closed']} })
+                   'These patterns are not yet tied to the listed prefixes.',
+                   'Are these lists are intended to be open examples or closed?']} })
     subject: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'subject', 'domain_of': ['FunctionalAnnotation', 'OntologyRelation']} })
     was_generated_by: Optional[str] = Field(None, description="""provenance for the annotation.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
          'any_of': [{'range': 'WorkflowExecution'}, {'range': 'DataGeneration'}],
@@ -2961,8 +2968,7 @@ class FunctionalAnnotation(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3026,8 +3032,7 @@ class AttributeValue(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3087,8 +3092,7 @@ class QuantityValue(AttributeValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3131,8 +3135,7 @@ class ImageValue(AttributeValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3232,8 +3235,7 @@ class PersonValue(AttributeValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3282,8 +3284,7 @@ class TextValue(AttributeValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3299,8 +3300,7 @@ class TimestampValue(AttributeValue):
     A value that is a timestamp. The range should be ISO-8601
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:TimestampValue',
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'notes': ['removed the following slots: year, month, day']})
+         'from_schema': 'https://w3id.org/nmdc/nmdc'})
 
     has_raw_value: Optional[str] = Field(None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/TimestampValue","nmdc:TimestampValue"] = Field("nmdc:TimestampValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
@@ -3321,8 +3321,7 @@ class TimestampValue(AttributeValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3341,9 +3340,7 @@ class ControlledTermValue(AttributeValue):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'todos': ['add fields for ontology, branch']})
 
-    term: Optional[Union[OntologyClass,EnvironmentalMaterialTerm,ChemicalEntity,FunctionalAnnotationTerm,Pathway,OrthologyGroup]] = Field(None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term',
-         'domain_of': ['ControlledTermValue'],
-         'notes': ["removed 'slot_uri: rdf:type'"]} })
+    term: Optional[Union[OntologyClass,EnvironmentalMaterialTerm,ChemicalEntity,FunctionalAnnotationTerm,Pathway,OrthologyGroup]] = Field(None, description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term', 'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledTermValue","nmdc:ControlledTermValue"] = Field("nmdc:ControlledTermValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
@@ -3363,8 +3360,7 @@ class ControlledTermValue(AttributeValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3381,12 +3377,9 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:ControlledIdentifiedTermValue',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'notes': ['To be used for slots like env_broad_scale'],
          'slot_usage': {'term': {'name': 'term', 'required': True}}})
 
-    term: Union[OntologyClass,EnvironmentalMaterialTerm,ChemicalEntity,FunctionalAnnotationTerm,Pathway,OrthologyGroup] = Field(..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term',
-         'domain_of': ['ControlledTermValue'],
-         'notes': ["removed 'slot_uri: rdf:type'"]} })
+    term: Union[OntologyClass,EnvironmentalMaterialTerm,ChemicalEntity,FunctionalAnnotationTerm,Pathway,OrthologyGroup] = Field(..., description="""pointer to an ontology class""", json_schema_extra = { "linkml_meta": {'alias': 'term', 'domain_of': ['ControlledTermValue']} })
     has_raw_value: Optional[str] = Field(None, description="""The value that was specified for an annotation in raw form, i.e. a string. E.g. \"2 cm\" or \"2-4 cm\"""", json_schema_extra = { "linkml_meta": {'alias': 'has_raw_value', 'domain_of': ['AttributeValue']} })
     type: Literal["https://w3id.org/nmdc/ControlledIdentifiedTermValue","nmdc:ControlledIdentifiedTermValue"] = Field("nmdc:ControlledIdentifiedTermValue", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
          'designates_type': True,
@@ -3406,8 +3399,7 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3425,7 +3417,6 @@ class GeolocationValue(AttributeValue):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:GeolocationValue',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'mappings': ['schema:GeoCoordinates'],
-         'notes': ["what did 'to_str: {latitude} {longitude}' mean?"],
          'slot_usage': {'has_raw_value': {'description': 'The raw value for a '
                                                          'geolocation should follow '
                                                          '{latitude} {longitude}',
@@ -3462,8 +3453,7 @@ class GeolocationValue(AttributeValue):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3524,8 +3514,7 @@ class NamedThing(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3613,8 +3602,7 @@ class GeneProduct(NamedThing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3710,8 +3698,7 @@ class OntologyClass(NamedThing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3800,8 +3787,7 @@ class EnvironmentalMaterialTerm(OntologyClass):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3904,8 +3890,7 @@ class ChemicalEntity(OntologyClass):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -3947,11 +3932,7 @@ class FunctionalAnnotationTerm(OntologyClass):
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'abstract': True,
          'aliases': ['function', 'FunctionalAnnotation'],
          'class_uri': 'nmdc:FunctionalAnnotationTerm',
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'todos': ['decide if this should be used for product naming (Duncan, '
-                   '2021-04-02)',
-                   'Retaining this even after removing Reaction. See todos on the '
-                   'Pathway and OrthologyGroup subclasses.']})
+         'from_schema': 'https://w3id.org/nmdc/nmdc'})
 
     alternative_names: Optional[List[str]] = Field(None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'domain_of': ['OntologyClass', 'Study'],
@@ -4001,8 +3982,7 @@ class FunctionalAnnotationTerm(OntologyClass):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -4101,8 +4081,7 @@ class Pathway(FunctionalAnnotationTerm):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -4203,8 +4182,7 @@ class OrthologyGroup(FunctionalAnnotationTerm):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -4284,8 +4262,7 @@ class OntologyRelation(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -4329,8 +4306,7 @@ class FailureCategorization(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -4390,8 +4366,7 @@ class MaterialEntity(NamedThing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -4476,8 +4451,7 @@ class Sample(MaterialEntity):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -4737,7 +4711,7 @@ class Biosample(Sample):
                                                        'comments': ['This is the ID '
                                                                     'provided by GOLD '
                                                                     'that starts with '
-                                                                    "'GB'"],
+                                                                    "'Gb'"],
                                                        'description': 'Unique '
                                                                       'identifier for '
                                                                       'a biosample '
@@ -5035,9 +5009,9 @@ class Biosample(Sample):
          'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Provide the GOLD biosample IDs '
                                               'associated with this biosample.'}},
-         'comments': ["This is the ID provided by GOLD that starts with 'GB'"],
+         'comments': ["This is the ID provided by GOLD that starts with 'Gb'"],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://bioregistry.io/gold:Gb0312930'}],
+         'examples': [{'value': 'gold:Gb0312930'}],
          'is_a': 'biosample_identifiers',
          'mixins': ['gold_identifiers']} })
     insdc_biosample_identifiers: Optional[List[str]] = Field(None, description="""identifiers for corresponding sample in INSDC""", json_schema_extra = { "linkml_meta": {'alias': 'insdc_biosample_identifiers',
@@ -5045,10 +5019,10 @@ class Biosample(Sample):
                      'NCBI biosample identifiers',
                      'DDBJ biosample identifiers'],
          'domain_of': ['Biosample'],
-         'examples': [{'value': 'https://bioregistry.io/biosample:SAMEA5989477'},
+         'examples': [{'value': 'biosample:SAMEA5989477'},
                       {'description': 'I13_N_5-10 sample from Soil fungal diversity '
                                       'along elevational gradients',
-                       'value': 'https://bioregistry.io/biosample:SAMD00212331'}],
+                       'value': 'biosample:SAMD00212331'}],
          'is_a': 'biosample_identifiers',
          'mixins': ['insdc_identifiers'],
          'see_also': ['https://github.com/bioregistry/bioregistry/issues/108',
@@ -10942,11 +10916,12 @@ class Biosample(Sample):
          'slot_group': 'EMSL',
          'string_serialization': '{integer}'} })
     analysis_type: Optional[List[AnalysisTypeEnum]] = Field(None, title="analysis/data type", description="""Select all the data types associated or available for this biosample""", json_schema_extra = { "linkml_meta": {'alias': 'analysis_type',
+         'comments': ['MIxS:investigation_type was included as a `see_also` but that '
+                      "term doesn't resolve any more"],
          'domain_of': ['Biosample'],
          'examples': [{'value': 'metagenomics; metabolomics; metaproteomics'}],
          'rank': 3,
          'recommended': True,
-         'see_also': ['MIxS:investigation_type'],
          'slot_group': 'Sample ID'} })
     sample_link: Optional[List[str]] = Field(None, title="sample linkage", description="""A unique identifier to assign parent-child, subsample, or sibling samples. This is relevant when a sample or other material was used to generate the new sample.""", json_schema_extra = { "linkml_meta": {'alias': 'sample_link',
          'comments': ['This field allows multiple entries separated by ; (Examples: '
@@ -11017,8 +10992,7 @@ class Biosample(Sample):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -11243,8 +11217,7 @@ class ProcessedSample(Sample):
          'close_mappings': ['skos:closeMatch'],
          'comments': ['The value of this field is always a registered CURIE'],
          'domain_of': ['ProcessedSample'],
-         'is_a': 'alternative_identifiers',
-         'notes': ['had tried ranges of external identifier and string']} })
+         'is_a': 'alternative_identifiers'} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -11289,8 +11262,7 @@ class ProcessedSample(Sample):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -11386,8 +11358,7 @@ class Site(MaterialEntity):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -11559,8 +11530,7 @@ class FieldResearchSite(Site):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -11666,8 +11636,7 @@ class Instrument(MaterialEntity):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -11769,8 +11738,7 @@ class PlannedProcess(NamedThing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -11901,8 +11869,7 @@ class CollectingBiosamplesFromSite(PlannedProcess):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -11970,10 +11937,12 @@ class StorageProcess(PlannedProcess):
          'related_mappings': ['OBI:0302893'],
          'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'Sample',
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
                                        'pattern': '^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'range': 'ProcessedSample',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
@@ -12077,8 +12046,7 @@ class StorageProcess(PlannedProcess):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -12158,7 +12126,9 @@ class MaterialProcessing(PlannedProcess):
                                                               'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}}}})
 
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12228,8 +12198,7 @@ class MaterialProcessing(PlannedProcess):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -12238,6 +12207,18 @@ class MaterialProcessing(PlannedProcess):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12315,7 +12296,9 @@ class Pooling(MaterialProcessing):
                                                       'syntax': '{id_nmdc_prefix}:poolp-{id_shoulder}-{id_blade}$'}}}})
 
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", min_length=2, json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12387,8 +12370,7 @@ class Pooling(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -12397,6 +12379,18 @@ class Pooling(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12498,7 +12492,9 @@ class Extraction(MaterialProcessing):
                        'MobilePhaseSegment',
                        'PortionOfSubstance']} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12570,8 +12566,7 @@ class Extraction(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -12580,6 +12575,18 @@ class Extraction(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12662,7 +12669,9 @@ class LibraryPreparation(MaterialProcessing):
          'comments': ['A value of true means the library is stranded, flase means '
                       'non-stranded.'],
          'domain_of': ['LibraryPreparation']} })
-    library_preparation_kit: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'library_preparation_kit', 'domain_of': ['LibraryPreparation']} })
+    library_preparation_kit: Optional[str] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'library_preparation_kit',
+         'domain_of': ['LibraryPreparation'],
+         'exact_mappings': ['GENEPIO:0001450']} })
     library_type: Optional[LibraryTypeEnum] = Field(None, title="library type", json_schema_extra = { "linkml_meta": {'alias': 'library_type',
          'domain_of': ['LibraryPreparation'],
          'examples': [{'value': 'DNA'}]} })
@@ -12707,7 +12716,9 @@ class LibraryPreparation(MaterialProcessing):
          'string_serialization': 'FWD:{dna};REV:{dna}'} })
     stranded_orientation: Optional[StrandedOrientationEnum] = Field(None, description="""Lists the strand orientiation for a stranded RNA library preparation.""", json_schema_extra = { "linkml_meta": {'alias': 'stranded_orientation', 'domain_of': ['LibraryPreparation']} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: List[str] = Field(..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12779,8 +12790,7 @@ class LibraryPreparation(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -12789,6 +12799,18 @@ class LibraryPreparation(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -12910,7 +12932,9 @@ class SubSamplingProcess(MaterialProcessing):
          'exact_mappings': ['PATO:0000125']} })
     sampled_portion: Optional[List[SamplePortionEnum]] = Field(None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'alias': 'sampled_portion', 'domain_of': ['SubSamplingProcess']} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -12982,8 +13006,7 @@ class SubSamplingProcess(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -12992,6 +13015,18 @@ class SubSamplingProcess(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13082,7 +13117,9 @@ class MixingProcess(MaterialProcessing):
                        'MobilePhaseSegment'],
          'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13153,8 +13190,7 @@ class MixingProcess(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -13163,6 +13199,18 @@ class MixingProcess(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13272,7 +13320,9 @@ class FiltrationProcess(MaterialProcessing):
                        'MobilePhaseSegment',
                        'PortionOfSubstance']} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13344,8 +13394,7 @@ class FiltrationProcess(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -13354,6 +13403,18 @@ class FiltrationProcess(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13446,7 +13507,9 @@ class ChromatographicSeparationProcess(MaterialProcessing):
                        'ChemicalConversionProcess'],
          'notes': ['Not to be confused with the MIXS:0000113']} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13517,8 +13580,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -13527,6 +13589,18 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13615,7 +13689,9 @@ class DissolvingProcess(MaterialProcessing):
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment']} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13687,8 +13763,7 @@ class DissolvingProcess(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -13697,6 +13772,18 @@ class DissolvingProcess(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13790,7 +13877,9 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'MobilePhaseSegment']} })
     substances_volume: Optional[QuantityValue] = Field(None, description="""The volume of the combined substances that was included in a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_volume', 'domain_of': ['ChemicalConversionProcess']} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     has_input: Optional[List[str]] = Field(None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -13862,8 +13951,7 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -13872,6 +13960,18 @@ class ChemicalConversionProcess(MaterialProcessing):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
+        return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
@@ -13947,8 +14047,7 @@ class Protocol(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -13995,8 +14094,7 @@ class CreditAssociation(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -14061,8 +14159,7 @@ class Doi(ConfiguredBaseModel):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -14106,8 +14203,7 @@ class Study(NamedThing):
                                            'source': 'embl.ena'}},
          'broad_mappings': ['prov:Activity'],
          'class_uri': 'nmdc:Study',
-         'comments': ['The Study class can include both consortia and research '
-                      'studies.'],
+         'comments': ['The Study includes both consortia and research studies.'],
          'exact_mappings': ['OBI:0000066',
                             'SIO:000747',
                             'NCIT:C41198',
@@ -14261,8 +14357,7 @@ class Study(NamedThing):
                                                                           'provided.'}},
                                      'name': 'websites'}},
          'todos': ['determine how to get data values for submitted_to_insdc, '
-                   'investigation_type, experimental_factor',
-                   'project_name is redundant with name, so excluding it']})
+                   'investigation_type, experimental_factor']})
 
     emsl_project_identifiers: Optional[List[str]] = Field(None, title="EMSL Project Identifiers", description="""Identifiers that link a NMDC study to the EMSL user facility website hosting the project description of an EMSL user project""", json_schema_extra = { "linkml_meta": {'alias': 'emsl_project_identifiers',
          'domain_of': ['Study'],
@@ -14286,7 +14381,7 @@ class Study(NamedThing):
     gold_study_identifiers: Optional[List[str]] = Field(None, title="GOLD Study Identifiers", description="""identifiers for corresponding project(s) in GOLD""", json_schema_extra = { "linkml_meta": {'alias': 'gold_study_identifiers',
          'comments': ['uses the prefix GS (but possibly in a different case)'],
          'domain_of': ['Study'],
-         'examples': [{'value': 'https://bioregistry.io/gold:Gs0110115'}],
+         'examples': [{'value': 'gold:Gs0110115'}],
          'is_a': 'study_identifiers',
          'mixins': ['gold_identifiers'],
          'see_also': ['https://gold.jgi.doe.gov/studies']} })
@@ -14301,7 +14396,7 @@ class Study(NamedThing):
          'domain_of': ['NucleotideSequencing', 'Study'],
          'examples': [{'description': 'Avena fatua rhizosphere microbial communities - '
                                       'H1_Rhizo_Litter_2 metatranscriptome',
-                       'value': 'https://bioregistry.io/bioproject:PRJNA366857'}],
+                       'value': 'bioproject:PRJNA366857'}],
          'is_a': 'study_identifiers',
          'mixins': ['insdc_identifiers'],
          'see_also': ['https://www.ncbi.nlm.nih.gov/bioproject/',
@@ -14321,7 +14416,7 @@ class Study(NamedThing):
          'mixins': ['jgi_portal_identifiers']} })
     mgnify_project_identifiers: Optional[List[str]] = Field(None, description="""identifiers for corresponding project in MGnify""", json_schema_extra = { "linkml_meta": {'alias': 'mgnify_project_identifiers',
          'domain_of': ['Study'],
-         'examples': [{'value': 'https://bioregistry.io/mgnify.proj:MGYS00005757'}],
+         'examples': [{'value': 'mgnify.proj:MGYS00005757'}],
          'is_a': 'study_identifiers',
          'mixins': ['mgnify_identifiers']} })
     neon_study_identifiers: Optional[List[str]] = Field(None, json_schema_extra = { "linkml_meta": {'alias': 'neon_study_identifiers',
@@ -14512,8 +14607,7 @@ class Study(NamedThing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -14733,8 +14827,7 @@ class InformationObject(NamedThing):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -14821,8 +14914,7 @@ class Configuration(InformationObject):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -14877,7 +14969,7 @@ class MassSpectrometryConfiguration(Configuration):
          'exact_mappings': ['MS:1003213']} })
     resolution_categories: Optional[List[ResolutionCategoryEnum]] = Field(None, description="""The relative resolution at which spectra were collected.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_categories',
          'domain_of': ['MassSpectrometryConfiguration'],
-         'examples': [{'value': "['high', 'low']"}]} })
+         'examples': [{'value': 'high'}, {'value': 'low'}]} })
     mass_analyzers: Optional[List[MassAnalyzerEnum]] = Field(None, description="""The kind of mass analyzer(s) used during the spectra collection.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_analyzers',
          'domain_of': ['MassSpectrometryConfiguration'],
          'exact_mappings': ['MS:1000443']} })
@@ -14931,8 +15023,7 @@ class MassSpectrometryConfiguration(Configuration):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -15045,8 +15136,7 @@ class ChromatographyConfiguration(Configuration):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -15139,8 +15229,7 @@ class Manifest(InformationObject):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -15255,8 +15344,7 @@ class CalibrationInformation(InformationObject):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -15317,9 +15405,9 @@ class DataObject(InformationObject):
                                                       'syntax': '{id_nmdc_prefix}:dobj-{id_shoulder}-{id_blade}$'}},
                         'name': {'name': 'name', 'required': True},
                         'was_generated_by': {'name': 'was_generated_by',
-                                             'pattern': '^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                             'pattern': '^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                              'structured_pattern': {'interpolated': True,
-                                                                    'syntax': '^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}}}})
+                                                                    'syntax': '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}}}})
 
     compression_type: Optional[str] = Field(None, description="""If provided, specifies the compression type""", json_schema_extra = { "linkml_meta": {'alias': 'compression_type',
          'domain_of': ['DataObject'],
@@ -15349,7 +15437,7 @@ class DataObject(InformationObject):
                        'DataObject'],
          'mappings': ['prov:wasGeneratedBy'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'}} })
     in_manifest: Optional[List[str]] = Field(None, description="""one or more combinations of other DataObjects that can be analyzed together""", json_schema_extra = { "linkml_meta": {'alias': 'in_manifest',
          'comments': ['A DataObject can be part of multiple manifests, for example, a '
                       'DataObject could be part of a manifest for a single run of an '
@@ -15357,7 +15445,7 @@ class DataObject(InformationObject):
                       'sample.'],
          'domain_of': ['DataObject'],
          'structured_pattern': {'interpolated': True,
-                                'syntax': '^{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}} })
+                                'syntax': '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'}} })
     id: str = Field(..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -15402,8 +15490,7 @@ class DataObject(InformationObject):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -15427,7 +15514,7 @@ class DataObject(InformationObject):
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15439,7 +15526,7 @@ class DataObject(InformationObject):
 
     @field_validator('in_manifest')
     def pattern_in_manifest(cls, v):
-        pattern=re.compile(r"^^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        pattern=re.compile(r"^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
         if isinstance(v,list):
             for element in v:
                 if isinstance(v, str) and not pattern.match(element):
@@ -15519,7 +15606,9 @@ class DataGeneration(PlannedProcess):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     mod_date: Optional[str] = Field(None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'mod_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     principal_investigator: Optional[PersonValue] = Field(None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
@@ -15593,8 +15682,7 @@ class DataGeneration(PlannedProcess):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -15614,6 +15702,18 @@ class DataGeneration(PlannedProcess):
         elif isinstance(v,str):
             if not pattern.match(v):
                 raise ValueError(f"Invalid associated_studies format: {v}")
+        return v
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
@@ -15682,7 +15782,7 @@ class NucleotideSequencing(DataGeneration):
 
     gold_sequencing_project_identifiers: Optional[List[str]] = Field(None, description="""identifiers for corresponding sequencing project in GOLD""", json_schema_extra = { "linkml_meta": {'alias': 'gold_sequencing_project_identifiers',
          'domain_of': ['NucleotideSequencing'],
-         'examples': [{'value': 'https://bioregistry.io/gold:Gp0108335'}],
+         'examples': [{'value': 'gold:Gp0108335'}],
          'is_a': 'omics_processing_identifiers',
          'mixins': ['gold_identifiers']} })
     insdc_bioproject_identifiers: Optional[List[str]] = Field(None, description="""identifiers for corresponding project in INSDC Bioproject""", json_schema_extra = { "linkml_meta": {'alias': 'insdc_bioproject_identifiers',
@@ -15692,7 +15792,7 @@ class NucleotideSequencing(DataGeneration):
          'domain_of': ['NucleotideSequencing', 'Study'],
          'examples': [{'description': 'Avena fatua rhizosphere microbial communities - '
                                       'H1_Rhizo_Litter_2 metatranscriptome',
-                       'value': 'https://bioregistry.io/bioproject:PRJNA366857'}],
+                       'value': 'bioproject:PRJNA366857'}],
          'is_a': 'study_identifiers',
          'mixins': ['insdc_identifiers'],
          'see_also': ['https://www.ncbi.nlm.nih.gov/bioproject/',
@@ -15729,7 +15829,9 @@ class NucleotideSequencing(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     mod_date: Optional[str] = Field(None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'mod_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     principal_investigator: Optional[PersonValue] = Field(None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
@@ -15805,8 +15907,7 @@ class NucleotideSequencing(DataGeneration):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -15862,6 +15963,18 @@ class NucleotideSequencing(DataGeneration):
         elif isinstance(v,str):
             if not pattern.match(v):
                 raise ValueError(f"Invalid associated_studies format: {v}")
+        return v
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
@@ -15979,7 +16092,9 @@ class MassSpectrometry(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(sty)-{id_shoulder}-{id_blade}$'}} })
     instrument_used: Optional[List[str]] = Field(None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
-         'domain_of': ['MaterialProcessing', 'DataGeneration']} })
+         'domain_of': ['MaterialProcessing', 'DataGeneration'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'}} })
     mod_date: Optional[str] = Field(None, description="""The last date on which the database information was modified.""", json_schema_extra = { "linkml_meta": {'alias': 'mod_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     principal_investigator: Optional[PersonValue] = Field(None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
@@ -16055,8 +16170,7 @@ class MassSpectrometry(DataGeneration):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -16112,6 +16226,18 @@ class MassSpectrometry(DataGeneration):
         elif isinstance(v,str):
             if not pattern.match(v):
                 raise ValueError(f"Invalid associated_studies format: {v}")
+        return v
+
+    @field_validator('instrument_used')
+    def pattern_instrument_used(cls, v):
+        pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
@@ -16198,11 +16324,13 @@ class WorkflowExecution(PlannedProcess):
                         'git_url': {'name': 'git_url', 'required': True},
                         'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                      'range': 'DataObject',
                                       'required': True,
                                       'structured_pattern': {'interpolated': True,
                                                              'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
                         'has_output': {'name': 'has_output',
                                        'pattern': '^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                       'range': 'DataObject',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
                         'started_at_time': {'name': 'started_at_time',
@@ -16305,8 +16433,7 @@ class WorkflowExecution(PlannedProcess):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -16424,7 +16551,7 @@ class MetagenomeAnnotation(WorkflowExecution):
                    'Biosamples, or something else?']} })
     gold_analysis_project_identifiers: Optional[List[str]] = Field(None, description="""identifiers for corresponding analysis projects in GOLD""", json_schema_extra = { "linkml_meta": {'alias': 'gold_analysis_project_identifiers',
          'domain_of': ['MetagenomeAnnotation', 'MetatranscriptomeAnnotation'],
-         'examples': [{'value': 'https://bioregistry.io/gold:Ga0526289'}],
+         'examples': [{'value': 'gold:Ga0526289'}],
          'is_a': 'analysis_identifiers',
          'mixins': ['gold_identifiers'],
          'structured_pattern': {'interpolated': True, 'syntax': '^gold:Ga[0-9]+$'}} })
@@ -16527,8 +16654,7 @@ class MetagenomeAnnotation(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -16662,6 +16788,7 @@ class MetagenomeAssembly(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfmgas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -16849,8 +16976,7 @@ class MetagenomeAssembly(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -16967,6 +17093,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfmtas-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -17154,8 +17281,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -17286,6 +17412,7 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
                                             'name': 'img_identifiers'},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -17302,7 +17429,7 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
                    'Biosamples, or something else?']} })
     gold_analysis_project_identifiers: Optional[List[str]] = Field(None, description="""identifiers for corresponding analysis projects in GOLD""", json_schema_extra = { "linkml_meta": {'alias': 'gold_analysis_project_identifiers',
          'domain_of': ['MetagenomeAnnotation', 'MetatranscriptomeAnnotation'],
-         'examples': [{'value': 'https://bioregistry.io/gold:Ga0526289'}],
+         'examples': [{'value': 'gold:Ga0526289'}],
          'is_a': 'analysis_identifiers',
          'mixins': ['gold_identifiers'],
          'structured_pattern': {'interpolated': True, 'syntax': '^gold:Ga[0-9]+$'}} })
@@ -17405,8 +17532,7 @@ class MetatranscriptomeAnnotation(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -17540,6 +17666,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
                                             'name': 'img_identifiers'},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -17653,8 +17780,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -17776,6 +17902,7 @@ class MagsAnalysis(WorkflowExecution):
                                             'name': 'img_identifiers'},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}},
          'title': 'Metagenome-Assembled Genome analysis activity'})
@@ -17896,8 +18023,7 @@ class MagsAnalysis(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -18021,6 +18147,7 @@ class MetagenomeSequencing(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}},
          'title': 'Metagenome sequencing activity'})
@@ -18124,8 +18251,7 @@ class MetagenomeSequencing(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -18233,6 +18359,7 @@ class ReadQcAnalysis(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfrqc-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}},
          'title': 'Read quality control analysis activity'})
@@ -18350,8 +18477,7 @@ class ReadQcAnalysis(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -18459,6 +18585,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfrbt-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'NucleotideSequencing',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}}},
          'title': 'Read based analysis activity'})
@@ -18562,8 +18689,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -18668,6 +18794,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfmb-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'MassSpectrometry',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -18781,8 +18908,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -18899,6 +19025,7 @@ class MetaproteomicsAnalysis(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfmp-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'MassSpectrometry',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -19003,8 +19130,7 @@ class MetaproteomicsAnalysis(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',
@@ -19109,6 +19235,7 @@ class NomAnalysis(WorkflowExecution):
                                                       'syntax': '{id_nmdc_prefix}:wfnom-{id_shoulder}-{id_blade}{id_version}$'}},
                         'was_informed_by': {'name': 'was_informed_by',
                                             'pattern': '^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                            'range': 'MassSpectrometry',
                                             'structured_pattern': {'interpolated': True,
                                                                    'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}}}})
 
@@ -19218,8 +19345,7 @@ class NomAnalysis(WorkflowExecution):
                        'CreditAssociation',
                        'Doi'],
          'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['replaces legacy nmdc:type slot',
-                   'makes it easier to read example data files',
+         'notes': ['makes it easier to read example data files',
                    'required for polymorphic MongoDB collections'],
          'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
                       'https://github.com/microbiomedata/nmdc-schema/issues/1233',

@@ -10,10 +10,19 @@ imports:
   - attribute_values # in cycle with basic_classes
 
 prefixes:
+  bioproject: 'https://bioregistry.io/bioproject:'
+  biosample: 'https://bioregistry.io/biosample:'
+  emsl.project: 'https://bioregistry.io/emsl.project:'
+  gnps.task: 'https://bioregistry.io/gnps.task:'
   gold: "https://bioregistry.io/gold:"
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
-  skos: http://www.w3.org/2004/02/skos/core#
+  insdc.sra: "https://bioregistry.io/insdc.sra:"
+  jgi.analysis: "https://data.jgi.doe.gov/search?q="
+  jgi.proposal: 'https://bioregistry.io/jgi.proposal:'
+  linkml: "https://w3id.org/linkml/"
+  mgnify.analysis: "https://bioregistry.io/mgnify.analysis:" # https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
+  mgnify.proj: 'https://bioregistry.io/mgnify.proj:'
+  nmdc: "https://w3id.org/nmdc/"
+  skos: "http://www.w3.org/2004/02/skos/core#"
 
 default_prefix: nmdc
 default_range: string
@@ -117,7 +126,7 @@ slots:
     pattern: "^insdc.sra:(E|D|S)RP[0-9]{6,}$"
     description: identifiers for corresponding project in INSDC SRA / ENA
     examples:
-      - value: https://bioregistry.io/insdc.sra:SRP121659
+      - value: insdc.sra:SRP121659
         description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
     see_also:
       - https://github.com/bioregistry/bioregistry/issues/109
@@ -136,7 +145,7 @@ slots:
     comments:
       - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?) one to one
     examples:
-      - value: https://bioregistry.io/bioproject:PRJNA366857
+      - value: bioproject:PRJNA366857
         description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2 metatranscriptome
     see_also:
       - https://www.ncbi.nlm.nih.gov/bioproject/
@@ -151,7 +160,7 @@ slots:
     comments:
       - uses the prefix GS (but possibly in a different case)
     examples:
-      - value: https://bioregistry.io/gold:Gs0110115
+      - value: gold:Gs0110115
     see_also:
       - https://gold.jgi.doe.gov/studies
     title: GOLD Study Identifiers
@@ -163,7 +172,7 @@ slots:
     pattern: "^mgnify.proj:[A-Z]+[0-9]+$"
     description: identifiers for corresponding project in MGnify
     examples:
-      - value: https://bioregistry.io/mgnify.proj:MGYS00005757
+      - value: mgnify.proj:MGYS00005757
 
   gnps_task_identifiers:
     is_a: study_identifiers
@@ -215,7 +224,7 @@ slots:
     pattern: "^gold:Gb[0-9]+$"
     description: identifiers for corresponding sample in GOLD
     examples:
-      - value: https://bioregistry.io/gold:Gb0312930
+      - value: gold:Gb0312930
     range: uriorcurie
 
   insdc_biosample_identifiers:
@@ -229,8 +238,8 @@ slots:
     pattern: "^biosample:SAM[NED]([A-Z])?[0-9]+$"
     description: identifiers for corresponding sample in INSDC
     examples:
-      - value: https://bioregistry.io/biosample:SAMEA5989477
-      - value: https://bioregistry.io/biosample:SAMD00212331
+      - value: biosample:SAMEA5989477
+      - value: biosample:SAMD00212331
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
     see_also:
       - https://github.com/bioregistry/bioregistry/issues/108
@@ -248,7 +257,7 @@ slots:
       - "ENA redirects these to primary IDs, e.g. https://www.ebi.ac.uk/ena/browser/view/DRS166340 -> SAMD00212331"
       - MGnify uses these as their primary sample IDs
     examples:
-      - value: https://bioregistry.io/insdc.sra:DRS166340
+      - value: insdc.sra:DRS166340
         description: I13_N_5-10 sample from Soil fungal diversity along elevational gradients
 
   emsl_biosample_identifiers:
@@ -284,7 +293,7 @@ slots:
     pattern: "^gold:Gp[0-9]+$"
     description: identifiers for corresponding sequencing project in GOLD
     examples:
-      - value: https://bioregistry.io/gold:Gp0108335
+      - value: gold:Gp0108335
 
   insdc_experiment_identifiers:
     is_a: external_database_identifiers
@@ -305,7 +314,7 @@ slots:
     pattern: "^gold:Ga[0-9]+$"
     description: identifiers for corresponding analysis projects in GOLD
     examples:
-      - value: https://bioregistry.io/gold:Ga0526289
+      - value: gold:Ga0526289
 
   jgi_portal_analysis_project_identifiers:
     is_a: analysis_identifiers
@@ -316,7 +325,7 @@ slots:
     pattern: '^jgi.analysis:[0-9]+$'
     description: identifiers for corresponding analysis projects in JGI Portal
     examples:
-      - value: https://data.jgi.doe.gov/search?q=1414320
+      - value: jgi.analysis:1414320
         description: Metagenome - Draft Assembly YELL_051-M-20210705-comp-DNA1
 
   insdc_analysis_identifiers:
@@ -327,9 +336,9 @@ slots:
     mixins:
       - insdc_identifiers
     examples:
-      - value: https://www.ebi.ac.uk/metagenomics/runs/DRR218479
+      - value: insdc.sra:DRR218479
         description: Illumina MiSeq paired end sequencing of SAMD00212331
-      - value: https://www.ebi.ac.uk/ena/browser/view/ERR436051
+      - value: insdc.sra:ERR436051
 
   mgnify_analysis_identifiers:
     is_a: analysis_identifiers
@@ -338,7 +347,7 @@ slots:
     mixins:
       - mgnify_identifiers
     examples:
-      - value: https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
+      - value: mgnify.analysis:MGYA00002270
         description: combined analyses (taxonomic, functional) of sample ERS438107
 
   ## assemblies

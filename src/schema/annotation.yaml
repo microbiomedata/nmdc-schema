@@ -10,25 +10,29 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 see_also:
   - https://github.com/microbiomedata/nmdc-metadata/issues/176
 
-notes:
-  - Removed slot_uri of rdf:type from type slot. Is OntologyClass an appropriate range?
-
 imports:
   - core
 
 prefixes:
+  CATH: 'https://bioregistry.io/cath:'
   COG: "https://bioregistry.io/cog:"
   EC: "https://bioregistry.io/eccode:"
-  GO: http://purl.obolibrary.org/obo/GO_
+  EGGNOG: 'https://bioregistry.io/eggnog:'
+  GO: "http://purl.obolibrary.org/obo/GO_"
   KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"
   KEGG.REACTION: "https://bioregistry.io/kegg.reaction:"
   KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:"
   MetaCyc: "https://bioregistry.io/metacyc.compound:"
+  MetaNetX: "http://example.org/metanetx/"
+  PANTHER.FAMILY: 'https://bioregistry.io/panther.family:'
+  PFAM: 'https://bioregistry.io/pfam:'
   RHEA: "https://bioregistry.io/rhea:"
   SEED: "https://bioregistry.io/seed:"
-  biolink: https://w3id.org/biolink/vocab/
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
+  SUPFAM: 'https://bioregistry.io/supfam:'
+  TIGRFAM: 'https://bioregistry.io/tigrfam:'
+  biolink: "https://w3id.org/biolink/vocab/"
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
 
 default_prefix: nmdc
 default_range: string
@@ -69,9 +73,6 @@ classes:
     description: >-
       Abstract grouping class for any term/descriptor that can be applied to a functional unit of a genome (protein, ncRNA, complex).
     abstract: true
-    todos:
-      - decide if this should be used for product naming (Duncan, 2021-04-02)
-      - Retaining this even after removing Reaction. See todos on the Pathway and OrthologyGroup subclasses.
 
   Pathway:
     class_uri: nmdc:Pathway
@@ -134,11 +135,11 @@ classes:
         notes:
           - Still missing patterns for COG and RetroRules
           - These patterns are not yet tied to the listed prefixes.
-            A discussion about that possibility had been started,
-            including the question of whether these lists are intended to be open examples or closed
+          - Are these lists are intended to be open examples or closed?
       was_generated_by:
         description: provenance for the annotation.
-        notes: To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
+        notes:
+          - To be consistent with the rest of the NMDC schema we use the PROV annotation model, rather than GPAD
         range: MetagenomeAnnotation
         structured_pattern:
           syntax: "{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$"
@@ -174,7 +175,7 @@ slots:
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     range: string
     todos:
-      - "change range from string to object"
+      - "change range from string to a object like uriorcurie?"
 
   strand:
     todos:
@@ -198,7 +199,7 @@ slots:
     is_a: gff_coordinate
     description: The end of the feature in positive 1-based integer coordinates
     comments: >-
-      - "constraint: end > start"
+      - "unenforced constraint: end > start"
       - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."
     close_mappings:
       - biolink:end_interbase_coordinate

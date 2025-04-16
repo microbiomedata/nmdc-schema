@@ -2,8 +2,6 @@ id: https://w3id.org/nmdc/core
 name: NMDC-Core
 title: NMDC Schema Core Types
 description: Schema for National Microbiome Data Collaborative (NMDC), Core Types
-comments:
-  - includes all elements that were recently in prov.yaml
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
@@ -16,22 +14,30 @@ imports:
   - portal_sample_id
 
 prefixes:
-  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
+  EC: 'https://bioregistry.io/eccode:'
+  FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
   KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
-  OBI: http://purl.obolibrary.org/obo/OBI_
-  PR: http://purl.obolibrary.org/obo/PR_
-  SIO: http://semanticscience.org/resource/SIO_
+  MISO: "http://purl.obolibrary.org/obo/MISO_"
+  MS: "http://purl.obolibrary.org/obo/MS_"
+  NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
+  OBI: "http://purl.obolibrary.org/obo/OBI_"
+  OMIT: "http://purl.obolibrary.org/obo/OMIT_" # for RNA subtypes only
+  PATO: "http://purl.obolibrary.org/obo/PATO_"
+  PR: "http://purl.obolibrary.org/obo/PR_"
   UniProtKB: "https://bioregistry.io/uniprot:"
-  biolink: https://w3id.org/biolink/vocab/
-  dcterms: http://purl.org/dc/terms/
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
-  prov: http://www.w3.org/ns/prov#
-  qud: http://qudt.org/1.1/schema/qudt#
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  schema: http://schema.org/
-  wgs84: http://www.w3.org/2003/01/geo/wgs84_pos#
-  MISO: http://purl.obolibrary.org/obo/MISO_
+  biolink: "https://w3id.org/biolink/vocab/"
+  dcterms: "http://purl.org/dc/terms/"
+  doi: 'https://bioregistry.io/doi:'
+  gtpo: "http://example.org/gtpo/"
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
+  qud: "http://qudt.org/1.1/schema/qudt#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  schema: "http://schema.org/"
+  wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
+
 
 default_prefix: nmdc
 default_range: string
@@ -198,7 +204,7 @@ enums:
 classes:
 
   ChemicalConversionProcess:
-    class_uri: 'nmdc:ChemicalConversionProcess'
+    class_uri: nmdc:ChemicalConversionProcess
     aliases:
       - chemical reaction
     exact_mappings:
@@ -292,14 +298,14 @@ classes:
           interpolated: true
 
   Sample:
-    class_uri: 'nmdc:Sample'
+    class_uri: nmdc:Sample
     description: A sample is a material entity that can be characterized by an experiment.
     is_a: MaterialEntity
     abstract: true
 
 
   Biosample:
-    class_uri: 'nmdc:Biosample'
+    class_uri: nmdc:Biosample
     rules:
       - title: dna_well_requires_plate
         description: DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.
@@ -1024,7 +1030,8 @@ classes:
 
       gold_biosample_identifiers:
         description: Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample
-        comments: This is the ID provided by GOLD that starts with 'GB'
+        comments:
+          - This is the ID provided by GOLD that starts with 'Gb'
         annotations:
           tooltip: Provide the GOLD biosample IDs associated with this biosample.
 
@@ -1033,8 +1040,7 @@ classes:
 
       lat_lon:
         notes:
-          - This is currently a required field but it's not clear if this
-            should be required for human hosts
+          - This is currently a required field but it's not clear if this should be required for human hosts
       env_broad_scale:
         required: true
       env_local_scale:
@@ -1110,7 +1116,8 @@ classes:
       al_sat_meth:
         title: aluminum saturation method/ extreme unusual properties
         description: Reference or method used in determining Aluminum saturation
-        comments: Required when aluminum saturation is provided.
+        comments:
+          - Required when aluminum saturation is provided.
         examples:
           - value: https://doi.org/10.1371/journal.pone.0176357
         todos:
@@ -1287,7 +1294,7 @@ classes:
 
   MaterialProcessing:
     abstract: true
-    class_uri: 'nmdc:MaterialProcessing'
+    class_uri: nmdc:MaterialProcessing
     is_a: PlannedProcess
     description:
       A process that takes one or more samples as inputs and generates
@@ -1352,7 +1359,7 @@ classes:
 
   EnvironmentalMaterialTerm:
     is_a: OntologyClass
-    class_uri: 'nmdc:EnvironmentalMaterialTerm'
+    class_uri: nmdc:EnvironmentalMaterialTerm
     deprecated: "not used. 2024-07-10 https://github.com/microbiomedata/nmdc-schema/issues/1881"
 
   MagBin:
@@ -1609,7 +1616,6 @@ slots:
       - Recommended value is between 1 and 3.
     examples:
       - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
     rank: 7
     range: float
     slot_group: JGI-Metagenomics
@@ -1623,7 +1629,6 @@ slots:
       - Recommended value is between 1 and 3.
     examples:
       - value: '2.02'
-    from_schema: https://example.com/nmdc_dh
     rank: 8
     range: float
     slot_group: JGI-Metagenomics
@@ -1710,7 +1715,7 @@ slots:
     range: integer
     minimum_value: 0
     broad_mappings:
-      - NCIT:C105370
+      - OMIT:0013243
   num_5s:
     description: Number of 5s seqeuences detected, a subunit of ribosomes.
     range: integer
@@ -1728,39 +1733,39 @@ slots:
     minimum_value: 0
     range: integer
     broad_mappings:
-      - NCIT:C816
+      - OMIT:0013250
   gtdbtk_domain:
     description: Taxonomic domain assigned by GTDB-Tk.
     see_also: 
-      - https://doi.org/10.1093/bioinformatics/btz848
+      - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:superkingdom
   gtdbtk_phylum:
     description: Taxonomic phylum assigned by GTDB-Tk.
     see_also: 
-      - https://doi.org/10.1093/bioinformatics/btz848
+      - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:phylum
   gtdbtk_class:
     description: Taxonomic class assigned by GTDB-Tk.
     see_also: 
-      - https://doi.org/10.1093/bioinformatics/btz848
+      - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:class
   gtdbtk_order:
     description: Taxonomic order assigned by GTDB-Tk.
     see_also: 
-      - https://doi.org/10.1093/bioinformatics/btz848
+      - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:order
   gtdbtk_family:
     description: Taxonomic family assigned by GTDB-Tk.
     see_also: 
-      - https://doi.org/10.1093/bioinformatics/btz848
+      - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:family
@@ -1768,13 +1773,13 @@ slots:
     range: string
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
-      - https://doi.org/10.1093/bioinformatics/btz848
+      - doi:10.1093/bioinformatics/btz848
     exact_mappings:
       - NCBITaxon:genus
   gtdbtk_species:
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
-      - https://doi.org/10.1093/bioinformatics/btz848
+      - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
       - NCBITaxon:species

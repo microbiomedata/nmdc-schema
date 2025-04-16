@@ -6,9 +6,9 @@ title: 'NMDC Schema supplement for Submission Portal: MIxS Inspired'
 id: https://w3id.org/nmdc/portal/mixs_inspired
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
-  linkml: https://w3id.org/linkml/
-  nmdc: https://w3id.org/nmdc/
-  MIXS: https://w3id.org/mixs/
+  MIXS: "https://w3id.org/mixs/"
+  linkml: "https://w3id.org/linkml/"
+  nmdc: "https://w3id.org/nmdc/"
 imports:
   - nmdc_types
 default_prefix: nmdc

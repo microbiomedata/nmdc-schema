@@ -6,7 +6,10 @@ description: Types for NMDC Schema
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 prefixes:
-  linkml: https://w3id.org/linkml/
+  UO: "http://purl.obolibrary.org/obo/UO_"
+  linkml: "https://w3id.org/linkml/"
+  qud: "http://qudt.org/1.1/schema/qudt#"
+
 
 imports:
   - linkml:types
