@@ -6,7 +6,8 @@ workflow_execution_set:
     ended_at_time: '2021-08-05T14:48:51+00:00'
     type: nmdc:ReadQcAnalysis
     execution_resource: LANL-B-div
-    was_informed_by: nmdc:omprc-11-547rwq95
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     has_input:
       - nmdc:dobj-11-547rwq96
     has_output:
@@ -20,7 +21,8 @@ workflow_execution_set:
     ended_at_time: '2024-07-06T14:48:51+00:00'
     type: nmdc:MetatranscriptomeAssembly
     execution_resource: LANL-B-div
-    was_informed_by: nmdc:omprc-11-547rwq95
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     has_input:
       - nmdc:dobj-11-547rwq97
     has_output:
@@ -33,7 +35,8 @@ workflow_execution_set:
     started_at_time: '2024-07-07T14:48:51+00:00'
     ended_at_time: '2024-07-07T14:48:51+00:00'
     type: nmdc:MetatranscriptomeAnnotation
-    was_informed_by: nmdc:omprc-11-547rwq95
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     execution_resource: LANL-B-div
     has_input:
       - nmdc:dobj-11-547rwq72
@@ -47,7 +50,8 @@ workflow_execution_set:
     started_at_time: '2024-07-08T14:48:51+00:00'
     ended_at_time: '2024-07-08T14:48:51+00:00'
     type: nmdc:MetatranscriptomeExpressionAnalysis
-    was_informed_by: nmdc:omprc-11-547rwq95
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     execution_resource: LANL-B-div
     has_input:
       - nmdc:dobj-11-547rwq75
