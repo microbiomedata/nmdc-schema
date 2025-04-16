@@ -1319,7 +1319,6 @@ classes:
     slots:
       - final_concentration
       - mass
-      - sample_state_information
       - source_concentration
       - known_as
       - substance_role
@@ -1815,11 +1814,6 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
-
-  sample_state_information:
-    description: >-
-      The chemical phase of a pure sample, or the state of a mixed sample
-    range: SampleStateEnum
 
   known_as:
     range: ChemicalEntityEnum

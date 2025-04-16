@@ -68,6 +68,7 @@ enums:
   AnalysisTypeEnum:
     permissible_values:
       metabolomics:
+      lipidomics:
       metagenomics:
         description: Standard short-read metagenomic sequencing
         title: Metagenomics

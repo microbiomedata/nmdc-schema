@@ -174,19 +174,29 @@ classes:
       - doi_category
       - type
     rules:
-      - title: dataset_award_dois_required
+      - title: dataset_dois_require_provider
         description: >-
           If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
         preconditions:
           slot_conditions:
             doi_category:
-              any_of:
-                - equals_string: dataset_doi
-                - equals_string: award_doi
+              equals_string: dataset_doi
         postconditions:
           slot_conditions:
             doi_provider:
               required: true
+      - title: award_dois_require_provider
+        description: >-
+          If doi_category is a publication_doi, then doi_provider is not required. Otherwise, doi_provider is required.
+        preconditions:
+          slot_conditions:
+            doi_category:
+              equals_string: award_doi
+        postconditions:
+          slot_conditions:
+            doi_provider:
+              required: true
+# is a doi_provider required for a data_management_plan_doi? #2419
   Study:
     class_uri: 'nmdc:Study'
     is_a: NamedThing
