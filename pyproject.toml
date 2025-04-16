@@ -45,14 +45,6 @@ python-dotenv = "*"
 pyyaml = "^6"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 requests = "^2"
-pandas = "^2.2.3"
-beautifulsoup4 = "^4.13.4"
-tabulate = "^0.9.0"
-sparqlwrapper = "^2.0.0"
-plotly = "^6.0.1"
-psycopg2-binary = "^2.9.10"
-ruamel-yaml = "^0.18.6"
-sparql-burger = "^1.0.2"
 
 [tool.poetry.group.dev.dependencies] # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
@@ -62,11 +54,15 @@ exhaustion-check = "^0.1.1" # for exhaustion-check, pretty-sort-yaml (also get-f
 fastjsonschema = "^2.20.0"
 flake8 = "^7.0.0"
 isort = "^5.13.2"
+jinja2 = "^3.1.6"
 mkdocs = "^1.4.2"
 mkdocs-material = "^9.0.12"
 mkdocs-mermaid2-plugin = "^0.6.0"
 mkdocs-redirects = "^1.2.1"
 mypy = "^1.10.0"
+pandas = "^2.2.3"
+plotly = "^6.0.1"
+psycopg2-binary = "^2.9.10"
 pydocstyle = "^6.3.0"
 pylint = "^3.2.2"
 pyroma = "^4.2"
@@ -75,14 +71,15 @@ python-dotenv = "^0.21.0"
 # and diagrams of inter-class relationships.
 # Reference: https://github.com/microbiomedata/refscan
 refscan = "^0.2.3"
-ruff = "^0.4.7"
 ruamel-yaml = "^0.18.6"
+ruff = "^0.4.7"
 schemasheets = "^0.1.24"
 sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
+sparqlwrapper = "^2.0.0"
+tabulate = "^0.9.0"
 vulture = "^2.11"
-jinja2 = "^3.1.6"
 #networkx = "^3.4.2" # for src/scripts/experimental/partial_imports_graph.py # "^3.4.2" is incompatible with Python 3.9, which this file currently allows
 
 
@@ -150,20 +147,7 @@ schema-view-relation-graph = "src.scripts.schema_view_relation_graph:cli"
 scrutinize-elements = "src.scripts.scrutinize_elements:process_schema_elements"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
 
-[tool.deptry.per_rule_ignores]
-DEP002 = [
-    "beautifulsoup4",
-    "jsonasobj2",
-    "pandas",
-    "plotly",
-    "psycopg2-binary",
-    "ruamel-yaml",
-    "sparql-burger",
-    "sparqlwrapper",
-    "tabulate",
-] #  Listed as a dependency but "not used" # many used in notebook or experimental code
-DEP003 = ["nmdc_data"] # Imported but only as a transitive dependency
-DEP004 = ["fastjsonschema"] # Imported but only declared as a dev dependency
-
 [tool.deptry]
-exclude = ["src/scripts/experimental/", ".venv/", "nmdc_schema/nmdc-pydantic.py", "project/pydantic/nmdc-pydantic.py"] # DEP001 networkx in src/scripts/experimental/partial_imports_graph.py
+extend_exclude = [
+    "nmdc_schema/nmdc-pydantic.py"
+]
