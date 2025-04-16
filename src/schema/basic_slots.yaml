@@ -641,19 +641,38 @@ enums:
         description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
       
       Metagenome Raw Reads:
-        description: Interleaved paired-end raw sequencing data
+        description: Interleaved paired-end raw metagenome sequencing data
         annotations:
           file_name_pattern: '^\.fastq(\.gz)?$'
 
       Metagenome Raw Read 1:
-        description: Read 1 raw sequencing data, aka forward reads
+        description: Read 1 raw metagenome sequencing data, aka forward reads
         examples:
           value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
         annotations:
           file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
 
       Metagenome Raw Read 2:
-        description: Read 2 raw sequencing data, aka reverse reads
+        description: Read 2 raw metagenome sequencing data, aka reverse reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
+
+      Metatranscriptome Raw Reads:
+        description: Interleaved paired-end raw metatranscriptome sequencing data
+        annotations:
+          file_name_pattern: '^\.fastq(\.gz)?$'
+
+      Metatranscriptome Raw Read 1:
+        description: Read 1 raw metatranscriptome sequencing data, aka forward reads
+        examples:
+          value: "BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz"
+        annotations:
+          file_name_pattern: '^.+_R1\.fastq(\.gz)?$'
+
+      Metatranscriptome Raw Read 2:
+        description: Read 2 raw metatranscriptome sequencing data, aka reverse reads
         examples:
           value: "BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz"
         annotations:
