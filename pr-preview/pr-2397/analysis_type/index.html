@@ -531,9 +531,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
+  <a href="#comments" class="md-nav__link">
     <span class="md-ellipsis">
-      See Also
+      Comments
     </span>
   </a>
   
@@ -647,9 +647,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See Also</h2>
+<h2 id="comments">Comments</h2>
 <ul>
-<li><a href="https://w3id.org/mixs/investigation_type">MIxS:investigation_type</a></li>
+<li>MIxS:investigation_type was included as a <code>see_also</code> but that term doesn't resolve any more</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -677,11 +677,12 @@
 <pre><code class="language-yaml">name: analysis_type
 description: Select all the data types associated or available for this biosample
 title: analysis/data type
+comments:
+- MIxS:investigation_type was included as a `see_also` but that term doesn't resolve
+  any more
 examples:
 - value: metagenomics; metabolomics; metaproteomics
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- MIxS:investigation_type
 rank: 3
 alias: analysis_type
 domain_of:

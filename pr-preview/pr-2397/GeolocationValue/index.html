@@ -430,8 +430,6 @@
 <details>
 <pre><code class="language-yaml">name: GeolocationValue
 description: A normalized value for a location on the earth's surface
-notes:
-- 'what did ''to_str: {latitude} {longitude}'' mean?'
 from_schema: https://w3id.org/nmdc/nmdc
 mappings:
 - schema:GeoCoordinates
@@ -457,8 +455,6 @@ class_uri: nmdc:GeolocationValue
 <details>
 <pre><code class="language-yaml">name: GeolocationValue
 description: A normalized value for a location on the earth's surface
-notes:
-- 'what did ''to_str: {latitude} {longitude}'' mean?'
 from_schema: https://w3id.org/nmdc/nmdc
 mappings:
 - schema:GeoCoordinates
@@ -520,7 +516,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:

@@ -5069,7 +5069,7 @@ slot_usage:
     description: Unique identifier for a biosample submitted to GOLD that matches
       the NMDC submitted biosample
     comments:
-    - This is the ID provided by GOLD that starts with 'GB'
+    - This is the ID provided by GOLD that starts with 'Gb'
   alternative_identifiers:
     name: alternative_identifiers
     description: Unique identifier for a biosample submitted to additional resources.
@@ -5490,7 +5490,7 @@ slot_usage:
     description: Unique identifier for a biosample submitted to GOLD that matches
       the NMDC submitted biosample
     comments:
-    - This is the ID provided by GOLD that starts with 'GB'
+    - This is the ID provided by GOLD that starts with 'Gb'
   alternative_identifiers:
     name: alternative_identifiers
     description: Unique identifier for a biosample submitted to additional resources.
@@ -5976,9 +5976,9 @@ attributes:
     description: Unique identifier for a biosample submitted to GOLD that matches
       the NMDC submitted biosample
     comments:
-    - This is the ID provided by GOLD that starts with 'GB'
+    - This is the ID provided by GOLD that starts with 'Gb'
     examples:
-    - value: https://bioregistry.io/gold:Gb0312930
+    - value: gold:Gb0312930
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: biosample_identifiers
@@ -5995,8 +5995,8 @@ attributes:
     name: insdc_biosample_identifiers
     description: identifiers for corresponding sample in INSDC
     examples:
-    - value: https://bioregistry.io/biosample:SAMEA5989477
-    - value: https://bioregistry.io/biosample:SAMD00212331
+    - value: biosample:SAMEA5989477
+    - value: biosample:SAMD00212331
       description: I13_N_5-10 sample from Soil fungal diversity along elevational
         gradients
     from_schema: https://w3id.org/nmdc/nmdc
@@ -21032,11 +21032,12 @@ attributes:
     name: analysis_type
     description: Select all the data types associated or available for this biosample
     title: analysis/data type
+    comments:
+    - MIxS:investigation_type was included as a `see_also` but that term doesn't resolve
+      any more
     examples:
     - value: metagenomics; metabolomics; metaproteomics
     from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIxS:investigation_type
     rank: 3
     alias: analysis_type
     owner: Biosample
@@ -21187,7 +21188,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:

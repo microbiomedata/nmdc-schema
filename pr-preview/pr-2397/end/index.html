@@ -640,7 +640,7 @@
 <ul>
 <li>
 <ul>
-<li>"constraint: end &gt; start" - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."</li>
+<li>"unenforced constraint: end &gt; start" - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."</li>
 </ul>
 </li>
 </ul>
@@ -670,8 +670,9 @@
 <pre><code class="language-yaml">name: end
 description: The end of the feature in positive 1-based integer coordinates
 comments:
-- '- &quot;constraint: end &gt; start&quot; - &quot;For features that cross the origin of a circular
-  feature,  end = the position of the end + the length of the landmark feature.&quot;'
+- '- &quot;unenforced constraint: end &gt; start&quot; - &quot;For features that cross the origin of
+  a circular feature,  end = the position of the end + the length of the landmark
+  feature.&quot;'
 from_schema: https://w3id.org/nmdc/nmdc
 close_mappings:
 - biolink:end_interbase_coordinate
