@@ -34,7 +34,8 @@ workflow_execution_set:
     started_at_time: '2024-07-07T14:48:51+00:00'
     ended_at_time: '2024-07-07T14:48:51+00:00'
     type: MetatranscriptomeAnnotationActivity
-    was_informed_by: nmdc:omprc-11-547rwq95
+    was_informed_by:
+      - nmdc:omprc-11-547rwq95
     execution_resource: LANL-B-div
     has_input:
      - nmdc:dobj-11-547rwq72
