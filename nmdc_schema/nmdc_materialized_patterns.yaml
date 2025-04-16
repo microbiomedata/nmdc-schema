@@ -3796,14 +3796,14 @@ enums:
           matter or metabalomics analysis.
       Metagenome Raw Reads:
         text: Metagenome Raw Reads
-        description: Interleaved paired-end raw sequencing data
+        description: Interleaved paired-end raw metagenome sequencing data
         annotations:
           file_name_pattern:
             tag: file_name_pattern
             value: ^\.fastq(\.gz)?$
       Metagenome Raw Read 1:
         text: Metagenome Raw Read 1
-        description: Read 1 raw sequencing data, aka forward reads
+        description: Read 1 raw metagenome sequencing data, aka forward reads
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -3812,7 +3812,32 @@ enums:
         - value: BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz
       Metagenome Raw Read 2:
         text: Metagenome Raw Read 2
-        description: Read 2 raw sequencing data, aka reverse reads
+        description: Read 2 raw metagenome sequencing data, aka reverse reads
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^.+_R2\.fastq(\.gz)?$
+        examples:
+        - value: BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz
+      Metatranscriptome Raw Reads:
+        text: Metatranscriptome Raw Reads
+        description: Interleaved paired-end raw metatranscriptome sequencing data
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^\.fastq(\.gz)?$
+      Metatranscriptome Raw Read 1:
+        text: Metatranscriptome Raw Read 1
+        description: Read 1 raw metatranscriptome sequencing data, aka forward reads
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^.+_R1\.fastq(\.gz)?$
+        examples:
+        - value: BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz
+      Metatranscriptome Raw Read 2:
+        text: Metatranscriptome Raw Read 2
+        description: Read 2 raw metatranscriptome sequencing data, aka reverse reads
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -3825,6 +3850,9 @@ enums:
       GC-MS Metabolomics Results:
         text: GC-MS Metabolomics Results
         description: GC-MS-based metabolite assignment results table
+      LC-MS Metabolomics Results:
+        text: LC-MS Metabolomics Results
+        description: LC-MS-based metabolite assignment results table
       Metaproteomics Workflow Statistics:
         text: Metaproteomics Workflow Statistics
         description: Aggregate workflow statistics file
@@ -4224,6 +4252,10 @@ enums:
         text: LC-MS Lipidomics Processed Data
         description: Processed data for the LC-MS-based lipidomics analysis in hdf5
           format
+      LC-MS Metabolomics Processed Data:
+        text: LC-MS Metabolomics Processed Data
+        description: Processed data for the LC-MS-based metabolomics analysis in hdf5
+          format
       Contaminants Amino Acid FASTA:
         text: Contaminants Amino Acid FASTA
         description: FASTA amino acid file for contaminant proteins commonly observed
@@ -4578,6 +4610,8 @@ enums:
     permissible_values:
       metabolomics:
         text: metabolomics
+      lipidomics:
+        text: lipidomics
       metagenomics:
         text: metagenomics
         description: Standard short-read metagenomic sequencing
@@ -17251,10 +17285,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mappings:
     - prov:wasGeneratedBy
-    range: WorkflowExecution
-    any_of:
-    - range: WorkflowExecution
-    - range: DataGeneration
+    range: DataEmitterProcess
   associated_dois:
     name: associated_dois
     description: A list of DOIs associated with a resource, such as a list of DOIS
@@ -17370,6 +17401,10 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: Instrument
     multivalued: true
+    pattern: ^^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: ^{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$
+      interpolated: true
   in_manifest:
     name: in_manifest
     description: one or more combinations of other DataObjects that can be analyzed
@@ -19298,17 +19333,28 @@ classes:
         slot_conditions:
           eluent_introduction_category:
             name: eluent_introduction_category
-            any_of:
-            - equals_string: liquid_chromatography
-            - equals_string: gas_chromatography
+            equals_string: liquid_chromatography
       postconditions:
         slot_conditions:
           has_chromatography_configuration:
             name: has_chromatography_configuration
             required: true
-      description: If eluent_introduction_category is liquid_chromatography or gas_chromatography,
-        then has_chromatography_configuration is required.
-      title: has_chromatography_configuration_required_if_lc_or_gc
+      description: If eluent_introduction_category is liquid_chromatography, then
+        has_chromatography_configuration is required.
+      title: has_chromatography_configuration_required_if_lc
+    - preconditions:
+        slot_conditions:
+          eluent_introduction_category:
+            name: eluent_introduction_category
+            equals_string: gas_chromatography
+      postconditions:
+        slot_conditions:
+          has_chromatography_configuration:
+            name: has_chromatography_configuration
+            required: true
+      description: If eluent_introduction_category is gas_chromatography, then has_chromatography_configuration
+        is required.
+      title: has_chromatography_configuration_required_if_gc
   Configuration:
     name: Configuration
     description: A set of parameters that define the actions of a process and is shared
@@ -19459,6 +19505,7 @@ classes:
     slot_usage:
       was_generated_by:
         name: was_generated_by
+        range: AnnotatingWorkflow
         required: true
         pattern: ^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
         structured_pattern:
@@ -19829,12 +19876,14 @@ classes:
           interpolated: true
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
       has_output:
         name: has_output
+        range: ProcessedSample
         pattern: ^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'
@@ -19936,12 +19985,20 @@ classes:
           syntax: '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:ChemicalConversionProcess
+  AnnotatingWorkflow:
+    name: AnnotatingWorkflow
+    description: A WorkflowExecution whose output indicates the potential functions
+      of genes or gene products
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: WorkflowExecution
+    abstract: true
+    class_uri: nmdc:AnnotatingWorkflow
   MetagenomeAnnotation:
     name: MetagenomeAnnotation
     description: A workflow execution activity that provides functional and structural
       annotation of assembled metagenome contigs
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecution
+    is_a: AnnotatingWorkflow
     slots:
     - img_identifiers
     - gold_analysis_project_identifiers
@@ -19958,6 +20015,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -21110,7 +21168,6 @@ classes:
     slots:
     - final_concentration
     - mass
-    - sample_state_information
     - source_concentration
     - known_as
     - substance_role
@@ -21692,9 +21749,7 @@ classes:
         slot_conditions:
           doi_category:
             name: doi_category
-            any_of:
-            - equals_string: dataset_doi
-            - equals_string: award_doi
+            equals_string: dataset_doi
       postconditions:
         slot_conditions:
           doi_provider:
@@ -21702,7 +21757,20 @@ classes:
             required: true
       description: If doi_category is a publication_doi, then doi_provider is not
         required. Otherwise, doi_provider is required.
-      title: dataset_award_dois_required
+      title: dataset_dois_require_provider
+    - preconditions:
+        slot_conditions:
+          doi_category:
+            name: doi_category
+            equals_string: award_doi
+      postconditions:
+        slot_conditions:
+          doi_provider:
+            name: doi_provider
+            required: true
+      description: If doi_category is a publication_doi, then doi_provider is not
+        required. Otherwise, doi_provider is required.
+      title: award_dois_require_provider
   Study:
     name: Study
     description: A study summarizes the overall goal of a research initiative and
@@ -21910,11 +21978,19 @@ classes:
           interpolated: true
       was_generated_by:
         name: was_generated_by
+        range: DataEmitterProcess
         pattern: ^^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: ^{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|^{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$
           interpolated: true
     class_uri: nmdc:DataObject
+  DataEmitterProcess:
+    name: DataEmitterProcess
+    description: A process that generates data objects as output.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: PlannedProcess
+    abstract: true
+    class_uri: nmdc:DataEmitterProcess
   DataGeneration:
     name: DataGeneration
     description: The methods and processes used to generate omics data from a biosample
@@ -21934,7 +22010,7 @@ classes:
     broad_mappings:
     - OBI:0000070
     - ISA:Assay
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     abstract: true
     slots:
     - add_date
@@ -21981,7 +22057,7 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - analysis
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     abstract: true
     slots:
     - ended_at_time
@@ -21999,6 +22075,7 @@ classes:
         required: true
       has_input:
         name: has_input
+        range: DataObject
         required: true
         pattern: ^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
@@ -22006,6 +22083,7 @@ classes:
           interpolated: true
       has_output:
         name: has_output
+        range: DataObject
         pattern: ^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
@@ -22090,6 +22168,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22138,6 +22217,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22146,7 +22226,7 @@ classes:
   MetatranscriptomeAnnotation:
     name: MetatranscriptomeAnnotation
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecution
+    is_a: AnnotatingWorkflow
     slots:
     - img_identifiers
     - gold_analysis_project_identifiers
@@ -22175,6 +22255,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22207,6 +22288,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22240,6 +22322,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22262,12 +22345,14 @@ classes:
           interpolated: true
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22299,6 +22384,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22321,6 +22407,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -22344,6 +22431,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
@@ -22352,7 +22440,7 @@ classes:
   MetaproteomicsAnalysis:
     name: MetaproteomicsAnalysis
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecution
+    is_a: AnnotatingWorkflow
     slots:
     - metaproteomics_analysis_category
     slot_usage:
@@ -22365,6 +22453,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
@@ -22386,6 +22475,7 @@ classes:
           interpolated: true
       was_informed_by:
         name: was_informed_by
+        range: MassSpectrometry
         pattern: ^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'
