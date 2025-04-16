@@ -543,8 +543,9 @@ attributes:
     name: end
     description: The end of the feature in positive 1-based integer coordinates
     comments:
-    - '- "constraint: end &gt; start" - "For features that cross the origin of a circular
-      feature,  end = the position of the end + the length of the landmark feature."'
+    - '- "unenforced constraint: end &gt; start" - "For features that cross the origin
+      of a circular feature,  end = the position of the end + the length of the landmark
+      feature."'
     from_schema: https://w3id.org/nmdc/nmdc
     close_mappings:
     - biolink:end_interbase_coordinate
@@ -587,7 +588,7 @@ attributes:
     description: The ID of the landmark used to establish the coordinate system for
       the current feature.
     todos:
-    - change range from string to object
+    - change range from string to a object like uriorcurie?
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: seqid
@@ -630,7 +631,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:

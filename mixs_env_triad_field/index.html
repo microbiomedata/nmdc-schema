@@ -522,6 +522,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      See Also
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -530,6 +539,15 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotations
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -583,6 +601,11 @@
 
 
 <h1 id="slot-mixs_env_triad_field">Slot: mixs_env_triad_field</h1>
+<p><em>The MIxS environmental triad provides context about where a sample was collected and what it consists of. Its component slots capture the biome that the sample was found in, nearby geographical features that might influence the organisms in the sample, and the substance that was displaced in the process of collecting the sample. Careful population of these slots makes it easier for data users to find samples that are similar, not just in terms of textual values, but through ontological relationships. Furthermore, NMDC requires that its three component slots are populated because the INSDC Biosample databases require that they are populated because the MIxS standard from the GSC requires that they are populated.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an abstract slot and should not be populated directly.</p>
+</div>
 <p>URI: <a href="https://w3id.org/nmdc/mixs_env_triad_field">nmdc:mixs_env_triad_field</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
@@ -595,9 +618,28 @@
 </ul>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../String/">String</a></li>
+<li>Range: <a href="../ControlledIdentifiedTermValue/">ControlledIdentifiedTermValue</a></li>
+</ul>
+<h2 id="see-also">See Also</h2>
+<ul>
+<li><a href="https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS">https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tooltip</td>
+<td>The MIxS environmental triad provides context about where a sample was collected and what it consists of.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -621,10 +663,34 @@
 <details>
 
 <pre><code class="language-yaml">name: mixs_env_triad_field
+annotations:
+  tooltip:
+    tag: tooltip
+    value: The MIxS environmental triad provides context about where a sample was
+      collected and what it consists of.
+    annotations:
+      source:
+        tag: source
+        value: https://link.springer.com/protocol/10.1007/978-1-0716-3838-5_20
+description: The MIxS environmental triad provides context about where a sample was
+  collected and what it consists of. Its component slots capture the biome that the
+  sample was found in, nearby geographical features that might influence the organisms
+  in the sample, and the substance that was displaced in the process of collecting
+  the sample. Careful population of these slots makes it easier for data users to
+  find samples that are similar, not just in terms of textual values, but through
+  ontological relationships. Furthermore, NMDC requires that its three component slots
+  are populated because the INSDC Biosample databases require that they are populated
+  because the MIxS standard from the GSC requires that they are populated.
 from_schema: https://w3id.org/nmdc/nmdc
+see_also:
+- https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
+created_by: orcid:0000-0002-5004-3362
+contributors:
+- orcid:0000-0001-9076-6066
 rank: 1000
+abstract: true
 alias: mixs_env_triad_field
-range: string
+range: ControlledIdentifiedTermValue
 
 </code></pre>
 

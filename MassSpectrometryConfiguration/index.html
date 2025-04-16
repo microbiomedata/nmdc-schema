@@ -573,7 +573,8 @@ attributes:
     name: resolution_categories
     description: The relative resolution at which spectra were collected.
     examples:
-    - value: '[''high'', ''low'']'
+    - value: high
+    - value: low
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: resolution_categories
@@ -712,7 +713,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:

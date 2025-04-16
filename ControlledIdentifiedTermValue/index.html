@@ -459,8 +459,6 @@
 <pre><code class="language-yaml">name: ControlledIdentifiedTermValue
 description: A controlled term or class from an ontology, requiring the presence of
   term with an id
-notes:
-- To be used for slots like env_broad_scale
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: ControlledTermValue
 slot_usage:
@@ -476,8 +474,6 @@ class_uri: nmdc:ControlledIdentifiedTermValue
 <pre><code class="language-yaml">name: ControlledIdentifiedTermValue
 description: A controlled term or class from an ontology, requiring the presence of
   term with an id
-notes:
-- To be used for slots like env_broad_scale
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: ControlledTermValue
 slot_usage:
@@ -488,8 +484,6 @@ attributes:
   term:
     name: term
     description: pointer to an ontology class
-    notes:
-    - 'removed ''slot_uri: rdf:type'''
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: term
@@ -514,7 +508,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:

@@ -623,8 +623,6 @@ attributes:
   external_database_identifiers:
     name: external_database_identifiers
     description: Link to corresponding identifier in external database
-    notes:
-    - had tried ranges of external identifier and string
     comments:
     - The value of this field is always a registered CURIE
     from_schema: https://w3id.org/nmdc/nmdc
@@ -720,7 +718,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:

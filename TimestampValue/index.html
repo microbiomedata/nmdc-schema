@@ -432,8 +432,6 @@
 <details>
 <pre><code class="language-yaml">name: TimestampValue
 description: A value that is a timestamp. The range should be ISO-8601
-notes:
-- 'removed the following slots: year, month, day'
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: AttributeValue
 class_uri: nmdc:TimestampValue
@@ -444,8 +442,6 @@ class_uri: nmdc:TimestampValue
 <details>
 <pre><code class="language-yaml">name: TimestampValue
 description: A value that is a timestamp. The range should be ISO-8601
-notes:
-- 'removed the following slots: year, month, day'
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: AttributeValue
 attributes:
@@ -464,7 +460,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:

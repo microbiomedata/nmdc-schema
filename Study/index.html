@@ -722,12 +722,11 @@
 </ul>
 <h2 id="comments">Comments</h2>
 <ul>
-<li>The Study class can include both consortia and research studies.</li>
+<li>The Study includes both consortia and research studies.</li>
 </ul>
 <h2 id="todos">TODOs</h2>
 <ul>
 <li>determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor</li>
-<li>project_name is redundant with name, so excluding it</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -768,7 +767,6 @@ alt_descriptions:
       submitted to ENA
 todos:
 - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
-- project_name is redundant with name, so excluding it
 notes:
 - sample GOLD link https://bioregistry.io/gold:Gs0110115
 - sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?
@@ -776,7 +774,7 @@ notes:
 - GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers,
   but no longer for the Study.id
 comments:
-- The Study class can include both consortia and research studies.
+- The Study includes both consortia and research studies.
 from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - proposal
@@ -920,7 +918,6 @@ alt_descriptions:
       submitted to ENA
 todos:
 - determine how to get data values for submitted_to_insdc, investigation_type, experimental_factor
-- project_name is redundant with name, so excluding it
 notes:
 - sample GOLD link https://bioregistry.io/gold:Gs0110115
 - sample insdc.srs link https://www.ebi.ac.uk/ena/browser/view/PRJEB45055 ?
@@ -928,7 +925,7 @@ notes:
 - GOLD, insdc.srs and mgnify are reasonable prefixes for alternative study identifiers,
   but no longer for the Study.id
 comments:
-- The Study class can include both consortia and research studies.
+- The Study includes both consortia and research studies.
 from_schema: https://w3id.org/nmdc/nmdc
 aliases:
 - proposal
@@ -1084,7 +1081,7 @@ attributes:
     comments:
     - uses the prefix GS (but possibly in a different case)
     examples:
-    - value: https://bioregistry.io/gold:Gs0110115
+    - value: gold:Gs0110115
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://gold.jgi.doe.gov/studies
@@ -1112,7 +1109,7 @@ attributes:
     - these are distinct IDs from INSDC SRA/ENA project identifiers, but are usually(?)
       one to one
     examples:
-    - value: https://bioregistry.io/bioproject:PRJNA366857
+    - value: bioproject:PRJNA366857
       description: Avena fatua rhizosphere microbial communities - H1_Rhizo_Litter_2
         metatranscriptome
     from_schema: https://w3id.org/nmdc/nmdc
@@ -1166,7 +1163,7 @@ attributes:
     name: mgnify_project_identifiers
     description: identifiers for corresponding project in MGnify
     examples:
-    - value: https://bioregistry.io/mgnify.proj:MGYS00005757
+    - value: mgnify.proj:MGYS00005757
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     is_a: study_identifiers
@@ -1673,7 +1670,6 @@ attributes:
     name: type
     description: the class_uri of the class that has been instantiated
     notes:
-    - replaces legacy nmdc:type slot
     - makes it easier to read example data files
     - required for polymorphic MongoDB collections
     examples:
