@@ -151,7 +151,17 @@ scrutinize-elements = "src.scripts.scrutinize_elements:process_schema_elements"
 slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
 
 [tool.deptry.per_rule_ignores]
-DEP002 = ["jsonasobj2", "sparqlwrapper", "plotly", "ruamel-yaml", "sparql-burger"] #  Listed as a dependency but "not used"
+DEP002 = [
+    "beautifulsoup4",
+    "jsonasobj2",
+    "pandas",
+    "plotly",
+    "psycopg2-binary",
+    "ruamel-yaml",
+    "sparql-burger",
+    "sparqlwrapper",
+    "tabulate",
+] #  Listed as a dependency but "not used" # many used in notebook or experimental code
 DEP003 = ["nmdc_data"] # Imported but only as a transitive dependency
 DEP004 = ["fastjsonschema"] # Imported but only declared as a dev dependency
 
