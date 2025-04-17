@@ -16,6 +16,9 @@ id: https://w3id.org/nmdc/nmdc
 version: 0.0.0
 license: https://creativecommons.org/publicdomain/zero/1.0/
 prefixes:
+  BFO:
+    prefix_prefix: BFO
+    prefix_reference: http://purl.obolibrary.org/obo/BFO_
   CATH:
     prefix_prefix: CATH
     prefix_reference: 'https://bioregistry.io/cath:'
@@ -28,6 +31,9 @@ prefixes:
   CHMO:
     prefix_prefix: CHMO
     prefix_reference: http://purl.obolibrary.org/obo/CHMO_
+  COG:
+    prefix_prefix: COG
+    prefix_reference: 'https://bioregistry.io/cog:'
   Contaminant:
     prefix_prefix: Contaminant
     prefix_reference: http://example.org/contaminant/
@@ -64,24 +70,39 @@ prefixes:
   ISA:
     prefix_prefix: ISA
     prefix_reference: http://example.org/isa/
+  KEGG.COMPOUND:
+    prefix_prefix: KEGG.COMPOUND
+    prefix_reference: 'https://bioregistry.io/kegg.compound:'
   KEGG.MODULE:
     prefix_prefix: KEGG.MODULE
     prefix_reference: 'https://bioregistry.io/kegg.module:'
   KEGG.ORTHOLOGY:
     prefix_prefix: KEGG.ORTHOLOGY
     prefix_reference: 'https://bioregistry.io/kegg.orthology:'
+  KEGG.REACTION:
+    prefix_prefix: KEGG.REACTION
+    prefix_reference: 'https://bioregistry.io/kegg.reaction:'
+  KEGG_PATHWAY:
+    prefix_prefix: KEGG_PATHWAY
+    prefix_reference: 'https://bioregistry.io/kegg.pathway:'
   MASSIVE:
     prefix_prefix: MASSIVE
     prefix_reference: 'https://bioregistry.io/reference/massive:'
   MESH:
     prefix_prefix: MESH
     prefix_reference: 'https://bioregistry.io/mesh:'
+  MISO:
+    prefix_prefix: MISO
+    prefix_reference: http://purl.obolibrary.org/obo/MISO_
   MIXS:
     prefix_prefix: MIXS
     prefix_reference: https://w3id.org/mixs/
   MS:
     prefix_prefix: MS
     prefix_reference: http://purl.obolibrary.org/obo/MS_
+  MetaCyc:
+    prefix_prefix: MetaCyc
+    prefix_reference: 'https://bioregistry.io/metacyc.compound:'
   MetaNetX:
     prefix_prefix: MetaNetX
     prefix_reference: http://example.org/metanetx/
@@ -124,12 +145,18 @@ prefixes:
   PUBCHEM.COMPOUND:
     prefix_prefix: PUBCHEM.COMPOUND
     prefix_reference: 'https://bioregistry.io/pubchem.compound:'
+  RHEA:
+    prefix_prefix: RHEA
+    prefix_reference: 'https://bioregistry.io/rhea:'
   RO:
     prefix_prefix: RO
     prefix_reference: http://purl.obolibrary.org/obo/RO_
   RetroRules:
     prefix_prefix: RetroRules
     prefix_reference: http://example.org/retrorules/
+  SEED:
+    prefix_prefix: SEED
+    prefix_reference: 'https://bioregistry.io/seed:'
   SIO:
     prefix_prefix: SIO
     prefix_reference: http://semanticscience.org/resource/SIO_
@@ -148,6 +175,12 @@ prefixes:
   UO:
     prefix_prefix: UO
     prefix_reference: http://purl.obolibrary.org/obo/UO_
+  UniProtKB:
+    prefix_prefix: UniProtKB
+    prefix_reference: 'https://bioregistry.io/uniprot:'
+  biolink:
+    prefix_prefix: biolink
+    prefix_reference: https://w3id.org/biolink/vocab/
   bioproject:
     prefix_prefix: bioproject
     prefix_reference: 'https://bioregistry.io/bioproject:'
@@ -157,12 +190,18 @@ prefixes:
   cas:
     prefix_prefix: cas
     prefix_reference: 'https://bioregistry.io/cas:'
+  dcterms:
+    prefix_prefix: dcterms
+    prefix_reference: http://purl.org/dc/terms/
   doi:
     prefix_prefix: doi
     prefix_reference: 'https://bioregistry.io/doi:'
   edam.data:
     prefix_prefix: edam.data
     prefix_reference: http://edamontology.org/data_
+  edam.format:
+    prefix_prefix: edam.format
+    prefix_reference: http://edamontology.org/format_
   emsl.project:
     prefix_prefix: emsl.project
     prefix_reference: 'https://bioregistry.io/emsl.project:'
@@ -172,15 +211,15 @@ prefixes:
   emsl_uuid_like:
     prefix_prefix: emsl_uuid_like
     prefix_reference: http://example.org/emsl_uuid_like/
-  my_emsl:
-    prefix_prefix: my_emsl
-    prefix_reference: https://release.my.emsl.pnnl.gov/released_data/
   generic:
     prefix_prefix: generic
     prefix_reference: https://example.org/generic/
   gnps.task:
     prefix_prefix: gnps.task
     prefix_reference: 'https://bioregistry.io/gnps.task:'
+  gold:
+    prefix_prefix: gold
+    prefix_reference: 'https://bioregistry.io/gold:'
   gtpo:
     prefix_prefix: gtpo
     prefix_reference: http://example.org/gtpo/
@@ -214,6 +253,9 @@ prefixes:
   mgnify.proj:
     prefix_prefix: mgnify.proj
     prefix_reference: 'https://bioregistry.io/mgnify.proj:'
+  my_emsl:
+    prefix_prefix: my_emsl
+    prefix_reference: https://release.my.emsl.pnnl.gov/released_data/
   neon.identifier:
     prefix_prefix: neon.identifier
     prefix_reference: http://example.org/neon/identifier/
@@ -223,87 +265,45 @@ prefixes:
   nmdc:
     prefix_prefix: nmdc
     prefix_reference: https://w3id.org/nmdc/
+  owl:
+    prefix_prefix: owl
+    prefix_reference: http://www.w3.org/2002/07/owl#
   prov:
     prefix_prefix: prov
     prefix_reference: http://www.w3.org/ns/prov#
+  qud:
+    prefix_prefix: qud
+    prefix_reference: http://qudt.org/1.1/schema/qudt#
   rdf:
     prefix_prefix: rdf
     prefix_reference: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs:
     prefix_prefix: rdfs
     prefix_reference: http://www.w3.org/2000/01/rdf-schema#
+  ror:
+    prefix_prefix: ror
+    prefix_reference: 'https://bioregistry.io/ror:'
+  schema:
+    prefix_prefix: schema
+    prefix_reference: http://schema.org/
   skos:
     prefix_prefix: skos
     prefix_reference: http://www.w3.org/2004/02/skos/core#
+  wgs84:
+    prefix_prefix: wgs84
+    prefix_reference: http://www.w3.org/2003/01/geo/wgs84_pos#
   wikidata:
     prefix_prefix: wikidata
     prefix_reference: http://www.wikidata.org/entity/
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
-  KEGG.COMPOUND:
-    prefix_prefix: KEGG.COMPOUND
-    prefix_reference: 'https://bioregistry.io/kegg.compound:'
-  MISO:
-    prefix_prefix: MISO
-    prefix_reference: http://purl.obolibrary.org/obo/MISO_
-  UniProtKB:
-    prefix_prefix: UniProtKB
-    prefix_reference: 'https://bioregistry.io/uniprot:'
-  biolink:
-    prefix_prefix: biolink
-    prefix_reference: https://w3id.org/biolink/vocab/
-  dcterms:
-    prefix_prefix: dcterms
-    prefix_reference: http://purl.org/dc/terms/
-  qud:
-    prefix_prefix: qud
-    prefix_reference: http://qudt.org/1.1/schema/qudt#
-  schema:
-    prefix_prefix: schema
-    prefix_reference: http://schema.org/
-  wgs84:
-    prefix_prefix: wgs84
-    prefix_reference: http://www.w3.org/2003/01/geo/wgs84_pos#
-  COG:
-    prefix_prefix: COG
-    prefix_reference: 'https://bioregistry.io/cog:'
-  KEGG.REACTION:
-    prefix_prefix: KEGG.REACTION
-    prefix_reference: 'https://bioregistry.io/kegg.reaction:'
-  KEGG_PATHWAY:
-    prefix_prefix: KEGG_PATHWAY
-    prefix_reference: 'https://bioregistry.io/kegg.pathway:'
-  MetaCyc:
-    prefix_prefix: MetaCyc
-    prefix_reference: 'https://bioregistry.io/metacyc.compound:'
-  RHEA:
-    prefix_prefix: RHEA
-    prefix_reference: 'https://bioregistry.io/rhea:'
-  SEED:
-    prefix_prefix: SEED
-    prefix_reference: 'https://bioregistry.io/seed:'
-  gold:
-    prefix_prefix: gold
-    prefix_reference: 'https://bioregistry.io/gold:'
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
   MIXS_yaml:
     prefix_prefix: MIXS_yaml
     prefix_reference: https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/
-  BFO:
-    prefix_prefix: BFO
-    prefix_reference: http://purl.obolibrary.org/obo/BFO_
-  owl:
-    prefix_prefix: owl
-    prefix_reference: http://www.w3.org/2002/07/owl#
-  edam.format:
-    prefix_prefix: edam.format
-    prefix_reference: http://edamontology.org/format_
-  ror:
-    prefix_prefix: ror
-    prefix_reference: 'https://bioregistry.io/ror:'
 emit_prefixes:
 - KEGG.ORTHOLOGY
 - MASSIVE
