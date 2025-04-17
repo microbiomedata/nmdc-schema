@@ -3814,14 +3814,14 @@ enums:
           matter or metabalomics analysis.
       Metagenome Raw Reads:
         text: Metagenome Raw Reads
-        description: Interleaved paired-end raw sequencing data
+        description: Interleaved paired-end raw metagenome sequencing data
         annotations:
           file_name_pattern:
             tag: file_name_pattern
             value: ^\.fastq(\.gz)?$
       Metagenome Raw Read 1:
         text: Metagenome Raw Read 1
-        description: Read 1 raw sequencing data, aka forward reads
+        description: Read 1 raw metagenome sequencing data, aka forward reads
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -3830,7 +3830,32 @@ enums:
         - value: BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz
       Metagenome Raw Read 2:
         text: Metagenome Raw Read 2
-        description: Read 2 raw sequencing data, aka reverse reads
+        description: Read 2 raw metagenome sequencing data, aka reverse reads
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^.+_R2\.fastq(\.gz)?$
+        examples:
+        - value: BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz
+      Metatranscriptome Raw Reads:
+        text: Metatranscriptome Raw Reads
+        description: Interleaved paired-end raw metatranscriptome sequencing data
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^\.fastq(\.gz)?$
+      Metatranscriptome Raw Read 1:
+        text: Metatranscriptome Raw Read 1
+        description: Read 1 raw metatranscriptome sequencing data, aka forward reads
+        annotations:
+          file_name_pattern:
+            tag: file_name_pattern
+            value: ^.+_R1\.fastq(\.gz)?$
+        examples:
+        - value: BMI_H25VYBGXH_19S_31WellG1_R1.fastq.gz
+      Metatranscriptome Raw Read 2:
+        text: Metatranscriptome Raw Read 2
+        description: Read 2 raw metatranscriptome sequencing data, aka reverse reads
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -4603,6 +4628,8 @@ enums:
     permissible_values:
       metabolomics:
         text: metabolomics
+      lipidomics:
+        text: lipidomics
       metagenomics:
         text: metagenomics
         description: Standard short-read metagenomic sequencing
@@ -17232,7 +17259,33 @@ slots:
     abstract: true
   mixs_env_triad_field:
     name: mixs_env_triad_field
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: The MIxS environmental triad provides context about where a sample
+          was collected and what it consists of.
+        annotations:
+          source:
+            tag: source
+            value: https://link.springer.com/protocol/10.1007/978-1-0716-3838-5_20
+    description: The MIxS environmental triad provides context about where a sample
+      was collected and what it consists of. Its component slots capture the biome
+      that the sample was found in, nearby geographical features that might influence
+      the organisms in the sample, and the substance that was displaced in the process
+      of collecting the sample. Careful population of these slots makes it easier
+      for data users to find samples that are similar, not just in terms of textual
+      values, but through ontological relationships. Furthermore, NMDC requires that
+      its three component slots are populated because the INSDC Biosample databases
+      require that they are populated because the MIxS standard from the GSC requires
+      that they are populated.
     from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/EnvironmentOntology/envo/wiki/Using-ENVO-with-MIxS
+    created_by: orcid:0000-0002-5004-3362
+    contributors:
+    - orcid:0000-0001-9076-6066
+    abstract: true
+    range: ControlledIdentifiedTermValue
   associated_studies:
     name: associated_studies
     description: The study associated with a resource.
@@ -17278,10 +17331,7 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     mappings:
     - prov:wasGeneratedBy
-    range: WorkflowExecution
-    any_of:
-    - range: WorkflowExecution
-    - range: DataGeneration
+    range: DataEmitterProcess
   associated_dois:
     name: associated_dois
     description: A list of DOIs associated with a resource, such as a list of DOIS
@@ -19327,17 +19377,28 @@ classes:
         slot_conditions:
           eluent_introduction_category:
             name: eluent_introduction_category
-            any_of:
-            - equals_string: liquid_chromatography
-            - equals_string: gas_chromatography
+            equals_string: liquid_chromatography
       postconditions:
         slot_conditions:
           has_chromatography_configuration:
             name: has_chromatography_configuration
             required: true
-      description: If eluent_introduction_category is liquid_chromatography or gas_chromatography,
-        then has_chromatography_configuration is required.
-      title: has_chromatography_configuration_required_if_lc_or_gc
+      description: If eluent_introduction_category is liquid_chromatography, then
+        has_chromatography_configuration is required.
+      title: has_chromatography_configuration_required_if_lc
+    - preconditions:
+        slot_conditions:
+          eluent_introduction_category:
+            name: eluent_introduction_category
+            equals_string: gas_chromatography
+      postconditions:
+        slot_conditions:
+          has_chromatography_configuration:
+            name: has_chromatography_configuration
+            required: true
+      description: If eluent_introduction_category is gas_chromatography, then has_chromatography_configuration
+        is required.
+      title: has_chromatography_configuration_required_if_gc
   Configuration:
     name: Configuration
     description: A set of parameters that define the actions of a process and is shared
@@ -19488,6 +19549,7 @@ classes:
     slot_usage:
       was_generated_by:
         name: was_generated_by
+        range: AnnotatingWorkflow
         required: true
         pattern: ^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
         structured_pattern:
@@ -19967,12 +20029,20 @@ classes:
           syntax: '{id_nmdc_prefix}:chcpr-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:ChemicalConversionProcess
+  AnnotatingWorkflow:
+    name: AnnotatingWorkflow
+    description: A WorkflowExecution whose output indicates the potential functions
+      of genes or gene products
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: WorkflowExecution
+    abstract: true
+    class_uri: nmdc:AnnotatingWorkflow
   MetagenomeAnnotation:
     name: MetagenomeAnnotation
     description: A workflow execution activity that provides functional and structural
       annotation of assembled metagenome contigs
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecution
+    is_a: AnnotatingWorkflow
     slots:
     - img_identifiers
     - gold_analysis_project_identifiers
@@ -19989,6 +20059,7 @@ classes:
         maximum_cardinality: 1
       was_informed_by:
         name: was_informed_by
+        range: NucleotideSequencing
         pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
@@ -21141,7 +21212,6 @@ classes:
     slots:
     - final_concentration
     - mass
-    - sample_state_information
     - source_concentration
     - known_as
     - substance_role
@@ -21712,9 +21782,7 @@ classes:
         slot_conditions:
           doi_category:
             name: doi_category
-            any_of:
-            - equals_string: dataset_doi
-            - equals_string: award_doi
+            equals_string: dataset_doi
       postconditions:
         slot_conditions:
           doi_provider:
@@ -21722,7 +21790,20 @@ classes:
             required: true
       description: If doi_category is a publication_doi, then doi_provider is not
         required. Otherwise, doi_provider is required.
-      title: dataset_award_dois_required
+      title: dataset_dois_require_provider
+    - preconditions:
+        slot_conditions:
+          doi_category:
+            name: doi_category
+            equals_string: award_doi
+      postconditions:
+        slot_conditions:
+          doi_provider:
+            name: doi_provider
+            required: true
+      description: If doi_category is a publication_doi, then doi_provider is not
+        required. Otherwise, doi_provider is required.
+      title: award_dois_require_provider
   Study:
     name: Study
     description: A study summarizes the overall goal of a research initiative and
@@ -21929,11 +22010,19 @@ classes:
           interpolated: true
       was_generated_by:
         name: was_generated_by
+        range: DataEmitterProcess
         pattern: ^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:DataObject
+  DataEmitterProcess:
+    name: DataEmitterProcess
+    description: A process that generates data objects as output.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: PlannedProcess
+    abstract: true
+    class_uri: nmdc:DataEmitterProcess
   DataGeneration:
     name: DataGeneration
     description: The methods and processes used to generate omics data from a biosample
@@ -21953,7 +22042,7 @@ classes:
     broad_mappings:
     - OBI:0000070
     - ISA:Assay
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     abstract: true
     slots:
     - add_date
@@ -22000,7 +22089,7 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     aliases:
     - analysis
-    is_a: PlannedProcess
+    is_a: DataEmitterProcess
     abstract: true
     slots:
     - ended_at_time
@@ -22169,7 +22258,7 @@ classes:
   MetatranscriptomeAnnotation:
     name: MetatranscriptomeAnnotation
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecution
+    is_a: AnnotatingWorkflow
     slots:
     - img_identifiers
     - gold_analysis_project_identifiers
@@ -22288,6 +22377,7 @@ classes:
           interpolated: true
       has_input:
         name: has_input
+        range: Sample
         pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
@@ -22382,7 +22472,7 @@ classes:
   MetaproteomicsAnalysis:
     name: MetaproteomicsAnalysis
     from_schema: https://w3id.org/nmdc/nmdc
-    is_a: WorkflowExecution
+    is_a: AnnotatingWorkflow
     slots:
     - metaproteomics_analysis_category
     slot_usage:
