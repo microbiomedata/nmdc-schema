@@ -18,75 +18,100 @@ imports:
   - workflow_execution_activity
 
 prefixes:
+  BFO: "http://purl.obolibrary.org/obo/BFO_"
   CATH: "https://bioregistry.io/cath:"
   CHEBI: "http://purl.obolibrary.org/obo/CHEBI_"
   CHEMBL.COMPOUND: "https://bioregistry.io/chembl.compound:" # https://bioregistry.io/chembl.compound:CHEMBL465070
   CHMO: "http://purl.obolibrary.org/obo/CHMO_"
-  Contaminant: http://example.org/contaminant/ # present in MongoDB
+  COG: "https://bioregistry.io/cog:"
+  Contaminant: "http://example.org/contaminant/" # only because it is present in MongoDB
   DRUGBANK: "https://bioregistry.io/drugbank:" # https://bioregistry.io/drugbank:DB14938
   EC: "https://bioregistry.io/eccode:" # https://bioregistry.io/eccode:1.1.1.1
-  EFO: http://www.ebi.ac.uk/efo/
+  EFO: "http://www.ebi.ac.uk/efo/"
   EGGNOG: "https://bioregistry.io/eggnog:" # https://bioregistry.io/eggnog:veNOG12876
   ENVO: "http://purl.obolibrary.org/obo/ENVO_"
-  FBcv: "http://purl.obolibrary.org/obo/FBcv_"
+  FBcv: "http://purl.obolibrary.org/obo/FBcv_" # for Biosample only
   FMA: "http://purl.obolibrary.org/obo/FMA_"
+  GENEPIO: "http://purl.obolibrary.org/obo/GENEPIO_" # for library_preparation_kit, contig identifier and count only
   GO: "http://purl.obolibrary.org/obo/GO_"
   HMDB: "https://bioregistry.io/hmdb:" # https://bioregistry.io/hmdb:HMDB00001
-  ISA: http://example.org/isa/
+  ISA: "http://example.org/isa/"
+  KEGG.COMPOUND: "https://bioregistry.io/kegg.compound:"
+  KEGG.MODULE: "https://bioregistry.io/kegg.module:" #https://bioregistry.io/kegg.module:M00002
   KEGG.ORTHOLOGY: "https://bioregistry.io/kegg.orthology:"  # https://github.com/prefixcommons/biocontext/blob/master/registry/idot_context.jsonld
+  KEGG.REACTION: "https://bioregistry.io/kegg.reaction:"
+  KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:"
   MASSIVE: "https://bioregistry.io/reference/massive:"
   MESH: "https://bioregistry.io/mesh:" # https://bioregistry.io/mesh:C063233
+  MISO: "http://purl.obolibrary.org/obo/MISO_"
+  MIXS: "https://w3id.org/mixs/"
   MS: "http://purl.obolibrary.org/obo/MS_"
-  MetaNetX: http://example.org/metanetx/
-  NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
+  MetaCyc: "https://bioregistry.io/metacyc.compound:"
+  MetaNetX: "http://example.org/metanetx/"
   NCBI: "http://example.com/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
-  NCIT: "http://purl.obolibrary.org/obo/NCIT_"
-  OBI: http://purl.obolibrary.org/obo/OBI_
-  ORCID: https://orcid.org/
+  NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
+  NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
+  OBI: "http://purl.obolibrary.org/obo/OBI_"
+  OMIT: "http://purl.obolibrary.org/obo/OMIT_" # for RNA subtypes only
+  ORCID: "https://orcid.org/"
   PANTHER.FAMILY: "https://bioregistry.io/panther.family:" # https://bioregistry.io/panther.family:PTHR12345
   PATO: "http://purl.obolibrary.org/obo/PATO_"
-  PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
   PFAM.CLAN: "https://bioregistry.io/pfam.clan:" # https://bioregistry.io/pfam.clan:CL0192
+  PFAM: "https://bioregistry.io/pfam:" # https://bioregistry.io/pfam:PF11779
   PO: "http://purl.obolibrary.org/obo/PO_"
   PR: "http://purl.obolibrary.org/obo/PR_"
   PUBCHEM.COMPOUND: "https://bioregistry.io/pubchem.compound:"
+  RHEA: "https://bioregistry.io/rhea:"
   RO: "http://purl.obolibrary.org/obo/RO_"
-  RetroRules: http://example.org/retrorules/
+  RetroRules: "http://example.org/retrorules/"
+  SEED: "https://bioregistry.io/seed:"
+  SIO: "http://semanticscience.org/resource/SIO_" # for Study, StudyCategoryEnum PVs, objective
   SO: "http://purl.obolibrary.org/obo/SO_"
   SUPFAM: "https://bioregistry.io/supfam:" # 	https://bioregistry.io/supfam:SSF57615
   TIGRFAM: "https://bioregistry.io/tigrfam:" # https://bioregistry.io/tigrfam:TIGR00010
   UBERON: "http://purl.obolibrary.org/obo/UBERON_"
   UO: "http://purl.obolibrary.org/obo/UO_"
-  bioproject: "https://identifiers.org/bioproject:"
+  UniProtKB: "https://bioregistry.io/uniprot:"
+  biolink: "https://w3id.org/biolink/vocab/"
+  bioproject: "https://bioregistry.io/bioproject:"
   biosample: "https://bioregistry.io/biosample:"
   cas: "https://bioregistry.io/cas:"
+  dcterms: "http://purl.org/dc/terms/"
   doi: "https://bioregistry.io/doi:"
-  edam.data: "http://edamontology.org/data_"
+  edam.data: "http://edamontology.org/data_" # for doi_value and DataCategoryEnum only
+  edam.format: "http://edamontology.org/format_" # for 'Configuration toml' PV only only
   emsl.project: "https://bioregistry.io/emsl.project:"
   emsl: "http://example.org/emsl_in_mongodb/"
   emsl_uuid_like: "http://example.org/emsl_uuid_like/"
-  generic: https://example.org/generic/
+  generic: "https://example.org/generic/"
   gnps.task: "https://bioregistry.io/gnps.task:"
-  gtpo: http://example.org/gtpo/
-  igsn: https://app.geosamples.org/sample/igsn/
+  gold: "https://bioregistry.io/gold:"
+  gtpo: "http://example.org/gtpo/"
+  igsn: "https://app.geosamples.org/sample/igsn/"
   img.taxon: "https://bioregistry.io/img.taxon:"
+  insdc.sra: "https://bioregistry.io/insdc.sra:"
   jgi.analysis: "https://data.jgi.doe.gov/search?q="
-  jgi.proposal: "https://bioregistry.io/jgi.proposal:"
-  jgi: http://example.org/jgi/
+  jgi.proposal: 'https://bioregistry.io/jgi.proposal:'
+  jgi: "http://example.org/jgi/"
   kegg: "https://bioregistry.io/kegg:" # https://bioregistry.io/kegg:hsa00190
-  KEGG.MODULE: "https://bioregistry.io/kegg.module:" #https://bioregistry.io/kegg.module:M00002
-  linkml: https://w3id.org/linkml/
+  linkml: "https://w3id.org/linkml/"
+  mgnify.analysis: "https://bioregistry.io/mgnify.analysis:" # https://www.ebi.ac.uk/metagenomics/analyses/MGYA00002270
   mgnify.proj: "https://bioregistry.io/mgnify.proj:"
   my_emsl: "https://release.my.emsl.pnnl.gov/released_data/"
-  neon.identifier: http://example.org/neon/identifier/
-  neon.schema: http://example.org/neon/schema/
-  nmdc: https://w3id.org/nmdc/
-  prov: http://www.w3.org/ns/prov#
-  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-  rdfs: http://www.w3.org/2000/01/rdf-schema#
-  skos: http://www.w3.org/2004/02/skos/core#
+  neon.identifier: "http://example.org/neon/identifier/"
+  neon.schema: "http://example.org/neon/schema/"
+  nmdc: "https://w3id.org/nmdc/"
+  owl: "http://www.w3.org/2002/07/owl#"
+  prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
+  qud: "http://qudt.org/1.1/schema/qudt#"
+  rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  rdfs: "http://www.w3.org/2000/01/rdf-schema#"
+  ror: 'https://bioregistry.io/ror:' # https://ror.org/
+  schema: "http://schema.org/"
+  skos: "http://www.w3.org/2004/02/skos/core#"
+  wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
   wikidata: "http://www.wikidata.org/entity/"
-  xsd: http://www.w3.org/2001/XMLSchema#
+  xsd: "http://www.w3.org/2001/XMLSchema#"
 
 default_prefix: nmdc
 default_range: string
@@ -132,7 +157,8 @@ classes:
     class_uri: nmdc:NucleotideSequencing
     is_a: DataGeneration
     description: A DataGeneration in which the sequence of DNA or RNA molecules is generated.
-    comments: For example data generated from an Illumina or Pacific Biosciences instrument.
+    comments:
+      - For example data generated from an Illumina or Pacific Biosciences instrument.
     slots:
       - gold_sequencing_project_identifiers
       - insdc_bioproject_identifiers
@@ -486,7 +512,7 @@ classes:
           interpolated: true
 
   SubSamplingProcess:
-    class_uri: 'nmdc:SubSamplingProcess'
+    class_uri: nmdc:SubSamplingProcess
     description: >
       Separating a sample aliquot from the starting material for downstream activity.
     related_mappings:
@@ -533,7 +559,7 @@ classes:
           interpolated: true
 
   MixingProcess:
-    class_uri: 'nmdc:MixingProcess'
+    class_uri: nmdc:MixingProcess
     description: >
       The combining of components, particles or layers into a more homogeneous state.
     contributors:
@@ -566,7 +592,7 @@ classes:
           interpolated: true
 
   FiltrationProcess:
-    class_uri: 'nmdc:FiltrationProcess'
+    class_uri: nmdc:FiltrationProcess
     description: >-
       The process of segregation of phases; e.g. the separation of suspended solids from a liquid or gas, usually by forcing a carrier gas or liquid through a porous medium.
     related_mappings:
@@ -606,7 +632,7 @@ classes:
           interpolated: true
 
   StorageProcess:
-    class_uri: 'nmdc:StorageProcess'
+    class_uri: nmdc:StorageProcess
     description: >-
       A planned process with the objective to preserve and protect material entities by placing them in an identified 
       location which may have a controlled environment.
@@ -637,7 +663,7 @@ classes:
         range: ProcessedSample
 
   ChromatographicSeparationProcess:
-    class_uri: 'nmdc:ChromatographicSeparationProcess'
+    class_uri: nmdc:ChromatographicSeparationProcess
     description:
       The process of using a selective partitioning of the analyte or interferent between two immiscible phases.
     contributors:
@@ -666,7 +692,7 @@ classes:
           interpolated: true
 
   DissolvingProcess:
-    class_uri: 'nmdc:DissolvingProcess'
+    class_uri: nmdc:DissolvingProcess
     aliases:
       - Solubilization
     description: >
@@ -987,13 +1013,13 @@ slots:
     range: string
     pattern: '^\d+(-\d+)*$'
     description: Dash-delimited ordered list of NCBI taxonomy identifiers (TaxId)
-    comments:
-      - Example 1-131567-2759-2611352-33682-191814-2603949
+    examples:
+      - value: 1-131567-2759-2611352-33682-191814-2603949
   ncbi_lineage:
     range: string
     description: Comma delimited ordered list of NCBI taxonomy names.
-    comments:
-      - Example root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
+    examples:
+      - value: root,cellular organisms,Eukaryota,Discoba,Euglenozoa,Diplonemea,Diplonemidae
 
   has_failure_categorization:
     range: FailureCategorization
@@ -1017,9 +1043,8 @@ slots:
     range: ResolutionCategoryEnum
     description: The relative resolution at which spectra were collected.
     examples:
-      - value:
-          - high
-          - low
+      - value: high
+      - value: low
     multivalued: true
   mass_spectrometry_acquisition_strategy:
     range: MassSpectrometryAcquisitionStrategyEnum
@@ -1069,16 +1094,8 @@ slots:
 
   library_preparation_kit:
     range: string
-
-  ## WHY ARE THESE COMMENTED OUT?
-  #    exact_mappings:
-  #      - GENEPIO:0001450
-  #  processed_date: # can we move this or infer this from the date of some other process?
-  #    #    range: date
-  #    range: string
-  #  extraction_date: # replacing with start_ and end_date
-  #    #    range: date
-  #    range: string
+    exact_mappings:
+      - GENEPIO:0001450
 
   pcr_cycles:
     range: integer
