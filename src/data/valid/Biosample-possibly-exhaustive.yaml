@@ -1108,8 +1108,10 @@ tan:
   type: nmdc:QuantityValue
   has_raw_value: xxx
 temp:
-  type: nmdc:QuantityValue
+  type: nmdc:QuantityValueCelsius
   has_raw_value: 25 degree Celsius
+  has_numeric_value: 25
+  has_unit: Cel
 temp_out:
   type: nmdc:QuantityValue
   has_raw_value: xxx
