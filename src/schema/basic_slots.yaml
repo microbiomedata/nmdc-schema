@@ -995,13 +995,12 @@ enums:
 
       Direct Infusion FT ICR-MS Raw Data:
         description:
-          Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
-          mass spectrometry raw data acquired in broadband full scan mode
+          Direct infusion Fourier transform ion cyclotron resonance
+          mass spectrometry raw data
       
       LC FT-ICR MS Raw Data:
         description:
-          Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
-          in broadband full scan mode
+          Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
 
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
