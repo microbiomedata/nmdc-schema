@@ -688,6 +688,17 @@ enums:
 
       FT ICR-MS Analysis Results:
         description: FT ICR-MS-based molecular formula assignment results table
+      
+      Direct Infusion FT-ICR MS QC Plots:
+        description:
+          Quality control plots for FT-ICR MS raw data acquired by direct infusion
+
+      LC FT-ICR MS Analysis Results:
+        description: FT-ICR MS-based molecular formula assignment results tables
+
+      LC FT-ICR MS QC Plots:
+        description:
+          Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
 
       GC-MS Metabolomics Results:
         description: GC-MS-based metabolite assignment results table
@@ -986,6 +997,11 @@ enums:
         description:
           Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
           mass spectrometry raw data acquired in broadband full scan mode
+      
+      LC FT-ICR MS Raw Data:
+        description:
+          Fourier Transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
+          in broadband full scan mode
 
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
