@@ -6,3 +6,4 @@ md5_checksum: "22afa3d49b73eaec2e9787a6b88fbdc3"
 name: Crispr Terms
 type: nmdc:DataObject
 url: http://example.com
+data_object_type: CheckM Statistics
