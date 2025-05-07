@@ -3105,7 +3105,7 @@ data_object_set:
     name: Froze_Core_2015_S1_20_30_19_Metab_raw_data.processed
     description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
     data_category: processed_data
-    data_object_type: FT ICR-MS Analysis Results
+    data_object_type: Direct Infusion FT-ICR MS Analysis Results
     file_size_bytes: 5262400
   - id: nmdc:dobj-12-krhrtjw9
     type: nmdc:DataObject

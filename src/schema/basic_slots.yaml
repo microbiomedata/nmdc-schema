@@ -57,7 +57,7 @@ slots:
     range: FileTypeEnum
     description: The type of file represented by the data object.
     examples:
-      - value: FT ICR-MS Analysis Results
+      - value: Direct Infusion FT-ICR MS Analysis Results
       - value: GC-MS Metabolomics Results
     structured_aliases:
       data_object_type:
@@ -686,8 +686,19 @@ enums:
         annotations:
           file_name_pattern: '^.+_R2\.fastq(\.gz)?$'
 
-      FT ICR-MS Analysis Results:
-        description: FT ICR-MS-based molecular formula assignment results table
+      Direct Infusion FT-ICR MS Analysis Results:
+        description: FT-ICR MS based molecular formula assignment results table
+      
+      Direct Infusion FT-ICR MS QC Plots:
+        description:
+          Quality control plots for FT-ICR MS raw data acquired by direct infusion
+
+      LC FT-ICR MS Analysis Results:
+        description: LC FT-ICR MS-based molecular formula assignment results tables
+
+      LC FT-ICR MS QC Plots:
+        description:
+          Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
 
       GC-MS Metabolomics Results:
         description: GC-MS-based metabolite assignment results table
@@ -984,8 +995,12 @@ enums:
 
       Direct Infusion FT ICR-MS Raw Data:
         description:
-          Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
-          mass spectrometry raw data acquired in broadband full scan mode
+          Direct infusion Fourier transform ion cyclotron resonance
+          mass spectrometry raw data
+      
+      LC FT-ICR MS Raw Data:
+        description:
+          Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
 
       LC-DDA-MS/MS Raw Data:
         description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
