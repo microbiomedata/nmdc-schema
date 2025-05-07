@@ -636,9 +636,24 @@
 <td>Read 2 raw metatranscriptome sequencing data, aka reverse reads</td>
 </tr>
 <tr>
-<td>FT ICR-MS Analysis Results</td>
+<td>Direct Infusion FT-ICR MS Analysis Results</td>
 <td>None</td>
-<td>FT ICR-MS-based molecular formula assignment results table</td>
+<td>FT-ICR MS based molecular formula assignment results table</td>
+</tr>
+<tr>
+<td>Direct Infusion FT-ICR MS QC Plots</td>
+<td>None</td>
+<td>Quality control plots for FT-ICR MS raw data acquired by direct infusion</td>
+</tr>
+<tr>
+<td>LC FT-ICR MS Analysis Results</td>
+<td>None</td>
+<td>LC FT-ICR MS-based molecular formula assignment results tables</td>
+</tr>
+<tr>
+<td>LC FT-ICR MS QC Plots</td>
+<td>None</td>
+<td>Quality control plots for FT-ICR MS raw data acquired with liquid chromatogra...</td>
 </tr>
 <tr>
 <td>GC-MS Metabolomics Results</td>
@@ -983,7 +998,12 @@
 <tr>
 <td>Direct Infusion FT ICR-MS Raw Data</td>
 <td>None</td>
-<td>Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance mass spect...</td>
+<td>Direct infusion Fourier transform ion cyclotron resonance mass spectrometry r...</td>
+</tr>
+<tr>
+<td>LC FT-ICR MS Raw Data</td>
+<td>None</td>
+<td>Fourier transform ion cyclotron resonance mass spectrometry raw data acquired...</td>
 </tr>
 <tr>
 <td>LC-DDA-MS/MS Raw Data</td>
@@ -1167,9 +1187,19 @@ permissible_values:
         value: ^.+_R2\.fastq(\.gz)?$
     examples:
     - value: BMI_H25VYBGXH_19S_31WellG1_R2.fastq.gz
-  FT ICR-MS Analysis Results:
-    text: FT ICR-MS Analysis Results
-    description: FT ICR-MS-based molecular formula assignment results table
+  Direct Infusion FT-ICR MS Analysis Results:
+    text: Direct Infusion FT-ICR MS Analysis Results
+    description: FT-ICR MS based molecular formula assignment results table
+  Direct Infusion FT-ICR MS QC Plots:
+    text: Direct Infusion FT-ICR MS QC Plots
+    description: Quality control plots for FT-ICR MS raw data acquired by direct infusion
+  LC FT-ICR MS Analysis Results:
+    text: LC FT-ICR MS Analysis Results
+    description: LC FT-ICR MS-based molecular formula assignment results tables
+  LC FT-ICR MS QC Plots:
+    text: LC FT-ICR MS QC Plots
+    description: Quality control plots for FT-ICR MS raw data acquired with liquid
+      chromatography
   GC-MS Metabolomics Results:
     text: GC-MS Metabolomics Results
     description: GC-MS-based metabolite assignment results table
@@ -1553,8 +1583,12 @@ permissible_values:
     description: Annotation statistics report
   Direct Infusion FT ICR-MS Raw Data:
     text: Direct Infusion FT ICR-MS Raw Data
-    description: Direct infusion 21 Tesla Fourier Transform ion cyclotron resonance
-      mass spectrometry raw data acquired in broadband full scan mode
+    description: Direct infusion Fourier transform ion cyclotron resonance mass spectrometry
+      raw data
+  LC FT-ICR MS Raw Data:
+    text: LC FT-ICR MS Raw Data
+    description: Fourier transform ion cyclotron resonance mass spectrometry raw data
+      acquired with liquid chromatography
   LC-DDA-MS/MS Raw Data:
     text: LC-DDA-MS/MS Raw Data
     description: Liquid chromatographically separated MS1 and Data-Dependent MS2 binary
