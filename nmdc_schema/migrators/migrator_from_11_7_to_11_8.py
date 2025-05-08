@@ -1,5 +1,5 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.helpers import load_json_asset
+from nmdc_schema.migrators.helpers import load_yaml_asset
 
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
@@ -22,7 +22,7 @@ class Migrator(MigratorBase):
         >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_category": "Category"})
         {'id': 123, 'type': 'nmdc:DataObject', 'data_category': 'Category'}
         """
-        data_category_map = load_json_asset('migrator_from_11_7_to_11_8/data_category_map.json')
+        data_category_map = load_yaml_asset('migrator_from_11_7_to_11_8/data_category_map.yaml')
 
         if not data_object.get("data_category"):
             try:
