@@ -1,0 +1,171 @@
+# This shows an example where three ProcessedSamples are obtained from one MPLEx extraction
+# and then have downstream processes applied to get the last ProcessedSample before DataGeneration
+# Since we can't rely on LinkML list ordering to identify samples, notice that 
+# the only STRUCTURED (i.e. not the description or name) way to tell which ProcessedSample is which
+# is the sampled_portion slot
+# This has implications downstream for distinguishing processed data on the data portal
+
+material_processing_set:
+- id: nmdc:extrp-99-01
+  type: nmdc:Extraction
+  name: MPLEx_extraction
+  description: MPLEx extraction of nmdc:procsm-99-99 to obtain metabolites, proteins, and lipids
+  has_input:
+    - nmdc:procsm-99-99
+  has_output:
+    - nmdc:procsm-99-01 # metabolites
+    - nmdc:procsm-99-02 # proteins
+    - nmdc:procsm-99-03 # lipids
+  processing_institution: EMSL
+  extraction_targets:
+    - metabolite
+    - protein
+    - lipid
+  substances_used:
+    - type: nmdc:PortionOfSubstance
+      known_as: chloroform
+      substance_role: solvent
+      volume:
+        type: nmdc:QuantityValue
+        has_raw_value: 13.33 mL
+        has_numeric_value: 13.33
+        has_unit: mL
+    - type: nmdc:PortionOfSubstance
+      known_as: methanol
+      substance_role: solvent
+      volume:
+        type: nmdc:QuantityValue
+        has_raw_value: 6.67 mL
+        has_numeric_value: 6.67
+        has_unit: mL
+    - type: nmdc:PortionOfSubstance
+      known_as: water
+      substance_role: solvent
+      volume:
+        type: nmdc:QuantityValue
+        has_raw_value: 4 mL
+        has_numeric_value: 4
+        has_unit: mL
+
+- id: nmdc:dispro-99-01
+  type: nmdc:DissolvingProcess
+  description: Dissolving metabolites from nmdc:procsm-99-01
+  name: resuspend_metabolites
+  processing_institution: EMSL
+  has_input: nmdc:procsm-99-01 # from mplex
+  has_output: nmdc:procsm-99-04 # DataGeneration.has_input
+  substances_used:
+    - type: nmdc:PortionOfSubstance
+      known_as: chloroform
+      substance_role: solvent
+      sample_state_information: solid
+      volume:
+        type: nmdc:QuantityValue
+        has_raw_value: 0.3333 mL
+        has_numeric_value: 0.3333
+        has_unit: mL
+    - type: nmdc:PortionOfSubstance
+      known_as: methanol
+      substance_role: solvent
+      sample_state_information: solid
+      volume:
+        type: nmdc:QuantityValue
+        has_raw_value: 0.1667 mL
+        has_numeric_value: 0.1667
+        has_unit: mL
+
+- id: nmdc:chcpr-99-01
+  type: nmdc:ChemicalConversionProcess
+  name: Protein_digestion_trypsin
+  description: Trypsin digestion of proteins from nmdc:procsm-99-02 for analysis
+  has_input:
+    - nmdc:procsm-99-02 # from mplex
+  has_output:
+    - nmdc:procsm-99-05 # DataGeneration.has_input
+  processing_institution: EMSL
+  chemical_conversion_category: protease_cleavage
+  substances_used:
+    - type: nmdc:PortionOfSubstance
+      known_as: Trypsin
+      substance_role: ms_proteolytic_enzyme
+      volume: 
+        type: nmdc:QuantityValue
+        has_raw_value: 0.004 mL
+        has_unit: mL
+        has_numeric_value: 0.004
+  temperature:
+    type: nmdc:QuantityValue
+    has_raw_value: 37 C
+    has_unit: C
+    has_numeric_value: 37
+  duration:
+    type: nmdc:QuantityValue
+    has_raw_value: 3 h
+    has_unit: h
+    has_numeric_value: 3
+
+- id: nmdc:dispro-99-02
+  type: nmdc:DissolvingProcess
+  description: Dissolving lipids from nmdc:procsm-99-03
+  name: Dissolving Lipids
+  processing_institution: EMSL
+  has_input: nmdc:procsm-99-03 # from mplex
+  has_output: nmdc:procsm-99-06 # DataGeneration.has_input
+  substances_used:
+    - type: nmdc:PortionOfSubstance
+      known_as: chloroform
+      substance_role: solvent
+      sample_state_information: solid
+      volume:
+        type: nmdc:QuantityValue
+        has_raw_value: 0.3333 mL
+        has_numeric_value: 0.3333
+        has_unit: mL
+    - type: nmdc:PortionOfSubstance
+      known_as: methanol
+      substance_role: solvent
+      sample_state_information: solid
+      volume:
+        type: nmdc:QuantityValue
+        has_raw_value: 0.1667 mL
+        has_numeric_value: 0.1667
+        has_unit: mL
+
+processed_sample_set:
+- id: nmdc:procsm-99-01
+  type: nmdc:ProcessedSample
+  name: methanol_extracted_metabolites
+  description: metabolites in methanol from MPLEx
+  sampled_portion: polar_layer
+
+- id: nmdc:procsm-99-02
+  type: nmdc:ProcessedSample
+  name: extracted_proteins
+  description: protein interlayer from MPLEx
+  sampled_portion: organic_layer
+
+- id: nmdc:procsm-99-03
+  type: nmdc:ProcessedSample
+  name: chloroform_extracted_lipids
+  description: lipids in chloroform from MPLEx
+  # sampled_portion:
+
+- id: nmdc:procsm-99-04
+  type: nmdc:ProcessedSample
+  name: resuspended_metabolites
+  description: resuspended metabolites for GC-MS
+  sampled_portion: polar_layer
+
+- id: nmdc:procsm-99-05
+  type: nmdc:ProcessedSample
+  name: trypsin_digested_proteins
+  description: digested proteins for LC-MS
+  sampled_portion: organic_layer
+
+- id: nmdc:procsm-99-06
+  type: nmdc:ProcessedSample
+  name: resuspended_lipids
+  description: resuspended lipids for LC-MS
+  # sampled_portion: notice that without sampled_portion we would have to parse the name or description to know what this is
+
+

@@ -955,8 +955,13 @@ enums:
         aliases:
           - bottom_layer
       organic_layer:
+        description: The layer of an extraction containing organic material (e.g. protein interlayer)
       aqueous_layer:
+        description: The layer of an extraction containing water-soluble molecules (e.g. metabolites in water)
       non_polar_layer:
+        description: The layer of an extraction containing nonpolar molecules (e.g. lipids in chloroform)
+      polar_layer: 
+        description: The layer of an extraction containing polar molecules (e.g. metabolites in methanol)
 
 
 slots:
