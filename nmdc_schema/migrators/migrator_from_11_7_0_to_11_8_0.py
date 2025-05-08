@@ -12,8 +12,8 @@ class Migrator(MigratorBase):
 
     def validate_data_object_type(self, data_object: dict) -> dict:
         r"""
-        If the data object does not have data_category field, add a value based on the data_object_type.
-        If the data object has any other value for data_object_type; ignore it.
+        Raises an exception if the document either lacks a `data_object_type`
+        field or it has a `data_object_type` field whose value is falsey.
 
         >>> m = Migrator()
         >>> m.validate_data_object_type({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Type"})
