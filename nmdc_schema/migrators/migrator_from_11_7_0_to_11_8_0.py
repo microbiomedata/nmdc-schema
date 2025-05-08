@@ -16,7 +16,7 @@ class Migrator(MigratorBase):
         If the data object has any other value for data_object_type; ignore it.
 
         >>> m = Migrator()
-        >>> m.validate_data_object_type({"id":123, "type":"nmdc:DataObject", "data_object_type":"Type"})
+        >>> m.validate_data_object_type({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Type"})
         {'id': 123, 'type': 'nmdc:DataObject', 'data_object_type': 'Type'}
         >>> m.validate_data_object_type({"id":123, "type":"nmdc:DataObject"})
         Traceback (most recent call last):
