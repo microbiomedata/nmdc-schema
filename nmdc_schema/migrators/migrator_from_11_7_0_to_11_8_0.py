@@ -18,7 +18,7 @@ class Migrator(MigratorBase):
         >>> m = Migrator()
         >>> m.validate_data_object_type({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Type"})
         {'id': 123, 'type': 'nmdc:DataObject', 'data_object_type': 'Type'}
-        >>> m.validate_data_object_type({"id":123, "type":"nmdc:DataObject"})
+        >>> m.validate_data_object_type({"id": 123, "type": "nmdc:DataObject"})
         Traceback (most recent call last):
         ...
         ValueError: data_object_type is required and is not present in the data object 123
