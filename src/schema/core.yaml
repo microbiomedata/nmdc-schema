@@ -1341,6 +1341,7 @@ classes:
       - dna_absorb1
       - dna_concentration
       - external_database_identifiers
+      - sampled_portion
 
     slot_usage:
       id:
