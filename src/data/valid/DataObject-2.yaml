@@ -3,3 +3,4 @@ name: assembly_scaffolds.fna
 description: Assembled scaffold fasta for gold:Gp0061273
 file_size_bytes: 205297945
 type: nmdc:DataObject
+data_object_type: Metagenome Bins
