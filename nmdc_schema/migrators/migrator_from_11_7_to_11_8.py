@@ -17,10 +17,10 @@ class Migrator(MigratorBase):
         If the data object has any other value for data_object_type; ignore it.
 
         >>> m = Migrator()
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject"})
-        {'id': 123, 'type': 'nmdc:DataObject', 'data_category': 'Category'}
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_category": "Category"})
-        {'id': 123, 'type': 'nmdc:DataObject', 'data_category': 'Category'}
+        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_object_type":"Metagenome Raw Reads"})
+        {'id': 123, 'type': 'nmdc:DataObject', 'data_object_type': 'Metagenome Raw Reads', 'data_category': 'instrument_data'}
+        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_category": "instrument_data"})
+        {'id': 123, 'type': 'nmdc:DataObject', 'data_category': 'instrument_data'}
         """
         data_category_map = load_yaml_asset('migrator_from_11_7_to_11_8/data_category_map.yaml')
 
