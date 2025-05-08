@@ -1213,9 +1213,9 @@ biosample_set:
       has_numeric_value: 0.1
       has_unit: PSU
     temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_numeric_value: 25
-      has_unit: Celsius
+      has_unit: Cel
   - id: nmdc:bsm-99-49z38t
     type: nmdc:Biosample
     name: mouse gut sample
@@ -2547,8 +2547,9 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: xxx
     temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: 25 degree Celsius
+      has_unit: Cel
     temp_out:
       type: nmdc:QuantityValue
       has_raw_value: xxx
