@@ -134,7 +134,8 @@ workflow_execution_set:
       - nmdc:dobj-12-y236qp68
     type: nmdc:ReadQcAnalysis
     version: b1.0.7 
-    was_informed_by: nmdc:dgns-11-s9xj2r24
+    was_informed_by:
+      - nmdc:dgns-11-s9xj2r24
 data_object_set:
   - id: nmdc:dobj-12-jdhk9537
     data_object_type: Metagenome Raw Read 1
