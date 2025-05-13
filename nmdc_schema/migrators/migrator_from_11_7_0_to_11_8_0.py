@@ -22,5 +22,5 @@ class Migrator(MigratorBase):
         ...
         ValueError: data_object_type is required and is not present in the data object 123
         """
-        if not data_object.get("data_object_type"):
+        if "data_object_type" not in data_object:
             raise ValueError(f"data_object_type is required and is not present in the data object {data_object.get('id')}")
