@@ -60,13 +60,13 @@ GTDBTK Archaeal Summary: processed_data
 Unfiltered Metaproteomics Results: processed_data
 Error Corrected Reads: processed_data
 Centrifuge Classification Report: null
-Metatranscriptome Raw Reads: null
+Metatranscriptome Raw Reads: instrument_data
 Peptide Report: processed_data
 TMRNA Annotation GFF: null
 Misc Annotation GFF: null
 Structural Annotation Stats Json: null
-LC-DDA-MS/MS Raw Data: instrument-data
+LC-DDA-MS/MS Raw Data: instrument_data
 Analysis Tool Parameter File: workflow_parameter_data
 Contaminants Amino Acid FASTA: null
-GC-MS Raw Data: instrument-data
+GC-MS Raw Data: instrument_data
 GC-MS Metabolomics Results: processed_data
