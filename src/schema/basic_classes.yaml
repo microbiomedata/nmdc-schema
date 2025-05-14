@@ -374,6 +374,8 @@ classes:
           syntax: "{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: DataEmitterProcess
+      data_category:
+        required: true
   DataEmitterProcess:
     class_uri: nmdc:DataEmitterProcess
     is_a: PlannedProcess

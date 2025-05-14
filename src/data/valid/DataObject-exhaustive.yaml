@@ -4,6 +4,7 @@ description: "Crispr Terms for nmdc:ann0vx38"
 name: Crispr Terms
 compression_type: any string
 data_object_type: Crispr Terms
+data_category: processed_data
 file_size_bytes: 1234
 md5_checksum: "22afa3d49b73eaec2e9787a6b88fbdc3"
 url: http://example.com

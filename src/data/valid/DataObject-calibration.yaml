@@ -5,4 +5,5 @@ file_size_bytes: 1150434379
 url: https://nmdcdemo.emsl.pnnl.gov/nom/reference_calibration_files/Hawkes_neg.ref
 md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
 data_object_type: Reference Calibration File
+data_category: workflow_parameter_data
 type: nmdc:DataObject
