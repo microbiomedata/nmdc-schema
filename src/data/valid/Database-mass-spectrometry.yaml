@@ -41,6 +41,7 @@ data_object_set:
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lcms metabolite data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
+    data_category: instrument_data
     type: nmdc:DataObject
     alternative_identifiers:
       - my_emsl:1826381
@@ -51,6 +52,7 @@ data_object_set:
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exisit for lipid data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
+    data_category: instrument_data
     type: nmdc:DataObject
     alternative_identifiers:
       - my_emsl:1826333

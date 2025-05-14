@@ -35,6 +35,7 @@ data_object_set:
 - id: nmdc:dobj-13-rf3br219
   name: 'output: GCMS_FAMEs_01_GCMS01_20160523'
   description: Full scan GC-MS (but not GC QExactive, which is EI-HMS)
+  data_category: workflow_parameter_data
   file_size_bytes: 1818624
   type: nmdc:DataObject
   data_object_type: Reference Calibration File
@@ -42,6 +43,7 @@ data_object_set:
   name: Froze_Core_2015_S1_20_30_19_Metab.cdf
   description: Full scan GC-MS raw data file
   file_size_bytes: 1818624
+  data_category: instrument_data
   type: nmdc:DataObject
   data_object_type: GC-MS Raw Data
 workflow_execution_set:

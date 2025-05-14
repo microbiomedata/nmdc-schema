@@ -138,18 +138,21 @@ workflow_execution_set:
 data_object_set:
   - id: nmdc:dobj-12-jdhk9537
     data_object_type: Metagenome Raw Read 1
+    data_category: instrument_data
     description: Test R1 data
     name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
     type: nmdc:DataObject
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
   - id: nmdc:dobj-12-yx0tfp52
     data_object_type: Metagenome Raw Read 2
+    data_category: instrument_data
     description: Test R2 data
     name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
     type: nmdc:DataObject
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
   - id: nmdc:dobj-12-71q7wv80
     data_object_type: Filtered Sequencing Reads
+    data_category: processed_data
     description: Test filtered data for NEON
     name: 1472_51293.filtered.fastq.gz
     type: nmdc:DataObject

@@ -3,6 +3,7 @@ alternative_identifiers:
   - prefix:value2
 compression_type: any string
 data_object_type: undefined permissible value for `file type enum`
+data_category: processed_data
 description: "Crispr Terms for nmdc:ann0vx38"
 file_size_bytes: 1234
 id: "nmdc:dobj-11-dtTMNb"
