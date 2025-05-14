@@ -6,4 +6,5 @@ md5_checksum: "31f21654dc7360a8a54064fc1723f624"
 name: "nmdc_wfmtex-12-2y23pa57.1.rnaseq_gea.txt"
 url: "https://data.microbiomedata.org/data/nmdc:dgns-11-6tsbsj80/nmdc:wfmtex-12-2y23pa57.1/nmdc_wfmtex-12-2y23pa57.1.rnaseq_gea.txt"
 type: "nmdc:DataObject"
+data_category: processed_data
 was_generated_by: "nmdc:wfmtex-12-2y23pa57.1"
