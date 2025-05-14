@@ -1,0 +1,9 @@
+data_object_type: Metatranscriptome Expression
+description: "Expression counts for nmdc:wfmtex-12-2y23pa57.1"
+file_size_bytes: 90701023
+id: "nmdc:dobj-11-dtTMNb"
+md5_checksum: "31f21654dc7360a8a54064fc1723f624"
+name: "nmdc_wfmtex-12-2y23pa57.1.rnaseq_gea.txt"
+url: "https://data.microbiomedata.org/data/nmdc:dgns-11-6tsbsj80/nmdc:wfmtex-12-2y23pa57.1/nmdc_wfmtex-12-2y23pa57.1.rnaseq_gea.txt"
+type: "nmdc:DataObject"
+was_generated_by: "nmdc:wfmtex-12-2y23pa57.1"
