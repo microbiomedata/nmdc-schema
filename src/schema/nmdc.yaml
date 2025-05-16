@@ -954,15 +954,14 @@ enums:
       pellet:
         aliases:
           - bottom_layer
-      organic_layer:
-        description: The layer of an extraction containing organic material (e.g. protein interlayer)
-      aqueous_layer:
-        description: The layer of an extraction containing water-soluble molecules (e.g. metabolites in water)
-      non_polar_layer:
-        description: The layer of an extraction containing nonpolar molecules (e.g. lipids in chloroform)
-      polar_layer: 
-        description: The layer of an extraction containing polar molecules (e.g. metabolites in methanol)
-
+      interlayer:
+        description: The layer of material between liquid layers of a separated solution
+      water_layer:
+        description: The portion of a solution containing molecules dissolved in water
+      chloroform_layer:
+        description: The portion of a solution containing molecules dissolved in chloroform
+      methanol_layer: 
+        description: The portion of a solution containing molecules dissolved in methanol
 
 slots:
   generates_calibration:
