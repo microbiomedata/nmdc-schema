@@ -958,10 +958,14 @@ enums:
       pellet:
         aliases:
           - bottom_layer
-      organic_layer:
-      aqueous_layer:
-      non_polar_layer:
-
+      interlayer:
+        description: The layer of material between liquid layers of a separated solution
+      water_layer:
+        description: The portion of a solution containing molecules dissolved in water
+      chloroform_layer:
+        description: The portion of a solution containing molecules dissolved in chloroform
+      methanol_layer: 
+        description: The portion of a solution containing molecules dissolved in methanol
 
 slots:
   generates_calibration:
