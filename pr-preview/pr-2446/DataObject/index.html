@@ -335,7 +335,7 @@
 
   DataObject : data_object_type
 
-      DataObject --&gt; "0..1" FileTypeEnum : data_object_type
+      DataObject --&gt; "1" FileTypeEnum : data_object_type
     click FileTypeEnum href "../FileTypeEnum"
 
   DataObject : description
@@ -402,7 +402,7 @@
 </tr>
 <tr>
 <td><a href="../data_object_type/">data_object_type</a></td>
-<td>0..1 <br/> <a href="../FileTypeEnum/">FileTypeEnum</a></td>
+<td>1 <br/> <a href="../FileTypeEnum/">FileTypeEnum</a></td>
 <td>The type of file represented by the data object</td>
 <td>direct</td>
 </tr>
@@ -737,6 +737,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  data_object_type:
+    name: data_object_type
+    required: true
   data_category:
     name: data_category
     required: true
@@ -770,6 +773,9 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  data_object_type:
+    name: data_object_type
+    required: true
   data_category:
     name: data_category
     required: true
@@ -819,6 +825,7 @@ attributes:
     domain_of:
     - DataObject
     range: FileTypeEnum
+    required: true
   file_size_bytes:
     name: file_size_bytes
     description: Size of the file in bytes
