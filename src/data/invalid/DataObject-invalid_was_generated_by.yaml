@@ -6,3 +6,4 @@ file_size_bytes: 32787380
 type: nmdc:DataObject
 data_category: instrument_data
 was_generated_by: nmdc:omprc-11-abd4sg.1
+data_object_type: Metagenome Raw Read 1

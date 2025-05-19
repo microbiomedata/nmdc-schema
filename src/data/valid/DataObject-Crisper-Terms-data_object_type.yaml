@@ -7,3 +7,4 @@ name: Crispr Terms
 type: nmdc:DataObject
 data_category: processed_data
 url: http://example.com
+data_object_type: CheckM Statistics

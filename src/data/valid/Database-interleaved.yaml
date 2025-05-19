@@ -3079,18 +3079,21 @@ data_object_set:
     description: Raw sequencer read data
     data_category: instrument_data
     file_size_bytes: 9208349052
+    data_object_type: Metagenome Raw Reads
   - id: nmdc:dobj-99-7zrm55
     type: nmdc:DataObject
     name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
     description: Raw sequencer read data
     data_category: instrument_data
     file_size_bytes: 34243309819
+    data_object_type: Metagenome Raw Reads
   - id: nmdc:dobj-99-sQQw0I
     type: nmdc:DataObject
     name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
     description: Raw sequencer read data
     data_category: instrument_data
     file_size_bytes: 7580035314
+    data_object_type: Metagenome Raw Reads
   - id: nmdc:dobj-70-izwYW6
     type: nmdc:DataObject
     name: CoreMS.toml
@@ -3116,6 +3119,7 @@ data_object_set:
     type: nmdc:DataObject
     name: emsl_calibration_run.raw
     description: GCMS data file
+    data_object_type: GC-MS Raw Data
     data_category: instrument_data
     file_size_bytes: 9208349052
     url: https://emsl_site/emsl_calibration_run.raw

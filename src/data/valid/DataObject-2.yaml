@@ -4,3 +4,4 @@ description: Assembled scaffold fasta for gold:Gp0061273
 file_size_bytes: 205297945
 data_category: processed_data
 type: nmdc:DataObject
+data_object_type: Metagenome Bins
