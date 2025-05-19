@@ -1,25 +1,32 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.partials.migrator_from_11_7_0_to_11_8_0 import (
+    get_migrator_classes,
+)
+
 
 class Migrator(MigratorBase):
-    r"""Migrates a database between two schemas."""
+    r"""
+    Migrates a database between two schemas.
+    """
 
     _from_version = "11.7.0"
     _to_version = "11.8.0"
 
     def upgrade(self) -> None:
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
-        self.adapter.do_for_each_document("data_object_set", self.validate_data_object_type)
-
-    def validate_data_object_type(self, data_object: dict) -> None:
         r"""
-        Raises an exception if the document lacks a `data_object_type` field.
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
 
-        >>> m = Migrator()
-        >>> m.validate_data_object_type({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Type"})
-        >>> m.validate_data_object_type({"id": 123, "type": "nmdc:DataObject"})
-        Traceback (most recent call last):
-        ...
-        ValueError: data_object_type is required and is not present in the data object 123
+        This migrator uses partial migrators. It runs them in the order in which they are returned by
+        the `get_migrator_classes` function.
         """
-        if "data_object_type" not in data_object:
-            raise ValueError(f"data_object_type is required and is not present in the data object {data_object.get('id')}")
+
+        migrator_classes = get_migrator_classes()
+        num_migrators = len(migrator_classes)
+        for idx, migrator_class in enumerate(migrator_classes):
+            self.logger.info(f"Running migrator {idx + 1} of {num_migrators}")
+            self.logger.debug(
+                f"Migrating from {migrator_class.get_origin_version()} "
+                f"to {migrator_class.get_destination_version()}"
+            )
+            migrator = migrator_class(adapter=self.adapter, logger=self.logger)
+            migrator.upgrade()
