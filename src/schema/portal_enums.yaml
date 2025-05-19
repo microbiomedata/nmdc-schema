@@ -101,13 +101,13 @@ enums:
         description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. Cannot be edited by submitter.
       DeniedUpdate:
         title: Denied - Updates Required
-        description: Submission has been reviewed, edits required for approval.
+        description: Submission has been reviewed, submitter edits required for approval.
       InProgressUpdate:
         title: In Progress - Update/Addition
         description: An approved submission has been re-opened for updates, correction, or addition.
       Denied:
         title: Denied
-        description: Submission has been reviewed and denied. 
+        description: Submission has been reviewed and denied. Cannot be 
       Released:
         title: Released
         description: Submission has been reviewed and approved and data is released on the data portal.
