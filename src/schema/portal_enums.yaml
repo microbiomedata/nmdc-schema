@@ -82,3 +82,32 @@ enums:
       amplicon sequencing assay:
         meaning: OBI:0002767
         title: Amplicon sequencing assay
+  SubmissionStatusEnum:
+    permissible_values:
+      InProgress:
+        title: In Progress
+        description: The submitter is currently working on the submission.
+      SubmittedPendingReview:
+        title: Submitted - Pending Review
+        description: Submission is ready for NMDC review, the submitter is no longer editing this submission.
+      ResubmittedPendingReview:
+        title: Resubmitted - Pending review
+        description: Submission has been resubmitted after updates and changed. It is now ready for NMDC review, the submitter is no longer editing this submission.
+      ApprovedHeld:
+        title: Approved - Held
+        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Can be edited by submitter. 
+      PendingUserFacility:
+        title: Pending - Sent to User Facility
+        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. Cannot be edited by submitter.
+      DeniedUpdate:
+        title: Denied - Updates Required
+        description: Submission has been reviewed, edits required for approval.
+      InProgressUpdate:
+        title: In Progress - Update/Addition
+        description: An approved submission has been re-opened for updates, correction, or addition.
+      Denied:
+        title: Denied
+        description: Submission has been reviewed and denied. 
+      Released:
+        title: Released
+        description: Submission has been reviewed and approved and data is released on the data portal.
