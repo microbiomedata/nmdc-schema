@@ -20,11 +20,11 @@ class Migrator(MigratorBase):
         If the data_object_type is not in the mapping, raise a ValueError.
 
         >>> m = Migrator()
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_object_type":"Metagenome Raw Reads"})
+        >>> m.clarify_ft_data_category({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Metagenome Raw Reads"})
         {'id': 123, 'type': 'nmdc:DataObject', 'data_object_type': 'Metagenome Raw Reads', 'data_category': 'instrument_data'}
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_category": "instrument_data"})
+        >>> m.clarify_ft_data_category({"id": 123, "type": "nmdc:DataObject", "data_category": "instrument_data"})
         {'id': 123, 'type': 'nmdc:DataObject', 'data_category': 'instrument_data'}
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_object_type": "Metag Raw"})
+        >>> m.clarify_ft_data_category({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Metag Raw"})
         Traceback (most recent call last):
         ...
         ValueError: data_object_type Metag Raw is not found in the mapping. Cannot assign data_category.
