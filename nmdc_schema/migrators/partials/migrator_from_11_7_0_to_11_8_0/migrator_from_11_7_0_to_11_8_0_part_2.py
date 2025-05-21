@@ -27,7 +27,7 @@ class Migrator(MigratorBase):
         >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_object_type": "Metag Raw"})
         Traceback (most recent call last):
         ...
-        ValueError: data_object_type Metag Raw is not supported for data_category assignment
+        ValueError: data_object_type Metag Raw is not found in the mapping. Cannot assign data_category.
         """
         data_category_map = load_yaml_asset('migrator_from_11_7_to_11_8/data_category_map.yaml')
 
