@@ -1670,7 +1670,7 @@ slots:
           has_numeric_value: 2
           has_unit: hours
   temperature:
-    range: QuantityValue
+    range: QuantityValueCelsius
     notes:
       - "Not to be confused with the MIXS:0000113"
     description: The value of a temperature measurement or temperature used in a process.
