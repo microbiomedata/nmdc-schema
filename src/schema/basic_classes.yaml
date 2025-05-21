@@ -376,6 +376,8 @@ classes:
         range: DataEmitterProcess
       data_object_type:
         required: true
+      data_category:
+        required: true
   DataEmitterProcess:
     class_uri: nmdc:DataEmitterProcess
     is_a: PlannedProcess

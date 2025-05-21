@@ -3,5 +3,6 @@ id: nmdc:dobj-99-izwYW6_scf_1000_c1_466_1380
 name: mapping_stats.txt
 description: Metagenome Contig Coverage Stats for gold:Gp0061273
 file_size_bytes: 32787380
+data_category: processed_data
 type: nmdc:DataObject
 data_object_type: Metagenome Bins Info File

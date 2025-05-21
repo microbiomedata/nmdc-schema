@@ -280,18 +280,21 @@ data_object_set:
   - id: nmdc:dobj-99-dkJ8ab
     name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
     description: Raw sequencer read data
+    data_category: instrument_data
     file_size_bytes: 9208349052
     type: nmdc:DataObject
     data_object_type: Metagenome Raw Read 1
   - id: nmdc:dobj-99-7zrm55
     name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
     description: Raw sequencer read data
+    data_category: instrument_data
     file_size_bytes: 34243309819
     type: nmdc:DataObject
     data_object_type: Metagenome Raw Read 1
   - id: nmdc:dobj-99-sQQw0I
     name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
     description: Raw sequencer read data
+    data_category: instrument_data
     file_size_bytes: 7580035314
     type: nmdc:DataObject
     data_object_type: Metagenome Raw Read 1
