@@ -330,7 +330,7 @@
 
   DataObject : data_category
 
-      DataObject --&gt; "0..1" DataCategoryEnum : data_category
+      DataObject --&gt; "1" DataCategoryEnum : data_category
     click DataCategoryEnum href "../DataCategoryEnum"
 
   DataObject : data_object_type
@@ -396,7 +396,7 @@
 </tr>
 <tr>
 <td><a href="../data_category/">data_category</a></td>
-<td>0..1 <br/> <a href="../DataCategoryEnum/">DataCategoryEnum</a></td>
+<td>1 <br/> <a href="../DataCategoryEnum/">DataCategoryEnum</a></td>
 <td>The category of the file, such as instrument data from data generation or pro...</td>
 <td>direct</td>
 </tr>
@@ -740,6 +740,9 @@ slot_usage:
   data_object_type:
     name: data_object_type
     required: true
+  data_category:
+    name: data_category
+    required: true
 class_uri: nmdc:DataObject
 
 </code></pre>
@@ -773,6 +776,9 @@ slot_usage:
   data_object_type:
     name: data_object_type
     required: true
+  data_category:
+    name: data_category
+    required: true
 attributes:
   compression_type:
     name: compression_type
@@ -799,6 +805,7 @@ attributes:
     domain_of:
     - DataObject
     range: DataCategoryEnum
+    required: true
   data_object_type:
     name: data_object_type
     description: The type of file represented by the data object.
