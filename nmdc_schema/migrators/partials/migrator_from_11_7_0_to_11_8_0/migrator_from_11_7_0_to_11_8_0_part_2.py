@@ -4,7 +4,7 @@ from nmdc_schema.migrators.helpers import load_yaml_asset
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11.7.0"
+    _from_version = "11.8.0.part_1"
     _to_version = "11.8.0.part_2"
 
     def upgrade(self) -> None:
@@ -20,11 +20,11 @@ class Migrator(MigratorBase):
         If the data_object_type is not in the mapping, raise a ValueError.
 
         >>> m = Migrator()
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_object_type":"Metagenome Raw Reads"})
+        >>> m.clarify_ft_data_category({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Metagenome Raw Reads"})
         {'id': 123, 'type': 'nmdc:DataObject', 'data_object_type': 'Metagenome Raw Reads', 'data_category': 'instrument_data'}
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_category": "instrument_data"})
+        >>> m.clarify_ft_data_category({"id": 123, "type": "nmdc:DataObject", "data_category": "instrument_data"})
         {'id': 123, 'type': 'nmdc:DataObject', 'data_category': 'instrument_data'}
-        >>> m.clarify_ft_data_category({"id":123, "type":"nmdc:DataObject", "data_object_type": "Metag Raw"})
+        >>> m.clarify_ft_data_category({"id": 123, "type": "nmdc:DataObject", "data_object_type": "Metag Raw"})
         Traceback (most recent call last):
         ...
         ValueError: data_object_type Metag Raw is not found in the mapping. Cannot assign data_category.
