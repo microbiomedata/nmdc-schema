@@ -24,17 +24,17 @@ class Migrator(MigratorBase):
 
         >>> m = Migrator()
         >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Celsius","type": "nmdc:QuantityValue"}})
-        {"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Cel","type": "nmdc:QuantityValueCelsius"}}
+        {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
         >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Cel","type": "nmdc:QuantityValue"}})
-        {"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Cel","type": "nmdc:QuantityValueCelsius"}}
+        {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
         >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"type": "nmdc:QuantityValue"}})
         Traceback (most recent call last):
         ...
-        ValueError: record 123 and temp populated but missing `has_unit` value.
+        ValueError: record 123 and field temp populated but missing `has_unit` value.
         >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "F","type": "nmdc:QuantityValue"}})
         Traceback (most recent call last):
         ...
-        ValueError: has_unit` string F is not found in the mapping. Cannot assign 'Cel'.
+        ValueError: `has_unit` string F is not found in the mapping. Cannot assign 'Cel'.
         """
         celsius_map = load_yaml_asset('migrator_from_11_7_to_11_8/celsius_map.yaml')
 
