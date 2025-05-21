@@ -1,4 +1,6 @@
 description: "Crispr Terms for nmdc:ann0vx38"
 id: "nmdc:dobj-11-dtTMNb"
 name: Crispr Terms
+data_category: processed_data
 type: nmdc:DataObject
+data_object_type: Crispr Terms
