@@ -78,6 +78,7 @@ air_PM_concen:
     has_raw_value: xxx
 air_temp:
   type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: xxx
 air_temp_regm:
   - type: nmdc:TextValue
@@ -120,6 +121,7 @@ annual_precpt:
   has_raw_value: 0.5 milligram per liter
 annual_temp:
   type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: 12.5 degree Celsius
 antibiotic_regm:
   - type: nmdc:TextValue
@@ -145,6 +147,7 @@ avg_occup:
   has_raw_value: xxx
 avg_temp:
   type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: xxx
 bac_prod:
   type: nmdc:QuantityValue
@@ -522,6 +525,7 @@ host_body_site:
   has_raw_value: xxx
 host_body_temp:
   type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: xxx
 host_color:
   type: nmdc:TextValue
@@ -946,6 +950,7 @@ samp_store_loc:
   has_raw_value: Freezer no:5
 samp_store_temp:
   type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: -80 degree Celsius
 samp_subtype: biofilm
 samp_taxon_id:
@@ -984,7 +989,8 @@ season_precpt:
   type: nmdc:QuantityValue
   has_raw_value: 75 millimeters
 season_temp:
-  type: nmdc:QuantityValue
+  type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: 18 degree Celsius
 season_use: Spring
 secondary_treatment:
@@ -1096,7 +1102,8 @@ surf_moisture:
   has_raw_value: xxx
 surf_moisture_ph: 123.0
 surf_temp:
-  type: nmdc:QuantityValue
+  type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: xxx
 suspend_part_matter:
   type: nmdc:QuantityValue
@@ -1114,6 +1121,7 @@ temp:
   has_unit: Cel
 temp_out:
   type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_raw_value: xxx
 tertiary_treatment:
   type: nmdc:TextValue

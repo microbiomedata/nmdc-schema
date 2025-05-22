@@ -79,7 +79,7 @@ material_processing_set:
     temperature:
       type: nmdc:QuantityValueCelsius
       has_numeric_value: 25
-      has_unit: C
+      has_unit: Cel
     mass:
       type: nmdc:QuantityValue
       has_numeric_value: 30
@@ -101,7 +101,7 @@ storage_process_set:
     start_date: "2021-01-14"
     temperature:
       type: nmdc:QuantityValueCelsius
-      has_unit: degrees Celsius
+      has_unit: Cel
       has_numeric_value: 80
     has_input:
       - nmdc:procsm-99-dtTMNb
@@ -1518,6 +1518,7 @@ biosample_set:
     air_temp:
       type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     air_temp_regm:
       - type: nmdc:TextValue
         has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -1560,6 +1561,7 @@ biosample_set:
     annual_temp:
       type: nmdc:QuantityValueCelsius
       has_raw_value: 12.5 degree Celsius
+      has_unit: Cel
     antibiotic_regm:
       - type: nmdc:TextValue
         has_raw_value: xxx
@@ -1585,6 +1587,7 @@ biosample_set:
     avg_temp:
       type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     bac_prod:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -1962,6 +1965,7 @@ biosample_set:
     host_body_temp:
       type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     host_color:
       type: nmdc:TextValue
       has_raw_value: xxx
@@ -2386,6 +2390,7 @@ biosample_set:
     samp_store_temp:
       type: nmdc:QuantityValueCelsius
       has_raw_value: -80 degree Celsius
+      has_unit: Cel
     samp_subtype: biofilm
     samp_taxon_id:
       type: nmdc:ControlledIdentifiedTermValue
@@ -2423,8 +2428,9 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: 75 millimeters
     season_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: 18 degree Celsius
+      has_unit: Cel
     season_use: Spring
     secondary_treatment:
       type: nmdc:TextValue
@@ -2535,8 +2541,9 @@ biosample_set:
       has_raw_value: xxx
     surf_moisture_ph: 123.0
     surf_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     suspend_part_matter:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2553,6 +2560,7 @@ biosample_set:
     temp_out:
       type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     tertiary_treatment:
       type: nmdc:TextValue
       has_raw_value: xxx
