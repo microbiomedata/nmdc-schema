@@ -9859,7 +9859,7 @@ slots:
       - temperature
     is_a: environment field
     slot_uri: MIXS:0000113
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   temp_out:
     annotations:

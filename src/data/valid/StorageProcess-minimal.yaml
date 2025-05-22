@@ -10,7 +10,7 @@ substances_used:
 contained_in: falcon_tube
 start_date: "2021-01-14"
 temperature:
-  type: nmdc:QuantityValue
+  type: nmdc:QuantityValueCelsius
   has_unit: degrees Celsius
   has_numeric_value: 80
 has_input: 

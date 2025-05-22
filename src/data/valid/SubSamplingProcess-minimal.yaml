@@ -12,7 +12,7 @@ volume:
   has_numeric_value: 20
   has_unit: mL
 temperature:
-  type: nmdc:QuantityValue
+  type: nmdc:QuantityValueCelsius
   has_numeric_value: 25
   has_unit: C
 mass:
