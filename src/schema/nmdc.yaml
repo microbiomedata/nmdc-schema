@@ -198,7 +198,7 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
-          required: true
+        required: true
       analyte_category: 
         range: MassSpectrometryEnum
       eluent_introduction_category:
