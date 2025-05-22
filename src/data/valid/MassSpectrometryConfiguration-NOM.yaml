@@ -11,5 +11,3 @@ ionization_source: electrospray_ionization
 mass_spectrum_collection_modes: 
   - full_profile
 polarity_mode: negative
-eluent_introduction_category: direct_infusion_syringe
-has_mass_spectrometry_configuration: nmdc:mscon-11-e1vant11
