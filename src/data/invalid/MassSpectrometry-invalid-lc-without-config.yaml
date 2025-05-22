@@ -1,3 +1,4 @@
+# Invalid because it does not have has_chromatography_configuration when eluent_introduction_category is liquid_chromatography
 type: nmdc:MassSpectrometry
 id: nmdc:dgms-00-1234
 has_input:
