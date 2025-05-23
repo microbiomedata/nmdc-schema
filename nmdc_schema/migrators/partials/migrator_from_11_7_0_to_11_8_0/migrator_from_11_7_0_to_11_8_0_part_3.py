@@ -9,7 +9,7 @@ class Migrator(MigratorBase):
 
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
-        self.adapter.do_for_each_document("data_generation_set", [self.validate_mass_spec_slots])
+        self.adapter.do_for_each_document("data_generation_set", self.validate_mass_spec_slots)
 
     def validate_mass_spec_slots(self, data_generation_record: dict) -> None:
         r"""
