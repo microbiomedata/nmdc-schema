@@ -1,0 +1,10 @@
+# Invalid because it does not have eluent_introduction_category
+type: nmdc:MassSpectrometry
+id: nmdc:dgms-00-1234
+has_input:
+  - nmdc:procsm-00-1234
+analyte_category: metabolome
+associated_studies:
+  - nmdc:sty-00-1234
+generates_calibration: nmdc:calib-00-1234
+has_mass_spectrometry_configuration: nmdc:mscon-11-e1vant11

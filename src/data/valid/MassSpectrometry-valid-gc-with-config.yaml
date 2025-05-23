@@ -10,3 +10,4 @@ associated_studies:
 eluent_introduction_category: gas_chromatography
 has_chromatography_configuration: nmdc:chrcon-00-1234
 generates_calibration: nmdc:calib-00-1234
+has_mass_spectrometry_configuration: nmdc:mscon-11-e1vant11
