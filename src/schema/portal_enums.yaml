@@ -86,28 +86,28 @@ enums:
     permissible_values:
       InProgress:
         title: In Progress
-        description: The submitter is currently working on the submission.
+        description: The submitter is currently working on the submission. 
       SubmittedPendingReview:
         title: Submitted - Pending Review
-        description: Submission is ready for NMDC review, the submitter is no longer editing this submission.
+        description: Submission is ready for NMDC review, the submitter cannot edit. 
       ResubmittedPendingReview:
         title: Resubmitted - Pending review
-        description: Submission has been resubmitted after updates and changed. It is now ready for NMDC review, the submitter is no longer editing this submission.
+        description: Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit. 
       ApprovedHeld:
         title: Approved - Held
-        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Can be edited by submitter. 
+        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.  
       PendingUserFacility:
         title: Pending - Sent to User Facility
-        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. Cannot be edited by submitter.
-      DeniedUpdate:
-        title: Denied - Updates Required
-        description: Submission has been reviewed, submitter edits required for approval.
+        description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
+      UpdatesRequired:
+        title: Updates Required
+        description: Submission has been reviewed and submitter edits are required for approval. The submitter needs to request a status change from an NMDC reviewer in order to make edits.
       InProgressUpdate:
         title: In Progress - Update/Addition
-        description: An approved submission has been re-opened for updates, correction, or addition.
+        description: NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
       Denied:
         title: Denied
-        description: Submission has been reviewed and denied. Cannot be 
+        description: Submission has been reviewed and denied. The submitter cannot edit.
       Released:
         title: Released
-        description: Submission has been reviewed and approved and data is released on the data portal.
+        description: Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit. 
