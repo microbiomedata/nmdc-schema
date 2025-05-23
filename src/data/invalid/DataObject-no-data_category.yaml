@@ -1,7 +1,7 @@
+# this example is invalid because the data_category is missing
 id: nmdc:dobj-99-izwYW6
+type: nmdc:DataObject
 name: mapping_stats.txt
 description: Metagenome Contig Coverage Stats for gold:Gp0061273
 file_size_bytes: 32787380
-data_category: processed_data
-type: nmdc:DataObject
-data_object_type: Metagenome Bins
+data_object_type: Metagenome Bins Info File

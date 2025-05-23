@@ -1,6 +1,7 @@
 data_object_set:
   - id: nmdc:dobj-11-dtTMNb
     data_object_type: Metagenome Raw Reads
+    data_category: instrument_data
     description: my awesome fastq file
     file_size_bytes: 1382304
     md5_checksum: 22afa3d49b73eaec2e9787a6b88fbdc3
