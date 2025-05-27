@@ -17,7 +17,7 @@ class Migrator(MigratorBase):
 
         >>> m = Migrator()
         >>> m.validate_mass_spec_config_slots({"id": 123, "type": "nmdc:MassSpectrometryConfiguration", "mass_spectrometry_acquisition_strategy": "data_independent_acquisition", "resolution_categories": "high", "mass_analyzers": "ion_trap", "ionization_source": "electron_ionization", "mass_spectrum_collection_modes": "centroid", "polarity_mode": "positive"})
-        >>> m.validate_mass_spec_config_slots({"id": 123, "type": "nmdc:MassSpectrometryConfiguration", "mass_spectrometry_acquisition_strategy": "data_independent_acquisition", "resolution_categories": "high", "mass_analyzers": "ion_trap", "ionization_source": "electron_ionization", "mass_spectrum_collection_modes": "centroid"))
+        >>> m.validate_mass_spec_config_slots({"id": 123, "type": "nmdc:MassSpectrometryConfiguration", "mass_spectrometry_acquisition_strategy": "data_independent_acquisition", "resolution_categories": "high", "mass_analyzers": "ion_trap", "ionization_source": "electron_ionization", "mass_spectrum_collection_modes": "centroid"})
         Traceback (most recent call last):
         ...
         ValueError: `polarity_mode` is required and is not present in the configuration record 123
@@ -69,7 +69,7 @@ class Migrator(MigratorBase):
     def validate_chrom_config_slots(self, configuration_record:dict) -> None:
         r"""
         If the configuration record is of type ChromatographyConfiguration, does not chromatographic_category and stationary_phase, AND those keys do not have a value, raise a ValueError.
-        
+
         >>> m = Migrator()
         >>> m.validate_chrom_config_slots({"id": 123, "type": "nmdc:ChromatographyConfiguration", "chromatographic_category": "gas_chromatography", "stationary_phase": "C18"})
         >>> m.validate_chrom_config_slots({"id": 123, "type": "nmdc:ChromatographyConfiguration", "chromatographic_category": "gas_chromatography"})

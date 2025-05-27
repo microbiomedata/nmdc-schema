@@ -1,0 +1,13 @@
+# this file is invalid because it does not have a `mass_spectrometry_acquisition_strategy` field
+id: nmdc:mscon-99-oW43DzG0
+name: EMSL_NOM_method1
+description: Mass Spectrometry method used by EMSL for NOM analysis
+type: nmdc:MassSpectrometryConfiguration
+resolution_categories:
+  - high
+mass_analyzers: 
+  - ion_cyclotron_resonance
+ionization_source: electrospray_ionization
+mass_spectrum_collection_modes: 
+  - full_profile
+polarity_mode: negative
