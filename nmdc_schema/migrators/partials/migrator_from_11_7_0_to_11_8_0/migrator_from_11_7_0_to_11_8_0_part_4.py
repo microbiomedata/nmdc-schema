@@ -45,7 +45,6 @@ class Migrator(MigratorBase):
         # get the slots that are required for mass spectrometry configuration
         if configuration_record.get("type") == "nmdc:MassSpectrometryConfiguration":
             mass_spectrometry_acquisition_strategy = configuration_record.get("mass_spectrometry_acquisition_strategy")
-            
             if mass_spectrometry_acquisition_strategy is None:
                 raise ValueError(f"`mass_spectrometry_acquisition_strategy` is required and is not present in the configuration record {configuration_record.get('id')}")
             
@@ -56,12 +55,15 @@ class Migrator(MigratorBase):
             mass_analyzers = configuration_record.get("mass_analyzers")
             if mass_analyzers is None:
                 raise ValueError(f"`mass_analyzers` is required and is not present in the configuration record {configuration_record.get('id')}")
+
             ionization_source = configuration_record.get("ionization_source")
             if ionization_source is None:
                 raise ValueError(f"`ionization_source` is required and is not present in the configuration record {configuration_record.get('id')}")
+
             mass_spectrum_collection_modes = configuration_record.get("mass_spectrum_collection_modes")
             if mass_spectrum_collection_modes is None:
                 raise ValueError(f"`mass_spectrum_collection_modes` is required and is not present in the configuration record {configuration_record.get('id')}")
+
             polarity_mode = configuration_record.get("polarity_mode")
             if polarity_mode is None:
                 raise ValueError(f"`polarity_mode` is required and is not present in the configuration record {configuration_record.get('id')}")
