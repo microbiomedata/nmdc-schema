@@ -101,7 +101,7 @@ enums:
         description: Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
       UpdatesRequired:
         title: Updates Required
-        description: Submission has been reviewed and submitter edits are required for approval. The submitter needs to request a status change from an NMDC reviewer in order to make edits.
+        description: Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
       InProgressUpdate:
         title: In Progress - Update/Addition
         description: NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
