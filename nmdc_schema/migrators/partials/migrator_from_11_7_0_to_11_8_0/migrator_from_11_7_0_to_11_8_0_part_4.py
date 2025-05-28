@@ -42,31 +42,32 @@ class Migrator(MigratorBase):
         ...
         ValueError: `mass_spectrometry_acquisition_strategy` is required and is not present in the configuration record 123
         """
+        config_record_id = configuration_record.get("id")
         # get the slots that are required for mass spectrometry configuration
         if configuration_record.get("type") == "nmdc:MassSpectrometryConfiguration":
             mass_spectrometry_acquisition_strategy = configuration_record.get("mass_spectrometry_acquisition_strategy")
             if mass_spectrometry_acquisition_strategy is None:
-                raise ValueError(f"`mass_spectrometry_acquisition_strategy` is required and is not present in the configuration record {configuration_record.get('id')}")
+                raise ValueError(f"`mass_spectrometry_acquisition_strategy` is required and is not present in the configuration record {config_record_id}")
             
             resolution_categories = configuration_record.get("resolution_categories")
             if resolution_categories is None:
-                raise ValueError(f"`resolution_categories` is required and is not present in the configuration record {configuration_record.get('id')}")
+                raise ValueError(f"`resolution_categories` is required and is not present in the configuration record {config_record_id}")
             
             mass_analyzers = configuration_record.get("mass_analyzers")
             if mass_analyzers is None:
-                raise ValueError(f"`mass_analyzers` is required and is not present in the configuration record {configuration_record.get('id')}")
-
+                raise ValueError(f"`mass_analyzers` is required and is not present in the configuration record {config_record_id}")
+            
             ionization_source = configuration_record.get("ionization_source")
             if ionization_source is None:
-                raise ValueError(f"`ionization_source` is required and is not present in the configuration record {configuration_record.get('id')}")
-
+                raise ValueError(f"`ionization_source` is required and is not present in the configuration record {config_record_id}")
+            
             mass_spectrum_collection_modes = configuration_record.get("mass_spectrum_collection_modes")
             if mass_spectrum_collection_modes is None:
-                raise ValueError(f"`mass_spectrum_collection_modes` is required and is not present in the configuration record {configuration_record.get('id')}")
-
+                raise ValueError(f"`mass_spectrum_collection_modes` is required and is not present in the configuration record {config_record_id}")
+            
             polarity_mode = configuration_record.get("polarity_mode")
             if polarity_mode is None:
-                raise ValueError(f"`polarity_mode` is required and is not present in the configuration record {configuration_record.get('id')}")
+                raise ValueError(f"`polarity_mode` is required and is not present in the configuration record {config_record_id}")
     
     def validate_chrom_config_slots(self, configuration_record:dict) -> None:
         r"""
@@ -83,12 +84,13 @@ class Migrator(MigratorBase):
         ...
         ValueError: `chromatographic_category` is required and is not present in the configuration record 123
         """
+        config_record_id = configuration_record.get("id")
         if configuration_record.get("type") == "nmdc:ChromatographyConfiguration":
             chromatographic_category = configuration_record.get("chromatographic_category")
             if chromatographic_category is None:
-                raise ValueError(f"`chromatographic_category` is required and is not present in the configuration record {configuration_record.get('id')}")
+                raise ValueError(f"`chromatographic_category` is required and is not present in the configuration record {config_record_id}")
             
             stationary_phase = configuration_record.get("stationary_phase")
             if stationary_phase is None:
-                raise ValueError(f"`stationary_phase` is required and is not present in the configuration record {configuration_record.get('id')}")
+                raise ValueError(f"`stationary_phase` is required and is not present in the configuration record {config_record_id}")
             
