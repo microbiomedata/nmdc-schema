@@ -3,6 +3,7 @@ from typing import List, Type
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.partials.migrator_from_11_7_0_to_11_8_0 import migrator_from_11_7_0_to_11_8_0_part_1
 from nmdc_schema.migrators.partials.migrator_from_11_7_0_to_11_8_0 import migrator_from_11_7_0_to_11_8_0_part_2
+from nmdc_schema.migrators.partials.migrator_from_11_7_0_to_11_8_0 import migrator_from_11_7_0_to_11_8_0_part_3
 
 
 
@@ -25,4 +26,6 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
     return [
         migrator_from_11_7_0_to_11_8_0_part_1.Migrator,
         migrator_from_11_7_0_to_11_8_0_part_2.Migrator,
+        migrator_from_11_7_0_to_11_8_0_part_3.Migrator,
     ]
+
