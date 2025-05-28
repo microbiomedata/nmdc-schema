@@ -70,7 +70,7 @@ class Migrator(MigratorBase):
     
     def validate_chrom_config_slots(self, configuration_record:dict) -> None:
         r"""
-        If the configuration record is of type ChromatographyConfiguration, does not chromatographic_category and stationary_phase, AND those keys do not have a value, raise a ValueError.
+        If the configuration record is of type `ChromatographyConfiguration` and either (a) its `chromatographic_category` field is missing or consists of `None`, or (b) its `stationary_phase` field is missing or consists of `None`, raise a `ValueError`.
 
         >>> m = Migrator()
         >>> m.validate_chrom_config_slots({"id": 123, "type": "nmdc:ChromatographyConfiguration", "chromatographic_category": "gas_chromatography", "stationary_phase": "C18"})
