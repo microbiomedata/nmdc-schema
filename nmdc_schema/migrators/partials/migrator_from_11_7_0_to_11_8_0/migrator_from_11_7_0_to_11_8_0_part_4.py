@@ -13,7 +13,7 @@ class Migrator(MigratorBase):
 
     def validate_mass_spec_config_slots(self, configuration_record: dict) -> None:
         r"""
-        If the configuration record is of type MassSpectrometryConfiguration, does not have mass_spectrometry_acquisition_strategy, resolution_categories, mass_analyzers, ionization_source, mass_spectrum_collection_modes, and polarity_mode AND those keys do not have a value, raise a ValueError.
+        If the configuration record is of type MassSpectrometryConfiguration, does not have mass_spectrometry_acquisition_strategy, resolution_categories, mass_analyzers, ionization_source, mass_spectrum_collection_modes, and polarity_mode OR any of those keys does not have a value, raise a ValueError.
 
         >>> m = Migrator()
         >>> m.validate_mass_spec_config_slots({"id": 123, "type": "nmdc:MassSpectrometryConfiguration", "mass_spectrometry_acquisition_strategy": "data_independent_acquisition", "resolution_categories": "high", "mass_analyzers": "ion_trap", "ionization_source": "electron_ionization", "mass_spectrum_collection_modes": "centroid", "polarity_mode": "positive"})
