@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/ecosystem/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/SubmissionStatusEnum/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: ecosystem - NMDC Schema Documentation</title>
+        <title>Enum: SubmissionStatusEnum - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-ecosystem" class="md-skip">
+        <a href="#enum-submissionstatusenum" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: ecosystem
+              Enum: SubmissionStatusEnum
             
           </span>
         </div>
@@ -504,45 +504,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
+  <a href="#permissible-values" class="md-nav__link">
     <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#applicable-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Applicable Classes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#properties" class="md-nav__link">
-    <span class="md-ellipsis">
-      Properties
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Comments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#see-also" class="md-nav__link">
-    <span class="md-ellipsis">
-      See Also
+      Permissible Values
     </span>
   </a>
   
@@ -569,15 +533,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mappings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Mappings
-    </span>
-  </a>
   
 </li>
       
@@ -609,94 +564,120 @@
   
 
 
-<h1 id="slot-ecosystem">Slot: ecosystem</h1>
-<p><em>An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/ecosystem">nmdc:ecosystem</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../gold_path_field/">gold_path_field</a><ul>
-<li><strong>ecosystem</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="applicable-classes">Applicable Classes</h2>
+<h1 id="enum-submissionstatusenum">Enum: SubmissionStatusEnum</h1>
+<p>URI: <a href="./">SubmissionStatusEnum</a></p>
+<h2 id="permissible-values">Permissible Values</h2>
 <table>
 <thead>
 <tr>
-<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
 <th>Description</th>
-<th>Modifies Slot</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
-<td>no</td>
+<td>InProgress</td>
+<td>None</td>
+<td>The submitter is currently working on the submission</td>
 </tr>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A study summarizes the overall goal of a research initiative and outlines the...</td>
-<td>no</td>
+<td>SubmittedPendingReview</td>
+<td>None</td>
+<td>Submission is ready for NMDC review, the submitter cannot edit</td>
+</tr>
+<tr>
+<td>ResubmittedPendingReview</td>
+<td>None</td>
+<td>Submission has been resubmitted after updates</td>
+</tr>
+<tr>
+<td>ApprovedHeld</td>
+<td>None</td>
+<td>Submission has been reviewed and approved</td>
+</tr>
+<tr>
+<td>PendingUserFacility</td>
+<td>None</td>
+<td>Submission has been reviewed and approved</td>
+</tr>
+<tr>
+<td>UpdatesRequired</td>
+<td>None</td>
+<td>Submission has been reviewed and submitter edits are required for approval</td>
+</tr>
+<tr>
+<td>InProgressUpdate</td>
+<td>None</td>
+<td>NMDC reviewer has reopened submission on behalf of submitter</td>
+</tr>
+<tr>
+<td>Denied</td>
+<td>None</td>
+<td>Submission has been reviewed and denied</td>
+</tr>
+<tr>
+<td>Released</td>
+<td>None</td>
+<td>Submission has been reviewed and approved and data is released on the data po...</td>
 </tr>
 </tbody>
 </table>
-<h2 id="properties">Properties</h2>
-<ul>
-<li>Range: <a href="../String/">String</a></li>
-</ul>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>The abiotic factors play a profound role on the type and composition of organisms in a given environment. The GOLD Ecosystem at the top of the five-level classification system is aimed at capturing the broader environment from which an organism or environmental sample is collected. The three broad groups under Ecosystem are Environmental, Host-associated, and Engineered. They represent samples collected from a natural environment or from another organism or from engineered environments like bioreactors respectively.</li>
-</ul>
-<h2 id="see-also">See Also</h2>
-<ul>
-<li><a href="https://gold.jgi.doe.gov/help">https://gold.jgi.doe.gov/help</a></li>
-</ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
 </ul>
-<h2 id="mappings">Mappings</h2>
-<table>
-<thead>
-<tr>
-<th>Mapping Type</th>
-<th>Mapped Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: ecosystem
-description: An ecosystem is a combination of a physical environment (abiotic factors)
-  and all the organisms (biotic factors) that interact with this environment. Ecosystem
-  is in position 1/5 in a GOLD path.
-comments:
-- The abiotic factors play a profound role on the type and composition of organisms
-  in a given environment. The GOLD Ecosystem at the top of the five-level classification
-  system is aimed at capturing the broader environment from which an organism or environmental
-  sample is collected. The three broad groups under Ecosystem are Environmental, Host-associated,
-  and Engineered. They represent samples collected from a natural environment or from
-  another organism or from engineered environments like bioreactors respectively.
+<pre><code class="language-yaml">name: SubmissionStatusEnum
 from_schema: https://w3id.org/nmdc/nmdc
-see_also:
-- https://gold.jgi.doe.gov/help
 rank: 1000
-is_a: gold_path_field
-alias: ecosystem
-domain_of:
-- Biosample
-- Study
-range: string
+permissible_values:
+  InProgress:
+    text: InProgress
+    description: The submitter is currently working on the submission.
+    title: In Progress
+  SubmittedPendingReview:
+    text: SubmittedPendingReview
+    description: Submission is ready for NMDC review, the submitter cannot edit.
+    title: Submitted - Pending Review
+  ResubmittedPendingReview:
+    text: ResubmittedPendingReview
+    description: Submission has been resubmitted after updates. It is now ready for
+      NMDC review. The submitter cannot edit.
+    title: Resubmitted - Pending review
+  ApprovedHeld:
+    text: ApprovedHeld
+    description: Submission has been reviewed and approved. Information is complete,
+      but not yet shared on the data portal. The submitter cannot edit.
+    title: Approved - Held
+  PendingUserFacility:
+    text: PendingUserFacility
+    description: Submission has been reviewed and approved. Information is complete,
+      but not yet shared on the data portal. Sample information shared with designated
+      user facility and pending approvals. The submitter cannot edit.
+    title: Pending - Sent to User Facility
+  UpdatesRequired:
+    text: UpdatesRequired
+    description: Submission has been reviewed and submitter edits are required for
+      approval. The submitter can reopen and edit the submission.
+    title: Updates Required
+  InProgressUpdate:
+    text: InProgressUpdate
+    description: NMDC reviewer has reopened submission on behalf of submitter. The
+      submitter is currently editing the submission.
+    title: In Progress - Update/Addition
+  Denied:
+    text: Denied
+    description: Submission has been reviewed and denied. The submitter cannot edit.
+    title: Denied
+  Released:
+    text: Released
+    description: Submission has been reviewed and approved and data is released on
+      the data portal. The submitter cannot edit.
+    title: Released
 
 </code></pre>
 

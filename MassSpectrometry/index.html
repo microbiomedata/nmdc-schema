@@ -342,7 +342,7 @@
 
   MassSpectrometry : eluent_introduction_category
 
-      MassSpectrometry --&gt; "0..1" EluentIntroductionCategoryEnum : eluent_introduction_category
+      MassSpectrometry --&gt; "1" EluentIntroductionCategoryEnum : eluent_introduction_category
     click EluentIntroductionCategoryEnum href "../EluentIntroductionCategoryEnum"
 
   MassSpectrometry : end_date
@@ -369,7 +369,7 @@
 
   MassSpectrometry : has_mass_spectrometry_configuration
 
-      MassSpectrometry --&gt; "0..1" MassSpectrometryConfiguration : has_mass_spectrometry_configuration
+      MassSpectrometry --&gt; "1" MassSpectrometryConfiguration : has_mass_spectrometry_configuration
     click MassSpectrometryConfiguration href "../MassSpectrometryConfiguration"
 
   MassSpectrometry : has_output
@@ -446,7 +446,7 @@
 <tbody>
 <tr>
 <td><a href="../eluent_introduction_category/">eluent_introduction_category</a></td>
-<td>0..1 <br/> <a href="../EluentIntroductionCategoryEnum/">EluentIntroductionCategoryEnum</a></td>
+<td>1 <br/> <a href="../EluentIntroductionCategoryEnum/">EluentIntroductionCategoryEnum</a></td>
 <td>A high-level categorization for how the processed sample is introduced into a...</td>
 <td>direct</td>
 </tr>
@@ -464,7 +464,7 @@
 </tr>
 <tr>
 <td><a href="../has_mass_spectrometry_configuration/">has_mass_spectrometry_configuration</a></td>
-<td>0..1 <br/> <a href="../MassSpectrometryConfiguration/">MassSpectrometryConfiguration</a></td>
+<td>1 <br/> <a href="../MassSpectrometryConfiguration/">MassSpectrometryConfiguration</a></td>
 <td>The identifier of the associated MassSpectrometryConfiguration</td>
 <td>direct</td>
 </tr>
@@ -670,12 +670,16 @@ slot_usage:
       interpolated: true
   has_mass_spectrometry_configuration:
     name: has_mass_spectrometry_configuration
+    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
   analyte_category:
     name: analyte_category
     range: MassSpectrometryEnum
+  eluent_introduction_category:
+    name: eluent_introduction_category
+    required: true
 class_uri: nmdc:MassSpectrometry
 rules:
 - preconditions:
@@ -742,12 +746,16 @@ slot_usage:
       interpolated: true
   has_mass_spectrometry_configuration:
     name: has_mass_spectrometry_configuration
+    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
   analyte_category:
     name: analyte_category
     range: MassSpectrometryEnum
+  eluent_introduction_category:
+    name: eluent_introduction_category
+    required: true
 attributes:
   eluent_introduction_category:
     name: eluent_introduction_category
@@ -763,6 +771,7 @@ attributes:
     domain_of:
     - MassSpectrometry
     range: EluentIntroductionCategoryEnum
+    required: true
   generates_calibration:
     name: generates_calibration
     description: calibration information is generated a process
@@ -803,6 +812,7 @@ attributes:
     domain_of:
     - MassSpectrometry
     range: MassSpectrometryConfiguration
+    required: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
