@@ -47,7 +47,9 @@ for c_name in class_dict.keys():
 class_df = pd.concat(class_dfs, ignore_index=True)
 
 # only keep rows where slot contains 'temp'
-class_df = class_df[class_df['slot'].str.contains("temp")]
+class_df = class_df[class_df['slot'].str.contains("temp")].reset_index(drop=True)
+
+print(class_df)
 
 #what does the data look like in mongo for these slots?
 units_used = {}
@@ -57,7 +59,7 @@ for index, row, in class_df.iterrows():
 
     #get info from API on the slots/classes
     collection_client = CollectionSearch(row['collections'])
-    mongo_collect_res = collection_client.get_record_by_filter(filter=f'{{"{row['slot']}":{{"$exists":"True"}}}}', fields = str(row['slot']))
+    mongo_collect_res = collection_client.get_record_by_filter(filter=f'{{"{row["slot"]}":{{"$exists":"True"}}, "type":{{"$regex":"^nmdc:{row["class"]}"}}}}',fields=str(row["slot"]))
     mongo_collect_res = pd.json_normalize(mongo_collect_res)
 
     #how many records have this class/slot populated?
