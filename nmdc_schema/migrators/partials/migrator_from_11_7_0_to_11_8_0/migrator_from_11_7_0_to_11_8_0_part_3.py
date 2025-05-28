@@ -29,7 +29,6 @@ class Migrator(MigratorBase):
         # get the eluent_introduction_category and has_mass_spectrometry_configuration fields
         if data_generation_record.get("type") == "nmdc:MassSpectrometry":
             eluent_introduction_category = data_generation_record.get("eluent_introduction_category")
-            
             if eluent_introduction_category is None:
                 raise ValueError(f"`eluent_introduction_category` is required and is not present in the data object {data_generation_record.get('id')}")
             
