@@ -13,7 +13,7 @@ class Migrator(MigratorBase):
 
     def validate_mass_spec_slots(self, data_generation_record: dict) -> None:
         r"""
-        If the data object does not have eluent_introduction_category or has_mass_spectrometry_configuration OR those keys do not have a value, raise a ValueError.
+        If the data object is of type `nmdc:MassSpectrometry` and either (a) its `eluent_introduction_category` field is missing or consists of `None`, or (b) its `has_mass_spectrometry_configuration` field is missing or consists of `None`, raise a `ValueError`.
 
         >>> m = Migrator()
         >>> m.validate_mass_spec_slots({"id": 123, "type": "nmdc:MassSpectrometry", "eluent_introduction_category": "gas_chromatography", "has_mass_spectrometry_configuration": "nmdc:mscon-123"})
@@ -29,7 +29,6 @@ class Migrator(MigratorBase):
         # get the eluent_introduction_category and has_mass_spectrometry_configuration fields
         if data_generation_record.get("type") == "nmdc:MassSpectrometry":
             eluent_introduction_category = data_generation_record.get("eluent_introduction_category")
-            
             if eluent_introduction_category is None:
                 raise ValueError(f"`eluent_introduction_category` is required and is not present in the data object {data_generation_record.get('id')}")
             
