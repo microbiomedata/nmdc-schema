@@ -12,3 +12,5 @@ has_output:
   - nmdc:dobj-00-9n9n9n
 associated_studies:
   - nmdc:sty-00-555xxx
+eluent_introduction_category: direct_infusion_syringe
+has_mass_spectrometry_configuration: nmdc:mscon-11-e1vant11

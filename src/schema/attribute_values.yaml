@@ -53,7 +53,7 @@ classes:
         pattern: Cel
         required: true
     annotations:
-      cannonical_unit_ucum: Cel
+      ucum_unit: Cel
 
 
   ImageValue:

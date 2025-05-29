@@ -198,8 +198,11 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+        required: true
       analyte_category: 
         range: MassSpectrometryEnum
+      eluent_introduction_category:
+        required: true
     rules:
       - title: generates_calibration_required_if_gc
         description: >-
@@ -265,6 +268,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+      mass_spectrometry_acquisition_strategy:
+        required: true
+      resolution_categories:
+        required: true
+      mass_analyzers:
+        required: true
+      ionization_source:
+        required: true
+      mass_spectrum_collection_modes:
+        required: true
+      polarity_mode:
+        required: true
   
   ChromatographyConfiguration:
     is_a: Configuration
@@ -286,6 +301,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+      chromatographic_category:
+        required: true
+      stationary_phase:
+        required: true
   
   Manifest:
     is_a: InformationObject
