@@ -332,34 +332,34 @@
 
   MassSpectrometryConfiguration : ionization_source
 
-      MassSpectrometryConfiguration --&gt; "0..1" IonizationSourceEnum : ionization_source
+      MassSpectrometryConfiguration --&gt; "1" IonizationSourceEnum : ionization_source
     click IonizationSourceEnum href "../IonizationSourceEnum"
 
   MassSpectrometryConfiguration : mass_analyzers
 
-      MassSpectrometryConfiguration --&gt; "*" MassAnalyzerEnum : mass_analyzers
+      MassSpectrometryConfiguration --&gt; "1..*" MassAnalyzerEnum : mass_analyzers
     click MassAnalyzerEnum href "../MassAnalyzerEnum"
 
   MassSpectrometryConfiguration : mass_spectrometry_acquisition_strategy
 
-      MassSpectrometryConfiguration --&gt; "0..1" MassSpectrometryAcquisitionStrategyEnum : mass_spectrometry_acquisition_strategy
+      MassSpectrometryConfiguration --&gt; "1" MassSpectrometryAcquisitionStrategyEnum : mass_spectrometry_acquisition_strategy
     click MassSpectrometryAcquisitionStrategyEnum href "../MassSpectrometryAcquisitionStrategyEnum"
 
   MassSpectrometryConfiguration : mass_spectrum_collection_modes
 
-      MassSpectrometryConfiguration --&gt; "*" MassSpectrumCollectionModeEnum : mass_spectrum_collection_modes
+      MassSpectrometryConfiguration --&gt; "1..*" MassSpectrumCollectionModeEnum : mass_spectrum_collection_modes
     click MassSpectrumCollectionModeEnum href "../MassSpectrumCollectionModeEnum"
 
   MassSpectrometryConfiguration : name
 
   MassSpectrometryConfiguration : polarity_mode
 
-      MassSpectrometryConfiguration --&gt; "0..1" PolarityModeEnum : polarity_mode
+      MassSpectrometryConfiguration --&gt; "1" PolarityModeEnum : polarity_mode
     click PolarityModeEnum href "../PolarityModeEnum"
 
   MassSpectrometryConfiguration : resolution_categories
 
-      MassSpectrometryConfiguration --&gt; "*" ResolutionCategoryEnum : resolution_categories
+      MassSpectrometryConfiguration --&gt; "1..*" ResolutionCategoryEnum : resolution_categories
     click ResolutionCategoryEnum href "../ResolutionCategoryEnum"
 
   MassSpectrometryConfiguration : type
@@ -393,37 +393,37 @@
 <tbody>
 <tr>
 <td><a href="../mass_spectrometry_acquisition_strategy/">mass_spectrometry_acquisition_strategy</a></td>
-<td>0..1 <br/> <a href="../MassSpectrometryAcquisitionStrategyEnum/">MassSpectrometryAcquisitionStrategyEnum</a></td>
+<td>1 <br/> <a href="../MassSpectrometryAcquisitionStrategyEnum/">MassSpectrometryAcquisitionStrategyEnum</a></td>
 <td>Mode of running a mass spectrometer method by which m/z ranges are selected a...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../resolution_categories/">resolution_categories</a></td>
-<td>* <br/> <a href="../ResolutionCategoryEnum/">ResolutionCategoryEnum</a></td>
+<td>1..* <br/> <a href="../ResolutionCategoryEnum/">ResolutionCategoryEnum</a></td>
 <td>The relative resolution at which spectra were collected</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../mass_analyzers/">mass_analyzers</a></td>
-<td>* <br/> <a href="../MassAnalyzerEnum/">MassAnalyzerEnum</a></td>
+<td>1..* <br/> <a href="../MassAnalyzerEnum/">MassAnalyzerEnum</a></td>
 <td>The kind of mass analyzer(s) used during the spectra collection</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../ionization_source/">ionization_source</a></td>
-<td>0..1 <br/> <a href="../IonizationSourceEnum/">IonizationSourceEnum</a></td>
+<td>1 <br/> <a href="../IonizationSourceEnum/">IonizationSourceEnum</a></td>
 <td>The ionization source used to introduce processed samples into a mass spectro...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../mass_spectrum_collection_modes/">mass_spectrum_collection_modes</a></td>
-<td>* <br/> <a href="../MassSpectrumCollectionModeEnum/">MassSpectrumCollectionModeEnum</a></td>
+<td>1..* <br/> <a href="../MassSpectrumCollectionModeEnum/">MassSpectrumCollectionModeEnum</a></td>
 <td>Indicates whether mass spectra were collected in full profile, reduced profil...</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../polarity_mode/">polarity_mode</a></td>
-<td>0..1 <br/> <a href="../PolarityModeEnum/">PolarityModeEnum</a></td>
+<td>1 <br/> <a href="../PolarityModeEnum/">PolarityModeEnum</a></td>
 <td>the polarity of which ions are generated and detected</td>
 <td>direct</td>
 </tr>
@@ -529,6 +529,24 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
+  mass_spectrometry_acquisition_strategy:
+    name: mass_spectrometry_acquisition_strategy
+    required: true
+  resolution_categories:
+    name: resolution_categories
+    required: true
+  mass_analyzers:
+    name: mass_analyzers
+    required: true
+  ionization_source:
+    name: ionization_source
+    required: true
+  mass_spectrum_collection_modes:
+    name: mass_spectrum_collection_modes
+    required: true
+  polarity_mode:
+    name: polarity_mode
+    required: true
 class_uri: nmdc:MassSpectrometryConfiguration
 
 </code></pre>
@@ -555,6 +573,24 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
       interpolated: true
+  mass_spectrometry_acquisition_strategy:
+    name: mass_spectrometry_acquisition_strategy
+    required: true
+  resolution_categories:
+    name: resolution_categories
+    required: true
+  mass_analyzers:
+    name: mass_analyzers
+    required: true
+  ionization_source:
+    name: ionization_source
+    required: true
+  mass_spectrum_collection_modes:
+    name: mass_spectrum_collection_modes
+    required: true
+  polarity_mode:
+    name: polarity_mode
+    required: true
 attributes:
   mass_spectrometry_acquisition_strategy:
     name: mass_spectrometry_acquisition_strategy
@@ -569,6 +605,7 @@ attributes:
     domain_of:
     - MassSpectrometryConfiguration
     range: MassSpectrometryAcquisitionStrategyEnum
+    required: true
   resolution_categories:
     name: resolution_categories
     description: The relative resolution at which spectra were collected.
@@ -582,6 +619,7 @@ attributes:
     domain_of:
     - MassSpectrometryConfiguration
     range: ResolutionCategoryEnum
+    required: true
     multivalued: true
   mass_analyzers:
     name: mass_analyzers
@@ -595,6 +633,7 @@ attributes:
     domain_of:
     - MassSpectrometryConfiguration
     range: MassAnalyzerEnum
+    required: true
     multivalued: true
   ionization_source:
     name: ionization_source
@@ -609,6 +648,7 @@ attributes:
     domain_of:
     - MassSpectrometryConfiguration
     range: IonizationSourceEnum
+    required: true
   mass_spectrum_collection_modes:
     name: mass_spectrum_collection_modes
     description: Indicates whether mass spectra were collected in full profile, reduced
@@ -620,6 +660,7 @@ attributes:
     domain_of:
     - MassSpectrometryConfiguration
     range: MassSpectrumCollectionModeEnum
+    required: true
     multivalued: true
   polarity_mode:
     name: polarity_mode
@@ -631,6 +672,7 @@ attributes:
     domain_of:
     - MassSpectrometryConfiguration
     range: PolarityModeEnum
+    required: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

@@ -328,7 +328,7 @@
 
   ChromatographyConfiguration : chromatographic_category
 
-      ChromatographyConfiguration --&gt; "0..1" ChromatographicCategoryEnum : chromatographic_category
+      ChromatographyConfiguration --&gt; "1" ChromatographicCategoryEnum : chromatographic_category
     click ChromatographicCategoryEnum href "../ChromatographicCategoryEnum"
 
   ChromatographyConfiguration : description
@@ -344,7 +344,7 @@
 
   ChromatographyConfiguration : stationary_phase
 
-      ChromatographyConfiguration --&gt; "0..1" StationaryPhaseEnum : stationary_phase
+      ChromatographyConfiguration --&gt; "1" StationaryPhaseEnum : stationary_phase
     click StationaryPhaseEnum href "../StationaryPhaseEnum"
 
   ChromatographyConfiguration : temperature
@@ -383,7 +383,7 @@
 <tbody>
 <tr>
 <td><a href="../chromatographic_category/">chromatographic_category</a></td>
-<td>0..1 <br/> <a href="../ChromatographicCategoryEnum/">ChromatographicCategoryEnum</a></td>
+<td>1 <br/> <a href="../ChromatographicCategoryEnum/">ChromatographicCategoryEnum</a></td>
 <td>The type of chromatography used in a process</td>
 <td>direct</td>
 </tr>
@@ -395,7 +395,7 @@
 </tr>
 <tr>
 <td><a href="../stationary_phase/">stationary_phase</a></td>
-<td>0..1 <br/> <a href="../StationaryPhaseEnum/">StationaryPhaseEnum</a></td>
+<td>1 <br/> <a href="../StationaryPhaseEnum/">StationaryPhaseEnum</a></td>
 <td>The material the stationary phase is comprised of used in chromatography</td>
 <td>direct</td>
 </tr>
@@ -505,6 +505,12 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
       interpolated: true
+  chromatographic_category:
+    name: chromatographic_category
+    required: true
+  stationary_phase:
+    name: stationary_phase
+    required: true
 class_uri: nmdc:ChromatographyConfiguration
 
 </code></pre>
@@ -531,6 +537,12 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
       interpolated: true
+  chromatographic_category:
+    name: chromatographic_category
+    required: true
+  stationary_phase:
+    name: stationary_phase
+    required: true
 attributes:
   chromatographic_category:
     name: chromatographic_category
@@ -543,6 +555,7 @@ attributes:
     - ChromatographyConfiguration
     - ChromatographicSeparationProcess
     range: ChromatographicCategoryEnum
+    required: true
   ordered_mobile_phases:
     name: ordered_mobile_phases
     description: The solution(s) that moves through a chromatography column.
@@ -569,6 +582,7 @@ attributes:
     - ChromatographyConfiguration
     - ChromatographicSeparationProcess
     range: StationaryPhaseEnum
+    required: true
   temperature:
     name: temperature
     description: The value of a temperature measurement or temperature used in a process.
