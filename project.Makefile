@@ -140,15 +140,6 @@ make-rdf: rdf-clean \
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
-#		--selected-collections calibration_set
-#		--selected-collections configuration_set
-#[ERROR] [local/mongo_as_nmdc_database_rdf_safe.yaml/0] 'mass' is not one of ['mass_charge_ratio', 'retention_time', 'retention_index'] in /calibration_set/2/calibration_target
-# https://nmdc-group.slack.com/archives/CFVF3G3H7/p1729101060720919?thread_ts=1729100685.966959&cid=CFVF3G3H7
-# Katherine Heal
-# https://github.com/microbiomedata/issues/issues/750#issuecomment-2369147228 for Calibration records to be uploaded
-# https://github.com/microbiomedata/issues/issues/748#issuecomment-2369150887 and https://github.com/microbiomedata/issues/issues/749#issuecomment-2369163551
-#   for Configuration records
-
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
@@ -156,14 +147,17 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 		--output-yaml $@ \
 		--schema-source src/schema/nmdc.yaml \
 		--selected-collections biosample_set \
+		--selected-collections calibration_set \
 		--selected-collections chemical_entity_set \
 		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections configuration_set \
 		--selected-collections data_generation_set \
 		--selected-collections data_object_set \
 		--selected-collections field_research_site_set \
 		--selected-collections functional_annotation_set \
 		--selected-collections genome_feature_set \
 		--selected-collections instrument_set \
+		--selected-collections manifest_set \
 		--selected-collections material_processing_set \
 		--selected-collections processed_sample_set \
 		--selected-collections storage_process_set \
