@@ -42,6 +42,7 @@ prefixes:
   KEGG.REACTION: "https://bioregistry.io/kegg.reaction:"
   KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:"
   MASSIVE: "https://bioregistry.io/reference/massive:"
+  MCO: "http://purl.obolibrary.org/obo/MICRO_"
   MESH: "https://bioregistry.io/mesh:" # https://bioregistry.io/mesh:C063233
   MISO: "http://purl.obolibrary.org/obo/MISO_"
   MIXS: "https://w3id.org/mixs/"
