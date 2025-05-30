@@ -9,6 +9,24 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
+REPO  := microbiomedata/nmdc-schema
+FILE  := nmdc_schema/nmdc_materialized_patterns.yaml
+LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema_last_release.yaml
+# -------------------------------------------------
+
+# Get the tag that belongs to the latest (non-prerelease) GitHub release.
+#  - ‘!=’ executes the shell command only once, when the Makefile is read.
+LATEST_TAG != curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name'
+
+# Build the raw.githubusercontent.com URL
+LATEST_TAG_SCHEMA_URL := https://raw.githubusercontent.com/$(REPO)/$(LATEST_TAG)/$(FILE)
+
+# The rule that fetches the file
+$(LATEST_TAG_SCHEMA_FILE):
+	@echo "Downloading $(LATEST_TAG_SCHEMA_URL)"
+	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@
+
+
 .PHONY: examples-clean mixs-yaml-clean rdf-clean shuttle-clean
 
 examples-clean:
@@ -145,7 +163,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
 		--output-yaml $@ \
-		--schema-source src/schema/nmdc.yaml \
+		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
 		--selected-collections biosample_set \
 		--selected-collections calibration_set \
 		--selected-collections chemical_entity_set \
@@ -186,7 +204,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 #		--mongo-port 27777 \
 #		--direct-connection
 
-local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+local/mongo_as_nmdc_database_rdf_safe.yaml: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
@@ -195,11 +213,11 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patter
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	mv $@ $@.tmp
