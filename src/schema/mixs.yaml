@@ -18,9 +18,6 @@ prefixes:
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
-  MIXS_yaml:
-    prefix_prefix: MIXS_yaml
-    prefix_reference: https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/
 default_prefix: MIXS
 enums:
   arch_struc_enum:
