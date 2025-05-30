@@ -49,7 +49,7 @@ prefixes:
   MS: "http://purl.obolibrary.org/obo/MS_"
   MetaCyc: "https://bioregistry.io/metacyc.compound:"
   MetaNetX: "http://example.org/metanetx/"
-  NCBI: "http://example.com/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
+  NCBI: "http://example.org/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
   OBI: "http://purl.obolibrary.org/obo/OBI_"
@@ -84,7 +84,7 @@ prefixes:
   emsl.project: "https://bioregistry.io/emsl.project:"
   emsl: "http://example.org/emsl_in_mongodb/"
   emsl_uuid_like: "http://example.org/emsl_uuid_like/"
-  generic: "https://example.org/generic/"
+  generic: "http://example.org/generic/"
   gnps.task: "https://bioregistry.io/gnps.task:"
   gold: "https://bioregistry.io/gold:"
   gtpo: "http://example.org/gtpo/"
