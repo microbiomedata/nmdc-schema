@@ -1393,7 +1393,7 @@ slots:
       - air temperature
     is_a: core field
     slot_uri: MIXS:0000124
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   air_temp_regm:
     annotations:
@@ -1669,7 +1669,7 @@ slots:
       - mean annual temperature
     is_a: core field
     slot_uri: MIXS:0000642
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   antibiotic_regm:
     annotations:
@@ -1864,7 +1864,7 @@ slots:
       - average temperature
     is_a: core field
     slot_uri: MIXS:0000142
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   bac_prod:
     annotations:
@@ -4993,7 +4993,7 @@ slots:
       - host body temperature
     is_a: core field
     slot_uri: MIXS:0000274
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   host_color:
     annotations:
@@ -8455,7 +8455,7 @@ slots:
       - sample storage temperature
     is_a: core field
     slot_uri: MIXS:0000110
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   samp_subtype:
     annotations:
@@ -8744,7 +8744,7 @@ slots:
       - mean seasonal temperature
     is_a: core field
     slot_uri: MIXS:0000643
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   season_use:
     annotations:
@@ -9738,7 +9738,7 @@ slots:
       - surface temperature
     is_a: core field
     slot_uri: MIXS:0000125
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   suspend_part_matter:
     annotations:
@@ -9859,7 +9859,7 @@ slots:
       - temperature
     is_a: environment field
     slot_uri: MIXS:0000113
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   temp_out:
     annotations:
@@ -9881,7 +9881,7 @@ slots:
       - temperature outside house
     is_a: core field
     slot_uri: MIXS:0000197
-    range: QuantityValue
+    range: QuantityValueCelsius
     multivalued: false
   tertiary_treatment:
     annotations:
