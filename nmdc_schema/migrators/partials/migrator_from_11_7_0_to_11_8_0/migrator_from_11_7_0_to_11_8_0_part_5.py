@@ -4,8 +4,8 @@ from nmdc_schema.migrators.helpers import load_yaml_asset
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11.8.0.part_2"
-    _to_version = "11.8.0.part_3"
+    _from_version = "11.8.0.part_4"
+    _to_version = "11.8.0.part_5"
 
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
