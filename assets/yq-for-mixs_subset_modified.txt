@@ -132,7 +132,6 @@
 '.slots.surf_temp.range |= "QuantityValueCelsius"'
 '.slots.suspend_solids.range |= "TextValue"'
 '.slots.temp.range |= "QuantityValueCelsius"'
-'.slots.temperature.range |= "QuantityValueCelsius"'
 '.slots.temp_out.range |= "QuantityValueCelsius"'
 '.slots.tot_nitro_cont_meth.range |= "string"'
 '.slots.viscosity.range |= "TextValue"'
