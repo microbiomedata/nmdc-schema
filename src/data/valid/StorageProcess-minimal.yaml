@@ -10,8 +10,8 @@ substances_used:
 contained_in: falcon_tube
 start_date: "2021-01-14"
 temperature:
-  type: nmdc:QuantityValue
-  has_unit: degrees Celsius
+  type: nmdc:QuantityValueCelsius
+  has_unit: Cel
   has_numeric_value: 80
 has_input: 
   - nmdc:procsm-99-dtTMNb
