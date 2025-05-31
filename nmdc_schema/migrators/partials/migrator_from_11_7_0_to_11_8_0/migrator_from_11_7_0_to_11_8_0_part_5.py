@@ -23,22 +23,22 @@ class Migrator(MigratorBase):
         If the `has_unit` string is not in the mapping, raise a ValueError.
 
         >>> m = Migrator()
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Celsius","type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "Celsius", "type": "nmdc:QuantityValue"}})
         {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Cel","type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "Cel", "type": "nmdc:QuantityValue"}})
         {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "type": "nmdc:QuantityValue"}})
         Traceback (most recent call last):
         ...
         ValueError: record 123 and field temp populated but missing `has_unit` value.
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "F","type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "F", "type": "nmdc:QuantityValue"}})
         Traceback (most recent call last):
         ...
         ValueError: `has_unit` string F is not found in the mapping. Cannot assign 'Cel'.
         """
         celsius_map = load_yaml_asset('migrator_from_11_7_to_11_8/celsius_map.yaml')
 
-        fields = ['air_temp', 'annual_temp','avg_temp','host_body_temp','samp_store_temp','season_temp','surf_temp','temp','temp_out','temperature']
+        fields = ['air_temp', 'annual_temp', 'avg_temp', 'host_body_temp', 'samp_store_temp', 'season_temp', 'surf_temp', 'temp', 'temp_out', 'temperature']
         
         for field in fields:
             if record.get(field):
