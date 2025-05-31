@@ -23,15 +23,15 @@ class Migrator(MigratorBase):
         If the `has_unit` string is not in the mapping, raise a ValueError.
 
         >>> m = Migrator()
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Celsius","type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "Celsius", "type": "nmdc:QuantityValue"}})
         {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "Cel","type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "Cel", "type": "nmdc:QuantityValue"}})
         {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "type": "nmdc:QuantityValue"}})
         Traceback (most recent call last):
         ...
         ValueError: record 123 and field temp populated but missing `has_unit` value.
-        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6,"has_unit": "F","type": "nmdc:QuantityValue"}})
+        >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "F", "type": "nmdc:QuantityValue"}})
         Traceback (most recent call last):
         ...
         ValueError: `has_unit` string F is not found in the mapping. Cannot assign 'Cel'.
