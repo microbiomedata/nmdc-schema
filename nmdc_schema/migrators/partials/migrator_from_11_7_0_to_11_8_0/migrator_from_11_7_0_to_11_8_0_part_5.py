@@ -38,7 +38,7 @@ class Migrator(MigratorBase):
         """
         celsius_map = load_yaml_asset('migrator_from_11_7_to_11_8/celsius_map.yaml')
 
-        fields = ['air_temp', 'annual_temp','avg_temp','host_body_temp','samp_store_temp','season_temp','surf_temp','temp','temp_out','temperature']
+        fields = ['air_temp', 'annual_temp', 'avg_temp', 'host_body_temp', 'samp_store_temp', 'season_temp', 'surf_temp', 'temp', 'temp_out', 'temperature']
         
         for field in fields:
             if record.get(field):
