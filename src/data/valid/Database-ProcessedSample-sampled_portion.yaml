@@ -52,8 +52,10 @@ material_processing_set:
   description: Dissolving metabolites from nmdc:procsm-99-01
   name: resuspend_metabolites
   processing_institution: EMSL
-  has_input: nmdc:procsm-99-01 # from mplex
-  has_output: nmdc:procsm-99-04 # DataGeneration.has_input
+  has_input: 
+    - nmdc:procsm-99-01 # from mplex
+  has_output: 
+    - nmdc:procsm-99-04 # DataGeneration.has_input
   substances_used:
     - type: nmdc:PortionOfSubstance
       known_as: chloroform
@@ -107,8 +109,10 @@ material_processing_set:
   description: Dissolving lipids from nmdc:procsm-99-03
   name: Dissolving Lipids
   processing_institution: EMSL
-  has_input: nmdc:procsm-99-03 # from mplex
-  has_output: nmdc:procsm-99-06 # DataGeneration.has_input
+  has_input: 
+    - nmdc:procsm-99-03 # from mplex
+  has_output: 
+    - nmdc:procsm-99-06 # DataGeneration.has_input
   substances_used:
     - type: nmdc:PortionOfSubstance
       known_as: chloroform
