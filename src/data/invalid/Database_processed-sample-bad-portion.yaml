@@ -8,4 +8,5 @@ processed_sample_set:
     biomaterial_purity:
       type: nmdc:QuantityValue
       has_numeric_value: 2
-    sampled_portion: eleven hard-boiled eggs
+    sampled_portion: 
+      - eleven hard-boiled eggs

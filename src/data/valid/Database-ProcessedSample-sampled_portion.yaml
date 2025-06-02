@@ -136,13 +136,15 @@ processed_sample_set:
   type: nmdc:ProcessedSample
   name: methanol_extracted_metabolites
   description: metabolites in methanol from MPLEx
-  sampled_portion: methanol_layer
+  sampled_portion: 
+    - methanol_layer
 
 - id: nmdc:procsm-99-02
   type: nmdc:ProcessedSample
   name: extracted_proteins
   description: protein interlayer from MPLEx
-  sampled_portion: interlayer
+  sampled_portion: 
+    - interlayer
 
 - id: nmdc:procsm-99-03
   type: nmdc:ProcessedSample
@@ -154,15 +156,21 @@ processed_sample_set:
   type: nmdc:ProcessedSample
   name: resuspended_metabolites
   description: resuspended metabolites for GC-MS
+  sampled_portion: 
+    - methanol_layer
 
 - id: nmdc:procsm-99-05
   type: nmdc:ProcessedSample
   name: trypsin_digested_proteins
   description: digested proteins for LC-MS
+  sampled_portion:
+    - interlayer
 
 - id: nmdc:procsm-99-06
   type: nmdc:ProcessedSample
   name: resuspended_lipids
   description: resuspended lipids for LC-MS
+  # sampled_portion: 
+  #   - chloroform_layer
 
 

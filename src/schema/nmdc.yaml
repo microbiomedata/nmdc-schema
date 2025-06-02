@@ -955,13 +955,17 @@ enums:
         aliases:
           - bottom_layer
       interlayer:
-        description: The layer of material between liquid layers of a separated solution
+        title: Interlayer
+        description: The layer of material between liquid layers of a separated mixture
       water_layer:
-        description: The portion of a solution containing molecules dissolved in water
+        title: Water layer
+        description: The portion of a mixture containing molecules dissolved in water
       chloroform_layer:
-        description: The portion of a solution containing molecules dissolved in chloroform
+        title: Chloroform layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
       methanol_layer: 
-        description: The portion of a solution containing molecules dissolved in methanol
+        title: Methanol layer
+        description: The portion of a mixture containing molecules dissolved in methanol
 
 slots:
   generates_calibration:
