@@ -83,26 +83,26 @@ material_processing_set:
   has_output:
     - nmdc:procsm-99-05 # DataGeneration.has_input
   processing_institution: EMSL
-  # chemical_conversion_category: protease_cleavage
-  # substances_used:
-  #   - type: nmdc:PortionOfSubstance
-  #     known_as: Trypsin
-  #     substance_role: ms_proteolytic_enzyme
-  #     volume: 
-  #       type: nmdc:QuantityValue
-  #       has_raw_value: 0.004 mL
-  #       has_unit: mL
-  #       has_numeric_value: 0.004
-  # temperature:
-  #   type: nmdc:QuantityValue
-  #   has_raw_value: 37 C
-  #   has_unit: C
-  #   has_numeric_value: 37
-  # duration:
-  #   type: nmdc:QuantityValue
-  #   has_raw_value: 3 h
-  #   has_unit: h
-  #   has_numeric_value: 3
+  chemical_conversion_category: protease_cleavage
+  substances_used:
+    - type: nmdc:PortionOfSubstance
+      known_as: trypsin
+      substance_role: ms_proteolytic_enzyme
+      volume: 
+        type: nmdc:QuantityValue
+        has_raw_value: 0.004 mL
+        has_unit: mL
+        has_numeric_value: 0.004
+  temperature:
+    type: nmdc:QuantityValue
+    has_raw_value: 37 C
+    has_unit: C
+    has_numeric_value: 37
+  duration:
+    type: nmdc:QuantityValue
+    has_raw_value: 3 h
+    has_unit: h
+    has_numeric_value: 3
 
 - id: nmdc:dispro-99-02
   type: nmdc:DissolvingProcess
