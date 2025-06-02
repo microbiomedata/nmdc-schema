@@ -50,7 +50,7 @@ classes:
     description: A QuantityValue whose unit value must be Cel, the UCUM representation of degrees Celsius
     slot_usage:
       has_unit:
-        pattern: Cel
+        pattern: ^Cel$
         required: true
     annotations:
       ucum_unit: Cel
