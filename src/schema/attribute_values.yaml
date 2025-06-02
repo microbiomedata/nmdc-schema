@@ -19,10 +19,30 @@ classes:
     class_uri: nmdc:AttributeValue
     description: >-
       The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic
-      value and the structured value
+        value and the structured value.
     slots:
       - has_raw_value
       - type
+
+  GeoLocationNameValue:
+    class_uri: nmdc:GeoLocationNameValue
+    description: >-
+      A structured address-like record of where something is located, came from, or took place
+    comments:
+      - When an instance of this class is populated via an ETL pipeline, the raw value from the source should go into this class's has_raw_value slot.
+        The ETL pipeline can parse that raw value and insert the results into this class's other slots.
+      - "This class is more useful that string-only representations when data may be ingested from multiple sources, some of which may use a style like 'Nation: State, Locality' and other might use 'Nation: Locality, State'."
+      - country_or_sea is required. Instances of this class should have either a subnational_1_or_ocean_region or a locality. Preferably both.
+    is_a: AttributeValue
+    narrow_mappings:
+      - mixs:0000010
+    slots:
+      - country_or_sea
+      - subnational_1_or_ocean_region
+      - locality
+    slot_usage:
+      has_raw_value:
+        required: true
 
   QuantityValue:
     class_uri: nmdc:QuantityValue
