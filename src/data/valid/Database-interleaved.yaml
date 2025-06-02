@@ -77,9 +77,9 @@ material_processing_set:
       has_numeric_value: 20
       has_unit: mL
     temperature:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_numeric_value: 25
-      has_unit: C
+      has_unit: Cel
     mass:
       type: nmdc:QuantityValue
       has_numeric_value: 30
@@ -100,8 +100,8 @@ storage_process_set:
     contained_in: falcon_tube
     start_date: "2021-01-14"
     temperature:
-      type: nmdc:QuantityValue
-      has_unit: degrees Celsius
+      type: nmdc:QuantityValueCelsius
+      has_unit: Cel
       has_numeric_value: 80
     has_input:
       - nmdc:procsm-99-dtTMNb
@@ -120,7 +120,7 @@ material_processing_set:
     stationary_phase: BEH-HILIC
     chromatographic_category: liquid_chromatography
     temperature:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_numeric_value: 25
       has_unit: Cel
     ordered_mobile_phases:
@@ -217,7 +217,7 @@ material_processing_set:
           has_unit: mM
           has_numeric_value: 10
     temperature:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_numeric_value: 25
       has_unit: Cel
     duration:
@@ -254,7 +254,7 @@ material_processing_set:
       has_numeric_value: 75
       has_unit: μL
     temperature:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_numeric_value: 37
       has_unit: Cel
     duration:
@@ -1213,9 +1213,9 @@ biosample_set:
       has_numeric_value: 0.1
       has_unit: PSU
     temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_numeric_value: 25
-      has_unit: Celsius
+      has_unit: Cel
   - id: nmdc:bsm-99-49z38t
     type: nmdc:Biosample
     name: mouse gut sample
@@ -1516,8 +1516,9 @@ biosample_set:
       - type: nmdc:TextValue
         has_raw_value: xxx
     air_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     air_temp_regm:
       - type: nmdc:TextValue
         has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -1558,8 +1559,9 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: 0.5 milligram per liter
     annual_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: 12.5 degree Celsius
+      has_unit: Cel
     antibiotic_regm:
       - type: nmdc:TextValue
         has_raw_value: xxx
@@ -1583,8 +1585,9 @@ biosample_set:
       type: nmdc:TextValue
       has_raw_value: xxx
     avg_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     bac_prod:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -1960,8 +1963,9 @@ biosample_set:
       type: nmdc:ControlledTermValue
       has_raw_value: xxx
     host_body_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     host_color:
       type: nmdc:TextValue
       has_raw_value: xxx
@@ -2384,8 +2388,9 @@ biosample_set:
       type: nmdc:TextValue
       has_raw_value: Freezer no:5
     samp_store_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: -80 degree Celsius
+      has_unit: Cel
     samp_subtype: biofilm
     samp_taxon_id:
       type: nmdc:ControlledIdentifiedTermValue
@@ -2423,8 +2428,9 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: 75 millimeters
     season_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: 18 degree Celsius
+      has_unit: Cel
     season_use: Spring
     secondary_treatment:
       type: nmdc:TextValue
@@ -2535,8 +2541,9 @@ biosample_set:
       has_raw_value: xxx
     surf_moisture_ph: 123.0
     surf_temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     suspend_part_matter:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -2547,11 +2554,13 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: xxx
     temp:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: 25 degree Celsius
+      has_unit: Cel
     temp_out:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_raw_value: xxx
+      has_unit: Cel
     tertiary_treatment:
       type: nmdc:TextValue
       has_raw_value: xxx
@@ -4661,7 +4670,7 @@ configuration_set:
     chromatographic_category: liquid_chromatography
     stationary_phase: C18
     temperature:
-      type: nmdc:QuantityValue
+      type: nmdc:QuantityValueCelsius
       has_numeric_value: 30
       has_unit: Cel
     ordered_mobile_phases:
