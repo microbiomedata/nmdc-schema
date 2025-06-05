@@ -596,14 +596,24 @@
 <td></td>
 </tr>
 <tr>
+<td>organic_layer</td>
+<td>None</td>
+<td>The portion of a mixture containing dissolved organic material</td>
+</tr>
+<tr>
+<td>aqueous_layer</td>
+<td>None</td>
+<td>The portion of a mixture containing molecules dissolved in water</td>
+</tr>
+<tr>
+<td>non_polar_layer</td>
+<td>None</td>
+<td></td>
+</tr>
+<tr>
 <td>interlayer</td>
 <td>None</td>
 <td>The layer of material between liquid layers of a separated mixture</td>
-</tr>
-<tr>
-<td>water_layer</td>
-<td>None</td>
-<td>The portion of a mixture containing molecules dissolved in water</td>
 </tr>
 <tr>
 <td>chloroform_layer</td>
@@ -652,17 +662,28 @@ permissible_values:
     text: pellet
     aliases:
     - bottom_layer
+  organic_layer:
+    text: organic_layer
+    description: The portion of a mixture containing dissolved organic material
+    title: Organic layer
+  aqueous_layer:
+    text: aqueous_layer
+    description: The portion of a mixture containing molecules dissolved in water
+    title: Aqueous layer
+    aliases:
+    - water layer
+  non_polar_layer:
+    text: non_polar_layer
+    deprecated: Remodeling sampled_portion with more specific PVs, no longer needed
+      05June2025
   interlayer:
     text: interlayer
     description: The layer of material between liquid layers of a separated mixture
     title: Interlayer
-  water_layer:
-    text: water_layer
-    description: The portion of a mixture containing molecules dissolved in water
-    title: Water layer
   chloroform_layer:
     text: chloroform_layer
     description: The portion of a mixture containing molecules dissolved in chloroform
+    is_a: organic_layer
     title: Chloroform layer
   methanol_layer:
     text: methanol_layer
