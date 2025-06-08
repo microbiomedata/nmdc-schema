@@ -974,6 +974,7 @@ enums:
       methanol_layer: 
         title: Methanol layer
         description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
 
 slots:
   generates_calibration:
