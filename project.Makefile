@@ -9,6 +9,24 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
+REPO  := microbiomedata/nmdc-schema
+FILE  := nmdc_schema/nmdc_materialized_patterns.yaml
+LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema_last_release.yaml
+# -------------------------------------------------
+
+# Get the tag that belongs to the latest (non-prerelease) GitHub release.
+#  - ‘!=’ executes the shell command only once, when the Makefile is read.
+LATEST_TAG != curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name'
+
+# Build the raw.githubusercontent.com URL
+LATEST_TAG_SCHEMA_URL := https://raw.githubusercontent.com/$(REPO)/$(LATEST_TAG)/$(FILE)
+
+# The rule that fetches the file
+$(LATEST_TAG_SCHEMA_FILE):
+	@echo "Downloading $(LATEST_TAG_SCHEMA_URL)"
+	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@
+
+
 .PHONY: examples-clean mixs-yaml-clean rdf-clean shuttle-clean
 
 examples-clean:
@@ -140,30 +158,24 @@ make-rdf: rdf-clean \
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
-#		--selected-collections calibration_set
-#		--selected-collections configuration_set
-#[ERROR] [local/mongo_as_nmdc_database_rdf_safe.yaml/0] 'mass' is not one of ['mass_charge_ratio', 'retention_time', 'retention_index'] in /calibration_set/2/calibration_target
-# https://nmdc-group.slack.com/archives/CFVF3G3H7/p1729101060720919?thread_ts=1729100685.966959&cid=CFVF3G3H7
-# Katherine Heal
-# https://github.com/microbiomedata/issues/issues/750#issuecomment-2369147228 for Calibration records to be uploaded
-# https://github.com/microbiomedata/issues/issues/748#issuecomment-2369150887 and https://github.com/microbiomedata/issues/issues/749#issuecomment-2369163551
-#   for Configuration records
-
 local/mongo_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
 		--output-yaml $@ \
-		--schema-source src/schema/nmdc.yaml \
+		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
 		--selected-collections biosample_set \
+		--selected-collections calibration_set \
 		--selected-collections chemical_entity_set \
 		--selected-collections collecting_biosamples_from_site_set \
+		--selected-collections configuration_set \
 		--selected-collections data_generation_set \
 		--selected-collections data_object_set \
 		--selected-collections field_research_site_set \
 		--selected-collections functional_annotation_set \
 		--selected-collections genome_feature_set \
 		--selected-collections instrument_set \
+		--selected-collections manifest_set \
 		--selected-collections material_processing_set \
 		--selected-collections processed_sample_set \
 		--selected-collections storage_process_set \
@@ -192,7 +204,7 @@ local/mongo_as_unvalidated_nmdc_database.yaml:
 #		--mongo-port 27777 \
 #		--direct-connection
 
-local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_unvalidated_nmdc_database.yaml
+local/mongo_as_nmdc_database_rdf_safe.yaml: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
@@ -201,11 +213,11 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: nmdc_schema/nmdc_materialized_patter
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
+local/mongo_as_nmdc_database.ttl: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	mv $@ $@.tmp

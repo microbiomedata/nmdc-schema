@@ -42,13 +42,14 @@ prefixes:
   KEGG.REACTION: "https://bioregistry.io/kegg.reaction:"
   KEGG_PATHWAY: "https://bioregistry.io/kegg.pathway:"
   MASSIVE: "https://bioregistry.io/reference/massive:"
+  MCO: "http://purl.obolibrary.org/obo/MICRO_"
   MESH: "https://bioregistry.io/mesh:" # https://bioregistry.io/mesh:C063233
   MISO: "http://purl.obolibrary.org/obo/MISO_"
   MIXS: "https://w3id.org/mixs/"
   MS: "http://purl.obolibrary.org/obo/MS_"
   MetaCyc: "https://bioregistry.io/metacyc.compound:"
   MetaNetX: "http://example.org/metanetx/"
-  NCBI: "http://example.com/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
+  NCBI: "http://example.org/ncbitaxon/" # temporary. see https://github.com/microbiomedata/issues/issues/893
   NCBITaxon: "http://purl.obolibrary.org/obo/NCBITaxon_"
   NCIT: "http://purl.obolibrary.org/obo/NCIT_" # for Biosample, Study, StudyCategoryEnum PVs, doi_provider, funding_sources, extraction_targets, 'BAI File' only
   OBI: "http://purl.obolibrary.org/obo/OBI_"
@@ -83,7 +84,7 @@ prefixes:
   emsl.project: "https://bioregistry.io/emsl.project:"
   emsl: "http://example.org/emsl_in_mongodb/"
   emsl_uuid_like: "http://example.org/emsl_uuid_like/"
-  generic: "https://example.org/generic/"
+  generic: "http://example.org/generic/"
   gnps.task: "https://bioregistry.io/gnps.task:"
   gold: "https://bioregistry.io/gold:"
   gtpo: "http://example.org/gtpo/"
@@ -198,8 +199,11 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+        required: true
       analyte_category: 
         range: MassSpectrometryEnum
+      eluent_introduction_category:
+        required: true
     rules:
       - title: generates_calibration_required_if_gc
         description: >-
@@ -265,6 +269,18 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$"
           interpolated: true
+      mass_spectrometry_acquisition_strategy:
+        required: true
+      resolution_categories:
+        required: true
+      mass_analyzers:
+        required: true
+      ionization_source:
+        required: true
+      mass_spectrum_collection_modes:
+        required: true
+      polarity_mode:
+        required: true
   
   ChromatographyConfiguration:
     is_a: Configuration
@@ -286,6 +302,10 @@ classes:
         structured_pattern:
           syntax: "{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$"
           interpolated: true
+      chromatographic_category:
+        required: true
+      stationary_phase:
+        required: true
   
   Manifest:
     is_a: InformationObject
@@ -855,14 +875,18 @@ enums:
       liquid_chromatography:
         aliases:
           - LC
+        title: liquid chromatography
         description: The processed sample is introduced into the mass spectrometer through a liquid chromatography process.
       gas_chromatography:
         aliases:
           - GC
+        title: gas chromatography
         description: The processed sample is introduced into the mass spectrometer through a gas chromatography process.
       direct_infusion_syringe:
+        title: direct infusion syringe
         description: The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.
       direct_infusion_autosampler:
+        title: direct infusion autosampler
         description: The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
 
   LibraryTypeEnum:

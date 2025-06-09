@@ -6692,7 +6692,7 @@
                     ]
                 },
                 "was_generated_by": {
-                    "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                    "pattern": "^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": [
                         "string",
                         "null"
@@ -7999,7 +7999,10 @@
                 "Metatranscriptome Raw Reads",
                 "Metatranscriptome Raw Read 1",
                 "Metatranscriptome Raw Read 2",
-                "FT ICR-MS Analysis Results",
+                "Direct Infusion FT-ICR MS Analysis Results",
+                "Direct Infusion FT-ICR MS QC Plots",
+                "LC FT-ICR MS Analysis Results",
+                "LC FT-ICR MS QC Plots",
                 "GC-MS Metabolomics Results",
                 "LC-MS Metabolomics Results",
                 "Metaproteomics Workflow Statistics",
@@ -8069,6 +8072,7 @@
                 "Pfam Annotation GFF",
                 "Annotation Statistics",
                 "Direct Infusion FT ICR-MS Raw Data",
+                "LC FT-ICR MS Raw Data",
                 "LC-DDA-MS/MS Raw Data",
                 "GC-MS Raw Data",
                 "Configuration toml",

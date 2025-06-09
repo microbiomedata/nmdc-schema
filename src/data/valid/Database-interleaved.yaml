@@ -3058,6 +3058,7 @@ data_object_set:
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exist for lcms metabolite data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
+    data_category: instrument_data
     type: nmdc:DataObject
     alternative_identifiers:
       - my_emsl:1826381
@@ -3068,6 +3069,7 @@ data_object_set:
     url: https://nmdcdemo.emsl.pnnl.gov/proteomics/raw/SpruceW_P19_15_22Jun17_Pippin_17-04-06.raw #url does not yet exist for lipid data, this is just an example resolvable url
     md5_checksum: 3EFB4966125DFA9329ADE5B18EADDA8E
     data_object_type: LC-DDA-MS/MS Raw Data
+    data_category: instrument_data
     type: nmdc:DataObject
     alternative_identifiers:
       - my_emsl:1826333
@@ -3075,17 +3077,23 @@ data_object_set:
     type: nmdc:DataObject
     name: 11340.8.202049.GTCTCCT-AAGGAGA.fastq.gz
     description: Raw sequencer read data
+    data_category: instrument_data
     file_size_bytes: 9208349052
+    data_object_type: Metagenome Raw Reads
   - id: nmdc:dobj-99-7zrm55
     type: nmdc:DataObject
     name: 11839.4.222578.GAGCTCA-TTGAGCT.fastq.gz
     description: Raw sequencer read data
+    data_category: instrument_data
     file_size_bytes: 34243309819
+    data_object_type: Metagenome Raw Reads
   - id: nmdc:dobj-99-sQQw0I
     type: nmdc:DataObject
     name: 12660.4.274923.GATCGTAC-GTACGATC.fastq.gz
     description: Raw sequencer read data
+    data_category: instrument_data
     file_size_bytes: 7580035314
+    data_object_type: Metagenome Raw Reads
   - id: nmdc:dobj-70-izwYW6
     type: nmdc:DataObject
     name: CoreMS.toml
@@ -3111,6 +3119,7 @@ data_object_set:
     type: nmdc:DataObject
     name: emsl_calibration_run.raw
     description: GCMS data file
+    data_object_type: GC-MS Raw Data
     data_category: instrument_data
     file_size_bytes: 9208349052
     url: https://emsl_site/emsl_calibration_run.raw
@@ -3119,6 +3128,7 @@ data_object_set:
     name: soil metagenome raw reads
     description: Raw sequencing reads from soil metagenome sample.
     data_object_type: Metagenome Raw Reads
+    data_category: instrument_data
     file_size_bytes: 1234567890
     md5_checksum: e5b511d7874186800c4ac88d593c4209
     url: https://example.com/soil_metagenome.fastq.gz
@@ -3128,6 +3138,7 @@ data_object_set:
     name: mouse gut metagenome raw reads
     description: Raw sequencing reads from mouse gut metagenome sample.
     data_object_type: Metagenome Raw Read 1
+    data_category: instrument_data
     file_size_bytes: 9876543210
     md5_checksum: 9c4984a6377192532692281a81f760a3
     url: https://example.com/mouse_gut_metagenome_R1.fastq.gz
@@ -3137,6 +3148,7 @@ data_object_set:
     name: mouse gut metagenome raw reads
     description: Raw sequencing reads from mouse gut metagenome sample.
     data_object_type: Metagenome Raw Read 2
+    data_category: instrument_data
     file_size_bytes: 9876543210
     md5_checksum: 8b387395266081701080729a98765f4a
     url: https://example.com/mouse_gut_metagenome_R2.fastq.gz
@@ -3146,6 +3158,7 @@ data_object_set:
     name: human gut metagenome assembled contigs
     description: Assembled contigs from human gut metagenome sample.
     data_object_type: Metagenome Raw Reads
+    data_category: instrument_data
     file_size_bytes: 5678901234
     md5_checksum: 7a2938b51609f4c38d75e64a9012b3c8
     url: https://example.com/human_gut_metagenome_contigs.fasta
@@ -3155,6 +3168,7 @@ data_object_set:
     name: human gut metagenome functional annotation
     description: Functional annotations for human gut metagenome contigs.
     data_object_type: Functional Annotation GFF
+    data_category: processed_data
     file_size_bytes: 4321098765
     md5_checksum: 6b1827a40598e3c27d64f53a8901c2b7
     url: https://example.com/human_gut_metagenome_annotation.gff
@@ -3164,18 +3178,21 @@ data_object_set:
     name: BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
     description: Test R1 data
     data_object_type: Metagenome Raw Read 1
+    data_category: instrument_data
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R1/BMI_HY7W2BGXG_Plate19S_13WellG10_R1.fastq.gz
   - id: nmdc:dobj-12-yx0tfp52
     type: nmdc:DataObject
     name: W2BGXG_Plate19S_13WellG10_R2.fastq.gz
     description: Test R2 data
     data_object_type: Metagenome Raw Read 2
+    data_category: instrument_data
     url: https://storage.neonscience.org/neon-microbial-raw-seq-files/2020/BMI_HY7W2BGXG_mms_R2/BMI_HY7W2BGXG_Plate19S_13WellG10_R2.fastq.gz
   - id: nmdc:dobj-12-71q7wv80
     type: nmdc:DataObject
     name: 1472_51293.filtered.fastq.gz
     description: Test filtered data for NEON
     data_object_type: Filtered Sequencing Reads
+    data_category: processed_data
     url: https://data.microbiomedata.org/data/1472_51293/qa/1472_51293.filtered.fastq.gz
 material_processing_set:
   - id: nmdc:extrp-99-abcdef

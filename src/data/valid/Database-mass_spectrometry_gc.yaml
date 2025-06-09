@@ -47,6 +47,7 @@ configuration_set:
     type: nmdc:MassSpectrometryConfiguration
     name: "EMSL EI mass spectrometry method for small molecules"
     description: "Electron impact mass spectrometry method for small molecules"
+    mass_spectrometry_acquisition_strategy: data_dependent_acquisition
     ionization_source: electron_ionization
     mass_analyzers:
       - quadrupole
@@ -65,6 +66,7 @@ data_object_set:
     file_size_bytes: 9208349052
     in_manifest:
       - nmdc:manif-99-krhtest                                   #defined below
+    data_object_type: GC-MS Raw Data
   - id: nmdc:dobj-11-9n9n9n
     type: nmdc:DataObject
     data_category: instrument_data
@@ -74,3 +76,4 @@ data_object_set:
     file_size_bytes: 9208349052
     in_manifest:
       - nmdc:manif-99-krhtest                                   #defined below
+    data_object_type: GC-MS Raw Data

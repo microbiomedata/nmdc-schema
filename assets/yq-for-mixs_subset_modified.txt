@@ -248,3 +248,8 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.fire.range |= "string"'
 '.slots.flooding.range |= "string"'
 '.slots.water_content.range |= "string"'
+
+# scared to modify https://raw.githubusercontent.com/microbiomedata/mixs/pre-2024-05-15/model/schema/mixs.yaml
+# issue https://github.com/microbiomedata/nmdc-schema/issues/2472
+# see also https://github.com/microbiomedata/nmdc-schema/issues/1368
+'del(.prefixes.MIXS_yaml)'
