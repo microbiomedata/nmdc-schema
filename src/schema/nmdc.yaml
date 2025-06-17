@@ -981,6 +981,14 @@ enums:
       aqueous_layer:
       non_polar_layer:
 
+  UnitEnum:
+    permissible_values:
+      Cel:
+        aliases:
+          - Celsius
+        description: Cel, the UCUM representation of degrees Celsius
+
+
 
 slots:
   generates_calibration:

@@ -98,7 +98,7 @@ configuration_set:
     chromatographic_category: liquid_chromatography
     stationary_phase: C18
     temperature:
-      type: nmdc:QuantityValueCelsius
+      type: nmdc:QuantityValueWithUnit
       has_numeric_value: 30
       has_unit: Cel
     ordered_mobile_phases:

@@ -27,7 +27,7 @@ substances_volume:
   has_numeric_value: 75
   has_unit: μL
 temperature:
-  type: nmdc:QuantityValueCelsius
+  type: nmdc:QuantityValueWithUnit
   has_numeric_value: 37
   has_unit: Cel
 duration:

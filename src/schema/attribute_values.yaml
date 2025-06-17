@@ -44,16 +44,14 @@ classes:
     mappings:
       - schema:QuantityValue
 
-  QuantityValueCelsius:
-    class_uri: nmdc:QuantityValueCelsius
+  QuantityValueWithUnit:
+    class_uri: nmdc:QuantityValueWithUnit
     is_a: QuantityValue
-    description: A QuantityValue whose unit value must be Cel, the UCUM representation of degrees Celsius
+    description: A QuantityValue whose unit value must be in UnitEnum, which contains UCUM representations of various metrics.
     slot_usage:
       has_unit:
-        pattern: ^Cel$
+        range: UnitEnum
         required: true
-    annotations:
-      ucum_unit: Cel
 
 
   ImageValue:

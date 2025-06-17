@@ -24,9 +24,9 @@ class Migrator(MigratorBase):
 
         >>> m = Migrator()
         >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "Celsius", "type": "nmdc:QuantityValue"}})
-        {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
+        {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueWithUnit'}}
         >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "has_unit": "Cel", "type": "nmdc:QuantityValue"}})
-        {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueCelsius'}}
+        {'id': 123, 'type': 'nmdc:Biosample', 'temp': {'has_numeric_value': 6.6, 'has_unit': 'Cel', 'type': 'nmdc:QuantityValueWithUnit'}}
         >>> m.standardize_unit_celsius({"id": 123, "type": "nmdc:Biosample", "temp": {"has_numeric_value": 6.6, "type": "nmdc:QuantityValue"}})
         Traceback (most recent call last):
         ...
@@ -45,7 +45,7 @@ class Migrator(MigratorBase):
                 if record[field].get('has_unit'):
                     try:
                         record[field]["has_unit"] = celsius_map[record[field].get('has_unit')]
-                        record[field]["type"] = "nmdc:QuantityValueCelsius"
+                        record[field]["type"] = "nmdc:QuantityValueWithUnit"
                     except KeyError:
                         raise ValueError(
                             f"`has_unit` string {record[field].get('has_unit')} is not found in the mapping. Cannot assign 'Cel'."

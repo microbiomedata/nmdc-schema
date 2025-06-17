@@ -17,7 +17,7 @@ substances_used:
       has_unit: mM
       has_numeric_value: 10
 temperature:
-  type: nmdc:QuantityValueCelsius
+  type: nmdc:QuantityValueWithUnit
   has_numeric_value: 25
   has_unit: Cel
 duration:

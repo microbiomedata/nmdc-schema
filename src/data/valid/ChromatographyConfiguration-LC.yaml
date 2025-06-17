@@ -5,7 +5,7 @@ description: "EMSL's hydrophilic interaction liquid chromatography method for sm
 stationary_phase: BEH-HILIC
 chromatographic_category: liquid_chromatography
 temperature:
-  type: nmdc:QuantityValueCelsius
+  type: nmdc:QuantityValueWithUnit
   has_numeric_value: 25
   has_unit: Cel
 ordered_mobile_phases:
