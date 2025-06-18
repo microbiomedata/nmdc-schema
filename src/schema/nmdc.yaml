@@ -986,8 +986,6 @@ enums:
         description: The portion of a mixture containing molecules dissolved in water
         aliases:
           - water layer
-      non_polar_layer:
-        deprecated: Remodeling sampled_portion with more specific PVs, no longer needed 05June2025
       interlayer:
         title: Interlayer
         description: The layer of material between liquid layers of a separated mixture
