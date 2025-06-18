@@ -989,8 +989,7 @@ enums:
           - C
           - degreeCelsius
           - degree Celsius
-        description:  >-- 
-           The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature equal to one unit Kelvin.
+        description: The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature equal to one unit Kelvin.
         exact_mappings:
            - UO:0000027
            - wikidata:Q25267
