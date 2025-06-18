@@ -986,6 +986,9 @@ enums:
       Cel:
         aliases:
           - Celsius
+          - C
+          - degreeCelsius
+          - degree Celsius
         description: Cel, the UCUM representation of degrees Celsius
 
 
