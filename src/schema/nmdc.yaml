@@ -447,6 +447,7 @@ classes:
       - extraction_targets
       - input_mass
       - volume
+      - temperature
     slot_usage:
       has_input:
         required: true
