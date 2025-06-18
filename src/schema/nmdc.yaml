@@ -989,7 +989,8 @@ enums:
           - C
           - degreeCelsius
           - degree Celsius
-        description: Cel, the UCUM representation of degrees Celsius
+        description:  >-- 
+           The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature equal to one unit Kelvin.
 
 
 
