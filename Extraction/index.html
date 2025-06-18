@@ -381,6 +381,11 @@
       Extraction --&gt; "*" PortionOfSubstance : substances_used
     click PortionOfSubstance href "../PortionOfSubstance"
 
+  Extraction : temperature
+
+      Extraction --&gt; "0..1" QuantityValue : temperature
+    click QuantityValue href "../QuantityValue"
+
   Extraction : type
 
   Extraction : volume
@@ -437,6 +442,12 @@
 <td><a href="../volume/">volume</a></td>
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>The volume of the solvent/solute being used, not the input</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../temperature/">temperature</a></td>
+<td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
+<td>The value of a temperature measurement or temperature used in a process</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -567,6 +578,7 @@ slots:
 - extraction_targets
 - input_mass
 - volume
+- temperature
 slot_usage:
   has_input:
     name: has_input
@@ -695,6 +707,27 @@ attributes:
     - FiltrationProcess
     - MobilePhaseSegment
     - PortionOfSubstance
+    range: QuantityValue
+  temperature:
+    name: temperature
+    description: The value of a temperature measurement or temperature used in a process.
+    notes:
+    - Not to be confused with the MIXS:0000113
+    from_schema: https://w3id.org/nmdc/nmdc
+    contributors:
+    - ORCID:0009-0001-1555-1601
+    - ORCID:0000-0002-8683-0050
+    rank: 1000
+    alias: temperature
+    owner: Extraction
+    domain_of:
+    - ChromatographyConfiguration
+    - Extraction
+    - SubSamplingProcess
+    - StorageProcess
+    - ChromatographicSeparationProcess
+    - DissolvingProcess
+    - ChemicalConversionProcess
     range: QuantityValue
   instrument_used:
     name: instrument_used
