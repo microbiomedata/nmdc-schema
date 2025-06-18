@@ -598,17 +598,27 @@
 <tr>
 <td>organic_layer</td>
 <td>None</td>
-<td></td>
+<td>The portion of a mixture containing dissolved organic material</td>
 </tr>
 <tr>
 <td>aqueous_layer</td>
 <td>None</td>
-<td></td>
+<td>The portion of a mixture containing molecules dissolved in water</td>
 </tr>
 <tr>
-<td>non_polar_layer</td>
+<td>interlayer</td>
 <td>None</td>
-<td></td>
+<td>The layer of material between liquid layers of a separated mixture</td>
+</tr>
+<tr>
+<td>chloroform_layer</td>
+<td>None</td>
+<td>The portion of a mixture containing molecules dissolved in chloroform</td>
+</tr>
+<tr>
+<td>methanol_layer</td>
+<td>None</td>
+<td>The portion of a mixture containing molecules dissolved in methanol</td>
 </tr>
 </tbody>
 </table>
@@ -649,10 +659,28 @@ permissible_values:
     - bottom_layer
   organic_layer:
     text: organic_layer
+    description: The portion of a mixture containing dissolved organic material
+    title: Organic layer
   aqueous_layer:
     text: aqueous_layer
-  non_polar_layer:
-    text: non_polar_layer
+    description: The portion of a mixture containing molecules dissolved in water
+    title: Aqueous layer
+    aliases:
+    - water layer
+  interlayer:
+    text: interlayer
+    description: The layer of material between liquid layers of a separated mixture
+    title: Interlayer
+  chloroform_layer:
+    text: chloroform_layer
+    description: The portion of a mixture containing molecules dissolved in chloroform
+    is_a: organic_layer
+    title: Chloroform layer
+  methanol_layer:
+    text: methanol_layer
+    description: The portion of a mixture containing molecules dissolved in methanol
+    is_a: organic_layer
+    title: Methanol layer
 
 </code></pre>
 

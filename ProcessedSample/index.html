@@ -342,6 +342,11 @@
 
   ProcessedSample : name
 
+  ProcessedSample : sampled_portion
+
+      ProcessedSample --&gt; "*" SamplePortionEnum : sampled_portion
+    click SamplePortionEnum href "../SamplePortionEnum"
+
   ProcessedSample : type
 
 
@@ -393,6 +398,12 @@
 <td><a href="../external_database_identifiers/">external_database_identifiers</a></td>
 <td>* <br/> <a href="../ExternalIdentifier/">ExternalIdentifier</a></td>
 <td>Link to corresponding identifier in external database</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../sampled_portion/">sampled_portion</a></td>
+<td>* <br/> <a href="../SamplePortionEnum/">SamplePortionEnum</a></td>
+<td>The portion of the sample that is taken for downstream activity</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -545,6 +556,7 @@ slots:
 - dna_absorb1
 - dna_concentration
 - external_database_identifiers
+- sampled_portion
 slot_usage:
   id:
     name: id
@@ -638,6 +650,18 @@ attributes:
     range: external_identifier
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  sampled_portion:
+    name: sampled_portion
+    description: The portion of the sample that is taken for downstream activity.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: sampled_portion
+    owner: ProcessedSample
+    domain_of:
+    - SubSamplingProcess
+    - ProcessedSample
+    range: SamplePortionEnum
+    multivalued: true
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
