@@ -44,6 +44,16 @@ classes:
     mappings:
       - schema:QuantityValue
 
+  QuantityValueWithUnit:
+    class_uri: nmdc:QuantityValueWithUnit
+    is_a: QuantityValue
+    description: A QuantityValue whose unit value must be in UnitEnum, which contains UCUM representations of various metrics.
+    slot_usage:
+      has_unit:
+        range: UnitEnum
+        required: true
+
+
   ImageValue:
     class_uri: nmdc:ImageValue
     is_a: AttributeValue
