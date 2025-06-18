@@ -979,9 +979,24 @@ enums:
         aliases:
           - bottom_layer
       organic_layer:
+        title: Organic layer
+        description: The portion of a mixture containing dissolved organic material
       aqueous_layer:
-      non_polar_layer:
-
+        title: Aqueous layer
+        description: The portion of a mixture containing molecules dissolved in water
+        aliases:
+          - water layer
+      interlayer:
+        title: Interlayer
+        description: The layer of material between liquid layers of a separated mixture
+      chloroform_layer:
+        title: Chloroform layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
+        is_a: organic_layer
+      methanol_layer: 
+        title: Methanol layer
+        description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
 
 slots:
   generates_calibration:
