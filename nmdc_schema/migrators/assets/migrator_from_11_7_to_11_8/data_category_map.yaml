@@ -71,3 +71,4 @@ Contaminants Amino Acid FASTA: workflow_parameter_data
 GC-MS Raw Data: instrument_data
 GC-MS Metabolomics Results: processed_data
 Direct Infusion FT-ICR MS Analysis Results: processed_data
+rRNA Filtered Sequencing Reads: processed_data
