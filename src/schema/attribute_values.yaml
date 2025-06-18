@@ -47,7 +47,9 @@ classes:
   QuantityValueWithUnit:
     class_uri: nmdc:QuantityValueWithUnit
     is_a: QuantityValue
-    description: A QuantityValue whose unit value must be in UnitEnum, which contains UCUM representations of various metrics.
+    description: A QuantityValue in which the has_unit field must be populated, and its value must come from the UnitEnum. Slots taking this class as their range are responsible for providing an annotation declaring which specific permissible values from the enumeration are acceptable from a business logic/science domain perspective.
+    see_also
+      - https://github.com/microbiomedata/nmdc-schema/pull/2485
     slot_usage:
       has_unit:
         range: UnitEnum
