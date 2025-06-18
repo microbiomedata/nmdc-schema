@@ -126,3 +126,17 @@ Here's how you can instantiate the development environment on your computer.
    ```shell
    docker compose down
    ```
+
+---
+
+## Tips
+
+### Deriving release artifacts
+
+Here's a one-liner you can use to derive release artifacts (which are [stored in the repository](https://github.com/microbiomedata/nmdc-schema/issues/1960)). Maintainers of this repository typically run this command—from the root directory of the repository—immediately before creating a GitHub Release.
+
+> This command runs a Docker container based upon the Docker image specified by the `app` service defined in `docker-compose.yml`, and overrides the container's startup command to be `poetry install && make squeaky-clean all test`.
+
+```shell
+docker compose run --rm -it --name nmdc-schema-builder app sh -c 'poetry install && make squeaky-clean all test'
+```
