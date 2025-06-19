@@ -920,29 +920,57 @@ enums:
       - ORCID:0000-0002-4504-1039 #Katherine Heal
     permissible_values:
       BEH-HILIC:
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
       C18:
+        description: A stationary phase consisting of octadecyl chains (C18) bonded to silica particles.
       C8:
+        description: A stationary phase consisting of octyl chains (C8) bonded to silica particles.
       C4:
+        description: A stationary phase consisting of butyl chains (C4) bonded to silica particles.
       C2:
+        description: A stationary phase consisting of ethyl chains (C2) bonded to silica particles.
       C1:
+        description: A stationary phase consisting of methyl chains (C1) bonded to silica particles.
       C30:
+        description: A stationary phase consisting of triacontyl chains (C30) bonded to silica particles.
       C60:
+        description: A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica particles.
       CNT:
+        description: Carbon Nanotube stationary phase.
       CN:
+        description: Cyano (CN) bonded stationary phase.
       Diol:
+        description: A stationary phase with diol (1,2-diol) functional groups.
       HILIC:
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
       NH2:
+        description: Amino (NH2) bonded stationary phase.
       Phenyl:
+        description: Phenyl bonded stationary phase.
       Polysiloxane:
+        description: A stationary phase made of polysiloxane, usually used in gas chromatography.
       PS-DVB:
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase extraction, including proprietary Priority PolLutant (PPL).
       SAX:
+        description: Strong Anion Exchange (SAX) stationary phase.
       SCX:
+        description: Strong Cation Exchange (SCX) stationary phase.
       Silica:
+        description: A stationary phase made of silica, commonly used in chromatography.
       WCX:
+        description: Weak Cation Exchange (WCX) stationary phase.
       WAX:
+        description: Weak Anion Exchange (WAX) stationary phase.
       ZIC-HILIC:
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary phase.
+        is_a: HILIC
       ZIC-pHILIC:
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
       ZIC-cHILIC:
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stationary phase.
+        is_a: ZIC-HILIC
 
   ProtocolCategoryEnum:
     description: The possible protocols that may be followed for an assay.
