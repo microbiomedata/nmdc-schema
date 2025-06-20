@@ -30,7 +30,7 @@ class Migrator(MigratorBase):
         self.adapter.process_each_document("data_object_set", [self.link_do_to_dg])
         self.adapter.process_each_document("data_generation_set", [self.migrate_dg_fields])
 
-    def store_we_ms_feilds(self, workflow_execution_record: dict) -> None:
+    def store_we_ms_fields(self, workflow_execution_record: dict) -> None:
         r"""
         For each workflow execution record that is of type MetagenomeSequencing, gather the following fields to fill the corresponding DataGeneration record:
         - started_at_time
