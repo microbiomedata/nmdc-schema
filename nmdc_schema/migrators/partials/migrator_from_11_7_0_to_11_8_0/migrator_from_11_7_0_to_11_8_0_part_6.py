@@ -26,9 +26,9 @@ class Migrator(MigratorBase):
         - the 'was_generated_by' field in the DataObjects will be updated to point to the corresponding DataGeneration records.
 
         """
-        self.adapter.do_for_each_document("workflow_execution_set", self.store_we_ms_feilds)
+        self.adapter.do_for_each_document("workflow_execution_set", self.store_we_ms_fields)
         self.adapter.process_each_document("data_object_set", [self.link_do_to_dg])
-        self.adapter.process_each_document("data_generation_set", [self.migrate_dg_fields])
+        self.adapter.process_each_document("data_generation_set", [self.migrate_fields_to_dg])
 
     def store_we_ms_fields(self, workflow_execution_record: dict) -> None:
         r"""
