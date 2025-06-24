@@ -88,6 +88,9 @@ prefixes:
   MASSIVE:
     prefix_prefix: MASSIVE
     prefix_reference: 'https://bioregistry.io/reference/massive:'
+  MCO:
+    prefix_prefix: MCO
+    prefix_reference: http://purl.obolibrary.org/obo/MICRO_
   MESH:
     prefix_prefix: MESH
     prefix_reference: 'https://bioregistry.io/mesh:'
@@ -108,7 +111,7 @@ prefixes:
     prefix_reference: http://example.org/metanetx/
   NCBI:
     prefix_prefix: NCBI
-    prefix_reference: http://example.com/ncbitaxon/
+    prefix_reference: http://example.org/ncbitaxon/
   NCBITaxon:
     prefix_prefix: NCBITaxon
     prefix_reference: http://purl.obolibrary.org/obo/NCBITaxon_
@@ -213,7 +216,7 @@ prefixes:
     prefix_reference: http://example.org/emsl_uuid_like/
   generic:
     prefix_prefix: generic
-    prefix_reference: https://example.org/generic/
+    prefix_reference: http://example.org/generic/
   gnps.task:
     prefix_prefix: gnps.task
     prefix_reference: 'https://bioregistry.io/gnps.task:'
@@ -301,9 +304,6 @@ prefixes:
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
-  MIXS_yaml:
-    prefix_prefix: MIXS_yaml
-    prefix_reference: https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/
 emit_prefixes:
 - KEGG.ORTHOLOGY
 - MASSIVE
@@ -792,22 +792,26 @@ enums:
         text: liquid_chromatography
         description: The processed sample is introduced into the mass spectrometer
           through a liquid chromatography process.
+        title: liquid chromatography
         aliases:
         - LC
       gas_chromatography:
         text: gas_chromatography
         description: The processed sample is introduced into the mass spectrometer
           through a gas chromatography process.
+        title: gas chromatography
         aliases:
         - GC
       direct_infusion_syringe:
         text: direct_infusion_syringe
         description: The processed sample is introduced into the mass spectrometer
           through a direct infusion process using a syringe.
+        title: direct infusion syringe
       direct_infusion_autosampler:
         text: direct_infusion_autosampler
         description: The processed sample is introduced into the mass spectrometer
           through a direct infusion process using an autosampler.
+        title: direct infusion autosampler
   LibraryTypeEnum:
     name: LibraryTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -954,10 +958,28 @@ enums:
         - bottom_layer
       organic_layer:
         text: organic_layer
+        description: The portion of a mixture containing dissolved organic material
+        title: Organic layer
       aqueous_layer:
         text: aqueous_layer
-      non_polar_layer:
-        text: non_polar_layer
+        description: The portion of a mixture containing molecules dissolved in water
+        title: Aqueous layer
+        aliases:
+        - water layer
+      interlayer:
+        text: interlayer
+        description: The layer of material between liquid layers of a separated mixture
+        title: Interlayer
+      chloroform_layer:
+        text: chloroform_layer
+        description: The portion of a mixture containing molecules dissolved in chloroform
+        is_a: organic_layer
+        title: Chloroform layer
+      methanol_layer:
+        text: methanol_layer
+        description: The portion of a mixture containing molecules dissolved in methanol
+        is_a: organic_layer
+        title: Methanol layer
   BinQualityEnum:
     name: BinQualityEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4665,6 +4687,54 @@ enums:
         text: amplicon sequencing assay
         meaning: OBI:0002767
         title: Amplicon sequencing assay
+  SubmissionStatusEnum:
+    name: SubmissionStatusEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      InProgress:
+        text: InProgress
+        description: The submitter is currently working on the submission.
+        title: In Progress
+      SubmittedPendingReview:
+        text: SubmittedPendingReview
+        description: Submission is ready for NMDC review, the submitter cannot edit.
+        title: Submitted - Pending Review
+      ResubmittedPendingReview:
+        text: ResubmittedPendingReview
+        description: Submission has been resubmitted after updates. It is now ready
+          for NMDC review. The submitter cannot edit.
+        title: Resubmitted - Pending review
+      ApprovedHeld:
+        text: ApprovedHeld
+        description: Submission has been reviewed and approved. Information is complete,
+          but not yet shared on the data portal. The submitter cannot edit.
+        title: Approved - Held
+      PendingUserFacility:
+        text: PendingUserFacility
+        description: Submission has been reviewed and approved. Information is complete,
+          but not yet shared on the data portal. Sample information shared with designated
+          user facility and pending approvals. The submitter cannot edit.
+        title: Pending - Sent to User Facility
+      UpdatesRequired:
+        text: UpdatesRequired
+        description: Submission has been reviewed and submitter edits are required
+          for approval. The submitter can reopen and edit the submission.
+        title: Updates Required
+      InProgressUpdate:
+        text: InProgressUpdate
+        description: NMDC reviewer has reopened submission on behalf of submitter.
+          The submitter is currently editing the submission.
+        title: In Progress - Update/Addition
+      Denied:
+        text: Denied
+        description: Submission has been reviewed and denied. The submitter cannot
+          edit.
+        title: Denied
+      Released:
+        text: Released
+        description: Submission has been reviewed and approved and data is released
+          on the data portal. The submitter cannot edit.
+        title: Released
   MetaproteomicsAnalysisCategoryEnum:
     name: MetaproteomicsAnalysisCategoryEnum
     description: The category of metaproteomics analysis being performed.
@@ -19366,6 +19436,7 @@ classes:
           interpolated: true
       has_mass_spectrometry_configuration:
         name: has_mass_spectrometry_configuration
+        required: true
         pattern: ^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
         structured_pattern:
           syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
@@ -19373,6 +19444,9 @@ classes:
       analyte_category:
         name: analyte_category
         range: MassSpectrometryEnum
+      eluent_introduction_category:
+        name: eluent_introduction_category
+        required: true
     class_uri: nmdc:MassSpectrometry
     rules:
     - preconditions:
@@ -19454,6 +19528,24 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'
           interpolated: true
+      mass_spectrometry_acquisition_strategy:
+        name: mass_spectrometry_acquisition_strategy
+        required: true
+      resolution_categories:
+        name: resolution_categories
+        required: true
+      mass_analyzers:
+        name: mass_analyzers
+        required: true
+      ionization_source:
+        name: ionization_source
+        required: true
+      mass_spectrum_collection_modes:
+        name: mass_spectrum_collection_modes
+        required: true
+      polarity_mode:
+        name: polarity_mode
+        required: true
     class_uri: nmdc:MassSpectrometryConfiguration
   ChromatographyConfiguration:
     name: ChromatographyConfiguration
@@ -19482,6 +19574,12 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'
           interpolated: true
+      chromatographic_category:
+        name: chromatographic_category
+        required: true
+      stationary_phase:
+        name: stationary_phase
+        required: true
     class_uri: nmdc:ChromatographyConfiguration
   Manifest:
     name: Manifest
@@ -19651,6 +19749,7 @@ classes:
     - extraction_targets
     - input_mass
     - volume
+    - temperature
     slot_usage:
       has_input:
         name: has_input
@@ -21243,6 +21342,7 @@ classes:
     - dna_absorb1
     - dna_concentration
     - external_database_identifiers
+    - sampled_portion
     slot_usage:
       id:
         name: id
@@ -22030,6 +22130,12 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-{id_shoulder}-{id_blade}{id_version}$|{id_nmdc_prefix}:(omprc|dgms|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
+      data_object_type:
+        name: data_object_type
+        required: true
+      data_category:
+        name: data_category
+        required: true
     class_uri: nmdc:DataObject
   DataEmitterProcess:
     name: DataEmitterProcess

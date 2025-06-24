@@ -143,14 +143,14 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                                    'prefix_reference': 'https://bioregistry.io/kegg.pathway:'},
                   'MASSIVE': {'prefix_prefix': 'MASSIVE',
                               'prefix_reference': 'https://bioregistry.io/reference/massive:'},
+                  'MCO': {'prefix_prefix': 'MCO',
+                          'prefix_reference': 'http://purl.obolibrary.org/obo/MICRO_'},
                   'MESH': {'prefix_prefix': 'MESH',
                            'prefix_reference': 'https://bioregistry.io/mesh:'},
                   'MISO': {'prefix_prefix': 'MISO',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/MISO_'},
                   'MIXS': {'prefix_prefix': 'MIXS',
                            'prefix_reference': 'https://w3id.org/mixs/'},
-                  'MIXS_yaml': {'prefix_prefix': 'MIXS_yaml',
-                                'prefix_reference': 'https://raw.githubusercontent.com/microbiomedata/mixs/main/model/schema/'},
                   'MS': {'prefix_prefix': 'MS',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/MS_'},
                   'MetaCyc': {'prefix_prefix': 'MetaCyc',
@@ -158,7 +158,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'MetaNetX': {'prefix_prefix': 'MetaNetX',
                                'prefix_reference': 'http://example.org/metanetx/'},
                   'NCBI': {'prefix_prefix': 'NCBI',
-                           'prefix_reference': 'http://example.com/ncbitaxon/'},
+                           'prefix_reference': 'http://example.org/ncbitaxon/'},
                   'NCBITaxon': {'prefix_prefix': 'NCBITaxon',
                                 'prefix_reference': 'http://purl.obolibrary.org/obo/NCBITaxon_'},
                   'NCIT': {'prefix_prefix': 'NCIT',
@@ -228,7 +228,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                   'emsl_uuid_like': {'prefix_prefix': 'emsl_uuid_like',
                                      'prefix_reference': 'http://example.org/emsl_uuid_like/'},
                   'generic': {'prefix_prefix': 'generic',
-                              'prefix_reference': 'https://example.org/generic/'},
+                              'prefix_reference': 'http://example.org/generic/'},
                   'gnps.task': {'prefix_prefix': 'gnps.task',
                                 'prefix_reference': 'https://bioregistry.io/gnps.task:'},
                   'gold': {'prefix_prefix': 'gold',
@@ -715,9 +715,16 @@ class ChromatographicCategoryEnum(str, Enum):
 class SamplePortionEnum(str, Enum):
     supernatant = "supernatant"
     pellet = "pellet"
-    organic_layer = "organic_layer"
-    aqueous_layer = "aqueous_layer"
-    non_polar_layer = "non_polar_layer"
+    # The portion of a mixture containing dissolved organic material
+    Organic_layer = "organic_layer"
+    # The portion of a mixture containing molecules dissolved in water
+    Aqueous_layer = "aqueous_layer"
+    # The layer of material between liquid layers of a separated mixture
+    Interlayer = "interlayer"
+    # The portion of a mixture containing molecules dissolved in chloroform
+    Chloroform_layer = "chloroform_layer"
+    # The portion of a mixture containing molecules dissolved in methanol
+    Methanol_layer = "methanol_layer"
 
 
 class BinQualityEnum(str, Enum):
@@ -2389,6 +2396,27 @@ class AnalysisTypeEnum(str, Enum):
     natural_organic_matter = "natural organic matter"
     bulk_chemistry = "bulk chemistry"
     Amplicon_sequencing_assay = "amplicon sequencing assay"
+
+
+class SubmissionStatusEnum(str, Enum):
+    # The submitter is currently working on the submission.
+    In_Progress = "InProgress"
+    # Submission is ready for NMDC review, the submitter cannot edit.
+    Submitted___Pending_Review = "SubmittedPendingReview"
+    # Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit.
+    Resubmitted___Pending_review = "ResubmittedPendingReview"
+    # Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.
+    Approved___Held = "ApprovedHeld"
+    # Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
+    Pending___Sent_to_User_Facility = "PendingUserFacility"
+    # Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
+    Updates_Required = "UpdatesRequired"
+    # NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
+    In_Progress___UpdateSOLIDUSAddition = "InProgressUpdate"
+    # Submission has been reviewed and denied. The submitter cannot edit.
+    Denied = "Denied"
+    # Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit.
+    Released = "Released"
 
 
 class MetaproteomicsAnalysisCategoryEnum(str, Enum):
@@ -11229,6 +11257,8 @@ class ProcessedSample(Sample):
          'comments': ['The value of this field is always a registered CURIE'],
          'domain_of': ['ProcessedSample'],
          'is_a': 'alternative_identifiers'} })
+    sampled_portion: Optional[list[SamplePortionEnum]] = Field(default=None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'alias': 'sampled_portion',
+         'domain_of': ['SubSamplingProcess', 'ProcessedSample']} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -11980,6 +12010,7 @@ class StorageProcess(PlannedProcess):
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
+                       'Extraction',
                        'SubSamplingProcess',
                        'StorageProcess',
                        'ChromatographicSeparationProcess',
@@ -12502,6 +12533,16 @@ class Extraction(MaterialProcessing):
                        'FiltrationProcess',
                        'MobilePhaseSegment',
                        'PortionOfSubstance']} })
+    temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
+         'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
+         'domain_of': ['ChromatographyConfiguration',
+                       'Extraction',
+                       'SubSamplingProcess',
+                       'StorageProcess',
+                       'ChromatographicSeparationProcess',
+                       'DissolvingProcess',
+                       'ChemicalConversionProcess'],
+         'notes': ['Not to be confused with the MIXS:0000113']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
@@ -12925,6 +12966,7 @@ class SubSamplingProcess(MaterialProcessing):
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
+                       'Extraction',
                        'SubSamplingProcess',
                        'StorageProcess',
                        'ChromatographicSeparationProcess',
@@ -12941,7 +12983,8 @@ class SubSamplingProcess(MaterialProcessing):
     mass: Optional[QuantityValue] = Field(default=None, title="mass", description="""The output mass of the SubSampling Process.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
          'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
          'exact_mappings': ['PATO:0000125']} })
-    sampled_portion: Optional[list[SamplePortionEnum]] = Field(default=None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'alias': 'sampled_portion', 'domain_of': ['SubSamplingProcess']} })
+    sampled_portion: Optional[list[SamplePortionEnum]] = Field(default=None, description="""The portion of the sample that is taken for downstream activity.""", json_schema_extra = { "linkml_meta": {'alias': 'sampled_portion',
+         'domain_of': ['SubSamplingProcess', 'ProcessedSample']} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
@@ -13511,6 +13554,7 @@ class ChromatographicSeparationProcess(MaterialProcessing):
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
+                       'Extraction',
                        'SubSamplingProcess',
                        'StorageProcess',
                        'ChromatographicSeparationProcess',
@@ -13687,6 +13731,7 @@ class DissolvingProcess(MaterialProcessing):
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
+                       'Extraction',
                        'SubSamplingProcess',
                        'StorageProcess',
                        'ChromatographicSeparationProcess',
@@ -13874,6 +13919,7 @@ class ChemicalConversionProcess(MaterialProcessing):
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
+                       'Extraction',
                        'SubSamplingProcess',
                        'StorageProcess',
                        'ChromatographicSeparationProcess',
@@ -14980,23 +15026,33 @@ class MassSpectrometryConfiguration(Configuration):
                                'pattern': '^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}},
-                        'name': {'name': 'name', 'required': True}}})
+                        'ionization_source': {'name': 'ionization_source',
+                                              'required': True},
+                        'mass_analyzers': {'name': 'mass_analyzers', 'required': True},
+                        'mass_spectrometry_acquisition_strategy': {'name': 'mass_spectrometry_acquisition_strategy',
+                                                                   'required': True},
+                        'mass_spectrum_collection_modes': {'name': 'mass_spectrum_collection_modes',
+                                                           'required': True},
+                        'name': {'name': 'name', 'required': True},
+                        'polarity_mode': {'name': 'polarity_mode', 'required': True},
+                        'resolution_categories': {'name': 'resolution_categories',
+                                                  'required': True}}})
 
-    mass_spectrometry_acquisition_strategy: Optional[MassSpectrometryAcquisitionStrategyEnum] = Field(default=None, description="""Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_spectrometry_acquisition_strategy',
+    mass_spectrometry_acquisition_strategy: MassSpectrometryAcquisitionStrategyEnum = Field(default=..., description="""Mode of running a mass spectrometer method by which m/z ranges are selected and ions possibly fragment.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_spectrometry_acquisition_strategy',
          'domain_of': ['MassSpectrometryConfiguration'],
          'exact_mappings': ['MS:1003213']} })
-    resolution_categories: Optional[list[ResolutionCategoryEnum]] = Field(default=None, description="""The relative resolution at which spectra were collected.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_categories',
+    resolution_categories: list[ResolutionCategoryEnum] = Field(default=..., description="""The relative resolution at which spectra were collected.""", json_schema_extra = { "linkml_meta": {'alias': 'resolution_categories',
          'domain_of': ['MassSpectrometryConfiguration'],
          'examples': [{'value': 'high'}, {'value': 'low'}]} })
-    mass_analyzers: Optional[list[MassAnalyzerEnum]] = Field(default=None, description="""The kind of mass analyzer(s) used during the spectra collection.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_analyzers',
+    mass_analyzers: list[MassAnalyzerEnum] = Field(default=..., description="""The kind of mass analyzer(s) used during the spectra collection.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_analyzers',
          'domain_of': ['MassSpectrometryConfiguration'],
          'exact_mappings': ['MS:1000443']} })
-    ionization_source: Optional[IonizationSourceEnum] = Field(default=None, description="""The ionization source used to introduce processed samples into a mass spectrometer""", json_schema_extra = { "linkml_meta": {'alias': 'ionization_source',
+    ionization_source: IonizationSourceEnum = Field(default=..., description="""The ionization source used to introduce processed samples into a mass spectrometer""", json_schema_extra = { "linkml_meta": {'alias': 'ionization_source',
          'domain_of': ['MassSpectrometryConfiguration'],
          'exact_mappings': ['MS:1000008']} })
-    mass_spectrum_collection_modes: Optional[list[MassSpectrumCollectionModeEnum]] = Field(default=None, description="""Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_spectrum_collection_modes',
+    mass_spectrum_collection_modes: list[MassSpectrumCollectionModeEnum] = Field(default=..., description="""Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_spectrum_collection_modes',
          'domain_of': ['MassSpectrometryConfiguration']} })
-    polarity_mode: Optional[PolarityModeEnum] = Field(default=None, description="""the polarity of which ions are generated and detected""", json_schema_extra = { "linkml_meta": {'alias': 'polarity_mode', 'domain_of': ['MassSpectrometryConfiguration']} })
+    polarity_mode: PolarityModeEnum = Field(default=..., description="""the polarity of which ions are generated and detected""", json_schema_extra = { "linkml_meta": {'alias': 'polarity_mode', 'domain_of': ['MassSpectrometryConfiguration']} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -15084,26 +15140,31 @@ class ChromatographyConfiguration(Configuration):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'notes': ['This class is intended to represent a chromatography method file '
                    'associated with a mass spectrometry process.'],
-         'slot_usage': {'description': {'name': 'description', 'required': True},
+         'slot_usage': {'chromatographic_category': {'name': 'chromatographic_category',
+                                                     'required': True},
+                        'description': {'name': 'description', 'required': True},
                         'id': {'name': 'id',
                                'pattern': '^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'}},
-                        'name': {'name': 'name', 'required': True}}})
+                        'name': {'name': 'name', 'required': True},
+                        'stationary_phase': {'name': 'stationary_phase',
+                                             'required': True}}})
 
-    chromatographic_category: Optional[ChromatographicCategoryEnum] = Field(default=None, description="""The type of chromatography used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'chromatographic_category',
+    chromatographic_category: ChromatographicCategoryEnum = Field(default=..., description="""The type of chromatography used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'chromatographic_category',
          'domain_of': ['ChromatographyConfiguration',
                        'ChromatographicSeparationProcess']} })
     ordered_mobile_phases: Optional[list[MobilePhaseSegment]] = Field(default=None, description="""The solution(s) that moves through a chromatography column.""", json_schema_extra = { "linkml_meta": {'alias': 'ordered_mobile_phases',
          'domain_of': ['ChromatographyConfiguration',
                        'ChromatographicSeparationProcess'],
          'list_elements_ordered': True} })
-    stationary_phase: Optional[StationaryPhaseEnum] = Field(default=None, description="""The material the stationary phase is comprised of used in chromatography.""", json_schema_extra = { "linkml_meta": {'alias': 'stationary_phase',
+    stationary_phase: StationaryPhaseEnum = Field(default=..., description="""The material the stationary phase is comprised of used in chromatography.""", json_schema_extra = { "linkml_meta": {'alias': 'stationary_phase',
          'domain_of': ['ChromatographyConfiguration',
                        'ChromatographicSeparationProcess']} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
+                       'Extraction',
                        'SubSamplingProcess',
                        'StorageProcess',
                        'ChromatographicSeparationProcess',
@@ -15415,7 +15476,10 @@ class DataObject(InformationObject):
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:DataObject',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'slot_usage': {'description': {'name': 'description', 'required': True},
+         'slot_usage': {'data_category': {'name': 'data_category', 'required': True},
+                        'data_object_type': {'name': 'data_object_type',
+                                             'required': True},
+                        'description': {'name': 'description', 'required': True},
                         'id': {'name': 'id',
                                'pattern': '^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                'required': True,
@@ -15432,8 +15496,8 @@ class DataObject(InformationObject):
          'domain_of': ['DataObject'],
          'examples': [{'value': 'gzip'}],
          'todos': ['consider setting the range to an enum']} })
-    data_category: Optional[DataCategoryEnum] = Field(default=None, description="""The category of the file, such as instrument data from data generation or processed data from a workflow execution.""", json_schema_extra = { "linkml_meta": {'alias': 'data_category', 'domain_of': ['DataObject']} })
-    data_object_type: Optional[FileTypeEnum] = Field(default=None, description="""The type of file represented by the data object.""", json_schema_extra = { "linkml_meta": {'alias': 'data_object_type',
+    data_category: DataCategoryEnum = Field(default=..., description="""The category of the file, such as instrument data from data generation or processed data from a workflow execution.""", json_schema_extra = { "linkml_meta": {'alias': 'data_category', 'domain_of': ['DataObject']} })
+    data_object_type: FileTypeEnum = Field(default=..., description="""The type of file represented by the data object.""", json_schema_extra = { "linkml_meta": {'alias': 'data_object_type',
          'domain_of': ['DataObject'],
          'examples': [{'value': 'Direct Infusion FT-ICR MS Analysis Results'},
                       {'value': 'GC-MS Metabolomics Results'}],
@@ -16181,12 +16245,15 @@ class MassSpectrometry(DataGeneration):
                     'title': 'has_chromatography_configuration_required_if_gc'}],
          'slot_usage': {'analyte_category': {'name': 'analyte_category',
                                              'range': 'MassSpectrometryEnum'},
+                        'eluent_introduction_category': {'name': 'eluent_introduction_category',
+                                                         'required': True},
                         'has_chromatography_configuration': {'name': 'has_chromatography_configuration',
                                                              'pattern': '^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                                              'structured_pattern': {'interpolated': True,
                                                                                     'syntax': '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'}},
                         'has_mass_spectrometry_configuration': {'name': 'has_mass_spectrometry_configuration',
                                                                 'pattern': '^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
+                                                                'required': True,
                                                                 'structured_pattern': {'interpolated': True,
                                                                                        'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}},
                         'id': {'name': 'id',
@@ -16194,7 +16261,7 @@ class MassSpectrometry(DataGeneration):
                                'structured_pattern': {'interpolated': True,
                                                       'syntax': '{id_nmdc_prefix}:(dgms|omprc)-{id_shoulder}-{id_blade}$'}}}})
 
-    eluent_introduction_category: Optional[EluentIntroductionCategoryEnum] = Field(default=None, description="""A high-level categorization for how the processed sample is introduced into a mass spectrometer.""", json_schema_extra = { "linkml_meta": {'alias': 'eluent_introduction_category',
+    eluent_introduction_category: EluentIntroductionCategoryEnum = Field(default=..., description="""A high-level categorization for how the processed sample is introduced into a mass spectrometer.""", json_schema_extra = { "linkml_meta": {'alias': 'eluent_introduction_category',
          'domain_of': ['MassSpectrometry'],
          'examples': [{'value': 'liquid_chromatography'},
                       {'value': 'direct_infusion_syringe'}]} })
@@ -16208,7 +16275,7 @@ class MassSpectrometry(DataGeneration):
          'domain_of': ['MassSpectrometry'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:chrcon-{id_shoulder}-{id_blade}$'}} })
-    has_mass_spectrometry_configuration: Optional[str] = Field(default=None, description="""The identifier of the associated MassSpectrometryConfiguration.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass_spectrometry_configuration',
+    has_mass_spectrometry_configuration: str = Field(default=..., description="""The identifier of the associated MassSpectrometryConfiguration.""", json_schema_extra = { "linkml_meta": {'alias': 'has_mass_spectrometry_configuration',
          'domain_of': ['MassSpectrometry'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}} })

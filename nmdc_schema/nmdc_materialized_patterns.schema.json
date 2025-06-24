@@ -6251,6 +6251,8 @@
                 }
             },
             "required": [
+                "chromatographic_category",
+                "stationary_phase",
                 "id",
                 "name",
                 "description",
@@ -6700,6 +6702,8 @@
                 }
             },
             "required": [
+                "data_category",
+                "data_object_type",
                 "id",
                 "name",
                 "description",
@@ -7722,6 +7726,17 @@
                         "array",
                         "null"
                     ]
+                },
+                "temperature": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/QuantityValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The value of a temperature measurement or temperature used in a process."
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -9862,10 +9877,7 @@
                 "has_mass_spectrometry_configuration": {
                     "description": "The identifier of the associated MassSpectrometryConfiguration.",
                     "pattern": "^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "has_output": {
                     "description": "An output from a process.",
@@ -9960,6 +9972,8 @@
                 }
             },
             "required": [
+                "eluent_introduction_category",
+                "has_mass_spectrometry_configuration",
                 "analyte_category",
                 "associated_studies",
                 "has_input",
@@ -10012,10 +10026,7 @@
                     "items": {
                         "$ref": "#/$defs/MassAnalyzerEnum"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "mass_spectrometry_acquisition_strategy": {
                     "$ref": "#/$defs/MassSpectrometryAcquisitionStrategyEnum",
@@ -10026,10 +10037,7 @@
                     "items": {
                         "$ref": "#/$defs/MassSpectrumCollectionModeEnum"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "name": {
                     "description": "A human readable label for an entity",
@@ -10044,10 +10052,7 @@
                     "items": {
                         "$ref": "#/$defs/ResolutionCategoryEnum"
                     },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
+                    "type": "array"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -10058,6 +10063,12 @@
                 }
             },
             "required": [
+                "mass_spectrometry_acquisition_strategy",
+                "resolution_categories",
+                "mass_analyzers",
+                "ionization_source",
+                "mass_spectrum_collection_modes",
+                "polarity_mode",
                 "id",
                 "name",
                 "description",
@@ -13520,6 +13531,16 @@
                         "null"
                     ]
                 },
+                "sampled_portion": {
+                    "description": "The portion of the sample that is taken for downstream activity.",
+                    "items": {
+                        "$ref": "#/$defs/SamplePortionEnum"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -14324,7 +14345,9 @@
                 "pellet",
                 "organic_layer",
                 "aqueous_layer",
-                "non_polar_layer"
+                "interlayer",
+                "chloroform_layer",
+                "methanol_layer"
             ],
             "title": "SamplePortionEnum",
             "type": "string"
@@ -15207,6 +15230,22 @@
             ],
             "title": "SubSamplingProcess",
             "type": "object"
+        },
+        "SubmissionStatusEnum": {
+            "description": "",
+            "enum": [
+                "InProgress",
+                "SubmittedPendingReview",
+                "ResubmittedPendingReview",
+                "ApprovedHeld",
+                "PendingUserFacility",
+                "UpdatesRequired",
+                "InProgressUpdate",
+                "Denied",
+                "Released"
+            ],
+            "title": "SubmissionStatusEnum",
+            "type": "string"
         },
         "SubstanceRoleEnum": {
             "description": "",
