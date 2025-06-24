@@ -3,8 +3,8 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11.8.0.part_5"
-    _to_version = "11.8.0.part_6"
+    _from_version = "11.8.0"
+    _to_version = "11.9.0"
     wfe_mappings = {}
     data_objects_mapping = {}
 
