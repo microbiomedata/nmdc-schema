@@ -82,95 +82,13 @@ class Migrator(MigratorBase):
         if dg_record_id in target_ids:
             # get the corresponding mapping from wfe_mappings
             wfe_map = self.wfe_mappings[dg_record_id]
-            dg_has_output = data_generation_record.get("has_output",[])
+            dg_has_output = data_generation_record.pop("has_output",[])
             wfe_map_has_output = wfe_map.get("has_output", [])
+            new_has_output = list(set(dg_has_output + wfe_map_has_output))
             # Migrate the time fields
-            data_generation_record["start_time"] = wfe_map.get("started_at_time", None)
-            data_generation_record["end_time"] = wfe_map.get("ended_at_time", None)
-            
+            data_generation_record["start_date"] = wfe_map.get("started_at_time", None)
+            data_generation_record["end_date"] = wfe_map.get("ended_at_time", None)
             # Migrate the has_output field
-            if not dg_has_output:
-                data_generation_record["has_output"] = wfe_map_has_output
-
-            elif dg_has_output and not any(item in dg_has_output for item in wfe_map_has_output):
-                data_generation_record["has_output"] = data_generation_record["has_output"] + wfe_map_has_output
-                
+            data_generation_record["has_output"] = new_has_output
+            print(f"DataGeneration record {dg_record_id} has output updated to {new_has_output}")
         return data_generation_record
-
-
-
-
-# data_generation_record = {
-#       "id": "nmdc:omprc-11-8yy07g21",
-#       "name": "Metatranscriptome of feshwater microbial communities from Michigan, USA - augustacreek_2019_sw_WHONDRS-S19S_0067",
-#       "has_input": [
-#         "nmdc:bsm-11-fx02pd04"
-#       ],
-#       "add_date": "2020-08-07T00:00:00",
-#       "mod_date": "2020-08-07T00:00:00",
-#       "ncbi_project_name": "Metatranscriptome of feshwater microbial communities from Michigan, USA - augustacreek_2019_sw_WHONDRS-S19S_0067",
-#       "principal_investigator": {
-#         "has_raw_value": "Kelly Wrighton",
-#         "email": "kwrighton@gmail.com",
-#         "name": "Kelly Wrighton",
-#         "type": "nmdc:PersonValue"
-#       },
-#       "processing_institution": "JGI",
-#       "type": "nmdc:NucleotideSequencing",
-#       "gold_sequencing_project_identifiers": [
-#         "gold:Gp0503318"
-#       ],
-#       "analyte_category": "metatranscriptome",
-#       "associated_studies": [
-#         "nmdc:sty-11-5tgfr349"
-#       ],
-#       "instrument_used": [
-#         "nmdc:inst-14-mr4r2w09"
-#       ]
-#     }
-
-# workflow_execution_record = {
-#       "id": "nmdc:wfmsa-11-kd2tsp04.1",
-#       "name": "Sequencing Activity for nmdc:wfmsa-11-kd2tsp04.1",
-#       "started_at_time": "2023-03-07T23:08:31.866680+00:00",
-#       "ended_at_time": "2023-03-07T23:08:31.866706+00:00",
-#       "was_informed_by": "nmdc:omprc-11-8yy07g21",
-#       "execution_resource": "JGI",
-#       "git_url": "https://github.com/microbiomedata/RawSequencingData",
-#       "has_input": [
-#         "nmdc:bsm-11-fx02pd04"
-#       ],
-#       "has_output": [
-#         "nmdc:dobj-11-nrjyjm33"
-#       ],
-#       "type": "nmdc:MetagenomeSequencing",
-#       "version": "v1.0.0"
-#     }
-
-# data_object_record =     {
-#       "id": "nmdc:dobj-11-nrjyjm33",
-#       "name": "Raw sequencer read data",
-#       "description": "Metagenome Raw Reads for nmdc:omprc-11-8yy07g21",
-#       "alternative_identifiers": [],
-#       "file_size_bytes": 9846194352,
-#       "md5_checksum": "3a2b7497e18f251bc33ebb883bdef3fe",
-#       "data_object_type": "Metatranscriptome Raw Reads",
-#       "url": "https://data.microbiomedata.org/data/nmdc:omprc-11-8yy07g21/nmdc:wfmsa-11-kd2tsp04.1/52442.4.335919.GTAACGAC-GTCGTTAC.fastq.gz",
-#       "type": "nmdc:DataObject",
-#       "data_category": "instrument_data"
-#     }
-
-# if __name__ == "__main__":
-#     migrator = Migrator()
-
-#     # Example usage of the migrator
-
-#     print("Workflow Execution Record after migration:")
-#     migrator.store_we_ms_fields(workflow_execution_record)
-#     print(migrator.wfe_mappings)
-
-#     print("Data Object Record after linking:")
-#     print(migrator.link_do_to_dg(data_object_record))
-
-#     print("Data Generation Record after migration:")
-#     print(migrator.migrate_fields_to_dg(data_generation_record))
