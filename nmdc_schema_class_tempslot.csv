@@ -1,0 +1,17 @@
+class,slot,range,collections,records_w_slot_populated,units_used_for_slot,slotpopulated_but_missingunit
+Biosample,air_temp,QuantityValue,biosample_set,0,[],0
+Biosample,annual_temp,QuantityValue,biosample_set,62,[],62
+Biosample,avg_temp,QuantityValue,biosample_set,0,[],0
+Biosample,host_body_temp,QuantityValue,biosample_set,192,['Cel'],0
+Biosample,samp_store_temp,QuantityValue,biosample_set,0,[],0
+Biosample,season_temp,QuantityValue,biosample_set,0,[],0
+Biosample,surf_temp,QuantityValue,biosample_set,4209,['Cel' 'Celsius' 'Celcius' 'C'],0
+Biosample,temp,QuantityValue,biosample_set,0,[],0
+Biosample,temp_out,QuantityValue,biosample_set,0,[],0
+Biosample,tvdss_of_hcr_temp,QuantityValue,biosample_set,4900,['Celsius' 'C' 'Cel'],0
+ChemicalConversionProcess,temperature,QuantityValue,material_processing_set,0,[],0
+ChromatographicSeparationProcess,temperature,QuantityValue,material_processing_set,0,[],0
+ChromatographyConfiguration,temperature,QuantityValue,configuration_set,0,[],0
+DissolvingProcess,temperature,QuantityValue,material_processing_set,0,[],0
+StorageProcess,temperature,QuantityValue,storage_process_set,22,['C'],0
+SubSamplingProcess,temperature,QuantityValue,material_processing_set,0,[],0

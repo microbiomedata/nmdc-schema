@@ -1,0 +1,73 @@
+name: none_schema
+id: http://example.org/none_schema
+classes:
+  NoneClass:
+    description: A class with no slots. Might be useful for setting global ranges, so that slot_usage ranges aren't unioned with anything else
+  VehicleSet:
+    description: A set of vehicles.
+    slots:
+      - vehicles
+    tree_root: true
+  Vehicle:
+    slots:
+      - wheel_count
+      - engines
+      - name
+  Bicycle:
+    is_a: Vehicle
+  Motorcycle:
+    is_a: Vehicle
+  Car:
+    is_a: Vehicle
+  IceCar:
+    is_a: Car
+    slot_usage:
+      engines:
+        range: IceEngine
+  HybridCar:
+    is_a: Car
+    slot_usage:
+      engines:
+        any_of:
+          - range: ElectricEngine
+          - range: IceEngine
+  ElectricCar:
+    is_a: Car
+    slot_usage:
+      engines:
+        range: ElectricEngine
+  Engine: { }
+  IceEngine:
+    is_a: Engine
+    slots:
+      - cylinder_count
+  ElectricEngine:
+    is_a: Engine
+    slots:
+      - rotor_type
+slots:
+  wheel_count:
+    description: The number of wheels the vehicle has.
+    range: integer
+  cylinder_count:
+    description: The number of cylinders in the engine.
+    range: integer
+  rotor_type:
+    range: RotorTypeEnum
+  engines:
+    description: The design of the engine.
+    range: NoneClass
+    multivalued: true
+  vehicles:
+    description: The vehicles in the set.
+    range: Vehicle
+    multivalued: true
+    inlined_as_list: true
+  name:
+    description: The name of the vehicle.
+    range: string
+enums:
+  RotorTypeEnum:
+    permissible_values:
+      - permanent_magnet
+      - wound_rotor

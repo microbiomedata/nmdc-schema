@@ -57,25 +57,39 @@ records_no_units = {}
 records = {}
 for index, row, in class_df.iterrows():
 
-    #get info from API on the slots/classes
+    # Get info from API on the slots/classes
     collection_client = CollectionSearch(row['collections'])
-    mongo_collect_res = collection_client.get_record_by_filter(filter=f'{{"{row["slot"]}":{{"$exists":"True"}}, "type":{{"$regex":"^nmdc:{row["class"]}"}}}}',fields=str(row["slot"]),all_pages=True)
+    mongo_collect_res = collection_client.get_record_by_filter(
+        filter=f'{{"{row["slot"]}":{{"$exists":"True"}}, "type":{{"$regex":"^nmdc:{row["class"]}"}}}}',
+        fields=str(row["slot"]),
+        all_pages=True
+    )
     mongo_collect_res = pd.json_normalize(mongo_collect_res)
 
-    #how many records have this class/slot populated?
+    # Skip if no records were found
+    if mongo_collect_res.empty:
+        records[index] = 0
+        records_no_units[index] = 0
+        units_used[index] = []
+        continue
+
+    # How many records have this class/slot populated?
     records[index] = len(mongo_collect_res)
 
-    #how many of those records are missing a unit and may need it to be inferred + changesheet?
-    if records[index] > 0 :
-        if str(row['slot']) + '.has_unit' in mongo_collect_res.columns:
-            records_w_units = mongo_collect_res.dropna(subset=[str(row['slot']) + '.has_unit']).shape[0]
-        else:
-            records_w_units = 0
-        records_no_units[index] = records[index]-records_w_units
+    # How many of those records are missing a unit and may need it to be inferred + changesheet?
+    unit_col = f'{row["slot"]}.has_unit'
+    if unit_col in mongo_collect_res.columns:
+        records_w_units = mongo_collect_res.dropna(subset=[unit_col]).shape[0]
+        units = mongo_collect_res[unit_col].dropna().unique()
+    else:
+        records_w_units = 0
+        units = []
 
-        #what are the units being used?
-        units = mongo_collect_res[str(row['slot']) + '.has_unit'].unique()
-        units_used[index] = units
+    records_no_units[index] = records[index] - records_w_units
+    units_used[index] = units
+
+# Only include slots with QuantityValue range
+class_df = class_df[class_df['range'] == 'QuantityValue'].reset_index(drop=True)
 
 class_df['records_w_slot_populated'] = pd.Series(records)
 class_df['units_used_for_slot'] = pd.Series(units_used)
