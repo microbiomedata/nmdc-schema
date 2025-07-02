@@ -206,3 +206,6 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
+    deprecated: "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI"
+    last_updated_on: 2025-07-02
+    modified_by: ORCID:0000-0002-8683-0050
