@@ -26,6 +26,8 @@ This directory contains the following things:
 - `migrator_from_1_0_0_to_EXAMPLE.py` - definition of an example `Migrator` class
     - That class is specific to a pair of schema versions
       (i.e. it migrates databases from schema version `1.0.0` to schema version `EXAMPLE`)
+- `partials/` - migrators that _partially_ migrate a database between two schema versions
+    - More information is available in [`partials/README.md`](./partials/README.md)
 - Other `migrator_*.py` modules (they are analogous to `migrator_from_1_0_0_to_EXAMPLE.py`)
 
 ## Creating a migrator
