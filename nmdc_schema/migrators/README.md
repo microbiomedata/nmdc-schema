@@ -26,6 +26,8 @@ This directory contains the following things:
 - `migrator_from_1_0_0_to_EXAMPLE.py` - definition of an example `Migrator` class
     - That class is specific to a pair of schema versions
       (i.e. it migrates databases from schema version `1.0.0` to schema version `EXAMPLE`)
+- `partials/` - migrators that _partially_ migrate a database between two schema versions
+    - More information is available in [`partials/README.md`](./partials/README.md)
 - Other `migrator_*.py` modules (they are analogous to `migrator_from_1_0_0_to_EXAMPLE.py`)
 
 ## Creating a migrator
@@ -41,8 +43,8 @@ Here's how you can create a new migrator:
     When prompted, enter the [version numbers of the schemas](../../CHANGELOG.md) the migrator will migrate
     data _from_ and _to_. For example, if the original schema version is `1.1.3` and the new schema version is `1.2.7`:
     > ```yaml
-    > From schema version: 1.1
-    > To schema version: 1.2
+    > From schema version: 1.1.3
+    > To schema version: 1.2.7
     > ```
 
     By default, **the generated migrator is a "no-op,"** meaning that it performs **no** **op**erations (i.e. doesn't do
