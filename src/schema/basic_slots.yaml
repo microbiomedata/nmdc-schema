@@ -705,6 +705,9 @@ enums:
 
       LC-MS Metabolomics Results:
         description: LC-MS-based metabolite assignment results table
+      
+      Mass Spectrometry Reference Spectral Library:
+        description: Spectral library used for mass spectrometry based metabolite identification
 
       Metaproteomics Workflow Statistics:
         description: Aggregate workflow statistics file
