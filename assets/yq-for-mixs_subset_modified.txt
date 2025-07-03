@@ -253,3 +253,5 @@ make: *** [Makefile:102: gen-project] Error 1
 # issue https://github.com/microbiomedata/nmdc-schema/issues/2472
 # see also https://github.com/microbiomedata/nmdc-schema/issues/1368
 'del(.prefixes.MIXS_yaml)'
+
+'.slots.temp.annotations.nmdc_mongodb_ucum_symbol |= "Cel"'
