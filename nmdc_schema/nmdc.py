@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-06-18T21:47:29
+# Generation date: 2025-07-03T12:45:36
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -955,13 +955,18 @@ class QuantityValue(AttributeValue):
     class_model_uri: ClassVar[URIRef] = NMDC.QuantityValue
 
     type: Union[str, URIorCURIE] = None
+    has_unit: str = None
     has_maximum_numeric_value: Optional[Decimal] = None
     has_minimum_numeric_value: Optional[Decimal] = None
     has_numeric_value: Optional[Decimal] = None
-    has_unit: Optional[str] = None
     has_raw_value: Optional[str] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.has_unit):
+            self.MissingRequiredField("has_unit")
+        if not isinstance(self.has_unit, str):
+            self.has_unit = str(self.has_unit)
+
         if self.has_maximum_numeric_value is not None and not isinstance(self.has_maximum_numeric_value, Decimal):
             self.has_maximum_numeric_value = Decimal(self.has_maximum_numeric_value)
 
@@ -970,9 +975,6 @@ class QuantityValue(AttributeValue):
 
         if self.has_numeric_value is not None and not isinstance(self.has_numeric_value, Decimal):
             self.has_numeric_value = Decimal(self.has_numeric_value)
-
-        if self.has_unit is not None and not isinstance(self.has_unit, str):
-            self.has_unit = str(self.has_unit)
 
         if self.has_raw_value is not None and not isinstance(self.has_raw_value, str):
             self.has_raw_value = str(self.has_raw_value)
@@ -6811,25 +6813,63 @@ class StationaryPhaseEnum(EnumDefinitionImpl):
     """
     The type of stationary phase used in a chromatography process.
     """
-    C18 = PermissibleValue(text="C18")
-    C8 = PermissibleValue(text="C8")
-    C4 = PermissibleValue(text="C4")
-    C2 = PermissibleValue(text="C2")
-    C1 = PermissibleValue(text="C1")
-    C30 = PermissibleValue(text="C30")
-    C60 = PermissibleValue(text="C60")
-    CNT = PermissibleValue(text="CNT")
-    CN = PermissibleValue(text="CN")
-    Diol = PermissibleValue(text="Diol")
-    HILIC = PermissibleValue(text="HILIC")
-    NH2 = PermissibleValue(text="NH2")
-    Phenyl = PermissibleValue(text="Phenyl")
-    Polysiloxane = PermissibleValue(text="Polysiloxane")
-    SAX = PermissibleValue(text="SAX")
-    SCX = PermissibleValue(text="SCX")
-    Silica = PermissibleValue(text="Silica")
-    WCX = PermissibleValue(text="WCX")
-    WAX = PermissibleValue(text="WAX")
+    C18 = PermissibleValue(
+        text="C18",
+        description="A stationary phase consisting of octadecyl chains (C18) bonded to silica particles.")
+    C8 = PermissibleValue(
+        text="C8",
+        description="A stationary phase consisting of octyl chains (C8) bonded to silica particles.")
+    C4 = PermissibleValue(
+        text="C4",
+        description="A stationary phase consisting of butyl chains (C4) bonded to silica particles.")
+    C2 = PermissibleValue(
+        text="C2",
+        description="A stationary phase consisting of ethyl chains (C2) bonded to silica particles.")
+    C1 = PermissibleValue(
+        text="C1",
+        description="A stationary phase consisting of methyl chains (C1) bonded to silica particles.")
+    C30 = PermissibleValue(
+        text="C30",
+        description="A stationary phase consisting of triacontyl chains (C30) bonded to silica particles.")
+    C60 = PermissibleValue(
+        text="C60",
+        description="A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica particles.")
+    CNT = PermissibleValue(
+        text="CNT",
+        description="Carbon Nanotube stationary phase.")
+    CN = PermissibleValue(
+        text="CN",
+        description="Cyano (CN) bonded stationary phase.")
+    Diol = PermissibleValue(
+        text="Diol",
+        description="A stationary phase with diol (1,2-diol) functional groups.")
+    HILIC = PermissibleValue(
+        text="HILIC",
+        description="Hydrophilic Interaction Chromatography (HILIC) stationary phase.")
+    NH2 = PermissibleValue(
+        text="NH2",
+        description="Amino (NH2) bonded stationary phase.")
+    Phenyl = PermissibleValue(
+        text="Phenyl",
+        description="Phenyl bonded stationary phase.")
+    Polysiloxane = PermissibleValue(
+        text="Polysiloxane",
+        description="A stationary phase made of polysiloxane, usually used in gas chromatography.")
+    SAX = PermissibleValue(
+        text="SAX",
+        description="Strong Anion Exchange (SAX) stationary phase.")
+    SCX = PermissibleValue(
+        text="SCX",
+        description="Strong Cation Exchange (SCX) stationary phase.")
+    Silica = PermissibleValue(
+        text="Silica",
+        description="A stationary phase made of silica, commonly used in chromatography.")
+    WCX = PermissibleValue(
+        text="WCX",
+        description="Weak Cation Exchange (WCX) stationary phase.")
+    WAX = PermissibleValue(
+        text="WAX",
+        description="Weak Anion Exchange (WAX) stationary phase.")
 
     _defn = EnumDefinition(
         name="StationaryPhaseEnum",
@@ -6839,15 +6879,25 @@ class StationaryPhaseEnum(EnumDefinitionImpl):
     @classmethod
     def _addvals(cls):
         setattr(cls, "BEH-HILIC",
-            PermissibleValue(text="BEH-HILIC"))
+            PermissibleValue(
+                text="BEH-HILIC",
+                description="""Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase."""))
         setattr(cls, "PS-DVB",
-            PermissibleValue(text="PS-DVB"))
+            PermissibleValue(
+                text="PS-DVB",
+                description="""Polystyrene-divinylbenzene stationary phase, often used in solid-phase extraction, including proprietary Priority PolLutant (PPL)."""))
         setattr(cls, "ZIC-HILIC",
-            PermissibleValue(text="ZIC-HILIC"))
+            PermissibleValue(
+                text="ZIC-HILIC",
+                description="Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary phase."))
         setattr(cls, "ZIC-pHILIC",
-            PermissibleValue(text="ZIC-pHILIC"))
+            PermissibleValue(
+                text="ZIC-pHILIC",
+                description="""Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC) stationary phase."""))
         setattr(cls, "ZIC-cHILIC",
-            PermissibleValue(text="ZIC-cHILIC"))
+            PermissibleValue(
+                text="ZIC-cHILIC",
+                description="""Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stationary phase."""))
 
 class ProtocolCategoryEnum(EnumDefinitionImpl):
     """
@@ -7506,6 +7556,10 @@ class FileTypeEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="LC-MS Metabolomics Results",
                 description="LC-MS-based metabolite assignment results table"))
+        setattr(cls, "Mass Spectrometry Reference Spectral Library",
+            PermissibleValue(
+                text="Mass Spectrometry Reference Spectral Library",
+                description="Spectral library used for mass spectrometry based metabolite identification"))
         setattr(cls, "Metaproteomics Workflow Statistics",
             PermissibleValue(
                 text="Metaproteomics Workflow Statistics",
@@ -10976,7 +11030,7 @@ slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has_raw_value", curie=N
                    model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.has_unit = Slot(uri=NMDC.has_unit, name="has_unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.has_unit, domain=None, range=str, mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
 slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has_numeric_value", curie=NMDC.curie('has_numeric_value'),
                    model_uri=NMDC.has_numeric_value, domain=None, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])
@@ -13234,7 +13288,7 @@ slots.QuantityValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="QuantityV
                    model_uri=NMDC.QuantityValue_has_raw_value, domain=QuantityValue, range=Optional[str])
 
 slots.QuantityValue_has_unit = Slot(uri=NMDC.has_unit, name="QuantityValue_has_unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Optional[str], mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=str, mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
 slots.QuantityValue_has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="QuantityValue_has_numeric_value", curie=NMDC.curie('has_numeric_value'),
                    model_uri=NMDC.QuantityValue_has_numeric_value, domain=QuantityValue, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])

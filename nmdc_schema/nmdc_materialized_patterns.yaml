@@ -855,52 +855,93 @@ enums:
     permissible_values:
       BEH-HILIC:
         text: BEH-HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH
+          (Bridged Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
       C18:
         text: C18
+        description: A stationary phase consisting of octadecyl chains (C18) bonded
+          to silica particles.
       C8:
         text: C8
+        description: A stationary phase consisting of octyl chains (C8) bonded to
+          silica particles.
       C4:
         text: C4
+        description: A stationary phase consisting of butyl chains (C4) bonded to
+          silica particles.
       C2:
         text: C2
+        description: A stationary phase consisting of ethyl chains (C2) bonded to
+          silica particles.
       C1:
         text: C1
+        description: A stationary phase consisting of methyl chains (C1) bonded to
+          silica particles.
       C30:
         text: C30
+        description: A stationary phase consisting of triacontyl chains (C30) bonded
+          to silica particles.
       C60:
         text: C60
+        description: A stationary phase consisting of hexatriacontyl chains (C60)
+          bonded to silica particles.
       CNT:
         text: CNT
+        description: Carbon Nanotube stationary phase.
       CN:
         text: CN
+        description: Cyano (CN) bonded stationary phase.
       Diol:
         text: Diol
+        description: A stationary phase with diol (1,2-diol) functional groups.
       HILIC:
         text: HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
       NH2:
         text: NH2
+        description: Amino (NH2) bonded stationary phase.
       Phenyl:
         text: Phenyl
+        description: Phenyl bonded stationary phase.
       Polysiloxane:
         text: Polysiloxane
+        description: A stationary phase made of polysiloxane, usually used in gas
+          chromatography.
       PS-DVB:
         text: PS-DVB
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase
+          extraction, including proprietary Priority PolLutant (PPL).
       SAX:
         text: SAX
+        description: Strong Anion Exchange (SAX) stationary phase.
       SCX:
         text: SCX
+        description: Strong Cation Exchange (SCX) stationary phase.
       Silica:
         text: Silica
+        description: A stationary phase made of silica, commonly used in chromatography.
       WCX:
         text: WCX
+        description: Weak Cation Exchange (WCX) stationary phase.
       WAX:
         text: WAX
+        description: Weak Anion Exchange (WAX) stationary phase.
       ZIC-HILIC:
         text: ZIC-HILIC
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC)
+          stationary phase.
+        is_a: HILIC
       ZIC-pHILIC:
         text: ZIC-pHILIC
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography
+          (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
       ZIC-cHILIC:
         text: ZIC-cHILIC
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC)
+          stationary phase.
+        is_a: ZIC-HILIC
   ProtocolCategoryEnum:
     name: ProtocolCategoryEnum
     description: The possible protocols that may be followed for an assay.
@@ -3904,6 +3945,10 @@ enums:
       LC-MS Metabolomics Results:
         text: LC-MS Metabolomics Results
         description: LC-MS-based metabolite assignment results table
+      Mass Spectrometry Reference Spectral Library:
+        text: Mass Spectrometry Reference Spectral Library
+        description: Spectral library used for mass spectrometry based metabolite
+          identification
       Metaproteomics Workflow Statistics:
         text: Metaproteomics Workflow Statistics
         description: Aggregate workflow statistics file
@@ -17740,6 +17785,7 @@ slots:
     - qud:unit
     - schema:unitCode
     range: unit
+    required: true
   has_numeric_value:
     name: has_numeric_value
     description: Links a quantity value to a number

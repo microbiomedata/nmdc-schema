@@ -8000,6 +8000,7 @@
                 "LC FT-ICR MS QC Plots",
                 "GC-MS Metabolomics Results",
                 "LC-MS Metabolomics Results",
+                "Mass Spectrometry Reference Spectral Library",
                 "Metaproteomics Workflow Statistics",
                 "Protein Report",
                 "Peptide Report",
@@ -13599,10 +13600,7 @@
                 },
                 "has_unit": {
                     "description": "The unit of the quantity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13613,6 +13611,7 @@
                 }
             },
             "required": [
+                "has_unit",
                 "type"
             ],
             "title": "QuantityValue",

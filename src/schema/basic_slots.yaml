@@ -163,10 +163,11 @@ slots:
     description: Links a QuantityValue to a unit
     aliases:
       - scale
-    range: unit
+    range: UnitEnum
     mappings:
       - qud:unit
       - schema:unitCode
+    required: true
 
   has_numeric_value:
     description: Links a quantity value to a number
@@ -1240,3 +1241,77 @@ enums:
         description: Data used as input into a workflow providing workflow specification.
         related_mappings:
           - edam.data:0949
+
+  UnitEnum:
+    permissible_values:
+      "%":
+        aliases:
+          - percent
+        description: The Unified Code for Units of Measure (UCUM) representation of percent.
+      Cel:
+        aliases:
+          - Celsius
+          - C
+          - Celcius
+          - degreeCelsius
+          - degree Celsius
+        description: >-
+          The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature 
+          equal to one unit Kelvin.
+        exact_mappings:
+          - UO:0000027
+          - wikidata:Q25267
+          - qud:DEG_C
+          - OM:degreeCelsius
+      cm:
+        description: The Unified Code for Units of Measure (UCUM) representation of centimeter.
+      d:
+        aliases:
+          - days
+        description: The Unified Code for Units of Measure (UCUM) representation of day.
+      g:
+        description: The Unified Code for Units of Measure (UCUM) representation of gram.
+      h:
+        description: The Unified Code for Units of Measure (UCUM) representation of hour.
+      kPa:
+        description: The Unified Code for Units of Measure (UCUM) representation of kilopascal.
+      m:
+        aliases:
+          - meter
+          - meters
+        description: The Unified Code for Units of Measure (UCUM) representation of meter.
+      "m/s":
+        description: The Unified Code for Units of Measure (UCUM) representation of meters per second.
+      "mg/kg":
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
+      "mg/L":
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
+      min:
+        description: The Unified Code for Units of Measure (UCUM) representation of minute.
+      mL:
+        description: The Unified Code for Units of Measure (UCUM) representation of milliliter.
+      "mmol/L":
+        aliases:
+          - mM
+        description: The Unified Code for Units of Measure (UCUM) representation of millimolar.
+      "[ppm]":
+        aliases:
+          - ppm
+        description: The Unified Code for Units of Measure (UCUM) representation of parts per million.
+      "[arb'U]{micro_Einsteins}/m2/s":
+        aliases:
+          - "u[E]/m2/s"
+        description: >- 
+          The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second.
+      "uS/cm":
+        description: The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
+      "W/m2":
+        description: The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
+      a:
+        aliases:
+          - years
+        description: The Unified Code for Units of Measure (UCUM) representation of year.
+      "ug/L":
+        aliases:
+          - "μg/L"
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
