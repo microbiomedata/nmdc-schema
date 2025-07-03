@@ -107,6 +107,7 @@ slots:
     slot_group: JGI-Metagenomics
     recommended: true
     deprecated: "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI"
+    last_updated_on: 2025-07-02T00:00:00
     modified_by: ORCID:0000-0002-8683-0050
   dna_samp_id:
     title: DNA sample ID
@@ -167,6 +168,7 @@ slots:
     slot_group: JGI-Metagenomics
     recommended: true
     deprecated: "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI"
+    last_updated_on: 2025-07-02T00:00:00
     modified_by: ORCID:0000-0002-8683-0050
   dna_seq_project_name:
     title: DNA seq project name
@@ -205,4 +207,5 @@ slots:
     slot_group: JGI-Metagenomics
     recommended: true
     deprecated: "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI"
+    last_updated_on: 2025-07-02T00:00:00
     modified_by: ORCID:0000-0002-8683-0050
