@@ -179,6 +179,8 @@ enums:
         meaning: MS:1001917
         comments: >-
           A serine protease that hydrolyzes peptide and ester bonds at the C-terminus of aspartic acid or glutamic acid.
+      hydrochloric_acid:
+        meaning: CHEBI:17883
       isopropyl_alcohol:
         meaning: CHEBI:17824
       Lys-C:
@@ -191,6 +193,8 @@ enums:
           A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
       methanol:
         meaning: CHEBI:17790
+      phosphoric_acid:
+        meaning: CHEBI:26078
       trypsin:
         meaning: MS:1001251
         comments: >-
