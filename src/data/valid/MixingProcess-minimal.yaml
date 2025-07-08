@@ -8,6 +8,6 @@ has_output:
 duration:
   type: nmdc:QuantityValue
   has_numeric_value: 2
-  has_unit: hours
+  has_unit: h
 instrument_used:
   - nmdc:inst-12-124

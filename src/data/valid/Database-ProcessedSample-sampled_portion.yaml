@@ -96,7 +96,7 @@ material_processing_set:
   temperature:
     type: nmdc:QuantityValue
     has_raw_value: 37 C
-    has_unit: C
+    has_unit: Cel
     has_numeric_value: 37
   duration:
     type: nmdc:QuantityValue

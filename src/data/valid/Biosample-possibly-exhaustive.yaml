@@ -298,7 +298,7 @@ depth:
   has_maximum_numeric_value: 2.5
   has_minimum_numeric_value: 1.5
   has_numeric_value: 2
-  has_unit: meter
+  has_unit: m
 dew_point:
   type: nmdc:QuantityValue
   has_raw_value: xxx

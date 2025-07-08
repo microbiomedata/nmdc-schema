@@ -101,7 +101,7 @@ storage_process_set:
     start_date: "2021-01-14"
     temperature:
       type: nmdc:QuantityValue
-      has_unit: degrees Celsius
+      has_unit: Cel
       has_numeric_value: 80
     has_input:
       - nmdc:procsm-99-dtTMNb
@@ -155,7 +155,7 @@ material_processing_set:
     duration:
       type: nmdc:QuantityValue
       has_numeric_value: 2
-      has_unit: hours
+      has_unit: h
     instrument_used:
       - nmdc:inst-12-124
   - id: nmdc:filtpr-22-32G2BS
@@ -194,7 +194,7 @@ material_processing_set:
     duration:
       type: nmdc:QuantityValue
       has_numeric_value: 2
-      has_unit: hours
+      has_unit: h
     instrument_used:
       - nmdc:inst-12-124
 
@@ -1737,7 +1737,7 @@ biosample_set:
       has_maximum_numeric_value: 2.5
       has_minimum_numeric_value: 1.5
       has_numeric_value: 2
-      has_unit: meter
+      has_unit: m
     dew_point:
       type: nmdc:QuantityValue
       has_raw_value: xxx
@@ -3211,7 +3211,7 @@ material_processing_set:
     input_mass:
       type: nmdc:QuantityValue
       has_numeric_value: 0.25
-      has_unit: gram
+      has_unit: g
   - id: nmdc:extrp-99-74d83z
     type: nmdc:Extraction
     name: soil DNA extraction
