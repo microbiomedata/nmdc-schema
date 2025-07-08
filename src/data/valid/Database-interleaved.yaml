@@ -57,7 +57,7 @@ material_processing_set:
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
-              has_unit: mM
+              has_unit: mmol/L
               has_numeric_value: 15
         volume:
           type: nmdc:QuantityValue
@@ -142,7 +142,7 @@ material_processing_set:
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
-              has_unit: mM
+              has_unit: mmol/L
               has_numeric_value: 15
 material_processing_set:
   - id: nmdc:mixpro-99-A74
@@ -182,7 +182,7 @@ material_processing_set:
         type: nmdc:PortionOfSubstance
         final_concentration:
           type: nmdc:QuantityValue
-          has_unit: mM
+          has_unit: mmol/L
           has_numeric_value: 15
         volume:
           type: nmdc:QuantityValue
@@ -214,7 +214,7 @@ material_processing_set:
           has_unit: mL
         final_concentration:
           type: nmdc:QuantityValue
-          has_unit: mM
+          has_unit: mmol/L
           has_numeric_value: 10
     temperature:
       type: nmdc:QuantityValue
@@ -240,19 +240,19 @@ material_processing_set:
         substance_role: buffer
         source_concentration:
           type: nmdc:QuantityValue
-          has_unit: mM
+          has_unit: mmol/L
           has_numeric_value: 50
       - known_as: glucose
         type: nmdc:PortionOfSubstance
         substance_role: ms_proteolytic_enzyme
         final_concentration:
           type: nmdc:QuantityValue
-          has_unit: μg/μL
+          has_unit: ug/ul
           has_numeric_value: 0.05
     substances_volume:
       type: nmdc:QuantityValue
       has_numeric_value: 75
-      has_unit: μL
+      has_unit: uL
     temperature:
       type: nmdc:QuantityValue
       has_numeric_value: 37
@@ -1215,7 +1215,7 @@ biosample_set:
     temp:
       type: nmdc:QuantityValue
       has_numeric_value: 25
-      has_unit: Celsius
+      has_unit: Cel
   - id: nmdc:bsm-99-49z38t
     type: nmdc:Biosample
     name: mouse gut sample
@@ -2743,7 +2743,7 @@ biosample_set:
       (1%)
     dna_project_contact: John Jones
     dna_samp_id: '187654'
-    dna_sample_format: 10 mM Tris-HCl
+    dna_sample_format: 10 mmol/L Tris-HCl
     dna_sample_name: JGI_pond_041618
     dna_seq_project: '1191234'
     dna_seq_project_pi: Jane Johnson
@@ -2764,7 +2764,7 @@ biosample_set:
       (1%)
     rna_project_contact: John Jones
     rna_samp_id: '187654'
-    rna_sample_format: 10 mM Tris-HCl
+    rna_sample_format: 10 mmol/L Tris-HCl
     rna_sample_name: JGI_pond_041618
     rna_seq_project: '1191234'
     rna_seq_project_pi: Jane Johnson
@@ -3237,7 +3237,7 @@ material_processing_set:
     volume:
       type: nmdc:QuantityValue
       has_numeric_value: 100
-      has_unit: µL
+      has_unit: uL
   - id: nmdc:extrp-99-v9w6y
     type: nmdc:Extraction
     name: human gut DNA extraction
@@ -4683,5 +4683,5 @@ configuration_set:
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
-              has_unit: mM
+              has_unit: mmol/L
               has_numeric_value: 15

@@ -1290,6 +1290,8 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of minute.
       mL:
         description: The Unified Code for Units of Measure (UCUM) representation of milliliter.
+      mm:
+        description: The Unified Code for Units of Measure (UCUM) representation of millimeter.
       "mmol/L":
         aliases:
           - mM
@@ -1298,7 +1300,7 @@ enums:
         aliases:
           - ppm
         description: The Unified Code for Units of Measure (UCUM) representation of parts per million.
-      "[arb'U]{micro_Einsteins}/m2/s":
+      "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s":
         aliases:
           - "u[E]/m2/s"
         description: >- 
@@ -1315,3 +1317,12 @@ enums:
         aliases:
           - "μg/L"
         description: The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
+      "ug/ul":
+        aliases:
+          - "μg/μL"
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
+      "uL":
+        aliases:
+          - "μL"
+          - "µL"
+        description: The Unified Code for Units of Measure (UCUM) representation of microliter.

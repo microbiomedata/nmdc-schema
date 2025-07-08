@@ -1227,13 +1227,16 @@ water_current:
 water_cut:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '%'
 water_feat_size:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m
 water_feat_type: fountain
 water_prod_rate:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mL
 water_temp_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -1250,6 +1253,7 @@ wind_direction:
 wind_speed:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: "m/s"
 window_cond: damaged
 window_cover: blinds
 window_horiz_pos: left
@@ -1272,9 +1276,11 @@ window_water_mold:
 xylene:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: "mg/L"
 zinc:
   type: nmdc:QuantityValue
   has_raw_value: 2.5 mg/kg
+  has_unit: "mg/kg"
 add_date: '2021-03-31'
 community: no_example_from_mixs
 habitat: unconstrained text
@@ -1292,6 +1298,7 @@ soluble_iron_micromol: MIxS doesn't provide an example
 subsurface_depth:
   type: nmdc:QuantityValue
   has_raw_value: MIxS does not provide an example
+  has_unit: m
 dna_absorb1: 2.02
 dna_absorb2: 2.02
 dna_collect_site: untreated pond water
@@ -1304,7 +1311,7 @@ dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), ta
   (1%)
 dna_project_contact: John Jones
 dna_samp_id: '187654'
-dna_sample_format: 10 mM Tris-HCl
+dna_sample_format: 10 mmol/L Tris-HCl
 dna_sample_name: JGI_pond_041618
 dna_seq_project: '1191234'
 dna_seq_project_pi: Jane Johnson
@@ -1325,7 +1332,7 @@ rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), ta
   (1%)
 rna_project_contact: John Jones
 rna_samp_id: '187654'
-rna_sample_format: 10 mM Tris-HCl
+rna_sample_format: 10 mmol/L Tris-HCl
 rna_sample_name: JGI_pond_041618
 rna_seq_project: '1191234'
 rna_seq_project_pi: Jane Johnson

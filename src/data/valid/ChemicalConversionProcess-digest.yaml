@@ -13,19 +13,19 @@ substances_used:
     substance_role: buffer
     source_concentration:
       type: nmdc:QuantityValue
-      has_unit: mM
+      has_unit: mmol/L
       has_numeric_value: 50
   - known_as: glucose
     type: nmdc:PortionOfSubstance
     substance_role: ms_proteolytic_enzyme
     final_concentration:
       type: nmdc:QuantityValue
-      has_unit: μg/μL
+      has_unit: ug/ul
       has_numeric_value: 0.05
 substances_volume:
   type: nmdc:QuantityValue
   has_numeric_value: 75
-  has_unit: μL
+  has_unit: uL
 temperature:
   type: nmdc:QuantityValue
   has_numeric_value: 37

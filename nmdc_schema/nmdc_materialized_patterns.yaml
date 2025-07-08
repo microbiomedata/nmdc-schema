@@ -4617,6 +4617,135 @@ enums:
         description: Data used as input into a workflow providing workflow specification.
         related_mappings:
         - edam.data:0949
+  UnitEnum:
+    name: UnitEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      '%':
+        text: '%'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          percent.
+        aliases:
+        - percent
+      Cel:
+        text: Cel
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
+        aliases:
+        - Celsius
+        - C
+        - Celcius
+        - degreeCelsius
+        - degree Celsius
+        exact_mappings:
+        - UO:0000027
+        - wikidata:Q25267
+        - qud:DEG_C
+        - OM:degreeCelsius
+      cm:
+        text: cm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          centimeter.
+      d:
+        text: d
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          day.
+        aliases:
+        - days
+      g:
+        text: g
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          gram.
+      h:
+        text: h
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          hour.
+      kPa:
+        text: kPa
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilopascal.
+      m:
+        text: m
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          meter.
+        aliases:
+        - meter
+        - meters
+      m/s:
+        text: m/s
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          meters per second.
+      mg/kg:
+        text: mg/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per kilogram.
+      mg/L:
+        text: mg/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per liter.
+      min:
+        text: min
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          minute.
+      mL:
+        text: mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milliliter.
+      mm:
+        text: mm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millimeter.
+      mmol/L:
+        text: mmol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millimolar.
+        aliases:
+        - mM
+      '[ppm]':
+        text: '[ppm]'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          parts per million.
+        aliases:
+        - ppm
+      '%5Barb''U%5D%7Bmicro_Einsteins%7D/m2/s':
+        text: '%5Barb''U%5D%7Bmicro_Einsteins%7D/m2/s'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micro-Einsteins per square meter per second.
+        aliases:
+        - u[E]/m2/s
+      uS/cm:
+        text: uS/cm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microsiemens per centimeter.
+      W/m2:
+        text: W/m2
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          watts per square meter.
+      a:
+        text: a
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          year.
+        aliases:
+        - years
+      ug/L:
+        text: ug/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per liter.
+        aliases:
+        - μg/L
+      ug/ul:
+        text: ug/ul
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per microliter.
+        aliases:
+        - μg/μL
+      uL:
+        text: uL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microliter.
+        aliases:
+        - μL
+        - µL
   SampleTypeEnum:
     name: SampleTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4635,8 +4764,8 @@ enums:
     name: DNASampleFormatEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
+      10 mmol/L Tris-HCl:
+        text: 10 mmol/L Tris-HCl
       DNAStable:
         text: DNAStable
       Ethanol:
@@ -4680,8 +4809,8 @@ enums:
     name: RNASampleFormatEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
+      10 mmol/L Tris-HCl:
+        text: 10 mmol/L Tris-HCl
       DNAStable:
         text: DNAStable
       Ethanol:
@@ -5613,7 +5742,7 @@ slots:
     name: duration
     description: The elapsed time of an activity.
     examples:
-    - value: JsonObj(has_numeric_value=2, has_unit='hours')
+    - value: JsonObj(has_numeric_value=2, has_unit='h')
     from_schema: https://w3id.org/nmdc/nmdc
     range: QuantityValue
   temperature:
@@ -17784,7 +17913,7 @@ slots:
     mappings:
     - qud:unit
     - schema:unitCode
-    range: unit
+    range: UnitEnum
     required: true
   has_numeric_value:
     name: has_numeric_value

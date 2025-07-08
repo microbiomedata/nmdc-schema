@@ -70,7 +70,7 @@ material_processing_set:
             substance_role: acid
             final_concentration:
               type: nmdc:QuantityValue
-              has_unit: 'mM'
+              has_unit: 'mmol/L'
               has_numeric_value: 10
         volume:
           type: nmdc:QuantityValue
@@ -110,7 +110,7 @@ material_processing_set:
         substance_role: acid
         final_concentration:
           type: nmdc:QuantityValue
-          has_unit: 'percentile'
+          has_unit: '%'
           has_numeric_value: 37
     substances_volume:
       type: nmdc:QuantityValue
