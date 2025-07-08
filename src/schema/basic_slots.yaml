@@ -1326,3 +1326,42 @@ enums:
           - "μL"
           - "µL"
         description: The Unified Code for Units of Measure (UCUM) representation of microliter.
+      "mol/L":
+        description: The Unified Code for Units of Measure (UCUM) representation of moles per liter.
+      "mol/L/h":
+        description: The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
+      "ug/L/h":
+        description: The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
+      "umol/L":
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
+      "umol/kg":
+        description: The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
+      "mg/m3":
+        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
+      "kg/m3":
+        description: The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
+      "m2":
+        description: The Unified Code for Units of Measure (UCUM) representation of square meters.
+      atm:
+        description: The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+      mV:
+        description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
+      PSU:
+        description: The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
+      L:
+        description: The Unified Code for Units of Measure (UCUM) representation of liter.
+      um:
+        aliases:
+          - μm
+          - µm
+        description: The Unified Code for Units of Measure (UCUM) representation of micrometer.
+      y:
+        description: The Unified Code for Units of Measure (UCUM) representation of year.
+      "1":
+        description: The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
+      "uL/kg":
+        description: The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
+      kg:
+        description: The Unified Code for Units of Measure (UCUM) representation of kilogram.
+      ppt:
+        description: The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
