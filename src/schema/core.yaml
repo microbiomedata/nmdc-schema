@@ -141,6 +141,8 @@ enums:
     permissible_values:
       acetonitrile:
         meaning: CHEBI:38472
+      acetic_acid:
+        meaning: CHEBI:15366
       alphaLP:
         meaning: EC:3.4.21.12
         see_also: https://commonchemistry.cas.org/detail?cas_rn=37288-76-9&title= # CAS reference from wikipedia
@@ -193,6 +195,10 @@ enums:
           A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
       methanol:
         meaning: CHEBI:17790
+      medronic_acid:
+        meaning: CHEBI:43945
+        comments: >-
+          A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic acid groups, also known as methylenediphosphonic acid
       phosphoric_acid:
         meaning: CHEBI:26078
       trypsin:
