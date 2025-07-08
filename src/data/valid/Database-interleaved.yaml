@@ -4638,6 +4638,10 @@ configuration_set:
       - ion_trap
     ionization_source: electrospray_ionization
     polarity_mode: positive
+    protocol_link:
+      type: nmdc:Protocol
+      url: http://example.com
+      name: EMSL Lipidomics Protocol
   - id: nmdc:mscon-99-oW43DzG2
     name: EMSL lipidomics mass spectrometry method, negative polarity
     description: Mass spectrometry method used by EMSL for lipidomics analysis, negative polarity
