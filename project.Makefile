@@ -11,21 +11,18 @@ PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
 REPO  := microbiomedata/nmdc-schema
 FILE  := nmdc_schema/nmdc_materialized_patterns.yaml
-LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema_last_release.yaml
+#LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema_last_release.yaml
+LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema-11.7.0/nmdc_schema/nmdc_materialized_patterns.yaml
 # -------------------------------------------------
 
-# Get the tag that belongs to the latest (non-prerelease) GitHub release.
-#  - ‘!=’ executes the shell command only once, when the Makefile is read.
-LATEST_TAG != curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name'
-
-# Build the raw.githubusercontent.com URL
-LATEST_TAG_SCHEMA_URL := https://raw.githubusercontent.com/$(REPO)/$(LATEST_TAG)/$(FILE)
-
-# The rule that fetches the file
 $(LATEST_TAG_SCHEMA_FILE):
-	@echo "Downloading $(LATEST_TAG_SCHEMA_URL)"
-	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@
-
+	@mkdir -p $(dir $@)
+	@echo "Fetching latest release tag..."
+	@curl -s https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name' > /tmp/latest_tag.txt
+	@if [ ! -s /tmp/latest_tag.txt ]; then echo "ERROR: Could not retrieve latest tag"; exit 1; fi
+	@LATEST_TAG=$$(cat /tmp/latest_tag.txt) && \
+		echo "Downloading https://raw.githubusercontent.com/$(REPO)/$$LATEST_TAG/$(FILE)" && \
+		curl -fsSL "https://raw.githubusercontent.com/$(REPO)/$$LATEST_TAG/$(FILE)" -o $@ || { echo "Failed to download schema file"; exit 1; }
 
 .PHONY: examples-clean mixs-yaml-clean rdf-clean shuttle-clean
 
