@@ -1317,7 +1317,7 @@ enums:
         aliases:
           - "μg/L"
         description: The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
-      "ug/ul":
+      "ug/uL":
         aliases:
           - "μg/μL"
         description: The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.

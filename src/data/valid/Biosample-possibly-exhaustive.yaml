@@ -358,7 +358,7 @@ diss_inorg_carb:
 diss_inorg_nitro:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: Sierra
+  has_unit: m
 diss_inorg_phosp:
   type: nmdc:QuantityValue
   has_raw_value: 56.5 micromole per liter
@@ -868,7 +868,6 @@ phosphate:
 phosplipid_fatt_acid:
   - type: nmdc:TextValue
     has_raw_value: 2.98 milligram per liter
-    has_unit: "mg/L"
 photon_flux:
   type: nmdc:QuantityValue
   has_raw_value: xxx

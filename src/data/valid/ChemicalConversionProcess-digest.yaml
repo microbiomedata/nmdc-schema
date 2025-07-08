@@ -20,7 +20,7 @@ substances_used:
     substance_role: ms_proteolytic_enzyme
     final_concentration:
       type: nmdc:QuantityValue
-      has_unit: ug/ul
+      has_unit: ug/uL
       has_numeric_value: 0.05
 substances_volume:
   type: nmdc:QuantityValue
