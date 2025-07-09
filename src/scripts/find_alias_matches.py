@@ -6,6 +6,9 @@ Script to find schema elements where the name matches one of their aliases.
 import click
 from linkml_runtime import SchemaView
 
+# Constants
+MIXS_SCHEMA_URL = 'https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml'
+
 
 @click.command()
 @click.option('--schema-file', default='src/schema/nmdc.yaml', help='Schema file path.')
@@ -26,7 +29,7 @@ def find_alias_matches(schema_file):
         
         # Skip elements from mixs.yaml
         if (hasattr(element_def, 'from_schema') and 
-            element_def.from_schema == 'https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml'):
+            element_def.from_schema == MIXS_SCHEMA_URL):
             continue
             
         if element_def.aliases:
@@ -36,7 +39,7 @@ def find_alias_matches(schema_file):
     
     print("\n" + "=" * 60)
     if not matches_found:
-        print("No elements found where name matches an alias.")
+        print("No elements found where name matches an alias (excluding MIxS terms).")
     else:
         print("Found elements where name matches an alias (listed above).")
 
