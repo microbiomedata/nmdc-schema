@@ -379,10 +379,8 @@ classes:
       - collected_from
       - embargoed
       - host_disease_stat
-      - host_taxid
       - img_identifiers
       - neon_biosample_identifiers
-      - samp_name
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
@@ -409,7 +407,6 @@ classes:
       - alt
       - aminopept_act
       - ammonium
-      - ammonium_nitrogen
       - amount_light
       - ances_data
       - annual_precpt
@@ -492,7 +489,6 @@ classes:
       - diss_org_nitro
       - diss_oxygen
       - diss_oxygen_fluid
-      - dna_cont_well
       - door_comp_type
       - door_cond
       - door_direct
@@ -507,10 +503,6 @@ classes:
       - down_par
       - drainage_class
       - drawings
-      - ecosystem
-      - ecosystem_category
-      - ecosystem_subtype
-      - ecosystem_type
       - efficiency_percent
       - elev
       - elevator
@@ -614,8 +606,6 @@ classes:
       - iwf
       - last_clean
       - lat_lon
-      - lbc_thirty
-      - lbceq
       - light_intensity
       - light_regm
       - light_type
@@ -626,7 +616,6 @@ classes:
       - local_class
       - local_class_meth
       - magnesium
-      - manganese
       - max_occup
       - mean_frict_vel
       - mean_peak_frict_vel
@@ -639,9 +628,7 @@ classes:
       - misc_param
       - n_alkanes
       - nitrate
-      - nitrate_nitrogen
       - nitrite
-      - nitrite_nitrogen
       - nitro
       - non_min_nutr_regm
       - number_pets
@@ -790,7 +777,6 @@ classes:
       - source_mat_id
       - space_typ_state
       - specific
-      - specific_ecosystem
       - specific_humidity
       - sr_dep_env
       - sr_geol_age
@@ -881,7 +867,6 @@ classes:
       - window_vert_pos
       - window_water_mold
       - xylene
-      - zinc
 
       ## GOLD path fields
       - ecosystem
@@ -903,23 +888,6 @@ classes:
       - sample_collection_site
       - soluble_iron_micromol
       - subsurface_depth
-
-      ## MIxS terms initially used in
-      ## sample metadata submission portal (aka DataHarmonizer)
-      - air_temp_regm
-      - biotic_regm
-      - biotic_relationship
-      - climate_environment
-      - experimental_factor
-      - gaseous_environment
-      - growth_facil
-      - humidity_regm
-      - light_regm
-      - phosphate
-      - samp_collec_method
-      - samp_size
-      - source_mat_id
-      - watering_regm
 
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       ## JGI fields
