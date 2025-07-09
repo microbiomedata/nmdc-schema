@@ -18,8 +18,8 @@ def find_alias_matches(schema_file):
     """
     schema_view = SchemaView(schema_file)
     
-    print("Checking for elements where name matches aliases...")
-    print("=" * 60)
+    click.echo("Checking for elements where name matches aliases...")
+    click.echo("=" * 60)
     
     matches_found = False
     
