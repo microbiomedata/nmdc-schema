@@ -1,3 +1,6 @@
+# exhaustive as of 2025-07-08
+# but will become invalid when has_unit becomes required for QuantityValue
+# and may imply that some undesirable data patterns are OK
 id: nmdc:bsm-99-4444444
 type: nmdc:Biosample
 name: Sample Exhaustive Biosample instance. Although all of these values should pass
@@ -1623,3 +1626,21 @@ analysis_type:
 sample_link:
   - IGSN:DSJ0284
   - any:curie
+bulk_elect_conductivity:
+  type: nmdc:QuantityValue
+  has_raw_value: 0.5 millisiemens per centimeter
+  has_numeric_value: 0.5
+  has_unit: mS/cm
+host_disease_stat:
+  type: nmdc:TextValue
+  has_raw_value: xxx
+infiltrations:
+  - '00:01:32'
+neon_biosample_identifiers:
+  - neon.identifier:xxx
+nitrate_nitrogen:
+  type: nmdc:QuantityValue
+  has_raw_value: 1.2 mg/kg
+  has_numeric_value: 1.2
+  has_unit: mg/kg
+
