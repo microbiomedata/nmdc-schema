@@ -21,5 +21,6 @@ processed_sample_set:
     biomaterial_purity:
       type: nmdc:QuantityValue
       has_numeric_value: 2
+      has_unit: xxx
     sampled_portion: 
       - supernatant
