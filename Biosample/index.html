@@ -1230,12 +1230,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../core_field/">core_field</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>basic fields</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../crop_rotation/">crop_rotation</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>Whether or not crop is rotated, and if yes, rotation schedule</td>
@@ -1521,12 +1515,6 @@
 <td><a href="../env_package/">env_package</a></td>
 <td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
 <td>MIxS extension for reporting of measurements and observations obtained from o...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../environment_field/">environment_field</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>field describing environmental aspect of a sample</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -2076,12 +2064,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../investigation_field/">investigation_field</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td>field describing aspect of the investigation/study to which the sample belong...</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../iw_bt_date_well/">iw_bt_date_well</a></td>
 <td>0..1 <br/> <a href="../TimestampValue/">TimestampValue</a></td>
 <td>Injection water breakthrough date per well following a secondary and/or terti...</td>
@@ -2283,12 +2265,6 @@
 <td><a href="../non_min_nutr_regm/">non_min_nutr_regm</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
 <td>Information about treatment involving the exposure of plant to non-mineral nu...</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../nucleic_acid_sequence_source_field/">nucleic_acid_sequence_source_field</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -3003,12 +2979,6 @@
 <td><a href="../sediment_type/">sediment_type</a></td>
 <td>0..1 <br/> <a href="../SedimentTypeEnum/">SedimentTypeEnum</a></td>
 <td>Information about the sediment type based on major constituents</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../sequencing_field/">sequencing_field</a></td>
-<td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
 <td>direct</td>
 </tr>
 <tr>
@@ -4536,7 +4506,6 @@ slots:
 - collection_date
 - conduc
 - cool_syst_id
-- core field
 - crop_rotation
 - cult_root_med
 - cur_land_use
@@ -4585,7 +4554,6 @@ slots:
 - env_local_scale
 - env_medium
 - env_package
-- environment field
 - escalator
 - ethylbenzene
 - exp_duct
@@ -4677,7 +4645,6 @@ slots:
 - inorg_particles
 - inside_lux
 - int_wall_cond
-- investigation field
 - iw_bt_date_well
 - iwf
 - last_clean
@@ -4712,7 +4679,6 @@ slots:
 - nitrite_nitrogen
 - nitro
 - non_min_nutr_regm
-- nucleic acid sequence source field
 - number_pets
 - number_plants
 - number_resident
@@ -4832,7 +4798,6 @@ slots:
 - season_use
 - secondary_treatment
 - sediment_type
-- sequencing field
 - sewage_type
 - shad_dev_water_mold
 - shading_device_cond
@@ -8338,17 +8303,6 @@ attributes:
     - Biosample
     range: TextValue
     multivalued: false
-  core field:
-    name: core field
-    description: basic fields
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    abstract: true
-    alias: core_field
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
   crop_rotation:
     name: crop_rotation
     annotations:
@@ -9665,17 +9619,6 @@ attributes:
     domain_of:
     - Biosample
     range: TextValue
-  environment field:
-    name: environment field
-    description: field describing environmental aspect of a sample
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    abstract: true
-    alias: environment_field
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
   escalator:
     name: escalator
     annotations:
@@ -12182,18 +12125,6 @@ attributes:
     - Biosample
     range: int_wall_cond_enum
     multivalued: false
-  investigation field:
-    name: investigation field
-    description: field describing aspect of the investigation/study to which the sample
-      belongs
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    abstract: true
-    alias: investigation_field
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
   iw_bt_date_well:
     name: iw_bt_date_well
     annotations:
@@ -13156,16 +13087,6 @@ attributes:
     - Biosample
     range: string
     multivalued: true
-  nucleic acid sequence source field:
-    name: nucleic acid sequence source field
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    abstract: true
-    alias: nucleic_acid_sequence_source_field
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
   number_pets:
     name: number_pets
     annotations:
@@ -16493,16 +16414,6 @@ attributes:
     - Biosample
     range: sediment_type_enum
     multivalued: false
-  sequencing field:
-    name: sequencing field
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1000
-    abstract: true
-    alias: sequencing_field
-    owner: Biosample
-    domain_of:
-    - Biosample
-    range: string
   sewage_type:
     name: sewage_type
     annotations:
