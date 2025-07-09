@@ -1456,8 +1456,6 @@ slots:
   #        resources\-cores|hydrocarbon resources\-fluids\/swabs|microbial mat\/biofilm|misc
   #        environment|plant\-associated|sediment|soil|wastewater\/sludge|water]'
   zinc:
-    aliases:
-      - zinc
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
@@ -1470,8 +1468,6 @@ slots:
     see_also:
       - https://www.ornl.gov/content/bio-scales-0
   manganese:
-    aliases:
-      - manganese
     annotations:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
@@ -1486,7 +1482,6 @@ slots:
 
   ammonium_nitrogen:
     aliases:
-      - ammonium_nitrogen
       - NH4-N
     annotations:
       expected_value: measurement value
@@ -1502,7 +1497,6 @@ slots:
 
   nitrate_nitrogen:
     aliases:
-      - nitrate_nitrogen
       - NO3-N
     comments:
       - often below some specified limit of detection
@@ -1520,7 +1514,6 @@ slots:
 
   nitrite_nitrogen:
     aliases:
-      - nitrite_nitrogen
       - NO2-N
     annotations:
       expected_value: measurement value
@@ -1538,7 +1531,6 @@ slots:
     comments:
       - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
     aliases:
-      - lbc_thirty
       - lbc30
       - lime buffer capacity (at 30 minutes)
     annotations:
@@ -1558,7 +1550,6 @@ slots:
     comments:
       - This is the mass of lime, in mg, needed to raise the pH of one kg of soil by one pH unit
     aliases:
-      - lbceq
       - lime buffer capacity (at 5-day equilibrium)
     annotations:
       expected_value: measurement value
