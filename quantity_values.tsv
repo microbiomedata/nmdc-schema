@@ -1,0 +1,174 @@
+field_name	has_maximum_numeric_value	has_minimum_numeric_value	has_numeric_value	has_unit	has_raw_value	type
+abs_air_humidity				g/g	xxx	nmdc:QuantityValue
+air_temp				Cel	xxx	nmdc:QuantityValue
+al_sat				mg/kg	0.1 mg/kg	nmdc:QuantityValue
+alkalinity				mg/L	50 milligram per liter	nmdc:QuantityValue
+alkyl_diethers				mol/L	0.005 mole per liter	nmdc:QuantityValue
+alt				m	100 meter	nmdc:QuantityValue
+aminopept_act				mol/L/h	0.269 mole per liter per hour	nmdc:QuantityValue
+ammonium				mg/L	1.5 milligram per liter	nmdc:QuantityValue
+ammonium_nitrogen				mg/L	0.5 milligram per liter	nmdc:QuantityValue
+amount_light				lx	xxx	nmdc:QuantityValue
+annual_precpt				mg/L	0.5 milligram per liter	nmdc:QuantityValue
+annual_temp				Cel	12.5 degree Celsius	nmdc:QuantityValue
+api				[arb'U]{API}	xxx	nmdc:QuantityValue
+avg_dew_point				Cel	xxx	nmdc:QuantityValue
+avg_temp				Cel	xxx	nmdc:QuantityValue
+bac_prod				mg/m3/d	xxx	nmdc:QuantityValue
+bac_resp				mg/m3/d	xxx	nmdc:QuantityValue
+bacteria_carb_prod				ug/L/h	2.53 microgram per liter per hour	nmdc:QuantityValue
+barometric_press				[arb'U]{mbar}	xxx	nmdc:QuantityValue
+benzene				mg/L	xxx	nmdc:QuantityValue
+biochem_oxygen_dem				mg/L	xxx	nmdc:QuantityValue
+bishomohopanol				ug/L	14 microgram per liter	nmdc:QuantityValue
+blood_press_diast				mm[Hg]	xxx	nmdc:QuantityValue
+blood_press_syst				mm[Hg]	xxx	nmdc:QuantityValue
+bromide				[ppm]	0.05 parts per million	nmdc:QuantityValue
+built_struc_age			7	a	7 years	nmdc:QuantityValue
+calcium				umol/L	0.2 micromole per liter	nmdc:QuantityValue
+carb_dioxide				umol/L	xxx	nmdc:QuantityValue
+carb_monoxide				umol/L	xxx	nmdc:QuantityValue
+carb_nitro_ratio				{ratio}	0.417361111	nmdc:QuantityValue
+ceil_area				m2	xxx	nmdc:QuantityValue
+ceil_thermal_mass				J/Cel	xxx	nmdc:QuantityValue
+chem_oxygen_dem				mg/L	xxx	nmdc:QuantityValue
+chloride				mg/L	5000 milligram per liter	nmdc:QuantityValue
+chlorophyll				mg/m3	5 milligram per cubic meter	nmdc:QuantityValue
+conduc				mS/cm	xxx	nmdc:QuantityValue
+density				kg/m3	1000 kilogram per cubic meter	nmdc:QuantityValue
+depth	2.5	1.5	2	m	1.5 to 2.5 meters	nmdc:QuantityValue
+dew_point				Cel	xxx	nmdc:QuantityValue
+diss_carb_dioxide				mg/L	5 milligram per liter	nmdc:QuantityValue
+diss_hydrogen				umol/L	0.3 micromole per liter	nmdc:QuantityValue
+diss_inorg_carb				umol/kg	2059 micromole per kilogram	nmdc:QuantityValue
+diss_inorg_nitro				ug/L	xxx	nmdc:QuantityValue
+diss_inorg_phosp				umol/L	56.5 micromole per liter	nmdc:QuantityValue
+diss_iron				mg/L	xxx	nmdc:QuantityValue
+diss_org_carb				umol/L	197 micromole per liter	nmdc:QuantityValue
+diss_org_nitro				umol/L	0.05 micromole per liter	nmdc:QuantityValue
+diss_oxygen				umol/kg	175 micromole per kilogram	nmdc:QuantityValue
+diss_oxygen_fluid				umol/kg	xxx	nmdc:QuantityValue
+door_size				m2	xxx	nmdc:QuantityValue
+down_par				[arb'U]{micro_Einstein}/m2/s	xxx	nmdc:QuantityValue
+efficiency_percent				%	xxx	nmdc:QuantityValue
+ethylbenzene				mg/L	xxx	nmdc:QuantityValue
+exp_duct				m2	xxx	nmdc:QuantityValue
+exp_pipe				m2	xxx	nmdc:QuantityValue
+floor_age			5	a	5 years	nmdc:QuantityValue
+floor_area				m2	xxx	nmdc:QuantityValue
+floor_thermal_mass				J/Cel	xxx	nmdc:QuantityValue
+fluor				mg/m3	xxx	nmdc:QuantityValue
+freq_clean				[arb'U]{unitless}	xxx	nmdc:QuantityValue
+freq_cook				[arb'U]{unitless}	xxx	nmdc:QuantityValue
+glucosidase_act				mol/L/h	5 mol per liter per hour	nmdc:QuantityValue
+hcr_fw_salinity				mg/L	xxx	nmdc:QuantityValue
+height_carper_fiber				cm	xxx	nmdc:QuantityValue
+host_age			3	a	3 years	nmdc:QuantityValue
+host_body_temp				Cel	xxx	nmdc:QuantityValue
+host_dry_mass				kg	xxx	nmdc:QuantityValue
+host_height				cm	xxx	nmdc:QuantityValue
+host_length				cm	xxx	nmdc:QuantityValue
+host_tot_mass				kg	xxx	nmdc:QuantityValue
+host_wet_mass				kg	xxx	nmdc:QuantityValue
+humidity				g/m3	xxx	nmdc:QuantityValue
+indust_eff_percent				%	xxx	nmdc:QuantityValue
+inside_lux				kW/m2	xxx	nmdc:QuantityValue
+iwf				%	xxx	nmdc:QuantityValue
+lbc_thirty				mg/kg	543 mg/kg	nmdc:QuantityValue
+lbceq				mg/kg	1575 mg/kg	nmdc:QuantityValue
+light_intensity				lx	xxx	nmdc:QuantityValue
+magnesium				umol/kg	52.8 micromole per kilogram	nmdc:QuantityValue
+manganese				mg/kg	24.7 mg/kg	nmdc:QuantityValue
+max_occup				[arb'U]{people}	35	nmdc:QuantityValue
+mean_frict_vel				m/s	0.5 meter per second	nmdc:QuantityValue
+mean_peak_frict_vel				m/s	1 meter per second	nmdc:QuantityValue
+methane				umol/L	xxx	nmdc:QuantityValue
+microbial_biomass				g/kg	xxx	nmdc:QuantityValue
+nitrate				umol/L	65 micromole per liter	nmdc:QuantityValue
+nitrite				umol/L	0.5 micromole per liter	nmdc:QuantityValue
+nitrite_nitrogen				mg/kg	1.2 mg/kg	nmdc:QuantityValue
+nitro				umol/L	xxx	nmdc:QuantityValue
+number_pets				[arb'U]{pets}	3	nmdc:QuantityValue
+number_plants				[arb'U]{plants}	4	nmdc:QuantityValue
+number_resident				[arb'U]{people}	3	nmdc:QuantityValue
+occup_density_samp				[arb'U]{unitless}	xxx	nmdc:QuantityValue
+occup_samp				[arb'U]{people}	xxx	nmdc:QuantityValue
+org_carb				umol/L	xxx	nmdc:QuantityValue
+org_matter				mg/m3	1.75 milligram per cubic meter	nmdc:QuantityValue
+org_nitro				umol/L	4 micromole per liter	nmdc:QuantityValue
+organism_count[0]				[arb'U]{unitless}	ATP	nmdc:QuantityValue
+owc_tvdss				m	xxx	nmdc:QuantityValue
+oxygen				mg/L	xxx	nmdc:QuantityValue
+part_org_carb				umol/L	1.92 micromole per liter	nmdc:QuantityValue
+part_org_nitro				ug/L	xxx	nmdc:QuantityValue
+petroleum_hydrocarb				umol/L	0.05 micromole per liter	nmdc:QuantityValue
+phosphate				umol/L	0.7 micromole per liter	nmdc:QuantityValue
+photon_flux				umol{photon}/s/m2	xxx	nmdc:QuantityValue
+potassium				mg/L	463 milligram per liter	nmdc:QuantityValue
+pour_point				Cel	xxx	nmdc:QuantityValue
+pressure				atm	50 atmosphere	nmdc:QuantityValue
+primary_prod				mg/m3/d	xxx	nmdc:QuantityValue
+prod_rate				m3/d	xxx	nmdc:QuantityValue
+redox_potential				mV	300 millivolt	nmdc:QuantityValue
+rel_air_humidity				%	xxx	nmdc:QuantityValue
+rel_humidity_out				%	xxx	nmdc:QuantityValue
+room_air_exch_rate				L/h	xxx	nmdc:QuantityValue
+room_occup				[arb'U]{people}	xxx	nmdc:QuantityValue
+root_med_ph				[pH]	xxx	nmdc:QuantityValue
+salinity			25	[arb'U]{PSU}	25 practical salinity unit	nmdc:QuantityValue
+samp_md				m	xxx	nmdc:QuantityValue
+samp_size			5	mL	5 mL	nmdc:QuantityValue
+samp_store_temp				Cel	-80 degree Celsius	nmdc:QuantityValue
+season_precpt				mm	75 millimeters	nmdc:QuantityValue
+season_temp				Cel	18 degree Celsius	nmdc:QuantityValue
+silicate				umol/L	xxx	nmdc:QuantityValue
+size_frac_low				um	0.2 micrometer	nmdc:QuantityValue
+size_frac_up				um	20 micrometer	nmdc:QuantityValue
+slope_aspect				deg	MIxS does not provide an example	nmdc:QuantityValue
+slope_gradient				deg	MIxS does not provide an example	nmdc:QuantityValue
+sludge_retent_time				h	xxx	nmdc:QuantityValue
+sodium				mg/L	10.5 milligram per liter	nmdc:QuantityValue
+soil_text_measure				[arb'U]{unitless}	xxx	nmdc:QuantityValue
+solar_irradiance				kW/m2/d	xxx	nmdc:QuantityValue
+soluble_react_phosp				umol/L	xxx	nmdc:QuantityValue
+specific_humidity				g/kg	xxx	nmdc:QuantityValue
+sulfate				umol/L	5 micromole per liter	nmdc:QuantityValue
+sulfate_fw				mg/L	xxx	nmdc:QuantityValue
+sulfide				umol/L	2 micromole per liter	nmdc:QuantityValue
+surf_humidity				%	xxx	nmdc:QuantityValue
+surf_moisture				g/m3	xxx	nmdc:QuantityValue
+surf_temp				Cel	xxx	nmdc:QuantityValue
+suspend_part_matter				mg/L	xxx	nmdc:QuantityValue
+tan				mg/L	xxx	nmdc:QuantityValue
+temp				Cel	25 degree Celsius	nmdc:QuantityValue
+temp_out				Cel	xxx	nmdc:QuantityValue
+toluene				mg/L	xxx	nmdc:QuantityValue
+tot_carb				umol/L	MIxS does not provide an example	nmdc:QuantityValue
+tot_depth_water_col				m	500 meter	nmdc:QuantityValue
+tot_diss_nitro				ug/L	40 microgram per liter	nmdc:QuantityValue
+tot_inorg_nitro				ug/L	xxx	nmdc:QuantityValue
+tot_iron				mg/L	xxx	nmdc:QuantityValue
+tot_nitro				ug/L	xxx	nmdc:QuantityValue
+tot_nitro_content				mg/kg	35 milligrams Nitrogen per kilogram of soil	nmdc:QuantityValue
+tot_org_carb				%	2%	nmdc:QuantityValue
+tot_part_carb				ug/L	xxx	nmdc:QuantityValue
+tot_phosp				mg/L	0.03 milligram per liter	nmdc:QuantityValue
+tot_phosphate				ug/L	xxx	nmdc:QuantityValue
+tot_sulfur				mg/L	xxx	nmdc:QuantityValue
+turbidity				[arb'U]{NTU}	xxx	nmdc:QuantityValue
+tvdss_of_hcr_press				atm	xxx	nmdc:QuantityValue
+tvdss_of_hcr_temp				Cel	xxx	nmdc:QuantityValue
+ventilation_rate				m3/min	xxx	nmdc:QuantityValue
+vfa				mg/L	xxx	nmdc:QuantityValue
+vfa_fw				mg/L	xxx	nmdc:QuantityValue
+wall_area				m2	xxx	nmdc:QuantityValue
+wall_height				m	xxx	nmdc:QuantityValue
+wall_thermal_mass				J/Cel	xxx	nmdc:QuantityValue
+water_current				m/s	xxx	nmdc:QuantityValue
+water_cut				%	xxx	nmdc:QuantityValue
+water_feat_size				m	xxx	nmdc:QuantityValue
+water_prod_rate				m3/d	xxx	nmdc:QuantityValue
+wind_speed				m/s	xxx	nmdc:QuantityValue
+xylene				mg/L	xxx	nmdc:QuantityValue
+zinc			2.5	mg/kg	2.5 mg/kg	nmdc:QuantityValue
+subsurface_depth			10.0	m	10.0 m	nmdc:QuantityValue

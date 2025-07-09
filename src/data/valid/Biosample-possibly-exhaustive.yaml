@@ -136,10 +136,10 @@ annual_temp:
 antibiotic_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
-api:
+api:  #  Preferred_unit: degrees API (which is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: [API]
+  has_unit: "[arb'U]{API}"
 arch_struc: building
 aromatics_pc:
   type: nmdc:TextValue
@@ -173,10 +173,10 @@ bacteria_carb_prod:
   type: nmdc:QuantityValue
   has_raw_value: 2.53 microgram per liter per hour
   has_unit: ug/L/h
-barometric_press:
+barometric_press:  # Preferred_unit: millibar (which is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: mbar
+  has_unit: "[arb'U]{mbar}"
 basin:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -215,23 +215,24 @@ bishomohopanol:
 blood_press_diast:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: mm[Hg]
+  has_unit: 'mm[Hg]'
 blood_press_syst:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: mm[Hg]
+  has_unit: 'mm[Hg]'
 bromide:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 parts per million
-  has_unit: [ppm]
+  has_unit: '[ppm]'
 build_docs: building information model
 build_occup_type:
   - office
 building_setting: urban
 built_struc_age:
-  type: nmdc:QuantityValue
-  has_raw_value: xxx
+  has_numeric_value: 7
+  has_raw_value: 7 years
   has_unit: a
+  type: nmdc:QuantityValue
 built_struc_set:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -253,7 +254,7 @@ carb_monoxide:
 carb_nitro_ratio:
   type: nmdc:QuantityValue
   has_raw_value: '0.417361111'
-  has_unit: '1'
+  has_unit: '{ratio}'
 ceil_area:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -328,10 +329,9 @@ density:
   has_raw_value: 1000 kilogram per cubic meter
   has_unit: kg/m3
 depos_env: other
-depth:
+depth:  # this raw value may not meet the submission portal's expectations
   type: nmdc:QuantityValue
-  has_raw_value: 1.5 to 2.5 meters (that may not be the pattern the submission schema
-    expects). Extractions below require external migration logic.
+  has_raw_value: 1.5 to 2.5 meters
   has_maximum_numeric_value: 2.5
   has_minimum_numeric_value: 1.5
   has_numeric_value: 2
@@ -400,10 +400,10 @@ door_type_wood: battened
 door_water_mold:
   type: nmdc:TextValue
   has_raw_value: xxx
-down_par:
+down_par:  # example: 28.71 microEinstein per square meter per second (Einstein is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: uEin/m2/s
+  has_unit: "[arb'U]{micro_Einstein}/m2/s"
 drainage_class: well
 drawings: operation
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
@@ -467,9 +467,10 @@ fireplace_type:
   has_raw_value: xxx
 flooding: '2000-01-15'
 floor_age:
-  type: nmdc:QuantityValue
-  has_raw_value: xxx
+  has_numeric_value: 5
+  has_raw_value: 5 years
   has_unit: a
+  type: nmdc:QuantityValue
 floor_area:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -489,14 +490,14 @@ fluor:
   type: nmdc:QuantityValue
   has_raw_value: xxx
   has_unit: mg/m3
-freq_clean:
+freq_clean:  # FreqCleanEnum
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
-freq_cook:
+  has_unit: "[arb'U]{unitless}"
+freq_cook:  # measurement with value and text?
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: "[arb'U]{unitless}"
 fungicide_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -572,9 +573,10 @@ horizon_meth:
   type: nmdc:TextValue
   has_raw_value: xxx
 host_age:
-  type: nmdc:QuantityValue
-  has_raw_value: xxx
+  has_numeric_value: 3
+  has_raw_value: 3 years
   has_unit: a
+  type: nmdc:QuantityValue
 host_body_habitat:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -727,8 +729,8 @@ manganese:
   has_unit: mg/kg
 max_occup:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: '1'
+  has_raw_value: 35
+  has_unit: "[arb'U]{people}"
 mean_frict_vel:
   type: nmdc:QuantityValue
   has_raw_value: 0.5 meter per second
@@ -779,25 +781,25 @@ non_min_nutr_regm:
   - xxx
 number_pets:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: '1'
+  has_raw_value: 3
+  has_unit: "[arb'U]{pets}"
 number_plants:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: '1'
+  has_raw_value: 4
+  has_unit: "[arb'U]{plants}"
 number_resident:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: '1'
-occup_density_samp:
+  has_raw_value: 3
+  has_unit: "[arb'U]{people}"
+occup_density_samp:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: "[arb'U]{unitless}"
 occup_document: estimate
 occup_samp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: "[arb'U]{people}"
 org_carb:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -814,9 +816,10 @@ org_nitro:
 org_particles:
   - type: nmdc:TextValue
     has_raw_value: xxx
-organism_count:
+organism_count:  # Expected_value: organism name;measurement value;enumeration
   - type: nmdc:QuantityValue
     has_raw_value: ATP
+    has_unit: "[arb'U]{unitless}"
 owc_tvdss:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -867,10 +870,10 @@ phosphate:
 phosplipid_fatt_acid:
   - type: nmdc:TextValue
     has_raw_value: 2.98 milligram per liter
-photon_flux:
+photon_flux:  # example 3.926 micromole photons per second per square meter
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '{#}/s/m2'
+  has_unit: 'umol{photon}/s/m2'
 plant_growth_med:
   type: nmdc:ControlledTermValue
   has_raw_value: xxx
@@ -981,7 +984,7 @@ room_net_area:
 room_occup:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: "[arb'U]{people}"
 room_samp_pos: north corner
 room_type: attic
 room_vol:
@@ -1003,10 +1006,10 @@ root_med_macronutr:
 root_med_micronutr:
   type: nmdc:TextValue
   has_raw_value: xxx
-root_med_ph:
+root_med_ph:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: '[pH]'
 root_med_regl:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -1017,9 +1020,10 @@ root_med_suppl:
   type: nmdc:TextValue
   has_raw_value: xxx
 salinity:
-  type: nmdc:QuantityValue
+  has_numeric_value: 25
   has_raw_value: 25 practical salinity unit
-  has_unit: '1'
+  has_unit: "[arb'U]{PSU}"
+  type: nmdc:QuantityValue
 salinity_meth:
   type: nmdc:TextValue
   has_raw_value: PMID:22895776
@@ -1050,8 +1054,9 @@ samp_room_id:
   has_raw_value: xxx
 samp_size:
   type: nmdc:QuantityValue
-  has_raw_value: 5 liters
-  has_unit: L
+  has_raw_value: 5 mL
+  has_unit: mL
+  has_numeric_value: 5
 samp_sort_meth:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -1158,10 +1163,10 @@ sodium:
   has_raw_value: 10.5 milligram per liter
   has_unit: mg/L
 soil_horizon: O horizon
-soil_text_measure:
+soil_text_measure:  # soil_texture? soil_texture_class?
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '1'
+  has_unit: "[arb'U]{unitless}"
 soil_texture_meth: xxx
 soil_type:
   type: nmdc:TextValue
@@ -1322,10 +1327,10 @@ tot_sulfur:
 train_line: red
 train_stat_loc: south station above ground
 train_stop_loc: end
-turbidity:
+turbidity:  # example: 0.3 nephelometric turbidity units (which is not a valid unit in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[FTU]'
+  has_unit: "[arb'U]{NTU}"
 tvdss_of_hcr_press:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -1461,9 +1466,10 @@ salinity_category: halotolerant is an example from the schema, but MIxS doesn't
 sample_collection_site: unconstrained text
 soluble_iron_micromol: MIxS doesn't provide an example
 subsurface_depth:
-  type: nmdc:QuantityValue
   has_numeric_value: 10.0
+  has_raw_value: 10.0 m
   has_unit: m
+  type: nmdc:QuantityValue
 dna_absorb1: 2.02
 dna_absorb2: 2.02
 dna_collect_site: untreated pond water
