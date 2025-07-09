@@ -1151,13 +1151,15 @@ size_frac_up:
   has_raw_value: 20 micrometer
   has_unit: um
 slope_aspect:
-  type: nmdc:QuantityValue
-  has_raw_value: MIxS does not provide an example
+  has_numeric_value: 22
+  has_raw_value: 22 deg
   has_unit: deg
+  type: nmdc:QuantityValue
 slope_gradient:
+  has_numeric_value: 17
+  has_raw_value: 17 %
+  has_unit: '%'
   type: nmdc:QuantityValue
-  has_raw_value: MIxS does not provide an example
-  has_unit: deg
 sludge_retent_time:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -1277,9 +1279,10 @@ toluene:
   has_raw_value: xxx
   has_unit: mg/L
 tot_carb:
+  has_numeric_value: 11
+  has_raw_value: 11 ug/L
+  has_unit: ug/L
   type: nmdc:QuantityValue
-  has_raw_value: MIxS does not provide an example
-  has_unit: umol/L
 tot_depth_water_col:
   type: nmdc:QuantityValue
   has_raw_value: 500 meter

@@ -96,7 +96,7 @@ occup_samp				[arb'U]{people}	xxx	nmdc:QuantityValue
 org_carb				umol/L	xxx	nmdc:QuantityValue
 org_matter				mg/m3	1.75 milligram per cubic meter	nmdc:QuantityValue
 org_nitro				umol/L	4 micromole per liter	nmdc:QuantityValue
-organism_count[0]				[arb'U]{unitless}	ATP	nmdc:QuantityValue
+organism_count[0]				[arb'U]{unitless}	total prokaryotes;3.5e7 cells per milliliter;qPCR	nmdc:QuantityValue
 owc_tvdss				m	xxx	nmdc:QuantityValue
 oxygen				mg/L	xxx	nmdc:QuantityValue
 part_org_carb				umol/L	1.92 micromole per liter	nmdc:QuantityValue
@@ -124,8 +124,8 @@ season_temp				Cel	18 degree Celsius	nmdc:QuantityValue
 silicate				umol/L	xxx	nmdc:QuantityValue
 size_frac_low				um	0.2 micrometer	nmdc:QuantityValue
 size_frac_up				um	20 micrometer	nmdc:QuantityValue
-slope_aspect				deg	MIxS does not provide an example	nmdc:QuantityValue
-slope_gradient				deg	MIxS does not provide an example	nmdc:QuantityValue
+slope_aspect			22	deg	22 deg	nmdc:QuantityValue
+slope_gradient			17	%	17 %	nmdc:QuantityValue
 sludge_retent_time				h	xxx	nmdc:QuantityValue
 sodium				mg/L	10.5 milligram per liter	nmdc:QuantityValue
 soil_text_measure				[arb'U]{unitless}	xxx	nmdc:QuantityValue
@@ -143,7 +143,7 @@ tan				mg/L	xxx	nmdc:QuantityValue
 temp				Cel	25 degree Celsius	nmdc:QuantityValue
 temp_out				Cel	xxx	nmdc:QuantityValue
 toluene				mg/L	xxx	nmdc:QuantityValue
-tot_carb				umol/L	MIxS does not provide an example	nmdc:QuantityValue
+tot_carb			11	ug/L	11 ug/L	nmdc:QuantityValue
 tot_depth_water_col				m	500 meter	nmdc:QuantityValue
 tot_diss_nitro				ug/L	40 microgram per liter	nmdc:QuantityValue
 tot_inorg_nitro				ug/L	xxx	nmdc:QuantityValue
