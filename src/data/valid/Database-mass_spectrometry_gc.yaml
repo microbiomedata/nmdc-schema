@@ -56,6 +56,10 @@ configuration_set:
     mass_spectrum_collection_modes:
       - centroid
     polarity_mode: positive
+    protocol_link:
+      type: nmdc:Protocol
+      url: http://example.com
+      name: EMSL low resolution GCMS EI mass spectrometry protocol
 data_object_set:
   - id: nmdc:dobj-12-krhrtjw9
     type: nmdc:DataObject
