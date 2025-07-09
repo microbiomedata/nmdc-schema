@@ -1,22 +1,22 @@
 field_name	has_maximum_numeric_value	has_minimum_numeric_value	has_numeric_value	has_unit	has_raw_value	type
 abs_air_humidity				g/g	xxx	nmdc:QuantityValue
 air_temp				Cel	xxx	nmdc:QuantityValue
-al_sat				mg/kg	0.1 mg/kg	nmdc:QuantityValue
+al_sat			19	%	19 %	nmdc:QuantityValue
 alkalinity				mg/L	50 milligram per liter	nmdc:QuantityValue
 alkyl_diethers				mol/L	0.005 mole per liter	nmdc:QuantityValue
 alt				m	100 meter	nmdc:QuantityValue
 aminopept_act				mol/L/h	0.269 mole per liter per hour	nmdc:QuantityValue
 ammonium				mg/L	1.5 milligram per liter	nmdc:QuantityValue
-ammonium_nitrogen				mg/L	0.5 milligram per liter	nmdc:QuantityValue
+ammonium_nitrogen			0.5	mg/kg	0.5 mg/kg	nmdc:QuantityValue
 amount_light				lx	xxx	nmdc:QuantityValue
-annual_precpt				mg/L	0.5 milligram per liter	nmdc:QuantityValue
+annual_precpt			0.5	mm	0.5 mm	nmdc:QuantityValue
 annual_temp				Cel	12.5 degree Celsius	nmdc:QuantityValue
 api				[arb'U]{API}	xxx	nmdc:QuantityValue
 avg_dew_point				Cel	xxx	nmdc:QuantityValue
 avg_temp				Cel	xxx	nmdc:QuantityValue
 bac_prod				mg/m3/d	xxx	nmdc:QuantityValue
 bac_resp				mg/m3/d	xxx	nmdc:QuantityValue
-bacteria_carb_prod				ug/L/h	2.53 microgram per liter per hour	nmdc:QuantityValue
+bacteria_carb_prod			2.53	ng/h	2.53 ng/h	nmdc:QuantityValue
 barometric_press				[arb'U]{mbar}	xxx	nmdc:QuantityValue
 benzene				mg/L	xxx	nmdc:QuantityValue
 biochem_oxygen_dem				mg/L	xxx	nmdc:QuantityValue

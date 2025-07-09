@@ -85,9 +85,10 @@ air_temp_regm:
   - type: nmdc:TextValue
     has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 al_sat:
+  has_numeric_value: 19
+  has_raw_value: 19 %
+  has_unit: '%'
   type: nmdc:QuantityValue
-  has_raw_value: 0.1 mg/kg
-  has_unit: mg/kg
 al_sat_meth:
   type: nmdc:TextValue
   has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
@@ -115,9 +116,10 @@ ammonium:
   has_raw_value: 1.5 milligram per liter
   has_unit: mg/L
 ammonium_nitrogen:
+  has_numeric_value: 0.5
+  has_raw_value: 0.5 mg/kg
+  has_unit: mg/kg
   type: nmdc:QuantityValue
-  has_raw_value: 0.5 milligram per liter
-  has_unit: mg/L
 amount_light:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -126,9 +128,10 @@ ances_data:
   type: nmdc:TextValue
   has_raw_value: xxx
 annual_precpt:
+  has_numeric_value: 0.5
+  has_raw_value: 0.5 mm
+  has_unit: mm
   type: nmdc:QuantityValue
-  has_raw_value: 0.5 milligram per liter
-  has_unit: mg/L
 annual_temp:
   type: nmdc:QuantityValue
   has_raw_value: 12.5 degree Celsius
@@ -170,9 +173,10 @@ bac_resp:
   has_raw_value: xxx
   has_unit: mg/m3/d
 bacteria_carb_prod:
+  has_numeric_value: 2.53
+  has_raw_value: 2.53 ng/h
+  has_unit: ng/h
   type: nmdc:QuantityValue
-  has_raw_value: 2.53 microgram per liter per hour
-  has_unit: ug/L/h
 barometric_press:  # Preferred_unit: millibar (which is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -729,7 +733,7 @@ manganese:
   has_unit: mg/kg
 max_occup:
   type: nmdc:QuantityValue
-  has_raw_value: 35
+  has_raw_value: "35"
   has_unit: "[arb'U]{people}"
 mean_frict_vel:
   type: nmdc:QuantityValue
@@ -781,15 +785,15 @@ non_min_nutr_regm:
   - xxx
 number_pets:
   type: nmdc:QuantityValue
-  has_raw_value: 3
+  has_raw_value: "3"
   has_unit: "[arb'U]{pets}"
 number_plants:
   type: nmdc:QuantityValue
-  has_raw_value: 4
+  has_raw_value: "4"
   has_unit: "[arb'U]{plants}"
 number_resident:
   type: nmdc:QuantityValue
-  has_raw_value: 3
+  has_raw_value: "3"
   has_unit: "[arb'U]{people}"
 occup_density_samp:  # Float
   type: nmdc:QuantityValue
@@ -818,7 +822,7 @@ org_particles:
     has_raw_value: xxx
 organism_count:  # Expected_value: organism name;measurement value;enumeration
   - type: nmdc:QuantityValue
-    has_raw_value: ATP
+    has_raw_value: "total prokaryotes;3.5e7 cells per milliliter;qPCR"
     has_unit: "[arb'U]{unitless}"
 owc_tvdss:
   type: nmdc:QuantityValue
