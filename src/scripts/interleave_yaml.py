@@ -68,7 +68,7 @@ def process_yaml(directory_path, output_file, schema_file):
     file_paths.sort()
     output_file_path = os.path.abspath(output_file)  # Ensure the path is absolute
     interleaved_file_path = os.path.join(directory_path, 'Database-interleaved.yaml')
-    file_paths = [file for file in file_paths if file != output_file_path and file != interleaved_file_path]
+    file_paths = [file for file in file_paths if os.path.abspath(file) != output_file_path and os.path.abspath(file) != interleaved_file_path]
 
     if os.path.exists(output_file_path):
         click.echo(f"Output file {output_file_path} already exists. Please remove it or specify a different file.")
