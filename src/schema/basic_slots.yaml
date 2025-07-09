@@ -16,6 +16,7 @@ prefixes:
   doi: 'https://bioregistry.io/doi:'
   edam.data: "http://edamontology.org/data_" # for doi_value and DataCategoryEnum only
   edam.format: "http://edamontology.org/format_" # for 'Configuration toml' PV only only
+  EDAM: "http://edamontology.org/"
   linkml: "https://w3id.org/linkml/"
   nmdc: "https://w3id.org/nmdc/"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
