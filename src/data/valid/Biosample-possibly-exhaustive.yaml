@@ -3,8 +3,8 @@
 # and may imply that some undesirable data patterns are OK
 id: nmdc:bsm-99-4444444
 type: nmdc:Biosample
-name: Sample Exhaustive Biosample instance. Although all of these values should
-  pass validation, that does not mean that any Biosample of any type would necessarily
+name: Sample Exhaustive Biosample instance. Although all of these values should pass
+  validation, that does not mean that any Biosample of any type would necessarily
   have this particular combination of values.
 description: unconstrained text
 alternative_identifiers:
@@ -56,8 +56,10 @@ igsn_biosample_identifiers:
   - any:curie_1
   - any:curie_2
 abs_air_humidity:
+  has_numeric_value: 9.0
+  has_raw_value: "9 gram per gram"
+  has_unit: g/g
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 add_recov_method:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -80,56 +82,78 @@ air_PM_concen:
   - type: nmdc:TextValue
     has_raw_value: xxx
 air_temp:
+  has_numeric_value: 20.0
+  has_raw_value: "20 degree Celsius"
+  has_unit: Cel
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 air_temp_regm:
   - type: nmdc:TextValue
     has_raw_value: 25 degree Celsius;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
 al_sat:
+  has_numeric_value: 19
+  has_raw_value: 19 %
+  has_unit: '%'
   type: nmdc:QuantityValue
-  has_raw_value: 0.1 mg/kg
 al_sat_meth:
   type: nmdc:TextValue
   has_raw_value: https://journaljeai.com/index.php/JEAI/article/view/583
 alkalinity:
   type: nmdc:QuantityValue
   has_raw_value: 50 milligram per liter
+  has_unit: mg/L
+  has_numeric_value: 50.0
 alkalinity_method:
   type: nmdc:TextValue
   has_raw_value: https://wrrc.umass.edu/research/projects/acid-rain-monitoring-project/analysis-method-ph-and-alkalinity
 alkyl_diethers:
   type: nmdc:QuantityValue
   has_raw_value: 0.005 mole per liter
+  has_unit: mol/L
+  has_numeric_value: 0.005
 alt:
   type: nmdc:QuantityValue
   has_raw_value: 100 meter
+  has_unit: m
+  has_numeric_value: 100.0
 aminopept_act:
   type: nmdc:QuantityValue
   has_raw_value: 0.269 mole per liter per hour
+  has_unit: mol/L/h
+  has_numeric_value: 0.269
 ammonium:
   type: nmdc:QuantityValue
   has_raw_value: 1.5 milligram per liter
+  has_unit: mg/L
+  has_numeric_value: 1.5
 ammonium_nitrogen:
+  has_numeric_value: 0.5
+  has_raw_value: 0.5 mg/kg
+  has_unit: mg/kg
   type: nmdc:QuantityValue
-  has_raw_value: 0.5 milligram per liter
 amount_light:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: lx
 ances_data:
   type: nmdc:TextValue
   has_raw_value: xxx
 annual_precpt:
+  has_numeric_value: 0.5
+  has_raw_value: 0.5 mm
+  has_unit: mm
   type: nmdc:QuantityValue
-  has_raw_value: 0.5 milligram per liter
 annual_temp:
   type: nmdc:QuantityValue
   has_raw_value: 12.5 degree Celsius
+  has_unit: Cel
+  has_numeric_value: 12.5
 antibiotic_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
-api:
+api:  #  Preferred_unit: degrees API (which is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[arb''U]{API}'
 arch_struc: building
 aromatics_pc:
   type: nmdc:TextValue
@@ -141,26 +165,36 @@ atmospheric_data:
   - type: nmdc:TextValue
     has_raw_value: xxx
 avg_dew_point:
+  has_numeric_value: 25.5
+  has_raw_value: "25.5 degree Celsius"
+  has_unit: Cel
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 avg_occup:
   type: nmdc:TextValue
   has_raw_value: xxx
 avg_temp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: Cel
 bac_prod:
+  has_numeric_value: 5.0
+  has_raw_value: "5 milligram per cubic meter per day"
+  has_unit: mg/m3/d
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 bac_resp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/m3/d
 bacteria_carb_prod:
+  has_numeric_value: 2.53
+  has_raw_value: 2.53 ng/h
+  has_unit: ng/h
   type: nmdc:QuantityValue
-  has_raw_value: 2.53 microgram per liter per hour
-barometric_press:
+barometric_press:  # Preferred_unit: millibar (which is not in UCUM)
+  has_numeric_value: 5.0
+  has_raw_value: "5 millibar"
+  has_unit: '[arb''U]{mbar}'
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 basin:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -173,9 +207,11 @@ bedroom_count:
 benzene:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 biochem_oxygen_dem:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 biocide:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -193,22 +229,30 @@ biotic_relationship: parasite
 bishomohopanol:
   type: nmdc:QuantityValue
   has_raw_value: 14 microgram per liter
+  has_unit: ug/L
+  has_numeric_value: 14.0
 blood_press_diast:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mm[Hg]
 blood_press_syst:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mm[Hg]
 bromide:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 parts per million
+  has_unit: '[ppm]'
+  has_numeric_value: 0.05
 build_docs: building information model
 build_occup_type:
   - office
 building_setting: urban
 built_struc_age:
+  has_numeric_value: 7
+  has_raw_value: 7 years
+  has_unit: a
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 built_struc_set:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -218,18 +262,26 @@ built_struc_type:
 calcium:
   type: nmdc:QuantityValue
   has_raw_value: 0.2 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 0.2
 carb_dioxide:
+  has_numeric_value: 410.0
+  has_raw_value: "410 parts per million"
+  has_unit: '[ppm]'
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 carb_monoxide:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: umol/L
 carb_nitro_ratio:
   type: nmdc:QuantityValue
   has_raw_value: '0.417361111'
+  has_unit: '{ratio}'
+  has_numeric_value: 0.417361111
 ceil_area:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m2
 ceil_cond: new
 ceil_finish_mat: drywall
 ceil_struc:
@@ -239,6 +291,7 @@ ceil_texture: crows feet
 ceil_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: J/Cel
 ceil_type: cathedral
 ceil_water_mold:
   type: nmdc:TextValue
@@ -252,6 +305,7 @@ chem_mutagen:
 chem_oxygen_dem:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 chem_treat_method: xxx
 chem_treatment:
   type: nmdc:TextValue
@@ -259,9 +313,13 @@ chem_treatment:
 chloride:
   type: nmdc:QuantityValue
   has_raw_value: 5000 milligram per liter
+  has_unit: mg/L
+  has_numeric_value: 5000.0
 chlorophyll:
   type: nmdc:QuantityValue
   has_raw_value: 5 milligram per cubic meter
+  has_unit: mg/m3
+  has_numeric_value: 5.0
 climate_environment:
   - type: nmdc:TextValue
     has_raw_value: tropical climate;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -269,8 +327,10 @@ collection_date:
   type: nmdc:TimestampValue
   has_raw_value: xxx
 conduc:
+  has_numeric_value: 10.0
+  has_raw_value: "10 milliSiemens per centimeter"
+  has_unit: mS/cm
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 cool_syst_id:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -293,51 +353,70 @@ date_last_rain:
 density:
   type: nmdc:QuantityValue
   has_raw_value: 1000 kilogram per cubic meter
+  has_unit: kg/m3
+  has_numeric_value: 1000.0
 depos_env: other
-depth:
+depth:  # this raw value may not meet the submission portal's expectations
   type: nmdc:QuantityValue
-  has_raw_value: 1.5 to 2.5 meters (that may not be the pattern the submission schema
-    expects). Extractions below require external migration logic.
+  has_raw_value: 1.5 to 2.5 meters
   has_maximum_numeric_value: 2.5
   has_minimum_numeric_value: 1.5
   has_numeric_value: 2
-  has_unit: meter
+  has_unit: m
 dew_point:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: Cel
 diether_lipids:
   - type: nmdc:TextValue
     has_raw_value: xxx
 diss_carb_dioxide:
   type: nmdc:QuantityValue
   has_raw_value: 5 milligram per liter
+  has_unit: mg/L
+  has_numeric_value: 5.0
 diss_hydrogen:
   type: nmdc:QuantityValue
   has_raw_value: 0.3 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 0.3
 diss_inorg_carb:
   type: nmdc:QuantityValue
   has_raw_value: 2059 micromole per kilogram
+  has_unit: umol/kg
+  has_numeric_value: 2059.0
 diss_inorg_nitro:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: ug/L
 diss_inorg_phosp:
   type: nmdc:QuantityValue
   has_raw_value: 56.5 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 56.5
 diss_iron:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 diss_org_carb:
   type: nmdc:QuantityValue
   has_raw_value: 197 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 197.0
 diss_org_nitro:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 0.05
 diss_oxygen:
   type: nmdc:QuantityValue
   has_raw_value: 175 micromole per kilogram
+  has_unit: umol/kg
+  has_numeric_value: 175.0
 diss_oxygen_fluid:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: umol/kg
 dna_cont_well: C2
 door_comp_type: revolving
 door_cond: damaged
@@ -348,26 +427,29 @@ door_move: collapsible
 door_size:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m2
 door_type: composite
 door_type_metal: collapsible
 door_type_wood: battened
 door_water_mold:
   type: nmdc:TextValue
   has_raw_value: xxx
-down_par:
+down_par:  # example: 28.71 microEinstein per square meter per second (Einstein is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[arb''U]{micro_Einstein}/m2/s'
 drainage_class: well
 drawings: operation
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
-  by the sample's environmental package. would also be nice to align the CV with
-  MIxS environmental triads
+  by the sample's environmental package. would also be nice to align the CV with MIxS
+  environmental triads
 ecosystem_category: unconstrained text
 ecosystem_subtype: unconstrained text
 ecosystem_type: unconstrained text
 efficiency_percent:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '%'
 elev: 100.0
 elevator:
   type: nmdc:TextValue
@@ -378,20 +460,22 @@ emulsions:
 env_package:
   type: nmdc:TextValue
   has_raw_value: unconstrained text. should require the name of a MIxS EnvironmentalPackage
-    class. have asked MIxS to return this term to their model. UPDATE VALIDATION
-    RULES/PATTERN/ENUM!
+    class. have asked MIxS to return this term to their model. UPDATE VALIDATION RULES/PATTERN/ENUM!
 escalator:
   type: nmdc:TextValue
   has_raw_value: xxx
 ethylbenzene:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 exp_duct:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m2
 exp_pipe:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m2
 experimental_factor:
   type: nmdc:ControlledTermValue
   has_raw_value: unconstrained text, unlike the MIxS environmental triad
@@ -416,11 +500,14 @@ fireplace_type:
   has_raw_value: xxx
 flooding: '2000-01-15'
 floor_age:
+  has_numeric_value: 5
+  has_raw_value: 5 years
+  has_unit: a
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 floor_area:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m2
 floor_cond: new
 floor_count:
   type: nmdc:TextValue
@@ -430,16 +517,20 @@ floor_struc: balcony
 floor_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: J/Cel
 floor_water_mold: condensation
 fluor:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-freq_clean:
+  has_unit: mg/m3
+freq_clean:  # FreqCleanEnum
   type: nmdc:QuantityValue
   has_raw_value: xxx
-freq_cook:
+  has_unit: '[arb''U]{unitless}'
+freq_cook:  # measurement with value and text?
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[arb''U]{unitless}'
 fungicide_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -460,6 +551,8 @@ geo_loc_name:
 glucosidase_act:
   type: nmdc:QuantityValue
   has_raw_value: 5 mol per liter per hour
+  has_unit: mol/L/h
+  has_numeric_value: 5.0
 gravidity:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -482,6 +575,7 @@ hcr: Shale
 hcr_fw_salinity:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 hcr_geol_age: Archean
 hcr_pressure:
   type: nmdc:TextValue
@@ -505,6 +599,7 @@ heavy_metals_meth:
 height_carper_fiber:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: cm
 herbicide_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -512,8 +607,10 @@ horizon_meth:
   type: nmdc:TextValue
   has_raw_value: xxx
 host_age:
+  has_numeric_value: 3
+  has_raw_value: 3 years
+  has_unit: a
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 host_body_habitat:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -526,6 +623,7 @@ host_body_site:
 host_body_temp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: Cel
 host_color:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -538,6 +636,7 @@ host_diet:
 host_dry_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: kg
 host_family_relation:
   - xxx
 host_genotype:
@@ -549,12 +648,14 @@ host_growth_cond:
 host_height:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: cm
 host_last_meal:
   - type: nmdc:TextValue
     has_raw_value: xxx
 host_length:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: cm
 host_life_stage:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -578,12 +679,16 @@ host_symbiont:
 host_tot_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: kg
 host_wet_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: kg
 humidity:
+  has_numeric_value: 25.0
+  has_raw_value: "25 gram per cubic meter"
+  has_unit: g/m3
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 humidity_regm:
   - type: nmdc:TextValue
     has_raw_value: 25 gram per cubic meter;R2/2018-05-11T14:30/2018-05-11T19:30/P1H30M
@@ -592,12 +697,14 @@ indoor_surf: cabinet
 indust_eff_percent:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '%'
 inorg_particles:
   - type: nmdc:TextValue
     has_raw_value: xxx
 inside_lux:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: kW/m2
 int_wall_cond: new
 iw_bt_date_well:
   type: nmdc:TimestampValue
@@ -605,6 +712,7 @@ iw_bt_date_well:
 iwf:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '%'
 last_clean:
   type: nmdc:TimestampValue
   has_raw_value: xxx
@@ -616,12 +724,18 @@ lat_lon:
 lbc_thirty:
   type: nmdc:QuantityValue
   has_raw_value: 543 mg/kg
+  has_unit: mg/kg
+  has_numeric_value: 543.0
 lbceq:
   type: nmdc:QuantityValue
   has_raw_value: 1575 mg/kg
+  has_unit: mg/kg
+  has_numeric_value: 1575.0
 light_intensity:
+  has_numeric_value: 0.3
+  has_raw_value: "0.3 lux"
+  has_unit: lx
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 light_regm:
   type: nmdc:TextValue
   has_raw_value: incandescent light;10 lux;450 nanometer
@@ -646,29 +760,42 @@ local_class_meth:
 magnesium:
   type: nmdc:QuantityValue
   has_raw_value: 52.8 micromole per kilogram
+  has_unit: umol/kg
+  has_numeric_value: 52.8
 manganese:
   type: nmdc:QuantityValue
   has_raw_value: 24.7 mg/kg
+  has_unit: mg/kg
+  has_numeric_value: 24.7
 max_occup:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
+  has_raw_value: '35'
+  has_unit: '[arb''U]{people}'
+  has_numeric_value: 35
 mean_frict_vel:
   type: nmdc:QuantityValue
   has_raw_value: 0.5 meter per second
+  has_unit: m/s
+  has_numeric_value: 0.5
 mean_peak_frict_vel:
   type: nmdc:QuantityValue
   has_raw_value: 1 meter per second
+  has_unit: m/s
+  has_numeric_value: 1.0
 mech_struc: subway
 mechanical_damage:
   - type: nmdc:TextValue
     has_raw_value: xxx
 methane:
+  has_numeric_value: 1800.0
+  has_raw_value: "1800 parts per billion"
+  has_unit: '[ppb]'
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 micro_biomass_meth: xxx
 microbial_biomass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: g/kg
 mineral_nutr_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -681,62 +808,89 @@ n_alkanes:
 nitrate:
   type: nmdc:QuantityValue
   has_raw_value: 65 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 65.0
 nitrite:
   type: nmdc:QuantityValue
   has_raw_value: 0.5 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 0.5
 nitrite_nitrogen:
   type: nmdc:QuantityValue
   has_raw_value: 1.2 mg/kg
+  has_unit: mg/kg
+  has_numeric_value: 1.2
 nitro:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: umol/L
 non_min_nutr_regm:
   - xxx
 number_pets:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
+  has_raw_value: '3'
+  has_unit: '[arb''U]{pets}'
+  has_numeric_value: 3
 number_plants:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
+  has_raw_value: '4'
+  has_unit: '[arb''U]{plants}'
+  has_numeric_value: 4
 number_resident:
   type: nmdc:QuantityValue
-  has_raw_value: xxx
-occup_density_samp:
+  has_raw_value: '3'
+  has_unit: '[arb''U]{people}'
+  has_numeric_value: 3
+occup_density_samp:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[arb''U]{unitless}'
 occup_document: estimate
 occup_samp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[arb''U]{people}'
 org_carb:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: umol/L
 org_count_qpcr_info: xxx
 org_matter:
   type: nmdc:QuantityValue
   has_raw_value: 1.75 milligram per cubic meter
+  has_unit: mg/m3
+  has_numeric_value: 1.75
 org_nitro:
   type: nmdc:QuantityValue
   has_raw_value: 4 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 4.0
 org_particles:
   - type: nmdc:TextValue
     has_raw_value: xxx
-organism_count:
+organism_count:  # Expected_value: organism name;measurement value;enumeration
   - type: nmdc:QuantityValue
-    has_raw_value: ATP
+    has_raw_value: total prokaryotes;3.5e7 cells per milliliter;qPCR
+    has_unit: '[arb''U]{unitless}'
 owc_tvdss:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m
 oxy_stat_samp: aerobic
 oxygen:
+  has_numeric_value: 600.0
+  has_raw_value: "600 parts per million"
+  has_unit: '[ppm]'
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 part_org_carb:
   type: nmdc:QuantityValue
   has_raw_value: 1.92 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 1.92
 part_org_nitro:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: ug/L
 particle_class:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -752,6 +906,8 @@ pesticide_regm:
 petroleum_hydrocarb:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 0.05
 ph: 99.99
 ph_meth:
   type: nmdc:TextValue
@@ -765,12 +921,16 @@ phaeopigments:
 phosphate:
   type: nmdc:QuantityValue
   has_raw_value: 0.7 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 0.7
 phosplipid_fatt_acid:
   - type: nmdc:TextValue
     has_raw_value: 2.98 milligram per liter
-photon_flux:
+photon_flux:  # example 3.926 micromole photons per second per square meter
+  has_numeric_value: 3.926
+  has_raw_value: "3.926 micromole photons per second per square meter"
+  has_unit: umol{photon}/s/m2
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 plant_growth_med:
   type: nmdc:ControlledTermValue
   has_raw_value: xxx
@@ -790,9 +950,12 @@ porosity:
 potassium:
   type: nmdc:QuantityValue
   has_raw_value: 463 milligram per liter
+  has_unit: mg/L
+  has_numeric_value: 463.0
 pour_point:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: Cel
 pre_treatment:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -800,6 +963,8 @@ pres_animal_insect: cat;3
 pressure:
   type: nmdc:QuantityValue
   has_raw_value: 50 atmosphere
+  has_unit: atm
+  has_numeric_value: 50.0
 prev_land_use_meth: xxx
 previous_land_use:
   type: nmdc:TextValue
@@ -807,12 +972,14 @@ previous_land_use:
 primary_prod:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/m3/d
 primary_treatment:
   type: nmdc:TextValue
   has_raw_value: xxx
 prod_rate:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m3/d
 prod_start_date:
   type: nmdc:TimestampValue
   has_raw_value: xxx
@@ -830,12 +997,17 @@ reactor_type:
 redox_potential:
   type: nmdc:QuantityValue
   has_raw_value: 300 millivolt
+  has_unit: mV
+  has_numeric_value: 300.0
 rel_air_humidity:
+  has_numeric_value: 80.0
+  has_raw_value: "80 %"
+  has_unit: '%'
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 rel_humidity_out:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '%'
 rel_samp_loc: edge of car
 reservoir:
   type: nmdc:TextValue
@@ -846,6 +1018,7 @@ resins_pc:
 room_air_exch_rate:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: L/h
 room_architec_elem: xxx
 room_condt: new
 room_connected: attic
@@ -872,6 +1045,7 @@ room_net_area:
 room_occup:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[arb''U]{people}'
 room_samp_pos: north corner
 room_type: attic
 room_vol:
@@ -893,9 +1067,10 @@ root_med_macronutr:
 root_med_micronutr:
   type: nmdc:TextValue
   has_raw_value: xxx
-root_med_ph:
+root_med_ph:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[pH]'
 root_med_regl:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -906,8 +1081,10 @@ root_med_suppl:
   type: nmdc:TextValue
   has_raw_value: xxx
 salinity:
-  type: nmdc:QuantityValue
+  has_numeric_value: 25
   has_raw_value: 25 practical salinity unit
+  has_unit: '[arb''U]{PSU}'
+  type: nmdc:QuantityValue
 salinity_meth:
   type: nmdc:TextValue
   has_raw_value: PMID:22895776
@@ -929,6 +1106,7 @@ samp_mat_process:
 samp_md:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m
 samp_preserv:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -937,7 +1115,9 @@ samp_room_id:
   has_raw_value: xxx
 samp_size:
   type: nmdc:QuantityValue
-  has_raw_value: 5 liters
+  has_raw_value: 5 mL
+  has_unit: mL
+  has_numeric_value: 5
 samp_sort_meth:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -950,6 +1130,8 @@ samp_store_loc:
 samp_store_temp:
   type: nmdc:QuantityValue
   has_raw_value: -80 degree Celsius
+  has_unit: Cel
+  has_numeric_value: -80.0
 samp_subtype: biofilm
 samp_taxon_id:
   type: nmdc:ControlledIdentifiedTermValue
@@ -986,9 +1168,13 @@ season_environment:
 season_precpt:
   type: nmdc:QuantityValue
   has_raw_value: 75 millimeters
+  has_unit: mm
+  has_numeric_value: 75.0
 season_temp:
   type: nmdc:QuantityValue
   has_raw_value: 18 degree Celsius
+  has_unit: Cel
+  has_numeric_value: 18.0
 season_use: Spring
 secondary_treatment:
   type: nmdc:TextValue
@@ -1010,33 +1196,47 @@ sieving:
   type: nmdc:TextValue
   has_raw_value: MIxS does not provide an example
 silicate:
+  has_numeric_value: 0.05
+  has_raw_value: "0.05 micromole per liter"
+  has_unit: umol/L
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 size_frac:
   type: nmdc:TextValue
   has_raw_value: xxx
 size_frac_low:
   type: nmdc:QuantityValue
   has_raw_value: 0.2 micrometer
+  has_unit: um
+  has_numeric_value: 0.2
 size_frac_up:
   type: nmdc:QuantityValue
   has_raw_value: 20 micrometer
+  has_unit: um
+  has_numeric_value: 20.0
 slope_aspect:
+  has_numeric_value: 22
+  has_raw_value: 22 deg
+  has_unit: deg
   type: nmdc:QuantityValue
-  has_raw_value: MIxS does not provide an example
 slope_gradient:
+  has_numeric_value: 17
+  has_raw_value: 17 %
+  has_unit: '%'
   type: nmdc:QuantityValue
-  has_raw_value: MIxS does not provide an example
 sludge_retent_time:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: h
 sodium:
   type: nmdc:QuantityValue
   has_raw_value: 10.5 milligram per liter
+  has_unit: mg/L
+  has_numeric_value: 10.5
 soil_horizon: O horizon
-soil_text_measure:
+soil_text_measure:  # soil_texture? soil_texture_class?
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '[arb''U]{unitless}'
 soil_texture_meth: xxx
 soil_type:
   type: nmdc:TextValue
@@ -1045,8 +1245,10 @@ soil_type_meth:
   type: nmdc:TextValue
   has_raw_value: Frederick series
 solar_irradiance:
+  has_numeric_value: 1.36
+  has_raw_value: "1.36 kilowatts per square meter per day"
+  has_unit: kW/m2/d
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 soluble_inorg_mat:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -1056,6 +1258,7 @@ soluble_org_mat:
 soluble_react_phosp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: umol/L
 source_mat_id:
   type: nmdc:TextValue
   has_raw_value: MPI012345
@@ -1067,6 +1270,7 @@ specific_ecosystem: unconstrained text
 specific_humidity:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: g/kg
 sr_dep_env: Lacustine
 sr_geol_age: Archean
 sr_kerog_type: other
@@ -1082,40 +1286,54 @@ substructure_type:
 sulfate:
   type: nmdc:QuantityValue
   has_raw_value: 5 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 5.0
 sulfate_fw:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 sulfide:
   type: nmdc:QuantityValue
   has_raw_value: 2 micromole per liter
+  has_unit: umol/L
+  has_numeric_value: 2.0
 surf_air_cont:
   - dust
 surf_humidity:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '%'
 surf_material: adobe
 surf_moisture:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: g/m3
 surf_moisture_ph: 123.0
 surf_temp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: Cel
 suspend_part_matter:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 suspend_solids:
   - type: nmdc:TextValue
     has_raw_value: xxx
 tan:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 temp:
   type: nmdc:QuantityValue
   has_raw_value: 25 degree Celsius
+  has_unit: Cel
+  has_numeric_value: 25.0
 temp_out:
+  has_numeric_value: 5.0
+  has_raw_value: "5 degree Celsius"
+  has_unit: Cel
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 tertiary_treatment:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -1128,71 +1346,98 @@ tiss_cult_growth_med:
 toluene:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 tot_carb:
+  has_numeric_value: 11
+  has_raw_value: 11 ug/L
+  has_unit: ug/L
   type: nmdc:QuantityValue
-  has_raw_value: MIxS does not provide an example
 tot_depth_water_col:
   type: nmdc:QuantityValue
   has_raw_value: 500 meter
+  has_unit: m
+  has_numeric_value: 500.0
 tot_diss_nitro:
   type: nmdc:QuantityValue
   has_raw_value: 40 microgram per liter
+  has_unit: ug/L
+  has_numeric_value: 40.0
 tot_inorg_nitro:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: ug/L
 tot_iron:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 tot_nitro:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: ug/L
 tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10.1002/0471142913.fab0102s00
 tot_nitro_content:
   type: nmdc:QuantityValue
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
+  has_unit: mg/kg
+  has_numeric_value: 35.0
 tot_org_c_meth:
   type: nmdc:TextValue
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
 tot_org_carb:
   type: nmdc:QuantityValue
   has_raw_value: 2%
+  has_unit: '%'
+  has_numeric_value: 2
 tot_part_carb:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: ug/L
 tot_phosp:
   type: nmdc:QuantityValue
   has_raw_value: 0.03 milligram per liter
+  has_unit: mg/L
+  has_numeric_value: 0.03
 tot_phosphate:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: ug/L
 tot_sulfur:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 train_line: red
 train_stat_loc: south station above ground
 train_stop_loc: end
-turbidity:
+turbidity:  # example: 0.3 nephelometric turbidity units (which is not a valid unit in UCUM)
+  has_numeric_value: 0.3
+  has_raw_value: "0.3 nephelometric turbidity units"
+  has_unit: '[arb''U]{NTU}'
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 tvdss_of_hcr_press:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: atm
 tvdss_of_hcr_temp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: Cel
 typ_occup_density: 123.0
 ventilation_rate:
+  has_numeric_value: 750.0
+  has_raw_value: "750 cubic meter per minute"
+  has_unit: m3/min
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 ventilation_type:
   type: nmdc:TextValue
   has_raw_value: xxx
 vfa:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 vfa_fw:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 vis_media: photos
 viscosity:
   type: nmdc:TextValue
@@ -1203,17 +1448,20 @@ volatile_org_comp:
 wall_area:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m2
 wall_const_type: frame construction
 wall_finish_mat: plaster
 wall_height:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m
 wall_loc: north
 wall_surf_treatment: painted
 wall_texture: knockdown
 wall_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: J/Cel
 wall_water_mold:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -1227,16 +1475,20 @@ water_content:
 water_current:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m/s
 water_cut:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: '%'
 water_feat_size:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m
 water_feat_type: fountain
 water_prod_rate:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: m3/d
 water_temp_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -1251,8 +1503,10 @@ wind_direction:
   type: nmdc:TextValue
   has_raw_value: xxx
 wind_speed:
+  has_numeric_value: 21.0
+  has_raw_value: "21 kilometer per hour"
+  has_unit: km/h
   type: nmdc:QuantityValue
-  has_raw_value: xxx
 window_cond: damaged
 window_cover: blinds
 window_horiz_pos: left
@@ -1275,26 +1529,30 @@ window_water_mold:
 xylene:
   type: nmdc:QuantityValue
   has_raw_value: xxx
+  has_unit: mg/L
 zinc:
   type: nmdc:QuantityValue
   has_raw_value: 2.5 mg/kg
+  has_unit: mg/kg
+  has_numeric_value: 2.5
 add_date: '2021-03-31'
 community: no_example_from_mixs
 habitat: unconstrained text
-host_name: snail is an example value, but unconstrained text is accepted at this
-  point
+host_name: snail is an example value, but unconstrained text is accepted at this point
 location: unconstrained text. should we even keep this slot? check if it has been
   used in MongoDB.
 mod_date: '2023-01-25'
 ncbi_taxonomy_name: soil metagenome
 proport_woa_temperature: no example from MIxS
-salinity_category: halotolerant is an example from the schema, but MIxS doesn't
-  provide this slot any more
+salinity_category: halotolerant is an example from the schema, but MIxS doesn't provide
+  this slot any more
 sample_collection_site: unconstrained text
 soluble_iron_micromol: MIxS doesn't provide an example
 subsurface_depth:
+  has_numeric_value: 10.0
+  has_raw_value: 10.0 m
+  has_unit: m
   type: nmdc:QuantityValue
-  has_raw_value: MIxS does not provide an example
 dna_absorb1: 2.02
 dna_absorb2: 2.02
 dna_collect_site: untreated pond water
@@ -1385,3 +1643,4 @@ nitrate_nitrogen:
   has_raw_value: 1.2 mg/kg
   has_numeric_value: 1.2
   has_unit: mg/kg
+
