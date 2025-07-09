@@ -5,8 +5,9 @@ workflow_execution_set:
     name: Metagenome assembly for nmdc:omprc-12-x123fa
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
-    execution_resource: LANL-B-div
-    git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
+    processing_institution: JGI
+    processing_institution_version: metaspades v. 3.15.2
+    git_url: https://code.jgi.doe.gov/BFoster/jgi_meta_wdl/
     has_input:
       - nmdc:dobj-11-547rwq84
     has_output:
