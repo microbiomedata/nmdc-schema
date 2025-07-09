@@ -342,6 +342,11 @@
 
   Configuration : name
 
+  Configuration : protocol_link
+
+      Configuration --&gt; "0..1" Protocol : protocol_link
+    click Protocol href "../Protocol"
+
   Configuration : type
 
 
@@ -372,6 +377,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
+<td></td>
+<td>direct</td>
+</tr>
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
@@ -456,6 +467,8 @@ notes:
 from_schema: https://w3id.org/nmdc/nmdc
 is_a: InformationObject
 abstract: true
+slots:
+- protocol_link
 class_uri: nmdc:Configuration
 
 </code></pre>
@@ -472,6 +485,17 @@ from_schema: https://w3id.org/nmdc/nmdc
 is_a: InformationObject
 abstract: true
 attributes:
+  protocol_link:
+    name: protocol_link
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: protocol_link
+    owner: Configuration
+    domain_of:
+    - Configuration
+    - PlannedProcess
+    - Study
+    range: Protocol
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

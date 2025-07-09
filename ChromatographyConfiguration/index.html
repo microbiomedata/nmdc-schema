@@ -342,6 +342,11 @@
       ChromatographyConfiguration --&gt; "*" MobilePhaseSegment : ordered_mobile_phases
     click MobilePhaseSegment href "../MobilePhaseSegment"
 
+  ChromatographyConfiguration : protocol_link
+
+      ChromatographyConfiguration --&gt; "0..1" Protocol : protocol_link
+    click Protocol href "../Protocol"
+
   ChromatographyConfiguration : stationary_phase
 
       ChromatographyConfiguration --&gt; "1" StationaryPhaseEnum : stationary_phase
@@ -404,6 +409,12 @@
 <td>0..1 <br/> <a href="../QuantityValue/">QuantityValue</a></td>
 <td>The value of a temperature measurement or temperature used in a process</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
+<td></td>
+<td><a href="../Configuration/">Configuration</a></td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -604,6 +615,17 @@ attributes:
     - DissolvingProcess
     - ChemicalConversionProcess
     range: QuantityValue
+  protocol_link:
+    name: protocol_link
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: protocol_link
+    owner: ChromatographyConfiguration
+    domain_of:
+    - Configuration
+    - PlannedProcess
+    - Study
+    range: Protocol
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand

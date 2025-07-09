@@ -357,6 +357,11 @@
       MassSpectrometryConfiguration --&gt; "1" PolarityModeEnum : polarity_mode
     click PolarityModeEnum href "../PolarityModeEnum"
 
+  MassSpectrometryConfiguration : protocol_link
+
+      MassSpectrometryConfiguration --&gt; "0..1" Protocol : protocol_link
+    click Protocol href "../Protocol"
+
   MassSpectrometryConfiguration : resolution_categories
 
       MassSpectrometryConfiguration --&gt; "1..*" ResolutionCategoryEnum : resolution_categories
@@ -426,6 +431,12 @@
 <td>1 <br/> <a href="../PolarityModeEnum/">PolarityModeEnum</a></td>
 <td>the polarity of which ions are generated and detected</td>
 <td>direct</td>
+</tr>
+<tr>
+<td><a href="../protocol_link/">protocol_link</a></td>
+<td>0..1 <br/> <a href="../Protocol/">Protocol</a></td>
+<td></td>
+<td><a href="../Configuration/">Configuration</a></td>
 </tr>
 <tr>
 <td><a href="../id/">id</a></td>
@@ -673,6 +684,17 @@ attributes:
     - MassSpectrometryConfiguration
     range: PolarityModeEnum
     required: true
+  protocol_link:
+    name: protocol_link
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: protocol_link
+    owner: MassSpectrometryConfiguration
+    domain_of:
+    - Configuration
+    - PlannedProcess
+    - Study
+    range: Protocol
   id:
     name: id
     description: A unique identifier for a thing. Must be either a CURIE shorthand
