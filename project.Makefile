@@ -421,7 +421,7 @@ assets/ncbi_mappings/ncbi_attribute_mappings_filled.tsv: assets/ncbi_mappings/nc
 	$(RUN) nmdc-ncbi-mapping ignore-import-schema-slots $@
 	
 
-src/data/valid/Database-interleaved-new.yaml: src/schema/nmdc.yaml
+src/data/valid/Database-interleaved.yaml: src/schema/nmdc.yaml
 	$(RUN) interleave-yaml \
 		--directory-path src/data/valid \
 		--output-file $@ \
