@@ -1372,7 +1372,7 @@ bulk_elect_conductivity:
   type: nmdc:QuantityValue
   has_raw_value: 0.5 millisiemens per centimeter
   has_numeric_value: 0.5
-  has_unit: uS/cm
+  has_unit: mS/cm
 host_disease_stat:
   type: nmdc:TextValue
   has_raw_value: xxx
