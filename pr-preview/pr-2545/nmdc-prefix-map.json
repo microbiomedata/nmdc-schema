@@ -8,7 +8,7 @@
    "Contaminant": "http://example.org/contaminant/",
    "DRUGBANK": "https://bioregistry.io/drugbank:",
    "EC": "https://bioregistry.io/eccode:",
-   "EDAM": "http://example.org/UNKNOWN/EDAM/",
+   "EDAM": "http://edamontology.org/",
    "EFO": "http://www.ebi.ac.uk/efo/",
    "EGGNOG": "https://bioregistry.io/eggnog:",
    "ENVO": "http://purl.obolibrary.org/obo/ENVO_",
