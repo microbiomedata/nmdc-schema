@@ -3,8 +3,6 @@ import click
 import os
 import glob
 import yaml
-import re
-
 from linkml_runtime import SchemaView
 from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.loaders import yaml_loader
