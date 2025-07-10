@@ -48,12 +48,13 @@ class Migrator(MigratorBase):
         if workflow_execution_record.get("type") == "nmdc:MetagenomeSequencing":
             ms_id = workflow_execution_record.get("id")
             dg_id = workflow_execution_record.get("was_informed_by")
-            data_object = workflow_execution_record.get("has_output", [])
+            data_object_ids = workflow_execution_record.get("has_output", [])
             dg_record = {
                 "ms_id": ms_id,
-                "has_output": data_object,
+                "has_output": data_object_ids,
             }
-            self.data_objects_mapping[data_object[0]] = workflow_execution_record.get("was_informed_by")
+            assert len(data_object_ids) == 1, "This migrator was implemented under the assumption that the `WorkflowExecution`'s `has_output` list contains exactly one item. A `has_output` list greater than 1 was found. Migrating this database will require modifying the migrator."
+            self.data_objects_mapping[data_object_ids[0]] = workflow_execution_record.get("was_informed_by")
             # Add the dict to the wfe_mappings
             self.wfe_mappings[dg_id] = dg_record
             
