@@ -76,7 +76,7 @@ class Migrator(MigratorBase):
         do_id = data_object_record.get("id")
         # Check if the data object is an object of interest
         if do_id in data_object_ids:
-            # Check if the data object already has a was_generated_by field
+            # Check if the data object already has a was_generated_by field that has values.
             if not data_object_record.get("was_generated_by"):
                 data_object_record["was_generated_by"] = self.data_objects_mapping.get(do_id)
             else:
