@@ -38,6 +38,9 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    deprecated: "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI"
+    last_updated_on: 2025-07-02T00:00:00
+    modified_by: ORCID:0000-0002-8683-0050
   rna_absorb1:
     description: 260/280 measurement of RNA sample purity
     title: RNA absorbance 260/280
@@ -157,6 +160,9 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    deprecated: "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI"
+    last_updated_on: 2025-07-02T00:00:00
+    modified_by: ORCID:0000-0002-8683-0050
   rna_samp_id:
     title: RNA sample ID
     comments:
@@ -213,6 +219,9 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
+    deprecated: "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI"
+    last_updated_on: 2025-07-02T00:00:00
+    modified_by: ORCID:0000-0002-8683-0050
   rna_seq_project_name:
     title: RNA seq project name
     comments:
