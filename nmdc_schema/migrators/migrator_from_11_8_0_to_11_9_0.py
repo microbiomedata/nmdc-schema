@@ -102,7 +102,7 @@ class Migrator(MigratorBase):
         if dg_record_id in target_ids:
             # get the corresponding mapping from wfe_mappings
             wfe_map = self.wfe_mappings[dg_record_id]
-            dg_has_output = data_generation_record.pop("has_output",[])
+            dg_has_output = data_generation_record.pop("has_output", [])
             wfe_map_has_output = wfe_map.get("has_output", [])
             new_has_output = list(set(dg_has_output + wfe_map_has_output))
             # Migrate the has_output field
