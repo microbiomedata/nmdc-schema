@@ -11,7 +11,7 @@ class Migrator(MigratorBase):
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema.
         This migrator addresses issue https://github.com/microbiomedata/nmdc-schema/issues/1727.
-        This will migrate fields from all WorkflowExecution records with type nmdc:MetagenomeSequencing to related DataGeneration records. Deletion of the MetagenomeSequencing records will occur outside of this migrator via /queries:run. 
+        This will migrate fields from all `WorkflowExecution` records with type `nmdc:MetagenomeSequencing` to related `DataGeneration` records. Deletion of the `MetagenomeSequencing` records will occur outside of this migrator via the `/queries:run` API endpoint.
         
         The following fields will be migrated from the WorkflowExecution records to the DataGeneration records:
         - has_output
