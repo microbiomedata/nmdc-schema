@@ -6,6 +6,7 @@ workflow_execution_set:
     started_at_time: '2020-03-24T00:00:00+00:00'
     ended_at_time: '2020-03-25T00:00:00+00:00'
     processing_institution: JGI
+    execution_resource: LANL-B-div
     processing_institution_workflow_metadata: metaspades v. 3.15.2
     git_url: https://code.jgi.doe.gov/BFoster/jgi_meta_wdl/
     has_input:
