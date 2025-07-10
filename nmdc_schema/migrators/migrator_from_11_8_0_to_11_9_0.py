@@ -14,8 +14,6 @@ class Migrator(MigratorBase):
         This will migrate fields from all WorkflowExecution records with type nmdc:MetagenomeSequencing to related DataGeneration records. Deletion of the MetagenomeSequencing records will occur outside of this migrator via /queries:run. 
         
         The following fields will be migrated from the WorkflowExecution records to the DataGeneration records:
-        - started_at_time
-        - ended_at_time
         - has_output
         
         Additionally, it will properly link the DataObjects to the associated DataGeneration records through the was_generated_by field.
@@ -33,19 +31,17 @@ class Migrator(MigratorBase):
     def store_we_ms_fields(self, workflow_execution_record: dict) -> None:
         r"""
         For each workflow execution record that is of type MetagenomeSequencing, gather the following fields to fill the corresponding DataGeneration record:
-        - started_at_time
-        - ended_at_time
         - has_output (used to fill the has_output field in the DataGeneration record, and used to link the DataObjects to the DataGeneration record)
 
         >>> m = Migrator()
-        >>> m.store_we_ms_fields({"id": "nmdc:wfmsa-11-kd2tsp05.1", "type": "nmdc:Anything", "started_at_time": "2023-01-03T00:00:00Z", "ended_at_time": "2023-01-04T00:00:00Z", "has_output": ["nmdc:dobj-11-nrjyjm34"], "was_informed_by": "nmdc:omprc-11-8yy07g22"})
+        >>> m.store_we_ms_fields({"id": "nmdc:wfmsa-11-kd2tsp05.1", "type": "nmdc:Anything", "has_output": ["nmdc:dobj-11-nrjyjm34"], "was_informed_by": "nmdc:omprc-11-8yy07g22"})
         >>> m.wfe_mappings
         {}
         >>> m.data_objects_mapping
         {}
-        >>> m.store_we_ms_fields({"id": "nmdc:wfmsa-11-kd2tsp04.1", "type": "nmdc:MetagenomeSequencing", "started_at_time": "2023-01-01T00:00:00Z", "ended_at_time": "2023-01-02T00:00:00Z", "has_output": ["nmdc:dobj-11-nrjyjm33"], "was_informed_by": "nmdc:omprc-11-8yy07g21"})
+        >>> m.store_we_ms_fields({"id": "nmdc:wfmsa-11-kd2tsp04.1", "type": "nmdc:MetagenomeSequencing", "has_output": ["nmdc:dobj-11-nrjyjm33"], "was_informed_by": "nmdc:omprc-11-8yy07g21"})
         >>> m.wfe_mappings
-        {'nmdc:omprc-11-8yy07g21': {'ms_id': 'nmdc:wfmsa-11-kd2tsp04.1', 'started_at_time': '2023-01-01T00:00:00Z', 'ended_at_time': '2023-01-02T00:00:00Z', 'has_output': ['nmdc:dobj-11-nrjyjm33']}}
+        {'nmdc:omprc-11-8yy07g21': {'ms_id': 'nmdc:wfmsa-11-kd2tsp04.1', 'has_output': ['nmdc:dobj-11-nrjyjm33']}}
         >>> m.data_objects_mapping
         {'nmdc:dobj-11-nrjyjm33': 'nmdc:omprc-11-8yy07g21'}
         """
@@ -55,8 +51,6 @@ class Migrator(MigratorBase):
             data_object = workflow_execution_record.get("has_output", [])
             dg_record = {
                 "ms_id": ms_id,
-                "started_at_time": workflow_execution_record.get("started_at_time"),
-                "ended_at_time": workflow_execution_record.get("ended_at_time"),
                 "has_output": data_object,
             }
             self.data_objects_mapping[data_object[0]] = workflow_execution_record.get("was_informed_by")
@@ -94,9 +88,9 @@ class Migrator(MigratorBase):
         Migrate the fields from the workflow execution record to the DataGeneration record.
         
         >>> m = Migrator()
-        >>> m.wfe_mappings = {'nmdc:omprc-11-8yy07g21': {'ms_id': 'nmdc:wfmsa-11-kd2tsp04.1', 'started_at_time': '2023-01-01T00:00:00Z', 'ended_at_time': '2023-01-02T00:00:00Z', 'has_output': ['nmdc:dobj-11-nrjyjm33']}}
+        >>> m.wfe_mappings = {'nmdc:omprc-11-8yy07g21': {'ms_id': 'nmdc:wfmsa-11-kd2tsp04.1', 'has_output': ['nmdc:dobj-11-nrjyjm33']}}
         >>> m.migrate_fields_to_dg({"id": "nmdc:omprc-11-8yy07g21", "has_output": []})
-        {'id': 'nmdc:omprc-11-8yy07g21', 'start_date': '2023-01-01T00:00:00Z', 'end_date': '2023-01-02T00:00:00Z', 'has_output': ['nmdc:dobj-11-nrjyjm33']}
+        {'id': 'nmdc:omprc-11-8yy07g21', 'has_output': ['nmdc:dobj-11-nrjyjm33']}
         >>> m.migrate_fields_to_dg({"id": "nmdc:omprc-11-8yy07g22", "has_output": []})
         {'id': 'nmdc:omprc-11-8yy07g22', 'has_output': []}
         """
@@ -111,9 +105,6 @@ class Migrator(MigratorBase):
             dg_has_output = data_generation_record.pop("has_output",[])
             wfe_map_has_output = wfe_map.get("has_output", [])
             new_has_output = list(set(dg_has_output + wfe_map_has_output))
-            # Migrate the time fields
-            data_generation_record["start_date"] = wfe_map.get("started_at_time", None)
-            data_generation_record["end_date"] = wfe_map.get("ended_at_time", None)
             # Migrate the has_output field
             data_generation_record["has_output"] = new_has_output
         return data_generation_record
