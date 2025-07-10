@@ -451,6 +451,7 @@ classes:
       - started_at_time
       - version
       - was_informed_by
+      - processing_institution_workflow_metadata
     rules:
       - title: qc_status_pass_has_output_required
         description: >-
