@@ -98,7 +98,7 @@ class Migrator(MigratorBase):
         target_ids = list(self.wfe_mappings.keys())
         dg_record_id = data_generation_record.get("id")
 
-        # Check if the data generation record is one of the target ids
+        # Check if the data generation record's id is one of the target ids
         if dg_record_id in target_ids:
             # get the corresponding mapping from wfe_mappings
             wfe_map = self.wfe_mappings[dg_record_id]
