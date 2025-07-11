@@ -1,5 +1,6 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view
+from pymongo.client_session import ClientSession
 
 
 class Migrator(MigratorBase):
@@ -82,6 +83,7 @@ class Migrator(MigratorBase):
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         
         This migration ensures that all QuantityValue instances in records have non-null has_unit values.
+        All operations are wrapped in a MongoDB transaction for atomicity and rollback capability.
         """
         # Get schema view to find all classes and their slots with QuantityValue range
         view = create_schema_view()
@@ -89,26 +91,45 @@ class Migrator(MigratorBase):
         # Find all classes that have slots with QuantityValue range
         classes_with_quantity_value_slots = self._get_classes_with_quantity_value_slots(view)
         
-        # Process each collection that corresponds to classes with QuantityValue slots
+        # Use MongoDB transactions for atomicity
+        with self.adapter._db.client.start_session() as session:
+            with session.start_transaction():
+                try:
+                    self.logger.info("Starting migration with transaction support")
+                    self._process_collections_with_transaction(classes_with_quantity_value_slots, session)
+                    self.logger.info("Migration completed successfully")
+                except Exception as e:
+                    self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
+                    raise
+    
+    def _process_collections_with_transaction(self, classes_with_quantity_value_slots: dict, session: ClientSession) -> None:
+        r"""
+        Process collections within a MongoDB transaction session.
+        
+        Args:
+            classes_with_quantity_value_slots: Dictionary mapping class names to their QuantityValue slots
+            session: MongoDB session for transaction support
+        """
         for class_name, slots in classes_with_quantity_value_slots.items():
             collection_name = f"{class_name.lower()}_set"
             class_uri = f"nmdc:{class_name}"
-            self.adapter.process_each_document(collection_name, [
-                self._create_quantity_value_processor(slots, class_uri)
-            ])
-
-    def _create_quantity_value_processor(self, slots, class_uri):
-        r"""
-        Creates a processor function that ensures QuantityValue instances have has_unit values.
-        
-        Args:
-            slots: List of slot names that have QuantityValue range
-            class_uri: The class URI (e.g., "nmdc:Biosample")
             
-        Returns:
-            function: A processor function that takes a document and returns the modified document
-        """
-        return lambda document: self.ensure_quantity_value_has_unit(document, slots, class_uri)
+            # Get the collection and process documents within the transaction
+            collection = self.adapter._db.get_collection(collection_name)
+            
+            # Process each document in the collection
+            for document in collection.find({}, session=session):
+                original_document = document.copy()
+                modified_document = self.ensure_quantity_value_has_unit(document, slots, class_uri)
+                
+                # Only update if the document was actually modified
+                if modified_document != original_document:
+                    collection.replace_one(
+                        {"_id": document["_id"]}, 
+                        modified_document, 
+                        session=session
+                    )
+    
 
     def _get_classes_with_quantity_value_slots(self, view) -> dict:
         r"""

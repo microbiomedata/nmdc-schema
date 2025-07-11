@@ -64,3 +64,40 @@ Here's how you can create a new migrator:
 
    > You can refer to the example migrator (i.e. `migrator_from_1_0_0_to_EXAMPLE.py`) and other migrators for reference.
 3. Done.
+
+## Testing the migrator
+
+1. Create a local copy of the MongoDB database with a schema that conforms to the release from which you are migrating.
+
+*Note:* This will most often be a production database.  For a release with many migrators, all migrators should be 
+applied in order, to the copy of the production database. 
+
+```bash
+% git clone github.com/microbiomedata/nmdc-runtime 
+% cd nmdc-runtime
+% make up-test # creates a basic mongodb docker container for you with prod-ish configuration but no data. 
+```
+Once up, check the ports.  The default ports this comes with are 27017 (internal docker port), 
+27018 (external connection to mongo) for MongoDB.
+
+```bash
+% docker ps -a # get the mongo container id for later steps below
+
+# find the most recent docker dump
+% ssh your-user-name@dtn01.nersc.gov
+% ls global/cfs/projectdirs/m3408/nmdc-mongodumps/  
+% rsync -av --exclude='_*' --exclude='fs\.*' -e "ssh " your-user-name@dtn01.nersc.gov:/global/cfs/projectdirs/m3408/nmdc-mongodumps/dump_nmdc-prod_2025-02-10_20-12-02 /tmp/remote-mongodump/nmdc
+
+# Copy the dump to the mongo container
+% docker cp /tmp/remote-mongodump [mongo_container_id]:/tmp/
+
+# invade the running mongo docker container to load the dump
+% docker exec -it [mongo_container_id] bash
+
+# inside the container, run the following to load the dump
+% mongorestore -v -u admin -p root --authenticationDatabase=admin --drop --nsInclude='nmdc.*' --gzip --dir /tmp/remote-mongodump/nmdc/dump_nmdc-prod_2025-02-10_20-12-02/ 
+```
+
+3. Run the migrator against the test database. 
+4. Verify that the test database conforms to the new schema.
+5. Run validation checks against the migrated database. 

@@ -130,6 +130,7 @@ anyuri-strings-to-iris = 'nmdc_schema.anyuri_strings_to_iris:expand_curies'
 check-examples-class-coverage = "src.scripts.check_examples_class_coverage:main"
 class-instantiation-counts = "src.scripts.class_instantiation_counts:process_data"
 create-migrator = 'nmdc_schema.migrators.cli.create_migrator:create_migrator'
+run-migrator = 'nmdc_schema.migrators.cli.run_migrator:run_migrator'
 database-to-json-list-files = "src.scripts.database_to_json_list_files:split_yaml_to_json"
 date-created-blank-node = "src.scripts.date_created_blank_node:print_timestamp" # prints a RDF Turtle string, for copying into other RDF/TTL files. may need some parameterization.
 fetch-nmdc-schema = "nmdc_schema.nmdc_data:get_nmdc_jsonschema" # todo recheck
