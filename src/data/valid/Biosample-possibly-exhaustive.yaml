@@ -229,8 +229,15 @@ biotic_relationship: parasite
 bishomohopanol:
   type: nmdc:QuantityValue
   has_raw_value: 14 microgram per liter
-  has_unit: ug/L
-  has_numeric_value: 14.0
+  has_unit: "ug/L"
+blood_press_diast:
+  type: nmdc:QuantityValue
+  has_raw_value: xxx
+  has_unit: "ug/L"
+blood_press_syst:
+  type: nmdc:QuantityValue
+  has_raw_value: xxx
+  has_unit: "ug/L"
 blood_press_diast:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -599,7 +606,7 @@ heavy_metals_meth:
 height_carper_fiber:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: cm
+  has_unit: cm 
 herbicide_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -611,6 +618,9 @@ host_age:
   has_raw_value: 3 years
   has_unit: a
   type: nmdc:QuantityValue
+
+  has_raw_value: xxx
+  has_unit: "mol/L/h"
 host_body_habitat:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -1565,7 +1575,7 @@ dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), ta
   (1%)
 dna_project_contact: John Jones
 dna_samp_id: '187654'
-dna_sample_format: 10 mM Tris-HCl
+dna_sample_format: 10 mmol/L Tris-HCl
 dna_sample_name: JGI_pond_041618
 dna_seq_project: '1191234'
 dna_seq_project_pi: Jane Johnson
@@ -1586,7 +1596,7 @@ rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), ta
   (1%)
 rna_project_contact: John Jones
 rna_samp_id: '187654'
-rna_sample_format: 10 mM Tris-HCl
+rna_sample_format: 10 mmol/L Tris-HCl
 rna_sample_name: JGI_pond_041618
 rna_seq_project: '1191234'
 rna_seq_project_pi: Jane Johnson

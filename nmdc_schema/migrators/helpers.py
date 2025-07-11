@@ -3,6 +3,8 @@ from typing import Any
 from importlib import resources
 from pathlib import Path
 import yaml
+from nmdc_schema.nmdc_data import get_nmdc_schema_definition
+from linkml_runtime import SchemaView
 
 logger = logging.getLogger(__name__)
 
@@ -44,3 +46,15 @@ def load_yaml_asset(path_to_asset_file: str) -> Any:
             obj = yaml.safe_load(f)  # the object type depends upon the YAML data
 
     return obj
+
+
+def create_schema_view() -> SchemaView:
+    """
+    Returns a LinkML SchemaView instance that can be used to traverse the schema.
+    
+    >>> isinstance(create_schema_view(), SchemaView)
+    True
+    """
+    schema_definition = get_nmdc_schema_definition()
+    schema_view = SchemaView(schema_definition)
+    return schema_view

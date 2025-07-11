@@ -120,5 +120,5 @@ configuration_set:
             type: nmdc:PortionOfSubstance
             final_concentration:
               type: nmdc:QuantityValue
-              has_unit: mM
+              has_unit: mmol/L
               has_numeric_value: 15
