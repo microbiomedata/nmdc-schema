@@ -1158,6 +1158,9 @@ enums:
       acetonitrile:
         text: acetonitrile
         meaning: CHEBI:38472
+      acetic_acid:
+        text: acetic_acid
+        meaning: CHEBI:15366
       alphaLP:
         text: alphaLP
         meaning: EC:3.4.21.12
@@ -1210,6 +1213,9 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide and ester bonds at the C-terminus
           of aspartic acid or glutamic acid.
+      hydrochloric_acid:
+        text: hydrochloric_acid
+        meaning: CHEBI:17883
       isopropyl_alcohol:
         text: isopropyl_alcohol
         meaning: CHEBI:17824
@@ -1228,6 +1234,15 @@ enums:
       methanol:
         text: methanol
         meaning: CHEBI:17790
+      medronic_acid:
+        text: medronic_acid
+        meaning: CHEBI:43945
+        comments:
+        - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic
+          acid groups, also known as methylenediphosphonic acid
+      phosphoric_acid:
+        text: phosphoric_acid
+        meaning: CHEBI:26078
       trypsin:
         text: trypsin
         meaning: MS:1001251
@@ -4733,12 +4748,13 @@ enums:
           micrograms per liter.
         aliases:
         - μg/L
-      ug/ul:
-        text: ug/ul
+      ug/uL:
+        text: ug/uL
         description: The Unified Code for Units of Measure (UCUM) representation of
           micrograms per microliter.
         aliases:
         - μg/μL
+        - micromol/L
       uL:
         text: uL
         description: The Unified Code for Units of Measure (UCUM) representation of
@@ -4746,6 +4762,81 @@ enums:
         aliases:
         - μL
         - µL
+      mol/L:
+        text: mol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          moles per liter.
+      mol/L/h:
+        text: mol/L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          moles per liter per hour.
+      ug/L/h:
+        text: ug/L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per liter per hour.
+      umol/L:
+        text: umol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micromoles per liter.
+      umol/kg:
+        text: umol/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micromoles per kilogram.
+      mg/m3:
+        text: mg/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per cubic meter.
+      kg/m3:
+        text: kg/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilograms per cubic meter.
+      m2:
+        text: m2
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          square meters.
+      atm:
+        text: atm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          atmosphere.
+      mV:
+        text: mV
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millivolt.
+      PSU:
+        text: PSU
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          practical salinity unit.
+      L:
+        text: L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          liter.
+      um:
+        text: um
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrometer.
+        aliases:
+        - μm
+        - µm
+      y:
+        text: y
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          year.
+      '1':
+        text: '1'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          dimensionless quantity.
+      uL/kg:
+        text: uL/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microliters per kilogram.
+      kg:
+        text: kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilogram.
+      ppt:
+        text: ppt
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          parts per thousand.
   SampleTypeEnum:
     name: SampleTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -5522,8 +5613,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - zinc
     range: QuantityValue
   manganese:
     name: manganese
@@ -5544,8 +5633,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - manganese
     range: QuantityValue
   ammonium_nitrogen:
     name: ammonium_nitrogen
@@ -5567,7 +5654,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - ammonium_nitrogen
     - NH4-N
     range: QuantityValue
   nitrate_nitrogen:
@@ -5592,7 +5678,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - nitrate_nitrogen
     - NO3-N
     range: QuantityValue
   nitrite_nitrogen:
@@ -5615,7 +5700,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - nitrite_nitrogen
     - NO2-N
     range: QuantityValue
   lbc_thirty:
@@ -5642,7 +5726,6 @@ slots:
     - https://www.ornl.gov/content/bio-scales-0
     - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
     aliases:
-    - lbc_thirty
     - lbc30
     - lime buffer capacity (at 30 minutes)
     range: QuantityValue
@@ -5669,7 +5752,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - lbceq
     - lime buffer capacity (at 5-day equilibrium)
     range: QuantityValue
   dna_absorb1:
@@ -20436,10 +20518,8 @@ classes:
     - collected_from
     - embargoed
     - host_disease_stat
-    - host_taxid
     - img_identifiers
     - neon_biosample_identifiers
-    - samp_name
     - gold_biosample_identifiers
     - insdc_biosample_identifiers
     - emsl_biosample_identifiers
@@ -20462,7 +20542,6 @@ classes:
     - alt
     - aminopept_act
     - ammonium
-    - ammonium_nitrogen
     - amount_light
     - ances_data
     - annual_precpt
@@ -20524,7 +20603,6 @@ classes:
     - collection_date
     - conduc
     - cool_syst_id
-    - core field
     - crop_rotation
     - cult_root_med
     - cur_land_use
@@ -20546,7 +20624,6 @@ classes:
     - diss_org_nitro
     - diss_oxygen
     - diss_oxygen_fluid
-    - dna_cont_well
     - door_comp_type
     - door_cond
     - door_direct
@@ -20561,10 +20638,6 @@ classes:
     - down_par
     - drainage_class
     - drawings
-    - ecosystem
-    - ecosystem_category
-    - ecosystem_subtype
-    - ecosystem_type
     - efficiency_percent
     - elev
     - elevator
@@ -20573,7 +20646,6 @@ classes:
     - env_local_scale
     - env_medium
     - env_package
-    - environment field
     - escalator
     - ethylbenzene
     - exp_duct
@@ -20665,13 +20737,10 @@ classes:
     - inorg_particles
     - inside_lux
     - int_wall_cond
-    - investigation field
     - iw_bt_date_well
     - iwf
     - last_clean
     - lat_lon
-    - lbc_thirty
-    - lbceq
     - light_intensity
     - light_regm
     - light_type
@@ -20682,7 +20751,6 @@ classes:
     - local_class
     - local_class_meth
     - magnesium
-    - manganese
     - max_occup
     - mean_frict_vel
     - mean_peak_frict_vel
@@ -20695,12 +20763,9 @@ classes:
     - misc_param
     - n_alkanes
     - nitrate
-    - nitrate_nitrogen
     - nitrite
-    - nitrite_nitrogen
     - nitro
     - non_min_nutr_regm
-    - nucleic acid sequence source field
     - number_pets
     - number_plants
     - number_resident
@@ -20820,7 +20885,6 @@ classes:
     - season_use
     - secondary_treatment
     - sediment_type
-    - sequencing field
     - sewage_type
     - shad_dev_water_mold
     - shading_device_cond
@@ -20848,7 +20912,6 @@ classes:
     - source_mat_id
     - space_typ_state
     - specific
-    - specific_ecosystem
     - specific_humidity
     - sr_dep_env
     - sr_geol_age
@@ -20939,7 +21002,6 @@ classes:
     - window_vert_pos
     - window_water_mold
     - xylene
-    - zinc
     - ecosystem
     - ecosystem_category
     - ecosystem_type
@@ -20957,20 +21019,6 @@ classes:
     - sample_collection_site
     - soluble_iron_micromol
     - subsurface_depth
-    - air_temp_regm
-    - biotic_regm
-    - biotic_relationship
-    - climate_environment
-    - experimental_factor
-    - gaseous_environment
-    - growth_facil
-    - humidity_regm
-    - light_regm
-    - phosphate
-    - samp_collec_method
-    - samp_size
-    - source_mat_id
-    - watering_regm
     - dna_absorb1
     - dna_absorb2
     - dna_collect_site

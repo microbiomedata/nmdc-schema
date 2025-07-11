@@ -1044,13 +1044,6 @@
                     ],
                     "description": "The cooling system identifier"
                 },
-                "core_field": {
-                    "description": "basic fields",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "crop_rotation": {
                     "anyOf": [
                         {
@@ -1573,13 +1566,6 @@
                         }
                     ],
                     "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported"
-                },
-                "environment_field": {
-                    "description": "field describing environmental aspect of a sample",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "escalator": {
                     "anyOf": [
@@ -2528,13 +2514,6 @@
                     "$ref": "#/$defs/IntWallCondEnum",
                     "description": "The physical condition of the wall at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas"
                 },
-                "investigation_field": {
-                    "description": "field describing aspect of the investigation/study to which the sample belongs",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "isotope_exposure": {
                     "description": "List isotope exposure or addition applied to your sample.",
                     "type": [
@@ -2967,12 +2946,6 @@
                     },
                     "type": [
                         "array",
-                        "null"
-                    ]
-                },
-                "nucleic_acid_sequence_source_field": {
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -4298,12 +4271,6 @@
                 "sediment_type": {
                     "$ref": "#/$defs/SedimentTypeEnum",
                     "description": "Information about the sediment type based on major constituents"
-                },
-                "sequencing_field": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "sewage_type": {
                     "anyOf": [
@@ -5990,6 +5957,7 @@
             "description": "",
             "enum": [
                 "acetonitrile",
+                "acetic_acid",
                 "alphaLP",
                 "ammonium_acetate",
                 "ammonium_bicarbonate",
@@ -6000,10 +5968,13 @@
                 "formic_acid",
                 "glucose",
                 "Glu-C",
+                "hydrochloric_acid",
                 "isopropyl_alcohol",
                 "Lys-C",
                 "Lys-N",
                 "methanol",
+                "medronic_acid",
+                "phosphoric_acid",
                 "trypsin",
                 "water"
             ],
@@ -6565,7 +6536,7 @@
         "DNASampleFormatEnum": {
             "description": "",
             "enum": [
-                "10 mM Tris-HCl",
+                "10 mmol/L Tris-HCl",
                 "DNAStable",
                 "Ethanol",
                 "Low EDTA TE",
@@ -13599,8 +13570,8 @@
                     ]
                 },
                 "has_unit": {
-                    "description": "The unit of the quantity",
-                    "type": "string"
+                    "$ref": "#/$defs/UnitEnum",
+                    "description": "The unit of the quantity"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13620,7 +13591,7 @@
         "RNASampleFormatEnum": {
             "description": "",
             "enum": [
-                "10 mM Tris-HCl",
+                "10 mmol/L Tris-HCl",
                 "DNAStable",
                 "Ethanol",
                 "Low EDTA TE",
@@ -15344,6 +15315,54 @@
                 "downtown"
             ],
             "title": "TrainStopLocEnum",
+            "type": "string"
+        },
+        "UnitEnum": {
+            "description": "",
+            "enum": [
+                "%",
+                "Cel",
+                "cm",
+                "d",
+                "g",
+                "h",
+                "kPa",
+                "m",
+                "m/s",
+                "mg/kg",
+                "mg/L",
+                "min",
+                "mL",
+                "mm",
+                "mmol/L",
+                "[ppm]",
+                "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s",
+                "uS/cm",
+                "W/m2",
+                "a",
+                "ug/L",
+                "ug/uL",
+                "uL",
+                "mol/L",
+                "mol/L/h",
+                "ug/L/h",
+                "umol/L",
+                "umol/kg",
+                "mg/m3",
+                "kg/m3",
+                "m2",
+                "atm",
+                "mV",
+                "PSU",
+                "L",
+                "um",
+                "y",
+                "1",
+                "uL/kg",
+                "kg",
+                "ppt"
+            ],
+            "title": "UnitEnum",
             "type": "string"
         },
         "VisMediaEnum": {

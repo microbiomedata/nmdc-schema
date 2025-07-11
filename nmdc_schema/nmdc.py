@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-03T12:45:36
+# Generation date: 2025-07-11T16:18:02
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -955,7 +955,7 @@ class QuantityValue(AttributeValue):
     class_model_uri: ClassVar[URIRef] = NMDC.QuantityValue
 
     type: Union[str, URIorCURIE] = None
-    has_unit: str = None
+    has_unit: Union[str, "UnitEnum"] = None
     has_maximum_numeric_value: Optional[Decimal] = None
     has_minimum_numeric_value: Optional[Decimal] = None
     has_numeric_value: Optional[Decimal] = None
@@ -964,8 +964,8 @@ class QuantityValue(AttributeValue):
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.has_unit):
             self.MissingRequiredField("has_unit")
-        if not isinstance(self.has_unit, str):
-            self.has_unit = str(self.has_unit)
+        if not isinstance(self.has_unit, UnitEnum):
+            self.has_unit = UnitEnum(self.has_unit)
 
         if self.has_maximum_numeric_value is not None and not isinstance(self.has_maximum_numeric_value, Decimal):
             self.has_maximum_numeric_value = Decimal(self.has_maximum_numeric_value)
@@ -1614,10 +1614,8 @@ class Biosample(Sample):
     collected_from: Optional[Union[str, FieldResearchSiteId]] = None
     embargoed: Optional[Union[bool, Bool]] = None
     host_disease_stat: Optional[Union[dict, TextValue]] = None
-    host_taxid: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
     img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     neon_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
-    samp_name: Optional[str] = None
     gold_biosample_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
     insdc_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     emsl_biosample_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
@@ -1640,7 +1638,6 @@ class Biosample(Sample):
     alt: Optional[Union[dict, QuantityValue]] = None
     aminopept_act: Optional[Union[dict, QuantityValue]] = None
     ammonium: Optional[Union[dict, QuantityValue]] = None
-    ammonium_nitrogen: Optional[Union[dict, QuantityValue]] = None
     amount_light: Optional[Union[dict, QuantityValue]] = None
     ances_data: Optional[Union[dict, TextValue]] = None
     annual_precpt: Optional[Union[dict, QuantityValue]] = None
@@ -1702,7 +1699,6 @@ class Biosample(Sample):
     collection_date: Optional[Union[dict, TimestampValue]] = None
     conduc: Optional[Union[dict, QuantityValue]] = None
     cool_syst_id: Optional[Union[dict, TextValue]] = None
-    core_field: Optional[str] = None
     crop_rotation: Optional[Union[dict, TextValue]] = None
     cult_root_med: Optional[Union[dict, TextValue]] = None
     cur_land_use: Optional[Union[str, "CurLandUseEnum"]] = None
@@ -1724,7 +1720,6 @@ class Biosample(Sample):
     diss_org_nitro: Optional[Union[dict, QuantityValue]] = None
     diss_oxygen: Optional[Union[dict, QuantityValue]] = None
     diss_oxygen_fluid: Optional[Union[dict, QuantityValue]] = None
-    dna_cont_well: Optional[str] = None
     door_comp_type: Optional[Union[str, "DoorCompTypeEnum"]] = None
     door_cond: Optional[Union[str, "DoorCondEnum"]] = None
     door_direct: Optional[Union[str, "DoorDirectEnum"]] = None
@@ -1739,16 +1734,11 @@ class Biosample(Sample):
     down_par: Optional[Union[dict, QuantityValue]] = None
     drainage_class: Optional[Union[str, "DrainageClassEnum"]] = None
     drawings: Optional[Union[str, "DrawingsEnum"]] = None
-    ecosystem: Optional[str] = None
-    ecosystem_category: Optional[str] = None
-    ecosystem_subtype: Optional[str] = None
-    ecosystem_type: Optional[str] = None
     efficiency_percent: Optional[Union[dict, QuantityValue]] = None
     elev: Optional[float] = None
     elevator: Optional[Union[dict, TextValue]] = None
     emulsions: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     env_package: Optional[Union[dict, TextValue]] = None
-    environment_field: Optional[str] = None
     escalator: Optional[Union[dict, TextValue]] = None
     ethylbenzene: Optional[Union[dict, QuantityValue]] = None
     exp_duct: Optional[Union[dict, QuantityValue]] = None
@@ -1829,6 +1819,7 @@ class Biosample(Sample):
     host_subspecf_genlin: Optional[Union[str, list[str]]] = empty_list()
     host_substrate: Optional[Union[dict, TextValue]] = None
     host_symbiont: Optional[Union[str, list[str]]] = empty_list()
+    host_taxid: Optional[Union[dict, ControlledIdentifiedTermValue]] = None
     host_tot_mass: Optional[Union[dict, QuantityValue]] = None
     host_wet_mass: Optional[Union[dict, QuantityValue]] = None
     humidity: Optional[Union[dict, QuantityValue]] = None
@@ -1839,13 +1830,10 @@ class Biosample(Sample):
     inorg_particles: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     inside_lux: Optional[Union[dict, QuantityValue]] = None
     int_wall_cond: Optional[Union[str, "IntWallCondEnum"]] = None
-    investigation_field: Optional[str] = None
     iw_bt_date_well: Optional[Union[dict, TimestampValue]] = None
     iwf: Optional[Union[dict, QuantityValue]] = None
     last_clean: Optional[Union[dict, TimestampValue]] = None
     lat_lon: Optional[Union[dict, GeolocationValue]] = None
-    lbc_thirty: Optional[Union[dict, QuantityValue]] = None
-    lbceq: Optional[Union[dict, QuantityValue]] = None
     light_intensity: Optional[Union[dict, QuantityValue]] = None
     light_regm: Optional[Union[dict, TextValue]] = None
     light_type: Optional[Union[Union[str, "LightTypeEnum"], list[Union[str, "LightTypeEnum"]]]] = empty_list()
@@ -1856,7 +1844,6 @@ class Biosample(Sample):
     local_class: Optional[Union[dict, TextValue]] = None
     local_class_meth: Optional[Union[dict, TextValue]] = None
     magnesium: Optional[Union[dict, QuantityValue]] = None
-    manganese: Optional[Union[dict, QuantityValue]] = None
     max_occup: Optional[Union[dict, QuantityValue]] = None
     mean_frict_vel: Optional[Union[dict, QuantityValue]] = None
     mean_peak_frict_vel: Optional[Union[dict, QuantityValue]] = None
@@ -1869,12 +1856,9 @@ class Biosample(Sample):
     misc_param: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     n_alkanes: Optional[Union[Union[dict, TextValue], list[Union[dict, TextValue]]]] = empty_list()
     nitrate: Optional[Union[dict, QuantityValue]] = None
-    nitrate_nitrogen: Optional[Union[dict, QuantityValue]] = None
     nitrite: Optional[Union[dict, QuantityValue]] = None
-    nitrite_nitrogen: Optional[Union[dict, QuantityValue]] = None
     nitro: Optional[Union[dict, QuantityValue]] = None
     non_min_nutr_regm: Optional[Union[str, list[str]]] = empty_list()
-    nucleic_acid_sequence_source_field: Optional[str] = None
     number_pets: Optional[Union[dict, QuantityValue]] = None
     number_plants: Optional[Union[dict, QuantityValue]] = None
     number_resident: Optional[Union[dict, QuantityValue]] = None
@@ -1970,6 +1954,7 @@ class Biosample(Sample):
     samp_loc_corr_rate: Optional[Union[dict, TextValue]] = None
     samp_mat_process: Optional[Union[dict, ControlledTermValue]] = None
     samp_md: Optional[Union[dict, QuantityValue]] = None
+    samp_name: Optional[str] = None
     samp_preserv: Optional[Union[dict, TextValue]] = None
     samp_room_id: Optional[Union[dict, TextValue]] = None
     samp_size: Optional[Union[dict, QuantityValue]] = None
@@ -1993,7 +1978,6 @@ class Biosample(Sample):
     season_use: Optional[Union[str, "SeasonUseEnum"]] = None
     secondary_treatment: Optional[Union[dict, TextValue]] = None
     sediment_type: Optional[Union[str, "SedimentTypeEnum"]] = None
-    sequencing_field: Optional[str] = None
     sewage_type: Optional[Union[dict, TextValue]] = None
     shad_dev_water_mold: Optional[str] = None
     shading_device_cond: Optional[Union[str, "ShadingDeviceCondEnum"]] = None
@@ -2021,7 +2005,6 @@ class Biosample(Sample):
     source_mat_id: Optional[Union[dict, TextValue]] = None
     space_typ_state: Optional[Union[dict, TextValue]] = None
     specific: Optional[Union[str, "SpecificEnum"]] = None
-    specific_ecosystem: Optional[str] = None
     specific_humidity: Optional[Union[dict, QuantityValue]] = None
     sr_dep_env: Optional[Union[str, "SrDepEnvEnum"]] = None
     sr_geol_age: Optional[Union[str, "SrGeolAgeEnum"]] = None
@@ -2112,7 +2095,11 @@ class Biosample(Sample):
     window_vert_pos: Optional[Union[str, "WindowVertPosEnum"]] = None
     window_water_mold: Optional[Union[dict, TextValue]] = None
     xylene: Optional[Union[dict, QuantityValue]] = None
-    zinc: Optional[Union[dict, QuantityValue]] = None
+    ecosystem: Optional[str] = None
+    ecosystem_category: Optional[str] = None
+    ecosystem_type: Optional[str] = None
+    ecosystem_subtype: Optional[str] = None
+    specific_ecosystem: Optional[str] = None
     add_date: Optional[str] = None
     community: Optional[str] = None
     habitat: Optional[str] = None
@@ -2130,6 +2117,7 @@ class Biosample(Sample):
     dna_collect_site: Optional[str] = None
     dna_concentration: Optional[float] = None
     dna_cont_type: Optional[Union[str, "JgiContTypeEnum"]] = None
+    dna_cont_well: Optional[str] = None
     dna_container_id: Optional[str] = None
     dna_dnase: Optional[Union[str, "YesNoEnum"]] = None
     dna_isolate_meth: Optional[str] = None
@@ -2187,6 +2175,13 @@ class Biosample(Sample):
     sample_link: Optional[Union[str, list[str]]] = empty_list()
     bulk_elect_conductivity: Optional[Union[dict, QuantityValue]] = None
     infiltrations: Optional[Union[str, list[str]]] = empty_list()
+    zinc: Optional[Union[dict, QuantityValue]] = None
+    manganese: Optional[Union[dict, QuantityValue]] = None
+    ammonium_nitrogen: Optional[Union[dict, QuantityValue]] = None
+    nitrate_nitrogen: Optional[Union[dict, QuantityValue]] = None
+    nitrite_nitrogen: Optional[Union[dict, QuantityValue]] = None
+    lbc_thirty: Optional[Union[dict, QuantityValue]] = None
+    lbceq: Optional[Union[dict, QuantityValue]] = None
     alternative_identifiers: Optional[Union[Union[str, URIorCURIE], list[Union[str, URIorCURIE]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -2229,9 +2224,6 @@ class Biosample(Sample):
         if self.host_disease_stat is not None and not isinstance(self.host_disease_stat, TextValue):
             self.host_disease_stat = TextValue(**as_dict(self.host_disease_stat))
 
-        if self.host_taxid is not None and not isinstance(self.host_taxid, ControlledIdentifiedTermValue):
-            self.host_taxid = ControlledIdentifiedTermValue(**as_dict(self.host_taxid))
-
         if not isinstance(self.img_identifiers, list):
             self.img_identifiers = [self.img_identifiers] if self.img_identifiers is not None else []
         self.img_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.img_identifiers]
@@ -2239,9 +2231,6 @@ class Biosample(Sample):
         if not isinstance(self.neon_biosample_identifiers, list):
             self.neon_biosample_identifiers = [self.neon_biosample_identifiers] if self.neon_biosample_identifiers is not None else []
         self.neon_biosample_identifiers = [v if isinstance(v, ExternalIdentifier) else ExternalIdentifier(v) for v in self.neon_biosample_identifiers]
-
-        if self.samp_name is not None and not isinstance(self.samp_name, str):
-            self.samp_name = str(self.samp_name)
 
         if not isinstance(self.gold_biosample_identifiers, list):
             self.gold_biosample_identifiers = [self.gold_biosample_identifiers] if self.gold_biosample_identifiers is not None else []
@@ -2315,9 +2304,6 @@ class Biosample(Sample):
 
         if self.ammonium is not None and not isinstance(self.ammonium, QuantityValue):
             self.ammonium = QuantityValue(**as_dict(self.ammonium))
-
-        if self.ammonium_nitrogen is not None and not isinstance(self.ammonium_nitrogen, QuantityValue):
-            self.ammonium_nitrogen = QuantityValue(**as_dict(self.ammonium_nitrogen))
 
         if self.amount_light is not None and not isinstance(self.amount_light, QuantityValue):
             self.amount_light = QuantityValue(**as_dict(self.amount_light))
@@ -2509,9 +2495,6 @@ class Biosample(Sample):
         if self.cool_syst_id is not None and not isinstance(self.cool_syst_id, TextValue):
             self.cool_syst_id = TextValue(**as_dict(self.cool_syst_id))
 
-        if self.core_field is not None and not isinstance(self.core_field, str):
-            self.core_field = str(self.core_field)
-
         if self.crop_rotation is not None and not isinstance(self.crop_rotation, TextValue):
             self.crop_rotation = TextValue(**as_dict(self.crop_rotation))
 
@@ -2576,9 +2559,6 @@ class Biosample(Sample):
         if self.diss_oxygen_fluid is not None and not isinstance(self.diss_oxygen_fluid, QuantityValue):
             self.diss_oxygen_fluid = QuantityValue(**as_dict(self.diss_oxygen_fluid))
 
-        if self.dna_cont_well is not None and not isinstance(self.dna_cont_well, str):
-            self.dna_cont_well = str(self.dna_cont_well)
-
         if self.door_comp_type is not None and not isinstance(self.door_comp_type, DoorCompTypeEnum):
             self.door_comp_type = DoorCompTypeEnum(self.door_comp_type)
 
@@ -2621,18 +2601,6 @@ class Biosample(Sample):
         if self.drawings is not None and not isinstance(self.drawings, DrawingsEnum):
             self.drawings = DrawingsEnum(self.drawings)
 
-        if self.ecosystem is not None and not isinstance(self.ecosystem, str):
-            self.ecosystem = str(self.ecosystem)
-
-        if self.ecosystem_category is not None and not isinstance(self.ecosystem_category, str):
-            self.ecosystem_category = str(self.ecosystem_category)
-
-        if self.ecosystem_subtype is not None and not isinstance(self.ecosystem_subtype, str):
-            self.ecosystem_subtype = str(self.ecosystem_subtype)
-
-        if self.ecosystem_type is not None and not isinstance(self.ecosystem_type, str):
-            self.ecosystem_type = str(self.ecosystem_type)
-
         if self.efficiency_percent is not None and not isinstance(self.efficiency_percent, QuantityValue):
             self.efficiency_percent = QuantityValue(**as_dict(self.efficiency_percent))
 
@@ -2648,9 +2616,6 @@ class Biosample(Sample):
 
         if self.env_package is not None and not isinstance(self.env_package, TextValue):
             self.env_package = TextValue(**as_dict(self.env_package))
-
-        if self.environment_field is not None and not isinstance(self.environment_field, str):
-            self.environment_field = str(self.environment_field)
 
         if self.escalator is not None and not isinstance(self.escalator, TextValue):
             self.escalator = TextValue(**as_dict(self.escalator))
@@ -2943,9 +2908,6 @@ class Biosample(Sample):
         if self.int_wall_cond is not None and not isinstance(self.int_wall_cond, IntWallCondEnum):
             self.int_wall_cond = IntWallCondEnum(self.int_wall_cond)
 
-        if self.investigation_field is not None and not isinstance(self.investigation_field, str):
-            self.investigation_field = str(self.investigation_field)
-
         if self.iw_bt_date_well is not None and not isinstance(self.iw_bt_date_well, TimestampValue):
             self.iw_bt_date_well = TimestampValue(**as_dict(self.iw_bt_date_well))
 
@@ -2957,12 +2919,6 @@ class Biosample(Sample):
 
         if self.lat_lon is not None and not isinstance(self.lat_lon, GeolocationValue):
             self.lat_lon = GeolocationValue(**as_dict(self.lat_lon))
-
-        if self.lbc_thirty is not None and not isinstance(self.lbc_thirty, QuantityValue):
-            self.lbc_thirty = QuantityValue(**as_dict(self.lbc_thirty))
-
-        if self.lbceq is not None and not isinstance(self.lbceq, QuantityValue):
-            self.lbceq = QuantityValue(**as_dict(self.lbceq))
 
         if self.light_intensity is not None and not isinstance(self.light_intensity, QuantityValue):
             self.light_intensity = QuantityValue(**as_dict(self.light_intensity))
@@ -2994,9 +2950,6 @@ class Biosample(Sample):
 
         if self.magnesium is not None and not isinstance(self.magnesium, QuantityValue):
             self.magnesium = QuantityValue(**as_dict(self.magnesium))
-
-        if self.manganese is not None and not isinstance(self.manganese, QuantityValue):
-            self.manganese = QuantityValue(**as_dict(self.manganese))
 
         if self.max_occup is not None and not isinstance(self.max_occup, QuantityValue):
             self.max_occup = QuantityValue(**as_dict(self.max_occup))
@@ -3038,14 +2991,8 @@ class Biosample(Sample):
         if self.nitrate is not None and not isinstance(self.nitrate, QuantityValue):
             self.nitrate = QuantityValue(**as_dict(self.nitrate))
 
-        if self.nitrate_nitrogen is not None and not isinstance(self.nitrate_nitrogen, QuantityValue):
-            self.nitrate_nitrogen = QuantityValue(**as_dict(self.nitrate_nitrogen))
-
         if self.nitrite is not None and not isinstance(self.nitrite, QuantityValue):
             self.nitrite = QuantityValue(**as_dict(self.nitrite))
-
-        if self.nitrite_nitrogen is not None and not isinstance(self.nitrite_nitrogen, QuantityValue):
-            self.nitrite_nitrogen = QuantityValue(**as_dict(self.nitrite_nitrogen))
 
         if self.nitro is not None and not isinstance(self.nitro, QuantityValue):
             self.nitro = QuantityValue(**as_dict(self.nitro))
@@ -3053,9 +3000,6 @@ class Biosample(Sample):
         if not isinstance(self.non_min_nutr_regm, list):
             self.non_min_nutr_regm = [self.non_min_nutr_regm] if self.non_min_nutr_regm is not None else []
         self.non_min_nutr_regm = [v if isinstance(v, str) else str(v) for v in self.non_min_nutr_regm]
-
-        if self.nucleic_acid_sequence_source_field is not None and not isinstance(self.nucleic_acid_sequence_source_field, str):
-            self.nucleic_acid_sequence_source_field = str(self.nucleic_acid_sequence_source_field)
 
         if self.number_pets is not None and not isinstance(self.number_pets, QuantityValue):
             self.number_pets = QuantityValue(**as_dict(self.number_pets))
@@ -3428,9 +3372,6 @@ class Biosample(Sample):
         if self.sediment_type is not None and not isinstance(self.sediment_type, SedimentTypeEnum):
             self.sediment_type = SedimentTypeEnum(self.sediment_type)
 
-        if self.sequencing_field is not None and not isinstance(self.sequencing_field, str):
-            self.sequencing_field = str(self.sequencing_field)
-
         if self.sewage_type is not None and not isinstance(self.sewage_type, TextValue):
             self.sewage_type = TextValue(**as_dict(self.sewage_type))
 
@@ -3513,9 +3454,6 @@ class Biosample(Sample):
 
         if self.specific is not None and not isinstance(self.specific, SpecificEnum):
             self.specific = SpecificEnum(self.specific)
-
-        if self.specific_ecosystem is not None and not isinstance(self.specific_ecosystem, str):
-            self.specific_ecosystem = str(self.specific_ecosystem)
 
         if self.specific_humidity is not None and not isinstance(self.specific_humidity, QuantityValue):
             self.specific_humidity = QuantityValue(**as_dict(self.specific_humidity))
@@ -3796,9 +3734,6 @@ class Biosample(Sample):
         if self.xylene is not None and not isinstance(self.xylene, QuantityValue):
             self.xylene = QuantityValue(**as_dict(self.xylene))
 
-        if self.zinc is not None and not isinstance(self.zinc, QuantityValue):
-            self.zinc = QuantityValue(**as_dict(self.zinc))
-
         if self.ecosystem is not None and not isinstance(self.ecosystem, str):
             self.ecosystem = str(self.ecosystem)
 
@@ -3849,53 +3784,6 @@ class Biosample(Sample):
 
         if self.subsurface_depth is not None and not isinstance(self.subsurface_depth, QuantityValue):
             self.subsurface_depth = QuantityValue(**as_dict(self.subsurface_depth))
-
-        if not isinstance(self.air_temp_regm, list):
-            self.air_temp_regm = [self.air_temp_regm] if self.air_temp_regm is not None else []
-        self.air_temp_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.air_temp_regm]
-
-        if self.biotic_regm is not None and not isinstance(self.biotic_regm, TextValue):
-            self.biotic_regm = TextValue(**as_dict(self.biotic_regm))
-
-        if self.biotic_relationship is not None and not isinstance(self.biotic_relationship, BioticRelationshipEnum):
-            self.biotic_relationship = BioticRelationshipEnum(self.biotic_relationship)
-
-        if not isinstance(self.climate_environment, list):
-            self.climate_environment = [self.climate_environment] if self.climate_environment is not None else []
-        self.climate_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.climate_environment]
-
-        if self.experimental_factor is not None and not isinstance(self.experimental_factor, ControlledTermValue):
-            self.experimental_factor = ControlledTermValue(**as_dict(self.experimental_factor))
-
-        if not isinstance(self.gaseous_environment, list):
-            self.gaseous_environment = [self.gaseous_environment] if self.gaseous_environment is not None else []
-        self.gaseous_environment = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.gaseous_environment]
-
-        if self.growth_facil is not None and not isinstance(self.growth_facil, ControlledTermValue):
-            self.growth_facil = ControlledTermValue(**as_dict(self.growth_facil))
-
-        if not isinstance(self.humidity_regm, list):
-            self.humidity_regm = [self.humidity_regm] if self.humidity_regm is not None else []
-        self.humidity_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.humidity_regm]
-
-        if self.light_regm is not None and not isinstance(self.light_regm, TextValue):
-            self.light_regm = TextValue(**as_dict(self.light_regm))
-
-        if self.phosphate is not None and not isinstance(self.phosphate, QuantityValue):
-            self.phosphate = QuantityValue(**as_dict(self.phosphate))
-
-        if self.samp_collec_method is not None and not isinstance(self.samp_collec_method, str):
-            self.samp_collec_method = str(self.samp_collec_method)
-
-        if self.samp_size is not None and not isinstance(self.samp_size, QuantityValue):
-            self.samp_size = QuantityValue(**as_dict(self.samp_size))
-
-        if self.source_mat_id is not None and not isinstance(self.source_mat_id, TextValue):
-            self.source_mat_id = TextValue(**as_dict(self.source_mat_id))
-
-        if not isinstance(self.watering_regm, list):
-            self.watering_regm = [self.watering_regm] if self.watering_regm is not None else []
-        self.watering_regm = [v if isinstance(v, TextValue) else TextValue(**as_dict(v)) for v in self.watering_regm]
 
         if self.dna_absorb1 is not None and not isinstance(self.dna_absorb1, float):
             self.dna_absorb1 = float(self.dna_absorb1)
@@ -7100,6 +6988,9 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     acetonitrile = PermissibleValue(
         text="acetonitrile",
         meaning=CHEBI["38472"])
+    acetic_acid = PermissibleValue(
+        text="acetic_acid",
+        meaning=CHEBI["15366"])
     alphaLP = PermissibleValue(
         text="alphaLP",
         meaning=EC["3.4.21.12"])
@@ -7121,12 +7012,21 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     glucose = PermissibleValue(
         text="glucose",
         meaning=CHEBI["17234"])
+    hydrochloric_acid = PermissibleValue(
+        text="hydrochloric_acid",
+        meaning=CHEBI["17883"])
     isopropyl_alcohol = PermissibleValue(
         text="isopropyl_alcohol",
         meaning=CHEBI["17824"])
     methanol = PermissibleValue(
         text="methanol",
         meaning=CHEBI["17790"])
+    medronic_acid = PermissibleValue(
+        text="medronic_acid",
+        meaning=CHEBI["43945"])
+    phosphoric_acid = PermissibleValue(
+        text="phosphoric_acid",
+        meaning=CHEBI["26078"])
     trypsin = PermissibleValue(
         text="trypsin",
         meaning=MS["1001251"])
@@ -8036,6 +7936,159 @@ class DataCategoryEnum(EnumDefinitionImpl):
         name="DataCategoryEnum",
     )
 
+class UnitEnum(EnumDefinitionImpl):
+
+    Cel = PermissibleValue(
+        text="Cel",
+        description="""The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.""")
+    cm = PermissibleValue(
+        text="cm",
+        description="The Unified Code for Units of Measure (UCUM) representation of centimeter.")
+    d = PermissibleValue(
+        text="d",
+        description="The Unified Code for Units of Measure (UCUM) representation of day.")
+    g = PermissibleValue(
+        text="g",
+        description="The Unified Code for Units of Measure (UCUM) representation of gram.")
+    h = PermissibleValue(
+        text="h",
+        description="The Unified Code for Units of Measure (UCUM) representation of hour.")
+    kPa = PermissibleValue(
+        text="kPa",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilopascal.")
+    m = PermissibleValue(
+        text="m",
+        description="The Unified Code for Units of Measure (UCUM) representation of meter.")
+    min = PermissibleValue(
+        text="min",
+        description="The Unified Code for Units of Measure (UCUM) representation of minute.")
+    mL = PermissibleValue(
+        text="mL",
+        description="The Unified Code for Units of Measure (UCUM) representation of milliliter.")
+    mm = PermissibleValue(
+        text="mm",
+        description="The Unified Code for Units of Measure (UCUM) representation of millimeter.")
+    a = PermissibleValue(
+        text="a",
+        description="The Unified Code for Units of Measure (UCUM) representation of year.")
+    uL = PermissibleValue(
+        text="uL",
+        description="The Unified Code for Units of Measure (UCUM) representation of microliter.")
+    m2 = PermissibleValue(
+        text="m2",
+        description="The Unified Code for Units of Measure (UCUM) representation of square meters.")
+    atm = PermissibleValue(
+        text="atm",
+        description="The Unified Code for Units of Measure (UCUM) representation of atmosphere.")
+    mV = PermissibleValue(
+        text="mV",
+        description="The Unified Code for Units of Measure (UCUM) representation of millivolt.")
+    PSU = PermissibleValue(
+        text="PSU",
+        description="The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.")
+    L = PermissibleValue(
+        text="L",
+        description="The Unified Code for Units of Measure (UCUM) representation of liter.")
+    um = PermissibleValue(
+        text="um",
+        description="The Unified Code for Units of Measure (UCUM) representation of micrometer.")
+    y = PermissibleValue(
+        text="y",
+        description="The Unified Code for Units of Measure (UCUM) representation of year.")
+    kg = PermissibleValue(
+        text="kg",
+        description="The Unified Code for Units of Measure (UCUM) representation of kilogram.")
+    ppt = PermissibleValue(
+        text="ppt",
+        description="The Unified Code for Units of Measure (UCUM) representation of parts per thousand.")
+
+    _defn = EnumDefinition(
+        name="UnitEnum",
+    )
+
+    @classmethod
+    def _addvals(cls):
+        setattr(cls, "%",
+            PermissibleValue(
+                text="%",
+                description="The Unified Code for Units of Measure (UCUM) representation of percent."))
+        setattr(cls, "m/s",
+            PermissibleValue(
+                text="m/s",
+                description="The Unified Code for Units of Measure (UCUM) representation of meters per second."))
+        setattr(cls, "mg/kg",
+            PermissibleValue(
+                text="mg/kg",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram."""))
+        setattr(cls, "mg/L",
+            PermissibleValue(
+                text="mg/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of milligrams per liter."))
+        setattr(cls, "mmol/L",
+            PermissibleValue(
+                text="mmol/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of millimolar."))
+        setattr(cls, "[ppm]",
+            PermissibleValue(
+                text="[ppm]",
+                description="The Unified Code for Units of Measure (UCUM) representation of parts per million."))
+        setattr(cls, "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s",
+            PermissibleValue(
+                text="%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second."""))
+        setattr(cls, "uS/cm",
+            PermissibleValue(
+                text="uS/cm",
+                description="""The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter."""))
+        setattr(cls, "W/m2",
+            PermissibleValue(
+                text="W/m2",
+                description="The Unified Code for Units of Measure (UCUM) representation of watts per square meter."))
+        setattr(cls, "ug/L",
+            PermissibleValue(
+                text="ug/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of micrograms per liter."))
+        setattr(cls, "ug/uL",
+            PermissibleValue(
+                text="ug/uL",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter."""))
+        setattr(cls, "mol/L",
+            PermissibleValue(
+                text="mol/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of moles per liter."))
+        setattr(cls, "mol/L/h",
+            PermissibleValue(
+                text="mol/L/h",
+                description="""The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour."""))
+        setattr(cls, "ug/L/h",
+            PermissibleValue(
+                text="ug/L/h",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour."""))
+        setattr(cls, "umol/L",
+            PermissibleValue(
+                text="umol/L",
+                description="The Unified Code for Units of Measure (UCUM) representation of micromoles per liter."))
+        setattr(cls, "umol/kg",
+            PermissibleValue(
+                text="umol/kg",
+                description="""The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram."""))
+        setattr(cls, "mg/m3",
+            PermissibleValue(
+                text="mg/m3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter."""))
+        setattr(cls, "kg/m3",
+            PermissibleValue(
+                text="kg/m3",
+                description="""The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter."""))
+        setattr(cls, "1",
+            PermissibleValue(
+                text="1",
+                description="The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity."))
+        setattr(cls, "uL/kg",
+            PermissibleValue(
+                text="uL/kg",
+                description="""The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram."""))
+
 class SampleTypeEnum(EnumDefinitionImpl):
 
     soil = PermissibleValue(text="soil")
@@ -8069,8 +8122,8 @@ class DNASampleFormatEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "10 mM Tris-HCl",
-            PermissibleValue(text="10 mM Tris-HCl"))
+        setattr(cls, "10 mmol/L Tris-HCl",
+            PermissibleValue(text="10 mmol/L Tris-HCl"))
         setattr(cls, "Low EDTA TE",
             PermissibleValue(text="Low EDTA TE"))
         setattr(cls, "MDA reaction buffer",
@@ -8117,8 +8170,8 @@ class RNASampleFormatEnum(EnumDefinitionImpl):
 
     @classmethod
     def _addvals(cls):
-        setattr(cls, "10 mM Tris-HCl",
-            PermissibleValue(text="10 mM Tris-HCl"))
+        setattr(cls, "10 mmol/L Tris-HCl",
+            PermissibleValue(text="10 mmol/L Tris-HCl"))
         setattr(cls, "Low EDTA TE",
             PermissibleValue(text="Low EDTA TE"))
         setattr(cls, "MDA reaction buffer",
@@ -11030,7 +11083,7 @@ slots.has_raw_value = Slot(uri=NMDC.has_raw_value, name="has_raw_value", curie=N
                    model_uri=NMDC.has_raw_value, domain=None, range=Optional[str])
 
 slots.has_unit = Slot(uri=NMDC.has_unit, name="has_unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.has_unit, domain=None, range=str, mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.has_unit, domain=None, range=Union[str, "UnitEnum"], mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
 slots.has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="has_numeric_value", curie=NMDC.curie('has_numeric_value'),
                    model_uri=NMDC.has_numeric_value, domain=None, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])
@@ -13288,7 +13341,7 @@ slots.QuantityValue_has_raw_value = Slot(uri=NMDC.has_raw_value, name="QuantityV
                    model_uri=NMDC.QuantityValue_has_raw_value, domain=QuantityValue, range=Optional[str])
 
 slots.QuantityValue_has_unit = Slot(uri=NMDC.has_unit, name="QuantityValue_has_unit", curie=NMDC.curie('has_unit'),
-                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=str, mappings = [QUD["unit"], SCHEMA["unitCode"]])
+                   model_uri=NMDC.QuantityValue_has_unit, domain=QuantityValue, range=Union[str, "UnitEnum"], mappings = [QUD["unit"], SCHEMA["unitCode"]])
 
 slots.QuantityValue_has_numeric_value = Slot(uri=NMDC.has_numeric_value, name="QuantityValue_has_numeric_value", curie=NMDC.curie('has_numeric_value'),
                    model_uri=NMDC.QuantityValue_has_numeric_value, domain=QuantityValue, range=Optional[Decimal], mappings = [QUD["quantityValue"], SCHEMA["value"]])

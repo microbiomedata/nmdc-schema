@@ -85,6 +85,7 @@ class Migrator(MigratorBase):
     def __init__(self, adapter: AdapterBase = None, logger=None):
         super().__init__(adapter, logger)
         self._unit_alias_map = None
+        self._valid_enum_values = None
         self.reporter = None
 
     def upgrade(self) -> None:
@@ -101,6 +102,9 @@ class Migrator(MigratorBase):
         
         # Build unit alias lookup from schema
         self._unit_alias_map = self._build_unit_alias_map()
+        
+        # Build valid enum values set for quick lookup
+        self._valid_enum_values = self._build_valid_enum_values()
         
         # Get schema view to find all classes and their slots with QuantityValue range
         view = create_schema_view()
@@ -222,6 +226,26 @@ class Migrator(MigratorBase):
         
         return alias_to_canonical
 
+    @staticmethod
+    def _build_valid_enum_values() -> set:
+        r"""
+        Builds a set of valid enum values for quick lookup.
+        
+        Returns:
+            set: Set of valid enum values
+        """
+        valid_values = set()
+        
+        # Get schema view to access UnitEnum
+        view = create_schema_view()
+        unit_enum = view.get_enum('UnitEnum')
+        
+        if unit_enum and unit_enum.permissible_values:
+            for canonical_unit in unit_enum.permissible_values.keys():
+                valid_values.add(canonical_unit)
+        
+        return valid_values
+
     def ensure_quantity_value_has_unit(self, document: dict, quantity_value_slots: list, class_uri: str) -> dict:
         r"""
         Ensures that all QuantityValue instances in a document have non-null has_unit values.
@@ -239,12 +263,18 @@ class Migrator(MigratorBase):
             
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> m = Migrator(DictionaryAdapter({}))
+        >>> m.reporter = type('MockReporter', (), {
+        ...     'track_operation': lambda *args: None,
+        ...     'track_item': lambda *args: None, 
+        ...     'track_value_set': lambda *args: None
+        ... })()
+        >>> m._unit_alias_map = {"Celsius": "Cel"}
+        >>> m._valid_enum_values = {"Cel", "Celsius"}
         >>> doc = {"temp": {"type": "nmdc:QuantityValue", "has_numeric_value": 25.0}}
         >>> result = m.ensure_quantity_value_has_unit(doc, ["temp"], "nmdc:Biosample")
         >>> result["temp"]["has_unit"]
         'Cel'
         >>> doc_with_unit = {"temp": {"type": "nmdc:QuantityValue", "has_numeric_value": 25.0, "has_unit": "Celsius"}}
-        >>> m._unit_alias_map = {"Celsius": "Cel"}
         >>> result = m.ensure_quantity_value_has_unit(doc_with_unit, ["temp"], "nmdc:Biosample")
         >>> result["temp"]["has_unit"]
         'Cel'
@@ -301,9 +331,15 @@ class Migrator(MigratorBase):
                     # Track the unit normalization using the generic reporter
                     self.reporter.track_operation('units_normalized', f"{current_unit} → {canonical_unit}", 1)
             else:
-                # Current unit is not in our alias map, check if it can be mapped
-                unit = self._get_unit_for_class_slot(class_uri, slot_name, current_unit)
-                # If no mapping found, just report it but don't change the value
+                # Current unit is not in our alias map
+                # Check if it's already a valid enum value using cached values
+                if current_unit in self._valid_enum_values:
+                    # Unit is already a valid enum value, no action needed
+                    pass
+                else:
+                    # Current unit is not a valid enum value, check if it can be mapped
+                    self._get_unit_for_class_slot(class_uri, slot_name, current_unit)
+                    # If no mapping found, just report it but don't change the value
     
     def _get_unit_for_class_slot(self, class_uri: str, slot_name: str, current_unit_value: str = None) -> Optional[str]:
         r"""
@@ -339,12 +375,11 @@ class Migrator(MigratorBase):
         if unit:
             return unit
         else:
-            # Track unmapped slots and values using the generic reporter
-            slot_key = f"{class_uri}.{slot_name}"
-            self.reporter.track_item('unmapped_slots', slot_key)
-            
-            # Track the actual unit value that couldn't be mapped
-            if current_unit_value is not None:
+            # Only track as unmapped if the current unit value is not already valid
+            if current_unit_value is not None and current_unit_value not in self._valid_enum_values:
+                # Track unmapped slots and values using the generic reporter
+                slot_key = f"{class_uri}.{slot_name}"
+                self.reporter.track_item('unmapped_slots', slot_key)
                 self.reporter.track_value_set('unmapped_values', slot_key, current_unit_value)
             
             # Return None instead of a fallback unit - just report and don't update

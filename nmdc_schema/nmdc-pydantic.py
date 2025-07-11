@@ -927,6 +927,7 @@ class SampleStateEnum(str, Enum):
 
 class ChemicalEntityEnum(str, Enum):
     acetonitrile = "acetonitrile"
+    acetic_acid = "acetic_acid"
     alphaLP = "alphaLP"
     ammonium_acetate = "ammonium_acetate"
     ammonium_bicarbonate = "ammonium_bicarbonate"
@@ -937,10 +938,13 @@ class ChemicalEntityEnum(str, Enum):
     formic_acid = "formic_acid"
     glucose = "glucose"
     Glu_C = "Glu-C"
+    hydrochloric_acid = "hydrochloric_acid"
     isopropyl_alcohol = "isopropyl_alcohol"
     Lys_C = "Lys-C"
     Lys_N = "Lys-N"
     methanol = "methanol"
+    medronic_acid = "medronic_acid"
+    phosphoric_acid = "phosphoric_acid"
     trypsin = "trypsin"
     water = "water"
 
@@ -2791,6 +2795,173 @@ class DataCategoryEnum(str, Enum):
     """
 
 
+class UnitEnum(str, Enum):
+    PERCENT_SIGN = "%"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of percent.
+    """
+    Cel = "Cel"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
+    """
+    cm = "cm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of centimeter.
+    """
+    d = "d"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of day.
+    """
+    g = "g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gram.
+    """
+    h = "h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of hour.
+    """
+    kPa = "kPa"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilopascal.
+    """
+    m = "m"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of meter.
+    """
+    mSOLIDUSs = "m/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of meters per second.
+    """
+    mgSOLIDUSkg = "mg/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
+    """
+    mgSOLIDUSL = "mg/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
+    """
+    min = "min"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of minute.
+    """
+    mL = "mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milliliter.
+    """
+    mm = "mm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimeter.
+    """
+    mmolSOLIDUSL = "mmol/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimolar.
+    """
+    LEFT_SQUARE_BRACKETppmRIGHT_SQUARE_BRACKET = "[ppm]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of parts per million.
+    """
+    PERCENT_SIGN5BarbAPOSTROPHEUPERCENT_SIGN5DPERCENT_SIGN7Bmicro_EinsteinsPERCENT_SIGN7DSOLIDUSm2SOLIDUSs = "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second.
+    """
+    uSSOLIDUScm = "uS/cm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
+    """
+    WSOLIDUSm2 = "W/m2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
+    """
+    a = "a"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of year.
+    """
+    ugSOLIDUSL = "ug/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
+    """
+    ugSOLIDUSuL = "ug/uL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
+    """
+    uL = "uL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microliter.
+    """
+    molSOLIDUSL = "mol/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of moles per liter.
+    """
+    molSOLIDUSLSOLIDUSh = "mol/L/h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
+    """
+    ugSOLIDUSLSOLIDUSh = "ug/L/h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
+    """
+    umolSOLIDUSL = "umol/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
+    """
+    umolSOLIDUSkg = "umol/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
+    """
+    mgSOLIDUSm3 = "mg/m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
+    """
+    kgSOLIDUSm3 = "kg/m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
+    """
+    m2 = "m2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of square meters.
+    """
+    atm = "atm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+    """
+    mV = "mV"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millivolt.
+    """
+    PSU = "PSU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
+    """
+    L = "L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of liter.
+    """
+    um = "um"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrometer.
+    """
+    y = "y"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of year.
+    """
+    number_1 = "1"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
+    """
+    uLSOLIDUSkg = "uL/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
+    """
+    kg = "kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilogram.
+    """
+    ppt = "ppt"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
+    """
+
+
 class SampleTypeEnum(str, Enum):
     soil = "soil"
     soil___water_extract = "soil - water extract"
@@ -2800,7 +2971,7 @@ class SampleTypeEnum(str, Enum):
 
 
 class DNASampleFormatEnum(str, Enum):
-    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
+    number_10_mmolSOLIDUSL_Tris_HCl = "10 mmol/L Tris-HCl"
     DNAStable = "DNAStable"
     Ethanol = "Ethanol"
     Low_EDTA_TE = "Low EDTA TE"
@@ -2828,7 +2999,7 @@ class YesNoEnum(str, Enum):
 
 
 class RNASampleFormatEnum(str, Enum):
-    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
+    number_10_mmolSOLIDUSL_Tris_HCl = "10 mmol/L Tris-HCl"
     DNAStable = "DNAStable"
     Ethanol = "Ethanol"
     Low_EDTA_TE = "Low EDTA TE"
@@ -3133,7 +3304,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
     substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_used',
          'domain_of': ['Extraction',
                        'StorageProcess',
@@ -3603,7 +3774,7 @@ class QuantityValue(AttributeValue):
     has_numeric_value: Optional[Decimal] = Field(default=None, description="""The number part of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_numeric_value',
          'domain_of': ['QuantityValue'],
          'mappings': ['qud:quantityValue', 'schema:value']} })
-    has_unit: str = Field(default=..., description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
+    has_unit: UnitEnum = Field(default=..., description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
          'aliases': ['scale'],
          'domain_of': ['QuantityValue'],
          'mappings': ['qud:unit', 'schema:unitCode']} })
@@ -5527,16 +5698,6 @@ class Biosample(Sample):
          'is_a': 'nucleic acid sequence source field',
          'slot_uri': 'MIXS:0000031',
          'string_serialization': '{termLabel} {[termID]}|{text}'} })
-    host_taxid: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="host taxid", description="""NCBI taxon id of the host, e.g. 9606""", json_schema_extra = { "linkml_meta": {'alias': 'host_taxid',
-         'aliases': ['host taxid'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'NCBI taxon identifier'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
-         'comments': ['Homo sapiens [NCBITaxon:9606] would be a reasonable '
-                      'has_raw_value'],
-         'domain_of': ['Biosample'],
-         'is_a': 'core field',
-         'slot_uri': 'MIXS:0000250'} })
     img_identifiers: Optional[list[str]] = Field(default=None, title="IMG Identifiers", description="""A list of identifiers that relate the biosample to records in the IMG database.""", json_schema_extra = { "linkml_meta": {'alias': 'img_identifiers',
          'domain_of': ['MetagenomeAnnotation',
                        'Biosample',
@@ -5552,14 +5713,6 @@ class Biosample(Sample):
          'domain_of': ['Biosample'],
          'is_a': 'biosample_identifiers',
          'mixins': ['neon_identifiers']} })
-    samp_name: Optional[str] = Field(default=None, title="sample name", description="""A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_name',
-         'aliases': ['sample name'],
-         'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'text'}},
-         'domain_of': ['Biosample'],
-         'examples': [{'value': 'ISDsoil1'}],
-         'is_a': 'investigation field',
-         'slot_uri': 'MIXS:0001107',
-         'string_serialization': '{text}'} })
     gold_biosample_identifiers: Optional[list[str]] = Field(default=None, description="""Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample""", json_schema_extra = { "linkml_meta": {'alias': 'gold_biosample_identifiers',
          'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Provide the GOLD biosample IDs '
@@ -5800,15 +5953,6 @@ class Biosample(Sample):
          'examples': [{'value': '1.5 milligram per liter'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000427'} })
-    ammonium_nitrogen: Optional[QuantityValue] = Field(default=None, title="ammonium nitrogen", description="""Concentration of ammonium nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'ammonium_nitrogen',
-         'aliases': ['ammonium_nitrogen', 'NH4-N'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
-         'domain_of': ['Biosample'],
-         'examples': [{'value': '2.3 mg/kg'}],
-         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
     amount_light: Optional[QuantityValue] = Field(default=None, title="amount of light", description="""The unit of illuminance and luminous emittance, measuring luminous flux per unit area""", json_schema_extra = { "linkml_meta": {'alias': 'amount_light',
          'aliases': ['amount of light'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -6465,7 +6609,6 @@ class Biosample(Sample):
          'examples': [{'value': '12345'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000785'} })
-    core_field: Optional[str] = Field(default=None, description="""basic fields""", json_schema_extra = { "linkml_meta": {'abstract': True, 'alias': 'core_field', 'domain_of': ['Biosample']} })
     crop_rotation: Optional[TextValue] = Field(default=None, title="history/crop rotation", description="""Whether or not crop is rotated, and if yes, rotation schedule""", json_schema_extra = { "linkml_meta": {'alias': 'crop_rotation',
          'aliases': ['history/crop rotation'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -6705,19 +6848,6 @@ class Biosample(Sample):
          'examples': [{'value': ''}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000438'} })
-    dna_cont_well: Optional[str] = Field(default=None, title="DNA plate position", json_schema_extra = { "linkml_meta": {'alias': 'dna_cont_well',
-         'comments': ["Required when 'plate' is selected for container type.",
-                      'Leave blank if the sample will be shipped in a tube.',
-                      'JGI will not process samples in corner wells, so A1, A12, H1 '
-                      'and H12 will not pass validation.',
-                      'For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 '
-                      '(NOT A2-A11,B1-B8).'],
-         'domain_of': ['Biosample'],
-         'examples': [{'value': 'B2'}],
-         'rank': 11,
-         'recommended': True,
-         'slot_group': 'JGI-Metagenomics',
-         'string_serialization': '{96 well plate pos}'} })
     door_comp_type: Optional[DoorCompTypeEnum] = Field(default=None, title="door type, composite", description="""The composite type of the door""", json_schema_extra = { "linkml_meta": {'alias': 'door_comp_type',
          'aliases': ['door type, composite'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -6852,45 +6982,6 @@ class Biosample(Sample):
          'examples': [{'value': 'sketch'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000798'} })
-    ecosystem: Optional[str] = Field(default=None, description="""An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem',
-         'comments': ['The abiotic factors play a profound role on the type and '
-                      'composition of organisms in a given environment. The GOLD '
-                      'Ecosystem at the top of the five-level classification system is '
-                      'aimed at capturing the broader environment from which an '
-                      'organism or environmental sample is collected. The three broad '
-                      'groups under Ecosystem are Environmental, Host-associated, and '
-                      'Engineered. They represent samples collected from a natural '
-                      'environment or from another organism or from engineered '
-                      'environments like bioreactors respectively.'],
-         'domain_of': ['Biosample', 'Study'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_category: Optional[str] = Field(default=None, description="""Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem_category',
-         'comments': ['The Environmental ecosystem (for example) is divided into Air, '
-                      'Aquatic and Terrestrial. Ecosystem categories for '
-                      'Host-associated samples can be individual hosts or phyla and '
-                      'for engineered samples it may be manipulated environments like '
-                      'bioreactors, solid waste etc.'],
-         'domain_of': ['Biosample', 'Study'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_subtype: Optional[str] = Field(default=None, description="""Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem_subtype',
-         'comments': ['Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is '
-                      'further divided (for example) into Intertidal zone, Coastal, '
-                      'Pelagic, Intertidal zone etc. in the Ecosystem subtype '
-                      'category.'],
-         'domain_of': ['Biosample', 'Study'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
-    ecosystem_type: Optional[str] = Field(default=None, description="""Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem_type',
-         'comments': ['The Aquatic ecosystem category (for example) may have ecosystem '
-                      'types like Marine or Thermal springs etc. Ecosystem category '
-                      'Air may have Indoor air or Outdoor air as different Ecosystem '
-                      'Types. In the case of Host-associated samples, ecosystem type '
-                      'can represent Respiratory system, Digestive system, Roots etc.'],
-         'domain_of': ['Biosample', 'Study'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
     efficiency_percent: Optional[QuantityValue] = Field(default=None, title="efficiency percent", description="""Percentage of volatile solids removed from the anaerobic digestor""", json_schema_extra = { "linkml_meta": {'alias': 'efficiency_percent',
          'aliases': ['efficiency percent'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -7020,7 +7111,6 @@ class Biosample(Sample):
          'aliases': ['environmental package'],
          'domain_of': ['Biosample'],
          'notes': ['no longer in MIxS as of 6.0?']} })
-    environment_field: Optional[str] = Field(default=None, description="""field describing environmental aspect of a sample""", json_schema_extra = { "linkml_meta": {'abstract': True, 'alias': 'environment_field', 'domain_of': ['Biosample']} })
     escalator: Optional[TextValue] = Field(default=None, title="escalator count", description="""The number of escalators within the built structure""", json_schema_extra = { "linkml_meta": {'alias': 'escalator',
          'aliases': ['escalator count'],
          'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'value'},
@@ -7874,6 +7964,16 @@ class Biosample(Sample):
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001298',
          'string_serialization': '{text}'} })
+    host_taxid: Optional[ControlledIdentifiedTermValue] = Field(default=None, title="host taxid", description="""NCBI taxon id of the host, e.g. 9606""", json_schema_extra = { "linkml_meta": {'alias': 'host_taxid',
+         'aliases': ['host taxid'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'NCBI taxon identifier'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'}},
+         'comments': ['Homo sapiens [NCBITaxon:9606] would be a reasonable '
+                      'has_raw_value'],
+         'domain_of': ['Biosample'],
+         'is_a': 'core field',
+         'slot_uri': 'MIXS:0000250'} })
     host_tot_mass: Optional[QuantityValue] = Field(default=None, title="host total mass", description="""Total mass of the host at collection, the unit depends on host""", json_schema_extra = { "linkml_meta": {'alias': 'host_tot_mass',
          'aliases': ['host total mass'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -7984,7 +8084,6 @@ class Biosample(Sample):
          'examples': [{'value': 'damaged'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000813'} })
-    investigation_field: Optional[str] = Field(default=None, description="""field describing aspect of the investigation/study to which the sample belongs""", json_schema_extra = { "linkml_meta": {'abstract': True, 'alias': 'investigation_field', 'domain_of': ['Biosample']} })
     iw_bt_date_well: Optional[TimestampValue] = Field(default=None, title="injection water breakthrough date of specific well", description="""Injection water breakthrough date per well following a secondary and/or tertiary recovery""", json_schema_extra = { "linkml_meta": {'alias': 'iw_bt_date_well',
          'aliases': ['injection water breakthrough date of specific well'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -8026,31 +8125,6 @@ class Biosample(Sample):
                    'should be required for human hosts'],
          'slot_uri': 'MIXS:0000009',
          'string_serialization': '{float} {float}'} })
-    lbc_thirty: Optional[QuantityValue] = Field(default=None, title="lime buffer capacity (at 30 minutes)", description="""lime buffer capacity, determined after 30 minute incubation""", json_schema_extra = { "linkml_meta": {'alias': 'lbc_thirty',
-         'aliases': ['lbc_thirty', 'lbc30', 'lime buffer capacity (at 30 minutes)'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'ppm CaCO3/pH'}},
-         'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
-                      'kg of soil by one pH unit'],
-         'domain_of': ['Biosample'],
-         'examples': [{'value': '543 mg/kg'}],
-         'see_also': ['https://www.ornl.gov/content/bio-scales-0',
-                      'https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF']} })
-    lbceq: Optional[QuantityValue] = Field(default=None, title="lime buffer capacity (after 5 day incubation)", description="""lime buffer capacity, determined at equilibrium after 5 day incubation""", json_schema_extra = { "linkml_meta": {'alias': 'lbceq',
-         'aliases': ['lbceq', 'lime buffer capacity (at 5-day equilibrium)'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'ppm CaCO3/pH'}},
-         'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
-                      'kg of soil by one pH unit'],
-         'domain_of': ['Biosample'],
-         'examples': [{'value': '1575 mg/kg'}],
-         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
     light_intensity: Optional[QuantityValue] = Field(default=None, title="light intensity", description="""Measurement of light intensity""", json_schema_extra = { "linkml_meta": {'alias': 'light_intensity',
          'aliases': ['light intensity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -8156,16 +8230,6 @@ class Biosample(Sample):
          'examples': [{'value': '52.8 micromole per kilogram'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000431'} })
-    manganese: Optional[QuantityValue] = Field(default=None, title="manganese", description="""Concentration of manganese in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'manganese',
-         'aliases': ['manganese'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mg/kg (ppm)'}},
-         'domain_of': ['Biosample'],
-         'examples': [{'value': '24.7 mg/kg'}],
-         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
     max_occup: Optional[QuantityValue] = Field(default=None, title="maximum occupancy", description="""The maximum amount of people allowed in the indoor environment""", json_schema_extra = { "linkml_meta": {'alias': 'max_occup',
          'aliases': ['maximum occupancy'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -8303,16 +8367,6 @@ class Biosample(Sample):
          'examples': [{'value': '65 micromole per liter'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000425'} })
-    nitrate_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrate_nitrogen", description="""Concentration of nitrate nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrate_nitrogen',
-         'aliases': ['nitrate_nitrogen', 'NO3-N'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
-         'comments': ['often below some specified limit of detection'],
-         'domain_of': ['Biosample'],
-         'examples': [{'value': '0.29 mg/kg'}],
-         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
     nitrite: Optional[QuantityValue] = Field(default=None, title="nitrite", description="""Concentration of nitrite in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrite',
          'aliases': ['nitrite'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -8325,15 +8379,6 @@ class Biosample(Sample):
          'examples': [{'value': '0.5 micromole per liter'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000426'} })
-    nitrite_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrite_nitrogen", description="""Concentration of nitrite nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrite_nitrogen',
-         'aliases': ['nitrite_nitrogen', 'NO2-N'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
-         'domain_of': ['Biosample'],
-         'examples': [{'value': '1.2 mg/kg'}],
-         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
     nitro: Optional[QuantityValue] = Field(default=None, title="nitrogen", description="""Concentration of nitrogen (total)""", json_schema_extra = { "linkml_meta": {'alias': 'nitro',
          'aliases': ['nitrogen'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -8363,9 +8408,6 @@ class Biosample(Sample):
          'slot_uri': 'MIXS:0000571',
          'string_serialization': '{text};{float} '
                                  '{unit};{Rn/start_time/end_time/duration}'} })
-    nucleic_acid_sequence_source_field: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'abstract': True,
-         'alias': 'nucleic_acid_sequence_source_field',
-         'domain_of': ['Biosample']} })
     number_pets: Optional[QuantityValue] = Field(default=None, title="number of pets", description="""The number of pets residing in the sampled space""", json_schema_extra = { "linkml_meta": {'alias': 'number_pets',
          'aliases': ['number of pets'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -9393,6 +9435,14 @@ class Biosample(Sample):
          'examples': [{'value': '1534 meter;MSL'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000413'} })
+    samp_name: Optional[str] = Field(default=None, title="sample name", description="""A local identifier or name that for the material sample used for extracting nucleic acids, and subsequent sequencing. It can refer either to the original material collected or to any derived sub-samples. It can have any format, but we suggest that you make it concise, unique and consistent within your lab, and as informative as possible. INSDC requires every sample name from a single Submitter to be unique. Use of a globally unique identifier for the field source_mat_id is recommended in addition to sample_name.""", json_schema_extra = { "linkml_meta": {'alias': 'samp_name',
+         'aliases': ['sample name'],
+         'annotations': {'expected_value': {'tag': 'expected_value', 'value': 'text'}},
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'ISDsoil1'}],
+         'is_a': 'investigation field',
+         'slot_uri': 'MIXS:0001107',
+         'string_serialization': '{text}'} })
     samp_preserv: Optional[TextValue] = Field(default=None, title="preservative added to sample", description="""Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)""", json_schema_extra = { "linkml_meta": {'alias': 'samp_preserv',
          'aliases': ['preservative added to sample'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -9636,7 +9686,6 @@ class Biosample(Sample):
          'examples': [{'value': 'biogenous'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0001078'} })
-    sequencing_field: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'abstract': True, 'alias': 'sequencing_field', 'domain_of': ['Biosample']} })
     sewage_type: Optional[TextValue] = Field(default=None, title="sewage type", description="""Type of wastewater treatment plant as municipial or industrial""", json_schema_extra = { "linkml_meta": {'alias': 'sewage_type',
          'aliases': ['sewage type'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -9945,13 +9994,6 @@ class Biosample(Sample):
          'examples': [{'value': 'construction'}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000836'} })
-    specific_ecosystem: Optional[str] = Field(default=None, description="""Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'specific_ecosystem',
-         'comments': ['Specific ecosystems help to define samples based on very '
-                      'specific characteristics of an environment under the five-level '
-                      'classification system.'],
-         'domain_of': ['Biosample', 'Study'],
-         'is_a': 'gold_path_field',
-         'see_also': ['https://gold.jgi.doe.gov/help']} })
     specific_humidity: Optional[QuantityValue] = Field(default=None, title="specific humidity", description="""The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.""", json_schema_extra = { "linkml_meta": {'alias': 'specific_humidity',
          'aliases': ['specific humidity'],
          'annotations': {'expected_value': {'tag': 'expected_value',
@@ -10921,16 +10963,52 @@ class Biosample(Sample):
          'examples': [{'value': ''}],
          'is_a': 'core field',
          'slot_uri': 'MIXS:0000156'} })
-    zinc: Optional[QuantityValue] = Field(default=None, title="zinc", description="""Concentration of zinc in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'zinc',
-         'aliases': ['zinc'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'measurement value'},
-                         'occurrence': {'tag': 'occurrence', 'value': '1'},
-                         'preferred_unit': {'tag': 'preferred_unit',
-                                            'value': 'mg/kg (ppm)'}},
-         'domain_of': ['Biosample'],
-         'examples': [{'value': '2.5 mg/kg'}],
-         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
+    ecosystem: Optional[str] = Field(default=None, description="""An ecosystem is a combination of a physical environment (abiotic factors) and all the organisms (biotic factors) that interact with this environment. Ecosystem is in position 1/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem',
+         'comments': ['The abiotic factors play a profound role on the type and '
+                      'composition of organisms in a given environment. The GOLD '
+                      'Ecosystem at the top of the five-level classification system is '
+                      'aimed at capturing the broader environment from which an '
+                      'organism or environmental sample is collected. The three broad '
+                      'groups under Ecosystem are Environmental, Host-associated, and '
+                      'Engineered. They represent samples collected from a natural '
+                      'environment or from another organism or from engineered '
+                      'environments like bioreactors respectively.'],
+         'domain_of': ['Biosample', 'Study'],
+         'is_a': 'gold_path_field',
+         'see_also': ['https://gold.jgi.doe.gov/help']} })
+    ecosystem_category: Optional[str] = Field(default=None, description="""Ecosystem categories represent divisions within the ecosystem based on specific characteristics of the environment from where an organism or sample is isolated. Ecosystem category is in position 2/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem_category',
+         'comments': ['The Environmental ecosystem (for example) is divided into Air, '
+                      'Aquatic and Terrestrial. Ecosystem categories for '
+                      'Host-associated samples can be individual hosts or phyla and '
+                      'for engineered samples it may be manipulated environments like '
+                      'bioreactors, solid waste etc.'],
+         'domain_of': ['Biosample', 'Study'],
+         'is_a': 'gold_path_field',
+         'see_also': ['https://gold.jgi.doe.gov/help']} })
+    ecosystem_type: Optional[str] = Field(default=None, description="""Ecosystem types represent things having common characteristics within the Ecosystem Category. These common characteristics based grouping is still broad but specific to the characteristics of a given environment. Ecosystem type is in position 3/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem_type',
+         'comments': ['The Aquatic ecosystem category (for example) may have ecosystem '
+                      'types like Marine or Thermal springs etc. Ecosystem category '
+                      'Air may have Indoor air or Outdoor air as different Ecosystem '
+                      'Types. In the case of Host-associated samples, ecosystem type '
+                      'can represent Respiratory system, Digestive system, Roots etc.'],
+         'domain_of': ['Biosample', 'Study'],
+         'is_a': 'gold_path_field',
+         'see_also': ['https://gold.jgi.doe.gov/help']} })
+    ecosystem_subtype: Optional[str] = Field(default=None, description="""Ecosystem subtypes represent further subdivision of Ecosystem types into more distinct subtypes. Ecosystem subtype is in position 4/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'ecosystem_subtype',
+         'comments': ['Ecosystem Type Marine (Environmental -> Aquatic -> Marine) is '
+                      'further divided (for example) into Intertidal zone, Coastal, '
+                      'Pelagic, Intertidal zone etc. in the Ecosystem subtype '
+                      'category.'],
+         'domain_of': ['Biosample', 'Study'],
+         'is_a': 'gold_path_field',
+         'see_also': ['https://gold.jgi.doe.gov/help']} })
+    specific_ecosystem: Optional[str] = Field(default=None, description="""Specific ecosystems represent specific features of the environment like aphotic zone in an ocean or gastric mucosa within a host digestive system. Specific ecosystem is in position 5/5 in a GOLD path.""", json_schema_extra = { "linkml_meta": {'alias': 'specific_ecosystem',
+         'comments': ['Specific ecosystems help to define samples based on very '
+                      'specific characteristics of an environment under the five-level '
+                      'classification system.'],
+         'domain_of': ['Biosample', 'Study'],
+         'is_a': 'gold_path_field',
+         'see_also': ['https://gold.jgi.doe.gov/help']} })
     add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     community: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'community', 'domain_of': ['Biosample']} })
     habitat: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'habitat', 'domain_of': ['FieldResearchSite', 'Biosample']} })
@@ -10985,6 +11063,19 @@ class Biosample(Sample):
          'rank': 10,
          'recommended': True,
          'slot_group': 'JGI-Metagenomics'} })
+    dna_cont_well: Optional[str] = Field(default=None, title="DNA plate position", json_schema_extra = { "linkml_meta": {'alias': 'dna_cont_well',
+         'comments': ["Required when 'plate' is selected for container type.",
+                      'Leave blank if the sample will be shipped in a tube.',
+                      'JGI will not process samples in corner wells, so A1, A12, H1 '
+                      'and H12 will not pass validation.',
+                      'For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 '
+                      '(NOT A2-A11,B1-B8).'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'B2'}],
+         'rank': 11,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{96 well plate pos}'} })
     dna_container_id: Optional[str] = Field(default=None, title="DNA container label", json_schema_extra = { "linkml_meta": {'alias': 'dna_container_id',
          'comments': ['Must be unique across all tubes and plates, and <20 characters. '
                       'All samples in a plate should have the same plate label.'],
@@ -11503,6 +11594,77 @@ class Biosample(Sample):
          'examples': [{'value': "['00:01:32', '00:00:53']"}],
          'list_elements_ordered': True,
          'see_also': ['https://www.protocols.io/view/field-sampling-protocol-kqdg3962pg25/v1']} })
+    zinc: Optional[QuantityValue] = Field(default=None, title="zinc", description="""Concentration of zinc in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'zinc',
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'measurement value'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'preferred_unit': {'tag': 'preferred_unit',
+                                            'value': 'mg/kg (ppm)'}},
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '2.5 mg/kg'}],
+         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
+    manganese: Optional[QuantityValue] = Field(default=None, title="manganese", description="""Concentration of manganese in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'manganese',
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'measurement value'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'preferred_unit': {'tag': 'preferred_unit',
+                                            'value': 'mg/kg (ppm)'}},
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '24.7 mg/kg'}],
+         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
+    ammonium_nitrogen: Optional[QuantityValue] = Field(default=None, title="ammonium nitrogen", description="""Concentration of ammonium nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'ammonium_nitrogen',
+         'aliases': ['NH4-N'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'measurement value'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '2.3 mg/kg'}],
+         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
+    nitrate_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrate_nitrogen", description="""Concentration of nitrate nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrate_nitrogen',
+         'aliases': ['NO3-N'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'measurement value'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
+         'comments': ['often below some specified limit of detection'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '0.29 mg/kg'}],
+         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
+    nitrite_nitrogen: Optional[QuantityValue] = Field(default=None, title="nitrite_nitrogen", description="""Concentration of nitrite nitrogen in the sample""", json_schema_extra = { "linkml_meta": {'alias': 'nitrite_nitrogen',
+         'aliases': ['NO2-N'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'measurement value'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'preferred_unit': {'tag': 'preferred_unit', 'value': 'mg/kg'}},
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '1.2 mg/kg'}],
+         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
+    lbc_thirty: Optional[QuantityValue] = Field(default=None, title="lime buffer capacity (at 30 minutes)", description="""lime buffer capacity, determined after 30 minute incubation""", json_schema_extra = { "linkml_meta": {'alias': 'lbc_thirty',
+         'aliases': ['lbc30', 'lime buffer capacity (at 30 minutes)'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'measurement value'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'preferred_unit': {'tag': 'preferred_unit',
+                                            'value': 'ppm CaCO3/pH'}},
+         'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
+                      'kg of soil by one pH unit'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '543 mg/kg'}],
+         'see_also': ['https://www.ornl.gov/content/bio-scales-0',
+                      'https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF']} })
+    lbceq: Optional[QuantityValue] = Field(default=None, title="lime buffer capacity (after 5 day incubation)", description="""lime buffer capacity, determined at equilibrium after 5 day incubation""", json_schema_extra = { "linkml_meta": {'alias': 'lbceq',
+         'aliases': ['lime buffer capacity (at 5-day equilibrium)'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'measurement value'},
+                         'occurrence': {'tag': 'occurrence', 'value': '1'},
+                         'preferred_unit': {'tag': 'preferred_unit',
+                                            'value': 'ppm CaCO3/pH'}},
+         'comments': ['This is the mass of lime, in mg, needed to raise the pH of one '
+                      'kg of soil by one pH unit'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '1575 mg/kg'}],
+         'see_also': ['https://www.ornl.gov/content/bio-scales-0']} })
     id: str = Field(default=..., description="""An NMDC assigned unique identifier for a biosample submitted to NMDC.""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -11661,19 +11823,6 @@ class Biosample(Sample):
             raise ValueError(err_msg)
         return v
 
-    @field_validator('dna_cont_well')
-    def pattern_dna_cont_well(cls, v):
-        pattern=re.compile(r"^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid dna_cont_well format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid dna_cont_well format: {v}"
-            raise ValueError(err_msg)
-        return v
-
     @field_validator('fire')
     def pattern_fire(cls, v):
         pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$")
@@ -11697,6 +11846,19 @@ class Biosample(Sample):
                     raise ValueError(err_msg)
         elif isinstance(v, str) and not pattern.match(v):
             err_msg = f"Invalid pres_animal_insect format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('dna_cont_well')
+    def pattern_dna_cont_well(cls, v):
+        pattern=re.compile(r"^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid dna_cont_well format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid dna_cont_well format: {v}"
             raise ValueError(err_msg)
         return v
 
@@ -13745,7 +13907,7 @@ class MixingProcess(MaterialProcessing):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
@@ -14318,7 +14480,7 @@ class DissolvingProcess(MaterialProcessing):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
@@ -14511,7 +14673,7 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
