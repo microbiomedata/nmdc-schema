@@ -278,6 +278,11 @@ class Migrator(MigratorBase):
         >>> result = m.ensure_quantity_value_has_unit(doc_with_unit, ["temp"], "nmdc:Biosample")
         >>> result["temp"]["has_unit"]
         'Cel'
+        >>> # Test one-off case: nitrate with "detection" unit
+        >>> doc_nitrate = {"nitrate": {"type": "nmdc:QuantityValue", "has_numeric_value": 1.0, "has_unit": "detection"}}
+        >>> result = m.ensure_quantity_value_has_unit(doc_nitrate, ["nitrate"], "nmdc:Biosample")
+        >>> result["nitrate"]["has_unit"]
+        'umol/L'
         """
         
         # Iterate through only the slots that are known to have QuantityValue range
@@ -332,14 +337,41 @@ class Migrator(MigratorBase):
                     self.reporter.track_operation('units_normalized', f"{current_unit} → {canonical_unit}", 1)
             else:
                 # Current unit is not in our alias map
-                # Check if it's already a valid enum value using cached values
-                if current_unit in self._valid_enum_values:
+                # Check for special one-off cases first
+                if self._handle_one_off_unit_cases(quantity_value, class_uri, slot_name, current_unit):
+                    # One-off case was handled, continue to next
+                    pass
+                elif current_unit in self._valid_enum_values:
                     # Unit is already a valid enum value, no action needed
                     pass
                 else:
                     # Current unit is not a valid enum value, check if it can be mapped
                     self._get_unit_for_class_slot(class_uri, slot_name, current_unit)
                     # If no mapping found, just report it but don't change the value
+    
+    def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, slot_name: str, current_unit: str) -> bool:
+        r"""
+        Handle special one-off unit conversion cases that don't fit the general pattern.
+        
+        Args:
+            quantity_value (dict): The QuantityValue instance to potentially modify
+            class_uri (str): The class URI (e.g., "nmdc:Biosample")
+            slot_name (str): The slot name (e.g., "nitrate")
+            current_unit (str): The current unit value
+            
+        Returns:
+            bool: True if a one-off case was handled, False otherwise
+        """
+        # Special case: Biosample nitrate with "detection" unit should become "umol/L"
+        if class_uri == "nmdc:Biosample" and slot_name == "nitrate" and current_unit == "detection":
+            quantity_value['has_unit'] = "umol/L"
+            # Track this special conversion
+            self.reporter.track_operation('one_off_unit_conversions', f"detection → umol/L (nitrate)", 1)
+            return True
+        
+        # Add other one-off cases here as needed
+        
+        return False
     
     def _get_unit_for_class_slot(self, class_uri: str, slot_name: str, current_unit_value: str = None) -> Optional[str]:
         r"""
