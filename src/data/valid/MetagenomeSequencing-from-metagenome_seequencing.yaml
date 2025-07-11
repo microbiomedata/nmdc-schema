@@ -1,7 +1,8 @@
 id: nmdc:wfmsa-11-ebq93z66.1
 has_input:
   - 'nmdc:bsm-11-547rwq94'
-was_informed_by: nmdc:dgns-11-kabd12
+was_informed_by:
+  - nmdc:dgns-11-kabd12
 git_url: 'https://github.com/microbiomedata/RawSequencingData'
 execution_resource: JGI
 version: v1.0.0

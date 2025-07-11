@@ -42,7 +42,8 @@ workflow_execution_set:
 - id: nmdc:wfnom-11-zs6pnn44.1
   started_at_time: '2024-03-10 23:25:16'
   ended_at_time: '2024-03-10 23:25:16'
-  was_informed_by: nmdc:omprc-11-0003fm52
+  was_informed_by:
+    - nmdc:omprc-11-0003fm52
   execution_resource: EMSL-RZR
   git_url: https://github.com/microbiomedata/enviroMS
   has_input:
