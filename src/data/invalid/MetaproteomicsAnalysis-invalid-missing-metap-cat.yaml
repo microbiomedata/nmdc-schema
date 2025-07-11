@@ -10,5 +10,5 @@ ended_at_time: '2023-08-11T17:00:00Z'
 execution_resource: EMSL
 git_url: https://github.com/microbiomedata/metaproteomics_analysis/releases/tag/v0.6.3
 was_informed_by:
-    - nmdc:dgms-12-384j8d
+  - nmdc:dgms-12-384j8d
 started_at_time: '2023-08-11T11:00:00Z'
