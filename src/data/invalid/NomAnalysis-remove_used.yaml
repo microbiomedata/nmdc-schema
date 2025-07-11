@@ -12,4 +12,4 @@ started_at_time: "2018-11-13T20:20:39+00:00"
 ended_at_time: "2018-11-13T20:20:39+00:00"
 used: 12T_FTICR_B #invalid b/c slot used has been removed from this class
 was_informed_by:
-    - nmdc:dgms-11-d9g3ad
+  - nmdc:dgms-11-d9g3ad
