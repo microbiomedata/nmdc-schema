@@ -33,4 +33,4 @@ class Migrator(MigratorBase):
         self.logger.info(f"Processing WorkflowExecution: {workflow_execution['id']}")
 
         workflow_execution["was_informed_by"] = [workflow_execution["was_informed_by"]]
-        return data_object
+        return workflow_execution
