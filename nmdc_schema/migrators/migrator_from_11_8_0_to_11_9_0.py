@@ -3,6 +3,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view
 from nmdc_schema.migrators.utils.migration_reporter import create_immediate_reporter
 from pymongo.client_session import ClientSession
+from typing import Optional
 import logging
 
 
@@ -11,9 +12,6 @@ class Migrator(MigratorBase):
 
     _from_version = "11.8.0"
     _to_version = "11.9.0"
-    
-    # Constants for repeated literals
-    MG_PER_KG_UNIT = "mg/kg"
 
     # Mapping of class/slot combinations to their appropriate UCUM units
     QUANTITY_VALUE_UNITS = {
@@ -283,10 +281,10 @@ class Migrator(MigratorBase):
         if 'has_unit' not in quantity_value or quantity_value['has_unit'] is None:
             # Get the appropriate unit from the mapping
             unit = self._get_unit_for_class_slot(class_uri, slot_name, None)
-            quantity_value['has_unit'] = unit
-            
-            # Track the unit addition using the generic reporter
-            self.reporter.track_operation('units_added', unit, 1)
+            if unit:  # Only update if we found a valid mapping
+                quantity_value['has_unit'] = unit
+                # Track the unit addition using the generic reporter
+                self.reporter.track_operation('units_added', unit, 1)
             
         else:
             # has_unit exists, check if it needs normalization
@@ -305,11 +303,9 @@ class Migrator(MigratorBase):
             else:
                 # Current unit is not in our alias map, check if it can be mapped
                 unit = self._get_unit_for_class_slot(class_uri, slot_name, current_unit)
-                if unit == "UO:0000000":  # Generic fallback unit was used
-                    # The current unit couldn't be mapped, so we keep it as is
-                    pass
+                # If no mapping found, just report it but don't change the value
     
-    def _get_unit_for_class_slot(self, class_uri: str, slot_name: str, current_unit_value: str = None) -> str:
+    def _get_unit_for_class_slot(self, class_uri: str, slot_name: str, current_unit_value: str = None) -> Optional[str]:
         r"""
         Gets the appropriate unit for a given class and slot combination.
         
@@ -319,7 +315,7 @@ class Migrator(MigratorBase):
             current_unit_value (str, optional): The current unit value that couldn't be mapped
             
         Returns:
-            str: The appropriate unit, or a generic unit if no mapping is found
+            str or None: The appropriate unit, or None if no mapping is found
             
         >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
         >>> m = Migrator(DictionaryAdapter({}))
@@ -331,10 +327,10 @@ class Migrator(MigratorBase):
         'Cel'
         >>> m._get_unit_for_class_slot("nmdc:Biosample", "calcium")
         'mg/kg'
-        >>> m._get_unit_for_class_slot("nmdc:Biosample", "unknown_slot")
-        'UO:0000000'
-        >>> m._get_unit_for_class_slot("nmdc:UnknownClass", "temp")
-        'UO:0000000'
+        >>> m._get_unit_for_class_slot("nmdc:Biosample", "unknown_slot") is None
+        True
+        >>> m._get_unit_for_class_slot("nmdc:UnknownClass", "temp") is None
+        True
         """
         # Look up the unit in the mapping
         class_units = self.QUANTITY_VALUE_UNITS.get(class_uri, {})
@@ -351,5 +347,5 @@ class Migrator(MigratorBase):
             if current_unit_value is not None:
                 self.reporter.track_value_set('unmapped_values', slot_key, current_unit_value)
             
-            # Fallback to a generic unit if no mapping is found
-            return "UO:0000000"  # Generic unit ontology term
+            # Return None instead of a fallback unit - just report and don't update
+            return None
