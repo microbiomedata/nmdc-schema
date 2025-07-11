@@ -11,4 +11,4 @@ type: nmdc:NomAnalysis
 started_at_time: "2018-11-13T20:20:39+00:00"
 ended_at_time: 2018-11-13T20:20:39+00:00
 was_informed_by:
-    - nmdc:dgms-11-d84ad4
+  - nmdc:dgms-11-d84ad4
