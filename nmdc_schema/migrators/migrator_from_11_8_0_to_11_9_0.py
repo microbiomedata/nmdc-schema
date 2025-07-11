@@ -11,6 +11,9 @@ class Migrator(MigratorBase):
 
     _from_version = "11.8.0"
     _to_version = "11.9.0"
+    
+    # Constants for repeated literals
+    MG_PER_KG_UNIT = "mg/kg"
 
     # Mapping of class/slot combinations to their appropriate UCUM units
     QUANTITY_VALUE_UNITS = {
