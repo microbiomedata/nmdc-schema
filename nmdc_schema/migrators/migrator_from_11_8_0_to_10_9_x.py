@@ -21,7 +21,7 @@ class Migrator(MigratorBase):
         Update was_informed_by to be multivalued.
 
         >>> m = Migrator()
-        >>> m.was_informed_by({'id': 1, 'was_informed_by': 'nmdc:dgns-11-abdc4'})  # test: value not relevant
+        >>> m.update_was_informed_by({'id': 1, 'was_informed_by': 'nmdc:dgns-11-abdc4'})  # test: value not relevant
         {'id': 1, 'was_informed_by': ['nmdc:dgns-11-abdc4']}
         """
         self.logger.info(f"Processing WorkflowExecution: {workflow_execution['id']}")
