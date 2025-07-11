@@ -65,6 +65,57 @@ Here's how you can create a new migrator:
    > You can refer to the example migrator (i.e. `migrator_from_1_0_0_to_EXAMPLE.py`) and other migrators for reference.
 3. Done.
 
+## Adding Migration Reporting
+
+To add consistent reporting to a new migrator:
+
+1. **Import the reporter**:
+   ```python
+   from nmdc_schema.migrators.utils.migration_reporter import create_immediate_reporter
+   import logging
+   ```
+
+2. **Initialize in upgrade() method**:
+   ```python
+   def upgrade(self):
+       logging.basicConfig(level=logging.INFO, format='%(message)s')
+       self.logger.setLevel(logging.INFO)
+       reporter = create_immediate_reporter(self.logger)
+   ```
+
+3. **Wrap collection processing**:
+   ```python
+   reporter.start_collection(collection_name)
+   
+   # Process documents...
+   docs_updated = 0
+   for document in collection.find():
+       # Do migration work...
+       if modified:
+           docs_updated += 1
+   
+   reporter.end_collection(collection_name, total_docs, docs_updated)
+   ```
+
+4. **Track operations**:
+   ```python
+   # Count operations: reporter.track_operation(type, key, count)
+   reporter.track_operation('fields_added', 'names', 1)
+   
+   # Track unique items: reporter.track_item(type, item)
+   reporter.track_item('collections_modified', 'study_set')
+   
+   # Track nested values: reporter.track_value_set(type, key, value)  
+   reporter.track_value_set('errors_by_collection', 'study_set', 'missing_id')
+   ```
+
+5. **Generate final report**:
+   ```python
+   reporter.generate_final_report()
+   ```
+
+See `migrator_from_1_0_0_to_EXAMPLE.py` for a complete example. 
+
 ## Testing the migrator
 
 1. Create a local copy of the MongoDB database with a schema that conforms to the release from which you are migrating.
@@ -100,4 +151,4 @@ Once up, check the ports.  The default ports this comes with are 27017 (internal
 
 3. Run the migrator against the test database. 
 4. Verify that the test database conforms to the new schema.
-5. Run validation checks against the migrated database. 
+5. Run validation checks against the migrated database.

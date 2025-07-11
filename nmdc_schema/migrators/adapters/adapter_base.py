@@ -150,3 +150,11 @@ class AdapterBase(ABC):
         into the destination field, creating the destination field if it doesn't already exist.
         """
         pass
+
+    @abstractmethod
+    def get_database(self):
+        r"""
+        Returns the database instance for direct database operations.
+        Implementation should return the underlying database connection/instance.
+        """
+        pass

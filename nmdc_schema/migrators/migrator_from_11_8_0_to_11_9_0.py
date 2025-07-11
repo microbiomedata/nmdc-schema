@@ -1,7 +1,8 @@
+from adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view
+from nmdc_schema.migrators.utils.migration_reporter import create_immediate_reporter
 from pymongo.client_session import ClientSession
-from collections import defaultdict
 import logging
 
 
@@ -80,6 +81,11 @@ class Migrator(MigratorBase):
         }
     }
 
+    def __init__(self, adapter: AdapterBase = None, logger=None):
+        super().__init__(adapter, logger)
+        self._unit_alias_map = None
+        self.reporter = None
+
     def upgrade(self) -> None:
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
@@ -87,19 +93,10 @@ class Migrator(MigratorBase):
         This migration ensures that all QuantityValue instances in records have non-null has_unit values.
         All operations are wrapped in a MongoDB transaction for atomicity and rollback capability.
         """
-        # Configure logging to ensure INFO messages are displayed
+        # Configure logging and initialize generic reporter
         logging.basicConfig(level=logging.INFO, format='%(message)s')
         self.logger.setLevel(logging.INFO)
-        
-        # Initialize statistics tracking
-        self.stats = {
-            'collections_processed': set(),
-            'documents_updated': defaultdict(int),  # collection_name -> count
-            'units_added': defaultdict(lambda: defaultdict(int)),  # collection_name -> {unit -> count}
-            'units_normalized': defaultdict(lambda: defaultdict(int)),  # collection_name -> {old_unit -> count}
-            'unmapped_slots': defaultdict(set),  # collection_name -> {slot_names}
-        }
-        self._collection_doc_counts = defaultdict(int)  # collection_name -> total_docs
+        self.reporter = create_immediate_reporter(self.logger)
         
         # Build unit alias lookup from schema
         self._unit_alias_map = self._build_unit_alias_map()
@@ -113,12 +110,13 @@ class Migrator(MigratorBase):
         self.logger.info(f"Found {len(classes_with_quantity_value_slots)} classes with QuantityValue slots")
         
         # Use MongoDB transactions for atomicity
-        with self.adapter._db.client.start_session() as session:
+        db = self.adapter.get_database()
+        with db.client.start_session() as session:
             with session.start_transaction():
                 try:
                     self.logger.info("Starting migration with transaction support")
                     self._process_collections_with_transaction(classes_with_quantity_value_slots, session)
-                    self._report_migration_summary()
+                    self.reporter.generate_final_report()
                     self.logger.info("Migration completed successfully!")
                 except Exception as e:
                     self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
@@ -137,12 +135,12 @@ class Migrator(MigratorBase):
             class_uri = f"nmdc:{class_name}"
             
             # Get the collection and process documents within the transaction
-            collection = self.adapter._db.get_collection(collection_name)
+            db = self.adapter.get_database()
+            collection = db.get_collection(collection_name)
             
-            # Track this collection as processed
-            self.stats['collections_processed'].add(collection_name)
-            
-            self.logger.info(f"Processing collection: {collection_name}")
+            # Start collection reporting
+            self.reporter.start_collection(collection_name)
+            self._current_collection = collection_name
             
             # Process each document in the collection
             docs_in_collection = 0
@@ -151,10 +149,6 @@ class Migrator(MigratorBase):
             for document in collection.find({}, session=session):
                 docs_in_collection += 1
                 original_document = document.copy()
-                
-                # Reset per-document stats tracking
-                self._current_collection = collection_name
-                self._document_modified = False
                 
                 modified_document = self.ensure_quantity_value_has_unit(document, slots, class_uri)
                 
@@ -166,16 +160,13 @@ class Migrator(MigratorBase):
                         session=session
                     )
                     docs_updated_in_collection += 1
-                    self.stats['documents_updated'][collection_name] += 1
             
-            # Track total document count for this collection
-            self._collection_doc_counts[collection_name] = docs_in_collection
-            
-            if docs_in_collection > 0:
-                self.logger.info(f"  {collection_name}: {docs_updated_in_collection}/{docs_in_collection} documents updated")
+            # End collection reporting
+            self.reporter.end_collection(collection_name, docs_in_collection, docs_updated_in_collection)
     
 
-    def _get_classes_with_quantity_value_slots(self, view) -> dict:
+    @staticmethod
+    def _get_classes_with_quantity_value_slots(view) -> dict:
         r"""
         Returns a dictionary mapping class names to lists of their slot names that have QuantityValue range.
         
@@ -204,7 +195,8 @@ class Migrator(MigratorBase):
         
         return classes_with_quantity_value_slots
 
-    def _build_unit_alias_map(self) -> dict:
+    @staticmethod
+    def _build_unit_alias_map() -> dict:
         r"""
         Builds a mapping from unit aliases to their canonical UCUM values using the schema.
         
@@ -243,6 +235,18 @@ class Migrator(MigratorBase):
             
         Returns:
             dict: The modified document with has_unit values added to QuantityValue instances
+            
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> m = Migrator(DictionaryAdapter({}))
+        >>> doc = {"temp": {"type": "nmdc:QuantityValue", "has_numeric_value": 25.0}}
+        >>> result = m.ensure_quantity_value_has_unit(doc, ["temp"], "nmdc:Biosample")
+        >>> result["temp"]["has_unit"]
+        'Cel'
+        >>> doc_with_unit = {"temp": {"type": "nmdc:QuantityValue", "has_numeric_value": 25.0, "has_unit": "Celsius"}}
+        >>> m._unit_alias_map = {"Celsius": "Cel"}
+        >>> result = m.ensure_quantity_value_has_unit(doc_with_unit, ["temp"], "nmdc:Biosample")
+        >>> result["temp"]["has_unit"]
+        'Cel'
         """
         
         # Iterate through only the slots that are known to have QuantityValue range
@@ -272,16 +276,14 @@ class Migrator(MigratorBase):
             class_uri (str): The class URI (e.g., "nmdc:Biosample")
             slot_name (str): The slot name (e.g., "temp")
         """
-        collection_name = getattr(self, '_current_collection', 'unknown')
-        
         # Check if has_unit is missing or is None
         if 'has_unit' not in quantity_value or quantity_value['has_unit'] is None:
             # Get the appropriate unit from the mapping
-            unit = self._get_unit_for_class_slot(class_uri, slot_name)
+            unit = self._get_unit_for_class_slot(class_uri, slot_name, None)
             quantity_value['has_unit'] = unit
             
-            # Track the unit addition in stats
-            self.stats['units_added'][collection_name][unit] += 1
+            # Track the unit addition using the generic reporter
+            self.reporter.track_operation('units_added', unit, 1)
             
         else:
             # has_unit exists, check if it needs normalization
@@ -295,19 +297,41 @@ class Migrator(MigratorBase):
                 if current_unit != canonical_unit:
                     quantity_value['has_unit'] = canonical_unit
                     
-                    # Track the unit normalization in stats
-                    self.stats['units_normalized'][collection_name][f"{current_unit} → {canonical_unit}"] += 1
+                    # Track the unit normalization using the generic reporter
+                    self.reporter.track_operation('units_normalized', f"{current_unit} → {canonical_unit}", 1)
+            else:
+                # Current unit is not in our alias map, check if it can be mapped
+                unit = self._get_unit_for_class_slot(class_uri, slot_name, current_unit)
+                if unit == "UO:0000000":  # Generic fallback unit was used
+                    # The current unit couldn't be mapped, so we keep it as is
+                    pass
     
-    def _get_unit_for_class_slot(self, class_uri: str, slot_name: str) -> str:
+    def _get_unit_for_class_slot(self, class_uri: str, slot_name: str, current_unit_value: str = None) -> str:
         r"""
         Gets the appropriate unit for a given class and slot combination.
         
         Args:
             class_uri (str): The class URI (e.g., "nmdc:Biosample")
             slot_name (str): The slot name (e.g., "temp")
+            current_unit_value (str, optional): The current unit value that couldn't be mapped
             
         Returns:
             str: The appropriate unit, or a generic unit if no mapping is found
+            
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> m = Migrator(DictionaryAdapter({}))
+        >>> m.reporter = type('MockReporter', (), {
+        ...     'track_item': lambda *args: None, 
+        ...     'track_value_set': lambda *args: None
+        ... })()
+        >>> m._get_unit_for_class_slot("nmdc:Biosample", "temp")
+        'Cel'
+        >>> m._get_unit_for_class_slot("nmdc:Biosample", "calcium")
+        'mg/kg'
+        >>> m._get_unit_for_class_slot("nmdc:Biosample", "unknown_slot")
+        'UO:0000000'
+        >>> m._get_unit_for_class_slot("nmdc:UnknownClass", "temp")
+        'UO:0000000'
         """
         # Look up the unit in the mapping
         class_units = self.QUANTITY_VALUE_UNITS.get(class_uri, {})
@@ -316,80 +340,13 @@ class Migrator(MigratorBase):
         if unit:
             return unit
         else:
-            # Track unmapped slots
-            collection_name = getattr(self, '_current_collection', 'unknown')
-            self.stats['unmapped_slots'][collection_name].add(f"{class_uri}.{slot_name}")
+            # Track unmapped slots and values using the generic reporter
+            slot_key = f"{class_uri}.{slot_name}"
+            self.reporter.track_item('unmapped_slots', slot_key)
+            
+            # Track the actual unit value that couldn't be mapped
+            if current_unit_value is not None:
+                self.reporter.track_value_set('unmapped_values', slot_key, current_unit_value)
             
             # Fallback to a generic unit if no mapping is found
             return "UO:0000000"  # Generic unit ontology term
-    
-    def _report_migration_summary(self) -> None:
-        r"""
-        Reports a summary of the migration results.
-        """
-        self.logger.info("\n" + "="*60)
-        self.logger.info("MIGRATION SUMMARY")
-        self.logger.info("="*60)
-        
-        # Collections processed
-        total_collections = len(self.stats['collections_processed'])
-        self.logger.info(f"Collections checked: {total_collections}")
-        
-        # Show all collections that were checked, with their document counts
-        self.logger.info("\nCollections with QuantityValue slots:")
-        for collection in sorted(self.stats['collections_processed']):
-            doc_count = self.stats['documents_updated'].get(collection, 0)
-            total_docs = getattr(self, '_collection_doc_counts', {}).get(collection, 0)
-            if total_docs > 0:
-                self.logger.info(f"  {collection}: {total_docs} documents ({doc_count} updated)")
-            else:
-                self.logger.info(f"  {collection}: 0 documents (empty collection)")
-        
-        # Documents updated summary
-        total_docs_updated = sum(self.stats['documents_updated'].values())
-        self.logger.info(f"\nTotal documents updated: {total_docs_updated}")
-        
-        # Units added summary
-        total_units_added = sum(
-            sum(units.values()) for units in self.stats['units_added'].values()
-        )
-        
-        if total_units_added > 0:
-            self.logger.info(f"\nTotal QuantityValue units added: {total_units_added}")
-            self.logger.info("\nUnits added by collection and type:")
-            
-            for collection in sorted(self.stats['units_added'].keys()):
-                units = self.stats['units_added'][collection]
-                if units:
-                    self.logger.info(f"  {collection}:")
-                    for unit, count in sorted(units.items()):
-                        self.logger.info(f"    {unit}: {count}")
-        
-        # Unit normalization summary
-        total_units_normalized = sum(
-            sum(units.values()) for units in self.stats['units_normalized'].values()
-        )
-        
-        if total_units_normalized > 0:
-            self.logger.info(f"\nTotal QuantityValue units normalized: {total_units_normalized}")
-            self.logger.info("\nUnits normalized by collection and type:")
-            
-            for collection in sorted(self.stats['units_normalized'].keys()):
-                units = self.stats['units_normalized'][collection]
-                if units:
-                    self.logger.info(f"  {collection}:")
-                    for unit_change, count in sorted(units.items()):
-                        self.logger.info(f"    {unit_change}: {count}")
-        
-        # Unmapped slots warning
-        total_unmapped = sum(len(slots) for slots in self.stats['unmapped_slots'].values())
-        if total_unmapped > 0:
-            self.logger.warning(f"\nFound {total_unmapped} unmapped slot types that received generic units:")
-            for collection in sorted(self.stats['unmapped_slots'].keys()):
-                slots = self.stats['unmapped_slots'][collection]
-                if slots:
-                    self.logger.warning(f"  {collection}:")
-                    for slot in sorted(slots):
-                        self.logger.warning(f"    {slot}")
-        
-        self.logger.info("="*60)

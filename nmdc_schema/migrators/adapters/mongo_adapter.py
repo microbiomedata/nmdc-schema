@@ -253,3 +253,9 @@ class MongoAdapter(AdapterBase):
                 {source_field_name: {"$exists": True}},
                 [{"$set": {destination_field_name: f"${source_field_name}"}}]
             )
+
+    def get_database(self):
+        r"""
+        Returns the database instance for direct MongoDB operations.
+        """
+        return self._db
