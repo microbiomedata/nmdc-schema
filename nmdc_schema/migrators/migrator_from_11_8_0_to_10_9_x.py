@@ -10,14 +10,8 @@ class Migrator(MigratorBase):
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        # Update each document in the `data_object_set` collection so that it uses a valid `FileTypeEnum` value.
-        #
-        # Note: The schema changed such that the `FileTypeEnum` value, "Metagenome Bins Compression File", is no longer
-        #       valid. It was replaced with the value, "Metagenome HQMQ Bins Compression File". This migrator
-        #       transforms all occurrences of the former value into the latter value, so that data that was valid with
-        #       respect to the old schema is valid with respect to the new schema. According to the schema docs,
-        #       the `FileTypeEnum` enum is used only by the `data_object_type` slot of the `DataObject` class.
-        #
+        # Update each document in the `workflow_execution_set` collection so was_informed_by is multivalued.
+
         self.adapter.process_each_document(
             "workflow_execution_set", [self.update_was_informed_by]
         )
