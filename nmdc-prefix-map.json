@@ -50,6 +50,7 @@
    "SIO": "http://semanticscience.org/resource/SIO_",
    "SO": "http://purl.obolibrary.org/obo/SO_",
    "SUPFAM": "https://bioregistry.io/supfam:",
+   "TAXRANK": "http://purl.obolibrary.org/obo/TAXRANK_",
    "TIGRFAM": "https://bioregistry.io/tigrfam:",
    "UBERON": "http://purl.obolibrary.org/obo/UBERON_",
    "UO": "http://purl.obolibrary.org/obo/UO_",
