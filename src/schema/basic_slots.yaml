@@ -646,7 +646,7 @@ enums:
           file_name_pattern: '^_aggregated_classification\.tsv?$'  
         
       Reference Calibration File:
-        description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
+        description: A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
       
       Metagenome Raw Reads:
         description: Interleaved paired-end raw metagenome sequencing data
