@@ -40,7 +40,7 @@ slots:
       Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such
       as software tool name and version or pipeline name and version.
     mappings:
-      - edam.data:0949
+      - NCIT:C165211
     examples:
       - value: metaspades v. 3.15.2
       - value: IMG Annotation Pipeline v.5.0.25
