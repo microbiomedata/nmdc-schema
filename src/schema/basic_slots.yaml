@@ -630,7 +630,7 @@ enums:
           file_name_pattern: '^_virus_summary\.tsv?$'
       
       Plasmid Summary:
-        description: Tab separated file listing the plasmids found be geNomad.
+        description: Tab separated file listing the plasmids found by geNomad.
         see_also: 
           - https://portal.nersc.gov/genomad/
         annotations:
@@ -646,7 +646,7 @@ enums:
           file_name_pattern: '^_aggregated_classification\.tsv?$'  
         
       Reference Calibration File:
-        description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
+        description: A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
       
       Metagenome Raw Reads:
         description: Interleaved paired-end raw metagenome sequencing data
@@ -734,7 +734,7 @@ enums:
         description: Metagenome bin contigs fasta
 
       Metagenome HQMQ Bins Compression File:
-        description: Compressed file containing high qulaity and medium quality metagenome bins and associated files
+        description: Compressed file containing high quality and medium quality metagenome bins and associated files
         annotations:
           file_name_pattern: "[mag_wf_activity_id]_hqmq_bin.zip"
 
@@ -886,7 +886,7 @@ enums:
       Filtered Sequencing Reads:
         description: Reads QC result fastq (clean data)
         annotations:
-          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz "
+          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz"
 
       Read Filtering Info File:
         description: File containing read filtering information
