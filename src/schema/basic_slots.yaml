@@ -886,7 +886,7 @@ enums:
       Filtered Sequencing Reads:
         description: Reads QC result fastq (clean data)
         annotations:
-          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz "
+          file_name_pattern: "/.+?(?=filter)/filter-METAGENOME.fastq.gz"
 
       Read Filtering Info File:
         description: File containing read filtering information
