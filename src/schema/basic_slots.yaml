@@ -732,6 +732,9 @@ enums:
 
       Metagenome Bins:
         description: Metagenome bin contigs fasta
+        deprecated: Deprecated in favor of separate permissible values based on bin quality.
+        last_updated_on: "2025-07-14"
+        modified_by: orcid:0000-0002-5004-3362
 
       Metagenome HQMQ Bins Compression File:
         description: Compressed file containing high quality and medium quality metagenome bins and associated files
