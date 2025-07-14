@@ -734,7 +734,7 @@ enums:
         description: Metagenome bin contigs fasta
 
       Metagenome HQMQ Bins Compression File:
-        description: Compressed file containing high qulaity and medium quality metagenome bins and associated files
+        description: Compressed file containing high quality and medium quality metagenome bins and associated files
         annotations:
           file_name_pattern: "[mag_wf_activity_id]_hqmq_bin.zip"
 
