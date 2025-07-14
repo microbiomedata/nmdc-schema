@@ -16,7 +16,6 @@ prefixes:
   doi: 'https://bioregistry.io/doi:'
   edam.data: "http://edamontology.org/data_" # for doi_value and DataCategoryEnum only
   edam.format: "http://edamontology.org/format_" # for 'Configuration toml' PV only only
-  EDAM: "http://edamontology.org/"
   linkml: "https://w3id.org/linkml/"
   nmdc: "https://w3id.org/nmdc/"
   prov: "http://www.w3.org/ns/prov#" # for startedAtTime, endedAtTime, Association, Activity, wasInformedBy, wasGeneratedBy, qualifiedAssociation
@@ -41,7 +40,7 @@ slots:
       Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such
       as software tool name and version or pipeline name and version.
     mappings:
-      - EDAM:0949
+      - edam.data:0949
     examples:
       - value: metaspades v. 3.15.2
       - value: IMG Annotation Pipeline v.5.0.25
