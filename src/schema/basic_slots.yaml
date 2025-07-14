@@ -34,6 +34,56 @@ default_range: string
 
 slots:
 
+  country_or_sea:
+    range: string
+    description: A maximally coarse-grained, geo-political description of where something is, came from, took place, etc.
+    comments:
+      - MIxS states that country or sea names should be chosen from the INSDC country list aka the geo_loc_name-qualifier-vocabulary
+      - https://www.insdc.org/submitting-standards/geo_loc_name-qualifier-vocabulary/
+      - https://www.cia.gov/the-world-factbook/ and http://unstats.un.org/unsd/methods/m49/m49.htm
+    todos:
+      - "ValueError: https://www.cia.gov/the-world-factbook/ and http://unstats.un.org/unsd/methods/m49/m49.htm is not a valid URI or CURIE"
+      - when populating see_also
+    examples:
+      - value: "Canada"
+      - value: "Atlantic Ocean"
+      - value: "USA"
+    narrow_mappings:
+      - mixs:0000010
+    rank: 1
+    required: true
+
+  subnational_1_or_ocean_region:
+    range: string
+    description: A geo-political description of a region that is a direct, unambiguous subdivision of a paired country_or_sea value,
+      OR an unambiguous region or feature within an ocean or "sea".
+    comments:
+      - "INSDC's guidance could be taken to imply that Vancouver or Cote d’Azur are appropriate values for this slot, but NMDC would place those in the locality slot."
+    aliases:
+      - state
+    examples:
+      - value: "British Columbia"
+      - value: "Charlie Gibbs Fracture Zone"
+      - value: "Maryland"
+    narrow_mappings:
+      - mixs:0000010
+    rank: 2
+    recommended: true
+
+  locality:
+    range: string
+    description: A geo-political description of a region or feature that is within or overlaps with a paired subnational_1_or_ocean_region value.
+    aliases:
+      - state
+    examples:
+      - value: "Vancouver"
+      - value: "Cote d’Azur"
+      - value: "Bethesda"
+    narrow_mappings:
+      - mixs:0000010
+    rank: 3
+    recommended: true
+
   qc_comment:
     range: string
     description: >-
@@ -624,27 +674,27 @@ enums:
       
       Virus Summary:
         description: Tab separated file listing the viruses found by geNomad.
-        see_also: 
+        see_also:
           - https://portal.nersc.gov/genomad/
         annotations:
           file_name_pattern: '^_virus_summary\.tsv?$'
       
       Plasmid Summary:
         description: Tab separated file listing the plasmids found be geNomad.
-        see_also: 
+        see_also:
           - https://portal.nersc.gov/genomad/
         annotations:
           file_name_pattern: '^_plasmid_summary\.tsv?$'
-        
+
       GeNomad Aggregated Classification:
         description: >-
           Tab separated file which combines the results from neural network-based classification
           and marker-based classification for virus and plasmid detection with geNomad.
-        see_also: 
+        see_also:
           - https://portal.nersc.gov/genomad/
         annotations:
-          file_name_pattern: '^_aggregated_classification\.tsv?$'  
-        
+          file_name_pattern: '^_aggregated_classification\.tsv?$'
+
       Reference Calibration File:
         description: A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
       
@@ -1163,12 +1213,12 @@ enums:
         title: Metagenome
       metatranscriptome:
         aliases:
-          - metaT  
+          - metaT
         title: Metatranscriptome
       amplicon_sequencing_assay:
         meaning: OBI:0002767
         title: Amplicon
-        
+
   MassSpectrometryEnum:
     permissible_values:
       metaproteome:
@@ -1179,13 +1229,13 @@ enums:
         aliases:
           - metaB
         title: Metabolome
-      lipidome: 
+      lipidome:
         title: Lipidome
       nom:
         aliases:
           - natural organic matter
         title: Natural Organic Matter
-        
+
   ExtractionTargetEnum:
     permissible_values:
       DNA: { }
