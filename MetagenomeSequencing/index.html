@@ -378,7 +378,7 @@
 
   MetagenomeSequencing : was_informed_by
 
-      MetagenomeSequencing --&gt; "1" NucleotideSequencing : was_informed_by
+      MetagenomeSequencing --&gt; "1..*" NucleotideSequencing : was_informed_by
     click NucleotideSequencing href "../NucleotideSequencing"
 
 
@@ -443,8 +443,8 @@
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
-<td>1 <br/> <a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
-<td></td>
+<td>1..* <br/> <a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>The primary DataGeneration subclass that the WorkflowExecution subclass depen...</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
@@ -683,6 +683,12 @@ attributes:
     range: string
   was_informed_by:
     name: was_informed_by
+    description: The primary DataGeneration subclass that the WorkflowExecution subclass
+      depends on.
+    comments:
+    - For version 1 of the proteomics workflow there are input files both from the
+      NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered
+      the primary class to reference.
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
       was_informed_by:
@@ -690,7 +696,7 @@ attributes:
         predicate: EXACT_SYNONYM
         contexts:
         - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    mappings:
+    narrow_mappings:
     - prov:wasInformedBy
     rank: 1000
     alias: was_informed_by
@@ -699,6 +705,7 @@ attributes:
     - WorkflowExecution
     range: NucleotideSequencing
     required: true
+    multivalued: true
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true

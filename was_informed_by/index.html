@@ -538,6 +538,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -599,6 +608,7 @@
 
 
 <h1 id="slot-was_informed_by">Slot: was_informed_by</h1>
+<p><em>The primary DataGeneration subclass that the WorkflowExecution subclass depends on.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/was_informed_by">nmdc:was_informed_by</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -613,13 +623,13 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
 <td></td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
-<td></td>
+<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td>A workflow process that provides expression values and read counts for gene f...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -638,28 +648,8 @@
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
-<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
-<td>Initial sequencing activity that precedes any analysis</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
 <td></td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
-<td>A workflow process that provides expression values and read counts for gene f...</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
-<td>A workflow execution activity that performs taxonomy classification using seq...</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -668,7 +658,27 @@
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
+<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
 <td></td>
 <td>yes</td>
 </tr>
@@ -678,15 +688,24 @@
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
+<td>A workflow execution activity that performs taxonomy classification using seq...</td>
 <td>yes</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../DataGeneration/">DataGeneration</a></li>
+<li>
+<p>Range: <a href="../DataGeneration/">DataGeneration</a></p>
+</li>
+<li>
+<p>Multivalued: True</p>
+</li>
+</ul>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference.</li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -703,7 +722,7 @@
 </thead>
 <tbody>
 <tr>
-<td>mappings</td>
+<td>narrow</td>
 <td>prov:wasInformedBy</td>
 </tr>
 </tbody>
@@ -712,6 +731,12 @@
 <details>
 
 <pre><code class="language-yaml">name: was_informed_by
+description: The primary DataGeneration subclass that the WorkflowExecution subclass
+  depends on.
+comments:
+- For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing
+  and MassSpectrometry, the MassSpectrometry record is considered the primary class
+  to reference.
 from_schema: https://w3id.org/nmdc/nmdc
 structured_aliases:
   was_informed_by:
@@ -719,13 +744,14 @@ structured_aliases:
     predicate: EXACT_SYNONYM
     contexts:
     - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-mappings:
+narrow_mappings:
 - prov:wasInformedBy
 rank: 1000
 alias: was_informed_by
 domain_of:
 - WorkflowExecution
 range: DataGeneration
+multivalued: true
 
 </code></pre>
 
