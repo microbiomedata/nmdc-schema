@@ -494,6 +494,7 @@ classes:
         required: true
       was_informed_by:
         required: true
+
 slots:
   associated_studies:
     description: The study associated with a resource.
@@ -511,8 +512,13 @@ slots:
     slot_uri: dcterms:isPartOf
     description: Links a resource to another resource that either logically or physically includes it.
   was_informed_by:
+    description: The primary DataGeneration subclass that the WorkflowExecution subclass depends on.
+    comments: >-
+      For version 1 of the proteomics workflow there are input files both from the NucleotideSequencing
+      and MassSpectrometry, the MassSpectrometry record is considered the primary class to reference.
+    multivalued: true  
     range: DataGeneration
-    mappings:
+    narrow_mappings:
       - prov:wasInformedBy
     structured_aliases:
       was_informed_by:

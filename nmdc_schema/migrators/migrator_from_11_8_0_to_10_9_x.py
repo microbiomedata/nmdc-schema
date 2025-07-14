@@ -1,0 +1,30 @@
+from nmdc_schema.migrators.migrator_base import MigratorBase
+
+
+class Migrator(MigratorBase):
+    r"""Migrates a database between two schemas."""
+
+    _from_version = "11.8.0"  
+    _to_version = "11.9.0"  
+
+    def upgrade(self) -> None:
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+
+        # Update each document in the `workflow_execution_set` collection so was_informed_by is multivalued.
+
+        self.adapter.process_each_document(
+            "workflow_execution_set", [self.update_was_informed_by]
+        )
+
+    def update_was_informed_by(self, workflow_execution: dict) -> dict:
+        r"""
+        Update was_informed_by to be multivalued.
+
+        >>> m = Migrator()
+        >>> m.update_was_informed_by({'id': 1, 'was_informed_by': 'nmdc:dgns-11-abdc4'})  # test: value not relevant
+        {'id': 1, 'was_informed_by': ['nmdc:dgns-11-abdc4']}
+        """
+        self.logger.info(f"Processing WorkflowExecution: {workflow_execution['id']}")
+
+        workflow_execution["was_informed_by"] = [workflow_execution["was_informed_by"]]
+        return workflow_execution
