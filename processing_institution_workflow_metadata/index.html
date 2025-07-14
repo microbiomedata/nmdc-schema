@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/alternative_names/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/processing_institution_workflow_metadata/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: alternative_names - NMDC Schema Documentation</title>
+        <title>Slot: processing_institution_workflow_metadata - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-alternative_names" class="md-skip">
+        <a href="#slot-processing_institution_workflow_metadata" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: alternative_names
+              Slot: processing_institution_workflow_metadata
             
           </span>
         </div>
@@ -538,6 +538,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -598,9 +607,9 @@
   
 
 
-<h1 id="slot-alternative_names">Slot: alternative_names</h1>
-<p><em>A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.</em></p>
-<p>URI: <a href="https://w3id.org/nmdc/alternative_names">nmdc:alternative_names</a></p>
+<h1 id="slot-processing_institution_workflow_metadata">Slot: processing_institution_workflow_metadata</h1>
+<p><em>Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/processing_institution_workflow_metadata">nmdc:processing_institution_workflow_metadata</a></p>
 <!-- no inheritance hierarchy -->
 
 <h2 id="applicable-classes">Applicable Classes</h2>
@@ -614,51 +623,97 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../EnvironmentalMaterialTerm/">EnvironmentalMaterialTerm</a></td>
+<td><a href="../MetagenomeSequencing/">MetagenomeSequencing</a></td>
+<td>Initial sequencing activity that precedes any analysis</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAnnotation/">MetatranscriptomeAnnotation</a></td>
 <td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>An atom or molecule that can be represented with a chemical formula</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+<td>Represents an instance of an execution of a particular workflow</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OntologyClass/">OntologyClass</a></td>
-<td>A representation of class defined in an external ontology</td>
+<td><a href="../NomAnalysis/">NomAnalysis</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../OrthologyGroup/">OrthologyGroup</a></td>
-<td>A set of genes or gene products in which all members are orthologous</td>
+<td><a href="../AnnotatingWorkflow/">AnnotatingWorkflow</a></td>
+<td>A WorkflowExecution whose output indicates the potential functions of genes o...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../FunctionalAnnotationTerm/">FunctionalAnnotationTerm</a></td>
-<td>Abstract grouping class for any term/descriptor that can be applied to a func...</td>
+<td><a href="../MetaproteomicsAnalysis/">MetaproteomicsAnalysis</a></td>
+<td></td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Study/">Study</a></td>
-<td>A study summarizes the overall goal of a research initiative and outlines the...</td>
-<td>yes</td>
+<td><a href="../MetatranscriptomeExpressionAnalysis/">MetatranscriptomeExpressionAnalysis</a></td>
+<td>A workflow process that provides expression values and read counts for gene f...</td>
+<td>no</td>
 </tr>
 <tr>
-<td><a href="../Pathway/">Pathway</a></td>
-<td>A pathway is a sequence of steps/reactions carried out by an organism or comm...</td>
+<td><a href="../MagsAnalysis/">MagsAnalysis</a></td>
+<td>A workflow execution activity that uses computational binning tools to group ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetabolomicsAnalysis/">MetabolomicsAnalysis</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
+<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MetagenomeAnnotation/">MetagenomeAnnotation</a></td>
+<td>A workflow execution activity that provides functional and structural annotat...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReadQcAnalysis/">ReadQcAnalysis</a></td>
+<td>A workflow execution activity that performs quality control on raw Illumina r...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReadBasedTaxonomyAnalysis/">ReadBasedTaxonomyAnalysis</a></td>
+<td>A workflow execution activity that performs taxonomy classification using seq...</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Multivalued: True</p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
+<h2 id="examples">Examples</h2>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>metaspades v. 3.15.2</td>
+</tr>
+<tr>
+<td>IMG Annotation Pipeline v.5.0.25</td>
+</tr>
+</tbody>
+</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
@@ -674,28 +729,29 @@
 </thead>
 <tbody>
 <tr>
-<td>exact</td>
-<td>dcterms:alternative, skos:altLabel</td>
+<td>mappings</td>
+<td>NCIT:C165211</td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: alternative_names
-description: A list of alternative names used to refer to the entity. The distinction
-  between name and alternative names is application-specific.
+<pre><code class="language-yaml">name: processing_institution_workflow_metadata
+description: Information about how workflow results were generated when the processing
+  is done by an external organziation (e.g., JGI) such as software tool name and version
+  or pipeline name and version.
+examples:
+- value: metaspades v. 3.15.2
+- value: IMG Annotation Pipeline v.5.0.25
 from_schema: https://w3id.org/nmdc/nmdc
-exact_mappings:
-- dcterms:alternative
-- skos:altLabel
+mappings:
+- NCIT:C165211
 rank: 1000
-alias: alternative_names
+alias: processing_institution_workflow_metadata
 domain_of:
-- OntologyClass
-- Study
+- WorkflowExecution
 range: string
-multivalued: true
 
 </code></pre>
 

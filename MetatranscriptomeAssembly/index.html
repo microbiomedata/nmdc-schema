@@ -387,6 +387,8 @@
       MetatranscriptomeAssembly --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
+  MetatranscriptomeAssembly : processing_institution_workflow_metadata
+
   MetatranscriptomeAssembly : protocol_link
 
       MetatranscriptomeAssembly --&gt; "0..1" Protocol : protocol_link
@@ -661,13 +663,19 @@
 <tr>
 <td><a href="../version/">version</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td></td>
+<td>The NMDC release tag for a given workflow release used for data processing</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
 <td><a href="../was_informed_by/">was_informed_by</a></td>
 <td>1..* <br/> <a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
 <td>The primary DataGeneration subclass that the WorkflowExecution subclass depen...</td>
+<td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
+</tr>
+<tr>
+<td><a href="../processing_institution_workflow_metadata/">processing_institution_workflow_metadata</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>Information about how workflow results were generated when the processing is ...</td>
 <td><a href="../WorkflowExecution/">WorkflowExecution</a></td>
 </tr>
 <tr>
@@ -1264,7 +1272,15 @@ attributes:
     pattern: ^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$
   version:
     name: version
+    description: The NMDC release tag for a given workflow release used for data processing.
+      If workflows are processed externally, as denoted by processing_institution,
+      this value represents the best mapping between a processing institution's (e.g.,
+      JGI) workflow metadata and a NMDC tagged release.
+    examples:
+    - value: v1.2.0
     from_schema: https://w3id.org/nmdc/nmdc
+    broad_mappings:
+    - NCIT:C182117
     rank: 1000
     alias: version
     owner: MetatranscriptomeAssembly
@@ -1299,6 +1315,23 @@ attributes:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
       interpolated: true
+  processing_institution_workflow_metadata:
+    name: processing_institution_workflow_metadata
+    description: Information about how workflow results were generated when the processing
+      is done by an external organziation (e.g., JGI) such as software tool name and
+      version or pipeline name and version.
+    examples:
+    - value: metaspades v. 3.15.2
+    - value: IMG Annotation Pipeline v.5.0.25
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - NCIT:C165211
+    rank: 1000
+    alias: processing_institution_workflow_metadata
+    owner: MetatranscriptomeAssembly
+    domain_of:
+    - WorkflowExecution
+    range: string
   has_input:
     name: has_input
     description: An input to a process.
