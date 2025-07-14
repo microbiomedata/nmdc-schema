@@ -34,6 +34,17 @@ default_range: string
 
 slots:
 
+  processing_institution_workflow_metadata:
+    range: string
+    description: >- 
+      Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such
+      as software tool name and version or pipeline name and version.
+    mappings:
+      - NCIT:C165211
+    examples:
+      - value: metaspades v. 3.15.2
+      - value: IMG Annotation Pipeline v.5.0.25
+      
   qc_comment:
     range: string
     description: >-
@@ -263,6 +274,13 @@ slots:
 
   version:
     range: string
+    description: >- 
+      The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution,
+      this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.
+    broad_mappings:
+      - NCIT:C182117
+    examples:
+      - value: v1.2.0
 
   doi_value:
     description: >-
