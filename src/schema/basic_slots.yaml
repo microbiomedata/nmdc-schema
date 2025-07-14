@@ -630,7 +630,7 @@ enums:
           file_name_pattern: '^_virus_summary\.tsv?$'
       
       Plasmid Summary:
-        description: Tab separated file listing the plasmids found be geNomad.
+        description: Tab separated file listing the plasmids found by geNomad.
         see_also: 
           - https://portal.nersc.gov/genomad/
         annotations:
