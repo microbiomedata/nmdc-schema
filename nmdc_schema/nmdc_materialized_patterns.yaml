@@ -301,6 +301,9 @@ prefixes:
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
+  TAXRANK:
+    prefix_prefix: TAXRANK
+    prefix_reference: http://purl.obolibrary.org/obo/TAXRANK_
   shex:
     prefix_prefix: shex
     prefix_reference: http://www.w3.org/ns/shex#
@@ -855,52 +858,93 @@ enums:
     permissible_values:
       BEH-HILIC:
         text: BEH-HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) employing BEH
+          (Bridged Ethylene Hybrid) particles as the stationary phase.
+        is_a: HILIC
       C18:
         text: C18
+        description: A stationary phase consisting of octadecyl chains (C18) bonded
+          to silica particles.
       C8:
         text: C8
+        description: A stationary phase consisting of octyl chains (C8) bonded to
+          silica particles.
       C4:
         text: C4
+        description: A stationary phase consisting of butyl chains (C4) bonded to
+          silica particles.
       C2:
         text: C2
+        description: A stationary phase consisting of ethyl chains (C2) bonded to
+          silica particles.
       C1:
         text: C1
+        description: A stationary phase consisting of methyl chains (C1) bonded to
+          silica particles.
       C30:
         text: C30
+        description: A stationary phase consisting of triacontyl chains (C30) bonded
+          to silica particles.
       C60:
         text: C60
+        description: A stationary phase consisting of hexatriacontyl chains (C60)
+          bonded to silica particles.
       CNT:
         text: CNT
+        description: Carbon Nanotube stationary phase.
       CN:
         text: CN
+        description: Cyano (CN) bonded stationary phase.
       Diol:
         text: Diol
+        description: A stationary phase with diol (1,2-diol) functional groups.
       HILIC:
         text: HILIC
+        description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
       NH2:
         text: NH2
+        description: Amino (NH2) bonded stationary phase.
       Phenyl:
         text: Phenyl
+        description: Phenyl bonded stationary phase.
       Polysiloxane:
         text: Polysiloxane
+        description: A stationary phase made of polysiloxane, usually used in gas
+          chromatography.
       PS-DVB:
         text: PS-DVB
+        description: Polystyrene-divinylbenzene stationary phase, often used in solid-phase
+          extraction, including proprietary Priority PolLutant (PPL).
       SAX:
         text: SAX
+        description: Strong Anion Exchange (SAX) stationary phase.
       SCX:
         text: SCX
+        description: Strong Cation Exchange (SCX) stationary phase.
       Silica:
         text: Silica
+        description: A stationary phase made of silica, commonly used in chromatography.
       WCX:
         text: WCX
+        description: Weak Cation Exchange (WCX) stationary phase.
       WAX:
         text: WAX
+        description: Weak Anion Exchange (WAX) stationary phase.
       ZIC-HILIC:
         text: ZIC-HILIC
+        description: Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC)
+          stationary phase.
+        is_a: HILIC
       ZIC-pHILIC:
         text: ZIC-pHILIC
+        description: Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography
+          (ZIC-pHILIC) stationary phase.
+        is_a: ZIC-HILIC
       ZIC-cHILIC:
         text: ZIC-cHILIC
+        description: Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC)
+          stationary phase.
+        is_a: ZIC-HILIC
   ProtocolCategoryEnum:
     name: ProtocolCategoryEnum
     description: The possible protocols that may be followed for an assay.
@@ -1117,6 +1161,9 @@ enums:
       acetonitrile:
         text: acetonitrile
         meaning: CHEBI:38472
+      acetic_acid:
+        text: acetic_acid
+        meaning: CHEBI:15366
       alphaLP:
         text: alphaLP
         meaning: EC:3.4.21.12
@@ -1169,6 +1216,9 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide and ester bonds at the C-terminus
           of aspartic acid or glutamic acid.
+      hydrochloric_acid:
+        text: hydrochloric_acid
+        meaning: CHEBI:17883
       isopropyl_alcohol:
         text: isopropyl_alcohol
         meaning: CHEBI:17824
@@ -1187,6 +1237,15 @@ enums:
       methanol:
         text: methanol
         meaning: CHEBI:17790
+      medronic_acid:
+        text: medronic_acid
+        meaning: CHEBI:43945
+        comments:
+        - A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic
+          acid groups, also known as methylenediphosphonic acid
+      phosphoric_acid:
+        text: phosphoric_acid
+        meaning: CHEBI:26078
       trypsin:
         text: trypsin
         meaning: MS:1001251
@@ -3812,7 +3871,7 @@ enums:
         - https://portal.nersc.gov/genomad/
       Plasmid Summary:
         text: Plasmid Summary
-        description: Tab separated file listing the plasmids found be geNomad.
+        description: Tab separated file listing the plasmids found by geNomad.
         annotations:
           file_name_pattern:
             tag: file_name_pattern
@@ -3833,7 +3892,7 @@ enums:
       Reference Calibration File:
         text: Reference Calibration File
         description: A file that contains data used to calibrate a natural organic
-          matter or metabalomics analysis.
+          matter or metabolomics analysis.
       Metagenome Raw Reads:
         text: Metagenome Raw Reads
         description: Interleaved paired-end raw metagenome sequencing data
@@ -3904,6 +3963,10 @@ enums:
       LC-MS Metabolomics Results:
         text: LC-MS Metabolomics Results
         description: LC-MS-based metabolite assignment results table
+      Mass Spectrometry Reference Spectral Library:
+        text: Mass Spectrometry Reference Spectral Library
+        description: Spectral library used for mass spectrometry based metabolite
+          identification
       Metaproteomics Workflow Statistics:
         text: Metaproteomics Workflow Statistics
         description: Aggregate workflow statistics file
@@ -3928,9 +3991,13 @@ enums:
       Metagenome Bins:
         text: Metagenome Bins
         description: Metagenome bin contigs fasta
+        deprecated: Deprecated in favor of separate permissible values based on bin
+          quality.
+        last_updated_on: '2025-07-14T00:00:00'
+        modified_by: orcid:0000-0002-5004-3362
       Metagenome HQMQ Bins Compression File:
         text: Metagenome HQMQ Bins Compression File
-        description: Compressed file containing high qulaity and medium quality metagenome
+        description: Compressed file containing high quality and medium quality metagenome
           bins and associated files
         annotations:
           file_name_pattern:
@@ -4128,7 +4195,7 @@ enums:
         annotations:
           file_name_pattern:
             tag: file_name_pattern
-            value: '/.+?(?=filter)/filter-METAGENOME.fastq.gz '
+            value: /.+?(?=filter)/filter-METAGENOME.fastq.gz
       Read Filtering Info File:
         text: Read Filtering Info File
         description: File containing read filtering information
@@ -5348,8 +5415,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - zinc
     range: QuantityValue
   manganese:
     name: manganese
@@ -5370,8 +5435,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
-    aliases:
-    - manganese
     range: QuantityValue
   ammonium_nitrogen:
     name: ammonium_nitrogen
@@ -5393,7 +5456,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - ammonium_nitrogen
     - NH4-N
     range: QuantityValue
   nitrate_nitrogen:
@@ -5418,7 +5480,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - nitrate_nitrogen
     - NO3-N
     range: QuantityValue
   nitrite_nitrogen:
@@ -5441,7 +5502,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - nitrite_nitrogen
     - NO2-N
     range: QuantityValue
   lbc_thirty:
@@ -5468,7 +5528,6 @@ slots:
     - https://www.ornl.gov/content/bio-scales-0
     - https://secure.caes.uga.edu/extension/publications/files/pdf/C%20874_5.PDF
     aliases:
-    - lbc_thirty
     - lbc30
     - lime buffer capacity (at 30 minutes)
     range: QuantityValue
@@ -5495,7 +5554,6 @@ slots:
     see_also:
     - https://www.ornl.gov/content/bio-scales-0
     aliases:
-    - lbceq
     - lime buffer capacity (at 5-day equilibrium)
     range: QuantityValue
   dna_absorb1:
@@ -5674,7 +5732,7 @@ slots:
     see_also:
     - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-    - NCBITaxon:superkingdom
+    - TAXRANK:0000022
     range: string
   gtdbtk_phylum:
     name: gtdbtk_phylum
@@ -5683,7 +5741,7 @@ slots:
     see_also:
     - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-    - NCBITaxon:phylum
+    - TAXRANK:0000001
     range: string
   gtdbtk_class:
     name: gtdbtk_class
@@ -5692,7 +5750,7 @@ slots:
     see_also:
     - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-    - NCBITaxon:class
+    - TAXRANK:0000002
     range: string
   gtdbtk_order:
     name: gtdbtk_order
@@ -5701,7 +5759,7 @@ slots:
     see_also:
     - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-    - NCBITaxon:order
+    - TAXRANK:0000003
     range: string
   gtdbtk_family:
     name: gtdbtk_family
@@ -5710,7 +5768,7 @@ slots:
     see_also:
     - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-    - NCBITaxon:family
+    - TAXRANK:0000004
     range: string
   gtdbtk_genus:
     name: gtdbtk_genus
@@ -5719,7 +5777,7 @@ slots:
     see_also:
     - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-    - NCBITaxon:genus
+    - TAXRANK:0000005
     range: string
   gtdbtk_species:
     name: gtdbtk_species
@@ -5728,7 +5786,7 @@ slots:
     see_also:
     - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-    - NCBITaxon:species
+    - TAXRANK:0000006
     range: string
   highest_similarity_score:
     name: highest_similarity_score
@@ -17394,6 +17452,12 @@ slots:
     multivalued: true
   was_informed_by:
     name: was_informed_by
+    description: The primary DataGeneration subclass that the WorkflowExecution subclass
+      depends on.
+    comments:
+    - For version 1 of the proteomics workflow there are input files both from the
+      NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered
+      the primary class to reference.
     from_schema: https://w3id.org/nmdc/nmdc
     structured_aliases:
       was_informed_by:
@@ -17401,9 +17465,10 @@ slots:
         predicate: EXACT_SYNONYM
         contexts:
         - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    mappings:
+    narrow_mappings:
     - prov:wasInformedBy
     range: DataGeneration
+    multivalued: true
   principal_investigator:
     name: principal_investigator
     description: Principal Investigator who led the study and/or generated the dataset.
@@ -19498,6 +19563,8 @@ classes:
     from_schema: https://w3id.org/nmdc/nmdc
     is_a: InformationObject
     abstract: true
+    slots:
+    - protocol_link
     class_uri: nmdc:Configuration
   MassSpectrometryConfiguration:
     name: MassSpectrometryConfiguration
@@ -20261,10 +20328,8 @@ classes:
     - collected_from
     - embargoed
     - host_disease_stat
-    - host_taxid
     - img_identifiers
     - neon_biosample_identifiers
-    - samp_name
     - gold_biosample_identifiers
     - insdc_biosample_identifiers
     - emsl_biosample_identifiers
@@ -20287,7 +20352,6 @@ classes:
     - alt
     - aminopept_act
     - ammonium
-    - ammonium_nitrogen
     - amount_light
     - ances_data
     - annual_precpt
@@ -20349,7 +20413,6 @@ classes:
     - collection_date
     - conduc
     - cool_syst_id
-    - core field
     - crop_rotation
     - cult_root_med
     - cur_land_use
@@ -20371,7 +20434,6 @@ classes:
     - diss_org_nitro
     - diss_oxygen
     - diss_oxygen_fluid
-    - dna_cont_well
     - door_comp_type
     - door_cond
     - door_direct
@@ -20386,10 +20448,6 @@ classes:
     - down_par
     - drainage_class
     - drawings
-    - ecosystem
-    - ecosystem_category
-    - ecosystem_subtype
-    - ecosystem_type
     - efficiency_percent
     - elev
     - elevator
@@ -20398,7 +20456,6 @@ classes:
     - env_local_scale
     - env_medium
     - env_package
-    - environment field
     - escalator
     - ethylbenzene
     - exp_duct
@@ -20490,13 +20547,10 @@ classes:
     - inorg_particles
     - inside_lux
     - int_wall_cond
-    - investigation field
     - iw_bt_date_well
     - iwf
     - last_clean
     - lat_lon
-    - lbc_thirty
-    - lbceq
     - light_intensity
     - light_regm
     - light_type
@@ -20507,7 +20561,6 @@ classes:
     - local_class
     - local_class_meth
     - magnesium
-    - manganese
     - max_occup
     - mean_frict_vel
     - mean_peak_frict_vel
@@ -20520,12 +20573,9 @@ classes:
     - misc_param
     - n_alkanes
     - nitrate
-    - nitrate_nitrogen
     - nitrite
-    - nitrite_nitrogen
     - nitro
     - non_min_nutr_regm
-    - nucleic acid sequence source field
     - number_pets
     - number_plants
     - number_resident
@@ -20645,7 +20695,6 @@ classes:
     - season_use
     - secondary_treatment
     - sediment_type
-    - sequencing field
     - sewage_type
     - shad_dev_water_mold
     - shading_device_cond
@@ -20673,7 +20722,6 @@ classes:
     - source_mat_id
     - space_typ_state
     - specific
-    - specific_ecosystem
     - specific_humidity
     - sr_dep_env
     - sr_geol_age
@@ -20764,7 +20812,6 @@ classes:
     - window_vert_pos
     - window_water_mold
     - xylene
-    - zinc
     - ecosystem
     - ecosystem_category
     - ecosystem_type
@@ -20782,20 +20829,6 @@ classes:
     - sample_collection_site
     - soluble_iron_micromol
     - subsurface_depth
-    - air_temp_regm
-    - biotic_regm
-    - biotic_relationship
-    - climate_environment
-    - experimental_factor
-    - gaseous_environment
-    - growth_facil
-    - humidity_regm
-    - light_regm
-    - phosphate
-    - samp_collec_method
-    - samp_size
-    - source_mat_id
-    - watering_regm
     - dna_absorb1
     - dna_absorb2
     - dna_collect_site
