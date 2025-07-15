@@ -445,10 +445,8 @@ slots:
   analyte_category:
     required: true
     description: >
-      The type of analyte(s) that were measured in the data generation process and analyzed
-        in the Workflow Chain
-
-
+      The type of analyte(s) that were measured in the data generation process
+      
   type:
     required: true
     range: uriorcurie
