@@ -336,6 +336,16 @@
                         "null"
                     ]
                 },
+                "alternative_names": {
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
                 "aminopept_act": {
                     "anyOf": [
                         {
@@ -1046,13 +1056,6 @@
                     ],
                     "description": "The cooling system identifier"
                 },
-                "core_field": {
-                    "description": "basic fields",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "crop_rotation": {
                     "anyOf": [
                         {
@@ -1575,13 +1578,6 @@
                         }
                     ],
                     "description": "MIxS extension for reporting of measurements and observations obtained from one or more of the environments where the sample was obtained. All environmental packages listed here are further defined in separate subtables. By giving the name of the environmental package, a selection of fields can be made from the subtables and can be reported"
-                },
-                "environment_field": {
-                    "description": "field describing environmental aspect of a sample",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "escalator": {
                     "anyOf": [
@@ -2530,13 +2526,6 @@
                     "$ref": "#/$defs/IntWallCondEnum",
                     "description": "The physical condition of the wall at the time of sampling; photos or video preferred; use drawings to indicate location of damaged areas"
                 },
-                "investigation_field": {
-                    "description": "field describing aspect of the investigation/study to which the sample belongs",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "isotope_exposure": {
                     "description": "List isotope exposure or addition applied to your sample.",
                     "type": [
@@ -2969,12 +2958,6 @@
                     },
                     "type": [
                         "array",
-                        "null"
-                    ]
-                },
-                "nucleic_acid_sequence_source_field": {
-                    "type": [
-                        "string",
                         "null"
                     ]
                 },
@@ -4300,12 +4283,6 @@
                 "sediment_type": {
                     "$ref": "#/$defs/SedimentTypeEnum",
                     "description": "Information about the sediment type based on major constituents"
-                },
-                "sequencing_field": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
                 },
                 "sewage_type": {
                     "anyOf": [
@@ -5912,7 +5889,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -5996,6 +5973,7 @@
             "description": "",
             "enum": [
                 "acetonitrile",
+                "acetic_acid",
                 "alphaLP",
                 "ammonium_acetate",
                 "ammonium_bicarbonate",
@@ -6006,10 +5984,13 @@
                 "formic_acid",
                 "glucose",
                 "Glu-C",
+                "hydrochloric_acid",
                 "isopropyl_alcohol",
                 "Lys-C",
                 "Lys-N",
                 "methanol",
+                "medronic_acid",
+                "phosphoric_acid",
                 "trypsin",
                 "water"
             ],
@@ -6225,6 +6206,16 @@
                     "type": [
                         "array",
                         "null"
+                    ]
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
                     ]
                 },
                 "stationary_phase": {
@@ -7422,7 +7413,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -8020,6 +8011,7 @@
                 "LC FT-ICR MS QC Plots",
                 "GC-MS Metabolomics Results",
                 "LC-MS Metabolomics Results",
+                "Mass Spectrometry Reference Spectral Library",
                 "Metaproteomics Workflow Statistics",
                 "Protein Report",
                 "Peptide Report",
@@ -8640,11 +8632,11 @@
                     ]
                 },
                 "latitude": {
-                    "description": "latitude",
+                    "description": "The latitude of a location.",
                     "type": "number"
                 },
                 "longitude": {
-                    "description": "longitude",
+                    "description": "The longitude of a location.",
                     "type": "number"
                 },
                 "type": {
@@ -9573,6 +9565,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -9629,14 +9628,19 @@
                     ]
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -9813,7 +9817,7 @@
                 },
                 "analyte_category": {
                     "$ref": "#/$defs/MassSpectrometryEnum",
-                    "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
+                    "description": "The type of analyte(s) that were measured in the data generation process\n"
                 },
                 "associated_studies": {
                     "description": "The study associated with a resource.",
@@ -10046,6 +10050,16 @@
                 "polarity_mode": {
                     "$ref": "#/$defs/PolarityModeEnum",
                     "description": "the polarity of which ions are generated and detected"
+                },
+                "protocol_link": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Protocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "resolution_categories": {
                     "description": "The relative resolution at which spectra were collected.",
@@ -10299,6 +10313,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -10347,14 +10368,19 @@
                     ]
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -10533,6 +10559,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -10573,14 +10606,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -10837,6 +10875,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -10961,14 +11006,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -11113,6 +11163,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -11153,14 +11210,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -11309,6 +11371,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -11349,14 +11418,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -11534,6 +11608,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -11574,14 +11655,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -11838,6 +11924,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -11962,14 +12055,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -12126,6 +12224,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -12166,14 +12271,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -12509,6 +12619,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -12557,14 +12674,19 @@
                     ]
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -12603,7 +12725,7 @@
                 },
                 "analyte_category": {
                     "$ref": "#/$defs/NucleotideSequencingEnum",
-                    "description": "The type of analyte(s) that were measured in the data generation process and analyzed\n  in the Workflow Chain\n"
+                    "description": "The type of analyte(s) that were measured in the data generation process\n"
                 },
                 "associated_studies": {
                     "description": "The study associated with a resource.",
@@ -12836,7 +12958,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -12965,7 +13087,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -13064,7 +13186,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
@@ -13844,6 +13966,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -13884,14 +14013,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -14078,6 +14212,13 @@
                     "$ref": "#/$defs/ProcessingInstitutionEnum",
                     "description": "The organization that processed the sample."
                 },
+                "processing_institution_workflow_metadata": {
+                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "protocol_link": {
                     "anyOf": [
                         {
@@ -14118,14 +14259,19 @@
                     "type": "string"
                 },
                 "version": {
+                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
                     "type": [
                         "string",
                         "null"
                     ]
                 },
                 "was_informed_by": {
-                    "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
-                    "type": "string"
+                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
+                    "items": {
+                        "pattern": "^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "required": [
@@ -14744,7 +14890,7 @@
                     ]
                 },
                 "alternative_names": {
-                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.",
+                    "description": "A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)",
                     "items": {
                         "type": "string"
                     },
