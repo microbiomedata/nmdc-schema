@@ -570,7 +570,8 @@ slots:
     multivalued: true
     description: >-
       A list of alternative names used to refer to the entity.
-      The distinction between name and alternative names is application-specific.
+      The distinction between name and alternative names is application-specific. 
+      This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
     exact_mappings:
       - dcterms:alternative
       - skos:altLabel
