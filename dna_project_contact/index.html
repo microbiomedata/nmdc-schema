@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: DNA seq project contact (dna_project_contact) - NMDC Schema Documentation</title>
+        <title>Slot: DNA seq project contact (dna_project_contact) (DEPRECATED) - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-dna-seq-project-contact-dna_project_contact" class="md-skip">
+        <a href="#slot-dna-seq-project-contact-dna_project_contact-deprecated" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: DNA seq project contact (dna_project_contact)
+              Slot: DNA seq project contact (dna_project_contact) (DEPRECATED)
             
           </span>
         </div>
@@ -616,7 +616,7 @@
   
 
 
-<h1 id="slot-dna-seq-project-contact-dna_project_contact">Slot: DNA seq project contact (dna_project_contact)</h1>
+<h1 id="slot-dna-seq-project-contact-dna_project_contact-deprecated">Slot: DNA seq project contact (dna_project_contact)  <span style="color: red;"><strong> (DEPRECATED) </strong></h1>
 <p>URI: <a href="https://w3id.org/nmdc/dna_project_contact">nmdc:dna_project_contact</a></p>
 <!-- no inheritance hierarchy -->
 
@@ -688,12 +688,16 @@
 
 <pre><code class="language-yaml">name: dna_project_contact
 title: DNA seq project contact
+deprecated: This slot is not always provided by JGI and does not need to be in the
+  file that we send back to JGI. Not needed in UI
 comments:
 - Do not edit these values. A template will be provided by NMDC in which these values
   have been pre-filled.
 examples:
 - value: John Jones
 from_schema: https://w3id.org/nmdc/nmdc
+last_updated_on: '2025-07-02T00:00:00'
+modified_by: ORCID:0000-0002-8683-0050
 rank: 18
 string_serialization: '{text}'
 alias: dna_project_contact
