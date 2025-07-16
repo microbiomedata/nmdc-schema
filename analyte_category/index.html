@@ -599,8 +599,7 @@
 
 
 <h1 id="slot-analyte_category">Slot: analyte_category</h1>
-<p><em>The type of analyte(s) that were measured in the data generation process and analyzed</em></p>
-<p>_  in the Workflow Chain_</p>
+<p><em>The type of analyte(s) that were measured in the data generation process</em></p>
 <p>__</p>
 <p>URI: <a href="https://w3id.org/nmdc/analyte_category">nmdc:analyte_category</a></p>
 <!-- no inheritance hierarchy -->
@@ -616,6 +615,11 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 <td>The methods and processes used to generate omics data from a biosample or org...</td>
 <td>no</td>
@@ -623,11 +627,6 @@
 <tr>
 <td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
 <td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
 <td>yes</td>
 </tr>
 </tbody>
@@ -665,8 +664,9 @@
 <details>
 
 <pre><code class="language-yaml">name: analyte_category
-description: &quot;The type of analyte(s) that were measured in the data generation process\
-  \ and analyzed\n  in the Workflow Chain\n&quot;
+description: 'The type of analyte(s) that were measured in the data generation process
+
+  '
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
 alias: analyte_category

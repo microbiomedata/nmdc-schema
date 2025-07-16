@@ -356,13 +356,13 @@
 <tr>
 <td><a href="../latitude/">latitude</a></td>
 <td>1 <br/> <a href="../DecimalDegree/">DecimalDegree</a></td>
-<td>latitude</td>
+<td>The latitude of a location</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../longitude/">longitude</a></td>
 <td>1 <br/> <a href="../DecimalDegree/">DecimalDegree</a></td>
-<td>longitude</td>
+<td>The longitude of a location</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -472,7 +472,12 @@ slot_usage:
 attributes:
   latitude:
     name: latitude
-    description: latitude
+    description: The latitude of a location.
+    alt_descriptions:
+      wikipedia:
+        source: wikipedia
+        description: A geographic coordinate that specifies the north-south position
+          of a point on the surface of the Earth or another celestial body.
     examples:
     - value: '-33.460524'
     from_schema: https://w3id.org/nmdc/nmdc
@@ -488,7 +493,12 @@ attributes:
     required: true
   longitude:
     name: longitude
-    description: longitude
+    description: The longitude of a location.
+    alt_descriptions:
+      wikipedia:
+        source: wikipedia
+        description: A geographic coordinate that specifies the east-west position
+          of a point on the surface of the Earth, or another celestial body.
     examples:
     - value: '150.168149'
     from_schema: https://w3id.org/nmdc/nmdc
