@@ -201,7 +201,7 @@ slots:
   latitude:
     range: decimal_degree
     description: The latitude of a location.
-    alt_description: A geographic coordinate that specifies the north-south position of a point on the surface of the Earth or another celestial body.
+    alt_descriptions: A geographic coordinate that specifies the north-south position of a point on the surface of the Earth or another celestial body.
     slot_uri: wgs84:lat
     examples:
       - value: "-33.460524"
@@ -211,7 +211,7 @@ slots:
   longitude:
     range: decimal_degree
     description: The longitude of a location.
-    alt_description: A geographic coordinate that specifies the east-west position of a point on the surface of the Earth, or another celestial body.
+    alt_descriptions: A geographic coordinate that specifies the east-west position of a point on the surface of the Earth, or another celestial body.
     slot_uri: wgs84:long
     examples:
       - value: "150.168149"
