@@ -392,6 +392,7 @@ classes:
       - host_disease_stat
       - img_identifiers
       - neon_biosample_identifiers
+      - alternative_names
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
