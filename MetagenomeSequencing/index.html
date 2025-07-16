@@ -8,7 +8,7 @@
 <link href="https://microbiomedata.github.io/nmdc-schema/MetagenomeSequencing/" rel="canonical"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.14" name="generator"/>
-<title>Class: Metagenome sequencing activity (MetagenomeSequencing) - NMDC Schema Documentation</title>
+<title>Class: Metagenome sequencing activity (MetagenomeSequencing) (DEPRECATED) - NMDC Schema Documentation</title>
 <link href="../assets/stylesheets/main.342714a4.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
@@ -20,7 +20,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#class-metagenome-sequencing-activity-metagenomesequencing">
+<a class="md-skip" href="#class-metagenome-sequencing-activity-metagenomesequencing-deprecated">
           Skip to content
         </a>
 </div>
@@ -44,7 +44,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Class: Metagenome sequencing activity (MetagenomeSequencing)
+              Class: Metagenome sequencing activity (MetagenomeSequencing) (DEPRECATED)
             
           </span>
 </div>
@@ -306,7 +306,7 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="class-metagenome-sequencing-activity-metagenomesequencing">Class: Metagenome sequencing activity (MetagenomeSequencing)</h1>
+<h1 id="class-metagenome-sequencing-activity-metagenomesequencing-deprecated">Class: Metagenome sequencing activity (MetagenomeSequencing)  <span style="color: red;"><strong> (DEPRECATED) </strong></span></h1>
 <p><em>Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.</em></p>
 <p>URI: <a href="https://w3id.org/nmdc/MetagenomeSequencing">nmdc:MetagenomeSequencing</a></p>
 <div class="mermaid">classDiagram
@@ -569,7 +569,12 @@
 description: Initial sequencing activity that precedes any analysis.  This activity
   has output(s) that are the raw sequencing data.
 title: Metagenome sequencing activity
+deprecated: Used in early versions of NMDC schema. Existing records have been migrated
+  to nmdc:NucleotideSequencing records, and this class should be used instead. From
+  issue https://github.com/microbiomedata/nmdc-schema/issues/1727.
 from_schema: https://w3id.org/nmdc/nmdc
+last_updated_on: '2023-12-01T00:00:00'
+modified_by: 0009-0004-8906-5907
 is_a: WorkflowExecution
 slot_usage:
   id:
@@ -600,7 +605,12 @@ class_uri: nmdc:MetagenomeSequencing
 description: Initial sequencing activity that precedes any analysis.  This activity
   has output(s) that are the raw sequencing data.
 title: Metagenome sequencing activity
+deprecated: Used in early versions of NMDC schema. Existing records have been migrated
+  to nmdc:NucleotideSequencing records, and this class should be used instead. From
+  issue https://github.com/microbiomedata/nmdc-schema/issues/1727.
 from_schema: https://w3id.org/nmdc/nmdc
+last_updated_on: '2023-12-01T00:00:00'
+modified_by: 0009-0004-8906-5907
 is_a: WorkflowExecution
 slot_usage:
   id:
