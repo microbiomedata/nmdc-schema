@@ -714,6 +714,12 @@
 <td>direct</td>
 </tr>
 <tr>
+<td><a href="../alternative_names/">alternative_names</a></td>
+<td>* <br/> <a href="../String/">String</a></td>
+<td>A list of alternative names used to refer to the entity</td>
+<td>direct</td>
+</tr>
+<tr>
 <td><a href="../gold_biosample_identifiers/">gold_biosample_identifiers</a></td>
 <td>* <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>Unique identifier for a biosample submitted to GOLD that matches the NMDC sub...</td>
@@ -4246,6 +4252,7 @@ slots:
 - host_disease_stat
 - img_identifiers
 - neon_biosample_identifiers
+- alternative_names
 - gold_biosample_identifiers
 - insdc_biosample_identifiers
 - emsl_biosample_identifiers
@@ -5691,6 +5698,24 @@ attributes:
     range: external_identifier
     multivalued: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  alternative_names:
+    name: alternative_names
+    description: A list of alternative names used to refer to the entity. The distinction
+      between name and alternative names is application-specific.  This should not
+      be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
+    from_schema: https://w3id.org/nmdc/nmdc
+    exact_mappings:
+    - dcterms:alternative
+    - skos:altLabel
+    rank: 1000
+    alias: alternative_names
+    owner: Biosample
+    domain_of:
+    - Biosample
+    - OntologyClass
+    - Study
+    range: string
+    multivalued: true
   gold_biosample_identifiers:
     name: gold_biosample_identifiers
     annotations:

@@ -1211,7 +1211,8 @@ attributes:
         value: Project, study, or sample set names the are also associated with this
           submission or other names / identifiers for this study.
     description: A list of alternative names used to refer to the entity. The distinction
-      between name and alternative names is application-specific.
+      between name and alternative names is application-specific.  This should not
+      be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)
     from_schema: https://w3id.org/nmdc/nmdc
     exact_mappings:
     - dcterms:alternative
@@ -1220,6 +1221,7 @@ attributes:
     alias: alternative_names
     owner: Study
     domain_of:
+    - Biosample
     - OntologyClass
     - Study
     range: string
