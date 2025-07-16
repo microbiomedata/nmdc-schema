@@ -11,7 +11,7 @@ alternative_identifiers:
   - generic:abc123
 alternative_names:
   - alt_name_1
-  _ alt_name_2
+  - alt_name_2
 associated_studies:
   - nmdc:sty-99-987654
   - nmdc:sty-99-qwerty
