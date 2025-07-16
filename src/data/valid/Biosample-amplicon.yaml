@@ -2,6 +2,9 @@
 id: nmdc:bsm-99-dtTMNb
 associated_studies:
    - nmdc:sty-00-abc123
+name: PRS1_BTM
+alternative_names:
+  - PRS1_CoreB_BTM
 env_broad_scale:
   type: nmdc:ControlledIdentifiedTermValue
   has_raw_value: ENVO:00002030
