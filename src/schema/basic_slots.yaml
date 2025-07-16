@@ -203,7 +203,7 @@ slots:
     description: The latitude of a location.
     alt_descriptions:
       wikipedia:
-        source: https://en.wikipedia.org/wiki/Latitude
+        source: wikipedia
         description: A geographic coordinate that specifies the north-south position of a point on the surface of the Earth or another celestial body.
     slot_uri: wgs84:lat
     examples:
@@ -216,7 +216,7 @@ slots:
     description: The longitude of a location.
     alt_descriptions:
       wikipedia:
-        source: https://en.wikipedia.org/wiki/Longitude
+        source: wikipedia
         description: A geographic coordinate that specifies the east-west position of a point on the surface of the Earth, or another celestial body.
     slot_uri: wgs84:long
     examples:
