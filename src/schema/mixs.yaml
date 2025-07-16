@@ -9847,6 +9847,7 @@ slots:
       preferred_unit:
         tag: preferred_unit
         value: degree Celsius
+      nmdc_mongodb_ucum_symbol: Cel
     description: Temperature of the sample at the time of sampling.
     title: temperature
     examples:
