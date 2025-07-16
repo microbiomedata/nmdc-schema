@@ -118,6 +118,15 @@ See `migrator_from_1_0_0_to_EXAMPLE.py` for a complete example.
 
 ## Testing the migrator
 
+##### Summary of steps to test a migrator:
+
+1. Create a local copy of the MongoDB database with a schema that conforms to the release from which you are migrating.
+2. Check that the database has been loaded correctly.
+3. Run the migrator against the test database.
+4. Run validation checks against the migrated database.
+
+##### Running a migrator step-by-step:
+
 1. Create a local copy of the MongoDB database with a schema that conforms to the release from which you are migrating.
 
 *Note:* This will most often be a production database.  For a release with many migrators, all migrators should be 
@@ -149,6 +158,28 @@ Once up, check the ports.  The default ports this comes with are 27017 (internal
 % mongorestore -v -u admin -p root --authenticationDatabase=admin --drop --nsInclude='nmdc.*' --gzip --dir /tmp/remote-mongodump/nmdc/dump_nmdc-prod_2025-02-10_20-12-02/ 
 ```
 
+2. Check that the database has been loaded correctly.
+
+```bash
+docker exec -it nmdc-runtime-test-mongo-1 bash
+```
+
+```bash
+mongosh mongodb://admin:root@mongo:27017/nmdc?authSource=admin
+# check the database has records
+db.biosample_set.find({}).pretty()
+# number of records per collection
+db.runCommand("listCollections").cursor.firstBatch.filter(function(collection) { return !collection.name.startsWith("system.") }).sort(function(a, b) { return a.name.localeCompare(b.name) }).forEach(function(collection) { print(collection.name + ": " +db.getCollection(collection.name).count()) })
+```
+
 3. Run the migrator against the test database. 
-4. Verify that the test database conforms to the new schema.
-5. Run validation checks against the migrated database.
+
+```bash
+% make run-migrator migrator_from_11_8_0_to_11_9_0 # This will run the specified migrator against the test database. 
+```
+
+4. Run validation checks against the migrated database.
+
+```bash
+
+```
