@@ -6,9 +6,9 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Attribute
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - basic_classes # in cycle with external_identifier and mixs
-  - basic_slots
-
+#  - basic_classes # in cycle with external_identifier and mixs
+#  - basic_slots
+   - attribute_value_slots
 prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
@@ -129,8 +129,6 @@ classes:
     mappings:
       - schema:GeoCoordinates
 slots:
-  biomaterial_purity:
-    range: QuantityValue
   term:
     range: OntologyClass
     description: pointer to an ontology class

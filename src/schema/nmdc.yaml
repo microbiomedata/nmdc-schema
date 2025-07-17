@@ -14,8 +14,12 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.0
 
 imports:
+  - attribute_values_classes
+  - attribute_value_slots
   - annotation # also brings core and portal_*
   - workflow_execution_activity
+  - basic_classes
+  - basic_slots
 
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
@@ -1030,6 +1034,9 @@ enums:
         is_a: organic_layer
 
 slots:
+  biomaterial_purity:
+    range: QuantityValue
+
   generates_calibration:
     range: CalibrationInformation
     description: calibration information is generated a process
