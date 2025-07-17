@@ -365,6 +365,8 @@ classes:
 
 
   FunctionalAnnotationAggMember:
+    description: >-
+    This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.
     class_uri: nmdc:FunctionalAnnotationAggMember
     slots:
       - was_generated_by
