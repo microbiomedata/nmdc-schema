@@ -1151,6 +1151,7 @@ slots:
     required: true
 
   functional_annotation_agg:
+    description: This property links a database object to a set of functional annotation aggregation results.
     range: FunctionalAnnotationAggMember
     multivalued: true
     inlined: true
