@@ -545,12 +545,6 @@ slots:
     description: >-
       A human readable label for an entity
 
-  description:
-    range: string
-    description: >-
-      a human-readable description of a thing
-    slot_uri: dcterms:description
-
   title:
     range: string
     description: >-

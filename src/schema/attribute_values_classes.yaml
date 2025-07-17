@@ -1,14 +1,10 @@
-id: https://w3id.org/nmdc/attribute_values
-name: NMDC-Attribute-values
-title: NMDC Attribute Value Types
+id: https://w3id.org/nmdc/attribute_values_classes
+name: NMDC-Attribute-values-classes
+title: NMDC Attribute Value Classes
 description: Schema for National Microbiome Data Collaborative (NMDC), Attribute Value Types
 
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
-imports:
-#  - basic_classes # in cycle with external_identifier and mixs
-#  - basic_slots
-   - attribute_value_slots
 prefixes:
   schema: "http://schema.org/"
   nmdc: "https://w3id.org/nmdc/"
@@ -133,3 +129,124 @@ slots:
     range: OntologyClass
     description: pointer to an ontology class
     inlined: true
+
+  description:
+    range: string
+    description: >-
+      a human-readable description of a thing
+    slot_uri: dcterms:description
+
+  display_order:
+    range: integer
+    description: When rendering information, this attribute to specify the order in which the information should be rendered.
+
+  email:
+    description: >-
+      An email address for an entity such as a person.
+      This should be the primary email address used.
+    range: string
+    slot_uri: schema:email
+
+  profile_image_url:
+    description: A url that points to an image of a person.
+    range: string
+
+  orcid:
+    description: The ORCID of a person.
+    range: string
+
+  language:
+    range: language_code
+    description: Should use ISO 639-1 code e.g. "en", "fr"
+
+  has_raw_value:
+    description: The value that was specified for an annotation in raw form, i.e. a string. E.g. "2 cm" or "2-4 cm"
+    range: string
+
+  has_unit:
+    description: Links a QuantityValue to a unit
+    aliases:
+      - scale
+    range: unit
+    mappings:
+      - qud:unit
+      - schema:unitCode
+
+  type:
+    required: true
+    range: uriorcurie
+    slot_uri: rdf:type
+    description: the class_uri of the class that has been instantiated
+    notes:
+      - makes it easier to read example data files
+      - required for polymorphic MongoDB collections
+    see_also:
+      - https://github.com/microbiomedata/nmdc-schema/issues/1048
+      - https://github.com/microbiomedata/nmdc-schema/issues/1233
+      - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+       contexts:
+         -  https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+       predicate: NARROW_SYNONYM
+    examples:
+      - value: nmdc:Biosample
+      - value: nmdc:Study
+    designates_type: true
+
+  has_numeric_value:
+    description: Links a quantity value to a number
+    range: decimal
+    mappings:
+      - qud:quantityValue
+      - schema:value
+
+  has_minimum_numeric_value:
+    is_a: has_numeric_value
+    description: The minimum value part, expressed as number, of the quantity value when the value covers a range.
+
+  has_maximum_numeric_value:
+    is_a: has_numeric_value
+    description: The maximum value part, expressed as number, of the quantity value when the value covers a range.
+
+  latitude:
+    range: decimal_degree
+    description: The latitude of a location.
+    alt_descriptions:
+      wikipedia:
+        A geographic coordinate that specifies the north-south position of a point on the surface of the Earth or another celestial body.
+    slot_uri: wgs84:lat
+    examples:
+      - value: "-33.460524"
+    mappings:
+      - schema:latitude
+
+  longitude:
+    range: decimal_degree
+    description: The longitude of a location.
+    alt_descriptions:
+      wikipedia:
+        A geographic coordinate that specifies the east-west position of a point on the surface of the Earth, or another celestial body.
+    slot_uri: wgs84:long
+    examples:
+      - value: "150.168149"
+    mappings:
+      - schema:longitude
+
+  url:
+    range: string
+    notes:
+      - See issue 207 - this clashes with the mixs field
+
+  websites:
+    range: string
+    multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
+    description: A list of websites that are associated with the entity.
+    comments:
+      - DOIs should not be included as websites. Instead, use the associated_dois slot.
+      - A consortium's homepage website should be included in the homepage_website slot, not in websites.
+      - consortium is a convenience term for a Study whose study_category value is consortium
+      - the website slot and its subproperties are virtually identical to the url slot, except that they are multivalued and url is single-valued.
+    see_also:
+      - nmdc:url
