@@ -168,6 +168,7 @@ docker exec -it nmdc-runtime-test-mongo-1 bash
 mongosh mongodb://admin:root@mongo:27017/nmdc?authSource=admin
 # check the database has records
 db.biosample_set.find({}).pretty()
+
 # number of records per collection
 db.runCommand("listCollections").cursor.firstBatch.filter(function(collection) { return !collection.name.startsWith("system.") }).sort(function(a, b) { return a.name.localeCompare(b.name) }).forEach(function(collection) { print(collection.name + ": " +db.getCollection(collection.name).count()) })
 ```
