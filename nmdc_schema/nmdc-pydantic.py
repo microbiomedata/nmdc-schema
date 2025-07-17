@@ -2852,9 +2852,17 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of millimeter.
     """
+    mlSOLIDUSL = "ml/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
+    """
     mmolSOLIDUSL = "mmol/L"
     """
     The Unified Code for Units of Measure (UCUM) representation of millimolar.
+    """
+    mSSOLIDUScm = "mS/cm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
     """
     LEFT_SQUARE_BRACKETppmRIGHT_SQUARE_BRACKET = "[ppm]"
     """
@@ -2916,6 +2924,10 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
     """
+    gSOLIDUSm3 = "g/m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter.
+    """
     m2 = "m2"
     """
     The Unified Code for Units of Measure (UCUM) representation of square meters.
@@ -2959,6 +2971,198 @@ class UnitEnum(str, Enum):
     ppt = "ppt"
     """
     The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
+    """
+    gSOLIDUSg = "g/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gram per gram.
+    """
+    lx = "lx"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of lux.
+    """
+    mgSOLIDUSm3SOLIDUSd = "mg/m3/d"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
+    """
+    ngSOLIDUSh = "ng/h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per hour.
+    """
+    mmLEFT_SQUARE_BRACKETHgRIGHT_SQUARE_BRACKET = "mm[Hg]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury.
+    """
+    LEFT_SQUARE_BRACKETppbRIGHT_SQUARE_BRACKET = "[ppb]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of parts per billion.
+    """
+    gSOLIDUSkg = "g/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per kilogram.
+    """
+    deg = "deg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of degree (angle).
+    """
+    mgSOLIDUSg = "mg/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per gram.
+    """
+    ugSOLIDUSg = "ug/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per gram.
+    """
+    ngSOLIDUSg = "ng/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per gram.
+    """
+    pgSOLIDUSg = "pg/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picograms per gram.
+    """
+    ngSOLIDUSL = "ng/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per liter.
+    """
+    pgSOLIDUSL = "pg/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picograms per liter.
+    """
+    ugSOLIDUSmL = "ug/mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter.
+    """
+    ngSOLIDUSmL = "ng/mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter.
+    """
+    pgSOLIDUSmL = "pg/mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter.
+    """
+    mol = "mol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of mole.
+    """
+    mmol = "mmol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimole.
+    """
+    umol = "umol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromole.
+    """
+    nmol = "nmol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanomole.
+    """
+    pmol = "pmol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picomole.
+    """
+    U = "U"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of enzyme unit.
+    """
+    mU = "mU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.
+    """
+    uU = "uU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.
+    """
+    nU = "nU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.
+    """
+    Bq = "Bq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of becquerel.
+    """
+    kBq = "kBq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
+    """
+    MBq = "MBq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
+    """
+    GBq = "GBq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
+    """
+    Ci = "Ci"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of curie.
+    """
+    mCi = "mCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millicurie.
+    """
+    uCi = "uCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microcurie.
+    """
+    nCi = "nCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanocurie.
+    """
+    pCi = "pCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picocurie.
+    """
+    rad = "rad"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of radian.
+    """
+    sr = "sr"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of steradian.
+    """
+    Hz = "Hz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of hertz.
+    """
+    kHz = "kHz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilohertz.
+    """
+    MHz = "MHz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of megahertz.
+    """
+    GHz = "GHz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gigahertz.
+    """
+    N = "N"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of newton.
+    """
+    kN = "kN"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilonewton.
+    """
+    J = "J"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of joule.
+    """
+    kJ = "kJ"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilojoule.
+    """
+    MJ = "MJ"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of megajoule.
+    """
+    W = "W"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of watt.
+    """
+    kW = "kW"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilowatt.
     """
 
 

@@ -6,6 +6,7 @@ from pymongo.client_session import ClientSession
 from typing import Optional, Set, Dict, List
 from functools import lru_cache
 import logging
+import copy
 
 # Constants for schema traversal
 DATABASE_CLASS_NAME = "Database"
@@ -224,7 +225,7 @@ class Migrator(MigratorBase):
             
             for document in collection.find({}, session=session):
                 docs_in_collection += 1
-                original_document = document.copy()
+                original_document = copy.deepcopy(document)
                 
                 # The recursive traversal will handle all nested QuantityValue objects
                 # regardless of their class type, so we don't need to pass specific slots
@@ -458,7 +459,10 @@ class Migrator(MigratorBase):
             unit = self._infer_unit_from_context(full_document, path)
             if unit:
                 quantity_value['has_unit'] = unit
-                self.reporter.track_operation('units_added', unit, 1)
+                # Track with more detailed context: slot.unit format
+                context_key = f"{doc_type}.{field_name}"
+                detailed_key = f"{context_key} → {unit}"
+                self.reporter.track_operation('units_added', detailed_key, 1)
             else:
                 # Report missing unit with context
                 context_key = f"{doc_type}.{field_name}"
@@ -474,7 +478,10 @@ class Migrator(MigratorBase):
                 # Only update if the canonical form is different
                 if current_unit != canonical_unit:
                     quantity_value['has_unit'] = canonical_unit
-                    self.reporter.track_operation('units_normalized', f"{current_unit} → {canonical_unit}", 1)
+                    # Track with slot context
+                    context_key = f"{doc_type}.{field_name}"
+                    detailed_key = f"{context_key}: {current_unit} → {canonical_unit}"
+                    self.reporter.track_operation('units_normalized', detailed_key, 1)
             else:
                 # Check if this unit is already a valid canonical unit (no changes needed)
                 if current_unit in self._unit_alias_map and self._unit_alias_map[current_unit] == current_unit:
