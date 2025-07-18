@@ -1,7 +1,7 @@
 from adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.helpers import create_schema_view
-from nmdc_schema.migrators.utils.migration_reporter import create_immediate_reporter
+from nmdc_schema.migrators.helpers import create_schema_view, logger
+from nmdc_schema.migrators.utils.migration_reporter import create_migration_reporter
 from pymongo.client_session import ClientSession
 from typing import Optional, Set, Dict, List
 from functools import lru_cache
@@ -10,7 +10,9 @@ import copy
 
 # Constants for schema traversal
 DATABASE_CLASS_NAME = "Database"
-
+# Configure logging and initialize generic reporter
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+logger.setLevel(logging.INFO)
 
 @lru_cache
 def get_collection_names_from_schema() -> List[str]:
@@ -18,8 +20,8 @@ def get_collection_names_from_schema() -> List[str]:
     Returns the names of the slots of the `Database` class that describe database collections
     and whose range classes could potentially contain QuantityValue objects.
 
-    This method is vendored in from nmdc-runtime (we should really consider putting the migrators in
-    nmdc-runtime).  We would rather not introduce a circular dependency here by importing this method from nmdc_runtime.
+    This method is vendored in from nmdc-runtime because we would rather not introduce a circular dependency.
+    # TODO: consider moving migrators to runtime.
 
     Source: https://github.com/microbiomedata/refscan/blob/af092b0e068b671849fe0f323fac2ed54b81d574/refscan/lib/helpers.py#L31
     """
@@ -83,8 +85,8 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11.8.0"
-    _to_version = "11.9.0"
+    _from_version = "11.9.1"
+    _to_version = "11.10.0"
 
     # Mapping of class/slot combinations to their appropriate UCUM units
     QUANTITY_VALUE_UNITS = {
@@ -162,16 +164,13 @@ class Migrator(MigratorBase):
         self._schema_view = None  # Cache schema view to avoid repeated creation
 
     def upgrade(self) -> None:
-        r"""
-        Migrates the database from conforming to the original schema, to conforming to the new schema.
-        
-        This migration ensures that all QuantityValue instances in records have non-null has_unit values.
-        All operations are wrapped in a MongoDB transaction for atomicity and rollback capability.
         """
-        # Configure logging and initialize generic reporter
-        logging.basicConfig(level=logging.INFO, format='%(message)s')
-        self.logger.setLevel(logging.INFO)
-        self.reporter = create_immediate_reporter(self.logger)
+        Migrates all QuantityValue instances in records to have non-null has_unit values conformant to enumeration PVs.
+
+        All operations are wrapped in a MongoDB transaction for atomicity and rollback capability.
+        All actions are logged in a reporter class so that we can see some statistics at the end of the migration.
+        """
+        self.reporter = create_migration_reporter(self.logger)
         
         # Get schema view to find all classes and their slots with QuantityValue range
         self._schema_view = create_schema_view()
@@ -182,17 +181,16 @@ class Migrator(MigratorBase):
         # Find all classes that have slots with QuantityValue range
         classes_with_quantity_value_slots = self._get_classes_with_quantity_value_slots(self._schema_view)
         
-        self.logger.info(f"Found {len(classes_with_quantity_value_slots)} classes with QuantityValue slots")
-        
         # Use MongoDB transactions for atomicity
         db = self.adapter.get_database()
         with db.client.start_session() as session:
             with session.start_transaction():
                 try:
-                    self.logger.info("Starting migration with transaction support")
                     self._process_collections_with_transaction(classes_with_quantity_value_slots, session)
                     self.reporter.generate_final_report()
-                    self.logger.info("Migration completed successfully!")
+                    # Rollback by default after generating report
+                    self.logger.info("Rolling back transaction (no changes will be committed)")
+                    session.abort_transaction()
                 except Exception as e:
                     self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
                     raise
@@ -215,16 +213,8 @@ class Migrator(MigratorBase):
             db = self.adapter.get_database()
             collection = db.get_collection(collection_name)
             
-            # Start collection reporting
-            self.reporter.start_collection(collection_name)
-            self._current_collection = collection_name
-            
             # Process each document in the collection
-            docs_in_collection = 0
-            docs_updated_in_collection = 0
-            
             for document in collection.find({}, session=session):
-                docs_in_collection += 1
                 original_document = copy.deepcopy(document)
                 
                 # The recursive traversal will handle all nested QuantityValue objects
@@ -238,78 +228,7 @@ class Migrator(MigratorBase):
                         modified_document, 
                         session=session
                     )
-                    docs_updated_in_collection += 1
-            
-            # End collection reporting
-            self.reporter.end_collection(collection_name, docs_in_collection, docs_updated_in_collection)
-            
-            # For material_processing_set, also report document types found
-            if collection_name == "material_processing_set":
-                self._report_document_types(collection, collection_name)
     
-    def _report_document_types(self, collection, collection_name: str) -> None:
-        """Report what document types are found in a collection and their QuantityValue slot analysis"""
-        type_counts = {}
-        type_slot_units = {}  # {doc_type: {slot_name: {unit_value: count}}}
-        
-        for document in collection.find({}):
-            doc_type = document.get('type', 'unknown')
-            type_counts[doc_type] = type_counts.get(doc_type, 0) + 1
-            
-            # Analyze QuantityValue slots for this document type
-            if doc_type not in type_slot_units:
-                type_slot_units[doc_type] = {}
-            
-            self._analyze_document_quantity_values(document, doc_type, type_slot_units[doc_type])
-        
-        self.logger.info(f"  Document types in {collection_name}:")
-        for doc_type, count in sorted(type_counts.items()):
-            self.logger.info(f"    {doc_type}: {count}")
-            
-            # Report QuantityValue analysis for this document type
-            if doc_type in type_slot_units and type_slot_units[doc_type]:
-                self.logger.info(f"      QuantityValue slots processed:")
-                for slot_name, unit_counts in sorted(type_slot_units[doc_type].items()):
-                    self.logger.info(f"        {slot_name}:")
-                    for unit_value, unit_count in sorted(unit_counts.items()):
-                        self.logger.info(f"          {unit_value}: {unit_count}")
-            else:
-                self.logger.info(f"      No QuantityValue slots found")
-    
-    def _analyze_document_quantity_values(self, document: dict, doc_type: str, slot_units: dict) -> None:
-        """Recursively analyze a document to find QuantityValue objects and track their units by slot"""
-        self._analyze_object_quantity_values(document, slot_units, "")
-    
-    def _analyze_object_quantity_values(self, obj: any, slot_units: dict, path: str = "") -> None:
-        """Recursively traverse an object to find QuantityValue instances and track their units"""
-        if isinstance(obj, dict):
-            # Check if this is a QuantityValue instance
-            if obj.get('type') == 'nmdc:QuantityValue':
-                # This is a QuantityValue, extract slot name from path and unit value
-                slot_name = path.split('.')[-1]
-                unit_value = obj.get('has_unit', '<missing>')
-                
-                # Track this unit value for this slot
-                if slot_name not in slot_units:
-                    slot_units[slot_name] = {}
-                if unit_value not in slot_units[slot_name]:
-                    slot_units[slot_name][unit_value] = 0
-                slot_units[slot_name][unit_value] += 1
-            else:
-                # Recurse into dictionary values
-                for key, value in obj.items():
-                    if key in ['_id', 'id', 'name', 'description', 'type'] and isinstance(value, str):
-                        continue  # Skip simple string metadata
-                    if isinstance(value, (int, float, bool)) or value is None:
-                        continue  # Skip simple scalar values
-                    
-                    new_path = f"{path}.{key}" if path else key
-                    self._analyze_object_quantity_values(value, slot_units, new_path)
-        elif isinstance(obj, list):
-            # Recurse into list items
-            for i, item in enumerate(obj):
-                new_path = f"{path}[{i}]"
-                self._analyze_object_quantity_values(item, slot_units, new_path)
     
 
     @staticmethod
@@ -428,8 +347,9 @@ class Migrator(MigratorBase):
         if isinstance(obj, dict):
             # Check if this is a QuantityValue instance
             if obj.get('type') == 'nmdc:QuantityValue':
-                # This is a QuantityValue, try to add/fix its unit
+                # This is a QuantityValue, try to add/fix its unit AND track it
                 self._fix_quantity_value_unit(obj, full_document, path)
+                self._track_quantity_value_processed(obj, full_document, path)
             else:
                 # Quick optimization: only recurse into values that could contain QuantityValue objects
                 # Skip simple string/number values and common metadata fields
@@ -446,6 +366,19 @@ class Migrator(MigratorBase):
             for i, item in enumerate(obj):
                 new_path = f"{path}[{i}]"
                 self._traverse_and_fix_quantity_values(item, full_document, new_path)
+    
+    def _track_quantity_value_processed(self, quantity_value: dict, full_document: dict, path: str) -> None:
+        """Track all QuantityValue instances for the summary table."""
+        doc_type = full_document.get('type', 'unknown')
+        field_name = path.split('.')[-1]
+        current_unit = quantity_value.get('has_unit', '<missing>')
+        
+        # Only track if we have a valid unit (not missing and not unmapped)
+        if current_unit != '<missing>':
+            # Check if this unit is valid (either canonical or has a mapping)
+            if current_unit in self._unit_alias_map:
+                # This is a valid unit - track as processed
+                self.reporter.track_record_processed(doc_type, field_name, doc_type, current_unit)
     
     def _fix_quantity_value_unit(self, quantity_value: dict, full_document: dict, path: str) -> None:
         r"""
@@ -466,14 +399,17 @@ class Migrator(MigratorBase):
             unit = self._infer_unit_from_context(full_document, path)
             if unit:
                 quantity_value['has_unit'] = unit
-                # Track with more detailed context: slot.unit format
-                context_key = f"{doc_type}.{field_name}"
-                detailed_key = f"{context_key} → {unit}"
-                self.reporter.track_operation('units_added', detailed_key, 1)
+                # Track record update: missing → unit
+                self.reporter.track_record_updated(
+                    class_name=doc_type,
+                    slot_name=field_name, 
+                    subclass_type=doc_type,
+                    source_unit="<missing>",
+                    target_unit=unit
+                )
             else:
-                # Report missing unit with context
-                context_key = f"{doc_type}.{field_name}"
-                self.reporter.track_operation('missing_units', context_key, 1)
+                # Report missing unit
+                self.reporter.track_missing_unit(doc_type, field_name)
         else:
             # has_unit exists, check if it needs normalization
             current_unit = quantity_value['has_unit']
@@ -485,20 +421,25 @@ class Migrator(MigratorBase):
                 # Only update if the canonical form is different
                 if current_unit != canonical_unit:
                     quantity_value['has_unit'] = canonical_unit
-                    # Track with slot context
-                    context_key = f"{doc_type}.{field_name}"
-                    detailed_key = f"{context_key}: {current_unit} → {canonical_unit}"
-                    self.reporter.track_operation('units_normalized', detailed_key, 1)
+                    # Track unit normalization
+                    self.reporter.track_record_updated(
+                        class_name=doc_type,
+                        slot_name=field_name,
+                        subclass_type=doc_type,
+                        source_unit=current_unit,
+                        target_unit=canonical_unit
+                    )
             else:
-                # Check if this unit is already a valid canonical unit (no changes needed)
-                if current_unit in self._unit_alias_map and self._unit_alias_map[current_unit] == current_unit:
-                    # Unit is already valid canonical form - no changes needed
-                    context_key = f"{doc_type}.{field_name}"
-                    self.reporter.track_operation('units_already_valid', f"{context_key}: {current_unit}", 1)
+                # Check for special one-off cases first
+                if self._handle_one_off_unit_cases(quantity_value, doc_type, field_name, current_unit):
+                    # One-off case was handled, nothing more to do
+                    pass
+                elif current_unit in self._unit_alias_map and self._unit_alias_map[current_unit] == current_unit:
+                    # Unit is already valid canonical form - track as processed but not updated
+                    self.reporter.track_record_processed(doc_type, field_name, doc_type, current_unit)
                 else:
                     # Unit is not in the alias map - report it for analysis
-                    context_key = f"{doc_type}.{field_name}"
-                    self.reporter.track_operation('unmapped_units', f"{context_key}: {current_unit}", 1)
+                    self.reporter.track_unmapped_unit(doc_type, field_name, current_unit)
     
     def _infer_unit_from_context(self, full_document: dict, path: str) -> Optional[str]:
         r"""
@@ -640,7 +581,13 @@ class Migrator(MigratorBase):
         if class_uri == "nmdc:Biosample" and slot_name == "nitrate" and current_unit == "detection":
             quantity_value['has_unit'] = "umol/L"
             # Track this special conversion
-            self.reporter.track_operation('one_off_unit_conversions', f"detection → umol/L (nitrate)", 1)
+            self.reporter.track_record_updated(
+                class_name=class_uri,
+                slot_name=slot_name,
+                subclass_type=class_uri,
+                source_unit=current_unit,
+                target_unit="umol/L"
+            )
             return True
         
         # Add other one-off cases here as needed

@@ -15514,7 +15514,7 @@
                 "mmol/L",
                 "mS/cm",
                 "[ppm]",
-                "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s",
+                "umol/m2/s",
                 "uS/cm",
                 "W/m2",
                 "a",

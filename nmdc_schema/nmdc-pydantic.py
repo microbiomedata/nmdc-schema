@@ -1534,7 +1534,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of parts per million.
     """
-    PERCENT_SIGN5BarbAPOSTROPHEUPERCENT_SIGN5DPERCENT_SIGN7Bmicro_EinsteinsPERCENT_SIGN7DSOLIDUSm2SOLIDUSs = "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s"
+    umolSOLIDUSm2SOLIDUSs = "umol/m2/s"
     """
     The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second.
     """

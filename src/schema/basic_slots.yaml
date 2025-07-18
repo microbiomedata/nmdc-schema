@@ -1205,15 +1205,17 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of millimolar.
       "mS/cm":
         aliases:
-          - mS/cm
-          - millisiemens/cm
-          - millisiemens per centimeter
+          - "mS/cm"
+          - "millisiemens/cm"
+          - "millisiemens per centimeter"
+          - "milliSiemens/cm"
+          - "milliSiemens/cm"
         description: The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
       "[ppm]":
         aliases:
           - ppm
         description: The Unified Code for Units of Measure (UCUM) representation of parts per million.
-      "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s":
+      "umol/m2/s":
         aliases:
           - "u[E]/m2/s"
         description: >- 
@@ -1223,6 +1225,7 @@ enums:
             - "μS/cm"
             - "microsiemens/cm"
             - "microsiemens per centimeter"
+            - "microSiemens/cm"
         description: The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
       "W/m2":
         description: The Unified Code for Units of Measure (UCUM) representation of watts per square meter.

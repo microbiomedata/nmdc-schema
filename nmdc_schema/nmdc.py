@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-18T14:04:25
+# Generation date: 2025-07-18T15:27:12
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -7872,9 +7872,9 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="[ppm]",
                 description="The Unified Code for Units of Measure (UCUM) representation of parts per million."))
-        setattr(cls, "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s",
+        setattr(cls, "umol/m2/s",
             PermissibleValue(
-                text="%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s",
+                text="umol/m2/s",
                 description="""The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second."""))
         setattr(cls, "uS/cm",
             PermissibleValue(
