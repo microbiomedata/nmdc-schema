@@ -7,6 +7,8 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - attribute_values
+  - basic_slots
+  - basic_classes
   - portal_emsl
   - portal_jgi_metagenomics
   - portal_jgi_metatranscriptomics
@@ -37,6 +39,7 @@ prefixes:
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   schema: "http://schema.org/"
   wgs84: "http://www.w3.org/2003/01/geo/wgs84_pos#"
+  TAXRANK: "http://purl.obolibrary.org/obo/TAXRANK_"
 
 
 default_prefix: nmdc
@@ -391,6 +394,7 @@ classes:
       - host_disease_stat
       - img_identifiers
       - neon_biosample_identifiers
+      - alternative_names
 
       ## external IDs, alternate IDs
       - gold_biosample_identifiers
@@ -1705,49 +1709,49 @@ slots:
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:superkingdom
+      - TAXRANK:0000022
   gtdbtk_phylum:
     description: Taxonomic phylum assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:phylum
+      - TAXRANK:0000001
   gtdbtk_class:
     description: Taxonomic class assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:class
+      - TAXRANK:0000002
   gtdbtk_order:
     description: Taxonomic order assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:order
+      - TAXRANK:0000003
   gtdbtk_family:
     description: Taxonomic family assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:family
+      - TAXRANK:0000004
   gtdbtk_genus:
     range: string
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     exact_mappings:
-      - NCBITaxon:genus
+      - TAXRANK:0000005
   gtdbtk_species:
     description: Taxonomic genus assigned by GTDB-Tk.
     see_also: 
       - doi:10.1093/bioinformatics/btz848
     range: string
     exact_mappings:
-      - NCBITaxon:species
+      - TAXRANK:0000006
 
   highest_similarity_score:
     todos:

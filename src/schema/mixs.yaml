@@ -8,6 +8,7 @@ id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema
 imports:
   - linkml:types
   - attribute_values
+
 prefixes:
   nmdc:
     prefix_prefix: nmdc

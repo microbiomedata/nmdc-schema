@@ -197,6 +197,8 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/SO_'},
                   'SUPFAM': {'prefix_prefix': 'SUPFAM',
                              'prefix_reference': 'https://bioregistry.io/supfam:'},
+                  'TAXRANK': {'prefix_prefix': 'TAXRANK',
+                              'prefix_reference': 'http://purl.obolibrary.org/obo/TAXRANK_'},
                   'TIGRFAM': {'prefix_prefix': 'TIGRFAM',
                               'prefix_reference': 'https://bioregistry.io/tigrfam:'},
                   'UBERON': {'prefix_prefix': 'UBERON',
@@ -947,6 +949,887 @@ class ChemicalEntityEnum(str, Enum):
     phosphoric_acid = "phosphoric_acid"
     trypsin = "trypsin"
     water = "water"
+
+
+class ExecutionResourceEnum(str, Enum):
+    NERSC_Cori = "NERSC-Cori"
+    """
+    NERSC Cori supercomputer
+    """
+    NERSC_Perlmutter = "NERSC-Perlmutter"
+    """
+    NERSC Perlmutter supercomputer
+    """
+    EMSL = "EMSL"
+    """
+    Environmental Molecular Sciences Laboratory
+    """
+    EMSL_RZR = "EMSL-RZR"
+    """
+    Environmental Molecular Sciences Laboratory RZR cluster
+    """
+    JGI = "JGI"
+    """
+    Joint Genome Institute
+    """
+    LANL_B_div = "LANL-B-div"
+    """
+    LANL Bioscience Division
+    """
+
+
+class FileTypeEnum(str, Enum):
+    Virus_Summary = "Virus Summary"
+    """
+    Tab separated file listing the viruses found by geNomad.
+    """
+    Plasmid_Summary = "Plasmid Summary"
+    """
+    Tab separated file listing the plasmids found by geNomad.
+    """
+    GeNomad_Aggregated_Classification = "GeNomad Aggregated Classification"
+    """
+    Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
+    """
+    Reference_Calibration_File = "Reference Calibration File"
+    """
+    A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
+    """
+    Metagenome_Raw_Reads = "Metagenome Raw Reads"
+    """
+    Interleaved paired-end raw metagenome sequencing data
+    """
+    Metagenome_Raw_Read_1 = "Metagenome Raw Read 1"
+    """
+    Read 1 raw metagenome sequencing data, aka forward reads
+    """
+    Metagenome_Raw_Read_2 = "Metagenome Raw Read 2"
+    """
+    Read 2 raw metagenome sequencing data, aka reverse reads
+    """
+    Metatranscriptome_Raw_Reads = "Metatranscriptome Raw Reads"
+    """
+    Interleaved paired-end raw metatranscriptome sequencing data
+    """
+    Metatranscriptome_Raw_Read_1 = "Metatranscriptome Raw Read 1"
+    """
+    Read 1 raw metatranscriptome sequencing data, aka forward reads
+    """
+    Metatranscriptome_Raw_Read_2 = "Metatranscriptome Raw Read 2"
+    """
+    Read 2 raw metatranscriptome sequencing data, aka reverse reads
+    """
+    Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
+    """
+    FT-ICR MS based molecular formula assignment results table
+    """
+    Direct_Infusion_FT_ICR_MS_QC_Plots = "Direct Infusion FT-ICR MS QC Plots"
+    """
+    Quality control plots for FT-ICR MS raw data acquired by direct infusion
+    """
+    LC_FT_ICR_MS_Analysis_Results = "LC FT-ICR MS Analysis Results"
+    """
+    LC FT-ICR MS-based molecular formula assignment results tables
+    """
+    LC_FT_ICR_MS_QC_Plots = "LC FT-ICR MS QC Plots"
+    """
+    Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
+    """
+    GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
+    """
+    GC-MS-based metabolite assignment results table
+    """
+    LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
+    """
+    LC-MS-based metabolite assignment results table
+    """
+    Mass_Spectrometry_Reference_Spectral_Library = "Mass Spectrometry Reference Spectral Library"
+    """
+    Spectral library used for mass spectrometry based metabolite identification
+    """
+    Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
+    """
+    Aggregate workflow statistics file
+    """
+    Protein_Report = "Protein Report"
+    """
+    Filtered protein report file
+    """
+    Peptide_Report = "Peptide Report"
+    """
+    Filtered peptide report file
+    """
+    Unfiltered_Metaproteomics_Results = "Unfiltered Metaproteomics Results"
+    """
+    MSGFjobs and MASIC output file
+    """
+    Read_Count_and_RPKM = "Read Count and RPKM"
+    """
+    Annotation read count and RPKM per feature JSON
+    """
+    QC_non_rRNA_R2 = "QC non-rRNA R2"
+    """
+    QC removed rRNA reads (R2) fastq
+    """
+    QC_non_rRNA_R1 = "QC non-rRNA R1"
+    """
+    QC removed rRNA reads (R1) fastq
+    """
+    Metagenome_Bins = "Metagenome Bins"
+    """
+    Metagenome bin contigs fasta
+    """
+    Metagenome_HQMQ_Bins_Compression_File = "Metagenome HQMQ Bins Compression File"
+    """
+    Compressed file containing high quality and medium quality metagenome bins and associated files
+    """
+    Metagenome_LQ_Bins_Compression_File = "Metagenome LQ Bins Compression File"
+    """
+    Compressed file containing low quality metagenome bins and associated files
+    """
+    Metagenome_Bins_Info_File = "Metagenome Bins Info File"
+    """
+    File containing version information on the binning workflow
+    """
+    CheckM_Statistics = "CheckM Statistics"
+    """
+    CheckM statistics report
+    """
+    Metagenome_Bins_Heatmap = "Metagenome Bins Heatmap"
+    """
+    The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
+    """
+    Metagenome_Bins_Barplot = "Metagenome Bins Barplot"
+    """
+    The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
+    """
+    Metagenome_Bins_Krona_Plot = "Metagenome Bins Krona Plot"
+    """
+    The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
+    """
+    Read_Based_Analysis_Info_File = "Read Based Analysis Info File"
+    """
+    File containing reads based analysis information
+    """
+    GTDBTK_Bacterial_Summary = "GTDBTK Bacterial Summary"
+    """
+    GTDBTK bacterial summary
+    """
+    GTDBTK_Archaeal_Summary = "GTDBTK Archaeal Summary"
+    """
+    GTDBTK archaeal summary
+    """
+    GOTTCHA2_Krona_Plot = "GOTTCHA2 Krona Plot"
+    """
+    GOTTCHA2 krona plot HTML file
+    """
+    GOTTCHA2_Classification_Report = "GOTTCHA2 Classification Report"
+    """
+    GOTTCHA2 classification report file
+    """
+    GOTTCHA2_Report_Full = "GOTTCHA2 Report Full"
+    """
+    GOTTCHA2 report file
+    """
+    Kraken2_Krona_Plot = "Kraken2 Krona Plot"
+    """
+    Kraken2 krona plot HTML file
+    """
+    Centrifuge_Krona_Plot = "Centrifuge Krona Plot"
+    """
+    Centrifuge krona plot HTML file
+    """
+    Centrifuge_output_report_file = "Centrifuge output report file"
+    """
+    Centrifuge output report file
+    """
+    Kraken2_Classification_Report = "Kraken2 Classification Report"
+    """
+    Kraken2 output report file
+    """
+    Kraken2_Taxonomic_Classification = "Kraken2 Taxonomic Classification"
+    """
+    Kraken2 output read classification file
+    """
+    Centrifuge_Classification_Report = "Centrifuge Classification Report"
+    """
+    Centrifuge output report file
+    """
+    Centrifuge_Taxonomic_Classification = "Centrifuge Taxonomic Classification"
+    """
+    Centrifuge output read classification file
+    """
+    Structural_Annotation_GFF = "Structural Annotation GFF"
+    """
+    GFF3 format file with structural annotations
+    """
+    Structural_Annotation_Stats_Json = "Structural Annotation Stats Json"
+    """
+    Structural annotations stats json
+    """
+    Functional_Annotation_GFF = "Functional Annotation GFF"
+    """
+    GFF3 format file with functional annotations
+    """
+    Annotation_Info_File = "Annotation Info File"
+    """
+    File containing annotation info
+    """
+    Annotation_Amino_Acid_FASTA = "Annotation Amino Acid FASTA"
+    """
+    FASTA amino acid file for annotated proteins
+    """
+    Annotation_Enzyme_Commission = "Annotation Enzyme Commission"
+    """
+    Tab delimited file for EC annotation
+    """
+    Annotation_KEGG_Orthology = "Annotation KEGG Orthology"
+    """
+    Tab delimited file for KO annotation
+    """
+    Assembly_Info_File = "Assembly Info File"
+    """
+    File containing assembly info
+    """
+    Assembly_Coverage_BAM = "Assembly Coverage BAM"
+    """
+    Sorted bam file of reads mapping back to the final assembly
+    """
+    Assembly_AGP = "Assembly AGP"
+    """
+    An AGP format file that describes the assembly
+    """
+    Assembly_Scaffolds = "Assembly Scaffolds"
+    """
+    Final assembly scaffolds fasta
+    """
+    Assembly_Contigs = "Assembly Contigs"
+    """
+    Final assembly contigs fasta
+    """
+    Assembly_Coverage_Stats = "Assembly Coverage Stats"
+    """
+    Assembled contigs coverage information
+    """
+    Contig_Mapping_File = "Contig Mapping File"
+    """
+    Contig mappings between contigs and scaffolds
+    """
+    Error_Corrected_Reads = "Error Corrected Reads"
+    """
+    Error corrected reads fastq
+    """
+    Filtered_Sequencing_Reads = "Filtered Sequencing Reads"
+    """
+    Reads QC result fastq (clean data)
+    """
+    Read_Filtering_Info_File = "Read Filtering Info File"
+    """
+    File containing read filtering information
+    """
+    QC_Statistics_Extended = "QC Statistics Extended"
+    """
+    Extended report including methods and results for read filtering
+    """
+    QC_Statistics = "QC Statistics"
+    """
+    Reads QC summary statistics
+    """
+    TIGRFam_Annotation_GFF = "TIGRFam Annotation GFF"
+    """
+    GFF3 format file with TIGRfam
+    """
+    CRT_Annotation_GFF = "CRT Annotation GFF"
+    """
+    GFF3 format file with CRT
+    """
+    Genemark_Annotation_GFF = "Genemark Annotation GFF"
+    """
+    GFF3 format file with Genemark
+    """
+    Prodigal_Annotation_GFF = "Prodigal Annotation GFF"
+    """
+    GFF3 format file with Prodigal
+    """
+    TRNA_Annotation_GFF = "TRNA Annotation GFF"
+    """
+    GFF3 format file with TRNA
+    """
+    Misc_Annotation_GFF = "Misc Annotation GFF"
+    """
+    GFF3 format file with Misc
+    """
+    RFAM_Annotation_GFF = "RFAM Annotation GFF"
+    """
+    GFF3 format file with RFAM
+    """
+    TMRNA_Annotation_GFF = "TMRNA Annotation GFF"
+    """
+    GFF3 format file with TMRNA
+    """
+    Crispr_Terms = "Crispr Terms"
+    """
+    Crispr Terms
+    """
+    Product_Names = "Product Names"
+    """
+    Product names file
+    """
+    Gene_Phylogeny_tsv = "Gene Phylogeny tsv"
+    """
+    Gene Phylogeny tsv
+    """
+    Scaffold_Lineage_tsv = "Scaffold Lineage tsv"
+    """
+    phylogeny at the scaffold level
+    """
+    Clusters_of_Orthologous_Groups_LEFT_PARENTHESISCOGRIGHT_PARENTHESIS_Annotation_GFF = "Clusters of Orthologous Groups (COG) Annotation GFF"
+    """
+    GFF3 format file with COGs
+    """
+    KO_EC_Annotation_GFF = "KO_EC Annotation GFF"
+    """
+    GFF3 format file with KO_EC
+    """
+    CATH_FunFams_LEFT_PARENTHESISFunctional_FamiliesRIGHT_PARENTHESIS_Annotation_GFF = "CATH FunFams (Functional Families) Annotation GFF"
+    """
+    GFF3 format file with CATH FunFams
+    """
+    SUPERFam_Annotation_GFF = "SUPERFam Annotation GFF"
+    """
+    GFF3 format file with SUPERFam
+    """
+    SMART_Annotation_GFF = "SMART Annotation GFF"
+    """
+    GFF3 format file with SMART
+    """
+    Pfam_Annotation_GFF = "Pfam Annotation GFF"
+    """
+    GFF3 format file with Pfam
+    """
+    Annotation_Statistics = "Annotation Statistics"
+    """
+    Annotation statistics report
+    """
+    Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
+    """
+    Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
+    """
+    LC_FT_ICR_MS_Raw_Data = "LC FT-ICR MS Raw Data"
+    """
+    Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
+    """
+    LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
+    """
+    Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
+    """
+    GC_MS_Raw_Data = "GC-MS Raw Data"
+    """
+    Gas chromatography-mass spectrometry raw data, full scan mode.
+    """
+    Configuration_toml = "Configuration toml"
+    """
+    A configuration toml file used by various programs to store settings that are specific to their respective software.
+    """
+    LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
+    """
+    LC-MS-based lipidomics analysis results table
+    """
+    LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
+    """
+    Processed data for the LC-MS-based lipidomics analysis in hdf5 format
+    """
+    LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
+    """
+    Processed data for the LC-MS-based metabolomics analysis in hdf5 format
+    """
+    Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
+    """
+    FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
+    """
+    Analysis_Tool_Parameter_File = "Analysis Tool Parameter File"
+    """
+    A configuration file used by a single computational software tool that stores settings that are specific to that tool.
+    """
+    Workflow_Operation_Summary = "Workflow Operation Summary"
+    """
+    A human readable record of analysis steps applied during an instance of a workflow operation.
+    """
+    Metatranscriptome_Expression = "Metatranscriptome Expression"
+    """
+    Metatranscriptome expression values and read counts for gene features predicted on contigs
+    """
+    Metatranscriptome_Expression_Intergenic = "Metatranscriptome Expression Intergenic"
+    """
+    Metatranscriptome expression values and read counts for intergenic regions.
+    """
+    Metatranscriptome_Expression_Info_File = "Metatranscriptome Expression Info File"
+    """
+    File containing version information on the expression workflow
+    """
+    rRNA_Filtered_Sequencing_Reads = "rRNA Filtered Sequencing Reads"
+    """
+    File containing ribosomal reads from the read qc filtering step.
+    """
+    BAI_File = "BAI File"
+    """
+    An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
+    """
+
+
+class DoiProviderEnum(str, Enum):
+    EMSL = "emsl"
+    JGI = "jgi"
+    KBase = "kbase"
+    OSTI = "osti"
+    ESS_DIVE = "ess_dive"
+    MassIVE = "massive"
+    GSC = "gsc"
+    Zenodo = "zenodo"
+    EDI = "edi"
+    Figshare = "figshare"
+
+
+class DoiCategoryEnum(str, Enum):
+    award_doi = "award_doi"
+    """
+    A type of DOI that resolves to a funding authority.
+    """
+    dataset_doi = "dataset_doi"
+    """
+    A type of DOI that resolves to generated data.
+    """
+    publication_doi = "publication_doi"
+    """
+    A type of DOI that resolves to a publication.
+    """
+    data_management_plan_doi = "data_management_plan_doi"
+    """
+    A type of DOI that resolves to a data management plan.
+    """
+
+
+class StatusEnum(str, Enum):
+    pass = "pass"
+    fail = "fail"
+
+
+class NucleotideSequencingEnum(str, Enum):
+    Metagenome = "metagenome"
+    Metatranscriptome = "metatranscriptome"
+    Amplicon = "amplicon_sequencing_assay"
+
+
+class MassSpectrometryEnum(str, Enum):
+    Metaproteome = "metaproteome"
+    Metabolome = "metabolome"
+    Lipidome = "lipidome"
+    Natural_Organic_Matter = "nom"
+
+
+class ExtractionTargetEnum(str, Enum):
+    DNA = "DNA"
+    RNA = "RNA"
+    metabolite = "metabolite"
+    protein = "protein"
+    lipid = "lipid"
+    natural_organic_matter = "natural organic matter"
+
+
+class ProcessingInstitutionEnum(str, Enum):
+    University_of_California_San_Diego = "UCSD"
+    Joint_Genome_Institute = "JGI"
+    Environmental_Molecular_Sciences_Laboratory = "EMSL"
+    Battelle_Memorial_Institute = "Battelle"
+    Argonne_National_Laboratory = "ANL"
+    University_of_California_Davis_Genome_Center = "UCD_Genome_Center"
+    Azenta_Life_Sciences = "Azenta"
+
+
+class DataCategoryEnum(str, Enum):
+    instrument_data = "instrument_data"
+    """
+    Data generated by a DataGeneration PlannedProcess
+    """
+    processed_data = "processed_data"
+    """
+    Data generated by a WorkflowExecution PlannedProcess
+    """
+    workflow_parameter_data = "workflow_parameter_data"
+    """
+    Data used as input into a workflow providing workflow specification.
+    """
+
+
+class UnitEnum(str, Enum):
+    PERCENT_SIGN = "%"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of percent.
+    """
+    Cel = "Cel"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
+    """
+    cm = "cm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of centimeter.
+    """
+    d = "d"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of day.
+    """
+    g = "g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gram.
+    """
+    h = "h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of hour.
+    """
+    kPa = "kPa"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilopascal.
+    """
+    m = "m"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of meter.
+    """
+    mSOLIDUSs = "m/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of meters per second.
+    """
+    mgSOLIDUSkg = "mg/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
+    """
+    mgSOLIDUSL = "mg/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
+    """
+    min = "min"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of minute.
+    """
+    mL = "mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milliliter.
+    """
+    mm = "mm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimeter.
+    """
+    mlSOLIDUSL = "ml/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
+    """
+    mmolSOLIDUSL = "mmol/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimolar.
+    """
+    mSSOLIDUScm = "mS/cm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
+    """
+    LEFT_SQUARE_BRACKETppmRIGHT_SQUARE_BRACKET = "[ppm]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of parts per million.
+    """
+    PERCENT_SIGN5BarbAPOSTROPHEUPERCENT_SIGN5DPERCENT_SIGN7Bmicro_EinsteinsPERCENT_SIGN7DSOLIDUSm2SOLIDUSs = "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second.
+    """
+    uSSOLIDUScm = "uS/cm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
+    """
+    WSOLIDUSm2 = "W/m2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
+    """
+    a = "a"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of year.
+    """
+    ugSOLIDUSL = "ug/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
+    """
+    ugSOLIDUSuL = "ug/uL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
+    """
+    uL = "uL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microliter.
+    """
+    molSOLIDUSL = "mol/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of moles per liter.
+    """
+    molSOLIDUSLSOLIDUSh = "mol/L/h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
+    """
+    ugSOLIDUSLSOLIDUSh = "ug/L/h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
+    """
+    umolSOLIDUSL = "umol/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
+    """
+    umolSOLIDUSkg = "umol/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
+    """
+    mgSOLIDUSm3 = "mg/m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
+    """
+    kgSOLIDUSm3 = "kg/m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
+    """
+    gSOLIDUSm3 = "g/m3"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter.
+    """
+    m2 = "m2"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of square meters.
+    """
+    atm = "atm"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of atmosphere.
+    """
+    mV = "mV"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millivolt.
+    """
+    PSU = "PSU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
+    """
+    L = "L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of liter.
+    """
+    um = "um"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrometer.
+    """
+    y = "y"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of year.
+    """
+    number_1 = "1"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
+    """
+    uLSOLIDUSkg = "uL/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
+    """
+    kg = "kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilogram.
+    """
+    ppt = "ppt"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
+    """
+    gSOLIDUSg = "g/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gram per gram.
+    """
+    lx = "lx"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of lux.
+    """
+    mgSOLIDUSm3SOLIDUSd = "mg/m3/d"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
+    """
+    ngSOLIDUSh = "ng/h"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per hour.
+    """
+    mmLEFT_SQUARE_BRACKETHgRIGHT_SQUARE_BRACKET = "mm[Hg]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury.
+    """
+    LEFT_SQUARE_BRACKETppbRIGHT_SQUARE_BRACKET = "[ppb]"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of parts per billion.
+    """
+    gSOLIDUSkg = "g/kg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of grams per kilogram.
+    """
+    deg = "deg"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of degree (angle).
+    """
+    mgSOLIDUSg = "mg/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of milligrams per gram.
+    """
+    ugSOLIDUSg = "ug/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per gram.
+    """
+    ngSOLIDUSg = "ng/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per gram.
+    """
+    pgSOLIDUSg = "pg/g"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picograms per gram.
+    """
+    ngSOLIDUSL = "ng/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per liter.
+    """
+    pgSOLIDUSL = "pg/L"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picograms per liter.
+    """
+    ugSOLIDUSmL = "ug/mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter.
+    """
+    ngSOLIDUSmL = "ng/mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter.
+    """
+    pgSOLIDUSmL = "pg/mL"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter.
+    """
+    mol = "mol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of mole.
+    """
+    mmol = "mmol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millimole.
+    """
+    umol = "umol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromole.
+    """
+    nmol = "nmol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanomole.
+    """
+    pmol = "pmol"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picomole.
+    """
+    U = "U"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of enzyme unit.
+    """
+    mU = "mU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.
+    """
+    uU = "uU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.
+    """
+    nU = "nU"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.
+    """
+    Bq = "Bq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of becquerel.
+    """
+    kBq = "kBq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
+    """
+    MBq = "MBq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
+    """
+    GBq = "GBq"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
+    """
+    Ci = "Ci"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of curie.
+    """
+    mCi = "mCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of millicurie.
+    """
+    uCi = "uCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of microcurie.
+    """
+    nCi = "nCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of nanocurie.
+    """
+    pCi = "pCi"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of picocurie.
+    """
+    rad = "rad"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of radian.
+    """
+    sr = "sr"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of steradian.
+    """
+    Hz = "Hz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of hertz.
+    """
+    kHz = "kHz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilohertz.
+    """
+    MHz = "MHz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of megahertz.
+    """
+    GHz = "GHz"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of gigahertz.
+    """
+    N = "N"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of newton.
+    """
+    kN = "kN"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilonewton.
+    """
+    J = "J"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of joule.
+    """
+    kJ = "kJ"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilojoule.
+    """
+    MJ = "MJ"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of megajoule.
+    """
+    W = "W"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of watt.
+    """
+    kW = "kW"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of kilowatt.
+    """
 
 
 class ArchStrucEnum(str, Enum):
@@ -2285,887 +3168,6 @@ class FailureWhereEnum(str, Enum):
     """
 
 
-class ExecutionResourceEnum(str, Enum):
-    NERSC_Cori = "NERSC-Cori"
-    """
-    NERSC Cori supercomputer
-    """
-    NERSC_Perlmutter = "NERSC-Perlmutter"
-    """
-    NERSC Perlmutter supercomputer
-    """
-    EMSL = "EMSL"
-    """
-    Environmental Molecular Sciences Laboratory
-    """
-    EMSL_RZR = "EMSL-RZR"
-    """
-    Environmental Molecular Sciences Laboratory RZR cluster
-    """
-    JGI = "JGI"
-    """
-    Joint Genome Institute
-    """
-    LANL_B_div = "LANL-B-div"
-    """
-    LANL Bioscience Division
-    """
-
-
-class FileTypeEnum(str, Enum):
-    Virus_Summary = "Virus Summary"
-    """
-    Tab separated file listing the viruses found by geNomad.
-    """
-    Plasmid_Summary = "Plasmid Summary"
-    """
-    Tab separated file listing the plasmids found be geNomad.
-    """
-    GeNomad_Aggregated_Classification = "GeNomad Aggregated Classification"
-    """
-    Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
-    """
-    Reference_Calibration_File = "Reference Calibration File"
-    """
-    A file that contains data used to calibrate a natural organic matter or metabalomics analysis.
-    """
-    Metagenome_Raw_Reads = "Metagenome Raw Reads"
-    """
-    Interleaved paired-end raw metagenome sequencing data
-    """
-    Metagenome_Raw_Read_1 = "Metagenome Raw Read 1"
-    """
-    Read 1 raw metagenome sequencing data, aka forward reads
-    """
-    Metagenome_Raw_Read_2 = "Metagenome Raw Read 2"
-    """
-    Read 2 raw metagenome sequencing data, aka reverse reads
-    """
-    Metatranscriptome_Raw_Reads = "Metatranscriptome Raw Reads"
-    """
-    Interleaved paired-end raw metatranscriptome sequencing data
-    """
-    Metatranscriptome_Raw_Read_1 = "Metatranscriptome Raw Read 1"
-    """
-    Read 1 raw metatranscriptome sequencing data, aka forward reads
-    """
-    Metatranscriptome_Raw_Read_2 = "Metatranscriptome Raw Read 2"
-    """
-    Read 2 raw metatranscriptome sequencing data, aka reverse reads
-    """
-    Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
-    """
-    FT-ICR MS based molecular formula assignment results table
-    """
-    Direct_Infusion_FT_ICR_MS_QC_Plots = "Direct Infusion FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired by direct infusion
-    """
-    LC_FT_ICR_MS_Analysis_Results = "LC FT-ICR MS Analysis Results"
-    """
-    LC FT-ICR MS-based molecular formula assignment results tables
-    """
-    LC_FT_ICR_MS_QC_Plots = "LC FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
-    """
-    GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
-    """
-    GC-MS-based metabolite assignment results table
-    """
-    LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
-    """
-    LC-MS-based metabolite assignment results table
-    """
-    Mass_Spectrometry_Reference_Spectral_Library = "Mass Spectrometry Reference Spectral Library"
-    """
-    Spectral library used for mass spectrometry based metabolite identification
-    """
-    Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
-    """
-    Aggregate workflow statistics file
-    """
-    Protein_Report = "Protein Report"
-    """
-    Filtered protein report file
-    """
-    Peptide_Report = "Peptide Report"
-    """
-    Filtered peptide report file
-    """
-    Unfiltered_Metaproteomics_Results = "Unfiltered Metaproteomics Results"
-    """
-    MSGFjobs and MASIC output file
-    """
-    Read_Count_and_RPKM = "Read Count and RPKM"
-    """
-    Annotation read count and RPKM per feature JSON
-    """
-    QC_non_rRNA_R2 = "QC non-rRNA R2"
-    """
-    QC removed rRNA reads (R2) fastq
-    """
-    QC_non_rRNA_R1 = "QC non-rRNA R1"
-    """
-    QC removed rRNA reads (R1) fastq
-    """
-    Metagenome_Bins = "Metagenome Bins"
-    """
-    Metagenome bin contigs fasta
-    """
-    Metagenome_HQMQ_Bins_Compression_File = "Metagenome HQMQ Bins Compression File"
-    """
-    Compressed file containing high qulaity and medium quality metagenome bins and associated files
-    """
-    Metagenome_LQ_Bins_Compression_File = "Metagenome LQ Bins Compression File"
-    """
-    Compressed file containing low quality metagenome bins and associated files
-    """
-    Metagenome_Bins_Info_File = "Metagenome Bins Info File"
-    """
-    File containing version information on the binning workflow
-    """
-    CheckM_Statistics = "CheckM Statistics"
-    """
-    CheckM statistics report
-    """
-    Metagenome_Bins_Heatmap = "Metagenome Bins Heatmap"
-    """
-    The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
-    """
-    Metagenome_Bins_Barplot = "Metagenome Bins Barplot"
-    """
-    The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
-    """
-    Metagenome_Bins_Krona_Plot = "Metagenome Bins Krona Plot"
-    """
-    The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
-    """
-    Read_Based_Analysis_Info_File = "Read Based Analysis Info File"
-    """
-    File containing reads based analysis information
-    """
-    GTDBTK_Bacterial_Summary = "GTDBTK Bacterial Summary"
-    """
-    GTDBTK bacterial summary
-    """
-    GTDBTK_Archaeal_Summary = "GTDBTK Archaeal Summary"
-    """
-    GTDBTK archaeal summary
-    """
-    GOTTCHA2_Krona_Plot = "GOTTCHA2 Krona Plot"
-    """
-    GOTTCHA2 krona plot HTML file
-    """
-    GOTTCHA2_Classification_Report = "GOTTCHA2 Classification Report"
-    """
-    GOTTCHA2 classification report file
-    """
-    GOTTCHA2_Report_Full = "GOTTCHA2 Report Full"
-    """
-    GOTTCHA2 report file
-    """
-    Kraken2_Krona_Plot = "Kraken2 Krona Plot"
-    """
-    Kraken2 krona plot HTML file
-    """
-    Centrifuge_Krona_Plot = "Centrifuge Krona Plot"
-    """
-    Centrifuge krona plot HTML file
-    """
-    Centrifuge_output_report_file = "Centrifuge output report file"
-    """
-    Centrifuge output report file
-    """
-    Kraken2_Classification_Report = "Kraken2 Classification Report"
-    """
-    Kraken2 output report file
-    """
-    Kraken2_Taxonomic_Classification = "Kraken2 Taxonomic Classification"
-    """
-    Kraken2 output read classification file
-    """
-    Centrifuge_Classification_Report = "Centrifuge Classification Report"
-    """
-    Centrifuge output report file
-    """
-    Centrifuge_Taxonomic_Classification = "Centrifuge Taxonomic Classification"
-    """
-    Centrifuge output read classification file
-    """
-    Structural_Annotation_GFF = "Structural Annotation GFF"
-    """
-    GFF3 format file with structural annotations
-    """
-    Structural_Annotation_Stats_Json = "Structural Annotation Stats Json"
-    """
-    Structural annotations stats json
-    """
-    Functional_Annotation_GFF = "Functional Annotation GFF"
-    """
-    GFF3 format file with functional annotations
-    """
-    Annotation_Info_File = "Annotation Info File"
-    """
-    File containing annotation info
-    """
-    Annotation_Amino_Acid_FASTA = "Annotation Amino Acid FASTA"
-    """
-    FASTA amino acid file for annotated proteins
-    """
-    Annotation_Enzyme_Commission = "Annotation Enzyme Commission"
-    """
-    Tab delimited file for EC annotation
-    """
-    Annotation_KEGG_Orthology = "Annotation KEGG Orthology"
-    """
-    Tab delimited file for KO annotation
-    """
-    Assembly_Info_File = "Assembly Info File"
-    """
-    File containing assembly info
-    """
-    Assembly_Coverage_BAM = "Assembly Coverage BAM"
-    """
-    Sorted bam file of reads mapping back to the final assembly
-    """
-    Assembly_AGP = "Assembly AGP"
-    """
-    An AGP format file that describes the assembly
-    """
-    Assembly_Scaffolds = "Assembly Scaffolds"
-    """
-    Final assembly scaffolds fasta
-    """
-    Assembly_Contigs = "Assembly Contigs"
-    """
-    Final assembly contigs fasta
-    """
-    Assembly_Coverage_Stats = "Assembly Coverage Stats"
-    """
-    Assembled contigs coverage information
-    """
-    Contig_Mapping_File = "Contig Mapping File"
-    """
-    Contig mappings between contigs and scaffolds
-    """
-    Error_Corrected_Reads = "Error Corrected Reads"
-    """
-    Error corrected reads fastq
-    """
-    Filtered_Sequencing_Reads = "Filtered Sequencing Reads"
-    """
-    Reads QC result fastq (clean data)
-    """
-    Read_Filtering_Info_File = "Read Filtering Info File"
-    """
-    File containing read filtering information
-    """
-    QC_Statistics_Extended = "QC Statistics Extended"
-    """
-    Extended report including methods and results for read filtering
-    """
-    QC_Statistics = "QC Statistics"
-    """
-    Reads QC summary statistics
-    """
-    TIGRFam_Annotation_GFF = "TIGRFam Annotation GFF"
-    """
-    GFF3 format file with TIGRfam
-    """
-    CRT_Annotation_GFF = "CRT Annotation GFF"
-    """
-    GFF3 format file with CRT
-    """
-    Genemark_Annotation_GFF = "Genemark Annotation GFF"
-    """
-    GFF3 format file with Genemark
-    """
-    Prodigal_Annotation_GFF = "Prodigal Annotation GFF"
-    """
-    GFF3 format file with Prodigal
-    """
-    TRNA_Annotation_GFF = "TRNA Annotation GFF"
-    """
-    GFF3 format file with TRNA
-    """
-    Misc_Annotation_GFF = "Misc Annotation GFF"
-    """
-    GFF3 format file with Misc
-    """
-    RFAM_Annotation_GFF = "RFAM Annotation GFF"
-    """
-    GFF3 format file with RFAM
-    """
-    TMRNA_Annotation_GFF = "TMRNA Annotation GFF"
-    """
-    GFF3 format file with TMRNA
-    """
-    Crispr_Terms = "Crispr Terms"
-    """
-    Crispr Terms
-    """
-    Product_Names = "Product Names"
-    """
-    Product names file
-    """
-    Gene_Phylogeny_tsv = "Gene Phylogeny tsv"
-    """
-    Gene Phylogeny tsv
-    """
-    Scaffold_Lineage_tsv = "Scaffold Lineage tsv"
-    """
-    phylogeny at the scaffold level
-    """
-    Clusters_of_Orthologous_Groups_LEFT_PARENTHESISCOGRIGHT_PARENTHESIS_Annotation_GFF = "Clusters of Orthologous Groups (COG) Annotation GFF"
-    """
-    GFF3 format file with COGs
-    """
-    KO_EC_Annotation_GFF = "KO_EC Annotation GFF"
-    """
-    GFF3 format file with KO_EC
-    """
-    CATH_FunFams_LEFT_PARENTHESISFunctional_FamiliesRIGHT_PARENTHESIS_Annotation_GFF = "CATH FunFams (Functional Families) Annotation GFF"
-    """
-    GFF3 format file with CATH FunFams
-    """
-    SUPERFam_Annotation_GFF = "SUPERFam Annotation GFF"
-    """
-    GFF3 format file with SUPERFam
-    """
-    SMART_Annotation_GFF = "SMART Annotation GFF"
-    """
-    GFF3 format file with SMART
-    """
-    Pfam_Annotation_GFF = "Pfam Annotation GFF"
-    """
-    GFF3 format file with Pfam
-    """
-    Annotation_Statistics = "Annotation Statistics"
-    """
-    Annotation statistics report
-    """
-    Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
-    """
-    Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
-    """
-    LC_FT_ICR_MS_Raw_Data = "LC FT-ICR MS Raw Data"
-    """
-    Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
-    """
-    LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
-    """
-    Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
-    """
-    GC_MS_Raw_Data = "GC-MS Raw Data"
-    """
-    Gas chromatography-mass spectrometry raw data, full scan mode.
-    """
-    Configuration_toml = "Configuration toml"
-    """
-    A configuration toml file used by various programs to store settings that are specific to their respective software.
-    """
-    LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
-    """
-    LC-MS-based lipidomics analysis results table
-    """
-    LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
-    """
-    Processed data for the LC-MS-based lipidomics analysis in hdf5 format
-    """
-    LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
-    """
-    Processed data for the LC-MS-based metabolomics analysis in hdf5 format
-    """
-    Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
-    """
-    FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
-    """
-    Analysis_Tool_Parameter_File = "Analysis Tool Parameter File"
-    """
-    A configuration file used by a single computational software tool that stores settings that are specific to that tool.
-    """
-    Workflow_Operation_Summary = "Workflow Operation Summary"
-    """
-    A human readable record of analysis steps applied during an instance of a workflow operation.
-    """
-    Metatranscriptome_Expression = "Metatranscriptome Expression"
-    """
-    Metatranscriptome expression values and read counts for gene features predicted on contigs
-    """
-    Metatranscriptome_Expression_Intergenic = "Metatranscriptome Expression Intergenic"
-    """
-    Metatranscriptome expression values and read counts for intergenic regions.
-    """
-    Metatranscriptome_Expression_Info_File = "Metatranscriptome Expression Info File"
-    """
-    File containing version information on the expression workflow
-    """
-    rRNA_Filtered_Sequencing_Reads = "rRNA Filtered Sequencing Reads"
-    """
-    File containing ribosomal reads from the read qc filtering step.
-    """
-    BAI_File = "BAI File"
-    """
-    An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
-    """
-
-
-class DoiProviderEnum(str, Enum):
-    EMSL = "emsl"
-    JGI = "jgi"
-    KBase = "kbase"
-    OSTI = "osti"
-    ESS_DIVE = "ess_dive"
-    MassIVE = "massive"
-    GSC = "gsc"
-    Zenodo = "zenodo"
-    EDI = "edi"
-    Figshare = "figshare"
-
-
-class DoiCategoryEnum(str, Enum):
-    award_doi = "award_doi"
-    """
-    A type of DOI that resolves to a funding authority.
-    """
-    dataset_doi = "dataset_doi"
-    """
-    A type of DOI that resolves to generated data.
-    """
-    publication_doi = "publication_doi"
-    """
-    A type of DOI that resolves to a publication.
-    """
-    data_management_plan_doi = "data_management_plan_doi"
-    """
-    A type of DOI that resolves to a data management plan.
-    """
-
-
-class StatusEnum(str, Enum):
-    pass = "pass"
-    fail = "fail"
-
-
-class NucleotideSequencingEnum(str, Enum):
-    Metagenome = "metagenome"
-    Metatranscriptome = "metatranscriptome"
-    Amplicon = "amplicon_sequencing_assay"
-
-
-class MassSpectrometryEnum(str, Enum):
-    Metaproteome = "metaproteome"
-    Metabolome = "metabolome"
-    Lipidome = "lipidome"
-    Natural_Organic_Matter = "nom"
-
-
-class ExtractionTargetEnum(str, Enum):
-    DNA = "DNA"
-    RNA = "RNA"
-    metabolite = "metabolite"
-    protein = "protein"
-    lipid = "lipid"
-    natural_organic_matter = "natural organic matter"
-
-
-class ProcessingInstitutionEnum(str, Enum):
-    University_of_California_San_Diego = "UCSD"
-    Joint_Genome_Institute = "JGI"
-    Environmental_Molecular_Sciences_Laboratory = "EMSL"
-    Battelle_Memorial_Institute = "Battelle"
-    Argonne_National_Laboratory = "ANL"
-    University_of_California_Davis_Genome_Center = "UCD_Genome_Center"
-    Azenta_Life_Sciences = "Azenta"
-
-
-class DataCategoryEnum(str, Enum):
-    instrument_data = "instrument_data"
-    """
-    Data generated by a DataGeneration PlannedProcess
-    """
-    processed_data = "processed_data"
-    """
-    Data generated by a WorkflowExecution PlannedProcess
-    """
-    workflow_parameter_data = "workflow_parameter_data"
-    """
-    Data used as input into a workflow providing workflow specification.
-    """
-
-
-class UnitEnum(str, Enum):
-    PERCENT_SIGN = "%"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of percent.
-    """
-    Cel = "Cel"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
-    """
-    cm = "cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of centimeter.
-    """
-    d = "d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of day.
-    """
-    g = "g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gram.
-    """
-    h = "h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of hour.
-    """
-    kPa = "kPa"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilopascal.
-    """
-    m = "m"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of meter.
-    """
-    mSOLIDUSs = "m/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of meters per second.
-    """
-    mgSOLIDUSkg = "mg/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
-    """
-    mgSOLIDUSL = "mg/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
-    """
-    min = "min"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of minute.
-    """
-    mL = "mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milliliter.
-    """
-    mm = "mm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimeter.
-    """
-    mlSOLIDUSL = "ml/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
-    """
-    mmolSOLIDUSL = "mmol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimolar.
-    """
-    mSSOLIDUScm = "mS/cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
-    """
-    LEFT_SQUARE_BRACKETppmRIGHT_SQUARE_BRACKET = "[ppm]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per million.
-    """
-    PERCENT_SIGN5BarbAPOSTROPHEUPERCENT_SIGN5DPERCENT_SIGN7Bmicro_EinsteinsPERCENT_SIGN7DSOLIDUSm2SOLIDUSs = "%5Barb'U%5D%7Bmicro_Einsteins%7D/m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second.
-    """
-    uSSOLIDUScm = "uS/cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
-    """
-    WSOLIDUSm2 = "W/m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
-    """
-    a = "a"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of year.
-    """
-    ugSOLIDUSL = "ug/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
-    """
-    ugSOLIDUSuL = "ug/uL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
-    """
-    uL = "uL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microliter.
-    """
-    molSOLIDUSL = "mol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of moles per liter.
-    """
-    molSOLIDUSLSOLIDUSh = "mol/L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
-    """
-    ugSOLIDUSLSOLIDUSh = "ug/L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
-    """
-    umolSOLIDUSL = "umol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
-    """
-    umolSOLIDUSkg = "umol/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
-    """
-    mgSOLIDUSm3 = "mg/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
-    """
-    kgSOLIDUSm3 = "kg/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
-    """
-    gSOLIDUSm3 = "g/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter.
-    """
-    m2 = "m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of square meters.
-    """
-    atm = "atm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of atmosphere.
-    """
-    mV = "mV"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millivolt.
-    """
-    PSU = "PSU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
-    """
-    L = "L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of liter.
-    """
-    um = "um"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrometer.
-    """
-    y = "y"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of year.
-    """
-    number_1 = "1"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
-    """
-    uLSOLIDUSkg = "uL/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
-    """
-    kg = "kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilogram.
-    """
-    ppt = "ppt"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
-    """
-    gSOLIDUSg = "g/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gram per gram.
-    """
-    lx = "lx"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of lux.
-    """
-    mgSOLIDUSm3SOLIDUSd = "mg/m3/d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
-    """
-    ngSOLIDUSh = "ng/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per hour.
-    """
-    mmLEFT_SQUARE_BRACKETHgRIGHT_SQUARE_BRACKET = "mm[Hg]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury.
-    """
-    LEFT_SQUARE_BRACKETppbRIGHT_SQUARE_BRACKET = "[ppb]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per billion.
-    """
-    gSOLIDUSkg = "g/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of grams per kilogram.
-    """
-    deg = "deg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of degree (angle).
-    """
-    mgSOLIDUSg = "mg/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per gram.
-    """
-    ugSOLIDUSg = "ug/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per gram.
-    """
-    ngSOLIDUSg = "ng/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per gram.
-    """
-    pgSOLIDUSg = "pg/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per gram.
-    """
-    ngSOLIDUSL = "ng/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per liter.
-    """
-    pgSOLIDUSL = "pg/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per liter.
-    """
-    ugSOLIDUSmL = "ug/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter.
-    """
-    ngSOLIDUSmL = "ng/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter.
-    """
-    pgSOLIDUSmL = "pg/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter.
-    """
-    mol = "mol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of mole.
-    """
-    mmol = "mmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimole.
-    """
-    umol = "umol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromole.
-    """
-    nmol = "nmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanomole.
-    """
-    pmol = "pmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picomole.
-    """
-    U = "U"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of enzyme unit.
-    """
-    mU = "mU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.
-    """
-    uU = "uU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.
-    """
-    nU = "nU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.
-    """
-    Bq = "Bq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of becquerel.
-    """
-    kBq = "kBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
-    """
-    MBq = "MBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
-    """
-    GBq = "GBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
-    """
-    Ci = "Ci"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of curie.
-    """
-    mCi = "mCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millicurie.
-    """
-    uCi = "uCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microcurie.
-    """
-    nCi = "nCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanocurie.
-    """
-    pCi = "pCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picocurie.
-    """
-    rad = "rad"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of radian.
-    """
-    sr = "sr"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of steradian.
-    """
-    Hz = "Hz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of hertz.
-    """
-    kHz = "kHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilohertz.
-    """
-    MHz = "MHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megahertz.
-    """
-    GHz = "GHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gigahertz.
-    """
-    N = "N"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of newton.
-    """
-    kN = "kN"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilonewton.
-    """
-    J = "J"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joule.
-    """
-    kJ = "kJ"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilojoule.
-    """
-    MJ = "MJ"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megajoule.
-    """
-    W = "W"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of watt.
-    """
-    kW = "kW"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilowatt.
-    """
-
-
 class SampleTypeEnum(str, Enum):
     soil = "soil"
     soil___water_extract = "soil - water extract"
@@ -3617,31 +3619,31 @@ class MagBin(ConfiguredBaseModel):
     gene_count: Optional[int] = Field(default=None, description="""Number of genes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'gene_count', 'domain_of': ['MagBin']} })
     gtdbtk_class: Optional[str] = Field(default=None, description="""Taxonomic class assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_class',
          'domain_of': ['MagBin'],
-         'exact_mappings': ['NCBITaxon:class'],
+         'exact_mappings': ['TAXRANK:0000002'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_domain: Optional[str] = Field(default=None, description="""Taxonomic domain assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_domain',
          'domain_of': ['MagBin'],
-         'exact_mappings': ['NCBITaxon:superkingdom'],
+         'exact_mappings': ['TAXRANK:0000022'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_family: Optional[str] = Field(default=None, description="""Taxonomic family assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_family',
          'domain_of': ['MagBin'],
-         'exact_mappings': ['NCBITaxon:family'],
+         'exact_mappings': ['TAXRANK:0000004'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_genus: Optional[str] = Field(default=None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_genus',
          'domain_of': ['MagBin'],
-         'exact_mappings': ['NCBITaxon:genus'],
+         'exact_mappings': ['TAXRANK:0000005'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_order: Optional[str] = Field(default=None, description="""Taxonomic order assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_order',
          'domain_of': ['MagBin'],
-         'exact_mappings': ['NCBITaxon:order'],
+         'exact_mappings': ['TAXRANK:0000003'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_phylum: Optional[str] = Field(default=None, description="""Taxonomic phylum assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_phylum',
          'domain_of': ['MagBin'],
-         'exact_mappings': ['NCBITaxon:phylum'],
+         'exact_mappings': ['TAXRANK:0000001'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     gtdbtk_species: Optional[str] = Field(default=None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_species',
          'domain_of': ['MagBin'],
-         'exact_mappings': ['NCBITaxon:species'],
+         'exact_mappings': ['TAXRANK:0000006'],
          'see_also': ['doi:10.1093/bioinformatics/btz848']} })
     members_id: Optional[list[str]] = Field(default=None, description="""Names of the contigs that make up a metagenome-assembled genome.""", json_schema_extra = { "linkml_meta": {'alias': 'members_id',
          'close_mappings': ['GENEPIO:0100596'],
@@ -3978,7 +3980,7 @@ class QuantityValue(AttributeValue):
     has_numeric_value: Optional[Decimal] = Field(default=None, description="""The number part of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_numeric_value',
          'domain_of': ['QuantityValue'],
          'mappings': ['qud:quantityValue', 'schema:value']} })
-    has_unit: UnitEnum = Field(default=..., description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
+    has_unit: Optional[str] = Field(default=None, description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
          'aliases': ['scale'],
          'domain_of': ['QuantityValue'],
          'mappings': ['qud:unit', 'schema:unitCode']} })
@@ -4334,12 +4336,26 @@ class GeolocationValue(AttributeValue):
                         'latitude': {'name': 'latitude', 'required': True},
                         'longitude': {'name': 'longitude', 'required': True}}})
 
-    latitude: float = Field(default=..., description="""latitude""", json_schema_extra = { "linkml_meta": {'alias': 'latitude',
+    latitude: float = Field(default=..., description="""The latitude of a location.""", json_schema_extra = { "linkml_meta": {'alias': 'latitude',
+         'alt_descriptions': {'wikipedia': {'description': 'A geographic coordinate '
+                                                           'that specifies the '
+                                                           'north-south position of a '
+                                                           'point on the surface of '
+                                                           'the Earth or another '
+                                                           'celestial body.',
+                                            'source': 'wikipedia'}},
          'domain_of': ['GeolocationValue'],
          'examples': [{'value': '-33.460524'}],
          'mappings': ['schema:latitude'],
          'slot_uri': 'wgs84:lat'} })
-    longitude: float = Field(default=..., description="""longitude""", json_schema_extra = { "linkml_meta": {'alias': 'longitude',
+    longitude: float = Field(default=..., description="""The longitude of a location.""", json_schema_extra = { "linkml_meta": {'alias': 'longitude',
+         'alt_descriptions': {'wikipedia': {'description': 'A geographic coordinate '
+                                                           'that specifies the '
+                                                           'east-west position of a '
+                                                           'point on the surface of '
+                                                           'the Earth, or another '
+                                                           'celestial body.',
+                                            'source': 'wikipedia'}},
          'domain_of': ['GeolocationValue'],
          'examples': [{'value': '150.168149'}],
          'mappings': ['schema:longitude'],
@@ -4564,8 +4580,8 @@ class OntologyClass(NamedThing):
                                          'to the nmdc namespace'],
                                'pattern': '^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$'}}})
 
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['OntologyClass', 'Study'],
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
@@ -4655,8 +4671,8 @@ class EnvironmentalMaterialTerm(OntologyClass):
                        'https://github.com/microbiomedata/nmdc-schema/issues/1881',
          'from_schema': 'https://w3id.org/nmdc/nmdc'})
 
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['OntologyClass', 'Study'],
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
@@ -4760,8 +4776,8 @@ class ChemicalEntity(OntologyClass):
          'see_also': ['https://bioconductor.org/packages/devel/data/annotation/vignettes/metaboliteIDmapping/inst/doc/metaboliteIDmapping.html']})
 
     chemical_formula: Optional[str] = Field(default=None, description="""A generic grouping for molecular formulae and empirical formulae""", json_schema_extra = { "linkml_meta": {'alias': 'chemical_formula', 'domain_of': ['ChemicalEntity']} })
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['OntologyClass', 'Study'],
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
@@ -4854,8 +4870,8 @@ class FunctionalAnnotationTerm(OntologyClass):
          'class_uri': 'nmdc:FunctionalAnnotationTerm',
          'from_schema': 'https://w3id.org/nmdc/nmdc'})
 
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['OntologyClass', 'Study'],
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
@@ -4955,8 +4971,8 @@ class Pathway(FunctionalAnnotationTerm):
                    "is Pathway instantiated in an MongoDB collection? Aren't Pathways "
                    'searchable in the Data Portal?']})
 
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['OntologyClass', 'Study'],
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
@@ -5058,8 +5074,8 @@ class OrthologyGroup(FunctionalAnnotationTerm):
          'todos': ["is OrthologyGroup instantiated in an MongoDB collection? Aren't "
                    'Pathways searchable in the Data Portal?']})
 
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
-         'domain_of': ['OntologyClass', 'Study'],
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     relations: Optional[list[OntologyRelation]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'relations', 'domain_of': ['OntologyClass']} })
     definition: Optional[str] = Field(default=None, description="""The definition of the ontology term as provided by the ontology.""", json_schema_extra = { "linkml_meta": {'alias': 'definition', 'domain_of': ['OntologyClass']} })
@@ -5917,6 +5933,9 @@ class Biosample(Sample):
          'domain_of': ['Biosample'],
          'is_a': 'biosample_identifiers',
          'mixins': ['neon_identifiers']} })
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
+         'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     gold_biosample_identifiers: Optional[list[str]] = Field(default=None, description="""Unique identifier for a biosample submitted to GOLD that matches the NMDC submitted biosample""", json_schema_extra = { "linkml_meta": {'alias': 'gold_biosample_identifiers',
          'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Provide the GOLD biosample IDs '
@@ -11315,8 +11334,12 @@ class Biosample(Sample):
     dna_project_contact: Optional[str] = Field(default=None, title="DNA seq project contact", json_schema_extra = { "linkml_meta": {'alias': 'dna_project_contact',
          'comments': ['Do not edit these values. A template will be provided by NMDC '
                       'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'John Jones'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
          'rank': 18,
          'recommended': True,
          'slot_group': 'JGI-Metagenomics',
@@ -11359,8 +11382,12 @@ class Biosample(Sample):
     dna_seq_project_pi: Optional[str] = Field(default=None, title="DNA seq project PI", json_schema_extra = { "linkml_meta": {'alias': 'dna_seq_project_pi',
          'comments': ['Do not edit these values. A template will be provided by NMDC '
                       'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'Jane Johnson'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
          'rank': 17,
          'recommended': True,
          'slot_group': 'JGI-Metagenomics',
@@ -11388,8 +11415,12 @@ class Biosample(Sample):
     proposal_dna: Optional[str] = Field(default=None, title="DNA proposal ID", json_schema_extra = { "linkml_meta": {'alias': 'proposal_dna',
          'comments': ['Do not edit these values. A template will be provided by NMDC '
                       'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
          'domain_of': ['Biosample'],
          'examples': [{'value': '504000'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
          'rank': 19,
          'recommended': True,
          'slot_group': 'JGI-Metagenomics',
@@ -11405,8 +11436,12 @@ class Biosample(Sample):
     proposal_rna: Optional[str] = Field(default=None, title="RNA proposal ID", json_schema_extra = { "linkml_meta": {'alias': 'proposal_rna',
          'comments': ['Do not edit these values. A template will be provided by NMDC '
                       'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
          'domain_of': ['Biosample'],
          'examples': [{'value': '504000'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
          'rank': 19,
          'recommended': True,
          'slot_group': 'JGI-Metatranscriptomics',
@@ -11492,8 +11527,12 @@ class Biosample(Sample):
     rna_project_contact: Optional[str] = Field(default=None, title="RNA seq project contact", json_schema_extra = { "linkml_meta": {'alias': 'rna_project_contact',
          'comments': ['Do not edit these values. A template will be provided by NMDC '
                       'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'John Jones'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
          'rank': 18,
          'recommended': True,
          'slot_group': 'JGI-Metatranscriptomics',
@@ -11533,8 +11572,12 @@ class Biosample(Sample):
     rna_seq_project_pi: Optional[str] = Field(default=None, title="RNA seq project PI", json_schema_extra = { "linkml_meta": {'alias': 'rna_seq_project_pi',
          'comments': ['Do not edit these values. A template will be provided by NMDC '
                       'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'Jane Johnson'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
          'rank': 17,
          'recommended': True,
          'slot_group': 'JGI-Metatranscriptomics',
@@ -12628,7 +12671,8 @@ class PlannedProcess(NamedThing):
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input', 'aliases': ['input'], 'domain_of': ['PlannedProcess']} })
     has_output: Optional[list[str]] = Field(default=None, description="""An output from a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_output', 'aliases': ['output'], 'domain_of': ['PlannedProcess']} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -12759,7 +12803,8 @@ class CollectingBiosamplesFromSite(PlannedProcess):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:bsm-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -12941,7 +12986,8 @@ class StorageProcess(PlannedProcess):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -13099,7 +13145,8 @@ class MaterialProcessing(PlannedProcess):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -13274,7 +13321,8 @@ class Pooling(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -13485,7 +13533,8 @@ class Extraction(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -13714,7 +13763,8 @@ class LibraryPreparation(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -13937,7 +13987,8 @@ class SubSamplingProcess(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -14127,7 +14178,8 @@ class MixingProcess(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -14335,7 +14387,8 @@ class FiltrationProcess(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -14528,7 +14581,8 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:procsm-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -14716,7 +14770,8 @@ class DissolvingProcess(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -14910,7 +14965,8 @@ class ChemicalConversionProcess(MaterialProcessing):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(procsm)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -15457,13 +15513,13 @@ class Study(NamedThing):
          'mixins': ['neon_identifiers']} })
     related_identifiers: Optional[str] = Field(default=None, title="Related Identifiers", description="""Unique identifier for a study submitted to additional resources. Similar, but not necessarily identical to that which has been submitted to NMDC""", json_schema_extra = { "linkml_meta": {'alias': 'related_identifiers', 'domain_of': ['Study']} })
     alternative_descriptions: Optional[list[str]] = Field(default=None, description="""A list of alternative descriptions for the entity. The distinction between description and alternative descriptions is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_descriptions', 'domain_of': ['Study']} })
-    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
+    alternative_names: Optional[list[str]] = Field(default=None, description="""A list of alternative names used to refer to the entity. The distinction between name and alternative names is application-specific.  This should not be used for identifers which have their own slots (e.g., bioproject:PRJNA406974)""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_names',
          'annotations': {'tooltip': {'tag': 'tooltip',
                                      'value': 'Project, study, or sample set names the '
                                               'are also associated with this '
                                               'submission or other names / identifiers '
                                               'for this study.'}},
-         'domain_of': ['OntologyClass', 'Study'],
+         'domain_of': ['Biosample', 'OntologyClass', 'Study'],
          'exact_mappings': ['dcterms:alternative', 'skos:altLabel']} })
     alternative_titles: Optional[list[str]] = Field(default=None, description="""A list of alternative titles for the entity. The distinction between title and alternative titles is application-specific.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_titles',
          'domain_of': ['Study'],
@@ -15565,7 +15621,8 @@ class Study(NamedThing):
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
          'domain_of': ['Study', 'DataGeneration']} })
-    protocol_link: Optional[list[Protocol]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[list[Protocol]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     study_category: StudyCategoryEnum = Field(default=..., description="""The type of research initiative""", json_schema_extra = { "linkml_meta": {'alias': 'study_category', 'domain_of': ['Study']} })
     study_image: Optional[list[ImageValue]] = Field(default=None, description="""Links a study to one or more images.""", json_schema_extra = { "linkml_meta": {'alias': 'study_image', 'domain_of': ['Study']} })
     title: Optional[str] = Field(default=None, description="""A name given to the entity that differs from the name/label programmatically assigned to it. For example, when extracting study information for GOLD, the GOLD system has assigned a name/label. However, for display purposes, we may also wish the capture the title of the proposal that was used to fund the study.""", json_schema_extra = { "linkml_meta": {'alias': 'title', 'domain_of': ['Study'], 'exact_mappings': ['dcterms:title']} })
@@ -15918,6 +15975,8 @@ class Configuration(InformationObject):
          'notes': ['This class is intended to represent the parameters within a method '
                    'file (or similar) that control a process.']})
 
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -16037,6 +16096,8 @@ class MassSpectrometryConfiguration(Configuration):
     mass_spectrum_collection_modes: list[MassSpectrumCollectionModeEnum] = Field(default=..., description="""Indicates whether mass spectra were collected in full profile, reduced profile, or centroid mode during acquisition.""", json_schema_extra = { "linkml_meta": {'alias': 'mass_spectrum_collection_modes',
          'domain_of': ['MassSpectrometryConfiguration']} })
     polarity_mode: PolarityModeEnum = Field(default=..., description="""the polarity of which ions are generated and detected""", json_schema_extra = { "linkml_meta": {'alias': 'polarity_mode', 'domain_of': ['MassSpectrometryConfiguration']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -16157,6 +16218,8 @@ class ChromatographyConfiguration(Configuration):
                        'DissolvingProcess',
                        'ChemicalConversionProcess'],
          'notes': ['Not to be confused with the MIXS:0000113']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     id: str = Field(default=..., description="""A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI""", json_schema_extra = { "linkml_meta": {'alias': 'id',
          'domain_of': ['NamedThing'],
          'examples': [{'description': 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248',
@@ -16652,7 +16715,8 @@ class DataEmitterProcess(PlannedProcess):
     has_input: Optional[list[str]] = Field(default=None, description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input', 'aliases': ['input'], 'domain_of': ['PlannedProcess']} })
     has_output: Optional[list[str]] = Field(default=None, description="""An output from a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_output', 'aliases': ['output'], 'domain_of': ['PlannedProcess']} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -16784,8 +16848,7 @@ class DataGeneration(DataEmitterProcess):
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}}}})
 
     add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: str = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
-  in the Workflow Chain
+    analyte_category: str = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
          'domain_of': ['Biosample', 'DataGeneration'],
@@ -16810,7 +16873,8 @@ class DataGeneration(DataEmitterProcess):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -17013,8 +17077,7 @@ class NucleotideSequencing(DataGeneration):
          'slot_uri': 'MIXS:0000045',
          'string_serialization': '{text}'} })
     add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: NucleotideSequencingEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
-  in the Workflow Chain
+    analyte_category: NucleotideSequencingEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
          'domain_of': ['Biosample', 'DataGeneration'],
@@ -17039,7 +17102,8 @@ class NucleotideSequencing(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -17295,8 +17359,7 @@ class MassSpectrometry(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:mscon-{id_shoulder}-{id_blade}$'}} })
     add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
-    analyte_category: MassSpectrometryEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process and analyzed
-  in the Workflow Chain
+    analyte_category: MassSpectrometryEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
     associated_studies: list[str] = Field(default=..., description="""The study associated with a resource.""", json_schema_extra = { "linkml_meta": {'alias': 'associated_studies',
          'domain_of': ['Biosample', 'DataGeneration'],
@@ -17321,7 +17384,8 @@ class MassSpectrometry(DataGeneration):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -17577,13 +17641,25 @@ class WorkflowExecution(DataEmitterProcess):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -17595,7 +17671,8 @@ class WorkflowExecution(DataEmitterProcess):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -17769,13 +17846,25 @@ class AnnotatingWorkflow(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -17787,7 +17876,8 @@ class AnnotatingWorkflow(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -17993,15 +18083,27 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18013,7 +18115,8 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -18324,15 +18427,27 @@ class MetagenomeAssembly(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18344,7 +18459,8 @@ class MetagenomeAssembly(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -18637,15 +18753,27 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18657,7 +18785,8 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -18896,15 +19025,27 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -18916,7 +19057,8 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -19153,15 +19295,27 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19173,7 +19327,8 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -19404,15 +19559,27 @@ class MagsAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19424,7 +19591,8 @@ class MagsAnalysis(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -19604,7 +19772,13 @@ class MetagenomeSequencing(WorkflowExecution):
     Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetagenomeSequencing',
+         'deprecated': 'Used in early versions of NMDC schema. Existing records have '
+                       'been migrated to nmdc:NucleotideSequencing records, and this '
+                       'class should be used instead. From issue '
+                       'https://github.com/microbiomedata/nmdc-schema/issues/1727.',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'last_updated_on': '2023-12-01T00:00:00',
+         'modified_by': '0009-0004-8906-5907',
          'slot_usage': {'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                       'range': 'Sample',
@@ -19641,15 +19815,27 @@ class MetagenomeSequencing(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19661,7 +19847,8 @@ class MetagenomeSequencing(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -19874,15 +20061,27 @@ class ReadQcAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -19894,7 +20093,8 @@ class ReadQcAnalysis(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -20093,15 +20293,27 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20113,7 +20325,8 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -20319,15 +20532,27 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20339,7 +20564,8 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -20549,15 +20775,27 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20569,7 +20807,8 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',
@@ -20771,15 +21010,27 @@ class NomAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    version: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'version', 'domain_of': ['WorkflowExecution']} })
-    was_informed_by: str = Field(default=..., json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+    version: Optional[str] = Field(default=None, description="""The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.""", json_schema_extra = { "linkml_meta": {'alias': 'version',
+         'broad_mappings': ['NCIT:C182117'],
          'domain_of': ['WorkflowExecution'],
-         'mappings': ['prov:wasInformedBy'],
+         'examples': [{'value': 'v1.2.0'}]} })
+    was_informed_by: list[str] = Field(default=..., description="""The primary DataGeneration subclass that the WorkflowExecution subclass depends on.""", json_schema_extra = { "linkml_meta": {'alias': 'was_informed_by',
+         'comments': ['For version 1 of the proteomics workflow there are input files '
+                      'both from the NucleotideSequencing and MassSpectrometry, the '
+                      'MassSpectrometry record is considered the primary class to '
+                      'reference.'],
+         'domain_of': ['WorkflowExecution'],
+         'narrow_mappings': ['prov:wasInformedBy'],
          'structured_aliases': {'was_informed_by': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                     'literal_form': 'was_informed_by',
                                                     'predicate': 'EXACT_SYNONYM'}},
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(omprc|dgms)-{id_shoulder}-{id_blade}$'}} })
+    processing_institution_workflow_metadata: Optional[str] = Field(default=None, description="""Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution_workflow_metadata',
+         'domain_of': ['WorkflowExecution'],
+         'examples': [{'value': 'metaspades v. 3.15.2'},
+                      {'value': 'IMG Annotation Pipeline v.5.0.25'}],
+         'mappings': ['NCIT:C165211']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -20791,7 +21042,8 @@ class NomAnalysis(WorkflowExecution):
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
     processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
-    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link', 'domain_of': ['PlannedProcess', 'Study']} })
+    protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
+         'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
          'comments': ['We are using string representations of dates until all '
                       'components of our ecosystem can handle ISO 8610 dates',

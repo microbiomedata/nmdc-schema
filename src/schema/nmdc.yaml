@@ -246,6 +246,8 @@ classes:
     description: A set of parameters that define the actions of a process and is shared among multiple instances of the process.
     notes:
       - This class is intended to represent the parameters within a method file (or similar) that control a process.
+    slots:
+      - protocol_link
 
   MassSpectrometryConfiguration:
     is_a: Configuration
@@ -1028,6 +1030,9 @@ enums:
         is_a: organic_layer
 
 slots:
+  biomaterial_purity:
+    range: QuantityValue
+
   generates_calibration:
     range: CalibrationInformation
     description: calibration information is generated a process
