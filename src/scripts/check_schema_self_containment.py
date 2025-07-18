@@ -13,8 +13,8 @@ show warnings but not fail the test.
 import sys
 import os
 import logging
+import subprocess
 from pathlib import Path
-from linkml.generators.linkmlgen import LinkmlGenerator
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
@@ -47,13 +47,17 @@ def run_linkml_generate(file_path):
         tuple: (bool success, str error_message)
     """
     try:
-        # Create LinkML generator instance
-        generator = LinkmlGenerator(file_path)
+        result = subprocess.run(
+            ["poetry", "run", "linkml", "generate", "linkml", "--format", "yaml", file_path],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+            text=True
+        )
         
-        # Try to generate the YAML (this will raise an exception if it fails)
-        _ = generator.serialize()
-        
-        return True, ""
+        if result.returncode == 0:
+            return True, ""
+        else:
+            return False, result.stderr
     except Exception as e:
         return False, str(e)
 
