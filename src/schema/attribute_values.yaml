@@ -1,6 +1,6 @@
-id: https://w3id.org/nmdc/attribute_values_classes
-name: NMDC-Attribute-values-classes
-title: NMDC Attribute Value Classes
+id: https://w3id.org/nmdc/attribute_values
+name: NMDC-Attribute-values
+title: NMDC Attribute Value
 description: Schema for National Microbiome Data Collaborative (NMDC), Attribute Value Types
 
 license: https://creativecommons.org/publicdomain/zero/1.0/

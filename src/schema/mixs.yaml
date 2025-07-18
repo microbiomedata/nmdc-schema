@@ -7,7 +7,7 @@ notes:
 id: https://raw.githubusercontent.com/microbiomedata/nmdc-schema/main/src/schema/mixs.yaml
 imports:
   - linkml:types
-  - attribute_values_classes
+  - attribute_values
 
 prefixes:
   nmdc:

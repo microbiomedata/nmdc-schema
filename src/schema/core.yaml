@@ -6,7 +6,7 @@ description: Schema for National Microbiome Data Collaborative (NMDC), Core Type
 license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
-  - attribute_values_classes
+  - attribute_values
   - basic_slots
   - basic_classes
   - portal_emsl
