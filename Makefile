@@ -126,7 +126,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 		cp project/jsonschema/nmdc.schema.json  $(PYMODEL)
 
 
-test: examples-clean site test-python migration-doctests examples/output
+test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
 only-test: examples-clean test-python migration-doctests examples/output
 
 test-schema:
@@ -306,4 +306,9 @@ check-invalids-for-single-failure:
 		output=$$($$cmd 2>&1 || true); \
 		echo "$$output" | sort | uniq; \
 	done
+
+# Generate linkml yaml for all schema files
+.PHONY: gen-linkml-schema-files
+gen-linkml-schema-files:
+	$(RUN) python src/scripts/check_schema_self_containment.py
 

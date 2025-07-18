@@ -301,12 +301,12 @@ prefixes:
   xsd:
     prefix_prefix: xsd
     prefix_reference: http://www.w3.org/2001/XMLSchema#
-  shex:
-    prefix_prefix: shex
-    prefix_reference: http://www.w3.org/ns/shex#
   TAXRANK:
     prefix_prefix: TAXRANK
     prefix_reference: http://purl.obolibrary.org/obo/TAXRANK_
+  shex:
+    prefix_prefix: shex
+    prefix_reference: http://www.w3.org/ns/shex#
 emit_prefixes:
 - KEGG.ORTHOLOGY
 - MASSIVE
@@ -325,6 +325,47 @@ emit_prefixes:
 default_prefix: nmdc
 default_range: string
 types:
+  external_identifier:
+    name: external_identifier
+    description: A CURIE representing an external identifier
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://microbiomedata.github.io/nmdc-schema/identifiers/
+    typeof: uriorcurie
+    uri: xsd:anyURI
+    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
+  bytes:
+    name: bytes
+    description: An integer value that corresponds to a size in bytes
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - UO:0000233
+    base: int
+    uri: xsd:long
+  decimal_degree:
+    name: decimal_degree
+    description: A decimal degree expresses latitude or longitude as decimal fractions.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://en.wikipedia.org/wiki/Decimal_degrees
+    base: float
+    uri: xsd:decimal
+  language_code:
+    name: language_code
+    description: A language code conforming to ISO_639-1
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://en.wikipedia.org/wiki/ISO_639-1
+    base: str
+    uri: xsd:language
+  unit:
+    name: unit
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - qud:Unit
+    - UO:0000000
+    base: str
+    uri: xsd:string
   string:
     name: string
     description: A character string
@@ -555,47 +596,6 @@ types:
     base: str
     uri: xsd:string
     repr: str
-  external_identifier:
-    name: external_identifier
-    description: A CURIE representing an external identifier
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://microbiomedata.github.io/nmdc-schema/identifiers/
-    typeof: uriorcurie
-    uri: xsd:anyURI
-    pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  bytes:
-    name: bytes
-    description: An integer value that corresponds to a size in bytes
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - UO:0000233
-    base: int
-    uri: xsd:long
-  decimal_degree:
-    name: decimal_degree
-    description: A decimal degree expresses latitude or longitude as decimal fractions.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://en.wikipedia.org/wiki/Decimal_degrees
-    base: float
-    uri: xsd:decimal
-  language_code:
-    name: language_code
-    description: A language code conforming to ISO_639-1
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://en.wikipedia.org/wiki/ISO_639-1
-    base: str
-    uri: xsd:language
-  unit:
-    name: unit
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - qud:Unit
-    - UO:0000000
-    base: str
-    uri: xsd:string
 enums:
   CalibrationTargetEnum:
     name: CalibrationTargetEnum
@@ -2080,673 +2080,6 @@ enums:
         description: Data used as input into a workflow providing workflow specification.
         related_mappings:
         - edam.data:0949
-  CreditEnum:
-    name: CreditEnum
-    comments:
-    - CreditEnums come from https://casrai.org/credit/
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      Conceptualization:
-        text: Conceptualization
-        description: Conceptualization
-      Data curation:
-        text: Data curation
-        description: Data curation
-      Formal Analysis:
-        text: Formal Analysis
-        description: Formal Analysis
-      Funding acquisition:
-        text: Funding acquisition
-        description: Funding acquisition
-      Investigation:
-        text: Investigation
-        description: Investigation
-      Methodology:
-        text: Methodology
-        description: Methodology
-      Project administration:
-        text: Project administration
-        description: Project administration
-      Resources:
-        text: Resources
-        description: Resources
-      Software:
-        text: Software
-        description: Software
-      Supervision:
-        text: Supervision
-        description: Supervision
-      Validation:
-        text: Validation
-        description: Validation
-      Visualization:
-        text: Visualization
-        description: Visualization
-      Writing original draft:
-        text: Writing original draft
-        description: Writing – original draft
-      Writing review and editing:
-        text: Writing review and editing
-        description: Writing – review & editing
-      Principal Investigator:
-        text: Principal Investigator
-        description: principal investigator role
-        meaning: OBI:0000103
-      Submitter:
-        text: Submitter
-        description: the person(s) who enter study and biosample metadata into the
-          NMDC submission portal
-        meaning: EFO:0001741
-  StudyCategoryEnum:
-    name: StudyCategoryEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      research_study:
-        text: research_study
-        description: A detailed examination, analysis, or critical inspection of a
-          hypothesis-driven experiment.
-        exact_mappings:
-        - SIO:001066
-        - NCIT:C63536
-        - ISA:Study
-        close_mappings:
-        - OBI:0000355
-      consortium:
-        text: consortium
-        description: A group formed to undertake a venture that is beyond the capabilities
-          of the individual members. Each member of the consortium brings a high level
-          of expertise in a specific area to ensure the successful completion of the
-          project.
-        comments:
-        - A consortium has collections of data, but those data do not come from a
-          hypothesis-driven experiment.
-        exact_mappings:
-        - NCIT:C61538
-  ManifestCategoryEnum:
-    name: ManifestCategoryEnum
-    description: A list of contexts in which some DataObjects can be analyzed together.
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      instrument_run:
-        text: instrument_run
-        description: A collection of data objects from a single run of an instrument.
-      poolable_replicates:
-        text: poolable_replicates
-        description: A collection of data objects that can be pooled for downstream
-          analyses.
-      fractions:
-        text: fractions
-        description: A collection of data objects that represent fractions of a single
-          sample.
-  InstrumentModelEnum:
-    name: InstrumentModelEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      exploris_21T:
-        text: exploris_21T
-        aliases:
-        - Exploris 21T
-      exploris_240:
-        text: exploris_240
-        aliases:
-        - Orbitrap Exploris 240
-      exploris_480:
-        text: exploris_480
-        aliases:
-        - Orbitrap Exploris 480
-      ltq_orbitrap_velos:
-        text: ltq_orbitrap_velos
-        aliases:
-        - LTQ Orbitrap Velos
-        - LTQ Orbitrap Velos ETD
-        - Velos
-      orbitrap_fusion_lumos:
-        text: orbitrap_fusion_lumos
-        aliases:
-        - Orbitrap Fusion Lumos
-        - Fusion
-      orbitrap_eclipse_tribid:
-        text: orbitrap_eclipse_tribid
-        aliases:
-        - Orbitrap Eclipse Tribid
-        - Eclipse
-      orbitrap_q_exactive:
-        text: orbitrap_q_exactive
-        aliases:
-        - Orbitrap Q-Exactive HF
-        - Orbitrap Q-Exactive HF-X
-      solarix_7T:
-        text: solarix_7T
-        aliases:
-        - 7T Solarix
-        - 7T FT-ICR MS
-        - 7T MRMS
-      solarix_12T:
-        text: solarix_12T
-        aliases:
-        - 12T Solarix
-        - 12T FT-ICR MS
-        - 12T MRMS
-      solarix_15T:
-        text: solarix_15T
-        aliases:
-        - 15T Solarix
-        - 15T FT-ICR MS
-        - 15T MRMS
-      agilent_8890A:
-        text: agilent_8890A
-        aliases:
-        - 8890A GC-MS
-        - Agilent GC MS
-      agilent_7980A:
-        text: agilent_7980A
-        aliases:
-        - 7980A GC-MS
-        - Agilent GC MS
-      vortex_genie_2:
-        text: vortex_genie_2
-        aliases:
-        - VortexGenie2
-      novaseq:
-        text: novaseq
-        aliases:
-        - NovaSeq
-        - Illumina NovaSeq
-      novaseq_6000:
-        text: novaseq_6000
-        meaning: OBI:0002630
-        comments:
-        - Possible flowcell versions are SP, S1, S2, S4.
-        see_also:
-        - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
-        aliases:
-        - NovaSeq 6000
-        - Illumina NovaSeq 6000
-        structured_aliases:
-          Illumina NovaSeq S2:
-            literal_form: Illumina NovaSeq S2
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NovaSeq S4:
-            literal_form: Illumina NovaSeq S4
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NovaSeq SP:
-            literal_form: Illumina NovaSeq SP
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-      novaseq_x:
-        text: novaseq_x
-        comments:
-        - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X
-          and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
-        see_also:
-        - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
-        aliases:
-        - Illumina NovaSeq X
-        - Illumina NovaSeq X Plus
-      hiseq:
-        text: hiseq
-        aliases:
-        - Illumina HiSeq
-      hiseq_1000:
-        text: hiseq_1000
-        meaning: OBI:0002022
-        aliases:
-        - Illumina HiSeq 1000
-      hiseq_1500:
-        text: hiseq_1500
-        meaning: OBI:0003386
-        aliases:
-        - Illumina HiSeq 1500
-      hiseq_2000:
-        text: hiseq_2000
-        meaning: OBI:0002001
-        aliases:
-        - Illumina HiSeq 2000
-      hiseq_2500:
-        text: hiseq_2500
-        meaning: OBI:0002002
-        aliases:
-        - Illumina HiSeq 2500
-        structured_aliases:
-          Illumina HiSeq 2500-1TB:
-            literal_form: Illumina HiSeq 2500-1TB
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina HiSeq 2500-Rapid:
-            literal_form: Illumina HiSeq 2500-Rapid
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-      hiseq_3000:
-        text: hiseq_3000
-        meaning: OBI:0002048
-        aliases:
-        - Illumina HiSeq 3000
-      hiseq_4000:
-        text: hiseq_4000
-        meaning: OBI:0002049
-        aliases:
-        - Illumina HiSeq 4000
-      hiseq_x_ten:
-        text: hiseq_x_ten
-        meaning: OBI:0002129
-        aliases:
-        - Illumina HiSeq X Ten
-      miniseq:
-        text: miniseq
-        meaning: OBI:0003114
-        aliases:
-        - Illumina MiniSeq
-      miseq:
-        text: miseq
-        meaning: OBI:0002003
-        aliases:
-        - MiSeq
-        - Illumina MiSeq
-      nextseq_1000:
-        text: nextseq_1000
-        meaning: OBI:0003606
-        aliases:
-        - Illumina NextSeq 1000
-      nextseq:
-        text: nextseq
-        aliases:
-        - NextSeq
-        - Illumina NextSeq
-        structured_aliases:
-          Illumina NextSeq-HO:
-            literal_form: Illumina NextSeq-HO
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-          Illumina NextSeq-MO:
-            literal_form: Illumina NextSeq-MO
-            predicate: NARROW_SYNONYM
-            contexts:
-            - https://gold.jgi.doe.gov/
-      nextseq_500:
-        text: nextseq_500
-        meaning: OBI:0002021
-        aliases:
-        - NextSeq 500
-        - Illumina NextSeq 500
-      nextseq_550:
-        text: nextseq_550
-        meaning: OBI:0003387
-        aliases:
-        - NextSeq 550
-        - Illumina NextSeq 550
-      gridion:
-        text: gridion
-        meaning: OBI:0002751
-        aliases:
-        - Oxford Nanopore GridION Mk1
-      minion:
-        text: minion
-        meaning: OBI:0002750
-        aliases:
-        - Oxford Nanopore MinION
-      promethion:
-        text: promethion
-        meaning: OBI:0002752
-        aliases:
-        - Oxford Nanopore PromethION
-      rs_II:
-        text: rs_II
-        meaning: OBI:0002012
-        aliases:
-        - PacBio RS II
-      sequel:
-        text: sequel
-        meaning: OBI:0002632
-        aliases:
-        - PacBio Sequel
-      sequel_II:
-        text: sequel_II
-        meaning: OBI:0002633
-        aliases:
-        - PacBio Sequel II
-      revio:
-        text: revio
-        aliases:
-        - PacBio Revio
-        - Revio
-  InstrumentVendorEnum:
-    name: InstrumentVendorEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      waters:
-        text: waters
-        aliases:
-        - Waters Corporation
-      agilent:
-        text: agilent
-        aliases:
-        - Agilent Technologies
-      bruker:
-        text: bruker
-        aliases:
-        - Bruker Corporation
-        - Bruker Daltonics
-      thermo_fisher:
-        text: thermo_fisher
-        aliases:
-        - ThermoFisher
-        - Thermo Fisher Scientific
-      vwr:
-        text: vwr
-      perkin_elmer:
-        text: perkin_elmer
-      gilson:
-        text: gilson
-      scientific_industries:
-        text: scientific_industries
-      illumina:
-        text: illumina
-        meaning: OBI:0000759
-        aliases:
-        - Illumina
-      pacbio:
-        text: pacbio
-        meaning: OBI:0001856
-        aliases:
-        - PacBio
-        - Pacific Biosciences
-      oxford_nanopore:
-        text: oxford_nanopore
-        meaning: OBI:0002755
-        aliases:
-        - Oxford Nanopore Technologies
-      pnnl:
-        text: pnnl
-        aliases:
-        - PNNL
-  FailureWhatEnum:
-    name: FailureWhatEnum
-    description: The permitted values for describing where a failure occurred during
-      processing in the lab during analysis workflows.
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      low_read_count:
-        text: low_read_count
-        description: Number of output reads is not sufficient to continue to the next
-          analysis step.
-      malformed_data:
-        text: malformed_data
-        description: Workflow failure reading input or writing the output file(s).
-      assembly_size_too_small:
-        text: assembly_size_too_small
-        description: The size of the metagenome or metatranscriptome assembly is too
-          small to proceed to the next analysis workflow.
-      no_valid_data_generated:
-        text: no_valid_data_generated
-        description: A process ran but did not produce any output. Ie binning ran
-          but did not produce any medium or high quality bins.
-      other:
-        text: other
-        description: A lab process or analysis workflow has failed in a way that has
-          not been captured by the available values yet. Please use slot 'qc_comment'
-          to specify details.
-  FailureWhereEnum:
-    name: FailureWhereEnum
-    description: The permitted values for describing where in the process, either
-      a lab or analysis workflow step, the failure occurred.
-    comments:
-    - At Chris' recommendation permissible values for this enumeration are the same
-      as Class names.
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      NucleotideSequencing:
-        text: NucleotideSequencing
-        description: A failure has occurred during nucleotide sequencing, a data generation
-          process.
-      MassSpectrometry:
-        text: MassSpectrometry
-        description: A failure has occurred during mass spectrometry, a data generation
-          process.
-      Pooling:
-        text: Pooling
-        description: A failure has occurred in pooling, a lab process.
-      Extraction:
-        text: Extraction
-        description: A failure has occurred in extraction, a lab process.
-      LibraryPreparation:
-        text: LibraryPreparation
-        description: A failure has occurred in library preparation, a lab process.
-      MetagenomeAssembly:
-        text: MetagenomeAssembly
-        description: A failure has occurred in metagenome assembly, a workflow process.
-      MetatranscriptomeExpressionAnalysis:
-        text: MetatranscriptomeExpressionAnalysis
-        description: A failure has occurred in metatranscriptome expression analysis,
-          a workflow process.
-      MagsAnalysis:
-        text: MagsAnalysis
-        description: A failure has occurred in binning, a workflow process to generate
-          metagenome-assembled genomes (MAGS).
-      ReadQcAnalysis:
-        text: ReadQcAnalysis
-        description: A failure has occurred in read qc, a workflow process.
-      ReadBasedTaxonomyAnalysis:
-        text: ReadBasedTaxonomyAnalysis
-        description: A failure has occurred in reads based taxonomy, a workflow process.
-      MetagenomeAnnotation:
-        text: MetagenomeAnnotation
-        description: A failure has occurred in annotation, a workflow process.
-      MetatranscriptomeAssembly:
-        text: MetatranscriptomeAssembly
-        description: A failure has occurred in assembly, a workflow process.
-      MetatranscriptomeAnnotation:
-        text: MetatranscriptomeAnnotation
-        description: A failure has occurred in annotation, a workflow process.
-      MetabolomicsAnalysis:
-        text: MetabolomicsAnalysis
-        description: A failure has occurred in analyzing metabolomics data.
-      MetaproteomicsAnalysis:
-        text: MetaproteomicsAnalysis
-        description: A failure has occurred in analyzing metaproteomics data.
-      NomAnalysis:
-        text: NomAnalysis
-        description: A failure has occurred in analyzing NOM data.
-  SampleTypeEnum:
-    name: SampleTypeEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      soil:
-        text: soil
-      soil - water extract:
-        text: soil - water extract
-      plant associated:
-        text: plant associated
-      sediment:
-        text: sediment
-      water:
-        text: water
-  DNASampleFormatEnum:
-    name: DNASampleFormatEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
-      DNAStable:
-        text: DNAStable
-      Ethanol:
-        text: Ethanol
-      Low EDTA TE:
-        text: Low EDTA TE
-      MDA reaction buffer:
-        text: MDA reaction buffer
-      PBS:
-        text: PBS
-      Pellet:
-        text: Pellet
-      RNAStable:
-        text: RNAStable
-      TE:
-        text: TE
-      Water:
-        text: Water
-      Gentegra-DNA:
-        text: Gentegra-DNA
-      Gentegra-RNA:
-        text: Gentegra-RNA
-  JgiContTypeEnum:
-    name: JgiContTypeEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      plate:
-        text: plate
-      tube:
-        text: tube
-  YesNoEnum:
-    name: YesNoEnum
-    description: replaces DnaDnaseEnum and DnaseRnaEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      'no':
-        text: 'no'
-      'yes':
-        text: 'yes'
-  RNASampleFormatEnum:
-    name: RNASampleFormatEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
-      DNAStable:
-        text: DNAStable
-      Ethanol:
-        text: Ethanol
-      Low EDTA TE:
-        text: Low EDTA TE
-      MDA reaction buffer:
-        text: MDA reaction buffer
-      PBS:
-        text: PBS
-      Pellet:
-        text: Pellet
-      RNAStable:
-        text: RNAStable
-      TE:
-        text: TE
-      Water:
-        text: Water
-      Gentegra-DNA:
-        text: Gentegra-DNA
-      Gentegra-RNA:
-        text: Gentegra-RNA
-  AnalysisTypeEnum:
-    name: AnalysisTypeEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      metabolomics:
-        text: metabolomics
-      lipidomics:
-        text: lipidomics
-      metagenomics:
-        text: metagenomics
-        description: Standard short-read metagenomic sequencing
-        title: Metagenomics
-      metagenomics_long_read:
-        text: metagenomics_long_read
-        description: Long-read metagenomic sequencing
-        title: Metagenomics (long read)
-      metaproteomics:
-        text: metaproteomics
-      metatranscriptomics:
-        text: metatranscriptomics
-      natural organic matter:
-        text: natural organic matter
-      bulk chemistry:
-        text: bulk chemistry
-      amplicon sequencing assay:
-        text: amplicon sequencing assay
-        meaning: OBI:0002767
-        title: Amplicon sequencing assay
-  SubmissionStatusEnum:
-    name: SubmissionStatusEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      InProgress:
-        text: InProgress
-        description: The submitter is currently working on the submission.
-        title: In Progress
-      SubmittedPendingReview:
-        text: SubmittedPendingReview
-        description: Submission is ready for NMDC review, the submitter cannot edit.
-        title: Submitted - Pending Review
-      ResubmittedPendingReview:
-        text: ResubmittedPendingReview
-        description: Submission has been resubmitted after updates. It is now ready
-          for NMDC review. The submitter cannot edit.
-        title: Resubmitted - Pending review
-      ApprovedHeld:
-        text: ApprovedHeld
-        description: Submission has been reviewed and approved. Information is complete,
-          but not yet shared on the data portal. The submitter cannot edit.
-        title: Approved - Held
-      PendingUserFacility:
-        text: PendingUserFacility
-        description: Submission has been reviewed and approved. Information is complete,
-          but not yet shared on the data portal. Sample information shared with designated
-          user facility and pending approvals. The submitter cannot edit.
-        title: Pending - Sent to User Facility
-      UpdatesRequired:
-        text: UpdatesRequired
-        description: Submission has been reviewed and submitter edits are required
-          for approval. The submitter can reopen and edit the submission.
-        title: Updates Required
-      InProgressUpdate:
-        text: InProgressUpdate
-        description: NMDC reviewer has reopened submission on behalf of submitter.
-          The submitter is currently editing the submission.
-        title: In Progress - Update/Addition
-      Denied:
-        text: Denied
-        description: Submission has been reviewed and denied. The submitter cannot
-          edit.
-        title: Denied
-      Released:
-        text: Released
-        description: Submission has been reviewed and approved and data is released
-          on the data portal. The submitter cannot edit.
-        title: Released
-  MetaproteomicsAnalysisCategoryEnum:
-    name: MetaproteomicsAnalysisCategoryEnum
-    description: The category of metaproteomics analysis being performed.
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      matched_metagenome:
-        text: matched_metagenome
-        description: A metaproteomics analysis that is matched to a metagenome derived
-          from the same biosample.
-      in_silico_metagenome:
-        text: in_silico_metagenome
-        description: A metaproteomics analysis that is matched to an in silico generated
-          metagenome.
-  MetabolomicsAnalysisCategoryEnum:
-    name: MetabolomicsAnalysisCategoryEnum
-    description: The category of metabolomics analysis being performed.
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      gc_ms_metabolomics:
-        text: gc_ms_metabolomics
-        description: A metabolomics analysis that is performed on gas chromatography
-          mass spectrometry data.
-      lc_ms_lipidomics:
-        text: lc_ms_lipidomics
-        description: A metabolomics analysis that is performed on liquid chromatography
-          mass spectrometry data for lipidomics annotation.
-      lc_ms_metabolomics:
-        text: lc_ms_metabolomics
-        description: A metabolomics analysis that is performed on liquid chromatography
-          mass spectrometry data.
   arch_struc_enum:
     name: arch_struc_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4835,6 +4168,673 @@ enums:
         description: the large subunit of the eukaryotic ribosome
         aliases:
         - -28S rRNA - 28S ribosomal RNA
+  CreditEnum:
+    name: CreditEnum
+    comments:
+    - CreditEnums come from https://casrai.org/credit/
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      Conceptualization:
+        text: Conceptualization
+        description: Conceptualization
+      Data curation:
+        text: Data curation
+        description: Data curation
+      Formal Analysis:
+        text: Formal Analysis
+        description: Formal Analysis
+      Funding acquisition:
+        text: Funding acquisition
+        description: Funding acquisition
+      Investigation:
+        text: Investigation
+        description: Investigation
+      Methodology:
+        text: Methodology
+        description: Methodology
+      Project administration:
+        text: Project administration
+        description: Project administration
+      Resources:
+        text: Resources
+        description: Resources
+      Software:
+        text: Software
+        description: Software
+      Supervision:
+        text: Supervision
+        description: Supervision
+      Validation:
+        text: Validation
+        description: Validation
+      Visualization:
+        text: Visualization
+        description: Visualization
+      Writing original draft:
+        text: Writing original draft
+        description: Writing – original draft
+      Writing review and editing:
+        text: Writing review and editing
+        description: Writing – review & editing
+      Principal Investigator:
+        text: Principal Investigator
+        description: principal investigator role
+        meaning: OBI:0000103
+      Submitter:
+        text: Submitter
+        description: the person(s) who enter study and biosample metadata into the
+          NMDC submission portal
+        meaning: EFO:0001741
+  StudyCategoryEnum:
+    name: StudyCategoryEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      research_study:
+        text: research_study
+        description: A detailed examination, analysis, or critical inspection of a
+          hypothesis-driven experiment.
+        exact_mappings:
+        - SIO:001066
+        - NCIT:C63536
+        - ISA:Study
+        close_mappings:
+        - OBI:0000355
+      consortium:
+        text: consortium
+        description: A group formed to undertake a venture that is beyond the capabilities
+          of the individual members. Each member of the consortium brings a high level
+          of expertise in a specific area to ensure the successful completion of the
+          project.
+        comments:
+        - A consortium has collections of data, but those data do not come from a
+          hypothesis-driven experiment.
+        exact_mappings:
+        - NCIT:C61538
+  ManifestCategoryEnum:
+    name: ManifestCategoryEnum
+    description: A list of contexts in which some DataObjects can be analyzed together.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      instrument_run:
+        text: instrument_run
+        description: A collection of data objects from a single run of an instrument.
+      poolable_replicates:
+        text: poolable_replicates
+        description: A collection of data objects that can be pooled for downstream
+          analyses.
+      fractions:
+        text: fractions
+        description: A collection of data objects that represent fractions of a single
+          sample.
+  InstrumentModelEnum:
+    name: InstrumentModelEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      exploris_21T:
+        text: exploris_21T
+        aliases:
+        - Exploris 21T
+      exploris_240:
+        text: exploris_240
+        aliases:
+        - Orbitrap Exploris 240
+      exploris_480:
+        text: exploris_480
+        aliases:
+        - Orbitrap Exploris 480
+      ltq_orbitrap_velos:
+        text: ltq_orbitrap_velos
+        aliases:
+        - LTQ Orbitrap Velos
+        - LTQ Orbitrap Velos ETD
+        - Velos
+      orbitrap_fusion_lumos:
+        text: orbitrap_fusion_lumos
+        aliases:
+        - Orbitrap Fusion Lumos
+        - Fusion
+      orbitrap_eclipse_tribid:
+        text: orbitrap_eclipse_tribid
+        aliases:
+        - Orbitrap Eclipse Tribid
+        - Eclipse
+      orbitrap_q_exactive:
+        text: orbitrap_q_exactive
+        aliases:
+        - Orbitrap Q-Exactive HF
+        - Orbitrap Q-Exactive HF-X
+      solarix_7T:
+        text: solarix_7T
+        aliases:
+        - 7T Solarix
+        - 7T FT-ICR MS
+        - 7T MRMS
+      solarix_12T:
+        text: solarix_12T
+        aliases:
+        - 12T Solarix
+        - 12T FT-ICR MS
+        - 12T MRMS
+      solarix_15T:
+        text: solarix_15T
+        aliases:
+        - 15T Solarix
+        - 15T FT-ICR MS
+        - 15T MRMS
+      agilent_8890A:
+        text: agilent_8890A
+        aliases:
+        - 8890A GC-MS
+        - Agilent GC MS
+      agilent_7980A:
+        text: agilent_7980A
+        aliases:
+        - 7980A GC-MS
+        - Agilent GC MS
+      vortex_genie_2:
+        text: vortex_genie_2
+        aliases:
+        - VortexGenie2
+      novaseq:
+        text: novaseq
+        aliases:
+        - NovaSeq
+        - Illumina NovaSeq
+      novaseq_6000:
+        text: novaseq_6000
+        meaning: OBI:0002630
+        comments:
+        - Possible flowcell versions are SP, S1, S2, S4.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq/specifications.html
+        aliases:
+        - NovaSeq 6000
+        - Illumina NovaSeq 6000
+        structured_aliases:
+          Illumina NovaSeq S2:
+            literal_form: Illumina NovaSeq S2
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq S4:
+            literal_form: Illumina NovaSeq S4
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NovaSeq SP:
+            literal_form: Illumina NovaSeq SP
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      novaseq_x:
+        text: novaseq_x
+        comments:
+        - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X
+          and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
+        see_also:
+        - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
+        aliases:
+        - Illumina NovaSeq X
+        - Illumina NovaSeq X Plus
+      hiseq:
+        text: hiseq
+        aliases:
+        - Illumina HiSeq
+      hiseq_1000:
+        text: hiseq_1000
+        meaning: OBI:0002022
+        aliases:
+        - Illumina HiSeq 1000
+      hiseq_1500:
+        text: hiseq_1500
+        meaning: OBI:0003386
+        aliases:
+        - Illumina HiSeq 1500
+      hiseq_2000:
+        text: hiseq_2000
+        meaning: OBI:0002001
+        aliases:
+        - Illumina HiSeq 2000
+      hiseq_2500:
+        text: hiseq_2500
+        meaning: OBI:0002002
+        aliases:
+        - Illumina HiSeq 2500
+        structured_aliases:
+          Illumina HiSeq 2500-1TB:
+            literal_form: Illumina HiSeq 2500-1TB
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina HiSeq 2500-Rapid:
+            literal_form: Illumina HiSeq 2500-Rapid
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      hiseq_3000:
+        text: hiseq_3000
+        meaning: OBI:0002048
+        aliases:
+        - Illumina HiSeq 3000
+      hiseq_4000:
+        text: hiseq_4000
+        meaning: OBI:0002049
+        aliases:
+        - Illumina HiSeq 4000
+      hiseq_x_ten:
+        text: hiseq_x_ten
+        meaning: OBI:0002129
+        aliases:
+        - Illumina HiSeq X Ten
+      miniseq:
+        text: miniseq
+        meaning: OBI:0003114
+        aliases:
+        - Illumina MiniSeq
+      miseq:
+        text: miseq
+        meaning: OBI:0002003
+        aliases:
+        - MiSeq
+        - Illumina MiSeq
+      nextseq_1000:
+        text: nextseq_1000
+        meaning: OBI:0003606
+        aliases:
+        - Illumina NextSeq 1000
+      nextseq:
+        text: nextseq
+        aliases:
+        - NextSeq
+        - Illumina NextSeq
+        structured_aliases:
+          Illumina NextSeq-HO:
+            literal_form: Illumina NextSeq-HO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+          Illumina NextSeq-MO:
+            literal_form: Illumina NextSeq-MO
+            predicate: NARROW_SYNONYM
+            contexts:
+            - https://gold.jgi.doe.gov/
+      nextseq_500:
+        text: nextseq_500
+        meaning: OBI:0002021
+        aliases:
+        - NextSeq 500
+        - Illumina NextSeq 500
+      nextseq_550:
+        text: nextseq_550
+        meaning: OBI:0003387
+        aliases:
+        - NextSeq 550
+        - Illumina NextSeq 550
+      gridion:
+        text: gridion
+        meaning: OBI:0002751
+        aliases:
+        - Oxford Nanopore GridION Mk1
+      minion:
+        text: minion
+        meaning: OBI:0002750
+        aliases:
+        - Oxford Nanopore MinION
+      promethion:
+        text: promethion
+        meaning: OBI:0002752
+        aliases:
+        - Oxford Nanopore PromethION
+      rs_II:
+        text: rs_II
+        meaning: OBI:0002012
+        aliases:
+        - PacBio RS II
+      sequel:
+        text: sequel
+        meaning: OBI:0002632
+        aliases:
+        - PacBio Sequel
+      sequel_II:
+        text: sequel_II
+        meaning: OBI:0002633
+        aliases:
+        - PacBio Sequel II
+      revio:
+        text: revio
+        aliases:
+        - PacBio Revio
+        - Revio
+  InstrumentVendorEnum:
+    name: InstrumentVendorEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      waters:
+        text: waters
+        aliases:
+        - Waters Corporation
+      agilent:
+        text: agilent
+        aliases:
+        - Agilent Technologies
+      bruker:
+        text: bruker
+        aliases:
+        - Bruker Corporation
+        - Bruker Daltonics
+      thermo_fisher:
+        text: thermo_fisher
+        aliases:
+        - ThermoFisher
+        - Thermo Fisher Scientific
+      vwr:
+        text: vwr
+      perkin_elmer:
+        text: perkin_elmer
+      gilson:
+        text: gilson
+      scientific_industries:
+        text: scientific_industries
+      illumina:
+        text: illumina
+        meaning: OBI:0000759
+        aliases:
+        - Illumina
+      pacbio:
+        text: pacbio
+        meaning: OBI:0001856
+        aliases:
+        - PacBio
+        - Pacific Biosciences
+      oxford_nanopore:
+        text: oxford_nanopore
+        meaning: OBI:0002755
+        aliases:
+        - Oxford Nanopore Technologies
+      pnnl:
+        text: pnnl
+        aliases:
+        - PNNL
+  FailureWhatEnum:
+    name: FailureWhatEnum
+    description: The permitted values for describing where a failure occurred during
+      processing in the lab during analysis workflows.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      low_read_count:
+        text: low_read_count
+        description: Number of output reads is not sufficient to continue to the next
+          analysis step.
+      malformed_data:
+        text: malformed_data
+        description: Workflow failure reading input or writing the output file(s).
+      assembly_size_too_small:
+        text: assembly_size_too_small
+        description: The size of the metagenome or metatranscriptome assembly is too
+          small to proceed to the next analysis workflow.
+      no_valid_data_generated:
+        text: no_valid_data_generated
+        description: A process ran but did not produce any output. Ie binning ran
+          but did not produce any medium or high quality bins.
+      other:
+        text: other
+        description: A lab process or analysis workflow has failed in a way that has
+          not been captured by the available values yet. Please use slot 'qc_comment'
+          to specify details.
+  FailureWhereEnum:
+    name: FailureWhereEnum
+    description: The permitted values for describing where in the process, either
+      a lab or analysis workflow step, the failure occurred.
+    comments:
+    - At Chris' recommendation permissible values for this enumeration are the same
+      as Class names.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      NucleotideSequencing:
+        text: NucleotideSequencing
+        description: A failure has occurred during nucleotide sequencing, a data generation
+          process.
+      MassSpectrometry:
+        text: MassSpectrometry
+        description: A failure has occurred during mass spectrometry, a data generation
+          process.
+      Pooling:
+        text: Pooling
+        description: A failure has occurred in pooling, a lab process.
+      Extraction:
+        text: Extraction
+        description: A failure has occurred in extraction, a lab process.
+      LibraryPreparation:
+        text: LibraryPreparation
+        description: A failure has occurred in library preparation, a lab process.
+      MetagenomeAssembly:
+        text: MetagenomeAssembly
+        description: A failure has occurred in metagenome assembly, a workflow process.
+      MetatranscriptomeExpressionAnalysis:
+        text: MetatranscriptomeExpressionAnalysis
+        description: A failure has occurred in metatranscriptome expression analysis,
+          a workflow process.
+      MagsAnalysis:
+        text: MagsAnalysis
+        description: A failure has occurred in binning, a workflow process to generate
+          metagenome-assembled genomes (MAGS).
+      ReadQcAnalysis:
+        text: ReadQcAnalysis
+        description: A failure has occurred in read qc, a workflow process.
+      ReadBasedTaxonomyAnalysis:
+        text: ReadBasedTaxonomyAnalysis
+        description: A failure has occurred in reads based taxonomy, a workflow process.
+      MetagenomeAnnotation:
+        text: MetagenomeAnnotation
+        description: A failure has occurred in annotation, a workflow process.
+      MetatranscriptomeAssembly:
+        text: MetatranscriptomeAssembly
+        description: A failure has occurred in assembly, a workflow process.
+      MetatranscriptomeAnnotation:
+        text: MetatranscriptomeAnnotation
+        description: A failure has occurred in annotation, a workflow process.
+      MetabolomicsAnalysis:
+        text: MetabolomicsAnalysis
+        description: A failure has occurred in analyzing metabolomics data.
+      MetaproteomicsAnalysis:
+        text: MetaproteomicsAnalysis
+        description: A failure has occurred in analyzing metaproteomics data.
+      NomAnalysis:
+        text: NomAnalysis
+        description: A failure has occurred in analyzing NOM data.
+  SampleTypeEnum:
+    name: SampleTypeEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      soil:
+        text: soil
+      soil - water extract:
+        text: soil - water extract
+      plant associated:
+        text: plant associated
+      sediment:
+        text: sediment
+      water:
+        text: water
+  DNASampleFormatEnum:
+    name: DNASampleFormatEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      10 mM Tris-HCl:
+        text: 10 mM Tris-HCl
+      DNAStable:
+        text: DNAStable
+      Ethanol:
+        text: Ethanol
+      Low EDTA TE:
+        text: Low EDTA TE
+      MDA reaction buffer:
+        text: MDA reaction buffer
+      PBS:
+        text: PBS
+      Pellet:
+        text: Pellet
+      RNAStable:
+        text: RNAStable
+      TE:
+        text: TE
+      Water:
+        text: Water
+      Gentegra-DNA:
+        text: Gentegra-DNA
+      Gentegra-RNA:
+        text: Gentegra-RNA
+  JgiContTypeEnum:
+    name: JgiContTypeEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      plate:
+        text: plate
+      tube:
+        text: tube
+  YesNoEnum:
+    name: YesNoEnum
+    description: replaces DnaDnaseEnum and DnaseRnaEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      'no':
+        text: 'no'
+      'yes':
+        text: 'yes'
+  RNASampleFormatEnum:
+    name: RNASampleFormatEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      10 mM Tris-HCl:
+        text: 10 mM Tris-HCl
+      DNAStable:
+        text: DNAStable
+      Ethanol:
+        text: Ethanol
+      Low EDTA TE:
+        text: Low EDTA TE
+      MDA reaction buffer:
+        text: MDA reaction buffer
+      PBS:
+        text: PBS
+      Pellet:
+        text: Pellet
+      RNAStable:
+        text: RNAStable
+      TE:
+        text: TE
+      Water:
+        text: Water
+      Gentegra-DNA:
+        text: Gentegra-DNA
+      Gentegra-RNA:
+        text: Gentegra-RNA
+  AnalysisTypeEnum:
+    name: AnalysisTypeEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      metabolomics:
+        text: metabolomics
+      lipidomics:
+        text: lipidomics
+      metagenomics:
+        text: metagenomics
+        description: Standard short-read metagenomic sequencing
+        title: Metagenomics
+      metagenomics_long_read:
+        text: metagenomics_long_read
+        description: Long-read metagenomic sequencing
+        title: Metagenomics (long read)
+      metaproteomics:
+        text: metaproteomics
+      metatranscriptomics:
+        text: metatranscriptomics
+      natural organic matter:
+        text: natural organic matter
+      bulk chemistry:
+        text: bulk chemistry
+      amplicon sequencing assay:
+        text: amplicon sequencing assay
+        meaning: OBI:0002767
+        title: Amplicon sequencing assay
+  SubmissionStatusEnum:
+    name: SubmissionStatusEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      InProgress:
+        text: InProgress
+        description: The submitter is currently working on the submission.
+        title: In Progress
+      SubmittedPendingReview:
+        text: SubmittedPendingReview
+        description: Submission is ready for NMDC review, the submitter cannot edit.
+        title: Submitted - Pending Review
+      ResubmittedPendingReview:
+        text: ResubmittedPendingReview
+        description: Submission has been resubmitted after updates. It is now ready
+          for NMDC review. The submitter cannot edit.
+        title: Resubmitted - Pending review
+      ApprovedHeld:
+        text: ApprovedHeld
+        description: Submission has been reviewed and approved. Information is complete,
+          but not yet shared on the data portal. The submitter cannot edit.
+        title: Approved - Held
+      PendingUserFacility:
+        text: PendingUserFacility
+        description: Submission has been reviewed and approved. Information is complete,
+          but not yet shared on the data portal. Sample information shared with designated
+          user facility and pending approvals. The submitter cannot edit.
+        title: Pending - Sent to User Facility
+      UpdatesRequired:
+        text: UpdatesRequired
+        description: Submission has been reviewed and submitter edits are required
+          for approval. The submitter can reopen and edit the submission.
+        title: Updates Required
+      InProgressUpdate:
+        text: InProgressUpdate
+        description: NMDC reviewer has reopened submission on behalf of submitter.
+          The submitter is currently editing the submission.
+        title: In Progress - Update/Addition
+      Denied:
+        text: Denied
+        description: Submission has been reviewed and denied. The submitter cannot
+          edit.
+        title: Denied
+      Released:
+        text: Released
+        description: Submission has been reviewed and approved and data is released
+          on the data portal. The submitter cannot edit.
+        title: Released
+  MetaproteomicsAnalysisCategoryEnum:
+    name: MetaproteomicsAnalysisCategoryEnum
+    description: The category of metaproteomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      matched_metagenome:
+        text: matched_metagenome
+        description: A metaproteomics analysis that is matched to a metagenome derived
+          from the same biosample.
+      in_silico_metagenome:
+        text: in_silico_metagenome
+        description: A metaproteomics analysis that is matched to an in silico generated
+          metagenome.
+  MetabolomicsAnalysisCategoryEnum:
+    name: MetabolomicsAnalysisCategoryEnum
+    description: The category of metabolomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      gc_ms_metabolomics:
+        text: gc_ms_metabolomics
+        description: A metabolomics analysis that is performed on gas chromatography
+          mass spectrometry data.
+      lc_ms_lipidomics:
+        text: lc_ms_lipidomics
+        description: A metabolomics analysis that is performed on liquid chromatography
+          mass spectrometry data for lipidomics annotation.
+      lc_ms_metabolomics:
+        text: lc_ms_metabolomics
+        description: A metabolomics analysis that is performed on liquid chromatography
+          mass spectrometry data.
 slots:
   biomaterial_purity:
     name: biomaterial_purity
@@ -5349,163 +5349,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: SamplePortionEnum
     multivalued: true
-  name:
-    name: name
-    description: A human readable label for an entity
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  term:
-    name: term
-    description: pointer to an ontology class
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: OntologyClass
-    inlined: true
-  description:
-    name: description
-    description: a human-readable description of a thing
-    from_schema: https://w3id.org/nmdc/nmdc
-    slot_uri: dcterms:description
-    range: string
-  display_order:
-    name: display_order
-    description: When rendering information, this attribute to specify the order in
-      which the information should be rendered.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-  email:
-    name: email
-    description: An email address for an entity such as a person. This should be the
-      primary email address used.
-    from_schema: https://w3id.org/nmdc/nmdc
-    slot_uri: schema:email
-    range: string
-  profile_image_url:
-    name: profile_image_url
-    description: A url that points to an image of a person.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  orcid:
-    name: orcid
-    description: The ORCID of a person.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  language:
-    name: language
-    description: Should use ISO 639-1 code e.g. "en", "fr"
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: language_code
-  has_raw_value:
-    name: has_raw_value
-    description: The value that was specified for an annotation in raw form, i.e.
-      a string. E.g. "2 cm" or "2-4 cm"
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  has_unit:
-    name: has_unit
-    description: Links a QuantityValue to a unit
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - scale
-    mappings:
-    - qud:unit
-    - schema:unitCode
-    range: unit
-  type:
-    name: type
-    description: the class_uri of the class that has been instantiated
-    notes:
-    - makes it easier to read example data files
-    - required for polymorphic MongoDB collections
-    examples:
-    - value: nmdc:Biosample
-    - value: nmdc:Study
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - https://github.com/microbiomedata/nmdc-schema/issues/1048
-    - https://github.com/microbiomedata/nmdc-schema/issues/1233
-    - https://github.com/microbiomedata/nmdc-schema/issues/248
-    structured_aliases:
-      workflow_execution_class:
-        literal_form: workflow_execution_class
-        predicate: NARROW_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    slot_uri: rdf:type
-    designates_type: true
-    range: uriorcurie
-    required: true
-  has_numeric_value:
-    name: has_numeric_value
-    description: Links a quantity value to a number
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - qud:quantityValue
-    - schema:value
-    range: decimal
-  has_minimum_numeric_value:
-    name: has_minimum_numeric_value
-    description: The minimum value part, expressed as number, of the quantity value
-      when the value covers a range.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: has_numeric_value
-  has_maximum_numeric_value:
-    name: has_maximum_numeric_value
-    description: The maximum value part, expressed as number, of the quantity value
-      when the value covers a range.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: has_numeric_value
-  latitude:
-    name: latitude
-    description: The latitude of a location.
-    alt_descriptions:
-      wikipedia:
-        source: wikipedia
-        description: A geographic coordinate that specifies the north-south position
-          of a point on the surface of the Earth or another celestial body.
-    examples:
-    - value: '-33.460524'
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - schema:latitude
-    slot_uri: wgs84:lat
-    range: decimal_degree
-  longitude:
-    name: longitude
-    description: The longitude of a location.
-    alt_descriptions:
-      wikipedia:
-        source: wikipedia
-        description: A geographic coordinate that specifies the east-west position
-          of a point on the surface of the Earth, or another celestial body.
-    examples:
-    - value: '150.168149'
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - schema:longitude
-    slot_uri: wgs84:long
-    range: decimal_degree
-  url:
-    name: url
-    notes:
-    - See issue 207 - this clashes with the mixs field
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  websites:
-    name: websites
-    description: A list of websites that are associated with the entity.
-    comments:
-    - DOIs should not be included as websites. Instead, use the associated_dois slot.
-    - A consortium's homepage website should be included in the homepage_website slot,
-      not in websites.
-    - consortium is a convenience term for a Study whose study_category value is consortium
-    - the website slot and its subproperties are virtually identical to the url slot,
-      except that they are multivalued and url is single-valued.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - nmdc:url
-    range: string
-    multivalued: true
-    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
   chemical_conversion_category:
     name: chemical_conversion_category
     description: The type of chemical conversion process.
@@ -6094,6 +5937,163 @@ slots:
     close_mappings:
     - biolink:start_interbase_coordinate
     is_a: gff_coordinate
+  name:
+    name: name
+    description: A human readable label for an entity
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  term:
+    name: term
+    description: pointer to an ontology class
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: OntologyClass
+    inlined: true
+  description:
+    name: description
+    description: a human-readable description of a thing
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: dcterms:description
+    range: string
+  display_order:
+    name: display_order
+    description: When rendering information, this attribute to specify the order in
+      which the information should be rendered.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: integer
+  email:
+    name: email
+    description: An email address for an entity such as a person. This should be the
+      primary email address used.
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: schema:email
+    range: string
+  profile_image_url:
+    name: profile_image_url
+    description: A url that points to an image of a person.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  orcid:
+    name: orcid
+    description: The ORCID of a person.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  language:
+    name: language
+    description: Should use ISO 639-1 code e.g. "en", "fr"
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: language_code
+  has_raw_value:
+    name: has_raw_value
+    description: The value that was specified for an annotation in raw form, i.e.
+      a string. E.g. "2 cm" or "2-4 cm"
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  has_unit:
+    name: has_unit
+    description: Links a QuantityValue to a unit
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - scale
+    mappings:
+    - qud:unit
+    - schema:unitCode
+    range: unit
+  type:
+    name: type
+    description: the class_uri of the class that has been instantiated
+    notes:
+    - makes it easier to read example data files
+    - required for polymorphic MongoDB collections
+    examples:
+    - value: nmdc:Biosample
+    - value: nmdc:Study
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - https://github.com/microbiomedata/nmdc-schema/issues/1048
+    - https://github.com/microbiomedata/nmdc-schema/issues/1233
+    - https://github.com/microbiomedata/nmdc-schema/issues/248
+    structured_aliases:
+      workflow_execution_class:
+        literal_form: workflow_execution_class
+        predicate: NARROW_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    slot_uri: rdf:type
+    designates_type: true
+    range: uriorcurie
+    required: true
+  has_numeric_value:
+    name: has_numeric_value
+    description: Links a quantity value to a number
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - qud:quantityValue
+    - schema:value
+    range: decimal
+  has_minimum_numeric_value:
+    name: has_minimum_numeric_value
+    description: The minimum value part, expressed as number, of the quantity value
+      when the value covers a range.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: has_numeric_value
+  has_maximum_numeric_value:
+    name: has_maximum_numeric_value
+    description: The maximum value part, expressed as number, of the quantity value
+      when the value covers a range.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: has_numeric_value
+  latitude:
+    name: latitude
+    description: The latitude of a location.
+    alt_descriptions:
+      wikipedia:
+        source: wikipedia
+        description: A geographic coordinate that specifies the north-south position
+          of a point on the surface of the Earth or another celestial body.
+    examples:
+    - value: '-33.460524'
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - schema:latitude
+    slot_uri: wgs84:lat
+    range: decimal_degree
+  longitude:
+    name: longitude
+    description: The longitude of a location.
+    alt_descriptions:
+      wikipedia:
+        source: wikipedia
+        description: A geographic coordinate that specifies the east-west position
+          of a point on the surface of the Earth, or another celestial body.
+    examples:
+    - value: '150.168149'
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - schema:longitude
+    slot_uri: wgs84:long
+    range: decimal_degree
+  url:
+    name: url
+    notes:
+    - See issue 207 - this clashes with the mixs field
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  websites:
+    name: websites
+    description: A list of websites that are associated with the entity.
+    comments:
+    - DOIs should not be included as websites. Instead, use the associated_dois slot.
+    - A consortium's homepage website should be included in the homepage_website slot,
+      not in websites.
+    - consortium is a convenience term for a Study whose study_category value is consortium
+    - the website slot and its subproperties are virtually identical to the url slot,
+      except that they are multivalued and url is single-valued.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - nmdc:url
+    range: string
+    multivalued: true
+    pattern: ^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$
   processing_institution_workflow_metadata:
     name: processing_institution_workflow_metadata
     description: Information about how workflow results were generated when the processing
@@ -6611,1397 +6611,6 @@ slots:
     - The date should be formatted as YYYY-MM-DD
     from_schema: https://w3id.org/nmdc/nmdc
     range: string
-  associated_studies:
-    name: associated_studies
-    description: The study associated with a resource.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Study
-    required: true
-    multivalued: true
-    pattern: ^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  part_of:
-    name: part_of
-    description: Links a resource to another resource that either logically or physically
-      includes it.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - is part of
-    slot_uri: dcterms:isPartOf
-    range: NamedThing
-    multivalued: true
-  was_informed_by:
-    name: was_informed_by
-    description: The primary DataGeneration subclass that the WorkflowExecution subclass
-      depends on.
-    comments:
-    - For version 1 of the proteomics workflow there are input files both from the
-      NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered
-      the primary class to reference.
-    from_schema: https://w3id.org/nmdc/nmdc
-    structured_aliases:
-      was_informed_by:
-        literal_form: was_informed_by
-        predicate: EXACT_SYNONYM
-        contexts:
-        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
-    narrow_mappings:
-    - prov:wasInformedBy
-    range: DataGeneration
-    multivalued: true
-  principal_investigator:
-    name: principal_investigator
-    description: Principal Investigator who led the study and/or generated the dataset.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - PI
-    range: PersonValue
-  was_generated_by:
-    name: was_generated_by
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - prov:wasGeneratedBy
-    range: DataEmitterProcess
-  associated_dois:
-    name: associated_dois
-    description: A list of DOIs associated with a resource, such as a list of DOIS
-      associated with a Study.
-    examples:
-    - value: '[{''doi'': ''doi:10.46936/intm.proj.2021.60141/60000423'', ''doi_provider'':
-        ''emsl'', ''doi_category'': ''award_doi''}, {''doi'': ''doi:10.1101/2022.12.12.520098'',
-        ''doi_category'': ''publication_doi''}, {''doi'': ''doi:10.48321/D1Z60Q'',
-        ''doi_category'': ''data_management_plan_doi'', ''doi_provider'': ''gsc''}]'
-      description: Provides a list of two DOIs; specifically, an EMSL award DOI and
-        a publication DOI.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Associated DOIs
-    - Associated digital object identifiers
-    range: Doi
-    multivalued: true
-    inlined_as_list: true
-  has_credit_associations:
-    name: has_credit_associations
-    annotations:
-      tooltip:
-        tag: tooltip
-        value: Other researchers associated with this study.
-    description: 'This slot links a study to a credit association.  The credit association
-      will be linked to a person value and to a CRediT Contributor Roles term. Overall
-      semantics: person should get credit X for their participation in the study'
-    from_schema: https://w3id.org/nmdc/nmdc
-    slot_uri: prov:qualifiedAssociation
-    range: CreditAssociation
-    multivalued: true
-    inlined_as_list: true
-  protocol_link:
-    name: protocol_link
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Protocol
-  study_category:
-    name: study_category
-    description: The type of research initiative
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: StudyCategoryEnum
-    required: true
-  study_image:
-    name: study_image
-    description: Links a study to one or more images.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ImageValue
-    multivalued: true
-    inlined_as_list: true
-  applies_to_person:
-    name: applies_to_person
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: PersonValue
-    required: true
-  applied_roles:
-    name: applied_roles
-    annotations:
-      tooltip:
-        tag: tooltip
-        value: 'Identify all CRediT roles associated with this contributor. CRediT
-          Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
-          https://credit.niso.org/'
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: CreditEnum
-    required: true
-    multivalued: true
-  definition:
-    name: definition
-    description: The definition of the ontology term as provided by the ontology.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
-  relations:
-    name: relations
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: OntologyRelation
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  is_obsolete:
-    name: is_obsolete
-    description: A boolean value indicating whether the ontology term is obsolete.
-    comments:
-    - If true (the ontology term is declared obsolete via the ontology source itself),  the
-      term is no longer considered a valid term to use in an annotation at NMDC, and
-      it no longer has ontology_relation_set records.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: boolean
-  is_root:
-    name: is_root
-    description: A boolean value indicating whether the ontology term is a root term;
-      it is not a subclass of  any other term.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: boolean
-  has_input:
-    name: has_input
-    description: An input to a process.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - input
-    range: NamedThing
-    multivalued: true
-  has_output:
-    name: has_output
-    description: An output from a process.
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - output
-    range: NamedThing
-    multivalued: true
-  instrument_used:
-    name: instrument_used
-    description: What instrument was used during DataGeneration or MaterialProcessing.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Instrument
-    multivalued: true
-    pattern: ^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  in_manifest:
-    name: in_manifest
-    description: one or more combinations of other DataObjects that can be analyzed
-      together
-    comments:
-    - A DataObject can be part of multiple manifests, for example, a DataObject could
-      be part of a manifest for a single run of an instrument and a manifest for technical
-      replicates of a single sample.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: Manifest
-    multivalued: true
-    pattern: ^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
-      interpolated: true
-  manifest_category:
-    name: manifest_category
-    description: The type of context in which the constituent DataObjects can be analyzed
-      together.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: ManifestCategoryEnum
-    required: true
-  model:
-    name: model
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: InstrumentModelEnum
-  vendor:
-    name: vendor
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: InstrumentVendorEnum
-  qc_failure_where:
-    name: qc_failure_where
-    description: Describes the nmdc schema class that corresonds to where the failure
-      occurred. Most commonly this would be the same as Class that generated the results.
-    comments:
-    - If the assembly size was too small to proceed to annotation failure_where would
-      be MetagenomeAssembly.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: FailureWhereEnum
-  qc_failure_what:
-    name: qc_failure_what
-    description: Provides a summary about what caused a lab or workflow process to
-      fail
-    comments:
-    - For example, low read count from a sequencer, malformed fastq files, etc.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: FailureWhatEnum
-  emsl_store_temp:
-    name: emsl_store_temp
-    description: The temperature at which the sample should be stored upon delivery
-      to EMSL
-    title: EMSL sample storage temperature, deg. C
-    todos:
-    - add 'see_also's with link to NEXUS info
-    comments:
-    - Enter a temperature in celsius. Numeric portion only.
-    examples:
-    - value: '-80'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 4
-    string_serialization: '{float}'
-    slot_group: EMSL
-    recommended: true
-  project_id:
-    name: project_id
-    description: Proposal IDs or names associated with dataset
-    title: project ID
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 1
-    string_serialization: '{text}'
-    slot_group: EMSL
-    recommended: true
-  replicate_number:
-    name: replicate_number
-    description: If sending biological replicates, indicate the rep number here.
-    title: replicate number
-    comments:
-    - This will guide staff in ensuring your samples are blocked & randomized correctly
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 6
-    string_serialization: '{integer}'
-    slot_group: EMSL
-    recommended: true
-  sample_shipped:
-    name: sample_shipped
-    description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
-      sample sent to EMSL.
-    title: sample shipped amount
-    comments:
-    - This field is only required when completing metadata for samples being submitted
-      to EMSL for analyses.
-    examples:
-    - value: 15 g
-    - value: 100 uL
-    - value: 5 mL
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 3
-    string_serialization: '{float} {unit}'
-    slot_group: EMSL
-    recommended: true
-  sample_type:
-    name: sample_type
-    description: Type of sample being submitted
-    title: sample type
-    comments:
-    - This can vary from 'environmental package' if the sample is an extraction.
-    examples:
-    - value: water extracted soil
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 2
-    slot_group: EMSL
-    range: SampleTypeEnum
-    recommended: true
-  technical_reps:
-    name: technical_reps
-    description: If sending technical replicates of the same sample, indicate the
-      replicate count.
-    title: number technical replicate
-    comments:
-    - This field is only required when completing metadata for samples being submitted
-      to EMSL for analyses.
-    examples:
-    - value: '2'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 5
-    string_serialization: '{integer}'
-    slot_group: EMSL
-    recommended: true
-  dna_collect_site:
-    name: dna_collect_site
-    description: Provide information on the site your DNA sample was collected from
-    title: DNA collection site
-    examples:
-    - value: untreated pond water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_cont_type:
-    name: dna_cont_type
-    description: Tube or plate (96-well)
-    title: DNA container type
-    examples:
-    - value: plate
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 10
-    slot_group: JGI-Metagenomics
-    range: JgiContTypeEnum
-    recommended: true
-  dna_cont_well:
-    name: dna_cont_well
-    title: DNA plate position
-    comments:
-    - Required when 'plate' is selected for container type.
-    - Leave blank if the sample will be shipped in a tube.
-    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not
-      pass validation.
-    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
-    examples:
-    - value: B2
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 11
-    string_serialization: '{96 well plate pos}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
-  dna_container_id:
-    name: dna_container_id
-    title: DNA container label
-    comments:
-    - Must be unique across all tubes and plates, and <20 characters. All samples
-      in a plate should have the same plate label.
-    examples:
-    - value: Pond_MT_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 9
-    string_serialization: '{text < 20 characters}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_dnase:
-    name: dna_dnase
-    title: DNase treatment DNA
-    comments:
-    - Note DNase treatment is required for all RNA samples.
-    examples:
-    - value: 'no'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 13
-    slot_group: JGI-Metagenomics
-    range: YesNoEnum
-    recommended: true
-  dna_isolate_meth:
-    name: dna_isolate_meth
-    description: Describe the method/protocol/kit used to extract DNA/RNA.
-    title: DNA isolation method
-    examples:
-    - value: phenol/chloroform extraction
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Sample Isolation Method
-    rank: 16
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_organisms:
-    name: dna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: DNA expected organisms
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_project_contact:
-    name: dna_project_contact
-    title: DNA seq project contact
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: John Jones
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 18
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_samp_id:
-    name: dna_samp_id
-    title: DNA sample ID
-    todos:
-    - Removed identifier = TRUE from dna_samp_ID in JGI_sample_slots, as a class can't
-      have two identifiers. How to force uniqueness? Moot because that column will
-      be prefilled?
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '187654'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 3
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_sample_format:
-    name: dna_sample_format
-    description: Solution in which the DNA sample has been suspended
-    title: DNA sample format
-    examples:
-    - value: Water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 12
-    slot_group: JGI-Metagenomics
-    range: DNASampleFormatEnum
-    recommended: true
-  dna_sample_name:
-    name: dna_sample_name
-    description: Give the DNA sample a name that is meaningful to you. Sample names
-      must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
-    title: DNA sample name
-    examples:
-    - value: JGI_pond_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 4
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_seq_project:
-    name: dna_seq_project
-    title: DNA seq project ID
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '1191234'
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Seq Project ID
-    rank: 1
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_seq_project_pi:
-    name: dna_seq_project_pi
-    title: DNA seq project PI
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: Jane Johnson
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 17
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_seq_project_name:
-    name: dna_seq_project_name
-    title: DNA seq project name
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: JGI Pond metagenomics
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 2
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_volume:
-    name: dna_volume
-    title: DNA volume in ul
-    comments:
-    - Units must be in uL. Enter the numerical part only. Value must be 0-1000. This
-      form accepts values < 25, but JGI may refuse to process them unless permission
-      has been granted by a project manager
-    examples:
-    - value: '25'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 6
-    string_serialization: '{float}'
-    slot_group: JGI-Metagenomics
-    range: float
-    recommended: true
-    minimum_value: 0
-    maximum_value: 1000
-  proposal_dna:
-    name: proposal_dna
-    title: DNA proposal ID
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '504000'
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 19
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dnase_rna:
-    name: dnase_rna
-    title: DNase treated
-    comments:
-    - Note DNase treatment is required for all RNA samples.
-    examples:
-    - value: 'no'
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Was Sample DNAse treated?
-    rank: 13
-    slot_group: JGI-Metatranscriptomics
-    range: YesNoEnum
-    recommended: true
-  proposal_rna:
-    name: proposal_rna
-    title: RNA proposal ID
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '504000'
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 19
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_absorb1:
-    name: rna_absorb1
-    description: 260/280 measurement of RNA sample purity
-    title: RNA absorbance 260/280
-    comments:
-    - Recommended value is between 1 and 3.
-    examples:
-    - value: '2.02'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 7
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
-  rna_absorb2:
-    name: rna_absorb2
-    description: 260/230 measurement of RNA sample purity
-    title: RNA absorbance 260/230
-    comments:
-    - Recommended value is between 1 and 3.
-    examples:
-    - value: '2.02'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 8
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
-  rna_collect_site:
-    name: rna_collect_site
-    description: Provide information on the site your RNA sample was collected from
-    title: RNA collection site
-    examples:
-    - value: untreated pond water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 15
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_concentration:
-    name: rna_concentration
-    title: RNA concentration in ng/ul
-    comments:
-    - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
-      a fluorometric method. Acceptable values are 0-2000.
-    examples:
-    - value: '100'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - nmdc:nucleic_acid_concentration
-    rank: 5
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
-    minimum_value: 0
-    maximum_value: 1000
-  rna_cont_type:
-    name: rna_cont_type
-    description: Tube or plate (96-well)
-    title: RNA container type
-    examples:
-    - value: plate
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 10
-    slot_group: JGI-Metatranscriptomics
-    range: JgiContTypeEnum
-    recommended: true
-  rna_cont_well:
-    name: rna_cont_well
-    title: RNA plate position
-    comments:
-    - Required when 'plate' is selected for container type.
-    - Leave blank if the sample will be shipped in a tube.
-    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not
-      pass validation.
-    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
-    examples:
-    - value: B2
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 11
-    string_serialization: '{96 well plate pos}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
-  rna_container_id:
-    name: rna_container_id
-    title: RNA container label
-    comments:
-    - Must be unique across all tubes and plates, and <20 characters. All samples
-      in a plate should have the same plate label.
-    examples:
-    - value: Pond_MT_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 9
-    string_serialization: '{text < 20 characters}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_isolate_meth:
-    name: rna_isolate_meth
-    description: Describe the method/protocol/kit used to extract DNA/RNA.
-    title: RNA isolation method
-    examples:
-    - value: phenol/chloroform extraction
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Sample Isolation Method
-    rank: 16
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_organisms:
-    name: rna_organisms
-    description: List any organisms known or suspected to grow in co-culture, as well
-      as estimated % of the organism in that culture.
-    title: RNA expected organisms
-    examples:
-    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
-        (1%)
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 14
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_project_contact:
-    name: rna_project_contact
-    title: RNA seq project contact
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: John Jones
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 18
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_samp_id:
-    name: rna_samp_id
-    title: RNA sample ID
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '187654'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 3
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_sample_format:
-    name: rna_sample_format
-    description: Solution in which the RNA sample has been suspended
-    title: RNA sample format
-    examples:
-    - value: Water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 12
-    slot_group: JGI-Metatranscriptomics
-    range: RNASampleFormatEnum
-    recommended: true
-  rna_sample_name:
-    name: rna_sample_name
-    description: Give the RNA sample a name that is meaningful to you. Sample names
-      must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
-    title: RNA sample name
-    examples:
-    - value: JGI_pond_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 4
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-    minimum_value: 0
-    maximum_value: 2000
-  rna_seq_project:
-    name: rna_seq_project
-    title: RNA seq project ID
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '1191234'
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Seq Project ID
-    rank: 1
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_seq_project_pi:
-    name: rna_seq_project_pi
-    title: RNA seq project PI
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: Jane Johnson
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 17
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_seq_project_name:
-    name: rna_seq_project_name
-    title: RNA seq project name
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: JGI Pond metatranscriptomics
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 2
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_volume:
-    name: rna_volume
-    title: RNA volume in ul
-    comments:
-    - Units must be in uL. Enter the numerical part only. Value must be 0-1000. This
-      form accepts values < 25, but JGI may refuse to process them unless permission
-      has been granted by a project manager
-    examples:
-    - value: '25'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 6
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
-    minimum_value: 0
-    maximum_value: 1000
-  collection_date_inc:
-    name: collection_date_inc
-    description: Date the incubation was harvested/collected/ended. Only relevant
-      for incubation samples.
-    title: incubation collection date
-    notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision
-      date only
-    comments:
-    - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
-      are all acceptable.
-    examples:
-    - value: '2021-04-15'
-    - value: 2021-04
-    - value: '2021'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000011
-    rank: 2
-    string_serialization: '{date, arbitrary precision}'
-    slot_group: MIxS Inspired
-    recommended: true
-  collection_time:
-    name: collection_time
-    description: The time of sampling, either as an instance (single point) or interval.
-    title: collection time, GMT
-    notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
-      time only
-    comments:
-    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
-    examples:
-    - value: '13:33'
-    - value: '13:33:55'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000011
-    rank: 1
-    string_serialization: '{time, seconds optional}'
-    slot_group: MIxS Inspired
-    recommended: true
-  collection_time_inc:
-    name: collection_time_inc
-    description: Time the incubation was harvested/collected/ended. Only relevant
-      for incubation samples.
-    title: incubation collection time, GMT
-    notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
-      time only
-    comments:
-    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
-    examples:
-    - value: '13:33'
-    - value: '13:33:55'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000011
-    rank: 3
-    string_serialization: '{time, seconds optional}'
-    slot_group: MIxS Inspired
-    recommended: true
-  experimental_factor_other:
-    name: experimental_factor_other
-    description: Other details about your sample that you feel can't be accurately
-      represented in the available columns.
-    title: experimental factor- other
-    comments:
-    - This slot accepts open-ended text about your sample.
-    - We recommend using key:value pairs.
-    - Provided pairs will be considered for inclusion as future slots/terms in this
-      data collection template.
-    examples:
-    - value: 'experimental treatment: value'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000008
-    - MIXS:0000300
-    rank: 7
-    string_serialization: '{text}'
-    slot_group: MIxS Inspired
-    recommended: true
-  filter_method:
-    name: filter_method
-    description: Type of filter used or how the sample was filtered
-    title: filter method
-    comments:
-    - describe the filter or provide a catalog number and manufacturer
-    examples:
-    - value: C18
-    - value: Basix PES, 13-100-106 FisherSci
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000765
-    rank: 6
-    string_serialization: '{text}'
-    slot_group: MIxS Inspired
-    recommended: true
-  isotope_exposure:
-    name: isotope_exposure
-    description: List isotope exposure or addition applied to your sample.
-    title: isotope exposure/addition
-    todos:
-    - Can we make the H218O correctly super and subscripted?
-    comments:
-    - This is required when your experimental design includes the use of isotopically
-      labeled compounds
-    examples:
-    - value: 13C glucose
-    - value: 18O water
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000751
-    rank: 16
-    slot_group: MIxS Inspired
-    recommended: true
-  micro_biomass_c_meth:
-    name: micro_biomass_c_meth
-    description: Reference or method used in determining microbial biomass carbon
-    title: microbial biomass carbon method
-    todos:
-    - How should we separate values? | or ;? lets be consistent
-    comments:
-    - required if "microbial_biomass_c" is provided
-    examples:
-    - value: https://doi.org/10.1016/0038-0717(87)90052-6
-    - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000339
-    rank: 11
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_group: MIxS Inspired
-    recommended: true
-  micro_biomass_n_meth:
-    name: micro_biomass_n_meth
-    description: Reference or method used in determining microbial biomass nitrogen
-    title: microbial biomass nitrogen method
-    comments:
-    - required if "microbial_biomass_n" is provided
-    examples:
-    - value: https://doi.org/10.1016/0038-0717(87)90052-6
-    - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000339
-    rank: 13
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_group: MIxS Inspired
-  microbial_biomass_c:
-    name: microbial_biomass_c
-    description: The part of the organic matter in the soil that constitutes living
-      microorganisms smaller than 5-10 micrometer.
-    title: microbial biomass carbon
-    comments:
-    - If you provide this, correction factors used for conversion to the final units
-      and method are required
-    examples:
-    - value: 0.05 ug C/g dry soil
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000650
-    rank: 10
-    string_serialization: '{float} {unit}'
-    slot_group: MIxS Inspired
-  microbial_biomass_n:
-    name: microbial_biomass_n
-    description: The part of the organic matter in the soil that constitutes living
-      microorganisms smaller than 5-10 micrometer.
-    title: microbial biomass nitrogen
-    comments:
-    - If you provide this, correction factors used for conversion to the final units
-      and method are required
-    examples:
-    - value: 0.05 ug N/g dry soil
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000650
-    rank: 12
-    string_serialization: '{float} {unit}'
-    slot_group: MIxS Inspired
-  non_microb_biomass:
-    name: non_microb_biomass
-    description: Amount of biomass; should include the name for the part of biomass
-      measured, e.g.insect, plant, total. Can include multiple measurements separated
-      by ;
-    title: non-microbial biomass
-    examples:
-    - value: insect 0.23 ug; plant 1g
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000174
-    - MIXS:0000650
-    rank: 8
-    string_serialization: '{text};{float} {unit}'
-    slot_group: MIxS Inspired
-  non_microb_biomass_method:
-    name: non_microb_biomass_method
-    description: Reference or method used in determining biomass
-    title: non-microbial biomass method
-    comments:
-    - required if "non-microbial biomass" is provided
-    examples:
-    - value: https://doi.org/10.1038/s41467-021-26181-3
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000650
-    rank: 9
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_group: MIxS Inspired
-  org_nitro_method:
-    name: org_nitro_method
-    description: Method used for obtaining organic nitrogen
-    title: organic nitrogen method
-    comments:
-    - required if "org_nitro" is provided
-    examples:
-    - value: https://doi.org/10.1016/0038-0717(85)90144-0
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000338
-    - MIXS:0000205
-    rank: 14
-    string_serialization: '{PMID}|{DOI}|{URL}'
-    slot_group: MIxS Inspired
-  other_treatment:
-    name: other_treatment
-    description: Other treatments applied to your samples that are not applicable
-      to the provided fields
-    title: other treatments
-    notes:
-    - Values entered here will be used to determine potential new slots.
-    comments:
-    - This is an open text field to provide any treatments that cannot be captured
-      in the provided slots.
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000300
-    rank: 15
-    string_serialization: '{text}'
-    slot_group: MIxS Inspired
-    recommended: true
-  start_date_inc:
-    name: start_date_inc
-    description: Date the incubation was started. Only relevant for incubation samples.
-    title: incubation start date
-    notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision
-      date only
-    comments:
-    - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
-      are all acceptable.
-    examples:
-    - value: '2021-04-15'
-    - value: 2021-04
-    - value: '2021'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000011
-    rank: 4
-    string_serialization: '{date, arbitrary precision}'
-    slot_group: MIxS Inspired
-    recommended: true
-  start_time_inc:
-    name: start_time_inc
-    description: Time the incubation was started. Only relevant for incubation samples.
-    title: incubation start time, GMT
-    notes:
-    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
-      time only
-    comments:
-    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
-    examples:
-    - value: '13:33'
-    - value: '13:33:55'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - MIXS:0000011
-    rank: 5
-    string_serialization: '{time, seconds optional}'
-    slot_group: MIxS Inspired
-    recommended: true
-  analysis_type:
-    name: analysis_type
-    description: Select all the data types associated or available for this biosample
-    title: analysis/data type
-    comments:
-    - MIxS:investigation_type was included as a `see_also` but that term doesn't resolve
-      any more
-    examples:
-    - value: metagenomics; metabolomics; metaproteomics
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 3
-    slot_group: Sample ID
-    range: AnalysisTypeEnum
-    recommended: true
-    multivalued: true
-  sample_link:
-    name: sample_link
-    description: A unique identifier to assign parent-child, subsample, or sibling
-      samples. This is relevant when a sample or other material was used to generate
-      the new sample.
-    title: sample linkage
-    comments:
-    - 'This field allows multiple entries separated by ; (Examples: Soil collected
-      from the field will link with the soil used in an incubation. The soil a plant
-      was grown in links to the plant sample. An original culture sample was transferred
-      to a new vial and generated a new sample)'
-    examples:
-    - value: IGSN:DSJ0284
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 5
-    string_serialization: '{text}:{text}'
-    slot_group: Sample ID
-    recommended: true
-    multivalued: true
-  metaproteomics_analysis_category:
-    name: metaproteomics_analysis_category
-    description: The category of metaproteomics analysis being performed.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: MetaproteomicsAnalysisCategoryEnum
-    required: true
-  metabolomics_analysis_category:
-    name: metabolomics_analysis_category
-    description: The category of metabolomics analysis being performed.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: MetabolomicsAnalysisCategoryEnum
-    required: true
-  metagenome_assembly_parameter:
-    name: metagenome_assembly_parameter
-    from_schema: https://w3id.org/nmdc/nmdc
-    abstract: true
-  asm_score:
-    name: asm_score
-    description: A score for comparing metagenomic assembly quality from same sample.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaffolds:
-    name: scaffolds
-    description: Total sequence count of all scaffolds.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_logsum:
-    name: scaf_logsum
-    description: The sum of the (length*log(length)) of all scaffolds, times some
-      constant.  Increase the contiguity, the score will increase
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_powsum:
-    name: scaf_powsum
-    description: Powersum of all scaffolds is the same as logsum except that it uses
-      the sum of (length*(length^P)) for some power P (default P=0.25).
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_max:
-    name: scaf_max
-    description: Maximum scaffold length.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_bp:
-    name: scaf_bp
-    description: Total size in bp of all scaffolds.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_n50:
-    name: scaf_n50
-    description: Given a set of scaffolds, each with its own length, the N50 count
-      is defined as the smallest number of scaffolds whose length sum makes up half
-      of genome size.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_n90:
-    name: scaf_n90
-    description: Given a set of scaffolds, each with its own length, the N90 count
-      is defined as the smallest number of scaffolds whose length sum makes up 90%
-      of genome size.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_l50:
-    name: scaf_l50
-    description: Given a set of scaffolds, the L50 is defined as the sequence length
-      of the shortest scaffold at 50% of the total genome length.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_l90:
-    name: scaf_l90
-    description: The L90 statistic is less than or equal to the L50 statistic; it
-      is the length for which the collection of all scaffolds of that length or longer
-      contains at least 90% of the sum of the lengths of all scaffolds.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_n_gt50k:
-    name: scaf_n_gt50k
-    description: Total sequence count of scaffolds greater than 50 KB.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_l_gt50k:
-    name: scaf_l_gt50k
-    description: Total size in bp of all scaffolds greater than 50 KB.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  scaf_pct_gt50k:
-    name: scaf_pct_gt50k
-    description: Total sequence size percentage of scaffolds greater than 50 KB.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  contigs:
-    name: contigs
-    description: The sum of the (length*log(length)) of all contigs, times some constant.  Increase
-      the contiguity, the score will increase
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  contig_bp:
-    name: contig_bp
-    description: Total size in bp of all contigs.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  ctg_n50:
-    name: ctg_n50
-    description: Given a set of contigs, each with its own length, the N50 count is
-      defined as the smallest number_of_contigs whose length sum makes up half of
-      genome size.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  ctg_l50:
-    name: ctg_l50
-    description: Given a set of contigs, the L50 is defined as the sequence length
-      of the shortest contig at 50% of the total genome length.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  ctg_n90:
-    name: ctg_n90
-    description: Given a set of contigs, each with its own length, the N90 count is
-      defined as the smallest number of contigs whose length sum makes up 90% of genome
-      size.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  ctg_l90:
-    name: ctg_l90
-    description: The L90 statistic is less than or equal to the L50 statistic; it
-      is the length for which the collection of all contigs of that length or longer
-      contains at least 90% of the sum of the lengths of all contigs.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  ctg_logsum:
-    name: ctg_logsum
-    description: Maximum contig length.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  ctg_powsum:
-    name: ctg_powsum
-    description: Powersum of all contigs is the same as logsum except that it uses
-      the sum of (length*(length^P)) for some power P (default P=0.25).
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  ctg_max:
-    name: ctg_max
-    description: Maximum contig length.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  gap_pct:
-    name: gap_pct
-    description: The gap size percentage of all scaffolds.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  gc_std:
-    name: gc_std
-    description: Standard deviation of GC content of all contigs.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  gc_avg:
-    name: gc_avg
-    description: Average of GC content of all contigs.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  num_input_reads:
-    name: num_input_reads
-    description: The sequence count number of input reads for assembly.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  num_aligned_reads:
-    name: num_aligned_reads
-    description: The sequence count number of input reads aligned to assembled contigs.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: metagenome_assembly_parameter
-    range: float
-  read_qc_analysis_statistic:
-    name: read_qc_analysis_statistic
-    from_schema: https://w3id.org/nmdc/nmdc
-    abstract: true
-  mags_list:
-    name: mags_list
-    description: Contains detailed information about each metagenome-assembled genome.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: MagBin
-    multivalued: true
-    inlined_as_list: true
-  too_short_contig_num:
-    name: too_short_contig_num
-    description: Number of contigs which were excluded from binning for length.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-    minimum_value: 0
-  binned_contig_num:
-    name: binned_contig_num
-    description: Number of contigs that ended up in a medium or high quality bin.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-    minimum_value: 0
-  input_contig_num:
-    name: input_contig_num
-    description: Total number of input contigs.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-    minimum_value: 0
-  unbinned_contig_num:
-    name: unbinned_contig_num
-    description: Number of contigs which did not end up in a medium or high quality
-      bin.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-    minimum_value: 0
-  low_depth_contig_num:
-    name: low_depth_contig_num
-    description: Number of contigs which were excluded from binning for depth of coverage.
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: integer
-    minimum_value: 0
-  input_read_count:
-    name: input_read_count
-    description: The sequence count number of input reads for QC analysis.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: read_qc_analysis_statistic
-    range: float
-  input_base_count:
-    name: input_base_count
-    description: The nucleotide base count number of input reads for QC analysis.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: read_qc_analysis_statistic
-    range: float
-  output_read_count:
-    name: output_read_count
-    description: After QC analysis sequence count number.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: read_qc_analysis_statistic
-    range: float
-  output_base_count:
-    name: output_base_count
-    description: After QC analysis nucleotide base count number.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: read_qc_analysis_statistic
-    range: float
-  output_read_bases:
-    name: output_read_bases
-    description: TODO
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: float
-  input_read_bases:
-    name: input_read_bases
-    description: 'TODO      '
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: float
-  has_metabolite_identifications:
-    name: has_metabolite_identifications
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: MetaboliteIdentification
-    multivalued: true
-    inlined_as_list: true
   img_identifiers:
     name: img_identifiers
     description: A list of identifiers that relate the biosample to records in the
@@ -19491,6 +18100,1397 @@ slots:
     - orcid:0000-0001-9076-6066
     abstract: true
     range: ControlledIdentifiedTermValue
+  associated_studies:
+    name: associated_studies
+    description: The study associated with a resource.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Study
+    required: true
+    multivalued: true
+    pattern: ^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:sty-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  part_of:
+    name: part_of
+    description: Links a resource to another resource that either logically or physically
+      includes it.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - is part of
+    slot_uri: dcterms:isPartOf
+    range: NamedThing
+    multivalued: true
+  was_informed_by:
+    name: was_informed_by
+    description: The primary DataGeneration subclass that the WorkflowExecution subclass
+      depends on.
+    comments:
+    - For version 1 of the proteomics workflow there are input files both from the
+      NucleotideSequencing and MassSpectrometry, the MassSpectrometry record is considered
+      the primary class to reference.
+    from_schema: https://w3id.org/nmdc/nmdc
+    structured_aliases:
+      was_informed_by:
+        literal_form: was_informed_by
+        predicate: EXACT_SYNONYM
+        contexts:
+        - https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml
+    narrow_mappings:
+    - prov:wasInformedBy
+    range: DataGeneration
+    multivalued: true
+  principal_investigator:
+    name: principal_investigator
+    description: Principal Investigator who led the study and/or generated the dataset.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - PI
+    range: PersonValue
+  was_generated_by:
+    name: was_generated_by
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - prov:wasGeneratedBy
+    range: DataEmitterProcess
+  associated_dois:
+    name: associated_dois
+    description: A list of DOIs associated with a resource, such as a list of DOIS
+      associated with a Study.
+    examples:
+    - value: '[{''doi'': ''doi:10.46936/intm.proj.2021.60141/60000423'', ''doi_provider'':
+        ''emsl'', ''doi_category'': ''award_doi''}, {''doi'': ''doi:10.1101/2022.12.12.520098'',
+        ''doi_category'': ''publication_doi''}, {''doi'': ''doi:10.48321/D1Z60Q'',
+        ''doi_category'': ''data_management_plan_doi'', ''doi_provider'': ''gsc''}]'
+      description: Provides a list of two DOIs; specifically, an EMSL award DOI and
+        a publication DOI.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Associated DOIs
+    - Associated digital object identifiers
+    range: Doi
+    multivalued: true
+    inlined_as_list: true
+  has_credit_associations:
+    name: has_credit_associations
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: Other researchers associated with this study.
+    description: 'This slot links a study to a credit association.  The credit association
+      will be linked to a person value and to a CRediT Contributor Roles term. Overall
+      semantics: person should get credit X for their participation in the study'
+    from_schema: https://w3id.org/nmdc/nmdc
+    slot_uri: prov:qualifiedAssociation
+    range: CreditAssociation
+    multivalued: true
+    inlined_as_list: true
+  protocol_link:
+    name: protocol_link
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Protocol
+  study_category:
+    name: study_category
+    description: The type of research initiative
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: StudyCategoryEnum
+    required: true
+  study_image:
+    name: study_image
+    description: Links a study to one or more images.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ImageValue
+    multivalued: true
+    inlined_as_list: true
+  applies_to_person:
+    name: applies_to_person
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: PersonValue
+    required: true
+  applied_roles:
+    name: applied_roles
+    annotations:
+      tooltip:
+        tag: tooltip
+        value: 'Identify all CRediT roles associated with this contributor. CRediT
+          Information: https://info.orcid.org/credit-for-research-contribution ; CRediT:
+          https://credit.niso.org/'
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: CreditEnum
+    required: true
+    multivalued: true
+  definition:
+    name: definition
+    description: The definition of the ontology term as provided by the ontology.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
+  relations:
+    name: relations
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: OntologyRelation
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  is_obsolete:
+    name: is_obsolete
+    description: A boolean value indicating whether the ontology term is obsolete.
+    comments:
+    - If true (the ontology term is declared obsolete via the ontology source itself),  the
+      term is no longer considered a valid term to use in an annotation at NMDC, and
+      it no longer has ontology_relation_set records.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
+  is_root:
+    name: is_root
+    description: A boolean value indicating whether the ontology term is a root term;
+      it is not a subclass of  any other term.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: boolean
+  has_input:
+    name: has_input
+    description: An input to a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - input
+    range: NamedThing
+    multivalued: true
+  has_output:
+    name: has_output
+    description: An output from a process.
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - output
+    range: NamedThing
+    multivalued: true
+  instrument_used:
+    name: instrument_used
+    description: What instrument was used during DataGeneration or MaterialProcessing.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Instrument
+    multivalued: true
+    pattern: ^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  in_manifest:
+    name: in_manifest
+    description: one or more combinations of other DataObjects that can be analyzed
+      together
+    comments:
+    - A DataObject can be part of multiple manifests, for example, a DataObject could
+      be part of a manifest for a single run of an instrument and a manifest for technical
+      replicates of a single sample.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: Manifest
+    multivalued: true
+    pattern: ^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
+    structured_pattern:
+      syntax: '{id_nmdc_prefix}:manif-{id_shoulder}-{id_blade}$'
+      interpolated: true
+  manifest_category:
+    name: manifest_category
+    description: The type of context in which the constituent DataObjects can be analyzed
+      together.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: ManifestCategoryEnum
+    required: true
+  model:
+    name: model
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: InstrumentModelEnum
+  vendor:
+    name: vendor
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: InstrumentVendorEnum
+  qc_failure_where:
+    name: qc_failure_where
+    description: Describes the nmdc schema class that corresonds to where the failure
+      occurred. Most commonly this would be the same as Class that generated the results.
+    comments:
+    - If the assembly size was too small to proceed to annotation failure_where would
+      be MetagenomeAssembly.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: FailureWhereEnum
+  qc_failure_what:
+    name: qc_failure_what
+    description: Provides a summary about what caused a lab or workflow process to
+      fail
+    comments:
+    - For example, low read count from a sequencer, malformed fastq files, etc.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: FailureWhatEnum
+  emsl_store_temp:
+    name: emsl_store_temp
+    description: The temperature at which the sample should be stored upon delivery
+      to EMSL
+    title: EMSL sample storage temperature, deg. C
+    todos:
+    - add 'see_also's with link to NEXUS info
+    comments:
+    - Enter a temperature in celsius. Numeric portion only.
+    examples:
+    - value: '-80'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 4
+    string_serialization: '{float}'
+    slot_group: EMSL
+    recommended: true
+  project_id:
+    name: project_id
+    description: Proposal IDs or names associated with dataset
+    title: project ID
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1
+    string_serialization: '{text}'
+    slot_group: EMSL
+    recommended: true
+  replicate_number:
+    name: replicate_number
+    description: If sending biological replicates, indicate the rep number here.
+    title: replicate number
+    comments:
+    - This will guide staff in ensuring your samples are blocked & randomized correctly
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 6
+    string_serialization: '{integer}'
+    slot_group: EMSL
+    recommended: true
+  sample_shipped:
+    name: sample_shipped
+    description: The total amount or size (volume (ml), mass (g) or area (m2) ) of
+      sample sent to EMSL.
+    title: sample shipped amount
+    comments:
+    - This field is only required when completing metadata for samples being submitted
+      to EMSL for analyses.
+    examples:
+    - value: 15 g
+    - value: 100 uL
+    - value: 5 mL
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 3
+    string_serialization: '{float} {unit}'
+    slot_group: EMSL
+    recommended: true
+  sample_type:
+    name: sample_type
+    description: Type of sample being submitted
+    title: sample type
+    comments:
+    - This can vary from 'environmental package' if the sample is an extraction.
+    examples:
+    - value: water extracted soil
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 2
+    slot_group: EMSL
+    range: SampleTypeEnum
+    recommended: true
+  technical_reps:
+    name: technical_reps
+    description: If sending technical replicates of the same sample, indicate the
+      replicate count.
+    title: number technical replicate
+    comments:
+    - This field is only required when completing metadata for samples being submitted
+      to EMSL for analyses.
+    examples:
+    - value: '2'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 5
+    string_serialization: '{integer}'
+    slot_group: EMSL
+    recommended: true
+  dna_collect_site:
+    name: dna_collect_site
+    description: Provide information on the site your DNA sample was collected from
+    title: DNA collection site
+    examples:
+    - value: untreated pond water
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 15
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_cont_type:
+    name: dna_cont_type
+    description: Tube or plate (96-well)
+    title: DNA container type
+    examples:
+    - value: plate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 10
+    slot_group: JGI-Metagenomics
+    range: JgiContTypeEnum
+    recommended: true
+  dna_cont_well:
+    name: dna_cont_well
+    title: DNA plate position
+    comments:
+    - Required when 'plate' is selected for container type.
+    - Leave blank if the sample will be shipped in a tube.
+    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not
+      pass validation.
+    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
+    examples:
+    - value: B2
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 11
+    string_serialization: '{96 well plate pos}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
+  dna_container_id:
+    name: dna_container_id
+    title: DNA container label
+    comments:
+    - Must be unique across all tubes and plates, and <20 characters. All samples
+      in a plate should have the same plate label.
+    examples:
+    - value: Pond_MT_041618
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 9
+    string_serialization: '{text < 20 characters}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_dnase:
+    name: dna_dnase
+    title: DNase treatment DNA
+    comments:
+    - Note DNase treatment is required for all RNA samples.
+    examples:
+    - value: 'no'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 13
+    slot_group: JGI-Metagenomics
+    range: YesNoEnum
+    recommended: true
+  dna_isolate_meth:
+    name: dna_isolate_meth
+    description: Describe the method/protocol/kit used to extract DNA/RNA.
+    title: DNA isolation method
+    examples:
+    - value: phenol/chloroform extraction
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Sample Isolation Method
+    rank: 16
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_organisms:
+    name: dna_organisms
+    description: List any organisms known or suspected to grow in co-culture, as well
+      as estimated % of the organism in that culture.
+    title: DNA expected organisms
+    examples:
+    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+        (1%)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 14
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_project_contact:
+    name: dna_project_contact
+    title: DNA seq project contact
+    deprecated: This slot is not always provided by JGI and does not need to be in
+      the file that we send back to JGI. Not needed in UI
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: John Jones
+    from_schema: https://w3id.org/nmdc/nmdc
+    last_updated_on: '2025-07-02T00:00:00'
+    modified_by: ORCID:0000-0002-8683-0050
+    rank: 18
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_samp_id:
+    name: dna_samp_id
+    title: DNA sample ID
+    todos:
+    - Removed identifier = TRUE from dna_samp_ID in JGI_sample_slots, as a class can't
+      have two identifiers. How to force uniqueness? Moot because that column will
+      be prefilled?
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '187654'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 3
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_sample_format:
+    name: dna_sample_format
+    description: Solution in which the DNA sample has been suspended
+    title: DNA sample format
+    examples:
+    - value: Water
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 12
+    slot_group: JGI-Metagenomics
+    range: DNASampleFormatEnum
+    recommended: true
+  dna_sample_name:
+    name: dna_sample_name
+    description: Give the DNA sample a name that is meaningful to you. Sample names
+      must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
+    title: DNA sample name
+    examples:
+    - value: JGI_pond_041618
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 4
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_seq_project:
+    name: dna_seq_project
+    title: DNA seq project ID
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '1191234'
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Seq Project ID
+    rank: 1
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_seq_project_pi:
+    name: dna_seq_project_pi
+    title: DNA seq project PI
+    deprecated: This slot is not always provided by JGI and does not need to be in
+      the file that we send back to JGI. Not needed in UI
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: Jane Johnson
+    from_schema: https://w3id.org/nmdc/nmdc
+    last_updated_on: '2025-07-02T00:00:00'
+    modified_by: ORCID:0000-0002-8683-0050
+    rank: 17
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_seq_project_name:
+    name: dna_seq_project_name
+    title: DNA seq project name
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: JGI Pond metagenomics
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 2
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dna_volume:
+    name: dna_volume
+    title: DNA volume in ul
+    comments:
+    - Units must be in uL. Enter the numerical part only. Value must be 0-1000. This
+      form accepts values < 25, but JGI may refuse to process them unless permission
+      has been granted by a project manager
+    examples:
+    - value: '25'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 6
+    string_serialization: '{float}'
+    slot_group: JGI-Metagenomics
+    range: float
+    recommended: true
+    minimum_value: 0
+    maximum_value: 1000
+  proposal_dna:
+    name: proposal_dna
+    title: DNA proposal ID
+    deprecated: This slot is not always provided by JGI and does not need to be in
+      the file that we send back to JGI. Not needed in UI
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '504000'
+    from_schema: https://w3id.org/nmdc/nmdc
+    last_updated_on: '2025-07-02T00:00:00'
+    modified_by: ORCID:0000-0002-8683-0050
+    rank: 19
+    string_serialization: '{text}'
+    slot_group: JGI-Metagenomics
+    recommended: true
+  dnase_rna:
+    name: dnase_rna
+    title: DNase treated
+    comments:
+    - Note DNase treatment is required for all RNA samples.
+    examples:
+    - value: 'no'
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Was Sample DNAse treated?
+    rank: 13
+    slot_group: JGI-Metatranscriptomics
+    range: YesNoEnum
+    recommended: true
+  proposal_rna:
+    name: proposal_rna
+    title: RNA proposal ID
+    deprecated: This slot is not always provided by JGI and does not need to be in
+      the file that we send back to JGI. Not needed in UI
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '504000'
+    from_schema: https://w3id.org/nmdc/nmdc
+    last_updated_on: '2025-07-02T00:00:00'
+    modified_by: ORCID:0000-0002-8683-0050
+    rank: 19
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_absorb1:
+    name: rna_absorb1
+    description: 260/280 measurement of RNA sample purity
+    title: RNA absorbance 260/280
+    comments:
+    - Recommended value is between 1 and 3.
+    examples:
+    - value: '2.02'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 7
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    range: float
+    recommended: true
+  rna_absorb2:
+    name: rna_absorb2
+    description: 260/230 measurement of RNA sample purity
+    title: RNA absorbance 260/230
+    comments:
+    - Recommended value is between 1 and 3.
+    examples:
+    - value: '2.02'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 8
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    range: float
+    recommended: true
+  rna_collect_site:
+    name: rna_collect_site
+    description: Provide information on the site your RNA sample was collected from
+    title: RNA collection site
+    examples:
+    - value: untreated pond water
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 15
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_concentration:
+    name: rna_concentration
+    title: RNA concentration in ng/ul
+    comments:
+    - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
+      a fluorometric method. Acceptable values are 0-2000.
+    examples:
+    - value: '100'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - nmdc:nucleic_acid_concentration
+    rank: 5
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    range: float
+    recommended: true
+    minimum_value: 0
+    maximum_value: 1000
+  rna_cont_type:
+    name: rna_cont_type
+    description: Tube or plate (96-well)
+    title: RNA container type
+    examples:
+    - value: plate
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 10
+    slot_group: JGI-Metatranscriptomics
+    range: JgiContTypeEnum
+    recommended: true
+  rna_cont_well:
+    name: rna_cont_well
+    title: RNA plate position
+    comments:
+    - Required when 'plate' is selected for container type.
+    - Leave blank if the sample will be shipped in a tube.
+    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not
+      pass validation.
+    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
+    examples:
+    - value: B2
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 11
+    string_serialization: '{96 well plate pos}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
+  rna_container_id:
+    name: rna_container_id
+    title: RNA container label
+    comments:
+    - Must be unique across all tubes and plates, and <20 characters. All samples
+      in a plate should have the same plate label.
+    examples:
+    - value: Pond_MT_041618
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 9
+    string_serialization: '{text < 20 characters}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_isolate_meth:
+    name: rna_isolate_meth
+    description: Describe the method/protocol/kit used to extract DNA/RNA.
+    title: RNA isolation method
+    examples:
+    - value: phenol/chloroform extraction
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Sample Isolation Method
+    rank: 16
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_organisms:
+    name: rna_organisms
+    description: List any organisms known or suspected to grow in co-culture, as well
+      as estimated % of the organism in that culture.
+    title: RNA expected organisms
+    examples:
+    - value: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
+        (1%)
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 14
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_project_contact:
+    name: rna_project_contact
+    title: RNA seq project contact
+    deprecated: This slot is not always provided by JGI and does not need to be in
+      the file that we send back to JGI. Not needed in UI
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: John Jones
+    from_schema: https://w3id.org/nmdc/nmdc
+    last_updated_on: '2025-07-02T00:00:00'
+    modified_by: ORCID:0000-0002-8683-0050
+    rank: 18
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_samp_id:
+    name: rna_samp_id
+    title: RNA sample ID
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '187654'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 3
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_sample_format:
+    name: rna_sample_format
+    description: Solution in which the RNA sample has been suspended
+    title: RNA sample format
+    examples:
+    - value: Water
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 12
+    slot_group: JGI-Metatranscriptomics
+    range: RNASampleFormatEnum
+    recommended: true
+  rna_sample_name:
+    name: rna_sample_name
+    description: Give the RNA sample a name that is meaningful to you. Sample names
+      must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
+    title: RNA sample name
+    examples:
+    - value: JGI_pond_041618
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 4
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+    minimum_value: 0
+    maximum_value: 2000
+  rna_seq_project:
+    name: rna_seq_project
+    title: RNA seq project ID
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: '1191234'
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - Seq Project ID
+    rank: 1
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_seq_project_pi:
+    name: rna_seq_project_pi
+    title: RNA seq project PI
+    deprecated: This slot is not always provided by JGI and does not need to be in
+      the file that we send back to JGI. Not needed in UI
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: Jane Johnson
+    from_schema: https://w3id.org/nmdc/nmdc
+    last_updated_on: '2025-07-02T00:00:00'
+    modified_by: ORCID:0000-0002-8683-0050
+    rank: 17
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_seq_project_name:
+    name: rna_seq_project_name
+    title: RNA seq project name
+    comments:
+    - Do not edit these values. A template will be provided by NMDC in which these
+      values have been pre-filled.
+    examples:
+    - value: JGI Pond metatranscriptomics
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 2
+    string_serialization: '{text}'
+    slot_group: JGI-Metatranscriptomics
+    recommended: true
+  rna_volume:
+    name: rna_volume
+    title: RNA volume in ul
+    comments:
+    - Units must be in uL. Enter the numerical part only. Value must be 0-1000. This
+      form accepts values < 25, but JGI may refuse to process them unless permission
+      has been granted by a project manager
+    examples:
+    - value: '25'
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 6
+    string_serialization: '{float}'
+    slot_group: JGI-Metatranscriptomics
+    range: float
+    recommended: true
+    minimum_value: 0
+    maximum_value: 1000
+  collection_date_inc:
+    name: collection_date_inc
+    description: Date the incubation was harvested/collected/ended. Only relevant
+      for incubation samples.
+    title: incubation collection date
+    notes:
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision
+      date only
+    comments:
+    - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
+      are all acceptable.
+    examples:
+    - value: '2021-04-15'
+    - value: 2021-04
+    - value: '2021'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000011
+    rank: 2
+    string_serialization: '{date, arbitrary precision}'
+    slot_group: MIxS Inspired
+    recommended: true
+  collection_time:
+    name: collection_time
+    description: The time of sampling, either as an instance (single point) or interval.
+    title: collection time, GMT
+    notes:
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
+      time only
+    comments:
+    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
+    examples:
+    - value: '13:33'
+    - value: '13:33:55'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000011
+    rank: 1
+    string_serialization: '{time, seconds optional}'
+    slot_group: MIxS Inspired
+    recommended: true
+  collection_time_inc:
+    name: collection_time_inc
+    description: Time the incubation was harvested/collected/ended. Only relevant
+      for incubation samples.
+    title: incubation collection time, GMT
+    notes:
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
+      time only
+    comments:
+    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
+    examples:
+    - value: '13:33'
+    - value: '13:33:55'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000011
+    rank: 3
+    string_serialization: '{time, seconds optional}'
+    slot_group: MIxS Inspired
+    recommended: true
+  experimental_factor_other:
+    name: experimental_factor_other
+    description: Other details about your sample that you feel can't be accurately
+      represented in the available columns.
+    title: experimental factor- other
+    comments:
+    - This slot accepts open-ended text about your sample.
+    - We recommend using key:value pairs.
+    - Provided pairs will be considered for inclusion as future slots/terms in this
+      data collection template.
+    examples:
+    - value: 'experimental treatment: value'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000008
+    - MIXS:0000300
+    rank: 7
+    string_serialization: '{text}'
+    slot_group: MIxS Inspired
+    recommended: true
+  filter_method:
+    name: filter_method
+    description: Type of filter used or how the sample was filtered
+    title: filter method
+    comments:
+    - describe the filter or provide a catalog number and manufacturer
+    examples:
+    - value: C18
+    - value: Basix PES, 13-100-106 FisherSci
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000765
+    rank: 6
+    string_serialization: '{text}'
+    slot_group: MIxS Inspired
+    recommended: true
+  isotope_exposure:
+    name: isotope_exposure
+    description: List isotope exposure or addition applied to your sample.
+    title: isotope exposure/addition
+    todos:
+    - Can we make the H218O correctly super and subscripted?
+    comments:
+    - This is required when your experimental design includes the use of isotopically
+      labeled compounds
+    examples:
+    - value: 13C glucose
+    - value: 18O water
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000751
+    rank: 16
+    slot_group: MIxS Inspired
+    recommended: true
+  micro_biomass_c_meth:
+    name: micro_biomass_c_meth
+    description: Reference or method used in determining microbial biomass carbon
+    title: microbial biomass carbon method
+    todos:
+    - How should we separate values? | or ;? lets be consistent
+    comments:
+    - required if "microbial_biomass_c" is provided
+    examples:
+    - value: https://doi.org/10.1016/0038-0717(87)90052-6
+    - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000339
+    rank: 11
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+    recommended: true
+  micro_biomass_n_meth:
+    name: micro_biomass_n_meth
+    description: Reference or method used in determining microbial biomass nitrogen
+    title: microbial biomass nitrogen method
+    comments:
+    - required if "microbial_biomass_n" is provided
+    examples:
+    - value: https://doi.org/10.1016/0038-0717(87)90052-6
+    - value: https://doi.org/10.1016/0038-0717(87)90052-6 | https://www.sciencedirect.com/science/article/abs/pii/0038071787900526
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000339
+    rank: 13
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+  microbial_biomass_c:
+    name: microbial_biomass_c
+    description: The part of the organic matter in the soil that constitutes living
+      microorganisms smaller than 5-10 micrometer.
+    title: microbial biomass carbon
+    comments:
+    - If you provide this, correction factors used for conversion to the final units
+      and method are required
+    examples:
+    - value: 0.05 ug C/g dry soil
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000650
+    rank: 10
+    string_serialization: '{float} {unit}'
+    slot_group: MIxS Inspired
+  microbial_biomass_n:
+    name: microbial_biomass_n
+    description: The part of the organic matter in the soil that constitutes living
+      microorganisms smaller than 5-10 micrometer.
+    title: microbial biomass nitrogen
+    comments:
+    - If you provide this, correction factors used for conversion to the final units
+      and method are required
+    examples:
+    - value: 0.05 ug N/g dry soil
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000650
+    rank: 12
+    string_serialization: '{float} {unit}'
+    slot_group: MIxS Inspired
+  non_microb_biomass:
+    name: non_microb_biomass
+    description: Amount of biomass; should include the name for the part of biomass
+      measured, e.g.insect, plant, total. Can include multiple measurements separated
+      by ;
+    title: non-microbial biomass
+    examples:
+    - value: insect 0.23 ug; plant 1g
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000174
+    - MIXS:0000650
+    rank: 8
+    string_serialization: '{text};{float} {unit}'
+    slot_group: MIxS Inspired
+  non_microb_biomass_method:
+    name: non_microb_biomass_method
+    description: Reference or method used in determining biomass
+    title: non-microbial biomass method
+    comments:
+    - required if "non-microbial biomass" is provided
+    examples:
+    - value: https://doi.org/10.1038/s41467-021-26181-3
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000650
+    rank: 9
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+  org_nitro_method:
+    name: org_nitro_method
+    description: Method used for obtaining organic nitrogen
+    title: organic nitrogen method
+    comments:
+    - required if "org_nitro" is provided
+    examples:
+    - value: https://doi.org/10.1016/0038-0717(85)90144-0
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000338
+    - MIXS:0000205
+    rank: 14
+    string_serialization: '{PMID}|{DOI}|{URL}'
+    slot_group: MIxS Inspired
+  other_treatment:
+    name: other_treatment
+    description: Other treatments applied to your samples that are not applicable
+      to the provided fields
+    title: other treatments
+    notes:
+    - Values entered here will be used to determine potential new slots.
+    comments:
+    - This is an open text field to provide any treatments that cannot be captured
+      in the provided slots.
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000300
+    rank: 15
+    string_serialization: '{text}'
+    slot_group: MIxS Inspired
+    recommended: true
+  start_date_inc:
+    name: start_date_inc
+    description: Date the incubation was started. Only relevant for incubation samples.
+    title: incubation start date
+    notes:
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking arbitrary precision
+      date only
+    comments:
+    - Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, 2021-04 and 2021
+      are all acceptable.
+    examples:
+    - value: '2021-04-15'
+    - value: 2021-04
+    - value: '2021'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000011
+    rank: 4
+    string_serialization: '{date, arbitrary precision}'
+    slot_group: MIxS Inspired
+    recommended: true
+  start_time_inc:
+    name: start_time_inc
+    description: Time the incubation was started. Only relevant for incubation samples.
+    title: incubation start time, GMT
+    notes:
+    - MIxS collection_date accepts (truncated) ISO8601. DH taking seconds optional
+      time only
+    comments:
+    - 'Time should be entered as HH:MM(:SS) in GMT. See here for a converter: https://www.worldtimebuddy.com/pst-to-gmt-converter'
+    examples:
+    - value: '13:33'
+    - value: '13:33:55'
+    from_schema: https://w3id.org/nmdc/nmdc
+    see_also:
+    - MIXS:0000011
+    rank: 5
+    string_serialization: '{time, seconds optional}'
+    slot_group: MIxS Inspired
+    recommended: true
+  analysis_type:
+    name: analysis_type
+    description: Select all the data types associated or available for this biosample
+    title: analysis/data type
+    comments:
+    - MIxS:investigation_type was included as a `see_also` but that term doesn't resolve
+      any more
+    examples:
+    - value: metagenomics; metabolomics; metaproteomics
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 3
+    slot_group: Sample ID
+    range: AnalysisTypeEnum
+    recommended: true
+    multivalued: true
+  sample_link:
+    name: sample_link
+    description: A unique identifier to assign parent-child, subsample, or sibling
+      samples. This is relevant when a sample or other material was used to generate
+      the new sample.
+    title: sample linkage
+    comments:
+    - 'This field allows multiple entries separated by ; (Examples: Soil collected
+      from the field will link with the soil used in an incubation. The soil a plant
+      was grown in links to the plant sample. An original culture sample was transferred
+      to a new vial and generated a new sample)'
+    examples:
+    - value: IGSN:DSJ0284
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 5
+    string_serialization: '{text}:{text}'
+    slot_group: Sample ID
+    recommended: true
+    multivalued: true
+  metaproteomics_analysis_category:
+    name: metaproteomics_analysis_category
+    description: The category of metaproteomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: MetaproteomicsAnalysisCategoryEnum
+    required: true
+  metabolomics_analysis_category:
+    name: metabolomics_analysis_category
+    description: The category of metabolomics analysis being performed.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: MetabolomicsAnalysisCategoryEnum
+    required: true
+  metagenome_assembly_parameter:
+    name: metagenome_assembly_parameter
+    from_schema: https://w3id.org/nmdc/nmdc
+    abstract: true
+  asm_score:
+    name: asm_score
+    description: A score for comparing metagenomic assembly quality from same sample.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaffolds:
+    name: scaffolds
+    description: Total sequence count of all scaffolds.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_logsum:
+    name: scaf_logsum
+    description: The sum of the (length*log(length)) of all scaffolds, times some
+      constant.  Increase the contiguity, the score will increase
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_powsum:
+    name: scaf_powsum
+    description: Powersum of all scaffolds is the same as logsum except that it uses
+      the sum of (length*(length^P)) for some power P (default P=0.25).
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_max:
+    name: scaf_max
+    description: Maximum scaffold length.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_bp:
+    name: scaf_bp
+    description: Total size in bp of all scaffolds.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_n50:
+    name: scaf_n50
+    description: Given a set of scaffolds, each with its own length, the N50 count
+      is defined as the smallest number of scaffolds whose length sum makes up half
+      of genome size.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_n90:
+    name: scaf_n90
+    description: Given a set of scaffolds, each with its own length, the N90 count
+      is defined as the smallest number of scaffolds whose length sum makes up 90%
+      of genome size.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_l50:
+    name: scaf_l50
+    description: Given a set of scaffolds, the L50 is defined as the sequence length
+      of the shortest scaffold at 50% of the total genome length.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_l90:
+    name: scaf_l90
+    description: The L90 statistic is less than or equal to the L50 statistic; it
+      is the length for which the collection of all scaffolds of that length or longer
+      contains at least 90% of the sum of the lengths of all scaffolds.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_n_gt50k:
+    name: scaf_n_gt50k
+    description: Total sequence count of scaffolds greater than 50 KB.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_l_gt50k:
+    name: scaf_l_gt50k
+    description: Total size in bp of all scaffolds greater than 50 KB.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  scaf_pct_gt50k:
+    name: scaf_pct_gt50k
+    description: Total sequence size percentage of scaffolds greater than 50 KB.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  contigs:
+    name: contigs
+    description: The sum of the (length*log(length)) of all contigs, times some constant.  Increase
+      the contiguity, the score will increase
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  contig_bp:
+    name: contig_bp
+    description: Total size in bp of all contigs.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  ctg_n50:
+    name: ctg_n50
+    description: Given a set of contigs, each with its own length, the N50 count is
+      defined as the smallest number_of_contigs whose length sum makes up half of
+      genome size.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  ctg_l50:
+    name: ctg_l50
+    description: Given a set of contigs, the L50 is defined as the sequence length
+      of the shortest contig at 50% of the total genome length.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  ctg_n90:
+    name: ctg_n90
+    description: Given a set of contigs, each with its own length, the N90 count is
+      defined as the smallest number of contigs whose length sum makes up 90% of genome
+      size.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  ctg_l90:
+    name: ctg_l90
+    description: The L90 statistic is less than or equal to the L50 statistic; it
+      is the length for which the collection of all contigs of that length or longer
+      contains at least 90% of the sum of the lengths of all contigs.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  ctg_logsum:
+    name: ctg_logsum
+    description: Maximum contig length.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  ctg_powsum:
+    name: ctg_powsum
+    description: Powersum of all contigs is the same as logsum except that it uses
+      the sum of (length*(length^P)) for some power P (default P=0.25).
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  ctg_max:
+    name: ctg_max
+    description: Maximum contig length.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  gap_pct:
+    name: gap_pct
+    description: The gap size percentage of all scaffolds.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  gc_std:
+    name: gc_std
+    description: Standard deviation of GC content of all contigs.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  gc_avg:
+    name: gc_avg
+    description: Average of GC content of all contigs.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  num_input_reads:
+    name: num_input_reads
+    description: The sequence count number of input reads for assembly.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  num_aligned_reads:
+    name: num_aligned_reads
+    description: The sequence count number of input reads aligned to assembled contigs.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: metagenome_assembly_parameter
+    range: float
+  read_qc_analysis_statistic:
+    name: read_qc_analysis_statistic
+    from_schema: https://w3id.org/nmdc/nmdc
+    abstract: true
+  mags_list:
+    name: mags_list
+    description: Contains detailed information about each metagenome-assembled genome.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: MagBin
+    multivalued: true
+    inlined_as_list: true
+  too_short_contig_num:
+    name: too_short_contig_num
+    description: Number of contigs which were excluded from binning for length.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: integer
+    minimum_value: 0
+  binned_contig_num:
+    name: binned_contig_num
+    description: Number of contigs that ended up in a medium or high quality bin.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: integer
+    minimum_value: 0
+  input_contig_num:
+    name: input_contig_num
+    description: Total number of input contigs.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: integer
+    minimum_value: 0
+  unbinned_contig_num:
+    name: unbinned_contig_num
+    description: Number of contigs which did not end up in a medium or high quality
+      bin.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: integer
+    minimum_value: 0
+  low_depth_contig_num:
+    name: low_depth_contig_num
+    description: Number of contigs which were excluded from binning for depth of coverage.
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: integer
+    minimum_value: 0
+  input_read_count:
+    name: input_read_count
+    description: The sequence count number of input reads for QC analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: read_qc_analysis_statistic
+    range: float
+  input_base_count:
+    name: input_base_count
+    description: The nucleotide base count number of input reads for QC analysis.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: read_qc_analysis_statistic
+    range: float
+  output_read_count:
+    name: output_read_count
+    description: After QC analysis sequence count number.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: read_qc_analysis_statistic
+    range: float
+  output_base_count:
+    name: output_base_count
+    description: After QC analysis nucleotide base count number.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: read_qc_analysis_statistic
+    range: float
+  output_read_bases:
+    name: output_read_bases
+    description: TODO
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: float
+  input_read_bases:
+    name: input_read_bases
+    description: 'TODO      '
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: float
+  has_metabolite_identifications:
+    name: has_metabolite_identifications
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: MetaboliteIdentification
+    multivalued: true
+    inlined_as_list: true
 classes:
   EukEval:
     name: EukEval
@@ -20237,148 +20237,6 @@ classes:
           syntax: '{id_nmdc_prefix}:dispro-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:DissolvingProcess
-  AttributeValue:
-    name: AttributeValue
-    description: The value for any value of a attribute for a sample. This object
-      can hold both the un-normalized atomic value and the structured value
-    from_schema: https://w3id.org/nmdc/nmdc
-    abstract: true
-    slots:
-    - has_raw_value
-    - type
-    class_uri: nmdc:AttributeValue
-  QuantityValue:
-    name: QuantityValue
-    description: A simple quantity, e.g. 2cm
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - schema:QuantityValue
-    is_a: AttributeValue
-    slots:
-    - has_maximum_numeric_value
-    - has_minimum_numeric_value
-    - has_numeric_value
-    - has_unit
-    slot_usage:
-      has_raw_value:
-        name: has_raw_value
-        description: Unnormalized atomic string representation, should in syntax {number}
-          {unit}
-      has_unit:
-        name: has_unit
-        description: The unit of the quantity
-      has_numeric_value:
-        name: has_numeric_value
-        description: The number part of the quantity
-    class_uri: nmdc:QuantityValue
-  ImageValue:
-    name: ImageValue
-    description: An attribute value representing an image.
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: AttributeValue
-    slots:
-    - url
-    - description
-    - display_order
-    class_uri: nmdc:ImageValue
-  PersonValue:
-    name: PersonValue
-    description: An attribute value representing a person
-    todos:
-    - add additional fields e.g for institution
-    - deprecate "has_raw_value" in favor of "name"
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: AttributeValue
-    slots:
-    - email
-    - name
-    - orcid
-    - profile_image_url
-    - websites
-    slot_usage:
-      orcid:
-        name: orcid
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: Open Researcher and Contributor ID for this person. See https://orcid.org
-      email:
-        name: email
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: Email address for this person.
-      has_raw_value:
-        name: has_raw_value
-        description: The full name of the Investigator in format FIRST LAST.
-        notes:
-        - May eventually be deprecated in favor of "name".
-      name:
-        name: name
-        annotations:
-          tooltip:
-            tag: tooltip
-            value: First name, middle initial, and last name of this person.
-        description: The full name of the Investigator. It should follow the format
-          FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
-          is optional.
-    class_uri: nmdc:PersonValue
-  TextValue:
-    name: TextValue
-    description: A basic string value
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: AttributeValue
-    slots:
-    - language
-    class_uri: nmdc:TextValue
-  TimestampValue:
-    name: TimestampValue
-    description: A value that is a timestamp. The range should be ISO-8601
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: AttributeValue
-    class_uri: nmdc:TimestampValue
-  ControlledTermValue:
-    name: ControlledTermValue
-    description: A controlled term or class from an ontology
-    todos:
-    - add fields for ontology, branch
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: AttributeValue
-    slots:
-    - term
-    class_uri: nmdc:ControlledTermValue
-  ControlledIdentifiedTermValue:
-    name: ControlledIdentifiedTermValue
-    description: A controlled term or class from an ontology, requiring the presence
-      of term with an id
-    from_schema: https://w3id.org/nmdc/nmdc
-    is_a: ControlledTermValue
-    slot_usage:
-      term:
-        name: term
-        required: true
-    class_uri: nmdc:ControlledIdentifiedTermValue
-  GeolocationValue:
-    name: GeolocationValue
-    description: A normalized value for a location on the earth's surface
-    from_schema: https://w3id.org/nmdc/nmdc
-    mappings:
-    - schema:GeoCoordinates
-    is_a: AttributeValue
-    slots:
-    - latitude
-    - longitude
-    slot_usage:
-      has_raw_value:
-        name: has_raw_value
-        description: The raw value for a geolocation should follow {latitude} {longitude}
-      latitude:
-        name: latitude
-        required: true
-      longitude:
-        name: longitude
-        required: true
-    class_uri: nmdc:GeolocationValue
   ChemicalConversionProcess:
     name: ChemicalConversionProcess
     description: 'A process that results in the interconversion of chemical species
@@ -21804,6 +21662,148 @@ classes:
           syntax: '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'
           interpolated: true
     class_uri: nmdc:FunctionalAnnotation
+  AttributeValue:
+    name: AttributeValue
+    description: The value for any value of a attribute for a sample. This object
+      can hold both the un-normalized atomic value and the structured value
+    from_schema: https://w3id.org/nmdc/nmdc
+    abstract: true
+    slots:
+    - has_raw_value
+    - type
+    class_uri: nmdc:AttributeValue
+  QuantityValue:
+    name: QuantityValue
+    description: A simple quantity, e.g. 2cm
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - schema:QuantityValue
+    is_a: AttributeValue
+    slots:
+    - has_maximum_numeric_value
+    - has_minimum_numeric_value
+    - has_numeric_value
+    - has_unit
+    slot_usage:
+      has_raw_value:
+        name: has_raw_value
+        description: Unnormalized atomic string representation, should in syntax {number}
+          {unit}
+      has_unit:
+        name: has_unit
+        description: The unit of the quantity
+      has_numeric_value:
+        name: has_numeric_value
+        description: The number part of the quantity
+    class_uri: nmdc:QuantityValue
+  ImageValue:
+    name: ImageValue
+    description: An attribute value representing an image.
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: AttributeValue
+    slots:
+    - url
+    - description
+    - display_order
+    class_uri: nmdc:ImageValue
+  PersonValue:
+    name: PersonValue
+    description: An attribute value representing a person
+    todos:
+    - add additional fields e.g for institution
+    - deprecate "has_raw_value" in favor of "name"
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: AttributeValue
+    slots:
+    - email
+    - name
+    - orcid
+    - profile_image_url
+    - websites
+    slot_usage:
+      orcid:
+        name: orcid
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: Open Researcher and Contributor ID for this person. See https://orcid.org
+      email:
+        name: email
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: Email address for this person.
+      has_raw_value:
+        name: has_raw_value
+        description: The full name of the Investigator in format FIRST LAST.
+        notes:
+        - May eventually be deprecated in favor of "name".
+      name:
+        name: name
+        annotations:
+          tooltip:
+            tag: tooltip
+            value: First name, middle initial, and last name of this person.
+        description: The full name of the Investigator. It should follow the format
+          FIRST [MIDDLE NAME| MIDDLE INITIAL] LAST, where MIDDLE NAME| MIDDLE INITIAL
+          is optional.
+    class_uri: nmdc:PersonValue
+  TextValue:
+    name: TextValue
+    description: A basic string value
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: AttributeValue
+    slots:
+    - language
+    class_uri: nmdc:TextValue
+  TimestampValue:
+    name: TimestampValue
+    description: A value that is a timestamp. The range should be ISO-8601
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: AttributeValue
+    class_uri: nmdc:TimestampValue
+  ControlledTermValue:
+    name: ControlledTermValue
+    description: A controlled term or class from an ontology
+    todos:
+    - add fields for ontology, branch
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: AttributeValue
+    slots:
+    - term
+    class_uri: nmdc:ControlledTermValue
+  ControlledIdentifiedTermValue:
+    name: ControlledIdentifiedTermValue
+    description: A controlled term or class from an ontology, requiring the presence
+      of term with an id
+    from_schema: https://w3id.org/nmdc/nmdc
+    is_a: ControlledTermValue
+    slot_usage:
+      term:
+        name: term
+        required: true
+    class_uri: nmdc:ControlledIdentifiedTermValue
+  GeolocationValue:
+    name: GeolocationValue
+    description: A normalized value for a location on the earth's surface
+    from_schema: https://w3id.org/nmdc/nmdc
+    mappings:
+    - schema:GeoCoordinates
+    is_a: AttributeValue
+    slots:
+    - latitude
+    - longitude
+    slot_usage:
+      has_raw_value:
+        name: has_raw_value
+        description: The raw value for a geolocation should follow {latitude} {longitude}
+      latitude:
+        name: latitude
+        required: true
+      longitude:
+        name: longitude
+        required: true
+    class_uri: nmdc:GeolocationValue
   NamedThing:
     name: NamedThing
     description: a databased entity or concept/class
