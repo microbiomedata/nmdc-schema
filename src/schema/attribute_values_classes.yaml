@@ -125,6 +125,12 @@ classes:
     mappings:
       - schema:GeoCoordinates
 slots:
+
+  name:
+    range: string
+    description: >-
+      A human readable label for an entity
+
   term:
     range: OntologyClass
     description: pointer to an ontology class
