@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-18T10:14:25
+# Generation date: 2025-07-18T11:35:08
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -10318,6 +10318,9 @@ slots.chromatographic_category = Slot(uri=NMDC.chromatographic_category, name="c
 slots.sampled_portion = Slot(uri=NMDC.sampled_portion, name="sampled_portion", curie=NMDC.curie('sampled_portion'),
                    model_uri=NMDC.sampled_portion, domain=None, range=Optional[Union[Union[str, "SamplePortionEnum"], list[Union[str, "SamplePortionEnum"]]]])
 
+slots.name = Slot(uri=NMDC['attribute_values_classes/name'], name="name", curie=NMDC.curie('attribute_values_classes/name'),
+                   model_uri=NMDC.name, domain=None, range=Optional[str])
+
 slots.term = Slot(uri=NMDC['attribute_values_classes/term'], name="term", curie=NMDC.curie('attribute_values_classes/term'),
                    model_uri=NMDC.term, domain=None, range=Optional[Union[dict, OntologyClass]])
 
@@ -10761,9 +10764,6 @@ slots.extraction_targets = Slot(uri=NMDC.extraction_targets, name="extraction_ta
 slots.id = Slot(uri=NMDC.id, name="id", curie=NMDC.curie('id'),
                    model_uri=NMDC.id, domain=None, range=URIRef,
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.name = Slot(uri=NMDC.name, name="name", curie=NMDC.curie('name'),
-                   model_uri=NMDC.name, domain=None, range=Optional[str])
 
 slots.title = Slot(uri=NMDC.title, name="title", curie=NMDC.curie('title'),
                    model_uri=NMDC.title, domain=None, range=Optional[str])
@@ -12768,7 +12768,7 @@ slots.MassSpectrometry_analyte_category = Slot(uri=NMDC.analyte_category, name="
 slots.MassSpectrometry_eluent_introduction_category = Slot(uri=NMDC.eluent_introduction_category, name="MassSpectrometry_eluent_introduction_category", curie=NMDC.curie('eluent_introduction_category'),
                    model_uri=NMDC.MassSpectrometry_eluent_introduction_category, domain=MassSpectrometry, range=Union[str, "EluentIntroductionCategoryEnum"])
 
-slots.MassSpectrometryConfiguration_name = Slot(uri=NMDC.name, name="MassSpectrometryConfiguration_name", curie=NMDC.curie('name'),
+slots.MassSpectrometryConfiguration_name = Slot(uri=NMDC['attribute_values_classes/name'], name="MassSpectrometryConfiguration_name", curie=NMDC.curie('attribute_values_classes/name'),
                    model_uri=NMDC.MassSpectrometryConfiguration_name, domain=MassSpectrometryConfiguration, range=str)
 
 slots.MassSpectrometryConfiguration_description = Slot(uri=DCTERMS.description, name="MassSpectrometryConfiguration_description", curie=DCTERMS.curie('description'),
@@ -12796,7 +12796,7 @@ slots.MassSpectrometryConfiguration_mass_spectrum_collection_modes = Slot(uri=NM
 slots.MassSpectrometryConfiguration_polarity_mode = Slot(uri=NMDC.polarity_mode, name="MassSpectrometryConfiguration_polarity_mode", curie=NMDC.curie('polarity_mode'),
                    model_uri=NMDC.MassSpectrometryConfiguration_polarity_mode, domain=MassSpectrometryConfiguration, range=Union[str, "PolarityModeEnum"])
 
-slots.ChromatographyConfiguration_name = Slot(uri=NMDC.name, name="ChromatographyConfiguration_name", curie=NMDC.curie('name'),
+slots.ChromatographyConfiguration_name = Slot(uri=NMDC['attribute_values_classes/name'], name="ChromatographyConfiguration_name", curie=NMDC.curie('attribute_values_classes/name'),
                    model_uri=NMDC.ChromatographyConfiguration_name, domain=ChromatographyConfiguration, range=str)
 
 slots.ChromatographyConfiguration_description = Slot(uri=DCTERMS.description, name="ChromatographyConfiguration_description", curie=DCTERMS.curie('description'),
@@ -12962,7 +12962,7 @@ slots.PersonValue_email = Slot(uri=SCHEMA.email, name="PersonValue_email", curie
 slots.PersonValue_has_raw_value = Slot(uri=NMDC['attribute_values_classes/has_raw_value'], name="PersonValue_has_raw_value", curie=NMDC.curie('attribute_values_classes/has_raw_value'),
                    model_uri=NMDC.PersonValue_has_raw_value, domain=PersonValue, range=Optional[str])
 
-slots.PersonValue_name = Slot(uri=NMDC.name, name="PersonValue_name", curie=NMDC.curie('name'),
+slots.PersonValue_name = Slot(uri=NMDC['attribute_values_classes/name'], name="PersonValue_name", curie=NMDC.curie('attribute_values_classes/name'),
                    model_uri=NMDC.PersonValue_name, domain=PersonValue, range=Optional[str])
 
 slots.ControlledIdentifiedTermValue_term = Slot(uri=NMDC['attribute_values_classes/term'], name="ControlledIdentifiedTermValue_term", curie=NMDC.curie('attribute_values_classes/term'),
@@ -13107,7 +13107,7 @@ slots.Study_id = Slot(uri=NMDC.id, name="Study_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.Study_id, domain=Study, range=Union[str, StudyId],
                    pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
-slots.Study_name = Slot(uri=NMDC.name, name="Study_name", curie=NMDC.curie('name'),
+slots.Study_name = Slot(uri=NMDC['attribute_values_classes/name'], name="Study_name", curie=NMDC.curie('attribute_values_classes/name'),
                    model_uri=NMDC.Study_name, domain=Study, range=Optional[str])
 
 slots.Study_websites = Slot(uri=NMDC['attribute_values_classes/websites'], name="Study_websites", curie=NMDC.curie('attribute_values_classes/websites'),
@@ -13144,7 +13144,7 @@ slots.Study_part_of = Slot(uri=DCTERMS.isPartOf, name="Study_part_of", curie=DCT
 slots.Study_protocol_link = Slot(uri=NMDC['basic_classes/protocol_link'], name="Study_protocol_link", curie=NMDC.curie('basic_classes/protocol_link'),
                    model_uri=NMDC.Study_protocol_link, domain=Study, range=Optional[Union[Union[dict, Protocol], list[Union[dict, Protocol]]]])
 
-slots.DataObject_name = Slot(uri=NMDC.name, name="DataObject_name", curie=NMDC.curie('name'),
+slots.DataObject_name = Slot(uri=NMDC['attribute_values_classes/name'], name="DataObject_name", curie=NMDC.curie('attribute_values_classes/name'),
                    model_uri=NMDC.DataObject_name, domain=DataObject, range=str)
 
 slots.DataObject_description = Slot(uri=DCTERMS.description, name="DataObject_description", curie=DCTERMS.curie('description'),

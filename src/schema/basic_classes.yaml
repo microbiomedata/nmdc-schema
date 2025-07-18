@@ -22,8 +22,8 @@ prefixes:
 
 
 imports:
-  - external_identifiers # in cycle with attribute_values
-  - mixs # in cycle with attribute_values
+  - external_identifiers
+  - mixs
 
 
 classes:
