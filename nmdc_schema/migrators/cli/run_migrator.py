@@ -3,7 +3,7 @@
 Script to run a specific migrator against a MongoDB database using PyMongo.
 
 Usage:
-    python run_migrator.py migrator_from_11_8_0_to_11_9_0 [--host localhost] [--port 27022] [--database nmdc]
+    python run_migrator.py migrator_from_11_9_1_to_11_10_0 [--host localhost] [--port 27022] [--database nmdc]
     
 Environment variables (loaded from .env file if present):
     MONGO_HOST - MongoDB host (default: localhost)
@@ -25,12 +25,12 @@ from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 load_dotenv()
 
 # Import all migrators
-from nmdc_schema.migrators import migrator_from_11_8_0_to_11_9_0
+from nmdc_schema.migrators import migrator_from_11_9_1_to_11_10_0
 
 
 # Map migrator names to their classes
 MIGRATORS = {
-    "migrator_from_11_8_0_to_11_9_0": migrator_from_11_8_0_to_11_9_0.Migrator,
+    "migrator_from_11_9_1_to_11_10_0": migrator_from_11_9_1_to_11_10_0.Migrator,
     # Add other migrators here as needed
 }
 

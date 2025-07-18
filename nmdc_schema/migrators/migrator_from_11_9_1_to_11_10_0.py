@@ -18,6 +18,9 @@ def get_collection_names_from_schema() -> List[str]:
     Returns the names of the slots of the `Database` class that describe database collections
     and whose range classes could potentially contain QuantityValue objects.
 
+    This method is vendored in from nmdc-runtime (we should really consider putting the migrators in
+    nmdc-runtime).  We would rather not introduce a circular dependency here by importing this method from nmdc_runtime.
+
     Source: https://github.com/microbiomedata/refscan/blob/af092b0e068b671849fe0f323fac2ed54b81d574/refscan/lib/helpers.py#L31
     """
     collection_names = []
@@ -32,9 +35,6 @@ def get_collection_names_from_schema() -> List[str]:
             if _collection_could_contain_quantity_values(schema_view, slot_definition.range):
                 collection_names.append(slot_name)
 
-    # Filter out duplicate names. This is to work around the following issues in the schema:
-    # - https://github.com/microbiomedata/nmdc-schema/issues/1954
-    # - https://github.com/microbiomedata/nmdc-schema/issues/1955
     collection_names = list(set(collection_names))
 
     return collection_names
@@ -388,7 +388,10 @@ class Migrator(MigratorBase):
         
         return alias_to_canonical
 
-    def ensure_quantity_value_has_unit(self, document: dict, quantity_value_slots: list, class_uri: str, full_document: dict = None) -> dict:
+    def ensure_quantity_value_has_unit(self, document: dict,
+                                       quantity_value_slots: list,
+                                       class_uri: str,
+                                       full_document: dict = None) -> dict:
         r"""
         Ensures that all QuantityValue instances in a document have non-null has_unit values.
         
@@ -399,6 +402,7 @@ class Migrator(MigratorBase):
             document (dict): A document from the database
             quantity_value_slots (list): List of slot names that have QuantityValue range (unused in new approach)
             class_uri (str): The class URI (e.g., "nmdc:Biosample")
+            full_document (dict): The full document for context
             
         Returns:
             dict: The modified document with has_unit values added to QuantityValue instances
@@ -409,7 +413,10 @@ class Migrator(MigratorBase):
         
         return document
     
-    def _traverse_and_fix_quantity_values(self, obj: any, full_document: dict, path: str = "") -> None:
+    def _traverse_and_fix_quantity_values(self,
+                                          obj: any,
+                                          full_document: dict,
+                                          path: str = "") -> None:
         r"""
         Recursively traverses an object to find and fix QuantityValue instances.
         
@@ -453,7 +460,7 @@ class Migrator(MigratorBase):
         doc_type = full_document.get('type', 'unknown')
         field_name = path.split('.')[-1]
         
-        # Check if has_unit is missing or is None
+        # Check if `has_unit` is missing or is None
         if 'has_unit' not in quantity_value or quantity_value['has_unit'] is None:
             # Try to infer unit from document type and path
             unit = self._infer_unit_from_context(full_document, path)
@@ -517,7 +524,6 @@ class Migrator(MigratorBase):
         # If not found with document type, try with nested object types
         if not unit:
             # Look for nested object types in the path
-            # This is a simplified approach - could be made more sophisticated
             parts = path.split('.')
             for i, part in enumerate(parts):
                 if '[' in part:  # This is a list access
@@ -533,7 +539,7 @@ class Migrator(MigratorBase):
     
     def _get_nested_object_type(self, document: dict, path: str) -> Optional[str]:
         r"""
-        Attempts to get the type of a nested object from a path.
+        Attempts to get the type of the nested object from a path.
         
         Args:
             document: The document to search
