@@ -837,6 +837,7 @@ enums:
       novaseq_x:
         aliases:
           - Illumina NovaSeq X
+          - Illumina NovaSeq X Plus
         comments:
           - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
         see_also: 
