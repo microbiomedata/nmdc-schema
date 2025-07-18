@@ -843,8 +843,9 @@ enums:
         see_also: 
           - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
         narrow_mappings:
-          - OBI:0003663
-          - OBI:0003664
+          - OBI:0002022
+        #  - OBI:0003663
+        #  - OBI:0003664
           
       hiseq:
         aliases:
