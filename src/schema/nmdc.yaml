@@ -18,8 +18,6 @@ imports:
   - attribute_values
   - annotation # also brings core and portal_*
   - workflow_execution_activity
-  - basic_classes
-  - basic_slots
 
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
