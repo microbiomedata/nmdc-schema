@@ -1030,6 +1030,9 @@ enums:
         is_a: organic_layer
 
 slots:
+  biomaterial_purity:
+    range: QuantityValue
+
   generates_calibration:
     range: CalibrationInformation
     description: calibration information is generated a process

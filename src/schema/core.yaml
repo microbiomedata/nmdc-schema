@@ -7,6 +7,8 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 
 imports:
   - attribute_values
+  - basic_slots
+  - basic_classes
   - portal_emsl
   - portal_jgi_metagenomics
   - portal_jgi_metatranscriptomics

@@ -951,6 +951,516 @@ class ChemicalEntityEnum(str, Enum):
     water = "water"
 
 
+class ExecutionResourceEnum(str, Enum):
+    NERSC_Cori = "NERSC-Cori"
+    """
+    NERSC Cori supercomputer
+    """
+    NERSC_Perlmutter = "NERSC-Perlmutter"
+    """
+    NERSC Perlmutter supercomputer
+    """
+    EMSL = "EMSL"
+    """
+    Environmental Molecular Sciences Laboratory
+    """
+    EMSL_RZR = "EMSL-RZR"
+    """
+    Environmental Molecular Sciences Laboratory RZR cluster
+    """
+    JGI = "JGI"
+    """
+    Joint Genome Institute
+    """
+    LANL_B_div = "LANL-B-div"
+    """
+    LANL Bioscience Division
+    """
+
+
+class FileTypeEnum(str, Enum):
+    Virus_Summary = "Virus Summary"
+    """
+    Tab separated file listing the viruses found by geNomad.
+    """
+    Plasmid_Summary = "Plasmid Summary"
+    """
+    Tab separated file listing the plasmids found by geNomad.
+    """
+    GeNomad_Aggregated_Classification = "GeNomad Aggregated Classification"
+    """
+    Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
+    """
+    Reference_Calibration_File = "Reference Calibration File"
+    """
+    A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
+    """
+    Metagenome_Raw_Reads = "Metagenome Raw Reads"
+    """
+    Interleaved paired-end raw metagenome sequencing data
+    """
+    Metagenome_Raw_Read_1 = "Metagenome Raw Read 1"
+    """
+    Read 1 raw metagenome sequencing data, aka forward reads
+    """
+    Metagenome_Raw_Read_2 = "Metagenome Raw Read 2"
+    """
+    Read 2 raw metagenome sequencing data, aka reverse reads
+    """
+    Metatranscriptome_Raw_Reads = "Metatranscriptome Raw Reads"
+    """
+    Interleaved paired-end raw metatranscriptome sequencing data
+    """
+    Metatranscriptome_Raw_Read_1 = "Metatranscriptome Raw Read 1"
+    """
+    Read 1 raw metatranscriptome sequencing data, aka forward reads
+    """
+    Metatranscriptome_Raw_Read_2 = "Metatranscriptome Raw Read 2"
+    """
+    Read 2 raw metatranscriptome sequencing data, aka reverse reads
+    """
+    Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
+    """
+    FT-ICR MS based molecular formula assignment results table
+    """
+    Direct_Infusion_FT_ICR_MS_QC_Plots = "Direct Infusion FT-ICR MS QC Plots"
+    """
+    Quality control plots for FT-ICR MS raw data acquired by direct infusion
+    """
+    LC_FT_ICR_MS_Analysis_Results = "LC FT-ICR MS Analysis Results"
+    """
+    LC FT-ICR MS-based molecular formula assignment results tables
+    """
+    LC_FT_ICR_MS_QC_Plots = "LC FT-ICR MS QC Plots"
+    """
+    Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
+    """
+    GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
+    """
+    GC-MS-based metabolite assignment results table
+    """
+    LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
+    """
+    LC-MS-based metabolite assignment results table
+    """
+    Mass_Spectrometry_Reference_Spectral_Library = "Mass Spectrometry Reference Spectral Library"
+    """
+    Spectral library used for mass spectrometry based metabolite identification
+    """
+    Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
+    """
+    Aggregate workflow statistics file
+    """
+    Protein_Report = "Protein Report"
+    """
+    Filtered protein report file
+    """
+    Peptide_Report = "Peptide Report"
+    """
+    Filtered peptide report file
+    """
+    Unfiltered_Metaproteomics_Results = "Unfiltered Metaproteomics Results"
+    """
+    MSGFjobs and MASIC output file
+    """
+    Read_Count_and_RPKM = "Read Count and RPKM"
+    """
+    Annotation read count and RPKM per feature JSON
+    """
+    QC_non_rRNA_R2 = "QC non-rRNA R2"
+    """
+    QC removed rRNA reads (R2) fastq
+    """
+    QC_non_rRNA_R1 = "QC non-rRNA R1"
+    """
+    QC removed rRNA reads (R1) fastq
+    """
+    Metagenome_Bins = "Metagenome Bins"
+    """
+    Metagenome bin contigs fasta
+    """
+    Metagenome_HQMQ_Bins_Compression_File = "Metagenome HQMQ Bins Compression File"
+    """
+    Compressed file containing high quality and medium quality metagenome bins and associated files
+    """
+    Metagenome_LQ_Bins_Compression_File = "Metagenome LQ Bins Compression File"
+    """
+    Compressed file containing low quality metagenome bins and associated files
+    """
+    Metagenome_Bins_Info_File = "Metagenome Bins Info File"
+    """
+    File containing version information on the binning workflow
+    """
+    CheckM_Statistics = "CheckM Statistics"
+    """
+    CheckM statistics report
+    """
+    Metagenome_Bins_Heatmap = "Metagenome Bins Heatmap"
+    """
+    The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
+    """
+    Metagenome_Bins_Barplot = "Metagenome Bins Barplot"
+    """
+    The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
+    """
+    Metagenome_Bins_Krona_Plot = "Metagenome Bins Krona Plot"
+    """
+    The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
+    """
+    Read_Based_Analysis_Info_File = "Read Based Analysis Info File"
+    """
+    File containing reads based analysis information
+    """
+    GTDBTK_Bacterial_Summary = "GTDBTK Bacterial Summary"
+    """
+    GTDBTK bacterial summary
+    """
+    GTDBTK_Archaeal_Summary = "GTDBTK Archaeal Summary"
+    """
+    GTDBTK archaeal summary
+    """
+    GOTTCHA2_Krona_Plot = "GOTTCHA2 Krona Plot"
+    """
+    GOTTCHA2 krona plot HTML file
+    """
+    GOTTCHA2_Classification_Report = "GOTTCHA2 Classification Report"
+    """
+    GOTTCHA2 classification report file
+    """
+    GOTTCHA2_Report_Full = "GOTTCHA2 Report Full"
+    """
+    GOTTCHA2 report file
+    """
+    Kraken2_Krona_Plot = "Kraken2 Krona Plot"
+    """
+    Kraken2 krona plot HTML file
+    """
+    Centrifuge_Krona_Plot = "Centrifuge Krona Plot"
+    """
+    Centrifuge krona plot HTML file
+    """
+    Centrifuge_output_report_file = "Centrifuge output report file"
+    """
+    Centrifuge output report file
+    """
+    Kraken2_Classification_Report = "Kraken2 Classification Report"
+    """
+    Kraken2 output report file
+    """
+    Kraken2_Taxonomic_Classification = "Kraken2 Taxonomic Classification"
+    """
+    Kraken2 output read classification file
+    """
+    Centrifuge_Classification_Report = "Centrifuge Classification Report"
+    """
+    Centrifuge output report file
+    """
+    Centrifuge_Taxonomic_Classification = "Centrifuge Taxonomic Classification"
+    """
+    Centrifuge output read classification file
+    """
+    Structural_Annotation_GFF = "Structural Annotation GFF"
+    """
+    GFF3 format file with structural annotations
+    """
+    Structural_Annotation_Stats_Json = "Structural Annotation Stats Json"
+    """
+    Structural annotations stats json
+    """
+    Functional_Annotation_GFF = "Functional Annotation GFF"
+    """
+    GFF3 format file with functional annotations
+    """
+    Annotation_Info_File = "Annotation Info File"
+    """
+    File containing annotation info
+    """
+    Annotation_Amino_Acid_FASTA = "Annotation Amino Acid FASTA"
+    """
+    FASTA amino acid file for annotated proteins
+    """
+    Annotation_Enzyme_Commission = "Annotation Enzyme Commission"
+    """
+    Tab delimited file for EC annotation
+    """
+    Annotation_KEGG_Orthology = "Annotation KEGG Orthology"
+    """
+    Tab delimited file for KO annotation
+    """
+    Assembly_Info_File = "Assembly Info File"
+    """
+    File containing assembly info
+    """
+    Assembly_Coverage_BAM = "Assembly Coverage BAM"
+    """
+    Sorted bam file of reads mapping back to the final assembly
+    """
+    Assembly_AGP = "Assembly AGP"
+    """
+    An AGP format file that describes the assembly
+    """
+    Assembly_Scaffolds = "Assembly Scaffolds"
+    """
+    Final assembly scaffolds fasta
+    """
+    Assembly_Contigs = "Assembly Contigs"
+    """
+    Final assembly contigs fasta
+    """
+    Assembly_Coverage_Stats = "Assembly Coverage Stats"
+    """
+    Assembled contigs coverage information
+    """
+    Contig_Mapping_File = "Contig Mapping File"
+    """
+    Contig mappings between contigs and scaffolds
+    """
+    Error_Corrected_Reads = "Error Corrected Reads"
+    """
+    Error corrected reads fastq
+    """
+    Filtered_Sequencing_Reads = "Filtered Sequencing Reads"
+    """
+    Reads QC result fastq (clean data)
+    """
+    Read_Filtering_Info_File = "Read Filtering Info File"
+    """
+    File containing read filtering information
+    """
+    QC_Statistics_Extended = "QC Statistics Extended"
+    """
+    Extended report including methods and results for read filtering
+    """
+    QC_Statistics = "QC Statistics"
+    """
+    Reads QC summary statistics
+    """
+    TIGRFam_Annotation_GFF = "TIGRFam Annotation GFF"
+    """
+    GFF3 format file with TIGRfam
+    """
+    CRT_Annotation_GFF = "CRT Annotation GFF"
+    """
+    GFF3 format file with CRT
+    """
+    Genemark_Annotation_GFF = "Genemark Annotation GFF"
+    """
+    GFF3 format file with Genemark
+    """
+    Prodigal_Annotation_GFF = "Prodigal Annotation GFF"
+    """
+    GFF3 format file with Prodigal
+    """
+    TRNA_Annotation_GFF = "TRNA Annotation GFF"
+    """
+    GFF3 format file with TRNA
+    """
+    Misc_Annotation_GFF = "Misc Annotation GFF"
+    """
+    GFF3 format file with Misc
+    """
+    RFAM_Annotation_GFF = "RFAM Annotation GFF"
+    """
+    GFF3 format file with RFAM
+    """
+    TMRNA_Annotation_GFF = "TMRNA Annotation GFF"
+    """
+    GFF3 format file with TMRNA
+    """
+    Crispr_Terms = "Crispr Terms"
+    """
+    Crispr Terms
+    """
+    Product_Names = "Product Names"
+    """
+    Product names file
+    """
+    Gene_Phylogeny_tsv = "Gene Phylogeny tsv"
+    """
+    Gene Phylogeny tsv
+    """
+    Scaffold_Lineage_tsv = "Scaffold Lineage tsv"
+    """
+    phylogeny at the scaffold level
+    """
+    Clusters_of_Orthologous_Groups_LEFT_PARENTHESISCOGRIGHT_PARENTHESIS_Annotation_GFF = "Clusters of Orthologous Groups (COG) Annotation GFF"
+    """
+    GFF3 format file with COGs
+    """
+    KO_EC_Annotation_GFF = "KO_EC Annotation GFF"
+    """
+    GFF3 format file with KO_EC
+    """
+    CATH_FunFams_LEFT_PARENTHESISFunctional_FamiliesRIGHT_PARENTHESIS_Annotation_GFF = "CATH FunFams (Functional Families) Annotation GFF"
+    """
+    GFF3 format file with CATH FunFams
+    """
+    SUPERFam_Annotation_GFF = "SUPERFam Annotation GFF"
+    """
+    GFF3 format file with SUPERFam
+    """
+    SMART_Annotation_GFF = "SMART Annotation GFF"
+    """
+    GFF3 format file with SMART
+    """
+    Pfam_Annotation_GFF = "Pfam Annotation GFF"
+    """
+    GFF3 format file with Pfam
+    """
+    Annotation_Statistics = "Annotation Statistics"
+    """
+    Annotation statistics report
+    """
+    Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
+    """
+    Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
+    """
+    LC_FT_ICR_MS_Raw_Data = "LC FT-ICR MS Raw Data"
+    """
+    Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
+    """
+    LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
+    """
+    Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
+    """
+    GC_MS_Raw_Data = "GC-MS Raw Data"
+    """
+    Gas chromatography-mass spectrometry raw data, full scan mode.
+    """
+    Configuration_toml = "Configuration toml"
+    """
+    A configuration toml file used by various programs to store settings that are specific to their respective software.
+    """
+    LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
+    """
+    LC-MS-based lipidomics analysis results table
+    """
+    LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
+    """
+    Processed data for the LC-MS-based lipidomics analysis in hdf5 format
+    """
+    LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
+    """
+    Processed data for the LC-MS-based metabolomics analysis in hdf5 format
+    """
+    Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
+    """
+    FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
+    """
+    Analysis_Tool_Parameter_File = "Analysis Tool Parameter File"
+    """
+    A configuration file used by a single computational software tool that stores settings that are specific to that tool.
+    """
+    Workflow_Operation_Summary = "Workflow Operation Summary"
+    """
+    A human readable record of analysis steps applied during an instance of a workflow operation.
+    """
+    Metatranscriptome_Expression = "Metatranscriptome Expression"
+    """
+    Metatranscriptome expression values and read counts for gene features predicted on contigs
+    """
+    Metatranscriptome_Expression_Intergenic = "Metatranscriptome Expression Intergenic"
+    """
+    Metatranscriptome expression values and read counts for intergenic regions.
+    """
+    Metatranscriptome_Expression_Info_File = "Metatranscriptome Expression Info File"
+    """
+    File containing version information on the expression workflow
+    """
+    rRNA_Filtered_Sequencing_Reads = "rRNA Filtered Sequencing Reads"
+    """
+    File containing ribosomal reads from the read qc filtering step.
+    """
+    BAI_File = "BAI File"
+    """
+    An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
+    """
+
+
+class DoiProviderEnum(str, Enum):
+    EMSL = "emsl"
+    JGI = "jgi"
+    KBase = "kbase"
+    OSTI = "osti"
+    ESS_DIVE = "ess_dive"
+    MassIVE = "massive"
+    GSC = "gsc"
+    Zenodo = "zenodo"
+    EDI = "edi"
+    Figshare = "figshare"
+
+
+class DoiCategoryEnum(str, Enum):
+    award_doi = "award_doi"
+    """
+    A type of DOI that resolves to a funding authority.
+    """
+    dataset_doi = "dataset_doi"
+    """
+    A type of DOI that resolves to generated data.
+    """
+    publication_doi = "publication_doi"
+    """
+    A type of DOI that resolves to a publication.
+    """
+    data_management_plan_doi = "data_management_plan_doi"
+    """
+    A type of DOI that resolves to a data management plan.
+    """
+
+
+class StatusEnum(str, Enum):
+    pass = "pass"
+    fail = "fail"
+
+
+class NucleotideSequencingEnum(str, Enum):
+    Metagenome = "metagenome"
+    Metatranscriptome = "metatranscriptome"
+    Amplicon = "amplicon_sequencing_assay"
+
+
+class MassSpectrometryEnum(str, Enum):
+    Metaproteome = "metaproteome"
+    Metabolome = "metabolome"
+    Lipidome = "lipidome"
+    Natural_Organic_Matter = "nom"
+
+
+class ExtractionTargetEnum(str, Enum):
+    DNA = "DNA"
+    RNA = "RNA"
+    metabolite = "metabolite"
+    protein = "protein"
+    lipid = "lipid"
+    natural_organic_matter = "natural organic matter"
+
+
+class ProcessingInstitutionEnum(str, Enum):
+    University_of_California_San_Diego = "UCSD"
+    Joint_Genome_Institute = "JGI"
+    Environmental_Molecular_Sciences_Laboratory = "EMSL"
+    Battelle_Memorial_Institute = "Battelle"
+    Argonne_National_Laboratory = "ANL"
+    University_of_California_Davis_Genome_Center = "UCD_Genome_Center"
+    Azenta_Life_Sciences = "Azenta"
+
+
+class DataCategoryEnum(str, Enum):
+    instrument_data = "instrument_data"
+    """
+    Data generated by a DataGeneration PlannedProcess
+    """
+    processed_data = "processed_data"
+    """
+    Data generated by a WorkflowExecution PlannedProcess
+    """
+    workflow_parameter_data = "workflow_parameter_data"
+    """
+    Data used as input into a workflow providing workflow specification.
+    """
+
+
 class ArchStrucEnum(str, Enum):
     building = "building"
     shed = "shed"
@@ -2284,516 +2794,6 @@ class FailureWhereEnum(str, Enum):
     NomAnalysis = "NomAnalysis"
     """
     A failure has occurred in analyzing NOM data.
-    """
-
-
-class ExecutionResourceEnum(str, Enum):
-    NERSC_Cori = "NERSC-Cori"
-    """
-    NERSC Cori supercomputer
-    """
-    NERSC_Perlmutter = "NERSC-Perlmutter"
-    """
-    NERSC Perlmutter supercomputer
-    """
-    EMSL = "EMSL"
-    """
-    Environmental Molecular Sciences Laboratory
-    """
-    EMSL_RZR = "EMSL-RZR"
-    """
-    Environmental Molecular Sciences Laboratory RZR cluster
-    """
-    JGI = "JGI"
-    """
-    Joint Genome Institute
-    """
-    LANL_B_div = "LANL-B-div"
-    """
-    LANL Bioscience Division
-    """
-
-
-class FileTypeEnum(str, Enum):
-    Virus_Summary = "Virus Summary"
-    """
-    Tab separated file listing the viruses found by geNomad.
-    """
-    Plasmid_Summary = "Plasmid Summary"
-    """
-    Tab separated file listing the plasmids found by geNomad.
-    """
-    GeNomad_Aggregated_Classification = "GeNomad Aggregated Classification"
-    """
-    Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
-    """
-    Reference_Calibration_File = "Reference Calibration File"
-    """
-    A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
-    """
-    Metagenome_Raw_Reads = "Metagenome Raw Reads"
-    """
-    Interleaved paired-end raw metagenome sequencing data
-    """
-    Metagenome_Raw_Read_1 = "Metagenome Raw Read 1"
-    """
-    Read 1 raw metagenome sequencing data, aka forward reads
-    """
-    Metagenome_Raw_Read_2 = "Metagenome Raw Read 2"
-    """
-    Read 2 raw metagenome sequencing data, aka reverse reads
-    """
-    Metatranscriptome_Raw_Reads = "Metatranscriptome Raw Reads"
-    """
-    Interleaved paired-end raw metatranscriptome sequencing data
-    """
-    Metatranscriptome_Raw_Read_1 = "Metatranscriptome Raw Read 1"
-    """
-    Read 1 raw metatranscriptome sequencing data, aka forward reads
-    """
-    Metatranscriptome_Raw_Read_2 = "Metatranscriptome Raw Read 2"
-    """
-    Read 2 raw metatranscriptome sequencing data, aka reverse reads
-    """
-    Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
-    """
-    FT-ICR MS based molecular formula assignment results table
-    """
-    Direct_Infusion_FT_ICR_MS_QC_Plots = "Direct Infusion FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired by direct infusion
-    """
-    LC_FT_ICR_MS_Analysis_Results = "LC FT-ICR MS Analysis Results"
-    """
-    LC FT-ICR MS-based molecular formula assignment results tables
-    """
-    LC_FT_ICR_MS_QC_Plots = "LC FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
-    """
-    GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
-    """
-    GC-MS-based metabolite assignment results table
-    """
-    LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
-    """
-    LC-MS-based metabolite assignment results table
-    """
-    Mass_Spectrometry_Reference_Spectral_Library = "Mass Spectrometry Reference Spectral Library"
-    """
-    Spectral library used for mass spectrometry based metabolite identification
-    """
-    Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
-    """
-    Aggregate workflow statistics file
-    """
-    Protein_Report = "Protein Report"
-    """
-    Filtered protein report file
-    """
-    Peptide_Report = "Peptide Report"
-    """
-    Filtered peptide report file
-    """
-    Unfiltered_Metaproteomics_Results = "Unfiltered Metaproteomics Results"
-    """
-    MSGFjobs and MASIC output file
-    """
-    Read_Count_and_RPKM = "Read Count and RPKM"
-    """
-    Annotation read count and RPKM per feature JSON
-    """
-    QC_non_rRNA_R2 = "QC non-rRNA R2"
-    """
-    QC removed rRNA reads (R2) fastq
-    """
-    QC_non_rRNA_R1 = "QC non-rRNA R1"
-    """
-    QC removed rRNA reads (R1) fastq
-    """
-    Metagenome_Bins = "Metagenome Bins"
-    """
-    Metagenome bin contigs fasta
-    """
-    Metagenome_HQMQ_Bins_Compression_File = "Metagenome HQMQ Bins Compression File"
-    """
-    Compressed file containing high quality and medium quality metagenome bins and associated files
-    """
-    Metagenome_LQ_Bins_Compression_File = "Metagenome LQ Bins Compression File"
-    """
-    Compressed file containing low quality metagenome bins and associated files
-    """
-    Metagenome_Bins_Info_File = "Metagenome Bins Info File"
-    """
-    File containing version information on the binning workflow
-    """
-    CheckM_Statistics = "CheckM Statistics"
-    """
-    CheckM statistics report
-    """
-    Metagenome_Bins_Heatmap = "Metagenome Bins Heatmap"
-    """
-    The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
-    """
-    Metagenome_Bins_Barplot = "Metagenome Bins Barplot"
-    """
-    The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
-    """
-    Metagenome_Bins_Krona_Plot = "Metagenome Bins Krona Plot"
-    """
-    The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
-    """
-    Read_Based_Analysis_Info_File = "Read Based Analysis Info File"
-    """
-    File containing reads based analysis information
-    """
-    GTDBTK_Bacterial_Summary = "GTDBTK Bacterial Summary"
-    """
-    GTDBTK bacterial summary
-    """
-    GTDBTK_Archaeal_Summary = "GTDBTK Archaeal Summary"
-    """
-    GTDBTK archaeal summary
-    """
-    GOTTCHA2_Krona_Plot = "GOTTCHA2 Krona Plot"
-    """
-    GOTTCHA2 krona plot HTML file
-    """
-    GOTTCHA2_Classification_Report = "GOTTCHA2 Classification Report"
-    """
-    GOTTCHA2 classification report file
-    """
-    GOTTCHA2_Report_Full = "GOTTCHA2 Report Full"
-    """
-    GOTTCHA2 report file
-    """
-    Kraken2_Krona_Plot = "Kraken2 Krona Plot"
-    """
-    Kraken2 krona plot HTML file
-    """
-    Centrifuge_Krona_Plot = "Centrifuge Krona Plot"
-    """
-    Centrifuge krona plot HTML file
-    """
-    Centrifuge_output_report_file = "Centrifuge output report file"
-    """
-    Centrifuge output report file
-    """
-    Kraken2_Classification_Report = "Kraken2 Classification Report"
-    """
-    Kraken2 output report file
-    """
-    Kraken2_Taxonomic_Classification = "Kraken2 Taxonomic Classification"
-    """
-    Kraken2 output read classification file
-    """
-    Centrifuge_Classification_Report = "Centrifuge Classification Report"
-    """
-    Centrifuge output report file
-    """
-    Centrifuge_Taxonomic_Classification = "Centrifuge Taxonomic Classification"
-    """
-    Centrifuge output read classification file
-    """
-    Structural_Annotation_GFF = "Structural Annotation GFF"
-    """
-    GFF3 format file with structural annotations
-    """
-    Structural_Annotation_Stats_Json = "Structural Annotation Stats Json"
-    """
-    Structural annotations stats json
-    """
-    Functional_Annotation_GFF = "Functional Annotation GFF"
-    """
-    GFF3 format file with functional annotations
-    """
-    Annotation_Info_File = "Annotation Info File"
-    """
-    File containing annotation info
-    """
-    Annotation_Amino_Acid_FASTA = "Annotation Amino Acid FASTA"
-    """
-    FASTA amino acid file for annotated proteins
-    """
-    Annotation_Enzyme_Commission = "Annotation Enzyme Commission"
-    """
-    Tab delimited file for EC annotation
-    """
-    Annotation_KEGG_Orthology = "Annotation KEGG Orthology"
-    """
-    Tab delimited file for KO annotation
-    """
-    Assembly_Info_File = "Assembly Info File"
-    """
-    File containing assembly info
-    """
-    Assembly_Coverage_BAM = "Assembly Coverage BAM"
-    """
-    Sorted bam file of reads mapping back to the final assembly
-    """
-    Assembly_AGP = "Assembly AGP"
-    """
-    An AGP format file that describes the assembly
-    """
-    Assembly_Scaffolds = "Assembly Scaffolds"
-    """
-    Final assembly scaffolds fasta
-    """
-    Assembly_Contigs = "Assembly Contigs"
-    """
-    Final assembly contigs fasta
-    """
-    Assembly_Coverage_Stats = "Assembly Coverage Stats"
-    """
-    Assembled contigs coverage information
-    """
-    Contig_Mapping_File = "Contig Mapping File"
-    """
-    Contig mappings between contigs and scaffolds
-    """
-    Error_Corrected_Reads = "Error Corrected Reads"
-    """
-    Error corrected reads fastq
-    """
-    Filtered_Sequencing_Reads = "Filtered Sequencing Reads"
-    """
-    Reads QC result fastq (clean data)
-    """
-    Read_Filtering_Info_File = "Read Filtering Info File"
-    """
-    File containing read filtering information
-    """
-    QC_Statistics_Extended = "QC Statistics Extended"
-    """
-    Extended report including methods and results for read filtering
-    """
-    QC_Statistics = "QC Statistics"
-    """
-    Reads QC summary statistics
-    """
-    TIGRFam_Annotation_GFF = "TIGRFam Annotation GFF"
-    """
-    GFF3 format file with TIGRfam
-    """
-    CRT_Annotation_GFF = "CRT Annotation GFF"
-    """
-    GFF3 format file with CRT
-    """
-    Genemark_Annotation_GFF = "Genemark Annotation GFF"
-    """
-    GFF3 format file with Genemark
-    """
-    Prodigal_Annotation_GFF = "Prodigal Annotation GFF"
-    """
-    GFF3 format file with Prodigal
-    """
-    TRNA_Annotation_GFF = "TRNA Annotation GFF"
-    """
-    GFF3 format file with TRNA
-    """
-    Misc_Annotation_GFF = "Misc Annotation GFF"
-    """
-    GFF3 format file with Misc
-    """
-    RFAM_Annotation_GFF = "RFAM Annotation GFF"
-    """
-    GFF3 format file with RFAM
-    """
-    TMRNA_Annotation_GFF = "TMRNA Annotation GFF"
-    """
-    GFF3 format file with TMRNA
-    """
-    Crispr_Terms = "Crispr Terms"
-    """
-    Crispr Terms
-    """
-    Product_Names = "Product Names"
-    """
-    Product names file
-    """
-    Gene_Phylogeny_tsv = "Gene Phylogeny tsv"
-    """
-    Gene Phylogeny tsv
-    """
-    Scaffold_Lineage_tsv = "Scaffold Lineage tsv"
-    """
-    phylogeny at the scaffold level
-    """
-    Clusters_of_Orthologous_Groups_LEFT_PARENTHESISCOGRIGHT_PARENTHESIS_Annotation_GFF = "Clusters of Orthologous Groups (COG) Annotation GFF"
-    """
-    GFF3 format file with COGs
-    """
-    KO_EC_Annotation_GFF = "KO_EC Annotation GFF"
-    """
-    GFF3 format file with KO_EC
-    """
-    CATH_FunFams_LEFT_PARENTHESISFunctional_FamiliesRIGHT_PARENTHESIS_Annotation_GFF = "CATH FunFams (Functional Families) Annotation GFF"
-    """
-    GFF3 format file with CATH FunFams
-    """
-    SUPERFam_Annotation_GFF = "SUPERFam Annotation GFF"
-    """
-    GFF3 format file with SUPERFam
-    """
-    SMART_Annotation_GFF = "SMART Annotation GFF"
-    """
-    GFF3 format file with SMART
-    """
-    Pfam_Annotation_GFF = "Pfam Annotation GFF"
-    """
-    GFF3 format file with Pfam
-    """
-    Annotation_Statistics = "Annotation Statistics"
-    """
-    Annotation statistics report
-    """
-    Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
-    """
-    Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
-    """
-    LC_FT_ICR_MS_Raw_Data = "LC FT-ICR MS Raw Data"
-    """
-    Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
-    """
-    LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
-    """
-    Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
-    """
-    GC_MS_Raw_Data = "GC-MS Raw Data"
-    """
-    Gas chromatography-mass spectrometry raw data, full scan mode.
-    """
-    Configuration_toml = "Configuration toml"
-    """
-    A configuration toml file used by various programs to store settings that are specific to their respective software.
-    """
-    LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
-    """
-    LC-MS-based lipidomics analysis results table
-    """
-    LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
-    """
-    Processed data for the LC-MS-based lipidomics analysis in hdf5 format
-    """
-    LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
-    """
-    Processed data for the LC-MS-based metabolomics analysis in hdf5 format
-    """
-    Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
-    """
-    FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
-    """
-    Analysis_Tool_Parameter_File = "Analysis Tool Parameter File"
-    """
-    A configuration file used by a single computational software tool that stores settings that are specific to that tool.
-    """
-    Workflow_Operation_Summary = "Workflow Operation Summary"
-    """
-    A human readable record of analysis steps applied during an instance of a workflow operation.
-    """
-    Metatranscriptome_Expression = "Metatranscriptome Expression"
-    """
-    Metatranscriptome expression values and read counts for gene features predicted on contigs
-    """
-    Metatranscriptome_Expression_Intergenic = "Metatranscriptome Expression Intergenic"
-    """
-    Metatranscriptome expression values and read counts for intergenic regions.
-    """
-    Metatranscriptome_Expression_Info_File = "Metatranscriptome Expression Info File"
-    """
-    File containing version information on the expression workflow
-    """
-    rRNA_Filtered_Sequencing_Reads = "rRNA Filtered Sequencing Reads"
-    """
-    File containing ribosomal reads from the read qc filtering step.
-    """
-    BAI_File = "BAI File"
-    """
-    An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
-    """
-
-
-class DoiProviderEnum(str, Enum):
-    EMSL = "emsl"
-    JGI = "jgi"
-    KBase = "kbase"
-    OSTI = "osti"
-    ESS_DIVE = "ess_dive"
-    MassIVE = "massive"
-    GSC = "gsc"
-    Zenodo = "zenodo"
-    EDI = "edi"
-    Figshare = "figshare"
-
-
-class DoiCategoryEnum(str, Enum):
-    award_doi = "award_doi"
-    """
-    A type of DOI that resolves to a funding authority.
-    """
-    dataset_doi = "dataset_doi"
-    """
-    A type of DOI that resolves to generated data.
-    """
-    publication_doi = "publication_doi"
-    """
-    A type of DOI that resolves to a publication.
-    """
-    data_management_plan_doi = "data_management_plan_doi"
-    """
-    A type of DOI that resolves to a data management plan.
-    """
-
-
-class StatusEnum(str, Enum):
-    pass = "pass"
-    fail = "fail"
-
-
-class NucleotideSequencingEnum(str, Enum):
-    Metagenome = "metagenome"
-    Metatranscriptome = "metatranscriptome"
-    Amplicon = "amplicon_sequencing_assay"
-
-
-class MassSpectrometryEnum(str, Enum):
-    Metaproteome = "metaproteome"
-    Metabolome = "metabolome"
-    Lipidome = "lipidome"
-    Natural_Organic_Matter = "nom"
-
-
-class ExtractionTargetEnum(str, Enum):
-    DNA = "DNA"
-    RNA = "RNA"
-    metabolite = "metabolite"
-    protein = "protein"
-    lipid = "lipid"
-    natural_organic_matter = "natural organic matter"
-
-
-class ProcessingInstitutionEnum(str, Enum):
-    University_of_California_San_Diego = "UCSD"
-    Joint_Genome_Institute = "JGI"
-    Environmental_Molecular_Sciences_Laboratory = "EMSL"
-    Battelle_Memorial_Institute = "Battelle"
-    Argonne_National_Laboratory = "ANL"
-    University_of_California_Davis_Genome_Center = "UCD_Genome_Center"
-    Azenta_Life_Sciences = "Azenta"
-
-
-class DataCategoryEnum(str, Enum):
-    instrument_data = "instrument_data"
-    """
-    Data generated by a DataGeneration PlannedProcess
-    """
-    processed_data = "processed_data"
-    """
-    Data generated by a WorkflowExecution PlannedProcess
-    """
-    workflow_parameter_data = "workflow_parameter_data"
-    """
-    Data used as input into a workflow providing workflow specification.
     """
 
 
