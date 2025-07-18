@@ -951,6 +951,903 @@ class ChemicalEntityEnum(str, Enum):
     water = "water"
 
 
+class ExecutionResourceEnum(str, Enum):
+    NERSC_Cori = "NERSC-Cori"
+    """
+    NERSC Cori supercomputer
+    """
+    NERSC_Perlmutter = "NERSC-Perlmutter"
+    """
+    NERSC Perlmutter supercomputer
+    """
+    EMSL = "EMSL"
+    """
+    Environmental Molecular Sciences Laboratory
+    """
+    EMSL_RZR = "EMSL-RZR"
+    """
+    Environmental Molecular Sciences Laboratory RZR cluster
+    """
+    JGI = "JGI"
+    """
+    Joint Genome Institute
+    """
+    LANL_B_div = "LANL-B-div"
+    """
+    LANL Bioscience Division
+    """
+
+
+class FileTypeEnum(str, Enum):
+    Virus_Summary = "Virus Summary"
+    """
+    Tab separated file listing the viruses found by geNomad.
+    """
+    Plasmid_Summary = "Plasmid Summary"
+    """
+    Tab separated file listing the plasmids found by geNomad.
+    """
+    GeNomad_Aggregated_Classification = "GeNomad Aggregated Classification"
+    """
+    Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
+    """
+    Reference_Calibration_File = "Reference Calibration File"
+    """
+    A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
+    """
+    Metagenome_Raw_Reads = "Metagenome Raw Reads"
+    """
+    Interleaved paired-end raw metagenome sequencing data
+    """
+    Metagenome_Raw_Read_1 = "Metagenome Raw Read 1"
+    """
+    Read 1 raw metagenome sequencing data, aka forward reads
+    """
+    Metagenome_Raw_Read_2 = "Metagenome Raw Read 2"
+    """
+    Read 2 raw metagenome sequencing data, aka reverse reads
+    """
+    Metatranscriptome_Raw_Reads = "Metatranscriptome Raw Reads"
+    """
+    Interleaved paired-end raw metatranscriptome sequencing data
+    """
+    Metatranscriptome_Raw_Read_1 = "Metatranscriptome Raw Read 1"
+    """
+    Read 1 raw metatranscriptome sequencing data, aka forward reads
+    """
+    Metatranscriptome_Raw_Read_2 = "Metatranscriptome Raw Read 2"
+    """
+    Read 2 raw metatranscriptome sequencing data, aka reverse reads
+    """
+    Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
+    """
+    FT-ICR MS based molecular formula assignment results table
+    """
+    Direct_Infusion_FT_ICR_MS_QC_Plots = "Direct Infusion FT-ICR MS QC Plots"
+    """
+    Quality control plots for FT-ICR MS raw data acquired by direct infusion
+    """
+    LC_FT_ICR_MS_Analysis_Results = "LC FT-ICR MS Analysis Results"
+    """
+    LC FT-ICR MS-based molecular formula assignment results tables
+    """
+    LC_FT_ICR_MS_QC_Plots = "LC FT-ICR MS QC Plots"
+    """
+    Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
+    """
+    GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
+    """
+    GC-MS-based metabolite assignment results table
+    """
+    LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
+    """
+    LC-MS-based metabolite assignment results table
+    """
+    Mass_Spectrometry_Reference_Spectral_Library = "Mass Spectrometry Reference Spectral Library"
+    """
+    Spectral library used for mass spectrometry based metabolite identification
+    """
+    Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
+    """
+    Aggregate workflow statistics file
+    """
+    Protein_Report = "Protein Report"
+    """
+    Filtered protein report file
+    """
+    Peptide_Report = "Peptide Report"
+    """
+    Filtered peptide report file
+    """
+    Unfiltered_Metaproteomics_Results = "Unfiltered Metaproteomics Results"
+    """
+    MSGFjobs and MASIC output file
+    """
+    Read_Count_and_RPKM = "Read Count and RPKM"
+    """
+    Annotation read count and RPKM per feature JSON
+    """
+    QC_non_rRNA_R2 = "QC non-rRNA R2"
+    """
+    QC removed rRNA reads (R2) fastq
+    """
+    QC_non_rRNA_R1 = "QC non-rRNA R1"
+    """
+    QC removed rRNA reads (R1) fastq
+    """
+    Metagenome_Bins = "Metagenome Bins"
+    """
+    Metagenome bin contigs fasta
+    """
+    Metagenome_HQMQ_Bins_Compression_File = "Metagenome HQMQ Bins Compression File"
+    """
+    Compressed file containing high quality and medium quality metagenome bins and associated files
+    """
+    Metagenome_LQ_Bins_Compression_File = "Metagenome LQ Bins Compression File"
+    """
+    Compressed file containing low quality metagenome bins and associated files
+    """
+    Metagenome_Bins_Info_File = "Metagenome Bins Info File"
+    """
+    File containing version information on the binning workflow
+    """
+    CheckM_Statistics = "CheckM Statistics"
+    """
+    CheckM statistics report
+    """
+    Metagenome_Bins_Heatmap = "Metagenome Bins Heatmap"
+    """
+    The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
+    """
+    Metagenome_Bins_Barplot = "Metagenome Bins Barplot"
+    """
+    The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
+    """
+    Metagenome_Bins_Krona_Plot = "Metagenome Bins Krona Plot"
+    """
+    The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
+    """
+    Read_Based_Analysis_Info_File = "Read Based Analysis Info File"
+    """
+    File containing reads based analysis information
+    """
+    GTDBTK_Bacterial_Summary = "GTDBTK Bacterial Summary"
+    """
+    GTDBTK bacterial summary
+    """
+    GTDBTK_Archaeal_Summary = "GTDBTK Archaeal Summary"
+    """
+    GTDBTK archaeal summary
+    """
+    GOTTCHA2_Krona_Plot = "GOTTCHA2 Krona Plot"
+    """
+    GOTTCHA2 krona plot HTML file
+    """
+    GOTTCHA2_Classification_Report = "GOTTCHA2 Classification Report"
+    """
+    GOTTCHA2 classification report file
+    """
+    GOTTCHA2_Report_Full = "GOTTCHA2 Report Full"
+    """
+    GOTTCHA2 report file
+    """
+    Kraken2_Krona_Plot = "Kraken2 Krona Plot"
+    """
+    Kraken2 krona plot HTML file
+    """
+    Centrifuge_Krona_Plot = "Centrifuge Krona Plot"
+    """
+    Centrifuge krona plot HTML file
+    """
+    Centrifuge_output_report_file = "Centrifuge output report file"
+    """
+    Centrifuge output report file
+    """
+    Kraken2_Classification_Report = "Kraken2 Classification Report"
+    """
+    Kraken2 output report file
+    """
+    Kraken2_Taxonomic_Classification = "Kraken2 Taxonomic Classification"
+    """
+    Kraken2 output read classification file
+    """
+    Centrifuge_Classification_Report = "Centrifuge Classification Report"
+    """
+    Centrifuge output report file
+    """
+    Centrifuge_Taxonomic_Classification = "Centrifuge Taxonomic Classification"
+    """
+    Centrifuge output read classification file
+    """
+    Structural_Annotation_GFF = "Structural Annotation GFF"
+    """
+    GFF3 format file with structural annotations
+    """
+    Structural_Annotation_Stats_Json = "Structural Annotation Stats Json"
+    """
+    Structural annotations stats json
+    """
+    Functional_Annotation_GFF = "Functional Annotation GFF"
+    """
+    GFF3 format file with functional annotations
+    """
+    Annotation_Info_File = "Annotation Info File"
+    """
+    File containing annotation info
+    """
+    Annotation_Amino_Acid_FASTA = "Annotation Amino Acid FASTA"
+    """
+    FASTA amino acid file for annotated proteins
+    """
+    Annotation_Enzyme_Commission = "Annotation Enzyme Commission"
+    """
+    Tab delimited file for EC annotation
+    """
+    Annotation_KEGG_Orthology = "Annotation KEGG Orthology"
+    """
+    Tab delimited file for KO annotation
+    """
+    Assembly_Info_File = "Assembly Info File"
+    """
+    File containing assembly info
+    """
+    Assembly_Coverage_BAM = "Assembly Coverage BAM"
+    """
+    Sorted bam file of reads mapping back to the final assembly
+    """
+    Assembly_AGP = "Assembly AGP"
+    """
+    An AGP format file that describes the assembly
+    """
+    Assembly_Scaffolds = "Assembly Scaffolds"
+    """
+    Final assembly scaffolds fasta
+    """
+    Assembly_Contigs = "Assembly Contigs"
+    """
+    Final assembly contigs fasta
+    """
+    Assembly_Coverage_Stats = "Assembly Coverage Stats"
+    """
+    Assembled contigs coverage information
+    """
+    Contig_Mapping_File = "Contig Mapping File"
+    """
+    Contig mappings between contigs and scaffolds
+    """
+    Error_Corrected_Reads = "Error Corrected Reads"
+    """
+    Error corrected reads fastq
+    """
+    Filtered_Sequencing_Reads = "Filtered Sequencing Reads"
+    """
+    Reads QC result fastq (clean data)
+    """
+    Read_Filtering_Info_File = "Read Filtering Info File"
+    """
+    File containing read filtering information
+    """
+    QC_Statistics_Extended = "QC Statistics Extended"
+    """
+    Extended report including methods and results for read filtering
+    """
+    QC_Statistics = "QC Statistics"
+    """
+    Reads QC summary statistics
+    """
+    TIGRFam_Annotation_GFF = "TIGRFam Annotation GFF"
+    """
+    GFF3 format file with TIGRfam
+    """
+    CRT_Annotation_GFF = "CRT Annotation GFF"
+    """
+    GFF3 format file with CRT
+    """
+    Genemark_Annotation_GFF = "Genemark Annotation GFF"
+    """
+    GFF3 format file with Genemark
+    """
+    Prodigal_Annotation_GFF = "Prodigal Annotation GFF"
+    """
+    GFF3 format file with Prodigal
+    """
+    TRNA_Annotation_GFF = "TRNA Annotation GFF"
+    """
+    GFF3 format file with TRNA
+    """
+    Misc_Annotation_GFF = "Misc Annotation GFF"
+    """
+    GFF3 format file with Misc
+    """
+    RFAM_Annotation_GFF = "RFAM Annotation GFF"
+    """
+    GFF3 format file with RFAM
+    """
+    TMRNA_Annotation_GFF = "TMRNA Annotation GFF"
+    """
+    GFF3 format file with TMRNA
+    """
+    Crispr_Terms = "Crispr Terms"
+    """
+    Crispr Terms
+    """
+    Product_Names = "Product Names"
+    """
+    Product names file
+    """
+    Gene_Phylogeny_tsv = "Gene Phylogeny tsv"
+    """
+    Gene Phylogeny tsv
+    """
+    Scaffold_Lineage_tsv = "Scaffold Lineage tsv"
+    """
+    phylogeny at the scaffold level
+    """
+    Clusters_of_Orthologous_Groups_LEFT_PARENTHESISCOGRIGHT_PARENTHESIS_Annotation_GFF = "Clusters of Orthologous Groups (COG) Annotation GFF"
+    """
+    GFF3 format file with COGs
+    """
+    KO_EC_Annotation_GFF = "KO_EC Annotation GFF"
+    """
+    GFF3 format file with KO_EC
+    """
+    CATH_FunFams_LEFT_PARENTHESISFunctional_FamiliesRIGHT_PARENTHESIS_Annotation_GFF = "CATH FunFams (Functional Families) Annotation GFF"
+    """
+    GFF3 format file with CATH FunFams
+    """
+    SUPERFam_Annotation_GFF = "SUPERFam Annotation GFF"
+    """
+    GFF3 format file with SUPERFam
+    """
+    SMART_Annotation_GFF = "SMART Annotation GFF"
+    """
+    GFF3 format file with SMART
+    """
+    Pfam_Annotation_GFF = "Pfam Annotation GFF"
+    """
+    GFF3 format file with Pfam
+    """
+    Annotation_Statistics = "Annotation Statistics"
+    """
+    Annotation statistics report
+    """
+    Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
+    """
+    Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
+    """
+    LC_FT_ICR_MS_Raw_Data = "LC FT-ICR MS Raw Data"
+    """
+    Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
+    """
+    LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
+    """
+    Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
+    """
+    GC_MS_Raw_Data = "GC-MS Raw Data"
+    """
+    Gas chromatography-mass spectrometry raw data, full scan mode.
+    """
+    Configuration_toml = "Configuration toml"
+    """
+    A configuration toml file used by various programs to store settings that are specific to their respective software.
+    """
+    LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
+    """
+    LC-MS-based lipidomics analysis results table
+    """
+    LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
+    """
+    Processed data for the LC-MS-based lipidomics analysis in hdf5 format
+    """
+    LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
+    """
+    Processed data for the LC-MS-based metabolomics analysis in hdf5 format
+    """
+    Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
+    """
+    FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
+    """
+    Analysis_Tool_Parameter_File = "Analysis Tool Parameter File"
+    """
+    A configuration file used by a single computational software tool that stores settings that are specific to that tool.
+    """
+    Workflow_Operation_Summary = "Workflow Operation Summary"
+    """
+    A human readable record of analysis steps applied during an instance of a workflow operation.
+    """
+    Metatranscriptome_Expression = "Metatranscriptome Expression"
+    """
+    Metatranscriptome expression values and read counts for gene features predicted on contigs
+    """
+    Metatranscriptome_Expression_Intergenic = "Metatranscriptome Expression Intergenic"
+    """
+    Metatranscriptome expression values and read counts for intergenic regions.
+    """
+    Metatranscriptome_Expression_Info_File = "Metatranscriptome Expression Info File"
+    """
+    File containing version information on the expression workflow
+    """
+    rRNA_Filtered_Sequencing_Reads = "rRNA Filtered Sequencing Reads"
+    """
+    File containing ribosomal reads from the read qc filtering step.
+    """
+    BAI_File = "BAI File"
+    """
+    An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
+    """
+
+
+class DoiProviderEnum(str, Enum):
+    EMSL = "emsl"
+    JGI = "jgi"
+    KBase = "kbase"
+    OSTI = "osti"
+    ESS_DIVE = "ess_dive"
+    MassIVE = "massive"
+    GSC = "gsc"
+    Zenodo = "zenodo"
+    EDI = "edi"
+    Figshare = "figshare"
+
+
+class DoiCategoryEnum(str, Enum):
+    award_doi = "award_doi"
+    """
+    A type of DOI that resolves to a funding authority.
+    """
+    dataset_doi = "dataset_doi"
+    """
+    A type of DOI that resolves to generated data.
+    """
+    publication_doi = "publication_doi"
+    """
+    A type of DOI that resolves to a publication.
+    """
+    data_management_plan_doi = "data_management_plan_doi"
+    """
+    A type of DOI that resolves to a data management plan.
+    """
+
+
+class StatusEnum(str, Enum):
+    pass = "pass"
+    fail = "fail"
+
+
+class NucleotideSequencingEnum(str, Enum):
+    Metagenome = "metagenome"
+    Metatranscriptome = "metatranscriptome"
+    Amplicon = "amplicon_sequencing_assay"
+
+
+class MassSpectrometryEnum(str, Enum):
+    Metaproteome = "metaproteome"
+    Metabolome = "metabolome"
+    Lipidome = "lipidome"
+    Natural_Organic_Matter = "nom"
+
+
+class ExtractionTargetEnum(str, Enum):
+    DNA = "DNA"
+    RNA = "RNA"
+    metabolite = "metabolite"
+    protein = "protein"
+    lipid = "lipid"
+    natural_organic_matter = "natural organic matter"
+
+
+class ProcessingInstitutionEnum(str, Enum):
+    University_of_California_San_Diego = "UCSD"
+    Joint_Genome_Institute = "JGI"
+    Environmental_Molecular_Sciences_Laboratory = "EMSL"
+    Battelle_Memorial_Institute = "Battelle"
+    Argonne_National_Laboratory = "ANL"
+    University_of_California_Davis_Genome_Center = "UCD_Genome_Center"
+    Azenta_Life_Sciences = "Azenta"
+
+
+class DataCategoryEnum(str, Enum):
+    instrument_data = "instrument_data"
+    """
+    Data generated by a DataGeneration PlannedProcess
+    """
+    processed_data = "processed_data"
+    """
+    Data generated by a WorkflowExecution PlannedProcess
+    """
+    workflow_parameter_data = "workflow_parameter_data"
+    """
+    Data used as input into a workflow providing workflow specification.
+    """
+
+
+class CreditEnum(str, Enum):
+    Conceptualization = "Conceptualization"
+    """
+    Conceptualization
+    """
+    Data_curation = "Data curation"
+    """
+    Data curation
+    """
+    Formal_Analysis = "Formal Analysis"
+    """
+    Formal Analysis
+    """
+    Funding_acquisition = "Funding acquisition"
+    """
+    Funding acquisition
+    """
+    Investigation = "Investigation"
+    """
+    Investigation
+    """
+    Methodology = "Methodology"
+    """
+    Methodology
+    """
+    Project_administration = "Project administration"
+    """
+    Project administration
+    """
+    Resources = "Resources"
+    """
+    Resources
+    """
+    Software = "Software"
+    """
+    Software
+    """
+    Supervision = "Supervision"
+    """
+    Supervision
+    """
+    Validation = "Validation"
+    """
+    Validation
+    """
+    Visualization = "Visualization"
+    """
+    Visualization
+    """
+    Writing_original_draft = "Writing original draft"
+    """
+    Writing – original draft
+    """
+    Writing_review_and_editing = "Writing review and editing"
+    """
+    Writing – review & editing
+    """
+    Principal_Investigator = "Principal Investigator"
+    """
+    principal investigator role
+    """
+    Submitter = "Submitter"
+    """
+    the person(s) who enter study and biosample metadata into the NMDC submission portal
+    """
+
+
+class StudyCategoryEnum(str, Enum):
+    research_study = "research_study"
+    """
+    A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
+    """
+    consortium = "consortium"
+    """
+    A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
+    """
+
+
+class ManifestCategoryEnum(str, Enum):
+    """
+    A list of contexts in which some DataObjects can be analyzed together.
+    """
+    instrument_run = "instrument_run"
+    """
+    A collection of data objects from a single run of an instrument.
+    """
+    poolable_replicates = "poolable_replicates"
+    """
+    A collection of data objects that can be pooled for downstream analyses.
+    """
+    fractions = "fractions"
+    """
+    A collection of data objects that represent fractions of a single sample.
+    """
+
+
+class InstrumentModelEnum(str, Enum):
+    exploris_21T = "exploris_21T"
+    exploris_240 = "exploris_240"
+    exploris_480 = "exploris_480"
+    ltq_orbitrap_velos = "ltq_orbitrap_velos"
+    orbitrap_fusion_lumos = "orbitrap_fusion_lumos"
+    orbitrap_eclipse_tribid = "orbitrap_eclipse_tribid"
+    orbitrap_q_exactive = "orbitrap_q_exactive"
+    solarix_7T = "solarix_7T"
+    solarix_12T = "solarix_12T"
+    solarix_15T = "solarix_15T"
+    agilent_8890A = "agilent_8890A"
+    agilent_7980A = "agilent_7980A"
+    vortex_genie_2 = "vortex_genie_2"
+    novaseq = "novaseq"
+    novaseq_6000 = "novaseq_6000"
+    novaseq_x = "novaseq_x"
+    hiseq = "hiseq"
+    hiseq_1000 = "hiseq_1000"
+    hiseq_1500 = "hiseq_1500"
+    hiseq_2000 = "hiseq_2000"
+    hiseq_2500 = "hiseq_2500"
+    hiseq_3000 = "hiseq_3000"
+    hiseq_4000 = "hiseq_4000"
+    hiseq_x_ten = "hiseq_x_ten"
+    miniseq = "miniseq"
+    miseq = "miseq"
+    nextseq_1000 = "nextseq_1000"
+    nextseq = "nextseq"
+    nextseq_500 = "nextseq_500"
+    nextseq_550 = "nextseq_550"
+    gridion = "gridion"
+    minion = "minion"
+    promethion = "promethion"
+    rs_II = "rs_II"
+    sequel = "sequel"
+    sequel_II = "sequel_II"
+    revio = "revio"
+
+
+class InstrumentVendorEnum(str, Enum):
+    waters = "waters"
+    agilent = "agilent"
+    bruker = "bruker"
+    thermo_fisher = "thermo_fisher"
+    vwr = "vwr"
+    perkin_elmer = "perkin_elmer"
+    gilson = "gilson"
+    scientific_industries = "scientific_industries"
+    illumina = "illumina"
+    pacbio = "pacbio"
+    oxford_nanopore = "oxford_nanopore"
+    pnnl = "pnnl"
+
+
+class FailureWhatEnum(str, Enum):
+    """
+    The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
+    """
+    low_read_count = "low_read_count"
+    """
+    Number of output reads is not sufficient to continue to the next analysis step.
+    """
+    malformed_data = "malformed_data"
+    """
+    Workflow failure reading input or writing the output file(s).
+    """
+    assembly_size_too_small = "assembly_size_too_small"
+    """
+    The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
+    """
+    no_valid_data_generated = "no_valid_data_generated"
+    """
+    A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
+    """
+    other = "other"
+    """
+    A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
+    """
+
+
+class FailureWhereEnum(str, Enum):
+    """
+    The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
+    """
+    NucleotideSequencing = "NucleotideSequencing"
+    """
+    A failure has occurred during nucleotide sequencing, a data generation process.
+    """
+    MassSpectrometry = "MassSpectrometry"
+    """
+    A failure has occurred during mass spectrometry, a data generation process.
+    """
+    Pooling = "Pooling"
+    """
+    A failure has occurred in pooling, a lab process.
+    """
+    Extraction = "Extraction"
+    """
+    A failure has occurred in extraction, a lab process.
+    """
+    LibraryPreparation = "LibraryPreparation"
+    """
+    A failure has occurred in library preparation, a lab process.
+    """
+    MetagenomeAssembly = "MetagenomeAssembly"
+    """
+    A failure has occurred in metagenome assembly, a workflow process.
+    """
+    MetatranscriptomeExpressionAnalysis = "MetatranscriptomeExpressionAnalysis"
+    """
+    A failure has occurred in metatranscriptome expression analysis, a workflow process.
+    """
+    MagsAnalysis = "MagsAnalysis"
+    """
+    A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
+    """
+    ReadQcAnalysis = "ReadQcAnalysis"
+    """
+    A failure has occurred in read qc, a workflow process.
+    """
+    ReadBasedTaxonomyAnalysis = "ReadBasedTaxonomyAnalysis"
+    """
+    A failure has occurred in reads based taxonomy, a workflow process.
+    """
+    MetagenomeAnnotation = "MetagenomeAnnotation"
+    """
+    A failure has occurred in annotation, a workflow process.
+    """
+    MetatranscriptomeAssembly = "MetatranscriptomeAssembly"
+    """
+    A failure has occurred in assembly, a workflow process.
+    """
+    MetatranscriptomeAnnotation = "MetatranscriptomeAnnotation"
+    """
+    A failure has occurred in annotation, a workflow process.
+    """
+    MetabolomicsAnalysis = "MetabolomicsAnalysis"
+    """
+    A failure has occurred in analyzing metabolomics data.
+    """
+    MetaproteomicsAnalysis = "MetaproteomicsAnalysis"
+    """
+    A failure has occurred in analyzing metaproteomics data.
+    """
+    NomAnalysis = "NomAnalysis"
+    """
+    A failure has occurred in analyzing NOM data.
+    """
+
+
+class SampleTypeEnum(str, Enum):
+    soil = "soil"
+    soil___water_extract = "soil - water extract"
+    plant_associated = "plant associated"
+    sediment = "sediment"
+    water = "water"
+
+
+class DNASampleFormatEnum(str, Enum):
+    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
+    DNAStable = "DNAStable"
+    Ethanol = "Ethanol"
+    Low_EDTA_TE = "Low EDTA TE"
+    MDA_reaction_buffer = "MDA reaction buffer"
+    PBS = "PBS"
+    Pellet = "Pellet"
+    RNAStable = "RNAStable"
+    TE = "TE"
+    Water = "Water"
+    Gentegra_DNA = "Gentegra-DNA"
+    Gentegra_RNA = "Gentegra-RNA"
+
+
+class JgiContTypeEnum(str, Enum):
+    plate = "plate"
+    tube = "tube"
+
+
+class YesNoEnum(str, Enum):
+    """
+    replaces DnaDnaseEnum and DnaseRnaEnum
+    """
+    no = "no"
+    yes = "yes"
+
+
+class RNASampleFormatEnum(str, Enum):
+    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
+    DNAStable = "DNAStable"
+    Ethanol = "Ethanol"
+    Low_EDTA_TE = "Low EDTA TE"
+    MDA_reaction_buffer = "MDA reaction buffer"
+    PBS = "PBS"
+    Pellet = "Pellet"
+    RNAStable = "RNAStable"
+    TE = "TE"
+    Water = "Water"
+    Gentegra_DNA = "Gentegra-DNA"
+    Gentegra_RNA = "Gentegra-RNA"
+
+
+class AnalysisTypeEnum(str, Enum):
+    metabolomics = "metabolomics"
+    lipidomics = "lipidomics"
+    Metagenomics = "metagenomics"
+    """
+    Standard short-read metagenomic sequencing
+    """
+    Metagenomics_LEFT_PARENTHESISlong_readRIGHT_PARENTHESIS = "metagenomics_long_read"
+    """
+    Long-read metagenomic sequencing
+    """
+    metaproteomics = "metaproteomics"
+    metatranscriptomics = "metatranscriptomics"
+    natural_organic_matter = "natural organic matter"
+    bulk_chemistry = "bulk chemistry"
+    Amplicon_sequencing_assay = "amplicon sequencing assay"
+
+
+class SubmissionStatusEnum(str, Enum):
+    In_Progress = "InProgress"
+    """
+    The submitter is currently working on the submission.
+    """
+    Submitted___Pending_Review = "SubmittedPendingReview"
+    """
+    Submission is ready for NMDC review, the submitter cannot edit.
+    """
+    Resubmitted___Pending_review = "ResubmittedPendingReview"
+    """
+    Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit.
+    """
+    Approved___Held = "ApprovedHeld"
+    """
+    Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.
+    """
+    Pending___Sent_to_User_Facility = "PendingUserFacility"
+    """
+    Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
+    """
+    Updates_Required = "UpdatesRequired"
+    """
+    Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
+    """
+    In_Progress___UpdateSOLIDUSAddition = "InProgressUpdate"
+    """
+    NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
+    """
+    Denied = "Denied"
+    """
+    Submission has been reviewed and denied. The submitter cannot edit.
+    """
+    Released = "Released"
+    """
+    Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit.
+    """
+
+
+class MetaproteomicsAnalysisCategoryEnum(str, Enum):
+    """
+    The category of metaproteomics analysis being performed.
+    """
+    matched_metagenome = "matched_metagenome"
+    """
+    A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
+    """
+    in_silico_metagenome = "in_silico_metagenome"
+    """
+    A metaproteomics analysis that is matched to an in silico generated metagenome.
+    """
+
+
+class MetabolomicsAnalysisCategoryEnum(str, Enum):
+    """
+    The category of metabolomics analysis being performed.
+    """
+    gc_ms_metabolomics = "gc_ms_metabolomics"
+    """
+    A metabolomics analysis that is performed on gas chromatography mass spectrometry data.
+    """
+    lc_ms_lipidomics = "lc_ms_lipidomics"
+    """
+    A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.
+    """
+    lc_ms_metabolomics = "lc_ms_metabolomics"
+    """
+    A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.
+    """
+
+
 class ArchStrucEnum(str, Enum):
     building = "building"
     shed = "shed"
@@ -2040,903 +2937,6 @@ class TargetGeneEnum(str, Enum):
     """
 
 
-class CreditEnum(str, Enum):
-    Conceptualization = "Conceptualization"
-    """
-    Conceptualization
-    """
-    Data_curation = "Data curation"
-    """
-    Data curation
-    """
-    Formal_Analysis = "Formal Analysis"
-    """
-    Formal Analysis
-    """
-    Funding_acquisition = "Funding acquisition"
-    """
-    Funding acquisition
-    """
-    Investigation = "Investigation"
-    """
-    Investigation
-    """
-    Methodology = "Methodology"
-    """
-    Methodology
-    """
-    Project_administration = "Project administration"
-    """
-    Project administration
-    """
-    Resources = "Resources"
-    """
-    Resources
-    """
-    Software = "Software"
-    """
-    Software
-    """
-    Supervision = "Supervision"
-    """
-    Supervision
-    """
-    Validation = "Validation"
-    """
-    Validation
-    """
-    Visualization = "Visualization"
-    """
-    Visualization
-    """
-    Writing_original_draft = "Writing original draft"
-    """
-    Writing – original draft
-    """
-    Writing_review_and_editing = "Writing review and editing"
-    """
-    Writing – review & editing
-    """
-    Principal_Investigator = "Principal Investigator"
-    """
-    principal investigator role
-    """
-    Submitter = "Submitter"
-    """
-    the person(s) who enter study and biosample metadata into the NMDC submission portal
-    """
-
-
-class StudyCategoryEnum(str, Enum):
-    research_study = "research_study"
-    """
-    A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
-    """
-    consortium = "consortium"
-    """
-    A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
-    """
-
-
-class ManifestCategoryEnum(str, Enum):
-    """
-    A list of contexts in which some DataObjects can be analyzed together.
-    """
-    instrument_run = "instrument_run"
-    """
-    A collection of data objects from a single run of an instrument.
-    """
-    poolable_replicates = "poolable_replicates"
-    """
-    A collection of data objects that can be pooled for downstream analyses.
-    """
-    fractions = "fractions"
-    """
-    A collection of data objects that represent fractions of a single sample.
-    """
-
-
-class InstrumentModelEnum(str, Enum):
-    exploris_21T = "exploris_21T"
-    exploris_240 = "exploris_240"
-    exploris_480 = "exploris_480"
-    ltq_orbitrap_velos = "ltq_orbitrap_velos"
-    orbitrap_fusion_lumos = "orbitrap_fusion_lumos"
-    orbitrap_eclipse_tribid = "orbitrap_eclipse_tribid"
-    orbitrap_q_exactive = "orbitrap_q_exactive"
-    solarix_7T = "solarix_7T"
-    solarix_12T = "solarix_12T"
-    solarix_15T = "solarix_15T"
-    agilent_8890A = "agilent_8890A"
-    agilent_7980A = "agilent_7980A"
-    vortex_genie_2 = "vortex_genie_2"
-    novaseq = "novaseq"
-    novaseq_6000 = "novaseq_6000"
-    novaseq_x = "novaseq_x"
-    hiseq = "hiseq"
-    hiseq_1000 = "hiseq_1000"
-    hiseq_1500 = "hiseq_1500"
-    hiseq_2000 = "hiseq_2000"
-    hiseq_2500 = "hiseq_2500"
-    hiseq_3000 = "hiseq_3000"
-    hiseq_4000 = "hiseq_4000"
-    hiseq_x_ten = "hiseq_x_ten"
-    miniseq = "miniseq"
-    miseq = "miseq"
-    nextseq_1000 = "nextseq_1000"
-    nextseq = "nextseq"
-    nextseq_500 = "nextseq_500"
-    nextseq_550 = "nextseq_550"
-    gridion = "gridion"
-    minion = "minion"
-    promethion = "promethion"
-    rs_II = "rs_II"
-    sequel = "sequel"
-    sequel_II = "sequel_II"
-    revio = "revio"
-
-
-class InstrumentVendorEnum(str, Enum):
-    waters = "waters"
-    agilent = "agilent"
-    bruker = "bruker"
-    thermo_fisher = "thermo_fisher"
-    vwr = "vwr"
-    perkin_elmer = "perkin_elmer"
-    gilson = "gilson"
-    scientific_industries = "scientific_industries"
-    illumina = "illumina"
-    pacbio = "pacbio"
-    oxford_nanopore = "oxford_nanopore"
-    pnnl = "pnnl"
-
-
-class FailureWhatEnum(str, Enum):
-    """
-    The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
-    """
-    low_read_count = "low_read_count"
-    """
-    Number of output reads is not sufficient to continue to the next analysis step.
-    """
-    malformed_data = "malformed_data"
-    """
-    Workflow failure reading input or writing the output file(s).
-    """
-    assembly_size_too_small = "assembly_size_too_small"
-    """
-    The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
-    """
-    no_valid_data_generated = "no_valid_data_generated"
-    """
-    A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
-    """
-    other = "other"
-    """
-    A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
-    """
-
-
-class FailureWhereEnum(str, Enum):
-    """
-    The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
-    """
-    NucleotideSequencing = "NucleotideSequencing"
-    """
-    A failure has occurred during nucleotide sequencing, a data generation process.
-    """
-    MassSpectrometry = "MassSpectrometry"
-    """
-    A failure has occurred during mass spectrometry, a data generation process.
-    """
-    Pooling = "Pooling"
-    """
-    A failure has occurred in pooling, a lab process.
-    """
-    Extraction = "Extraction"
-    """
-    A failure has occurred in extraction, a lab process.
-    """
-    LibraryPreparation = "LibraryPreparation"
-    """
-    A failure has occurred in library preparation, a lab process.
-    """
-    MetagenomeAssembly = "MetagenomeAssembly"
-    """
-    A failure has occurred in metagenome assembly, a workflow process.
-    """
-    MetatranscriptomeExpressionAnalysis = "MetatranscriptomeExpressionAnalysis"
-    """
-    A failure has occurred in metatranscriptome expression analysis, a workflow process.
-    """
-    MagsAnalysis = "MagsAnalysis"
-    """
-    A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
-    """
-    ReadQcAnalysis = "ReadQcAnalysis"
-    """
-    A failure has occurred in read qc, a workflow process.
-    """
-    ReadBasedTaxonomyAnalysis = "ReadBasedTaxonomyAnalysis"
-    """
-    A failure has occurred in reads based taxonomy, a workflow process.
-    """
-    MetagenomeAnnotation = "MetagenomeAnnotation"
-    """
-    A failure has occurred in annotation, a workflow process.
-    """
-    MetatranscriptomeAssembly = "MetatranscriptomeAssembly"
-    """
-    A failure has occurred in assembly, a workflow process.
-    """
-    MetatranscriptomeAnnotation = "MetatranscriptomeAnnotation"
-    """
-    A failure has occurred in annotation, a workflow process.
-    """
-    MetabolomicsAnalysis = "MetabolomicsAnalysis"
-    """
-    A failure has occurred in analyzing metabolomics data.
-    """
-    MetaproteomicsAnalysis = "MetaproteomicsAnalysis"
-    """
-    A failure has occurred in analyzing metaproteomics data.
-    """
-    NomAnalysis = "NomAnalysis"
-    """
-    A failure has occurred in analyzing NOM data.
-    """
-
-
-class ExecutionResourceEnum(str, Enum):
-    NERSC_Cori = "NERSC-Cori"
-    """
-    NERSC Cori supercomputer
-    """
-    NERSC_Perlmutter = "NERSC-Perlmutter"
-    """
-    NERSC Perlmutter supercomputer
-    """
-    EMSL = "EMSL"
-    """
-    Environmental Molecular Sciences Laboratory
-    """
-    EMSL_RZR = "EMSL-RZR"
-    """
-    Environmental Molecular Sciences Laboratory RZR cluster
-    """
-    JGI = "JGI"
-    """
-    Joint Genome Institute
-    """
-    LANL_B_div = "LANL-B-div"
-    """
-    LANL Bioscience Division
-    """
-
-
-class FileTypeEnum(str, Enum):
-    Virus_Summary = "Virus Summary"
-    """
-    Tab separated file listing the viruses found by geNomad.
-    """
-    Plasmid_Summary = "Plasmid Summary"
-    """
-    Tab separated file listing the plasmids found by geNomad.
-    """
-    GeNomad_Aggregated_Classification = "GeNomad Aggregated Classification"
-    """
-    Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
-    """
-    Reference_Calibration_File = "Reference Calibration File"
-    """
-    A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
-    """
-    Metagenome_Raw_Reads = "Metagenome Raw Reads"
-    """
-    Interleaved paired-end raw metagenome sequencing data
-    """
-    Metagenome_Raw_Read_1 = "Metagenome Raw Read 1"
-    """
-    Read 1 raw metagenome sequencing data, aka forward reads
-    """
-    Metagenome_Raw_Read_2 = "Metagenome Raw Read 2"
-    """
-    Read 2 raw metagenome sequencing data, aka reverse reads
-    """
-    Metatranscriptome_Raw_Reads = "Metatranscriptome Raw Reads"
-    """
-    Interleaved paired-end raw metatranscriptome sequencing data
-    """
-    Metatranscriptome_Raw_Read_1 = "Metatranscriptome Raw Read 1"
-    """
-    Read 1 raw metatranscriptome sequencing data, aka forward reads
-    """
-    Metatranscriptome_Raw_Read_2 = "Metatranscriptome Raw Read 2"
-    """
-    Read 2 raw metatranscriptome sequencing data, aka reverse reads
-    """
-    Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
-    """
-    FT-ICR MS based molecular formula assignment results table
-    """
-    Direct_Infusion_FT_ICR_MS_QC_Plots = "Direct Infusion FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired by direct infusion
-    """
-    LC_FT_ICR_MS_Analysis_Results = "LC FT-ICR MS Analysis Results"
-    """
-    LC FT-ICR MS-based molecular formula assignment results tables
-    """
-    LC_FT_ICR_MS_QC_Plots = "LC FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
-    """
-    GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
-    """
-    GC-MS-based metabolite assignment results table
-    """
-    LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
-    """
-    LC-MS-based metabolite assignment results table
-    """
-    Mass_Spectrometry_Reference_Spectral_Library = "Mass Spectrometry Reference Spectral Library"
-    """
-    Spectral library used for mass spectrometry based metabolite identification
-    """
-    Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
-    """
-    Aggregate workflow statistics file
-    """
-    Protein_Report = "Protein Report"
-    """
-    Filtered protein report file
-    """
-    Peptide_Report = "Peptide Report"
-    """
-    Filtered peptide report file
-    """
-    Unfiltered_Metaproteomics_Results = "Unfiltered Metaproteomics Results"
-    """
-    MSGFjobs and MASIC output file
-    """
-    Read_Count_and_RPKM = "Read Count and RPKM"
-    """
-    Annotation read count and RPKM per feature JSON
-    """
-    QC_non_rRNA_R2 = "QC non-rRNA R2"
-    """
-    QC removed rRNA reads (R2) fastq
-    """
-    QC_non_rRNA_R1 = "QC non-rRNA R1"
-    """
-    QC removed rRNA reads (R1) fastq
-    """
-    Metagenome_Bins = "Metagenome Bins"
-    """
-    Metagenome bin contigs fasta
-    """
-    Metagenome_HQMQ_Bins_Compression_File = "Metagenome HQMQ Bins Compression File"
-    """
-    Compressed file containing high quality and medium quality metagenome bins and associated files
-    """
-    Metagenome_LQ_Bins_Compression_File = "Metagenome LQ Bins Compression File"
-    """
-    Compressed file containing low quality metagenome bins and associated files
-    """
-    Metagenome_Bins_Info_File = "Metagenome Bins Info File"
-    """
-    File containing version information on the binning workflow
-    """
-    CheckM_Statistics = "CheckM Statistics"
-    """
-    CheckM statistics report
-    """
-    Metagenome_Bins_Heatmap = "Metagenome Bins Heatmap"
-    """
-    The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
-    """
-    Metagenome_Bins_Barplot = "Metagenome Bins Barplot"
-    """
-    The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
-    """
-    Metagenome_Bins_Krona_Plot = "Metagenome Bins Krona Plot"
-    """
-    The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
-    """
-    Read_Based_Analysis_Info_File = "Read Based Analysis Info File"
-    """
-    File containing reads based analysis information
-    """
-    GTDBTK_Bacterial_Summary = "GTDBTK Bacterial Summary"
-    """
-    GTDBTK bacterial summary
-    """
-    GTDBTK_Archaeal_Summary = "GTDBTK Archaeal Summary"
-    """
-    GTDBTK archaeal summary
-    """
-    GOTTCHA2_Krona_Plot = "GOTTCHA2 Krona Plot"
-    """
-    GOTTCHA2 krona plot HTML file
-    """
-    GOTTCHA2_Classification_Report = "GOTTCHA2 Classification Report"
-    """
-    GOTTCHA2 classification report file
-    """
-    GOTTCHA2_Report_Full = "GOTTCHA2 Report Full"
-    """
-    GOTTCHA2 report file
-    """
-    Kraken2_Krona_Plot = "Kraken2 Krona Plot"
-    """
-    Kraken2 krona plot HTML file
-    """
-    Centrifuge_Krona_Plot = "Centrifuge Krona Plot"
-    """
-    Centrifuge krona plot HTML file
-    """
-    Centrifuge_output_report_file = "Centrifuge output report file"
-    """
-    Centrifuge output report file
-    """
-    Kraken2_Classification_Report = "Kraken2 Classification Report"
-    """
-    Kraken2 output report file
-    """
-    Kraken2_Taxonomic_Classification = "Kraken2 Taxonomic Classification"
-    """
-    Kraken2 output read classification file
-    """
-    Centrifuge_Classification_Report = "Centrifuge Classification Report"
-    """
-    Centrifuge output report file
-    """
-    Centrifuge_Taxonomic_Classification = "Centrifuge Taxonomic Classification"
-    """
-    Centrifuge output read classification file
-    """
-    Structural_Annotation_GFF = "Structural Annotation GFF"
-    """
-    GFF3 format file with structural annotations
-    """
-    Structural_Annotation_Stats_Json = "Structural Annotation Stats Json"
-    """
-    Structural annotations stats json
-    """
-    Functional_Annotation_GFF = "Functional Annotation GFF"
-    """
-    GFF3 format file with functional annotations
-    """
-    Annotation_Info_File = "Annotation Info File"
-    """
-    File containing annotation info
-    """
-    Annotation_Amino_Acid_FASTA = "Annotation Amino Acid FASTA"
-    """
-    FASTA amino acid file for annotated proteins
-    """
-    Annotation_Enzyme_Commission = "Annotation Enzyme Commission"
-    """
-    Tab delimited file for EC annotation
-    """
-    Annotation_KEGG_Orthology = "Annotation KEGG Orthology"
-    """
-    Tab delimited file for KO annotation
-    """
-    Assembly_Info_File = "Assembly Info File"
-    """
-    File containing assembly info
-    """
-    Assembly_Coverage_BAM = "Assembly Coverage BAM"
-    """
-    Sorted bam file of reads mapping back to the final assembly
-    """
-    Assembly_AGP = "Assembly AGP"
-    """
-    An AGP format file that describes the assembly
-    """
-    Assembly_Scaffolds = "Assembly Scaffolds"
-    """
-    Final assembly scaffolds fasta
-    """
-    Assembly_Contigs = "Assembly Contigs"
-    """
-    Final assembly contigs fasta
-    """
-    Assembly_Coverage_Stats = "Assembly Coverage Stats"
-    """
-    Assembled contigs coverage information
-    """
-    Contig_Mapping_File = "Contig Mapping File"
-    """
-    Contig mappings between contigs and scaffolds
-    """
-    Error_Corrected_Reads = "Error Corrected Reads"
-    """
-    Error corrected reads fastq
-    """
-    Filtered_Sequencing_Reads = "Filtered Sequencing Reads"
-    """
-    Reads QC result fastq (clean data)
-    """
-    Read_Filtering_Info_File = "Read Filtering Info File"
-    """
-    File containing read filtering information
-    """
-    QC_Statistics_Extended = "QC Statistics Extended"
-    """
-    Extended report including methods and results for read filtering
-    """
-    QC_Statistics = "QC Statistics"
-    """
-    Reads QC summary statistics
-    """
-    TIGRFam_Annotation_GFF = "TIGRFam Annotation GFF"
-    """
-    GFF3 format file with TIGRfam
-    """
-    CRT_Annotation_GFF = "CRT Annotation GFF"
-    """
-    GFF3 format file with CRT
-    """
-    Genemark_Annotation_GFF = "Genemark Annotation GFF"
-    """
-    GFF3 format file with Genemark
-    """
-    Prodigal_Annotation_GFF = "Prodigal Annotation GFF"
-    """
-    GFF3 format file with Prodigal
-    """
-    TRNA_Annotation_GFF = "TRNA Annotation GFF"
-    """
-    GFF3 format file with TRNA
-    """
-    Misc_Annotation_GFF = "Misc Annotation GFF"
-    """
-    GFF3 format file with Misc
-    """
-    RFAM_Annotation_GFF = "RFAM Annotation GFF"
-    """
-    GFF3 format file with RFAM
-    """
-    TMRNA_Annotation_GFF = "TMRNA Annotation GFF"
-    """
-    GFF3 format file with TMRNA
-    """
-    Crispr_Terms = "Crispr Terms"
-    """
-    Crispr Terms
-    """
-    Product_Names = "Product Names"
-    """
-    Product names file
-    """
-    Gene_Phylogeny_tsv = "Gene Phylogeny tsv"
-    """
-    Gene Phylogeny tsv
-    """
-    Scaffold_Lineage_tsv = "Scaffold Lineage tsv"
-    """
-    phylogeny at the scaffold level
-    """
-    Clusters_of_Orthologous_Groups_LEFT_PARENTHESISCOGRIGHT_PARENTHESIS_Annotation_GFF = "Clusters of Orthologous Groups (COG) Annotation GFF"
-    """
-    GFF3 format file with COGs
-    """
-    KO_EC_Annotation_GFF = "KO_EC Annotation GFF"
-    """
-    GFF3 format file with KO_EC
-    """
-    CATH_FunFams_LEFT_PARENTHESISFunctional_FamiliesRIGHT_PARENTHESIS_Annotation_GFF = "CATH FunFams (Functional Families) Annotation GFF"
-    """
-    GFF3 format file with CATH FunFams
-    """
-    SUPERFam_Annotation_GFF = "SUPERFam Annotation GFF"
-    """
-    GFF3 format file with SUPERFam
-    """
-    SMART_Annotation_GFF = "SMART Annotation GFF"
-    """
-    GFF3 format file with SMART
-    """
-    Pfam_Annotation_GFF = "Pfam Annotation GFF"
-    """
-    GFF3 format file with Pfam
-    """
-    Annotation_Statistics = "Annotation Statistics"
-    """
-    Annotation statistics report
-    """
-    Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
-    """
-    Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
-    """
-    LC_FT_ICR_MS_Raw_Data = "LC FT-ICR MS Raw Data"
-    """
-    Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
-    """
-    LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
-    """
-    Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
-    """
-    GC_MS_Raw_Data = "GC-MS Raw Data"
-    """
-    Gas chromatography-mass spectrometry raw data, full scan mode.
-    """
-    Configuration_toml = "Configuration toml"
-    """
-    A configuration toml file used by various programs to store settings that are specific to their respective software.
-    """
-    LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
-    """
-    LC-MS-based lipidomics analysis results table
-    """
-    LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
-    """
-    Processed data for the LC-MS-based lipidomics analysis in hdf5 format
-    """
-    LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
-    """
-    Processed data for the LC-MS-based metabolomics analysis in hdf5 format
-    """
-    Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
-    """
-    FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
-    """
-    Analysis_Tool_Parameter_File = "Analysis Tool Parameter File"
-    """
-    A configuration file used by a single computational software tool that stores settings that are specific to that tool.
-    """
-    Workflow_Operation_Summary = "Workflow Operation Summary"
-    """
-    A human readable record of analysis steps applied during an instance of a workflow operation.
-    """
-    Metatranscriptome_Expression = "Metatranscriptome Expression"
-    """
-    Metatranscriptome expression values and read counts for gene features predicted on contigs
-    """
-    Metatranscriptome_Expression_Intergenic = "Metatranscriptome Expression Intergenic"
-    """
-    Metatranscriptome expression values and read counts for intergenic regions.
-    """
-    Metatranscriptome_Expression_Info_File = "Metatranscriptome Expression Info File"
-    """
-    File containing version information on the expression workflow
-    """
-    rRNA_Filtered_Sequencing_Reads = "rRNA Filtered Sequencing Reads"
-    """
-    File containing ribosomal reads from the read qc filtering step.
-    """
-    BAI_File = "BAI File"
-    """
-    An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
-    """
-
-
-class DoiProviderEnum(str, Enum):
-    EMSL = "emsl"
-    JGI = "jgi"
-    KBase = "kbase"
-    OSTI = "osti"
-    ESS_DIVE = "ess_dive"
-    MassIVE = "massive"
-    GSC = "gsc"
-    Zenodo = "zenodo"
-    EDI = "edi"
-    Figshare = "figshare"
-
-
-class DoiCategoryEnum(str, Enum):
-    award_doi = "award_doi"
-    """
-    A type of DOI that resolves to a funding authority.
-    """
-    dataset_doi = "dataset_doi"
-    """
-    A type of DOI that resolves to generated data.
-    """
-    publication_doi = "publication_doi"
-    """
-    A type of DOI that resolves to a publication.
-    """
-    data_management_plan_doi = "data_management_plan_doi"
-    """
-    A type of DOI that resolves to a data management plan.
-    """
-
-
-class StatusEnum(str, Enum):
-    pass = "pass"
-    fail = "fail"
-
-
-class NucleotideSequencingEnum(str, Enum):
-    Metagenome = "metagenome"
-    Metatranscriptome = "metatranscriptome"
-    Amplicon = "amplicon_sequencing_assay"
-
-
-class MassSpectrometryEnum(str, Enum):
-    Metaproteome = "metaproteome"
-    Metabolome = "metabolome"
-    Lipidome = "lipidome"
-    Natural_Organic_Matter = "nom"
-
-
-class ExtractionTargetEnum(str, Enum):
-    DNA = "DNA"
-    RNA = "RNA"
-    metabolite = "metabolite"
-    protein = "protein"
-    lipid = "lipid"
-    natural_organic_matter = "natural organic matter"
-
-
-class ProcessingInstitutionEnum(str, Enum):
-    University_of_California_San_Diego = "UCSD"
-    Joint_Genome_Institute = "JGI"
-    Environmental_Molecular_Sciences_Laboratory = "EMSL"
-    Battelle_Memorial_Institute = "Battelle"
-    Argonne_National_Laboratory = "ANL"
-    University_of_California_Davis_Genome_Center = "UCD_Genome_Center"
-    Azenta_Life_Sciences = "Azenta"
-
-
-class DataCategoryEnum(str, Enum):
-    instrument_data = "instrument_data"
-    """
-    Data generated by a DataGeneration PlannedProcess
-    """
-    processed_data = "processed_data"
-    """
-    Data generated by a WorkflowExecution PlannedProcess
-    """
-    workflow_parameter_data = "workflow_parameter_data"
-    """
-    Data used as input into a workflow providing workflow specification.
-    """
-
-
-class SampleTypeEnum(str, Enum):
-    soil = "soil"
-    soil___water_extract = "soil - water extract"
-    plant_associated = "plant associated"
-    sediment = "sediment"
-    water = "water"
-
-
-class DNASampleFormatEnum(str, Enum):
-    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
-    DNAStable = "DNAStable"
-    Ethanol = "Ethanol"
-    Low_EDTA_TE = "Low EDTA TE"
-    MDA_reaction_buffer = "MDA reaction buffer"
-    PBS = "PBS"
-    Pellet = "Pellet"
-    RNAStable = "RNAStable"
-    TE = "TE"
-    Water = "Water"
-    Gentegra_DNA = "Gentegra-DNA"
-    Gentegra_RNA = "Gentegra-RNA"
-
-
-class JgiContTypeEnum(str, Enum):
-    plate = "plate"
-    tube = "tube"
-
-
-class YesNoEnum(str, Enum):
-    """
-    replaces DnaDnaseEnum and DnaseRnaEnum
-    """
-    no = "no"
-    yes = "yes"
-
-
-class RNASampleFormatEnum(str, Enum):
-    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
-    DNAStable = "DNAStable"
-    Ethanol = "Ethanol"
-    Low_EDTA_TE = "Low EDTA TE"
-    MDA_reaction_buffer = "MDA reaction buffer"
-    PBS = "PBS"
-    Pellet = "Pellet"
-    RNAStable = "RNAStable"
-    TE = "TE"
-    Water = "Water"
-    Gentegra_DNA = "Gentegra-DNA"
-    Gentegra_RNA = "Gentegra-RNA"
-
-
-class AnalysisTypeEnum(str, Enum):
-    metabolomics = "metabolomics"
-    lipidomics = "lipidomics"
-    Metagenomics = "metagenomics"
-    """
-    Standard short-read metagenomic sequencing
-    """
-    Metagenomics_LEFT_PARENTHESISlong_readRIGHT_PARENTHESIS = "metagenomics_long_read"
-    """
-    Long-read metagenomic sequencing
-    """
-    metaproteomics = "metaproteomics"
-    metatranscriptomics = "metatranscriptomics"
-    natural_organic_matter = "natural organic matter"
-    bulk_chemistry = "bulk chemistry"
-    Amplicon_sequencing_assay = "amplicon sequencing assay"
-
-
-class SubmissionStatusEnum(str, Enum):
-    In_Progress = "InProgress"
-    """
-    The submitter is currently working on the submission.
-    """
-    Submitted___Pending_Review = "SubmittedPendingReview"
-    """
-    Submission is ready for NMDC review, the submitter cannot edit.
-    """
-    Resubmitted___Pending_review = "ResubmittedPendingReview"
-    """
-    Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit.
-    """
-    Approved___Held = "ApprovedHeld"
-    """
-    Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.
-    """
-    Pending___Sent_to_User_Facility = "PendingUserFacility"
-    """
-    Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
-    """
-    Updates_Required = "UpdatesRequired"
-    """
-    Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
-    """
-    In_Progress___UpdateSOLIDUSAddition = "InProgressUpdate"
-    """
-    NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
-    """
-    Denied = "Denied"
-    """
-    Submission has been reviewed and denied. The submitter cannot edit.
-    """
-    Released = "Released"
-    """
-    Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit.
-    """
-
-
-class MetaproteomicsAnalysisCategoryEnum(str, Enum):
-    """
-    The category of metaproteomics analysis being performed.
-    """
-    matched_metagenome = "matched_metagenome"
-    """
-    A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
-    """
-    in_silico_metagenome = "in_silico_metagenome"
-    """
-    A metaproteomics analysis that is matched to an in silico generated metagenome.
-    """
-
-
-class MetabolomicsAnalysisCategoryEnum(str, Enum):
-    """
-    The category of metabolomics analysis being performed.
-    """
-    gc_ms_metabolomics = "gc_ms_metabolomics"
-    """
-    A metabolomics analysis that is performed on gas chromatography mass spectrometry data.
-    """
-    lc_ms_lipidomics = "lc_ms_lipidomics"
-    """
-    A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.
-    """
-    lc_ms_metabolomics = "lc_ms_metabolomics"
-    """
-    A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.
-    """
-
-
 
 class EukEval(ConfiguredBaseModel):
     """
@@ -2951,13 +2951,13 @@ class EukEval(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3029,13 +3029,13 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3119,432 +3119,6 @@ class Database(ConfiguredBaseModel):
          'mixins': ['object_set']} })
 
 
-class MobilePhaseSegment(ConfiguredBaseModel):
-    """
-    A fluid mixture of substances that flow though a chromatographic stationary phase.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MobilePhaseSegment',
-         'comments': ['Can be assembled into a list to account for a gradient.',
-                      'Works best for separations that can be accounted for by a '
-                      'series of essentially linear changes in the mobile phase '
-                      'composition.',
-                      "For gradients, each segment should declare it's duration.",
-                      'For step-wise separations that might be implemented with a '
-                      'syringe and a cartridge, it will probably be more important to '
-                      'assert volumes.'],
-         'from_schema': 'https://w3id.org/nmdc/nmdc'})
-
-    duration: Optional[QuantityValue] = Field(default=None, description="""The elapsed time of an activity.""", json_schema_extra = { "linkml_meta": {'alias': 'duration',
-         'domain_of': ['MixingProcess',
-                       'DissolvingProcess',
-                       'ChemicalConversionProcess',
-                       'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
-    substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_used',
-         'domain_of': ['Extraction',
-                       'StorageProcess',
-                       'DissolvingProcess',
-                       'ChemicalConversionProcess',
-                       'MobilePhaseSegment']} })
-    type: Literal["https://w3id.org/nmdc/MobilePhaseSegment","nmdc:MobilePhaseSegment"] = Field(default="nmdc:MobilePhaseSegment", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-    volume: Optional[QuantityValue] = Field(default=None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
-         'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
-         'domain_of': ['Extraction',
-                       'SubSamplingProcess',
-                       'FiltrationProcess',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance']} })
-
-
-class PortionOfSubstance(ConfiguredBaseModel):
-    """
-    A portion of any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:PortionOfSubstance',
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'mappings': ['schema:Substance'],
-         'title': 'Portion of a Substance'})
-
-    final_concentration: Optional[QuantityValue] = Field(default=None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration',
-         'domain_of': ['PortionOfSubstance'],
-         'is_a': 'concentration'} })
-    mass: Optional[QuantityValue] = Field(default=None, title="mass", description="""A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
-         'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
-         'exact_mappings': ['PATO:0000125']} })
-    source_concentration: Optional[QuantityValue] = Field(default=None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A""", json_schema_extra = { "linkml_meta": {'alias': 'source_concentration',
-         'domain_of': ['PortionOfSubstance'],
-         'is_a': 'concentration'} })
-    known_as: Optional[ChemicalEntityEnum] = Field(default=None, description="""The substance from which a portion was taken.""", json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
-    substance_role: Optional[SubstanceRoleEnum] = Field(default=None, description="""The role of a substance in a process""", json_schema_extra = { "linkml_meta": {'alias': 'substance_role', 'domain_of': ['PortionOfSubstance']} })
-    type: Literal["https://w3id.org/nmdc/PortionOfSubstance","nmdc:PortionOfSubstance"] = Field(default="nmdc:PortionOfSubstance", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-    volume: Optional[QuantityValue] = Field(default=None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
-         'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
-         'domain_of': ['Extraction',
-                       'SubSamplingProcess',
-                       'FiltrationProcess',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance']} })
-
-
-class MagBin(ConfiguredBaseModel):
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MagBin', 'from_schema': 'https://w3id.org/nmdc/nmdc'})
-
-    bin_name: str = Field(default=..., description="""Name of the metagenome-assembled genome.""", json_schema_extra = { "linkml_meta": {'alias': 'bin_name', 'domain_of': ['MagBin']} })
-    bin_quality: Optional[BinQualityEnum] = Field(default=None, description="""The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893).""", json_schema_extra = { "linkml_meta": {'alias': 'bin_quality', 'domain_of': ['MagBin']} })
-    completeness: Optional[float] = Field(default=None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'completeness', 'domain_of': ['EukEval', 'MagBin']} })
-    contamination: Optional[float] = Field(default=None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'contamination', 'domain_of': ['EukEval', 'MagBin']} })
-    gene_count: Optional[int] = Field(default=None, description="""Number of genes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'gene_count', 'domain_of': ['MagBin']} })
-    gtdbtk_class: Optional[str] = Field(default=None, description="""Taxonomic class assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_class',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['TAXRANK:0000002'],
-         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
-    gtdbtk_domain: Optional[str] = Field(default=None, description="""Taxonomic domain assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_domain',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['TAXRANK:0000022'],
-         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
-    gtdbtk_family: Optional[str] = Field(default=None, description="""Taxonomic family assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_family',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['TAXRANK:0000004'],
-         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
-    gtdbtk_genus: Optional[str] = Field(default=None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_genus',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['TAXRANK:0000005'],
-         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
-    gtdbtk_order: Optional[str] = Field(default=None, description="""Taxonomic order assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_order',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['TAXRANK:0000003'],
-         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
-    gtdbtk_phylum: Optional[str] = Field(default=None, description="""Taxonomic phylum assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_phylum',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['TAXRANK:0000001'],
-         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
-    gtdbtk_species: Optional[str] = Field(default=None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_species',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['TAXRANK:0000006'],
-         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
-    members_id: Optional[list[str]] = Field(default=None, description="""Names of the contigs that make up a metagenome-assembled genome.""", json_schema_extra = { "linkml_meta": {'alias': 'members_id',
-         'close_mappings': ['GENEPIO:0100596'],
-         'domain_of': ['MagBin']} })
-    num_16s: Optional[int] = Field(default=None, description="""Number of 16s sequences detected, a subunit of prokaryotic ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_16s',
-         'broad_mappings': ['OMIT:0013243'],
-         'domain_of': ['MagBin']} })
-    num_23s: Optional[int] = Field(default=None, description="""Number of 23 seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_23s',
-         'broad_mappings': ['OMIT:0013245'],
-         'domain_of': ['MagBin']} })
-    num_5s: Optional[int] = Field(default=None, description="""Number of 5s seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_5s', 'broad_mappings': ['OMIT:0013248'], 'domain_of': ['MagBin']} })
-    num_t_rna: Optional[int] = Field(default=None, description="""Number of transfer transfer RNAs.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_t_rna',
-         'broad_mappings': ['OMIT:0013250'],
-         'domain_of': ['MagBin']} })
-    number_of_contig: Optional[int] = Field(default=None, description="""Number of contigs""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'number_of_contig',
-         'domain_of': ['MagBin'],
-         'exact_mappings': ['GENEPIO:0000093']} })
-    total_bases: Optional[int] = Field(default=None, description="""Total number of basepairs.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'total_bases', 'domain_of': ['MagBin']} })
-    type: Literal["https://w3id.org/nmdc/MagBin","nmdc:MagBin"] = Field(default="nmdc:MagBin", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-    eukaryotic_evaluation: Optional[EukEval] = Field(default=None, description="""Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.""", json_schema_extra = { "linkml_meta": {'alias': 'eukaryotic_evaluation', 'domain_of': ['MagBin']} })
-
-
-class MetaboliteIdentification(ConfiguredBaseModel):
-    """
-    This is used to link a metabolomics analysis workflow to a specific metabolite
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetaboliteIdentification',
-         'from_schema': 'https://w3id.org/nmdc/nmdc'})
-
-    alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
-         'domain_of': ['MetaboliteIdentification', 'NamedThing']} })
-    highest_similarity_score: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'highest_similarity_score',
-         'domain_of': ['MetaboliteIdentification'],
-         'todos': ['Yuri to fill in description']} })
-    metabolite_identified: Optional[str] = Field(default=None, description="""the specific metabolite identifier""", json_schema_extra = { "linkml_meta": {'alias': 'metabolite_identified', 'domain_of': ['MetaboliteIdentification']} })
-    type: Literal["https://w3id.org/nmdc/MetaboliteIdentification","nmdc:MetaboliteIdentification"] = Field(default="nmdc:MetaboliteIdentification", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-
-    @field_validator('alternative_identifiers')
-    def pattern_alternative_identifiers(cls, v):
-        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-
-class GenomeFeature(ConfiguredBaseModel):
-    """
-    A feature localized to an interval along a genome
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:GenomeFeature',
-         'comments': ['corresponds to an entry in GFF3'],
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'see_also': ['https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md'],
-         'slot_usage': {'end': {'name': 'end', 'required': True},
-                        'seqid': {'name': 'seqid', 'required': True},
-                        'start': {'name': 'start', 'required': True}}})
-
-    encodes: Optional[str] = Field(default=None, description="""The gene product encoded by this feature. Typically this is used for a CDS feature or gene feature which will encode a protein. It can also be used by a nc transcript ot gene feature that encoded a ncRNA""", json_schema_extra = { "linkml_meta": {'alias': 'encodes',
-         'domain_of': ['GenomeFeature'],
-         'todos': ['If we revert Reaction back into the schema, that would be a '
-                   'reasonable domain for this slot']} })
-    end: int = Field(default=..., description="""The end of the feature in positive 1-based integer coordinates""", ge=1, json_schema_extra = { "linkml_meta": {'alias': 'end',
-         'close_mappings': ['biolink:end_interbase_coordinate'],
-         'comments': ['- "unenforced constraint: end > start" - "For features that '
-                      'cross the origin of a circular feature,  end = the position of '
-                      'the end + the length of the landmark feature."'],
-         'domain_of': ['GenomeFeature'],
-         'is_a': 'gff_coordinate'} })
-    feature_type: Optional[str] = Field(default=None, description="""TODO: Yuri to write""", json_schema_extra = { "linkml_meta": {'alias': 'feature_type', 'domain_of': ['GenomeFeature']} })
-    phase: Optional[int] = Field(default=None, description="""The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.""", ge=0, le=2, json_schema_extra = { "linkml_meta": {'alias': 'phase',
-         'domain_of': ['GenomeFeature'],
-         'exact_mappings': ['biolink:phase']} })
-    seqid: str = Field(default=..., description="""The ID of the landmark used to establish the coordinate system for the current feature.""", json_schema_extra = { "linkml_meta": {'alias': 'seqid',
-         'domain_of': ['GenomeFeature'],
-         'todos': ['change range from string to a object like uriorcurie?']} })
-    start: int = Field(default=..., description="""The start of the feature in positive 1-based integer coordinates""", ge=1, json_schema_extra = { "linkml_meta": {'alias': 'start',
-         'close_mappings': ['biolink:start_interbase_coordinate'],
-         'domain_of': ['GenomeFeature'],
-         'is_a': 'gff_coordinate'} })
-    strand: Optional[str] = Field(default=None, description="""The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or  '-' (anti-sense strand or reverse strand).""", json_schema_extra = { "linkml_meta": {'alias': 'strand',
-         'domain_of': ['GenomeFeature'],
-         'exact_mappings': ['biolink:strand'],
-         'todos': ['set the range to an enum?']} })
-    type: Literal["https://w3id.org/nmdc/GenomeFeature","nmdc:GenomeFeature"] = Field(default="nmdc:GenomeFeature", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-    feature_category: Optional[ControlledIdentifiedTermValue] = Field(default=None, description="""A Sequence Ontology term that describes the category of a feature""", json_schema_extra = { "linkml_meta": {'alias': 'feature_category',
-         'domain_of': ['GenomeFeature', 'FunctionalAnnotation']} })
-
-
-class FunctionalAnnotation(ConfiguredBaseModel):
-    """
-    An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product,  or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows.  In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods
-    """
-    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:FunctionalAnnotation',
-         'from_schema': 'https://w3id.org/nmdc/nmdc',
-         'narrow_mappings': ['biolink:GeneToGoTermAssociation'],
-         'see_also': ['https://img.jgi.doe.gov/docs/functional-annotation.pdf',
-                      'https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl'],
-         'slot_usage': {'has_function': {'name': 'has_function',
-                                         'notes': ['Still missing patterns for COG and '
-                                                   'RetroRules',
-                                                   'These patterns are not yet tied to '
-                                                   'the listed prefixes.',
-                                                   'Are these lists are intended to be '
-                                                   'open examples or closed?']},
-                        'was_generated_by': {'description': 'provenance for the '
-                                                            'annotation.',
-                                             'name': 'was_generated_by',
-                                             'notes': ['To be consistent with the rest '
-                                                       'of the NMDC schema we use the '
-                                                       'PROV annotation model, rather '
-                                                       'than GPAD'],
-                                             'pattern': '^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
-                                             'range': 'MetagenomeAnnotation',
-                                             'structured_pattern': {'interpolated': True,
-                                                                    'syntax': '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'}}}})
-
-    has_function: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_function',
-         'domain_of': ['FunctionalAnnotation'],
-         'notes': ['Still missing patterns for COG and RetroRules',
-                   'These patterns are not yet tied to the listed prefixes.',
-                   'Are these lists are intended to be open examples or closed?']} })
-    subject: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'subject', 'domain_of': ['FunctionalAnnotation', 'OntologyRelation']} })
-    was_generated_by: Optional[str] = Field(default=None, description="""provenance for the annotation.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
-         'domain_of': ['FunctionalAnnotationAggMember',
-                       'FunctionalAnnotation',
-                       'DataObject'],
-         'mappings': ['prov:wasGeneratedBy'],
-         'notes': ['To be consistent with the rest of the NMDC schema we use the PROV '
-                   'annotation model, rather than GPAD'],
-         'structured_pattern': {'interpolated': True,
-                                'syntax': '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'}} })
-    type: Literal["https://w3id.org/nmdc/FunctionalAnnotation","nmdc:FunctionalAnnotation"] = Field(default="nmdc:FunctionalAnnotation", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
-         'designates_type': True,
-         'domain_of': ['EukEval',
-                       'FunctionalAnnotationAggMember',
-                       'MobilePhaseSegment',
-                       'PortionOfSubstance',
-                       'MagBin',
-                       'MetaboliteIdentification',
-                       'GenomeFeature',
-                       'FunctionalAnnotation',
-                       'AttributeValue',
-                       'NamedThing',
-                       'OntologyRelation',
-                       'FailureCategorization',
-                       'Protocol',
-                       'CreditAssociation',
-                       'Doi'],
-         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
-         'notes': ['makes it easier to read example data files',
-                   'required for polymorphic MongoDB collections'],
-         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
-                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
-         'slot_uri': 'rdf:type',
-         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
-                                                             'literal_form': 'workflow_execution_class',
-                                                             'predicate': 'NARROW_SYNONYM'}}} })
-    feature_category: Optional[ControlledIdentifiedTermValue] = Field(default=None, description="""A Sequence Ontology term that describes the category of a feature""", json_schema_extra = { "linkml_meta": {'alias': 'feature_category',
-         'domain_of': ['GenomeFeature', 'FunctionalAnnotation']} })
-
-    @field_validator('has_function')
-    def pattern_has_function(cls, v):
-        pattern=re.compile(r"^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_function format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_function format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-    @field_validator('was_generated_by')
-    def pattern_was_generated_by(cls, v):
-        pattern=re.compile(r"^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
-            for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_generated_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_generated_by format: {v}"
-            raise ValueError(err_msg)
-        return v
-
-
 class AttributeValue(ConfiguredBaseModel):
     """
     The value for any value of a attribute for a sample. This object can hold both the un-normalized atomic value and the structured value
@@ -3558,13 +3132,13 @@ class AttributeValue(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3618,13 +3192,13 @@ class QuantityValue(AttributeValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3661,13 +3235,13 @@ class ImageValue(AttributeValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3761,13 +3335,13 @@ class PersonValue(AttributeValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3811,13 +3385,13 @@ class TextValue(AttributeValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3848,13 +3422,13 @@ class TimestampValue(AttributeValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3887,13 +3461,13 @@ class ControlledTermValue(AttributeValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3926,13 +3500,13 @@ class ControlledIdentifiedTermValue(ControlledTermValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -3994,13 +3568,13 @@ class GeolocationValue(AttributeValue):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4017,6 +3591,432 @@ class GeolocationValue(AttributeValue):
          'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
                                                              'literal_form': 'workflow_execution_class',
                                                              'predicate': 'NARROW_SYNONYM'}}} })
+
+
+class MobilePhaseSegment(ConfiguredBaseModel):
+    """
+    A fluid mixture of substances that flow though a chromatographic stationary phase.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MobilePhaseSegment',
+         'comments': ['Can be assembled into a list to account for a gradient.',
+                      'Works best for separations that can be accounted for by a '
+                      'series of essentially linear changes in the mobile phase '
+                      'composition.',
+                      "For gradients, each segment should declare it's duration.",
+                      'For step-wise separations that might be implemented with a '
+                      'syringe and a cartridge, it will probably be more important to '
+                      'assert volumes.'],
+         'from_schema': 'https://w3id.org/nmdc/nmdc'})
+
+    duration: Optional[QuantityValue] = Field(default=None, description="""The elapsed time of an activity.""", json_schema_extra = { "linkml_meta": {'alias': 'duration',
+         'domain_of': ['MixingProcess',
+                       'DissolvingProcess',
+                       'ChemicalConversionProcess',
+                       'MobilePhaseSegment'],
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
+    substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_used',
+         'domain_of': ['Extraction',
+                       'StorageProcess',
+                       'DissolvingProcess',
+                       'ChemicalConversionProcess',
+                       'MobilePhaseSegment']} })
+    type: Literal["https://w3id.org/nmdc/MobilePhaseSegment","nmdc:MobilePhaseSegment"] = Field(default="nmdc:MobilePhaseSegment", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'AttributeValue',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+    volume: Optional[QuantityValue] = Field(default=None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
+         'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
+         'domain_of': ['Extraction',
+                       'SubSamplingProcess',
+                       'FiltrationProcess',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance']} })
+
+
+class PortionOfSubstance(ConfiguredBaseModel):
+    """
+    A portion of any matter of defined composition that has discrete existence, whose origin may be biological, mineral or chemical.
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:PortionOfSubstance',
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'mappings': ['schema:Substance'],
+         'title': 'Portion of a Substance'})
+
+    final_concentration: Optional[QuantityValue] = Field(default=None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination""", json_schema_extra = { "linkml_meta": {'alias': 'final_concentration',
+         'domain_of': ['PortionOfSubstance'],
+         'is_a': 'concentration'} })
+    mass: Optional[QuantityValue] = Field(default=None, title="mass", description="""A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.""", json_schema_extra = { "linkml_meta": {'alias': 'mass',
+         'domain_of': ['SubSamplingProcess', 'PortionOfSubstance'],
+         'exact_mappings': ['PATO:0000125']} })
+    source_concentration: Optional[QuantityValue] = Field(default=None, description="""When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A""", json_schema_extra = { "linkml_meta": {'alias': 'source_concentration',
+         'domain_of': ['PortionOfSubstance'],
+         'is_a': 'concentration'} })
+    known_as: Optional[ChemicalEntityEnum] = Field(default=None, description="""The substance from which a portion was taken.""", json_schema_extra = { "linkml_meta": {'alias': 'known_as', 'domain_of': ['PortionOfSubstance']} })
+    substance_role: Optional[SubstanceRoleEnum] = Field(default=None, description="""The role of a substance in a process""", json_schema_extra = { "linkml_meta": {'alias': 'substance_role', 'domain_of': ['PortionOfSubstance']} })
+    type: Literal["https://w3id.org/nmdc/PortionOfSubstance","nmdc:PortionOfSubstance"] = Field(default="nmdc:PortionOfSubstance", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'AttributeValue',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+    volume: Optional[QuantityValue] = Field(default=None, description="""The volume of a substance.""", json_schema_extra = { "linkml_meta": {'alias': 'volume',
+         'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
+         'domain_of': ['Extraction',
+                       'SubSamplingProcess',
+                       'FiltrationProcess',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance']} })
+
+
+class MagBin(ConfiguredBaseModel):
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MagBin', 'from_schema': 'https://w3id.org/nmdc/nmdc'})
+
+    bin_name: str = Field(default=..., description="""Name of the metagenome-assembled genome.""", json_schema_extra = { "linkml_meta": {'alias': 'bin_name', 'domain_of': ['MagBin']} })
+    bin_quality: Optional[BinQualityEnum] = Field(default=None, description="""The quality of the metagenome-assembled genome based on MIMAG standards (https://doi.org/10.1038/nbt.3893).""", json_schema_extra = { "linkml_meta": {'alias': 'bin_quality', 'domain_of': ['MagBin']} })
+    completeness: Optional[float] = Field(default=None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'completeness', 'domain_of': ['EukEval', 'MagBin']} })
+    contamination: Optional[float] = Field(default=None, description="""Estimate of the completeness of the metagenome-assembled genome, estimated by a tool like CheckM.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'contamination', 'domain_of': ['EukEval', 'MagBin']} })
+    gene_count: Optional[int] = Field(default=None, description="""Number of genes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'gene_count', 'domain_of': ['MagBin']} })
+    gtdbtk_class: Optional[str] = Field(default=None, description="""Taxonomic class assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_class',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['TAXRANK:0000002'],
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
+    gtdbtk_domain: Optional[str] = Field(default=None, description="""Taxonomic domain assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_domain',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['TAXRANK:0000022'],
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
+    gtdbtk_family: Optional[str] = Field(default=None, description="""Taxonomic family assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_family',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['TAXRANK:0000004'],
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
+    gtdbtk_genus: Optional[str] = Field(default=None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_genus',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['TAXRANK:0000005'],
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
+    gtdbtk_order: Optional[str] = Field(default=None, description="""Taxonomic order assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_order',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['TAXRANK:0000003'],
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
+    gtdbtk_phylum: Optional[str] = Field(default=None, description="""Taxonomic phylum assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_phylum',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['TAXRANK:0000001'],
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
+    gtdbtk_species: Optional[str] = Field(default=None, description="""Taxonomic genus assigned by GTDB-Tk.""", json_schema_extra = { "linkml_meta": {'alias': 'gtdbtk_species',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['TAXRANK:0000006'],
+         'see_also': ['doi:10.1093/bioinformatics/btz848']} })
+    members_id: Optional[list[str]] = Field(default=None, description="""Names of the contigs that make up a metagenome-assembled genome.""", json_schema_extra = { "linkml_meta": {'alias': 'members_id',
+         'close_mappings': ['GENEPIO:0100596'],
+         'domain_of': ['MagBin']} })
+    num_16s: Optional[int] = Field(default=None, description="""Number of 16s sequences detected, a subunit of prokaryotic ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_16s',
+         'broad_mappings': ['OMIT:0013243'],
+         'domain_of': ['MagBin']} })
+    num_23s: Optional[int] = Field(default=None, description="""Number of 23 seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_23s',
+         'broad_mappings': ['OMIT:0013245'],
+         'domain_of': ['MagBin']} })
+    num_5s: Optional[int] = Field(default=None, description="""Number of 5s seqeuences detected, a subunit of ribosomes.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_5s', 'broad_mappings': ['OMIT:0013248'], 'domain_of': ['MagBin']} })
+    num_t_rna: Optional[int] = Field(default=None, description="""Number of transfer transfer RNAs.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'num_t_rna',
+         'broad_mappings': ['OMIT:0013250'],
+         'domain_of': ['MagBin']} })
+    number_of_contig: Optional[int] = Field(default=None, description="""Number of contigs""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'number_of_contig',
+         'domain_of': ['MagBin'],
+         'exact_mappings': ['GENEPIO:0000093']} })
+    total_bases: Optional[int] = Field(default=None, description="""Total number of basepairs.""", ge=0, json_schema_extra = { "linkml_meta": {'alias': 'total_bases', 'domain_of': ['MagBin']} })
+    type: Literal["https://w3id.org/nmdc/MagBin","nmdc:MagBin"] = Field(default="nmdc:MagBin", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'AttributeValue',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+    eukaryotic_evaluation: Optional[EukEval] = Field(default=None, description="""Contains results from evaluating if a Metagenome-Assembled Genome is of eukaryotic lineage.""", json_schema_extra = { "linkml_meta": {'alias': 'eukaryotic_evaluation', 'domain_of': ['MagBin']} })
+
+
+class MetaboliteIdentification(ConfiguredBaseModel):
+    """
+    This is used to link a metabolomics analysis workflow to a specific metabolite
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:MetaboliteIdentification',
+         'from_schema': 'https://w3id.org/nmdc/nmdc'})
+
+    alternative_identifiers: Optional[list[str]] = Field(default=None, description="""A list of alternative identifiers for the entity.""", json_schema_extra = { "linkml_meta": {'alias': 'alternative_identifiers',
+         'domain_of': ['MetaboliteIdentification', 'NamedThing']} })
+    highest_similarity_score: Optional[float] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'highest_similarity_score',
+         'domain_of': ['MetaboliteIdentification'],
+         'todos': ['Yuri to fill in description']} })
+    metabolite_identified: Optional[str] = Field(default=None, description="""the specific metabolite identifier""", json_schema_extra = { "linkml_meta": {'alias': 'metabolite_identified', 'domain_of': ['MetaboliteIdentification']} })
+    type: Literal["https://w3id.org/nmdc/MetaboliteIdentification","nmdc:MetaboliteIdentification"] = Field(default="nmdc:MetaboliteIdentification", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'AttributeValue',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+
+    @field_validator('alternative_identifiers')
+    def pattern_alternative_identifiers(cls, v):
+        pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid alternative_identifiers format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid alternative_identifiers format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+
+class GenomeFeature(ConfiguredBaseModel):
+    """
+    A feature localized to an interval along a genome
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:GenomeFeature',
+         'comments': ['corresponds to an entry in GFF3'],
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'see_also': ['https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md'],
+         'slot_usage': {'end': {'name': 'end', 'required': True},
+                        'seqid': {'name': 'seqid', 'required': True},
+                        'start': {'name': 'start', 'required': True}}})
+
+    encodes: Optional[str] = Field(default=None, description="""The gene product encoded by this feature. Typically this is used for a CDS feature or gene feature which will encode a protein. It can also be used by a nc transcript ot gene feature that encoded a ncRNA""", json_schema_extra = { "linkml_meta": {'alias': 'encodes',
+         'domain_of': ['GenomeFeature'],
+         'todos': ['If we revert Reaction back into the schema, that would be a '
+                   'reasonable domain for this slot']} })
+    end: int = Field(default=..., description="""The end of the feature in positive 1-based integer coordinates""", ge=1, json_schema_extra = { "linkml_meta": {'alias': 'end',
+         'close_mappings': ['biolink:end_interbase_coordinate'],
+         'comments': ['- "unenforced constraint: end > start" - "For features that '
+                      'cross the origin of a circular feature,  end = the position of '
+                      'the end + the length of the landmark feature."'],
+         'domain_of': ['GenomeFeature'],
+         'is_a': 'gff_coordinate'} })
+    feature_type: Optional[str] = Field(default=None, description="""TODO: Yuri to write""", json_schema_extra = { "linkml_meta": {'alias': 'feature_type', 'domain_of': ['GenomeFeature']} })
+    phase: Optional[int] = Field(default=None, description="""The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.""", ge=0, le=2, json_schema_extra = { "linkml_meta": {'alias': 'phase',
+         'domain_of': ['GenomeFeature'],
+         'exact_mappings': ['biolink:phase']} })
+    seqid: str = Field(default=..., description="""The ID of the landmark used to establish the coordinate system for the current feature.""", json_schema_extra = { "linkml_meta": {'alias': 'seqid',
+         'domain_of': ['GenomeFeature'],
+         'todos': ['change range from string to a object like uriorcurie?']} })
+    start: int = Field(default=..., description="""The start of the feature in positive 1-based integer coordinates""", ge=1, json_schema_extra = { "linkml_meta": {'alias': 'start',
+         'close_mappings': ['biolink:start_interbase_coordinate'],
+         'domain_of': ['GenomeFeature'],
+         'is_a': 'gff_coordinate'} })
+    strand: Optional[str] = Field(default=None, description="""The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or  '-' (anti-sense strand or reverse strand).""", json_schema_extra = { "linkml_meta": {'alias': 'strand',
+         'domain_of': ['GenomeFeature'],
+         'exact_mappings': ['biolink:strand'],
+         'todos': ['set the range to an enum?']} })
+    type: Literal["https://w3id.org/nmdc/GenomeFeature","nmdc:GenomeFeature"] = Field(default="nmdc:GenomeFeature", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'AttributeValue',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+    feature_category: Optional[ControlledIdentifiedTermValue] = Field(default=None, description="""A Sequence Ontology term that describes the category of a feature""", json_schema_extra = { "linkml_meta": {'alias': 'feature_category',
+         'domain_of': ['GenomeFeature', 'FunctionalAnnotation']} })
+
+
+class FunctionalAnnotation(ConfiguredBaseModel):
+    """
+    An assignment of a function term (e.g. reaction or pathway) that is executed by a gene product,  or which the gene product plays an active role in. Functional annotations can be assigned manually by curators, or automatically in workflows.  In the context of NMDC, all function annotation is performed automatically, typically using HMM or Blast type methods
+    """
+    linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:FunctionalAnnotation',
+         'from_schema': 'https://w3id.org/nmdc/nmdc',
+         'narrow_mappings': ['biolink:GeneToGoTermAssociation'],
+         'see_also': ['https://img.jgi.doe.gov/docs/functional-annotation.pdf',
+                      'https://github.com/microbiomedata/mg_annotation/blob/master/functional-annotation.wdl'],
+         'slot_usage': {'has_function': {'name': 'has_function',
+                                         'notes': ['Still missing patterns for COG and '
+                                                   'RetroRules',
+                                                   'These patterns are not yet tied to '
+                                                   'the listed prefixes.',
+                                                   'Are these lists are intended to be '
+                                                   'open examples or closed?']},
+                        'was_generated_by': {'description': 'provenance for the '
+                                                            'annotation.',
+                                             'name': 'was_generated_by',
+                                             'notes': ['To be consistent with the rest '
+                                                       'of the NMDC schema we use the '
+                                                       'PROV annotation model, rather '
+                                                       'than GPAD'],
+                                             'pattern': '^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\\.[0-9]{1,})$',
+                                             'range': 'MetagenomeAnnotation',
+                                             'structured_pattern': {'interpolated': True,
+                                                                    'syntax': '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'}}}})
+
+    has_function: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'has_function',
+         'domain_of': ['FunctionalAnnotation'],
+         'notes': ['Still missing patterns for COG and RetroRules',
+                   'These patterns are not yet tied to the listed prefixes.',
+                   'Are these lists are intended to be open examples or closed?']} })
+    subject: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'subject', 'domain_of': ['FunctionalAnnotation', 'OntologyRelation']} })
+    was_generated_by: Optional[str] = Field(default=None, description="""provenance for the annotation.""", json_schema_extra = { "linkml_meta": {'alias': 'was_generated_by',
+         'domain_of': ['FunctionalAnnotationAggMember',
+                       'FunctionalAnnotation',
+                       'DataObject'],
+         'mappings': ['prov:wasGeneratedBy'],
+         'notes': ['To be consistent with the rest of the NMDC schema we use the PROV '
+                   'annotation model, rather than GPAD'],
+         'structured_pattern': {'interpolated': True,
+                                'syntax': '{id_nmdc_prefix}:(wfmgan)-{id_shoulder}-{id_blade}{id_version}$'}} })
+    type: Literal["https://w3id.org/nmdc/FunctionalAnnotation","nmdc:FunctionalAnnotation"] = Field(default="nmdc:FunctionalAnnotation", description="""the class_uri of the class that has been instantiated""", json_schema_extra = { "linkml_meta": {'alias': 'type',
+         'designates_type': True,
+         'domain_of': ['EukEval',
+                       'FunctionalAnnotationAggMember',
+                       'AttributeValue',
+                       'MobilePhaseSegment',
+                       'PortionOfSubstance',
+                       'MagBin',
+                       'MetaboliteIdentification',
+                       'GenomeFeature',
+                       'FunctionalAnnotation',
+                       'NamedThing',
+                       'OntologyRelation',
+                       'FailureCategorization',
+                       'Protocol',
+                       'CreditAssociation',
+                       'Doi'],
+         'examples': [{'value': 'nmdc:Biosample'}, {'value': 'nmdc:Study'}],
+         'notes': ['makes it easier to read example data files',
+                   'required for polymorphic MongoDB collections'],
+         'see_also': ['https://github.com/microbiomedata/nmdc-schema/issues/1048',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/1233',
+                      'https://github.com/microbiomedata/nmdc-schema/issues/248'],
+         'slot_uri': 'rdf:type',
+         'structured_aliases': {'workflow_execution_class': {'contexts': ['https://bitbucket.org/berkeleylab/jgi-jat/macros/nmdc_metadata.yaml'],
+                                                             'literal_form': 'workflow_execution_class',
+                                                             'predicate': 'NARROW_SYNONYM'}}} })
+    feature_category: Optional[ControlledIdentifiedTermValue] = Field(default=None, description="""A Sequence Ontology term that describes the category of a feature""", json_schema_extra = { "linkml_meta": {'alias': 'feature_category',
+         'domain_of': ['GenomeFeature', 'FunctionalAnnotation']} })
+
+    @field_validator('has_function')
+    def pattern_has_function(cls, v):
+        pattern=re.compile(r"^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid has_function format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid has_function format: {v}"
+            raise ValueError(err_msg)
+        return v
+
+    @field_validator('was_generated_by')
+    def pattern_was_generated_by(cls, v):
+        pattern=re.compile(r"^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
+        if isinstance(v, list):
+            for element in v:
+                if isinstance(element, str) and not pattern.match(element):
+                    err_msg = f"Invalid was_generated_by format: {element}"
+                    raise ValueError(err_msg)
+        elif isinstance(v, str) and not pattern.match(v):
+            err_msg = f"Invalid was_generated_by format: {v}"
+            raise ValueError(err_msg)
+        return v
 
 
 class NamedThing(ConfiguredBaseModel):
@@ -4055,13 +4055,13 @@ class NamedThing(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4145,13 +4145,13 @@ class GeneProduct(NamedThing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4243,13 +4243,13 @@ class OntologyClass(NamedThing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4334,13 +4334,13 @@ class EnvironmentalMaterialTerm(OntologyClass):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4439,13 +4439,13 @@ class ChemicalEntity(OntologyClass):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4533,13 +4533,13 @@ class FunctionalAnnotationTerm(OntologyClass):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4634,13 +4634,13 @@ class Pathway(FunctionalAnnotationTerm):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4737,13 +4737,13 @@ class OrthologyGroup(FunctionalAnnotationTerm):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4819,13 +4819,13 @@ class OntologyRelation(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4863,13 +4863,13 @@ class FailureCategorization(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -4923,13 +4923,13 @@ class MaterialEntity(NamedThing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -5010,13 +5010,13 @@ class Sample(MaterialEntity):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -11571,13 +11571,13 @@ class Biosample(Sample):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -11858,13 +11858,13 @@ class ProcessedSample(Sample):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -11957,13 +11957,13 @@ class Site(MaterialEntity):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -12131,13 +12131,13 @@ class FieldResearchSite(Site):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -12240,13 +12240,13 @@ class Instrument(MaterialEntity):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -12345,13 +12345,13 @@ class PlannedProcess(NamedThing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -12479,13 +12479,13 @@ class CollectingBiosamplesFromSite(PlannedProcess):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -12662,13 +12662,13 @@ class StorageProcess(PlannedProcess):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -12819,13 +12819,13 @@ class MaterialProcessing(PlannedProcess):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -12997,13 +12997,13 @@ class Pooling(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -13209,13 +13209,13 @@ class Extraction(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -13439,13 +13439,13 @@ class LibraryPreparation(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -13663,13 +13663,13 @@ class SubSamplingProcess(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -13853,13 +13853,13 @@ class MixingProcess(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -14063,13 +14063,13 @@ class FiltrationProcess(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -14256,13 +14256,13 @@ class ChromatographicSeparationProcess(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -14446,13 +14446,13 @@ class DissolvingProcess(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -14641,13 +14641,13 @@ class ChemicalConversionProcess(MaterialProcessing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -14742,13 +14742,13 @@ class Protocol(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -14789,13 +14789,13 @@ class CreditAssociation(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -14861,13 +14861,13 @@ class Doi(ConfiguredBaseModel):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -15311,13 +15311,13 @@ class Study(NamedThing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -15543,13 +15543,13 @@ class InformationObject(NamedThing):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -15634,13 +15634,13 @@ class Configuration(InformationObject):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -15757,13 +15757,13 @@ class MassSpectrometryConfiguration(Configuration):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -15879,13 +15879,13 @@ class ChromatographyConfiguration(Configuration):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -15974,13 +15974,13 @@ class Manifest(InformationObject):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -16091,13 +16091,13 @@ class CalibrationInformation(InformationObject):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -16243,13 +16243,13 @@ class DataObject(InformationObject):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -16389,13 +16389,13 @@ class DataEmitterProcess(PlannedProcess):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -16547,13 +16547,13 @@ class DataGeneration(DataEmitterProcess):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -16778,13 +16778,13 @@ class NucleotideSequencing(DataGeneration):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -17060,13 +17060,13 @@ class MassSpectrometry(DataGeneration):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -17345,13 +17345,13 @@ class WorkflowExecution(DataEmitterProcess):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -17550,13 +17550,13 @@ class AnnotatingWorkflow(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -17791,13 +17791,13 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -18135,13 +18135,13 @@ class MetagenomeAssembly(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -18461,13 +18461,13 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -18733,13 +18733,13 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -19003,13 +19003,13 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -19267,13 +19267,13 @@ class MagsAnalysis(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -19523,13 +19523,13 @@ class MetagenomeSequencing(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -19769,13 +19769,13 @@ class ReadQcAnalysis(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -20001,13 +20001,13 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -20240,13 +20240,13 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -20483,13 +20483,13 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -20718,13 +20718,13 @@ class NomAnalysis(WorkflowExecution):
          'designates_type': True,
          'domain_of': ['EukEval',
                        'FunctionalAnnotationAggMember',
+                       'AttributeValue',
                        'MobilePhaseSegment',
                        'PortionOfSubstance',
                        'MagBin',
                        'MetaboliteIdentification',
                        'GenomeFeature',
                        'FunctionalAnnotation',
-                       'AttributeValue',
                        'NamedThing',
                        'OntologyRelation',
                        'FailureCategorization',
@@ -20852,12 +20852,6 @@ class NomAnalysis(WorkflowExecution):
 EukEval.model_rebuild()
 FunctionalAnnotationAggMember.model_rebuild()
 Database.model_rebuild()
-MobilePhaseSegment.model_rebuild()
-PortionOfSubstance.model_rebuild()
-MagBin.model_rebuild()
-MetaboliteIdentification.model_rebuild()
-GenomeFeature.model_rebuild()
-FunctionalAnnotation.model_rebuild()
 AttributeValue.model_rebuild()
 QuantityValue.model_rebuild()
 ImageValue.model_rebuild()
@@ -20867,6 +20861,12 @@ TimestampValue.model_rebuild()
 ControlledTermValue.model_rebuild()
 ControlledIdentifiedTermValue.model_rebuild()
 GeolocationValue.model_rebuild()
+MobilePhaseSegment.model_rebuild()
+PortionOfSubstance.model_rebuild()
+MagBin.model_rebuild()
+MetaboliteIdentification.model_rebuild()
+GenomeFeature.model_rebuild()
+FunctionalAnnotation.model_rebuild()
 NamedThing.model_rebuild()
 GeneProduct.model_rebuild()
 OntologyClass.model_rebuild()
