@@ -815,8 +815,7 @@ enums:
         aliases:
           - NovaSeq 6000
           - Illumina NovaSeq 6000
-        meaning: 
-          - OBI:0002630
+        meaning: OBI:0002630
         comments:
           - Possible flowcell versions are SP, S1, S2, S4.
         see_also: 
@@ -843,9 +842,8 @@ enums:
         see_also: 
           - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
         narrow_mappings:
-          - OBI:0002022
-        #  - OBI:0003663
-        #  - OBI:0003664
+          - OBI:0003663
+          - OBI:0003664
           
       hiseq:
         aliases:
