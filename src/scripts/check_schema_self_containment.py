@@ -10,12 +10,11 @@ Files that are currently self-contained should fail if they become non-self-cont
 show warnings but not fail the test.
 """
 
-import subprocess
 import sys
 import os
-import tempfile
 import logging
 from pathlib import Path
+from linkml.generators.linkmlgen import LinkmlGenerator
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
@@ -39,24 +38,24 @@ SELF_CONTAINED_FILES = {
 
 def run_linkml_generate(file_path):
     """
-    Run linkml generate on a file and return (success, stderr).
+    Run linkml generate on a file and return (success, error_message).
     
     Args:
         file_path: Path to the YAML file to process
         
     Returns:
-        tuple: (bool success, str stderr)
+        tuple: (bool success, str error_message)
     """
     try:
-        result = subprocess.run(
-            ["poetry", "run", "linkml", "generate", "linkml", "--format", "yaml", file_path],
-            capture_output=True,
-            text=True,
-            check=False
-        )
-        return result.returncode == 0, result.stderr
-    except subprocess.SubprocessError as e:
-        return False, f"Subprocess error: {e}"
+        # Create LinkML generator instance
+        generator = LinkmlGenerator(file_path)
+        
+        # Try to generate the YAML (this will raise an exception if it fails)
+        _ = generator.serialize()
+        
+        return True, ""
+    except Exception as e:
+        return False, str(e)
 
 def main():
     """Main function to check schema self-containment."""
