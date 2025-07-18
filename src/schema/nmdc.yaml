@@ -14,12 +14,8 @@ license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.0
 
 imports:
-  - linkml:types
-  - attribute_values_classes
   - annotation # also brings core and portal_*
   - workflow_execution_activity
-  - basic_classes
-  - basic_slots
 
 prefixes:
   BFO: "http://purl.obolibrary.org/obo/BFO_"
