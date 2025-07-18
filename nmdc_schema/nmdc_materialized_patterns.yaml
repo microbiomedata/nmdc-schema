@@ -5349,6 +5349,11 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     range: SamplePortionEnum
     multivalued: true
+  name:
+    name: name
+    description: A human readable label for an entity
+    from_schema: https://w3id.org/nmdc/nmdc
+    range: string
   term:
     name: term
     description: pointer to an ontology class
@@ -6540,11 +6545,6 @@ slots:
     range: uriorcurie
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
-  name:
-    name: name
-    description: A human readable label for an entity
-    from_schema: https://w3id.org/nmdc/nmdc
-    range: string
   title:
     name: title
     description: A name given to the entity that differs from the name/label programmatically
