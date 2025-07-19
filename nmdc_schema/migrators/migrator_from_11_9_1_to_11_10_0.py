@@ -395,8 +395,13 @@ class Migrator(MigratorBase):
         
         # Check if `has_unit` is missing or is None
         if 'has_unit' not in quantity_value or quantity_value['has_unit'] is None:
-            # Try to infer unit from document type and path
-            unit = self._infer_unit_from_context(full_document, path)
+            # Check for special cases where we can extract unit from raw_value
+            unit = self._handle_one_off_unit_cases(quantity_value, doc_type, field_name, None)
+            
+            # If no special case, try to infer unit from document type and path
+            if not unit:
+                unit = self._infer_unit_from_context(full_document, path)
+            
             if unit:
                 quantity_value['has_unit'] = unit
                 # Track record update: missing → unit
@@ -564,7 +569,7 @@ class Migrator(MigratorBase):
                     self._get_unit_for_class_slot(lookup_class_uri, slot_name, current_unit)
                     # If no mapping found, just report it but don't change the value
     
-    def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, slot_name: str, current_unit: str) -> bool:
+    def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, slot_name: str, current_unit: str) -> Optional[str]:
         r"""
         Handle special one-off unit conversion cases that don't fit the general pattern.
         
@@ -572,27 +577,62 @@ class Migrator(MigratorBase):
             quantity_value (dict): The QuantityValue instance to potentially modify
             class_uri (str): The class URI (e.g., "nmdc:Biosample")
             slot_name (str): The slot name (e.g., "nitrate")
-            current_unit (str): The current unit value
+            current_unit (str): The current unit value (None if missing)
             
         Returns:
-            bool: True if a one-off case was handled, False otherwise
+            str or None: The extracted/converted unit, or None if not handled
         """
-        # Special case: Biosample nitrate with "detection" unit should become "umol/L"
-        if class_uri == "nmdc:Biosample" and slot_name == "nitrate" and current_unit == "detection":
-            quantity_value['has_unit'] = "umol/L"
-            # Track this special conversion
-            self.reporter.track_record_updated(
-                class_name=class_uri,
-                slot_name=slot_name,
-                subclass_type=class_uri,
-                source_unit=current_unit,
-                target_unit="umol/L"
-            )
-            return True
+        # Handle missing units by extracting from has_raw_value
+        if current_unit is None:
+            # Special case: Biosample salinity - extract specific units from has_raw_value
+            if class_uri == "nmdc:Biosample" and slot_name == "salinity":
+                raw_value = quantity_value.get('has_raw_value')
+                if raw_value and isinstance(raw_value, str):
+                    extracted_unit = self._extract_salinity_unit(raw_value)
+                    if extracted_unit:
+                        return extracted_unit
+
+            # Special case: Biosample carb_nitro_ratio - set unit to "1" (dimensionless)
+            if class_uri == "nmdc:Biosample" and slot_name == "carb_nitro_ratio":
+                return "1"
         
-        # Add other one-off cases here as needed
+        # Handle existing units that need conversion
+        else:
+            # Special case: Biosample nitrate with "detection" unit should become "umol/L"
+            if class_uri == "nmdc:Biosample" and slot_name == "nitrate" and current_unit == "detection":
+                quantity_value['has_unit'] = "umol/L"
+                # Track this special conversion
+                self.reporter.track_record_updated(
+                    class_name=class_uri,
+                    slot_name=slot_name,
+                    subclass_type=class_uri,
+                    source_unit=current_unit,
+                    target_unit="umol/L"
+                )
+                return "umol/L"  # Return the unit to indicate it was handled
+
+        return None
+    
+    def _extract_salinity_unit(self, raw_value: str) -> Optional[str]:
+        """
+        Extract specific salinity units from a raw value string.
+        Only looks for: mgL → mg/L, mg/L → mg/L, % → %
         
-        return False
+        Args:
+            raw_value: The raw value string that may contain salinity units
+            
+        Returns:
+            str or None: The normalized unit, or None if not found
+        """
+        # Look for specific salinity units only
+        if 'mgL' in raw_value:
+            return 'mg/L'
+        elif 'mg/L' in raw_value:
+            return 'mg/L'  
+        elif '%' in raw_value:
+            return '%'
+        
+        return None
     
     def _get_unit_for_class_slot(self, class_uri: str, slot_name: str, current_unit_value: str = None) -> Optional[str]:
         r"""
