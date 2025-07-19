@@ -202,7 +202,7 @@ class Migrator(MigratorBase):
         Only processes collections that actually exist in the Database class slots.
         
         Args:
-            classes_with_quantity_value_slots: Dictionary mapping class names to their QuantityValue slots
+            classes_with_quantity_value_slots: Mapping of classes to their QuantityValue slots (currently unused)
             session: MongoDB session for transaction support
         """
         # Get the actual collection names from the Database class slots
@@ -220,7 +220,7 @@ class Migrator(MigratorBase):
                 
                 # The recursive traversal will handle all nested QuantityValue objects
                 # regardless of their class type, so we don't need to pass specific slots
-                modified_document = self.ensure_quantity_value_has_unit(document, [], "", document)
+                modified_document = self.ensure_quantity_value_has_unit(document)
                 
                 # Only update if the document was actually modified
                 if modified_document != original_document:
@@ -306,10 +306,7 @@ class Migrator(MigratorBase):
         
         return alias_to_canonical
 
-    def ensure_quantity_value_has_unit(self, document: dict,
-                                       quantity_value_slots: list,
-                                       class_uri: str,
-                                       full_document: dict = None) -> dict:
+    def ensure_quantity_value_has_unit(self, document: dict) -> dict:
         r"""
         Ensures that all QuantityValue instances in a document have non-null has_unit values.
         
@@ -318,37 +315,34 @@ class Migrator(MigratorBase):
         
         Args:
             document (dict): A document from the database
-            quantity_value_slots (list): List of slot names that have QuantityValue range (unused in new approach)
-            class_uri (str): The class URI (e.g., "nmdc:Biosample")
-            full_document (dict): The full document for context
             
         Returns:
             dict: The modified document with has_unit values added to QuantityValue instances
         """
         
         # Recursively traverse the entire document to find all QuantityValue instances
-        self._traverse_and_fix_quantity_values(document, full_document)
+        self._traverse_and_fix_quantity_values(document, document_root=document)
         
         return document
     
     def _traverse_and_fix_quantity_values(self,
                                           obj: any,
-                                          full_document: dict,
+                                          document_root: dict,
                                           path: str = "") -> None:
-        r"""
+        """
         Recursively traverses an object to find and fix QuantityValue instances.
         
         Args:
             obj: The object to traverse (dict, list, or other)
-            full_document: The full document for context
+            document_root: The root document for context (e.g., to get document type)
             path: Current path in the document (for debugging)
         """
         if isinstance(obj, dict):
             # Check if this is a QuantityValue instance
             if obj.get('type') == 'nmdc:QuantityValue':
                 # This is a QuantityValue, try to add/fix its unit AND track it
-                self._fix_quantity_value_unit(obj, full_document, path)
-                self._track_quantity_value_processed(obj, full_document, path)
+                self._fix_quantity_value_unit(obj, document_root, path)
+                self._track_quantity_value_processed(obj, document_root, path)
             else:
                 # Quick optimization: only recurse into values that could contain QuantityValue objects
                 # Skip simple string/number values and common metadata fields
@@ -359,17 +353,18 @@ class Migrator(MigratorBase):
                         continue  # Skip simple scalar values
                     
                     new_path = f"{path}.{key}" if path else key
-                    self._traverse_and_fix_quantity_values(value, full_document, new_path)
+                    self._traverse_and_fix_quantity_values(value, document_root, new_path)
         elif isinstance(obj, list):
             # Recurse into list items
             for i, item in enumerate(obj):
                 new_path = f"{path}[{i}]"
-                self._traverse_and_fix_quantity_values(item, full_document, new_path)
+                self._traverse_and_fix_quantity_values(item, document_root, new_path)
     
-    def _track_quantity_value_processed(self, quantity_value: dict, full_document: dict, path: str) -> None:
+    def _track_quantity_value_processed(self, quantity_value: dict, document_root: dict, path: str) -> None:
         """Track all QuantityValue instances for the summary table."""
-        doc_type = full_document.get('type', 'unknown')
-        field_name = path.split('.')[-1]
+        root_collection_class = document_root.get('type', 'nmdc:Unknown')
+        most_specific_class = self._get_most_specific_class_for_reporting(document_root, path)
+        clean_schema_path = self._get_clean_schema_path(path)
         current_unit = quantity_value.get('has_unit', '<missing>')
         
         # Only track if we have a valid unit (not missing and not unmapped)
@@ -377,46 +372,52 @@ class Migrator(MigratorBase):
             # Check if this unit is valid (either canonical or has a mapping)
             if current_unit in self._unit_alias_map:
                 # This is a valid unit - track as processed
-                self.reporter.track_record_processed(doc_type, field_name, doc_type, current_unit)
+                self.reporter.track_record_processed(root_collection_class, clean_schema_path, most_specific_class, current_unit)
     
-    def _fix_quantity_value_unit(self, quantity_value: dict, full_document: dict, path: str) -> None:
+    def _fix_quantity_value_unit(self, quantity_value: dict, document_root: dict, path: str) -> None:
         r"""
         Attempts to fix a QuantityValue instance by adding or normalizing its unit.
         
         Args:
             quantity_value: The QuantityValue instance to fix
-            full_document: The full document for context
+            document_root: The full document for context
             path: Path to this QuantityValue in the document
         """
-        # Get context information for reporting
-        doc_type = full_document.get('type', 'unknown')
-        field_name = path.split('.')[-1]
+        # Get root collection class for reporting (the class that has a MongoDB collection)
+        root_collection_class = document_root.get('type', 'nmdc:Unknown')
+        # Get clean schema path without array indices for reporting
+        clean_schema_path = self._get_clean_schema_path(path)
         
         # Check if `has_unit` is missing or is None
         if 'has_unit' not in quantity_value or quantity_value['has_unit'] is None:
+            # Get most specific class for unit lookup (for special cases)
+            most_specific_class = self._get_most_specific_class_for_reporting(document_root, path)
+            
             # Check for special cases where we can extract unit from raw_value
-            unit = self._handle_one_off_unit_cases(quantity_value, doc_type, field_name, None)
+            unit = self._handle_one_off_unit_cases(quantity_value, most_specific_class, path, None)
             
             # If no special case, try to infer unit from document type and path
             if not unit:
-                unit = self._infer_unit_from_context(full_document, path)
+                unit = self._infer_unit_from_context(document_root, path)
             
             if unit:
                 quantity_value['has_unit'] = unit
                 # Track record update: missing → unit
                 self.reporter.track_record_updated(
-                    class_name=doc_type,
-                    slot_name=field_name, 
-                    subclass_type=doc_type,
+                    class_name=root_collection_class,
+                    slot_name=clean_schema_path, 
+                    subclass_type=most_specific_class,
                     source_unit="<missing>",
                     target_unit=unit
                 )
             else:
                 # Report missing unit
-                self.reporter.track_missing_unit(doc_type, field_name)
+                self.reporter.track_missing_unit(root_collection_class, clean_schema_path)
         else:
             # has_unit exists, check if it needs normalization
             current_unit = quantity_value['has_unit']
+            # Get most specific class for unit lookup (for special cases)
+            most_specific_class = self._get_most_specific_class_for_reporting(document_root, path)
             
             # Check if current unit is an alias that should be normalized
             if current_unit in self._unit_alias_map:
@@ -427,27 +428,27 @@ class Migrator(MigratorBase):
                     quantity_value['has_unit'] = canonical_unit
                     # Track unit normalization
                     self.reporter.track_record_updated(
-                        class_name=doc_type,
-                        slot_name=field_name,
-                        subclass_type=doc_type,
+                        class_name=root_collection_class,
+                        slot_name=clean_schema_path,
+                        subclass_type=most_specific_class,
                         source_unit=current_unit,
                         target_unit=canonical_unit
                     )
             else:
                 # Check for special one-off cases first
-                if self._handle_one_off_unit_cases(quantity_value, doc_type, field_name, current_unit):
+                if self._handle_one_off_unit_cases(quantity_value, most_specific_class, path, current_unit):
                     # One-off case was handled, nothing more to do
                     pass
                 elif current_unit in self._unit_alias_map and self._unit_alias_map[current_unit] == current_unit:
                     # Unit is already valid canonical form - track as processed but not updated
-                    self.reporter.track_record_processed(doc_type, field_name, doc_type, current_unit)
+                    self.reporter.track_record_processed(root_collection_class, clean_schema_path, most_specific_class, current_unit)
                 else:
                     # Unit is not in the alias map - report it for analysis
-                    self.reporter.track_unmapped_unit(doc_type, field_name, current_unit)
+                    self.reporter.track_unmapped_unit(root_collection_class, clean_schema_path, current_unit)
     
     def _infer_unit_from_context(self, full_document: dict, path: str) -> Optional[str]:
         r"""
-        Attempts to infer the appropriate unit for a QuantityValue based on document context.
+        Infers the appropriate unit for a QuantityValue using schema-driven type resolution.
         
         Args:
             full_document: The full document for context
@@ -456,60 +457,132 @@ class Migrator(MigratorBase):
         Returns:
             str or None: The inferred unit, or None if not found
         """
-        # Get the document type for context
+        # Parse path into components, filtering out array indices
+        path_parts = self._parse_schema_path(path)
+        if not path_parts:
+            return None
+        
+        field_name = path_parts[-1]
+        slot_path = path_parts[:-1]  # All parts except the final field name
+        
+        # Start with document's root class
         doc_type = full_document.get('type', 'nmdc:Unknown')
+        root_class = doc_type.replace('nmdc:', '') if doc_type.startswith('nmdc:') else doc_type
         
-        # Extract the field name from the path
-        # e.g., "substances_used[0].volume" -> "volume"
-        field_name = path.split('.')[-1]
+        # Use schema to resolve the class context for this field
+        target_class = self._resolve_class_from_schema_path(root_class, slot_path)
+        if target_class:
+            return self._get_unit_for_class_slot(f"nmdc:{target_class}", field_name, None)
         
-        # Try to find unit mapping
-        unit = self._get_unit_for_class_slot(doc_type, field_name, None)
-        
-        # If not found with document type, try with nested object types
-        if not unit:
-            # Look for nested object types in the path
-            parts = path.split('.')
-            for i, part in enumerate(parts):
-                if '[' in part:  # This is a list access
-                    # Try to find the type of objects in this list
-                    list_path = '.'.join(parts[:i+1])
-                    obj_type = self._get_nested_object_type(full_document, list_path)
-                    if obj_type:
-                        unit = self._get_unit_for_class_slot(obj_type, field_name, None)
-                        if unit:
-                            break
-        
-        return unit
+        # Fallback to document type if schema resolution fails
+        return self._get_unit_for_class_slot(doc_type, field_name, None)
     
-    def _get_nested_object_type(self, document: dict, path: str) -> Optional[str]:
+    def _parse_schema_path(self, path: str) -> List[str]:
         r"""
-        Attempts to get the type of the nested object from a path.
+        Parses a document path into schema-relevant components, filtering out array indices.
         
         Args:
-            document: The document to search
-            path: Path to the object (e.g., "substances_used[0]")
+            path: Path like "substances_used[0].volume" or "extraction.input_mass"
             
         Returns:
-            str or None: The type of the object, or None if not found
+            List of schema slot names: ["substances_used", "volume"] or ["extraction", "input_mass"]
         """
+        if not path:
+            return []
+        
+        parts = []
+        for part in path.split('.'):
+            if '[' in part:
+                # Extract slot name, ignore array index
+                slot_name = part.split('[')[0]
+                if slot_name:  # Only add non-empty slot names
+                    parts.append(slot_name)
+            else:
+                parts.append(part)
+        
+        return parts
+    
+    def _get_clean_schema_path(self, path: str) -> str:
+        """
+        Converts a document path with array indices to a clean schema path for reporting.
+        
+        Args:
+            path: Path like "substances_used[0].volume" or "extraction.input_mass"
+            
+        Returns:
+            Clean schema path: "substances_used.volume" or "extraction.input_mass"
+        """
+        if not path:
+            return "root"
+        
+        # Parse and rejoin without array indices
+        schema_parts = self._parse_schema_path(path)
+        return '.'.join(schema_parts) if schema_parts else "root"
+    
+    def _resolve_class_from_schema_path(self, root_class: str, slot_path: List[str]) -> Optional[str]:
+        r"""
+        Uses schema definitions to resolve the target class for a nested slot path.
+        
+        Args:
+            root_class: Starting class name (without nmdc: prefix)
+            slot_path: List of slot names leading to the target field
+            
+        Returns:
+            str or None: The resolved class name (without nmdc: prefix), or None if not found
+        """
+        if not slot_path:
+            return root_class
+        
+        current_class = root_class
+        
         try:
-            # Simple path traversal - could be made more robust
-            parts = path.split('.')
-            current = document
+            for slot_name in slot_path:
+                # Get the slot definition for this class
+                slot_def = self._schema_view.induced_slot(slot_name, current_class)
+                if not slot_def or not slot_def.range:
+                    return None
+                
+                # Move to the range class
+                current_class = slot_def.range
+                
+            return current_class
             
-            for part in parts:
-                if '[' in part:
-                    # Handle array access
-                    field_name = part.split('[')[0]
-                    index = int(part.split('[')[1].split(']')[0])
-                    current = current[field_name][index]
-                else:
-                    current = current[part]
-            
-            return current.get('type')
-        except (KeyError, IndexError, ValueError):
+        except Exception:
+            # If schema traversal fails, return None
             return None
+    
+    def _get_most_specific_class_for_reporting(self, document_root: dict, path: str) -> str:
+        """
+        Determines the most specific class type for reporting purposes.
+        For nested objects, uses schema resolution to find the immediate parent class.
+        
+        Args:
+            document_root: The root document for fallback context
+            path: Path to the QuantityValue in the document
+            
+        Returns:
+            str: The most specific class URI (e.g., "nmdc:PortionOfSubstance")
+        """
+        # Parse path to get components leading to the QuantityValue
+        path_parts = self._parse_schema_path(path)
+        if not path_parts:
+            return document_root.get('type', 'unknown')
+        
+        # Remove the final field name to get the path to the containing object
+        container_path = path_parts[:-1] if len(path_parts) > 1 else []
+        
+        # Start with document's root class
+        doc_type = document_root.get('type', 'nmdc:Unknown')
+        root_class = doc_type.replace('nmdc:', '') if doc_type.startswith('nmdc:') else doc_type
+        
+        # Use schema to resolve the class context for the container
+        if container_path:
+            target_class = self._resolve_class_from_schema_path(root_class, container_path)
+            if target_class:
+                return f"nmdc:{target_class}"
+        
+        # Fallback to document type
+        return doc_type
     
     def _add_unit_to_quantity_value(self, quantity_value: dict, class_uri: str, slot_name: str, full_document: dict = None) -> None:
         r"""
@@ -568,7 +641,7 @@ class Migrator(MigratorBase):
                     self._get_unit_for_class_slot(lookup_class_uri, slot_name, current_unit)
                     # If no mapping found, just report it but don't change the value
     
-    def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, slot_name: str, current_unit: str) -> Optional[str]:
+    def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, path: str, current_unit: str) -> Optional[str]:
         """
         Handle special one-off unit conversion cases.
 
@@ -578,12 +651,14 @@ class Migrator(MigratorBase):
         Args:
             quantity_value (dict): The QuantityValue instance to potentially modify
             class_uri (str): The class URI (e.g., "nmdc:Biosample")
-            slot_name (str): The slot name (e.g., "nitrate")
+            path (str): The full path to the QuantityValue field (e.g., "substances_used[0].volume")
             current_unit (str): The current unit value (None if missing)
             
         Returns:
             str or None: The extracted/converted unit, or None if not handled
         """
+        # Extract the field name from the path
+        slot_name = path.split('.')[-1] if path else ""
         # Handle missing units by extracting from has_raw_value
         if current_unit is None:
             # Special case: Biosample salinity - extract specific units from has_raw_value
