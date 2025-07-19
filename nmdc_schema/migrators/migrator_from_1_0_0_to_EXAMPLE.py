@@ -33,21 +33,45 @@ class Migrator(MigratorBase):
                   with different types of data stores (e.g. MongoDB database, Python dictionary).
 
               --> As part of creating a new "migrator" class, you will implement an `upgrade` function.
+              
+        TUTORIAL: Example showing complete migration workflow with reporting:
+        
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = {
+        ...     "study_set": [
+        ...         {"id": "study1", "name": "Research Project"},
+        ...         {"id": "study2"}  # study without name
+        ...     ]
+        ... }
+        >>> m = Migrator(DictionaryAdapter(database))
+        >>> m.upgrade()
+        Processing collection: study_set
+        >>> # Check transformation results
+        >>> database["study_set"][0]["names"]
+        ['Research Project']
+        >>> "name" in database["study_set"][0]
+        False
+        >>> database["study_set"][1]["names"]
+        []
+        >>> # Check new collections were created
+        >>> len(database["comment_set"])
+        2
+        >>> len(database["report_set"])
+        2
         """
-
-        # Process each document in the specified collection.
+        
+        # TUTORIAL: In this example, we will pass each document in the `study_set` collection through
+        #           a processing pipeline that consists of a single function: `self.allow_multiple_names`.
         #
-        # Note: In this example, we will pass each document in the `study_set` collection through
-        #       a processing pipeline that consists of a single function: `self.allow_multiple_names`.
-        #
+        print("Processing collection: study_set")
         self.adapter.process_each_document("study_set", [self.allow_multiple_names])
 
-        # Create and populate a collection that doesn't exist in the `_from_version` schema.
+        # TUTORIAL: Create and populate a collection that doesn't exist in the `_from_version` schema.
         self.adapter.create_collection("comment_set")
         self.adapter.insert_document("comment_set", {"id": 1, "text": "Hello"})
         self.adapter.insert_document("comment_set", {"id": 2, "text": "Goodbye"})
 
-        # Advanced: Create and populate another new collection; based upon the documents in a _different_ collection.
+        # TUTORIAL: Advanced: Create and populate another new collection; based upon the documents in a _different_ collection.
         self.adapter.create_collection("report_set")
         self.adapter.do_for_each_document("comment_set", self.create_report_based_upon_comment)
 
@@ -89,6 +113,11 @@ class Migrator(MigratorBase):
         {'id': 123, 'names': ['My project']}
         >>> m.allow_multiple_names({'id': 123, 'name': 'My project', 'foo': 'bar'})  # test: preserves other keys
         {'id': 123, 'foo': 'bar', 'names': ['My project']}
+        >>> # Test edge cases
+        >>> m.allow_multiple_names({'id': 456, 'name': ''})  # test: handles empty name
+        {'id': 456, 'names': ['']}
+        >>> m.allow_multiple_names({'id': 789, 'names': ['existing']})  # test: overwrites existing names
+        {'id': 789, 'names': []}
         """
 
         # optional log message
@@ -115,6 +144,24 @@ class Migrator(MigratorBase):
 
         Note: Although this function will be passed a document from the `comment_set` collection,
               the function will actually modify a *different* collection instead.
+              
+        TUTORIAL: This demonstrates how to process documents from one collection and create
+                  new documents in a different collection during migration.
+                  
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = {"comment_set": [], "report_set": []}
+        >>> m = Migrator(DictionaryAdapter(database))
+        >>> comment = {"id": 1, "text": "Hello world"}
+        >>> m.create_report_based_upon_comment(comment)
+        >>> len(database["report_set"])
+        1
+        >>> database["report_set"][0]["body"]
+        'Someone wrote Hello world'
+        >>> # Test with empty text
+        >>> comment_empty = {"id": 2, "text": ""}
+        >>> m.create_report_based_upon_comment(comment_empty)
+        >>> database["report_set"][1]["body"]
+        'Someone wrote '
         """
         report = {"body": f"Someone wrote {comment['text']}"}
         self.adapter.insert_document(collection_name="report_set", document=report)

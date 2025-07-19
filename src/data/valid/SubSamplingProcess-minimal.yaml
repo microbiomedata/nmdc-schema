@@ -14,7 +14,7 @@ volume:
 temperature:
   type: nmdc:QuantityValue
   has_numeric_value: 25
-  has_unit: C
+  has_unit: Cel
 mass:
   type: nmdc:QuantityValue
   has_numeric_value: 30
