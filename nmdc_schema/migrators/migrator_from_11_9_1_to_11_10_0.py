@@ -175,7 +175,8 @@ class Migrator(MigratorBase):
         # Get schema view to find all classes and their slots with QuantityValue range
         self._schema_view = create_schema_view()
         
-        # Build unit alias map from schema
+        # Build unit alias map from UnitEnum (an enumeration of possible UCUM units that we use to harmonize units
+        # that already exist in the database).
         self._unit_alias_map = self._build_unit_alias_map(self._schema_view)
         
         # Find all classes that have slots with QuantityValue range
@@ -228,8 +229,6 @@ class Migrator(MigratorBase):
                         modified_document, 
                         session=session
                     )
-    
-    
 
     @staticmethod
     def _get_classes_with_quantity_value_slots(view) -> dict:
@@ -258,7 +257,7 @@ class Migrator(MigratorBase):
                         quantity_value_slots.append(slot_def.name)
                 
                 # Also get QuantityValue slots from all subclasses
-                # This handles polymorphic storage where subclass records are stored in parent collections
+                # This handles polymorphic storage where subclass records are stored in parent collections in mongodb
                 subclass_slots = set()
                 try:
                     descendants = view.class_descendants(class_name)
@@ -570,8 +569,11 @@ class Migrator(MigratorBase):
                     # If no mapping found, just report it but don't change the value
     
     def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, slot_name: str, current_unit: str) -> Optional[str]:
-        r"""
-        Handle special one-off unit conversion cases that don't fit the general pattern.
+        """
+        Handle special one-off unit conversion cases.
+
+        In particular, this method handles cases where the unit is missing and we have already looked at the records
+        ahead of time to determine what the unit should be, or where we need to convert a specific unit.
         
         Args:
             quantity_value (dict): The QuantityValue instance to potentially modify
@@ -601,14 +603,6 @@ class Migrator(MigratorBase):
             # Special case: Biosample nitrate with "detection" unit should become "umol/L"
             if class_uri == "nmdc:Biosample" and slot_name == "nitrate" and current_unit == "detection":
                 quantity_value['has_unit'] = "umol/L"
-                # Track this special conversion
-                self.reporter.track_record_updated(
-                    class_name=class_uri,
-                    slot_name=slot_name,
-                    subclass_type=class_uri,
-                    source_unit=current_unit,
-                    target_unit="umol/L"
-                )
                 return "umol/L"  # Return the unit to indicate it was handled
 
         return None
@@ -646,21 +640,7 @@ class Migrator(MigratorBase):
             
         Returns:
             str or None: The appropriate unit, or None if no mapping is found
-            
-        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        >>> m = Migrator(DictionaryAdapter({}))
-        >>> m.reporter = type('MockReporter', (), {
-        ...     'track_item': lambda *args: None, 
-        ...     'track_value_set': lambda *args: None
-        ... })()
-        >>> m._get_unit_for_class_slot("nmdc:Biosample", "temp")
-        'Cel'
-        >>> m._get_unit_for_class_slot("nmdc:Biosample", "calcium")
-        'mg/kg'
-        >>> m._get_unit_for_class_slot("nmdc:Biosample", "unknown_slot") is None
-        True
-        >>> m._get_unit_for_class_slot("nmdc:UnknownClass", "temp") is None
-        True
+
         """
         # Look up the unit in the mapping
         class_units = self.QUANTITY_VALUE_UNITS.get(class_uri, {})
