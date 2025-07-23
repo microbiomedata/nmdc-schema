@@ -842,8 +842,9 @@ enums:
           - Possible flowcell versions are 1.5B, 10B, 25B. Only difference between X and X Plus is 2 flowcells for X Plus versus 1 flowcell for X.
         see_also: 
           - https://www.illumina.com/systems/sequencing-platforms/novaseq-x-plus/specifications.html
-        narrow_mappings:
+        exact_mappings:
           - OBI:0003663
+        narrow_mappings:
           - OBI:0003664
           
       hiseq:
