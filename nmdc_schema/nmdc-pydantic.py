@@ -1534,10 +1534,6 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of parts per million.
     """
-    umolSOLIDUSm2SOLIDUSs = "umol/m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micro-Einsteins per square meter per second.
-    """
     uSSOLIDUScm = "uS/cm"
     """
     The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
@@ -1581,6 +1577,10 @@ class UnitEnum(str, Enum):
     umolSOLIDUSkg = "umol/kg"
     """
     The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
+    """
+    umolSOLIDUSm2SOLIDUSs = "umol/m2/s"
+    """
+    The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.
     """
     mgSOLIDUSm3 = "mg/m3"
     """

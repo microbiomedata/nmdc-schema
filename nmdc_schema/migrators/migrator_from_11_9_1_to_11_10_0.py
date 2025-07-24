@@ -137,7 +137,7 @@ class Migrator(MigratorBase):
             "photon_flux": "[arb'U]{micro_Einsteins}/m2/s",
             "conduc": "uS/cm",
             "solar_irradiance": "W/m2",
-            "chlorophyll": "ug/L"
+            "chlorophyll": "micromol/L"
         },
         "nmdc:ChemicalConversionProcess": {
             "temperature": "Cel",
@@ -407,12 +407,12 @@ class Migrator(MigratorBase):
                     class_name=root_collection_class,
                     slot_name=clean_schema_path, 
                     subclass_type=most_specific_class,
-                    source_unit="<missing>",
-                    target_unit=unit
+                    source_value="<missing>",
+                    target_value=unit
                 )
             else:
                 # Report missing unit
-                self.reporter.track_missing_unit(root_collection_class, clean_schema_path)
+                self.reporter.track_missing_value(root_collection_class, clean_schema_path)
         else:
             # has_unit exists, check if it needs normalization
             current_unit = quantity_value['has_unit']
@@ -431,8 +431,8 @@ class Migrator(MigratorBase):
                         class_name=root_collection_class,
                         slot_name=clean_schema_path,
                         subclass_type=most_specific_class,
-                        source_unit=current_unit,
-                        target_unit=canonical_unit
+                        source_value=current_unit,
+                        target_value=canonical_unit
                     )
             else:
                 # Check for special one-off cases first
@@ -444,7 +444,7 @@ class Migrator(MigratorBase):
                     self.reporter.track_record_processed(root_collection_class, clean_schema_path, most_specific_class, current_unit)
                 else:
                     # Unit is not in the alias map - report it for analysis
-                    self.reporter.track_unmapped_unit(root_collection_class, clean_schema_path, current_unit)
+                    self.reporter.track_unmapped_value(root_collection_class, clean_schema_path, current_unit)
     
     def _infer_unit_from_context(self, full_document: dict, path: str) -> Optional[str]:
         r"""

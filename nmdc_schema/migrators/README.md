@@ -67,11 +67,11 @@ Here's how you can create a new migrator:
 
 ## Adding Migration Reporting
 
-To add consistent reporting to a new migrator:
+To add runtime reporting to a new migrator:
 
 1. **Import the reporter**:
    ```python
-   from nmdc_schema.migrators.utils.migration_reporter import create_immediate_reporter
+   from nmdc_schema.migrators.utils.migration_reporter import create_migration_reporter
    import logging
    ```
 
@@ -80,41 +80,54 @@ To add consistent reporting to a new migrator:
    def upgrade(self):
        logging.basicConfig(level=logging.INFO, format='%(message)s')
        self.logger.setLevel(logging.INFO)
-       reporter = create_immediate_reporter(self.logger)
+       self.reporter = create_migration_reporter(self.logger)
    ```
 
-3. **Wrap collection processing**:
+3. **Track record changes**:
    ```python
-   reporter.start_collection(collection_name)
+   # Track records that were updated/processed
+   self.reporter.track_record_updated(
+       class_name="nmdc:Biosample",           # MongoDB collection class
+       slot_name="field_name",                # Field or path that was updated
+       subclass_type="nmdc:Biosample",        # Most specific class (may be nested)
+       source_value="old_value",              # Original value
+       target_value="new_value"               # Updated value
+   )
    
-   # Process documents...
-   docs_updated = 0
-   for document in collection.find():
-       # Do migration work...
-       if modified:
-           docs_updated += 1
-   
-   reporter.end_collection(collection_name, total_docs, docs_updated)
+   # Track records that were already conformant (no changes needed)
+   self.reporter.track_record_processed(
+       class_name="nmdc:Biosample",
+       slot_name="field_name", 
+       subclass_type="nmdc:Biosample",
+       value="existing_value"
+   )
    ```
 
-4. **Track operations**:
+4. **Track unmapped or missing values**:
    ```python
-   # Count operations: reporter.track_operation(type, key, count)
-   reporter.track_operation('fields_added', 'names', 1)
+   # Track values that couldn't be mapped/processed
+   self.reporter.track_unmapped_value(
+       class_name="nmdc:Biosample",
+       slot_name="field_name",
+       value="unmappable_value"
+   )
    
-   # Track unique items: reporter.track_item(type, item)
-   reporter.track_item('collections_modified', 'study_set')
-   
-   # Track nested values: reporter.track_value_set(type, key, value)  
-   reporter.track_value_set('errors_by_collection', 'study_set', 'missing_id')
+   # Track fields that were missing expected values
+   self.reporter.track_missing_value(
+       class_name="nmdc:Biosample", 
+       slot_name="field_name"
+   )
    ```
 
 5. **Generate final report**:
    ```python
-   reporter.generate_final_report()
+   self.reporter.generate_final_report()
    ```
 
-See `migrator_from_1_0_0_to_EXAMPLE.py` for a complete example. 
+The reporter generates three tables:
+- **Records Updated**: Shows what was changed (Class, SubClassType, Slot, Count, Source Value, Target Value)
+- **Unmapped Values**: Shows values that couldn't be processed
+- **Missing Values**: Shows fields that were missing expected values 
 
 ## Testing the migrator
 
