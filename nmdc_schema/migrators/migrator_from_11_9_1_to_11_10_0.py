@@ -340,9 +340,8 @@ class Migrator(MigratorBase):
         if isinstance(obj, dict):
             # Check if this is a QuantityValue instance
             if obj.get('type') == 'nmdc:QuantityValue':
-                # This is a QuantityValue, try to add/fix its unit AND track it
+                # This is a QuantityValue, try to add/fix its unit
                 self._fix_quantity_value_unit(obj, document_root, path)
-                self._track_quantity_value_processed(obj, document_root, path)
             else:
                 # Quick optimization: only recurse into values that could contain QuantityValue objects
                 # Skip simple string/number values and common metadata fields
@@ -359,20 +358,6 @@ class Migrator(MigratorBase):
             for i, item in enumerate(obj):
                 new_path = f"{path}[{i}]"
                 self._traverse_and_fix_quantity_values(item, document_root, new_path)
-    
-    def _track_quantity_value_processed(self, quantity_value: dict, document_root: dict, path: str) -> None:
-        """Track all QuantityValue instances for the summary table."""
-        root_collection_class = document_root.get('type', 'nmdc:Unknown')
-        most_specific_class = self._get_most_specific_class_for_reporting(document_root, path)
-        clean_schema_path = self._get_clean_schema_path(path)
-        current_unit = quantity_value.get('has_unit', '<missing>')
-        
-        # Only track if we have a valid unit (not missing and not unmapped)
-        if current_unit != '<missing>':
-            # Check if this unit is valid (either canonical or has a mapping)
-            if current_unit in self._unit_alias_map:
-                # This is a valid unit - track as processed
-                self.reporter.track_record_processed(root_collection_class, clean_schema_path, most_specific_class, current_unit)
     
     def _fix_quantity_value_unit(self, quantity_value: dict, document_root: dict, path: str) -> None:
         r"""
@@ -410,6 +395,13 @@ class Migrator(MigratorBase):
                     source_value="<missing>",
                     target_value=unit
                 )
+                # Also track that it's now conformant
+                self.reporter.track_record_processed(
+                    class_name=root_collection_class,
+                    slot_name=clean_schema_path,
+                    subclass_type=most_specific_class,
+                    value=unit
+                )
             else:
                 # Report missing unit
                 self.reporter.track_missing_value(root_collection_class, clean_schema_path)
@@ -434,13 +426,42 @@ class Migrator(MigratorBase):
                         source_value=current_unit,
                         target_value=canonical_unit
                     )
+                    # Also track that it's now conformant
+                    self.reporter.track_record_processed(
+                        class_name=root_collection_class,
+                        slot_name=clean_schema_path,
+                        subclass_type=most_specific_class,
+                        value=canonical_unit
+                    )
+                else:
+                    # Unit is already in canonical form - track as conformant
+                    self.reporter.track_record_processed(
+                        class_name=root_collection_class,
+                        slot_name=clean_schema_path,
+                        subclass_type=most_specific_class,
+                        value=current_unit
+                    )
             else:
                 # Check for special one-off cases first
-                if self._handle_one_off_unit_cases(quantity_value, most_specific_class, path, current_unit):
-                    # One-off case was handled, nothing more to do
-                    pass
+                handled_unit = self._handle_one_off_unit_cases(quantity_value, most_specific_class, path, current_unit)
+                if handled_unit:
+                    # One-off case was handled - track the change
+                    self.reporter.track_record_updated(
+                        class_name=root_collection_class,
+                        slot_name=clean_schema_path,
+                        subclass_type=most_specific_class,
+                        source_value=current_unit or "<missing>",
+                        target_value=handled_unit
+                    )
+                    # Also track that it's now conformant
+                    self.reporter.track_record_processed(
+                        class_name=root_collection_class,
+                        slot_name=clean_schema_path,
+                        subclass_type=most_specific_class,
+                        value=handled_unit
+                    )
                 elif current_unit in self._unit_alias_map and self._unit_alias_map[current_unit] == current_unit:
-                    # Unit is already valid canonical form - track as processed but not updated
+                    # Unit is already valid canonical form - track as conformant
                     self.reporter.track_record_processed(root_collection_class, clean_schema_path, most_specific_class, current_unit)
                 else:
                     # Unit is not in the alias map - report it for analysis

@@ -125,7 +125,7 @@ To add runtime reporting to a new migrator:
    ```
 
 The reporter generates three tables:
-- **Records Updated**: Shows what was changed (Class, SubClassType, Slot, Count, Source Value, Target Value)
+- **Records Updated**: Shows what was changed (Class, SubClassType, Slot, Source Value, Conformant, Non-Conf, Updated, Target Value)
 - **Unmapped Values**: Shows values that couldn't be processed
 - **Missing Values**: Shows fields that were missing expected values 
 
