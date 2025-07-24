@@ -1,4 +1,5 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.utils.migration_reporter import create_migration_reporter
 
 
 class Migrator(MigratorBase):
@@ -19,6 +20,10 @@ class Migrator(MigratorBase):
     """
     _from_version = "1.0.0"  # https://github.com/microbiomedata/nmdc-schema/blob/1.0.0/
     _to_version = "EXAMPLE"  # in practice, this would be a real schema version; e.g., "7.8.0"
+
+    def __init__(self, adapter: AdapterBase = None, logger=None):
+        super().__init__(adapter, logger)
+        self.reporter = None
 
     def upgrade(self):
         r"""
@@ -44,8 +49,11 @@ class Migrator(MigratorBase):
         ...     ]
         ... }
         >>> m = Migrator(DictionaryAdapter(database))
-        >>> m.upgrade()
+        >>> m.upgrade()  # doctest: +ELLIPSIS
         Processing collection: study_set
+        ...
+        MIGRATION SUMMARY
+        ...
         >>> # Check transformation results
         >>> database["study_set"][0]["names"]
         ['Research Project']
@@ -59,6 +67,9 @@ class Migrator(MigratorBase):
         >>> len(database["report_set"])
         2
         """
+        
+        # TUTORIAL: Initialize the migration reporter to track changes during migration
+        self.reporter = create_migration_reporter(self.logger)
         
         # TUTORIAL: In this example, we will pass each document in the `study_set` collection through
         #           a processing pipeline that consists of a single function: `self.allow_multiple_names`.
@@ -74,6 +85,9 @@ class Migrator(MigratorBase):
         # TUTORIAL: Advanced: Create and populate another new collection; based upon the documents in a _different_ collection.
         self.adapter.create_collection("report_set")
         self.adapter.do_for_each_document("comment_set", self.create_report_based_upon_comment)
+        
+        # TUTORIAL: Generate final migration report showing what was changed
+        self.reporter.generate_final_report()
 
     def allow_multiple_names(self, study: dict) -> dict:
         """
@@ -134,6 +148,23 @@ class Migrator(MigratorBase):
             original_name = study["name"]
             study["names"].append(original_name)
             del study["name"]
+            
+            # TUTORIAL: Track that we updated this record (converted single name to names list)
+            self.reporter.track_record_updated(
+                class_name="nmdc:Study",
+                slot_name="name", 
+                subclass_type="nmdc:Study",
+                source_value=original_name,
+                target_value=f"[{original_name}]"
+            )
+        else:
+            # TUTORIAL: Track that we processed this record, but it had no name to convert
+            self.reporter.track_record_processed(
+                class_name="nmdc:Study",
+                slot_name="names",
+                subclass_type="nmdc:Study", 
+                value="[empty_list]"
+            )
 
         # Return the transformed dictionary.
         return study
