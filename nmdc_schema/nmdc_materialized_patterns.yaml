@@ -2159,10 +2159,13 @@ enums:
         text: mm
         description: The Unified Code for Units of Measure (UCUM) representation of
           millimeter.
-      ml/L:
-        text: ml/L
+      mL/L:
+        text: mL/L
         description: The Unified Code for Units of Measure (UCUM) representation of
           milliliters per liter.
+        aliases:
+        - ml/L
+        - milliliters per liter
       mmol/L:
         text: mmol/L
         description: The Unified Code for Units of Measure (UCUM) representation of

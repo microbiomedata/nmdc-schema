@@ -1518,7 +1518,7 @@ class UnitEnum(str, Enum):
     """
     The Unified Code for Units of Measure (UCUM) representation of millimeter.
     """
-    mlSOLIDUSL = "ml/L"
+    mLSOLIDUSL = "mL/L"
     """
     The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
     """

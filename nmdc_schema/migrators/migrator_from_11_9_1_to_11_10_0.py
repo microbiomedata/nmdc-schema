@@ -395,13 +395,6 @@ class Migrator(MigratorBase):
                     source_value="<missing>",
                     target_value=unit
                 )
-                # Also track that it's now conformant
-                self.reporter.track_record_processed(
-                    class_name=root_collection_class,
-                    slot_name=clean_schema_path,
-                    subclass_type=most_specific_class,
-                    value=unit
-                )
             else:
                 # Report missing unit
                 self.reporter.track_missing_value(root_collection_class, clean_schema_path)
@@ -426,13 +419,6 @@ class Migrator(MigratorBase):
                         source_value=current_unit,
                         target_value=canonical_unit
                     )
-                    # Also track that it's now conformant
-                    self.reporter.track_record_processed(
-                        class_name=root_collection_class,
-                        slot_name=clean_schema_path,
-                        subclass_type=most_specific_class,
-                        value=canonical_unit
-                    )
                 else:
                     # Unit is already in canonical form - track as conformant
                     self.reporter.track_record_processed(
@@ -452,13 +438,6 @@ class Migrator(MigratorBase):
                         subclass_type=most_specific_class,
                         source_value=current_unit or "<missing>",
                         target_value=handled_unit
-                    )
-                    # Also track that it's now conformant
-                    self.reporter.track_record_processed(
-                        class_name=root_collection_class,
-                        slot_name=clean_schema_path,
-                        subclass_type=most_specific_class,
-                        value=handled_unit
                     )
                 elif current_unit in self._unit_alias_map and self._unit_alias_map[current_unit] == current_unit:
                     # Unit is already valid canonical form - track as conformant

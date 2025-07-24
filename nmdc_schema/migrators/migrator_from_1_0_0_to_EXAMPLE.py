@@ -1,6 +1,10 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
+from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.utils.migration_reporter import create_migration_reporter
 
+import logging
+
+logging.basicConfig(level=logging.INFO, format='%(message)s')
 
 class Migrator(MigratorBase):
     """
@@ -49,11 +53,8 @@ class Migrator(MigratorBase):
         ...     ]
         ... }
         >>> m = Migrator(DictionaryAdapter(database))
-        >>> m.upgrade()  # doctest: +ELLIPSIS
+        >>> result = m.upgrade()
         Processing collection: study_set
-        ...
-        MIGRATION SUMMARY
-        ...
         >>> # Check transformation results
         >>> database["study_set"][0]["names"]
         ['Research Project']
@@ -67,7 +68,7 @@ class Migrator(MigratorBase):
         >>> len(database["report_set"])
         2
         """
-        
+        self.logger.setLevel(logging.INFO)
         # TUTORIAL: Initialize the migration reporter to track changes during migration
         self.reporter = create_migration_reporter(self.logger)
         
@@ -87,7 +88,8 @@ class Migrator(MigratorBase):
         self.adapter.do_for_each_document("comment_set", self.create_report_based_upon_comment)
         
         # TUTORIAL: Generate final migration report showing what was changed
-        self.reporter.generate_final_report()
+        if self.reporter:
+            self.reporter.generate_final_report()
 
     def allow_multiple_names(self, study: dict) -> dict:
         """
@@ -150,21 +152,23 @@ class Migrator(MigratorBase):
             del study["name"]
             
             # TUTORIAL: Track that we updated this record (converted single name to names list)
-            self.reporter.track_record_updated(
-                class_name="nmdc:Study",
-                slot_name="name", 
-                subclass_type="nmdc:Study",
-                source_value=original_name,
-                target_value=f"[{original_name}]"
-            )
+            if self.reporter:
+                self.reporter.track_record_updated(
+                    class_name="nmdc:Study",
+                    slot_name="name", 
+                    subclass_type="nmdc:Study",
+                    source_value=original_name,
+                    target_value=f"[{original_name}]"
+                )
         else:
             # TUTORIAL: Track that we processed this record, but it had no name to convert
-            self.reporter.track_record_processed(
-                class_name="nmdc:Study",
-                slot_name="names",
-                subclass_type="nmdc:Study", 
-                value="[empty_list]"
-            )
+            if self.reporter:
+                self.reporter.track_record_processed(
+                    class_name="nmdc:Study",
+                    slot_name="names",
+                    subclass_type="nmdc:Study", 
+                    value="[empty_list]"
+                )
 
         # Return the transformed dictionary.
         return study

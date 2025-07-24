@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-24T11:49:56
+# Generation date: 2025-07-24T16:49:08
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -7860,9 +7860,9 @@ class UnitEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="mg/L",
                 description="The Unified Code for Units of Measure (UCUM) representation of milligrams per liter."))
-        setattr(cls, "ml/L",
+        setattr(cls, "mL/L",
             PermissibleValue(
-                text="ml/L",
+                text="mL/L",
                 description="The Unified Code for Units of Measure (UCUM) representation of milliliters per liter."))
         setattr(cls, "mmol/L",
             PermissibleValue(
