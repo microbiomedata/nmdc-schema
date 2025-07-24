@@ -3370,6 +3370,9 @@ class EukEval(ConfiguredBaseModel):
 
 
 class FunctionalAnnotationAggMember(ConfiguredBaseModel):
+    """
+    This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.
+    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:FunctionalAnnotationAggMember',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'count': {'description': 'The number of sequences (for a '
@@ -3466,7 +3469,7 @@ class Database(ConfiguredBaseModel):
     field_research_site_set: Optional[list[FieldResearchSite]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'field_research_site_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
-    functional_annotation_agg: Optional[list[FunctionalAnnotationAggMember]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'functional_annotation_agg', 'domain_of': ['Database']} })
+    functional_annotation_agg: Optional[list[FunctionalAnnotationAggMember]] = Field(default=None, description="""This property links a database object to a set of functional annotation aggregation (agg) results.""", json_schema_extra = { "linkml_meta": {'alias': 'functional_annotation_agg', 'domain_of': ['Database']} })
     functional_annotation_set: Optional[list[FunctionalAnnotation]] = Field(default=None, description="""This property links a database object to the set of all functional annotations""", json_schema_extra = { "linkml_meta": {'alias': 'functional_annotation_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })

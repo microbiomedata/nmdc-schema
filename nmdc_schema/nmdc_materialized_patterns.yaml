@@ -5578,6 +5578,8 @@ slots:
     required: true
   functional_annotation_agg:
     name: functional_annotation_agg
+    description: This property links a database object to a set of functional annotation
+      aggregation (agg) results.
     from_schema: https://w3id.org/nmdc/nmdc
     range: FunctionalAnnotationAggMember
     multivalued: true
@@ -20362,6 +20364,8 @@ classes:
       title: calibration_object_if_not_internal_calibration
   FunctionalAnnotationAggMember:
     name: FunctionalAnnotationAggMember
+    description: This class is used to store aggregated results from workflows which
+      produce functional annotations such as metaproteomics and metagenomics.
     from_schema: https://w3id.org/nmdc/nmdc
     slots:
     - was_generated_by

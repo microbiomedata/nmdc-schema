@@ -6790,6 +6790,7 @@
                     ]
                 },
                 "functional_annotation_agg": {
+                    "description": "This property links a database object to a set of functional annotation aggregation (agg) results.",
                     "items": {
                         "$ref": "#/$defs/FunctionalAnnotationAggMember"
                     },
@@ -8441,7 +8442,7 @@
         },
         "FunctionalAnnotationAggMember": {
             "additionalProperties": false,
-            "description": "",
+            "description": "This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.",
             "properties": {
                 "count": {
                     "description": "The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.",
@@ -15973,6 +15974,7 @@
             ]
         },
         "functional_annotation_agg": {
+            "description": "This property links a database object to a set of functional annotation aggregation (agg) results.",
             "items": {
                 "$ref": "#/$defs/FunctionalAnnotationAggMember"
             },

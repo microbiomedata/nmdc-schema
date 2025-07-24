@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-19T17:30:28
+# Generation date: 2025-07-24T10:51:03
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -459,6 +459,10 @@ class EukEval(YAMLRoot):
 
 @dataclass(repr=False)
 class FunctionalAnnotationAggMember(YAMLRoot):
+    """
+    This class is used to store aggregated results from workflows which produce functional annotations such as
+    metaproteomics and metagenomics.
+    """
     _inherited_slots: ClassVar[list[str]] = []
 
     class_class_uri: ClassVar[URIRef] = NMDC["FunctionalAnnotationAggMember"]
