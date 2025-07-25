@@ -1634,7 +1634,7 @@ slots:
     examples:
       - value:
           has_numeric_value: 2
-          has_unit: hours
+          has_unit: h
   temperature:
     range: QuantityValue
     notes:

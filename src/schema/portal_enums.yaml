@@ -18,7 +18,7 @@ enums:
       water:
   DNASampleFormatEnum:
     permissible_values:
-      10 mM Tris-HCl: { }
+      "10 mmol/L Tris-HCl": { }
       DNAStable: { }
       Ethanol: { }
       Low EDTA TE: { }
@@ -41,8 +41,8 @@ enums:
       'yes': { }
   RNASampleFormatEnum:
     permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
+      "10 mmol/L Tris-HCl":
+        text: 10 mmol/L Tris-HCl
       DNAStable:
         text: DNAStable
       Ethanol:

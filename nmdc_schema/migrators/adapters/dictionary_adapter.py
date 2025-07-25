@@ -434,3 +434,9 @@ class DictionaryAdapter(AdapterBase):
             for document in self._db[collection_name]:
                 if source_field_name in document:
                     document[destination_field_name] = document[source_field_name]
+
+    def get_database(self):
+        r"""
+        Returns the database instance (dictionary) for direct access.
+        """
+        return self._db
