@@ -96,7 +96,9 @@ pydantic:
 all: site
 site: clean site-clean gen-project gendoc \
 nmdc_schema/gold-to-mixs.sssom.tsv \
-nmdc_schema/nmdc_materialized_patterns.schema.json nmdc_schema/nmdc_materialized_patterns.yaml \
+nmdc_schema/nmdc_materialized_patterns.schema.json \
+nmdc_schema/nmdc_materialized_patterns.yaml \
+nmdc_schema/nmdc_materialized_patterns.json \
 migration-doctests \
 prefixmaps \
 pydantic
@@ -281,6 +283,9 @@ nmdc_schema/nmdc_materialized_patterns.schema.json: nmdc_schema/nmdc_materialize
 		--closed \
 		--include-range-class-descendants \
 		--top-class Database $< > $@
+
+nmdc_schema/nmdc_materialized_patterns.json: nmdc_schema/nmdc_materialized_patterns.yaml
+	yq -o json < $< > $@
 
 # the sssom/ files should be double checked too... they're probably not all SSSSOM files
 nmdc_schema/gold-to-mixs.sssom.tsv: sssom/gold-to-mixs.sssom.tsv
