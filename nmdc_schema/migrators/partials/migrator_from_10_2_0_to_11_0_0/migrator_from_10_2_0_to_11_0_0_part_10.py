@@ -27,39 +27,48 @@ class Migrator(MigratorBase):
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
 
-        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
-        >>> database = {
-        ...     "data_object_set": [
-        ...         {'id': 1},
-        ...         {'id': 2, 'type': 'old'}
-        ...     ],
-        ...     "library_preparation_set": [
-        ...         {'id': 1},
-        ...         {'id': 2, 'type': 'old'},
-        ...         {'id': 3, 'protocol_link': {'name': 'nombre'}},
-        ...         {'id': 4, 'protocol_link': {'name': 'nombre', 'type': 'old'}}
-        ...     ],
-        ... }
-        >>> m = Migrator(adapter=DictionaryAdapter(database=database))
-        >>> m.upgrade()
-        >>> all(document['type'] == 'nmdc:DataObject' for document in database['data_object_set'])
-        True
-        >>> all(document['type'] == 'nmdc:LibraryPreparation' for document in database['library_preparation_set'])
-        True
+        Note: We added a prefix, `SKIP: `, to the doctests in this method to prevent them from being run.
+              Reasons for skipping: The tests target a function that uses a `SchemaView` that is bound to
+              the schema currently in the repository. That function requires that specific schema elements
+              be defined in the schema, and those elements are no longer defined in the schema. Note that
+              the prefix string is arbitrary (I chose "SKIP: " in an attempt to be self-documenting).
 
-        Confirm a `type` field has been added to the inline `protocol_link` instance that lacked one.
-        >>> library_prep_3 = next(document for document in database['library_preparation_set'] if document['id'] == 3)
-        >>> library_prep_3['protocol_link']['name']
-        'nombre'
-        >>> library_prep_3['protocol_link']['type']
-        'nmdc:Protocol'
+        >>> from sys import stderr
+        >>> print("⚠️  Skipping doctests", file=stderr)
 
-        Confirm the `type` value has been updated on the inline `protocol_link` instance that had an incorrect one.
-        >>> library_prep_4 = next(document for document in database['library_preparation_set'] if document['id'] == 4)
-        >>> library_prep_4['protocol_link']['name']
-        'nombre'
-        >>> library_prep_4['protocol_link']['type']
-        'nmdc:Protocol'
+        SKIP: >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        SKIP: >>> database = {
+        SKIP: ...     "data_object_set": [
+        SKIP: ...         {'id': 1},
+        SKIP: ...         {'id': 2, 'type': 'old'}
+        SKIP: ...     ],
+        SKIP: ...     "library_preparation_set": [
+        SKIP: ...         {'id': 1},
+        SKIP: ...         {'id': 2, 'type': 'old'},
+        SKIP: ...         {'id': 3, 'protocol_link': {'name': 'nombre'}},
+        SKIP: ...         {'id': 4, 'protocol_link': {'name': 'nombre', 'type': 'old'}}
+        SKIP: ...     ],
+        SKIP: ... }
+        SKIP: >>> m = Migrator(adapter=DictionaryAdapter(database=database))
+        SKIP: >>> m.upgrade()
+        SKIP: >>> all(document['type'] == 'nmdc:DataObject' for document in database['data_object_set'])
+        SKIP: True
+        SKIP: >>> all(document['type'] == 'nmdc:LibraryPreparation' for document in database['library_preparation_set'])
+        SKIP: True
+        SKIP:
+        SKIP: Confirm a `type` field has been added to the inline `protocol_link` instance that lacked one.
+        SKIP: >>> library_prep_3 = next(document for document in database['library_preparation_set'] if document['id'] == 3)
+        SKIP: >>> library_prep_3['protocol_link']['name']
+        SKIP: 'nombre'
+        SKIP: >>> library_prep_3['protocol_link']['type']
+        SKIP: 'nmdc:Protocol'
+        SKIP:
+        SKIP: Confirm the `type` value has been updated on the inline `protocol_link` instance that had an incorrect one.
+        SKIP: >>> library_prep_4 = next(document for document in database['library_preparation_set'] if document['id'] == 4)
+        SKIP: >>> library_prep_4['protocol_link']['name']
+        SKIP: 'nombre'
+        SKIP: >>> library_prep_4['protocol_link']['type']
+        SKIP: 'nmdc:Protocol'
         """
 
         # Get a dictionary of slots and the class uris of their range if they have inlined classes as their range.
