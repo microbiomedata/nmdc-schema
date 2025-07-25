@@ -1,9 +1,15 @@
 from adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view, logger
-from nmdc_schema.migrators.migration_reporter import create_migration_reporter
+from nmdc_schema.migrators.migration_reporter import (
+    create_migration_reporter, 
+    get_most_specific_class_for_reporting,
+    parse_schema_path,
+    get_clean_schema_path,
+    resolve_class_from_schema_path
+)
 from pymongo.client_session import ClientSession
-from typing import Optional, Set, Dict, List
+from typing import Optional, List
 from functools import lru_cache
 import logging
 import copy
@@ -108,7 +114,13 @@ class Migrator(MigratorBase):
     >>> m = Migrator(DictionaryAdapter(database))
     >>> # Initialize required dependencies for standalone testing
     >>> from nmdc_schema.migrators.helpers import create_schema_view
-    >>> from nmdc_schema.migrators.migration_reporter import create_migration_reporter
+    >>> from nmdc_schema.migrators.migration_reporter import (
+    create_migration_reporter, 
+    get_most_specific_class_for_reporting,
+    parse_schema_path,
+    get_clean_schema_path,
+    resolve_class_from_schema_path
+)
     >>> m._schema_view = create_schema_view()
     >>> m._unit_alias_map = m._build_unit_alias_map(m._schema_view)
     >>> m.reporter = create_migration_reporter(m.logger)
@@ -261,7 +273,7 @@ class Migrator(MigratorBase):
         """
         Migrates all QuantityValue instances in records to have non-null has_unit values conformant to enumeration PVs.
 
-        All operations are wrapped in a MongoDB transaction for atomicity and rollback capability.
+        All operations are wrapped in a MongoDB transaction for rollback capability.
         All actions are logged in a reporter class so that we can see some statistics at the end of the migration.
         
         Args:
@@ -473,12 +485,12 @@ class Migrator(MigratorBase):
         # Get root collection class for reporting (the class that has a MongoDB collection)
         root_collection_class = document_root.get('type', 'nmdc:Unknown')
         # Get clean schema path without array indices for reporting
-        clean_schema_path = self._get_clean_schema_path(path)
+        clean_schema_path = get_clean_schema_path(path)
         
         # Check if `has_unit` is missing or is None
         if 'has_unit' not in quantity_value or quantity_value['has_unit'] is None:
             # Get most specific class for unit lookup (for special cases)
-            most_specific_class = self._get_most_specific_class_for_reporting(document_root, path)
+            most_specific_class = get_most_specific_class_for_reporting(self._schema_view, document_root, path)
             
             # Check for special cases where we can extract unit from raw_value
             unit = self._handle_one_off_unit_cases(quantity_value, most_specific_class, path, None)
@@ -504,7 +516,7 @@ class Migrator(MigratorBase):
             # has_unit exists, check if it needs normalization
             current_unit = quantity_value['has_unit']
             # Get most specific class for unit lookup (for special cases)
-            most_specific_class = self._get_most_specific_class_for_reporting(document_root, path)
+            most_specific_class = get_most_specific_class_for_reporting(self._schema_view, document_root, path)
             
             # Check if current unit is an alias that should be normalized
             if current_unit in self._unit_alias_map:
@@ -560,7 +572,7 @@ class Migrator(MigratorBase):
             str or None: The inferred unit, or None if not found
         """
         # Parse path into components, filtering out array indices
-        path_parts = self._parse_schema_path(path)
+        path_parts = parse_schema_path(path)
         if not path_parts:
             return None
         
@@ -572,119 +584,12 @@ class Migrator(MigratorBase):
         root_class = doc_type.replace('nmdc:', '') if doc_type.startswith('nmdc:') else doc_type
         
         # Use schema to resolve the class context for this field
-        target_class = self._resolve_class_from_schema_path(root_class, slot_path)
+        target_class = resolve_class_from_schema_path(self._schema_view, root_class, slot_path)
         if target_class:
             return self._get_unit_for_class_slot(f"nmdc:{target_class}", field_name, None)
         
         # Fallback to document type if schema resolution fails
         return self._get_unit_for_class_slot(doc_type, field_name, None)
-    
-    def _parse_schema_path(self, path: str) -> List[str]:
-        r"""
-        Parses a document path into schema-relevant components, filtering out array indices.
-        
-        Args:
-            path: Path like "substances_used[0].volume" or "extraction.input_mass"
-            
-        Returns:
-            List of schema slot names: ["substances_used", "volume"] or ["extraction", "input_mass"]
-        """
-        if not path:
-            return []
-        
-        parts = []
-        for part in path.split('.'):
-            if '[' in part:
-                # Extract slot name, ignore array index
-                slot_name = part.split('[')[0]
-                if slot_name:  # Only add non-empty slot names
-                    parts.append(slot_name)
-            else:
-                parts.append(part)
-        
-        return parts
-    
-    def _get_clean_schema_path(self, path: str) -> str:
-        """
-        Converts a document path with array indices to a clean schema path for reporting.
-        
-        Args:
-            path: Path like "substances_used[0].volume" or "extraction.input_mass"
-            
-        Returns:
-            Clean schema path: "substances_used.volume" or "extraction.input_mass"
-        """
-        if not path:
-            return "root"
-        
-        # Parse and rejoin without array indices
-        schema_parts = self._parse_schema_path(path)
-        return '.'.join(schema_parts) if schema_parts else "root"
-    
-    def _resolve_class_from_schema_path(self, root_class: str, slot_path: List[str]) -> Optional[str]:
-        r"""
-        Uses schema definitions to resolve the target class for a nested slot path.
-        
-        Args:
-            root_class: Starting class name (without nmdc: prefix)
-            slot_path: List of slot names leading to the target field
-            
-        Returns:
-            str or None: The resolved class name (without nmdc: prefix), or None if not found
-        """
-        if not slot_path:
-            return root_class
-        
-        current_class = root_class
-        
-        try:
-            for slot_name in slot_path:
-                # Get the slot definition for this class
-                slot_def = self._schema_view.induced_slot(slot_name, current_class)
-                if not slot_def or not slot_def.range:
-                    return None
-                
-                # Move to the range class
-                current_class = slot_def.range
-                
-            return current_class
-            
-        except Exception:
-            # If schema traversal fails, return None
-            return None
-    
-    def _get_most_specific_class_for_reporting(self, document_root: dict, path: str) -> str:
-        """
-        Determines the most specific class type for reporting purposes.
-        For nested objects, uses schema resolution to find the immediate parent class.
-        
-        Args:
-            document_root: The root document for fallback context
-            path: Path to the QuantityValue in the document
-            
-        Returns:
-            str: The most specific class URI (e.g., "nmdc:PortionOfSubstance")
-        """
-        # Parse path to get components leading to the QuantityValue
-        path_parts = self._parse_schema_path(path)
-        if not path_parts:
-            return document_root.get('type', 'unknown')
-        
-        # Remove the final field name to get the path to the containing object
-        container_path = path_parts[:-1] if len(path_parts) > 1 else []
-        
-        # Start with document's root class
-        doc_type = document_root.get('type', 'nmdc:Unknown')
-        root_class = doc_type.replace('nmdc:', '') if doc_type.startswith('nmdc:') else doc_type
-        
-        # Use schema to resolve the class context for the container
-        if container_path:
-            target_class = self._resolve_class_from_schema_path(root_class, container_path)
-            if target_class:
-                return f"nmdc:{target_class}"
-        
-        # Fallback to document type
-        return doc_type
     
     def _add_unit_to_quantity_value(self, quantity_value: dict, class_uri: str, slot_name: str, full_document: dict = None) -> None:
         r"""
