@@ -3,7 +3,11 @@
 Script to run a specific migrator against a MongoDB database using PyMongo.
 
 Usage:
-    python run_migrator.py migrator_from_11_9_1_to_11_10_0 [--host localhost] [--port 27022] [--database nmdc]
+    python run_migrator.py migrator_from_11_9_1_to_11_10_0 [commit|rollback] [--host localhost] [--port 27022] [--database nmdc]
+    
+Arguments:
+    migrator_name - Name of the migrator to run
+    action - Either 'commit' to save changes or 'rollback' to discard them (default: rollback)
     
 Environment variables (loaded from .env file if present):
     MONGO_HOST - MongoDB host (default: localhost)
@@ -37,16 +41,18 @@ MIGRATORS = {
 
 @click.command()
 @click.argument("migrator_name", required=True, type=click.Choice(list(MIGRATORS.keys())))
+@click.argument("action", required=False, default="rollback", type=click.Choice(["commit", "rollback"]))
 @click.option("--host", default=lambda: os.getenv("MONGO_HOST", "localhost"), help="MongoDB host (default: from MONGO_HOST env var or localhost)")
 @click.option("--port", default=lambda: int(os.getenv("MONGO_PORT", "27022")), type=int, help="MongoDB port (default: from MONGO_PORT env var or 27022)")
 @click.option("--database", default=lambda: os.getenv("MONGO_DB", "nmdc"), help="MongoDB database name (default: from MONGO_DB env var or nmdc)")
 @click.option("--auth-db", default=lambda: os.getenv("MONGO_AUTH_DB"), help="Authentication database name (default: from MONGO_AUTH_DB env var)")
 @click.option("--username", default=lambda: os.getenv("MONGO_USERNAME"), help="MongoDB username (default: from MONGO_USERNAME env var)")
 @click.option("--password", default=lambda: os.getenv("MONGO_PASSWORD"), help="MongoDB password (default: from MONGO_PASSWORD env var)")
-def run_migrator(migrator_name, host, port, database, auth_db, username, password):
+def run_migrator(migrator_name, action, host, port, database, auth_db, username, password):
     """Run a specific migrator against MongoDB using PyMongo.
     
     MIGRATOR_NAME should be one of the available migrators.
+    ACTION should be either 'commit' to save changes or 'rollback' to discard changes (default: rollback).
     """
     
     # Construct MongoDB connection string for PyMongo
@@ -63,7 +69,10 @@ def run_migrator(migrator_name, host, port, database, auth_db, username, passwor
     else:
         connection_string = f"mongodb://{host}:{port}/?replicaSet=rs0&directConnection=true"
     
+    commit_changes = action == "commit"
+    
     click.echo(f"Running migrator: {migrator_name}")
+    click.echo(f"Action: {action.upper()} (changes will {'be saved' if commit_changes else 'be discarded'})")
     click.echo(f"MongoDB connection: {host}:{port}/{database}")
     
     # Get the migrator class
@@ -85,7 +94,7 @@ def run_migrator(migrator_name, host, port, database, auth_db, username, passwor
         migrator = migrator_class(adapter=adapter)
         
         # Run the migration
-        migrator.upgrade()
+        migrator.upgrade(commit_changes=commit_changes)
         click.echo("Migration completed successfully!")
         
     except Exception as e:

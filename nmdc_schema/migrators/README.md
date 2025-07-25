@@ -218,8 +218,14 @@ db.runCommand("listCollections").cursor.firstBatch
 4. **Run the migrator**
 
 ```bash
-# Run the specified migrator against the test database
-make run-migrator migrator_from_11_8_0_to_11_9_0
+# Dry run - view changes without committing (default behavior)
+make run-migrator migrator_from_11_8_0_to_11_9_0 rollback
+
+# Or run the migrator script directly
+python nmdc_schema/migrators/cli/run_migrator.py migrator_from_11_9_1_to_11_10_0 rollback
+
+# Commit changes to the database (use with caution!)
+python nmdc_schema/migrators/cli/run_migrator.py migrator_from_11_9_1_to_11_10_0 commit
 ```
 
 5. **Run validation checks**

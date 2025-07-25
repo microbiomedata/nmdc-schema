@@ -257,12 +257,15 @@ class Migrator(MigratorBase):
         self.reporter = None
         self._schema_view = None  # Cache schema view to avoid repeated creation
 
-    def upgrade(self) -> None:
+    def upgrade(self, commit_changes: bool = False) -> None:
         """
         Migrates all QuantityValue instances in records to have non-null has_unit values conformant to enumeration PVs.
 
         All operations are wrapped in a MongoDB transaction for atomicity and rollback capability.
         All actions are logged in a reporter class so that we can see some statistics at the end of the migration.
+        
+        Args:
+            commit_changes: If True, commits the transaction. If False (default), rolls back the transaction.
         """
         self.reporter = create_migration_reporter(self.logger)
         
@@ -283,9 +286,14 @@ class Migrator(MigratorBase):
                 try:
                     self._process_collections_with_transaction(classes_with_quantity_value_slots, session)
                     self.reporter.generate_final_report()
-                    # Rollback by default after generating report
-                    self.logger.info("Rolling back transaction (no changes will be committed)")
-                    session.abort_transaction()
+                    
+                    if commit_changes:
+                        self.logger.info("Committing transaction (changes will be saved)")
+                        session.commit_transaction()
+                    else:
+                        self.logger.info("Rolling back transaction (no changes will be committed)")
+                        session.abort_transaction()
+                        
                 except Exception as e:
                     self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
                     raise
