@@ -1,7 +1,7 @@
 from adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view, logger
-from nmdc_schema.migrators.utils.migration_reporter import create_migration_reporter
+from nmdc_schema.migrators.migration_reporter import create_migration_reporter
 from pymongo.client_session import ClientSession
 from typing import Optional, Set, Dict, List
 from functools import lru_cache
@@ -106,6 +106,12 @@ class Migrator(MigratorBase):
     ...     ]
     ... }
     >>> m = Migrator(DictionaryAdapter(database))
+    >>> # Initialize required dependencies for standalone testing
+    >>> from nmdc_schema.migrators.helpers import create_schema_view
+    >>> from nmdc_schema.migrators.migration_reporter import create_migration_reporter
+    >>> m._schema_view = create_schema_view()
+    >>> m._unit_alias_map = m._build_unit_alias_map(m._schema_view)
+    >>> m.reporter = create_migration_reporter(m.logger)
     >>> doc = m.ensure_quantity_value_has_unit(database["biosample_set"][0])
     >>> doc["temp"]["has_unit"]
     'Cel'
@@ -121,6 +127,10 @@ class Migrator(MigratorBase):
     ...     ]
     ... }
     >>> m2 = Migrator(DictionaryAdapter(database2))
+    >>> # Initialize required dependencies for standalone testing
+    >>> m2._schema_view = create_schema_view()
+    >>> m2._unit_alias_map = m2._build_unit_alias_map(m2._schema_view)
+    >>> m2.reporter = create_migration_reporter(m2.logger)
     >>> doc2 = m2.ensure_quantity_value_has_unit(database2["biosample_set"][0])
     >>> doc2["temp"]["has_unit"]
     'Cel'
@@ -136,6 +146,10 @@ class Migrator(MigratorBase):
     ...     ]
     ... }
     >>> m3 = Migrator(DictionaryAdapter(database3))
+    >>> # Initialize required dependencies for standalone testing
+    >>> m3._schema_view = create_schema_view()
+    >>> m3._unit_alias_map = m3._build_unit_alias_map(m3._schema_view)
+    >>> m3.reporter = create_migration_reporter(m3.logger)
     >>> doc3 = m3.ensure_quantity_value_has_unit(database3["biosample_set"][0])
     >>> doc3["carb_nitro_ratio"]["has_unit"]
     '1'
@@ -156,6 +170,10 @@ class Migrator(MigratorBase):
     ...     ]
     ... }
     >>> m4 = Migrator(DictionaryAdapter(database4))
+    >>> # Initialize required dependencies for standalone testing
+    >>> m4._schema_view = create_schema_view()
+    >>> m4._unit_alias_map = m4._build_unit_alias_map(m4._schema_view)
+    >>> m4.reporter = create_migration_reporter(m4.logger)
     >>> doc4 = m4.ensure_quantity_value_has_unit(database4["biosample_set"][0])
     >>> doc4["substances_used"][0]["volume"]["has_unit"]
     'mL'

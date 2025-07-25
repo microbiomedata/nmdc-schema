@@ -32,7 +32,7 @@ def load_yaml_asset(path_to_asset_file: str) -> Any:
     package_import_path = MIGRATOR_PACKAGE
 
     # Define the filesystem path to the `assets` directory (relative to that package).
-    path_to_assets_directory = "migrators/assets"
+    path_to_assets_directory = "assets"
 
     # Build a filesystem path to the specified asset file (also relative to that package).
     path_to_asset = Path(path_to_assets_directory).joinpath(path_to_asset_file)
