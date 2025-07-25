@@ -28,10 +28,10 @@ class Migrator(MigratorBase):
         Migrates the database from conforming to the original schema, to conforming to the new schema.
 
         Note: We added a prefix, `SKIP: `, to the doctests in this method to prevent them from being run.
-              Reasons for skipping: The tests target a function that uses a `SchemaView` that is bound to
-              the schema currently in the repository. That function requires that specific schema elements
-              be defined in the schema, and those elements are no longer defined in the schema. Note that
-              the prefix string is arbitrary (I chose "SKIP: " in an attempt to be self-documenting).
+              Reason for skipping: The tests target a function that—through its use of a `SchemaView` that
+              is bound to the schema currently in the repository—requires that specific schema elements
+              be defined in the schema, and those elements are not defined in the schema anymore. Note that
+              the prefix string is arbitrary (I chose `SKIP: ` in an attempt to make it self-documenting).
 
         >>> from sys import stderr
         >>> print("⚠️  Skipping doctests", file=stderr)
