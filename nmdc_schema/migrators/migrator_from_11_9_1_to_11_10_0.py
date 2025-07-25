@@ -83,7 +83,83 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
 
 
 class Migrator(MigratorBase):
-    r"""Migrates a database between two schemas."""
+    r"""
+    Migrates a database between schemas 11.9.1 and 11.10.0.
+    
+    This migrator ensures that all QuantityValue instances have proper UCUM units.
+    It handles missing units, normalizes existing units, and applies special case conversions.
+    
+    Examples:
+    
+    >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+    >>> import logging
+    >>> logging.basicConfig(level=logging.WARNING)  # Suppress output for doctest
+    >>> 
+    >>> # Test missing unit addition
+    >>> database = {
+    ...     "biosample_set": [
+    ...         {
+    ...             "id": "nmdc:bsm-test1",
+    ...             "type": "nmdc:Biosample", 
+    ...             "temp": {"type": "nmdc:QuantityValue", "has_raw_value": "25"}
+    ...         }
+    ...     ]
+    ... }
+    >>> m = Migrator(DictionaryAdapter(database))
+    >>> doc = m.ensure_quantity_value_has_unit(database["biosample_set"][0])
+    >>> doc["temp"]["has_unit"]
+    'Cel'
+    
+    >>> # Test unit normalization (Celsius -> Cel)
+    >>> database2 = {
+    ...     "biosample_set": [
+    ...         {
+    ...             "id": "nmdc:bsm-test2",
+    ...             "type": "nmdc:Biosample",
+    ...             "temp": {"type": "nmdc:QuantityValue", "has_raw_value": "30", "has_unit": "Celsius"}
+    ...         }
+    ...     ]
+    ... }
+    >>> m2 = Migrator(DictionaryAdapter(database2))
+    >>> doc2 = m2.ensure_quantity_value_has_unit(database2["biosample_set"][0])
+    >>> doc2["temp"]["has_unit"]
+    'Cel'
+    
+    >>> # Test carb_nitro_ratio special case (dimensionless)
+    >>> database3 = {
+    ...     "biosample_set": [
+    ...         {
+    ...             "id": "nmdc:bsm-test3", 
+    ...             "type": "nmdc:Biosample",
+    ...             "carb_nitro_ratio": {"type": "nmdc:QuantityValue", "has_raw_value": "12.5"}
+    ...         }
+    ...     ]
+    ... }
+    >>> m3 = Migrator(DictionaryAdapter(database3))
+    >>> doc3 = m3.ensure_quantity_value_has_unit(database3["biosample_set"][0])
+    >>> doc3["carb_nitro_ratio"]["has_unit"]
+    '1'
+    
+    >>> # Test nested QuantityValue (PortionOfSubstance)
+    >>> database4 = {
+    ...     "biosample_set": [
+    ...         {
+    ...             "id": "nmdc:bsm-test4",
+    ...             "type": "nmdc:Biosample",
+    ...             "substances_used": [
+    ...                 {
+    ...                     "type": "nmdc:PortionOfSubstance",
+    ...                     "volume": {"type": "nmdc:QuantityValue", "has_raw_value": "10"}
+    ...                 }
+    ...             ]
+    ...         }
+    ...     ]
+    ... }
+    >>> m4 = Migrator(DictionaryAdapter(database4))
+    >>> doc4 = m4.ensure_quantity_value_has_unit(database4["biosample_set"][0])
+    >>> doc4["substances_used"][0]["volume"]["has_unit"]
+    'mL'
+    """
 
     _from_version = "11.9.1"
     _to_version = "11.10.0"
