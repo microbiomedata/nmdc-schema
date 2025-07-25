@@ -36,7 +36,7 @@ MIGRATORS = {
 
 
 @click.command()
-@click.argument("migrator_name", required=True, type=click.Choice(list(MIGRATORS.keys())))
+@click.argument("migrator_name", required=True, type=click.Choice(list(MIGRATORS.keys())), help="Name of the migrator to run, e.g., migrator_from_11_9_1_to_11_10_0 (without the .py extension)")
 @click.option("--host", default=lambda: os.getenv("MONGO_HOST", "localhost"), help="MongoDB host (default: from MONGO_HOST env var or localhost)")
 @click.option("--port", default=lambda: int(os.getenv("MONGO_PORT", "27022")), type=int, help="MongoDB port (default: from MONGO_PORT env var or 27022)")
 @click.option("--database", default=lambda: os.getenv("MONGO_DB", "nmdc"), help="MongoDB database name (default: from MONGO_DB env var or nmdc)")

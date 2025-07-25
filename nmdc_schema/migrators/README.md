@@ -71,7 +71,7 @@ To add runtime reporting to a new migrator:
 
 1. **Import the reporter**:
    ```python
-   from nmdc_schema.migrators.utils.migration_reporter import create_migration_reporter
+   from migration_reporter import create_migration_reporter
    import logging
    ```
 

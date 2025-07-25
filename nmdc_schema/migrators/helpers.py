@@ -1,7 +1,8 @@
 import logging
-from typing import Any
+from typing import Any, List, Dict
 from importlib import resources
 from pathlib import Path
+from functools import lru_cache
 import yaml
 from nmdc_schema.nmdc_data import get_nmdc_schema_definition
 from linkml_runtime import SchemaView
@@ -31,7 +32,7 @@ def load_yaml_asset(path_to_asset_file: str) -> Any:
     package_import_path = MIGRATOR_PACKAGE
 
     # Define the filesystem path to the `assets` directory (relative to that package).
-    path_to_assets_directory = "assets"
+    path_to_assets_directory = "migrators/assets"
 
     # Build a filesystem path to the specified asset file (also relative to that package).
     path_to_asset = Path(path_to_assets_directory).joinpath(path_to_asset_file)
@@ -58,3 +59,78 @@ def create_schema_view() -> SchemaView:
     schema_definition = get_nmdc_schema_definition()
     schema_view = SchemaView(schema_definition)
     return schema_view
+
+
+# Constants for schema traversal
+DATABASE_CLASS_NAME = "Database"
+
+
+def get_classes_with_slots_by_range(schema_view: SchemaView, range_constraint: str) -> dict:
+    """
+    Returns a dictionary mapping class names to lists of their slot names that have the specified range.
+    For each class, includes slots from the class AND all its subclasses to handle polymorphic storage.
+    
+    Args:
+        schema_view: SchemaView instance
+        range_constraint: The range type to search for (e.g., "QuantityValue", "TextValue", etc.)
+        
+    Returns:
+        dict: {class_name: [slot_names_with_specified_range]}
+    """
+    classes_with_slots = {}
+    
+    # Get all classes in the schema
+    for class_name in schema_view.all_classes():
+        class_def = schema_view.get_class(class_name)
+        if class_def:
+            # Get all slots for this class
+            induced_slots = schema_view.class_induced_slots(class_name)
+            matching_slots = []
+            
+            for slot_def in induced_slots:
+                if slot_def.range == range_constraint:
+                    matching_slots.append(slot_def.name)
+            
+            # Also get matching slots from all subclasses
+            # This handles polymorphic storage where subclass records are stored in parent collections in mongodb
+            subclass_slots = set()
+            try:
+                descendants = schema_view.class_descendants(class_name)
+                for subclass_name in descendants:
+                    subclass_induced_slots = schema_view.class_induced_slots(subclass_name)
+                    for slot_def in subclass_induced_slots:
+                        if slot_def.range == range_constraint:
+                            subclass_slots.add(slot_def.name)
+            except (AttributeError, KeyError, TypeError):
+                # If class_descendants method doesn't exist or class is invalid, skip subclass processing
+                pass
+            
+            # Combine parent and subclass slots
+            all_slots = set(matching_slots) | subclass_slots
+            
+            if all_slots:
+                classes_with_slots[class_name] = list(all_slots)
+    
+    return classes_with_slots
+
+
+@lru_cache
+def get_database_collection_names() -> List[str]:
+    """
+    Returns the names of all slots of the `Database` class that describe database collections.
+    
+    This is a generic helper that returns ALL collections, regardless of their content.
+    """
+    collection_names = []
+
+    schema_view = create_schema_view()
+    for slot_name in schema_view.class_slots(DATABASE_CLASS_NAME):
+        slot_definition = schema_view.induced_slot(slot_name, DATABASE_CLASS_NAME)
+
+        # Filter out any hypothetical (future) slots that don't correspond to a collection (e.g. `db_version`).
+        if slot_definition.multivalued and slot_definition.inlined_as_list:
+            collection_names.append(slot_name)
+
+    return sorted(list(set(collection_names)))
+
+
