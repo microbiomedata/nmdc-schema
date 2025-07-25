@@ -140,59 +140,89 @@ The reporter generates three tables:
 
 ##### Running a migrator step-by-step:
 
-1. Create a local copy of the MongoDB database with a schema that conforms to the release from which you are migrating.
+1. **Set up Docker environment and MongoDB database**
 
-*Note:* This will most often be a production database.  For a release with many migrators, all migrators should be 
-applied in order, to the copy of the production database. 
+First, create a local environment configuration:
 
 ```bash
-% git clone github.com/microbiomedata/nmdc-runtime 
-% cd nmdc-runtime
-% make up-test # creates a basic mongodb docker container for you with prod-ish configuration but no data. 
+# Copy the environment template
+cp nmdc_schema/migrators/.docker/.env.example nmdc_schema/migrators/.docker/.env
+# Edit .env with your actual MongoDB connection settings if needed
 ```
-Once up, check the ports.  The default ports this comes with are 27017 (internal docker port), 
-27018 (external connection to mongo) for MongoDB.
+
+Then, spin up a MongoDB container using the docker-compose in this repo:
 
 ```bash
-% docker ps -a # get the mongo container id for later steps below
+# From the migrators directory
+cd nmdc_schema/migrators/.docker
+docker-compose up -d mongo mongo-init
+```
 
-# find the most recent docker dump
-% ssh your-user-name@dtn01.nersc.gov
-% ls global/cfs/projectdirs/m3408/nmdc-mongodumps/  
-% rsync -av --exclude='_*' --exclude='fs\.*' -e "ssh " your-user-name@dtn01.nersc.gov:/global/cfs/projectdirs/m3408/nmdc-mongodumps/dump_nmdc-prod_2025-02-10_20-12-02 /tmp/remote-mongodump/nmdc
+Once the containers are running, check the ports. The default ports are:
+- 27017 (internal docker port)  
+- 27022 (external connection to mongo) for MongoDB
+
+*Note:* This will most often be a production database. For a release with many migrators, all migrators should be 
+applied in order, to the copy of the production database.
+
+2. **Load production data into MongoDB**
+
+```bash
+# Get the mongo container id for later steps
+docker ps -a
+
+# Find the most recent docker dump
+ssh your-user-name@dtn01.nersc.gov
+ls global/cfs/projectdirs/m3408/nmdc-mongodumps/  
+
+# Download the dump (replace with actual dump name)
+rsync -av --exclude='_*' --exclude='fs\.*' -e "ssh " \
+  your-user-name@dtn01.nersc.gov:/global/cfs/projectdirs/m3408/nmdc-mongodumps/dump_nmdc-prod_2025-02-10_20-12-02 \
+  /tmp/remote-mongodump/nmdc
 
 # Copy the dump to the mongo container
-% docker cp /tmp/remote-mongodump [mongo_container_id]:/tmp/
+docker cp /tmp/remote-mongodump [mongo_container_id]:/tmp/
 
-# invade the running mongo docker container to load the dump
-% docker exec -it [mongo_container_id] bash
+# Access the mongo container to load the dump
+docker exec -it [mongo_container_id] bash
 
-# inside the container, run the following to load the dump
-% mongorestore -v -u admin -p root --authenticationDatabase=admin --drop --nsInclude='nmdc.*' --gzip --dir /tmp/remote-mongodump/nmdc/dump_nmdc-prod_2025-02-10_20-12-02/ 
+# Inside the container, restore the database
+mongorestore -v -u admin -p root --authenticationDatabase=admin --drop \
+  --nsInclude='nmdc.*' --gzip \
+  --dir /tmp/remote-mongodump/nmdc/dump_nmdc-prod_2025-02-10_20-12-02/ 
 ```
 
-2. Check that the database has been loaded correctly.
+3. **Verify database loading**
 
 ```bash
-docker exec -it nmdc-runtime-test-mongo-1 bash
+# Access the MongoDB container
+docker exec -it nmdc-schema-migrator-dev-mongo-1 bash
 ```
 
 ```bash
+# Connect to MongoDB
 mongosh mongodb://admin:root@mongo:27017/nmdc?authSource=admin
-# check the database has records
+
+# Check the database has records
 db.biosample_set.find({}).pretty()
 
-# number of records per collection
-db.runCommand("listCollections").cursor.firstBatch.filter(function(collection) { return !collection.name.startsWith("system.") }).sort(function(a, b) { return a.name.localeCompare(b.name) }).forEach(function(collection) { print(collection.name + ": " +db.getCollection(collection.name).count()) })
+# Count records per collection
+db.runCommand("listCollections").cursor.firstBatch
+  .filter(function(collection) { return !collection.name.startsWith("system.") })
+  .sort(function(a, b) { return a.name.localeCompare(b.name) })
+  .forEach(function(collection) { 
+    print(collection.name + ": " + db.getCollection(collection.name).count()) 
+  })
 ```
 
-3. Run the migrator against the test database. 
+4. **Run the migrator**
 
 ```bash
-% make run-migrator migrator_from_11_8_0_to_11_9_0 # This will run the specified migrator against the test database. 
+# Run the specified migrator against the test database
+make run-migrator migrator_from_11_8_0_to_11_9_0
 ```
 
-4. Run validation checks against the migrated database.
+5. **Run validation checks**
 
 ```bash
 
