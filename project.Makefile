@@ -262,6 +262,7 @@ migrator:
 # Usage: make run-migrator MIGRATOR=migrator_from_11_9_1_to_11_10_0 [ACTION=rollback|commit]
 # MongoDB connection details are read from .env file or environment variables
 MIGRATOR ?= migrator_from_11_9_1_to_11_10_0
+ACTION ?=
 .PHONY: run-migrator
 run-migrator:
 	@if [ -z "$(MIGRATOR)" ]; then \
