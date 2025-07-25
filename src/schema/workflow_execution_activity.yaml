@@ -187,31 +187,6 @@ classes:
           interpolated: true
         range: NucleotideSequencing
 
-  MetagenomeSequencing:
-    deprecated: Used in early versions of NMDC schema. Existing records have been migrated to nmdc:NucleotideSequencing records, and this class should be used instead. From issue https://github.com/microbiomedata/nmdc-schema/issues/1727.
-    last_updated_on: 2023-12-01T00:00:00
-    modified_by: 0009-0004-8906-5907
-    class_uri: nmdc:MetagenomeSequencing
-    description: Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.
-    title: Metagenome sequencing activity
-    is_a: WorkflowExecution
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$"
-          interpolated: true
-      has_input:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-        range: Sample
-      was_informed_by:
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$"
-          interpolated: true
-        range: NucleotideSequencing
-
   ReadQcAnalysis:
     class_uri: nmdc:ReadQcAnalysis
     description: A workflow execution activity that performs quality control on raw Illumina reads including quality trimming, artifact removal, linker trimming, adapter trimming, spike-in removal, and human/cat/dog/mouse/microbe contaminant removal
