@@ -113,24 +113,3 @@ def get_classes_with_slots_by_range(schema_view: SchemaView, range_constraint: s
     
     return classes_with_slots
 
-
-@lru_cache
-def get_database_collection_names() -> List[str]:
-    """
-    Returns the names of all slots of the `Database` class that describe database collections.
-    
-    This is a generic helper that returns ALL collections, regardless of their content.
-    """
-    collection_names = []
-
-    schema_view = create_schema_view()
-    for slot_name in schema_view.class_slots(DATABASE_CLASS_NAME):
-        slot_definition = schema_view.induced_slot(slot_name, DATABASE_CLASS_NAME)
-
-        # Filter out any hypothetical (future) slots that don't correspond to a collection (e.g. `db_version`).
-        if slot_definition.multivalued and slot_definition.inlined_as_list:
-            collection_names.append(slot_name)
-
-    return sorted(list(set(collection_names)))
-
-

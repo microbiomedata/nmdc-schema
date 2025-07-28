@@ -86,9 +86,10 @@ class Migrator(MigratorBase):
         
         # TUTORIAL: Transaction handling for MongoDB migrations
         #           When using MongoDB, migrations run within a transaction for safety
-        if hasattr(self.adapter, 'start_session'):
-            # This would be a MongoDB adapter with transaction support
-            with self.adapter.start_session() as session:
+        if hasattr(self.adapter, 'get_database') and hasattr(self.adapter.get_database(), 'client'):
+            # MongoDB adapter - use transactions for atomic operations
+            db = self.adapter.get_database()
+            with db.client.start_session() as session:
                 with session.start_transaction():
                     # Perform all migration operations within the transaction
                     self._perform_migration_operations()

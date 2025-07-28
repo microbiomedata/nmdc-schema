@@ -21,7 +21,7 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger.setLevel(logging.INFO)
 
 @lru_cache
-def get_collection_names_from_schema() -> List[str]:
+def get_collection_with_qv_slots_from_schema() -> List[str]:
     """
     Returns the names of the slots of the `Database` class that describe database collections
     and whose range classes could potentially contain QuantityValue objects.
@@ -37,7 +37,6 @@ def get_collection_names_from_schema() -> List[str]:
     for slot_name in schema_view.class_slots(DATABASE_CLASS_NAME):
         slot_definition = schema_view.induced_slot(slot_name, DATABASE_CLASS_NAME)
 
-        # Filter out any hypothetical (future) slots that don't correspond to a collection (e.g. `db_version`).
         if slot_definition.multivalued and slot_definition.inlined_as_list:
             # Only include collections whose range classes could contain QuantityValue objects
             if _collection_could_contain_quantity_values(schema_view, slot_definition.range):
@@ -59,32 +58,21 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
     Returns:
         bool: True if the class or any of its subclasses have QuantityValue slots
     """
-    if not range_class:
-        return False
-    
-    try:
-        # Check if this class has any QuantityValue slots
-        class_slots = schema_view.class_induced_slots(range_class)
-        for slot_def in class_slots:
-            if slot_def.range == "QuantityValue":
-                return True
-        
-        # Check if any of its descendants have QuantityValue slots
-        try:
-            descendants = schema_view.class_descendants(range_class)
-            for desc_class in descendants:
-                desc_slots = schema_view.class_induced_slots(desc_class)
-                for slot_def in desc_slots:
-                    if slot_def.range == "QuantityValue":
-                        return True
-        except:
-            # If class_descendants doesn't exist, skip descendant checking
-            pass
-            
-    except Exception:
-        # If anything goes wrong, err on the side of caution and include it
-        return True
-    
+
+    # Check if this class has any QuantityValue slots
+    class_slots = schema_view.class_induced_slots(range_class)
+    for slot_def in class_slots:
+        if slot_def.range == "QuantityValue":
+            return True
+
+    # Check if any of its descendants have QuantityValue slots
+
+        descendants = schema_view.class_descendants(range_class)
+        for desc_class in descendants:
+            desc_slots = schema_view.class_induced_slots(desc_class)
+            for slot_def in desc_slots:
+                if slot_def.range == "QuantityValue":
+                    return True
     return False
 
 
@@ -114,13 +102,11 @@ class Migrator(MigratorBase):
     >>> m = Migrator(DictionaryAdapter(database))
     >>> # Initialize required dependencies for standalone testing
     >>> from nmdc_schema.migrators.helpers import create_schema_view
-    >>> from nmdc_schema.migrators.migration_reporter import (
-    create_migration_reporter, 
-    get_most_specific_class_for_reporting,
-    parse_schema_path,
-    get_clean_schema_path,
-    resolve_class_from_schema_path
-)
+    >>> from nmdc_schema.migrators.migration_reporter import create_migration_reporter
+    >>> from nmdc_schema.migrators.migration_reporter import get_most_specific_class_for_reporting
+    >>> from nmdc_schema.migrators.migration_reporter import parse_schema_path
+    >>> from nmdc_schema.migrators.migration_reporter import get_clean_schema_path
+    >>> from nmdc_schema.migrators.migration_reporter import resolve_class_from_schema_path
     >>> m._schema_view = create_schema_view()
     >>> m._unit_alias_map = m._build_unit_alias_map(m._schema_view)
     >>> m.reporter = create_migration_reporter(m.logger)
@@ -288,15 +274,12 @@ class Migrator(MigratorBase):
         # that already exist in the database).
         self._unit_alias_map = self._build_unit_alias_map(self._schema_view)
         
-        # Find all classes that have slots with QuantityValue range
-        classes_with_quantity_value_slots = self._get_classes_with_quantity_value_slots(self._schema_view)
-        
         # Use MongoDB transactions for atomicity
         db = self.adapter.get_database()
         with db.client.start_session() as session:
             with session.start_transaction():
                 try:
-                    self._process_collections_with_transaction(classes_with_quantity_value_slots, session)
+                    self._process_collections_with_transaction(db, session)
                     self.reporter.generate_final_report()
                     
                     if commit_changes:
@@ -310,22 +293,21 @@ class Migrator(MigratorBase):
                     self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
                     raise
     
-    def _process_collections_with_transaction(self, classes_with_quantity_value_slots: dict, session: ClientSession) -> None:
+    def _process_collections_with_transaction(self, db, session: ClientSession) -> None:
         r"""
         Process collections within a MongoDB transaction session.
         Only processes collections that actually exist in the Database class slots.
         
         Args:
-            classes_with_quantity_value_slots: Mapping of classes to their QuantityValue slots (currently unused)
+            db: MongoDB database instance
             session: MongoDB session for transaction support
         """
         # Get the actual collection names from the Database class slots
-        real_collection_names = get_collection_names_from_schema()
+        real_collection_names = get_collection_with_qv_slots_from_schema()
         
         # Process each real collection
         for collection_name in real_collection_names:
             # Get the collection and process documents within the transaction
-            db = self.adapter.get_database()
             collection = db.get_collection(collection_name)
             
             # Process each document in the collection

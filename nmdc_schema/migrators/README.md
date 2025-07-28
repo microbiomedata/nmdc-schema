@@ -129,6 +129,60 @@ The reporter generates three tables:
 - **Unmapped Values**: Shows values that couldn't be processed
 - **Missing Values**: Shows fields that were missing expected values 
 
+## Adding Transaction Support
+
+To add MongoDB transaction support with commit/rollback functionality to your migrator:
+
+1. **Update the upgrade() method signature**:
+   ```python
+   def upgrade(self, commit_changes: bool = False):
+       """
+       Migrates the database with optional commit/rollback support.
+       
+       Args:
+           commit_changes: If True, commits changes. If False (default), rolls back.
+       """
+   ```
+
+2. **Add the transaction detection pattern**:
+   ```python
+   def upgrade(self, commit_changes: bool = False):
+       # Initialize your components (reporter, schema, etc.)
+       self.reporter = create_migration_reporter(self.logger)
+       
+       # Check for MongoDB adapter and use transactions
+       if hasattr(self.adapter, 'get_database') and hasattr(self.adapter.get_database(), 'client'):
+           # MongoDB adapter - use transactions
+           db = self.adapter.get_database()
+           with db.client.start_session() as session:
+               with session.start_transaction():
+                   try:
+                       self._perform_migration_operations()
+                       if self.reporter:
+                           self.reporter.generate_final_report()
+                       
+                       if commit_changes:
+                           self.logger.info("Committing transaction (changes will be saved)")
+                           session.commit_transaction()
+                       else:
+                           self.logger.info("Rolling back transaction (no changes will be committed)")
+                           session.abort_transaction()
+                           
+                   except Exception as e:
+                       self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
+                       raise
+       else:
+           # Dictionary adapter or other - no transactions available
+           self._perform_migration_operations()
+           if self.reporter:
+               self.reporter.generate_final_report()
+           if not commit_changes:
+               self.logger.info("Note: Non-MongoDB adapter doesn't support rollback")
+   ```
+   
+**Examples:**
+- See `migrator_from_1_0_0_to_EXAMPLE.py` for basic transaction pattern
+
 ## Testing the migrator
 
 ##### Summary of steps to test a migrator:
