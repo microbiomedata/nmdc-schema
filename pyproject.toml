@@ -153,3 +153,4 @@ slot-range-type-reporter = "src.scripts.slot_range_type_reporter:cli"
 extend_exclude = [
     "nmdc_schema/nmdc-pydantic.py"
 ]
+
