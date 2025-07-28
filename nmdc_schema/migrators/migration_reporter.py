@@ -259,7 +259,3 @@ def get_most_specific_class_for_reporting(schema_view, document_root: dict, path
     return doc_type
 
 
-# Convenience factory function
-def create_migration_reporter(logger: logging.Logger) -> MigrationReporter:
-    """Create a migration reporter."""
-    return MigrationReporter(logger)

@@ -2,7 +2,7 @@ from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view, logger
 from nmdc_schema.migrators.migration_reporter import (
-    create_migration_reporter, 
+    MigrationReporter, 
     get_most_specific_class_for_reporting,
     parse_schema_path,
     get_clean_schema_path,
@@ -102,14 +102,14 @@ class Migrator(MigratorBase):
     >>> m = Migrator(DictionaryAdapter(database))
     >>> # Initialize required dependencies for standalone testing
     >>> from nmdc_schema.migrators.helpers import create_schema_view
-    >>> from nmdc_schema.migrators.migration_reporter import create_migration_reporter
+    >>> from nmdc_schema.migrators.migration_reporter import MigrationReporter
     >>> from nmdc_schema.migrators.migration_reporter import get_most_specific_class_for_reporting
     >>> from nmdc_schema.migrators.migration_reporter import parse_schema_path
     >>> from nmdc_schema.migrators.migration_reporter import get_clean_schema_path
     >>> from nmdc_schema.migrators.migration_reporter import resolve_class_from_schema_path
     >>> m._schema_view = create_schema_view()
     >>> m._unit_alias_map = m._build_unit_alias_map(m._schema_view)
-    >>> m.reporter = create_migration_reporter(m.logger)
+    >>> m.reporter = MigrationReporter(m.logger)
     >>> doc = m.ensure_quantity_value_has_unit(database["biosample_set"][0])
     >>> doc["temp"]["has_unit"]
     'Cel'
@@ -128,7 +128,7 @@ class Migrator(MigratorBase):
     >>> # Initialize required dependencies for standalone testing
     >>> m2._schema_view = create_schema_view()
     >>> m2._unit_alias_map = m2._build_unit_alias_map(m2._schema_view)
-    >>> m2.reporter = create_migration_reporter(m2.logger)
+    >>> m2.reporter = MigrationReporter(m2.logger)
     >>> doc2 = m2.ensure_quantity_value_has_unit(database2["biosample_set"][0])
     >>> doc2["temp"]["has_unit"]
     'Cel'
@@ -147,7 +147,7 @@ class Migrator(MigratorBase):
     >>> # Initialize required dependencies for standalone testing
     >>> m3._schema_view = create_schema_view()
     >>> m3._unit_alias_map = m3._build_unit_alias_map(m3._schema_view)
-    >>> m3.reporter = create_migration_reporter(m3.logger)
+    >>> m3.reporter = MigrationReporter(m3.logger)
     >>> doc3 = m3.ensure_quantity_value_has_unit(database3["biosample_set"][0])
     >>> doc3["carb_nitro_ratio"]["has_unit"]
     '1'
@@ -171,7 +171,7 @@ class Migrator(MigratorBase):
     >>> # Initialize required dependencies for standalone testing
     >>> m4._schema_view = create_schema_view()
     >>> m4._unit_alias_map = m4._build_unit_alias_map(m4._schema_view)
-    >>> m4.reporter = create_migration_reporter(m4.logger)
+    >>> m4.reporter = MigrationReporter(m4.logger)
     >>> doc4 = m4.ensure_quantity_value_has_unit(database4["biosample_set"][0])
     >>> doc4["substances_used"][0]["volume"]["has_unit"]
     'mL'
@@ -265,7 +265,7 @@ class Migrator(MigratorBase):
         Args:
             commit_changes: If True, commits the transaction. If False (default), rolls back the transaction.
         """
-        self.reporter = create_migration_reporter(self.logger)
+        self.reporter = MigrationReporter(self.logger)
         
         # Get schema view to find all classes and their slots with QuantityValue range
         self._schema_view = create_schema_view()

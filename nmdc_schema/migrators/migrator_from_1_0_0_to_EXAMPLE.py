@@ -1,6 +1,6 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
-from nmdc_schema.migrators.migration_reporter import create_migration_reporter
+from nmdc_schema.migrators.migration_reporter import MigrationReporter
 
 import logging
 
@@ -82,7 +82,7 @@ class Migrator(MigratorBase):
         """
         self.logger.setLevel(logging.INFO)
         # TUTORIAL: Initialize the migration reporter to track changes during migration
-        self.reporter = create_migration_reporter(self.logger)
+        self.reporter = MigrationReporter(self.logger)
         
         # TUTORIAL: Transaction handling for MongoDB migrations
         #           When using MongoDB, migrations run within a transaction for safety

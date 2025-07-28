@@ -71,7 +71,7 @@ To add runtime reporting to a new migrator:
 
 1. **Import the reporter**:
    ```python
-   from migration_reporter import create_migration_reporter
+   from migration_reporter import MigrationReporter
    import logging
    ```
 
@@ -80,7 +80,7 @@ To add runtime reporting to a new migrator:
    def upgrade(self):
        logging.basicConfig(level=logging.INFO, format='%(message)s')
        self.logger.setLevel(logging.INFO)
-       self.reporter = create_migration_reporter(self.logger)
+       self.reporter = MigrationReporter(self.logger)
    ```
 
 3. **Track record changes**:
@@ -148,7 +148,7 @@ To add MongoDB transaction support with commit/rollback functionality to your mi
    ```python
    def upgrade(self, commit_changes: bool = False):
        # Initialize your components (reporter, schema, etc.)
-       self.reporter = create_migration_reporter(self.logger)
+       self.reporter = MigrationReporter(self.logger)
        
        # Check for MongoDB adapter and use transactions
        if hasattr(self.adapter, 'get_database') and hasattr(self.adapter.get_database(), 'client'):
