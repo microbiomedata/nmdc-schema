@@ -1,4 +1,4 @@
-from adapters.adapter_base import AdapterBase
+from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view, logger
 from nmdc_schema.migrators.migration_reporter import (

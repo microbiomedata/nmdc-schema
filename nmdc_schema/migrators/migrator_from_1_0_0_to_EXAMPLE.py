@@ -1,6 +1,6 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
-from migration_reporter import create_migration_reporter
+from nmdc_schema.migrators.migration_reporter import create_migration_reporter
 
 import logging
 
