@@ -448,6 +448,10 @@ class Migrator(MigratorBase):
                         continue  # Skip simple scalar values
                     
                     new_path = f"{path}.{key}" if path else key
+                    # Recursively traverse into nested objects to find QuantityValue instances
+                    # value: the nested object/dict at this key (e.g., {"type": "nmdc:QuantityValue", "has_raw_value": "25"})
+                    # document_root: original document for context (e.g., {"id": "biosample1", "type": "nmdc:Biosample", "temp": {...}})
+                    # new_path: current location path (e.g., "temp" or "substances_used[0].volume")
                     self._traverse_and_fix_quantity_values(value, document_root, new_path)
         elif isinstance(obj, list):
             # Recurse into list items
@@ -471,7 +475,7 @@ class Migrator(MigratorBase):
         
         # Check if `has_unit` is missing or is None
         if 'has_unit' not in quantity_value or quantity_value['has_unit'] is None:
-            # Get most specific class for unit lookup (for special cases)
+            # Get most specific class for unit lookup
             most_specific_class = get_most_specific_class_for_reporting(self._schema_view, document_root, path)
             
             # Check for special cases where we can extract unit from raw_value
@@ -524,7 +528,7 @@ class Migrator(MigratorBase):
                         value=current_unit
                     )
             else:
-                # Check for special one-off cases first
+                # Check for special one-off cases
                 handled_unit = self._handle_one_off_unit_cases(quantity_value, most_specific_class, path, current_unit)
                 if handled_unit:
                     # One-off case was handled - track the change
@@ -544,7 +548,7 @@ class Migrator(MigratorBase):
     
     def _infer_unit_from_context(self, full_document: dict, path: str) -> Optional[str]:
         r"""
-        Infers the appropriate unit for a QuantityValue using schema-driven type resolution.
+        Infers the appropriate unit for a QuantityValue .
         
         Args:
             full_document: The full document for context
