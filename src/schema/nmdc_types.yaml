@@ -48,9 +48,3 @@ types:
     base: str
     uri: xsd:language
 
-  unit:
-    base: str
-    uri: xsd:string
-    mappings:
-      - qud:Unit
-      - UO:0000000
