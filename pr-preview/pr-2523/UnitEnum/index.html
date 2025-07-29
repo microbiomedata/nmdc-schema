@@ -529,6 +529,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slots
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -596,6 +605,11 @@
 <td>%</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of percent</td>
+</tr>
+<tr>
+<td>J/K</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of joule per kelv...</td>
 </tr>
 <tr>
 <td>Cel</td>
@@ -746,6 +760,11 @@
 <td>mg/m3</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of milligrams per...</td>
+</tr>
+<tr>
+<td>m2/s</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of square meters ...</td>
 </tr>
 <tr>
 <td>kg/m3</td>
@@ -1052,6 +1071,106 @@
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of kilowatt</td>
 </tr>
+<tr>
+<td>API</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of API units</td>
+</tr>
+<tr>
+<td>mbar</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of millibar</td>
+</tr>
+<tr>
+<td>ratio</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of ratio (dimensi...</td>
+</tr>
+<tr>
+<td>J/Cel</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of joules per Cel...</td>
+</tr>
+<tr>
+<td>uE/m2/s</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of microeinsteins...</td>
+</tr>
+<tr>
+<td>kW/m2</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of kilowatts per ...</td>
+</tr>
+<tr>
+<td>people</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of people count</td>
+</tr>
+<tr>
+<td>pets</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of pet count</td>
+</tr>
+<tr>
+<td>plants</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of plant count</td>
+</tr>
+<tr>
+<td>umol/s/m2</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of micromoles per...</td>
+</tr>
+<tr>
+<td>m3/d</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of cubic meters p...</td>
+</tr>
+<tr>
+<td>L/h</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of liters per hou...</td>
+</tr>
+<tr>
+<td>pH</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of pH units</td>
+</tr>
+<tr>
+<td>kW/m2/d</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of kilowatts per ...</td>
+</tr>
+<tr>
+<td>NTU</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of Nephelometric ...</td>
+</tr>
+<tr>
+<td>m3/min</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of cubic meters p...</td>
+</tr>
+<tr>
+<td>km/h</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of kilometers per...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../has_unit/">has_unit</a></td>
+<td>Links a QuantityValue to a unit</td>
+</tr>
 </tbody>
 </table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
@@ -1072,6 +1191,15 @@ permissible_values:
     aliases:
     - percent
     - Percent
+  J/K:
+    text: J/K
+    description: The Unified Code for Units of Measure (UCUM) representation of joule
+      per kelvin.
+    aliases:
+    - joule per kelvin
+    - joules per kelvin
+    - J/Kelvin
+    - J/Kelvin
   Cel:
     text: Cel
     description: The Unified Code for Units of Measure (UCUM) representation of degrees
@@ -1235,6 +1363,10 @@ permissible_values:
     text: mg/m3
     description: The Unified Code for Units of Measure (UCUM) representation of milligrams
       per cubic meter.
+  m2/s:
+    text: m2/s
+    description: The Unified Code for Units of Measure (UCUM) representation of square
+      meters per second.
   kg/m3:
     text: kg/m3
     description: The Unified Code for Units of Measure (UCUM) representation of kilograms
@@ -1608,6 +1740,81 @@ permissible_values:
     - kW
     - kilowatt
     - kilowatts
+  API:
+    text: API
+    description: The Unified Code for Units of Measure (UCUM) representation of API
+      units.
+  mbar:
+    text: mbar
+    description: The Unified Code for Units of Measure (UCUM) representation of millibar.
+  ratio:
+    text: ratio
+    description: The Unified Code for Units of Measure (UCUM) representation of ratio
+      (dimensionless).
+    aliases:
+    - '{ratio}'
+  J/Cel:
+    text: J/Cel
+    description: The Unified Code for Units of Measure (UCUM) representation of joules
+      per Celsius.
+  uE/m2/s:
+    text: uE/m2/s
+    description: The Unified Code for Units of Measure (UCUM) representation of microeinsteins
+      per square meter per second.
+    aliases:
+    - '[arb''U]{micro_Einstein}/m2/s'
+  kW/m2:
+    text: kW/m2
+    description: The Unified Code for Units of Measure (UCUM) representation of kilowatts
+      per square meter.
+  people:
+    text: people
+    description: The Unified Code for Units of Measure (UCUM) representation of people
+      count.
+  pets:
+    text: pets
+    description: The Unified Code for Units of Measure (UCUM) representation of pet
+      count.
+  plants:
+    text: plants
+    description: The Unified Code for Units of Measure (UCUM) representation of plant
+      count.
+  umol/s/m2:
+    text: umol/s/m2
+    description: The Unified Code for Units of Measure (UCUM) representation of micromoles
+      per second per square meter.
+    aliases:
+    - umol{photon}/s/m2
+  m3/d:
+    text: m3/d
+    description: The Unified Code for Units of Measure (UCUM) representation of cubic
+      meters per day.
+  L/h:
+    text: L/h
+    description: The Unified Code for Units of Measure (UCUM) representation of liters
+      per hour.
+  pH:
+    text: pH
+    description: The Unified Code for Units of Measure (UCUM) representation of pH
+      units.
+    aliases:
+    - '[pH]'
+  kW/m2/d:
+    text: kW/m2/d
+    description: The Unified Code for Units of Measure (UCUM) representation of kilowatts
+      per square meter per day.
+  NTU:
+    text: NTU
+    description: The Unified Code for Units of Measure (UCUM) representation of Nephelometric
+      Turbidity Units.
+  m3/min:
+    text: m3/min
+    description: The Unified Code for Units of Measure (UCUM) representation of cubic
+      meters per minute.
+  km/h:
+    text: km/h
+    description: The Unified Code for Units of Measure (UCUM) representation of kilometers
+      per hour.
 
 </code></pre>
 
