@@ -491,7 +491,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: DataObject
-      execution_resource:
+      processing_institution:
         required: true
       was_informed_by:
         required: true
