@@ -208,8 +208,10 @@ Then, spin up a MongoDB container using the docker-compose in this repo:
 
 ```bash
 # From the migrators directory
+# make sure mongo_init/mongoKeyFile has 600 permissions
 cd nmdc_schema/migrators/.docker
-docker-compose up -d mongo mongo-init
+docker-compose up -d mongo mongo-init  # or
+docker compose up -d mongo mongo-init
 ```
 
 Once the containers are running, check the ports. The default ports are:

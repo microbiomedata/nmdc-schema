@@ -17,13 +17,15 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: root
-    command: ["--replSet", "rs0", "--bind_ip_all", "--keyFile", "/keyFile"]
     volumes:
       - mongo_data:/data/db
-      - ./.docker/mongoKeyFile:/keyFile:ro
 
 volumes:
   mongo_data:
     driver: local
+
+secrets:
+  mongoKeyFile:
+    file: ./mongoKeyFile
 
 name: nmdc-schema-migrator-dev

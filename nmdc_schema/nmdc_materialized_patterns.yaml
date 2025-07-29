@@ -2080,6 +2080,599 @@ enums:
         description: Data used as input into a workflow providing workflow specification.
         related_mappings:
         - edam.data:0949
+  UnitEnum:
+    name: UnitEnum
+    from_schema: https://w3id.org/nmdc/nmdc
+    permissible_values:
+      '%':
+        text: '%'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          percent.
+        aliases:
+        - percent
+        - Percent
+      Cel:
+        text: Cel
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
+        aliases:
+        - Celsius
+        - C
+        - Celcius
+        - degreeCelsius
+        - degree Celsius
+        exact_mappings:
+        - UO:0000027
+        - wikidata:Q25267
+        - qud:DEG_C
+        - OM:degreeCelsius
+      cm:
+        text: cm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          centimeter.
+      d:
+        text: d
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          day.
+        aliases:
+        - days
+      g:
+        text: g
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          gram.
+      h:
+        text: h
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          hour.
+      kPa:
+        text: kPa
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilopascal.
+      m:
+        text: m
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          meter.
+        aliases:
+        - meter
+        - meters
+      m/s:
+        text: m/s
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          meters per second.
+      mg/kg:
+        text: mg/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per kilogram.
+      mg/L:
+        text: mg/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per liter.
+      min:
+        text: min
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          minute.
+      mL:
+        text: mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milliliter.
+      mm:
+        text: mm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millimeter.
+      mL/L:
+        text: mL/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milliliters per liter.
+        aliases:
+        - ml/L
+        - milliliters per liter
+      mmol/L:
+        text: mmol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millimolar.
+        aliases:
+        - mM
+      mS/cm:
+        text: mS/cm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millisiemens per centimeter.
+        aliases:
+        - mS/cm
+        - millisiemens/cm
+        - millisiemens per centimeter
+        - milliSiemens/cm
+        - milliSiemens/cm
+      '[ppm]':
+        text: '[ppm]'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          parts per million.
+        comments:
+        - see https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html,
+          https://ucum.org/ucum
+        aliases:
+        - ppm
+        - 1*10-6
+      uS/cm:
+        text: uS/cm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microsiemens per centimeter.
+        aliases:
+        - μS/cm
+        - microsiemens/cm
+        - microsiemens per centimeter
+        - microSiemens/cm
+      W/m2:
+        text: W/m2
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          watts per square meter.
+      a:
+        text: a
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          year.
+        aliases:
+        - years
+      ug/L:
+        text: ug/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per liter.
+        aliases:
+        - μg/L
+        - microg/L
+      ug/uL:
+        text: ug/uL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per microliter.
+        aliases:
+        - μg/μL
+      uL:
+        text: uL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microliter.
+        aliases:
+        - μL
+        - µL
+      mol/L:
+        text: mol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          moles per liter.
+      mol/L/h:
+        text: mol/L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          moles per liter per hour.
+      ug/L/h:
+        text: ug/L/h
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per liter per hour.
+      umol/L:
+        text: umol/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micromoles per liter.
+        aliases:
+        - μmol/L
+        - micromol/L
+      umol/kg:
+        text: umol/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micromoles per kilogram.
+      umol/m2/s:
+        text: umol/m2/s
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micromoles per square meter per second.
+        aliases:
+        - μmol/m2/s
+        - micromol/m2/s
+        - u[E]/m2/s
+      mg/m3:
+        text: mg/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per cubic meter.
+      kg/m3:
+        text: kg/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilograms per cubic meter.
+      g/m3:
+        text: g/m3
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          grams per cubic meter.
+      m2:
+        text: m2
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          square meters.
+      atm:
+        text: atm
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          atmosphere.
+      mV:
+        text: mV
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millivolt.
+      PSU:
+        text: PSU
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          practical salinity unit.
+      L:
+        text: L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          liter.
+      um:
+        text: um
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrometer.
+        aliases:
+        - μm
+        - µm
+      y:
+        text: y
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          year.
+      '1':
+        text: '1'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          dimensionless quantity.
+      uL/kg:
+        text: uL/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microliters per kilogram.
+      kg:
+        text: kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilogram.
+      ppt:
+        text: ppt
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          parts per thousand.
+      g/g:
+        text: g/g
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          gram per gram.
+        aliases:
+        - g/g
+      lx:
+        text: lx
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          lux.
+        aliases:
+        - lx
+      mg/m3/d:
+        text: mg/m3/d
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per cubic meter per day.
+        aliases:
+        - mg/m3/d
+      ng/h:
+        text: ng/h
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          nanograms per hour.
+        aliases:
+        - ng/h
+      mm[Hg]:
+        text: mm[Hg]
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millimeters of mercury.
+        aliases:
+        - mm[Hg]
+        - mmHg
+      '[ppb]':
+        text: '[ppb]'
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          parts per billion.
+        aliases:
+        - ppb
+      g/kg:
+        text: g/kg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          grams per kilogram.
+        aliases:
+        - g/kg
+      deg:
+        text: deg
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          degree (angle).
+        aliases:
+        - deg
+        - degree
+        - degrees
+      mg/g:
+        text: mg/g
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          milligrams per gram.
+        aliases:
+        - mg/g
+      ug/g:
+        text: ug/g
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per gram.
+        aliases:
+        - ug/g
+        - μg/g
+      ng/g:
+        text: ng/g
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          nanograms per gram.
+        aliases:
+        - ng/g
+      pg/g:
+        text: pg/g
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          picograms per gram.
+        aliases:
+        - pg/g
+      ng/L:
+        text: ng/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          nanograms per liter.
+        aliases:
+        - ng/L
+      pg/L:
+        text: pg/L
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          picograms per liter.
+        aliases:
+        - pg/L
+      ug/mL:
+        text: ug/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micrograms per milliliter.
+        aliases:
+        - ug/mL
+        - μg/mL
+      ng/mL:
+        text: ng/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          nanograms per milliliter.
+        aliases:
+        - ng/mL
+      pg/mL:
+        text: pg/mL
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          picograms per milliliter.
+        aliases:
+        - pg/mL
+      mol:
+        text: mol
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          mole.
+        aliases:
+        - mol
+        - mole
+        - moles
+      mmol:
+        text: mmol
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millimole.
+        aliases:
+        - mmol
+        - millimole
+        - millimoles
+      umol:
+        text: umol
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          micromole.
+        aliases:
+        - umol
+        - μmol
+        - micromole
+        - micromoles
+      nmol:
+        text: nmol
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          nanomole.
+        aliases:
+        - nmol
+        - nanomole
+        - nanomoles
+      pmol:
+        text: pmol
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          picomole.
+        aliases:
+        - pmol
+        - picomole
+        - picomoles
+      U:
+        text: U
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          enzyme unit.
+        aliases:
+        - U
+        - unit
+        - units
+      mU:
+        text: mU
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millienzyme unit.
+        aliases:
+        - mU
+        - milliunit
+        - milliunits
+      uU:
+        text: uU
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microenzyme unit.
+        aliases:
+        - uU
+        - μU
+        - microunit
+        - microunits
+      nU:
+        text: nU
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          nanoenzyme unit.
+        aliases:
+        - nU
+        - nanounit
+        - nanounits
+      Bq:
+        text: Bq
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          becquerel.
+        aliases:
+        - Bq
+        - becquerel
+        - becquerels
+      kBq:
+        text: kBq
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilobecquerel.
+        aliases:
+        - kBq
+        - kilobecquerel
+        - kilobecquerels
+      MBq:
+        text: MBq
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          megabecquerel.
+        aliases:
+        - MBq
+        - megabecquerel
+        - megabecquerels
+      GBq:
+        text: GBq
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          gigabecquerel.
+        aliases:
+        - GBq
+        - gigabecquerel
+        - gigabecquerels
+      Ci:
+        text: Ci
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          curie.
+        aliases:
+        - Ci
+        - curie
+        - curies
+      mCi:
+        text: mCi
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          millicurie.
+        aliases:
+        - mCi
+        - millicurie
+        - millicuries
+      uCi:
+        text: uCi
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          microcurie.
+        aliases:
+        - uCi
+        - μCi
+        - microcurie
+        - microcuries
+      nCi:
+        text: nCi
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          nanocurie.
+        aliases:
+        - nCi
+        - nanocurie
+        - nanocuries
+      pCi:
+        text: pCi
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          picocurie.
+        aliases:
+        - pCi
+        - picocurie
+        - picocuries
+      rad:
+        text: rad
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          radian.
+        aliases:
+        - rad
+      sr:
+        text: sr
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          steradian.
+        aliases:
+        - sr
+        - steradian
+        - steradians
+      Hz:
+        text: Hz
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          hertz.
+        aliases:
+        - Hz
+        - hertz
+      kHz:
+        text: kHz
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilohertz.
+        aliases:
+        - kHz
+        - kilohertz
+      MHz:
+        text: MHz
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          megahertz.
+        aliases:
+        - MHz
+        - megahertz
+      GHz:
+        text: GHz
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          gigahertz.
+        aliases:
+        - GHz
+        - gigahertz
+      N:
+        text: N
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          newton.
+        aliases:
+        - N
+        - newton
+        - newtons
+      kN:
+        text: kN
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilonewton.
+        aliases:
+        - kN
+        - kilonewton
+        - kilonewtons
+      J:
+        text: J
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          joule.
+        aliases:
+        - J
+        - joule
+        - joules
+      kJ:
+        text: kJ
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilojoule.
+        aliases:
+        - kJ
+        - kilojoule
+        - kilojoules
+      MJ:
+        text: MJ
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          megajoule.
+        aliases:
+        - MJ
+        - megajoule
+        - megajoules
+      W:
+        text: W
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          watt.
+        aliases:
+        - W
+        - watt
+        - watts
+      kW:
+        text: kW
+        description: The Unified Code for Units of Measure (UCUM) representation of
+          kilowatt.
+        aliases:
+        - kW
+        - kilowatt
+        - kilowatts
   arch_struc_enum:
     name: arch_struc_enum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -4376,6 +4969,10 @@ enums:
         aliases:
         - Illumina NovaSeq X
         - Illumina NovaSeq X Plus
+        exact_mappings:
+        - OBI:0003663
+        narrow_mappings:
+        - OBI:0003664
       hiseq:
         text: hiseq
         aliases:
@@ -4660,8 +5257,8 @@ enums:
     name: DNASampleFormatEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
+      10 mmol/L Tris-HCl:
+        text: 10 mmol/L Tris-HCl
       DNAStable:
         text: DNAStable
       Ethanol:
@@ -4705,8 +5302,8 @@ enums:
     name: RNASampleFormatEnum
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
-      10 mM Tris-HCl:
-        text: 10 mM Tris-HCl
+      10 mmol/L Tris-HCl:
+        text: 10 mmol/L Tris-HCl
       DNAStable:
         text: DNAStable
       Ethanol:
@@ -4996,6 +5593,8 @@ slots:
     required: true
   functional_annotation_agg:
     name: functional_annotation_agg
+    description: This property links a database object to a set of functional annotation
+      aggregation (agg) results.
     from_schema: https://w3id.org/nmdc/nmdc
     range: FunctionalAnnotationAggMember
     multivalued: true
@@ -5633,7 +6232,7 @@ slots:
     name: duration
     description: The elapsed time of an activity.
     examples:
-    - value: JsonObj(has_numeric_value=2, has_unit='hours')
+    - value: JsonObj(has_numeric_value=2, has_unit='h')
     from_schema: https://w3id.org/nmdc/nmdc
     range: QuantityValue
   temperature:
@@ -19780,6 +20379,8 @@ classes:
       title: calibration_object_if_not_internal_calibration
   FunctionalAnnotationAggMember:
     name: FunctionalAnnotationAggMember
+    description: This class is used to store aggregated results from workflows which
+      produce functional annotations such as metaproteomics and metagenomics.
     from_schema: https://w3id.org/nmdc/nmdc
     slots:
     - was_generated_by
