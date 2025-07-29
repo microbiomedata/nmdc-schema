@@ -8,7 +8,7 @@
 #substance_role: solvent
 #volume:
 #  type: nmdc:QuantityValue
-#      has_unit: m
+#      has_unit: mL
 #  has_numeric_value: 120
 #  has_unit: mL
 ## mass
