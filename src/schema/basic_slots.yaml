@@ -1145,5 +1145,3 @@ enums:
         description: Data used as input into a workflow providing workflow specification.
         related_mappings:
           - edam.data:0949
-
-
