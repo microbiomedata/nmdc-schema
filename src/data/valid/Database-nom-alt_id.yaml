@@ -1,7 +1,6 @@
 #this file is a valid example of using an alternative identifier on a workflow execution subclass.
 workflow_execution_set:
   - id: nmdc:wfnom-11-547rwq94.1
-    execution_resource: LANL-B-div
     processing_institution: NMDC
     git_url: xxx
     has_input:

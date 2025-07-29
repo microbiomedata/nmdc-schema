@@ -3645,7 +3645,6 @@ workflow_execution_set:
       - nmdc:dobj-11-11238
     ended_at_time: '2020-03-25T00:00:00+00:00'
     processing_institution: NMDC
-    execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     was_informed_by:
       - nmdc:omprc-12-a84s8d
@@ -3684,7 +3683,6 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-11-dfa2ee
     ended_at_time: '2020-03-25T00:00:00+00:00'
-    execution_resource: LANL-B-div
     processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     was_informed_by:
@@ -3731,7 +3729,6 @@ workflow_execution_set:
         qc_failure_what: other
         qc_failure_where: MetagenomeAssembly
     ended_at_time: '2020-03-25T00:00:00+00:00'
-    execution_resource: LANL-B-div
     processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     was_informed_by:
@@ -4087,7 +4084,6 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-99-74d83
     ended_at_time: '2023-08-09T16:30:00Z'
-    execution_resource: LANL-B-div
     processing_institution: NMDC
     git_url: https://github.com/microbiomedata/read_based_taxonomy_analysis/releases/tag/v0.4.5
     was_informed_by:
