@@ -1,7 +1,7 @@
 ## final_concentration
 #source_concentration:
 #  type: nmdc:QuantityValue
-#      has_unit: m
+#      has_unit: %
 #  has_unit: percent
 #  has_numeric_value: 10
 #known_as: glucose
