@@ -156,7 +156,7 @@ antibiotic_regm:
 api:  #  Preferred_unit: degrees API (which is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{API}'
+  has_unit: '1'
 arch_struc: building
 aromatics_pc:
   type: nmdc:TextValue
@@ -196,7 +196,7 @@ bacteria_carb_prod:
 barometric_press:  # Preferred_unit: millibar (which is not in UCUM)
   has_numeric_value: 5.0
   has_raw_value: "5 millibar"
-  has_unit: '[arb''U]{mbar}'
+  has_unit: 'mbar'
   type: nmdc:QuantityValue
 basin:
   type: nmdc:TextValue
@@ -241,14 +241,6 @@ blood_press_syst:
   type: nmdc:QuantityValue
   has_raw_value: xxx
   has_unit: "ug/L"
-blood_press_diast:
-  type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: mm[Hg]
-blood_press_syst:
-  type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: mm[Hg]
 bromide:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 parts per million
@@ -286,7 +278,7 @@ carb_monoxide:
 carb_nitro_ratio:
   type: nmdc:QuantityValue
   has_raw_value: '0.417361111'
-  has_unit: '{ratio}'
+  has_unit: '1'
   has_numeric_value: 0.417361111
 ceil_area:
   type: nmdc:QuantityValue
@@ -447,7 +439,7 @@ door_water_mold:
 down_par:  # example: 28.71 microEinstein per square meter per second (Einstein is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{micro_Einstein}/m2/s'
+  has_unit: 'm2/s'
 drainage_class: well
 drawings: operation
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
@@ -536,11 +528,11 @@ fluor:
 freq_clean:  # FreqCleanEnum
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{unitless}'
+  has_unit: '1'
 freq_cook:  # measurement with value and text?
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{unitless}'
+  has_unit: '1'
 fungicide_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -784,7 +776,7 @@ manganese:
 max_occup:
   type: nmdc:QuantityValue
   has_raw_value: '35'
-  has_unit: '[arb''U]{people}'
+  has_unit: 'people'
   has_numeric_value: 35
 mean_frict_vel:
   type: nmdc:QuantityValue
@@ -843,27 +835,27 @@ non_min_nutr_regm:
 number_pets:
   type: nmdc:QuantityValue
   has_raw_value: '3'
-  has_unit: '[arb''U]{pets}'
+  has_unit: 'pets'
   has_numeric_value: 3
 number_plants:
   type: nmdc:QuantityValue
   has_raw_value: '4'
-  has_unit: '[arb''U]{plants}'
+  has_unit: 'plants'
   has_numeric_value: 4
 number_resident:
   type: nmdc:QuantityValue
   has_raw_value: '3'
-  has_unit: '[arb''U]{people}'
+  has_unit: 'people'
   has_numeric_value: 3
 occup_density_samp:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{unitless}'
+  has_unit: '1'
 occup_document: estimate
 occup_samp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{people}'
+  has_unit: 'people'
 org_carb:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -885,7 +877,7 @@ org_particles:
 organism_count:  # Expected_value: organism name;measurement value;enumeration
   - type: nmdc:QuantityValue
     has_raw_value: total prokaryotes;3.5e7 cells per milliliter;qPCR
-    has_unit: '[arb''U]{unitless}'
+    has_unit: '1'
 owc_tvdss:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -943,7 +935,7 @@ phosplipid_fatt_acid:
 photon_flux:  # example 3.926 micromole photons per second per square meter
   has_numeric_value: 3.926
   has_raw_value: "3.926 micromole photons per second per square meter"
-  has_unit: umol{photon}/s/m2
+  has_unit: umol/s/m2
   type: nmdc:QuantityValue
 plant_growth_med:
   type: nmdc:ControlledTermValue
@@ -1059,7 +1051,7 @@ room_net_area:
 room_occup:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{people}'
+  has_unit: 'people'
 room_samp_pos: north corner
 room_type: attic
 room_vol:
@@ -1084,7 +1076,7 @@ root_med_micronutr:
 root_med_ph:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[pH]'
+  has_unit: 'pH'
 root_med_regl:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -1097,7 +1089,7 @@ root_med_suppl:
 salinity:
   has_numeric_value: 25
   has_raw_value: 25 practical salinity unit
-  has_unit: '[arb''U]{PSU}'
+  has_unit: 'PSU'
   type: nmdc:QuantityValue
 salinity_meth:
   type: nmdc:TextValue
@@ -1250,7 +1242,7 @@ soil_horizon: O horizon
 soil_text_measure:  # soil_texture? soil_texture_class?
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: '[arb''U]{unitless}'
+  has_unit: '1'
 soil_texture_meth: xxx
 soil_type:
   type: nmdc:TextValue
@@ -1425,7 +1417,7 @@ train_stop_loc: end
 turbidity:  # example: 0.3 nephelometric turbidity units (which is not a valid unit in UCUM)
   has_numeric_value: 0.3
   has_raw_value: "0.3 nephelometric turbidity units"
-  has_unit: '[arb''U]{NTU}'
+  has_unit: '1'
   type: nmdc:QuantityValue
 tvdss_of_hcr_press:
   type: nmdc:QuantityValue
@@ -1475,7 +1467,7 @@ wall_texture: knockdown
 wall_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: J/Cel
+  has_unit: "J/K"
 wall_water_mold:
   type: nmdc:TextValue
   has_raw_value: xxx
