@@ -1496,7 +1496,7 @@ biosample_set:
     abs_air_humidity:
       type: nmdc:QuantityValue
       has_raw_value: xxx
-      has_unit: %
+      has_unit: "%"
     add_recov_method:
       type: nmdc:TextValue
       has_raw_value: xxx
