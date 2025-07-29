@@ -508,10 +508,6 @@ enums:
         description: Environmental Molecular Sciences Laboratory RZR cluster
         aliases:
           - RZR
-      LANL-B-div:
-        description: LANL Bioscience Division
-        aliases:
-          - B-div
       EMSL-Tahoma:
         description: Environmental Molecular Sciences Laboratory RZR Tahoma cluster
         aliases:
