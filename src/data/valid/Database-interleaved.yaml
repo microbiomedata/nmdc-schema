@@ -5,6 +5,7 @@ workflow_execution_set:
     ctg_n50: 10000.0
     ended_at_time: '2023-08-04T14:00:00Z'
     execution_resource: NERSC-Perlmutter
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metatranscriptome_assembly/releases/tag/v1.2.3
     name: human gut metatranscriptome assembly
     scaf_bp: 567890123.0
@@ -24,7 +25,8 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-99-74d83
     ended_at_time: '2023-08-11T17:00:00Z'
-    execution_resource: EMSL
+    execution_resource: EMSL-Tahoma
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metaproteomics_analysis/releases/tag/v0.6.3
     was_informed_by:
       - nmdc:dgms-12-384j8d
@@ -3468,6 +3470,7 @@ workflow_execution_set:
       - nmdc:dobj-11-djkr3
     ended_at_time: '2021-01-10T00:00:00+00:00'
     execution_resource: NERSC-Cori
+    processing_institution: NMDC
     git_url: https://img.jgi.doe.gov
     was_informed_by:
       - nmdc:dgns-11-384skd
@@ -3502,6 +3505,7 @@ workflow_execution_set:
       - nmdc:dobj-11-dr34d
     ended_at_time: '2021-01-10T00:00:00+00:00'
     execution_resource: NERSC-Cori
+    processing_institution: NMDC
     git_url: https://img.jgi.doe.gov
     was_informed_by:
       - nmdc:dgns-12-348u7d
@@ -3532,6 +3536,7 @@ workflow_execution_set:
       - nmdc:dobj-6y6-j6n9t
     ended_at_time: '2023-08-01T18:00:00Z'
     execution_resource: NERSC-Cori
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/mags_analysis/releases/tag/v1.0.0
     was_informed_by:
       - nmdc:omprc-11-di48df
@@ -3558,6 +3563,7 @@ workflow_execution_set:
       - nmdc:dobj-11-dajfe
     ended_at_time: '2021-09-15T10:13:20+00:00'
     execution_resource: NERSC-Cori
+    processing_institution: NMDC
     git_url: https://example.org/WorkflowExecutionActivity
     was_informed_by:
       - nmdc:dgms-11-3u74ds
@@ -3571,7 +3577,8 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-4d8-3z74d
     ended_at_time: '2023-08-02T15:00:00Z'
-    execution_resource: EMSL
+    execution_resource: EMSL-Tahoma
+    processing_institution: EMSL
     git_url: https://github.com/microbiomedata/metabolomics_analysis/releases/tag/v0.5.0
     was_informed_by:
       - nmdc:omprc-11-di84md
@@ -3589,7 +3596,7 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-99-6y6j
     ended_at_time: '2023-08-03T16:00:00Z'
-    execution_resource: JGI
+    processing_institution: JGI
     git_url: https://github.com/microbiomedata/metagenome_annotation/releases/tag/v2.5.0
     was_informed_by:
       - nmdc:omprc-11-d8484s
@@ -3603,6 +3610,7 @@ workflow_execution_set:
     end_date: '2019-99-08'
     ended_at_time: '2023-08-11T17:00:00Z'
     execution_resource: EMSL-RZR
+    processing_institution: NMDC
     git_url: http://example.com
     has_failure_categorization:
       - type: nmdc:FailureCategorization
@@ -3636,6 +3644,7 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-11-11238
     ended_at_time: '2020-03-25T00:00:00+00:00'
+    processing_institution: NMDC
     execution_resource: LANL-B-div
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     was_informed_by:
@@ -3676,6 +3685,7 @@ workflow_execution_set:
       - nmdc:dobj-11-dfa2ee
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     was_informed_by:
       - nmdc:omprc-12-a84s8d
@@ -3722,6 +3732,7 @@ workflow_execution_set:
         qc_failure_where: MetagenomeAssembly
     ended_at_time: '2020-03-25T00:00:00+00:00'
     execution_resource: LANL-B-div
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metaAssembly/releases/tag/1.0.0
     was_informed_by:
       - nmdc:omprc-11-fu79d9
@@ -3735,6 +3746,7 @@ workflow_execution_set:
       - nmdc:dobj-99-9t74d
     ended_at_time: '2023-08-04T14:00:00Z'
     execution_resource: NERSC-Perlmutter
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metagenome_assembly/releases/tag/v1.2.3
     was_informed_by:
       - nmdc:omprc-11-fu79d9
@@ -3751,7 +3763,7 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-99-6y6j
     ended_at_time: '2023-08-03T16:00:00Z'
-    execution_resource: JGI
+    processing_institution: JGI
     git_url: https://github.com/microbiomedata/metatranscriptome_annotation/releases/tag/v2.5.0
     was_informed_by:
       - nmdc:dgns-12-dfa84a
@@ -3767,6 +3779,7 @@ workflow_execution_set:
       - nmdc:dobj-74d-99-k4
     ended_at_time: '2023-08-07T14:30:00Z'
     execution_resource: EMSL-RZR
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/metatranscriptome_analysis/releases/tag/v0.7.8
     was_informed_by:
       - nmdc:dgns-12-dfa84a
@@ -3783,6 +3796,7 @@ workflow_execution_set:
       - nmdc:dobj-11-djre4d
     ended_at_time: '2018-11-13T20:20:39+00:00'
     execution_resource: EMSL-RZR
+    processing_institution: EMSL
     git_url: xxx
     was_informed_by:
       - nmdc:dgns-12-dfa84b
@@ -3795,7 +3809,7 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-3z7-4d83z
     ended_at_time: '2023-08-08T15:30:00Z'
-    execution_resource: EMSL
+    processing_institution: EMSL
     git_url: https://github.com/microbiomedata/nom_analysis/releases/tag/v0.3.2
     was_informed_by:
       - nmdc:dgms-12-dfa74b
@@ -4074,6 +4088,7 @@ workflow_execution_set:
       - nmdc:dobj-99-74d83
     ended_at_time: '2023-08-09T16:30:00Z'
     execution_resource: LANL-B-div
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/read_based_taxonomy_analysis/releases/tag/v0.4.5
     was_informed_by:
       - nmdc:dgns-11-sdkr82
@@ -4089,6 +4104,7 @@ workflow_execution_set:
       - nmdc:dobj-12-y236qp68
     ended_at_time: '2023-03-23T17:17:05.111725+00:00'
     execution_resource: NERSC-Cori
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/ReadsQC
     was_informed_by:
       - nmdc:omprc-12-38fk74
@@ -4108,6 +4124,7 @@ workflow_execution_set:
         qc_failure_where: ReadQcAnalysis
     ended_at_time: '2023-08-30T13:26:02.892410+00:00'
     execution_resource: NERSC-Perlmutter
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/ReadsQC
     was_informed_by:
       - nmdc:omprc-11-di48s4
@@ -4127,6 +4144,7 @@ workflow_execution_set:
     qc_comment: Number of output reads from readqc is above threshold (6000000 > 1000000)
     ended_at_time: '2023-08-30T13:26:02.892410+00:00'
     execution_resource: NERSC-Perlmutter
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/ReadsQC
     was_informed_by:
       - nmdc:dgns-11-2947fa
@@ -4150,6 +4168,7 @@ workflow_execution_set:
         qc_failure_where: ReadQcAnalysis
     ended_at_time: '2023-08-30T13:26:02.892410+00:00'
     execution_resource: NERSC-Perlmutter
+    processing_institution: NMDC
     git_url: https://github.com/microbiomedata/ReadsQC
     was_informed_by:
       - nmdc:dgns-11-d84da8
@@ -4164,7 +4183,7 @@ workflow_execution_set:
     has_output:
       - nmdc:dobj-99-7l49z
     ended_at_time: '2023-08-10T15:00:00Z'
-    execution_resource: JGI
+    processing_institution: JGI
     git_url: https://github.com/microbiomedata/read_qc_analysis/releases/tag/v0.2.1
     was_informed_by:
       - nmdc:dgns-11-xc988a
