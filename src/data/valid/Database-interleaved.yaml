@@ -4192,7 +4192,7 @@ processed_sample_set:
     biomaterial_purity:
       type: nmdc:QuantityValue
       has_numeric_value: 1.8
-      has_unit: 1
+      has_unit: "1"
     dna_concentration: 123.0
   - id: nmdc:procsm-99-29dl
     type: nmdc:ProcessedSample
