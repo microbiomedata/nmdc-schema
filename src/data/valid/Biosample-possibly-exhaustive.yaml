@@ -622,6 +622,7 @@ host_age:
   has_unit: a
   type: nmdc:QuantityValue
 
+  type: nmdc:QuantityValue
   has_raw_value: xxx
   has_unit: "mol/L/h"
 host_body_habitat:
