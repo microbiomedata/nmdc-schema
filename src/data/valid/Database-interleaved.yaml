@@ -4225,7 +4225,7 @@ processed_sample_set:
     biomaterial_purity:
       type: nmdc:QuantityValue
       has_numeric_value: 2
-      has_unit: m
+      has_unit: "1"
     external_database_identifiers:
       - neon.identifier:19S_31_2826
   - id: nmdc:procsm-99-xyz1
