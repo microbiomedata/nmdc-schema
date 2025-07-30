@@ -1,4 +1,5 @@
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
+from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.helpers import create_schema_view, logger
 from nmdc_schema.migrators.migration_reporter import (
@@ -8,11 +9,9 @@ from nmdc_schema.migrators.migration_reporter import (
     get_clean_schema_path,
     resolve_class_from_schema_path
 )
-from pymongo.client_session import ClientSession
 from typing import Optional, List
 from functools import lru_cache
 import logging
-import copy
 
 # Constants for schema traversal
 DATABASE_CLASS_NAME = "Database"
@@ -274,57 +273,44 @@ class Migrator(MigratorBase):
         # that already exist in the database).
         self._unit_alias_map = self._build_unit_alias_map(self._schema_view)
         
-        # Use MongoDB transactions for atomicity
-        db = self.adapter.get_database()
-        with db.client.start_session() as session:
-            with session.start_transaction():
-                try:
-                    self._process_collections_with_transaction(db, session)
-                    self.reporter.generate_final_report()
-                    
-                    if commit_changes:
-                        self.logger.info("Committing transaction (changes will be saved)")
-                        session.commit_transaction()
-                    else:
-                        self.logger.info("Rolling back transaction (no changes will be committed)")
-                        session.abort_transaction()
-                        
-                except Exception as e:
-                    self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
-                    raise
-    
-    def _process_collections_with_transaction(self, db, session: ClientSession) -> None:
-        r"""
-        Process collections within a MongoDB transaction session.
-        Only processes collections that actually exist in the Database class slots.
-        
-        Args:
-            db: MongoDB database instance
-            session: MongoDB session for transaction support
-        """
         # Get the actual collection names from the Database class slots
         real_collection_names = get_collection_with_qv_slots_from_schema()
         
-        # Process each real collection
-        for collection_name in real_collection_names:
-            # Get the collection and process documents within the transaction
-            collection = db.get_collection(collection_name)
-            
-            # Process each document in the collection
-            for document in collection.find({}, session=session):
-                original_document = copy.deepcopy(document)
+        # Use adapter's transaction-aware processing method
+        if isinstance(self.adapter, MongoAdapter):
+            # MongoDB adapter - use transaction support
+            try:
+                self.adapter.process_collections_in_transaction(
+                    collection_names=real_collection_names,
+                    document_processor=self.ensure_quantity_value_has_unit,
+                    commit_changes=commit_changes
+                )
                 
-                # The recursive traversal will handle all nested QuantityValue objects
-                # regardless of their class type, so we don't need to pass specific slots
-                modified_document = self.ensure_quantity_value_has_unit(document)
+                self.reporter.generate_final_report()
                 
-                # Only update if the document was actually modified
-                if modified_document != original_document:
-                    collection.replace_one(
-                        {"_id": document["_id"]}, 
-                        modified_document, 
-                        session=session
-                    )
+                if commit_changes:
+                    self.logger.info("Transaction committed (changes have been saved)")
+                else:
+                    self.logger.info("Transaction rolled back (no changes were committed)")
+                    
+            except Exception as e:
+                self.logger.error(f"Migration failed: {e}")
+                raise
+        else:
+            # Non-MongoDB adapter - process collections directly without transactions
+            try:
+                for collection_name in real_collection_names:
+                    self.adapter.process_each_document(collection_name, [self.ensure_quantity_value_has_unit])
+                
+                self.reporter.generate_final_report()
+                
+                if not commit_changes:
+                    self.logger.info("Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately")
+                    
+            except Exception as e:
+                self.logger.error(f"Migration failed: {e}")
+                raise
+    
 
     @staticmethod
     def _get_classes_with_quantity_value_slots(view) -> dict:

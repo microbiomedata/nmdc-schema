@@ -151,10 +151,3 @@ class AdapterBase(ABC):
         """
         pass
 
-    @abstractmethod
-    def get_database(self):
-        r"""
-        Returns the database instance for direct database operations.
-        Implementation should return the underlying database connection/instance.
-        """
-        pass

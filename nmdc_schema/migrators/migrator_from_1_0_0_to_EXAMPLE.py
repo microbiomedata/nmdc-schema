@@ -1,5 +1,6 @@
 from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
+from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migration_reporter import MigrationReporter
 
 import logging
@@ -86,23 +87,25 @@ class Migrator(MigratorBase):
         
         # TUTORIAL: Transaction handling for MongoDB migrations
         #           When using MongoDB, migrations run within a transaction for safety
-        if hasattr(self.adapter, 'get_database') and hasattr(self.adapter.get_database(), 'client'):
-            # MongoDB adapter - use transactions for atomic operations
-            db = self.adapter.get_database()
-            with db.client.start_session() as session:
-                with session.start_transaction():
-                    # Perform all migration operations within the transaction
-                    self._perform_migration_operations()
+        if isinstance(self.adapter, MongoAdapter):
+            # MongoDB adapter - use a single transaction for all operations
+            try:
+                # TUTORIAL: Use the unified transaction method that gives full control
+                self.adapter.execute_in_transaction(
+                    operations_callback=self._perform_all_migration_operations,
+                    commit_changes=commit_changes
+                )
+                
+                if commit_changes:
+                    self.logger.info("Transaction committed (changes have been saved)")
+                else:
+                    self.logger.info("Transaction rolled back (no changes were committed)")
                     
-                    # TUTORIAL: Commit or rollback based on the commit_changes parameter
-                    if commit_changes:
-                        self.logger.info("Committing transaction (changes will be saved)")
-                        session.commit_transaction()
-                    else:
-                        self.logger.info("Rolling back transaction (no changes will be committed)")
-                        session.abort_transaction()
+            except Exception as e:
+                self.logger.error(f"Migration failed: {e}")
+                raise
         else:
-            # For non-MongoDB adapters (like DictionaryAdapter), just perform operations
+            # For non-MongoDB adapters (like DictionaryAdapter), just perform all operations
             # TUTORIAL: Dictionary adapter doesn't support transactions, so changes apply immediately
             self._perform_migration_operations()
             if not commit_changes:
@@ -112,6 +115,32 @@ class Migrator(MigratorBase):
         if self.reporter:
             self.reporter.generate_final_report()
     
+    def _perform_all_migration_operations(self, adapter, session):
+        """
+        TUTORIAL: This method performs ALL migration operations within a single transaction.
+                  It receives the adapter and session from execute_in_transaction(), ensuring
+                  proper session management and atomic operations.
+                  
+        Args:
+            adapter: The MongoAdapter instance (same as self.adapter)
+            session: The MongoDB session for transaction control
+        """
+        # TUTORIAL: Process existing documents (transactional)
+        print("Processing collection: study_set")
+        adapter.process_each_document("study_set", [self.allow_multiple_names], session)
+        
+        # TUTORIAL: Create collections (not transactional in MongoDB - happens immediately)
+        adapter.create_collection("comment_set")
+        adapter.create_collection("report_set")
+        
+        # TUTORIAL: Insert new documents (transactional)
+        adapter.insert_document("comment_set", {"id": 1, "text": "Hello"}, session)
+        adapter.insert_document("comment_set", {"id": 2, "text": "Goodbye"}, session)
+        
+        # TUTORIAL: Process documents to create reports (transactional)
+        adapter.do_for_each_document("comment_set", self.create_report_based_upon_comment, session)
+
+
     def _perform_migration_operations(self):
         """
         TUTORIAL: Separated migration logic to support transaction handling.

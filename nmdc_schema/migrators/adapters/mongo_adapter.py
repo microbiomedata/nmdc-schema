@@ -1,6 +1,7 @@
 from typing import Optional, Callable, List, Union
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 from pymongo.database import Database
+from pymongo.client_session import ClientSession
 
 
 class MongoAdapter(AdapterBase):
@@ -23,6 +24,9 @@ class MongoAdapter(AdapterBase):
         r"""
         Creates an empty collection having the specified name, if no collection by that name exists.
         Also invokes `self.on_collection_created`, if defined, passing to it the name of the collection.
+
+        Note: This operation is NOT transactional in MongoDB - collections are created immediately
+        regardless of any active transaction state.
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/database.html#pymongo.database.Database.create_collection
@@ -66,14 +70,19 @@ class MongoAdapter(AdapterBase):
             if callable(self.on_collection_deleted):
                 self.on_collection_deleted(collection_name)
 
-    def insert_document(self, collection_name: str, document: dict) -> None:
+    def insert_document(self, collection_name: str, document: dict, session: ClientSession = None) -> None:
         r"""
         Inserts the specified document into the collection having the specified name.
+
+        Args:
+            collection_name: Name of the collection
+            document: Document to insert
+            session: Optional MongoDB session for transaction support
 
         References:
         - https://pymongo.readthedocs.io/en/stable/api/pymongo/collection.html#pymongo.collection.Collection.insert_one
         """
-        self._db.get_collection(name=collection_name).insert_one(document)
+        self._db.get_collection(name=collection_name).insert_one(document, session=session)
 
     def get_document_having_value_in_field(
         self, collection_name: str, field_name: str, value: str
@@ -157,12 +166,17 @@ class MongoAdapter(AdapterBase):
         return num_deleted
 
     def process_each_document(
-        self, collection_name: str, pipeline: List[Callable[[dict], dict]]
+        self, collection_name: str, pipeline: List[Callable[[dict], dict]], session: ClientSession = None
     ) -> None:
         r"""
         Passes each document in the specified collection through the specified processing pipeline—in which
         the output of any given function is the input to the function after it—and stores the final output
         back in the collection, replacing the original document.
+
+        Args:
+            collection_name: Name of the collection to process
+            pipeline: List of functions to apply to each document
+            session: Optional MongoDB session for transaction support
 
         References:
         - https://docs.python.org/3/library/copy.html#copy.deepcopy
@@ -172,7 +186,7 @@ class MongoAdapter(AdapterBase):
         # Iterate over every document in the collection, if the collection exists.
         if collection_name in self._db.list_collection_names():
             collection = self._db.get_collection(name=collection_name)
-            for document in collection.find():
+            for document in collection.find({}, session=session):
                 # Create a filter based upon this document's `_id` value, so that we can find the same document later.
                 # We do this up front in case a function in the pipeline "inadvertently" tampers with the `_id` field.
                 document_id = document["_id"]
@@ -184,7 +198,7 @@ class MongoAdapter(AdapterBase):
                     document = function(document)
 
                 # Overwrite the original document with the processed one.
-                collection.replace_one(filter=filter_, replacement=document)
+                collection.replace_one(filter=filter_, replacement=document, session=session)
 
     def set_field_of_each_document(
         self, collection_name: str, field_name: str, value: Union[None, str, int, float, bool],
@@ -217,17 +231,22 @@ class MongoAdapter(AdapterBase):
             collection.update_many({}, {"$unset": {field_name: 0}})  # value is arbitrary (e.g. 0)
 
     def do_for_each_document(
-        self, collection_name: str, action: Callable[[dict], None]
+        self, collection_name: str, action: Callable[[dict], None], session: ClientSession = None
     ) -> None:
         r"""
         Passes each document in the specified collection to the specified function. This method was designed
         to facilitate iterating over all documents in a collection without actually modifying them.
+        
+        Args:
+            collection_name: Name of the collection to iterate over
+            action: Function to call for each document
+            session: Optional MongoDB session for transaction support
         """
 
         # Iterate over every document in the collection, if the collection exists.
         if collection_name in self._db.list_collection_names():
             collection = self._db.get_collection(name=collection_name)
-            for document in collection.find():
+            for document in collection.find({}, session=session):
                 action(document)
 
     def copy_value_from_field_to_field_in_each_document(
@@ -254,8 +273,71 @@ class MongoAdapter(AdapterBase):
                 [{"$set": {destination_field_name: f"${source_field_name}"}}]
             )
 
-    def get_database(self):
+
+    def process_collections_in_transaction(
+        self, 
+        collection_names: List[str], 
+        document_processor: Callable[[dict], dict],
+        commit_changes: bool = False
+    ) -> None:
         r"""
-        Returns the database instance for direct MongoDB operations.
+        Process documents in multiple collections within a MongoDB transaction.
+        This method wraps the existing process_each_document method with transaction handling.
+        
+        Args:
+            collection_names: List of collection names to process
+            document_processor: Function that takes a document and returns the modified document
+            commit_changes: If True, commits the transaction. If False, rolls back.
         """
-        return self._db
+        with self._db.client.start_session() as session:
+            with session.start_transaction():
+                try:
+                    # Use the existing process_each_document method with session support
+                    for collection_name in collection_names:
+                        self.process_each_document(collection_name, [document_processor], session)
+                    
+                    if commit_changes:
+                        session.commit_transaction()
+                    else:
+                        session.abort_transaction()
+                        
+                except Exception as e:
+                    session.abort_transaction()
+                    raise e
+
+    def execute_in_transaction(
+        self,
+        operations_callback: Callable[['MongoAdapter', ClientSession], None],
+        commit_changes: bool = False
+    ) -> None:
+        r"""
+        Execute arbitrary operations within a MongoDB transaction.
+        This gives the migrator full control over what operations are performed within a single transaction.
+        
+        Args:
+            operations_callback: Function that takes (adapter, session) and performs operations
+            commit_changes: If True, commits the transaction. If False, rolls back.
+            
+        Example usage:
+            def my_operations(adapter, session):
+                adapter.create_collection("new_collection")  # Not transactional
+                adapter.insert_document("new_collection", {"id": 1}, session)  # Transactional
+                adapter.do_for_each_document("old_collection", some_function, session)  # Transactional
+                
+            adapter.execute_in_transaction(my_operations, commit_changes=True)
+        """
+        with self._db.client.start_session() as session:
+            with session.start_transaction():
+                try:
+                    # Call the operations callback, passing both adapter and session
+                    operations_callback(self, session)
+                    
+                    if commit_changes:
+                        session.commit_transaction()
+                    else:
+                        session.abort_transaction()
+                        
+                except Exception as e:
+                    session.abort_transaction()
+                    raise e
+
