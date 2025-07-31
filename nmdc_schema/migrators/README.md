@@ -346,9 +346,3 @@ db.runCommand("listCollections").cursor.firstBatch
 # This commits the changes to the database
 % make run-migrator MIGRATOR=migrator_from_1_0_0_to_EXAMPLE ACTION=commit
 ```
-
-5. **Run validation checks**
-
-```bash
-
-```
