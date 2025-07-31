@@ -144,44 +144,107 @@ To add MongoDB transaction support with commit/rollback functionality to your mi
        """
    ```
 
-2. **Add the transaction detection pattern**:
+2. **Import MongoAdapter for type checking**:
+   ```python
+   from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
+   ```
+
+3. **Add the transaction detection pattern** (use one of these approaches):
+
+   **Option A: Using execute_in_transaction() (Recommended for complex migrations)**:
    ```python
    def upgrade(self, commit_changes: bool = False):
        # Initialize your components (reporter, schema, etc.)
        self.reporter = MigrationReporter(self.logger)
        
-       # Check for MongoDB adapter and use transactions
-       if hasattr(self.adapter, 'get_database') and hasattr(self.adapter.get_database(), 'client'):
-           # MongoDB adapter - use transactions
-           db = self.adapter.get_database()
-           with db.client.start_session() as session:
-               with session.start_transaction():
-                   try:
-                       self._perform_migration_operations()
-                       if self.reporter:
-                           self.reporter.generate_final_report()
-                       
-                       if commit_changes:
-                           self.logger.info("Committing transaction (changes will be saved)")
-                           session.commit_transaction()
-                       else:
-                           self.logger.info("Rolling back transaction (no changes will be committed)")
-                           session.abort_transaction()
-                           
-                   except Exception as e:
-                       self.logger.error(f"Migration failed, transaction will be rolled back: {e}")
-                       raise
+       # Check for MongoDB adapter and use unified transaction control
+       if isinstance(self.adapter, MongoAdapter):
+           # MongoDB adapter - use single transaction for all operations
+           try:
+               self.adapter.execute_in_transaction(
+                   operations_callback=self._perform_all_migration_operations,
+                   commit_changes=commit_changes
+               )
+               
+               if commit_changes:
+                   self.logger.info("Transaction committed (changes have been saved)")
+               else:
+                   self.logger.info("Transaction rolled back (no changes were committed)")
+                   
+           except Exception as e:
+               self.logger.error(f"Migration failed: {e}")
+               raise
        else:
            # Dictionary adapter or other - no transactions available
            self._perform_migration_operations()
-           if self.reporter:
+           if not commit_changes:
+               self.logger.info("Note: Non-MongoDB adapter doesn't support rollback")
+   
+   def _perform_all_migration_operations(self, adapter, session):
+       """
+       Callback method that receives adapter and session from execute_in_transaction().
+       All operations here use the same MongoDB session for atomic transactions.
+       """
+       # Document processing (transactional)
+       adapter.process_each_document("collection_name", [self.transform_function], session)
+       
+       # Collection creation (not transactional in MongoDB)
+       adapter.create_collection("new_collection")
+       
+       # Document insertion (transactional)
+       adapter.insert_document("new_collection", {"data": "value"}, session)
+       
+       # Generate report
+       if self.reporter:
+           self.reporter.generate_final_report()
+   ```
+
+   **Option B: Using process_collections_in_transaction() (For document-focused migrations)**:
+   ```python
+   def upgrade(self, commit_changes: bool = False):
+       # Initialize your components (reporter, schema, etc.)
+       self.reporter = MigrationReporter(self.logger)
+       
+       if isinstance(self.adapter, MongoAdapter):
+           # MongoDB adapter - use transaction support for document processing
+           try:
+               self.adapter.process_collections_in_transaction(
+                   collection_names=["collection1", "collection2"],
+                   document_processor=self.transform_function,
+                   commit_changes=commit_changes
+               )
+               
                self.reporter.generate_final_report()
+               
+               if commit_changes:
+                   self.logger.info("Transaction committed (changes have been saved)")
+               else:
+                   self.logger.info("Transaction rolled back (no changes were committed)")
+                   
+           except Exception as e:
+               self.logger.error(f"Migration failed: {e}")
+               raise
+       else:
+           # Non-MongoDB adapter - process collections directly
+           for collection_name in ["collection1", "collection2"]:
+               self.adapter.process_each_document(collection_name, [self.transform_function])
+           
+           self.reporter.generate_final_report()
+           
            if not commit_changes:
                self.logger.info("Note: Non-MongoDB adapter doesn't support rollback")
    ```
-   
+
+**Key Changes from Previous Versions:**
+- ✅ **No more `get_database()` access** - Use adapter methods only
+- ✅ **Proper type checking** with `isinstance(self.adapter, MongoAdapter)`
+- ✅ **Session management handled by adapter** - No manual session creation
+- ✅ **Unified transaction control** with `execute_in_transaction()`
+- ✅ **Session-aware methods** - Pass `session` parameter to transactional operations
+
 **Examples:**
-- See `migrator_from_1_0_0_to_EXAMPLE.py` for basic transaction pattern
+- See `migrator_from_1_0_0_to_EXAMPLE.py` for unified transaction pattern with `execute_in_transaction()`
+- See `migrator_from_11_9_1_to_11_10_0.py` for document-focused pattern with `process_collections_in_transaction()`
 
 ## Testing the migrator
 
@@ -229,7 +292,7 @@ docker ps -a
 
 # Find the most recent docker dump
 ssh your-user-name@dtn01.nersc.gov
-ls global/cfs/projectdirs/m3408/nmdc-mongodumps/  
+ls /global/cfs/projectdirs/m3408/nmdc-mongodumps/  
 
 # Download the dump (replace with actual dump name)
 rsync -av --exclude='_*' --exclude='fs\.*' -e "ssh " \
