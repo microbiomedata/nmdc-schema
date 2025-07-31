@@ -315,6 +315,7 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of minute.
         aliases:
           - minutes
+          - minute
       mL:
         description: The Unified Code for Units of Measure (UCUM) representation of milliliter.
       mm:
