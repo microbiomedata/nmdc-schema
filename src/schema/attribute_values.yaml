@@ -313,6 +313,8 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
       min:
         description: The Unified Code for Units of Measure (UCUM) representation of minute.
+        aliases:
+          - minutes
       mL:
         description: The Unified Code for Units of Measure (UCUM) representation of milliliter.
       mm:

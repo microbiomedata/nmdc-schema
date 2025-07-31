@@ -525,9 +525,6 @@ class Migrator(MigratorBase):
                         source_value=current_unit or "<missing>",
                         target_value=handled_unit
                     )
-                elif current_unit in self._unit_alias_map and self._unit_alias_map[current_unit] == current_unit:
-                    # Unit is already valid canonical form - track as conformant
-                    self.reporter.track_record_processed(root_collection_class, clean_schema_path, most_specific_class, current_unit)
                 else:
                     # Unit is not in the alias map - report it for analysis
                     self.reporter.track_unmapped_value(root_collection_class, clean_schema_path, current_unit)
