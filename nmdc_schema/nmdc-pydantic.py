@@ -530,6 +530,11 @@ linkml_meta = LinkMLMeta({'default_prefix': 'nmdc',
                                   '"time".'],
                         'repr': 'str',
                         'uri': 'xsd:time'},
+               'unit': {'base': 'str',
+                        'from_schema': 'https://w3id.org/nmdc/nmdc',
+                        'mappings': ['qud:Unit', 'UO:0000000'],
+                        'name': 'unit',
+                        'uri': 'xsd:string'},
                'uri': {'base': 'URI',
                        'close_mappings': ['schema:URL'],
                        'comments': ['in RDF serializations a slot with range of '
@@ -944,453 +949,6 @@ class ChemicalEntityEnum(str, Enum):
     phosphoric_acid = "phosphoric_acid"
     trypsin = "trypsin"
     water = "water"
-
-
-class UnitEnum(str, Enum):
-    PERCENT_SIGN = "%"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of percent.
-    """
-    JSOLIDUSK = "J/K"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joule per kelvin.
-    """
-    Cel = "Cel"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
-    """
-    cm = "cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of centimeter.
-    """
-    d = "d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of day.
-    """
-    g = "g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gram.
-    """
-    h = "h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of hour.
-    """
-    kPa = "kPa"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilopascal.
-    """
-    m = "m"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of meter.
-    """
-    mSOLIDUSs = "m/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of meters per second.
-    """
-    mgSOLIDUSkg = "mg/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
-    """
-    mgSOLIDUSL = "mg/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
-    """
-    min = "min"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of minute.
-    """
-    mL = "mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milliliter.
-    """
-    mm = "mm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimeter.
-    """
-    mLSOLIDUSL = "mL/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
-    """
-    mmolSOLIDUSL = "mmol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimolar.
-    """
-    mSSOLIDUScm = "mS/cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
-    """
-    LEFT_SQUARE_BRACKETppmRIGHT_SQUARE_BRACKET = "[ppm]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per million.
-    """
-    uSSOLIDUScm = "uS/cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
-    """
-    WSOLIDUSm2 = "W/m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
-    """
-    a = "a"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of year.
-    """
-    ugSOLIDUSL = "ug/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
-    """
-    ugSOLIDUSuL = "ug/uL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
-    """
-    uL = "uL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microliter.
-    """
-    molSOLIDUSL = "mol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of moles per liter.
-    """
-    molSOLIDUSLSOLIDUSh = "mol/L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
-    """
-    ugSOLIDUSLSOLIDUSh = "ug/L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
-    """
-    umolSOLIDUSL = "umol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
-    """
-    umolSOLIDUSkg = "umol/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
-    """
-    umolSOLIDUSm2SOLIDUSs = "umol/m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.
-    """
-    mgSOLIDUSm3 = "mg/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
-    """
-    m2SOLIDUSs = "m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of square meters per second.
-    """
-    kgSOLIDUSm3 = "kg/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
-    """
-    gSOLIDUSm3 = "g/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter.
-    """
-    m2 = "m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of square meters.
-    """
-    atm = "atm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of atmosphere.
-    """
-    mV = "mV"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millivolt.
-    """
-    PSU = "PSU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
-    """
-    L = "L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of liter.
-    """
-    um = "um"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrometer.
-    """
-    y = "y"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of year.
-    """
-    number_1 = "1"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
-    """
-    uLSOLIDUSkg = "uL/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
-    """
-    kg = "kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilogram.
-    """
-    ppt = "ppt"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
-    """
-    gSOLIDUSg = "g/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gram per gram.
-    """
-    lx = "lx"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of lux.
-    """
-    mgSOLIDUSm3SOLIDUSd = "mg/m3/d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
-    """
-    ngSOLIDUSh = "ng/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per hour.
-    """
-    mmLEFT_SQUARE_BRACKETHgRIGHT_SQUARE_BRACKET = "mm[Hg]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury.
-    """
-    LEFT_SQUARE_BRACKETppbRIGHT_SQUARE_BRACKET = "[ppb]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per billion.
-    """
-    gSOLIDUSkg = "g/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of grams per kilogram.
-    """
-    deg = "deg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of degree (angle).
-    """
-    mgSOLIDUSg = "mg/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per gram.
-    """
-    ugSOLIDUSg = "ug/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per gram.
-    """
-    ngSOLIDUSg = "ng/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per gram.
-    """
-    pgSOLIDUSg = "pg/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per gram.
-    """
-    ngSOLIDUSL = "ng/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per liter.
-    """
-    pgSOLIDUSL = "pg/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per liter.
-    """
-    ugSOLIDUSmL = "ug/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter.
-    """
-    ngSOLIDUSmL = "ng/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter.
-    """
-    pgSOLIDUSmL = "pg/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter.
-    """
-    mol = "mol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of mole.
-    """
-    mmol = "mmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimole.
-    """
-    umol = "umol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromole.
-    """
-    nmol = "nmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanomole.
-    """
-    pmol = "pmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picomole.
-    """
-    U = "U"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of enzyme unit.
-    """
-    mU = "mU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.
-    """
-    uU = "uU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.
-    """
-    nU = "nU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.
-    """
-    Bq = "Bq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of becquerel.
-    """
-    kBq = "kBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
-    """
-    MBq = "MBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
-    """
-    GBq = "GBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
-    """
-    Ci = "Ci"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of curie.
-    """
-    mCi = "mCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millicurie.
-    """
-    uCi = "uCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microcurie.
-    """
-    nCi = "nCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanocurie.
-    """
-    pCi = "pCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picocurie.
-    """
-    rad = "rad"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of radian.
-    """
-    sr = "sr"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of steradian.
-    """
-    Hz = "Hz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of hertz.
-    """
-    kHz = "kHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilohertz.
-    """
-    MHz = "MHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megahertz.
-    """
-    GHz = "GHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gigahertz.
-    """
-    N = "N"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of newton.
-    """
-    kN = "kN"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilonewton.
-    """
-    J = "J"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joule.
-    """
-    kJ = "kJ"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilojoule.
-    """
-    MJ = "MJ"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megajoule.
-    """
-    W = "W"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of watt.
-    """
-    kW = "kW"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilowatt.
-    """
-    API = "API"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of API units.
-    """
-    mbar = "mbar"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millibar.
-    """
-    ratio = "ratio"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).
-    """
-    JSOLIDUSCel = "J/Cel"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joules per Celsius.
-    """
-    uESOLIDUSm2SOLIDUSs = "uE/m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second.
-    """
-    kWSOLIDUSm2 = "kW/m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter.
-    """
-    people = "people"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of people count.
-    """
-    pets = "pets"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of pet count.
-    """
-    plants = "plants"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of plant count.
-    """
-    umolSOLIDUSsSOLIDUSm2 = "umol/s/m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per second per square meter.
-    """
-    m3SOLIDUSd = "m3/d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of cubic meters per day.
-    """
-    LSOLIDUSh = "L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of liters per hour.
-    """
-    pH = "pH"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of pH units.
-    """
-    kWSOLIDUSm2SOLIDUSd = "kW/m2/d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
-    """
-    NTU = "NTU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.
-    """
-    m3SOLIDUSmin = "m3/min"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of cubic meters per minute.
-    """
-    kmSOLIDUSh = "km/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilometers per hour.
-    """
 
 
 class ExecutionResourceEnum(str, Enum):
@@ -3248,7 +2806,7 @@ class SampleTypeEnum(str, Enum):
 
 
 class DNASampleFormatEnum(str, Enum):
-    number_10_mmolSOLIDUSL_Tris_HCl = "10 mmol/L Tris-HCl"
+    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
     DNAStable = "DNAStable"
     Ethanol = "Ethanol"
     Low_EDTA_TE = "Low EDTA TE"
@@ -3276,7 +2834,7 @@ class YesNoEnum(str, Enum):
 
 
 class RNASampleFormatEnum(str, Enum):
-    number_10_mmolSOLIDUSL_Tris_HCl = "10 mmol/L Tris-HCl"
+    number_10_mM_Tris_HCl = "10 mM Tris-HCl"
     DNAStable = "DNAStable"
     Ethanol = "Ethanol"
     Low_EDTA_TE = "Low EDTA TE"
@@ -3441,9 +2999,6 @@ class EukEval(ConfiguredBaseModel):
 
 
 class FunctionalAnnotationAggMember(ConfiguredBaseModel):
-    """
-    This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.
-    """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'nmdc:FunctionalAnnotationAggMember',
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'slot_usage': {'count': {'description': 'The number of sequences (for a '
@@ -3540,7 +3095,7 @@ class Database(ConfiguredBaseModel):
     field_research_site_set: Optional[list[FieldResearchSite]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'field_research_site_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
-    functional_annotation_agg: Optional[list[FunctionalAnnotationAggMember]] = Field(default=None, description="""This property links a database object to a set of functional annotation aggregation (agg) results.""", json_schema_extra = { "linkml_meta": {'alias': 'functional_annotation_agg', 'domain_of': ['Database']} })
+    functional_annotation_agg: Optional[list[FunctionalAnnotationAggMember]] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'functional_annotation_agg', 'domain_of': ['Database']} })
     functional_annotation_set: Optional[list[FunctionalAnnotation]] = Field(default=None, description="""This property links a database object to the set of all functional annotations""", json_schema_extra = { "linkml_meta": {'alias': 'functional_annotation_set',
          'domain_of': ['Database'],
          'mixins': ['object_set']} })
@@ -3584,7 +3139,7 @@ class MobilePhaseSegment(ConfiguredBaseModel):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
     substances_used: Optional[list[PortionOfSubstance]] = Field(default=None, description="""The substances that are combined to enable a ChemicalConversionProcess.""", json_schema_extra = { "linkml_meta": {'alias': 'substances_used',
          'domain_of': ['Extraction',
                        'StorageProcess',
@@ -4054,7 +3609,7 @@ class QuantityValue(AttributeValue):
     has_numeric_value: Optional[Decimal] = Field(default=None, description="""The number part of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_numeric_value',
          'domain_of': ['QuantityValue'],
          'mappings': ['qud:quantityValue', 'schema:value']} })
-    has_unit: UnitEnum = Field(default=..., description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
+    has_unit: Optional[str] = Field(default=None, description="""The unit of the quantity""", json_schema_extra = { "linkml_meta": {'alias': 'has_unit',
          'aliases': ['scale'],
          'domain_of': ['QuantityValue'],
          'mappings': ['qud:unit', 'schema:unitCode']} })
@@ -14236,7 +13791,7 @@ class MixingProcess(MaterialProcessing):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
@@ -14812,7 +14367,7 @@ class DissolvingProcess(MaterialProcessing):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',
@@ -15006,7 +14561,7 @@ class ChemicalConversionProcess(MaterialProcessing):
                        'DissolvingProcess',
                        'ChemicalConversionProcess',
                        'MobilePhaseSegment'],
-         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='h')"}]} })
+         'examples': [{'value': "JsonObj(has_numeric_value=2, has_unit='hours')"}]} })
     temperature: Optional[QuantityValue] = Field(default=None, description="""The value of a temperature measurement or temperature used in a process.""", json_schema_extra = { "linkml_meta": {'alias': 'temperature',
          'contributors': ['ORCID:0009-0001-1555-1601', 'ORCID:0000-0002-8683-0050'],
          'domain_of': ['ChromatographyConfiguration',

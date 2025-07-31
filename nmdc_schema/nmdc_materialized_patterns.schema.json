@@ -6567,7 +6567,7 @@
         "DNASampleFormatEnum": {
             "description": "",
             "enum": [
-                "10 mmol/L Tris-HCl",
+                "10 mM Tris-HCl",
                 "DNAStable",
                 "Ethanol",
                 "Low EDTA TE",
@@ -6790,7 +6790,6 @@
                     ]
                 },
                 "functional_annotation_agg": {
-                    "description": "This property links a database object to a set of functional annotation aggregation (agg) results.",
                     "items": {
                         "$ref": "#/$defs/FunctionalAnnotationAggMember"
                     },
@@ -8442,7 +8441,7 @@
         },
         "FunctionalAnnotationAggMember": {
             "additionalProperties": false,
-            "description": "This class is used to store aggregated results from workflows which produce functional annotations such as metaproteomics and metagenomics.",
+            "description": "",
             "properties": {
                 "count": {
                     "description": "The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.",
@@ -13798,8 +13797,11 @@
                     ]
                 },
                 "has_unit": {
-                    "$ref": "#/$defs/UnitEnum",
-                    "description": "The unit of the quantity"
+                    "description": "The unit of the quantity",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13810,7 +13812,6 @@
                 }
             },
             "required": [
-                "has_unit",
                 "type"
             ],
             "title": "QuantityValue",
@@ -13819,7 +13820,7 @@
         "RNASampleFormatEnum": {
             "description": "",
             "enum": [
-                "10 mmol/L Tris-HCl",
+                "10 mM Tris-HCl",
                 "DNAStable",
                 "Ethanol",
                 "Low EDTA TE",
@@ -15581,124 +15582,6 @@
             "title": "TrainStopLocEnum",
             "type": "string"
         },
-        "UnitEnum": {
-            "description": "",
-            "enum": [
-                "%",
-                "J/K",
-                "Cel",
-                "cm",
-                "d",
-                "g",
-                "h",
-                "kPa",
-                "m",
-                "m/s",
-                "mg/kg",
-                "mg/L",
-                "min",
-                "mL",
-                "mm",
-                "mL/L",
-                "mmol/L",
-                "mS/cm",
-                "[ppm]",
-                "uS/cm",
-                "W/m2",
-                "a",
-                "ug/L",
-                "ug/uL",
-                "uL",
-                "mol/L",
-                "mol/L/h",
-                "ug/L/h",
-                "umol/L",
-                "umol/kg",
-                "umol/m2/s",
-                "mg/m3",
-                "m2/s",
-                "kg/m3",
-                "g/m3",
-                "m2",
-                "atm",
-                "mV",
-                "PSU",
-                "L",
-                "um",
-                "y",
-                "1",
-                "uL/kg",
-                "kg",
-                "ppt",
-                "g/g",
-                "lx",
-                "mg/m3/d",
-                "ng/h",
-                "mm[Hg]",
-                "[ppb]",
-                "g/kg",
-                "deg",
-                "mg/g",
-                "ug/g",
-                "ng/g",
-                "pg/g",
-                "ng/L",
-                "pg/L",
-                "ug/mL",
-                "ng/mL",
-                "pg/mL",
-                "mol",
-                "mmol",
-                "umol",
-                "nmol",
-                "pmol",
-                "U",
-                "mU",
-                "uU",
-                "nU",
-                "Bq",
-                "kBq",
-                "MBq",
-                "GBq",
-                "Ci",
-                "mCi",
-                "uCi",
-                "nCi",
-                "pCi",
-                "rad",
-                "sr",
-                "Hz",
-                "kHz",
-                "MHz",
-                "GHz",
-                "N",
-                "kN",
-                "J",
-                "kJ",
-                "MJ",
-                "W",
-                "kW",
-                "API",
-                "mbar",
-                "ratio",
-                "J/Cel",
-                "uE/m2/s",
-                "kW/m2",
-                "people",
-                "pets",
-                "plants",
-                "umol/s/m2",
-                "m3/d",
-                "L/h",
-                "pH",
-                "kW/m2/d",
-                "NTU",
-                "m3/min",
-                "km/h"
-            ],
-            "title": "UnitEnum",
-            "type": "string"
-        },
         "VisMediaEnum": {
             "description": "",
             "enum": [
@@ -15991,7 +15874,6 @@
             ]
         },
         "functional_annotation_agg": {
-            "description": "This property links a database object to a set of functional annotation aggregation (agg) results.",
             "items": {
                 "$ref": "#/$defs/FunctionalAnnotationAggMember"
             },
