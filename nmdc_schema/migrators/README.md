@@ -169,7 +169,7 @@ To add MongoDB transaction support with commit/rollback functionality to your mi
                if commit_changes:
                    self.logger.info("Transaction committed (changes have been saved)")
                else:
-                   self.logger.info("Transaction rolled back (no changes were committed)")
+                   self.logger.info("Transaction rolled back (no changes were saved)")
                    
            except Exception as e:
                self.logger.error(f"Migration failed: {e}")
