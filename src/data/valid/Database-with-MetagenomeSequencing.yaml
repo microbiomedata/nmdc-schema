@@ -3,7 +3,7 @@ workflow_execution_set:
     has_input:
       - 'nmdc:bsm-11-547rwq94'
     git_url: 'https://github.com/microbiomedata/RawSequencingData'
-    execution_resource: JGI
+    processing_institution: JGI
     version: v1.0.0
     was_informed_by:
       - nmdc:dgns-11-448dfa
