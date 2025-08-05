@@ -15,6 +15,9 @@ data_generation_set:
       - nmdc:dobj-00-msdem1
     associated_studies:
       - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+    instrument_specifier: PNNL_VOrbiETD04
   - id: nmdc:dgms-99-zUCd5x
     type: nmdc:MassSpectrometry
     eluent_introduction_category: liquid_chromatography
@@ -31,6 +34,9 @@ data_generation_set:
       - nmdc:dobj-00-msdem2
     associated_studies:
       - nmdc:sty-00-555xxx
+    instrument_used:
+      - nmdc:inst-14-njkx0e66
+    instrument_specifier: PNNL_VOrbiETD04
 #
 # example data objects for the mass spectrometry data generation set
 data_object_set:

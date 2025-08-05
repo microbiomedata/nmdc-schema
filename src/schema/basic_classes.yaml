@@ -408,6 +408,7 @@ classes:
       - instrument_used
       - mod_date
       - principal_investigator
+      - instrument_specifier
     slot_usage:
       has_input:
         required: true
@@ -631,6 +632,11 @@ slots:
     structured_pattern:
       syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
       interpolated: true
+
+  instrument_specifier:
+    description: >-
+      A unique characteristic used to distinguish a specific instrument instance, such as a serial number, tag, or manufacturer tracking code.
+
 
   in_manifest:
     range: Manifest
