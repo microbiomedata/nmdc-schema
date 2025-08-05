@@ -235,13 +235,6 @@ To add MongoDB transaction support with commit/rollback functionality to your mi
                self.logger.info("Note: Non-MongoDB adapter doesn't support rollback")
    ```
 
-**Key Changes from Previous Versions:**
-- ✅ **No more `get_database()` access** - Use adapter methods only
-- ✅ **Proper type checking** with `isinstance(self.adapter, MongoAdapter)`
-- ✅ **Session management handled by adapter** - No manual session creation
-- ✅ **Unified transaction control** with `execute_in_transaction()`
-- ✅ **Session-aware methods** - Pass `session` parameter to transactional operations
-
 **Examples:**
 - See `migrator_from_1_0_0_to_EXAMPLE.py` for unified transaction pattern with `execute_in_transaction()`
 - See `migrator_from_11_9_1_to_11_10_0.py` for document-focused pattern with `process_collections_in_transaction()`
