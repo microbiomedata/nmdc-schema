@@ -303,6 +303,11 @@ class Migrator(MigratorBase):
                     self.logger.info("Migration validation passed. Transaction rolled back (no changes were committed)")
                     
             except Exception as e:
+                # Log rollback message with commit context
+                if commit_changes:
+                    self.logger.info("Migration validation failed. Transaction automatically rolled back (no changes were saved, despite commit request)")
+                else:
+                    self.logger.info("Migration validation failed. Transaction rolled back (no changes were committed)")
                 self.logger.error(f"Migration failed: {e}")
                 raise
         else:
