@@ -3891,7 +3891,7 @@ version = "0.9.0"
 description = "Pretty-print tabular data"
 optional = false
 python-versions = ">=3.7"
-groups = ["main", "dev"]
+groups = ["dev"]
 files = [
     {file = "tabulate-0.9.0-py3-none-any.whl", hash = "sha256:024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"},
     {file = "tabulate-0.9.0.tar.gz", hash = "sha256:0095b12bf5966de529c0feb1fa08671671b3368eec77d7ef7ab114be2c068b3c"},
@@ -4301,4 +4301,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.9"
-content-hash = "61db977e253871dfafa2b70bc9961340728323dcf900e793b031654247e16498"
+content-hash = "22bc6b6e7b3af4dbec72dafba73aac1b75a89c90988bf82a4459278a029611e1"

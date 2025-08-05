@@ -2,6 +2,7 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 from nmdc_schema.migrators.adapters.adapter_base import AdapterBase
 from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 from nmdc_schema.migrators.migration_reporter import MigrationReporter
+from typing import Optional
 
 import logging
 
@@ -26,7 +27,21 @@ class Migrator(MigratorBase):
     _from_version = "1.0.0"  # https://github.com/microbiomedata/nmdc-schema/blob/1.0.0/
     _to_version = "EXAMPLE"  # in practice, this would be a real schema version; e.g., "7.8.0"
 
-    def __init__(self, adapter: AdapterBase = None, logger=None):
+    def __init__(self, adapter: Optional[AdapterBase] = None, logger=None):
+        """
+        TUTORIAL: The __init__ function (constructor) initializes a new migrator instance.
+                  This function runs automatically when you create a new migrator object.
+                  
+                  It accepts two optional parameters:
+                  - adapter: The data store adapter (e.g., MongoAdapter, DictionaryAdapter)
+                  - logger: A Python logger for outputting messages during migration
+                  
+                  If you don't provide these, the migrator will use default values.
+                  
+                  --> As part of creating a new migrator class, you typically won't need
+                      to modify this function unless you need to initialize additional
+                      instance variables specific to your migration logic.
+        """
         super().__init__(adapter, logger)
         self.reporter = None
 
@@ -112,6 +127,30 @@ class Migrator(MigratorBase):
                 self.logger.info("Note: Dictionary adapter doesn't support rollback - changes are applied immediately")
         
         # TUTORIAL: Generate final migration report showing what was changed
+        #           
+        #           IMPORTANT LIMITATIONS: The migration reporter only tracks changes that you
+        #           explicitly tell it about by calling its tracking methods. It does NOT
+        #           automatically detect or report:
+        #           
+        #           - Collection creation/deletion (e.g., create_collection, drop_collection)
+        #           - Document insertion/deletion (e.g., insert_document, delete_document)  
+        #           - Schema changes (e.g., renaming fields, changing data types)
+        #           - Index creation/modification
+        #           - Database configuration changes
+        #           - Any other structural changes to the database
+        #           
+        #           The reporter ONLY tracks what you manually report by calling methods like:
+        #           - self.reporter.track_record_updated() for field value changes
+        #           - self.reporter.track_record_processed() for processed records
+        #           - self.reporter.track_missing_value() for missing data
+        #           - self.reporter.track_unmapped_value() for unmappable data
+        #           
+        #           --> As part of implementing a migrator, you should call the appropriate
+        #               reporter tracking methods throughout your transformation functions
+        #               to ensure comprehensive reporting of the changes you make.
+        #               
+        #           --> The migration reporting system probably needs additional functions
+        #               to track other types of changes (collections, indexes, etc.).
         if self.reporter:
             self.reporter.generate_final_report()
     
@@ -121,9 +160,15 @@ class Migrator(MigratorBase):
                   It receives the adapter and session from execute_in_transaction(), ensuring
                   proper session management and atomic operations.
                   
+                  The callback signature (adapter, session) is required by execute_in_transaction().
+                  While adapter is technically the same as self.adapter, both parameters are provided
+                  for clean API design and to make the callback function self-contained.
+                  
         Args:
-            adapter: The MongoAdapter instance (same as self.adapter)
-            session: The MongoDB session for transaction control
+            adapter: The MongoAdapter instance - provides access to database operations
+                    (Note: This is the same instance as self.adapter, but passed for API clarity)
+            session: The MongoDB session for transaction control - required for transactional operations
+                    (Methods like insert_document, process_each_document need this for atomicity)
         """
         # TUTORIAL: Process existing documents (transactional)
         print("Processing collection: study_set")

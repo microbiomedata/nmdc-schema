@@ -45,7 +45,6 @@ python-dotenv = "*"
 pyyaml = "^6"
 rdflib = "^6.2.0" # some LinkML components are not compatible with rdflib 7+ yet
 requests = "^2"
-tabulate = "^0.9.0"
 
 [tool.poetry.group.dev.dependencies] # cruft for cookiecutter update could be installed with pipx?
 autopep8 = "^2.2.0"
@@ -80,7 +79,6 @@ sheets_and_friends = "^0.5.0" # for do_shuttle (and possibly more)
 sparql-burger = "^1.0.2"
 sparql-dataframe = "^0.4"
 sparqlwrapper = "^2.0.0"
-tabulate = "^0.9.0"
 vulture = "^2.11"
 #networkx = "^3.4.2" # for src/scripts/experimental/partial_imports_graph.py # "^3.4.2" is incompatible with Python 3.9, which this file currently allows
 

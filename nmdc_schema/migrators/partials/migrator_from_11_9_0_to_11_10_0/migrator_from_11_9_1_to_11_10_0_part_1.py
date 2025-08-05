@@ -247,10 +247,10 @@ class Migrator(MigratorBase):
         }
     }
 
-    def __init__(self, adapter: AdapterBase = None, logger=None):
+    def __init__(self, adapter: Optional[AdapterBase] = None, logger=None):
         super().__init__(adapter, logger)
         self._unit_alias_map = None
-        self.reporter = None
+        self.reporter: Optional[MigrationReporter] = None
         self._schema_view = None  # Cache schema view to avoid repeated creation
 
     def upgrade(self, commit_changes: bool = False) -> None:
@@ -353,11 +353,11 @@ class Migrator(MigratorBase):
             if class_def:
                 # Get all slots for this class
                 induced_slots = view.class_induced_slots(class_name)
-                quantity_value_slots = []
+                quantity_value_slots = set()
                 
                 for slot_def in induced_slots:
                     if slot_def.range == "QuantityValue":
-                        quantity_value_slots.append(slot_def.name)
+                        quantity_value_slots.add(slot_def.name)
                 
                 # Also get QuantityValue slots from all subclasses
                 # This handles polymorphic storage where subclass records are stored in parent collections in mongodb
@@ -638,7 +638,7 @@ class Migrator(MigratorBase):
                     self._get_unit_for_class_slot(lookup_class_uri, slot_name, current_unit)
                     # If no mapping found, just report it but don't change the value
     
-    def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, path: str, current_unit: str) -> Optional[str]:
+    def _handle_one_off_unit_cases(self, quantity_value: dict, class_uri: str, path: str, current_unit: Optional[str]) -> Optional[str]:
         """
         Handle special one-off unit conversion cases.
 
