@@ -9,7 +9,7 @@ substances_used:
     type: nmdc:PortionOfSubstance
     final_concentration:
       type: nmdc:QuantityValue
-      has_unit: mM
+      has_unit: mmol/L
       has_numeric_value: 15
     volume:
       type: nmdc:QuantityValue
@@ -21,6 +21,6 @@ substances_used:
 duration:
   type: nmdc:QuantityValue
   has_numeric_value: 2
-  has_unit: hours
+  has_unit: h
 instrument_used:
   - nmdc:inst-12-124

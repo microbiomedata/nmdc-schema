@@ -14,7 +14,7 @@ substances_used:
       has_unit: mL
     final_concentration:
       type: nmdc:QuantityValue
-      has_unit: mM
+      has_unit: mmol/L
       has_numeric_value: 10
 temperature:
   type: nmdc:QuantityValue
