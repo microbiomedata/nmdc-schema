@@ -206,7 +206,7 @@ def resolve_class_from_schema_path(schema_view, root_class: str, slot_path: List
     
     Args:
         schema_view: SchemaView instance
-        root_class: Starting class name (without nmdc: prefix)
+        root_class: Starting class name (without "nmdc:" prefix)
         slot_path: List of slot names leading to the target field
         
     Returns:
