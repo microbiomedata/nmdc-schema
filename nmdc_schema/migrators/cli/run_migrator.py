@@ -29,12 +29,11 @@ from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
 load_dotenv()
 
 # Import all migrators
-from nmdc_schema.migrators import migrator_from_11_9_1_to_11_10_0
-
+from nmdc_schema.migrators.partials.migrator_from_11_9_0_to_11_10_0 import migrator_from_11_9_1_to_11_10_0_part_1
 
 # Map migrator names to their classes
 MIGRATORS = {
-    "migrator_from_11_9_1_to_11_10_0": migrator_from_11_9_1_to_11_10_0.Migrator,
+    "migrator_from_11_9_1_to_11_10_0": migrator_from_11_9_1_to_11_10_0_part_1.Migrator,
     # Add other migrators here as needed
 }
 
