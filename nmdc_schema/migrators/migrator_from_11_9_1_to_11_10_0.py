@@ -559,7 +559,7 @@ class Migrator(MigratorBase):
         # Fallback to document type if schema resolution fails
         return self._get_unit_for_class_slot(doc_type, field_name, None)
     
-    def _add_unit_to_quantity_value(self, quantity_value: dict, class_uri: str, slot_name: str, full_document: dict = None) -> None:
+    def _add_unit_to_quantity_value(self, quantity_value: dict, class_uri: str, slot_name: str, full_document: Optional[dict] = None) -> None:
         r"""
         Adds an appropriate unit to a QuantityValue instance if it doesn't have one,
         or normalizes existing unit values using UnitEnum aliases.
