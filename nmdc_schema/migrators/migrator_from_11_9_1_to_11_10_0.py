@@ -407,7 +407,7 @@ class Migrator(MigratorBase):
         return document
     
     def _traverse_and_fix_quantity_values(self,
-                                          obj: any,
+                                          obj: Any,
                                           document_root: dict,
                                           path: str = "") -> None:
         """
