@@ -128,6 +128,7 @@ gen-project: $(PYMODEL) prefixmaps pydantic # depends on src/schema/mixs.yaml # 
 
 test: examples-clean site test-python migration-doctests examples/output gen-linkml-schema-files
 only-test: examples-clean test-python migration-doctests examples/output
+tests: squeaky-clean all test  # simply for convenience to wrap convention of running these three targets to test locally.
 
 test-schema:
 	$(RUN) gen-project \
