@@ -334,6 +334,9 @@
 
   QuantityValue : has_unit
 
+      QuantityValue --&gt; "1" UnitEnum : has_unit
+    click UnitEnum href "../UnitEnum"
+
   QuantityValue : type
 
 
@@ -377,7 +380,7 @@
 </tr>
 <tr>
 <td><a href="../has_unit/">has_unit</a></td>
-<td>0..1 <br/> <a href="../Unit/">Unit</a></td>
+<td>1 <br/> <a href="../UnitEnum/">UnitEnum</a></td>
 <td>The unit of the quantity</td>
 <td>direct</td>
 </tr>
@@ -1735,7 +1738,8 @@ attributes:
     owner: QuantityValue
     domain_of:
     - QuantityValue
-    range: unit
+    range: UnitEnum
+    required: true
   has_raw_value:
     name: has_raw_value
     description: Unnormalized atomic string representation, should in syntax {number}
