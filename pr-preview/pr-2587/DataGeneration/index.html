@@ -480,7 +480,7 @@
 <tr>
 <td><a href="../instrument_specifier/">instrument_specifier</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
-<td>A unique characteristic used to distinguish a specific instrument instance, s...</td>
+<td>An attribute containing a unique value that identifies an individual instrume...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -809,8 +809,9 @@ attributes:
     range: PersonValue
   instrument_specifier:
     name: instrument_specifier
-    description: A unique characteristic used to distinguish a specific instrument
-      instance, such as a serial number, tag, or manufacturer tracking code.
+    description: An attribute containing a unique value that identifies an individual
+      instrument instance, such as a serial number or similar identifiers assigned
+      by the manufacturer or user.
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: instrument_specifier
