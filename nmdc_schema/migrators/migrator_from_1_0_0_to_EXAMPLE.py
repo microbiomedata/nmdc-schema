@@ -79,7 +79,7 @@ class Migrator(MigratorBase):
         
         Args:
             commit_changes (bool): If True, commits changes to database. If False (default), 
-                                 rolls back changes for safe testing.
+                                   rolls back changes for safe testing.
         """
         self.logger.setLevel(logging.INFO)
         # TUTORIAL: Initialize the migration reporter to track changes during migration

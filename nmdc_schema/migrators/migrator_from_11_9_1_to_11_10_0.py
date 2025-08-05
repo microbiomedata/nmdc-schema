@@ -9,7 +9,7 @@ from nmdc_schema.migrators.migration_reporter import (
     get_clean_schema_path,
     resolve_class_from_schema_path
 )
-from typing import Optional, List
+from typing import Optional, List, Any
 from functools import lru_cache
 import logging
 
@@ -64,8 +64,7 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
         if slot_def.range == "QuantityValue":
             return True
 
-    # Check if any of its descendants have QuantityValue slots
-
+        # Check if any of its descendants have QuantityValue slots
         descendants = schema_view.class_descendants(range_class)
         for desc_class in descendants:
             desc_slots = schema_view.class_induced_slots(desc_class)
@@ -410,8 +409,7 @@ class Migrator(MigratorBase):
         return document
     
     def _traverse_and_fix_quantity_values(self,
-                                          # TODO: fix this please.
-                                          obj: any,
+                                          obj: Any,
                                           document_root: dict,
                                           path: str = "") -> None:
         """
@@ -563,7 +561,7 @@ class Migrator(MigratorBase):
         # Fallback to document type if schema resolution fails
         return self._get_unit_for_class_slot(doc_type, field_name, None)
     
-    def _add_unit_to_quantity_value(self, quantity_value: dict, class_uri: str, slot_name: str, full_document: dict = None) -> None:
+    def _add_unit_to_quantity_value(self, quantity_value: dict, class_uri: str, slot_name: str, full_document: Optional[dict] = None) -> None:
         r"""
         Adds an appropriate unit to a QuantityValue instance if it doesn't have one,
         or normalizes existing unit values using UnitEnum aliases.
@@ -732,7 +730,7 @@ class Migrator(MigratorBase):
         # Use cached schema view to traverse inheritance
         view = self._schema_view
         
-        # Remove the nmdc: prefix to get the class name
+        # Remove the "nmdc:" prefix to get the class name
         class_name = class_uri.replace('nmdc:', '')
         
         try:

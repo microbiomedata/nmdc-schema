@@ -155,6 +155,11 @@ def parse_schema_path(path: str) -> List[str]:
 
     Returns:
         List of schema slot names: ["substances_used", "volume"] or ["extraction", "input_mass"]
+
+    >>> parse_schema_path("extraction.input_mass")  # no array
+    ['extraction', 'input_mass']
+    >>> parse_schema_path("substances_used[0].volume")  # 1-D array
+    ['substances_used', 'volume']
     """
     if not path:
         return []
@@ -181,6 +186,11 @@ def get_clean_schema_path(path: str) -> str:
         
     Returns:
         Clean schema path: "substances_used.volume" or "extraction.input_mass"
+
+    >>> get_clean_schema_path("extraction.input_mass")  # no array
+    'extraction.input_mass'
+    >>> get_clean_schema_path("substances_used[0].volume")  # 1-D array
+    'substances_used.volume'
     """
     if not path:
         return "root"
@@ -196,7 +206,7 @@ def resolve_class_from_schema_path(schema_view, root_class: str, slot_path: List
     
     Args:
         schema_view: SchemaView instance
-        root_class: Starting class name (without nmdc: prefix)
+        root_class: Starting class name (without "nmdc:" prefix)
         slot_path: List of slot names leading to the target field
         
     Returns:
