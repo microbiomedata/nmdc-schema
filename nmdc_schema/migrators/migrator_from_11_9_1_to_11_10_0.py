@@ -728,7 +728,7 @@ class Migrator(MigratorBase):
         # Use cached schema view to traverse inheritance
         view = self._schema_view
         
-        # Remove the nmdc: prefix to get the class name
+        # Remove the "nmdc:" prefix to get the class name
         class_name = class_uri.replace('nmdc:', '')
         
         try:
