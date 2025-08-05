@@ -635,9 +635,7 @@ slots:
 
   instrument_specifier:
     description: >-
-      A unique characteristic used to distinguish a specific instrument instance, such as a serial number, tag, or manufacturer tracking code.
-
-
+      An attribute containing a unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.
   in_manifest:
     range: Manifest
     multivalued: true
