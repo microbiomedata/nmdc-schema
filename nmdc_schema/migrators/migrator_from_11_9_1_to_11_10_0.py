@@ -64,8 +64,7 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
         if slot_def.range == "QuantityValue":
             return True
 
-    # Check if any of its descendants have QuantityValue slots
-
+        # Check if any of its descendants have QuantityValue slots
         descendants = schema_view.class_descendants(range_class)
         for desc_class in descendants:
             desc_slots = schema_view.class_induced_slots(desc_class)
