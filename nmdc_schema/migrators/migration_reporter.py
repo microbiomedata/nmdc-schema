@@ -227,7 +227,7 @@ def resolve_class_from_schema_path(schema_view, root_class: str, slot_path: List
 def get_most_specific_class_for_reporting(schema_view, document_root: dict, path: str) -> str:
     """
     Determines the most specific class type for reporting purposes.
-    For nested objects, uses schema resolution to find the immediate parent class.
+    For nested objects, use schema resolution to find the immediate parent class.
     
     Args:
         schema_view: SchemaView instance  

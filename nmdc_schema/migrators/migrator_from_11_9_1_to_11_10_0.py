@@ -308,6 +308,8 @@ class Migrator(MigratorBase):
                     self.logger.info("Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately")
                     
             except Exception as e:
+                # from S&E - raise exceptions if the has_unit can not be set.
+                # both for when it can't map, and when it can't assign or has_unit
                 self.logger.error(f"Migration failed: {e}")
                 raise
     
@@ -408,6 +410,7 @@ class Migrator(MigratorBase):
         return document
     
     def _traverse_and_fix_quantity_values(self,
+                                          # TODO: fix this please.
                                           obj: any,
                                           document_root: dict,
                                           path: str = "") -> None:
@@ -621,7 +624,7 @@ class Migrator(MigratorBase):
         """
         Handle special one-off unit conversion cases.
 
-        In particular, this method handles cases where the unit is missing and we have already looked at the records
+        In particular, this method handles cases where the unit is missing, and we have already looked at the records
         ahead of time to determine what the unit should be, or where we need to convert a specific unit.
         
         Args:
@@ -682,7 +685,7 @@ class Migrator(MigratorBase):
     def _get_unit_for_class_slot(self, class_uri: str, slot_name: str, current_unit_value: str = None) -> Optional[str]:
         r"""
         Gets the appropriate unit for a given class and slot combination.
-        Also checks parent classes in the inheritance hierarchy if no direct mapping is found.
+        Also check parent classes in the inheritance hierarchy if no direct mapping is found.
         
         Args:
             class_uri (str): The class URI (e.g., "nmdc:Biosample")

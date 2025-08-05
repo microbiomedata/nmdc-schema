@@ -85,11 +85,11 @@ def get_classes_with_slots_by_range(schema_view: SchemaView, range_constraint: s
         if class_def:
             # Get all slots for this class
             induced_slots = schema_view.class_induced_slots(class_name)
-            matching_slots = []
+            matching_slots = set()
             
             for slot_def in induced_slots:
                 if slot_def.range == range_constraint:
-                    matching_slots.append(slot_def.name)
+                    matching_slots.add(slot_def.name)
             
             # Also get matching slots from all subclasses
             # This handles polymorphic storage where subclass records are stored in parent collections in mongodb
