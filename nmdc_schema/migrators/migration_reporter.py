@@ -186,6 +186,11 @@ def get_clean_schema_path(path: str) -> str:
         
     Returns:
         Clean schema path: "substances_used.volume" or "extraction.input_mass"
+
+    >>> get_clean_schema_path("extraction.input_mass")  # no array
+    'extraction.input_mass'
+    >>> get_clean_schema_path("substances_used[0].volume")  # 1-D array
+    'substances_used.volume'
     """
     if not path:
         return "root"
