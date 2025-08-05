@@ -42,12 +42,12 @@ class MigrationReporter:
         self.records_updated[key]['conformant'] += count
     
     def track_unmapped_value(self, class_name: str, slot_name: str, value: str, count: int = 1) -> None:
-        """Track an unmapped value for the second table."""
+        """Track an unmapped value that should cause validation failure."""
         class_slot = f"{class_name}.{slot_name}"
         self.unmapped_values[class_slot][value] += count
     
     def track_missing_value(self, class_name: str, slot_name: str, count: int = 1) -> None:
-        """Track a missing value for the third table."""
+        """Track a missing value that should cause validation failure."""
         class_slot = f"{class_name}.{slot_name}"
         self.missing_values[class_slot] += count
     
@@ -143,6 +143,37 @@ class MigrationReporter:
         
         self.logger.info("")
     
+    def validate_migration_success(self) -> None:
+        """
+        Validates that the migration was successful by checking for unmapped and missing values.
+        Raises a comprehensive exception if any validation issues are found.
+        
+        Raises:
+            ValueError: If unmapped values or missing values are found, indicating migration failure
+        """
+        errors = []
+        
+        # Check for unmapped values
+        if self.unmapped_values:
+            errors.append("UNMAPPED VALUES (units that could not be normalized):")
+            for class_slot in sorted(self.unmapped_values.keys()):
+                values = self.unmapped_values[class_slot]
+                sorted_values = sorted(values.items(), key=lambda x: -x[1])
+                for value, count in sorted_values:
+                    errors.append(f"  {class_slot}: '{value}' ({count} occurrences)")
+        
+        # Check for missing values  
+        if self.missing_values:
+            errors.append("MISSING VALUES (required units that could not be inferred):")
+            for class_slot in sorted(self.missing_values.keys()):
+                count = self.missing_values[class_slot]
+                errors.append(f"  {class_slot}: {count} missing units")
+        
+        # If any validation errors found, raise exception
+        if errors:
+            error_message = "Migration validation failed with the following issues:\n\n" + "\n".join(errors)
+            error_message += "\n\nAll validation issues must be resolved before the migration can succeed."
+            raise ValueError(error_message)
 
 
 # Generic schema path utilities for migration reporting
@@ -242,7 +273,7 @@ def get_most_specific_class_for_reporting(schema_view, document_root: dict, path
     Args:
         schema_view: SchemaView instance  
         document_root: The root document for fallback context
-        path: Path to the QuantityValue in the document
+        path: Path to a QuantityValue-ranged slot within the document
         
     Returns:
         str: The most specific class URI (e.g., "nmdc:PortionOfSubstance")

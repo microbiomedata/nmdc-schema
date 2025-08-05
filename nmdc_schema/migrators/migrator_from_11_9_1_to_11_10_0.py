@@ -20,7 +20,7 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger.setLevel(logging.INFO)
 
 @lru_cache
-def get_collection_with_qv_slots_from_schema() -> List[str]:
+def get_collection_names_with_qv_slots_from_schema() -> List[str]:
     """
     Returns the names of the slots of the `Database` class that describe database collections
     and whose range classes could potentially contain QuantityValue objects.
@@ -273,7 +273,7 @@ class Migrator(MigratorBase):
         self._unit_alias_map = self._build_unit_alias_map(self._schema_view)
         
         # Get the actual collection names from the Database class slots
-        real_collection_names = get_collection_with_qv_slots_from_schema()
+        real_collection_names = get_collection_names_with_qv_slots_from_schema()
         
         # Use adapter's transaction-aware processing method
         if isinstance(self.adapter, MongoAdapter):
@@ -282,15 +282,25 @@ class Migrator(MigratorBase):
                 self.adapter.process_collections_in_transaction(
                     collection_names=real_collection_names,
                     document_processor=self.ensure_quantity_value_has_unit,
-                    commit_changes=commit_changes
+                    commit_changes=False  # Always process without committing first
                 )
                 
                 self.reporter.generate_final_report()
                 
+                # Validate migration success - raises exception if issues found
+                self.reporter.validate_migration_success()
+                
+                # If validation passes and commit requested, commit the transaction
                 if commit_changes:
-                    self.logger.info("Transaction committed (changes have been saved)")
+                    # Re-run with commit=True since validation passed
+                    self.adapter.process_collections_in_transaction(
+                        collection_names=real_collection_names,
+                        document_processor=self.ensure_quantity_value_has_unit,
+                        commit_changes=True
+                    )
+                    self.logger.info("Migration validation passed. Transaction committed (changes have been saved)")
                 else:
-                    self.logger.info("Transaction rolled back (no changes were committed)")
+                    self.logger.info("Migration validation passed. Transaction rolled back (no changes were committed)")
                     
             except Exception as e:
                 self.logger.error(f"Migration failed: {e}")
@@ -303,8 +313,13 @@ class Migrator(MigratorBase):
                 
                 self.reporter.generate_final_report()
                 
+                # Validate migration success - raises exception if issues found
+                self.reporter.validate_migration_success()
+                
                 if not commit_changes:
-                    self.logger.info("Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately")
+                    self.logger.info("Migration validation passed. Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately")
+                else:
+                    self.logger.info("Migration validation passed.")
                     
             except Exception as e:
                 # from S&E - raise exceptions if the has_unit can not be set.
