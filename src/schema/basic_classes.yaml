@@ -408,7 +408,7 @@ classes:
       - instrument_used
       - mod_date
       - principal_investigator
-      - instrument_specifier
+      - instrument_instance_specifier
     slot_usage:
       has_input:
         required: true
@@ -633,9 +633,9 @@ slots:
       syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
       interpolated: true
 
-  instrument_specifier:
+  instrument_instance_specifier:
     description: >-
-      An attribute containing a unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.
+      A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.
   in_manifest:
     range: Manifest
     multivalued: true
