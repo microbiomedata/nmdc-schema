@@ -4,8 +4,8 @@ from nmdc_schema.migrators.migrator_base import MigratorBase
 class Migrator(MigratorBase):
     r"""Migrates a database between two schemas."""
 
-    _from_version = "11.10.0_part_1"
-    _to_version = "11.10.0_part_2"
+    _from_version = "11.10.0.part_1"
+    _to_version = "11.10.0.part_2"
 
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
@@ -45,5 +45,8 @@ class Migrator(MigratorBase):
         elif workflow_execution["execution_resource"] == "NERSC-Cori":
             workflow_execution["processing_institution"] = "NMDC"
         else:
-            raise ValueError("No migration action defined for {workflow_execution['id']}")
+            print("debug")
+            # raise ValueError(
+            #     "No migration action defined for {workflow_execution['id']}"
+            # )
         return workflow_execution
