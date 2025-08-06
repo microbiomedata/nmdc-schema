@@ -5,6 +5,8 @@ from nmdc_schema.migrators.partials.migrator_from_11_9_1_to_11_10_0 import migra
 from nmdc_schema.migrators.partials.migrator_from_11_9_1_to_11_10_0 import migrator_from_11_9_1_to_11_10_0_part_2
 
 
+
+
 def get_migrator_classes() -> List[Type[MigratorBase]]:
     r"""
     Returns a list of migrator classes in the order in which they (i.e. their `upgrade` methods)
@@ -24,3 +26,4 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
         migrator_from_11_9_1_to_11_10_0_part_1.Migrator,
         migrator_from_11_9_1_to_11_10_0_part_2.Migrator,
     ]
+
