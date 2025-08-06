@@ -45,8 +45,7 @@ class Migrator(MigratorBase):
         elif workflow_execution["execution_resource"] == "NERSC-Cori":
             workflow_execution["processing_institution"] = "NMDC"
         else:
-            print("debug")
-            # raise ValueError(
-            #     "No migration action defined for {workflow_execution['id']}"
-            # )
+             raise ValueError(
+                 "No migration action defined for {workflow_execution['id']}"
+             )
         return workflow_execution
