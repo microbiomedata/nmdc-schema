@@ -150,3 +150,4 @@ class AdapterBase(ABC):
         into the destination field, creating the destination field if it doesn't already exist.
         """
         pass
+

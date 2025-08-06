@@ -8,4 +8,4 @@ substances_used:
   - final_concentration: #PortionOfSubstance entry is incomplete, should error
       type: nmdc:QuantityValue
       has_numeric_value: 0.05
-      has_unit: "μg/μL"
+      has_unit: "ug/uL"

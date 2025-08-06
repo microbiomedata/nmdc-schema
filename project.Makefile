@@ -258,6 +258,22 @@ migration-doctests: nmdc_schema/nmdc_materialized_patterns.yaml
 migrator:
 	$(RUN) create-migrator
 
+# Runs a specific migrator against MongoDB
+# Usage: make run-migrator MIGRATOR=migrator_from_11_9_1_to_11_10_0 [ACTION=rollback|commit]
+# The migrator now resides in: nmdc_schema/migrators/partials/migrator_from_11_9_1_to_11_10_0/
+# MongoDB connection details are read from .env file or environment variables
+MIGRATOR ?= migrator_from_11_9_1_to_11_10_0
+ACTION ?=
+.PHONY: run-migrator
+run-migrator:
+	@if [ -z "$(MIGRATOR)" ]; then \
+		echo "Error: MIGRATOR parameter is required"; \
+		echo "Usage: make run-migrator MIGRATOR=migrator_from_11_9_1_to_11_10_0 [ACTION=rollback|commit]"; \
+		echo "MongoDB connection details are read from .env file or environment variables"; \
+		exit 1; \
+	fi
+	$(RUN) run-migrator $(MIGRATOR) $(if $(ACTION),$(ACTION))
+
 .PHONY: filtered-status
 filtered-status:
 	git status | grep -v 'project/' | grep -v 'nmdc_schema/.*yaml' | grep -v 'nmdc_schema/.*json' | \

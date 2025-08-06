@@ -778,6 +778,11 @@ enums:
           - Orbitrap Q-Exactive HF
           - Orbitrap Q-Exactive HF-X
 
+      orbitrap_iqx_tribrid:
+        aliases:
+          - Orbitrap IQ-X Tribrid
+          - Thermo Orbitrap IQ-X Tribrid
+
       solarix_7T:
         aliases:
           - 7T Solarix

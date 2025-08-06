@@ -1,0 +1,33 @@
+services:
+
+  mongo-init:
+    image: mongo:8.0.4
+    volumes:
+      - ./wait-for-it.sh:/wait-for-it.sh:ro
+      - ./mongo_init/initialize_replica_set.sh:/initialize_replica_set.sh:ro
+    depends_on:
+      mongo: { condition: service_started }
+    entrypoint: /bin/bash /wait-for-it.sh --host=mongo --port=27017 --timeout=20 -- /bin/sh /initialize_replica_set.sh mongo 27017 admin root
+
+  mongo:
+    image: mongo:8.0.4
+    ports:
+      - "${DEV_STACK_HOST_MACHINE_PORT_MONGO}:27017"
+    restart: unless-stopped
+    command: ["mongod", "--replSet", "rs0", "--bind_ip_all", "--keyFile", "/etc/mongodb/mongoKeyFile"]
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - mongo_data:/data/db
+      - ./mongoKeyFile:/etc/mongodb/mongoKeyFile:ro
+
+volumes:
+  mongo_data:
+    driver: local
+
+secrets:
+  mongoKeyFile:
+    file: ./mongoKeyFile
+
+name: nmdc-schema-migrator-dev
