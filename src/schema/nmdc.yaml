@@ -382,7 +382,9 @@ classes:
         range: AnnotatingWorkflow
       count: 
           description: The number of sequences (for a metagenome or metatranscriptome) or spectra (for metaproteomics) associated with the specified function.
-
+      gene_function_id:
+        pattern: "(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)"
+      
   Database:
     class_uri: nmdc:Database
     tree_root: true
