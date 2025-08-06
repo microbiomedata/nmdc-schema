@@ -8,7 +8,6 @@ from nmdc_schema.migrators.migration_reporter import (
     parse_schema_path,
     get_clean_schema_path,
     resolve_class_from_schema_path
-
 )
 from typing import Optional, List, Any
 from functools import lru_cache
@@ -17,10 +16,8 @@ import logging
 # Constants for schema traversal
 DATABASE_CLASS_NAME = "Database"
 # Configure logging and initialize generic reporter
-
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger.setLevel(logging.INFO)
-
 
 @lru_cache
 def get_collection_names_with_qv_slots_from_schema() -> List[str]:
@@ -52,12 +49,11 @@ def get_collection_names_with_qv_slots_from_schema() -> List[str]:
 def _collection_could_contain_quantity_values(schema_view, range_class: str) -> bool:
     """
     Determines if a collection's range class could contain QuantityValue objects.
-
+       
     Args:
         schema_view: SchemaView instance
         range_class: The range class name (e.g., "Biosample", "MaterialProcessing")
         
-
     Returns:
         bool: True if the class or any of its subclasses have QuantityValue slots
     """
@@ -81,7 +77,6 @@ def _collection_could_contain_quantity_values(schema_view, range_class: str) -> 
 class Migrator(MigratorBase):
     r"""
     Migrates a database between schemas 11.9.1 and 11.10.0.
-
     
     This migrator ensures that all QuantityValue instances have proper UCUM units.
     It handles missing units, normalizes existing units, and applies special case conversions.
@@ -117,7 +112,6 @@ class Migrator(MigratorBase):
     >>> doc["temp"]["has_unit"]
     'Cel'
 
-    
     >>> # Test unit normalization (Celsius -> Cel)
     >>> database2 = {
     ...     "biosample_set": [
@@ -136,7 +130,6 @@ class Migrator(MigratorBase):
     >>> doc2 = m2.ensure_quantity_value_has_unit(database2["biosample_set"][0])
     >>> doc2["temp"]["has_unit"]
     'Cel'
-
     
     >>> # Test carb_nitro_ratio special case (dimensionless)
     >>> database3 = {
@@ -156,7 +149,6 @@ class Migrator(MigratorBase):
     >>> doc3 = m3.ensure_quantity_value_has_unit(database3["biosample_set"][0])
     >>> doc3["carb_nitro_ratio"]["has_unit"]
     '1'
-
     
     >>> # Test nested QuantityValue (PortionOfSubstance)
     >>> database4 = {
@@ -267,7 +259,6 @@ class Migrator(MigratorBase):
 
         All operations are wrapped in a MongoDB transaction for rollback capability.
         All actions are logged in a reporter class so that we can see some statistics at the end of the migration.
-        
 
         Args:
             commit_changes: If True, commits the transaction. If False (default), rolls back the transaction.
@@ -317,7 +308,6 @@ class Migrator(MigratorBase):
                     self.logger.info("Migration validation failed. Transaction automatically rolled back (no changes were saved, despite commit request)")
                 else:
                     self.logger.info("Migration validation failed. Transaction rolled back (no changes were committed)")
-
                 self.logger.error(f"Migration failed: {e}")
                 raise
         else:
@@ -335,14 +325,12 @@ class Migrator(MigratorBase):
                     self.logger.info("Migration validation passed. Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately")
                 else:
                     self.logger.info("Migration validation passed.")
-                    
 
             except Exception as e:
                 # from S&E - raise exceptions if the has_unit can not be set.
                 # both for when it can't map, and when it can't assign or has_unit
                 self.logger.error(f"Migration failed: {e}")
                 raise
-
     
 
     @staticmethod
@@ -365,10 +353,12 @@ class Migrator(MigratorBase):
             if class_def:
                 # Get all slots for this class
                 induced_slots = view.class_induced_slots(class_name)
+
                 quantity_value_slots = set()  
                 for slot_def in induced_slots:
                     if slot_def.range == "QuantityValue":
                         quantity_value_slots.add(slot_def.name)
+
                 # Also get QuantityValue slots from all subclasses
                 # This handles polymorphic storage where subclass records are stored in parent collections in mongodb
                 subclass_slots = set()
@@ -382,11 +372,13 @@ class Migrator(MigratorBase):
                 except:
                     # If class_descendants doesn't exist, skip subclass processing
                     pass
+
                 # Combine parent and subclass slots
                 all_slots = set(quantity_value_slots) | subclass_slots
                 
                 if all_slots:
                     classes_with_quantity_value_slots[class_name] = list(all_slots)     
+
         return classes_with_quantity_value_slots
 
     @staticmethod
@@ -405,7 +397,6 @@ class Migrator(MigratorBase):
         # Get UnitEnum from the provided schema view
         unit_enum = view.get_enum('UnitEnum')
         
-
         if unit_enum and unit_enum.permissible_values:
             for canonical_unit, unit_def in unit_enum.permissible_values.items():
                 # The canonical unit maps to itself
@@ -574,6 +565,7 @@ class Migrator(MigratorBase):
         path_parts = parse_schema_path(path)
         if not path_parts:
             return None        
+
         field_name = path_parts[-1]
         slot_path = path_parts[:-1]  # All parts except the final field name
         
@@ -687,7 +679,6 @@ class Migrator(MigratorBase):
 
         return None
     
-
     def _extract_salinity_unit(self, raw_value: str) -> Optional[str]:
         """
         Extract specific salinity units from a raw value string.
