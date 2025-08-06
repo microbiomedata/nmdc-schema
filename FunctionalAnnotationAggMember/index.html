@@ -429,6 +429,9 @@ slot_usage:
     name: count
     description: The number of sequences (for a metagenome or metatranscriptome) or
       spectra (for metaproteomics) associated with the specified function.
+  gene_function_id:
+    name: gene_function_id
+    pattern: (COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)
 class_uri: nmdc:FunctionalAnnotationAggMember
 
 </code></pre>
@@ -451,6 +454,9 @@ slot_usage:
     name: count
     description: The number of sequences (for a metagenome or metatranscriptome) or
       spectra (for metaproteomics) associated with the specified function.
+  gene_function_id:
+    name: gene_function_id
+    pattern: (COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)
 attributes:
   was_generated_by:
     name: was_generated_by
@@ -482,6 +488,7 @@ attributes:
     - FunctionalAnnotationAggMember
     range: uriorcurie
     required: true
+    pattern: (COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)
   count:
     name: count
     description: The number of sequences (for a metagenome or metatranscriptome) or
