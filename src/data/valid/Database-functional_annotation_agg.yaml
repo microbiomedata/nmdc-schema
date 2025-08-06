@@ -6,5 +6,8 @@ functional_annotation_agg:
   - was_generated_by: nmdc:wfmgan-99-123456.1
     gene_function_id: PFAM:PF00002
     count: 2
+    type: nmdc:FunctionalAnnotationAggMember
   - was_generated_by: nmdc:wfmgan-99-123456.1
     gene_function_id: COG:COG0010
+    count: 7
+    type: nmdc:FunctionalAnnotationAggMember
