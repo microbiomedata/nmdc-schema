@@ -636,6 +636,7 @@ slots:
   instrument_instance_specifier:
     description: >-
       A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.
+  
   in_manifest:
     range: Manifest
     multivalued: true
