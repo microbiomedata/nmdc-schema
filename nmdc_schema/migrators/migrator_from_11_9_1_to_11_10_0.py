@@ -30,4 +30,3 @@ class Migrator(MigratorBase):
             )
             migrator = migrator_class(adapter=self.adapter, logger=self.logger)
             migrator.upgrade()
-

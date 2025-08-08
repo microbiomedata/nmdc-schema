@@ -49,7 +49,7 @@ def get_collection_names_with_qv_slots_from_schema() -> List[str]:
 def _collection_could_contain_quantity_values(schema_view, range_class: str) -> bool:
     """
     Determines if a collection's range class could contain QuantityValue objects.
-       
+    
     Args:
         schema_view: SchemaView instance
         range_class: The range class name (e.g., "Biosample", "MaterialProcessing")
@@ -111,7 +111,7 @@ class Migrator(MigratorBase):
     >>> doc = m.ensure_quantity_value_has_unit(database["biosample_set"][0])
     >>> doc["temp"]["has_unit"]
     'Cel'
-
+    
     >>> # Test unit normalization (Celsius -> Cel)
     >>> database2 = {
     ...     "biosample_set": [
@@ -259,7 +259,7 @@ class Migrator(MigratorBase):
 
         All operations are wrapped in a MongoDB transaction for rollback capability.
         All actions are logged in a reporter class so that we can see some statistics at the end of the migration.
-
+        
         Args:
             commit_changes: If True, commits the transaction. If False (default), rolls back the transaction.
         """
@@ -325,7 +325,7 @@ class Migrator(MigratorBase):
                     self.logger.info("Migration validation passed. Note: Non-MongoDB adapter doesn't support rollback - changes are applied immediately")
                 else:
                     self.logger.info("Migration validation passed.")
-
+                    
             except Exception as e:
                 # from S&E - raise exceptions if the has_unit can not be set.
                 # both for when it can't map, and when it can't assign or has_unit
@@ -353,12 +353,12 @@ class Migrator(MigratorBase):
             if class_def:
                 # Get all slots for this class
                 induced_slots = view.class_induced_slots(class_name)
-
-                quantity_value_slots = set()  
+                quantity_value_slots = set()
+                
                 for slot_def in induced_slots:
                     if slot_def.range == "QuantityValue":
                         quantity_value_slots.add(slot_def.name)
-
+                
                 # Also get QuantityValue slots from all subclasses
                 # This handles polymorphic storage where subclass records are stored in parent collections in mongodb
                 subclass_slots = set()
@@ -372,13 +372,13 @@ class Migrator(MigratorBase):
                 except:
                     # If class_descendants doesn't exist, skip subclass processing
                     pass
-
+                
                 # Combine parent and subclass slots
                 all_slots = set(quantity_value_slots) | subclass_slots
                 
                 if all_slots:
-                    classes_with_quantity_value_slots[class_name] = list(all_slots)     
-
+                    classes_with_quantity_value_slots[class_name] = list(all_slots)
+        
         return classes_with_quantity_value_slots
 
     @staticmethod
@@ -564,8 +564,8 @@ class Migrator(MigratorBase):
         # Parse path into components, filtering out array indices
         path_parts = parse_schema_path(path)
         if not path_parts:
-            return None        
-
+            return None
+        
         field_name = path_parts[-1]
         slot_path = path_parts[:-1]  # All parts except the final field name
         
