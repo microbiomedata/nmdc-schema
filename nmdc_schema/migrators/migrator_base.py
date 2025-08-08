@@ -34,7 +34,30 @@ class MigratorBase(ABC):
             self.logger.warning("No adapter was specified. Migration capability will be limited.")
     
     def _warn_if_commit_ignored(self, commit_changes: bool) -> None:
-        """Warn if commit_changes=True but adapter doesn't support transactions."""
+        """Warn if commit_changes=True but adapter doesn't support transactions.
+        
+        Examples:
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> import logging
+        >>> logging.basicConfig(level=logging.WARNING, format='%(levelname)s:%(message)s')
+        >>> 
+        >>> # Create a test migrator with dictionary adapter
+        >>> class TestMigrator(MigratorBase):
+        ...     _from_version = "test.1"
+        ...     _to_version = "test.2"
+        ...     def upgrade(self, commit_changes: bool = False) -> None:
+        ...         self._warn_if_commit_ignored(commit_changes)
+        >>> 
+        >>> database = {"test_set": []}
+        >>> adapter = DictionaryAdapter(database)
+        >>> migrator = TestMigrator(adapter=adapter)
+        >>> 
+        >>> # Test with commit_changes=False (no warning)
+        >>> migrator._warn_if_commit_ignored(False)
+        >>> 
+        >>> # Test with commit_changes=True (should warn) - output will be captured
+        >>> migrator._warn_if_commit_ignored(True)  # doctest: +SKIP
+        """
         if commit_changes:
             from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
             if not isinstance(self.adapter, MongoAdapter):
