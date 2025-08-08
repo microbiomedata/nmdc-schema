@@ -1,0 +1,33 @@
+data_generation_set:
+- id: nmdc:dgns-11-abcd
+  name: Targeted gene survey of Sterile water microbial communities from research facility in San Diego, CA, USA - 13114.BLANK4.3D.18S
+  description: Amplicon sequencing of Sterile water microbial communities from research facility in San Diego, CA, USA
+  processing_institution: UCSD
+  principal_investigator:
+    name: Janet Jansson
+    email: janet.jansson@pnnl.gov
+  add_date: 2022-04-02
+  insdc_experiment_identifiers: 
+    - insdc.sra:ERX4806872
+  analyte_category: amplicon_sequencing_assay
+  has_input:
+    - nmdc:procsm-11-def124
+  associated_studies:
+   - nmdc:sty-11-547rwq94
+  name: 16s amplicon sequencing of nmdc:bsm-99-dtTMNb
+  type: nmdc:NucleotideSequencing
+  insdc_experiment_identifiers:
+    - insdc.sra:SRX26008237
+
+material_processing_set:
+- id: nmdc:libprp-11-abcdef
+  type: nmdc:LibraryPreparation
+  has_input:
+   - nmdc:bsm-12-xnfqbd54
+  has_output:
+   - nmdc:procsm-11-def124
+   
+processed_sample_set:
+- id: nmdc:procsm-11-def124
+  type: nmdc:ProcessedSample
+  name: 18S amplicon library for nmdc:bsm-12-xnfqbd54
