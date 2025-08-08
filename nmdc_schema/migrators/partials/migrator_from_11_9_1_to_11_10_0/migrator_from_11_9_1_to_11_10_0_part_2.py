@@ -46,6 +46,6 @@ class Migrator(MigratorBase):
             workflow_execution["processing_institution"] = "NMDC"
         else:
              raise ValueError(
-                 "No migration action defined for {workflow_execution['id']}"
+                 f"No migration action defined for {workflow_execution['id']}"
              )
         return workflow_execution
