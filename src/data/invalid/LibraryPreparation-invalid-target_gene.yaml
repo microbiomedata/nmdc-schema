@@ -1,0 +1,9 @@
+#invalid target_gene permissible value
+id: nmdc:libprp-11-abcd
+has_input: 
+  - nmdc:procsm-99-dtTMNb
+has_output: 
+  - nmdc:procsm-99-dtTMNc
+target_gene: 16S rRNA
+name: 16s amplicon library creation for nmdc:bsm-99-dtTMNb
+type: nmdc:LibraryPreparation
