@@ -6,7 +6,8 @@ data_generation_set:
   principal_investigator:
     name: Janet Jansson
     email: janet.jansson@pnnl.gov
-  add_date: 2022-04-02
+    type: nmdc:PersonValue
+  add_date: '2022-04-02'
   insdc_experiment_identifiers: 
     - insdc.sra:ERX4806872
   analyte_category: amplicon_sequencing_assay
