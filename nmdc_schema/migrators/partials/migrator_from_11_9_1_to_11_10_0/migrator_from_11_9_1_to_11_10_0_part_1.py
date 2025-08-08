@@ -275,6 +275,9 @@ class Migrator(MigratorBase):
         # Get the actual collection names from the Database class slots
         real_collection_names = get_collection_names_with_qv_slots_from_schema()
         
+        # Warn user if commit_changes parameter is being ignored
+        self._warn_if_commit_ignored(commit_changes)
+        
         # Use adapter's transaction-aware processing method
         if isinstance(self.adapter, MongoAdapter):
             # MongoDB adapter - use transaction support

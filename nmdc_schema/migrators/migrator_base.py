@@ -19,7 +19,11 @@ class MigratorBase(ABC):
     #
     _to_version: str = ""
 
-    def __init__(self, adapter: AdapterBase = None, logger=None):
+    def __init__(self, adapter: AdapterBase = None, logger = None):
+        """
+        Initializes the migrator with an adapter and a logger.
+
+        """
         # Store a reference to the specified adapter. Migrator methods can use it to manipulate the database.
         self.adapter = adapter
 
@@ -28,10 +32,25 @@ class MigratorBase(ABC):
 
         if self.adapter is None:
             self.logger.warning("No adapter was specified. Migration capability will be limited.")
+    
+    def _warn_if_commit_ignored(self, commit_changes: bool) -> None:
+        """Warn if commit_changes=True but adapter doesn't support transactions."""
+        if commit_changes:
+            from nmdc_schema.migrators.adapters.mongo_adapter import MongoAdapter
+            if not isinstance(self.adapter, MongoAdapter):
+                self.logger.warning(
+                    "commit_changes=True was specified, but the current adapter does not support transactions. "
+                    "All changes will be applied immediately and cannot be rolled back. "
+                    "Use MongoAdapter for transaction support."
+                )
 
     @abstractmethod
-    def upgrade(self):
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+    def upgrade(self, commit_changes: bool = False):
+        r"""Migrates the database from conforming to the original schema, to conforming to the new schema.
+        
+        Args:
+            commit_changes: If True, commits the changes. If False (default), performs a dry run or rollback.
+        """
         pass
 
     @classmethod
