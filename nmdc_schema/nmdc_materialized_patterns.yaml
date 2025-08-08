@@ -4980,6 +4980,11 @@ enums:
         aliases:
         - Orbitrap Q-Exactive HF
         - Orbitrap Q-Exactive HF-X
+      orbitrap_iqx_tribrid:
+        text: orbitrap_iqx_tribrid
+        aliases:
+        - Orbitrap IQ-X Tribrid
+        - Thermo Orbitrap IQ-X Tribrid
       solarix_7T:
         text: solarix_7T
         aliases:
@@ -20485,6 +20490,9 @@ classes:
         name: count
         description: The number of sequences (for a metagenome or metatranscriptome)
           or spectra (for metaproteomics) associated with the specified function.
+      gene_function_id:
+        name: gene_function_id
+        pattern: (COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)
     class_uri: nmdc:FunctionalAnnotationAggMember
   Database:
     name: Database
@@ -23262,41 +23270,6 @@ classes:
           syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
           interpolated: true
     class_uri: nmdc:MagsAnalysis
-  MetagenomeSequencing:
-    name: MetagenomeSequencing
-    description: Initial sequencing activity that precedes any analysis.  This activity
-      has output(s) that are the raw sequencing data.
-    title: Metagenome sequencing activity
-    deprecated: Used in early versions of NMDC schema. Existing records have been
-      migrated to nmdc:NucleotideSequencing records, and this class should be used
-      instead. From issue https://github.com/microbiomedata/nmdc-schema/issues/1727.
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2023-12-01T00:00:00'
-    modified_by: 0009-0004-8906-5907
-    is_a: WorkflowExecution
-    slot_usage:
-      id:
-        name: id
-        required: true
-        pattern: ^(nmdc):wfmsa-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:wfmsa-{id_shoulder}-{id_blade}{id_version}$'
-          interpolated: true
-      has_input:
-        name: has_input
-        range: Sample
-        pattern: ^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:(bsm|procsm)-{id_shoulder}-{id_blade}$'
-          interpolated: true
-      was_informed_by:
-        name: was_informed_by
-        range: NucleotideSequencing
-        pattern: ^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$
-        structured_pattern:
-          syntax: '{id_nmdc_prefix}:(omprc|dgns)-{id_shoulder}-{id_blade}$'
-          interpolated: true
-    class_uri: nmdc:MetagenomeSequencing
   ReadQcAnalysis:
     name: ReadQcAnalysis
     description: A workflow execution activity that performs quality control on raw

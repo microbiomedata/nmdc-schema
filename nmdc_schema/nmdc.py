@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-07-30T17:55:33
+# Generation date: 2025-08-08T09:08:34
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -373,10 +373,6 @@ class MetatranscriptomeExpressionAnalysisId(WorkflowExecutionId):
 
 
 class MagsAnalysisId(WorkflowExecutionId):
-    pass
-
-
-class MetagenomeSequencingId(WorkflowExecutionId):
     pass
 
 
@@ -6154,47 +6150,6 @@ class MagsAnalysis(WorkflowExecution):
 
 
 @dataclass(repr=False)
-class MetagenomeSequencing(WorkflowExecution):
-    """
-    Initial sequencing activity that precedes any analysis. This activity has output(s) that are the raw sequencing
-    data.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = NMDC["MetagenomeSequencing"]
-    class_class_curie: ClassVar[str] = "nmdc:MetagenomeSequencing"
-    class_name: ClassVar[str] = "MetagenomeSequencing"
-    class_model_uri: ClassVar[URIRef] = NMDC.MetagenomeSequencing
-
-    id: Union[str, MetagenomeSequencingId] = None
-    type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
-    git_url: str = None
-    started_at_time: str = None
-    has_input: Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]] = empty_list()
-    was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MetagenomeSequencingId):
-            self.id = MetagenomeSequencingId(self.id)
-
-        if not isinstance(self.has_input, list):
-            self.has_input = [self.has_input] if self.has_input is not None else []
-        self.has_input = [v if isinstance(v, SampleId) else SampleId(v) for v in self.has_input]
-
-        if not isinstance(self.was_informed_by, list):
-            self.was_informed_by = [self.was_informed_by] if self.was_informed_by is not None else []
-        self.was_informed_by = [v if isinstance(v, NucleotideSequencingId) else NucleotideSequencingId(v) for v in self.was_informed_by]
-
-        super().__post_init__(**kwargs)
-        if self._is_empty(self.type):
-            self.MissingRequiredField("type")
-        self.type = str(self.class_class_curie)
-
-
-@dataclass(repr=False)
 class ReadQcAnalysis(WorkflowExecution):
     """
     A workflow execution activity that performs quality control on raw Illumina reads including quality trimming,
@@ -8168,6 +8123,7 @@ class InstrumentModelEnum(EnumDefinitionImpl):
     orbitrap_fusion_lumos = PermissibleValue(text="orbitrap_fusion_lumos")
     orbitrap_eclipse_tribid = PermissibleValue(text="orbitrap_eclipse_tribid")
     orbitrap_q_exactive = PermissibleValue(text="orbitrap_q_exactive")
+    orbitrap_iqx_tribrid = PermissibleValue(text="orbitrap_iqx_tribrid")
     solarix_7T = PermissibleValue(text="solarix_7T")
     solarix_12T = PermissibleValue(text="solarix_12T")
     solarix_15T = PermissibleValue(text="solarix_15T")
@@ -13221,6 +13177,10 @@ slots.FunctionalAnnotationAggMember_was_generated_by = Slot(uri=NMDC['basic_clas
 slots.FunctionalAnnotationAggMember_count = Slot(uri=NMDC.count, name="FunctionalAnnotationAggMember_count", curie=NMDC.curie('count'),
                    model_uri=NMDC.FunctionalAnnotationAggMember_count, domain=FunctionalAnnotationAggMember, range=int)
 
+slots.FunctionalAnnotationAggMember_gene_function_id = Slot(uri=NMDC.gene_function_id, name="FunctionalAnnotationAggMember_gene_function_id", curie=NMDC.curie('gene_function_id'),
+                   model_uri=NMDC.FunctionalAnnotationAggMember_gene_function_id, domain=FunctionalAnnotationAggMember, range=Union[str, URIorCURIE],
+                   pattern=re.compile(r'(COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)'))
+
 slots.Pooling_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="Pooling_has_input", curie=NMDC.curie('basic_classes/has_input'),
                    model_uri=NMDC.Pooling_has_input, domain=Pooling, range=Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]])
 
@@ -13405,16 +13365,6 @@ slots.MagsAnalysis_img_identifiers = Slot(uri=NMDC.img_identifiers, name="MagsAn
 
 slots.MagsAnalysis_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MagsAnalysis_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.MagsAnalysis_was_informed_by, domain=MagsAnalysis, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
-
-slots.MetagenomeSequencing_id = Slot(uri=NMDC.id, name="MetagenomeSequencing_id", curie=NMDC.curie('id'),
-                   model_uri=NMDC.MetagenomeSequencing_id, domain=MetagenomeSequencing, range=Union[str, MetagenomeSequencingId],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
-
-slots.MetagenomeSequencing_has_input = Slot(uri=NMDC['basic_classes/has_input'], name="MetagenomeSequencing_has_input", curie=NMDC.curie('basic_classes/has_input'),
-                   model_uri=NMDC.MetagenomeSequencing_has_input, domain=MetagenomeSequencing, range=Optional[Union[Union[str, SampleId], list[Union[str, SampleId]]]])
-
-slots.MetagenomeSequencing_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="MetagenomeSequencing_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
-                   model_uri=NMDC.MetagenomeSequencing_was_informed_by, domain=MetagenomeSequencing, range=Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]])
 
 slots.ReadQcAnalysis_id = Slot(uri=NMDC.id, name="ReadQcAnalysis_id", curie=NMDC.curie('id'),
                    model_uri=NMDC.ReadQcAnalysis_id, domain=ReadQcAnalysis, range=Union[str, ReadQcAnalysisId],

@@ -6911,9 +6911,6 @@
                                 "$ref": "#/$defs/MagsAnalysis"
                             },
                             {
-                                "$ref": "#/$defs/MetagenomeSequencing"
-                            },
-                            {
                                 "$ref": "#/$defs/ReadQcAnalysis"
                             },
                             {
@@ -8426,6 +8423,7 @@
                 },
                 "gene_function_id": {
                     "description": "The identifier for the gene function.",
+                    "pattern": "(COG:COG\\d+|PFAM:PF\\d{5}|KEGG.ORTHOLOGY:K\\d+)",
                     "type": "string"
                 },
                 "type": {
@@ -8884,6 +8882,7 @@
                 "orbitrap_fusion_lumos",
                 "orbitrap_eclipse_tribid",
                 "orbitrap_q_exactive",
+                "orbitrap_iqx_tribrid",
                 "solarix_7T",
                 "solarix_12T",
                 "solarix_15T",
@@ -10984,207 +10983,6 @@
                 "type"
             ],
             "title": "MetagenomeAssembly",
-            "type": "object"
-        },
-        "MetagenomeSequencing": {
-            "additionalProperties": false,
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "qc_status": {
-                                "const": "pass"
-                            }
-                        },
-                        "required": [
-                            "qc_status"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "has_output": {}
-                        },
-                        "required": [
-                            "has_output"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "not": {
-                            "required": [
-                                "qc_status"
-                            ]
-                        },
-                        "properties": {
-                            "qc_status": {}
-                        }
-                    },
-                    "then": {
-                        "properties": {
-                            "has_output": {}
-                        },
-                        "required": [
-                            "has_output"
-                        ]
-                    }
-                }
-            ],
-            "description": "Initial sequencing activity that precedes any analysis.  This activity has output(s) that are the raw sequencing data.",
-            "properties": {
-                "alternative_identifiers": {
-                    "description": "A list of alternative identifiers for the entity.",
-                    "items": {
-                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,\\(\\)\\=\\#]*$",
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "description": {
-                    "description": "a human-readable description of a thing",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "end_date": {
-                    "description": "The date on which any process or activity was ended",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "ended_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "execution_resource": {
-                    "$ref": "#/$defs/ExecutionResourceEnum",
-                    "description": "The computing resource or facility where the workflow was executed."
-                },
-                "git_url": {
-                    "description": "The url that points to the exact github location of a workflow.",
-                    "type": "string"
-                },
-                "has_failure_categorization": {
-                    "items": {
-                        "$ref": "#/$defs/FailureCategorization"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "has_input": {
-                    "description": "An input to a process.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                "has_output": {
-                    "description": "An output from a process.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": [
-                        "array",
-                        "null"
-                    ]
-                },
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human readable label for an entity",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "processing_institution": {
-                    "$ref": "#/$defs/ProcessingInstitutionEnum",
-                    "description": "The organization that processed the sample."
-                },
-                "processing_institution_workflow_metadata": {
-                    "description": "Information about how workflow results were generated when the processing is done by an external organziation (e.g., JGI) such as software tool name and version or pipeline name and version.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "protocol_link": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Protocol"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ]
-                },
-                "qc_comment": {
-                    "description": "Slot to store additional comments about laboratory or workflow output. For workflow output it may describe the particular workflow stage that failed. (ie Failed at call-stage due to a malformed fastq file).",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "qc_status": {
-                    "$ref": "#/$defs/StatusEnum",
-                    "description": "Stores information about the result of a process (ie the process of sequencing a library may have for qc_status of 'fail' if not enough data was generated)"
-                },
-                "start_date": {
-                    "description": "The date on which any process or activity was started",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "started_at_time": {
-                    "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
-                    "type": "string"
-                },
-                "type": {
-                    "description": "the class_uri of the class that has been instantiated",
-                    "enum": [
-                        "nmdc:MetagenomeSequencing"
-                    ],
-                    "type": "string"
-                },
-                "version": {
-                    "description": "The NMDC release tag for a given workflow release used for data processing. If workflows are processed externally, as denoted by processing_institution, this value represents the best mapping between a processing institution's (e.g., JGI) workflow metadata and a NMDC tagged release.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "was_informed_by": {
-                    "description": "The primary DataGeneration subclass that the WorkflowExecution subclass depends on.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
-            "required": [
-                "execution_resource",
-                "git_url",
-                "started_at_time",
-                "was_informed_by",
-                "has_input",
-                "id",
-                "type"
-            ],
-            "title": "MetagenomeSequencing",
             "type": "object"
         },
         "MetaproteomicsAnalysis": {
@@ -16034,9 +15832,6 @@
                     },
                     {
                         "$ref": "#/$defs/MagsAnalysis"
-                    },
-                    {
-                        "$ref": "#/$defs/MetagenomeSequencing"
                     },
                     {
                         "$ref": "#/$defs/ReadQcAnalysis"
