@@ -12,12 +12,15 @@ class Migrator(MigratorBase):
     _from_version = "11.9.1"
     _to_version = "11.10.0"
 
-    def upgrade(self) -> None:
+    def upgrade(self, commit_changes: bool = False) -> None:
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
 
         This migrator uses partial migrators. It runs them in the order in which they are returned by
         the `get_migrator_classes` function.
+        
+        Args:
+            commit_changes: If True, commits the changes. If False (default), performs a dry run or rollback.
         """
 
         migrator_classes = get_migrator_classes()
@@ -29,4 +32,4 @@ class Migrator(MigratorBase):
                 f"to {migrator_class.get_destination_version()}"
             )
             migrator = migrator_class(adapter=self.adapter, logger=self.logger)
-            migrator.upgrade()
+            migrator.upgrade(commit_changes=commit_changes)
