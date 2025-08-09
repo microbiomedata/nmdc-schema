@@ -1,4 +1,4 @@
-#invalid target_gene permissible value
+#invalid target_gene moved off this class to LibraryPreparation
 id: nmdc:dgns-11-abcd
 analyte_category: amplicon_sequencing_assay
 has_input: 

@@ -165,8 +165,6 @@ classes:
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
       - ncbi_project_name
-      - target_gene
-      - target_subfragment
     slot_usage:
       id:
         structured_pattern:
@@ -488,6 +486,8 @@ classes:
       - pcr_cycles
       - pcr_primers
       - stranded_orientation
+      - target_gene
+      - target_subfragment
     close_mappings:
       - OBI:0000711
     comments:
