@@ -5,7 +5,7 @@ workflow_execution_set:
     was_informed_by:
       - nmdc:dgns-11-kabd12
     git_url: 'https://github.com/microbiomedata/RawSequencingData'
-    execution_resource: JGI
+    processing_institution: JGI
     version: v1.0.0
     has_output:
       - nmdc:dobj-11-ebq93z68

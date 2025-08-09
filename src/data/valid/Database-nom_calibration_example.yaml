@@ -45,6 +45,7 @@ workflow_execution_set:
   was_informed_by:
     - nmdc:omprc-11-0003fm52
   execution_resource: EMSL-RZR
+  processing_institution: NMDC
   git_url: https://github.com/microbiomedata/enviroMS
   has_input:
   - nmdc:dobj-11-cp4p5602

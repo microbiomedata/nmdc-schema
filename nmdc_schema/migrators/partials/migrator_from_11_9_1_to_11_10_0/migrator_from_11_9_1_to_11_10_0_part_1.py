@@ -176,7 +176,7 @@ class Migrator(MigratorBase):
     """
 
     _from_version = "11.9.1"
-    _to_version = "11.10.0"
+    _to_version = "11.10.0.part_1"
 
     # Mapping of class/slot combinations to their appropriate UCUM units
     QUANTITY_VALUE_UNITS = {

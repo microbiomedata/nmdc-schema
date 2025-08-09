@@ -5,6 +5,7 @@ description: xxx
 end_date: '2019-99-08'
 ended_at_time: '2023-08-11T17:00:00Z'
 execution_resource: EMSL-RZR
+processing_institution: NMDC
 git_url: http://example.com
 has_failure_categorization:
   - type: nmdc:FailureCategorization

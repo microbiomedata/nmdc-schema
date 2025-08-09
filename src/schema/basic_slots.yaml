@@ -504,18 +504,14 @@ enums:
         aliases:
           - Perlmutter
           - Saul
-      EMSL:
-        description: Environmental Molecular Sciences Laboratory
       EMSL-RZR:
         description: Environmental Molecular Sciences Laboratory RZR cluster
         aliases:
           - RZR
-      JGI:
-        description: Joint Genome Institute
-      LANL-B-div:
-        description: LANL Bioscience Division
+      EMSL-Tahoma:
+        description: Environmental Molecular Sciences Laboratory RZR Tahoma cluster
         aliases:
-          - B-div
+          - Tahoma 
 
   FileTypeEnum:
     permissible_values:
@@ -1104,6 +1100,9 @@ enums:
     notes:
       - use ROR meanings like ror:0168r3w48 for UCSD
     permissible_values:
+      NMDC:
+        title: National Microbiome Data Collaborative
+        meaning: ror:05cwx3318
       UCSD:
         title: University of California, San Diego
         meaning: ror:0168r3w48
