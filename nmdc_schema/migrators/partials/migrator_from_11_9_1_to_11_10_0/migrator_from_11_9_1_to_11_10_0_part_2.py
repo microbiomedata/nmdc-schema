@@ -7,7 +7,7 @@ class Migrator(MigratorBase):
     _from_version = "11.10.0.part_1"
     _to_version = "11.10.0.part_2"
 
-    def upgrade(self, commit_changes: bool = False) -> None:
+    def upgrade(self, commit_changes: bool = True) -> None:
         r"""
         Migrates the database from conforming to the original schema, to conforming to the new schema.
         
