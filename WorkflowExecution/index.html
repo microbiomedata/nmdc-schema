@@ -374,7 +374,7 @@
 
   WorkflowExecution : execution_resource
 
-      WorkflowExecution --&gt; "1" ExecutionResourceEnum : execution_resource
+      WorkflowExecution --&gt; "0..1" ExecutionResourceEnum : execution_resource
     click ExecutionResourceEnum href "../ExecutionResourceEnum"
 
   WorkflowExecution : git_url
@@ -400,7 +400,7 @@
 
   WorkflowExecution : processing_institution
 
-      WorkflowExecution --&gt; "0..1" ProcessingInstitutionEnum : processing_institution
+      WorkflowExecution --&gt; "1" ProcessingInstitutionEnum : processing_institution
     click ProcessingInstitutionEnum href "../ProcessingInstitutionEnum"
 
   WorkflowExecution : processing_institution_workflow_metadata
@@ -477,7 +477,7 @@
 </tr>
 <tr>
 <td><a href="../execution_resource/">execution_resource</a></td>
-<td>1 <br/> <a href="../ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
+<td>0..1 <br/> <a href="../ExecutionResourceEnum/">ExecutionResourceEnum</a></td>
 <td>The computing resource or facility where the workflow was executed</td>
 <td>direct</td>
 </tr>
@@ -525,7 +525,7 @@
 </tr>
 <tr>
 <td><a href="../processing_institution/">processing_institution</a></td>
-<td>0..1 <br/> <a href="../ProcessingInstitutionEnum/">ProcessingInstitutionEnum</a></td>
+<td>1 <br/> <a href="../ProcessingInstitutionEnum/">ProcessingInstitutionEnum</a></td>
 <td>The organization that processed the sample</td>
 <td><a href="../PlannedProcess/">PlannedProcess</a></td>
 </tr>
@@ -691,8 +691,8 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
-  execution_resource:
-    name: execution_resource
+  processing_institution:
+    name: processing_institution
     required: true
   was_informed_by:
     name: was_informed_by
@@ -763,8 +763,8 @@ slot_usage:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
       interpolated: true
-  execution_resource:
-    name: execution_resource
+  processing_institution:
+    name: processing_institution
     required: true
   was_informed_by:
     name: was_informed_by
@@ -797,7 +797,6 @@ attributes:
     domain_of:
     - WorkflowExecution
     range: ExecutionResourceEnum
-    required: true
   git_url:
     name: git_url
     description: The url that points to the exact github location of a workflow.
@@ -930,6 +929,7 @@ attributes:
     domain_of:
     - PlannedProcess
     range: ProcessingInstitutionEnum
+    required: true
   protocol_link:
     name: protocol_link
     from_schema: https://w3id.org/nmdc/nmdc
