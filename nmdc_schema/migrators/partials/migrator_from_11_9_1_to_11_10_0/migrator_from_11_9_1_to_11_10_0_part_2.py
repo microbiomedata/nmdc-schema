@@ -7,8 +7,17 @@ class Migrator(MigratorBase):
     _from_version = "11.10.0.part_1"
     _to_version = "11.10.0.part_2"
 
-    def upgrade(self) -> None:
-        r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+    def upgrade(self, commit_changes: bool = False) -> None:
+        r"""
+        Migrates the database from conforming to the original schema, to conforming to the new schema.
+        
+        Note: The `commit_changes` parameter is not used, but must be present in the
+              method signature to comply with the base class. This migrator does
+              not use transactions—all changes are committed immediately.
+
+        TODO: Address the fact that existing migrators' `upgrade` methods
+              no longer comply with the base class.
+        """
 
         self.adapter.process_each_document(
             "workflow_execution_set", [self.update_processing_metadata]
