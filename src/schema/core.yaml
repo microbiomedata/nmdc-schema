@@ -1474,6 +1474,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
       occurrence: "1"
+      storage_units: "[ppm]|mg/kg"
     description: Concentration of zinc in the sample
     title: zinc
     examples:
@@ -1486,6 +1487,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
       occurrence: "1"
+      storage_units: "[ppm]|mg/kg"
     description: Concentration of manganese in the sample
     title: manganese
     examples:

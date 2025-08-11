@@ -1212,6 +1212,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[lb_av]|g/g|kg|kg/kg'
     description: Actual mass of water vapor - mh20 - present in the air water vapor mixture
     title: absolute air humidity
     examples:
@@ -1333,6 +1336,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: history/agrochemical additions
     examples:
@@ -1478,6 +1484,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: meq/L|mg/L
     description: Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate
     title: alkalinity
     examples:
@@ -1586,6 +1595,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: Concentration of ammonium in the sample
     title: ammonium
     examples:
@@ -1608,6 +1620,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: lm/m2|lx
     description: The unit of illuminance and luminous emittance, measuring luminous flux per unit area
     title: amount of light
     examples:
@@ -1935,6 +1950,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/(m3.d)|umol{O2}/(L.h)
     description: Measurement of bacterial respiration in the water column
     title: bacterial respiration
     examples:
@@ -2065,6 +2083,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of benzene in the sample
     title: benzene
     examples:
@@ -2177,6 +2198,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|kg
     description: Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements
     title: biomass
     examples:
@@ -2237,6 +2261,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: ug/L|ug/g
     description: Concentration of bishomohopanol
     title: bishomohopanol
     examples:
@@ -2456,6 +2483,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: Concentration of calcium in the sample
     title: calcium
     examples:
@@ -2478,6 +2508,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|umol/L'
     description: Carbon dioxide (gas) amount or concentration at the time of sampling
     title: carbon dioxide
     examples:
@@ -2500,6 +2533,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|umol/L'
     description: Carbon monoxide (gas) amount or concentration at the time of sampling
     title: carbon monoxide
     examples:
@@ -2840,6 +2876,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of chloride in the sample
     title: chloride
     examples:
@@ -2862,6 +2901,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/m3|ug/L
     description: Concentration of chlorophyll
     title: chlorophyll
     examples:
@@ -3083,6 +3125,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: g/cm3|g/m3
     description: Density of the sample, which is its mass per unit volume (aka volumetric mass density)
     title: density
     examples:
@@ -3192,6 +3237,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|umol/L
     description: Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample
     title: dissolved carbon dioxide
     examples:
@@ -3239,6 +3287,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|ug/L'
     description: Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter
     title: dissolved inorganic carbon
     examples:
@@ -3261,6 +3312,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: ug/L|umol/L
     description: Concentration of dissolved inorganic nitrogen
     title: dissolved inorganic nitrogen
     examples:
@@ -3283,6 +3337,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|ug/L'
     description: Concentration of dissolved inorganic phosphorus in the sample
     title: dissolved inorganic phosphorus
     examples:
@@ -3330,6 +3387,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|umol/L
     description: Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid
     title: dissolved organic carbon
     examples:
@@ -3352,6 +3412,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|ug/L
     description: Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2
     title: dissolved organic nitrogen
     examples:
@@ -3374,6 +3437,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|umol/kg
     description: Concentration of dissolved oxygen
     title: dissolved oxygen
     examples:
@@ -3396,6 +3462,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|umol/kg
     description: Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic).
     title: dissolved oxygen in fluids
     examples:
@@ -3851,6 +3920,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of ethylbenzene in the sample
     title: ethylbenzene
     examples:
@@ -4029,6 +4101,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens
     title: fertilizer regimen
     examples:
@@ -4150,6 +4225,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: a|d|wk
     description: The time period since installment of the carpet or flooring
     title: floor age
     examples:
@@ -4374,6 +4452,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens
     title: fungicide regimen
     examples:
@@ -4572,6 +4653,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: '[g]|m/s2'
     description: Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments
     title: gravity
     examples:
@@ -4635,6 +4719,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens
     title: growth hormone regimen
     examples:
@@ -4779,6 +4866,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: atm|kPa
     description: Original pressure of the hydrocarbon resource
     title: hydrocarbon resource original pressure
     examples:
@@ -4978,6 +5068,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: herbicide regimen
     examples:
@@ -5022,6 +5115,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: a|d|h
     description: Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees
     title: host age
     examples:
@@ -5207,6 +5303,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: g|kg
     description: Measurement of dry mass
     title: host dry mass
     examples:
@@ -5289,6 +5388,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: cm|m|mm
     description: The height of subject
     title: host height
     examples:
@@ -5332,6 +5434,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: cm|m|mm
     description: The length of subject
     title: host length
     examples:
@@ -5532,6 +5637,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: g|kg
     description: Total mass of the host at collection, the unit depends on host
     title: host total mass
     examples:
@@ -5554,6 +5662,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: g|kg
     description: Measurement of wet mass
     title: host wet mass
     examples:
@@ -5691,6 +5802,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: mg/L|mol/L
     description: Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles
     title: inorganic particles
     examples:
@@ -6022,6 +6136,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|mol/L|umol/kg'
     description: Concentration of magnesium in the sample
     title: magnesium
     examples:
@@ -6153,6 +6270,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppb]|[ppm]|umol/L'
     description: Methane (gas) amount or concentration at the time of sampling
     title: methane
     examples:
@@ -6195,6 +6315,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: kg
     description: The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units
     title: microbial biomass
     examples:
@@ -6217,6 +6340,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens
     title: mineral nutrient regimen
     examples:
@@ -6289,6 +6415,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: Concentration of nitrate in the sample
     title: nitrate
     examples:
@@ -6311,6 +6440,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: Concentration of nitrite in the sample
     title: nitrite
     examples:
@@ -6358,6 +6490,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens
     title: non-mineral nutrient regimen
     examples:
@@ -6721,6 +6856,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Oxygen (gas) amount or concentration at the time of sampling
     title: oxygen
     examples:
@@ -6768,6 +6906,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: ug/L|umol/L
     description: Concentration of particulate organic nitrogen
     title: particulate organic nitrogen
     examples:
@@ -6895,6 +7036,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L
     description: Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens
     title: pesticide regimen
     examples:
@@ -7056,6 +7200,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: mol/L|mol/g
     description: Concentration of phospholipid fatty acids; can include multiple values
     title: phospholipid fatty acid
     examples:
@@ -7180,6 +7327,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|mg/L|mol/L|ug/m3
     description: Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant
     title: pollutants
     examples:
@@ -7250,6 +7400,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of potassium in the sample
     title: potassium
     examples:
@@ -7402,6 +7555,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: g/(m2.d)|mg/(m3.d)
     description: Measurement of primary production, generally measured as isotope uptake
     title: primary production
     examples:
@@ -7526,6 +7682,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: Gy|RAD
     description: Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens
     title: radiation regimen
     examples:
@@ -7966,6 +8125,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[sft_i]|m2'
     description: The net floor area of sampling room. Net area excludes wall thicknesses
     title: room net area
     examples:
@@ -8046,6 +8208,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[cft_i]|m3'
     description: Volume of sampling room
     title: room volume
     examples:
@@ -8297,6 +8462,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '%'
     description: The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater.
     title: salinity
     examples:
@@ -8339,6 +8507,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: g|g/L|mol/L|ug
     description: Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens
     title: salt regimen
     examples:
@@ -8600,6 +8771,9 @@ slots:
       preferred_unit:
         tag: preferred_unit
         value: millliter, gram, milligram, liter
+      storage_units:
+        tag: storage_units
+        value: L|g|mL|mg
     description: The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected.
     title: amount or size of sample collected
     examples:
@@ -8834,6 +9008,9 @@ slots:
       preferred_unit:
         tag: preferred_unit
         value: millliter, gram, milligram, square centimeter
+      storage_units:
+        tag: storage_units
+        value: cm2|g|mL|mg
     description: 'Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001).'
     title: sample volume or weight for DNA extraction
     examples:
@@ -9409,6 +9586,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Sodium concentration in the sample
     title: sodium
     examples:
@@ -9529,6 +9709,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: erg/(cm2.s)|kW/(m2.d)
     description: The amount of solar energy that arrives at a specific area of a surface during a specific time interval
     title: solar irradiance
     examples:
@@ -9551,6 +9734,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|g|g/L|mol/L|ug'
     description: Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.
     title: soluble inorganic material
     examples:
@@ -9575,6 +9761,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|g|g/L|mol/L|ug'
     description: Concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.
     title: soluble organic material
     examples:
@@ -9599,6 +9788,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: Concentration of soluble reactive phosphorus
     title: soluble reactive phosphorus
     examples:
@@ -9835,6 +10027,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: Concentration of sulfate in the sample
     title: sulfate
     examples:
@@ -9882,6 +10077,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: Concentration of sulfide in the sample
     title: sulfide
     examples:
@@ -9967,6 +10165,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|g/m2|g/m3'
     description: Water held on a surface
     title: surface moisture
     examples:
@@ -10058,6 +10259,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|g|g/L|mg/L|mol/L|ug'
     description: Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances
     title: suspended solids
     examples:
@@ -10266,6 +10470,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of toluene in the sample
     title: toluene
     examples:
@@ -10388,6 +10595,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|mg/kg
     description: Concentration of total iron in the sample
     title: total iron
     examples:
@@ -10410,6 +10620,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|ug/L|umol/L
     description: 'Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen'
     title: total nitrogen concentration
     examples:
@@ -10452,6 +10665,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L|ug/L|umol/L
     description: Total nitrogen content of the sample
     title: total nitrogen content
     examples:
@@ -10516,6 +10732,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: ug/L|umol/L
     description: Total particulate carbon content
     title: total particulate carbon
     examples:
@@ -10538,6 +10757,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L|umol/L'
     description: 'Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus'
     title: total phosphorus
     examples:
@@ -10560,6 +10782,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: ug/L|umol/L
     description: Total amount or concentration of phosphate
     title: total phosphate
     examples:
@@ -10582,6 +10807,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of total sulfur in the sample
     title: total sulfur
     examples:
@@ -10752,6 +10980,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: L/s|m3/min
     description: Ventilation rate of the system in the sampled premises
     title: ventilation rate
     examples:
@@ -10794,6 +11025,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of Volatile Fatty Acids in the sample
     title: volatile fatty acids
     examples:
@@ -10883,6 +11117,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|ng/L|ug/m3'
     description: Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound
     title: volatile organic compounds
     examples:
@@ -11134,6 +11371,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: cm3/cm3|g/g
     description: Water content measurement
     title: water content
     examples:
@@ -11156,6 +11396,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[kn_i]|m3/s'
     description: Measurement of magnitude and direction of flow within a fluid
     title: water current
     examples:
@@ -11299,6 +11542,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      storage_units:
+        tag: storage_units
+        value: L|mL
     description: Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: watering regimen
     examples:
@@ -11382,6 +11628,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: km/h|m/s
     description: Speed of wind measured at the time of sampling
     title: wind speed
     examples:
@@ -11518,6 +11767,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[in_i]|m'
     description: The window's length and width
     title: window area/size
     examples:
@@ -11619,6 +11871,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]|mg/L'
     description: Concentration of xylene in the sample
     title: xylene
     examples:
