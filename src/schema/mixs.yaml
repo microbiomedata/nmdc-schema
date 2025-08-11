@@ -1572,7 +1572,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mol/(L.h)
+        value: mol/L/h
     description: Measurement of aminopeptidase activity
     title: aminopeptidase activity
     examples:
@@ -1927,7 +1927,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/(m3.d)
+        value: mg/m3/d
     description: Bacterial production in the water column measured by isotope uptake
     title: bacterial production
     examples:
@@ -1952,7 +1952,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/(m3.d)|umol/(L.h)
+        value: mg/m3/d|umol/L/h
     description: Measurement of bacterial respiration in the water column
     title: bacterial respiration
     examples:
@@ -4610,7 +4610,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mol/(L.h)
+        value: mol/L/h
     description: Measurement of glucosidase activity
     title: glucosidase activity
     examples:
@@ -7557,7 +7557,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: g/(m2.d)|mg/(m3.d)
+        value: g/m2/d|mg/m3/d
     description: Measurement of primary production, generally measured as isotope uptake
     title: primary production
     examples:
@@ -9711,7 +9711,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: erg/(cm2.s)|kW/(m2.d)
+        value: erg/cm2/s|kW/m2/d
     description: The amount of solar energy that arrives at a specific area of a surface during a specific time interval
     title: solar irradiance
     examples:

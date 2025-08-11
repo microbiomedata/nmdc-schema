@@ -236,11 +236,11 @@ bishomohopanol:
 blood_press_diast:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: "ug/L"
+  has_unit: "mm[Hg]"
 blood_press_syst:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: "ug/L"
+  has_unit: "mm[Hg]"
 bromide:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 parts per million
@@ -355,7 +355,7 @@ date_last_rain:
 density:
   type: nmdc:QuantityValue
   has_raw_value: 1000 kilogram per cubic meter
-  has_unit: kg/m3
+  has_unit: g/m3
   has_numeric_value: 1000.0
 depos_env: other
 depth:  # this raw value may not meet the submission portal's expectations
@@ -385,7 +385,7 @@ diss_hydrogen:
 diss_inorg_carb:
   type: nmdc:QuantityValue
   has_raw_value: 2059 micromole per kilogram
-  has_unit: umol/kg
+  has_unit: ug/L
   has_numeric_value: 2059.0
 diss_inorg_nitro:
   type: nmdc:QuantityValue
@@ -394,7 +394,7 @@ diss_inorg_nitro:
 diss_inorg_phosp:
   type: nmdc:QuantityValue
   has_raw_value: 56.5 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 56.5
 diss_iron:
   type: nmdc:QuantityValue
@@ -408,7 +408,7 @@ diss_org_carb:
 diss_org_nitro:
   type: nmdc:QuantityValue
   has_raw_value: 0.05 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 0.05
 diss_oxygen:
   type: nmdc:QuantityValue
@@ -613,10 +613,6 @@ host_age:
   has_raw_value: 3 years
   has_unit: a
   type: nmdc:QuantityValue
-
-  type: nmdc:QuantityValue
-  has_raw_value: xxx
-  has_unit: "mol/L/h"
 host_body_habitat:
   type: nmdc:TextValue
   has_raw_value: xxx
@@ -801,7 +797,7 @@ micro_biomass_meth: xxx
 microbial_biomass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: g/kg
+  has_unit: kg
 mineral_nutr_regm:
   - type: nmdc:TextValue
     has_raw_value: xxx
@@ -864,12 +860,12 @@ org_count_qpcr_info: xxx
 org_matter:
   type: nmdc:QuantityValue
   has_raw_value: 1.75 milligram per cubic meter
-  has_unit: mg/m3
+  has_unit: ug/L
   has_numeric_value: 1.75
 org_nitro:
   type: nmdc:QuantityValue
   has_raw_value: 4 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 4.0
 org_particles:
   - type: nmdc:TextValue
@@ -891,7 +887,7 @@ oxygen:
 part_org_carb:
   type: nmdc:QuantityValue
   has_raw_value: 1.92 micromole per liter
-  has_unit: umol/L
+  has_unit: ug/L
   has_numeric_value: 1.92
 part_org_nitro:
   type: nmdc:QuantityValue
@@ -1089,7 +1085,7 @@ root_med_suppl:
 salinity:
   has_numeric_value: 25
   has_raw_value: 25 practical salinity unit
-  has_unit: 'PSU'
+  has_unit: '%'
   type: nmdc:QuantityValue
 salinity_meth:
   type: nmdc:TextValue
@@ -1384,7 +1380,7 @@ tot_nitro_cont_meth: https://currentprotocols.onlinelibrary.wiley.com/doi/abs/10
 tot_nitro_content:
   type: nmdc:QuantityValue
   has_raw_value: 35 milligrams Nitrogen per kilogram of soil
-  has_unit: mg/kg
+  has_unit: mg/L
   has_numeric_value: 35.0
 tot_org_c_meth:
   type: nmdc:TextValue
@@ -1422,11 +1418,11 @@ turbidity:  # example: 0.3 nephelometric turbidity units (which is not a valid u
 tvdss_of_hcr_press:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: atm
+  has_unit: m
 tvdss_of_hcr_temp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: Cel
+  has_unit: m
 typ_occup_density: 123.0
 ventilation_rate:
   has_numeric_value: 750.0
@@ -1460,7 +1456,7 @@ wall_finish_mat: plaster
 wall_height:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: m
+  has_unit: cm
 wall_loc: north
 wall_surf_treatment: painted
 wall_texture: knockdown
@@ -1481,7 +1477,7 @@ water_content:
 water_current:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: m/s
+  has_unit: m3/s
 water_cut:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -1489,7 +1485,7 @@ water_cut:
 water_feat_size:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: m
+  has_unit: m2
 water_feat_type: fountain
 water_prod_rate:
   type: nmdc:QuantityValue
@@ -1649,4 +1645,3 @@ nitrate_nitrogen:
   has_raw_value: 1.2 mg/kg
   has_numeric_value: 1.2
   has_unit: mg/kg
-

@@ -739,10 +739,6 @@ enums:
         aliases:
           - milliequivalents per liter
         description: The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter.
-      "mol/(L.h)":
-        aliases:
-          - moles per liter per hour
-        description: The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
       "lm/m2":
         aliases:
           - lumens per square meter
@@ -752,11 +748,7 @@ enums:
           - milligram
           - milligrams
         description: The Unified Code for Units of Measure (UCUM) representation of milligram.
-      "mg/(m3.d)":
-        aliases:
-          - milligrams per cubic meter per day
-        description: The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
-      "umol/(L.h)":
+      "umol/L/h":
         aliases:
           - micromoles per liter per hour
         description: The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour.
@@ -788,7 +780,7 @@ enums:
         aliases:
           - moles per gram
         description: The Unified Code for Units of Measure (UCUM) representation of moles per gram.
-      "g/(m2.d)":
+      "g/m2/d":
         aliases:
           - grams per square meter per day
         description: The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day.
@@ -830,14 +822,10 @@ enums:
           - square centimeter
           - square centimeters
         description: The Unified Code for Units of Measure (UCUM) representation of square centimeter.
-      "erg/(cm2.s)":
+      "erg/cm2/s":
         aliases:
           - ergs per square centimeter per second
         description: The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second.
-      "kW/(m2.d)":
-        aliases:
-          - kilowatts per square meter per day
-        description: The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
       "g/m2":
         aliases:
           - grams per square meter
