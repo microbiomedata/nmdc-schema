@@ -31,9 +31,9 @@ down_par	microEinstein per square meter per second	uEin/(m2.s)	photosyntheticall
 efficiency_percent	micromole per liter	umol/L	unit mismatch - efficiency as concentration?			1.0			1	1
 inside_lux	kilowatt per square metre	kW/m2	unit mismatch - lux vs power density			1.0			1	1
 air_temp_regm	meter	m	unit mismatch - temperature regime measured in meters?			1.0			1	1
-ceil_thermal_mass	joule per degree Celsius	J/Cel			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
-floor_thermal_mass	joule per degree Celsius	J/Cel			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
-wall_thermal_mass	joule per degree Celsius	J/Cel			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
+ceil_thermal_mass	joule per degree Celsius	J/K			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
+floor_thermal_mass	joule per degree Celsius	J/K			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
+wall_thermal_mass	joule per degree Celsius	J/K			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
 turbidity	formazin nephelometric units	[FNU]			invalid	1.0			1	2
 turbidity	formazin turbidity unit	[FTU]			invalid	1.0			1	2
 salinity	practical salinity unit	[PSU]			invalid	1.0			1	2

@@ -318,3 +318,11 @@ check-invalids-for-single-failure:
 gen-linkml-schema-files:
 	$(RUN) python src/scripts/check_schema_self_containment.py
 
+# Check UnitEnum permissible values for UCUM compliance
+local/invalid_unitenum_units.txt local/unitenum_ucum_validation_results.json: src/schema/attribute_values.yaml src/scripts/check_unitenum_ucum_compliance.js src/scripts/package.json
+	cd src/scripts && npm ci && node check_unitenum_ucum_compliance.js ../../src/schema/attribute_values.yaml
+
+# Clean up UCUM validation outputs
+clean-ucum:
+	rm -f local/invalid_unitenum_units.txt local/unitenum_ucum_validation_results.json
+

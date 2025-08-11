@@ -293,7 +293,7 @@ ceil_texture: crows feet
 ceil_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: J/Cel
+  has_unit: J/K
 ceil_type: cathedral
 ceil_water_mold:
   type: nmdc:TextValue
@@ -519,7 +519,7 @@ floor_struc: balcony
 floor_thermal_mass:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: J/Cel
+  has_unit: J/K
 floor_water_mold: condensation
 fluor:
   type: nmdc:QuantityValue
@@ -772,7 +772,7 @@ manganese:
 max_occup:
   type: nmdc:QuantityValue
   has_raw_value: '35'
-  has_unit: 'people'
+  has_unit: '1'
   has_numeric_value: 35
 mean_frict_vel:
   type: nmdc:QuantityValue
@@ -831,17 +831,17 @@ non_min_nutr_regm:
 number_pets:
   type: nmdc:QuantityValue
   has_raw_value: '3'
-  has_unit: 'pets'
+  has_unit: '1'
   has_numeric_value: 3
 number_plants:
   type: nmdc:QuantityValue
   has_raw_value: '4'
-  has_unit: 'plants'
+  has_unit: '1'
   has_numeric_value: 4
 number_resident:
   type: nmdc:QuantityValue
   has_raw_value: '3'
-  has_unit: 'people'
+  has_unit: '1'
   has_numeric_value: 3
 occup_density_samp:  # Float
   type: nmdc:QuantityValue
@@ -851,7 +851,7 @@ occup_document: estimate
 occup_samp:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'people'
+  has_unit: '1'
 org_carb:
   type: nmdc:QuantityValue
   has_raw_value: xxx
@@ -1047,7 +1047,7 @@ room_net_area:
 room_occup:
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'people'
+  has_unit: '1'
 room_samp_pos: north corner
 room_type: attic
 room_vol:
@@ -1072,7 +1072,7 @@ root_med_micronutr:
 root_med_ph:  # Float
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'pH'
+  has_unit: '[pH]'
 root_med_regl:
   type: nmdc:TextValue
   has_raw_value: xxx
