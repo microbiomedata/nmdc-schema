@@ -5,6 +5,7 @@ ended_at_time: '2021-09-15T10:13:20+00:00'
 was_informed_by:
   - nmdc:omprc-11-ndgg7v32
 execution_resource: NERSC-Cori
+processing_institution: NMDC
 git_url: https://example.org/WorkflowExecutionActivity
 has_input:
 - nmdc:dobj-11-ndgg7b33

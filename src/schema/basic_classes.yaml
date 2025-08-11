@@ -408,6 +408,7 @@ classes:
       - instrument_used
       - mod_date
       - principal_investigator
+      - instrument_instance_specifier
     slot_usage:
       has_input:
         required: true
@@ -491,7 +492,7 @@ classes:
           syntax: "{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$"
           interpolated: true
         range: DataObject
-      execution_resource:
+      processing_institution:
         required: true
       was_informed_by:
         required: true
@@ -632,6 +633,10 @@ slots:
       syntax: "{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$"
       interpolated: true
 
+  instrument_instance_specifier:
+    description: >-
+      A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.
+  
   in_manifest:
     range: Manifest
     multivalued: true

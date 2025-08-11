@@ -2,6 +2,7 @@ workflow_execution_set:
   - id: nmdc:wfnom-11-547rwq94.1
     type: nmdc:NomAnalysis
     execution_resource: EMSL-RZR
+    processing_institution: NMDC
     git_url: xxx
     has_input:
       - nmdc:dobj-11-647rwq94

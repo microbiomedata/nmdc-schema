@@ -1,5 +1,6 @@
 id: nmdc:wfnom-99-abcdefga.1
 execution_resource: EMSL-RZR
+processing_institution: NMDC
 git_url: xxx
 has_input:
   - nmdc:dobj-11-abdc # this should be valid but errors "does not match(bsm|procsm)"
