@@ -155,6 +155,8 @@ enums:
         meaning: CHEBI:62947
       ammonium_bicarbonate:
         meaning: CHEBI:184335
+      amitriptyline:
+        meaning: CHEBI:2666
       Arg-C:
         meaning: MS:1001303
         comments: >-
@@ -171,6 +173,8 @@ enums:
         comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, 
           and phenylalanine.
+      ethanol:
+        meaning: CHEBI:16236
       formic_acid:
         meaning: CHEBI:30751
         comments: >-
