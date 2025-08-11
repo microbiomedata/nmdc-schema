@@ -951,7 +951,7 @@ enums:
       HILIC:
         description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
       HLB:
-        description: Hydrophilic-Lipophilic-Balance (HLB) solid phase extraction (SPE) plate.
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
       NH2:
         description: Amino (NH2) bonded stationary phase.
       Phenyl:
