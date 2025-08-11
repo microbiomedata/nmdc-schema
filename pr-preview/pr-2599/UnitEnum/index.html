@@ -792,11 +792,6 @@
 <td>The Unified Code for Units of Measure (UCUM) representation of millivolt</td>
 </tr>
 <tr>
-<td>PSU</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of practical sali...</td>
-</tr>
-<tr>
 <td>L</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of liter</td>
@@ -805,11 +800,6 @@
 <td>um</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of micrometer</td>
-</tr>
-<tr>
-<td>y</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of year</td>
 </tr>
 <tr>
 <td>1</td>
@@ -827,7 +817,7 @@
 <td>The Unified Code for Units of Measure (UCUM) representation of kilogram</td>
 </tr>
 <tr>
-<td>ppt</td>
+<td>[ppth]</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of parts per thou...</td>
 </tr>
@@ -1072,49 +1062,14 @@
 <td>The Unified Code for Units of Measure (UCUM) representation of kilowatt</td>
 </tr>
 <tr>
-<td>API</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of API units</td>
-</tr>
-<tr>
 <td>mbar</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of millibar</td>
 </tr>
 <tr>
-<td>ratio</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of ratio (dimensi...</td>
-</tr>
-<tr>
-<td>J/Cel</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of joules per Cel...</td>
-</tr>
-<tr>
-<td>uE/m2/s</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of microeinsteins...</td>
-</tr>
-<tr>
 <td>kW/m2</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of kilowatts per ...</td>
-</tr>
-<tr>
-<td>people</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of people count</td>
-</tr>
-<tr>
-<td>pets</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of pet count</td>
-</tr>
-<tr>
-<td>plants</td>
-<td>None</td>
-<td>The Unified Code for Units of Measure (UCUM) representation of plant count</td>
 </tr>
 <tr>
 <td>umol/s/m2</td>
@@ -1132,7 +1087,7 @@
 <td>The Unified Code for Units of Measure (UCUM) representation of liters per hou...</td>
 </tr>
 <tr>
-<td>pH</td>
+<td>[pH]</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of pH units</td>
 </tr>
@@ -1142,7 +1097,7 @@
 <td>The Unified Code for Units of Measure (UCUM) representation of kilowatts per ...</td>
 </tr>
 <tr>
-<td>NTU</td>
+<td>[NTU]</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of Nephelometric ...</td>
 </tr>
@@ -1340,15 +1295,22 @@ permissible_values:
     text: J/K
     description: The Unified Code for Units of Measure (UCUM) representation of joule
       per kelvin.
+    title: J/degree Celsius
+    comments:
+    - UCUM-compliant unit for energy per temperature. J/Cel deprecated due to non-ratio
+      temperature unit.
     aliases:
     - joule per kelvin
     - joules per kelvin
     - J/Kelvin
-    - J/Kelvin
+    - J/Celvin
+    - J/Cel
+    - J/C
   Cel:
     text: Cel
     description: The Unified Code for Units of Measure (UCUM) representation of degrees
       Celsius; a SI unit of temperature  equal to one unit Kelvin.
+    title: degrees Celsius
     aliases:
     - Celsius
     - C
@@ -1433,9 +1395,9 @@ permissible_values:
     text: '[ppm]'
     description: The Unified Code for Units of Measure (UCUM) representation of parts
       per million.
-    comments:
-    - see https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html,
-      https://ucum.org/ucum
+    see_also:
+    - https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html
+    - https://ucum.org/ucum
     aliases:
     - ppm
     - 1*10-6
@@ -1455,6 +1417,7 @@ permissible_values:
   a:
     text: a
     description: The Unified Code for Units of Measure (UCUM) representation of year.
+    title: years
     aliases:
     - years
   ug/L:
@@ -1503,10 +1466,12 @@ permissible_values:
     text: umol/m2/s
     description: The Unified Code for Units of Measure (UCUM) representation of micromoles
       per square meter per second.
+    title: micromoles per square meter per second
     aliases:
     - μmol/m2/s
     - micromol/m2/s
     - u[E]/m2/s
+    - micro Einsteins
   mg/m3:
     text: mg/m3
     description: The Unified Code for Units of Measure (UCUM) representation of milligrams
@@ -1533,10 +1498,6 @@ permissible_values:
   mV:
     text: mV
     description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
-  PSU:
-    text: PSU
-    description: The Unified Code for Units of Measure (UCUM) representation of practical
-      salinity unit.
   L:
     text: L
     description: The Unified Code for Units of Measure (UCUM) representation of liter.
@@ -1546,13 +1507,21 @@ permissible_values:
     aliases:
     - μm
     - µm
-  y:
-    text: y
-    description: The Unified Code for Units of Measure (UCUM) representation of year.
   '1':
     text: '1'
     description: The Unified Code for Units of Measure (UCUM) representation of dimensionless
       quantity.
+    title: ratio/unitless
+    comments:
+    - Used for ratios, counts, and dimensionless measurements (e.g., number of people,
+      pets, plants).
+    aliases:
+    - ratio
+    - unitless
+    - dimensionless
+    - people
+    - pets
+    - plants
   uL/kg:
     text: uL/kg
     description: The Unified Code for Units of Measure (UCUM) representation of microliters
@@ -1560,10 +1529,13 @@ permissible_values:
   kg:
     text: kg
     description: The Unified Code for Units of Measure (UCUM) representation of kilogram.
-  ppt:
-    text: ppt
+  '[ppth]':
+    text: '[ppth]'
     description: The Unified Code for Units of Measure (UCUM) representation of parts
       per thousand.
+    aliases:
+    - ppt
+    - parts per thousand
   g/g:
     text: g/g
     description: The Unified Code for Units of Measure (UCUM) representation of gram
@@ -1573,6 +1545,7 @@ permissible_values:
   lx:
     text: lx
     description: The Unified Code for Units of Measure (UCUM) representation of lux.
+    title: lux
     aliases:
     - lx
   mg/m3/d:
@@ -1888,45 +1861,13 @@ permissible_values:
     - kW
     - kilowatt
     - kilowatts
-  API:
-    text: API
-    description: The Unified Code for Units of Measure (UCUM) representation of API
-      units.
   mbar:
     text: mbar
     description: The Unified Code for Units of Measure (UCUM) representation of millibar.
-  ratio:
-    text: ratio
-    description: The Unified Code for Units of Measure (UCUM) representation of ratio
-      (dimensionless).
-    aliases:
-    - '{ratio}'
-  J/Cel:
-    text: J/Cel
-    description: The Unified Code for Units of Measure (UCUM) representation of joules
-      per Celsius.
-  uE/m2/s:
-    text: uE/m2/s
-    description: The Unified Code for Units of Measure (UCUM) representation of microeinsteins
-      per square meter per second.
-    aliases:
-    - '[arb''U]{micro_Einstein}/m2/s'
   kW/m2:
     text: kW/m2
     description: The Unified Code for Units of Measure (UCUM) representation of kilowatts
       per square meter.
-  people:
-    text: people
-    description: The Unified Code for Units of Measure (UCUM) representation of people
-      count.
-  pets:
-    text: pets
-    description: The Unified Code for Units of Measure (UCUM) representation of pet
-      count.
-  plants:
-    text: plants
-    description: The Unified Code for Units of Measure (UCUM) representation of plant
-      count.
   umol/s/m2:
     text: umol/s/m2
     description: The Unified Code for Units of Measure (UCUM) representation of micromoles
@@ -1941,20 +1882,22 @@ permissible_values:
     text: L/h
     description: The Unified Code for Units of Measure (UCUM) representation of liters
       per hour.
-  pH:
-    text: pH
+  '[pH]':
+    text: '[pH]'
     description: The Unified Code for Units of Measure (UCUM) representation of pH
       units.
     aliases:
-    - '[pH]'
+    - pH
   kW/m2/d:
     text: kW/m2/d
     description: The Unified Code for Units of Measure (UCUM) representation of kilowatts
       per square meter per day.
-  NTU:
-    text: NTU
+  '[NTU]':
+    text: '[NTU]'
     description: The Unified Code for Units of Measure (UCUM) representation of Nephelometric
       Turbidity Units.
+    aliases:
+    - NTU
   m3/min:
     text: m3/min
     description: The Unified Code for Units of Measure (UCUM) representation of cubic
@@ -1967,6 +1910,7 @@ permissible_values:
     text: '[lb_av]'
     description: The Unified Code for Units of Measure (UCUM) representation of pound
       (avoirdupois).
+    title: pounds (avoirdupois)
     aliases:
     - pound
     - lb
@@ -2032,6 +1976,7 @@ permissible_values:
     text: '[g]'
     description: The Unified Code for Units of Measure (UCUM) representation of standard
       gravity.
+    title: standard gravity
     aliases:
     - standard gravity
     - g-force
@@ -2063,12 +2008,14 @@ permissible_values:
     text: RAD
     description: The Unified Code for Units of Measure (UCUM) representation of rad
       (radiation absorbed dose).
+    title: rad (radiation absorbed dose)
     aliases:
     - radiation absorbed dose
   '[sft_i]':
     text: '[sft_i]'
     description: The Unified Code for Units of Measure (UCUM) representation of square
       feet.
+    title: square feet
     aliases:
     - square feet
     - sq ft
@@ -2076,6 +2023,7 @@ permissible_values:
     text: '[cft_i]'
     description: The Unified Code for Units of Measure (UCUM) representation of cubic
       feet.
+    title: cubic feet
     aliases:
     - cubic feet
     - cu ft
@@ -2097,6 +2045,7 @@ permissible_values:
     text: mm/a
     description: The Unified Code for Units of Measure (UCUM) representation of millimeters
       per year.
+    title: millimeters per year
     aliases:
     - millimeters per year
   cm2:
@@ -2134,6 +2083,7 @@ permissible_values:
     text: '[kn_i]'
     description: The Unified Code for Units of Measure (UCUM) representation of knot
       (nautical miles per hour).
+    title: knots
     aliases:
     - knot
     - knots
@@ -2146,6 +2096,7 @@ permissible_values:
   '[in_i]':
     text: '[in_i]'
     description: The Unified Code for Units of Measure (UCUM) representation of inch.
+    title: inches
     aliases:
     - inch
     - inches
