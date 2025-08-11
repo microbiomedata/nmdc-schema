@@ -1,0 +1,375 @@
+slot	preferred_unit	ucum_notation	Notes – claude	Notes – mark	Notes – LHC	problem	remedy	https://github.com/ucum-org/ucum/blob/main/ucum-essence.xml	has_problem	slot_row_count
+photon_flux	number of photons per second per unit area	{photons}/(s.m2)	assuming unit area is m2	trying not to use curly brackets		1.0	/(s.m2)		1	1
+organism_count	number of cells per cubic centimeter	{cells}/cm3		trying not to use curly brackets		1.0	/cm3		1	3
+org_count_qpcr_info	number of cells per gram	{cells}/g		trying not to use curly brackets		1.0	/g		1	3
+organism_count	number of cells per cubic meter	{cells}/m3		trying not to use curly brackets		1.0	/m3		1	3
+org_count_qpcr_info	number of cells per ml	{cells}/mL		trying not to use curly brackets		1.0	/mL		1	3
+organism_count	number of cells per milliliter	{cells}/mL		trying not to use curly brackets		1.0	/mL		1	3
+tot_org_carb	gram Carbon per kilogram sample material	g{C}/kg		trying not to use curly brackets		1.0	g/kg		1	1
+microbial_biomass	gram per kilogram soil	g/kg{soil}		trying not to use curly brackets		1.0	g/kg		1	3
+org_count_qpcr_info	number of cells per cm^2	{cells}/cm2		trying not to use curly brackets. Do they really mean square centimeter surface area and not cubic centimeter volume?		1.0			1	3
+rel_humidity_out	gram of air	g{air}		trying not to use curly brackets		1.0			1	2
+specific_humidity	gram of air	g{air}		trying not to use curly brackets		1.0			1	2
+biomass	ton	t		ucum-essence.xml says t means metric tonne		1.0			1	3
+microbial_biomass	ton	t		ucum-essence.xml says t means metric tonne		1.0			1	3
+lbc_thirty	ppm CaCO3/pH	[ppm].{CaCO3}/[pH]	compound unit with CaCO3 and pH	trying not to use curly brackets		1.0			1	1
+lbceq	ppm CaCO3/pH	[ppm].{CaCO3}/[pH]	compound unit with CaCO3 and pH	trying not to use curly brackets		1.0			1	1
+fluor	milligram chlorophyll a per cubic meter	mg{chlorophyll_a}/m3	mixed measurement types	trying not to use curly brackets		1.0			1	2
+rel_humidity_out	kilogram of air	kg{air}		trying not to use curly brackets		1.0			1	2
+specific_humidity	kilogram of air	kg{air}		trying not to use curly brackets		1.0			1	2
+viscosity	cP at degree Celsius	cP.Cel	centipoise at temperature			1.0			1	1
+samp_transport_cond	days;degree Celsius	d.Cel	compound unit			1.0			1	1
+permeability	mD	mD	millidarcy - petroleum industry unit		invalid	1.0			1	1
+light_regm	angstrom	Ao	mixed intensity and wavelength units			1.0			1	4
+light_regm	lux	lx	mixed intensity and wavelength units			1.0			1	4
+light_regm	nanometer	nm	mixed intensity and wavelength units			1.0			1	4
+light_regm	micrometer	um	mixed intensity and wavelength units			1.0			1	4
+fluor	volts	V	mixed measurement types			1.0			1	2
+api	degrees API	[degAPI]	petroleum industry specific gravity scale		invalid	1.0			1	1
+down_par	microEinstein per square centimeter per second	uEin/(cm2.s)	photosynthetically active radiation		invalid	1.0			1	2
+down_par	microEinstein per square meter per second	uEin/(m2.s)	photosynthetically active radiation		invalid	1.0			1	2
+efficiency_percent	micromole per liter	umol/L	unit mismatch - efficiency as concentration?			1.0			1	1
+inside_lux	kilowatt per square metre	kW/m2	unit mismatch - lux vs power density			1.0			1	1
+air_temp_regm	meter	m	unit mismatch - temperature regime measured in meters?			1.0			1	1
+ceil_thermal_mass	joule per degree Celsius	J/Cel			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
+floor_thermal_mass	joule per degree Celsius	J/Cel			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
+wall_thermal_mass	joule per degree Celsius	J/Cel			Attempt to divide by non-ratio unit degree Celsius	1.0			1	1
+turbidity	formazin nephelometric units	[FNU]			invalid	1.0			1	2
+turbidity	formazin turbidity unit	[FTU]			invalid	1.0			1	2
+salinity	practical salinity unit	[PSU]			invalid	1.0			1	2
+samp_size	millliter	mL	typo in original: millliter						0	4
+samp_vol_we_dna_ext	millliter	mL	typo in original: millliter						0	4
+room_vol	cubic feet	[cft_i]							0	2
+gravity	g	[g]							0	2
+window_size	inch	[in_i]							0	2
+water_current	knots	[kn_i]							0	2
+abs_air_humidity	pound	[lb_av]							0	4
+methane	parts per billion	[ppb]							0	3
+zinc	ppm	[ppm]							0	2
+manganese	ppm	[ppm]							0	2
+ammonium	parts per million	[ppm]							0	3
+benzene	parts per million	[ppm]							0	2
+bromide	parts per million	[ppm]							0	1
+calcium	parts per million	[ppm]							0	3
+carb_dioxide	parts per million	[ppm]							0	2
+carb_monoxide	parts per million	[ppm]							0	2
+chloride	parts per million	[ppm]							0	2
+diss_inorg_carb	parts per million	[ppm]							0	3
+diss_inorg_phosp	parts per million	[ppm]							0	3
+ethylbenzene	parts per million	[ppm]							0	2
+magnesium	parts per million	[ppm]							0	4
+methane	parts per million	[ppm]							0	3
+nitrate	parts per million	[ppm]							0	3
+nitrite	parts per million	[ppm]							0	3
+oxygen	parts per million	[ppm]							0	2
+potassium	parts per million	[ppm]							0	2
+sodium	parts per million	[ppm]							0	2
+soluble_inorg_mat	parts per million	[ppm]							0	5
+soluble_org_mat	parts per million	[ppm]							0	5
+soluble_react_phosp	parts per million	[ppm]							0	3
+sulfate	parts per million	[ppm]							0	3
+sulfide	parts per million	[ppm]							0	3
+surf_moisture	parts per million	[ppm]							0	3
+suspend_solids	part per million	[ppm]							0	6
+toluene	parts per million	[ppm]							0	2
+tot_phosp	parts per million	[ppm]							0	3
+tot_sulfur	parts per million	[ppm]							0	2
+vfa	parts per million	[ppm]							0	2
+volatile_org_comp	parts per million	[ppm]							0	3
+xylene	parts per million	[ppm]							0	2
+room_net_area	square feet	[sft_i]							0	2
+al_sat	percentage	%							0	1
+aromatics_pc	percent	%							0	1
+asphaltenes_pc	percent	%							0	1
+indust_eff_percent	percentage	%							0	1
+iwf	percent	%							0	1
+porosity	percentage	%							0	1
+rel_air_humidity	percentage	%							0	1
+resins_pc	percent	%							0	1
+salinity	percentage	%							1	2
+saturates_pc	percent	%							0	1
+slope_gradient	percentage	%							0	1
+surf_humidity	percentage	%							0	1
+water_cut	percent	%							0	1
+built_struc_age	year	a							0	1
+floor_age	years	a							0	3
+host_age	year	a							0	3
+hcr_pressure	atmosphere	atm							0	2
+pressure	atmosphere	atm							0	1
+air_temp	degree Celsius	Cel							0	1
+annual_temp	degree Celsius	Cel							0	1
+avg_dew_point	degree Celsius	Cel							0	1
+avg_temp	degree Celsius	Cel							0	1
+dew_point	degree Celsius	Cel							0	1
+hcr_temp	degree Celsius	Cel							0	1
+host_body_temp	degree Celsius	Cel							0	1
+pour_point	degree Celsius	Cel							0	1
+samp_store_temp	degree Celsius	Cel							0	1
+season_temp	degree Celsius	Cel							0	1
+surf_temp	degree Celsius	Cel							0	1
+temp	degree Celsius	Cel							0	1
+temp_out	degree Celsius	Cel							0	1
+water_temp_regm	degree Celsius	Cel							0	1
+height_carper_fiber	centimeter	cm							0	1
+host_height	centimeter	cm							0	3
+host_length	centimeter	cm							0	3
+wall_height	centimeter	cm							0	1
+samp_vol_we_dna_ext	square centimeter	cm2							0	4
+water_content	cubic centimeter per cubic centimeter	cm3/cm3							0	2
+floor_age	days	d							0	3
+host_age	day	d							0	3
+slope_aspect	degree	deg							0	1
+solar_irradiance	ergs per square centimeter per second	erg/(cm2.s)							0	2
+agrochem_addition	gram	g							0	3
+biomass	gram	g							1	3
+fertilizer_regm	gram	g							0	3
+fungicide_regm	gram	g							0	3
+growth_hormone_regm	gram	g							0	3
+herbicide_regm	gram	g							0	3
+host_dry_mass	gram	g							0	2
+host_tot_mass	gram	g							0	2
+host_wet_mass	gram	g							0	2
+mineral_nutr_regm	gram	g							0	3
+non_min_nutr_regm	gram	g							0	3
+pesticide_regm	gram	g							0	3
+pollutants	gram	g							0	4
+salt_regm	gram	g							0	4
+samp_size	gram	g							0	4
+samp_vol_we_dna_ext	gram	g							0	4
+soluble_inorg_mat	gram	g							0	5
+soluble_org_mat	gram	g							0	5
+suspend_solids	gram	g							0	6
+primary_prod	gram per square meter per day	g/(m2.d)							0	2
+density	gram per cubic centimeter	g/cm3							0	2
+abs_air_humidity	gram per gram	g/g							0	4
+water_content	gram per gram	g/g							0	2
+emulsions	gram per liter	g/L							0	1
+org_particles	gram per liter	g/L							0	1
+salt_regm	gram per liter	g/L							0	4
+soluble_inorg_mat	gram per liter	g/L							0	5
+soluble_org_mat	gram per liter	g/L							0	5
+suspend_solids	gram per liter	g/L							0	6
+surf_moisture	gram per square meter	g/m2							0	3
+density	gram per cubic meter	g/m3							0	2
+humidity	gram per cubic meter	g/m3							0	1
+humidity_regm	gram per cubic meter	g/m3							0	1
+surf_moisture	gram per cubic meter	g/m3							0	3
+radiation_regm	gray	Gy							0	2
+host_age	hour	h							0	3
+samp_time_out	hour	h							0	1
+sludge_retent_time	hours	h							0	1
+abs_air_humidity	kilogram	kg							0	4
+biomass	kilogram	kg							1	3
+host_dry_mass	kilogram	kg							0	2
+host_tot_mass	kilogram	kg							0	2
+host_wet_mass	kilogram	kg							0	2
+microbial_biomass	kilogram	kg							1	3
+abs_air_humidity	kilogram per kilogram	kg/kg							0	4
+wind_speed	kilometer per hour	km/h							0	2
+hcr_pressure	kilopascal	kPa							0	2
+solar_irradiance	kilowatts per square meter per day	kW/(m2.d)							0	2
+samp_size	liter	L							0	4
+watering_regm	liter	L							0	2
+room_air_exch_rate	liter per hour	L/h							0	1
+ventilation_rate	liters per second	L/s							0	2
+amount_light	lumens per square meter	lm/m2							0	2
+amount_light	lux	lx							0	2
+light_intensity	lux	lx							0	1
+host_height	meter	m							0	3
+host_length	meter	m							0	3
+owc_tvdss	meter	m							0	1
+room_dim	meter	m							0	1
+room_door_dist	meter	m							0	1
+samp_md	meter	m							0	1
+samp_tvdss	meter	m							0	1
+tot_depth_water_col	meter	m							0	1
+tvdss_of_hcr_press	meter	m							0	1
+tvdss_of_hcr_temp	meter	m							0	1
+window_size	meter	m							0	2
+mean_frict_vel	meter per second	m/s							0	1
+mean_peak_frict_vel	meter per second	m/s							0	1
+wind_speed	meter per second	m/s							0	2
+gravity	meter per square second	m/s2							0	2
+ceil_area	square meter	m2							0	1
+door_size	square meter	m2							0	1
+exp_duct	square meter	m2							0	1
+floor_area	square meter	m2							0	1
+room_net_area	square meter	m2							0	2
+wall_area	square meter	m2							0	1
+water_feat_size	square meter	m2							0	1
+room_vol	cubic meter	m3							0	2
+prod_rate	cubic meter per day	m3/d							0	1
+water_prod_rate	cubic meter per day	m3/d							0	1
+ventilation_rate	cubic meter per minute	m3/min							0	2
+water_current	cubic meter per second	m3/s							0	2
+barometric_press	millibar	mbar							0	1
+alkalinity	milliequivalent per liter	meq/L							0	2
+antibiotic_regm	milligram	mg							0	1
+samp_size	milligram	mg							0	4
+samp_vol_we_dna_ext	milligram	mg							0	4
+bac_prod	milligram per cubic meter per day	mg/(m3.d)							0	1
+bac_resp	milligram per cubic meter per day	mg/(m3.d)							0	2
+primary_prod	milligram per cubic meter per day	mg/(m3.d)							0	2
+zinc	mg/kg	mg/kg							0	2
+manganese	mg/kg	mg/kg							0	2
+ammonium_nitrogen	mg/kg	mg/kg							0	1
+nitrate_nitrogen	mg/kg	mg/kg							0	1
+nitrite_nitrogen	mg/kg	mg/kg							0	1
+tot_iron	milligram per kilogram	mg/kg							0	2
+agrochem_addition	milligram per liter	mg/L							0	3
+alkalinity	milligram per liter	mg/L							0	2
+ammonium	milligram per liter	mg/L							0	3
+benzene	milligram per liter	mg/L							0	2
+biochem_oxygen_dem	milligram per liter	mg/L							0	1
+biocide_admin_method	milligram per liter	mg/L							0	1
+calcium	milligram per liter	mg/L							0	3
+chem_mutagen	milligram per liter	mg/L							0	1
+chem_oxygen_dem	milligram per liter	mg/L							0	1
+chem_treat_method	milligram per liter	mg/L							0	1
+chloride	milligram per liter	mg/L							0	2
+diss_carb_dioxide	milligram per liter	mg/L							0	2
+diss_inorg_carb	milligram per liter	mg/L							0	3
+diss_inorg_phosp	milligram per liter	mg/L							0	3
+diss_iron	milligram per liter	mg/L							0	1
+diss_org_carb	milligram per liter	mg/L							0	2
+diss_org_nitro	milligram per liter	mg/L							0	2
+diss_oxygen	milligram per liter	mg/L							0	2
+diss_oxygen_fluid	milligram per liter	mg/L							0	2
+ethylbenzene	milligram per liter	mg/L							0	2
+fertilizer_regm	milligram per liter	mg/L							0	3
+fungicide_regm	milligram per liter	mg/L							0	3
+growth_hormone_regm	milligram per liter	mg/L							0	3
+hcr_fw_salinity	milligram per liter	mg/L							0	1
+herbicide_regm	milligram per liter	mg/L							0	3
+inorg_particles	milligram per liter	mg/L							0	2
+magnesium	milligram per liter	mg/L							0	4
+mineral_nutr_regm	milligram per liter	mg/L							0	3
+nitrate	milligram per liter	mg/L							0	3
+nitrite	milligram per liter	mg/L							0	3
+non_min_nutr_regm	milligram per liter	mg/L							0	3
+oxygen	milligram per liter	mg/L							0	2
+pesticide_regm	milligram per liter	mg/L							0	3
+pollutants	milligram per liter	mg/L							0	4
+potassium	milligram per liter	mg/L							0	2
+root_med_carbon	milligram per liter	mg/L							0	1
+root_med_macronutr	milligram per liter	mg/L							0	1
+root_med_micronutr	milligram per liter	mg/L							0	1
+root_med_regl	milligram per liter	mg/L							0	1
+root_med_suppl	milligram per liter	mg/L							0	1
+sodium	milligram per liter	mg/L							0	2
+soluble_react_phosp	milligram per liter	mg/L							0	3
+sulfate	milligram per liter	mg/L							0	3
+sulfate_fw	milligram per liter	mg/L							0	1
+sulfide	milligram per liter	mg/L							0	3
+suspend_part_matter	milligram per liter	mg/L							0	1
+suspend_solids	milligram per liter	mg/L							0	6
+tan	milligram per liter	mg/L							0	1
+toluene	milligram per liter	mg/L							0	2
+tot_iron	milligram per liter	mg/L							0	2
+tot_nitro	milligram per liter	mg/L							0	3
+tot_nitro_content	milligram per liter	mg/L							0	3
+tot_phosp	milligram per liter	mg/L							0	3
+tot_sulfur	milligram per liter	mg/L							0	2
+vfa	milligram per liter	mg/L							0	2
+vfa_fw	milligram per liter	mg/L							0	1
+xylene	milligram per liter	mg/L							0	2
+chlorophyll	milligram per cubic meter	mg/m3							0	2
+phaeopigments	milligram per cubic meter	mg/m3							0	1
+samp_preserv	milliliter	mL							0	1
+watering_regm	milliliter	mL							0	2
+annual_precpt	millimeter	mm							0	1
+host_height	millimeter	mm							0	3
+host_length	millimeter	mm							0	3
+rainfall_regm	millimeter	mm							0	1
+season_precpt	millimeter	mm							0	1
+blood_press_diast	millimeter mercury	mm[Hg]							0	1
+blood_press_syst	millimeter mercury	mm[Hg]							0	1
+samp_loc_corr_rate	millimeter per year	mm/a							0	1
+aminopept_act	mole per liter per hour	mol/(L.h)							0	1
+glucosidase_act	mol per liter per hour	mol/(L.h)							0	1
+phosplipid_fatt_acid	mole per gram	mol/g							0	2
+agrochem_addition	mole per liter	mol/L							0	3
+alkyl_diethers	mole per liter	mol/L							0	1
+fertilizer_regm	mole per liter	mol/L							0	3
+fungicide_regm	mole per liter	mol/L							0	3
+growth_hormone_regm	mole per liter	mol/L							0	3
+herbicide_regm	mole per liter	mol/L							0	3
+inorg_particles	mole per liter	mol/L							0	2
+magnesium	mole per liter	mol/L							0	4
+mineral_nutr_regm	mole per liter	mol/L							0	3
+non_min_nutr_regm	mole per liter	mol/L							0	3
+pesticide_regm	mole per liter	mol/L							0	3
+phosplipid_fatt_acid	mole per liter	mol/L							0	2
+pollutants	mole per liter	mol/L							0	4
+salt_regm	mole per liter	mol/L							0	4
+soluble_inorg_mat	mole per liter	mol/L							0	5
+soluble_org_mat	mole per liter	mol/L							0	5
+suspend_solids	mole per liter	mol/L							0	6
+conduc	milliSiemens per centimeter	mS/cm							0	1
+redox_potential	millivolt	mV							0	1
+bacteria_carb_prod	nanogram per hour	ng/h							0	1
+diether_lipids	nanogram per liter	ng/L							0	1
+volatile_org_comp	nanogram per liter	ng/L							0	3
+radiation_regm	rad	RAD							0	2
+salt_regm	microgram	ug							0	4
+soluble_inorg_mat	microgram	ug							0	5
+soluble_org_mat	microgram	ug							0	5
+suspend_solids	microgram	ug							0	6
+bishomohopanol	microgram per gram	ug/g							0	2
+heavy_metals	microgram per gram	ug/g							0	1
+bishomohopanol	microgram per liter	ug/L							0	2
+chlorophyll	microgram per liter	ug/L							0	2
+diss_inorg_carb	microgram per liter	ug/L							0	3
+diss_inorg_nitro	microgram per liter	ug/L							0	2
+diss_inorg_phosp	microgram per liter	ug/L							0	3
+diss_org_nitro	microgram per liter	ug/L							0	2
+org_matter	microgram per liter	ug/L							0	1
+org_nitro	microgram per liter	ug/L							0	1
+part_org_carb	microgram per liter	ug/L							0	1
+part_org_nitro	microgram per liter	ug/L							0	2
+tot_carb	microgram per liter	ug/L							0	1
+tot_diss_nitro	microgram per liter	ug/L							0	1
+tot_inorg_nitro	microgram per liter	ug/L							0	1
+tot_nitro	microgram per liter	ug/L							0	3
+tot_nitro_content	microgram per liter	ug/L							0	3
+tot_part_carb	microgram per liter	ug/L							0	2
+tot_phosphate	microgram per liter	ug/L							0	2
+air_PM_concen	micrograms per cubic meter	ug/m3							0	1
+pollutants	microgram per cubic meter	ug/m3							0	4
+volatile_org_comp	microgram per cubic meter	ug/m3							0	3
+particle_class	micrometer	um							0	1
+size_frac_low	micrometer	um							0	1
+size_frac_up	micrometer	um							0	1
+bac_resp	micromole oxygen per liter per hour	umol{O2}/(L.h)							0	2
+diss_oxygen	micromole per kilogram	umol/kg							0	2
+diss_oxygen_fluid	micromole per kilogram	umol/kg							0	2
+magnesium	micromole per kilogram	umol/kg							0	4
+ammonium	micromole per liter	umol/L							0	3
+calcium	micromole per liter	umol/L							0	3
+carb_dioxide	micromole per liter	umol/L							0	2
+carb_monoxide	micromole per liter	umol/L							0	2
+diss_carb_dioxide	micromole per liter	umol/L							0	2
+diss_hydrogen	micromole per liter	umol/L							0	1
+diss_inorg_nitro	micromole per liter	umol/L							0	2
+diss_org_carb	micromole per liter	umol/L							0	2
+gaseous_environment	micromole per liter	umol/L							0	1
+gaseous_substances	micromole per liter	umol/L							0	1
+methane	micromole per liter	umol/L							0	3
+n_alkanes	micromole per liter	umol/L							0	1
+nitrate	micromole per liter	umol/L							0	3
+nitrite	micromole per liter	umol/L							0	3
+nitro	micromole per liter	umol/L							0	1
+org_carb	micromole per liter	umol/L							0	1
+part_org_nitro	micromole per liter	umol/L							0	2
+petroleum_hydrocarb	micromole per liter	umol/L							0	1
+phosphate	micromole per liter	umol/L							0	1
+silicate	micromole per liter	umol/L							0	1
+soluble_react_phosp	micromole per liter	umol/L							0	3
+sulfate	micromole per liter	umol/L							0	3
+sulfide	micromole per liter	umol/L							0	3
+tot_nitro	micromole per liter	umol/L							0	3
+tot_nitro_content	micromole per liter	umol/L							0	3
+tot_part_carb	micromole per liter	umol/L							0	2
+tot_phosp	micromole per liter	umol/L							0	3
+tot_phosphate	micromole per liter	umol/L							0	2
+floor_age	weeks	wk							0	3
