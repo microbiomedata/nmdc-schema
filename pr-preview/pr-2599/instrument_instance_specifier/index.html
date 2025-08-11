@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/insdc_assembly_identifiers/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/instrument_instance_specifier/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: insdc_assembly_identifiers - NMDC Schema Documentation</title>
+        <title>Slot: instrument_instance_specifier - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-insdc_assembly_identifiers" class="md-skip">
+        <a href="#slot-instrument_instance_specifier" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: insdc_assembly_identifiers
+              Slot: instrument_instance_specifier
             
           </span>
         </div>
@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -607,15 +598,11 @@
   
 
 
-<h1 id="slot-insdc_assembly_identifiers">Slot: insdc_assembly_identifiers</h1>
-<p>URI: <a href="https://w3id.org/nmdc/insdc_assembly_identifiers">nmdc:insdc_assembly_identifiers</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../assembly_identifiers/">assembly_identifiers</a><ul>
-<li><strong>insdc_assembly_identifiers</strong> [ <a href="../insdc_identifiers/">insdc_identifiers</a>]</li>
-</ul>
-</li>
-</ul>
+<h1 id="slot-instrument_instance_specifier">Slot: instrument_instance_specifier</h1>
+<p><em>A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/instrument_instance_specifier">nmdc:instrument_instance_specifier</a></p>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -627,25 +614,25 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MetatranscriptomeAssembly/">MetatranscriptomeAssembly</a></td>
-<td></td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td>The methods and processes used to generate omics data from a biosample or org...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MetagenomeAssembly/">MetagenomeAssembly</a></td>
-<td>A workflow execution activity that converts sequencing reads into an assemble...</td>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>
-<p>Range: <a href="../String/">String</a></p>
-</li>
-<li>
-<p>Regex pattern: <code>^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$</code></p>
-</li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
@@ -670,18 +657,15 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: insdc_assembly_identifiers
+<pre><code class="language-yaml">name: instrument_instance_specifier
+description: A unique value that identifies an individual instrument instance, such
+  as a serial number or similar identifiers assigned by the manufacturer or user.
 from_schema: https://w3id.org/nmdc/nmdc
 rank: 1000
-is_a: assembly_identifiers
-mixins:
-- insdc_identifiers
-alias: insdc_assembly_identifiers
+alias: instrument_instance_specifier
 domain_of:
-- MetagenomeAssembly
-- MetatranscriptomeAssembly
+- DataGeneration
 range: string
-pattern: ^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$
 
 </code></pre>
 

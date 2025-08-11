@@ -372,6 +372,8 @@
 
   NucleotideSequencing : insdc_experiment_identifiers
 
+  NucleotideSequencing : instrument_instance_specifier
+
   NucleotideSequencing : instrument_used
 
       NucleotideSequencing --&gt; "*" Instrument : instrument_used
@@ -519,6 +521,12 @@
 <td><a href="../principal_investigator/">principal_investigator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
 <td>Principal Investigator who led the study and/or generated the dataset</td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+</tr>
+<tr>
+<td><a href="../instrument_instance_specifier/">instrument_instance_specifier</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A unique value that identifies an individual instrument instance, such as a s...</td>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 </tr>
 <tr>
@@ -943,6 +951,18 @@ attributes:
     - Study
     - DataGeneration
     range: PersonValue
+  instrument_instance_specifier:
+    name: instrument_instance_specifier
+    description: A unique value that identifies an individual instrument instance,
+      such as a serial number or similar identifiers assigned by the manufacturer
+      or user.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: instrument_instance_specifier
+    owner: NucleotideSequencing
+    domain_of:
+    - DataGeneration
+    range: string
   has_input:
     name: has_input
     description: An input to a process.
