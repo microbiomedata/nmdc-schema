@@ -1503,7 +1503,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
-      storage_unit: mg/kg
+      storage_units: mg/kg
     description: Concentration of ammonium nitrogen in the sample
     title: ammonium nitrogen
     examples:
@@ -1521,7 +1521,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
-      storage_unit: mg/kg
+      storage_units: mg/kg
     description: Concentration of nitrate nitrogen in the sample
     title: nitrate_nitrogen
     examples:
@@ -1537,7 +1537,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
-      storage_unit: mg/kg
+      storage_units: mg/kg
     description: Concentration of nitrite nitrogen in the sample
     title: nitrite_nitrogen
     examples:

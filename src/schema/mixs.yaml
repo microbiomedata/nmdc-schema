@@ -1952,7 +1952,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/(m3.d)|umol{O2}/(L.h)
+        value: mg/(m3.d)|umol/(L.h)
     description: Measurement of bacterial respiration in the water column
     title: bacterial respiration
     examples:

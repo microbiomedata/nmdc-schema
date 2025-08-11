@@ -375,7 +375,7 @@ make: *** [Makefile:102: gen-project] Error 1
 '.slots.alkalinity.annotations.storage_units = {"tag": "storage_units", "value": "meq/L|mg/L"}'
 '.slots.ammonium.annotations.storage_units = {"tag": "storage_units", "value": "[ppm]|mg/L|umol/L"}'
 '.slots.amount_light.annotations.storage_units = {"tag": "storage_units", "value": "lm/m2|lx"}'
-'.slots.bac_resp.annotations.storage_units = {"tag": "storage_units", "value": "mg/(m3.d)|umol{O2}/(L.h)"}'
+'.slots.bac_resp.annotations.storage_units = {"tag": "storage_units", "value": "mg/(m3.d)|umol/(L.h)"}'
 '.slots.benzene.annotations.storage_units = {"tag": "storage_units", "value": "[ppm]|mg/L"}'
 '.slots.biomass.annotations.storage_units = {"tag": "storage_units", "value": "g|kg"}'
 '.slots.bishomohopanol.annotations.storage_units = {"tag": "storage_units", "value": "ug/L|ug/g"}'
