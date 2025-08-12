@@ -20,5 +20,4 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: tube
     type: nmdc:Biosample
