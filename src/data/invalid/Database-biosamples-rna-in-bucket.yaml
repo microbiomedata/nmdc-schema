@@ -24,5 +24,4 @@ biosample_set:
     geo_loc_name:
       type: nmdc:TextValue
       has_raw_value: Lithgow
-    rna_cont_type: bucket
 
