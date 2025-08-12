@@ -905,25 +905,10 @@ classes:
 
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       ## JGI fields
-      - dna_absorb1
-      - dna_absorb2
       - dna_collect_site
-      - dna_concentration
-      - dna_cont_type
-      - dna_cont_well
       - dna_container_id
-      - dna_dnase
       - dna_isolate_meth
       - dna_organisms
-      - dna_project_contact
-      - dna_samp_id
-      - dna_sample_format
-      - dna_sample_name
-      - dna_seq_project
-      - dna_seq_project_pi
-      - dna_seq_project_name
-      - dna_volume
-      - proposal_dna
       - dnase_rna
       - proposal_rna
       - rna_absorb1
