@@ -906,28 +906,11 @@ classes:
       ## sample metadata submission portal (aka DataHarmonizer) terms (EMSL, JGI, etc.)
       ## JGI fields
       - dna_collect_site
-      - dna_container_id
       - dna_isolate_meth
       - dna_organisms
-      - dnase_rna
-      - proposal_rna
-      - rna_absorb1
-      - rna_absorb2
       - rna_collect_site
-      - rna_concentration
-      - rna_cont_type
-      - rna_cont_well
-      - rna_container_id
       - rna_isolate_meth
       - rna_organisms
-      - rna_project_contact
-      - rna_samp_id
-      - rna_sample_format
-      - rna_sample_name
-      - rna_seq_project
-      - rna_seq_project_pi
-      - rna_seq_project_name
-      - rna_volume
 
       ## MIxS Inspired fields
       - collection_date_inc
