@@ -372,6 +372,8 @@
 
   NucleotideSequencing : insdc_experiment_identifiers
 
+  NucleotideSequencing : instrument_instance_specifier
+
   NucleotideSequencing : instrument_used
 
       NucleotideSequencing --&gt; "*" Instrument : instrument_used
@@ -406,16 +408,6 @@
     click StatusEnum href "../StatusEnum"
 
   NucleotideSequencing : start_date
-
-  NucleotideSequencing : target_gene
-
-      NucleotideSequencing --&gt; "0..1" TargetGeneEnum : target_gene
-    click TargetGeneEnum href "../TargetGeneEnum"
-
-  NucleotideSequencing : target_subfragment
-
-      NucleotideSequencing --&gt; "0..1" TextValue : target_subfragment
-    click TextValue href "../TextValue"
 
   NucleotideSequencing : type
 
@@ -474,18 +466,6 @@
 <td>direct</td>
 </tr>
 <tr>
-<td><a href="../target_gene/">target_gene</a></td>
-<td>0..1 <br/> <a href="../TargetGeneEnum/">TargetGeneEnum</a></td>
-<td>Targeted gene or locus name for marker gene studies</td>
-<td>direct</td>
-</tr>
-<tr>
-<td><a href="../target_subfragment/">target_subfragment</a></td>
-<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
-<td>Name of subfragment of a gene or locus</td>
-<td>direct</td>
-</tr>
-<tr>
 <td><a href="../add_date/">add_date</a></td>
 <td>0..1 <br/> <a href="../String/">String</a></td>
 <td>The date on which the information was added to the database</td>
@@ -519,6 +499,12 @@
 <td><a href="../principal_investigator/">principal_investigator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
 <td>Principal Investigator who led the study and/or generated the dataset</td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+</tr>
+<tr>
+<td><a href="../instrument_instance_specifier/">instrument_instance_specifier</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A unique value that identifies an individual instrument instance, such as a s...</td>
 <td><a href="../DataGeneration/">DataGeneration</a></td>
 </tr>
 <tr>
@@ -713,8 +699,6 @@ slots:
 - insdc_bioproject_identifiers
 - insdc_experiment_identifiers
 - ncbi_project_name
-- target_gene
-- target_subfragment
 slot_usage:
   id:
     name: id
@@ -816,53 +800,6 @@ attributes:
     domain_of:
     - NucleotideSequencing
     range: string
-  target_gene:
-    name: target_gene
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene name
-    description: Targeted gene or locus name for marker gene studies
-    title: target gene
-    examples:
-    - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - target gene
-    rank: 1000
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000044
-    alias: target_gene
-    owner: NucleotideSequencing
-    domain_of:
-    - NucleotideSequencing
-    range: TargetGeneEnum
-    multivalued: false
-  target_subfragment:
-    name: target_subfragment
-    annotations:
-      expected_value:
-        tag: expected_value
-        value: gene fragment name
-    description: Name of subfragment of a gene or locus. Important to e.g. identify
-      special regions on marker genes like V6 on 16S rRNA
-    title: target subfragment
-    examples:
-    - value: V6, V9, ITS
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - target subfragment
-    rank: 1000
-    is_a: sequencing field
-    string_serialization: '{text}'
-    slot_uri: MIXS:0000045
-    alias: target_subfragment
-    owner: NucleotideSequencing
-    domain_of:
-    - NucleotideSequencing
-    range: TextValue
-    multivalued: false
   add_date:
     name: add_date
     description: The date on which the information was added to the database.
@@ -943,6 +880,18 @@ attributes:
     - Study
     - DataGeneration
     range: PersonValue
+  instrument_instance_specifier:
+    name: instrument_instance_specifier
+    description: A unique value that identifies an individual instrument instance,
+      such as a serial number or similar identifiers assigned by the manufacturer
+      or user.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: instrument_instance_specifier
+    owner: NucleotideSequencing
+    domain_of:
+    - DataGeneration
+    range: string
   has_input:
     name: has_input
     description: An input to a process.

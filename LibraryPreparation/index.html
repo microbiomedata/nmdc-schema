@@ -410,6 +410,16 @@
       LibraryPreparation --&gt; "0..1" StrandedOrientationEnum : stranded_orientation
     click StrandedOrientationEnum href "../StrandedOrientationEnum"
 
+  LibraryPreparation : target_gene
+
+      LibraryPreparation --&gt; "0..1" TargetGeneEnum : target_gene
+    click TargetGeneEnum href "../TargetGeneEnum"
+
+  LibraryPreparation : target_subfragment
+
+      LibraryPreparation --&gt; "0..1" TextValue : target_subfragment
+    click TextValue href "../TextValue"
+
   LibraryPreparation : type
 
 
@@ -485,6 +495,18 @@
 <td><a href="../stranded_orientation/">stranded_orientation</a></td>
 <td>0..1 <br/> <a href="../StrandedOrientationEnum/">StrandedOrientationEnum</a></td>
 <td>Lists the strand orientiation for a stranded RNA library preparation</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../target_gene/">target_gene</a></td>
+<td>0..1 <br/> <a href="../TargetGeneEnum/">TargetGeneEnum</a></td>
+<td>Targeted gene or locus name for marker gene studies</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../target_subfragment/">target_subfragment</a></td>
+<td>0..1 <br/> <a href="../TextValue/">TextValue</a></td>
+<td>Name of subfragment of a gene or locus</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -629,6 +651,8 @@ slots:
 - pcr_cycles
 - pcr_primers
 - stranded_orientation
+- target_gene
+- target_subfragment
 slot_usage:
   has_input:
     name: has_input
@@ -824,6 +848,53 @@ attributes:
     domain_of:
     - LibraryPreparation
     range: StrandedOrientationEnum
+  target_gene:
+    name: target_gene
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene name
+    description: Targeted gene or locus name for marker gene studies
+    title: target gene
+    examples:
+    - value: 16S rRNA, 18S rRNA, nif, amoA, rpo
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - target gene
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: MIXS:0000044
+    alias: target_gene
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: TargetGeneEnum
+    multivalued: false
+  target_subfragment:
+    name: target_subfragment
+    annotations:
+      expected_value:
+        tag: expected_value
+        value: gene fragment name
+    description: Name of subfragment of a gene or locus. Important to e.g. identify
+      special regions on marker genes like V6 on 16S rRNA
+    title: target subfragment
+    examples:
+    - value: V6, V9, ITS
+    from_schema: https://w3id.org/nmdc/nmdc
+    aliases:
+    - target subfragment
+    rank: 1000
+    is_a: sequencing field
+    string_serialization: '{text}'
+    slot_uri: MIXS:0000045
+    alias: target_subfragment
+    owner: LibraryPreparation
+    domain_of:
+    - LibraryPreparation
+    range: TextValue
+    multivalued: false
   instrument_used:
     name: instrument_used
     description: What instrument was used during DataGeneration or MaterialProcessing.

@@ -373,6 +373,8 @@
 
   DataGeneration : id
 
+  DataGeneration : instrument_instance_specifier
+
   DataGeneration : instrument_used
 
       DataGeneration --&gt; "*" Instrument : instrument_used
@@ -473,6 +475,12 @@
 <td><a href="../principal_investigator/">principal_investigator</a></td>
 <td>0..1 <br/> <a href="../PersonValue/">PersonValue</a></td>
 <td>Principal Investigator who led the study and/or generated the dataset</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../instrument_instance_specifier/">instrument_instance_specifier</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>A unique value that identifies an individual instrument instance, such as a s...</td>
 <td>direct</td>
 </tr>
 <tr>
@@ -651,6 +659,7 @@ slots:
 - instrument_used
 - mod_date
 - principal_investigator
+- instrument_instance_specifier
 slot_usage:
   has_input:
     name: has_input
@@ -798,6 +807,18 @@ attributes:
     - Study
     - DataGeneration
     range: PersonValue
+  instrument_instance_specifier:
+    name: instrument_instance_specifier
+    description: A unique value that identifies an individual instrument instance,
+      such as a serial number or similar identifiers assigned by the manufacturer
+      or user.
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    alias: instrument_instance_specifier
+    owner: DataGeneration
+    domain_of:
+    - DataGeneration
+    range: string
   has_input:
     name: has_input
     description: An input to a process.

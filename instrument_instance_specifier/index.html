@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/geo_loc_name/">
+        <link rel="canonical" href="https://microbiomedata.github.io/nmdc-schema/instrument_instance_specifier/">
       
       
       
@@ -18,7 +18,7 @@
     
     
       
-        <title>Slot: geographic location (country and/or sea,region) (geo_loc_name) - NMDC Schema Documentation</title>
+        <title>Slot: instrument_instance_specifier - NMDC Schema Documentation</title>
       
     
     
@@ -60,7 +60,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#slot-geographic-location-country-andor-searegion-geo_loc_name" class="md-skip">
+        <a href="#slot-instrument_instance_specifier" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Slot: geographic location (country and/or sea,region) (geo_loc_name)
+              Slot: instrument_instance_specifier
             
           </span>
         </div>
@@ -520,15 +520,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#inheritance" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inheritance
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#applicable-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Applicable Classes
@@ -547,24 +538,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#aliases" class="md-nav__link">
-    <span class="md-ellipsis">
-      Aliases
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    <span class="md-ellipsis">
-      Examples
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       Identifier and Mapping Information
@@ -573,15 +546,6 @@
   
     <nav class="md-nav" aria-label="Identifier and Mapping Information">
       <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Annotations
-    </span>
-  </a>
-  
-</li>
         
           <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
@@ -634,16 +598,11 @@
   
 
 
-<h1 id="slot-geographic-location-country-andor-searegion-geo_loc_name">Slot: geographic location (country and/or sea,region) (geo_loc_name)</h1>
-<p><em>The geographical origin of the sample as defined by the country or sea name followed by specific region name. Country or sea names should be chosen from the INSDC country list (<a href="http://insdc.org/country.html">http://insdc.org/country.html</a>), or the GAZ ontology (<a href="http://purl.bioontology.org/ontology/GAZ">http://purl.bioontology.org/ontology/GAZ</a>)</em></p>
-<p>URI: <a href="https://w3id.org/mixs/0000010">MIXS:0000010</a></p>
-<h2 id="inheritance">Inheritance</h2>
-<ul>
-<li><a href="../environment_field/">environment_field</a><ul>
-<li><strong>geo_loc_name</strong></li>
-</ul>
-</li>
-</ul>
+<h1 id="slot-instrument_instance_specifier">Slot: instrument_instance_specifier</h1>
+<p><em>A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.</em></p>
+<p>URI: <a href="https://w3id.org/nmdc/instrument_instance_specifier">nmdc:instrument_instance_specifier</a></p>
+<!-- no inheritance hierarchy -->
+
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -655,54 +614,27 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../FieldResearchSite/">FieldResearchSite</a></td>
-<td>A site, outside of a laboratory, from which biosamples may be collected</td>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td>Spectrometry where the sample is converted into gaseous ions which are charac...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Biosample/">Biosample</a></td>
-<td>Biological source material which can be characterized by an experiment</td>
+<td><a href="../DataGeneration/">DataGeneration</a></td>
+<td>The methods and processes used to generate omics data from a biosample or org...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../NucleotideSequencing/">NucleotideSequencing</a></td>
+<td>A DataGeneration in which the sequence of DNA or RNA molecules is generated</td>
 <td>no</td>
 </tr>
 </tbody>
 </table>
 <h2 id="properties">Properties</h2>
 <ul>
-<li>Range: <a href="../TextValue/">TextValue</a></li>
+<li>Range: <a href="../String/">String</a></li>
 </ul>
-<h2 id="aliases">Aliases</h2>
-<ul>
-<li>geographic location (country and/or sea,region)</li>
-</ul>
-<h2 id="examples">Examples</h2>
-<table>
-<thead>
-<tr>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>USA: Maryland, Bethesda</td>
-</tr>
-</tbody>
-</table>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
-<h3 id="annotations">Annotations</h3>
-<table>
-<thead>
-<tr>
-<th>property</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>expected_value</td>
-<td>country or sea name (INSDC or GAZ): region(GAZ), specific location name</td>
-</tr>
-</tbody>
-</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -717,38 +649,23 @@
 </thead>
 <tbody>
 <tr>
-<td>self</td>
-<td>MIXS:0000010</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 
-<pre><code class="language-yaml">name: geo_loc_name
-annotations:
-  expected_value:
-    tag: expected_value
-    value: 'country or sea name (INSDC or GAZ): region(GAZ), specific location name'
-description: The geographical origin of the sample as defined by the country or sea
-  name followed by specific region name. Country or sea names should be chosen from
-  the INSDC country list (http://insdc.org/country.html), or the GAZ ontology (http://purl.bioontology.org/ontology/GAZ)
-title: geographic location (country and/or sea,region)
-examples:
-- value: 'USA: Maryland, Bethesda'
+<pre><code class="language-yaml">name: instrument_instance_specifier
+description: A unique value that identifies an individual instrument instance, such
+  as a serial number or similar identifiers assigned by the manufacturer or user.
 from_schema: https://w3id.org/nmdc/nmdc
-aliases:
-- geographic location (country and/or sea,region)
 rank: 1000
-is_a: environment field
-string_serialization: '{term}: {term}, {text}'
-slot_uri: MIXS:0000010
-alias: geo_loc_name
+alias: instrument_instance_specifier
 domain_of:
-- FieldResearchSite
-- Biosample
-range: TextValue
-multivalued: false
+- DataGeneration
+range: string
 
 </code></pre>
 
