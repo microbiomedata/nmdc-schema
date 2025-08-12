@@ -466,7 +466,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_type: tube
   - id: nmdc:bsm-99-J9FcnC
     type: nmdc:Biosample
     name: Root microbial communities from poplar common garden site in Clatskanie, Oregon,
