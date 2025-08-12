@@ -419,7 +419,6 @@ diss_oxygen_fluid:
   type: nmdc:QuantityValue
   has_raw_value: xxx
   has_unit: umol/kg
-dna_cont_well: C2
 door_comp_type: revolving
 door_cond: damaged
 door_direct: inward

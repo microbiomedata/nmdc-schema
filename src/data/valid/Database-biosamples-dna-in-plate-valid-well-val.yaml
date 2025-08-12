@@ -20,8 +20,6 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: plate
-    dna_cont_well: B2
     type: nmdc:Biosample
   - id: nmdc:bsm-99-000001
     associated_studies:
@@ -44,8 +42,6 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: plate
-    dna_cont_well: A10
     type: nmdc:Biosample
   - id: nmdc:bsm-99-000002
     associated_studies:
@@ -68,8 +64,6 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: plate
-    dna_cont_well: A11
     type: nmdc:Biosample
   - id: nmdc:bsm-99-000003
     associated_studies:
@@ -92,8 +86,6 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: plate
-    dna_cont_well: H10
     type: nmdc:Biosample
   - id: nmdc:bsm-99-000004
     associated_studies:
@@ -116,8 +108,6 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: plate
-    dna_cont_well: H11
     type: nmdc:Biosample
   - id: nmdc:bsm-99-000005
     associated_studies:
@@ -140,8 +130,6 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: plate
-    dna_cont_well: C1
     type: nmdc:Biosample
   - id: nmdc:bsm-99-000006
     associated_studies:
@@ -164,6 +152,4 @@ biosample_set:
       term:
         type: nmdc:OntologyClass
         id: ENVO:00005792
-    dna_cont_type: plate
-    dna_cont_well: C12
     type: nmdc:Biosample

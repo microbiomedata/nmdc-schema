@@ -1320,7 +1320,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    rna_volume: 12.0
   - id: nmdc:bsm-99-333333
     type: nmdc:Biosample
     associated_studies:
@@ -1343,8 +1342,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: B2
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000002
     type: nmdc:Biosample
     associated_studies:
@@ -1367,8 +1364,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: A11
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000003
     type: nmdc:Biosample
     associated_studies:
@@ -1391,8 +1386,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: H10
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000004
     type: nmdc:Biosample
     associated_studies:
@@ -1415,8 +1408,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: H11
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000005
     type: nmdc:Biosample
     associated_studies:
@@ -1439,8 +1430,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: C1
-    dna_cont_type: plate
   - id: nmdc:bsm-99-4444444
     type: nmdc:Biosample
     name: Sample Exhaustive Biosample instance. Although all of these values should
@@ -1826,7 +1815,6 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: xxx
       has_unit: m
-    dna_cont_well: C2
     door_comp_type: revolving
     door_cond: damaged
     door_direct: inward
@@ -4167,7 +4155,6 @@ processed_sample_set:
       type: nmdc:QuantityValue
       has_numeric_value: 1.8
       has_unit: "1"
-    dna_concentration: 123.0
   - id: nmdc:procsm-99-29dl
     type: nmdc:ProcessedSample
     name: mouse gut DNA extract
