@@ -1955,22 +1955,16 @@ enums:
         aliases:
         - Perlmutter
         - Saul
-      EMSL:
-        text: EMSL
-        description: Environmental Molecular Sciences Laboratory
       EMSL-RZR:
         text: EMSL-RZR
         description: Environmental Molecular Sciences Laboratory RZR cluster
         aliases:
         - RZR
-      JGI:
-        text: JGI
-        description: Joint Genome Institute
-      LANL-B-div:
-        text: LANL-B-div
-        description: LANL Bioscience Division
+      EMSL-Tahoma:
+        text: EMSL-Tahoma
+        description: Environmental Molecular Sciences Laboratory RZR Tahoma cluster
         aliases:
-        - B-div
+        - Tahoma
   FileTypeEnum:
     name: FileTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2711,6 +2705,10 @@ enums:
     - use ROR meanings like ror:0168r3w48 for UCSD
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
+      NMDC:
+        text: NMDC
+        meaning: ror:05cwx3318
+        title: National Microbiome Data Collaborative
       UCSD:
         text: UCSD
         meaning: ror:0168r3w48
@@ -5342,42 +5340,6 @@ enums:
         text: sediment
       water:
         text: water
-  DNASampleFormatEnum:
-    name: DNASampleFormatEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      10 mmol/L Tris-HCl:
-        text: 10 mmol/L Tris-HCl
-      DNAStable:
-        text: DNAStable
-      Ethanol:
-        text: Ethanol
-      Low EDTA TE:
-        text: Low EDTA TE
-      MDA reaction buffer:
-        text: MDA reaction buffer
-      PBS:
-        text: PBS
-      Pellet:
-        text: Pellet
-      RNAStable:
-        text: RNAStable
-      TE:
-        text: TE
-      Water:
-        text: Water
-      Gentegra-DNA:
-        text: Gentegra-DNA
-      Gentegra-RNA:
-        text: Gentegra-RNA
-  JgiContTypeEnum:
-    name: JgiContTypeEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      plate:
-        text: plate
-      tube:
-        text: tube
   YesNoEnum:
     name: YesNoEnum
     description: replaces DnaDnaseEnum and DnaseRnaEnum
@@ -5387,34 +5349,6 @@ enums:
         text: 'no'
       'yes':
         text: 'yes'
-  RNASampleFormatEnum:
-    name: RNASampleFormatEnum
-    from_schema: https://w3id.org/nmdc/nmdc
-    permissible_values:
-      10 mmol/L Tris-HCl:
-        text: 10 mmol/L Tris-HCl
-      DNAStable:
-        text: DNAStable
-      Ethanol:
-        text: Ethanol
-      Low EDTA TE:
-        text: Low EDTA TE
-      MDA reaction buffer:
-        text: MDA reaction buffer
-      PBS:
-        text: PBS
-      Pellet:
-        text: Pellet
-      RNAStable:
-        text: RNAStable
-      TE:
-        text: TE
-      Water:
-        text: Water
-      Gentegra-DNA:
-        text: Gentegra-DNA
-      Gentegra-RNA:
-        text: Gentegra-RNA
   AnalysisTypeEnum:
     name: AnalysisTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -18961,6 +18895,12 @@ slots:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
+  instrument_instance_specifier:
+    name: instrument_instance_specifier
+    description: A unique value that identifies an individual instrument instance,
+      such as a serial number or similar identifiers assigned by the manufacturer
+      or user.
+    from_schema: https://w3id.org/nmdc/nmdc
   in_manifest:
     name: in_manifest
     description: one or more combinations of other DataObjects that can be analyzed
@@ -19100,59 +19040,6 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
-  dna_cont_type:
-    name: dna_cont_type
-    description: Tube or plate (96-well)
-    title: DNA container type
-    examples:
-    - value: plate
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 10
-    slot_group: JGI-Metagenomics
-    range: JgiContTypeEnum
-    recommended: true
-  dna_cont_well:
-    name: dna_cont_well
-    title: DNA plate position
-    comments:
-    - Required when 'plate' is selected for container type.
-    - Leave blank if the sample will be shipped in a tube.
-    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not
-      pass validation.
-    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
-    examples:
-    - value: B2
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 11
-    string_serialization: '{96 well plate pos}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
-  dna_container_id:
-    name: dna_container_id
-    title: DNA container label
-    comments:
-    - Must be unique across all tubes and plates, and <20 characters. All samples
-      in a plate should have the same plate label.
-    examples:
-    - value: Pond_MT_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 9
-    string_serialization: '{text < 20 characters}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_dnase:
-    name: dna_dnase
-    title: DNase treatment DNA
-    comments:
-    - Note DNase treatment is required for all RNA samples.
-    examples:
-    - value: 'no'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 13
-    slot_group: JGI-Metagenomics
-    range: YesNoEnum
-    recommended: true
   dna_isolate_meth:
     name: dna_isolate_meth
     description: Describe the method/protocol/kit used to extract DNA/RNA.
@@ -19179,201 +19066,6 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metagenomics
     recommended: true
-  dna_project_contact:
-    name: dna_project_contact
-    title: DNA seq project contact
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: John Jones
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 18
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_samp_id:
-    name: dna_samp_id
-    title: DNA sample ID
-    todos:
-    - Removed identifier = TRUE from dna_samp_ID in JGI_sample_slots, as a class can't
-      have two identifiers. How to force uniqueness? Moot because that column will
-      be prefilled?
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '187654'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 3
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_sample_format:
-    name: dna_sample_format
-    description: Solution in which the DNA sample has been suspended
-    title: DNA sample format
-    examples:
-    - value: Water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 12
-    slot_group: JGI-Metagenomics
-    range: DNASampleFormatEnum
-    recommended: true
-  dna_sample_name:
-    name: dna_sample_name
-    description: Give the DNA sample a name that is meaningful to you. Sample names
-      must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
-    title: DNA sample name
-    examples:
-    - value: JGI_pond_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 4
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_seq_project:
-    name: dna_seq_project
-    title: DNA seq project ID
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '1191234'
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Seq Project ID
-    rank: 1
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_seq_project_pi:
-    name: dna_seq_project_pi
-    title: DNA seq project PI
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: Jane Johnson
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 17
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_seq_project_name:
-    name: dna_seq_project_name
-    title: DNA seq project name
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: JGI Pond metagenomics
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 2
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dna_volume:
-    name: dna_volume
-    title: DNA volume in ul
-    comments:
-    - Units must be in uL. Enter the numerical part only. Value must be 0-1000. This
-      form accepts values < 25, but JGI may refuse to process them unless permission
-      has been granted by a project manager
-    examples:
-    - value: '25'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 6
-    string_serialization: '{float}'
-    slot_group: JGI-Metagenomics
-    range: float
-    recommended: true
-    minimum_value: 0
-    maximum_value: 1000
-  proposal_dna:
-    name: proposal_dna
-    title: DNA proposal ID
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '504000'
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 19
-    string_serialization: '{text}'
-    slot_group: JGI-Metagenomics
-    recommended: true
-  dnase_rna:
-    name: dnase_rna
-    title: DNase treated
-    comments:
-    - Note DNase treatment is required for all RNA samples.
-    examples:
-    - value: 'no'
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Was Sample DNAse treated?
-    rank: 13
-    slot_group: JGI-Metatranscriptomics
-    range: YesNoEnum
-    recommended: true
-  proposal_rna:
-    name: proposal_rna
-    title: RNA proposal ID
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '504000'
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 19
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_absorb1:
-    name: rna_absorb1
-    description: 260/280 measurement of RNA sample purity
-    title: RNA absorbance 260/280
-    comments:
-    - Recommended value is between 1 and 3.
-    examples:
-    - value: '2.02'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 7
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
-  rna_absorb2:
-    name: rna_absorb2
-    description: 260/230 measurement of RNA sample purity
-    title: RNA absorbance 260/230
-    comments:
-    - Recommended value is between 1 and 3.
-    examples:
-    - value: '2.02'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 8
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
   rna_collect_site:
     name: rna_collect_site
     description: Provide information on the site your RNA sample was collected from
@@ -19383,65 +19075,6 @@ slots:
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 15
     string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_concentration:
-    name: rna_concentration
-    title: RNA concentration in ng/ul
-    comments:
-    - Units must be in ng/uL. Enter the numerical part only. Must be calculated using
-      a fluorometric method. Acceptable values are 0-2000.
-    examples:
-    - value: '100'
-    from_schema: https://w3id.org/nmdc/nmdc
-    see_also:
-    - nmdc:nucleic_acid_concentration
-    rank: 5
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
-    minimum_value: 0
-    maximum_value: 1000
-  rna_cont_type:
-    name: rna_cont_type
-    description: Tube or plate (96-well)
-    title: RNA container type
-    examples:
-    - value: plate
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 10
-    slot_group: JGI-Metatranscriptomics
-    range: JgiContTypeEnum
-    recommended: true
-  rna_cont_well:
-    name: rna_cont_well
-    title: RNA plate position
-    comments:
-    - Required when 'plate' is selected for container type.
-    - Leave blank if the sample will be shipped in a tube.
-    - JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not
-      pass validation.
-    - For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8).
-    examples:
-    - value: B2
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 11
-    string_serialization: '{96 well plate pos}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-    pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
-  rna_container_id:
-    name: rna_container_id
-    title: RNA container label
-    comments:
-    - Must be unique across all tubes and plates, and <20 characters. All samples
-      in a plate should have the same plate label.
-    examples:
-    - value: Pond_MT_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 9
-    string_serialization: '{text < 20 characters}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
   rna_isolate_meth:
@@ -19470,123 +19103,6 @@ slots:
     string_serialization: '{text}'
     slot_group: JGI-Metatranscriptomics
     recommended: true
-  rna_project_contact:
-    name: rna_project_contact
-    title: RNA seq project contact
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: John Jones
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 18
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_samp_id:
-    name: rna_samp_id
-    title: RNA sample ID
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '187654'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 3
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_sample_format:
-    name: rna_sample_format
-    description: Solution in which the RNA sample has been suspended
-    title: RNA sample format
-    examples:
-    - value: Water
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 12
-    slot_group: JGI-Metatranscriptomics
-    range: RNASampleFormatEnum
-    recommended: true
-  rna_sample_name:
-    name: rna_sample_name
-    description: Give the RNA sample a name that is meaningful to you. Sample names
-      must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.
-    title: RNA sample name
-    examples:
-    - value: JGI_pond_041618
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 4
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-    minimum_value: 0
-    maximum_value: 2000
-  rna_seq_project:
-    name: rna_seq_project
-    title: RNA seq project ID
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: '1191234'
-    from_schema: https://w3id.org/nmdc/nmdc
-    aliases:
-    - Seq Project ID
-    rank: 1
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_seq_project_pi:
-    name: rna_seq_project_pi
-    title: RNA seq project PI
-    deprecated: This slot is not always provided by JGI and does not need to be in
-      the file that we send back to JGI. Not needed in UI
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: Jane Johnson
-    from_schema: https://w3id.org/nmdc/nmdc
-    last_updated_on: '2025-07-02T00:00:00'
-    modified_by: ORCID:0000-0002-8683-0050
-    rank: 17
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_seq_project_name:
-    name: rna_seq_project_name
-    title: RNA seq project name
-    comments:
-    - Do not edit these values. A template will be provided by NMDC in which these
-      values have been pre-filled.
-    examples:
-    - value: JGI Pond metatranscriptomics
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 2
-    string_serialization: '{text}'
-    slot_group: JGI-Metatranscriptomics
-    recommended: true
-  rna_volume:
-    name: rna_volume
-    title: RNA volume in ul
-    comments:
-    - Units must be in uL. Enter the numerical part only. Value must be 0-1000. This
-      form accepts values < 25, but JGI may refuse to process them unless permission
-      has been granted by a project manager
-    examples:
-    - value: '25'
-    from_schema: https://w3id.org/nmdc/nmdc
-    rank: 6
-    string_serialization: '{float}'
-    slot_group: JGI-Metatranscriptomics
-    range: float
-    recommended: true
-    minimum_value: 0
-    maximum_value: 1000
   collection_date_inc:
     name: collection_date_inc
     description: Date the incubation was harvested/collected/ended. Only relevant
@@ -20209,8 +19725,6 @@ classes:
     - insdc_bioproject_identifiers
     - insdc_experiment_identifiers
     - ncbi_project_name
-    - target_gene
-    - target_subfragment
     slot_usage:
       id:
         name: id
@@ -20617,6 +20131,8 @@ classes:
     - pcr_cycles
     - pcr_primers
     - stranded_orientation
+    - target_gene
+    - target_subfragment
     slot_usage:
       has_input:
         name: has_input
@@ -21584,44 +21100,12 @@ classes:
     - sample_collection_site
     - soluble_iron_micromol
     - subsurface_depth
-    - dna_absorb1
-    - dna_absorb2
     - dna_collect_site
-    - dna_concentration
-    - dna_cont_type
-    - dna_cont_well
-    - dna_container_id
-    - dna_dnase
     - dna_isolate_meth
     - dna_organisms
-    - dna_project_contact
-    - dna_samp_id
-    - dna_sample_format
-    - dna_sample_name
-    - dna_seq_project
-    - dna_seq_project_pi
-    - dna_seq_project_name
-    - dna_volume
-    - proposal_dna
-    - dnase_rna
-    - proposal_rna
-    - rna_absorb1
-    - rna_absorb2
     - rna_collect_site
-    - rna_concentration
-    - rna_cont_type
-    - rna_cont_well
-    - rna_container_id
     - rna_isolate_meth
     - rna_organisms
-    - rna_project_contact
-    - rna_samp_id
-    - rna_sample_format
-    - rna_sample_name
-    - rna_seq_project
-    - rna_seq_project_pi
-    - rna_seq_project_name
-    - rna_volume
     - collection_date_inc
     - collection_time
     - collection_time_inc
@@ -22001,61 +21485,6 @@ classes:
         unique_key_name: samp_name_unique_key
         unique_key_slots:
         - samp_name
-    rules:
-    - preconditions:
-        slot_conditions:
-          dna_cont_well:
-            name: dna_cont_well
-            pattern: .+
-      postconditions:
-        slot_conditions:
-          dna_cont_type:
-            name: dna_cont_type
-            equals_string: plate
-      description: DNA samples shipped to JGI for metagenomic analysis in tubes can't
-        have any value for their plate position.
-      title: dna_well_requires_plate
-    - preconditions:
-        slot_conditions:
-          dna_cont_type:
-            name: dna_cont_type
-            equals_string: plate
-      postconditions:
-        slot_conditions:
-          dna_cont_well:
-            name: dna_cont_well
-            pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
-      description: DNA samples in plates must have a plate position that matches the
-        regex. Note the requirement for an empty string in the tube case. Waiting
-        for value_present validation to be added to runtime
-      title: dna_plate_requires_well
-    - preconditions:
-        slot_conditions:
-          rna_cont_well:
-            name: rna_cont_well
-            pattern: .+
-      postconditions:
-        slot_conditions:
-          rna_cont_type:
-            name: rna_cont_type
-            equals_string: plate
-      description: RNA samples shipped to JGI for metagenomic analysis in tubes can't
-        have any value for their plate position.
-      title: rna_well_requires_plate
-    - preconditions:
-        slot_conditions:
-          rna_cont_type:
-            name: rna_cont_type
-            equals_string: plate
-      postconditions:
-        slot_conditions:
-          rna_cont_well:
-            name: rna_cont_well
-            pattern: ^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$
-      description: RNA samples in plates must have a plate position that matches the
-        regex. Note the requirement for an empty string in the tube case. Waiting
-        for value_present validation to be added to runtime
-      title: rna_plate_requires_well
   MobilePhaseSegment:
     name: MobilePhaseSegment
     description: A fluid mixture of substances that flow though a chromatographic
@@ -22960,6 +22389,7 @@ classes:
     - instrument_used
     - mod_date
     - principal_investigator
+    - instrument_instance_specifier
     slot_usage:
       has_input:
         name: has_input
@@ -23030,8 +22460,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
           interpolated: true
-      execution_resource:
-        name: execution_resource
+      processing_institution:
+        name: processing_institution
         required: true
       was_informed_by:
         name: was_informed_by

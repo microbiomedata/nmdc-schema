@@ -53,96 +53,6 @@
         },
         "Biosample": {
             "additionalProperties": false,
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "dna_cont_well": {
-                                "pattern": ".+"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_well"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "dna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_type"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "dna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_type"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "dna_cont_well": {
-                                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-                            }
-                        },
-                        "required": [
-                            "dna_cont_well"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "rna_cont_well": {
-                                "pattern": ".+"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_well"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "rna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_type"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "rna_cont_type": {
-                                "const": "plate"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_type"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "rna_cont_well": {
-                                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-                            }
-                        },
-                        "required": [
-                            "rna_cont_well"
-                        ]
-                    }
-                }
-            ],
             "description": "Biological source material which can be characterized by an experiment.",
             "properties": {
                 "abs_air_humidity": {
@@ -1279,54 +1189,12 @@
                     ],
                     "description": "Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic)."
                 },
-                "dna_absorb1": {
-                    "description": "260/280 measurement of DNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "dna_absorb2": {
-                    "description": "260/230 measurement of DNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "dna_collect_site": {
                     "description": "Provide information on the site your DNA sample was collected from",
                     "type": [
                         "string",
                         "null"
                     ]
-                },
-                "dna_concentration": {
-                    "maximum": 2000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "dna_cont_type": {
-                    "$ref": "#/$defs/JgiContTypeEnum",
-                    "description": "Tube or plate (96-well)"
-                },
-                "dna_cont_well": {
-                    "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_container_id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_dnase": {
-                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "dna_isolate_meth": {
                     "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -1341,58 +1209,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "dna_project_contact": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_samp_id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_sample_format": {
-                    "$ref": "#/$defs/DNASampleFormatEnum",
-                    "description": "Solution in which the DNA sample has been suspended"
-                },
-                "dna_sample_name": {
-                    "description": "Give the DNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_seq_project": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_seq_project_name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_seq_project_pi": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "dna_volume": {
-                    "maximum": 1000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "dnase_rna": {
-                    "$ref": "#/$defs/YesNoEnum"
                 },
                 "door_comp_type": {
                     "$ref": "#/$defs/DoorCompTypeEnum",
@@ -3459,18 +3275,6 @@
                         "null"
                     ]
                 },
-                "proposal_dna": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "proposal_rna": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
                 "quad_pos": {
                     "$ref": "#/$defs/QuadPosEnum",
                     "description": "The quadrant position of the sampling room within the building"
@@ -3572,47 +3376,8 @@
                     ],
                     "description": "Saturate, Aromatic, Resin and Asphaltene\u00ac\u2020(SARA) is an analysis method that divides\u00ac\u2020crude oil\u00ac\u2020components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)"
                 },
-                "rna_absorb1": {
-                    "description": "260/280 measurement of RNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "rna_absorb2": {
-                    "description": "260/230 measurement of RNA sample purity",
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
                 "rna_collect_site": {
                     "description": "Provide information on the site your RNA sample was collected from",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_concentration": {
-                    "maximum": 1000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
-                        "null"
-                    ]
-                },
-                "rna_cont_type": {
-                    "$ref": "#/$defs/JgiContTypeEnum",
-                    "description": "Tube or plate (96-well)"
-                },
-                "rna_cont_well": {
-                    "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_container_id": {
                     "type": [
                         "string",
                         "null"
@@ -3629,57 +3394,6 @@
                     "description": "List any organisms known or suspected to grow in co-culture, as well as estimated % of the organism in that culture.",
                     "type": [
                         "string",
-                        "null"
-                    ]
-                },
-                "rna_project_contact": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_samp_id": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_sample_format": {
-                    "$ref": "#/$defs/RNASampleFormatEnum",
-                    "description": "Solution in which the RNA sample has been suspended"
-                },
-                "rna_sample_name": {
-                    "description": "Give the RNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
-                    "maximum": 2000,
-                    "minimum": 0,
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_seq_project": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_seq_project_name": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_seq_project_pi": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
-                },
-                "rna_volume": {
-                    "maximum": 1000,
-                    "minimum": 0,
-                    "type": [
-                        "number",
                         "null"
                     ]
                 },
@@ -6564,25 +6278,6 @@
             "title": "CurLandUseEnum",
             "type": "string"
         },
-        "DNASampleFormatEnum": {
-            "description": "",
-            "enum": [
-                "10 mmol/L Tris-HCl",
-                "DNAStable",
-                "Ethanol",
-                "Low EDTA TE",
-                "MDA reaction buffer",
-                "PBS",
-                "Pellet",
-                "RNAStable",
-                "TE",
-                "Water",
-                "Gentegra-DNA",
-                "Gentegra-RNA"
-            ],
-            "title": "DNASampleFormatEnum",
-            "type": "string"
-        },
         "DataCategoryEnum": {
             "description": "",
             "enum": [
@@ -7538,10 +7233,8 @@
             "enum": [
                 "NERSC-Cori",
                 "NERSC-Perlmutter",
-                "EMSL",
                 "EMSL-RZR",
-                "JGI",
-                "LANL-B-div"
+                "EMSL-Tahoma"
             ],
             "title": "ExecutionResourceEnum",
             "type": "string"
@@ -8985,15 +8678,6 @@
             "title": "IonizationSourceEnum",
             "type": "string"
         },
-        "JgiContTypeEnum": {
-            "description": "",
-            "enum": [
-                "plate",
-                "tube"
-            ],
-            "title": "JgiContTypeEnum",
-            "type": "string"
-        },
         "LibraryPreparation": {
             "additionalProperties": false,
             "description": "",
@@ -9161,6 +8845,21 @@
                 "stranded_orientation": {
                     "$ref": "#/$defs/StrandedOrientationEnum",
                     "description": "Lists the strand orientiation for a stranded RNA library preparation."
+                },
+                "target_gene": {
+                    "$ref": "#/$defs/TargetGeneEnum",
+                    "description": "Targeted gene or locus name for marker gene studies"
+                },
+                "target_subfragment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -9644,11 +9343,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -9898,6 +9597,13 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$",
                     "type": "string"
+                },
+                "instrument_instance_specifier": {
+                    "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
@@ -10385,11 +10091,11 @@
             },
             "required": [
                 "metabolomics_analysis_category",
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -10622,11 +10328,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11022,11 +10728,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11231,11 +10937,11 @@
             },
             "required": [
                 "metaproteomics_analysis_category",
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11467,11 +11173,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11867,11 +11573,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12083,11 +11789,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12486,11 +12192,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12610,6 +12316,13 @@
                         "null"
                     ]
                 },
+                "instrument_instance_specifier": {
+                    "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
@@ -12683,21 +12396,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "target_gene": {
-                    "$ref": "#/$defs/TargetGeneEnum",
-                    "description": "Targeted gene or locus name for marker gene studies"
-                },
-                "target_subfragment": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13477,6 +13175,7 @@
         "ProcessingInstitutionEnum": {
             "description": "",
             "enum": [
+                "NMDC",
                 "UCSD",
                 "JGI",
                 "EMSL",
@@ -13610,25 +13309,6 @@
             ],
             "title": "QuantityValue",
             "type": "object"
-        },
-        "RNASampleFormatEnum": {
-            "description": "",
-            "enum": [
-                "10 mmol/L Tris-HCl",
-                "DNAStable",
-                "Ethanol",
-                "Low EDTA TE",
-                "MDA reaction buffer",
-                "PBS",
-                "Pellet",
-                "RNAStable",
-                "TE",
-                "Water",
-                "Gentegra-DNA",
-                "Gentegra-RNA"
-            ],
-            "title": "RNASampleFormatEnum",
-            "type": "string"
         },
         "ReadBasedTaxonomyAnalysis": {
             "additionalProperties": false,
@@ -13823,11 +13503,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -14069,11 +13749,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
