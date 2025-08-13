@@ -5971,10 +5971,12 @@
                 "alphaLP",
                 "ammonium_acetate",
                 "ammonium_bicarbonate",
+                "amitriptyline",
                 "Arg-C",
                 "Asp-N",
                 "chloroform",
                 "chymotrypsin",
+                "ethanol",
                 "formic_acid",
                 "glucose",
                 "Glu-C",
@@ -5982,9 +5984,12 @@
                 "isopropyl_alcohol",
                 "Lys-C",
                 "Lys-N",
+                "N-methyl-N-trimethylsilyltrifluoroacetamide",
                 "methanol",
+                "methoxyamine",
                 "medronic_acid",
                 "phosphoric_acid",
+                "trimethylchlorosilane",
                 "trypsin",
                 "water"
             ],
@@ -7522,10 +7527,8 @@
             "enum": [
                 "NERSC-Cori",
                 "NERSC-Perlmutter",
-                "EMSL",
                 "EMSL-RZR",
-                "JGI",
-                "LANL-B-div"
+                "EMSL-Tahoma"
             ],
             "title": "ExecutionResourceEnum",
             "type": "string"
@@ -9134,6 +9137,21 @@
                     "$ref": "#/$defs/StrandedOrientationEnum",
                     "description": "Lists the strand orientiation for a stranded RNA library preparation."
                 },
+                "target_gene": {
+                    "$ref": "#/$defs/TargetGeneEnum",
+                    "description": "Targeted gene or locus name for marker gene studies"
+                },
+                "target_subfragment": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/TextValue"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
+                },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
                     "enum": [
@@ -9613,11 +9631,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -9861,6 +9879,13 @@
                     "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
                     "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
+                },
+                "instrument_instance_specifier": {
+                    "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
                 },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
@@ -10343,11 +10368,11 @@
             },
             "required": [
                 "metabolomics_analysis_category",
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -10577,11 +10602,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -10974,11 +10999,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11180,11 +11205,11 @@
             },
             "required": [
                 "metaproteomics_analysis_category",
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11413,11 +11438,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -11810,11 +11835,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12023,11 +12048,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12419,11 +12444,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -12540,6 +12565,13 @@
                         "null"
                     ]
                 },
+                "instrument_instance_specifier": {
+                    "description": "A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
                 "instrument_used": {
                     "description": "What instrument was used during DataGeneration or MaterialProcessing.",
                     "items": {
@@ -12612,21 +12644,6 @@
                         "string",
                         "null"
                     ]
-                },
-                "target_gene": {
-                    "$ref": "#/$defs/TargetGeneEnum",
-                    "description": "Targeted gene or locus name for marker gene studies"
-                },
-                "target_subfragment": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/TextValue"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "description": "Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA"
                 },
                 "type": {
                     "description": "the class_uri of the class that has been instantiated",
@@ -13403,6 +13420,7 @@
         "ProcessingInstitutionEnum": {
             "description": "",
             "enum": [
+                "NMDC",
                 "UCSD",
                 "JGI",
                 "EMSL",
@@ -13746,11 +13764,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -13989,11 +14007,11 @@
                 }
             },
             "required": [
-                "execution_resource",
                 "git_url",
                 "started_at_time",
                 "was_informed_by",
                 "has_input",
+                "processing_institution",
                 "id",
                 "type"
             ],
@@ -14400,6 +14418,7 @@
                 "CN",
                 "Diol",
                 "HILIC",
+                "HLB",
                 "NH2",
                 "Phenyl",
                 "Polysiloxane",

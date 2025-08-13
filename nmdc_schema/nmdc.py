@@ -1,5 +1,5 @@
 # Auto generated from nmdc.yaml by pythongen.py version: 0.0.1
-# Generation date: 2025-08-08T13:54:52
+# Generation date: 2025-08-13T11:18:22
 # Schema: NMDC
 #
 # id: https://w3id.org/nmdc/nmdc
@@ -4477,6 +4477,8 @@ class LibraryPreparation(MaterialProcessing):
     pcr_cycles: Optional[int] = None
     pcr_primers: Optional[Union[dict, TextValue]] = None
     stranded_orientation: Optional[Union[str, "StrandedOrientationEnum"]] = None
+    target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
+    target_subfragment: Optional[Union[dict, TextValue]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -4519,6 +4521,12 @@ class LibraryPreparation(MaterialProcessing):
 
         if self.stranded_orientation is not None and not isinstance(self.stranded_orientation, StrandedOrientationEnum):
             self.stranded_orientation = StrandedOrientationEnum(self.stranded_orientation)
+
+        if self.target_gene is not None and not isinstance(self.target_gene, TargetGeneEnum):
+            self.target_gene = TargetGeneEnum(self.target_gene)
+
+        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
+            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5517,6 +5525,7 @@ class DataGeneration(DataEmitterProcess):
     instrument_used: Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]] = empty_list()
     mod_date: Optional[str] = None
     principal_investigator: Optional[Union[dict, PersonValue]] = None
+    instrument_instance_specifier: Optional[str] = None
     has_output: Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -5550,6 +5559,9 @@ class DataGeneration(DataEmitterProcess):
         if self.principal_investigator is not None and not isinstance(self.principal_investigator, PersonValue):
             self.principal_investigator = PersonValue(**as_dict(self.principal_investigator))
 
+        if self.instrument_instance_specifier is not None and not isinstance(self.instrument_instance_specifier, str):
+            self.instrument_instance_specifier = str(self.instrument_instance_specifier)
+
         if not isinstance(self.has_output, list):
             self.has_output = [self.has_output] if self.has_output is not None else []
         self.has_output = [v if isinstance(v, DataObjectId) else DataObjectId(v) for v in self.has_output]
@@ -5581,8 +5593,6 @@ class NucleotideSequencing(DataGeneration):
     insdc_bioproject_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     insdc_experiment_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     ncbi_project_name: Optional[str] = None
-    target_gene: Optional[Union[str, "TargetGeneEnum"]] = None
-    target_subfragment: Optional[Union[dict, TextValue]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -5609,12 +5619,6 @@ class NucleotideSequencing(DataGeneration):
 
         if self.ncbi_project_name is not None and not isinstance(self.ncbi_project_name, str):
             self.ncbi_project_name = str(self.ncbi_project_name)
-
-        if self.target_gene is not None and not isinstance(self.target_gene, TargetGeneEnum):
-            self.target_gene = TargetGeneEnum(self.target_gene)
-
-        if self.target_subfragment is not None and not isinstance(self.target_subfragment, TextValue):
-            self.target_subfragment = TextValue(**as_dict(self.target_subfragment))
 
         super().__post_init__(**kwargs)
         if self._is_empty(self.type):
@@ -5692,22 +5696,18 @@ class WorkflowExecution(DataEmitterProcess):
 
     id: Union[str, WorkflowExecutionId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     was_informed_by: Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]] = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     ended_at_time: Optional[str] = None
+    execution_resource: Optional[Union[str, "ExecutionResourceEnum"]] = None
     version: Optional[str] = None
     processing_institution_workflow_metadata: Optional[str] = None
     has_output: Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.execution_resource):
-            self.MissingRequiredField("execution_resource")
-        if not isinstance(self.execution_resource, ExecutionResourceEnum):
-            self.execution_resource = ExecutionResourceEnum(self.execution_resource)
-
         if self._is_empty(self.git_url):
             self.MissingRequiredField("git_url")
         if not isinstance(self.git_url, str):
@@ -5730,8 +5730,16 @@ class WorkflowExecution(DataEmitterProcess):
             self.has_input = [self.has_input] if self.has_input is not None else []
         self.has_input = [v if isinstance(v, DataObjectId) else DataObjectId(v) for v in self.has_input]
 
+        if self._is_empty(self.processing_institution):
+            self.MissingRequiredField("processing_institution")
+        if not isinstance(self.processing_institution, ProcessingInstitutionEnum):
+            self.processing_institution = ProcessingInstitutionEnum(self.processing_institution)
+
         if self.ended_at_time is not None and not isinstance(self.ended_at_time, str):
             self.ended_at_time = str(self.ended_at_time)
+
+        if self.execution_resource is not None and not isinstance(self.execution_resource, ExecutionResourceEnum):
+            self.execution_resource = ExecutionResourceEnum(self.execution_resource)
 
         if self.version is not None and not isinstance(self.version, str):
             self.version = str(self.version)
@@ -5763,10 +5771,10 @@ class MetagenomeAssembly(WorkflowExecution):
 
     id: Union[str, MetagenomeAssemblyId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -5908,10 +5916,10 @@ class MetatranscriptomeAssembly(WorkflowExecution):
 
     id: Union[str, MetatranscriptomeAssemblyId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     asm_score: Optional[float] = None
     scaffolds: Optional[float] = None
     scaf_logsum: Optional[float] = None
@@ -6056,10 +6064,10 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
 
     id: Union[str, MetatranscriptomeExpressionAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
 
@@ -6097,10 +6105,10 @@ class MagsAnalysis(WorkflowExecution):
 
     id: Union[str, MagsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     binned_contig_num: Optional[int] = None
     input_contig_num: Optional[int] = None
     low_depth_contig_num: Optional[int] = None
@@ -6165,10 +6173,10 @@ class ReadQcAnalysis(WorkflowExecution):
 
     id: Union[str, ReadQcAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     input_base_count: Optional[float] = None
     input_read_bases: Optional[float] = None
     input_read_count: Optional[float] = None
@@ -6225,10 +6233,10 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
 
     id: Union[str, ReadBasedTaxonomyAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -6258,10 +6266,10 @@ class MetabolomicsAnalysis(WorkflowExecution):
 
     id: Union[str, MetabolomicsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     metabolomics_analysis_category: Union[str, "MetabolomicsAnalysisCategoryEnum"] = None
     has_metabolite_identifications: Optional[Union[Union[dict, MetaboliteIdentification], list[Union[dict, MetaboliteIdentification]]]] = empty_list()
     uses_calibration: Optional[Union[str, CalibrationInformationId]] = None
@@ -6306,10 +6314,10 @@ class NomAnalysis(WorkflowExecution):
 
     id: Union[str, NomAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     uses_calibration: Optional[Union[str, CalibrationInformationId]] = None
     was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
 
@@ -6346,11 +6354,11 @@ class AnnotatingWorkflow(WorkflowExecution):
 
     id: Union[str, AnnotatingWorkflowId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     was_informed_by: Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]] = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
 
@@ -6371,9 +6379,9 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
 
     id: Union[str, MetatranscriptomeAnnotationId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     has_input: Optional[Union[Union[str, NamedThingId], list[Union[str, NamedThingId]]]] = empty_list()
@@ -6423,10 +6431,10 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
 
     id: Union[str, MetaproteomicsAnalysisId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     metaproteomics_analysis_category: Union[str, "MetaproteomicsAnalysisCategoryEnum"] = None
     was_informed_by: Optional[Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]]] = empty_list()
 
@@ -6465,10 +6473,10 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
 
     id: Union[str, MetagenomeAnnotationId] = None
     type: Union[str, URIorCURIE] = None
-    execution_resource: Union[str, "ExecutionResourceEnum"] = None
     git_url: str = None
     started_at_time: str = None
     has_input: Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]] = None
+    processing_institution: Union[str, "ProcessingInstitutionEnum"] = None
     img_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     gold_analysis_project_identifiers: Optional[Union[Union[str, ExternalIdentifier], list[Union[str, ExternalIdentifier]]]] = empty_list()
     was_informed_by: Optional[Union[Union[str, NucleotideSequencingId], list[Union[str, NucleotideSequencingId]]]] = empty_list()
@@ -6712,6 +6720,9 @@ class StationaryPhaseEnum(EnumDefinitionImpl):
     HILIC = PermissibleValue(
         text="HILIC",
         description="Hydrophilic Interaction Chromatography (HILIC) stationary phase.")
+    HLB = PermissibleValue(
+        text="HLB",
+        description="Hydrophilic-Lipophilic-Balance (HLB) stationary phase.")
     NH2 = PermissibleValue(
         text="NH2",
         description="Amino (NH2) bonded stationary phase.")
@@ -6978,12 +6989,18 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     ammonium_bicarbonate = PermissibleValue(
         text="ammonium_bicarbonate",
         meaning=CHEBI["184335"])
+    amitriptyline = PermissibleValue(
+        text="amitriptyline",
+        meaning=CHEBI["2666"])
     chloroform = PermissibleValue(
         text="chloroform",
         meaning=CHEBI["35255"])
     chymotrypsin = PermissibleValue(
         text="chymotrypsin",
         meaning=MS["1001306"])
+    ethanol = PermissibleValue(
+        text="ethanol",
+        meaning=CHEBI["16236"])
     formic_acid = PermissibleValue(
         text="formic_acid",
         meaning=CHEBI["30751"])
@@ -6999,12 +7016,18 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
     methanol = PermissibleValue(
         text="methanol",
         meaning=CHEBI["17790"])
+    methoxyamine = PermissibleValue(
+        text="methoxyamine",
+        meaning=CHEBI["192842"])
     medronic_acid = PermissibleValue(
         text="medronic_acid",
         meaning=CHEBI["43945"])
     phosphoric_acid = PermissibleValue(
         text="phosphoric_acid",
         meaning=CHEBI["26078"])
+    trimethylchlorosilane = PermissibleValue(
+        text="trimethylchlorosilane",
+        meaning=CHEBI["85069"])
     trypsin = PermissibleValue(
         text="trypsin",
         meaning=MS["1001251"])
@@ -7038,6 +7061,10 @@ class ChemicalEntityEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="Lys-N",
                 meaning=MS["1003093"]))
+        setattr(cls, "N-methyl-N-trimethylsilyltrifluoroacetamide",
+            PermissibleValue(
+                text="N-methyl-N-trimethylsilyltrifluoroacetamide",
+                meaning=CHEBI["85064"]))
 
 class UnitEnum(EnumDefinitionImpl):
 
@@ -7433,13 +7460,6 @@ class UnitEnum(EnumDefinitionImpl):
 
 class ExecutionResourceEnum(EnumDefinitionImpl):
 
-    EMSL = PermissibleValue(
-        text="EMSL",
-        description="Environmental Molecular Sciences Laboratory")
-    JGI = PermissibleValue(
-        text="JGI",
-        description="Joint Genome Institute")
-
     _defn = EnumDefinition(
         name="ExecutionResourceEnum",
     )
@@ -7458,10 +7478,10 @@ class ExecutionResourceEnum(EnumDefinitionImpl):
             PermissibleValue(
                 text="EMSL-RZR",
                 description="Environmental Molecular Sciences Laboratory RZR cluster"))
-        setattr(cls, "LANL-B-div",
+        setattr(cls, "EMSL-Tahoma",
             PermissibleValue(
-                text="LANL-B-div",
-                description="LANL Bioscience Division"))
+                text="EMSL-Tahoma",
+                description="Environmental Molecular Sciences Laboratory RZR Tahoma cluster"))
 
 class FileTypeEnum(EnumDefinitionImpl):
 
@@ -7973,6 +7993,9 @@ class ExtractionTargetEnum(EnumDefinitionImpl):
 
 class ProcessingInstitutionEnum(EnumDefinitionImpl):
 
+    NMDC = PermissibleValue(
+        text="NMDC",
+        meaning=ROR["05cwx3318"])
     UCSD = PermissibleValue(
         text="UCSD",
         meaning=ROR["0168r3w48"])
@@ -11267,6 +11290,9 @@ slots.has_output = Slot(uri=NMDC['basic_classes/has_output'], name="has_output",
 slots.instrument_used = Slot(uri=NMDC['basic_classes/instrument_used'], name="instrument_used", curie=NMDC.curie('basic_classes/instrument_used'),
                    model_uri=NMDC.instrument_used, domain=None, range=Optional[Union[Union[str, InstrumentId], list[Union[str, InstrumentId]]]])
 
+slots.instrument_instance_specifier = Slot(uri=NMDC['basic_classes/instrument_instance_specifier'], name="instrument_instance_specifier", curie=NMDC.curie('basic_classes/instrument_instance_specifier'),
+                   model_uri=NMDC.instrument_instance_specifier, domain=None, range=Optional[str])
+
 slots.in_manifest = Slot(uri=NMDC['basic_classes/in_manifest'], name="in_manifest", curie=NMDC.curie('basic_classes/in_manifest'),
                    model_uri=NMDC.in_manifest, domain=None, range=Optional[Union[Union[str, ManifestId], list[Union[str, ManifestId]]]])
 
@@ -13675,8 +13701,8 @@ slots.WorkflowExecution_has_input = Slot(uri=NMDC['basic_classes/has_input'], na
 slots.WorkflowExecution_has_output = Slot(uri=NMDC['basic_classes/has_output'], name="WorkflowExecution_has_output", curie=NMDC.curie('basic_classes/has_output'),
                    model_uri=NMDC.WorkflowExecution_has_output, domain=WorkflowExecution, range=Optional[Union[Union[str, DataObjectId], list[Union[str, DataObjectId]]]])
 
-slots.WorkflowExecution_execution_resource = Slot(uri=NMDC.execution_resource, name="WorkflowExecution_execution_resource", curie=NMDC.curie('execution_resource'),
-                   model_uri=NMDC.WorkflowExecution_execution_resource, domain=WorkflowExecution, range=Union[str, "ExecutionResourceEnum"])
+slots.WorkflowExecution_processing_institution = Slot(uri=NMDC.processing_institution, name="WorkflowExecution_processing_institution", curie=NMDC.curie('processing_institution'),
+                   model_uri=NMDC.WorkflowExecution_processing_institution, domain=WorkflowExecution, range=Union[str, "ProcessingInstitutionEnum"])
 
 slots.WorkflowExecution_was_informed_by = Slot(uri=NMDC['basic_classes/was_informed_by'], name="WorkflowExecution_was_informed_by", curie=NMDC.curie('basic_classes/was_informed_by'),
                    model_uri=NMDC.WorkflowExecution_was_informed_by, domain=WorkflowExecution, range=Union[Union[str, DataGenerationId], list[Union[str, DataGenerationId]]])
