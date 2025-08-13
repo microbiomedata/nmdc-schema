@@ -155,6 +155,8 @@ enums:
         meaning: CHEBI:62947
       ammonium_bicarbonate:
         meaning: CHEBI:184335
+      amitriptyline:
+        meaning: CHEBI:2666
       Arg-C:
         meaning: MS:1001303
         comments: >-
@@ -171,6 +173,8 @@ enums:
         comments: >-
           A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan, leucine, tyrosine, 
           and phenylalanine.
+      ethanol:
+        meaning: CHEBI:16236
       formic_acid:
         meaning: CHEBI:30751
         comments: >-
@@ -196,14 +200,20 @@ enums:
         meaning: MS:1003093
         comments: >-
           A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of lysine.
+      N-methyl-N-trimethylsilyltrifluoroacetamide:
+        meaning: CHEBI:85064
       methanol:
         meaning: CHEBI:17790
+      methoxyamine:
+        meaning: CHEBI:192842
       medronic_acid:
         meaning: CHEBI:43945
         comments: >-
           A 1,1-bis(phosphonic acid) consisting of methane substituted by two phosphonic acid groups, also known as methylenediphosphonic acid
       phosphoric_acid:
         meaning: CHEBI:26078
+      trimethylchlorosilane:
+        meaning: CHEBI:85069
       trypsin:
         meaning: MS:1001251
         comments: >-
