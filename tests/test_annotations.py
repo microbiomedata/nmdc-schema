@@ -1,4 +1,3 @@
-"""Test that all annotation keys are in the allowed whitelist."""
 import unittest
 
 from linkml_runtime import SchemaView
@@ -18,8 +17,8 @@ ALLOWED_ANNOTATION_KEYS = {
 }
 
 
-class TestAnnotationKeysWhitelist(unittest.TestCase):
-    """Test that all annotation keys are in the allowed whitelist."""
+class TestAnnotations(unittest.TestCase):
+    """Tests for schema annotations."""
 
     def test_annotation_keys_whitelist(self):
         """Check all annotations in schema against whitelist."""
