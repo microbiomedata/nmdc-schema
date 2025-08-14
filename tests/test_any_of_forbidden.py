@@ -6,8 +6,6 @@ import unittest
 class TestNoAnyOfInSchemaFiles(unittest.TestCase):
 
     def test_no_any_of_in_schema_files(self):
-        print("\n")
-
         schema_dir = os.path.join(os.path.dirname(__file__), '..', 'src', 'schema')
         files_with_any_of = []
 

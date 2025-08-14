@@ -10,10 +10,8 @@ from typing import Dict, List, Tuple, Any, Optional
 
 from linkml_runtime import SchemaView
 
+from tests import ROOT, SCHEMA_FILE
 
-ROOT = os.path.join(os.path.dirname(__file__), '..')
-SCHEMA_DIR = os.path.join(ROOT, "src", "schema")
-SCHEMA_FILE = os.path.join(SCHEMA_DIR, 'nmdc.yaml')
 DATA_DIR = os.path.join(ROOT, "src", "data", "valid")
 
 

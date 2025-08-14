@@ -1,13 +1,9 @@
 """Test that all annotation keys are in the allowed whitelist."""
-import os
 import unittest
 
 from linkml_runtime import SchemaView
-from linkml_runtime.utils.schemaview import OrderedBy
 
-ROOT = os.path.join(os.path.dirname(__file__), '..')
-SCHEMA_DIR = os.path.join(ROOT, "src", "schema")
-SCHEMA_FILE = os.path.join(SCHEMA_DIR, 'nmdc.yaml')
+from tests import SCHEMA_FILE
 
 # Allowed annotation keys based on the provided whitelist
 ALLOWED_ANNOTATION_KEYS = {
