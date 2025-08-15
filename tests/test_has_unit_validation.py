@@ -6,7 +6,7 @@ and checks unit appropriateness for their slots.
 import os
 import unittest
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 import yaml
 from linkml_runtime import SchemaView
@@ -19,7 +19,7 @@ DATA_DIR = os.path.join(ROOT, "src", "data", "valid")
 def iter_example_quantity_values():
     """Iterate over example QuantityValue objects in example YAML files."""
 
-    def _yield_quantity_value(data: Any, path: list[str] | None = None):
+    def _yield_quantity_value(data: Any, path: Optional[list[str]] = None):
         """Recursively yield QuantityValue objects from data."""
         if path is None:
             path = []
@@ -55,7 +55,7 @@ class HasUnitValidator:
         )
         self._slot_storage_units_cache = {}
 
-    def get_slot_storage_units(self, slot_name: str) -> list[str] | None:
+    def get_slot_storage_units(self, slot_name: str) -> Optional[list[str]]:
         """Get allowed storage_units for a slot, with caching."""
         if slot_name in self._slot_storage_units_cache:
             return self._slot_storage_units_cache[slot_name]
