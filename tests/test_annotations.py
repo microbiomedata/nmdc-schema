@@ -1,7 +1,7 @@
 import unittest
-from typing import Any, Iterator
+from collections.abc import Iterator
+from typing import Any
 
-from lark.utils import is_id_start
 from linkml_runtime import SchemaView
 from linkml_runtime.linkml_model import Element
 
