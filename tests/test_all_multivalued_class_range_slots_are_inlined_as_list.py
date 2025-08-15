@@ -1,8 +1,8 @@
 import unittest
 
 from linkml_runtime import SchemaView
-from linkml_runtime.utils.schemaview import OrderedBy
 from linkml_runtime.linkml_model.meta import ClassDefinition
+from linkml_runtime.utils.schemaview import OrderedBy
 
 from tests import SCHEMA_FILE
 

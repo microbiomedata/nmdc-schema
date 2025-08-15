@@ -20,10 +20,6 @@ tdbcontent/
 
 src/scripts/cachedir/
 
-# Node.js dependencies for UCUM validation
-src/scripts/node_modules/
-src/scripts/package-lock.json
-
 # PyCharm project config
 .idea/
 
