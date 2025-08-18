@@ -14,13 +14,30 @@ class Migrator(MigratorBase):
         Note: The `commit_changes` parameter is not used, but must be present in the
               method signature to comply with the base class. This migrator does
               not use transactions—all changes are committed immediately.
+
+        >>> from nmdc_schema.migrators.adapters.dictionary_adapter import DictionaryAdapter
+        >>> database = {
+        ...     "data_generation_set": [
+        ...         {"id": 1, "type": "nmdc:NucleotideSequencing"},
+        ...         {"id": 2, "type": "nmdc:NucleotideSequencing", "target_gene": None},
+        ...         {"id": 3, "type": "nmdc:NucleotideSequencing", "target_subfragment": None},
+        ...     ]
+        ... }
+        >>> adapter = DictionaryAdapter(database)
+        >>> m = Migrator(adapter=adapter)
+
+        # Test: The migrator raises an exception when it encounters a document having either field.
+        >>> m.upgrade()
+        Traceback (most recent call last):
+            ...
+        ValueError: NucleotideSequencing 2 has field(s): ['target_gene']
         """
 
-        self.adapter.process_each_document(
-            "data_generation_set", [self.confirm_specific_fields_are_absent]
+        self.adapter.do_for_each_document(
+            "data_generation_set", self.confirm_specific_fields_are_absent
         )
 
-    def confirm_specific_fields_are_absent(self, data_generation: dict) -> dict:
+    def confirm_specific_fields_are_absent(self, data_generation: dict) -> None:
         r"""
         Raises an exception if the document represents a `NucleotideSequencing` and either
         its `target_gene` field or its `target_subfragment` field is present.
@@ -34,10 +51,10 @@ class Migrator(MigratorBase):
         >>> m = Migrator()
 
         # Test: Document has neither field or is of irrelevant type.
-        >>> m.confirm_specific_fields_are_absent({"id": 1, "type": "nmdc:NucleotideSequencing"})
-        {'id': 1, 'type': 'nmdc:NucleotideSequencing'}
-        >>> m.confirm_specific_fields_are_absent({"id": 2, "type": "nmdc:Other", "target_gene": None})
-        {'id': 2, 'type': 'nmdc:Other', 'target_gene': None}
+        >>> m.confirm_specific_fields_are_absent({"id": 1, "type": "nmdc:NucleotideSequencing"}) is None
+        True
+        >>> m.confirm_specific_fields_are_absent({"id": 2, "type": "nmdc:Other", "target_gene": None}) is None
+        True
 
         # Test: Document has either field.
         >>> m.confirm_specific_fields_are_absent({"id": 3, "type": "nmdc:NucleotideSequencing", "target_gene": None})
@@ -75,5 +92,3 @@ class Migrator(MigratorBase):
                 raise ValueError(
                     f"NucleotideSequencing {nucleotide_sequencing_id} has field(s): {present_field_names}"
                 )
-
-        return data_generation
