@@ -1,5 +1,3 @@
-import logging
-
 import unittest
 
 from nmdc_schema.get_nmdc_view import ViewGetter
