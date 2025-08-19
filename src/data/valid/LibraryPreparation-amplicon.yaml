@@ -1,0 +1,10 @@
+id: nmdc:libprp-11-abcdef
+target_gene: 16S_rRNA
+target_subfragment: 
+  has_raw_value: V9
+  type: nmdc:TextValue
+type: nmdc:LibraryPreparation
+has_input:
+  - nmdc:procsm-11-def123
+has_output:
+  - nmdc:procsm-11-def124

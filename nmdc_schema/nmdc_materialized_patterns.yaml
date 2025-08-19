@@ -893,6 +893,9 @@ enums:
       HILIC:
         text: HILIC
         description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
+      HLB:
+        text: HLB
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
       NH2:
         text: NH2
         description: Amino (NH2) bonded stationary phase.
@@ -1170,6 +1173,9 @@ enums:
       ammonium_bicarbonate:
         text: ammonium_bicarbonate
         meaning: CHEBI:184335
+      amitriptyline:
+        text: amitriptyline
+        meaning: CHEBI:2666
       Arg-C:
         text: Arg-C
         meaning: MS:1001303
@@ -1191,6 +1197,9 @@ enums:
         comments:
         - A serine protease that hydrolyzes peptide bonds at the C-terminus of tryptophan,
           leucine, tyrosine,  and phenylalanine.
+      ethanol:
+        text: ethanol
+        meaning: CHEBI:16236
       formic_acid:
         text: formic_acid
         meaning: CHEBI:30751
@@ -1226,9 +1235,15 @@ enums:
         comments:
         - A metalloendopeptidase that hydrolyzes peptide bonds at the C-terminus of
           lysine.
+      N-methyl-N-trimethylsilyltrifluoroacetamide:
+        text: N-methyl-N-trimethylsilyltrifluoroacetamide
+        meaning: CHEBI:85064
       methanol:
         text: methanol
         meaning: CHEBI:17790
+      methoxyamine:
+        text: methoxyamine
+        meaning: CHEBI:192842
       medronic_acid:
         text: medronic_acid
         meaning: CHEBI:43945
@@ -1238,6 +1253,9 @@ enums:
       phosphoric_acid:
         text: phosphoric_acid
         meaning: CHEBI:26078
+      trimethylchlorosilane:
+        text: trimethylchlorosilane
+        meaning: CHEBI:85069
       trypsin:
         text: trypsin
         meaning: MS:1001251
@@ -1955,22 +1973,16 @@ enums:
         aliases:
         - Perlmutter
         - Saul
-      EMSL:
-        text: EMSL
-        description: Environmental Molecular Sciences Laboratory
       EMSL-RZR:
         text: EMSL-RZR
         description: Environmental Molecular Sciences Laboratory RZR cluster
         aliases:
         - RZR
-      JGI:
-        text: JGI
-        description: Joint Genome Institute
-      LANL-B-div:
-        text: LANL-B-div
-        description: LANL Bioscience Division
+      EMSL-Tahoma:
+        text: EMSL-Tahoma
+        description: Environmental Molecular Sciences Laboratory RZR Tahoma cluster
         aliases:
-        - B-div
+        - Tahoma
   FileTypeEnum:
     name: FileTypeEnum
     from_schema: https://w3id.org/nmdc/nmdc
@@ -2711,6 +2723,10 @@ enums:
     - use ROR meanings like ror:0168r3w48 for UCSD
     from_schema: https://w3id.org/nmdc/nmdc
     permissible_values:
+      NMDC:
+        text: NMDC
+        meaning: ror:05cwx3318
+        title: National Microbiome Data Collaborative
       UCSD:
         text: UCSD
         meaning: ror:0168r3w48
@@ -18961,6 +18977,12 @@ slots:
     structured_pattern:
       syntax: '{id_nmdc_prefix}:inst-{id_shoulder}-{id_blade}$'
       interpolated: true
+  instrument_instance_specifier:
+    name: instrument_instance_specifier
+    description: A unique value that identifies an individual instrument instance,
+      such as a serial number or similar identifiers assigned by the manufacturer
+      or user.
+    from_schema: https://w3id.org/nmdc/nmdc
   in_manifest:
     name: in_manifest
     description: one or more combinations of other DataObjects that can be analyzed
@@ -20209,8 +20231,6 @@ classes:
     - insdc_bioproject_identifiers
     - insdc_experiment_identifiers
     - ncbi_project_name
-    - target_gene
-    - target_subfragment
     slot_usage:
       id:
         name: id
@@ -20617,6 +20637,8 @@ classes:
     - pcr_cycles
     - pcr_primers
     - stranded_orientation
+    - target_gene
+    - target_subfragment
     slot_usage:
       has_input:
         name: has_input
@@ -22960,6 +22982,7 @@ classes:
     - instrument_used
     - mod_date
     - principal_investigator
+    - instrument_instance_specifier
     slot_usage:
       has_input:
         name: has_input
@@ -23030,8 +23053,8 @@ classes:
         structured_pattern:
           syntax: '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'
           interpolated: true
-      execution_resource:
-        name: execution_resource
+      processing_institution:
+        name: processing_institution
         required: true
       was_informed_by:
         name: was_informed_by

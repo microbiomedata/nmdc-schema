@@ -165,8 +165,6 @@ classes:
       - insdc_bioproject_identifiers
       - insdc_experiment_identifiers
       - ncbi_project_name
-      - target_gene
-      - target_subfragment
     slot_usage:
       id:
         structured_pattern:
@@ -488,6 +486,8 @@ classes:
       - pcr_cycles
       - pcr_primers
       - stranded_orientation
+      - target_gene
+      - target_subfragment
     close_mappings:
       - OBI:0000711
     comments:
@@ -950,6 +950,8 @@ enums:
         description: A stationary phase with diol (1,2-diol) functional groups.
       HILIC:
         description: Hydrophilic Interaction Chromatography (HILIC) stationary phase.
+      HLB:
+        description: Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
       NH2:
         description: Amino (NH2) bonded stationary phase.
       Phenyl:

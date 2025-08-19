@@ -684,6 +684,8 @@ class StationaryPhaseEnum(str, Enum):
     Diol = "Diol"
     # Hydrophilic Interaction Chromatography (HILIC) stationary phase.
     HILIC = "HILIC"
+    # Hydrophilic-Lipophilic-Balance (HLB) stationary phase.
+    HLB = "HLB"
     # Amino (NH2) bonded stationary phase.
     NH2 = "NH2"
     # Phenyl bonded stationary phase.
@@ -812,10 +814,12 @@ class ChemicalEntityEnum(str, Enum):
     alphaLP = "alphaLP"
     ammonium_acetate = "ammonium_acetate"
     ammonium_bicarbonate = "ammonium_bicarbonate"
+    amitriptyline = "amitriptyline"
     Arg_C = "Arg-C"
     Asp_N = "Asp-N"
     chloroform = "chloroform"
     chymotrypsin = "chymotrypsin"
+    ethanol = "ethanol"
     formic_acid = "formic_acid"
     glucose = "glucose"
     Glu_C = "Glu-C"
@@ -823,9 +827,12 @@ class ChemicalEntityEnum(str, Enum):
     isopropyl_alcohol = "isopropyl_alcohol"
     Lys_C = "Lys-C"
     Lys_N = "Lys-N"
+    N_methyl_N_trimethylsilyltrifluoroacetamide = "N-methyl-N-trimethylsilyltrifluoroacetamide"
     methanol = "methanol"
+    methoxyamine = "methoxyamine"
     medronic_acid = "medronic_acid"
     phosphoric_acid = "phosphoric_acid"
+    trimethylchlorosilane = "trimethylchlorosilane"
     trypsin = "trypsin"
     water = "water"
 
@@ -1060,14 +1067,10 @@ class ExecutionResourceEnum(str, Enum):
     NERSC_Cori = "NERSC-Cori"
     # NERSC Perlmutter supercomputer
     NERSC_Perlmutter = "NERSC-Perlmutter"
-    # Environmental Molecular Sciences Laboratory
-    EMSL = "EMSL"
     # Environmental Molecular Sciences Laboratory RZR cluster
     EMSL_RZR = "EMSL-RZR"
-    # Joint Genome Institute
-    JGI = "JGI"
-    # LANL Bioscience Division
-    LANL_B_div = "LANL-B-div"
+    # Environmental Molecular Sciences Laboratory RZR Tahoma cluster
+    EMSL_Tahoma = "EMSL-Tahoma"
 
 
 class FileTypeEnum(str, Enum):
@@ -1323,6 +1326,7 @@ class ExtractionTargetEnum(str, Enum):
 
 
 class ProcessingInstitutionEnum(str, Enum):
+    National_Microbiome_Data_Collaborative = "NMDC"
     University_of_California_San_Diego = "UCSD"
     Joint_Genome_Institute = "JGI"
     Environmental_Molecular_Sciences_Laboratory = "EMSL"
@@ -13075,6 +13079,24 @@ class LibraryPreparation(MaterialProcessing):
          'slot_uri': 'MIXS:0000046',
          'string_serialization': 'FWD:{dna};REV:{dna}'} })
     stranded_orientation: Optional[StrandedOrientationEnum] = Field(default=None, description="""Lists the strand orientiation for a stranded RNA library preparation.""", json_schema_extra = { "linkml_meta": {'alias': 'stranded_orientation', 'domain_of': ['LibraryPreparation']} })
+    target_gene: Optional[TargetGeneEnum] = Field(default=None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'alias': 'target_gene',
+         'aliases': ['target gene'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'gene name'}},
+         'domain_of': ['LibraryPreparation'],
+         'examples': [{'value': '16S rRNA, 18S rRNA, nif, amoA, rpo'}],
+         'is_a': 'sequencing field',
+         'slot_uri': 'MIXS:0000044',
+         'string_serialization': '{text}'} })
+    target_subfragment: Optional[TextValue] = Field(default=None, title="target subfragment", description="""Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA""", json_schema_extra = { "linkml_meta": {'alias': 'target_subfragment',
+         'aliases': ['target subfragment'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'gene fragment name'}},
+         'domain_of': ['LibraryPreparation'],
+         'examples': [{'value': 'V6, V9, ITS'}],
+         'is_a': 'sequencing field',
+         'slot_uri': 'MIXS:0000045',
+         'string_serialization': '{text}'} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
@@ -16121,6 +16143,7 @@ class DataGeneration(DataEmitterProcess):
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
          'domain_of': ['Study', 'DataGeneration']} })
+    instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_instance_specifier', 'domain_of': ['DataGeneration']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -16311,24 +16334,6 @@ class NucleotideSequencing(DataGeneration):
          'is_a': 'external_database_identifiers',
          'mixins': ['insdc_identifiers']} })
     ncbi_project_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ncbi_project_name', 'domain_of': ['NucleotideSequencing']} })
-    target_gene: Optional[TargetGeneEnum] = Field(default=None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'alias': 'target_gene',
-         'aliases': ['target gene'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'gene name'}},
-         'domain_of': ['NucleotideSequencing'],
-         'examples': [{'value': '16S rRNA, 18S rRNA, nif, amoA, rpo'}],
-         'is_a': 'sequencing field',
-         'slot_uri': 'MIXS:0000044',
-         'string_serialization': '{text}'} })
-    target_subfragment: Optional[TextValue] = Field(default=None, title="target subfragment", description="""Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA""", json_schema_extra = { "linkml_meta": {'alias': 'target_subfragment',
-         'aliases': ['target subfragment'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'gene fragment name'}},
-         'domain_of': ['NucleotideSequencing'],
-         'examples': [{'value': 'V6, V9, ITS'}],
-         'is_a': 'sequencing field',
-         'slot_uri': 'MIXS:0000045',
-         'string_serialization': '{text}'} })
     add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     analyte_category: NucleotideSequencingEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
@@ -16344,6 +16349,7 @@ class NucleotideSequencing(DataGeneration):
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
          'domain_of': ['Study', 'DataGeneration']} })
+    instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_instance_specifier', 'domain_of': ['DataGeneration']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -16617,6 +16623,7 @@ class MassSpectrometry(DataGeneration):
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
          'domain_of': ['Study', 'DataGeneration']} })
+    instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_instance_specifier', 'domain_of': ['DataGeneration']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -16838,9 +16845,7 @@ class WorkflowExecution(DataEmitterProcess):
                     'preconditions': {'slot_conditions': {'qc_status': {'name': 'qc_status',
                                                                         'value_presence': 'ABSENT'}}},
                     'title': 'qc_status_pass_null_has_output_required'}],
-         'slot_usage': {'execution_resource': {'name': 'execution_resource',
-                                               'required': True},
-                        'git_url': {'name': 'git_url', 'required': True},
+         'slot_usage': {'git_url': {'name': 'git_url', 'required': True},
                         'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                       'range': 'DataObject',
@@ -16852,6 +16857,8 @@ class WorkflowExecution(DataEmitterProcess):
                                        'range': 'DataObject',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
+                        'processing_institution': {'name': 'processing_institution',
+                                                   'required': True},
                         'started_at_time': {'name': 'started_at_time',
                                             'required': True},
                         'was_informed_by': {'name': 'was_informed_by',
@@ -16863,7 +16870,7 @@ class WorkflowExecution(DataEmitterProcess):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -16905,7 +16912,7 @@ class WorkflowExecution(DataEmitterProcess):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -17062,7 +17069,7 @@ class AnnotatingWorkflow(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -17104,7 +17111,7 @@ class AnnotatingWorkflow(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -17293,7 +17300,7 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -17337,7 +17344,7 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -17628,7 +17635,7 @@ class MetagenomeAssembly(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -17672,7 +17679,7 @@ class MetagenomeAssembly(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -17946,7 +17953,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -17990,7 +17997,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -18210,7 +18217,7 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -18254,7 +18261,7 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -18471,7 +18478,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -18515,7 +18522,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -18727,7 +18734,7 @@ class MagsAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -18771,7 +18778,7 @@ class MagsAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -18978,7 +18985,7 @@ class ReadQcAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19022,7 +19029,7 @@ class ReadQcAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19203,7 +19210,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19247,7 +19254,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19435,7 +19442,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19479,7 +19486,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19670,7 +19677,7 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19714,7 +19721,7 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19898,7 +19905,7 @@ class NomAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19942,7 +19949,7 @@ class NomAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
