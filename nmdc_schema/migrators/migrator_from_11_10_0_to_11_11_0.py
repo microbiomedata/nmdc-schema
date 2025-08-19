@@ -62,6 +62,9 @@ class Migrator(MigratorBase):
         ...
         Exception: Field `dna_absorb1` present in biosample 123.
         >>> m.check_for_fields({"id":123, "type": "nmdc:Biosample", "dna_absorb1": ""})
+        Traceback (most recent call last):
+        ...
+        Exception: Field `dna_absorb1` present in biosample 123.
         >>> m.check_for_fields({"id":123, "type": "nmdc:Biosample"})
         """
         id = biosample.get("id")
