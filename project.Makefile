@@ -6,6 +6,7 @@ JENA_DIR=~/apache-jena/bin/
 
 SCHEMA_NAME = $(shell bash ./utils/get-value.sh name)
 SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
+LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
 
@@ -16,15 +17,33 @@ LATEST_TAG_SCHEMA_FILE   := local/nmdc_schema_last_release.yaml
 
 # Get the tag that belongs to the latest (non-prerelease) GitHub release.
 #  - ‘!=’ executes the shell command only once, when the Makefile is read.
-LATEST_TAG != curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name'
+LATEST_TAG = $(shell curl -fsSL https://api.github.com/repos/$(REPO)/releases/latest | jq -r '.tag_name')
 
 # Build the raw.githubusercontent.com URL
 LATEST_TAG_SCHEMA_URL := https://raw.githubusercontent.com/$(REPO)/$(LATEST_TAG)/$(FILE)
 
-# The rule that fetches the file
-$(LATEST_TAG_SCHEMA_FILE):
-	@echo "Downloading $(LATEST_TAG_SCHEMA_URL)"
-	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@
+.PHONY: all
+all: $(LATEST_TAG_SCHEMA_FILE)
+
+# Rule to fetch the schema file if local/nmdc_schema_last_release.yaml does not exist OR if there is a new release 
+$(LATEST_TAG_SCHEMA_FILE): $(LATEST_RELEASE_TAG_FILE)
+	@echo "Checking for schema updates..."
+	@if [ ! -f $@ ]; then \
+		echo "Schema file does not exist. Creating it..."; \
+		curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@; \
+		echo "$(LATEST_TAG)" > $(LATEST_RELEASE_TAG_FILE); \
+	elif [ "$$(cat $(LATEST_RELEASE_TAG_FILE))" != "$(LATEST_TAG)" ]; then \
+		echo "New release detected ($(LATEST_TAG)). Downloading schema..."; \
+		curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@; \
+		echo "$(LATEST_TAG)" > $(LATEST_RELEASE_TAG_FILE); \
+	else \
+		echo "Schema is already up to date with release $(LATEST_TAG)."; \
+	fi
+
+# Rule to store the latest release tag locally
+$(LATEST_RELEASE_TAG_FILE):
+	@echo "Initializing latest release tag..."
+	@echo "$(LATEST_TAG)" > $@
 
 
 .PHONY: examples-clean mixs-yaml-clean rdf-clean shuttle-clean
@@ -158,7 +177,7 @@ make-rdf: rdf-clean \
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
-local/mongo_as_unvalidated_nmdc_database.yaml:
+local/mongo_as_unvalidated_nmdc_database.yaml: $(LATEST_TAG_SCHEMA_FILE)
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
@@ -209,7 +228,8 @@ local/mongo_as_nmdc_database_rdf_safe.yaml: $(LATEST_TAG_SCHEMA_FILE) local/mong
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
 		--schema-path $(word 1,$^) \
-		--output-path $@
+		--output-path $@ #\
+		#--migrator-name migrator_name (no.py)
 
 .PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
