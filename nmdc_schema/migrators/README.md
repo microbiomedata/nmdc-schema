@@ -356,10 +356,11 @@ db.runCommand("listCollections").cursor.firstBatch
 
 ### Summary of steps to test a migrator with the API:
 
-1. Create a local copy of the latest schema release.
-2. Run API request to create a local copy of collections of interest.
-3. Run the migrator against the test database.
-4. Run validation checks against the migrated database.
+1. Run make command to test docstring and generate new schema file. 
+2. Create a local copy of the latest schema release.
+3. Run API request to create a local copy of collections of interest.
+4. Run the migrator against the test database.
+5. Run validation checks against the migrated database.
 
 All local files are saved to `local/`
 
@@ -368,65 +369,42 @@ All local files are saved to `local/`
 >
 > The `project.Makefile` is a shared build and automation file for the entire project. Any changes made for local testing or experimentation should **never** be committed to version control. Committing edits may break CI/CD pipelines or disrupt other developers' workflows.
 
-1. **Create a local copy of the lastest schema release**
+1. **Test docstring and create a local copy of the lastest schema release**
 
-
-
-2. **Create a local copy of collections of interest**
-
-First, go in to project.Makefile and locate the command `local/mongo_as_unvalidated_nmdc_database.yaml`. Here you can edit the parameters to only download the collections of interest (i.e. collections that your migrator changes). For example if I only made changes to the biosample_set, I can edit the command as follows:
-
-NOTE: You do not *need* to remove any, and can download all collections if desired. This step is shown to show an option to speed up testing.
+Each migrator should contain docstring tests. This step is important to catch syntax errors AND to generate a new schema yaml file to use in the local database tests. To run the docstring test and generate a new schema file run
 
 ```bash
-local/mongo_as_unvalidated_nmdc_database.yaml: $(LATEST_TAG_SCHEMA_FILE)
-	date
-	time $(RUN) pure-export \
-		--max-docs-per-coll 200000 \
-		--output-yaml $@ \
-		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
-		--selected-collections biosample_set \
-        ~~--selected-collections calibration_set~~ \
-        ~~--selected-collections chemical_entity_set~~ \
-        ~~--selected-collections collecting_biosamples_from_site_set~~ \
-        ~~--selected-collections configuration_set~~ \
-        ~~--selected-collections data_generation_set~~ \
-        ~~--selected-collections data_object_set~~ \
-        ~~--selected-collections field_research_site_set~~ \
-        ~~--selected-collections functional_annotation_set~~ \
-        ~~--selected-collections genome_feature_set~~ \
-        ~~--selected-collections instrument_set~~ \
-        ~~--selected-collections manifest_set~~ \
-        ~~--selected-collections material_processing_set~~ \
-        ~~--selected-collections processed_sample_set~~ \
-        ~~--selected-collections storage_process_set~~ \
-        ~~--selected-collections study_set~~ \
-        ~~--selected-collections workflow_execution_set~~
-		dump-from-api \
-		--client-base-url "https://api.microbiomedata.org" \
-		--endpoint-prefix nmdcschema \
-		--page-size 200000
+% make squeaky-clean test all
 ```
 
-The command would look like this removing unnecessary collections:
+2. **Run the test-migrator command with appropriate params**
 
+The `test-migrator` command combines 3 separate commands into one. Using parameters, it removes the need to directly edit the makefile each time you test a new migrator. 
+The following parameters are available:
+
+- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes). The default is all collections.
+- MIGRATOR - the name of the migrator file. DO NOT INCLUDE `.py` EXT
+- ENV  - whether to gather data from the prod or dev runtime API environment. The default is prod. 
+
+For example, if I wanted to test `migrator_from_11_6_1_to_11_7_0` and only download the data_object_set in prod, I would run:
 
 ```bash
-local/mongo_as_unvalidated_nmdc_database.yaml: $(LATEST_TAG_SCHEMA_FILE)
-	date
-	time $(RUN) pure-export \
-		--max-docs-per-coll 200000 \
-		--output-yaml $@ \
-		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
-		--selected-collections biosample_set \
-		dump-from-api \
-		--client-base-url "https://api.microbiomedata.org" \
-		--endpoint-prefix nmdcschema \
-		--page-size 200000
+% make test-migrator MIGRATOR=migrator_from_11_6_1_to_11_7_0 SELECTED_COLLECTIONS=data_object_set
 ```
 
-Now run the `make` command to download a local copy:
+To run in dev:
 
 ```bash
-make local/mongo_as_unvalidated_nmdc_database.yaml
+% make test-migrator MIGRATOR=migrator_from_11_6_1_to_11_7_0 SELECTED_COLLECTIONS=data_object_set ENV=dev
 ```
+
+
+> **NOTE**
+>`% make rdf-clean` will delete locally generated files from the testing process. This can be helpful if a bug was identified and the make commadns need to be rerun after a change. 
+
+
+That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validation.log` and there will be an alert in the terminal is this occurs. 
+
+
+
+

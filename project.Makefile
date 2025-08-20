@@ -1,4 +1,5 @@
-## Add your own custom Makefile targets here
+
+### Rules and variables used in different places in the makefile ###
 
 RUN=poetry run
 
@@ -9,6 +10,9 @@ SOURCE_SCHEMA_PATH = $(shell bash ./utils/get-value.sh source_schema_path)
 LATEST_RELEASE_TAG_FILE := local/latest_release_tag.txt
 
 PLANTUML_JAR = local/plantuml-lgpl-1.2024.3.jar
+
+
+##### Rules related to grabbing the current schema release from Github #####
 
 REPO  := microbiomedata/nmdc-schema
 FILE  := nmdc_schema/nmdc_materialized_patterns.yaml
@@ -182,67 +186,92 @@ make-rdf: rdf-clean \
 #nmdc.data_object_set	81218633	179620	452	24301568	29847552	54149120	1
 #nmdc.biosample_set	10184792	8158	1248	2887680	1753088	4640768	1
 
-local/mongo_as_unvalidated_nmdc_database.yaml: $(LATEST_TAG_SCHEMA_FILE)
+###########################################################
+#
+# MIGRATOR TEST COMANDS VIA THE API. COMMANDS ARE IN ORDER
+#
+###########################################################
+
+# Define API URLs for different environments
+API_PROD_URL = https://api.microbiomedata.org
+API_DEV_URL = https://dev-api.microbiomedata.org
+
+# Dynamically set the API url based on the ENV variable
+API_URL = $(if $(filter dev,$(ENV)),$(API_DEV_URL),$(API_PROD_URL))
+
+#### Target 1: Run-selected-collections ####
+DEFAULT_COLLECTIONS = biosample_set calibration_set chemical_entity_set \
+                      collecting_biosamples_from_site_set configuration_set \
+                      data_generation_set data_object_set field_research_site_set \
+                      functional_annotation_set genome_feature_set instrument_set \
+                      manifest_set material_processing_set processed_sample_set \
+                      storage_process_set study_set workflow_execution_set
+local/mongo_via_api_as_unvalidated_nmdc_database.yaml: SELECTED_COLLECTIONS=
+local/mongo_via_api_as_unvalidated_nmdc_database.yaml:
 	date
 	time $(RUN) pure-export \
 		--max-docs-per-coll 200000 \
 		--output-yaml $@ \
-		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
-		--selected-collections biosample_set \
-		--selected-collections calibration_set \
-		--selected-collections chemical_entity_set \
-		--selected-collections collecting_biosamples_from_site_set \
-		--selected-collections configuration_set \
-		--selected-collections data_generation_set \
-		--selected-collections data_object_set \
-		--selected-collections field_research_site_set \
-		--selected-collections functional_annotation_set \
-		--selected-collections genome_feature_set \
-		--selected-collections instrument_set \
-		--selected-collections manifest_set \
-		--selected-collections material_processing_set \
-		--selected-collections processed_sample_set \
-		--selected-collections storage_process_set \
-		--selected-collections study_set \
-		--selected-collections workflow_execution_set \
-		dump-from-api \
-		--client-base-url "https://api.microbiomedata.org" \
+		--schema-source nmdc_schema/nmdc_materialized_patterns.yaml \
+		$(if $(SELECTED_COLLECTIONS),$(foreach coll,$(SELECTED_COLLECTIONS),--selected-collections $(coll)),\
+			$(foreach coll,$(DEFAULT_COLLECTIONS),--selected-collections $(coll))) \
+        dump-from-api \
+		--client-base-url "$(API_URL)" \
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
 
-## ALTERNATIVELY:
-#local/mongo_as_unvalidated_nmdc_database.yaml:
-#	date
-#	time $(RUN) pure-export \
-#		--max-docs-per-coll 200000 \
-#		--output-yaml $@ \
-#		--schema-source src/schema/nmdc.yaml \
-#		--selected-collections biosample_set \
-#		--selected-collections study_set \
-#		dump-from-database \
-#		--admin-db "admin" \
-#		--auth-mechanism "DEFAULT" \
-#		--env-file local/.env \
-#		--mongo-db-name nmdc \
-#		--mongo-host localhost \
-#		--mongo-port 27777 \
-#		--direct-connection
-
-local/mongo_as_nmdc_database_rdf_safe.yaml: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_unvalidated_nmdc_database.yaml
+#### Target 2: Run-migrator ####
+local/mongo_via_api_as_nmdc_database_after_migrator.yaml: MIGRATOR=
+local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_unvalidated_nmdc_database.yaml
 	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
 		--schema-path $(word 1,$^) \
-		--output-path $@ #\
-		#--migrator-name migrator_name (no.py)
+		--output-path $@ \
+		$(if $(MIGRATOR),--migrator-name $(MIGRATOR),)
 
-.PRECIOUS: local/mongo_as_nmdc_database_validation.log
 
-local/mongo_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
+#### Target 3: Validation ####
+.PRECIOUS: local/mongo_via_api_as_nmdc_database_validation.log
+local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_nmdc_database_after_migrator.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-validate --schema $^ > $@
 
-local/mongo_as_nmdc_database.ttl: $(LATEST_TAG_SCHEMA_FILE) local/mongo_as_nmdc_database_rdf_safe.yaml
+#### Combined Command ####
+.PHONY: test-migrator
+test-migrator: SELECTED_COLLECTIONS=  # Default empty, user can override
+test-migrator: MIGRATOR=             # Default empty, user can override
+test-migrator: ENV=prod              # Default to prod if not specified
+test-migrator: local/mongo_via_api_as_unvalidated_nmdc_database.yaml \
+		local/mongo_via_api_as_nmdc_database_after_migrator.yaml \
+		local/mongo_via_api_as_nmdc_database_validation.log
+	@echo "Combined workflow executed successfully."
+
+###########################################################
+#
+# END MIGRATOR TEST COMMANDS VIA THE API
+#
+###########################################################
+
+## ALTERNATIVELY TO TEST WITH THE MONGODB:
+local/mongo_as_unvalidated_nmdc_database.yaml:
+	date
+	time $(RUN) pure-export \
+		--max-docs-per-coll 200000 \
+		--output-yaml $@ \
+		--schema-source src/schema/nmdc.yaml \
+		--selected-collections biosample_set \
+		--selected-collections study_set \
+		dump-from-database \
+		--admin-db "admin" \
+		--auth-mechanism "DEFAULT" \
+		--env-file local/.env \
+		--mongo-db-name nmdc \
+		--mongo-host localhost \
+		--mongo-port 27777 \
+		--direct-connection
+
+local/mongo_as_nmdc_database.ttl: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_as_nmdc_database_rdf_safe.yaml
 	date # 681.99 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
 	time $(RUN) linkml-convert --output $@ --schema $^
 	mv $@ $@.tmp
