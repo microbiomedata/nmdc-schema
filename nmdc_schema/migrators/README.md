@@ -15,6 +15,9 @@ In this document, I'll refer to those Python classes as "migrators."
 - [Creating a migrator](#creating-a-migrator)
 - [Adding Migration Reporting](#adding-migration-reporting)
 - [Adding Transaction Support](#adding-transaction-support)
+- [Testing the migrator](#testing-the-migrator)
+    * [Summary of steps to test a migrator with a local copy of the MongoDB database](#summary-of-steps-to-test-a-migrator-with-a-local-copy-of-the-mongodb-database)
+    * [Running a migrator with Docker step-by-step](#running-a-migrator-with-docker-step-by-step)
 
 <a id="code-of-conduct"></a>
 
@@ -250,14 +253,16 @@ To add MongoDB transaction support with commit/rollback functionality to your mi
 
 ## Testing the migrator
 
-##### Summary of steps to test a migrator:
+There are two documented ways to test migrators against copies of the database. One way uses Docker to pull down a local copy of the MongoDB and another uses the runtime API to gather colelctions of interest via `project.Makfile`. Either way is a valid way to test migrators, but you should understand what each version is doing to ensure you are testing properly. 
+
+### Summary of steps to test a migrator with a local copy of the MongoDB database:
 
 1. Create a local copy of the MongoDB database with a schema that conforms to the release from which you are migrating.
 2. Check that the database has been loaded correctly.
 3. Run the migrator against the test database.
 4. Run validation checks against the migrated database.
 
-##### Running a migrator step-by-step:
+### Running a migrator with Docker step-by-step:
 
 1. **Set up Docker environment and MongoDB database**
 
@@ -347,4 +352,81 @@ db.runCommand("listCollections").cursor.firstBatch
 # Commit (Save Changes)
 # This commits the changes to the database
 % make run-migrator MIGRATOR=migrator_from_1_0_0_to_EXAMPLE ACTION=commit
+```
+
+### Summary of steps to test a migrator with the API:
+
+1. Create a local copy of the latest schema release.
+2. Run API request to create a local copy of collections of interest.
+3. Run the migrator against the test database.
+4. Run validation checks against the migrated database.
+
+All local files are saved to `local/`
+
+### Running a migrator with project.Makefile step-by-step:
+> **⚠️ WARNING: Do NOT commit any edits to `project.Makefile`!**
+>
+> The `project.Makefile` is a shared build and automation file for the entire project. Any changes made for local testing or experimentation should **never** be committed to version control. Committing edits may break CI/CD pipelines or disrupt other developers' workflows.
+
+1. **Create a local copy of the lastest schema release**
+
+
+
+2. **Create a local copy of collections of interest**
+
+First, go in to project.Makefile and locate the command `local/mongo_as_unvalidated_nmdc_database.yaml`. Here you can edit the parameters to only download the collections of interest (i.e. collections that your migrator changes). For example if I only made changes to the biosample_set, I can edit the command as follows:
+
+NOTE: You do not *need* to remove any, and can download all collections if desired. This step is shown to show an option to speed up testing.
+
+```bash
+local/mongo_as_unvalidated_nmdc_database.yaml: $(LATEST_TAG_SCHEMA_FILE)
+	date
+	time $(RUN) pure-export \
+		--max-docs-per-coll 200000 \
+		--output-yaml $@ \
+		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
+		--selected-collections biosample_set \
+        ~~--selected-collections calibration_set~~ \
+        ~~--selected-collections chemical_entity_set~~ \
+        ~~--selected-collections collecting_biosamples_from_site_set~~ \
+        ~~--selected-collections configuration_set~~ \
+        ~~--selected-collections data_generation_set~~ \
+        ~~--selected-collections data_object_set~~ \
+        ~~--selected-collections field_research_site_set~~ \
+        ~~--selected-collections functional_annotation_set~~ \
+        ~~--selected-collections genome_feature_set~~ \
+        ~~--selected-collections instrument_set~~ \
+        ~~--selected-collections manifest_set~~ \
+        ~~--selected-collections material_processing_set~~ \
+        ~~--selected-collections processed_sample_set~~ \
+        ~~--selected-collections storage_process_set~~ \
+        ~~--selected-collections study_set~~ \
+        ~~--selected-collections workflow_execution_set~~
+		dump-from-api \
+		--client-base-url "https://api.microbiomedata.org" \
+		--endpoint-prefix nmdcschema \
+		--page-size 200000
+```
+
+The command would look like this removing unnecessary collections:
+
+
+```bash
+local/mongo_as_unvalidated_nmdc_database.yaml: $(LATEST_TAG_SCHEMA_FILE)
+	date
+	time $(RUN) pure-export \
+		--max-docs-per-coll 200000 \
+		--output-yaml $@ \
+		--schema-source $(LATEST_TAG_SCHEMA_FILE) \
+		--selected-collections biosample_set \
+		dump-from-api \
+		--client-base-url "https://api.microbiomedata.org" \
+		--endpoint-prefix nmdcschema \
+		--page-size 200000
+```
+
+Now run the `make` command to download a local copy:
+
+```bash
+make local/mongo_as_unvalidated_nmdc_database.yaml
 ```
