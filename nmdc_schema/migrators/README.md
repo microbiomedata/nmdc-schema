@@ -9,6 +9,15 @@ databases between schemas.
 
 In this document, I'll refer to those Python classes as "migrators."
 
+## Table Of Contents
+
+- [Contents](#contents)
+- [Creating a migrator](#creating-a-migrator)
+- [Adding Migration Reporting](#adding-migration-reporting)
+- [Adding Transaction Support](#adding-transaction-support)
+
+<a id="code-of-conduct"></a>
+
 ## Contents
 
 This directory contains the following things:
