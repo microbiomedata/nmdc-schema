@@ -18,6 +18,9 @@ In this document, I'll refer to those Python classes as "migrators."
 - [Testing the migrator](#testing-the-migrator)
     * [Summary of steps to test a migrator with a local copy of the MongoDB database](#summary-of-steps-to-test-a-migrator-with-a-local-copy-of-the-mongodb-database)
     * [Running a migrator with Docker step-by-step](#running-a-migrator-with-docker-step-by-step)
+    * [Summary of steps to test a migrator with the API](#summary-of-steps-to-test-a-migrator-with-the-api)
+    * [Running a migrator with project.Makefile step-by-step](#running-a-migrator-with-projectmakefile-step-by-step)
+
 
 <a id="code-of-conduct"></a>
 
@@ -364,7 +367,7 @@ db.runCommand("listCollections").cursor.firstBatch
 
 All local files are saved to `local/`
 
-### Running a migrator with project.Makefile step-by-step:
+### Running a migrator with project.makefile step-by-step:
 > **⚠️ WARNING: Do NOT commit any edits to `project.Makefile`!**
 >
 > The `project.Makefile` is a shared build and automation file for the entire project. Any changes made for local testing or experimentation should **never** be committed to version control. Committing edits may break CI/CD pipelines or disrupt other developers' workflows.
