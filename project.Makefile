@@ -22,8 +22,7 @@ LATEST_TAG = $(shell curl -fsSL https://api.github.com/repos/$(REPO)/releases/la
 # Build the raw.githubusercontent.com URL
 LATEST_TAG_SCHEMA_URL := https://raw.githubusercontent.com/$(REPO)/$(LATEST_TAG)/$(FILE)
 
-.PHONY: all
-all: $(LATEST_TAG_SCHEMA_FILE)
+.PHONY: $(LATEST_TAG_SCHEMA_FILE)
 
 # Rule to fetch the schema file if local/nmdc_schema_last_release.yaml does not exist OR if there is a new release 
 $(LATEST_TAG_SCHEMA_FILE): $(LATEST_RELEASE_TAG_FILE)
@@ -37,13 +36,19 @@ $(LATEST_TAG_SCHEMA_FILE): $(LATEST_RELEASE_TAG_FILE)
 		curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $@; \
 		echo "$(LATEST_TAG)" > $(LATEST_RELEASE_TAG_FILE); \
 	else \
-		echo "Schema is already up to date with release $(LATEST_TAG)."; \
+		echo "Local copy of schema is already up to date with release $(LATEST_TAG)."; \
 	fi
 
 # Rule to store the latest release tag locally
 $(LATEST_RELEASE_TAG_FILE):
-	@echo "Initializing latest release tag..."
+	@if [ -f $(LATEST_TAG_SCHEMA_FILE) ]; then \
+	echo "ERROR: Tag file is missing. Recreating release tag and removing local schema file..."; \
+		rm -f $(LATEST_TAG_SCHEMA_FILE); \
+	fi
+	@echo "Creating release tag file..."
+	@curl -fsSL $(LATEST_TAG_SCHEMA_URL) -o $(LATEST_TAG_SCHEMA_FILE)
 	@echo "$(LATEST_TAG)" > $@
+	@echo "Release tag file created with tag: $(LATEST_TAG)"
 
 
 .PHONY: examples-clean mixs-yaml-clean rdf-clean shuttle-clean
