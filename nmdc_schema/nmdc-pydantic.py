@@ -570,63 +570,39 @@ class StrandedOrientationEnum(str, Enum):
     """
     This enumeration specifies information about stranded RNA library preparations.
     """
+    # Orientation that is complementary (non-coding) to a sequence of messenger RNA.
     antisense_orientation = "antisense orientation"
-    """
-    Orientation that is complementary (non-coding) to a sequence of messenger RNA.
-    """
+    # Orientation that corresponds to the coding sequence of messenger RNA.
     sense_orientation = "sense orientation"
-    """
-    Orientation that corresponds to the coding sequence of messenger RNA.
-    """
 
 
 class MassSpectrometryAcquisitionStrategyEnum(str, Enum):
+    # ['Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.']
     data_independent_acquisition = "data_independent_acquisition"
-    """
-    ['Data independent mass spectrometer acquisition method wherein the full mass range is fragmented. Examples of such an approach include MS^E, AIF, and bbCID.']
-    """
+    # Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.
     data_dependent_acquisition = "data_dependent_acquisition"
-    """
-    Mass spectrometer data acquisition method wherein MSn spectra are triggered based on the m/z of precursor ions detected in the same run.
-    """
+    # Mass spectrometer data acquisition method wherein only MS1 data are acquired.
     full_scan_only = "full_scan_only"
-    """
-    Mass spectrometer data acquisition method wherein only MS1 data are acquired.
-    """
 
 
 class ResolutionCategoryEnum(str, Enum):
+    # higher than unit resolution
     high = "high"
-    """
-    higher than unit resolution
-    """
+    # at unit resolution
     low = "low"
-    """
-    at unit resolution
-    """
 
 
 class MassAnalyzerEnum(str, Enum):
+    # Instrument that separates ions by m/z in a field-free region after acceleration to a fixed acceleration energy.
     time_of_flight = "time_of_flight"
-    """
-    Instrument that separates ions by m/z in a field-free region after acceleration to a fixed acceleration energy.
-    """
+    # A mass spectrometer that consists of four parallel rods whose centers form the corners of a square and whose opposing poles are connected. The voltage applied to the rods is a superposition of a static potential and a sinusoidal radio frequency potential. The motion of an ion in the x and y dimensions is described by the Matthieu equation whose solutions show that ions in a particular m/z range can be transmitted along the z axis.
     quadrupole = "quadrupole"
-    """
-    A mass spectrometer that consists of four parallel rods whose centers form the corners of a square and whose opposing poles are connected. The voltage applied to the rods is a superposition of a static potential and a sinusoidal radio frequency potential. The motion of an ion in the x and y dimensions is described by the Matthieu equation whose solutions show that ions in a particular m/z range can be transmitted along the z axis.
-    """
+    # An ion trapping device that consists of an outer barrel-like electrode and a coaxial inner spindle-like electrode that form an electrostatic field with quadro-logarithmic potential distribution. The frequency of harmonic oscillations of the orbitally trapped ions along the axis of the electrostatic field is independent of the ion velocity and is inversely proportional to the square root of m/z so that the trap can be used as a mass analyzer.
     Orbitrap = "Orbitrap"
-    """
-    An ion trapping device that consists of an outer barrel-like electrode and a coaxial inner spindle-like electrode that form an electrostatic field with quadro-logarithmic potential distribution. The frequency of harmonic oscillations of the orbitally trapped ions along the axis of the electrostatic field is independent of the ion velocity and is inversely proportional to the square root of m/z so that the trap can be used as a mass analyzer.
-    """
+    # A mass spectrometer based on the principle of ion cyclotron resonance in which an ion in a magnetic field moves in a circular orbit at a frequency characteristic of its m/z value. Ions are coherently excited to a larger radius orbit using a pulse of radio frequency energy and their image charge is detected on receiver plates as a time domain signal. Fourier transformation of the time domain signal results in a frequency domain signal which is converted to a mass spectrum based in the inverse relationship between frequency and m/z.
     ion_cyclotron_resonance = "ion_cyclotron_resonance"
-    """
-    A mass spectrometer based on the principle of ion cyclotron resonance in which an ion in a magnetic field moves in a circular orbit at a frequency characteristic of its m/z value. Ions are coherently excited to a larger radius orbit using a pulse of radio frequency energy and their image charge is detected on receiver plates as a time domain signal. Fourier transformation of the time domain signal results in a frequency domain signal which is converted to a mass spectrum based in the inverse relationship between frequency and m/z.
-    """
+    # A device for spatially confining ions using electric and magnetic fields alone or in combination.
     ion_trap = "ion_trap"
-    """
-    A device for spatially confining ions using electric and magnetic fields alone or in combination.
-    """
 
 
 class IonizationSourceEnum(str, Enum):
@@ -649,22 +625,14 @@ class PolarityModeEnum(str, Enum):
 
 
 class EluentIntroductionCategoryEnum(str, Enum):
+    # The processed sample is introduced into the mass spectrometer through a liquid chromatography process.
     liquid_chromatography = "liquid_chromatography"
-    """
-    The processed sample is introduced into the mass spectrometer through a liquid chromatography process.
-    """
+    # The processed sample is introduced into the mass spectrometer through a gas chromatography process.
     gas_chromatography = "gas_chromatography"
-    """
-    The processed sample is introduced into the mass spectrometer through a gas chromatography process.
-    """
+    # The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.
     direct_infusion_syringe = "direct_infusion_syringe"
-    """
-    The processed sample is introduced into the mass spectrometer through a direct infusion process using a syringe.
-    """
+    # The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
     direct_infusion_autosampler = "direct_infusion_autosampler"
-    """
-    The processed sample is introduced into the mass spectrometer through a direct infusion process using an autosampler.
-    """
 
 
 class LibraryTypeEnum(str, Enum):
@@ -692,102 +660,54 @@ class StationaryPhaseEnum(str, Enum):
     """
     The type of stationary phase used in a chromatography process.
     """
+    # Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase.
     BEH_HILIC = "BEH-HILIC"
-    """
-    Hydrophilic Interaction Chromatography (HILIC) employing BEH (Bridged Ethylene Hybrid) particles as the stationary phase.
-    """
+    # A stationary phase consisting of octadecyl chains (C18) bonded to silica particles.
     C18 = "C18"
-    """
-    A stationary phase consisting of octadecyl chains (C18) bonded to silica particles.
-    """
+    # A stationary phase consisting of octyl chains (C8) bonded to silica particles.
     C8 = "C8"
-    """
-    A stationary phase consisting of octyl chains (C8) bonded to silica particles.
-    """
+    # A stationary phase consisting of butyl chains (C4) bonded to silica particles.
     C4 = "C4"
-    """
-    A stationary phase consisting of butyl chains (C4) bonded to silica particles.
-    """
+    # A stationary phase consisting of ethyl chains (C2) bonded to silica particles.
     C2 = "C2"
-    """
-    A stationary phase consisting of ethyl chains (C2) bonded to silica particles.
-    """
+    # A stationary phase consisting of methyl chains (C1) bonded to silica particles.
     C1 = "C1"
-    """
-    A stationary phase consisting of methyl chains (C1) bonded to silica particles.
-    """
+    # A stationary phase consisting of triacontyl chains (C30) bonded to silica particles.
     C30 = "C30"
-    """
-    A stationary phase consisting of triacontyl chains (C30) bonded to silica particles.
-    """
+    # A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica particles.
     C60 = "C60"
-    """
-    A stationary phase consisting of hexatriacontyl chains (C60) bonded to silica particles.
-    """
+    # Carbon Nanotube stationary phase.
     CNT = "CNT"
-    """
-    Carbon Nanotube stationary phase.
-    """
+    # Cyano (CN) bonded stationary phase.
     CN = "CN"
-    """
-    Cyano (CN) bonded stationary phase.
-    """
+    # A stationary phase with diol (1,2-diol) functional groups.
     Diol = "Diol"
-    """
-    A stationary phase with diol (1,2-diol) functional groups.
-    """
+    # Hydrophilic Interaction Chromatography (HILIC) stationary phase.
     HILIC = "HILIC"
-    """
-    Hydrophilic Interaction Chromatography (HILIC) stationary phase.
-    """
+    # Amino (NH2) bonded stationary phase.
     NH2 = "NH2"
-    """
-    Amino (NH2) bonded stationary phase.
-    """
+    # Phenyl bonded stationary phase.
     Phenyl = "Phenyl"
-    """
-    Phenyl bonded stationary phase.
-    """
+    # A stationary phase made of polysiloxane, usually used in gas chromatography.
     Polysiloxane = "Polysiloxane"
-    """
-    A stationary phase made of polysiloxane, usually used in gas chromatography.
-    """
+    # Polystyrene-divinylbenzene stationary phase, often used in solid-phase extraction, including proprietary Priority PolLutant (PPL).
     PS_DVB = "PS-DVB"
-    """
-    Polystyrene-divinylbenzene stationary phase, often used in solid-phase extraction, including proprietary Priority PolLutant (PPL).
-    """
+    # Strong Anion Exchange (SAX) stationary phase.
     SAX = "SAX"
-    """
-    Strong Anion Exchange (SAX) stationary phase.
-    """
+    # Strong Cation Exchange (SCX) stationary phase.
     SCX = "SCX"
-    """
-    Strong Cation Exchange (SCX) stationary phase.
-    """
+    # A stationary phase made of silica, commonly used in chromatography.
     Silica = "Silica"
-    """
-    A stationary phase made of silica, commonly used in chromatography.
-    """
+    # Weak Cation Exchange (WCX) stationary phase.
     WCX = "WCX"
-    """
-    Weak Cation Exchange (WCX) stationary phase.
-    """
+    # Weak Anion Exchange (WAX) stationary phase.
     WAX = "WAX"
-    """
-    Weak Anion Exchange (WAX) stationary phase.
-    """
+    # Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary phase.
     ZIC_HILIC = "ZIC-HILIC"
-    """
-    Zwitterionic Hydrophilic Interaction Chromatography (ZIC-HILIC) stationary phase.
-    """
+    # Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC) stationary phase.
     ZIC_pHILIC = "ZIC-pHILIC"
-    """
-    Zwitterionic pH-Responsive Hydrophilic Interaction Chromatography (ZIC-pHILIC) stationary phase.
-    """
+    # Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stationary phase.
     ZIC_cHILIC = "ZIC-cHILIC"
-    """
-    Zwitterionic Charged Hydrophilic Interaction Chromatography (ZIC-cHILIC) stationary phase.
-    """
 
 
 class ProtocolCategoryEnum(str, Enum):
@@ -816,41 +736,25 @@ class ChromatographicCategoryEnum(str, Enum):
 class SamplePortionEnum(str, Enum):
     supernatant = "supernatant"
     pellet = "pellet"
+    # The portion of a mixture containing dissolved organic material
     Organic_layer = "organic_layer"
-    """
-    The portion of a mixture containing dissolved organic material
-    """
+    # The portion of a mixture containing molecules dissolved in water
     Aqueous_layer = "aqueous_layer"
-    """
-    The portion of a mixture containing molecules dissolved in water
-    """
+    # The layer of material between liquid layers of a separated mixture
     Interlayer = "interlayer"
-    """
-    The layer of material between liquid layers of a separated mixture
-    """
+    # The portion of a mixture containing molecules dissolved in chloroform
     Chloroform_layer = "chloroform_layer"
-    """
-    The portion of a mixture containing molecules dissolved in chloroform
-    """
+    # The portion of a mixture containing molecules dissolved in methanol
     Methanol_layer = "methanol_layer"
-    """
-    The portion of a mixture containing molecules dissolved in methanol
-    """
 
 
 class BinQualityEnum(str, Enum):
+    # Metagenome-assembled genome is high quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
     HQ = "HQ"
-    """
-    Metagenome-assembled genome is high quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
-    """
+    # Metagenome-assembled genome is medium quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
     MQ = "MQ"
-    """
-    Metagenome-assembled genome is medium quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
-    """
+    # Metagenome-assembled genome is low quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
     LQ = "LQ"
-    """
-    Metagenome-assembled genome is low quality based on MIMAG standards (https://doi.org/10.1038/nbt.3893)
-    """
 
 
 class ChemicalConversionCategoryEnum(str, Enum):
@@ -860,10 +764,8 @@ class ChemicalConversionCategoryEnum(str, Enum):
     reduction_oxidation = "reduction_oxidation"
     combustion = "combustion"
     decomposition = "decomposition"
+    # an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).
     protease_cleavage = "protease_cleavage"
-    """
-    an enzymatic cleavage which relies on an enzyme with protease activity to act on proteins and to produce polypeptides (protein fragments).
-    """
 
 
 class BiosampleCategoryEnum(str, Enum):
@@ -872,47 +774,29 @@ class BiosampleCategoryEnum(str, Enum):
     """
     National_Science_FoundationAPOSTROPHEs_Long_Term_Ecological_Research_Network = "LTER"
     SIP = "SIP"
+    # Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
     Department_of_Energy_Office_of_Science_Biological_and_Environmental_Research_Program_Laboratory_Science_Focus_Areas = "SFA"
-    """
-    Science Focus Area projects funded through the Department of Energy Office of Science Biological and Environmental Research Program
-    """
     Facilities_Integrating_Collaborations_for_User_Science = "FICUS"
     National_Science_FoundationAPOSTROPHEs_National_Ecological_Observatory_Network = "NEON"
+    # Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.
     Bioenergy_Research_Centers = "BRC"
-    """
-    Bioenergy Research Centers funded by the Biological Systems Science Division of the U.S. Department of Energy's Biological and Environmental Research Program.
-    """
 
 
 class SubstanceRoleEnum(str, Enum):
+    # Maintains the pH of the solution within a specific range to stabilize analytes or reactions.
     buffer = "buffer"
-    """
-    Maintains the pH of the solution within a specific range to stabilize analytes or reactions.
-    """
+    # Donates a proton or accepts an electron pair in a chemical reaction.
     acid = "acid"
-    """
-    Donates a proton or accepts an electron pair in a chemical reaction.
-    """
+    # Accepts a proton or donates an electron pair in a chemical reaction.
     base = "base"
-    """
-    Accepts a proton or donates an electron pair in a chemical reaction.
-    """
+    # Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
     ms_proteolytic_enzyme = "ms_proteolytic_enzyme"
-    """
-    Enzyme that catalyzes the hydrolysis of proteins and is used in mass spectrometry based proteomics
-    """
+    # Dissolves the sample or reagents to facilitate reactions or extraction.
     solvent = "solvent"
-    """
-    Dissolves the sample or reagents to facilitate reactions or extraction.
-    """
+    # Reduces surface tension and aids in the solubilization of substances.
     surfactant = "surfactant"
-    """
-    Reduces surface tension and aids in the solubilization of substances.
-    """
+    # Chemically modifies analytes to improve detection or separation.
     derivatizing_agent = "derivatizing_agent"
-    """
-    Chemically modifies analytes to improve detection or separation.
-    """
     solubilizing_agent = "solubilizing_agent"
 
 
@@ -947,868 +831,444 @@ class ChemicalEntityEnum(str, Enum):
 
 
 class UnitEnum(str, Enum):
+    # The Unified Code for Units of Measure (UCUM) representation of percent.
     PERCENT_SIGN = "%"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of percent.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of joule per kelvin.
     JSOLIDUSK = "J/K"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joule per kelvin.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
     Cel = "Cel"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of centimeter.
     cm = "cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of centimeter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of day.
     d = "d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of day.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of gram.
     g = "g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of hour.
     h = "h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of hour.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilopascal.
     kPa = "kPa"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilopascal.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of meter.
     m = "m"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of meter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of meters per second.
     mSOLIDUSs = "m/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of meters per second.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
     mgSOLIDUSkg = "mg/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per kilogram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
     mgSOLIDUSL = "mg/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of minute.
     min = "min"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of minute.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of milliliter.
     mL = "mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milliliter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millimeter.
     mm = "mm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimeter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
     mLSOLIDUSL = "mL/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milliliters per liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millimolar.
     mmolSOLIDUSL = "mmol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimolar.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
     mSSOLIDUScm = "mS/cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millisiemens per centimeter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of parts per million.
     LEFT_SQUARE_BRACKETppmRIGHT_SQUARE_BRACKET = "[ppm]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per million.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
     uSSOLIDUScm = "uS/cm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microsiemens per centimeter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
     WSOLIDUSm2 = "W/m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of watts per square meter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of year.
     a = "a"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of year.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
     ugSOLIDUSL = "ug/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
     ugSOLIDUSuL = "ug/uL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per microliter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of microliter.
     uL = "uL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microliter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of moles per liter.
     molSOLIDUSL = "mol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of moles per liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
     molSOLIDUSLSOLIDUSh = "mol/L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of moles per liter per hour.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
     ugSOLIDUSLSOLIDUSh = "ug/L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per liter per hour.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
     umolSOLIDUSL = "umol/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
     umolSOLIDUSkg = "umol/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per kilogram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.
     umolSOLIDUSm2SOLIDUSs = "umol/m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
     mgSOLIDUSm3 = "mg/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of square meters per second.
     m2SOLIDUSs = "m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of square meters per second.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
     kgSOLIDUSm3 = "kg/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilograms per cubic meter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter.
     gSOLIDUSm3 = "g/m3"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of grams per cubic meter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of square meters.
     m2 = "m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of square meters.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of atmosphere.
     atm = "atm"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of atmosphere.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millivolt.
     mV = "mV"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millivolt.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
     PSU = "PSU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of liter.
     L = "L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micrometer.
     um = "um"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrometer.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of year.
     y = "y"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of year.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
     number_1 = "1"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
     uLSOLIDUSkg = "uL/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microliters per kilogram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilogram.
     kg = "kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilogram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
     ppt = "ppt"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per thousand.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of gram per gram.
     gSOLIDUSg = "g/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gram per gram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of lux.
     lx = "lx"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of lux.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
     mgSOLIDUSm3SOLIDUSd = "mg/m3/d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per cubic meter per day.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of nanograms per hour.
     ngSOLIDUSh = "ng/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per hour.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury.
     mmLEFT_SQUARE_BRACKETHgRIGHT_SQUARE_BRACKET = "mm[Hg]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimeters of mercury.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of parts per billion.
     LEFT_SQUARE_BRACKETppbRIGHT_SQUARE_BRACKET = "[ppb]"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of parts per billion.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of grams per kilogram.
     gSOLIDUSkg = "g/kg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of grams per kilogram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of degree (angle).
     deg = "deg"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of degree (angle).
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of milligrams per gram.
     mgSOLIDUSg = "mg/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of milligrams per gram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micrograms per gram.
     ugSOLIDUSg = "ug/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per gram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of nanograms per gram.
     ngSOLIDUSg = "ng/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per gram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of picograms per gram.
     pgSOLIDUSg = "pg/g"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per gram.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of nanograms per liter.
     ngSOLIDUSL = "ng/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of picograms per liter.
     pgSOLIDUSL = "pg/L"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per liter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter.
     ugSOLIDUSmL = "ug/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micrograms per milliliter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter.
     ngSOLIDUSmL = "ng/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanograms per milliliter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter.
     pgSOLIDUSmL = "pg/mL"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picograms per milliliter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of mole.
     mol = "mol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of mole.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millimole.
     mmol = "mmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millimole.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micromole.
     umol = "umol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromole.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of nanomole.
     nmol = "nmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanomole.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of picomole.
     pmol = "pmol"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picomole.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of enzyme unit.
     U = "U"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of enzyme unit.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.
     mU = "mU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millienzyme unit.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.
     uU = "uU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microenzyme unit.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.
     nU = "nU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanoenzyme unit.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of becquerel.
     Bq = "Bq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of becquerel.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
     kBq = "kBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilobecquerel.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
     MBq = "MBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megabecquerel.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
     GBq = "GBq"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gigabecquerel.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of curie.
     Ci = "Ci"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of curie.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millicurie.
     mCi = "mCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millicurie.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of microcurie.
     uCi = "uCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microcurie.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of nanocurie.
     nCi = "nCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of nanocurie.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of picocurie.
     pCi = "pCi"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of picocurie.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of radian.
     rad = "rad"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of radian.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of steradian.
     sr = "sr"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of steradian.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of hertz.
     Hz = "Hz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of hertz.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilohertz.
     kHz = "kHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilohertz.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of megahertz.
     MHz = "MHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megahertz.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of gigahertz.
     GHz = "GHz"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of gigahertz.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of newton.
     N = "N"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of newton.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilonewton.
     kN = "kN"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilonewton.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of joule.
     J = "J"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joule.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilojoule.
     kJ = "kJ"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilojoule.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of megajoule.
     MJ = "MJ"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of megajoule.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of watt.
     W = "W"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of watt.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilowatt.
     kW = "kW"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilowatt.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of API units.
     API = "API"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of API units.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of millibar.
     mbar = "mbar"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of millibar.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).
     ratio = "ratio"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of joules per Celsius.
     JSOLIDUSCel = "J/Cel"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of joules per Celsius.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second.
     uESOLIDUSm2SOLIDUSs = "uE/m2/s"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter.
     kWSOLIDUSm2 = "kW/m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of people count.
     people = "people"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of people count.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of pet count.
     pets = "pets"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of pet count.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of plant count.
     plants = "plants"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of plant count.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of micromoles per second per square meter.
     umolSOLIDUSsSOLIDUSm2 = "umol/s/m2"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of micromoles per second per square meter.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of cubic meters per day.
     m3SOLIDUSd = "m3/d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of cubic meters per day.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of liters per hour.
     LSOLIDUSh = "L/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of liters per hour.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of pH units.
     pH = "pH"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of pH units.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
     kWSOLIDUSm2SOLIDUSd = "kW/m2/d"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.
     NTU = "NTU"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of cubic meters per minute.
     m3SOLIDUSmin = "m3/min"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of cubic meters per minute.
-    """
+    # The Unified Code for Units of Measure (UCUM) representation of kilometers per hour.
     kmSOLIDUSh = "km/h"
-    """
-    The Unified Code for Units of Measure (UCUM) representation of kilometers per hour.
-    """
 
 
 class ExecutionResourceEnum(str, Enum):
+    # NERSC Cori supercomputer
     NERSC_Cori = "NERSC-Cori"
-    """
-    NERSC Cori supercomputer
-    """
+    # NERSC Perlmutter supercomputer
     NERSC_Perlmutter = "NERSC-Perlmutter"
-    """
-    NERSC Perlmutter supercomputer
-    """
+    # Environmental Molecular Sciences Laboratory
+    EMSL = "EMSL"
+    # Environmental Molecular Sciences Laboratory RZR cluster
     EMSL_RZR = "EMSL-RZR"
-    """
-    Environmental Molecular Sciences Laboratory RZR cluster
-    """
-    EMSL_Tahoma = "EMSL-Tahoma"
-    """
-    Environmental Molecular Sciences Laboratory RZR Tahoma cluster
-    """
+    # Joint Genome Institute
+    JGI = "JGI"
+    # LANL Bioscience Division
+    LANL_B_div = "LANL-B-div"
 
 
 class FileTypeEnum(str, Enum):
+    # Tab separated file listing the viruses found by geNomad.
     Virus_Summary = "Virus Summary"
-    """
-    Tab separated file listing the viruses found by geNomad.
-    """
+    # Tab separated file listing the plasmids found by geNomad.
     Plasmid_Summary = "Plasmid Summary"
-    """
-    Tab separated file listing the plasmids found by geNomad.
-    """
+    # Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
     GeNomad_Aggregated_Classification = "GeNomad Aggregated Classification"
-    """
-    Tab separated file which combines the results from neural network-based classification and marker-based classification for virus and plasmid detection with geNomad.
-    """
+    # A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
     Reference_Calibration_File = "Reference Calibration File"
-    """
-    A file that contains data used to calibrate a natural organic matter or metabolomics analysis.
-    """
+    # Interleaved paired-end raw metagenome sequencing data
     Metagenome_Raw_Reads = "Metagenome Raw Reads"
-    """
-    Interleaved paired-end raw metagenome sequencing data
-    """
+    # Read 1 raw metagenome sequencing data, aka forward reads
     Metagenome_Raw_Read_1 = "Metagenome Raw Read 1"
-    """
-    Read 1 raw metagenome sequencing data, aka forward reads
-    """
+    # Read 2 raw metagenome sequencing data, aka reverse reads
     Metagenome_Raw_Read_2 = "Metagenome Raw Read 2"
-    """
-    Read 2 raw metagenome sequencing data, aka reverse reads
-    """
+    # Interleaved paired-end raw metatranscriptome sequencing data
     Metatranscriptome_Raw_Reads = "Metatranscriptome Raw Reads"
-    """
-    Interleaved paired-end raw metatranscriptome sequencing data
-    """
+    # Read 1 raw metatranscriptome sequencing data, aka forward reads
     Metatranscriptome_Raw_Read_1 = "Metatranscriptome Raw Read 1"
-    """
-    Read 1 raw metatranscriptome sequencing data, aka forward reads
-    """
+    # Read 2 raw metatranscriptome sequencing data, aka reverse reads
     Metatranscriptome_Raw_Read_2 = "Metatranscriptome Raw Read 2"
-    """
-    Read 2 raw metatranscriptome sequencing data, aka reverse reads
-    """
+    # FT-ICR MS based molecular formula assignment results table
     Direct_Infusion_FT_ICR_MS_Analysis_Results = "Direct Infusion FT-ICR MS Analysis Results"
-    """
-    FT-ICR MS based molecular formula assignment results table
-    """
+    # Quality control plots for FT-ICR MS raw data acquired by direct infusion
     Direct_Infusion_FT_ICR_MS_QC_Plots = "Direct Infusion FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired by direct infusion
-    """
+    # LC FT-ICR MS-based molecular formula assignment results tables
     LC_FT_ICR_MS_Analysis_Results = "LC FT-ICR MS Analysis Results"
-    """
-    LC FT-ICR MS-based molecular formula assignment results tables
-    """
+    # Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
     LC_FT_ICR_MS_QC_Plots = "LC FT-ICR MS QC Plots"
-    """
-    Quality control plots for FT-ICR MS raw data acquired with liquid chromatography
-    """
+    # GC-MS-based metabolite assignment results table
     GC_MS_Metabolomics_Results = "GC-MS Metabolomics Results"
-    """
-    GC-MS-based metabolite assignment results table
-    """
+    # LC-MS-based metabolite assignment results table
     LC_MS_Metabolomics_Results = "LC-MS Metabolomics Results"
-    """
-    LC-MS-based metabolite assignment results table
-    """
+    # Spectral library used for mass spectrometry based metabolite identification
     Mass_Spectrometry_Reference_Spectral_Library = "Mass Spectrometry Reference Spectral Library"
-    """
-    Spectral library used for mass spectrometry based metabolite identification
-    """
+    # Aggregate workflow statistics file
     Metaproteomics_Workflow_Statistics = "Metaproteomics Workflow Statistics"
-    """
-    Aggregate workflow statistics file
-    """
+    # Filtered protein report file
     Protein_Report = "Protein Report"
-    """
-    Filtered protein report file
-    """
+    # Filtered peptide report file
     Peptide_Report = "Peptide Report"
-    """
-    Filtered peptide report file
-    """
+    # MSGFjobs and MASIC output file
     Unfiltered_Metaproteomics_Results = "Unfiltered Metaproteomics Results"
-    """
-    MSGFjobs and MASIC output file
-    """
+    # Annotation read count and RPKM per feature JSON
     Read_Count_and_RPKM = "Read Count and RPKM"
-    """
-    Annotation read count and RPKM per feature JSON
-    """
+    # QC removed rRNA reads (R2) fastq
     QC_non_rRNA_R2 = "QC non-rRNA R2"
-    """
-    QC removed rRNA reads (R2) fastq
-    """
+    # QC removed rRNA reads (R1) fastq
     QC_non_rRNA_R1 = "QC non-rRNA R1"
-    """
-    QC removed rRNA reads (R1) fastq
-    """
+    # Metagenome bin contigs fasta
     Metagenome_Bins = "Metagenome Bins"
-    """
-    Metagenome bin contigs fasta
-    """
+    # Compressed file containing high quality and medium quality metagenome bins and associated files
     Metagenome_HQMQ_Bins_Compression_File = "Metagenome HQMQ Bins Compression File"
-    """
-    Compressed file containing high quality and medium quality metagenome bins and associated files
-    """
+    # Compressed file containing low quality metagenome bins and associated files
     Metagenome_LQ_Bins_Compression_File = "Metagenome LQ Bins Compression File"
-    """
-    Compressed file containing low quality metagenome bins and associated files
-    """
+    # File containing version information on the binning workflow
     Metagenome_Bins_Info_File = "Metagenome Bins Info File"
-    """
-    File containing version information on the binning workflow
-    """
+    # CheckM statistics report
     CheckM_Statistics = "CheckM Statistics"
-    """
-    CheckM statistics report
-    """
+    # The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
     Metagenome_Bins_Heatmap = "Metagenome Bins Heatmap"
-    """
-    The Heatmap presents the pdf file containing the KO analysis results for metagenome bins
-    """
+    # The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
     Metagenome_Bins_Barplot = "Metagenome Bins Barplot"
-    """
-    The Bar chart presents the pdf file containing the KO analysis results for metagenome bins
-    """
+    # The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
     Metagenome_Bins_Krona_Plot = "Metagenome Bins Krona Plot"
-    """
-    The Krona plot presents the HTML file containing the KO analysis results for metagenome bins
-    """
+    # File containing reads based analysis information
     Read_Based_Analysis_Info_File = "Read Based Analysis Info File"
-    """
-    File containing reads based analysis information
-    """
+    # GTDBTK bacterial summary
     GTDBTK_Bacterial_Summary = "GTDBTK Bacterial Summary"
-    """
-    GTDBTK bacterial summary
-    """
+    # GTDBTK archaeal summary
     GTDBTK_Archaeal_Summary = "GTDBTK Archaeal Summary"
-    """
-    GTDBTK archaeal summary
-    """
+    # GOTTCHA2 krona plot HTML file
     GOTTCHA2_Krona_Plot = "GOTTCHA2 Krona Plot"
-    """
-    GOTTCHA2 krona plot HTML file
-    """
+    # GOTTCHA2 classification report file
     GOTTCHA2_Classification_Report = "GOTTCHA2 Classification Report"
-    """
-    GOTTCHA2 classification report file
-    """
+    # GOTTCHA2 report file
     GOTTCHA2_Report_Full = "GOTTCHA2 Report Full"
-    """
-    GOTTCHA2 report file
-    """
+    # Kraken2 krona plot HTML file
     Kraken2_Krona_Plot = "Kraken2 Krona Plot"
-    """
-    Kraken2 krona plot HTML file
-    """
+    # Centrifuge krona plot HTML file
     Centrifuge_Krona_Plot = "Centrifuge Krona Plot"
-    """
-    Centrifuge krona plot HTML file
-    """
+    # Centrifuge output report file
     Centrifuge_output_report_file = "Centrifuge output report file"
-    """
-    Centrifuge output report file
-    """
+    # Kraken2 output report file
     Kraken2_Classification_Report = "Kraken2 Classification Report"
-    """
-    Kraken2 output report file
-    """
+    # Kraken2 output read classification file
     Kraken2_Taxonomic_Classification = "Kraken2 Taxonomic Classification"
-    """
-    Kraken2 output read classification file
-    """
+    # Centrifuge output report file
     Centrifuge_Classification_Report = "Centrifuge Classification Report"
-    """
-    Centrifuge output report file
-    """
+    # Centrifuge output read classification file
     Centrifuge_Taxonomic_Classification = "Centrifuge Taxonomic Classification"
-    """
-    Centrifuge output read classification file
-    """
+    # GFF3 format file with structural annotations
     Structural_Annotation_GFF = "Structural Annotation GFF"
-    """
-    GFF3 format file with structural annotations
-    """
+    # Structural annotations stats json
     Structural_Annotation_Stats_Json = "Structural Annotation Stats Json"
-    """
-    Structural annotations stats json
-    """
+    # GFF3 format file with functional annotations
     Functional_Annotation_GFF = "Functional Annotation GFF"
-    """
-    GFF3 format file with functional annotations
-    """
+    # File containing annotation info
     Annotation_Info_File = "Annotation Info File"
-    """
-    File containing annotation info
-    """
+    # FASTA amino acid file for annotated proteins
     Annotation_Amino_Acid_FASTA = "Annotation Amino Acid FASTA"
-    """
-    FASTA amino acid file for annotated proteins
-    """
+    # Tab delimited file for EC annotation
     Annotation_Enzyme_Commission = "Annotation Enzyme Commission"
-    """
-    Tab delimited file for EC annotation
-    """
+    # Tab delimited file for KO annotation
     Annotation_KEGG_Orthology = "Annotation KEGG Orthology"
-    """
-    Tab delimited file for KO annotation
-    """
+    # File containing assembly info
     Assembly_Info_File = "Assembly Info File"
-    """
-    File containing assembly info
-    """
+    # Sorted bam file of reads mapping back to the final assembly
     Assembly_Coverage_BAM = "Assembly Coverage BAM"
-    """
-    Sorted bam file of reads mapping back to the final assembly
-    """
+    # An AGP format file that describes the assembly
     Assembly_AGP = "Assembly AGP"
-    """
-    An AGP format file that describes the assembly
-    """
+    # Final assembly scaffolds fasta
     Assembly_Scaffolds = "Assembly Scaffolds"
-    """
-    Final assembly scaffolds fasta
-    """
+    # Final assembly contigs fasta
     Assembly_Contigs = "Assembly Contigs"
-    """
-    Final assembly contigs fasta
-    """
+    # Assembled contigs coverage information
     Assembly_Coverage_Stats = "Assembly Coverage Stats"
-    """
-    Assembled contigs coverage information
-    """
+    # Contig mappings between contigs and scaffolds
     Contig_Mapping_File = "Contig Mapping File"
-    """
-    Contig mappings between contigs and scaffolds
-    """
+    # Error corrected reads fastq
     Error_Corrected_Reads = "Error Corrected Reads"
-    """
-    Error corrected reads fastq
-    """
+    # Reads QC result fastq (clean data)
     Filtered_Sequencing_Reads = "Filtered Sequencing Reads"
-    """
-    Reads QC result fastq (clean data)
-    """
+    # File containing read filtering information
     Read_Filtering_Info_File = "Read Filtering Info File"
-    """
-    File containing read filtering information
-    """
+    # Extended report including methods and results for read filtering
     QC_Statistics_Extended = "QC Statistics Extended"
-    """
-    Extended report including methods and results for read filtering
-    """
+    # Reads QC summary statistics
     QC_Statistics = "QC Statistics"
-    """
-    Reads QC summary statistics
-    """
+    # GFF3 format file with TIGRfam
     TIGRFam_Annotation_GFF = "TIGRFam Annotation GFF"
-    """
-    GFF3 format file with TIGRfam
-    """
+    # GFF3 format file with CRT
     CRT_Annotation_GFF = "CRT Annotation GFF"
-    """
-    GFF3 format file with CRT
-    """
+    # GFF3 format file with Genemark
     Genemark_Annotation_GFF = "Genemark Annotation GFF"
-    """
-    GFF3 format file with Genemark
-    """
+    # GFF3 format file with Prodigal
     Prodigal_Annotation_GFF = "Prodigal Annotation GFF"
-    """
-    GFF3 format file with Prodigal
-    """
+    # GFF3 format file with TRNA
     TRNA_Annotation_GFF = "TRNA Annotation GFF"
-    """
-    GFF3 format file with TRNA
-    """
+    # GFF3 format file with Misc
     Misc_Annotation_GFF = "Misc Annotation GFF"
-    """
-    GFF3 format file with Misc
-    """
+    # GFF3 format file with RFAM
     RFAM_Annotation_GFF = "RFAM Annotation GFF"
-    """
-    GFF3 format file with RFAM
-    """
+    # GFF3 format file with TMRNA
     TMRNA_Annotation_GFF = "TMRNA Annotation GFF"
-    """
-    GFF3 format file with TMRNA
-    """
+    # Crispr Terms
     Crispr_Terms = "Crispr Terms"
-    """
-    Crispr Terms
-    """
+    # Product names file
     Product_Names = "Product Names"
-    """
-    Product names file
-    """
+    # Gene Phylogeny tsv
     Gene_Phylogeny_tsv = "Gene Phylogeny tsv"
-    """
-    Gene Phylogeny tsv
-    """
+    # phylogeny at the scaffold level
     Scaffold_Lineage_tsv = "Scaffold Lineage tsv"
-    """
-    phylogeny at the scaffold level
-    """
+    # GFF3 format file with COGs
     Clusters_of_Orthologous_Groups_LEFT_PARENTHESISCOGRIGHT_PARENTHESIS_Annotation_GFF = "Clusters of Orthologous Groups (COG) Annotation GFF"
-    """
-    GFF3 format file with COGs
-    """
+    # GFF3 format file with KO_EC
     KO_EC_Annotation_GFF = "KO_EC Annotation GFF"
-    """
-    GFF3 format file with KO_EC
-    """
+    # GFF3 format file with CATH FunFams
     CATH_FunFams_LEFT_PARENTHESISFunctional_FamiliesRIGHT_PARENTHESIS_Annotation_GFF = "CATH FunFams (Functional Families) Annotation GFF"
-    """
-    GFF3 format file with CATH FunFams
-    """
+    # GFF3 format file with SUPERFam
     SUPERFam_Annotation_GFF = "SUPERFam Annotation GFF"
-    """
-    GFF3 format file with SUPERFam
-    """
+    # GFF3 format file with SMART
     SMART_Annotation_GFF = "SMART Annotation GFF"
-    """
-    GFF3 format file with SMART
-    """
+    # GFF3 format file with Pfam
     Pfam_Annotation_GFF = "Pfam Annotation GFF"
-    """
-    GFF3 format file with Pfam
-    """
+    # Annotation statistics report
     Annotation_Statistics = "Annotation Statistics"
-    """
-    Annotation statistics report
-    """
+    # Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
     Direct_Infusion_FT_ICR_MS_Raw_Data = "Direct Infusion FT ICR-MS Raw Data"
-    """
-    Direct infusion Fourier transform ion cyclotron resonance mass spectrometry raw data
-    """
+    # Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
     LC_FT_ICR_MS_Raw_Data = "LC FT-ICR MS Raw Data"
-    """
-    Fourier transform ion cyclotron resonance mass spectrometry raw data acquired with liquid chromatography
-    """
+    # Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
     LC_DDA_MSSOLIDUSMS_Raw_Data = "LC-DDA-MS/MS Raw Data"
-    """
-    Liquid chromatographically separated MS1 and Data-Dependent MS2 binary instrument file
-    """
+    # Gas chromatography-mass spectrometry raw data, full scan mode.
     GC_MS_Raw_Data = "GC-MS Raw Data"
-    """
-    Gas chromatography-mass spectrometry raw data, full scan mode.
-    """
+    # A configuration toml file used by various programs to store settings that are specific to their respective software.
     Configuration_toml = "Configuration toml"
-    """
-    A configuration toml file used by various programs to store settings that are specific to their respective software.
-    """
+    # LC-MS-based lipidomics analysis results table
     LC_MS_Lipidomics_Results = "LC-MS Lipidomics Results"
-    """
-    LC-MS-based lipidomics analysis results table
-    """
+    # Processed data for the LC-MS-based lipidomics analysis in hdf5 format
     LC_MS_Lipidomics_Processed_Data = "LC-MS Lipidomics Processed Data"
-    """
-    Processed data for the LC-MS-based lipidomics analysis in hdf5 format
-    """
+    # Processed data for the LC-MS-based metabolomics analysis in hdf5 format
     LC_MS_Metabolomics_Processed_Data = "LC-MS Metabolomics Processed Data"
-    """
-    Processed data for the LC-MS-based metabolomics analysis in hdf5 format
-    """
+    # FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
     Contaminants_Amino_Acid_FASTA = "Contaminants Amino Acid FASTA"
-    """
-    FASTA amino acid file for contaminant proteins commonly observed in proteomics data.
-    """
+    # A configuration file used by a single computational software tool that stores settings that are specific to that tool.
     Analysis_Tool_Parameter_File = "Analysis Tool Parameter File"
-    """
-    A configuration file used by a single computational software tool that stores settings that are specific to that tool.
-    """
+    # A human readable record of analysis steps applied during an instance of a workflow operation.
     Workflow_Operation_Summary = "Workflow Operation Summary"
-    """
-    A human readable record of analysis steps applied during an instance of a workflow operation.
-    """
+    # Metatranscriptome expression values and read counts for gene features predicted on contigs
     Metatranscriptome_Expression = "Metatranscriptome Expression"
-    """
-    Metatranscriptome expression values and read counts for gene features predicted on contigs
-    """
+    # Metatranscriptome expression values and read counts for intergenic regions.
     Metatranscriptome_Expression_Intergenic = "Metatranscriptome Expression Intergenic"
-    """
-    Metatranscriptome expression values and read counts for intergenic regions.
-    """
+    # File containing version information on the expression workflow
     Metatranscriptome_Expression_Info_File = "Metatranscriptome Expression Info File"
-    """
-    File containing version information on the expression workflow
-    """
+    # File containing ribosomal reads from the read qc filtering step.
     rRNA_Filtered_Sequencing_Reads = "rRNA Filtered Sequencing Reads"
-    """
-    File containing ribosomal reads from the read qc filtering step.
-    """
+    # An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
     BAI_File = "BAI File"
-    """
-    An index file found in the same directory as the binary alignment map (BAM) file, a compressed binary version of a sequence alignment/map (SAM) file.
-    """
 
 
 class DoiProviderEnum(str, Enum):
@@ -1825,22 +1285,14 @@ class DoiProviderEnum(str, Enum):
 
 
 class DoiCategoryEnum(str, Enum):
+    # A type of DOI that resolves to a funding authority.
     award_doi = "award_doi"
-    """
-    A type of DOI that resolves to a funding authority.
-    """
+    # A type of DOI that resolves to generated data.
     dataset_doi = "dataset_doi"
-    """
-    A type of DOI that resolves to generated data.
-    """
+    # A type of DOI that resolves to a publication.
     publication_doi = "publication_doi"
-    """
-    A type of DOI that resolves to a publication.
-    """
+    # A type of DOI that resolves to a data management plan.
     data_management_plan_doi = "data_management_plan_doi"
-    """
-    A type of DOI that resolves to a data management plan.
-    """
 
 
 class StatusEnum(str, Enum):
@@ -1871,7 +1323,6 @@ class ExtractionTargetEnum(str, Enum):
 
 
 class ProcessingInstitutionEnum(str, Enum):
-    National_Microbiome_Data_Collaborative = "NMDC"
     University_of_California_San_Diego = "UCSD"
     Joint_Genome_Institute = "JGI"
     Environmental_Molecular_Sciences_Laboratory = "EMSL"
@@ -1882,18 +1333,12 @@ class ProcessingInstitutionEnum(str, Enum):
 
 
 class DataCategoryEnum(str, Enum):
+    # Data generated by a DataGeneration PlannedProcess
     instrument_data = "instrument_data"
-    """
-    Data generated by a DataGeneration PlannedProcess
-    """
+    # Data generated by a WorkflowExecution PlannedProcess
     processed_data = "processed_data"
-    """
-    Data generated by a WorkflowExecution PlannedProcess
-    """
+    # Data used as input into a workflow providing workflow specification.
     workflow_parameter_data = "workflow_parameter_data"
-    """
-    Data used as input into a workflow providing workflow specification.
-    """
 
 
 class ArchStrucEnum(str, Enum):
@@ -2967,118 +2412,68 @@ class WindowVertPosEnum(str, Enum):
 
 
 class TargetGeneEnum(str, Enum):
+    # the small subunit of the bacterial/archean ribosome
     number_16S_rRNA = "16S_rRNA"
-    """
-    the small subunit of the bacterial/archean ribosome
-    """
+    # the large subunit  of the bacterial/archean ribosome
     number_23S_rRNA = "23S_rRNA"
-    """
-    the large subunit  of the bacterial/archean ribosome
-    """
+    # the small subunit of the eukaryotic ribosome
     number_18S_rRNA = "18S_rRNA"
-    """
-    the small subunit of the eukaryotic ribosome
-    """
+    # the large subunit of the eukaryotic ribosome
     number_28S_rRNA = "28S_rRNA"
-    """
-    the large subunit of the eukaryotic ribosome
-    """
 
 
 class CreditEnum(str, Enum):
+    # Conceptualization
     Conceptualization = "Conceptualization"
-    """
-    Conceptualization
-    """
+    # Data curation
     Data_curation = "Data curation"
-    """
-    Data curation
-    """
+    # Formal Analysis
     Formal_Analysis = "Formal Analysis"
-    """
-    Formal Analysis
-    """
+    # Funding acquisition
     Funding_acquisition = "Funding acquisition"
-    """
-    Funding acquisition
-    """
+    # Investigation
     Investigation = "Investigation"
-    """
-    Investigation
-    """
+    # Methodology
     Methodology = "Methodology"
-    """
-    Methodology
-    """
+    # Project administration
     Project_administration = "Project administration"
-    """
-    Project administration
-    """
+    # Resources
     Resources = "Resources"
-    """
-    Resources
-    """
+    # Software
     Software = "Software"
-    """
-    Software
-    """
+    # Supervision
     Supervision = "Supervision"
-    """
-    Supervision
-    """
+    # Validation
     Validation = "Validation"
-    """
-    Validation
-    """
+    # Visualization
     Visualization = "Visualization"
-    """
-    Visualization
-    """
+    # Writing – original draft
     Writing_original_draft = "Writing original draft"
-    """
-    Writing – original draft
-    """
+    # Writing – review & editing
     Writing_review_and_editing = "Writing review and editing"
-    """
-    Writing – review & editing
-    """
+    # principal investigator role
     Principal_Investigator = "Principal Investigator"
-    """
-    principal investigator role
-    """
+    # the person(s) who enter study and biosample metadata into the NMDC submission portal
     Submitter = "Submitter"
-    """
-    the person(s) who enter study and biosample metadata into the NMDC submission portal
-    """
 
 
 class StudyCategoryEnum(str, Enum):
+    # A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
     research_study = "research_study"
-    """
-    A detailed examination, analysis, or critical inspection of a hypothesis-driven experiment.
-    """
+    # A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
     consortium = "consortium"
-    """
-    A group formed to undertake a venture that is beyond the capabilities of the individual members. Each member of the consortium brings a high level of expertise in a specific area to ensure the successful completion of the project.
-    """
 
 
 class ManifestCategoryEnum(str, Enum):
     """
     A list of contexts in which some DataObjects can be analyzed together.
     """
+    # A collection of data objects from a single run of an instrument.
     instrument_run = "instrument_run"
-    """
-    A collection of data objects from a single run of an instrument.
-    """
+    # A collection of data objects that can be pooled for downstream analyses.
     poolable_replicates = "poolable_replicates"
-    """
-    A collection of data objects that can be pooled for downstream analyses.
-    """
+    # A collection of data objects that represent fractions of a single sample.
     fractions = "fractions"
-    """
-    A collection of data objects that represent fractions of a single sample.
-    """
 
 
 class InstrumentModelEnum(str, Enum):
@@ -3141,96 +2536,54 @@ class FailureWhatEnum(str, Enum):
     """
     The permitted values for describing where a failure occurred during processing in the lab during analysis workflows.
     """
+    # Number of output reads is not sufficient to continue to the next analysis step.
     low_read_count = "low_read_count"
-    """
-    Number of output reads is not sufficient to continue to the next analysis step.
-    """
+    # Workflow failure reading input or writing the output file(s).
     malformed_data = "malformed_data"
-    """
-    Workflow failure reading input or writing the output file(s).
-    """
+    # The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
     assembly_size_too_small = "assembly_size_too_small"
-    """
-    The size of the metagenome or metatranscriptome assembly is too small to proceed to the next analysis workflow.
-    """
+    # A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
     no_valid_data_generated = "no_valid_data_generated"
-    """
-    A process ran but did not produce any output. Ie binning ran but did not produce any medium or high quality bins.
-    """
+    # A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
     other = "other"
-    """
-    A lab process or analysis workflow has failed in a way that has not been captured by the available values yet. Please use slot 'qc_comment' to specify details.
-    """
 
 
 class FailureWhereEnum(str, Enum):
     """
     The permitted values for describing where in the process, either a lab or analysis workflow step, the failure occurred.
     """
+    # A failure has occurred during nucleotide sequencing, a data generation process.
     NucleotideSequencing = "NucleotideSequencing"
-    """
-    A failure has occurred during nucleotide sequencing, a data generation process.
-    """
+    # A failure has occurred during mass spectrometry, a data generation process.
     MassSpectrometry = "MassSpectrometry"
-    """
-    A failure has occurred during mass spectrometry, a data generation process.
-    """
+    # A failure has occurred in pooling, a lab process.
     Pooling = "Pooling"
-    """
-    A failure has occurred in pooling, a lab process.
-    """
+    # A failure has occurred in extraction, a lab process.
     Extraction = "Extraction"
-    """
-    A failure has occurred in extraction, a lab process.
-    """
+    # A failure has occurred in library preparation, a lab process.
     LibraryPreparation = "LibraryPreparation"
-    """
-    A failure has occurred in library preparation, a lab process.
-    """
+    # A failure has occurred in metagenome assembly, a workflow process.
     MetagenomeAssembly = "MetagenomeAssembly"
-    """
-    A failure has occurred in metagenome assembly, a workflow process.
-    """
+    # A failure has occurred in metatranscriptome expression analysis, a workflow process.
     MetatranscriptomeExpressionAnalysis = "MetatranscriptomeExpressionAnalysis"
-    """
-    A failure has occurred in metatranscriptome expression analysis, a workflow process.
-    """
+    # A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
     MagsAnalysis = "MagsAnalysis"
-    """
-    A failure has occurred in binning, a workflow process to generate metagenome-assembled genomes (MAGS).
-    """
+    # A failure has occurred in read qc, a workflow process.
     ReadQcAnalysis = "ReadQcAnalysis"
-    """
-    A failure has occurred in read qc, a workflow process.
-    """
+    # A failure has occurred in reads based taxonomy, a workflow process.
     ReadBasedTaxonomyAnalysis = "ReadBasedTaxonomyAnalysis"
-    """
-    A failure has occurred in reads based taxonomy, a workflow process.
-    """
+    # A failure has occurred in annotation, a workflow process.
     MetagenomeAnnotation = "MetagenomeAnnotation"
-    """
-    A failure has occurred in annotation, a workflow process.
-    """
+    # A failure has occurred in assembly, a workflow process.
     MetatranscriptomeAssembly = "MetatranscriptomeAssembly"
-    """
-    A failure has occurred in assembly, a workflow process.
-    """
+    # A failure has occurred in annotation, a workflow process.
     MetatranscriptomeAnnotation = "MetatranscriptomeAnnotation"
-    """
-    A failure has occurred in annotation, a workflow process.
-    """
+    # A failure has occurred in analyzing metabolomics data.
     MetabolomicsAnalysis = "MetabolomicsAnalysis"
-    """
-    A failure has occurred in analyzing metabolomics data.
-    """
+    # A failure has occurred in analyzing metaproteomics data.
     MetaproteomicsAnalysis = "MetaproteomicsAnalysis"
-    """
-    A failure has occurred in analyzing metaproteomics data.
-    """
+    # A failure has occurred in analyzing NOM data.
     NomAnalysis = "NomAnalysis"
-    """
-    A failure has occurred in analyzing NOM data.
-    """
 
 
 class SampleTypeEnum(str, Enum):
@@ -3241,6 +2594,26 @@ class SampleTypeEnum(str, Enum):
     water = "water"
 
 
+class DNASampleFormatEnum(str, Enum):
+    number_10_mmolSOLIDUSL_Tris_HCl = "10 mmol/L Tris-HCl"
+    DNAStable = "DNAStable"
+    Ethanol = "Ethanol"
+    Low_EDTA_TE = "Low EDTA TE"
+    MDA_reaction_buffer = "MDA reaction buffer"
+    PBS = "PBS"
+    Pellet = "Pellet"
+    RNAStable = "RNAStable"
+    TE = "TE"
+    Water = "Water"
+    Gentegra_DNA = "Gentegra-DNA"
+    Gentegra_RNA = "Gentegra-RNA"
+
+
+class JgiContTypeEnum(str, Enum):
+    plate = "plate"
+    tube = "tube"
+
+
 class YesNoEnum(str, Enum):
     """
     replaces DnaDnaseEnum and DnaseRnaEnum
@@ -3249,17 +2622,28 @@ class YesNoEnum(str, Enum):
     yes = "yes"
 
 
+class RNASampleFormatEnum(str, Enum):
+    number_10_mmolSOLIDUSL_Tris_HCl = "10 mmol/L Tris-HCl"
+    DNAStable = "DNAStable"
+    Ethanol = "Ethanol"
+    Low_EDTA_TE = "Low EDTA TE"
+    MDA_reaction_buffer = "MDA reaction buffer"
+    PBS = "PBS"
+    Pellet = "Pellet"
+    RNAStable = "RNAStable"
+    TE = "TE"
+    Water = "Water"
+    Gentegra_DNA = "Gentegra-DNA"
+    Gentegra_RNA = "Gentegra-RNA"
+
+
 class AnalysisTypeEnum(str, Enum):
     metabolomics = "metabolomics"
     lipidomics = "lipidomics"
+    # Standard short-read metagenomic sequencing
     Metagenomics = "metagenomics"
-    """
-    Standard short-read metagenomic sequencing
-    """
+    # Long-read metagenomic sequencing
     Metagenomics_LEFT_PARENTHESISlong_readRIGHT_PARENTHESIS = "metagenomics_long_read"
-    """
-    Long-read metagenomic sequencing
-    """
     metaproteomics = "metaproteomics"
     metatranscriptomics = "metatranscriptomics"
     natural_organic_matter = "natural organic matter"
@@ -3268,74 +2652,46 @@ class AnalysisTypeEnum(str, Enum):
 
 
 class SubmissionStatusEnum(str, Enum):
+    # The submitter is currently working on the submission.
     In_Progress = "InProgress"
-    """
-    The submitter is currently working on the submission.
-    """
+    # Submission is ready for NMDC review, the submitter cannot edit.
     Submitted___Pending_Review = "SubmittedPendingReview"
-    """
-    Submission is ready for NMDC review, the submitter cannot edit.
-    """
+    # Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit.
     Resubmitted___Pending_review = "ResubmittedPendingReview"
-    """
-    Submission has been resubmitted after updates. It is now ready for NMDC review. The submitter cannot edit.
-    """
+    # Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.
     Approved___Held = "ApprovedHeld"
-    """
-    Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. The submitter cannot edit.
-    """
+    # Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
     Pending___Sent_to_User_Facility = "PendingUserFacility"
-    """
-    Submission has been reviewed and approved. Information is complete, but not yet shared on the data portal. Sample information shared with designated user facility and pending approvals. The submitter cannot edit.
-    """
+    # Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
     Updates_Required = "UpdatesRequired"
-    """
-    Submission has been reviewed and submitter edits are required for approval. The submitter can reopen and edit the submission.
-    """
+    # NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
     In_Progress___UpdateSOLIDUSAddition = "InProgressUpdate"
-    """
-    NMDC reviewer has reopened submission on behalf of submitter. The submitter is currently editing the submission.
-    """
+    # Submission has been reviewed and denied. The submitter cannot edit.
     Denied = "Denied"
-    """
-    Submission has been reviewed and denied. The submitter cannot edit.
-    """
+    # Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit.
     Released = "Released"
-    """
-    Submission has been reviewed and approved and data is released on the data portal. The submitter cannot edit.
-    """
 
 
 class MetaproteomicsAnalysisCategoryEnum(str, Enum):
     """
     The category of metaproteomics analysis being performed.
     """
+    # A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
     matched_metagenome = "matched_metagenome"
-    """
-    A metaproteomics analysis that is matched to a metagenome derived from the same biosample.
-    """
+    # A metaproteomics analysis that is matched to an in silico generated metagenome.
     in_silico_metagenome = "in_silico_metagenome"
-    """
-    A metaproteomics analysis that is matched to an in silico generated metagenome.
-    """
 
 
 class MetabolomicsAnalysisCategoryEnum(str, Enum):
     """
     The category of metabolomics analysis being performed.
     """
+    # A metabolomics analysis that is performed on gas chromatography mass spectrometry data.
     gc_ms_metabolomics = "gc_ms_metabolomics"
-    """
-    A metabolomics analysis that is performed on gas chromatography mass spectrometry data.
-    """
+    # A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.
     lc_ms_lipidomics = "lc_ms_lipidomics"
-    """
-    A metabolomics analysis that is performed on liquid chromatography mass spectrometry data for lipidomics annotation.
-    """
+    # A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.
     lc_ms_metabolomics = "lc_ms_metabolomics"
-    """
-    A metabolomics analysis that is performed on liquid chromatography mass spectrometry data.
-    """
 
 
 
@@ -3388,14 +2744,13 @@ class EukEval(ConfiguredBaseModel):
     @field_validator('ncbi_lineage_tax_ids')
     def pattern_ncbi_lineage_tax_ids(cls, v):
         pattern=re.compile(r"^\d+(-\d+)*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ncbi_lineage_tax_ids format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ncbi_lineage_tax_ids format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ncbi_lineage_tax_ids format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ncbi_lineage_tax_ids format: {v}")
         return v
 
 
@@ -3462,27 +2817,25 @@ class FunctionalAnnotationAggMember(ConfiguredBaseModel):
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
         pattern=re.compile(r"^(nmdc):(wfmgan|wfmp|wfmtan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_generated_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_generated_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_generated_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_generated_by format: {v}")
         return v
 
     @field_validator('gene_function_id')
     def pattern_gene_function_id(cls, v):
         pattern=re.compile(r"(COG:COG\d+|PFAM:PF\d{5}|KEGG.ORTHOLOGY:K\d+)")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gene_function_id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gene_function_id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid gene_function_id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid gene_function_id format: {v}")
         return v
 
 
@@ -3784,14 +3137,13 @@ class MetaboliteIdentification(ConfiguredBaseModel):
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -3940,27 +3292,25 @@ class FunctionalAnnotation(ConfiguredBaseModel):
     @field_validator('has_function')
     def pattern_has_function(cls, v):
         pattern=re.compile(r"^(KEGG_PATHWAY:\w{2,4}\d{5}|KEGG.REACTION:R\d+|RHEA:\d{5}|MetaCyc:[A-Za-z0-9+_.%-:]+|EC:\d{1,2}(\.\d{0,3}){0,3}|GO:\d{7}|MetaNetX:(MNXR\d+|EMPTY)|SEED:\w+|KEGG\.ORTHOLOGY:K\d+|EGGNOG:\w+|PFAM:PF\d{5}|TIGRFAM:TIGR\d+|SUPFAM:\w+|CATH:[1-6]\.[0-9]+\.[0-9]+\.[0-9]+|PANTHER.FAMILY:PTHR\d{5}(\:SF\d{1,3})?)$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_function format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_function format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_function format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_function format: {v}")
         return v
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
         pattern=re.compile(r"^(nmdc):(wfmgan)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_generated_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_generated_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_generated_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_generated_by format: {v}")
         return v
 
 
@@ -4207,14 +3557,13 @@ class PersonValue(AttributeValue):
     @field_validator('websites')
     def pattern_websites(cls, v):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid websites format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid websites format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid websites format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid websites format: {v}")
         return v
 
 
@@ -4501,27 +3850,25 @@ class NamedThing(ConfiguredBaseModel):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -4591,27 +3938,25 @@ class GeneProduct(NamedThing):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -4689,27 +4034,25 @@ class OntologyClass(NamedThing):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -4780,27 +4123,25 @@ class EnvironmentalMaterialTerm(OntologyClass):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -4885,27 +4226,25 @@ class ChemicalEntity(OntologyClass):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -4979,27 +4318,25 @@ class FunctionalAnnotationTerm(OntologyClass):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -5080,27 +4417,25 @@ class Pathway(FunctionalAnnotationTerm):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -5183,27 +4518,25 @@ class OrthologyGroup(FunctionalAnnotationTerm):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -5369,27 +4702,25 @@ class MaterialEntity(NamedThing):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -5456,27 +4787,25 @@ class Sample(MaterialEntity):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -5502,6 +4831,40 @@ class Biosample(Sample):
          'from_schema': 'https://w3id.org/nmdc/nmdc',
          'notes': ["could add GOLD and EBI's biosample definitions to the "
                    'alt_descriptions?'],
+         'rules': [{'description': 'DNA samples shipped to JGI for metagenomic '
+                                   "analysis in tubes can't have any value for their "
+                                   'plate position.',
+                    'postconditions': {'slot_conditions': {'dna_cont_type': {'equals_string': 'plate',
+                                                                             'name': 'dna_cont_type'}}},
+                    'preconditions': {'slot_conditions': {'dna_cont_well': {'name': 'dna_cont_well',
+                                                                            'pattern': '.+'}}},
+                    'title': 'dna_well_requires_plate'},
+                   {'description': 'DNA samples in plates must have a plate position '
+                                   'that matches the regex. Note the requirement for '
+                                   'an empty string in the tube case. Waiting for '
+                                   'value_present validation to be added to runtime',
+                    'postconditions': {'slot_conditions': {'dna_cont_well': {'name': 'dna_cont_well',
+                                                                             'pattern': '^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'}}},
+                    'preconditions': {'slot_conditions': {'dna_cont_type': {'equals_string': 'plate',
+                                                                            'name': 'dna_cont_type'}}},
+                    'title': 'dna_plate_requires_well'},
+                   {'description': 'RNA samples shipped to JGI for metagenomic '
+                                   "analysis in tubes can't have any value for their "
+                                   'plate position.',
+                    'postconditions': {'slot_conditions': {'rna_cont_type': {'equals_string': 'plate',
+                                                                             'name': 'rna_cont_type'}}},
+                    'preconditions': {'slot_conditions': {'rna_cont_well': {'name': 'rna_cont_well',
+                                                                            'pattern': '.+'}}},
+                    'title': 'rna_well_requires_plate'},
+                   {'description': 'RNA samples in plates must have a plate position '
+                                   'that matches the regex. Note the requirement for '
+                                   'an empty string in the tube case. Waiting for '
+                                   'value_present validation to be added to runtime',
+                    'postconditions': {'slot_conditions': {'rna_cont_well': {'name': 'rna_cont_well',
+                                                                             'pattern': '^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$'}}},
+                    'preconditions': {'slot_conditions': {'rna_cont_type': {'equals_string': 'plate',
+                                                                            'name': 'rna_cont_type'}}},
+                    'title': 'rna_plate_requires_well'}],
          'slot_usage': {'al_sat': {'description': 'The relative abundance of aluminum '
                                                   'in the sample',
                                    'examples': [{'value': '27%'}],
@@ -11261,6 +10624,22 @@ class Biosample(Sample):
     sample_collection_site: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'sample_collection_site', 'domain_of': ['Biosample']} })
     soluble_iron_micromol: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'soluble_iron_micromol', 'domain_of': ['Biosample']} })
     subsurface_depth: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'subsurface_depth', 'domain_of': ['Biosample']} })
+    dna_absorb1: Optional[float] = Field(default=None, title="DNA absorbance 260/280", description="""260/280 measurement of DNA sample purity""", json_schema_extra = { "linkml_meta": {'alias': 'dna_absorb1',
+         'comments': ['Recommended value is between 1 and 3.'],
+         'domain_of': ['Biosample', 'ProcessedSample'],
+         'examples': [{'value': '2.02'}],
+         'is_a': 'biomaterial_purity',
+         'rank': 7,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics'} })
+    dna_absorb2: Optional[float] = Field(default=None, title="DNA absorbance 260/230", description="""260/230 measurement of DNA sample purity""", json_schema_extra = { "linkml_meta": {'alias': 'dna_absorb2',
+         'comments': ['Recommended value is between 1 and 3.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '2.02'}],
+         'is_a': 'biomaterial_purity',
+         'rank': 8,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics'} })
     dna_collect_site: Optional[str] = Field(default=None, title="DNA collection site", description="""Provide information on the site your DNA sample was collected from""", json_schema_extra = { "linkml_meta": {'alias': 'dna_collect_site',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'untreated pond water'}],
@@ -11268,6 +10647,51 @@ class Biosample(Sample):
          'recommended': True,
          'slot_group': 'JGI-Metagenomics',
          'string_serialization': '{text}'} })
+    dna_concentration: Optional[float] = Field(default=None, title="DNA concentration in ng/ul", ge=0, le=2000, json_schema_extra = { "linkml_meta": {'alias': 'dna_concentration',
+         'comments': ['Units must be in ng/uL. Enter the numerical part only. Must be '
+                      'calculated using a fluorometric method. Acceptable values are '
+                      '0-2000.'],
+         'domain_of': ['Biosample', 'ProcessedSample'],
+         'examples': [{'value': '100'}],
+         'rank': 5,
+         'recommended': True,
+         'see_also': ['nmdc:nucleic_acid_concentration'],
+         'slot_group': 'JGI-Metagenomics'} })
+    dna_cont_type: Optional[JgiContTypeEnum] = Field(default=None, title="DNA container type", description="""Tube or plate (96-well)""", json_schema_extra = { "linkml_meta": {'alias': 'dna_cont_type',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'plate'}],
+         'rank': 10,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics'} })
+    dna_cont_well: Optional[str] = Field(default=None, title="DNA plate position", json_schema_extra = { "linkml_meta": {'alias': 'dna_cont_well',
+         'comments': ["Required when 'plate' is selected for container type.",
+                      'Leave blank if the sample will be shipped in a tube.',
+                      'JGI will not process samples in corner wells, so A1, A12, H1 '
+                      'and H12 will not pass validation.',
+                      'For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 '
+                      '(NOT A2-A11,B1-B8).'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'B2'}],
+         'rank': 11,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{96 well plate pos}'} })
+    dna_container_id: Optional[str] = Field(default=None, title="DNA container label", json_schema_extra = { "linkml_meta": {'alias': 'dna_container_id',
+         'comments': ['Must be unique across all tubes and plates, and <20 characters. '
+                      'All samples in a plate should have the same plate label.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'Pond_MT_041618'}],
+         'rank': 9,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text < 20 characters}'} })
+    dna_dnase: Optional[YesNoEnum] = Field(default=None, title="DNase treatment DNA", json_schema_extra = { "linkml_meta": {'alias': 'dna_dnase',
+         'comments': ['Note DNase treatment is required for all RNA samples.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'no'}],
+         'rank': 13,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics'} })
     dna_isolate_meth: Optional[str] = Field(default=None, title="DNA isolation method", description="""Describe the method/protocol/kit used to extract DNA/RNA.""", json_schema_extra = { "linkml_meta": {'alias': 'dna_isolate_meth',
          'aliases': ['Sample Isolation Method'],
          'domain_of': ['Biosample'],
@@ -11284,6 +10708,137 @@ class Biosample(Sample):
          'recommended': True,
          'slot_group': 'JGI-Metagenomics',
          'string_serialization': '{text}'} })
+    dna_project_contact: Optional[str] = Field(default=None, title="DNA seq project contact", json_schema_extra = { "linkml_meta": {'alias': 'dna_project_contact',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'John Jones'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
+         'rank': 18,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text}'} })
+    dna_samp_id: Optional[str] = Field(default=None, title="DNA sample ID", json_schema_extra = { "linkml_meta": {'alias': 'dna_samp_id',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '187654'}],
+         'rank': 3,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text}',
+         'todos': ['Removed identifier = TRUE from dna_samp_ID in JGI_sample_slots, as '
+                   "a class can't have two identifiers. How to force uniqueness? Moot "
+                   'because that column will be prefilled?']} })
+    dna_sample_format: Optional[DNASampleFormatEnum] = Field(default=None, title="DNA sample format", description="""Solution in which the DNA sample has been suspended""", json_schema_extra = { "linkml_meta": {'alias': 'dna_sample_format',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'Water'}],
+         'rank': 12,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics'} })
+    dna_sample_name: Optional[str] = Field(default=None, title="DNA sample name", description="""Give the DNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.""", json_schema_extra = { "linkml_meta": {'alias': 'dna_sample_name',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'JGI_pond_041618'}],
+         'rank': 4,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text}'} })
+    dna_seq_project: Optional[str] = Field(default=None, title="DNA seq project ID", json_schema_extra = { "linkml_meta": {'alias': 'dna_seq_project',
+         'aliases': ['Seq Project ID'],
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '1191234'}],
+         'rank': 1,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text}'} })
+    dna_seq_project_pi: Optional[str] = Field(default=None, title="DNA seq project PI", json_schema_extra = { "linkml_meta": {'alias': 'dna_seq_project_pi',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'Jane Johnson'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
+         'rank': 17,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text}'} })
+    dna_seq_project_name: Optional[str] = Field(default=None, title="DNA seq project name", json_schema_extra = { "linkml_meta": {'alias': 'dna_seq_project_name',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'JGI Pond metagenomics'}],
+         'rank': 2,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text}'} })
+    dna_volume: Optional[float] = Field(default=None, title="DNA volume in ul", ge=0, le=1000, json_schema_extra = { "linkml_meta": {'alias': 'dna_volume',
+         'comments': ['Units must be in uL. Enter the numerical part only. Value must '
+                      'be 0-1000. This form accepts values < 25, but JGI may refuse to '
+                      'process them unless permission has been granted by a project '
+                      'manager'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '25'}],
+         'rank': 6,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{float}'} })
+    proposal_dna: Optional[str] = Field(default=None, title="DNA proposal ID", json_schema_extra = { "linkml_meta": {'alias': 'proposal_dna',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '504000'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
+         'rank': 19,
+         'recommended': True,
+         'slot_group': 'JGI-Metagenomics',
+         'string_serialization': '{text}'} })
+    dnase_rna: Optional[YesNoEnum] = Field(default=None, title="DNase treated", json_schema_extra = { "linkml_meta": {'alias': 'dnase_rna',
+         'aliases': ['Was Sample DNAse treated?'],
+         'comments': ['Note DNase treatment is required for all RNA samples.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'no'}],
+         'rank': 13,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics'} })
+    proposal_rna: Optional[str] = Field(default=None, title="RNA proposal ID", json_schema_extra = { "linkml_meta": {'alias': 'proposal_rna',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '504000'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
+         'rank': 19,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text}'} })
+    rna_absorb1: Optional[float] = Field(default=None, title="RNA absorbance 260/280", description="""260/280 measurement of RNA sample purity""", json_schema_extra = { "linkml_meta": {'alias': 'rna_absorb1',
+         'comments': ['Recommended value is between 1 and 3.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '2.02'}],
+         'rank': 7,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{float}'} })
+    rna_absorb2: Optional[float] = Field(default=None, title="RNA absorbance 260/230", description="""260/230 measurement of RNA sample purity""", json_schema_extra = { "linkml_meta": {'alias': 'rna_absorb2',
+         'comments': ['Recommended value is between 1 and 3.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '2.02'}],
+         'rank': 8,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{float}'} })
     rna_collect_site: Optional[str] = Field(default=None, title="RNA collection site", description="""Provide information on the site your RNA sample was collected from""", json_schema_extra = { "linkml_meta": {'alias': 'rna_collect_site',
          'domain_of': ['Biosample'],
          'examples': [{'value': 'untreated pond water'}],
@@ -11291,6 +10846,45 @@ class Biosample(Sample):
          'recommended': True,
          'slot_group': 'JGI-Metatranscriptomics',
          'string_serialization': '{text}'} })
+    rna_concentration: Optional[float] = Field(default=None, title="RNA concentration in ng/ul", ge=0, le=1000, json_schema_extra = { "linkml_meta": {'alias': 'rna_concentration',
+         'comments': ['Units must be in ng/uL. Enter the numerical part only. Must be '
+                      'calculated using a fluorometric method. Acceptable values are '
+                      '0-2000.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '100'}],
+         'rank': 5,
+         'recommended': True,
+         'see_also': ['nmdc:nucleic_acid_concentration'],
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{float}'} })
+    rna_cont_type: Optional[JgiContTypeEnum] = Field(default=None, title="RNA container type", description="""Tube or plate (96-well)""", json_schema_extra = { "linkml_meta": {'alias': 'rna_cont_type',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'plate'}],
+         'rank': 10,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics'} })
+    rna_cont_well: Optional[str] = Field(default=None, title="RNA plate position", json_schema_extra = { "linkml_meta": {'alias': 'rna_cont_well',
+         'comments': ["Required when 'plate' is selected for container type.",
+                      'Leave blank if the sample will be shipped in a tube.',
+                      'JGI will not process samples in corner wells, so A1, A12, H1 '
+                      'and H12 will not pass validation.',
+                      'For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 '
+                      '(NOT A2-A11,B1-B8).'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'B2'}],
+         'rank': 11,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{96 well plate pos}'} })
+    rna_container_id: Optional[str] = Field(default=None, title="RNA container label", json_schema_extra = { "linkml_meta": {'alias': 'rna_container_id',
+         'comments': ['Must be unique across all tubes and plates, and <20 characters. '
+                      'All samples in a plate should have the same plate label.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'Pond_MT_041618'}],
+         'rank': 9,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text < 20 characters}'} })
     rna_isolate_meth: Optional[str] = Field(default=None, title="RNA isolation method", description="""Describe the method/protocol/kit used to extract DNA/RNA.""", json_schema_extra = { "linkml_meta": {'alias': 'rna_isolate_meth',
          'aliases': ['Sample Isolation Method'],
          'domain_of': ['Biosample'],
@@ -11307,6 +10901,84 @@ class Biosample(Sample):
          'recommended': True,
          'slot_group': 'JGI-Metatranscriptomics',
          'string_serialization': '{text}'} })
+    rna_project_contact: Optional[str] = Field(default=None, title="RNA seq project contact", json_schema_extra = { "linkml_meta": {'alias': 'rna_project_contact',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'John Jones'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
+         'rank': 18,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text}'} })
+    rna_samp_id: Optional[str] = Field(default=None, title="RNA sample ID", json_schema_extra = { "linkml_meta": {'alias': 'rna_samp_id',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '187654'}],
+         'rank': 3,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text}'} })
+    rna_sample_format: Optional[RNASampleFormatEnum] = Field(default=None, title="RNA sample format", description="""Solution in which the RNA sample has been suspended""", json_schema_extra = { "linkml_meta": {'alias': 'rna_sample_format',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'Water'}],
+         'rank': 12,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics'} })
+    rna_sample_name: Optional[str] = Field(default=None, title="RNA sample name", description="""Give the RNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.""", ge=0, le=2000, json_schema_extra = { "linkml_meta": {'alias': 'rna_sample_name',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'JGI_pond_041618'}],
+         'rank': 4,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text}'} })
+    rna_seq_project: Optional[str] = Field(default=None, title="RNA seq project ID", json_schema_extra = { "linkml_meta": {'alias': 'rna_seq_project',
+         'aliases': ['Seq Project ID'],
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '1191234'}],
+         'rank': 1,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text}'} })
+    rna_seq_project_pi: Optional[str] = Field(default=None, title="RNA seq project PI", json_schema_extra = { "linkml_meta": {'alias': 'rna_seq_project_pi',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'deprecated': 'This slot is not always provided by JGI and does not need to '
+                       'be in the file that we send back to JGI. Not needed in UI',
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'Jane Johnson'}],
+         'last_updated_on': '2025-07-02T00:00:00',
+         'modified_by': 'ORCID:0000-0002-8683-0050',
+         'rank': 17,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text}'} })
+    rna_seq_project_name: Optional[str] = Field(default=None, title="RNA seq project name", json_schema_extra = { "linkml_meta": {'alias': 'rna_seq_project_name',
+         'comments': ['Do not edit these values. A template will be provided by NMDC '
+                      'in which these values have been pre-filled.'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': 'JGI Pond metatranscriptomics'}],
+         'rank': 2,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{text}'} })
+    rna_volume: Optional[float] = Field(default=None, title="RNA volume in ul", ge=0, le=1000, json_schema_extra = { "linkml_meta": {'alias': 'rna_volume',
+         'comments': ['Units must be in uL. Enter the numerical part only. Value must '
+                      'be 0-1000. This form accepts values < 25, but JGI may refuse to '
+                      'process them unless permission has been granted by a project '
+                      'manager'],
+         'domain_of': ['Biosample'],
+         'examples': [{'value': '25'}],
+         'rank': 6,
+         'recommended': True,
+         'slot_group': 'JGI-Metatranscriptomics',
+         'string_serialization': '{float}'} })
     collection_date_inc: Optional[str] = Field(default=None, title="incubation collection date", description="""Date the incubation was harvested/collected/ended. Only relevant for incubation samples.""", json_schema_extra = { "linkml_meta": {'alias': 'collection_date_inc',
          'comments': ['Date should be formatted as YYYY(-MM(-DD)). Ie, 2021-04-15, '
                       '2021-04 and 2021 are all acceptable.'],
@@ -11674,170 +11346,181 @@ class Biosample(Sample):
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
         pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid associated_studies format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid associated_studies format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid associated_studies format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid associated_studies format: {v}")
         return v
 
     @field_validator('collected_from')
     def pattern_collected_from(cls, v):
         pattern=re.compile(r"^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid collected_from format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid collected_from format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid collected_from format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid collected_from format: {v}")
         return v
 
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid img_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid img_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid img_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid img_identifiers format: {v}")
         return v
 
     @field_validator('neon_biosample_identifiers')
     def pattern_neon_biosample_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid neon_biosample_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid neon_biosample_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid neon_biosample_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid neon_biosample_identifiers format: {v}")
         return v
 
     @field_validator('gold_biosample_identifiers')
     def pattern_gold_biosample_identifiers(cls, v):
         pattern=re.compile(r"^gold:Gb[0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gold_biosample_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gold_biosample_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid gold_biosample_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid gold_biosample_identifiers format: {v}")
         return v
 
     @field_validator('insdc_biosample_identifiers')
     def pattern_insdc_biosample_identifiers(cls, v):
         pattern=re.compile(r"^biosample:SAM[NED]([A-Z])?[0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_biosample_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_biosample_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid insdc_biosample_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid insdc_biosample_identifiers format: {v}")
         return v
 
     @field_validator('emsl_biosample_identifiers')
     def pattern_emsl_biosample_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid emsl_biosample_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid emsl_biosample_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid emsl_biosample_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid emsl_biosample_identifiers format: {v}")
         return v
 
     @field_validator('igsn_biosample_identifiers')
     def pattern_igsn_biosample_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid igsn_biosample_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid igsn_biosample_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid igsn_biosample_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid igsn_biosample_identifiers format: {v}")
         return v
 
     @field_validator('fire')
     def pattern_fire(cls, v):
         pattern=re.compile(r"^[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?(\s+to\s+[12]\d{3}(?:(?:-(?:0[1-9]|1[0-2]))(?:-(?:0[1-9]|[12]\d|3[01]))?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid fire format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid fire format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid fire format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid fire format: {v}")
         return v
 
     @field_validator('pres_animal_insect')
     def pattern_pres_animal_insect(cls, v):
         pattern=re.compile(r"^(cat|dog|rodent|snake|other);\d+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid pres_animal_insect format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid pres_animal_insect format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid pres_animal_insect format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid pres_animal_insect format: {v}")
+        return v
+
+    @field_validator('dna_cont_well')
+    def pattern_dna_cont_well(cls, v):
+        pattern=re.compile(r"^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid dna_cont_well format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid dna_cont_well format: {v}")
+        return v
+
+    @field_validator('rna_cont_well')
+    def pattern_rna_cont_well(cls, v):
+        pattern=re.compile(r"^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$")
+        if isinstance(v,list):
+            for element in v:
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid rna_cont_well format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid rna_cont_well format: {v}")
         return v
 
     @field_validator('infiltrations')
     def pattern_infiltrations(cls, v):
         pattern=re.compile(r"^(?:[0-9]|[1-9][0-9]|9[0-9]|0[0-9]|0[0-5][0-9]):[0-5][0-9]:[0-5][0-9]$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid infiltrations format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid infiltrations format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid infiltrations format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid infiltrations format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -11854,7 +11537,7 @@ class ProcessedSample(Sample):
     biomaterial_purity: Optional[QuantityValue] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'biomaterial_purity', 'domain_of': ['ProcessedSample']} })
     dna_absorb1: Optional[float] = Field(default=None, title="DNA absorbance 260/280", description="""260/280 measurement of DNA sample purity""", json_schema_extra = { "linkml_meta": {'alias': 'dna_absorb1',
          'comments': ['Recommended value is between 1 and 3.'],
-         'domain_of': ['ProcessedSample'],
+         'domain_of': ['Biosample', 'ProcessedSample'],
          'examples': [{'value': '2.02'}],
          'is_a': 'biomaterial_purity',
          'rank': 7,
@@ -11864,7 +11547,7 @@ class ProcessedSample(Sample):
          'comments': ['Units must be in ng/uL. Enter the numerical part only. Must be '
                       'calculated using a fluorometric method. Acceptable values are '
                       '0-2000.'],
-         'domain_of': ['ProcessedSample'],
+         'domain_of': ['Biosample', 'ProcessedSample'],
          'examples': [{'value': '100'}],
          'rank': 5,
          'recommended': True,
@@ -11935,40 +11618,37 @@ class ProcessedSample(Sample):
     @field_validator('external_database_identifiers')
     def pattern_external_database_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid external_database_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid external_database_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid external_database_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid external_database_identifiers format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -12034,27 +11714,25 @@ class Site(MaterialEntity):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -12208,40 +11886,37 @@ class FieldResearchSite(Site):
     @field_validator('part_of')
     def pattern_part_of(cls, v):
         pattern=re.compile(r"^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid part_of format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid part_of format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid part_of format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid part_of format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):frsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -12317,27 +11992,25 @@ class Instrument(MaterialEntity):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -12422,27 +12095,25 @@ class PlannedProcess(NamedThing):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -12556,53 +12227,49 @@ class CollectingBiosamplesFromSite(PlannedProcess):
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(frsite|site)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):bsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):clsite-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -12739,53 +12406,49 @@ class StorageProcess(PlannedProcess):
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):storpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -12896,66 +12559,61 @@ class MaterialProcessing(PlannedProcess):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -13074,66 +12732,61 @@ class Pooling(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):poolp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -13286,66 +12939,61 @@ class Extraction(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):extrp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -13427,24 +13075,6 @@ class LibraryPreparation(MaterialProcessing):
          'slot_uri': 'MIXS:0000046',
          'string_serialization': 'FWD:{dna};REV:{dna}'} })
     stranded_orientation: Optional[StrandedOrientationEnum] = Field(default=None, description="""Lists the strand orientiation for a stranded RNA library preparation.""", json_schema_extra = { "linkml_meta": {'alias': 'stranded_orientation', 'domain_of': ['LibraryPreparation']} })
-    target_gene: Optional[TargetGeneEnum] = Field(default=None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'alias': 'target_gene',
-         'aliases': ['target gene'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'gene name'}},
-         'domain_of': ['LibraryPreparation'],
-         'examples': [{'value': '16S rRNA, 18S rRNA, nif, amoA, rpo'}],
-         'is_a': 'sequencing field',
-         'slot_uri': 'MIXS:0000044',
-         'string_serialization': '{text}'} })
-    target_subfragment: Optional[TextValue] = Field(default=None, title="target subfragment", description="""Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA""", json_schema_extra = { "linkml_meta": {'alias': 'target_subfragment',
-         'aliases': ['target subfragment'],
-         'annotations': {'expected_value': {'tag': 'expected_value',
-                                            'value': 'gene fragment name'}},
-         'domain_of': ['LibraryPreparation'],
-         'examples': [{'value': 'V6, V9, ITS'}],
-         'is_a': 'sequencing field',
-         'slot_uri': 'MIXS:0000045',
-         'string_serialization': '{text}'} })
     instrument_used: Optional[list[str]] = Field(default=None, description="""What instrument was used during DataGeneration or MaterialProcessing.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_used',
          'domain_of': ['MaterialProcessing', 'DataGeneration'],
          'structured_pattern': {'interpolated': True,
@@ -13534,66 +13164,61 @@ class LibraryPreparation(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):libprp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -13758,66 +13383,61 @@ class SubSamplingProcess(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):subspr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -13948,66 +13568,61 @@ class MixingProcess(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):mixpro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -14158,66 +13773,61 @@ class FiltrationProcess(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):filtpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -14351,66 +13961,61 @@ class ChromatographicSeparationProcess(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):procsm-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):cspro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -14541,66 +14146,61 @@ class DissolvingProcess(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):dispro-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -14736,66 +14336,61 @@ class ChemicalConversionProcess(MaterialProcessing):
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):chcpr-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -14956,14 +14551,13 @@ class Doi(ConfiguredBaseModel):
     @field_validator('doi_value')
     def pattern_doi_value(cls, v):
         pattern=re.compile(r"^doi:10.\d{2,9}/.*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid doi_value format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid doi_value format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid doi_value format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid doi_value format: {v}")
         return v
 
 
@@ -15406,157 +15000,145 @@ class Study(NamedThing):
     @field_validator('emsl_project_identifiers')
     def pattern_emsl_project_identifiers(cls, v):
         pattern=re.compile(r"^emsl\.project:[0-9]{5}$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid emsl_project_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid emsl_project_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid emsl_project_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid emsl_project_identifiers format: {v}")
         return v
 
     @field_validator('gnps_task_identifiers')
     def pattern_gnps_task_identifiers(cls, v):
         pattern=re.compile(r"^gnps\.task:[a-f0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gnps_task_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gnps_task_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid gnps_task_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid gnps_task_identifiers format: {v}")
         return v
 
     @field_validator('gold_study_identifiers')
     def pattern_gold_study_identifiers(cls, v):
         pattern=re.compile(r"^gold:Gs[0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gold_study_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gold_study_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid gold_study_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid gold_study_identifiers format: {v}")
         return v
 
     @field_validator('insdc_bioproject_identifiers')
     def pattern_insdc_bioproject_identifiers(cls, v):
         pattern=re.compile(r"^bioproject:PRJ[DEN][A-Z][0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_bioproject_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_bioproject_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid insdc_bioproject_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid insdc_bioproject_identifiers format: {v}")
         return v
 
     @field_validator('jgi_portal_study_identifiers')
     def pattern_jgi_portal_study_identifiers(cls, v):
         pattern=re.compile(r"^jgi.proposal:\d+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid jgi_portal_study_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid jgi_portal_study_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid jgi_portal_study_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid jgi_portal_study_identifiers format: {v}")
         return v
 
     @field_validator('mgnify_project_identifiers')
     def pattern_mgnify_project_identifiers(cls, v):
         pattern=re.compile(r"^mgnify.proj:[A-Z]+[0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid mgnify_project_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid mgnify_project_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid mgnify_project_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid mgnify_project_identifiers format: {v}")
         return v
 
     @field_validator('neon_study_identifiers')
     def pattern_neon_study_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid neon_study_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid neon_study_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid neon_study_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid neon_study_identifiers format: {v}")
         return v
 
     @field_validator('homepage_website')
     def pattern_homepage_website(cls, v):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid homepage_website format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid homepage_website format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid homepage_website format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid homepage_website format: {v}")
         return v
 
     @field_validator('part_of')
     def pattern_part_of(cls, v):
         pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid part_of format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid part_of format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid part_of format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid part_of format: {v}")
         return v
 
     @field_validator('websites')
     def pattern_websites(cls, v):
         pattern=re.compile(r"^[Hh][Tt][Tt][Pp][Ss]?:\/\/(?!.*[Dd][Oo][Ii]\.[Oo][Rr][Gg]).*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid websites format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid websites format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid websites format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid websites format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):sty-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -15638,27 +15220,25 @@ class InformationObject(NamedThing):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -15729,27 +15309,25 @@ class Configuration(InformationObject):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -15852,27 +15430,25 @@ class MassSpectrometryConfiguration(Configuration):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -15974,27 +15550,25 @@ class ChromatographyConfiguration(Configuration):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -16069,27 +15643,25 @@ class Manifest(InformationObject):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -16186,40 +15758,37 @@ class CalibrationInformation(InformationObject):
     @field_validator('calibration_object')
     def pattern_calibration_object(cls, v):
         pattern=re.compile(r"^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid calibration_object format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid calibration_object format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid calibration_object format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid calibration_object format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -16338,66 +15907,61 @@ class DataObject(InformationObject):
     @field_validator('insdc_experiment_identifiers')
     def pattern_insdc_experiment_identifiers(cls, v):
         pattern=re.compile(r"^insdc.sra:(E|D|S)RX[0-9]{6,}$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_experiment_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_experiment_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid insdc_experiment_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid insdc_experiment_identifiers format: {v}")
         return v
 
     @field_validator('was_generated_by')
     def pattern_was_generated_by(cls, v):
         pattern=re.compile(r"^(nmdc):(wfmag|wfmb|wfmgan|wfmgas|wfmsa|wfmp|wfmt|wfmtan|wfmtas|wfmtex|wfnom|wfrbt|wfrqc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$|^(nmdc):(omprc|dgms|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_generated_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_generated_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_generated_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_generated_by format: {v}")
         return v
 
     @field_validator('in_manifest')
     def pattern_in_manifest(cls, v):
         pattern=re.compile(r"^(nmdc):manif-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid in_manifest format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid in_manifest format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid in_manifest format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid in_manifest format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):dobj-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -16484,27 +16048,25 @@ class DataEmitterProcess(PlannedProcess):
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -16559,7 +16121,6 @@ class DataGeneration(DataEmitterProcess):
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
          'domain_of': ['Study', 'DataGeneration']} })
-    instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_instance_specifier', 'domain_of': ['DataGeneration']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -16643,79 +16204,73 @@ class DataGeneration(DataEmitterProcess):
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
         pattern=re.compile(r"^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid associated_studies format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid associated_studies format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid associated_studies format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid associated_studies format: {v}")
         return v
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -16756,6 +16311,24 @@ class NucleotideSequencing(DataGeneration):
          'is_a': 'external_database_identifiers',
          'mixins': ['insdc_identifiers']} })
     ncbi_project_name: Optional[str] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'ncbi_project_name', 'domain_of': ['NucleotideSequencing']} })
+    target_gene: Optional[TargetGeneEnum] = Field(default=None, title="target gene", description="""Targeted gene or locus name for marker gene studies""", json_schema_extra = { "linkml_meta": {'alias': 'target_gene',
+         'aliases': ['target gene'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'gene name'}},
+         'domain_of': ['NucleotideSequencing'],
+         'examples': [{'value': '16S rRNA, 18S rRNA, nif, amoA, rpo'}],
+         'is_a': 'sequencing field',
+         'slot_uri': 'MIXS:0000044',
+         'string_serialization': '{text}'} })
+    target_subfragment: Optional[TextValue] = Field(default=None, title="target subfragment", description="""Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA""", json_schema_extra = { "linkml_meta": {'alias': 'target_subfragment',
+         'aliases': ['target subfragment'],
+         'annotations': {'expected_value': {'tag': 'expected_value',
+                                            'value': 'gene fragment name'}},
+         'domain_of': ['NucleotideSequencing'],
+         'examples': [{'value': 'V6, V9, ITS'}],
+         'is_a': 'sequencing field',
+         'slot_uri': 'MIXS:0000045',
+         'string_serialization': '{text}'} })
     add_date: Optional[str] = Field(default=None, description="""The date on which the information was added to the database.""", json_schema_extra = { "linkml_meta": {'alias': 'add_date', 'domain_of': ['Biosample', 'DataGeneration']} })
     analyte_category: NucleotideSequencingEnum = Field(default=..., description="""The type of analyte(s) that were measured in the data generation process
 """, json_schema_extra = { "linkml_meta": {'alias': 'analyte_category', 'domain_of': ['DataGeneration']} })
@@ -16771,7 +16344,6 @@ class NucleotideSequencing(DataGeneration):
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
          'domain_of': ['Study', 'DataGeneration']} })
-    instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_instance_specifier', 'domain_of': ['DataGeneration']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -16857,118 +16429,109 @@ class NucleotideSequencing(DataGeneration):
     @field_validator('gold_sequencing_project_identifiers')
     def pattern_gold_sequencing_project_identifiers(cls, v):
         pattern=re.compile(r"^gold:Gp[0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gold_sequencing_project_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gold_sequencing_project_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid gold_sequencing_project_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid gold_sequencing_project_identifiers format: {v}")
         return v
 
     @field_validator('insdc_bioproject_identifiers')
     def pattern_insdc_bioproject_identifiers(cls, v):
         pattern=re.compile(r"^bioproject:PRJ[DEN][A-Z][0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_bioproject_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_bioproject_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid insdc_bioproject_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid insdc_bioproject_identifiers format: {v}")
         return v
 
     @field_validator('insdc_experiment_identifiers')
     def pattern_insdc_experiment_identifiers(cls, v):
         pattern=re.compile(r"^insdc.sra:(E|D|S)RX[0-9]{6,}$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_experiment_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_experiment_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid insdc_experiment_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid insdc_experiment_identifiers format: {v}")
         return v
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
         pattern=re.compile(r"^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid associated_studies format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid associated_studies format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid associated_studies format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid associated_studies format: {v}")
         return v
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):(dgns|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -17054,7 +16617,6 @@ class MassSpectrometry(DataGeneration):
     principal_investigator: Optional[PersonValue] = Field(default=None, description="""Principal Investigator who led the study and/or generated the dataset.""", json_schema_extra = { "linkml_meta": {'alias': 'principal_investigator',
          'aliases': ['PI'],
          'domain_of': ['Study', 'DataGeneration']} })
-    instrument_instance_specifier: Optional[str] = Field(default=None, description="""A unique value that identifies an individual instrument instance, such as a serial number or similar identifiers assigned by the manufacturer or user.""", json_schema_extra = { "linkml_meta": {'alias': 'instrument_instance_specifier', 'domain_of': ['DataGeneration']} })
     has_input: list[str] = Field(default=..., description="""An input to a process.""", json_schema_extra = { "linkml_meta": {'alias': 'has_input',
          'aliases': ['input'],
          'domain_of': ['PlannedProcess'],
@@ -17140,118 +16702,109 @@ class MassSpectrometry(DataGeneration):
     @field_validator('generates_calibration')
     def pattern_generates_calibration(cls, v):
         pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid generates_calibration format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid generates_calibration format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid generates_calibration format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid generates_calibration format: {v}")
         return v
 
     @field_validator('has_chromatography_configuration')
     def pattern_has_chromatography_configuration(cls, v):
         pattern=re.compile(r"^(nmdc):chrcon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_chromatography_configuration format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_chromatography_configuration format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_chromatography_configuration format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_chromatography_configuration format: {v}")
         return v
 
     @field_validator('has_mass_spectrometry_configuration')
     def pattern_has_mass_spectrometry_configuration(cls, v):
         pattern=re.compile(r"^(nmdc):mscon-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_mass_spectrometry_configuration format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_mass_spectrometry_configuration format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_mass_spectrometry_configuration format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_mass_spectrometry_configuration format: {v}")
         return v
 
     @field_validator('associated_studies')
     def pattern_associated_studies(cls, v):
         pattern=re.compile(r"^(nmdc):(sty)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid associated_studies format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid associated_studies format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid associated_studies format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid associated_studies format: {v}")
         return v
 
     @field_validator('instrument_used')
     def pattern_instrument_used(cls, v):
         pattern=re.compile(r"^(nmdc):inst-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid instrument_used format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid instrument_used format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid instrument_used format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid instrument_used format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(bsm|procsm)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):(dgms|omprc)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -17285,7 +16838,9 @@ class WorkflowExecution(DataEmitterProcess):
                     'preconditions': {'slot_conditions': {'qc_status': {'name': 'qc_status',
                                                                         'value_presence': 'ABSENT'}}},
                     'title': 'qc_status_pass_null_has_output_required'}],
-         'slot_usage': {'git_url': {'name': 'git_url', 'required': True},
+         'slot_usage': {'execution_resource': {'name': 'execution_resource',
+                                               'required': True},
+                        'git_url': {'name': 'git_url', 'required': True},
                         'has_input': {'name': 'has_input',
                                       'pattern': '^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$',
                                       'range': 'DataObject',
@@ -17297,8 +16852,6 @@ class WorkflowExecution(DataEmitterProcess):
                                        'range': 'DataObject',
                                        'structured_pattern': {'interpolated': True,
                                                               'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}},
-                        'processing_institution': {'name': 'processing_institution',
-                                                   'required': True},
                         'started_at_time': {'name': 'started_at_time',
                                             'required': True},
                         'was_informed_by': {'name': 'was_informed_by',
@@ -17310,7 +16863,7 @@ class WorkflowExecution(DataEmitterProcess):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -17352,7 +16905,7 @@ class WorkflowExecution(DataEmitterProcess):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -17425,79 +16978,73 @@ class WorkflowExecution(DataEmitterProcess):
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -17515,7 +17062,7 @@ class AnnotatingWorkflow(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -17557,7 +17104,7 @@ class AnnotatingWorkflow(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -17630,79 +17177,73 @@ class AnnotatingWorkflow(WorkflowExecution):
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -17752,7 +17293,7 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -17796,7 +17337,7 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -17871,118 +17412,109 @@ class MetagenomeAnnotation(AnnotatingWorkflow):
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid img_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid img_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid img_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid img_identifiers format: {v}")
         return v
 
     @field_validator('gold_analysis_project_identifiers')
     def pattern_gold_analysis_project_identifiers(cls, v):
         pattern=re.compile(r"^gold:Ga[0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gold_analysis_project_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gold_analysis_project_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid gold_analysis_project_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid gold_analysis_project_identifiers format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmgan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -18096,7 +17628,7 @@ class MetagenomeAssembly(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -18140,7 +17672,7 @@ class MetagenomeAssembly(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -18215,105 +17747,97 @@ class MetagenomeAssembly(WorkflowExecution):
     @field_validator('insdc_assembly_identifiers')
     def pattern_insdc_assembly_identifiers(cls, v):
         pattern=re.compile(r"^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_assembly_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_assembly_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid insdc_assembly_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid insdc_assembly_identifiers format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmgas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -18422,7 +17946,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -18466,7 +17990,7 @@ class MetatranscriptomeAssembly(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -18541,105 +18065,97 @@ class MetatranscriptomeAssembly(WorkflowExecution):
     @field_validator('insdc_assembly_identifiers')
     def pattern_insdc_assembly_identifiers(cls, v):
         pattern=re.compile(r"^insdc.sra:[A-Z]+[0-9]+(\.[0-9]+)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid insdc_assembly_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid insdc_assembly_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid insdc_assembly_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid insdc_assembly_identifiers format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmtas-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -18694,7 +18210,7 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -18738,7 +18254,7 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -18813,118 +18329,109 @@ class MetatranscriptomeAnnotation(AnnotatingWorkflow):
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid img_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid img_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid img_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid img_identifiers format: {v}")
         return v
 
     @field_validator('gold_analysis_project_identifiers')
     def pattern_gold_analysis_project_identifiers(cls, v):
         pattern=re.compile(r"^gold:Ga[0-9]+$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid gold_analysis_project_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid gold_analysis_project_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid gold_analysis_project_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid gold_analysis_project_identifiers format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmtan-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -18964,7 +18471,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19008,7 +18515,7 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19083,105 +18590,97 @@ class MetatranscriptomeExpressionAnalysis(WorkflowExecution):
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid img_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid img_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid img_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid img_identifiers format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmtex-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -19228,7 +18727,7 @@ class MagsAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19272,7 +18771,7 @@ class MagsAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19347,105 +18846,97 @@ class MagsAnalysis(WorkflowExecution):
     @field_validator('img_identifiers')
     def pattern_img_identifiers(cls, v):
         pattern=re.compile(r"^img\.taxon:[a-zA-Z0-9_][a-zA-Z0-9_\/\.]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid img_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid img_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid img_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid img_identifiers format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmag-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -19487,7 +18978,7 @@ class ReadQcAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19531,7 +19022,7 @@ class ReadQcAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19606,92 +19097,85 @@ class ReadQcAnalysis(WorkflowExecution):
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfrqc-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -19719,7 +19203,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -19763,7 +19247,7 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -19838,92 +19322,85 @@ class ReadBasedTaxonomyAnalysis(WorkflowExecution):
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgns)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfrbt-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -19958,7 +19435,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -20002,7 +19479,7 @@ class MetabolomicsAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -20077,105 +19554,97 @@ class MetabolomicsAnalysis(WorkflowExecution):
     @field_validator('uses_calibration')
     def pattern_uses_calibration(cls, v):
         pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid uses_calibration format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid uses_calibration format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid uses_calibration format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid uses_calibration format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmb-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -20201,7 +19670,7 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -20245,7 +19714,7 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -20320,92 +19789,85 @@ class MetaproteomicsAnalysis(AnnotatingWorkflow):
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfmp-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
@@ -20436,7 +19898,7 @@ class NomAnalysis(WorkflowExecution):
          'notes': ['The regex for ISO-8601 format was taken from here: '
                    'https://www.myintervals.com/blog/2009/05/20/iso-8601-date-validation-that-doesnt-suck/ '
                    'It may not be complete, but it is good enough for now.']} })
-    execution_resource: Optional[ExecutionResourceEnum] = Field(default=None, description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
+    execution_resource: ExecutionResourceEnum = Field(default=..., description="""The computing resource or facility where the workflow was executed.""", json_schema_extra = { "linkml_meta": {'alias': 'execution_resource',
          'domain_of': ['WorkflowExecution'],
          'examples': [{'value': 'NERSC-Cori'}]} })
     git_url: str = Field(default=..., description="""The url that points to the exact github location of a workflow.""", json_schema_extra = { "linkml_meta": {'alias': 'git_url',
@@ -20480,7 +19942,7 @@ class NomAnalysis(WorkflowExecution):
          'domain_of': ['PlannedProcess'],
          'structured_pattern': {'interpolated': True,
                                 'syntax': '{id_nmdc_prefix}:(dobj)-{id_shoulder}-{id_blade}$'}} })
-    processing_institution: ProcessingInstitutionEnum = Field(default=..., description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
+    processing_institution: Optional[ProcessingInstitutionEnum] = Field(default=None, description="""The organization that processed the sample.""", json_schema_extra = { "linkml_meta": {'alias': 'processing_institution', 'domain_of': ['PlannedProcess']} })
     protocol_link: Optional[Protocol] = Field(default=None, json_schema_extra = { "linkml_meta": {'alias': 'protocol_link',
          'domain_of': ['Configuration', 'PlannedProcess', 'Study']} })
     start_date: Optional[str] = Field(default=None, description="""The date on which any process or activity was started""", json_schema_extra = { "linkml_meta": {'alias': 'start_date',
@@ -20555,105 +20017,97 @@ class NomAnalysis(WorkflowExecution):
     @field_validator('uses_calibration')
     def pattern_uses_calibration(cls, v):
         pattern=re.compile(r"^(nmdc):calib-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid uses_calibration format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid uses_calibration format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid uses_calibration format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid uses_calibration format: {v}")
         return v
 
     @field_validator('ended_at_time')
     def pattern_ended_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid ended_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid ended_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid ended_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid ended_at_time format: {v}")
         return v
 
     @field_validator('started_at_time')
     def pattern_started_at_time(cls, v):
         pattern=re.compile(r"^([\+-]?\d{4}(?!\d{2}\b))((-?)((0[1-9]|1[0-2])(\3([12]\d|0[1-9]|3[01]))?|W([0-4]\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\d|[12]\d{2}|3([0-5]\d|6[1-6])))([T\s]((([01]\d|2[0-3])((:?)[0-5]\d)?|24\:?00)([\.,]\d+(?!:))?)?(\17[0-5]\d([\.,]\d+)?)?([zZ]|([\+-])([01]\d|2[0-3]):?([0-5]\d)?)?)?)?$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid started_at_time format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid started_at_time format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid started_at_time format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid started_at_time format: {v}")
         return v
 
     @field_validator('was_informed_by')
     def pattern_was_informed_by(cls, v):
         pattern=re.compile(r"^(nmdc):(omprc|dgms)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid was_informed_by format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid was_informed_by format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid was_informed_by format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid was_informed_by format: {v}")
         return v
 
     @field_validator('has_input')
     def pattern_has_input(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_input format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_input format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_input format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_input format: {v}")
         return v
 
     @field_validator('has_output')
     def pattern_has_output(cls, v):
         pattern=re.compile(r"^(nmdc):(dobj)-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid has_output format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid has_output format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid has_output format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid has_output format: {v}")
         return v
 
     @field_validator('id')
     def pattern_id(cls, v):
         pattern=re.compile(r"^(nmdc):wfnom-([0-9][a-z]{0,6}[0-9])-([A-Za-z0-9]{1,})(\.[0-9]{1,})$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid id format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid id format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid id format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid id format: {v}")
         return v
 
     @field_validator('alternative_identifiers')
     def pattern_alternative_identifiers(cls, v):
         pattern=re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,\(\)\=\#]*$")
-        if isinstance(v, list):
+        if isinstance(v,list):
             for element in v:
-                if isinstance(element, str) and not pattern.match(element):
-                    err_msg = f"Invalid alternative_identifiers format: {element}"
-                    raise ValueError(err_msg)
-        elif isinstance(v, str) and not pattern.match(v):
-            err_msg = f"Invalid alternative_identifiers format: {v}"
-            raise ValueError(err_msg)
+                if isinstance(v, str) and not pattern.match(element):
+                    raise ValueError(f"Invalid alternative_identifiers format: {element}")
+        elif isinstance(v,str):
+            if not pattern.match(v):
+                raise ValueError(f"Invalid alternative_identifiers format: {v}")
         return v
 
 
