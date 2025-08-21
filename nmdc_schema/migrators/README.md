@@ -387,9 +387,11 @@ Each migrator should contain docstring tests. This step is important to catch sy
 The `test-migrator` command combines 3 separate commands into one. Using parameters, it removes the need to directly edit the makefile each time you test a new migrator. 
 The following parameters are available:
 
-- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes). The default is all collections.
+- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes). The default is all collections EXCEPT functional_annotation_agg
 - MIGRATOR - the name of the migrator file. DO NOT INCLUDE `.py` EXT
 - ENV  - whether to gather data from the prod or dev runtime API environment. The default is prod. 
+
+**For partials, you must reference the file that wraps the partials, not individual partials.**
 
 For example, if I wanted to test `migrator_from_11_6_1_to_11_7_0` and only download the data_object_set in prod, I would run:
 
@@ -403,6 +405,14 @@ To run in dev:
 % make test-migrator MIGRATOR=migrator_from_11_6_1_to_11_7_0 SELECTED_COLLECTIONS=data_object_set ENV=dev
 ```
 
+To call multiple collections, space separate them:
+
+```bash
+% make test-migrator MIGRATOR=migrator_from_11_6_1_to_11_7_0 SELECTED_COLLECTIONS=data_object_set biosample_set ENV=dev
+```
+
+
+
 
 > **NOTE**
 >`% make rdf-clean` will delete locally generated files from the testing process. This can be helpful if a bug was identified and the `make` commands need to be rerun after a change. 
@@ -412,7 +422,7 @@ That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validatio
 
 3. **In-depth discussion of test-migrator**
 
-As mentioned, the `test-migrator` command is comprised of three commands. Each command can be ran separately ourside of `test-migrator`. This may come in handy when you want to test a change to the migrator, but do not want to download the database again (saves time).
+As mentioned, the `test-migrator` command is comprised of three commands. Each command can be ran separately outside of `test-migrator`. This may come in handy when you want to test a change to the migrator, but do not want to download the database again (saves time).
 
 - `% make local/mongo_via_api_as_unvalidated_nmdc_database.yaml SELECTED_COLLECTIONS=`
     * This command creates a local dump of the selected collections and saves it to the path local/mongo_via_api_as_unvalidated_nmdc_database.yaml

@@ -200,12 +200,22 @@ API_DEV_URL = https://dev-api.microbiomedata.org
 API_URL = $(if $(filter dev,$(ENV)),$(API_DEV_URL),$(API_PROD_URL))
 
 #### Target 1: Run-selected-collections ####
-DEFAULT_COLLECTIONS = biosample_set calibration_set chemical_entity_set \
-                      collecting_biosamples_from_site_set configuration_set \
-                      data_generation_set data_object_set field_research_site_set \
-                      functional_annotation_set genome_feature_set instrument_set \
-                      manifest_set material_processing_set processed_sample_set \
-                      storage_process_set study_set workflow_execution_set
+DEFAULT_COLLECTIONS = biosample_set \
+	calibration_set \
+	collecting_biosamples_from_site_set \
+	configuration_set \
+	data_generation_set \
+	data_object_set \
+	field_research_site_set \
+	functional_annotation_set \
+	genome_feature_set \
+	instrument_set \
+	manifest_set \
+	material_processing_set \
+	processed_sample_set \
+	storage_process_set \
+	study_set \
+	workflow_execution_set
 local/mongo_via_api_as_unvalidated_nmdc_database.yaml: SELECTED_COLLECTIONS=
 local/mongo_via_api_as_unvalidated_nmdc_database.yaml:
 	date
