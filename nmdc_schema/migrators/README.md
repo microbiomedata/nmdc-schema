@@ -374,7 +374,7 @@ All local files are saved to `local/`
 >
 > If you want to make contributions or add commands that would be helpful for wider use, create an issue and PR. 
 
-1. **Test docstring and create a local copy of the lastest schema release**
+1. **Test docstrings and create a local copy of the schema according to your local instance**
 
 Each migrator should contain docstring tests. This step is important to catch syntax errors AND to **generate a new schema yaml file** to use in the local database tests. To run the docstring test and generate a new schema file run
 
