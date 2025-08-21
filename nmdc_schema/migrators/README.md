@@ -376,7 +376,7 @@ All local files are saved to `local/`
 
 1. **Test docstrings and create a local copy of the schema according to your local instance**
 
-Each migrator should contain docstring tests. This step is important to catch syntax errors AND to **generate a new schema yaml file** to use in the local database tests. To run the docstring test and generate a new schema file run
+Each migrator should contain docstring tests. This step is important to catch syntax errors AND to **generate a new schema yaml file** to use in the local database tests. To run the docstring test and generate a new schema file run.  This step also validates the schema and the example data in this repo.
 
 ```bash
 % make squeaky-clean test all
