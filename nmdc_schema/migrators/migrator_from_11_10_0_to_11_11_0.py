@@ -10,7 +10,9 @@ class Migrator(MigratorBase):
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
 
-        self.adapter.process_each_document("data_object_set", [self.confirm_permissible_values_are_absent])
+        self.adapter.process_each_document(
+            "data_object_set", [self.confirm_permissible_values_are_absent]
+        )
 
     def confirm_permissible_values_are_absent(self, data_object: dict) -> dict:
         r"""
@@ -29,8 +31,12 @@ class Migrator(MigratorBase):
         ValueError: DataObject 2 has value: "Centrifuge Classification Report"
         """
 
-        if data_object.get("data_object_type") == "Metagenome Bins" or data_object.get("data_object_type") == "Centrifuge Classification Report" :
-          raise ValueError(
-                    f"DataObject {data_object["id"]} has value: data_object.get("data_object_type")
-                )
+        data_object_type_value = data_object.get("data_object_type")
+        if (
+            data_object.get("data_object_type") == "Metagenome Bins"
+            or data_object.get("data_object_type") == "Centrifuge Classification Report"
+        ):
+            raise ValueError(
+                f"DataObject {data_object["id"]} has value: data_object_type_value"
+            )
         return data_object
