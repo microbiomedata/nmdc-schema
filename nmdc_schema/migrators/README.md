@@ -418,7 +418,7 @@ To call multiple collections, space separate them:
 >`% make rdf-clean` will delete locally generated files from the testing process. This can be helpful if a bug was identified and the `make` commands need to be rerun after a change. 
 
 
-That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validation.log` and there will be an alert in the terminal is this occurs. 
+That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validation.log` and there will be an alert in the terminal if this occurs. 
 
 3. **In-depth discussion of test-migrator**
 
