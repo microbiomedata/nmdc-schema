@@ -140,3 +140,5 @@ Here's a one-liner you can use to derive release artifacts (which are [stored in
 ```shell
 docker compose run --rm -it --name nmdc-schema-builder app sh -c 'poetry install && make squeaky-clean all test'
 ```
+
+> Advanced testing instructions can be found [here](nmdc_schema/migrators/README.md).

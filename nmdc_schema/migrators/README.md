@@ -368,13 +368,15 @@ db.runCommand("listCollections").cursor.firstBatch
 All local files are saved to `local/`
 
 ### Running a migrator with project.makefile step-by-step:
-> **⚠️ WARNING: Do NOT commit any edits to `project.Makefile`!**
+> **⚠️ WARNING: Do NOT commit any local edits to `project.Makefile`!**
 >
 > The `project.Makefile` is a shared build and automation file for the entire project. Any changes made for local testing or experimentation should **never** be committed to version control. Committing edits may break CI/CD pipelines or disrupt other developers' workflows.
+>
+> If you want to make contributions or add commands that would be helpful for wider use, create an issue and PR. 
 
 1. **Test docstring and create a local copy of the lastest schema release**
 
-Each migrator should contain docstring tests. This step is important to catch syntax errors AND to generate a new schema yaml file to use in the local database tests. To run the docstring test and generate a new schema file run
+Each migrator should contain docstring tests. This step is important to catch syntax errors AND to **generate a new schema yaml file** to use in the local database tests. To run the docstring test and generate a new schema file run
 
 ```bash
 % make squeaky-clean test all
@@ -403,11 +405,28 @@ To run in dev:
 
 
 > **NOTE**
->`% make rdf-clean` will delete locally generated files from the testing process. This can be helpful if a bug was identified and the make commadns need to be rerun after a change. 
+>`% make rdf-clean` will delete locally generated files from the testing process. This can be helpful if a bug was identified and the `make` commands need to be rerun after a change. 
 
 
 That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validation.log` and there will be an alert in the terminal is this occurs. 
 
+3. **In-depth discussion of test-migrator**
 
+As mentioned, the `test-migrator` command is comprised of three commands. Each command can be ran separately ourside of `test-migrator`. This may come in handy when you want to test a change to the migrator, but do not want to download the database again (saves time).
+
+- `% make local/mongo_via_api_as_unvalidated_nmdc_database.yaml SELECTED_COLLECTIONS=`
+    * This command creates a local dump of the selected collections and saves it to the path local/mongo_via_api_as_unvalidated_nmdc_database.yaml
+- `% make local/mongo_via_api_as_nmdc_database_after_migrator.yaml MIGRATOR=`
+    * This command runs the migrator on the database dump in local/mongo_via_api_as_unvalidated_nmdc_database.yaml and saves the changes to file path local/mongo_via_api_as_nmdc_database_after_migrator.yaml
+- `% make local/mongo_via_api_as_nmdc_database_validation.log`
+    * This commands validates the migrator changes using nmdc_schema/nmdc_materialized_patterns.yaml on the branch. This file will have been recompiled with your schema changes after running `make squeaky-clean test all`. It is important to test agianst your changes, as this will be the newest version of the schema.
+
+If desired, there is functionality to test against the current release. There are a few ways to do this (being on main branch, not recompiling nmdc_schema/nmdc_materialized_patterns.yaml) but to do so via project.Makefile use the `$(LATEST_TAG_SCHEMA_FILE)` variable. This variable makes a call to Github and downloads the latest release of nmdc_schema/nmdc_materialized_patterns.yaml to a local file. 
+
+- In `local/mongo_via_api_as_unvalidated_nmdc_database.yaml` replace `--schema-source` with `$(LATEST_TAG_SCHEMA_FILE)`
+- Replace `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: $(LATEST_TAG_SCHEMA_FILE)`
+- Replace `local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE)`
+
+> Remember not to commit these local changes as this will interfere with others testing processes. 
 
 
