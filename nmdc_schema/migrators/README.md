@@ -431,7 +431,7 @@ As mentioned, the `test-migrator` command is comprised of three commands. Each c
 - `% make local/mongo_via_api_as_nmdc_database_validation.log`
     * This commands validates the migrator changes using nmdc_schema/nmdc_materialized_patterns.yaml on the branch. This file will have been recompiled with your schema changes after running `make squeaky-clean test all`. It is important to test agianst your changes, as this will be the newest version of the schema.
 
-If desired, there is functionality to test against the current release. There are a few ways to do this (being on main branch, not recompiling nmdc_schema/nmdc_materialized_patterns.yaml) but to do so via project.Makefile use the `$(LATEST_TAG_SCHEMA_FILE)` variable. This variable makes a call to Github and downloads the latest release of nmdc_schema/nmdc_materialized_patterns.yaml to a local file. 
+If desired, there is functionality to test against the current release (as opposed to a local branch). There are a few ways to do this (being on main branch, not recompiling nmdc_schema/nmdc_materialized_patterns.yaml) but to do so via project.Makefile use the `$(LATEST_TAG_SCHEMA_FILE)` variable. This variable makes a call to Github and downloads the latest release of nmdc_schema/nmdc_materialized_patterns.yaml to a local file. 
 
 - In `local/mongo_via_api_as_unvalidated_nmdc_database.yaml` replace `--schema-source` with `$(LATEST_TAG_SCHEMA_FILE)`
 - Replace `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: $(LATEST_TAG_SCHEMA_FILE)`
