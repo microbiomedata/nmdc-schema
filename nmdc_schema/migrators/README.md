@@ -437,6 +437,6 @@ If desired, there is functionality to test against the current release (as oppos
 - Replace `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: $(LATEST_TAG_SCHEMA_FILE)`
 - Replace `local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE)`
 
-> Remember not to commit these local changes as this will interfere with others testing processes. 
+> Remember not to commit these local changes as this will interfere with others' testing processes. 
 
 
