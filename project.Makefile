@@ -233,7 +233,7 @@ local/mongo_via_api_as_unvalidated_nmdc_database.yaml:
 #### Target 2: Run-migrator ####
 local/mongo_via_api_as_nmdc_database_after_migrator.yaml: MIGRATOR=
 local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_unvalidated_nmdc_database.yaml
-	date # 449.56 seconds on 2023-08-30 without functional_annotation_agg or metaproteomics_analysis_activity_set
+	date
 	time $(RUN) migration-recursion \
 		--input-path $(word 2,$^) \
 		--schema-path $(word 1,$^) \
