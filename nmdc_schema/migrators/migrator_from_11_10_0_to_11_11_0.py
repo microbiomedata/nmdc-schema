@@ -32,11 +32,12 @@ class Migrator(MigratorBase):
         """
 
         data_object_type_value = data_object.get("data_object_type")
+        data_object_id = data_object.get("id")
         if (
             data_object.get("data_object_type") == "Metagenome Bins"
             or data_object.get("data_object_type") == "Centrifuge Classification Report"
         ):
             raise ValueError(
-                f"DataObject {data_object["id"]} has value: data_object_type_value"
+                f"DataObject {data_object_id} has value: {data_object_type_value}"
             )
         return data_object
