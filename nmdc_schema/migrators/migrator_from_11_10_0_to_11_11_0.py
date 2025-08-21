@@ -19,16 +19,22 @@ class Migrator(MigratorBase):
         If the data object has the data_object_type of "Metagenome Bins" or "Centrifuge Classification Report" raise an exception.
 
         >>> m = Migrator()
-        # Test: Document has a permissible value for data_object_type of "Metagenome Bins".
+ 
+       # Test: data_object_type of "Metagenome Bins"
         >>> m.confirm_permissible_values_are_absent({"id": 1, "type": "nmdc:DataObject", "data_object_type": "Metagenome Bins"})
         Traceback (most recent call last):
             ...
-        ValueError: DataObject 1 has value: "Metagenome Bins"
-        # Test: Docuement has a permissible value for data_object_type of "Centrifuge Classification Report"
+        ValueError: DataObject 1 has value: Metagenome Bins
+
+        # Test: data_object_type of "Centrifuge Classification Report"
         >>> m.confirm_permissible_values_are_absent({"id": 2, "type": "nmdc:DataObject", "data_object_type": "Centrifuge Classification Report"})
         Traceback (most recent call last):
             ...
-        ValueError: DataObject 2 has value: "Centrifuge Classification Report"
+        ValueError: DataObject 2 has value: Centrifuge Classification Report
+
+        # Test: valid data_object_type
+        >>> m.confirm_permissible_values_are_absent({"id": 3, "type": "nmdc:DataObject", "data_object_type": "Virus Summary"})
+        {'id': 3, 'type': 'nmdc:DataObject', 'data_object_type': 'Virus Summary'}
         """
 
         data_object_type_value = data_object.get("data_object_type")
@@ -38,6 +44,6 @@ class Migrator(MigratorBase):
             or data_object.get("data_object_type") == "Centrifuge Classification Report"
         ):
             raise ValueError(
-                f"DataObject {data_object_id} has value: {data_object_type_value}"
+                 f"DataObject {data_object_id} has value: {data_object_type_value}"
             )
         return data_object
