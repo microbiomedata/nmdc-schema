@@ -387,7 +387,7 @@ Each migrator should contain docstring tests. This step is important to catch sy
 The `test-migrator` command combines 3 separate commands into one. Using parameters, it removes the need to directly edit the makefile each time you test a new migrator. 
 The following parameters are available:
 
-- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes). The default is all collections EXCEPT functional_annotation_agg
+- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes), separated by a space. The default is all collections EXCEPT functional_annotation_agg.
 - MIGRATOR - the name of the migrator file. DO NOT INCLUDE `.py` EXT
 - ENV  - whether to gather data from the prod or dev runtime API environment. The default is prod. 
 
