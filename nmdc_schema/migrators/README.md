@@ -391,7 +391,7 @@ The following parameters are available:
 - MIGRATOR - the name of the migrator file. DO NOT INCLUDE `.py` EXT
 - ENV  - whether to gather data from the prod or dev runtime API environment. The default is prod. 
 
-**For partials, you must reference the file that wraps the partials, not individual partials.**
+**For testing partial migrators, you must reference the file that wraps the partials, not individual partials. All collections modified in any of the partial migrators should be selected in the SELECTED_COLLECTIONS parameter**
 
 For example, if I wanted to test `migrator_from_11_6_1_to_11_7_0` and only download the data_object_set in prod, I would run:
 
