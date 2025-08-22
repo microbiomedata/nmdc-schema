@@ -20,7 +20,7 @@ class Migrator(MigratorBase):
 
         >>> m = Migrator()
  
-       # Test: data_object_type of "Metagenome Bins"
+        # Test: data_object_type of "Metagenome Bins"
         >>> m.confirm_permissible_values_are_absent({"id": 1, "type": "nmdc:DataObject", "data_object_type": "Metagenome Bins"})
         Traceback (most recent call last):
             ...
