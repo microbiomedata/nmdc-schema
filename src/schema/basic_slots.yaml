@@ -624,12 +624,6 @@ enums:
       QC non-rRNA R1:
         description: QC removed rRNA reads (R1) fastq
 
-      Metagenome Bins:
-        description: Metagenome bin contigs fasta
-        deprecated: Deprecated in favor of separate permissible values based on bin quality.
-        last_updated_on: "2025-07-14"
-        modified_by: orcid:0000-0002-5004-3362
-
       Metagenome HQMQ Bins Compression File:
         description: Compressed file containing high quality and medium quality metagenome bins and associated files
         annotations:
@@ -700,13 +694,6 @@ enums:
 
       Kraken2 Taxonomic Classification:
         description: Kraken2 output read classification file
-
-      Centrifuge Classification Report:
-        description: Centrifuge output report file
-        deprecated: Deprecated in favor of 'Centrifuge output report file'.
-        last_updated_on: "2025-07-14"
-        modified_by: orcid:0000-0002-5004-3362
-        
 
       Centrifuge Taxonomic Classification:
         description: Centrifuge output read classification file
