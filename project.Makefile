@@ -248,11 +248,11 @@ local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materializ
 	time $(RUN) linkml-validate --schema $^ > $@
 
 #### Combined Command ####
-.PHONY: test-migrator
-test-migrator: SELECTED_COLLECTIONS=  # Default empty, user can override
-test-migrator: MIGRATOR=             # Default empty, user can override
-test-migrator: ENV=prod              # Default to prod if not specified
-test-migrator: local/mongo_via_api_as_unvalidated_nmdc_database.yaml \
+.PHONY: test-migrator-on-database
+test-migrator-on-database: SELECTED_COLLECTIONS=  # Default empty, user can override
+test-migrator-on-database: MIGRATOR=             # Default empty, user can override
+test-migrator-on-database: ENV=prod              # Default to prod if not specified
+test-migrator-on-database: local/mongo_via_api_as_unvalidated_nmdc_database.yaml \
 		local/mongo_via_api_as_nmdc_database_after_migrator.yaml \
 		local/mongo_via_api_as_nmdc_database_validation.log
 	@echo "Combined workflow executed successfully."
