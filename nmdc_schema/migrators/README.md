@@ -374,9 +374,9 @@ All local files are saved to `local/`
 >
 > If you want to make contributions or add commands that would be helpful for wider use, create an issue and PR. 
 
-1. **Test docstring and create a local copy of the lastest schema release**
+1. **Test docstrings and create a local copy of the schema according to your local instance**
 
-Each migrator should contain docstring tests. This step is important to catch syntax errors AND to **generate a new schema yaml file** to use in the local database tests. To run the docstring test and generate a new schema file run
+Each migrator should contain docstring tests. This step is important to catch syntax errors AND to **generate a new schema yaml file** to use in the local database tests. To run the docstring test and generate a new schema file run.  This step also validates the schema and the example data in this repo.
 
 ```bash
 % make squeaky-clean test all
@@ -387,11 +387,11 @@ Each migrator should contain docstring tests. This step is important to catch sy
 The `test-migrator-on-database` command combines 3 separate commands into one. Using parameters, it removes the need to directly edit the makefile each time you test a new migrator. 
 The following parameters are available:
 
-- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes). The default is all collections EXCEPT functional_annotation_agg
+- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes), separated by a space. The default is all collections EXCEPT functional_annotation_agg.
 - MIGRATOR - the name of the migrator file. DO NOT INCLUDE `.py` EXT
 - ENV  - whether to gather data from the prod or dev runtime API environment. The default is prod. 
 
-**For partials, you must reference the file that wraps the partials, not individual partials.**
+**For testing partial migrators, you must reference the file that wraps the partials, not individual partials. All collections modified in any of the partial migrators should be selected in the SELECTED_COLLECTIONS parameter**
 
 For example, if I wanted to test `migrator_from_11_6_1_to_11_7_0` and only download the data_object_set in prod, I would run:
 
@@ -418,7 +418,7 @@ To call multiple collections, space separate them:
 >`% make rdf-clean` will delete locally generated files from the testing process. This can be helpful if a bug was identified and the `make` commands need to be rerun after a change. 
 
 
-That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validation.log` and there will be an alert in the terminal is this occurs. 
+That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validation.log` and there will be an alert in the terminal if this occurs. 
 
 3. **In-depth discussion of test-migrator**
 
@@ -431,12 +431,12 @@ As mentioned, the `test-migrator-on-database` command is comprised of three comm
 - `% make local/mongo_via_api_as_nmdc_database_validation.log`
     * This commands validates the migrator changes using nmdc_schema/nmdc_materialized_patterns.yaml on the branch. This file will have been recompiled with your schema changes after running `make squeaky-clean test all`. It is important to test agianst your changes, as this will be the newest version of the schema.
 
-If desired, there is functionality to test against the current release. There are a few ways to do this (being on main branch, not recompiling nmdc_schema/nmdc_materialized_patterns.yaml) but to do so via project.Makefile use the `$(LATEST_TAG_SCHEMA_FILE)` variable. This variable makes a call to Github and downloads the latest release of nmdc_schema/nmdc_materialized_patterns.yaml to a local file. 
+If desired, there is functionality to test against the current release (as opposed to a local branch). There are a few ways to do this (being on main branch, not recompiling nmdc_schema/nmdc_materialized_patterns.yaml) but to do so via project.Makefile use the `$(LATEST_TAG_SCHEMA_FILE)` variable. This variable makes a call to Github and downloads the latest release of nmdc_schema/nmdc_materialized_patterns.yaml to a local file. 
 
 - In `local/mongo_via_api_as_unvalidated_nmdc_database.yaml` replace `--schema-source` with `$(LATEST_TAG_SCHEMA_FILE)`
 - Replace `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: $(LATEST_TAG_SCHEMA_FILE)`
 - Replace `local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE)`
 
-> Remember not to commit these local changes as this will interfere with others testing processes. 
+> Remember not to commit these local changes as this will interfere with others' testing processes. 
 
 
