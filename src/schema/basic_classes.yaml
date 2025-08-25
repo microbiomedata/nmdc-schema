@@ -915,6 +915,11 @@ enums:
           - MiSeq
           - Illumina MiSeq
         meaning: OBI:0002003
+        structured_aliases:
+          ILLUMINA_MI_SEQ:
+            contexts:
+            -  https://gold.jgi.doe.gov/
+            predicate: EXACT_SYNONYM
         
       nextseq_1000:
         aliases:
