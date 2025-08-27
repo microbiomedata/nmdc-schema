@@ -312,6 +312,8 @@
   class Protocol
   click Protocol href "../Protocol"
 
+  Protocol : description
+
   Protocol : name
 
   Protocol : type
@@ -349,6 +351,12 @@
 <td><a href="../type/">type</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
 <td>the class_uri of the class that has been instantiated</td>
+<td>direct</td>
+</tr>
+<tr>
+<td><a href="../description/">description</a></td>
+<td>0..1 <br/> <a href="../String/">String</a></td>
+<td>a human-readable description of a thing</td>
 <td>direct</td>
 </tr>
 </tbody>
@@ -612,6 +620,7 @@ slots:
 - url
 - name
 - type
+- description
 class_uri: nmdc:Protocol
 
 </code></pre>
@@ -691,6 +700,19 @@ attributes:
     - Doi
     range: uriorcurie
     required: true
+  description:
+    name: description
+    description: a human-readable description of a thing
+    from_schema: https://w3id.org/nmdc/nmdc
+    rank: 1000
+    slot_uri: dcterms:description
+    alias: description
+    owner: Protocol
+    domain_of:
+    - ImageValue
+    - NamedThing
+    - Protocol
+    range: string
 class_uri: nmdc:Protocol
 
 </code></pre>
