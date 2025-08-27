@@ -60,6 +60,7 @@ configuration_set:
       type: nmdc:Protocol
       url: http://example.com
       name: EMSL low resolution GCMS EI mass spectrometry protocol
+      description: Example protocol description for EMSL GCMS EI mass spectrometry
 data_object_set:
   - id: nmdc:dobj-12-krhrtjw9
     type: nmdc:DataObject
