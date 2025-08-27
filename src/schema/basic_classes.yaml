@@ -148,6 +148,7 @@ classes:
       - url
       - name
       - type
+      - description
   CreditAssociation:
     aliases:
       - study role
