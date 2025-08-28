@@ -23,7 +23,6 @@ def get_migrator_classes() -> List[Type[MigratorBase]]:
     """
 
     return [
-        migrator_from_11_9_1_to_11_10_0_part_1.Migrator,
-        migrator_from_11_9_1_to_11_10_0_part_2.Migrator,
-        migrator_from_11_9_1_to_11_10_0_part_3.Migrator,
+        migrator_from_11_10_0_to_11_11_0_part_1.Migrator,
+        migrator_from_11_10_0_to_11_11_0_part_2.Migrator,
     ]
