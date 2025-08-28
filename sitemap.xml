@@ -153,10 +153,6 @@
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/DNASampleFormatEnum/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/DataCategoryEnum/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
@@ -465,10 +461,6 @@
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/JgiContTypeEnum/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/Jsonpath/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
@@ -730,10 +722,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/QuantityValue/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/RNASampleFormatEnum/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
@@ -1745,63 +1733,11 @@
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_cont_type/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_cont_well/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_container_id/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_dnase/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/dna_isolate_meth/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/dna_organisms/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_project_contact/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_samp_id/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_sample_format/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_sample_name/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_seq_project/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_seq_project_name/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_seq_project_pi/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dna_volume/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/dnase_rna/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
@@ -3429,14 +3365,6 @@
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/proposal_dna/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/proposal_rna/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/protein_spectral_count/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
@@ -3533,31 +3461,7 @@
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_absorb1/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_absorb2/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/rna_collect_site/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_concentration/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_cont_type/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_cont_well/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_container_id/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
@@ -3566,38 +3470,6 @@
     </url>
     <url>
          <loc>https://microbiomedata.github.io/nmdc-schema/rna_organisms/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_project_contact/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_samp_id/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_sample_format/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_sample_name/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_seq_project/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_seq_project_name/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_seq_project_pi/</loc>
-         <lastmod>2025-08-28</lastmod>
-    </url>
-    <url>
-         <loc>https://microbiomedata.github.io/nmdc-schema/rna_volume/</loc>
          <lastmod>2025-08-28</lastmod>
     </url>
     <url>
