@@ -419,7 +419,6 @@ diss_oxygen_fluid:
   type: nmdc:QuantityValue
   has_raw_value: xxx
   has_unit: umol/kg
-dna_cont_well: C2
 door_comp_type: revolving
 door_cond: damaged
 door_direct: inward
@@ -1559,45 +1558,13 @@ subsurface_depth:
   has_raw_value: 10.0 m
   has_unit: m
   type: nmdc:QuantityValue
-dna_absorb1: 2.02
-dna_absorb2: 2.02
 dna_collect_site: untreated pond water
-dna_concentration: 100.0
-dna_cont_type: plate
-dna_container_id: Pond_MT_041618
-dna_dnase: 'yes'
 dna_isolate_meth: DNA
 dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
   (1%)
-dna_project_contact: John Jones
-dna_samp_id: '187654'
-dna_sample_format: 10 mmol/L Tris-HCl
-dna_sample_name: JGI_pond_041618
-dna_seq_project: '1191234'
-dna_seq_project_pi: Jane Johnson
-dna_seq_project_name: JGI Pond metagenomics
-dna_volume: 25.0
-proposal_dna: '504000'
-dnase_rna: 'yes'
-proposal_rna: '504000'
-rna_absorb1: 2.02
-rna_absorb2: 2.02
 rna_collect_site: untreated pond water
-rna_concentration: 100.0
-rna_cont_type: plate
-rna_cont_well: C2
-rna_container_id: Pond_MT_041618
-rna_isolate_meth: RNA
 rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
   (1%)
-rna_project_contact: John Jones
-rna_samp_id: '187654'
-rna_sample_format: 10 mmol/L Tris-HCl
-rna_sample_name: JGI_pond_041618
-rna_seq_project: '1191234'
-rna_seq_project_pi: Jane Johnson
-rna_seq_project_name: JGI Pond metagenomics
-rna_volume: 25.0
 collection_date_inc: '2023-01-29'
 collection_time: 05:42+0000
 collection_time_inc: 13:42+0000
