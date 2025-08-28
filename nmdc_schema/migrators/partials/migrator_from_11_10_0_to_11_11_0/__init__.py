@@ -1,10 +1,9 @@
 from typing import List, Type
 
 from nmdc_schema.migrators.migrator_base import MigratorBase
-from nmdc_schema.migrators.partials.migrator_from_11_9_1_to_11_10_0 import (
-    migrator_from_11_9_1_to_11_10_0_part_1,
-    migrator_from_11_9_1_to_11_10_0_part_2,
-    migrator_from_11_9_1_to_11_10_0_part_3,
+from nmdc_schema.migrators.partials.migrator_from_11_10_0_to_11_11_0 import (
+    migrator_from_11_10_0_to_11_11_0_part_1,
+    migrator_from_11_10_0_to_11_11_0_part_2,
 )
 
 
