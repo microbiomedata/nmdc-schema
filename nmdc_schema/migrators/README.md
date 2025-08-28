@@ -380,7 +380,7 @@ Each migrator should contain docstring tests. This step is important to catch sy
 The `test-migrator-on-database` command combines 3 separate commands into one. Using parameters, it removes the need to directly edit `project.Makefile` each time you test a new migrator. 
 The following parameters are available:
 
-- SELECTED_COLLECTIONS - specify the collections of interest to download (i.e. collections that your migrator changes), separated by a space. The default is all collections EXCEPT functional_annotation_agg.
+- SELECTED_COLLECTIONS - specify the collections you want to download (i.e. collections that your migrator changes), each one separated by a space. The default is all collections EXCEPT `functional_annotation_agg`.
 - MIGRATOR - the name of the migrator file. DO NOT INCLUDE `.py` EXT
 - ENV  - whether to gather data from the prod or dev runtime API environment. The default is prod. 
 
@@ -422,7 +422,7 @@ As mentioned, the `test-migrator-on-database` command is comprised of three comm
 - `% make local/mongo_via_api_as_nmdc_database_after_migrator.yaml MIGRATOR=`
     * This command runs the migrator on the collections in `local/mongo_via_api_as_unvalidated_nmdc_database.yaml` and saves the changes to file path `local/mongo_via_api_as_nmdc_database_after_migrator.yaml`
 - `% make local/mongo_via_api_as_nmdc_database_validation.log`
-    * This commands validates the migrator changes using nmdc_schema/nmdc_materialized_patterns.yaml on the branch. This file will have been recompiled with your schema changes after running `make squeaky-clean test all`. It is important to test agianst your changes, as this will be the newest version of the schema.
+    * This commands validates the migrated collections against `nmdc_schema/nmdc_materialized_patterns.yaml` on the branch. This file will have been recompiled with your schema changes after running `make squeaky-clean test all`. It is important to test against your changes, as this will be the newest version of the schema.
 
 You can also test against the most recently-released schema (as opposed to a local branch). The steps for doing that are shown below. They involve making local changes to the file, `project.Makefile`. The changes involve the variable, `$(LATEST_TAG_SCHEMA_FILE)`, which contains the path to the most recent schema release file after it is downloaded from GitHub and is used for testing.
 
