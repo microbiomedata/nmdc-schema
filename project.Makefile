@@ -1,4 +1,11 @@
 
+# ⚠️ WARNING: Do NOT commit any local edits to `project.Makefile`!
+# The `project.Makefile` is a shared build and automation file for the entire project. 
+# Any changes made for local testing or experimentation should **never** be committed to version control. 
+# Committing edits may break CI/CD pipelines or disrupt other developers' workflows.
+# If you want to make contributions or add commands that would be helpful for wider use, create an issue and PR. 
+
+
 ### Rules and variables used in different places in the makefile ###
 
 RUN=poetry run
@@ -188,7 +195,7 @@ make-rdf: rdf-clean \
 
 ###########################################################
 #
-# MIGRATOR TEST COMANDS VIA THE API. COMMANDS ARE IN ORDER
+# MIGRATOR TEST COMMANDS VIA THE API. COMMANDS ARE IN ORDER
 #
 ###########################################################
 
@@ -199,7 +206,7 @@ API_DEV_URL = https://dev-api.microbiomedata.org
 # Dynamically set the API url based on the ENV variable
 API_URL = $(if $(filter dev,$(ENV)),$(API_DEV_URL),$(API_PROD_URL))
 
-#### Target 1: Run-selected-collections ####
+#### Target 1: Run selected collections with local/mongo_via_api_as_unvalidated_nmdc_database.yaml ####
 DEFAULT_COLLECTIONS = biosample_set \
 	calibration_set \
 	collecting_biosamples_from_site_set \
@@ -230,7 +237,7 @@ local/mongo_via_api_as_unvalidated_nmdc_database.yaml:
 		--endpoint-prefix nmdcschema \
 		--page-size 200000
 
-#### Target 2: Run-migrator ####
+#### Target 2: Run migrator with local/mongo_via_api_as_nmdc_database_after_migrator.yaml ####
 local/mongo_via_api_as_nmdc_database_after_migrator.yaml: MIGRATOR=
 local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_unvalidated_nmdc_database.yaml
 	date
@@ -241,7 +248,7 @@ local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_mater
 		$(if $(MIGRATOR),--migrator-name $(MIGRATOR),)
 
 
-#### Target 3: Validation ####
+#### Target 3: Validation with local/mongo_via_api_as_nmdc_database_validation.log ####
 .PRECIOUS: local/mongo_via_api_as_nmdc_database_validation.log
 local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml local/mongo_via_api_as_nmdc_database_after_migrator.yaml
 	date # 5m57.559s without functional_annotation_agg or metaproteomics_analysis_activity_set
