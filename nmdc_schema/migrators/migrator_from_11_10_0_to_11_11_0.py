@@ -9,41 +9,106 @@ class Migrator(MigratorBase):
 
     def upgrade(self) -> None:
         r"""Migrates the database from conforming to the original schema, to conforming to the new schema."""
+        self.adapter.do_for_each_document("biosample_set", self.check_for_fields)
 
-        self.adapter.do_for_each_document(
-            "data_object_set", [self.confirm_permissible_values_are_absent]
-        )
-
-    def confirm_permissible_values_are_absent(self, data_object: dict) -> dict:
+    def check_for_fields(self, biosample: dict) -> dict:
         r"""
-        If the data object has the data_object_type of "Metagenome Bins" or "Centrifuge Classification Report" raise an exception.
+        Check each biosample record to ensure none of the removed slots are being used. 
+        List of the slots that were removed:
+        - dna_absorb1
+        - dna_absorb2
+        - dna_collect_site
+        - dna_concentration
+        - dna_cont_type
+        - dna_cont_well
+        - dna_container_id
+        - dna_dnase
+        - dna_isolate_meth
+        - dna_organisms
+        - dna_project_contact
+        - dna_samp_id
+        - dna_sample_format
+        - dna_sample_name
+        - dna_seq_project
+        - dna_seq_project_pi
+        - dna_seq_project_name
+        - dna_volume
+        - proposal_dna
+        - dnase_rna
+        - proposal_rna
+        - rna_absorb1
+        - rna_absorb2
+        - rna_collect_site
+        - rna_concentration
+        - rna_cont_type
+        - rna_cont_well
+        - rna_container_id
+        - rna_isolate_meth
+        - rna_organisms
+        - rna_project_contact
+        - rna_samp_id
+        - rna_sample_format
+        - rna_sample_name
+        - rna_seq_project
+        - rna_seq_project_pi
+        - rna_seq_project_name
+        - rna_volume
+        - collection_date_inc
 
         >>> m = Migrator()
- 
-        # Test: data_object_type of "Metagenome Bins"
-        >>> m.confirm_permissible_values_are_absent({"id": 1, "type": "nmdc:DataObject", "data_object_type": "Metagenome Bins"})
+        >>> m.check_for_fields({"id":123, "type": "nmdc:Biosample", "dna_absorb1": "value"})
         Traceback (most recent call last):
-            ...
-        ValueError: DataObject 1 has value: Metagenome Bins
-
-        # Test: data_object_type of "Centrifuge Classification Report"
-        >>> m.confirm_permissible_values_are_absent({"id": 2, "type": "nmdc:DataObject", "data_object_type": "Centrifuge Classification Report"})
+        ...
+        Exception: Field `dna_absorb1` present in biosample 123.
+        >>> m.check_for_fields({"id":123, "type": "nmdc:Biosample", "dna_absorb1": ""})
         Traceback (most recent call last):
-            ...
-        ValueError: DataObject 2 has value: Centrifuge Classification Report
-
-        # Test: valid data_object_type
-        >>> m.confirm_permissible_values_are_absent({"id": 3, "type": "nmdc:DataObject", "data_object_type": "Virus Summary"})
-        {'id': 3, 'type': 'nmdc:DataObject', 'data_object_type': 'Virus Summary'}
+        ...
+        Exception: Field `dna_absorb1` present in biosample 123.
+        >>> m.check_for_fields({"id":123, "type": "nmdc:Biosample"})
         """
+        id = biosample.get("id")
+        removed_slots = [
+            "dna_absorb1",
+            "dna_absorb2",
+            "dna_collect_site",
+            "dna_concentration",
+            "dna_cont_type",
+            "dna_cont_well",
+            "dna_container_id",
+            "dna_dnase",
+            "dna_isolate_meth",
+            "dna_organisms",
+            "dna_project_contact",
+            "dna_samp_id",
+            "dna_sample_format",
+            "dna_sample_name",
+            "dna_seq_project",
+            "dna_seq_project_pi",
+            "dna_seq_project_name",
+            "dna_volume",
+            "proposal_dna",
+            "dnase_rna",
+            "proposal_rna",
+            "rna_absorb1",
+            "rna_absorb2",
+            "rna_collect_site",
+            "rna_concentration",
+            "rna_cont_type",
+            "rna_cont_well",
+            "rna_container_id",
+            "rna_isolate_meth",
+            "rna_organisms",
+            "rna_project_contact",
+            "rna_samp_id",
+            "rna_sample_format",
+            "rna_sample_name",
+            "rna_seq_project",
+            "rna_seq_project_pi",
+            "rna_seq_project_name",
+            "rna_volume",
+            "collection_date_inc",
+        ]
+        for slot in removed_slots:
+            if slot in biosample:
+                raise Exception(f"Field `{slot}` present in biosample {id}.")
 
-        data_object_type_value = data_object.get("data_object_type")
-        data_object_id = data_object.get("id")
-        if (
-            data_object_type_value == "Metagenome Bins"
-            or data_object_type_value == "Centrifuge Classification Report"
-        ):
-            raise ValueError(
-                 f"DataObject {data_object_id} has value: {data_object_type_value}"
-            )
-        return data_object
