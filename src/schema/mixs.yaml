@@ -2485,7 +2485,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L|umol/L'
+        value: '[ppm]|mg/L|umol/L|mg/kg'
     description: Concentration of calcium in the sample
     title: calcium
     examples:
@@ -2555,6 +2555,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: "1"
     description: Ratio of amount or concentrations of carbon to nitrogen
     title: carbon/nitrogen ratio
     examples:
@@ -2965,7 +2968,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mS/cm
+        value: mS/cm|uS/cm
     description: Electrical conductivity of water
     title: conductivity
     examples:
@@ -3127,7 +3130,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: g/cm3|g/m3
+        value: g/cm3|g/m3|kg/m3
     description: Density of the sample, which is its mass per unit volume (aka volumetric mass density)
     title: density
     examples:
@@ -3163,6 +3166,9 @@ slots:
       expected_value:
         tag: expected_value
         value: measurement value
+      storage_units:
+        tag: storage_units
+        value: m
     description: The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.
     title: depth
     examples:
@@ -3314,7 +3320,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L|umol/L
+        value: ug/L|umol/L|mg/L
     description: Concentration of dissolved inorganic nitrogen
     title: dissolved inorganic nitrogen
     examples:
@@ -3389,7 +3395,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|umol/L
+        value: mg/L|umol/L|ug/L
     description: Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid
     title: dissolved organic carbon
     examples:
@@ -3439,7 +3445,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|umol/kg
+        value: mg/L|umol/kg|umol/L
     description: Concentration of dissolved oxygen
     title: dissolved oxygen
     examples:
@@ -4392,6 +4398,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/m3
     description: Raw or converted fluorescence of water
     title: fluorescence
     examples:
@@ -5689,7 +5698,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: g/m3
+        value: g/m3|%
     description: Amount of water vapour in the air, at the time of sampling
     title: humidity
     examples:
@@ -6138,7 +6147,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L|mol/L|umol/kg'
+        value: '[ppm]|mg/L|mol/L|umol/kg|mg/kg'
     description: Concentration of magnesium in the sample
     title: magnesium
     examples:
@@ -6467,7 +6476,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: umol/L
+        value: umol/L|%
     description: Concentration of nitrogen (total)
     title: nitrogen
     examples:
@@ -6666,7 +6675,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: umol/L
+        value: umol/L|%
     description: Concentration of organic carbon
     title: organic carbon
     examples:
@@ -6883,7 +6892,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L
+        value: ug/L|mg/L
     description: Concentration of particulate organic carbon
     title: particulate organic carbon
     examples:
@@ -6908,7 +6917,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L|umol/L
+        value: ug/L|umol/L|mg/L
     description: Concentration of particulate organic nitrogen
     title: particulate organic nitrogen
     examples:
@@ -7227,6 +7236,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: umol/m2/s
     description: Measurement of photon flux
     title: photon flux
     examples:
@@ -7402,7 +7414,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L'
+        value: '[ppm]|mg/L|mg/kg'
     description: Concentration of potassium in the sample
     title: potassium
     examples:
@@ -8464,7 +8476,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '%'
+        value: '%|mg/L'
     description: The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater.
     title: salinity
     examples:
@@ -9709,9 +9721,6 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: erg/cm2/s|kW/m2/d
     description: The amount of solar energy that arrives at a specific area of a surface during a specific time interval
     title: solar irradiance
     examples:
@@ -9790,7 +9799,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L|umol/L'
+        value: '[ppm]|mg/L|umol/L|ug/L'
     description: Concentration of soluble reactive phosphorus
     title: soluble reactive phosphorus
     examples:
@@ -10497,7 +10506,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L
+        value: ug/L|%
     description: Total carbon content
     title: total carbon
     examples:
@@ -10547,7 +10556,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L
+        value: ug/L|umol/L
     description: 'Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen'
     title: total dissolved nitrogen
     examples:
@@ -10622,7 +10631,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|ug/L|umol/L
+        value: mg/L|ug/L|umol/L|%
     description: 'Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen'
     title: total nitrogen concentration
     examples:
@@ -10667,7 +10676,7 @@ slots:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|ug/L|umol/L
+        value: mg/L|ug/L|umol/L|%
     description: Total nitrogen content of the sample
     title: total nitrogen content
     examples:
@@ -10710,6 +10719,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L
     description: 'Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content'
     title: total organic carbon
     examples:

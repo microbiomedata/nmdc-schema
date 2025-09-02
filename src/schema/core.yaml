@@ -1384,6 +1384,8 @@ slots:
 
   subsurface_depth:
     range: QuantityValue
+    annotations:
+      storage_units: m
 
   env_package:
     aliases:
@@ -1405,7 +1407,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
       occurrence: "1"
-      storage_units: "[ppm]|mg/kg"
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of zinc in the sample
     title: zinc
     examples:
@@ -1418,7 +1420,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg (ppm)
       occurrence: "1"
-      storage_units: "[ppm]|mg/kg"
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of manganese in the sample
     title: manganese
     examples:
@@ -1434,7 +1436,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
-      storage_units: mg/kg
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of ammonium nitrogen in the sample
     title: ammonium nitrogen
     examples:
@@ -1452,7 +1454,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
-      storage_units: mg/kg
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrate nitrogen in the sample
     title: nitrate_nitrogen
     examples:
@@ -1468,7 +1470,7 @@ slots:
       expected_value: measurement value
       preferred_unit: mg/kg
       occurrence: "1"
-      storage_units: mg/kg
+      storage_units: "[ppm]|mg/kg|mg/L"
     description: Concentration of nitrite nitrogen in the sample
     title: nitrite_nitrogen
     examples:
@@ -1487,6 +1489,7 @@ slots:
       expected_value: measurement value
       preferred_unit: ppm CaCO3/pH
       occurrence: "1"
+      storage_units: "[ppm]"
     description: lime buffer capacity, determined after 30 minute incubation
     title: lime buffer capacity (at 30 minutes)
     examples:
@@ -1505,6 +1508,7 @@ slots:
       expected_value: measurement value
       preferred_unit: ppm CaCO3/pH
       occurrence: "1"
+      storage_units: "[ppm]"
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
     title: lime buffer capacity (after 5 day incubation)
     examples:
@@ -1545,6 +1549,8 @@ slots:
     exact_mappings:
       - PATO:0000125
     range: QuantityValue
+    annotations:
+      storage_units: g
 
   substances_used:
     range: PortionOfSubstance
@@ -1561,9 +1567,13 @@ slots:
   source_concentration:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A
+    annotations:
+      storage_units: '%|mmol/L'
   final_concentration:
     is_a: concentration
     description: When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination
+    annotations:
+      storage_units: '%|mmol/L|umol/L'
   duration: # or could be a ISO8601 period string
     range: QuantityValue
     description: The elapsed time of an activity.
@@ -1571,6 +1581,8 @@ slots:
       - value:
           has_numeric_value: 2
           has_unit: h
+    annotations:
+      storage_units: h|min
   temperature:
     range: QuantityValue
     notes:
@@ -1579,6 +1591,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+    annotations:
+      storage_units: Cel
 
   total_bases:
     range: integer
@@ -1724,6 +1738,8 @@ slots:
     contributors:
       - ORCID:0009-0001-1555-1601 #Anastasiya Prymolenna
       - ORCID:0000-0002-8683-0050 #Montana Smith
+    annotations:
+      storage_units: mL|uL
 
   known_as:
     range: ChemicalEntityEnum

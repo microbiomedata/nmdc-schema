@@ -930,7 +930,7 @@ phosplipid_fatt_acid:
 photon_flux:  # example 3.926 micromole photons per second per square meter
   has_numeric_value: 3.926
   has_raw_value: "3.926 micromole photons per second per square meter"
-  has_unit: umol/s/m2
+  has_unit: umol/m2/s
   type: nmdc:QuantityValue
 plant_growth_med:
   type: nmdc:ControlledTermValue
@@ -1386,8 +1386,8 @@ tot_org_c_meth:
   has_raw_value: https://www.epa.gov/sites/production/files/2015-12/documents/9060a.pdf
 tot_org_carb:
   type: nmdc:QuantityValue
-  has_raw_value: 2%
-  has_unit: '%'
+  has_raw_value: 2 mg/L
+  has_unit: mg/L
   has_numeric_value: 2
 tot_part_carb:
   type: nmdc:QuantityValue
