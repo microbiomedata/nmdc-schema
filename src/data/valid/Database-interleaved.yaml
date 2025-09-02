@@ -1847,7 +1847,6 @@ biosample_set:
       type: nmdc:QuantityValue
       has_raw_value: xxx
       has_unit: umol/kg
-    dna_cont_well: C2
     door_comp_type: revolving
     door_cond: damaged
     door_direct: inward
@@ -2983,8 +2982,6 @@ biosample_set:
       has_raw_value: 10.0 m
       has_unit: m
       type: nmdc:QuantityValue
-    dna_absorb1: 2.02
-    dna_absorb2: 2.02
     dna_collect_site: untreated pond water
     dna_isolate_meth: DNA
     dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
