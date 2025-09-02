@@ -9,6 +9,19 @@ databases between schemas.
 
 In this document, I'll refer to those Python classes as "migrators."
 
+## Table Of Contents
+
+- [Contents](#contents)
+- [Creating a migrator](#creating-a-migrator)
+- [Adding Migration Reporting](#adding-migration-reporting)
+- [Adding Transaction Support](#adding-transaction-support)
+- [Testing the migrator](#testing-the-migrator)
+    * [Summary of steps to test a migrator with a local copy of the MongoDB database](#summary-of-steps-to-test-a-migrator-with-a-local-copy-of-the-mongodb-database)
+    * [Running a migrator with Docker step-by-step](#running-a-migrator-with-docker-step-by-step)
+    * [Summary of steps to test a migrator with the API](#summary-of-steps-to-test-a-migrator-with-the-api)
+    * [Running a migrator with project.Makefile step-by-step](#running-a-migrator-with-projectmakefile-step-by-step)
+    
+
 ## Contents
 
 This directory contains the following things:
@@ -241,14 +254,16 @@ To add MongoDB transaction support with commit/rollback functionality to your mi
 
 ## Testing the migrator
 
-##### Summary of steps to test a migrator:
+There are two documented ways to test migrators against copies of the database. One way involves loading a database dump into a containerized MongoDB server and running the migrator against that database and another uses the runtime API to gather collections of interest via `project.Makfile`. Either way is a valid way to test migrators, but you should understand what each version is doing to ensure you are testing properly. 
+
+### Summary of steps to test a migrator with a local copy of the MongoDB database:
 
 1. Create a local copy of the MongoDB database with a schema that conforms to the release from which you are migrating.
 2. Check that the database has been loaded correctly.
 3. Run the migrator against the test database.
 4. Run validation checks against the migrated database.
 
-##### Running a migrator step-by-step:
+### Running a migrator with Docker step-by-step:
 
 1. **Set up Docker environment and MongoDB database**
 
@@ -339,3 +354,82 @@ db.runCommand("listCollections").cursor.firstBatch
 # This commits the changes to the database
 % make run-migrator MIGRATOR=migrator_from_1_0_0_to_EXAMPLE ACTION=commit
 ```
+
+### Summary of steps to test a migrator with the API:
+
+1. Run `make` command to test docstring and generate new schema file. 
+2. Create a local copy of the latest schema release.
+3. Run API request to create a local copy of collections of interest.
+4. Run the migrator against the test database.
+5. Run validation checks against the migrated database.
+
+All local files are saved to `local/`
+
+### Running a migrator with project.Makefile step-by-step:
+
+1. **Run doctests and create a local copy of the schema according to your local instance**
+
+Each migrator should contain docstring tests. This step is important to catch syntax errors AND to **generate a new schema yaml file** to use in the local database tests. To run the docstring test and generate a new schema file run.  This step also validates the schema and the example data in this repo.
+
+```bash
+% make squeaky-clean test all
+```
+
+2. **Run the test-migrator-on-database command with appropriate params**
+
+The `test-migrator-on-database` command combines 3 separate commands into one. Using parameters, it removes the need to directly edit `project.Makefile` each time you test a new migrator. 
+The following parameters are available:
+
+- SELECTED_COLLECTIONS - specify the collections you want to download (i.e. collections that your migrator changes), each one separated by a space. The default is all collections EXCEPT `functional_annotation_agg`.
+- MIGRATOR - the name of the migrator file. DO NOT INCLUDE `.py` EXT
+- ENV  - whether to gather data from the prod or dev runtime API environment. The default is prod. 
+
+**For testing partial migrators, you must reference the file that wraps the partials, not individual partials. All collections modified in any of the partial migrators should be selected in the SELECTED_COLLECTIONS parameter**
+
+For example, if I wanted to test `migrator_from_11_6_1_to_11_7_0` and only download the `data_object_set` collection from the production database, I would run:
+
+```bash
+% make test-migrator-on-database MIGRATOR=migrator_from_11_6_1_to_11_7_0 SELECTED_COLLECTIONS=data_object_set
+```
+
+To download data via the _development_ instance of the NMDC Runtime and run the tests:
+
+```bash
+% make test-migrator-on-database MIGRATOR=migrator_from_11_6_1_to_11_7_0 SELECTED_COLLECTIONS=data_object_set ENV=dev
+```
+
+To specify multiple collections, separate their names with spaces:
+
+```bash
+% make test-migrator-on-database MIGRATOR=migrator_from_11_6_1_to_11_7_0 SELECTED_COLLECTIONS=data_object_set biosample_set ENV=dev
+```
+
+
+
+
+> **NOTE**
+>`% make rdf-clean` will delete locally generated files from the testing process. This can be helpful if a bug was identified and the `make` commands need to be rerun after a change. 
+
+
+That's it! Errors will output to `local/mongo_via_api_as_nmdc_database_validation.log` and there will be an alert in the terminal if this occurs. 
+
+3. **In-depth discussion of test-migrator**
+
+As mentioned, the `test-migrator-on-database` command is comprised of three commands. Each command can be run separately outside of `test-migrator-on-database`. This may come in handy when you want to test a change to the migrator, but do not want to download the database again (saves time).
+
+- `% make local/mongo_via_api_as_unvalidated_nmdc_database.yaml SELECTED_COLLECTIONS=`
+    * This command creates a local dump of the selected collections and saves it to the path local/mongo_via_api_as_unvalidated_nmdc_database.yaml
+- `% make local/mongo_via_api_as_nmdc_database_after_migrator.yaml MIGRATOR=`
+    * This command runs the migrator on the collections in `local/mongo_via_api_as_unvalidated_nmdc_database.yaml` and saves the changes to file path `local/mongo_via_api_as_nmdc_database_after_migrator.yaml`
+- `% make local/mongo_via_api_as_nmdc_database_validation.log`
+    * This commands validates the migrated collections against `nmdc_schema/nmdc_materialized_patterns.yaml` on the branch. This file will have been recompiled with your schema changes after running `make squeaky-clean test all`. It is important to test against your changes, as this will be the newest version of the schema.
+
+You can also test against the most recently-released schema (as opposed to a local branch). The steps for doing that are shown below. They involve making local changes to the file, `project.Makefile`. The changes involve the variable, `$(LATEST_TAG_SCHEMA_FILE)`, which contains the path to the most recent schema release file after it is downloaded from GitHub and is used for testing.
+
+- In `local/mongo_via_api_as_unvalidated_nmdc_database.yaml` replace `--schema-source` with `$(LATEST_TAG_SCHEMA_FILE)`
+- Replace `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_after_migrator.yaml: $(LATEST_TAG_SCHEMA_FILE)`
+- Replace `local/mongo_via_api_as_nmdc_database_validation.log: nmdc_schema/nmdc_materialized_patterns.yaml` with `local/mongo_via_api_as_nmdc_database_validation.log: $(LATEST_TAG_SCHEMA_FILE)`
+
+> Remember not to commit these local changes as this will interfere with others' testing processes. 
+
+

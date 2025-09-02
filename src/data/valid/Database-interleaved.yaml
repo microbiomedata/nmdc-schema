@@ -466,7 +466,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_type: tube
   - id: nmdc:bsm-99-J9FcnC
     type: nmdc:Biosample
     name: Root microbial communities from poplar common garden site in Clatskanie, Oregon,
@@ -1320,7 +1319,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    rna_volume: 12.0
   - id: nmdc:bsm-99-333333
     type: nmdc:Biosample
     associated_studies:
@@ -1343,8 +1341,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: B2
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000002
     type: nmdc:Biosample
     associated_studies:
@@ -1367,8 +1363,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: A11
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000003
     type: nmdc:Biosample
     associated_studies:
@@ -1391,8 +1385,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: H10
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000004
     type: nmdc:Biosample
     associated_studies:
@@ -1415,8 +1407,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: H11
-    dna_cont_type: plate
   - id: nmdc:bsm-99-000005
     type: nmdc:Biosample
     associated_studies:
@@ -1439,8 +1429,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    dna_cont_well: C1
-    dna_cont_type: plate
   - id: nmdc:bsm-99-4444444
     type: nmdc:Biosample
     name: Sample Exhaustive Biosample instance. Although all of these values should pass
@@ -2998,42 +2986,13 @@ biosample_set:
     dna_absorb1: 2.02
     dna_absorb2: 2.02
     dna_collect_site: untreated pond water
-    dna_concentration: 100.0
-    dna_cont_type: plate
-    dna_container_id: Pond_MT_041618
-    dna_dnase: 'yes'
     dna_isolate_meth: DNA
     dna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
       (1%)
-    dna_project_contact: John Jones
-    dna_samp_id: '187654'
-    dna_sample_format: 10 mmol/L Tris-HCl
-    dna_sample_name: JGI_pond_041618
-    dna_seq_project: '1191234'
-    dna_seq_project_pi: Jane Johnson
-    dna_seq_project_name: JGI Pond metagenomics
-    dna_volume: 25.0
-    proposal_dna: '504000'
-    dnase_rna: 'yes'
-    proposal_rna: '504000'
-    rna_absorb1: 2.02
-    rna_absorb2: 2.02
     rna_collect_site: untreated pond water
-    rna_concentration: 100.0
-    rna_cont_type: plate
-    rna_cont_well: C2
-    rna_container_id: Pond_MT_041618
     rna_isolate_meth: RNA
     rna_organisms: expected to contain microbes (59%) fungi (30%), viruses (10%), tadpoles
       (1%)
-    rna_project_contact: John Jones
-    rna_samp_id: '187654'
-    rna_sample_format: 10 mmol/L Tris-HCl
-    rna_sample_name: JGI_pond_041618
-    rna_seq_project: '1191234'
-    rna_seq_project_pi: Jane Johnson
-    rna_seq_project_name: JGI Pond metagenomics
-    rna_volume: 25.0
     collection_date_inc: '2023-01-29'
     collection_time: 05:42+0000
     collection_time_inc: 13:42+0000
@@ -3107,8 +3066,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    rna_cont_type: plate
-    rna_cont_well: B2
   - id: nmdc:bsm-99-000001
     type: nmdc:Biosample
     associated_studies:
@@ -3131,8 +3088,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    rna_cont_type: plate
-    rna_cont_well: A10
   - id: nmdc:bsm-99-000006
     type: nmdc:Biosample
     associated_studies:
@@ -3155,8 +3110,6 @@ biosample_set:
       term:
         id: ENVO:00005792
         type: nmdc:OntologyClass
-    rna_cont_type: plate
-    rna_cont_well: C12
   - id: nmdc:bsm-99-666666
     type: nmdc:Biosample
     name: real biosample from the field
@@ -4314,7 +4267,6 @@ processed_sample_set:
       type: nmdc:QuantityValue
       has_numeric_value: 1.8
       has_unit: "1"
-    dna_concentration: 123.0
   - id: nmdc:procsm-99-29dl
     type: nmdc:ProcessedSample
     name: mouse gut DNA extract
