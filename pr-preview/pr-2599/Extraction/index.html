@@ -675,6 +675,10 @@ attributes:
     multivalued: true
   input_mass:
     name: input_mass
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: g
     description: Total mass of sample used in activity.
     title: sample mass used
     from_schema: https://w3id.org/nmdc/nmdc
@@ -693,6 +697,10 @@ attributes:
     range: QuantityValue
   volume:
     name: volume
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mL|uL
     description: The volume of the solvent/solute being used, not the input.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
@@ -710,6 +718,10 @@ attributes:
     range: QuantityValue
   temperature:
     name: temperature
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: Cel
     description: The value of a temperature measurement or temperature used in a process.
     notes:
     - Not to be confused with the MIXS:0000113

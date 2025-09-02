@@ -7223,7 +7223,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L|umol/L'
+        value: '[ppm]|mg/L|umol/L|mg/kg'
     description: Concentration of calcium in the sample
     title: calcium
     examples:
@@ -7310,6 +7310,9 @@ attributes:
         value: measurement value
       occurrence:
         tag: occurrence
+        value: '1'
+      storage_units:
+        tag: storage_units
         value: '1'
     description: Ratio of amount or concentrations of carbon to nitrogen
     title: carbon/nitrogen ratio
@@ -7842,7 +7845,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mS/cm
+        value: mS/cm|uS/cm
     description: Electrical conductivity of water
     title: conductivity
     examples:
@@ -8069,7 +8072,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: g/cm3|g/m3
+        value: g/cm3|g/m3|kg/m3
     description: Density of the sample, which is its mass per unit volume (aka volumetric
       mass density)
     title: density
@@ -8119,6 +8122,9 @@ attributes:
       expected_value:
         tag: expected_value
         value: measurement value
+      storage_units:
+        tag: storage_units
+        value: m
     description: The vertical distance below local surface, e.g. for sediment or soil
       samples depth is measured from sediment or soil surface, respectively. Depth
       can be reported as an interval for subsurface samples.
@@ -8313,7 +8319,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L|umol/L
+        value: ug/L|umol/L|mg/L
     description: Concentration of dissolved inorganic nitrogen
     title: dissolved inorganic nitrogen
     examples:
@@ -8406,7 +8412,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|umol/L
+        value: mg/L|umol/L|ug/L
     description: Concentration of dissolved organic carbon in the sample, liquid portion
       of the sample, or aqueous phase of the fluid
     title: dissolved organic carbon
@@ -8470,7 +8476,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|umol/kg
+        value: mg/L|umol/kg|umol/L
     description: Concentration of dissolved oxygen
     title: dissolved oxygen
     examples:
@@ -9802,6 +9808,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/m3
     description: Raw or converted fluorescence of water
     title: fluorescence
     examples:
@@ -11524,7 +11533,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: g/m3
+        value: g/m3|%
     description: Amount of water vapour in the air, at the time of sampling
     title: humidity
     examples:
@@ -12123,7 +12132,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L|mol/L|umol/kg'
+        value: '[ppm]|mg/L|mol/L|umol/kg|mg/kg'
     description: Concentration of magnesium in the sample
     title: magnesium
     examples:
@@ -12549,7 +12558,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: umol/L
+        value: umol/L|%
     description: Concentration of nitrogen (total)
     title: nitrogen
     examples:
@@ -12767,7 +12776,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: umol/L
+        value: umol/L|%
     description: Concentration of organic carbon
     title: organic carbon
     examples:
@@ -13052,7 +13061,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L
+        value: ug/L|mg/L
     description: Concentration of particulate organic carbon
     title: particulate organic carbon
     examples:
@@ -13083,7 +13092,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L|umol/L
+        value: ug/L|umol/L|mg/L
     description: Concentration of particulate organic nitrogen
     title: particulate organic nitrogen
     examples:
@@ -13463,6 +13472,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: umol/m2/s
     description: Measurement of photon flux
     title: photon flux
     examples:
@@ -13672,7 +13684,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L'
+        value: '[ppm]|mg/L|mg/kg'
     description: Concentration of potassium in the sample
     title: potassium
     examples:
@@ -15064,7 +15076,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '%'
+        value: '%|mg/L'
     description: The total concentration of all dissolved salts in a liquid or solid
       sample. While salinity can be measured by a complete chemical analysis, this
       method is difficult and time consuming. More often, it is instead derived from
@@ -16696,9 +16708,6 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
-      storage_units:
-        tag: storage_units
-        value: erg/cm2/s|kW/m2/d
     description: The amount of solar energy that arrives at a specific area of a surface
       during a specific time interval
     title: solar irradiance
@@ -16800,7 +16809,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/L|umol/L'
+        value: '[ppm]|mg/L|umol/L|ug/L'
     description: Concentration of soluble reactive phosphorus
     title: soluble reactive phosphorus
     examples:
@@ -17693,7 +17702,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L
+        value: ug/L|%
     description: Total carbon content
     title: total carbon
     todos:
@@ -17760,7 +17769,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: ug/L
+        value: ug/L|umol/L
     description: 'Total dissolved nitrogen concentration, reported as nitrogen, measured
       by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen'
     title: total dissolved nitrogen
@@ -17854,7 +17863,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|ug/L|umol/L
+        value: mg/L|ug/L|umol/L|%
     description: 'Total nitrogen concentration of water samples, calculated by: total
       nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured
       without filtering, reported as nitrogen'
@@ -17914,7 +17923,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/L|ug/L|umol/L
+        value: mg/L|ug/L|umol/L|%
     description: Total nitrogen content of the sample
     title: total nitrogen content
     examples:
@@ -17969,6 +17978,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: mg/L
     description: 'Definition for soil: total organic carbon content of the soil, definition
       otherwise: total organic carbon content'
     title: total organic carbon
@@ -19725,6 +19737,10 @@ attributes:
     range: string
   subsurface_depth:
     name: subsurface_depth
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: m
     from_schema: https://w3id.org/nmdc/nmdc
     rank: 1000
     alias: subsurface_depth
@@ -20380,7 +20396,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/kg'
+        value: '[ppm]|mg/kg|mg/L'
     description: Concentration of zinc in the sample
     title: zinc
     examples:
@@ -20408,7 +20424,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: '[ppm]|mg/kg'
+        value: '[ppm]|mg/kg|mg/L'
     description: Concentration of manganese in the sample
     title: manganese
     examples:
@@ -20436,7 +20452,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/kg
+        value: '[ppm]|mg/kg|mg/L'
     description: Concentration of ammonium nitrogen in the sample
     title: ammonium nitrogen
     examples:
@@ -20466,7 +20482,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/kg
+        value: '[ppm]|mg/kg|mg/L'
     description: Concentration of nitrate nitrogen in the sample
     title: nitrate_nitrogen
     comments:
@@ -20498,7 +20514,7 @@ attributes:
         value: '1'
       storage_units:
         tag: storage_units
-        value: mg/kg
+        value: '[ppm]|mg/kg|mg/L'
     description: Concentration of nitrite nitrogen in the sample
     title: nitrite_nitrogen
     examples:
@@ -20526,6 +20542,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
     description: lime buffer capacity, determined after 30 minute incubation
     title: lime buffer capacity (at 30 minutes)
     comments:
@@ -20558,6 +20577,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[ppm]'
     description: lime buffer capacity, determined at equilibrium after 5 day incubation
     title: lime buffer capacity (after 5 day incubation)
     comments:

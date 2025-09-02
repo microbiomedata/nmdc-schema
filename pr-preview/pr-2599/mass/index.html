@@ -548,6 +548,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#schema-source" class="md-nav__link">
     <span class="md-ellipsis">
       Schema Source
@@ -614,14 +623,14 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
-<td>A portion of any matter of defined composition that has discrete existence, w...</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../SubSamplingProcess/">SubSamplingProcess</a></td>
 <td>Separating a sample aliquot from the starting material for downstream activit...</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../PortionOfSubstance/">PortionOfSubstance</a></td>
+<td>A portion of any matter of defined composition that has discrete existence, w...</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -630,6 +639,21 @@
 <li>Range: <a href="../QuantityValue/">QuantityValue</a></li>
 </ul>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
+<h3 id="annotations">Annotations</h3>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>storage_units</td>
+<td>g</td>
+</tr>
+</tbody>
+</table>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
 <li>from schema: <a href="https://w3id.org/nmdc/nmdc">https://w3id.org/nmdc/nmdc</a></li>
@@ -653,6 +677,10 @@
 <details>
 
 <pre><code class="language-yaml">name: mass
+annotations:
+  storage_units:
+    tag: storage_units
+    value: g
 description: A physical quality that inheres in a bearer by virtue of the proportion
   of the bearer's amount of matter.
 title: mass

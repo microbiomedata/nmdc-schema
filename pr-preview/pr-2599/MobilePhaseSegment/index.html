@@ -470,6 +470,10 @@ from_schema: https://w3id.org/nmdc/nmdc
 attributes:
   duration:
     name: duration
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: h|min
     description: The elapsed time of an activity.
     examples:
     - value: JsonObj(has_numeric_value=2, has_unit='h')
@@ -547,6 +551,10 @@ attributes:
     required: true
   volume:
     name: volume
+    annotations:
+      storage_units:
+        tag: storage_units
+        value: mL|uL
     description: The volume of a substance.
     from_schema: https://w3id.org/nmdc/nmdc
     contributors:
