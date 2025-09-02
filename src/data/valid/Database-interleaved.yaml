@@ -2152,13 +2152,13 @@ biosample_set:
       longitude: 6.408977
     lbc_thirty:
       type: nmdc:QuantityValue
-      has_raw_value: 543 mg/kg
-      has_unit: mg/kg
+      has_raw_value: 543 ppm
+      has_unit: '[ppm]'
       has_numeric_value: 543.0
     lbceq:
       type: nmdc:QuantityValue
-      has_raw_value: 1575 mg/kg
-      has_unit: mg/kg
+      has_raw_value: 1575 ppm
+      has_unit: '[ppm]'
       has_numeric_value: 1575.0
     light_intensity:
       has_numeric_value: 0.3
