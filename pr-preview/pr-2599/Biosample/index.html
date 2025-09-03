@@ -5710,9 +5710,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: history/agrochemical additions
     examples:
@@ -5811,9 +5811,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: m
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving an exposure to varying temperatures;
       should include the temperature, treatment regimen including how many times the
       treatment was repeated, how long each treatment lasted, and the start and end
@@ -6223,9 +6223,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: mg
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving antibiotic administration;
       should include the name of antibiotic, amount administered, treatment regimen
       including how many times the treatment was repeated, how long each treatment
@@ -6261,6 +6261,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: UCUM unaware of MIxS unit
     description: 'API gravity is a measure of how heavy or light a petroleum liquid
       is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g.
       31.1¬∞ API)'
@@ -8915,6 +8918,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: MIxS internally inconsistent
     description: Percentage of volatile solids removed from the anaerobic digestor
     title: efficiency percent
     examples:
@@ -9435,9 +9441,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving the use of fertilizers; should
       include the name of fertilizer, amount administered, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -9914,9 +9920,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving use of fungicides; should include
       the name of fungicide, amount administered, treatment regimen including how
       many times the treatment was repeated, how long each treatment lasted, and the
@@ -10288,9 +10294,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving use of growth hormones; should
       include the name of growth hormone, amount administered, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -10766,9 +10772,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving use of herbicides; information
       about treatment involving use of growth hormones; should include the name of
       herbicide, amount administered, treatment regimen including how many times the
@@ -11595,9 +11601,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g/m3
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving an exposure to varying degree
       of humidity; information about treatment involving use of growth hormones; should
       include amount of humidity administered, treatment regimen including how many
@@ -11751,6 +11757,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: MIxS internally inconsistent
     description: The recorded value at sampling time (power density)
     title: inside lux light
     examples:
@@ -11947,9 +11956,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment(s) involving exposure to light, including
       both light intensity and quality.
     title: light regimen
@@ -12432,9 +12441,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving the use of mineral supplements;
       should include the name of mineral nutrient, amount administered, treatment
       regimen including how many times the treatment was repeated, how long each treatment
@@ -12630,9 +12639,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving the exposure of plant to non-mineral
       nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral
       nutrient, amount administered, treatment regimen including how many times the
@@ -12849,9 +12858,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: 'If qpcr was used for the cell count, the target gene name, the primer
       sequence and the cycling conditions should also be provided. (Example: 16S rrna;
       FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min;
@@ -12984,9 +12993,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: m
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: 'Total cell count of any organism (or group of organisms) per gram,
       volume or area of sample, should include name of organism followed by count.
       The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should
@@ -13205,6 +13214,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: UCUM unaware of MIxS unit
     description: 'Measure of the ability of a hydrocarbon resource to allow fluids
       to pass through it. (Additional information: https://en.wikipedia.org/wiki/Permeability_(earth_sciences))'
     title: permeability
@@ -13269,9 +13281,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving use of insecticides; should
       include the name of pesticide, amount administered, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -14105,9 +14117,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: Gy|RAD
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving exposure of plant or a plant
       part to a particular radiation regimen; should include the radiation type, amount
       or intensity administered, treatment regimen including how many times the treatment
@@ -14146,9 +14158,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: mm
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving an exposure to a given amount
       of rainfall, treatment regimen including how many times the treatment was repeated,
       how long each treatment lasted, and the start and end time of the entire treatment;
@@ -14275,6 +14287,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: MIxS internally inconsistent
     description: The recorded outside relative humidity value at the time of sampling
     title: outside relative humidity
     examples:
@@ -15196,9 +15211,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: g|g/L|mol/L|ug
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving use of salts as supplement
       to liquid and soil growth media; should include the name of salt, amount administered,
       treatment regimen including how many times the treatment was repeated, how long
@@ -15797,9 +15812,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Sample transport duration (in days or hrs) and temperature the sample
       was exposed to (e.g. 5.5 days; 20 ¬∞C)
     title: sample transport conditions
@@ -16990,6 +17005,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: '1'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: MIxS internally inconsistent
     description: The mass of water vapour in a unit mass of moist air, usually expressed
       as grams of vapour per kilogram of air, or, in air conditioning, as grains per
       pound.
@@ -17124,9 +17142,9 @@ attributes:
       occurrence:
         tag: occurrence
         value: m
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Treatment involving an exposure to standing water during a plant's
       life span, types can be flood water or standing water, treatment regimen including
       how many times the treatment was repeated, how long each treatment lasted, and
@@ -19110,9 +19128,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: Cel
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving an exposure to water with varying
       degree of temperature, treatment regimen including how many times the treatment
       was repeated, how long each treatment lasted, and the start and end time of
@@ -19150,9 +19168,9 @@ attributes:
       storage_units:
         tag: storage_units
         value: L|mL
-      not_measurement_like:
-        tag: not_measurement_like
-        value: 'true'
+      units_alignment_excuse:
+        tag: units_alignment_excuse
+        value: not measurement like
     description: Information about treatment involving an exposure to watering frequencies,
       treatment regimen including how many times the treatment was repeated, how long
       each treatment lasted, and the start and end time of the entire treatment; can
