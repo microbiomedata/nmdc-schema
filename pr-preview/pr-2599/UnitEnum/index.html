@@ -622,6 +622,11 @@
 <td>The Unified Code for Units of Measure (UCUM) representation of centimeter</td>
 </tr>
 <tr>
+<td>cP</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of centipoise</td>
+</tr>
+<tr>
 <td>d</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of day</td>
@@ -1102,6 +1107,11 @@
 <td>The Unified Code for Units of Measure (UCUM) representation of Nephelometric ...</td>
 </tr>
 <tr>
+<td>[FNU]</td>
+<td>None</td>
+<td>The Unified Code for Units of Measure (UCUM) representation of Formazin Nephe...</td>
+</tr>
+<tr>
 <td>m3/min</td>
 <td>None</td>
 <td>The Unified Code for Units of Measure (UCUM) representation of cubic meters p...</td>
@@ -1325,6 +1335,12 @@ permissible_values:
   cm:
     text: cm
     description: The Unified Code for Units of Measure (UCUM) representation of centimeter.
+  cP:
+    text: cP
+    description: The Unified Code for Units of Measure (UCUM) representation of centipoise.
+    aliases:
+    - centipoise
+    - centiPoise
   d:
     text: d
     description: The Unified Code for Units of Measure (UCUM) representation of day.
@@ -1896,8 +1912,16 @@ permissible_values:
     text: '[NTU]'
     description: The Unified Code for Units of Measure (UCUM) representation of Nephelometric
       Turbidity Units.
+    title: Nephelometric Turbidity Units
     aliases:
     - NTU
+  '[FNU]':
+    text: '[FNU]'
+    description: The Unified Code for Units of Measure (UCUM) representation of Formazin
+      Nephelometric Units.
+    title: Formazin Nephelometric Units
+    aliases:
+    - FNU
   m3/min:
     text: m3/min
     description: The Unified Code for Units of Measure (UCUM) representation of cubic
