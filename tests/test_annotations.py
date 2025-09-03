@@ -11,6 +11,7 @@ from tests import SCHEMA_FILE
 ALLOWED_ANNOTATION_KEYS = {
     "expected_value",
     "file_name_pattern",
+    "not_measurement_like",
     "occurrence",
     "originally",
     "preferred_unit",

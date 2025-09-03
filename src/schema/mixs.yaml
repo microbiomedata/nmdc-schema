@@ -1339,6 +1339,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Addition of fertilizers, pesticides, etc. - amount and time of applications
     title: history/agrochemical additions
     examples:
@@ -1415,6 +1418,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens
     title: air temperature regimen
     examples:
@@ -1718,6 +1724,9 @@ slots:
       storage_units:
         tag: storage_units
         value: mg
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens
     title: antibiotic regimen
     examples:
@@ -2682,6 +2691,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: J/K
     description: The ability of the ceiling to provide inertia against temperature fluctuations. Generally this means concrete that is exposed. A metal deck that supports a concrete slab will act thermally as long as it is exposed to room air flow
     title: ceiling thermal mass
     examples:
@@ -3709,6 +3721,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: umol/m2/s
     description: Visible waveband radiance and irradiance measurements in the water column
     title: downward PAR
     examples:
@@ -4110,6 +4125,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens
     title: fertilizer regimen
     examples:
@@ -4357,6 +4375,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: J/K
     description: The ability of the floor to provide inertia against temperature fluctuations
     title: floor thermal mass
     examples:
@@ -4464,6 +4485,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens
     title: fungicide regimen
     examples:
@@ -4731,6 +4755,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens
     title: growth hormone regimen
     examples:
@@ -5080,6 +5107,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: herbicide regimen
     examples:
@@ -5724,6 +5754,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g/m3
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: humidity regimen
     examples:
@@ -5984,6 +6017,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment(s) involving exposure to light, including both light intensity and quality.
     title: light regimen
     examples:
@@ -6352,6 +6388,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens
     title: mineral nutrient regimen
     examples:
@@ -6502,6 +6541,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens
     title: non-mineral nutrient regimen
     examples:
@@ -6698,6 +6740,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: 'If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)'
     title: organism count qPCR information
     examples:
@@ -6798,6 +6843,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: 'Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)'
     title: organism count
     examples:
@@ -7048,6 +7096,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|mg/L|mol/L
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens
     title: pesticide regimen
     examples:
@@ -7697,6 +7748,9 @@ slots:
       storage_units:
         tag: storage_units
         value: Gy|RAD
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens
     title: radiation regimen
     examples:
@@ -7724,6 +7778,9 @@ slots:
       storage_units:
         tag: storage_units
         value: mm
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: rainfall regimen
     examples:
@@ -8522,6 +8579,9 @@ slots:
       storage_units:
         tag: storage_units
         value: g|g/L|mol/L|ug
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens
     title: salt regimen
     examples:
@@ -8954,6 +9014,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20 ¬∞C)
     title: sample transport conditions
     examples:
@@ -9721,6 +9784,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: kW/m2/d|erg/cm2/s
     description: The amount of solar energy that arrives at a specific area of a surface during a specific time interval
     title: solar irradiance
     examples:
@@ -9973,6 +10039,9 @@ slots:
       occurrence:
         tag: occurrence
         value: m
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: standing water regimen
     examples:
@@ -10901,6 +10970,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: '[NTU]|[FNU]'
     description: Measure of the amount of cloudiness or haziness in water caused by individual particles
     title: turbidity
     examples:
@@ -11106,6 +11178,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: cP
     description: A measure of oil's resistance¬†to gradual deformation by¬†shear stress¬†or¬†tensile stress (e.g. 3.5 cp; 100 ¬∞C)
     title: viscosity
     examples:
@@ -11301,6 +11376,9 @@ slots:
       occurrence:
         tag: occurrence
         value: '1'
+      storage_units:
+        tag: storage_units
+        value: J/K
     description: The ability of the wall to provide inertia against temperature fluctuations. Generally this means concrete or concrete block that is either exposed or covered only with paint
     title: wall thermal mass
     examples:
@@ -11530,6 +11608,9 @@ slots:
       storage_units:
         tag: storage_units
         value: Cel
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: water temperature regimen
     examples:
@@ -11557,6 +11638,9 @@ slots:
       storage_units:
         tag: storage_units
         value: L|mL
+      not_measurement_like:
+        tag: not_measurement_like
+        value: "true"
     description: Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens
     title: watering regimen
     examples:

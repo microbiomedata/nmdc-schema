@@ -296,6 +296,11 @@ enums:
           - OM:degreeCelsius
       cm:
         description: The Unified Code for Units of Measure (UCUM) representation of centimeter.
+      cP:
+        aliases:
+          - centipoise
+          - centiPoise
+        description: The Unified Code for Units of Measure (UCUM) representation of centipoise.
       d:
         aliases:
           - days
@@ -414,10 +419,6 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of atmosphere.
       mV:
         description: The Unified Code for Units of Measure (UCUM) representation of millivolt.
-#      PSU:
-#        description: The Unified Code for Units of Measure (UCUM) representation of practical salinity unit.
-#        comments:
-#          - PSU is not a valid UCUM code. No alternatives were found.
       L:
         description: The Unified Code for Units of Measure (UCUM) representation of liter.
       um:
@@ -425,8 +426,6 @@ enums:
           - μm
           - µm
         description: The Unified Code for Units of Measure (UCUM) representation of micrometer.
-#      y:
-#        description: The Unified Code for Units of Measure (UCUM) representation of year.
       "1":
         title: "ratio/unitless"
         aliases:
@@ -705,30 +704,10 @@ enums:
           - kilowatt
           - kilowatts
         description: The Unified Code for Units of Measure (UCUM) representation of kilowatt.
-#      API:
-#        description: The Unified Code for Units of Measure (UCUM) representation of API units.
-#        comments:
-#          - API is not a valid UCUM code. No alternatives were found.
       mbar:
         description: The Unified Code for Units of Measure (UCUM) representation of millibar.
-#      ratio:
-#        aliases:
-#          - "{ratio}"
-#        description: The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).
-#      "uE/m2/s":
-#        comments:
-#          - uE is not a valid UCUM code. No alternatives were found.
-#        description: The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second.
-#        aliases:
-#          - "[arb'U]{micro_Einstein}/m2/s"
       "kW/m2":
         description: The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter.
-#      people:
-#        description: The Unified Code for Units of Measure (UCUM) representation of people count.
-#      pets:
-#        description: The Unified Code for Units of Measure (UCUM) representation of pet count.
-#      plants:
-#        description: The Unified Code for Units of Measure (UCUM) representation of plant count.
       "umol/s/m2":
         description: The Unified Code for Units of Measure (UCUM) representation of micromoles per second per square meter.
         aliases:
@@ -745,8 +724,14 @@ enums:
         description: The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day.
       "[NTU]":
         description: The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.
+        title: Nephelometric Turbidity Units
         aliases:
           - NTU
+      "[FNU]":
+        description: The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units.
+        title: Formazin Nephelometric Units
+        aliases:
+          - FNU
       "m3/min":
         description: The Unified Code for Units of Measure (UCUM) representation of cubic meters per minute.
       "km/h":

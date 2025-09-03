@@ -470,6 +470,48 @@ make: *** [Makefile:102: gen-project] Error 1
 # MIxS doesn't specify 'uS/cm'
 '.slots.conduc.annotations.storage_units = {"tag": "storage_units", "value": "mS/cm|uS/cm"}'
 
+# MIxS says 'joule per degree Celsius'. UCUM says that's illegal division by a non-ration unit,
+# so we use the essentially equivalent J/K instead
+'.slots.ceil_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
+'.slots.floor_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
+'.slots.wall_thermal_mass.annotations.storage_units = {"tag": "storage_units", "value": "J/K"}'
+
+# Mark regimen/protocol/condition slots as not measurement-like despite having preferred_unit
+'.slots.agrochem_addition.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.air_temp_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.antibiotic_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.fertilizer_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.fungicide_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.growth_hormone_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.herbicide_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.humidity_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.light_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.mineral_nutr_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.non_min_nutr_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.pesticide_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.radiation_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.rainfall_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.salt_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.standing_water_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.water_temp_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.watering_regm.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.samp_transport_cond.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.org_count_qpcr_info.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+'.slots.organism_count.annotations.not_measurement_like = {"tag": "not_measurement_like", "value": "true"}'
+
+
+# MIxS has clear single UCUM-compatible preferred units
+'.slots.viscosity.annotations.storage_units = {"tag": "storage_units", "value": "cP"}'
+
+# MIxS provides multiple options but both are UCUM-compatible  
+'.slots.solar_irradiance.annotations.storage_units = {"tag": "storage_units", "value": "kW/m2/d|erg/cm2/s"}'
+
+# Same photon flux units as photon_flux slot (microEinstein per square meter per second)
+'.slots.down_par.annotations.storage_units = {"tag": "storage_units", "value": "umol/m2/s"}'
+
+# turbidity units - allowing both NTU and FNU which are standard turbidity units
+'.slots.turbidity.annotations.storage_units = {"tag": "storage_units", "value": "[NTU]|[FNU]"}'
+
 # none of these units are specified by MIxS
 '.slots.depth.annotations.storage_units = {"tag": "storage_units", "value": "m"}'
 '.slots.carb_nitro_ratio.annotations.storage_units = {"tag": "storage_units", "value": "1"}'

@@ -1,7 +1,19 @@
 # routine: make squeaky-clean all only-test
 # for regenrating src/schema/mixs.yaml: make squeaky-clean mixs-yaml-clean all only-test
 
+# make squeaky-clean mixs-yaml-clean
+# make src/schema/mixs.yaml
+# make squeaky-clean all test
+# yaml dumping, migrating, validating and RDF generation: ...
+# loading RDF and schema OWL into triplestore: ...
+
+
 # for releases: git add -f examples nmdc_schema project src
+
+# not relevant once JS units testing has been removed (which may have happened already)
+src/scripts/node_modules/
+src/scripts/package-lock.json
+
 examples/output/
 project
 project/

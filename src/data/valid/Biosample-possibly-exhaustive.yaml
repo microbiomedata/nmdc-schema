@@ -438,7 +438,7 @@ door_water_mold:
 down_par:  # example: 28.71 microEinstein per square meter per second (Einstein is not in UCUM)
   type: nmdc:QuantityValue
   has_raw_value: xxx
-  has_unit: 'm2/s'
+  has_unit: umol/m2/s
 drainage_class: well
 drawings: operation
 ecosystem: unconstrained text. should be validated against the controlled vocabulary,
@@ -1409,10 +1409,10 @@ tot_sulfur:
 train_line: red
 train_stat_loc: south station above ground
 train_stop_loc: end
-turbidity:  # example: 0.3 nephelometric turbidity units (which is not a valid unit in UCUM)
+turbidity:  # example: 0.3 nephelometric turbidity units
   has_numeric_value: 0.3
   has_raw_value: "0.3 nephelometric turbidity units"
-  has_unit: '1'
+  has_unit: '[NTU]'
   type: nmdc:QuantityValue
 tvdss_of_hcr_press:
   type: nmdc:QuantityValue
