@@ -3,7 +3,7 @@
 # This Makefile demonstrates the complete schema-only workflow for generating
 # storage_units annotations without needing MongoDB data.
 
-.PHONY: all clean rebuild help mongodb-analysis
+.PHONY: all clean rebuild help validate-production mongodb-analysis
 
 # Default target - complete workflow
 all: schema.tsv input.tsv detailed.tsv single.txt multi.txt
@@ -23,6 +23,19 @@ input.tsv detailed.tsv: schema.tsv extract.py
 single.txt multi.txt: input.tsv process.py
 	python process.py --input $< --output-dir .
 
+
+# Production data validation (uses MongoDB YAML dump)
+# Set SCHEMA_FILE to control which schema version to validate against:
+# ENV=dev (default): ../nmdc_schema/nmdc_materialized_patterns.yaml (current development schema)
+# ENV=prod: ../local/nmdc_schema_last_release.yaml (latest release schema)
+SCHEMA_FILE ?= $(if $(filter prod,$(ENV)),../local/nmdc_schema_last_release.yaml,../nmdc_schema/nmdc_materialized_patterns.yaml)
+
+production_units_validation.tsv: ../local/mongo_via_api_as_unvalidated_nmdc_database.yaml validate_production_units.py
+	python validate_production_units.py --input $< --output $@ --schema-file $(SCHEMA_FILE)
+
+validate-production: production_units_validation.tsv
+	@echo "Production units validation complete"
+	@echo "Note: Requires MongoDB dump from: make local/mongo_via_api_as_unvalidated_nmdc_database.yaml"
 
 # Legacy MongoDB workflow (requires external production data)
 mongodb-slots-to-units_analyzed.csv: mongodb-slots-to-units.csv analyze_units.py
@@ -50,6 +63,15 @@ help:
 	@echo "Targets:"
 	@echo "  all                    - Run complete workflow (default)"
 	@echo "  rebuild               - Clean then build everything"
+	@echo "  validate-production   - Validate production data against storage_units constraints"
 	@echo "  mongodb-analysis      - Legacy MongoDB unit validation (requires external data)"
 	@echo "  clean                 - Remove generated files"
 	@echo "  help                  - Show this help"
+	@echo ""
+	@echo "Environment Variables:"
+	@echo "  ENV=dev (default)     - Use current development schema"
+	@echo "  ENV=prod              - Use latest release schema"
+	@echo ""
+	@echo "Examples:"
+	@echo "  make validate-production                    # Use dev schema"
+	@echo "  make validate-production ENV=prod           # Use release schema"
