@@ -115,9 +115,7 @@ class ProductionUnitsValidator:
         """Extract slot name from the path to QuantityValue."""
         # The slot is typically the second-to-last element in the path
         # e.g., ['biosample_set', '0', 'temp', 'has_numeric_value'] -> 'temp'
-        if len(path) >= 2:
-            return path[-2]
-        return None
+        return path[-1]
 
     def analyze_production_data(self, yaml_file: Path) -> Dict[str, Any]:
         """Analyze production data and return validation results."""

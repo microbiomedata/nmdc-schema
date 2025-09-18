@@ -8,21 +8,13 @@ sys.path.insert(0, str(project_root))
 
 from units.validate_production_units import ProductionUnitsValidator
 
-
-
-
-
-##TODO: CURRENTLY ONLY LOOKS AT BIOSAMPLE
-
-## IM HERE: trying to figure out why all these tests are passing when they shouldn't
-
-
-
-
-
-
 class Migrator(MigratorBase):
-    r'''Migrates a database between two schemas.'''
+    r'''
+    Migrates a database between two schemas.
+    TWO NOTES: 
+    - If there is no storage_unit on the slot, the only test is whether the value for `has_unit` is in the UnitEnum
+    - This assumes that all storage_unit restrictions are applied on the global level, it does not validate any changes made on slot_useage (same as python tests, example: does not test if temp on biosample has to be celsius but temp on conversion process is kelvin)
+    '''
 
     _from_version = '11.11.0.part_2'
     _to_version = '11.11.0.part_3'
@@ -101,9 +93,7 @@ class Migrator(MigratorBase):
                 continue
                 
             # Extract slot name from path using the imported method
-            slot_name = self.validator.extract_slot_from_path(path)
-            if not slot_name:
-                continue
+            slot_name = path[-1]
             
             # First validate against UnitEnum using the imported method
             if not self.validator.validate_has_unit_against_enum(has_unit):
