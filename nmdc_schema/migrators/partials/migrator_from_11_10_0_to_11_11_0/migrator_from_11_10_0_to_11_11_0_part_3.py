@@ -73,14 +73,14 @@ class Migrator(MigratorBase):
         ...     "type": "nmdc:Biosample", 
         ...     "temp": {
         ...         "type": "nmdc:QuantityValue",
-        ...         "has_unit": "meter",  # Wrong unit type for temperature
+        ...         "has_unit": "m",  # Wrong unit type for temperature
         ...         "has_numeric_value": 25.0
         ...     }
         ... }
         >>> m.confirm_units_fit_unitenum_and_storage_units(invalid_biosample_storage)
         Traceback (most recent call last):
             ...
-        ValueError: Document test3 has invalid unit 'meter' for slot 'temp': Unit 'meter' not in allowed storage_units for slot 'temp'
+        ValueError: Document test3 has invalid unit 'm' for slot 'temp': Unit 'm' not in allowed storage_units ['Cel'] for slot 'temp'
 
         '''
         
