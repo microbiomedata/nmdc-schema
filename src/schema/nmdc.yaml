@@ -1204,6 +1204,8 @@ slots:
     narrow_mappings:
       - MIXS:0000111
     range: QuantityValue
+    annotations:
+      storage_units: g
 
   library_type:
     title: library type

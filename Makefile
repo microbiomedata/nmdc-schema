@@ -317,4 +317,3 @@ check-invalids-for-single-failure:
 .PHONY: gen-linkml-schema-files
 gen-linkml-schema-files:
 	$(RUN) python src/scripts/check_schema_self_containment.py
-
