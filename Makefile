@@ -149,11 +149,15 @@ test-schema:
 		--include rdf \
 		-d tmp $(SOURCE_SCHEMA_PATH)
 
+# Note: The final command in this recipe uses `pytest` to run tests. However,
+#       `pytest` is not currently listed as a dependency in `pyproject.toml`.
+#       TODO: Add `pytest` as a development dependency in `pyproject.toml`.
 test-python:
 	$(RUN) python -m unittest discover
 	$(RUN) python -m doctest nmdc_schema/nmdc_data.py
 	$(RUN) python -m doctest nmdc_schema/id_helpers.py
 	$(RUN) python -m doctest src/scripts/make_typecode_to_class_map.py
+	$(RUN) python -m pytest -v tests/test_data.py
 
 lint:
 	$(RUN) linkml-lint $(SOURCE_SCHEMA_PATH) > local/lint.log
