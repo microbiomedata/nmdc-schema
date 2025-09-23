@@ -1,0 +1,31 @@
+# QuantityValue Slots WITHOUT storage_units annotations (MISSING)
+# Source: nmdc_schema/nmdc_materialized_patterns.yaml
+# Count:       27
+
+alt | MISSING
+api | MISSING
+biomaterial_purity | MISSING
+bulk_elect_conductivity | MISSING
+concentration | MISSING
+container_size | MISSING
+efficiency_percent | MISSING
+exp_pipe | MISSING
+filter_pore_size | MISSING
+freq_clean | MISSING
+freq_cook | MISSING
+input_volume | MISSING
+inside_lux | MISSING
+max_occup | MISSING
+number_pets | MISSING
+number_plants | MISSING
+number_resident | MISSING
+occup_density_samp | MISSING
+occup_samp | MISSING
+organism_count | MISSING
+rel_humidity_out | MISSING
+room_occup | MISSING
+root_med_ph | MISSING
+soil_text_measure | MISSING
+specific_humidity | MISSING
+substances_volume | MISSING
+value | MISSING
