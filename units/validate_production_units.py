@@ -25,6 +25,7 @@ import yaml
 import click
 import csv
 from collections import defaultdict, Counter
+from datetime import datetime
 
 from linkml_runtime import SchemaView
 
@@ -113,15 +114,34 @@ class ProductionUnitsValidator:
 
     def extract_slot_from_path(self, path: List[str]) -> Optional[str]:
         """Extract slot name from the path to QuantityValue."""
-        # The slot is typically the second-to-last element in the path
-        # e.g., ['biosample_set', '0', 'temp', 'has_numeric_value'] -> 'temp'
-        if len(path) >= 2:
-            return path[-2]
+        # The slot is the last element in the path
+        # e.g., ['biosample_set', '0', 'depth'] -> 'depth'
+        if len(path) >= 1:
+            return path[-1]
+        return None
+    
+    def _find_parent_object(self, collection_data: List[dict], path: List[str]) -> Optional[dict]:
+        """Find the parent object that contains the QuantityValue."""
+        # Navigate to the parent object using the path
+        # path is like ['biosample_set', '0', 'depth', 'has_numeric_value']
+        # We want the object at ['biosample_set', '0']
+        if len(path) < 3:
+            return None
+        
+        try:
+            # Skip collection name, get document index, then navigate to parent
+            doc_index = int(path[1])
+            if doc_index < len(collection_data):
+                return collection_data[doc_index]
+        except (ValueError, IndexError):
+            pass
+        
         return None
 
     def analyze_production_data(self, yaml_file: Path) -> Dict[str, Any]:
         """Analyze production data and return validation results."""
-        click.echo(f"Loading production data from {yaml_file}...")
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        click.echo(f"[{timestamp}] Loading production data from {yaml_file}...")
         
         try:
             with open(yaml_file, 'r', encoding='utf-8') as f:
@@ -130,8 +150,12 @@ class ProductionUnitsValidator:
             click.echo(f"Error loading YAML file: {e}", err=True)
             sys.exit(1)
         
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        click.echo(f"[{timestamp}] Data loading complete. Starting analysis...")
+        
         results = {
             'total_quantity_values': 0,
+            'missing_has_unit': [],
             'enum_violations': [],
             'storage_units_violations': [],
             'valid_units': [],
@@ -147,17 +171,35 @@ class ProductionUnitsValidator:
                     results['collections_processed'].append(collection_name)
                     click.echo(f"  Processing {collection_name}: {len(collection_data)} documents")
                     
-                    for path, qv_data in self.iter_quantity_values(collection_data):
+                    for path, qv_data in self.iter_quantity_values(collection_data, [collection_name]):
                         results['total_quantity_values'] += 1
+                        
+                        # Extract slot name from path first
+                        slot_name = self.extract_slot_from_path(path)
+                        if not slot_name:
+                            continue
+                        
+                        # Find the parent object to get its class type
+                        parent_obj = self._find_parent_object(collection_data, path)
+                        if not parent_obj:
+                            continue
+                        
+                        object_type = parent_obj.get('type', '').replace('nmdc:', '')
                         
                         # Extract has_unit
                         has_unit = qv_data.get('has_unit')
                         if not has_unit:
-                            continue
+                            # Track QuantityValues without has_unit
+                            storage_units = self.get_slot_storage_units(slot_name)
+                            storage_units_str = '|'.join(storage_units) if storage_units else ''
                             
-                        # Extract slot name from path
-                        slot_name = self.extract_slot_from_path(path)
-                        if not slot_name:
+                            results['missing_has_unit'].append({
+                                'collection': collection_name,
+                                'object_type': object_type,
+                                'slot': slot_name,
+                                'storage_units': storage_units_str,
+                                'path': '.'.join(path)
+                            })
                             continue
                             
                         results['slots_analyzed'][slot_name] += 1
@@ -188,6 +230,7 @@ class ProductionUnitsValidator:
                         else:
                             results['valid_units'].append({
                                 'collection': collection_name,
+                                'object_type': object_type,
                                 'slot': slot_name,
                                 'has_unit': has_unit
                             })
@@ -203,7 +246,7 @@ class ProductionUnitsValidator:
         
         # Process all valid units
         for item in results['valid_units']:
-            collection = item['collection']
+            object_type = item['object_type']
             slot_name = item['slot']
             has_unit = item['has_unit']
             
@@ -211,51 +254,60 @@ class ProductionUnitsValidator:
             storage_units = self.get_slot_storage_units(slot_name)
             storage_units_str = '|'.join(storage_units) if storage_units else ''
             
-            # Map collection to schema class (simplified mapping)
-            schema_class = f"https://w3id.org/nmdc/{collection.replace('_set', '').title()}"
+            # Check if unit is valid (in storage_units or no constraint)
+            is_valid = storage_units is None or has_unit in storage_units
             
-            # Use slot name as property and label (simplified)
-            property_uri = f"https://w3id.org/mixs/{slot_name}"
-            label = slot_name
-            
-            # Create key for aggregation
-            key = (schema_class, property_uri, label, storage_units_str, has_unit)
+            # Create key for aggregation: (class, slot, storage_units, actual_unit, is_valid)
+            key = (object_type, slot_name, storage_units_str, has_unit, is_valid)
             aggregated_data[key] += 1
         
-        # Process violations too (with empty storage_units)
+        # Process violations too 
         for violation in results['storage_units_violations']:
             collection = violation['collection']
             slot_name = violation['slot']
             has_unit = violation['has_unit']
             storage_units = violation['storage_units']
             
-            schema_class = f"https://w3id.org/nmdc/{collection.replace('_set', '').title()}"
-            property_uri = f"https://w3id.org/mixs/{slot_name}"
-            label = slot_name
+            # Use collection-based class name as fallback for violations
+            schema_class = collection.replace('_set', '').title()
             storage_units_str = '|'.join(storage_units) if storage_units else ''
             
-            key = (schema_class, property_uri, label, storage_units_str, has_unit)
+            # Violations are by definition invalid
+            is_valid = False
+            
+            key = (schema_class, slot_name, storage_units_str, has_unit, is_valid)
             aggregated_data[key] += 1
         
-        # Write CSV in mongodb format
+        # Process missing has_unit cases too
+        for missing in results['missing_has_unit']:
+            object_type = missing['object_type']
+            slot_name = missing['slot']
+            storage_units_str = missing['storage_units']
+            
+            # No unit means invalid (missing data)
+            key = (object_type, slot_name, storage_units_str, 'MISSING_HAS_UNIT', False)
+            aggregated_data[key] += 1
+        
+        # Write CSV in new format
         with open(output_file, 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             
-            # Header matching mongodb-slots-to-units.csv
-            writer.writerow(['sc', 'p', 'l', 'su', 'u', 'count'])
+            # New header: class, slot, storage_units, actual_unit, is_valid, count
+            writer.writerow(['class', 'slot', 'storage_units', 'actual_unit', 'is_valid', 'count'])
             
             # Write aggregated data sorted by count (descending)
-            for (sc, p, l, su, u), count in sorted(aggregated_data.items(), key=lambda x: x[1], reverse=True):
-                writer.writerow([sc, p, l, su, u, count])
+            for (cls, slot, su, unit, valid), count in sorted(aggregated_data.items(), key=lambda x: x[1], reverse=True):
+                writer.writerow([cls, slot, su, unit, valid, count])
         
         # Print summary to console
         click.echo(f"\nSummary:")
         click.echo(f"  Total unique slot-unit combinations: {len(aggregated_data)}")
         click.echo(f"  Total QuantityValue instances: {sum(aggregated_data.values())}")
+        click.echo(f"  Missing has_unit: {len(results['missing_has_unit'])}")
         click.echo(f"  UnitEnum violations: {len(results['enum_violations'])}")
         click.echo(f"  storage_units violations: {len(results['storage_units_violations'])}")
-        if results['enum_violations'] or results['storage_units_violations']:
-            click.echo(f"  ⚠️  Found violations - check detailed output")
+        if results['enum_violations'] or results['storage_units_violations'] or results['missing_has_unit']:
+            click.echo(f"  ⚠️  Issues found - check detailed output")
         else:
             click.echo(f"  ✅ All units valid")
 
@@ -300,6 +352,10 @@ def main(input: Path, output: Path, schema_file: Path):
         click.echo(f"\n⚠️  Issues found - see detailed report: {output}")
     else:
         click.echo(f"\n✅ All units valid - see full report: {output}")
+    
+    # Final timestamp
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    click.echo(f"\n[{timestamp}] Validation complete.")
 
 
 if __name__ == "__main__":

@@ -8,6 +8,15 @@
 # Default target - complete workflow
 all: schema.tsv input.tsv detailed.tsv single.txt multi.txt
 
+# Clean generated files
+clean:
+	rm -f schema.tsv
+	rm -f input.tsv
+	rm -f detailed.tsv
+	rm -f single.txt
+	rm -f multi.txt
+	rm -f mongodb-slots-to-units_analyzed.csv
+
 # Clean and rebuild everything
 rebuild: clean all
 
@@ -44,16 +53,6 @@ mongodb-slots-to-units_analyzed.csv: mongodb-slots-to-units.csv analyze_units.py
 mongodb-analysis: mongodb-slots-to-units_analyzed.csv
 	@echo "MongoDB unit validation analysis complete"
 	@echo "Note: This requires mongodb-slots-to-units.csv from production SPARQL query"
-
-
-# Clean generated files
-clean:
-	rm -f schema.tsv
-	rm -f input.tsv
-	rm -f detailed.tsv
-	rm -f single.txt
-	rm -f multi.txt
-	rm -f mongodb-slots-to-units_analyzed.csv
 
 
 # Help target

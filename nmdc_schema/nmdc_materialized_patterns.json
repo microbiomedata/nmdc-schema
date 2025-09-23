@@ -1574,16 +1574,23 @@
         "J/K": {
           "text": "J/K",
           "description": "The Unified Code for Units of Measure (UCUM) representation of joule per kelvin.",
+          "title": "J/degree Celsius",
+          "comments": [
+            "UCUM-compliant unit for energy per temperature. J/Cel deprecated due to non-ratio temperature unit."
+          ],
           "aliases": [
             "joule per kelvin",
             "joules per kelvin",
             "J/Kelvin",
-            "J/Kelvin"
+            "J/Celvin",
+            "J/Cel",
+            "J/C"
           ]
         },
         "Cel": {
           "text": "Cel",
           "description": "The Unified Code for Units of Measure (UCUM) representation of degrees Celsius; a SI unit of temperature  equal to one unit Kelvin.",
+          "title": "degrees Celsius",
           "aliases": [
             "Celsius",
             "C",
@@ -1601,6 +1608,14 @@
         "cm": {
           "text": "cm",
           "description": "The Unified Code for Units of Measure (UCUM) representation of centimeter."
+        },
+        "cP": {
+          "text": "cP",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of centipoise.",
+          "aliases": [
+            "centipoise",
+            "centiPoise"
+          ]
         },
         "d": {
           "text": "d",
@@ -1686,8 +1701,9 @@
         "[ppm]": {
           "text": "[ppm]",
           "description": "The Unified Code for Units of Measure (UCUM) representation of parts per million.",
-          "comments": [
-            "see https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html, https://ucum.org/ucum"
+          "see_also": [
+            "https://terminology.hl7.org/5.1.0/ValueSet-v3-UnitsOfMeasureCaseSensitive.html",
+            "https://ucum.org/ucum"
           ],
           "aliases": [
             "ppm",
@@ -1711,6 +1727,7 @@
         "a": {
           "text": "a",
           "description": "The Unified Code for Units of Measure (UCUM) representation of year.",
+          "title": "years",
           "aliases": [
             "years"
           ]
@@ -1765,10 +1782,12 @@
         "umol/m2/s": {
           "text": "umol/m2/s",
           "description": "The Unified Code for Units of Measure (UCUM) representation of micromoles per square meter per second.",
+          "title": "micromoles per square meter per second",
           "aliases": [
             "μmol/m2/s",
             "micromol/m2/s",
-            "u[E]/m2/s"
+            "u[E]/m2/s",
+            "micro Einsteins"
           ]
         },
         "mg/m3": {
@@ -1799,10 +1818,6 @@
           "text": "mV",
           "description": "The Unified Code for Units of Measure (UCUM) representation of millivolt."
         },
-        "PSU": {
-          "text": "PSU",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of practical salinity unit."
-        },
         "L": {
           "text": "L",
           "description": "The Unified Code for Units of Measure (UCUM) representation of liter."
@@ -1815,13 +1830,21 @@
             "µm"
           ]
         },
-        "y": {
-          "text": "y",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of year."
-        },
         "1": {
           "text": "1",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity."
+          "description": "The Unified Code for Units of Measure (UCUM) representation of dimensionless quantity.",
+          "title": "ratio/unitless",
+          "comments": [
+            "Used for ratios, counts, and dimensionless measurements (e.g., number of people, pets, plants)."
+          ],
+          "aliases": [
+            "ratio",
+            "unitless",
+            "dimensionless",
+            "people",
+            "pets",
+            "plants"
+          ]
         },
         "uL/kg": {
           "text": "uL/kg",
@@ -1831,9 +1854,13 @@
           "text": "kg",
           "description": "The Unified Code for Units of Measure (UCUM) representation of kilogram."
         },
-        "ppt": {
-          "text": "ppt",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of parts per thousand."
+        "[ppth]": {
+          "text": "[ppth]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of parts per thousand.",
+          "aliases": [
+            "ppt",
+            "parts per thousand"
+          ]
         },
         "g/g": {
           "text": "g/g",
@@ -1845,6 +1872,7 @@
         "lx": {
           "text": "lx",
           "description": "The Unified Code for Units of Measure (UCUM) representation of lux.",
+          "title": "lux",
           "aliases": [
             "lx"
           ]
@@ -2235,47 +2263,13 @@
             "kilowatts"
           ]
         },
-        "API": {
-          "text": "API",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of API units."
-        },
         "mbar": {
           "text": "mbar",
           "description": "The Unified Code for Units of Measure (UCUM) representation of millibar."
         },
-        "ratio": {
-          "text": "ratio",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of ratio (dimensionless).",
-          "aliases": [
-            "{ratio}"
-          ]
-        },
-        "J/Cel": {
-          "text": "J/Cel",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of joules per Celsius."
-        },
-        "uE/m2/s": {
-          "text": "uE/m2/s",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of microeinsteins per square meter per second.",
-          "aliases": [
-            "[arb'U]{micro_Einstein}/m2/s"
-          ]
-        },
         "kW/m2": {
           "text": "kW/m2",
           "description": "The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter."
-        },
-        "people": {
-          "text": "people",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of people count."
-        },
-        "pets": {
-          "text": "pets",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of pet count."
-        },
-        "plants": {
-          "text": "plants",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of plant count."
         },
         "umol/s/m2": {
           "text": "umol/s/m2",
@@ -2292,20 +2286,32 @@
           "text": "L/h",
           "description": "The Unified Code for Units of Measure (UCUM) representation of liters per hour."
         },
-        "pH": {
-          "text": "pH",
+        "[pH]": {
+          "text": "[pH]",
           "description": "The Unified Code for Units of Measure (UCUM) representation of pH units.",
           "aliases": [
-            "[pH]"
+            "pH"
           ]
         },
         "kW/m2/d": {
           "text": "kW/m2/d",
           "description": "The Unified Code for Units of Measure (UCUM) representation of kilowatts per square meter per day."
         },
-        "NTU": {
-          "text": "NTU",
-          "description": "The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units."
+        "[NTU]": {
+          "text": "[NTU]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of Nephelometric Turbidity Units.",
+          "title": "Nephelometric Turbidity Units",
+          "aliases": [
+            "NTU"
+          ]
+        },
+        "[FNU]": {
+          "text": "[FNU]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of Formazin Nephelometric Units.",
+          "title": "Formazin Nephelometric Units",
+          "aliases": [
+            "FNU"
+          ]
         },
         "m3/min": {
           "text": "m3/min",
@@ -2314,6 +2320,233 @@
         "km/h": {
           "text": "km/h",
           "description": "The Unified Code for Units of Measure (UCUM) representation of kilometers per hour."
+        },
+        "[lb_av]": {
+          "text": "[lb_av]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of pound (avoirdupois).",
+          "title": "pounds (avoirdupois)",
+          "aliases": [
+            "pound",
+            "lb"
+          ]
+        },
+        "kg/kg": {
+          "text": "kg/kg",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of kilogram per kilogram.",
+          "aliases": [
+            "kilogram per kilogram"
+          ]
+        },
+        "ug/m3": {
+          "text": "ug/m3",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of micrograms per cubic meter.",
+          "aliases": [
+            "μg/m3",
+            "micrograms per cubic meter"
+          ]
+        },
+        "meq/L": {
+          "text": "meq/L",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of milliequivalents per liter.",
+          "aliases": [
+            "milliequivalents per liter"
+          ]
+        },
+        "lm/m2": {
+          "text": "lm/m2",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of lumens per square meter.",
+          "aliases": [
+            "lumens per square meter"
+          ]
+        },
+        "mg": {
+          "text": "mg",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of milligram.",
+          "aliases": [
+            "milligram",
+            "milligrams"
+          ]
+        },
+        "umol/L/h": {
+          "text": "umol/L/h",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of micromoles per liter per hour.",
+          "comments": [
+            "For example, micromoles of oxygen created by photosynthesis per liter of water per hour."
+          ],
+          "aliases": [
+            "micromoles per liter per hour"
+          ]
+        },
+        "g/cm3": {
+          "text": "g/cm3",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of grams per cubic centimeter.",
+          "aliases": [
+            "grams per cubic centimeter"
+          ]
+        },
+        "g/L": {
+          "text": "g/L",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of grams per liter.",
+          "aliases": [
+            "grams per liter"
+          ]
+        },
+        "wk": {
+          "text": "wk",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of week.",
+          "aliases": [
+            "week",
+            "weeks"
+          ]
+        },
+        "[g]": {
+          "text": "[g]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of standard gravity.",
+          "title": "standard gravity",
+          "aliases": [
+            "standard gravity",
+            "g-force"
+          ]
+        },
+        "m/s2": {
+          "text": "m/s2",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of meters per second squared.",
+          "aliases": [
+            "meters per second squared"
+          ]
+        },
+        "mol/g": {
+          "text": "mol/g",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of moles per gram.",
+          "aliases": [
+            "moles per gram"
+          ]
+        },
+        "g/m2/d": {
+          "text": "g/m2/d",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of grams per square meter per day.",
+          "aliases": [
+            "grams per square meter per day"
+          ]
+        },
+        "Gy": {
+          "text": "Gy",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of gray (absorbed dose).",
+          "aliases": [
+            "gray"
+          ]
+        },
+        "RAD": {
+          "text": "RAD",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of rad (radiation absorbed dose).",
+          "title": "rad (radiation absorbed dose)",
+          "aliases": [
+            "radiation absorbed dose"
+          ]
+        },
+        "[sft_i]": {
+          "text": "[sft_i]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of square feet.",
+          "title": "square feet",
+          "aliases": [
+            "square feet",
+            "sq ft"
+          ]
+        },
+        "[cft_i]": {
+          "text": "[cft_i]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of cubic feet.",
+          "title": "cubic feet",
+          "aliases": [
+            "cubic feet",
+            "cu ft"
+          ]
+        },
+        "m3": {
+          "text": "m3",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of cubic meter.",
+          "aliases": [
+            "cubic meter",
+            "cubic meters"
+          ]
+        },
+        "ug": {
+          "text": "ug",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of microgram.",
+          "aliases": [
+            "μg",
+            "microgram",
+            "micrograms"
+          ]
+        },
+        "mm/a": {
+          "text": "mm/a",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of millimeters per year.",
+          "title": "millimeters per year",
+          "aliases": [
+            "millimeters per year"
+          ]
+        },
+        "cm2": {
+          "text": "cm2",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of square centimeter.",
+          "aliases": [
+            "square centimeter",
+            "square centimeters"
+          ]
+        },
+        "erg/cm2/s": {
+          "text": "erg/cm2/s",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of ergs per square centimeter per second.",
+          "aliases": [
+            "ergs per square centimeter per second"
+          ]
+        },
+        "g/m2": {
+          "text": "g/m2",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of grams per square meter.",
+          "aliases": [
+            "grams per square meter"
+          ]
+        },
+        "L/s": {
+          "text": "L/s",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of liters per second.",
+          "aliases": [
+            "liters per second"
+          ]
+        },
+        "cm3/cm3": {
+          "text": "cm3/cm3",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of cubic centimeters per cubic centimeter.",
+          "aliases": [
+            "cubic centimeters per cubic centimeter"
+          ]
+        },
+        "[kn_i]": {
+          "text": "[kn_i]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of knot (nautical miles per hour).",
+          "title": "knots",
+          "aliases": [
+            "knot",
+            "knots"
+          ]
+        },
+        "m3/s": {
+          "text": "m3/s",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of cubic meters per second.",
+          "aliases": [
+            "cubic meters per second"
+          ]
+        },
+        "[in_i]": {
+          "text": "[in_i]",
+          "description": "The Unified Code for Units of Measure (UCUM) representation of inch.",
+          "title": "inches",
+          "aliases": [
+            "inch",
+            "inches"
+          ]
         }
       }
     },
@@ -2540,13 +2773,6 @@
           "text": "QC non-rRNA R1",
           "description": "QC removed rRNA reads (R1) fastq"
         },
-        "Metagenome Bins": {
-          "text": "Metagenome Bins",
-          "description": "Metagenome bin contigs fasta",
-          "deprecated": "Deprecated in favor of separate permissible values based on bin quality.",
-          "last_updated_on": "2025-07-14T00:00:00",
-          "modified_by": "orcid:0000-0002-5004-3362"
-        },
         "Metagenome HQMQ Bins Compression File": {
           "text": "Metagenome HQMQ Bins Compression File",
           "description": "Compressed file containing high quality and medium quality metagenome bins and associated files",
@@ -2660,13 +2886,6 @@
         "Kraken2 Taxonomic Classification": {
           "text": "Kraken2 Taxonomic Classification",
           "description": "Kraken2 output read classification file"
-        },
-        "Centrifuge Classification Report": {
-          "text": "Centrifuge Classification Report",
-          "description": "Centrifuge output report file",
-          "deprecated": "Deprecated in favor of 'Centrifuge output report file'.",
-          "last_updated_on": "2025-07-14T00:00:00",
-          "modified_by": "orcid:0000-0002-5004-3362"
         },
         "Centrifuge Taxonomic Classification": {
           "text": "Centrifuge Taxonomic Classification",
@@ -6990,7 +7209,16 @@
           "aliases": [
             "MiSeq",
             "Illumina MiSeq"
-          ]
+          ],
+          "structured_aliases": {
+            "ILLUMINA_MI_SEQ": {
+              "literal_form": "ILLUMINA_MI_SEQ",
+              "predicate": "EXACT_SYNONYM",
+              "contexts": [
+                "https://gold.jgi.doe.gov/"
+              ]
+            }
+          }
         },
         "nextseq_1000": {
           "text": "nextseq_1000",
@@ -7283,60 +7511,6 @@
         }
       }
     },
-    "DNASampleFormatEnum": {
-      "name": "DNASampleFormatEnum",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "permissible_values": {
-        "10 mmol/L Tris-HCl": {
-          "text": "10 mmol/L Tris-HCl"
-        },
-        "DNAStable": {
-          "text": "DNAStable"
-        },
-        "Ethanol": {
-          "text": "Ethanol"
-        },
-        "Low EDTA TE": {
-          "text": "Low EDTA TE"
-        },
-        "MDA reaction buffer": {
-          "text": "MDA reaction buffer"
-        },
-        "PBS": {
-          "text": "PBS"
-        },
-        "Pellet": {
-          "text": "Pellet"
-        },
-        "RNAStable": {
-          "text": "RNAStable"
-        },
-        "TE": {
-          "text": "TE"
-        },
-        "Water": {
-          "text": "Water"
-        },
-        "Gentegra-DNA": {
-          "text": "Gentegra-DNA"
-        },
-        "Gentegra-RNA": {
-          "text": "Gentegra-RNA"
-        }
-      }
-    },
-    "JgiContTypeEnum": {
-      "name": "JgiContTypeEnum",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "permissible_values": {
-        "plate": {
-          "text": "plate"
-        },
-        "tube": {
-          "text": "tube"
-        }
-      }
-    },
     "YesNoEnum": {
       "name": "YesNoEnum",
       "description": "replaces DnaDnaseEnum and DnaseRnaEnum",
@@ -7347,48 +7521,6 @@
         },
         "yes": {
           "text": "yes"
-        }
-      }
-    },
-    "RNASampleFormatEnum": {
-      "name": "RNASampleFormatEnum",
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "permissible_values": {
-        "10 mmol/L Tris-HCl": {
-          "text": "10 mmol/L Tris-HCl"
-        },
-        "DNAStable": {
-          "text": "DNAStable"
-        },
-        "Ethanol": {
-          "text": "Ethanol"
-        },
-        "Low EDTA TE": {
-          "text": "Low EDTA TE"
-        },
-        "MDA reaction buffer": {
-          "text": "MDA reaction buffer"
-        },
-        "PBS": {
-          "text": "PBS"
-        },
-        "Pellet": {
-          "text": "Pellet"
-        },
-        "RNAStable": {
-          "text": "RNAStable"
-        },
-        "TE": {
-          "text": "TE"
-        },
-        "Water": {
-          "text": "Water"
-        },
-        "Gentegra-DNA": {
-          "text": "Gentegra-DNA"
-        },
-        "Gentegra-RNA": {
-          "text": "Gentegra-RNA"
         }
       }
     },
@@ -7773,6 +7905,12 @@
     },
     "input_mass": {
       "name": "input_mass",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g"
+        }
+      },
       "description": "Total mass of sample used in activity.",
       "title": "sample mass used",
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -8180,6 +8318,12 @@
     },
     "subsurface_depth": {
       "name": "subsurface_depth",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
+        }
+      },
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "range": "QuantityValue"
     },
@@ -8209,6 +8353,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/kg|mg/L"
         }
       },
       "description": "Concentration of zinc in the sample",
@@ -8238,6 +8386,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/kg|mg/L"
         }
       },
       "description": "Concentration of manganese in the sample",
@@ -8267,6 +8419,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/kg|mg/L"
         }
       },
       "description": "Concentration of ammonium nitrogen in the sample",
@@ -8299,6 +8455,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/kg|mg/L"
         }
       },
       "description": "Concentration of nitrate nitrogen in the sample",
@@ -8334,6 +8494,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/kg|mg/L"
         }
       },
       "description": "Concentration of nitrite nitrogen in the sample",
@@ -8366,6 +8530,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]"
         }
       },
       "description": "lime buffer capacity, determined after 30 minute incubation",
@@ -8403,6 +8571,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]"
         }
       },
       "description": "lime buffer capacity, determined at equilibrium after 5 day incubation",
@@ -8464,6 +8636,12 @@
     },
     "mass": {
       "name": "mass",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g"
+        }
+      },
       "description": "A physical quality that inheres in a bearer by virtue of the proportion of the bearer's amount of matter.",
       "title": "mass",
       "from_schema": "https://w3id.org/nmdc/nmdc",
@@ -8494,18 +8672,36 @@
     },
     "source_concentration": {
       "name": "source_concentration",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%|mmol/L"
+        }
+      },
       "description": "When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in solution A",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "is_a": "concentration"
     },
     "final_concentration": {
       "name": "final_concentration",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%|mmol/L|umol/L"
+        }
+      },
       "description": "When solutions A (containing substance X) and B are combined together, this slot captures the concentration of X in the combination",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "is_a": "concentration"
     },
     "duration": {
       "name": "duration",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "h|min"
+        }
+      },
       "description": "The elapsed time of an activity.",
       "examples": [
         {
@@ -8517,6 +8713,12 @@
     },
     "temperature": {
       "name": "temperature",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
+        }
+      },
       "description": "The value of a temperature measurement or temperature used in a process.",
       "notes": [
         "Not to be confused with the MIXS:0000113"
@@ -8758,6 +8960,12 @@
     },
     "volume": {
       "name": "volume",
+      "annotations": {
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mL|uL"
+        }
+      },
       "description": "The volume of a substance.",
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "contributors": [
@@ -10172,6 +10380,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[lb_av]|g/g|kg|kg/kg"
         }
       },
       "description": "Actual mass of water vapor - mh20 - present in the air water vapor mixture",
@@ -10348,6 +10560,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Addition of fertilizers, pesticides, etc. - amount and time of applications",
@@ -10382,6 +10602,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/m3"
         }
       },
       "description": "Concentration of substances that remain suspended in the air, and comprise mixtures of organic and inorganic substances (PM10 and PM2.5); can report multiple PM's by entering numeric values preceded by name of PM",
@@ -10416,6 +10640,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Temperature of the air at the time of sampling",
@@ -10448,6 +10676,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving an exposure to varying temperatures; should include the temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include different temperature regimens",
@@ -10482,6 +10714,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Aluminum saturation (esp. For tropical soils)",
@@ -10543,6 +10779,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "meq/L|mg/L"
         }
       },
       "description": "Alkalinity, the ability of a solution to neutralize acids to the equivalence point of carbonate or bicarbonate",
@@ -10604,6 +10844,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mol/L"
         }
       },
       "description": "Concentration of alkyl diethers",
@@ -10660,6 +10904,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mol/L/h"
         }
       },
       "description": "Measurement of aminopeptidase activity",
@@ -10692,6 +10940,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L"
         }
       },
       "description": "Concentration of ammonium in the sample",
@@ -10724,6 +10976,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "lm/m2|lx"
         }
       },
       "description": "The unit of illuminance and luminous emittance, measuring luminous flux per unit area",
@@ -10785,6 +11041,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mm"
         }
       },
       "description": "The average of all annual precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.",
@@ -10817,6 +11077,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Mean annual temperature",
@@ -10849,6 +11113,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving antibiotic administration; should include the name of antibiotic, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple antibiotic regimens",
@@ -10883,6 +11155,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "UCUM unaware of MIxS unit"
         }
       },
       "description": "API gravity is a measure of how heavy or light a petroleum liquid is compared to water (source: https://en.wikipedia.org/wiki/API_gravity) (e.g. 31.1¬∞ API)",
@@ -10943,6 +11219,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
@@ -10976,6 +11256,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
@@ -11039,6 +11323,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "The average of dew point measures taken at the beginning of every hour over a 24 hour period on the sampling day",
@@ -11099,6 +11387,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "The average of temperatures taken at the beginning of every hour over a 24 hour period on the sampling day",
@@ -11131,6 +11423,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/m3/d"
         }
       },
       "description": "Bacterial production in the water column measured by isotope uptake",
@@ -11163,6 +11459,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/m3/d|umol/L/h"
         }
       },
       "description": "Measurement of bacterial respiration in the water column",
@@ -11195,6 +11495,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ng/h"
         }
       },
       "description": "Measurement of bacterial carbon production",
@@ -11227,6 +11531,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mbar"
         }
       },
       "description": "Force per unit area exerted against a surface by the weight of air above that surface",
@@ -11344,6 +11652,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Concentration of benzene in the sample",
@@ -11376,6 +11688,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Amount of dissolved oxygen needed by aerobic biological organisms in a body of water to break down organic material present in a given water sample at certain temperature over a specific time period",
@@ -11437,6 +11753,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Method of biocide administration (dose, frequency, duration, time elapsed between last biociding and sampling) (e.g. 150 mg/l; weekly; 4 hr; 3 days)",
@@ -11498,6 +11818,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|kg"
         }
       },
       "description": "Amount of biomass; should include the name for the part of biomass measured, e.g. Microbial, total. Can include multiple measurements",
@@ -11585,6 +11909,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|ug/g"
         }
       },
       "description": "Concentration of bishomohopanol",
@@ -11617,6 +11945,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mm[Hg]"
         }
       },
       "description": "Resting diastolic blood pressure, measured as mm mercury",
@@ -11649,6 +11981,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mm[Hg]"
         }
       },
       "description": "Resting systolic blood pressure, measured as mm mercury",
@@ -11681,6 +12017,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]"
         }
       },
       "description": "Concentration of bromide",
@@ -11797,6 +12137,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "a"
         }
       },
       "description": "The age of the built structure since construction",
@@ -11887,6 +12231,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L|mg/kg"
         }
       },
       "description": "Concentration of calcium in the sample",
@@ -11919,6 +12267,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|umol/L"
         }
       },
       "description": "Carbon dioxide (gas) amount or concentration at the time of sampling",
@@ -11951,6 +12303,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|umol/L"
         }
       },
       "description": "Carbon monoxide (gas) amount or concentration at the time of sampling",
@@ -11978,6 +12334,10 @@
         },
         "occurrence": {
           "tag": "occurrence",
+          "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
           "value": "1"
         }
       },
@@ -12011,6 +12371,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m2"
         }
       },
       "description": "The area of the ceiling space within the room",
@@ -12156,6 +12520,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "J/K"
         }
       },
       "description": "The ability of the ceiling to provide inertia against temperature fluctuations. Generally this means concrete that is exposed. A metal deck that supports a concrete slab will act thermally as long as it is exposed to room air flow",
@@ -12275,6 +12643,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Treatment involving use of mutagens; should include the name of mutagen, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mutagen regimens",
@@ -12309,6 +12681,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "A measure of the capacity of water to consume oxygen during the decomposition of organic matter and the oxidation of inorganic chemicals such as ammonia and nitrite",
@@ -12341,6 +12717,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Method of chemical administration(dose, frequency, duration, time elapsed between administration and sampling) (e.g. 50 mg/l; twice a week; 1 hr; 0 days)",
@@ -12428,6 +12808,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Concentration of chloride in the sample",
@@ -12460,6 +12844,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/m3|ug/L"
         }
       },
       "description": "Concentration of chlorophyll",
@@ -12546,6 +12934,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mS/cm|uS/cm"
         }
       },
       "description": "Electrical conductivity of water",
@@ -12778,6 +13170,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g/cm3|g/m3|kg/m3"
         }
       },
       "description": "Density of the sample, which is its mass per unit volume (aka volumetric mass density)",
@@ -12830,6 +13226,10 @@
         "expected_value": {
           "tag": "expected_value",
           "value": "measurement value"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "The vertical distance below local surface, e.g. for sediment or soil samples depth is measured from sediment or soil surface, respectively. Depth can be reported as an interval for subsurface samples.",
@@ -12862,6 +13262,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "The temperature to which a given parcel of humid air must be cooled, at constant barometric pressure, for water vapor to condense into water.",
@@ -12894,6 +13298,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ng/L"
         }
       },
       "description": "Concentration of diether lipids; can include multiple types of diether lipids",
@@ -12928,6 +13336,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|umol/L"
         }
       },
       "description": "Concentration of dissolved carbon dioxide in the sample or liquid portion of the sample",
@@ -12960,6 +13372,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L"
         }
       },
       "description": "Concentration of dissolved hydrogen",
@@ -12992,6 +13408,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|ug/L"
         }
       },
       "description": "Dissolved inorganic carbon concentration in the sample, typically measured after filtering the sample using a 0.45 micrometer filter",
@@ -13024,6 +13444,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|umol/L|mg/L"
         }
       },
       "description": "Concentration of dissolved inorganic nitrogen",
@@ -13056,6 +13480,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|ug/L"
         }
       },
       "description": "Concentration of dissolved inorganic phosphorus in the sample",
@@ -13088,6 +13516,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Concentration of dissolved iron in the sample",
@@ -13120,6 +13552,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|umol/L|ug/L"
         }
       },
       "description": "Concentration of dissolved organic carbon in the sample, liquid portion of the sample, or aqueous phase of the fluid",
@@ -13152,6 +13588,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|ug/L"
         }
       },
       "description": "Dissolved organic nitrogen concentration measured as; total dissolved nitrogen - NH4 - NO3 - NO2",
@@ -13184,6 +13624,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|umol/kg|umol/L"
         }
       },
       "description": "Concentration of dissolved oxygen",
@@ -13216,6 +13660,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|umol/kg"
         }
       },
       "description": "Concentration of dissolved oxygen in the oil field produced fluids as it contributes to oxgen-corrosion and microbial activity (e.g. Mic).",
@@ -13416,6 +13864,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m2"
         }
       },
       "description": "The size of the door",
@@ -13561,6 +14013,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/m2/s"
         }
       },
       "description": "Visible waveband radiance and irradiance measurements in the water column",
@@ -13649,6 +14105,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "MIxS internally inconsistent"
         }
       },
       "description": "Percentage of volatile solids removed from the anaerobic digestor",
@@ -13733,6 +14193,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g/L"
         }
       },
       "description": "Amount or concentration of substances such as paints, adhesives, mayonnaise, hair colorants, emulsified oils, etc.; can include multiple emulsion types",
@@ -13882,6 +14346,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Concentration of ethylbenzene in the sample",
@@ -13914,6 +14382,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m2"
         }
       },
       "description": "The amount of exposed ductwork in the room",
@@ -14139,6 +14611,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving the use of fertilizers; should include the name of fertilizer, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fertilizer regimens",
@@ -14315,6 +14795,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "a|d|wk"
         }
       },
       "description": "The time period since installment of the carpet or flooring",
@@ -14347,6 +14831,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m2"
         }
       },
       "description": "The area of the floor space within the room",
@@ -14491,6 +14979,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "J/K"
         }
       },
       "description": "The ability of the floor to provide inertia against temperature fluctuations",
@@ -14551,6 +15043,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/m3"
         }
       },
       "description": "Raw or converted fluorescence of water",
@@ -14639,6 +15135,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving use of fungicides; should include the name of fungicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple fungicide regimens",
@@ -14701,6 +15205,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L"
         }
       },
       "description": "Use of conditions with differing gaseous environments; should include the name of gaseous compound, amount administered, treatment duration, interval and total experimental duration; can include multiple gaseous environment regimens",
@@ -14735,6 +15243,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L"
         }
       },
       "description": "Amount or concentration of substances such as hydrogen sulfide, carbon dioxide, methane, etc.; can include multiple substances",
@@ -14851,6 +15363,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mol/L/h"
         }
       },
       "description": "Measurement of glucosidase activity",
@@ -14912,6 +15428,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[g]|m/s2"
         }
       },
       "description": "Information about treatment involving use of gravity factor to study various types of responses in presence, absence or modified levels of gravity; treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple treatments",
@@ -15003,6 +15523,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving use of growth hormones; should include the name of growth hormone, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple growth hormone regimens",
@@ -15149,6 +15677,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Original formation water salinity (prior to secondary recovery e.g. Waterflooding) expressed as TDS",
@@ -15209,6 +15741,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "atm|kPa"
         }
       },
       "description": "Original pressure of the hydrocarbon resource",
@@ -15242,6 +15778,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Original temperature of the hydrocarbon resource",
@@ -15388,6 +15928,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/g"
         }
       },
       "description": "Heavy metals present in the sequenced sample and their concentrations. For multiple heavy metals and concentrations, add multiple copies of this field.",
@@ -15452,6 +15996,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "cm"
         }
       },
       "description": "The average carpet fiber height in the indoor environment",
@@ -15484,6 +16032,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving use of herbicides; information about treatment involving use of growth hormones; should include the name of herbicide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -15547,6 +16103,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "a|d|h"
         }
       },
       "description": "Age of host at the time of sampling; relevant scale depends on species and study, e.g. Could be seconds for amoebae or centuries for trees",
@@ -15666,6 +16226,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Core body temperature of the host when sample was collected",
@@ -15811,6 +16375,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|kg"
         }
       },
       "description": "Measurement of dry mass",
@@ -15930,6 +16498,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "cm|m|mm"
         }
       },
       "description": "The height of subject",
@@ -15992,6 +16564,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "cm|m|mm"
         }
       },
       "description": "The length of subject",
@@ -16281,6 +16857,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|kg"
         }
       },
       "description": "Total mass of the host at collection, the unit depends on host",
@@ -16313,6 +16893,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|kg"
         }
       },
       "description": "Measurement of wet mass",
@@ -16345,6 +16929,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g/m3|%"
         }
       },
       "description": "Amount of water vapour in the air, at the time of sampling",
@@ -16377,6 +16965,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g/m3"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving an exposure to varying degree of humidity; information about treatment involving use of growth hormones; should include amount of humidity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -16467,6 +17063,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Percentage of industrial effluents received by wastewater treatment plant",
@@ -16499,6 +17099,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|mol/L"
         }
       },
       "description": "Concentration of particles such as sand, grit, metal particles, ceramics, etc.; can include multiple particles",
@@ -16533,6 +17137,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "MIxS internally inconsistent"
         }
       },
       "description": "The recorded value at sampling time (power density)",
@@ -16621,6 +17229,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Proportion of the produced fluids derived from injected water at the time of sampling. (e.g. 87%)",
@@ -16706,6 +17318,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "lx"
         }
       },
       "description": "Measurement of light intensity",
@@ -16738,6 +17354,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment(s) involving exposure to light, including both light intensity and quality.",
@@ -16972,6 +17592,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|mol/L|umol/kg|mg/kg"
         }
       },
       "description": "Concentration of magnesium in the sample",
@@ -17032,6 +17656,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m/s"
         }
       },
       "description": "Measurement of mean friction velocity",
@@ -17064,6 +17692,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m/s"
         }
       },
       "description": "Measurement of mean peak friction velocity",
@@ -17154,6 +17786,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppb]|[ppm]|umol/L"
         }
       },
       "description": "Methane (gas) amount or concentration at the time of sampling",
@@ -17215,6 +17851,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "kg"
         }
       },
       "description": "The part of the organic matter in the soil that constitutes living microorganisms smaller than 5-10 micrometer. If you keep this, you would need to have correction factors used for conversion to the final units",
@@ -17247,6 +17887,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving the use of mineral supplements; should include the name of mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple mineral nutrient regimens",
@@ -17311,6 +17959,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L"
         }
       },
       "description": "Concentration of n-alkanes; can include multiple n-alkanes",
@@ -17345,6 +17997,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L"
         }
       },
       "description": "Concentration of nitrate in the sample",
@@ -17377,6 +18033,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L"
         }
       },
       "description": "Concentration of nitrite in the sample",
@@ -17409,6 +18069,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L|%"
         }
       },
       "description": "Concentration of nitrogen (total)",
@@ -17441,6 +18105,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving the exposure of plant to non-mineral nutrient such as oxygen, hydrogen or carbon; should include the name of non-mineral nutrient, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple non-mineral nutrient regimens",
@@ -17692,6 +18364,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L|%"
         }
       },
       "description": "Concentration of organic carbon",
@@ -17724,6 +18400,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "If qpcr was used for the cell count, the target gene name, the primer sequence and the cycling conditions should also be provided. (Example: 16S rrna; FWD:ACGTAGCTATGACGT REV:GTGCTAGTCGAGTAC; initial denaturation:90C_5min; denaturation:90C_2min; annealing:52C_30 sec; elongation:72C_30 sec; 90 C for 1 min; final elongation:72C_5min; 30 cycles)",
@@ -17757,6 +18437,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L"
         }
       },
       "description": "Concentration of organic matter",
@@ -17789,6 +18473,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L"
         }
       },
       "description": "Concentration of organic nitrogen",
@@ -17821,6 +18509,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g/L"
         }
       },
       "description": "Concentration of particles such as faeces, hairs, food, vomit, paper fibers, plant material, humus, etc.",
@@ -17855,6 +18547,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Total cell count of any organism (or group of organisms) per gram, volume or area of sample, should include name of organism followed by count. The method that was used for the enumeration (e.g. qPCR, atp, mpn, etc.) Should also be provided. (example: total prokaryotes; 3.5e7 cells per ml; qpcr)",
@@ -17888,6 +18584,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "Depth of the original oil water contact (OWC) zone (average) (m TVDSS)",
@@ -17948,6 +18648,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Oxygen (gas) amount or concentration at the time of sampling",
@@ -17980,6 +18684,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|mg/L"
         }
       },
       "description": "Concentration of particulate organic carbon",
@@ -18012,6 +18720,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|umol/L|mg/L"
         }
       },
       "description": "Concentration of particulate organic nitrogen",
@@ -18044,6 +18756,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "um"
         }
       },
       "description": "Particles are classified, based on their size, into six general categories:clay, silt, sand, gravel, cobbles, and boulders; should include amount of particle preceded by the name of the particle type; can include multiple values",
@@ -18128,6 +18844,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "UCUM unaware of MIxS unit"
         }
       },
       "description": "Measure of the ability of a hydrocarbon resource to allow fluids to pass through it. (Additional information: https://en.wikipedia.org/wiki/Permeability_(earth_sciences))",
@@ -18191,6 +18911,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving use of insecticides; should include the name of pesticide, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple pesticide regimens",
@@ -18225,6 +18953,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L"
         }
       },
       "description": "Concentration of petroleum hydrocarbon",
@@ -18344,6 +19076,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/m3"
         }
       },
       "description": "Concentration of phaeopigments; can include multiple phaeopigments",
@@ -18378,6 +19114,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L"
         }
       },
       "description": "Concentration of phosphate",
@@ -18410,6 +19150,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mol/L|mol/g"
         }
       },
       "description": "Concentration of phospholipid fatty acids; can include multiple values",
@@ -18444,6 +19188,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/m2/s"
         }
       },
       "description": "Measurement of photon flux",
@@ -18590,6 +19338,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|mg/L|mol/L|ug/m3"
         }
       },
       "description": "Pollutant types and, amount or concentrations measured at the time of sampling; can report multiple pollutants by entering numeric values preceded by name of pollutant",
@@ -18653,6 +19405,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Porosity of deposited sediment is volume of voids divided by the total volume of sample",
@@ -18686,6 +19442,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|mg/kg"
         }
       },
       "description": "Concentration of potassium in the sample",
@@ -18718,6 +19478,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Temperature at which a liquid becomes semi solid and loses its flow characteristics. In crude oil a high¬†pour point¬†is generally associated with a high paraffin content, typically found in crude deriving from a larger proportion of plant material. (soure: https://en.wikipedia.org/wiki/pour_point)",
@@ -18808,6 +19572,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "atm"
         }
       },
       "description": "Pressure to which the sample is subject to, in atmospheres",
@@ -18898,6 +19666,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g/m2/d|mg/m3/d"
         }
       },
       "description": "Measurement of primary production, generally measured as isotope uptake",
@@ -18959,6 +19731,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m3/d"
         }
       },
       "description": "Oil and/or gas production rates per well (e.g. 524 m3 / day)",
@@ -19075,6 +19851,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Gy|RAD"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving exposure of plant or a plant part to a particular radiation regimen; should include the radiation type, amount or intensity administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple radiation regimens",
@@ -19109,6 +19893,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mm"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving an exposure to a given amount of rainfall, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -19172,6 +19964,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mV"
         }
       },
       "description": "Redox potential, measured relative to a hydrogen cell, indicating oxidation or reduction potential",
@@ -19204,6 +20000,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Partial vapor and air pressure, density of the vapor and air, or by the actual mass of the vapor and air",
@@ -19236,6 +20036,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "MIxS internally inconsistent"
         }
       },
       "description": "The recorded outside relative humidity value at the time of sampling",
@@ -19325,6 +20129,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
@@ -19358,6 +20166,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "L/h"
         }
       },
       "description": "The rate at which outside air replaces indoor air in a given space",
@@ -19503,6 +20315,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "The length, width and height of sampling room",
@@ -19536,6 +20352,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "Distance between doors (meters) in the hallway between the sampling room and adjacent rooms",
@@ -19683,6 +20503,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[sft_i]|m2"
         }
       },
       "description": "The net floor area of sampling room. Net area excludes wall thicknesses",
@@ -19800,6 +20624,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[cft_i]|m3"
         }
       },
       "description": "Volume of sampling room",
@@ -19919,6 +20747,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Source of organic carbon in the culture rooting medium; e.g. sucrose.",
@@ -19952,6 +20784,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Measurement of the culture rooting medium macronutrients (N,P, K, Ca, Mg, S); e.g. KH2PO4 (170¬†mg/L).",
@@ -19985,6 +20821,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Measurement of the culture rooting medium micronutrients (Fe, Mn, Zn, B, Cu, Mo); e.g. H3BO3 (6.2¬†mg/L).",
@@ -20046,6 +20886,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Growth regulators in the culture rooting medium such as cytokinins, auxins, gybberellins, abscisic acid; e.g. 0.5¬†mg/L NAA.",
@@ -20108,6 +20952,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Organic supplements of the culture rooting medium, such as vitamins, amino acids, organic acids, antibiotics activated charcoal; e.g. nicotinic acid (0.5¬†mg/L).",
@@ -20141,6 +20989,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%|mg/L"
         }
       },
       "description": "The total concentration of all dissolved salts in a liquid or solid sample. While salinity can be measured by a complete chemical analysis, this method is difficult and time consuming. More often, it is instead derived from the conductivity measurement. This is known as practical salinity. These derivations compare the specific conductance of the sample to a salinity standard such as seawater.",
@@ -20202,6 +21054,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "g|g/L|mol/L|ug"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving use of salts as supplement to liquid and soil growth media; should include the name of salt, amount administered, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple salt regimens",
@@ -20398,6 +21258,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mm/a"
         }
       },
       "description": "Metal corrosion rate is the speed of metal deterioration due to environmental conditions. As environmental conditions change corrosion rates change accordingly. Therefore, long term corrosion rates are generally more informative than short term rates and for that reason they are preferred during reporting. In the case of suspected MIC, corrosion rate measurements at the time of sampling might provide insights into the involvement of certain microbial community members in MIC as well as potential microbial interplays",
@@ -20456,6 +21320,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "In non deviated well, measured depth is equal to the true vertical depth, TVD (TVD=TVDSS plus the reference or datum it refers to). In deviated wells, the MD is the length of trajectory of the borehole measured from the same reference or datum. Common datums used are ground level (GL), drilling rig floor (DF), rotary table (RT), kelly bushing (KB) and mean sea level (MSL). If \"other\" is specified, please propose entry in \"additional info\" field",
@@ -20513,6 +21381,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mL"
         }
       },
       "description": "Preservative added to the sample (e.g. Rnalater, alcohol, formaldehyde, etc.). Where appropriate include volume added (e.g. Rnalater; 2 ml)",
@@ -20570,6 +21442,10 @@
         "preferred_unit": {
           "tag": "preferred_unit",
           "value": "millliter, gram, milligram, liter"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "L|g|mL|mg"
         }
       },
       "description": "The total amount or size (volume (ml), mass (g) or area (m2) ) of sample collected.",
@@ -20690,6 +21566,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Temperature at which sample was stored, e.g. -80 degree Celsius",
@@ -20772,6 +21652,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "h"
         }
       },
       "description": "The recent and long term history of outside sampling",
@@ -20804,6 +21688,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Sample transport duration (in days or hrs) and temperature the sample was exposed to (e.g. 5.5 days; 20 ¬∞C)",
@@ -20837,6 +21725,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "Depth of the sample i.e. The vertical distance between the sea level and the sampled position in the subsurface. Depth can be reported as an interval for subsurface samples e.g. 1325.75-1362.25 m",
@@ -20895,6 +21787,10 @@
         "preferred_unit": {
           "tag": "preferred_unit",
           "value": "millliter, gram, milligram, square centimeter"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "cm2|g|mL|mg"
         }
       },
       "description": "Volume (ml) or mass (g) of total collected sample processed for DNA extraction. Note: total sample collected should be entered under the term Sample Size (MIXS:0000001).",
@@ -20984,6 +21880,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Saturate, Aromatic, Resin and Asphaltene¬†(SARA) is an analysis method that divides¬†crude oil¬†components according to their polarizability and polarity. There are three main methods to obtain SARA results. The most popular one is known as the Iatroscan TLC-FID and is referred to as IP-143 (source: https://en.wikipedia.org/wiki/Saturate,_aromatic,_resin_and_asphaltene)",
@@ -21076,6 +21976,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mm"
         }
       },
       "description": "The average of all seasonal precipitation values known, or an estimated equivalent value derived by such methods as regional indexes or Isohyetal maps.",
@@ -21108,6 +22012,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Mean seasonal temperature",
@@ -21476,6 +22384,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "umol/L"
         }
       },
       "description": "Concentration of silicate",
@@ -21533,6 +22445,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "um"
         }
       },
       "description": "Refers to the mesh/pore size used to pre-filter/pre-sort the sample. Materials larger than the size threshold are excluded from the sample",
@@ -21565,6 +22481,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "um"
         }
       },
       "description": "Refers to the mesh/pore size used to retain the sample. Materials smaller than the size threshold are excluded from the sample",
@@ -21597,6 +22517,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "deg"
         }
       },
       "description": "The direction a slope faces. While looking down a slope use a compass to record the direction you are facing (direction or degrees); e.g., nw or 315 degrees. This measure provides an indication of sun and wind exposure that will influence soil temperature and evapotranspiration.",
@@ -21629,6 +22553,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Commonly called 'slope'. The angle between ground surface and a horizontal line (in percent). This is the direction that overland water would flow. This measure is usually taken with a hand level meter or clinometer",
@@ -21661,6 +22589,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "h"
         }
       },
       "description": "The time activated sludge remains in reactor",
@@ -21693,6 +22625,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Sodium concentration in the sample",
@@ -21868,6 +22804,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "kW/m2/d|erg/cm2/s"
         }
       },
       "description": "The amount of solar energy that arrives at a specific area of a surface during a specific time interval",
@@ -21900,6 +22840,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|g|g/L|mol/L|ug"
         }
       },
       "description": "Concentration of substances such as ammonia, road-salt, sea-salt, cyanide, hydrogen sulfide, thiocyanates, thiosulfates, etc.",
@@ -21934,6 +22878,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|g|g/L|mol/L|ug"
         }
       },
       "description": "Concentration of substances such as urea, fruit sugars, soluble proteins, drugs, pharmaceuticals, etc.",
@@ -21968,6 +22916,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L|ug/L"
         }
       },
       "description": "Concentration of soluble reactive phosphorus",
@@ -22082,6 +23034,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "MIxS internally inconsistent"
         }
       },
       "description": "The mass of water vapour in a unit mass of moist air, usually expressed as grams of vapour per kilogram of air, or, in air conditioning, as grains per pound.",
@@ -22222,6 +23178,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Treatment involving an exposure to standing water during a plant's life span, types can be flood water or standing water, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -22313,6 +23273,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L"
         }
       },
       "description": "Concentration of sulfate in the sample",
@@ -22345,6 +23309,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Original sulfate concentration in the hydrocarbon resource",
@@ -22377,6 +23345,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L"
         }
       },
       "description": "Concentration of sulfide in the sample",
@@ -22437,6 +23409,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Surfaces: water activity as a function of air and material moisture",
@@ -22497,6 +23473,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|g/m2|g/m3"
         }
       },
       "description": "Water held on a surface",
@@ -22557,6 +23537,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Temperature of the surface at the time of sampling",
@@ -22589,6 +23573,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Concentration of suspended particulate matter",
@@ -22621,6 +23609,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|g|g/L|mg/L|mol/L|ug"
         }
       },
       "description": "Concentration of substances including a wide variety of material, such as silt, decaying plant and animal matter; can include multiple substances",
@@ -22655,6 +23647,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Total Acid Number¬†(TAN) is a measurement of acidity that is determined by the amount of¬†potassium hydroxide¬†in milligrams that is needed to neutralize the acids in one gram of oil.¬†It is an important quality measurement of¬†crude oil. (source: https://en.wikipedia.org/wiki/Total_acid_number)",
@@ -22733,6 +23729,10 @@
         "preferred_unit": {
           "tag": "preferred_unit",
           "value": "degree Celsius"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "Temperature of the sample at the time of sampling.",
@@ -22765,6 +23765,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
         }
       },
       "description": "The recorded temperature value at sampling time outside",
@@ -22911,6 +23915,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Concentration of toluene in the sample",
@@ -22943,6 +23951,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|%"
         }
       },
       "description": "Total carbon content",
@@ -22975,6 +23987,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "Measurement of total depth of water column",
@@ -23007,6 +24023,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|umol/L"
         }
       },
       "description": "Total dissolved nitrogen concentration, reported as nitrogen, measured by: total dissolved nitrogen = NH4 + NO3NO2 + dissolved organic nitrogen",
@@ -23039,6 +24059,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L"
         }
       },
       "description": "Total inorganic nitrogen content",
@@ -23071,6 +24095,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|mg/kg"
         }
       },
       "description": "Concentration of total iron in the sample",
@@ -23103,6 +24131,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|ug/L|umol/L|%"
         }
       },
       "description": "Total nitrogen concentration of water samples, calculated by: total nitrogen = total dissolved nitrogen + particulate nitrogen. Can also be measured without filtering, reported as nitrogen",
@@ -23164,6 +24196,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L|ug/L|umol/L|%"
         }
       },
       "description": "Total nitrogen content of the sample",
@@ -23225,6 +24261,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Definition for soil: total organic carbon content of the soil, definition otherwise: total organic carbon content",
@@ -23257,6 +24297,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|umol/L"
         }
       },
       "description": "Total particulate carbon content",
@@ -23289,6 +24333,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L|umol/L"
         }
       },
       "description": "Total phosphorus concentration in the sample, calculated by: total phosphorus = total dissolved phosphorus + particulate phosphorus",
@@ -23321,6 +24369,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "ug/L|umol/L"
         }
       },
       "description": "Total amount or concentration of phosphate",
@@ -23353,6 +24405,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Concentration of total sulfur in the sample",
@@ -23469,6 +24525,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[NTU]|[FNU]"
         }
       },
       "description": "Measure of the amount of cloudiness or haziness in water caused by individual particles",
@@ -23501,6 +24561,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original pressure was measured (e.g. 1578 m).",
@@ -23533,6 +24597,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m"
         }
       },
       "description": "True vertical depth subsea (TVDSS) of the hydrocarbon resource where the original temperature was measured (e.g. 1345 m).",
@@ -23593,6 +24661,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "L/s|m3/min"
         }
       },
       "description": "Ventilation rate of the system in the sampled premises",
@@ -23654,6 +24726,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Concentration of Volatile Fatty Acids in the sample",
@@ -23686,6 +24762,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "mg/L"
         }
       },
       "description": "Original volatile fatty acid concentration in the hydrocarbon resource",
@@ -23746,6 +24826,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "cP"
         }
       },
       "description": "A measure of oil's resistance¬†to gradual deformation by¬†shear stress¬†or¬†tensile stress (e.g. 3.5 cp; 100 ¬∞C)",
@@ -23779,6 +24863,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|ng/L|ug/m3"
         }
       },
       "description": "Concentration of carbon-based chemicals that easily evaporate at room temperature; can report multiple volatile organic compounds by entering numeric values preceded by name of compound",
@@ -23813,6 +24901,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m2"
         }
       },
       "description": "The total area of the sampled room's walls",
@@ -23901,6 +24993,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "cm"
         }
       },
       "description": "The average height of the walls in the sampled room",
@@ -24017,6 +25113,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "J/K"
         }
       },
       "description": "The ability of the wall to provide inertia against temperature fluctuations. Generally this means concrete or concrete block that is either exposed or covered only with paint",
@@ -24136,6 +25236,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "cm3/cm3|g/g"
         }
       },
       "description": "Water content measurement",
@@ -24168,6 +25272,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[kn_i]|m3/s"
         }
       },
       "description": "Measurement of magnitude and direction of flow within a fluid",
@@ -24200,6 +25308,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "%"
         }
       },
       "description": "Current amount of water (%) in a produced fluid stream; or the average of the combined streams",
@@ -24232,6 +25344,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m2"
         }
       },
       "description": "The size of the water feature",
@@ -24292,6 +25408,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "m3/d"
         }
       },
       "description": "Water production rates per well (e.g. 987 m3 / day)",
@@ -24324,6 +25444,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "Cel"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving an exposure to water with varying degree of temperature, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -24358,6 +25486,14 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "m"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "L|mL"
+        },
+        "units_alignment_excuse": {
+          "tag": "units_alignment_excuse",
+          "value": "not measurement like"
         }
       },
       "description": "Information about treatment involving an exposure to watering frequencies, treatment regimen including how many times the treatment was repeated, how long each treatment lasted, and the start and end time of the entire treatment; can include multiple regimens",
@@ -24478,6 +25614,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "km/h|m/s"
         }
       },
       "description": "Speed of wind measured at the time of sampling",
@@ -24678,6 +25818,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[in_i]|m"
         }
       },
       "description": "The window's length and width",
@@ -24825,6 +25969,10 @@
         "occurrence": {
           "tag": "occurrence",
           "value": "1"
+        },
+        "storage_units": {
+          "tag": "storage_units",
+          "value": "[ppm]|mg/L"
         }
       },
       "description": "Concentration of xylene in the sample",
@@ -25267,76 +26415,6 @@
       "slot_group": "JGI-Metagenomics",
       "recommended": true
     },
-    "dna_cont_type": {
-      "name": "dna_cont_type",
-      "description": "Tube or plate (96-well)",
-      "title": "DNA container type",
-      "examples": [
-        {
-          "value": "plate"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 10,
-      "slot_group": "JGI-Metagenomics",
-      "range": "JgiContTypeEnum",
-      "recommended": true
-    },
-    "dna_cont_well": {
-      "name": "dna_cont_well",
-      "title": "DNA plate position",
-      "comments": [
-        "Required when 'plate' is selected for container type.",
-        "Leave blank if the sample will be shipped in a tube.",
-        "JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not pass validation.",
-        "For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8)."
-      ],
-      "examples": [
-        {
-          "value": "B2"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 11,
-      "string_serialization": "{96 well plate pos}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true,
-      "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-    },
-    "dna_container_id": {
-      "name": "dna_container_id",
-      "title": "DNA container label",
-      "comments": [
-        "Must be unique across all tubes and plates, and <20 characters. All samples in a plate should have the same plate label."
-      ],
-      "examples": [
-        {
-          "value": "Pond_MT_041618"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 9,
-      "string_serialization": "{text < 20 characters}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_dnase": {
-      "name": "dna_dnase",
-      "title": "DNase treatment DNA",
-      "comments": [
-        "Note DNase treatment is required for all RNA samples."
-      ],
-      "examples": [
-        {
-          "value": "no"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 13,
-      "slot_group": "JGI-Metagenomics",
-      "range": "YesNoEnum",
-      "recommended": true
-    },
     "dna_isolate_meth": {
       "name": "dna_isolate_meth",
       "description": "Describe the method/protocol/kit used to extract DNA/RNA.",
@@ -25370,251 +26448,6 @@
       "slot_group": "JGI-Metagenomics",
       "recommended": true
     },
-    "dna_project_contact": {
-      "name": "dna_project_contact",
-      "title": "DNA seq project contact",
-      "deprecated": "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "John Jones"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "last_updated_on": "2025-07-02T00:00:00",
-      "modified_by": "ORCID:0000-0002-8683-0050",
-      "rank": 18,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_samp_id": {
-      "name": "dna_samp_id",
-      "title": "DNA sample ID",
-      "todos": [
-        "Removed identifier = TRUE from dna_samp_ID in JGI_sample_slots, as a class can't have two identifiers. How to force uniqueness? Moot because that column will be prefilled?"
-      ],
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "187654"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 3,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_sample_format": {
-      "name": "dna_sample_format",
-      "description": "Solution in which the DNA sample has been suspended",
-      "title": "DNA sample format",
-      "examples": [
-        {
-          "value": "Water"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 12,
-      "slot_group": "JGI-Metagenomics",
-      "range": "DNASampleFormatEnum",
-      "recommended": true
-    },
-    "dna_sample_name": {
-      "name": "dna_sample_name",
-      "description": "Give the DNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
-      "title": "DNA sample name",
-      "examples": [
-        {
-          "value": "JGI_pond_041618"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 4,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_seq_project": {
-      "name": "dna_seq_project",
-      "title": "DNA seq project ID",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "1191234"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "Seq Project ID"
-      ],
-      "rank": 1,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_seq_project_pi": {
-      "name": "dna_seq_project_pi",
-      "title": "DNA seq project PI",
-      "deprecated": "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "Jane Johnson"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "last_updated_on": "2025-07-02T00:00:00",
-      "modified_by": "ORCID:0000-0002-8683-0050",
-      "rank": 17,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_seq_project_name": {
-      "name": "dna_seq_project_name",
-      "title": "DNA seq project name",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "JGI Pond metagenomics"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 2,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dna_volume": {
-      "name": "dna_volume",
-      "title": "DNA volume in ul",
-      "comments": [
-        "Units must be in uL. Enter the numerical part only. Value must be 0-1000. This form accepts values < 25, but JGI may refuse to process them unless permission has been granted by a project manager"
-      ],
-      "examples": [
-        {
-          "value": "25"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 6,
-      "string_serialization": "{float}",
-      "slot_group": "JGI-Metagenomics",
-      "range": "float",
-      "recommended": true,
-      "minimum_value": 0,
-      "maximum_value": 1000
-    },
-    "proposal_dna": {
-      "name": "proposal_dna",
-      "title": "DNA proposal ID",
-      "deprecated": "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "504000"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "last_updated_on": "2025-07-02T00:00:00",
-      "modified_by": "ORCID:0000-0002-8683-0050",
-      "rank": 19,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metagenomics",
-      "recommended": true
-    },
-    "dnase_rna": {
-      "name": "dnase_rna",
-      "title": "DNase treated",
-      "comments": [
-        "Note DNase treatment is required for all RNA samples."
-      ],
-      "examples": [
-        {
-          "value": "no"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "Was Sample DNAse treated?"
-      ],
-      "rank": 13,
-      "slot_group": "JGI-Metatranscriptomics",
-      "range": "YesNoEnum",
-      "recommended": true
-    },
-    "proposal_rna": {
-      "name": "proposal_rna",
-      "title": "RNA proposal ID",
-      "deprecated": "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "504000"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "last_updated_on": "2025-07-02T00:00:00",
-      "modified_by": "ORCID:0000-0002-8683-0050",
-      "rank": 19,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_absorb1": {
-      "name": "rna_absorb1",
-      "description": "260/280 measurement of RNA sample purity",
-      "title": "RNA absorbance 260/280",
-      "comments": [
-        "Recommended value is between 1 and 3."
-      ],
-      "examples": [
-        {
-          "value": "2.02"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 7,
-      "string_serialization": "{float}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "range": "float",
-      "recommended": true
-    },
-    "rna_absorb2": {
-      "name": "rna_absorb2",
-      "description": "260/230 measurement of RNA sample purity",
-      "title": "RNA absorbance 260/230",
-      "comments": [
-        "Recommended value is between 1 and 3."
-      ],
-      "examples": [
-        {
-          "value": "2.02"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 8,
-      "string_serialization": "{float}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "range": "float",
-      "recommended": true
-    },
     "rna_collect_site": {
       "name": "rna_collect_site",
       "description": "Provide information on the site your RNA sample was collected from",
@@ -25627,82 +26460,6 @@
       "from_schema": "https://w3id.org/nmdc/nmdc",
       "rank": 15,
       "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_concentration": {
-      "name": "rna_concentration",
-      "title": "RNA concentration in ng/ul",
-      "comments": [
-        "Units must be in ng/uL. Enter the numerical part only. Must be calculated using a fluorometric method. Acceptable values are 0-2000."
-      ],
-      "examples": [
-        {
-          "value": "100"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "see_also": [
-        "nmdc:nucleic_acid_concentration"
-      ],
-      "rank": 5,
-      "string_serialization": "{float}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "range": "float",
-      "recommended": true,
-      "minimum_value": 0,
-      "maximum_value": 1000
-    },
-    "rna_cont_type": {
-      "name": "rna_cont_type",
-      "description": "Tube or plate (96-well)",
-      "title": "RNA container type",
-      "examples": [
-        {
-          "value": "plate"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 10,
-      "slot_group": "JGI-Metatranscriptomics",
-      "range": "JgiContTypeEnum",
-      "recommended": true
-    },
-    "rna_cont_well": {
-      "name": "rna_cont_well",
-      "title": "RNA plate position",
-      "comments": [
-        "Required when 'plate' is selected for container type.",
-        "Leave blank if the sample will be shipped in a tube.",
-        "JGI will not process samples in corner wells, so A1, A12, H1 and H12 will not pass validation.",
-        "For partial plates, fill by columns, like B1-G1,A2-H2,A3-D3 (NOT A2-A11,B1-B8)."
-      ],
-      "examples": [
-        {
-          "value": "B2"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 11,
-      "string_serialization": "{96 well plate pos}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true,
-      "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-    },
-    "rna_container_id": {
-      "name": "rna_container_id",
-      "title": "RNA container label",
-      "comments": [
-        "Must be unique across all tubes and plates, and <20 characters. All samples in a plate should have the same plate label."
-      ],
-      "examples": [
-        {
-          "value": "Pond_MT_041618"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 9,
-      "string_serialization": "{text < 20 characters}",
       "slot_group": "JGI-Metatranscriptomics",
       "recommended": true
     },
@@ -25738,152 +26495,6 @@
       "string_serialization": "{text}",
       "slot_group": "JGI-Metatranscriptomics",
       "recommended": true
-    },
-    "rna_project_contact": {
-      "name": "rna_project_contact",
-      "title": "RNA seq project contact",
-      "deprecated": "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "John Jones"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "last_updated_on": "2025-07-02T00:00:00",
-      "modified_by": "ORCID:0000-0002-8683-0050",
-      "rank": 18,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_samp_id": {
-      "name": "rna_samp_id",
-      "title": "RNA sample ID",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "187654"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 3,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_sample_format": {
-      "name": "rna_sample_format",
-      "description": "Solution in which the RNA sample has been suspended",
-      "title": "RNA sample format",
-      "examples": [
-        {
-          "value": "Water"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 12,
-      "slot_group": "JGI-Metatranscriptomics",
-      "range": "RNASampleFormatEnum",
-      "recommended": true
-    },
-    "rna_sample_name": {
-      "name": "rna_sample_name",
-      "description": "Give the RNA sample a name that is meaningful to you. Sample names must be unique across all JGI projects and contain a-z, A-Z, 0-9, - and _ only.",
-      "title": "RNA sample name",
-      "examples": [
-        {
-          "value": "JGI_pond_041618"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 4,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true,
-      "minimum_value": 0,
-      "maximum_value": 2000
-    },
-    "rna_seq_project": {
-      "name": "rna_seq_project",
-      "title": "RNA seq project ID",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "1191234"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "aliases": [
-        "Seq Project ID"
-      ],
-      "rank": 1,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_seq_project_pi": {
-      "name": "rna_seq_project_pi",
-      "title": "RNA seq project PI",
-      "deprecated": "This slot is not always provided by JGI and does not need to be in the file that we send back to JGI. Not needed in UI",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "Jane Johnson"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "last_updated_on": "2025-07-02T00:00:00",
-      "modified_by": "ORCID:0000-0002-8683-0050",
-      "rank": 17,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_seq_project_name": {
-      "name": "rna_seq_project_name",
-      "title": "RNA seq project name",
-      "comments": [
-        "Do not edit these values. A template will be provided by NMDC in which these values have been pre-filled."
-      ],
-      "examples": [
-        {
-          "value": "JGI Pond metatranscriptomics"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 2,
-      "string_serialization": "{text}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "recommended": true
-    },
-    "rna_volume": {
-      "name": "rna_volume",
-      "title": "RNA volume in ul",
-      "comments": [
-        "Units must be in uL. Enter the numerical part only. Value must be 0-1000. This form accepts values < 25, but JGI may refuse to process them unless permission has been granted by a project manager"
-      ],
-      "examples": [
-        {
-          "value": "25"
-        }
-      ],
-      "from_schema": "https://w3id.org/nmdc/nmdc",
-      "rank": 6,
-      "string_serialization": "{float}",
-      "slot_group": "JGI-Metatranscriptomics",
-      "range": "float",
-      "recommended": true,
-      "minimum_value": 0,
-      "maximum_value": 1000
     },
     "collection_date_inc": {
       "name": "collection_date_inc",
@@ -28217,44 +28828,12 @@
         "sample_collection_site",
         "soluble_iron_micromol",
         "subsurface_depth",
-        "dna_absorb1",
-        "dna_absorb2",
         "dna_collect_site",
-        "dna_concentration",
-        "dna_cont_type",
-        "dna_cont_well",
-        "dna_container_id",
-        "dna_dnase",
         "dna_isolate_meth",
         "dna_organisms",
-        "dna_project_contact",
-        "dna_samp_id",
-        "dna_sample_format",
-        "dna_sample_name",
-        "dna_seq_project",
-        "dna_seq_project_pi",
-        "dna_seq_project_name",
-        "dna_volume",
-        "proposal_dna",
-        "dnase_rna",
-        "proposal_rna",
-        "rna_absorb1",
-        "rna_absorb2",
         "rna_collect_site",
-        "rna_concentration",
-        "rna_cont_type",
-        "rna_cont_well",
-        "rna_container_id",
         "rna_isolate_meth",
         "rna_organisms",
-        "rna_project_contact",
-        "rna_samp_id",
-        "rna_sample_format",
-        "rna_sample_name",
-        "rna_seq_project",
-        "rna_seq_project_pi",
-        "rna_seq_project_name",
-        "rna_volume",
         "collection_date_inc",
         "collection_time",
         "collection_time_inc",
@@ -28802,89 +29381,7 @@
             "samp_name"
           ]
         }
-      },
-      "rules": [
-        {
-          "preconditions": {
-            "slot_conditions": {
-              "dna_cont_well": {
-                "name": "dna_cont_well",
-                "pattern": ".+"
-              }
-            }
-          },
-          "postconditions": {
-            "slot_conditions": {
-              "dna_cont_type": {
-                "name": "dna_cont_type",
-                "equals_string": "plate"
-              }
-            }
-          },
-          "description": "DNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.",
-          "title": "dna_well_requires_plate"
-        },
-        {
-          "preconditions": {
-            "slot_conditions": {
-              "dna_cont_type": {
-                "name": "dna_cont_type",
-                "equals_string": "plate"
-              }
-            }
-          },
-          "postconditions": {
-            "slot_conditions": {
-              "dna_cont_well": {
-                "name": "dna_cont_well",
-                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-              }
-            }
-          },
-          "description": "DNA samples in plates must have a plate position that matches the regex. Note the requirement for an empty string in the tube case. Waiting for value_present validation to be added to runtime",
-          "title": "dna_plate_requires_well"
-        },
-        {
-          "preconditions": {
-            "slot_conditions": {
-              "rna_cont_well": {
-                "name": "rna_cont_well",
-                "pattern": ".+"
-              }
-            }
-          },
-          "postconditions": {
-            "slot_conditions": {
-              "rna_cont_type": {
-                "name": "rna_cont_type",
-                "equals_string": "plate"
-              }
-            }
-          },
-          "description": "RNA samples shipped to JGI for metagenomic analysis in tubes can't have any value for their plate position.",
-          "title": "rna_well_requires_plate"
-        },
-        {
-          "preconditions": {
-            "slot_conditions": {
-              "rna_cont_type": {
-                "name": "rna_cont_type",
-                "equals_string": "plate"
-              }
-            }
-          },
-          "postconditions": {
-            "slot_conditions": {
-              "rna_cont_well": {
-                "name": "rna_cont_well",
-                "pattern": "^(?!A1$|A12$|H1$|H12$)(([A-H][1-9])|([A-H]1[0-2]))$"
-              }
-            }
-          },
-          "description": "RNA samples in plates must have a plate position that matches the regex. Note the requirement for an empty string in the tube case. Waiting for value_present validation to be added to runtime",
-          "title": "rna_plate_requires_well"
-        }
-      ]
+      }
     },
     "MobilePhaseSegment": {
       "name": "MobilePhaseSegment",
@@ -29562,7 +30059,8 @@
       "slots": [
         "url",
         "name",
-        "type"
+        "type",
+        "description"
       ],
       "class_uri": "nmdc:Protocol"
     },
